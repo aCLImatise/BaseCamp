@@ -50,6 +50,9 @@ task Faidx {
       ~{if defined(regex) then ("--regex " +  '"' + regex + '"') else ""} \
       ~{if (invert_match) then "--invert-match" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_rebuild: "do not rebuild the .fai index even if it is out of\\ndate. default: False"
     bed: "bed file of regions"

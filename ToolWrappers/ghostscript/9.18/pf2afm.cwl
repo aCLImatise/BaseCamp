@@ -3,7 +3,7 @@ id: pf2afm.cwl
 inputs:
 - id: in_d_no_display
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -dNODISPLAY
 - id: in_gs
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pf2afm

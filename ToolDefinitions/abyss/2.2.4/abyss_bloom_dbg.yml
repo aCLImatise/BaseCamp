@@ -4,234 +4,234 @@ command:
 positional: []
 named:
 - !Flag
-  description: "overall memory budget for the assembly in bytes.\nUnit suffixes 'k'\
-    \ (kilobytes), 'M' (megabytes),\nor 'G' (gigabytes) may be used. [required]"
+  optional: true
   synonyms:
   - -b
   - --bloom-size
+  description: "overall memory budget for the assembly in bytes.\nUnit suffixes 'k'\
+    \ (kilobytes), 'M' (megabytes),\nor 'G' (gigabytes) may be used. [required]"
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: discard unchaste reads [default]
+  optional: true
   synonyms:
   - --chastity
+  description: discard unchaste reads [default]
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: do not discard unchaste reads
+  optional: true
   synonyms:
   - --no-chastity
+  description: do not discard unchaste reads
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: write de Bruijn graph to FILE (GraphViz)
+  optional: true
   synonyms:
   - -g
   - --graph
+  description: write de Bruijn graph to FILE (GraphViz)
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: number of Bloom filter hash functions [1]
+  optional: true
   synonyms:
   - -H
   - --num-hashes
+  description: number of Bloom filter hash functions [1]
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: load Bloom filter from FILE
+  optional: true
   synonyms:
   - -i
   - --input-bloom
+  description: load Bloom filter from FILE
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: use N parallel threads [1]
+  optional: true
   synonyms:
   - -j
   - --threads
+  description: use N parallel threads [1]
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: trim masked bases from the ends of reads
+  optional: true
   synonyms:
   - --trim-masked
+  description: trim masked bases from the ends of reads
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "do not trim masked bases from the ends\nof reads [default]"
+  optional: true
   synonyms:
   - --no-trim-masked
+  description: "do not trim masked bases from the ends\nof reads [default]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: the size of a k-mer [<=128]
+  optional: true
   synonyms:
   - -k
   - --kmer
+  description: the size of a k-mer [<=128]
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "ignore k-mers having a count < N,\nusing a counting Bloom filter [2]"
+  optional: true
   synonyms:
   - --kc
+  description: "ignore k-mers having a count < N,\nusing a counting Bloom filter [2]"
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: write the contigs to FILE [STDOUT]
+  optional: true
   synonyms:
   - -o
   - --out
+  description: write the contigs to FILE [STDOUT]
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: "trim bases from the ends of reads whose\nquality is less than the\
-    \ threshold"
+  optional: true
   synonyms:
   - -q
   - --trim-quality
+  description: "trim bases from the ends of reads whose\nquality is less than the\
+    \ threshold"
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: mask all low quality bases as `N'
+  optional: true
   synonyms:
   - -Q
   - --mask-quality
+  description: mask all low quality bases as `N'
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "zero quality is `!' (33), typically\nfor FASTQ and SAM files [default]"
+  optional: true
   synonyms:
   - --standard-quality
+  description: "zero quality is `!' (33), typically\nfor FASTQ and SAM files [default]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "zero quality is `@' (64), typically\nfor qseq and export files"
+  optional: true
   synonyms:
   - --illumina-quality
+  description: "zero quality is `@' (64), typically\nfor qseq and export files"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: max branch length to trim, in k-mers [k]
+  optional: true
   synonyms:
   - -t
   - --trim-length
+  description: max branch length to trim, in k-mers [k]
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: display verbose output
+  optional: true
   synonyms:
   - -v
   - --verbose
+  description: display verbose output
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "use a spaced seed that consists of two k-mers\nseparated by a gap.\
-    \ K must be chosen such that\nK <= k/2"
+  optional: true
   synonyms:
   - -K
   - --single-kmer
+  description: "use a spaced seed that consists of two k-mers\nseparated by a gap.\
+    \ K must be chosen such that\nK <= k/2"
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --qr-seed
   description: "use a spaced seed than consists of two mirrored\nQR seeds separated\
     \ by a gap.  The following must\nhold: (a) N must be prime, (b) N >= 11,\n(c)\
     \ N <= k/2"
-  synonyms:
-  - --qr-seed
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "bitmask indicating k-mer positions to be\nignored during hashing.\
-    \ The pattern must be\nsymmetric"
+  optional: true
   synonyms:
   - -s
   - --spaced-seed
+  description: "bitmask indicating k-mer positions to be\nignored during hashing.\
+    \ The pattern must be\nsymmetric"
   args: !SimpleFlagArg
     name: STR
-  optional: true
 - !Flag
-  description: "WIG track with 0/1 indicating k-mers with\ncoverage above the -c threshold.\
-    \ A reference\nmust also be specified with -R."
+  optional: true
   synonyms:
   - -C
   - --cov-track
+  description: "WIG track with 0/1 indicating k-mers with\ncoverage above the -c threshold.\
+    \ A reference\nmust also be specified with -R."
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: write outcome of processing each read to FILE
+  optional: true
   synonyms:
   - --read-log
+  description: write outcome of processing each read to FILE
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: "specify a reference genome. FILE may be\nFASTA, FASTQ, SAM, or BAM\
-    \ and may be gzipped."
+  optional: true
   synonyms:
   - -R
   - --ref
+  description: "specify a reference genome. FILE may be\nFASTA, FASTQ, SAM, or BAM\
+    \ and may be gzipped."
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: "write debugging info about generation of\neach read to FILE"
+  optional: true
   synonyms:
   - -T
   - --trace-file
+  description: "write debugging info about generation of\neach read to FILE"
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: create a checkpoint every N reads [disabled=0]
+  optional: true
   synonyms:
   - --checkpoint
+  description: create a checkpoint every N reads [disabled=0]
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "do not delete checkpoint files after assembly\ncompletes successfully\
-    \ [disabled]"
+  optional: true
   synonyms:
   - --keep-checkpoint
+  description: "do not delete checkpoint files after assembly\ncompletes successfully\
+    \ [disabled]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "filename prefix for checkpoint files\n['bloom-dbg-checkpoint']"
+  optional: true
   synonyms:
   - --checkpoint-prefix
+  description: "filename prefix for checkpoint files\n['bloom-dbg-checkpoint']"
   args: !SimpleFlagArg
     name: STR
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: display this help and exit
+  optional: true
   synonyms:
   - --help
+  description: display this help and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: output version information and exit
+  optional: true
   synonyms:
   - --version
+  description: output version information and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "Usage: abyss-bloom-dbg -b <bloom_size> -H <bloom_hashes> -k <kmer_size>\
   \ \\\n    [options] <FASTQ> [FASTQ]... > assembly.fasta\n\nPerform a de Bruijn graph\
   \ assembly of the given FASTQ files.\n\nBasic Options:\n\n  -b  --bloom-size=N \
@@ -286,3 +286,4 @@ help_text: "Usage: abyss-bloom-dbg -b <bloom_size> -H <bloom_hashes> -k <kmer_si
   \nReport bugs to <abyss-users@bcgsc.ca>.\n"
 generated_using:
 - --help
+docker_image:

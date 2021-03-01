@@ -32,6 +32,9 @@ task Rextract {
       ~{if defined(f) then ("-f " +  '"' + f + '"') else ""} \
       ~{if (v) then "-V" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "increase output verbosity and perform additional"
     limit: "Limit of FASTQ reads to extract. Default: no limit"

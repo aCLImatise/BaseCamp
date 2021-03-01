@@ -2,8 +2,8 @@ version 1.0
 
 task Polymutpy {
   input {
-    File? id__contig
-    Boolean? set_unmapped_fsecondary
+    File? id_contig_idfocus
+    Boolean? set_unmapped_fqcfail
     Boolean? sort_index
     Int? min_len
     Int? min_qual
@@ -15,8 +15,8 @@ task Polymutpy {
   command <<<
     polymut_py \
       ~{id} \
-      ~{if defined(id__contig) then ("-c " +  '"' + id__contig + '"') else ""} \
-      ~{if (set_unmapped_fsecondary) then "-f" else ""} \
+      ~{if defined(id_contig_idfocus) then ("-c " +  '"' + id_contig_idfocus + '"') else ""} \
+      ~{if (set_unmapped_fqcfail) then "-f" else ""} \
       ~{if (sort_index) then "--sortindex" else ""} \
       ~{if defined(min_len) then ("--minlen " +  '"' + min_len + '"') else ""} \
       ~{if defined(min_qual) then ("--minqual " +  '"' + min_qual + '"') else ""} \
@@ -24,9 +24,12 @@ task Polymutpy {
       ~{if defined(dominant_frq_thr_sh) then ("--dominant_frq_thrsh " +  '"' + dominant_frq_thr_sh + '"') else ""} \
       ~{if defined(gff_file) then ("--gff_file " +  '"' + gff_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    id__contig: "ID, --contig REFERENCE ID\\nFocus on a subset of references in the BAM file. Can\\nbe a list of references separated by commas or a FASTA\\nfile (the IDs are used to subset)"
-    set_unmapped_fsecondary: "If set unmapped (FUNMAP), secondary (FSECONDARY), qc-\\nfail (FQCFAIL) and duplicate (FDUP) are excluded. If\\nunset ALL reads are considered (bedtools genomecov\\nstyle). Default: unset"
+    id_contig_idfocus: "ID, --contig REFERENCE ID\\nFocus on a subset of references in the BAM file. Can\\nbe a list of references separated by commas or a FASTA\\nfile (the IDs are used to subset)"
+    set_unmapped_fqcfail: "If set unmapped (FUNMAP), secondary (FSECONDARY), qc-\\nfail (FQCFAIL) and duplicate (FDUP) are excluded. If\\nunset ALL reads are considered (bedtools genomecov\\nstyle). Default: unset"
     sort_index: "Sort and index the file"
     min_len: "Minimum Reference Length for a reference to be\\nconsidered. Default: 0"
     min_qual: "Minimum base quality. Bases with quality score lower\\nthan this will be discarded. This is performed BEFORE\\n--mincov. Default: 30"

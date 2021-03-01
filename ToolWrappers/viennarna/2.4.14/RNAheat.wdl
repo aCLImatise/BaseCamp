@@ -48,6 +48,9 @@ task RNAheat {
       ~{if (g_quad) then "--gquad" else ""} \
       ~{if (circ) then "--circ" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     detailed_help: "Print help, including all details and hidden\\noptions, and exit"
     full_help: "Print help, including hidden options, and exit"

@@ -8,6 +8,9 @@ task UniqueMerCount {
     uniqueMerCount \
       ~{sorted_mer_list}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sorted_mer_list: ""
   }

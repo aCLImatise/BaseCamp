@@ -3,48 +3,49 @@ id: raven.cwl
 inputs:
 - id: in_weaken
   doc: use larger (k, w) when assembling highly accurate sequences
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --weaken
 - id: in_polishing_rounds
   doc: "default: 2\nnumber of times racon is invoked"
-  type: long
+  type: long?
   inputBinding:
     prefix: --polishing-rounds
 - id: in_match
   doc: "default: 3\nscore for matching bases"
-  type: long
+  type: long?
   inputBinding:
     prefix: --match
 - id: in_mismatch
   doc: "default: -5\nscore for mismatching bases"
-  type: long
+  type: long?
   inputBinding:
     prefix: --mismatch
 - id: in_gap
   doc: "default: -4\ngap penalty (must be negative)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --gap
 - id: in_graphical_fragment_assembly
   doc: prints the assemblg graph in GFA format
-  type: string
+  type: string?
   inputBinding:
     prefix: --graphical-fragment-assembly
 - id: in_resume
   doc: resume previous run from last checkpoint
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --resume
 - id: in_threads
   doc: "default: 1\nnumber of threads"
-  type: long
+  type: long?
   inputBinding:
     prefix: --threads
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - raven

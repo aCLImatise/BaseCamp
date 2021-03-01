@@ -52,6 +52,9 @@ task OpenSwathAssayGenerator {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "*                           Input file (valid formats: 'tsv', 'mrm', 'pqp', 'TraML')"
     in_type: "Input file type -- default: determined from file extension or content\\n(valid: 'tsv', 'mrm', 'pqp', 'TraML')"

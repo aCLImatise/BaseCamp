@@ -4,87 +4,90 @@ command:
 positional: []
 named:
 - !Flag
-  description: "Input TSV table of gene family abundances (either the\nunstratified\
-    \ or stratified output of\nmetagenome_pipeline.py)."
+  optional: true
   synonyms:
   - -i
   - --input
+  description: "Input TSV table of gene family abundances (either the\nunstratified\
+    \ or stratified output of\nmetagenome_pipeline.py)."
   args: !SimpleFlagArg
     name: IN_TABLE
-  optional: true
 - !Flag
-  description: Output folder for pathway abundance output.
+  optional: true
   synonyms:
   - -o
   - --out_dir
+  description: Output folder for pathway abundance output.
   args: !SimpleFlagArg
     name: DIRECTORY
-  optional: true
 - !Flag
-  description: "Mapping of pathways to reactions. The default mapfile\nmaps MetaCyc\
-    \ reactions to prokaryotic MetaCyc pathways\n(default: /usr/local/lib/python3.6/site-packages/picru\n\
-    st2/default_files/pathway_mapfiles/metacyc_path2rxn_st\nruc_filt_pro.txt)."
+  optional: true
   synonyms:
   - -m
   - --map
+  description: "Mapping of pathways to reactions. The default mapfile\nmaps MetaCyc\
+    \ reactions to prokaryotic MetaCyc pathways\n(default: /usr/local/lib/python3.6/site-packages/picru\n\
+    st2/default_files/pathway_mapfiles/metacyc_path2rxn_st\nruc_filt_pro.txt)."
   args: !SimpleFlagArg
     name: MAP
-  optional: true
 - !Flag
-  description: "Do not run MinPath to identify which pathways are\npresent as a first\
-    \ pass (on by default)."
+  optional: true
   synonyms:
   - --skip_minpath
+  description: "Do not run MinPath to identify which pathways are\npresent as a first\
+    \ pass (on by default)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Do not perform gap filling before predicting pathway\nabundances (Gap\
-    \ filling is on otherwise by default."
+  optional: true
   synonyms:
   - --no_gap_fill
+  description: "Do not perform gap filling before predicting pathway\nabundances (Gap\
+    \ filling is on otherwise by default."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Output folder for intermediate files (will be deleted\notherwise)."
+  optional: true
   synonyms:
   - --intermediate
+  description: "Output folder for intermediate files (will be deleted\notherwise)."
   args: !SimpleFlagArg
     name: DIR
-  optional: true
 - !Flag
-  description: 'Number of processes to run in parallel (default: 1).'
+  optional: true
   synonyms:
   - -p
   - --processes
+  description: 'Number of processes to run in parallel (default: 1).'
   args: !SimpleFlagArg
     name: PROCESSES
-  optional: true
 - !Flag
-  description: "Do not regroup input gene families to reactions as\nspecified in the\
-    \ regrouping mapfile."
+  optional: true
   synonyms:
   - --no_regroup
+  description: "Do not regroup input gene families to reactions as\nspecified in the\
+    \ regrouping mapfile."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Calculate pathway coverages as well as abundances,\nwhich are experimental\
-    \ and only useful for advanced\nusers."
+  optional: true
   synonyms:
   - --coverage
+  description: "Calculate pathway coverages as well as abundances,\nwhich are experimental\
+    \ and only useful for advanced\nusers."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --regroup_map
   description: "Mapfile of ids to regroup gene families to before\nrunning MinPath.\
     \ The default mapfile is for regrouping\nEC numbers to MetaCyc reactions (default:\n\
     /usr/local/lib/python3.6/site-packages/picrust2/defaul\nt_files/pathway_mapfiles/ec_level4_to_metacyc_rxn.tsv)\n\
     ."
-  synonyms:
-  - -r
-  - --regroup_map
   args: !SimpleFlagArg
     name: ID_MAP
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --per_sequence_contrib
   description: "Flag to specify that MinPath is run on the genes\ncontributed by each\
     \ sequence (i.e. a predicted genome)\nindividually. Note this will greatly increase\
     \ the\nruntime. The output will be the predicted pathway\nabundance contributed\
@@ -93,57 +96,58 @@ named:
     \ Experimental pathway coverage\nstratified by contributing sequence will also\
     \ be\noutput when --coverage is set. Options\n--per_sequence_contrib and --per_sequence_function\n\
     need to be set when this option is used (default:\nFalse)."
-  synonyms:
-  - --per_sequence_contrib
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --per_sequence_abun
   description: "Path to table of sequence abundances across samples\nnormalized by\
     \ marker copy number (typically the\nnormalized sequence abundance table output\
     \ at the\nmetagenome pipeline step). This input is required when\nthe --per_sequence_contrib\
     \ option is set. (default:\nNone)."
-  synonyms:
-  - --per_sequence_abun
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --per_sequence_function
   description: "Path to table of function abundances per sequence,\nwhich was outputted\
     \ at the hidden-state prediction\nstep. This input is required when the\n--per_sequence_contrib\
     \ option is set. Note that this\nfile should be the same input table as used for\
     \ the\nmetagenome pipeline step (default: None)."
-  synonyms:
-  - --per_sequence_function
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --wide_table
   description: "Flag to specify that wide-format stratified table\nshould be output\
     \ rather than metagenome contribution\ntable. This is the deprecated method of\
     \ generating\nstratified tables since it is extremely memory\nintensive (default:\
     \ False)."
-  synonyms:
-  - --wide_table
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "If specified, print out wrapped commands and other\ndetails to screen."
+  optional: true
   synonyms:
   - --verbose
+  description: "If specified, print out wrapped commands and other\ndetails to screen."
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
   description: "show program's version number and exit\nUsage examples:\nDefault mapping\
     \ of predicted EC number abundances to MetaCyc pathways:\npathway_pipeline.py\
     \ -i EC_metagenome_out/pred_metagenome_unstrat.tsv.gz -o pathways_out --processes\
@@ -156,11 +160,7 @@ version_flag: !Flag
     pathway_pipeline.py -i EC_metagenome_out/pred_metagenome_unstrat.tsv.gz -o pathways_out_per_seq\
     \ --per_sequence_contrib --per_sequence_abun EC_metagenome_out/seqtab_norm.tsv.gz\
     \ --per_sequence_function EC_predicted.tsv.gz\n"
-  synonyms:
-  - -v
-  - --version
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: pathway_pipeline.py [-h] -i IN_TABLE -o DIRECTORY [-m MAP]\n  \
   \                         [--skip_minpath] [--no_gap_fill]\n                   \
   \        [--intermediate DIR] [-p PROCESSES] [--no_regroup]\n                  \
@@ -250,3 +250,4 @@ help_text: "usage: pathway_pipeline.py [-h] -i IN_TABLE -o DIRECTORY [-m MAP]\n 
   \ --per_sequence_function EC_predicted.tsv.gz\n"
 generated_using:
 - --help
+docker_image:

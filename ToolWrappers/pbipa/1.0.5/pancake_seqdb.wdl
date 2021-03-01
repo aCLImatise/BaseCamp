@@ -22,6 +22,9 @@ task PancakeSeqdb {
       ~{if (log_level) then "--log-level" else ""} \
       ~{if (log_file) then "--log-file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     compression: "INT    Compression level for output sequences. [1]"
     buffer_size: "FLOAT  Sequence buffer size in megabytes. Has to be >= 0.0. [1000]"

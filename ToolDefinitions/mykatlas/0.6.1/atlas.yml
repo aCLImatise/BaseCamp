@@ -11,37 +11,93 @@ subcommands:
   - diff
   positional:
   - !Positional
-    description: sample id
+    optional: false
     position: 0
     name: sample
-    optional: false
+    description: sample id
   - !Positional
-    description: The graph to compare new sample against
+    optional: false
     position: 1
     name: graph
+    description: The graph to compare new sample against
+  - !Positional
     optional: false
+    position: 0
+    name: threads
+    description: -m MEMORY, --memory MEMORY
   named:
   - !Flag
-    description: ''
-    synonyms:
-    - --keep_tmp
-    args: !EmptyFlagArg {}
     optional: true
-  - !Flag
-    description: ''
-    synonyms:
-    - --tmp
-    args: !SimpleFlagArg
-      name: TMP
-    optional: true
-  - !Flag
-    description: ''
     synonyms:
     - -k
+    - --kmer
+    description: kmer length (default:21)
     args: !SimpleFlagArg
       name: kmer
+  - !Flag
     optional: true
-  parent: &id010 !Command
+    synonyms:
+    - --tmp
+    description: 'tmp directory (default: /tmp/)'
+    args: !SimpleFlagArg
+      name: TMP
+  - !Flag
+    optional: true
+    synonyms:
+    - --keep_tmp
+    description: Dont remove tmp files
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --skeleton_dir
+    description: directory for skeleton binaries
+    args: !SimpleFlagArg
+      name: SKELETON_DIR
+  - !Flag
+    optional: true
+    synonyms:
+    - --mccortex31_path
+    description: Path to mccortex31. Default mccortex31
+    args: !SimpleFlagArg
+      name: MCCORTEX31_PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - --expected_depth
+    description: expected depth
+    args: !SimpleFlagArg
+      name: EXPECTED_DEPTH
+  - !Flag
+    optional: true
+    synonyms:
+    - '-1'
+    - --seq
+    description: sequence files (fasta,fastq,bam)
+    args: !RepeatFlagArg
+      name: seq
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --ctx
+    description: cortex graph binary
+    args: !SimpleFlagArg
+      name: ctx
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    - --quiet
+    description: do not output warnings to stderr
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --add
+    description: after comparing, add the new sample to the graph
+    args: !EmptyFlagArg {}
+  parent: &id011 !Command
     command: *id001
     positional: []
     named: []
@@ -51,37 +107,37 @@ subcommands:
       command: *id002
       positional:
       - !Positional
-        description: sample id
+        optional: false
         position: 0
         name: sample
-        optional: false
+        description: sample id
       - !Positional
-        description: The graph to compare new sample against
+        optional: false
         position: 1
         name: graph
-        optional: false
+        description: The graph to compare new sample against
       named:
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - --keep_tmp
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
         description: ''
+        args: !EmptyFlagArg {}
+      - !Flag
+        optional: true
         synonyms:
         - --tmp
+        description: ''
         args: !SimpleFlagArg
           name: TMP
-        optional: true
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - -k
+        description: ''
         args: !SimpleFlagArg
           name: kmer
-        optional: true
-      parent: &id009 !Command
+      parent: &id010 !Command
         command: *id001
         positional: []
         named: []
@@ -91,37 +147,37 @@ subcommands:
           command: *id002
           positional:
           - !Positional
-            description: sample id
+            optional: false
             position: 0
             name: sample
-            optional: false
+            description: sample id
           - !Positional
-            description: The graph to compare new sample against
+            optional: false
             position: 1
             name: graph
-            optional: false
+            description: The graph to compare new sample against
           named:
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - --keep_tmp
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
             description: ''
+            args: !EmptyFlagArg {}
+          - !Flag
+            optional: true
             synonyms:
             - --tmp
+            description: ''
             args: !SimpleFlagArg
               name: TMP
-            optional: true
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - -k
+            description: ''
             args: !SimpleFlagArg
               name: kmer
-            optional: true
-          parent: &id008 !Command
+          parent: &id009 !Command
             command: *id001
             positional: []
             named: []
@@ -131,37 +187,37 @@ subcommands:
               command: *id002
               positional:
               - !Positional
-                description: sample id
+                optional: false
                 position: 0
                 name: sample
-                optional: false
+                description: sample id
               - !Positional
-                description: The graph to compare new sample against
+                optional: false
                 position: 1
                 name: graph
-                optional: false
+                description: The graph to compare new sample against
               named:
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - --keep_tmp
-                args: !EmptyFlagArg {}
-                optional: true
-              - !Flag
                 description: ''
+                args: !EmptyFlagArg {}
+              - !Flag
+                optional: true
                 synonyms:
                 - --tmp
+                description: ''
                 args: !SimpleFlagArg
                   name: TMP
-                optional: true
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - -k
+                description: ''
                 args: !SimpleFlagArg
                   name: kmer
-                optional: true
-              parent: &id003 !Command
+              parent: &id008 !Command
                 command: *id001
                 positional: []
                 named: []
@@ -171,110 +227,758 @@ subcommands:
                   command: *id002
                   positional:
                   - !Positional
-                    description: sample id
+                    optional: false
                     position: 0
                     name: sample
-                    optional: false
+                    description: sample id
                   - !Positional
-                    description: The graph to compare new sample against
+                    optional: false
                     position: 1
                     name: graph
-                    optional: false
-                  - !Positional
-                    description: -m MEMORY, --memory MEMORY
-                    position: 0
-                    name: threads
-                    optional: false
+                    description: The graph to compare new sample against
                   named:
                   - !Flag
-                    description: kmer length (default:21)
-                    synonyms:
-                    - -k
-                    - --kmer
-                    args: !SimpleFlagArg
-                      name: kmer
                     optional: true
-                  - !Flag
-                    description: 'tmp directory (default: /tmp/)'
-                    synonyms:
-                    - --tmp
-                    args: !SimpleFlagArg
-                      name: TMP
-                    optional: true
-                  - !Flag
-                    description: Dont remove tmp files
                     synonyms:
                     - --keep_tmp
-                    args: !EmptyFlagArg {}
-                    optional: true
-                  - !Flag
-                    description: directory for skeleton binaries
-                    synonyms:
-                    - --skeleton_dir
-                    args: !SimpleFlagArg
-                      name: SKELETON_DIR
-                    optional: true
-                  - !Flag
-                    description: Path to mccortex31. Default mccortex31
-                    synonyms:
-                    - --mccortex31_path
-                    args: !SimpleFlagArg
-                      name: MCCORTEX31_PATH
-                    optional: true
-                  - !Flag
                     description: ''
-                    synonyms:
-                    - -t
-                    - --threads
-                    args: !SimpleFlagArg
-                      name: THREADS
-                    optional: true
-                  - !Flag
-                    description: expected depth
-                    synonyms:
-                    - --expected_depth
-                    args: !SimpleFlagArg
-                      name: EXPECTED_DEPTH
-                    optional: true
-                  - !Flag
-                    description: sequence files (fasta,fastq,bam)
-                    synonyms:
-                    - '-1'
-                    - --seq
-                    args: !RepeatFlagArg
-                      name: seq
-                    optional: true
-                  - !Flag
-                    description: cortex graph binary
-                    synonyms:
-                    - -c
-                    - --ctx
-                    args: !SimpleFlagArg
-                      name: ctx
-                    optional: true
-                  - !Flag
-                    description: do not output warnings to stderr
-                    synonyms:
-                    - -q
-                    - --quiet
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: after comparing, add the new sample to the graph
-                    synonyms:
-                    - --add
-                    args: !EmptyFlagArg {}
                     optional: true
-                  parent: *id003
+                    synonyms:
+                    - --tmp
+                    description: ''
+                    args: !SimpleFlagArg
+                      name: TMP
+                  - !Flag
+                    optional: true
+                    synonyms:
+                    - -k
+                    description: ''
+                    args: !SimpleFlagArg
+                      name: kmer
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named: []
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: sample
+                        description: sample id
+                      - !Positional
+                        optional: false
+                        position: 1
+                        name: graph
+                        description: The graph to compare new sample against
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: threads
+                        description: -m MEMORY, --memory MEMORY
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -k
+                        - --kmer
+                        description: kmer length (default:21)
+                        args: !SimpleFlagArg
+                          name: kmer
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --tmp
+                        description: 'tmp directory (default: /tmp/)'
+                        args: !SimpleFlagArg
+                          name: TMP
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --keep_tmp
+                        description: Dont remove tmp files
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --skeleton_dir
+                        description: directory for skeleton binaries
+                        args: !SimpleFlagArg
+                          name: SKELETON_DIR
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --mccortex31_path
+                        description: Path to mccortex31. Default mccortex31
+                        args: !SimpleFlagArg
+                          name: MCCORTEX31_PATH
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -t
+                        - --threads
+                        description: ''
+                        args: !SimpleFlagArg
+                          name: THREADS
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --expected_depth
+                        description: expected depth
+                        args: !SimpleFlagArg
+                          name: EXPECTED_DEPTH
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - '-1'
+                        - --seq
+                        description: sequence files (fasta,fastq,bam)
+                        args: !RepeatFlagArg
+                          name: seq
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -c
+                        - --ctx
+                        description: cortex graph binary
+                        args: !SimpleFlagArg
+                          name: ctx
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -q
+                        - --quiet
+                        description: do not output warnings to stderr
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --add
+                        description: after comparing, add the new sample to the graph
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: atlas diff [-h] [-k kmer] [--tmp TMP] [--keep_tmp]\n\
+                        \                  [--skeleton_dir SKELETON_DIR]\n       \
+                        \           [--mccortex31_path MCCORTEX31_PATH] [-t THREADS]\
+                        \ [-m MEMORY]\n                  [--expected_depth EXPECTED_DEPTH]\
+                        \ [-1 seq [seq ...]]\n                  [-c ctx] [-q] [--add]\n\
+                        \                  sample graph\n\npositional arguments:\n\
+                        \  sample                sample id\n  graph              \
+                        \   The graph to compare new sample against\n\noptional arguments:\n\
+                        \  -h, --help            show this help message and exit\n\
+                        \  -k kmer, --kmer kmer  kmer length (default:21)\n  --tmp\
+                        \ TMP             tmp directory (default: /tmp/)\n  --keep_tmp\
+                        \            Dont remove tmp files\n  --skeleton_dir SKELETON_DIR\n\
+                        \                        directory for skeleton binaries\n\
+                        \  --mccortex31_path MCCORTEX31_PATH\n                   \
+                        \     Path to mccortex31. Default mccortex31\n  -t THREADS,\
+                        \ --threads THREADS\n                        threads\n  -m\
+                        \ MEMORY, --memory MEMORY\n                        memory\
+                        \ for graph constuction\n  --expected_depth EXPECTED_DEPTH\n\
+                        \                        expected depth\n  -1 seq [seq ...],\
+                        \ --seq seq [seq ...]\n                        sequence files\
+                        \ (fasta,fastq,bam)\n  -c ctx, --ctx ctx     cortex graph\
+                        \ binary\n  -q, --quiet           do not output warnings to\
+                        \ stderr\n  --add                 after comparing, add the\
+                        \ new sample to the graph\n"
+                      generated_using: &id004
+                      - --help
+                      docker_image:
+                    - !Command
+                      command: &id005
+                      - atlas
+                      - place
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --db_name
+                        description: db_name
+                        args: !SimpleFlagArg
+                          name: db_name
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -f
+                        - --force
+                        description: force
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -q
+                        - --quiet
+                        description: do not output warnings to stderr
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --tree
+                        description: tree
+                        args: !SimpleFlagArg
+                          name: tree
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --searchable_samples
+                        description: list of samples (file)
+                        args: !SimpleFlagArg
+                          name: searchable_samples
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --no-cache
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: atlas place [-h] [--db_name db_name] [-f]\
+                        \ [-q] [--tree tree]\n                   [--searchable_samples\
+                        \ searchable_samples] [--no-cache]\n                   sample\n\
+                        \npositional arguments:\n  sample                sample id\n\
+                        \noptional arguments:\n  -h, --help            show this help\
+                        \ message and exit\n  --db_name db_name     db_name\n  -f,\
+                        \ --force           force\n  -q, --quiet           do not\
+                        \ output warnings to stderr\n  --tree tree           tree\n\
+                        \  --searchable_samples searchable_samples\n             \
+                        \           list of samples (file)\n  --no-cache\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id006
+                      - atlas
+                      - walk
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: sample
+                        description: sample id
+                      - !Positional
+                        optional: false
+                        position: 1
+                        name: probe_set
+                        description: probe_set
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: threads
+                        description: -m MEMORY, --memory MEMORY
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -k
+                        - --kmer
+                        description: kmer length (default:21)
+                        args: !SimpleFlagArg
+                          name: kmer
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --tmp
+                        description: 'tmp directory (default: /tmp/)'
+                        args: !SimpleFlagArg
+                          name: TMP
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --keep_tmp
+                        description: Dont remove tmp files
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --skeleton_dir
+                        description: directory for skeleton binaries
+                        args: !SimpleFlagArg
+                          name: SKELETON_DIR
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --mccortex31_path
+                        description: Path to mccortex31. Default mccortex31
+                        args: !SimpleFlagArg
+                          name: MCCORTEX31_PATH
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -t
+                        - --threads
+                        description: ''
+                        args: !SimpleFlagArg
+                          name: THREADS
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --expected_depth
+                        description: expected depth
+                        args: !SimpleFlagArg
+                          name: EXPECTED_DEPTH
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - '-1'
+                        - --seq
+                        description: sequence files (fasta,fastq,bam)
+                        args: !RepeatFlagArg
+                          name: seq
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -c
+                        - --ctx
+                        description: cortex graph binary
+                        args: !SimpleFlagArg
+                          name: ctx
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -f
+                        - --force
+                        description: force
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --ont
+                        description: Set default for ONT data
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --ignore_filtered
+                        description: don't include filtered genotypes
+                        args: !SimpleFlagArg
+                          name: IGNORE_FILTERED
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --model
+                        description: species
+                        args: !SimpleFlagArg
+                          name: model
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --filters
+                        description: don't include filtered genotypes
+                        args: !RepeatFlagArg
+                          name: FILTERS
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --report_all_calls
+                        description: report all calls
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --expected_error_rate
+                        description: "Expected sequencing error rate. Set to 0.15\
+                          \ for ONT\ngenotyping."
+                        args: !SimpleFlagArg
+                          name: EXPECTED_ERROR_RATE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --min_variant_conf
+                        description: minimum genotype confidence for variant genotyping
+                        args: !SimpleFlagArg
+                          name: MIN_VARIANT_CONF
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --min_gene_conf
+                        description: minimum genotype confidence for gene genotyping
+                        args: !SimpleFlagArg
+                          name: MIN_GENE_CONF
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --min_gene_percent_covg_threshold
+                        description: "all genes alleles found above this percent coverage\n\
+                          will be reported (default 100 (only best alleles\nreported))"
+                        args: !SimpleFlagArg
+                          name: MIN_GENE_PERCENT_COVG_THRESHOLD
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -q
+                        - --quiet
+                        description: do not output warnings to stderr
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --also-genotype
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --show-all-paths
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: atlas walk [-h] [-k kmer] [--tmp TMP] [--keep_tmp]\n\
+                        \                  [--skeleton_dir SKELETON_DIR]\n       \
+                        \           [--mccortex31_path MCCORTEX31_PATH] [-t THREADS]\
+                        \ [-m MEMORY]\n                  [--expected_depth EXPECTED_DEPTH]\
+                        \ [-1 seq [seq ...]]\n                  [-c ctx] [-f] [--ont]\
+                        \ [--ignore_filtered IGNORE_FILTERED]\n                  [--model\
+                        \ model] [--filters FILTERS [FILTERS ...]]\n             \
+                        \     [--report_all_calls]\n                  [--expected_error_rate\
+                        \ EXPECTED_ERROR_RATE]\n                  [--min_variant_conf\
+                        \ MIN_VARIANT_CONF]\n                  [--min_gene_conf MIN_GENE_CONF]\n\
+                        \                  [--min_gene_percent_covg_threshold MIN_GENE_PERCENT_COVG_THRESHOLD]\n\
+                        \                  [-q] [--also-genotype] [--show-all-paths]\n\
+                        \                  sample probe_set\n\npositional arguments:\n\
+                        \  sample                sample id\n  probe_set          \
+                        \   probe_set\n\noptional arguments:\n  -h, --help       \
+                        \     show this help message and exit\n  -k kmer, --kmer kmer\
+                        \  kmer length (default:21)\n  --tmp TMP             tmp directory\
+                        \ (default: /tmp/)\n  --keep_tmp            Dont remove tmp\
+                        \ files\n  --skeleton_dir SKELETON_DIR\n                 \
+                        \       directory for skeleton binaries\n  --mccortex31_path\
+                        \ MCCORTEX31_PATH\n                        Path to mccortex31.\
+                        \ Default mccortex31\n  -t THREADS, --threads THREADS\n  \
+                        \                      threads\n  -m MEMORY, --memory MEMORY\n\
+                        \                        memory for graph constuction\n  --expected_depth\
+                        \ EXPECTED_DEPTH\n                        expected depth\n\
+                        \  -1 seq [seq ...], --seq seq [seq ...]\n               \
+                        \         sequence files (fasta,fastq,bam)\n  -c ctx, --ctx\
+                        \ ctx     cortex graph binary\n  -f, --force           force\n\
+                        \  --ont                 Set default for ONT data\n  --ignore_filtered\
+                        \ IGNORE_FILTERED\n                        don't include filtered\
+                        \ genotypes\n  --model model         species\n  --filters\
+                        \ FILTERS [FILTERS ...]\n                        don't include\
+                        \ filtered genotypes\n  --report_all_calls    report all calls\n\
+                        \  --expected_error_rate EXPECTED_ERROR_RATE\n           \
+                        \             Expected sequencing error rate. Set to 0.15\
+                        \ for ONT\n                        genotyping.\n  --min_variant_conf\
+                        \ MIN_VARIANT_CONF\n                        minimum genotype\
+                        \ confidence for variant genotyping\n  --min_gene_conf MIN_GENE_CONF\n\
+                        \                        minimum genotype confidence for gene\
+                        \ genotyping\n  --min_gene_percent_covg_threshold MIN_GENE_PERCENT_COVG_THRESHOLD\n\
+                        \                        all genes alleles found above this\
+                        \ percent coverage\n                        will be reported\
+                        \ (default 100 (only best alleles\n                      \
+                        \  reported))\n  -q, --quiet           do not output warnings\
+                        \ to stderr\n  --also-genotype\n  --show-all-paths\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id007
+                      - atlas
+                      - genotype
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: sample
+                        description: sample id
+                      - !Positional
+                        optional: false
+                        position: 1
+                        name: probe_set
+                        description: probe_set
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: threads
+                        description: -m MEMORY, --memory MEMORY
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -k
+                        - --kmer
+                        description: kmer length (default:21)
+                        args: !SimpleFlagArg
+                          name: kmer
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --tmp
+                        description: 'tmp directory (default: /tmp/)'
+                        args: !SimpleFlagArg
+                          name: TMP
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --keep_tmp
+                        description: Dont remove tmp files
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --skeleton_dir
+                        description: directory for skeleton binaries
+                        args: !SimpleFlagArg
+                          name: SKELETON_DIR
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --mccortex31_path
+                        description: Path to mccortex31. Default mccortex31
+                        args: !SimpleFlagArg
+                          name: MCCORTEX31_PATH
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -t
+                        - --threads
+                        description: ''
+                        args: !SimpleFlagArg
+                          name: THREADS
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --expected_depth
+                        description: expected depth
+                        args: !SimpleFlagArg
+                          name: EXPECTED_DEPTH
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - '-1'
+                        - --seq
+                        description: sequence files (fasta,fastq,bam)
+                        args: !RepeatFlagArg
+                          name: seq
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -c
+                        - --ctx
+                        description: cortex graph binary
+                        args: !SimpleFlagArg
+                          name: ctx
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -f
+                        - --force
+                        description: force
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --ont
+                        description: Set default for ONT data
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --ignore_filtered
+                        description: don't include filtered genotypes
+                        args: !SimpleFlagArg
+                          name: IGNORE_FILTERED
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --model
+                        description: species
+                        args: !SimpleFlagArg
+                          name: model
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --filters
+                        description: don't include filtered genotypes
+                        args: !RepeatFlagArg
+                          name: FILTERS
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --report_all_calls
+                        description: report all calls
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --expected_error_rate
+                        description: "Expected sequencing error rate. Set to 0.15\
+                          \ for ONT\ngenotyping."
+                        args: !SimpleFlagArg
+                          name: EXPECTED_ERROR_RATE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --min_variant_conf
+                        description: minimum genotype confidence for variant genotyping
+                        args: !SimpleFlagArg
+                          name: MIN_VARIANT_CONF
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --min_gene_conf
+                        description: minimum genotype confidence for gene genotyping
+                        args: !SimpleFlagArg
+                          name: MIN_GENE_CONF
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --min_gene_percent_covg_threshold
+                        description: "all genes alleles found above this percent coverage\n\
+                          will be reported (default 100 (only best alleles\nreported))"
+                        args: !SimpleFlagArg
+                          name: MIN_GENE_PERCENT_COVG_THRESHOLD
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -q
+                        - --quiet
+                        description: do not output warnings to stderr
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: atlas genotype [-h] [-k kmer] [--tmp TMP]\
+                        \ [--keep_tmp]\n                      [--skeleton_dir SKELETON_DIR]\n\
+                        \                      [--mccortex31_path MCCORTEX31_PATH]\
+                        \ [-t THREADS]\n                      [-m MEMORY] [--expected_depth\
+                        \ EXPECTED_DEPTH]\n                      [-1 seq [seq ...]]\
+                        \ [-c ctx] [-f] [--ont]\n                      [--ignore_filtered\
+                        \ IGNORE_FILTERED] [--model model]\n                     \
+                        \ [--filters FILTERS [FILTERS ...]] [--report_all_calls]\n\
+                        \                      [--expected_error_rate EXPECTED_ERROR_RATE]\n\
+                        \                      [--min_variant_conf MIN_VARIANT_CONF]\n\
+                        \                      [--min_gene_conf MIN_GENE_CONF]\n \
+                        \                     [--min_gene_percent_covg_threshold MIN_GENE_PERCENT_COVG_THRESHOLD]\n\
+                        \                      [-q]\n                      sample\
+                        \ probe_set\n\npositional arguments:\n  sample           \
+                        \     sample id\n  probe_set             probe_set\n\noptional\
+                        \ arguments:\n  -h, --help            show this help message\
+                        \ and exit\n  -k kmer, --kmer kmer  kmer length (default:21)\n\
+                        \  --tmp TMP             tmp directory (default: /tmp/)\n\
+                        \  --keep_tmp            Dont remove tmp files\n  --skeleton_dir\
+                        \ SKELETON_DIR\n                        directory for skeleton\
+                        \ binaries\n  --mccortex31_path MCCORTEX31_PATH\n        \
+                        \                Path to mccortex31. Default mccortex31\n\
+                        \  -t THREADS, --threads THREADS\n                       \
+                        \ threads\n  -m MEMORY, --memory MEMORY\n                \
+                        \        memory for graph constuction\n  --expected_depth\
+                        \ EXPECTED_DEPTH\n                        expected depth\n\
+                        \  -1 seq [seq ...], --seq seq [seq ...]\n               \
+                        \         sequence files (fasta,fastq,bam)\n  -c ctx, --ctx\
+                        \ ctx     cortex graph binary\n  -f, --force           force\n\
+                        \  --ont                 Set default for ONT data\n  --ignore_filtered\
+                        \ IGNORE_FILTERED\n                        don't include filtered\
+                        \ genotypes\n  --model model         species\n  --filters\
+                        \ FILTERS [FILTERS ...]\n                        don't include\
+                        \ filtered genotypes\n  --report_all_calls    report all calls\n\
+                        \  --expected_error_rate EXPECTED_ERROR_RATE\n           \
+                        \             Expected sequencing error rate. Set to 0.15\
+                        \ for ONT\n                        genotyping.\n  --min_variant_conf\
+                        \ MIN_VARIANT_CONF\n                        minimum genotype\
+                        \ confidence for variant genotyping\n  --min_gene_conf MIN_GENE_CONF\n\
+                        \                        minimum genotype confidence for gene\
+                        \ genotyping\n  --min_gene_percent_covg_threshold MIN_GENE_PERCENT_COVG_THRESHOLD\n\
+                        \                        all genes alleles found above this\
+                        \ percent coverage\n                        will be reported\
+                        \ (default 100 (only best alleles\n                      \
+                        \  reported))\n  -q, --quiet           do not output warnings\
+                        \ to stderr\n"
+                      generated_using: *id004
+                      docker_image:
+                    usage: []
+                    help_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - -h
+                      - --help
+                      description: show this help message and exit
+                      args: !EmptyFlagArg {}
+                    usage_flag:
+                    version_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - --version
+                      description: atlas version
+                      args: !EmptyFlagArg {}
+                    help_text: "usage: atlas [-h] [--version] {genotype,walk,place,diff}\
+                      \ ...\n\noptional arguments:\n  -h, --help            show this\
+                      \ help message and exit\n  --version             atlas version\n\
+                      \n[sub-commands]:\n  {genotype,walk,place,diff}\n    genotype\
+                      \            genotype a sample using a probe set\n    walk \
+                      \               Walk through a graph using an existing sequence\
+                      \ probe\n                        set as seeds. default walking\
+                      \ algorithm is a depth\n                        first search\n\
+                      \    place               Place a sample on a prebuilt tree\n\
+                      \    diff                Outputs novel sequence by calculating\
+                      \ the difference\n                        between the sequence\
+                      \ and combined graph\n"
+                    generated_using: *id004
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: show this help message and exit
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: "show this help message and exit\n-k kmer, --kmer\
+                      \ kmer  kmer length (default:21)\n--tmp TMP             tmp\
+                      \ directory (default: /tmp/)\n--keep_tmp            Dont remove\
+                      \ tmp files\n--skeleton_dir SKELETON_DIR\ndirectory for skeleton\
+                      \ binaries\n--mccortex31_path MCCORTEX31_PATH\nPath to mccortex31.\
+                      \ Default mccortex31\n-t THREADS, --threads THREADS\nthreads\n\
+                      -m MEMORY, --memory MEMORY\nmemory for graph constuction\n--expected_depth\
+                      \ EXPECTED_DEPTH\nexpected depth\n-1 seq [seq ...], --seq seq\
+                      \ [seq ...]\nsequence files (fasta,fastq,bam)\n-c ctx, --ctx\
+                      \ ctx     cortex graph binary\n-q, --quiet           do not\
+                      \ output warnings to stderr\n--add                 after comparing,\
+                      \ add the new sample to the graph\n"
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: atlas diff [-h] [-k kmer] [--tmp TMP] [--keep_tmp]\n\
@@ -299,65 +1003,52 @@ subcommands:
                     \  -c ctx, --ctx ctx     cortex graph binary\n  -q, --quiet  \
                     \         do not output warnings to stderr\n  --add          \
                     \       after comparing, add the new sample to the graph\n"
-                  generated_using: &id004
-                  - --help
+                  generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id005
-                  - atlas
-                  - place
+                  command: *id005
                   positional: []
                   named:
                   - !Flag
-                    description: db_name
-                    synonyms:
-                    - --db_name
-                    args: !SimpleFlagArg
-                      name: db_name
                     optional: true
-                  - !Flag
-                    description: force
-                    synonyms:
-                    - -f
-                    - --force
-                    args: !EmptyFlagArg {}
-                    optional: true
-                  - !Flag
-                    description: do not output warnings to stderr
-                    synonyms:
-                    - -q
-                    - --quiet
-                    args: !EmptyFlagArg {}
-                    optional: true
-                  - !Flag
-                    description: tree
                     synonyms:
                     - --tree
+                    description: ''
                     args: !SimpleFlagArg
                       name: tree
-                    optional: true
                   - !Flag
-                    description: list of samples (file)
+                    optional: true
                     synonyms:
-                    - --searchable_samples
-                    args: !SimpleFlagArg
-                      name: searchable_samples
-                    optional: true
-                  - !Flag
+                    - -q
                     description: ''
-                    synonyms:
-                    - --no-cache
                     args: !EmptyFlagArg {}
+                  - !Flag
                     optional: true
+                    synonyms:
+                    - -f
+                    description: ''
+                    args: !EmptyFlagArg {}
+                  - !Flag
+                    optional: true
+                    synonyms:
+                    - --db_name
+                    description: ''
+                    args: !SimpleFlagArg
+                      name: db_name
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: show this help message and exit
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: "show this help message and exit\n--db_name db_name\
+                      \     db_name\n-f, --force           force\n-q, --quiet    \
+                      \       do not output warnings to stderr\n--tree tree      \
+                      \     tree\n--searchable_samples searchable_samples\nlist of\
+                      \ samples (file)\n--no-cache\n"
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: atlas place [-h] [--db_name db_name] [-f] [-q]\
@@ -370,192 +1061,73 @@ subcommands:
                     \         tree\n  --searchable_samples searchable_samples\n  \
                     \                      list of samples (file)\n  --no-cache\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id006
-                  - atlas
-                  - walk
+                  command: *id006
                   positional:
                   - !Positional
-                    description: sample id
+                    optional: false
                     position: 0
                     name: sample
-                    optional: false
+                    description: sample id
                   - !Positional
-                    description: probe_set
+                    optional: false
                     position: 1
                     name: probe_set
-                    optional: false
-                  - !Positional
-                    description: -m MEMORY, --memory MEMORY
-                    position: 0
-                    name: threads
-                    optional: false
+                    description: probe_set
                   named:
                   - !Flag
-                    description: kmer length (default:21)
-                    synonyms:
-                    - -k
-                    - --kmer
-                    args: !SimpleFlagArg
-                      name: kmer
                     optional: true
-                  - !Flag
-                    description: 'tmp directory (default: /tmp/)'
-                    synonyms:
-                    - --tmp
-                    args: !SimpleFlagArg
-                      name: TMP
-                    optional: true
-                  - !Flag
-                    description: Dont remove tmp files
                     synonyms:
                     - --keep_tmp
-                    args: !EmptyFlagArg {}
-                    optional: true
-                  - !Flag
-                    description: directory for skeleton binaries
-                    synonyms:
-                    - --skeleton_dir
-                    args: !SimpleFlagArg
-                      name: SKELETON_DIR
-                    optional: true
-                  - !Flag
-                    description: Path to mccortex31. Default mccortex31
-                    synonyms:
-                    - --mccortex31_path
-                    args: !SimpleFlagArg
-                      name: MCCORTEX31_PATH
-                    optional: true
-                  - !Flag
                     description: ''
-                    synonyms:
-                    - -t
-                    - --threads
-                    args: !SimpleFlagArg
-                      name: THREADS
-                    optional: true
-                  - !Flag
-                    description: expected depth
-                    synonyms:
-                    - --expected_depth
-                    args: !SimpleFlagArg
-                      name: EXPECTED_DEPTH
-                    optional: true
-                  - !Flag
-                    description: sequence files (fasta,fastq,bam)
-                    synonyms:
-                    - '-1'
-                    - --seq
-                    args: !RepeatFlagArg
-                      name: seq
-                    optional: true
-                  - !Flag
-                    description: cortex graph binary
-                    synonyms:
-                    - -c
-                    - --ctx
-                    args: !SimpleFlagArg
-                      name: ctx
-                    optional: true
-                  - !Flag
-                    description: force
-                    synonyms:
-                    - -f
-                    - --force
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: Set default for ONT data
+                    optional: true
                     synonyms:
-                    - --ont
-                    args: !EmptyFlagArg {}
-                    optional: true
-                  - !Flag
-                    description: don't include filtered genotypes
-                    synonyms:
-                    - --ignore_filtered
-                    args: !SimpleFlagArg
-                      name: IGNORE_FILTERED
-                    optional: true
-                  - !Flag
-                    description: species
-                    synonyms:
-                    - --model
-                    args: !SimpleFlagArg
-                      name: model
-                    optional: true
-                  - !Flag
-                    description: don't include filtered genotypes
-                    synonyms:
-                    - --filters
-                    args: !RepeatFlagArg
-                      name: FILTERS
-                    optional: true
-                  - !Flag
-                    description: report all calls
-                    synonyms:
-                    - --report_all_calls
-                    args: !EmptyFlagArg {}
-                    optional: true
-                  - !Flag
-                    description: "Expected sequencing error rate. Set to 0.15 for\
-                      \ ONT\ngenotyping."
-                    synonyms:
-                    - --expected_error_rate
-                    args: !SimpleFlagArg
-                      name: EXPECTED_ERROR_RATE
-                    optional: true
-                  - !Flag
-                    description: minimum genotype confidence for variant genotyping
-                    synonyms:
-                    - --min_variant_conf
-                    args: !SimpleFlagArg
-                      name: MIN_VARIANT_CONF
-                    optional: true
-                  - !Flag
-                    description: minimum genotype confidence for gene genotyping
-                    synonyms:
-                    - --min_gene_conf
-                    args: !SimpleFlagArg
-                      name: MIN_GENE_CONF
-                    optional: true
-                  - !Flag
-                    description: "all genes alleles found above this percent coverage\n\
-                      will be reported (default 100 (only best alleles\nreported))"
-                    synonyms:
-                    - --min_gene_percent_covg_threshold
-                    args: !SimpleFlagArg
-                      name: MIN_GENE_PERCENT_COVG_THRESHOLD
-                    optional: true
-                  - !Flag
-                    description: do not output warnings to stderr
-                    synonyms:
-                    - -q
-                    - --quiet
-                    args: !EmptyFlagArg {}
-                    optional: true
-                  - !Flag
+                    - --tmp
                     description: ''
-                    synonyms:
-                    - --also-genotype
-                    args: !EmptyFlagArg {}
-                    optional: true
+                    args: !SimpleFlagArg
+                      name: TMP
                   - !Flag
-                    description: ''
-                    synonyms:
-                    - --show-all-paths
-                    args: !EmptyFlagArg {}
                     optional: true
+                    synonyms:
+                    - -k
+                    description: ''
+                    args: !SimpleFlagArg
+                      name: kmer
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: show this help message and exit
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: "show this help message and exit\n-k kmer, --kmer\
+                      \ kmer  kmer length (default:21)\n--tmp TMP             tmp\
+                      \ directory (default: /tmp/)\n--keep_tmp            Dont remove\
+                      \ tmp files\n--skeleton_dir SKELETON_DIR\ndirectory for skeleton\
+                      \ binaries\n--mccortex31_path MCCORTEX31_PATH\nPath to mccortex31.\
+                      \ Default mccortex31\n-t THREADS, --threads THREADS\nthreads\n\
+                      -m MEMORY, --memory MEMORY\nmemory for graph constuction\n--expected_depth\
+                      \ EXPECTED_DEPTH\nexpected depth\n-1 seq [seq ...], --seq seq\
+                      \ [seq ...]\nsequence files (fasta,fastq,bam)\n-c ctx, --ctx\
+                      \ ctx     cortex graph binary\n-f, --force           force\n\
+                      --ont                 Set default for ONT data\n--ignore_filtered\
+                      \ IGNORE_FILTERED\ndon't include filtered genotypes\n--model\
+                      \ model         species\n--filters FILTERS [FILTERS ...]\ndon't\
+                      \ include filtered genotypes\n--report_all_calls    report all\
+                      \ calls\n--expected_error_rate EXPECTED_ERROR_RATE\nExpected\
+                      \ sequencing error rate. Set to 0.15 for ONT\ngenotyping.\n\
+                      --min_variant_conf MIN_VARIANT_CONF\nminimum genotype confidence\
+                      \ for variant genotyping\n--min_gene_conf MIN_GENE_CONF\nminimum\
+                      \ genotype confidence for gene genotyping\n--min_gene_percent_covg_threshold\
+                      \ MIN_GENE_PERCENT_COVG_THRESHOLD\nall genes alleles found above\
+                      \ this percent coverage\nwill be reported (default 100 (only\
+                      \ best alleles\nreported))\n-q, --quiet           do not output\
+                      \ warnings to stderr\n--also-genotype\n--show-all-paths\n"
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: atlas walk [-h] [-k kmer] [--tmp TMP] [--keep_tmp]\n\
@@ -602,180 +1174,73 @@ subcommands:
                     \  -q, --quiet           do not output warnings to stderr\n  --also-genotype\n\
                     \  --show-all-paths\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id007
-                  - atlas
-                  - genotype
+                  command: *id007
                   positional:
                   - !Positional
-                    description: sample id
+                    optional: false
                     position: 0
                     name: sample
-                    optional: false
+                    description: sample id
                   - !Positional
-                    description: probe_set
+                    optional: false
                     position: 1
                     name: probe_set
-                    optional: false
-                  - !Positional
-                    description: -m MEMORY, --memory MEMORY
-                    position: 0
-                    name: threads
-                    optional: false
+                    description: probe_set
                   named:
                   - !Flag
-                    description: kmer length (default:21)
-                    synonyms:
-                    - -k
-                    - --kmer
-                    args: !SimpleFlagArg
-                      name: kmer
                     optional: true
-                  - !Flag
-                    description: 'tmp directory (default: /tmp/)'
-                    synonyms:
-                    - --tmp
-                    args: !SimpleFlagArg
-                      name: TMP
-                    optional: true
-                  - !Flag
-                    description: Dont remove tmp files
                     synonyms:
                     - --keep_tmp
-                    args: !EmptyFlagArg {}
-                    optional: true
-                  - !Flag
-                    description: directory for skeleton binaries
-                    synonyms:
-                    - --skeleton_dir
-                    args: !SimpleFlagArg
-                      name: SKELETON_DIR
-                    optional: true
-                  - !Flag
-                    description: Path to mccortex31. Default mccortex31
-                    synonyms:
-                    - --mccortex31_path
-                    args: !SimpleFlagArg
-                      name: MCCORTEX31_PATH
-                    optional: true
-                  - !Flag
                     description: ''
-                    synonyms:
-                    - -t
-                    - --threads
-                    args: !SimpleFlagArg
-                      name: THREADS
-                    optional: true
-                  - !Flag
-                    description: expected depth
-                    synonyms:
-                    - --expected_depth
-                    args: !SimpleFlagArg
-                      name: EXPECTED_DEPTH
-                    optional: true
-                  - !Flag
-                    description: sequence files (fasta,fastq,bam)
-                    synonyms:
-                    - '-1'
-                    - --seq
-                    args: !RepeatFlagArg
-                      name: seq
-                    optional: true
-                  - !Flag
-                    description: cortex graph binary
-                    synonyms:
-                    - -c
-                    - --ctx
-                    args: !SimpleFlagArg
-                      name: ctx
-                    optional: true
-                  - !Flag
-                    description: force
-                    synonyms:
-                    - -f
-                    - --force
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: Set default for ONT data
-                    synonyms:
-                    - --ont
-                    args: !EmptyFlagArg {}
                     optional: true
-                  - !Flag
-                    description: don't include filtered genotypes
                     synonyms:
-                    - --ignore_filtered
+                    - --tmp
+                    description: ''
                     args: !SimpleFlagArg
-                      name: IGNORE_FILTERED
-                    optional: true
+                      name: TMP
                   - !Flag
-                    description: species
+                    optional: true
                     synonyms:
-                    - --model
+                    - -k
+                    description: ''
                     args: !SimpleFlagArg
-                      name: model
-                    optional: true
-                  - !Flag
-                    description: don't include filtered genotypes
-                    synonyms:
-                    - --filters
-                    args: !RepeatFlagArg
-                      name: FILTERS
-                    optional: true
-                  - !Flag
-                    description: report all calls
-                    synonyms:
-                    - --report_all_calls
-                    args: !EmptyFlagArg {}
-                    optional: true
-                  - !Flag
-                    description: "Expected sequencing error rate. Set to 0.15 for\
-                      \ ONT\ngenotyping."
-                    synonyms:
-                    - --expected_error_rate
-                    args: !SimpleFlagArg
-                      name: EXPECTED_ERROR_RATE
-                    optional: true
-                  - !Flag
-                    description: minimum genotype confidence for variant genotyping
-                    synonyms:
-                    - --min_variant_conf
-                    args: !SimpleFlagArg
-                      name: MIN_VARIANT_CONF
-                    optional: true
-                  - !Flag
-                    description: minimum genotype confidence for gene genotyping
-                    synonyms:
-                    - --min_gene_conf
-                    args: !SimpleFlagArg
-                      name: MIN_GENE_CONF
-                    optional: true
-                  - !Flag
-                    description: "all genes alleles found above this percent coverage\n\
-                      will be reported (default 100 (only best alleles\nreported))"
-                    synonyms:
-                    - --min_gene_percent_covg_threshold
-                    args: !SimpleFlagArg
-                      name: MIN_GENE_PERCENT_COVG_THRESHOLD
-                    optional: true
-                  - !Flag
-                    description: do not output warnings to stderr
-                    synonyms:
-                    - -q
-                    - --quiet
-                    args: !EmptyFlagArg {}
-                    optional: true
+                      name: kmer
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: show this help message and exit
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: "show this help message and exit\n-k kmer, --kmer\
+                      \ kmer  kmer length (default:21)\n--tmp TMP             tmp\
+                      \ directory (default: /tmp/)\n--keep_tmp            Dont remove\
+                      \ tmp files\n--skeleton_dir SKELETON_DIR\ndirectory for skeleton\
+                      \ binaries\n--mccortex31_path MCCORTEX31_PATH\nPath to mccortex31.\
+                      \ Default mccortex31\n-t THREADS, --threads THREADS\nthreads\n\
+                      -m MEMORY, --memory MEMORY\nmemory for graph constuction\n--expected_depth\
+                      \ EXPECTED_DEPTH\nexpected depth\n-1 seq [seq ...], --seq seq\
+                      \ [seq ...]\nsequence files (fasta,fastq,bam)\n-c ctx, --ctx\
+                      \ ctx     cortex graph binary\n-f, --force           force\n\
+                      --ont                 Set default for ONT data\n--ignore_filtered\
+                      \ IGNORE_FILTERED\ndon't include filtered genotypes\n--model\
+                      \ model         species\n--filters FILTERS [FILTERS ...]\ndon't\
+                      \ include filtered genotypes\n--report_all_calls    report all\
+                      \ calls\n--expected_error_rate EXPECTED_ERROR_RATE\nExpected\
+                      \ sequencing error rate. Set to 0.15 for ONT\ngenotyping.\n\
+                      --min_variant_conf MIN_VARIANT_CONF\nminimum genotype confidence\
+                      \ for variant genotyping\n--min_gene_conf MIN_GENE_CONF\nminimum\
+                      \ genotype confidence for gene genotyping\n--min_gene_percent_covg_threshold\
+                      \ MIN_GENE_PERCENT_COVG_THRESHOLD\nall genes alleles found above\
+                      \ this percent coverage\nwill be reported (default 100 (only\
+                      \ best alleles\nreported))\n-q, --quiet           do not output\
+                      \ warnings to stderr\n"
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: atlas genotype [-h] [-k kmer] [--tmp TMP] [--keep_tmp]\n\
@@ -821,21 +1286,11 @@ subcommands:
                     \ 100 (only best alleles\n                        reported))\n\
                     \  -q, --quiet           do not output warnings to stderr\n"
                   generated_using: *id004
+                  docker_image:
                 usage: []
-                help_flag: !Flag
-                  description: show this help message and exit
-                  synonyms:
-                  - -h
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
+                help_flag:
                 usage_flag:
-                version_flag: !Flag
-                  description: atlas version
-                  synonyms:
-                  - --version
-                  args: !EmptyFlagArg {}
-                  optional: true
+                version_flag:
                 help_text: "usage: atlas [-h] [--version] {genotype,walk,place,diff}\
                   \ ...\n\noptional arguments:\n  -h, --help            show this\
                   \ help message and exit\n  --version             atlas version\n\
@@ -848,9 +1303,14 @@ subcommands:
                   \          Outputs novel sequence by calculating the difference\n\
                   \                        between the sequence and combined graph\n"
                 generated_using: *id004
+                docker_image:
               subcommands: []
               usage: []
               help_flag: !Flag
+                optional: true
+                synonyms:
+                - -h
+                - --help
                 description: "show this help message and exit\n-k kmer, --kmer kmer\
                   \  kmer length (default:21)\n--tmp TMP             tmp directory\
                   \ (default: /tmp/)\n--keep_tmp            Dont remove tmp files\n\
@@ -862,11 +1322,7 @@ subcommands:
                   -c ctx, --ctx ctx     cortex graph binary\n-q, --quiet         \
                   \  do not output warnings to stderr\n--add                 after\
                   \ comparing, add the new sample to the graph\n"
-                synonyms:
-                - -h
-                - --help
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: atlas diff [-h] [-k kmer] [--tmp TMP] [--keep_tmp]\n\
@@ -891,50 +1347,51 @@ subcommands:
                 \     do not output warnings to stderr\n  --add                 after\
                 \ comparing, add the new sample to the graph\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id005
               positional: []
               named:
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - --tree
+                description: ''
                 args: !SimpleFlagArg
                   name: tree
-                optional: true
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - -q
-                args: !EmptyFlagArg {}
-                optional: true
-              - !Flag
                 description: ''
+                args: !EmptyFlagArg {}
+              - !Flag
+                optional: true
                 synonyms:
                 - -f
-                args: !EmptyFlagArg {}
-                optional: true
-              - !Flag
                 description: ''
+                args: !EmptyFlagArg {}
+              - !Flag
+                optional: true
                 synonyms:
                 - --db_name
+                description: ''
                 args: !SimpleFlagArg
                   name: db_name
-                optional: true
-              parent: *id003
+              parent: *id008
               subcommands: []
               usage: []
               help_flag: !Flag
+                optional: true
+                synonyms:
+                - -h
+                - --help
                 description: "show this help message and exit\n--db_name db_name \
                   \    db_name\n-f, --force           force\n-q, --quiet         \
                   \  do not output warnings to stderr\n--tree tree           tree\n\
                   --searchable_samples searchable_samples\nlist of samples (file)\n\
                   --no-cache\n"
-                synonyms:
-                - -h
-                - --help
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: atlas place [-h] [--db_name db_name] [-f] [-q] [--tree\
@@ -947,44 +1404,49 @@ subcommands:
                 \  --searchable_samples searchable_samples\n                     \
                 \   list of samples (file)\n  --no-cache\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id006
               positional:
               - !Positional
-                description: sample id
+                optional: false
                 position: 0
                 name: sample
-                optional: false
+                description: sample id
               - !Positional
-                description: probe_set
+                optional: false
                 position: 1
                 name: probe_set
-                optional: false
+                description: probe_set
               named:
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - --keep_tmp
-                args: !EmptyFlagArg {}
-                optional: true
-              - !Flag
                 description: ''
+                args: !EmptyFlagArg {}
+              - !Flag
+                optional: true
                 synonyms:
                 - --tmp
+                description: ''
                 args: !SimpleFlagArg
                   name: TMP
-                optional: true
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - -k
+                description: ''
                 args: !SimpleFlagArg
                   name: kmer
-                optional: true
-              parent: *id003
+              parent: *id008
               subcommands: []
               usage: []
               help_flag: !Flag
+                optional: true
+                synonyms:
+                - -h
+                - --help
                 description: "show this help message and exit\n-k kmer, --kmer kmer\
                   \  kmer length (default:21)\n--tmp TMP             tmp directory\
                   \ (default: /tmp/)\n--keep_tmp            Dont remove tmp files\n\
@@ -1006,11 +1468,7 @@ subcommands:
                   \ this percent coverage\nwill be reported (default 100 (only best\
                   \ alleles\nreported))\n-q, --quiet           do not output warnings\
                   \ to stderr\n--also-genotype\n--show-all-paths\n"
-                synonyms:
-                - -h
-                - --help
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: atlas walk [-h] [-k kmer] [--tmp TMP] [--keep_tmp]\n\
@@ -1055,44 +1513,49 @@ subcommands:
                 \           do not output warnings to stderr\n  --also-genotype\n\
                 \  --show-all-paths\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id007
               positional:
               - !Positional
-                description: sample id
+                optional: false
                 position: 0
                 name: sample
-                optional: false
+                description: sample id
               - !Positional
-                description: probe_set
+                optional: false
                 position: 1
                 name: probe_set
-                optional: false
+                description: probe_set
               named:
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - --keep_tmp
-                args: !EmptyFlagArg {}
-                optional: true
-              - !Flag
                 description: ''
+                args: !EmptyFlagArg {}
+              - !Flag
+                optional: true
                 synonyms:
                 - --tmp
+                description: ''
                 args: !SimpleFlagArg
                   name: TMP
-                optional: true
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - -k
+                description: ''
                 args: !SimpleFlagArg
                   name: kmer
-                optional: true
-              parent: *id003
+              parent: *id008
               subcommands: []
               usage: []
               help_flag: !Flag
+                optional: true
+                synonyms:
+                - -h
+                - --help
                 description: "show this help message and exit\n-k kmer, --kmer kmer\
                   \  kmer length (default:21)\n--tmp TMP             tmp directory\
                   \ (default: /tmp/)\n--keep_tmp            Dont remove tmp files\n\
@@ -1114,11 +1577,7 @@ subcommands:
                   \ this percent coverage\nwill be reported (default 100 (only best\
                   \ alleles\nreported))\n-q, --quiet           do not output warnings\
                   \ to stderr\n"
-                synonyms:
-                - -h
-                - --help
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: atlas genotype [-h] [-k kmer] [--tmp TMP] [--keep_tmp]\n\
@@ -1163,6 +1622,7 @@ subcommands:
                 \ (only best alleles\n                        reported))\n  -q, --quiet\
                 \           do not output warnings to stderr\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -1178,9 +1638,14 @@ subcommands:
               \    diff                Outputs novel sequence by calculating the difference\n\
               \                        between the sequence and combined graph\n"
             generated_using: *id004
+            docker_image:
           subcommands: []
           usage: []
           help_flag: !Flag
+            optional: true
+            synonyms:
+            - -h
+            - --help
             description: "show this help message and exit\n-k kmer, --kmer kmer  kmer\
               \ length (default:21)\n--tmp TMP             tmp directory (default:\
               \ /tmp/)\n--keep_tmp            Dont remove tmp files\n--skeleton_dir\
@@ -1192,11 +1657,7 @@ subcommands:
               \     cortex graph binary\n-q, --quiet           do not output warnings\
               \ to stderr\n--add                 after comparing, add the new sample\
               \ to the graph\n"
-            synonyms:
-            - -h
-            - --help
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: atlas diff [-h] [-k kmer] [--tmp TMP] [--keep_tmp]\n\
@@ -1220,49 +1681,50 @@ subcommands:
             \ do not output warnings to stderr\n  --add                 after comparing,\
             \ add the new sample to the graph\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id005
           positional: []
           named:
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - --tree
+            description: ''
             args: !SimpleFlagArg
               name: tree
-            optional: true
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - -q
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
             description: ''
+            args: !EmptyFlagArg {}
+          - !Flag
+            optional: true
             synonyms:
             - -f
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
             description: ''
+            args: !EmptyFlagArg {}
+          - !Flag
+            optional: true
             synonyms:
             - --db_name
+            description: ''
             args: !SimpleFlagArg
               name: db_name
-            optional: true
-          parent: *id008
+          parent: *id009
           subcommands: []
           usage: []
           help_flag: !Flag
+            optional: true
+            synonyms:
+            - -h
+            - --help
             description: "show this help message and exit\n--db_name db_name     db_name\n\
               -f, --force           force\n-q, --quiet           do not output warnings\
               \ to stderr\n--tree tree           tree\n--searchable_samples searchable_samples\n\
               list of samples (file)\n--no-cache\n"
-            synonyms:
-            - -h
-            - --help
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: atlas place [-h] [--db_name db_name] [-f] [-q] [--tree\
@@ -1275,44 +1737,49 @@ subcommands:
             \ searchable_samples\n                        list of samples (file)\n\
             \  --no-cache\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id006
           positional:
           - !Positional
-            description: sample id
+            optional: false
             position: 0
             name: sample
-            optional: false
+            description: sample id
           - !Positional
-            description: probe_set
+            optional: false
             position: 1
             name: probe_set
-            optional: false
+            description: probe_set
           named:
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - --keep_tmp
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
             description: ''
+            args: !EmptyFlagArg {}
+          - !Flag
+            optional: true
             synonyms:
             - --tmp
+            description: ''
             args: !SimpleFlagArg
               name: TMP
-            optional: true
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - -k
+            description: ''
             args: !SimpleFlagArg
               name: kmer
-            optional: true
-          parent: *id008
+          parent: *id009
           subcommands: []
           usage: []
           help_flag: !Flag
+            optional: true
+            synonyms:
+            - -h
+            - --help
             description: "show this help message and exit\n-k kmer, --kmer kmer  kmer\
               \ length (default:21)\n--tmp TMP             tmp directory (default:\
               \ /tmp/)\n--keep_tmp            Dont remove tmp files\n--skeleton_dir\
@@ -1333,11 +1800,7 @@ subcommands:
               all genes alleles found above this percent coverage\nwill be reported\
               \ (default 100 (only best alleles\nreported))\n-q, --quiet         \
               \  do not output warnings to stderr\n--also-genotype\n--show-all-paths\n"
-            synonyms:
-            - -h
-            - --help
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: atlas walk [-h] [-k kmer] [--tmp TMP] [--keep_tmp]\n\
@@ -1380,44 +1843,49 @@ subcommands:
             \  -q, --quiet           do not output warnings to stderr\n  --also-genotype\n\
             \  --show-all-paths\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id007
           positional:
           - !Positional
-            description: sample id
+            optional: false
             position: 0
             name: sample
-            optional: false
+            description: sample id
           - !Positional
-            description: probe_set
+            optional: false
             position: 1
             name: probe_set
-            optional: false
+            description: probe_set
           named:
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - --keep_tmp
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
             description: ''
+            args: !EmptyFlagArg {}
+          - !Flag
+            optional: true
             synonyms:
             - --tmp
+            description: ''
             args: !SimpleFlagArg
               name: TMP
-            optional: true
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - -k
+            description: ''
             args: !SimpleFlagArg
               name: kmer
-            optional: true
-          parent: *id008
+          parent: *id009
           subcommands: []
           usage: []
           help_flag: !Flag
+            optional: true
+            synonyms:
+            - -h
+            - --help
             description: "show this help message and exit\n-k kmer, --kmer kmer  kmer\
               \ length (default:21)\n--tmp TMP             tmp directory (default:\
               \ /tmp/)\n--keep_tmp            Dont remove tmp files\n--skeleton_dir\
@@ -1438,11 +1906,7 @@ subcommands:
               all genes alleles found above this percent coverage\nwill be reported\
               \ (default 100 (only best alleles\nreported))\n-q, --quiet         \
               \  do not output warnings to stderr\n"
-            synonyms:
-            - -h
-            - --help
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: atlas genotype [-h] [-k kmer] [--tmp TMP] [--keep_tmp]\n\
@@ -1485,6 +1949,7 @@ subcommands:
             \ (default 100 (only best alleles\n                        reported))\n\
             \  -q, --quiet           do not output warnings to stderr\n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -1500,9 +1965,14 @@ subcommands:
           \ calculating the difference\n                        between the sequence\
           \ and combined graph\n"
         generated_using: *id004
+        docker_image:
       subcommands: []
       usage: []
       help_flag: !Flag
+        optional: true
+        synonyms:
+        - -h
+        - --help
         description: "show this help message and exit\n-k kmer, --kmer kmer  kmer\
           \ length (default:21)\n--tmp TMP             tmp directory (default: /tmp/)\n\
           --keep_tmp            Dont remove tmp files\n--skeleton_dir SKELETON_DIR\n\
@@ -1513,11 +1983,7 @@ subcommands:
           sequence files (fasta,fastq,bam)\n-c ctx, --ctx ctx     cortex graph binary\n\
           -q, --quiet           do not output warnings to stderr\n--add          \
           \       after comparing, add the new sample to the graph\n"
-        synonyms:
-        - -h
-        - --help
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: atlas diff [-h] [-k kmer] [--tmp TMP] [--keep_tmp]\n    \
@@ -1540,49 +2006,50 @@ subcommands:
         \ output warnings to stderr\n  --add                 after comparing, add\
         \ the new sample to the graph\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id005
       positional: []
       named:
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - --tree
+        description: ''
         args: !SimpleFlagArg
           name: tree
-        optional: true
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - -q
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
         description: ''
+        args: !EmptyFlagArg {}
+      - !Flag
+        optional: true
         synonyms:
         - -f
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
         description: ''
+        args: !EmptyFlagArg {}
+      - !Flag
+        optional: true
         synonyms:
         - --db_name
+        description: ''
         args: !SimpleFlagArg
           name: db_name
-        optional: true
-      parent: *id009
+      parent: *id010
       subcommands: []
       usage: []
       help_flag: !Flag
+        optional: true
+        synonyms:
+        - -h
+        - --help
         description: "show this help message and exit\n--db_name db_name     db_name\n\
           -f, --force           force\n-q, --quiet           do not output warnings\
           \ to stderr\n--tree tree           tree\n--searchable_samples searchable_samples\n\
           list of samples (file)\n--no-cache\n"
-        synonyms:
-        - -h
-        - --help
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: atlas place [-h] [--db_name db_name] [-f] [-q] [--tree tree]\n\
@@ -1594,44 +2061,49 @@ subcommands:
         \ tree           tree\n  --searchable_samples searchable_samples\n       \
         \                 list of samples (file)\n  --no-cache\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id006
       positional:
       - !Positional
-        description: sample id
+        optional: false
         position: 0
         name: sample
-        optional: false
+        description: sample id
       - !Positional
-        description: probe_set
+        optional: false
         position: 1
         name: probe_set
-        optional: false
+        description: probe_set
       named:
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - --keep_tmp
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
         description: ''
+        args: !EmptyFlagArg {}
+      - !Flag
+        optional: true
         synonyms:
         - --tmp
+        description: ''
         args: !SimpleFlagArg
           name: TMP
-        optional: true
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - -k
+        description: ''
         args: !SimpleFlagArg
           name: kmer
-        optional: true
-      parent: *id009
+      parent: *id010
       subcommands: []
       usage: []
       help_flag: !Flag
+        optional: true
+        synonyms:
+        - -h
+        - --help
         description: "show this help message and exit\n-k kmer, --kmer kmer  kmer\
           \ length (default:21)\n--tmp TMP             tmp directory (default: /tmp/)\n\
           --keep_tmp            Dont remove tmp files\n--skeleton_dir SKELETON_DIR\n\
@@ -1651,11 +2123,7 @@ subcommands:
           all genes alleles found above this percent coverage\nwill be reported (default\
           \ 100 (only best alleles\nreported))\n-q, --quiet           do not output\
           \ warnings to stderr\n--also-genotype\n--show-all-paths\n"
-        synonyms:
-        - -h
-        - --help
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: atlas walk [-h] [-k kmer] [--tmp TMP] [--keep_tmp]\n    \
@@ -1696,44 +2164,49 @@ subcommands:
         \                        reported))\n  -q, --quiet           do not output\
         \ warnings to stderr\n  --also-genotype\n  --show-all-paths\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id007
       positional:
       - !Positional
-        description: sample id
+        optional: false
         position: 0
         name: sample
-        optional: false
+        description: sample id
       - !Positional
-        description: probe_set
+        optional: false
         position: 1
         name: probe_set
-        optional: false
+        description: probe_set
       named:
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - --keep_tmp
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
         description: ''
+        args: !EmptyFlagArg {}
+      - !Flag
+        optional: true
         synonyms:
         - --tmp
+        description: ''
         args: !SimpleFlagArg
           name: TMP
-        optional: true
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - -k
+        description: ''
         args: !SimpleFlagArg
           name: kmer
-        optional: true
-      parent: *id009
+      parent: *id010
       subcommands: []
       usage: []
       help_flag: !Flag
+        optional: true
+        synonyms:
+        - -h
+        - --help
         description: "show this help message and exit\n-k kmer, --kmer kmer  kmer\
           \ length (default:21)\n--tmp TMP             tmp directory (default: /tmp/)\n\
           --keep_tmp            Dont remove tmp files\n--skeleton_dir SKELETON_DIR\n\
@@ -1753,11 +2226,7 @@ subcommands:
           all genes alleles found above this percent coverage\nwill be reported (default\
           \ 100 (only best alleles\nreported))\n-q, --quiet           do not output\
           \ warnings to stderr\n"
-        synonyms:
-        - -h
-        - --help
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: atlas genotype [-h] [-k kmer] [--tmp TMP] [--keep_tmp]\n\
@@ -1798,6 +2267,7 @@ subcommands:
         \                        reported))\n  -q, --quiet           do not output\
         \ warnings to stderr\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -1813,24 +2283,16 @@ subcommands:
       \ the difference\n                        between the sequence and combined\
       \ graph\n"
     generated_using: *id004
+    docker_image:
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: "show this help message and exit\n-k kmer, --kmer kmer  kmer length\
-      \ (default:21)\n--tmp TMP             tmp directory (default: /tmp/)\n--keep_tmp\
-      \            Dont remove tmp files\n--skeleton_dir SKELETON_DIR\ndirectory for\
-      \ skeleton binaries\n--mccortex31_path MCCORTEX31_PATH\nPath to mccortex31.\
-      \ Default mccortex31\n-t THREADS, --threads THREADS\nthreads\n-m MEMORY, --memory\
-      \ MEMORY\nmemory for graph constuction\n--expected_depth EXPECTED_DEPTH\nexpected\
-      \ depth\n-1 seq [seq ...], --seq seq [seq ...]\nsequence files (fasta,fastq,bam)\n\
-      -c ctx, --ctx ctx     cortex graph binary\n-q, --quiet           do not output\
-      \ warnings to stderr\n--add                 after comparing, add the new sample\
-      \ to the graph\n"
+    optional: true
     synonyms:
     - -h
     - --help
+    description: show this help message and exit
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: atlas diff [-h] [-k kmer] [--tmp TMP] [--keep_tmp]\n        \
@@ -1852,49 +2314,56 @@ subcommands:
     \    cortex graph binary\n  -q, --quiet           do not output warnings to stderr\n\
     \  --add                 after comparing, add the new sample to the graph\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id005
   positional: []
   named:
   - !Flag
-    description: ''
-    synonyms:
-    - --tree
-    args: !SimpleFlagArg
-      name: tree
     optional: true
-  - !Flag
-    description: ''
-    synonyms:
-    - -q
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: ''
-    synonyms:
-    - -f
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: ''
     synonyms:
     - --db_name
+    description: db_name
     args: !SimpleFlagArg
       name: db_name
+  - !Flag
     optional: true
-  parent: *id010
+    synonyms:
+    - -f
+    - --force
+    description: force
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    - --quiet
+    description: do not output warnings to stderr
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --tree
+    description: tree
+    args: !SimpleFlagArg
+      name: tree
+  - !Flag
+    optional: true
+    synonyms:
+    - --searchable_samples
+    description: list of samples (file)
+    args: !SimpleFlagArg
+      name: searchable_samples
+  parent: *id011
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: "show this help message and exit\n--db_name db_name     db_name\n\
-      -f, --force           force\n-q, --quiet           do not output warnings to\
-      \ stderr\n--tree tree           tree\n--searchable_samples searchable_samples\n\
-      list of samples (file)\n--no-cache\n"
+    optional: true
     synonyms:
     - -h
     - --help
+    description: show this help message and exit
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: atlas place [-h] [--db_name db_name] [-f] [-q] [--tree tree]\n\
@@ -1906,67 +2375,165 @@ subcommands:
     \ tree\n  --searchable_samples searchable_samples\n                        list\
     \ of samples (file)\n  --no-cache\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id006
   positional:
   - !Positional
-    description: sample id
+    optional: false
     position: 0
     name: sample
-    optional: false
+    description: sample id
   - !Positional
-    description: probe_set
-    position: 1
-    name: probe_set
     optional: false
+    position: 0
+    name: threads
+    description: -m MEMORY, --memory MEMORY
   named:
   - !Flag
-    description: ''
-    synonyms:
-    - --keep_tmp
-    args: !EmptyFlagArg {}
     optional: true
-  - !Flag
-    description: ''
-    synonyms:
-    - --tmp
-    args: !SimpleFlagArg
-      name: TMP
-    optional: true
-  - !Flag
-    description: ''
     synonyms:
     - -k
+    - --kmer
+    description: kmer length (default:21)
     args: !SimpleFlagArg
       name: kmer
+  - !Flag
     optional: true
-  parent: *id010
+    synonyms:
+    - --tmp
+    description: 'tmp directory (default: /tmp/)'
+    args: !SimpleFlagArg
+      name: TMP
+  - !Flag
+    optional: true
+    synonyms:
+    - --keep_tmp
+    description: Dont remove tmp files
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --skeleton_dir
+    description: directory for skeleton binaries
+    args: !SimpleFlagArg
+      name: SKELETON_DIR
+  - !Flag
+    optional: true
+    synonyms:
+    - --mccortex31_path
+    description: Path to mccortex31. Default mccortex31
+    args: !SimpleFlagArg
+      name: MCCORTEX31_PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - --expected_depth
+    description: expected depth
+    args: !SimpleFlagArg
+      name: EXPECTED_DEPTH
+  - !Flag
+    optional: true
+    synonyms:
+    - '-1'
+    - --seq
+    description: sequence files (fasta,fastq,bam)
+    args: !RepeatFlagArg
+      name: seq
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --ctx
+    description: cortex graph binary
+    args: !SimpleFlagArg
+      name: ctx
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --force
+    description: force
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --ont
+    description: Set default for ONT data
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --ignore_filtered
+    description: don't include filtered genotypes
+    args: !SimpleFlagArg
+      name: IGNORE_FILTERED
+  - !Flag
+    optional: true
+    synonyms:
+    - --model
+    description: species
+    args: !SimpleFlagArg
+      name: model
+  - !Flag
+    optional: true
+    synonyms:
+    - --filters
+    description: don't include filtered genotypes
+    args: !RepeatFlagArg
+      name: FILTERS
+  - !Flag
+    optional: true
+    synonyms:
+    - --report_all_calls
+    description: report all calls
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --expected_error_rate
+    description: "Expected sequencing error rate. Set to 0.15 for ONT\ngenotyping."
+    args: !SimpleFlagArg
+      name: EXPECTED_ERROR_RATE
+  - !Flag
+    optional: true
+    synonyms:
+    - --min_variant_conf
+    description: minimum genotype confidence for variant genotyping
+    args: !SimpleFlagArg
+      name: MIN_VARIANT_CONF
+  - !Flag
+    optional: true
+    synonyms:
+    - --min_gene_conf
+    description: minimum genotype confidence for gene genotyping
+    args: !SimpleFlagArg
+      name: MIN_GENE_CONF
+  - !Flag
+    optional: true
+    synonyms:
+    - --min_gene_percent_covg_threshold
+    description: "all genes alleles found above this percent coverage\nwill be reported\
+      \ (default 100 (only best alleles\nreported))"
+    args: !SimpleFlagArg
+      name: MIN_GENE_PERCENT_COVG_THRESHOLD
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    - --quiet
+    description: do not output warnings to stderr
+    args: !EmptyFlagArg {}
+  parent: *id011
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: "show this help message and exit\n-k kmer, --kmer kmer  kmer length\
-      \ (default:21)\n--tmp TMP             tmp directory (default: /tmp/)\n--keep_tmp\
-      \            Dont remove tmp files\n--skeleton_dir SKELETON_DIR\ndirectory for\
-      \ skeleton binaries\n--mccortex31_path MCCORTEX31_PATH\nPath to mccortex31.\
-      \ Default mccortex31\n-t THREADS, --threads THREADS\nthreads\n-m MEMORY, --memory\
-      \ MEMORY\nmemory for graph constuction\n--expected_depth EXPECTED_DEPTH\nexpected\
-      \ depth\n-1 seq [seq ...], --seq seq [seq ...]\nsequence files (fasta,fastq,bam)\n\
-      -c ctx, --ctx ctx     cortex graph binary\n-f, --force           force\n--ont\
-      \                 Set default for ONT data\n--ignore_filtered IGNORE_FILTERED\n\
-      don't include filtered genotypes\n--model model         species\n--filters FILTERS\
-      \ [FILTERS ...]\ndon't include filtered genotypes\n--report_all_calls    report\
-      \ all calls\n--expected_error_rate EXPECTED_ERROR_RATE\nExpected sequencing\
-      \ error rate. Set to 0.15 for ONT\ngenotyping.\n--min_variant_conf MIN_VARIANT_CONF\n\
-      minimum genotype confidence for variant genotyping\n--min_gene_conf MIN_GENE_CONF\n\
-      minimum genotype confidence for gene genotyping\n--min_gene_percent_covg_threshold\
-      \ MIN_GENE_PERCENT_COVG_THRESHOLD\nall genes alleles found above this percent\
-      \ coverage\nwill be reported (default 100 (only best alleles\nreported))\n-q,\
-      \ --quiet           do not output warnings to stderr\n--also-genotype\n--show-all-paths\n"
+    optional: true
     synonyms:
     - -h
     - --help
+    description: show this help message and exit
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: atlas walk [-h] [-k kmer] [--tmp TMP] [--keep_tmp]\n        \
@@ -2005,67 +2572,165 @@ subcommands:
     \ 100 (only best alleles\n                        reported))\n  -q, --quiet  \
     \         do not output warnings to stderr\n  --also-genotype\n  --show-all-paths\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id007
   positional:
   - !Positional
-    description: sample id
+    optional: false
     position: 0
     name: sample
-    optional: false
+    description: sample id
   - !Positional
-    description: probe_set
-    position: 1
-    name: probe_set
     optional: false
+    position: 0
+    name: threads
+    description: -m MEMORY, --memory MEMORY
   named:
   - !Flag
-    description: ''
-    synonyms:
-    - --keep_tmp
-    args: !EmptyFlagArg {}
     optional: true
-  - !Flag
-    description: ''
-    synonyms:
-    - --tmp
-    args: !SimpleFlagArg
-      name: TMP
-    optional: true
-  - !Flag
-    description: ''
     synonyms:
     - -k
+    - --kmer
+    description: kmer length (default:21)
     args: !SimpleFlagArg
       name: kmer
+  - !Flag
     optional: true
-  parent: *id010
+    synonyms:
+    - --tmp
+    description: 'tmp directory (default: /tmp/)'
+    args: !SimpleFlagArg
+      name: TMP
+  - !Flag
+    optional: true
+    synonyms:
+    - --keep_tmp
+    description: Dont remove tmp files
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --skeleton_dir
+    description: directory for skeleton binaries
+    args: !SimpleFlagArg
+      name: SKELETON_DIR
+  - !Flag
+    optional: true
+    synonyms:
+    - --mccortex31_path
+    description: Path to mccortex31. Default mccortex31
+    args: !SimpleFlagArg
+      name: MCCORTEX31_PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - --expected_depth
+    description: expected depth
+    args: !SimpleFlagArg
+      name: EXPECTED_DEPTH
+  - !Flag
+    optional: true
+    synonyms:
+    - '-1'
+    - --seq
+    description: sequence files (fasta,fastq,bam)
+    args: !RepeatFlagArg
+      name: seq
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --ctx
+    description: cortex graph binary
+    args: !SimpleFlagArg
+      name: ctx
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --force
+    description: force
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --ont
+    description: Set default for ONT data
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --ignore_filtered
+    description: don't include filtered genotypes
+    args: !SimpleFlagArg
+      name: IGNORE_FILTERED
+  - !Flag
+    optional: true
+    synonyms:
+    - --model
+    description: species
+    args: !SimpleFlagArg
+      name: model
+  - !Flag
+    optional: true
+    synonyms:
+    - --filters
+    description: don't include filtered genotypes
+    args: !RepeatFlagArg
+      name: FILTERS
+  - !Flag
+    optional: true
+    synonyms:
+    - --report_all_calls
+    description: report all calls
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --expected_error_rate
+    description: "Expected sequencing error rate. Set to 0.15 for ONT\ngenotyping."
+    args: !SimpleFlagArg
+      name: EXPECTED_ERROR_RATE
+  - !Flag
+    optional: true
+    synonyms:
+    - --min_variant_conf
+    description: minimum genotype confidence for variant genotyping
+    args: !SimpleFlagArg
+      name: MIN_VARIANT_CONF
+  - !Flag
+    optional: true
+    synonyms:
+    - --min_gene_conf
+    description: minimum genotype confidence for gene genotyping
+    args: !SimpleFlagArg
+      name: MIN_GENE_CONF
+  - !Flag
+    optional: true
+    synonyms:
+    - --min_gene_percent_covg_threshold
+    description: "all genes alleles found above this percent coverage\nwill be reported\
+      \ (default 100 (only best alleles\nreported))"
+    args: !SimpleFlagArg
+      name: MIN_GENE_PERCENT_COVG_THRESHOLD
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    - --quiet
+    description: do not output warnings to stderr
+    args: !EmptyFlagArg {}
+  parent: *id011
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: "show this help message and exit\n-k kmer, --kmer kmer  kmer length\
-      \ (default:21)\n--tmp TMP             tmp directory (default: /tmp/)\n--keep_tmp\
-      \            Dont remove tmp files\n--skeleton_dir SKELETON_DIR\ndirectory for\
-      \ skeleton binaries\n--mccortex31_path MCCORTEX31_PATH\nPath to mccortex31.\
-      \ Default mccortex31\n-t THREADS, --threads THREADS\nthreads\n-m MEMORY, --memory\
-      \ MEMORY\nmemory for graph constuction\n--expected_depth EXPECTED_DEPTH\nexpected\
-      \ depth\n-1 seq [seq ...], --seq seq [seq ...]\nsequence files (fasta,fastq,bam)\n\
-      -c ctx, --ctx ctx     cortex graph binary\n-f, --force           force\n--ont\
-      \                 Set default for ONT data\n--ignore_filtered IGNORE_FILTERED\n\
-      don't include filtered genotypes\n--model model         species\n--filters FILTERS\
-      \ [FILTERS ...]\ndon't include filtered genotypes\n--report_all_calls    report\
-      \ all calls\n--expected_error_rate EXPECTED_ERROR_RATE\nExpected sequencing\
-      \ error rate. Set to 0.15 for ONT\ngenotyping.\n--min_variant_conf MIN_VARIANT_CONF\n\
-      minimum genotype confidence for variant genotyping\n--min_gene_conf MIN_GENE_CONF\n\
-      minimum genotype confidence for gene genotyping\n--min_gene_percent_covg_threshold\
-      \ MIN_GENE_PERCENT_COVG_THRESHOLD\nall genes alleles found above this percent\
-      \ coverage\nwill be reported (default 100 (only best alleles\nreported))\n-q,\
-      \ --quiet           do not output warnings to stderr\n"
+    optional: true
     synonyms:
     - -h
     - --help
+    description: show this help message and exit
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: atlas genotype [-h] [-k kmer] [--tmp TMP] [--keep_tmp]\n    \
@@ -2104,6 +2769,7 @@ subcommands:
     \ 100 (only best alleles\n                        reported))\n  -q, --quiet  \
     \         do not output warnings to stderr\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -2118,3 +2784,4 @@ help_text: "usage: atlas [-h] [--version] {genotype,walk,place,diff} ...\n\nopti
   \    diff                Outputs novel sequence by calculating the difference\n\
   \                        between the sequence and combined graph\n"
 generated_using: *id004
+docker_image:

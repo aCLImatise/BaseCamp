@@ -4,6 +4,9 @@ task Selscan {
   command <<<
     selscan
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

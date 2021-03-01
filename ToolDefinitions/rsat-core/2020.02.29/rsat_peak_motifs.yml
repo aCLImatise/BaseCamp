@@ -4,102 +4,70 @@ command:
 - peak-motifs
 positional:
 - !Positional
-  description: "\e[1mVERSION\e[0m"
+  optional: false
   position: 0
   name: peak-motifs
-  optional: false
+  description: "\e[1mVERSION\e[0m"
 - !Positional
-  description: Matthieu Defrance <defrance@ccg.unam.mx>
+  optional: false
   position: 0
   name: testing.
-  optional: false
+  description: Matthieu Defrance <defrance@ccg.unam.mx>
 - !Positional
-  description: "\e[1mOUTPUT FORMAT\e[0m"
+  optional: false
   position: 0
   name: supported.
-  optional: false
+  description: "\e[1mOUTPUT FORMAT\e[0m"
 - !Positional
-  description: The 4th column of the BED file must correspond to the fasta headers.
+  optional: false
   position: 0
   name: track.
-  optional: false
+  description: The 4th column of the BED file must correspond to the fasta headers.
 - !Positional
-  description: The file should be sufficiently large (several Mb) to provide a
+  optional: false
   position: 0
   name: motifs.
-  optional: false
+  description: The file should be sufficiently large (several Mb) to provide a
 - !Positional
-  description: "\e[1m-disco"
+  optional: false
   position: 0
   name: server.
-  optional: false
+  description: "\e[1m-disco"
 - !Positional
-  description: "When the option \e[33m-no_merge_lengths\e[0m is active, matrices are\
-    \ built"
+  optional: false
+  position: 0
+  name: tasks.
+  description: "\e[33msynthesis\e[0m"
+- !Positional
+  optional: false
   position: 0
   name: motifs.
-  optional: false
+  description: "When the option \e[33m-no_merge_lengths\e[0m is active, matrices are\
+    \ built"
 - !Positional
-  description: "\e[33mmatrix-quality\e[0m"
+  optional: false
   position: 0
   name: 1578-88.
-  optional: false
+  description: "\e[33mmatrix-quality\e[0m"
 - !Positional
-  description: If included by default, they can take a lot of disk space for large
+  optional: false
   position: 0
   name: PSSM.
-  optional: false
+  description: If included by default, they can take a lot of disk space for large
 named:
 - !Flag
-  description: "or by entering a comma-separated list of algorithms:\n-disco oligos,dyads\n\
-    \e[1mDefault motif discovery algorithms\e[0m\n\e[33moligos\e[0m\nRun \e[33moligo-analysis\e\
-    [0m to detect over-represented oligonucleotides\nof a given length (k, specified\
-    \ with option -l) in the test set\n(van Helden et al., 1998). Prior frequencies\
-    \ of oligonucleotides\nare taken from Markov model of order m (see option -markov)\n\
-    estimated from the test set sequences themselves.\n\e[33mdyads\e[0m\nRun \e[33mdyad-analysis\e\
-    [0m to detect over-represented dyads, i.e. pairs\nof short oligonucleotides (monads)\
-    \ spaced by a region of fixed\nwidth but variable content (van Helden et al.,\
-    \ 2000). Spaced\nmotifs are typical of certain classes of transcription factors\n\
-    forming homo- or heterodimers.\nBy default, peak-motifs analyzes pairs of trinucleotides\
-    \ with\nany spacing between 0 and 20.\nThe expected frequency of each dyad is\
-    \ estimated as the product\nof its monad frequencies in the sequences (option\
-    \ -bg monads of\ndyad-analysis).\n\e[33mpositions\e[0m\nRun \e[33mposition-analysis\e\
-    [0m to detect oligonucleotides showing a\npositional bias, i.e. have a non-homogeneous\
-    \ distribution in the\npeak sequence set.\nThis method was initially developed\
-    \ to analyze termination and\npoly-adenylation signals in downstream sequences\
-    \ (van Helden et\nal., 2001), and it turns out to be very efficient for detecting\n\
-    motifs centred on the ChIP-seq peaks. For ChIP-seq analysis, the\nreference position\
-    \ is the center of each sequence.\nThe reference position can however be changed\
-    \ with the option\n\e[33m-origin\e[0m (center, start, end).\nNote that \e[33mpeak-motifs\e\
-    [0m also uses \e[33mposition-analysis\e[0m for the task\n\e[1mcomposition\e[0m,\
-    \ in order to detect compositional biases (residues,\ndinucleotides) in the test\
-    \ sequence set.\n\e[33mlocal_words\e[0m\nRun \e[33mlocal-word-analysis\e[0m to\
-    \ detect locally over-represented\noligonucleotides and dyads.\nThe program \e\
-    [33mlocal-word-analysis\e[0m (Matthieu Defrance,unpublished)\ntests the over-representation\
-    \ of each possible word (oligo,\ndyad) in positional windows in the sequence set.\n\
-    Two types of background models are supported: (i) Markov model\nof order m estimated\
-    \ locally (within the window under\nconsideration; (ii) the frequency observed\
-    \ for a word in the\nwhole sequence set is used as estimator of the prior probability\n\
-    of this word in the window.\nAfter our first trials, this program gives excellent\
-    \ results in\nChIP-seq datasets, because its senstivitity increases with large\n\
-    number of sequences (several hundreds/thousands), and its\nbackground model is\
-    \ more stringent than for programs computing\nthe global over-representation (oligo-analysis,\
-    \ dyad-analysis).\n\e[33mmerged_words\e[0m\nExtract a position-specific scoring\
-    \ matrix (using\n\e[33mmatrix-from-patterns\e[0m) from all the words discovered\
-    \ by the\nselected string-based motif disovery algorithms\n(oigos,dyads,positions\
-    \ and/or local_words)."
+  optional: true
   synonyms:
   - -disco
-  - -disco
+  description: ',dyads'
   args: !SimpleFlagArg
     name: oligos
-  optional: true
 - !Flag
-  description: ', which detects both under- and over-represented patterns.'
+  optional: true
   synonyms:
   - -two_tails
+  description: ', which detects both under- and over-represented patterns.'
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -482,3 +450,4 @@ help_text: "\e[1mNAME\e[0m\n    peak-motifs\n\n\e[1mVERSION\e[0m\n    $program_v
   \ per\n            motif.\n\n"
 generated_using:
 - -h
+docker_image:

@@ -32,6 +32,9 @@ task Probabilistic2020Tsg {
       ~{if defined(genome) then ("--genome " +  '"' + genome + '"') else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gene_fasta_file: "gene FASTA file from extract_gene_seq.py script"
     mutations: "DNA mutations file (MAF file). Columns can be in any\\norder, but should contain the correct column header\\nnames."

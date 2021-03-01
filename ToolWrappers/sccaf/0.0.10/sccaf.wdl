@@ -34,6 +34,9 @@ task Sccaf {
       ~{if defined(optimisation_plots_output) then ("--optimisation-plots-output " +  '"' + optimisation_plots_output + '"') else ""} \
       ~{if defined(conf_sampling_iterations) then ("--conf-sampling-iterations " +  '"' + conf_sampling_iterations + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file: "Path to input in AnnData or Loom"
     output_file: "Path for output file"

@@ -3,45 +3,45 @@ id: LuciphorAdapter.cwl
 inputs:
 - id: in_in
   doc: "*                        Input spectrum file (valid formats: 'mzML')"
-  type: File
+  type: File?
   inputBinding:
     prefix: -in
 - id: in_id
   doc: "*                        Protein/peptide identifications file (valid formats:\
     \ 'idXML')"
-  type: File
+  type: File?
   inputBinding:
     prefix: -id
 - id: in_out
   doc: "*                       Output file (valid formats: 'idXML')"
-  type: File
+  type: File?
   inputBinding:
     prefix: -out
 - id: in_executable
   doc: '*                LuciPHOr2 .jar file. Provide a full or relative path, or
     make sure it can be found in your PATH environment.'
-  type: File
+  type: File?
   inputBinding:
     prefix: -executable
 - id: in_fragment_method
   doc: "Fragmentation method (default: 'CID' valid: 'CID', 'HCD')"
-  type: string
+  type: string?
   inputBinding:
     prefix: -fragment_method
 - id: in_fragment_mass_tolerance
   doc: "Tolerance of the peaks in the fragment spectrum (default: '0.5')"
-  type: double
+  type: double?
   inputBinding:
     prefix: -fragment_mass_tolerance
 - id: in_fragment_error_units
   doc: "Unit of fragment mass tolerance (default: 'Da' valid: 'Da', 'ppm')"
-  type: string
+  type: string?
   inputBinding:
     prefix: -fragment_error_units
 - id: in_min_mz
   doc: "Do not consider peaks below this value for matching fragment ions (default:\
     \ '150.0')"
-  type: double
+  type: double?
   inputBinding:
     prefix: -min_mz
 - id: in_target_modifications
@@ -756,7 +756,7 @@ inputs:
     \ 'Xlink:DTSSP (Protein N-term)', 'Xlink:EGS (K)', 'Xlink:EGS (Protein N-term)',\
     \ 'Xlink:EGScleaved (K)', 'Xlink:EGScleaved (Protein N-term)', 'Xlink:SMCC (C)',\
     \ 'Xlink:SSD (K)', 'ZGB (K)', 'ZGB (N-term)')"
-  type: long
+  type: long?
   inputBinding:
     prefix: -target_modifications
 - id: in_neutral_losses
@@ -764,13 +764,13 @@ inputs:
     \ is case sensitive. For example: lower case 'sty' implies that the neutral loss\
     \ can only occur if the specified modification is present. Syntax: NL = <RESDIUES>\
     \ -<NEUTRAL_LOSS_MOLECULAR_FORMULA> <MASS_LOST> (default: '[sty -H3PO4 -97.97690]')"
-  type: double
+  type: double?
   inputBinding:
     prefix: -neutral_losses
 - id: in_decoy_mass
   doc: "How much to add to an amino acid to make it a decoy (default: '79.966330999999997'\
     \ min: '1.0')"
-  type: long
+  type: long?
   inputBinding:
     prefix: -decoy_mass
 - id: in_decoy_neutral_losses
@@ -778,91 +778,91 @@ inputs:
     \ identical to that of the normal neutral losses given above except that the residue\
     \ is always 'X'. Syntax: DECOY_NL = X -<NEUTRAL_LOSS_MOLECULAR_FORMULA> <MASS_LOST>\
     \ (default: '[X -H3PO4 -97.97690]')"
-  type: double
+  type: double?
   inputBinding:
     prefix: -decoy_neutral_losses
 - id: in_max_charge_state
   doc: "Do not consider PSMs with a charge state above this value (default: '5' min:\
     \ '1')"
-  type: long
+  type: long?
   inputBinding:
     prefix: -max_charge_state
 - id: in_max_peptide_length
   doc: "Restrict scoring to peptides with a length shorter than this value (default:\
     \ '40' min: '1')"
-  type: long
+  type: long?
   inputBinding:
     prefix: -max_peptide_length
 - id: in_max_num_perm
   doc: "Maximum number of permutations a sequence can have (default: '16384' min:\
     \ '1')"
-  type: long
+  type: long?
   inputBinding:
     prefix: -max_num_perm
 - id: in_modeling_score_threshold
   doc: "Minimum score a PSM needs to be considered for modeling (default: '0.95' min:\
     \ '0.0')"
-  type: long
+  type: long?
   inputBinding:
     prefix: -modeling_score_threshold
 - id: in_scoring_threshold
   doc: "PSMs below this value will be discarded (default: '0.0' min: '0.0')"
-  type: long
+  type: long?
   inputBinding:
     prefix: -scoring_threshold
 - id: in_min_num_psms_model
   doc: "The minimum number of PSMs you need for any charge state in order to build\
     \ a model for it (default: '50' min: '1')"
-  type: long
+  type: long?
   inputBinding:
     prefix: -min_num_psms_model
 - id: in_num_threads
   doc: "For multi-threading, 0 = use all CPU found by JAVA (default: '6' min: '0')"
-  type: long
+  type: long?
   inputBinding:
     prefix: -num_threads
 - id: in_run_mode
   doc: "Determines how Luciphor will run: 0 = calculate FLR then rerun scoring without\
     \ decoys (two iterations), 1 = Report Decoys: calculate FLR but don't rescore\
     \ PSMs, all decoy hits will be reported (default: '0' valid: '0', '1')"
-  type: long
+  type: long?
   inputBinding:
     prefix: -run_mode
 - id: in_rt_tolerance
   doc: "Set the retention time tolerance (for the mapping of identifications to spectra\
     \ in case multiple search engines were used) (default: '0.01' min: '0.0')"
-  type: long
+  type: long?
   inputBinding:
     prefix: -rt_tolerance
 - id: in_java_executable
   doc: The Java executable. Usually Java is on the system PATH. If Java is not found,
     use this parameter to specify the full path to Java
-  type: File
+  type: File?
   inputBinding:
     prefix: -java_executable
 - id: in_java_memory
   doc: "Maximum Java heap size (in MB) (default: '3500')"
-  type: long
+  type: long?
   inputBinding:
     prefix: -java_memory
 - id: in_ini
   doc: Use the given TOPP INI file
-  type: File
+  type: File?
   inputBinding:
     prefix: -ini
 - id: in_threads
   doc: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
-  type: long
+  type: long?
   inputBinding:
     prefix: -threads
 - id: in_write_ini
   doc: Writes the default configuration file
-  type: File
+  type: File?
   inputBinding:
     prefix: -write_ini
 - id: in_helphelp
   doc: Shows all options (including advanced)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --helphelp
 outputs:
@@ -871,9 +871,10 @@ outputs:
   type: stdout
 - id: out_out
   doc: "*                       Output file (valid formats: 'idXML')"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - LuciphorAdapter

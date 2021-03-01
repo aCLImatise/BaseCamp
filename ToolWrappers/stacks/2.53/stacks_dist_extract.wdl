@@ -8,6 +8,9 @@ task Stacksdistextract {
     stacks_dist_extract \
       ~{dist_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dist_file: ""
   }

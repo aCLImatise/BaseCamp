@@ -18,6 +18,9 @@ task NanoSV {
       ~{if defined(give_path_output) then ("--output " +  '"' + give_path_output + '"') else ""} \
       ~{if defined(snp_file) then ("--snp_file " +  '"' + snp_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threads: "Number of threads [default: 4]"
     samba_mba: "Give the full path to the sambamba or samtools\\nexecutable [default: sambamba ]"

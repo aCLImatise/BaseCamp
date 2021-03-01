@@ -12,6 +12,9 @@ task OrthomclSingletons {
       ~{groups_file} \
       ~{id_prefix}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     good_proteins: ""
     groups_file: ""

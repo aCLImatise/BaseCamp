@@ -16,6 +16,9 @@ task Osubsamplematrixfile {
       ~{if defined(rows_to_keep) then ("--rows-to-keep " +  '"' + rows_to_keep + '"') else ""} \
       ~{if defined(output_file) then ("--output-file " +  '"' + output_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cols_to_remove: "Columns to be removed from the matrix (one column id\\nin each line)"
     rows_to_remove: "Rows to be removed from the matrix (one row id in each\\nline)"

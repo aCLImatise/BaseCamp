@@ -3,22 +3,22 @@ id: xpath.cwl
 inputs:
 - id: in_only_output_path
   doc: ', only output the resulting PATH.'
-  type: File
+  type: File?
   inputBinding:
     prefix: -q
 - id: in_use_suffix_linefeed
   doc: ', use suffix instead of linefeed.'
-  type: string
+  type: string?
   inputBinding:
     prefix: -s
 - id: in_use_prefix_nothing
   doc: ', use prefix instead of nothing.'
-  type: string
+  type: string?
   inputBinding:
     prefix: -p
-- id: in_use_external_dtd
+- id: in_t_use_dtd
   doc: "'t use an external DTD."
-  type: string
+  type: string?
   inputBinding:
     prefix: -n
 outputs:
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_only_output_path
   doc: ', only output the resulting PATH.'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_only_output_path)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - xpath

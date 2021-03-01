@@ -22,6 +22,9 @@ task SparseReport {
       ~{if (sample_filter) then "--sampleFilter" else ""} \
       ~{if (inverse) then "--inverse" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path: "All sparse workspaces under the assigned folder will be added in automatically."
     tag: "Tag level to report, default: s. Details see documents for the seqlist format."

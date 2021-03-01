@@ -24,6 +24,9 @@ task CvgStat {
       ~{if (iid) then "-iid" else ""} \
       ~{if (eid) then "-eid" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name_bank_used: "- name of bank to be used"
     lay: "- computes coverage of layout messages"

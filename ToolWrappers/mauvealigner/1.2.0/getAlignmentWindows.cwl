@@ -30,6 +30,7 @@ outputs:
   type: File
   outputBinding:
     glob: $(inputs.in_base_output_filename)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - getAlignmentWindows

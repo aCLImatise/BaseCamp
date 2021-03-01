@@ -3,17 +3,17 @@ id: cleric.cwl
 inputs:
 - id: in_aln
   doc: Pairwise alignment of reference to target
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --aln
 - id: in_emit_tool_contract
   doc: Emit tool contract.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --emit-tool-contract
 - id: in_resolved_tool_contract
   doc: Use args from resolved tool contract.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --resolved-tool-contract
 - id: in_bam
@@ -40,6 +40,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - cleric

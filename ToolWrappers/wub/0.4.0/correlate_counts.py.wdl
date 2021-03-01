@@ -16,6 +16,9 @@ task CorrelateCountspy {
       ~{if (log_transform_data) then "-L" else ""} \
       ~{if (omit_lower_diagonal) then "-o" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     report_pdf_bammultiqcpdf: "Report PDF (bam_multi_qc.pdf)."
     correlation_statistic_spearman: "Correlation statistic - spearman or pearson (spearman)."

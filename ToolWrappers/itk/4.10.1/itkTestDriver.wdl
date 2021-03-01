@@ -38,6 +38,9 @@ task ItkTestDriver {
       ~{if (full_output) then "--full-output" else ""} \
       ~{if defined(redirect_output) then ("--redirect-output " +  '"' + redirect_output + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     add_before_libpath: "Add a path to the library path environment. This option take care of\\nchoosing the right environment variable for your system.\\nThis option can be used several times."
     add_before_env: "VALUE\\nAdd a VALUE to the variable name in the environment.\\nThe seperator used is the default one on the system.\\nThis option can be used several times."

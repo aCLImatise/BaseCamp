@@ -4,25 +4,45 @@ command:
 - split
 positional:
 - !Positional
-  description: ''
+  optional: true
   position: 0
   name: GFF_FILE
-  optional: true
+  description: ''
 named:
 - !Flag
-  description: "-p, --prefix TEXT     Prefix for the file name in output  [default:\
-    \ split]\n-n, --number INTEGER  Number of chunks into which split the GFF file\n\
-    [default: 10]\n-z, --gzip            gzip output files\n--help               \
-    \ Show this message and exit.\n"
+  optional: true
   synonyms:
   - -v
   - --verbose
-  args: !EmptyFlagArg {}
+  - -p
+  - --prefix
+  description: 'Prefix for the file name in output  [default: split]'
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
   optional: true
+  synonyms:
+  - -n
+  - --number
+  description: "Number of chunks into which split the GFF file\n[default: 10]"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  - --gzip
+  description: gzip output files
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
 usage_flag:
 version_flag:
 help_text: "Usage: get-gff-info split [OPTIONS] [GFF_FILE]\n\n  Split annotations\
@@ -33,3 +53,4 @@ help_text: "Usage: get-gff-info split [OPTIONS] [GFF_FILE]\n\n  Split annotation
   \  --help                Show this message and exit.\n"
 generated_using:
 - --help
+docker_image:

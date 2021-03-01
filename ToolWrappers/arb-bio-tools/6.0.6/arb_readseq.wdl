@@ -9,7 +9,7 @@ task ArbReadseq {
     Boolean? list_sequences_only
     Boolean? outseq_redirect_output
     Boolean? pipe_command_line
-    Boolean? _change_reversecomplement
+    Boolean? _change_to
     Boolean? _verbose_progress
     Boolean? wid
     Boolean? tab
@@ -34,7 +34,7 @@ task ArbReadseq {
       ~{if (list_sequences_only) then "-l" else ""} \
       ~{if (outseq_redirect_output) then "-o" else ""} \
       ~{if (pipe_command_line) then "-p" else ""} \
-      ~{if (_change_reversecomplement) then "-r" else ""} \
+      ~{if (_change_to) then "-r" else ""} \
       ~{if (_verbose_progress) then "-v" else ""} \
       ~{if (wid) then "-wid" else ""} \
       ~{if (tab) then "-tab" else ""} \
@@ -48,6 +48,9 @@ task ArbReadseq {
       ~{if (inter) then "-inter" else ""} \
       ~{if (var_19) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     change_lower_case: "[aselower]   change to lower case"
     change_upper_case: "[ASEUPPER]   change to UPPER CASE"
@@ -56,7 +59,7 @@ task ArbReadseq {
     list_sequences_only: "[ist]        List sequences only"
     outseq_redirect_output: "[utput=]out.seq  redirect Output"
     pipe_command_line: "[ipe]        Pipe (command line, <stdin, >stdout)"
-    _change_reversecomplement: "[everse]     change to Reverse-complement"
+    _change_to: "[everse]     change to Reverse-complement"
     _verbose_progress: "[erbose]     Verbose progress"
     wid: "[th]=#            sequence line width"
     tab: "=#                left indent"

@@ -20,6 +20,9 @@ task AMASpyCommand {
       ~{remove} \
       ~{subcommand_to_run}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     concat: "Concatenate input alignments"
     convert: "Convert to other file format"

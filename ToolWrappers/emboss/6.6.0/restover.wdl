@@ -28,6 +28,9 @@ task Restover {
       ~{if (alphabetic) then "-alphabetic" else ""} \
       ~{if (fragments) then "-fragments" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     data_file: "datafile   Restriction enzyme data file (optional)"
     m_file: "datafile   [Emethylsites.dat] Restriction enzyme\\nmethylation data file"

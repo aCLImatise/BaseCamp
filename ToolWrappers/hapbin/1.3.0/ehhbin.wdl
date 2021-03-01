@@ -22,6 +22,9 @@ task Ehhbin {
       ~{if (max_extend) then "--max-extend" else ""} \
       ~{if (bin_om) then "--binom" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     hap: "Hap file"
     map_file: "Map file"

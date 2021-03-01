@@ -20,6 +20,9 @@ task TadbitClean {
       ~{if (nox) then "--noX" else ""} \
       ~{if defined(tmp_db) then ("--tmpdb " +  '"' + tmp_db + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     change_workdir: "In case folder was moved, input the new path"
     workdir: "path to working directory (generated with the tool tadbit mapper)"

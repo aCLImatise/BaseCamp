@@ -18,6 +18,9 @@ task Iufilterqualityminoche {
       ~{if (print_qual_scores) then "--print-qual-scores" else ""} \
       ~{if (store_read_fate) then "--store-read-fate" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     minimum_highquality_read: "Minimum high-quality read length (default: 0.75)"
     ignore_def_lines: "If FASTQ files are not CASAVA outputs, parsing the\\nheader info may go wrong. This flag tells the software\\nto skip parsing deflines."

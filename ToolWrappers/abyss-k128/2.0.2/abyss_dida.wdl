@@ -6,7 +6,7 @@ task Abyssdida {
     Boolean? number_of_threads
     Boolean? path_of_executable
     Boolean? number_ranks_dida
-    String? value_set_variable
+    String? value_set_environment
   }
   command <<<
     abyss_dida \
@@ -14,14 +14,17 @@ task Abyssdida {
       ~{if (number_of_threads) then "-j" else ""} \
       ~{if (path_of_executable) then "-m" else ""} \
       ~{if (number_ranks_dida) then "-n" else ""} \
-      ~{if defined(value_set_variable) then ("-x " +  '"' + value_set_variable + '"') else ""}
+      ~{if defined(value_set_environment) then ("-x " +  '"' + value_set_environment + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     additional_command_line: "additional command line opts for DIDA"
     number_of_threads: "number of threads [1]"
     path_of_executable: "path of 'mpirun' executable [mpirun]"
     number_ranks_dida: "number of ranks in DIDA MPI job [3]"
-    value_set_variable: "=value  set environment variable for MPI job"
+    value_set_environment: "=value  set environment variable for MPI job"
   }
   output {
     File out_stdout = stdout()

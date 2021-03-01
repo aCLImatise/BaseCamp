@@ -12,6 +12,9 @@ task IndexBlastPairspl {
       ~{blast_pairs_dot_gene_sym_do_tgz} \
       ~{blast_pairs_supp_dot_gene_sym_do_tgz}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_index_filename: ""
     blast_pairs_dot_gene_sym_do_tgz: ""

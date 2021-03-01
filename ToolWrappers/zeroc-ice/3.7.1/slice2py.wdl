@@ -28,6 +28,9 @@ task Slice2py {
       ~{if (checksum) then "--checksum" else ""} \
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     uname: "Remove any definition for NAME."
     idir: "Put DIR in the include file search path."

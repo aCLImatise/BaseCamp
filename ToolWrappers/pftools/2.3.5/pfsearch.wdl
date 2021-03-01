@@ -5,8 +5,8 @@ task Pfsearch {
     Boolean? report_optimal_alignment
     Boolean? search_complementary_strand
     Boolean? input_sequence_file
-    Boolean? indicate_highest_number
-    Boolean? indicate_highest_text
+    Boolean? indicate_level_number
+    Boolean? indicate_level_text
     Boolean? report_individual_matches
     Boolean? use_raw_score
     Boolean? force_profile_disjointness
@@ -28,8 +28,8 @@ task Pfsearch {
       ~{if (report_optimal_alignment) then "-a" else ""} \
       ~{if (search_complementary_strand) then "-b" else ""} \
       ~{if (input_sequence_file) then "-f" else ""} \
-      ~{if (indicate_highest_number) then "-l" else ""} \
-      ~{if (indicate_highest_text) then "-L" else ""} \
+      ~{if (indicate_level_number) then "-l" else ""} \
+      ~{if (indicate_level_text) then "-L" else ""} \
       ~{if (report_individual_matches) then "-m" else ""} \
       ~{if (use_raw_score) then "-r" else ""} \
       ~{if (force_profile_disjointness) then "-u" else ""} \
@@ -46,12 +46,15 @@ task Pfsearch {
       ~{if (valuespecifies_output_width) then "-W" else ""} \
       ~{if (abcdfhllmmkrsuvwxyz) then "-abCdfhlLmMkrsuvWxyz" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     report_optimal_alignment: ": report optimal alignment for all sequences."
     search_complementary_strand: ": search complementary strand of DNA sequences."
     input_sequence_file: ": input sequence file is in FASTA format."
-    indicate_highest_number: ": indicate highest cut-off level (number)."
-    indicate_highest_text: ": indicate highest cut-off level (text)."
+    indicate_level_number: ": indicate highest cut-off level (number)."
+    indicate_level_text: ": indicate highest cut-off level (text)."
     report_individual_matches: ": report individual matches for circular profiles."
     use_raw_score: ": use raw score."
     force_profile_disjointness: ": force profile disjointness to UNIQUE."

@@ -18,6 +18,9 @@ task ComparePolishes {
       ~{if defined(c) then ("-c " +  '"' + c + '"') else ""} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gff_three: ""
     p: ""

@@ -8,6 +8,9 @@ task FastqNumReads {
     fastq_num_reads \
       ~{fast_q_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_q_file: ""
   }

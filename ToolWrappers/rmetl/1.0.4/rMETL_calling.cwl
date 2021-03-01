@@ -3,32 +3,32 @@ id: rMETL_calling.cwl
 inputs:
 - id: in_homozygous
   doc: "The mininum score of a genotyping reported as a\nhomozygous.[0.8]"
-  type: double
+  type: double?
   inputBinding:
     prefix: --homozygous
 - id: in_heterozygous
   doc: "The mininum score of a genotyping reported as a\nheterozygous.[0.3]"
-  type: double
+  type: double?
   inputBinding:
     prefix: --heterozygous
 - id: in_min_mapq
   doc: Mininum mapping quality.[20]
-  type: long
+  type: long?
   inputBinding:
     prefix: --min_mapq
 - id: in_clipping_threshold
   doc: Mininum threshold of realignment clipping.[0.5]
-  type: double
+  type: double?
   inputBinding:
     prefix: --clipping_threshold
 - id: in_sample
   doc: Sample description
-  type: string
+  type: string?
   inputBinding:
     prefix: --sample
 - id: in_mei
   doc: Enables rMETL to display MEI/MED only.[True]
-  type: string
+  type: string?
   inputBinding:
     prefix: --MEI
 - id: in_t_jiang_at_hit_dot_edu_dot_cn
@@ -55,6 +55,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rMETL

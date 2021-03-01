@@ -10,6 +10,9 @@ task Ribosum2cc {
       ~{ribo_sum_name} \
       ~{ribo_sum_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ribo_sum_name: ""
     ribo_sum_file: ""

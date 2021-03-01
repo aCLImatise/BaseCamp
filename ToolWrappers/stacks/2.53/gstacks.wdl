@@ -54,6 +54,9 @@ task Gstacks {
       ~{if (phasing_co_occurrences_thr_range) then "--phasing-cooccurrences-thr-range" else ""} \
       ~{if (phasing_dont_prune_he_ts) then "--phasing-dont-prune-hets" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_directory_containg: ": input directory containg '*.matches.bam' files created by the\\nde novo Stacks pipeline, ustacks-cstacks-sstacks-tsv2bam"
     input_directory_containing: ": input directory containing BAM files"

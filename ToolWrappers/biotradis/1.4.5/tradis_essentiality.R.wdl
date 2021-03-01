@@ -8,6 +8,9 @@ task TradisEssentialityR {
     tradis_essentiality_R \
       ~{data_dot_tab}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     data_dot_tab: ""
   }

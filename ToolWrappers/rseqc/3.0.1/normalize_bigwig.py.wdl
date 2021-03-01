@@ -18,6 +18,9 @@ task NormalizeBigwigpy {
       ~{if defined(chunk) then ("--chunk " +  '"' + chunk + '"') else ""} \
       ~{if defined(format) then ("--format " +  '"' + format + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bw_file: "Input BigWig file. [required]"
     output_wig_file: "Output wig file. [required]"

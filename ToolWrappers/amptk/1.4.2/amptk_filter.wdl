@@ -48,6 +48,9 @@ task AmptkFilter {
       ~{if (debug) then "--debug" else ""} \
       ~{if (u_search) then "--usearch" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     otu_table: "OTU table"
     fast_a: "OTU fasta"

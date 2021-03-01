@@ -16,6 +16,9 @@ task Masurca {
       ~{if (ld_library_path) then "--ld-library-path" else ""} \
       ~{if (skip_checking) then "--skip-checking" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     assembly_script_assemblesh: "Assembly script (assemble.sh)"
     generate: "Generate example configuration file"

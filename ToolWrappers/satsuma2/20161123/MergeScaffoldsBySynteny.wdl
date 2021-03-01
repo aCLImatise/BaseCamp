@@ -8,6 +8,9 @@ task MergeScaffoldsBySynteny {
     MergeScaffoldsBySynteny \
       ~{if (string_input_summary) then "-i" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     string_input_summary: "<string> : input file (satsuma summary)"
   }

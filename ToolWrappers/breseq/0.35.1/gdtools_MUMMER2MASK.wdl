@@ -16,6 +16,9 @@ task GdtoolsMUMMER2MASK {
       ~{if defined(merge) then ("--merge " +  '"' + merge + '"') else ""} \
       ~{if defined(minimum) then ("--minimum " +  '"' + minimum + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference: "File containing reference sequences in GenBank, GFF3, or FASTA format. Option may be provided multiple times for multiple files (REQUIRED)"
     output_genome_diff: "Output Genome Diff file. (DEFAULT=output.gd)"

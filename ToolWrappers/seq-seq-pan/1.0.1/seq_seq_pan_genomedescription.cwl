@@ -3,17 +3,17 @@ id: seq_seq_pan_genomedescription.cwl
 inputs:
 - id: in_input
   doc: File with list of /paths/to/files.fasta
-  type: File
+  type: File?
   inputBinding:
     prefix: --input
 - id: in_output
   doc: name of output file
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_add
   doc: "Add new genome description to this file.\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --add
 - id: in_genome_description_do_tpy
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: name of output file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - seq-seq-pan-genomedescription

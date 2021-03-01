@@ -4,6 +4,9 @@ task Bam2starchGnuParalleltypical {
   command <<<
     bam2starch_gnuParallel_typical
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

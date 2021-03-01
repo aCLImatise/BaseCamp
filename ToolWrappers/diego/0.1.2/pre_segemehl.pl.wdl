@@ -14,6 +14,9 @@ task PreSegemehlpl {
       ~{if defined(output_file_name) then ("-o " +  '"' + output_file_name + '"') else ""} \
       ~{if defined(usefull_help_message) then ("-h " +  '"' + usefull_help_message + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_containing_files: "file containing input files and ids\\nid [tab] path.to/file"
     diegoformated_annotation_file: "DIEGO-formated annotation file"

@@ -5,18 +5,32 @@ command:
 positional: []
 named:
 - !Flag
-  description: "[dbscan|k_means|mean_shift]\n-n, --num-clusters INTEGER      The exact\
-    \ number of clusters to build.\n-c, --mode-config DICT\n--help               \
-    \           Show this message and exit.\n"
+  optional: true
   synonyms:
   - -m
   - --method
+  description: '[dbscan|k_means|mean_shift]'
   args: !EmptyFlagArg {}
+- !Flag
   optional: true
+  synonyms:
+  - -n
+  - --num-clusters
+  description: The exact number of clusters to build.
+  args: !SimpleFlagArg
+    name: INTEGER
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --mode-config
+  - --help
+  description: Show this message and exit.
+  args: !SimpleFlagArg
+    name: DICT
 usage_flag:
 version_flag:
 help_text: "Usage: lyner cluster [OPTIONS]\n\n  Clustering via k_mean / dbscan / mean_shift.\n\
@@ -25,3 +39,4 @@ help_text: "Usage: lyner cluster [OPTIONS]\n\n  Clustering via k_mean / dbscan /
   \                          Show this message and exit.\n"
 generated_using:
 - --help
+docker_image:

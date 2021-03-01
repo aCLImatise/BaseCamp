@@ -20,6 +20,9 @@ task XsvSlice {
       ~{if (no_headers) then "--no-headers" else ""} \
       ~{if defined(delimiter) then ("--delimiter " +  '"' + delimiter + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     start: "The index of the record to slice from."
     end: "The index of the record to slice to."

@@ -1,0 +1,382 @@
+&id001 !Command
+command:
+- edit-gff
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - edit-gff
+  - view
+  positional:
+  - !Positional
+    optional: true
+    position: 0
+    name: INPUT_FILE
+    description: ''
+  - !Positional
+    optional: true
+    position: 1
+    name: OUTPUT_FILE
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -k
+    - --keep-empty
+    description: Keep annotations where not all attributes were found
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    - --attributes
+    description: "Attributes of GFF file to print. For example `-a\ntaxon_id` will\
+      \ print `taxon_id` for all annotations.\nMultiple attributes can be printed,\
+      \ for example: `-a\ntaxon_id -a gene_id`  [required]"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --separator
+    description: Fields separator, default to `TAB`
+    args: !SimpleFlagArg
+      name: TEXT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: edit-gff view [OPTIONS] [INPUT_FILE] [OUTPUT_FILE]\n\n  View\
+    \ GFF file as table/json, etc.\n\nOptions:\n  -v, --verbose\n  -h, --header  \
+    \         Print Header\n  -k, --keep-empty       Keep annotations where not all\
+    \ attributes were found\n  -a, --attributes TEXT  Attributes of GFF file to print.\
+    \ For example `-a\n                         taxon_id` will print `taxon_id` for\
+    \ all annotations.\n                         Multiple attributes can be printed,\
+    \ for example: `-a\n                         taxon_id -a gene_id`  [required]\n\
+    \n  -s, --separator TEXT   Fields separator, default to `TAB`\n  --help      \
+    \           Show this message and exit.\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/mgkit:0.5.6--py37hf01694f_0
+- !Command
+  command:
+  - edit-gff
+  - add
+  positional:
+  - !Positional
+    optional: true
+    position: 0
+    name: INPUT_FILE
+    description: ''
+  - !Positional
+    optional: true
+    position: 1
+    name: OUTPUT_FILE
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    - -a
+    - --attributes
+    description: "Add attributes to the GFF file. For example `-a\ntaxon_id 2` will\
+      \ add taxon_id attribute with a\nvalue of 2 to all annotations. Multiple attributes\n\
+      can be set, for example: `-a taxon_id 2 -a gene_id\nTEST`  [required]"
+    args: !SimpleFlagArg
+      name: TEXT...
+  - !Flag
+    optional: true
+    synonyms:
+    - -w
+    - --overwrite
+    description: Overwrite the attributes if present
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --only-edited
+    description: Only output edited annotations
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --uids
+    description: "Only edit annotations with `uid` in a file (one\nper line)"
+    args: !SimpleFlagArg
+      name: FILENAME
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: edit-gff add [OPTIONS] [INPUT_FILE] [OUTPUT_FILE]\n\n  Add fields\
+    \ to a GFF File\n\nOptions:\n  -v, --verbose\n  -a, --attributes TEXT...  Add\
+    \ attributes to the GFF file. For example `-a\n                            taxon_id\
+    \ 2` will add taxon_id attribute with a\n                            value of\
+    \ 2 to all annotations. Multiple attributes\n                            can be\
+    \ set, for example: `-a taxon_id 2 -a gene_id\n                            TEST`\
+    \  [required]\n\n  -w, --overwrite           Overwrite the attributes if present\n\
+    \  -o, --only-edited         Only output edited annotations\n  -f, --uids FILENAME\
+    \       Only edit annotations with `uid` in a file (one\n                    \
+    \        per line)\n\n  --help                    Show this message and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/mgkit:0.5.6--py37hf01694f_0
+- !Command
+  command:
+  - edit-gff
+  - fields
+  positional:
+  - !Positional
+    optional: true
+    position: 0
+    name: GFF_FILE
+    description: ''
+  - !Positional
+    optional: true
+    position: 1
+    name: TXT_FILE
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    - -n
+    - --num-ann
+    description: "Number of annotations to parse, 0 will parse the\nwhole file  [default:\
+      \ 10]"
+    args: !SimpleFlagArg
+      name: INTEGER
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: edit-gff fields [OPTIONS] [GFF_FILE] [TXT_FILE]\n\n  Prints the\
+    \ fields in a GFF File\n\nOptions:\n  -v, --verbose\n  -n, --num-ann INTEGER \
+    \ Number of annotations to parse, 0 will parse the\n                         whole\
+    \ file  [default: 10]\n\n  --help                 Show this message and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/mgkit:0.5.6--py37hf01694f_0
+- !Command
+  command:
+  - edit-gff
+  - table
+  positional:
+  - !Positional
+    optional: true
+    position: 0
+    name: INPUT_FILE
+    description: ''
+  - !Positional
+    optional: true
+    position: 1
+    name: OUTPUT_FILE
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    - -k
+    - --key
+    description: "Attribute used to search the table defaults to\n`uid`"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    - --attribute
+    description: Attribute to add/change  [required]
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --only-edited
+    description: Only output edited annotations
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --skip-rows
+    description: Number of rows to skip at the start of the file
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --separator
+    description: Fields separator, default to `TAB`
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --comment
+    description: "Characters for comments in file (eg '#').\ndefaults to None"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --table-file
+    description: '[required]'
+    args: !SimpleFlagArg
+      name: FILENAME
+  - !Flag
+    optional: true
+    synonyms:
+    - -ki
+    - --key-index
+    description: "Which field in the table is the key value\n[default: 0]"
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - -ai
+    - --attr-index
+    description: "Which field in the table is the attribute value\n[default: 1]"
+    args: !SimpleFlagArg
+      name: INTEGER
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: edit-gff table [OPTIONS] [INPUT_FILE] [OUTPUT_FILE]\n\n  Adds\
+    \ fields from a Table file\n\nOptions:\n  -v, --verbose\n  -k, --key TEXT    \
+    \         Attribute used to search the table defaults to\n                   \
+    \          `uid`\n\n  -a, --attribute TEXT       Attribute to add/change  [required]\n\
+    \  -o, --only-edited          Only output edited annotations\n  -r, --skip-rows\
+    \ INTEGER    Number of rows to skip at the start of the file\n  -s, --separator\
+    \ TEXT       Fields separator, default to `TAB`\n  -c, --comment TEXT        \
+    \ Characters for comments in file (eg '#').\n                             defaults\
+    \ to None\n\n  -t, --table-file FILENAME  [required]\n  -ki, --key-index INTEGER\
+    \   Which field in the table is the key value\n                             [default:\
+    \ 0]\n\n  -ai, --attr-index INTEGER  Which field in the table is the attribute\
+    \ value\n                             [default: 1]\n\n  --help               \
+    \      Show this message and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/mgkit:0.5.6--py37hf01694f_0
+- !Command
+  command:
+  - edit-gff
+  - remove
+  positional:
+  - !Positional
+    optional: true
+    position: 0
+    name: INPUT_FILE
+    description: ''
+  - !Positional
+    optional: true
+    position: 1
+    name: OUTPUT_FILE
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    - -a
+    - --attributes
+    description: "Remove attributes to the GFF file. For example `-a\ntaxon_id` will\
+      \ remove taxon_id attribute for all\nannotations. Multiple attributes can be\
+      \ removed, for\nexample: `-a taxon_id -a gene_id`  [required]"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --uids
+    description: "Only edit annotations with `uid` in a file (one per\nline)"
+    args: !SimpleFlagArg
+      name: FILENAME
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: edit-gff remove [OPTIONS] [INPUT_FILE] [OUTPUT_FILE]\n\n  Remove\
+    \ fields from a GFF File\n\nOptions:\n  -v, --verbose\n  -a, --attributes TEXT\
+    \  Remove attributes to the GFF file. For example `-a\n                      \
+    \   taxon_id` will remove taxon_id attribute for all\n                       \
+    \  annotations. Multiple attributes can be removed, for\n                    \
+    \     example: `-a taxon_id -a gene_id`  [required]\n\n  -f, --uids FILENAME \
+    \   Only edit annotations with `uid` in a file (one per\n                    \
+    \     line)\n\n  --help                 Show this message and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/mgkit:0.5.6--py37hf01694f_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --cite
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Show the version and exit.
+  args: !EmptyFlagArg {}
+help_text: "Usage: edit-gff [OPTIONS] COMMAND [ARGS]...\n\n  Main function\n\nOptions:\n\
+  \  --version  Show the version and exit.\n  --cite\n  --help     Show this message\
+  \ and exit.\n\nCommands:\n  add     Add fields to a GFF File\n  fields  Prints the\
+  \ fields in a GFF File\n  remove  Remove fields from a GFF File\n  table   Adds\
+  \ fields from a Table file\n  view    View GFF file as table/json, etc.\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/mgkit:0.5.6--py37hf01694f_0

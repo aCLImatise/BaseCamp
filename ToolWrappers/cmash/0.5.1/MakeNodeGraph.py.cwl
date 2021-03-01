@@ -3,7 +3,7 @@ id: MakeNodeGraph.py.cwl
 inputs:
 - id: in_fp_rate
   doc: 'False positive rate. (default: 0.0001)'
-  type: double
+  type: double?
   inputBinding:
     prefix: --fp_rate
 - id: in_intersect_node_graph
@@ -12,17 +12,17 @@ inputs:
     will now be J(query intersect union_i training_i,\ntraining_i) instead of J(query,\
     \ training_i), but will\nuse significantly less space (unfortunately will also\n\
     disable threading). (default: None)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --intersect_nodegraph
 - id: in_k_size
   doc: 'K-mer size (default: 21)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --k_size
 - id: in_threads
   doc: "Number of threads to use (default: 8)\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --threads
 - id: in_in_file
@@ -39,6 +39,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - MakeNodeGraph.py

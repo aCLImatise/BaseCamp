@@ -18,6 +18,9 @@ task RustPlotTranscriptbak {
       ~{rust_codon_file} \
       ~{if defined(directory_path_outputfile) then ("-o " +  '"' + directory_path_outputfile + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     directory_path_outputfile: "directory  path to outputfile, default is \\\"plot_transcript\\\""
     transcriptome: "fasta file of transcripts, CDS start and end may be\\nprovided on description line using tab separation e.g.\\n>NM_0001 10 5000, otherwise it searches for longest\\nORF"

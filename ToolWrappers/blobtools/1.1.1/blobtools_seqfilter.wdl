@@ -14,6 +14,9 @@ task BlobtoolsSeqfilter {
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
       ~{if (invert) then "--invert" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_file: "FASTA file of sequences (Headers are split at whitespaces)"
     list: "TXT file containing headers of sequences to keep"

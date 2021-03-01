@@ -10,6 +10,9 @@ task NCBImetapy {
       ~{if defined(config) then ("--config " +  '"' + config + '"') else ""} \
       ~{if (flat) then "--flat" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config: "Path to the yaml configuration file (ex. config.yaml)."
     flat: "Don't create sub-directories in output directory."

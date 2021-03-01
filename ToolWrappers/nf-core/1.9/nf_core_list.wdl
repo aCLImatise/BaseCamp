@@ -12,6 +12,9 @@ task NfcoreList {
       ~{if (sort) then "--sort" else ""} \
       ~{if (json) then "--json" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sort: "[release|pulled|name|stars]\\nHow to sort listed pipelines"
     json: "Print full output as JSON"

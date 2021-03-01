@@ -28,6 +28,9 @@ task RsatCountwords {
       ~{if (group_rc) then "-grouprc" else ""} \
       ~{if (nogroup_rc) then "-nogrouprc" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     change_verbosity_level: "#             change verbosity level (0, 1, 2)"
     set_oligomer_length: "#             set oligomer length to # (monad size when using dyads)"

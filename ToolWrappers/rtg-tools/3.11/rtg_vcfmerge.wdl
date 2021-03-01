@@ -34,6 +34,9 @@ task RtgVcfmerge {
       ~{if (preserve_formats) then "--preserve-formats" else ""} \
       ~{if (stats) then "--stats" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bed_regions: "if set, only read VCF records that overlap the\\nranges contained in the specified BED file"
     input_list_file: "file containing a list of VCF format files (1\\nper line) to be merged"

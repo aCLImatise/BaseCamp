@@ -2,8 +2,8 @@ version 1.0
 
 task MethylpyDMRfind {
   input {
-    Int? output_prefix
     Array[String] all_c_files
+    String? output_prefix
     Array[String] samples
     Array[String] chrom_s
     Array[String] mc_type
@@ -23,8 +23,8 @@ task MethylpyDMRfind {
   }
   command <<<
     methylpy DMRfind \
-      ~{if defined(output_prefix) then ("--output-prefix " +  '"' + output_prefix + '"') else ""} \
       ~{if defined(all_c_files) then ("--allc-files " +  '"' + all_c_files + '"') else ""} \
+      ~{if defined(output_prefix) then ("--output-prefix " +  '"' + output_prefix + '"') else ""} \
       ~{if defined(samples) then ("--samples " +  '"' + samples + '"') else ""} \
       ~{if defined(chrom_s) then ("--chroms " +  '"' + chrom_s + '"') else ""} \
       ~{if defined(mc_type) then ("--mc-type " +  '"' + mc_type + '"') else ""} \
@@ -42,9 +42,12 @@ task MethylpyDMRfind {
       ~{if defined(min_cluster) then ("--min-cluster " +  '"' + min_cluster + '"') else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    output_prefix: "[--samples SAMPLES [SAMPLES ...]]\\n[--chroms CHROMS [CHROMS ...]]\\n[--mc-type MC_TYPE [MC_TYPE ...]]\\n[--num-procs NUM_PROCS] [--min-cov MIN_COV]\\n[--dmr-max-dist DMR_MAX_DIST]\\n[--sig-cutoff SIG_CUTOFF] [--num-sims NUM_SIMS]\\n[--min-tests MIN_TESTS] [--min-num-dms MIN_NUM_DMS]\\n[--sample-category SAMPLE_CATEGORY [SAMPLE_CATEGORY ...]]\\n[--mc-max-dist MC_MAX_DIST]\\n[--resid-cutoff RESID_CUTOFF]\\n[--keep-temp-files KEEP_TEMP_FILES]\\n[--min-cluster MIN_CLUSTER] [--seed SEED]"
     all_c_files: "List of allc files. (default: None)"
+    output_prefix: "String indicating the prefix for output files\\n(default: None)"
     samples: "List of space separated samples matching allc files.\\nBy default sample names will be inferred from allc\\nfilenames (default: None)"
     chrom_s: "Space separated listing of chromosomes where DMRs will\\nbe called. If not specified, DMRs will be called\\nacross the chromosomes/contigs that contained any data\\nin all allc files. (default: None)"
     mc_type: "List of space separated mc nucleotide contexts for\\nwhich you want to look for DMRs. These classifications\\nmay use the wildcards H (indicating anything but a G)\\nand N (indicating any nucleotide). (default: ['CGN'])"

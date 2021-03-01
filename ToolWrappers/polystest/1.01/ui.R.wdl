@@ -4,6 +4,9 @@ task UiR {
   command <<<
     ui_R
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

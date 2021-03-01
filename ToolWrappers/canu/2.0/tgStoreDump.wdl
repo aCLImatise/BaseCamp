@@ -3,7 +3,7 @@ version 1.0
 task TgStoreDump {
   input {
     File? path_sequence_store
-    File? v_path_tigstore
+    File? path_tigstore_version
     String? tig
     Boolean? unassembled
     Boolean? contigs
@@ -37,7 +37,7 @@ task TgStoreDump {
       ~{v} \
       ~{opts} \
       ~{if defined(path_sequence_store) then ("-S " +  '"' + path_sequence_store + '"') else ""} \
-      ~{if defined(v_path_tigstore) then ("-T " +  '"' + v_path_tigstore + '"') else ""} \
+      ~{if defined(path_tigstore_version) then ("-T " +  '"' + path_tigstore_version + '"') else ""} \
       ~{if defined(tig) then ("-tig " +  '"' + tig + '"') else ""} \
       ~{if (unassembled) then "-unassembled" else ""} \
       ~{if (contigs) then "-contigs" else ""} \
@@ -64,9 +64,12 @@ task TgStoreDump {
       ~{if defined(thin) then ("-thin " +  '"' + thin + '"') else ""} \
       ~{if (overlap_histogram) then "-overlaphistogram" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path_sequence_store: "path to the sequence store"
-    v_path_tigstore: "<v>       path to the tigStore, version, to use"
+    path_tigstore_version: "<v>       path to the tigStore, version, to use"
     tig: "[-B]              only dump tigs between ids A and B"
     unassembled: "only dump tigs that are 'unassembled'"
     contigs: "only dump tigs that are 'contigs'"

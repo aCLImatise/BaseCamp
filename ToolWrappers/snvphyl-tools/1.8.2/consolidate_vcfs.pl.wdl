@@ -18,6 +18,9 @@ task ConsolidateVcfspl {
       ~{if (coverage_cut_off) then "--coverage-cutoff" else ""} \
       ~{if (min_mean_mapping) then "--min-mean-mapping" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     snv_abundance_ratio: "/opt/bcftools/bcftools"
     vcf_split: "[REQUIRED]\\nMultiple list of key/value pair. Multiple .gz files can be input.\\nExample with 3 gz files: --vcfsplit 'name=/path/vcf1.gz' --vcfsplit\\n'name=/path/vcf2.gz' --vcfsplit 'name=/path/vcf3.gz'."

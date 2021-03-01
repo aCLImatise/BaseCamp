@@ -12,6 +12,9 @@ task KallistoH5dump {
       ~{abundance_doth_five} \
       ~{if defined(output_dir) then ("--output-dir " +  '"' + output_dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_dir: "Directory to write output to"
     arguments: ""

@@ -18,6 +18,9 @@ task XsvSplit {
       ~{if (no_headers) then "--no-headers" else ""} \
       ~{if defined(delimiter) then ("--delimiter " +  '"' + delimiter + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     size: "The number of records to write into each chunk.\\n[default: 500]"
     jobs: "The number of spliting jobs to run in parallel.\\nThis only works when the given CSV data has\\nan index already created. Note that a file handle\\nis opened for each job.\\nWhen set to '0', the number of jobs is set to the\\nnumber of CPUs detected.\\n[default: 0]"

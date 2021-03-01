@@ -22,6 +22,9 @@ task AgatSqAddLocusTagpl {
       ~{if defined(string_output_file) then ("--output " +  '"' + string_output_file + '"') else ""} \
       ~{if defined(quiet) then ("--quiet " +  '"' + quiet + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     string_input_gtfgff: "STRING: Input GTF/GFF file."
     type: "Primary tag option, case insensitive, list. Allow to specied the\\nLevel1 feature types that will be handled. By default all\\nfeature Level1 are taken into account."

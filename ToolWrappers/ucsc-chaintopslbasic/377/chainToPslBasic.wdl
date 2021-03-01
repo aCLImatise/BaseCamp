@@ -10,6 +10,9 @@ task ChainToPslBasic {
       ~{chain_top_sl} \
       ~{in_dot_chain}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     chain_top_sl: ""
     in_dot_chain: ""

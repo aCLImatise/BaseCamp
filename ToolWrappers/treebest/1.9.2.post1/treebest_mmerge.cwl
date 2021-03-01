@@ -3,18 +3,19 @@ id: treebest_mmerge.cwl
 inputs:
 - id: in_reroot
   doc: reroot
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -r
 - id: in_species_tree
   doc: species tree [default taxa tree]
-  type: File
+  type: File?
   inputBinding:
     prefix: -s
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - treebest

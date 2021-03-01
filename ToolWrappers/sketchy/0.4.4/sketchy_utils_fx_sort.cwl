@@ -3,12 +3,12 @@ id: sketchy_utils_fx_sort.cwl
 inputs:
 - id: in_fast_x
   doc: Path to Fast{a,q} input file.  [required]
-  type: File
+  type: File?
   inputBinding:
     prefix: --fastx
 - id: in_output
   doc: Output to Fast{a,q} file. Default stdout [-]
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 outputs:
@@ -17,9 +17,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: Output to Fast{a,q} file. Default stdout [-]
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - sketchy

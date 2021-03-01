@@ -3,37 +3,37 @@ id: deepac_strain_test.cwl
 inputs:
 - id: in_n_cpus
   doc: Number of CPU cores.
-  type: long
+  type: long?
   inputBinding:
     prefix: --n-cpus
 - id: in_n_gpus
   doc: Number of GPUs.
-  type: long
+  type: long?
   inputBinding:
     prefix: --n-gpus
 - id: in_explain
   doc: Test explain workflows.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --explain
 - id: in_gwp_a
   doc: Test gwpa workflows.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --gwpa
 - id: in_all
   doc: Test all functions.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --all
 - id: in_quick
   doc: Don't test heavy models (e.g. when no GPU available).
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quick
 - id: in_keep
   doc: Don't delete previous test output.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --keep
 - id: in_deep_ac
@@ -50,6 +50,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - deepac-strain

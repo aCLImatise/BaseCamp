@@ -12,6 +12,9 @@ task NebulizerCreateBatchUsersGALAXY {
       ~{if defined(password) then ("--password " +  '"' + password + '"') else ""} \
       ~{if (check) then "--check" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     password: "specify password for new user accounts (otherwise\\nprogram will prompt for password). All accounts will be\\ncreated with the same password."
     check: "check user details but don't try to create the new"

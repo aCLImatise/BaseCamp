@@ -30,6 +30,9 @@ task WhatshapHaplotag {
       ~{if defined(output_haplo_tag_list) then ("--output-haplotag-list " +  '"' + output_haplo_tag_list + '"') else ""} \
       ~{if (tag_supplementary) then "--tag-supplementary" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file_omitted: "Output file. If omitted, use standard output."
     reference: "Reference file. Provide this to detect alleles through\\nre-alignment. If no index (.fai) exists, it will be\\ncreated"

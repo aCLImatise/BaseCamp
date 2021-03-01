@@ -3,171 +3,171 @@ command:
 - sicer_df
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: Use
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: more
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 2
   name: information
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: "Name of the sample file you wish to run SICER on. This\ncan either\
-    \ be the relative or the absolute path of the\nfile. Must be in BED or BAM format."
+  optional: true
   synonyms:
   - --treatment_file
   - -t
+  description: "Name of the sample file you wish to run SICER on. This\ncan either\
+    \ be the relative or the absolute path of the\nfile. Must be in BED or BAM format."
   args: !RepeatFlagArg
     name: TREATMENT_FILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --control_file
   description: "[CONTROL_FILE [CONTROL_FILE ...]], -c [CONTROL_FILE [CONTROL_FILE\
     \ ...]]\nName of the control library in BED or BAM format. This\ncan either be\
     \ the relative or the absolute path of the\nfile. If you wish to run SICER without\
     \ a control\nlibrary, simply do not enter the file."
-  synonyms:
-  - --control_file
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'The species/genome used (ex: hg38)'
+  optional: true
   synonyms:
   - --species
   - -s
+  description: 'The species/genome used (ex: hg38)'
   args: !SimpleFlagArg
     name: SPECIES
-  optional: true
 - !Flag
-  description: "The number of copies of indentical reads allowed in a\nlibrary. Default\
-    \ value is 1"
+  optional: true
   synonyms:
   - --redundancy_threshold
   - -rt
+  description: "The number of copies of indentical reads allowed in a\nlibrary. Default\
+    \ value is 1"
   args: !SimpleFlagArg
     name: REDUNDANCY_THRESHOLD
-  optional: true
 - !Flag
-  description: Resolution of SICER. Default value is 200 (bp)
+  optional: true
   synonyms:
   - --window_size
   - -w
+  description: Resolution of SICER. Default value is 200 (bp)
   args: !SimpleFlagArg
     name: WINDOW_SIZE
-  optional: true
 - !Flag
-  description: "The amount of shift from the beginning of a read to\nthe center of\
-    \ the DNA fragment represented by the\nread. Default value is 150 (bp)."
+  optional: true
   synonyms:
   - --fragment_size
   - -f
+  description: "The amount of shift from the beginning of a read to\nthe center of\
+    \ the DNA fragment represented by the\nread. Default value is 150 (bp)."
   args: !SimpleFlagArg
     name: FRAGMENT_SIZE
-  optional: true
 - !Flag
-  description: "Effective genome as fraction of the genome size.\nDefault value is\
-    \ 0.74"
+  optional: true
   synonyms:
   - --effective_genome_fraction
   - -egf
+  description: "Effective genome as fraction of the genome size.\nDefault value is\
+    \ 0.74"
   args: !SimpleFlagArg
     name: EFFECTIVE_GENOME_FRACTION
-  optional: true
 - !Flag
-  description: "Remove all islands with an false_discovery_rate below\ncutoff. Default\
-    \ value is 0.01."
+  optional: true
   synonyms:
   - --false_discovery_rate
   - -fdr
+  description: "Remove all islands with an false_discovery_rate below\ncutoff. Default\
+    \ value is 0.01."
   args: !SimpleFlagArg
     name: FALSE_DISCOVERY_RATE
-  optional: true
 - !Flag
-  description: "Cutoff for identification of significant changes been\nwild-type library\
-    \ and knockout library. Only provide a\nvalue when comparing two libraries."
+  optional: true
   synonyms:
   - --false_discovery_rate_df
   - -fdr_df
+  description: "Cutoff for identification of significant changes been\nwild-type library\
+    \ and knockout library. Only provide a\nvalue when comparing two libraries."
   args: !SimpleFlagArg
     name: FALSE_DISCOVERY_RATE_DF
-  optional: true
 - !Flag
-  description: "Path of the directory in which results will be stored.\nDefault path\
-    \ is the current path"
+  optional: true
   synonyms:
   - --output_directory
   - -o
+  description: "Path of the directory in which results will be stored.\nDefault path\
+    \ is the current path"
   args: !SimpleFlagArg
     name: OUTPUT_DIRECTORY
-  optional: true
 - !Flag
-  description: "The minimum length of a \"gap\" such that neighboring\nwindow is an\
-    \ \"island.\" This value must be a multiple\nof the window size. Default value\
-    \ is 600 (bp)"
+  optional: true
   synonyms:
   - --gap_size
   - -g
+  description: "The minimum length of a \"gap\" such that neighboring\nwindow is an\
+    \ \"island.\" This value must be a multiple\nof the window size. Default value\
+    \ is 600 (bp)"
   args: !SimpleFlagArg
     name: GAP_SIZE
-  optional: true
 - !Flag
-  description: "E-value. Requires user input when no control library\nis provided.\
-    \ Default value is 1000"
+  optional: true
   synonyms:
   - --e_value
   - -e
+  description: "E-value. Requires user input when no control library\nis provided.\
+    \ Default value is 1000"
   args: !SimpleFlagArg
     name: E_VALUE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --cpu
+  - -cpu
   description: "CPU Core Count: The number of CPU cores SICER program\nwill use when\
     \ executing multi-processing tasks.\nOptimal core count is the species' number\
     \ of\nchromosomes. Default value is the maximum number of\ncores avaiable in the\
     \ system."
-  synonyms:
-  - --cpu
-  - -cpu
   args: !SimpleFlagArg
     name: CPU
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --significant_reads
   description: "Output Significant Reads: Enter \"--significant_reads\"\nto have SICER\
     \ produce a BED file of treatment reads\nfiltered by significant islands and WIG\
     \ file of\nfiltered reads binned into windows"
-  synonyms:
-  - --significant_reads
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: increase console output verbosity
+  optional: true
   synonyms:
   - --verbose
   - -v
+  description: increase console output verbosity
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ''
+  optional: true
   synonyms:
   - -h
+  description: ''
   args: !SimpleFlagArg
     name: for
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: Use --help or -h for more information\n\nProcessing arguments for\
@@ -216,3 +216,4 @@ help_text: "usage: Use --help or -h for more information\n\nProcessing arguments
   \ binned into windows\n  --verbose, -v         increase console output verbosity\n"
 generated_using:
 - --help
+docker_image:

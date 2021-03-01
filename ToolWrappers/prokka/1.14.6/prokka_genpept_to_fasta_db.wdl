@@ -20,6 +20,9 @@ task ProkkagenpeptToFastaDb {
       ~{if (hypo) then "--hypo" else ""} \
       ~{if defined(min_len) then ("--minlen " +  '"' + min_len + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "!      Verbose progress (default '0')."
     format: "Input format (default 'genbank')."

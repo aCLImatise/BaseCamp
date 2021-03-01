@@ -20,6 +20,9 @@ task SnippyvcfReport {
       ~{if defined(ref) then ("--ref " +  '"' + ref + '"') else ""} \
       ~{if (html) then "--html" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "!        Output verbose debug info (default '0')."
     auto: "!         Autoset --vcf/bam/ref to snippy names (default '0')."

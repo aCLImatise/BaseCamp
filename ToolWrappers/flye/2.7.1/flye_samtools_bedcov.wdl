@@ -22,6 +22,9 @@ task FlyesamtoolsBedcov {
       ~{if defined(input_fmt_option) then ("--input-fmt-option " +  '"' + input_fmt_option + '"') else ""} \
       ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mapping_quality_threshold: "mapping quality threshold [0]"
     include_deletions_d: "do not include deletions (D) and ref skips (N) in bedcov computation"

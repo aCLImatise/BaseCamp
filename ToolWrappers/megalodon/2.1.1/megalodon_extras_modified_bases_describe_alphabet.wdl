@@ -20,6 +20,9 @@ task MegalodonExtrasModifiedBasesDescribeAlphabet {
       ~{if defined(fast_fives_dir) then ("--fast5s_dir " +  '"' + fast_fives_dir + '"') else ""} \
       ~{if defined(tai_yaki_model_filename) then ("--taiyaki-model-filename " +  '"' + tai_yaki_model_filename + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     guppy_config: "Guppy config. Default: dna_r9.4.1_450bps_modbases_dam-\\ndcm-cpg_hac.cfg"
     guppy_server_path: "Path to guppy server executable. Default: ./ont-\\nguppy/bin/guppy_basecall_server"

@@ -6,7 +6,7 @@ task MakeBatchForIterativelyMappingAssemblingpy {
     Int? input_nd_fastq
     File? input_fasta_format
     Int? how_many_iterations
-    Int? theads_used_bowtie
+    Int? theads_used_default
     Int? spades_kmer_settings
     File? executable_output_batch
     Boolean? un
@@ -20,7 +20,7 @@ task MakeBatchForIterativelyMappingAssemblingpy {
       ~{if defined(input_nd_fastq) then ("-2 " +  '"' + input_nd_fastq + '"') else ""} \
       ~{if defined(input_fasta_format) then ("-s " +  '"' + input_fasta_format + '"') else ""} \
       ~{if defined(how_many_iterations) then ("-R " +  '"' + how_many_iterations + '"') else ""} \
-      ~{if defined(theads_used_bowtie) then ("-t " +  '"' + theads_used_bowtie + '"') else ""} \
+      ~{if defined(theads_used_default) then ("-t " +  '"' + theads_used_default + '"') else ""} \
       ~{if defined(spades_kmer_settings) then ("-k " +  '"' + spades_kmer_settings + '"') else ""} \
       ~{if defined(executable_output_batch) then ("-o " +  '"' + executable_output_batch + '"') else ""} \
       ~{if (un) then "--un" else ""} \
@@ -28,12 +28,15 @@ task MakeBatchForIterativelyMappingAssemblingpy {
       ~{if defined(which_bowtie_two) then ("--which-bowtie2 " +  '"' + which_bowtie_two + '"') else ""} \
       ~{if defined(which_spades) then ("--which-spades " +  '"' + which_spades + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_st_fastq: "Input 1st fastq format file as pool"
     input_nd_fastq: "Input 2nd fastq format file as pool"
     input_fasta_format: "Input fasta format file as initial seed"
     how_many_iterations: "How many iterations would you like to have? Default=3"
-    theads_used_bowtie: "theads used for bowtie2 and SPAdes. Default=1"
+    theads_used_default: "theads used for bowtie2 and SPAdes. Default=1"
     spades_kmer_settings: "SPAdes k-mer settings. Use the same format as in\\nSPAdes. Default=21,45,65,85,105"
     executable_output_batch: "Executable output batch file."
     un: "Try to map and assembly without paired information."

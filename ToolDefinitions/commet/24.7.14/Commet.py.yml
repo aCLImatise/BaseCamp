@@ -4,12 +4,15 @@ command:
 positional: []
 named:
 - !Flag
-  description: indicates the usage of SGE cluster commands
+  optional: true
   synonyms:
   - --sge
+  description: indicates the usage of SGE cluster commands
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --one_vs_all
   description: "With this option the first set is then called \"first\"\nand is compared\
     \ to all others. However, the other sets\nare not compared to each others. In\
     \ this case, commet\noutputs the reads from first set in all others and\nvice\
@@ -17,78 +20,72 @@ named:
     \ File called vector_plain.csv\n(resp vector_percentage) contains for each read\
     \ set i,\nthe number (resp. percentage) of reads from \"first\" in\ni \"/\" the\
     \ number (resp. percentage) of reads from i in\nref."
-  synonyms:
-  - --one_vs_all
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ", --output_directory\ndirectory in which results will be output [default:\n\
-    \"output_commet\"]"
+  optional: true
   synonyms:
+  - -b
+  - --binaries_directory
   - -o
+  - --output_directory
+  description: "directory in which results will be output [default:\n\"output_commet\"\
+    ]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'kmer size [default: 33]'
+  optional: true
   synonyms:
   - -k
+  description: 'kmer size [default: 33]'
   args: !SimpleFlagArg
     name: K
-  optional: true
 - !Flag
-  description: 'Minimal number of shared k-mers [default: 2]'
+  optional: true
   synonyms:
   - -t
+  description: 'Minimal number of shared k-mers [default: 2]'
   args: !SimpleFlagArg
     name: T
-  optional: true
 - !Flag
-  description: "minimal length a read should have to be kept\n[default=k*t]"
+  optional: true
   synonyms:
   - -l
+  description: "minimal length a read should have to be kept\n[default=k*t]"
   args: !SimpleFlagArg
     name: L
-  optional: true
 - !Flag
-  description: "maximal number of Ns a read should contain to be kept.\n[default=any]"
+  optional: true
   synonyms:
   - -n
+  description: "maximal number of Ns a read should contain to be kept.\n[default=any]"
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "minimal Shannon index a read should have to be kept.\nFloat in [0,2].\
-    \ [default=0]"
+  optional: true
   synonyms:
   - -e
+  description: "minimal Shannon index a read should have to be kept.\nFloat in [0,2].\
+    \ [default=0]"
   args: !SimpleFlagArg
     name: E
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -m
   description: "maximum number of selected reads - This applies to a\nfull set of\
     \ reads. If a line of input_file is composed\nby 3 read files, and m=600, then\
     \ the first 200 reads\nfrom each read file will be treated. [default=all]\n"
-  synonyms:
-  - -m
   args: !SimpleFlagArg
     name: M
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -b
-  args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: Commet.py [-h] [--sge] [--one_vs_all] [-b] [-o] [-k K] [-t T] [-l\
@@ -121,3 +118,4 @@ help_text: "usage: Commet.py [-h] [--sge] [--one_vs_all] [-b] [-o] [-k K] [-t T]
   \                    from each read file will be treated. [default=all]\n"
 generated_using:
 - --help
+docker_image:

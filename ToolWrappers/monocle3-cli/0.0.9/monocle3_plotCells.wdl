@@ -44,6 +44,9 @@ task Monocle3PlotCells {
       ~{if (label_branch_points) then "--label-branch-points" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_object_format: "Format of input object. [Default: cds3]"
     output_plot_format: "Format of output plot, choose from {png, pdf}. [Default: png]"

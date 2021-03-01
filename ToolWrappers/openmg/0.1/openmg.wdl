@@ -16,6 +16,9 @@ task Openmg {
       ~{if (fr) then "-fr" else ""} \
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ec: ":  elemental composition of the molecules to be generated."
     sdf_file_store: ":   SDF file where to store the molecules."

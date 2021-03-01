@@ -22,6 +22,9 @@ task InitializeTranscriptDatasource {
       ~{if defined(filter) then ("--filter " +  '"' + filter + '"') else ""} \
       ~{if defined(protein_map_file) then ("--protein-map-file " +  '"' + protein_map_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name: "name of the datasource.  For example, ensembl.  Or GENCODE"
     filter: "Filter to use from ['dummy', 'basic'].  For non-GENCODE ENSEMBL, this should be set to dummy. default: basic"

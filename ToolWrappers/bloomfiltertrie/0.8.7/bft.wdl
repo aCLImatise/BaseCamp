@@ -10,6 +10,9 @@ task Bft {
       ~{build} \
       ~{k}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     build: ""
     k: ""

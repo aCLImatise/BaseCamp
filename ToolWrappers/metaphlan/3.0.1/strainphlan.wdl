@@ -40,6 +40,9 @@ task Strainphlan {
       ~{if (mutation_rates) then "--mutation_rates" else ""} \
       ~{if (print_clades_only) then "--print_clades_only" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     database: "The input MetaPhlAn 3.0 database"
     clade_markers: "The clade markers as FASTA file"

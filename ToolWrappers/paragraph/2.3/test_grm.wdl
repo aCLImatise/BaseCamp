@@ -34,6 +34,9 @@ task TestGrm {
       ~{if (g_test_throw_on_failure) then "--gtest_throw_on_failure" else ""} \
       ~{if defined(g_test_catch_exceptions) then ("--gtest_catch_exceptions " +  '"' + g_test_catch_exceptions + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     g_test_list_tests: "List the names of all tests instead of running them. The name of\\nTEST(Foo, Bar) is \\\"Foo.Bar\\\"."
     g_test_filter: "[-NEGATIVE_PATTERNS]\\nRun only the tests whose name matches one of the positive patterns but\\nnone of the negative patterns. '?' matches any single character; '*'\\nmatches any substring; ':' separates two patterns."

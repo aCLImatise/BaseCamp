@@ -3,7 +3,7 @@ id: genomedata_close_data.cwl
 inputs:
 - id: in_verbose
   doc: Print status updates and diagnostic messages
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_gd_archive
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - genomedata-close-data

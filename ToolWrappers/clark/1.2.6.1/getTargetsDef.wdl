@@ -8,6 +8,9 @@ task GetTargetsDef {
     getTargetsDef \
       ~{files_to_tax_ids}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     files_to_tax_ids: ""
   }

@@ -8,6 +8,9 @@ task Amaqvalues {
     ama_qvalues \
       ~{copyright}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     copyright: "(2010) The University of Queensland"
   }

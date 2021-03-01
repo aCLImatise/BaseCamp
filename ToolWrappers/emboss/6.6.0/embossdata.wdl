@@ -12,6 +12,9 @@ task Embossdata {
       ~{if (outfile) then "-outfile" else ""} \
       ~{if (reject) then "-reject" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     show_all: "toggle     Show all potential EMBOSS data files"
     outfile: "outfile    [stdout] This specifies the name of the file\\nthat the results of a search for a file in\\nthe various data directories is written to.\\nBy default these results are written to the\\nscreen (stdout)."

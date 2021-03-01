@@ -8,6 +8,9 @@ task GenPoHoLandscape {
     genPoHoLandscape \
       ~{if (p_q_h) then "-99999999999999999" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     p_q_h: "P:2 Q2 H-3"
   }

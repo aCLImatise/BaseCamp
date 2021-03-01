@@ -26,6 +26,9 @@ task SortDenovoPrimerspy {
       ~{if defined(amplicon_len) then ("--amplicon_len " +  '"' + amplicon_len + '"') else ""} \
       ~{if defined(hits_file) then ("--hits_file " +  '"' + hits_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Print information during execution -- useful for\\ndebugging [default: False]"
     output_dir: "Output directory"

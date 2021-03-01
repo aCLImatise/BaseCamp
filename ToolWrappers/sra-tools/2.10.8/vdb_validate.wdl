@@ -26,6 +26,9 @@ task Vdbvalidate {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(option_file) then ("--option-file " +  '"' + option_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     blob_crc: "Check blobs CRC32 (default: yes)"
     referential_integrity: "Check data referential integrity for\\ndatabases (default: yes)"

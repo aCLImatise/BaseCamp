@@ -2,7 +2,7 @@ version 1.0
 
 task Savage {
   input {
-    File? path_input_fastq
+    File? path_input_fastq_containing_singleend
     Int? p_one
     Int? p_two
     Int? min_overlap_len
@@ -34,7 +34,7 @@ task Savage {
   }
   command <<<
     savage \
-      ~{if defined(path_input_fastq) then ("-s " +  '"' + path_input_fastq + '"') else ""} \
+      ~{if defined(path_input_fastq_containing_singleend) then ("-s " +  '"' + path_input_fastq_containing_singleend + '"') else ""} \
       ~{if defined(p_one) then ("-p1 " +  '"' + p_one + '"') else ""} \
       ~{if defined(p_two) then ("-p2 " +  '"' + p_two + '"') else ""} \
       ~{if defined(min_overlap_len) then ("--min_overlap_len " +  '"' + min_overlap_len + '"') else ""} \
@@ -64,8 +64,11 @@ task Savage {
       ~{if (no_filtering) then "--no_filtering" else ""} \
       ~{if defined(max_tip_len) then ("--max_tip_len " +  '"' + max_tip_len + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    path_input_fastq: "path to input fastq containing single-end reads"
+    path_input_fastq_containing_singleend: "path to input fastq containing single-end reads"
     p_one: "path to input fastq containing paired-end reads (/1)"
     p_two: "path to input fastq containing paired-end reads (/2)"
     min_overlap_len: "minimum overlap length required between reads"

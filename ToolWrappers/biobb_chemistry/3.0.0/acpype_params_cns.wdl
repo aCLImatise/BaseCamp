@@ -16,6 +16,9 @@ task AcpypeParamsCns {
       ~{if defined(output_path_inp) then ("--output_path_inp " +  '"' + output_path_inp + '"') else ""} \
       ~{if defined(output_path_top) then ("--output_path_top " +  '"' + output_path_top + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config: "Configuration file"
     input_path: "Path to the input file. Accepted formats: pdb, mdl, mol2."

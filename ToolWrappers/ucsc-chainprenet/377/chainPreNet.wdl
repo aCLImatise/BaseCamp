@@ -18,6 +18,9 @@ task ChainPreNet {
       ~{if defined(pad) then ("-pad " +  '"' + pad + '"') else ""} \
       ~{if (incl_hap) then "-inclHap" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dots: "- output a dot every so often"
     pad: "- extra to pad around blocks to decrease trash\\n(default 1)"

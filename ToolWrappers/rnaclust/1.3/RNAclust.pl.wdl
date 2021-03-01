@@ -3,15 +3,15 @@ version 1.0
 task RNAclustpl {
   input {
     Boolean? file_name_fasta
-    Boolean? dir_name_target
+    Boolean? dir_name_directory
     Boolean? cpu
     Boolean? dp_only
     Boolean? dp_dir
-    Boolean? integer_start_pairwise
+    Boolean? integer_start_ioptional
     Boolean? end
     Boolean? tree
     Boolean? malig
-    Boolean? rnasoup_immediatly_computing
+    Boolean? starts_rnasoup_written
     Directory? rna_soup_only
     Boolean? add_sequence
     Boolean? loca_rna_opts
@@ -44,7 +44,7 @@ task RNAclustpl {
     String help
     Directory var_40
     String dot_plots
-    File file
+    File var_file
     String immediatly
     String message
     String of
@@ -125,7 +125,7 @@ task RNAclustpl {
       ~{help} \
       ~{var_40} \
       ~{dot_plots} \
-      ~{file} \
+      ~{var_file} \
       ~{immediatly} \
       ~{message} \
       ~{of} \
@@ -178,15 +178,15 @@ task RNAclustpl {
       ~{tree_dot} \
       ~{var_93} \
       ~{if (file_name_fasta) then "--fasta" else ""} \
-      ~{if (dir_name_target) then "--dir" else ""} \
+      ~{if (dir_name_directory) then "--dir" else ""} \
       ~{if (cpu) then "--cpu" else ""} \
       ~{if (dp_only) then "--dponly" else ""} \
       ~{if (dp_dir) then "--dpdir" else ""} \
-      ~{if (integer_start_pairwise) then "--start" else ""} \
+      ~{if (integer_start_ioptional) then "--start" else ""} \
       ~{if (end) then "--end" else ""} \
       ~{if (tree) then "--tree" else ""} \
       ~{if (malig) then "--malig" else ""} \
-      ~{if (rnasoup_immediatly_computing) then "--rnasoup" else ""} \
+      ~{if (starts_rnasoup_written) then "--rnasoup" else ""} \
       ~{if (rna_soup_only) then "--rnasoup-only" else ""} \
       ~{if (add_sequence) then "--addSequence" else ""} \
       ~{if (loca_rna_opts) then "--locarna-opts" else ""} \
@@ -194,17 +194,20 @@ task RNAclustpl {
       ~{if (man) then "--man" else ""} \
       ~{if defined(local_bin) then ("--localbin " +  '"' + local_bin + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_name_fasta: "<file name>                     FASTA file\\n(required)"
-    dir_name_target: "<dir name>                      Target directory TGTDIR\\n(required)"
+    dir_name_directory: "<dir name>                      Target directory TGTDIR\\n(required)"
     cpu: "<integer>                       Number of CPUs available on your machine. Calls to locarna and\\nRNAfold will be distributed equally on those CPUs. (default: 1)\\n(optional)"
     dp_only: "Stop after dotplots are created. This option is useful if\\ncalculation of pairwise alignments will be distributed among\\ndifferent machines.\\n(optional)"
     dp_dir: "<dir>                           Directory of dotplots. Use this option in case you distribute the\\ncalculation of pairwise alignments among different machines using\\n--start and --end options.\\n(optional)"
-    integer_start_pairwise: "<integer>                       Start with pairwise alignment i.\\n(optional)"
+    integer_start_ioptional: "<integer>                       Start with pairwise alignment i.\\n(optional)"
     end: "<integer>                       Stop with pairwise alignment j.\\n(optional, except --start is specified)"
     tree: "Use this option after all pairwise alignments have been computed\\non different machines (options --start, --end) in order to generate\\nthe hierarchical cluster-tree. The pairwise alignments must be moved\\nto one 'paligs' directory beforehand.\\n(optional)"
     malig: "Final cluster-tree is traversed and multiple alignment for each internal\\nnode is computed progressively, default: no\\n(optional)"
-    rnasoup_immediatly_computing: "Starts RNAsoup immediatly after computing the pairwise alignments and\\nthe hierarchical tree. Results are written to the subfold 'rnasoup'.\\nActivates the --malig option.\\n(optional)"
+    starts_rnasoup_written: "Starts RNAsoup immediatly after computing the pairwise alignments and\\nthe hierarchical tree. Results are written to the subfold 'rnasoup'.\\nActivates the --malig option.\\n(optional)"
     rna_soup_only: "Starts just RNAsoup on an existing RNAclust directory. Activates --malig\\nif there are no multiple alignments available. Writes RNAsoup output to a\\nsubfolder called 'rnasoup'.\\n(optional)"
     add_sequence: "Appends the sequences in the fasta file to an existing cluster tree. The\\nfolder containing the existing tree is defined by --dir. A subfolder,\\nnamed 'additionalSeqs', containing the new tree and additional files will\\nbe created there. This function is still experimental, not all combinations\\nof parameter will work.\\n(optional)"
     loca_rna_opts: "<\\\"locarna options\\\">          Options passed directly to locarna (must be given as one string)\\n(optional)"
@@ -237,7 +240,7 @@ task RNAclustpl {
     help: ""
     var_40: ""
     dot_plots: ""
-    file: ""
+    var_file: ""
     immediatly: ""
     message: ""
     of: ""

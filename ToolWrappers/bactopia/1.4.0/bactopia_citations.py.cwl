@@ -1,9 +1,9 @@
 class: CommandLineTool
 id: bactopia_citations.py.cwl
 inputs:
-- id: in_directory_where_stored
+- id: in_directory_where_repository
   doc: Directory where Bactopia repository is stored.
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --bactopia
 - id: in_var_1
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bactopia-citations.py

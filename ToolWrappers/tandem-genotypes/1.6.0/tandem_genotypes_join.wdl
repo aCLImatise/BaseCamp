@@ -16,6 +16,9 @@ task Tandemgenotypesjoin {
       ~{if defined(scores) then ("--scores " +  '"' + scores + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     shrink: "shrink the output"
     mean: "type of mean for positive/patient/case files:\\n1=ordinary, 3=cubic (default=1)"

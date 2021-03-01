@@ -4,6 +4,9 @@ task Bammarkduplicatesopt {
   command <<<
     bammarkduplicatesopt
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -20,6 +20,9 @@ task SlimmBuild {
       ~{if defined(batch) then ("--batch " +  '"' + batch + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     version_check: "Turn this option off to disable version update notifications of the\\napplication. One of 1, ON, TRUE, T, YES, 0, OFF, FALSE, F, and NO.\\nDefault: 1."
     output_file: "The path to the output file (default slimm_db.sldb) Valid filetype\\nis: .sldb. Default: slimm_db.sldb."

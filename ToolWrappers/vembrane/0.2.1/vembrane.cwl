@@ -3,27 +3,27 @@ id: vembrane.cwl
 inputs:
 - id: in_output
   doc: "Output file, if not specified, output is written to\nSTDOUT."
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_output_fmt
   doc: Output format.
-  type: string
+  type: string?
   inputBinding:
     prefix: --output-fmt
 - id: in_annotation_key
   doc: The INFO key for the annotation field.
-  type: string
+  type: string?
   inputBinding:
     prefix: --annotation-key
 - id: in_statistics
   doc: Write statistics to this file.
-  type: File
+  type: File?
   inputBinding:
     prefix: --statistics
 - id: in_keep_unmatched
   doc: "Keep all annotations of a variant if at least one of\nthem passes the expression.\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --keep-unmatched
 - id: in_vcf
@@ -43,9 +43,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: "Output file, if not specified, output is written to\nSTDOUT."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - vembrane

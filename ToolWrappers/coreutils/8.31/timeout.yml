@@ -3,77 +3,77 @@ command:
 - timeout
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: DURATION
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: COMMAND
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 2
   name: ARG
-  optional: true
+  description: ''
 named:
 - !Flag
-  description: "exit with the same status as COMMAND, even when the\ncommand times\
-    \ out"
+  optional: true
   synonyms:
   - --preserve-status
+  description: "exit with the same status as COMMAND, even when the\ncommand times\
+    \ out"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --foreground
   description: "when not running timeout directly from a shell prompt,\nallow COMMAND\
     \ to read from the TTY and get TTY signals;\nin this mode, children of COMMAND\
     \ will not be timed out"
-  synonyms:
-  - --foreground
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "also send a KILL signal if COMMAND is still running\nthis long after\
-    \ the initial signal was sent"
+  optional: true
   synonyms:
   - -k
   - --kill-after
+  description: "also send a KILL signal if COMMAND is still running\nthis long after\
+    \ the initial signal was sent"
   args: !SimpleFlagArg
     name: DURATION
-  optional: true
 - !Flag
-  description: "specify the signal to be sent on timeout;\nSIGNAL may be a name like\
-    \ 'HUP' or a number;\nsee 'kill -l' for a list of signals"
+  optional: true
   synonyms:
   - -s
   - --signal
+  description: "specify the signal to be sent on timeout;\nSIGNAL may be a name like\
+    \ 'HUP' or a number;\nsee 'kill -l' for a list of signals"
   args: !SimpleFlagArg
     name: SIGNAL
-  optional: true
 - !Flag
-  description: diagnose to stderr any signal sent upon timeout
+  optional: true
   synonyms:
   - -v
   - --verbose
+  description: diagnose to stderr any signal sent upon timeout
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: display this help and exit
+  optional: true
   synonyms:
   - --help
+  description: display this help and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: output version information and exit
+  optional: true
   synonyms:
   - --version
+  description: output version information and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "Usage: timeout [OPTION] DURATION COMMAND [ARG]...\n  or:  timeout [OPTION]\n\
   Start COMMAND, and kill it if still running after DURATION.\n\nMandatory arguments\
   \ to long options are mandatory for short options too.\n      --preserve-status\n\
@@ -101,3 +101,4 @@ help_text: "Usage: timeout [OPTION] DURATION COMMAND [ARG]...\n  or:  timeout [O
   \ '(coreutils) timeout invocation'\n"
 generated_using:
 - --help
+docker_image:

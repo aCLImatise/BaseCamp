@@ -5,125 +5,125 @@ command:
 positional: []
 named:
 - !Flag
-  description: '[-c CUTOFF] [-o OUTDIR]'
+  optional: true
   synonyms:
   - --backdir
+  description: '[-c CUTOFF] [-o OUTDIR]'
   args: !SimpleFlagArg
     name: BACKGROUNDINTERCHROMMATRIXDIR
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --matrixfile
   description: "The matrix compressed file contains 1Mb and 100kb\nresolutions Hi-C\
     \ contact matrix (.hic format), or 1Mb\nand 100kb resolution files seperate with\
     \ ',', like\n/path/to/data_1Mb.cool,/path/to/data_100kb.cool or the\ndirectory\
     \ that contain Hi-C interaction matrix in\nsparse or dense matrix format, interchromosomal\n\
     interaction matrices only. Absolute path is required"
-  synonyms:
-  - -m
-  - --matrixfile
   args: !SimpleFlagArg
     name: MATRIXFILE
-  optional: true
 - !Flag
-  description: "the reference directory that downloaded from dropbox\ndropbox. (https://www.dropbox.com/sh/2ufsyu4wvrboxxp/A\n\
-    ABk5-_Fwy7jdM_t0vIsgYf4a?dl=0.)"
+  optional: true
   synonyms:
   - --refdir
+  description: "the reference directory that downloaded from dropbox\ndropbox. (https://www.dropbox.com/sh/2ufsyu4wvrboxxp/A\n\
+    ABk5-_Fwy7jdM_t0vIsgYf4a?dl=0.)"
   args: !SimpleFlagArg
     name: REFERENCEDIR
-  optional: true
 - !Flag
-  description: 'Enzyme used in Hi-C experiment, DEFAULT: MboI'
+  optional: true
   synonyms:
   - -e
   - --enzyme
+  description: 'Enzyme used in Hi-C experiment, DEFAULT: MboI'
   args: !ChoiceFlagArg
     choices: !!set
       DpnII:
-      HindIII:
       MboI:
-  optional: true
+      HindIII:
 - !Flag
-  description: 'Format for the output contact matrix, DEFAULT: cooler'
+  optional: true
   synonyms:
   - -f
   - --format
+  description: 'Format for the output contact matrix, DEFAULT: cooler'
   args: !ChoiceFlagArg
     choices: !!set
       cooler:
       juicer:
-  optional: true
 - !Flag
-  description: Path for pairix, use 'which pairix' to get the path
+  optional: true
   synonyms:
   - --ppath
+  description: Path for pairix, use 'which pairix' to get the path
   args: !SimpleFlagArg
     name: PAIRIXPATH
-  optional: true
 - !Flag
-  description: "Specify your species, choose form hg38, hg19, and\nmm10. DEFAULT:\
-    \ hg19"
+  optional: true
   synonyms:
   - -g
   - --genome
+  description: "Specify your species, choose form hg38, hg19, and\nmm10. DEFAULT:\
+    \ hg19"
   args: !ChoiceFlagArg
     choices: !!set
-      hg19:
       hg38:
       mm10:
-  optional: true
+      hg19:
 - !Flag
-  description: "Chimeric read pairs with .pairsam format. If no\nchimeric reads provided,\
-    \ breakpoints in 100kb\nresolution will be output only"
+  optional: true
   synonyms:
   - --chimeric
+  description: "Chimeric read pairs with .pairsam format. If no\nchimeric reads provided,\
+    \ breakpoints in 100kb\nresolution will be output only"
   args: !SimpleFlagArg
     name: CHIMERIC
-  optional: true
 - !Flag
-  description: "Cutoff of the rank product for chromosomal pairs to\nselect candidate\
-    \ translocated chromosomal pairs,\ndefault = 0.05"
+  optional: true
   synonyms:
   - -c
   - --cutoff
+  description: "Cutoff of the rank product for chromosomal pairs to\nselect candidate\
+    \ translocated chromosomal pairs,\ndefault = 0.05"
   args: !SimpleFlagArg
     name: CUTOFF
-  optional: true
 - !Flag
-  description: "Path to the output directory, where you want to store\nall the output\
-    \ files, if not set, the current\ndirectory will be used"
+  optional: true
   synonyms:
   - -o
   - --outdir
+  description: "Path to the output directory, where you want to store\nall the output\
+    \ files, if not set, the current\ndirectory will be used"
   args: !SimpleFlagArg
     name: OUTDIR
-  optional: true
 - !Flag
-  description: "Prefix for the result files. If not set, 'NA' will be\nused instead"
+  optional: true
   synonyms:
   - -n
   - --name
+  description: "Prefix for the result files. If not set, 'NA' will be\nused instead"
   args: !SimpleFlagArg
     name: NAME
-  optional: true
 - !Flag
-  description: "Number of threads for running HiNT-tl translocation\nbreakpoints detection\
-    \ part, DEFAULT: 16\n"
+  optional: true
   synonyms:
   - -p
   - --threads
+  description: "Number of threads for running HiNT-tl translocation\nbreakpoints detection\
+    \ part, DEFAULT: 16\n"
   args: !SimpleFlagArg
     name: THREADS
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: hint tl [-h] -m MATRIXFILE --refdir REFERENCEDIR\n            \
@@ -169,3 +169,4 @@ help_text: "usage: hint tl [-h] -m MATRIXFILE --refdir REFERENCEDIR\n           
   \ translocation\n                        breakpoints detection part, DEFAULT: 16\n"
 generated_using:
 - --help
+docker_image:

@@ -16,6 +16,9 @@ task JhsdbDebugd {
       ~{server} \
       ~{id}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     java: ""
     sun_dot_jvm_dot_hotspot_dot_debug_server: ""

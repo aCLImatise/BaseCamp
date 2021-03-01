@@ -4,7 +4,7 @@ task SnpSiftAnnotate {
   input {
     Boolean? dbsnp
     Boolean? clin_var
-    Boolean? annotate_fields_even
+    Boolean? annotate_fields_has
     String? exists
     Boolean? id
     String? info
@@ -15,7 +15,7 @@ task SnpSiftAnnotate {
     Boolean? no_info
     Boolean? sorted
     Boolean? tab_ix
-    Boolean? config_file_specify
+    File? config
     Boolean? _debug
     File? db
     Boolean? download
@@ -30,7 +30,7 @@ task SnpSiftAnnotate {
       ~{database_dot_vcf} \
       ~{if (dbsnp) then "-dbsnp" else ""} \
       ~{if (clin_var) then "-clinvar" else ""} \
-      ~{if (annotate_fields_even) then "-a" else ""} \
+      ~{if (annotate_fields_has) then "-a" else ""} \
       ~{if defined(exists) then ("-exists " +  '"' + exists + '"') else ""} \
       ~{if (id) then "-id" else ""} \
       ~{if defined(info) then ("-info " +  '"' + info + '"') else ""} \
@@ -41,7 +41,7 @@ task SnpSiftAnnotate {
       ~{if (no_info) then "-noInfo" else ""} \
       ~{if (sorted) then "-sorted" else ""} \
       ~{if (tab_ix) then "-tabix" else ""} \
-      ~{if (config_file_specify) then "-c" else ""} \
+      ~{if defined(config) then ("-config " +  '"' + config + '"') else ""} \
       ~{if (_debug) then "-d" else ""} \
       ~{if defined(db) then ("-db " +  '"' + db + '"') else ""} \
       ~{if (download) then "-download" else ""} \
@@ -50,10 +50,13 @@ task SnpSiftAnnotate {
       ~{if (_verbose) then "-v" else ""} \
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dbsnp: ": Use DbSnp database."
     clin_var: ": Use ClinVar database."
-    annotate_fields_even: ": Annotate fields, even if the database has an empty value (annotates using '.' for empty)."
+    annotate_fields_has: ": Annotate fields, even if the database has an empty value (annotates using '.' for empty)."
     exists: ": Annotate whether the variant exists or not in the database (using 'tag' as an INFO field FLAG)."
     id: ": Only annotate ID field (do not add INFO field). Default: true"
     info: ": Annotate using a list of info fields (list is a comma separated list of fields). Default: ALL."
@@ -64,7 +67,7 @@ task SnpSiftAnnotate {
     no_info: ": Do not annotate INFO fields. Default: false"
     sorted: ": VCF database is sorted and uncompressed. Default: false"
     tab_ix: ": VCF database is tabix-indexed. Default: false"
-    config_file_specify: ", -config <file>  : Specify config file"
+    config: ": Specify config file"
     _debug: ": Debug."
     db: ": Database file name (for commands that require databases)."
     download: ": Download database, if not available locally. Default: true."

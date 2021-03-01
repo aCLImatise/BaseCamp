@@ -22,6 +22,9 @@ task XsvFmt {
       ~{if defined(write_output_file) then ("--output " +  '"' + write_output_file + '"') else ""} \
       ~{if defined(delimiter) then ("--delimiter " +  '"' + delimiter + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out_delimiter: "The field delimiter for writing CSV data.\\n[default: ,]"
     crlf: "Use '\\r\\n' line endings in the output."

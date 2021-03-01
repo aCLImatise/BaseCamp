@@ -22,6 +22,9 @@ task Effectivet3 {
       ~{if defined(f) then ("-f " +  '"' + f + '"') else ""} \
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     q: ""
     o: ""

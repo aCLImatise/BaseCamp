@@ -3,119 +3,119 @@ command:
 - pispino_seqprep
 positional:
 - !Positional
-  description: -o <DIR>              [REQUIRED] Directory to output results
+  optional: false
   position: 0
   name: FASTQ
-  optional: false
+  description: -o <DIR>              [REQUIRED] Directory to output results
 named:
 - !Flag
-  description: '[REQUIRED] Directory with raw sequences in gzipped'
+  optional: true
   synonyms:
   - -i
+  description: '[REQUIRED] Directory with raw sequences in gzipped'
   args: !SimpleFlagArg
     name: DIR
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -l
   description: "Tap separated file with three columns for sample ids,\nforward-read\
     \ filename and reverse-read filename. Only\nthe files listed in this file will\
     \ be processed."
-  synonyms:
-  - -l
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: "FASTX FASTQ_QUALITY_FILTER - Minimum quality score to\nkeep [default:\
-    \ 30]"
+  optional: true
   synonyms:
   - --FASTX-q
+  description: "FASTX FASTQ_QUALITY_FILTER - Minimum quality score to\nkeep [default:\
+    \ 30]"
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: "FASTX FASTQ_QUALITY_FILTER - Minimum percent of bases\nthat must have\
-    \ q quality [default: 80]"
+  optional: true
   synonyms:
   - --FASTX-p
+  description: "FASTX FASTQ_QUALITY_FILTER - Minimum percent of bases\nthat must have\
+    \ q quality [default: 80]"
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: "FASTX FASTQ_TO_FASTA - remove sequences with unknown\n(N) nucleotides\
-    \ [default: false]"
+  optional: true
   synonyms:
   - --FASTX-n
+  description: "FASTX FASTQ_TO_FASTA - remove sequences with unknown\n(N) nucleotides\
+    \ [default: false]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Base PHRED quality score [default: 33]'
+  optional: true
   synonyms:
   - -b
+  description: 'Base PHRED quality score [default: 33]'
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: "Joiner method: \"PEAR\" and \"FASTQJOIN\" [default:\nVSEARCH]"
+  optional: true
   synonyms:
   - --joiner_method
+  description: "Joiner method: \"PEAR\" and \"FASTQJOIN\" [default:\nVSEARCH]"
   args: !ChoiceFlagArg
     choices: !!set
-      PEAR:
       VSEARCH:
       FASTQJOIN:
-  optional: true
+      PEAR:
 - !Flag
+  optional: true
+  synonyms:
+  - --PEAR_options
   description: "= <STR>\nUser customisable parameter: You can add/change PEAR\nparameters.\
     \ Please use \"--PEAR_options=\" followed by\ncustom parameters wrapped around\
     \ them. E.g.\n--PEAR_options=\"-v 8 -t 2\". Note that if you put two\nsame parameters\
     \ such as \"-v 8 -v 15\", PEAR will use\nthe later."
-  synonyms:
-  - --PEAR_options
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Retain intermediate files (Beware intermediate files\nuse excessive\
-    \ disk space!)"
+  optional: true
   synonyms:
   - -r
+  description: "Retain intermediate files (Beware intermediate files\nuse excessive\
+    \ disk space!)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Verbose mode
+  optional: true
   synonyms:
   - -v
+  description: Verbose mode
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Number of Threads [default: 1]'
+  optional: true
   synonyms:
   - -t
+  description: 'Number of Threads [default: 1]'
   args: !SimpleFlagArg
     name: INT
-  optional: true
 - !Flag
-  description: "Do NOT join paired-end sequences, but just use the\nforward reads.\n"
+  optional: true
   synonyms:
   - --forwardreadsonly
+  description: "Do NOT join paired-end sequences, but just use the\nforward reads.\n"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ''
+  optional: true
   synonyms:
   - -o
+  description: ''
   args: !SimpleFlagArg
     name: DIR
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: pispino_seqprep [-h] -i <DIR> [-o <DIR>] [-l <FILE>] [--FASTX-q\
@@ -149,3 +149,4 @@ help_text: "usage: pispino_seqprep [-h] -i <DIR> [-o <DIR>] [-l <FILE>] [--FASTX
   \ reads.\n"
 generated_using:
 - --help
+docker_image:

@@ -3,22 +3,22 @@ id: ldhelmet_find_confs.cwl
 inputs:
 - id: in__display_version
   doc: '[ --version ]                Display version.'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_num_threads
   doc: (=1)          Number of threads to use.
-  type: long
+  type: long?
   inputBinding:
     prefix: --num_threads
 - id: in_arg_window_size
   doc: '[ --window_size ] arg (=50)  Window size.'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -w
 - id: in_arg_name_output
   doc: '[ --output_file ] arg        Name for output file.'
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_seq_file_one
@@ -28,7 +28,7 @@ inputs:
     position: 0
 - id: in_seq_file_two
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     position: 1
 outputs:
@@ -37,9 +37,10 @@ outputs:
   type: stdout
 - id: out_arg_name_output
   doc: '[ --output_file ] arg        Name for output file.'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_arg_name_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - ldhelmet

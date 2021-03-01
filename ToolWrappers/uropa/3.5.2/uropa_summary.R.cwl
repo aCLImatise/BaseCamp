@@ -3,27 +3,27 @@ id: uropa_summary.R.cwl
 inputs:
 - id: in_final_hits
   doc: file containing the final hits from UROPA.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --finalhits
 - id: in_config
   doc: file containing the json formatted configuration from the UROPA run.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --config
 - id: in_output
   doc: file name of output file [summary.pdf].
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_all_hits
   doc: file containing all hits from UROPA.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --allhits
 - id: in_call
   doc: original command line call.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --call
 outputs:
@@ -32,9 +32,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: file name of output file [summary.pdf].
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - uropa_summary.R

@@ -2,8 +2,8 @@ version 1.0
 
 task AssemblePairspyJoin {
   input {
-    Array[Int] two
-    Array[Int] ordered_list_fastafastq
+    Array[Int] ordered_list_containingheadprimary
+    Array[Int] ordered_list_containingtailsecondary
     Array[String] explicit_output_file
     File? outdir
     File? out_name
@@ -20,8 +20,8 @@ task AssemblePairspyJoin {
   }
   command <<<
     AssemblePairs_py join \
-      ~{if defined(two) then ("-2 " +  '"' + two + '"') else ""} \
-      ~{if defined(ordered_list_fastafastq) then ("-1 " +  '"' + ordered_list_fastafastq + '"') else ""} \
+      ~{if defined(ordered_list_containingheadprimary) then ("-1 " +  '"' + ordered_list_containingheadprimary + '"') else ""} \
+      ~{if defined(ordered_list_containingtailsecondary) then ("-2 " +  '"' + ordered_list_containingtailsecondary + '"') else ""} \
       ~{if defined(explicit_output_file) then ("-o " +  '"' + explicit_output_file + '"') else ""} \
       ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""} \
       ~{if defined(out_name) then ("--outname " +  '"' + out_name + '"') else ""} \
@@ -36,9 +36,12 @@ task AssemblePairspyJoin {
       ~{if defined(two_f) then ("--2f " +  '"' + two_f + '"') else ""} \
       ~{if defined(gap) then ("--gap " +  '"' + gap + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    two: "[-o OUT_FILES [OUT_FILES ...]] [--outdir OUT_DIR]\\n[--outname OUT_NAME] [--log LOG_FILE] [--failed]\\n[--fasta] [--delim DELIMITER DELIMITER DELIMITER]\\n[--nproc NPROC]\\n[--coord {illumina,solexa,sra,454,presto}]\\n[--rc {tail,head,both,none}]\\n[--1f HEAD_FIELDS [HEAD_FIELDS ...]]\\n[--2f TAIL_FIELDS [TAIL_FIELDS ...]] [--gap GAP]"
-    ordered_list_fastafastq: "An ordered list of FASTA/FASTQ files containing\\nhead/primary sequences. (default: None)"
+    ordered_list_containingheadprimary: "An ordered list of FASTA/FASTQ files containing\\nhead/primary sequences. (default: None)"
+    ordered_list_containingtailsecondary: "An ordered list of FASTA/FASTQ files containing\\ntail/secondary sequences. (default: None)"
     explicit_output_file: "Explicit output file name(s). Note, this argument\\ncannot be used with the --failed, --outdir, or\\n--outname arguments. If unspecified, then the output\\nfilename will be based on the input filename(s).\\n(default: None)"
     outdir: "Specify to changes the output directory to the\\nlocation specified. The input file directory is used\\nif this is not specified. (default: None)"
     out_name: "Changes the prefix of the successfully processed\\noutput file to the string specified. May not be\\nspecified with multiple input files. (default: None)"

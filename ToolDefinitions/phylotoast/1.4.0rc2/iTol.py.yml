@@ -4,101 +4,101 @@ command:
 positional: []
 named:
 - !Flag
-  description: The biom-format file with OTU-Sample abundance data.
+  optional: true
   synonyms:
   - -i
   - --otu_table
+  description: The biom-format file with OTU-Sample abundance data.
   args: !SimpleFlagArg
     name: OTU_TABLE
-  optional: true
 - !Flag
-  description: "The mapping file specifying group information for each\nsample."
+  optional: true
   synonyms:
   - -m
   - --mapping
+  description: "The mapping file specifying group information for each\nsample."
   args: !SimpleFlagArg
     name: MAPPING
-  optional: true
 - !Flag
-  description: "A phylogenetic tree in Newick format to be modified by\nexchanging\
-    \ the OTU ID node names for taxonomic names."
+  optional: true
   synonyms:
   - -t
   - --input_tree
+  description: "A phylogenetic tree in Newick format to be modified by\nexchanging\
+    \ the OTU ID node names for taxonomic names."
   args: !SimpleFlagArg
     name: INPUT_TREE
-  optional: true
 - !Flag
-  description: The output .tre file
+  optional: true
   synonyms:
   - -e
   - --output_tre
+  description: The output .tre file
   args: !SimpleFlagArg
     name: OUTPUT_TRE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output_itol_table
   description: "Other than a phylogenetic tree, the main input to iTol\nis a dataset\
     \ file containing some representation of\nthe abundance of every OTU across the\
     \ specified data\ngroups. This program provides multiple calculation\nmethods.\
     \ See the --analysis_metric option for details."
-  synonyms:
-  - -o
-  - --output_itol_table
   args: !SimpleFlagArg
     name: OUTPUT_ITOL_TABLE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --map_categories
   description: "Any mapping categories, such as treatment type, that\nwill be used\
     \ to group the data in the output iTol\ntable. For example, one category with\
     \ three types will\nresult in three data columns in the final output. Two\ncategories\
     \ with three types each will result in six\ndata columns. Default is no categories\
     \ and all the\ndata will be treated as a single group."
-  synonyms:
-  - -c
-  - --map_categories
   args: !SimpleFlagArg
     name: MAP_CATEGORIES
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --analysis_metric
   description: "Specifies which metric is calculated on the abundance\ndata in the\
     \ OTU table. Available options: MRE - mean\nrelative abundance (Abundance data\
     \ is normalized by\ntotal sample abundance, then averaged across OTU),\nNMRE -\
     \ normalized mean relative abundance (MRE\nnormalized by the total MRE across\
     \ the groups as\nspecified in --map_categories), raw (outputs the\nactual sequence\
     \ abundance data for each OTU)."
-  synonyms:
-  - -a
-  - --analysis_metric
   args: !ChoiceFlagArg
     choices: !!set
-      NMRA:
       MRA:
+      NMRA:
       raw:
-  optional: true
 - !Flag
-  description: "Apply the variance-stabilizing arcsine square root\ntransformation\
-    \ to the OTU proportion data."
+  optional: true
   synonyms:
   - --stabilize_variance
+  description: "Apply the variance-stabilizing arcsine square root\ntransformation\
+    \ to the OTU proportion data."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Keep OTU IDs in the output files instead of.replacing\nthem with shortened\
-    \ taxonomic names.\n"
+  optional: true
   synonyms:
   - --keep_otuids
+  description: "Keep OTU IDs in the output files instead of.replacing\nthem with shortened\
+    \ taxonomic names.\n"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: iTol.py [-h] -i OTU_TABLE -m MAPPING [-t INPUT_TREE] [-e OUTPUT_TRE]\n\
@@ -143,3 +143,4 @@ help_text: "usage: iTol.py [-h] -i OTU_TABLE -m MAPPING [-t INPUT_TREE] [-e OUTP
   \ names.\n"
 generated_using:
 - --help
+docker_image:

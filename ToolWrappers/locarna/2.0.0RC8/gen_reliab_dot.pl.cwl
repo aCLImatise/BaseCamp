@@ -1,36 +1,26 @@
 class: CommandLineTool
 id: gen_reliab_dot.pl.cwl
 inputs:
-- id: in_s
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -s
-- id: in_a
-  doc: ''
-  type: File
-  inputBinding:
-    prefix: -a
-- id: in_f
-  doc: ''
-  type: File
-  inputBinding:
-    prefix: -f
-- id: in_q
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -q
-- id: in_v
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -v
 - id: in_man
-  doc: ''
-  type: string
+  doc: documentation
+  type: string?
   inputBinding:
     prefix: --man
+- id: in_verbose
+  doc: reliability file
+  type: File?
+  inputBinding:
+    prefix: --verbose
+- id: in_alignment_file
+  doc: alignment file
+  type: File?
+  inputBinding:
+    prefix: -a
+- id: in_probabilities
+  doc: probabilities
+  type: string?
+  inputBinding:
+    prefix: -s
 - id: in_alignment
   doc: ''
   type: string
@@ -50,6 +40,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gen-reliab-dot.pl

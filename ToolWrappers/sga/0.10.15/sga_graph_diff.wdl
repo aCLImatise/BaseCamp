@@ -34,6 +34,9 @@ task SgaGraphdiff {
       ~{if defined(min_dbg_count) then ("--min-dbg-count " +  '"' + min_dbg_count + '"') else ""} \
       ~{if defined(ref) then ("--ref " +  '"' + ref + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "display verbose output"
     prefix: "prefix the output files with NAME"

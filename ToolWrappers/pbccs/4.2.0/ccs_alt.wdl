@@ -19,7 +19,7 @@ task Ccsalt {
     Boolean? log_file
     String out_dot_ccs_dot_bam_vertical_line_fast_q_do_tgz_vertical_line_xml
     String ccs
-    File file
+    File var_file
     String in_dot_sub_reads_dot_bam_vertical_line_xml
     String consensus
     String sub_reads
@@ -29,7 +29,7 @@ task Ccsalt {
     ccs_alt \
       ~{out_dot_ccs_dot_bam_vertical_line_fast_q_do_tgz_vertical_line_xml} \
       ~{ccs} \
-      ~{file} \
+      ~{var_file} \
       ~{in_dot_sub_reads_dot_bam_vertical_line_xml} \
       ~{consensus} \
       ~{sub_reads} \
@@ -50,6 +50,9 @@ task Ccsalt {
       ~{if (log_level) then "--log-level" else ""} \
       ~{if (log_file) then "--log-file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_passes: "INT    Minimum number of full-length subreads required to generate CCS for a ZMW. [3]"
     min_snr: "FLOAT  Minimum SNR of subreads to use for generating CCS [2.5]"
@@ -68,7 +71,7 @@ task Ccsalt {
     log_file: "FILE   Log to a file, instead of stderr."
     out_dot_ccs_dot_bam_vertical_line_fast_q_do_tgz_vertical_line_xml: ""
     ccs: ""
-    file: ""
+    var_file: ""
     in_dot_sub_reads_dot_bam_vertical_line_xml: ""
     consensus: ""
     sub_reads: ""

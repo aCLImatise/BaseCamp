@@ -31,17 +31,16 @@ task Domainlist {
     String var_26
     String varian_fdf
     String burleigh
-    String fei_slash_philips
     String hitachi
-    String var_31
+    String var_30
     String seiko
     String ubm
-    String var_34
+    String var_33
     String aim
     String amira
     String i_mod
     String ip_lab
-    String noaahrd_gridded_data
+    String gridded_data_format
     String nr_rd
     String olympus_sis_tiff
     String pco_raw
@@ -77,21 +76,23 @@ task Domainlist {
       ~{var_26} \
       ~{varian_fdf} \
       ~{burleigh} \
-      ~{fei_slash_philips} \
       ~{hitachi} \
-      ~{var_31} \
+      ~{var_30} \
       ~{seiko} \
       ~{ubm} \
-      ~{var_34} \
+      ~{var_33} \
       ~{aim} \
       ~{amira} \
       ~{i_mod} \
       ~{ip_lab} \
-      ~{noaahrd_gridded_data} \
+      ~{gridded_data_format} \
       ~{nr_rd} \
       ~{olympus_sis_tiff} \
       ~{pco_raw}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     var_0: "OME-XML"
     i_magic: "LEO"
@@ -122,17 +123,16 @@ task Domainlist {
     var_26: "OME-TIFF"
     varian_fdf: "Varian FDF"
     burleigh: "FEI TIFF"
-    fei_slash_philips: "Hamamatsu HIS"
     hitachi: "JEOL"
-    var_31: "OME-XML"
+    var_30: "OME-XML"
     seiko: "TopoMetrix"
     ubm: "Veeco"
-    var_34: "OME-XML"
+    var_33: "OME-XML"
     aim: "ARF"
     amira: "Bitplane Imaris"
     i_mod: "INR"
     ip_lab: "IVision"
-    noaahrd_gridded_data: "NOAA-HRD Gridded Data Format"
+    gridded_data_format: "NOAA-HRD Gridded Data Format"
     nr_rd: "OME-TIFF"
     olympus_sis_tiff: "Olympus SIS TIFF"
     pco_raw: "Volocity Library"

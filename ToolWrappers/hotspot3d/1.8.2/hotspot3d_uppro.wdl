@@ -26,6 +26,9 @@ task Hotspot3dUppro {
       ~{if (cmd_list_submit_file) then "--cmd-list-submit-file" else ""} \
       ~{if (hold) then "--hold" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_dir: "Output directory of proximity files"
     pdb_file_dir: "PDB file directory"

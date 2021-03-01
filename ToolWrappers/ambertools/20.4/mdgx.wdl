@@ -2,7 +2,7 @@ version 1.0
 
 task Mdgx {
   input {
-    Boolean? print_command_options
+    Boolean? print_input_options
     Boolean? i_file
     Boolean? files
     Boolean? cntrl
@@ -17,7 +17,7 @@ task Mdgx {
   }
   command <<<
     mdgx \
-      ~{if (print_command_options) then "-INPUT" else ""} \
+      ~{if (print_input_options) then "-INPUT" else ""} \
       ~{if (i_file) then "-IFILE" else ""} \
       ~{if (files) then "-FILES" else ""} \
       ~{if (cntrl) then "-CNTRL" else ""} \
@@ -30,8 +30,11 @@ task Mdgx {
       ~{if (ppt_d) then "-PPTD" else ""} \
       ~{if (attr) then "-ATTR" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    print_command_options: ":   print all command line input options"
+    print_input_options: ":   print all command line input options"
     i_file: ":   documentation on input file format"
     files: ":   print descriptions of &files namelist variables (these may also\\nbe entered as command line input)"
     cntrl: ":   print descriptions of &cntrl namelist variables (most are similar\\nto SANDER variables, but some are unique to mdgx and some SANDER\\nvariables are not supported)"

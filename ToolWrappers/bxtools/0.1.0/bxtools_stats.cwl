@@ -3,12 +3,12 @@ id: bxtools_stats.cwl
 inputs:
 - id: in_verbose
   doc: Set verbose output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_tag
   doc: Collect stats by a tag other than BX (e.g. MI)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --tag
 - id: in_bx_tools
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bxtools

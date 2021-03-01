@@ -3,131 +3,141 @@ command:
 - contree
 positional:
 - !Positional
-  description: ''
+  optional: true
   position: 0
   name: arguments
-  optional: true
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: file.trees
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: "/ -a           add one to the value of the internal node for\neach\
-    \ tree that that split is present in."
+  optional: true
   synonyms:
   - --add_to_support
+  - -a
+  description: "add one to the value of the internal node for\neach tree that that\
+    \ split is present in."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "/ -s        same as --add_to_support but divide the number\nby number\
-    \ of trees compared against."
+  optional: true
   synonyms:
   - --calculate_support
+  - -s
+  description: "same as --add_to_support but divide the number\nby number of trees\
+    \ compared against."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "/ -c [value]          output conflicting splits where at least one\n\
-    branch support the conflict with more than given\nsupport, e.g. -c 0.7."
+  optional: true
   synonyms:
   - --compare
+  - -c
+  description: "[value]          output conflicting splits where at least one\nbranch\
+    \ support the conflict with more than given\nsupport, e.g. -c 0.7."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "/ -d [file]          give a second file of trees to compare against\n\
-    instead of comparing within the ordinary input.\nIf - is given input will be taken\
-    \ from standard\nin instead of file, e.g. -d -. In that case the\ninput compared\
-    \ to must  be given in a file (by\n-f or as last argument)."
+  optional: true
   synonyms:
   - --database
+  - -d
+  description: "[file]          give a second file of trees to compare against\ninstead\
+    \ of comparing within the ordinary input.\nIf - is given input will be taken from\
+    \ standard\nin instead of file, e.g. -d -. In that case the\ninput compared to\
+    \ must  be given in a file (by\n-f or as last argument)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "/ -D [genes]     calculates proportion of random trees for which\n\
-    given gene sampling is decisive and the mean\nproportion of branches that are\
-    \ distinguished.\n(Sanderson et al. 2010, BMC Evol. Biol. 19:\n155). The genes\
-    \ for each taxon are given as a\ncomma (,) separated string, the genes for\ndifferent\
-    \ taxon are separated by a bar (|). E.g\n-D 'ITS,RPB2|ITS|ITS,RPB2|RPB2|RPB2|ITS',\
-    \ or in\na file (given by -f or as last argument) with a\ncomma separated string\
-    \ with the genes for each\ntaxa on a separate row. No taxon names, trees,\nor\
-    \ sequences are needed."
+  optional: true
   synonyms:
   - --decisiveness
+  - -D
+  description: "[genes]     calculates proportion of random trees for which\ngiven\
+    \ gene sampling is decisive and the mean\nproportion of branches that are distinguished.\n\
+    (Sanderson et al. 2010, BMC Evol. Biol. 19:\n155). The genes for each taxon are\
+    \ given as a\ncomma (,) separated string, the genes for\ndifferent taxon are separated\
+    \ by a bar (|). E.g\n-D 'ITS,RPB2|ITS|ITS,RPB2|RPB2|RPB2|ITS', or in\na file (given\
+    \ by -f or as last argument) with a\ncomma separated string with the genes for\
+    \ each\ntaxa on a separate row. No taxon names, trees,\nor sequences are needed."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "/ -i [number]      give numbers of iterations to do when\ncalculating\
-    \ decisiveness, e.g. -i 1000."
+  optional: true
   synonyms:
   - --iterations
+  - -i
+  description: "[number]      give numbers of iterations to do when\ncalculating decisiveness,\
+    \ e.g. -i 1000."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "/ -f [file]              give file name for trees, or decisiveness,\
-    \ e.g.\n-f file.tree."
+  optional: true
   synonyms:
   - --file
+  - -f
+  description: "[file]              give file name for trees, or decisiveness, e.g.\n\
+    -f file.tree."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --format
   description: "[newick/nexus]         give format of input, e.g. --format nexus.\
     \ If no\nformat is given and the input is a file contree\nwill try to guess the\
     \ format, if it is through\nstandard in it will assume newick format. A\nseparate\
     \ file format can be given for the\ndatabase file after a ',', e.g. --format\n\
     newick,nexus. If only one format is given, it\nwill be used for both tree files/inputs."
-  synonyms:
-  - --format
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "give output as tree in html (svg) format with\nconflicting tips coloured\
-    \ green and red when\ndoing --compare."
+  optional: true
   synonyms:
   - --html
+  description: "give output as tree in html (svg) format with\nconflicting tips coloured\
+    \ green and red when\ndoing --compare."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: / -t          print tip names not present in the other tree.
+  optional: true
   synonyms:
   - --non_shared_tips
+  - -t
+  description: print tip names not present in the other tree.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "[newick/nexus]         give tree format for output, nexus (nex or\
-    \ x for\nshort) or newick (new or w for short), e.g\n--output x. (default w)."
+  optional: true
   synonyms:
   - --output
+  description: "[newick/nexus]         give tree format for output, nexus (nex or\
+    \ x for\nshort) or newick (new or w for short), e.g\n--output x. (default w)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: / -r          compute Robinson-Foulds metric between trees.
+  optional: true
   synonyms:
   - --robinson_foulds
+  - -r
+  description: compute Robinson-Foulds metric between trees.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "/ -R                   treat trees as rooted for --add_to_support\
-    \ and\n--calculate_support."
+  optional: true
   synonyms:
   - --rooted
+  - -R
+  description: "treat trees as rooted for --add_to_support and\n--calculate_support."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: / -v                  get additional output.
+  optional: true
   synonyms:
   - --verbose
+  - -v
+  description: get additional output.
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: / -h                     print this help.
+  optional: true
   synonyms:
   - --help
+  - -h
+  description: print this help.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Contree 1.0 is a command line program for comparing trees. It can compare\n\
@@ -182,3 +192,4 @@ help_text: "Contree 1.0 is a command line program for comparing trees. It can co
   \ output.\n\n"
 generated_using:
 - --help
+docker_image:

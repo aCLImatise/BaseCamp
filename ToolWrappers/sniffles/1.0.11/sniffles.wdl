@@ -2,25 +2,25 @@ version 1.0
 
 task Sniffles {
   input {
-    File? _mappedreads_stringrequired
-    File? _vcf_stringvcf
-    File? _bedpe_stringbedpe
+    File? mapped_reads
+    File? vcf
+    File? bed_pe
     File? ivcf
     File? tmp_file
-    Int? _minsupport_intminimum
+    Int? min_support
     Int? max_num_splits
-    Int? _intmaximum_distance
-    Int? _threads_threads
-    Int? _minlength_length
-    Int? _minmappingqual_mapping
-    Int? _numreadsreport_n
-    Int? _minseqsize_intdiscard
-    Int? _minzmw_sv
+    Int? max_distance
+    Int? threads
+    Int? min_length
+    Int? min_mapping_qual
+    Int? num_reads_report
+    Int? min_seq_size
+    Int? min_z_mw
     Boolean? cs_string
     Boolean? genotype
     Boolean? cluster
     Int? cluster_support
-    Float? _allelefreq_floatthreshold
+    Float? allele_freq
     Float? min_homo_af
     Float? min_het_af
     Boolean? report_bnd
@@ -38,25 +38,25 @@ task Sniffles {
   command <<<
     sniffles \
       ~{fritz_dots_ed_la_zeck_at_gmail_dot_com} \
-      ~{if defined(_mappedreads_stringrequired) then ("-m " +  '"' + _mappedreads_stringrequired + '"') else ""} \
-      ~{if defined(_vcf_stringvcf) then ("-v " +  '"' + _vcf_stringvcf + '"') else ""} \
-      ~{if defined(_bedpe_stringbedpe) then ("-b " +  '"' + _bedpe_stringbedpe + '"') else ""} \
+      ~{if defined(mapped_reads) then ("--mapped_reads " +  '"' + mapped_reads + '"') else ""} \
+      ~{if defined(vcf) then ("--vcf " +  '"' + vcf + '"') else ""} \
+      ~{if defined(bed_pe) then ("--bedpe " +  '"' + bed_pe + '"') else ""} \
       ~{if defined(ivcf) then ("--Ivcf " +  '"' + ivcf + '"') else ""} \
       ~{if defined(tmp_file) then ("--tmp_file " +  '"' + tmp_file + '"') else ""} \
-      ~{if defined(_minsupport_intminimum) then ("-s " +  '"' + _minsupport_intminimum + '"') else ""} \
+      ~{if defined(min_support) then ("--min_support " +  '"' + min_support + '"') else ""} \
       ~{if defined(max_num_splits) then ("--max_num_splits " +  '"' + max_num_splits + '"') else ""} \
-      ~{if defined(_intmaximum_distance) then ("-d " +  '"' + _intmaximum_distance + '"') else ""} \
-      ~{if defined(_threads_threads) then ("-t " +  '"' + _threads_threads + '"') else ""} \
-      ~{if defined(_minlength_length) then ("-l " +  '"' + _minlength_length + '"') else ""} \
-      ~{if defined(_minmappingqual_mapping) then ("-q " +  '"' + _minmappingqual_mapping + '"') else ""} \
-      ~{if defined(_numreadsreport_n) then ("-n " +  '"' + _numreadsreport_n + '"') else ""} \
-      ~{if defined(_minseqsize_intdiscard) then ("-r " +  '"' + _minseqsize_intdiscard + '"') else ""} \
-      ~{if defined(_minzmw_sv) then ("-z " +  '"' + _minzmw_sv + '"') else ""} \
+      ~{if defined(max_distance) then ("--max_distance " +  '"' + max_distance + '"') else ""} \
+      ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
+      ~{if defined(min_length) then ("--min_length " +  '"' + min_length + '"') else ""} \
+      ~{if defined(min_mapping_qual) then ("--minmapping_qual " +  '"' + min_mapping_qual + '"') else ""} \
+      ~{if defined(num_reads_report) then ("--num_reads_report " +  '"' + num_reads_report + '"') else ""} \
+      ~{if defined(min_seq_size) then ("--min_seq_size " +  '"' + min_seq_size + '"') else ""} \
+      ~{if defined(min_z_mw) then ("--min_zmw " +  '"' + min_z_mw + '"') else ""} \
       ~{if (cs_string) then "--cs_string" else ""} \
       ~{if (genotype) then "--genotype" else ""} \
       ~{if (cluster) then "--cluster" else ""} \
       ~{if defined(cluster_support) then ("--cluster_support " +  '"' + cluster_support + '"') else ""} \
-      ~{if defined(_allelefreq_floatthreshold) then ("-f " +  '"' + _allelefreq_floatthreshold + '"') else ""} \
+      ~{if defined(allele_freq) then ("--allelefreq " +  '"' + allele_freq + '"') else ""} \
       ~{if defined(min_homo_af) then ("--min_homo_af " +  '"' + min_homo_af + '"') else ""} \
       ~{if defined(min_het_af) then ("--min_het_af " +  '"' + min_het_af + '"') else ""} \
       ~{if (report_bnd) then "--report_BND" else ""} \
@@ -70,26 +70,29 @@ task Sniffles {
       ~{if defined(max_diff_per_window) then ("--max_diff_per_window " +  '"' + max_diff_per_window + '"') else ""} \
       ~{if defined(max_dist_aln_events) then ("--max_dist_aln_events " +  '"' + max_dist_aln_events + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    _mappedreads_stringrequired: ",  --mapped_reads <string>\\n(required)  Sorted bam File"
-    _vcf_stringvcf: ",  --vcf <string>\\nVCF output file name []"
-    _bedpe_stringbedpe: ",  --bedpe <string>\\nbedpe output file name []"
+    mapped_reads: "(required)  Sorted bam File"
+    vcf: "VCF output file name []"
+    bed_pe: "bedpe output file name []"
     ivcf: "Input VCF file name. Enable force calling []"
     tmp_file: "path to temporary file otherwise Sniffles will use the current directory. []"
-    _minsupport_intminimum: ",  --min_support <int>\\nMinimum number of reads that support a SV. [10]"
+    min_support: "Minimum number of reads that support a SV. [10]"
     max_num_splits: "Maximum number of splits per read to be still taken into account. [7]"
-    _intmaximum_distance: ",  --max_distance <int>\\nMaximum distance to group SV together. [1000]"
-    _threads_threads: ",  --threads <int>\\nNumber of threads to use. [3]"
-    _minlength_length: ",  --min_length <int>\\nMinimum length of SV to be reported. [30]"
-    _minmappingqual_mapping: ",  --minmapping_qual <int>\\nMinimum Mapping Quality. [20]"
-    _numreadsreport_n: ",  --num_reads_report <int>\\nReport up to N reads that support the SV in the vcf file. -1: report all. [0]"
-    _minseqsize_intdiscard: ",  --min_seq_size <int>\\nDiscard read if non of its segment is larger then this. [2000]"
-    _minzmw_sv: ",  --min_zmw <int>\\nDiscard SV that are not supported by at least x zmws. This applies only for PacBio recognizable reads. [0]"
+    max_distance: "Maximum distance to group SV together. [1000]"
+    threads: "Number of threads to use. [3]"
+    min_length: "Minimum length of SV to be reported. [30]"
+    min_mapping_qual: "Minimum Mapping Quality. [20]"
+    num_reads_report: "Report up to N reads that support the SV in the vcf file. -1: report all. [0]"
+    min_seq_size: "Discard read if non of its segment is larger then this. [2000]"
+    min_z_mw: "Discard SV that are not supported by at least x zmws. This applies only for PacBio recognizable reads. [0]"
     cs_string: "Enables the scan of CS string instead of Cigar and MD.  [false]"
     genotype: "Enables Sniffles to compute the genotypes. [false]"
     cluster: "Enables Sniffles to phase SVs that occur on the same reads [false]"
     cluster_support: "Minimum number of reads supporting clustering of SV. [1]"
-    _allelefreq_floatthreshold: ",  --allelefreq <float>\\nThreshold on allele frequency (0-1).  [0]"
+    allele_freq: "Threshold on allele frequency (0-1).  [0]"
     min_homo_af: "Threshold on allele frequency (0-1).  [0.8]"
     min_het_af: "Threshold on allele frequency (0-1).  [0.3]"
     report_bnd: "Dont report BND instead use Tra in vcf output.  [true]"
@@ -106,7 +109,7 @@ task Sniffles {
   }
   output {
     File out_stdout = stdout()
-    File out__vcf_stringvcf = "${in__vcf_stringvcf}"
-    File out__bedpe_stringbedpe = "${in__bedpe_stringbedpe}"
+    File out_vcf = "${in_vcf}"
+    File out_bed_pe = "${in_bed_pe}"
   }
 }

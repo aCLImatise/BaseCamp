@@ -20,6 +20,9 @@ task H5watch {
       ~{if defined(polling) then ("--polling " +  '"' + polling + '"') else ""} \
       ~{if defined(fields) then ("--fields " +  '"' + fields + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     label: "Label members of compound typed dataset."
     simple: "Use a machine-readable output format."

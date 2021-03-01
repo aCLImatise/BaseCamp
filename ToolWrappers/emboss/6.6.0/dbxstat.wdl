@@ -14,6 +14,9 @@ task Dbxstat {
       ~{if (minimum) then "-minimum" else ""} \
       ~{if (maximum) then "-maximum" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     outfile: "outfile    [*.dbxstat] Output file name"
     index_dir: "directory  Index directory (optional)"

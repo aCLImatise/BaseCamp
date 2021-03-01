@@ -18,6 +18,9 @@ task Ernecreate {
       ~{if defined(bl) then ("--bl " +  '"' + bl + '"') else ""} \
       ~{if defined(offrate_sa_pointers) then ("--o " +  '"' + offrate_sa_pointers + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a: "input file (can be repeated several time) [REQUIRED]"
     output_prefix: "output reference file name in ERNE format. Suffix added\\nautomatically: .ebh for dB-Hash reference, .ebm for\\ndB-Hash methylated reference. [REQUIRED]"

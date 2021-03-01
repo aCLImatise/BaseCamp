@@ -32,6 +32,9 @@ task Xmatchviewhivepy {
       ~{if defined(pixel_basepair_scale) then ("-c " +  '"' + pixel_basepair_scale + '"') else ""} \
       ~{if defined(value_transparent_solid) then ("-a " +  '"' + value_transparent_solid + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     x: "file [1 vs. 2] (cross_match .rep or Pairwise mApping Format .paf)"
     y: "file [1 vs. 3] (cross_match .rep or Pairwise mApping Format .paf)"

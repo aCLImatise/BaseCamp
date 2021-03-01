@@ -11,18 +11,18 @@ subcommands:
   - n
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: file
-    optional: false
+    description: ''
   named:
   - !Flag
-    description: ''
+    optional: true
     synonyms:
     - -options
+    description: ''
     args: !EmptyFlagArg {}
-    optional: true
-  parent: &id009 !Command
+  parent: &id010 !Command
     command: *id001
     positional: []
     named: []
@@ -32,18 +32,18 @@ subcommands:
       command: *id002
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: file
-        optional: false
+        description: ''
       named:
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - -options
+        description: ''
         args: !EmptyFlagArg {}
-        optional: true
-      parent: &id008 !Command
+      parent: &id009 !Command
         command: *id001
         positional: []
         named: []
@@ -53,18 +53,18 @@ subcommands:
           command: *id002
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: file
-            optional: false
+            description: ''
           named:
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - -options
+            description: ''
             args: !EmptyFlagArg {}
-            optional: true
-          parent: &id007 !Command
+          parent: &id008 !Command
             command: *id001
             positional: []
             named: []
@@ -74,52 +74,139 @@ subcommands:
               command: *id002
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: file
-                optional: false
+                description: ''
               named:
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - -options
+                description: ''
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: &id003 !Command
+              parent: &id007 !Command
                 command: *id001
                 positional: []
-                named:
-                - !Flag
-                  description: ": set random number generator's seed to <n>  [0]"
-                  synonyms:
-                  - --seed
-                  args: !SimpleFlagArg
-                    name: n
-                  optional: true
-                - !Flag
-                  description: ''
-                  synonyms:
-                  - -options
-                  args: !EmptyFlagArg {}
-                  optional: true
+                named: []
                 parent:
                 subcommands:
                 - !Command
                   command: *id002
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: file
-                    optional: false
+                    description: ''
                   named:
                   - !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - -options
+                    description: ''
                     args: !EmptyFlagArg {}
-                    optional: true
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named:
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - --seed
+                      description: ": set random number generator's seed to <n>  [0]"
+                      args: !SimpleFlagArg
+                        name: n
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -options
+                      description: ''
+                      args: !EmptyFlagArg {}
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: file
+                        description: ''
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -options
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: esl-selectn [-options] <n> <file>\n\nTo see\
+                        \ more help on available options, do esl-selectn -h\n\n"
+                      generated_using: &id004 []
+                      docker_image:
+                    - !Command
+                      command: &id005
+                      - esl-selectn
+                      - file
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: esl-selectn
+                        description: ''
+                      - !Positional
+                        optional: false
+                        position: 1
+                        name: n
+                        description: ''
+                      - !Positional
+                        optional: false
+                        position: 2
+                        name: file
+                        description: ''
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -options
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: esl-selectn [-options] <n> <file>\n\nTo see\
+                        \ more help on available options, do esl-selectn -h\n\n"
+                      generated_using: *id004
+                      docker_image:
+                    usage: []
+                    help_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - -h
+                      description: ': show brief help on version and usage'
+                      args: !EmptyFlagArg {}
+                    usage_flag:
+                    version_flag:
+                    help_text: "# esl-selectn :: select n lines randomly from a file\n\
+                      # Easel 0.45h (June 2018)\n# Copyright (C) 2018 Howard Hughes\
+                      \ Medical Institute\n# Freely distributed under the BSD open\
+                      \ source license.\n# - - - - - - - - - - - - - - - - - - - -\
+                      \ - - - - - - - - - - - - - - - -\nUsage: esl-selectn [-options]\
+                      \ <n> <file>\n\n where general options are:\n  -h         :\
+                      \ show brief help on version and usage\n  --seed <n> : set random\
+                      \ number generator's seed to <n>  [0]\n"
+                    generated_using: &id006
+                    - -h
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag:
@@ -127,34 +214,33 @@ subcommands:
                   version_flag:
                   help_text: "Usage: esl-selectn [-options] <n> <file>\n\nTo see more\
                     \ help on available options, do esl-selectn -h\n\n"
-                  generated_using: &id004 []
+                  generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id005
-                  - esl-selectn
-                  - file
+                  command: *id005
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: esl-selectn
-                    optional: false
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: false
                     position: 1
                     name: n
-                    optional: false
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: false
                     position: 2
                     name: file
-                    optional: false
+                    description: ''
                   named:
                   - !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - -options
+                    description: ''
                     args: !EmptyFlagArg {}
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
@@ -164,13 +250,9 @@ subcommands:
                   help_text: "Usage: esl-selectn [-options] <n> <file>\n\nTo see more\
                     \ help on available options, do esl-selectn -h\n\n"
                   generated_using: *id004
+                  docker_image:
                 usage: []
-                help_flag: !Flag
-                  description: ': show brief help on version and usage'
-                  synonyms:
-                  - -h
-                  args: !EmptyFlagArg {}
-                  optional: true
+                help_flag:
                 usage_flag:
                 version_flag:
                 help_text: "# esl-selectn :: select n lines randomly from a file\n\
@@ -181,8 +263,8 @@ subcommands:
                   \ general options are:\n  -h         : show brief help on version\
                   \ and usage\n  --seed <n> : set random number generator's seed to\
                   \ <n>  [0]\n"
-                generated_using: &id006
-                - -h
+                generated_using: *id006
+                docker_image:
               subcommands: []
               usage: []
               help_flag:
@@ -191,32 +273,33 @@ subcommands:
               help_text: "Usage: esl-selectn [-options] <n> <file>\n\nTo see more\
                 \ help on available options, do esl-selectn -h\n\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id005
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: esl-selectn
-                optional: false
-              - !Positional
                 description: ''
+              - !Positional
+                optional: false
                 position: 1
                 name: n
-                optional: false
-              - !Positional
                 description: ''
+              - !Positional
+                optional: false
                 position: 2
                 name: file
-                optional: false
+                description: ''
               named:
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - -options
+                description: ''
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: *id003
+              parent: *id007
               subcommands: []
               usage: []
               help_flag:
@@ -225,6 +308,7 @@ subcommands:
               help_text: "Usage: esl-selectn [-options] <n> <file>\n\nTo see more\
                 \ help on available options, do esl-selectn -h\n\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -237,6 +321,7 @@ subcommands:
               \  -h         : show brief help on version and usage\n  --seed <n> :\
               \ set random number generator's seed to <n>  [0]\n"
             generated_using: *id006
+            docker_image:
           subcommands: []
           usage: []
           help_flag:
@@ -245,32 +330,33 @@ subcommands:
           help_text: "Usage: esl-selectn [-options] <n> <file>\n\nTo see more help\
             \ on available options, do esl-selectn -h\n\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id005
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: esl-selectn
-            optional: false
-          - !Positional
             description: ''
+          - !Positional
+            optional: false
             position: 1
             name: n
-            optional: false
-          - !Positional
             description: ''
+          - !Positional
+            optional: false
             position: 2
             name: file
-            optional: false
+            description: ''
           named:
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - -options
+            description: ''
             args: !EmptyFlagArg {}
-            optional: true
-          parent: *id007
+          parent: *id008
           subcommands: []
           usage: []
           help_flag:
@@ -279,6 +365,7 @@ subcommands:
           help_text: "Usage: esl-selectn [-options] <n> <file>\n\nTo see more help\
             \ on available options, do esl-selectn -h\n\n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -291,6 +378,7 @@ subcommands:
           \ brief help on version and usage\n  --seed <n> : set random number generator's\
           \ seed to <n>  [0]\n"
         generated_using: *id006
+        docker_image:
       subcommands: []
       usage: []
       help_flag:
@@ -299,32 +387,33 @@ subcommands:
       help_text: "Usage: esl-selectn [-options] <n> <file>\n\nTo see more help on\
         \ available options, do esl-selectn -h\n\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id005
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: esl-selectn
-        optional: false
-      - !Positional
         description: ''
+      - !Positional
+        optional: false
         position: 1
         name: n
-        optional: false
-      - !Positional
         description: ''
+      - !Positional
+        optional: false
         position: 2
         name: file
-        optional: false
+        description: ''
       named:
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - -options
+        description: ''
         args: !EmptyFlagArg {}
-        optional: true
-      parent: *id008
+      parent: *id009
       subcommands: []
       usage: []
       help_flag:
@@ -333,6 +422,7 @@ subcommands:
       help_text: "Usage: esl-selectn [-options] <n> <file>\n\nTo see more help on\
         \ available options, do esl-selectn -h\n\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -345,6 +435,7 @@ subcommands:
       \ on version and usage\n  --seed <n> : set random number generator's seed to\
       \ <n>  [0]\n"
     generated_using: *id006
+    docker_image:
   subcommands: []
   usage: []
   help_flag:
@@ -353,32 +444,33 @@ subcommands:
   help_text: "Usage: esl-selectn [-options] <n> <file>\n\nTo see more help on available\
     \ options, do esl-selectn -h\n\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id005
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: esl-selectn
-    optional: false
-  - !Positional
     description: ''
+  - !Positional
+    optional: false
     position: 1
     name: n
-    optional: false
-  - !Positional
     description: ''
+  - !Positional
+    optional: false
     position: 2
     name: file
-    optional: false
+    description: ''
   named:
   - !Flag
-    description: ''
+    optional: true
     synonyms:
     - -options
+    description: ''
     args: !EmptyFlagArg {}
-    optional: true
-  parent: *id009
+  parent: *id010
   subcommands: []
   usage: []
   help_flag:
@@ -387,6 +479,7 @@ subcommands:
   help_text: "Usage: esl-selectn [-options] <n> <file>\n\nTo see more help on available\
     \ options, do esl-selectn -h\n\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -398,3 +491,4 @@ help_text: "# esl-selectn :: select n lines randomly from a file\n# Easel 0.45h 
   \ where general options are:\n  -h         : show brief help on version and usage\n\
   \  --seed <n> : set random number generator's seed to <n>  [0]\n"
 generated_using: *id006
+docker_image:

@@ -14,6 +14,9 @@ task DownsampleTraingenespl {
       ~{if defined(lambda) then ("--lambda " +  '"' + lambda + '"') else ""} \
       ~{if defined(intron_num_lst) then ("--intron_num_lst " +  '"' + intron_num_lst + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     lambda: "Parameter lambda of Poisson distribution\\n(default value is 0)"
     intron_num_lst: "File with intron numbers per gene (selected)"

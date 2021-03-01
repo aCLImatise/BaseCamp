@@ -4,7 +4,7 @@ task Obisample {
   input {
     Boolean? debug
     Boolean? without_progress_bar
-    Boolean? _samplesizesize_setsize
+    Boolean? _samplesizesize_generated
     Boolean? approx_sampling
     Boolean? without_replacement
     String? skip
@@ -29,7 +29,7 @@ task Obisample {
     obisample \
       ~{if (debug) then "--DEBUG" else ""} \
       ~{if (without_progress_bar) then "--without-progress-bar" else ""} \
-      ~{if (_samplesizesize_setsize) then "-s" else ""} \
+      ~{if (_samplesizesize_generated) then "-s" else ""} \
       ~{if (approx_sampling) then "--approx-sampling" else ""} \
       ~{if (without_replacement) then "--without-replacement" else ""} \
       ~{if defined(skip) then ("--skip " +  '"' + skip + '"') else ""} \
@@ -50,10 +50,13 @@ task Obisample {
       ~{if defined(eco_pcr_db_output) then ("--ecopcrdb-output " +  '"' + eco_pcr_db_output + '"') else ""} \
       ~{if (uppercase) then "--uppercase" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "Set logging in debug mode"
     without_progress_bar: "desactivate progress bar"
-    _samplesizesize_setsize: "###, --sample-size=###\\nSize of the generated sample. If -a option is set,\\nsize is expressed as fraction"
+    _samplesizesize_generated: "###, --sample-size=###\\nSize of the generated sample. If -a option is set,\\nsize is expressed as fraction"
     approx_sampling: "Switch to an approximative algorithm, useful for large\\nfiles"
     without_replacement: "Ask for sampling without replacement"
     skip: "skip the N first sequences"

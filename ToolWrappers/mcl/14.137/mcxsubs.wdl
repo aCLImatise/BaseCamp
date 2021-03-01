@@ -52,6 +52,9 @@ task Mcxsubs {
       ~{if defined(tag_digits) then ("-tag-digits " +  '"' + tag_digits + '"') else ""} \
       ~{if (help) then "--help" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     imx: "matrix/graph file name"
     dom: "domain matrix (target for 'd' specs)"

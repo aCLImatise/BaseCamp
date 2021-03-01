@@ -22,6 +22,9 @@ task GcloudKmsKeyrings {
       ~{set_i_am_policy} \
       ~{if defined(location) then ("--location " +  '"' + location + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     location: "The location of the requested resource."
     add_i_am_policy_binding: "Add IAM policy binding to a keyring."

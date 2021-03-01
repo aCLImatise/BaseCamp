@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, Int, Boolean
+
+Mapstatistics_V0_1_0 = CommandToolBuilder(tool="MapStatistics", base_command=["MapStatistics"], inputs=[ToolInput(tag="in_in", input_type=File(optional=True), prefix="-in", doc=InputDocumentation(doc="*        Input file (valid formats: 'featureXML', 'consensusXML')")), ToolInput(tag="in_in_type", input_type=File(optional=True), prefix="-in_type", doc=InputDocumentation(doc="Input file type -- default: determined from file extension or content (valid: 'featureXML', 'consensusXML')")), ToolInput(tag="in_out", input_type=File(optional=True), prefix="-out", doc=InputDocumentation(doc="Optional output txt file. If empty, the output is written to the command line. (valid formats: 'txt')")), ToolInput(tag="in_report_separate_statistics", input_type=Int(optional=True), prefix="-n", doc=InputDocumentation(doc="Report separate statistics for each of n RT slices of the map. (default: '4' min: '1' max: '100')")), ToolInput(tag="in_show_meta_information", input_type=Boolean(optional=True), prefix="-m", doc=InputDocumentation(doc="Show meta information about the whole experiment")), ToolInput(tag="in_shows_processing_information", input_type=Boolean(optional=True), prefix="-p", doc=InputDocumentation(doc="Shows data processing information")), ToolInput(tag="in_computes_summary_statistics", input_type=Boolean(optional=True), prefix="-s", doc=InputDocumentation(doc="Computes a summary statistics of intensities, qualities, and widths")), ToolInput(tag="in_ini", input_type=File(optional=True), prefix="-ini", doc=InputDocumentation(doc="Use the given TOPP INI file")), ToolInput(tag="in_threads", input_type=Int(optional=True), prefix="-threads", doc=InputDocumentation(doc="Sets the number of threads allowed to be used by the TOPP tool (default: '1')")), ToolInput(tag="in_write_ini", input_type=File(optional=True), prefix="-write_ini", doc=InputDocumentation(doc="Writes the default configuration file")), ToolInput(tag="in_helphelp", input_type=Boolean(optional=True), prefix="--helphelp", doc=InputDocumentation(doc="Shows all options (including advanced)"))], outputs=[ToolOutput(tag="out_out", output_type=File(optional=True), selector=InputSelector(input_to_select="in_out", type_hint=File()), doc=OutputDocumentation(doc="Optional output txt file. If empty, the output is written to the command line. (valid formats: 'txt')"))], container="quay.io/biocontainers/openms:2.6.0--h4afb90d_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Mapstatistics_V0_1_0().translate("wdl")
+

@@ -10,6 +10,9 @@ task MtsvchunkFLAGS {
       ~{if defined(var_output) then ("--output " +  '"' + var_output + '"') else ""} \
       ~{if defined(var_input) then ("--input " +  '"' + var_input + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     var_output: ""
     var_input: ""

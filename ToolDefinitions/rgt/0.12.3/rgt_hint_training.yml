@@ -2,51 +2,82 @@
 command:
 - rgt-hint
 - training
-positional: []
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: reads
+  description: --chrom STRING        The name of chromosome used to train HMM
 named:
 - !Flag
-  description: The BAM file containing the DNase-seq or ATAC-seq
-  synonyms:
-  - --reads-file
-  args: !SimpleFlagArg
-    name: FILE
   optional: true
-- !Flag
-  description: ',FILE1_R'
-  synonyms:
-  - --bias-table
-  args: !SimpleFlagArg
-    name: FILE1_F
-  optional: true
-- !Flag
-  description: If used, HMM model will be trained using semi-
-  synonyms:
-  - --semi-supervised
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: The txt file containing the DNase-seq or ATAC-seq
-  synonyms:
-  - --signal-file
-  args: !SimpleFlagArg
-    name: FILE
-  optional: true
-- !Flag
-  description: ''
   synonyms:
   - --organism
+  - --reads-file
+  description: The BAM file containing the DNase-seq or ATAC-seq
   args: !SimpleFlagArg
     name: STRING
+- !Flag
   optional: true
+  synonyms:
+  - --start
+  - --end
+  - --annotate-file
+  description: A annotate file containing all the states.
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --bias-table
+  description: ',FILE1_R'
+  args: !SimpleFlagArg
+    name: FILE1_F
+- !Flag
+  optional: true
+  synonyms:
+  - --semi-supervised
+  description: "If used, HMM model will be trained using semi-\nsupervised learning."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --signal-file
+  description: "The txt file containing the DNase-seq or ATAC-seq\nsignals used to\
+    \ train HMM model."
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --num-states
+  description: The states number of HMM model.
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --output-location
+  description: "Path where the output bias table files will be\nwritten."
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --output-prefix
+  description: "The prefix for results files.\n"
+  args: !SimpleFlagArg
+    name: STRING
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: ''
+  optional: true
   synonyms:
   - -h
+  - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: rgt-hint training [-h] [--organism STRING] [--reads-file FILE]\n\
@@ -68,3 +99,4 @@ help_text: "usage: rgt-hint training [-h] [--organism STRING] [--reads-file FILE
   \ STRING\n                        The prefix for results files.\n"
 generated_using:
 - --help
+docker_image:

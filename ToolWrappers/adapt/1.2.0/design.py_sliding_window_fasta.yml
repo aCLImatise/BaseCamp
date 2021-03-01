@@ -1,0 +1,555 @@
+!Command
+command:
+- design.py
+- sliding-window
+- fasta
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: in_fasta
+  description: "Path to input FASTA. More than one can be given for\ndifferential\
+    \ identification"
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -gl
+  - --guide-length
+  description: Length of guide to construct
+  args: !SimpleFlagArg
+    name: GUIDE_LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - --obj
+  description: "Objective function to solve. 'maximize-activity'\nmaximizes the expected\
+    \ activity of the guide set of\nthe target genomes subject to soft and hard\n\
+    constraints on the size of the guide set. 'minimize-\nguides' minimizes the number\
+    \ of guides in the guide\nset subject to coverage constraints across the target\n\
+    genomes."
+  args: !ChoiceFlagArg
+    choices: !!set
+      maximize-activity:
+      minimize-guides:
+- !Flag
+  optional: true
+  synonyms:
+  - -gm
+  - --guide-mismatches
+  description: "Allow for this number of mismatches when determining\nwhether a guide\
+    \ covers a sequence"
+  args: !SimpleFlagArg
+    name: GUIDE_MISMATCHES
+- !Flag
+  optional: true
+  synonyms:
+  - -gp
+  - --guide-cover-frac
+  description: "The fraction of all sequences that must be covered by\nthe guides."
+  args: !SimpleFlagArg
+    name: GUIDE_COVER_FRAC
+- !Flag
+  optional: true
+  synonyms:
+  - -sgc
+  - --soft-guide-constraint
+  description: "Soft constraint on the number of guides. There is no\npenalty for\
+    \ a number of guides <=\nSOFT_GUIDE_CONSTRAINT, and having a number of guides\n\
+    beyond this is penalized. See --penalty-strength. This\nvalue must be <= HARD_GUIDE_CONSTRAINT."
+  args: !SimpleFlagArg
+    name: SOFT_GUIDE_CONSTRAINT
+- !Flag
+  optional: true
+  synonyms:
+  - -hgc
+  - --hard-guide-constraint
+  description: "Hard constraint on the number of guides. The number of\nguides designed\
+    \ for a target will be <=\nHARD_GUIDE_CONSTRAINT."
+  args: !SimpleFlagArg
+    name: HARD_GUIDE_CONSTRAINT
+- !Flag
+  optional: true
+  synonyms:
+  - --penalty-strength
+  description: "Importance of the penalty when the number of guides\nexceeds the soft\
+    \ guide constraint. Namely, for a guide\nset G, if the penalty strength is L and\
+    \ the soft guide\nconstraint is h, then the penalty in the objective\nfunction\
+    \ is L*max(0, |G|-h). Must be >= 0. The value\ndepends on the output of activity\
+    \ model and reflects a\ntolerance for more guides; for the default activity\n\
+    model reasonable values are in the range [0.1, 0.5]."
+  args: !SimpleFlagArg
+    name: PENALTY_STRENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - --maximization-algorithm
+  description: "Algorithm to use for solving submodular maximization\nproblem. 'greedy'\
+    \ is the canonical deterministic\ngreedy algorithm (Nemhauser 1978) for constrained\n\
+    monotone submodular maximization, which may perform\nwell in practice but has\
+    \ poor theoretical guarantees\nhere because the function is not monotone (unless\n\
+    --penalty-strength is 0). 'random-greedy' is the\nrandomized greedy algorithm\
+    \ (Buchbinder 2014) for\nconstrained non-monotone submodular maximization that\n\
+    has good worst-case theoretical guarantees."
+  args: !ChoiceFlagArg
+    choices: !!set
+      random-greedy:
+      greedy:
+- !Flag
+  optional: true
+  synonyms:
+  - --missing-thres
+  description: "MISSING_THRES MISSING_THRES\n<A> <B> <C>; parameters governing the\
+    \ threshold on\nwhich sites to ignore due to too much missing data.\nThe 3 values\
+    \ specify not to attempt to design guides\noverlapping sites where the fraction\
+    \ of sequences with\nmissing data is > min(A, max(B, C*m)) where m is the\nmedian\
+    \ fraction of sequences with missing data over\nthe alignment. Set a=1 and b=1\
+    \ to not ignore sites due\nto missing data."
+  args: !SimpleFlagArg
+    name: MISSING_THRES
+- !Flag
+  optional: true
+  synonyms:
+  - --id-m
+  description: "Allow for this number of mismatches when determining\nwhether a guide\
+    \ 'hits' a sequence in a group/taxon\nother than the for which it is being designed;\
+    \ higher\nvalues correspond to more specificity."
+  args: !SimpleFlagArg
+    name: DIFF_ID_MISMATCHES
+- !Flag
+  optional: true
+  synonyms:
+  - --id-frac
+  description: "Decide that a guide 'hits' a group/taxon if it 'hits'\na fraction\
+    \ of sequences in that group/taxon that\nexceeds this value; lower values correspond\
+    \ to more\nspecificity."
+  args: !SimpleFlagArg
+    name: DIFF_ID_FRAC
+- !Flag
+  optional: true
+  synonyms:
+  - --id-method
+  description: "Choice of method to query for specificity. 'lshnn' for\nLSH near-neighbor\
+    \ approach. 'shard' for approach that\nshards k-mers across small tries."
+  args: !ChoiceFlagArg
+    choices: !!set
+      shard:
+      lshnn:
+- !Flag
+  optional: true
+  synonyms:
+  - --specific-against-fastas
+  description: "Path to one or more FASTA files giving sequences, such\nthat guides\
+    \ are designed to be specific against (i.e.,\nnot hit) these sequences, according\
+    \ to --id-m and\n--id-frac. This is equivalent to specifying the FASTAs\nin the\
+    \ main input (as positional inputs), except that,\nwhen provided here, guides\
+    \ are not designed for them\nand they do not need to be aligned."
+  args: !RepeatFlagArg
+    name: SPECIFIC_AGAINST_FASTAS
+- !Flag
+  optional: true
+  synonyms:
+  - --specific-against-taxa
+  description: "Path to TSV file giving giving taxonomies from which\nto download\
+    \ all genomes and ensure guides are specific\nagainst (i.e., not hit) these. The\
+    \ TSV file has 2\ncolumns: (1) a taxonomic ID; (2) segment label, or\n'None' if\
+    \ unsegmented"
+  args: !SimpleFlagArg
+    name: SPECIFIC_AGAINST_TAXA
+- !Flag
+  optional: true
+  synonyms:
+  - --do-not-allow-gu-pairing
+  description: "When determining whether a guide binds to a region of\ntarget sequence,\
+    \ do not count G-U (wobble) base pairs\nas matching. Default is to tolerate G-U\
+    \ pairing:\nnamely, A in an output guide sequence matches G in the\ntarget and\
+    \ C in an output guide sequence matches T in\nthe target (since the synthesized\
+    \ guide is the reverse\ncomplement of the output guide sequence)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --required-guides
+  description: "Path to a file that gives guide sequences that will be\nincluded in\
+    \ the guide cover and output for the windows\nin which they belong, e.g., if certain\
+    \ guide sequences\nare shown experimentally to perform well. The file\nmust have\
+    \ 3 columns: col 1 gives an identifier for the\nalignment that the guide covers,\
+    \ such that i\nrepresents the i'th FASTA given as input (0-based);\ncol 2 gives\
+    \ a guide sequence; col 3 gives the start\nposition of the guide (0-based) in\
+    \ the alignment"
+  args: !SimpleFlagArg
+    name: REQUIRED_GUIDES
+- !Flag
+  optional: true
+  synonyms:
+  - --blacklisted-ranges
+  description: "Path to a file that gives ranges in alignments from\nwhich guides\
+    \ will not be constructed. The file must\nhave 3 columns: col 1 gives an identifier\
+    \ for the\nalignment that the range corresponds to, such that i\nrepresents the\
+    \ i'th FASTA given as input (0-based);\ncol 2 gives the start position of the\
+    \ range\n(inclusive); col 3 gives the end position of the range\n(exclusive)"
+  args: !SimpleFlagArg
+    name: BLACKLISTED_RANGES
+- !Flag
+  optional: true
+  synonyms:
+  - --blacklisted-kmers
+  description: "Path to a FASTA file that gives k-mers to blacklisted\nfrom guide\
+    \ sequences. No guide sequences will be\nconstructed that contain these k-mers.\
+    \ The k-mers make\nup the sequences in the FASTA file; the sequence names\nare\
+    \ ignored. k-mers should be long enough so that not\ntoo many guide sequences\
+    \ are deemed to be unsuitable,\nand should be at most the length of the guide"
+  args: !SimpleFlagArg
+    name: BLACKLISTED_KMERS
+- !Flag
+  optional: true
+  synonyms:
+  - --require-flanking5
+  description: "Require the given sequence on the 5' protospacer\nflanking site (PFS)\
+    \ of each designed guide; this\ntolerates ambiguity in the sequence (e.g., 'H'\n\
+    requires 'A', 'C', or 'T', or, equivalently, avoids\nguides flanked by 'G'). Note\
+    \ that this is the 5' end\nin the target sequence (not the spacer sequence)."
+  args: !SimpleFlagArg
+    name: REQUIRE_FLANKING5
+- !Flag
+  optional: true
+  synonyms:
+  - --require-flanking3
+  description: "Require the given sequence on the 3' protospacer\nflanking site (PFS)\
+    \ of each designed guide; this\ntolerates ambiguity in the sequence (e.g., 'H'\n\
+    requires 'A', 'C', or 'T', or, equivalently, avoids\nguides flanked by 'G'). Note\
+    \ that this is the 3' end\nin the target sequence (not the spacer sequence)."
+  args: !SimpleFlagArg
+    name: REQUIRE_FLANKING3
+- !Flag
+  optional: true
+  synonyms:
+  - --seed
+  description: "SEED will set the random seed, guaranteeing the same\noutput given\
+    \ the same inputs. If SEED is not set to\nthe same value, output may vary across\
+    \ different runs."
+  args: !SimpleFlagArg
+    name: SEED
+- !Flag
+  optional: true
+  synonyms:
+  - --predict-activity-model-path
+  description: "PREDICT_ACTIVITY_MODEL_PATH\nPaths to directories containing serialized\
+    \ models in\nTensorFlow's SavedModel format for predicting guide-\ntarget activity.\
+    \ There are two arguments: (1)\nclassification model to determine which guides\
+    \ are\nactive; (2) regression model, which is used to\ndetermine which guides\
+    \ (among active ones) are highly\nactive. The models/ directory contains example\
+    \ models.\nIf not set, ADAPT does not predict activities to use\nduring design."
+  args: !SimpleFlagArg
+    name: PREDICT_ACTIVITY_MODEL_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --predict-activity-thres
+  description: "PREDICT_ACTIVITY_THRES\nThresholds to use for decisions on output\
+    \ of\npredictive models. There are two arguments: (1)\nclassification threshold\
+    \ for deciding which guide-\ntarget pairs are active (in [0,1], where higher values\n\
+    have higher precision but less recall); (2) regression\nthreshold for deciding\
+    \ which guide-target pairs are\nhighly active (>= 0, where higher values limit\
+    \ the\nnumber determined to be highly active). If not set but\n--predict-activity-model-path\
+    \ is set, then ADAPT uses\ndefault thresholds stored with the models."
+  args: !SimpleFlagArg
+    name: PREDICT_ACTIVITY_THRES
+- !Flag
+  optional: true
+  synonyms:
+  - --use-simple-binary-activity-prediction
+  description: "If set, predict activity using a simple binary\nprediction between\
+    \ guide and target according to their\ndistance, with the threshold determined\
+    \ based on\n--guide-mismatches. This is only applicable when OBJ\nis 'maxmimize-activity'.\
+    \ This does not use a\nserialized model for predicting activity, so\n--predict-activity-model-path\
+    \ should not be set when\nthis is set."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --do-not-memoize-guide-computations
+  description: "If set, do not memoize computations during the search,\nincluding\
+    \ of guides identified at each site and of\nspecificity queries. This can be helpful\
+    \ for\nbenchmarking the improvement of memoization, or if\nthere is reason to\
+    \ believe memoization will slow the\nsearch (e.g., if possible amplicons rarely\
+    \ overlap).\nNote that activity predictions are still memoized."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: Debug output
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: Verbose output
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --window-size
+  description: "Ensure that selected guides are all a window of this\nsize"
+  args: !SimpleFlagArg
+    name: WINDOW_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --window-step
+  description: "Amount by which to increase the window start position\nfor every iteration"
+  args: !SimpleFlagArg
+    name: WINDOW_STEP
+- !Flag
+  optional: true
+  synonyms:
+  - --sort
+  description: "If set, sort output TSV by number of guides\n(ascending) then by score\
+    \ (descending); default is to\nsort by window position"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out-tsv
+  description: "Path to output TSV. If more than one input FASTA is\ngiven, the same\
+    \ number of output TSVs must be given;\neach output TSV corresponds to an input\
+    \ FASTA."
+  args: !RepeatFlagArg
+    name: OUT_TSV
+- !Flag
+  optional: true
+  synonyms:
+  - --cover-by-year-decay
+  description: "COVER_BY_YEAR_DECAY COVER_BY_YEAR_DECAY\n<A> <B> <C>; if set, group\
+    \ input sequences by year and\nset a desired partial cover for each year (fraction\
+    \ of\nsequences that must be covered by guides) as follows:\nA is a tsv giving\
+    \ a year for each input sequence (col\n1 is sequence name matching that in the\
+    \ input FASTA,\ncol 2 is year). All years >= A receive a desired cover\nfraction\
+    \ of GUIDE_COVER_FRAC for guides (and\nPRIMER_COVER_FRAC for primers). Each preceding\
+    \ year\nreceives a desired cover fraction that decays by B --\ni.e., year n is\
+    \ given B*(desired cover fraction of\nyear n+1).\n"
+  args: !SimpleFlagArg
+    name: COVER_BY_YEAR_DECAY
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: design.py sliding-window fasta [-h] [-gl GUIDE_LENGTH]\n      \
+  \                                [--obj {maximize-activity,minimize-guides}]\n \
+  \                                     [-gm GUIDE_MISMATCHES]\n                 \
+  \                     [-gp GUIDE_COVER_FRAC]\n                                 \
+  \     [-sgc SOFT_GUIDE_CONSTRAINT]\n                                      [-hgc\
+  \ HARD_GUIDE_CONSTRAINT]\n                                      [--penalty-strength\
+  \ PENALTY_STRENGTH]\n                                      [--maximization-algorithm\
+  \ {greedy,random-greedy}]\n                                      [--missing-thres\
+  \ MISSING_THRES MISSING_THRES MISSING_THRES]\n                                 \
+  \     [--id-m DIFF_ID_MISMATCHES]\n                                      [--id-frac\
+  \ DIFF_ID_FRAC]\n                                      [--id-method {lshnn,shard}]\n\
+  \                                      [--specific-against-fastas SPECIFIC_AGAINST_FASTAS\
+  \ [SPECIFIC_AGAINST_FASTAS ...]]\n                                      [--specific-against-taxa\
+  \ SPECIFIC_AGAINST_TAXA]\n                                      [--do-not-allow-gu-pairing]\n\
+  \                                      [--required-guides REQUIRED_GUIDES]\n   \
+  \                                   [--blacklisted-ranges BLACKLISTED_RANGES]\n\
+  \                                      [--blacklisted-kmers BLACKLISTED_KMERS]\n\
+  \                                      [--require-flanking5 REQUIRE_FLANKING5]\n\
+  \                                      [--require-flanking3 REQUIRE_FLANKING3]\n\
+  \                                      [--seed SEED]\n                         \
+  \             [--predict-activity-model-path PREDICT_ACTIVITY_MODEL_PATH PREDICT_ACTIVITY_MODEL_PATH]\n\
+  \                                      [--predict-activity-thres PREDICT_ACTIVITY_THRES\
+  \ PREDICT_ACTIVITY_THRES]\n                                      [--use-simple-binary-activity-prediction]\n\
+  \                                      [--do-not-memoize-guide-computations]\n \
+  \                                     [--debug] [--verbose] [-w WINDOW_SIZE]\n \
+  \                                     [--window-step WINDOW_STEP] [--sort] -o\n\
+  \                                      OUT_TSV [OUT_TSV ...]\n                 \
+  \                     [--cover-by-year-decay COVER_BY_YEAR_DECAY COVER_BY_YEAR_DECAY\
+  \ COVER_BY_YEAR_DECAY]\n                                      in_fasta [in_fasta\
+  \ ...]\n\npositional arguments:\n  in_fasta              Path to input FASTA. More\
+  \ than one can be given for\n                        differential identification\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  -gl GUIDE_LENGTH, --guide-length GUIDE_LENGTH\n                        Length\
+  \ of guide to construct\n  --obj {maximize-activity,minimize-guides}\n         \
+  \               Objective function to solve. 'maximize-activity'\n             \
+  \           maximizes the expected activity of the guide set of\n              \
+  \          the target genomes subject to soft and hard\n                       \
+  \ constraints on the size of the guide set. 'minimize-\n                       \
+  \ guides' minimizes the number of guides in the guide\n                        set\
+  \ subject to coverage constraints across the target\n                        genomes.\n\
+  \  -gm GUIDE_MISMATCHES, --guide-mismatches GUIDE_MISMATCHES\n                 \
+  \       Allow for this number of mismatches when determining\n                 \
+  \       whether a guide covers a sequence\n  -gp GUIDE_COVER_FRAC, --guide-cover-frac\
+  \ GUIDE_COVER_FRAC\n                        The fraction of all sequences that must\
+  \ be covered by\n                        the guides.\n  -sgc SOFT_GUIDE_CONSTRAINT,\
+  \ --soft-guide-constraint SOFT_GUIDE_CONSTRAINT\n                        Soft constraint\
+  \ on the number of guides. There is no\n                        penalty for a number\
+  \ of guides <=\n                        SOFT_GUIDE_CONSTRAINT, and having a number\
+  \ of guides\n                        beyond this is penalized. See --penalty-strength.\
+  \ This\n                        value must be <= HARD_GUIDE_CONSTRAINT.\n  -hgc\
+  \ HARD_GUIDE_CONSTRAINT, --hard-guide-constraint HARD_GUIDE_CONSTRAINT\n       \
+  \                 Hard constraint on the number of guides. The number of\n     \
+  \                   guides designed for a target will be <=\n                  \
+  \      HARD_GUIDE_CONSTRAINT.\n  --penalty-strength PENALTY_STRENGTH\n         \
+  \               Importance of the penalty when the number of guides\n          \
+  \              exceeds the soft guide constraint. Namely, for a guide\n        \
+  \                set G, if the penalty strength is L and the soft guide\n      \
+  \                  constraint is h, then the penalty in the objective\n        \
+  \                function is L*max(0, |G|-h). Must be >= 0. The value\n        \
+  \                depends on the output of activity model and reflects a\n      \
+  \                  tolerance for more guides; for the default activity\n       \
+  \                 model reasonable values are in the range [0.1, 0.5].\n  --maximization-algorithm\
+  \ {greedy,random-greedy}\n                        Algorithm to use for solving submodular\
+  \ maximization\n                        problem. 'greedy' is the canonical deterministic\n\
+  \                        greedy algorithm (Nemhauser 1978) for constrained\n   \
+  \                     monotone submodular maximization, which may perform\n    \
+  \                    well in practice but has poor theoretical guarantees\n    \
+  \                    here because the function is not monotone (unless\n       \
+  \                 --penalty-strength is 0). 'random-greedy' is the\n           \
+  \             randomized greedy algorithm (Buchbinder 2014) for\n              \
+  \          constrained non-monotone submodular maximization that\n             \
+  \           has good worst-case theoretical guarantees.\n  --missing-thres MISSING_THRES\
+  \ MISSING_THRES MISSING_THRES\n                        <A> <B> <C>; parameters governing\
+  \ the threshold on\n                        which sites to ignore due to too much\
+  \ missing data.\n                        The 3 values specify not to attempt to\
+  \ design guides\n                        overlapping sites where the fraction of\
+  \ sequences with\n                        missing data is > min(A, max(B, C*m))\
+  \ where m is the\n                        median fraction of sequences with missing\
+  \ data over\n                        the alignment. Set a=1 and b=1 to not ignore\
+  \ sites due\n                        to missing data.\n  --id-m DIFF_ID_MISMATCHES\n\
+  \                        Allow for this number of mismatches when determining\n\
+  \                        whether a guide 'hits' a sequence in a group/taxon\n  \
+  \                      other than the for which it is being designed; higher\n \
+  \                       values correspond to more specificity.\n  --id-frac DIFF_ID_FRAC\n\
+  \                        Decide that a guide 'hits' a group/taxon if it 'hits'\n\
+  \                        a fraction of sequences in that group/taxon that\n    \
+  \                    exceeds this value; lower values correspond to more\n     \
+  \                   specificity.\n  --id-method {lshnn,shard}\n                \
+  \        Choice of method to query for specificity. 'lshnn' for\n              \
+  \          LSH near-neighbor approach. 'shard' for approach that\n             \
+  \           shards k-mers across small tries.\n  --specific-against-fastas SPECIFIC_AGAINST_FASTAS\
+  \ [SPECIFIC_AGAINST_FASTAS ...]\n                        Path to one or more FASTA\
+  \ files giving sequences, such\n                        that guides are designed\
+  \ to be specific against (i.e.,\n                        not hit) these sequences,\
+  \ according to --id-m and\n                        --id-frac. This is equivalent\
+  \ to specifying the FASTAs\n                        in the main input (as positional\
+  \ inputs), except that,\n                        when provided here, guides are\
+  \ not designed for them\n                        and they do not need to be aligned.\n\
+  \  --specific-against-taxa SPECIFIC_AGAINST_TAXA\n                        Path to\
+  \ TSV file giving giving taxonomies from which\n                        to download\
+  \ all genomes and ensure guides are specific\n                        against (i.e.,\
+  \ not hit) these. The TSV file has 2\n                        columns: (1) a taxonomic\
+  \ ID; (2) segment label, or\n                        'None' if unsegmented\n  --do-not-allow-gu-pairing\n\
+  \                        When determining whether a guide binds to a region of\n\
+  \                        target sequence, do not count G-U (wobble) base pairs\n\
+  \                        as matching. Default is to tolerate G-U pairing:\n    \
+  \                    namely, A in an output guide sequence matches G in the\n  \
+  \                      target and C in an output guide sequence matches T in\n \
+  \                       the target (since the synthesized guide is the reverse\n\
+  \                        complement of the output guide sequence)\n  --required-guides\
+  \ REQUIRED_GUIDES\n                        Path to a file that gives guide sequences\
+  \ that will be\n                        included in the guide cover and output for\
+  \ the windows\n                        in which they belong, e.g., if certain guide\
+  \ sequences\n                        are shown experimentally to perform well. The\
+  \ file\n                        must have 3 columns: col 1 gives an identifier for\
+  \ the\n                        alignment that the guide covers, such that i\n  \
+  \                      represents the i'th FASTA given as input (0-based);\n   \
+  \                     col 2 gives a guide sequence; col 3 gives the start\n    \
+  \                    position of the guide (0-based) in the alignment\n  --blacklisted-ranges\
+  \ BLACKLISTED_RANGES\n                        Path to a file that gives ranges in\
+  \ alignments from\n                        which guides will not be constructed.\
+  \ The file must\n                        have 3 columns: col 1 gives an identifier\
+  \ for the\n                        alignment that the range corresponds to, such\
+  \ that i\n                        represents the i'th FASTA given as input (0-based);\n\
+  \                        col 2 gives the start position of the range\n         \
+  \               (inclusive); col 3 gives the end position of the range\n       \
+  \                 (exclusive)\n  --blacklisted-kmers BLACKLISTED_KMERS\n       \
+  \                 Path to a FASTA file that gives k-mers to blacklisted\n      \
+  \                  from guide sequences. No guide sequences will be\n          \
+  \              constructed that contain these k-mers. The k-mers make\n        \
+  \                up the sequences in the FASTA file; the sequence names\n      \
+  \                  are ignored. k-mers should be long enough so that not\n     \
+  \                   too many guide sequences are deemed to be unsuitable,\n    \
+  \                    and should be at most the length of the guide\n  --require-flanking5\
+  \ REQUIRE_FLANKING5\n                        Require the given sequence on the 5'\
+  \ protospacer\n                        flanking site (PFS) of each designed guide;\
+  \ this\n                        tolerates ambiguity in the sequence (e.g., 'H'\n\
+  \                        requires 'A', 'C', or 'T', or, equivalently, avoids\n \
+  \                       guides flanked by 'G'). Note that this is the 5' end\n \
+  \                       in the target sequence (not the spacer sequence).\n  --require-flanking3\
+  \ REQUIRE_FLANKING3\n                        Require the given sequence on the 3'\
+  \ protospacer\n                        flanking site (PFS) of each designed guide;\
+  \ this\n                        tolerates ambiguity in the sequence (e.g., 'H'\n\
+  \                        requires 'A', 'C', or 'T', or, equivalently, avoids\n \
+  \                       guides flanked by 'G'). Note that this is the 3' end\n \
+  \                       in the target sequence (not the spacer sequence).\n  --seed\
+  \ SEED           SEED will set the random seed, guaranteeing the same\n        \
+  \                output given the same inputs. If SEED is not set to\n         \
+  \               the same value, output may vary across different runs.\n  --predict-activity-model-path\
+  \ PREDICT_ACTIVITY_MODEL_PATH PREDICT_ACTIVITY_MODEL_PATH\n                    \
+  \    Paths to directories containing serialized models in\n                    \
+  \    TensorFlow's SavedModel format for predicting guide-\n                    \
+  \    target activity. There are two arguments: (1)\n                        classification\
+  \ model to determine which guides are\n                        active; (2) regression\
+  \ model, which is used to\n                        determine which guides (among\
+  \ active ones) are highly\n                        active. The models/ directory\
+  \ contains example models.\n                        If not set, ADAPT does not predict\
+  \ activities to use\n                        during design.\n  --predict-activity-thres\
+  \ PREDICT_ACTIVITY_THRES PREDICT_ACTIVITY_THRES\n                        Thresholds\
+  \ to use for decisions on output of\n                        predictive models.\
+  \ There are two arguments: (1)\n                        classification threshold\
+  \ for deciding which guide-\n                        target pairs are active (in\
+  \ [0,1], where higher values\n                        have higher precision but\
+  \ less recall); (2) regression\n                        threshold for deciding which\
+  \ guide-target pairs are\n                        highly active (>= 0, where higher\
+  \ values limit the\n                        number determined to be highly active).\
+  \ If not set but\n                        --predict-activity-model-path is set,\
+  \ then ADAPT uses\n                        default thresholds stored with the models.\n\
+  \  --use-simple-binary-activity-prediction\n                        If set, predict\
+  \ activity using a simple binary\n                        prediction between guide\
+  \ and target according to their\n                        distance, with the threshold\
+  \ determined based on\n                        --guide-mismatches. This is only\
+  \ applicable when OBJ\n                        is 'maxmimize-activity'. This does\
+  \ not use a\n                        serialized model for predicting activity, so\n\
+  \                        --predict-activity-model-path should not be set when\n\
+  \                        this is set.\n  --do-not-memoize-guide-computations\n \
+  \                       If set, do not memoize computations during the search,\n\
+  \                        including of guides identified at each site and of\n  \
+  \                      specificity queries. This can be helpful for\n          \
+  \              benchmarking the improvement of memoization, or if\n            \
+  \            there is reason to believe memoization will slow the\n            \
+  \            search (e.g., if possible amplicons rarely overlap).\n            \
+  \            Note that activity predictions are still memoized.\n  --debug     \
+  \          Debug output\n  --verbose             Verbose output\n  -w WINDOW_SIZE,\
+  \ --window-size WINDOW_SIZE\n                        Ensure that selected guides\
+  \ are all a window of this\n                        size\n  --window-step WINDOW_STEP\n\
+  \                        Amount by which to increase the window start position\n\
+  \                        for every iteration\n  --sort                If set, sort\
+  \ output TSV by number of guides\n                        (ascending) then by score\
+  \ (descending); default is to\n                        sort by window position\n\
+  \  -o OUT_TSV [OUT_TSV ...], --out-tsv OUT_TSV [OUT_TSV ...]\n                 \
+  \       Path to output TSV. If more than one input FASTA is\n                  \
+  \      given, the same number of output TSVs must be given;\n                  \
+  \      each output TSV corresponds to an input FASTA.\n  --cover-by-year-decay COVER_BY_YEAR_DECAY\
+  \ COVER_BY_YEAR_DECAY COVER_BY_YEAR_DECAY\n                        <A> <B> <C>;\
+  \ if set, group input sequences by year and\n                        set a desired\
+  \ partial cover for each year (fraction of\n                        sequences that\
+  \ must be covered by guides) as follows:\n                        A is a tsv giving\
+  \ a year for each input sequence (col\n                        1 is sequence name\
+  \ matching that in the input FASTA,\n                        col 2 is year). All\
+  \ years >= A receive a desired cover\n                        fraction of GUIDE_COVER_FRAC\
+  \ for guides (and\n                        PRIMER_COVER_FRAC for primers). Each\
+  \ preceding year\n                        receives a desired cover fraction that\
+  \ decays by B --\n                        i.e., year n is given B*(desired cover\
+  \ fraction of\n                        year n+1).\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/adapt:1.2.0--py_0

@@ -4,6 +4,9 @@ task MugsyWGA {
   command <<<
     mugsyWGA
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

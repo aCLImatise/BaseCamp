@@ -8,6 +8,9 @@ task Ontogetup {
     ontogetup \
       ~{if (obsolete) then "-obsolete" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     obsolete: "boolean    [N] The default behaviour is to not use or\\nreturn obsolete terms. This option if set\\nwill include all terms."
   }

@@ -3,42 +3,42 @@ id: bcftools_index.cwl
 inputs:
 - id: in_csi
   doc: generate CSI-format index for VCF/BCF files [default]
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --csi
 - id: in_force
   doc: overwrite index if it already exists
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --force
 - id: in_min_shift
   doc: set minimal interval size for CSI indices to 2^INT [14]
-  type: long
+  type: long?
   inputBinding:
     prefix: --min-shift
 - id: in_output_file
   doc: optional output index file name
-  type: File
+  type: File?
   inputBinding:
     prefix: --output-file
 - id: in_tbi
   doc: generate TBI-format index for VCF files
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --tbi
 - id: in_threads
   doc: use multithreading with INT worker threads [0]
-  type: long
+  type: long?
   inputBinding:
     prefix: --threads
 - id: in_n_records
   doc: print number of records based on existing index file
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --nrecords
 - id: in_stats
   doc: print per contig stats based on existing index file
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --stats
 - id: in_in_dot_bcf
@@ -52,9 +52,10 @@ outputs:
   type: stdout
 - id: out_output_file
   doc: optional output index file name
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bcftools

@@ -14,6 +14,9 @@ task Align2model {
       ~{if defined(track_mod) then ("-trackmod " +  '"' + track_mod + '"') else ""} \
       ~{if defined(query) then ("-query " +  '"' + query + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     _contains_model: ", which contains a MODEL, or"
     model_file: ", where file contains any model structure, or"

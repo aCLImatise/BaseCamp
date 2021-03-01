@@ -8,6 +8,9 @@ task HcaAuthGetoauthauthorize {
     hca auth get_oauth_authorize \
       ~{if defined(redirect_uri) then ("--redirect-uri " +  '"' + redirect_uri + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     redirect_uri: ""
   }

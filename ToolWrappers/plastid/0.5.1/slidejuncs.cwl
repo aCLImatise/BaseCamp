@@ -3,69 +3,69 @@ id: slidejuncs.cwl
 inputs:
 - id: in_max_slide
   doc: "Maximum number of nt to search 5' and 3' of intron\nboundaries (Default: 10)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --maxslide
 - id: in_ref
   doc: Reference file describing known splice junctions
-  type: File
+  type: File?
   inputBinding:
     prefix: --ref
 - id: in_slide_canonical
   doc: "Slide junctions to canonical junctions if present\nwithin equal support region"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --slide_canonical
 - id: in_quiet
   doc: Suppress all warning messages. Cannot use with '-v'.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 - id: in_verbose
   doc: "Increase verbosity. With '-v', show every warning.\nWith '-vv', turn warnings\
     \ into exceptions. Cannot use\nwith '-q'. (Default: show each type of warning\
     \ once)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_sequence_file
   doc: "[fasta | fastq | twobit | genbank | embl]\nA file of DNA sequence"
-  type: File
+  type: File?
   inputBinding:
     prefix: --sequence_file
 - id: in_sequence_format
   doc: 'Format of sequence_file (Default: fasta).'
-  type: string
+  type: string?
   inputBinding:
     prefix: --sequence_format
 - id: in_mask_annotation_files
   doc: "[BED | BigBed | GTF2 | GFF3 | PSL] [infile.[BED | BigBed | GTF2 | GFF3 | PSL]\
     \ ...]\nZero or more annotation files (max 1 file if BigBed)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --mask_annotation_files
 - id: in_mask_annotation_format
   doc: "Format of mask_annotation_files (Default: GTF2). Note:\nGFF3 assembly assumes\
     \ SO v.2.5.2 feature ontologies,\nwhich may or may not match your specific file."
-  type: string
+  type: string?
   inputBinding:
     prefix: --mask_annotation_format
 - id: in_mask_add_three
   doc: "If supplied, coding regions will be extended by 3\nnucleotides at their 3'\
     \ ends (except for GTF2 files\nthat explicitly include `stop_codon` features).\
     \ Use if\nyour annotation file excludes stop codons from CDS."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --mask_add_three
 - id: in_mask_tab_ix
   doc: "mask_annotation_files are tabix-compressed and indexed\n(Default: False).\
     \ Ignored for BigBed files."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --mask_tabix
 - id: in_mask_sorted
   doc: "mask_annotation_files are sorted by chromosomal\nposition (Default: False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --mask_sorted
 - id: in_mask_bed_extra_columns
@@ -77,7 +77,7 @@ inputs:
 - id: in_mask_maxmem
   doc: "Maximum desired memory footprint in MB to devote to\nBigBed/BigWig files.\
     \ May be exceeded by large queries.\n(Default: 0, No maximum)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --mask_maxmem
 - id: in_mask_gff_transcript_types
@@ -182,6 +182,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - slidejuncs

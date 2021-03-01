@@ -1,0 +1,125 @@
+!Command
+command:
+- RNAdos
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --detailed-help
+  description: "Print help, including all details and hidden\noptions, and exit"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: "Be verbose.\n(default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --sequence
+  description: The RNA sequence (ACGU)
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --max-energy
+  description: "Structures are only counted until this threshold\nis reached. Default\
+    \ is 0 kcal/mol.\n(default=`0')"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --numThreads
+  description: "Set the number of threads used for calculations\n(only available when\
+    \ compiled with OpenMP\nsupport)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --temp
+  description: "Rescale energy parameters to a temperature of temp\nC. Default is\
+    \ 37C."
+  args: !SimpleFlagArg
+    name: DOUBLE
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --dangles
+  description: "How to treat \"dangling end\" energies for bases\nadjacent to helices\
+    \ in free ends and multi-loops\n(default=`2')"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -P
+  - --paramFile
+  description: "Read energy parameters from paramfile, instead of\nusing the default\
+    \ parameter set."
+  args: !SimpleFlagArg
+    name: paramfile
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --hashtable-bits
+  description: "Set the size of the hash table for each cell in\nthe dp-matrices.\n\
+    (default=`20')"
+  args: !SimpleFlagArg
+    name: INT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Print help and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Print version and exit
+  args: !EmptyFlagArg {}
+help_text: "Usage: RNAdos [OPTIONS]\nCalculate the density of states for each energy\
+  \ band of an RNA\n\nThe program reads an RNA sequence and computes the density of\
+  \ states for each\nenergy band.\n\n\n\n  -h, --help                 Print help and\
+  \ exit\n      --detailed-help        Print help, including all details and hidden\n\
+  \                               options, and exit\n  -V, --version             \
+  \ Print version and exit\n\nGeneral Options:\n  Command line options which alter\
+  \ the general behavior of this program\n\n\n  -v, --verbose              Be verbose.\n\
+  \n                                 (default=off)\n  -s, --sequence=STRING      The\
+  \ RNA sequence (ACGU)\n\n  -e, --max-energy=INT       Structures are only counted\
+  \ until this threshold\n                               is reached. Default is 0\
+  \ kcal/mol.\n                                 (default=`0')\n  -j, --numThreads=INT\
+  \       Set the number of threads used for calculations\n                      \
+  \         (only available when compiled with OpenMP\n                          \
+  \     support)\n\n\n\nModel Details:\n  -T, --temp=DOUBLE          Rescale energy\
+  \ parameters to a temperature of temp\n                               C. Default\
+  \ is 37C.\n\n\n  -d, --dangles=INT          How to treat \"dangling end\" energies\
+  \ for bases\n                               adjacent to helices in free ends and\
+  \ multi-loops\n                                 (default=`2')\n  -P, --paramFile=paramfile\
+  \  Read energy parameters from paramfile, instead of\n                         \
+  \      using the default parameter set.\n\n\nAdvanced options:\n  -b, --hashtable-bits=INT\
+  \   Set the size of the hash table for each cell in\n                          \
+  \     the dp-matrices.\n\n                                 (default=`20')\n\nIf\
+  \ in doubt our program is right, nature is at fault.\nComments should be sent to\
+  \ rna@tbi.univie.ac.at.\n\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/viennarna:2.4.17--py36hd181a71_0

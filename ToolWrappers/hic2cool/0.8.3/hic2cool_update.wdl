@@ -14,6 +14,9 @@ task Hic2coolUpdate {
       ~{if (silent) then "--silent" else ""} \
       ~{if (warnings) then "--warnings" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     outfile: "optional new output file path"
     silent: "if used, silence standard program output"

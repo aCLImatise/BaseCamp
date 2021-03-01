@@ -16,6 +16,9 @@ task Biopetvalidatevcf {
       ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
       ~{if (disable_fail) then "--disableFail" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     log_level: "Level of log information printed. Possible levels: 'debug', 'info', 'warn', 'error'"
     input_vcf: "Vcf file to check"

@@ -14,6 +14,9 @@ task ReadDistributionpy {
       ~{if defined(input_file) then ("--input-file " +  '"' + input_file + '"') else ""} \
       ~{if defined(ref_gene) then ("--refgene " +  '"' + ref_gene + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file: "Alignment file in BAM or SAM format."
     ref_gene: "Reference gene model in bed format.\\n"

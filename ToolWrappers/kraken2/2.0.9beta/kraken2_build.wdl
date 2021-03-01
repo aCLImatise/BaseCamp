@@ -18,7 +18,6 @@ task Kraken2build {
     Boolean? no_masking
     Int? max_db_size
     Boolean? use_ftp
-    Boolean? skip_maps
     Float? load_factor
     String? var_task
   }
@@ -41,11 +40,13 @@ task Kraken2build {
       ~{if (no_masking) then "--no-masking" else ""} \
       ~{if defined(max_db_size) then ("--max-db-size " +  '"' + max_db_size + '"') else ""} \
       ~{if (use_ftp) then "--use-ftp" else ""} \
-      ~{if (skip_maps) then "--skip-maps" else ""} \
       ~{if defined(load_factor) then ("--load-factor " +  '"' + load_factor + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    download_taxonomy: "Download NCBI taxonomic information"
+    download_taxonomy: "Avoids downloading accession number to taxid maps,"
     download_library: "Download partial library\\n(TYPE = one of \\\"archaea\\\", \\\"bacteria\\\", \\\"plasmid\\\",\\n\\\"viral\\\", \\\"human\\\", \\\"fungi\\\", \\\"plant\\\", \\\"protozoa\\\",\\n\\\"nr\\\", \\\"nt\\\", \\\"UniVec\\\", \\\"UniVec_Core\\\")"
     special: "Download and build a special database\\n(TYPE = one of \\\"greengenes\\\", \\\"silva\\\", \\\"rdp\\\")"
     add_to_library: "Add FILE to library"
@@ -60,8 +61,7 @@ task Kraken2build {
     protein: "Build a protein database for translated search"
     no_masking: "Used with --standard/--download-library/"
     max_db_size: "Maximum number of bytes for Kraken 2 hash table;\\nif the estimator determines more would normally be\\nneeded, the reference library will be downsampled\\nto fit. (Used with --build/--standard/--special)"
-    use_ftp: "Use FTP for downloading instead of RSYNC; used with\\n--download-library/--download-taxonomy/--standard."
-    skip_maps: "Avoids downloading accession number to taxid maps,\\nused with --download-taxonomy."
+    use_ftp: "Use FTP for downloading instead of RSYNC; used with"
     load_factor: "Proportion of the hash table to be populated\\n(build task only; def: 0.7, must be\\nbetween 0 and 1).\\n"
     var_task: ""
   }

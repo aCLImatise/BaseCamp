@@ -22,6 +22,9 @@ task SeqseqpanJoin {
       ~{if defined(x_mfa) then ("--xmfa " +  '"' + x_mfa + '"') else ""} \
       ~{if defined(x_mfa_two) then ("--xmfa_two " +  '"' + x_mfa_two + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quiet: "Suppress warnings."
     order: "Ordering of blocks in XMFA/FASTA output (0,1,2,...)\\n[default: 0]"

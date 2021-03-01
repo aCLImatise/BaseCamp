@@ -32,6 +32,9 @@ task CallSbatchpy {
       ~{if (mail_type) then "--mail-type" else ""} \
       ~{if defined(mail_user) then ("--mail-user " +  '"' + mail_user + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     num_cpus: "The number of CPUs to use (default: 1)"
     mem: "The amount of RAM to request (default: 10G)"

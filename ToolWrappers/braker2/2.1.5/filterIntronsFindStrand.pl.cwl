@@ -3,23 +3,23 @@ id: filterIntronsFindStrand.pl.cwl
 inputs:
 - id: in_allowed
   doc: ',gcag,atac        Allowed acceptor and donor splice site types'
-  type: string
+  type: string?
   inputBinding:
     prefix: --allowed
 - id: in_score
   doc: Set score to 'mult' entry or '1', if the last column does not contain a 'mult'
     entry
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --score
 - id: in_genome
   doc: see above
-  type: string
+  type: string?
   inputBinding:
     prefix: --genome
 - id: in_introns
   doc: see above
-  type: string
+  type: string?
   inputBinding:
     prefix: --introns
 - id: in_genome_dot_fa
@@ -36,6 +36,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - filterIntronsFindStrand.pl

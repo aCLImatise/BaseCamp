@@ -14,6 +14,9 @@ task Obipr2 {
       ~{if defined(local_db) then ("--localdb " +  '"' + local_db + '"') else ""} \
       ~{if (_mintaxidminimal_taxid) then "-m" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "Set logging in debug mode"
     without_progress_bar: "desactivate progress bar"

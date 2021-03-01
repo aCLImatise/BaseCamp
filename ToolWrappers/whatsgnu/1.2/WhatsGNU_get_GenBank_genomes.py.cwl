@@ -3,17 +3,17 @@ id: WhatsGNU_get_GenBank_genomes.py.cwl
 inputs:
 - id: in_faa
   doc: protein faa file from GenBank
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --faa
 - id: in_contigs
   doc: genomic fna file from GenBank
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --contigs
 - id: in_remove
   doc: remove assembly_summary_genbank.txt after done
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --remove
 - id: in_list
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - WhatsGNU_get_GenBank_genomes.py

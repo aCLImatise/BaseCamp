@@ -2,23 +2,21 @@ class: CommandLineTool
 id: hicQuickQC.cwl
 inputs:
 - id: in_restriction_cut_file
-  doc: "file [BED file ...]\n--restrictionSequence RESTRICTIONSEQUENCE\n[RESTRICTIONSEQUENCE\
-    \ ...] --danglingSequence\nDANGLINGSEQUENCE [DANGLINGSEQUENCE ...] [--lines LINES]\n\
-    [--help] [--version]"
-  type: File
+  doc: file [BED file ...]
+  type: File?
   inputBinding:
     prefix: --restrictionCutFile
 - id: in_sam_files
   doc: "sam files two sam files, -s two sam files two sam files\nThe two PE alignment\
     \ sam files to process. (default:\nNone)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --samFiles
 - id: in_qc_folder
   doc: "Path of folder to save the quality control data of the\nmatrix. The log files\
     \ produced this way can be loaded\ninto `hicQC` in order to compare the quality\
     \ of\nmultiple Hi-C libraries. (default: None)"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --QCfolder
 - id: in_restriction_sequence
@@ -44,7 +42,7 @@ inputs:
     prefix: --danglingSequence
 - id: in_lines
   doc: "Number of lines to consider for the QC test run.\n(default: 1000000)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --lines
 - id: in_sam
@@ -66,6 +64,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - hicQuickQC

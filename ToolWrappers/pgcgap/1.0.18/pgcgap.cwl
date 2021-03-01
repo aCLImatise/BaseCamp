@@ -3,7 +3,7 @@ id: pgcgap.cwl
 inputs:
 - id: in_for_thresholds_
   doc: for thresholds 0.5-0.6, -n 4 for
-  type: long
+  type: long?
   inputBinding:
     prefix: -n
 - id: in_roar_y
@@ -61,7 +61,7 @@ inputs:
   type: long
   inputBinding:
     position: 7
-- id: in_scenedesmus_obliquus_mitochondrial
+- id: in_scenedesmus_obliquus_code
   doc: Scenedesmus obliquus mitochondrial code
   type: long
   inputBinding:
@@ -81,6 +81,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pgcgap

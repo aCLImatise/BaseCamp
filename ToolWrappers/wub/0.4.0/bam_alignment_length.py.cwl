@@ -3,22 +3,22 @@ id: bam_alignment_length.py.cwl
 inputs:
 - id: in_tab_separated_file
   doc: "Tab separated file to save alignment lengths\n(bam_alignment_length.tsv)."
-  type: File
+  type: File?
   inputBinding:
     prefix: -t
 - id: in_minimum_alignment_quality
   doc: Minimum alignment quality (0).
-  type: long
+  type: long?
   inputBinding:
     prefix: -q
 - id: in_sort_number_read
   doc: "Sort by number of read bases instead of number of aligned\nreference bases."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -x
-- id: in_quiet_print_false
+- id: in_be_quiet_print
   doc: Be quiet and do not print progress bar (False).
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -Q
 - id: in_bam
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bam_alignment_length.py

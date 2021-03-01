@@ -8,6 +8,9 @@ task Seq2profilepl {
     seq2profile_pl \
       ~{consensus_sequence}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     consensus_sequence: ""
   }

@@ -26,6 +26,9 @@ task GuppyClassifyRdp {
       ~{if (prefix) then "--prefix" else ""} \
       ~{if (help) then "--help" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     csv: "Write .class.csv files containing CSV data."
     reference_package_path: "Reference package path. Required."

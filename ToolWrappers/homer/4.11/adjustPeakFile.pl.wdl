@@ -24,6 +24,9 @@ task AdjustPeakFilepl {
       ~{if (min) then "-min" else ""} \
       ~{if (max) then "-max" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     size: "<#> (resize peak [around center] to this size, supports -size <#,#>)"
     r_size: "<#> (resize peak by this relative size, supports -size <#,#>)"

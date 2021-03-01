@@ -12,6 +12,9 @@ task CnvkitpySex {
       ~{if (haploid_x_reference) then "--haploid-x-reference" else ""} \
       ~{if defined(output_table_file) then ("--output " +  '"' + output_table_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     haploid_x_reference: "Assume inputs were normalized to a male reference\\n(i.e. female samples will have +1 log-coverage of\\nchrX; otherwise male samples would have -1 chrX)."
     output_table_file: "Output table file name.\\n"

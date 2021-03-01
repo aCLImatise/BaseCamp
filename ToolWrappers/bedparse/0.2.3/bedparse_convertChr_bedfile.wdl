@@ -14,6 +14,9 @@ task BedparseConvertChrBedfile {
       ~{if defined(target) then ("--target " +  '"' + target + '"') else ""} \
       ~{if defined(assembly) then ("--assembly " +  '"' + assembly + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     target: ""
     assembly: ""

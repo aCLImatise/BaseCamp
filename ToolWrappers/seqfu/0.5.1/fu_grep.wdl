@@ -28,6 +28,9 @@ task Fugrep {
       ~{if (stranded) then "--stranded" else ""} \
       ~{if (fast_a) then "--fasta" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     annotate: "Add comments to the sequence when match is found"
     name: "Search pattern in sequence name (default: sequence)"

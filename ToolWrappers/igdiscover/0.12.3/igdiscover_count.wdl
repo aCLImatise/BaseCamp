@@ -20,6 +20,9 @@ task IgdiscoverCount {
       ~{if defined(d_errors) then ("--d-errors " +  '"' + d_errors + '"') else ""} \
       ~{if defined(allele_ratio) then ("--allele-ratio " +  '"' + allele_ratio + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gene: "Which gene type: Choose V, D or J. Default: Default: V"
     database: "Compute expressions for the sequences that are named\\nin the FASTA file. Only the sequence names in the file\\nare used! This is the only way to also include genes\\nwith an expression of zero."

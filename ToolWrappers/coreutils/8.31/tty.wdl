@@ -8,6 +8,9 @@ task Tty {
     tty \
       ~{if (silent) then "--silent" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     silent: "print nothing, only return an exit status"
   }

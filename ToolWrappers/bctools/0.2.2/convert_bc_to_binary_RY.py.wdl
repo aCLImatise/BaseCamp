@@ -16,6 +16,9 @@ task ConvertBcToBinaryRYpy {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     outfile: "Write results to this file."
     fast_a_format: "Read and write fasta instead of fastq format."

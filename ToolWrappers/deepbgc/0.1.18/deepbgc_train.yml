@@ -4,64 +4,87 @@ command:
 - train
 positional:
 - !Positional
-  description: Training sequences (Pfam TSV) file paths
+  optional: false
   position: 0
   name: inputs
-  optional: false
+  description: Training sequences (Pfam TSV) file paths
 named:
 - !Flag
-  description: ''
-  synonyms:
-  - -l
-  args: !SimpleFlagArg
-    name: LOG
   optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -o
-  args: !SimpleFlagArg
-    name: OUTPUT
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -t
-  args: !SimpleFlagArg
-    name: TARGET
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -m
-  args: !SimpleFlagArg
-    name: MODEL
-  optional: true
-- !Flag
-  description: ''
   synonyms:
   - --debug
-  args: !EmptyFlagArg {}
+  - -m
+  - --model
+  description: Path to JSON model config file
+  args: !SimpleFlagArg
+    name: MODEL
+- !Flag
   optional: true
+  synonyms:
+  - -t
+  - --target
+  description: Target column to predict in sequence prediction
+  args: !SimpleFlagArg
+    name: TARGET
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: Output trained model file path
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --log
+  description: Progress log output path (e.g. TensorBoard)
+  args: !SimpleFlagArg
+    name: LOG
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --classes
+  description: Class TSV file path - train a sequence classifier using provided classes
+    (binary columns), indexed by sequence_id column
+  args: !SimpleFlagArg
+    name: CLASSES
+- !Flag
+  optional: true
+  synonyms:
+  - --config
+  description: "CONFIG\nVariables in model JSON file to replace (e.g. --config PFAM2VEC\
+    \ path/to/pfam2vec.csv)"
+  args: !SimpleFlagArg
+    name: CONFIG
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --validation
+  description: Validation sequence file path. Repeat to specify multiple files
+  args: !SimpleFlagArg
+    name: VALIDATION
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: 'Verbosity level: 0=none, 1=progress bar, 2=once per epoch (default:
+    2)'
+  args: !SimpleFlagArg
+    name: INT
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n--debug\n-m MODEL, --model MODEL\n\
-    Path to JSON model config file\n-t TARGET, --target TARGET\nTarget column to predict\
-    \ in sequence prediction\n-o OUTPUT, --output OUTPUT\nOutput trained model file\
-    \ path\n-l LOG, --log LOG     Progress log output path (e.g. TensorBoard)\n-c\
-    \ CLASSES, --classes CLASSES\nClass TSV file path - train a sequence classifier\
-    \ using provided classes (binary columns), indexed by sequence_id column\n--config\
-    \ CONFIG CONFIG\nVariables in model JSON file to replace (e.g. --config PFAM2VEC\
-    \ path/to/pfam2vec.csv)\n-v VALIDATION, --validation VALIDATION\nValidation sequence\
-    \ file path. Repeat to specify multiple files\n--verbose INT         Verbosity\
-    \ level: 0=none, 1=progress bar, 2=once per epoch (default: 2)\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: deepbgc train [-h] [--debug] -m MODEL [-t TARGET] -o OUTPUT [-l\
@@ -89,3 +112,4 @@ help_text: "usage: deepbgc train [-h] [--debug] -m MODEL [-t TARGET] -o OUTPUT [
   \ per epoch (default: 2)\n"
 generated_using:
 - --help
+docker_image:

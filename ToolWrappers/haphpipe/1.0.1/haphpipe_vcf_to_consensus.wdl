@@ -24,6 +24,9 @@ task HaphpipeVcfToConsensus {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(log_file) then ("--logfile " +  '"' + log_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     vcf: "VCF file (created with all sites)."
     outdir: "Output directory (default: .)"

@@ -16,6 +16,9 @@ task GcloudDocker {
       ~{if defined(docker_host) then ("--docker-host " +  '"' + docker_host + '"') else ""} \
       ~{if defined(server) then ("--server " +  '"' + server + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     authorize_only: "Configure docker authorization only, do not launch the docker\\ncommand-line."
     docker_host: "The URL to connect to Docker Daemon. Format: tcp://host:port or\\nunix:///path/to/socket."

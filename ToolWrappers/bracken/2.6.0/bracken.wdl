@@ -34,6 +34,9 @@ task Bracken {
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
       ~{if defined(d) then ("-d " +  '"' + d + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     t: ""
     l: ""

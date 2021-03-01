@@ -22,6 +22,9 @@ task Phastaf {
       ~{if defined(i_gff) then ("--igff " +  '"' + i_gff + '"') else ""} \
       ~{if defined(min_genes) then ("--mingenes " +  '"' + min_genes + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     check: "Check dependencies are installed"
     force: "Force overwite of existing output folder (default: OFF)"

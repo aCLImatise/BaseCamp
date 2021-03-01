@@ -34,6 +34,9 @@ task Kccachetest {
       ~{if (var_8) then "-tran" else ""} \
       ~{if (etc) then "-etc" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     lv: ""
     caps_iz: ""

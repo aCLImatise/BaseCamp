@@ -1,0 +1,64 @@
+!Command
+command:
+- bamtofastq.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: BAM
+  description: Input BAM file(s). If absent then defaults to stdin.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --readgroup
+  description: Read group(s) to extract (comma separated)
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --rename
+  description: Rename reads
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --is_sam
+  description: Input is SAM format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -H
+  - --header
+  description: "Write BAM header to file\n"
+  args: !SimpleFlagArg
+    name: FILE
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: bamtofastq.py [-h] [-r STR] [-n] [-S] [-H FILE] [BAM [BAM ...]]\n\
+  \nbamtofastq.py\nauthor: Ira Hall (ihall@genome.wustl.edu) and Colby Chiang (cc2qe@virginia.edu)\n\
+  version: $Revision: 0.0.1 $\ndescription: Convert a coordinate sorted BAM file to\
+  \ FASTQ\n             (ignores unpaired reads)\n\npositional arguments:\n  BAM \
+  \                  Input BAM file(s). If absent then defaults to stdin.\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  -r STR,\
+  \ --readgroup STR\n                        Read group(s) to extract (comma separated)\n\
+  \  -n, --rename          Rename reads\n  -S, --is_sam          Input is SAM format\n\
+  \  -H FILE, --header FILE\n                        Write BAM header to file\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bamkit:16.07.26--py_0

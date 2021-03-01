@@ -5,9 +5,9 @@ task Kaijux {
     File? name_database_file
     File? name_input_file
     File? name_second_input
-    File? name_output_file
+    File? name_specified_output
     Int? number_parallel_threads
-    String? run_mode_greedy
+    String? run_mode_default
     Int? number_mismatches_allowed
     Int? minimum_match_length
     Int? minimum_match_score
@@ -21,9 +21,9 @@ task Kaijux {
       ~{if defined(name_database_file) then ("-f " +  '"' + name_database_file + '"') else ""} \
       ~{if defined(name_input_file) then ("-i " +  '"' + name_input_file + '"') else ""} \
       ~{if defined(name_second_input) then ("-j " +  '"' + name_second_input + '"') else ""} \
-      ~{if defined(name_output_file) then ("-o " +  '"' + name_output_file + '"') else ""} \
+      ~{if defined(name_specified_output) then ("-o " +  '"' + name_specified_output + '"') else ""} \
       ~{if defined(number_parallel_threads) then ("-z " +  '"' + number_parallel_threads + '"') else ""} \
-      ~{if defined(run_mode_greedy) then ("-a " +  '"' + run_mode_greedy + '"') else ""} \
+      ~{if defined(run_mode_default) then ("-a " +  '"' + run_mode_default + '"') else ""} \
       ~{if defined(number_mismatches_allowed) then ("-e " +  '"' + number_mismatches_allowed + '"') else ""} \
       ~{if defined(minimum_match_length) then ("-m " +  '"' + minimum_match_length + '"') else ""} \
       ~{if defined(minimum_match_score) then ("-s " +  '"' + minimum_match_score + '"') else ""} \
@@ -32,13 +32,16 @@ task Kaijux {
       ~{if (disable_seg_low) then "-X" else ""} \
       ~{if (enable_verbose_output) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name_database_file: "Name of database file (.fmi) file"
     name_input_file: "Name of input file containing reads in FASTA or FASTQ format"
     name_second_input: "Name of second input file for paired-end reads"
-    name_output_file: "Name of output file. If not specified, output will be printed to STDOUT"
+    name_specified_output: "Name of output file. If not specified, output will be printed to STDOUT"
     number_parallel_threads: "Number of parallel threads for classification (default: 1)"
-    run_mode_greedy: "Run mode, either \\\"mem\\\"  or \\\"greedy\\\" (default: greedy)"
+    run_mode_default: "Run mode, either \\\"mem\\\"  or \\\"greedy\\\" (default: greedy)"
     number_mismatches_allowed: "Number of mismatches allowed in Greedy mode (default: 3)"
     minimum_match_length: "Minimum match length (default: 11)"
     minimum_match_score: "Minimum match score in Greedy mode (default: 65)"
@@ -49,6 +52,6 @@ task Kaijux {
   }
   output {
     File out_stdout = stdout()
-    File out_name_output_file = "${in_name_output_file}"
+    File out_name_specified_output = "${in_name_specified_output}"
   }
 }

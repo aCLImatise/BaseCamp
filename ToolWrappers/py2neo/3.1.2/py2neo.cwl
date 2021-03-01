@@ -3,12 +3,12 @@ id: py2neo.cwl
 inputs:
 - id: in_p
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -P
 - id: in_h
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -H
 - id: in_run
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - py2neo

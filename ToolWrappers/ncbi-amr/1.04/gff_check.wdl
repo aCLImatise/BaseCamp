@@ -20,6 +20,9 @@ task GffCheck {
       ~{if defined(verbose) then ("-verbose " +  '"' + verbose + '"') else ""} \
       ~{if (qc) then "-qc" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threads: ""
     seed: ""

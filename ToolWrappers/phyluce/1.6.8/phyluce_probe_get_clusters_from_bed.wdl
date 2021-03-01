@@ -12,6 +12,9 @@ task PhyluceProbeGetClustersFromBed {
       ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""} \
       ~{if defined(files) then ("--files " +  '"' + files + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bed: "The BED directory you want to search for clusters"
     outdir: "The output directory to store results"

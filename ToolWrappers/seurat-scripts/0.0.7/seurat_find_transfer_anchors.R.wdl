@@ -50,6 +50,9 @@ task SeuratfindtransferanchorsR {
       ~{if (approx_pc_a) then "--approx-pca" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     query_file: "File containing seurat object to use as the query."
     query_format: "Either loom, seurat, anndata or singlecellexperiment for the output format."

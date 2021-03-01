@@ -12,6 +12,9 @@ task IutrimV6primers {
       ~{if (archaea) then "--archaea" else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     archaea: "When set, primers for arhacea is used instead of bacteria."
     debug: "Turn on debug prints."

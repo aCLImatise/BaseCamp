@@ -28,6 +28,9 @@ task Anvigetenrichedfunctionsperpangroup {
       ~{if (exclude_ungrouped) then "--exclude-ungrouped" else ""} \
       ~{if (just_do_it) then "--just-do-it" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     o: "[-F FILE]"
     pan_db: "Anvi'o pan database"

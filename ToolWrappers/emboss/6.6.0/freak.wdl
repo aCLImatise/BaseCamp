@@ -14,6 +14,9 @@ task Freak {
       ~{if (window) then "-window" else ""} \
       ~{if (plot) then "-plot" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     letters: "string     [gc] Residue letters (Any string)"
     step: "integer    [1] Stepping value (Any integer value)"

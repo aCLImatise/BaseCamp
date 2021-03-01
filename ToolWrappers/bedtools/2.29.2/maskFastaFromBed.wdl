@@ -22,6 +22,9 @@ task MaskFastaFromBed {
       ~{if (mc) then "-mc" else ""} \
       ~{if (full_header) then "-fullHeader" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fi: "Input FASTA file"
     bed: "BED/GFF/VCF file of ranges to mask in -fi"

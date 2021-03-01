@@ -8,6 +8,9 @@ task CsOUTBASEGenepositions {
     cs OUTBASE_gene_positions \
       ~{cs}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cs: ""
   }

@@ -3,27 +3,27 @@ id: abyss_samtoafg.cwl
 inputs:
 - id: in_eid
   doc: the EID of the library
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --eid
 - id: in_iid
   doc: the IID of the library
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --iid
 - id: in_mean
   doc: the mean of the fragment-size
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --mean
 - id: in_sd
   doc: "the standard deviation of the fragment-size\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --sd
 - id: in_cb
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -cb
 - id: in_bank_transact
@@ -50,6 +50,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - abyss-samtoafg

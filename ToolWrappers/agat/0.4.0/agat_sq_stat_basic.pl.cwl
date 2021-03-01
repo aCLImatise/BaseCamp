@@ -4,7 +4,7 @@ inputs:
 - id: in_input
   doc: "STRING: Input GTF/GFF file. Several files can be processed at\nonce: -i file1\
     \ -i file2"
-  type: File
+  type: File?
   inputBinding:
     prefix: --input
 - id: in_genome
@@ -12,7 +12,7 @@ inputs:
     \ of the genome represented by each kind\nof feature type. You can provide an\
     \ INTEGER or the genome in\nfasta format. If you provide the fasta, the genome\
     \ size will be\ncalculated on the fly."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --genome
 - id: in_inflate
@@ -22,13 +22,13 @@ inputs:
     \ have\nmultiple parent. By default the script count such feature only\nonce.\
     \ Using the inflate option allows to count the feature and\nits size as many time\
     \ there are parents."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --inflate
 - id: in_output
   doc: "STRING: Output file. If no output file is specified, the output\nwill be written\
     \ to STDOUT. The result is in tabulate format."
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_agat_sq_stat_basic_do_tpl
@@ -43,9 +43,10 @@ outputs:
 - id: out_output
   doc: "STRING: Output file. If no output file is specified, the output\nwill be written\
     \ to STDOUT. The result is in tabulate format."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - agat_sq_stat_basic.pl

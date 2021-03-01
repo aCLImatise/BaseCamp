@@ -12,6 +12,9 @@ task DgeniesGalleryDel {
       ~{if defined(name) then ("--name " +  '"' + name + '"') else ""} \
       ~{if (remove_pict) then "--remove-pict" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     id_job: "Id (name) of the job to delete from the gallery"
     name: "Name of the job shown in the gallery"

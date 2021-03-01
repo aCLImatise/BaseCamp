@@ -32,6 +32,9 @@ task HicDetectLoops {
       ~{if defined(threads_per_chromosome) then ("--threadsPerChromosome " +  '"' + threads_per_chromosome + '"') else ""} \
       ~{if defined(expected) then ("--expected " +  '"' + expected + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     matrix: "The matrix to compute the loop detection on."
     out_filename: "Outfile name to store the detected loops. The file\\nwill in bedgraph format."

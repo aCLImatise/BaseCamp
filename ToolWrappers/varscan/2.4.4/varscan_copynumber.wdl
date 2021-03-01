@@ -24,6 +24,9 @@ task VarscanCopynumber {
       ~{if (p_value) then "--p-value" else ""} \
       ~{if (data_ratio) then "--data-ratio" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_base_qual: "- Minimum base quality to count for coverage [20]"
     min_map_qual: "- Minimum read mapping quality to count for coverage [20]"

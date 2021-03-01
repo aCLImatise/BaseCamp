@@ -4,225 +4,212 @@ command:
 - illumina
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: For
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: samples
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 2
   name: archive
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 2
   name: files
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: "--already-contiged | --input-R2 R2_FILE [R2_FILE ...] --R1-size R1_SIZE\
-    \ --R2-size R2_SIZE [--mismatch-rate RATE ] [--quality-scale SCALE ] [--merge-software\
-    \ {vsearch,flash,pear} [--expected-amplicon-size]] [--keep-unmerged]\n--min-amplicon-size\
-    \ MIN_AMPLICON_SIZE\n--max-amplicon-size MAX_AMPLICON_SIZE\n--without-primers\
-    \ | --five-prim-primer FIVE_PRIM_PRIMER --three-prim-primer THREE_PRIM_PRIMER\n\
-    [--fungi {ITS1,ITS2}] [--keep-unmerged]\n[--samples-names SAMPLE_NAME [SAMPLE_NAME\
-    \ ...]]\n[-p NB_CPUS] [--debug] [-v]\n[-d DEREPLICATED_FILE] [-c COUNT_FILE]\n\
-    [-s SUMMARY_FILE] [-l LOG_FILE]"
-  synonyms:
-  - --input-R1
-  args: !RepeatFlagArg
-    name: R1_FILE
   optional: true
-- !Flag
-  description: "--already-contiged | --R1-size R1_SIZE --R2-size R2_SIZE [--mismatch-rate\
-    \ RATE ] [--quality-scale SCALE ] [--merge-software {vsearch,flash,pear} [--expected-amplicon-size]\
-    \ ] [--keep-unmerged]\n--min-amplicon-size MIN_AMPLICON_SIZE\n--max-amplicon-size\
-    \ MAX_AMPLICON_SIZE\n--without-primers | --five-prim-primer FIVE_PRIM_PRIMER --three-prim-primer\
-    \ THREE_PRIM_PRIMER\n[--fungi {ITS1,ITS2}]\n[-p NB_CPUS] [--debug] [-v]\n[-d DEREPLICATED_FILE]\
-    \ [-c COUNT_FILE] [-c COUNT_FILE] [--artComb-output-dereplicated ART_DEREPLICATED_FILE]\
-    \ [--artComb-output-count ART_COUNT_FILE]\n[-s SUMMARY_FILE] [-l LOG_FILE]"
-  synonyms:
-  - --input-archive
-  args: !SimpleFlagArg
-    name: ARCHIVE_FILE
-  optional: true
-- !Flag
-  description: Software used to merge paired reads
   synonyms:
   - --merge-software
+  description: Software used to merge paired reads
   args: !ChoiceFlagArg
     choices: !!set
-      vsearch:
       pear:
+      vsearch:
       flash:
-  optional: true
 - !Flag
-  description: "In case of uncontiged paired reads, keep unmerged, and\nartificially\
-    \ combined them with 100 Ns."
+  optional: true
   synonyms:
   - --keep-unmerged
+  description: "In case of uncontiged paired reads, keep unmerged, and\nartificially\
+    \ combined them with 100 Ns."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: The minimum size for the amplicons (with primers).
+  optional: true
   synonyms:
   - --min-amplicon-size
+  description: The minimum size for the amplicons (with primers).
   args: !SimpleFlagArg
     name: MIN_AMPLICON_SIZE
-  optional: true
 - !Flag
-  description: The maximum size for the amplicons (with primers).
+  optional: true
   synonyms:
   - --max-amplicon-size
+  description: The maximum size for the amplicons (with primers).
   args: !SimpleFlagArg
     name: MAX_AMPLICON_SIZE
-  optional: true
 - !Flag
-  description: "The expected size for the majority of the amplicons\n(with primers),\
-    \ if using Flash as read pair merge\nsoftware."
+  optional: true
   synonyms:
   - --expected-amplicon-size
+  description: "The expected size for the majority of the amplicons\n(with primers),\
+    \ if using Flash as read pair merge\nsoftware."
   args: !SimpleFlagArg
     name: EXPECTED_AMPLICON_SIZE
-  optional: true
 - !Flag
-  description: The 5' primer sequence (wildcards are accepted).
+  optional: true
   synonyms:
   - --five-prim-primer
+  description: The 5' primer sequence (wildcards are accepted).
   args: !SimpleFlagArg
     name: FIVE_PRIM_PRIMER
-  optional: true
 - !Flag
-  description: The 3' primer sequence (wildcards are accepted).
+  optional: true
   synonyms:
   - --three-prim-primer
+  description: The 3' primer sequence (wildcards are accepted).
   args: !SimpleFlagArg
     name: THREE_PRIM_PRIMER
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --without-primers
   description: "Use this option when you use custom sequencing primers\nand these\
     \ primers are the PCR primers. In this case\nthe reads do not contain the PCR\
     \ primers."
-  synonyms:
-  - --without-primers
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: The read1 size.
+  optional: true
   synonyms:
   - --R1-size
+  description: The read1 size.
   args: !SimpleFlagArg
     name: R1_SIZE
-  optional: true
 - !Flag
-  description: The read2 size.
+  optional: true
   synonyms:
   - --R2-size
+  description: The read2 size.
   args: !SimpleFlagArg
     name: R2_SIZE
-  optional: true
 - !Flag
-  description: 'Maxi mismatch rate in overlap region. [Default: 0.1]'
+  optional: true
   synonyms:
   - --mismatch-rate
+  description: 'Maxi mismatch rate in overlap region. [Default: 0.1]'
   args: !SimpleFlagArg
     name: MISMATCH_RATE
-  optional: true
 - !Flag
-  description: "The phred base quality scale, either 33 or 64 if using\nVsearch as\
-    \ read pair merge software [Default: 33]"
+  optional: true
   synonyms:
   - --quality-scale
+  description: "The phred base quality scale, either 33 or 64 if using\nVsearch as\
+    \ read pair merge software [Default: 33]"
   args: !ChoiceFlagArg
     choices: !!set
       '33':
       '64':
-  optional: true
 - !Flag
-  description: "The archive contains 1 file by sample : Reads 1 and\nReads 2 are already\
-    \ contiged by pair."
+  optional: true
   synonyms:
   - --already-contiged
+  description: "The archive contains 1 file by sample : Reads 1 and\nReads 2 are already\
+    \ contiged by pair."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'The maximum number of CPUs used. [Default: 1]'
+  optional: true
   synonyms:
   - -p
   - --nb-cpus
+  description: 'The maximum number of CPUs used. [Default: 1]'
   args: !SimpleFlagArg
     name: NB_CPUS
-  optional: true
 - !Flag
-  description: Keep temporary files to debug program.
+  optional: true
   synonyms:
   - --debug
+  description: Keep temporary files to debug program.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: The sample name for each R1/R2-files.
+  optional: true
   synonyms:
   - --samples-names
+  description: The sample name for each R1/R2-files.
   args: !RepeatFlagArg
     name: SAMPLES_NAMES
-  optional: true
 - !Flag
-  description: 'The R2 sequence file for each sample (format: fastq).'
+  optional: true
+  synonyms:
+  - --input-archive
+  description: "The tar file containing R1 file and R2 file for each\nsample."
+  args: !SimpleFlagArg
+    name: INPUT_ARCHIVE
+- !Flag
+  optional: true
+  synonyms:
+  - --input-R1
+  description: 'The R1 sequence file for each sample (format: fastq).'
+  args: !RepeatFlagArg
+    name: INPUT_R1
+- !Flag
+  optional: true
   synonyms:
   - --input-R2
+  description: 'The R2 sequence file for each sample (format: fastq).'
   args: !RepeatFlagArg
     name: INPUT_R2
-  optional: true
 - !Flag
-  description: "Fasta file with unique sequences. Each sequence has an\nID ended with\
-    \ the number of initial sequences\nrepresented (example : \">a0101;size=10\").\
-    \ [Default:\ndereplication.fasta]"
+  optional: true
   synonyms:
   - -d
   - --output-dereplicated
+  description: "Fasta file with unique sequences. Each sequence has an\nID ended with\
+    \ the number of initial sequences\nrepresented (example : \">a0101;size=10\").\
+    \ [Default:\ndereplication.fasta]"
   args: !SimpleFlagArg
     name: OUTPUT_DEREPLICATED
-  optional: true
 - !Flag
-  description: "TSV file with count by sample for each unique sequence\n(example with\
-    \ 3 samples : \"a0101<TAB>5<TAB>8<TAB>0\").\n[Default: count.tsv]"
+  optional: true
   synonyms:
   - -c
   - --output-count
+  description: "TSV file with count by sample for each unique sequence\n(example with\
+    \ 3 samples : \"a0101<TAB>5<TAB>8<TAB>0\").\n[Default: count.tsv]"
   args: !SimpleFlagArg
     name: OUTPUT_COUNT
-  optional: true
 - !Flag
-  description: "HTML file with summary of filters results. [Default:\nsummary.html]"
+  optional: true
   synonyms:
   - -s
   - --summary
+  description: "HTML file with summary of filters results. [Default:\nsummary.html]"
   args: !SimpleFlagArg
     name: SUMMARY
-  optional: true
 - !Flag
-  description: "This output file will contain several information on\nexecuted commands.\n"
+  optional: true
   synonyms:
   - -l
   - --log-file
+  description: "This output file will contain several information on\nexecuted commands.\n"
   args: !SimpleFlagArg
     name: LOG_FILE
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: \n  For samples files:\n    preprocess.py illumina\n      --input-R1\
@@ -285,3 +272,4 @@ help_text: "usage: \n  For samples files:\n    preprocess.py illumina\n      --i
   \                     executed commands.\n"
 generated_using:
 - --help
+docker_image:

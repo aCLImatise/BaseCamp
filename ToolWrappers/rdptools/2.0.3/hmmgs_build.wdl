@@ -20,6 +20,9 @@ task HmmgsBuild {
       ~{hash_count} \
       ~{bit_set_size_log_two}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     read_file: "fasta or fastq files containing the reads to build the graph from "
     bloom_out: "file to write the bloom filter to "

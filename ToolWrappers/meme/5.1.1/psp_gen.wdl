@@ -46,6 +46,9 @@ task Pspgen {
       ~{if defined(pos) then ("-pos " +  '"' + pos + '"') else ""} \
       ~{if defined(neg) then ("-neg " +  '"' + neg + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_w: "minimum width of motif to consider\\ndefault: 4"
     max_w: "maximum width of motif to consider\\ndefault: 20"

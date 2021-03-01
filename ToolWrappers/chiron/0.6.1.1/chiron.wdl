@@ -4,6 +4,9 @@ task Chiron {
   command <<<
     chiron
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

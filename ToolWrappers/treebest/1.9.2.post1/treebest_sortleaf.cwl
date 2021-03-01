@@ -8,13 +8,14 @@ inputs:
     position: 0
 - id: in_tree_two
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     position: 1
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - treebest

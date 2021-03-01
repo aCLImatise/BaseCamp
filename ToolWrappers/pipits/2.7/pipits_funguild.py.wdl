@@ -24,6 +24,9 @@ task PipitsFunguildpy {
       ~{if defined(input_otu_table) then ("-i " +  '"' + input_otu_table + '"') else ""} \
       ~{if defined(output_funguild_formatted) then ("-o " +  '"' + output_funguild_formatted + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_otu_table: "[REQUIRED] Input OTU table generated from pipits_process."
     output_funguild_formatted: "[REQUIRED] Output FUNGuild formatted OTU table."

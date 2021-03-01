@@ -14,6 +14,9 @@ task Tiffcomment {
       ~{if (edit) then "-edit" else ""} \
       ~{if defined(set) then ("-set " +  '"' + set + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     edit: ""
     set: ""

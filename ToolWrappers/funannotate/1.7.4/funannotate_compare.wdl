@@ -32,6 +32,9 @@ task FunannotateCompare {
       ~{if (protein_ortho) then "--proteinortho" else ""} \
       ~{if (ml_method) then "--ml_method" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     list_funannotate_genome: "List of funannotate genome folders or GBK files"
     out: "Output folder name. Default: funannotate_compare"

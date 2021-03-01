@@ -30,6 +30,9 @@ task RgiLoad {
       ~{if (local) then "--local" else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     card_json: "must be a card database json file"
     card_annotation: "annotated reference FASTA"

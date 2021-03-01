@@ -8,6 +8,9 @@ task GetMaskedRepresentativespy {
     get_masked_representatives_py \
       ~{if defined(representatives) then ("--representatives " +  '"' + representatives + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     representatives: ""
   }

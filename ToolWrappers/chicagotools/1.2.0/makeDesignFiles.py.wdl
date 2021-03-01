@@ -14,6 +14,9 @@ task MakeDesignFilespy {
       ~{if defined(max_fra_glen) then ("--maxFragLen " +  '"' + max_fra_glen + '"') else ""} \
       ~{if defined(m_infra_glen) then ("--minFragLen " +  '"' + m_infra_glen + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     binsize: ""
     max_l_brown_est: ""

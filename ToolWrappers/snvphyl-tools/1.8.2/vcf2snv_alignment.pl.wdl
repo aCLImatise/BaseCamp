@@ -24,6 +24,9 @@ task Vcf2snvAlignmentpl {
       ~{if (num_cpus) then "--numcpus" else ""} \
       ~{if (bcf_tools_path) then "--bcftools-path" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     consolidate_vcf: "=files/dataset2.dat --consolidate_vcf"
     invalid_pos: "[invalid positions TSV file] --numcpus 5 --bcftools-path"

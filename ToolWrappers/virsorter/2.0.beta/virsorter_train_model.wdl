@@ -20,6 +20,9 @@ task VirsorterTrainmodel {
       ~{if (balanced) then "--balanced" else ""} \
       ~{if (use_cond_a_off) then "--use-conda-off" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     working_dir: "output directory  [required]"
     viral_ftr_file: "viral genome feature file for training  [required]"

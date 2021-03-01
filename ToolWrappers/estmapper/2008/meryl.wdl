@@ -20,6 +20,9 @@ task Meryl {
       ~{if (__operations) then "-M" else ""} \
       ~{if (_dump_table) then "-D" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     _compute_parameters: "-- compute parameters"
     _build_table: "-- build table"

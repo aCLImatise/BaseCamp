@@ -12,6 +12,9 @@ task XsvFixlengths {
       ~{if defined(write_output_file) then ("--output " +  '"' + write_output_file + '"') else ""} \
       ~{if defined(delimiter) then ("--delimiter " +  '"' + delimiter + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     length: "Forcefully set the length of each record. If a\\nrecord is not the size given, then it is truncated\\nor expanded as appropriate."
     write_output_file: "Write output to <file> instead of stdout."

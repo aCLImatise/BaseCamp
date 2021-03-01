@@ -30,6 +30,9 @@ task Dless {
       ~{if defined(in_del_model) then ("--indel-model " +  '"' + in_del_model + '"') else ""} \
       ~{if defined(in_del_history) then ("--indel-history " +  '"' + in_del_history + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     rho: "(default 0.3)"
     transitions: "[~]<mu>,<nu>\\nSet the transition probabilities of the two-state HMM using\\nthe specified values of <mu> and <nu> (both between 0 and 1)."

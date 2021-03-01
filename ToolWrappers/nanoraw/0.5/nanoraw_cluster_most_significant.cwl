@@ -10,7 +10,7 @@ inputs:
 - id: in_two_d
   doc: "Input contains 2D reads. Equivalent to `--basecall-\nsubgroups BaseCalled_template\
     \ BaseCalled_complement`"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --2d
 - id: in_fast_five_based_irs
@@ -26,7 +26,7 @@ inputs:
 - id: in_corrected_group
   doc: "FAST5 group to access/plot created by\ngenome_resquiggle script. Default:\n\
     RawGenomeCorrected_000"
-  type: long
+  type: long?
   inputBinding:
     prefix: --corrected-group
 - id: in_obs_per_base_filter
@@ -40,79 +40,80 @@ inputs:
 - id: in_test_type
   doc: "Type of significance test to apply. Choices are:\nmw_utest (default; mann-whitney\
     \ u-test), ttest."
-  type: string
+  type: string?
   inputBinding:
     prefix: --test-type
 - id: in_fishers_method_offset
   doc: "Offset up and downstream over which to compute\ncombined p-values using Fisher's\
     \ method. Default: 2."
-  type: long
+  type: long?
   inputBinding:
     prefix: --fishers-method-offset
 - id: in_minimum_test_reads
   doc: "Number of reads required from both samples to test for\nsignificant difference\
     \ in signal level. Default: 5"
-  type: long
+  type: long?
   inputBinding:
     prefix: --minimum-test-reads
 - id: in_genome_fast_a
   doc: "FASTA file used to map reads with \"genome_resquiggle\"\ncommand."
-  type: File
+  type: File?
   inputBinding:
     prefix: --genome-fasta
 - id: in_processes
   doc: 'Number of processes. Default: 1'
-  type: long
+  type: long?
   inputBinding:
     prefix: --processes
 - id: in_pdf_filename
   doc: "PDF filename to store plot(s). Default:\nNanopore_most_significant_clustering.pdf"
-  type: File
+  type: File?
   inputBinding:
     prefix: --pdf-filename
 - id: in_statistics_filename
   doc: "Filename to save/load base by base signal difference\nstatistics. If file\
     \ exists it will try to be loaded,\nif it does not exist it will be created to\
     \ save\nstatistics. Default: Don't save/load."
-  type: File
+  type: File?
   inputBinding:
     prefix: --statistics-filename
 - id: in_r_data_filename
   doc: "Filename to save R data structure. Defualt: Don't save"
-  type: File
+  type: File?
   inputBinding:
     prefix: --r-data-filename
 - id: in_num_regions
   doc: 'Number of regions to plot. Default: 10'
-  type: long
+  type: long?
   inputBinding:
     prefix: --num-regions
 - id: in_q_value_threshold
   doc: "Choose the number of regions to select by the FDR\ncorrected p-values. Note\
     \ that --num-regions will be\nignored if this option is set."
-  type: long
+  type: long?
   inputBinding:
     prefix: --q-value-threshold
 - id: in_num_bases
   doc: 'Number of bases to plot from region. Default: 5'
-  type: long
+  type: long?
   inputBinding:
     prefix: --num-bases
 - id: in_slide_span
   doc: "Number of bases to slide up and down when computing\ndistances for signal\
     \ cluster plotting. Default: Exact\nposition"
-  type: long
+  type: long?
   inputBinding:
     prefix: --slide-span
 - id: in_quiet
   doc: Don't print status information.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - nanoraw

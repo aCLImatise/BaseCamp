@@ -18,6 +18,9 @@ task ReconstructGraphFromFastapy {
       ~{if (single_chain) then "--single-chain" else ""} \
       ~{if defined(out_kg) then ("--out-kg " +  '"' + out_kg + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_fasta_file: "Input fasta file."
     output_graph_file: "Output graph file. The output format is GFA by\\ndefault, but FASTG only when indicated with postfix\\n'.fastg'."

@@ -1,20 +1,14 @@
 class: CommandLineTool
 id: msstitch_merge.cwl
 inputs:
-- id: in_fdr_col_pattern
-  doc: "[--featcol FEATCOL] --dbfile LOOKUPFN\n[--mergecutoff MERGECUTOFF] [--no-group-annotation]\n\
-    [--genecentric]"
-  type: string
-  inputBinding:
-    prefix: --fdrcolpattern
 - id: in_directory_to_output
   doc: Directory to output in
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: -d
 - id: in_output_file
   doc: Output file
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_set_names
@@ -25,48 +19,58 @@ inputs:
     prefix: --setnames
 - id: in_is_ob_quant_col_pattern
   doc: "Unique text pattern to identify isobaric quant columns\nin input table."
-  type: string
+  type: string?
   inputBinding:
     prefix: --isobquantcolpattern
 - id: in_psm_nr_col_pattern
   doc: "Unique text pattern to identify number-of-psms column\nin input table."
-  type: long
+  type: long?
   inputBinding:
     prefix: --psmnrcolpattern
 - id: in_ms_one_quant_col_pattern
   doc: "Unique text pattern to identify precursor quant column\nin input table."
-  type: long
+  type: long?
   inputBinding:
     prefix: --ms1quantcolpattern
+- id: in_fdr_col_pattern
+  doc: "Unique text pattern to identify FDR column in input\ntable."
+  type: string?
+  inputBinding:
+    prefix: --fdrcolpattern
+- id: in_multiple_input_files
+  doc: Multiple input files of {} format
+  type: string[]
+  inputBinding:
+    prefix: -i
 - id: in_feat_col
   doc: "Column number in table in which protein or gene\naccessions are. stored. First\
     \ column number is 1. Use\nin case of not using standard first column"
-  type: long
+  type: long?
   inputBinding:
     prefix: --featcol
 - id: in_dbfile
   doc: Database lookup file
-  type: File
+  type: File?
   inputBinding:
     prefix: --dbfile
 - id: in_merge_cut_off
   doc: "FDR cutoff when building merged protein table, to use\nwhen a cutoff has been\
     \ used before storing the table\nto lookup. FDR values need to be stored in the\
     \ lookup"
-  type: string
+  type: string?
   inputBinding:
     prefix: --mergecutoff
 - id: in_no_group_annotation
   doc: "For peptide table merging. Do not include protein\ngroup or gene data in output,\
     \ just use accessions."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-group-annotation
 - id: in_gene_centric
   doc: "For peptide table merging. Do not include protein\ngroup data in output, but\
     \ use gene names instead to\ncount peptides per feature, determine peptide-\n\
     uniqueness.\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --genecentric
 outputs:
@@ -75,14 +79,15 @@ outputs:
   type: stdout
 - id: out_directory_to_output
   doc: Directory to output in
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_directory_to_output)
 - id: out_output_file
   doc: Output file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - msstitch

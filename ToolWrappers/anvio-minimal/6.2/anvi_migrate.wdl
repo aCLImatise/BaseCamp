@@ -4,6 +4,9 @@ task Anvimigrate {
   command <<<
     anvi_migrate
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

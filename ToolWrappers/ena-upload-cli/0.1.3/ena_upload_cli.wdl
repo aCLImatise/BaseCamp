@@ -28,6 +28,9 @@ task Enauploadcli {
       ~{if defined(password) then ("--password " +  '"' + password + '"') else ""} \
       ~{if defined(secret) then ("--secret " +  '"' + secret + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     action: "add: add an object to the archive\\nmodify: modify an object in the archive\\ncancel: cancel a private object and its dependent objects\\nrelease: release a private object immediately to public"
     study: "table of STUDY object"

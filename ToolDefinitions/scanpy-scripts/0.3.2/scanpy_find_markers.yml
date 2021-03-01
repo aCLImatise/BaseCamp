@@ -1,0 +1,244 @@
+!Command
+command:
+- scanpy-find-markers
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: consider.
+  description: '[required]'
+- !Positional
+  optional: false
+  position: 1
+  name: genes.
+  description: '[default: False]'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --input-format
+  description: "[anndata|loom]\nInput object format.  [default: anndata]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  - --output-format
+  description: "[anndata|loom|zarr]\nOutput object format.  [default: anndata]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  - --zarr-chunk-size
+  description: Chunk size for writing output in zarr
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --loom-write-obsm-varm
+  description: "Write obsm and varm to the Loom file?\n[default: False]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -X
+  - --export-mtx
+  description: "When specified, using it as prefix for\nexporting mtx files. If not\
+    \ empty and not\nending with \"/\" or \"_\", a \"_\" will be\nappended."
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --show-obj
+  description: "[stdout|stderr]      Print output object summary info to\nspecified\
+    \ stream."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --use-raw
+  - --no-raw
+  description: "Use expression values in `.raw` if present.\n[default: True]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --key-added
+  description: Key under which to add the computed results
+  args: !OptionalFlagArg
+    names:
+    - TEXT
+    - TEXT...
+    separator: ','
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --layer
+  description: "Key from adata.layers whose value will be\nused to perform tests on."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --groupby
+  description: The key of the observations grouping to
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --groups
+  description: "Subset of groups to which comparison shall\nbe restricted.  [default:\
+    \ all]"
+  args: !OptionalFlagArg
+    names:
+    - TEXT
+    - TEXT...
+    separator: ','
+- !Flag
+  optional: true
+  synonyms:
+  - --reference
+  description: "If \"rest\", compare each group to the union\nof the rest of the groups.\
+    \ If a group\nidentifier, compare with respect to this\ngroup.  [default: rest]"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --n-genes
+  description: "The number of genes that appear in the\nretured tables. By default\
+    \ return all\navailable genes depending on the value of\n--use-raw."
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --method
+  description: "[logreg|t-test|wilcoxon|t-test_overestim_var]\nMethod of performing\
+    \ differential expression\nanalysis.  [default: t-test_overestim_var]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --corr-method
+  description: "[benjamini-hochberg|bonferroni]\nP-value correction method. Used only\
+    \ for\n\"t-test\", \"t-test_overestim_var\" and\n\"wilcoxon\".  [default: benjamini-hochberg]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --rankby-abs
+  description: "Rank genes by the absolute value of the\nscore, not by the score.\
+    \ The returned scores\nare never the absolute values.  [default:\nFalse]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pts
+  description: Compute the fraction of cells expressing the
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --tie-correct
+  description: "Use tie correction for 'wilcoxon' scores.\nUsed only for 'wilcoxon'.\
+    \  [default: False]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --filter-params
+  description: ":VAL[,TEXT:VAL...]\nParameters for filtering DE results, valid\nparameters\
+    \ are: \"min_in_group_fraction\"\n(float), \"max_out_group_fraction\" (float),\n\
+    \"min_fold_change\" (float)."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --logreg-param
+  description: ":VAL[,TEXT:VAL...]\nParameters passed to\n`sklearn.linear_model.LogisticRegression`."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --save
+  description: "Tab-separated table to store results of\ndifferential expression analysis."
+  args: !SimpleFlagArg
+    name: FILE
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: scanpy-find-markers [OPTIONS] <input_obj> <output_obj>\n\n  Find\
+  \ markers for each clusters.\n\n  <input_obj>:   input file in format specfied by\
+  \ --input-format\n  <output_obj>:  output file in format specfied by --output-format\n\
+  \nOptions:\n  -f, --input-format [anndata|loom]\n                              \
+  \    Input object format.  [default: anndata]\n  -F, --output-format [anndata|loom|zarr]\n\
+  \                                  Output object format.  [default: anndata]\n \
+  \ -z, --zarr-chunk-size INTEGER   Chunk size for writing output in zarr\n      \
+  \                            format.  [default: 1000]\n\n  -b, --loom-write-obsm-varm\
+  \      Write obsm and varm to the Loom file?\n                                 \
+  \ [default: False]\n\n  -X, --export-mtx PATH           When specified, using it\
+  \ as prefix for\n                                  exporting mtx files. If not empty\
+  \ and not\n                                  ending with \"/\" or \"_\", a \"_\"\
+  \ will be\n                                  appended.\n\n  --show-obj [stdout|stderr]\
+  \      Print output object summary info to\n                                  specified\
+  \ stream.\n\n  --use-raw / --no-raw            Use expression values in `.raw` if\
+  \ present.\n                                  [default: True]\n\n  --key-added TEXT[,TEXT...]\
+  \      Key under which to add the computed results\n  -l, --layer TEXT         \
+  \       Key from adata.layers whose value will be\n                            \
+  \      used to perform tests on.\n\n  -g, --groupby TEXT              The key of\
+  \ the observations grouping to\n                                  consider.  [required]\n\
+  \n  --groups TEXT[,TEXT...]         Subset of groups to which comparison shall\n\
+  \                                  be restricted.  [default: all]\n\n  --reference\
+  \ TEXT                If \"rest\", compare each group to the union\n           \
+  \                       of the rest of the groups. If a group\n                \
+  \                  identifier, compare with respect to this\n                  \
+  \                group.  [default: rest]\n\n  -n, --n-genes INTEGER           The\
+  \ number of genes that appear in the\n                                  retured\
+  \ tables. By default return all\n                                  available genes\
+  \ depending on the value of\n                                  --use-raw.\n\n  --method\
+  \ [logreg|t-test|wilcoxon|t-test_overestim_var]\n                              \
+  \    Method of performing differential expression\n                            \
+  \      analysis.  [default: t-test_overestim_var]\n\n  --corr-method [benjamini-hochberg|bonferroni]\n\
+  \                                  P-value correction method. Used only for\n  \
+  \                                \"t-test\", \"t-test_overestim_var\" and\n    \
+  \                              \"wilcoxon\".  [default: benjamini-hochberg]\n\n\
+  \  --rankby-abs                    Rank genes by the absolute value of the\n   \
+  \                               score, not by the score. The returned scores\n \
+  \                                 are never the absolute values.  [default:\n  \
+  \                                False]\n\n  --pts                           Compute\
+  \ the fraction of cells expressing the\n                                  genes.\
+  \  [default: False]\n\n  --tie-correct                   Use tie correction for\
+  \ 'wilcoxon' scores.\n                                  Used only for 'wilcoxon'.\
+  \  [default: False]\n\n  --filter-params TEXT:VAL[,TEXT:VAL...]\n              \
+  \                    Parameters for filtering DE results, valid\n              \
+  \                    parameters are: \"min_in_group_fraction\"\n               \
+  \                   (float), \"max_out_group_fraction\" (float),\n             \
+  \                     \"min_fold_change\" (float).\n\n  --logreg-param TEXT:VAL[,TEXT:VAL...]\n\
+  \                                  Parameters passed to\n                      \
+  \            `sklearn.linear_model.LogisticRegression`.\n\n  --save FILE       \
+  \              Tab-separated table to store results of\n                       \
+  \           differential expression analysis.\n\n  --help                      \
+  \    Show this message and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/scanpy-scripts:0.3.2--py_0

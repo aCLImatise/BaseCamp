@@ -18,6 +18,9 @@ task MmseqsSummarizeresult {
       ~{if (threads) then "--threads" else ""} \
       ~{if (verbosity_level_nothing) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     false_add_convert: "false           add backtrace string (convert to alignments with mmseqs convertalis utility)"
     list_matches_evalue: "0.001           list matches below this E-value [0.0, inf]"

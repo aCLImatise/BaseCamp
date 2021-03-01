@@ -22,6 +22,9 @@ task SpadesbwaSamse {
       ~{if defined(f) then ("-f " +  '"' + f + '"') else ""} \
       ~{if defined(n) then ("-n " +  '"' + n + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     r: ""
     f: ""

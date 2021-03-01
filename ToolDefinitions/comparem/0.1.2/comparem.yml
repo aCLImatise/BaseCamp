@@ -1,0 +1,894 @@
+&id001 !Command
+command:
+- comparem
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - comparem
+  - stop_usage
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: nucleotide_gene_files
+    description: input files with genes in nucleotide space
+  - !Positional
+    optional: false
+    position: 1
+    name: output_file
+    description: output file indicating stop codon usage of each genome
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --counts
+    description: output raw counts instead of frequencies
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --mean_gene_length
+    description: report mean gene length for genes with each stop codon
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -x
+    - --file_ext
+    description: 'extension of files to process (default: fna)'
+    args: !SimpleFlagArg
+      name: FILE_EXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --cpus
+    description: 'number of CPUs to use (default: 1)'
+    args: !SimpleFlagArg
+      name: CPUS
+  - !Flag
+    optional: true
+    synonyms:
+    - --silent
+    description: suppress output
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: comparem stop_usage [-h] [--counts] [--mean_gene_length] [-x\
+    \ FILE_EXT]\n                           [-c CPUS] [--silent]\n               \
+    \            nucleotide_gene_files output_file\n\nCalculate stop codon usage within\
+    \ each genome.\n\npositional arguments:\n  nucleotide_gene_files\n           \
+    \             input files with genes in nucleotide space\n  output_file      \
+    \     output file indicating stop codon usage of each genome\n\noptional arguments:\n\
+    \  -h, --help            show this help message and exit\n  --counts         \
+    \     output raw counts instead of frequencies\n  --mean_gene_length    report\
+    \ mean gene length for genes with each stop codon\n  -x, --file_ext FILE_EXT\n\
+    \                        extension of files to process (default: fna)\n  -c, --cpus\
+    \ CPUS       number of CPUs to use (default: 1)\n  --silent              suppress\
+    \ output\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/comparem:0.1.2--py_0
+- !Command
+  command:
+  - comparem
+  - aa_usage
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: protein_gene_files
+    description: input files with genes in amino acid space
+  - !Positional
+    optional: false
+    position: 1
+    name: output_file
+    description: output file indicating amino acid usage for each
+  - !Positional
+    optional: false
+    position: 2
+    name: genome
+    description: 'optional arguments:'
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --counts
+    description: output raw counts instead of frequencies
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -x
+    - --file_ext
+    description: 'extension of files to process (default: faa)'
+    args: !SimpleFlagArg
+      name: FILE_EXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --cpus
+    description: 'number of CPUs to use (default: 1)'
+    args: !SimpleFlagArg
+      name: CPUS
+  - !Flag
+    optional: true
+    synonyms:
+    - --silent
+    description: suppress output
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: comparem aa_usage [-h] [--counts] [-x FILE_EXT] [-c CPUS] [--silent]\n\
+    \                         protein_gene_files output_file\n\nCalculate amino acid\
+    \ usage within each genome.\n\npositional arguments:\n  protein_gene_files   \
+    \ input files with genes in amino acid space\n  output_file           output file\
+    \ indicating amino acid usage for each\n                        genome\n\noptional\
+    \ arguments:\n  -h, --help            show this help message and exit\n  --counts\
+    \              output raw counts instead of frequencies\n  -x, --file_ext FILE_EXT\n\
+    \                        extension of files to process (default: faa)\n  -c, --cpus\
+    \ CPUS       number of CPUs to use (default: 1)\n  --silent              suppress\
+    \ output\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/comparem:0.1.2--py_0
+- !Command
+  command:
+  - comparem
+  - lgt_di
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: nucleotide_gene_files
+    description: input files with genes in nucleotide space
+  - !Positional
+    optional: false
+    position: 1
+    name: output_dir
+    description: "output directory to write dinucleotide usage for each\ngene in each\
+      \ genome"
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -x
+    - --file_ext
+    description: 'extension of files to process (default: fna)'
+    args: !SimpleFlagArg
+      name: FILE_EXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --crit_value
+    description: "critical value for defining deviant genes (default:\n0.001)"
+    args: !SimpleFlagArg
+      name: CRIT_VALUE
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --cpus
+    description: 'number of CPUs to use (default: 1)'
+    args: !SimpleFlagArg
+      name: CPUS
+  - !Flag
+    optional: true
+    synonyms:
+    - --silent
+    description: suppress output
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: comparem lgt_di [-h] [-x FILE_EXT] [--crit_value CRIT_VALUE]\
+    \ [-c CPUS]\n                       [--silent]\n                       nucleotide_gene_files\
+    \ output_dir\n\nCalculate dinuceotide (3rd,1st) usage of genes to identify putative\
+    \ LGT\nevents.\n\npositional arguments:\n  nucleotide_gene_files\n           \
+    \             input files with genes in nucleotide space\n  output_dir       \
+    \     output directory to write dinucleotide usage for each\n                \
+    \        gene in each genome\n\noptional arguments:\n  -h, --help            show\
+    \ this help message and exit\n  -x, --file_ext FILE_EXT\n                    \
+    \    extension of files to process (default: fna)\n  --crit_value CRIT_VALUE\n\
+    \                        critical value for defining deviant genes (default:\n\
+    \                        0.001)\n  -c, --cpus CPUS       number of CPUs to use\
+    \ (default: 1)\n  --silent              suppress output\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/comparem:0.1.2--py_0
+- !Command
+  command:
+  - comparem
+  - hclust
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: pairwise_value_file
+    description: "file with pairwise similarity or dissimilarity values\nbetween genomes"
+  - !Positional
+    optional: false
+    position: 1
+    name: output_tree
+    description: name for output hierarchical cluster tree
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --method
+    description: 'clustering method to use. (default: average)'
+    args: !ChoiceFlagArg
+      choices: !!set
+        single:
+        average:
+        ward:
+        complete:
+        median:
+        weighted:
+        centroid:
+  - !Flag
+    optional: true
+    synonyms:
+    - --similarity
+    description: indicates file contain similarity values
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --max_sim_value
+    description: 'maximum similarity value (default: 100)'
+    args: !SimpleFlagArg
+      name: MAX_SIM_VALUE
+  - !Flag
+    optional: true
+    synonyms:
+    - --name_col1
+    description: 'index of first column with genome names (default: 0)'
+    args: !SimpleFlagArg
+      name: NAME_COL1
+  - !Flag
+    optional: true
+    synonyms:
+    - --name_col2
+    description: 'index of second column with genome names (default: 1)'
+    args: !SimpleFlagArg
+      name: NAME_COL2
+  - !Flag
+    optional: true
+    synonyms:
+    - --value_col
+    description: "index of column with similarity or dissimilarity\nvalues (default:\
+      \ 2)"
+    args: !SimpleFlagArg
+      name: VALUE_COL
+  - !Flag
+    optional: true
+    synonyms:
+    - --silent
+    description: suppress output
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: comparem hclust [-h]\n                       [--method {single,complete,average,weighted,centroid,median,ward}]\n\
+    \                       [--similarity] [--max_sim_value MAX_SIM_VALUE]\n     \
+    \                  [--name_col1 NAME_COL1] [--name_col2 NAME_COL2]\n         \
+    \              [--value_col VALUE_COL] [--silent]\n                       pairwise_value_file\
+    \ output_tree\n\nPerform hierarchical clustering.\n\npositional arguments:\n \
+    \ pairwise_value_file   file with pairwise similarity or dissimilarity values\n\
+    \                        between genomes\n  output_tree           name for output\
+    \ hierarchical cluster tree\n\noptional arguments:\n  -h, --help            show\
+    \ this help message and exit\n  --method {single,complete,average,weighted,centroid,median,ward}\n\
+    \                        clustering method to use. (default: average)\n  --similarity\
+    \          indicates file contain similarity values\n  --max_sim_value MAX_SIM_VALUE\n\
+    \                        maximum similarity value (default: 100)\n  --name_col1\
+    \ NAME_COL1\n                        index of first column with genome names (default:\
+    \ 0)\n  --name_col2 NAME_COL2\n                        index of second column\
+    \ with genome names (default: 1)\n  --value_col VALUE_COL\n                  \
+    \      index of column with similarity or dissimilarity\n                    \
+    \    values (default: 2)\n  --silent              suppress output\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/comparem:0.1.2--py_0
+- !Command
+  command:
+  - comparem
+  - kmer_usage
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: genome_files
+    description: input files with genomes in nucleotide space
+  - !Positional
+    optional: false
+    position: 1
+    name: output_file
+    description: output file indicating kmer usage of each genome
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --counts
+    description: output raw counts instead of frequencies
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -k
+    description: "length of kmers, e.g., 4 -> tetranucleotides (default:\n4)"
+    args: !SimpleFlagArg
+      name: K
+  - !Flag
+    optional: true
+    synonyms:
+    - -x
+    - --file_ext
+    description: 'extension of files to process (default: fna)'
+    args: !SimpleFlagArg
+      name: FILE_EXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --cpus
+    description: 'number of CPUs to use (default: 1)'
+    args: !SimpleFlagArg
+      name: CPUS
+  - !Flag
+    optional: true
+    synonyms:
+    - --silent
+    description: suppress output
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: comparem kmer_usage [-h] [--counts] [-k K] [-x FILE_EXT] [-c\
+    \ CPUS]\n                           [--silent]\n                           genome_files\
+    \ output_file\n\nCalculate kmer usage within each genome.\n\npositional arguments:\n\
+    \  genome_files          input files with genomes in nucleotide space\n  output_file\
+    \           output file indicating kmer usage of each genome\n\noptional arguments:\n\
+    \  -h, --help            show this help message and exit\n  --counts         \
+    \     output raw counts instead of frequencies\n  -k K                  length\
+    \ of kmers, e.g., 4 -> tetranucleotides (default:\n                        4)\n\
+    \  -x, --file_ext FILE_EXT\n                        extension of files to process\
+    \ (default: fna)\n  -c, --cpus CPUS       number of CPUs to use (default: 1)\n\
+    \  --silent              suppress output\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/comparem:0.1.2--py_0
+- !Command
+  command:
+  - comparem
+  - aai
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: query_gene_file
+    description: file with all query genes
+  - !Positional
+    optional: false
+    position: 1
+    name: sorted_hit_table
+    description: "sorted file indicating genes passing sequence\nsimilarity criteria"
+  - !Positional
+    optional: false
+    position: 2
+    name: output_dir
+    description: output directory
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -e
+    - --evalue
+    description: "maximum e-value for reporting an alignments (default:\n0.001)"
+    args: !SimpleFlagArg
+      name: EVALUE
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --per_identity
+    description: "minimum percent identity for reporting an alignment\n(default: 30.0)"
+    args: !SimpleFlagArg
+      name: PER_IDENTITY
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    - --per_aln_len
+    description: "minimum percent coverage of query sequence for\nreporting an alignment\
+      \ (default: 70.0)"
+    args: !SimpleFlagArg
+      name: PER_ALN_LEN
+  - !Flag
+    optional: true
+    synonyms:
+    - --keep_rbhs
+    description: create file with reciprocal best hits
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --cpus
+    description: 'number of CPUs to use (default: 1)'
+    args: !SimpleFlagArg
+      name: CPUS
+  - !Flag
+    optional: true
+    synonyms:
+    - --silent
+    description: suppress output
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: comparem aai [-h] [-e EVALUE] [-p PER_IDENTITY] [-a PER_ALN_LEN]\n\
+    \                    [--keep_rbhs] [-c CPUS] [--silent]\n                    query_gene_file\
+    \ sorted_hit_table output_dir\n\nCalculate the AAI between all genome pairs.\n\
+    \npositional arguments:\n  query_gene_file       file with all query genes\n \
+    \ sorted_hit_table      sorted file indicating genes passing sequence\n      \
+    \                  similarity criteria\n  output_dir            output directory\n\
+    \noptional arguments:\n  -h, --help            show this help message and exit\n\
+    \  -e, --evalue EVALUE   maximum e-value for reporting an alignments (default:\n\
+    \                        0.001)\n  -p, --per_identity PER_IDENTITY\n         \
+    \               minimum percent identity for reporting an alignment\n        \
+    \                (default: 30.0)\n  -a, --per_aln_len PER_ALN_LEN\n          \
+    \              minimum percent coverage of query sequence for\n              \
+    \          reporting an alignment (default: 70.0)\n  --keep_rbhs           create\
+    \ file with reciprocal best hits\n  -c, --cpus CPUS       number of CPUs to use\
+    \ (default: 1)\n  --silent              suppress output\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/comparem:0.1.2--py_0
+- !Command
+  command:
+  - comparem
+  - diss
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: profile_file
+    description: file with usage profile for each genome
+  - !Positional
+    optional: false
+    position: 1
+    name: output_file
+    description: output file with pairwise dissimilarity between
+  - !Positional
+    optional: false
+    position: 2
+    name: genomes
+    description: 'optional arguments:'
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --metric
+    description: 'distance metric to use (default: euclidean)'
+    args: !ChoiceFlagArg
+      choices: !!set
+        minkowski:
+        chebyshev:
+        euclidean:
+        canberra:
+        rogerstanimoto:
+        hamming:
+        kulsinski:
+        sokalsneath:
+        yule:
+        cosine:
+        sokalmichener:
+        correlation:
+        russellrao:
+        cityblock:
+        seuclidean:
+        wminkowski:
+        mahalanobis:
+        braycurtis:
+        jaccard:
+        matching:
+        dice:
+        sqeuclidean:
+  - !Flag
+    optional: true
+    synonyms:
+    - --full_matrix
+    description: output full dissimilarity matrix
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --silent
+    description: suppress output
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: comparem diss [-h]\n                     [--metric {euclidean,minkowski,cityblock,seuclidean,sqeuclidean,cosine,correlation,hamming,jaccard,chebyshev,canberra,braycurtis,mahalanobis,yule,matching,dice,kulsinski,rogerstanimoto,russellrao,sokalmichener,sokalsneath,wminkowski}]\n\
+    \                     [--full_matrix] [--silent]\n                     profile_file\
+    \ output_file\n\nCalculate the dissimilarity between usage profiles.\n\npositional\
+    \ arguments:\n  profile_file          file with usage profile for each genome\n\
+    \  output_file           output file with pairwise dissimilarity between\n   \
+    \                     genomes\n\noptional arguments:\n  -h, --help           \
+    \ show this help message and exit\n  --metric {euclidean,minkowski,cityblock,seuclidean,sqeuclidean,cosine,correlation,hamming,jaccard,chebyshev,canberra,braycurtis,mahalanobis,yule,matching,dice,kulsinski,rogerstanimoto,russellrao,sokalmichener,sokalsneath,wminkowski}\n\
+    \                        distance metric to use (default: euclidean)\n  --full_matrix\
+    \         output full dissimilarity matrix\n  --silent              suppress output\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/comparem:0.1.2--py_0
+- !Command
+  command:
+  - comparem
+  - classify
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: output_dir
+    description: Identify similar genomes based on AAI value.
+  - !Positional
+    optional: false
+    position: 0
+    name: query_gene_file
+    description: file with all query genes
+  - !Positional
+    optional: false
+    position: 1
+    name: target_gene_file
+    description: file with all target genes
+  - !Positional
+    optional: false
+    position: 2
+    name: sorted_hit_table
+    description: "sorted file indicating genes passing sequence\nsimilarity criteria"
+  - !Positional
+    optional: false
+    position: 3
+    name: output_dir
+    description: output directory
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -k
+    - --num_top_targets
+    description: "number of top scoring target genomes to report per\nquery genome\
+      \ (default: 1)"
+    args: !SimpleFlagArg
+      name: NUM_TOP_TARGETS
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --taxonomy_file
+    description: "file indicating taxonomic identification of all target\ngenomes"
+    args: !SimpleFlagArg
+      name: TAXONOMY_FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -e
+    - --evalue
+    description: "e-value cutoff for identifying initial blast hits\n(default: 0.001)"
+    args: !SimpleFlagArg
+      name: EVALUE
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --per_identity
+    description: 'percent identity for defining homology (default: 30.0)'
+    args: !SimpleFlagArg
+      name: PER_IDENTITY
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    - --per_aln_len
+    description: "percent alignment length of query sequence for\ndefining homology\
+      \ (default: 70.0)"
+    args: !SimpleFlagArg
+      name: PER_ALN_LEN
+  - !Flag
+    optional: true
+    synonyms:
+    - -x
+    - --file_ext
+    description: 'extension of files to process (default: fna)'
+    args: !SimpleFlagArg
+      name: FILE_EXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --keep_rbhs
+    description: create file with reciprocal best hits
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --cpus
+    description: 'number of CPUs to use (default: 1)'
+    args: !SimpleFlagArg
+      name: CPUS
+  - !Flag
+    optional: true
+    synonyms:
+    - --silent
+    description: suppress output
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: comparem classify [-h] [-k NUM_TOP_TARGETS] [-t TAXONOMY_FILE]\n\
+    \                         [-e EVALUE] [-p PER_IDENTITY] [-a PER_ALN_LEN]\n   \
+    \                      [-x FILE_EXT] [--keep_rbhs] [-c CPUS] [--silent]\n    \
+    \                     query_gene_file target_gene_file sorted_hit_table\n    \
+    \                     output_dir\n\nIdentify similar genomes based on AAI value.\n\
+    \npositional arguments:\n  query_gene_file       file with all query genes\n \
+    \ target_gene_file      file with all target genes\n  sorted_hit_table      sorted\
+    \ file indicating genes passing sequence\n                        similarity criteria\n\
+    \  output_dir            output directory\n\noptional arguments:\n  -h, --help\
+    \            show this help message and exit\n  -k, --num_top_targets NUM_TOP_TARGETS\n\
+    \                        number of top scoring target genomes to report per\n\
+    \                        query genome (default: 1)\n  -t, --taxonomy_file TAXONOMY_FILE\n\
+    \                        file indicating taxonomic identification of all target\n\
+    \                        genomes\n  -e, --evalue EVALUE   e-value cutoff for identifying\
+    \ initial blast hits\n                        (default: 0.001)\n  -p, --per_identity\
+    \ PER_IDENTITY\n                        percent identity for defining homology\
+    \ (default: 30.0)\n  -a, --per_aln_len PER_ALN_LEN\n                        percent\
+    \ alignment length of query sequence for\n                        defining homology\
+    \ (default: 70.0)\n  -x, --file_ext FILE_EXT\n                        extension\
+    \ of files to process (default: fna)\n  --keep_rbhs           create file with\
+    \ reciprocal best hits\n  -c, --cpus CPUS       number of CPUs to use (default:\
+    \ 1)\n  --silent              suppress output\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/comparem:0.1.2--py_0
+- !Command
+  command:
+  - comparem
+  - aai_wf
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: input_files
+    description: genome files
+  - !Positional
+    optional: false
+    position: 1
+    name: output_dir
+    description: output directory
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -e
+    - --evalue
+    description: "e-value cutoff for identifying initial blast hits\n(default: 0.001)"
+    args: !SimpleFlagArg
+      name: EVALUE
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --per_identity
+    description: 'percent identity for defining homology (default: 30.0)'
+    args: !SimpleFlagArg
+      name: PER_IDENTITY
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    - --per_aln_len
+    description: "percent alignment length of query sequence for\ndefining homology\
+      \ (default: 70.0)"
+    args: !SimpleFlagArg
+      name: PER_ALN_LEN
+  - !Flag
+    optional: true
+    synonyms:
+    - -x
+    - --file_ext
+    description: 'extension of files to process (default: fna)'
+    args: !SimpleFlagArg
+      name: FILE_EXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --proteins
+    description: indicates the input files contain protein sequences
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --force_table
+    description: force use of specific translation table
+    args: !SimpleFlagArg
+      name: FORCE_TABLE
+  - !Flag
+    optional: true
+    synonyms:
+    - --blastp
+    description: use blastp instead of DIAMOND
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --sensitive
+    description: use sensitive mode of DIAMOND
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --keep_headers
+    description: "indicates FASTA headers already have the format\n<genome_id>~<gene_id>"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --keep_rbhs
+    description: create file with reciprocal best hits
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --tmp_dir
+    description: "specify alternative directory for temporary files\n(default: /tmp)"
+    args: !SimpleFlagArg
+      name: TMP_DIR
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --cpus
+    description: 'number of CPUs to use (default: 1)'
+    args: !SimpleFlagArg
+      name: CPUS
+  - !Flag
+    optional: true
+    synonyms:
+    - --silent
+    description: suppress output
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: comparem aai_wf [-h] [-e EVALUE] [-p PER_IDENTITY] [-a PER_ALN_LEN]\n\
+    \                       [-x FILE_EXT] [--proteins] [--force_table FORCE_TABLE]\n\
+    \                       [--blastp] [--sensitive] [--keep_headers] [--keep_rbhs]\n\
+    \                       [--tmp_dir TMP_DIR] [-c CPUS] [--silent]\n           \
+    \            input_files output_dir\n\nCalculate AAI between all pairs of genomes\n\
+    \npositional arguments:\n  input_files           genome files\n  output_dir  \
+    \          output directory\n\noptional arguments:\n  -h, --help            show\
+    \ this help message and exit\n  -e, --evalue EVALUE   e-value cutoff for identifying\
+    \ initial blast hits\n                        (default: 0.001)\n  -p, --per_identity\
+    \ PER_IDENTITY\n                        percent identity for defining homology\
+    \ (default: 30.0)\n  -a, --per_aln_len PER_ALN_LEN\n                        percent\
+    \ alignment length of query sequence for\n                        defining homology\
+    \ (default: 70.0)\n  -x, --file_ext FILE_EXT\n                        extension\
+    \ of files to process (default: fna)\n  --proteins            indicates the input\
+    \ files contain protein sequences\n  --force_table FORCE_TABLE\n             \
+    \           force use of specific translation table\n  --blastp              use\
+    \ blastp instead of DIAMOND\n  --sensitive           use sensitive mode of DIAMOND\n\
+    \  --keep_headers        indicates FASTA headers already have the format\n   \
+    \                     <genome_id>~<gene_id>\n  --keep_rbhs           create file\
+    \ with reciprocal best hits\n  --tmp_dir TMP_DIR     specify alternative directory\
+    \ for temporary files\n                        (default: /tmp)\n  -c, --cpus CPUS\
+    \       number of CPUs to use (default: 1)\n  --silent              suppress output\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/comparem:0.1.2--py_0
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\n                ...::: CompareM v0.1.2 :::...\n\n    Common workflows:\n\
+  \     aai_wf      -> Calculate AAI between all pairs of genomes\n              \
+  \      (runs call_genes => similarity => aai)\n     classify_wf -> Identify similar\
+  \ genomes based on AAI values\n                    (runs call_genes => similarity\
+  \ => classify)\n                    \n    Gene prediction:\n     call_genes -> Identify\
+  \ genes within genomes\n                     \n    Gene homology and genome similarity:\n\
+  \     similarity -> Perform reciprocal sequence similarity search between proteins\n\
+  \     aai        -> Calculate AAI between all pairs of genomes\n     classify  \
+  \ -> Identify similar genomes based on AAI value\n\n    Usage profiles:\n     aa_usage\
+  \    -> Calculate amino acid usage within each genome\n     codon_usage -> Calculate\
+  \ codon usage within each genome\n     kmer_usage  -> Calculate kmer usage within\
+  \ each genome\n     stop_usage  -> Calculate stop codon usage within each genome\n\
+  \n    Lateral gene transfer:\n     lgt_di    -> Calculate dinuceotide (3rd,1st)\
+  \ usage of genes to identify putative LGT events\n     lgt_codon -> Calculate codon\
+  \ usage of genes to identify putative LGT events\n\n    Visualization and exploration:\n\
+  \     diss      -> Calculate the dissimilarity between usage profiles\n     hclust\
+  \    -> Perform hierarchical clustering\n\n  Use: comparem <command> -h for command\
+  \ specific help.\n\n  Feature requests or bug reports can be sent to Donovan Parks\
+  \ (donovan.parks@gmail.com)\n    or posted on GitHub (https://github.com/dparks1134/comparem).\n\
+  \    \n"
+generated_using:
+- -h
+docker_image: quay.io/biocontainers/comparem:0.1.2--py_0

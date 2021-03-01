@@ -10,6 +10,9 @@ task HcaAuthProvider {
       ~{hca} \
       ~{auth}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     hca: ""
     auth: ""

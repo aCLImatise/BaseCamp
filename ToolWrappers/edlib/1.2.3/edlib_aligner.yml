@@ -3,76 +3,76 @@ command:
 - edlib-aligner
 positional:
 - !Positional
-  description: ''
+  optional: true
   position: 0
   name: options...
-  optional: true
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: queries.fasta
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 2
   name: target.fasta
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: If specified, there will be no score or alignment output (silent mode).
+  optional: true
   synonyms:
   - -s
+  description: If specified, there will be no score or alignment output (silent mode).
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '|NW|SHW  Alignment mode that will be used. [default: NW]'
+  optional: true
   synonyms:
   - -m
+  description: '|NW|SHW  Alignment mode that will be used. [default: NW]'
   args: !SimpleFlagArg
     name: HW
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -n
   description: 'Score will be calculated only for N best sequences (best = with smallest
     score). If N = 0 then all sequences will be calculated. Specifying small N can
     make total calculation much faster. [default: 0]'
-  synonyms:
-  - -n
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: 'Sequences with score > K will be discarded. Smaller k, faster calculation.
-    If -1, no sequences will be discarded. [default: -1]'
+  optional: true
   synonyms:
   - -k
+  description: 'Sequences with score > K will be discarded. Smaller k, faster calculation.
+    If -1, no sequences will be discarded. [default: -1]'
   args: !SimpleFlagArg
     name: K
-  optional: true
 - !Flag
-  description: If specified, alignment path will be found and printed. This may significantly
-    slow down the calculation.
+  optional: true
   synonyms:
   - -p
+  description: If specified, alignment path will be found and printed. This may significantly
+    slow down the calculation.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -l
   description: If specified, start locations will be found and printed. Each start
     location corresponds to one end location. This may somewhat slow down the calculation,
     but is still faster then finding alignment path and does not consume any extra
     memory.
-  synonyms:
-  - -l
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -f
   description: '|CIG_STD|CIG_EXT  Format that will be used to print alignment path,
     can be used only with -p. NICE will give visually attractive format, CIG_STD will  give
     standard cigar format and CIG_EXT will give extended cigar format. [default: NICE]'
-  synonyms:
-  - -f
   args: !SimpleFlagArg
     name: NICE
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -98,3 +98,4 @@ help_text: "edlib-aligner: invalid option -- '-'\nedlib-aligner: invalid option 
   \ [default: NICE]\n"
 generated_using:
 - --help
+docker_image:

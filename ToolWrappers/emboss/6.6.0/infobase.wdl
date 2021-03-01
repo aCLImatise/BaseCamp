@@ -4,6 +4,9 @@ task Infobase {
   command <<<
     infobase
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -10,6 +10,9 @@ task ChakinPhylogenyGeneOrder {
       ~{options} \
       ~{if (nuke) then "--nuke" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     nuke: "Removes all previous gene ordering data"
     options: "Options:"

@@ -8,6 +8,9 @@ task Yes {
     yes \
       ~{var_string}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     var_string: ""
   }

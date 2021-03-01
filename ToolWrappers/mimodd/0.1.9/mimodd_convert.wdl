@@ -20,6 +20,9 @@ task MimoddConvert {
       ~{if (split_on_rgs) then "--split-on-rgs" else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     i_format: "the format of the input file(s) (default: bam)"
     ofile: "redirect the output to the specified file (default:\\nstdout)"

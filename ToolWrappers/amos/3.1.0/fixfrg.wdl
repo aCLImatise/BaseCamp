@@ -4,6 +4,9 @@ task Fixfrg {
   command <<<
     fixfrg
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

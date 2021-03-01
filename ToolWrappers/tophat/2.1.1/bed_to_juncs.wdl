@@ -12,6 +12,9 @@ task BedToJuncs {
       ~{help} \
       ~{use}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     for: ""
     help: ""

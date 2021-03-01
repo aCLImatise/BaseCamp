@@ -8,6 +8,9 @@ task TripailleJobRunJobs {
     tripaille job run_jobs \
       ~{if (wait) then "--wait" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     wait: "Wait for job completion  [default: True]"
   }

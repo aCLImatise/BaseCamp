@@ -14,6 +14,9 @@ task Treemaker {
       ~{if defined(mode) then ("--mode " +  '"' + mode + '"') else ""} \
       ~{if (labels) then "--labels" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file: "output file"
     mode: "output mode: nexus or newick"

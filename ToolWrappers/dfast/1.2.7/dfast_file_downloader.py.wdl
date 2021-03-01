@@ -16,6 +16,9 @@ task DfastFileDownloaderpy {
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
       ~{if defined(db_root) then ("--dbroot " +  '"' + db_root + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     protein: ": For DFAST reference libraries.\\nFiles will be downloaded to DB root directory by default.\\nDB root can be specified with \\\"--dbroot\\\" option."
     assembly_fast_a: ": For Reference genomes\\nReference genome file will be downloaded from NCBI Assembly Database either in GenBank or Fasta format.\\nFiles will be written to the current directory or the directory specified with \\\"--out\\\" option."

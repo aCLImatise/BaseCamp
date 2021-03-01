@@ -30,6 +30,9 @@ task Abritamr {
       ~{if defined(jobs) then ("--jobs " +  '"' + jobs + '"') else ""} \
       ~{if (keep) then "--keep" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mdu_qc: "Set if running on MDU QC data. If set please provide\\nthe MDU QC .csv as further input and an additional\\noutput suitable for lims input will be provided.\\n(default: False)"
     qc: "Name of checked MDU QC file. (default:\\nmdu_qc_checked.csv)"

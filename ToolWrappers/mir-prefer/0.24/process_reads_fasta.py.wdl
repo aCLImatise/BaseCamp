@@ -8,6 +8,9 @@ task Processreadsfastapy {
     process_reads_fasta_py \
       ~{fast_an}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_an: ""
   }

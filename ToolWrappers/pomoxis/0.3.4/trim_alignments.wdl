@@ -14,6 +14,9 @@ task TrimAlignments {
       ~{if defined(output_prefix) then ("--output_prefix " +  '"' + output_prefix + '"') else ""} \
       ~{if defined(reference_fast_a) then ("--reference_fasta " +  '"' + reference_fast_a + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ref_name: "Reference to process, only needed if bams contain\\nmultiple references. (default: None)"
     output_prefix: "Prefix for outputs. (default: trimmed)"

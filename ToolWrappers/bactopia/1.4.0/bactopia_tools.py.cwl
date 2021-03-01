@@ -3,7 +3,7 @@ id: bactopia_tools.py.cwl
 inputs:
 - id: in_bac_topia
   doc: Directory where Bactopia repository is stored.
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --bactopia
 - id: in_str
@@ -60,6 +60,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bactopia-tools.py

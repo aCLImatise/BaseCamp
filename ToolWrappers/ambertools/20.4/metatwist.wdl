@@ -3,7 +3,7 @@ version 1.0
 task Metatwist {
   input {
     File? dx
-    Int? mapping_type_cylindrical
+    Int? mapping_type_rdf
     Int? bin
     Int? rmax
     Int? zmax
@@ -28,7 +28,7 @@ task Metatwist {
     metatwist \
       ~{two_one_dot} \
       ~{if defined(dx) then ("--dx " +  '"' + dx + '"') else ""} \
-      ~{if defined(mapping_type_cylindrical) then ("--map " +  '"' + mapping_type_cylindrical + '"') else ""} \
+      ~{if defined(mapping_type_rdf) then ("--map " +  '"' + mapping_type_rdf + '"') else ""} \
       ~{if defined(bin) then ("--bin " +  '"' + bin + '"') else ""} \
       ~{if defined(rmax) then ("--rmax " +  '"' + rmax + '"') else ""} \
       ~{if defined(zmax) then ("--zmax " +  '"' + zmax + '"') else ""} \
@@ -48,9 +48,12 @@ task Metatwist {
       ~{if (laplacian) then "--laplacian" else ""} \
       ~{if (average) then "--average" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dx: "Input density file(s): *.dx(gz,bz2)|*.ccp4."
-    mapping_type_cylindrical: "Mapping type:\\n~ cylindrical (1D): cylindrical RDF along z-axis.\\n~ twist (2D): twisted helical map along z-axis.\\n~ untwist (2D): untwisted helical map along z-axis.\\n~ spherical (1D): spherical RDF.\\n~ projxyz: (1D) project 3D-map on x,y,z axes.\\n~ excess: excess number of particles.\\n~ blobs: Laplacian blob analysis.\\n~ blobsper: Laplacian blob analysis on a periodic 3D-map.\\n~ rhoel: Electron density using atomic form factors.\\n~ rhoelreal: Electron density using atomic densities.\\n~ cutresol: Cut 3D-map resolution range."
+    mapping_type_rdf: "Mapping type:\\n~ cylindrical (1D): cylindrical RDF along z-axis.\\n~ twist (2D): twisted helical map along z-axis.\\n~ untwist (2D): untwisted helical map along z-axis.\\n~ spherical (1D): spherical RDF.\\n~ projxyz: (1D) project 3D-map on x,y,z axes.\\n~ excess: excess number of particles.\\n~ blobs: Laplacian blob analysis.\\n~ blobsper: Laplacian blob analysis on a periodic 3D-map.\\n~ rhoel: Electron density using atomic form factors.\\n~ rhoelreal: Electron density using atomic densities.\\n~ cutresol: Cut 3D-map resolution range."
     bin: "(=0.1)        Bin size for re-sampling."
     rmax: "(=60)        Extent along the rho direction (cylindrical, spherical RDFs)."
     zmax: "(=70)        Extent in the z direction."

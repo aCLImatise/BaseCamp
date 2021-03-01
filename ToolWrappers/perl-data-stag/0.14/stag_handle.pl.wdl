@@ -18,6 +18,9 @@ task Staghandlepl {
       ~{if (sub) then "-sub" else ""} \
       ~{if (trap) then "-trap" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     module: "|m PERLMODULE\\nA module that is used to transform the input events the module\\nshould inherit from Data::Stag::BaseHandler"
     unit: "|u NODE_NAME\\n(you should always use this option if you specify -m)\\nthis is the unit that gets passed to the handler/transformer. this\\nwill get set automatically if you use the the -c, -s or -t options\\nmultiple units can be set\\n-u foo -u bar -u boz"

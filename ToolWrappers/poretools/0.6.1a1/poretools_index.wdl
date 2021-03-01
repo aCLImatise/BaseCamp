@@ -10,6 +10,9 @@ task PoretoolsIndex {
       ~{files} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quiet: "Do not output warnings to stderr"
     files: "The input FAST5 files."

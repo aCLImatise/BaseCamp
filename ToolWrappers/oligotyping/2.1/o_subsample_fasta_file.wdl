@@ -12,6 +12,9 @@ task Osubsamplefastafile {
       ~{integer} \
       ~{file_output_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fasta_file_subsample: "FASTA file to subsample"
     integer: "Number of random reads to keep for each sample in the new FASTA"

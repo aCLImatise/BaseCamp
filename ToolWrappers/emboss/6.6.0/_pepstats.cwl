@@ -3,17 +3,17 @@ id: _pepstats.cwl
 inputs:
 - id: in_aa_data
   doc: datafile   [Eamino.dat] Amino acid properties
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -aadata
 - id: in_mw_data
   doc: datafile   [Emolwt.dat] Molecular weight data for amino
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -mwdata
 - id: in_mono
   doc: boolean    [N] Use monoisotopic weights
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -mono
 - id: in_acids
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - _pepstats

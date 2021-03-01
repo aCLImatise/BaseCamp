@@ -18,6 +18,9 @@ task Parallelfastqdump {
       ~{if defined(min_spot_id) then ("--minSpotId " +  '"' + min_spot_id + '"') else ""} \
       ~{if defined(max_spot_id) then ("--maxSpotId " +  '"' + max_spot_id + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sra_id: "SRA id"
     threads: "number of threads"

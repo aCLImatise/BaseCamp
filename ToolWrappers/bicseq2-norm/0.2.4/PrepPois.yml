@@ -3,152 +3,152 @@ command:
 - PrepPois
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: fa file
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: ": a two column read count file(position and count); If unspecified,\
-    \ use <stdin> as input;\nData should be ordered by position"
+  optional: true
   synonyms:
   - -i
+  description: ": a two column read count file(position and count); If unspecified,\
+    \ use <stdin> as input;\nData should be ordered by position"
   args: !SimpleFlagArg
     name: string
-  optional: true
 - !Flag
-  description: ': the file that contain the gap information of the chromosome (two
-    column, start and end of the gaps)'
+  optional: true
   synonyms:
   - -g
+  description: ': the file that contain the gap information of the chromosome (two
+    column, start and end of the gaps)'
   args: !SimpleFlagArg
     name: string
-  optional: true
 - !Flag
-  description: ': fragment size as estimated from paired end data or by cross correlation
-    of reads on postive and negative strands; Default 300'
+  optional: true
   synonyms:
   - -s
+  description: ': fragment size as estimated from paired end data or by cross correlation
+    of reads on postive and negative strands; Default 300'
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: ': read length; Default 50'
+  optional: true
   synonyms:
   - -l
+  description: ': read length; Default 50'
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: ': if specified, use this as output'
+  optional: true
   synonyms:
   - -o
+  description: ': if specified, use this as output'
   args: !SimpleFlagArg
     name: string
-  optional: true
 - !Flag
-  description: ': the file that stores the estimates of the glm model'
+  optional: true
   synonyms:
   - -e
+  description: ': the file that stores the estimates of the glm model'
   args: !SimpleFlagArg
     name: string
-  optional: true
 - !Flag
-  description: ': the bin size; default 100; only valid if -e is specified'
+  optional: true
   synonyms:
   - -b
+  description: ': the bin size; default 100; only valid if -e is specified'
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: ': the highest degree of polynomials of GC used in the normalization
-    procedure; Default 2.'
+  optional: true
   synonyms:
   - -p
+  description: ': the highest degree of polynomials of GC used in the normalization
+    procedure; Default 2.'
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: ': the chromosome under consideration'
+  optional: true
   synonyms:
   - --chrom
+  description: ': the chromosome under consideration'
   args: !SimpleFlagArg
     name: string
-  optional: true
 - !Flag
-  description: ': the number base pairs to extend to upstream and downstream. Default
-    5.'
+  optional: true
   synonyms:
   - --uds
+  description: ': the number base pairs to extend to upstream and downstream. Default
+    5.'
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: ': when use every nucleotide in the extended read instead of just the
-    nucleotides on two ends'
+  optional: true
   synonyms:
   - --noGapInRead
+  description: ': when use every nucleotide in the extended read instead of just the
+    nucleotides on two ends'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ': bin the data and report gc and read count in the bins; Notice that
-    if the option -e is specified, this option will be ignored'
+  optional: true
   synonyms:
   - --gc_bin
+  description: ': bin the data and report gc and read count in the bins; Notice that
+    if the option -e is specified, this option will be ignored'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --map_bin
   description: ": if specified, bin the data as bins with equal number of uniquely\
     \ mappable genomic locations\nonly valid if --gc_bin is specified and this option\
     \ assume the input file has all unique mappable positions of the chromosome under\
     \ consideration"
-  synonyms:
-  - --map_bin
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ': use log of gc as predictor'
+  optional: true
   synonyms:
   - --gc_log
+  description: ': use log of gc as predictor'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ': use gc*(polynomials of gc^gc_mp) as predictors instead of polynomials
-    of gc'
+  optional: true
   synonyms:
   - --gc_mp
+  description: ': use gc*(polynomials of gc^gc_mp) as predictors instead of polynomials
+    of gc'
   args: !SimpleFlagArg
     name: float
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --NoNegBinom
   description: ": Do not use negative binomial to estimate the variance;\nIf this\
     \ is not specified, the last row of -e <string> will be used as estimate of theta\
     \ parameter in the Negative Binomial model"
-  synonyms:
-  - --NoNegBinom
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ': Do not print header to the output'
+  optional: true
   synonyms:
   - --NoHeader
+  description: ': Do not print header to the output'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: <degree,coefficients separated by comma>
+  optional: true
   synonyms:
   - --refine
+  description: <degree,coefficients separated by comma>
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: ': print this message.'
+  optional: true
   synonyms:
   - -h
+  description: ': print this message.'
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: PrepPois <fa file>\nThe ouput will be printed on stdout\nOptions:\n\
@@ -179,3 +179,4 @@ help_text: "usage: PrepPois <fa file>\nThe ouput will be printed on stdout\nOpti
   \ separated by comma>\n"
 generated_using:
 - -h
+docker_image:

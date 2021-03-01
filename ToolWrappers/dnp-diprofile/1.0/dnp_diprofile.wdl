@@ -18,6 +18,9 @@ task Dnpdiprofile {
       ~{if (complement) then "--complement" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     version_check: "Turn this option off to disable version update notifications of the\\napplication. One of 1, ON, TRUE, T, YES, 0, OFF, FALSE, F, and NO.\\nDefault: 1."
     dinucleotide: "Dinucleotide to compute a frequency profile in fasta file. One of\\nAA, AC, AG, AT, CA, CC, CG, CT, GA, GC, GG, GT, TA, TC, TG, and TT.\\nDefault: AA."

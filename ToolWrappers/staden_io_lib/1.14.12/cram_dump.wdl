@@ -10,6 +10,9 @@ task CramDump {
       ~{filename_dot_cram} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     v: ""
     filename_dot_cram: ""

@@ -4,7 +4,7 @@ inputs:
 - id: in_output
   doc: "Output variant calls to given path (in BCF format). If omitted, prints\ncalls\
     \ to STDOUT."
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_test_case_locus
@@ -12,12 +12,12 @@ inputs:
     CHROM:POS[:IDX]. IDX is thereby an optional value to select a particular\nvariant\
     \ at the locus, counting from 1. If IDX is not specified, the first\nvariant will\
     \ be chosen. Alternatively, for single variant VCFs, you can\nspecify 'all'."
-  type: long
+  type: long?
   inputBinding:
     prefix: --testcase-locus
 - id: in_test_case_prefix
   doc: Create test case files in the given directory.
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --testcase-prefix
 - id: in_generic
@@ -44,9 +44,10 @@ outputs:
 - id: out_output
   doc: "Output variant calls to given path (in BCF format). If omitted, prints\ncalls\
     \ to STDOUT."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - varlociraptor

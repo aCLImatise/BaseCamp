@@ -3,27 +3,27 @@ id: reago.py.cwl
 inputs:
 - id: in_o
   doc: ', default 0.8'
-  type: double
+  type: double?
   inputBinding:
     prefix: -o
 - id: in_e
   doc: ', default 0.05'
-  type: double
+  type: double?
   inputBinding:
     prefix: -e
 - id: in_t
   doc: ', default 30'
-  type: long
+  type: long?
   inputBinding:
     prefix: -t
 - id: in_b
   doc: ', default 10'
-  type: long
+  type: long?
   inputBinding:
     prefix: -b
 - id: in_l
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -l
 - id: in_filename_dot_fast_a
@@ -40,6 +40,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - reago.py

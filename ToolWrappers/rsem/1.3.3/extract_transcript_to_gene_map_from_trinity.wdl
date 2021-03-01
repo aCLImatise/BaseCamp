@@ -10,6 +10,9 @@ task Extracttranscripttogenemapfromtrinity {
       ~{trinity_fast_a_file} \
       ~{map_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     trinity_fast_a_file: ""
     map_file: ""

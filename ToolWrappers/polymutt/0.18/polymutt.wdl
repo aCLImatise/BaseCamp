@@ -4,6 +4,9 @@ task Polymutt {
   command <<<
     polymutt
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

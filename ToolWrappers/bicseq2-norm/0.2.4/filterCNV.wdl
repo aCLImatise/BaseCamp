@@ -12,6 +12,9 @@ task FilterCNV {
       ~{read_count_file} \
       ~{chrom_name}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cnv_region_file: ""
     read_count_file: ""

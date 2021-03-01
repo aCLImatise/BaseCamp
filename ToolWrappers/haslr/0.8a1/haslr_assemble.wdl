@@ -4,8 +4,8 @@ task HaslrAssemble {
   input {
     File? path_contigs_file
     File? path_long_read
-    File? path_also_mapping
-    File? path_also_dir
+    File? path_mappings_long
+    File? path_output_directory
     Boolean? aln_block
     Boolean? aln_sim
     Boolean? uniq_dev
@@ -22,8 +22,8 @@ task HaslrAssemble {
       ~{detects_v} \
       ~{if defined(path_contigs_file) then ("-c " +  '"' + path_contigs_file + '"') else ""} \
       ~{if defined(path_long_read) then ("-l " +  '"' + path_long_read + '"') else ""} \
-      ~{if defined(path_also_mapping) then ("-m " +  '"' + path_also_mapping + '"') else ""} \
-      ~{if defined(path_also_dir) then ("-d " +  '"' + path_also_dir + '"') else ""} \
+      ~{if defined(path_mappings_long) then ("-m " +  '"' + path_mappings_long + '"') else ""} \
+      ~{if defined(path_output_directory) then ("-d " +  '"' + path_output_directory + '"') else ""} \
       ~{if (aln_block) then "--aln-block" else ""} \
       ~{if (aln_sim) then "--aln-sim" else ""} \
       ~{if (uniq_dev) then "--uniq-dev" else ""} \
@@ -34,11 +34,14 @@ task HaslrAssemble {
       ~{if defined(s) then ("-s " +  '"' + s + '"') else ""} \
       ~{if defined(r) then ("-r " +  '"' + r + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     path_contigs_file: "Path to contigs file (also --contig)"
     path_long_read: "Path to long read dataset (also --long)"
-    path_also_mapping: "Path to mappings of long reads onto contigs (also --mapping)"
-    path_also_dir: "Path to the output directory (also --dir)"
+    path_mappings_long: "Path to mappings of long reads onto contigs (also --mapping)"
+    path_output_directory: "Path to the output directory (also --dir)"
     aln_block: "Minimum length of alignment block [500]"
     aln_sim: "Minimum alignment similarity [0.85]"
     uniq_dev: "Maximum deviation from mean frequency of uniq contigs [0.15]"
@@ -52,6 +55,6 @@ task HaslrAssemble {
   }
   output {
     File out_stdout = stdout()
-    File out_path_also_dir = "${in_path_also_dir}"
+    File out_path_output_directory = "${in_path_output_directory}"
   }
 }

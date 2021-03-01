@@ -16,6 +16,9 @@ task Albatradisannotation {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     feature_size: "Feature size (default: 198)"
     output_file: "Output file (default: output.embl)"

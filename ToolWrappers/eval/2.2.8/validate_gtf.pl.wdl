@@ -3,7 +3,7 @@ version 1.0
 task ValidateGtfpl {
   input {
     File? output_transcript_file
-    Boolean? create_fixed_file
+    Boolean? create_gtf_file
     Int? sets_maximum_number
     Boolean? output_list_inframe
     Boolean? suppress_warnings_missing
@@ -17,7 +17,7 @@ task ValidateGtfpl {
   command <<<
     validate_gtf_pl \
       ~{if defined(output_transcript_file) then ("-t " +  '"' + output_transcript_file + '"') else ""} \
-      ~{if (create_fixed_file) then "-f" else ""} \
+      ~{if (create_gtf_file) then "-f" else ""} \
       ~{if defined(sets_maximum_number) then ("-e " +  '"' + sets_maximum_number + '"') else ""} \
       ~{if (output_list_inframe) then "-s" else ""} \
       ~{if (suppress_warnings_missing) then "-c" else ""} \
@@ -28,9 +28,12 @@ task ValidateGtfpl {
       ~{if (more_options) then "-MORE_OPTIONS" else ""} \
       ~{if (options) then "-OPTIONS" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_transcript_file: ": output transcript file"
-    create_fixed_file: ": create a fixed gtf file (This may not be possible.\\nAlways check the \\\"fixed\\\" file)"
+    create_gtf_file: ": create a fixed gtf file (This may not be possible.\\nAlways check the \\\"fixed\\\" file)"
     sets_maximum_number: ": sets the maximum number of detailed error messages to return per\\nerror to <count> (default is 5)."
     output_list_inframe: ": output list of inframe stop genes."
     suppress_warnings_missing: ": suppress warnings about missing start/stop"

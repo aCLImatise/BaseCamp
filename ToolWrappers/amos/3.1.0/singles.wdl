@@ -4,6 +4,9 @@ task Singles {
   command <<<
     singles
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

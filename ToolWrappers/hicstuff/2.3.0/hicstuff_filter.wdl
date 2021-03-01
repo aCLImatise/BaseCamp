@@ -20,6 +20,9 @@ task HicstuffFilter {
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
       ~{if defined(thresholds) then ("--thresholds " +  '"' + thresholds + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fig_dir: "Path to the output figure directory.\\nBy default, the figure is only shown\\nbut not saved."
     interactive: "Interactively shows plots and asks\\nfor thresholds."

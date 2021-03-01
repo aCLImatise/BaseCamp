@@ -26,6 +26,9 @@ task PlaScopesh {
       ~{if (reverse_pairedend_reads) then "-2" else ""} \
       ~{if (fast_a) then "--fasta" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_banner: "don't print beautiful banners"
     number_of_threads: "number of threads[OPTIONAL] [default : 8]"

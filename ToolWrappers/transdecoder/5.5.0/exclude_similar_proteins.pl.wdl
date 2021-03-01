@@ -4,6 +4,9 @@ task ExcludeSimilarProteinspl {
   command <<<
     exclude_similar_proteins_pl
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -14,6 +14,9 @@ task PaladinIndex {
       ~{if (enable_indexing_frames) then "-f" else ""} \
       ~{if (reference_type_reference) then "-r" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     enable_indexing_frames: "Enable indexing all frames in nucleotide references"
     reference_type_reference: "<#>  Reference type:\\n1: Reference contains nucleotide sequences (requires corresponding .gff annotation)\\n2: Reference contains nucleotide sequences (coding only, eg curated transcriptome)\\n3: Reference contains protein sequences (UniProt or other source)\\n4: Development tests"

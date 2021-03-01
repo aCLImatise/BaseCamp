@@ -20,6 +20,9 @@ task Admixture {
       ~{if defined(set_minor_criterion) then ("-c " +  '"' + set_minor_criterion + '"') else ""} \
       ~{if (b) then "-B" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     jx: ": do computation on X threads"
     seed: ": use random seed X for initialization"

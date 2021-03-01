@@ -22,6 +22,9 @@ task GotreeRepopulate {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     id_groups: "File with groups of identical tips (default \\\"none\\\")"
     input_tree_default: "Input tree (default \\\"stdin\\\")"

@@ -28,6 +28,9 @@ task Tester {
       ~{if (no_report) then "--noreport" else ""} \
       ~{if (exit_on_fail) then "--exitOnFail" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quiet: "quiet"
     verbose: "verbose, default behavior"

@@ -18,7 +18,7 @@ task CheckmLineageWf {
     Boolean? ignore_thresholds
     Float? e_value
     Int? length
-    File? file
+    File? print_results_file
     Boolean? tab_table
     Directory? extension
     Int? threads
@@ -48,7 +48,7 @@ task CheckmLineageWf {
       ~{if (ignore_thresholds) then "--ignore_thresholds" else ""} \
       ~{if defined(e_value) then ("--e_value " +  '"' + e_value + '"') else ""} \
       ~{if defined(length) then ("--length " +  '"' + length + '"') else ""} \
-      ~{if defined(file) then ("--file " +  '"' + file + '"') else ""} \
+      ~{if defined(print_results_file) then ("--file " +  '"' + print_results_file + '"') else ""} \
       ~{if (tab_table) then "--tab_table" else ""} \
       ~{if defined(extension) then ("--extension " +  '"' + extension + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
@@ -56,6 +56,9 @@ task CheckmLineageWf {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(tmpdir) then ("--tmpdir " +  '"' + tmpdir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reduced_tree: "use reduced tree (requires <16GB of memory) for determining lineage of each bin"
     ali: "generate HMMER alignment file for each bin"
@@ -73,7 +76,7 @@ task CheckmLineageWf {
     ignore_thresholds: "ignore model-specific score thresholds"
     e_value: "e-value cut off (default: 1e-10)"
     length: "percent overlap between target and query (default: 0.7)"
-    file: "print results to file (default: stdout)"
+    print_results_file: "print results to file (default: stdout)"
     tab_table: "print tab-separated values table"
     extension: "extension of bins (other files in directory are ignored) (default: fna)"
     threads: "number of threads (default: 1)"

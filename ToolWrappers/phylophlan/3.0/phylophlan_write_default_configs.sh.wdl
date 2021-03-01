@@ -14,6 +14,9 @@ task PhylophlanWriteDefaultConfigssh {
       ~{if defined(mode) then ("-m " +  '"' + mode + '"') else ""} \
       ~{if (error_exists_make) then "-p" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mode: "Mode"
     error_exists_make: "No error if exists; make parent directories as needed"

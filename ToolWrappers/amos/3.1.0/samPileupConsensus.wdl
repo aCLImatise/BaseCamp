@@ -4,6 +4,9 @@ task SamPileupConsensus {
   command <<<
     samPileupConsensus
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

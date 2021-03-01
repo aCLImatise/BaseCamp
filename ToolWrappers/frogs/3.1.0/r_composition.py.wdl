@@ -24,6 +24,9 @@ task RCompositionpy {
       ~{if defined(html) then ("--html " +  '"' + html + '"') else ""} \
       ~{if defined(log_file) then ("--log-file " +  '"' + log_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "Keep temporary files to debug program."
     var_exp: "The experiment variable used to split plot."

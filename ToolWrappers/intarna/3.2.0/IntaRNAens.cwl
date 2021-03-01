@@ -1,60 +1,60 @@
 class: CommandLineTool
 id: IntaRNAens.cwl
 inputs:
-- id: in_q
+- id: in_arg_rna_sequence_streamfile_where_read_query
   doc: "[ --query ] arg            either an RNA sequence or the stream/file name\n\
     from where to read the query sequences (should\nbe the shorter sequences to increase\n\
     efficiency); use 'STDIN' to read from standard\ninput stream; sequences have to\
     \ use IUPAC\nnucleotide encoding; output alias is [seq2]"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -q
-- id: in_t
+- id: in_arg_rna_sequence_streamfile_where_read_sequences
   doc: "[ --target ] arg           either an RNA sequence or the stream/file name\n\
     from where to read the target sequences (should\nbe the longer sequences to increase\n\
     efficiency); use 'STDIN' to read from standard\ninput stream; sequences have to\
     \ use IUPAC\nnucleotide encoding; output alias is [seq1]"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -t
 - id: in_helix_min_bp
   doc: "(=2)         minimal number of base pairs inside a helix\n(arg in range [2,4])"
-  type: long
+  type: long?
   inputBinding:
     prefix: --helixMinBP
 - id: in_helix_max_bp
   doc: "(=10)        maximal number of base pairs inside a helix\n(arg in range [2,20])"
-  type: long
+  type: long?
   inputBinding:
     prefix: --helixMaxBP
 - id: in_helix_max_il
   doc: "(=0)         maximal size for each internal loop size in a\nhelix (arg in\
     \ range [0,2])."
-  type: long
+  type: long?
   inputBinding:
     prefix: --helixMaxIL
 - id: in_helix_min_pu
   doc: "(=0)         minimal unpaired probability (per sequence) of\nconsidered helices\
     \ (arg in range [0,1])."
-  type: long
+  type: long?
   inputBinding:
     prefix: --helixMinPu
 - id: in_helix_max_e
   doc: "(=0)          maximal energy (excluding) a helix may have\n(arg in range [-999,999])."
-  type: long
+  type: long?
   inputBinding:
     prefix: --helixMaxE
 - id: in_helix_full_e
   doc: "[=arg(=1)] (=0)  if given (or true), the overall energy of a\nhelix (including\
     \ E_init, ED, dangling ends, ..)\nwill be used for helixMaxE checks; otherwise\n\
     only loop-terms are considered."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --helixFullE
 - id: in_no_seed
   doc: "[=arg(=1)] (=0)      if given (or true), no seed is enforced within\nthe predicted\
     \ interactions"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --noSeed
 - id: in_seed_tq
@@ -62,19 +62,19 @@ inputs:
     startTbpsT&startQbpsQ, e.g. '3|||.|&7||.||',\nwhere 'startT/Q' are the indices\
     \ of the 5' seed\nends in target/query sequence and 'bpsT/Q' the\nrespective dot-bar\
     \ base pair encodings. This\ndisables all other seed constraints and seed\nidentification."
-  type: long
+  type: long?
   inputBinding:
     prefix: --seedTQ
 - id: in_seed_bp
   doc: "(=7)             number of inter-molecular base pairs within the\nseed region\
     \ (arg in range [2,20])"
-  type: long
+  type: long?
   inputBinding:
     prefix: --seedBP
 - id: in_arg_h_prediction
   doc: "[ --mode ] arg (=H)        prediction mode :\n'H' = heuristic (fast and low\
     \ memory),\n'M' = exact (slow),\n'S' = seed-only"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -m
 - id: in_model
@@ -84,27 +84,27 @@ inputs:
     minimum-free-energy interaction (blocks of\nstable helices and interior loops\
     \ only),\n'P' = single-site interaction with minimal\nfree ensemble energy per\
     \ site (interior loops\nonly)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --model
 - id: in_acc
   doc: "(=C)                accessibility computation :\n'N' no accessibility contributions\n\
     'C' computation of accessibilities (see --accW\nand --accL)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --acc
 - id: in_int_len_max
   doc: "(=0)          interaction site : maximal window size to be\nconsidered for\
     \ interaction (arg in range\n[0,99999]; 0 refers to the full sequence\nlength).\
     \ If --accW is provided, the smaller\nwindow size of both is used."
-  type: long
+  type: long?
   inputBinding:
     prefix: --intLenMax
 - id: in_int_loop_max
   doc: "(=10)        interaction site : maximal number of unpaired\nbases between\
     \ neighbored interacting bases to\nbe considered in interactions (arg in range\n\
     [0,30]; 0 enforces stackings only)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --intLoopMax
 - id: in_out
@@ -131,25 +131,25 @@ inputs:
     \ output stream/file name,\neg. '--out=\"spotProb:3&76,59&2:STDERR\"'. NOTE:\n\
     value has to be quoted due to '&' symbol!\nFor each, provide a file name or STDOUT/STDERR\n\
     to write to the respective output stream."
-  type: File
+  type: File?
   inputBinding:
     prefix: --out
 - id: in_out_sep
   doc: (=;)             column separator to be used in tabular CSV
-  type: string
+  type: string?
   inputBinding:
     prefix: --outSep
-- id: in_arg_number_suboptimal
+- id: in_arg_number_reportarg
   doc: "[ --outNumber ] arg (=1)   number of (sub)optimal interactions to report\n\
     (arg in range [0,1000])"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -n
 - id: in_out_overlap
   doc: "(=B)         suboptimal output : interactions can overlap\n'N' in none of\
     \ the sequences,\n'T' in the target only,\n'Q' in the query only,\n'B' in both\
     \ sequences"
-  type: string
+  type: string?
   inputBinding:
     prefix: --outOverlap
 - id: in_threads
@@ -157,23 +157,23 @@ inputs:
     \ of query-target\ncombinations. A value of 0 requests all\navailable CPUs. Note,\
     \ the number of threads\nmultiplies the required memory used for\ncomputation!\
     \ (arg in range [0,8])"
-  type: long
+  type: long?
   inputBinding:
     prefix: --threads
 - id: in_personality
   doc: "IntaRNA personality to be used, which defines\ndefault values, available program\
     \ arguments and\ntool behavior"
-  type: string
+  type: string?
   inputBinding:
     prefix: --personality
 - id: in_parameter_file
   doc: file from where to read additional command line
-  type: File
+  type: File?
   inputBinding:
     prefix: --parameterFile
 - id: in_full_help
   doc: show the extended help page for all available
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --fullhelp
 - id: in_output
@@ -220,9 +220,10 @@ outputs:
     \ output stream/file name,\neg. '--out=\"spotProb:3&76,59&2:STDERR\"'. NOTE:\n\
     value has to be quoted due to '&' symbol!\nFor each, provide a file name or STDOUT/STDERR\n\
     to write to the respective output stream."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - IntaRNAens

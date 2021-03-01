@@ -12,6 +12,9 @@ task MegalodonExtrasPhaseVariantsWhatshapFilter {
       ~{out_vcf} \
       ~{if defined(filtered_records) then ("--filtered-records " +  '"' + filtered_records + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     filtered_records: "File to output filtered records.\\n"
     in_vcf: "Megalodon VCF file"

@@ -8,6 +8,9 @@ task Trimends {
     trimends \
       ~{if (help_dot_qual) then "--help.qual" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     help_dot_qual: ", and --help.frg must exist"
   }

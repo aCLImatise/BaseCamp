@@ -20,6 +20,9 @@ task NovoutilRename {
       ~{if defined(excise) then ("--excise " +  '"' + excise + '"') else ""} \
       ~{if (reorder) then "--reorder" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     original: "Assembly Report column name originally in the Chrom attribute.\\nChoose from:\\nSequence-Name, GenBank-Accn, RefSeq-Accn, UCSC-style-name\\nDefault is 'RefSeq-Accn'"
     id: "Report or Region column name to replace the Chrom attribute.\\nChoose from assembly_report columns:\\nSequence-Name, GenBank-Accn, RefSeq-Accn, UCSC-style-name\\nDefault is not to change the name."

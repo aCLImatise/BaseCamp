@@ -56,6 +56,9 @@ task GtftkCoverage {
       ~{if (logger_file) then "--logger-file" else ""} \
       ~{if (write_message_to_file) then "--write-message-to-file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file: "The input GTF/BED file. Only GTF file if <stdin> is used. (default: <stdin>)"
     output_file: "Output file. (default: <stdout>)"

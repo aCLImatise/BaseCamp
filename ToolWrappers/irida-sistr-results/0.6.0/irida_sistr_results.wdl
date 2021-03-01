@@ -42,6 +42,9 @@ task Iridasistrresults {
       ~{if defined(only_include_results) then ("--workflow " +  '"' + only_include_results + '"') else ""} \
       ~{if defined(samples_created_since) then ("--samples-created-since " +  '"' + samples_created_since + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     irid_a_url: "The URL to the IRIDA instance."
     client_id: "The client id for an IRIDA instance."

@@ -30,6 +30,9 @@ task SequenceSimulate {
       ~{if defined(length) then ("-length " +  '"' + length + '"') else ""} \
       ~{if defined(not_implemented) then ("-output " +  '"' + not_implemented + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genome: "sample reads from these sequences"
     circular: "treat the sequences in G as circular"

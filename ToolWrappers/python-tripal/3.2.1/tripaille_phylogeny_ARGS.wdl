@@ -14,6 +14,9 @@ task TripaillePhylogenyARGS {
       ~{var_command} \
       ~{args}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tri_paille: ""
     phylogeny: ""

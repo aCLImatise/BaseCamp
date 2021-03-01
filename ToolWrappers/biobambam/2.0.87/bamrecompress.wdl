@@ -4,6 +4,9 @@ task Bamrecompress {
   command <<<
     bamrecompress
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

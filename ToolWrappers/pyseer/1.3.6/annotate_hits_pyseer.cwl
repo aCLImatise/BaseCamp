@@ -3,12 +3,12 @@ id: annotate_hits_pyseer.cwl
 inputs:
 - id: in_bwa
   doc: Location of bwa executable [default=bwa]
-  type: string
+  type: string?
   inputBinding:
     prefix: --bwa
 - id: in_tmp_prefix
   doc: "Directory to store temporary files [default=./]\n"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --tmp-prefix
 - id: in_km_ers
@@ -31,6 +31,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - annotate_hits_pyseer

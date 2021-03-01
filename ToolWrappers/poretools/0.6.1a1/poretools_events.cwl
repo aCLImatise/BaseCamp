@@ -3,12 +3,12 @@ id: poretools_events.cwl
 inputs:
 - id: in_quiet
   doc: Do not output warnings to stderr
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 - id: in_pre_base_called
   doc: Report pre-basecalled events
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --pre-basecalled
 - id: in_files
@@ -20,6 +20,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - poretools

@@ -8,6 +8,9 @@ task NanopolishMakerangepy {
     nanopolish_makerange_py \
       ~{if defined(segment_length) then ("--segment-length " +  '"' + segment_length + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     segment_length: ""
   }

@@ -28,6 +28,9 @@ task RRA {
       ~{if defined(min_number_goods_grn_a) then ("--min-number-goodsgrna " +  '"' + min_number_goods_grn_a + '"') else ""} \
       ~{if defined(max_sg_rna_per_gene_permutation) then ("--max-sgrnapergene-permutation " +  '"' + max_sg_rna_per_gene_permutation + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     format_item_i: ". Format: <item id> <group id> <list id> <value> [<probability>] [<chosen>]"
     format_group_i: ". Format: <group id> <number of items in the group> <lo-value> <false discovery rate>"

@@ -3,29 +3,62 @@ command:
 - align-families.py
 positional:
 - !Positional
+  optional: false
+  position: 0
+  name: read-families.tsv
   description: "The input reads, sorted into families. One\nline per read pair, 8\
     \ tab-delimited columns:\n1. canonical barcode\n2. barcode order (\"ab\" for alpha+beta,\
     \ \"ba\"\nfor beta-alpha)\n3. read 1 name\n4. read 1 sequence\n5. read 1 quality\
     \ scores\n6. read 2 name\n7. read 2 sequence\n8. read 2 quality scores"
-  position: 0
-  name: read-families.tsv
+- !Positional
   optional: false
-named: []
-parent:
-subcommands: []
-usage: []
-help_flag: !Flag
-  description: "show this help message and exit\n-a {mafft,kalign,dummy}, --aligner\
-    \ {mafft,kalign,dummy}\nThe multiple sequence aligner to use. Default:\nkalign\n\
-    -I, --no-check-ids    Don't check to make sure read pairs have identical ids.\
-    \ By default, if this encounters a pair of reads in families.tsv with ids that\
-    \ aren't identical (minus an ending /1 or /2), it will throw an error.\n-p PROCESSES,\
-    \ --processes PROCESSES\nNumber of worker subprocesses to use. If 0, no\nsubprocesses\
-    \ will be started and everything\nwill be done inside one process. Give \"auto\"\
-    \nto use as many processes as there are CPU\ncores. Default: 0.\n--queue-size\
-    \ QUEUE_SIZE\nHow long to go accumulating responses from\nworker subprocesses\
-    \ before dealing with all of\nthem. Default: 8 * the number of worker\n--processes.\n\
-    --phone-home          Report helpful usage data to the developer, to\nbetter understand\
+  position: 0
+  name: run.
+  description: --version             Print the version number and exit.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --aligner
+  description: "The multiple sequence aligner to use. Default:\nkalign"
+  args: !ChoiceFlagArg
+    choices: !!set
+      dummy:
+      kalign:
+      mafft:
+- !Flag
+  optional: true
+  synonyms:
+  - -I
+  - --no-check-ids
+  description: Don't check to make sure read pairs have identical ids. By default,
+    if this encounters a pair of reads in families.tsv with ids that aren't identical
+    (minus an ending /1 or /2), it will throw an error.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --processes
+  description: "Number of worker subprocesses to use. If 0, no\nsubprocesses will\
+    \ be started and everything\nwill be done inside one process. Give \"auto\"\n\
+    to use as many processes as there are CPU\ncores. Default: 0."
+  args: !SimpleFlagArg
+    name: PROCESSES
+- !Flag
+  optional: true
+  synonyms:
+  - --queue-size
+  description: "How long to go accumulating responses from\nworker subprocesses before\
+    \ dealing with all of\nthem. Default: 8 * the number of worker\n--processes."
+  args: !SimpleFlagArg
+    name: QUEUE_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --phone-home
+  description: "Report helpful usage data to the developer, to\nbetter understand\
     \ the use cases and\nperformance of the tool. The only data which\nwill be recorded\
     \ is the name and version of\nthe tool, the size of the input data, the time\n\
     and memory taken to process it, and the IP\naddress of the machine running it.\
@@ -33,17 +66,40 @@ help_flag: !Flag
     \ and the line of code it\noccurred in. No filenames are sent, and the\nonly parameters\
     \ reported are --aligner,\n--processes, and --queue-size, which are\nnecessary\
     \ to evaluate performance. All the\nreporting and recording code is available\
-    \ at\nhttps://github.com/NickSto/ET.\n--galaxy              Tell the script it's\
-    \ running on Galaxy.\nCurrently this only affects data reported when\nphoning\
-    \ home.\n--test                If reporting usage data, mark this as a test\n\
-    run.\n--version             Print the version number and exit.\n-L LOG_FILE, --log-file\
-    \ LOG_FILE\nPrint log messages to this file instead of to\nstderr. NOTE: Will\
-    \ overwrite the file.\n-q, --quiet\n-v, --verbose\n-D, --debug\n"
+    \ at\nhttps://github.com/NickSto/ET."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --galaxy
+  description: "Tell the script it's running on Galaxy.\nCurrently this only affects\
+    \ data reported when\nphoning home."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --test
+  description: If reporting usage data, mark this as a test
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  - --log-file
+  description: "Print log messages to this file instead of to\nstderr. NOTE: Will\
+    \ overwrite the file."
+  args: !SimpleFlagArg
+    name: LOG_FILE
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: $ align-families.py [options] families.tsv > families.msa.tsv\n\
@@ -92,3 +148,4 @@ help_text: "usage: $ align-families.py [options] families.tsv > families.msa.tsv
   \  -q, --quiet\n  -v, --verbose\n  -D, --debug\n"
 generated_using:
 - --help
+docker_image:

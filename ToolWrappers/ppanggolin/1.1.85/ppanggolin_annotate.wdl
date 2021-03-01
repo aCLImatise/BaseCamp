@@ -34,6 +34,9 @@ task PpanggolinAnnotate {
       ~{if defined(cpu) then ("--cpu " +  '"' + cpu + '"') else ""} \
       ~{if (force) then "--force" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a: "A tab-separated file listing the organism names, and\\nthe fasta filepath of its genomic sequence(s) (the\\nfastas can be compressed with gzip). One line per\\norganism. (default: None)"
     an_no: "A tab-separated file listing the organism names, and\\nthe gff/gbff filepath of its annotations (the files\\ncan be compressed with gzip). One line per organism.\\nIf this is provided, those annotations will be used.\\n(default: None)"

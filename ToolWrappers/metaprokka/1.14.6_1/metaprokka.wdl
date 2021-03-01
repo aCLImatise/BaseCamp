@@ -60,6 +60,9 @@ task Metaprokka {
       ~{if (rn_ammer) then "--rnammer" else ""} \
       ~{if (do_tbl_two_asn) then "--dotbl2asn" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     citation: "Print citation for referencing Prokka"
     quiet: "No screen output (default OFF)"

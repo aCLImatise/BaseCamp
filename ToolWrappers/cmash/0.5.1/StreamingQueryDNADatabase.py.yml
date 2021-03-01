@@ -3,105 +3,105 @@ command:
 - StreamingQueryDNADatabase.py
 positional:
 - !Positional
-  description: 'Input file: FASTA/Q file to be processes'
+  optional: false
   position: 0
   name: in_file
-  optional: false
+  description: 'Input file: FASTA/Q file to be processes'
 - !Positional
-  description: "Training database/reference file (in HDF5 format).\nCreated with MakeStreamingDNADatabase.py"
+  optional: false
   position: 1
   name: reference_file
-  optional: false
+  description: "Training database/reference file (in HDF5 format).\nCreated with MakeStreamingDNADatabase.py"
 - !Positional
-  description: Output csv file with the containment indices.
+  optional: false
   position: 2
   name: out_file
-  optional: false
+  description: Output csv file with the containment indices.
 - !Positional
+  optional: false
+  position: 3
+  name: range
   description: "Range of k-mer sizes in the formate\n<start>-<end>-<increment>. So\
     \ 5-10-2 means [5, 7, 9].\nIf <end> is larger than the k-mer sizeof the training\n\
     data, this will automatically be reduced."
-  position: 3
-  name: range
-  optional: false
 named:
 - !Flag
-  description: 'Number of threads to use (default: 8)'
+  optional: true
   synonyms:
   - -t
   - --threads
+  description: 'Number of threads to use (default: 8)'
   args: !SimpleFlagArg
     name: THREADS
-  optional: true
 - !Flag
-  description: "Only return results with containment index above this\nthreshold at\
-    \ the maximum k-mer size. (default: 0.1)"
+  optional: true
   synonyms:
   - -c
   - --containment_threshold
+  description: "Only return results with containment index above this\nthreshold at\
+    \ the maximum k-mer size. (default: 0.1)"
   args: !SimpleFlagArg
     name: CONTAINMENT_THRESHOLD
-  optional: true
 - !Flag
-  description: "Optional flag to specify that a plot of the k-mer\ncurves should also\
-    \ be saved (same basenameas the\nout_file). (default: False)"
+  optional: true
   synonyms:
   - -p
   - --plot_file
+  description: "Optional flag to specify that a plot of the k-mer\ncurves should also\
+    \ be saved (same basenameas the\nout_file). (default: False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Number of reads per core in each chunk of\nparallelization. Set as\
-    \ high as memory will allow (eg.\n1M on 256GB, 48 core machine) (default: 100000)"
+  optional: true
   synonyms:
   - -r
   - --reads_per_core
+  description: "Number of reads per core in each chunk of\nparallelization. Set as\
+    \ high as memory will allow (eg.\n1M on 256GB, 48 core machine) (default: 100000)"
   args: !SimpleFlagArg
     name: READS_PER_CORE
-  optional: true
 - !Flag
-  description: "Location of pre-filter bloom filter. Use only if you\nabsolutely know\
-    \ what you're doing (hard to error check\nbloom filters). (default: None)"
+  optional: true
   synonyms:
   - -f
   - --filter_file
+  description: "Location of pre-filter bloom filter. Use only if you\nabsolutely know\
+    \ what you're doing (hard to error check\nbloom filters). (default: None)"
   args: !SimpleFlagArg
     name: FILTER_FILE
-  optional: true
 - !Flag
-  description: "Location in range to apply the threshold passed by the\n-c flag. -l\
-    \ 2 -c 5-50-10 means the threshold will be\napplied at k-size 25. Default is largest\
-    \ size.\n(default: -1)"
+  optional: true
   synonyms:
   - -l
   - --location_of_thresh
+  description: "Location in range to apply the threshold passed by the\n-c flag. -l\
+    \ 2 -c 5-50-10 means the threshold will be\napplied at k-size 25. Default is largest\
+    \ size.\n(default: -1)"
   args: !SimpleFlagArg
     name: LOCATION_OF_THRESH
-  optional: true
 - !Flag
-  description: "Operate in sensitive mode. Marginally more true\npositives with significantly\
-    \ more false positives. Use\nwith caution. (default: False)"
+  optional: true
   synonyms:
   - --sensitive
+  description: "Operate in sensitive mode. Marginally more true\npositives with significantly\
+    \ more false positives. Use\nwith caution. (default: False)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Print out progress report/timing information (default:\nFalse)\n"
+  optional: true
   synonyms:
   - -v
   - --verbose
+  description: "Print out progress report/timing information (default:\nFalse)\n"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: StreamingQueryDNADatabase.py [-h] [-t THREADS]\n              \
@@ -142,3 +142,4 @@ help_text: "usage: StreamingQueryDNADatabase.py [-h] [-t THREADS]\n             
   \                        False)\n"
 generated_using:
 - --help
+docker_image:

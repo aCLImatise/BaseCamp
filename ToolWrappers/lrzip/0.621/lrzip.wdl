@@ -9,7 +9,7 @@ task Lrzip {
     Boolean? info
     Boolean? quiet
     Boolean? test
-    Boolean? _verbose_increase
+    Boolean? _verbose_verbosity
     Boolean? delete
     Boolean? force
     Boolean? keep_broken
@@ -40,7 +40,7 @@ task Lrzip {
       ~{if (info) then "--info" else ""} \
       ~{if (quiet) then "--quiet" else ""} \
       ~{if (test) then "--test" else ""} \
-      ~{if (_verbose_increase) then "-v" else ""} \
+      ~{if (_verbose_verbosity) then "-v" else ""} \
       ~{if (delete) then "--delete" else ""} \
       ~{if (force) then "--force" else ""} \
       ~{if (keep_broken) then "--keep-broken" else ""} \
@@ -60,6 +60,9 @@ task Lrzip {
       ~{if (unlimited) then "--unlimited" else ""} \
       ~{if defined(window) then ("--window " +  '"' + window + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     check: "check integrity of file written on decompression"
     decompress: "decompress"
@@ -68,7 +71,7 @@ task Lrzip {
     info: "show compressed file information"
     quiet: "don't show compression progress"
     test: "test compressed file integrity"
-    _verbose_increase: "[v], --verbose        Increase verbosity"
+    _verbose_verbosity: "[v], --verbose        Increase verbosity"
     delete: "delete existing files"
     force: "force overwrite of any existing files"
     keep_broken: "keep broken or damaged output files"

@@ -1,0 +1,141 @@
+!Command
+command:
+- pegasus
+- de_analysis
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: input_data_file
+  description: Single cell data with clustering calculated. DE results would be written
+    back.
+- !Positional
+  optional: false
+  position: 1
+  name: output_spreadsheet
+  description: Output spreadsheet with DE results.
+- !Positional
+  optional: false
+  position: 0
+  name: input_data_file
+  description: DE results would be written back to the 'varm' field with name set
+    by --de-key <key>.
+- !Positional
+  optional: false
+  position: 1
+  name: output_spreadsheet
+  description: 'An excel spreadsheet containing DE results. Each cluster has two tabs
+    in the spreadsheet. One is for up-regulated genes and the other is for down-regulated
+    genes. If DE was performed on conditions within each cluster. Each cluster will
+    have number of conditions tabs and each condition tab contains two spreadsheet:
+    up for up-regulated genes and down for down-regulated genes.'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --labels
+  description: Use <attr> as cluster labels.
+  args: !SimpleFlagArg
+    name: attr
+- !Flag
+  optional: true
+  synonyms:
+  - --condition
+  description: Compute DE between conditions (one vs rest) in each cluster label if
+    specified.
+  args: !SimpleFlagArg
+    name: attr
+- !Flag
+  optional: true
+  synonyms:
+  - --de-key
+  description: 'Store DE results into varm with key = <key>. [default: de_res]'
+  args: !SimpleFlagArg
+    name: key
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: 'Use <threads> threads. [default: 1]'
+  args: !SimpleFlagArg
+    name: threads
+- !Flag
+  optional: true
+  synonyms:
+  - --t
+  description: Calculate Welch's t-test.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --fisher
+  description: Calculate Fisher's exact test.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --temp-folder
+  description: Joblib temporary folder for memmapping numpy arrays.
+  args: !SimpleFlagArg
+    name: temp_folder
+- !Flag
+  optional: true
+  synonyms:
+  - --alpha
+  description: 'Control false discovery rate at <alpha>. [default: 0.05]'
+  args: !SimpleFlagArg
+    name: alpha
+- !Flag
+  optional: true
+  synonyms:
+  - --ndigits
+  description: 'Round non p-values and q-values to <ndigits> after decimal point in
+    the excel. [default: 3]'
+  args: !SimpleFlagArg
+    name: ndigits
+- !Flag
+  optional: true
+  synonyms:
+  - --quiet
+  description: Do not show detailed intermediate outputs.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Print out help information.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Perform DE analysis. Calculate Mann-Whitney U test and AUROC values by\
+  \ default.\n\nUsage:\n  pegasus de_analysis [options] (--labels <attr>) <input_data_file>\
+  \ <output_spreadsheet>\n  pegasus de_analysis -h\n\nArguments:\n  input_data_file\
+  \        Single cell data with clustering calculated. DE results would be written\
+  \ back.\n  output_spreadsheet     Output spreadsheet with DE results.\n\nOptions:\n\
+  \  --labels <attr>                  Use <attr> as cluster labels.\n  --condition\
+  \ <attr>               Compute DE between conditions (one vs rest) in each cluster\
+  \ label if specified.\n  --de-key <key>                   Store DE results into\
+  \ varm with key = <key>. [default: de_res]\n  -p <threads>                     Use\
+  \ <threads> threads. [default: 1]\n  --t                              Calculate\
+  \ Welch's t-test.\n  --fisher                         Calculate Fisher's exact test.\n\
+  \  --temp-folder <temp_folder>      Joblib temporary folder for memmapping numpy\
+  \ arrays.\n  --alpha <alpha>                  Control false discovery rate at <alpha>.\
+  \ [default: 0.05]\n  --ndigits <ndigits>              Round non p-values and q-values\
+  \ to <ndigits> after decimal point in the excel. [default: 3]\n\n  --quiet     \
+  \                     Do not show detailed intermediate outputs.\n  -h, --help \
+  \                      Print out help information.\n\nOutputs:\n  input_data_file\
+  \        DE results would be written back to the 'varm' field with name set by --de-key\
+  \ <key>.\n  output_spreadsheet     An excel spreadsheet containing DE results. Each\
+  \ cluster has two tabs in the spreadsheet. One is for up-regulated genes and the\
+  \ other is for down-regulated genes. If DE was performed on conditions within each\
+  \ cluster. Each cluster will have number of conditions tabs and each condition tab\
+  \ contains two spreadsheet: up for up-regulated genes and down for down-regulated\
+  \ genes.\n\nExamples:\n  pegasus de_analysis -p 26 --labels louvain_labels --t --fisher\
+  \ manton_bm.zarr.zip manton_bm_de.xlsx\n    \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/pegasuspy:1.2.0--py38h0213d0e_1

@@ -12,6 +12,9 @@ task ConvertToFullMatrixpyOutputMatrix {
       ~{input_matrix} \
       ~{output_matrix}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     convert_to_full_matrix_do_tpy: ""
     input_matrix: ""

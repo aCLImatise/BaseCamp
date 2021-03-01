@@ -16,6 +16,9 @@ task Stat {
       ~{if defined(printf) then ("--printf " +  '"' + printf + '"') else ""} \
       ~{if (terse) then "--terse" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dereference: "follow links"
     file_system: "display file system status instead of file status"

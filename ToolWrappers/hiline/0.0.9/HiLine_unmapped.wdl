@@ -2,16 +2,19 @@ version 1.0
 
 task HiLineUnmapped {
   input {
-    Boolean? sort
+    Boolean? no_sort
     String var_output
   }
   command <<<
     HiLine unmapped \
       ~{var_output} \
-      ~{if (sort) then "--sort" else ""}
+      ~{if (no_sort) then "--no-sort" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    sort: "/ --no-sort  Sort and index output. Default=sort"
+    no_sort: "Sort and index output. Default=sort"
     var_output: ""
   }
   output {

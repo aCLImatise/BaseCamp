@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, File, Int, Directory, String
+
+Qualimap_Counts_V0_1_0 = CommandToolBuilder(tool="qualimap_counts", base_command=["qualimap", "counts"], inputs=[ToolInput(tag="in_compare", input_type=Boolean(optional=True), prefix="--compare", doc=InputDocumentation(doc="Perform comparison of conditions. Currently 2 maximum\nis possible.")), ToolInput(tag="in_data", input_type=File(optional=True), prefix="--data", doc=InputDocumentation(doc="File describing the input data. Format of the file is\na 4-column tab-delimited table.\nColumn 1: sample name\nColumn 2: condition of the sample\nColumn 3: path to the counts data for the sample\nColumn 4: index of the column with counts")), ToolInput(tag="in_info", input_type=Int(optional=True), prefix="--info", doc=InputDocumentation(doc="Path to info file containing genes GC-content, length\nand type.")), ToolInput(tag="in_threshold", input_type=Int(optional=True), prefix="--threshold", doc=InputDocumentation(doc="Threshold for the number of counts")), ToolInput(tag="in_outdir", input_type=Directory(optional=True), prefix="-outdir", doc=InputDocumentation(doc="Output folder for HTML report and raw data.")), ToolInput(tag="in_outfile", input_type=File(optional=True), prefix="-outfile", doc=InputDocumentation(doc="Output file for PDF report (default value is\nreport.pdf).")), ToolInput(tag="in_out_format", input_type=String(optional=True), prefix="-outformat", doc=InputDocumentation(doc="Format of the output report (PDF, HTML or both\nPDF:HTML, default is HTML).")), ToolInput(tag="in_r_script_path", input_type=File(optional=True), prefix="--rscriptpath", doc=InputDocumentation(doc="Path to Rscript executable (by default it is assumed\nto be available from system $PATH)")), ToolInput(tag="in_species", input_type=File(optional=True), prefix="--species", doc=InputDocumentation(doc="Use built-in info file for the given species: HUMAN or\nMOUSE.\n"))], outputs=[ToolOutput(tag="out_outdir", output_type=Directory(optional=True), selector=InputSelector(input_to_select="in_outdir", type_hint=File()), doc=OutputDocumentation(doc="Output folder for HTML report and raw data.")), ToolOutput(tag="out_outfile", output_type=File(optional=True), selector=InputSelector(input_to_select="in_outfile", type_hint=File()), doc=OutputDocumentation(doc="Output file for PDF report (default value is\nreport.pdf)."))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Qualimap_Counts_V0_1_0().translate("wdl", allow_empty_container=True)
+

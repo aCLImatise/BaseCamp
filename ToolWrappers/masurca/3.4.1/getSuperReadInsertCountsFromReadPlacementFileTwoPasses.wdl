@@ -18,6 +18,9 @@ task GetSuperReadInsertCountsFromReadPlacementFileTwoPasses {
       ~{if defined(number_reads) then ("--number-reads " +  '"' + number_reads + '"') else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file: "Output file"
     fib: "Use fibonacci encoding (false)"

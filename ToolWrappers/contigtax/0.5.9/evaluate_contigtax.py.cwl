@@ -1,16 +1,16 @@
 class: CommandLineTool
 id: evaluate_contigtax.py.cwl
 inputs:
+- id: in_tax_dir
+  doc: Directory with ete3 sqlite database
+  type: Directory?
+  inputBinding:
+    prefix: --taxdir
 - id: in_dbname
-  doc: ''
-  type: string
+  doc: Name of sqlite database file
+  type: File?
   inputBinding:
     prefix: --dbname
-- id: in_t
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -t
 - id: in_in_file
   doc: "contigtax assignment file with taxids (use --taxidout\nwith contigtax assign)"
   type: string
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - evaluate_contigtax.py

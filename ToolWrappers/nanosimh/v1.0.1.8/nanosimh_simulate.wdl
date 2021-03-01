@@ -38,6 +38,9 @@ task NanosimhSimulate {
       ~{if defined(min_len) then ("--min-len " +  '"' + min_len + '"') else ""} \
       ~{if defined(km_er_bias) then ("--kmer-bias " +  '"' + km_er_bias + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference: "reference genome in fasta file"
     profile: "prefix of training set profiles [training]"

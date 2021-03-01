@@ -3,12 +3,12 @@ id: bedparse_filter_bedfile.cwl
 inputs:
 - id: in_column
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --column
 - id: in_annotation
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --annotation
 - id: in_bed_parse
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bedparse

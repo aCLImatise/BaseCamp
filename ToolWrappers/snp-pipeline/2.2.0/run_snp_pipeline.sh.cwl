@@ -4,7 +4,7 @@ inputs:
 - id: in_force
   doc: "Force processing even when result files already exist\nand are newer than\
     \ inputs (default: False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --force
 - id: in_mirror
@@ -18,7 +18,7 @@ inputs:
     files instead of copying\n-m hard : creates hard links to the fasta and fastq\n\
     files instead of copying\n-m copy : copies the fasta and fastq files\n(default:\
     \ None)"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --mirror
 - id: in_conf
@@ -28,7 +28,7 @@ inputs:
     \ whenever the pipeline\nis run without the -c option.  The configuration\nfile\
     \ used for each run is copied into the log\ndirectory, capturing the parameters\
     \ used during\nthe run. (default: None)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --conf
 - id: in_slurmtorque__queuemgr
@@ -36,7 +36,7 @@ inputs:
     \ parallel job execution in\nan HPC environment. Currently \"grid\", \"slurm\"\
     , and\n\"torque\" are supported. If not specified, the pipeline\nwill execute\
     \ locally. (default: None)"
-  type: string
+  type: string?
   inputBinding:
     prefix: -Q
 - id: in_out_dir
@@ -48,7 +48,7 @@ inputs:
     \ processed samples, and\nspecify a different output directory, the pipeline\n\
     will not rebuild everything unless you either force a\nrebuild (see the -f option)\
     \ or you request mirrored\ninputs (see the -m option). (default: .)"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --out_dir
 - id: in_samples_dir
@@ -60,7 +60,7 @@ inputs:
     \ mirrored inputs, see the\n-m option, additional files will be written to\neach\
     \ of the sample directories during the\nexecution of the SNP Pipeline (default:\
     \ None)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --samples_dir
 - id: in_samples_file
@@ -73,18 +73,18 @@ inputs:
     \ but\nnot both.\nNote: Unless you request mirrored inputs, see the\n-m option,\
     \ additional files will be written to\neach of the sample directories during the\n\
     execution of the SNP Pipeline (default: None)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --samples_file
 - id: in_purge
   doc: "Purge the intermediate output files (the entire\n\"samples\" directory) when\
     \ the pipeline completes\nsuccessfully. (default: False)"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --purge
 - id: in_verbose
   doc: 'Verbose message level (0=no info, 5=lots) (default: 1)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --verbose
 - id: in_cfsan_snp_pipeline
@@ -112,15 +112,16 @@ outputs:
     files instead of copying\n-m hard : creates hard links to the fasta and fastq\n\
     files instead of copying\n-m copy : copies the fasta and fastq files\n(default:\
     \ None)"
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_mirror)
 - id: out_purge
   doc: "Purge the intermediate output files (the entire\n\"samples\" directory) when\
     \ the pipeline completes\nsuccessfully. (default: False)"
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_purge)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - run_snp_pipeline.sh

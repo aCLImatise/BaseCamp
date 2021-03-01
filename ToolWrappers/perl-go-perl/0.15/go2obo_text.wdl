@@ -2,9 +2,9 @@ version 1.0
 
 task Go2oboText {
   input {
-    String? writes_errors_defaults
+    String? writes_parse_errors
     File? determines_parser_use
-    Boolean? writer_formatformat_output
+    Boolean? writer_formatformat_see
     File? use_cache
     String format
     String formats
@@ -22,7 +22,6 @@ task Go2oboText {
     String text_html
     String god_b_pre_store
     String ch_adodb_pre_store
-    String documentation
   }
   command <<<
     go2obo_text \
@@ -42,16 +41,18 @@ task Go2oboText {
       ~{text_html} \
       ~{god_b_pre_store} \
       ~{ch_adodb_pre_store} \
-      ~{documentation} \
-      ~{if defined(writes_errors_defaults) then ("-e " +  '"' + writes_errors_defaults + '"') else ""} \
+      ~{if defined(writes_parse_errors) then ("-e " +  '"' + writes_parse_errors + '"') else ""} \
       ~{if defined(determines_parser_use) then ("-p " +  '"' + determines_parser_use + '"') else ""} \
-      ~{if (writer_formatformat_output) then "-w" else ""} \
+      ~{if (writer_formatformat_see) then "-w" else ""} \
       ~{if (use_cache) then "-use_cache" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    writes_errors_defaults: "writes parse errors in XML - defaults to STDERR (there should be no\\nparse errors in well formed files)"
+    writes_parse_errors: "writes parse errors in XML - defaults to STDERR (there should be no\\nparse errors in well formed files)"
     determines_parser_use: "determines which parser to use; if left unspecified, will make a guess\\nbased on file suffix. See below for formats"
-    writer_formatformat_output: "|writer FORMAT\\nformat for output - see below for list"
+    writer_formatformat_see: "|writer FORMAT\\nformat for output - see below for list"
     use_cache: "If this switch is specified, then caching mode is turned on.\\nWith caching mode, the first time you parse a file, then an additional\\nfile will be exported in a special format that is fast to parse. This\\nfile will have the same filename as the original file, except it will\\nhave the \\\".cache\\\" suffix.\\nThe next time you parse the file, this program will automatically check\\nfor the existence of the \\\".cache\\\" file. If it exists, and is more recent\\nthan the file you specified, this is parsed instead. If it does not\\nexist, it is rebuilt.\\nThis will bring a speed improvement for b<some> of the output formats\\nbelow (such as pathlist). Most output formats work with event-based\\nparsing, so caching the object brings no benefit and will in fact be\\nslower than bypassing the cache"
     format: "ARGUMENTS"
     formats: "writable formats are"
@@ -69,7 +70,6 @@ task Go2oboText {
     text_html: "A html-ified OBO output format"
     god_b_pre_store: "XML that maps directly to the GODB relational schema (can then be\\nloaded using stag-storenode.pl)"
     ch_adodb_pre_store: "XML that maps directly to the Chado relational schema (can then be\\nloaded using stag-storenode.pl)"
-    documentation: "<http://www.godatabase.org/dev>"
   }
   output {
     File out_stdout = stdout()

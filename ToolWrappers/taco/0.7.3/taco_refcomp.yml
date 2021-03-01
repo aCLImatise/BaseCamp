@@ -4,40 +4,74 @@ command:
 positional: []
 named:
 - !Flag
-  description: Run CPAT tool to for coding potential scoring. (CPAT
-  synonyms:
-  - --cpat
-  args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -p
-  args: !SimpleFlagArg
-    name: NUM_CORES
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -o
-  args: !SimpleFlagArg
-    name: OUTPUT_DIR
-  optional: true
-- !Flag
-  description: ''
   synonyms:
   - -v
-  args: !EmptyFlagArg {}
+  - --verbose
+  - -o
+  - --output-dir
+  description: "Directory for reference comparison output (default:\ntaco_compare)"
+  args: !SimpleFlagArg
+    name: OUTPUT_DIR
+- !Flag
   optional: true
+  synonyms:
+  - -p
+  - --num-processes
+  description: "Run tool in parallel with N processes. (note: each\ncore processes\
+    \ 1 chromosome) (default: 1)"
+  args: !SimpleFlagArg
+    name: NUM_CORES
+- !Flag
+  optional: true
+  synonyms:
+  - --cpat
+  description: "Run CPAT tool to for coding potential scoring. (CPAT\nfunction currently\
+    \ only supports Human, Mouse, and\nZebrafish) (WARNING: The CPAT tool can take\
+    \ over an\nhour) (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --cpat-species
+  description: "Select either: human, mouse, zebrafish (default:\nhuman)"
+  args: !SimpleFlagArg
+    name: CPAT_SPEC
+- !Flag
+  optional: true
+  synonyms:
+  - --cpat-genome
+  description: "Provide a genome fasta for the genome used to produce\nassemblies\
+    \ being compared. Required if \"--cpat\" used.\nCPAT uses this to obtain sequence\
+    \ for the provided\ntranscripts (default: None)"
+  args: !SimpleFlagArg
+    name: CPAT_GEN
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --ref-gtf
+  description: 'Reference GTF file to compare against (default: None)'
+  args: !SimpleFlagArg
+    name: REF_GTF_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --test-gtf
+  description: "GTF file used for comparison (default: None)\n"
+  args: !SimpleFlagArg
+    name: TEST_GTF_FILE
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: ''
+  optional: true
   synonyms:
   - -h
+  - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: taco_refcomp [-h] [-v] [-o OUTPUT_DIR] [-p NUM_CORES] [--cpat]\n\
@@ -62,3 +96,4 @@ help_text: "usage: taco_refcomp [-h] [-v] [-o OUTPUT_DIR] [-p NUM_CORES] [--cpat
   \                        GTF file used for comparison (default: None)\n"
 generated_using:
 - --help
+docker_image:

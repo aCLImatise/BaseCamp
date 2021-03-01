@@ -28,6 +28,9 @@ task HmmpgmdShard {
       ~{if defined(cpu) then ("--cpu " +  '"' + cpu + '"') else ""} \
       ~{if defined(num_shards) then ("--num_shards " +  '"' + num_shards + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     master: ": run program as the master server"
     worker: ": run program as a worker with server at <s>"

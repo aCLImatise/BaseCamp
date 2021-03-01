@@ -3,7 +3,7 @@ version 1.0
 task ConvertCoordinatespl {
   input {
     Directory? type
-    Boolean? number_use_default
+    Boolean? number_cpus_use
     Boolean? min_match
     Boolean? directory
     Boolean? peaks
@@ -20,7 +20,7 @@ task ConvertCoordinatespl {
       ~{input_file_slash_directory} \
       ~{output_file_slash_directory} \
       ~{if defined(type) then ("-type " +  '"' + type + '"') else ""} \
-      ~{if (number_use_default) then "-p" else ""} \
+      ~{if (number_cpus_use) then "-p" else ""} \
       ~{if (min_match) then "-minMatch" else ""} \
       ~{if (directory) then "-directory" else ""} \
       ~{if (peaks) then "-peaks" else ""} \
@@ -28,9 +28,12 @@ task ConvertCoordinatespl {
       ~{if (bed) then "-bed" else ""} \
       ~{if (gtf) then "-gtf" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     type: "(input is a tag directory, peak file, tags file, or BED file, or GTF file)"
-    number_use_default: "<#> (Number of CPUs to use, default: 1)"
+    number_cpus_use: "<#> (Number of CPUs to use, default: 1)"
     min_match: "<#> (minimum % of nucleotides that must match, default: 0.1)"
     directory: "(input is a tag directory, default)"
     peaks: "(input is a peak file)"

@@ -1,43 +1,47 @@
 !Command
 command:
 - hivtrace_strip_drams
-positional: []
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: Output
+  description: -d {lewis,wheeler}, --dram {lewis,wheeler}
 named:
 - !Flag
-  description: ''
-  synonyms:
-  - -d
-  args: !ChoiceFlagArg
-    choices: !!set
-      wheeler:
-      lewis:
   optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -o
-  args: !SimpleFlagArg
-    name: OUTPUT
-  optional: true
-- !Flag
-  description: ''
   synonyms:
   - -i
+  - --input
+  description: The input FASTA file
   args: !SimpleFlagArg
     name: INPUT
+- !Flag
   optional: true
+  synonyms:
+  - -d
+  description: ''
+  args: !ChoiceFlagArg
+    choices: !!set
+      lewis:
+      wheeler:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: ''
+  args: !SimpleFlagArg
+    name: OUTPUT
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n-i INPUT, --input INPUT\nThe input\
-    \ FASTA file\n-o OUTPUT, --output OUTPUT\nOutput\n-d {lewis,wheeler}, --dram {lewis,wheeler}\n\
-    Use this list of DRAMs\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: hivtrace_strip_drams [-h] -i INPUT [-o OUTPUT] -d {lewis,wheeler}\n\
@@ -48,3 +52,4 @@ help_text: "usage: hivtrace_strip_drams [-h] -i INPUT [-o OUTPUT] -d {lewis,whee
   \                      Use this list of DRAMs\n"
 generated_using:
 - --help
+docker_image:

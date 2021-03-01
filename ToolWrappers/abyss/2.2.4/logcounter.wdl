@@ -30,6 +30,9 @@ task Logcounter {
       ~{if (illumina_quality) then "--illumina-quality" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threads: "use N parallel threads [1]"
     km_er: "the size of a k-mer"

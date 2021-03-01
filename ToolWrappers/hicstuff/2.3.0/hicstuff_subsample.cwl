@@ -4,19 +4,14 @@ inputs:
 - id: in_prop
   doc: "Proportion of contacts to sample from the input matrix\nif between 0 and 1.\
     \ Raw number of contacts to keep if\nsuperior to 1. [default: 0.1]"
-  type: double
+  type: double?
   inputBinding:
     prefix: --prop
 - id: in_force
   doc: Write even if the output file already exists.
-  type: File
+  type: File?
   inputBinding:
     prefix: --force
-- id: in_subsample
-  doc: '[--prop=FLOAT] [--force] <contact_map> <subsampled_prefix>'
-  type: string
-  inputBinding:
-    position: 0
 - id: in_contact_map
   doc: Sparse contact matrix in graal, bg2 or cool format.
   type: string
@@ -34,9 +29,10 @@ outputs:
   type: stdout
 - id: out_force
   doc: Write even if the output file already exists.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_force)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - hicstuff

@@ -4,23 +4,23 @@ inputs:
 - id: in_no_data
   doc: if using the CLI or pass the no_data=True argument if calling the download()
     API method.
-  type: string
+  type: string?
   inputBinding:
     prefix: --no-data
 - id: in_bundle_uuid
   doc: The uuid of the bundle to download
-  type: string
+  type: string?
   inputBinding:
     prefix: --bundle-uuid
 - id: in_replica
   doc: "the replica to download from. The supported replicas are: aws for Amazon Web\
     \ Services, and\ngcp for Google Cloud Platform. [aws, gcp]"
-  type: string
+  type: string?
   inputBinding:
     prefix: --replica
 - id: in_download_dir
   doc: The directory into which to download
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --download-dir
 - id: in_metadata_filter
@@ -41,24 +41,25 @@ inputs:
     prefix: --data-filter
 - id: in_no_metadata
   doc: Exclude metadata files. Cannot be set when --metadata-filter is also set.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-metadata
 - id: in_num_retries
   doc: "The initial quota of download failures to accept before exiting due to failures.\n\
     The number of retries increase and decrease as file chucks succeed and fail."
-  type: long
+  type: long?
   inputBinding:
     prefix: --num-retries
 - id: in_min_delay_seconds
   doc: "The minimum number of seconds to wait in between retries.\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --min-delay-seconds
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - hca

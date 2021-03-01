@@ -2,7 +2,6 @@ version 1.0
 
 task EnsemblExtractProteinCodingExonAnnotationspy {
   input {
-    File? o
     File? annotation_file
     File? output_file
     String? species
@@ -14,7 +13,6 @@ task EnsemblExtractProteinCodingExonAnnotationspy {
   }
   command <<<
     ensembl_extract_protein_coding_exon_annotations_py \
-      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
       ~{if defined(annotation_file) then ("--annotation-file " +  '"' + annotation_file + '"') else ""} \
       ~{if defined(output_file) then ("--output-file " +  '"' + output_file + '"') else ""} \
       ~{if defined(species) then ("--species " +  '"' + species + '"') else ""} \
@@ -24,8 +22,10 @@ task EnsemblExtractProteinCodingExonAnnotationspy {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    o: "[-s {fly,human,mouse,worm,yeast,zebrafish}]\\n[-c CHROMOSOME_PATTERN]\\n[-f FIELD_NAME]\\n[-l <file>] [-q]\\n[-v]"
     annotation_file: "Path of Ensembl gene annotation file (in GTF format). The file\\nmay be gzip'ed. If set to ``-``, read from ``stdin``."
     output_file: "Path of output file. If set to ``-``, print to ``stdout``,\\nand redirect logging messages to ``stderr``."
     species: "Species for which to extract genes. (This parameter is ignored\\nif ``--chromosome-pattern`` is specified.)"
@@ -37,7 +37,6 @@ task EnsemblExtractProteinCodingExonAnnotationspy {
   }
   output {
     File out_stdout = stdout()
-    File out_o = "${in_o}"
     File out_output_file = "${in_output_file}"
   }
 }

@@ -8,17 +8,17 @@ inputs:
     prefix: --taxa-to-remove
 - id: in_out_format
   doc: 'File format for the output alignment. Default: fasta'
-  type: File
+  type: File?
   inputBinding:
     prefix: --out-format
 - id: in_out_prefix
   doc: "File name prefix for the concatenated alignment.\nDefault: 'reduced_'"
-  type: File
+  type: File?
   inputBinding:
     prefix: --out-prefix
 - id: in_check_align
   doc: 'Check if input sequences are aligned. Default: no'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --check-align
 - id: in_in_files
@@ -29,12 +29,12 @@ inputs:
     prefix: --in-files
 - id: in_in_format
   doc: The format of input alignment
-  type: string
+  type: string?
   inputBinding:
     prefix: --in-format
 - id: in_data_type
   doc: "Type of data\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --data-type
 - id: in_check
@@ -48,9 +48,10 @@ outputs:
   type: stdout
 - id: out_out_format
   doc: 'File format for the output alignment. Default: fasta'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out_format)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - AMAS.py

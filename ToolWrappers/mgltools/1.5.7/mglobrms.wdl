@@ -4,6 +4,9 @@ task Mglobrms {
   command <<<
     mglobrms
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

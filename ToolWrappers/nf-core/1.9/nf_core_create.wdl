@@ -20,6 +20,9 @@ task NfcoreCreate {
       ~{if (force) then "--force" else ""} \
       ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name: "The name of your new pipeline  [required]"
     description: "A short description of your pipeline  [required]"

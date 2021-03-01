@@ -2,7 +2,7 @@ version 1.0
 
 task PairtoolsSample {
   input {
-    File? output_file_path
+    File? output_file_ends
     Int? seed
     Int? nproc_in
     Int? nproc_out
@@ -15,15 +15,18 @@ task PairtoolsSample {
     pairtools sample \
       ~{fraction} \
       ~{pairs_path} \
-      ~{if defined(output_file_path) then ("--output " +  '"' + output_file_path + '"') else ""} \
+      ~{if defined(output_file_ends) then ("--output " +  '"' + output_file_ends + '"') else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(nproc_in) then ("--nproc-in " +  '"' + nproc_in + '"') else ""} \
       ~{if defined(nproc_out) then ("--nproc-out " +  '"' + nproc_out + '"') else ""} \
       ~{if defined(cmd_in) then ("--cmd-in " +  '"' + cmd_in + '"') else ""} \
       ~{if defined(cmd_out) then ("--cmd-out " +  '"' + cmd_out + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    output_file_path: "output file. If the path ends with .gz or .lz4, the\\noutput is pbgzip-/lz4c-compressed. By default, the\\noutput is printed into stdout."
+    output_file_ends: "output file. If the path ends with .gz or .lz4, the\\noutput is pbgzip-/lz4c-compressed. By default, the\\noutput is printed into stdout."
     seed: "the seed of the random number generator."
     nproc_in: "Number of processes used by the auto-guessed input\\ndecompressing command.  [default: 3]"
     nproc_out: "Number of processes used by the auto-guessed output\\ncompressing command.  [default: 8]"
@@ -34,6 +37,6 @@ task PairtoolsSample {
   }
   output {
     File out_stdout = stdout()
-    File out_output_file_path = "${in_output_file_path}"
+    File out_output_file_ends = "${in_output_file_ends}"
   }
 }

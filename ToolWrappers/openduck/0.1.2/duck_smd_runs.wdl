@@ -20,6 +20,9 @@ task DuckSmdRuns {
       ~{if defined(in_it_velocity) then ("--init-velocity " +  '"' + in_it_velocity + '"') else ""} \
       ~{if defined(gpu_id) then ("--gpu-id " +  '"' + gpu_id + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     equilibrated_system_input: "Equilibrated system as input"
     pickle: "Pickle file"

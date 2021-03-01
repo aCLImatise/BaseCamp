@@ -8,6 +8,9 @@ task MaskPrimerspySEQORIENT {
     MaskPrimers_py SEQORIENT \
       ~{mask_primers_do_tpy}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mask_primers_do_tpy: ""
   }

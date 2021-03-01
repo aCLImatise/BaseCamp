@@ -22,6 +22,9 @@ task VirmetFetch {
       ~{if (fungal) then "--fungal" else ""} \
       ~{if (bovine) then "--bovine" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     viral: "viral [nucleic acids/proteins]"
     human: "human"

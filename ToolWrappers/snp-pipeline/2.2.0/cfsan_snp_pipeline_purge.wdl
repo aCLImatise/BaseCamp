@@ -10,6 +10,9 @@ task CfsanSnpPipelinePurge {
       ~{work_dir} \
       ~{if defined(verbose) then ("--verbose " +  '"' + verbose + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Verbose message level (0=no info, 5=lots) (default: 1)"
     work_dir: "Path to the working directory containing the \\\"samples\\\"\\ndirectory to be recursively deleted"

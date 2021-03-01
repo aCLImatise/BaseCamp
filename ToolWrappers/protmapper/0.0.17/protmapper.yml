@@ -3,63 +3,63 @@ command:
 - protmapper
 positional:
 - !Positional
+  optional: false
+  position: 0
+  name: input
   description: "Path to an input file. The input file is a text file\nin which each\
     \ row consists of four comma separated\nvalues, with the first element being a\
     \ protein ID, the\nsecond, the namespace in which that ID is valid\n(uniprot or\
     \ hgnc),third, an amino acid represented as\na single capital letter, and fourth,\
     \ a site position\non the protein."
-  position: 0
-  name: input
-  optional: false
 - !Positional
+  optional: false
+  position: 1
+  name: output
   description: "Path to the output file to be generated. Each line of\nthe output\
     \ file corresponds to a line in the input\nfile. Each linerepresents a mapped\
     \ site produced by\nProtmapper."
-  position: 1
-  name: output
-  optional: false
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - --peptide
   description: "If given, the third element of each row of the input\nfile is a peptide\
     \ (amino acid sequence) rather than a\nsingle amino acid residue. In this case,\
     \ peptide-\noriented mappings are applied. In this mode the\nfollowing boolean\
     \ arguments are ignored."
-  synonyms:
-  - --peptide
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --no_methionine_offset
   description: "If given, will not check for off-by-one errors in site\nposition (possibly)\
     \ attributable to site numbering\nfrom mature proteins after cleavage of the initial\n\
     methionine."
-  synonyms:
-  - --no_methionine_offset
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "If given, will not check sequence positions for known\nmodification\
-    \ sites in mouse or rat sequences (based on\nPhosphoSitePlus data)."
+  optional: true
   synonyms:
   - --no_orthology_mapping
+  description: "If given, will not check sequence positions for known\nmodification\
+    \ sites in mouse or rat sequences (based on\nPhosphoSitePlus data)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "If given, will not check sequence positions for known\nmodifications\
-    \ in other human isoforms of the protein\n(based on PhosphoSitePlus data).\n"
+  optional: true
   synonyms:
   - --no_isoform_mapping
+  description: "If given, will not check sequence positions for known\nmodifications\
+    \ in other human isoforms of the protein\n(based on PhosphoSitePlus data).\n"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: protmapper [-h] [--peptide] [--no_methionine_offset]\n        \
@@ -92,3 +92,4 @@ help_text: "usage: protmapper [-h] [--peptide] [--no_methionine_offset]\n       
   \ isoforms of the protein\n                        (based on PhosphoSitePlus data).\n"
 generated_using:
 - --help
+docker_image:

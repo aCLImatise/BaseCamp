@@ -14,6 +14,9 @@ task Downpore {
       ~{consensus} \
       ~{full_de_novo}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     overlap: "map"
     trim: "subseq"

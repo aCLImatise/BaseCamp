@@ -24,6 +24,9 @@ task PhylorankMarkTree {
       ~{if (no_relative_divergence) then "--no_relative_divergence" else ""} \
       ~{if (no_prediction) then "--no_prediction" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     thresholds: "relative divergence thresholds for taxonomic ranks\\n(default: {\\\"d\\\": 0.33, \\\"p\\\": 0.56, \\\"c\\\": 0.65, \\\"o\\\": 0.78,\\n\\\"f\\\": 0.92, \\\"g\\\": 0.99})"
     min_support: "only mark nodes above the specified support value\\n(default=0) (default: 0)"

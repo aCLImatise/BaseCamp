@@ -1,68 +1,63 @@
 class: CommandLineTool
 id: pathwaymatcher.py_match_peptides.cwl
 inputs:
-- id: in_iinputpath
-  doc: "-i=<input_path>\n[-o=<output_prefix>]"
-  type: File
-  inputBinding:
-    prefix: -f
 - id: in_mapping
   doc: "Path to directory with the static mapping files. By\ndefault uses the mapping\
     \ files integrated in the jar\nfile."
-  type: File
+  type: File?
   inputBinding:
     prefix: --mapping
 - id: in_fast_a
   doc: "Path and name of the fasta file containing the Proteins\nwhere to find the\
     \ peptides."
-  type: File
+  type: File?
   inputBinding:
     prefix: --fasta
 - id: in_graph
   doc: Create default connection graph according to input type.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --graph
 - id: in_graph_gene
   doc: Create gene connection graph
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --graphGene
 - id: in_graph_proteo_form
   doc: proteoform connection graph
-  type: string
+  type: string?
   inputBinding:
     prefix: --graphProteoform
 - id: in_graph_uniprot
   doc: Create protein connection graph
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --graphUniprot
 - id: in_input
   doc: Input file with path
-  type: File
+  type: File?
   inputBinding:
     prefix: --input
 - id: in_output
   doc: "Path and prefix for the output files: search.tsv (list\nof reactions and pathways\
     \ containing the input),\nanalysis.tsv (over-representation analysis) and\nnetworks\
     \ files."
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_top_level_pathways
   doc: Show Top Level Pathways in the search result.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --topLevelPathways
 - id: in_gt
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -gT
 - id: in_jar
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -jar
 - id: in_java
@@ -79,6 +74,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pathwaymatcher.py

@@ -42,6 +42,9 @@ task Amberpy {
       ~{if defined(ncbi_names_file) then ("--ncbi_names_file " +  '"' + ncbi_names_file + '"') else ""} \
       ~{if defined(ncbi_merged_file) then ("--ncbi_merged_file " +  '"' + ncbi_merged_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gold_standard_file: "Gold standard - ground truth - file"
     labels: "Comma-separated binning names"

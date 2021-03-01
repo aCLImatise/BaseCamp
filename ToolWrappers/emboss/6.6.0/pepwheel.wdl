@@ -14,6 +14,9 @@ task Pepwheel {
       ~{if (turns) then "-turns" else ""} \
       ~{if (amphipathic) then "-amphipathic" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     graph: "graph      [$EMBOSS_GRAPHICS value, or png] Graph type\\n(ps, hpgl, hp7470, hp7580, meta, cps, tek,\\ntekt, none, data, png, gif, svg)"
     steps: "integer    [18] The number of residues plotted per turn\\nis this value divided by the 'turns' value.\\n(Integer from 2 to 100)"

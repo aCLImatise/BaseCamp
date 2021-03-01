@@ -12,6 +12,9 @@ task GetScoresInIntervalspy {
       ~{interval_file} \
       ~{out_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     score_file: ""
     interval_file: ""

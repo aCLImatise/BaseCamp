@@ -4,47 +4,50 @@ command:
 positional: []
 named:
 - !Flag
-  description: "The file name of the log file. If '-' is\nspecified, log is written\
-    \ to stdout.\nPossible Values: /path/to/file, -\nTags: #basic"
+  optional: true
   synonyms:
   - -l
   - --log
+  description: "The file name of the log file. If '-' is\nspecified, log is written\
+    \ to stdout.\nPossible Values: /path/to/file, -\nTags: #basic"
   args: !SimpleFlagArg
     name: LOG
-  optional: true
 - !Flag
-  description: "The directory to store the downloaded file.\nPossible Values: /path/to/directory\n\
-    Default: /\nTags: #basic, #file"
+  optional: true
   synonyms:
   - -d
   - --dir
+  description: "The directory to store the downloaded file.\nPossible Values: /path/to/directory\n\
+    Default: /\nTags: #basic, #file"
   args: !SimpleFlagArg
     name: DIR
-  optional: true
 - !Flag
-  description: "The file name of the downloaded file. It is\nalways relative to the\
-    \ directory given in -d\noption. When the -Z option is used, this option\nwill\
-    \ be ignored.\nPossible Values: /path/to/file\nTags: #basic, #http, #ftp, #file"
+  optional: true
   synonyms:
   - -o
   - --out
+  description: "The file name of the downloaded file. It is\nalways relative to the\
+    \ directory given in -d\noption. When the -Z option is used, this option\nwill\
+    \ be ignored.\nPossible Values: /path/to/file\nTags: #basic, #http, #ftp, #file"
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --split
   description: "Download a file using N connections. If more\nthan N URIs are given,\
     \ first N URIs are used and\nremaining URLs are used for backup. If less than\n\
     N URIs are given, those URLs are used more than\nonce so that N connections total\
     \ are made\nsimultaneously. The number of connections to the\nsame host is restricted\
     \ by the\n--max-connection-per-server option. See also the\n--min-split-size option.\n\
     Possible Values: 1-*\nDefault: 5\nTags: #basic, #http, #ftp"
-  synonyms:
-  - -s
-  - --split
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --file-allocation
   description: "Specify file allocation method.\n'none' doesn't pre-allocate file\
     \ space. 'prealloc'\npre-allocates file space before download begins.\nThis may\
     \ take some time depending on the size of\nthe file.\nIf you are using newer file\
@@ -56,12 +59,13 @@ named:
     \ have posix_fallocate() function.\n'trunc' uses ftruncate() system call or\n\
     platform-specific counterpart to truncate a file\nto a specified length.\nPossible\
     \ Values: none, prealloc, trunc, falloc\nDefault: prealloc\nTags: #basic, #file"
-  synonyms:
-  - --file-allocation
   args: !SimpleFlagArg
     name: METHOD
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --check-integrity
   description: "[=true|false] Check file integrity by validating piece\nhashes or\
     \ a hash of entire file. This option has\neffect only in BitTorrent, Metalink\
     \ downloads\nwith checksums or HTTP(S)/FTP downloads with\n--checksum option.\
@@ -72,23 +76,23 @@ named:
     \ hashes\nand a hash of entire file are provided, only\npiece hashes are used.\n\
     Possible Values: true, false\nDefault: false\nTags: #basic, #metalink, #bittorrent,\
     \ #file, #checksum"
-  synonyms:
-  - -V
-  - --check-integrity
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --continue
   description: "[=true|false]  Continue downloading a partially downloaded\nfile.\
     \ Use this option to resume a download\nstarted by a web browser or another program\n\
     which downloads files sequentially from the\nbeginning. Currently this option\
     \ is only\napplicable to http(s)/ftp downloads.\nPossible Values: true, false\n\
     Default: false\nTags: #basic, #http, #ftp"
-  synonyms:
-  - -c
-  - --continue
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input-file
   description: "Downloads URIs found in FILE. You can specify\nmultiple URIs for a\
     \ single entity: separate\nURIs on a single line using the TAB character.\nReads\
     \ input from stdin when '-' is specified.\nAdditionally, options can be specified\
@@ -96,41 +100,41 @@ named:
     \ spaces and have one option per\nsingle line. See INPUT FILE section of man page\n\
     for details. See also --deferred-input option.\nPossible Values: /path/to/file,\
     \ -\nTags: #basic"
-  synonyms:
-  - -i
-  - --input-file
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: "Set maximum number of parallel downloads for\nevery static (HTTP/FTP)\
-    \ URL, torrent and metalink.\nSee also --split and --optimize-concurrent-downloads\
-    \ options.\nPossible Values: 1-*\nDefault: 5\nTags: #basic"
+  optional: true
   synonyms:
   - -j
   - --max-concurrent-downloads
+  description: "Set maximum number of parallel downloads for\nevery static (HTTP/FTP)\
+    \ URL, torrent and metalink.\nSee also --split and --optimize-concurrent-downloads\
+    \ options.\nPossible Values: 1-*\nDefault: 5\nTags: #basic"
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
-  description: "[=true|false] Fetch URIs in the command-line sequentially\nand download\
-    \ each URI in a separate session, like\nthe usual command-line download utilities.\n\
-    Possible Values: true, false\nDefault: false\nTags: #basic"
+  optional: true
   synonyms:
   - -Z
   - --force-sequential
+  description: "[=true|false] Fetch URIs in the command-line sequentially\nand download\
+    \ each URI in a separate session, like\nthe usual command-line download utilities.\n\
+    Possible Values: true, false\nDefault: false\nTags: #basic"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "The maximum number of connections to one\nserver for each download.\n\
-    Possible Values: 1-16\nDefault: 1\nTags: #basic, #http, #ftp"
+  optional: true
   synonyms:
   - -x
   - --max-connection-per-server
+  description: "The maximum number of connections to one\nserver for each download.\n\
+    Possible Values: 1-16\nDefault: 1\nTags: #basic, #http, #ftp"
   args: !SimpleFlagArg
     name: NUM
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --min-split-size
   description: "aria2 does not split less than 2*SIZE byte range.\nFor example, let's\
     \ consider downloading 20MiB\nfile. If SIZE is 10M, aria2 can split file into\
     \ 2\nrange [0-10MiB) and [10MiB-20MiB) and download it\nusing 2 sources(if --split\
@@ -138,147 +142,147 @@ named:
     \ file and download it using 1 source.\nYou can append K or M(1K = 1024, 1M =\
     \ 1024K).\nPossible Values: 1048576-1073741824\nDefault: 20M\nTags: #basic, #http,\
     \ #ftp"
-  synonyms:
-  - -k
-  - --min-split-size
   args: !SimpleFlagArg
     name: SIZE
-  optional: true
 - !Flag
-  description: "Set FTP user. This affects all URLs.\nTags: #basic, #ftp"
+  optional: true
   synonyms:
   - --ftp-user
+  description: "Set FTP user. This affects all URLs.\nTags: #basic, #ftp"
   args: !SimpleFlagArg
     name: USER
-  optional: true
 - !Flag
-  description: "Set FTP password. This affects all URLs.\nTags: #basic, #ftp"
+  optional: true
   synonyms:
   - --ftp-passwd
+  description: "Set FTP password. This affects all URLs.\nTags: #basic, #ftp"
   args: !SimpleFlagArg
     name: PASSWD
-  optional: true
 - !Flag
-  description: "Set HTTP user. This affects all URLs.\nTags: #basic, #http"
+  optional: true
   synonyms:
   - --http-user
+  description: "Set HTTP user. This affects all URLs.\nTags: #basic, #http"
   args: !SimpleFlagArg
     name: USER
-  optional: true
 - !Flag
-  description: "Set HTTP password. This affects all URLs.\nTags: #basic, #http"
+  optional: true
   synonyms:
   - --http-passwd
+  description: "Set HTTP password. This affects all URLs.\nTags: #basic, #http"
   args: !SimpleFlagArg
     name: PASSWD
-  optional: true
 - !Flag
-  description: "Load Cookies from FILE using the Firefox3 format\nand Mozilla/Firefox(1.x/2.x)/Netscape\
-    \ format.\nPossible Values: /path/to/file\nTags: #basic, #http, #cookie"
+  optional: true
   synonyms:
   - --load-cookies
+  description: "Load Cookies from FILE using the Firefox3 format\nand Mozilla/Firefox(1.x/2.x)/Netscape\
+    \ format.\nPossible Values: /path/to/file\nTags: #basic, #http, #cookie"
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --show-files
   description: "[=true|false] Print file listing of .torrent, .meta4 and\n.metalink\
     \ file and exit. More detailed\ninformation will be listed in case of torrent\n\
     file.\nPossible Values: true, false\nDefault: false\nTags: #basic, #metalink,\
     \ #bittorrent"
-  synonyms:
-  - -S
-  - --show-files
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --max-overall-upload-limit
   description: "Set max overall upload speed in bytes/sec.\n0 means unrestricted.\n\
     You can append K or M(1K = 1024, 1M = 1024K).\nTo limit the upload speed per torrent,\
     \ use\n--max-upload-limit option.\nPossible Values: 0-*\nDefault: 0\nTags: #basic,\
     \ #bittorrent"
-  synonyms:
-  - --max-overall-upload-limit
   args: !SimpleFlagArg
     name: SPEED
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --max-upload-limit
   description: "Set max upload speed per each torrent in\nbytes/sec. 0 means unrestricted.\n\
     You can append K or M(1K = 1024, 1M = 1024K).\nTo limit the overall upload speed,\
     \ use\n--max-overall-upload-limit option.\nPossible Values: 0-*\nDefault: 0\n\
     Tags: #basic, #bittorrent"
-  synonyms:
-  - -u
-  - --max-upload-limit
   args: !SimpleFlagArg
     name: SPEED
-  optional: true
 - !Flag
-  description: "The path to the .torrent file.\nPossible Values: /path/to/file\nTags:\
-    \ #basic, #bittorrent"
+  optional: true
   synonyms:
   - -T
   - --torrent-file
+  description: "The path to the .torrent file.\nPossible Values: /path/to/file\nTags:\
+    \ #basic, #bittorrent"
   args: !SimpleFlagArg
     name: TORRENT_FILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --listen-port
   description: "Set TCP port number for BitTorrent downloads.\nMultiple ports can\
     \ be specified by using ',',\nfor example: \"6881,6885\". You can also use '-'\n\
     to specify a range: \"6881-6999\". ',' and '-' can\nbe used together.\nPossible\
     \ Values: 1024-65535\nDefault: 6881-6999\nTags: #basic, #bittorrent"
-  synonyms:
-  - --listen-port
   args: !SimpleFlagArg
     name: PORT...
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --enable-dht
   description: "[=true|false]    Enable IPv4 DHT functionality. It also enables\n\
     UDP tracker support. If a private flag is set\nin a torrent, aria2 doesn't use\
     \ DHT for that\ndownload even if ``true`` is given.\nPossible Values: true, false\n\
     Default: true\nTags: #basic, #bittorrent"
-  synonyms:
-  - --enable-dht
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --dht-listen-port
   description: "Set UDP listening port used by DHT(IPv4, IPv6)\nand UDP tracker. Multiple\
     \ ports can be specified\nby using ',', for example: \"6881,6885\". You can\n\
     also use '-' to specify a range: \"6881-6999\".\n',' and '-' can be used together.\n\
     Possible Values: 1024-65535\nDefault: 6881-6999\nTags: #basic, #bittorrent"
-  synonyms:
-  - --dht-listen-port
   args: !SimpleFlagArg
     name: PORT...
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --enable-dht6
   description: "[=true|false]   Enable IPv6 DHT functionality.\nUse --dht-listen-port\
     \ option to specify port\nnumber to listen on. See also --dht-listen-addr6\noption.\n\
     Possible Values: true, false\nDefault: false\nTags: #basic, #bittorrent"
-  synonyms:
-  - --enable-dht6
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Specify address to bind socket for IPv6 DHT.\nIt should be a global\
-    \ unicast IPv6 address of the\nhost.\nTags: #basic, #bittorrent"
+  optional: true
   synonyms:
   - --dht-listen-addr6
+  description: "Specify address to bind socket for IPv6 DHT.\nIt should be a global\
+    \ unicast IPv6 address of the\nhost.\nTags: #basic, #bittorrent"
   args: !SimpleFlagArg
     name: ADDR
-  optional: true
 - !Flag
-  description: "The file path to the .meta4 and .metalink\nfile. Reads input from\
-    \ stdin when '-' is\nspecified.\nPossible Values: /path/to/file, -\nTags: #basic,\
-    \ #metalink"
+  optional: true
   synonyms:
   - -M
   - --metalink-file
+  description: "The file path to the .meta4 and .metalink\nfile. Reads input from\
+    \ stdin when '-' is\nspecified.\nPossible Values: /path/to/file, -\nTags: #basic,\
+    \ #metalink"
   args: !SimpleFlagArg
     name: METALINK_FILE
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
   description: "[=TAG|KEYWORD]     Print usage and exit.\nThe help messages are classified\
     \ with tags. A tag\nstarts with \"#\". For example, type \"--help=#http\"\nto\
     \ get the usage for the options tagged with\n\"#http\". If non-tag word is given,\
@@ -286,19 +290,15 @@ help_flag: !Flag
     \ #basic, #advanced, #http, #https, #ftp, #metalink, #bittorrent, #cookie, #hook,\
     \ #file, #rpc, #checksum, #experimental, #deprecated, #help, #all\nDefault: #basic\n\
     Tags: #basic, #help"
-  synonyms:
-  - -h
-  - --help
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: "Print the version number and exit.\nTags: #basic"
+  optional: true
   synonyms:
   - -v
   - --version
+  description: "Print the version number and exit.\nTags: #basic"
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "Usage: aria2c [OPTIONS] [URI | MAGNET | TORRENT_FILE | METALINK_FILE]...\n\
   Printing options tagged with '#basic'.\nSee 'aria2c -h#help' to know all available\
   \ tags.\nOptions:\n -v, --version                Print the version number and exit.\n\
@@ -488,3 +488,4 @@ help_text: "Usage: aria2c [OPTIONS] [URI | MAGNET | TORRENT_FILE | METALINK_FILE
   \nRefer to man page for more information.\n"
 generated_using:
 - --help
+docker_image:

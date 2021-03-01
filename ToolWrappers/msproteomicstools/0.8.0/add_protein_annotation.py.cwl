@@ -3,17 +3,17 @@ id: add_protein_annotation.py.cwl
 inputs:
 - id: in_fast_a
   doc: A fasta file
-  type: File
+  type: File?
   inputBinding:
     prefix: --fasta
 - id: in_in
   doc: A mProphet output file
-  type: File
+  type: File?
   inputBinding:
     prefix: --in
 - id: in_out
   doc: A modified mProphet output file
-  type: File
+  type: File?
   inputBinding:
     prefix: --out
 - id: in_var_3
@@ -112,14 +112,15 @@ outputs:
   type: stdout
 - id: out_in
   doc: A mProphet output file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_in)
 - id: out_out
   doc: A modified mProphet output file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - add_protein_annotation.py

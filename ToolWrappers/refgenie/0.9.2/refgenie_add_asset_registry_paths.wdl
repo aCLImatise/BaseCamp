@@ -18,6 +18,9 @@ task RefgenieAddAssetregistrypaths {
       ~{if defined(g) then ("-g " +  '"' + g + '"') else ""} \
       ~{if defined(c) then ("-c " +  '"' + c + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     p: ""
     f: ""

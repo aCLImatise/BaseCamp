@@ -3,260 +3,263 @@ command:
 - fastq-dump.2.10.8
 positional:
 - !Positional
-  description: -I|--readids                     Append read id after spot id as
+  optional: false
   position: 0
   name: name
-  optional: false
+  description: -I|--readids                     Append read id after spot id as
 - !Positional
-  description: -h|--help                        print this message
+  optional: false
   position: 0
   name: file.
-  optional: false
+  description: -h|--help                        print this message
 named:
 - !Flag
-  description: "Replaces accession derived from <path> in\nfilename(s) and deflines\
-    \ (only for\nsingle table dump)"
+  optional: true
   synonyms:
   - -A
   - --accession
+  description: "Replaces accession derived from <path> in\nfilename(s) and deflines\
+    \ (only for\nsingle table dump)"
   args: !SimpleFlagArg
     name: accession
-  optional: true
 - !Flag
-  description: "Table name within cSRA object, default is\n\"SEQUENCE\""
+  optional: true
   synonyms:
   - --table
+  description: "Table name within cSRA object, default is\n\"SEQUENCE\""
   args: !SimpleFlagArg
     name: table-name
-  optional: true
 - !Flag
-  description: Split spots into individual reads
+  optional: true
   synonyms:
   - --split-spot
+  description: Split spots into individual reads
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Minimum spot id
+  optional: true
   synonyms:
   - -N
   - --minSpotId
+  description: Minimum spot id
   args: !SimpleFlagArg
     name: rowid
-  optional: true
 - !Flag
-  description: Maximum spot id
+  optional: true
   synonyms:
   - -X
   - --maxSpotId
+  description: Maximum spot id
   args: !SimpleFlagArg
     name: rowid
-  optional: true
 - !Flag
-  description: '<[list]>[,...]  Filter by SPOT_GROUP (member): name[,...]'
+  optional: true
   synonyms:
   - --spot-groups
+  description: '<[list]>[,...]  Filter by SPOT_GROUP (member): name[,...]'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Remove adapter sequences from reads
+  optional: true
   synonyms:
   - -W
   - --clip
+  description: Remove adapter sequences from reads
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Filter by sequence length >= <len>
+  optional: true
   synonyms:
   - -M
   - --minReadLen
+  description: Filter by sequence length >= <len>
   args: !SimpleFlagArg
     name: len
-  optional: true
 - !Flag
-  description: "Split into files by READ_FILTER value\n[split], optionally filter\
-    \ by value:\n[pass|reject|criteria|redacted]"
+  optional: true
   synonyms:
   - -R
   - --read-filter
+  description: "Split into files by READ_FILTER value\n[split], optionally filter\
+    \ by value:\n[pass|reject|criteria|redacted]"
   args: !SimpleFlagArg
     name: filter
-  optional: true
 - !Flag
-  description: "Filter used in early 1000 Genomes data: no\nsequences starting or\
-    \ ending with >= 10N"
+  optional: true
   synonyms:
   - -E
   - --qual-filter
+  description: "Filter used in early 1000 Genomes data: no\nsequences starting or\
+    \ ending with >= 10N"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Filter used in current 1000 Genomes data
+  optional: true
   synonyms:
   - --qual-filter-1
+  description: Filter used in current 1000 Genomes data
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Dump only aligned sequences
+  optional: true
   synonyms:
   - --aligned
+  description: Dump only aligned sequences
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Dump only unaligned sequences
+  optional: true
   synonyms:
   - --unaligned
+  description: Dump only unaligned sequences
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --aligned-region
   description: "<name[:from-to]>\nFilter by position on genome. Name can\neiter by\
     \ accession.version (ex:\nNC_000001.10) or file specific name (ex:\n\"chr1\" or\
     \ \"1\". \"from\" and \"to\" are\n1-based coordinates"
-  synonyms:
-  - --aligned-region
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --matepair_distance
   description: "Filter by distance between matepairs. Use\n\"unknown\" to find matepairs\
     \ split\nbetween the references. Use from-to to\nlimit matepair distance on the\
     \ same\nreference"
-  synonyms:
-  - --matepair_distance
   args: !SimpleFlagArg
     name: from-to|unknown
-  optional: true
 - !Flag
-  description: Dump only biological reads
+  optional: true
   synonyms:
   - --skip-technical
+  description: Dump only biological reads
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Output directory, default is working\ndirectory '.'"
+  optional: true
   synonyms:
   - -O
   - --outdir
+  description: "Output directory, default is working\ndirectory '.'"
   args: !SimpleFlagArg
     name: path
-  optional: true
 - !Flag
-  description: "Output to stdout, all split data become\njoined into single stream"
+  optional: true
   synonyms:
   - -Z
   - --stdout
+  description: "Output to stdout, all split data become\njoined into single stream"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Compress output using gzip: deprecated,\nnot recommended"
+  optional: true
   synonyms:
   - --gzip
+  description: "Compress output using gzip: deprecated,\nnot recommended"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Compress output using bzip2: deprecated,\nnot recommended"
+  optional: true
   synonyms:
   - --bzip2
+  description: "Compress output using bzip2: deprecated,\nnot recommended"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --split-files
   description: "Write reads into separate files. Read\nnumber will be suffixed to\
     \ the file\nname. NOTE! The `--split-3` option is\nrecommended. In cases where\
     \ not all\nspots have the same number of reads,\nthis option will produce files\
     \ that WILL\nCAUSE ERRORS in most programs which\nprocess split pair fastq files."
-  synonyms:
-  - --split-files
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --split-e
   description: "3-way splitting for mate-pairs. For each\nspot, if there are two biological\
     \ reads\nsatisfying filter conditions, the first\nis placed in the `*_1.fastq`\
     \ file, and\nthe second is placed in the `*_2.fastq`\nfile. If there is only one\
     \ biological\nread satisfying the filter conditions,\nit is placed in the `*.fastq`\
     \ file.All\nother reads in the spot are ignored."
-  synonyms:
-  - --split-e
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Split into files by SPOT_GROUP (member\nname)"
+  optional: true
   synonyms:
   - -G
   - --spot-group
+  description: "Split into files by SPOT_GROUP (member\nname)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Split into subdirectories instead of files
+  optional: true
   synonyms:
   - -T
   - --group-in-dirs
+  description: Split into subdirectories instead of files
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Do not delete empty files
+  optional: true
   synonyms:
   - -K
   - --keep-empty-files
+  description: Do not delete empty files
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Formats sequence using color space\n(default for SOLiD), \"cskey\"\
-    \ may be\nspecified for translation or else\nspecify \"dflt\" to use the default\
-    \ value"
+  optional: true
   synonyms:
   - -C
   - --dumpcs
+  description: "Formats sequence using color space\n(default for SOLiD), \"cskey\"\
+    \ may be\nspecified for translation or else\nspecify \"dflt\" to use the default\
+    \ value"
   args: !SimpleFlagArg
     name: cskey
-  optional: true
 - !Flag
-  description: "Formats sequence using base space (default\nfor other than SOLiD)."
+  optional: true
   synonyms:
   - -B
   - --dumpbase
+  description: "Formats sequence using base space (default\nfor other than SOLiD)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "<integer             Offset to use for quality conversion,\ndefault\
-    \ is 33"
+  optional: true
   synonyms:
   - -Q
   - --offset
+  description: "<integer             Offset to use for quality conversion,\ndefault\
+    \ is 33"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "FASTA only, no qualities, with can be\n\"default\" or \"0\" for no\
-    \ wrapping"
+  optional: true
   synonyms:
   - --fasta
+  description: "FASTA only, no qualities, with can be\n\"default\" or \"0\" for no\
+    \ wrapping"
   args: !SimpleFlagArg
     name: line-width
-  optional: true
 - !Flag
-  description: suppress quality-value for cskey
+  optional: true
   synonyms:
   - --suppress-qual-for-cskey
+  description: suppress quality-value for cskey
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Defline contains only original sequence
+  optional: true
   synonyms:
   - -F
   - --origfmt
+  description: Defline contains only original sequence
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Helicos style defline
+  optional: true
   synonyms:
   - --helicos
+  description: Helicos style defline
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Defline format specification for sequence.
+  optional: true
   synonyms:
   - --defline-seq
+  description: Defline format specification for sequence.
   args: !SimpleFlagArg
     name: fmt
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --defline-qual
   description: "Defline format specification for quality.\n<fmt> is string of characters\
     \ and/or\nvariables. The variables can be one of:\n$ac - accession, $si spot id,\
     \ $sn spot\nname, $sg spot group (barcode), $sl spot\nlength in bases, $ri read\
@@ -264,73 +267,70 @@ named:
     \ optional\noutput: if all vars in [] yield empty\nvalues whole group is not printed.\
     \ Empty\nvalue is empty string or for numeric\nvariables. Ex: @$sn[_$rn]/$ri '_$rn'\
     \ is\nomitted if name is empty"
-  synonyms:
-  - --defline-qual
   args: !SimpleFlagArg
     name: fmt
-  optional: true
 - !Flag
-  description: <path> to ngc file
+  optional: true
   synonyms:
   - --ngc
+  description: <path> to ngc file
   args: !SimpleFlagArg
     name: path
-  optional: true
 - !Flag
-  description: <path> to permission file
+  optional: true
   synonyms:
   - --perm
+  description: <path> to permission file
   args: !SimpleFlagArg
     name: path
-  optional: true
 - !Flag
-  description: location in cloud
+  optional: true
   synonyms:
   - --location
+  description: location in cloud
   args: !SimpleFlagArg
     name: location
-  optional: true
 - !Flag
-  description: <path> to cart file
+  optional: true
   synonyms:
   - --cart
+  description: <path> to cart file
   args: !SimpleFlagArg
     name: path
-  optional: true
 - !Flag
-  description: disable multithreading
+  optional: true
   synonyms:
   - --disable-multithreading
+  description: disable multithreading
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Logging level as number or enum string.\nOne of\n(fatal|sys|int|err|warn|info|debug)\
-    \ or\n(0-6) Current/default is warn"
+  optional: true
   synonyms:
   - -L
   - --log-level
+  description: "Logging level as number or enum string.\nOne of\n(fatal|sys|int|err|warn|info|debug)\
+    \ or\n(0-6) Current/default is warn"
   args: !SimpleFlagArg
     name: level
-  optional: true
 - !Flag
-  description: Read more options and parameters from the
+  optional: true
   synonyms:
   - --option-file
+  description: Read more options and parameters from the
   args: !SimpleFlagArg
     name: file
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag:
 usage_flag:
 version_flag: !Flag
-  description: Display the version of the program
+  optional: true
   synonyms:
   - -V
   - --version
+  description: Display the version of the program
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "\nUsage: fastq-dump.2.10.8 [ options ] [ accessions(s)... ]\n\nParameters:\n\
   \n  accessions(s)                    list of accessions to process\n\n\nOptions:\n\
   \n  -A|--accession <accession>       Replaces accession derived from <path> in\n\
@@ -426,3 +426,4 @@ help_text: "\nUsage: fastq-dump.2.10.8 [ options ] [ accessions(s)... ]\n\nParam
   \n\"fastq-dump.2.10.8\" version 2.10.8\n\n"
 generated_using:
 - --help
+docker_image:

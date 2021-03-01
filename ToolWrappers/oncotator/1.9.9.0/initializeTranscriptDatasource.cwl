@@ -3,13 +3,13 @@ id: initializeTranscriptDatasource.cwl
 inputs:
 - id: in_name
   doc: name of the datasource.  For example, ensembl.  Or GENCODE
-  type: string
+  type: string?
   inputBinding:
     prefix: --name
 - id: in_filter
   doc: "Filter to use from ['dummy', 'basic'].  For non-GENCODE ENSEMBL, this should\
     \ be set to dummy. default: basic"
-  type: string
+  type: string?
   inputBinding:
     prefix: --filter
 - id: in_protein_map_file
@@ -24,7 +24,7 @@ inputs:
     \ needed to a datasource that has\nalready been generated, you can edit the config\
     \ file, instead of re-creating the entire datasource.\nIF you wish to have HGVS\
     \ support, you must provide the protein mapping file (--protein-map-file).\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --protein-map-file
 - id: in_gtf_files
@@ -59,6 +59,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - initializeTranscriptDatasource

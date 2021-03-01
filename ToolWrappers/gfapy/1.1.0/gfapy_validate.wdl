@@ -8,6 +8,9 @@ task Gfapyvalidate {
     gfapy_validate \
       ~{filename}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     filename: "optional arguments:"
   }

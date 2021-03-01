@@ -8,6 +8,9 @@ task VelocytoToolsCOMMAND {
     velocyto tools COMMAND \
       ~{args}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     args: ""
   }

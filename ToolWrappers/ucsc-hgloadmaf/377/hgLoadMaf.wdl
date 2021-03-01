@@ -26,6 +26,9 @@ task HgLoadMaf {
       ~{if defined(def_pos) then ("-defPos " +  '"' + def_pos + '"') else ""} \
       ~{if (custom) then "-custom" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     warn_instead_error_emptyincomplete: "warn instead of error upon empty/incomplete alignments"
     warn_instead_error_detail: "warn instead of error, with detail for the warning"

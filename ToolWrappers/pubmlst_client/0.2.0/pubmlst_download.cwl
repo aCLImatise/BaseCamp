@@ -3,23 +3,23 @@ id: pubmlst_download.cwl
 inputs:
 - id: in_scheme_name
   doc: scheme name
-  type: string
+  type: string?
   inputBinding:
     prefix: --scheme_name
 - id: in_scheme_id
   doc: scheme id
-  type: string
+  type: string?
   inputBinding:
     prefix: --scheme_id
 - id: in_outdir
   doc: output directory
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --outdir
 - id: in_base_url
   doc: "Base URL for the API. Suggested values are:\nhttp://rest.pubmlst.org/db (default),\n\
     https://bigsdb.pasteur.fr/api/db\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --base-url
 outputs:
@@ -28,9 +28,10 @@ outputs:
   type: stdout
 - id: out_outdir
   doc: output directory
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_outdir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pubmlst_download

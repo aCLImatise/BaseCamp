@@ -4,6 +4,9 @@ task Trinculo {
   command <<<
     trinculo
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

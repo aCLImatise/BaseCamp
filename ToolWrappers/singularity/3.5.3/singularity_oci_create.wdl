@@ -20,6 +20,9 @@ task SingularityOciCreate {
       ~{if defined(pid_file) then ("--pid-file " +  '"' + pid_file + '"') else ""} \
       ~{if defined(sync_socket) then ("--sync-socket " +  '"' + sync_socket + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bundle: "specify the OCI bundle path (required)"
     empty_process: "run container without executing container\\nprocess (eg: for POD container)"

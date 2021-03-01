@@ -32,6 +32,9 @@ task JoinKUnitigsV3 {
       ~{if defined(output_file_superreadsoutput) then ("--output " +  '"' + output_file_superreadsoutput + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_overlap_length: "*Minimum length of an overlap between unitigs"
     mean_and_stdev_by_prefix_file: "*File containing the mean and stdev for each prefix library."

@@ -46,6 +46,9 @@ task RepeatScout {
       ~{if defined(var_output) then ("-output " +  '"' + var_output + '"') else ""} \
       ~{if defined(sequence) then ("-sequence " +  '"' + sequence + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     size_region_extend: "# size of region to extend left or right (10000)"
     match: "# reward for a match (+1)"

@@ -8,6 +8,9 @@ task StringmeupClassifications {
     stringmeup classifications \
       ~{confidence_recal}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     confidence_recal: ""
   }

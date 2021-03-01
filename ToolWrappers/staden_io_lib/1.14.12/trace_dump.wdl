@@ -8,6 +8,9 @@ task TraceDump {
     trace_dump \
       ~{trace_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     trace_file: ""
   }

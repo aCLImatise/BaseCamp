@@ -12,6 +12,9 @@ task H52gif {
       ~{gif_file} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     i: ""
     h_five_file: ""

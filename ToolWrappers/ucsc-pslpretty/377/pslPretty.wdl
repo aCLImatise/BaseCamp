@@ -20,6 +20,9 @@ task PslPretty {
       ~{if (long) then "-long" else ""} \
       ~{if defined(check) then ("-check " +  '"' + check + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     axt: "Save in format like Scott Schwartz's axt format.\\nNote gaps in both sequences are still allowed in the\\noutput, which not all axt readers will expect."
     dot: "Output a dot every N records."

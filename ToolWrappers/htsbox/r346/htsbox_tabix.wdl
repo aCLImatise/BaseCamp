@@ -7,7 +7,7 @@ task HtsboxTabix {
     Int? column_number_region
     Int? column_number_set
     Boolean? specify_coordinates_zerobased
-    Int? skip_first_int
+    Int? skip_first_lines
     String? skip_lines_starting
     Boolean? print_all_records
     Boolean? force_overwrite_index
@@ -24,19 +24,22 @@ task HtsboxTabix {
       ~{if defined(column_number_region) then ("-b " +  '"' + column_number_region + '"') else ""} \
       ~{if defined(column_number_set) then ("-e " +  '"' + column_number_set + '"') else ""} \
       ~{if (specify_coordinates_zerobased) then "-0" else ""} \
-      ~{if defined(skip_first_int) then ("-S " +  '"' + skip_first_int + '"') else ""} \
+      ~{if defined(skip_first_lines) then ("-S " +  '"' + skip_first_lines + '"') else ""} \
       ~{if defined(skip_lines_starting) then ("-c " +  '"' + skip_lines_starting + '"') else ""} \
       ~{if (print_all_records) then "-a" else ""} \
       ~{if (force_overwrite_index) then "-f" else ""} \
       ~{if defined(set_minimal_size) then ("-m " +  '"' + set_minimal_size + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     preset_gff_bed: "preset: gff, bed, sam or vcf [gff]"
     column_number_sequence: "column number for sequence names (suppressed by -p) [1]"
     column_number_region: "column number for region start [4]"
     column_number_set: "column number for region end (if no end, set INT to -b) [5]"
     specify_coordinates_zerobased: "specify coordinates are zero-based"
-    skip_first_int: "skip first INT lines [0]"
+    skip_first_lines: "skip first INT lines [0]"
     skip_lines_starting: "skip lines starting with CHAR [null]"
     print_all_records: "print all records"
     force_overwrite_index: "force to overwrite existing index"

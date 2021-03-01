@@ -3,57 +3,55 @@ command:
 - sequana_bam_splitter
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: This
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
-  name: BAM/SAM/CRAM
-  optional: false
-- !Positional
+  name: BAM
   description: ''
-  position: 2
-  name: filter
-  optional: false
-- !Positional
-  description: ''
-  position: 3
-  name: removes
-  optional: false
-- !Positional
-  description: ''
-  position: 4
-  name: unmapped
-  optional: false
-- !Positional
-  description: ''
-  position: 5
-  name: and
-  optional: false
-- !Positional
-  description: ''
-  position: 6
-  name: secondary
-  optional: false
-named: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --input
+  description: 'input SAM/BAM/CRAM file (default: None)'
+  args: !SimpleFlagArg
+    name: INPUT
+- !Flag
+  optional: true
+  synonyms:
+  - --output-directory
+  description: 'input fastq gzipped or not (default: None)'
+  args: !SimpleFlagArg
+    name: OUTDIR
+- !Flag
+  optional: true
+  synonyms:
+  - --prefix
+  - --keep-unmapped
+  description: 'keep unmapped files (default: False)'
+  args: !SimpleFlagArg
+    name: PREFIX
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n--input INPUT         input SAM/BAM/CRAM\
-    \ file (default: None)\n--output-directory OUTDIR\ninput fastq gzipped or not\
-    \ (default: None)\n--prefix PREFIX\n--keep-unmapped       keep unmapped files\
-    \ (default: False)\n--version             print version (default: False)\n--level\
-    \ {DEBUG,INFO,WARNING,ERROR,CRITICAL}"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: 'print version (default: False)'
+  args: !EmptyFlagArg {}
 help_text: "Welcome to sequana_bam_splitter\nusage: sequana_bam_splitter This BAM/SAM/CRAM\
   \ filter removes unmapped and secondary\nreads (flag 256+4) saving the mapped reads\
   \ in a file, and the unmapped in\nanother file\nusage2: sequana_bam_splitter --input\
@@ -68,3 +66,4 @@ help_text: "Welcome to sequana_bam_splitter\nusage: sequana_bam_splitter This BA
   Issues: http://github.com/sequana/sequana\n        \n"
 generated_using:
 - --help
+docker_image:

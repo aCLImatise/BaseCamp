@@ -40,6 +40,9 @@ task CsvtkFilter {
       ~{if (out_tabs) then "--out-tabs" else ""} \
       ~{if (tabs) then "--tabs" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     any: "print record if any of the field satisfy the condition"
     filter: "filter condition. e.g. -f \\\"age>12\\\" or -f \\\"1,3<=2\\\" or -F -f \\\"c*!=0\\\""

@@ -12,6 +12,9 @@ task MimoddSnapbatch {
       ~{if (one_more_completely) then "-s" else ""} \
       ~{if defined(input_file_completely) then ("-f " +  '"' + input_file_completely + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     one_more_completely: "\\\"COMMAND\\\" [\\\"COMMAND\\\" ...]\\none or more completely specified command line calls to\\nthe snap tool (use \\\"\\\" to enclose individual lines)"
     input_file_completely: "an input file of completely specified command line\\ncalls to the snap tool\\n"

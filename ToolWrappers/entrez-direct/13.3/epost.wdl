@@ -5,7 +5,7 @@ task Epost {
     Boolean? db
     Boolean? id
     Boolean? format
-    Boolean? read_file_instead
+    Boolean? read_file_stdin
     Boolean? label
   }
   command <<<
@@ -13,14 +13,17 @@ task Epost {
       ~{if (db) then "-db" else ""} \
       ~{if (id) then "-id" else ""} \
       ~{if (format) then "-format" else ""} \
-      ~{if (read_file_instead) then "-input" else ""} \
+      ~{if (read_file_stdin) then "-input" else ""} \
       ~{if (label) then "-label" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     db: "Database name"
     id: "Unique identifier(s) or accession number(s)"
     format: "uid or acc"
-    read_file_instead: "Read from file instead of stdin"
+    read_file_stdin: "Read from file instead of stdin"
     label: "Alias for query step"
   }
   output {

@@ -10,6 +10,9 @@ task OrthomclRemoveIdenticalGroups {
       ~{groups_dot_txt} \
       ~{ref_groups_dot_txt}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     groups_dot_txt: ""
     ref_groups_dot_txt: ""

@@ -10,6 +10,9 @@ task Printf {
       ~{format} \
       ~{argument}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     format: ""
     argument: ""

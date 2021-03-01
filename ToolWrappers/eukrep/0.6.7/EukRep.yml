@@ -4,103 +4,103 @@ command:
 positional: []
 named:
 - !Flag
-  description: input fasta file
+  optional: true
   synonyms:
   - -i
+  description: input fasta file
   args: !SimpleFlagArg
     name: I
-  optional: true
 - !Flag
-  description: output file name
+  optional: true
   synonyms:
   - -o
+  description: output file name
   args: !SimpleFlagArg
     name: O
-  optional: true
 - !Flag
-  description: Force overwrite of existing output files
+  optional: true
   synonyms:
   - -ff
+  description: Force overwrite of existing output files
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Minimum sequence length cutoff for sequences to be included in prediction.
-    Default is 3kb
+  optional: true
   synonyms:
   - --min
+  description: Minimum sequence length cutoff for sequences to be included in prediction.
+    Default is 3kb
   args: !SimpleFlagArg
     name: MIN
-  optional: true
 - !Flag
-  description: Path to an alternate trained linear SVM model. Default is lin_svm_160_3.0.pickle
+  optional: true
   synonyms:
   - --model
+  description: Path to an alternate trained linear SVM model. Default is lin_svm_160_3.0.pickle
   args: !SimpleFlagArg
     name: MODEL
-  optional: true
 - !Flag
-  description: Kmer length to use for making predictions. Lengths between 3-7bp are
-    available by default. If using a custom trained model, specify kmer length here.
+  optional: true
   synonyms:
   - -k
   - --kmer_len
+  description: Kmer length to use for making predictions. Lengths between 3-7bp are
+    available by default. If using a custom trained model, specify kmer length here.
   args: !SimpleFlagArg
     name: KMER_LEN
-  optional: true
 - !Flag
-  description: Name of file to output predicted prokaryotic sequences to. Default
-    is to not output prokaryotic sequences.
+  optional: true
   synonyms:
   - --prokarya
+  description: Name of file to output predicted prokaryotic sequences to. Default
+    is to not output prokaryotic sequences.
   args: !SimpleFlagArg
     name: PROKARYA
-  optional: true
 - !Flag
-  description: Only output fasta headers of identified sequences. Default is full
-    fasta entry
+  optional: true
   synonyms:
   - --seq_names
+  description: Only output fasta headers of identified sequences. Default is full
+    fasta entry
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -m
   description: "Not compatable with --model.\nHow stringent the algorithm is in identifying\
     \ eukaryotic scaffolds. Strict has a lower false positive rate and true positive\
     \ rate; vice verso for leneient. Default is balanced."
-  synonyms:
-  - -m
   args: !ChoiceFlagArg
     choices: !!set
-      lenient:
       balanced:
       strict:
-  optional: true
+      lenient:
 - !Flag
+  optional: true
+  synonyms:
+  - --tie
   description: "Specify how to handle cases where an equal number of a sequences chunks\
     \ are predicted to be of eukaryotic and prokaryotic origin (Generally occurs infrequently).\n\
     euk = classify as euk\nprok = classify as prok\nrand = assign randomly\nskip =\
     \ do not classify\nDefault is to classify as eukaryotic.\n"
-  synonyms:
-  - --tie
   args: !SimpleFlagArg
     name: TIE
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: EukRep [-h] -i I -o O [-ff] [--min MIN] [--model MODEL] [-k KMER_LEN]\n\
   \              [--prokarya PROKARYA] [--seq_names]\n              [-m {strict,balanced,lenient}]\
   \ [--version] [--tie TIE]\n\nIdentify sequences of predicted eukaryotic origin from\
@@ -130,3 +130,4 @@ help_text: "usage: EukRep [-h] -i I -o O [-ff] [--min MIN] [--model MODEL] [-k K
   \                     Default is to classify as eukaryotic.\n"
 generated_using:
 - --help
+docker_image:

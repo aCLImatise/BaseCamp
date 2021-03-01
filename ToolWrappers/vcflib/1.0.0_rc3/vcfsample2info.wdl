@@ -20,6 +20,9 @@ task Vcfsample2info {
       ~{if (min) then "--min" else ""} \
       ~{if (max) then "--max" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     field: "Add information about this field in samples to INFO column"
     info: "Store the computed statistic in this info field"

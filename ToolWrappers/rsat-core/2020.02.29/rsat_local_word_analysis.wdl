@@ -2,10 +2,10 @@ version 1.0
 
 task RsatLocalwordanalysis {
   input {
-    Boolean? _verbosity_set
+    Boolean? verbosity_set_verbosity
     Boolean? _input_read
-    Boolean? _output_output
-    Boolean? _length_set
+    Boolean? _output_results
+    Boolean? length_set_length
     Boolean? dyad
     Int? spacing
     Boolean? under
@@ -37,10 +37,10 @@ task RsatLocalwordanalysis {
       ~{sequences} \
       ~{p_value} \
       ~{e_value} \
-      ~{if (_verbosity_set) then "-v" else ""} \
+      ~{if (verbosity_set_verbosity) then "-v" else ""} \
       ~{if (_input_read) then "-i" else ""} \
-      ~{if (_output_output) then "-o" else ""} \
-      ~{if (_length_set) then "-l" else ""} \
+      ~{if (_output_results) then "-o" else ""} \
+      ~{if (length_set_length) then "-l" else ""} \
       ~{if (dyad) then "--dyad" else ""} \
       ~{if defined(spacing) then ("--spacing " +  '"' + spacing + '"') else ""} \
       ~{if (under) then "--under" else ""} \
@@ -60,11 +60,14 @@ task RsatLocalwordanalysis {
       ~{if defined(min) then ("--min " +  '"' + min + '"') else ""} \
       ~{if (sort) then "--sort" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    _verbosity_set: "#, --verbosity=#   set verbosity to level #"
+    verbosity_set_verbosity: "#, --verbosity=#   set verbosity to level #"
     _input_read: "#, --input=#       read sequence from # (must be in FASTA format)\\nif not specified, the standard input is used"
-    _output_output: "#, --output=#      output results to #\\nif not specified, the standard output is used"
-    _length_set: "#, --length=#      set oligomer length to # (REQUIRED ARGUMENT)\\nwhen the option dyad is used # represents the length of one monad\\nEXAMPLE: --length=7"
+    _output_results: "#, --output=#      output results to #\\nif not specified, the standard output is used"
+    length_set_length: "#, --length=#      set oligomer length to # (REQUIRED ARGUMENT)\\nwhen the option dyad is used # represents the length of one monad\\nEXAMPLE: --length=7"
     dyad: "count dyads instead of oligomers"
     spacing: ":B         when using dyads set the spacing between A to B\\nEXAMPLE: --length=3 --dyad --spacing=1:20"
     under: "use under-represented words statistics"

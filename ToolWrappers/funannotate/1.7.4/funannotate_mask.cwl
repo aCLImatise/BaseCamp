@@ -3,37 +3,37 @@ id: funannotate_mask.cwl
 inputs:
 - id: in_input
   doc: Multi-FASTA genome file. (Required)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --input
 - id: in_out
   doc: Output softmasked FASTA file. (Required)
-  type: File
+  type: File?
   inputBinding:
     prefix: --out
 - id: in_method
   doc: 'Method to use. Default: tantan [repeatmasker, repeatmodeler]'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --method
 - id: in_repeatmasker_species
   doc: Species to use for RepeatMasker
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --repeatmasker_species
 - id: in_repeat_modeler_lib
   doc: Custom repeat database (FASTA format)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --repeatmodeler_lib
 - id: in_cpus
   doc: 'Number of cpus to use. Default: 2'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --cpus
 - id: in_debug
   doc: Keep intermediate files
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --debug
 - id: in_arguments
@@ -47,9 +47,10 @@ outputs:
   type: stdout
 - id: out_out
   doc: Output softmasked FASTA file. (Required)
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - funannotate

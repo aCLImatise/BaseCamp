@@ -60,6 +60,9 @@ task Multigrmpypy {
       ~{if defined(graph_type) then ("--graph-type " +  '"' + graph_type + '"') else ""} \
       ~{if defined(ins_info_key) then ("--ins-info-key " +  '"' + ins_info_key + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file_variants: "Input file of variants. Must be either JSON or VCF."
     manifest: "Manifest of samples with path and bam stats."

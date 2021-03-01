@@ -40,6 +40,9 @@ task CoolerBalance {
       ~{if (check) then "--check" else ""} \
       ~{if (convergence_policy) then "--convergence-policy" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     nproc: "Number of processes to split the work"
     chunksize: "Control the number of pixels handled by each\\nworker process at a time.  [default:\\n10000000]"

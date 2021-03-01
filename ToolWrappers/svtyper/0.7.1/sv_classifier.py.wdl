@@ -20,6 +20,9 @@ task SvClassifierpy {
       ~{if defined(slope_threshold) then ("--slope_threshold " +  '"' + slope_threshold + '"') else ""} \
       ~{if defined(r_squared_threshold) then ("--rsquared_threshold " +  '"' + r_squared_threshold + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     vcf_input: "VCF input [stdin]"
     gender: "tab delimited file of sample genders (male=1, female=2)\\nex: SAMPLE_A    2"

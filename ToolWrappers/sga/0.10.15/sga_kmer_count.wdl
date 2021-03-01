@@ -14,6 +14,9 @@ task SgaKmercount {
       ~{if defined(sample_rate) then ("--sample-rate " +  '"' + sample_rate + '"') else ""} \
       ~{if defined(cache_length) then ("--cache-length " +  '"' + cache_length + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     km_er_size: "The length of the kmer to use. (default: 27)"
     sample_rate: "use occurrence array sample rate of N in the FM-index. Higher values use significantly\\nless memory at the cost of higher runtime. This value must be a power of 2 (default: 128)"

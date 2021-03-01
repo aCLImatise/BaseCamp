@@ -3,37 +3,37 @@ id: sketchy_utils_plot_kraken.cwl
 inputs:
 - id: in_report
   doc: Path or file glob to tax report files
-  type: File
+  type: File?
   inputBinding:
     prefix: --report
 - id: in_prefix
   doc: Output prefix for plot file.
-  type: File
+  type: File?
   inputBinding:
     prefix: --prefix
 - id: in_level
   doc: 'Taxonomic level to assess: species [S]'
-  type: string
+  type: string?
   inputBinding:
     prefix: --level
 - id: in_top
   doc: Show top taxonomic levels in plots [10]
-  type: long
+  type: long?
   inputBinding:
     prefix: --top
 - id: in_color
   doc: Color palette for central donut plot.
-  type: string
+  type: string?
   inputBinding:
     prefix: --color
 - id: in_title
   doc: Row titles for center plot, comma separated string.
-  type: string
+  type: string?
   inputBinding:
     prefix: --title
 - id: in_sub
   doc: Add subplot titles for each column.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --sub
 outputs:
@@ -42,9 +42,10 @@ outputs:
   type: stdout
 - id: out_prefix
   doc: Output prefix for plot file.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_prefix)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - sketchy

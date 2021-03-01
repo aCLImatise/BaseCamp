@@ -12,6 +12,9 @@ task Spadeskmerestimating {
       ~{if defined(dataset) then ("--dataset " +  '"' + dataset + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     km_er: "K-mer length"
     dataset: "Dataset description (in YAML)"

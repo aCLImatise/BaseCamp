@@ -16,6 +16,9 @@ task GcloudServicemanagementRemoveiampolicybinding {
       ~{if defined(role) then ("--role " +  '"' + role + '"') else ""} \
       ~{if defined(member) then ("--member " +  '"' + member + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     role: ""
     member: ""

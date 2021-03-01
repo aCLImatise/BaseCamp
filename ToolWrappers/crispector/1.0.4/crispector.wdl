@@ -24,11 +24,11 @@ task Crispector {
     Boolean? suppress_site_output
     Boolean? keep_intermediate_files
     Boolean? verbose
-    File file
+    File mr__path
   }
   command <<<
     crispector \
-      ~{file} \
+      ~{mr__path} \
       ~{if defined(tx_in_one) then ("--tx_in1 " +  '"' + tx_in_one + '"') else ""} \
       ~{if defined(tx_in_two) then ("--tx_in2 " +  '"' + tx_in_two + '"') else ""} \
       ~{if defined(mock_in_one) then ("--mock_in1 " +  '"' + mock_in_one + '"') else ""} \
@@ -52,6 +52,9 @@ task Crispector {
       ~{if (keep_intermediate_files) then "--keep_intermediate_files" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tx_in_one: "Tx read 1 input path or Tx merged FASTQ file"
     tx_in_two: "Tx read 2 input path, if FASTQ files aren't\\nmerged [OPTIONAL]"
@@ -75,7 +78,7 @@ task Crispector {
     suppress_site_output: "Do not create plots for sites (save memory\\nand runtime)  [default: False]"
     keep_intermediate_files: "Keep intermediate files for debug purposes\\n[default: False; required]"
     verbose: "Higher verbosity  [default: False]"
-    file: "-m_r2, --mock_in2 PATH          Mock read read 2 input path, if FASTQ files"
+    mr__path: "-m_r2, --mock_in2 PATH          Mock read read 2 input path, if FASTQ files"
   }
   output {
     File out_stdout = stdout()

@@ -3,61 +3,68 @@ command:
 - SingleCellRnaSeqMetricsCollector
 positional:
 - !Positional
-  description: STRAND_SPECIFICITY=StrandSpecificity
+  optional: false
   position: 0
   name: null.
-  optional: false
+  description: STRAND_SPECIFICITY=StrandSpecificity
 - !Positional
-  description: CELL_BC_FILE=File             Override NUM_CORE_BARCODES, and process
-    reads that have the cell barcodes in this file
+  optional: false
   position: 0
   name: CELL_BC_FILE
-  optional: false
+  description: CELL_BC_FILE=File             Override NUM_CORE_BARCODES, and process
+    reads that have the cell barcodes in this file
 - !Positional
-  description: When supplied, output is ordered to match the input barcode ordering.
-    The file
+  optional: false
   position: 1
   name: instead.
-  optional: false
+  description: When supplied, output is ordered to match the input barcode ordering.
+    The file
 - !Positional
-  description: 'READ_MQ=Integer               The map quality of the read to be included
-    for determining which cells will be measured. '
+  optional: false
   position: 0
   name: NUM_CORE_BARCODES
-  optional: false
+  description: 'READ_MQ=Integer               The map quality of the read to be included
+    for determining which cells will be measured. '
 named:
 - !Flag
-  description: (default 4g)
+  optional: true
   synonyms:
   - -m
+  description: (default 4g)
   args: !SimpleFlagArg
     name: jvm_heap_size
-  optional: true
 - !Flag
-  description: final command line before executing
+  optional: true
   synonyms:
   - -v
+  description: final command line before executing
   args: !SimpleFlagArg
     name: echo
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --stdhelp
+  - -H
   description: "Displays options specific to this tool AND options common to all Picard\
     \ command line\ntools."
-  synonyms:
-  - -H
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: Displays options specific to this tool.
+  args: !EmptyFlagArg {}
 usage_flag:
 version_flag: !Flag
-  description: Displays program version.
+  optional: true
   synonyms:
   - --version
+  description: Displays program version.
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "USAGE: /usr/local/bin/SingleCellRnaSeqMetricsCollector [-m <jvm_heap_size>]\
   \ [-v] program args...\n       -m <jvm_heap_size> (default 4g)\n       -v echo final\
   \ command line before executing\n\nProgram options:\nUSAGE: SingleCellRnaSeqMetricsCollector\
@@ -109,3 +116,4 @@ help_text: "USAGE: /usr/local/bin/SingleCellRnaSeqMetricsCollector [-m <jvm_heap
   \ times. \n\n"
 generated_using:
 - --help
+docker_image:

@@ -16,6 +16,9 @@ task Exonerate2hintspl {
       ~{if defined(cds_part_cut_off) then ("--CDSpart_cutoff " +  '"' + cds_part_cut_off + '"') else ""} \
       ~{if defined(source) then ("--source " +  '"' + source + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     priority: "priority of hint group (default 4)"
     min_intron_len: "alignments with gaps shorter than this and longer than maxgaplen are discarded (default 41)"

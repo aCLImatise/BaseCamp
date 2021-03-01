@@ -24,6 +24,9 @@ task CromwelltoolsWait {
       ~{if defined(poll_interval_seconds) then ("--poll-interval-seconds " +  '"' + poll_interval_seconds + '"') else ""} \
       ~{if (silent) then "--silent" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     url: "The URL to the Cromwell server. e.g.\\n\\\"https://cromwell.server.org/\\\""
     username: "Cromwell username for HTTPBasicAuth."

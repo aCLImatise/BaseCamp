@@ -12,6 +12,9 @@ task ArrowGroupsUpdateMembership {
       ~{if defined(users) then ("--users " +  '"' + users + '"') else ""} \
       ~{if defined(memberships) then ("--memberships " +  '"' + memberships + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     group_id: "Group ID Number"
     users: "List of emails"

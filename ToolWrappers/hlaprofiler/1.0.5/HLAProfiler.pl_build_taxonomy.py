@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, String
+
+Hlaprofiler_Pl_Build_Taxonomy_V0_1_0 = CommandToolBuilder(tool="HLAProfiler.pl_build_taxonomy", base_command=["HLAProfiler.pl", "build_taxonomy"], inputs=[ToolInput(tag="in_transcripts", input_type=Boolean(optional=True), prefix="-transcripts", doc=InputDocumentation(doc="|t          location of fasta file containing transcripts. Currently only GENCODE transcripts are supported.(required)")), ToolInput(tag="in_transcript_gtf", input_type=Boolean(optional=True), prefix="-transcript_gtf", doc=InputDocumentation(doc="|g       location of gtf file containing transcripts corresponding to the -transcripts option. Currently only GENCODE transcripts are supported.(required)")), ToolInput(tag="in_exclusion_bed", input_type=Boolean(optional=True), prefix="-exclusion_bed", doc=InputDocumentation(doc="|e        location of bed file containing the coordinated any regions to be excluded from the distractome. i.e. HLA region.(required)")), ToolInput(tag="in_reference", input_type=Boolean(optional=True), prefix="-reference", doc=InputDocumentation(doc="|r            location of fasta file containing HLA reference. IPD-IMGT/HLA reference recommended.(required)")), ToolInput(tag="in_output_dir", input_type=Boolean(optional=True), prefix="-output_dir", doc=InputDocumentation(doc="|o           location of database directory(default:'.')")), ToolInput(tag="in_database_name", input_type=Boolean(optional=True), prefix="-database_name", doc=InputDocumentation(doc="|db       name of the HLA database to be created(default:hla)")), ToolInput(tag="in_kraken_path", input_type=Boolean(optional=True), prefix="-kraken_path", doc=InputDocumentation(doc="|kp         base directory of kraken installation. (default:base directory of path returned by `which kraken`)")), ToolInput(tag="in_k_mer", input_type=Boolean(optional=True), prefix="-k_mer", doc=InputDocumentation(doc="|k                size of the k-mer used to create database.(default:31)")), ToolInput(tag="in_minimizer", input_type=Boolean(optional=True), prefix="-minimizer", doc=InputDocumentation(doc="|m            size of the k-mer minimizer used to crate database.(default:13)")), ToolInput(tag="in_threads", input_type=Boolean(optional=True), prefix="-threads", doc=InputDocumentation(doc="|c              number of threads to uses for processing.(default:1)")), ToolInput(tag="in_options", input_type=String(), position=0, doc=InputDocumentation(doc=""))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Hlaprofiler_Pl_Build_Taxonomy_V0_1_0().translate("wdl", allow_empty_container=True)
+

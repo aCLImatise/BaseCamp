@@ -58,6 +58,9 @@ task Lasttrain {
       ~{if defined(nx_ambiguous_sequence) then ("-X " +  '"' + nx_ambiguous_sequence + '"') else ""} \
       ~{if defined(input_format_fasta) then ("-Q " +  '"' + input_format_fasta + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "show more details of intermediate steps"
     rev_sym: "force reverse-complement symmetry"

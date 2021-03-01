@@ -8,6 +8,9 @@ task Vcfgenotypes {
     vcfgenotypes \
       ~{vcf_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     vcf_file: ""
   }

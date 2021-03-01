@@ -1,50 +1,48 @@
 class: CommandLineTool
 id: iCount_demultiplex.cwl
 inputs:
-- id: in_mis
-  doc: ', --mismatches   Number of tolerated mismatches when comparing barcodes (default:
-    1)'
-  type: boolean
+- id: in_mismatches
+  doc: 'Number of tolerated mismatches when comparing barcodes (default: 1)'
+  type: boolean?
   inputBinding:
-    prefix: -mis
-- id: in_ml
-  doc: ", --minimum_length\nMinimum length of trimmed sequence to keep (default: 15)"
-  type: boolean
+    prefix: --mismatches
+- id: in_minimum_length
+  doc: 'Minimum length of trimmed sequence to keep (default: 15)'
+  type: boolean?
   inputBinding:
-    prefix: -ml
+    prefix: --minimum_length
 - id: in_prefix
   doc: 'Prefix of generated FASTQ files (default: demux)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --prefix
-- id: in_od
-  doc: ', --out_dir       Output folder. Use local folder if none given (default:
-    .)'
-  type: Directory
+- id: in_out_dir
+  doc: 'Output folder. Use local folder if none given (default: .)'
+  type: Directory?
   inputBinding:
-    prefix: -od
-- id: in__stdoutlog_threshold
-  doc: ', --stdout_log     Threshold value (0-50) for logging to stdout. If 0, logging
-    to stdout if turned OFF.'
-  type: boolean
+    prefix: --out_dir
+- id: in_stdout_log
+  doc: Threshold value (0-50) for logging to stdout. If 0, logging to stdout if turned
+    OFF.
+  type: boolean?
   inputBinding:
-    prefix: -S
-- id: in__filelog_threshold
-  doc: ', --file_log       Threshold value (0-50) for logging to file. If 0, logging
-    to file if turned OFF.'
-  type: boolean
+    prefix: --stdout_log
+- id: in_file_log
+  doc: Threshold value (0-50) for logging to file. If 0, logging to file if turned
+    OFF.
+  type: boolean?
   inputBinding:
-    prefix: -F
-- id: in__filelogpath_path
-  doc: ', --file_logpath   Path to log file.'
-  type: boolean
+    prefix: --file_log
+- id: in_file_log_path
+  doc: Path to log file.
+  type: boolean?
   inputBinding:
-    prefix: -P
-- id: in__file_store
-  doc: ', --results_file   File into which to store Metrics.'
-  type: boolean
+    prefix: --file_logpath
+- id: in_results_file
+  doc: File into which to store Metrics.
+  type: boolean?
   inputBinding:
-    prefix: -M
+    prefix: --results_file
 - id: in_i_count_dot_demultiplex_dot_run
   doc: 'positional arguments:'
   type: string
@@ -69,12 +67,12 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_od
-  doc: ', --out_dir       Output folder. Use local folder if none given (default:
-    .)'
-  type: Directory
+- id: out_out_dir
+  doc: 'Output folder. Use local folder if none given (default: .)'
+  type: Directory?
   outputBinding:
-    glob: $(inputs.in_od)
+    glob: $(inputs.in_out_dir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - iCount

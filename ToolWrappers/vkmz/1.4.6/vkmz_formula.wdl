@@ -2,8 +2,8 @@ version 1.0
 
 task VkmzFormula {
   input {
-    File? path_tabular_formula
-    File? specify_output_file
+    File? path_tabular_file
+    File? specify_file_path
     Boolean? json
     Boolean? sql
     Boolean? metadata
@@ -18,8 +18,8 @@ task VkmzFormula {
   command <<<
     vkmz formula \
       ~{var_11} \
-      ~{if defined(path_tabular_formula) then ("--input " +  '"' + path_tabular_formula + '"') else ""} \
-      ~{if (specify_output_file) then "--output" else ""} \
+      ~{if defined(path_tabular_file) then ("--input " +  '"' + path_tabular_file + '"') else ""} \
+      ~{if (specify_file_path) then "--output" else ""} \
       ~{if (json) then "--json" else ""} \
       ~{if (sql) then "--sql" else ""} \
       ~{if (metadata) then "--metadata" else ""} \
@@ -30,9 +30,12 @@ task VkmzFormula {
       ~{if (alternate) then "--alternate" else ""} \
       ~{if (impute_charge) then "--impute-charge" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    path_tabular_formula: "Path to tabular formula file."
-    specify_output_file: "[OUTPUT], -o [OUTPUT]\\nSpecify output file path"
+    path_tabular_file: "Path to tabular formula file."
+    specify_file_path: "[OUTPUT], -o [OUTPUT]\\nSpecify output file path"
     json: "Set JSON flag to save JSON output"
     sql: "Set SQL flag to save SQL output"
     metadata: "Set metadata flag to save argument metadata"
@@ -46,6 +49,6 @@ task VkmzFormula {
   }
   output {
     File out_stdout = stdout()
-    File out_specify_output_file = "${in_specify_output_file}"
+    File out_specify_file_path = "${in_specify_file_path}"
   }
 }

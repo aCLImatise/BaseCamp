@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, String, Int, Directory
+
+Spotyping_Py_V0_1_0 = CommandToolBuilder(tool="SpoTyping.py", base_command=["SpoTyping.py"], inputs=[ToolInput(tag="in_seq", input_type=Boolean(optional=True), prefix="--seq", doc=InputDocumentation(doc="Set this if input is a fasta file that contains only a\ncomplete genomic sequence or assembled contigs from an\nisolate [Default is off]")), ToolInput(tag="in_swift", input_type=String(optional=True), prefix="--swift", doc=InputDocumentation(doc="swift mode, either 'on' or 'off' [Defulat: on]")), ToolInput(tag="in_min", input_type=Int(optional=True), prefix="--min", doc=InputDocumentation(doc="minimum number of error-free hits to support presence\nof a spacer [Default: 0.1*average read depth]")), ToolInput(tag="in_rm_in", input_type=Int(optional=True), prefix="--rmin", doc=InputDocumentation(doc="minimum number of 1-error-tolerant hits to support\npresence of a spacer [Default: 0.12 * average read\ndepth]")), ToolInput(tag="in_outdir", input_type=Directory(optional=True), prefix="--outdir", doc=InputDocumentation(doc="output directory [Default: running directory]")), ToolInput(tag="in_output", input_type=String(optional=True), prefix="--output", doc=InputDocumentation(doc="basename of output files generated [Default:\nSpoTyping]")), ToolInput(tag="in_no_query", input_type=Boolean(optional=True), prefix="--noQuery", doc=InputDocumentation(doc="suppress the SITVIT database query [Default is off]")), ToolInput(tag="in_filter", input_type=Boolean(optional=True), prefix="--filter", doc=InputDocumentation(doc="stringent filtering of reads (used only for low\nquality reads)[Default is off]")), ToolInput(tag="in_sorted", input_type=Boolean(optional=True), prefix="--sorted", doc=InputDocumentation(doc="set this only when the reads are sorted to a reference\ngenome [Default is off]")), ToolInput(tag="in_debug", input_type=Boolean(optional=True), prefix="--debug", doc=InputDocumentation(doc="enable debug mode, keeping all intermediate files for\nchecking [Default is off]\n")), ToolInput(tag="in_fast_q_one", input_type=Int(), position=0, doc=InputDocumentation(doc=""))], outputs=[ToolOutput(tag="out_outdir", output_type=Directory(optional=True), selector=InputSelector(input_to_select="in_outdir", type_hint=File()), doc=OutputDocumentation(doc="output directory [Default: running directory]"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Spotyping_Py_V0_1_0().translate("wdl", allow_empty_container=True)
+

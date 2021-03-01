@@ -32,6 +32,9 @@ task Juliet {
       ~{if (emit_tool_contract) then "--emit-tool-contract" else ""} \
       ~{if (resolved_tool_contract) then "--resolved-tool-contract" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config: "Defines genes of interest within the reference for reporting purposes. Enter either 1) the predefined target config \\\"HIV_HXB2\\\" or a custom target config through either 2a) the path to the target config JSON file or 2b) the JSON string."
     mode_phasing: "Phase variants and cluster haplotypes."

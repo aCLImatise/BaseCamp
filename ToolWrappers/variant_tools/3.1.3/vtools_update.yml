@@ -5,65 +5,68 @@ command:
 positional: []
 named:
 - !Flag
-  description: "Output error and warning (0), info (1), debug (2) and\ntrace (3) information\
-    \ to standard output (default to\n1)."
+  optional: true
   synonyms:
   - -v
   - --verbosity
+  description: "Output error and warning (0), info (1), debug (2) and\ntrace (3) information\
+    \ to standard output (default to\n1)."
   args: !ChoiceFlagArg
     choices: !!set
+      '3':
       '2':
       '0':
-      '3':
       '1':
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --from_file
+  - --from-file
   description: "A list of files that will be used to add or update\nexisting fields\
     \ of variants. The file should be\ndelimiter separated with format described by\
     \ parameter\n--format. Gzipped files are acceptable. If input files\ncontains\
     \ genotype information, have been inputted\nbefore, and can be linked to the samples\
     \ they created\nwithout ambiguity (e.g. single sample, or samples with\ndetectable\
     \ sample names), genotypes and their\ninformation will also be updated."
-  synonyms:
-  - --from_file
-  - --from-file
   args: !RepeatFlagArg
     name: FROM_FILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --build
   description: "Build version of the reference genome (e.g. hg18) of\nthe input files,\
     \ which should be the primary (used by\ndefault) or alternative (if available)\
     \ reference\ngenome of the project. An alternative reference genome\nwill be added\
     \ to the project if needed."
-  synonyms:
-  - --build
   args: !SimpleFlagArg
     name: BUILD
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --format
   description: "Format of the input text file. It can be one of the\nvariant tools\
     \ supported file types such as\nANNOVAR_output (cf. 'vtools show formats'), or\
     \ a local\nformat specification file (with extension .fmt). Some\nformats accept\
     \ parameters (cf. 'vtools show format\nFMT') and allow you to update additional\
     \ or\nalternative fields from the input file."
-  synonyms:
-  - --format
   args: !SimpleFlagArg
     name: FORMAT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --jobs
   description: "Number of processes to import input file. Variant\ntools by default\
     \ uses a single process for reading and\nwriting, and can use one or more dedicated\
     \ reader\nprocesses (jobs=2 or more) to process input files. Due\nto the overhead\
     \ of inter-process communication, more\njobs do not automatically lead to better\
     \ performance."
-  synonyms:
-  - -j
-  - --jobs
   args: !SimpleFlagArg
     name: N
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --sample_name
   description: "[SAMPLE_NAME [SAMPLE_NAME ...]], --sample-name [SAMPLE_NAME [SAMPLE_NAME\
     \ ...]]\nName of the samples to be updated by the input files.\nIf unspecified,\
     \ headers of the genotype columns of the\nlast comment line (line starts with\
@@ -72,11 +75,11 @@ named:
     \ Filename will be used\nto uniquely identify a sample if mutliple samples with\n\
     the same name exist in the project. No genotype info\nwill be updated if samples\
     \ cannot be unquely\ndetermined."
-  synonyms:
-  - --sample_name
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --set
   description: "[EXPR [EXPR ...]]\nAdd a new field or updating an existing field using\
     \ a\nconstant (e.g. mark=1) or an expression using other\nfields (e.g. freq=num/120,\
     \ refgene=refGene.name). If\nmultiple values are returned for a variant, only\
@@ -84,11 +87,11 @@ named:
     \ variants. In addition, special\nfunction are provided, including 'HWE_exact'\
     \ (exact\ntest of Hardy-Weinberg Equilibrium) and 'Fisher_exact'\n(Fisher's exact\
     \ test for case/ctrl association)."
-  synonyms:
-  - --set
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --from_stat
   description: "[EXPR [EXPR ...]], --from-stat [EXPR [EXPR ...]]\nOne or more expressions\
     \ such as meanQT=avg(QT) that\naggregate genotype info (e.g. QT) of variants in\
     \ all\nor selected samples to specified fields (e.g. meanQT).\nFunctions sum,\
@@ -106,35 +109,32 @@ named:
     \ are calculated. This function by default\ncalculates allele frequency among\
     \ existing-alleles,\nbut will treat all missing values as wild type alleles\n\
     if runtime option treat_missing_as_wildtype is set to\ntrue."
-  synonyms:
-  - --from_stat
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -s
   description: "[COND [COND ...]], --samples [COND [COND ...]]\nLimiting variants\
     \ from samples that match conditions\nthat use columns shown in command 'vtools\
     \ show sample'\n(e.g. 'aff=1', 'filename like \"MG%\"')."
-  synonyms:
-  - -s
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "[COND [COND ...]]\nLimiting variants from samples that match conditions\n\
-    that use columns shown in command 'vtools show\ngenotypes' (e.g. 'GQ>15').\n"
+  optional: true
   synonyms:
   - --genotypes
+  description: "[COND [COND ...]]\nLimiting variants from samples that match conditions\n\
+    that use columns shown in command 'vtools show\ngenotypes' (e.g. 'GQ>15').\n"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: vtools update [-h] [--from_file FROM_FILE [FROM_FILE ...]]\n  \
@@ -230,3 +230,4 @@ help_text: "usage: vtools update [-h] [--from_file FROM_FILE [FROM_FILE ...]]\n 
   \ show\n                        genotypes' (e.g. 'GQ>15').\n"
 generated_using:
 - --help
+docker_image:

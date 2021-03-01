@@ -3,141 +3,111 @@ command:
 - prequel
 positional:
 - !Positional
-  description: Specifically, each base is assumed to have been inserted
+  optional: false
   position: 0
   name: independence.
-  optional: false
+  description: Specifically, each base is assumed to have been inserted
 - !Positional
-  description: 0.000065        0.001755        0.000030
-  position: 0
-  name: '0.998150'
   optional: false
-- !Positional
-  description: 0.271307        0.000599        0.727668
-  position: 1
-  name: '0.000427'
-  optional: false
-- !Positional
-  description: 0.000179        0.973813        0.000182
-  position: 2
-  name: '0.025826'
-  optional: false
-- !Positional
-  description: 0.000065        0.001755        0.000030
-  position: 0
-  name: '0.998150'
-  optional: false
-- !Positional
-  description: 0.000393        0.873431        0.000365
-  position: 1
-  name: '0.125811'
-  optional: false
-- !Positional
-  description: 0.001637        0.000064        0.998269
-  position: 0
-  name: '0.000030'
-  optional: false
-- !Positional
-  description: The --suff-stats option produces a more compact output
   position: 0
   name: data.
-  optional: false
+  description: The --suff-stats option produces a more compact output
 named:
 - !Flag
-  description: "Only produce output for specified sequences.  Argument should\nbe\
-    \ comma-separated list of names of ancestral nodes."
+  optional: true
   synonyms:
   - --seqs
   - -s
+  description: "Only produce output for specified sequences.  Argument should\nbe\
+    \ comma-separated list of names of ancestral nodes."
   args: !SimpleFlagArg
     name: seqlist
-  optional: true
 - !Flag
-  description: "(for use with --seqs) Exclude rather than include specified\nsequences."
+  optional: true
   synonyms:
   - --exclude
   - -x
+  description: "(for use with --seqs) Exclude rather than include specified\nsequences."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Retain gaps in output, as described above.
+  optional: true
   synonyms:
   - --keep-gaps
   - -k
+  description: Retain gaps in output, as described above.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --no-probs
+  - -n
   description: "Instead of reporting a probability distribution for each ancestral\n\
     base, output the base with the maximum posterior probability.\nOutput will be\
     \ in FASTA format to files having suffix \".fa\" rather\nthan \".probs\".  If\
     \ used with --keep-gaps, gap characters ('-') will\nappear in reconstructed sequences."
-  synonyms:
-  - --no-probs
-  - -n
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --suff-stats
+  - -S
   description: "Output a table of probability vectors and counts, pooling\ntogether\
     \ all nodes of the tree (or a subset defined by\n--seqs).  Produces a file that\
     \ can be used for code estimation\nby pbsTrain.  Output file will have suffix\
     \ \".stats\"."
-  synonyms:
-  - --suff-stats
-  - -S
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Encode probabilities using given code and output as binary\nfiles.\
-    \  Output files will have suffix \".bin\" rather than \".probs\""
+  optional: true
   synonyms:
   - --encode
   - -e
+  description: "Encode probabilities using given code and output as binary\nfiles.\
+    \  Output files will have suffix \".bin\" rather than \".probs\""
   args: !SimpleFlagArg
     name: code_file
-  optional: true
 - !Flag
-  description: "|PHYLIP|MPM|MAF|SS\nAlignment format (default is to guess format from\
-    \ file content).\nNote that the program msa_view can be used for conversion."
+  optional: true
   synonyms:
   - --msa-format
   - -i
+  description: "|PHYLIP|MPM|MAF|SS\nAlignment format (default is to guess format from\
+    \ file content).\nNote that the program msa_view can be used for conversion."
   args: !SimpleFlagArg
     name: FASTA
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --refseq
+  - -r
   description: "(for use with --msa-format MAF) Read the complete text of the\nreference\
     \ sequence from <fname> (FASTA format) and combine it\nwith the contents of the\
     \ MAF file to produce a complete,\nordered representation of the alignment.  The\
     \ reference\nsequence of the MAF file is assumed to be the one that appears\n\
     first in each block."
-  synonyms:
-  - --refseq
-  - -r
   args: !SimpleFlagArg
     name: fname
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --gibbs
+  - -G
   description: "(experimental) Estimate posterior probabilities by Gibbs sampling\n\
     rather than by the sum-product algorithm.  Sample each sequence\n<nsamples> times\
     \ and estimate posterior probabilities as fraction\nof times each base appeared\
     \ at each position.  This option is used\nby default if a dinucleotide or trinucleotide\
     \ model is given (exact\ninference not possible).   NOT YET IMPLEMENTED"
-  synonyms:
-  - --gibbs
-  - -G
   args: !SimpleFlagArg
     name: nsamples
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "Produce this help message.\n"
+  optional: true
   synonyms:
   - --help
   - -h
+  description: "Produce this help message.\n"
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "\nPROGRAM: PREQUEL (Probabilistic REconstruction of ancestral seQUEnces,\
@@ -229,3 +199,4 @@ help_text: "\nPROGRAM: PREQUEL (Probabilistic REconstruction of ancestral seQUEn
   \   NOT YET IMPLEMENTED\n\n    --help, -h\n        Produce this help message.\n"
 generated_using:
 - --help
+docker_image:

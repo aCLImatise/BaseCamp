@@ -20,6 +20,9 @@ task StrainTrackingpyIdMarkers {
       ~{if defined(allele_prev) then ("--allele_prev " +  '"' + allele_prev + '"') else ""} \
       ~{if defined(max_sites) then ("--max_sites " +  '"' + max_sites + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_dir: "path to input snps directory for one species (contains files 'snps_*.txt')\\nrequires having run 'merge_midas.py snps'"
     out: "path to output file containing list of markers"

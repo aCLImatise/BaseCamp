@@ -3,37 +3,37 @@ id: h5copy.cwl
 inputs:
 - id: in_output
   doc: output file name
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_source
   doc: source object name
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --source
 - id: in_destination
   doc: destination object name
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --destination
 - id: in_parents
   doc: No error if existing, make parent groups as needed
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --parents
 - id: in_verbose
   doc: Print information about OBJECTS and OPTIONS
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_enable_error_stack
   doc: Prints messages from the HDF5 error stack as they occur.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --enable-error-stack
 - id: in_flag
   doc: Flag type
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --flag
 - id: in_objects
@@ -104,9 +104,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: output file name
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - h5copy

@@ -4,285 +4,285 @@ command:
 positional: []
 named:
 - !Flag
-  description: additional output is printed
+  optional: true
   synonyms:
   - -v
   - --verbose
+  description: additional output is printed
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: input FASTQ file (add a second argument instance to run with paired
-    input files)
+  optional: true
   synonyms:
   - -i
   - --input
+  description: input FASTQ file (add a second argument instance to run with paired
+    input files)
   args: !SimpleFlagArg
     name: INPUT
-  optional: true
 - !Flag
-  description: directory to write output files
+  optional: true
   synonyms:
   - -o
   - --output
+  description: directory to write output files
   args: !SimpleFlagArg
     name: OUTPUT_DIR
-  optional: true
 - !Flag
-  description: location of reference database (additional arguments add databases)
+  optional: true
   synonyms:
   - -db
   - --reference-db
+  description: location of reference database (additional arguments add databases)
   args: !SimpleFlagArg
     name: REFERENCE_DB
-  optional: true
 - !Flag
-  description: bypass the trim step
+  optional: true
   synonyms:
   - --bypass-trim
+  description: bypass the trim step
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "prefix for all output files\n[ DEFAULT : $SAMPLE_kneaddata ]"
+  optional: true
   synonyms:
   - --output-prefix
+  description: "prefix for all output files\n[ DEFAULT : $SAMPLE_kneaddata ]"
   args: !SimpleFlagArg
     name: OUTPUT_PREFIX
-  optional: true
 - !Flag
-  description: "number of threads\n[ Default : 1 ]"
+  optional: true
   synonyms:
   - -t
   - --threads
+  description: "number of threads\n[ Default : 1 ]"
   args: !SimpleFlagArg
     name: '1'
-  optional: true
 - !Flag
-  description: "number of processes\n[ Default : 1 ]"
+  optional: true
   synonyms:
   - -p
   - --processes
+  description: "number of processes\n[ Default : 1 ]"
   args: !SimpleFlagArg
     name: '1'
-  optional: true
 - !Flag
-  description: "quality scores\n[ DEFAULT : phred33 ]"
+  optional: true
   synonyms:
   - -q
   - --quality-scores
+  description: "quality scores\n[ DEFAULT : phred33 ]"
   args: !ChoiceFlagArg
     choices: !!set
-      phred64:
       phred33:
-  optional: true
+      phred64:
 - !Flag
-  description: run BMTagger instead of Bowtie2 to identify contaminant reads
+  optional: true
   synonyms:
   - --run-bmtagger
+  description: run BMTagger instead of Bowtie2 to identify contaminant reads
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: run TRF to remove tandem repeats
+  optional: true
   synonyms:
   - --run-trf
+  description: run TRF to remove tandem repeats
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: run fastqc at the beginning of the workflow
+  optional: true
   synonyms:
   - --run-fastqc-start
+  description: run fastqc at the beginning of the workflow
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: run fastqc at the end of the workflow
+  optional: true
   synonyms:
   - --run-fastqc-end
+  description: run fastqc at the end of the workflow
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "store temp output files\n[ DEFAULT : temp output files are removed\
-    \ ]"
+  optional: true
   synonyms:
   - --store-temp-output
+  description: "store temp output files\n[ DEFAULT : temp output files are removed\
+    \ ]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "remove intermediate output files\n[ DEFAULT : intermediate output\
-    \ files are stored ]"
+  optional: true
   synonyms:
   - --remove-intermediate-output
+  description: "remove intermediate output files\n[ DEFAULT : intermediate output\
+    \ files are stored ]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "concatenate all final output files\n[ DEFAULT : final output is not\
-    \ concatenated ]"
+  optional: true
   synonyms:
   - --cat-final-output
+  description: "concatenate all final output files\n[ DEFAULT : final output is not\
+    \ concatenated ]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "level of log messages\n[ DEFAULT : DEBUG ]"
+  optional: true
   synonyms:
   - --log-level
+  description: "level of log messages\n[ DEFAULT : DEBUG ]"
   args: !ChoiceFlagArg
     choices: !!set
-      CRITICAL:
-      ERROR:
       INFO:
-      WARNING:
       DEBUG:
-  optional: true
+      CRITICAL:
+      WARNING:
+      ERROR:
 - !Flag
-  description: "log file\n[ DEFAULT : $OUTPUT_DIR/$SAMPLE_kneaddata.log ]"
+  optional: true
   synonyms:
   - --log
+  description: "log file\n[ DEFAULT : $OUTPUT_DIR/$SAMPLE_kneaddata.log ]"
   args: !SimpleFlagArg
     name: LOG
-  optional: true
 - !Flag
-  description: "path to trimmomatic\n[ DEFAULT : $PATH ]"
+  optional: true
   synonyms:
   - --trimmomatic
+  description: "path to trimmomatic\n[ DEFAULT : $PATH ]"
   args: !SimpleFlagArg
     name: TRIMMOMATIC_PATH
-  optional: true
 - !Flag
-  description: "max amount of memory\n[ DEFAULT : 500m ]"
+  optional: true
   synonyms:
   - --max-memory
+  description: "max amount of memory\n[ DEFAULT : 500m ]"
   args: !SimpleFlagArg
     name: MAX_MEMORY
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --trimmomatic-options
   description: "options for trimmomatic\n[ DEFAULT : ILLUMINACLIP:/TruSeq3-SE.fa:2:30:10\
     \ SLIDINGWINDOW:4:20 MINLEN:50 ]\nMINLEN is set to 50 percent of total input read\
     \ length"
-  synonyms:
-  - --trimmomatic-options
   args: !SimpleFlagArg
     name: TRIMMOMATIC_OPTIONS
-  optional: true
 - !Flag
-  description: "path to bowtie2\n[ DEFAULT : $PATH ]"
+  optional: true
   synonyms:
   - --bowtie2
+  description: "path to bowtie2\n[ DEFAULT : $PATH ]"
   args: !SimpleFlagArg
     name: BOWTIE2_PATH
-  optional: true
 - !Flag
-  description: "options for bowtie2\n[ DEFAULT : --very-sensitive ]"
+  optional: true
   synonyms:
   - --bowtie2-options
+  description: "options for bowtie2\n[ DEFAULT : --very-sensitive ]"
   args: !SimpleFlagArg
     name: BOWTIE2_OPTIONS
-  optional: true
 - !Flag
-  description: "do not include discordant alignments for pairs (ie one of the two\
-    \ pairs aligns)\n[ DEFAULT : Discordant alignments are included ]"
+  optional: true
   synonyms:
   - --no-discordant
+  description: "do not include discordant alignments for pairs (ie one of the two\
+    \ pairs aligns)\n[ DEFAULT : Discordant alignments are included ]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "order the sequences in the same order as the input\n[ DEFAULT : With\
-    \ discordant paired alignments sequences are not ordered ]"
+  optional: true
   synonyms:
   - --reorder
+  description: "order the sequences in the same order as the input\n[ DEFAULT : With\
+    \ discordant paired alignments sequences are not ordered ]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: filter the input in serial for multiple databases so a subset of reads
-    are processed in each database search
+  optional: true
   synonyms:
   - --serial
+  description: filter the input in serial for multiple databases so a subset of reads
+    are processed in each database search
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "path to BMTagger\n[ DEFAULT : $PATH ]"
+  optional: true
   synonyms:
   - --bmtagger
+  description: "path to BMTagger\n[ DEFAULT : $PATH ]"
   args: !SimpleFlagArg
     name: BMTAGGER_PATH
-  optional: true
 - !Flag
-  description: "path to TRF\n[ DEFAULT : $PATH ]"
+  optional: true
   synonyms:
   - --trf
+  description: "path to TRF\n[ DEFAULT : $PATH ]"
   args: !SimpleFlagArg
     name: TRF_PATH
-  optional: true
 - !Flag
-  description: "matching weight\n[ DEFAULT : 2 ]"
+  optional: true
   synonyms:
   - --match
+  description: "matching weight\n[ DEFAULT : 2 ]"
   args: !SimpleFlagArg
     name: MATCH
-  optional: true
 - !Flag
-  description: "mismatching penalty\n[ DEFAULT : 7 ]"
+  optional: true
   synonyms:
   - --mismatch
+  description: "mismatching penalty\n[ DEFAULT : 7 ]"
   args: !SimpleFlagArg
     name: MISMATCH
-  optional: true
 - !Flag
-  description: "indel penalty\n[ DEFAULT : 7 ]"
+  optional: true
   synonyms:
   - --delta
+  description: "indel penalty\n[ DEFAULT : 7 ]"
   args: !SimpleFlagArg
     name: DELTA
-  optional: true
 - !Flag
-  description: "match probability\n[ DEFAULT : 80 ]"
+  optional: true
   synonyms:
   - --pm
+  description: "match probability\n[ DEFAULT : 80 ]"
   args: !SimpleFlagArg
     name: PM
-  optional: true
 - !Flag
-  description: "indel probability\n[ DEFAULT : 10 ]"
+  optional: true
   synonyms:
   - --pi
+  description: "indel probability\n[ DEFAULT : 10 ]"
   args: !SimpleFlagArg
     name: PI
-  optional: true
 - !Flag
-  description: "minimum alignment score to report\n[ DEFAULT : 50 ]"
+  optional: true
   synonyms:
   - --minscore
+  description: "minimum alignment score to report\n[ DEFAULT : 50 ]"
   args: !SimpleFlagArg
     name: MINSCORE
-  optional: true
 - !Flag
-  description: "maximum period size to report\n[ DEFAULT : 500 ]"
+  optional: true
   synonyms:
   - --maxperiod
+  description: "maximum period size to report\n[ DEFAULT : 500 ]"
   args: !SimpleFlagArg
     name: MAXPERIOD
-  optional: true
 - !Flag
-  description: "path to fastqc\n[ DEFAULT : $PATH ]\n"
+  optional: true
   synonyms:
   - --fastqc
+  description: "path to fastqc\n[ DEFAULT : $PATH ]\n"
   args: !SimpleFlagArg
     name: FASTQC_PATH
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: kneaddata [-h] [--version] [-v] -i INPUT -o OUTPUT_DIR\n      \
   \           [-db REFERENCE_DB] [--bypass-trim]\n                 [--output-prefix\
   \ OUTPUT_PREFIX] [-t <1>] [-p <1>]\n                 [-q {phred33,phred64}] [--run-bmtagger]\
@@ -353,3 +353,4 @@ help_text: "usage: kneaddata [-h] [--version] [-v] -i INPUT -o OUTPUT_DIR\n     
   \ ]\n"
 generated_using:
 - --help
+docker_image:

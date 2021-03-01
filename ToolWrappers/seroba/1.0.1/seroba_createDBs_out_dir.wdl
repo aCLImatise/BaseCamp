@@ -14,6 +14,9 @@ task SerobaCreateDBsOutDir {
       ~{database_dir} \
       ~{km_er_size}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     se_rob_a: ""
     created_bs: ""

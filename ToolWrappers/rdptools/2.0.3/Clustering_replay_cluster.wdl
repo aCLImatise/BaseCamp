@@ -16,6 +16,9 @@ task ClusteringReplaycluster {
       ~{merges_file} \
       ~{cluster_out}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cluster_replay: ""
     id_mapping: ""

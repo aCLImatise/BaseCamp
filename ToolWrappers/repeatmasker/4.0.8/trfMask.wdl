@@ -4,6 +4,9 @@ task TrfMask {
   command <<<
     trfMask
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

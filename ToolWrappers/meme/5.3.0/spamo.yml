@@ -1,0 +1,340 @@
+!Command
+command:
+- spamo
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: sequences
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: primary motif
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: secondary motifs
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: "create the directory and write output files in it;\nnot compatible\
+    \ with -oc"
+  args: !SimpleFlagArg
+    name: directory
+- !Flag
+  optional: true
+  synonyms:
+  - -oc
+  description: "create the directory but if it already exists allow\noverwriting the\
+    \ contents; default: spamo_out"
+  args: !SimpleFlagArg
+    name: directory
+- !Flag
+  optional: true
+  synonyms:
+  - -minscore
+  description: "the minimum score (bits) to accept as a motif match;\ndefault: 7\n\
+    Note: if <valu> is in the range [-1, 0), then the\nminimum score is set to: -<valu>*pwm_maximum_score"
+  args: !SimpleFlagArg
+    name: valu
+- !Flag
+  optional: true
+  synonyms:
+  - -margin
+  description: "edge margin excluded for primary motif matches and\nthe maximum distance\
+    \ from the primary motif to the\nsecondary motif; default: 150"
+  args: !SimpleFlagArg
+    name: size
+- !Flag
+  optional: true
+  synonyms:
+  - -bin
+  description: 'size of bins used for output; default: 1'
+  args: !SimpleFlagArg
+    name: size
+- !Flag
+  optional: true
+  synonyms:
+  - -range
+  description: "the range from the primary to include in significance\ntests; default:\
+    \ 150"
+  args: !SimpleFlagArg
+    name: size
+- !Flag
+  optional: true
+  synonyms:
+  - -usebestsec
+  description: "use only the best match of the secondary motif;\ndefault: count all\
+    \ secondary matches above the\nscore match threshold in the margins around the\n\
+    primary motif match"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -shared
+  description: "fraction of shared trimmed sequence content that\nis required to exclude\
+    \ the sequence as redundant;\nset <fract> to 0 to skip sequence redundancy check;\n\
+    default: 0.5"
+  args: !SimpleFlagArg
+    name: fract
+- !Flag
+  optional: true
+  synonyms:
+  - -odds
+  description: "odds ratio used for speedup of the redundant\nsequence check; low\
+    \ values may cause some\nredundant sequences to be missed; set <odds>\nto 0 to\
+    \ do full-length check;\ndefault: 20"
+  args: !SimpleFlagArg
+    name: odds
+- !Flag
+  optional: true
+  synonyms:
+  - -cutoff
+  description: "cutoff for spacings to be considered significant;\ndefault: 0.05"
+  args: !SimpleFlagArg
+    name: pvalue
+- !Flag
+  optional: true
+  synonyms:
+  - -evalue
+  description: "minimum E-value for printing secondary motifs;\ndefault: 10"
+  args: !SimpleFlagArg
+    name: evalue
+- !Flag
+  optional: true
+  synonyms:
+  - -overlap
+  description: "number of bases that the most significant spacing\nmust overlap before\
+    \ further redundancy testing is\ndone; default: 2"
+  args: !SimpleFlagArg
+    name: size
+- !Flag
+  optional: true
+  synonyms:
+  - -joint
+  description: "fraction of sites making up the most significant\nspacing that must\
+    \ be in both sets for the less\nsignificant motif to be considered redundant;\n\
+    default: 0.5"
+  args: !SimpleFlagArg
+    name: fract
+- !Flag
+  optional: true
+  synonyms:
+  - -pseudo
+  description: "pseudocount added to loaded motifs;\ndefault: 0.1"
+  args: !SimpleFlagArg
+    name: count
+- !Flag
+  optional: true
+  synonyms:
+  - -bgfile
+  description: "file containing background frequency information\nused to apply pseudocounts\
+    \ to motifs and create the\nscoring matrices; default: calculate from sequences"
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -xalph
+  description: "Convert the alphabet of the secondary motif databases\nto the alphabet\
+    \ of the primary motif\nassuming the core symbols of the secondary motif\nalphabet\
+    \ are a subset; default: reject differences"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -trim
+  description: "trim the edges of motifs based on the information\ncontent; positions\
+    \ on the edges with information\ncontent less than bits will not be used in\n\
+    scanning\ndefault: 0.25"
+  args: !SimpleFlagArg
+    name: bits
+- !Flag
+  optional: true
+  synonyms:
+  - -numgen
+  description: "specify the random seed for initializing the pseudo-\nrandom number\
+    \ generator used in breaking ties;\nthe seed is included in the output so experiments\n\
+    can be repeated; special value 'time' seeds to the\nsystem clock; default: 1"
+  args: !SimpleFlagArg
+    name: seed
+- !Flag
+  optional: true
+  synonyms:
+  - -primary
+  description: "name of motif to select as the primary motif;\noverrides -primaryi"
+  args: !SimpleFlagArg
+    name: name
+- !Flag
+  optional: true
+  synonyms:
+  - -primaryi
+  description: "index of motif to select as the primary motif\ncounting from 1; default:\
+    \ 1"
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -keepprimary
+  description: "by default all occurrences of the primary other\nthan the chosen one\
+    \ are erased to reduce the\nnumber of motifs whose apparent enrichment is due\n\
+    to multiple occurrences of the primary motif. If\nthe same file is specified for\
+    \ the primary and\nsecondary motifs, then this option will override\nerasing and\
+    \ primary-primary spacings will be\nanalyzed."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -inc
+  description: "name pattern to select as secondary motif; may be\nrepeated; default:\
+    \ all motifs are used"
+  args: !SimpleFlagArg
+    name: pattern
+- !Flag
+  optional: true
+  synonyms:
+  - -exc
+  description: "name pattern to exclude as secondary motif; may be\nrepeated; default:\
+    \ all motifs are used"
+  args: !SimpleFlagArg
+    name: pattern
+- !Flag
+  optional: true
+  synonyms:
+  - -text
+  description: output text file only (no HTML or XML)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -eps
+  description: output histograms in eps format; usable with -png
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -png
+  description: output histograms in png format; usable with -eps
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -dumpseqs
+  description: "dump matching trimmed sequences to output files;\nmatches are initially\
+    \ in sequence name order;\nsee documentation for column descriptions"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -dumpsigs
+  description: "same as above except only secondary matches in\nin significant bins\
+    \ are dumped\nmatches are initially in sequence name order;\nsee documentation\
+    \ for column descriptions"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -verbosity
+  description: "set the verbosity of the output: 1 (quiet) - 5 (dump);\ndefault: 2\
+    \ (normal)"
+  args: !SimpleFlagArg
+    name: v
+- !Flag
+  optional: true
+  synonyms:
+  - -version
+  description: print the version and exit
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -help
+  description: print this usage message
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage:\n    spamo [options] <sequences> <primary motif> <secondary motifs>+\n\
+  Options:\n    -o <directory>   create the directory and write output files in it;\n\
+  \                       not compatible with -oc\n    -oc <directory>  create the\
+  \ directory but if it already exists allow\n                       overwriting the\
+  \ contents; default: spamo_out\n    -minscore <valu> the minimum score (bits) to\
+  \ accept as a motif match;\n                       default: 7\n                \
+  \       Note: if <valu> is in the range [-1, 0), then the\n                    \
+  \   minimum score is set to: -<valu>*pwm_maximum_score\n    -margin <size>   edge\
+  \ margin excluded for primary motif matches and\n                       the maximum\
+  \ distance from the primary motif to the\n                       secondary motif;\
+  \ default: 150\n    -bin <size>      size of bins used for output; default: 1\n\
+  \    -range <size>    the range from the primary to include in significance\n  \
+  \                     tests; default: 150\n    -usebestsec      use only the best\
+  \ match of the secondary motif;\n                       default: count all secondary\
+  \ matches above the\n                       score match threshold in the margins\
+  \ around the\n                       primary motif match\n    -shared <fract>  fraction\
+  \ of shared trimmed sequence content that\n                       is required to\
+  \ exclude the sequence as redundant;\n                       set <fract> to 0 to\
+  \ skip sequence redundancy check;\n                       default: 0.5\n    -odds\
+  \ <odds>     odds ratio used for speedup of the redundant\n                    \
+  \   sequence check; low values may cause some \n                       redundant\
+  \ sequences to be missed; set <odds>\n                       to 0 to do full-length\
+  \ check;\n                       default: 20\n    -cutoff <pvalue> cutoff for spacings\
+  \ to be considered significant;\n                       default: 0.05\n    -evalue\
+  \ <evalue> minimum E-value for printing secondary motifs;\n                    \
+  \   default: 10\n    -overlap <size>  number of bases that the most significant\
+  \ spacing\n                       must overlap before further redundancy testing\
+  \ is\n                       done; default: 2\n    -joint <fract>   fraction of\
+  \ sites making up the most significant\n                       spacing that must\
+  \ be in both sets for the less\n                       significant motif to be considered\
+  \ redundant;\n                       default: 0.5\n    -pseudo <count>  pseudocount\
+  \ added to loaded motifs;\n                       default: 0.1\n    -bgfile <file>\
+  \   file containing background frequency information\n                       used\
+  \ to apply pseudocounts to motifs and create the\n                       scoring\
+  \ matrices; default: calculate from sequences\n    -xalph           Convert the\
+  \ alphabet of the secondary motif databases\n                       to the alphabet\
+  \ of the primary motif\n                       assuming the core symbols of the\
+  \ secondary motif\n                       alphabet are a subset; default: reject\
+  \ differences\n    -trim <bits>     trim the edges of motifs based on the information\n\
+  \                       content; positions on the edges with information\n     \
+  \                  content less than bits will not be used in\n                \
+  \       scanning\n                       default: 0.25\n    -numgen <seed>   specify\
+  \ the random seed for initializing the pseudo-\n                       random number\
+  \ generator used in breaking ties;\n                       the seed is included\
+  \ in the output so experiments\n                       can be repeated; special\
+  \ value 'time' seeds to the\n                       system clock; default: 1\n \
+  \   -primary <name>  name of motif to select as the primary motif;\n           \
+  \            overrides -primaryi\n    -primaryi <num>  index of motif to select\
+  \ as the primary motif\n                       counting from 1; default: 1\n   \
+  \ -keepprimary     by default all occurrences of the primary other\n           \
+  \            than the chosen one are erased to reduce the\n                    \
+  \   number of motifs whose apparent enrichment is due\n                       to\
+  \ multiple occurrences of the primary motif. If\n                       the same\
+  \ file is specified for the primary and\n                       secondary motifs,\
+  \ then this option will override\n                       erasing and primary-primary\
+  \ spacings will be\n                       analyzed.\n    -inc <pattern>   name\
+  \ pattern to select as secondary motif; may be\n                       repeated;\
+  \ default: all motifs are used\n    -exc <pattern>   name pattern to exclude as\
+  \ secondary motif; may be\n                       repeated; default: all motifs\
+  \ are used\n    -text            output text file only (no HTML or XML)\n    -eps\
+  \             output histograms in eps format; usable with -png\n    -png      \
+  \       output histograms in png format; usable with -eps\n    -dumpseqs       \
+  \ dump matching trimmed sequences to output files;\n                       matches\
+  \ are initially in sequence name order;\n                       see documentation\
+  \ for column descriptions\n    -dumpsigs        same as above except only secondary\
+  \ matches in\n                       in significant bins are dumped\n          \
+  \             matches are initially in sequence name order;\n                  \
+  \     see documentation for column descriptions\n    -help            print this\
+  \ usage message\n    -verbosity <v>   set the verbosity of the output: 1 (quiet)\
+  \ - 5 (dump);\n                       default: 2 (normal)\n    -version        \
+  \ print the version and exit\nDescription:\n    SpaMo looks for significant spacings\
+  \ between a primary motif and\n    each motif in a library of secondary motifs.\n\
+  \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/meme:5.3.0--py38pl526hc1f1133_0

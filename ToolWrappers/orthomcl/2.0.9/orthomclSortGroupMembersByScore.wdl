@@ -8,6 +8,9 @@ task OrthomclSortGroupMembersByScore {
     orthomclSortGroupMembersByScore \
       ~{co_orthologs_dot_txt}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     co_orthologs_dot_txt: "Output:"
   }

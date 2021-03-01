@@ -3,47 +3,47 @@ id: pm_which.cwl
 inputs:
 - id: in_quiet
   doc: Just print paths
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 - id: in_paths
   doc: Just convert the module name into a relative path
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --paths
 - id: in_all
   doc: Print all paths, not just the first one found
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --all
 - id: in_namespace
   doc: all modules in the given namespace
-  type: string
+  type: string?
   inputBinding:
     prefix: --namespace
 - id: in_only_print_module
   doc: Only print module names, not paths
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -m
 - id: in_show_module_version
   doc: Show module version
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -V
 - id: in_add_path_search
   doc: Add a path to search (like perl -I)
-  type: File
+  type: File?
   inputBinding:
     prefix: -I
 - id: in_dump
   doc: Dump paths that would be searched (@INC by default)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --dump
 - id: in_var_8
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_add
@@ -115,6 +115,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pm_which

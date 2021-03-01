@@ -58,6 +58,9 @@ task Illuminadump2 {
       ~{if defined(q_seq) then ("--qseq " +  '"' + q_seq + '"') else ""} \
       ~{if (bzip_two) then "--bzip2" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     accession: "Replaces accession derived from <path> in\\nfilename(s) and deflines (only for single\\ntable dump)"
     outdir: "Output directory, default is working\\ndirectory '.' )"

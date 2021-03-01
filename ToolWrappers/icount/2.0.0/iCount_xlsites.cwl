@@ -1,72 +1,72 @@
 class: CommandLineTool
 id: iCount_xlsites.cwl
 inputs:
-- id: in__groupby_assign
-  doc: ", --group_by       Assign score of a read to either 'start', 'middle' or 'end'\
-    \ nucleotide (default: start)"
-  type: boolean
+- id: in_group_by
+  doc: "Assign score of a read to either 'start', 'middle' or 'end' nucleotide (default:\
+    \ start)"
+  type: boolean?
   inputBinding:
-    prefix: -g
+    prefix: --group_by
 - id: in_quant
   doc: "Report number of 'cDNA' or number of 'reads' (default: cDNA)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quant
 - id: in_segmentation
   doc: 'File with custon segmentation format (obtained by ``iCount segment``) (default:
     None)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --segmentation
-- id: in_mis
-  doc: ", --mismatches   Reads on same position with random barcode differing less\
-    \ than\n``mismatches`` are grouped together (default: 2)"
-  type: boolean
+- id: in_mismatches
+  doc: "Reads on same position with random barcode differing less than\n``mismatches``\
+    \ are grouped together (default: 2)"
+  type: boolean?
   inputBinding:
-    prefix: -mis
+    prefix: --mismatches
 - id: in_mapq_th
   doc: 'Ignore hits with MAPQ < mapq_th (default: 0)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --mapq_th
 - id: in_multimax
   doc: 'Ignore reads, mapped to more than ``multimax`` places (default: 50)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --multimax
 - id: in_gap_th
   doc: 'Reads with gaps less than gap_th are treated as if they have no gap (default:
     4)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --gap_th
 - id: in_report_progress
   doc: 'Switch to report progress (default: False)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --report_progress
-- id: in__stdoutlog_threshold
-  doc: ', --stdout_log     Threshold value (0-50) for logging to stdout. If 0, logging
-    to stdout if turned OFF.'
-  type: boolean
+- id: in_stdout_log
+  doc: Threshold value (0-50) for logging to stdout. If 0, logging to stdout if turned
+    OFF.
+  type: boolean?
   inputBinding:
-    prefix: -S
-- id: in__filelog_threshold
-  doc: ', --file_log       Threshold value (0-50) for logging to file. If 0, logging
-    to file if turned OFF.'
-  type: boolean
+    prefix: --stdout_log
+- id: in_file_log
+  doc: Threshold value (0-50) for logging to file. If 0, logging to file if turned
+    OFF.
+  type: boolean?
   inputBinding:
-    prefix: -F
-- id: in__filelogpath_path
-  doc: ', --file_logpath   Path to log file.'
-  type: boolean
+    prefix: --file_log
+- id: in_file_log_path
+  doc: Path to log file.
+  type: boolean?
   inputBinding:
-    prefix: -P
-- id: in__file_store
-  doc: ', --results_file   File into which to store Metrics.'
-  type: boolean
+    prefix: --file_logpath
+- id: in_results_file
+  doc: File into which to store Metrics.
+  type: boolean?
   inputBinding:
-    prefix: -M
+    prefix: --results_file
 - id: in_bam
   doc: Input BAM file with mapped reads
   type: string
@@ -95,6 +95,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - iCount

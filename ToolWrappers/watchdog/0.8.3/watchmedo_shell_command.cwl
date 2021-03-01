@@ -10,44 +10,44 @@ inputs:
     \ string. That will force your shell\nto interpolate before the command is processed\
     \ by this\nsubcommand. Example option usage:: --command='echo\n\"${watch_src_path}\"\
     ' (default: -)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --command
 - id: in_patterns
   doc: "matches event paths with these patterns (separated by\n;). (default: '*')"
-  type: string
+  type: string?
   inputBinding:
     prefix: --patterns
 - id: in_ignore_patterns
   doc: "ignores event paths with these patterns (separated by\n;). (default: '')"
-  type: string
+  type: string?
   inputBinding:
     prefix: --ignore-patterns
 - id: in_ignore_directories
   doc: 'ignores events for directories (default: False)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --ignore-directories
 - id: in_recursive
   doc: 'monitors the directories recursively (default: False)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --recursive
 - id: in_interval
   doc: "use this as the polling interval/blocking timeout\n(default: 1.0)"
-  type: double
+  type: double?
   inputBinding:
     prefix: --interval
 - id: in_wait
   doc: "wait for process to finish to avoid multiple\nsimultaneous instances (default:\
     \ False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --wait
 - id: in_drop
   doc: "Ignore events that occur while command is still being\nexecuted to avoid multiple\
     \ simultaneous instances\n(default: False)\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --drop
 - id: in_directories
@@ -59,6 +59,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - watchmedo

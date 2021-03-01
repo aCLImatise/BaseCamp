@@ -26,6 +26,9 @@ task TwoBitToFa {
       ~{if (bed_pos) then "-bedPos" else ""} \
       ~{if (udc_dir) then "-udcDir" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     seq: "Restrict this to just one sequence."
     start: "Start at given position in sequence (zero-based)."

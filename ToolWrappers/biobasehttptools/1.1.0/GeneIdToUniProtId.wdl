@@ -8,6 +8,7 @@ task GeneIdToUniProtId {
     String method
     String proxy
     String raw_body
+    String response_time_out
     String request_version
   }
   command <<<
@@ -18,8 +19,12 @@ task GeneIdToUniProtId {
       ~{method} \
       ~{proxy} \
       ~{raw_body} \
+      ~{response_time_out} \
       ~{request_version}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     host: "= \\\"rest.ensemblgenomes.org\\\""
     secure: "= False"
@@ -27,6 +32,7 @@ task GeneIdToUniProtId {
     method: "= \\\"GET\\\""
     proxy: "= Nothing"
     raw_body: "= False"
+    response_time_out: "= ResponseTimeoutDefault"
     request_version: "= HTTP/1.1"
   }
   output {

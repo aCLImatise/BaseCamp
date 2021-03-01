@@ -42,6 +42,9 @@ task ProcessShortreads {
       ~{if (mate_pair) then "--mate-pair" else ""} \
       ~{if (no_overhang) then "--no-overhang" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     inline_null: ":   barcode is inline with sequence, occurs only on single-end read (default)."
     index_null: ":    barcode is provded in FASTQ header (Illumina i5 or i7 read)."

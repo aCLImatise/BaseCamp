@@ -1,0 +1,46 @@
+!Command
+command:
+- wiggletools
+positional: []
+named: []
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "WiggleTools\n\nCopyright [1999-2017] EMBL-European Bioinformatics Institute\n\
+  Development contact: Daniel Zerbino zerbino@ebi.ac.uk\n\nCitation: Zerbino DR, Johnson\
+  \ N, Juettemann T, Wilder SP and Flicek PR: WiggleTools: parallel processing of\
+  \ large collections of genome-wide datasets for visualization and statistical analysis.\
+  \ Bioinformatics 2014 30:1008-1009.\n\nThis library parses wiggle files and executes\
+  \ various operations on them streaming through lazy evaluators.\n\nInputs:\n\tThe\
+  \ program takes in Wig, BigWig, BedGraph, Bed, BigBed, Bam, VCF, and BCF files,\
+  \ which are distinguished thanks to their suffix (.wig, (.bw|.bigWig|.bigwig), .bg,\
+  \ .bed, .bb, .bam, .cram, .vcf, .bcf respectively).\n\tNote that wiggletools assumes\
+  \ that every bam file has an index .bai file next to it.\n\nOutputs:\n\tThe program\
+  \ outputs a wiggle file in stdout unless the output is squashed\n\nCommand line:\n\
+  \twiggletools --help\n\twiggletools program\n\nProgram grammar:\n\tprogram = (iterator)\
+  \ | do (iterator) | (extraction) | (statistic) | run (file)\n\titerator = (in_filename)\
+  \ | (unary_operator) (iterator) | (binary_operator) (iterator) (iterator) | (reducer)\
+  \ (multiplex) | (setComparison) (multiplex_list) | print (output) (statistic)\n\t\
+  unary_operator = unit | coverage | write (output) | write_bg (ouput) | smooth (int)\
+  \ | abs | exp | ln | log (float) | pow (float) | offset (float) | shiftPos (int)\
+  \ | scale (float) | gt (float) | gte (float) | lt (float) | lte (float) | default\
+  \ (float) | isZero | toInt | floor | extend (int) | bin (int) | compress | (statistic)\n\
+  \toutput = (out_filename) | -\n\tin_filename = *.wig | *.bw | *.bed | *.bb | *.bg\
+  \ | *.bam | *.cram | *.vcf | *.bcf\n\tstatistic = (statistic_function) (iterator)\
+  \ | ndpearson (multiplex) (multiplex)\n\tstatistic_function = AUC | meanI | varI\
+  \ | minI | maxI | stddevI | CVI | energy (wavelength) | pearson (iterator)\n\tbinary_operator\
+  \ = diff | ratio | overlaps | trim | noverlaps | nearest | apply (statistic) | fillIn\
+  \ | trimFill\n\treducer = cat | sum | product | mean | var | stddev | entropy |\
+  \ CV | median | min | max\n\tsetComparison = ttest | ftest | wilcoxon\n\tmultiplex_list\
+  \ = (multiplex) | (multiplex) : (multiplex_list)\n\tmultiplex = (iterator_list)\
+  \ | map (unary_operator) (multiplex) | strict (multiplex)\n\titerator_list = (iterator)\
+  \ | (iterator) : (iterator_list)\n\textraction = profile (output) (int) (iterator)\
+  \ (iterator) | profiles (output) (int) (iterator) (iterator) | histogram (output)\
+  \ (width) (iterator_list) | mwrite (output) (multiplex) | mwrite_bg (output) (multiplex)\n\
+  \t\t| apply_paste (out_filename) (statistic) (bed_file) (iterator)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/wiggletools:1.2.8--hebded25_0

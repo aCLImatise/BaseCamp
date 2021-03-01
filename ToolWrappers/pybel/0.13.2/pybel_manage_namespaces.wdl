@@ -12,6 +12,9 @@ task PybelManageNamespaces {
       ~{insert} \
       ~{ls}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     drop: "Drop a namespace by URL."
     insert: "Add a namespace by URL."

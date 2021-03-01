@@ -8,6 +8,9 @@ task CruxPrintprocessedspectra {
     crux print_processed_spectra \
       ~{ms_two_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ms_two_file: ""
   }

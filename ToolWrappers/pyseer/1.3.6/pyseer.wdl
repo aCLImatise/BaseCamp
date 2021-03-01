@@ -88,6 +88,9 @@ task Pyseer {
       ~{if defined(cpu) then ("--cpu " +  '"' + cpu + '"') else ""} \
       ~{if defined(block_size) then ("--block_size " +  '"' + block_size + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     phenotypes: "Phenotypes file (whitespace separated)"
     phenotype_column: "Phenotype file column to use [Default: last column]"

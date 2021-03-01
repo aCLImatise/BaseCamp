@@ -4,19 +4,19 @@ inputs:
 - id: in_sam_files
   doc: "sam files two sam files, -s two sam files two sam files\nThe two PE alignment\
     \ sam files to process (default:\nNone)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --samFiles
 - id: in_out_filename
   doc: 'Output file name for the Hi-C matrix. (default: None)'
-  type: File
+  type: File?
   inputBinding:
     prefix: --outFileName
 - id: in_qc_folder
   doc: "Path of folder to save the quality control data for\nthe matrix. The log files\
     \ produced this way can be\nloaded into `hicQC` in order to compare the quality\
     \ of\nmultiple Hi-C libraries. (default: None)"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --QCfolder
 - id: in_restriction_cut_file
@@ -27,7 +27,7 @@ inputs:
     \ a fixed\nbinSize can be defined instead. However, either\nbinSize or restrictionCutFile\
     \ must be defined. To use\nmore than one restriction enzyme, generate for each\n\
     one a restrictionCutFile and list them space\nseperated. (default: None)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --restrictionCutFile
 - id: in_restriction_sequence
@@ -57,7 +57,7 @@ inputs:
     \ file could be useful to\ninspect the distribution of valid Hi-C reads pairs\
     \ or\nfor other downstream analyses, but is not used by any\nHiCExplorer tool.\
     \ Computation will be significantly\nlonger if this option is set. (default: None)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --outBam
 - id: in_binsize
@@ -75,13 +75,13 @@ inputs:
   doc: "Minimum distance between restriction sites.\nRestriction sites that are closer\
     \ than this distance\nare merged into one. This option only applies if\n--restrictionCutFile\
     \ is given. (default: 300)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --minDistance
 - id: in_max_distance
   doc: "This parameter is now obsolete. Use\n--maxLibraryInsertSize instead (default:\
     \ None)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --maxDistance
 - id: in_max_library_insert_size
@@ -93,33 +93,33 @@ inputs:
     \ if two mates belong to the same\nfragment (by checking if they are within this\
     \ max\ninsert size) and to decide if a mate is too far away\nfrom the nearest\
     \ restriction site. (default: 1000)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --maxLibraryInsertSize
 - id: in_genome_assembly
   doc: "The genome the reads were mapped to. Used for metadata\nof cool file. (default:\
     \ None)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --genomeAssembly
 - id: in_region
   doc: ":START-END, -r CHR:START-END\nRegion of the genome to limit the operation\
     \ to. The\nformat is chr:start-end. It is also possible to just\nspecify a chromosome,\
     \ for example --region chr10\n(default: None)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --region
 - id: in_remove_self_ligation
   doc: "If set, inward facing reads less than 1000 bp apart\nand having a restrictionsite\
     \ in between are removed.\nAlthough this reads do not contribute to any distant\n\
     contact, they are useful to account for bias in the\ndata. (default: True)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --removeSelfLigation
 - id: in_keep_self_circles
   doc: "If set, outward facing reads without any restriction\nfragment (self circles)\
     \ are kept. They will be counted\nand shown in the QC plots. (default: False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --keepSelfCircles
 - id: in_min_mapping_quality
@@ -131,7 +131,7 @@ inputs:
     \ too many low quality\nreads are present and then using the bam file\ngenerated\
     \ to check if those low quality reads are\ncaused by the read not being mapped\
     \ entirely.\n(default: 15)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --minMappingQuality
 - id: in_threads
@@ -146,14 +146,14 @@ inputs:
     \ with\na higher thread number is not negative influenced but\nnot positive too.\
     \ With a slow HDD and a high number of\nthreads many threads will do nothing most\
     \ of the time.\n(default: 4)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --threads
 - id: in_input_buffer_size
   doc: "Size of the input buffer of each thread. 400,000 read\npairs per input file\
     \ per thread is the default value.\nReduce this value to decrease memory usage.\
     \ (default:\n400000)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --inputBufferSize
 - id: in_do_test_run
@@ -161,19 +161,19 @@ inputs:
     \ works by testing only 1,000,000\nreads. This option is useful to get an idea\
     \ of quality\ncontrol values like inter-chromosomal interactions,\nduplication\
     \ rates etc. (default: False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --doTestRun
 - id: in_do_test_run_lines
   doc: "Number of lines to consider for the qc test run.\n(default: 1000000)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --doTestRunLines
 - id: in_skip_duplication_check
   doc: "Identification of duplicated read pairs is memory\nconsuming. Thus, in case\
     \ of memory errors this check\ncan be skipped. However, consider running a\n`--doTestRun`\
     \ first to get an estimation of the\nduplicated reads. (default: False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --skipDuplicationCheck
 - id: in_chromosome_sizes
@@ -185,7 +185,7 @@ inputs:
     \ this option to guarantee fixed sizes.\nAn example file is available via UCSC:\
     \ http://hgdownlo\nad.soe.ucsc.edu/goldenPath/dm3/bigZips/dm3.chrom.sizes\n(default:\
     \ None)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --chromosomeSizes
 - id: in_sam
@@ -209,7 +209,7 @@ outputs:
   type: stdout
 - id: out_out_filename
   doc: 'Output file name for the Hi-C matrix. (default: None)'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out_filename)
 - id: out_restriction_cut_file
@@ -220,7 +220,7 @@ outputs:
     \ a fixed\nbinSize can be defined instead. However, either\nbinSize or restrictionCutFile\
     \ must be defined. To use\nmore than one restriction enzyme, generate for each\n\
     one a restrictionCutFile and list them space\nseperated. (default: None)"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_restriction_cut_file)
 - id: out_out_bam
@@ -229,9 +229,10 @@ outputs:
     \ file could be useful to\ninspect the distribution of valid Hi-C reads pairs\
     \ or\nfor other downstream analyses, but is not used by any\nHiCExplorer tool.\
     \ Computation will be significantly\nlonger if this option is set. (default: None)"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out_bam)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - hicBuildMatrix

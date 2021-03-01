@@ -14,6 +14,9 @@ task MixcrAnalyzeHelp {
       ~{help} \
       ~{command_dot_dot_dot}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     scr: ""
     analyze: ""

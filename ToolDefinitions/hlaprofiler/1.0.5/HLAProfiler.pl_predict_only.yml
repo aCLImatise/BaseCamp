@@ -4,63 +4,66 @@ command:
 - predict_only
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: perl
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: HLAProfiler.pl
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 2
   name: predict
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 3
   name: options
-  optional: false
+  description: ''
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -counts_directory
   description: '|cd            location of directory containing filtered and paired
     read counts files. To generate these files from fastq files please run HLAProfiler.pl
     filter followed by HLAProfiler.pl count_reads (required)'
-  synonyms:
-  - -counts_directory
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '|cd             location of directory containing filtered and paired
-    read fastqs.(required)'
+  optional: true
   synonyms:
   - -reads_directory
+  description: '|cd             location of directory containing filtered and paired
+    read fastqs.(required)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '|sdir         path to directory containing the profile files (required)'
+  optional: true
   synonyms:
   - -profile_directory
+  description: '|sdir         path to directory containing the profile files (required)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -sample_name
   description: '|sn                 name of the sample. This must perfect match the
     prefix of each of the read count files. i.e. The sample name for file NA12878.200.B_1.uniq.cnt
     would be NA12878.200 (required)'
-  synonyms:
-  - -sample_name
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '|r                    HLA reference fasta. There must also be an allele
-    map file in the sample directory as the reference fa. (required)'
+  optional: true
   synonyms:
   - -reference
+  description: '|r                    HLA reference fasta. There must also be an allele
+    map file in the sample directory as the reference fa. (required)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -allele_refinement
   description: "|ar   Specifies the level to which the predicted alleles are to be\
     \ refined based on the observed reads (default:all)\nPossible values:\nrefine_only\
     \             Refines the allelle call by looking predicting the true allele sequence\
@@ -71,51 +74,48 @@ named:
     \ allele call (-refine_only) and report novel alleles (-novel_only), creates a\
     \ profile for the refined/novel allele sequence and calculates prediction metrics.\n\
     none                    Turns off refinement and novel allele prediction."
-  synonyms:
-  - -allele_refinement
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '|db           base directory of kraken database.'
+  optional: true
   synonyms:
   - -kraken_db
+  description: '|db           base directory of kraken database.'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '|kp         base directory of kraken installation. (default:base directory
-    of path returned by `which kraken`)'
+  optional: true
   synonyms:
   - -kraken_path
+  description: '|kp         base directory of kraken installation. (default:base directory
+    of path returned by `which kraken`)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '|min      minimum number of reads from a gene before attempting to
-    call HLA types.(default:100)'
+  optional: true
   synonyms:
   - -minimum_reads
+  description: '|min      minimum number of reads from a gene before attempting to
+    call HLA types.(default:100)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "|od          output directory(default:'.')"
+  optional: true
   synonyms:
   - -output_dir
+  description: "|od          output directory(default:'.')"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '|c              number of threads (default:1)'
+  optional: true
   synonyms:
   - -threads
+  description: '|c              number of threads (default:1)'
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: '|h                 prints this help prompt'
+  optional: true
   synonyms:
   - -help
+  description: '|h                 prints this help prompt'
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "\nHLAProfiler.pl predict_only\n\nDESCRIPTION\nA tool for predicting the\
@@ -149,3 +149,4 @@ help_text: "\nHLAProfiler.pl predict_only\n\nDESCRIPTION\nA tool for predicting 
   \ Genomics. 2016\n\n\n"
 generated_using:
 - --help
+docker_image:

@@ -34,6 +34,9 @@ task Wgsim {
       ~{if defined(seed_random_generator) then ("-S " +  '"' + seed_random_generator + '"') else ""} \
       ~{if defined(discard_fraction_ambiguous) then ("-A " +  '"' + discard_fraction_ambiguous + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     base_error_rate: "base error rate [0.000]"
     outer_distance_two: "outer distance between the two ends [500]"

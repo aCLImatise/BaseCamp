@@ -16,6 +16,9 @@ task SvtkAnnotate {
       ~{if defined(gen_code) then ("--gencode " +  '"' + gen_code + '"') else ""} \
       ~{if defined(noncoding) then ("--noncoding " +  '"' + noncoding + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gen_code: "Gencode gene annotations (GTF)."
     noncoding: "Noncoding elements (bed). Columns =\\nchr,start,end,element_class,element_name\\n"

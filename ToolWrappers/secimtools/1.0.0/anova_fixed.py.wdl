@@ -11,11 +11,11 @@ task AnovaFixedpy {
     File? flags
     String? fig
     Int? fig_two
-    String oname__onameoutput
+    String o_oname_onameoutput
   }
   command <<<
     anova_fixed_py \
-      ~{oname__onameoutput} \
+      ~{o_oname_onameoutput} \
       ~{if defined(input_dataset_wide) then ("--input " +  '"' + input_dataset_wide + '"') else ""} \
       ~{if defined(design) then ("--design " +  '"' + design + '"') else ""} \
       ~{if defined(id) then ("--ID " +  '"' + id + '"') else ""} \
@@ -26,6 +26,9 @@ task AnovaFixedpy {
       ~{if defined(fig) then ("--fig " +  '"' + fig + '"') else ""} \
       ~{if defined(fig_two) then ("--fig2 " +  '"' + fig_two + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_dataset_wide: "Input dataset in wide format."
     design: "Design file."
@@ -36,7 +39,7 @@ task AnovaFixedpy {
     flags: "Flags file name."
     fig: "Output figure name for q-q plots [pdf]."
     fig_two: "Output figure name for volcano plots [pdf].\\n"
-    oname__onameoutput: "-o ONAME, --out ONAME\\nOutput file name."
+    o_oname_onameoutput: "-o ONAME, --out ONAME\\nOutput file name."
   }
   output {
     File out_stdout = stdout()

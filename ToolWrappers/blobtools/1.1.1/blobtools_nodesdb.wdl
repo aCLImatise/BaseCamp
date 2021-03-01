@@ -10,6 +10,9 @@ task BlobtoolsNodesdb {
       ~{if defined(nodes) then ("--nodes " +  '"' + nodes + '"') else ""} \
       ~{if defined(names) then ("--names " +  '"' + names + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     nodes: "NCBI nodes.dmp file."
     names: "NCBI names.dmp file."

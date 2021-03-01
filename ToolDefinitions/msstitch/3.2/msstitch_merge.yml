@@ -5,113 +5,118 @@ command:
 positional: []
 named:
 - !Flag
-  description: "[--featcol FEATCOL] --dbfile LOOKUPFN\n[--mergecutoff MERGECUTOFF]\
-    \ [--no-group-annotation]\n[--genecentric]"
-  synonyms:
-  - --fdrcolpattern
-  - -i
-  args: !SimpleFlagArg
-    name: FDRCOLPATTERN
   optional: true
-- !Flag
-  description: Directory to output in
   synonyms:
   - -d
+  description: Directory to output in
   args: !SimpleFlagArg
     name: OUTDIR
-  optional: true
 - !Flag
-  description: Output file
+  optional: true
   synonyms:
   - -o
+  description: Output file
   args: !SimpleFlagArg
     name: OUTFILE
-  optional: true
 - !Flag
-  description: "Names of biological sets. Can be specified with\nquotation marks if\
-    \ spaces are used"
+  optional: true
   synonyms:
   - --setnames
+  description: "Names of biological sets. Can be specified with\nquotation marks if\
+    \ spaces are used"
   args: !RepeatFlagArg
     name: SETNAMES
-  optional: true
 - !Flag
-  description: "Unique text pattern to identify isobaric quant columns\nin input table."
+  optional: true
   synonyms:
   - --isobquantcolpattern
+  description: "Unique text pattern to identify isobaric quant columns\nin input table."
   args: !SimpleFlagArg
     name: QUANTCOLPATTERN
-  optional: true
 - !Flag
-  description: "Unique text pattern to identify number-of-psms column\nin input table."
+  optional: true
   synonyms:
   - --psmnrcolpattern
+  description: "Unique text pattern to identify number-of-psms column\nin input table."
   args: !SimpleFlagArg
     name: PSMNRCOLPATTERN
-  optional: true
 - !Flag
-  description: "Unique text pattern to identify precursor quant column\nin input table."
+  optional: true
   synonyms:
   - --ms1quantcolpattern
+  description: "Unique text pattern to identify precursor quant column\nin input table."
   args: !SimpleFlagArg
     name: PRECURSORQUANTCOLPATTERN
-  optional: true
 - !Flag
-  description: "Column number in table in which protein or gene\naccessions are. stored.\
-    \ First column number is 1. Use\nin case of not using standard first column"
+  optional: true
+  synonyms:
+  - --fdrcolpattern
+  description: "Unique text pattern to identify FDR column in input\ntable."
+  args: !SimpleFlagArg
+    name: FDRCOLPATTERN
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: Multiple input files of {} format
+  args: !RepeatFlagArg
+    name: FN
+- !Flag
+  optional: true
   synonyms:
   - --featcol
+  description: "Column number in table in which protein or gene\naccessions are. stored.\
+    \ First column number is 1. Use\nin case of not using standard first column"
   args: !SimpleFlagArg
     name: FEATCOL
-  optional: true
 - !Flag
-  description: Database lookup file
+  optional: true
   synonyms:
   - --dbfile
+  description: Database lookup file
   args: !SimpleFlagArg
     name: LOOKUPFN
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --mergecutoff
   description: "FDR cutoff when building merged protein table, to use\nwhen a cutoff\
     \ has been used before storing the table\nto lookup. FDR values need to be stored\
     \ in the lookup"
-  synonyms:
-  - --mergecutoff
   args: !SimpleFlagArg
     name: MERGECUTOFF
-  optional: true
 - !Flag
-  description: "For peptide table merging. Do not include protein\ngroup or gene data\
-    \ in output, just use accessions."
+  optional: true
   synonyms:
   - --no-group-annotation
+  description: "For peptide table merging. Do not include protein\ngroup or gene data\
+    \ in output, just use accessions."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --genecentric
   description: "For peptide table merging. Do not include protein\ngroup data in output,\
     \ but use gene names instead to\ncount peptides per feature, determine peptide-\n\
     uniqueness.\n"
-  synonyms:
-  - --genecentric
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: msstitch merge [-h] [--version] [-d OUTDIR] [-o OUTFILE] --setnames\n\
   \                      SETNAMES [SETNAMES ...]\n                      [--isobquantcolpattern\
   \ QUANTCOLPATTERN]\n                      [--psmnrcolpattern PSMNRCOLPATTERN]\n\
@@ -147,3 +152,4 @@ help_text: "usage: msstitch merge [-h] [--version] [-d OUTDIR] [-o OUTFILE] --se
   \                       uniqueness.\n"
 generated_using:
 - --help
+docker_image:

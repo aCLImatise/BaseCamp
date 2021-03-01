@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, Int, Boolean
+
+Rtpredict_V0_1_0 = CommandToolBuilder(tool="RTPredict", base_command=["RTPredict"], inputs=[ToolInput(tag="in_in_id", input_type=File(optional=True), prefix="-in_id", doc=InputDocumentation(doc="Peptides with precursor information (valid formats: 'idXML')")), ToolInput(tag="in_in_text", input_type=File(optional=True), prefix="-in_text", doc=InputDocumentation(doc="Peptides as text-based file (valid formats: 'txt')")), ToolInput(tag="in_in_oligo_params", input_type=File(optional=True), prefix="-in_oligo_params", doc=InputDocumentation(doc="Input file with additional model parameters when using the OLIGO kernel (valid formats: 'paramXML')")), ToolInput(tag="in_in_oligo_train_set", input_type=File(optional=True), prefix="-in_oligo_trainset", doc=InputDocumentation(doc="Input file with the used training dataset when using the OLIGO kernel (valid formats: 'txt')")), ToolInput(tag="in_svm_model", input_type=File(optional=True), prefix="-svm_model", doc=InputDocumentation(doc="*           Svm model in libsvm format (can be produced by RTModel) (valid formats: 'txt')")), ToolInput(tag="in_total_gradient_time", input_type=Int(optional=True), prefix="-total_gradient_time", doc=InputDocumentation(doc="The time (in seconds) of the gradient (peptide RT prediction) (default: '1.0' min: '1.0e-05')")), ToolInput(tag="in_out_text", input_type=File(optional=True), prefix="-out_text", doc=InputDocumentation(doc=":file <file>        Output file with predicted RT values (valid formats: 'csv')")), ToolInput(tag="in_ini", input_type=File(optional=True), prefix="-ini", doc=InputDocumentation(doc="Use the given TOPP INI file")), ToolInput(tag="in_threads", input_type=Int(optional=True), prefix="-threads", doc=InputDocumentation(doc="Sets the number of threads allowed to be used by the TOPP tool (default: '1')")), ToolInput(tag="in_write_ini", input_type=File(optional=True), prefix="-write_ini", doc=InputDocumentation(doc="Writes the default configuration file")), ToolInput(tag="in_helphelp", input_type=Boolean(optional=True), prefix="--helphelp", doc=InputDocumentation(doc="Shows all options (including advanced)"))], outputs=[ToolOutput(tag="out_out_text", output_type=File(optional=True), selector=InputSelector(input_to_select="in_out_text", type_hint=File()), doc=OutputDocumentation(doc=":file <file>        Output file with predicted RT values (valid formats: 'csv')"))], container="quay.io/biocontainers/openms:2.6.0--h4afb90d_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Rtpredict_V0_1_0().translate("wdl")
+

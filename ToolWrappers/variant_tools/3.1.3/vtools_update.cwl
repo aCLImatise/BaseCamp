@@ -4,7 +4,7 @@ inputs:
 - id: in_verbosity
   doc: "Output error and warning (0), info (1), debug (2) and\ntrace (3) information\
     \ to standard output (default to\n1)."
-  type: string
+  type: string?
   inputBinding:
     prefix: --verbosity
 - id: in_from_file
@@ -22,7 +22,7 @@ inputs:
     \ should be the primary (used by\ndefault) or alternative (if available) reference\n\
     genome of the project. An alternative reference genome\nwill be added to the project\
     \ if needed."
-  type: long
+  type: long?
   inputBinding:
     prefix: --build
 - id: in_format
@@ -31,7 +31,7 @@ inputs:
     format specification file (with extension .fmt). Some\nformats accept parameters\
     \ (cf. 'vtools show format\nFMT') and allow you to update additional or\nalternative\
     \ fields from the input file."
-  type: File
+  type: File?
   inputBinding:
     prefix: --format
 - id: in_jobs
@@ -39,7 +39,7 @@ inputs:
     \ single process for reading and\nwriting, and can use one or more dedicated reader\n\
     processes (jobs=2 or more) to process input files. Due\nto the overhead of inter-process\
     \ communication, more\njobs do not automatically lead to better performance."
-  type: long
+  type: long?
   inputBinding:
     prefix: --jobs
 - id: in_sample_name
@@ -51,7 +51,7 @@ inputs:
     \ will be used\nto uniquely identify a sample if mutliple samples with\nthe same\
     \ name exist in the project. No genotype info\nwill be updated if samples cannot\
     \ be unquely\ndetermined."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --sample_name
 - id: in_set
@@ -62,7 +62,7 @@ inputs:
     \ variants. In addition, special\nfunction are provided, including 'HWE_exact'\
     \ (exact\ntest of Hardy-Weinberg Equilibrium) and 'Fisher_exact'\n(Fisher's exact\
     \ test for case/ctrl association)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --set
 - id: in_from_stat
@@ -83,26 +83,27 @@ inputs:
     \ are calculated. This function by default\ncalculates allele frequency among\
     \ existing-alleles,\nbut will treat all missing values as wild type alleles\n\
     if runtime option treat_missing_as_wildtype is set to\ntrue."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --from_stat
 - id: in_limiting_command_eg
   doc: "[COND [COND ...]], --samples [COND [COND ...]]\nLimiting variants from samples\
     \ that match conditions\nthat use columns shown in command 'vtools show sample'\n\
     (e.g. 'aff=1', 'filename like \"MG%\"')."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -s
 - id: in_genotypes
   doc: "[COND [COND ...]]\nLimiting variants from samples that match conditions\n\
     that use columns shown in command 'vtools show\ngenotypes' (e.g. 'GQ>15').\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --genotypes
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - vtools

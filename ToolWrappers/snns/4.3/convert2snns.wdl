@@ -8,6 +8,9 @@ task Convert2snns {
     convert2snns \
       ~{control_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     control_file: ""
   }

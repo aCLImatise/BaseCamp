@@ -2,7 +2,7 @@ version 1.0
 
 task GetOrganelleFromAssemblypy {
   input {
-    String? flag_should_followed
+    String? flag_followed_orembplantmtotherptfungusmt
     File? input_assembly_graph
     Directory? output_directory_overwriting
     Int? max_depth
@@ -36,15 +36,13 @@ task GetOrganelleFromAssemblypy {
     Boolean? verbose
     Int? min_depth
     String exists_dot
-    Directory directory_dot
     String log_handler_dot
   }
   command <<<
     get_organelle_from_assembly_py \
       ~{exists_dot} \
-      ~{directory_dot} \
       ~{log_handler_dot} \
-      ~{if defined(flag_should_followed) then ("-F " +  '"' + flag_should_followed + '"') else ""} \
+      ~{if defined(flag_followed_orembplantmtotherptfungusmt) then ("-F " +  '"' + flag_followed_orembplantmtotherptfungusmt + '"') else ""} \
       ~{if defined(input_assembly_graph) then ("-g " +  '"' + input_assembly_graph + '"') else ""} \
       ~{if defined(output_directory_overwriting) then ("-o " +  '"' + output_directory_overwriting + '"') else ""} \
       ~{if defined(max_depth) then ("--max-depth " +  '"' + max_depth + '"') else ""} \
@@ -78,8 +76,11 @@ task GetOrganelleFromAssemblypy {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(min_depth) then ("--min-depth " +  '"' + min_depth + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    flag_should_followed: "This flag should be followed with embplant_pt\\n(embryophyta plant plastome), other_pt (non-\\nembryophyta plant plastome), embplant_mt (plant\\nmitochondrion), embplant_nr (plant nuclear ribosomal\\nRNA), animal_mt (animal mitochondrion), fungus_mt\\n(fungus mitochondrion), or\\nembplant_mt,other_pt,fungus_mt (the combination of any\\nof above organelle genomes split by comma(s), which\\nmight be computationally more intensive than separate\\nruns), or anonym (uncertain organelle genome type,\\nwith customized gene database ('--genes'), which is\\nsuggested only when the above database is genetically\\ndistant from your sample) or raw (disentangle the raw\\ngraph directly without tagging)."
+    flag_followed_orembplantmtotherptfungusmt: "This flag should be followed with embplant_pt\\n(embryophyta plant plastome), other_pt (non-\\nembryophyta plant plastome), embplant_mt (plant\\nmitochondrion), embplant_nr (plant nuclear ribosomal\\nRNA), animal_mt (animal mitochondrion), fungus_mt\\n(fungus mitochondrion), or\\nembplant_mt,other_pt,fungus_mt (the combination of any\\nof above organelle genomes split by comma(s), which\\nmight be computationally more intensive than separate\\nruns), or anonym (uncertain organelle genome type,\\nwith customized gene database ('--genes'), which is\\nsuggested only when the above database is genetically\\ndistant from your sample) or raw (disentangle the raw\\ngraph directly without tagging)."
     input_assembly_graph: "Input assembly graph (fastg/gfa) file. The format will\\nbe recognized by the file name suffix."
     output_directory_overwriting: "Output directory. Overwriting files if directory"
     max_depth: "Input a float or integer number. filter graph file by\\na maximum depth. Default: inf."
@@ -113,7 +114,6 @@ task GetOrganelleFromAssemblypy {
     verbose: "Verbose output. Choose to enable verbose running"
     min_depth: ""
     exists_dot: "--min-depth=MIN_DEPTH"
-    directory_dot: "--which-blast=WHICH_BLAST"
     log_handler_dot: "-h                    print brief introduction for frequently-used options."
   }
   output {

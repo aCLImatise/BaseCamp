@@ -12,6 +12,9 @@ task TOBIASLog2Table {
       ~{if (outdir) then "--outdir" else ""} \
       ~{if (prefix) then "--prefix" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     log_files: "[ [ ...]]  Logfiles from PlotAggregate"
     outdir: "Output directory for tables (default: current dir)"

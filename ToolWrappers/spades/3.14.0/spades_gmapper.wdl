@@ -12,6 +12,9 @@ task Spadesgmapper {
       ~{if defined(_threads_use) then ("-t " +  '"' + _threads_use + '"') else ""} \
       ~{if defined(tmp_dir) then ("--tmp-dir " +  '"' + tmp_dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     kmer_length_use: "k-mer length to use"
     _threads_use: "# of threads to use"

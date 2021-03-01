@@ -44,6 +44,9 @@ task Gepardcmd {
       ~{if (greyscale) then "-greyscale" else ""} \
       ~{if (silent) then "-silent" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     seq_one: ":        first sequence file"
     seq_two: ":        second sequence file"

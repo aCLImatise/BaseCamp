@@ -16,6 +16,9 @@ task BpMetaGffpl {
       ~{if (user) then "--user" else ""} \
       ~{if (pass) then "--pass" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     of__database: "of --database."
     database: "Mysql database name (default dbi:mysql:test)"

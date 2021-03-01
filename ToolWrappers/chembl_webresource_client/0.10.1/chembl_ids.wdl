@@ -2,7 +2,7 @@ version 1.0
 
 task ChemblIds {
   input {
-    File? input_file_input
+    File? input_file_standard
     File? output_file_output
     File? format
     Boolean? single
@@ -11,15 +11,18 @@ task ChemblIds {
   }
   command <<<
     chembl_ids \
-      ~{if defined(input_file_input) then ("--input " +  '"' + input_file_input + '"') else ""} \
+      ~{if defined(input_file_standard) then ("--input " +  '"' + input_file_standard + '"') else ""} \
       ~{if defined(output_file_output) then ("--output " +  '"' + output_file_output + '"') else ""} \
       ~{if defined(format) then ("--format " +  '"' + format + '"') else ""} \
       ~{if (single) then "--single" else ""} \
       ~{if (parent) then "--parent" else ""} \
       ~{if (human) then "--Human" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    input_file_input: "input file, standard input by default"
+    input_file_standard: "input file, standard input by default"
     output_file_output: "output file, standard output by default"
     format: "output file format, can be chosen from 5 options:\\n[chembl_id, smi, sdf, inchi, inchi_key]"
     single: "if the name is resolved into more than one result,\\nshow only the most relevant one"

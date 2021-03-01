@@ -26,6 +26,9 @@ task PoretoolsQualpos {
       ~{if defined(end) then ("--end " +  '"' + end + '"') else ""} \
       ~{if (high_quality) then "--high-quality" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quiet: "Do not output warnings to stderr"
     min_length: "Minimum read length to be included in analysis."

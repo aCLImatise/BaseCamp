@@ -2,7 +2,7 @@ version 1.0
 
 task Ssueslalistat {
   input {
-    Boolean? use_tabular_output
+    Boolean? use_tabular_line
     File? in_format
     Boolean? amino
     Boolean? dna
@@ -19,7 +19,7 @@ task Ssueslalistat {
   command <<<
     ssu_esl_alistat \
       ~{msa_file} \
-      ~{if (use_tabular_output) then "-1" else ""} \
+      ~{if (use_tabular_line) then "-1" else ""} \
       ~{if defined(in_format) then ("--informat " +  '"' + in_format + '"') else ""} \
       ~{if (amino) then "--amino" else ""} \
       ~{if (dna) then "--dna" else ""} \
@@ -32,8 +32,11 @@ task Ssueslalistat {
       ~{if defined(ps_info) then ("--psinfo " +  '"' + ps_info + '"') else ""} \
       ~{if defined(i_info) then ("--iinfo " +  '"' + i_info + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    use_tabular_output: ": use tabular output, one line per alignment"
+    use_tabular_line: ": use tabular output, one line per alignment"
     in_format: ": specify that input file is in format <s>"
     amino: ": <msafile> contains protein alignments"
     dna: ": <msafile> contains DNA alignments"

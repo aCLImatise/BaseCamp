@@ -4,6 +4,9 @@ task IonicZlibdll {
   command <<<
     Ionic_Zlib_dll
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

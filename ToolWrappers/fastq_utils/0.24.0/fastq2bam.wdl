@@ -32,6 +32,9 @@ task Fastq2bam {
       ~{if defined(b) then ("-b " +  '"' + b + '"') else ""} \
       ~{if defined(s) then ("-s " +  '"' + s + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cell_barcode_offset: ": cell barcode offset"
     cell_barcode_size: ": cell barcode size"

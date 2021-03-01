@@ -10,6 +10,9 @@ task Unexpand {
       ~{if (all) then "--all" else ""} \
       ~{if (first_only) then "--first-only" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     all: "convert all blanks, instead of just initial blanks"
     first_only: "convert only leading sequences of blanks (overrides -a)"

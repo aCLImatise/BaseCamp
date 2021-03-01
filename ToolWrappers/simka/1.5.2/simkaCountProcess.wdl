@@ -12,6 +12,9 @@ task SimkaCountProcess {
       ~{prog} \
       ~{args}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     nohup: ""
     prog: ""

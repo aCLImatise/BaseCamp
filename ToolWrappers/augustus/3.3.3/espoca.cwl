@@ -3,17 +3,17 @@ id: espoca.cwl
 inputs:
 - id: in_var_0
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: --treefile
 - id: in_var_1
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: --alnfile
 - id: in_var_2
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --species
 - id: in_species_parameter_see
@@ -37,6 +37,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - espoca

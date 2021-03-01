@@ -10,6 +10,9 @@ task ChooseLines {
       ~{in_file} \
       ~{if defined(number_choose_default) then ("-k " +  '"' + number_choose_default + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     number_choose_default: "Number of lines to choose (default is all lines)."
     in_file: ""

@@ -12,6 +12,9 @@ task ClusteringTofasta {
       ~{input_file} \
       ~{mask_seq_id}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     to_fast_a: ""
     input_file: ""

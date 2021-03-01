@@ -10,6 +10,9 @@ task NebulizerConfig {
       ~{galaxy} \
       ~{if defined(name) then ("--name " +  '"' + name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name: "only show configuration items that match NAME. Can include\\nglob-style wild-cards."
     galaxy: ""

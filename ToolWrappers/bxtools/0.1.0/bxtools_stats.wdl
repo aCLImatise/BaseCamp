@@ -16,6 +16,9 @@ task BxtoolsStats {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (tag) then "--tag" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Set verbose output"
     tag: "Collect stats by a tag other than BX (e.g. MI)"

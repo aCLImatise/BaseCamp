@@ -30,6 +30,9 @@ task SimkaMinCoreSketch {
       ~{if (nb_cores) then "-nb-cores" else ""} \
       ~{if (max_memory) then "-max-memory" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "(1 arg) :    input filename | TODO SPECIF"
     out: "(1 arg) :    output filename for kmer spectrum  [default './simkaMin_kmers.bin']"

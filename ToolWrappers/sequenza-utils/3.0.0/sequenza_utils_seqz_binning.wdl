@@ -14,6 +14,9 @@ task SequenzautilsSeqzBinning {
       ~{if defined(output_file_stdout) then ("-o " +  '"' + output_file_stdout + '"') else ""} \
       ~{if defined(tab_ix) then ("--tabix " +  '"' + tab_ix + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     seq_z: "A seqz file."
     window: "Window size used for binning the original seqz file.\\nDefault is 50."

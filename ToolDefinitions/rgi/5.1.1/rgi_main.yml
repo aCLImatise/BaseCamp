@@ -4,123 +4,123 @@ command:
 - main
 positional:
 - !Positional
-  description: --exclude_nudge       exclude hits nudged from loose to strict hits
+  optional: false
   position: 0
   name: hits
-  optional: false
+  description: --exclude_nudge       exclude hits nudged from loose to strict hits
 named:
 - !Flag
-  description: "input file must be in either FASTA (contig and\nprotein) or gzip format!\
-    \ e.g myFile.fasta,\nmyFasta.fasta.gz"
+  optional: true
   synonyms:
   - -i
   - --input_sequence
+  description: "input file must be in either FASTA (contig and\nprotein) or gzip format!\
+    \ e.g myFile.fasta,\nmyFasta.fasta.gz"
   args: !SimpleFlagArg
     name: INPUT_SEQUENCE
-  optional: true
 - !Flag
-  description: output folder and base filename
+  optional: true
   synonyms:
   - -o
   - --output_file
+  description: output folder and base filename
   args: !SimpleFlagArg
     name: OUTPUT_FILE
-  optional: true
 - !Flag
-  description: specify data input type (default = contig)
+  optional: true
   synonyms:
   - -t
   - --input_type
+  description: specify data input type (default = contig)
   args: !ChoiceFlagArg
     choices: !!set
-      protein:
       contig:
-  optional: true
+      protein:
 - !Flag
-  description: specify alignment tool (default = BLAST)
+  optional: true
   synonyms:
   - -a
   - --alignment_tool
+  description: specify alignment tool (default = BLAST)
   args: !ChoiceFlagArg
     choices: !!set
       BLAST:
       DIAMOND:
-  optional: true
 - !Flag
-  description: "number of threads (CPUs) to use in the BLAST search\n(default=8)"
+  optional: true
   synonyms:
   - -n
   - --num_threads
+  description: "number of threads (CPUs) to use in the BLAST search\n(default=8)"
   args: !SimpleFlagArg
     name: THREADS
-  optional: true
 - !Flag
-  description: include loose hits in addition to strict and perfect
+  optional: true
   synonyms:
   - --include_loose
+  description: include loose hits in addition to strict and perfect
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "use local database (default: uses database in\nexecutable directory)"
+  optional: true
   synonyms:
   - --local
+  description: "use local database (default: uses database in\nexecutable directory)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: removes temporary files
+  optional: true
   synonyms:
   - --clean
+  description: removes temporary files
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: debug mode
+  optional: true
   synonyms:
   - --debug
+  description: debug mode
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: use for short contigs to predict partial genes
+  optional: true
   synonyms:
   - --low_quality
+  description: use for short contigs to predict partial genes
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: specify a data-type (default = NA)
+  optional: true
   synonyms:
   - -d
   - --data
+  description: specify a data-type (default = NA)
   args: !ChoiceFlagArg
     choices: !!set
-      chromosome:
-      wgs:
-      plasmid:
       NA:
-  optional: true
+      chromosome:
+      plasmid:
+      wgs:
 - !Flag
-  description: "run multiple prodigal jobs simultaneously for contigs\nin a fasta\
-    \ file\n"
+  optional: true
   synonyms:
   - --split_prodigal_jobs
+  description: "run multiple prodigal jobs simultaneously for contigs\nin a fasta\
+    \ file\n"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: prints software version number
+  optional: true
   synonyms:
   - -v
   - --version
+  description: prints software version number
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: rgi main [-h] -i INPUT_SEQUENCE -o OUTPUT_FILE [-t {contig,protein}]\n\
   \                [-a {DIAMOND,BLAST}] [-n THREADS] [--include_loose]\n         \
   \       [--exclude_nudge] [--local] [--clean] [--debug]\n                [--low_quality]\
@@ -148,3 +148,4 @@ help_text: "usage: rgi main [-h] -i INPUT_SEQUENCE -o OUTPUT_FILE [-t {contig,pr
   \          in a fasta file\n"
 generated_using:
 - --help
+docker_image:

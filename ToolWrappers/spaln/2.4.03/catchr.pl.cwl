@@ -3,22 +3,22 @@ id: catchr.pl.cwl
 inputs:
 - id: in_o
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -o
 - id: in_n
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -n
 - id: in_h_prefix
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -hPrefix
 - id: in_w_keyword
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -wKeyword
 - id: in_input_files
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - catchr.pl

@@ -8,6 +8,9 @@ task Locarnaprevcomppl {
     locarnap_revcomp_pl \
       ~{if (man) then "--man" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     man: "Full documentation"
   }

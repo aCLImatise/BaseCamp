@@ -18,6 +18,9 @@ task Extendpy {
       ~{if defined(nt_mpi) then ("-ntmpi " +  '"' + nt_mpi + '"') else ""} \
       ~{if defined(gpu_id) then ("-gpu_id " +  '"' + gpu_id + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_tpr: "Input tpr"
     time: "Extend simulation time, default=10"

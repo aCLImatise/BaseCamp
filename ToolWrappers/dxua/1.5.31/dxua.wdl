@@ -54,6 +54,9 @@ task Dxua {
       ~{if (wait_on_close) then "--wait-on-close" else ""} \
       ~{if (read_file_content) then "-i" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     print_environment_information: "[ --env ]                       Print environment information"
     arg_specify_authentication: "[ --auth-token ] arg            Specify the authentication token"

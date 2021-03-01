@@ -4,6 +4,9 @@ task CactusCalculateMappingQualities {
   command <<<
     cactus_calculateMappingQualities
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

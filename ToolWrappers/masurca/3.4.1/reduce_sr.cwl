@@ -3,12 +3,12 @@ id: reduce_sr.cwl
 inputs:
 - id: in_maximum_search_depth
   doc: Check at most this many possible containing SuperReads (100)
-  type: long
+  type: long?
   inputBinding:
     prefix: --maximum-search-depth
 - id: in_output
   doc: Output file name (reduce.tmp)
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_cmdline_parse
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: Output file name (reduce.tmp)
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - reduce_sr

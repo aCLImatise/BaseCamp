@@ -3,17 +3,17 @@ id: mspms_sample_size.cwl
 inputs:
 - id: in_trees
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --trees
 - id: in_mutation_rate
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --mutation-rate
 - id: in_v
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -V
 - id: in_ms_pms
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mspms

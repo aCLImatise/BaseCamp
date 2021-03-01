@@ -8,6 +8,9 @@ task SatsumaToFASTA {
     SatsumaToFASTA \
       ~{if (string_satsuma_file) then "-i" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     string_satsuma_file: "<string> : satsuma file"
   }

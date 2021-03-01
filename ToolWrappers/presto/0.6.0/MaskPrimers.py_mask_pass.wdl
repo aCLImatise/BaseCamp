@@ -8,6 +8,9 @@ task MaskPrimerspyMaskpass {
     MaskPrimers_py mask_pass \
       ~{mask_primers_do_tpy}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mask_primers_do_tpy: ""
   }

@@ -28,6 +28,9 @@ task MegalodonExtrasCalibrateVariants {
       ~{if defined(out_pdf) then ("--out-pdf " +  '"' + out_pdf + '"') else ""} \
       ~{if (overwrite) then "--overwrite" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ground_truth_ll_rs: "Ground truth log-likelihood ratio statistics (produced\\nby `megalodon_extras calibrate\\ngenerate_variant_stats`). Default:\\nvariant_calibration_statistics.txt"
     max_input_llr: "Maximum log-likelihood ratio to compute calibration.\\nDefault: 200"

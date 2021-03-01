@@ -8,6 +8,9 @@ task ScreedCommand {
     screed command \
       ~{optional_arguments}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     optional_arguments: "optional arguments:"
   }

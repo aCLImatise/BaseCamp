@@ -14,6 +14,9 @@ task BedtoolsLinks {
       ~{if (db) then "-db" else ""} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     base: "The browser basename.  Default: http://genome.ucsc.edu"
     org: "The organism. Default: human"

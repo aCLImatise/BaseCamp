@@ -26,6 +26,9 @@ task FRC {
       ~{if defined(ce_stats_mp_min) then ("--CEstats-MP-min " +  '"' + ce_stats_mp_min + '"') else ""} \
       ~{if defined(ce_stats_mp_max) then ("--CEstats-MP-max " +  '"' + ce_stats_mp_max + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pe_sam: "paired end alignment file (in sam or bam format).\\nOrientation must be -> <-"
     pe_max_insert: "maximum allowed insert size for PE (to filter out\\noutleyers)"

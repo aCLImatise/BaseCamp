@@ -40,6 +40,9 @@ task QualimapBamqc {
       ~{if (skip_duplicated) then "--skip-duplicated" else ""} \
       ~{if defined(skip_dup_mode) then ("--skip-dup-mode " +  '"' + skip_dup_mode + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bam: "Input mapping file in BAM format"
     paint_chromosome_limits: "Paint chromosome limits inside charts"

@@ -18,6 +18,9 @@ task CIRCexplorer2Annotate {
       ~{if (no_fix) then "--no-fix" else ""} \
       ~{if (low_confidence) then "--low-confidence" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ref: "Gene annotation."
     genome: "Genome FASTA file."

@@ -26,6 +26,9 @@ task Geneorderpy {
       ~{if (mad) then "--mad" else ""} \
       ~{if (max) then "--max" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     outfile: "write values to FILE (default: stdout)"
     allow_only_entries: "allow only entries with TAX in the taxonomy"

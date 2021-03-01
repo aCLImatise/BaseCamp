@@ -12,6 +12,9 @@ task SsueslmaskMaskfile {
       ~{sq_file} \
       ~{mask_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ssu_esl_mask: ""
     sq_file: ""

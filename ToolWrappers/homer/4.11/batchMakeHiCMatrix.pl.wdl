@@ -26,6 +26,9 @@ task BatchMakeHiCMatrixpl {
       ~{if (frac) then "-frac" else ""} \
       ~{if (cpu) then "-cpu" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tag_directories_hic: "[HiC TagDir2] ... (Tag Directories of Hi-C experiments to visulize)"
     pos: "<chr:start-end> (genomic position to visualize)"

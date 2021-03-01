@@ -40,6 +40,9 @@ task JobTreeStats {
       ~{if defined(log_file) then ("--logFile " +  '"' + log_file + '"') else ""} \
       ~{if (rotating_logging) then "--rotatingLogging" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tempdir_root: "Path to where temporary directory containing all temp\\nfiles are created, by default uses the current working\\ndirectory as the base."
     job_tree: "Directory containing the job tree. Can also be\\nspecified as the single argument to the script.\\nDefault=./jobTree"

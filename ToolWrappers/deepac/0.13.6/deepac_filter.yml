@@ -1,0 +1,79 @@
+!Command
+command:
+- deepac
+- filter
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: input
+  description: Input file path [.fasta].
+- !Positional
+  optional: false
+  position: 1
+  name: predictions
+  description: Predictions in matching order [.npy].
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --potentials
+  description: Print pathogenic potential values in .fasta headers.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: Output file path [.fasta].
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --std
+  description: Standard deviations of predictions if MC dropout used.
+  args: !SimpleFlagArg
+    name: STD
+- !Flag
+  optional: true
+  synonyms:
+  - --precision
+  description: "Format pathogenic potentials to given precision\n[default=3].\n"
+  args: !SimpleFlagArg
+    name: PRECISION
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: ''
+  args: !SimpleFlagArg
+    name: THRESHOLD
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: deepac filter [-h] [-t THRESHOLD] [-p] [-o OUTPUT] [-s STD]\n \
+  \                    [--precision PRECISION]\n                     input predictions\n\
+  \npositional arguments:\n  input                 Input file path [.fasta].\n  predictions\
+  \           Predictions in matching order [.npy].\n\noptional arguments:\n  -h,\
+  \ --help            show this help message and exit\n  -t THRESHOLD, --threshold\
+  \ THRESHOLD\n                        Threshold [default=0.5].\n  -p, --potentials\
+  \      Print pathogenic potential values in .fasta headers.\n  -o OUTPUT, --output\
+  \ OUTPUT\n                        Output file path [.fasta].\n  -s STD, --std STD\
+  \     Standard deviations of predictions if MC dropout used.\n  --precision PRECISION\n\
+  \                        Format pathogenic potentials to given precision\n     \
+  \                   [default=3].\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/deepac:0.13.6--py_0

@@ -18,6 +18,9 @@ task VerifyLowDepthpl {
       ~{if (cores) then "--cores" else ""} \
       ~{if (maximum_depth_position) then "--max-depth" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bam: "[REQUIRED]\\nThe location for a specific BAM file in the dataset. Multiple BAM\\nfiles can be input. Example with 3 BAM files:\\n--bam bam1=/path/bam1.bam --bam bam2=/path/bam2.bam --bam\\nbam3=/path/bam3.bam"
     cores: "[optional]\\nThe number of CPU cores that should be used for the calculations."

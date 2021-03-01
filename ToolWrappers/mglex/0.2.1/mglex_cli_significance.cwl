@@ -3,27 +3,27 @@ id: mglex_cli_significance.cwl
 inputs:
 - id: in_data
   doc: Log-likelihood matrix for which to calculate p-values; default standard input
-  type: File
+  type: File?
   inputBinding:
     prefix: --data
 - id: in_weight
   doc: Weights (sequence length) file
-  type: File
+  type: File?
   inputBinding:
     prefix: --weight
 - id: in_null_data
   doc: Log-likelihood matrix with reference (null hypothesis) values
-  type: File
+  type: File?
   inputBinding:
     prefix: --nulldata
 - id: in_responsibility
   doc: Log-likelihood responsibility matrix
-  type: File
+  type: File?
   inputBinding:
     prefix: --responsibility
 - id: in_v
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_significance
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mglex-cli

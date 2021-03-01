@@ -2,7 +2,7 @@ version 1.0
 
 task PathoscopeMAP {
   input {
-    File? input_read_file
+    File? input_read_fastq_file_unpairedsingleend
     Int? one
     Int? two
     File? target_ref_files
@@ -22,7 +22,7 @@ task PathoscopeMAP {
   }
   command <<<
     pathoscope MAP \
-      ~{if defined(input_read_file) then ("-U " +  '"' + input_read_file + '"') else ""} \
+      ~{if defined(input_read_fastq_file_unpairedsingleend) then ("-U " +  '"' + input_read_fastq_file_unpairedsingleend + '"') else ""} \
       ~{if defined(one) then ("-1 " +  '"' + one + '"') else ""} \
       ~{if defined(two) then ("-2 " +  '"' + two + '"') else ""} \
       ~{if defined(target_ref_files) then ("-targetRefFiles " +  '"' + target_ref_files + '"') else ""} \
@@ -40,8 +40,11 @@ task PathoscopeMAP {
       ~{if defined(num_threads) then ("-numThreads " +  '"' + num_threads + '"') else ""} \
       ~{if defined(exp_tag) then ("-expTag " +  '"' + exp_tag + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    input_read_file: "Input Read Fastq File (Unpaired/Single-end)"
+    input_read_fastq_file_unpairedsingleend: "Input Read Fastq File (Unpaired/Single-end)"
     one: "Input Read Fastq File (Pair 1)"
     two: "Input Read Fastq File (Pair 2)"
     target_ref_files: "Target Reference Genome Fasta Files Full Path (Comma\\nSeparated)"

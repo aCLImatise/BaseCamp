@@ -3,7 +3,7 @@ version 1.0
 task Fastqmcf {
   input {
     File? output_file_stats
-    String? only_output_records
+    String? only_output_n
     Int? log_scale_adapter
     Float? occurance_threshold_adapter
     Int? minimum_clip_length
@@ -18,7 +18,7 @@ task Fastqmcf {
     Boolean? remove_homopolymer_reads
     Boolean? remove_low_complexity
     Boolean? set_default_parameters
-    Boolean? u_force_disableenable
+    Boolean? force_disableenable_illumina
     String? phredscale_auto
     Boolean? dons_frontsends_reads
     Boolean? clip_just_output
@@ -43,7 +43,7 @@ task Fastqmcf {
       ~{reads_dot_fq} \
       ~{mates_one_dot_fq} \
       ~{if defined(output_file_stats) then ("-o " +  '"' + output_file_stats + '"') else ""} \
-      ~{if defined(only_output_records) then ("-O " +  '"' + only_output_records + '"') else ""} \
+      ~{if defined(only_output_n) then ("-O " +  '"' + only_output_n + '"') else ""} \
       ~{if defined(log_scale_adapter) then ("-s " +  '"' + log_scale_adapter + '"') else ""} \
       ~{if defined(occurance_threshold_adapter) then ("-t " +  '"' + occurance_threshold_adapter + '"') else ""} \
       ~{if defined(minimum_clip_length) then ("-m " +  '"' + minimum_clip_length + '"') else ""} \
@@ -58,7 +58,7 @@ task Fastqmcf {
       ~{if (remove_homopolymer_reads) then "-H" else ""} \
       ~{if (remove_low_complexity) then "-X" else ""} \
       ~{if (set_default_parameters) then "-0" else ""} \
-      ~{if (u_force_disableenable) then "-U" else ""} \
+      ~{if (force_disableenable_illumina) then "-U" else ""} \
       ~{if defined(phredscale_auto) then ("-P " +  '"' + phredscale_auto + '"') else ""} \
       ~{if (dons_frontsends_reads) then "-R" else ""} \
       ~{if (clip_just_output) then "-n" else ""} \
@@ -74,9 +74,12 @@ task Fastqmcf {
       ~{if (keep_clipped) then "--keep-clipped" else ""} \
       ~{if (max_output_reads) then "--max-output-reads" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_file_stats: "Output file (stats to stdout)"
-    only_output_records: "Only output the first N records (all)"
+    only_output_n: "Only output the first N records (all)"
     log_scale_adapter: "Log scale for adapter minimum-length-match (2.2)"
     occurance_threshold_adapter: "% occurance threshold before adapter clipping (0.25)"
     minimum_clip_length: "Minimum clip length, overrides scaled auto (1)"
@@ -91,7 +94,7 @@ task Fastqmcf {
     remove_homopolymer_reads: "remove >95% homopolymer reads (no)"
     remove_low_complexity: "remove low complexity reads (no)"
     set_default_parameters: "Set all default parameters to zero/do nothing"
-    u_force_disableenable: "|u     Force disable/enable Illumina PF filtering (auto)"
+    force_disableenable_illumina: "|u     Force disable/enable Illumina PF filtering (auto)"
     phredscale_auto: "Phred-scale (auto)"
     dons_frontsends_reads: "Don't remove N's from the fronts/ends of reads"
     clip_just_output: "Don't clip, just output what would be done"

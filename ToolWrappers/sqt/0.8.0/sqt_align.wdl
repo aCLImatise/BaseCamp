@@ -18,6 +18,9 @@ task SqtAlign {
       ~{if (reverse_complement) then "--reverse-complement" else ""} \
       ~{if (merge) then "--merge" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     semi_global: "Run a semi-global alignment (for detecting overlaps).\\nDefault: global alignment."
     max_error_rate: "Switch to cutadapt algorithm (also enables\\n--semiglobal). No alignment will be printed."

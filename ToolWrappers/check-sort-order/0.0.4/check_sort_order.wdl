@@ -10,6 +10,9 @@ task Checksortorder {
       ~{path} \
       ~{if defined(genome) then ("--genome " +  '"' + genome + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genome: "a genome file of chromosome sizes and order"
     path: "Options:"

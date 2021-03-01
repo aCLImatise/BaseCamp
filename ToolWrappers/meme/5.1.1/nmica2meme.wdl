@@ -22,6 +22,9 @@ task Nmica2meme {
       ~{if (log_odds) then "-logodds" else ""} \
       ~{if defined(url) then ("-url " +  '"' + url + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     skip: "skip this ID (may be repeated)"
     num_seqs: "assume frequencies based on this many\\nsequences; default: 20"

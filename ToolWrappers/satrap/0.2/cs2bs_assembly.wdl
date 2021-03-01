@@ -5,7 +5,7 @@ task Cs2bsAssembly {
     Boolean? fast_a
     Boolean? sam
     Boolean? int_minimum_contigs
-    Boolean? float_maximum_tolerated
+    Boolean? float_maximum_fraction
     Boolean? validate_anchored_bases
     Boolean? operate_assembly_correction
     Boolean? erode
@@ -20,7 +20,7 @@ task Cs2bsAssembly {
       ~{if (fast_a) then "-fasta" else ""} \
       ~{if (sam) then "-sam" else ""} \
       ~{if (int_minimum_contigs) then "-l" else ""} \
-      ~{if (float_maximum_tolerated) then "-n" else ""} \
+      ~{if (float_maximum_fraction) then "-n" else ""} \
       ~{if (validate_anchored_bases) then "-C" else ""} \
       ~{if (operate_assembly_correction) then "-c" else ""} \
       ~{if (erode) then "-erode" else ""} \
@@ -30,11 +30,14 @@ task Cs2bsAssembly {
       ~{if (erosion) then "-erosion" else ""} \
       ~{if (log) then "-log" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a: "(string)         Double encoded color space assembly in FASTA format."
     sam: "(string)         Double encoded mapped reads into the double encoded assembly (it requires pass_v1.7 or later)"
     int_minimum_contigs: "(int)           Minimum contigs length [100]"
-    float_maximum_tolerated: "(float)          Maximum tolerated fraction of Ns for each contig. [1]"
+    float_maximum_fraction: "(float)          Maximum tolerated fraction of Ns for each contig. [1]"
     validate_anchored_bases: "(int)           Minimum coverage required to validate anchored bases. [1]"
     operate_assembly_correction: "(int)           Minimum coverage required to operate the assembly correction. [1]"
     erode: "(int)           Minimum coverage considered to erode contig ends [2]"

@@ -10,7 +10,7 @@ task Cassiopee {
     File? _output_file
     Boolean? apply_tree_reduction
     Boolean? search_mode_dna
-    Boolean? allow_alphabet_search
+    Boolean? allow_ambiguity_search
     Boolean? max_consecutive_n
     Boolean? max_substitution_allowed
     Boolean? max_indel_allowed
@@ -31,7 +31,7 @@ task Cassiopee {
       ~{if (_output_file) then "-o" else ""} \
       ~{if (apply_tree_reduction) then "-r" else ""} \
       ~{if (search_mode_dna) then "-m" else ""} \
-      ~{if (allow_alphabet_search) then "-a" else ""} \
+      ~{if (allow_ambiguity_search) then "-a" else ""} \
       ~{if (max_consecutive_n) then "-n" else ""} \
       ~{if (max_substitution_allowed) then "-e" else ""} \
       ~{if (max_indel_allowed) then "-i" else ""} \
@@ -42,6 +42,9 @@ task Cassiopee {
       ~{if (maximum_position_sequence) then "-y" else ""} \
       ~{if (_show_version) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     maximum_index_depth: ": maximum index depth / max pattern size"
     save_index_later: ": save index for later use"
@@ -51,7 +54,7 @@ task Cassiopee {
     _output_file: ": output file"
     apply_tree_reduction: ": apply tree reduction"
     search_mode_dna: ": search mode: 0=DNA, 1=RNA, 2=Protein"
-    allow_alphabet_search: ": allow alphabet ambiguity search"
+    allow_ambiguity_search: ": allow alphabet ambiguity search"
     max_consecutive_n: ": max consecutive N allowed matches in search"
     max_substitution_allowed: ": max substitution allowed matches in search"
     max_indel_allowed: ": max indel allowed matches in search"

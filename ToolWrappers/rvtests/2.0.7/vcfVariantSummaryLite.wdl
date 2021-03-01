@@ -4,6 +4,9 @@ task VcfVariantSummaryLite {
   command <<<
     vcfVariantSummaryLite
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

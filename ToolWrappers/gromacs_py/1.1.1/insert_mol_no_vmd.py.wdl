@@ -20,6 +20,9 @@ task InsertMolNoVmdpy {
       ~{if defined(output_directory) then ("-o " +  '"' + output_directory + '"') else ""} \
       ~{if defined(output_file_name) then ("-n " +  '"' + output_file_name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     f_sys: "Input PDB file of the system"
     p_sys: "Topologie in gromacs format .top of the system"

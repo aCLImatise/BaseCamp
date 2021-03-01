@@ -34,6 +34,9 @@ task Pepgenome {
       ~{if defined(source) then ("-source " +  '"' + source + '"') else ""} \
       ~{if defined(spark_master) then ("-spark_master " +  '"' + spark_master + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     chr: "Export chr prefix Allowed 0, 1  (default: 0)"
     fast_a: "Filepath for file containing protein sequences in\\nFASTA format"

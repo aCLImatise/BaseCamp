@@ -3,12 +3,12 @@ id: secapr_quality_check.cwl
 inputs:
 - id: in_input
   doc: The directory containing fastq files
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --input
 - id: in_output
   doc: "The output directory where quality-test results will be\nsaved\n"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --output
 outputs:
@@ -17,9 +17,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: "The output directory where quality-test results will be\nsaved\n"
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - secapr

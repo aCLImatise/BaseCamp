@@ -21,7 +21,7 @@ task DRepCompare {
     Float? warn_dist
     Float? warn_sim
     Float? warn_aln
-    Boolean? genomes_cluster_fasta
+    Boolean? genomes_cluster_format
   }
   command <<<
     dRep compare \
@@ -44,8 +44,11 @@ task DRepCompare {
       ~{if defined(warn_dist) then ("--warn_dist " +  '"' + warn_dist + '"') else ""} \
       ~{if defined(warn_sim) then ("--warn_sim " +  '"' + warn_sim + '"') else ""} \
       ~{if defined(warn_aln) then ("--warn_aln " +  '"' + warn_aln + '"') else ""} \
-      ~{if (genomes_cluster_fasta) then "-g" else ""}
+      ~{if (genomes_cluster_format) then "-g" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     processors: "threads (default: 6)"
     debug: "make extra debugging output (default: False)"
@@ -66,7 +69,7 @@ task DRepCompare {
     warn_dist: "How far from the threshold to throw cluster warnings\\n(default: 0.25)"
     warn_sim: "Similarity threshold for warnings between dereplicated\\ngenomes (default: 0.98)"
     warn_aln: "Minimum aligned fraction for warnings between\\ndereplicated genomes (ANIn) (default: 0.25)"
-    genomes_cluster_fasta: "[GENOMES [GENOMES ...]], --genomes [GENOMES [GENOMES ...]]\\ngenomes to cluster in .fasta format; can pass a number\\nof .fasta files or a single text file listing the\\nlocations of all .fasta files (default: None)"
+    genomes_cluster_format: "[GENOMES [GENOMES ...]], --genomes [GENOMES [GENOMES ...]]\\ngenomes to cluster in .fasta format; can pass a number\\nof .fasta files or a single text file listing the\\nlocations of all .fasta files (default: None)"
   }
   output {
     File out_stdout = stdout()

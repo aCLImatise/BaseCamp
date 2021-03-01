@@ -30,6 +30,9 @@ task LDBlockShow {
       ~{if (fix_block) then "-FixBlock" else ""} \
       ~{if defined(mermin_snp_num) then ("-MerMinSNPNum " +  '"' + mermin_snp_num + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_vcf: "<str>      Input SNP VCF Format"
     str_output_file: "<str>      OutPut File of LD Blocks"

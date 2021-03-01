@@ -36,6 +36,9 @@ task HulkSketch {
       ~{if defined(processors) then ("--processors " +  '"' + processors + '"') else ""} \
       ~{if (profiling) then "--profiling" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_q: "FASTQ file(s) to sketch (can also pipe in STDIN)"
     fast_a: "tells HULK that the input file is actually FASTA format (.fna/.fasta/.fa), not FASTQ (experimental feature)"

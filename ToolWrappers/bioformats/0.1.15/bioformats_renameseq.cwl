@@ -3,39 +3,39 @@ id: bioformats_renameseq.cwl
 inputs:
 - id: in_fast_a
   doc: the input file is of the FASTA format
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --fasta
 - id: in_column
   doc: "the number of the column that contains sequence names\nto be changed staring\
     \ from 1"
-  type: long
+  type: long?
   inputBinding:
     prefix: --column
 - id: in_revert
   doc: "perform reverse renaming, that is, change original and\nnew names in the renaming\
     \ table"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --revert
 - id: in_no_description
   doc: remove descriptions from FASTA sequence names
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no_description
 - id: in_comment_char
   doc: "a character that designates comment lines in the\nspecified plain-text file"
-  type: File
+  type: File?
   inputBinding:
     prefix: --comment_char
 - id: in_separator
   doc: "a symbol that separates columns in the specified\nplain-text file\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --separator
 - id: in_v
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_renaming_table
@@ -57,6 +57,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bioformats

@@ -8,6 +8,9 @@ task Cgatreportclean {
     cgatreport_clean \
       ~{python}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     python: ""
   }

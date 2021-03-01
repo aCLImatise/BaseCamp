@@ -14,6 +14,9 @@ task RunMUSICcsh {
       ~{if (remove_duplicates) then "-remove_duplicates" else ""} \
       ~{if (get) then "-get_" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     preprocess: "[Reads file path] [Output dir]"
     remove_duplicates: "[Preprocessed reads dir] [Sorted reads dir] [Pruned reads dir]"

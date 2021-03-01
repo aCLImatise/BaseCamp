@@ -4,91 +4,91 @@ command:
 positional: []
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --gene
   description: "RNAs either in BED or FASTA format: If this is BED\nformat file, '-r/--ref'\
     \ must also be specified; if\nthis is RNA sequence file in FASTA format, ignore\
     \ the\n' r/--ref ' option. The input BED or FASTA file could\nbe regular text\
     \ file or compressed file (*.gz, *.bz2)\nor accessible url (http://, https://,\
     \ ftp://)."
-  synonyms:
-  - -g
-  - --gene
   args: !SimpleFlagArg
     name: GENE_FILE
-  optional: true
 - !Flag
-  description: "output file. Tab separated text file: geneID <tab>\nmRNA size <tab>\
-    \ ORF size <tab> Fickett Score <tab>\nHexamer Score<tab>Coding Probability."
+  optional: true
   synonyms:
   - -o
   - --outfile
+  description: "output file. Tab separated text file: geneID <tab>\nmRNA size <tab>\
+    \ ORF size <tab> Fickett Score <tab>\nHexamer Score<tab>Coding Probability."
   args: !SimpleFlagArg
     name: OUT_FILE
-  optional: true
 - !Flag
-  description: "Prebuilt hexamer frequency table (Human, Mouse, Fly,\nZebrafish).\
-    \ Run 'make_hexamer_tab.py' to make this\ntable out of your own training dataset."
+  optional: true
   synonyms:
   - -x
   - --hex
+  description: "Prebuilt hexamer frequency table (Human, Mouse, Fly,\nZebrafish).\
+    \ Run 'make_hexamer_tab.py' to make this\ntable out of your own training dataset."
   args: !SimpleFlagArg
     name: HEXAMER_DAT
-  optional: true
 - !Flag
-  description: "Prebuilt training model (Human, Mouse, Fly,\nZebrafish). Run 'make_logitModel.py'\
-    \ to build logit\nmodel out of your own training datset"
+  optional: true
   synonyms:
   - -d
   - --logitModel
+  description: "Prebuilt training model (Human, Mouse, Fly,\nZebrafish). Run 'make_logitModel.py'\
+    \ to build logit\nmodel out of your own training datset"
   args: !SimpleFlagArg
     name: LOGIT_MODEL
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --ref
   description: "Reference genome sequences in FASTA format. Ignore\nthis option if\
     \ FASTA file was provided to '-g/--gene'.\nReference genome file will be indexed\
     \ automatically\n(produce *.fai file along with the original *.fa file\nwithin\
     \ the same directory) if hasn't been done."
-  synonyms:
-  - -r
-  - --ref
   args: !SimpleFlagArg
     name: REF_GENOME
-  optional: true
 - !Flag
-  description: "Start codon (DNA sequence, so use 'T' instead of 'U')\nused to define\
-    \ open reading frame (ORF). default=ATG"
+  optional: true
   synonyms:
   - -s
   - --start
+  description: "Start codon (DNA sequence, so use 'T' instead of 'U')\nused to define\
+    \ open reading frame (ORF). default=ATG"
   args: !SimpleFlagArg
     name: START_CODONS
-  optional: true
 - !Flag
-  description: "Stop codon (DNA sequence, so use 'T' instead of 'U')\nused to define\
-    \ open reading frame (ORF). Multiple stop\ncodons should be separated by ','.\
-    \ default=TAG,TAA,TGA\n"
+  optional: true
   synonyms:
   - -t
   - --stop
+  description: "Stop codon (DNA sequence, so use 'T' instead of 'U')\nused to define\
+    \ open reading frame (ORF). Multiple stop\ncodons should be separated by ','.\
+    \ default=TAG,TAA,TGA\n"
   args: !SimpleFlagArg
     name: STOP_CODONS
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "Usage: \ncpat.py  [options]\n\nOptions:\n  --version             show\
   \ program's version number and exit\n  -h, --help            show this help message\
   \ and exit\n  -g GENE_FILE, --gene=GENE_FILE\n                        RNAs either\
@@ -120,3 +120,4 @@ help_text: "Usage: \ncpat.py  [options]\n\nOptions:\n  --version             sho
   \       codons should be separated by ','. default=TAG,TAA,TGA\n"
 generated_using:
 - --help
+docker_image:

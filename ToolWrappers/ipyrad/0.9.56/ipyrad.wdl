@@ -6,11 +6,11 @@ task Ipyrad {
     Boolean? quiet
     Boolean? debug
     File? create_new_file
-    Int? set_assembly_steps
+    Int? set_assembly_s
     Boolean? create_new_branch
     Boolean? merge_multiple_assemblies
-    Int? number_use_defaultall
-    Int? tune_threading_multithreaded
+    Int? number_cpu_cores
+    Int? tune_threading_default
     Boolean? mpi
     Boolean? ip_cluster
     Boolean? download
@@ -28,11 +28,11 @@ task Ipyrad {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if (debug) then "--debug" else ""} \
       ~{if defined(create_new_file) then ("-n " +  '"' + create_new_file + '"') else ""} \
-      ~{if defined(set_assembly_steps) then ("-s " +  '"' + set_assembly_steps + '"') else ""} \
+      ~{if defined(set_assembly_s) then ("-s " +  '"' + set_assembly_s + '"') else ""} \
       ~{if (create_new_branch) then "-b" else ""} \
       ~{if (merge_multiple_assemblies) then "-m" else ""} \
-      ~{if defined(number_use_defaultall) then ("-c " +  '"' + number_use_defaultall + '"') else ""} \
-      ~{if defined(tune_threading_multithreaded) then ("-t " +  '"' + tune_threading_multithreaded + '"') else ""} \
+      ~{if defined(number_cpu_cores) then ("-c " +  '"' + number_cpu_cores + '"') else ""} \
+      ~{if defined(tune_threading_default) then ("-t " +  '"' + tune_threading_default + '"') else ""} \
       ~{if (mpi) then "--MPI" else ""} \
       ~{if (ip_cluster) then "--ipcluster" else ""} \
       ~{if (download) then "--download" else ""} \
@@ -40,16 +40,19 @@ task Ipyrad {
       ~{if (f) then "-f" else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     results: "show results summary for Assembly in params.txt and"
     quiet: "do not print to stderror or stdout."
     debug: "print lots more info to ipyrad_log.txt."
     create_new_file: "create new file 'params-{new}.txt' in current"
-    set_assembly_steps: "Set of assembly steps to run, e.g., -s 123"
+    set_assembly_s: "Set of assembly steps to run, e.g., -s 123"
     create_new_branch: "[BRANCH [BRANCH ...]]\\ncreate new branch of Assembly as params-{branch}.txt,\\nand can be used to drop samples from Assembly."
     merge_multiple_assemblies: "[MERGE [MERGE ...]]\\nmerge multiple Assemblies into one joint Assembly, and\\ncan be used to merge Samples into one Sample."
-    number_use_defaultall: "number of CPU cores to use (Default=0=All)"
-    tune_threading_multithreaded: "tune threading of multi-threaded binaries (Default=2)"
+    number_cpu_cores: "number of CPU cores to use (Default=0=All)"
+    tune_threading_default: "tune threading of multi-threaded binaries (Default=2)"
     mpi: "connect to parallel CPUs across multiple nodes"
     ip_cluster: "[IPCLUSTER]\\nconnect to running ipcluster, enter profile name or\\nprofile='default'"
     download: "[DOWNLOAD [DOWNLOAD ...]]\\ndownload fastq files by accession (e.g., SRP or SRR)"

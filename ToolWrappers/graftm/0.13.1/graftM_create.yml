@@ -4,154 +4,154 @@ command:
 - create
 positional:
 - !Positional
-  description: k__kingdom1; p__phylum2
+  optional: false
   position: 0
   name: sequence1
-  optional: false
+  description: k__kingdom1; p__phylum2
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - --taxonomy
   description: File containing two tab separated columns, the first with the ID of
     the sequences, the second with the taxonomy string (required unless --rerooted_annotated_tree
     or --taxtastic_taxonomy and --taxtastic_seqinfo are specified)
-  synonyms:
-  - --taxonomy
   args: !SimpleFlagArg
     name: TAX
-  optional: true
 - !Flag
-  description: Unaligned sequences (required)
+  optional: true
   synonyms:
   - --sequences
+  description: Unaligned sequences (required)
   args: !SimpleFlagArg
     name: FASTA
-  optional: true
 - !Flag
-  description: 'A tree with which to build the reference package, appropriately rooted.
-    (default: generate tree with FastTree and attempt reroot with taxtastic)'
+  optional: true
   synonyms:
   - --rerooted_tree
+  description: 'A tree with which to build the reference package, appropriately rooted.
+    (default: generate tree with FastTree and attempt reroot with taxtastic)'
   args: !SimpleFlagArg
     name: REROOTED_TREE
-  optional: true
 - !Flag
-  description: An alignment with which to build a custom HMM and tree in aligned FASTA
-    format
+  optional: true
   synonyms:
   - --alignment
+  description: An alignment with which to build a custom HMM and tree in aligned FASTA
+    format
   args: !SimpleFlagArg
     name: ALN
-  optional: true
 - !Flag
-  description: Define taxonomy through this annotated newick file.
+  optional: true
   synonyms:
   - --rerooted_annotated_tree
+  description: Define taxonomy through this annotated newick file.
   args: !SimpleFlagArg
     name: newick_tree
-  optional: true
 - !Flag
-  description: Specify an unrooted tree, GraftM will attempt to reroot it.
+  optional: true
   synonyms:
   - --tree
+  description: Specify an unrooted tree, GraftM will attempt to reroot it.
   args: !SimpleFlagArg
     name: newick_tree
-  optional: true
 - !Flag
-  description: .hmm file       Use this HMM for alignment, and search unless --search_hmm_files
-    is specified.
+  optional: true
   synonyms:
   - --hmm
+  description: .hmm file       Use this HMM for alignment, and search unless --search_hmm_files
+    is specified.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --dereplication_level
   description: taxonomic rank at which to dereplicate the sequences to create the
     HMM. Provide an integer that corresponds to the rank (from left to right) will
     be dereplicated. For example --dereplication_level 3 will omit all sequences that
     are redundant at the 3rd rank (from left to right in the taxonomy file) from the
     search HMM.  (0 == No dereplication)
-  synonyms:
-  - --dereplication_level
   args: !SimpleFlagArg
     name: integer
-  optional: true
 - !Flag
-  description: ".hmm files [.hmm files ...]\nUse these HMM(s) for search."
+  optional: true
   synonyms:
   - --search_hmm_files
+  description: ".hmm files [.hmm files ...]\nUse these HMM(s) for search."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Remove sequences from the alignment which do not cover at least this
-    percentage of the HMM (default: 30)'
+  optional: true
   synonyms:
   - --min_aligned_percent
+  description: 'Remove sequences from the alignment which do not cover at least this
+    percentage of the HMM (default: 30)'
   args: !SimpleFlagArg
     name: percent
-  optional: true
 - !Flag
-  description: Name of output GraftM package.
+  optional: true
   synonyms:
   - --output
+  description: Name of output GraftM package.
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: A log file for the tree.
+  optional: true
   synonyms:
   - --tree_log
+  description: A log file for the tree.
   args: !SimpleFlagArg
     name: TREE_LOG
-  optional: true
 - !Flag
-  description: 'A taxtastic format taxonomy file. (default: use taxonomy from --taxonomy)'
+  optional: true
   synonyms:
   - --taxtastic_taxonomy
+  description: 'A taxtastic format taxonomy file. (default: use taxonomy from --taxonomy)'
   args: !SimpleFlagArg
     name: TAXTASTIC_TAXONOMY
-  optional: true
 - !Flag
-  description: 'A taxtastic format seqinfo file. (default: use taxonomy from --taxonomy)'
+  optional: true
   synonyms:
   - --taxtastic_seqinfo
+  description: 'A taxtastic format seqinfo file. (default: use taxonomy from --taxonomy)'
   args: !SimpleFlagArg
     name: TAXTASTIC_SEQINFO
-  optional: true
 - !Flag
-  description: Overwrite output gpkg directory if it exists.
+  optional: true
   synonyms:
   - --force
+  description: Overwrite output gpkg directory if it exists.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Number of threads to use (default: 5)'
+  optional: true
   synonyms:
   - --threads
+  description: 'Number of threads to use (default: 5)'
   args: !SimpleFlagArg
     name: threads
-  optional: true
 - !Flag
-  description: '1 - 5, 1 being silent, 5 being noisy indeed (default: 4)'
+  optional: true
   synonyms:
   - --verbosity
+  description: '1 - 5, 1 being silent, 5 being noisy indeed (default: 4)'
   args: !SimpleFlagArg
     name: verbosity
-  optional: true
 - !Flag
-  description: output logging information to file
+  optional: true
   synonyms:
   - --log
+  description: output logging information to file
   args: !SimpleFlagArg
     name: logfile
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: graftM create [-h] [--taxonomy TAX] --sequences FASTA\n       \
@@ -214,3 +214,4 @@ help_text: "usage: graftM create [-h] [--taxonomy TAX] --sequences FASTA\n      
   the purposes of using graftm. The prefixes e.g. 'k__' are also not required.\n"
 generated_using:
 - --help
+docker_image:

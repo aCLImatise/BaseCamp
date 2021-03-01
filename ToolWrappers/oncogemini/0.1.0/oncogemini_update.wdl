@@ -18,6 +18,9 @@ task OncogeminiUpdate {
       ~{if defined(tool_dir) then ("--tooldir " +  '"' + tool_dir + '"') else ""} \
       ~{if (data_only) then "--dataonly" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     devel: "Get the latest development version instead of the"
     no_data: "Do not install data dependencies"

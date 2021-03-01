@@ -1,0 +1,264 @@
+!Command
+command:
+- confindr.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input_directory
+  description: "Folder that contains fastq files you want to check for\ncontamination.\
+    \ Will find any file that contains .fq or\n.fastq in the filename."
+  args: !SimpleFlagArg
+    name: INPUT_DIRECTORY
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output_name
+  description: Base name for output/temporary directories.
+  args: !SimpleFlagArg
+    name: OUTPUT_NAME
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --databases
+  description: "Databases folder. To download these, you will need to\nget access\
+    \ to the rMLST databases. For complete\ninstructions on how to do this, please\
+    \ see\nhttps://olc-bioinformatics.github.io/ConFindr/install/\n#downloading-confindr-databases"
+  args: !SimpleFlagArg
+    name: DATABASES
+- !Flag
+  optional: true
+  synonyms:
+  - --rmlst
+  description: "Activate to prefer using rMLST databases over core-\ngene derived\
+    \ databases. By default,ConFindr will use\ncore-gene derived databases where available."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: Number of threads to run analysis with.
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - -tmp
+  - --tmp
+  description: "If your ConFindr databases are in a location you don't\nhave write\
+    \ access to, you can enter this option to\nspecify a temporary directory to put\
+    \ genus-specific\ndatabases to."
+  args: !SimpleFlagArg
+    name: TMP
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --keep_files
+  description: "By default, intermediate files are deleted. Activate\nthis flag to\
+    \ keep intermediate files."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quality_cutoff
+  description: "Base quality needed to support a multiple allele call.\nDefaults to\
+    \ 20."
+  args: !SimpleFlagArg
+    name: QUALITY_CUTOFF
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --base_cutoff
+  description: "Number of bases necessary to support a multiple allele\ncall. Defaults\
+    \ to 2."
+  args: !SimpleFlagArg
+    name: BASE_CUTOFF
+- !Flag
+  optional: true
+  synonyms:
+  - -bf
+  - --base_fraction_cutoff
+  description: "Fraction of bases necessary to support a multiple\nallele call. Particularly\
+    \ useful when dealing with\nvery high coverage samples. Default is 0.05."
+  args: !SimpleFlagArg
+    name: BASE_FRACTION_CUTOFF
+- !Flag
+  optional: true
+  synonyms:
+  - -fid
+  - --forward_id
+  description: Identifier for forward reads.
+  args: !SimpleFlagArg
+    name: FORWARD_ID
+- !Flag
+  optional: true
+  synonyms:
+  - -rid
+  - --reverse_id
+  description: Identifier for reverse reads.
+  args: !SimpleFlagArg
+    name: REVERSE_ID
+- !Flag
+  optional: true
+  synonyms:
+  - -dt
+  - --data_type
+  description: "Type of input data. Default is Illumina, but can be\nused for Nanopore\
+    \ too. No PacBio support (yet)."
+  args: !ChoiceFlagArg
+    choices: !!set
+      Illumina:
+      Nanopore:
+- !Flag
+  optional: true
+  synonyms:
+  - -Xmx
+  - --Xmx
+  description: "Very occasionally, parts of the pipeline that use the\nBBMap suite\
+    \ will have their memory reservation fail\nand request not enough, or sometimes\
+    \ negative, memory.\nIf this happens to you, you can use this flag to\noverride\
+    \ automatic memory reservation and use an\namount of memory requested by you.\
+    \ -Xmx 20g will\nspecify 20 gigs of RAM, and -Xmx 800m will specify 800\nmegs."
+  args: !SimpleFlagArg
+    name: XMX
+- !Flag
+  optional: true
+  synonyms:
+  - -cgmlst
+  - --cgmlst
+  description: "Path to a cgMLST database to use for contamination\ndetection instead\
+    \ of using the default rMLST database.\nSequences in this file should have headers\
+    \ in format\n>genename_allelenumber. To speed up ConFindr runs,\nclustering the\
+    \ cgMLST database with CD-HIT before\nrunning ConFindr is recommended. This is\
+    \ highly\nexperimental, results should be interpreted with great\ncare."
+  args: !SimpleFlagArg
+    name: CGMLST
+- !Flag
+  optional: true
+  synonyms:
+  - --fasta
+  description: "If activated, will look for FASTA files instead of\nFASTQ for unpaired\
+    \ reads."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -verbosity
+  - --verbosity
+  description: "Amount of output you want printed to the screen.\nDefaults to info,\
+    \ which should be good for most users."
+  args: !ChoiceFlagArg
+    choices: !!set
+      debug:
+      warning:
+      info:
+- !Flag
+  optional: true
+  synonyms:
+  - -cross_details
+  - --cross_details
+  description: "Continue ConFindr analyses on samples with two or more\ngenera identified.\
+    \ Default is False"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --min_matching_hashes
+  description: "Minimum number of matching hashes in a MASH screen in\norder for a\
+    \ genus to be considered present in a\nsample. Default is 150\n"
+  args: !SimpleFlagArg
+    name: MIN_MATCHING_HASHES
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: confindr.py [-h] -i INPUT_DIRECTORY -o OUTPUT_NAME [-d DATABASES]\n\
+  \                   [--rmlst] [-t THREADS] [-tmp TMP] [-k] [-q QUALITY_CUTOFF]\n\
+  \                   [-b BASE_CUTOFF] [-bf BASE_FRACTION_CUTOFF]\n              \
+  \     [-fid FORWARD_ID] [-rid REVERSE_ID] [-v]\n                   [-dt {Illumina,Nanopore}]\
+  \ [-Xmx XMX] [-cgmlst CGMLST]\n                   [--fasta] [-verbosity {debug,info,warning}]\n\
+  \                   [-cross_details] [-m MIN_MATCHING_HASHES]\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -i INPUT_DIRECTORY,\
+  \ --input_directory INPUT_DIRECTORY\n                        Folder that contains\
+  \ fastq files you want to check for\n                        contamination. Will\
+  \ find any file that contains .fq or\n                        .fastq in the filename.\n\
+  \  -o OUTPUT_NAME, --output_name OUTPUT_NAME\n                        Base name\
+  \ for output/temporary directories.\n  -d DATABASES, --databases DATABASES\n   \
+  \                     Databases folder. To download these, you will need to\n  \
+  \                      get access to the rMLST databases. For complete\n       \
+  \                 instructions on how to do this, please see\n                 \
+  \       https://olc-bioinformatics.github.io/ConFindr/install/\n               \
+  \         #downloading-confindr-databases\n  --rmlst               Activate to prefer\
+  \ using rMLST databases over core-\n                        gene derived databases.\
+  \ By default,ConFindr will use\n                        core-gene derived databases\
+  \ where available.\n  -t THREADS, --threads THREADS\n                        Number\
+  \ of threads to run analysis with.\n  -tmp TMP, --tmp TMP   If your ConFindr databases\
+  \ are in a location you don't\n                        have write access to, you\
+  \ can enter this option to\n                        specify a temporary directory\
+  \ to put genus-specific\n                        databases to.\n  -k, --keep_files\
+  \      By default, intermediate files are deleted. Activate\n                  \
+  \      this flag to keep intermediate files.\n  -q QUALITY_CUTOFF, --quality_cutoff\
+  \ QUALITY_CUTOFF\n                        Base quality needed to support a multiple\
+  \ allele call.\n                        Defaults to 20.\n  -b BASE_CUTOFF, --base_cutoff\
+  \ BASE_CUTOFF\n                        Number of bases necessary to support a multiple\
+  \ allele\n                        call. Defaults to 2.\n  -bf BASE_FRACTION_CUTOFF,\
+  \ --base_fraction_cutoff BASE_FRACTION_CUTOFF\n                        Fraction\
+  \ of bases necessary to support a multiple\n                        allele call.\
+  \ Particularly useful when dealing with\n                        very high coverage\
+  \ samples. Default is 0.05.\n  -fid FORWARD_ID, --forward_id FORWARD_ID\n      \
+  \                  Identifier for forward reads.\n  -rid REVERSE_ID, --reverse_id\
+  \ REVERSE_ID\n                        Identifier for reverse reads.\n  -v, --version\
+  \         show program's version number and exit\n  -dt {Illumina,Nanopore}, --data_type\
+  \ {Illumina,Nanopore}\n                        Type of input data. Default is Illumina,\
+  \ but can be\n                        used for Nanopore too. No PacBio support (yet).\n\
+  \  -Xmx XMX, --Xmx XMX   Very occasionally, parts of the pipeline that use the\n\
+  \                        BBMap suite will have their memory reservation fail\n \
+  \                       and request not enough, or sometimes negative, memory.\n\
+  \                        If this happens to you, you can use this flag to\n    \
+  \                    override automatic memory reservation and use an\n        \
+  \                amount of memory requested by you. -Xmx 20g will\n            \
+  \            specify 20 gigs of RAM, and -Xmx 800m will specify 800\n          \
+  \              megs.\n  -cgmlst CGMLST, --cgmlst CGMLST\n                      \
+  \  Path to a cgMLST database to use for contamination\n                        detection\
+  \ instead of using the default rMLST database.\n                        Sequences\
+  \ in this file should have headers in format\n                        >genename_allelenumber.\
+  \ To speed up ConFindr runs,\n                        clustering the cgMLST database\
+  \ with CD-HIT before\n                        running ConFindr is recommended. This\
+  \ is highly\n                        experimental, results should be interpreted\
+  \ with great\n                        care.\n  --fasta               If activated,\
+  \ will look for FASTA files instead of\n                        FASTQ for unpaired\
+  \ reads.\n  -verbosity {debug,info,warning}, --verbosity {debug,info,warning}\n\
+  \                        Amount of output you want printed to the screen.\n    \
+  \                    Defaults to info, which should be good for most users.\n  -cross_details,\
+  \ --cross_details\n                        Continue ConFindr analyses on samples\
+  \ with two or more\n                        genera identified. Default is False\n\
+  \  -m MIN_MATCHING_HASHES, --min_matching_hashes MIN_MATCHING_HASHES\n         \
+  \               Minimum number of matching hashes in a MASH screen in\n        \
+  \                order for a genus to be considered present in a\n             \
+  \           sample. Default is 150\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/confindr:0.7.4--py_0

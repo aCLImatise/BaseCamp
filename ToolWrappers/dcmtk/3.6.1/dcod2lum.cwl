@@ -20,6 +20,7 @@ outputs:
   type: File
   outputBinding:
     glob: $(inputs.in_out_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - dcod2lum

@@ -4,6 +4,9 @@ task Blastx {
   command <<<
     blastx
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

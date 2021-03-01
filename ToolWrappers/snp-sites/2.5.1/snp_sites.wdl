@@ -12,11 +12,11 @@ task Snpsites {
     Boolean? output_monomorphic_sites
     Boolean? print_version_exit
     Boolean? rmv_pc_bhv
-    File file
+    File var_file
   }
   command <<<
     snp_sites \
-      ~{file} \
+      ~{var_file} \
       ~{if (output_internal_pseudo) then "-r" else ""} \
       ~{if (output_multi_default) then "-m" else ""} \
       ~{if (output_vcf_file) then "-v" else ""} \
@@ -28,6 +28,9 @@ task Snpsites {
       ~{if (print_version_exit) then "-V" else ""} \
       ~{if (rmv_pc_bhv) then "-rmvpcbhV" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_internal_pseudo: "output internal pseudo reference sequence"
     output_multi_default: "output a multi fasta alignment file (default)"
@@ -39,7 +42,7 @@ task Snpsites {
     output_monomorphic_sites: "output monomorphic sites, used for BEAST"
     print_version_exit: "print version and exit"
     rmv_pc_bhv: ""
-    file: ""
+    var_file: ""
   }
   output {
     File out_stdout = stdout()

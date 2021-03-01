@@ -4,6 +4,9 @@ task GetFRCvalues {
   command <<<
     getFRCvalues
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

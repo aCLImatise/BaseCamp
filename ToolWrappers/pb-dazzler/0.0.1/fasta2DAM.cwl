@@ -3,24 +3,25 @@ id: fasta2DAM.cwl
 inputs:
 - id: in_import_files_listed
   doc: ': import files listed 1/line in given file.'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -f
-- id: in_import_data_stdin
+- id: in_import_data_sequence
   doc: ": import data from stdin, use optiona name as data source.\n: otherwise, import\
     \ sequence of specified files.\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -i
 - id: in_v
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - fasta2DAM

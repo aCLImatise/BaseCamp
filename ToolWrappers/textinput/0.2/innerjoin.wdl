@@ -12,6 +12,9 @@ task Innerjoin {
       ~{if defined(main_fields) then ("--main-fields " +  '"' + main_fields + '"') else ""} \
       ~{if defined(lookup_fields) then ("--lookup-fields " +  '"' + lookup_fields + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     empty: "replace missing input fields with EMPTY"
     main_fields: "join on these FIELDS of MAIN-TABLE"

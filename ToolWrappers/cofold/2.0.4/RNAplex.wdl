@@ -58,6 +58,9 @@ task RNAplex {
       ~{if defined(energy_threshold) then ("--energy-threshold " +  '"' + energy_threshold + '"') else ""} \
       ~{if defined(produce_ps) then ("--produce-ps " +  '"' + produce_ps + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     detailed_help: "Print help, including all details and hidden\\noptions, and exit"
     target: "File containing the target sequence."

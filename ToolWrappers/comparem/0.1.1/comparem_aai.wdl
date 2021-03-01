@@ -24,6 +24,9 @@ task ComparemAai {
       ~{if defined(cpus) then ("--cpus " +  '"' + cpus + '"') else ""} \
       ~{if (silent) then "--silent" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     evalue: "maximum e-value for reporting an alignments (default:\\n0.001)"
     per_identity: "minimum percent identity for reporting an alignment\\n(default: 30.0)"

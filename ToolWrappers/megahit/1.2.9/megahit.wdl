@@ -4,8 +4,8 @@ task Megahit {
   input {
     Boolean? one
     Boolean? two
-    Boolean? pe_commaseparated_list_interleaved
-    Boolean? r_slash_read
+    Boolean? commaseparated_list_interleaved
+    Boolean? read
     Boolean? min_count
     Boolean? k_list
     Boolean? k_min
@@ -23,36 +23,31 @@ task Megahit {
     Boolean? no_local
     Boolean? km_in_one_pass
     Boolean? presets
-    Boolean? m_slash_memory
+    Boolean? memory
     Boolean? mem_flag
-    Boolean? t_slash_num_cpu_threads
+    Boolean? num_cpu_threads
     Boolean? no_hw_accel
-    Directory? oslash_out_dir
+    Directory? out_dir
     File? out_prefix
     Boolean? min_contig_len
     Boolean? keep_tmp_files
     Boolean? tmp_dir
     Directory? continue
     Boolean? test
-    Boolean? h_slash_help
-    Boolean? v_slash_version
     String var_input
     Int pe_one
     Int pe_one_two
     Int pe_two
-    String se
     String comma_separated
     String that
     String can
     String list
     String be
     String of
-    String fast_a_slash_q
+    String fast_a
     String interleaved
     String specified
     String for
-    String paired_end
-    String single_end
     String multiple
     String times
   }
@@ -62,25 +57,22 @@ task Megahit {
       ~{pe_one} \
       ~{pe_one_two} \
       ~{pe_two} \
-      ~{se} \
       ~{comma_separated} \
       ~{that} \
       ~{can} \
       ~{list} \
       ~{be} \
       ~{of} \
-      ~{fast_a_slash_q} \
+      ~{fast_a} \
       ~{interleaved} \
       ~{specified} \
       ~{for} \
-      ~{paired_end} \
-      ~{single_end} \
       ~{multiple} \
       ~{times} \
       ~{if (one) then "-1" else ""} \
       ~{if (two) then "-2" else ""} \
-      ~{if (pe_commaseparated_list_interleaved) then "--12" else ""} \
-      ~{if (r_slash_read) then "-r/--read" else ""} \
+      ~{if (commaseparated_list_interleaved) then "--12" else ""} \
+      ~{if (read) then "--read" else ""} \
       ~{if (min_count) then "--min-count" else ""} \
       ~{if (k_list) then "--k-list" else ""} \
       ~{if (k_min) then "--k-min" else ""} \
@@ -98,25 +90,26 @@ task Megahit {
       ~{if (no_local) then "--no-local" else ""} \
       ~{if (km_in_one_pass) then "--kmin-1pass" else ""} \
       ~{if (presets) then "--presets" else ""} \
-      ~{if (m_slash_memory) then "-m/--memory" else ""} \
+      ~{if (memory) then "--memory" else ""} \
       ~{if (mem_flag) then "--mem-flag" else ""} \
-      ~{if (t_slash_num_cpu_threads) then "-t/--num-cpu-threads" else ""} \
+      ~{if (num_cpu_threads) then "--num-cpu-threads" else ""} \
       ~{if (no_hw_accel) then "--no-hw-accel" else ""} \
-      ~{if (oslash_out_dir) then "-o/--out-dir" else ""} \
+      ~{if (out_dir) then "--out-dir" else ""} \
       ~{if (out_prefix) then "--out-prefix" else ""} \
       ~{if (min_contig_len) then "--min-contig-len" else ""} \
       ~{if (keep_tmp_files) then "--keep-tmp-files" else ""} \
       ~{if (tmp_dir) then "--tmp-dir" else ""} \
       ~{if (continue) then "--continue" else ""} \
-      ~{if (test) then "--test" else ""} \
-      ~{if (h_slash_help) then "-h/--help" else ""} \
-      ~{if (v_slash_version) then "-v/--version" else ""}
+      ~{if (test) then "--test" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     one: "<pe1>          comma-separated list of fasta/q paired-end #1 files, paired with files in <pe2>"
     two: "<pe2>          comma-separated list of fasta/q paired-end #2 files, paired with files in <pe1>"
-    pe_commaseparated_list_interleaved: "<pe12>         comma-separated list of interleaved fasta/q paired-end files"
-    r_slash_read: "<se>           comma-separated list of fasta/q single-end files"
+    commaseparated_list_interleaved: "<pe12>         comma-separated list of interleaved fasta/q paired-end files"
+    read: "<se>           comma-separated list of fasta/q single-end files"
     min_count: "<int>          minimum multiplicity for filtering (k_min+1)-mers [2]"
     k_list: "<int,int,..>   comma-separated list of kmer size\\nall must be odd, in the range 15-255, increment <= 28)\\n[21,29,39,59,79,99,119,141]"
     k_min: "<int>          minimum kmer size (<= 255), must be odd number [21]"
@@ -134,42 +127,37 @@ task Megahit {
     no_local: "disable local assembly"
     km_in_one_pass: "use 1pass mode to build SdBG of k_min"
     presets: "<str>          override a group of parameters; possible values:\\nmeta-sensitive: '--min-count 1 --k-list 21,29,39,49,...,129,141'\\nmeta-large: '--k-min 27 --k-max 127 --k-step 10'\\n(large & complex metagenomes, like soil)"
-    m_slash_memory: "<float>        max memory in byte to be used in SdBG construction\\n(if set between 0-1, fraction of the machine's total memory) [0.9]"
+    memory: "<float>        max memory in byte to be used in SdBG construction\\n(if set between 0-1, fraction of the machine's total memory) [0.9]"
     mem_flag: "<int>          SdBG builder memory mode. 0: minimum; 1: moderate;\\nothers: use all memory specified by '-m/--memory' [1]"
-    t_slash_num_cpu_threads: "<int>          number of CPU threads [# of logical processors]"
+    num_cpu_threads: "<int>          number of CPU threads [# of logical processors]"
     no_hw_accel: "run MEGAHIT without BMI2 and POPCNT hardware instructions"
-    oslash_out_dir: "<string>       output directory [./megahit_out]"
+    out_dir: "<string>       output directory [./megahit_out]"
     out_prefix: "<string>       output prefix (the contig file will be OUT_DIR/OUT_PREFIX.contigs.fa)"
     min_contig_len: "<int>          minimum length of contigs to output [200]"
     keep_tmp_files: "keep all temporary files"
     tmp_dir: "<string>       set temp directory"
     continue: "continue a MEGAHIT run from its last available check point.\\nplease set the output directory correctly when using this option."
     test: "run MEGAHIT on a toy test dataset"
-    h_slash_help: "print the usage message"
-    v_slash_version: "print version"
     var_input: ""
     pe_one: ""
     pe_one_two: ""
     pe_two: ""
-    se: ""
     comma_separated: ""
     that: ""
     can: ""
     list: ""
     be: ""
     of: ""
-    fast_a_slash_q: ""
+    fast_a: ""
     interleaved: ""
     specified: ""
     for: ""
-    paired_end: ""
-    single_end: ""
     multiple: ""
     times: ""
   }
   output {
     File out_stdout = stdout()
-    Directory out_oslash_out_dir = "${in_oslash_out_dir}"
+    Directory out_out_dir = "${in_out_dir}"
     File out_out_prefix = "${in_out_prefix}"
     Directory out_continue = "${in_continue}"
   }

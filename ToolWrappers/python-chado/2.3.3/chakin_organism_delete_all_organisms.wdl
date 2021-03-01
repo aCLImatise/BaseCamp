@@ -10,6 +10,9 @@ task ChakinOrganismDeleteAllOrganisms {
       ~{options} \
       ~{if (confirm) then "--confirm" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     confirm: "Confirm that you really do want to delete ALL of the organisms."
     options: "Options:"

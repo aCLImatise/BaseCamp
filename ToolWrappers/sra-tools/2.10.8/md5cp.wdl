@@ -22,6 +22,9 @@ task Md5cp {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(option_file) then ("--option-file " +  '"' + option_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     force: "overwrite existing columns"
     preserve: "force replacement of existing modes on files\\nand directories"

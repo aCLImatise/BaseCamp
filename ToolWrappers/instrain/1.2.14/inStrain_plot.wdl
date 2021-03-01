@@ -20,6 +20,9 @@ task InStrainPlot {
       ~{if defined(processes) then ("--processes " +  '"' + processes + '"') else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     is: "an inStrain profile object (default: None)"
     pl: "[PLOTS [PLOTS ...]], --plots [PLOTS [PLOTS ...]]\\nPlots. Input 'all' or 'a' to plot all\\n1) Coverage and breadth vs. read mismatches\\n2) Genome-wide microdiversity metrics\\n3) Read-level ANI distribution\\n4) Major allele frequencies\\n5) Linkage decay\\n6) Read filtering plots\\n7) Scaffold inspection plot (large)\\n8) Linkage with SNP type (GENES REQUIRED)\\n9) Gene histograms (GENES REQUIRED)\\n10) Compare dendrograms (RUN ON COMPARE; NOT PROFILE)\\n(default: a)"

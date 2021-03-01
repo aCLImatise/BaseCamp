@@ -30,6 +30,9 @@ task Ptrimmer {
       ~{if (km_er) then "--kmer" else ""} \
       ~{if (mismatch) then "--mismatch" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     keep: "keep the complete reads if failed to locate primer\\nsequence [default: discard the reads]"
     seqtype: "[required] the sequencing type [single|pair]"

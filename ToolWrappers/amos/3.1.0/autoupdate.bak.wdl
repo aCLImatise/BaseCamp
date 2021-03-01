@@ -4,6 +4,9 @@ task Autoupdatebak {
   command <<<
     autoupdate_bak
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

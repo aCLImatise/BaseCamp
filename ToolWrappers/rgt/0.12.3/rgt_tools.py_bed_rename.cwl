@@ -3,47 +3,47 @@ id: rgt_tools.py_bed_rename.cwl
 inputs:
 - id: in_input_bed_file
   doc: Input BED file
-  type: File
+  type: File?
   inputBinding:
     prefix: -i
 - id: in_output_bed_file
   doc: Output BED file
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_strand_specific
   doc: Strand specific
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -s
 - id: in_show_the_distance
   doc: Show the distance
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -d
 - id: in_organism
   doc: Define the organism
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -organism
 - id: in_define_length_bp
   doc: Define the length of promoter region (default:1000 bp)
-  type: long
+  type: long?
   inputBinding:
     prefix: -l
 - id: in_define_threshold_distance
   doc: Define the threshold of distance (default:50000bp
-  type: long
+  type: long?
   inputBinding:
     prefix: -t
 - id: in_target
   doc: Target BED file
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -target
 - id: in_genes
   doc: Target gene list
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -genes
 outputs:
@@ -52,9 +52,10 @@ outputs:
   type: stdout
 - id: out_output_bed_file
   doc: Output BED file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_bed_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rgt-tools.py

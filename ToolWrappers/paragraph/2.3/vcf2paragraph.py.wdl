@@ -34,6 +34,9 @@ task Vcf2paragraphpy {
       ~{if (alt_paths) then "--alt-paths" else ""} \
       ~{if defined(recursion_limit) then ("--recursion-limit " +  '"' + recursion_limit + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference_sequence: "Reference FASTA for checking REF and resolving <DEL>"
     verbose: "More logging; May be given twice for even more"

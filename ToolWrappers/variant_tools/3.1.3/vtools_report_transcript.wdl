@@ -18,6 +18,9 @@ task VtoolsReportTranscript {
       ~{if (zero_based) then "--zero_based" else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     build: "[BUILD]       Output sequence at specified build of reference\\ngenome. The primary reference genome of the project\\nwill be used if by default."
     strand_only: "Only output strand of genes that covers the region."

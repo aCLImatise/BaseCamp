@@ -18,6 +18,9 @@ task Samtools0118Sort {
       ~{if defined(m) then ("-m " +  '"' + m + '"') else ""} \
       ~{if (on) then "-on" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     m: ""
     on: ""

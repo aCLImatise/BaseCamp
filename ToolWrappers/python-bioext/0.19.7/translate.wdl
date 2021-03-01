@@ -12,6 +12,9 @@ task Translate {
       ~{var_output} \
       ~{if defined(f) then ("-f " +  '"' + f + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     f: ""
     var_input: ""

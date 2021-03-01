@@ -16,6 +16,9 @@ task ModelEstimate {
       ~{if defined(output_dir) then ("--output-dir " +  '"' + output_dir + '"') else ""} \
       ~{if (cross_validation) then "--cross-validation" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     positive_input_file: "Path tofile containing input for the positive class.\\n(default: None)"
     negative_input_file: "Path to file containing input for the negative class.\\n(default: None)"

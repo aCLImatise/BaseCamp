@@ -4,58 +4,61 @@ command:
 positional: []
 named:
 - !Flag
-  description: Minimum length of PacBio sequences to correct/output.
+  optional: true
   synonyms:
   - -length
+  description: Minimum length of PacBio sequences to correct/output.
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: Number of partitions for consensus
+  optional: true
   synonyms:
   - -partitions
+  description: Number of partitions for consensus
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: Name of the library; freeformat text. Must be unique from any library
-    names in the FRG files used for correction
+  optional: true
   synonyms:
   - -libraryname
+  description: Name of the library; freeformat text. Must be unique from any library
+    names in the FRG files used for correction
   args: !SimpleFlagArg
     name: string
-  optional: true
 - !Flag
-  description: Number of threads to use for correction. Defaults to available cores
-    on the local system
+  optional: true
   synonyms:
   - -threads
+  description: Number of threads to use for correction. Defaults to available cores
+    on the local system
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: Use if the sequences for correction are 100bp or shorter.
+  optional: true
   synonyms:
   - -shortReads
+  description: Use if the sequences for correction are 100bp or shorter.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: <int>          Specify the approximate genome size. This will be used
-    to compute the maximum number of bases to correct
+  optional: true
   synonyms:
   - -genomeSize
+  description: <int>          Specify the approximate genome size. This will be used
+    to compute the maximum number of bases to correct
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -maxCoverage
   description: Maximum coverage of PacBio sequences to correct. Only the longest sequences
     adding up to this coverage will be corrected. Requires genomeSize to be specified.
     Defaults to 40X
-  synonyms:
-  - -maxCoverage
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -maxGap
   description: 'The maximum uncorrected PacBio gap that will be allowed. When there
     is no short-read coverage for a region, by default the pipeline will split a PacBio
     sequence. This option will attempt to use other PacBio sequences to patch the
@@ -64,18 +67,15 @@ named:
     can have no short-read coverage (but has other PacBio sequence support) without
     splitting the PacBio sequence. Warning: this can allow more sequences that went
     through the SMRTbell to not be fixed.'
-  synonyms:
-  - -maxGap
   args: !SimpleFlagArg
     name: int
-  optional: true
 - !Flag
-  description: Specify the pacBio coverage (integer) used to separate repeat copies
-    instead of automatically estimating.
+  optional: true
   synonyms:
   - -coverageCutoff
+  description: Specify the pacBio coverage (integer) used to separate repeat copies
+    instead of automatically estimating.
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -121,3 +121,4 @@ help_text: "0Warning: no frag files specified, assuming self-correction of pacbi
   \ using the -library option.\n"
 generated_using:
 - --help
+docker_image:

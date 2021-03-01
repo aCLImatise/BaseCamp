@@ -32,6 +32,9 @@ task Cpeinutilpy {
       ~{if (describe) then "--describe" else ""} \
       ~{if (list) then "--list" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "Enable verbose tracebacks to debug this program"
     output_file_defaults: "Output file. Defaults to standard output"

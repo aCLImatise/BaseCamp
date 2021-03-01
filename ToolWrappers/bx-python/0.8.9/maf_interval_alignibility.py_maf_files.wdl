@@ -14,6 +14,9 @@ task MafIntervalAlignibilitypyMafFiles {
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
       ~{if (use_cache) then "--usecache" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     species: ": Comma separated list of species to include"
     prefix: ": Prefix to add to each interval chrom (usually reference species)"

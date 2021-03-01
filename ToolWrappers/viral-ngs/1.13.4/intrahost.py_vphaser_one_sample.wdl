@@ -22,6 +22,9 @@ task IntrahostpyVphaserOneSample {
       ~{if (remove_doubly_mapped_reads) then "--removeDoublyMappedReads" else ""} \
       ~{if defined(loglevel) then ("--loglevel " +  '"' + loglevel + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     v_phaser_num_threads: "Number of threads in call to V-Phaser 2."
     min_reads_each: "Minimum number of reads on each strand (default: 5)."

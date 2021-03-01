@@ -3,12 +3,12 @@ id: downsample_traingenes.pl.cwl
 inputs:
 - id: in_lambda
   doc: "Parameter lambda of Poisson distribution\n(default value is 0)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --lambda
 - id: in_intron_num_lst
   doc: File with intron numbers per gene (selected)
-  type: File
+  type: File?
   inputBinding:
     prefix: --intron_num_lst
 - id: in_train_genes_dot_gtf
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - downsample_traingenes.pl

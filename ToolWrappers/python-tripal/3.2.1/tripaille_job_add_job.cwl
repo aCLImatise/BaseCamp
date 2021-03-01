@@ -3,7 +3,7 @@ id: tripaille_job_add_job.cwl
 inputs:
 - id: in_priority
   doc: 'An integer score to prioritize the job  [default: 10]'
-  type: long
+  type: long?
   inputBinding:
     prefix: --priority
 - id: in_name
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - tripaille

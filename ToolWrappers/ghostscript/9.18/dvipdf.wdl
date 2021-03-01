@@ -12,6 +12,9 @@ task Dvipdf {
       ~{input_dot_dvi} \
       ~{output_dot_pdf}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     options_dot_dot_dot: ""
     input_dot_dvi: ""

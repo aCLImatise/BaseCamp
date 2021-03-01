@@ -36,6 +36,9 @@ task MedakaSmolecule {
       ~{if (check_output) then "--check_output" else ""} \
       ~{if (save_features) then "--save_features" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "Verbose logging of debug information. (default: 20)"
     quiet: "Minimal logging; warnings only). (default: 20)"

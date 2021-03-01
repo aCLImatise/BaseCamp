@@ -44,14 +44,14 @@ task Daa2rma {
     Boolean? accession_tags
     Boolean? verbose
     String i__input
-    String _output_files
+    String o__output
     String reads
     String parameters
   }
   command <<<
     daa2rma \
       ~{i__input} \
-      ~{_output_files} \
+      ~{o__output} \
       ~{reads} \
       ~{parameters} \
       ~{if (metadata_file) then "--metaDataFile" else ""} \
@@ -96,6 +96,9 @@ task Daa2rma {
       ~{if (accession_tags) then "--accessionTags" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     metadata_file: "[string(s)]     Files containing metadata to be included in RMA6 files."
     use_compression: "Compress reads and matches in RMA file (smaller files, longer to generate. Default value: true."
@@ -139,7 +142,7 @@ task Daa2rma {
     accession_tags: "[string(s)]   List of accession tags. Default value(s): gb| ref|."
     verbose: "Echo commandline options and be verbose. Default value: false."
     i__input: "-i, --in [string(s)]                 Input DAA file. Mandatory option."
-    _output_files: "-o, --out [string(s)]                Output file(s), one for each input file, or a directory. Mandatory option."
+    o__output: "-o, --out [string(s)]                Output file(s), one for each input file, or a directory. Mandatory option."
     reads: "-p, --paired                         Reads are paired. Default value: false."
     parameters: "-lg, --longReads                     Parse and analyse as long reads. Default value: false."
   }

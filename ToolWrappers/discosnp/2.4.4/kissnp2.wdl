@@ -14,7 +14,7 @@ task Kissnp2 {
     Boolean? max_symmetrical_crossroads
     Boolean? arg_branching_mode
     Boolean? max_ambigous_in_del
-    Boolean? arg_conserve_complexity
+    Boolean? arg_conserve_snps
     Boolean? nb_cores
     Boolean? verbose
     Boolean? version
@@ -36,7 +36,7 @@ task Kissnp2 {
       ~{if (max_symmetrical_crossroads) then "-max_symmetrical_crossroads" else ""} \
       ~{if (arg_branching_mode) then "-b" else ""} \
       ~{if (max_ambigous_in_del) then "-max_ambigous_indel" else ""} \
-      ~{if (arg_conserve_complexity) then "-l" else ""} \
+      ~{if (arg_conserve_snps) then "-l" else ""} \
       ~{if (nb_cores) then "-nb-cores" else ""} \
       ~{if (verbose) then "-verbose" else ""} \
       ~{if (version) then "-version" else ""} \
@@ -44,6 +44,9 @@ task Kissnp2 {
       ~{if (bfs_max_breadth) then "-bfs-max-breadth" else ""} \
       ~{if (max_truncated_path_length_difference) then "-max_truncated_path_length_difference" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     arg_keep_bubbles: "(0 arg) :    keep truncated bubbles, that have no successors on the 2 paths at the same position"
     arg_maximal_number: "(1 arg) :    maximal number of polymorphism per bubble  [default '1']"
@@ -57,7 +60,7 @@ task Kissnp2 {
     max_symmetrical_crossroads: "(1 arg) :    In b2 mode only: maximal number of symmetrical croasroads traversed while trying to close a bubble. Default: no limit  [default '-1']"
     arg_branching_mode: "(1 arg) :    branching mode\\n0: forbid SNPs for wich any of the two paths is branching (high precision, low recall)\\n1: forbid SNPs for wich the two paths are branching (e.g. the two paths can be created either with a 'A' or a 'C' at the same position (default value)\\n2: No limitation on branching (low precision, high recall)  [default '1']"
     max_ambigous_in_del: "(1 arg) :    Maximal size of ambiguity of INDELs. INDELS whose ambiguity is higher than this value are not output  [default '20']"
-    arg_conserve_complexity: "(0 arg) :    conserve low complexity SNPs"
+    arg_conserve_snps: "(0 arg) :    conserve low complexity SNPs"
     nb_cores: "(1 arg) :    number of cores  [default '0']"
     verbose: "(1 arg) :    verbosity level  [default '1']"
     version: "(0 arg) :    version"

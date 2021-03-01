@@ -4,6 +4,9 @@ task ESTScan1 {
   command <<<
     ESTScan1
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

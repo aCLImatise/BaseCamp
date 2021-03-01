@@ -18,6 +18,9 @@ task Hotspot3dSigclus {
       ~{if (output_file_prefix) then "--output" else ""} \
       ~{if (simulations) then "--simulations" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prep_dir: "Preprocessing directory"
     pairwise: "Pairwise file (pancan19.pairwise)"

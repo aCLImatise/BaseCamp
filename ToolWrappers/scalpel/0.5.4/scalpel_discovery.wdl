@@ -16,6 +16,9 @@ task Scalpeldiscovery {
       ~{if (de_novo) then "--denovo" else ""} \
       ~{if (somatic) then "--somatic" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: ": verbose mode"
     single: ": single exome study"

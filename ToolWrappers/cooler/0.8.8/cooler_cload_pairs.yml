@@ -5,87 +5,100 @@ command:
 - pairs
 positional:
 - !Positional
-  description: '[default: #]'
-  position: 0
-  name: ignore.
   optional: false
+  position: 0
+  name: BINS
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: PAIRS_PATH
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: COOL_PATH
+  description: ''
 named:
 - !Flag
-  description: Path to JSON file containing user metadata.
+  optional: true
   synonyms:
   - --metadata
+  description: Path to JSON file containing user metadata.
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: Name of genome assembly (e.g. hg19, mm10)
+  optional: true
   synonyms:
   - --assembly
+  description: Name of genome assembly (e.g. hg19, mm10)
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: chrom1 field number (one-based)  [required]
+  optional: true
   synonyms:
   - -c1
   - --chrom1
+  description: chrom1 field number (one-based)  [required]
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: pos1 field number (one-based)  [required]
+  optional: true
   synonyms:
   - -p1
   - --pos1
+  description: pos1 field number (one-based)  [required]
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: chrom2 field number (one-based)  [required]
+  optional: true
   synonyms:
   - -c2
   - --chrom2
+  description: chrom2 field number (one-based)  [required]
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: pos2 field number (one-based)  [required]
+  optional: true
   synonyms:
   - -p2
   - --pos2
+  description: pos2 field number (one-based)  [required]
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: Number of input lines to load at a time
+  optional: true
   synonyms:
   - --chunksize
+  description: Number of input lines to load at a time
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: 'Positions are zero-based  [default: False]'
+  optional: true
   synonyms:
   - '-0'
   - --zero-based
+  description: 'Positions are zero-based  [default: False]'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Comment character that indicates lines to
+  optional: true
   synonyms:
   - --comment-char
+  description: Comment character that indicates lines to
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "Create a complete square matrix without\nimplicit symmetry. This allows\
-    \ for distinct\nupper- and lower-triangle values"
+  optional: true
   synonyms:
   - -N
   - --no-symmetric-upper
+  description: "Create a complete square matrix without\nimplicit symmetry. This allows\
+    \ for distinct\nupper- and lower-triangle values"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --input-copy-status
   description: "[unique|duplex]\nCopy status of input data when using\nsymmetric-upper\
     \ storage. | `unique`:\nIncoming data comes from a unique half of a\nsymmetric\
     \ map, regardless of how the\ncoordinates of a pair are ordered. `duplex`:\nIncoming\
@@ -93,11 +106,11 @@ named:
     map to the lower triangle will be discarded!\n| If you wish to treat lower- and\
     \ upper-\ntriangle input data as distinct, use the\n``--no-symmetric-upper`` option.\
     \   [default:\nunique]"
-  synonyms:
-  - --input-copy-status
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --field
   description: "Specify quantitative input fields to\naggregate into value columns\
     \ using the\nsyntax ``--field <field-name>=<field-\nnumber>``. Optionally, append\
     \ ``:`` followed\nby ``dtype=<dtype>`` to specify the data\ntype (e.g. float),\
@@ -105,52 +118,49 @@ named:
     \ (e.g. mean). Field numbers are\n1-based. Passing 'count' as the target name\n\
     will override the default behavior of\nstoring pair counts. Repeat the ``--field``\n\
     option for each additional field."
-  synonyms:
-  - --field
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 - !Flag
-  description: "Create temporary files in a specified\ndirectory. Pass ``-`` to use\
-    \ the platform\ndefault temp dir."
+  optional: true
   synonyms:
   - --temp-dir
+  description: "Create temporary files in a specified\ndirectory. Pass ``-`` to use\
+    \ the platform\ndefault temp dir."
   args: !SimpleFlagArg
     name: DIRECTORY
-  optional: true
 - !Flag
-  description: Do not delete temporary files when finished.
+  optional: true
   synonyms:
   - --no-delete-temp
+  description: Do not delete temporary files when finished.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Maximum number of chunks to merge before\ninvoking recursive merging\
-    \  [default: 200]"
+  optional: true
   synonyms:
   - --max-merge
+  description: "Maximum number of chunks to merge before\ninvoking recursive merging\
+    \  [default: 200]"
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --storage-options
   description: "Options to modify the data filter pipeline.\nProvide as a comma-separated\
     \ list of key-\nvalue pairs of the form 'k1=v1,k2=v2,...'.\nSee http://docs.h5py.org/en/stable/high/data\n\
     set.html#filter-pipeline for more details."
-  synonyms:
-  - --storage-options
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Show this message and exit.
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Show this message and exit.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: cooler cload pairs [OPTIONS] BINS PAIRS_PATH COOL_PATH\n\n  Bin\
@@ -208,3 +218,4 @@ help_text: "Usage: cooler cload pairs [OPTIONS] BINS PAIRS_PATH COOL_PATH\n\n  B
   \  -h, --help                      Show this message and exit.\n"
 generated_using:
 - --help
+docker_image:

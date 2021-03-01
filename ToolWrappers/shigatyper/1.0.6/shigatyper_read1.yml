@@ -4,42 +4,46 @@ command:
 - read1
 positional:
 - !Positional
-  description: read2
+  optional: false
   position: 0
   name: read1
-  optional: false
+  description: read2
 named:
 - !Flag
-  description: ''
+  optional: true
   synonyms:
   - --verbose
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
   description: ''
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - -n
+  description: ''
   args: !SimpleFlagArg
     name: SAMPLE_NAME
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n-n SAMPLE_NAME, --name SAMPLE_NAME\n\
-    --verbose, -v\n--version             show program's version number and exit\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: ''
-  synonyms:
-  - --version
-  args: !EmptyFlagArg {}
   optional: true
+  synonyms:
+  - -n
+  - --name
+  - --verbose
+  - -v
+  - --version
+  description: show program's version number and exit
+  args: !SimpleFlagArg
+    name: SAMPLE_NAME
 help_text: "usage: shigatyper [-h] [-n SAMPLE_NAME] [--verbose] [--version] read1\
   \ read2\n\nShigaTyper v. 1.0.6, 2019\n\nA WGS-based genoserotyping pipeline for\
   \ Shigella spp.\n\nYun Wu, Henry K Lau, Teresa Lee, David K Lau, Justin Payne\n\n\
@@ -70,3 +74,4 @@ help_text: "usage: shigatyper [-h] [-n SAMPLE_NAME] [--verbose] [--version] read
   \ show program's version number and exit\n"
 generated_using:
 - --help
+docker_image:

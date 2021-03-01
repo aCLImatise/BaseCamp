@@ -14,6 +14,9 @@ task XsvSample {
       ~{if (no_headers) then "--no-headers" else ""} \
       ~{if defined(delimiter) then ("--delimiter " +  '"' + delimiter + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     write_output_file: "Write output to <file> instead of stdout."
     no_headers: "When set, the first row will be consider as part of\\nthe population to sample from. (When not set, the\\nfirst row is the header row and will always appear\\nin the output.)"

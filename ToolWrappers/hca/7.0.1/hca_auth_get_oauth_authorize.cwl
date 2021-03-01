@@ -3,13 +3,14 @@ id: hca_auth_get_oauth_authorize.cwl
 inputs:
 - id: in_redirect_uri
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --redirect-uri
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - hca

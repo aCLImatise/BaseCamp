@@ -25,6 +25,7 @@ outputs:
   type: File
   outputBinding:
     glob: $(inputs.in_output_badger_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - makeBadgerMatrix

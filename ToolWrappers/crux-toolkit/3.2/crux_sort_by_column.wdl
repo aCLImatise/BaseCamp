@@ -8,6 +8,9 @@ task CruxSortbycolumn {
     crux sort_by_column \
       ~{tsv_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tsv_file: ""
   }

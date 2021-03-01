@@ -8,6 +8,9 @@ task OrthomclBlastParser {
     orthomclBlastParser \
       ~{orthomcl_adjust_fast_a}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     orthomcl_adjust_fast_a: "m8 format has these columns:"
   }

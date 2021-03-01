@@ -12,6 +12,9 @@ task Gil2bin {
       ~{if (output_binary_gilist) then "-o" else ""} \
       ~{if (reverse_mode_binary) then "-r" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_gilist: "Input gilist [File In]"
     output_binary_gilist: "output (binary) gilist [File In]"

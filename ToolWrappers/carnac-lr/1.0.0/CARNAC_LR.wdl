@@ -10,6 +10,9 @@ task CARNACLR {
       ~{if defined(mandatory) then ("-f " +  '"' + mandatory + '"') else ""} \
       ~{if defined(number_threads_default) then ("-t " +  '"' + number_threads_default + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mandatory: "mandatory"
     number_threads_default: "the number of threads (default 2)"

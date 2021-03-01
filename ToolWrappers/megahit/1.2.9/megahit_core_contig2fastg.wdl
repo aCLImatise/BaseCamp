@@ -12,6 +12,9 @@ task MegahitCoreContig2fastg {
       ~{km_er_size} \
       ~{k_km_er_size_dot_contigs_dot_fa}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     contig_two_fast_g: ""
     km_er_size: ""

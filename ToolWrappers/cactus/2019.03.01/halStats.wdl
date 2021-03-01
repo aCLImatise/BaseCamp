@@ -60,6 +60,9 @@ task HalStats {
       ~{if defined(top_segments) then ("--topSegments " +  '"' + top_segments + '"') else ""} \
       ~{if (tree) then "--tree" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     all_coverage: ":              print histogram of coverage from all genomes to all\\ngenomes [default = 0]"
     base_comp: ":         print base composition for given genome by sampling every\\nstep bases. Parameter value is of the form genome,step.\\nEx: --baseComp human,1000.  The ouptut is of the form"

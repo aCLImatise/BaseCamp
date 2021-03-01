@@ -22,6 +22,9 @@ task DeepacExplainMcompare {
       ~{if defined(min_overlap) then ("--min-overlap " +  '"' + min_overlap + '"') else ""} \
       ~{if defined(out_dir) then ("--out-dir " +  '"' + out_dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_file_one: "File containing all filter motifs in transfac format"
     in_file_two: "File containing all filter motifs in transfac format"

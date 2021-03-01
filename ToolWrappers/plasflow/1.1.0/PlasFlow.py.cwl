@@ -3,27 +3,27 @@ id: PlasFlow.py.cwl
 inputs:
 - id: in_input
   doc: Input fasta file with sequences to classify (required)
-  type: File
+  type: File?
   inputBinding:
     prefix: --input
 - id: in_output
   doc: Output file with classification results (required)
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_threshold
   doc: Threshold for probability filtering (default=0.7)
-  type: double
+  type: double?
   inputBinding:
     prefix: --threshold
 - id: in_labels
   doc: Custom labels file
-  type: File
+  type: File?
   inputBinding:
     prefix: --labels
 - id: in_models
   doc: Custom models localization
-  type: string
+  type: string?
   inputBinding:
     prefix: --models
 outputs:
@@ -32,9 +32,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: Output file with classification results (required)
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - PlasFlow.py

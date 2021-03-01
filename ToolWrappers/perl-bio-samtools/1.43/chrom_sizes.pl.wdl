@@ -8,6 +8,9 @@ task ChromSizespl {
     chrom_sizes_pl \
       ~{if defined(exist_usrlocalbinchromsizespl_line) then ("-h " +  '"' + exist_usrlocalbinchromsizespl_line + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     exist_usrlocalbinchromsizespl_line: "not exist at /usr/local/bin/chrom_sizes.pl line 8."
   }

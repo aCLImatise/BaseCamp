@@ -26,6 +26,9 @@ task CnvkitpyImportrna {
       ~{if (no_gc) then "--no-gc" else ""} \
       ~{if (no_tx_len) then "--no-txlen" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     format: "Input format name: 'rsem' for RSEM gene-level read\\ncounts (*_rsem.genes.results), or 'counts' for generic\\n2-column gene IDs and their read counts (e.g. TCGA\\nlevel 2 RNA expression)."
     gene_resource: "Location of gene info table from Ensembl BioMart."

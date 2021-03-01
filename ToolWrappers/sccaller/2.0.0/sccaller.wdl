@@ -52,6 +52,9 @@ task Sccaller {
       ~{if (cpu_num) then "--cpu_num" else ""} \
       ~{if (work_num) then "--work_num" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bam: ":      bamfile of a single cell"
     fast_a: ":    fasta file of reference genome"

@@ -4,81 +4,84 @@ command:
 - keysfile
 positional:
 - !Positional
-  description: line separated file with keys
+  optional: false
   position: 0
   name: keysfile
-  optional: false
+  description: line separated file with keys
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -c
   description: "c value determines:\n* the number of vertices in the graph for the\
     \ algorithms BMZ and CHM\n* the number of bits per key required in the FCH algorithm\n\
     * the load factor in the CHD_PH algorithm"
-  synonyms:
-  - -c
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "algorithm - valid values are\n* bmz\n* bmz8\n* chm\n* brz\n* fch\n\
-    * bdz\n* bdz_ph\n* chd_ph\n* chd"
+  optional: true
   synonyms:
   - -a
+  description: "algorithm - valid values are\n* bmz\n* bmz8\n* chm\n* brz\n* fch\n\
+    * bdz\n* bdz_ph\n* chd_ph\n* chd"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "hash function (may be used multiple times) - valid values are\n* jenkins"
+  optional: true
   synonyms:
   - -f
+  description: "hash function (may be used multiple times) - valid values are\n* jenkins"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: print version number and exit
+  optional: true
   synonyms:
   - -V
+  description: print version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: increase verbosity (may be used multiple times)
+  optional: true
   synonyms:
   - -v
+  description: increase verbosity (may be used multiple times)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: number of keys
+  optional: true
   synonyms:
   - -k
+  description: number of keys
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: generation mode
+  optional: true
   synonyms:
   - -g
+  description: generation mode
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: random seed
+  optional: true
   synonyms:
   - -s
+  description: random seed
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: minimum perfect hash function file
+  optional: true
   synonyms:
   - -m
+  description: minimum perfect hash function file
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: main memory availability (in MB) used in BRZ algorithm
+  optional: true
   synonyms:
   - -M
+  description: main memory availability (in MB) used in BRZ algorithm
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: temporary directory used in BRZ algorithm
+  optional: true
   synonyms:
   - -d
+  description: temporary directory used in BRZ algorithm
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -b
   description: "the meaning of this parameter depends on the algorithm selected in\
     \ the -a option:\n* For BRZ it is used to make the maximal number of keys in a\
     \ bucket lower than 256.\nIn this case its value should be an integer in the range\
@@ -90,28 +93,25 @@ named:
     \ be an integer in the range [1,32]. Default is 4. The\nlarger is this value,\
     \ the slower is the construction of the functions.\nThis parameter has no effect\
     \ for other algorithms."
-  synonyms:
-  - -b
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -t
   description: "set the number of keys per bin for a t-perfect hashing function. A\
     \ t-perfect\nhash function allows at most t collisions in a given bin. This parameter\
     \ applies\nonly to the CHD and CHD_PH algorithms. Its value should be an integer\
     \ in the\nrange [1,128]. Defaul is 1"
-  synonyms:
-  - -t
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: print this help message
+  optional: true
   synonyms:
   - -h
+  description: print this help message
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: cmph [-v] [-h] [-V] [-k nkeys] [-f hash_function] [-g [-c algorithm_dependent_value][-s\
@@ -145,3 +145,4 @@ help_text: "usage: cmph [-v] [-h] [-V] [-k nkeys] [-f hash_function] [-g [-c alg
   \ Defaul is 1\n  keysfile\t line separated file with keys\n"
 generated_using:
 - -h
+docker_image:

@@ -3,31 +3,31 @@ id: rsat_install_organism.cwl
 inputs:
 - id: in_help
   doc: (must be first argument) display options
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -help
 - id: in_verbose
   doc: verbose
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_org
   doc: "organism name without spaces (e.g. Saccharomyces_cerevisiae)\nThe option -org\
     \ can be used iteratively on the same\ncommand line to iterate the installation\
     \ over multiple\norganisms."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -org
 - id: in_org_file
   doc: "Text file containing a list of organisms to install.\nThe first word of each\
     \ row is taken as a query\norgnanism. Further information of the same row is\n\
     ignored."
-  type: File
+  type: File?
   inputBinding:
     prefix: -org_file
 - id: in_all_organisms
   doc: "Install all the organisms found in the Refseq\ndirectory (see option -refseq)."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -all_organisms
 - id: in_tax_on
@@ -38,14 +38,14 @@ inputs:
     tasks on previously installed organisms rather than\nfor installing new genomes\
     \ downloaded e.g. from NCBI.\nThe option -taxon can be used iteratively on the\
     \ same\ncommand line to iterate the installation over multiple\ntaxa."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -taxon
 - id: in_group
   doc: "group according to the NCBI/Refseq ftp/rsync\nsite (ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq).\n\
     Examples: bacteria, fungi, protozoa, plant,\ninvertebrate, vertebrate_mammalian,\
     \ vertebrate_other"
-  type: string
+  type: string?
   inputBinding:
     prefix: -group
 - id: in_species
@@ -56,12 +56,12 @@ inputs:
     \ can be used to restrict the\nnumber of installed strains per species.\nAn alternative\
     \ is to specify a custom list of species\n+ strains with the option -org_table\
     \ (this is the\nrecommended way to install multiple genomes from\nNCBI)."
-  type: long
+  type: long?
   inputBinding:
     prefix: -species
 - id: in_species_file
   doc: containing species names in the first
-  type: File
+  type: File?
   inputBinding:
     prefix: -species_file
 - id: in_strain
@@ -70,7 +70,7 @@ inputs:
     \ species where thousands of strains have been\nsequenced (e.g. Escherichia coli).\n\
     Note: the RSAT organism name is automatically built by\nconcatenating the NCBI\
     \ species name and strain\nidentifier."
-  type: string
+  type: string?
   inputBinding:
     prefix: -strain
 - id: in_assembly_table
@@ -83,7 +83,7 @@ inputs:
     \ in order to select \"representative\ngenome\" or \"reference genome\".\nThe\
     \ assembly table can also be filtered out manually\nin order to select a custom\
     \ subset of the available\ngenomes."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -assembly_table
 - id: in_refseq
@@ -91,66 +91,66 @@ inputs:
     \ NCBI site:\nftp://ftp.ncbi.nih.gov/genomes/refseq\nNormally, the refseq directory\
     \ is specified by\ndefining a global variable REFSEQ_DIR in the config\nfile.\
     \ The option -refseq allows to overwrite this\nvalue."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -refseq
 - id: in_skip
   doc: "# Skip the first # organisms of the list.\nThis option is convenient to resume\
     \ the installation\nof a list of organisms, when it has been interrupted.\nIt\
     \ also allows to organize the installation by chunks\nof organisms."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -skip
 - id: in_skip_species
   doc: "# skip the first # of the list of NCBI species.\nNote that one species can\
     \ correspond to several\norganisms, if several strains have been sequenced."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -skip_species
 - id: in_last
   doc: "# Stop after the first # organisms of the list.\nThis option can be used to\
     \ organize the installation\nby chunks of organisms."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -last
 - id: in_last_species
   doc: '# Stop after the first # species of the NCBI'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -last_species
 - id: in_source
   doc: source
-  type: string
+  type: string?
   inputBinding:
     prefix: -source
 - id: in_dir
   doc: "{install}\nAbsolute path of the installation directory.\nBEWARE : you should\
     \ provide the absolute path of the\ninstallation directory, not the relative path."
-  type: File
+  type: File?
   inputBinding:
     prefix: -dir
 - id: in_batch
   doc: "some tasks (for example the calibration of oligos\nand dyads) in batch mode.\
     \  This options works on our\nlab cluster, but could be adapted for other\nconfigurations\
     \ by adapting the parameters in\nRSAT_config.props."
-  type: string
+  type: string?
   inputBinding:
     prefix: -batch
 - id: in_queue
   doc: "specify a queue to send the job with the option -batch.\nOn this instance\
     \ of RSAT, default queue is rsat\nType 'qstat -f' to get a list of existing queues."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -queue
 - id: in_specify_alternative_file
   doc: "Specify an alternative organism configuration file for the\ngenome to be installed.\n\
     By default, the organism configuration file is\n$RSAT/public_html/data/genomes/supported_organisms.pl"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -config
 - id: in_backup_org_table
   doc: "Store a backup copy of the organism table before\noverwriting it."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -backup_org_table
 - id: in_local
@@ -164,108 +164,66 @@ inputs:
     When install-organism is called with the option\n-local, the new organism is added\
     \ to the file\nindicated by the environment variable RSA_LOCAL_CONFIG\nrather\
     \ than the main RSA config file."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -local
 - id: in_syn
   doc: "synonym table\nA tab-delimited file containing two coloumns. The\nforst column\
     \ contains a gene ID, the second a gene\nname."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -syn
 - id: in_up_from
   doc: limit of the upstream regions (e.g. -800 for yeast)
-  type: long
+  type: long?
   inputBinding:
     prefix: -up_from
 - id: in_up_to
   doc: proximal limit of the upstream regions (e.g. -1)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -up_to
 - id: in_genbank
   doc: directory (obsolete, see refseq)
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: -genbank
 - id: in_pref_id
   doc: "idname\npassed to parse-genbank.pl"
-  type: string
+  type: string?
   inputBinding:
     prefix: -prefid
 - id: in_date
   doc: "Force the 'last_update' attribute to a given date.\nThis option is used by\
     \ download-organism to ensure\nthat the local genome has the same installation\
     \ date\nas the server, rather than using the date of download\nas update date."
-  type: string
+  type: string?
   inputBinding:
     prefix: -date
 - id: in_ensembl
   doc: "ENSEMBL directory. Directory containing the ENSEMBL\nflat files in Genbank\
     \ format (ext .dat)\nExample:\nftp.ensembl.org/pub/current_worm/data/flatfiles/genbank"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -ensembl
 - id: in_task
   doc: specification of a single installation task
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -task
 - id: in_rm
   doc: "calibrate oligo and dyad frequncies on repeat masked\nsequences, in addition\
     \ to the non-masked sequences."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -rm
 - id: in_img_format
   doc: image format for the graphs of sequence length distribution
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -img_format
-- id: in_download_one_species
-  doc: "Download one species with rsync:\ninstall-organism -v 1  -group [GROUP] -species\
-    \ [SPECIES]\n-task download\nParse the genome for a given species, and declare\
-    \ it in RSAT\nsupported organism. NOTE: this installs all the strains for the\n\
-    selected species. For some species this can represent thousands of\nstrains (e.g.\
-    \ Eschrichia coli). Strains can be restricted with the\noptions -strain or -max_strains.\n\
-    install-organism -v 1  -group [GROUP] -species [SPECIES]\n-task parse,config\n\
-    Run the default installation steps for a given species. Note: the\noption -list\
-    \ is required in order to collect the organism names,\nwhich are made by concatenating\
-    \ species and strain\ninstall-organism -v 1  -group [GROUP] -species [SPECIES]\n\
-    -task list,default\nInstallation can be automated and parallelized with a job\n\
-    scheduler (e.g. qsub) in order to install all the species of a\ngiven group.\n\
-    Example: install all species of the group \"fungi\" at NCBI.\nStep 1: get the\
-    \ list of species available at NCBI\ninstall-organism -v 1 -group fungi -task\
-    \ available\n-o fungi_available_species.txt\nStep 2: download genome for all the\
-    \ strains of these\nspecies. Beware, this takes space, there are several hundreds\
-    \ of\nspecies.\ninstall-organism -v 1 -group fungi -task download\n-species_file\
-    \ fungi_available_species.txt\nStep 3: parse the genomes of all strains for each\
-    \ fungal species.\ninstall-organism -v 1 -group fungi -task parse,config\n-species_file\
-    \ fungi_available_species.txt\nStep 4: collect the list of downloaded organisms.\
-    \ Organism names\nare built by concatenating species and strain names.\ninstall-organism\
-    \ -v 1 -group fungi\n-species_file fungi_available_species.txt\n-task list\n-o\
-    \ fungi_downloaded_orgnanisms.txt\nStep 5: extract fasta sequences for different\
-    \ types of genomic\nregions, and run some control tests (e.g. oligonucleotide\n\
-    frequencies of start and stop codons). With the option -batch, the\ntasks are\
-    \ sent to a job scheuler (qsub) in order to be executed in\nparallel.\ninstall-organism\
-    \ -v 1\n-org_file fungi_downloaded_orgnanisms.txt\n-task start_stop,allup,seq_len_distrib,genome_segments\n\
-    -task protein_len,fasta_genome,fasta_genome_rm\n-task chrom_sizes,index_bedtools\n\
-    -batch\nStep 6: compute the oligomer frequency tables. In batch mode, this\ntask\
-    \ can be done only after the previous job list is finished,\nbecause of the dependencies\
-    \ between the parallelized tasks\n(upstream sequences have to be computed before\
-    \ computing their\noligonucleotide and dyad frequencies).\ninstall-organism -v\
-    \ 1\n-org_file fungi_downloaded_orgnanisms.txt\n-task upstream_freq,genome_freq,protein_freq,oligos,dyads\n\
-    -batch"
-  type: long
-  inputBinding:
-    prefix: -o
 - id: in_install_organism
   doc: AUTHOR
-  type: string
-  inputBinding:
-    position: 0
-- id: in_parse_slash_install_dot
-  doc: This option avoids filling disk with
   type: string
   inputBinding:
     position: 0
@@ -364,6 +322,16 @@ inputs:
   type: string
   inputBinding:
     position: 14
+- id: in_species_dot
+  doc: 'install-organism -v 1 -group fungi -task download '
+  type: string
+  inputBinding:
+    position: 0
+- id: in_parallel_dot
+  doc: 'install-organism -v 1 '
+  type: string
+  inputBinding:
+    position: 0
 - id: in_download_organisms
   doc: "The program I<install-organism> performs all the formatting\nand calibration\
     \ tasks for importing genomes from the reference\ndatabases (NCBI, EMBL) to RSAT.\n\
@@ -378,6 +346,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rsat

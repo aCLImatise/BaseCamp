@@ -22,6 +22,9 @@ task MedpyResamplepyOutput {
       ~{if (v) then "-v" else ""} \
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     f: ""
     d: ""

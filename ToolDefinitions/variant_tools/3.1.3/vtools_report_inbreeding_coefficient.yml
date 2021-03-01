@@ -2,53 +2,48 @@
 command:
 - vtools_report
 - inbreeding_coefficient
-positional:
-- !Positional
-  description: "Variants based on which individual inbreeding\ncoefficients are evaluated."
-  position: 0
-  name: table
-  optional: false
+positional: []
 named:
 - !Flag
-  description: "Name of the field that holds minor allele frequency\nfor sample variants,\
-    \ which is the field name for\ncommand 'vtools update table --from_stat\n\"maf_field=maf()\"\
-    \ --samples ...'."
+  optional: true
+  synonyms:
+  - --samples
+  description: "[SAMPLES [SAMPLES ...]]\nConditions based on which samples are selected\
+    \ to have\ninbreeding coefficients calculated. Default to all\nsamples."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - --maf_field
   - --maf-field
+  description: "Name of the field that holds minor allele frequency\nfor sample variants,\
+    \ which is the field name for\ncommand 'vtools update table --from_stat\n\"maf_field=maf()\"\
+    \ --samples ...'."
   args: !SimpleFlagArg
     name: MAF_FIELD
-  optional: true
 - !Flag
-  description: "[SAMPLES [SAMPLES ...]]\nConditions based on which samples are selected\
-    \ to have\ninbreeding coefficients calculated. Default to all\nsamples."
-  synonyms:
-  - --samples
-  args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: "Output error and warning (0), info (1), debug (2) and\ntrace (3) information\
-    \ to standard output (default to\n1).\n"
   synonyms:
   - -v
   - --verbosity
+  description: "Output error and warning (0), info (1), debug (2) and\ntrace (3) information\
+    \ to standard output (default to\n1).\n"
   args: !ChoiceFlagArg
     choices: !!set
+      '3':
       '2':
       '0':
-      '3':
       '1':
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: vtools_report inbreeding_coefficient [-h]\n                   \
@@ -75,3 +70,4 @@ help_text: "usage: vtools_report inbreeding_coefficient [-h]\n                  
   \                        1).\n"
 generated_using:
 - --help
+docker_image:

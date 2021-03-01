@@ -10,6 +10,9 @@ task SingularityRemoteList {
       ~{singularity} \
       ~{remote}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     singularity: ""
     remote: ""

@@ -56,6 +56,9 @@ task Blast2lca {
       ~{if (accession_tags) then "--accessionTags" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     format: "[string]                BLAST format. Default value: Unknown. Legal values: Unknown, DAA, BlastText, BlastXML, BlastTab, LastMAF, RapSearch2Aln, IlluminaReporter, RDPAssignmentDetails, RDPStandalone, Mothur, SAM, References_as_FastA"
     mode: "[string]                  BLAST mode. Default value: Unknown. Legal values: Unknown, BlastN, BlastP, BlastX, Classifier"

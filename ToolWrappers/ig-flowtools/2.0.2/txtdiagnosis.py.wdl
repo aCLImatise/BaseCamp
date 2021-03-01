@@ -12,6 +12,9 @@ task Txtdiagnosispy {
       ~{if defined(filename_location_text) then ("-n " +  '"' + filename_location_text + '"') else ""} \
       ~{if defined(name_output_file) then ("-o " +  '"' + name_output_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_location_text: "File location for the text file."
     filename_location_text: "Filename location for the text file."

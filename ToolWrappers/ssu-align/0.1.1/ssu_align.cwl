@@ -3,99 +3,99 @@ id: ssu_align.cwl
 inputs:
 - id: in_force_dir_named
   doc: ': force; if dir named <output dir> already exists, empty it first'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -f
 - id: in_use_cm_file
   doc: ': use CM file <f> instead of the default CM file'
-  type: File
+  type: File?
   inputBinding:
     prefix: -m
 - id: in_set_bit_score
   doc: ': set minimum bit score of a surviving subsequence as <x> [default: 50]'
-  type: long
+  type: long?
   inputBinding:
     prefix: -b
 - id: in_set_minimum_length
   doc: ': set minimum length    of a surviving subsequence as <n> [default: 1]'
-  type: long
+  type: long?
   inputBinding:
     prefix: -l
-- id: in_output_alignments_interleaved
+- id: in_output_alignments_lineseq
   doc: ': output alignments in interleaved Stockholm format (not 1 line/seq)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -i
 - id: in_only_search_align
   doc: ": only search with and align to single CM named <s> in CM file\n(default CM\
     \ file includes 'archaea', 'bacteria', 'eukarya')"
-  type: File
+  type: File?
   inputBinding:
     prefix: -n
 - id: in_dna
   doc: ': output alignments as DNA, default is RNA (even if input is DNA)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --dna
 - id: in_rf_only
   doc: ": discard inserts, only keep consensus (nongap RF) columns in alignments\n\
     (alignments will be fixed width but won't include all target nucleotides)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --rfonly
 - id: in_no_align
   doc: ': only search target sequence file for hits, skip alignment step'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-align
 - id: in_no_search
   doc: ': only align  target sequence file, skip initial search step'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-search
 - id: in_top_only
   doc: ': only search the top strand [default: search both strands]'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --toponly
 - id: in_forward
   doc: ': use the HMM forward algorithm for searching, not HMM viterbi'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --forward
 - id: in_global
   doc: ': search with globally configured HMM [default: local]'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --global
 - id: in_keep_int
   doc: ': keep intermediate files which are normally removed'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --keep-int
 - id: in_aln_one
   doc: ': only align best-matching sequences to the CM named <s> in CM file'
-  type: File
+  type: File?
   inputBinding:
     prefix: --aln-one
 - id: in_no_trunc
   doc: ': do not truncate seqs to HMM predicted start/end, align full seqs'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-trunc
 - id: in_no_prob
   doc: ': do not append posterior probabilities to alignments'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-prob
 - id: in_mx_size
   doc: ': increase mx size for cmalign to <f> Mb [default: 4096]'
-  type: long
+  type: long?
   inputBinding:
     prefix: --mxsize
 - id: in_options
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -options
 - id: in_sequence_file
@@ -112,6 +112,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - ssu-align

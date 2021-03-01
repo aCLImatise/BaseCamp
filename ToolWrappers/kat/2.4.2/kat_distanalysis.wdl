@@ -24,6 +24,9 @@ task KatDistanalysis {
       ~{if (haploid) then "--haploid" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_prefix: "If present then plots are sent to files starting with\\nthis prefix."
     format: "If present then plots are generated with this\\nextension e.g. {png,svg}."

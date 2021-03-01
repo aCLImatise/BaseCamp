@@ -1,0 +1,93 @@
+!Command
+command:
+- seq-seq-pan
+- mapall
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: seqseqpan.py
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: mapall
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --quiet
+  description: Suppress warnings.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --output_path
+  description: path to output directory
+  args: !SimpleFlagArg
+    name: OUTPUT_P
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --name
+  description: "File prefix and sequence header for output FASTA /\nXFMA file"
+  args: !SimpleFlagArg
+    name: OUTPUT_NAME
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --consensus
+  description: consensus FASTA file used in XMFA
+  args: !SimpleFlagArg
+    name: CONSENSUS_F
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --index
+  description: "File with sequences to map. First line:\nc<TAB>dest_seq[,dest_seq2,...]\
+    \ or\nsource_seq[,source_seq2]<TAB>c. All following lines\nwill be ignored."
+  args: !SimpleFlagArg
+    name: COORD_F
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: "Number of threads to use for mapping all positions.\nUsing all available\
+    \ threads if not specified.\n"
+  args: !SimpleFlagArg
+    name: THREADS
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: seqseqpan.py mapall [-h] [--quiet] -p OUTPUT_P -n OUTPUT_NAME -c\n\
+  \                           CONSENSUS_F -i COORD_F [-t THREADS]\n\nMap all positions/coordinates\
+  \ from consensus to sequences\n\noptional arguments:\n  -h, --help            show\
+  \ this help message and exit\n  --quiet               Suppress warnings.\n\nrequired\
+  \ arguments:\n  -p OUTPUT_P, --output_path OUTPUT_P\n                        path\
+  \ to output directory\n  -n OUTPUT_NAME, --name OUTPUT_NAME\n                  \
+  \      File prefix and sequence header for output FASTA /\n                    \
+  \    XFMA file\n  -c CONSENSUS_F, --consensus CONSENSUS_F\n                    \
+  \    consensus FASTA file used in XMFA\n  -i COORD_F, --index COORD_F\n        \
+  \                File with sequences to map. First line:\n                     \
+  \   c<TAB>dest_seq[,dest_seq2,...] or\n                        source_seq[,source_seq2]<TAB>c.\
+  \ All following lines\n                        will be ignored.\n  -t THREADS, --threads\
+  \ THREADS\n                        Number of threads to use for mapping all positions.\n\
+  \                        Using all available threads if not specified.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/seq-seq-pan:1.1.0--py_1

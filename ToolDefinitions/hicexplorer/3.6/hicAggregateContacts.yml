@@ -1,0 +1,373 @@
+!Command
+command:
+- hicAggregateContacts
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: plotted.
+  description: --mode {inter-chr,intra-chr,all}
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --matrix
+  - -m
+  description: Path of the Hi-C matrix to plot.
+  args: !SimpleFlagArg
+    name: MATRIX
+- !Flag
+  optional: true
+  synonyms:
+  - --outFileName
+  - -out
+  description: File name to save the image.
+  args: !SimpleFlagArg
+    name: OUTFILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --BED
+  description: Interactions between regions in this BED file are
+  args: !SimpleFlagArg
+    name: BED
+- !Flag
+  optional: true
+  synonyms:
+  - --range
+  description: "Range of contacts that will be considered for plotting\nthe aggregate\
+    \ contacts in bp with the format\nlow_range:high_range for example 1000000:20000000.\
+    \ The\nrange should start at contacts larger than TAD size to\nreduce background\
+    \ interactions. This will be ignored\nif inter-chromosomal contacts are of interest."
+  args: !SimpleFlagArg
+    name: RANGE
+- !Flag
+  optional: true
+  synonyms:
+  - --row_wise
+  description: "If given,the insteractions between each row of the BED\nfile and its\
+    \ corresponding row of the BED2 file are\ncomputed. If intra-chromosomal contacts\
+    \ are computed,\nthe rows with different chromosomes are ignored. If\ninter-chromosomal,\
+    \ the rows with same chromosomes are\nignored. It keeps all the rows if `all`."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --BED2
+  description: "Optional second BED file. Interactions between regions\nin first and\
+    \ second BED file are plotted."
+  args: !SimpleFlagArg
+    name: BED2
+- !Flag
+  optional: true
+  synonyms:
+  - --numberOfBins
+  description: "Number of bins to include in the submatrix. The bed\nregions will\
+    \ be centered between half number of bins\nand the other half number of bins (Default:\
+    \ 51)."
+  args: !SimpleFlagArg
+    name: NUMBEROFBINS
+- !Flag
+  optional: true
+  synonyms:
+  - --transform
+  description: "{total-counts,z-score,obs/exp,none}\nType of transformation for the\
+    \ matrix. The options are\n\"none\", \"total-counts\", \"z-score\" and \"obs/exp\"\
+    . If\ntotal counts are selected, the sub-matrix values are\ndivided by the total\
+    \ counts for normalization. If\nz-score or obs/exp are selected, the Hi-C matrix\
+    \ is\nconverted into a z-score or observed / expected matrix\n(Default: none)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --operationType
+  description: "Type of the operation to be applied to summerize the\nsubmatrices\
+    \ into a single matrix. Options are sum,\nmean and median. (Default: median)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      sum:
+      median:
+      mean:
+- !Flag
+  optional: true
+  synonyms:
+  - --perChr
+  description: "if set, it generates a plot per chromosome. It is only\naffected if\
+    \ intra-chromosomal contacts are of\ninterest."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --largeRegionsOperation
+  description: "If a given coordinate in the bed file is larger than a\nbin of the\
+    \ input matrix, by default only the first bin\nis taken into account. However\
+    \ there are more\nposibilities to handel such a case. Users can ask for\nthe last\
+    \ bin or for center of the region. As an\nexample if a region falls into bins\
+    \ [4,5,6] and\n`--numberOfBins = 2` then if first, bins [3,4,5] are\nkept. If\
+    \ last: [5,6,7] and if center: [4,5,6]."
+  args: !ChoiceFlagArg
+    choices: !!set
+      center:
+      first:
+      last:
+- !Flag
+  optional: true
+  synonyms:
+  - --dpi
+  description: "Optional parameter: Resolution for the image in case\ntheoutput is\
+    \ a raster graphics image (e.g png, jpg)\n(Default: 300)."
+  args: !SimpleFlagArg
+    name: DPI
+- !Flag
+  optional: true
+  synonyms:
+  - --outFilePrefixMatrix
+  description: "If this option is set, the values underlying the\noutput matrix will\
+    \ be saved to tab-delimited tables\n(one per chromosome) using the indicated prefix,\
+    \ for\nexample TSS_to_TSS_chrX.tab. If clustering is\nperformed, the values are\
+    \ saved including the\ncluster_id in the file TSS_to_TSS_chrX_cluster_1.tab."
+  args: !SimpleFlagArg
+    name: OUTFILEPREFIXMATRIX
+- !Flag
+  optional: true
+  synonyms:
+  - --outFileContactPairs
+  description: "Output file prefix. If this option is set, the\nposition of the contact\
+    \ positions are saved as\n(chrom1, start1, end1, chrom2, start2, end2) where\n\
+    chrom_n, start_n, end_n correspond to the pair of\npositions used to compute the\
+    \ submatrix. The data is\nsaved per chromosome and per cluster separately (one\n\
+    file each). The format is\n{prefix}_{chrom}_{cluster_id}.tab. If no clusters were\n\
+    computed, then only one file per chromosome is\nproduced."
+  args: !SimpleFlagArg
+    name: OUTFILECONTACTPAIRS
+- !Flag
+  optional: true
+  synonyms:
+  - --outFileObsExp
+  description: "writes the obs/exp matrix to a file, if\n--transform=obs/exp."
+  args: !SimpleFlagArg
+    name: OUTFILEOBSEXP
+- !Flag
+  optional: true
+  synonyms:
+  - --diagnosticHeatmapFile
+  description: "If given, a heatmap (per chromosome) is saved. Each\nrow in the heatmap\
+    \ contains thediagonal of each of the\nsubmatrices centered on the bed file. This\
+    \ file is\nuseful to get an idea of the values that are used for\nthe aggregate\
+    \ matrix and to determine the fraction of\nsub-matrices that are aggregated that\
+    \ may have an\nenrichment at the center."
+  args: !SimpleFlagArg
+    name: DIAGNOSTICHEATMAPFILE
+- !Flag
+  optional: true
+  synonyms:
+  - --kmeans
+  description: "Number of clusters to compute. When this option is\nset, the submatrices\
+    \ are split into clusters (per\nchromosome) using the k-means algorithm."
+  args: !SimpleFlagArg
+    name: KMEANS
+- !Flag
+  optional: true
+  synonyms:
+  - --hclust
+  description: "Number of clusters to compute (per chromosome). When\nthis option\
+    \ is set, the matrix is split into clusters\nusing the hierarchical clustering\
+    \ algorithm, using\n\"ward linkage\". --hclust could be very slow if you\nhave\
+    \ >1000 submatrices per chromosome. In those cases,\nyou might prefer --kmeans"
+  args: !SimpleFlagArg
+    name: HCLUST
+- !Flag
+  optional: true
+  synonyms:
+  - --spectral
+  description: "Number of clusters to compute (per chromosome). When\nthis option\
+    \ is set, the matrix is split into clusters\nusing the spectral clustering algorithm."
+  args: !SimpleFlagArg
+    name: SPECTRAL
+- !Flag
+  optional: true
+  synonyms:
+  - --howToCluster
+  description: "Options are \"full\", \"center\" and \"diagonal\". The full\nclustering\
+    \ takes all values of each submatrix for\nclustering. \"center\", takes only a\
+    \ square of length\n3x3 from each submatrix and uses only this values for\nclustering.\
+    \ With the \"diagonal\" option the clustering\nis only carried out based on the\
+    \ submatrix diagonal\n(representing values at the same distance to each\nother)\
+    \ (Default: full)."
+  args: !ChoiceFlagArg
+    choices: !!set
+      full:
+      center:
+      diagonal:
+- !Flag
+  optional: true
+  synonyms:
+  - --chromosomes
+  - -C
+  description: List of chromosomes to plot.
+  args: !RepeatFlagArg
+    name: CHROMOSOMES
+- !Flag
+  optional: true
+  synonyms:
+  - --colorMap
+  description: "Color map to use for the heatmap. Available values can\nbe seen here:\
+    \ http://matplotlib.org/examples/color/col\normaps_reference.html (Default: RdYlBu_r)."
+  args: !SimpleFlagArg
+    name: COLORMAP
+- !Flag
+  optional: true
+  synonyms:
+  - --plotType
+  description: 'Plot type (Default: 2d).'
+  args: !ChoiceFlagArg
+    choices: !!set
+      2d:
+      3d:
+- !Flag
+  optional: true
+  synonyms:
+  - --vMin
+  description: Minimum value of the plotted score.
+  args: !SimpleFlagArg
+    name: VMIN
+- !Flag
+  optional: true
+  synonyms:
+  - --vMax
+  description: Maximum value of the plotted score.
+  args: !SimpleFlagArg
+    name: VMAX
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: hicAggregateContacts --matrix MATRIX --outFileName OUTFILENAME\
+  \ --BED\n                            BED --mode {inter-chr,intra-chr,all}\n    \
+  \                        [--range RANGE] [--row_wise] [--BED2 BED2]\n          \
+  \                  [--numberOfBins NUMBEROFBINS]\n                            [--transform\
+  \ {total-counts,z-score,obs/exp,none}]\n                            [--operationType\
+  \ {sum,mean,median}] [--perChr]\n                            [--largeRegionsOperation\
+  \ {first,last,center}]\n                            [--help] [--version]\n     \
+  \                       [--outFilePrefixMatrix OUTFILEPREFIXMATRIX]\n          \
+  \                  [--outFileContactPairs OUTFILECONTACTPAIRS]\n               \
+  \             [--outFileObsExp OUTFILEOBSEXP]\n                            [--diagnosticHeatmapFile\
+  \ DIAGNOSTICHEATMAPFILE]\n                            [--kmeans KMEANS] [--hclust\
+  \ HCLUST]\n                            [--spectral SPECTRAL]\n                 \
+  \           [--howToCluster {full,center,diagonal}]\n                          \
+  \  [--chromosomes CHROMOSOMES [CHROMOSOMES ...]]\n                            [--colorMap\
+  \ COLORMAP] [--plotType {2d,3d}]\n                            [--vMin VMIN] [--vMax\
+  \ VMAX] [--dpi DPI]\n\nTakes a list of positions in the Hi-C matrix and makes a\
+  \ pooled image.\n\nRequired arguments:\n  --matrix MATRIX, -m MATRIX\n         \
+  \               Path of the Hi-C matrix to plot.\n  --outFileName OUTFILENAME, -out\
+  \ OUTFILENAME\n                        File name to save the image.\n  --BED BED\
+  \             Interactions between regions in this BED file are\n              \
+  \          plotted.\n  --mode {inter-chr,intra-chr,all}\n\nOptional arguments:\n\
+  \  --range RANGE         Range of contacts that will be considered for plotting\n\
+  \                        the aggregate contacts in bp with the format\n        \
+  \                low_range:high_range for example 1000000:20000000. The\n      \
+  \                  range should start at contacts larger than TAD size to\n    \
+  \                    reduce background interactions. This will be ignored\n    \
+  \                    if inter-chromosomal contacts are of interest.\n  --row_wise\
+  \            If given,the insteractions between each row of the BED\n          \
+  \              file and its corresponding row of the BED2 file are\n           \
+  \             computed. If intra-chromosomal contacts are computed,\n          \
+  \              the rows with different chromosomes are ignored. If\n           \
+  \             inter-chromosomal, the rows with same chromosomes are\n          \
+  \              ignored. It keeps all the rows if `all`.\n  --BED2 BED2         \
+  \  Optional second BED file. Interactions between regions\n                    \
+  \    in first and second BED file are plotted.\n  --numberOfBins NUMBEROFBINS\n\
+  \                        Number of bins to include in the submatrix. The bed\n \
+  \                       regions will be centered between half number of bins\n \
+  \                       and the other half number of bins (Default: 51).\n  --transform\
+  \ {total-counts,z-score,obs/exp,none}\n                        Type of transformation\
+  \ for the matrix. The options are\n                        \"none\", \"total-counts\"\
+  , \"z-score\" and \"obs/exp\". If\n                        total counts are selected,\
+  \ the sub-matrix values are\n                        divided by the total counts\
+  \ for normalization. If\n                        z-score or obs/exp are selected,\
+  \ the Hi-C matrix is\n                        converted into a z-score or observed\
+  \ / expected matrix\n                        (Default: none).\n  --operationType\
+  \ {sum,mean,median}\n                        Type of the operation to be applied\
+  \ to summerize the\n                        submatrices into a single matrix. Options\
+  \ are sum,\n                        mean and median. (Default: median)\n  --perChr\
+  \              if set, it generates a plot per chromosome. It is only\n        \
+  \                affected if intra-chromosomal contacts are of\n               \
+  \         interest.\n  --largeRegionsOperation {first,last,center}\n           \
+  \             If a given coordinate in the bed file is larger than a\n         \
+  \               bin of the input matrix, by default only the first bin\n       \
+  \                 is taken into account. However there are more\n              \
+  \          posibilities to handel such a case. Users can ask for\n             \
+  \           the last bin or for center of the region. As an\n                  \
+  \      example if a region falls into bins [4,5,6] and\n                       \
+  \ `--numberOfBins = 2` then if first, bins [3,4,5] are\n                       \
+  \ kept. If last: [5,6,7] and if center: [4,5,6].\n  --help, -h            show this\
+  \ help message and exit\n  --version             show program's version number and\
+  \ exit\n  --dpi DPI             Optional parameter: Resolution for the image in\
+  \ case\n                        theoutput is a raster graphics image (e.g png, jpg)\n\
+  \                        (Default: 300).\n\nOutput options:\n  --outFilePrefixMatrix\
+  \ OUTFILEPREFIXMATRIX\n                        If this option is set, the values\
+  \ underlying the\n                        output matrix will be saved to tab-delimited\
+  \ tables\n                        (one per chromosome) using the indicated prefix,\
+  \ for\n                        example TSS_to_TSS_chrX.tab. If clustering is\n \
+  \                       performed, the values are saved including the\n        \
+  \                cluster_id in the file TSS_to_TSS_chrX_cluster_1.tab.\n  --outFileContactPairs\
+  \ OUTFILECONTACTPAIRS\n                        Output file prefix. If this option\
+  \ is set, the\n                        position of the contact positions are saved\
+  \ as\n                        (chrom1, start1, end1, chrom2, start2, end2) where\n\
+  \                        chrom_n, start_n, end_n correspond to the pair of\n   \
+  \                     positions used to compute the submatrix. The data is\n   \
+  \                     saved per chromosome and per cluster separately (one\n   \
+  \                     file each). The format is\n                        {prefix}_{chrom}_{cluster_id}.tab.\
+  \ If no clusters were\n                        computed, then only one file per\
+  \ chromosome is\n                        produced.\n  --outFileObsExp OUTFILEOBSEXP\n\
+  \                        writes the obs/exp matrix to a file, if\n             \
+  \           --transform=obs/exp.\n  --diagnosticHeatmapFile DIAGNOSTICHEATMAPFILE\n\
+  \                        If given, a heatmap (per chromosome) is saved. Each\n \
+  \                       row in the heatmap contains thediagonal of each of the\n\
+  \                        submatrices centered on the bed file. This file is\n  \
+  \                      useful to get an idea of the values that are used for\n \
+  \                       the aggregate matrix and to determine the fraction of\n\
+  \                        sub-matrices that are aggregated that may have an\n   \
+  \                     enrichment at the center.\n\nClustering options:\n  --kmeans\
+  \ KMEANS       Number of clusters to compute. When this option is\n            \
+  \            set, the submatrices are split into clusters (per\n               \
+  \         chromosome) using the k-means algorithm.\n  --hclust HCLUST       Number\
+  \ of clusters to compute (per chromosome). When\n                        this option\
+  \ is set, the matrix is split into clusters\n                        using the hierarchical\
+  \ clustering algorithm, using\n                        \"ward linkage\". --hclust\
+  \ could be very slow if you\n                        have >1000 submatrices per\
+  \ chromosome. In those cases,\n                        you might prefer --kmeans\n\
+  \  --spectral SPECTRAL   Number of clusters to compute (per chromosome). When\n\
+  \                        this option is set, the matrix is split into clusters\n\
+  \                        using the spectral clustering algorithm.\n  --howToCluster\
+  \ {full,center,diagonal}\n                        Options are \"full\", \"center\"\
+  \ and \"diagonal\". The full\n                        clustering takes all values\
+  \ of each submatrix for\n                        clustering. \"center\", takes only\
+  \ a square of length\n                        3x3 from each submatrix and uses only\
+  \ this values for\n                        clustering. With the \"diagonal\" option\
+  \ the clustering\n                        is only carried out based on the submatrix\
+  \ diagonal\n                        (representing values at the same distance to\
+  \ each\n                        other) (Default: full).\n\nPlotting options:\n \
+  \ --chromosomes CHROMOSOMES [CHROMOSOMES ...], -C CHROMOSOMES [CHROMOSOMES ...]\n\
+  \                        List of chromosomes to plot.\n  --colorMap COLORMAP   Color\
+  \ map to use for the heatmap. Available values can\n                        be seen\
+  \ here: http://matplotlib.org/examples/color/col\n                        ormaps_reference.html\
+  \ (Default: RdYlBu_r).\n  --plotType {2d,3d}    Plot type (Default: 2d).\n  --vMin\
+  \ VMIN           Minimum value of the plotted score.\n  --vMax VMAX           Maximum\
+  \ value of the plotted score.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/hicexplorer:3.6--py_0

@@ -16,6 +16,9 @@ task ProdigalThem {
       ~{if (c) then "-c" else ""} \
       ~{if defined(a) then ("-a " +  '"' + a + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     f: ""
     d: ""

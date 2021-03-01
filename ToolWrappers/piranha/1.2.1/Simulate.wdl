@@ -22,6 +22,9 @@ task Simulate {
       ~{if (format) then "-format" else ""} \
       ~{if (about) then "-about" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     distribution: "what kind of distribution to use for generating read\\ncounts? Currently supports Poisson, NegativeBinomial,\\nZeroTruncatedPoisson,\\nZeroTruncatedNegativeBinomial, PoissonRegression,\\nNegativeBinomialRegression,\\nZeroTruncatedPoissonRegression,\\nZeroTruncatedNegativeBinomialRegression"
     numpoints: "number of locations with at least a single read mapping."

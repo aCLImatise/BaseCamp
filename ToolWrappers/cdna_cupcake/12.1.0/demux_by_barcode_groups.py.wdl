@@ -7,7 +7,7 @@ task DemuxByBarcodeGroupspy {
     String pooled_gff
     String demux_count_file
     String output_prefix
-    String tuples_indicating_grouping
+    String tuples_indicating_barcode
   }
   command <<<
     demux_by_barcode_groups_py \
@@ -15,16 +15,19 @@ task DemuxByBarcodeGroupspy {
       ~{pooled_gff} \
       ~{demux_count_file} \
       ~{output_prefix} \
-      ~{tuples_indicating_grouping} \
+      ~{tuples_indicating_barcode} \
       ~{if defined(pooled_fast_x) then ("--pooled_fastx " +  '"' + pooled_fast_x + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pooled_fast_x: "Pooled FASTA/FASTQ (optional, if given, will also\\noutput demux fa/fq)\\n"
     positional_arguments: "positional arguments:"
     pooled_gff: "Pooled GFF file"
     demux_count_file: "Demux count file"
     output_prefix: "Output prefix for GFF outputs"
-    tuples_indicating_grouping: "Tuples indicating barcode grouping"
+    tuples_indicating_barcode: "Tuples indicating barcode grouping"
   }
   output {
     File out_stdout = stdout()

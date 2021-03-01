@@ -12,6 +12,9 @@ task GcloudServicemanagementConfigs {
       ~{describe} \
       ~{list}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     services: "SYNOPSIS"
     describe: "Describes the configuration for a given version of a service."

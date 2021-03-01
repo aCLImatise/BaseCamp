@@ -30,6 +30,9 @@ task Bifoldsmp {
       ~{if (temperature) then "--temperature" else ""} \
       ~{if (window) then "--window" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dna: "Specify that the sequence is DNA, and DNA parameters are to be used.\\nDefault is to use RNA parameters."
     intramolecular: "Forbid intramolecular pairs (pairs within the same strand).\\nDefault is to allow intramolecular pairs."

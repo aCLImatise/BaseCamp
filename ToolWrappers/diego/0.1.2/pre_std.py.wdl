@@ -12,6 +12,9 @@ task PreStdpy {
       ~{if defined(an_no) then ("--anno " +  '"' + an_no + '"') else ""} \
       ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     list: "sampleName tab-delimiter path/to/fileName"
     an_no: "specifies the path to the annotation (bed 6 file of\\ngenebounderies with info\\nprotein_coding;ENSG00000237683.5;AL627309.1 in column\\nfour.)"

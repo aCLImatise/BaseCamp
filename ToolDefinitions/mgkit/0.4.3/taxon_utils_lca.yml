@@ -4,42 +4,121 @@ command:
 - lca
 positional:
 - !Positional
-  description: ''
+  optional: true
   position: 0
   name: GFF_FILE
-  optional: true
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 1
   name: OUTPUT_FILE
-  optional: true
+  description: ''
 named:
 - !Flag
-  description: "-t, --taxonomy TEXT             Taxonomy file  [required]\n-n, --no-lca\
-    \ FILENAME           File to which write records with no LCA\n-a, --only-ranked\
-    \               If set, only taxa that have a rank will be\nused in the lineageself.\
-    \ This is not advised\nfor lineages such as Viruses, where the top\nlevels have\
-    \ no rank\n-b, --bitscore FLOAT            Minimum bitscore accepted  [default:\
-    \ 0]\n-m, --rename                    Emulates BLAST behaviour for headers (keep\n\
-    left of first space)\n-s, --sorted                    If the GFF file is sorted\
-    \ (all of a sequence\nannotations are contiguos) can use less\nmemory, `sort -s\
-    \ -k 1,1` can be used\n-ft, --feat-type TEXT           Feature type used if the\
-    \ output is a GFF\n(default is *LCA*)  [default: LCA]\n-r, --reference FILENAME\
-    \        Reference file for the GFF, if supplied a\nGFF file is the output\n-p,\
-    \ --simple-table              Uses a 2 column table format (seq_id\ntaxon_id)\
-    \ TAB separated\n-kt, --krona-total INTEGER      Total number of raw sequences\
-    \ (used to\noutput correct percentages in Krona\n-f, --out-format [krona|json|tab|gff]\n\
-    Format of output file  [default: tab]\n--progress                      Shows Progress\
-    \ Bar\n--help                          Show this message and exit.\n"
+  optional: true
   synonyms:
   - -v
   - --verbose
-  args: !EmptyFlagArg {}
+  - -t
+  - --taxonomy
+  description: Taxonomy file  [required]
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
   optional: true
+  synonyms:
+  - -n
+  - --no-lca
+  description: File to which write records with no LCA
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --only-ranked
+  description: "If set, only taxa that have a rank will be\nused in the lineageself.\
+    \ This is not advised\nfor lineages such as Viruses, where the top\nlevels have\
+    \ no rank"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --bitscore
+  description: 'Minimum bitscore accepted  [default: 0]'
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --rename
+  description: "Emulates BLAST behaviour for headers (keep\nleft of first space)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --sorted
+  description: "If the GFF file is sorted (all of a sequence\nannotations are contiguos)\
+    \ can use less\nmemory, `sort -s -k 1,1` can be used"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ft
+  - --feat-type
+  description: "Feature type used if the output is a GFF\n(default is *LCA*)  [default:\
+    \ LCA]"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reference
+  description: "Reference file for the GFF, if supplied a\nGFF file is the output"
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --simple-table
+  description: "Uses a 2 column table format (seq_id\ntaxon_id) TAB separated"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -kt
+  - --krona-total
+  description: "Total number of raw sequences (used to\noutput correct percentages\
+    \ in Krona"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --out-format
+  description: "[krona|json|tab|gff]\nFormat of output file  [default: tab]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --progress
+  description: Shows Progress Bar
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
 usage_flag:
 version_flag:
 help_text: "Usage: taxon-utils lca [OPTIONS] [GFF_FILE] [OUTPUT_FILE]\n\n  Finds the\
@@ -67,3 +146,4 @@ help_text: "Usage: taxon-utils lca [OPTIONS] [GFF_FILE] [OUTPUT_FILE]\n\n  Finds
   \                          Show this message and exit.\n"
 generated_using:
 - --help
+docker_image:

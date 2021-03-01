@@ -1,0 +1,128 @@
+!Command
+command:
+- scHicNormalize
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: scHi-C
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: matrix
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --matrix
+  description: "scHi-C matrix, -m scool scHi-C matrix\nThe single cell Hi-C interaction\
+    \ matrices to\ninvestigate for QC. Needs to be in scool format\n(default: None)"
+  args: !SimpleFlagArg
+    name: scool
+- !Flag
+  optional: true
+  synonyms:
+  - --outFileName
+  - -o
+  description: "File name of the normalized scool matrix. (default:\nNone)"
+  args: !SimpleFlagArg
+    name: OUTFILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  - -t
+  description: "Number of threads. Using the python multiprocessing\nmodule. (default:\
+    \ 4)"
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - --normalize
+  - -n
+  description: "Normalize to a) all matrices to the lowest read count\nof the given\
+    \ matrices, b) all to a given read coverage\nvalue or c) to a multiplicative value\
+    \ (default:\nsmallest)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      read_count:
+      multiplicative:
+      smallest:
+- !Flag
+  optional: true
+  synonyms:
+  - --setToZeroThreshold
+  - -z
+  description: "Values smaller as this threshold are set to 0.\n(default: 1.0)"
+  args: !SimpleFlagArg
+    name: SETTOZEROTHRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - --value
+  - -v
+  description: "This value is used to either be interpreted as the\ndesired read_count\
+    \ or the multiplicative value. This\ndepends on the value for --normalize (default:\
+    \ 1)"
+  args: !SimpleFlagArg
+    name: VALUE
+- !Flag
+  optional: true
+  synonyms:
+  - --maximumRegionToConsider
+  description: "To compute the normalization factor for the\nnormalization mode 'smallest'\
+    \ and 'read_count',\nconsider only this genomic distance around the\ndiagonal.\
+    \ (default: 30000000)"
+  args: !SimpleFlagArg
+    name: MAXIMUMREGIONTOCONSIDER
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: scHicNormalize --matrix scool scHi-C matrix --outFileName OUTFILENAME\n\
+  \                      [--threads THREADS] --normalize\n                      {smallest,read_count,multiplicative}\n\
+  \                      [--setToZeroThreshold SETTOZEROTHRESHOLD]\n             \
+  \         [--value VALUE]\n                      [--maximumRegionToConsider MAXIMUMREGIONTOCONSIDER]\n\
+  \                      [--help] [--version]\n\nRequired arguments:\n  --matrix scool\
+  \ scHi-C matrix, -m scool scHi-C matrix\n                        The single cell\
+  \ Hi-C interaction matrices to\n                        investigate for QC. Needs\
+  \ to be in scool format\n                        (default: None)\n  --outFileName\
+  \ OUTFILENAME, -o OUTFILENAME\n                        File name of the normalized\
+  \ scool matrix. (default:\n                        None)\n  --threads THREADS, -t\
+  \ THREADS\n                        Number of threads. Using the python multiprocessing\n\
+  \                        module. (default: 4)\n  --normalize {smallest,read_count,multiplicative},\
+  \ -n {smallest,read_count,multiplicative}\n                        Normalize to\
+  \ a) all matrices to the lowest read count\n                        of the given\
+  \ matrices, b) all to a given read coverage\n                        value or c)\
+  \ to a multiplicative value (default:\n                        smallest)\n\nOptional\
+  \ arguments:\n  --setToZeroThreshold SETTOZEROTHRESHOLD, -z SETTOZEROTHRESHOLD\n\
+  \                        Values smaller as this threshold are set to 0.\n      \
+  \                  (default: 1.0)\n  --value VALUE, -v VALUE\n                 \
+  \       This value is used to either be interpreted as the\n                   \
+  \     desired read_count or the multiplicative value. This\n                   \
+  \     depends on the value for --normalize (default: 1)\n  --maximumRegionToConsider\
+  \ MAXIMUMREGIONTOCONSIDER\n                        To compute the normalization\
+  \ factor for the\n                        normalization mode 'smallest' and 'read_count',\n\
+  \                        consider only this genomic distance around the\n      \
+  \                  diagonal. (default: 30000000)\n  --help, -h            show this\
+  \ help message and exit\n  --version             show program's version number and\
+  \ exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/schicexplorer:7--py_0

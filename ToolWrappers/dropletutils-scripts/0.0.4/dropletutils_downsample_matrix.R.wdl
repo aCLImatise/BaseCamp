@@ -14,6 +14,9 @@ task DropletutilsdownsamplematrixR {
       ~{if defined(by_col) then ("--bycol " +  '"' + by_col + '"') else ""} \
       ~{if defined(output_object_file) then ("--output-object-file " +  '"' + output_object_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_object_file: "File name in which a serialized R SingleCellExperiment object can be found"
     prop: "A numeric scalar or, if bycol=TRUE, a file with ncol(x) lines specifying a value for each cell. All values should lie in [0, 1] specifying the downsampling proportion for the matrix or for each cell."

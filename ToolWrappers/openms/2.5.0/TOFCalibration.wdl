@@ -26,6 +26,9 @@ task TOFCalibration {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "*              Input peak or raw data file  (valid formats: 'mzML')"
     out: "*             Output file  (valid formats: 'mzML')"

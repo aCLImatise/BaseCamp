@@ -3,64 +3,64 @@ command:
 - convert_table.py
 positional:
 - !Positional
+  optional: false
+  position: 0
+  name: INPUT
   description: "Input table to convert. If there are multiple input\nfiles (e.g. if\
     \ multiple HUMAnN2 gene tables for\ndifferent samples should be converted to a\
     \ single\nPICRUSt2 table) then specify them all: file1 file2\nfile3..."
-  position: 0
-  name: INPUT
-  optional: false
 named:
 - !Flag
-  description: "Path to output. Corresponds to folder name if multiple\nfiles are\
-    \ output, otherwise it will be a filename."
+  optional: true
   synonyms:
   - -o
   - --output
+  description: "Path to output. Corresponds to folder name if multiple\nfiles are\
+    \ output, otherwise it will be a filename."
   args: !SimpleFlagArg
     name: OUTPUT
-  optional: true
 - !Flag
-  description: "Type of conversion to perform ('contrib_to_legacy',\n'humann2_unstrat_to_picrust2',\n\
-    'humann2_strat_to_picrust2',\n'picrust2_unstrat_to_humann2_split',\n'picrust2_strat_to_humann2_split',\
-    \ or\n'picrust2_to_humann2_merged')."
+  optional: true
   synonyms:
   - -c
   - --conversion
+  description: "Type of conversion to perform ('contrib_to_legacy',\n'humann2_unstrat_to_picrust2',\n\
+    'humann2_strat_to_picrust2',\n'picrust2_unstrat_to_humann2_split',\n'picrust2_strat_to_humann2_split',\
+    \ or\n'picrust2_to_humann2_merged')."
   args: !SimpleFlagArg
     name: CONVERSION
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --raw_abun
   description: "When converting to legacy contributional table output\nabundance (i.e.\
     \ OTUAbundanceInSample column) as raw\nabundance rather than relative abundances\
     \ (relative\nabundances are the default)."
-  synonyms:
-  - --raw_abun
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ''
+  optional: true
   synonyms:
   - -v
+  description: ''
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - -v
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: convert_table.py [-h] -o OUTPUT -c CONVERSION [--raw_abun] [-v]\n\
   \                        INPUT [INPUT ...]\n\nConverts to and from PICRUSt2 function\
   \ abundance table. Currently supports converting to legacy contributional format\
@@ -88,3 +88,4 @@ help_text: "usage: convert_table.py [-h] -o OUTPUT -c CONVERSION [--raw_abun] [-
   Usage example:\nconvert_table.py -o output.tsv -c humann2_strat_to_picrust2 humann2_out/*.tsv\n"
 generated_using:
 - --help
+docker_image:

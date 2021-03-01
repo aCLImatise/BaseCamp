@@ -58,6 +58,9 @@ task IdbaUd {
       ~{if (no_correct) then "--no_correct" else ""} \
       ~{if (pre_correction) then "--pre_correction" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out: "(=out)                   output directory"
     read: "fasta read file (<=600)"

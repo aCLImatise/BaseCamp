@@ -9,7 +9,7 @@ inputs:
 - id: in_window_size
   doc: "Size of the window used to binify the genome and\ncalculate the GC content.\
     \ Default: 1000."
-  type: long
+  type: long?
   inputBinding:
     prefix: --windowSize
 - id: in_output
@@ -32,6 +32,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - dsComputeGCCoverage

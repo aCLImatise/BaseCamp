@@ -3,6 +3,9 @@ version 1.0
 task Seagen {
   input {
     String? mer_size
+    String? mer_skip
+    Boolean? forward
+    Boolean? reverse
     String? num_threads
     Int? loader_queue
     String? loader_sleep
@@ -27,6 +30,9 @@ task Seagen {
   command <<<
     seagen \
       ~{if defined(mer_size) then ("-mersize " +  '"' + mer_size + '"') else ""} \
+      ~{if defined(mer_skip) then ("-merskip " +  '"' + mer_skip + '"') else ""} \
+      ~{if (forward) then "-forward" else ""} \
+      ~{if (reverse) then "-reverse" else ""} \
       ~{if defined(num_threads) then ("-numthreads " +  '"' + num_threads + '"') else ""} \
       ~{if defined(loader_queue) then ("-loaderqueue " +  '"' + loader_queue + '"') else ""} \
       ~{if defined(loader_sleep) then ("-loadersleep " +  '"' + loader_sleep + '"') else ""} \
@@ -48,8 +54,14 @@ task Seagen {
       ~{if defined(write_output_file) then ("-output " +  '"' + write_output_file + '"') else ""} \
       ~{if defined(count) then ("-count " +  '"' + count + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    mer_size: "Use k-mers\\n-merskip j              Skip j mers between each mer inserted into table\\n-forward                Search only the normal query sequences\\n-reverse                Search only the reverse-complemented query sequences\\n-maxdiagonal d\\n-maxgap g\\n-qoverlap q\\n-doverlap d\\n-maxintron m\\n-smallsequence\\n-singlelength l\\n-singlecoverage c\\n-multiplelength l\\n-multiplecoverage c\\n-extendweight w\\n-extendminimum m"
+    mer_size: "Use k-mers"
+    mer_skip: "Skip j mers between each mer inserted into table"
+    forward: "Search only the normal query sequences"
+    reverse: "Search only the reverse-complemented query sequences"
     num_threads: "Use n search threads"
     loader_queue: "Size of the loader queue"
     loader_sleep: "Time the loader will sleep when its output queue is full"

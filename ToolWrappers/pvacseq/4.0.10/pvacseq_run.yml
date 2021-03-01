@@ -4,249 +4,249 @@ command:
 - run
 positional:
 - !Positional
-  description: 'positional arguments:'
+  optional: false
   position: 0
   name: output_dir
-  optional: false
+  description: 'positional arguments:'
 - !Positional
-  description: "A VEP-annotated single-sample VCF containing\ntranscript, Wildtype\
-    \ protein sequence, and Downstream\nprotein sequence information"
+  optional: false
   position: 1
   name: input_file
-  optional: false
+  description: "A VEP-annotated single-sample VCF containing\ntranscript, Wildtype\
+    \ protein sequence, and Downstream\nprotein sequence information"
 - !Positional
-  description: "The name of the sample being processed. This will be\nused as a prefix\
-    \ for output files"
+  optional: false
   position: 2
   name: sample_name
-  optional: false
+  description: "The name of the sample being processed. This will be\nused as a prefix\
+    \ for output files"
 - !Positional
+  optional: false
+  position: 3
+  name: allele
   description: "Name of the allele to use for epitope prediction.\nMultiple alleles\
     \ can be specified using a comma-\nseparated list. For a list of available alleles,\
     \ use:\n`pvacseq valid_alleles`"
-  position: 3
-  name: allele
-  optional: false
 - !Positional
-  description: output_dir            The directory for writing all result files
+  optional: false
   position: 0
   name: spaces
-  optional: false
+  description: output_dir            The directory for writing all result files
 named:
 - !Flag
-  description: "Length of subpeptides (neoepitopes) to predict.\nMultiple epitope\
-    \ lengths can be specified using a\ncomma-separated list. Typical epitope lengths\
-    \ vary\nbetween 8-11. Required for Class I prediction\nalgorithms"
+  optional: true
   synonyms:
   - -e
   - --epitope-length
+  description: "Length of subpeptides (neoepitopes) to predict.\nMultiple epitope\
+    \ lengths can be specified using a\ncomma-separated list. Typical epitope lengths\
+    \ vary\nbetween 8-11. Required for Class I prediction\nalgorithms"
   args: !SimpleFlagArg
     name: EPITOPE_LENGTH
-  optional: true
 - !Flag
-  description: "Length of the peptide sequence to use when creating\nthe FASTA. Default:\
-    \ 21"
+  optional: true
   synonyms:
   - -l
   - --peptide-sequence-length
+  description: "Length of the peptide sequence to use when creating\nthe FASTA. Default:\
+    \ 21"
   args: !SimpleFlagArg
     name: PEPTIDE_SEQUENCE_LENGTH
-  optional: true
 - !Flag
-  description: "Directory that contains the local installation of IEDB\nMHC I and/or\
-    \ MHC II"
+  optional: true
   synonyms:
   - --iedb-install-directory
+  description: "Directory that contains the local installation of IEDB\nMHC I and/or\
+    \ MHC II"
   args: !SimpleFlagArg
     name: IEDB_INSTALL_DIRECTORY
-  optional: true
 - !Flag
-  description: "yaml file of additional files to be used as inputs,\ne.g. cufflinks\
-    \ output files. For an example of this\nyaml file run `pvacseq config_files\n\
-    additional_input_file_list`."
+  optional: true
   synonyms:
   - -i
   - --additional-input-file-list
+  description: "yaml file of additional files to be used as inputs,\ne.g. cufflinks\
+    \ output files. For an example of this\nyaml file run `pvacseq config_files\n\
+    additional_input_file_list`."
   args: !SimpleFlagArg
     name: ADDITIONAL_INPUT_FILE_LIST
-  optional: true
 - !Flag
-  description: "NetChop prediction method to use (\"cterm\" for C term\n3.0, \"20s\"\
-    \ for 20S 3.0)."
+  optional: true
   synonyms:
   - --net-chop-method
+  description: "NetChop prediction method to use (\"cterm\" for C term\n3.0, \"20s\"\
+    \ for 20S 3.0)."
   args: !ChoiceFlagArg
     choices: !!set
       20s:
       cterm:
-  optional: true
 - !Flag
-  description: "Run NetMHCStabPan after all filtering and add\nstability predictions\
-    \ to predicted epitopes"
+  optional: true
   synonyms:
   - --netmhc-stab
+  description: "Run NetMHCStabPan after all filtering and add\nstability predictions\
+    \ to predicted epitopes"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Output only the top scoring result for each allele-\npeptide length\
-    \ combination for each variant. Default:\nFalse"
+  optional: true
   synonyms:
   - -t
   - --top-result-per-mutation
+  description: "Output only the top scoring result for each allele-\npeptide length\
+    \ combination for each variant. Default:\nFalse"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --top-score-metric
   description: "The ic50 scoring metric to use when filtering epitopes\nby binding-threshold\
     \ or minimum fold change. lowest:\nBest MT Score/Corresponding Fold Change - lowest\
     \ MT\nic50 binding score/corresponding fold change of all\nchosen prediction methods.\
     \ median: Median MT\nScore/Median Fold Change - median MT ic50 binding\nscore/fold\
     \ change of all chosen prediction methods.\nDefault: median"
-  synonyms:
-  - -m
-  - --top-score-metric
   args: !ChoiceFlagArg
     choices: !!set
-      median:
       lowest:
-  optional: true
+      median:
 - !Flag
-  description: "Report only epitopes where the mutant allele has ic50\nbinding scores\
-    \ below this value. Default: 500"
+  optional: true
   synonyms:
   - -b
   - --binding-threshold
+  description: "Report only epitopes where the mutant allele has ic50\nbinding scores\
+    \ below this value. Default: 500"
   args: !SimpleFlagArg
     name: BINDING_THRESHOLD
-  optional: true
 - !Flag
-  description: "Minimum fold change between mutant binding score and\nwild-type score.\
-    \ The default is 0, which filters no\nresults, but 1 is often a sensible choice\
-    \ (requiring\nthat binding is better to the MT than WT). Default: 0"
+  optional: true
   synonyms:
   - -c
   - --minimum-fold-change
+  description: "Minimum fold change between mutant binding score and\nwild-type score.\
+    \ The default is 0, which filters no\nresults, but 1 is often a sensible choice\
+    \ (requiring\nthat binding is better to the MT than WT). Default: 0"
   args: !SimpleFlagArg
     name: MINIMUM_FOLD_CHANGE
-  optional: true
 - !Flag
-  description: "Normal Coverage Cutoff. Sites above this cutoff will\nbe considered.\
-    \ Default: 5"
+  optional: true
   synonyms:
   - --normal-cov
+  description: "Normal Coverage Cutoff. Sites above this cutoff will\nbe considered.\
+    \ Default: 5"
   args: !SimpleFlagArg
     name: NORMAL_COV
-  optional: true
 - !Flag
-  description: "Tumor DNA Coverage Cutoff. Sites above this cutoff\nwill be considered.\
-    \ Default: 10"
+  optional: true
   synonyms:
   - --tdna-cov
+  description: "Tumor DNA Coverage Cutoff. Sites above this cutoff\nwill be considered.\
+    \ Default: 10"
   args: !SimpleFlagArg
     name: TDNA_COV
-  optional: true
 - !Flag
-  description: "Tumor RNA Coverage Cutoff. Sites above this cutoff\nwill be considered.\
-    \ Default: 10"
+  optional: true
   synonyms:
   - --trna-cov
+  description: "Tumor RNA Coverage Cutoff. Sites above this cutoff\nwill be considered.\
+    \ Default: 10"
   args: !SimpleFlagArg
     name: TRNA_COV
-  optional: true
 - !Flag
-  description: "Normal VAF Cutoff. Sites BELOW this cutoff in normal\nwill be considered.\
-    \ Default: 2"
+  optional: true
   synonyms:
   - --normal-vaf
+  description: "Normal VAF Cutoff. Sites BELOW this cutoff in normal\nwill be considered.\
+    \ Default: 2"
   args: !SimpleFlagArg
     name: NORMAL_VAF
-  optional: true
 - !Flag
-  description: "Tumor DNA VAF Cutoff. Sites above this cutoff will be\nconsidered.\
-    \ Default: 40"
+  optional: true
   synonyms:
   - --tdna-vaf
+  description: "Tumor DNA VAF Cutoff. Sites above this cutoff will be\nconsidered.\
+    \ Default: 40"
   args: !SimpleFlagArg
     name: TDNA_VAF
-  optional: true
 - !Flag
-  description: "Tumor RNA VAF Cutoff. Sites above this cutoff will be\nconsidered.\
-    \ Default: 40"
+  optional: true
   synonyms:
   - --trna-vaf
+  description: "Tumor RNA VAF Cutoff. Sites above this cutoff will be\nconsidered.\
+    \ Default: 40"
   args: !SimpleFlagArg
     name: TRNA_VAF
-  optional: true
 - !Flag
-  description: "Gene and Transcript Expression cutoff. Sites above\nthis cutoff will\
-    \ be considered. Default: 1"
+  optional: true
   synonyms:
   - --expn-val
+  description: "Gene and Transcript Expression cutoff. Sites above\nthis cutoff will\
+    \ be considered. Default: 1"
   args: !SimpleFlagArg
     name: EXPN_VAL
-  optional: true
 - !Flag
-  description: 'NetChop prediction threshold. Default: 0.5'
+  optional: true
   synonyms:
   - --net-chop-threshold
+  description: 'NetChop prediction threshold. Default: 0.5'
   args: !SimpleFlagArg
     name: NET_CHOP_THRESHOLD
-  optional: true
 - !Flag
-  description: Additional columns to output in the final report
+  optional: true
   synonyms:
   - -a
   - --additional-report-columns
+  description: Additional columns to output in the final report
   args: !ChoiceFlagArg
     choices: !!set
       sample_name:
-  optional: true
 - !Flag
-  description: "Number of fasta entries per IEDB request. For some\nresource-intensive\
-    \ prediction algorithms like\nPickpocket and NetMHCpan it might be helpful to\
-    \ reduce\nthis number. Needs to be an even number."
+  optional: true
   synonyms:
   - -s
   - --fasta-size
+  description: "Number of fasta entries per IEDB request. For some\nresource-intensive\
+    \ prediction algorithms like\nPickpocket and NetMHCpan it might be helpful to\
+    \ reduce\nthis number. Needs to be an even number."
   args: !SimpleFlagArg
     name: FASTA_SIZE
-  optional: true
 - !Flag
-  description: "Number of retries when making requests to the IEDB\nRESTful web interface.\
-    \ Must be less than or equal to\n100.Default: 5"
+  optional: true
   synonyms:
   - -r
   - --iedb-retries
+  description: "Number of retries when making requests to the IEDB\nRESTful web interface.\
+    \ Must be less than or equal to\n100.Default: 5"
   args: !SimpleFlagArg
     name: IEDB_RETRIES
-  optional: true
 - !Flag
-  description: "Cap to limit the downstream sequence length for\nframeshifts when\
-    \ creating the fasta file. Use 'full'\nto include the full downstream sequence.\
-    \ Default: 1000"
+  optional: true
   synonyms:
   - -d
   - --downstream-sequence-length
+  description: "Cap to limit the downstream sequence length for\nframeshifts when\
+    \ creating the fasta file. Use 'full'\nto include the full downstream sequence.\
+    \ Default: 1000"
   args: !SimpleFlagArg
     name: DOWNSTREAM_SEQUENCE_LENGTH
-  optional: true
 - !Flag
-  description: "Keep intermediate output files. This migt be useful\nfor debugging\
-    \ purposes.\n"
+  optional: true
   synonyms:
   - -k
   - --keep-tmp-files
+  description: "Keep intermediate output files. This migt be useful\nfor debugging\
+    \ purposes.\n"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: pvacseq run [-h] [-e EPITOPE_LENGTH] [-l PEPTIDE_SEQUENCE_LENGTH]\n\
@@ -339,3 +339,4 @@ help_text: "usage: pvacseq run [-h] [-e EPITOPE_LENGTH] [-l PEPTIDE_SEQUENCE_LEN
   \ output files. This migt be useful\n                        for debugging purposes.\n"
 generated_using:
 - --help
+docker_image:

@@ -16,6 +16,9 @@ task FindIndels {
       ~{if defined(bed) then ("--bed " +  '"' + bed + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_in_del_length: "Filter out indels shorter than this length. (default:\\n0)"
     all_alignments: "Include secondary and supplementary alignments.\\n(default: False)"

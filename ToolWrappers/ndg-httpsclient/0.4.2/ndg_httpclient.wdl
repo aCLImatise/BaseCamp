@@ -9,7 +9,7 @@ task NdgHttpclient {
     File? post_data_file
     File? fetch
     Boolean? no_verify_peer
-    String? passwd__basicauthuserpasswdhttp
+    String? passwd_basicauthuserpasswdhttp_authentication
     String? header
     String url
   }
@@ -23,9 +23,12 @@ task NdgHttpclient {
       ~{if defined(post_data_file) then ("--post-data-file " +  '"' + post_data_file + '"') else ""} \
       ~{if defined(fetch) then ("--fetch " +  '"' + fetch + '"') else ""} \
       ~{if (no_verify_peer) then "--no-verify-peer" else ""} \
-      ~{if defined(passwd__basicauthuserpasswdhttp) then ("-a " +  '"' + passwd__basicauthuserpasswdhttp + '"') else ""} \
+      ~{if defined(passwd_basicauthuserpasswdhttp_authentication) then ("-a " +  '"' + passwd_basicauthuserpasswdhttp_authentication + '"') else ""} \
       ~{if defined(header) then ("--header " +  '"' + header + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     certificate: "Certificate file - defaults to $HOME/credentials.pem"
     private_key: "Private key file - defaults to the certificate file"
@@ -34,7 +37,7 @@ task NdgHttpclient {
     post_data_file: "POST data file"
     fetch: "Output file"
     no_verify_peer: "Skip verification of peer certificate."
-    passwd__basicauthuserpasswdhttp: ":PASSWD, --basicauth=USER:PASSWD\\nHTTP authentication credentials"
+    passwd_basicauthuserpasswdhttp_authentication: ":PASSWD, --basicauth=USER:PASSWD\\nHTTP authentication credentials"
     header: ": VALUE\\nAdd HTTP header to request\\n"
     url: ""
   }

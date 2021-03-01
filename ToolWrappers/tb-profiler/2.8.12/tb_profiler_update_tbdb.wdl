@@ -8,6 +8,9 @@ task TbprofilerUpdateTbdb {
     tb_profiler update_tbdb \
       ~{if defined(seqname) then ("--seqname " +  '"' + seqname + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     seqname: "Mutation panel name (default: Chromosome)"
   }

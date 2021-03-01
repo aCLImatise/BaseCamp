@@ -16,6 +16,9 @@ task ChakinOrganismAddOrganism {
       ~{abbr} \
       ~{if defined(comment) then ("--comment " +  '"' + comment + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     comment: "A comment / description"
     genus: ""

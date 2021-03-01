@@ -14,6 +14,9 @@ task RunPipelinepl {
       ~{if defined(format) then ("-format " +  '"' + format + '"') else ""} \
       ~{if defined(sort_positions) then ("-sortPositions " +  '"' + sort_positions + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     format: ": Import file format [SqrMatrix, Sequence, Unknown, Fasta, Hapmap, HapmapLIX, Plink, Phenotype, ProjectionAlignment, ProjectPCsandRunModelSelection, Phylip_Seq, Phylip_Inter, Table, Serial, HapmapDiploid, Text, VCF, HDF5, TOPM, HDF5Schema, Filter, NumericGenotype, TaxaList, PositionList, SqrMatrixRaw, SqrMatrixBin, GOBII, Depth, ReferenceProbability, Report, PlinkPhenotype, SqrMatrixDARwinDIS, Avro] (Default: Make Best Guess)"
     sort_positions: ": Whether to sort genotype positions if that's possible. (Default: false)"

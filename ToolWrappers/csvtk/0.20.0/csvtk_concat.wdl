@@ -38,6 +38,9 @@ task CsvtkConcat {
       ~{if (out_tabs) then "--out-tabs" else ""} \
       ~{if (tabs) then "--tabs" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ignore_case: "ignore case (column name)"
     keep_unmatched: "keep blanks even if no any data of a file matches"

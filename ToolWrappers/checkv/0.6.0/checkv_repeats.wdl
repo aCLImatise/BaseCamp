@@ -14,6 +14,9 @@ task CheckvRepeats {
       ~{if defined(min_tr_len) then ("--min_tr_len " +  '"' + min_tr_len + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_tr_len: "Min length of TR"
     quiet: "Suppress logging messages"

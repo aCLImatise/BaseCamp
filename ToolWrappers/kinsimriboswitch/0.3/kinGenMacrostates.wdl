@@ -34,6 +34,9 @@ task KinGenMacrostates {
       ~{if (write_name_output) then "-O" else ""} \
       ~{if (force_run_exists) then "-f" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     energy_band_width: ":     energy band width (in kcal) in which structures are completely\\nenumerated (15)"
     minimal_barrier_height: ":     minimal barrier height (barriers --minh) (1)\\nMinima seperated from their respective father by a lower\\nbarrier are merged with it."

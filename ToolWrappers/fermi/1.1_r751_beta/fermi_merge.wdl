@@ -16,6 +16,9 @@ task FermiMerge {
       ~{if defined(output_file_name) then ("-o " +  '"' + output_file_name + '"') else ""} \
       ~{if defined(number_threads_use) then ("-t " +  '"' + number_threads_use + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     force_overwrite_file: "force to overwrite the output file (effective with -o)"
     output_file_name: "output file name [null]"

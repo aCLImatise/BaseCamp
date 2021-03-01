@@ -8,6 +8,9 @@ task BedparseSpecifications {
     bedparse specifications \
       ~{bed_parse}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bed_parse: ""
   }

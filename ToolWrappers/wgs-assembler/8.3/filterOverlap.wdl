@@ -20,6 +20,9 @@ task FilterOverlap {
       ~{if (no_dovetail) then "-nodovetail" else ""} \
       ~{if defined(gkp) then ("-gkp " +  '"' + gkp + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ovl: "-- overlaps are OVL"
     obt: "-- overlaps are OBT"

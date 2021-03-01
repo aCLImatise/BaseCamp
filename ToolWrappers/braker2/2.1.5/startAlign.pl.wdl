@@ -34,11 +34,14 @@ task StartAlignpl {
       ~{if defined(args) then ("--args " +  '"' + args + '"') else ""} \
       ~{if (nice) then "--nice" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genome: "fasta file with DNA sequences"
     prot: "fasta file with protein sequences"
     cpu: "Specifies the maximum number of CPUs that can be used during"
-    dir: "Set path to working directory. In the working directory results"
+    dir: "/to/dir            Set path to working directory. In the working directory results"
     list: "Contains contig and protein ID. Format: contigID proteinID"
     log: "Log file"
     max_intron_len: "Exonerate option: Alignments with longer gaps are discarded (default 30000)."

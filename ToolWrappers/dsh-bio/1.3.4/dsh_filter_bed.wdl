@@ -18,6 +18,9 @@ task Dshfilterbed {
       ~{if (input_bed_file) then "--input-bed-file" else ""} \
       ~{if (output_bed_file) then "--output-bed-file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     about: "display about message [optional]"
     range: "[class java.lang.String]  filter by range, specify as chrom:start-end in 0-based coordindates [optional]"

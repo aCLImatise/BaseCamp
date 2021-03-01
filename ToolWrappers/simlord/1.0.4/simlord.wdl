@@ -2,7 +2,6 @@ version 1.0
 
 task Simlord {
   input {
-    Int? fixed_read_length
     File? read_reference
     Int? generate_reference
     File? save_reference
@@ -19,6 +18,7 @@ task Simlord {
     Float? prob_sub
     Int? min_read_length
     Boolean? log_norm_read_length
+    Int? fixed_read_length
     Array[File] sample_read_length_from_fast_q
     File? sample_read_length_from_text
     File? sam_output
@@ -32,7 +32,6 @@ task Simlord {
   command <<<
     simlord \
       ~{output_prefix_dot_fast_q} \
-      ~{if defined(fixed_read_length) then ("--fixed-readlength " +  '"' + fixed_read_length + '"') else ""} \
       ~{if defined(read_reference) then ("--read-reference " +  '"' + read_reference + '"') else ""} \
       ~{if defined(generate_reference) then ("--generate-reference " +  '"' + generate_reference + '"') else ""} \
       ~{if defined(save_reference) then ("--save-reference " +  '"' + save_reference + '"') else ""} \
@@ -49,6 +48,7 @@ task Simlord {
       ~{if defined(prob_sub) then ("--prob-sub " +  '"' + prob_sub + '"') else ""} \
       ~{if defined(min_read_length) then ("--min-readlength " +  '"' + min_read_length + '"') else ""} \
       ~{if (log_norm_read_length) then "--lognorm-readlength" else ""} \
+      ~{if defined(fixed_read_length) then ("--fixed-readlength " +  '"' + fixed_read_length + '"') else ""} \
       ~{if defined(sample_read_length_from_fast_q) then ("--sample-readlength-from-fastq " +  '"' + sample_read_length_from_fast_q + '"') else ""} \
       ~{if defined(sample_read_length_from_text) then ("--sample-readlength-from-text " +  '"' + sample_read_length_from_text + '"') else ""} \
       ~{if defined(sam_output) then ("--sam-output " +  '"' + sam_output + '"') else ""} \
@@ -58,8 +58,10 @@ task Simlord {
       ~{if (uniform_chromosome_probability) then "--uniform-chromosome-probability" else ""} \
       ~{if (old_read_names) then "--old-read-names" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    fixed_read_length: "Fixed read length for all reads."
     read_reference: "Read a reference from PATH to sample reads from"
     generate_reference: "LENGTH, -gr GC LENGTH\\nGenerate a random reference with given GC-content and\\ngiven length"
     save_reference: "Save the random reference as fasta-file at given PATH.\\nBy default, save at output path with\\n'_reference.fasta' appended."
@@ -76,6 +78,7 @@ task Simlord {
     prob_sub: "Probability for substitutions for reads with one pass.\\n(default= 0.01)"
     min_read_length: "Minium read length (default= 50) for lognormal\\ndistribution"
     log_norm_read_length: "[PARAMETER [PARAMETER ...]], -ln [PARAMETER [PARAMETER ...]]\\nParameters for lognormal read length distribution:\\n(sigma, loc, scale), empty for defaults"
+    fixed_read_length: "Fixed read length for all reads."
     sample_read_length_from_fast_q: "Sample read length from a fastq-file at PATH\\ncontaining reads."
     sample_read_length_from_text: "Sample read length from a text file (one length per\\nline)."
     sam_output: "Save the alignments in a sam-file at SAM_OUTPUT. By\\ndefault, use OUTPUT_PREFIX.sam."

@@ -28,6 +28,9 @@ task DecoyDatabase {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     enzyme: "Enzyme used for the digestion of the sample (default: 'Trypsin' valid: 'Arg-C', 'Trypsin', 'Trypsin/P', 'V8-DE', 'Lys-C/P', 'PepsinA', 'Lys-C', 'Lys-N', 'Asp-N/B', 'Asp-N_ambic', 'V8-E', 'leukocyte elastase', 'glutamyl endopeptidase', 'Alpha-lytic protease', '2-iodobenzoate', 'Arg-C/P', 'Asp-N', 'iodosobenzoate', 'staphylococcal protease/D', 'cyanogen-bromide', 'Clostripain/P', 'unspecific cleavage', 'proline-endopeptidase/HKR', 'Glu-C+P', 'PepsinA + P', 'elastase-trypsin-chymotrypsin', 'no cleavage', 'TrypChymo', 'CNBr', 'Formic_acid', 'proline endopeptidase', 'Chymotrypsin', 'Chymotrypsin/P')"
     in: "<file(s)>*                 Input FASTA file(s), each containing a database. It is recommended to include a contaminant database as well. (valid formats: 'fasta')"

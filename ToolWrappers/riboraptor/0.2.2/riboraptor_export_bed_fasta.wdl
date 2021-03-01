@@ -20,6 +20,9 @@ task RiboraptorExportbedfasta {
       ~{if defined(offset_three_p) then ("--offset_3p " +  '"' + offset_three_p + '"') else ""} \
       ~{if (ignore_tx_version) then "--ignore_tx_version" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     region_bed: "Path to bed file  [required]"
     fast_a: "Path to fasta file  [required]"

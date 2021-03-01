@@ -32,6 +32,9 @@ task FeatureCollapserpy {
       ~{if (merge) then "--merge" else ""} \
       ~{if (case_sensitive) then "--case-sensitive" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threads_to_run: "Threads to run"
     tsv: "The delimited file."

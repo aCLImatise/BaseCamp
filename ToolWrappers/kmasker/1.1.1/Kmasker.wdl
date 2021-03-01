@@ -50,6 +50,9 @@ task Kmasker {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (make_model) then "--make_model" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     build: "construction of new index (requires --seq)"
     run: "perform analysis and masking (requires --fasta)"

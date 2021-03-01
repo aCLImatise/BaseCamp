@@ -4,6 +4,9 @@ task Circledetectorpy {
   command <<<
     circledetector_py
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

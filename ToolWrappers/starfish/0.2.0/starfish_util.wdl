@@ -8,6 +8,9 @@ task StarfishUtil {
     starfish util \
       ~{install_strict_dependencies}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     install_strict_dependencies: "warning! updates different packages in your..."
   }

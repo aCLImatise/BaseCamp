@@ -4,53 +4,99 @@ command:
 - generate
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: sequence
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 1
   name: mode
-  optional: true
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 2
   name: sequence_file
-  optional: true
+  description: ''
 named:
 - !Flag
-  description: "minimum sequence length\n-max M         maximum sequence length\n\
-    -sequences N   generate N sequences\n-bases B       generate at least B bases,\
-    \ no more than B+maxLength-1 bases.\n-gaussian      99.73% of the reads (3 standard\
-    \ deviations) will be between min and max\n-mirror F\n-gc bias       sets GC/AT\
-    \ composition (default 0.50)\n-at bias       sets GC/AT composition (default 0.50)\n\
-    -a freq        sets frequency of A bases (default 0.25)\n-c freq        sets frequency\
-    \ of C bases (default 0.25)\n-g freq        sets frequency of G bases (default\
-    \ 0.25)\n-t freq        sets frequency of T bases (default 0.25)"
+  optional: true
   synonyms:
   - -min
+  description: minimum sequence length
   args: !SimpleFlagArg
     name: M
-  optional: true
 - !Flag
-  description: "-- results in a sum of 2.0 (1.25 + 0.25 + 0.25 + 0.25) so final frequencies\
-    \ will be:\nA =         1.25/2 = 0.625\nC = G = T = 0.25/2 = 0.125."
+  optional: true
   synonyms:
-  - -a
+  - -max
+  description: maximum sequence length
   args: !SimpleFlagArg
-    name: '1.25'
-  optional: true
+    name: M
 - !Flag
-  description: "-- sum is also 2.0, final frequencies will be:\nA =         1.00/2\
-    \ = 0.5\nC = G =     0.40/2 = 0.2\nT =         0.20/2 = 0.1"
+  optional: true
   synonyms:
+  - -sequences
+  description: generate N sequences
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -bases
+  description: generate at least B bases, no more than B+maxLength-1 bases.
+  args: !SimpleFlagArg
+    name: B
+- !Flag
+  optional: true
+  synonyms:
+  - -gaussian
+  description: 99.73% of the reads (3 standard deviations) will be between min and
+    max
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -mirror
   - -gc
-  - -a
-  - -t
+  description: sets GC/AT composition (default 0.50)
   args: !SimpleFlagArg
-    name: '0.8'
+    name: F
+- !Flag
   optional: true
+  synonyms:
+  - -at
+  description: sets GC/AT composition (default 0.50)
+  args: !SimpleFlagArg
+    name: bias
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  description: sets frequency of A bases (default 0.25)
+  args: !SimpleFlagArg
+    name: freq
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: sets frequency of C bases (default 0.25)
+  args: !SimpleFlagArg
+    name: freq
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  description: sets frequency of G bases (default 0.25)
+  args: !SimpleFlagArg
+    name: freq
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: sets frequency of T bases (default 0.25)
+  args: !SimpleFlagArg
+    name: freq
 parent:
 subcommands: []
 usage: []
@@ -77,3 +123,4 @@ help_text: "usage: sequence [mode] [options] [sequence_file ...]\n\nOPTIONS for 
   \       T =         0.20/2 = 0.1\n\nERROR:  Unknown parameter '--help'\n"
 generated_using:
 - --help
+docker_image:

@@ -1,14 +1,9 @@
 class: CommandLineTool
 id: velveth.cwl
 inputs:
-- id: in_fast_a
-  doc: "-fastq\n-fasta.gz\n-fastq.gz\n-sam\n-bam\n-eland\n-gerald"
-  type: boolean
-  inputBinding:
-    prefix: -fasta
 - id: in_strand_specific
   doc: ': for strand specific transcriptome sequencing data (default: off)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -strand_specific
 - id: in_directory
@@ -30,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - velveth

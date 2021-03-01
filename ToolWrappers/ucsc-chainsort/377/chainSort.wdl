@@ -14,6 +14,9 @@ task ChainSort {
       ~{if defined(query) then ("-query " +  '"' + query + '"') else ""} \
       ~{if defined(index) then ("-index " +  '"' + index + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     target: "on target start rather than score"
     query: "on query start rather than score"

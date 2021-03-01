@@ -3,12 +3,12 @@ id: kggseq.cwl
 inputs:
 - id: in_jar
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -jar
 - id: in_x_mx_on_eg
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -Xmx1g
 - id: in_java
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - kggseq

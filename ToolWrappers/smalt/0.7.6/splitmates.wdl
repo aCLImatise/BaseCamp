@@ -4,6 +4,9 @@ task Splitmates {
   command <<<
     splitmates
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

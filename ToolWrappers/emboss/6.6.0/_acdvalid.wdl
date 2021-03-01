@@ -4,6 +4,9 @@ task Acdvalid {
   command <<<
     _acdvalid
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

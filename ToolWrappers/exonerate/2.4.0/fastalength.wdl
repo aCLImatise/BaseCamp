@@ -4,6 +4,9 @@ task Fastalength {
   command <<<
     fastalength
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

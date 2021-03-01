@@ -32,6 +32,9 @@ task SeqkitSample {
       ~{if defined(seq_type) then ("--seq-type " +  '"' + seq_type + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     number: "sample by number (result may not exactly match), DO NOT use on large FASTQ files."
     proportion: "sample by proportion"

@@ -34,6 +34,9 @@ task BtToxinDigger {
       ~{var_as} \
       ~{follows}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     example: ""
     the: ""

@@ -1,7 +1,7 @@
 class: CommandLineTool
 id: tombo_plot_per_read_roc.cwl
 inputs:
-- id: in_binary_files_containing
+- id: in_per_read_statistics_filenames
   doc: "Binary files containing per-read statistics from\nstatistical testing."
   type: string[]
   inputBinding:
@@ -32,40 +32,36 @@ inputs:
     prefix: --motif-descriptions
 - id: in_genome_fast_a
   doc: "FASTA file used to re-squiggle. For faster sequence\naccess."
-  type: File
+  type: File?
   inputBinding:
     prefix: --genome-fasta
 - id: in_statistics_per_block
   doc: "Number of randomly selected per-read, per-base\nstatistics to extract from\
     \ each genomic block for\nplotting. Default: 100000"
-  type: long
+  type: long?
   inputBinding:
     prefix: --statistics-per-block
 - id: in_total_statistics_limit
   doc: "Total per-read statistics to be extracted for\nplotting. Avoids memory overflow\
     \ for large runs.\nDefault: 5000000"
-  type: long
+  type: long?
   inputBinding:
     prefix: --total-statistics-limit
 - id: in_pdf_filename
   doc: "PDF filename to store plot(s). Default:\ntombo_results.per_reads_roc.pdf"
-  type: File
+  type: File?
   inputBinding:
     prefix: --pdf-filename
 - id: in_quiet
   doc: Don't print status information.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
-- id: in_var_9
-  doc: '[PER_READ_STATISTICS_FILENAMES ...]'
-  type: string
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - tombo

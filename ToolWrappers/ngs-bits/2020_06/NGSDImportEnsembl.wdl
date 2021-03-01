@@ -18,6 +18,9 @@ task NGSDImportEnsembl {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "Ensembl transcript file (download and unzip ftp://ftp.ensembl.org/pub/grch37/release-87/gff3/homo_sapiens/Homo_sapiens.GRCh37.87.chr.gff3.gz)."
     all: "If set, all transcripts are imported (the default is to skip transcripts not labeled as with the 'GENCODE basic' tag).\\nDefault value: 'false'"

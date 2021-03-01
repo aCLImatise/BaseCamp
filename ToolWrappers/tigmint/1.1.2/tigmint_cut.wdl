@@ -22,6 +22,9 @@ task Tigmintcut {
       ~{if defined(spanning) then ("--spanning " +  '"' + spanning + '"') else ""} \
       ~{if defined(trim) then ("--trim " +  '"' + trim + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a_out: "The output FASTA file."
     bed_out: "The output BED file. Default is the output FASTA\\nfilename plus .bed"

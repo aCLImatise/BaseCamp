@@ -13,7 +13,7 @@ task Maxquant {
     String an
     String existing
     String mq_par_dot_xml
-    File file
+    File var_file
   }
   command <<<
     maxquant \
@@ -23,13 +23,16 @@ task Maxquant {
       ~{an} \
       ~{existing} \
       ~{mq_par_dot_xml} \
-      ~{file} \
+      ~{var_file} \
       ~{if (partial_processing) then "--partial-processing" else ""} \
       ~{if (partial_processing_end) then "--partial-processing-end" else ""} \
       ~{if (dry_run) then "--dryrun" else ""} \
       ~{if (create) then "--create" else ""} \
       ~{if (change_folder) then "--changeFolder" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     partial_processing: "(Default: 1) Start processing from the\\nspecified job id. Can be used to continue/redo\\nparts of the processing. Job id's can be\\nobtained in the MaxQuant GUI partial\\nprocessing view or from --dryrun option. The\\nfirst job id is 1."
     partial_processing_end: "(Default: 2147483647) Finish processing at the\\nspecified job id. 1-based indexing is used."
@@ -42,7 +45,7 @@ task Maxquant {
     an: ""
     existing: ""
     mq_par_dot_xml: ""
-    file: ""
+    var_file: ""
   }
   output {
     File out_stdout = stdout()

@@ -28,6 +28,9 @@ task Marvel {
       ~{if (keep) then "--keep" else ""} \
       ~{if (cite) then "--cite" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_dir: "Path to a folder containing metagenomic bins in .fa or\\n.fasta format"
     threads: "Number of CPU threads to be used by Prokka and hmmscan\\n(default=1)"

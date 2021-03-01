@@ -3,12 +3,12 @@ id: mzid_to_pepxml.rb.cwl
 inputs:
 - id: in_output
   doc: An explicitly named output file.
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_debug
   doc: Run in debug mode [false]
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --debug
 - id: in_file_one_dot_mz_id
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: An explicitly named output file.
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mzid_to_pepxml.rb

@@ -4,25 +4,20 @@ inputs:
 - id: in_fraction_modified
   doc: "Specify fraction of modified calls. Default: Use\n--mod-percentile most extreme\
     \ scores to estimate the\nfraction."
-  type: string
+  type: string?
   inputBinding:
     prefix: --fraction-modified
 - id: in_mod_percentile
   doc: "Percentile of extreme scores to determine fraction of\nmodified bases. Default:\
     \ 8"
-  type: long
+  type: long?
   inputBinding:
     prefix: --mod-percentile
 - id: in_num_positions
   doc: "Number of positions from which to select statistics.\nDefault: All positions\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --num-positions
-- id: in_megalodon_results_dir
-  doc: Output directory from megalodon with per_read_mods in
-  type: string
-  inputBinding:
-    position: 0
 - id: in_output_dot
   doc: mod_base              Single letter code for the modified base.
   type: string
@@ -32,6 +27,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - megalodon_extras

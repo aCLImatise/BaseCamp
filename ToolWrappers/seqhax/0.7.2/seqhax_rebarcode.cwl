@@ -3,7 +3,7 @@ id: seqhax_rebarcode.cwl
 inputs:
 - id: in_output_interleaved_reads
   doc: 'Output interleaved reads to FILE. Use - for stdout. (default: no output)'
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_r_one
@@ -17,9 +17,10 @@ outputs:
   type: stdout
 - id: out_output_interleaved_reads
   doc: 'Output interleaved reads to FILE. Use - for stdout. (default: no output)'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_interleaved_reads)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - seqhax

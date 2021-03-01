@@ -22,6 +22,9 @@ task Comm {
       ~{if (total) then "--total" else ""} \
       ~{if (zero_terminated) then "--zero-terminated" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     one: "suppress column 1 (lines unique to FILE1)"
     two: "suppress column 2 (lines unique to FILE2)"

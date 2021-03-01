@@ -22,6 +22,9 @@ task IRepFilterpy {
       ~{if defined(max_gc_bias) then ("-g " +  '"' + max_gc_bias + '"') else ""} \
       ~{if (long) then "--long" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     _irep_tables: "[T [T ...]]  iRep table(s)"
     min_coverage_default: "min. coverage (default = 5)"

@@ -22,6 +22,9 @@ task FunannotateMask {
       ~{if (cpus) then "--cpus" else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     multifasta_genome_file: "Multi-FASTA genome file. (Required)"
     out: "Output softmasked FASTA file. (Required)"

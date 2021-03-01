@@ -12,6 +12,9 @@ task SrfExtractLinear {
       ~{archive_name} \
       ~{trace_name}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     extract_linear_srf: ""
     archive_name: ""

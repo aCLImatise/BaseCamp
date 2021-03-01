@@ -30,6 +30,9 @@ task SgaAssemble {
       ~{if defined(min_branch_length) then ("--min-branch-length " +  '"' + min_branch_length + '"') else ""} \
       ~{if defined(resolve_small) then ("--resolve-small " +  '"' + resolve_small + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "display verbose output"
     out_prefix: "use NAME as the prefix of the output files (output files will be NAME-contigs.fa, etc)"

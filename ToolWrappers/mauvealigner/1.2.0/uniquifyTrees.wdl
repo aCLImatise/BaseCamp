@@ -10,6 +10,9 @@ task UniquifyTrees {
       ~{nexus_input_file} \
       ~{nexus_output_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     nexus_input_file: ""
     nexus_output_file: ""

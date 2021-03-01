@@ -8,6 +8,9 @@ task ArrowCannedkeysFindKeyByValue {
     arrow cannedkeys findKeyByValue \
       ~{value}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     value: ""
   }

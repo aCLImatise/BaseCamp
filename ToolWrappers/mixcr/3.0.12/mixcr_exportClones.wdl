@@ -180,6 +180,9 @@ task MixcrExportClones {
       ~{if (v_identity_percents) then "-vIdentityPercents" else ""} \
       ~{if (fo_tv) then "-fotv" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Verbose warning messages."
     aa_feature: "Export amino acid sequence of specified gene feature"

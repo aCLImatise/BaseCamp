@@ -8,6 +8,9 @@ task NestSerial {
     nest_serial \
       ~{script}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     script: ""
   }

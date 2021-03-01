@@ -14,6 +14,9 @@ task FilterComponentspyMinlength {
       ~{outfile} \
       ~{minlength}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     filter_components_do_tpy: ""
     in_file: ""

@@ -8,7 +8,7 @@ task MakeDbpyImgt {
     File? log
     Boolean? failed
     String? format
-    Directory? zipped_output_files
+    Directory? zipped_imgt_output
     Boolean? list_fasta_files
     Array[String] list_folders_andor
     Array[File] one_zero_x
@@ -24,7 +24,7 @@ task MakeDbpyImgt {
       ~{if defined(log) then ("--log " +  '"' + log + '"') else ""} \
       ~{if (failed) then "--failed" else ""} \
       ~{if defined(format) then ("--format " +  '"' + format + '"') else ""} \
-      ~{if defined(zipped_output_files) then ("-i " +  '"' + zipped_output_files + '"') else ""} \
+      ~{if defined(zipped_imgt_output) then ("-i " +  '"' + zipped_imgt_output + '"') else ""} \
       ~{if (list_fasta_files) then "-s" else ""} \
       ~{if defined(list_folders_andor) then ("-r " +  '"' + list_folders_andor + '"') else ""} \
       ~{if defined(one_zero_x) then ("--10x " +  '"' + one_zero_x + '"') else ""} \
@@ -32,6 +32,9 @@ task MakeDbpyImgt {
       ~{if (partial) then "--partial" else ""} \
       ~{if (extended) then "--extended" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     explicit_output_file: "Explicit output file name. Note, this argument cannot\\nbe used with the --failed, --outdir, or --outname\\narguments. If unspecified, then the output filename\\nwill be based on the input filename(s). (default:\\nNone)"
     outdir: "Specify to changes the output directory to the\\nlocation specified. The input file directory is used\\nif this is not specified. (default: None)"
@@ -39,7 +42,7 @@ task MakeDbpyImgt {
     log: "Specify to write verbose logging to a file. May not be\\nspecified with multiple input files. (default: None)"
     failed: "If specified create files containing records that fail\\nprocessing. (default: False)"
     format: "Specify input and output format. (default: airr)"
-    zipped_output_files: "Either zipped IMGT output files (.zip or .txz) or a\\nfolder containing unzipped IMGT output files (which\\nmust include 1_Summary, 2_IMGT-gapped, 3_Nt-sequences,\\nand 6_Junction). (default: None)"
+    zipped_imgt_output: "Either zipped IMGT output files (.zip or .txz) or a\\nfolder containing unzipped IMGT output files (which\\nmust include 1_Summary, 2_IMGT-gapped, 3_Nt-sequences,\\nand 6_Junction). (default: None)"
     list_fasta_files: "[SEQ_FILES [SEQ_FILES ...]]\\nList of FASTA files (with .fasta, .fna or .fa\\nextension) that were submitted to IMGT/HighV-QUEST. If\\nunspecified, sequence identifiers truncated by\\nIMGT/HighV-QUEST will not be corrected. (default:\\nNone)"
     list_folders_andor: "List of folders and/or fasta files containing the\\ngermline sequence set used by IMGT/HighV-QUEST. These\\nreference sequences must contain IMGT-numbering\\nspacers (gaps) in the V segment. If unspecified, the\\ngermline sequence reconstruction will not be included\\nin the output. (default: None)"
     one_zero_x: "Table file containing 10X annotations (with .csv or\\n.tsv extension). (default: None)"
@@ -49,6 +52,6 @@ task MakeDbpyImgt {
   }
   output {
     File out_stdout = stdout()
-    Directory out_zipped_output_files = "${in_zipped_output_files}"
+    Directory out_zipped_imgt_output = "${in_zipped_imgt_output}"
   }
 }

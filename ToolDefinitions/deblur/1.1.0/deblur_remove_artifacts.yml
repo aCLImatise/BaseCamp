@@ -4,77 +4,78 @@ command:
 - remove-artifacts
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: SEQS_FP
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: OUTPUT_DIR
-  optional: false
+  description: ''
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - --ref-fp
   description: "Keep all sequences aligning to this FASTA\ndatabase (for multiple\
     \ databases, use --ref-\nfp db1.fa --ref-fp db2.fa ..) default for\npositive filtering\
     \ is:\n/usr/local/lib/python3.7/site-\npackages/deblur/support_files/88_otus.fasta\n\
     default for negative filtering is:\n/usr/local/lib/python3.7/site-\npackages/deblur/support_files/artifacts.fa"
-  synonyms:
-  - --ref-fp
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --ref-db-fp
   description: "Keep all sequences aligning to this indexed\ndatabase. For multiple\
     \ databases, the order\nmust follow that of --ref-fp, for example,\n--ref-db-fp\
     \ db1.idx --ref-db-fp db2.idx .."
-  synonyms:
-  - --ref-db-fp
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 - !Flag
-  description: "/ --only-pos       Use --negate (i.e. True) to discard all\nsequences\
-    \ aligning to the database passed\nvia --neg-ref-fp option. Alternatively, use\n\
-    --only-pos (i.e. False) to filter by only\nkeeping sequences similar to ones in\
-    \ --pos-\nref-fp.  [default: True]"
+  optional: true
   synonyms:
   - -n
   - --negate
+  - --only-pos
+  description: "Use --negate (i.e. True) to discard all\nsequences aligning to the\
+    \ database passed\nvia --neg-ref-fp option. Alternatively, use\n--only-pos (i.e.\
+    \ False) to filter by only\nkeeping sequences similar to ones in --pos-\nref-fp.\
+    \  [default: True]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Number of threads to use per sample (0 to\nuse all)  [default: 1]"
+  optional: true
   synonyms:
   - -a
   - --threads-per-sample
+  description: "Number of threads to use per sample (0 to\nuse all)  [default: 1]"
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: "RANGE       Level of messages for log file(range 1-debug\nto 5-critical\
-    \  [default: 2]"
+  optional: true
   synonyms:
   - --log-level
+  description: "RANGE       Level of messages for log file(range 1-debug\nto 5-critical\
+    \  [default: 2]"
   args: !SimpleFlagArg
     name: INTEGER
-  optional: true
 - !Flag
-  description: 'log file name  [default: deblur.log]'
+  optional: true
   synonyms:
   - --log-file
+  description: 'log file name  [default: deblur.log]'
   args: !SimpleFlagArg
     name: PATH
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Show this message and exit.
+  optional: true
   synonyms:
   - --help
+  description: Show this message and exit.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: deblur remove-artifacts [OPTIONS] SEQS_FP OUTPUT_DIR\n\n  Filter\
@@ -106,3 +107,4 @@ help_text: "Usage: deblur remove-artifacts [OPTIONS] SEQS_FP OUTPUT_DIR\n\n  Fil
   \    Show this message and exit.\n"
 generated_using:
 - --help
+docker_image:

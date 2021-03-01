@@ -1,38 +1,38 @@
 class: CommandLineTool
 id: spliceai.cwl
 inputs:
-- id: in_path_input_vcf
+- id: in_path_input_standard
   doc: '[input]     path to the input VCF file, defaults to standard in'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -I
 - id: in_path_output_standard
   doc: '[output]    path to the output VCF file, defaults to standard out'
-  type: File
+  type: File?
   inputBinding:
     prefix: -O
 - id: in_path_reference_genome
   doc: path to the reference genome fasta file
-  type: File
+  type: File?
   inputBinding:
     prefix: -R
-- id: in_gencode_vlift_canonical
+- id: in_gencode_vlift_inpackage
   doc: "\"grch37\" (GENCODE V24lift37 canonical annotation file in\npackage), \"grch38\"\
     \ (GENCODE V24 canonical annotation file in\npackage), or path to a similar custom\
     \ gene annotation file"
-  type: File
+  type: File?
   inputBinding:
     prefix: -A
 - id: in_maximum_distance_variant
   doc: "[distance]  maximum distance between the variant and gained/lost splice\n\
     site, defaults to 50"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -D
 - id: in_mask_scores_representing
   doc: "[mask]      mask scores representing annotated acceptor/donor gain and\nunannotated\
     \ acceptor/donor loss, defaults to 0\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -M
 - id: in_one_dot_three
@@ -46,9 +46,10 @@ outputs:
   type: stdout
 - id: out_path_output_standard
   doc: '[output]    path to the output VCF file, defaults to standard out'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_path_output_standard)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - spliceai

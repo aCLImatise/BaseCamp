@@ -1,0 +1,538 @@
+&id001 !Command
+command:
+- beamspy
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - beamspy
+  - group-features
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    - --peaklist
+    description: Tab-delimited peaklist.
+    args: !SimpleFlagArg
+      name: PEAKLIST
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --intensity-matrix
+    description: Tab-delimited intensity matrix.
+    args: !SimpleFlagArg
+      name: INTENSITY_MATRIX
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --db
+    description: Sqlite database to write results.
+    args: !SimpleFlagArg
+      name: DB
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --max-rt-diff
+    description: "Maximum difference in retention time between two\npeaks."
+    args: !SimpleFlagArg
+      name: MAX_RT_DIFF
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    - --method
+    description: Method to apply for grouping features.
+    args: !ChoiceFlagArg
+      choices: !!set
+        pearson:
+        spearman:
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --coeff-threshold
+    description: Threshold for correlation coefficient.
+    args: !SimpleFlagArg
+      name: COEFF_THRESHOLD
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --pvalue-threshold
+    description: Threshold for p-value.
+    args: !SimpleFlagArg
+      name: PVALUE_THRESHOLD
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    - --gml-file
+    description: Write graph to GraphML format.
+    args: !SimpleFlagArg
+      name: GML_FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    - --ncpus
+    description: "Number of central processing units (CPUs).\n"
+    args: !SimpleFlagArg
+      name: NCPUS
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Executing BEAMSpy version 1.1.0.\nusage: beamspy group-features [-h]\
+    \ -l PEAKLIST -i INTENSITY_MATRIX -d DB -r\n                              MAX_RT_DIFF\
+    \ -m {pearson,spearman} -c\n                              COEFF_THRESHOLD -p PVALUE_THRESHOLD\
+    \ -g GML_FILE\n                              [-n NCPUS]\n\noptional arguments:\n\
+    \  -h, --help            show this help message and exit\n  -l PEAKLIST, --peaklist\
+    \ PEAKLIST\n                        Tab-delimited peaklist.\n  -i INTENSITY_MATRIX,\
+    \ --intensity-matrix INTENSITY_MATRIX\n                        Tab-delimited intensity\
+    \ matrix.\n  -d DB, --db DB        Sqlite database to write results.\n  -r MAX_RT_DIFF,\
+    \ --max-rt-diff MAX_RT_DIFF\n                        Maximum difference in retention\
+    \ time between two\n                        peaks.\n  -m {pearson,spearman}, --method\
+    \ {pearson,spearman}\n                        Method to apply for grouping features.\n\
+    \  -c COEFF_THRESHOLD, --coeff-threshold COEFF_THRESHOLD\n                   \
+    \     Threshold for correlation coefficient.\n  -p PVALUE_THRESHOLD, --pvalue-threshold\
+    \ PVALUE_THRESHOLD\n                        Threshold for p-value.\n  -g GML_FILE,\
+    \ --gml-file GML_FILE\n                        Write graph to GraphML format.\n\
+    \  -n NCPUS, --ncpus NCPUS\n                        Number of central processing\
+    \ units (CPUs).\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/beamspy:1.1.0--py_0
+- !Command
+  command:
+  - beamspy
+  - annotate-compounds
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    - --peaklist
+    description: Tab-delimited peaklist.
+    args: !SimpleFlagArg
+      name: PEAKLIST
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --intensity-matrix
+    description: Tab-delimited intensity matrix.
+    args: !SimpleFlagArg
+      name: INTENSITY_MATRIX
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --db
+    description: Sqlite database to write results.
+    args: !SimpleFlagArg
+      name: DB
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --db-compounds
+    description: Metabolite database (reference).
+    args: !SimpleFlagArg
+      name: DB_COMPOUNDS
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    - --db-name
+    description: "Name compound / metabolite database (within --db-\ncompounds)."
+    args: !SimpleFlagArg
+      name: DB_NAME
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    - --adducts-library
+    description: List of adducts to search for.
+    args: !SimpleFlagArg
+      name: ADDUCTS_LIBRARY
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    - --ion-mode
+    description: Ion mode of the libraries.
+    args: !ChoiceFlagArg
+      choices: !!set
+        neg:
+        pos:
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --ppm
+    description: Mass tolerance in parts per million.
+    args: !SimpleFlagArg
+      name: PPM
+  - !Flag
+    optional: true
+    synonyms:
+    - -e
+    - --skip-patterns
+    description: "Skip applying/using peak patterns (e.g. adduct and\nisotope patterns)\
+      \ to filter annotations."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --rt
+    description: Retention time tolerance in seconds.
+    args: !SimpleFlagArg
+      name: RT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Executing BEAMSpy version 1.1.0.\nusage: beamspy annotate-compounds\
+    \ [-h] -l PEAKLIST [-i INTENSITY_MATRIX] -d DB\n                             \
+    \     [-c DB_COMPOUNDS] -n DB_NAME\n                                  [-a ADDUCTS_LIBRARY]\
+    \ -m {pos,neg} -p PPM\n                                  [-e] [-r RT]\n\noptional\
+    \ arguments:\n  -h, --help            show this help message and exit\n  -l PEAKLIST,\
+    \ --peaklist PEAKLIST\n                        Tab-delimited peaklist.\n  -i INTENSITY_MATRIX,\
+    \ --intensity-matrix INTENSITY_MATRIX\n                        Tab-delimited intensity\
+    \ matrix.\n  -d DB, --db DB        Sqlite database to write results.\n  -c DB_COMPOUNDS,\
+    \ --db-compounds DB_COMPOUNDS\n                        Metabolite database (reference).\n\
+    \  -n DB_NAME, --db-name DB_NAME\n                        Name compound / metabolite\
+    \ database (within --db-\n                        compounds).\n  -a ADDUCTS_LIBRARY,\
+    \ --adducts-library ADDUCTS_LIBRARY\n                        List of adducts to\
+    \ search for.\n  -m {pos,neg}, --ion-mode {pos,neg}\n                        Ion\
+    \ mode of the libraries.\n  -p PPM, --ppm PPM     Mass tolerance in parts per\
+    \ million.\n  -e, --skip-patterns   Skip applying/using peak patterns (e.g. adduct\
+    \ and\n                        isotope patterns) to filter annotations.\n  -r\
+    \ RT, --rt RT        Retention time tolerance in seconds.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/beamspy:1.1.0--py_0
+- !Command
+  command:
+  - beamspy
+  - summary-results
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    - --peaklist
+    description: Tab-delimited peaklist
+    args: !SimpleFlagArg
+      name: PEAKLIST
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --intensity-matrix
+    description: Tab-delimited intensity matrix.
+    args: !SimpleFlagArg
+      name: INTENSITY_MATRIX
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: Output file for the summary
+    args: !SimpleFlagArg
+      name: OUTPUT
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --pdf
+    description: Output pdf file for the summary plots
+    args: !SimpleFlagArg
+      name: PDF
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --db
+    description: "Sqlite database that contains the results from the\nprevious steps."
+    args: !SimpleFlagArg
+      name: DB
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --sep
+    description: "Values on each line of the output are separated by\nthis character."
+    args: !ChoiceFlagArg
+      choices: !!set
+        comma:
+        tab:
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --single-row
+    description: "Concatenate the annotations for each spectral feature\nand represent\
+      \ in a single row."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --single-column
+    description: "Concatenate the annotations for each spectral feature\nand keep\
+      \ seperate columns for molecular formula,\nadduct, name, etc."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    - --ndigits-mz
+    description: Digits after the decimal point for m/z values.
+    args: !SimpleFlagArg
+      name: NDIGITS_MZ
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --convert-rt
+    description: "Covert the retention time to seconds or minutes. An\nadditional\
+      \ column will be added.\n"
+    args: !ChoiceFlagArg
+      choices: !!set
+        min:
+        None:
+        sec:
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Executing BEAMSpy version 1.1.0.\nusage: beamspy summary-results [-h]\
+    \ -l PEAKLIST [-i INTENSITY_MATRIX] -o\n                               OUTPUT\
+    \ [-p PDF] -d DB -s {tab,comma} [-r] [-c]\n                               [-n\
+    \ NDIGITS_MZ] [-t {sec,min,None}]\n\noptional arguments:\n  -h, --help       \
+    \     show this help message and exit\n  -l PEAKLIST, --peaklist PEAKLIST\n  \
+    \                      Tab-delimited peaklist\n  -i INTENSITY_MATRIX, --intensity-matrix\
+    \ INTENSITY_MATRIX\n                        Tab-delimited intensity matrix.\n\
+    \  -o OUTPUT, --output OUTPUT\n                        Output file for the summary\n\
+    \  -p PDF, --pdf PDF     Output pdf file for the summary plots\n  -d DB, --db\
+    \ DB        Sqlite database that contains the results from the\n             \
+    \           previous steps.\n  -s {tab,comma}, --sep {tab,comma}\n           \
+    \             Values on each line of the output are separated by\n           \
+    \             this character.\n  -r, --single-row      Concatenate the annotations\
+    \ for each spectral feature\n                        and represent in a single\
+    \ row.\n  -c, --single-column   Concatenate the annotations for each spectral\
+    \ feature\n                        and keep seperate columns for molecular formula,\n\
+    \                        adduct, name, etc.\n  -n NDIGITS_MZ, --ndigits-mz NDIGITS_MZ\n\
+    \                        Digits after the decimal point for m/z values.\n  -t\
+    \ {sec,min,None}, --convert-rt {sec,min,None}\n                        Covert\
+    \ the retention time to seconds or minutes. An\n                        additional\
+    \ column will be added.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/beamspy:1.1.0--py_0
+- !Command
+  command:
+  - beamspy
+  - annotate-peak-patterns
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    - --peaklist
+    description: Tab-delimited peaklist.
+    args: !SimpleFlagArg
+      name: PEAKLIST
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --intensity-matrix
+    description: Tab-delimited intensity matrix.
+    args: !SimpleFlagArg
+      name: INTENSITY_MATRIX
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    - --gml-file
+    description: Correlation graph in GraphML format.
+    args: !SimpleFlagArg
+      name: GML_FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --db
+    description: Sqlite database to write results.
+    args: !SimpleFlagArg
+      name: DB
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    - --adducts
+    description: Annotate adducts.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    - --adducts-library
+    description: List of adducts.
+    args: !SimpleFlagArg
+      name: ADDUCTS_LIBRARY
+  - !Flag
+    optional: true
+    synonyms:
+    - -e
+    - --isotopes
+    description: Annotate isotopes.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --isotopes-library
+    description: List of isotopes.
+    args: !SimpleFlagArg
+      name: ISOTOPES_LIBRARY
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --oligomers
+    description: Annotate oligomers.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    - --neutral-losses
+    description: Annotate neutral losses.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --neutral-losses-library
+    description: List of neutral losses.
+    args: !SimpleFlagArg
+      name: NEUTRAL_LOSSES_LIBRARY
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    - --ion-mode
+    description: Ion mode of the libraries.
+    args: !ChoiceFlagArg
+      choices: !!set
+        neg:
+        pos:
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --ppm
+    description: Mass tolerance in parts per million.
+    args: !SimpleFlagArg
+      name: PPM
+  - !Flag
+    optional: true
+    synonyms:
+    - -u
+    - --max-monomer-units
+    description: "Maximum number of monomer units.\n"
+    args: !SimpleFlagArg
+      name: MAX_MONOMER_UNITS
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Executing BEAMSpy version 1.1.0.\nusage: beamspy annotate-peak-patterns\
+    \ [-h] -l PEAKLIST [-i INTENSITY_MATRIX]\n                                   \
+    \   [-g GML_FILE] -d DB [-a]\n                                      [-b ADDUCTS_LIBRARY]\
+    \ [-e]\n                                      [-f ISOTOPES_LIBRARY] [-o] [-n]\n\
+    \                                      [-s NEUTRAL_LOSSES_LIBRARY] -m {pos,neg}\n\
+    \                                      -p PPM [-u MAX_MONOMER_UNITS]\n\noptional\
+    \ arguments:\n  -h, --help            show this help message and exit\n  -l PEAKLIST,\
+    \ --peaklist PEAKLIST\n                        Tab-delimited peaklist.\n  -i INTENSITY_MATRIX,\
+    \ --intensity-matrix INTENSITY_MATRIX\n                        Tab-delimited intensity\
+    \ matrix.\n  -g GML_FILE, --gml-file GML_FILE\n                        Correlation\
+    \ graph in GraphML format.\n  -d DB, --db DB        Sqlite database to write results.\n\
+    \  -a, --adducts         Annotate adducts.\n  -b ADDUCTS_LIBRARY, --adducts-library\
+    \ ADDUCTS_LIBRARY\n                        List of adducts.\n  -e, --isotopes\
+    \        Annotate isotopes.\n  -f ISOTOPES_LIBRARY, --isotopes-library ISOTOPES_LIBRARY\n\
+    \                        List of isotopes.\n  -o, --oligomers       Annotate oligomers.\n\
+    \  -n, --neutral-losses  Annotate neutral losses.\n  -s NEUTRAL_LOSSES_LIBRARY,\
+    \ --neutral-losses-library NEUTRAL_LOSSES_LIBRARY\n                        List\
+    \ of neutral losses.\n  -m {pos,neg}, --ion-mode {pos,neg}\n                 \
+    \       Ion mode of the libraries.\n  -p PPM, --ppm PPM     Mass tolerance in\
+    \ parts per million.\n  -u MAX_MONOMER_UNITS, --max-monomer-units MAX_MONOMER_UNITS\n\
+    \                        Maximum number of monomer units.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/beamspy:1.1.0--py_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Executing BEAMSpy version 1.1.0.\nusage: beamspy [-h]\n              \
+  \ {group-features,annotate-peak-patterns,annotate-mf,annotate-compounds,summary-results,start-gui}\n\
+  \               ...\n\nAnnotation package of LC-MS and DIMS data\n\npositional arguments:\n\
+  \  {group-features,annotate-peak-patterns,annotate-mf,annotate-compounds,summary-results,start-gui}\n\
+  \    group-features      Group features.\n    annotate-peak-patterns\n         \
+  \               Annotate peak patterns, molecular formulae and\n               \
+  \         metabolites.\n    annotate-mf         Annotate molecular formulae.\n \
+  \   annotate-compounds  Annotate metabolites.\n    summary-results     Summarise\
+  \ results.\n    start-gui           Start GUI.\n\noptional arguments:\n  -h, --help\
+  \            show this help message and exit\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/beamspy:1.1.0--py_0

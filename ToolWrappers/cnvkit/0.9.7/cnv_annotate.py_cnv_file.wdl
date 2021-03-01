@@ -14,6 +14,9 @@ task CnvAnnotatepyCnvFile {
       ~{cnv_file} \
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     o: ""
     cnv_annotated_otp_y: ""

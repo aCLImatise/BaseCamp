@@ -16,6 +16,9 @@ task MmseqsSwapresults {
       ~{if (threads) then "--threads" else ""} \
       ~{if (verbosity_level_nothing) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     split_memory_limit: "0               Maximum system memory in megabyte that one split may use. Defaults (0) to all available system memory."
     list_matches_evalue: "0.001           list matches below this E-value [0.0, inf]"

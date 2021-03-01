@@ -20,6 +20,9 @@ task AugurParse {
       ~{if defined(separator) then ("--separator " +  '"' + separator + '"') else ""} \
       ~{if defined(fix_dates) then ("--fix-dates " +  '"' + fix_dates + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sequences: "sequences in fasta or VCF format (default: None)"
     output_sequences: "output sequences file (default: None)"

@@ -1,0 +1,659 @@
+!Command
+command:
+- sumtrees.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: TREE-FILEPATH
+  description: "Source(s) of trees to summarize. At least one valid\nsource of trees\
+    \ must be provided. Use '-' to specify\nreading from standard input (note that\
+    \ this requires\nthe input file format to be explicitly set using the '\n--source-format'\
+    \ option)."
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input-format
+  - --source-format
+  description: "Format of all input trees (defaults to handling either\nNEXUS or NEWICK\
+    \ through inspection; it is more\nefficient to explicitly specify the format if\
+    \ it is\nknown)."
+  args: !SimpleFlagArg
+    name: FORMAT
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --burnin
+  description: "Number of trees to skip from the beginning of *each*\ntree file when\
+    \ counting support (default: 0)."
+  args: !SimpleFlagArg
+    name: BURNIN
+- !Flag
+  optional: true
+  synonyms:
+  - --force-rooted
+  - --rooted
+  description: Treat source trees as rooted.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --force-unrooted
+  - --unrooted
+  description: Treat source trees as unrooted.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --weighted-trees
+  description: "Use weights of trees (as indicated by '[&W m/n]'\ncomment token) to\
+    \ weight contribution of splits found\non each tree to overall split frequencies."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --preserve-underscores
+  description: "Do not convert unprotected (unquoted) underscores to\nspaces when\
+    \ reading NEXUS/NEWICK format trees."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --ultrametricity-precision
+  - --edge-weight-epsilon
+  - --branch-length-epsilon
+  description: "Precision to use when validating ultrametricity\n(default: 1e-05;\
+    \ specify '0' to disable validation)."
+  args: !SimpleFlagArg
+    name: ULTRAMETRICITY_PRECISION
+- !Flag
+  optional: true
+  synonyms:
+  - --taxon-name-filepath
+  - --taxon-names-filepath
+  description: "Path to file listing all the taxon names or labels\nthat will be found\
+    \ across the entire set of source\ntrees. This file should be a plain text file\
+    \ with a\nsingle name list on each line. This file is only read\nwhen multiprocessing\
+    \ ('-M' or '-m') is requested. When\nmultiprocessing using the '-M' or '-m' options,\
+    \ all\ntaxon names need to be defined in advance of any\nactual tree analysis.\
+    \ By default this is done by\nreading the first tree in the first tree source\
+    \ and\nextracting the taxon names. At best, this is,\ninefficient, as it involves\
+    \ an extraneous reading of\nthe tree. At worst, this can be errorneous, if the\n\
+    first tree does not contain all the taxa. Explicitly\nproviding the taxon names\
+    \ via this option can avoid\nthese issues."
+  args: !SimpleFlagArg
+    name: FILEPATH
+- !Flag
+  optional: true
+  synonyms:
+  - --tip-ages
+  - --tip-ages-filepath
+  description: "Path to file providing ages (i.e., time from present)\nof tips. For\
+    \ format of this file, see '--tip-age-\nformat'. If not specified, or for any\
+    \ taxon omitted\nfrom the data, an age of 0.0 will be assumed."
+  args: !SimpleFlagArg
+    name: FILEPATH
+- !Flag
+  optional: true
+  synonyms:
+  - --tip-ages-format
+  description: "Format of the tip date data (default: 'tsv'):\n- 'tsv'\nA tab-delimited\
+    \ file. This should consist of two\ncolumns separated by tabs. The first column\n\
+    lists the taxon labels (matching the taxon label\nof the input trees EXACTLY)\
+    \ and the second\ncolumn lists the ages of the corresponding tips.\n- 'csv'\n\
+    A comma-delimited file. This should consist of\ntwo columns separated by commas.\
+    \ The first\ncolumn lists the taxon labels (matching the\ntaxon label of the input\
+    \ trees EXACTLY) and the\nsecond column lists the ages of the\ncorresponding tips.\n\
+    - 'json'\nA JSON file. This should specify a single\ndictionary at the top-level\
+    \ with keys being\ntaxon labels (matching the taxon labels of the\ninput trees\
+    \ EXACTLY) and values being the ages\nof the corresponding tips."
+  args: !SimpleFlagArg
+    name: FORMAT
+- !Flag
+  optional: true
+  synonyms:
+  - --no-trim-tip-age-labels
+  description: "By default, whitespace will be trimmed from the labels\nfound in the\
+    \ tip ages data source. Specifing this\noption suppresses this."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --target-tree-filepath
+  description: "Summarize support and other information from the\nsource trees to\
+    \ topology or topologies given by the\ntree(s) described in FILE. If no use-specified\
+    \ target\ntopologies are given, then a summary topology will be\nused as the target.\
+    \ Use the '-s' or '--summary-target'\nto specify the type of summary tree to use."
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --summary-target
+  description: "Construct and summarize support and other information\nfrom the source\
+    \ trees to one of the following summary\ntopologies:\n- 'consensus'\nA consensus\
+    \ tree. The minimum frequency\nthreshold of clades to be included can be\nspecified\
+    \ using the '-f' or '--min-clade-freq'\nflags. This is the DEFAULT if a user-\
+    \ specified\ntarget tree is not given through the '-t' or '--\ntarget-tree-filepath'\
+    \ options.\n- 'mcct'\nThe maximum clade credibility tree. The tree\nfrom the source\
+    \ set that maximizes the *product*\nof clade posterior probabilities.\n- 'msct'\n\
+    The maximum sum of clade credibilities tree. The\ntree from the source set that\
+    \ maximizes the\n*sum* of clade posterior probabilities."
+  args: !SimpleFlagArg
+    name: SUMMARY-TYPE
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: "#.##, --min-clade-freq #.##, --min-freq #.##, --min-split-freq #.##,\
+    \ --min-consensus-freq #.##\nMinimum frequency or probability for a clade or a\n\
+    split to be included in the summary target trees. If\nuser-defined or non-consensus\
+    \ trees are specified as\nsummary targets and a explicit value is provided for\n\
+    this argument, then clades with support values below\nthis threshold will be collapsed.\
+    \ If a consensus tree\nsummary target is specified, then clades with support\n\
+    values below this threshold will not be included, and\nthis threshold takes on\
+    \ a default value of greater\nthan 0.5 if not explicitly specified."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --allow-unknown-target-tree-taxa
+  description: "Do not fail with error if target tree(s) have taxa not\npreviously\
+    \ encountered in source trees or defined in\nthe taxon discovery file."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --root-target-at-outgroup
+  description: Root target tree(s) using specified taxon as outgroup.
+  args: !SimpleFlagArg
+    name: TAXON-LABEL
+- !Flag
+  optional: true
+  synonyms:
+  - --root-target-at-midpoint
+  description: Root target tree(s) at midpoint.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --set-outgroup
+  description: "Rotate the target trees such the specified taxon is in\nthe outgroup\
+    \ position, but do not explicitly change\nthe target tree rooting."
+  args: !SimpleFlagArg
+    name: TAXON-LABEL
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --set-edges
+  - --edges
+  description: "Set the edge lengths of the target or summary trees\nbased on the\
+    \ specified summarization STRATEGY:\n- 'mean-length'\nEdge lengths will be set\
+    \ to the mean of the\nlengths of the corresponding split or clade in\nthe source\
+    \ trees.\n- 'median-length'\nEdge lengths will be set to the median of the\nlengths\
+    \ of the corresponding split or clade in\nthe source trees.\n- 'mean-age'\nEdge\
+    \ lengths will be adjusted so that the age of\nsubtended nodes will be equal to\
+    \ the mean age of\nthe corresponding split or clade in the source\ntrees. Source\
+    \ trees will need to to be\nultrametric for this option.\n- 'median-age'\nEdge\
+    \ lengths will be adjusted so that the age of\nsubtended nodes will be equal to\
+    \ the median age\nof the corresponding split or clade in the\nsource trees. Source\
+    \ trees will need to to be\nultrametric for this option.\n- support\nEdge lengths\
+    \ will be set to the support value\nfor the split represented by the edge.\n-\
+    \ 'keep'\nDo not change the existing edge lengths. This is\nthe DEFAULT if target\
+    \ tree(s) are sourced from\nan external file using the '-t' or '--target-\ntree-filepath'\
+    \ option\n- 'clear'\nEdge lengths will be cleared from the target\ntrees if they\
+    \ are present.\nNote the default settings varies according to the\nfollowing,\
+    \ in order of preference:\n(1) If target trees are specified using the '-t' or\n\
+    '--target-tree-filepath' option, then the default edge\nsummarization strategy\
+    \ is: 'keep'.\n(2) If target trees are not specified, but the\n'--summarize-node-ages'\
+    \ option is specified,\nthen the default edge summarization strategy is:\n'mean-age'.\n\
+    (3) If no target trees are specified and the\nnode ages are NOT specified to be\
+    \ summarized,\nthen the default edge summarization strategy is:\n'mean-length'."
+  args: !SimpleFlagArg
+    name: STRATEGY
+- !Flag
+  optional: true
+  synonyms:
+  - --force-minimum-edge-length
+  description: "(If setting edge lengths) force all edges to be at\nleast this length."
+  args: !SimpleFlagArg
+    name: FORCE_MINIMUM_EDGE_LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - --collapse-negative-edges
+  description: "(If setting edge lengths) force parent node ages to be\nat least as\
+    \ old as its oldest child when summarizing\nnode ages."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --summarize-node-ages
+  - --ultrametric
+  - --node-ages
+  description: "Assume that source trees are ultrametic and summarize\nnode ages (distances\
+    \ from tips)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --labels
+  description: "Set the node labels of the summary or target tree(s):\n- 'support'\n\
+    Node labels will be set to the support value for\nthe clade represented by the\
+    \ node. This is the\nDEFAULT.\n- 'keep'\nDo not change the existing node labels.\n\
+    - 'clear'\nNode labels will be cleared from the target\ntrees if they are present."
+  args: !ChoiceFlagArg
+    choices: !!set
+      clear:
+      support:
+      keep:
+- !Flag
+  optional: true
+  synonyms:
+  - --suppress-annotations
+  - --no-annotations
+  description: "Do NOT annotate nodes and edges with any summarization\ninformation\
+    \ metadata such as.support values, edge\nlength and/or node age summary statistcs,\
+    \ etc."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --percentages
+  description: "Indicate branch support as percentages (otherwise,\nwill report as\
+    \ proportions by default)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: "#, --decimals #    Number of decimal places in indication of support\n\
+    values (default: 8)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-tree-filepath
+  - --output
+  description: "Path to output file (if not specified, will print to\nstandard output)."
+  args: !SimpleFlagArg
+    name: FILEPATH
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  - --output-tree-format
+  description: "Format of the output tree file (if not specifed,\ndefaults to input\
+    \ format, if this has been explicitly\nspecified, or 'nexus' otherwise)."
+  args: !ChoiceFlagArg
+    choices: !!set
+      phylip:
+      nexus:
+      newick:
+      nexml:
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --extended-output
+  description: "If specified, extended summarization information will\nbe generated,\
+    \ consisting of the following files:\n- '<PREFIX>.topologies.trees'\nA collection\
+    \ of topologies found in the sources\nreported with their associated posterior\n\
+    probabilities as metadata annotations.\n- '<PREFIX>.bipartitions.trees'\nA collection\
+    \ of bipartitions, each represented\nas a tree, with associated information as\n\
+    metadataannotations.\n- '<PREFIX>.bipartitions.tsv'\nTable listing bipartitions\
+    \ as a group pattern as\nthe key column, and information regarding each\nthe bipartitions\
+    \ as the remaining columns.\n- '<PREFIX>.edge-lengths.tsv'\nList of bipartitions\
+    \ and corresponding edge\nlengths. Only generated if edge lengths are\nsummarized.\n\
+    - '<PREFIX>.node-ages.tsv'\nList of bipartitions and corresponding ages.\nOnly\
+    \ generated if node ages are summarized."
+  args: !SimpleFlagArg
+    name: PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - --no-taxa-block
+  description: "When writing NEXUS format output, do not include a\ntaxa block in\
+    \ the output treefile (otherwise will\ncreate taxa block by default)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-analysis-metainformation
+  - --no-meta-comments
+  description: "Do not include meta-information describing the\nsummarization parameters\
+    \ and execution details."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --additional-comments
+  description: Additional comments to be added to the summary file.
+  args: !SimpleFlagArg
+    name: ADDITIONAL_COMMENTS
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --replace
+  description: "Replace/overwrite output file without asking if it\nalready exists."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  - --maximum-multiprocessing
+  description: "Run in parallel mode using as many processors as\navailable, up to\
+    \ the number of sources."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --multiprocessing
+  description: "Run in parallel mode with up to a maximum of NUM-\nPROCESSES processes\
+    \ ('max' or '#' means to run in as\nmany processes as there are cores on the local\n\
+    machine; i.e., same as specifying '-M' or '--maximum-\nmultiprocessing')."
+  args: !SimpleFlagArg
+    name: NUM-PROCESSES
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --log-frequency
+  description: "Tree processing progress logging frequency (default:\n500; set to\
+    \ 0 to suppress)."
+  args: !SimpleFlagArg
+    name: LOG-FREQUENCY
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  description: Suppress ALL logging, progress and feedback messages.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ignore-missing-support
+  description: "Ignore missing support tree files (note that at least\none must exist)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --usage-examples
+  description: Show usage examples of program and exit.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --describe
+  description: "Show information regarding your DendroPy and Python\ninstallations\
+    \ and exit.\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show help information for program and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  - --citation
+  description: "Show version and citation information for program and\nexit."
+  args: !EmptyFlagArg {}
+help_text: "usage: sumtrees.py [-i FORMAT] [-b BURNIN] [--force-rooted] [--force-unrooted]\n\
+  \                   [--weighted-trees] [--preserve-underscores]\n              \
+  \     [-v ULTRAMETRICITY_PRECISION]\n                   [--taxon-name-filepath FILEPATH]\
+  \ [--tip-ages FILEPATH]\n                   [--tip-ages-format FORMAT] [--no-trim-tip-age-labels]\n\
+  \                   [-t FILE] [-s SUMMARY-TYPE] [-f #.##]\n                   [--allow-unknown-target-tree-taxa]\n\
+  \                   [--root-target-at-outgroup TAXON-LABEL]\n                  \
+  \ [--root-target-at-midpoint] [--set-outgroup TAXON-LABEL]\n                   [-e\
+  \ STRATEGY]\n                   [--force-minimum-edge-length FORCE_MINIMUM_EDGE_LENGTH]\n\
+  \                   [--collapse-negative-edges] [--summarize-node-ages]\n      \
+  \             [-l {support,keep,clear}] [--suppress-annotations] [-p]\n        \
+  \           [-d #] [-o FILEPATH] [-F {nexus,newick,phylip,nexml}]\n            \
+  \       [-x PREFIX] [--no-taxa-block]\n                   [--no-analysis-metainformation]\
+  \ [-c ADDITIONAL_COMMENTS]\n                   [-r] [-M] [-m NUM-PROCESSES] [-g\
+  \ LOG-FREQUENCY] [-q]\n                   [--ignore-missing-support] [-h] [--version]\n\
+  \                   [--usage-examples] [--describe]\n                   [TREE-FILEPATH\
+  \ ...]\n\nSummarizations collections of trees, e.g., MCMC samples from a posterior\n\
+  distribution, non-parametric bootstrap replicates, mapping posterior\nprobability,\
+  \ support, or frequency that splits/clades are found in the source\nset of trees\
+  \ onto a target tree.\n\nSource Options:\n  TREE-FILEPATH         Source(s) of trees\
+  \ to summarize. At least one valid\n                        source of trees must\
+  \ be provided. Use '-' to specify\n                        reading from standard\
+  \ input (note that this requires\n                        the input file format\
+  \ to be explicitly set using the '\n                        --source-format' option).\n\
+  \  -i FORMAT, --input-format FORMAT, --source-format FORMAT\n                  \
+  \      Format of all input trees (defaults to handling either\n                \
+  \        NEXUS or NEWICK through inspection; it is more\n                      \
+  \  efficient to explicitly specify the format if it is\n                       \
+  \ known).\n  -b BURNIN, --burnin BURNIN\n                        Number of trees\
+  \ to skip from the beginning of *each*\n                        tree file when counting\
+  \ support (default: 0).\n  --force-rooted, --rooted\n                        Treat\
+  \ source trees as rooted.\n  --force-unrooted, --unrooted\n                    \
+  \    Treat source trees as unrooted.\n  --weighted-trees      Use weights of trees\
+  \ (as indicated by '[&W m/n]'\n                        comment token) to weight\
+  \ contribution of splits found\n                        on each tree to overall\
+  \ split frequencies.\n  --preserve-underscores\n                        Do not convert\
+  \ unprotected (unquoted) underscores to\n                        spaces when reading\
+  \ NEXUS/NEWICK format trees.\n  -v ULTRAMETRICITY_PRECISION, --ultrametricity-precision\
+  \ ULTRAMETRICITY_PRECISION, --edge-weight-epsilon ULTRAMETRICITY_PRECISION, --branch-length-epsilon\
+  \ ULTRAMETRICITY_PRECISION\n                        Precision to use when validating\
+  \ ultrametricity\n                        (default: 1e-05; specify '0' to disable\
+  \ validation).\n  --taxon-name-filepath FILEPATH, --taxon-names-filepath FILEPATH\n\
+  \                        Path to file listing all the taxon names or labels\n  \
+  \                      that will be found across the entire set of source\n    \
+  \                    trees. This file should be a plain text file with a\n     \
+  \                   single name list on each line. This file is only read\n    \
+  \                    when multiprocessing ('-M' or '-m') is requested. When\n  \
+  \                      multiprocessing using the '-M' or '-m' options, all\n   \
+  \                     taxon names need to be defined in advance of any\n       \
+  \                 actual tree analysis. By default this is done by\n           \
+  \             reading the first tree in the first tree source and\n            \
+  \            extracting the taxon names. At best, this is,\n                   \
+  \     inefficient, as it involves an extraneous reading of\n                   \
+  \     the tree. At worst, this can be errorneous, if the\n                     \
+  \   first tree does not contain all the taxa. Explicitly\n                     \
+  \   providing the taxon names via this option can avoid\n                      \
+  \  these issues.\n  --tip-ages FILEPATH, --tip-ages-filepath FILEPATH\n        \
+  \                Path to file providing ages (i.e., time from present)\n       \
+  \                 of tips. For format of this file, see '--tip-age-\n          \
+  \              format'. If not specified, or for any taxon omitted\n           \
+  \             from the data, an age of 0.0 will be assumed.\n  --tip-ages-format\
+  \ FORMAT\n                        Format of the tip date data (default: 'tsv'):\n\
+  \                        - 'tsv'\n                              A tab-delimited\
+  \ file. This should consist of two\n                              columns separated\
+  \ by tabs. The first column\n                              lists the taxon labels\
+  \ (matching the taxon label\n                              of the input trees EXACTLY)\
+  \ and the second\n                              column lists the ages of the corresponding\
+  \ tips.\n                        - 'csv'\n                              A comma-delimited\
+  \ file. This should consist of\n                              two columns separated\
+  \ by commas. The first\n                              column lists the taxon labels\
+  \ (matching the\n                              taxon label of the input trees EXACTLY)\
+  \ and the\n                              second column lists the ages of the\n \
+  \                             corresponding tips.\n                        - 'json'\n\
+  \                              A JSON file. This should specify a single\n     \
+  \                         dictionary at the top-level with keys being\n        \
+  \                      taxon labels (matching the taxon labels of the\n        \
+  \                      input trees EXACTLY) and values being the ages\n        \
+  \                      of the corresponding tips.\n  --no-trim-tip-age-labels\n\
+  \                        By default, whitespace will be trimmed from the labels\n\
+  \                        found in the tip ages data source. Specifing this\n   \
+  \                     option suppresses this.\n\nTarget Tree Topology Options:\n\
+  \  -t FILE, --target-tree-filepath FILE\n                        Summarize support\
+  \ and other information from the\n                        source trees to topology\
+  \ or topologies given by the\n                        tree(s) described in FILE.\
+  \ If no use-specified target\n                        topologies are given, then\
+  \ a summary topology will be\n                        used as the target. Use the\
+  \ '-s' or '--summary-target'\n                        to specify the type of summary\
+  \ tree to use.\n  -s SUMMARY-TYPE, --summary-target SUMMARY-TYPE\n             \
+  \           Construct and summarize support and other information\n            \
+  \            from the source trees to one of the following summary\n           \
+  \             topologies:\n                        - 'consensus'\n             \
+  \                 A consensus tree. The minimum frequency\n                    \
+  \          threshold of clades to be included can be\n                         \
+  \     specified using the '-f' or '--min-clade-freq'\n                         \
+  \     flags. This is the DEFAULT if a user- specified\n                        \
+  \      target tree is not given through the '-t' or '--\n                      \
+  \        target-tree-filepath' options.\n                        - 'mcct'\n    \
+  \                          The maximum clade credibility tree. The tree\n      \
+  \                        from the source set that maximizes the *product*\n    \
+  \                          of clade posterior probabilities.\n                 \
+  \       - 'msct'\n                              The maximum sum of clade credibilities\
+  \ tree. The\n                              tree from the source set that maximizes\
+  \ the\n                              *sum* of clade posterior probabilities.\n\n\
+  Target Tree Supplemental Options:\n  -f #.##, --min-clade-freq #.##, --min-freq\
+  \ #.##, --min-split-freq #.##, --min-consensus-freq #.##\n                     \
+  \   Minimum frequency or probability for a clade or a\n                        split\
+  \ to be included in the summary target trees. If\n                        user-defined\
+  \ or non-consensus trees are specified as\n                        summary targets\
+  \ and a explicit value is provided for\n                        this argument, then\
+  \ clades with support values below\n                        this threshold will\
+  \ be collapsed. If a consensus tree\n                        summary target is specified,\
+  \ then clades with support\n                        values below this threshold\
+  \ will not be included, and\n                        this threshold takes on a default\
+  \ value of greater\n                        than 0.5 if not explicitly specified.\n\
+  \  --allow-unknown-target-tree-taxa\n                        Do not fail with error\
+  \ if target tree(s) have taxa not\n                        previously encountered\
+  \ in source trees or defined in\n                        the taxon discovery file.\n\
+  \nTarget Tree Rooting Options:\n  --root-target-at-outgroup TAXON-LABEL\n      \
+  \                  Root target tree(s) using specified taxon as outgroup.\n  --root-target-at-midpoint\n\
+  \                        Root target tree(s) at midpoint.\n  --set-outgroup TAXON-LABEL\n\
+  \                        Rotate the target trees such the specified taxon is in\n\
+  \                        the outgroup position, but do not explicitly change\n \
+  \                       the target tree rooting.\n\nTarget Tree Edge Options:\n\
+  \  -e STRATEGY, --set-edges STRATEGY, --edges STRATEGY\n                       \
+  \ Set the edge lengths of the target or summary trees\n                        based\
+  \ on the specified summarization STRATEGY:\n                        - 'mean-length'\n\
+  \                              Edge lengths will be set to the mean of the\n   \
+  \                           lengths of the corresponding split or clade in\n   \
+  \                           the source trees.\n                        - 'median-length'\n\
+  \                               Edge lengths will be set to the median of the\n\
+  \                              lengths of the corresponding split or clade in\n\
+  \                              the source trees.\n                        - 'mean-age'\n\
+  \                              Edge lengths will be adjusted so that the age of\n\
+  \                              subtended nodes will be equal to the mean age of\n\
+  \                              the corresponding split or clade in the source\n\
+  \                              trees. Source trees will need to to be\n        \
+  \                      ultrametric for this option.\n                        - 'median-age'\n\
+  \                              Edge lengths will be adjusted so that the age of\n\
+  \                              subtended nodes will be equal to the median age\n\
+  \                              of the corresponding split or clade in the\n    \
+  \                          source trees. Source trees will need to to be\n     \
+  \                         ultrametric for this option.\n                       \
+  \ - support\n                              Edge lengths will be set to the support\
+  \ value\n                              for the split represented by the edge.\n\
+  \                        - 'keep'\n                              Do not change the\
+  \ existing edge lengths. This is\n                              the DEFAULT if target\
+  \ tree(s) are sourced from\n                              an external file using\
+  \ the '-t' or '--target-\n                              tree-filepath' option\n\
+  \                        - 'clear'\n                              Edge lengths will\
+  \ be cleared from the target\n                              trees if they are present.\n\
+  \                        Note the default settings varies according to the \n  \
+  \                      following, in order of preference:                  \n  \
+  \                      (1) If target trees are specified using the '-t' or \n  \
+  \                          '--target-tree-filepath' option, then the default edge\
+  \ \n                            summarization strategy is: 'keep'. \n          \
+  \              (2) If target trees are not specified, but the \n               \
+  \             '--summarize-node-ages' option is specified, \n                  \
+  \          then the default edge summarization strategy is: \n                 \
+  \           'mean-age'. \n                        (3) If no target trees are specified\
+  \ and the \n                            node ages are NOT specified to be summarized,\
+  \ \n                            then the default edge summarization strategy is:\
+  \ \n                            'mean-length'. \n  --force-minimum-edge-length FORCE_MINIMUM_EDGE_LENGTH\n\
+  \                        (If setting edge lengths) force all edges to be at\n  \
+  \                      least this length.\n  --collapse-negative-edges\n       \
+  \                 (If setting edge lengths) force parent node ages to be\n     \
+  \                   at least as old as its oldest child when summarizing\n     \
+  \                   node ages.\n\nTarget Tree Annotation Options:\n  --summarize-node-ages,\
+  \ --ultrametric, --node-ages\n                        Assume that source trees are\
+  \ ultrametic and summarize\n                        node ages (distances from tips).\n\
+  \  -l {support,keep,clear}, --labels {support,keep,clear}\n                    \
+  \    Set the node labels of the summary or target tree(s):\n                   \
+  \     - 'support'\n                              Node labels will be set to the\
+  \ support value for\n                              the clade represented by the\
+  \ node. This is the\n                              DEFAULT.\n                  \
+  \      - 'keep'\n                              Do not change the existing node labels.\n\
+  \                        - 'clear'\n                              Node labels will\
+  \ be cleared from the target\n                              trees if they are present.\n\
+  \  --suppress-annotations, --no-annotations\n                        Do NOT annotate\
+  \ nodes and edges with any summarization\n                        information metadata\
+  \ such as.support values, edge\n                        length and/or node age summary\
+  \ statistcs, etc.\n\nSupport Expression Options:\n  -p, --percentages     Indicate\
+  \ branch support as percentages (otherwise,\n                        will report\
+  \ as proportions by default).\n  -d #, --decimals #    Number of decimal places\
+  \ in indication of support\n                        values (default: 8).\n\nOutput\
+  \ Options:\n  -o FILEPATH, --output-tree-filepath FILEPATH, --output FILEPATH\n\
+  \                        Path to output file (if not specified, will print to\n\
+  \                        standard output).\n  -F {nexus,newick,phylip,nexml}, --output-tree-format\
+  \ {nexus,newick,phylip,nexml}\n                        Format of the output tree\
+  \ file (if not specifed,\n                        defaults to input format, if this\
+  \ has been explicitly\n                        specified, or 'nexus' otherwise).\n\
+  \  -x PREFIX, --extended-output PREFIX\n                        If specified, extended\
+  \ summarization information will\n                        be generated, consisting\
+  \ of the following files:\n                        - '<PREFIX>.topologies.trees'\n\
+  \                              A collection of topologies found in the sources\n\
+  \                              reported with their associated posterior\n      \
+  \                        probabilities as metadata annotations.\n              \
+  \          - '<PREFIX>.bipartitions.trees'\n                              A collection\
+  \ of bipartitions, each represented\n                              as a tree, with\
+  \ associated information as\n                              metadataannotations.\n\
+  \                        - '<PREFIX>.bipartitions.tsv'\n                       \
+  \       Table listing bipartitions as a group pattern as\n                     \
+  \         the key column, and information regarding each\n                     \
+  \         the bipartitions as the remaining columns.\n                        -\
+  \ '<PREFIX>.edge-lengths.tsv'\n                              List of bipartitions\
+  \ and corresponding edge\n                              lengths. Only generated\
+  \ if edge lengths are\n                              summarized.\n             \
+  \           - '<PREFIX>.node-ages.tsv'\n                              List of bipartitions\
+  \ and corresponding ages.\n                              Only generated if node\
+  \ ages are summarized.\n  --no-taxa-block       When writing NEXUS format output,\
+  \ do not include a\n                        taxa block in the output treefile (otherwise\
+  \ will\n                        create taxa block by default).\n  --no-analysis-metainformation,\
+  \ --no-meta-comments\n                        Do not include meta-information describing\
+  \ the\n                        summarization parameters and execution details.\n\
+  \  -c ADDITIONAL_COMMENTS, --additional-comments ADDITIONAL_COMMENTS\n         \
+  \               Additional comments to be added to the summary file.\n  -r, --replace\
+  \         Replace/overwrite output file without asking if it\n                 \
+  \       already exists.\n\nParallel Processing Options:\n  -M, --maximum-multiprocessing\n\
+  \                        Run in parallel mode using as many processors as\n    \
+  \                    available, up to the number of sources.\n  -m NUM-PROCESSES,\
+  \ --multiprocessing NUM-PROCESSES\n                        Run in parallel mode\
+  \ with up to a maximum of NUM-\n                        PROCESSES processes ('max'\
+  \ or '#' means to run in as\n                        many processes as there are\
+  \ cores on the local\n                        machine; i.e., same as specifying\
+  \ '-M' or '--maximum-\n                        multiprocessing').\n\nProgram Logging\
+  \ Options:\n  -g LOG-FREQUENCY, --log-frequency LOG-FREQUENCY\n                \
+  \        Tree processing progress logging frequency (default:\n                \
+  \        500; set to 0 to suppress).\n  -q, --quiet           Suppress ALL logging,\
+  \ progress and feedback messages.\n\nProgram Error Options:\n  --ignore-missing-support\n\
+  \                        Ignore missing support tree files (note that at least\n\
+  \                        one must exist).\n\nProgram Information Options:\n  -h,\
+  \ --help            Show help information for program and exit.\n  --version, --citation\n\
+  \                        Show version and citation information for program and\n\
+  \                        exit.\n  --usage-examples      Show usage examples of program\
+  \ and exit.\n  --describe            Show information regarding your DendroPy and\
+  \ Python\n                        installations and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/dendropy:4.5.2--pyh3252c3a_0

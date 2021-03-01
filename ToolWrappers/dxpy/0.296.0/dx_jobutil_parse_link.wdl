@@ -10,6 +10,9 @@ task Dxjobutilparselink {
       ~{dx_link} \
       ~{if (no_project) then "--no-project" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_project: "Ignore project ID in an extended dxlink - just print the\\nobject ID\\n"
     dx_link: "Link to parse"

@@ -62,6 +62,9 @@ task Picrust2Pipelinepy {
       ~{if (remove_intermediate) then "--remove_intermediate" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     study_fast_a: "FASTA of unaligned study sequences (i.e. OTUs or\\nASVs)."
     input_table_sequence: "Input table of sequence abundances (BIOM, TSV or\\nmothur shared file format)."

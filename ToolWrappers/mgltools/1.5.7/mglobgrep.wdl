@@ -4,6 +4,9 @@ task Mglobgrep {
   command <<<
     mglobgrep
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

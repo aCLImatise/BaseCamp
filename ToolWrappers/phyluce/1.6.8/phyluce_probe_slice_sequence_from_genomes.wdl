@@ -28,6 +28,9 @@ task PhyluceProbeSliceSequenceFromGenomes {
       ~{if defined(flank) then ("--flank " +  '"' + flank + '"') else ""} \
       ~{if defined(probes) then ("--probes " +  '"' + probes + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     conf: "Path to the configuration file"
     last_z: "Path to the directory containing LASTZ results"

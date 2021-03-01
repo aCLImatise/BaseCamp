@@ -3,7 +3,7 @@ version 1.0
 task AnalyzeRNApl {
   input {
     Boolean? or
-    Directory? list_showtag_counts
+    Directory? list_experiment_directories
     Boolean? rp_km
     Boolean? norm
     Boolean? norm_matrix
@@ -32,7 +32,7 @@ task AnalyzeRNApl {
       ~{additional} \
       ~{options_dot_dot_dot} \
       ~{if (or) then "-or-" else ""} \
-      ~{if defined(list_showtag_counts) then ("-d " +  '"' + list_showtag_counts + '"') else ""} \
+      ~{if defined(list_experiment_directories) then ("-d " +  '"' + list_experiment_directories + '"') else ""} \
       ~{if (rp_km) then "-rpkm" else ""} \
       ~{if (norm) then "-norm" else ""} \
       ~{if (norm_matrix) then "-normMatrix" else ""} \
@@ -50,9 +50,12 @@ task AnalyzeRNApl {
       ~{if (maxlength) then "-maxLength" else ""} \
       ~{if (pausing) then "-pausing" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     or: ": analyzeRNA.pl <custom RNA/GTF file> <organism|none>  [additional options...]"
-    list_showtag_counts: "[tag directory 2] ... (list of experiment directories to show\\ntag counts for) NOTE: -dfile <file> where file is a list of directories in first column"
+    list_experiment_directories: "[tag directory 2] ... (list of experiment directories to show\\ntag counts for) NOTE: -dfile <file> where file is a list of directories in first column"
     rp_km: "(Report results as reads per kb per million mapped)"
     norm: "<#> (Normalize to total mapped tags: default 1e7)"
     norm_matrix: "<#> (Normalize to total tags in gene expression matrix: not used)"

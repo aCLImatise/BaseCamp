@@ -3,7 +3,7 @@ version 1.0
 task Gxw2statspl {
   input {
     File? matrices_file_gxw
-    File? use_matrix_use
+    File? use_matrix_matrices
     Boolean? pws
     File? sequences_file_fasta
     File? use_only_sequences
@@ -62,7 +62,7 @@ task Gxw2statspl {
   command <<<
     gxw2stats_pl \
       ~{if defined(matrices_file_gxw) then ("-m " +  '"' + matrices_file_gxw + '"') else ""} \
-      ~{if defined(use_matrix_use) then ("-n " +  '"' + use_matrix_use + '"') else ""} \
+      ~{if defined(use_matrix_matrices) then ("-n " +  '"' + use_matrix_matrices + '"') else ""} \
       ~{if (pws) then "-pws" else ""} \
       ~{if defined(sequences_file_fasta) then ("-s " +  '"' + sequences_file_fasta + '"') else ""} \
       ~{if defined(use_only_sequences) then ("-l " +  '"' + use_only_sequences + '"') else ""} \
@@ -118,9 +118,12 @@ task Gxw2statspl {
       ~{if defined(run) then ("-run " +  '"' + run + '"') else ""} \
       ~{if defined(s_xml) then ("-sxml " +  '"' + s_xml + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     matrices_file_gxw: ":         matrices file (gxw format)"
-    use_matrix_use: ":         use this matrix only out of the gxw file (default: use all matrices)"
+    use_matrix_matrices: ":         use this matrix only out of the gxw file (default: use all matrices)"
     pws: ":             process weight matrices separately (applicable to all commands)"
     sequences_file_fasta: ":         sequences file (fasta format)"
     use_only_sequences: ":         use only these sequences from the file <str> (default: use all sequences in fasta file)"
@@ -178,7 +181,7 @@ task Gxw2statspl {
   }
   output {
     File out_stdout = stdout()
-    File out_use_matrix_use = "${in_use_matrix_use}"
+    File out_use_matrix_matrices = "${in_use_matrix_matrices}"
     File out_precision = "${in_precision}"
   }
 }

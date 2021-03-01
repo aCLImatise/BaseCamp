@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, Int, File, String
+
+Rnaeval_V0_1_0 = CommandToolBuilder(tool="RNAeval", base_command=["RNAeval"], inputs=[ToolInput(tag="in_detailed_help", input_type=Boolean(optional=True), prefix="--detailed-help", doc=InputDocumentation(doc="Print help, including all details and hidden\noptions, and exit")), ToolInput(tag="in_verbose", input_type=Boolean(optional=True), prefix="--verbose", doc=InputDocumentation(doc="Print out energy contribution of each loop in the")), ToolInput(tag="in_temp", input_type=Int(optional=True), prefix="--temp", doc=InputDocumentation(doc="Rescale energy parameters to a temperature of temp\nC. Default is 37C.")), ToolInput(tag="in_no_tetra", input_type=Boolean(optional=True), prefix="--noTetra", doc=InputDocumentation(doc="Do not include special tabulated stabilizing\nenergies for tri-, tetra- and hexaloop hairpins.\nMostly for testing.\n(default=off)")), ToolInput(tag="in_dangles", input_type=Int(optional=True), prefix="--dangles", doc=InputDocumentation(doc="How to treat 'dangling end' energies for bases\nadjacent to helices in free ends and multi-loops\n(default=`2')")), ToolInput(tag="in_energy_model", input_type=Int(optional=True), prefix="--energyModel", doc=InputDocumentation(doc="Rarely used option to fold sequences from the\nartificial ABCD... alphabet, where A pairs B,\nC-D etc.  Use the energy parameters for GC (-e\n1) or AU (-e 2) pairs.")), ToolInput(tag="in_param_file", input_type=File(optional=True), prefix="--paramFile", doc=InputDocumentation(doc="Read energy parameters from paramfile, instead of\nusing the default parameter set.")), ToolInput(tag="in_circ", input_type=Boolean(optional=True), prefix="--circ", doc=InputDocumentation(doc="Assume a circular (instead of linear) RNA")), ToolInput(tag="in_log_ml", input_type=Boolean(optional=True), prefix="--logML", doc=InputDocumentation(doc="Recalculate energies of structures using a\nlogarithmic energy function for multi-loops\nbefore output.\n(default=off)")), ToolInput(tag="in_program", input_type=String(), position=0, doc=InputDocumentation(doc="--noconv               Do not automatically substitude nucleotide 'T' \nwith 'U'\n(default=off)")), ToolInput(tag="in_structure_dot", input_type=String(), position=1, doc=InputDocumentation(doc="(default=off)")), ToolInput(tag="in_molecule_dot", input_type=String(), position=0, doc=InputDocumentation(doc="(default=off)"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Rnaeval_V0_1_0().translate("wdl", allow_empty_container=True)
+

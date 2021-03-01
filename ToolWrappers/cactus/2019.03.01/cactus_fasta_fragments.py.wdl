@@ -14,6 +14,9 @@ task CactusFastaFragmentspy {
       ~{if (shuffle) then "--shuffle" else ""} \
       ~{if defined(head) then ("--head " +  '"' + head + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fragment: "length of each fragment\\n(default is 100)"
     step: "distance between the start of each fragment\\n(default is 50)"

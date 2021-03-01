@@ -22,6 +22,9 @@ task RunFlockMFIpy {
       ~{if defined(file_location_output_centroid) then ("-c " +  '"' + file_location_output_centroid + '"') else ""} \
       ~{if defined(file_location_output_profile) then ("-p " +  '"' + file_location_output_profile + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_location_fcs: "File location for the FCS file."
     run_flock_flock: "Run flock1 or flock2."

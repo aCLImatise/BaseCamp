@@ -4,6 +4,9 @@ task ExtractVba {
   command <<<
     extract_vba
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

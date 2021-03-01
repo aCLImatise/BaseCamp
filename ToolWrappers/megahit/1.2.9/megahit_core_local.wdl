@@ -2,7 +2,12 @@ version 1.0
 
 task MegahitCoreLocal {
   input {
-    Int? contig_file
+    File? contig_file
+    File? lib_file_prefix
+    Int? seed_km_er
+    Int? sparsity
+    Float? similarity
+    Int? num_threads
     String? o
     String? r
     String local
@@ -11,11 +16,24 @@ task MegahitCoreLocal {
     megahit_core local \
       ~{local} \
       ~{if defined(contig_file) then ("--contig_file " +  '"' + contig_file + '"') else ""} \
+      ~{if defined(lib_file_prefix) then ("--lib_file_prefix " +  '"' + lib_file_prefix + '"') else ""} \
+      ~{if defined(seed_km_er) then ("--seed_kmer " +  '"' + seed_km_er + '"') else ""} \
+      ~{if defined(sparsity) then ("--sparsity " +  '"' + sparsity + '"') else ""} \
+      ~{if defined(similarity) then ("--similarity " +  '"' + similarity + '"') else ""} \
+      ~{if defined(num_threads) then ("--num_threads " +  '"' + num_threads + '"') else ""} \
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
       ~{if defined(r) then ("-r " +  '"' + r + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    contig_file: "contig file\\n-l, --lib_file_prefix arg              lib file prefix\\n--kmin arg (=11)\\n--kmax arg (=41)\\n--step arg (=6)\\n--seed_kmer arg (=31)              kmer size for seeding alignments\\n--min_contig_len arg (=200)\\n--min_mapping_len arg (=75)\\n--sparsity arg (=8)                sparsity of hash mapper\\n--similarity arg (=0.8)            alignment similarity threshold\\n-t, --num_threads arg (=0)\\n-o, --output_file arg\\n"
+    contig_file: "contig file"
+    lib_file_prefix: "lib file prefix"
+    seed_km_er: "(=31)              kmer size for seeding alignments"
+    sparsity: "(=8)                sparsity of hash mapper"
+    similarity: "(=0.8)            alignment similarity threshold"
+    num_threads: "(=0)"
     o: ""
     r: ""
     local: ""

@@ -14,6 +14,9 @@ task PslToPslx {
       ~{tseq_spec} \
       ~{if (masked) then "-masked" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     masked: "- if specified, repeats are in lower case cases, otherwise entire\\nsequence is loader case.\\n"
     in_dot_psl: ""

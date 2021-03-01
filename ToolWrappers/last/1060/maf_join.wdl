@@ -8,6 +8,9 @@ task Mafjoin {
     maf_join \
       ~{sorted_file_two_dot_maf}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sorted_file_two_dot_maf: ""
   }

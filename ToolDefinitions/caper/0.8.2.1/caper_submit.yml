@@ -4,239 +4,239 @@ command:
 - submit
 positional:
 - !Positional
-  description: --singularity-cachedir SINGULARITY_CACHEDIR
+  optional: false
   position: 0
   name: server.
-  optional: false
+  description: --singularity-cachedir SINGULARITY_CACHEDIR
 named:
 - !Flag
-  description: Caper does not take any action.
+  optional: true
   synonyms:
   - --dry-run
+  description: Caper does not take any action.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Prints all logs >= DEBUG level
+  optional: true
   synonyms:
   - -D
   - --debug
+  description: Prints all logs >= DEBUG level
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Port for Caper server
+  optional: true
   synonyms:
   - --port
+  description: Port for Caper server
   args: !SimpleFlagArg
     name: PORT
-  optional: true
 - !Flag
-  description: IP address for Caper server
+  optional: true
   synonyms:
   - --ip
+  description: IP address for Caper server
   args: !SimpleFlagArg
     name: IP
-  optional: true
 - !Flag
-  description: Disable server heartbeat file.
+  optional: true
   synonyms:
   - --no-server-heartbeat
+  description: Disable server heartbeat file.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Heartbeat file for Caper clients to get IP and port of\na server"
+  optional: true
   synonyms:
   - --server-heartbeat-file
+  description: "Heartbeat file for Caper clients to get IP and port of\na server"
   args: !SimpleFlagArg
     name: SERVER_HEARTBEAT_FILE
-  optional: true
 - !Flag
-  description: "Timeout for a heartbeat file in Milliseconds. A\nheartbeat file older\
-    \ than this interval will be\nignored."
+  optional: true
   synonyms:
   - --server-heartbeat-timeout
+  description: "Timeout for a heartbeat file in Milliseconds. A\nheartbeat file older\
+    \ than this interval will be\nignored."
   args: !SimpleFlagArg
     name: SERVER_HEARTBEAT_TIMEOUT
-  optional: true
 - !Flag
-  description: Workflow inputs JSON file
+  optional: true
   synonyms:
   - -i
   - --inputs
+  description: Workflow inputs JSON file
   args: !SimpleFlagArg
     name: INPUTS
-  optional: true
 - !Flag
-  description: Workflow options JSON file
+  optional: true
   synonyms:
   - -o
   - --options
+  description: Workflow options JSON file
   args: !SimpleFlagArg
     name: OPTIONS
-  optional: true
 - !Flag
-  description: Workflow labels JSON file
+  optional: true
   synonyms:
   - -l
   - --labels
+  description: Workflow labels JSON file
   args: !SimpleFlagArg
     name: LABELS
-  optional: true
 - !Flag
-  description: Zip file of imported subworkflows
+  optional: true
   synonyms:
   - -p
   - --imports
+  description: Zip file of imported subworkflows
   args: !SimpleFlagArg
     name: IMPORTS
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --str-label
   description: "Caper's special label for a workflow This label will\nbe added to\
     \ a workflow labels JSON file as a value for\na key \"caper-label\". DO NOT USE\
     \ IRREGULAR CHARACTERS.\nUSE LETTERS, NUMBERS, DASHES AND UNDERSCORES ONLY\n(^[A-Za-z0-9\\\
     -\\_]+$) since this label is used to\ncompose a path for workflow's temporary\
     \ directory\n(tmp_dir/label/timestamp/)"
-  synonyms:
-  - -s
-  - --str-label
   args: !SimpleFlagArg
     name: STR_LABEL
-  optional: true
 - !Flag
-  description: Put a hold on a workflow when submitted to a Cromwell
+  optional: true
   synonyms:
   - --hold
+  description: Put a hold on a workflow when submitted to a Cromwell
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --use-gsutil-for-s3
   description: "Use gsutil CLI for direct trasnfer between S3 and GCS\nbuckets. Otherwise,\
     \ such file transfer will stream\nthrough local machine. Make sure that gsutil\
     \ is\ninstalled on your system and it has access to\ncredentials for AWS (e.g.\
     \ ~/.boto or\n~/.aws/credentials)."
-  synonyms:
-  - --use-gsutil-for-s3
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --no-deepcopy
   description: "(IMPORTANT) --deepcopy has been deprecated.\nDeepcopying is now activated\
     \ by default. This flag\ndisables deepcopy for JSON (.json), TSV (.tsv) and CSV\n\
     (.csv) files specified in an input JSON file\n(--inputs). Find all path/URI string\
     \ values in an\ninput JSON file and make copies of files on a\nlocal/remote storage\
     \ for a target backend. Make sure\nthat you have installed gsutil for GCS and\
     \ aws for S3."
-  synonyms:
-  - --no-deepcopy
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Ignore warnings from womtool.jar.
+  optional: true
   synonyms:
   - --ignore-womtool
+  description: Ignore warnings from womtool.jar.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Path or URL for Cromwell's womtool JAR file
+  optional: true
   synonyms:
   - --womtool
+  description: Path or URL for Cromwell's womtool JAR file
   args: !SimpleFlagArg
     name: WOMTOOL
-  optional: true
 - !Flag
-  description: Backend to run a workflow
+  optional: true
   synonyms:
   - -b
   - --backend
+  description: Backend to run a workflow
   args: !SimpleFlagArg
     name: BACKEND
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --docker
   description: "[DOCKER [DOCKER ...]]\nURI for Docker image (e.g. ubuntu:latest).\
     \ This can\nalso be used as a flag to use Docker image address\ndefined in your\
     \ WDL file as a comment (\"#CAPER\ndocker\")."
-  synonyms:
-  - --docker
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --singularity
   description: "[SINGULARITY [SINGULARITY ...]]\nURI or path for Singularity image\
     \ (e.g.\n~/.singularity/ubuntu-latest.simg,\ndocker://ubuntu:latest, shub://vsoch/hello-world).\n\
     This can also be used as a flag to use Docker image\naddress defined in your WDL\
     \ file as a comment (\"#CAPER\nsingularity\")."
-  synonyms:
-  - --singularity
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Do not build singularity image before running a\nworkflow."
+  optional: true
   synonyms:
   - --no-build-singularity
+  description: "Do not build singularity image before running a\nworkflow."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: SLURM partition
+  optional: true
   synonyms:
   - --slurm-partition
+  description: SLURM partition
   args: !SimpleFlagArg
     name: SLURM_PARTITION
-  optional: true
 - !Flag
-  description: SLURM account
+  optional: true
   synonyms:
   - --slurm-account
+  description: SLURM account
   args: !SimpleFlagArg
     name: SLURM_ACCOUNT
-  optional: true
 - !Flag
-  description: SLURM extra parameters. Must be double-quoted
+  optional: true
   synonyms:
   - --slurm-extra-param
+  description: SLURM extra parameters. Must be double-quoted
   args: !SimpleFlagArg
     name: SLURM_EXTRA_PARAM
-  optional: true
 - !Flag
-  description: SGE parallel environment. Check with "qconf -spl"
+  optional: true
   synonyms:
   - --sge-pe
+  description: SGE parallel environment. Check with "qconf -spl"
   args: !SimpleFlagArg
     name: SGE_PE
-  optional: true
 - !Flag
-  description: SGE queue. Check with "qconf -sql"
+  optional: true
   synonyms:
   - --sge-queue
+  description: SGE queue. Check with "qconf -sql"
   args: !SimpleFlagArg
     name: SGE_QUEUE
-  optional: true
 - !Flag
-  description: SGE extra parameters. Must be double-quoted
+  optional: true
   synonyms:
   - --sge-extra-param
+  description: SGE extra parameters. Must be double-quoted
   args: !SimpleFlagArg
     name: SGE_EXTRA_PARAM
-  optional: true
 - !Flag
-  description: PBS queue
+  optional: true
   synonyms:
   - --pbs-queue
+  description: PBS queue
   args: !SimpleFlagArg
     name: PBS_QUEUE
-  optional: true
 - !Flag
-  description: "PBS extra parameters. Must be double-quoted\n"
+  optional: true
   synonyms:
   - --pbs-extra-param
+  description: "PBS extra parameters. Must be double-quoted\n"
   args: !SimpleFlagArg
     name: PBS_EXTRA_PARAM
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: caper submit [-h] [--dry-run] [-D] [--port PORT] [--ip IP]\n  \
@@ -325,3 +325,4 @@ help_text: "usage: caper submit [-h] [--dry-run] [-D] [--port PORT] [--ip IP]\n 
   \       PBS extra parameters. Must be double-quoted\n"
 generated_using:
 - --help
+docker_image:

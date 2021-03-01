@@ -8,6 +8,9 @@ task CactusConvertAlignmentsToInternalNames {
     cactus_convertAlignmentsToInternalNames \
       ~{if defined(cactus_disk) then ("--cactusDisk " +  '"' + cactus_disk + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cactus_disk: "must be provided"
   }

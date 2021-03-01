@@ -20,6 +20,9 @@ task Workflowinstall {
       ~{if defined(password) then ("--password " +  '"' + password + '"') else ""} \
       ~{if defined(api_key) then ("--api_key " +  '"' + api_key + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     workflow_path: "Path to a workflow file or a directory with multiple\\nworkflow files ending with \\\".ga\\\""
     publish_workflows: "Flag to publish all imported workflows, so that they\\nare viewable by other users"

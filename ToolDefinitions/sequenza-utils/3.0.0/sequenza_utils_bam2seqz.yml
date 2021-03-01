@@ -4,150 +4,150 @@ command:
 - bam2seqz
 positional:
 - !Positional
-  description: --het_f HET_F         Threshold of frequency in the forward strand
-    to trust
+  optional: false
   position: 0
   name: 0.25.
-  optional: false
+  description: --het_f HET_F         Threshold of frequency in the forward strand
+    to trust
 named:
 - !Flag
-  description: Use pileups as input files instead of BAMs.
+  optional: true
   synonyms:
   - -p
   - --pileup
+  description: Use pileups as input files instead of BAMs.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Name of the BAM/pileup file from the reference/normal\nsample"
+  optional: true
   synonyms:
   - -n
   - --normal
+  description: "Name of the BAM/pileup file from the reference/normal\nsample"
   args: !SimpleFlagArg
     name: NORMAL
-  optional: true
 - !Flag
-  description: Name of the BAM/pileup file from the tumor sample
+  optional: true
   synonyms:
   - -t
   - --tumor
+  description: Name of the BAM/pileup file from the tumor sample
   args: !SimpleFlagArg
     name: TUMOR
-  optional: true
 - !Flag
-  description: The GC-content wiggle file
+  optional: true
   synonyms:
   - -gc
+  description: The GC-content wiggle file
   args: !SimpleFlagArg
     name: GC
-  optional: true
 - !Flag
-  description: "The reference FASTA file used to generate the\nintermediate pileup.\
-    \ Required when input are BAM"
+  optional: true
   synonyms:
   - -F
   - --fasta
+  description: "The reference FASTA file used to generate the\nintermediate pileup.\
+    \ Required when input are BAM"
   args: !SimpleFlagArg
     name: FASTA
-  optional: true
 - !Flag
-  description: "Name of the output file. To use gzip compression name\nthe file ending\
-    \ in .gz. Default STDOUT."
+  optional: true
   synonyms:
   - -o
   - --output
+  description: "Name of the output file. To use gzip compression name\nthe file ending\
+    \ in .gz. Default STDOUT."
   args: !SimpleFlagArg
     name: OUT
-  optional: true
 - !Flag
-  description: "Optional BAM/pileup file used to compute the\ndepth.normal and depth-ratio,\
-    \ instead of using the\nnormal BAM."
+  optional: true
   synonyms:
   - -n2
   - --normal2
+  description: "Optional BAM/pileup file used to compute the\ndepth.normal and depth-ratio,\
+    \ instead of using the\nnormal BAM."
   args: !SimpleFlagArg
     name: NORMAL2
-  optional: true
 - !Flag
-  description: Threshold to select homozygous positions. Default 0.9.
+  optional: true
   synonyms:
   - --hom
+  description: Threshold to select homozygous positions. Default 0.9.
   args: !SimpleFlagArg
     name: HOM
-  optional: true
 - !Flag
-  description: Threshold to select heterozygous positions. Default
+  optional: true
   synonyms:
   - --het
+  description: Threshold to select heterozygous positions. Default
   args: !SimpleFlagArg
     name: HET
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -C
+  - --chromosome
   description: "Argument to restrict the input/output to a chromosome\nor a chromosome\
     \ region. Coordinate format is\nName:pos.start-pos.end, eg: chr17:7565097-7590856,\
     \ for\na particular region; eg: chr17, for the entire\nchromosome. Chromosome\
     \ names can checked in the\nBAM/pileup files and are depending on the FASTA\n\
     reference used for alignment. Default behavior is to\nnot selecting any chromosome."
-  synonyms:
-  - -C
-  - --chromosome
   args: !RepeatFlagArg
     name: CHR
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --parallel
   description: "Defines the number of chromosomes to run in parallel.\nThe output\
     \ will be divided in multiple files, one for\neach chromosome. The file name will\
     \ be composed by the\noutput argument (used as prefix) and a chromosome name\n\
     given by the chromosome argument list. This imply that\nboth output and chromosome\
     \ argument need to be set\ncorrectly."
-  synonyms:
-  - --parallel
   args: !SimpleFlagArg
     name: NPROC
-  optional: true
 - !Flag
-  description: "Path of samtools exec file to access the indexes and\ncompute the\
-    \ pileups. Default \"samtools\""
+  optional: true
   synonyms:
   - -S
   - --samtools
+  description: "Path of samtools exec file to access the indexes and\ncompute the\
+    \ pileups. Default \"samtools\""
   args: !SimpleFlagArg
     name: SAMTOOLS
-  optional: true
 - !Flag
-  description: Path of the tabix binary. Default "tabix"
+  optional: true
   synonyms:
   - -T
   - --tabix
+  description: Path of the tabix binary. Default "tabix"
   args: !SimpleFlagArg
     name: TABIX
-  optional: true
 - !Flag
-  description: "Minimum nucleotide quality score for inclusion in the\ncounts. Default\
-    \ 20."
+  optional: true
   synonyms:
   - -q
   - --qlimit
+  description: "Minimum nucleotide quality score for inclusion in the\ncounts. Default\
+    \ 20."
   args: !SimpleFlagArg
     name: QLIMIT
-  optional: true
 - !Flag
-  description: "Quality format, options are \"sanger\" or \"illumina\".\nThis will\
-    \ add an offset of 33 or 64 respectively to\nthe qlimit value. Default \"sanger\"\
-    ."
+  optional: true
   synonyms:
   - -f
   - --qformat
+  description: "Quality format, options are \"sanger\" or \"illumina\".\nThis will\
+    \ add an offset of 33 or 64 respectively to\nthe qlimit value. Default \"sanger\"\
+    ."
   args: !SimpleFlagArg
     name: QFORMAT
-  optional: true
 - !Flag
-  description: "Threshold to filter positions by the sum of read depth\nof the two\
-    \ samples. Default 20.\n"
+  optional: true
   synonyms:
   - -N
+  description: "Threshold to filter positions by the sum of read depth\nof the two\
+    \ samples. Default 20.\n"
   args: !SimpleFlagArg
     name: N
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -204,3 +204,4 @@ help_text: "usage: sequenza-utils bam2seqz [-p] -n NORMAL -t TUMOR -gc GC [-F FA
   \ depth\n                        of the two samples. Default 20.\n"
 generated_using:
 - --help
+docker_image:

@@ -22,6 +22,9 @@ task Saffrontree {
       ~{if (keep_files) then "--keep_files" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     km_er: "Kmer to use, depends on read length [31]"
     min_km_ers_threshold: "Exclude k-mers occurring less than this [5]"

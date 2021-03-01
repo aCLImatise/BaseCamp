@@ -5,7 +5,7 @@ task Ssubuild {
     Boolean? commandline_argument_default
     Boolean? force_allow_overwriting
     File? name_cm_file
-    String? name_cm_s
+    String? _name_cm
     File? append
     File? key_out
     String? trunc
@@ -25,7 +25,7 @@ task Ssubuild {
       ~{if (commandline_argument_default) then "-d" else ""} \
       ~{if (force_allow_overwriting) then "-f" else ""} \
       ~{if defined(name_cm_file) then ("-o " +  '"' + name_cm_file + '"') else ""} \
-      ~{if defined(name_cm_s) then ("-n " +  '"' + name_cm_s + '"') else ""} \
+      ~{if defined(_name_cm) then ("-n " +  '"' + _name_cm + '"') else ""} \
       ~{if defined(append) then ("--append " +  '"' + append + '"') else ""} \
       ~{if defined(key_out) then ("--key-out " +  '"' + key_out + '"') else ""} \
       ~{if defined(trunc) then ("--trunc " +  '"' + trunc + '"') else ""} \
@@ -38,11 +38,14 @@ task Ssubuild {
       ~{if defined(ere) then ("--ere " +  '"' + ere + '"') else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     commandline_argument_default: ": command-line argument is a default ssu-align-0.1 seed alignment"
     force_allow_overwriting: ": force; allow overwriting of CM file"
     name_cm_file: ": name the CM *file* <s>"
-    name_cm_s: ": name the CM <s>"
+    _name_cm: ": name the CM <s>"
     append: ": append this model to CM file <s>"
     key_out: ": add <s> to all output file names, before the suffix"
     trunc: ": only include consensus columns from <x> to <y> (where <s> =\\\"<x>-<y>\\\")"

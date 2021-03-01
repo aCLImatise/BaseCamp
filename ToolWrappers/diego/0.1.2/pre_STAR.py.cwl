@@ -3,30 +3,31 @@ id: pre_STAR.py.cwl
 inputs:
 - id: in_list
   doc: sampleName tab-delimiter path/to/fileName
-  type: File
+  type: File?
   inputBinding:
     prefix: --list
 - id: in_an_no
   doc: "specifies the path to the annotation (bed 6 file of\ngenebounderies with info\n\
     protein_coding;ENSG00000237683.5;AL627309.1 in column\nfour.)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --anno
 - id: in_intersect_bed
   doc: specifies the path to the intersectBed binary
-  type: File
+  type: File?
   inputBinding:
     prefix: --intersectBed
 - id: in_outdir
   doc: "specifies the path to ouput directory (tmp files are\nalso created in this\
     \ directory, they are removed by rm\n*.rm) (default is '.')\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --outdir
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pre_STAR.py

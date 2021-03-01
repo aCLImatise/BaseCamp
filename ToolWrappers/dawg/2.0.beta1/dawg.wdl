@@ -54,6 +54,9 @@ task Dawg {
       ~{if defined(arg_file) then ("--arg-file " +  '"' + arg_file + '"') else ""} \
       ~{if (var_8) then "--output" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     help_trick: "display description of common control variables"
     arg_output_file: "[ --output ] arg          output to this file"

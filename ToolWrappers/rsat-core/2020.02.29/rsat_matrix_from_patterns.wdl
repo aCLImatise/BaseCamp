@@ -20,6 +20,9 @@ task RsatMatrixfrompatterns {
       ~{ones_dot} \
       ~{pss_mdot}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     matrix_from_patterns: "[1mDESCRIPTION[0m"
     jvheldenatulbdotacdotbe: "[1mCATEGORY[0m"

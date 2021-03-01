@@ -18,6 +18,9 @@ task MzTabExporter {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "Input files used to generate the mzTab file. (valid formats: 'featureXML', 'consensusXML', 'idXML', 'mzid')"
     out: "*       Output file (mzTab) (valid formats: 'mzTab')"

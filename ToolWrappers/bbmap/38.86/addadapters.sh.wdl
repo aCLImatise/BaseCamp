@@ -8,6 +8,9 @@ task Addadapterssh {
     addadapters_sh \
       ~{in}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: ""
   }

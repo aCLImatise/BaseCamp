@@ -20,6 +20,9 @@ task Pathogenprofilergatherpy {
       ~{if (it_ol) then "--itol" else ""} \
       ~{if (pct) then "--pct" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     samples: "NGS Platform (default: None)"
     dir: "NGS Platform (default: pp-results)"

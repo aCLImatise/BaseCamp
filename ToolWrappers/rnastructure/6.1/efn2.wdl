@@ -34,6 +34,9 @@ task Efn2 {
       ~{if (shape_slope) then "--SHAPEslope" else ""} \
       ~{if (temperature) then "--temperature" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dna: "Specify that the sequence is DNA, and DNA parameters are to be used.\\nDefault is to use RNA parameters."
     ne: "Do not calculate experimental uncertainties"

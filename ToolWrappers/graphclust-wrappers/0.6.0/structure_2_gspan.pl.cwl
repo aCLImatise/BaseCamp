@@ -3,34 +3,34 @@ id: structure_2_gspan.pl.cwl
 inputs:
 - id: in_man
   doc: full documentation
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -man
 - id: in_input_structure_type
   doc: 'Structure type from the input to use. Allowed types: "MFE", "MEA"'
-  type: string
+  type: string?
   inputBinding:
     prefix: -input-structure-type
 - id: in_stack
   doc: "Adds stacking information to graphs. This adds an additional\nvertex (type\
     \ P) for each pair of stacked base-pairs and four edges\n(type p) from each of\
     \ the involved bases to the new vertex."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -stack
 - id: in_seq_graph_win
   doc: add for each window a graph which contains no structure
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -seq-graph-win
 - id: in_seq_graph_t
   doc: "add for each 't #' a graph which contains no structure"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -seq-graph-t
 - id: in_seq_graph_alph
   doc: the alphabet of unstructured graphs
-  type: string
+  type: string?
   inputBinding:
     prefix: -seq-graph-alph
 - id: in_annotate
@@ -39,12 +39,12 @@ inputs:
     \ is has the following TAB-delimited\ncolumns: SEQID, START, END, NAMESPACE#LABEL.\n\
     Labels with the same name-space and SEQID form connected\ncomponents, which is\
     \ a sequence of label vertices ordered\nby the START position in the sequence."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -annotate
 - id: in_abstr
   doc: Add abstract structure graphs to the single shrep graph
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -abstr
 - id: in_match_shape
@@ -53,46 +53,46 @@ inputs:
     \ this shape is not possible within given energy range, produce a\nspecific t\
     \ graph with only one vertex 'X'. By this the instance\nbecomes very unsimilar\
     \ to all other graphs (for knn)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -match-shape
 - id: in_vp
   doc: "enable graph computation with viewpoints:\nsvmsgdnspdk will center on those\
     \ nucleotides that are given\nvia capital letters and ignore those given as lowercase\
     \ letters"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -vp
 - id: in_tmp
   doc: "<STRING> e.g. \"/scratch/1/sita/tmp\"\nA directory for writing temporary files"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -tmp
-- id: in_string_eg_output
+- id: in_string_eg_output_directory
   doc: "<STRING> e.g. \"ProjectX/MySequences/GSPAN/\"\nOutput directory for gspan\
     \ files containing graphs."
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: -o
 - id: in_group
   doc: "<INTEGER> e.g. 5\nCombine/group that number of input seqs into 1 gspan file\n\
     output name is then '<INT>.group.gspan.bz2'"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -group
 - id: in_stdout
   doc: send graphs to stdout instead of writing to files
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -stdout
 - id: in_ignore_header
   doc: don't write fasta id part after first space to gspan
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -ignore-header
 - id: in_debug
   doc: additional debug output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -debug
 - id: in_help
@@ -121,12 +121,13 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_string_eg_output
+- id: out_string_eg_output_directory
   doc: "<STRING> e.g. \"ProjectX/MySequences/GSPAN/\"\nOutput directory for gspan\
     \ files containing graphs."
-  type: Directory
+  type: Directory?
   outputBinding:
-    glob: $(inputs.in_string_eg_output)
+    glob: $(inputs.in_string_eg_output_directory)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - structure_2_gspan.pl

@@ -38,6 +38,9 @@ task Arvrunpipelineinstance {
       ~{if defined(description) then ("--description " +  '"' + description + '"') else ""} \
       ~{if defined(project_uuid) then ("--project-uuid " +  '"' + project_uuid + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dry_run: "Do not start any new jobs or wait for existing jobs to\\nfinish. Just find out whether jobs are finished,\\nqueued, or running for each component."
     status_text: "Store plain text status in given file. (Default:\\n/dev/stdout)"

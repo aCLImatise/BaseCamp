@@ -48,6 +48,9 @@ task QcSTR {
       ~{if defined(ref_bias_binsize) then ("--refbias-binsize " +  '"' + ref_bias_binsize + '"') else ""} \
       ~{if defined(num_records) then ("--numrecords " +  '"' + num_records + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     vcf: "VCF file to analyze."
     out: "Output prefix for files generated"

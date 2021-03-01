@@ -4,132 +4,132 @@ command:
 positional: []
 named:
 - !Flag
-  description: "Print information during execution -- useful for\ndebugging [default:\
-    \ False]"
+  optional: true
   synonyms:
   - -v
   - --verbose
+  description: "Print information during execution -- useful for\ndebugging [default:\
+    \ False]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -P
+  - --primers_filepath
   description: "Path to input primers file.  This file is tab\ndelineated, with the\
     \ first column being the primer\nname, which must end with an 'f' or a 'r'.  The\
     \ second\ncolumn contains the primer sequence in 5' to  3'\nformat. One must supply\
     \ either a primer file or a\nprimer name  (-p parameter) and primer sequence (-s\n\
     parameter). [default: none]"
-  synonyms:
-  - -P
-  - --primers_filepath
   args: !SimpleFlagArg
     name: PRIMERS_FILEPATH
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --primer_name
   description: "Specify a single primer to analyze.  One can either\nspecify a single\
     \ primer that is listed in a primers\nfile (-P parameter) or  specify a sequence\
     \ with the -s\nparameter.  Primer name must end with a \"f\" or \"r\" to\ndesignate\
     \ orientation. [default: none]"
-  synonyms:
-  - -p
-  - --primer_name
   args: !SimpleFlagArg
     name: PRIMER_NAME
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --primer_sequence
   description: "Primer sequence if using the -p option.  Must be\nspecified if not\
     \ passing a primers file with the -P\noption.  If both -P and -p parameters are\
     \ passed, the\nsequence given with this option will be taken rather\nthan sequences\
     \ in the -P primers file. [default: none]"
-  synonyms:
-  - -s
-  - --primer_sequence
   args: !SimpleFlagArg
     name: PRIMER_SEQUENCE
-  optional: true
 - !Flag
-  description: "Specify output directory for hits files and primer\nsummary graphs.\
-    \ [default: .]"
+  optional: true
   synonyms:
   - -o
   - --output_dir
+  description: "Specify output directory for hits files and primer\nsummary graphs.\
+    \ [default: .]"
   args: !SimpleFlagArg
     name: OUTPUT_DIR
-  optional: true
 - !Flag
-  description: "Length of primer considered to be part of the 3'\nregion for the purpose\
-    \ of giving a weighted score for\nmismatches and/or gaps. [default: 5]"
+  optional: true
   synonyms:
   - -e
   - --three_prime_len
+  description: "Length of primer considered to be part of the 3'\nregion for the purpose\
+    \ of giving a weighted score for\nmismatches and/or gaps. [default: 5]"
   args: !SimpleFlagArg
     name: THREE_PRIME_LEN
-  optional: true
 - !Flag
-  description: "Sets penalty for mismatch in final base of 3' end of\nthe primer.\
-    \ [default: 3]"
+  optional: true
   synonyms:
   - -l
   - --last_base_mismatch
+  description: "Sets penalty for mismatch in final base of 3' end of\nthe primer.\
+    \ [default: 3]"
   args: !SimpleFlagArg
     name: LAST_BASE_MISMATCH
-  optional: true
 - !Flag
-  description: "Penalty for all 3' mismatches except final\nbase.[default: 1]"
+  optional: true
   synonyms:
   - -t
   - --three_prime_mismatch
+  description: "Penalty for all 3' mismatches except final\nbase.[default: 1]"
   args: !SimpleFlagArg
     name: THREE_PRIME_MISMATCH
-  optional: true
 - !Flag
-  description: "Penalty for all non-3' mismatches. [default: 0.4]"
+  optional: true
   synonyms:
   - -T
   - --non_three_prime_mismatch
+  description: "Penalty for all non-3' mismatches. [default: 0.4]"
   args: !SimpleFlagArg
     name: NON_THREE_PRIME_MISMATCH
-  optional: true
 - !Flag
-  description: "Penalty for gaps in the 3' region of the primer.\n[default: 3]"
+  optional: true
   synonyms:
   - -g
   - --three_prime_gap
+  description: "Penalty for gaps in the 3' region of the primer.\n[default: 3]"
   args: !SimpleFlagArg
     name: THREE_PRIME_GAP
-  optional: true
 - !Flag
-  description: "Penalty for non 3' gaps. [default: 1]"
+  optional: true
   synonyms:
   - -G
   - --non_three_prime_gap
+  description: "Penalty for non 3' gaps. [default: 1]"
   args: !SimpleFlagArg
     name: NON_THREE_PRIME_GAP
-  optional: true
 - !Flag
-  description: "Target fasta file(s) to score input primer(s) against.\nSeparate multiple\
-    \ files with a colon. [REQUIRED]\n"
+  optional: true
   synonyms:
   - -f
   - --fasta_seqs
+  description: "Target fasta file(s) to score input primer(s) against.\nSeparate multiple\
+    \ files with a colon. [REQUIRED]\n"
   args: !SimpleFlagArg
     name: FASTA_SEQS
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "Usage: analyze_primers.py [options] {-f/--fasta_seqs FASTA_SEQS}\n\n[]\
   \ indicates optional input (order unimportant)\n{} indicates required input (order\
   \ unimportant)\n\n\n\nThis module performs a local alignment for the input primer(s)\
@@ -206,3 +206,4 @@ help_text: "Usage: analyze_primers.py [options] {-f/--fasta_seqs FASTA_SEQS}\n\n
   \ a colon. [REQUIRED]\n"
 generated_using:
 - --help
+docker_image:

@@ -8,6 +8,9 @@ task Consambig {
     consambig \
       ~{if (name) then "-name" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name: "string     Name of the consensus sequence (Any string)"
   }

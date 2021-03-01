@@ -8,6 +8,9 @@ task WatchmedoOptions {
     watchmedo options_ \
       ~{watch_me_do}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     watch_me_do: ""
   }

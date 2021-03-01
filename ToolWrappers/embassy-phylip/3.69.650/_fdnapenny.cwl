@@ -3,42 +3,42 @@ id: _fdnapenny.cwl
 inputs:
 - id: in_weights
   doc: properties (no help text) properties value
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -weights
 - id: in_how_often
   doc: "integer    [100] How often to report, in trees (Any\ninteger value)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -howoften
 - id: in_how_many
   doc: "integer    [1000] How many groups of trees (Any integer\nvalue)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -howmany
 - id: in_out_gr_no
   doc: "integer    [0] Species number to use as outgroup\n(Integer 0 or more)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -outgrno
 - id: in_do_threshold
   doc: toggle     [N] Use threshold parsimony
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -dothreshold
 - id: in_print_data
   doc: boolean    [N] Print data at start of run
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -printdata
 - id: in_step_box
   doc: boolean    [N] Print out steps in each site
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -stepbox
 - id: in_an_cseq
   doc: boolean    [N] Print sequences at all nodes of tree
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -ancseq
 - id: in_alignments
@@ -55,6 +55,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - _fdnapenny

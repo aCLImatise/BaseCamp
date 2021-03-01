@@ -10,6 +10,9 @@ task MbfiltersitesFilteredFile {
       ~{mb_filter_sites} \
       ~{if defined(padding_bp) then ("--padding_bp " +  '"' + padding_bp + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     padding_bp: ""
     mb_filter_sites: ""

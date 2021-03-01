@@ -12,6 +12,9 @@ task FilterMafpl {
       ~{if defined(min_seq) then ("--min-seq " +  '"' + min_seq + '"') else ""} \
       ~{if defined(interval) then ("--interval " +  '"' + interval + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     species: ",species2,...     a comma separated list of the species which shall be kept in the filtered alignment (at least 2 species,\\nby default all species are kept)"
     min_seq: "only blocks that contain at list N sequences are taken (N=2 by default)"

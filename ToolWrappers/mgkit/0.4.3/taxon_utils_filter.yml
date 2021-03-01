@@ -4,32 +4,75 @@ command:
 - filter
 positional:
 - !Positional
-  description: ''
+  optional: true
   position: 0
   name: INPUT_FILE
-  optional: true
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 1
   name: OUTPUT_FILE
-  optional: true
+  description: ''
 named:
 - !Flag
-  description: "-p, --table\n-t, --taxonomy TEXT             Taxonomy file  [required]\n\
-    -i, --include-taxon-id INTEGER  Include only taxon_ids\n-in, --include-taxon-name\
-    \ TEXT  Include only taxon_names\n-e, --exclude-taxon-id INTEGER  Exclude taxon_ids\n\
-    -en, --exclude-taxon-name TEXT  Exclude taxon_names\n--progress              \
-    \        Shows Progress Bar\n--help                          Show this message\
-    \ and exit.\n"
+  optional: true
   synonyms:
   - -v
   - --verbose
-  args: !EmptyFlagArg {}
+  - -p
+  - --table
+  - -t
+  - --taxonomy
+  description: Taxonomy file  [required]
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
   optional: true
+  synonyms:
+  - -i
+  - --include-taxon-id
+  description: Include only taxon_ids
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -in
+  - --include-taxon-name
+  description: Include only taxon_names
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --exclude-taxon-id
+  description: Exclude taxon_ids
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -en
+  - --exclude-taxon-name
+  description: Exclude taxon_names
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --progress
+  description: Shows Progress Bar
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
 usage_flag:
 version_flag:
 help_text: "Usage: taxon-utils filter [OPTIONS] [INPUT_FILE] [OUTPUT_FILE]\n\n  Filter\
@@ -41,3 +84,4 @@ help_text: "Usage: taxon-utils filter [OPTIONS] [INPUT_FILE] [OUTPUT_FILE]\n\n  
   \  --help                          Show this message and exit.\n"
 generated_using:
 - --help
+docker_image:

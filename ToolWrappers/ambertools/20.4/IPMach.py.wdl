@@ -8,6 +8,9 @@ task IPMachpy {
     IPMach_py \
       ~{if defined(input_file_name) then ("-i " +  '"' + input_file_name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file_name: "Input file name"
   }

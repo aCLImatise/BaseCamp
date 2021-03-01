@@ -20,6 +20,9 @@ task SequenzautilsPileup2acgt {
       ~{if (no_start) then "--no-start" else ""} \
       ~{if defined(q_format) then ("--qformat " +  '"' + q_format + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     m_pile_up: "Name of the input mpileup (SAMtools) file. If the\\nfilename ends in .gz it will be opened in gzip mode.\\nIf the file name is - it will be read from STDIN."
     name_use_compression: "Name of the output file. To use gzip compression name\\nthe file ending in .gz. Default STDOUT."

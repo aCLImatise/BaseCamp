@@ -18,6 +18,9 @@ task DeepacvirGwpa {
       ~{fact_iv} \
       ~{f_enrichment}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     details_dot: "fragment            Fragment genomes for analysis."
     genome_map: "Generate a genome-wide phenotype potential map."

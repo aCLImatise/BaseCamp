@@ -4,6 +4,9 @@ task CactusMirrorAndOrientAlignments {
   command <<<
     cactus_mirrorAndOrientAlignments
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

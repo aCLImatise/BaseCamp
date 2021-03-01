@@ -1,0 +1,320 @@
+&id001 !Command
+command:
+- easel
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - easel
+  - downsample
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: m
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    description: ': sequence sampling: <infile> is file or stream of seqs'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -S
+    description: ': big sequence sample: <infile> is (seekable) seq file'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --seed
+    description: ': set random number generator seed  [0]'
+    args: !SimpleFlagArg
+      name: n
+  - !Flag
+    optional: true
+    synonyms:
+    - -options
+    description: ''
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    description: ': show brief help on version and usage'
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "easel downsample :: downsample <m> things from larger <infile> of n\
+    \ things\n\nUsage:\n  easel downsample [-options] <m> <infile>\n\nOptions:\n \
+    \ -h         : show brief help on version and usage\n  -s         : sequence sampling:\
+    \ <infile> is file or stream of seqs\n  -S         : big sequence sample: <infile>\
+    \ is (seekable) seq file\n  --seed <n> : set random number generator seed  [0]\n"
+  generated_using: &id002
+  - -h
+  docker_image: quay.io/biocontainers/easel:0.47--h516909a_0
+- !Command
+  command:
+  - easel
+  - alistat
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - '-1'
+    description: ': use tabular output, one line per alignment'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --dna
+    description: ": use DNA alphabet (don't autodetect)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --rna
+    description: ": use RNA alphabet (don't autodetect)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --amino
+    description: ": use protein alphabet (don't autodetect)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -options
+    description: ''
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    description: ': show brief help on version and usage'
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "easel alistat :: summary statistics for a multiple seq alignment file\n\
+    \nUsage:\n  easel alistat [-options] <msafile>\n\nOptions:\n  -h      : show brief\
+    \ help on version and usage\n  -1      : use tabular output, one line per alignment\n\
+    \  --dna   : use DNA alphabet (don't autodetect)\n  --rna   : use RNA alphabet\
+    \ (don't autodetect)\n  --amino : use protein alphabet (don't autodetect)\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/easel:0.47--h516909a_0
+- &id003 !Command
+  command:
+  - easel
+  - filter
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: ': send filtered output MSAs to file <f>, not stdout'
+    args: !SimpleFlagArg
+      name: f
+  - !Flag
+    optional: true
+    synonyms:
+    - --informat
+    description: ': specify the input MSA file is in format <s>'
+    args: !SimpleFlagArg
+      name: s
+  - !Flag
+    optional: true
+    synonyms:
+    - --outformat
+    description: ': write the filtered output MSA in format <s>'
+    args: !SimpleFlagArg
+      name: s
+  - !Flag
+    optional: true
+    synonyms:
+    - --dna
+    description: ": specify that input MSA is DNA (don't autodetect)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --rna
+    description: ':  ... that input MSA is RNA'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --amino
+    description: ':  ... that input MSA is protein'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --ignore-rf
+    description: ': ignore any RF line; always determine our own consensus'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --fragthresh
+    description: ': seq is fragment if aspan/alen < fragthresh  [0.5]'
+    args: !SimpleFlagArg
+      name: x
+  - !Flag
+    optional: true
+    synonyms:
+    - --symfrac
+    description: ': col is consensus if nres/(nres+ngap) >= symfrac  [0.5]'
+    args: !SimpleFlagArg
+      name: x
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-sampling
+    description: ': never use subsampling to determine consensus'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --nsamp
+    description: ': number of seqs to sample (if using sampling)  [10000]'
+    args: !SimpleFlagArg
+      name: n
+  - !Flag
+    optional: true
+    synonyms:
+    - --sampthresh
+    description: ': switch to using sampling when nseq > nsamp  [50000]'
+    args: !SimpleFlagArg
+      name: n
+  - !Flag
+    optional: true
+    synonyms:
+    - --maxfrag
+    description: ": if sample has > maxfrag fragments, don't use sample  [5000]"
+    args: !SimpleFlagArg
+      name: n
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    description: ': set random number seed to <n>  [42]'
+    args: !SimpleFlagArg
+      name: n
+  - !Flag
+    optional: true
+    synonyms:
+    - --conscover
+    description: ': keep seq whose alispan has better consensus coverage  [default]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --randorder
+    description: ':  ... or with random preference'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --origorder
+    description: ':  ... or prefer seq that comes first in order'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -options
+    description: ''
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - easel
+    - filter
+    - maxid
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -options
+      description: ''
+      args: !EmptyFlagArg {}
+    parent: *id003
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "Incorrect number of command line arguments.\nUsage:\n  easel filter\
+      \ [-options] <maxid> <msafile>\n\nTo see more help on available options, do\
+      \ `easel filter -h`\n\n"
+    generated_using: []
+    docker_image: quay.io/biocontainers/easel:0.47--h516909a_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    description: ': show brief help on version and usage'
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "easel filter :: remove seqs >= <maxid> fractional identity from MSA\n\
+    \nUsage:\n  easel filter [-options] <maxid> <msafile>\n\nOptions:\n  -h      \
+    \        : show brief help on version and usage\n  -o <f>          : send filtered\
+    \ output MSAs to file <f>, not stdout\n  --informat <s>  : specify the input MSA\
+    \ file is in format <s>\n  --outformat <s> : write the filtered output MSA in\
+    \ format <s>\n  --dna           : specify that input MSA is DNA (don't autodetect)\n\
+    \  --rna           :  ... that input MSA is RNA\n  --amino         :  ... that\
+    \ input MSA is protein\n\noptions for deriving consensus:\n  --ignore-rf     \
+    \ : ignore any RF line; always determine our own consensus\n  --fragthresh <x>\
+    \ : seq is fragment if aspan/alen < fragthresh  [0.5]\n  --symfrac <x>    : col\
+    \ is consensus if nres/(nres+ngap) >= symfrac  [0.5]\n\noptions for deriving consensus\
+    \ by sampling (on deep MSAs):\n  --no-sampling    : never use subsampling to determine\
+    \ consensus\n  --nsamp <n>      : number of seqs to sample (if using sampling)\
+    \  [10000]\n  --sampthresh <n> : switch to using sampling when nseq > nsamp  [50000]\n\
+    \  --maxfrag <n>    : if sample has > maxfrag fragments, don't use sample  [5000]\n\
+    \  -s <n>           : set random number seed to <n>  [42]\n\noptions for sequence\
+    \ preference:\n  --conscover : keep seq whose alispan has better consensus coverage\
+    \  [default]\n  --randorder :  ... or with random preference\n  --origorder :\
+    \  ... or prefer seq that comes first in order\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/easel:0.47--h516909a_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: ''
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: ''
+  args: !EmptyFlagArg {}
+help_text: "easel: little utilities for biological sequence analysis\nversion 0.47\
+  \ (Jul 2020): http://bioeasel.org/\n\nUsage:\n  easel -h                : show overall\
+  \ brief help summary\n  easel --version         : show version number\n  easel <cmd>\
+  \ -h          : show brief help for an Easel command\n  easel <cmd> [<args>...]\
+  \ : run an Easel command\n\navailable commands:\n  alistat      summary statistics\
+  \ for a multiple seq alignment file\n  downsample   downsample <m> things from larger\
+  \ <infile> of n things\n  filter       remove seqs >= <maxid> fractional identity\
+  \ from MSA\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/easel:0.47--h516909a_0

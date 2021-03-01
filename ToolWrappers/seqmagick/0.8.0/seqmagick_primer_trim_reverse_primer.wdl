@@ -12,6 +12,9 @@ task SeqmagickPrimertrimReversePrimer {
       ~{primer_trim} \
       ~{if (reverse_is_rev_comp) then "--reverse-is-revcomp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reverse_is_rev_comp: ""
     seq_magick: ""

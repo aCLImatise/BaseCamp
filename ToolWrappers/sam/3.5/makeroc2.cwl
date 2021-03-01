@@ -3,17 +3,17 @@ id: makeroc2.cwl
 inputs:
 - id: in_distfile
   doc: .dist    Score file to read (required).
-  type: File
+  type: File?
   inputBinding:
     prefix: -distfile
 - id: in_plotline
   doc: <num>  Mark false pos/neg curves at given threshold.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -plotline
 - id: in_option
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -option
 - id: in_run_name
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - makeroc2

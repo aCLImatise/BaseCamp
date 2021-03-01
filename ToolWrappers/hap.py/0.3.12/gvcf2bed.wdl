@@ -14,6 +14,9 @@ task Gvcf2bed {
       ~{if (arg_reference_fasta) then "-r" else ""} \
       ~{if (arg_optional_bed) then "-T" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file: "The input file"
     arg_output_file: "[ --output-file ] arg   The output file name (BED Format)."

@@ -3,17 +3,17 @@ id: phylorank_bl_optimal.cwl
 inputs:
 - id: in_min_dist
   doc: "minimum mean branch length value to evaluate (default:\n0.5)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --min_dist
 - id: in_max_dist
   doc: "maximum mean branch length value to evaluate (default:\n1.2)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --max_dist
 - id: in_step_size
   doc: "step size of mean branch length values (default:\n0.025)\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --step_size
 - id: in_input_tree
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - phylorank

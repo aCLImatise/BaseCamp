@@ -8,6 +8,9 @@ task SamtoolsIdxstats {
     samtools idxstats \
       ~{in_dot_bam}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_dot_bam: ""
   }

@@ -12,6 +12,9 @@ task PhyluceSnpFindSnpsInBedInterval {
       ~{if defined(snp) then ("--snp " +  '"' + snp + '"') else ""} \
       ~{if defined(the_output_file) then ("--output " +  '"' + the_output_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     uce: "The UCE BED file"
     snp: "The SNP intersection BED file"

@@ -3,7 +3,7 @@ id: calculate_ref_alt_counts.cwl
 inputs:
 - id: in_output
   doc: Path to the output file
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_input
@@ -14,23 +14,23 @@ inputs:
 - id: in_filepath__bam
   doc: "FILEPATH, --bam <name> FILEPATH\nName for the library and the path to its\
     \ bam file"
-  type: File
+  type: File?
   inputBinding:
     prefix: -b
 - id: in_reference
   doc: Path to the Input reference genome fasta file
-  type: File
+  type: File?
   inputBinding:
     prefix: --reference
 - id: in_event_size
   doc: "The maximum size of a indel event to calculate the\nref/alt counts"
-  type: long
+  type: long?
   inputBinding:
     prefix: --event_size
 - id: in_buffer
   doc: "The amount of overhang (accounting for repeats) a read\nmust have in order\
     \ to be considered\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --buffer
 outputs:
@@ -39,9 +39,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: Path to the output file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - calculate_ref_alt_counts

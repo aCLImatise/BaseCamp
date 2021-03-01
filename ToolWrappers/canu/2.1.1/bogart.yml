@@ -1,0 +1,303 @@
+!Command
+command:
+- bogart
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: overlapScoring
+  description: bestEdges
+- !Positional
+  optional: false
+  position: 1
+  name: bestOverlaps
+  description: errorProfiles
+- !Positional
+  optional: false
+  position: 2
+  name: optimizePositions
+  description: chunkGraph
+- !Positional
+  optional: false
+  position: 3
+  name: buildUnitig
+  description: placeUnplaced
+- !Positional
+  optional: false
+  position: 4
+  name: orphans
+  description: splitDiscontinuous
+- !Positional
+  optional: false
+  position: 5
+  name: intermediateTigs
+  description: setParentAndHang
+- !Positional
+  optional: false
+  position: 6
+  name: stderr
+  description: Unknown option '--help'.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  description: Mandatory path to an existing seqStore.
+  args: !SimpleFlagArg
+    name: seqPath
+- !Flag
+  optional: true
+  synonyms:
+  - -O
+  description: Mandatory path to an existing ovlStore.
+  args: !SimpleFlagArg
+    name: ovlPath
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  description: Mandatory path to an output tigStore (can exist or not).
+  args: !SimpleFlagArg
+    name: tigPath
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: Mandatory prefix for the output files.
+  args: !SimpleFlagArg
+    name: outPrefix
+- !Flag
+  optional: true
+  synonyms:
+  - -threads
+  description: Use at most T compute threads.
+  args: !SimpleFlagArg
+    name: T
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  description: Use at most 'gb' gigabytes of memory.
+  args: !SimpleFlagArg
+    name: gb
+- !Flag
+  optional: true
+  synonyms:
+  - -gs
+  description: Genome size in bases.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -mr
+  description: Force reads below 'len' bases to be singletons.
+  args: !SimpleFlagArg
+    name: len
+- !Flag
+  optional: true
+  synonyms:
+  - -mo
+  description: Ignore overlaps shorter than 'len' bases.
+  args: !SimpleFlagArg
+    name: len
+- !Flag
+  optional: true
+  synonyms:
+  - -mi
+  description: Create unitigs from contig intersections of at least 'len' bases.
+  args: !SimpleFlagArg
+    name: len
+- !Flag
+  optional: true
+  synonyms:
+  - -mp
+  description: Create unitigs from contig intersections with at most 'num' placements.
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -nofilter
+  description: "[coverageGap],[highError],[lopsided],[spur]\nDisable filtering of:\n\
+    coverageGap - reads that have a suspicious lack of overlaps in the middle\nhighError\
+    \   - overlaps that have error rates well outside the observed\nlopsided    -\
+    \ reads that have unusually asymmetric best overlaps\nspur        - reads that\
+    \ have no overlaps on one end\nThe value supplied to -nofilter must be one word,\
+    \ case, order and punctuation\ndo not matter.  The following examples behave the\
+    \ same:\n'-nofilter coverageGap,higherror'\n'-nofilter coveragegap-and-HIGHERROR'"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -eg
+  description: Do not use overlaps more than F fraction error when when finding initial
+    best edges.
+  args: !SimpleFlagArg
+    name: F
+- !Flag
+  optional: true
+  synonyms:
+  - -eM
+  description: Do not load overlaps more then F fraction error (useful only for -save).
+  args: !SimpleFlagArg
+    name: F
+- !Flag
+  optional: true
+  synonyms:
+  - -ep
+  description: "When deciding which overlaps to use, fall back to percentile P (0.0-1.0)\
+    \ if\nthe median error is 0.0, as commonly found in PacBio HiFi reads.  Default:\
+    \ 0.9"
+  args: !SimpleFlagArg
+    name: P
+- !Flag
+  optional: true
+  synonyms:
+  - -ca
+  description: "Split a contig if there is an alternate path from an overlap of at\
+    \ least L bases.\nDefault: 2100."
+  args: !SimpleFlagArg
+    name: L
+- !Flag
+  optional: true
+  synonyms:
+  - -cp
+  description: "Split a contig if there is an alternate path from an overlap at most\
+    \ P percent\ndifferent from the length of the best overlap.  Default: 200."
+  args: !SimpleFlagArg
+    name: P
+- !Flag
+  optional: true
+  synonyms:
+  - -dg
+  description: "Use overlaps upto D standard deviations from the mean when building\
+    \ the best\noverlap graph.  Default 6.0."
+  args: !SimpleFlagArg
+    name: D
+- !Flag
+  optional: true
+  synonyms:
+  - -db
+  description: Like -dg, but for merging bubbles into primary contigs.  Default 6.0.
+  args: !SimpleFlagArg
+    name: D
+- !Flag
+  optional: true
+  synonyms:
+  - -dr
+  description: Like -dg, but for breaking repeats.  Default 3.0.
+  args: !SimpleFlagArg
+    name: D
+- !Flag
+  optional: true
+  synonyms:
+  - -covgaptype
+  description: 'Set covgap pattern: none, chimer, uncovered, deadend.'
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - -covgapolap
+  description: Require overlaps to overlap by at least n bases.
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - -lopsided
+  description: "n      Set how lopsided reads are detected and/or treated.\nm = off\
+    \        - don't detect at all (omit n parameter)\nm = noseed n   - detect, n%\
+    \ difference, allow edges to but don't seed overlaps with them\nm = nobest n \
+    \  - detect, n% difference, exclude from bog graph completely"
+  args: !SimpleFlagArg
+    name: m
+- !Flag
+  optional: true
+  synonyms:
+  - -minolappercent
+  description: Set a minimum overlap length, per overlap, as f*min(readAlen, readBlen)
+  args: !SimpleFlagArg
+    name: f
+- !Flag
+  optional: true
+  synonyms:
+  - -minreadsbest
+  description: "Automatically relax overlap quality requirements if there are fewer\n\
+    than fraction f (0.0-1.0) reads that have two best edges.  Default: 0.9"
+  args: !SimpleFlagArg
+    name: f
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  description: enable logging/debugging for a specific component.
+  args: !SimpleFlagArg
+    name: name
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: disable logging/debugging for a specific component.
+  args: !SimpleFlagArg
+    name: name
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "usage: bogart -S seqPath -O ovlPath -T tigPath -o outPrefix ...\n\nMandatory\
+  \ Parameters:\n\n  -S seqPath     Mandatory path to an existing seqStore.\n  -O\
+  \ ovlPath     Mandatory path to an existing ovlStore.\n  -T tigPath     Mandatory\
+  \ path to an output tigStore (can exist or not).\n  -o outPrefix   Mandatory prefix\
+  \ for the output files.\n\nProcess Options:\n\n  -threads T     Use at most T compute\
+  \ threads.\n  -M gb          Use at most 'gb' gigabytes of memory.\n\nAlgorithm\
+  \ Options:\n\n  -gs            Genome size in bases.\n\n  -mr len        Force reads\
+  \ below 'len' bases to be singletons.\n  -mo len        Ignore overlaps shorter\
+  \ than 'len' bases.\n\n  -mi len        Create unitigs from contig intersections\
+  \ of at least 'len' bases.\n  -mp num        Create unitigs from contig intersections\
+  \ with at most 'num' placements.\n\n  -nofilter [coverageGap],[highError],[lopsided],[spur]\n\
+  \                 Disable filtering of:\n                   coverageGap - reads\
+  \ that have a suspicious lack of overlaps in the middle\n                   highError\
+  \   - overlaps that have error rates well outside the observed\n               \
+  \    lopsided    - reads that have unusually asymmetric best overlaps\n        \
+  \           spur        - reads that have no overlaps on one end\n             \
+  \    The value supplied to -nofilter must be one word, case, order and punctuation\n\
+  \                 do not matter.  The following examples behave the same:\n    \
+  \                '-nofilter coverageGap,higherror'\n                    '-nofilter\
+  \ coveragegap-and-HIGHERROR'\n\n  -eg F          Do not use overlaps more than F\
+  \ fraction error when when finding initial best edges.\n  -eM F          Do not\
+  \ load overlaps more then F fraction error (useful only for -save).\n\n  -ep P \
+  \         When deciding which overlaps to use, fall back to percentile P (0.0-1.0)\
+  \ if\n                 the median error is 0.0, as commonly found in PacBio HiFi\
+  \ reads.  Default: 0.9\n\n  -ca L          Split a contig if there is an alternate\
+  \ path from an overlap of at least L bases.\n                 Default: 2100.\n \
+  \ -cp P          Split a contig if there is an alternate path from an overlap at\
+  \ most P percent\n                 different from the length of the best overlap.\
+  \  Default: 200.\n\n  -dg D          Use overlaps upto D standard deviations from\
+  \ the mean when building the best\n                 overlap graph.  Default 6.0.\n\
+  \  -db D          Like -dg, but for merging bubbles into primary contigs.  Default\
+  \ 6.0.\n  -dr D          Like -dg, but for breaking repeats.  Default 3.0.\n\nSecret\
+  \ Algorithmic Options:\n\n  -covgaptype n      Set covgap pattern: none, chimer,\
+  \ uncovered, deadend.\n  -covgapolap n      Require overlaps to overlap by at least\
+  \ n bases.\n  -lopsided m n      Set how lopsided reads are detected and/or treated.\n\
+  \                       m = off        - don't detect at all (omit n parameter)\n\
+  \                       m = noseed n   - detect, n% difference, allow edges to but\
+  \ don't seed overlaps with them\n                       m = nobest n   - detect,\
+  \ n% difference, exclude from bog graph completely\n  -minolappercent f  Set a minimum\
+  \ overlap length, per overlap, as f*min(readAlen, readBlen)\n  -minreadsbest f \
+  \   Automatically relax overlap quality requirements if there are fewer\n      \
+  \               than fraction f (0.0-1.0) reads that have two best edges.  Default:\
+  \ 0.9\n\nDebugging and Logging\n\n  -D <name>  enable logging/debugging for a specific\
+  \ component.\n  -d <name>  disable logging/debugging for a specific component.\n\
+  \               overlapScoring\n               bestEdges\n               bestOverlaps\n\
+  \               errorProfiles\n               optimizePositions\n              \
+  \ chunkGraph\n               buildUnitig\n               placeUnplaced\n       \
+  \        orphans\n               splitDiscontinuous\n               intermediateTigs\n\
+  \               setParentAndHang\n               stderr\n\nUnknown option '--help'.\n\
+  Genome size (-gs option) must be supplied\nNo output prefix name (-o option) supplied.\n\
+  No sequence store (-S option) supplied.\nNo overlap store (-O option) supplied.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/canu:2.1.1--he1b5a44_1

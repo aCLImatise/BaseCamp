@@ -1,0 +1,196 @@
+!Command
+command:
+- rustynuc
+positional:
+- !Positional
+  optional: true
+  position: 0
+  name: FLAGS
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --all
+  description: Whether to process and print information for every position in the
+    BAM file
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-overlapping
+  description: Do not count overlapping mates when calculating total depth
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --no-qval
+  description: Skip calculating qvalue
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --pseudocount
+  description: Whether to use pseudocounts (increments all counts by 1) when calculating
+    statistics
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --skip-fishers
+  description: Skip applying Fisher's Exact Filter on VCF
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbosity
+  description: Determines verbosity of the processing, can be specified multiple times
+    -vvv
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --with-track-line
+  description: Include track line (for correct visualization with IGV)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --af-both-pass
+  description: "AF on both the ff and fr at which point a call in the VCF will excluded\n\
+    from the OxoAF filter [default: 0.1]"
+  args: !SimpleFlagArg
+    name: af-both-pass
+- !Flag
+  optional: true
+  synonyms:
+  - --af-either-pass
+  description: "AF above this cutoff in EITHER read orientation will be excluded from\
+    \ OxoAF\nfilter [default: 0.25]"
+  args: !SimpleFlagArg
+    name: af-either-pass
+- !Flag
+  optional: true
+  synonyms:
+  - --alpha
+  description: 'FDR threshold [default: 0.2]'
+  args: !SimpleFlagArg
+    name: alpha
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --bcf
+  description: BCF/VCF for variants called on the supplied alignment file
+  args: !SimpleFlagArg
+    name: bcf
+- !Flag
+  optional: true
+  synonyms:
+  - --bed
+  description: A BED file to restrict analysis to specific regions
+  args: !SimpleFlagArg
+    name: bed
+- !Flag
+  optional: true
+  synonyms:
+  - --fishers-sig
+  description: "Significance threshold for Fisher's test [default: 0.05]"
+  args: !SimpleFlagArg
+    name: fishers-sig
+- !Flag
+  optional: true
+  synonyms:
+  - --max-depth
+  description: 'Maximum pileup depth to use [default: 1000]'
+  args: !SimpleFlagArg
+    name: max-depth
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --min-reads
+  description: "Minimum number of aligned reads in ff or fr orientation for a position\
+    \ to\nbe considered [default: 4]"
+  args: !SimpleFlagArg
+    name: min-reads
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quality
+  description: 'Minimum base quality to consider [default: 20]'
+  args: !SimpleFlagArg
+    name: quality
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reference
+  description: "Optional reference which will be used to determine sequence context\
+    \ and\ntype of change"
+  args: !SimpleFlagArg
+    name: reference
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: 'Number of threads [default: 4]'
+  args: !SimpleFlagArg
+    name: threads
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Prints help information
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Prints version information
+  args: !EmptyFlagArg {}
+help_text: "rustynuc 0.3.0\n\nUSAGE:\n    rustynuc [FLAGS] [OPTIONS] <bam>\n\nFLAGS:\n\
+  \    -a, --all                Whether to process and print information for every\
+  \ position in the BAM file\n    -h, --help               Prints help information\n\
+  \        --no-overlapping     Do not count overlapping mates when calculating total\
+  \ depth\n    -n, --no-qval            Skip calculating qvalue\n    -p, --pseudocount\
+  \        Whether to use pseudocounts (increments all counts by 1) when calculating\
+  \ statistics\n        --skip-fishers       Skip applying Fisher's Exact Filter on\
+  \ VCF\n    -V, --version            Prints version information\n    -v, --verbosity\
+  \          Determines verbosity of the processing, can be specified multiple times\
+  \ -vvv\n    -w, --with-track-line    Include track line (for correct visualization\
+  \ with IGV)\n\nOPTIONS:\n        --af-both-pass <af-both-pass>        AF on both\
+  \ the ff and fr at which point a call in the VCF will excluded\n               \
+  \                              from the OxoAF filter [default: 0.1]\n        --af-either-pass\
+  \ <af-either-pass>    AF above this cutoff in EITHER read orientation will be excluded\
+  \ from OxoAF\n                                             filter [default: 0.25]\n\
+  \        --alpha <alpha>                      FDR threshold [default: 0.2]\n   \
+  \ -b, --bcf <bcf>                          BCF/VCF for variants called on the supplied\
+  \ alignment file\n        --bed <bed>                          A BED file to restrict\
+  \ analysis to specific regions\n        --fishers-sig <fishers-sig>          Significance\
+  \ threshold for Fisher's test [default: 0.05]\n        --max-depth <max-depth> \
+  \             Maximum pileup depth to use [default: 1000]\n    -m, --min-reads <min-reads>\
+  \              Minimum number of aligned reads in ff or fr orientation for a position\
+  \ to\n                                             be considered [default: 4]\n\
+  \    -q, --quality <quality>                  Minimum base quality to consider [default:\
+  \ 20]\n    -r, --reference <reference>              Optional reference which will\
+  \ be used to determine sequence context and\n                                  \
+  \           type of change\n    -t, --threads <threads>                  Number\
+  \ of threads [default: 4]\n\nARGS:\n    <bam>    Alignments to investigate for possible\
+  \ 8-oxoG damage\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/rustynuc:0.3.0--hed695b0_0

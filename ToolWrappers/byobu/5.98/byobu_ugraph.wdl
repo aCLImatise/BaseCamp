@@ -22,6 +22,9 @@ task Byobuugraph {
       ~{if defined(theme_use_defaultvbars) then ("-t " +  '"' + theme_use_defaultvbars + '"') else ""} \
       ~{if defined(maximum_value_default) then ("-x " +  '"' + maximum_value_default + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_read_points: ": File to read data points from.\\n(only required if no command specified)."
     minimum_value_default: ": Minimum value (default=0)."

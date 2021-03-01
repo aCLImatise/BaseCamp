@@ -16,6 +16,9 @@ task Sreport {
       ~{if defined(type_report_generated) then ("-t " +  '"' + type_report_generated + '"') else ""} \
       ~{if defined(file_extension_mandatory) then ("-o " +  '"' + file_extension_mandatory + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     package_version: "package version."
     help_dialog: "help dialog."

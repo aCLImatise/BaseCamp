@@ -3,17 +3,17 @@ id: abyss_longseqdist.cwl
 inputs:
 - id: in_km_er
   doc: length of a k-mer
-  type: long
+  type: long?
   inputBinding:
     prefix: --kmer
 - id: in_min_gap
   doc: minimum scaffold gap length to output [200]
-  type: long
+  type: long?
   inputBinding:
     prefix: --min-gap
 - id: in_verbose
   doc: display verbose output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_sam
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - abyss-longseqdist

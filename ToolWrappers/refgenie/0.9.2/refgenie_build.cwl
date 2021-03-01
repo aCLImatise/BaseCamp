@@ -4,39 +4,39 @@ inputs:
 - id: in_genome_config
   doc: "Path to local genome configuration file. Optional if\nREFGENIE environment\
     \ variable is set."
-  type: File
+  type: File?
   inputBinding:
     prefix: --genome-config
 - id: in_recover
   doc: Overwrite locks to recover from previous failed run
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --recover
 - id: in_config
   doc: "Pipeline configuration file (YAML). Relative paths are\nwith respect to the\
     \ pipeline script."
-  type: File
+  type: File?
   inputBinding:
     prefix: --config
 - id: in_new_start
   doc: Overwrite all results to start a fresh run
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --new-start
 - id: in_tag_description
   doc: "Add tag level description (e.g. built with version\n0.3.2)."
-  type: double
+  type: double?
   inputBinding:
     prefix: --tag-description
 - id: in_genome_description
   doc: "Add genome level description (e.g. The mouse\nmitochondrial genome, released\
     \ in Dec 2013)."
-  type: long
+  type: long?
   inputBinding:
     prefix: --genome-description
 - id: in_docker
   doc: Run all commands in the refgenie docker container.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --docker
 - id: in_assets
@@ -63,22 +63,22 @@ inputs:
 - id: in_out_folder
   doc: "Override the default path to genomes folder, which is\nthe genome_folder attribute\
     \ in the genome\nconfiguration file."
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --outfolder
 - id: in_requirements
   doc: "Show the build requirements for the specified asset\nand exit."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --requirements
 - id: in_recipe
   doc: Provide a recipe to use.
-  type: string
+  type: string?
   inputBinding:
     prefix: --recipe
 - id: in_genome
   doc: "Reference assembly ID, e.g. mm10.\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --genome
 - id: in_asset_registry_paths
@@ -94,9 +94,10 @@ outputs:
 - id: out_out_folder
   doc: "Override the default path to genomes folder, which is\nthe genome_folder attribute\
     \ in the genome\nconfiguration file."
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_out_folder)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - refgenie

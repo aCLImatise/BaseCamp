@@ -18,6 +18,9 @@ task Bam2gtfpy {
       ~{bam} \
       ~{gtf}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     script: ""
     to: ""

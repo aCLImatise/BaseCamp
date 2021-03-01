@@ -3,22 +3,22 @@ id: ssu_cmfetch.cwl
 inputs:
 - id: in_second_cmdline_arg
   doc: ': second cmdline arg is a file of names to retrieve'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -f
-- id: in_output_cm_file_f
+- id: in_output_cm_file_stdout
   doc: ': output CM to file <f> instead of stdout'
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_output_cm_file_named
   doc: ': output CM to file named <key>'
-  type: File
+  type: File?
   inputBinding:
     prefix: -O
 - id: in_index
   doc: ': index the <cmfile>, creating <cmfile>.ssi'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --index
 - id: in_cm_file
@@ -40,16 +40,17 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_output_cm_file_f
+- id: out_output_cm_file_stdout
   doc: ': output CM to file <f> instead of stdout'
-  type: File
+  type: File?
   outputBinding:
-    glob: $(inputs.in_output_cm_file_f)
+    glob: $(inputs.in_output_cm_file_stdout)
 - id: out_output_cm_file_named
   doc: ': output CM to file named <key>'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_cm_file_named)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - ssu-cmfetch

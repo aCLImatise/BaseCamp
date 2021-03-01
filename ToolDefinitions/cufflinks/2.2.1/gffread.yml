@@ -3,249 +3,250 @@ command:
 - gffread
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: input_gff
-  optional: false
+  description: ''
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - -g
   description: "full path to a multi-fasta file with the genomic sequences\nfor all\
     \ input mappings, OR a directory with single-fasta files\n(one per genomic sequence,\
     \ with file names matching sequence names)"
-  synonyms:
-  - -g
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -s
   description: "<seq_info.fsize> is a tab-delimited file providing this info\nfor\
     \ each of the mapped sequences:\n<seq-name> <seq-length> <seq-description>\n(useful\
     \ for -A option with mRNA/EST/protein mappings)"
-  synonyms:
-  - -s
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: discard transcripts having an intron larger than <maxintron>
+  optional: true
   synonyms:
   - -i
+  description: discard transcripts having an intron larger than <maxintron>
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "only show transcripts overlapping coordinate range <start>..<end>\n\
-    (on chromosome/contig <chr>, strand <strand> if provided)"
+  optional: true
   synonyms:
   - -r
+  description: "only show transcripts overlapping coordinate range <start>..<end>\n\
+    (on chromosome/contig <chr>, strand <strand> if provided)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "for -r option, discard all transcripts that are not fully\ncontained\
-    \ within the given range"
+  optional: true
   synonyms:
   - -R
+  description: "for -r option, discard all transcripts that are not fully\ncontained\
+    \ within the given range"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: discard single-exon transcripts
+  optional: true
   synonyms:
   - -U
+  description: discard single-exon transcripts
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'coding only: discard mRNAs that have no CDS feature'
+  optional: true
   synonyms:
   - -C
+  description: 'coding only: discard mRNAs that have no CDS feature'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: full GFF attribute preservation (all attributes are shown)
+  optional: true
   synonyms:
   - -F
+  description: full GFF attribute preservation (all attributes are shown)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "only parse additional exon attributes from the first exon\nand move\
-    \ them to the mRNA level (useful for GTF input)"
+  optional: true
   synonyms:
   - -G
+  description: "only parse additional exon attributes from the first exon\nand move\
+    \ them to the mRNA level (useful for GTF input)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "use the description field from <seq_info.fsize> and add it\nas the\
-    \ value for a 'descr' attribute to the GFF record"
+  optional: true
   synonyms:
   - -A
+  description: "use the description field from <seq_info.fsize> and add it\nas the\
+    \ value for a 'descr' attribute to the GFF record"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "process also non-transcript GFF records (by default non-transcript\n\
-    records are ignored)"
+  optional: true
   synonyms:
   - -O
+  description: "process also non-transcript GFF records (by default non-transcript\n\
+    records are ignored)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: discard any mRNAs with CDS having in-frame stop codons
+  optional: true
   synonyms:
   - -V
+  description: discard any mRNAs with CDS having in-frame stop codons
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "for -V option, check and adjust the starting CDS phase\nif the original\
-    \ phase leads to a translation with an\nin-frame stop codon"
+  optional: true
   synonyms:
   - -H
+  description: "for -V option, check and adjust the starting CDS phase\nif the original\
+    \ phase leads to a translation with an\nin-frame stop codon"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "for -V option, single-exon transcripts are also checked on the\nopposite\
-    \ strand"
+  optional: true
   synonyms:
   - -B
+  description: "for -V option, single-exon transcripts are also checked on the\nopposite\
+    \ strand"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "discard multi-exon mRNAs that have any intron with a non-canonical\n\
-    splice site consensus (i.e. not GT-AG, GC-AG or AT-AC)"
+  optional: true
   synonyms:
   - -N
+  description: "discard multi-exon mRNAs that have any intron with a non-canonical\n\
+    splice site consensus (i.e. not GT-AG, GC-AG or AT-AC)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -J
   description: "discard any mRNAs that either lack initial START codon\nor the terminal\
     \ STOP codon, or have an in-frame stop codon\n(only print mRNAs with a fulll,\
     \ valid CDS)"
-  synonyms:
-  - -J
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ": filter out records matching the 'pseudo' keyword"
+  optional: true
   synonyms:
   - --no-pseudo
+  description: ": filter out records matching the 'pseudo' keyword"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -M
+  - --merge
   description: ": cluster the input transcripts into loci, collapsing matching\ntranscripts\
     \ (those with the same exact introns and fully contained)"
-  synonyms:
-  - -M/--merge
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ': for -M option, write collapsing info to file <dupinfo>'
+  optional: true
   synonyms:
   - -d
+  description: ': for -M option, write collapsing info to file <dupinfo>'
   args: !SimpleFlagArg
     name: dupinfo
-  optional: true
 - !Flag
-  description: ': same as --merge but without collapsing matching transcripts'
+  optional: true
   synonyms:
   - --cluster-only
+  description: ': same as --merge but without collapsing matching transcripts'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "for -M option: also collapse shorter, fully contained transcripts\n\
-    with fewer introns than the container"
+  optional: true
   synonyms:
   - -K
+  description: "for -M option: also collapse shorter, fully contained transcripts\n\
+    with fewer introns than the container"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -Q
   description: "for -M option, remove the containment restriction:\n(multi-exon transcripts\
     \ will be collapsed if just their introns match,\nwhile single-exon transcripts\
     \ can partially overlap (80%))"
-  synonyms:
-  - -Q
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ": make sure that the lowest level GFF features are printed as\n\"\
-    exon\" features"
+  optional: true
   synonyms:
   - --force-exons
+  description: ": make sure that the lowest level GFF features are printed as\n\"\
+    exon\" features"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "expose (warn about) duplicate transcript IDs and other potential\n\
-    problems with the given GFF/GTF records"
+  optional: true
   synonyms:
   - -E
+  description: "expose (warn about) duplicate transcript IDs and other potential\n\
+    problems with the given GFF/GTF records"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: decode url encoded characters within attributes
+  optional: true
   synonyms:
   - -D
+  description: decode url encoded characters within attributes
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: merge close exons into a single exon (for intron size<4)
+  optional: true
   synonyms:
   - -Z
+  description: merge close exons into a single exon (for intron size<4)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: write a fasta file with spliced exons for each GFF transcript
+  optional: true
   synonyms:
   - -w
+  description: write a fasta file with spliced exons for each GFF transcript
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: write a fasta file with spliced CDS for each GFF transcript
+  optional: true
   synonyms:
   - -x
+  description: write a fasta file with spliced CDS for each GFF transcript
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "for -w and -x options, also write for each fasta record the exon\n\
-    coordinates projected onto the spliced sequence"
+  optional: true
   synonyms:
   - -W
+  description: "for -w and -x options, also write for each fasta record the exon\n\
+    coordinates projected onto the spliced sequence"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: write a protein fasta file with the translation of CDS for each record
+  optional: true
   synonyms:
   - -y
+  description: write a protein fasta file with the translation of CDS for each record
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Ensembl GTF to GFF3 conversion (implies -F; should be used with -m)
+  optional: true
   synonyms:
   - -L
+  description: Ensembl GTF to GFF3 conversion (implies -F; should be used with -m)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -m
   description: "<chr_replace> is a reference (genomic) sequence replacement table\
     \ with\nthis format:\n<original_ref_ID> <new_ref_ID>\nGFF records on reference\
     \ sequences that are not found among the\n<original_ref_ID> entries in this file\
     \ will be filtered out"
-  synonyms:
-  - -m
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "the \"filtered\" GFF records will be written to <outfile.gff>\n(use\
-    \ -o- for printing to stdout)"
+  optional: true
   synonyms:
   - -o
+  description: "the \"filtered\" GFF records will be written to <outfile.gff>\n(use\
+    \ -o- for printing to stdout)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: use <trackname> in the second column of each GFF output line
+  optional: true
   synonyms:
   - -t
+  description: use <trackname> in the second column of each GFF output line
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: will output GTF format instead of GFF3
+  optional: true
   synonyms:
   - -T
   - -o
+  description: will output GTF format instead of GFF3
   args: !SimpleFlagArg
     name: option
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -307,3 +308,4 @@ help_text: "Usage:\ngffread <input_gff> [-g <genomic_seqs_fasta> | <dir>][-s <se
   \ format instead of GFF3\n "
 generated_using:
 - --help
+docker_image:

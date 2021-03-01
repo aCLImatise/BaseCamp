@@ -22,6 +22,9 @@ task MedpyGraphcutLabelpy {
       ~{if (display_more_information) then "-v" else ""} \
       ~{if (display_debug_information) then "-d" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     boundary: "Depending on the selected term, an additional"
     set_flag_override: "Set this flag to silently override files that exist."

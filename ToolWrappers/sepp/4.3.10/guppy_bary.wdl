@@ -28,6 +28,9 @@ task GuppyBary {
       ~{if (node_numbers) then "--node-numbers" else ""} \
       ~{if (help) then "--help" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference_package_path: "Reference package path."
     point_mass: "Treat every pquery as a point mass concentrated on the highest-weight placement."

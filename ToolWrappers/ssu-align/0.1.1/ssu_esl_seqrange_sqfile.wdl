@@ -10,6 +10,9 @@ task SsueslseqrangeSqfile {
       ~{proc_idx} \
       ~{nproc}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     proc_idx: ""
     nproc: ""

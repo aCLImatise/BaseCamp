@@ -4,7 +4,7 @@ task Mcomp {
   input {
     String? email
     Boolean? arg_specify_names
-    Boolean? arg__ratiosfiles
+    Boolean? arg_separated_option
     Boolean? arg_name_labels
     Directory? output_dir
     Directory? web_output_dir
@@ -37,7 +37,7 @@ task Mcomp {
     mcomp \
       ~{if defined(email) then ("--email " +  '"' + email + '"') else ""} \
       ~{if (arg_specify_names) then "-r" else ""} \
-      ~{if (arg__ratiosfiles) then "-m" else ""} \
+      ~{if (arg_separated_option) then "-m" else ""} \
       ~{if (arg_name_labels) then "-l" else ""} \
       ~{if defined(output_dir) then ("--outputDir " +  '"' + output_dir + '"') else ""} \
       ~{if defined(web_output_dir) then ("--webOutputDir " +  '"' + web_output_dir + '"') else ""} \
@@ -66,10 +66,13 @@ task Mcomp {
       ~{if defined(max_dist_cons_dmcs) then ("--maxDistConsDmcs " +  '"' + max_dist_cons_dmcs + '"') else ""} \
       ~{if (arg_supply_bed) then "-f" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     email: "Specify email;"
     arg_specify_names: "[ --ratiosFiles ] arg          Specify the names of ratio files from\\nmethCall. Multiple lane files can be\\nseparated by , to be combined into a single\\ntrack; example: -r sample1 -r sample2 -r\\ns_r1,s_r2,s_r3;"
-    arg__ratiosfiles: "[ --mergedRatiosFiles ] arg    If --ratiosFiles is ',' separated, then\\nthis option must be set;"
+    arg_separated_option: "[ --mergedRatiosFiles ] arg    If --ratiosFiles is ',' separated, then\\nthis option must be set;"
     arg_name_labels: "[ --labels ] arg               Name labels for samples, defaut 0, 1, ...;"
     output_dir: "Specify the name of the output directory;"
     web_output_dir: "Specify the name of the web-accessible\\noutput directory for UCSC Genome Browser\\ntracks;"

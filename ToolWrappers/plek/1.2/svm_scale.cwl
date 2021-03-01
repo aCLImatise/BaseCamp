@@ -1,29 +1,29 @@
 class: CommandLineTool
 id: svm_scale.cwl
 inputs:
-- id: in_scaling_lower_default
+- id: in_scaling_lower_limit_default
   doc: ': x scaling lower limit (default -1)'
-  type: long
+  type: long?
   inputBinding:
     prefix: -l
-- id: in_scaling_upper_limit
+- id: in_scaling_upper_limit_default
   doc: ': x scaling upper limit (default +1)'
-  type: long
+  type: long?
   inputBinding:
     prefix: -u
-- id: in_y_scaling_limits
+- id: in_scaling_limits_default
   doc: 'y_upper : y scaling limits (default: no y scaling)'
-  type: string
+  type: string?
   inputBinding:
     prefix: -y
 - id: in_save_scaling_parameters
   doc: ': save scaling parameters to save_filename'
-  type: File
+  type: File?
   inputBinding:
     prefix: -s
 - id: in_restore_scaling_parameters
   doc: ': restore scaling parameters from restore_filename'
-  type: File
+  type: File?
   inputBinding:
     prefix: -r
 - id: in_data_filename
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - svm-scale

@@ -14,6 +14,9 @@ task Splitsamsh {
       ~{minus_output} \
       ~{unmapped_output}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     var_input: ""
     plus_output: ""

@@ -16,6 +16,9 @@ task NebulizerSearchToolshed {
       ~{if defined(toolshed) then ("--toolshed " +  '"' + toolshed + '"') else ""} \
       ~{if defined(galaxy) then ("--galaxy " +  '"' + galaxy + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     toolshed: "specify a toolshed URL to search, or 'main' (the main\\nGalaxy toolshed, the default) or 'test' (the test\\nGalaxy toolshed)"
     galaxy: "check if tool repositories are installed in GALAXY"

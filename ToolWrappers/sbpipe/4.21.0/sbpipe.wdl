@@ -28,6 +28,9 @@ task Sbpipe {
       ~{if defined(log_level) then ("--log-level " +  '"' + log_level + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     create_project: "create a project structure"
     simulate: "run time course simulations"

@@ -32,6 +32,9 @@ task PathoscopeLIB {
       ~{if defined(outdir) then ("-outDir " +  '"' + outdir + '"') else ""} \
       ~{if defined(out_prefix) then ("-outPrefix " +  '"' + out_prefix + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genome_file: "Specify reference genome(Download\\nftp://ftp.ncbi.nih.gov/blast/db/FASTA/nt.gz)"
     taxonid_s: "Specify taxon ids of your interest with comma\\nseparated (if you have multiple taxon ids). If you do\\nnot specify this option, it will work on all entries\\nin the reference file. For taxonomy id lookup, refer\\nto http://www.ncbi.nlm.nih.gov/taxonomy"

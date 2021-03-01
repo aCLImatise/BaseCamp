@@ -16,6 +16,9 @@ task Kraken2inspect {
       ~{if (use_mpa_style) then "--use-mpa-style" else ""} \
       ~{if (report_zero_counts) then "--report-zero-counts" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     db: "Name for Kraken 2 DB\\n(default: none)"
     threads: "Number of threads to use"

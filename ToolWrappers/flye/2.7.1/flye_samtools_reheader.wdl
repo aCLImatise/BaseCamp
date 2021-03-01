@@ -12,6 +12,9 @@ task FlyesamtoolsReheader {
       ~{if (no_pg) then "--no-PG" else ""} \
       ~{if (in_place) then "--in-place" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_pg: "Do not generate an @PG header line."
     in_place: "Modify the bam/cram file directly.\\n(Defaults to outputting to stdout.)\\n"

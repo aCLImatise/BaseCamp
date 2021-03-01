@@ -36,6 +36,9 @@ task GenerateBEDFileOfEndpointspy {
       ~{if defined(rev_second) then ("--rev_second " +  '"' + rev_second + '"') else ""} \
       ~{if defined(bc_chr_list) then ("--BC_chrlist " +  '"' + bc_chr_list + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reverse: "The original bam file is the reverse complement of the\\nRNA. (default: False)"
     summary: "Print only reads that are found to be significant in\\nthis summary file. (default: None)"

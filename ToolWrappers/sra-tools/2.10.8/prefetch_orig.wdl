@@ -58,6 +58,9 @@ task Prefetchorig {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(option_file) then ("--option-file " +  '"' + option_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     type: "Specify file type to download. Default: sra"
     transport: "Transport: one of: fasp; http; both\\n[default]. (fasp only; http only; first try\\nfasp (ascp), use http if cannot download\\nusing fasp)."

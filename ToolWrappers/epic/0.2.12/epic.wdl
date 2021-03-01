@@ -46,6 +46,9 @@ task Epic {
       ~{if defined(log) then ("--log " +  '"' + log + '"') else ""} \
       ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     treatment: "Treatment (pull-down) file(s) in (b/gzipped) bed/bedpe\\nformat."
     control: "Control (input) file(s) in (b/gzipped) bed/bedpe\\nformat."

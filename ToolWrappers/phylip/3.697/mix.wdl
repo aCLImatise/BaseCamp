@@ -4,6 +4,9 @@ task Mix {
   command <<<
     mix
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

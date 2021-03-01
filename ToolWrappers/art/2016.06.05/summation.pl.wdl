@@ -4,6 +4,9 @@ task Summationpl {
   command <<<
     summation_pl
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

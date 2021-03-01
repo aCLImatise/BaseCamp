@@ -9,7 +9,7 @@ task ParseGenes {
     Int? silent
     Int? bin
     Int? clear
-    Boolean? force_profile_preparation
+    Boolean? force_binary_profile
     Float? smooth_z
     File? cfg
     File? prof_path
@@ -29,7 +29,7 @@ task ParseGenes {
       ~{if defined(silent) then ("-silent " +  '"' + silent + '"') else ""} \
       ~{if defined(bin) then ("-bin " +  '"' + bin + '"') else ""} \
       ~{if defined(clear) then ("-clear " +  '"' + clear + '"') else ""} \
-      ~{if (force_profile_preparation) then "-c" else ""} \
+      ~{if (force_binary_profile) then "-c" else ""} \
       ~{if defined(smooth_z) then ("-smoothZ " +  '"' + smooth_z + '"') else ""} \
       ~{if defined(cfg) then ("-cfg " +  '"' + cfg + '"') else ""} \
       ~{if defined(prof_path) then ("-profPath " +  '"' + prof_path + '"') else ""} \
@@ -40,6 +40,9 @@ task ParseGenes {
       ~{if defined(bufsize) then ("-BufSize " +  '"' + bufsize + '"') else ""} \
       ~{if defined(bp_type) then ("-bpType " +  '"' + bp_type + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     v: "verbose"
     syntax: "strong syntax control in input files"
@@ -48,7 +51,7 @@ task ParseGenes {
     silent: "no output to stdout"
     bin: "bin size for input averaging"
     clear: "force binary profile preparation"
-    force_profile_preparation: "force  binary profile preparation"
+    force_binary_profile: "force  binary profile preparation"
     smooth_z: "Z-Score for smoothed profile"
     cfg: "config file"
     prof_path: "path for binary profiles"

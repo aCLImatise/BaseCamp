@@ -1,15 +1,11 @@
 version 1.0
 
 task RunMetaBatsh {
-  input {
-    Boolean? in_file
-  }
   command <<<
-    runMetaBat_sh \
-      ~{if (in_file) then "--inFile" else ""}
+    runMetaBat_sh
   >>>
-  parameter_meta {
-    in_file: "-o --outFile\\n-a --abdFile"
+  runtime {
+    docker: "None"
   }
   output {
     File out_stdout = stdout()

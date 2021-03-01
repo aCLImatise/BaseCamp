@@ -9,7 +9,7 @@ task RgtvizLineplot {
     Boolean? group_data_readsneeds
     Boolean? row
     Boolean? col
-    Boolean? color_data_readsneeds
+    Boolean? color_data_column
     Boolean? define_extend_length
     Boolean? rs
     Boolean? ss
@@ -43,7 +43,7 @@ task RgtvizLineplot {
       ~{if (group_data_readsneeds) then "-g" else ""} \
       ~{if (row) then "-row" else ""} \
       ~{if (col) then "-col" else ""} \
-      ~{if (color_data_readsneeds) then "-c" else ""} \
+      ~{if (color_data_column) then "-c" else ""} \
       ~{if (define_extend_length) then "-e" else ""} \
       ~{if (rs) then "-rs" else ""} \
       ~{if (ss) then "-ss" else ""} \
@@ -68,6 +68,9 @@ task RgtvizLineplot {
       ~{if (extend_outside) then "-extend_outside" else ""} \
       ~{if (add_region_number) then "-add_region_number" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     directory_name_output: "The directory name for the output files. For example,\\nproject name. (default: None)"
     ga: "Use genetic annotation data as input regions (e.g. TSS,\\nTTS, exons and introns) instead of the BED files in the\\ninput matrix."
@@ -76,7 +79,7 @@ task RgtvizLineplot {
     group_data_readsneeds: "Group the data by reads(needs 'factor' column),\\nregions(needs 'factor' column), another name of column\\n(for example, 'cell')in the header of experimental\\nmatrix, or None. (default: None)"
     row: "Group the data in rows by reads(needs 'factor' column),\\nregions(needs 'factor' column), another name of column\\n(for example, 'cell')in the header of experimental\\nmatrix, or None. (default: None)"
     col: "Group the data in columns by reads(needs 'factor'\\ncolumn), regions(needs 'factor' column), another name of\\ncolumn (for example, 'cell')in the header of\\nexperimental matrix, or None. (default: regions)"
-    color_data_readsneeds: "Color the data by reads(needs 'factor' column),\\nregions(needs 'factor' column), another name of column\\n(for example, 'cell')in the header of experimental\\nmatrix, or None. (default: reads)"
+    color_data_column: "Color the data by reads(needs 'factor' column),\\nregions(needs 'factor' column), another name of column\\n(for example, 'cell')in the header of experimental\\nmatrix, or None. (default: reads)"
     define_extend_length: "Define the extend length of interested region for\\nplotting. (default: 2000)"
     rs: "Define the readsize for calculating coverage. (default:\\n200)"
     ss: "Define the stepsize for calculating coverage. (default:\\n50)"

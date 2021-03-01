@@ -11,33 +11,82 @@ subcommands:
   - uniprot
   positional:
   - !Positional
-    description: ''
+    optional: true
     position: 0
     name: BLAST_FILE
-    optional: true
-  - !Positional
     description: ''
+  - !Positional
+    optional: true
     position: 1
     name: GFF_FILE
-    optional: true
+    description: ''
   named:
   - !Flag
-    description: "-db, --db-used TEXT         Uniprot database used with BLAST  [default:\n\
-      UNIPROT-SP]\n-n, --no-split              if used, the script assumes that the\
-      \ sequence\nheader will be used as gene_id\n-a, --fasta-file PATH       Optional\
-      \ FASTA file with the query sequences\n-dbq, --db-quality INTEGER  Quality of\
-      \ the DB used  [default: 10]\n-b, --bitscore FLOAT        Minimum bitscore to\
-      \ keep the annotation\n[default: 0.0]\n-k, --attr-value TEXT       Additional\
-      \ attribute and value to add to each\nannotation, in the form attr:value\n-ft,\
-      \ --feat-type TEXT       Feature type to use in the GFF  [default: CDS]\n--progress\
-      \                  Shows Progress Bar\n--help                      Show this\
-      \ message and exit.\n"
+    optional: true
     synonyms:
     - -v
     - --verbose
-    args: !EmptyFlagArg {}
+    - -db
+    - --db-used
+    description: "Uniprot database used with BLAST  [default:\nUNIPROT-SP]"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
     optional: true
-  parent: &id008 !Command
+    synonyms:
+    - -n
+    - --no-split
+    description: "if used, the script assumes that the sequence\nheader will be used\
+      \ as gene_id"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    - --fasta-file
+    description: Optional FASTA file with the query sequences
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - -dbq
+    - --db-quality
+    description: 'Quality of the DB used  [default: 10]'
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    - --bitscore
+    description: "Minimum bitscore to keep the annotation\n[default: 0.0]"
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - -k
+    - --attr-value
+    description: "Additional attribute and value to add to each\nannotation, in the\
+      \ form attr:value"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -ft
+    - --feat-type
+    description: 'Feature type to use in the GFF  [default: CDS]'
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --progress
+    description: Shows Progress Bar
+    args: !EmptyFlagArg {}
+  parent: &id009 !Command
     command: *id001
     positional: []
     named: []
@@ -47,17 +96,21 @@ subcommands:
       command: *id002
       positional:
       - !Positional
-        description: ''
+        optional: true
         position: 0
         name: BLAST_FILE
-        optional: true
-      - !Positional
         description: ''
+      - !Positional
+        optional: true
         position: 1
         name: GFF_FILE
-        optional: true
+        description: ''
       named:
       - !Flag
+        optional: true
+        synonyms:
+        - -v
+        - --verbose
         description: "-db, --db-used TEXT         Uniprot database used with BLAST\
           \  [default:\nUNIPROT-SP]\n-n, --no-split              if used, the script\
           \ assumes that the sequence\nheader will be used as gene_id\n-a, --fasta-file\
@@ -68,12 +121,8 @@ subcommands:
           \ in the form attr:value\n-ft, --feat-type TEXT       Feature type to use\
           \ in the GFF  [default: CDS]\n--progress                  Shows Progress\
           \ Bar\n--help                      Show this message and exit.\n"
-        synonyms:
-        - -v
-        - --verbose
         args: !EmptyFlagArg {}
-        optional: true
-      parent: &id007 !Command
+      parent: &id008 !Command
         command: *id001
         positional: []
         named: []
@@ -83,17 +132,21 @@ subcommands:
           command: *id002
           positional:
           - !Positional
-            description: ''
+            optional: true
             position: 0
             name: BLAST_FILE
-            optional: true
-          - !Positional
             description: ''
+          - !Positional
+            optional: true
             position: 1
             name: GFF_FILE
-            optional: true
+            description: ''
           named:
           - !Flag
+            optional: true
+            synonyms:
+            - -v
+            - --verbose
             description: "-db, --db-used TEXT         Uniprot database used with BLAST\
               \  [default:\nUNIPROT-SP]\n-n, --no-split              if used, the\
               \ script assumes that the sequence\nheader will be used as gene_id\n\
@@ -105,12 +158,8 @@ subcommands:
               \ TEXT       Feature type to use in the GFF  [default: CDS]\n--progress\
               \                  Shows Progress Bar\n--help                      Show\
               \ this message and exit.\n"
-            synonyms:
-            - -v
-            - --verbose
             args: !EmptyFlagArg {}
-            optional: true
-          parent: &id006 !Command
+          parent: &id007 !Command
             command: *id001
             positional: []
             named: []
@@ -120,17 +169,21 @@ subcommands:
               command: *id002
               positional:
               - !Positional
-                description: ''
+                optional: true
                 position: 0
                 name: BLAST_FILE
-                optional: true
-              - !Positional
                 description: ''
+              - !Positional
+                optional: true
                 position: 1
                 name: GFF_FILE
-                optional: true
+                description: ''
               named:
               - !Flag
+                optional: true
+                synonyms:
+                - -v
+                - --verbose
                 description: "-db, --db-used TEXT         Uniprot database used with\
                   \ BLAST  [default:\nUNIPROT-SP]\n-n, --no-split              if\
                   \ used, the script assumes that the sequence\nheader will be used\
@@ -143,117 +196,354 @@ subcommands:
                   \ to use in the GFF  [default: CDS]\n--progress                \
                   \  Shows Progress Bar\n--help                      Show this message\
                   \ and exit.\n"
-                synonyms:
-                - -v
-                - --verbose
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: &id003 !Command
+              parent: &id006 !Command
                 command: *id001
                 positional: []
-                named:
-                - !Flag
-                  description: ''
-                  synonyms:
-                  - --cite
-                  args: !EmptyFlagArg {}
-                  optional: true
+                named: []
                 parent:
                 subcommands:
                 - !Command
                   command: *id002
                   positional:
                   - !Positional
-                    description: ''
+                    optional: true
                     position: 0
                     name: BLAST_FILE
-                    optional: true
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: true
                     position: 1
                     name: GFF_FILE
-                    optional: true
+                    description: ''
                   named:
                   - !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - -v
                     - --verbose
+                    description: "-db, --db-used TEXT         Uniprot database used\
+                      \ with BLAST  [default:\nUNIPROT-SP]\n-n, --no-split       \
+                      \       if used, the script assumes that the sequence\nheader\
+                      \ will be used as gene_id\n-a, --fasta-file PATH       Optional\
+                      \ FASTA file with the query sequences\n-dbq, --db-quality INTEGER\
+                      \  Quality of the DB used  [default: 10]\n-b, --bitscore FLOAT\
+                      \        Minimum bitscore to keep the annotation\n[default:\
+                      \ 0.0]\n-k, --attr-value TEXT       Additional attribute and\
+                      \ value to add to each\nannotation, in the form attr:value\n\
+                      -ft, --feat-type TEXT       Feature type to use in the GFF \
+                      \ [default: CDS]\n--progress                  Shows Progress\
+                      \ Bar\n--help                      Show this message and exit.\n"
                     args: !EmptyFlagArg {}
-                    optional: true
-                  - !Flag
-                    description: "Uniprot database used with BLAST  [default:\nUNIPROT-SP]"
-                    synonyms:
-                    - -db
-                    - --db-used
-                    args: !SimpleFlagArg
-                      name: TEXT
-                    optional: true
-                  - !Flag
-                    description: "if used, the script assumes that the sequence\n\
-                      header will be used as gene_id"
-                    synonyms:
-                    - -n
-                    - --no-split
-                    args: !EmptyFlagArg {}
-                    optional: true
-                  - !Flag
-                    description: Optional FASTA file with the query sequences
-                    synonyms:
-                    - -a
-                    - --fasta-file
-                    args: !SimpleFlagArg
-                      name: PATH
-                    optional: true
-                  - !Flag
-                    description: 'Quality of the DB used  [default: 10]'
-                    synonyms:
-                    - -dbq
-                    - --db-quality
-                    args: !SimpleFlagArg
-                      name: INTEGER
-                    optional: true
-                  - !Flag
-                    description: "Minimum bitscore to keep the annotation\n[default:\
-                      \ 0.0]"
-                    synonyms:
-                    - -b
-                    - --bitscore
-                    args: !SimpleFlagArg
-                      name: FLOAT
-                    optional: true
-                  - !Flag
-                    description: "Additional attribute and value to add to each\n\
-                      annotation, in the form attr:value"
-                    synonyms:
-                    - -k
-                    - --attr-value
-                    args: !SimpleFlagArg
-                      name: TEXT
-                    optional: true
-                  - !Flag
-                    description: 'Feature type to use in the GFF  [default: CDS]'
-                    synonyms:
-                    - -ft
-                    - --feat-type
-                    args: !SimpleFlagArg
-                      name: TEXT
-                    optional: true
-                  - !Flag
-                    description: Shows Progress Bar
-                    synonyms:
-                    - --progress
-                    args: !EmptyFlagArg {}
-                    optional: true
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named:
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - --cite
+                      description: ''
+                      args: !EmptyFlagArg {}
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional:
+                      - !Positional
+                        optional: true
+                        position: 0
+                        name: BLAST_FILE
+                        description: ''
+                      - !Positional
+                        optional: true
+                        position: 1
+                        name: GFF_FILE
+                        description: ''
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -v
+                        - --verbose
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -db
+                        - --db-used
+                        description: "Uniprot database used with BLAST  [default:\n\
+                          UNIPROT-SP]"
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -n
+                        - --no-split
+                        description: "if used, the script assumes that the sequence\n\
+                          header will be used as gene_id"
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -a
+                        - --fasta-file
+                        description: Optional FASTA file with the query sequences
+                        args: !SimpleFlagArg
+                          name: PATH
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -dbq
+                        - --db-quality
+                        description: 'Quality of the DB used  [default: 10]'
+                        args: !SimpleFlagArg
+                          name: INTEGER
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -b
+                        - --bitscore
+                        description: "Minimum bitscore to keep the annotation\n[default:\
+                          \ 0.0]"
+                        args: !SimpleFlagArg
+                          name: FLOAT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -k
+                        - --attr-value
+                        description: "Additional attribute and value to add to each\n\
+                          annotation, in the form attr:value"
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -ft
+                        - --feat-type
+                        description: 'Feature type to use in the GFF  [default: CDS]'
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --progress
+                        description: Shows Progress Bar
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - --help
+                        description: Show this message and exit.
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: blast2gff uniprot [OPTIONS] [BLAST_FILE]\
+                        \ [GFF_FILE]\n\n  Reads a BLAST output file [blast-file] in\
+                        \ tabular format (using -outfmt 6)\n  from a Uniprot DB and\
+                        \ outputs a GFF file [gff-file]\n\nOptions:\n  -v, --verbose\n\
+                        \  -db, --db-used TEXT         Uniprot database used with\
+                        \ BLAST  [default:\n                              UNIPROT-SP]\n\
+                        \n  -n, --no-split              if used, the script assumes\
+                        \ that the sequence\n                              header\
+                        \ will be used as gene_id\n\n  -a, --fasta-file PATH     \
+                        \  Optional FASTA file with the query sequences\n  -dbq, --db-quality\
+                        \ INTEGER  Quality of the DB used  [default: 10]\n  -b, --bitscore\
+                        \ FLOAT        Minimum bitscore to keep the annotation\n \
+                        \                             [default: 0.0]\n\n  -k, --attr-value\
+                        \ TEXT       Additional attribute and value to add to each\n\
+                        \                              annotation, in the form attr:value\n\
+                        \n  -ft, --feat-type TEXT       Feature type to use in the\
+                        \ GFF  [default: CDS]\n  --progress                  Shows\
+                        \ Progress Bar\n  --help                      Show this message\
+                        \ and exit.\n"
+                      generated_using: &id004
+                      - --help
+                      docker_image:
+                    - !Command
+                      command: &id005
+                      - blast2gff
+                      - blastdb
+                      positional:
+                      - !Positional
+                        optional: true
+                        position: 0
+                        name: BLAST_FILE
+                        description: ''
+                      - !Positional
+                        optional: true
+                        position: 1
+                        name: GFF_FILE
+                        description: ''
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -v
+                        - --verbose
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -db
+                        - --db-used
+                        description: 'blastdb used  [default: NCBI-NT]'
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -n
+                        - --no-split
+                        description: "if used, the script assumes that the sequence\n\
+                          header will be used as gene_id"
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -s
+                        - --header-sep
+                        description: "The separator for the header, defaults to '|'\n\
+                          (pipe)  [default: |]"
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -i
+                        - --gene-index
+                        description: "Which of the header columns (0-based) to use\
+                          \ as\ngene_id (defaults to 1 - the second column)\n[default:\
+                          \ 1]"
+                        args: !SimpleFlagArg
+                          name: INTEGER
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -r
+                        - --remove-version
+                        description: "if used, the script removes the *version*\n\
+                          information from the gene_id"
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -a
+                        - --fasta-file
+                        description: Optional FASTA file with the query sequences
+                        args: !SimpleFlagArg
+                          name: PATH
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -dbq
+                        - --db-quality
+                        description: 'Quality of the DB used  [default: 10]'
+                        args: !SimpleFlagArg
+                          name: INTEGER
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -b
+                        - --bitscore
+                        description: "Minimum bitscore to keep the annotation\n[default:\
+                          \ 0.0]"
+                        args: !SimpleFlagArg
+                          name: FLOAT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -k
+                        - --attr-value
+                        description: "Additional attribute and value to add to each\n\
+                          annotation, in the form attr:value"
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -ft
+                        - --feat-type
+                        description: 'Feature type to use in the GFF  [default: CDS]'
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --progress
+                        description: Shows Progress Bar
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - --help
+                        description: Show this message and exit.
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: blast2gff blastdb [OPTIONS] [BLAST_FILE]\
+                        \ [GFF_FILE]\n\n  Reads a BLAST output file [blast-file] in\
+                        \ tabular format (using -outfmt 6)\n  and outputs a GFF file\
+                        \ [gff-file]\n\nOptions:\n  -v, --verbose\n  -db, --db-used\
+                        \ TEXT         blastdb used  [default: NCBI-NT]\n  -n, --no-split\
+                        \              if used, the script assumes that the sequence\n\
+                        \                              header will be used as gene_id\n\
+                        \n  -s, --header-sep TEXT       The separator for the header,\
+                        \ defaults to '|'\n                              (pipe)  [default:\
+                        \ |]\n\n  -i, --gene-index INTEGER    Which of the header\
+                        \ columns (0-based) to use as\n                          \
+                        \    gene_id (defaults to 1 - the second column)\n       \
+                        \                       [default: 1]\n\n  -r, --remove-version\
+                        \        if used, the script removes the *version*\n     \
+                        \                         information from the gene_id\n\n\
+                        \  -a, --fasta-file PATH       Optional FASTA file with the\
+                        \ query sequences\n  -dbq, --db-quality INTEGER  Quality of\
+                        \ the DB used  [default: 10]\n  -b, --bitscore FLOAT     \
+                        \   Minimum bitscore to keep the annotation\n            \
+                        \                  [default: 0.0]\n\n  -k, --attr-value TEXT\
+                        \       Additional attribute and value to add to each\n  \
+                        \                            annotation, in the form attr:value\n\
+                        \n  -ft, --feat-type TEXT       Feature type to use in the\
+                        \ GFF  [default: CDS]\n  --progress                  Shows\
+                        \ Progress Bar\n  --help                      Show this message\
+                        \ and exit.\n"
+                      generated_using: *id004
+                      docker_image:
+                    usage: []
+                    help_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - --help
+                      description: Show this message and exit.
+                      args: !EmptyFlagArg {}
+                    usage_flag:
+                    version_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - --version
+                      description: Show the version and exit.
+                      args: !EmptyFlagArg {}
+                    help_text: "Usage: blast2gff [OPTIONS] COMMAND [ARGS]...\n\n \
+                      \ Main function\n\nOptions:\n  --version  Show the version and\
+                      \ exit.\n  --cite\n  --help     Show this message and exit.\n\
+                      \nCommands:\n  blastdb  Reads a BLAST output file [blast-file]\
+                      \ in tabular format (using...\n  uniprot  Reads a BLAST output\
+                      \ file [blast-file] in tabular format (using...\n"
+                    generated_using: *id004
+                    docker_image:
                   subcommands: []
                   usage: []
-                  help_flag: !Flag
-                    description: Show this message and exit.
-                    synonyms:
-                    - --help
-                    args: !EmptyFlagArg {}
-                    optional: true
+                  help_flag:
                   usage_flag:
                   version_flag:
                   help_text: "Usage: blast2gff uniprot [OPTIONS] [BLAST_FILE] [GFF_FILE]\n\
@@ -273,130 +563,49 @@ subcommands:
                     \n  -ft, --feat-type TEXT       Feature type to use in the GFF\
                     \  [default: CDS]\n  --progress                  Shows Progress\
                     \ Bar\n  --help                      Show this message and exit.\n"
-                  generated_using: &id004
-                  - --help
+                  generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id005
-                  - blast2gff
-                  - blastdb
+                  command: *id005
                   positional:
                   - !Positional
-                    description: ''
+                    optional: true
                     position: 0
                     name: BLAST_FILE
-                    optional: true
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: true
                     position: 1
                     name: GFF_FILE
-                    optional: true
+                    description: ''
                   named:
                   - !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - -v
                     - --verbose
+                    description: "-db, --db-used TEXT         blastdb used  [default:\
+                      \ NCBI-NT]\n-n, --no-split              if used, the script\
+                      \ assumes that the sequence\nheader will be used as gene_id\n\
+                      -s, --header-sep TEXT       The separator for the header, defaults\
+                      \ to '|'\n(pipe)  [default: |]\n-i, --gene-index INTEGER   \
+                      \ Which of the header columns (0-based) to use as\ngene_id (defaults\
+                      \ to 1 - the second column)\n[default: 1]\n-r, --remove-version\
+                      \        if used, the script removes the *version*\ninformation\
+                      \ from the gene_id\n-a, --fasta-file PATH       Optional FASTA\
+                      \ file with the query sequences\n-dbq, --db-quality INTEGER\
+                      \  Quality of the DB used  [default: 10]\n-b, --bitscore FLOAT\
+                      \        Minimum bitscore to keep the annotation\n[default:\
+                      \ 0.0]\n-k, --attr-value TEXT       Additional attribute and\
+                      \ value to add to each\nannotation, in the form attr:value\n\
+                      -ft, --feat-type TEXT       Feature type to use in the GFF \
+                      \ [default: CDS]\n--progress                  Shows Progress\
+                      \ Bar\n--help                      Show this message and exit.\n"
                     args: !EmptyFlagArg {}
-                    optional: true
-                  - !Flag
-                    description: 'blastdb used  [default: NCBI-NT]'
-                    synonyms:
-                    - -db
-                    - --db-used
-                    args: !SimpleFlagArg
-                      name: TEXT
-                    optional: true
-                  - !Flag
-                    description: "if used, the script assumes that the sequence\n\
-                      header will be used as gene_id"
-                    synonyms:
-                    - -n
-                    - --no-split
-                    args: !EmptyFlagArg {}
-                    optional: true
-                  - !Flag
-                    description: "The separator for the header, defaults to '|'\n\
-                      (pipe)  [default: |]"
-                    synonyms:
-                    - -s
-                    - --header-sep
-                    args: !SimpleFlagArg
-                      name: TEXT
-                    optional: true
-                  - !Flag
-                    description: "Which of the header columns (0-based) to use as\n\
-                      gene_id (defaults to 1 - the second column)\n[default: 1]"
-                    synonyms:
-                    - -i
-                    - --gene-index
-                    args: !SimpleFlagArg
-                      name: INTEGER
-                    optional: true
-                  - !Flag
-                    description: "if used, the script removes the *version*\ninformation\
-                      \ from the gene_id"
-                    synonyms:
-                    - -r
-                    - --remove-version
-                    args: !EmptyFlagArg {}
-                    optional: true
-                  - !Flag
-                    description: Optional FASTA file with the query sequences
-                    synonyms:
-                    - -a
-                    - --fasta-file
-                    args: !SimpleFlagArg
-                      name: PATH
-                    optional: true
-                  - !Flag
-                    description: 'Quality of the DB used  [default: 10]'
-                    synonyms:
-                    - -dbq
-                    - --db-quality
-                    args: !SimpleFlagArg
-                      name: INTEGER
-                    optional: true
-                  - !Flag
-                    description: "Minimum bitscore to keep the annotation\n[default:\
-                      \ 0.0]"
-                    synonyms:
-                    - -b
-                    - --bitscore
-                    args: !SimpleFlagArg
-                      name: FLOAT
-                    optional: true
-                  - !Flag
-                    description: "Additional attribute and value to add to each\n\
-                      annotation, in the form attr:value"
-                    synonyms:
-                    - -k
-                    - --attr-value
-                    args: !SimpleFlagArg
-                      name: TEXT
-                    optional: true
-                  - !Flag
-                    description: 'Feature type to use in the GFF  [default: CDS]'
-                    synonyms:
-                    - -ft
-                    - --feat-type
-                    args: !SimpleFlagArg
-                      name: TEXT
-                    optional: true
-                  - !Flag
-                    description: Shows Progress Bar
-                    synonyms:
-                    - --progress
-                    args: !EmptyFlagArg {}
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
-                  help_flag: !Flag
-                    description: Show this message and exit.
-                    synonyms:
-                    - --help
-                    args: !EmptyFlagArg {}
-                    optional: true
+                  help_flag:
                   usage_flag:
                   version_flag:
                   help_text: "Usage: blast2gff blastdb [OPTIONS] [BLAST_FILE] [GFF_FILE]\n\
@@ -424,20 +633,11 @@ subcommands:
                     \           Shows Progress Bar\n  --help                     \
                     \ Show this message and exit.\n"
                   generated_using: *id004
+                  docker_image:
                 usage: []
-                help_flag: !Flag
-                  description: Show this message and exit.
-                  synonyms:
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
+                help_flag:
                 usage_flag:
-                version_flag: !Flag
-                  description: Show the version and exit.
-                  synonyms:
-                  - --version
-                  args: !EmptyFlagArg {}
-                  optional: true
+                version_flag:
                 help_text: "Usage: blast2gff [OPTIONS] COMMAND [ARGS]...\n\n  Main\
                   \ function\n\nOptions:\n  --version  Show the version and exit.\n\
                   \  --cite\n  --help     Show this message and exit.\n\nCommands:\n\
@@ -445,6 +645,7 @@ subcommands:
                   \ (using...\n  uniprot  Reads a BLAST output file [blast-file] in\
                   \ tabular format (using...\n"
                 generated_using: *id004
+                docker_image:
               subcommands: []
               usage: []
               help_flag:
@@ -468,21 +669,26 @@ subcommands:
                 \                  Shows Progress Bar\n  --help                  \
                 \    Show this message and exit.\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id005
               positional:
               - !Positional
-                description: ''
+                optional: true
                 position: 0
                 name: BLAST_FILE
-                optional: true
-              - !Positional
                 description: ''
+              - !Positional
+                optional: true
                 position: 1
                 name: GFF_FILE
-                optional: true
+                description: ''
               named:
               - !Flag
+                optional: true
+                synonyms:
+                - -v
+                - --verbose
                 description: "-db, --db-used TEXT         blastdb used  [default:\
                   \ NCBI-NT]\n-n, --no-split              if used, the script assumes\
                   \ that the sequence\nheader will be used as gene_id\n-s, --header-sep\
@@ -499,12 +705,8 @@ subcommands:
                   -ft, --feat-type TEXT       Feature type to use in the GFF  [default:\
                   \ CDS]\n--progress                  Shows Progress Bar\n--help \
                   \                     Show this message and exit.\n"
-                synonyms:
-                - -v
-                - --verbose
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: *id003
+              parent: *id006
               subcommands: []
               usage: []
               help_flag:
@@ -534,6 +736,7 @@ subcommands:
                 \ Progress Bar\n  --help                      Show this message and\
                 \ exit.\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -544,6 +747,7 @@ subcommands:
               \ output file [blast-file] in tabular format (using...\n  uniprot  Reads\
               \ a BLAST output file [blast-file] in tabular format (using...\n"
             generated_using: *id004
+            docker_image:
           subcommands: []
           usage: []
           help_flag:
@@ -566,21 +770,26 @@ subcommands:
             \                  Shows Progress Bar\n  --help                      Show\
             \ this message and exit.\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id005
           positional:
           - !Positional
-            description: ''
+            optional: true
             position: 0
             name: BLAST_FILE
-            optional: true
-          - !Positional
             description: ''
+          - !Positional
+            optional: true
             position: 1
             name: GFF_FILE
-            optional: true
+            description: ''
           named:
           - !Flag
+            optional: true
+            synonyms:
+            - -v
+            - --verbose
             description: "-db, --db-used TEXT         blastdb used  [default: NCBI-NT]\n\
               -n, --no-split              if used, the script assumes that the sequence\n\
               header will be used as gene_id\n-s, --header-sep TEXT       The separator\
@@ -596,12 +805,8 @@ subcommands:
               \ form attr:value\n-ft, --feat-type TEXT       Feature type to use in\
               \ the GFF  [default: CDS]\n--progress                  Shows Progress\
               \ Bar\n--help                      Show this message and exit.\n"
-            synonyms:
-            - -v
-            - --verbose
             args: !EmptyFlagArg {}
-            optional: true
-          parent: *id006
+          parent: *id007
           subcommands: []
           usage: []
           help_flag:
@@ -629,6 +834,7 @@ subcommands:
             \ to use in the GFF  [default: CDS]\n  --progress                  Shows\
             \ Progress Bar\n  --help                      Show this message and exit.\n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -639,6 +845,7 @@ subcommands:
           \ output file [blast-file] in tabular format (using...\n  uniprot  Reads\
           \ a BLAST output file [blast-file] in tabular format (using...\n"
         generated_using: *id004
+        docker_image:
       subcommands: []
       usage: []
       help_flag:
@@ -660,21 +867,26 @@ subcommands:
         \ the GFF  [default: CDS]\n  --progress                  Shows Progress Bar\n\
         \  --help                      Show this message and exit.\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id005
       positional:
       - !Positional
-        description: ''
+        optional: true
         position: 0
         name: BLAST_FILE
-        optional: true
-      - !Positional
         description: ''
+      - !Positional
+        optional: true
         position: 1
         name: GFF_FILE
-        optional: true
+        description: ''
       named:
       - !Flag
+        optional: true
+        synonyms:
+        - -v
+        - --verbose
         description: "-db, --db-used TEXT         blastdb used  [default: NCBI-NT]\n\
           -n, --no-split              if used, the script assumes that the sequence\n\
           header will be used as gene_id\n-s, --header-sep TEXT       The separator\
@@ -689,12 +901,8 @@ subcommands:
           annotation, in the form attr:value\n-ft, --feat-type TEXT       Feature\
           \ type to use in the GFF  [default: CDS]\n--progress                  Shows\
           \ Progress Bar\n--help                      Show this message and exit.\n"
-        synonyms:
-        - -v
-        - --verbose
         args: !EmptyFlagArg {}
-        optional: true
-      parent: *id007
+      parent: *id008
       subcommands: []
       usage: []
       help_flag:
@@ -721,6 +929,7 @@ subcommands:
         \ the GFF  [default: CDS]\n  --progress                  Shows Progress Bar\n\
         \  --help                      Show this message and exit.\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -731,9 +940,15 @@ subcommands:
       \ [blast-file] in tabular format (using...\n  uniprot  Reads a BLAST output\
       \ file [blast-file] in tabular format (using...\n"
     generated_using: *id004
+    docker_image:
   subcommands: []
   usage: []
-  help_flag:
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
   usage_flag:
   version_flag:
   help_text: "Usage: blast2gff uniprot [OPTIONS] [BLAST_FILE] [GFF_FILE]\n\n  Reads\
@@ -751,44 +966,121 @@ subcommands:
     \ type to use in the GFF  [default: CDS]\n  --progress                  Shows\
     \ Progress Bar\n  --help                      Show this message and exit.\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id005
   positional:
   - !Positional
-    description: ''
+    optional: true
     position: 0
     name: BLAST_FILE
-    optional: true
-  - !Positional
     description: ''
+  - !Positional
+    optional: true
     position: 1
     name: GFF_FILE
-    optional: true
+    description: ''
   named:
   - !Flag
-    description: "-db, --db-used TEXT         blastdb used  [default: NCBI-NT]\n-n,\
-      \ --no-split              if used, the script assumes that the sequence\nheader\
-      \ will be used as gene_id\n-s, --header-sep TEXT       The separator for the\
-      \ header, defaults to '|'\n(pipe)  [default: |]\n-i, --gene-index INTEGER  \
-      \  Which of the header columns (0-based) to use as\ngene_id (defaults to 1 -\
-      \ the second column)\n[default: 1]\n-r, --remove-version        if used, the\
-      \ script removes the *version*\ninformation from the gene_id\n-a, --fasta-file\
-      \ PATH       Optional FASTA file with the query sequences\n-dbq, --db-quality\
-      \ INTEGER  Quality of the DB used  [default: 10]\n-b, --bitscore FLOAT     \
-      \   Minimum bitscore to keep the annotation\n[default: 0.0]\n-k, --attr-value\
-      \ TEXT       Additional attribute and value to add to each\nannotation, in the\
-      \ form attr:value\n-ft, --feat-type TEXT       Feature type to use in the GFF\
-      \  [default: CDS]\n--progress                  Shows Progress Bar\n--help  \
-      \                    Show this message and exit.\n"
+    optional: true
     synonyms:
     - -v
     - --verbose
-    args: !EmptyFlagArg {}
+    - -db
+    - --db-used
+    description: 'blastdb used  [default: NCBI-NT]'
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
     optional: true
-  parent: *id008
+    synonyms:
+    - -n
+    - --no-split
+    description: "if used, the script assumes that the sequence\nheader will be used\
+      \ as gene_id"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --header-sep
+    description: "The separator for the header, defaults to '|'\n(pipe)  [default:\
+      \ |]"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --gene-index
+    description: "Which of the header columns (0-based) to use as\ngene_id (defaults\
+      \ to 1 - the second column)\n[default: 1]"
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --remove-version
+    description: "if used, the script removes the *version*\ninformation from the\
+      \ gene_id"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    - --fasta-file
+    description: Optional FASTA file with the query sequences
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - -dbq
+    - --db-quality
+    description: 'Quality of the DB used  [default: 10]'
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    - --bitscore
+    description: "Minimum bitscore to keep the annotation\n[default: 0.0]"
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - -k
+    - --attr-value
+    description: "Additional attribute and value to add to each\nannotation, in the\
+      \ form attr:value"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -ft
+    - --feat-type
+    description: 'Feature type to use in the GFF  [default: CDS]'
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --progress
+    description: Shows Progress Bar
+    args: !EmptyFlagArg {}
+  parent: *id009
   subcommands: []
   usage: []
-  help_flag:
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
   usage_flag:
   version_flag:
   help_text: "Usage: blast2gff blastdb [OPTIONS] [BLAST_FILE] [GFF_FILE]\n\n  Reads\
@@ -811,6 +1103,7 @@ subcommands:
     \ type to use in the GFF  [default: CDS]\n  --progress                  Shows\
     \ Progress Bar\n  --help                      Show this message and exit.\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -821,3 +1114,4 @@ help_text: "Usage: blast2gff [OPTIONS] COMMAND [ARGS]...\n\n  Main function\n\nO
   \ format (using...\n  uniprot  Reads a BLAST output file [blast-file] in tabular\
   \ format (using...\n"
 generated_using: *id004
+docker_image:

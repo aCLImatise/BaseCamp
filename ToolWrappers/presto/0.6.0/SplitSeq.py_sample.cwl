@@ -9,25 +9,25 @@ inputs:
 - id: in_outdir
   doc: "Specify to changes the output directory to the\nlocation specified. The input\
     \ file directory is used\nif this is not specified. (default: None)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --outdir
 - id: in_out_name
   doc: "Changes the prefix of the successfully processed\noutput file to the string\
     \ specified. May not be\nspecified with multiple input files. (default: None)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --outname
 - id: in_fast_a
   doc: "Specify to force output as FASTA rather than FASTQ.\n(default: None)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --fasta
 - id: in_delim
   doc: "DELIMITER DELIMITER\nA list of the three delimiters that separate\nannotation\
     \ blocks, field names and values, and values\nwithin a field, respectively. (default:\
     \ ('|', '=',\n','))"
-  type: string
+  type: string?
   inputBinding:
     prefix: --delim
 - id: in_maximum_number_sample
@@ -41,10 +41,10 @@ inputs:
   doc: "The annotation field for sampling criteria. If the -u\nargument is not also\
     \ specified, then sampling will be\nperformed for each unique annotation value\
     \ in the\ndeclared field separately. (default: None)"
-  type: string
+  type: string?
   inputBinding:
     prefix: -f
-- id: in_specified_sampling_will
+- id: in_specified_sampling_restricted
   doc: "If specified, sampling will be restricted to sequences\nthat contain one of\
     \ the declared annotation values in\nthe specified field. Requires the -f argument.\n\
     (default: None)\n"
@@ -55,6 +55,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - SplitSeq.py

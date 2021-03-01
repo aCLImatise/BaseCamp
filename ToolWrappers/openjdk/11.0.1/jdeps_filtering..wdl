@@ -12,6 +12,9 @@ task JdepsFiltering {
       ~{options} \
       ~{path_dot_dot_dot}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     j_deps: ""
     options: ""

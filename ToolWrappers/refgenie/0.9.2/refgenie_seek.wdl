@@ -14,6 +14,9 @@ task RefgenieSeek {
       ~{if defined(genome) then ("--genome " +  '"' + genome + '"') else ""} \
       ~{if (check_exists) then "--check-exists" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genome_config: "Path to local genome configuration file. Optional if\\nREFGENIE environment variable is set."
     genome: "Reference assembly ID, e.g. mm10."

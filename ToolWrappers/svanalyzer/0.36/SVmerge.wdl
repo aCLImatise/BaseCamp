@@ -20,6 +20,9 @@ task SVmerge {
       ~{if defined(distance_file) then ("--distance_file " +  '"' + distance_file + '"') else ""} \
       ~{if defined(ref) then ("--ref " +  '"' + ref + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prefix: "Specify a prefix to be used to create output file names: files of\\ndistance metric values will be named \\\"prefix.distances\\\" and the\\noutput, clustered VCF file will be named \\\"prefix.clustered.vcf\\\"."
     variants: "Specify the path to a VCF file of variants to merge. These variants\\nwill be considered in combination with any specified using the --fof\\noption."

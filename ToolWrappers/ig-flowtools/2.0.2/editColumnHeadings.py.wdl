@@ -16,6 +16,9 @@ task EditColumnHeadingspy {
       ~{if defined(column_names_renaming) then ("-n " +  '"' + column_names_renaming + '"') else ""} \
       ~{if defined(name_output_file) then ("-o " +  '"' + name_output_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_location_text: "File location for the text file."
     columns_keep_order: "Columns to keep in the order to keep them in."

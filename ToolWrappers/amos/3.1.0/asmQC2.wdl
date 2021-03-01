@@ -38,6 +38,9 @@ task AsmQC2 {
       ~{if defined(sd_change) then ("-sdchange " +  '"' + sd_change + '"') else ""} \
       ~{if (debug) then "-debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bank: "bank where assembly is stored"
     feat: "write contig features into the bank"

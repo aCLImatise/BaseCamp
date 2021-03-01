@@ -36,6 +36,9 @@ task Bam2wigsh {
       ~{if (window_shift) then "--windowShift" else ""} \
       ~{if (window_size) then "--windowSize" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bed_graph: "Produce a BED GRAPH instead of a WIGGLE file.\\nDefault: false"
     display: "What kind of data should we display ?\\nDefault: COVERAGE\\nPossible Values: [COVERAGE, CLIPPING, INSERTION, DELETION, READ_GROUPS, CASE_CTRL]"

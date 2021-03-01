@@ -42,6 +42,9 @@ task Simsearch {
       ~{if (memory) then "--memory" else ""} \
       ~{if (times) then "--times" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     k_nearest: "select the k nearest neighbors (use 'all' for all\\nneighbors)"
     threshold: "minimum similarity score threshold"

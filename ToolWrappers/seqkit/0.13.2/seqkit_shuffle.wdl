@@ -30,6 +30,9 @@ task SeqkitShuffle {
       ~{if defined(seq_type) then ("--seq-type " +  '"' + seq_type + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     keep_temp: "keep tempory FASTA and .fai file when using 2-pass mode"
     rand_seed: "rand seed for shuffle (default 23)"

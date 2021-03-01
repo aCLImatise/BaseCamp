@@ -8,6 +8,9 @@ task Factor {
     factor \
       ~{number}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     number: ""
   }

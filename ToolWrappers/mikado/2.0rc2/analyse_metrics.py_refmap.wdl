@@ -12,6 +12,9 @@ task AnalyseMetricspyRefmap {
       ~{metrics} \
       ~{ref_map}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     analyse_metrics_do_tpy: ""
     metrics: ""

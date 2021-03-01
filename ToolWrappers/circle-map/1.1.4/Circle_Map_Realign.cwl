@@ -3,177 +3,167 @@ id: Circle_Map_Realign.cwl
 inputs:
 - id: in_input_bam_file
   doc: 'Input: bam file containing the reads extracted by'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -i
 - id: in_sb_am
   doc: 'Input: coordinate sorted bam file'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -sbam
 - id: in_fast_a
   doc: 'Input: Reference genome fasta file'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -fasta
 - id: in_output_filename
   doc: Output filename
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
-- id: in__nhits_number
-  doc: ', --nhits          Number of realignment attempts. Default: 10'
-  type: boolean
+- id: in_n_hits
+  doc: 'Number of realignment attempts. Default: 10'
+  type: boolean?
   inputBinding:
-    prefix: -n
-- id: in__cutoff_probability
-  doc: ", --cut_off        Probability cut-off for considering a soft-clipped as\n\
-    realigned: Default: 0.99"
-  type: boolean
+    prefix: --nhits
+- id: in_cut_off
+  doc: "Probability cut-off for considering a soft-clipped as\nrealigned: Default:\
+    \ 0.99"
+  type: boolean?
   inputBinding:
-    prefix: -p
-- id: in__minsc_minimum
-  doc: ", --min_sc         Minimum soft-clipped length to attempt the\nrealignment.\
-    \ Default: 8"
-  type: boolean
+    prefix: --cut_off
+- id: in_min_sc
+  doc: "Minimum soft-clipped length to attempt the\nrealignment. Default: 8"
+  type: boolean?
   inputBinding:
-    prefix: -m
-- id: in__gapopen_gap
-  doc: ", --gap_open       Gap open penalty in the position specific scoring\nmatrix.\
-    \ Default: 5"
-  type: boolean
+    prefix: --min_sc
+- id: in_gap_open
+  doc: "Gap open penalty in the position specific scoring\nmatrix. Default: 5"
+  type: boolean?
   inputBinding:
-    prefix: -g
-- id: in__gapext_penalty
-  doc: ", --gap_ext        Gap extension penalty in the position specific scoring\n\
-    matrix. Default: 1"
-  type: boolean
+    prefix: --gap_open
+- id: in_gap_ext
+  doc: "Gap extension penalty in the position specific scoring\nmatrix. Default: 1"
+  type: boolean?
   inputBinding:
-    prefix: -e
-- id: in__mapq_minimum
-  doc: ", --mapq           Minimum mapping quality allowed in the supplementary\n\
-    alignments. Default: 20"
-  type: boolean
+    prefix: --gap_ext
+- id: in_mapq
+  doc: "Minimum mapping quality allowed in the supplementary\nalignments. Default:\
+    \ 20"
+  type: boolean?
   inputBinding:
-    prefix: -q
-- id: in__editdistancefractionmaximum_edit
-  doc: ", --edit_distance-fraction\nMaximum edit distance fraction allowed in the\
-    \ first\nrealignment. Default (0.05)"
-  type: boolean
+    prefix: --mapq
+- id: in_edit_distance_fraction
+  doc: "Maximum edit distance fraction allowed in the first\nrealignment. Default\
+    \ (0.05)"
+  type: boolean?
   inputBinding:
-    prefix: -d
-- id: in__splitqualityminium_split
-  doc: ", --split_quality\nMinium split score to output an interval. Default\n(0.0)"
-  type: boolean
+    prefix: --edit_distance-fraction
+- id: in_split_quality
+  doc: "Minium split score to output an interval. Default\n(0.0)"
+  type: boolean?
   inputBinding:
-    prefix: -Q
+    prefix: --split_quality
 - id: in_remap_splits
   doc: Remap probabilistacally bwa-mem split reads
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --remap_splits
-- id: in__split_reads
-  doc: ", --split          Number of required split reads to output a eccDNA.\nDefault:\
-    \ 0"
-  type: boolean
+- id: in_split
+  doc: "Number of required split reads to output a eccDNA.\nDefault: 0"
+  type: boolean?
   inputBinding:
-    prefix: -S
-- id: in__numberofdiscordantsnumber_required
-  doc: ", --number_of_discordants\nNumber of required discordant reads for intervals\
-    \ with\nonly discordants. Default: 3"
-  type: boolean
+    prefix: --split
+- id: in_number_of_discordant_s
+  doc: "Number of required discordant reads for intervals with\nonly discordants.\
+    \ Default: 3"
+  type: boolean?
   inputBinding:
-    prefix: -O
-- id: in__ratio_minimum
-  doc: ', --ratio          Minimum in/out required coverage ratio. Default: 0.0'
-  type: boolean
+    prefix: --number_of_discordants
+- id: in_ratio
+  doc: 'Minimum in/out required coverage ratio. Default: 0.0'
+  type: boolean?
   inputBinding:
-    prefix: -r
-- id: in_iq
-  doc: ", --insert_mapq   Mapq cutoff for stimating the insert size\ndistribution.\
-    \ Default 60"
-  type: boolean
+    prefix: --ratio
+- id: in_insert_mapq
+  doc: "Mapq cutoff for stimating the insert size\ndistribution. Default 60"
+  type: boolean?
   inputBinding:
-    prefix: -iq
-- id: in_sd
-  doc: ", --std           Standard deviations of the insert size to extend the\nintervals.\
-    \ Default 5"
-  type: boolean
+    prefix: --insert_mapq
+- id: in_std
+  doc: "Standard deviations of the insert size to extend the\nintervals. Default 5"
+  type: boolean?
   inputBinding:
-    prefix: -sd
-- id: in__samplesize_number
-  doc: ", --sample_size    Number of concordant reads (R2F1) to use for\nestimating\
-    \ the insert size distribution. Default\n100000"
-  type: boolean
+    prefix: --std
+- id: in_sample_size
+  doc: "Number of concordant reads (R2F1) to use for\nestimating the insert size distribution.\
+    \ Default\n100000"
+  type: boolean?
   inputBinding:
-    prefix: -s
-- id: in__mergefractionmerge_intervals
-  doc: ", --merge_fraction\nMerge intervals reciprocally overlapping by a\nfraction.\
-    \ Default 0.99"
-  type: boolean
+    prefix: --sample_size
+- id: in_merge_fraction
+  doc: "Merge intervals reciprocally overlapping by a\nfraction. Default 0.99"
+  type: boolean?
   inputBinding:
-    prefix: -f
-- id: in__intervalprobabilityskip_edges
-  doc: ", --interval_probability\nSkip edges of the graph with a probability below\
-    \ the\nthreshold. Default: 0.01"
-  type: boolean
+    prefix: --merge_fraction
+- id: in_interval_probability
+  doc: "Skip edges of the graph with a probability below the\nthreshold. Default:\
+    \ 0.01"
+  type: boolean?
   inputBinding:
-    prefix: -P
-- id: in__clusteringdistcluster_reads
-  doc: ", --clustering_dist\nCluster reads that are K nucleotides appart in the\n\
-    same node. Default: 500"
-  type: boolean
+    prefix: --interval_probability
+- id: in_clustering_dist
+  doc: "Cluster reads that are K nucleotides appart in the\nsame node. Default: 500"
+  type: boolean?
   inputBinding:
-    prefix: -K
+    prefix: --clustering_dist
 - id: in_only_discordant_s
   doc: Use only discordant reads to build the graph
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --only_discordants
-- id: in__allelefrequencyminimum_allele
-  doc: ", --allele_frequency\nMinimum allele frequency required to report the circle\n\
-    interval. Default (0.1)"
-  type: boolean
+- id: in_allele_frequency
+  doc: "Minimum allele frequency required to report the circle\ninterval. Default\
+    \ (0.1)"
+  type: boolean?
   inputBinding:
-    prefix: -F
+    prefix: --allele_frequency
 - id: in_no_coverage
   doc: Don't compute coverage statistics
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no_coverage
-- id: in__bases_number
-  doc: ", --bases          Number of bases to extend for computing the coverage\n\
-    ratio. Default: 200"
-  type: boolean
+- id: in_bases
+  doc: "Number of bases to extend for computing the coverage\nratio. Default: 200"
+  type: boolean?
   inputBinding:
-    prefix: -b
-- id: in_cq
-  doc: ", --cmapq         Minimum mapping quality treshold for coverage\ncomputation.\
-    \ Default: 0"
-  type: boolean
+    prefix: --bases
+- id: in_cmap_q
+  doc: "Minimum mapping quality treshold for coverage\ncomputation. Default: 0"
+  type: boolean?
   inputBinding:
-    prefix: -cq
-- id: in__extension_number
-  doc: ", --extension      Number of bases inside the eccDNA breakpoint\ncoordinates\
-    \ to compute the ratio. Default: 100"
-  type: boolean
+    prefix: --cmapq
+- id: in_extension
+  doc: "Number of bases inside the eccDNA breakpoint\ncoordinates to compute the ratio.\
+    \ Default: 100"
+  type: boolean?
   inputBinding:
-    prefix: -E
-- id: in__threads_number
-  doc: ', --threads        Number of threads to use.Default 1'
-  type: boolean
+    prefix: --extension
+- id: in_threads
+  doc: Number of threads to use.Default 1
+  type: boolean?
   inputBinding:
-    prefix: -t
-- id: in_dir
-  doc: ', --directory    Working directory, default is the working directory'
-  type: boolean
+    prefix: --threads
+- id: in_directory
+  doc: Working directory, default is the working directory
+  type: boolean?
   inputBinding:
-    prefix: -dir
-- id: in__verbose_verbose
-  doc: ', --verbose        Verbose level, 1=error,2=warning, 3=message'
-  type: boolean
+    prefix: --directory
+- id: in_verbose
+  doc: Verbose level, 1=error,2=warning, 3=message
+  type: boolean?
   inputBinding:
-    prefix: -v
+    prefix: --verbose
 - id: in_read_extractor
   doc: '-qbam                 Input: query name sorted bam file'
   type: string
@@ -185,9 +175,10 @@ outputs:
   type: stdout
 - id: out_output_filename
   doc: Output filename
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_filename)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - Circle-Map

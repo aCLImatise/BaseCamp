@@ -3,82 +3,82 @@ command:
 - windowMaker
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: bedtools
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: makewindows
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 2
   name: OR
-  optional: true
+  description: ''
 named:
 - !Flag
-  description: "Genome file size (see notes below).\nWindows will be created for each\
-    \ chromosome in the file."
+  optional: true
   synonyms:
   - -g
+  description: "Genome file size (see notes below).\nWindows will be created for each\
+    \ chromosome in the file."
   args: !SimpleFlagArg
     name: genome
-  optional: true
 - !Flag
-  description: "BED file (with chrom,start,end fields).\nWindows will be created for\
-    \ each interval in the file."
+  optional: true
   synonyms:
   - -b
+  description: "BED file (with chrom,start,end fields).\nWindows will be created for\
+    \ each interval in the file."
   args: !SimpleFlagArg
     name: bed
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -w
   description: "Divide each input interval (either a chromosome or a BED interval)\n\
     to fixed-sized windows (i.e. same number of nucleotide in each window).\nCan be\
     \ combined with -s <step_size>"
-  synonyms:
-  - -w
   args: !SimpleFlagArg
     name: window_size
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -s
   description: "Step size: i.e., how many base pairs to step before\ncreating a new\
     \ window. Used to create \"sliding\" windows.\n- Defaults to window size (non-sliding\
     \ windows)."
-  synonyms:
-  - -s
   args: !SimpleFlagArg
     name: step_size
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -n
   description: "Divide each input interval (either a chromosome or a BED interval)\n\
     to fixed number of windows (i.e. same number of windows, with\nvarying window\
     \ sizes)."
-  synonyms:
-  - -n
   args: !SimpleFlagArg
     name: number_of_windows
-  optional: true
 - !Flag
-  description: "Reverse numbering of windows in the output, i.e. report\nwindows in\
-    \ decreasing order"
+  optional: true
   synonyms:
   - -reverse
+  description: "Reverse numbering of windows in the output, i.e. report\nwindows in\
+    \ decreasing order"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -i
   description: "|winnum|srcwinnum\nThe default output is 3 columns: chrom, start,\
     \ end .\nWith this option, a name column will be added.\n\"-i src\" - use the\
     \ source interval's name.\n\"-i winnum\" - use the window number as the ID (e.g.\
     \ 1,2,3,4...).\n\"-i srcwinnum\" - use the source interval's name with the window\
     \ number.\nSee below for usage examples."
-  synonyms:
-  - -i
   args: !SimpleFlagArg
     name: src
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -147,3 +147,4 @@ help_text: "\n*****ERROR: Unrecognized parameter: --help *****\n\n\n*****\n*****
   \ chr5        100668  101000  CCC_3\n ...\n\n\n"
 generated_using:
 - --help
+docker_image:

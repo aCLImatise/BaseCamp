@@ -3,104 +3,104 @@ command:
 - kraken-biom
 positional:
 - !Positional
-  description: Results files from the kraken-report tool.
+  optional: false
   position: 0
   name: kraken_reports
-  optional: false
+  description: Results files from the kraken-report tool.
 named:
 - !Flag
-  description: "Assigned reads will be recorded only if they are at or\nbelow max\
-    \ rank. Default: O."
+  optional: true
   synonyms:
   - --max
+  description: "Assigned reads will be recorded only if they are at or\nbelow max\
+    \ rank. Default: O."
   args: !ChoiceFlagArg
     choices: !!set
-      P:
       G:
-      S:
-      C:
-      D:
       O:
       F:
-  optional: true
+      C:
+      D:
+      P:
+      S:
 - !Flag
-  description: "Reads assigned at and below min rank will be recorded\nas being assigned\
-    \ to the min rank level. Default: S."
+  optional: true
   synonyms:
   - --min
+  description: "Reads assigned at and below min rank will be recorded\nas being assigned\
+    \ to the min rank level. Default: S."
   args: !ChoiceFlagArg
     choices: !!set
-      P:
       G:
-      S:
-      C:
-      D:
       O:
       F:
-  optional: true
+      C:
+      D:
+      P:
+      S:
 - !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output_fp
   description: "Path to the BIOM-format file. By default, the table\nwill be in the\
     \ HDF5 BIOM 2.x format. Users can output\nto a different format using the --fmt\
     \ option. The\noutput can also be gzipped using the --gzip option.\nDefault path\
     \ is: ./table.biom"
-  synonyms:
-  - -o
-  - --output_fp
   args: !SimpleFlagArg
     name: OUTPUT_FP
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --otu_fp
   description: "Create a file containing just the (NCBI) OTU IDs for\nuse with a service\
     \ such as phyloT\n(http://phylot.biobyte.de/) to generate a phylogenetic\ntree\
     \ for use in downstream analysis such as UniFrac,\niTol (itol.embl.de), or PhyloToAST\
     \ (phylotoast.org)."
-  synonyms:
-  - --otu_fp
   args: !SimpleFlagArg
     name: OTU_FP
-  optional: true
 - !Flag
-  description: "Set the output format of the BIOM table. Default is\nHDF5."
+  optional: true
   synonyms:
   - --fmt
+  description: "Set the output format of the BIOM table. Default is\nHDF5."
   args: !ChoiceFlagArg
     choices: !!set
-      json:
       hdf5:
+      json:
       tsv:
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --gzip
   description: "Compress the output BIOM table with gzip. HDF5 BIOM\n(v2.x) files\
     \ are internally compressed by default, so\nthis option is not needed when specifying\
     \ --fmt hdf5."
-  synonyms:
-  - --gzip
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Prints status messages during program execution.
+  optional: true
   synonyms:
   - -v
   - --verbose
+  description: Prints status messages during program execution.
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: kraken-biom [-h] [--max {D,P,C,O,F,G,S}] [--min {D,P,C,O,F,G,S}]\n\
   \                   [-o OUTPUT_FP] [--otu_fp OTU_FP] [--fmt {hdf5,json,tsv}]\n \
   \                  [--gzip] [--version] [-v]\n                   kraken_reports\
@@ -156,3 +156,4 @@ help_text: "usage: kraken-biom [-h] [--max {D,P,C,O,F,G,S}] [--min {D,P,C,O,F,G,
   \ status messages during program execution.\n"
 generated_using:
 - --help
+docker_image:

@@ -28,6 +28,9 @@ task BatchSeqstructhmm {
       ~{if defined(threshold) then ("--threshold " +  '"' + threshold + '"') else ""} \
       ~{if defined(termination_interval) then ("--termination_interval " +  '"' + termination_interval + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cores: "number of cores to use (if not given, all cores are\\nused)"
     structure_type: "structure type to use; must match location of\\nstructure files (see data_directory argument above)\\n(default: shapes)"

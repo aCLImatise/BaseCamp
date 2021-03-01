@@ -3,22 +3,22 @@ id: esl_alimask_coords.cwl
 inputs:
 - id: in_rf_is_mask
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: --rf-is-mask
 - id: in_p
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: -p
 - id: in_g
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: -g
 - id: in_t
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: -t
 - id: in_esl_ali_mask
@@ -40,6 +40,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - esl-alimask

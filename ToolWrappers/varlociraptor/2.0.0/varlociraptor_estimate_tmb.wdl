@@ -16,6 +16,9 @@ task VarlociraptorEstimateTmb {
       ~{if defined(somatic_tumor_events) then ("--somatic-tumor-events " +  '"' + somatic_tumor_events + '"') else ""} \
       ~{if defined(tumor_sample) then ("--tumor-sample " +  '"' + tumor_sample + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     coding_genome_size: "Size (in bases) of the covered coding genome. [default: 3e7]"
     plot_mode: "How to plot (as stratified curve or as histogram). [possible values: hist, curve]"

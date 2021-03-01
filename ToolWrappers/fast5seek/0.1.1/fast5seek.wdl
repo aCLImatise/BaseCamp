@@ -8,9 +8,11 @@ task Fast5seek {
     Boolean? mapped
     Boolean? no_progress_bar
     String? log_level
+    String files_dot
   }
   command <<<
     fast5seek \
+      ~{files_dot} \
       ~{if defined(fast_five_dir) then ("--fast5_dir " +  '"' + fast_five_dir + '"') else ""} \
       ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
       ~{if defined(filename_write_paths) then ("--output " +  '"' + filename_write_paths + '"') else ""} \
@@ -18,6 +20,9 @@ task Fast5seek {
       ~{if (no_progress_bar) then "--no_progress_bar" else ""} \
       ~{if defined(log_level) then ("--log_level " +  '"' + log_level + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_five_dir: "Directory of fast5 files you want to query. Program\\nwill walk recursively through subdirectories."
     reference: "Fastq or BAM/SAM file(s)."
@@ -25,6 +30,7 @@ task Fast5seek {
     mapped: "Only extract read ids for mapped reads in BAM/SAM"
     no_progress_bar: "Do not display progress bar."
     log_level: ""
+    files_dot: "--log_level {0,1,2,3,4,5}"
   }
   output {
     File out_stdout = stdout()

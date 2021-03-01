@@ -1,0 +1,310 @@
+!Command
+command:
+- anvi-display-pan
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: interface.
+  description: "--view NAME           Start the interface with a pre-selected view.\
+    \ To see a\nlist of available views, use --show-views flag.\n(default: None)"
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --pan-db
+  description: "Anvi'o pan database (default: None)"
+  args: !SimpleFlagArg
+    name: PAN_DB
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --genomes-storage
+  description: "Anvi'o genomes storage file (default: None)"
+  args: !SimpleFlagArg
+    name: GENOMES_STORAGE
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --view-data
+  description: 'A TAB-delimited file for view data (default: None)'
+  args: !SimpleFlagArg
+    name: VIEW_DATA
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --tree
+  description: 'NEWICK formatted tree structure (default: None)'
+  args: !SimpleFlagArg
+    name: NEWICK
+- !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --additional-view
+  description: "A TAB-delimited file for an additional view to be used\nin the interface.\
+    \ This file should contain all split\nnames, and values for each of them in all\
+    \ samples.\nEach column in this file must correspond to a sample\nname. Content\
+    \ of this file will be called 'user_view',\nwhich will be available as a new item\
+    \ in the 'views'\ncombo box in the interface (default: None)"
+  args: !SimpleFlagArg
+    name: ADDITIONAL_VIEW
+- !Flag
+  optional: true
+  synonyms:
+  - -A
+  - --additional-layers
+  description: "A TAB-delimited file for additional layers for splits.\nThe first\
+    \ column of this file must be split names, and\nthe remaining columns should be\
+    \ unique attributes. The\nfile does not need to contain all split names, or\n\
+    values for each split in every column. Anvi'o will try\nto deal with missing data\
+    \ nicely. Each column in this\nfile will be visualized as a new layer in the tree.\n\
+    (default: None)"
+  args: !SimpleFlagArg
+    name: ADDITIONAL_LAYERS
+- !Flag
+  optional: true
+  synonyms:
+  - --title
+  description: "Title for the interface. If you are working with a\nRUNINFO dict,\
+    \ the title will be determined based on\ninformation stored in that file. Regardless,\
+    \ you can\noverride that value using this parameter. (default:\nNone)"
+  args: !SimpleFlagArg
+    name: NAME
+- !Flag
+  optional: true
+  synonyms:
+  - --state-autoload
+  description: "Automatically load previous saved state and draw tree.\nTo see a list\
+    \ of available states, use --show-states\nflag. (default: None)"
+  args: !SimpleFlagArg
+    name: NAME
+- !Flag
+  optional: true
+  synonyms:
+  - --collection-autoload
+  description: "Automatically load a collection and draw tree. To see\na list of available\
+    \ collections, use --list-\ncollections flag. (default: None)"
+  args: !SimpleFlagArg
+    name: NAME
+- !Flag
+  optional: true
+  synonyms:
+  - --export-svg
+  description: 'The SVG output file path. (default: None)'
+  args: !SimpleFlagArg
+    name: FILE_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --skip-init-functions
+  description: "When declared, function calls for genes will not be\ninitialized (therefore\
+    \ will be missing from all\nrelevant interfaces or output files). The use of this\n\
+    flag may reduce the memory fingerprint and processing\ntime for large datasets.\
+    \ (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dry-run
+  description: "Don't do anything real. Test everything, and stop\nright before wherever\
+    \ the developer said 'well, this\nis enough testing', and decided to print out\
+    \ results.\n(default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --skip-auto-ordering
+  description: "When declared, the attempt to include automatically\ngenerated orders\
+    \ of items based on additional data is\nskipped. In case those buggers cause issues\
+    \ with your\ndata, and you still want to see your stuff and deal\nwith the other\
+    \ issue maybe later. (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --skip-news
+  description: "Don't try to read news content from upstream.\n(default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -I
+  - --ip-address
+  description: "IP address for the HTTP server. The default ip address\n(0.0.0.0)\
+    \ should work just fine for most."
+  args: !SimpleFlagArg
+    name: IP_ADDR
+- !Flag
+  optional: true
+  synonyms:
+  - -P
+  - --port-number
+  description: "Port number to use for anvi'o services. If nothing is\ndeclared, anvi'o\
+    \ will try to find a suitable port\nnumber, starting from the default port number,\
+    \ 8080.\n(default: None)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --browser-path
+  description: "By default, anvi'o will use your default browser to\nlaunch the interactive\
+    \ interface. If you would like to\nuse something else than your system default,\
+    \ you can\nprovide a full path for an alternative browser using\nthis parameter,\
+    \ and hope for the best. For instance we\nare using this parameter to call Google's\
+    \ experimental\nbrowser, Canary, which performs better with demanding\nvisualizations.\
+    \ (default: None)"
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --read-only
+  description: "When the interactive interface is started with this\nflag, all 'database\
+    \ write' operations will be\ndisabled. (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --server-only
+  description: "The default behavior is to start the local server, and\nfire up a\
+    \ browser that connects to the server. If you\nhave other plans, and want to start\
+    \ the server without\ncalling the browser, this is the flag you need.\n(default:\
+    \ False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --password-protected
+  description: "If this flag is set, command line tool will ask you to\nenter a password\
+    \ and interactive interface will be\nonly accessible after entering same password.\
+    \ This\noption is recommended for shared machines like\nclusters or shared networks\
+    \ where computers are not\nisolated. (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --user-server-shutdown
+  description: "Allow users to shutdown an anvi'server via web\ninterface. (default:\
+    \ False)"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: anvi-display-pan [-h] -p PAN_DB [-g GENOMES_STORAGE] [-d VIEW_DATA]\n\
+  \                        [-t NEWICK] [-V ADDITIONAL_VIEW]\n                    \
+  \    [-A ADDITIONAL_LAYERS] [--view NAME] [--title NAME]\n                     \
+  \   [--state-autoload NAME] [--collection-autoload NAME]\n                     \
+  \   [--export-svg FILE_PATH] [--skip-init-functions]\n                        [--dry-run]\
+  \ [--skip-auto-ordering] [--skip-news]\n                        [-I IP_ADDR] [-P\
+  \ INT] [--browser-path PATH]\n                        [--read-only] [--server-only]\
+  \ [--password-protected]\n                        [--user-server-shutdown]\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n\nINPUT FILES:\n\
+  \  Input files from the pangenome analysis.\n\n  -p PAN_DB, --pan-db PAN_DB\n  \
+  \                      Anvi'o pan database (default: None)\n  -g GENOMES_STORAGE,\
+  \ --genomes-storage GENOMES_STORAGE\n                        Anvi'o genomes storage\
+  \ file (default: None)\n\nOPTIONAL INPUTS:\n  Where the yay factor becomes a reality.\n\
+  \n  -d VIEW_DATA, --view-data VIEW_DATA\n                        A TAB-delimited\
+  \ file for view data (default: None)\n  -t NEWICK, --tree NEWICK\n             \
+  \           NEWICK formatted tree structure (default: None)\n\nADDITIONAL STUFF:\n\
+  \  Parameters to provide additional layers, views, or layer data.\n\n  -V ADDITIONAL_VIEW,\
+  \ --additional-view ADDITIONAL_VIEW\n                        A TAB-delimited file\
+  \ for an additional view to be used\n                        in the interface. This\
+  \ file should contain all split\n                        names, and values for each\
+  \ of them in all samples.\n                        Each column in this file must\
+  \ correspond to a sample\n                        name. Content of this file will\
+  \ be called 'user_view',\n                        which will be available as a new\
+  \ item in the 'views'\n                        combo box in the interface (default:\
+  \ None)\n  -A ADDITIONAL_LAYERS, --additional-layers ADDITIONAL_LAYERS\n       \
+  \                 A TAB-delimited file for additional layers for splits.\n     \
+  \                   The first column of this file must be split names, and\n   \
+  \                     the remaining columns should be unique attributes. The\n \
+  \                       file does not need to contain all split names, or\n    \
+  \                    values for each split in every column. Anvi'o will try\n  \
+  \                      to deal with missing data nicely. Each column in this\n \
+  \                       file will be visualized as a new layer in the tree.\n  \
+  \                      (default: None)\n\nVISUALS RELATED:\n  Parameters that give\
+  \ access to various adjustements regarding the\n  interface.\n\n  --view NAME  \
+  \         Start the interface with a pre-selected view. To see a\n             \
+  \           list of available views, use --show-views flag.\n                  \
+  \      (default: None)\n  --title NAME          Title for the interface. If you\
+  \ are working with a\n                        RUNINFO dict, the title will be determined\
+  \ based on\n                        information stored in that file. Regardless,\
+  \ you can\n                        override that value using this parameter. (default:\n\
+  \                        None)\n  --state-autoload NAME\n                      \
+  \  Automatically load previous saved state and draw tree.\n                    \
+  \    To see a list of available states, use --show-states\n                    \
+  \    flag. (default: None)\n  --collection-autoload NAME\n                     \
+  \   Automatically load a collection and draw tree. To see\n                    \
+  \    a list of available collections, use --list-\n                        collections\
+  \ flag. (default: None)\n  --export-svg FILE_PATH\n                        The SVG\
+  \ output file path. (default: None)\n\nSWEET PARAMS OF CONVENIENCE:\n  Parameters\
+  \ and flags that are not quite essential (but nice to have).\n\n  --skip-init-functions\n\
+  \                        When declared, function calls for genes will not be\n \
+  \                       initialized (therefore will be missing from all\n      \
+  \                  relevant interfaces or output files). The use of this\n     \
+  \                   flag may reduce the memory fingerprint and processing\n    \
+  \                    time for large datasets. (default: False)\n  --dry-run    \
+  \         Don't do anything real. Test everything, and stop\n                  \
+  \      right before wherever the developer said 'well, this\n                  \
+  \      is enough testing', and decided to print out results.\n                 \
+  \       (default: False)\n  --skip-auto-ordering  When declared, the attempt to\
+  \ include automatically\n                        generated orders of items based\
+  \ on additional data is\n                        skipped. In case those buggers\
+  \ cause issues with your\n                        data, and you still want to see\
+  \ your stuff and deal\n                        with the other issue maybe later.\
+  \ (default: False)\n  --skip-news           Don't try to read news content from\
+  \ upstream.\n                        (default: False)\n\nSERVER CONFIGURATION:\n\
+  \  For power users.\n\n  -I IP_ADDR, --ip-address IP_ADDR\n                    \
+  \    IP address for the HTTP server. The default ip address\n                  \
+  \      (0.0.0.0) should work just fine for most.\n  -P INT, --port-number INT\n\
+  \                        Port number to use for anvi'o services. If nothing is\n\
+  \                        declared, anvi'o will try to find a suitable port\n   \
+  \                     number, starting from the default port number, 8080.\n   \
+  \                     (default: None)\n  --browser-path PATH   By default, anvi'o\
+  \ will use your default browser to\n                        launch the interactive\
+  \ interface. If you would like to\n                        use something else than\
+  \ your system default, you can\n                        provide a full path for\
+  \ an alternative browser using\n                        this parameter, and hope\
+  \ for the best. For instance we\n                        are using this parameter\
+  \ to call Google's experimental\n                        browser, Canary, which\
+  \ performs better with demanding\n                        visualizations. (default:\
+  \ None)\n  --read-only           When the interactive interface is started with\
+  \ this\n                        flag, all 'database write' operations will be\n\
+  \                        disabled. (default: False)\n  --server-only         The\
+  \ default behavior is to start the local server, and\n                        fire\
+  \ up a browser that connects to the server. If you\n                        have\
+  \ other plans, and want to start the server without\n                        calling\
+  \ the browser, this is the flag you need.\n                        (default: False)\n\
+  \  --password-protected  If this flag is set, command line tool will ask you to\n\
+  \                        enter a password and interactive interface will be\n  \
+  \                      only accessible after entering same password. This\n    \
+  \                    option is recommended for shared machines like\n          \
+  \              clusters or shared networks where computers are not\n           \
+  \             isolated. (default: False)\n  --user-server-shutdown\n           \
+  \             Allow users to shutdown an anvi'server via web\n                 \
+  \       interface. (default: False)\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\
+  \n\U0001F525 Program description:\n\n   Start an anvi'o server to display a pan-genome\n\
+  \n\U0001F9C0 Can consume: \n\n   pan-db / genomes-storage-db\n   \n\U0001F355 Can\
+  \ provide: \n\n   collection / bin / interactive / svg\n   \n\U0001F37A More on\
+  \ `anvi-display-pan`:\n\n   https://merenlab.org/software/anvio/help/7/programs/anvi-display-pan\n\
+  \n\U0001F37B All anvi'o programs and artifacts:\n\n   https://merenlab.org/software/anvio/help/7\n\
+  \n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\
+  \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/anvio-minimal:7--py_0

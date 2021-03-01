@@ -12,6 +12,9 @@ task RnftoolsSam2es {
       ~{if defined(es) then ("--es " +  '"' + es + '"') else ""} \
       ~{if defined(allowed_delta) then ("--allowed-delta " +  '"' + allowed_delta + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sam: "SAM/BAM with aligned RNF reads(- for standard input)."
     es: "Output ES file (evaluated segments, - for standard\\noutput)."

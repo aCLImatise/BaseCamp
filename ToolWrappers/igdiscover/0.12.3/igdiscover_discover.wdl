@@ -8,7 +8,7 @@ task IgdiscoverDiscover {
     String? gene
     String? limit
     Int? atleast_error_rate
-    Int? consensus_include_atmost
+    Int? atmost_error_rate
     Int? window_width
     Boolean? no_cluster
     String? cluster_exact
@@ -31,7 +31,7 @@ task IgdiscoverDiscover {
       ~{if defined(gene) then ("--gene " +  '"' + gene + '"') else ""} \
       ~{if defined(limit) then ("--limit " +  '"' + limit + '"') else ""} \
       ~{if defined(atleast_error_rate) then ("--left " +  '"' + atleast_error_rate + '"') else ""} \
-      ~{if defined(consensus_include_atmost) then ("--right " +  '"' + consensus_include_atmost + '"') else ""} \
+      ~{if defined(atmost_error_rate) then ("--right " +  '"' + atmost_error_rate + '"') else ""} \
       ~{if defined(window_width) then ("--window-width " +  '"' + window_width + '"') else ""} \
       ~{if (no_cluster) then "--no-cluster" else ""} \
       ~{if defined(cluster_exact) then ("--cluster-exact " +  '"' + cluster_exact + '"') else ""} \
@@ -46,6 +46,9 @@ task IgdiscoverDiscover {
       ~{if defined(database) then ("--database " +  '"' + database + '"') else ""} \
       ~{if defined(read_names) then ("--read-names " +  '"' + read_names + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threads: "Number of threads. Default: no. of available CPUs, but\\nat most 4"
     seed: "Seed value for random numbers for reproducible runs."
@@ -53,7 +56,7 @@ task IgdiscoverDiscover {
     gene: "Compute consensus for this gene. Can be given multiple\\ntimes. Default: Compute for all genes."
     limit: "Skip remaining genes as soon as at least N candidates\\nwere generated. Default: No limit"
     atleast_error_rate: "For consensus, include only sequences that have at\\nleast this error rate (in percent). Default: 0"
-    consensus_include_atmost: "For consensus, include only sequences that have at\\nmost this error rate (in percent). Default: 100"
+    atmost_error_rate: "For consensus, include only sequences that have at\\nmost this error rate (in percent). Default: 100"
     window_width: "Compute consensus for all PERCENT-wide windows. Set to\\n0 to disable. Default: 2"
     no_cluster: "Do not run linkage cluster analysis."
     cluster_exact: "Treat N exact occurrences of a sequence as a cluster.\\nDefault: Do not cluster exact occurrences"

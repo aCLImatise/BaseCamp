@@ -22,6 +22,9 @@ task FrameBotStat {
       ~{if defined(sample_mapping) then ("--sample-mapping " +  '"' + sample_mapping + '"') else ""} \
       ~{if defined(stat_type) then ("--stat-type " +  '"' + stat_type + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     seq_desc: "the description of the reference seq, tab-delimited file or fasta"
     identity: "the minimum protein identity, default is 0, range [0-100]"

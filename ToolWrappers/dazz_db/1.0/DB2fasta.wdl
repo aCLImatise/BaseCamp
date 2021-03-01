@@ -8,6 +8,9 @@ task DB2fasta {
     DB2fasta \
       ~{if (vu) then "-vU" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     vu: ""
   }

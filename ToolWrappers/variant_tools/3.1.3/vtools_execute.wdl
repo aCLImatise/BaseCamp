@@ -16,6 +16,9 @@ task VtoolsExecute {
       ~{if defined(delimiter) then ("--delimiter " +  '"' + delimiter + '"') else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     jobs: "Execute the pipeline in parallel model if a number\\nother than 1 is specified. In this mode, the\\nRunCommand action will create a shell script and\\nsubmit the job using a command specified by option\\n``submitter``, if this parameter is defined."
     delimiter: "Delimiter used to output results of a SQL query."

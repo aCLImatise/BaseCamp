@@ -18,6 +18,9 @@ task Nanosimhtrain {
       ~{if defined(b) then ("-b " +  '"' + b + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_file: "training ONT real reads, must be fasta files"
     maf: "user can provide their own alignment file, with maf"

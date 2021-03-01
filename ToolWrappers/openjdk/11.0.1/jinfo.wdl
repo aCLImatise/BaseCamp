@@ -14,6 +14,9 @@ task Jinfo {
       ~{if (flags) then "-flags" else ""} \
       ~{if (sys_props) then "-sysprops" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     flags: "to print VM flags"
     sys_props: "to print Java system properties"

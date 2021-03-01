@@ -4,7 +4,7 @@ task Hivnetworkannotate {
   input {
     File? output_annotated_file
     Boolean? input_network_file
-    String? missing__missing
+    String? missing_missing_missingif
     Boolean? clear
     String? index
     Boolean? in_place
@@ -21,7 +21,7 @@ task Hivnetworkannotate {
       ~{network} \
       ~{if (output_annotated_file) then "-o" else ""} \
       ~{if (input_network_file) then "-n" else ""} \
-      ~{if defined(missing__missing) then ("-x " +  '"' + missing__missing + '"') else ""} \
+      ~{if defined(missing_missing_missingif) then ("-x " +  '"' + missing_missing_missingif + '"') else ""} \
       ~{if (clear) then "--clear" else ""} \
       ~{if defined(index) then ("--index " +  '"' + index + '"') else ""} \
       ~{if (in_place) then "--inplace" else ""} \
@@ -30,10 +30,13 @@ task Hivnetworkannotate {
       ~{if defined(csv) then ("--csv " +  '"' + csv + '"') else ""} \
       ~{if defined(field_field_field) then ("-f " +  '"' + field_field_field + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_annotated_file: "[OUTPUT], --output [OUTPUT]\\nOutput the annotated JSON network file to"
     input_network_file: "[NETWORK], --network [NETWORK]\\nThe input network file to process"
-    missing__missing: "MISSING, --missing MISSING MISSING\\nIf desired, provide a value to inject for nodes that\\ndo not have an attribute value specified"
+    missing_missing_missingif: "MISSING, --missing MISSING MISSING\\nIf desired, provide a value to inject for nodes that\\ndo not have an attribute value specified"
     clear: "Flush existing attributes"
     index: "The name of the column that indexes records (patient\\nID); default is to index on the first column"
     in_place: "Write attributes to the input file (cannot be stdin)"

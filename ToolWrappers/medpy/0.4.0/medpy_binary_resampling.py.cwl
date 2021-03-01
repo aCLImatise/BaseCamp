@@ -3,22 +3,22 @@ id: medpy_binary_resampling.py.cwl
 inputs:
 - id: in_order
   doc: the bspline order, default is 0 (= nearest neighbour)
-  type: long
+  type: long?
   inputBinding:
     prefix: --order
 - id: in_verbose
   doc: verbose output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_display_debug_information
   doc: Display debug information.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -d
 - id: in_force
   doc: overwrite existing files
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --force
 - id: in_input
@@ -40,6 +40,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - medpy_binary_resampling.py

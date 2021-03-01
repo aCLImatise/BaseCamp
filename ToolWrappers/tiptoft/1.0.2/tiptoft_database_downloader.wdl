@@ -10,6 +10,9 @@ task TiptoftDatabaseDownloader {
       ~{output_prefix} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Turn on debugging (default: False)"
     output_prefix: "Output prefix"

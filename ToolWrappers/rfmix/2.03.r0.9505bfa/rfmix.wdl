@@ -48,6 +48,9 @@ task Rfmix {
       ~{if defined(n_threads) then ("--n-threads " +  '"' + n_threads + '"') else ""} \
       ~{if defined(random_seed) then ("--random-seed " +  '"' + random_seed + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     query_file: "(required)\\nVCF file with samples to analyze                      (required)"
     reference_file: "(required)\\nVCF file with reference individuals                   (required)"

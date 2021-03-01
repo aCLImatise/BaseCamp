@@ -8,22 +8,22 @@ inputs:
     \ you can specify what is the\npercentage of reads you expect to pass while this\n\
     trimming script tries to maximize the remaining read\nlength after trimming. Default\
     \ is 95.00"
-  type: long
+  type: long?
   inputBinding:
     prefix: --min-percent
 - id: in_from_end
   doc: Trim from the end of the file
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --from-end
 - id: in_from_start
   doc: Trim from the beginning of the file
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --from-start
 - id: in_output
   doc: "Output file name\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 outputs:
@@ -32,9 +32,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: "Output file name\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - o-smart-trim

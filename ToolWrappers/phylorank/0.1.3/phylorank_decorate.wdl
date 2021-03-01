@@ -22,6 +22,9 @@ task PhylorankDecorate {
       ~{if defined(min_children) then ("--min_children " +  '"' + min_children + '"') else ""} \
       ~{if defined(min_support) then ("--min_support " +  '"' + min_support + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     viral: "indicates a viral input tree and taxonomy"
     skip_rd_refine: "skip refinement of taxonomy based on relative\\ndivergence information"

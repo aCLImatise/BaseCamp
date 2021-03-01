@@ -15,6 +15,10 @@ task Mhcflurryclass1selectpanallelemodels {
     Int? max_workers_per_gpu
     Int? max_tasks_per_worker
     Directory? worker_log_dir
+    String? cluster_submit_command
+    String? cluster_results_workdir
+    File? additional_complete_file
+    File? cluster_script_prefix_path
     String model
     String select
     Int class_one
@@ -40,8 +44,15 @@ task Mhcflurryclass1selectpanallelemodels {
       ~{if defined(gpus) then ("--gpus " +  '"' + gpus + '"') else ""} \
       ~{if defined(max_workers_per_gpu) then ("--max-workers-per-gpu " +  '"' + max_workers_per_gpu + '"') else ""} \
       ~{if defined(max_tasks_per_worker) then ("--max-tasks-per-worker " +  '"' + max_tasks_per_worker + '"') else ""} \
-      ~{if defined(worker_log_dir) then ("--worker-log-dir " +  '"' + worker_log_dir + '"') else ""}
+      ~{if defined(worker_log_dir) then ("--worker-log-dir " +  '"' + worker_log_dir + '"') else ""} \
+      ~{if defined(cluster_submit_command) then ("--cluster-submit-command " +  '"' + cluster_submit_command + '"') else ""} \
+      ~{if defined(cluster_results_workdir) then ("--cluster-results-workdir " +  '"' + cluster_results_workdir + '"') else ""} \
+      ~{if defined(additional_complete_file) then ("--additional-complete-file " +  '"' + additional_complete_file + '"') else ""} \
+      ~{if defined(cluster_script_prefix_path) then ("--cluster-script-prefix-path " +  '"' + cluster_script_prefix_path + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     data: "Model selection data CSV. Expected columns: allele,\\npeptide, measurement_value"
     models_dir: "Directory to read models"
@@ -56,6 +67,10 @@ task Mhcflurryclass1selectpanallelemodels {
     max_workers_per_gpu: "Maximum number of workers to assign to a GPU.\\nAdditional tasks will run on CPU."
     max_tasks_per_worker: "Restart workers after N tasks. Workaround for\\ntensorflow memory leaks. Requires Python >=3.2."
     worker_log_dir: "Write worker stdout and stderr logs to given\\ndirectory."
+    cluster_submit_command: "Default: sh"
+    cluster_results_workdir: "Default: ./cluster-workdir"
+    additional_complete_file: "Additional file to monitor for job completion.\\nDefault: STDERR"
+    cluster_script_prefix_path: "How many times to rerun failing jobs. Default: 3\\n"
     model: ""
     select: ""
     class_one: ""

@@ -8,6 +8,9 @@ task Pyega3Files {
     pyega3 files \
       ~{identifier}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     identifier: "Dataset ID (e.g. EGAD00000000001)"
   }

@@ -3,7 +3,7 @@ id: fix_map_ordering.cwl
 inputs:
 - id: in_sam_header
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: --sam-header
 - id: in_in_sam_file
@@ -18,13 +18,14 @@ inputs:
     position: 1
 - id: in_out_unmapped_bam
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     position: 2
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - fix_map_ordering

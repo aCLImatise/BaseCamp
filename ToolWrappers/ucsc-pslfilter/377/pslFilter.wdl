@@ -30,6 +30,9 @@ task PslFilter {
       ~{if (no_head) then "-noHead" else ""} \
       ~{if (minal_it) then "-minAliT" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dir: "Input files are directories rather than single files"
     reward: "(default 1) Bonus to score for match"

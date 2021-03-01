@@ -34,6 +34,9 @@ task SamtoolsPhase {
       ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     block_length: "block length [13]"
     prefix_bams_output: "prefix of BAMs to output [null]"

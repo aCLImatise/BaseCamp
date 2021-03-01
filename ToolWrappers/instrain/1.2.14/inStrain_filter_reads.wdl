@@ -2,7 +2,7 @@ version 1.0
 
 task InStrainFilterReads {
   input {
-    Directory? location_folder_store
+    Directory? location_store_reports
     Int? processes
     Boolean? debug
     Float? filter_cut_off
@@ -20,7 +20,7 @@ task InStrainFilterReads {
     inStrain filter_reads \
       ~{bam} \
       ~{fast_a} \
-      ~{if defined(location_folder_store) then ("--output " +  '"' + location_folder_store + '"') else ""} \
+      ~{if defined(location_store_reports) then ("--output " +  '"' + location_store_reports + '"') else ""} \
       ~{if defined(processes) then ("--processes " +  '"' + processes + '"') else ""} \
       ~{if (debug) then "--debug" else ""} \
       ~{if defined(filter_cut_off) then ("--filter_cutoff " +  '"' + filter_cut_off + '"') else ""} \
@@ -32,8 +32,11 @@ task InStrainFilterReads {
       ~{if (scaffold_level_read_report) then "--scaffold_level_read_report" else ""} \
       ~{if (de_a_tiled_read_report) then "--deatiled_read_report" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    location_folder_store: "Location of folder to store read report(s) (default:\\nNone)"
+    location_store_reports: "Location of folder to store read report(s) (default:\\nNone)"
     processes: "Number of processes to use (default: 6)"
     debug: "Make extra debugging output (default: False)"
     filter_cut_off: "Minimum percent identity of read pairs to consensus to\\nuse the reads. Must be >, not >= (default: 0.95)"

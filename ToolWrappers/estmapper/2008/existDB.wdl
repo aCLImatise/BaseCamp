@@ -20,6 +20,9 @@ task ExistDB {
       ~{if defined(test_existence) then ("-testexistence " +  '"' + test_existence + '"') else ""} \
       ~{if defined(test_exhaustive) then ("-testexhaustive " +  '"' + test_exhaustive + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mer_size: "-- Use the specified mersize when building existDB tables."
     build: "prefix\\n-- Build an existDB on all mers in some.fasta and save\\nthe tables into prefix."

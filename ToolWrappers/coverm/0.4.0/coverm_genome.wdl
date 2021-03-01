@@ -2,7 +2,7 @@ version 1.0
 
 task CovermGenome {
   input {
-    Directory? coupled
+    String? coupled
     String? contig_end_exclusion
   }
   command <<<
@@ -10,8 +10,11 @@ task CovermGenome {
       ~{if defined(coupled) then ("--coupled " +  '"' + coupled + '"') else ""} \
       ~{if defined(contig_end_exclusion) then ("--contig-end-exclusion " +  '"' + contig_end_exclusion + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    coupled: "...\\n--genome-definition <genome-definition>\\n--genome-fasta-directory <genome-fasta-directory>\\n--genome-fasta-files <genome-fasta-files>...\\n--interleaved <interleaved>...\\n-1 <read1>...\\n-2 <read2>...\\n--separator <separator>\\n--single <single>..."
+    coupled: ""
     contig_end_exclusion: ""
   }
   output {

@@ -18,6 +18,9 @@ task AgatSpClipNSeqExtremitiesAndFixCoordinatespl {
       ~{if (of) then "--of" else ""} \
       ~{if (og) then "--og" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gff: "Input GTF/GFF file."
     fast_a: "Input fasta file."

@@ -24,6 +24,9 @@ task Monop {
       ~{if (x_a) then "--xa" else ""} \
       ~{if (shows_types_declare) then "--a" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     declared_only: "Only show members declared in the Type"
     filter_obsolete: "Do not show obsolete types and members"

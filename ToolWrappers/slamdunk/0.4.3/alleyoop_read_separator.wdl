@@ -22,6 +22,9 @@ task AlleyoopReadseparator {
       ~{if defined(min_base_qual) then ("--min-base-qual " +  '"' + min_base_qual + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_dir: "Output directory for bam files."
     snp_directory: "Directory containing SNP files."

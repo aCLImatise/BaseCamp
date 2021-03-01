@@ -12,6 +12,9 @@ task TransabyssmergePATH {
       ~{if defined(max_k) then ("--maxk " +  '"' + max_k + '"') else ""} \
       ~{if defined(mink) then ("--mink " +  '"' + mink + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     max_k: ""
     mink: ""

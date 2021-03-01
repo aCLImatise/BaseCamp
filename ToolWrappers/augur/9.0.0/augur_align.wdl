@@ -26,6 +26,9 @@ task AugurAlign {
       ~{if defined(existing_alignment) then ("--existing-alignment " +  '"' + existing_alignment + '"') else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sequences: "sequences to align (default: None)"
     output_file_default: "output file (default: alignment.fasta)"

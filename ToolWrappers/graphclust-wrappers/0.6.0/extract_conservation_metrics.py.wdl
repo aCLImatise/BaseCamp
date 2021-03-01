@@ -4,6 +4,9 @@ task ExtractConservationMetricspy {
   command <<<
     extract_conservation_metrics_py
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

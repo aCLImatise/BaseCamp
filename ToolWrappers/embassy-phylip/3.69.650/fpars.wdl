@@ -22,6 +22,9 @@ task Fpars {
       ~{if (step_box) then "-stepbox" else ""} \
       ~{if (an_cseq) then "-ancseq" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     weights: "properties Weights file"
     method: "menu       [Wagner] Choose the parsimony method to use\\n(Values: w (Wagner); c (Camin-Sokal))"

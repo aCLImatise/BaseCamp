@@ -10,6 +10,9 @@ task HubPublicCheck {
       ~{if (udc_dir) then "-udcDir" else ""} \
       ~{if defined(add_hub) then ("-addHub " +  '"' + add_hub + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     udc_dir: "=/dir/to/cache - place to put cache for remote bigBed/bigWigs"
     add_hub: "- output statments to add url to table"

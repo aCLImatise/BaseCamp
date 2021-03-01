@@ -3,17 +3,17 @@ id: dnase_to_JSON.py_output.cwl
 inputs:
 - id: in_a
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -A
 - id: in_i
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -i
 - id: in_w
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -w
 - id: in_dnase_to_json_do_tpy
@@ -40,6 +40,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - dnase_to_JSON.py

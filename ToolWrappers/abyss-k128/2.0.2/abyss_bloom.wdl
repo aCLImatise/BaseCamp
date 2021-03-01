@@ -50,6 +50,9 @@ task Abyssbloom {
       ~{if (fast_a) then "--fasta" else ""} \
       ~{if (raw) then "--raw" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     km_er: "the size of a k-mer [required]"
     verbose: "display verbose output"
@@ -67,7 +70,7 @@ task Abyssbloom {
     trim_quality: "trim bases from the ends of reads whose\\nquality is less than the threshold"
     standard_quality: "zero quality is `!' (33)\\ndefault for FASTQ and SAM files"
     illumina_quality: "zero quality is `@' (64)\\ndefault for qseq and export files"
-    window: "build a bloom filter for subwindow M of N"
+    window: "/N           build a bloom filter for subwindow M of N"
     method: "=`String'      choose distance calculation method\\n[`jaccard'(default), `forbes', `czekanowski']"
     inverse: "get k-mers that are *NOT* in the bloom filter"
     bed: "output k-mers in BED format"

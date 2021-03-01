@@ -36,6 +36,9 @@ task CsvtkCsv2json {
       ~{if (out_tabs) then "--out-tabs" else ""} \
       ~{if (tabs) then "--tabs" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     indent: "indent. if given blank, output json in one line. (default \\\"  \\\")"
     key: "output json as an array of objects keyed by a given filed rather than as a list. e.g -k 1 or -k columnA"

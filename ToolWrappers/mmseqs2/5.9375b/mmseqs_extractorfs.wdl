@@ -32,6 +32,9 @@ task MmseqsExtractorfs {
       ~{if (threads) then "--threads" else ""} \
       ~{if (verbosity_level_nothing) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_length: "1               minimum codon number in open reading frames"
     max_length: "2147483647      maximum codon number in open reading frames"

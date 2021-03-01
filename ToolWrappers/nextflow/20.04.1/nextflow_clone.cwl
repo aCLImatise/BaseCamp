@@ -3,17 +3,17 @@ id: nextflow_clone.cwl
 inputs:
 - id: in_hub
   doc: Service hub where the project is hosted
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -hub
 - id: in_revision_clone_it
   doc: Revision to clone - It can be a git branch, tag or revision number
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -r
 - id: in_user
   doc: "Private repository user name\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -user
 - id: in_clone
@@ -50,6 +50,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - nextflow

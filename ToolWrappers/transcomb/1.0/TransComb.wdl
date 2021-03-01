@@ -34,6 +34,9 @@ task TransComb {
       ~{if defined(fraction_exon_allowed) then ("-m " +  '"' + fraction_exon_allowed + '"') else ""} \
       ~{if (report_current_version) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bam_file_produced: ": BAM file produced by Tophat or Tophat2."
     strandspecific_rnaseq_reads: ": Strand-specific RNA-Seq reads orientation.\\n1) Use <unstranded> to indicate RNA-seq reads are non-strand-specific.\\n2) Use <first> to indicate fr-first-stranded RNA-seq reads.\\n3) Use <second> to indicate fr-second-stranded RNA-seq reads."

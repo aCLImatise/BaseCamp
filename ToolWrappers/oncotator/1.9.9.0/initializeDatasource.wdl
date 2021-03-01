@@ -24,6 +24,9 @@ task InitializeDatasource {
       ~{if defined(annotation_columns) then ("--annotation_columns " +  '"' + annotation_columns + '"') else ""} \
       ~{if defined(match_mode) then ("--match_mode " +  '"' + match_mode + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ds_type: "datasource type.  Type of datasource to create."
     ds_file: "datasource filename.  Headers must be on the first line.  This is the source file that contains annotation data."

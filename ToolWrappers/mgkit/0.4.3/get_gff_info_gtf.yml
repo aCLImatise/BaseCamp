@@ -4,28 +4,35 @@ command:
 - gtf
 positional:
 - !Positional
-  description: ''
+  optional: true
   position: 0
   name: GFF_FILE
-  optional: true
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 1
   name: GTF_FILE
-  optional: true
+  description: ''
 named:
 - !Flag
-  description: "-g, --gene-id TEXT  GFF attribute to use for the GTF *gene_id* attribute\n\
-    [default: gene_id]\n--help              Show this message and exit.\n"
+  optional: true
   synonyms:
   - -v
   - --verbose
-  args: !EmptyFlagArg {}
-  optional: true
+  - -g
+  - --gene-id
+  description: "GFF attribute to use for the GTF *gene_id* attribute\n[default: gene_id]"
+  args: !SimpleFlagArg
+    name: TEXT
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
 usage_flag:
 version_flag:
 help_text: "Usage: get-gff-info gtf [OPTIONS] [GFF_FILE] [GTF_FILE]\n\n  Extract annotations\
@@ -35,3 +42,4 @@ help_text: "Usage: get-gff-info gtf [OPTIONS] [GFF_FILE] [GTF_FILE]\n\n  Extract
   \ and exit.\n"
 generated_using:
 - --help
+docker_image:

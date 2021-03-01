@@ -16,11 +16,9 @@ task BiomConvert {
     Boolean? table_type
     Boolean? process_obs_metadata
     Boolean? tsv_metadata_formatter
-    String format_dot_org_slash_documentation_slash_biom_conversion_dot_html
   }
   command <<<
     biom convert \
-      ~{format_dot_org_slash_documentation_slash_biom_conversion_dot_html} \
       ~{if defined(input_fp) then ("--input-fp " +  '"' + input_fp + '"') else ""} \
       ~{if defined(output_fp) then ("--output-fp " +  '"' + output_fp + '"') else ""} \
       ~{if defined(sample_metadata_fp) then ("--sample-metadata-fp " +  '"' + sample_metadata_fp + '"') else ""} \
@@ -36,6 +34,9 @@ task BiomConvert {
       ~{if (process_obs_metadata) then "--process-obs-metadata" else ""} \
       ~{if (tsv_metadata_formatter) then "--tsv-metadata-formatter" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_fp: "The input BIOM table  [required]"
     output_fp: "The output BIOM table  [required]"
@@ -51,7 +52,6 @@ task BiomConvert {
     table_type: "[OTU table|Pathway table|Function table|Ortholog table|Gene table|Metabolite table|Taxon table|Table]\\nThe type of the table."
     process_obs_metadata: "[taxonomy|naive|sc_separated]\\nProcess metadata associated with\\nobservations when converting from a classic\\ntable."
     tsv_metadata_formatter: "[naive|sc_separated]\\nMethod for formatting the observation\\nmetadata."
-    format_dot_org_slash_documentation_slash_biom_conversion_dot_html: "Example usage:"
   }
   output {
     File out_stdout = stdout()

@@ -14,6 +14,9 @@ task PslPartition {
       ~{if defined(part_size) then ("-partSize " +  '"' + part_size + '"') else ""} \
       ~{if (drop_contained) then "-dropContained" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out_levels: "- number of output subdirectory levels.  0 puts all files\\ndirectly in outDir, 2, will create files in the form outDir/0/0/00.psl"
     part_size: "- will combine non-overlapping partitions, while attempting\\nto keep them under this number of PSLs.  This reduces the number of\\nfiles that are created while ensuring that there are no overlaps\\nbetween any two PSL files.  A value of 0 creates a PSL file per set of\\noverlapping PSLs."

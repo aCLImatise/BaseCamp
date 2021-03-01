@@ -4,113 +4,113 @@ command:
 positional: []
 named:
 - !Flag
-  description: Print debug information (very verbose) to file /create_clone.log
+  optional: true
   synonyms:
   - -d
   - --debug
+  description: Print debug information (very verbose) to file /create_clone.log
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Add additional context (time and file) to log messages
+  optional: true
   synonyms:
   - -v
   - --verbose
+  description: Add additional context (time and file) to log messages
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Print only warnings and error messages
+  optional: true
   synonyms:
   - -s
   - --silent
+  description: Print only warnings and error messages
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(required) Specify a new case name. If not a full pathname,\nthe new\
-    \ case will be created under then current working directory."
+  optional: true
   synonyms:
   - --case
   - -case
+  description: "(required) Specify a new case name. If not a full pathname,\nthe new\
+    \ case will be created under then current working directory."
   args: !SimpleFlagArg
     name: CASE
-  optional: true
 - !Flag
-  description: "(required) Specify a case to be cloned. If not a full pathname,\n\
-    the case to be cloned is assumed to be under then current working directory."
+  optional: true
   synonyms:
   - --clone
   - -clone
+  description: "(required) Specify a case to be cloned. If not a full pathname,\n\
+    the case to be cloned is assumed to be under then current working directory."
   args: !SimpleFlagArg
     name: CLONE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --ensemble
   description: "clone an ensemble of cases, the case name argument must end in an\
     \ integer.\nfor example: ./create_clone --clone case.template --case case.001\
     \ --ensemble 4\nwill create case.001, case.002, case.003, case.004 from existing\
     \ case.template"
-  synonyms:
-  - --ensemble
   args: !SimpleFlagArg
     name: ENSEMBLE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --user-mods-dir
   description: "Full pathname to a directory containing any combination of user_nl_*\
     \ files\nand shell_commands script (typically containing xmlchange commands).\n\
     The directory can also contain an SourceMods/ directory with the same structure\n\
     as would be found in a case directory. If this argument is used in conjunction\n\
     with the --keepexe flag, then no changes will be permitted to the env_build.xml\n\
     in the newly created case directory."
-  synonyms:
-  - --user-mods-dir
   args: !SimpleFlagArg
     name: USER_MODS_DIR
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --keepexe
+  - -keepexe
   description: "Sets EXEROOT to point to original build. It is HIGHLY recommended\n\
     that the original case be built BEFORE cloning it if the --keepexe flag is specfied.\n\
     This flag will make the SourceMods/ directory in the newly created case directory\
     \ a\nsymbolic link to the SourceMods/ directory in the original case directory."
-  synonyms:
-  - --keepexe
-  - -keepexe
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Specify the locations of the Machines directory, other than the default.\n\
-    The default is CIMEROOT/machines."
+  optional: true
   synonyms:
   - --mach-dir
   - -mach_dir
+  description: "Specify the locations of the Machines directory, other than the default.\n\
+    The default is CIMEROOT/machines."
   args: !SimpleFlagArg
     name: MACH_DIR
-  optional: true
 - !Flag
-  description: "Specify a project id. The default is the user-specified environment\
-    \ variable\nvariable PROJECT or ACCOUNT or read from ~/.cesm_proj."
+  optional: true
   synonyms:
   - --project
   - -project
+  description: "Specify a project id. The default is the user-specified environment\
+    \ variable\nvariable PROJECT or ACCOUNT or read from ~/.cesm_proj."
   args: !SimpleFlagArg
     name: PROJECT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --cime-output-root
   description: "Specify the root output directory. The default is the setting in the\
     \ original\ncase directory. NOTE: create_clone will fail if this directory is\
     \ not writable.\n"
-  synonyms:
-  - --cime-output-root
   args: !SimpleFlagArg
     name: CIME_OUTPUT_ROOT
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: create_clone [-h] [-d] [-v] [-s] --case CASE --clone CLONE\n  \
@@ -153,3 +153,4 @@ help_text: "usage: create_clone [-h] [-d] [-v] [-s] --case CASE --clone CLONE\n 
   \ NOTE: create_clone will fail if this directory is not writable.\n"
 generated_using:
 - --help
+docker_image:

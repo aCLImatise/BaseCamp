@@ -26,6 +26,9 @@ task ChiselPseudonormal {
       ~{if defined(tmpdir) then ("--tmpdir " +  '"' + tmpdir + '"') else ""} \
       ~{if defined(normal) then ("--normal " +  '"' + normal + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference: "Reference genome"
     run_dir: "Running directory (default: current directory)"

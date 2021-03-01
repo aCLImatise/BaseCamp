@@ -14,6 +14,9 @@ task AcpypeParamsGmxOpls {
       ~{if defined(output_path_itp) then ("--output_path_itp " +  '"' + output_path_itp + '"') else ""} \
       ~{if defined(output_path_top) then ("--output_path_top " +  '"' + output_path_top + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config: "Configuration file"
     input_path: "Path to the input file. Accepted formats: pdb, mdl, mol2."

@@ -22,6 +22,9 @@ task AquilaStLFRPhasingAllVariants {
       ~{if defined(assembly_dir) then ("--assembly_dir " +  '"' + assembly_dir + '"') else ""} \
       ~{if defined(block_len_use) then ("--block_len_use " +  '"' + block_len_use + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     assembly_vcf: "vcf file"
     vcf_file: "vcf file"

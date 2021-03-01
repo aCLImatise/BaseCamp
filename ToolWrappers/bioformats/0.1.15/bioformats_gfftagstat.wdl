@@ -14,6 +14,9 @@ task BioformatsGfftagstat {
       ~{if defined(type) then ("--type " +  '"' + type + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     source: "filter GFF3 features by the specified source"
     type: "filter GFF3 features by the specified type"

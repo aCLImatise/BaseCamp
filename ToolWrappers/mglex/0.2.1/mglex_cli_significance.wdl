@@ -18,6 +18,9 @@ task MglexcliSignificance {
       ~{if defined(responsibility) then ("--responsibility " +  '"' + responsibility + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     data: "Log-likelihood matrix for which to calculate p-values; default standard input"
     weight: "Weights (sequence length) file"

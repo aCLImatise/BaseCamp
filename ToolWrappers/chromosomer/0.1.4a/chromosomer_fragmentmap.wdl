@@ -20,6 +20,9 @@ task ChromosomerFragmentmap {
       ~{if defined(ratio_threshold) then ("--ratio_threshold " +  '"' + ratio_threshold + '"') else ""} \
       ~{if (shrink_gaps) then "--shrink_gaps" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ratio_threshold: "the least ratio of two greatest fragment alignment\\nscores to determine the fragment placed to a reference\\ngenome (default: 1.2)"
     shrink_gaps: "shrink large interfragment gaps to the specified size\\n(default: False)\\n"

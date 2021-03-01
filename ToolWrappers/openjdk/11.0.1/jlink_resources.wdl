@@ -14,6 +14,9 @@ task JlinkResources {
       ~{if defined(add_modules) then ("--add-modules " +  '"' + add_modules + '"') else ""} \
       ~{if defined(module_path) then ("--module-path " +  '"' + module_path + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     add_modules: ""
     module_path: ""

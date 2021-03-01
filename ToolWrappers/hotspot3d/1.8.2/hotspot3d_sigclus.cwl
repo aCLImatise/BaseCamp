@@ -3,27 +3,27 @@ id: hotspot3d_sigclus.cwl
 inputs:
 - id: in_prep_dir
   doc: Preprocessing directory
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --prep-dir
 - id: in_pairwise
   doc: Pairwise file (pancan19.pairwise)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --pairwise
 - id: in_clusters
   doc: Cluster file (pancan19.intra.20..05.10.clusters)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --clusters
 - id: in_output
   doc: Output file prefix (pancan19.intra.20..05.10)
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_simulations
   doc: Number of simulations, default = 1000000
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --simulations
 - id: in_usage
@@ -37,9 +37,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: Output file prefix (pancan19.intra.20..05.10)
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - hotspot3d

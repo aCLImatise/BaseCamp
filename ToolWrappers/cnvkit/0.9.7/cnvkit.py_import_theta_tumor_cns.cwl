@@ -3,12 +3,12 @@ id: cnvkit.py_import_theta_tumor_cns.cwl
 inputs:
 - id: in_d
   doc: ''
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: -d
 - id: in_ploidy
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --ploidy
 - id: in_cnv_kit_do_tpy
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - cnvkit.py

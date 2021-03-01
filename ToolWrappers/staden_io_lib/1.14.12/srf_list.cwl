@@ -3,17 +3,17 @@ id: srf_list.cwl
 inputs:
 - id: in_count_only_list
   doc: Count only - do not list filenames
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -c
 - id: in_verbose_gives_data
   doc: Verbose - gives summary data per file too
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_list_long_format
   doc: "List in long format. Lines contain:\nname position body-size header-size\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -l
 - id: in_srf_file
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - srf_list

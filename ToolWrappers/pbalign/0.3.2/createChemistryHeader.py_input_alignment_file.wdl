@@ -12,6 +12,9 @@ task CreateChemistryHeaderpyInputAlignmentFile {
       ~{if defined(bas_files) then ("--bas_files " +  '"' + bas_files + '"') else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bas_files: ""
     debug: ""

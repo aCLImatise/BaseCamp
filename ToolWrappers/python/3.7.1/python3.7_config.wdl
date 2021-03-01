@@ -4,6 +4,9 @@ task Python37config {
   command <<<
     python3_7_config
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

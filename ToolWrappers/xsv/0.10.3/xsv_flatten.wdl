@@ -14,6 +14,9 @@ task XsvFlatten {
       ~{if (no_headers) then "--no-headers" else ""} \
       ~{if defined(delimiter) then ("--delimiter " +  '"' + delimiter + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     condense: "Limits the length of each field to the value\\nspecified. If the field is UTF-8 encoded, then\\n<arg> refers to the number of code points.\\nOtherwise, it refers to the number of bytes."
     separator: "A string of characters to write after each record.\\nWhen non-empty, a new line is automatically\\nappended to the separator.\\n[default: #]"

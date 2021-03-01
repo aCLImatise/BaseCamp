@@ -4,6 +4,9 @@ task Qvoronoi {
   command <<<
     qvoronoi
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

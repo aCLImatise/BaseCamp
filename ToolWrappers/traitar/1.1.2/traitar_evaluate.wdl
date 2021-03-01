@@ -18,6 +18,9 @@ task TraitarEvaluate {
       ~{if defined(phenotype_archive) then ("--phenotype_archive " +  '"' + phenotype_archive + '"') else ""} \
       ~{if defined(min_samples) then ("--min_samples " +  '"' + min_samples + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     are_pt_ids: "set if the gold standard phenotype are index via\\nphenotype ids rather than accessions"
     phenotype_archive: "need if gold standard uses an accession index for\\nmapping"

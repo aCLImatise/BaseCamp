@@ -22,6 +22,9 @@ task MegalodonExtrasVariantsResolve {
       ~{if defined(homopolymer_min_length) then ("--homopolymer-min-length " +  '"' + homopolymer_min_length + '"') else ""} \
       ~{if (exclude_both_strand_homopolymers) then "--exclude-both-strand-homopolymers" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_filename: "Output filename. Default:\\nmegalodon.consolidated_variants.vcf"
     max_likelihood_ratio: "Maximum likelihood ratio ([ref prob] / [max alt prob])\\nto include variant in output. Allows output of\\nuncertain reference calls. Default: 1; Include only\\nsites called as alternative."

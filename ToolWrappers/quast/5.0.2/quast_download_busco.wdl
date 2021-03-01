@@ -8,6 +8,9 @@ task Quastdownloadbusco {
     quast_download_busco \
       ~{done}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     done: "Downloading BUSCO database..."
   }

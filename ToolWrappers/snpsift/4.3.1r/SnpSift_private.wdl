@@ -12,6 +12,9 @@ task SnpSiftPrivate {
       ~{file_dot_vcf} \
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     jar: ""
     file_do_ttf_am: ": File with genotypes and groups information (in PLINK's TFAM format)"

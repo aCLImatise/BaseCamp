@@ -3,27 +3,27 @@ id: convertToExtent.cwl
 inputs:
 - id: in_be_chatty
   doc: be chatty
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_full_query
   doc: output the whole query def line
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -fullquery
 - id: in_full_genomic
   doc: output the whole genomic def line
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -fullgenomic
 - id: in_exons
   doc: include exons
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -exons
 - id: in_extended
   doc: include the IDX of each sequence
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -extended
 - id: in_in
@@ -40,6 +40,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - convertToExtent

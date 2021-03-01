@@ -2,7 +2,7 @@ version 1.0
 
 task MicroRazers {
   input {
-    File? change_output_filename
+    File? change_filename_use
     Int? recognition_rate
     Int? seed_length
     Boolean? seed_error
@@ -22,7 +22,7 @@ task MicroRazers {
   }
   command <<<
     micro_razers \
-      ~{if defined(change_output_filename) then ("--output " +  '"' + change_output_filename + '"') else ""} \
+      ~{if defined(change_filename_use) then ("--output " +  '"' + change_filename_use + '"') else ""} \
       ~{if defined(recognition_rate) then ("--recognition-rate " +  '"' + recognition_rate + '"') else ""} \
       ~{if defined(seed_length) then ("--seed-length " +  '"' + seed_length + '"') else ""} \
       ~{if (seed_error) then "--seed-error" else ""} \
@@ -40,8 +40,11 @@ task MicroRazers {
       ~{if defined(sort_order) then ("--sort-order " +  '"' + sort_order + '"') else ""} \
       ~{if defined(position_format) then ("--position-format " +  '"' + position_format + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    change_output_filename: "Change output filename. (use - to dump to stdout in razers format)\\nDefault: <READS FILE>.razers. Valid filetypes are: .razers and .sam."
+    change_filename_use: "Change output filename. (use - to dump to stdout in razers format)\\nDefault: <READS FILE>.razers. Valid filetypes are: .razers and .sam."
     recognition_rate: "set the percent recognition rate In range [80..100]. Default: 100."
     seed_length: "seed length In range [10..inf]. Default: 16."
     seed_error: "allow for one error in the seed"
@@ -61,6 +64,6 @@ task MicroRazers {
   }
   output {
     File out_stdout = stdout()
-    File out_change_output_filename = "${in_change_output_filename}"
+    File out_change_filename_use = "${in_change_filename_use}"
   }
 }

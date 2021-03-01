@@ -10,6 +10,9 @@ task FilterCorrectedReadspy {
       ~{coverage_threshold} \
       ~{input_filename}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     coverage_threshold: ""
     input_filename: ""

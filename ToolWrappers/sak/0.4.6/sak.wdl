@@ -24,6 +24,9 @@ task Sak {
       ~{if defined(in_fix) then ("--infix " +  '"' + in_fix + '"') else ""} \
       ~{if defined(line_length) then ("--line-length " +  '"' + line_length + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     version_check: "Turn this option off to disable version update notifications of the\\napplication. One of 1, ON, TRUE, T, YES, 0, OFF, FALSE, F, and NO.\\nDefault: 1."
     out_path: "Path to the resulting file. If omitted, result is printed to stdout\\nin FastQ format. Valid filetypes are: .sam, .raw, .frn, .fq, .fna,\\n.ffn, .fastq, .fasta, .faa, .fa, and .bam."

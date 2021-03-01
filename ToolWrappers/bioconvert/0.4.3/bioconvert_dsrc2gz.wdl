@@ -11,7 +11,7 @@ task BioconvertDsrc2gz {
     Array[String] benchmark_methods
     Boolean? allow_indirect_conversion
     String? extra_arguments
-    Boolean? method_use_conversion
+    Boolean? method_use_do
     Boolean? show_methods
     Int? threads
     String input_file
@@ -30,10 +30,13 @@ task BioconvertDsrc2gz {
       ~{if defined(benchmark_methods) then ("--benchmark-methods " +  '"' + benchmark_methods + '"') else ""} \
       ~{if (allow_indirect_conversion) then "--allow-indirect-conversion" else ""} \
       ~{if defined(extra_arguments) then ("--extra-arguments " +  '"' + extra_arguments + '"') else ""} \
-      ~{if (method_use_conversion) then "-m" else ""} \
+      ~{if (method_use_do) then "-m" else ""} \
       ~{if (show_methods) then "--show-methods" else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     force: "if outfile exists, it is overwritten with this option\\n(default: False)"
     verbosity: "Set the outpout verbosity. (default: ERROR)"
@@ -44,7 +47,7 @@ task BioconvertDsrc2gz {
     benchmark_methods: "Methods to include (default: all)"
     allow_indirect_conversion: "Allow to chain converter when direct conversion is\\nabsent (default: False)"
     extra_arguments: "Any arguments accepted by the method's tool (default:\\n)"
-    method_use_conversion: "[{dsrcpigz}], --method [{dsrcpigz}]\\nThe method to use to do the conversion. (default:\\ndsrcpigz)"
+    method_use_do: "[{dsrcpigz}], --method [{dsrcpigz}]\\nThe method to use to do the conversion. (default:\\ndsrcpigz)"
     show_methods: "A converter may have several methods (default: False)"
     threads: "threads to be used (default: 8)"
     input_file: "The path to the file to convert. (default: None)"

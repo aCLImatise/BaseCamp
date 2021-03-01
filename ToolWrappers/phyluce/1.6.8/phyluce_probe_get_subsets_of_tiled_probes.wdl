@@ -14,6 +14,9 @@ task PhyluceProbeGetSubsetsOfTiledProbes {
       ~{if defined(file_store_output) then ("--output " +  '"' + file_store_output + '"') else ""} \
       ~{if defined(regex) then ("--regex " +  '"' + regex + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     probes: "The probe file to filter."
     tax_a: "The taxa for which to filter probes."

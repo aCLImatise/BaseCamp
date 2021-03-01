@@ -20,6 +20,9 @@ task QueryConfig {
       ~{if (components) then "--components" else ""} \
       ~{if (long) then "--long" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     machines: "; if you specify more than one of these arguments,"
     debug: "Print debug information (very verbose) to file /query_config.log"

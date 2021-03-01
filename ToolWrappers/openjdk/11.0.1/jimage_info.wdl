@@ -14,6 +14,9 @@ task JimageInfo {
       ~{options} \
       ~{j_image_dot_dot_dot}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     j_image: ""
     extract_vertical_line_info_vertical_line_list_vertical_line_verify: ""

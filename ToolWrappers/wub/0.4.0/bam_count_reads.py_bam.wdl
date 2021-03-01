@@ -14,6 +14,9 @@ task BamCountReadspyBam {
       ~{if defined(f) then ("-f " +  '"' + f + '"') else ""} \
       ~{if defined(a) then ("-a " +  '"' + a + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     z: ""
     f: ""

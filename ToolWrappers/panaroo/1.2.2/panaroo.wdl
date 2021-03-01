@@ -5,7 +5,7 @@ task Panaroo {
     String? clean_mode
     Int? threads
     Boolean? quiet
-    Array[String] input_gff_files
+    Array[String] input_files_output
     Directory? out_dir
     Float? threshold
     Float? family_threshold
@@ -31,7 +31,7 @@ task Panaroo {
       ~{if defined(clean_mode) then ("--clean-mode " +  '"' + clean_mode + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""} \
-      ~{if defined(input_gff_files) then ("--input " +  '"' + input_gff_files + '"') else ""} \
+      ~{if defined(input_files_output) then ("--input " +  '"' + input_files_output + '"') else ""} \
       ~{if defined(out_dir) then ("--out_dir " +  '"' + out_dir + '"') else ""} \
       ~{if defined(threshold) then ("--threshold " +  '"' + threshold + '"') else ""} \
       ~{if defined(family_threshold) then ("--family_threshold " +  '"' + family_threshold + '"') else ""} \
@@ -52,11 +52,14 @@ task Panaroo {
       ~{if defined(aligner) then ("--aligner " +  '"' + aligner + '"') else ""} \
       ~{if defined(core_threshold) then ("--core_threshold " +  '"' + core_threshold + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     clean_mode: "[-c ID]"
     threads: "number of threads to use (default=1)"
     quiet: "suppress additional output"
-    input_gff_files: "input GFF3 files (usually output from running Prokka).\\nCan also take a file listing each gff file line by\\nline."
+    input_files_output: "input GFF3 files (usually output from running Prokka).\\nCan also take a file listing each gff file line by\\nline."
     out_dir: "location of an output directory"
     threshold: "sequence identity threshold (default=0.95)"
     family_threshold: "protein family sequence identity threshold\\n(default=0.7)"

@@ -22,6 +22,9 @@ task FilterBasilpy {
       ~{if defined(min_clipping_sum) then ("--min-clipping-sum " +  '"' + min_clipping_sum + '"') else ""} \
       ~{if defined(min_g_score) then ("--min-gscore " +  '"' + min_g_score + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file_name: "Input file name."
     output_file_name: "Output file name."

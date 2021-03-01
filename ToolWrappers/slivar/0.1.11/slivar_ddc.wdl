@@ -16,6 +16,9 @@ task SlivarDdc {
       ~{if defined(fmt_fields) then ("--fmt-fields " +  '"' + fmt_fields + '"') else ""} \
       ~{if defined(html) then ("--html " +  '"' + html + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     chrom: "limit to this chromosome only. use '-3' for all chromosomes (in the case of exome data) (default: chr15)"
     info_fields: "comma-delimited list of info fields"

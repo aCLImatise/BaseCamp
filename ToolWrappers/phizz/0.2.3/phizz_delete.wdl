@@ -1,15 +1,11 @@
 version 1.0
 
 task PhizzDelete {
-  input {
-    File? db_name
-  }
   command <<<
-    phizz delete \
-      ~{if defined(db_name) then ("--db_name " +  '"' + db_name + '"') else ""}
+    phizz delete
   >>>
-  parameter_meta {
-    db_name: "--path TEXT\\n--help          Show this message and exit.\\n"
+  runtime {
+    docker: "None"
   }
   output {
     File out_stdout = stdout()

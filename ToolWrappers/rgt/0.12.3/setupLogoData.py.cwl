@@ -3,7 +3,7 @@ id: setupLogoData.py.cwl
 inputs:
 - id: in_all
   doc: Fetch all data sets.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --all
 - id: in_repository_folder
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - setupLogoData.py

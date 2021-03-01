@@ -3,50 +3,50 @@ id: bcbio_vm.py_ipythonprep.cwl
 inputs:
 - id: in_fc_dir
   doc: A directory of Illumina output or fastq files to
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --fcdir
 - id: in_system_config
   doc: "Global YAML configuration file specifying system\ndetails. Defaults to installed\
     \ bcbio_system.yaml."
-  type: File
+  type: File?
   inputBinding:
     prefix: --systemconfig
 - id: in_num_cores
   doc: Total cores to use for processing
-  type: long
+  type: long?
   inputBinding:
     prefix: --numcores
 - id: in_resources
   doc: "Cluster specific resources specifications. Can be\nspecified multiple times.\
     \ Supports SGE and SLURM\nparameters."
-  type: string
+  type: string?
   inputBinding:
     prefix: --resources
 - id: in_timeout
   doc: "Number of minutes before cluster startup times out.\nDefaults to 15"
-  type: long
+  type: long?
   inputBinding:
     prefix: --timeout
 - id: in_retries
   doc: "Number of retries of failed tasks during distributed\nprocessing. Default\
     \ 0 (no retries)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --retries
 - id: in_tag
   doc: Tag name to label jobs on the cluster
-  type: string
+  type: string?
   inputBinding:
     prefix: --tag
 - id: in_tmpdir
   doc: "Path of local on-machine temporary directory to\nprocess in.\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --tmpdir
 - id: in_image
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --image
 - id: in_positional_arguments
@@ -75,9 +75,10 @@ outputs:
   type: stdout
 - id: out_fc_dir
   doc: A directory of Illumina output or fastq files to
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_fc_dir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bcbio_vm.py

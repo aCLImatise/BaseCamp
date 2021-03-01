@@ -22,6 +22,9 @@ task PredictNumReads {
       ~{if defined(patientsample_identifier_default) then ("-n " +  '"' + patientsample_identifier_default + '"') else ""} \
       ~{if defined(sample_date_default) then ("-d " +  '"' + sample_date_default + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     length_sliding_window: "Length of the sliding window for emulating read trimming\\n(default: 10)"
     qual: "Quality threshold for emulating read trimming (default:\\n30)"

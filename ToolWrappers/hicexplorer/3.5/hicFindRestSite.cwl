@@ -3,7 +3,7 @@ id: hicFindRestSite.cwl
 inputs:
 - id: in_fast_a
   doc: Path to fasta file for the organism genome.
-  type: File
+  type: File?
   inputBinding:
     prefix: --fasta
 - id: in_search_pattern
@@ -12,18 +12,19 @@ inputs:
     \ and can\ncontain regexp specif syntax (see\nhttps://docs.python.org/2/library/re.html).\
     \ For\nexample the patternCG..GC will find all occurrence of\nCG followed by any\
     \ two bases and then GC."
-  type: long
+  type: long?
   inputBinding:
     prefix: --searchPattern
 - id: in_outfile
   doc: Name for the resulting bed file.
-  type: File
+  type: File?
   inputBinding:
     prefix: --outFile
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - hicFindRestSite

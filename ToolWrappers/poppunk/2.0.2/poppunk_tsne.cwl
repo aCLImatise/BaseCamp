@@ -3,22 +3,22 @@ id: poppunk_tsne.cwl
 inputs:
 - id: in_distances
   doc: "Prefix of input pickle and numpy file of pre-\ncalculated distances"
-  type: File
+  type: File?
   inputBinding:
     prefix: --distances
 - id: in_output
   doc: Name of output file
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_perplexity
   doc: "Perplexity used to generate t-SNE projection [default\n= 30]"
-  type: long
+  type: long?
   inputBinding:
     prefix: --perplexity
 - id: in_verbosity
   doc: "Verbosity level for t-SNE (0-3) [default = 0]\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --verbosity
 outputs:
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: Name of output file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - poppunk_tsne

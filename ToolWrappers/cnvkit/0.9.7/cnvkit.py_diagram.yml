@@ -4,94 +4,94 @@ command:
 - diagram
 positional:
 - !Positional
-  description: "Processed coverage data file (*.cnr), the output of\nthe 'fix' sub-command."
+  optional: false
   position: 0
   name: filename
-  optional: false
+  description: "Processed coverage data file (*.cnr), the output of\nthe 'fix' sub-command."
 named:
 - !Flag
-  description: "Segmentation calls (.cns), the output of the 'segment'\ncommand."
+  optional: true
   synonyms:
   - -s
   - --segment
+  description: "Segmentation calls (.cns), the output of the 'segment'\ncommand."
   args: !SimpleFlagArg
     name: SEGMENT
-  optional: true
 - !Flag
-  description: "Copy number change threshold to label genes. [Default:\n0.5]"
+  optional: true
   synonyms:
   - -t
   - --threshold
+  description: "Copy number change threshold to label genes. [Default:\n0.5]"
   args: !SimpleFlagArg
     name: THRESHOLD
-  optional: true
 - !Flag
-  description: "Minimum number of covered probes to label a gene.\n[Default: 3]"
+  optional: true
   synonyms:
   - -m
   - --min-probes
+  description: "Minimum number of covered probes to label a gene.\n[Default: 3]"
   args: !SimpleFlagArg
     name: MIN_PROBES
-  optional: true
 - !Flag
-  description: "Assume inputs were normalized to a male reference\n(i.e. female samples\
-    \ will have +1 log-CNR of chrX;\notherwise male samples would have -1 chrX)."
+  optional: true
   synonyms:
   - -y
   - --male-reference
   - --haploid-x-reference
+  description: "Assume inputs were normalized to a male reference\n(i.e. female samples\
+    \ will have +1 log-CNR of chrX;\notherwise male samples would have -1 chrX)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Specify the sample's chromosomal sex as male or\nfemale. (Otherwise\
-    \ guessed from X and Y coverage)."
+  optional: true
   synonyms:
   - -x
   - --sample-sex
   - -g
   - --gender
+  description: "Specify the sample's chromosomal sex as male or\nfemale. (Otherwise\
+    \ guessed from X and Y coverage)."
   args: !ChoiceFlagArg
     choices: !!set
       Male:
-      f:
-      male:
-      female:
       x:
       Female:
       y:
+      f:
       m:
-  optional: true
+      female:
+      male:
 - !Flag
-  description: "Don't adjust the X and Y chromosomes according to\nsample sex."
+  optional: true
   synonyms:
   - --no-shift-xy
+  description: "Don't adjust the X and Y chromosomes according to\nsample sex."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Output PDF file name.
+  optional: true
   synonyms:
   - -o
   - --output
+  description: Output PDF file name.
   args: !SimpleFlagArg
     name: FILENAME
-  optional: true
 - !Flag
-  description: 'Plot title. [Default: sample ID, from filename or -i]'
+  optional: true
   synonyms:
   - --title
+  description: 'Plot title. [Default: sample ID, from filename or -i]'
   args: !SimpleFlagArg
     name: TITLE
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: cnvkit.py diagram [-h] [-s SEGMENT] [-t THRESHOLD] [-m MIN_PROBES]\
@@ -118,3 +118,4 @@ help_text: "usage: cnvkit.py diagram [-h] [-s SEGMENT] [-t THRESHOLD] [-m MIN_PR
   \  --title TITLE         Plot title. [Default: sample ID, from filename or -i]\n"
 generated_using:
 - --help
+docker_image:

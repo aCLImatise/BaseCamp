@@ -24,6 +24,9 @@ task Rview {
       ~{if defined(send_output_file) then ("-o " +  '"' + send_output_file + '"') else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     _be_verbose: ": be verbose"
     maxd: ": max distance for contact definition  [8.0]  (x>0)"

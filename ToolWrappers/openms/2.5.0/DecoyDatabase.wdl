@@ -30,6 +30,9 @@ task DecoyDatabase {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "<file(s)>*                   Input FASTA file(s), each containing a database. It is recommended to include a contaminant database as well. (valid formats: 'fasta')"
     out: "*                     Output FASTA file where the decoy database will be written to. (valid formats: 'fasta')"

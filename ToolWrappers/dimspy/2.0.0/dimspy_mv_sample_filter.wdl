@@ -12,6 +12,9 @@ task DimspyMvsamplefilter {
       ~{if defined(hdf_file_save) then ("--output " +  '"' + hdf_file_save + '"') else ""} \
       ~{if defined(max_fraction) then ("--max-fraction " +  '"' + max_fraction + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     hdf_file_file: "HDF5 file file that contains a peak matrix object."
     hdf_file_save: "HDF5 file to save the peak matrix object to."

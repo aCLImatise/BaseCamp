@@ -3,12 +3,12 @@ id: wg_blimp_create_config.cwl
 inputs:
 - id: in_genome_build
   doc: "[hg19|hg38|mmul10|None]\nBuild of the reference used for annotation."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --genome_build
 - id: in_cores_per_job
   doc: "The number of cores to use per job.\n[required]"
-  type: long
+  type: long?
   inputBinding:
     prefix: --cores-per-job
 - id: in_fast_q_dir
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - wg-blimp

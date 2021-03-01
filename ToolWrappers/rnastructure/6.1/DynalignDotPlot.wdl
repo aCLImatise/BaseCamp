@@ -22,6 +22,9 @@ task DynalignDotPlot {
       ~{if (maximum) then "--maximum" else ""} \
       ~{if (minimum) then "--minimum" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sequence_two: "Specifies that the dot plot should be the second sequence. If no sequence\\nis specified, the plot is the first sequence."
     svg: "Specify that the output file should be an SVG image file, rather than a\\nPostscript image file."

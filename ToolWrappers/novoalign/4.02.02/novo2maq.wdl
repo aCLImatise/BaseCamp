@@ -16,6 +16,9 @@ task Novo2maq {
       ~{if defined(turns_smithwaterman_check) then ("-s " +  '"' + turns_smithwaterman_check + '"') else ""} \
       ~{if (produces_short_report) then "-r" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     turns_smithwaterman_check: "|off Turns on or off the Smith-Waterman check of indels. When only indels that/n                          would be part of optimum local alignment are converted as MAQ indels. Default is off /n                          which will report all indels found by Novoalign."
     produces_short_report: "Produces short report on number of alignments per reference sequence."

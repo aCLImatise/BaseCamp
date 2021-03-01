@@ -10,6 +10,9 @@ task LongshotFLAGS {
       ~{if defined(ref) then ("--ref " +  '"' + ref + '"') else ""} \
       ~{if defined(bam) then ("--bam " +  '"' + bam + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ref: ""
     bam: ""

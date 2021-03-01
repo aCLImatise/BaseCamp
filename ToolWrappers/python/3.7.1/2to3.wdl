@@ -34,6 +34,9 @@ task To3 {
       ~{if (write_unchanged_files) then "--write-unchanged-files" else ""} \
       ~{if defined(add_suffix) then ("--add-suffix " +  '"' + add_suffix + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     doc_tests_only: "Fix up doctests only"
     fix: "Each FIX specifies a transformation; default: all"

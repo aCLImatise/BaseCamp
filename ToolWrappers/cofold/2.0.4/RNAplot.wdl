@@ -14,6 +14,9 @@ task RNAplot {
       ~{if defined(pre) then ("--pre " +  '"' + pre + '"') else ""} \
       ~{if defined(post) then ("--post " +  '"' + post + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     layout_type: "Choose the layout algorithm. Simple radial\\nlayout if 0, or naview if 1\\n(default=`1')"
     output_format: "|gml|xrna|svg\\nSpecify output format. Available formats are:\\nPostScript (ps), Graph Meta Language (gml),\\nScalable Vector Graphics (svg), and XRNA save\\nfile (xrna). Output filenames will end in\\n\\\".ps\\\" \\\".gml\\\" \\\".svg\\\" \\\".ss\\\",\\nrespectively.\\n(default=`ps')"

@@ -33,7 +33,7 @@ task Rscapesim {
     File? send_output_file
     String? in_format
     Boolean? one_msa
-    String? filter_seqs_xseqcons
+    String? filter_xseqcons_residues
     String? var_32
     String? var_33
     String? gap_thresh
@@ -78,7 +78,7 @@ task Rscapesim {
       ~{if defined(send_output_file) then ("-o " +  '"' + send_output_file + '"') else ""} \
       ~{if defined(in_format) then ("--informat " +  '"' + in_format + '"') else ""} \
       ~{if (one_msa) then "--onemsa" else ""} \
-      ~{if defined(filter_seqs_xseqcons) then ("-F " +  '"' + filter_seqs_xseqcons + '"') else ""} \
+      ~{if defined(filter_xseqcons_residues) then ("-F " +  '"' + filter_xseqcons_residues + '"') else ""} \
       ~{if defined(var_32) then ("-I " +  '"' + var_32 + '"') else ""} \
       ~{if defined(var_33) then ("-i " +  '"' + var_33 + '"') else ""} \
       ~{if defined(gap_thresh) then ("--gapthresh " +  '"' + gap_thresh + '"') else ""} \
@@ -88,6 +88,9 @@ task Rscapesim {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     _be_verbose: ": be verbose"
     dna: ": use DNA alphabet"
@@ -120,7 +123,7 @@ task Rscapesim {
     send_output_file: ": send output to file <f>, not stdout"
     in_format: ": specify format"
     one_msa: ": if file has more than one msa, analyze only the first one"
-    filter_seqs_xseqcons: ": filter out seqs <x*seq_cons residues"
+    filter_xseqcons_residues: ": filter out seqs <x*seq_cons residues"
     var_32: ": require seqs to have < <x> id"
     var_33: ": require seqs to have >= <x> id"
     gap_thresh: ": keep columns with < <x> fraction of gaps"

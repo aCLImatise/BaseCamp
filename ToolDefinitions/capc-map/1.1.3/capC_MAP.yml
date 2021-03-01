@@ -12,27 +12,27 @@ subcommands:
   positional: []
   named:
   - !Flag
-    description: input fasta file of geneome
+    optional: true
     synonyms:
     - -i
+    description: input fasta file of geneome
     args: !SimpleFlagArg
       name: INPUTFASTA
-    optional: true
   - !Flag
-    description: name of supported enzyme, or cutting sequence
+    optional: true
     synonyms:
     - -r
+    description: name of supported enzyme, or cutting sequence
     args: !SimpleFlagArg
       name: ENZYMENAME
-    optional: true
   - !Flag
-    description: output bed file of restriction fragments
+    optional: true
     synonyms:
     - -o
+    description: output bed file of restriction fragments
     args: !SimpleFlagArg
       name: OUTPUTBED
-    optional: true
-  parent: &id011 !Command
+  parent: &id012 !Command
     command: *id001
     positional: []
     named: []
@@ -43,27 +43,27 @@ subcommands:
       positional: []
       named:
       - !Flag
-        description: input fasta file of geneome
+        optional: true
         synonyms:
         - -i
+        description: input fasta file of geneome
         args: !SimpleFlagArg
           name: INPUTFASTA
-        optional: true
       - !Flag
-        description: name of supported enzyme, or cutting sequence
+        optional: true
         synonyms:
         - -r
+        description: name of supported enzyme, or cutting sequence
         args: !SimpleFlagArg
           name: ENZYMENAME
-        optional: true
       - !Flag
-        description: output bed file of restriction fragments
+        optional: true
         synonyms:
         - -o
+        description: output bed file of restriction fragments
         args: !SimpleFlagArg
           name: OUTPUTBED
-        optional: true
-      parent: &id010 !Command
+      parent: &id011 !Command
         command: *id001
         positional: []
         named: []
@@ -74,27 +74,27 @@ subcommands:
           positional: []
           named:
           - !Flag
-            description: input fasta file of geneome
+            optional: true
             synonyms:
             - -i
+            description: input fasta file of geneome
             args: !SimpleFlagArg
               name: INPUTFASTA
-            optional: true
           - !Flag
-            description: name of supported enzyme, or cutting sequence
+            optional: true
             synonyms:
             - -r
+            description: name of supported enzyme, or cutting sequence
             args: !SimpleFlagArg
               name: ENZYMENAME
-            optional: true
           - !Flag
-            description: output bed file of restriction fragments
+            optional: true
             synonyms:
             - -o
+            description: output bed file of restriction fragments
             args: !SimpleFlagArg
               name: OUTPUTBED
-            optional: true
-          parent: &id009 !Command
+          parent: &id010 !Command
             command: *id001
             positional: []
             named: []
@@ -105,27 +105,27 @@ subcommands:
               positional: []
               named:
               - !Flag
-                description: input fasta file of geneome
+                optional: true
                 synonyms:
                 - -i
+                description: input fasta file of geneome
                 args: !SimpleFlagArg
                   name: INPUTFASTA
-                optional: true
               - !Flag
-                description: name of supported enzyme, or cutting sequence
+                optional: true
                 synonyms:
                 - -r
+                description: name of supported enzyme, or cutting sequence
                 args: !SimpleFlagArg
                   name: ENZYMENAME
-                optional: true
               - !Flag
-                description: output bed file of restriction fragments
+                optional: true
                 synonyms:
                 - -o
+                description: output bed file of restriction fragments
                 args: !SimpleFlagArg
                   name: OUTPUTBED
-                optional: true
-              parent: &id003 !Command
+              parent: &id009 !Command
                 command: *id001
                 positional: []
                 named: []
@@ -136,36 +136,289 @@ subcommands:
                   positional: []
                   named:
                   - !Flag
-                    description: input fasta file of geneome
+                    optional: true
                     synonyms:
                     - -i
+                    description: input fasta file of geneome
                     args: !SimpleFlagArg
                       name: INPUTFASTA
-                    optional: true
                   - !Flag
-                    description: name of supported enzyme, or cutting sequence
+                    optional: true
                     synonyms:
                     - -r
+                    description: name of supported enzyme, or cutting sequence
                     args: !SimpleFlagArg
                       name: ENZYMENAME
-                    optional: true
                   - !Flag
-                    description: output bed file of restriction fragments
+                    optional: true
                     synonyms:
                     - -o
+                    description: output bed file of restriction fragments
                     args: !SimpleFlagArg
                       name: OUTPUTBED
-                    optional: true
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named: []
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -i
+                        description: input fasta file of geneome
+                        args: !SimpleFlagArg
+                          name: INPUTFASTA
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -r
+                        description: name of supported enzyme, or cutting sequence
+                        args: !SimpleFlagArg
+                          name: ENZYMENAME
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -o
+                        description: output bed file of restriction fragments
+                        args: !SimpleFlagArg
+                          name: OUTPUTBED
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: capC-MAP genomedigest [-h] -i INPUTFASTA\
+                        \ -r ENZYMENAME -o OUTPUTBED\n\noptional arguments:\n  -h,\
+                        \ --help     show this help message and exit\n  -i INPUTFASTA\
+                        \  input fasta file of geneome\n  -r ENZYMENAME  name of supported\
+                        \ enzyme, or cutting sequence\n  -o OUTPUTBED   output bed\
+                        \ file of restriction fragments\n"
+                      generated_using: &id004
+                      - --help
+                      docker_image:
+                    - !Command
+                      command: &id005
+                      - capC-MAP
+                      - getchromsizes
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -f
+                        description: "bed file continaing list of restriction enzyme\
+                          \ fragments\nfor genome"
+                        args: !SimpleFlagArg
+                          name: FRAGMENTSFILE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -o
+                        description: 'output file name (Default: chrom.sizes)'
+                        args: !SimpleFlagArg
+                          name: OUTFILE
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: capC-MAP getchromsizes [-h] -f FRAGMENTSFILE\
+                        \ [-o OUTFILE]\n\noptional arguments:\n  -h, --help      \
+                        \  show this help message and exit\n  -f FRAGMENTSFILE  bed\
+                        \ file continaing list of restriction enzyme fragments\n \
+                        \                   for genome\n  -o OUTFILE        output\
+                        \ file name (Default: chrom.sizes)\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id006
+                      - capC-MAP
+                      - run
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -c
+                        description: configuration file
+                        args: !SimpleFlagArg
+                          name: CONFIGFILE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -o
+                        description: directory to be created for output
+                        args: !SimpleFlagArg
+                          name: OUTDIR
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: capC-MAP run [-h] -c CONFIGFILE -o OUTDIR\n\
+                        \noptional arguments:\n  -h, --help     show this help message\
+                        \ and exit\n  -c CONFIGFILE  configuration file\n  -o OUTDIR\
+                        \      directory to be created for output\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id007
+                      - capC-MAP
+                      - combinereps
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -c
+                        description: configuration file
+                        args: !SimpleFlagArg
+                          name: CONFIGFILE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -i
+                        description: "directory containing output from capC-MAP for\
+                          \ a replicate\n(option must appear multiple times)."
+                        args: !SimpleFlagArg
+                          name: INDIR
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -o
+                        description: directory to be created for combined output
+                        args: !SimpleFlagArg
+                          name: OUTDIR
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: capC-MAP combinereps [-h] -c CONFIGFILE -i\
+                        \ INDIR -o OUTDIR\n\noptional arguments:\n  -h, --help   \
+                        \  show this help message and exit\n  -c CONFIGFILE  configuration\
+                        \ file\n  -i INDIR       directory containing output from\
+                        \ capC-MAP for a replicate\n                 (option must\
+                        \ appear multiple times).\n  -o OUTDIR      directory to be\
+                        \ created for combined output\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id008
+                      - capC-MAP
+                      - postprocess
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -c
+                        description: configuration file
+                        args: !SimpleFlagArg
+                          name: CONFIGFILE
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -o
+                        description: directory to be created for output
+                        args: !SimpleFlagArg
+                          name: OUTDIR
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: show this help message and exit
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "usage: capC-MAP postprocess [-h] -c CONFIGFILE -o\
+                        \ OUTDIR\n\noptional arguments:\n  -h, --help     show this\
+                        \ help message and exit\n  -c CONFIGFILE  configuration file\n\
+                        \  -o OUTDIR      directory to be created for output\n"
+                      generated_using: *id004
+                      docker_image:
+                    usage: []
+                    help_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - -h
+                      - --help
+                      description: show this help message and exit
+                      args: !EmptyFlagArg {}
+                    usage_flag:
+                    version_flag:
+                    help_text: "usage: capC-MAP [-h]\n                {genomedigest,run,postprocess,combinereps,getchromsizes}\
+                      \ ...\n\nCapture C analysis pipeline.\n\noptional arguments:\n\
+                      \  -h, --help            show this help message and exit\n\n\
+                      sub-commands:\n  use one of the following sub-commands\n\n \
+                      \ {genomedigest,run,postprocess,combinereps,getchromsizes}\n\
+                      \    genomedigest        Generate list of restriction enzyme\
+                      \ fragments from a\n                        fasta file for the\
+                      \ reference geneome. Required inputs\n                     \
+                      \   are a fasta file.\n    run                 Run full capture\
+                      \ c processing pipeline. Required\n                        inputs\
+                      \ are a config file, and a name for a new\n                \
+                      \        directory for the output.\n    postprocess        \
+                      \ Run binning, smoothing or normalization on capture c\n   \
+                      \                     profiles. Required inputs are a config\
+                      \ file (only\n                        lines relating to binning\
+                      \ are read), and a name for\n                        the directory\
+                      \ containing raw pile-ups or validpairs\n                  \
+                      \      files.\n    combinereps         Combine multiple replicates\
+                      \ into a single data set,\n                        and run binning,\
+                      \ smoothing or normalization. A single\n                   \
+                      \     configuration file, and multiple processed data\n    \
+                      \                    directories are required.\n    getchromsizes\
+                      \       Generate a chrom.sizes files from a list of\n      \
+                      \                  restriction enzyme fragments.\n"
+                    generated_using: *id004
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: show this help message and exit
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: show this help message and exit
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: capC-MAP genomedigest [-h] -i INPUTFASTA -r ENZYMENAME\
@@ -173,39 +426,37 @@ subcommands:
                     \ help message and exit\n  -i INPUTFASTA  input fasta file of\
                     \ geneome\n  -r ENZYMENAME  name of supported enzyme, or cutting\
                     \ sequence\n  -o OUTPUTBED   output bed file of restriction fragments\n"
-                  generated_using: &id004
-                  - --help
+                  generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id005
-                  - capC-MAP
-                  - getchromsizes
+                  command: *id005
                   positional: []
                   named:
                   - !Flag
-                    description: "bed file continaing list of restriction enzyme fragments\n\
-                      for genome"
+                    optional: true
                     synonyms:
                     - -f
+                    description: "bed file continaing list of restriction enzyme fragments\n\
+                      for genome"
                     args: !SimpleFlagArg
                       name: FRAGMENTSFILE
-                    optional: true
                   - !Flag
-                    description: 'output file name (Default: chrom.sizes)'
+                    optional: true
                     synonyms:
                     - -o
+                    description: 'output file name (Default: chrom.sizes)'
                     args: !SimpleFlagArg
                       name: OUTFILE
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: show this help message and exit
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: show this help message and exit
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: capC-MAP getchromsizes [-h] -f FRAGMENTSFILE\
@@ -214,36 +465,35 @@ subcommands:
                     \ list of restriction enzyme fragments\n                    for\
                     \ genome\n  -o OUTFILE        output file name (Default: chrom.sizes)\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id006
-                  - capC-MAP
-                  - run
+                  command: *id006
                   positional: []
                   named:
                   - !Flag
-                    description: configuration file
+                    optional: true
                     synonyms:
                     - -c
+                    description: configuration file
                     args: !SimpleFlagArg
                       name: CONFIGFILE
-                    optional: true
                   - !Flag
-                    description: directory to be created for output
+                    optional: true
                     synonyms:
                     - -o
+                    description: directory to be created for output
                     args: !SimpleFlagArg
                       name: OUTDIR
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: show this help message and exit
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: show this help message and exit
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: capC-MAP run [-h] -c CONFIGFILE -o OUTDIR\n\n\
@@ -251,44 +501,43 @@ subcommands:
                     \ exit\n  -c CONFIGFILE  configuration file\n  -o OUTDIR     \
                     \ directory to be created for output\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id007
-                  - capC-MAP
-                  - combinereps
+                  command: *id007
                   positional: []
                   named:
                   - !Flag
-                    description: configuration file
+                    optional: true
                     synonyms:
                     - -c
+                    description: configuration file
                     args: !SimpleFlagArg
                       name: CONFIGFILE
-                    optional: true
                   - !Flag
-                    description: "directory containing output from capC-MAP for a\
-                      \ replicate\n(option must appear multiple times)."
+                    optional: true
                     synonyms:
                     - -i
+                    description: "directory containing output from capC-MAP for a\
+                      \ replicate\n(option must appear multiple times)."
                     args: !SimpleFlagArg
                       name: INDIR
-                    optional: true
                   - !Flag
-                    description: directory to be created for combined output
+                    optional: true
                     synonyms:
                     - -o
+                    description: directory to be created for combined output
                     args: !SimpleFlagArg
                       name: OUTDIR
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: show this help message and exit
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: show this help message and exit
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: capC-MAP combinereps [-h] -c CONFIGFILE -i INDIR\
@@ -298,36 +547,35 @@ subcommands:
                     \ a replicate\n                 (option must appear multiple times).\n\
                     \  -o OUTDIR      directory to be created for combined output\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id008
-                  - capC-MAP
-                  - postprocess
+                  command: *id008
                   positional: []
                   named:
                   - !Flag
-                    description: configuration file
+                    optional: true
                     synonyms:
                     - -c
+                    description: configuration file
                     args: !SimpleFlagArg
                       name: CONFIGFILE
-                    optional: true
                   - !Flag
-                    description: directory to be created for output
+                    optional: true
                     synonyms:
                     - -o
+                    description: directory to be created for output
                     args: !SimpleFlagArg
                       name: OUTDIR
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: show this help message and exit
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: show this help message and exit
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "usage: capC-MAP postprocess [-h] -c CONFIGFILE -o OUTDIR\n\
@@ -335,14 +583,9 @@ subcommands:
                     \ and exit\n  -c CONFIGFILE  configuration file\n  -o OUTDIR \
                     \     directory to be created for output\n"
                   generated_using: *id004
+                  docker_image:
                 usage: []
-                help_flag: !Flag
-                  description: show this help message and exit
-                  synonyms:
-                  - -h
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
+                help_flag:
                 usage_flag:
                 version_flag:
                 help_text: "usage: capC-MAP [-h]\n                {genomedigest,run,postprocess,combinereps,getchromsizes}\
@@ -368,15 +611,16 @@ subcommands:
                   \       Generate a chrom.sizes files from a list of\n          \
                   \              restriction enzyme fragments.\n"
                 generated_using: *id004
+                docker_image:
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: show this help message and exit
+                optional: true
                 synonyms:
                 - -h
                 - --help
+                description: show this help message and exit
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: capC-MAP genomedigest [-h] -i INPUTFASTA -r ENZYMENAME\
@@ -385,35 +629,36 @@ subcommands:
                 \  -r ENZYMENAME  name of supported enzyme, or cutting sequence\n\
                 \  -o OUTPUTBED   output bed file of restriction fragments\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id005
               positional: []
               named:
               - !Flag
-                description: "bed file continaing list of restriction enzyme fragments\n\
-                  for genome"
+                optional: true
                 synonyms:
                 - -f
+                description: "bed file continaing list of restriction enzyme fragments\n\
+                  for genome"
                 args: !SimpleFlagArg
                   name: FRAGMENTSFILE
-                optional: true
               - !Flag
-                description: 'output file name (Default: chrom.sizes)'
+                optional: true
                 synonyms:
                 - -o
+                description: 'output file name (Default: chrom.sizes)'
                 args: !SimpleFlagArg
                   name: OUTFILE
-                optional: true
-              parent: *id003
+              parent: *id009
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: show this help message and exit
+                optional: true
                 synonyms:
                 - -h
                 - --help
+                description: show this help message and exit
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: capC-MAP getchromsizes [-h] -f FRAGMENTSFILE [-o\
@@ -422,34 +667,35 @@ subcommands:
                 \ restriction enzyme fragments\n                    for genome\n \
                 \ -o OUTFILE        output file name (Default: chrom.sizes)\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id006
               positional: []
               named:
               - !Flag
-                description: configuration file
+                optional: true
                 synonyms:
                 - -c
+                description: configuration file
                 args: !SimpleFlagArg
                   name: CONFIGFILE
-                optional: true
               - !Flag
-                description: directory to be created for output
+                optional: true
                 synonyms:
                 - -o
+                description: directory to be created for output
                 args: !SimpleFlagArg
                   name: OUTDIR
-                optional: true
-              parent: *id003
+              parent: *id009
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: show this help message and exit
+                optional: true
                 synonyms:
                 - -h
                 - --help
+                description: show this help message and exit
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: capC-MAP run [-h] -c CONFIGFILE -o OUTDIR\n\noptional\
@@ -457,42 +703,43 @@ subcommands:
                 \ -c CONFIGFILE  configuration file\n  -o OUTDIR      directory to\
                 \ be created for output\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id007
               positional: []
               named:
               - !Flag
-                description: configuration file
+                optional: true
                 synonyms:
                 - -c
+                description: configuration file
                 args: !SimpleFlagArg
                   name: CONFIGFILE
-                optional: true
               - !Flag
-                description: "directory containing output from capC-MAP for a replicate\n\
-                  (option must appear multiple times)."
+                optional: true
                 synonyms:
                 - -i
+                description: "directory containing output from capC-MAP for a replicate\n\
+                  (option must appear multiple times)."
                 args: !SimpleFlagArg
                   name: INDIR
-                optional: true
               - !Flag
-                description: directory to be created for combined output
+                optional: true
                 synonyms:
                 - -o
+                description: directory to be created for combined output
                 args: !SimpleFlagArg
                   name: OUTDIR
-                optional: true
-              parent: *id003
+              parent: *id009
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: show this help message and exit
+                optional: true
                 synonyms:
                 - -h
                 - --help
+                description: show this help message and exit
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: capC-MAP combinereps [-h] -c CONFIGFILE -i INDIR\
@@ -502,34 +749,35 @@ subcommands:
                 \                 (option must appear multiple times).\n  -o OUTDIR\
                 \      directory to be created for combined output\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id008
               positional: []
               named:
               - !Flag
-                description: configuration file
+                optional: true
                 synonyms:
                 - -c
+                description: configuration file
                 args: !SimpleFlagArg
                   name: CONFIGFILE
-                optional: true
               - !Flag
-                description: directory to be created for output
+                optional: true
                 synonyms:
                 - -o
+                description: directory to be created for output
                 args: !SimpleFlagArg
                   name: OUTDIR
-                optional: true
-              parent: *id003
+              parent: *id009
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: show this help message and exit
+                optional: true
                 synonyms:
                 - -h
                 - --help
+                description: show this help message and exit
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "usage: capC-MAP postprocess [-h] -c CONFIGFILE -o OUTDIR\n\
@@ -537,6 +785,7 @@ subcommands:
                 \ exit\n  -c CONFIGFILE  configuration file\n  -o OUTDIR      directory\
                 \ to be created for output\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -563,15 +812,16 @@ subcommands:
               \       Generate a chrom.sizes files from a list of\n              \
               \          restriction enzyme fragments.\n"
             generated_using: *id004
+            docker_image:
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: show this help message and exit
+            optional: true
             synonyms:
             - -h
             - --help
+            description: show this help message and exit
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: capC-MAP genomedigest [-h] -i INPUTFASTA -r ENZYMENAME\
@@ -580,35 +830,36 @@ subcommands:
             \ ENZYMENAME  name of supported enzyme, or cutting sequence\n  -o OUTPUTBED\
             \   output bed file of restriction fragments\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id005
           positional: []
           named:
           - !Flag
-            description: "bed file continaing list of restriction enzyme fragments\n\
-              for genome"
+            optional: true
             synonyms:
             - -f
+            description: "bed file continaing list of restriction enzyme fragments\n\
+              for genome"
             args: !SimpleFlagArg
               name: FRAGMENTSFILE
-            optional: true
           - !Flag
-            description: 'output file name (Default: chrom.sizes)'
+            optional: true
             synonyms:
             - -o
+            description: 'output file name (Default: chrom.sizes)'
             args: !SimpleFlagArg
               name: OUTFILE
-            optional: true
-          parent: *id009
+          parent: *id010
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: show this help message and exit
+            optional: true
             synonyms:
             - -h
             - --help
+            description: show this help message and exit
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: capC-MAP getchromsizes [-h] -f FRAGMENTSFILE [-o OUTFILE]\n\
@@ -617,76 +868,78 @@ subcommands:
             \ fragments\n                    for genome\n  -o OUTFILE        output\
             \ file name (Default: chrom.sizes)\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id006
           positional: []
           named:
           - !Flag
-            description: configuration file
+            optional: true
             synonyms:
             - -c
+            description: configuration file
             args: !SimpleFlagArg
               name: CONFIGFILE
-            optional: true
           - !Flag
-            description: directory to be created for output
+            optional: true
             synonyms:
             - -o
+            description: directory to be created for output
             args: !SimpleFlagArg
               name: OUTDIR
-            optional: true
-          parent: *id009
+          parent: *id010
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: show this help message and exit
+            optional: true
             synonyms:
             - -h
             - --help
+            description: show this help message and exit
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: capC-MAP run [-h] -c CONFIGFILE -o OUTDIR\n\noptional\
             \ arguments:\n  -h, --help     show this help message and exit\n  -c CONFIGFILE\
             \  configuration file\n  -o OUTDIR      directory to be created for output\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id007
           positional: []
           named:
           - !Flag
-            description: configuration file
+            optional: true
             synonyms:
             - -c
+            description: configuration file
             args: !SimpleFlagArg
               name: CONFIGFILE
-            optional: true
           - !Flag
-            description: "directory containing output from capC-MAP for a replicate\n\
-              (option must appear multiple times)."
+            optional: true
             synonyms:
             - -i
+            description: "directory containing output from capC-MAP for a replicate\n\
+              (option must appear multiple times)."
             args: !SimpleFlagArg
               name: INDIR
-            optional: true
           - !Flag
-            description: directory to be created for combined output
+            optional: true
             synonyms:
             - -o
+            description: directory to be created for combined output
             args: !SimpleFlagArg
               name: OUTDIR
-            optional: true
-          parent: *id009
+          parent: *id010
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: show this help message and exit
+            optional: true
             synonyms:
             - -h
             - --help
+            description: show this help message and exit
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: capC-MAP combinereps [-h] -c CONFIGFILE -i INDIR -o OUTDIR\n\
@@ -696,34 +949,35 @@ subcommands:
             \ appear multiple times).\n  -o OUTDIR      directory to be created for\
             \ combined output\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id008
           positional: []
           named:
           - !Flag
-            description: configuration file
+            optional: true
             synonyms:
             - -c
+            description: configuration file
             args: !SimpleFlagArg
               name: CONFIGFILE
-            optional: true
           - !Flag
-            description: directory to be created for output
+            optional: true
             synonyms:
             - -o
+            description: directory to be created for output
             args: !SimpleFlagArg
               name: OUTDIR
-            optional: true
-          parent: *id009
+          parent: *id010
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: show this help message and exit
+            optional: true
             synonyms:
             - -h
             - --help
+            description: show this help message and exit
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "usage: capC-MAP postprocess [-h] -c CONFIGFILE -o OUTDIR\n\n\
@@ -731,6 +985,7 @@ subcommands:
             \  -c CONFIGFILE  configuration file\n  -o OUTDIR      directory to be\
             \ created for output\n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -756,15 +1011,16 @@ subcommands:
           \    getchromsizes       Generate a chrom.sizes files from a list of\n \
           \                       restriction enzyme fragments.\n"
         generated_using: *id004
+        docker_image:
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: show this help message and exit
+        optional: true
         synonyms:
         - -h
         - --help
+        description: show this help message and exit
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: capC-MAP genomedigest [-h] -i INPUTFASTA -r ENZYMENAME -o\
@@ -773,35 +1029,36 @@ subcommands:
         \  name of supported enzyme, or cutting sequence\n  -o OUTPUTBED   output\
         \ bed file of restriction fragments\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id005
       positional: []
       named:
       - !Flag
-        description: "bed file continaing list of restriction enzyme fragments\nfor\
-          \ genome"
+        optional: true
         synonyms:
         - -f
+        description: "bed file continaing list of restriction enzyme fragments\nfor\
+          \ genome"
         args: !SimpleFlagArg
           name: FRAGMENTSFILE
-        optional: true
       - !Flag
-        description: 'output file name (Default: chrom.sizes)'
+        optional: true
         synonyms:
         - -o
+        description: 'output file name (Default: chrom.sizes)'
         args: !SimpleFlagArg
           name: OUTFILE
-        optional: true
-      parent: *id010
+      parent: *id011
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: show this help message and exit
+        optional: true
         synonyms:
         - -h
         - --help
+        description: show this help message and exit
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: capC-MAP getchromsizes [-h] -f FRAGMENTSFILE [-o OUTFILE]\n\
@@ -810,76 +1067,78 @@ subcommands:
         \                    for genome\n  -o OUTFILE        output file name (Default:\
         \ chrom.sizes)\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id006
       positional: []
       named:
       - !Flag
-        description: configuration file
+        optional: true
         synonyms:
         - -c
+        description: configuration file
         args: !SimpleFlagArg
           name: CONFIGFILE
-        optional: true
       - !Flag
-        description: directory to be created for output
+        optional: true
         synonyms:
         - -o
+        description: directory to be created for output
         args: !SimpleFlagArg
           name: OUTDIR
-        optional: true
-      parent: *id010
+      parent: *id011
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: show this help message and exit
+        optional: true
         synonyms:
         - -h
         - --help
+        description: show this help message and exit
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: capC-MAP run [-h] -c CONFIGFILE -o OUTDIR\n\noptional arguments:\n\
         \  -h, --help     show this help message and exit\n  -c CONFIGFILE  configuration\
         \ file\n  -o OUTDIR      directory to be created for output\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id007
       positional: []
       named:
       - !Flag
-        description: configuration file
+        optional: true
         synonyms:
         - -c
+        description: configuration file
         args: !SimpleFlagArg
           name: CONFIGFILE
-        optional: true
       - !Flag
-        description: "directory containing output from capC-MAP for a replicate\n\
-          (option must appear multiple times)."
+        optional: true
         synonyms:
         - -i
+        description: "directory containing output from capC-MAP for a replicate\n\
+          (option must appear multiple times)."
         args: !SimpleFlagArg
           name: INDIR
-        optional: true
       - !Flag
-        description: directory to be created for combined output
+        optional: true
         synonyms:
         - -o
+        description: directory to be created for combined output
         args: !SimpleFlagArg
           name: OUTDIR
-        optional: true
-      parent: *id010
+      parent: *id011
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: show this help message and exit
+        optional: true
         synonyms:
         - -h
         - --help
+        description: show this help message and exit
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: capC-MAP combinereps [-h] -c CONFIGFILE -i INDIR -o OUTDIR\n\
@@ -889,40 +1148,42 @@ subcommands:
         \ multiple times).\n  -o OUTDIR      directory to be created for combined\
         \ output\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id008
       positional: []
       named:
       - !Flag
-        description: configuration file
+        optional: true
         synonyms:
         - -c
+        description: configuration file
         args: !SimpleFlagArg
           name: CONFIGFILE
-        optional: true
       - !Flag
-        description: directory to be created for output
+        optional: true
         synonyms:
         - -o
+        description: directory to be created for output
         args: !SimpleFlagArg
           name: OUTDIR
-        optional: true
-      parent: *id010
+      parent: *id011
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: show this help message and exit
+        optional: true
         synonyms:
         - -h
         - --help
+        description: show this help message and exit
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "usage: capC-MAP postprocess [-h] -c CONFIGFILE -o OUTDIR\n\noptional\
         \ arguments:\n  -h, --help     show this help message and exit\n  -c CONFIGFILE\
         \  configuration file\n  -o OUTDIR      directory to be created for output\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -947,15 +1208,16 @@ subcommands:
       \ required.\n    getchromsizes       Generate a chrom.sizes files from a list\
       \ of\n                        restriction enzyme fragments.\n"
     generated_using: *id004
+    docker_image:
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: show this help message and exit
+    optional: true
     synonyms:
     - -h
     - --help
+    description: show this help message and exit
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: capC-MAP genomedigest [-h] -i INPUTFASTA -r ENZYMENAME -o OUTPUTBED\n\
@@ -964,34 +1226,35 @@ subcommands:
     \ enzyme, or cutting sequence\n  -o OUTPUTBED   output bed file of restriction\
     \ fragments\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id005
   positional: []
   named:
   - !Flag
-    description: "bed file continaing list of restriction enzyme fragments\nfor genome"
+    optional: true
     synonyms:
     - -f
+    description: "bed file continaing list of restriction enzyme fragments\nfor genome"
     args: !SimpleFlagArg
       name: FRAGMENTSFILE
-    optional: true
   - !Flag
-    description: 'output file name (Default: chrom.sizes)'
+    optional: true
     synonyms:
     - -o
+    description: 'output file name (Default: chrom.sizes)'
     args: !SimpleFlagArg
       name: OUTFILE
-    optional: true
-  parent: *id011
+  parent: *id012
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: show this help message and exit
+    optional: true
     synonyms:
     - -h
     - --help
+    description: show this help message and exit
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: capC-MAP getchromsizes [-h] -f FRAGMENTSFILE [-o OUTFILE]\n\n\
@@ -1000,76 +1263,78 @@ subcommands:
     \                  for genome\n  -o OUTFILE        output file name (Default:\
     \ chrom.sizes)\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id006
   positional: []
   named:
   - !Flag
-    description: configuration file
+    optional: true
     synonyms:
     - -c
+    description: configuration file
     args: !SimpleFlagArg
       name: CONFIGFILE
-    optional: true
   - !Flag
-    description: directory to be created for output
+    optional: true
     synonyms:
     - -o
+    description: directory to be created for output
     args: !SimpleFlagArg
       name: OUTDIR
-    optional: true
-  parent: *id011
+  parent: *id012
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: show this help message and exit
+    optional: true
     synonyms:
     - -h
     - --help
+    description: show this help message and exit
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: capC-MAP run [-h] -c CONFIGFILE -o OUTDIR\n\noptional arguments:\n\
     \  -h, --help     show this help message and exit\n  -c CONFIGFILE  configuration\
     \ file\n  -o OUTDIR      directory to be created for output\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id007
   positional: []
   named:
   - !Flag
-    description: configuration file
+    optional: true
     synonyms:
     - -c
+    description: configuration file
     args: !SimpleFlagArg
       name: CONFIGFILE
-    optional: true
   - !Flag
-    description: "directory containing output from capC-MAP for a replicate\n(option\
-      \ must appear multiple times)."
+    optional: true
     synonyms:
     - -i
+    description: "directory containing output from capC-MAP for a replicate\n(option\
+      \ must appear multiple times)."
     args: !SimpleFlagArg
       name: INDIR
-    optional: true
   - !Flag
-    description: directory to be created for combined output
+    optional: true
     synonyms:
     - -o
+    description: directory to be created for combined output
     args: !SimpleFlagArg
       name: OUTDIR
-    optional: true
-  parent: *id011
+  parent: *id012
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: show this help message and exit
+    optional: true
     synonyms:
     - -h
     - --help
+    description: show this help message and exit
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: capC-MAP combinereps [-h] -c CONFIGFILE -i INDIR -o OUTDIR\n\n\
@@ -1078,40 +1343,42 @@ subcommands:
     \ for a replicate\n                 (option must appear multiple times).\n  -o\
     \ OUTDIR      directory to be created for combined output\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id008
   positional: []
   named:
   - !Flag
-    description: configuration file
+    optional: true
     synonyms:
     - -c
+    description: configuration file
     args: !SimpleFlagArg
       name: CONFIGFILE
-    optional: true
   - !Flag
-    description: directory to be created for output
+    optional: true
     synonyms:
     - -o
+    description: directory to be created for output
     args: !SimpleFlagArg
       name: OUTDIR
-    optional: true
-  parent: *id011
+  parent: *id012
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: show this help message and exit
+    optional: true
     synonyms:
     - -h
     - --help
+    description: show this help message and exit
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "usage: capC-MAP postprocess [-h] -c CONFIGFILE -o OUTDIR\n\noptional\
     \ arguments:\n  -h, --help     show this help message and exit\n  -c CONFIGFILE\
     \  configuration file\n  -o OUTDIR      directory to be created for output\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -1136,3 +1403,4 @@ help_text: "usage: capC-MAP [-h]\n                {genomedigest,run,postprocess,
   \ a chrom.sizes files from a list of\n                        restriction enzyme\
   \ fragments.\n"
 generated_using: *id004
+docker_image:

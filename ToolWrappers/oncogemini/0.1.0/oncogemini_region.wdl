@@ -20,6 +20,9 @@ task OncogeminiRegion {
       ~{if defined(filter) then ("--filter " +  '"' + filter + '"') else ""} \
       ~{if (show_samples) then "--show-samples" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reg: "Specify a chromosomal region chr:start-end"
     gene: "Specify a gene of interest"

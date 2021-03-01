@@ -8,6 +8,9 @@ task CramSize {
     cram_size \
       ~{filename_dot_cram}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     filename_dot_cram: ""
   }

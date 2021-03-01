@@ -3,37 +3,74 @@ command:
 - peddy
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: VCF
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: false
   position: 1
   name: PED
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: "-p, --procs INTEGER             number of processors to use\n--prefix\
-    \ TEXT                   prefix for output files (default is basename\nof vcf)\n\
-    --each INTEGER                  sample every nth value from the selected\nsites\
-    \ instead of every value to speed\nprocessing.\n--sites TEXT                 \
-    \   The path to a file with alternative sites to\nuse for calculating relatedness\
-    \ in format\n1:234234 1:45345345... with\nchrom:pos[:ref:alt] on each line. The\n\
-    special-case of 'hg38' for this will use\nhg38 sites shipped with peddy.\n--loglevel\
-    \ [DEBUG|INFO|WARNING|ERROR|CRITICAL]\nSet the level of log output.  [default:\n\
-    INFO]\n--version                       Show the version and exit.\n-h, --help\
-    \                      Show this message and exit.\n"
+  optional: true
   synonyms:
   - --plot
-  args: !EmptyFlagArg {}
+  - -p
+  - --procs
+  description: number of processors to use
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
   optional: true
+  synonyms:
+  - --prefix
+  description: "prefix for output files (default is basename\nof vcf)"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --each
+  description: "sample every nth value from the selected\nsites instead of every value\
+    \ to speed\nprocessing."
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --sites
+  description: "The path to a file with alternative sites to\nuse for calculating\
+    \ relatedness in format\n1:234234 1:45345345... with\nchrom:pos[:ref:alt] on each\
+    \ line. The\nspecial-case of 'hg38' for this will use\nhg38 sites shipped with\
+    \ peddy."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --loglevel
+  description: "[DEBUG|INFO|WARNING|ERROR|CRITICAL]\nSet the level of log output.\
+    \  [default:\nINFO]"
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
 usage_flag:
-version_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Show the version and exit.
+  args: !EmptyFlagArg {}
 help_text: "Usage: peddy [OPTIONS] VCF PED\n\n  pleasingly pythonic pedigree manipulation\n\
   \nOptions:\n  --plot\n  -p, --procs INTEGER             number of processors to\
   \ use\n  --prefix TEXT                   prefix for output files (default is basename\n\
@@ -52,3 +89,4 @@ help_text: "Usage: peddy [OPTIONS] VCF PED\n\n  pleasingly pythonic pedigree man
   \ exit.\n"
 generated_using:
 - --help
+docker_image:

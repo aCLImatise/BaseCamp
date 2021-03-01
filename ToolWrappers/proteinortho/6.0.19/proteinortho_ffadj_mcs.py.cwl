@@ -1,25 +1,26 @@
 class: CommandLineTool
 id: proteinortho_ffadj_mcs.py.cwl
 inputs:
+- id: in_repeat_matching
+  doc: 'match N repetitions (default: 0)'
+  type: long?
+  inputBinding:
+    prefix: --repeat-matching
+- id: in_min_cs_size
+  doc: 'minimal cs size (default: 1)'
+  type: long?
+  inputBinding:
+    prefix: --min-cs-size
 - id: in_g
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -g
-- id: in_m
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -M
-- id: in_r
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -R
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - proteinortho_ffadj_mcs.py

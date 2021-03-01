@@ -74,6 +74,9 @@ task Abysssealer {
       ~{if defined(min_frag) then ("--min-frag " +  '"' + min_frag + '"') else ""} \
       ~{if defined(max_frag) then ("--max-frag " +  '"' + max_frag + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     print_flanks: "outputs flank files"
     input_scaffold: "load scaffold from FILE"

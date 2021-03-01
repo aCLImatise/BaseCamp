@@ -7,26 +7,26 @@ inputs:
     \ example, if you have\n<foo ID=\"wibble\">\nAnd you wish to ignore the ID attribute,\
     \ then you would use the\nswitch\n-ignore foo-ID\nYou can specify multiple elements\
     \ to ignore like this\n-i foo -i bar -i baz\nYou can also specify paths\n-i foo/bar/bar-id"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -ignore
 - id: in_parser
   doc: "|p FORMAT\nwhich parser to use. The default is XML. This can also be\nautodetected\
     \ by the file suffix. Other alternatives are sxpr and\nitext. See Data::Stag for\
     \ details."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -parser
 - id: in_report
   doc: "|r ELEMENT\nreport mismatches as they occur on each element of type ELEMENT\n\
     multiple elements can be specified"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -report
 - id: in_verbose
   doc: "|v\nused in conjunction with the -report switch\nshows the tree of the mismatching\
     \ element"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -verbose
 - id: in_output
@@ -66,6 +66,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - stag-diff.pl

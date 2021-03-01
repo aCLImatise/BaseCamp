@@ -20,6 +20,9 @@ task PypgatkClipyCbioportaltoproteindb {
       ~{if (split_by_tissue_type) then "--split_by_tissue_type" else ""} \
       ~{if defined(clinical_sample_file) then ("--clinical_sample_file " +  '"' + clinical_sample_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config_file: "Configuration for cbioportal to proteindb"
     input_cds: "CDS genes from ENSEMBL database"

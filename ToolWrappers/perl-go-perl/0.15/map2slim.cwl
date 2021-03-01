@@ -1,36 +1,36 @@
 class: CommandLineTool
 id: map2slim.cwl
 inputs:
-- id: in_slim_filethis_argument
+- id: in_slim_argument_adds
   doc: "slim file\nThis argument adds bucket terms to the slim ontology; see the\n\
     documentation below for an explanation. The new slim ontology file,\nincluding\
     \ bucket terms will be written to bucket slim file"
-  type: File
+  type: File?
   inputBinding:
     prefix: -b
 - id: in_out_map
   doc: "mapping file\nThis will generate a mapping file for every term in the full\n\
     ontology showing both the most pertinent slim term and all slim\nterms that are\
     \ ancestors. If you use this option, do NOT supply a\ngene-associations file"
-  type: File
+  type: File?
   inputBinding:
     prefix: -outmap
-- id: in_will_force_mapslim
+- id: in_force_mapslim_give
   doc: "This will force map2slim to give counts of the assoc file, rather\nthan map\
     \ it"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -c
 - id: in_when_used_conjunction
   doc: "When used in conjunction with -c will tab the output so that the\nindentation\
     \ reflects the tree hierarchy in the slim file"
-  type: File
+  type: File?
   inputBinding:
     prefix: -t
-- id: in_filethis_will_write
+- id: in_write_mapped_assocs
   doc: "file\nThis will write the mapped assocs (or counts) to the specified file,\n\
     rather than to the screen"
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_show_names
@@ -89,9 +89,10 @@ outputs:
 - id: out_when_used_conjunction
   doc: "When used in conjunction with -c will tab the output so that the\nindentation\
     \ reflects the tree hierarchy in the slim file"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_when_used_conjunction)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - map2slim

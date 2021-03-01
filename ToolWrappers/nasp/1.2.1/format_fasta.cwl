@@ -3,12 +3,12 @@ id: format_fasta.cwl
 inputs:
 - id: in_input_fast_a
   doc: Path to input fasta.
-  type: File
+  type: File?
   inputBinding:
     prefix: --inputfasta
 - id: in_output_fast_a
   doc: "Path to output fasta.\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --outputfasta
 outputs:
@@ -17,9 +17,10 @@ outputs:
   type: stdout
 - id: out_output_fast_a
   doc: "Path to output fasta.\n"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_fast_a)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - format_fasta

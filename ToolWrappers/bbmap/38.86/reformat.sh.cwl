@@ -3,25 +3,25 @@ id: reformat.sh.cwl
 inputs:
 - id: in_disabled_filter_reads
   doc: disabled; to filter reads with any of a symbol type, set to 0.
-  type: long
+  type: long?
   inputBinding:
     prefix: '-1'
 - id: in_x_mx
   doc: "This will set Java's memory usage, overriding autodetection.\n-Xmx20g will\
     \ specify 20 gigs of RAM, and -Xmx200m will specify 200 megs.\nThe max is typically\
     \ 85% of physical memory."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -Xmx
 - id: in_e_oom
   doc: This flag will cause the process to exit if an out-of-memory exception occurs.  Requires
     Java 8u92+.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -eoom
 - id: in_da
   doc: Disable assertions.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -da
 - id: in_in
@@ -33,6 +33,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - reformat.sh

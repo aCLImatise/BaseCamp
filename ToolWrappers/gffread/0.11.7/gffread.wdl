@@ -4,10 +4,10 @@ task Gffread {
   input {
     Boolean? discard_transcripts_having
     Boolean? discard_transcripts_shorter
-    Boolean? only_show_coordinate
+    Boolean? only_show_transcripts
     Boolean? r_option_discard
     Boolean? discard_singleexon_transcripts
-    Boolean? coding_only_discard
+    Boolean? coding_discard_mrnas
     String? nc
     Boolean? ignore_locus
     Boolean? use_description_field
@@ -19,19 +19,19 @@ task Gffread {
     Boolean? keep_attributes_move
     Boolean? keep_genes
     Boolean? keep_comments
-    Boolean? process_other_nontranscript
-    Boolean? discard_having_requires
+    Boolean? process_other_records
+    Boolean? discard_mrnas_cds
     Boolean? v_option_check
     Boolean? v_option_singleexon
     Boolean? add_transcript_level
     Boolean? add_has_cds
     String? adj_stop
     Boolean? discard_multiexon_mrnas
-    Boolean? discard_lack_initial
+    Boolean? discard_mrnas_codonor
     Boolean? no_pseudo
     Boolean? in_bed
     Boolean? in_tlf
-    Boolean? m_slash_merge
+    Boolean? merge
     File? m_option_write
     Boolean? cluster_only
     Boolean? m_option_also
@@ -42,7 +42,7 @@ task Gffread {
     Boolean? t_adopt
     Boolean? decode_url_encoded
     Boolean? merge_close_exons
-    Boolean? full_path_mappings
+    Boolean? full_path_names
     Boolean? write_spliced_exons
     String? w_add
     Boolean? write_spliced_cds
@@ -53,7 +53,7 @@ task Gffread {
     Boolean? chrreplace_name_mapping
     Boolean? use_trackname_nd
     Boolean? write_records_stdout
-    Boolean? main_output_will
+    Boolean? main_output_be
     Int? bed
     String? tlf
     String? table
@@ -63,10 +63,10 @@ task Gffread {
     gffread \
       ~{if (discard_transcripts_having) then "-i" else ""} \
       ~{if (discard_transcripts_shorter) then "-l" else ""} \
-      ~{if (only_show_coordinate) then "-r" else ""} \
+      ~{if (only_show_transcripts) then "-r" else ""} \
       ~{if (r_option_discard) then "-R" else ""} \
       ~{if (discard_singleexon_transcripts) then "-U" else ""} \
-      ~{if (coding_only_discard) then "-C" else ""} \
+      ~{if (coding_discard_mrnas) then "-C" else ""} \
       ~{if defined(nc) then ("--nc " +  '"' + nc + '"') else ""} \
       ~{if (ignore_locus) then "--ignore-locus" else ""} \
       ~{if (use_description_field) then "-A" else ""} \
@@ -78,19 +78,19 @@ task Gffread {
       ~{if (keep_attributes_move) then "-G" else ""} \
       ~{if (keep_genes) then "--keep-genes" else ""} \
       ~{if (keep_comments) then "--keep-comments" else ""} \
-      ~{if (process_other_nontranscript) then "-O" else ""} \
-      ~{if (discard_having_requires) then "-V" else ""} \
+      ~{if (process_other_records) then "-O" else ""} \
+      ~{if (discard_mrnas_cds) then "-V" else ""} \
       ~{if (v_option_check) then "-H" else ""} \
       ~{if (v_option_singleexon) then "-B" else ""} \
       ~{if (add_transcript_level) then "-P" else ""} \
       ~{if (add_has_cds) then "--add-hasCDS" else ""} \
       ~{if defined(adj_stop) then ("--adj-stop " +  '"' + adj_stop + '"') else ""} \
       ~{if (discard_multiexon_mrnas) then "-N" else ""} \
-      ~{if (discard_lack_initial) then "-J" else ""} \
+      ~{if (discard_mrnas_codonor) then "-J" else ""} \
       ~{if (no_pseudo) then "--no-pseudo" else ""} \
       ~{if (in_bed) then "--in-bed" else ""} \
       ~{if (in_tlf) then "--in-tlf" else ""} \
-      ~{if (m_slash_merge) then "-M/--merge" else ""} \
+      ~{if (merge) then "--merge" else ""} \
       ~{if defined(m_option_write) then ("-d " +  '"' + m_option_write + '"') else ""} \
       ~{if (cluster_only) then "--cluster-only" else ""} \
       ~{if (m_option_also) then "-K" else ""} \
@@ -101,7 +101,7 @@ task Gffread {
       ~{if (t_adopt) then "--t-adopt" else ""} \
       ~{if (decode_url_encoded) then "-D" else ""} \
       ~{if (merge_close_exons) then "-Z" else ""} \
-      ~{if (full_path_mappings) then "-g" else ""} \
+      ~{if (full_path_names) then "-g" else ""} \
       ~{if (write_spliced_exons) then "-w" else ""} \
       ~{if defined(w_add) then ("--w-add " +  '"' + w_add + '"') else ""} \
       ~{if (write_spliced_cds) then "-x" else ""} \
@@ -112,19 +112,22 @@ task Gffread {
       ~{if (chrreplace_name_mapping) then "-m" else ""} \
       ~{if (use_trackname_nd) then "-t" else ""} \
       ~{if (write_records_stdout) then "-o" else ""} \
-      ~{if (main_output_will) then "-T" else ""} \
+      ~{if (main_output_be) then "-T" else ""} \
       ~{if defined(bed) then ("--bed " +  '"' + bed + '"') else ""} \
       ~{if defined(tlf) then ("--tlf " +  '"' + tlf + '"') else ""} \
       ~{if defined(table) then ("--table " +  '"' + table + '"') else ""} \
       ~{if defined(warn_duplicate_transcript) then ("-v " +  '"' + warn_duplicate_transcript + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     discard_transcripts_having: "discard transcripts having an intron larger than <maxintron>"
     discard_transcripts_shorter: "discard transcripts shorter than <minlen> bases"
-    only_show_coordinate: "only show transcripts overlapping coordinate range <start>..<end>\\n(on chromosome/contig <chr>, strand <strand> if provided)"
+    only_show_transcripts: "only show transcripts overlapping coordinate range <start>..<end>\\n(on chromosome/contig <chr>, strand <strand> if provided)"
     r_option_discard: "for -r option, discard all transcripts that are not fully\\ncontained within the given range"
     discard_singleexon_transcripts: "discard single-exon transcripts"
-    coding_only_discard: "coding only: discard mRNAs that have no CDS features"
+    coding_discard_mrnas: "coding only: discard mRNAs that have no CDS features"
     nc: "only: discard mRNAs that have CDS features"
     ignore_locus: ": discard locus features and attributes found in the input"
     use_description_field: "use the description field from <seq_info.fsize> and add it\\nas the value for a 'descr' attribute to the GFF record"
@@ -136,19 +139,19 @@ task Gffread {
     keep_attributes_move: "do not keep exon attributes, move them to the transcript feature\\n(for GFF3 output)"
     keep_genes: ": in transcript-only mode (default), also preserve gene records"
     keep_comments: ": for GFF3 input/output, try to preserve comments"
-    process_other_nontranscript: "process other non-transcript GFF records (by default non-transcript\\nrecords are ignored)"
-    discard_having_requires: "discard any mRNAs with CDS having in-frame stop codons (requires -g)"
+    process_other_records: "process other non-transcript GFF records (by default non-transcript\\nrecords are ignored)"
+    discard_mrnas_cds: "discard any mRNAs with CDS having in-frame stop codons (requires -g)"
     v_option_check: "for -V option, check and adjust the starting CDS phase\\nif the original phase leads to a translation with an\\nin-frame stop codon"
     v_option_singleexon: "for -V option, single-exon transcripts are also checked on the\\nopposite strand (requires -g)"
     add_transcript_level: "add transcript level GFF attributes about the coding status of each\\ntranscript, including partialness or in-frame stop codons (requires -g)"
     add_has_cds: ": add a \\\"hasCDS\\\" attribute with value \\\"true\\\" for transcripts\\nthat have CDS features"
     adj_stop: "codon adjustment: enables -P and performs automatic\\nadjustment of the CDS stop coordinate if premature or downstream"
     discard_multiexon_mrnas: "discard multi-exon mRNAs that have any intron with a non-canonical\\nsplice site consensus (i.e. not GT-AG, GC-AG or AT-AC)"
-    discard_lack_initial: "discard any mRNAs that either lack initial START codon\\nor the terminal STOP codon, or have an in-frame stop codon\\n(i.e. only print mRNAs with a complete CDS)"
+    discard_mrnas_codonor: "discard any mRNAs that either lack initial START codon\\nor the terminal STOP codon, or have an in-frame stop codon\\n(i.e. only print mRNAs with a complete CDS)"
     no_pseudo: ": filter out records matching the 'pseudo' keyword"
     in_bed: ": input should be parsed as BED format (automatic if the input\\nfilename ends with .bed*)"
     in_tlf: ": input GFF-like one-line-per-transcript format without exon/CDS\\nfeatures (see --tlf option below); automatic if the input\\nfilename ends with .tlf)"
-    m_slash_merge: ": cluster the input transcripts into loci, discarding\\n\\\"duplicated\\\" transcripts (those with the same exact introns\\nand fully contained or equal boundaries)"
+    merge: ": cluster the input transcripts into loci, discarding\\n\\\"duplicated\\\" transcripts (those with the same exact introns\\nand fully contained or equal boundaries)"
     m_option_write: ": for -M option, write duplication info to file <dupinfo>"
     cluster_only: ": same as -M/--merge but without discarding any of the\\n\\\"duplicate\\\" transcripts, only create \\\"locus\\\" features"
     m_option_also: "for -M option: also discard as redundant the shorter, fully contained\\ntranscripts (intron chains matching a part of the container)"
@@ -159,7 +162,7 @@ task Gffread {
     t_adopt: ":  try to find a parent gene overlapping/containing a transcript\\nthat does not have any explicit gene Parent"
     decode_url_encoded: "decode url encoded characters within attributes"
     merge_close_exons: "merge very close exons into a single exon (when intron size<4)"
-    full_path_mappings: "full path to a multi-fasta file with the genomic sequences\\nfor all input mappings, OR a directory with single-fasta files\\n(one per genomic sequence, with file names matching sequence names)"
+    full_path_names: "full path to a multi-fasta file with the genomic sequences\\nfor all input mappings, OR a directory with single-fasta files\\n(one per genomic sequence, with file names matching sequence names)"
     write_spliced_exons: "write a fasta file with spliced exons for each transcript"
     w_add: "for the -w option, extract additional <N> bases\\nboth upstream and downstream of the transcript boundaries"
     write_spliced_cds: "write a fasta file with spliced CDS for each GFF transcript"
@@ -170,7 +173,7 @@ task Gffread {
     chrreplace_name_mapping: "<chr_replace> is a name mapping table for converting reference\\nsequence names, having this 2-column format:\\n<original_ref_ID> <new_ref_ID>"
     use_trackname_nd: "use <trackname> in the 2nd column of each GFF/GTF output line"
     write_records_stdout: "write the records into <outfile> instead of stdout"
-    main_output_will: "main output will be GTF instead of GFF3"
+    main_output_be: "main output will be GTF instead of GFF3"
     bed: "records in BED format instead of default GFF3"
     tlf: "\\\"transcript line format\\\" which is like GFF\\nbut exons, CDS features and related data are stored as GFF\\nattributes in the transcript feature line, like this:\\nexoncount=N;exons=<exons>;CDSphase=<N>;CDS=<CDScoords>\\n<exons> is a comma-delimited list of exon_start-exon_end coordinates;\\n<CDScoords> is CDS_start:CDS_end coordinates or a list like <exons>"
     table: "a simple tab delimited format instead of GFF, with columns\\nhaving the values of GFF attributes given in <attrlist>; special\\npseudo-attributes (prefixed by @) are recognized:\\n@id, @geneid, @chr, @start, @end, @strand, @numexons, @exons,\\n@cds, @covlen, @cdslen"

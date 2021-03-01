@@ -18,6 +18,9 @@ task HgTrackDb {
       ~{if defined(release) then ("-release " +  '"' + release + '"') else ""} \
       ~{if (settings) then "-settings" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     strict: "- only include tables that exist (and complain about missing html files)."
     ra_name: "- Specify a file name to use other than trackDb.ra\\nfor the ra files."

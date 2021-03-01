@@ -8,6 +8,9 @@ task CruxStatcolumn {
     crux stat_column \
       ~{tsv_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tsv_file: ""
   }

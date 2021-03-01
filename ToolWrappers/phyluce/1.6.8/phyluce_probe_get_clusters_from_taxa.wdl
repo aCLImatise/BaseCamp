@@ -12,6 +12,9 @@ task PhyluceProbeGetClustersFromTaxa {
       ~{if defined(db) then ("--db " +  '"' + db + '"') else ""} \
       ~{if defined(tax_a) then ("--taxa " +  '"' + tax_a + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     clusters: "The directory containing cluster files"
     db: "The database to update"

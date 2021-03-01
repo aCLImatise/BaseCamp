@@ -8,6 +8,9 @@ task DRAMsetuppyVersion {
     DRAM_setup_py version \
       ~{dram_setup_do_tpy}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dram_setup_do_tpy: ""
   }

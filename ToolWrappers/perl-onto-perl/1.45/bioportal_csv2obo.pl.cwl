@@ -3,7 +3,7 @@ id: bioportal_csv2obo.pl.cwl
 inputs:
 - id: in_csv_input_file
   doc: CSV input file
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -f
 - id: in_usage
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bioportal_csv2obo.pl

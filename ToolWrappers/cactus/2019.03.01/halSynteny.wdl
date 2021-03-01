@@ -30,6 +30,9 @@ task HalSynteny {
       ~{if defined(query_genome) then ("--queryGenome " +  '"' + query_genome + '"') else ""} \
       ~{if defined(target_genome) then ("--targetGenome " +  '"' + target_genome + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cache_bytes: ":          maximum size in bytes of regular hdf5 cache [default =\\n15728640]"
     cache_mdc: ":            number of metadata slots in hdf5 cache [default = 113]"

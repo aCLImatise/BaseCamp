@@ -3,7 +3,7 @@ version 1.0
 task BrassBedpe2vcfpl {
   input {
     Boolean? species
-    Boolean? file
+    Boolean? input_file_format
     Boolean? outfile
     File? ref
     File? assembly
@@ -21,7 +21,7 @@ task BrassBedpe2vcfpl {
   command <<<
     brass_bedpe2vcf_pl \
       ~{if (species) then "-species" else ""} \
-      ~{if (file) then "-file" else ""} \
+      ~{if (input_file_format) then "-file" else ""} \
       ~{if (outfile) then "-outfile" else ""} \
       ~{if (ref) then "-ref" else ""} \
       ~{if (assembly) then "-assembly" else ""} \
@@ -36,9 +36,12 @@ task BrassBedpe2vcfpl {
       ~{if (acc_source_normal) then "-acc_source_normal" else ""} \
       ~{if (study_normal) then "-study_normal" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     species: ": species (HUMAN, MOUSE, DOG etc)"
-    file: ": input file - format type: bedpe)"
+    input_file_format: ": input file - format type: bedpe)"
     outfile: ": what file to print output to. Default is input_file.bedpe"
     ref: ": fasta reference file (with associated fai file). For vcf out file generation."
     assembly: ": sequence assembly used (eg GRCh37). For vcf out file generation."

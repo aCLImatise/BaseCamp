@@ -1,76 +1,76 @@
 class: CommandLineTool
 id: analyze.cwl
 inputs:
-- id: in_report_wrong_classified
+- id: in_report_wrong_patterns
   doc: ': report wrong classified patterns (default)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -w
-- id: in_report_right_classified
+- id: in_report_right_patterns
   doc: ': report right classified patterns'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -r
 - id: in_report_unclassified_patterns
   doc: ': report unclassified patterns'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -u
-- id: in_same_w_r
+- id: in_same_r_u
   doc: ': same as -w -r -u'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -a
 - id: in_report_confusion_class
   doc: '"t c"         : report confusion from class t to c (-1 = noclass)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -S
 - id: in_show_statistic_information
   doc: ': show statistic information'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -s
 - id: in_show_class_statistic
   doc: ': show class statistic information'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -c
 - id: in_show_confusion_matrix
   doc: ': show confusion matrix'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -m
 - id: in__verbous_mode
   doc: ': verbous mode'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_select_error_functionfunction
   doc: ": select error function\n<function> = [402040 | WTA | band]\ndefault = 402040"
-  type: long
+  type: long?
   inputBinding:
     prefix: -e
 - id: in_lower_bound_level
   doc: ": lower bound level (see documentation)\ndefault: 0.4 for 402040\ndefault:\
     \ 0.0 for WTA\ndefault: 0.1 for band"
-  type: double
+  type: double?
   inputBinding:
     prefix: -l
 - id: in_upper_bound_level
   doc: ": upper bound level (see documentation)\ndefault: 0.6 for 402040\ndefault:\
     \ 0.0 for WTA\ndefault: 0.1 for band"
-  type: double
+  type: double?
   inputBinding:
     prefix: -h
-- id: in_input_result_stdin
+- id: in_input_result_file
   doc: ': input result file (default stdin)'
-  type: File
+  type: File?
   inputBinding:
     prefix: -i
 - id: in_output_file_default
   doc: ': output file (default stdout)'
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 outputs:
@@ -79,9 +79,10 @@ outputs:
   type: stdout
 - id: out_output_file_default
   doc: ': output file (default stdout)'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_file_default)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - analyze

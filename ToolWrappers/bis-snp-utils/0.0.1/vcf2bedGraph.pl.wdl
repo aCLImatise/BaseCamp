@@ -14,6 +14,9 @@ task Vcf2bedGraphpl {
       ~{if defined(sample_order) then ("--sample_order " +  '"' + sample_order + '"') else ""} \
       ~{if defined(min_ct) then ("--minCT " +  '"' + min_ct + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sample_order: ": sample order choose to output as bed file when there are multiple samples in the same vcf file. 1 means the first sample (default: 1)"
     min_ct: ": minimum number of CT reads, otherwise, methy column will be '.' (default: 1)"

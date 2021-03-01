@@ -46,6 +46,9 @@ task TETyperpy {
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""} \
       ~{if (no_overwrite) then "--no_overwrite" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out_prefix: "Prefix to use for output files. Required."
     ref: "Reference sequence in fasta format. If not already\\nindexed with bwa, this will be created automatically.\\nA blast database is also required, again this will be\\ncreated automatically if it does not already exist.\\nRequired."

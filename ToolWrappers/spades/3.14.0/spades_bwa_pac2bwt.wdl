@@ -16,6 +16,9 @@ task SpadesbwaPac2bwt {
       ~{out_dot_bwt} \
       ~{if (d) then "-d" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     d: ""
     bwa: ""

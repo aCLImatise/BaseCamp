@@ -6,23 +6,23 @@ inputs:
     \ use all resolutions. If all\nresolutions are used, a multi-res .cool file will\
     \ be\ncreated, which has a different hdf5 structure. See the\nREADME for more\
     \ info"
-  type: long
+  type: long?
   inputBinding:
     prefix: --resolution
 - id: in_nproc
   doc: "number of processes to use to parse hic file. default\nset to 1"
-  type: long
+  type: long?
   inputBinding:
     prefix: --nproc
 - id: in_silent
   doc: if used, silence standard program output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --silent
 - id: in_warnings
   doc: "if used, print out non-critical WARNING messages,\nwhich are hidden by default.\
     \ Silent mode takes\nprecedence over this\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --warnings
 - id: in_in_file
@@ -39,6 +39,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - hic2cool

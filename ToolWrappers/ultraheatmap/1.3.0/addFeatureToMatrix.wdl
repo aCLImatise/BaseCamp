@@ -26,6 +26,9 @@ task AddFeatureToMatrix {
       ~{if defined(reference_point) then ("--referencePoint " +  '"' + reference_point + '"') else ""} \
       ~{if defined(closest_genes_output) then ("--closestGenesOutput " +  '"' + closest_genes_output + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     matrix: "deeptools matrix (default: None)"
     output_matrix_default: "output matrix (default: None)"

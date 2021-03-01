@@ -16,6 +16,9 @@ task VkGenome {
       ~{if defined(directory) then ("--directory " +  '"' + directory + '"') else ""} \
       ~{if defined(ref) then ("--ref " +  '"' + ref + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     directory: "Set Genome Directory"
     ref: ""

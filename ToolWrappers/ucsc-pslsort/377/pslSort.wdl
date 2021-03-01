@@ -92,6 +92,9 @@ task PslSort {
       ~{if (no_head) then "-nohead" else ""} \
       ~{if defined(verbose) then ("-verbose " +  '"' + verbose + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_head: "Do not write psl header."
     verbose: "Set verbosity level, higher for more output. Default is 1."

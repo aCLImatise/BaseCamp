@@ -24,6 +24,9 @@ task Makeinitialstoptagspy {
       ~{if defined(stop_tags) then ("--stoptags " +  '"' + stop_tags + '"') else ""} \
       ~{if (force) then "--force" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     info: "print citation information"
     k_size: "k-mer size to use (default: 32)"

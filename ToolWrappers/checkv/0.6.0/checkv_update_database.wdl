@@ -18,6 +18,9 @@ task CheckvUpdateDatabase {
       ~{if (restart) then "--restart" else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quiet: "Suppress logging messages"
     restart: "Overwrite existing database"

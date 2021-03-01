@@ -58,6 +58,9 @@ task Basil {
       ~{if defined(realignment_num_threads) then ("--realignment-num-threads " +  '"' + realignment_num_threads + '"') else ""} \
       ~{if defined(breakpoint_window_radius) then ("--breakpoint-window-radius " +  '"' + breakpoint_window_radius + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     quiet: "Only print on errors."
     verbose: "Higher verbosity."

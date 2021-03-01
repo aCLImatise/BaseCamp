@@ -42,6 +42,9 @@ task FixInFrameStopCodonGenespy {
       ~{if (print_format_examples) then "--print_format_examples" else ""} \
       ~{if defined(cdb_tools_path) then ("--cdbtools_path " +  '"' + cdb_tools_path + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genome: "genome sequence file (FASTA format)"
     gtf: "GTF input file"

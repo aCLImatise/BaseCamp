@@ -3,7 +3,7 @@ id: _prettyseq.cwl
 inputs:
 - id: in_range
   doc: range      [Whole sequence] Range(s) to translate
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -range
 - id: in_table
@@ -15,18 +15,19 @@ inputs:
     Yeast Nuclear); 13 (Ascidian Mitochondrial);\n14 (Flatworm Mitochondrial); 15\n\
     (Blepharisma Macronuclear); 16\n(Chlorophycean Mitochondrial); 21 (Trematode\n\
     Mitochondrial); 22 (Scenedesmus obliquus);\n23 (Thraustochytrium Mitochondrial))"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -table
 - id: in_width
   doc: integer    [60] Width of screen (Integer 10 or more)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -width
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - _prettyseq

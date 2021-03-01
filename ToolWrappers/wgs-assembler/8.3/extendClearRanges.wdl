@@ -34,6 +34,9 @@ task ExtendClearRanges {
       ~{if (load) then "-load" else ""} \
       ~{if (enable_verbosemultialign_debugging) then "-V" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     use_ckpname_checkpoint: "Use ckpName as the checkpoint name"
     the_checkpoint_use: "The checkpoint to use"

@@ -10,6 +10,9 @@ task Grabix {
       ~{index} \
       ~{bg_zf_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     index: ""
     bg_zf_file: ""

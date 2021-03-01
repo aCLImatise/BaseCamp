@@ -62,6 +62,9 @@ task MascotSearchrb {
       ~{if defined(download_only) then ("--download-only " +  '"' + download_only + '"') else ""} \
       ~{if defined(timeout) then ("--timeout " +  '"' + timeout + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     replace_output: "Dont skip analyses for which the output file already exists [false]"
     explicitly_named_output: "An explicitly named output file."

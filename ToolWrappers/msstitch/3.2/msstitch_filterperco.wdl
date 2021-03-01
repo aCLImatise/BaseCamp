@@ -26,6 +26,9 @@ task MsstitchFilterperco {
       ~{if (enforce_tryptic) then "--enforce-tryptic" else ""} \
       ~{if defined(in_source_frag) then ("--insourcefrag " +  '"' + in_source_frag + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file_format: "Input file of {} format"
     directory_to_output: "Directory to output in"

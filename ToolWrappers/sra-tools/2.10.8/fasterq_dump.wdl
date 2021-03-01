@@ -24,7 +24,7 @@ task Fasterqdump {
     Int? min_read_len
     String? table
     Boolean? strict
-    String? filter_output_matching
+    String? filter_output_given
     File? ngc
     File? perm
     String? location
@@ -32,12 +32,12 @@ task Fasterqdump {
     Boolean? disable_multithreading
     Int? log_level
     File? option_file
-    String aappend_append_outputfile
+    String append_outputfile_instead
     File file_dot
   }
   command <<<
     fasterq_dump \
-      ~{aappend_append_outputfile} \
+      ~{append_outputfile_instead} \
       ~{file_dot} \
       ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""} \
       ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""} \
@@ -61,7 +61,7 @@ task Fasterqdump {
       ~{if defined(min_read_len) then ("--min-read-len " +  '"' + min_read_len + '"') else ""} \
       ~{if defined(table) then ("--table " +  '"' + table + '"') else ""} \
       ~{if (strict) then "--strict" else ""} \
-      ~{if defined(filter_output_matching) then ("--bases " +  '"' + filter_output_matching + '"') else ""} \
+      ~{if defined(filter_output_given) then ("--bases " +  '"' + filter_output_given + '"') else ""} \
       ~{if defined(ngc) then ("--ngc " +  '"' + ngc + '"') else ""} \
       ~{if defined(perm) then ("--perm " +  '"' + perm + '"') else ""} \
       ~{if defined(location) then ("--location " +  '"' + location + '"') else ""} \
@@ -70,6 +70,9 @@ task Fasterqdump {
       ~{if defined(log_level) then ("--log-level " +  '"' + log_level + '"') else ""} \
       ~{if defined(option_file) then ("--option-file " +  '"' + option_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     outfile: "full path of outputfile (overrides usage\\nof current directory and given accession)"
     outdir: "path for outputfile (overrides usage of\\ncurrent directory, but uses given\\naccession)"
@@ -93,7 +96,7 @@ task Fasterqdump {
     min_read_len: "filter by sequence-lenght"
     table: "which seq-table to use in case of pacbio"
     strict: "terminate on invalid read"
-    filter_output_matching: "filter output by matching against given"
+    filter_output_given: "filter output by matching against given"
     ngc: "<path> to ngc file"
     perm: "<path> to permission file"
     location: "location in cloud"
@@ -101,7 +104,7 @@ task Fasterqdump {
     disable_multithreading: "disable multithreading"
     log_level: "Logging level as number or enum string.\\nOne of\\n(fatal|sys|int|err|warn|info|debug) or\\n(0-6) Current/default is warn"
     option_file: "Read more options and parameters from the"
-    aappend_append_outputfile: "-A|--append                      append to output-file, instead of"
+    append_outputfile_instead: "-A|--append                      append to output-file, instead of"
     file_dot: "-h|--help                        print this message"
   }
   output {

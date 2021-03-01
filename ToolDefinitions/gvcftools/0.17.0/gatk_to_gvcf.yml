@@ -3,145 +3,145 @@ command:
 - gatk_to_gvcf
 positional:
 - !Positional
-  description: --no-block-compression                Turn off block compression
+  optional: false
   position: 0
   name: file
-  optional: false
+  description: --no-block-compression                Turn off block compression
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - --chrom-depth-file
   description: "Read mean depth for each chromosome from file,\nand use these values\
     \ for maximum site depth\nfilteration. File should contain one line per\nchromosome,\
     \ where each line begins with:\n\"chrom_name<TAB>depth\" (default: no chrom depth\n\
     filtration)"
-  synonyms:
-  - --chrom-depth-file
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "(=3.0) If a chrom depth file is supplied then loci\nwith depth exceeding\
-    \ the mean chrom depth times\nthis value are filtered"
+  optional: true
   synonyms:
   - --max-depth-factor
+  description: "(=3.0) If a chrom depth file is supplied then loci\nwith depth exceeding\
+    \ the mean chrom depth times\nthis value are filtered"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: (=20.0)         Minimum locus GQX
+  optional: true
   synonyms:
   - --min-gqx
+  description: (=20.0)         Minimum locus GQX
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: (=20.0)          Minimum site MQ
+  optional: true
   synonyms:
   - --min-mq
+  description: (=20.0)          Minimum site MQ
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: (=3.73)          Minimum locus QD
+  optional: true
   synonyms:
   - --min-qd
+  description: (=3.73)          Minimum locus QD
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: (=60.0)     Maximum site FS
+  optional: true
   synonyms:
   - --max-site-fs
+  description: (=60.0)     Maximum site FS
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: (=13.0)    Maximum site HaplotypeScore
+  optional: true
   synonyms:
   - --max-hapscore
+  description: (=13.0)    Maximum site HaplotypeScore
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: (=-12.5)       Minimum site MQRankSum
+  optional: true
   synonyms:
   - --min-mqrs
+  description: (=-12.5)       Minimum site MQRankSum
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: (=-2.386) Minimum site ReadPosRankSum
+  optional: true
   synonyms:
   - --min-site-rprs
+  description: (=-2.386) Minimum site ReadPosRankSum
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: (=200.0)   Maximum indel FS
+  optional: true
   synonyms:
   - --max-indel-fs
+  description: (=200.0)   Maximum indel FS
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: (=-20.0) Minimum indel ReadPosRankSum
+  optional: true
   synonyms:
   - --min-indel-rprs
+  description: (=-20.0) Minimum indel ReadPosRankSum
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "Clear all default filters. Any individual\nfilter threshold changes\
-    \ above will still be in\neffect"
+  optional: true
   synonyms:
   - --no-default-filters
+  description: "Clear all default filters. Any individual\nfilter threshold changes\
+    \ above will still be in\neffect"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(=0.2) If AD present, only compress non-variant\nsite if 1-AD[0]/DP\
-    \ < value"
+  optional: true
   synonyms:
   - --min-blockable-nonref
+  description: "(=0.2) If AD present, only compress non-variant\nsite if 1-AD[0]/DP\
+    \ < value"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: Write gVCF output without header
+  optional: true
   synonyms:
   - --skip-header
+  description: Write gVCF output without header
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(=0.3)       Non-variant blocks are restricted to\nrange [x,y], y\
-    \ <= max(x+3,x*(1+block-ra\nnge-factor))"
+  optional: true
   synonyms:
   - --block-range-factor
+  description: "(=0.3)       Non-variant blocks are restricted to\nrange [x,y], y\
+    \ <= max(x+3,x*(1+block-ra\nnge-factor))"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: "(=BLOCKAVG_min30p3a)\nVCF INFO key used to annotate\ncompressed non-variant\
-    \ blocks"
+  optional: true
   synonyms:
   - --block-label
+  description: "(=BLOCKAVG_min30p3a)\nVCF INFO key used to annotate\ncompressed non-variant\
+    \ blocks"
   args: !SimpleFlagArg
     name: arg
-  optional: true
 - !Flag
-  description: Write non-variant block stats to the
+  optional: true
   synonyms:
   - --block-stats
+  description: Write non-variant block stats to the
   args: !SimpleFlagArg
     name: arg
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: '[ --help ]         print this message'
+  optional: true
   synonyms:
   - -h
+  description: '[ --help ]         print this message'
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "\ngatk_to_gvcf creates block-compressed gVCF from modified GATK all sites\
@@ -176,3 +176,4 @@ help_text: "\ngatk_to_gvcf creates block-compressed gVCF from modified GATK all 
   \ block compression\n\nhelp:\n  -h [ --help ]         print this message\n\n"
 generated_using:
 - --help
+docker_image:

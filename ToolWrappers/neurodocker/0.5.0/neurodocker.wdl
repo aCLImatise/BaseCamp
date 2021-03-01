@@ -12,6 +12,9 @@ task Neurodocker {
       ~{if (var_0) then "-V" else ""} \
       ~{if defined(var_1) then ("-v " +  '"' + var_1 + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     var_0: ""
     var_1: ""

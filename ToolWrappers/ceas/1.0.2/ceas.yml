@@ -3,158 +3,158 @@ command:
 - ceas
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: 'input files '
-  optional: false
+  description: ''
 named:
 - !Flag
-  description: BED file of ChIP regions.
+  optional: true
   synonyms:
   - -b
   - --bed
+  description: BED file of ChIP regions.
   args: !SimpleFlagArg
     name: BED
-  optional: true
 - !Flag
-  description: "WIG file for either wig profiling or genome background\nannotation.\
-    \ WARNING: --bg flag must be set for genome\nbackground re-annotation."
+  optional: true
   synonyms:
   - -w
   - --wig
+  description: "WIG file for either wig profiling or genome background\nannotation.\
+    \ WARNING: --bg flag must be set for genome\nbackground re-annotation."
   args: !SimpleFlagArg
     name: WIG
-  optional: true
 - !Flag
-  description: "BED file of extra regions of interest (eg, non-coding\nregions)"
+  optional: true
   synonyms:
   - -e
   - --ebed
+  description: "BED file of extra regions of interest (eg, non-coding\nregions)"
   args: !SimpleFlagArg
     name: EBED
-  optional: true
 - !Flag
-  description: "Gene annotation table (eg, a refGene table in sqlite3\ndb format provided\
-    \ through the CEAS web,\nhttp://liulab.dfci.harvard.edu/CEAS/download.html)."
+  optional: true
   synonyms:
   - -g
   - --gt
+  description: "Gene annotation table (eg, a refGene table in sqlite3\ndb format provided\
+    \ through the CEAS web,\nhttp://liulab.dfci.harvard.edu/CEAS/download.html)."
   args: !SimpleFlagArg
     name: GDB
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --name
   description: "Experiment name. This will be used to name the output\nfiles. If an\
     \ experiment name is not given, the stem of\nthe input BED file name will be used\
     \ instead (eg, if\n'peaks.bed', 'peaks' will be used as a name.)"
-  synonyms:
-  - --name
   args: !SimpleFlagArg
     name: NAME
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --sizes
   description: "Promoter (also dowsntream) sizes for ChIP region\nannotation. Comma-separated\
     \ three values or a single\nvalue can be given. If a single value is given, it\n\
     will be segmented into three equal fractions (ie, 3000\nis equivalent to 1000,2000,3000),\
     \ DEFAULT:\n1000,2000,3000. WARNING: Values > 10000bp are\nautomatically set to\
     \ 10000bp."
-  synonyms:
-  - --sizes
   args: !SimpleFlagArg
     name: SIZES
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --bisizes
   description: "Bidirectional-promoter sizes for ChIP region\nannotation Comma-separated\
     \ two values or a single\nvalue can be given. If a single value is given, it\n\
     will be segmented into two equal fractions (ie, 5000\nis equivalent to 2500,5000)\
     \ DEFAULT: 2500,5000bp.\nWARNING: Values > 20000bp are automatically set to\n\
     20000bp."
-  synonyms:
-  - --bisizes
   args: !SimpleFlagArg
     name: BISIZES
-  optional: true
 - !Flag
-  description: "Run genome BG annotation again. WARNING: This flag is\neffective only\
-    \ if a WIG file is given through -w\n(--wig). Otherwise, ignored."
+  optional: true
   synonyms:
   - --bg
+  description: "Run genome BG annotation again. WARNING: This flag is\neffective only\
+    \ if a WIG file is given through -w\n(--wig). Otherwise, ignored."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --span
   description: "Span from TSS and TTS in the gene-centered annotation.\nChIP regions\
     \ within this range from TSS and TTS are\nconsidered when calculating the coverage\
     \ rates in\npromoter and downstream, DEFAULT=3000bp"
-  synonyms:
-  - --span
   args: !SimpleFlagArg
     name: SPAN
-  optional: true
 - !Flag
-  description: "Wig profiling resolution, DEFAULT: 50bp. WARNING:\nValue smaller than\
-    \ the wig interval (resolution) may\ncause aliasing error."
+  optional: true
   synonyms:
   - --pf-res
+  description: "Wig profiling resolution, DEFAULT: 50bp. WARNING:\nValue smaller than\
+    \ the wig interval (resolution) may\ncause aliasing error."
   args: !SimpleFlagArg
     name: PF_RES
-  optional: true
 - !Flag
-  description: "Relative distance to TSS/TTS in wig profiling,\nDEFAULT: 3000bp"
+  optional: true
   synonyms:
   - --rel-dist
+  description: "Relative distance to TSS/TTS in wig profiling,\nDEFAULT: 3000bp"
   args: !SimpleFlagArg
     name: REL_DIST
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --gn-groups
   description: "Gene-groups of particular interest in wig profiling.\nEach gene group\
     \ file must have gene names in the 1st\ncolumn. The file names are separated by\
     \ commas w/ no\nspace (eg, --gn-groups=top10.txt,bottom10.txt)"
-  synonyms:
-  - --gn-groups
   args: !SimpleFlagArg
     name: GN_GROUPS
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --gn-group-names
   description: "The names of the gene groups in --gn-groups. The gene\ngroup names\
     \ are separated by commas. (eg, --gn-group-\nnames='top 10%,bottom 10%'). These\
     \ group names appear\nin the legends of the wig profiling plots. If no group\n\
     names given, the groups are represented as 'Group 1,\nGroup2,...Group n'."
-  synonyms:
-  - --gn-group-names
   args: !SimpleFlagArg
     name: GN_NAMES
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --gname2
   description: "Whether or not use the 'name2' column of the gene\nannotation table\
     \ when reading the gene IDs in the\nfiles given through --gn-groups. This flag\
     \ is\nmeaningful only with --gn-groups."
-  synonyms:
-  - --gname2
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Whether to save the raw profiles of near TSS, TTS, and\ngene body.\
-    \ The file names have a suffix of 'TSS',\n'TTS', and 'gene' after the name.\n"
+  optional: true
   synonyms:
   - --dump
+  description: "Whether to save the raw profiles of near TSS, TTS, and\ngene body.\
+    \ The file names have a suffix of 'TSS',\n'TTS', and 'gene' after the name.\n"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Show this help message and exit.
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Show this help message and exit.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "Usage: ceas < input files > [options]\n\nCEAS (Cis-regulatory Element\
   \ Annotation System)\n\nOptions:\n  --version             show program's version\
   \ number and exit\n  -h, --help            Show this help message and exit.\n  -b\
@@ -210,3 +210,4 @@ help_text: "Usage: ceas < input files > [options]\n\nCEAS (Cis-regulatory Elemen
   \                     'TTS', and 'gene' after the name.\n"
 generated_using:
 - --help
+docker_image:

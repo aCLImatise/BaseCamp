@@ -20,6 +20,9 @@ task DnaseToJSONpyReads {
       ~{if (i) then "-i" else ""} \
       ~{if defined(w) then ("-w " +  '"' + w + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     a: ""
     i: ""

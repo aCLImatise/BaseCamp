@@ -3,7 +3,7 @@ id: fasta_to_mock_fastq.py_input_fasta.cwl
 inputs:
 - id: in_q
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -q
 - id: in_fast_a_to_mock_fast_q_do_tpy
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - fasta_to_mock_fastq.py

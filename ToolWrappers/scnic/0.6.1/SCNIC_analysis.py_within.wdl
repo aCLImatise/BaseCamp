@@ -24,6 +24,9 @@ task SCNICAnalysispyWithin {
       ~{if defined(sparc_c_p) then ("--sparcc_p " +  '"' + sparc_c_p + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_loc: "location of input biom file (default: None)"
     output_loc: "output directory (default: None)"

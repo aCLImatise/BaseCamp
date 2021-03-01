@@ -8,6 +8,9 @@ task Taxgetdown {
     taxgetdown \
       ~{if (taxons) then "-taxons" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     taxons: ": enter taxon value: Error: Unable to get reply from user - end of standard input"
   }

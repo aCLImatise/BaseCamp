@@ -3,42 +3,45 @@ command:
 - compare-out-to-gff.prl
 positional:
 - !Positional
-  description: "None known. This program is remarkably slow, though, and could be\
-    \ sped\nup significantly with a very easy fix.\n"
+  optional: false
   position: 0
   name: BUGS
-  optional: false
+  description: "None known. This program is remarkably slow, though, and could be\
+    \ sped\nup significantly with a very easy fix.\n"
 named:
 - !Flag
-  description: "A GFF-formatted file of features. More than one file may be specified\n\
-    with multiple --gff options."
+  optional: true
   synonyms:
   - --gff
+  description: "A GFF-formatted file of features. More than one file may be specified\n\
+    with multiple --gff options."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --f
   description: "A fasta formatted file. If this is given, then sequences that are\
     \ under\n(over) the overlap threshold will be in the output. This is a sequence\n\
     filter."
-  synonyms:
-  - --f
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "The maximum (minimum) amount of overlap tolerated by any one type\
-    \ of\nrepeat."
+  optional: true
   synonyms:
   - --threshold
+  description: "The maximum (minimum) amount of overlap tolerated by any one type\
+    \ of\nrepeat."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Determines if the threshold is a minimum or a maximum (defaults to\n\
-    maximum; including --over makes it a minimum)"
+  optional: true
   synonyms:
   - --over
+  description: "Determines if the threshold is a minimum or a maximum (defaults to\n\
+    maximum; including --over makes it a minimum)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --instances
   description: "Determines how the overlap calculation is done. If this is not\nspecified,\
     \ the overlap is calculated by bases: if 40 bases of a repeat\nelement overlaps\
     \ a feature in one of the GFF files, it is counted as 40\nbases. The sum is taken\
@@ -46,10 +49,7 @@ named:
     \ length of the repeat. If --instances is\nspecified, the \"overlap\" is considered\
     \ to be the number of instances of\na given type that overlap any feature, divided\
     \ by the total number of\ninstances of that type."
-  synonyms:
-  - --instances
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -84,3 +84,4 @@ help_text: "NAME\n    compare-out-to-gff.prl --- Compares RepeatMasker output to
   \ and could be sped\n    up significantly with a very easy fix.\n\n"
 generated_using:
 - --help
+docker_image:

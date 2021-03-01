@@ -3,100 +3,134 @@ command:
 - nucmer
 positional:
 - !Positional
-  description: Set the input reference multi-FASTA filename
+  optional: false
   position: 0
   name: Reference
-  optional: false
+  description: Set the input reference multi-FASTA filename
 - !Positional
-  description: Set the input query multi-FASTA filename
+  optional: false
   position: 1
   name: Query
-  optional: false
+  description: Set the input query multi-FASTA filename
 named:
 - !Flag
-  description: "Use anchor matches that are unique in both the reference\nand query"
+  optional: true
   synonyms:
   - --mum
+  description: "Use anchor matches that are unique in both the reference\nand query"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Same as --mumreference
+  optional: true
   synonyms:
   - --mumcand
+  description: Same as --mumreference
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Use anchor matches that are unique in in the reference\nbut not necessarily\
-    \ unique in the query (default behavior)"
+  optional: true
   synonyms:
   - --mumreference
+  description: "Use anchor matches that are unique in in the reference\nbut not necessarily\
+    \ unique in the query (default behavior)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Use all anchor matches regardless of their uniqueness
+  optional: true
   synonyms:
   - --maxmatch
+  description: Use all anchor matches regardless of their uniqueness
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "|breaklen     Set the distance an alignment extension will attempt\
-    \ to\nextend poor scoring regions before giving up (default 200)"
+  optional: true
   synonyms:
   - -b
+  description: "|breaklen     Set the distance an alignment extension will attempt\
+    \ to\nextend poor scoring regions before giving up (default 200)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: '|mincluster   Sets the minimum length of a cluster of matches (default
-    65)'
+  optional: true
   synonyms:
   - -c
+  description: '|mincluster   Sets the minimum length of a cluster of matches (default
+    65)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Print the dependency information and exit
+  optional: true
   synonyms:
   - --depend
+  description: Print the dependency information and exit
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "|diagdiff     Set the maximum diagonal difference between two adjacent\n\
-    anchors in a cluster (default 5)"
+  optional: true
   synonyms:
   - -D
+  description: "|diagdiff     Set the maximum diagonal difference between two adjacent\n\
+    anchors in a cluster (default 5)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "|diagfactor   Set the maximum diagonal difference between two adjacent\n\
-    anchors in a cluster as a differential fraction of the gap\nlength (default 0.12)"
+  optional: true
   synonyms:
   - -d
+  description: "|diagfactor   Set the maximum diagonal difference between two adjacent\n\
+    anchors in a cluster as a differential fraction of the gap\nlength (default 0.12)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "--forward       Use only the forward strand of the Query sequences\n\
-    -g|maxgap       Set the maximum gap between two adjacent matches in a\ncluster\
-    \ (default 90)\n-h\n--help          Display help information and exit\n-l|minmatch\
-    \     Set the minimum length of a single match (default 20)\n-o\n--coords    \
-    \    Automatically generate the original NUCmer1.1 coords\noutput file using the\
-    \ 'show-coords' program\n--[no]optimize  Toggle alignment score optimization,\
-    \ i.e. if an alignment\nextension reaches the end of a sequence, it will backtrack\n\
-    to optimize the alignment score instead of terminating the\nalignment at the end\
-    \ of the sequence (default --optimize)\n-p|prefix       Set the prefix of the\
-    \ output files (default \"out\")\n-r\n--reverse       Use only the reverse complement\
-    \ of the Query sequences\n--[no]simplify  Simplify alignments by removing shadowed\
-    \ clusters. Turn\nthis option off if aligning a sequence to itself to look\nfor\
-    \ repeats (default --simplify)\n-V\n--version       Display the version information\
-    \ and exit\n"
+  optional: true
   synonyms:
   - -f
+  - --forward
+  description: Use only the forward strand of the Query sequences
   args: !EmptyFlagArg {}
+- !Flag
   optional: true
+  synonyms:
+  - -g
+  description: "|maxgap       Set the maximum gap between two adjacent matches in\
+    \ a\ncluster (default 90)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: '|minmatch     Set the minimum length of a single match (default 20)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --coords
+  description: "Automatically generate the original NUCmer1.1 coords\noutput file\
+    \ using the 'show-coords' program"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: '|prefix       Set the prefix of the output files (default "out")'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reverse
+  description: Use only the reverse complement of the Query sequences
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Display help information and exit
+  args: !EmptyFlagArg {}
 usage_flag:
-version_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Display the version information and exit
+  args: !EmptyFlagArg {}
 help_text: "\n  USAGE: nucmer  [options]  <Reference>  <Query>\n\n  DESCRIPTION:\n\
   \    nucmer generates nucleotide alignments between two mutli-FASTA input\n    files.\
   \ The out.delta output file lists the distance between insertions\n    and deletions\
@@ -138,3 +172,4 @@ help_text: "\n  USAGE: nucmer  [options]  <Reference>  <Query>\n\n  DESCRIPTION:
   \ information and exit\n    \n"
 generated_using:
 - --help
+docker_image:

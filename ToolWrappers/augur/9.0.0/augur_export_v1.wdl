@@ -32,6 +32,9 @@ task AugurExportV1 {
       ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
       ~{if defined(reference_translations) then ("--reference-translations " +  '"' + reference_translations + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tree: "tree to perform trait reconstruction on"
     metadata: "tsv file with sequence meta data"

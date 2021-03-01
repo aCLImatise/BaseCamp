@@ -18,6 +18,9 @@ task ParaTestJob {
       ~{if defined(make_it_read) then ("-input " +  '"' + make_it_read + '"') else ""} \
       ~{if defined(sleep) then ("-sleep " +  '"' + sleep + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     crash: "Try to write to NULL when done."
     err: "Return -1 error code when done."

@@ -12,6 +12,9 @@ task AddPdb {
       ~{pdb} \
       ~{if (guess) then "-guess" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     guess: ": Guess atomic elements when absent from the PDB file.\\n(default assumes proper element-aligned names)"
     prm_top: ": amber topology"

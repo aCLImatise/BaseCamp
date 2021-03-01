@@ -34,6 +34,9 @@ task Malvageno {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (haploid) then "--haploid" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     km_er_size: "size of the kmers to index (default:35)"
     ref_km_er_size: "size of the reference kmers to index (default:43)"

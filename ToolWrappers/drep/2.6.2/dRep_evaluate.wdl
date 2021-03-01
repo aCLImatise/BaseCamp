@@ -18,6 +18,9 @@ task DRepEvaluate {
       ~{if defined(warn_aln) then ("--warn_aln " +  '"' + warn_aln + '"') else ""} \
       ~{if (things_evaluate_input) then "-e" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     processors: "threads (default: 6)"
     debug: "make extra debugging output (default: False)"

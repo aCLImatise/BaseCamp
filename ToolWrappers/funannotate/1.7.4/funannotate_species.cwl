@@ -3,22 +3,22 @@ id: funannotate_species.cwl
 inputs:
 - id: in_d
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -d
 - id: in_p
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -p
 - id: in_a
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -a
 - id: in_s
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -s
 - id: in_species_do_tpy
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - funannotate

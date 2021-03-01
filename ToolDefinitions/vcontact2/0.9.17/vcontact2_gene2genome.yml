@@ -4,41 +4,43 @@ command:
 positional: []
 named:
 - !Flag
-  description: "-o FILENAME, --output FILENAME\n-s {VIRSorter,Prodigal-coords,Prodigal-FAA,MetaGeneMark,NCBICodingSequence,NCBIFasta},\
-    \ --source-type {VIRSorter,Prodigal-coords,Prodigal-FAA,MetaGeneMark,NCBICodingSequence,NCBIFasta}\n\
-    Select one of the options as an input source. MetaGeneMark can be either the nucleotide\
-    \ or protein FASTA-formatted output.\n-k, --keep-descriptions\nThis will enable\
-    \ taking the full description of sequences during MetaGeneMark parsing.\n-c, --compatibility\
-    \   Adds compatibility for vContact1 headers.\n"
+  optional: true
   synonyms:
   - -p
   - --proteins
-  args: !SimpleFlagArg
-    name: FILENAME
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -s
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
   - -o
+  - --output
+  - -s
+  - --source-type
+  description: Select one of the options as an input source. MetaGeneMark can be either
+    the nucleotide or protein FASTA-formatted output.
   args: !SimpleFlagArg
     name: FILENAME
+- !Flag
   optional: true
+  synonyms:
+  - -k
+  - --keep-descriptions
+  description: This will enable taking the full description of sequences during MetaGeneMark
+    parsing.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --compatibility
+  description: Adds compatibility for vContact1 headers.
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: vcontact2_gene2genome [-h] [-p FILENAME] [-o FILENAME] -s\n   \
@@ -59,3 +61,4 @@ help_text: "usage: vcontact2_gene2genome [-h] [-p FILENAME] [-o FILENAME] -s\n  
   \ headers.\n"
 generated_using:
 - --help
+docker_image:

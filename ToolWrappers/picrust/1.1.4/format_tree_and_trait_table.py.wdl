@@ -36,6 +36,9 @@ task FormatTreeAndTraitTablepy {
       ~{if defined(input_tree) then ("--input_tree " +  '"' + input_tree + '"') else ""} \
       ~{if defined(input_trait_table) then ("--input_trait_table " +  '"' + input_trait_table + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Print information during execution -- useful for\\ndebugging [default: False]"
     tree_to_trait_mapping: "a two-column, tab-delimited text file mapping\\nidentifiers in the tree(column 1) to identifiers in\\nthe trait table (column 2). If supplied, the\\nidentifiers in the trait table will be converted to\\nmatch the identifiers in the tree. (This mapping does\\nnot need to be supplied if the tree and trait table\\nalready use a common set of identifiers.) [default:\\nnone]"

@@ -4,32 +4,64 @@ command:
 - to_hdf
 positional:
 - !Positional
-  description: ''
+  optional: true
   position: 0
   name: INPUT_FILE
-  optional: true
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 1
   name: OUTPUT_FILE
-  optional: true
+  description: ''
 named:
 - !Flag
-  description: "-n, --table-name TEXT     Name of the table/storage to use  [default:\
-    \ taxa]\n-w, --overwrite           Overwrite the file, instead of appending to\
-    \ it\n-s, --index-size INTEGER  Maximum number of characters for the gene_id\n\
-    [default: 12]\n-c, --chunk-size INTEGER  Chunk size to use when reading the input\
-    \ file\n[default: 5000000]\n--progress                Shows Progress Bar\n--help\
-    \                    Show this message and exit.\n"
+  optional: true
   synonyms:
   - -v
   - --verbose
-  args: !EmptyFlagArg {}
+  - -n
+  - --table-name
+  description: 'Name of the table/storage to use  [default: taxa]'
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
   optional: true
+  synonyms:
+  - -w
+  - --overwrite
+  description: Overwrite the file, instead of appending to it
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --index-size
+  description: "Maximum number of characters for the gene_id\n[default: 12]"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --chunk-size
+  description: "Chunk size to use when reading the input file\n[default: 5000000]"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --progress
+  description: Shows Progress Bar
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
 usage_flag:
 version_flag:
 help_text: "Usage: taxon-utils to_hdf [OPTIONS] [INPUT_FILE] [OUTPUT_FILE]\n\n  Convert\
@@ -44,3 +76,4 @@ help_text: "Usage: taxon-utils to_hdf [OPTIONS] [INPUT_FILE] [OUTPUT_FILE]\n\n  
   \ and exit.\n"
 generated_using:
 - --help
+docker_image:

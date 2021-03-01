@@ -10,6 +10,9 @@ task Contigcmp {
       ~{a_file} \
       ~{b_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     a_file: ""
     b_file: ""

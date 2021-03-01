@@ -32,6 +32,9 @@ task Scanpyfiltercells {
       ~{if defined(subset) then ("--subset " +  '"' + subset + '"') else ""} \
       ~{if (force_recalc) then "--force-recalc" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_format: "[anndata|loom]\\nInput object format.  [default: anndata]"
     output_format: "[anndata|loom|zarr]\\nOutput object format.  [default: anndata]"

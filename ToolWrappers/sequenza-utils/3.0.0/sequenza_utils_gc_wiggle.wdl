@@ -12,6 +12,9 @@ task SequenzautilsGcWiggle {
       ~{if defined(output_file_stdout) then ("-o " +  '"' + output_file_stdout + '"') else ""} \
       ~{if defined(window_size_calculate) then ("-w " +  '"' + window_size_calculate + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a: "the fasta file. It can be a file name or \\\"-\\\" to use\\nSTDIN"
     output_file_stdout: "Output file \\\"-\\\" for STDOUT"

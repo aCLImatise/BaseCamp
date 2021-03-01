@@ -44,6 +44,9 @@ task RNAlienStatistics {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     alien_covariance_model_path: "Path to alienCovarianceModelPath"
     alien_rna_z_path: "Path to alienRNAzResult"

@@ -32,6 +32,9 @@ task Meryl {
       ~{intersect_sum} \
       ~{difference}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     print: "display kmers on the screen as 'kmer<tab>count'.  accepts exactly one input."
     count: "Count the occurrences of canonical kmers in the input.  must have 'output' specified."

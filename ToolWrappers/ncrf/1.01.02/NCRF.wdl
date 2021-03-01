@@ -22,6 +22,9 @@ task NCRF {
       ~{if defined(stats) then ("--stats " +  '"' + stats + '"') else ""} \
       ~{if (positional_events) then "--positionalevents" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_m_ratio: "discard alignments with a low frequency of matches;\\nratio can be between 0 and 1 (e.g. \\\"0.85\\\"), or can be\\nexpressed as a percentage (e.g. \\\"85%\\\")"
     max_noise: "(same as --minmratio but with 1-ratio)"

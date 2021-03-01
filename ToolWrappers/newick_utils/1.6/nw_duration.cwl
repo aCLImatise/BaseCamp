@@ -3,7 +3,7 @@ id: nw_duration.cwl
 inputs:
 - id: in_bh_il
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -bhIL
 - id: in_filename_vertical_line
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - nw_duration

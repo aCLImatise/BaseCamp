@@ -8,6 +8,9 @@ task VtoolsFormat {
     vtools format \
       ~{v_tools}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     v_tools: ""
   }

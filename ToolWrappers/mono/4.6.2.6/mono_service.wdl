@@ -18,6 +18,9 @@ task Monoservice {
       ~{if (debug) then "--debug" else ""} \
       ~{if (no_daemon) then "--no-daemon" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     directory_working_directory: ":<directory>         Working directory"
     lock_file_lock: ":<lock file>         Lock file (default is /tmp/<service>.lock)"

@@ -2,6 +2,7 @@ version 1.0
 
 task Drawbasepairtrackpl {
   input {
+    File? gff
     Directory? out
     File? track_label
     String? key
@@ -14,6 +15,7 @@ task Drawbasepairtrackpl {
   }
   command <<<
     draw_basepair_track_pl \
+      ~{if defined(gff) then ("--gff " +  '"' + gff + '"') else ""} \
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
       ~{if defined(track_label) then ("--trackLabel " +  '"' + track_label + '"') else ""} \
       ~{if defined(key) then ("--key " +  '"' + key + '"') else ""} \
@@ -24,7 +26,11 @@ task Drawbasepairtrackpl {
       ~{if defined(height) then ("--height " +  '"' + height + '"') else ""} \
       ~{if (no_links) then "--nolinks" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
+    gff: "\\"
     out: "Data directory to write to. Defaults to \\\"data/\\\"."
     track_label: "Unique name for the track. Defaults to the wiggle filename."
     key: "Human-readable name for the track. Defaults to be the same as the\\n\\\"--trackLabel\\\"."

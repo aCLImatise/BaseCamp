@@ -16,6 +16,9 @@ task InteropDumptext {
       ~{if defined(option_two) then ("--option2 " +  '"' + option_two + '"') else ""} \
       ~{if defined(option_one) then ("--option1 " +  '"' + option_one + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     subset: "[0]: Number of metrics to subsample"
     metric: "[]: Name of metric to load, e.g. --metric=Tile to load TileMetricsOut.bin"

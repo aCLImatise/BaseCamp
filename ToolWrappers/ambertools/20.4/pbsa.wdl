@@ -2,29 +2,23 @@ version 1.0
 
 task Pbsa {
   input {
-    String? c
-    String? p
-    String? var_2
+    String? var_0
     String? i
-    Boolean? var_4
-    String? pqr
+    Boolean? var_2
   }
   command <<<
     pbsa \
-      ~{pqr} \
-      ~{if defined(c) then ("-c " +  '"' + c + '"') else ""} \
-      ~{if defined(p) then ("-p " +  '"' + p + '"') else ""} \
-      ~{if defined(var_2) then ("-o " +  '"' + var_2 + '"') else ""} \
+      ~{if defined(var_0) then ("-o " +  '"' + var_0 + '"') else ""} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
-      ~{if (var_4) then "-O" else ""}
+      ~{if (var_2) then "-O" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    c: ""
-    p: ""
-    var_2: ""
+    var_0: ""
     i: ""
-    var_4: ""
-    pqr: ""
+    var_2: ""
   }
   output {
     File out_stdout = stdout()

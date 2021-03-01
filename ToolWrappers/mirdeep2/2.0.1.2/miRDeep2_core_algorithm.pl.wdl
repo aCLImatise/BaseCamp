@@ -22,6 +22,9 @@ task MiRDeep2CoreAlgorithmpl {
       ~{if defined(with_randfold_pvalues) then ("-y " +  '"' + with_randfold_pvalues + '"') else ""} \
       ~{if defined(drosha_processing) then ("-z " +  '"' + drosha_processing + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     this_usage: "this usage"
     file_known_mirnas: "file with known miRNAs"

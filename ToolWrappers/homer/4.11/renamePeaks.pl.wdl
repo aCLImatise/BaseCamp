@@ -8,6 +8,9 @@ task RenamePeakspl {
     renamePeaks_pl \
       ~{peak_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     peak_file: ""
   }

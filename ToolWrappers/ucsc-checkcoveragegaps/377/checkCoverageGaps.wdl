@@ -12,6 +12,9 @@ task CheckCoverageGaps {
       ~{if defined(female) then ("-female " +  '"' + female + '"') else ""} \
       ~{if (no_comma) then "-noComma" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     all_parts: "If set then include _hap and _random and other wierd chroms"
     female: "set then don't check chrY"

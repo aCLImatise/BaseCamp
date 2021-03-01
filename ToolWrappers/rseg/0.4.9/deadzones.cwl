@@ -3,32 +3,32 @@ id: deadzones.cwl
 inputs:
 - id: in_output
   doc: 'Name of output file (default: stdout)'
-  type: File
+  type: File?
   inputBinding:
     prefix: -output
 - id: in_km_er
   doc: Width of k-mers
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -kmer
 - id: in_prefix
   doc: prefix length (default 5)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -prefix
 - id: in_suffix
   doc: suffix of FASTA files (assumes -c indicates dir)
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -suffix
 - id: in_verbose
   doc: print more run information
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -verbose
 - id: in_about
   doc: print about message
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -about
 - id: in_one_or_more_fast_a_chrom_files
@@ -42,9 +42,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: 'Name of output file (default: stdout)'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - deadzones

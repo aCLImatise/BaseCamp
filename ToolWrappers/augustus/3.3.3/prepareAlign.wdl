@@ -4,6 +4,9 @@ task PrepareAlign {
   command <<<
     prepareAlign
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

@@ -2,23 +2,29 @@ version 1.0
 
 task SynapseSync {
   input {
-    Int? retries
-    Boolean? send_messages
     Boolean? dry_run
-    File file
+    Boolean? send_messages
+    Int? retries
+    File tsv_file_file
+    String synapse_dot
   }
   command <<<
     synapse sync \
-      ~{file} \
-      ~{if defined(retries) then ("--retries " +  '"' + retries + '"') else ""} \
+      ~{tsv_file_file} \
+      ~{synapse_dot} \
+      ~{if (dry_run) then "--dryRun" else ""} \
       ~{if (send_messages) then "--sendMessages" else ""} \
-      ~{if (dry_run) then "--dryRun" else ""}
+      ~{if defined(retries) then ("--retries " +  '"' + retries + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
+    dry_run: "Perform validation without uploading."
+    send_messages: "Send notifications via Synapse messaging (email) at specific\\nintervals, on errors and on completion."
     retries: ""
-    send_messages: ""
-    dry_run: ""
-    file: ""
+    tsv_file_file: "A tsv file with file locations and metadata to be pushed to"
+    synapse_dot: "optional arguments:"
   }
   output {
     File out_stdout = stdout()

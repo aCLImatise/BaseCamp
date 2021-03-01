@@ -32,6 +32,9 @@ task UnicyclerAlign {
       ~{if defined(allowed_overlap) then ("--allowed_overlap " +  '"' + allowed_overlap + '"') else ""} \
       ~{if defined(reads) then ("--reads " +  '"' + reads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ref: "FASTA file containing one or more reference"
     sam: "SAM file of resulting alignments"

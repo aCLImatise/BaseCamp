@@ -10,6 +10,9 @@ task MetagenomicspyReport {
       ~{meta_genomics_do_tpy} \
       ~{subcommand}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     meta_genomics_do_tpy: ""
     subcommand: ""

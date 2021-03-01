@@ -16,6 +16,9 @@ task JhsdbJinfo {
       ~{if (core) then "--core" else ""} \
       ~{if (pid) then "--pid" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     flags: "to print VM flags"
     sys_props: "to print Java System properties"

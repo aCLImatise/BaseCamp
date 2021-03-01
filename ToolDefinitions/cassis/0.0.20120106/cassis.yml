@@ -1,0 +1,343 @@
+!Command
+command:
+- cassis
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: GO.
+  description: "- id      = Name of the synteny block\n- c1      = Chromosome of the\
+    \ genome GR where the block is located\n- inf1    = Start position of the block\
+    \ in the chromosome c1\n- sup1    = End position of the block in the chromosome\
+    \ c1\n- c2      = Chromosome of the genome GO where the block is located\n- inf2\
+    \    = Start position of the block in the chromosome c2\n- sup2    = End position\
+    \ of the block in the chromosome c2\n- strand  = If 1, the synteny blocks of the\
+    \ genomes GR and GO are on\nthe same strand. Otherwise, they are on different\
+    \ strands."
+- !Positional
+  optional: false
+  position: 0
+  name: id
+  description: '- Breakpoint ID'
+- !Positional
+  optional: false
+  position: 1
+  name: type
+  description: '- Type of the breakpoint: inter or intra'
+- !Positional
+  optional: false
+  position: 2
+  name: sRgeneA
+  description: '- Name of the gene/block A in the sequence SR (genome GR)'
+- !Positional
+  optional: false
+  position: 3
+  name: sRgeneB
+  description: '- Name of the gene/block B in the sequence SR (genome GR)'
+- !Positional
+  optional: false
+  position: 4
+  name: sRchr
+  description: '- Chromosome of the genes/blocks A and B (genome GR)'
+- !Positional
+  optional: false
+  position: 0
+  name: sRinf
+  description: '- Inferior boundary of the sequence SR'
+- !Positional
+  optional: false
+  position: 1
+  name: sRsup
+  description: '- Superior boundary of the sequence SR'
+- !Positional
+  optional: false
+  position: 2
+  name: sOgeneA
+  description: '- Name of the gene/block A in the sequence SA (genome GO)'
+- !Positional
+  optional: false
+  position: 3
+  name: sOgeneB
+  description: '- Name of the gene/block B in the sequence SB (genome GO)'
+- !Positional
+  optional: false
+  position: 4
+  name: sOchrA
+  description: '- Chromosome of the gene/block A (genome GO)'
+- !Positional
+  optional: false
+  position: 5
+  name: sOchrB
+  description: '- Chromosome of the gene/block B (genome GO)'
+- !Positional
+  optional: false
+  position: 0
+  name: sOinfA
+  description: '- Inferior boundary of the sequence SA'
+- !Positional
+  optional: false
+  position: 1
+  name: sOsupA
+  description: '- Superior boundary of the sequence SA'
+- !Positional
+  optional: false
+  position: 2
+  name: sOinfB
+  description: '- Inferior boundary of the sequence SB'
+- !Positional
+  optional: false
+  position: 3
+  name: sOsupB
+  description: '- Superior boundary of the sequence SB'
+- !Positional
+  optional: false
+  position: 4
+  name: bkpBegin
+  description: '- Relative position of the breakpoint begin (related to sRinf)'
+- !Positional
+  optional: false
+  position: 5
+  name: bkpEnd
+  description: '- Relative position of the breakpoint end (related to sRinf)'
+- !Positional
+  optional: false
+  position: 6
+  name: status
+  description: '- Status of the breakpoint'
+- !Positional
+  optional: false
+  position: 0
+  name: id
+  description: '- Breakpoint id'
+- !Positional
+  optional: false
+  position: 1
+  name: chr
+  description: '- Chromosome where the breakpoint is located (Genome GR)'
+- !Positional
+  optional: false
+  position: 2
+  name: oldbegin
+  description: '- Old breakpoint begin position (in the chromosome sequence)'
+- !Positional
+  optional: false
+  position: 3
+  name: oldend
+  description: '- Old breakpoint end position (in the chromosome sequence)'
+- !Positional
+  optional: false
+  position: 0
+  name: newbegin
+  description: "- New breakpoint begin position (in the chromosome sequence) \nafter\
+    \ the segmentation"
+- !Positional
+  optional: false
+  position: 1
+  name: newend
+  description: "- New breakpoint end position (in the chromosome sequence)\nafter\
+    \ the segmentation"
+- !Positional
+  optional: false
+  position: 0
+  name: status
+  description: '- Status of the breakpoint'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --extend_before
+  description: '[T/F]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --extend_by_adding_gene
+  description: '[T/F]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --extend_ab_by_adding_gene
+  description: '[T/F]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - '-2'
+  description: ': Sequence SR smaller than the allowed limit'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - '-3'
+  description: ': Sequence SA smaller than the allowed limit'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - '-4'
+  description: ': Sequence SB smaller than the allowed limit'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - '-5'
+  description: ': Sequence SA and SB smaller than the allowed limit'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - '-6'
+  description: ': Sequence SR bigger than the allowed limit'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - '-1'
+  description: ": Segmentation was not performed because there are no hits on\nthe\
+    \ alignments of the sequences SR vs SA and SR vs SB"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - '-7'
+  description: ': Segmentation was not performed because R aborted the execution'
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nUsage:\n  cassis [options] <table> <type> <dirGR> <dirGO> <outputdir>\n\
+  \n-------------------------------------------------------------------------------\n\
+  Mandatory Parameters:\n\n  <table> Path for the file that contains the table of\
+  \ orthologous genes or\n          synteny blocks.\n\n  <type> Type of the table:\
+  \ G for orthologous genes and B for synteny blocks.\n\n  <dirGR> Path for the directory\
+  \ where the script can locate the FASTA files \n          of the chromosomes of\
+  \ the reference genome (GR).\n\n  <dirGO> Path for the directory where the script\
+  \ can locate the FASTA files \n          of the chromosomes of the genome (GO) which\
+  \ will be compared with  \n          the reference genome.\n\n  <outputdir> Name\
+  \ of the directory where the script will write the results.\n              The directory\
+  \ must exist (the script will not try to create it).\n\n-------------------------------------------------------------------------------\n\
+  Optional parameter:\n\n  --lastzlevel N\n\n  LASTZ level: N = 1, 2 or 3\n  + Level\
+  \ 1 : LASTZ parameters for closely related species.\n  + Level 2 : Default level\n\
+  \  + Level 3 : LASTZ parameters for distantly related species.\n  [Default value\
+  \ = 2]\n\n\n  --max_length_sr N\n\n  Maximum length for sequence SR: N = integer\
+  \ bigger than zero\n  If SR length is bigger than N, the breakpoint receives the\n\
+  \  status -6 and it is not processed by the segmentation step.\n  [Default value\
+  \ = 1000000000]\n\n\n  --max_length_sab N\n\n  Maximum length for sequences SA and\
+  \ SB: N = integer bigger than zero\n  If SA (or SB) length is bigger than N, the\
+  \ length is corrected\n  to fit this limit value.\n  [Default value = 3000000]\n\
+  \ \n\n  --minimum_length N\n\n  Minimum sequence length: N = integer bigger than\
+  \ zero\n  If one or more sequences have length smaller than N, the breakpoint receives\n\
+  \  one of the status -2, -3 , -4 or -5 and  it is not processed by the \n  segmentation\
+  \ step.\n  [Default value = 1 (for genes) or 50000 (for synteny blocks)]\n\n\n \
+  \ --extend_before [T/F]\n\n  Extend before verify length: True [T] or FALSE [F]\n\
+  \  This parameter determines if the method verifies the minimum sequence length\n\
+  \  before (F) or after (T) extending the sequence.\n  [Default value = T]\n\n\n\
+  \  --extend_by_adding_gene [T/F]\n\n  Extend sequences SR, SA and SB: True [T] or\
+  \ FALSE [F]\n  Extend sequences SR, SA and SB by adding the orthologous genes which\
+  \ are in\n  the boundaries of them. (Orthologous genes: pairs (Ar,Ao) and (Br,Bo))\n\
+  \  Warning: This parameter is available only for table of orthologous genes.\n \
+  \ [Default value = T]\n\n\n  --extend_ab_by_adding_gene [T/F]\n\n  Extend sequences\
+  \ SA and SB: True [T] or FALSE [F]\n  Extend sequences SA and SB by adding the non\
+  \ orthologous genes which are in\n  the boundaries of them. (Non orthologous genes:\
+  \ Co and Do)\n  Warning: This parameter is available only for table of orthologous\
+  \ genes.\n  [Default value = T]\n\n\n  --extend_by_adding_fragment N\n\n  Extend\
+  \ sequences SR, SA and SB: N = integer bigger than or equal to zero\n  Extend sequences\
+  \ SR, SA and SB by adding to them a fragment of length N \n  from the sides that\
+  \ are supposed to be orthologous. It is equivalent to add\n  the orthologous genes\
+  \ (Ar,Ao) and (Br,Bo) to the sequences.\n  Warning: This parameter is available\
+  \ only for table of synteny blocks.\n  [Default value = 50000]\n\n\n  --extend_ab_by_adding_fragment\
+  \ N\n\n  Extend sequences SA and SB: N = integer bigger than or equal to zero\n\
+  \  Extend sequences SA and SB by adding to them a fragment of length N \n  from\
+  \ the sides that are not supposed to be orthologous. It is equivalent \n  to add\
+  \ the non orthologous genes Co and Do to the sequences.\n  Warning: This parameter\
+  \ is available only for table of synteny blocks.\n  [Default value = 50000]\n\n\n\
+  -------------------------------------------------------------------------------\n\
+  File Formats:\n\n  + Table orthologous genes:\n\n  The table of orthologous genes\
+  \ must have just one 2 one orthologous genes \n  that can be found in the genomes\
+  \ GR and GO.\n\n      - g1      = Name of the gene in the genome GR\n      - c1\
+  \      = Chromosome of the genome GR where g1 is located\n      - inf1    = Start\
+  \ position of the gene g1 in the chromosome c1\n      - sup1    = End position of\
+  \ the gene g1 in the chromosome c1\n      - strand1 = Strand of the gene g1 (1 or\
+  \ -1)\n      - g2      = Name of the gene in the genome GO\n      - c2      = Chromosome\
+  \ of the genome GO where g2 is located\n      - inf2    = Start position of the\
+  \ gene g2 in the chromosome c2\n      - sup2    = End position of the gene g2 in\
+  \ the chromosome c2\n      - strand2 = Strand of the gene g2 (1 or -1)\n\n  Warning:\
+  \ The file must NOT have header with the column names.\n\n  + Table orthologous\
+  \ synteny blocks:\n\n  The table of orthologous synteny blocks must have just one\
+  \ 2 one \n  orthologous synteny blocks that can be found in the genomes GR and\n\
+  \  GO.\n\n      - id      = Name of the synteny block\n      - c1      = Chromosome\
+  \ of the genome GR where the block is located\n      - inf1    = Start position\
+  \ of the block in the chromosome c1\n      - sup1    = End position of the block\
+  \ in the chromosome c1\n      - c2      = Chromosome of the genome GO where the\
+  \ block is located\n      - inf2    = Start position of the block in the chromosome\
+  \ c2\n      - sup2    = End position of the block in the chromosome c2\n      -\
+  \ strand  = If 1, the synteny blocks of the genomes GR and GO are on\n         \
+  \         the same strand. Otherwise, they are on different strands.\n\n  Warning:\
+  \ The file must NOT have header with the column names.\n\n  + FASTA files:\n  \n\
+  \  The fasta files must be named with the following format: \n\n      <chromosomename>.fasta\n\
+  \n    Chromosome Name      File \n          1              1.fasta\n          2A\
+  \             2A.fasta\n          X              X.fasta\n\n  The file must have\
+  \ just one sequence that is related to the chromosome which\n  is specified by the\
+  \ name of the file. If the FASTA file have more than one \n  sequence, the file\
+  \ will be ignored.\n\n-------------------------------------------------------------------------------\n\
+  SCRIPT OUTPUT:\n\n  The script will write all results inside of the directory <outputdir>.\n\
+  \ \n  Directories:\n\n  + <outputdir>/alignments\n\n    This directory will receive\
+  \ the results of the alignments of the sequences \n    SR vs SA and SR vs SB.\n\n\
+  \  + <outputdir>/dotplot\n\n    This directory will receive the dotplot representation\
+  \ of the alignments of\n    the sequences SR vs SA and SR vs SB.\n\n  + <outputdir>/fasta\n\
+  \n    This directory will receive the FASTA file of all sequences SR, SA and SB.\n\
+  \n  + <outputdir>/segmentation\n\n    This directory will receive all plots and\
+  \ results of the breakpoints that \n    were processed by the segmentation process.\n\
+  \n  Files:\n\n  + <outputdir>/NonRefinedBreakpoints.txt\n\n    This file will receive\
+  \ all information about the breakpoints that were\n    identified. It contains the\
+  \ data used by the segmentation process:\n\n    id        - Breakpoint ID\n    type\
+  \      - Type of the breakpoint: inter or intra\n    sRgeneA   - Name of the gene/block\
+  \ A in the sequence SR (genome GR)\n    sRgeneB   - Name of the gene/block B in\
+  \ the sequence SR (genome GR)\n    sRchr     - Chromosome of the genes/blocks A\
+  \ and B (genome GR)\n    sRstrandA - Strand of the gene/block A (genome GR)\n  \
+  \  sRstrandB - Strand of the gene/block B (genome GR)\n    sRinf     - Inferior\
+  \ boundary of the sequence SR\n    sRsup     - Superior boundary of the sequence\
+  \ SR\n    sOgeneA   - Name of the gene/block A in the sequence SA (genome GO)\n\
+  \    sOgeneB   - Name of the gene/block B in the sequence SB (genome GO)\n    sOchrA\
+  \    - Chromosome of the gene/block A (genome GO)\n    sOchrB    - Chromosome of\
+  \ the gene/block B (genome GO)\n    sOstrandA - Strand of the gene/block A (genome\
+  \ GO)\n    sOstrandB - Strand of the gene/block B (genome GO)\n    sOinfA    - Inferior\
+  \ boundary of the sequence SA\n    sOsupA    - Superior boundary of the sequence\
+  \ SA\n    sOinfB    - Inferior boundary of the sequence SB\n    sOsupB    - Superior\
+  \ boundary of the sequence SB\n    bkpBegin  - Relative position of the breakpoint\
+  \ begin (related to sRinf)\n    bkpEnd    - Relative position of the breakpoint\
+  \ end (related to sRinf)\n    status    - Status of the breakpoint\n\n    The status\
+  \ of the breakpoint can have one of the following values:\n      1 : Valid breakpoint\n\
+  \     -2 : Sequence SR smaller than the allowed limit\n     -3 : Sequence SA smaller\
+  \ than the allowed limit\n     -4 : Sequence SB smaller than the allowed limit\n\
+  \     -5 : Sequence SA and SB smaller than the allowed limit\n     -6 : Sequence\
+  \ SR bigger than the allowed limit\n\n  + <outputdir>/segmentation.txt\n\n    Final\
+  \ result of the segmentation process, this file will receive the \n    coordinates\
+  \ of the refined breakpoints:\n\n    id        - Breakpoint id\n    chr       -\
+  \ Chromosome where the breakpoint is located (Genome GR)\n    oldbegin  - Old breakpoint\
+  \ begin position (in the chromosome sequence)\n    oldend    - Old breakpoint end\
+  \ position (in the chromosome sequence)\n    oldlength - Old breakpoint length\n\
+  \    newbegin  - New breakpoint begin position (in the chromosome sequence) \n \
+  \               after the segmentation\n    newend    - New breakpoint end position\
+  \ (in the chromosome sequence)\n                after the segmentation\n    newlength\
+  \ - New breakpoint length\n    status    - Status of the breakpoint\n\n    The status\
+  \ of the breakpoint can have one of the following values:\n      1 : Segmentation\
+  \ result passed through the statistical test \n      0 : Segmentation result failed\
+  \ through the statistical test\n     -1 : Segmentation was not performed because\
+  \ there are no hits on\n          the alignments of the sequences SR vs SA and SR\
+  \ vs SB\n     -2 : Segmentation was not performed because sequence SR is smaller\n\
+  \          than the allowed limit\n     -3 : Segmentation was not performed because\
+  \ sequence SA is smaller \n          than the allowed limit\n     -4 : Segmentation\
+  \ was not performed because sequence SB is smaller \n          than the allowed\
+  \ limit\n     -5 : Segmentation was not performed because sequence SA and SB are\
+  \ \n          smaller than the allowed limit\n     -6 : Segmentation was not performed\
+  \ because sequence SR is bigger \n          than the allowed limit\n     -7 : Segmentation\
+  \ was not performed because R aborted the execution\n\n\nERROR: Invalid number of\
+  \ parameters.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/cassis:0.0.20120106--0

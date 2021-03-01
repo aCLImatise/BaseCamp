@@ -88,6 +88,9 @@ task Imseq {
       ~{if defined(jobs) then ("--jobs " +  '"' + jobs + '"') else ""} \
       ~{if (print_alignments) then "--print-alignments" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reference: "FASTA file with gene segment reference sequences."
     out_amino: "Output file path for translated clonotypes."

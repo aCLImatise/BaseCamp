@@ -4,29 +4,29 @@ inputs:
 - id: in_dist
   doc: "Maximum dist to skip before finding a seed/thresh\nvalue. If this number is\
     \ exceeded, the region is\nended."
-  type: long
+  type: long?
   inputBinding:
     prefix: --dist
 - id: in_seed
   doc: "A value must be at least this large/small in order to\nseed a region."
-  type: string
+  type: string?
   inputBinding:
     prefix: --seed
 - id: in_threshold
   doc: "After seeding, a value of at least this number can\nextend a region."
-  type: long
+  type: long?
   inputBinding:
     prefix: --threshold
 - id: in_invert
   doc: "by default, the test is for a value less-than seed or\nthresh--e.g. for p-values.\
     \ If this flag is specified,\nthe test is for greater-than--e.g. for scores or\n\
     -log10(p-values)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --invert
 - id: in_column_number_containing
   doc: "column number containing the value for which to find\npeaks.\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: -c
 - id: in_find
@@ -73,6 +73,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - comb-p

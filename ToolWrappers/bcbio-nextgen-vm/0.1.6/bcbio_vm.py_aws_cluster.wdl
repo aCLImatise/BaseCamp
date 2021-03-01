@@ -18,6 +18,9 @@ task BcbioVmpyAwsCluster {
       ~{setup} \
       ~{stop}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bootstrap: "Update a bcbio AWS system with the latest code and"
     tools: "command             Run a script on the bcbio frontend node inside a"

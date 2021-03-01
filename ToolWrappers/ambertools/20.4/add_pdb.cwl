@@ -4,7 +4,7 @@ inputs:
 - id: in_guess
   doc: ": Guess atomic elements when absent from the PDB file.\n(default assumes proper\
     \ element-aligned names)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -guess
 - id: in_prm_top
@@ -21,6 +21,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - add_pdb

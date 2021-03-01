@@ -10,6 +10,9 @@ task Fraggraphgen {
       ~{smiles_or_inch_i_string} \
       ~{max_depth}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     smiles_or_inch_i_string: ""
     max_depth: ""

@@ -12,6 +12,9 @@ task PlanemoTravisInitTesting {
       ~{travis_in_it} \
       ~{project}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     plane_mo: ""
     travis_in_it: ""

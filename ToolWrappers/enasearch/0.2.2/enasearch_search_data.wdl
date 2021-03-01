@@ -7,7 +7,7 @@ task EnasearchSearchData {
     String? result
     String? display
     File? download
-    File? file
+    File? file_save_content
     String? fields
     String? sort_fields
     Int? offset
@@ -20,19 +20,22 @@ task EnasearchSearchData {
       ~{if defined(result) then ("--result " +  '"' + result + '"') else ""} \
       ~{if defined(display) then ("--display " +  '"' + display + '"') else ""} \
       ~{if defined(download) then ("--download " +  '"' + download + '"') else ""} \
-      ~{if defined(file) then ("--file " +  '"' + file + '"') else ""} \
+      ~{if defined(file_save_content) then ("--file " +  '"' + file_save_content + '"') else ""} \
       ~{if defined(fields) then ("--fields " +  '"' + fields + '"') else ""} \
       ~{if defined(sort_fields) then ("--sortfields " +  '"' + sort_fields + '"') else ""} \
       ~{if defined(offset) then ("--offset " +  '"' + offset + '"') else ""} \
       ~{if defined(length) then ("--length " +  '"' + length + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     free_text_search: "Use free text search, otherwise the data warehouse\\nis used"
     query: "Query string, made up of filtering conditions,\\njoined by logical ANDs, ORs and NOTs and bound by\\ndouble quotes; the filter fields for a query are\\naccessible with get_filter_fields and the type of\\nfilters with get_filter_types  [required]"
     result: "Id of a result (accessible with get_results)\\n[required]"
     display: "Display option to specify the display format\\n(accessible with get_display_options)  [required]"
     download: "Download option to specify that records are to be\\nsaved in a file (used with file option, list\\naccessible with get_download_options)"
-    file: "File to save the content of the search (used with\\ndownload option)"
+    file_save_content: "File to save the content of the search (used with\\ndownload option)"
     fields: "Fields to return (accessible with\\nget_returnable_fields, used only for report as\\ndisplay value) [multiple or comma-separated]"
     sort_fields: "Fields to sort the results (accessible with\\nget_sortable_fields, used only for report as display\\nvalue) [multiple or comma-separated]"
     offset: "RANGE  First record to get (used only for display different\\nof fasta and fastq"

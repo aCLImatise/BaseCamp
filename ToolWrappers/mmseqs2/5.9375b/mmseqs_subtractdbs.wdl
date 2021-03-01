@@ -12,6 +12,9 @@ task MmseqsSubtractdbs {
       ~{if (threads) then "--threads" else ""} \
       ~{if (verbosity_level_nothing) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     e_profile: "0.001           includes sequences matches with < e-value thr. into the profile [>=0.0]"
     threads: "8               number of cores used for the computation (uses all cores by default)"

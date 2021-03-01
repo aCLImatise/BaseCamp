@@ -4,6 +4,9 @@ task AddDataHeaderpl {
   command <<<
     addDataHeader_pl
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

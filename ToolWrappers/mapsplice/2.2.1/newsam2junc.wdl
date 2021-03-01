@@ -4,6 +4,9 @@ task Newsam2junc {
   command <<<
     newsam2junc
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

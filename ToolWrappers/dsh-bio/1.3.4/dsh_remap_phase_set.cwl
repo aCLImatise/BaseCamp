@@ -3,17 +3,17 @@ id: dsh_remap_phase_set.cwl
 inputs:
 - id: in_about
   doc: display about message [optional]
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --about
 - id: in_input_vcf_file
   doc: '[class java.io.File]  input VCF file, default stdin [optional]'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --input-vcf-file
 - id: in_output_vcf_file
   doc: '[class java.io.File]  output VCF file, default stdout [optional]'
-  type: File
+  type: File?
   inputBinding:
     prefix: --output-vcf-file
 outputs:
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_output_vcf_file
   doc: '[class java.io.File]  output VCF file, default stdout [optional]'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_vcf_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - dsh-remap-phase-set

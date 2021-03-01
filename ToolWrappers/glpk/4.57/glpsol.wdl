@@ -162,6 +162,9 @@ task Glpsol {
       ~{if (minisat) then "--minisat" else ""} \
       ~{if defined(obj_bnd) then ("--objbnd " +  '"' + obj_bnd + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mps: "read LP/MIP problem in fixed MPS format"
     free_mps: "read LP/MIP problem in free MPS format (default)"

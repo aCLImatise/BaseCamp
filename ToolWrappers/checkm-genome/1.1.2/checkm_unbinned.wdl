@@ -20,6 +20,9 @@ task CheckmUnbinned {
       ~{if defined(min_seq_len) then ("--min_seq_len " +  '"' + min_seq_len + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     extension: "extension of bins (other files in directory are ignored) (default: fna)"
     min_seq_len: "required length of sequence"

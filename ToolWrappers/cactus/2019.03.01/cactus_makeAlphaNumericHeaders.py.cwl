@@ -20,6 +20,7 @@ outputs:
   type: File
   outputBinding:
     glob: $(inputs.in_fast_a_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - cactus_makeAlphaNumericHeaders.py

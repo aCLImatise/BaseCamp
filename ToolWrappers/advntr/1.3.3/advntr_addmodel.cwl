@@ -1,55 +1,51 @@
 class: CommandLineTool
 id: advntr_addmodel.cwl
 inputs:
-- id: in_r_slash_reference
+- id: in_reference
   doc: Reference genome
-  type: string
+  type: string?
   inputBinding:
-    prefix: -r/--reference
-- id: in_c_slash_chromosome
+    prefix: --reference
+- id: in_chromosome
   doc: Chromosome (e.g. chr1)
-  type: long
+  type: long?
   inputBinding:
-    prefix: -c/--chromosome
-- id: in_p_slash_pattern
+    prefix: --chromosome
+- id: in_pattern
   doc: First repeating pattern of VNTR in forward (5' to 3') direction
-  type: long
+  type: long?
   inputBinding:
-    prefix: -p/--pattern
-- id: in_s_slash_start
+    prefix: --pattern
+- id: in_start
   doc: Start coordinate of VNTR in forward (5' to 3') direction
-  type: long
+  type: long?
   inputBinding:
-    prefix: -s/--start
-- id: in_e_slash_end
+    prefix: --start
+- id: in_end
   doc: End coordinate of VNTR in forward (5' to 3') direction
-  type: long
+  type: long?
   inputBinding:
-    prefix: -e/--end
-- id: in_g_slash_gene
+    prefix: --end
+- id: in_gene
   doc: Gene name
-  type: string
+  type: string?
   inputBinding:
-    prefix: -g/--gene
-- id: in_a_slash_annotation
+    prefix: --gene
+- id: in_annotation
   doc: Annotation of VNTR region
-  type: string
+  type: string?
   inputBinding:
-    prefix: -a/--annotation
-- id: in_m_slash_models
+    prefix: --annotation
+- id: in_models
   doc: VNTR models file [vntr_data/hg19_selected_VNTRs_Illumina.db]
-  type: File
+  type: File?
   inputBinding:
-    prefix: -m/--models
-- id: in_h_slash_help
-  doc: show this help message and exit
-  type: boolean
-  inputBinding:
-    prefix: -h/--help
+    prefix: --models
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - advntr

@@ -8,6 +8,9 @@ task Volint {
     volint \
       ~{filename}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     filename: "Path to VOTable file to check"
   }

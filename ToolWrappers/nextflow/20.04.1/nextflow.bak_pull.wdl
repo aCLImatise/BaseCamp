@@ -28,6 +28,9 @@ task NextflowbakPull {
       ~{if (revision) then "-revision" else ""} \
       ~{if (user) then "-user" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     all: "Update all downloaded projects\\nDefault: false"
     hub: "Service hub where the project is hosted"

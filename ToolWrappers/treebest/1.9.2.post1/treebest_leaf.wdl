@@ -8,6 +8,9 @@ task TreebestLeaf {
     treebest leaf \
       ~{nh_tree}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     nh_tree: ""
   }

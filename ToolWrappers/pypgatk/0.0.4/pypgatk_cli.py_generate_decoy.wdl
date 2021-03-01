@@ -34,6 +34,9 @@ task PypgatkClipyGeneratedecoy {
       ~{if defined(no_isobaric) then ("--no_isobaric " +  '"' + no_isobaric + '"') else ""} \
       ~{if defined(memory_save) then ("--memory_save " +  '"' + memory_save + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config_file: "Configuration file for the protein database\\ndecoy generation"
     output_file_decoy: "Output file for decoy database"

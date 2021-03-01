@@ -2,12 +2,30 @@ class: CommandLineTool
 id: create_priors.cwl
 inputs:
 - id: in_alpha
-  doc: "(default 1.0)\n--beta <double> (default 10000.0)\n--num-bins <int> (default\
-    \ 100)\n--o <output dir> (default=createpriors_out)\n--oc <output dir> (default=createpriors_out)\n\
-    --parse-genomic-coord\n--psp\n--verbosity [1|2|3|4] (default 2)\n--version\n"
-  type: long
+  doc: (default 1.0)
+  type: double?
   inputBinding:
     prefix: --alpha
+- id: in_beta
+  doc: (default 10000.0)
+  type: double?
+  inputBinding:
+    prefix: --beta
+- id: in_num_bins
+  doc: (default 100)
+  type: long?
+  inputBinding:
+    prefix: --num-bins
+- id: in_o
+  doc: (default=createpriors_out)
+  type: string?
+  inputBinding:
+    prefix: --o
+- id: in_oc
+  doc: (default=createpriors_out)
+  type: string?
+  inputBinding:
+    prefix: --oc
 - id: in_fast_a_file
   doc: ''
   type: File
@@ -22,6 +40,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - create-priors

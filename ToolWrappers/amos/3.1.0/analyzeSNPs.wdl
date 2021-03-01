@@ -38,6 +38,9 @@ task AnalyzeSNPs {
       ~{if (iid) then "-iid" else ""} \
       ~{if (display_based_coordinates) then "-1" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bank: "bank where assembly is stored"
     t_cov: "print snp positions in TCOV format (DEFAULT)"

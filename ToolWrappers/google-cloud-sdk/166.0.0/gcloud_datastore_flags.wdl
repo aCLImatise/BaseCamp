@@ -16,6 +16,9 @@ task GcloudDatastoreFlags {
       ~{flags} \
       ~{var_command}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     g_cloud: ""
     datastore: ""

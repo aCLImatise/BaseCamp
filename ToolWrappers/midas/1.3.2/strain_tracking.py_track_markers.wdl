@@ -20,6 +20,9 @@ task StrainTrackingpyTrackMarkers {
       ~{if defined(max_sites) then ("--max_sites " +  '"' + max_sites + '"') else ""} \
       ~{if defined(max_samples) then ("--max_samples " +  '"' + max_samples + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_dir: "path to input snps directory for one species (contains files 'snps_*.txt')\\nrequires having run 'merge_midas.py snps'"
     out: "path to output file with marker sharing between all sample-pairs"

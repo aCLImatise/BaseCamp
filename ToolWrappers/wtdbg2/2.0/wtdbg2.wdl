@@ -2,13 +2,13 @@ version 1.0
 
 task Wtdbg2 {
   input {
-    File? long_reads_sequences
+    File? long_reads_file
     File? errorfree_sequences_file
-    String? prefix_output_files
+    String? prefix_output_required
     Int? number_threads_cores
     Boolean? force_overwrite_files
     Int? choose_longest_subread
-    Int? kmer_psize_p
+    Int? kmer_psize_seed
     Float? filter_high_frequency
     Int? min_kmer_frequency
     Boolean? filter_low_frequency
@@ -22,7 +22,7 @@ task Wtdbg2 {
     Float? max_length_variation
     Int? min_read_depth
     Boolean? quiet
-    Boolean? verbose_can_multiple
+    Boolean? verbose_be_multiple
     Int? cpu
     String? see_i
     String? err_free_seq
@@ -79,13 +79,13 @@ task Wtdbg2 {
   }
   command <<<
     wtdbg2 \
-      ~{if defined(long_reads_sequences) then ("-i " +  '"' + long_reads_sequences + '"') else ""} \
+      ~{if defined(long_reads_file) then ("-i " +  '"' + long_reads_file + '"') else ""} \
       ~{if defined(errorfree_sequences_file) then ("-I " +  '"' + errorfree_sequences_file + '"') else ""} \
-      ~{if defined(prefix_output_files) then ("-o " +  '"' + prefix_output_files + '"') else ""} \
+      ~{if defined(prefix_output_required) then ("-o " +  '"' + prefix_output_required + '"') else ""} \
       ~{if defined(number_threads_cores) then ("-t " +  '"' + number_threads_cores + '"') else ""} \
       ~{if (force_overwrite_files) then "-f" else ""} \
       ~{if defined(choose_longest_subread) then ("-L " +  '"' + choose_longest_subread + '"') else ""} \
-      ~{if defined(kmer_psize_p) then ("-p " +  '"' + kmer_psize_p + '"') else ""} \
+      ~{if defined(kmer_psize_seed) then ("-p " +  '"' + kmer_psize_seed + '"') else ""} \
       ~{if defined(filter_high_frequency) then ("-K " +  '"' + filter_high_frequency + '"') else ""} \
       ~{if defined(min_kmer_frequency) then ("-E " +  '"' + min_kmer_frequency + '"') else ""} \
       ~{if (filter_low_frequency) then "-F" else ""} \
@@ -99,7 +99,7 @@ task Wtdbg2 {
       ~{if defined(max_length_variation) then ("-s " +  '"' + max_length_variation + '"') else ""} \
       ~{if defined(min_read_depth) then ("-e " +  '"' + min_read_depth + '"') else ""} \
       ~{if (quiet) then "-q" else ""} \
-      ~{if (verbose_can_multiple) then "-v" else ""} \
+      ~{if (verbose_be_multiple) then "-v" else ""} \
       ~{if defined(cpu) then ("--cpu " +  '"' + cpu + '"') else ""} \
       ~{if defined(see_i) then ("--input " +  '"' + see_i + '"') else ""} \
       ~{if defined(err_free_seq) then ("--err-free-seq " +  '"' + err_free_seq + '"') else ""} \
@@ -154,14 +154,17 @@ task Wtdbg2 {
       ~{if (no_read_clip) then "--no-read-clip" else ""} \
       ~{if (no_chain_ning_clip) then "--no-chainning-clip" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    long_reads_sequences: "Long reads sequences file (REQUIRED; can be multiple), []"
+    long_reads_file: "Long reads sequences file (REQUIRED; can be multiple), []"
     errorfree_sequences_file: "Error-free sequences file (can be multiple), []"
-    prefix_output_files: "Prefix of output files (REQUIRED), []"
+    prefix_output_required: "Prefix of output files (REQUIRED), []"
     number_threads_cores: "Number of threads, 0 for all cores, [4]"
     force_overwrite_files: "Force to overwrite output files"
     choose_longest_subread: "Choose the longest subread and drop reads shorter than <int> (5000 recommended for PacBio) [0]"
-    kmer_psize_p: "Kmer psize, 0 <= p <= 25, [21]\\nk + p <= 25, seed is <k-mer>+<p-homopolymer-compressed>"
+    kmer_psize_seed: "Kmer psize, 0 <= p <= 25, [21]\\nk + p <= 25, seed is <k-mer>+<p-homopolymer-compressed>"
     filter_high_frequency: "Filter high frequency kmers, maybe repetitive, [1000]\\nif K >= 1, take the integer value as cutoff, MUST <= 65535\\nelse, mask the top fraction part high frequency kmers"
     min_kmer_frequency: "Min kmer frequency, [2]"
     filter_low_frequency: "Filter low frequency kmers by a 4G-bytes array (max_occ=3 2-bits). Here, -E must greater than 1"
@@ -175,7 +178,7 @@ task Wtdbg2 {
     max_length_variation: "Max length variation of two aligned fragments, [0.2]"
     min_read_depth: "Min read depth of a valid edge, [3]"
     quiet: "See -q"
-    verbose_can_multiple: "Verbose (can be multiple)"
+    verbose_be_multiple: "Verbose (can be multiple)"
     cpu: "See -t 0, default: all cores"
     see_i: "+\\nSee -i"
     err_free_seq: "+\\nSee -I. Error-free sequences will be firstly token for nodes, if --err-free-nodes is specified, only select nodes from those sequences"

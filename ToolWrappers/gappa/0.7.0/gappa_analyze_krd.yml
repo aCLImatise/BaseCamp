@@ -1,0 +1,146 @@
+!Command
+command:
+- gappa
+- analyze
+- krd
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --jplace-path
+  description: ":PATH(existing)=[] ... REQUIRED\nList of jplace files or directories\
+    \ to process. For directories, only files with the extension `.jplace[.gz]` are\
+    \ processed."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --exponent
+  description: =1          Exponent for KR integration.
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --normalize
+  description: Divide the KR distance by the tree length to get normalized values.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --point-mass
+  description: Treat every pquery as a point mass concentrated on the highest-weight
+    placement.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ignore-multiplicities
+  description: Set the multiplicity of each pquery to 1.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --krd-out-dir
+  description: =.        Directory to write krd files to
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --krd-file-prefix
+  description: File prefix for krd files
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --krd-file-suffix
+  description: File suffix for krd files
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --krd-compress
+  description: If set, compress the krd files using gzip. Output file extensions are
+    automatically extended by `.gz`.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --krd-matrix-format
+  description: ":{list,matrix,triangular}=matrix\nFormat of the output matrix file."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --omit-krd-matrix-labels
+  description: If set, the output matrix is written without column and row labels.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --allow-file-overwriting
+  description: Allow to overwrite existing output files instead of aborting the command.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: Produce more verbose output.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: =8            Number of threads to use for calculations.
+  args: !SimpleFlagArg
+    name: UINT
+- !Flag
+  optional: true
+  synonyms:
+  - --log-file
+  description: Write all output to a log file, in addition to standard output to the
+    terminal.
+  args: !SimpleFlagArg
+    name: TEXT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Print this help message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Calcualte the pairwise Kantorovich-Rubinstein (KR) distance matrix between\
+  \ samples.\nUsage: gappa analyze krd [OPTIONS]\n\nInput:\n  --jplace-path TEXT:PATH(existing)=[]\
+  \ ... REQUIRED\n                              List of jplace files or directories\
+  \ to process. For directories, only files with the extension `.jplace[.gz]` are\
+  \ processed.\n\n\nSettings:\n  --exponent FLOAT=1          Exponent for KR integration.\n\
+  \  --normalize                 Divide the KR distance by the tree length to get\
+  \ normalized values.\n  --point-mass                Treat every pquery as a point\
+  \ mass concentrated on the highest-weight placement.\n  --ignore-multiplicities\
+  \     Set the multiplicity of each pquery to 1.\n\n\nMatrix Output:\n  --krd-out-dir\
+  \ TEXT=.        Directory to write krd files to\n  --krd-file-prefix TEXT      File\
+  \ prefix for krd files\n  --krd-file-suffix TEXT      File suffix for krd files\n\
+  \  --krd-compress              If set, compress the krd files using gzip. Output\
+  \ file extensions are automatically extended by `.gz`.\n  --krd-matrix-format TEXT:{list,matrix,triangular}=matrix\n\
+  \                              Format of the output matrix file.\n  --omit-krd-matrix-labels\
+  \    If set, the output matrix is written without column and row labels.\n\n\nGlobal\
+  \ Options:\n  --allow-file-overwriting    Allow to overwrite existing output files\
+  \ instead of aborting the command.\n  --verbose                   Produce more verbose\
+  \ output.\n  --threads UINT=8            Number of threads to use for calculations.\n\
+  \  --log-file TEXT             Write all output to a log file, in addition to standard\
+  \ output to the terminal.\n  --help                      Print this help message\
+  \ and exit.\n\ngappa - a toolkit for analyzing and visualizing phylogenetic (placement)\
+  \ data\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/gappa:0.7.0--he513fc3_0

@@ -8,6 +8,9 @@ task FilterAwaySubsetpy {
     filter_away_subset_py \
       ~{if defined(fuzzy_junction) then ("--fuzzy_junction " +  '"' + fuzzy_junction + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fuzzy_junction: "Fuzzy junction max dist (default: 5bp)\\n"
   }

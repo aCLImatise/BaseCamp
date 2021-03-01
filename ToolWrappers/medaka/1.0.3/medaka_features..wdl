@@ -8,6 +8,9 @@ task MedakaFeatures {
     medaka features_ \
       ~{medaka}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     medaka: ""
   }

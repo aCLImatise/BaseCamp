@@ -3,202 +3,442 @@ command:
 - hclust2.py
 positional:
 - !Positional
-  description: ''
+  optional: true
   position: 0
   name: INPUT_FILE
-  optional: true
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 1
   name: OUTPUT_FILE
-  optional: true
+  description: ''
 named:
 - !Flag
-  description: "[INPUT_FILE], --inp [INPUT_FILE], --in [INPUT_FILE]\nThe input matrix"
+  optional: true
   synonyms:
   - -i
+  description: "[INPUT_FILE], --inp [INPUT_FILE], --in [INPUT_FILE]\nThe input matrix"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "[OUTPUT_FILE], --out [OUTPUT_FILE]\nThe output image file [image on\
-    \ screen of not\nspecified]"
+  optional: true
   synonyms:
   - -o
+  description: "[OUTPUT_FILE], --out [OUTPUT_FILE]\nThe output image file [image on\
+    \ screen of not\nspecified]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "[LEGEND_FILE]\nThe output file for the legend of the provided\nmetadata"
+  optional: true
   synonyms:
   - --legend_file
+  description: "[LEGEND_FILE]\nThe output file for the legend of the provided\nmetadata"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "The input type can be a data matrix or distance matrix\n[default data_matrix]"
+  optional: true
   synonyms:
   - -t
   - --input_type
+  description: "The input type can be a data matrix or distance matrix\n[default data_matrix]"
   args: !SimpleFlagArg
     name: INPUT_TYPE
-  optional: true
 - !Flag
-  description: "--out_table OUT_TABLE\nWrite processed data matrix to file\n--fname_row\
-    \ FNAME_ROW\nrow number containing the names of the features\n[default 0, specify\
-    \ -1 if no names are present in the\nmatrix\n--sname_row SNAME_ROW\ncolumn number\
-    \ containing the names of the samples\n[default 0, specify -1 if no names are\
-    \ present in the\nmatrix\n--metadata_rows METADATA_ROWS\nRow numbers to use as\
-    \ metadata[default None, meaning\nno metadata\n--skip_rows SKIP_ROWS\nRow numbers\
-    \ to skip (0-indexed, comma separated) from\nthe input file[default None, meaning\
-    \ no rows skipped\n--sperc SPERC         Percentile of sample value distribution\
-    \ for sample\nselection\n--fperc FPERC         Percentile of feature value distribution\
-    \ for sample\nselection\n--stop STOP           Number of top samples to select\
-    \ (ordering based on\npercentile specified by --sperc)\n--ftop FTOP          \
-    \ Number of top features to select (ordering based on\npercentile specified by\
-    \ --fperc)\n--def_na DEF_NA       Set the default value for missing values [default\
-    \ None\nwhich means no replacement]"
+  optional: true
   synonyms:
   - --sep
+  - --out_table
+  description: Write processed data matrix to file
   args: !SimpleFlagArg
     name: SEP
-  optional: true
 - !Flag
-  description: Distance function for features [default correlation]
+  optional: true
+  synonyms:
+  - --fname_row
+  description: "row number containing the names of the features\n[default 0, specify\
+    \ -1 if no names are present in the\nmatrix"
+  args: !SimpleFlagArg
+    name: FNAME_ROW
+- !Flag
+  optional: true
+  synonyms:
+  - --sname_row
+  description: "column number containing the names of the samples\n[default 0, specify\
+    \ -1 if no names are present in the\nmatrix"
+  args: !SimpleFlagArg
+    name: SNAME_ROW
+- !Flag
+  optional: true
+  synonyms:
+  - --metadata_rows
+  description: "Row numbers to use as metadata[default None, meaning\nno metadata"
+  args: !SimpleFlagArg
+    name: METADATA_ROWS
+- !Flag
+  optional: true
+  synonyms:
+  - --skip_rows
+  description: "Row numbers to skip (0-indexed, comma separated) from\nthe input file[default\
+    \ None, meaning no rows skipped"
+  args: !SimpleFlagArg
+    name: SKIP_ROWS
+- !Flag
+  optional: true
+  synonyms:
+  - --sperc
+  description: Percentile of sample value distribution for sample
+  args: !SimpleFlagArg
+    name: SPERC
+- !Flag
+  optional: true
+  synonyms:
+  - --ftop
+  description: "Number of top features to select (ordering based on\npercentile specified\
+    \ by --fperc)"
+  args: !SimpleFlagArg
+    name: FTOP
+- !Flag
+  optional: true
+  synonyms:
+  - --def_na
+  description: "Set the default value for missing values [default None\nwhich means\
+    \ no replacement]"
+  args: !SimpleFlagArg
+    name: DEF_NA
+- !Flag
+  optional: true
   synonyms:
   - --f_dist_f
+  description: Distance function for features [default correlation]
   args: !SimpleFlagArg
     name: F_DIST_F
-  optional: true
 - !Flag
-  description: Distance function for sample [default euclidean]
+  optional: true
   synonyms:
   - --s_dist_f
+  description: Distance function for sample [default euclidean]
   args: !SimpleFlagArg
     name: S_DIST_F
-  optional: true
 - !Flag
-  description: "Load the distance matrix to be used for features\n[default None]."
+  optional: true
   synonyms:
   - --load_dist_matrix_f
+  description: "Load the distance matrix to be used for features\n[default None]."
   args: !SimpleFlagArg
     name: LOAD_DIST_MATRIX_F
-  optional: true
 - !Flag
-  description: "Load the distance matrix to be used for samples\n[default None]."
+  optional: true
   synonyms:
   - --load_dist_matrix_s
+  description: "Load the distance matrix to be used for samples\n[default None]."
   args: !SimpleFlagArg
     name: LOAD_DIST_MATRIX_S
-  optional: true
 - !Flag
-  description: "Load the distance matrix to be used for features as\npreviously saved\
-    \ as pickle file using hclust2 itself\n[default None]."
+  optional: true
   synonyms:
   - --load_pickled_dist_matrix_f
+  description: "Load the distance matrix to be used for features as\npreviously saved\
+    \ as pickle file using hclust2 itself\n[default None]."
   args: !SimpleFlagArg
     name: LOAD_PICKLED_DIST_MATRIX_F
-  optional: true
 - !Flag
-  description: "Load the distance matrix to be used for samples as\npreviously saved\
-    \ as pickle file using hclust2 itself\n[default None]."
+  optional: true
   synonyms:
   - --load_pickled_dist_matrix_s
+  description: "Load the distance matrix to be used for samples as\npreviously saved\
+    \ as pickle file using hclust2 itself\n[default None]."
   args: !SimpleFlagArg
     name: LOAD_PICKLED_DIST_MATRIX_S
-  optional: true
 - !Flag
-  description: "Save the distance matrix for features to file [default\nNone]."
+  optional: true
   synonyms:
   - --save_pickled_dist_matrix_f
+  description: "Save the distance matrix for features to file [default\nNone]."
   args: !SimpleFlagArg
     name: SAVE_PICKLED_DIST_MATRIX_F
-  optional: true
 - !Flag
-  description: "Save the distance matrix for samples to file [default\nNone]."
+  optional: true
   synonyms:
   - --save_pickled_dist_matrix_s
+  description: "Save the distance matrix for samples to file [default\nNone]."
   args: !SimpleFlagArg
     name: SAVE_PICKLED_DIST_MATRIX_S
-  optional: true
 - !Flag
-  description: avoid clustering features
+  optional: true
   synonyms:
   - --no_fclustering
+  description: avoid clustering features
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: avoid plotting the feature dendrogram
+  optional: true
   synonyms:
   - --no_plot_fclustering
+  description: avoid plotting the feature dendrogram
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: avoid clustering samples
+  optional: true
   synonyms:
   - --no_sclustering
+  description: avoid clustering samples
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: avoid plotting the sample dendrogram
+  optional: true
   synonyms:
   - --no_plot_sclustering
+  description: avoid plotting the sample dendrogram
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Linkage method for feature clustering [default\naverage]"
+  optional: true
   synonyms:
   - --flinkage
+  description: "Linkage method for feature clustering [default\naverage]"
   args: !SimpleFlagArg
     name: FLINKAGE
-  optional: true
 - !Flag
-  description: Linkage method for sample clustering [default average]
+  optional: true
   synonyms:
   - --slinkage
+  description: Linkage method for sample clustering [default average]
   args: !SimpleFlagArg
     name: SLINKAGE
-  optional: true
 - !Flag
-  description: "Image resolution in dpi [default 150]\n-l, --log_scale       Log scale\n\
-    --title TITLE         Title of the plot\n--title_fontsize TITLE_FONTSIZE\nFont\
-    \ size of the title\n-s, --sqrt_scale      Square root scale\n--no_slabels   \
-    \       Do not show sample labels\n--minv MINV           Minimum value to display\
-    \ in the color map [default\nNone meaning automatic]\n--maxv MAXV           Maximum\
-    \ value to display in the color map [default\nNone meaning automatic]\n--no_flabels\
-    \          Do not show feature labels\n--max_slabel_len MAX_SLABEL_LEN\nMax number\
-    \ of chars to report for sample labels\n[default 15]\n--max_flabel_len MAX_FLABEL_LEN\n\
-    Max number of chars to report for feature labels\n[default 15]\n--flabel_size\
-    \ FLABEL_SIZE\nFeature label font size [default 10]\n--slabel_size SLABEL_SIZE\n\
-    Sample label font size [default 10]\n--fdend_width FDEND_WIDTH\nWidth of the feature\
-    \ dendrogram [default 1 meaning\n100% of default heatmap width]\n--sdend_height\
-    \ SDEND_HEIGHT\nHeight of the sample dendrogram [default 1 meaning\n100% of default\
-    \ heatmap height]\n--metadata_height METADATA_HEIGHT\nHeight of the metadata panel\
-    \ [default 0.05 meaning 5%\nof default heatmap height]\n--metadata_separation\
-    \ METADATA_SEPARATION\nDistance between the metadata and data panels.\n[default\
-    \ 0.001 meaning 0.1% of default heatmap height]\n--colorbar_font_size COLORBAR_FONT_SIZE\n\
-    Color bar label font size [default 12]\n--image_size IMAGE_SIZE\nSize of the largest\
-    \ between width and eight size for\nthe image in inches [default 8]\n--cell_aspect_ratio\
-    \ CELL_ASPECT_RATIO\nAspect ratio between width and height for the cells of\n\
-    the heatmap [default 1.0]\n-c {Blues,BrBG,BuGn,BuPu,GnBu,Greens,Greys,OrRd,Oranges,PRGn,PiYG,PuBu,PuBuGn,PuOr,PuRd,Purples,RdBu,RdGy,RdPu,RdYlBu,RdYlGn,Reds,Spectral,YlGn,YlGnBu,YlOrBr,YlOrRd,afmhot,autumn,binary,bone,brg,bwr,cool,copper,flag,gist_earth,gist_gray,gist_heat,gist_ncar,gist_rainbow,gist_stern,gist_yarg,gnuplot,gnuplot2,gray,hot,hsv,jet,ocean,pink,prism,rainbow,seismic,spectral,spring,summer,terrain,winter,bbcyr,bbcry,bcry},\
-    \ --colormap {Blues,BrBG,BuGn,BuPu,GnBu,Greens,Greys,OrRd,Oranges,PRGn,PiYG,PuBu,PuBuGn,PuOr,PuRd,Purples,RdBu,RdGy,RdPu,RdYlBu,RdYlGn,Reds,Spectral,YlGn,YlGnBu,YlOrBr,YlOrRd,afmhot,autumn,binary,bone,brg,bwr,cool,copper,flag,gist_earth,gist_gray,gist_heat,gist_ncar,gist_rainbow,gist_stern,gist_yarg,gnuplot,gnuplot2,gray,hot,hsv,jet,ocean,pink,prism,rainbow,seismic,spectral,spring,summer,terrain,winter,bbcyr,bbcry,bcry}\n\
-    --bottom_c BOTTOM_C   Color to use for cells below the minimum value of the\n\
-    scale [default None meaning bottom color of the scale]\n--top_c TOP_C        \
-    \ Color to use for cells below the maximum value of the\nscale [default None meaning\
-    \ bottom color of the scale]\n--nan_c NAN_C         Color to use for nan cells\
-    \ [default None]\n"
+  optional: true
   synonyms:
   - --dpi
+  description: Image resolution in dpi [default 150]
   args: !SimpleFlagArg
     name: DPI
+- !Flag
   optional: true
+  synonyms:
+  - -l
+  - --log_scale
+  description: Log scale
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --title
+  description: Title of the plot
+  args: !SimpleFlagArg
+    name: TITLE
+- !Flag
+  optional: true
+  synonyms:
+  - --title_fontsize
+  description: Font size of the title
+  args: !SimpleFlagArg
+    name: TITLE_FONTSIZE
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --sqrt_scale
+  description: Square root scale
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no_slabels
+  description: Do not show sample labels
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --minv
+  description: "Minimum value to display in the color map [default\nNone meaning automatic]"
+  args: !SimpleFlagArg
+    name: MINV
+- !Flag
+  optional: true
+  synonyms:
+  - --maxv
+  description: "Maximum value to display in the color map [default\nNone meaning automatic]"
+  args: !SimpleFlagArg
+    name: MAXV
+- !Flag
+  optional: true
+  synonyms:
+  - --no_flabels
+  description: Do not show feature labels
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max_slabel_len
+  description: "Max number of chars to report for sample labels\n[default 15]"
+  args: !SimpleFlagArg
+    name: MAX_SLABEL_LEN
+- !Flag
+  optional: true
+  synonyms:
+  - --max_flabel_len
+  description: "Max number of chars to report for feature labels\n[default 15]"
+  args: !SimpleFlagArg
+    name: MAX_FLABEL_LEN
+- !Flag
+  optional: true
+  synonyms:
+  - --flabel_size
+  description: Feature label font size [default 10]
+  args: !SimpleFlagArg
+    name: FLABEL_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --slabel_size
+  description: Sample label font size [default 10]
+  args: !SimpleFlagArg
+    name: SLABEL_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --fdend_width
+  description: "Width of the feature dendrogram [default 1 meaning\n100% of default\
+    \ heatmap width]"
+  args: !SimpleFlagArg
+    name: FDEND_WIDTH
+- !Flag
+  optional: true
+  synonyms:
+  - --sdend_height
+  description: "Height of the sample dendrogram [default 1 meaning\n100% of default\
+    \ heatmap height]"
+  args: !SimpleFlagArg
+    name: SDEND_HEIGHT
+- !Flag
+  optional: true
+  synonyms:
+  - --metadata_height
+  description: "Height of the metadata panel [default 0.05 meaning 5%\nof default\
+    \ heatmap height]"
+  args: !SimpleFlagArg
+    name: METADATA_HEIGHT
+- !Flag
+  optional: true
+  synonyms:
+  - --metadata_separation
+  description: "Distance between the metadata and data panels.\n[default 0.001 meaning\
+    \ 0.1% of default heatmap height]"
+  args: !SimpleFlagArg
+    name: METADATA_SEPARATION
+- !Flag
+  optional: true
+  synonyms:
+  - --colorbar_font_size
+  description: Color bar label font size [default 12]
+  args: !SimpleFlagArg
+    name: COLORBAR_FONT_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --image_size
+  description: "Size of the largest between width and eight size for\nthe image in\
+    \ inches [default 8]"
+  args: !SimpleFlagArg
+    name: IMAGE_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --cell_aspect_ratio
+  description: "Aspect ratio between width and height for the cells of\nthe heatmap\
+    \ [default 1.0]"
+  args: !SimpleFlagArg
+    name: CELL_ASPECT_RATIO
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --colormap
+  - --bottom_c
+  description: "Color to use for cells below the minimum value of the\nscale [default\
+    \ None meaning bottom color of the scale]"
+  args: !ChoiceFlagArg
+    choices: !!set
+      gnuplot:
+      RdBu:
+      copper:
+      gist_yarg:
+      gnuplot2:
+      cool:
+      spectral:
+      Greys:
+      gist_stern:
+      PiYG:
+      RdYlGn:
+      summer:
+      bbcry:
+      bcry:
+      OrRd:
+      GnBu:
+      BrBG:
+      autumn:
+      bone:
+      gist_earth:
+      gist_heat:
+      bwr:
+      gray:
+      terrain:
+      RdPu:
+      binary:
+      gist_gray:
+      PuOr:
+      YlOrRd:
+      jet:
+      hot:
+      gist_ncar:
+      PuRd:
+      BuGn:
+      Reds:
+      flag:
+      rainbow:
+      RdGy:
+      seismic:
+      Oranges:
+      PuBuGn:
+      afmhot:
+      ocean:
+      gist_rainbow:
+      winter:
+      Greens:
+      BuPu:
+      bbcyr:
+      Blues:
+      brg:
+      prism:
+      hsv:
+      PuBu:
+      RdYlBu:
+      Purples:
+      YlOrBr:
+      Spectral:
+      pink:
+      YlGnBu:
+      spring:
+      YlGn:
+      PRGn:
+- !Flag
+  optional: true
+  synonyms:
+  - --top_c
+  description: "Color to use for cells below the maximum value of the\nscale [default\
+    \ None meaning bottom color of the scale]"
+  args: !SimpleFlagArg
+    name: TOP_C
+- !Flag
+  optional: true
+  synonyms:
+  - --nan_c
+  description: Color to use for nan cells [default None]
+  args: !SimpleFlagArg
+    name: NAN_C
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: hclust2.py [-h] [-i [INPUT_FILE]] [-o [OUTPUT_FILE]]\n        \
@@ -309,3 +549,4 @@ help_text: "usage: hclust2.py [-h] [-i [INPUT_FILE]] [-o [OUTPUT_FILE]]\n       
   \  --nan_c NAN_C         Color to use for nan cells [default None]\n"
 generated_using:
 - --help
+docker_image:

@@ -24,6 +24,9 @@ task CnvkitpyExportNexusogt {
       ~{if defined(min_weight) then ("--min-weight " +  '"' + min_weight + '"') else ""} \
       ~{if defined(output_file_name) then ("--output " +  '"' + output_file_name + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     sample_id: "Specify the name of the sample in the VCF to use to\\nextract b-allele frequencies."
     normal_id: "Corresponding normal sample ID in the input VCF."

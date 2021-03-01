@@ -20,6 +20,9 @@ task GenometreetkCombine {
       ~{if defined(support_type) then ("--support_type " +  '"' + support_type + '"') else ""} \
       ~{if (silent) then "--silent" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     support_type: "type of support values to compute (default: average)"
     silent: "suppress output"

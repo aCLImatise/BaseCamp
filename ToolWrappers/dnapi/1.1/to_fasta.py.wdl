@@ -28,6 +28,9 @@ task ToFastapy {
       ~{if (only_print_reads) then "-B" else ""} \
       ~{if (print_reads_specified) then "-a" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     three: "3'adapter sequence"
     five: "5'adapter sequence"

@@ -30,6 +30,9 @@ task NGSDAddVariantsSomatic {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     t_ps: "Tumor processed sample name"
     n_ps: "Normal processed sample name"

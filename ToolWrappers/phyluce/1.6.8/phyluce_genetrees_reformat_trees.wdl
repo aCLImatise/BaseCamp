@@ -16,6 +16,9 @@ task PhyluceGenetreesReformatTrees {
       ~{if defined(output_format) then ("--output-format " +  '"' + output_format + '"') else ""} \
       ~{if defined(do_not_preserve_spaces) then ("--do-not-preserve-spaces " +  '"' + do_not_preserve_spaces + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_trees_directory: "The input trees directory"
     output_trees_directory: "The output trees directory"

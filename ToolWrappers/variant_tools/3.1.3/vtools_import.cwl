@@ -11,7 +11,7 @@ inputs:
     \ about the reference genome used in the data,\nuse a recent standard reference\
     \ genome (e.g. hg19) and\nvalidate it after the data is imported (c.f. \"vtools\n\
     admin --validate_build\")."
-  type: long
+  type: long?
   inputBinding:
     prefix: --build
 - id: in_format
@@ -21,7 +21,7 @@ inputs:
     \ format\nfrom file extension. Some file formats accept\nparameters (cf. 'vtools\
     \ show format FMT') and allow\nyou to import additional or alternative fields\
     \ defined\nfor the format."
-  type: File
+  type: File?
   inputBinding:
     prefix: --format
 - id: in_sample_name
@@ -34,14 +34,14 @@ inputs:
     \ created without genotype. If\nsample names cannot be determined from input file\
     \ and\ntheir is no ambiguity (only one sample is imported), a\nsample with empty\
     \ sample name will be created."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --sample_name
 - id: in_force
   doc: "Import files even if the files have been imported\nbefore. This option can\
     \ be used to import from updated\nfile or continue disrupted import, but will\
     \ not remove\nwrongfully imported variants from the master variant\ntable."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --force
 - id: in_jobs
@@ -50,18 +50,18 @@ inputs:
     \ use more or less processes by adjusting this\nparameter. Due to the overhead\
     \ of inter-process\ncommunication, more jobs do not automatically lead to\nbetter\
     \ performance."
-  type: long
+  type: long?
   inputBinding:
     prefix: --jobs
 - id: in_sort
   doc: Import another VCF file.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --sort
 - id: in_verbosity
   doc: "Output error and warning (0), info (1), debug (2) and\ntrace (3) information\
     \ to standard output (default to\n1).\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --verbosity
 - id: in_input_files
@@ -76,6 +76,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - vtools

@@ -52,6 +52,9 @@ task FindTADsAndLoopsFromRelMatrix {
       ~{if defined(tad) then ("-tad " +  '"' + tad + '"') else ""} \
       ~{if defined(loop) then ("-loop " +  '"' + loop + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prefix: "(Filename prefix for output files, default: out)"
     mind_ist: "<#> (minimum interaction distance to score (to avoid diagonal) default: 3 x res)"

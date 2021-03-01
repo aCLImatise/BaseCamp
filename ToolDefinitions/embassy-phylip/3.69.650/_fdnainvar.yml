@@ -11,23 +11,23 @@ subcommands:
   - alignments
   positional:
   - !Positional
-    description: 'Additional (Optional) qualifiers (* if not always prompted):'
+    optional: false
     position: 0
     name: file
-    optional: false
+    description: 'Additional (Optional) qualifiers (* if not always prompted):'
   named:
   - !Flag
-    description: properties Phylip weights file (optional)
+    optional: true
     synonyms:
     - -weights
+    description: properties Phylip weights file (optional)
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: boolean    [N] Print data at start of run
+    optional: true
     synonyms:
     - -printdata
+    description: boolean    [N] Print data at start of run
     args: !EmptyFlagArg {}
-    optional: true
   parent: !Command
     command: *id001
     positional: []
@@ -38,23 +38,23 @@ subcommands:
       command: *id002
       positional:
       - !Positional
-        description: 'Additional (Optional) qualifiers (* if not always prompted):'
+        optional: false
         position: 0
         name: file
-        optional: false
+        description: 'Additional (Optional) qualifiers (* if not always prompted):'
       named:
       - !Flag
-        description: properties Phylip weights file (optional)
+        optional: true
         synonyms:
         - -weights
+        description: properties Phylip weights file (optional)
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: boolean    [N] Print data at start of run
+        optional: true
         synonyms:
         - -printdata
+        description: boolean    [N] Print data at start of run
         args: !EmptyFlagArg {}
-        optional: true
       parent: !Command
         command: *id001
         positional: []
@@ -65,23 +65,23 @@ subcommands:
           command: *id002
           positional:
           - !Positional
-            description: 'Additional (Optional) qualifiers (* if not always prompted):'
+            optional: false
             position: 0
             name: file
-            optional: false
+            description: 'Additional (Optional) qualifiers (* if not always prompted):'
           named:
           - !Flag
-            description: properties Phylip weights file (optional)
+            optional: true
             synonyms:
             - -weights
+            description: properties Phylip weights file (optional)
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: boolean    [N] Print data at start of run
+            optional: true
             synonyms:
             - -printdata
+            description: boolean    [N] Print data at start of run
             args: !EmptyFlagArg {}
-            optional: true
           parent: !Command
             command: *id001
             positional: []
@@ -92,68 +92,163 @@ subcommands:
               command: *id002
               positional:
               - !Positional
-                description: 'Additional (Optional) qualifiers (* if not always prompted):'
+                optional: false
                 position: 0
                 name: file
-                optional: false
+                description: 'Additional (Optional) qualifiers (* if not always prompted):'
               named:
               - !Flag
-                description: properties Phylip weights file (optional)
+                optional: true
                 synonyms:
                 - -weights
+                description: properties Phylip weights file (optional)
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: boolean    [N] Print data at start of run
+                optional: true
                 synonyms:
                 - -printdata
+                description: boolean    [N] Print data at start of run
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: &id003 !Command
+              parent: !Command
                 command: *id001
                 positional: []
-                named:
-                - !Flag
-                  description: boolean    [N] Print data at start of run
-                  synonyms:
-                  - -printdata
-                  args: !EmptyFlagArg {}
-                  optional: true
+                named: []
                 parent:
                 subcommands:
                 - !Command
                   command: *id002
                   positional:
                   - !Positional
-                    description: 'Additional (Optional) qualifiers (* if not always
-                      prompted):'
+                    optional: false
                     position: 0
                     name: file
-                    optional: false
+                    description: 'Additional (Optional) qualifiers (* if not always
+                      prompted):'
                   named:
                   - !Flag
-                    description: properties Phylip weights file (optional)
+                    optional: true
                     synonyms:
                     - -weights
+                    description: properties Phylip weights file (optional)
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: boolean    [N] Print data at start of run
+                    optional: true
                     synonyms:
                     - -printdata
+                    description: boolean    [N] Print data at start of run
                     args: !EmptyFlagArg {}
-                    optional: true
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named:
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -printdata
+                      description: boolean    [N] Print data at start of run
+                      args: !EmptyFlagArg {}
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: file
+                        description: 'Additional (Optional) qualifiers (* if not always
+                          prompted):'
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -weights
+                        description: properties Phylip weights file (optional)
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -printdata
+                        description: boolean    [N] Print data at start of run
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -help
+                        description: "boolean    Report command line options and exit.\
+                          \ More\ninformation on associated and general\nqualifiers\
+                          \ can be found with -help -verbose\n"
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "Nucleic acid sequence invariants method\nVersion:\
+                        \ EMBOSS:6.5.7.0 PHYLIPNEW:3.69.650\n\n   Standard (Mandatory)\
+                        \ qualifiers:\n  [-sequence]          seqsetall  [alignments]\
+                        \ File containing one or more\n                          \
+                        \        sequence alignments\n   -weights            properties\
+                        \ Phylip weights file (optional)\n  [-outfile]           outfile\
+                        \    [*.fdnainvar] Phylip dnainvar program output\n      \
+                        \                            file\n\n   Additional (Optional)\
+                        \ qualifiers (* if not always prompted):\n   -printdata  \
+                        \        boolean    [N] Print data at start of run\n*  -[no]dotdiff\
+                        \        boolean    [Y] Use dot-differencing to display results\n\
+                        \   -[no]printpattern   boolean    [Y] Print counts of patterns\n\
+                        \   -[no]printinvariant boolean    [Y] Print invariants\n\
+                        \   -[no]progress       boolean    [Y] Print indications of\
+                        \ progress of run\n\n   Advanced (Unprompted) qualifiers:\
+                        \ (none)\n   General qualifiers:\n   -help               boolean\
+                        \    Report command line options and exit. More\n        \
+                        \                          information on associated and general\n\
+                        \                                  qualifiers can be found\
+                        \ with -help -verbose\n\n"
+                      generated_using: &id004
+                      - --help
+                      docker_image:
+                    usage: []
+                    help_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - -help
+                      description: "boolean    Report command line options and exit.\
+                        \ More\ninformation on associated and general\nqualifiers\
+                        \ can be found with -help -verbose\n"
+                      args: !EmptyFlagArg {}
+                    usage_flag:
+                    version_flag:
+                    help_text: "Nucleic acid sequence invariants method\nVersion:\
+                      \ EMBOSS:6.5.7.0 PHYLIPNEW:3.69.650\n\n   Standard (Mandatory)\
+                      \ qualifiers:\n  [-sequence]          seqsetall  File containing\
+                      \ one or more sequence\n                                  alignments\n\
+                      \   -weights            properties Phylip weights file (optional)\n\
+                      \  [-outfile]           outfile    [*.fdnainvar] Phylip dnainvar\
+                      \ program output\n                                  file\n\n\
+                      \   Additional (Optional) qualifiers (* if not always prompted):\n\
+                      \   -printdata          boolean    [N] Print data at start of\
+                      \ run\n*  -[no]dotdiff        boolean    [Y] Use dot-differencing\
+                      \ to display results\n   -[no]printpattern   boolean    [Y]\
+                      \ Print counts of patterns\n   -[no]printinvariant boolean \
+                      \   [Y] Print invariants\n   -[no]progress       boolean   \
+                      \ [Y] Print indications of progress of run\n\n   Advanced (Unprompted)\
+                      \ qualifiers: (none)\n   General qualifiers:\n   -help     \
+                      \          boolean    Report command line options and exit.\
+                      \ More\n                                  information on associated\
+                      \ and general\n                                  qualifiers\
+                      \ can be found with -help -verbose\n\n"
+                    generated_using: *id004
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag: !Flag
+                    optional: true
+                    synonyms:
+                    - -help
                     description: "boolean    Report command line options and exit.\
                       \ More\ninformation on associated and general\nqualifiers can\
                       \ be found with -help -verbose\n"
-                    synonyms:
-                    - -help
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "Nucleic acid sequence invariants method\nVersion: EMBOSS:6.5.7.0\
@@ -175,17 +270,10 @@ subcommands:
                     \            information on associated and general\n         \
                     \                         qualifiers can be found with -help -verbose\n\
                     \n"
-                  generated_using: &id004
-                  - --help
+                  generated_using: *id004
+                  docker_image:
                 usage: []
-                help_flag: !Flag
-                  description: "boolean    Report command line options and exit. More\n\
-                    information on associated and general\nqualifiers can be found\
-                    \ with -help -verbose\n"
-                  synonyms:
-                  - -help
-                  args: !EmptyFlagArg {}
-                  optional: true
+                help_flag:
                 usage_flag:
                 version_flag:
                 help_text: "Nucleic acid sequence invariants method\nVersion: EMBOSS:6.5.7.0\
@@ -207,16 +295,17 @@ subcommands:
                   \ and general\n                                  qualifiers can\
                   \ be found with -help -verbose\n\n"
                 generated_using: *id004
+                docker_image:
               subcommands: []
               usage: []
               help_flag: !Flag
+                optional: true
+                synonyms:
+                - -help
                 description: "boolean    Report command line options and exit. More\n\
                   information on associated and general\nqualifiers can be found with\
                   \ -help -verbose\n"
-                synonyms:
-                - -help
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "Nucleic acid sequence invariants method\nVersion: EMBOSS:6.5.7.0\
@@ -238,6 +327,7 @@ subcommands:
                 \                                  qualifiers can be found with -help\
                 \ -verbose\n\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -260,16 +350,17 @@ subcommands:
               \ on associated and general\n                                  qualifiers\
               \ can be found with -help -verbose\n\n"
             generated_using: *id004
+            docker_image:
           subcommands: []
           usage: []
           help_flag: !Flag
+            optional: true
+            synonyms:
+            - -help
             description: "boolean    Report command line options and exit. More\n\
               information on associated and general\nqualifiers can be found with\
               \ -help -verbose\n"
-            synonyms:
-            - -help
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "Nucleic acid sequence invariants method\nVersion: EMBOSS:6.5.7.0\
@@ -290,6 +381,7 @@ subcommands:
             \ general\n                                  qualifiers can be found with\
             \ -help -verbose\n\n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -311,15 +403,16 @@ subcommands:
           \ on associated and general\n                                  qualifiers\
           \ can be found with -help -verbose\n\n"
         generated_using: *id004
+        docker_image:
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: "boolean    Report command line options and exit. More\ninformation\
-          \ on associated and general\nqualifiers can be found with -help -verbose\n"
+        optional: true
         synonyms:
         - -help
+        description: "boolean    Report command line options and exit. More\ninformation\
+          \ on associated and general\nqualifiers can be found with -help -verbose\n"
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "Nucleic acid sequence invariants method\nVersion: EMBOSS:6.5.7.0\
@@ -339,6 +432,7 @@ subcommands:
         \ and general\n                                  qualifiers can be found with\
         \ -help -verbose\n\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -359,15 +453,16 @@ subcommands:
       \        information on associated and general\n                           \
       \       qualifiers can be found with -help -verbose\n\n"
     generated_using: *id004
+    docker_image:
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: "boolean    Report command line options and exit. More\ninformation\
-      \ on associated and general\nqualifiers can be found with -help -verbose\n"
+    optional: true
     synonyms:
     - -help
+    description: "boolean    Report command line options and exit. More\ninformation\
+      \ on associated and general\nqualifiers can be found with -help -verbose\n"
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "Nucleic acid sequence invariants method\nVersion: EMBOSS:6.5.7.0 PHYLIPNEW:3.69.650\n\
@@ -386,6 +481,7 @@ subcommands:
     \     information on associated and general\n                                \
     \  qualifiers can be found with -help -verbose\n\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -405,3 +501,4 @@ help_text: "Nucleic acid sequence invariants method\nVersion: EMBOSS:6.5.7.0 PHY
   \                                  information on associated and general\n     \
   \                             qualifiers can be found with -help -verbose\n\n"
 generated_using: *id004
+docker_image:

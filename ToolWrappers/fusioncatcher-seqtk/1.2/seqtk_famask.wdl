@@ -10,6 +10,9 @@ task SeqtkFamask {
       ~{src_dot_fa} \
       ~{mask_dot_fa}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     src_dot_fa: ""
     mask_dot_fa: ""

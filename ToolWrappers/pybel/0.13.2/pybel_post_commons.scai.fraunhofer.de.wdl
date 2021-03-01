@@ -12,6 +12,9 @@ task PybelPostCommonsscaifraunhoferde {
       ~{post} \
       ~{path}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     py_bel: ""
     post: ""

@@ -3,22 +3,22 @@ id: alleyoop_rates_bam.cwl
 inputs:
 - id: in_t
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -t
 - id: in_mq
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -mq
 - id: in_r
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: -r
 - id: in_o
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -o
 - id: in_alley_oop
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - alleyoop

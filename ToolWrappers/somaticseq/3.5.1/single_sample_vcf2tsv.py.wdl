@@ -3,7 +3,6 @@ version 1.0
 task SingleSampleVcf2tsvpy {
   input {
     String? bam
-    String? ref
     File? vcf_format
     File? bed_format
     String? positions_list
@@ -28,7 +27,6 @@ task SingleSampleVcf2tsvpy {
   command <<<
     single_sample_vcf2tsv_py \
       ~{if defined(bam) then ("-bam " +  '"' + bam + '"') else ""} \
-      ~{if defined(ref) then ("-ref " +  '"' + ref + '"') else ""} \
       ~{if defined(vcf_format) then ("--vcf-format " +  '"' + vcf_format + '"') else ""} \
       ~{if defined(bed_format) then ("--bed-format " +  '"' + bed_format + '"') else ""} \
       ~{if defined(positions_list) then ("--positions-list " +  '"' + positions_list + '"') else ""} \
@@ -50,9 +48,11 @@ task SingleSampleVcf2tsvpy {
       ~{if defined(p_scale) then ("--p-scale " +  '"' + p_scale + '"') else ""} \
       ~{if defined(output_tsv_file) then ("--output-tsv-file " +  '"' + output_tsv_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bam: "[-truth GROUND_TRUTH_VCF]"
-    ref: "[-dedup]"
     vcf_format: "Input file is VCF formatted. (default: None)"
     bed_format: "Input file is BED formatted. (default: None)"
     positions_list: "A list of positions: tab seperating contig and\\npositions. (default: None)"

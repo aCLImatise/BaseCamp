@@ -16,6 +16,9 @@ task AgfusionDownload {
       ~{if defined(release) then ("--release " +  '"' + release + '"') else ""} \
       ~{if (available) then "--available" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dir: "(Optional) Directory to the database will be\\ndownloaded to (defaults to current working directory)."
     genome: "Specify the genome shortcut (e.g. hg19). To see\\nallavailable shortcuts run 'agfusion download -a'.\\nEither specify this or --species and --release."

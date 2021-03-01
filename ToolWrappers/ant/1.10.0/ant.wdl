@@ -20,14 +20,14 @@ task Ant {
     String? listener
     Boolean? no_input
     File? buildfile
-    Boolean? file
+    Boolean? var_file
     Boolean? f
     Boolean? propertyvalue_use_value
     Boolean? keep_going
     File? property_file
     String? input_handler
     File? find
-    Boolean? file_filesystem_use
+    Boolean? file_use_it
     Boolean? nice
     Boolean? no_user_lib
     Boolean? no_classpath
@@ -54,20 +54,23 @@ task Ant {
       ~{if defined(listener) then ("-listener " +  '"' + listener + '"') else ""} \
       ~{if (no_input) then "-noinput" else ""} \
       ~{if defined(buildfile) then ("-buildfile " +  '"' + buildfile + '"') else ""} \
-      ~{if (file) then "-file" else ""} \
+      ~{if (var_file) then "-file" else ""} \
       ~{if (f) then "-f" else ""} \
       ~{if (propertyvalue_use_value) then "-D" else ""} \
       ~{if (keep_going) then "-keep-going" else ""} \
       ~{if defined(property_file) then ("-propertyfile " +  '"' + property_file + '"') else ""} \
       ~{if defined(input_handler) then ("-inputhandler " +  '"' + input_handler + '"') else ""} \
       ~{if defined(find) then ("-find " +  '"' + find + '"') else ""} \
-      ~{if (file_filesystem_use) then "-s" else ""} \
+      ~{if (file_use_it) then "-s" else ""} \
       ~{if (nice) then "-nice" else ""} \
       ~{if (no_user_lib) then "-nouserlib" else ""} \
       ~{if (no_classpath) then "-noclasspath" else ""} \
       ~{if (auto_proxy) then "-autoproxy" else ""} \
       ~{if defined(main) then ("-main " +  '"' + main + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_config: "suppress sourcing of /etc/ant.conf,\\n$HOME/.ant/ant.conf, and $HOME/.antrc\\nconfiguration files"
     use_jikes: "enable use of jikes by default, unless\\nset explicitly in configuration files"
@@ -87,14 +90,14 @@ task Ant {
     listener: "add an instance of class as a project listener"
     no_input: "do not allow interactive input"
     buildfile: "use given buildfile"
-    file: "<file>              ''"
+    var_file: "<file>              ''"
     f: "<file>              ''"
     propertyvalue_use_value: "<property>=<value>   use value for given property"
     keep_going: "execute all targets that do not depend\\non failed target(s)"
     property_file: "load all properties from file with -D\\nproperties taking precedence"
     input_handler: "the class which will handle input requests"
     find: "(s)earch for buildfile towards the root of"
-    file_filesystem_use: "<file>           the filesystem and use it"
+    file_use_it: "<file>           the filesystem and use it"
     nice: "number          A niceness value for the main thread:                         1 (lowest) to 10 (highest); 5 is the default"
     no_user_lib: "Run ant without using the jar files from                         ${user.home}/.ant/lib"
     no_classpath: "Run ant without using CLASSPATH"

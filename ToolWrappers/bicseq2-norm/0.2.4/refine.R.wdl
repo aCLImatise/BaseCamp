@@ -4,6 +4,9 @@ task RefineR {
   command <<<
     refine_R
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

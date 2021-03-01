@@ -16,6 +16,9 @@ task BedtoolsBedpetobam {
       ~{if defined(g) then ("-g " +  '"' + g + '"') else ""} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mapq: "Set the mappinq quality for the BAM records.\\n(INT) Default: 255"
     ub_am: "Write uncompressed BAM output. Default writes compressed BAM."

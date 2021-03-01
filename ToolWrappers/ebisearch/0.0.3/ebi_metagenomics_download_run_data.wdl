@@ -12,6 +12,9 @@ task EbiMetagenomicsDownloadRunData {
       ~{if defined(run) then ("--run " +  '"' + run + '"') else ""} \
       ~{if defined(data) then ("--data " +  '"' + data + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     run: "Id of a run in EBI metagenomics"
     data: "Data to download for the run (accessible with"

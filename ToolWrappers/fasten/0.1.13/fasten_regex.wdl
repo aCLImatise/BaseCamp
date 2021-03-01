@@ -16,6 +16,9 @@ task FastenRegex {
       ~{if defined(regex) then ("--regex " +  '"' + regex + '"') else ""} \
       ~{if defined(which) then ("--which " +  '"' + which + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     num_cpus: "Number of CPUs (default: 1)"
     paired_end: "The input reads are interleaved paired-end"

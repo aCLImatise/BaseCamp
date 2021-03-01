@@ -18,6 +18,9 @@ task BedJoinTabOffset {
       ~{if defined(tab_key_field) then ("--tabKeyField " +  '"' + tab_key_field + '"') else ""} \
       ~{if defined(bed_key_field) then ("--bedKeyField " +  '"' + bed_key_field + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "show debug messages"
     tab_key_field: "the index of the key field in the tab file that\\nmatches the key field in the bed file. default 0"

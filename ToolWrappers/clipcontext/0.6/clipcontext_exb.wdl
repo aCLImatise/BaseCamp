@@ -24,6 +24,9 @@ task ClipcontextExb {
       ~{if defined(gtf) then ("--gtf " +  '"' + gtf + '"') else ""} \
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     max_dist: "Maximum distance of CLIP peak region end to nearest exon end\\nfor CLIP region to still be output (default: 50)"
     min_len: "Minimum input site length for filtering --in BED file\\n(default: False)"

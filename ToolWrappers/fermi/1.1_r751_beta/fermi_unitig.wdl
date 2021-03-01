@@ -14,6 +14,9 @@ task FermiUnitig {
       ~{if defined(number_of_threads) then ("-t " +  '"' + number_of_threads + '"') else ""} \
       ~{if defined(rank_file) then ("-r " +  '"' + rank_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_match: "min match [0]"
     number_of_threads: "number of threads [1]"

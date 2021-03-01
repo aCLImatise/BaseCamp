@@ -3,7 +3,7 @@ id: msp_vcf.cwl
 inputs:
 - id: in_ploidy
   doc: "The ploidy level of samples\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --ploidy
 - id: in_history_file
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - msp

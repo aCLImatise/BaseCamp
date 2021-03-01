@@ -22,6 +22,9 @@ task Pbhoover {
       ~{if defined(tempdir) then ("--tempdir " +  '"' + tempdir + '"') else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     consensus: "Call consensus (output all positions to VCF)"
     input_cmph_file: "Input cmp.h5 file"

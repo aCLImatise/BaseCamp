@@ -3,17 +3,17 @@ id: extract_kraken_reads.py.cwl
 inputs:
 - id: in_kraken_output_file
   doc: Kraken output file to parse
-  type: File
+  type: File?
   inputBinding:
     prefix: -k
 - id: in_s_one
   doc: FASTA/FASTQ File containing the raw sequence letters.
-  type: long
+  type: long?
   inputBinding:
     prefix: -s1
 - id: in_s_two
   doc: "2nd FASTA/FASTQ File containing the raw sequence\nletters (paired)."
-  type: long
+  type: long?
   inputBinding:
     prefix: -s2
 - id: in_taxid
@@ -23,55 +23,55 @@ inputs:
     prefix: --taxid
 - id: in_output
   doc: "Output FASTA/Q file containing the reads and sample\nIDs"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_output_two
   doc: "Output FASTA/Q file containig the second pair of reads\n[required for paired\
     \ input]"
-  type: File
+  type: File?
   inputBinding:
     prefix: --output2
 - id: in_append
   doc: "Append the sequences to the end of the output FASTA\nfile specified."
-  type: File
+  type: File?
   inputBinding:
     prefix: --append
 - id: in_no_append
   doc: "Create a new FASTA file containing sample sequences\nand IDs (rewrite if existing)\
     \ [default]."
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --noappend
 - id: in_max
   doc: 'Maximum number of reads to save [default: 100,000,000]'
-  type: long
+  type: long?
   inputBinding:
     prefix: --max
 - id: in_report
   doc: "Kraken report file. [required only if --include-\nparents/children is specified]"
-  type: File
+  type: File?
   inputBinding:
     prefix: --report
 - id: in_include_parents
   doc: "Include reads classified at parent levels of the\nspecified taxids"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --include-parents
 - id: in_include_children
   doc: "Include reads classified more specifically than the\nspecified taxids"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --include-children
 - id: in_exclude
   doc: "Instead of finding reads matching specified taxids,\nfinds all reads NOT matching\
     \ specified taxids"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --exclude
 - id: in_fast_q_output
   doc: "Print output FASTQ reads [requires input FASTQ,\ndefault: output is FASTA]\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --fastq-output
 outputs:
@@ -80,25 +80,26 @@ outputs:
   type: stdout
 - id: out_kraken_output_file
   doc: Kraken output file to parse
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_kraken_output_file)
 - id: out_output
   doc: "Output FASTA/Q file containing the reads and sample\nIDs"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
 - id: out_output_two
   doc: "Output FASTA/Q file containig the second pair of reads\n[required for paired\
     \ input]"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_two)
 - id: out_append
   doc: "Append the sequences to the end of the output FASTA\nfile specified."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_append)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - extract_kraken_reads.py

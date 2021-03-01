@@ -24,6 +24,9 @@ task DeepacstrainTest {
       ~{if (quick) then "--quick" else ""} \
       ~{if (keep) then "--keep" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     n_cpus: "Number of CPU cores."
     n_gpus: "Number of GPUs."

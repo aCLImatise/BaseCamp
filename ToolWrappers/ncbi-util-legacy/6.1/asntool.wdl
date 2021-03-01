@@ -24,11 +24,11 @@ task Asntool {
     File? base_filename_optional
     Boolean? code_generation_debugging
     File? debugging_filename_optionaldefault
-    Boolean? generated_add_include
-    Boolean? bit_twiddle_optional
+    Boolean? generated_c_add
+    Boolean? bit_twiddle_optionaldefault
     Boolean? generated_forces_name
-    Boolean? register_type_object
-    Boolean? label_registered_type
+    Boolean? register_type_optional
+    Boolean? label_registered_optional
     Boolean? xml_module_prefix
     Boolean? force_choice_use
     Boolean? use_quoted_form
@@ -57,15 +57,18 @@ task Asntool {
       ~{if (base_filename_optional) then "-B" else ""} \
       ~{if (code_generation_debugging) then "-D" else ""} \
       ~{if (debugging_filename_optionaldefault) then "-S" else ""} \
-      ~{if (generated_add_include) then "-I" else ""} \
-      ~{if (bit_twiddle_optional) then "-Z" else ""} \
+      ~{if (generated_c_add) then "-I" else ""} \
+      ~{if (bit_twiddle_optionaldefault) then "-Z" else ""} \
       ~{if (generated_forces_name) then "-K" else ""} \
-      ~{if (register_type_object) then "-J" else ""} \
-      ~{if (label_registered_type) then "-L" else ""} \
+      ~{if (register_type_optional) then "-J" else ""} \
+      ~{if (label_registered_optional) then "-L" else ""} \
       ~{if (xml_module_prefix) then "-P" else ""} \
       ~{if (force_choice_use) then "-V" else ""} \
       ~{if (use_quoted_form) then "-Q" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     asn_module_file: "ASN.1 Module File [File In]"
     asn_module_file_optional: "ASN.1 Module File [File Out]  Optional"
@@ -89,11 +92,11 @@ task Asntool {
     base_filename_optional: "Base for filename, without extensions, for generated objects and code [File Out]  Optional"
     code_generation_debugging: "During code generation, debugging level\\n0 - No debugging\\n1 - Shallow debugging\\n2 - Deep"
     debugging_filename_optionaldefault: "Debugging filename [File Out]  Optional\\ndefault = stderr"
-    generated_add_include: "In generated .c, add #include to this filename [String]  Optional"
-    bit_twiddle_optional: "Bit twiddle for optional zero value base slots [T/F]  Optional\\ndefault = F"
+    generated_c_add: "In generated .c, add #include to this filename [String]  Optional"
+    bit_twiddle_optionaldefault: "Bit twiddle for optional zero value base slots [T/F]  Optional\\ndefault = F"
     generated_forces_name: "In generated .c, forces name of #included asn header [String]  Optional"
-    register_type_object: "Register type with object manager [String]  Optional"
-    label_registered_type: "Label for registered type [String]  Optional"
+    register_type_optional: "Register type with object manager [String]  Optional"
+    label_registered_optional: "Label for registered type [String]  Optional"
     xml_module_prefix: "XML module prefix for DOCTYPE [String]  Optional\\ndefault ="
     force_choice_use: "Force choice to use structure instead of ValNodePtr [T/F]  Optional\\ndefault = F"
     use_quoted_form: "Use quoted syntax form for generated include files [T/F]  Optional\\ndefault = F\\n"

@@ -5,7 +5,7 @@ task PhyloFlashComparepl {
     String? zip
     Boolean? all_zip
     Boolean? use_sam
-    String? type_run_options
+    String? type_analysis_run
     String? out
     String? out_fmt
     Int? level
@@ -20,17 +20,19 @@ task PhyloFlashComparepl {
     String? cluster_tax_a
     Boolean? long_tax_names
     Int? min_ntu_count
+    String barplot
     String heat_map
     String format_dot
   }
   command <<<
     phyloFlash_compare_pl \
+      ~{barplot} \
       ~{heat_map} \
       ~{format_dot} \
       ~{if defined(zip) then ("--zip " +  '"' + zip + '"') else ""} \
       ~{if (all_zip) then "--allzip" else ""} \
       ~{if (use_sam) then "--use_SAM" else ""} \
-      ~{if defined(type_run_options) then ("--task " +  '"' + type_run_options + '"') else ""} \
+      ~{if defined(type_analysis_run) then ("--task " +  '"' + type_analysis_run + '"') else ""} \
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
       ~{if defined(out_fmt) then ("--outfmt " +  '"' + out_fmt + '"') else ""} \
       ~{if defined(level) then ("--level " +  '"' + level + '"') else ""} \
@@ -46,11 +48,14 @@ task PhyloFlashComparepl {
       ~{if (long_tax_names) then "--long-taxnames" else ""} \
       ~{if defined(min_ntu_count) then ("--min-ntu-count " +  '"' + min_ntu_count + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     zip: "Comma-separated list of tar.gz archives from phyloFlash runs.\\nThese will be parsed to search for the\\n[LIBNAME].phyloFlash.NTUabundance.csv files within the archive,\\nto extract the NTU classifications. This assumes that the\\narchive filenames are named [LIBNAME].phyloFlash.tar.gz, and\\nthat the LIBNAME matches the contents of the archive."
     all_zip: "Use all phyloFlash tar.gz archives in the current folder (by\\nmatching filename *.phyloFlash.tar.gz) for a comparison run.\\nOverrides anything passed to option --zip."
     use_sam: "Ignore NTU abundance tables in CSV format, and recalculate the\\nNTU abundances from SAM files in the compressed tar.gz\\nphyloFlash archives. Useful if e.g. phyloFlash was originally\\ncalled to summarize the taxonomy at a higher level than you want\\nto use for the comparison.\\nOnly works if the tar.gz archives from phyloFlash runs are\\nspecified with the --zip option above.\\nDefault: No."
-    type_run_options: "Type of analysis to be run. Options: \\\"heatmap\\\", \\\"barplot\\\",\\n\\\"matrix\\\", \\\"ntu_table\\\" or a recognizable substring thereof.\\nSupply more than one option as comma- separated list.\\nDefault: None"
+    type_analysis_run: "Type of analysis to be run. Options: \\\"heatmap\\\", \\\"barplot\\\",\\n\\\"matrix\\\", \\\"ntu_table\\\" or a recognizable substring thereof.\\nSupply more than one option as comma- separated list.\\nDefault: None"
     out: "Prefix for output files.\\nDefault: \\\"test.phyloFlash_compare\\\""
     out_fmt: "Format for plots (tasks 'barplot' and 'heatmap' only). Options:\\n\\\"pdf\\\", \\\"png\\\"\\nDefault: \\\"pdf\\\""
     level: "Taxonomic level to perform the comparison. Must be an integer\\nbetween 1 and 7.\\nDefault: 4 ('Order')"
@@ -65,6 +70,7 @@ task PhyloFlashComparepl {
     cluster_tax_a: "Clustering method to use for clustering/sorting taxa. Options:\\n\\\"alpha\\\", \\\"ward\\\", \\\"single\\\", \\\"complete\\\", \\\"average\\\", \\\"mcquitty\\\",\\n\\\"median\\\", \\\"centroid\\\".\\nDefault: \\\"ward.D\\\""
     long_tax_names: "Do not shorten taxa names to two last groups"
     min_ntu_count: "Sum up NTUs with fewer counts into a pseudo-NTU \\\"Other\\\".\\nDefault: 50\\n"
+    barplot: "phyloFlash_compare.pl --csv"
     heat_map: "# phyloFlash tar.gz archives as input"
     format_dot: "--csv FILES\\nComma-separated list of NTU abundance tables from phyloFlash\\nruns. The files should be named\\n[LIBNAME].phyloFlash.NTUabundance.csv or\\n[LIBNAME].phyloFlash.NTUfull_abundance.csv"
   }

@@ -19,7 +19,7 @@ task BpSeqpartpl {
     String to
     String create
     String dump
-    File file
+    File var_file
     String names
     String through
     String var_output
@@ -40,7 +40,7 @@ task BpSeqpartpl {
       ~{to} \
       ~{create} \
       ~{dump} \
-      ~{file} \
+      ~{var_file} \
       ~{names} \
       ~{through} \
       ~{var_output} \
@@ -52,6 +52,9 @@ task BpSeqpartpl {
       ~{if defined(files_defaults_fasta) then ("-f " +  '"' + files_defaults_fasta + '"') else ""} \
       ~{if defined(directory_where_dump) then ("-o " +  '"' + directory_where_dump + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     files_create_partitioning: "of files to create through partitioning"
     help_message: "help message"
@@ -70,7 +73,7 @@ task BpSeqpartpl {
     to: ""
     create: ""
     dump: ""
-    file: ""
+    var_file: ""
     names: ""
     through: ""
     var_output: ""

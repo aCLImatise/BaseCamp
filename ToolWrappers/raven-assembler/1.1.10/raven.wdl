@@ -22,6 +22,9 @@ task Raven {
       ~{if (resume) then "--resume" else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     weaken: "use larger (k, w) when assembling highly accurate sequences"
     polishing_rounds: "default: 2\\nnumber of times racon is invoked"

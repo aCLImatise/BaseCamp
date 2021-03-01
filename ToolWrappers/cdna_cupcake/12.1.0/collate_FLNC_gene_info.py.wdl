@@ -22,6 +22,9 @@ task CollateFLNCGeneInfopy {
       ~{if defined(ded_up_orf_prefix) then ("--dedup_ORF_prefix " +  '"' + ded_up_orf_prefix + '"') else ""} \
       ~{if (no_extra_base) then "--no-extra-base" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     on_target_filename: "(Optional) on target information text"
     ded_up_orf_prefix: "(Optional) dedup-ed ORF group prefix, must have\\n<pre>.faa and <pre>.group.txt"

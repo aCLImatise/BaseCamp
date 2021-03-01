@@ -3,7 +3,7 @@ id: expMatrixToBarchartBed_bedFile.cwl
 inputs:
 - id: in_auto_sql
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: --autoSql
 - id: in_exp_matrix_to_barchart_bed
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - expMatrixToBarchartBed

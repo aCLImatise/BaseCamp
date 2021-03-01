@@ -20,6 +20,9 @@ task CleanFastapy {
       ~{if (cap_seqs) then "--cap_seqs" else ""} \
       ~{if defined(fast_a_seqs) then ("--fasta_seqs " +  '"' + fast_a_seqs + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Print information during execution -- useful for\\ndebugging [default: False]"
     output_dir: "Output directory for filtered fasta file(s). [default:\\n.]"

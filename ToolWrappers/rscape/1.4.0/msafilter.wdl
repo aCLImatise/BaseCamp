@@ -7,9 +7,9 @@ task Msafilter {
     Int? window
     Int? slide
     Boolean? one_msa
-    Float? filter_seqs_xseqcons
-    Float? var_6
-    Float? var_7
+    Float? filter_xseqcons_residues
+    Float? require_d_
+    Float? require_seqs_
     Int? t_start
     Int? tend
     Boolean? consensus
@@ -33,9 +33,9 @@ task Msafilter {
       ~{if defined(window) then ("--window " +  '"' + window + '"') else ""} \
       ~{if defined(slide) then ("--slide " +  '"' + slide + '"') else ""} \
       ~{if (one_msa) then "--onemsa" else ""} \
-      ~{if defined(filter_seqs_xseqcons) then ("-F " +  '"' + filter_seqs_xseqcons + '"') else ""} \
-      ~{if defined(var_6) then ("-I " +  '"' + var_6 + '"') else ""} \
-      ~{if defined(var_7) then ("-i " +  '"' + var_7 + '"') else ""} \
+      ~{if defined(filter_xseqcons_residues) then ("-F " +  '"' + filter_xseqcons_residues + '"') else ""} \
+      ~{if defined(require_d_) then ("-I " +  '"' + require_d_ + '"') else ""} \
+      ~{if defined(require_seqs_) then ("-i " +  '"' + require_seqs_ + '"') else ""} \
       ~{if defined(t_start) then ("--tstart " +  '"' + t_start + '"') else ""} \
       ~{if defined(tend) then ("--tend " +  '"' + tend + '"') else ""} \
       ~{if (consensus) then "--consensus" else ""} \
@@ -50,15 +50,18 @@ task Msafilter {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     outdir: ": specify a directory for all output files"
     _be_verbose: ": be verbose"
     window: ": window size  (n>0)"
     slide: ": window slide  [50]  (n>0)"
     one_msa: ": if file has more than one msa, analyze only the first one"
-    filter_seqs_xseqcons: ": filter out seqs <x*seq_cons residues  (0<x<=1.0)"
-    var_6: ": require seqs to have < <x> id  [1.0]  (0<x<=1.0)"
-    var_7: ": require seqs to have >= <x> id  (0<=x<1.0)"
+    filter_xseqcons_residues: ": filter out seqs <x*seq_cons residues  (0<x<=1.0)"
+    require_d_: ": require seqs to have < <x> id  [1.0]  (0<x<=1.0)"
+    require_seqs_: ": require seqs to have >= <x> id  (0<=x<1.0)"
     t_start: ": min alignment position to analyze [1..alen]  (n>0)"
     tend: ": max alignment position to analyze [1..alen]  (n>0)"
     consensus: ": analyze only consensus (seq_cons) positions"

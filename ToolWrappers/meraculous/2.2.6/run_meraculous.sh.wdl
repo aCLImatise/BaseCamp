@@ -13,7 +13,6 @@ task RunMeraculoussh {
     Boolean? archive
     Boolean? cleanup_level
     Boolean? version__program
-    Boolean? resume_slash_restart
   }
   command <<<
     run_meraculous_sh \
@@ -27,9 +26,11 @@ task RunMeraculoussh {
       ~{if (stop) then "-stop" else ""} \
       ~{if (archive) then "-archive" else ""} \
       ~{if (cleanup_level) then "-cleanup_level" else ""} \
-      ~{if (version__program) then "-v" else ""} \
-      ~{if (resume_slash_restart) then "-resume/-restart" else ""}
+      ~{if (version__program) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config_config_file: "|config <config file>         : user config file"
     label: "<label>                : provide a label name for new runs ( Default: 'run' )"
@@ -42,7 +43,6 @@ task RunMeraculoussh {
     archive: ": save any old stage directories (valid only with -restart)"
     cleanup_level: "[0|1|2]          : decide how agressively the pipeline should clean up intermediate data ( Default: 1)\\n0 - do not delete any intermediate outputs (disk space footprint may be huge)\\n1 - delete files that are not used in any of the subsequent stages and that are generally not informative to the user\\n2 - delete files as soon as possible.  WARNING!!! You will not be able to rerun the\\nstages individually once they have completed!"
     version__program: "|version                      : about this program"
-    resume_slash_restart: ": If no directory is given, the most recently run dir. is used."
   }
   output {
     File out_stdout = stdout()

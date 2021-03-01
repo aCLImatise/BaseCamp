@@ -1,0 +1,544 @@
+&id001 !Command
+command:
+- gdc-client
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - gdc-client
+  - download
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: file_id
+    description: The GDC UUID of the file(s) to download
+  - !Positional
+    optional: false
+    position: 0
+    name: directory
+    description: -s server, --server server
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --debug
+    description: "Enable debug logging. If a failure occurs, the program\nwill stop."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --log-file
+    description: Save logs to file. Amount logged affected by --debug
+    args: !SimpleFlagArg
+      name: LOG_FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --color_off
+    description: Disable colored output
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --token-file
+    description: GDC API auth token file
+    args: !SimpleFlagArg
+      name: TOKEN_FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --dir
+    description: Directory to download files to. Defaults to current
+    args: !SimpleFlagArg
+      name: DIR
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-segment-md5sums
+    description: "Do not calculate inbound segment md5sums and/or do not\nverify md5sums\
+      \ on restart"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-file-md5sum
+    description: Do not verify file md5sum after download
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    - --n-processes
+    description: Number of client connections.
+    args: !SimpleFlagArg
+      name: N_PROCESSES
+  - !Flag
+    optional: true
+    synonyms:
+    - --http-chunk-size
+    - -c
+    description: Size in bytes of standard HTTP block size.
+    args: !SimpleFlagArg
+      name: HTTP_CHUNK_SIZE
+  - !Flag
+    optional: true
+    synonyms:
+    - --save-interval
+    description: "The number of chunks after which to flush state file.\nA lower save\
+      \ interval will result in more frequent\nprintout but lower performance."
+    args: !SimpleFlagArg
+      name: SAVE_INTERVAL
+  - !Flag
+    optional: true
+    synonyms:
+    - -k
+    - --no-verify
+    description: Perform insecure SSL connection and transfer
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-related-files
+    description: Do not download related files.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-annotations
+    description: Do not download annotations.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-auto-retry
+    description: Ask before retrying to download a file
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --retry-amount
+    description: Number of times to retry a download
+    args: !SimpleFlagArg
+      name: RETRY_AMOUNT
+  - !Flag
+    optional: true
+    synonyms:
+    - --wait-time
+    description: Amount of seconds to wait before retrying
+    args: !SimpleFlagArg
+      name: WAIT_TIME
+  - !Flag
+    optional: true
+    synonyms:
+    - --latest
+    description: Download latest version of a file if it exists
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --config
+    description: Path to INI-type config file
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    - --manifest
+    description: "GDC download manifest file\n"
+    args: !SimpleFlagArg
+      name: MANIFEST
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: gdc-client download [-h] [--debug] [--log-file LOG_FILE] [--color_off]\n\
+    \                           [-t TOKEN_FILE] [-d DIR] [-s server]\n           \
+    \                [--no-segment-md5sums] [--no-file-md5sum]\n                 \
+    \          [-n N_PROCESSES]\n                           [--http-chunk-size HTTP_CHUNK_SIZE]\n\
+    \                           [--save-interval SAVE_INTERVAL] [-k]\n           \
+    \                [--no-related-files] [--no-annotations]\n                   \
+    \        [--no-auto-retry] [--retry-amount RETRY_AMOUNT]\n                   \
+    \        [--wait-time WAIT_TIME] [--latest] [--config FILE]\n                \
+    \           [-m MANIFEST]\n                           [file_id [file_id ...]]\n\
+    \npositional arguments:\n  file_id               The GDC UUID of the file(s) to\
+    \ download\n\noptional arguments:\n  -h, --help            show this help message\
+    \ and exit\n  --debug               Enable debug logging. If a failure occurs,\
+    \ the program\n                        will stop.\n  --log-file LOG_FILE   Save\
+    \ logs to file. Amount logged affected by --debug\n  --color_off           Disable\
+    \ colored output\n  -t TOKEN_FILE, --token-file TOKEN_FILE\n                 \
+    \       GDC API auth token file\n  -d DIR, --dir DIR     Directory to download\
+    \ files to. Defaults to current\n                        directory\n  -s server,\
+    \ --server server\n                        The TCP server address server[:port]\n\
+    \  --no-segment-md5sums  Do not calculate inbound segment md5sums and/or do not\n\
+    \                        verify md5sums on restart\n  --no-file-md5sum      Do\
+    \ not verify file md5sum after download\n  -n N_PROCESSES, --n-processes N_PROCESSES\n\
+    \                        Number of client connections.\n  --http-chunk-size HTTP_CHUNK_SIZE,\
+    \ -c HTTP_CHUNK_SIZE\n                        Size in bytes of standard HTTP block\
+    \ size.\n  --save-interval SAVE_INTERVAL\n                        The number of\
+    \ chunks after which to flush state file.\n                        A lower save\
+    \ interval will result in more frequent\n                        printout but\
+    \ lower performance.\n  -k, --no-verify       Perform insecure SSL connection\
+    \ and transfer\n  --no-related-files    Do not download related files.\n  --no-annotations\
+    \      Do not download annotations.\n  --no-auto-retry       Ask before retrying\
+    \ to download a file\n  --retry-amount RETRY_AMOUNT\n                        Number\
+    \ of times to retry a download\n  --wait-time WAIT_TIME\n                    \
+    \    Amount of seconds to wait before retrying\n  --latest              Download\
+    \ latest version of a file if it exists\n  --config FILE         Path to INI-type\
+    \ config file\n  -m MANIFEST, --manifest MANIFEST\n                        GDC\
+    \ download manifest file\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/gdc-client:1.6.0--py_0
+- !Command
+  command:
+  - gdc-client
+  - upload
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: file_id
+    description: The GDC UUID of the file(s) to upload
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --debug
+    description: "Enable debug logging. If a failure occurs, the program\nwill stop."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --log-file
+    description: Save logs to file. Amount logged affected by --debug
+    args: !SimpleFlagArg
+      name: LOG_FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --color_off
+    description: Disable colored output
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --token-file
+    description: GDC API auth token file
+    args: !SimpleFlagArg
+      name: TOKEN_FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --project-id
+    - -p
+    description: The project ID that owns the file
+    args: !SimpleFlagArg
+      name: PROJECT_ID
+  - !Flag
+    optional: true
+    synonyms:
+    - --path
+    - -f
+    description: directory path to find file
+    args: !SimpleFlagArg
+      name: path
+  - !Flag
+    optional: true
+    synonyms:
+    - --upload-id
+    - -u
+    description: Multipart upload id
+    args: !SimpleFlagArg
+      name: UPLOAD_ID
+  - !Flag
+    optional: true
+    synonyms:
+    - --insecure
+    - -k
+    description: Allow connections to server without certs
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --server
+    - -s
+    description: GDC API server address
+    args: !SimpleFlagArg
+      name: SERVER
+  - !Flag
+    optional: true
+    synonyms:
+    - --part-size
+    description: DEPRECATED in favor of [--upload-part-size]
+    args: !SimpleFlagArg
+      name: PART_SIZE
+  - !Flag
+    optional: true
+    synonyms:
+    - --upload-part-size
+    - -c
+    description: Part size for multipart upload
+    args: !SimpleFlagArg
+      name: UPLOAD_PART_SIZE
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    - --n-processes
+    description: Number of client connections
+    args: !SimpleFlagArg
+      name: N_PROCESSES
+  - !Flag
+    optional: true
+    synonyms:
+    - --disable-multipart
+    description: Disable multipart upload
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --abort
+    description: Abort previous multipart upload
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --resume
+    - -r
+    description: Resume previous multipart upload
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --delete
+    description: Delete an uploaded file
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --manifest
+    - -m
+    description: Manifest which describes files to be uploaded
+    args: !SimpleFlagArg
+      name: MANIFEST
+  - !Flag
+    optional: true
+    synonyms:
+    - --config
+    description: Path to INI-type config file
+    args: !SimpleFlagArg
+      name: FILE
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: gdc-client upload [-h] [--debug] [--log-file LOG_FILE] [--color_off]\n\
+    \                         [-t TOKEN_FILE] [--project-id PROJECT_ID]\n        \
+    \                 [--path path] [--upload-id UPLOAD_ID] [--insecure]\n       \
+    \                  [--server SERVER] [--part-size PART_SIZE]\n               \
+    \          [--upload-part-size UPLOAD_PART_SIZE]\n                         [-n\
+    \ N_PROCESSES] [--disable-multipart] [--abort]\n                         [--resume]\
+    \ [--delete] [--manifest MANIFEST]\n                         [--config FILE]\n\
+    \                         [file_id [file_id ...]]\n\npositional arguments:\n \
+    \ file_id               The GDC UUID of the file(s) to upload\n\noptional arguments:\n\
+    \  -h, --help            show this help message and exit\n  --debug          \
+    \     Enable debug logging. If a failure occurs, the program\n               \
+    \         will stop.\n  --log-file LOG_FILE   Save logs to file. Amount logged\
+    \ affected by --debug\n  --color_off           Disable colored output\n  -t TOKEN_FILE,\
+    \ --token-file TOKEN_FILE\n                        GDC API auth token file\n \
+    \ --project-id PROJECT_ID, -p PROJECT_ID\n                        The project\
+    \ ID that owns the file\n  --path path, -f path  directory path to find file\n\
+    \  --upload-id UPLOAD_ID, -u UPLOAD_ID\n                        Multipart upload\
+    \ id\n  --insecure, -k        Allow connections to server without certs\n  --server\
+    \ SERVER, -s SERVER\n                        GDC API server address\n  --part-size\
+    \ PART_SIZE\n                        DEPRECATED in favor of [--upload-part-size]\n\
+    \  --upload-part-size UPLOAD_PART_SIZE, -c UPLOAD_PART_SIZE\n                \
+    \        Part size for multipart upload\n  -n N_PROCESSES, --n-processes N_PROCESSES\n\
+    \                        Number of client connections\n  --disable-multipart \
+    \  Disable multipart upload\n  --abort               Abort previous multipart\
+    \ upload\n  --resume, -r          Resume previous multipart upload\n  --delete\
+    \              Delete an uploaded file\n  --manifest MANIFEST, -m MANIFEST\n \
+    \                       Manifest which describes files to be uploaded\n  --config\
+    \ FILE         Path to INI-type config file\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/gdc-client:1.6.0--py_0
+- &id003 !Command
+  command:
+  - gdc-client
+  - settings
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --config
+    description: "Path to INI-type config file. See what settings will look\nlike\
+      \ if a custom config file is used"
+    args: !SimpleFlagArg
+      name: FILE
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - gdc-client
+    - settings
+    - download
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: download
+      description: download data from the GDC
+    - !Positional
+      optional: false
+      position: 1
+      name: upload
+      description: upload data to the GDC
+    - !Positional
+      optional: false
+      position: 2
+      name: settings
+      description: display default settings
+    named: []
+    parent: *id003
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: show this help message and exit
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag: !Flag
+      optional: true
+      synonyms:
+      - --version
+      description: show program's version number and exit
+      args: !EmptyFlagArg {}
+    help_text: "usage: gdc-client [-h] [--version] {download,upload,settings} ...\n\
+      \nThe Genomic Data Commons Command Line Client\n\noptional arguments:\n  -h,\
+      \ --help            show this help message and exit\n  --version           \
+      \  show program's version number and exit\n\ncommands:\n  {download,upload,settings}\n\
+      \                        for more information, specify -h after a command\n\
+      \    download            download data from the GDC\n    upload            \
+      \  upload data to the GDC\n    settings            display default settings\n\
+      \ngdc-client error: unrecognized arguments: --usage\n"
+    generated_using: &id004
+    - --usage
+    docker_image: quay.io/biocontainers/gdc-client:1.6.0--py_0
+  - !Command
+    command:
+    - gdc-client
+    - settings
+    - upload
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: download
+      description: download data from the GDC
+    - !Positional
+      optional: false
+      position: 1
+      name: upload
+      description: upload data to the GDC
+    - !Positional
+      optional: false
+      position: 2
+      name: settings
+      description: display default settings
+    named: []
+    parent: *id003
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: show this help message and exit
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag: !Flag
+      optional: true
+      synonyms:
+      - --version
+      description: show program's version number and exit
+      args: !EmptyFlagArg {}
+    help_text: "usage: gdc-client [-h] [--version] {download,upload,settings} ...\n\
+      \nThe Genomic Data Commons Command Line Client\n\noptional arguments:\n  -h,\
+      \ --help            show this help message and exit\n  --version           \
+      \  show program's version number and exit\n\ncommands:\n  {download,upload,settings}\n\
+      \                        for more information, specify -h after a command\n\
+      \    download            download data from the GDC\n    upload            \
+      \  upload data to the GDC\n    settings            display default settings\n\
+      \ngdc-client error: unrecognized arguments: --usage\n"
+    generated_using: *id004
+    docker_image: quay.io/biocontainers/gdc-client:1.6.0--py_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: gdc-client settings [-h] [--config FILE] {download,upload} ...\n\
+    \noptional arguments:\n  -h, --help         show this help message and exit\n\
+    \  --config FILE      Path to INI-type config file. See what settings will look\n\
+    \                     like if a custom config file is used\n\nSettings to display:\n\
+    \  {download,upload}\n    download         Display download settings\n    upload\
+    \           Display upload settings\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/gdc-client:1.6.0--py_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: gdc-client [-h] [--version] {download,upload,settings} ...\n\n\
+  The Genomic Data Commons Command Line Client\n\noptional arguments:\n  -h, --help\
+  \            show this help message and exit\n  --version             show program's\
+  \ version number and exit\n\ncommands:\n  {download,upload,settings}\n         \
+  \               for more information, specify -h after a command\n    download \
+  \           download data from the GDC\n    upload              upload data to the\
+  \ GDC\n    settings            display default settings\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/gdc-client:1.6.0--py_0

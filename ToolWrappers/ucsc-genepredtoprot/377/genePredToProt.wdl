@@ -22,6 +22,9 @@ task GenePredToProt {
       ~{if (includes_top) then "-includeStop" else ""} \
       ~{if (star_for_in_frames_tops) then "-starForInframeStops" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cds_fa: "- output FASTA with CDS that was used to generate protein.\\nThis will not include dropped partial codons."
     protid_suffix: "- add this string to the end of the name for protein FASTA"

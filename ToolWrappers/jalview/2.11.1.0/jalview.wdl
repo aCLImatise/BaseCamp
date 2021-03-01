@@ -32,13 +32,13 @@ task Jalview {
     String? fetch_from
     File? groovy
     Boolean? open
-    File? file
+    File? var_file
     String? output_format
     String? output_file
   }
   command <<<
     jalview \
-      ~{file} \
+      ~{var_file} \
       ~{output_format} \
       ~{output_file} \
       ~{if (no_display) then "-nodisplay" else ""} \
@@ -72,6 +72,9 @@ task Jalview {
       ~{if defined(groovy) then ("-groovy " +  '"' + groovy + '"') else ""} \
       ~{if (open) then "-open" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_display: "Run Jalview without User Interface."
     props: "Use the given Jalview properties file instead of users default."
@@ -103,7 +106,7 @@ task Jalview {
     fetch_from: "Query nickname for features for the alignments and display them."
     groovy: "Execute groovy script in FILE, after all other arguments have been processed (if FILE is the text 'STDIN' then the file will be read from STDIN)"
     open: ""
-    file: ""
+    var_file: ""
     output_format: ""
     output_file: ""
   }

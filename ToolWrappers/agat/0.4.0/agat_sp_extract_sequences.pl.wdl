@@ -18,7 +18,7 @@ task AgatSpExtractSequencespl {
     Boolean? clean_internal_stop
     Boolean? clean_final_stop
     Boolean? remove_orf_offset
-    File? string_output_fasta_file
+    File? string_output_file
     String agat_sp_extract_sequences_do_tpl
   }
   command <<<
@@ -40,8 +40,11 @@ task AgatSpExtractSequencespl {
       ~{if defined(clean_internal_stop) then ("--clean_internal_stop " +  '"' + clean_internal_stop + '"') else ""} \
       ~{if defined(clean_final_stop) then ("--clean_final_stop " +  '"' + clean_final_stop + '"') else ""} \
       ~{if defined(remove_orf_offset) then ("--remove_orf_offset " +  '"' + remove_orf_offset + '"') else ""} \
-      ~{if defined(string_output_fasta_file) then ("--output " +  '"' + string_output_fasta_file + '"') else ""}
+      ~{if defined(string_output_file) then ("--output " +  '"' + string_output_file + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gff: "String - Input GTF/GFF file."
     fast_a: "String - Input fasta file."
@@ -59,11 +62,11 @@ task AgatSpExtractSequencespl {
     clean_internal_stop: "Boolean - The Clean Internal Stop option allows replacing the\\ntranslation of the stop codons present among the sequence that\\nis represented by the <*> character by <X>. Indeed the <*>\\ncharacter can be disturbing for many programs (e.g interproscan)"
     clean_final_stop: "Boolean - The Clean Final Stop option allows removing the\\ntranslation of the final stop codons that is represented by the\\n<*> character. This character can be disturbing for many\\nprograms (e.g interproscan)"
     remove_orf_offset: "Boolean - CDS can start with a phase different from 0 when a\\ngene model is fragmented. When asking for protein translation\\nthis (start) offset is trimmed out automatically. But when you\\nextract CDS dna sequences, this (start) offset is not removed by\\ndefault. To remove it activate this option. If --up or --do\\noption are used too, the (start) offset is trimmed first, then\\nis added the piece of sequence asked for."
-    string_output_fasta_file: "String - Output fasta file. If no output file is specified, the\\noutput will be written to STDOUT."
+    string_output_file: "String - Output fasta file. If no output file is specified, the\\noutput will be written to STDOUT."
     agat_sp_extract_sequences_do_tpl: "Description:"
   }
   output {
     File out_stdout = stdout()
-    File out_string_output_fasta_file = "${in_string_output_fasta_file}"
+    File out_string_output_file = "${in_string_output_file}"
   }
 }

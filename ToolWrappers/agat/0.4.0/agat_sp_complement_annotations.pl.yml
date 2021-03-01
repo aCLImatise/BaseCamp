@@ -3,21 +3,25 @@ command:
 - agat_sp_complement_annotations.pl
 positional:
 - !Positional
-  description: 'Description:'
+  optional: false
   position: 0
   name: agat_sp_complement_annotations.pl
-  optional: false
+  description: 'Description:'
 named:
 - !Flag
-  description: Input GTF/GFF file used as reference.
+  optional: true
   synonyms:
   - --ref
   - -r
   - -i
+  description: Input GTF/GFF file used as reference.
   args: !SimpleFlagArg
     name: or
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --add
+  - -a
   description: "Annotation(s) file you would like to use to complement the\nreference\
     \ annotation. You can specify as much file you want like\nso: -a addfile1 -a addfile2\
     \ -a addfile3 /!\\ The order you\nprovide these files matter. Once the reference\
@@ -25,43 +29,39 @@ named:
     reference that will be complemented by file2 etc. /!\\ The result\nwith -a addfile1\
     \ -a addfile2 will differ to the result from -a\naddfile2 -a addfile1. So, be\
     \ aware of what you want if you use\nseveral addfiles."
-  synonyms:
-  - --add
-  - -a
   args: !SimpleFlagArg
     name: or
-  optional: true
 - !Flag
-  description: "Option to keep the non-overlping gene only if the CDS size (in\nnucleotide)\
-    \ is over the minimum size defined. Default = 0 that\nmeans all of them are kept."
+  optional: true
   synonyms:
   - --size_min
   - -s
+  description: "Option to keep the non-overlping gene only if the CDS size (in\nnucleotide)\
+    \ is over the minimum size defined. Default = 0 that\nmeans all of them are kept."
   args: !SimpleFlagArg
     name: or
-  optional: true
 - !Flag
-  description: "Output gff3 containing the reference annotation with all the\nnon-overlapping\
-    \ newly added genes from addfiles.gff."
+  optional: true
   synonyms:
   - --out
   - --output
   - --outfile
   - -o
+  description: "Output gff3 containing the reference annotation with all the\nnon-overlapping\
+    \ newly added genes from addfiles.gff."
   args: !SimpleFlagArg
     name: or
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Display this helpful text.
+  optional: true
   synonyms:
   - --help
   - -h
+  description: Display this helpful text.
   args: !SimpleFlagArg
     name: or
-  optional: true
 usage_flag:
 version_flag:
 help_text: "\n ------------------------------------------------------------------------------\n\
@@ -113,3 +113,4 @@ help_text: "\n -----------------------------------------------------------------
   \n"
 generated_using:
 - --help
+docker_image:

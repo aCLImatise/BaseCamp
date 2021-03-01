@@ -1,0 +1,207 @@
+!Command
+command:
+- RNA2Dfold
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: program
+  description: "--noconv                Do not automatically substitude nucleotide\
+    \ \"T\"\nwith \"U\"\n(default=off)"
+- !Positional
+  optional: false
+  position: 0
+  name: molecule.
+  description: (default=off)
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --detailed-help
+  description: "Print help, including all details and hidden\noptions, and exit"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --numThreads
+  description: "Set the number of threads used for calculations\n(only available when\
+    \ compiled with OpenMP\nsupport)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --partfunc
+  description: "calculate partition function and thus, Boltzmann\nprobabilities and\
+    \ Gibbs free energy\n(default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --stochBT
+  description: "backtrack a certain number of Boltzmann samples\nfrom the appropriate\
+    \ k,l neighborhood(s)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --neighborhood
+  description: ":<l>  backtrack structures from certain\nk,l-neighborhood only, can\
+    \ be specified\nmultiple times (<k>:<l>,<m>:<n>,...)"
+  args: !SimpleFlagArg
+    name: k
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --pfScale
+  description: scaling factor for pf to avoid overflows
+  args: !SimpleFlagArg
+    name: DOUBLE
+- !Flag
+  optional: true
+  synonyms:
+  - --noBT
+  description: "do not backtrack structures, calculate energy\ncontributions only\n\
+    (default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --circ
+  description: Assume a circular (instead of linear) RNA
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --temp
+  description: "Rescale energy parameters to a temperature of\ntemp C. Default is\
+    \ 37C."
+  args: !SimpleFlagArg
+    name: DOUBLE
+- !Flag
+  optional: true
+  synonyms:
+  - -K
+  - --maxDist1
+  description: maximum distance to first reference structure
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  - --maxDist2
+  description: maximum distance to second reference structure
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - '-4'
+  - --noTetra
+  description: "Do not include special tabulated stabilizing\nenergies for tri-, tetra-\
+    \ and hexaloop\nhairpins. Mostly for testing.\n(default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -P
+  - --paramFile
+  description: "Read energy parameters from paramfile, instead of\nusing the default\
+    \ parameter set."
+  args: !SimpleFlagArg
+    name: paramfile
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --dangles
+  description: "How to treat \"dangling end\" energies for bases\nadjacent to helices\
+    \ in free ends and\nmulti-loops\n(possible values=\"0\", \"2\" default=`2')"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --noGU
+  description: "Do not allow GU pairs\n(default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --noClosingGU
+  description: "Do not allow GU pairs at the end of helices\n(default=off)"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Print help and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Print version and exit
+  args: !EmptyFlagArg {}
+help_text: "Usage: RNA2Dfold [OPTION]...\nCompute MFE structure, partition function\
+  \ and representative sample structures\nof k,l neighborhoods\n\nThe program partitions\
+  \ the secondary structure space into (basepair)distance\nclasses according to two\
+  \ fixed reference structures. It expects a sequence and\ntwo secondary structures\
+  \ in dot-bracket notation as its inputs. For each\ndistance class, the MFE representative,\
+  \ Boltzmann probabilities and Gibbs free\nenergy is computed. Additionally, a stochastic\
+  \ backtracking routine allows one\nto produce samples of representative suboptimal\
+  \ secondary structures from each\npartition\n\n\n\n  -h, --help                \
+  \  Print help and exit\n      --detailed-help         Print help, including all\
+  \ details and hidden\n                                options, and exit\n  -V, --version\
+  \               Print version and exit\n\nGeneral Options:\n  Below are command\
+  \ line options which alter the general behavior of this\n  program\n\n\n      --noconv\
+  \                Do not automatically substitude nucleotide \"T\"\n            \
+  \                    with \"U\"\n\n                                  (default=off)\n\
+  \  -j, --numThreads=INT        Set the number of threads used for calculations\n\
+  \                                (only available when compiled with OpenMP\n   \
+  \                             support)\n\n\n\nAlgorithms:\n  -p, --partfunc    \
+  \          calculate partition function and thus, Boltzmann\n                  \
+  \              probabilities and Gibbs free energy\n\n                         \
+  \         (default=off)\n      --stochBT=INT           backtrack a certain number\
+  \ of Boltzmann samples\n                                from the appropriate k,l\
+  \ neighborhood(s)\n\n\n      --neighborhood=<k>:<l>  backtrack structures from certain\n\
+  \                                k,l-neighborhood only, can be specified\n     \
+  \                           multiple times (<k>:<l>,<m>:<n>,...)\n\n\n  -S, --pfScale=DOUBLE\
+  \        scaling factor for pf to avoid overflows\n\n\n      --noBT            \
+  \      do not backtrack structures, calculate energy\n                         \
+  \       contributions only\n\n                                  (default=off)\n\
+  \  -c, --circ                  Assume a circular (instead of linear) RNA\n     \
+  \                           molecule.\n\n                                  (default=off)\n\
+  \nModel Details:\n  -T, --temp=DOUBLE           Rescale energy parameters to a temperature\
+  \ of\n                                temp C. Default is 37C.\n\n\n  -K, --maxDist1=INT\
+  \          maximum distance to first reference structure\n  -L, --maxDist2=INT \
+  \         maximum distance to second reference structure\n  -4, --noTetra      \
+  \         Do not include special tabulated stabilizing\n                       \
+  \         energies for tri-, tetra- and hexaloop\n                             \
+  \   hairpins. Mostly for testing.\n\n                                  (default=off)\n\
+  \  -P, --paramFile=paramfile   Read energy parameters from paramfile, instead of\n\
+  \                                using the default parameter set.\n\n  -d, --dangles=INT\
+  \           How to treat \"dangling end\" energies for bases\n                 \
+  \               adjacent to helices in free ends and\n                         \
+  \       multi-loops\n                                  (possible values=\"0\", \"\
+  2\" default=`2')\n      --noGU                  Do not allow GU pairs\n\n      \
+  \                            (default=off)\n      --noClosingGU           Do not\
+  \ allow GU pairs at the end of helices\n\n                                  (default=off)\n\
+  \nIf in doubt our program is right, nature is at fault.\nComments should be sent\
+  \ to rna@tbi.univie.ac.at.\n\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/viennarna:2.4.17--py36hd181a71_0

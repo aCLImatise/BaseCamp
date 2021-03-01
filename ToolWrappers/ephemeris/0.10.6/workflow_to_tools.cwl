@@ -8,13 +8,13 @@ inputs:
     prefix: --workflow
 - id: in_output_file
   doc: The output file with a yml tool list
-  type: File
+  type: File?
   inputBinding:
     prefix: --output-file
 - id: in_panel_label
   doc: "The name of the panel where the tools will show up in\nGalaxy.If not specified:\
     \ \"Tools from workflows\""
-  type: string
+  type: string?
   inputBinding:
     prefix: --panel_label
 - id: in_options
@@ -28,9 +28,10 @@ outputs:
   type: stdout
 - id: out_output_file
   doc: The output file with a yml tool list
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output_file)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - workflow-to-tools

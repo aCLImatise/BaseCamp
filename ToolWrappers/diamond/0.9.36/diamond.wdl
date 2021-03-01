@@ -150,6 +150,9 @@ task Diamond {
       ~{if (forward_only) then "--forwardonly" else ""} \
       ~{if (seq) then "--seq" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threads: "(-p)           number of CPU threads"
     db: "(-d)                database file"

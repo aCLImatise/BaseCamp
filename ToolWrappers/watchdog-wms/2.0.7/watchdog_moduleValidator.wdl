@@ -4,6 +4,9 @@ task WatchdogmoduleValidator {
   command <<<
     watchdog_moduleValidator
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

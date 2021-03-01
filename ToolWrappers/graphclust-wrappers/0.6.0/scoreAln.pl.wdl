@@ -14,6 +14,9 @@ task ScoreAlnpl {
       ~{if (detailed_output_details) then "-o" else ""} \
       ~{if (which_score_) then "-s" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     an_alignment_file: "An alignment file                       [REQUIRED]"
     the_format_alignment: "The format of the alignment             [REQUIRED]\\n[CLUSTALW|TBA|MAF]"

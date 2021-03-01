@@ -26,6 +26,9 @@ task IgdiscoverGroup {
       ~{if defined(barcode_length) then ("--barcode-length " +  '"' + barcode_length + '"') else ""} \
       ~{if defined(json) then ("--json " +  '"' + json + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     real_cdr_three: "In addition to barcode, group sequences by real CDR3\\n(detected with regex)."
     pseudo_cdr_three: "[START:END]\\nIn addition to barcode, group sequences by pseudo\\nCDR3. If START:END is omitted, use -80:-60."

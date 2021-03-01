@@ -11,9 +11,9 @@ task PlanemoWorkflowEdit {
     Boolean? skip_v_env
     Boolean? no_cache_galaxy
     Boolean? no_cleanup
-    Boolean? docker
+    Boolean? no_docker
     String? docker_cmd
-    Boolean? docker_sudo
+    Boolean? no_docker_sudo
     String? docker_host
     String? docker_sudo_cmd
     Boolean? mulled_containers
@@ -36,24 +36,32 @@ task PlanemoWorkflowEdit {
     Boolean? cond_a_use_local
     Boolean? cond_a_dependency_resolution
     Boolean? cond_a_copy_dependencies
-    Boolean? cond_a_auto_install
-    Boolean? cond_a_auto_in_it
+    Boolean? no_cond_a_auto_install
+    Boolean? no_cond_a_auto_in_it
     String? profile
     Boolean? postgres
     Boolean? database_type
     File? postgres_psql_path
     String? postgres_database_user
     String? database_connection
-    File? shed_tool_conf
-    String galaxy_dot
+    Directory? shed_tool_path
+    Boolean? no_galaxy_single_user
+    Boolean? daemon
+    File? pid_file
+    Boolean? ignore_dependency_problems
+    String text_email_address
     String resolvers_dot
     String commands_dot
+    String _shedtoolconf_text
+    String executing_dot
   }
   command <<<
     planemo workflow_edit \
-      ~{galaxy_dot} \
+      ~{text_email_address} \
       ~{resolvers_dot} \
       ~{commands_dot} \
+      ~{_shedtoolconf_text} \
+      ~{executing_dot} \
       ~{if defined(galaxy_root) then ("--galaxy_root " +  '"' + galaxy_root + '"') else ""} \
       ~{if (galaxy_python_version) then "--galaxy_python_version" else ""} \
       ~{if defined(extra_tools) then ("--extra_tools " +  '"' + extra_tools + '"') else ""} \
@@ -63,9 +71,9 @@ task PlanemoWorkflowEdit {
       ~{if (skip_v_env) then "--skip_venv" else ""} \
       ~{if (no_cache_galaxy) then "--no_cache_galaxy" else ""} \
       ~{if (no_cleanup) then "--no_cleanup" else ""} \
-      ~{if (docker) then "--docker" else ""} \
+      ~{if (no_docker) then "--no_docker" else ""} \
       ~{if defined(docker_cmd) then ("--docker_cmd " +  '"' + docker_cmd + '"') else ""} \
-      ~{if (docker_sudo) then "--docker_sudo" else ""} \
+      ~{if (no_docker_sudo) then "--no_docker_sudo" else ""} \
       ~{if defined(docker_host) then ("--docker_host " +  '"' + docker_host + '"') else ""} \
       ~{if defined(docker_sudo_cmd) then ("--docker_sudo_cmd " +  '"' + docker_sudo_cmd + '"') else ""} \
       ~{if (mulled_containers) then "--mulled_containers" else ""} \
@@ -88,16 +96,23 @@ task PlanemoWorkflowEdit {
       ~{if (cond_a_use_local) then "--conda_use_local" else ""} \
       ~{if (cond_a_dependency_resolution) then "--conda_dependency_resolution" else ""} \
       ~{if (cond_a_copy_dependencies) then "--conda_copy_dependencies" else ""} \
-      ~{if (cond_a_auto_install) then "--conda_auto_install" else ""} \
-      ~{if (cond_a_auto_in_it) then "--conda_auto_init" else ""} \
+      ~{if (no_cond_a_auto_install) then "--no_conda_auto_install" else ""} \
+      ~{if (no_cond_a_auto_in_it) then "--no_conda_auto_init" else ""} \
       ~{if defined(profile) then ("--profile " +  '"' + profile + '"') else ""} \
       ~{if (postgres) then "--postgres" else ""} \
       ~{if (database_type) then "--database_type" else ""} \
       ~{if defined(postgres_psql_path) then ("--postgres_psql_path " +  '"' + postgres_psql_path + '"') else ""} \
       ~{if defined(postgres_database_user) then ("--postgres_database_user " +  '"' + postgres_database_user + '"') else ""} \
       ~{if defined(database_connection) then ("--database_connection " +  '"' + database_connection + '"') else ""} \
-      ~{if defined(shed_tool_conf) then ("--shed_tool_conf " +  '"' + shed_tool_conf + '"') else ""}
+      ~{if defined(shed_tool_path) then ("--shed_tool_path " +  '"' + shed_tool_path + '"') else ""} \
+      ~{if (no_galaxy_single_user) then "--no_galaxy_single_user" else ""} \
+      ~{if (daemon) then "--daemon" else ""} \
+      ~{if defined(pid_file) then ("--pid_file " +  '"' + pid_file + '"') else ""} \
+      ~{if (ignore_dependency_problems) then "--ignore_dependency_problems" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     galaxy_root: "Root of development galaxy directory to\\nexecute command with."
     galaxy_python_version: "[2|2.7|3|3.5|3.6|3.7|3.8]\\nPython version to start Galaxy under"
@@ -108,9 +123,9 @@ task PlanemoWorkflowEdit {
     skip_v_env: "Do not create or source a virtualenv\\nenvironment for Galaxy, this should be used\\nor instance to preserve an externally\\nconfigured virtual environment or conda\\nenvironment."
     no_cache_galaxy: "Skip caching of Galaxy source and\\ndependencies obtained with --install_galaxy.\\nNot caching this results in faster downloads\\n(no git) - so is better on throw away\\ninstances such with TravisCI."
     no_cleanup: "Do not cleanup temp files created for and by"
-    docker: "/ --no_docker          Run Galaxy tools in Docker if enabled."
+    no_docker: "Run Galaxy tools in Docker if enabled."
     docker_cmd: "Command used to launch docker (defaults to\\ndocker)."
-    docker_sudo: "/ --no_docker_sudo\\nFlag to use sudo when running docker."
+    no_docker_sudo: "Flag to use sudo when running docker."
     docker_host: "Docker host to target when executing docker\\ncommands (defaults to localhost)."
     docker_sudo_cmd: "sudo command to use when --docker_sudo is\\nenabled (defaults to sudo)."
     mulled_containers: "Test tools against mulled containers (forces\\n--docker)."
@@ -133,18 +148,24 @@ task PlanemoWorkflowEdit {
     cond_a_use_local: "Use locally built packages while building\\nConda environments."
     cond_a_dependency_resolution: "Configure Galaxy to use only conda for\\ndependency resolution."
     cond_a_copy_dependencies: "Conda dependency resolution for Galaxy will\\ncopy dependencies instead of attempting to\\nlink them."
-    cond_a_auto_install: "/ --no_conda_auto_install\\nConda dependency resolution for Galaxy will\\nattempt to install requested but missing\\npackages."
-    cond_a_auto_in_it: "/ --no_conda_auto_init\\nConda dependency resolution for Galaxy will\\nauto install conda itself using miniconda if\\nnot availabe on conda_prefix."
+    no_cond_a_auto_install: "Conda dependency resolution for Galaxy will\\nattempt to install requested but missing\\npackages."
+    no_cond_a_auto_in_it: "Conda dependency resolution for Galaxy will\\nauto install conda itself using miniconda if\\nnot availabe on conda_prefix."
     profile: "Name of profile (created with the\\nprofile_create command) to use with this\\ncommand."
     postgres: "Use postgres database type."
     database_type: "[postgres|postgres_docker|sqlite|auto]\\nType of database to use for profile -\\n'auto', 'sqlite', 'postgres', and\\n'postgres_docker' are available options. Use\\npostgres to use an existing postgres server\\nyou user can access without a password via\\nthe psql command. Use postgres_docker to\\nhave Planemo manage a docker container\\nrunning postgres. Data with postgres_docker\\nis not yet persisted past when you restart\\nthe docker container launched by Planemo so\\nbe careful with this option."
     postgres_psql_path: "Name or or path to postgres client binary\\n(psql)."
     postgres_database_user: "Postgres username for managed development"
-    database_connection: "Database connection string to use for\\nGalaxy."
-    shed_tool_conf: "Location of shed tools conf file for Galaxy.\\n--shed_tool_path TEXT           Location of shed tools directory for Galaxy.\\n--galaxy_single_user / --no_galaxy_single_user\\nBy default Planemo will configure Galaxy to\\nrun in single-user mode where there is just\\none user and this user is automatically\\nlogged it. Use --no_galaxy_single_user to\\nprevent Galaxy from running this way.\\n--daemon                        Serve Galaxy process as a daemon.\\n--pid_file FILE                 Location of pid file is executed with\\n--daemon.\\n--ignore_dependency_problems    When installing shed repositories for\\nworkflows, ignore dependency issues. These\\nlikely indicate a problem but in some cases\\nmay not prevent a workflow from successfully\\nexecuting.\\n--shed_install / --no_shed_install\\nBy default Planemo will attempt to install\\nrepositories needed for workflow testing.\\nThis may not be appropriate for production\\nservers and so this can disabled by calling\\nplanemo with --no_shed_install.\\n--help                          Show this message and exit.\\n"
-    galaxy_dot: "--galaxy_email TEXT             E-mail address to use when launching single-"
+    database_connection: "Database connection string to use for"
+    shed_tool_path: "Location of shed tools directory for Galaxy."
+    no_galaxy_single_user: "By default Planemo will configure Galaxy to\\nrun in single-user mode where there is just\\none user and this user is automatically\\nlogged it. Use --no_galaxy_single_user to\\nprevent Galaxy from running this way."
+    daemon: "Serve Galaxy process as a daemon."
+    pid_file: "Location of pid file is executed with"
+    ignore_dependency_problems: "When installing shed repositories for"
+    text_email_address: "--galaxy_email TEXT             E-mail address to use when launching single-"
     resolvers_dot: "--conda_prefix DIRECTORY        Conda prefix to use for conda dependency"
     commands_dot: "--conda_exec FILE               Location of conda executable."
+    _shedtoolconf_text: "--shed_tool_conf TEXT           Location of shed tools conf file for Galaxy."
+    executing_dot: "--shed_install / --no_shed_install"
   }
   output {
     File out_stdout = stdout()

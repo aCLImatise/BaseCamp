@@ -8,6 +8,9 @@ task CheckPeakFilepl {
     checkPeakFile_pl \
       ~{peak_slash_pos_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     peak_slash_pos_file: ""
   }

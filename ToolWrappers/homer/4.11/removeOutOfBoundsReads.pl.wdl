@@ -14,6 +14,9 @@ task RemoveOutOfBoundsReadspl {
       ~{if defined(chrom_sizes) then ("-chromSizes " +  '"' + chrom_sizes + '"') else ""} \
       ~{if (force) then "-force" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     chrom_sizes: "(specify the chromosome sizes, default: automatic)"
     force: "(force calculation of chromsome sizes for genome FASTA files)"

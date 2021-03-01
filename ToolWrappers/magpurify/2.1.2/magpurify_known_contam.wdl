@@ -20,6 +20,9 @@ task MagpurifyKnowncontam {
       ~{if defined(q_cov) then ("--qcov " +  '"' + q_cov + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     db: "Path to reference database. By default, the IMAGEN_DB\\nenvironmental variable is used (default: None)"
     pid: "Minimum % identity to reference (default: 98)"

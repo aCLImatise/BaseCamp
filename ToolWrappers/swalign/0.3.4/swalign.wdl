@@ -26,6 +26,9 @@ task Swalign {
       ~{if defined(summary) then ("-summary " +  '"' + summary + '"') else ""} \
       ~{if (use_region) then "-useregion" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     match_score_default: "Match score (default: 2)"
     mm: "Mismatch penalty (default: 1)"

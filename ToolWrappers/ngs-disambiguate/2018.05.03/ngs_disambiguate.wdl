@@ -2,29 +2,32 @@ version 1.0
 
 task NgsDisambiguate {
   input {
-    Boolean? _nosortdeprecated_option
-    String? _prefix_stringrequired
-    Directory? _outputdir_stringrequired
-    String? _aligner_stringaligner
-    String var_4
+    Boolean? no_sort
+    String? prefix
+    Directory? output_dir
+    Int? aligner
+    String a
   }
   command <<<
     ngs_disambiguate \
-      ~{var_4} \
-      ~{if (_nosortdeprecated_option) then "-d" else ""} \
-      ~{if defined(_prefix_stringrequired) then ("-s " +  '"' + _prefix_stringrequired + '"') else ""} \
-      ~{if defined(_outputdir_stringrequired) then ("-o " +  '"' + _outputdir_stringrequired + '"') else ""} \
-      ~{if defined(_aligner_stringaligner) then ("-a " +  '"' + _aligner_stringaligner + '"') else ""}
+      ~{a} \
+      ~{if (no_sort) then "--no-sort" else ""} \
+      ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
+      ~{if defined(output_dir) then ("--output-dir " +  '"' + output_dir + '"') else ""} \
+      ~{if defined(aligner) then ("--aligner " +  '"' + aligner + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    _nosortdeprecated_option: ",  --no-sort\\n(Deprecated option for backwards compatibility)"
-    _prefix_stringrequired: ",  --prefix <string>\\n(required)  Sample ID or name used as prefix. Do not include .bam"
-    _outputdir_stringrequired: ",  --output-dir <string>\\n(required)  Output directory"
-    _aligner_stringaligner: ",  --aligner <string>\\nAligner option {tophat(default),hisat2,bwa,star}"
-    var_4: ""
+    no_sort: "(Deprecated option for backwards compatibility)"
+    prefix: "(required)  Sample ID or name used as prefix. Do not include .bam"
+    output_dir: "(required)  Output directory"
+    aligner: "Aligner option {tophat(default),hisat2,bwa,star}"
+    a: ""
   }
   output {
     File out_stdout = stdout()
-    Directory out__outputdir_stringrequired = "${in__outputdir_stringrequired}"
+    Directory out_output_dir = "${in_output_dir}"
   }
 }

@@ -14,6 +14,9 @@ task Abyssjunction {
       ~{if defined(ignore) then ("--ignore " +  '"' + ignore + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ignore: "ignore junctions seen in FILE"
     verbose: "display verbose output"

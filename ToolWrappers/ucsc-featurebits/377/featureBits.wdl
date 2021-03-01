@@ -48,6 +48,9 @@ task FeatureBits {
       ~{if defined(bed_region_out) then ("-bedRegionOut " +  '"' + bed_region_out + '"') else ""} \
       ~{if (enrichment) then "-enrichment" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bed: "Put intersection into bed format. Can use stdout."
     fa: "Put sequence in intersection into .fa file"

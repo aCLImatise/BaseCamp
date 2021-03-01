@@ -16,6 +16,9 @@ task Gt {
       ~{if (seed) then "-seed" else ""} \
       ~{if defined(version) then ("-version " +  '"' + version + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     enter_interactive_mode: "enter interactive mode after executing 'tool' or 'script'"
     suppress_warnings: "suppress warnings"

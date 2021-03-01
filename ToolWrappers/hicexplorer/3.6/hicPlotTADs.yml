@@ -1,0 +1,155 @@
+!Command
+command:
+- hicPlotTADs
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --tracks
+  description: "File containing the instructions to plot the tracks.\nThe tracks.ini\
+    \ file can be genarated using the\n`make_tracks_file` program."
+  args: !SimpleFlagArg
+    name: TRACKS
+- !Flag
+  optional: true
+  synonyms:
+  - --region
+  description: Region to plot, the format is chr:start-end
+  args: !SimpleFlagArg
+    name: REGION
+- !Flag
+  optional: true
+  synonyms:
+  - --BED
+  description: "Instead of a region, a file containing the regions to\nplot, in BED\
+    \ format, can be given. If this is the\ncase, multiple files will be created using\
+    \ a prefix\nthe value of --outFileName"
+  args: !SimpleFlagArg
+    name: BED
+- !Flag
+  optional: true
+  synonyms:
+  - --width
+  description: figure width in centimeters (default is 40)
+  args: !SimpleFlagArg
+    name: WIDTH
+- !Flag
+  optional: true
+  synonyms:
+  - --height
+  description: "Figure height in centimeters. If not given, the figure\nheight is\
+    \ computed based on the heights of the tracks.\nIf given, the track height are\
+    \ proportionally scaled\nto match the desired figure height."
+  args: !SimpleFlagArg
+    name: HEIGHT
+- !Flag
+  optional: true
+  synonyms:
+  - --title
+  - -t
+  description: Plot title
+  args: !SimpleFlagArg
+    name: TITLE
+- !Flag
+  optional: true
+  synonyms:
+  - --outFileName
+  - -out
+  description: "File name to save the image, file prefix in case\nmultiple images\
+    \ are stored"
+  args: !SimpleFlagArg
+    name: OUTFILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --fontSize
+  description: "Font size for the labels of the plot (default is 0.3 *\nfigure width)"
+  args: !SimpleFlagArg
+    name: FONTSIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --dpi
+  description: "Resolution for the image in case the ouput is a raster\ngraphics image\
+    \ (e.g png, jpg) (default is 72)"
+  args: !SimpleFlagArg
+    name: DPI
+- !Flag
+  optional: true
+  synonyms:
+  - --trackLabelFraction
+  description: "By default the space dedicated to the track labels is\n0.05 of the\
+    \ plot width. This fraction can be changed\nwith this parameter if needed."
+  args: !SimpleFlagArg
+    name: TRACKLABELFRACTION
+- !Flag
+  optional: true
+  synonyms:
+  - --trackLabelHAlign
+  description: "By default, the horizontal alignment of the track\nlabels is left.\
+    \ This alignemnt can be changed to right\nor center."
+  args: !ChoiceFlagArg
+    choices: !!set
+      center:
+      right:
+      left:
+- !Flag
+  optional: true
+  synonyms:
+  - --decreasingXAxis
+  description: "By default, the x-axis is increasing. Use this option\nif you want\
+    \ to see all tracks with a decreasing\nx-axis."
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: hicPlotTADs --tracks tracks.ini --region chr1:1000000-4000000 -o\
+  \ image.png\n\nPlots genomic tracks on specified region(s). Citation : Ramirez et\
+  \ al. High-\nresolution TADs reveal DNA sequences underlying genome organization\
+  \ in flies.\nNature Communications (2018) doi:10.1038/s41467-017-02525-w\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  --tracks\
+  \ TRACKS       File containing the instructions to plot the tracks.\n          \
+  \              The tracks.ini file can be genarated using the\n                \
+  \        `make_tracks_file` program.\n  --region REGION       Region to plot, the\
+  \ format is chr:start-end\n  --BED BED             Instead of a region, a file containing\
+  \ the regions to\n                        plot, in BED format, can be given. If\
+  \ this is the\n                        case, multiple files will be created using\
+  \ a prefix\n                        the value of --outFileName\n  --width WIDTH\
+  \         figure width in centimeters (default is 40)\n  --height HEIGHT       Figure\
+  \ height in centimeters. If not given, the figure\n                        height\
+  \ is computed based on the heights of the tracks.\n                        If given,\
+  \ the track height are proportionally scaled\n                        to match the\
+  \ desired figure height.\n  --title TITLE, -t TITLE\n                        Plot\
+  \ title\n  --outFileName OUTFILENAME, -out OUTFILENAME\n                       \
+  \ File name to save the image, file prefix in case\n                        multiple\
+  \ images are stored\n  --fontSize FONTSIZE   Font size for the labels of the plot\
+  \ (default is 0.3 *\n                        figure width)\n  --dpi DPI        \
+  \     Resolution for the image in case the ouput is a raster\n                 \
+  \       graphics image (e.g png, jpg) (default is 72)\n  --trackLabelFraction TRACKLABELFRACTION\n\
+  \                        By default the space dedicated to the track labels is\n\
+  \                        0.05 of the plot width. This fraction can be changed\n\
+  \                        with this parameter if needed.\n  --trackLabelHAlign {left,right,center}\n\
+  \                        By default, the horizontal alignment of the track\n   \
+  \                     labels is left. This alignemnt can be changed to right\n \
+  \                       or center.\n  --decreasingXAxis     By default, the x-axis\
+  \ is increasing. Use this option\n                        if you want to see all\
+  \ tracks with a decreasing\n                        x-axis.\n  --version       \
+  \      show program's version number and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/hicexplorer:3.6--py_0

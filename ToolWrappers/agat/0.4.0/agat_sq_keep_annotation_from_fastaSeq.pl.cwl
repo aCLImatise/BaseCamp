@@ -3,23 +3,23 @@ id: agat_sq_keep_annotation_from_fastaSeq.pl.cwl
 inputs:
 - id: in_input
   doc: 'STRING: Input GTF/GFF file.'
-  type: File
+  type: File?
   inputBinding:
     prefix: --input
 - id: in_fast_a
   doc: 'STRING: fasta file.'
-  type: File
+  type: File?
   inputBinding:
     prefix: --fasta
 - id: in_verbose
   doc: For verbosity
-  type: string
+  type: string?
   inputBinding:
     prefix: --verbose
 - id: in_output
   doc: "STRING: Output file. If no output file is specified, the output\nwill be written\
     \ to STDOUT. The result is in tabulate format."
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_agat_sq_keep_annotation_from_fast_as_eq_do_tpl
@@ -41,9 +41,10 @@ outputs:
 - id: out_output
   doc: "STRING: Output file. If no output file is specified, the output\nwill be written\
     \ to STDOUT. The result is in tabulate format."
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - agat_sq_keep_annotation_from_fastaSeq.pl

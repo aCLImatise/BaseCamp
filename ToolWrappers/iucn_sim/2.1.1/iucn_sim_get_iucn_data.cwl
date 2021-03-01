@@ -10,7 +10,7 @@ inputs:
     \ Tip: Use precompiled\ngroup for faster processing and in case you don't have\n\
     an IUCN key (see available groups at github.com/tobias\nhofmann88/iucn_extinction_simulator/data/precompiled/i\n\
     ucn_history/ or request specific groups to be added:\ntobias.andermann@bioenv.gu.se)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --reference_group
 - id: in_reference_rank
@@ -19,7 +19,7 @@ inputs:
     provide 'order,order'. Has to be at least 'Family' or\nabove. This flag is not\
     \ needed if species list is\nprovided as reference_group or if reference group\
     \ is\nalready pre-compiled."
-  type: string
+  type: string?
   inputBinding:
     prefix: --reference_rank
 - id: in_target_species_list
@@ -37,12 +37,12 @@ inputs:
     \ https://github.com/tobiashofmann8\n8/iucn_extinction_simulator/data/precompiled/\
     \ for\nexamples of the format of GL data input files and the\nformat of the output\
     \ file conataining current status\ninformation."
-  type: File
+  type: File?
   inputBinding:
     prefix: --target_species_list
 - id: in_outdir
   doc: Provide path to outdir where results will be saved.
-  type: File
+  type: File?
   inputBinding:
     prefix: --outdir
 - id: in_iucn_key
@@ -51,19 +51,20 @@ inputs:
     \ if using precompiled reference\ngroup and a manually compiled current status\
     \ list (to\nbe used in the 'transition_rates' function). Also not\nrequired if\
     \ all species in your target_species_list\nare present in the precompiled reference_group)."
-  type: long
+  type: long?
   inputBinding:
     prefix: --iucn_key
 - id: in_no_online_sync
   doc: "Turn off the online-search for precompiled IUCN\nhistory files for your reference\
     \ group.\n"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no_online_sync
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - iucn_sim

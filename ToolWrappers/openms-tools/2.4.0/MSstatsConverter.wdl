@@ -26,6 +26,9 @@ task MSstatsConverter {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "*                                     Input consensusXML with peptide intensities (valid formats: 'consensusXML')"
     in_design: "*                       Experimental Design file (valid formats: 'tsv')"

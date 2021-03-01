@@ -3,19 +3,19 @@ id: secapr_automate_all.cwl
 inputs:
 - id: in_input
   doc: The directory containing cleaned fastq files
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --input
 - id: in_output
   doc: "The output directory where all intermediate and final\ndata files will be\
     \ stored"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --output
 - id: in_reference
   doc: "Provide a reference library (FASTA) containing\nsequences for the genes of\
     \ interest (required to find\ncontigs matching targeted regions)."
-  type: string
+  type: string?
   inputBinding:
     prefix: --reference
 - id: in_setting
@@ -24,17 +24,17 @@ inputs:
     reference or are covering wide evolutionary range,\ne.g. different families or\
     \ orders). \"conservative\" is\nvery restrictive and can be used when samples\
     \ are\nclosely related and match provided reference very\nwell."
-  type: string
+  type: string?
   inputBinding:
     prefix: --setting
 - id: in_assembler
   doc: "The assembler to use for de-novo assembly\n(default=abyss)."
-  type: string
+  type: string?
   inputBinding:
     prefix: --assembler
 - id: in_cores
   doc: "Number of computational cores for parallelization of\ncomputation.\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: --cores
 outputs:
@@ -44,9 +44,10 @@ outputs:
 - id: out_output
   doc: "The output directory where all intermediate and final\ndata files will be\
     \ stored"
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - secapr

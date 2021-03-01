@@ -26,6 +26,9 @@ task Rscapesimnobps {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     _be_verbose: ": be verbose"
     number_sequences_simulated: ": number of sequences in the simulated msa, N=0 for use all  [0]"

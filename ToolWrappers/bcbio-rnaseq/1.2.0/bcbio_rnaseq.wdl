@@ -8,6 +8,9 @@ task Bcbiornaseq {
     bcbio_rnaseq \
       ~{subcommand}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     subcommand: ""
   }

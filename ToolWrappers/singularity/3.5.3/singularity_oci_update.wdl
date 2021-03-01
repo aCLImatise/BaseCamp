@@ -16,6 +16,9 @@ task SingularityOciUpdate {
       ~{oci} \
       ~{update}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     singularity: ""
     global: ""

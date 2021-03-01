@@ -8,6 +8,9 @@ task OptimirSummarize {
     optimir summarize \
       ~{if defined(dir) then ("--dir " +  '"' + dir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     dir: "Full path of the directory containing results"
   }

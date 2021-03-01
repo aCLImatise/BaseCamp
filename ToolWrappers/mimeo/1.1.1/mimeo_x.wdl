@@ -42,6 +42,9 @@ task Mimeox {
       ~{if defined(min_len) then ("--minLen " +  '"' + min_len + '"') else ""} \
       ~{if defined(min_cov) then ("--minCov " +  '"' + min_cov + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     a_dir: "Name of directory containing sequences from A genome."
     b_dir: "Name of directory containing sequences from B genome."

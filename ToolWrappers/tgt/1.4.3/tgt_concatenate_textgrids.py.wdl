@@ -16,6 +16,9 @@ task Tgtconcatenatetextgridspy {
       ~{if defined(type) then ("--type " +  '"' + type + '"') else ""} \
       ~{if (absolute_time) then "--absolute-time" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_files: "Space-separated list of paths to TextGrid files in the\\norder they should be concatenated."
     output_files: "Path to the resulting file."

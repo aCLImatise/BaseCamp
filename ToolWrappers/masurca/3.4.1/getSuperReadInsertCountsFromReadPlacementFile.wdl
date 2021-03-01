@@ -18,6 +18,9 @@ task GetSuperReadInsertCountsFromReadPlacementFile {
       ~{if (bloom) then "--bloom" else ""} \
       ~{if defined(number_reads) then ("--number-reads " +  '"' + number_reads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file_devfd: "Input file (/dev/fd/0)"
     output_file_devfd: "Output file (/dev/fd/1)"

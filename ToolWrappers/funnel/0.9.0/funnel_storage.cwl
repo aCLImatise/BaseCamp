@@ -3,7 +3,7 @@ id: funnel_storage.cwl
 inputs:
 - id: in_config
   doc: Config File
-  type: File
+  type: File?
   inputBinding:
     prefix: --config
 - id: in_get
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - funnel

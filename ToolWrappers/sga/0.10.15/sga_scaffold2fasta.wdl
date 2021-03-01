@@ -32,6 +32,9 @@ task SgaScaffold2fasta {
       ~{if defined(graph_resolve) then ("--graph-resolve " +  '"' + graph_resolve + '"') else ""} \
       ~{if defined(distance_factor) then ("--distanceFactor " +  '"' + distance_factor + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "display verbose output"
     contig_file: "read the contig sequences from FILE"

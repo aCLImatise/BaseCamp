@@ -2,9 +2,9 @@ version 1.0
 
 task RsatImplantsites {
   input {
-    Boolean? _verbosity_set
+    Boolean? verbosity_set_verbosity
     Boolean? _input_read
-    Boolean? _output_output
+    Boolean? _output_results
     Boolean? _sites_read
     Boolean? _features_positions
     Boolean? noov
@@ -19,17 +19,20 @@ task RsatImplantsites {
       ~{author} \
       ~{motifs} \
       ~{random_motif} \
-      ~{if (_verbosity_set) then "-v" else ""} \
+      ~{if (verbosity_set_verbosity) then "-v" else ""} \
       ~{if (_input_read) then "-i" else ""} \
-      ~{if (_output_output) then "-o" else ""} \
+      ~{if (_output_results) then "-o" else ""} \
       ~{if (_sites_read) then "-s" else ""} \
       ~{if (_features_positions) then "-f" else ""} \
       ~{if (noov) then "--noov" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    _verbosity_set: "#, --verbosity=#   set verbosity to level #\\n0 no verbosity\\n1 max verbosity"
+    verbosity_set_verbosity: "#, --verbosity=#   set verbosity to level #\\n0 no verbosity\\n1 max verbosity"
     _input_read: "#, --input=#       read sequence from # (must be in FASTA format)\\nif not specified, the standard input is used"
-    _output_output: "#, --output=#      output results to #\\nif not specified, the standard output is used"
+    _output_results: "#, --output=#      output results to #\\nif not specified, the standard output is used"
     _sites_read: "#, --sites=#       read sites from # (must be in FASTA format)"
     _features_positions: "#, --features=#    store site positions in #"
     noov: "do not allow overlapping sites"

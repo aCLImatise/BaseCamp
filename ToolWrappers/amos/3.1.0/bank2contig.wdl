@@ -3,7 +3,7 @@ version 1.0
 task Bank2contig {
   input {
     Boolean? display_compatible_version
-    Boolean? use_eids_names
+    Boolean? use_eids_default
     Boolean? use_iids_names
     File? dump_just_eids
     File? dump_just_iids
@@ -17,7 +17,7 @@ task Bank2contig {
     bank2contig \
       ~{bank_two_contig} \
       ~{if (display_compatible_version) then "-v" else ""} \
-      ~{if (use_eids_names) then "-e" else ""} \
+      ~{if (use_eids_default) then "-e" else ""} \
       ~{if (use_iids_names) then "-i" else ""} \
       ~{if defined(dump_just_eids) then ("-E " +  '"' + dump_just_eids + '"') else ""} \
       ~{if defined(dump_just_iids) then ("-I " +  '"' + dump_just_iids + '"') else ""} \
@@ -26,9 +26,12 @@ task Bank2contig {
       ~{if (sam_format_httpsamtoolssfnet) then "-s" else ""} \
       ~{if (xml_format_suitable) then "-T" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     display_compatible_version: "Display the compatible bank version"
-    use_eids_names: "Use EIDs for names (DEFAULT)"
+    use_eids_default: "Use EIDs for names (DEFAULT)"
     use_iids_names: "Use IIDs for names"
     dump_just_eids: "Dump just the contig eids listed in file"
     dump_just_iids: "Dump just the contig iids listed in file"

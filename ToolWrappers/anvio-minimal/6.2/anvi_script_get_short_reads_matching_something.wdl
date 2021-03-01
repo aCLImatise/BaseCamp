@@ -22,6 +22,9 @@ task Anviscriptgetshortreadsmatchingsomething {
       ~{if (report_raw) then "--report-raw" else ""} \
       ~{if defined(stop_after) then ("--stop-after " +  '"' + stop_after + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     s: "[-O PATH]"
     match_sequence: "SEQUENCE\\nShort sequence to look for.."

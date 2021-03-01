@@ -16,6 +16,9 @@ task MerfishtoolsDiffexp {
       ~{if defined(cdf) then ("--cdf " +  '"' + cdf + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     max_null_log_two_fc: "Maximum absolute log2 fold change considered as no differential expression [1.0]."
     pseudo_counts: "Pseudocounts to add to means before fold change calculation [1.0]."

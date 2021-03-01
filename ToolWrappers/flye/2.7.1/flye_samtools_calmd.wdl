@@ -42,6 +42,9 @@ task FlyesamtoolsCalmd {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if (eu_bra_esq) then "-eubrAESQ" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     change_identical_bases: "change identical bases to '='"
     uncompressed_bam_output: "uncompressed BAM output (for piping)"

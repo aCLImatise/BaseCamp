@@ -2,7 +2,7 @@ version 1.0
 
 task EmirgeMakedbpy {
   input {
-    Boolean? build_database_gene
+    Boolean? build_database_default
     Int? threads
     Directory? tmpdir
     Int? release
@@ -16,7 +16,7 @@ task EmirgeMakedbpy {
   }
   command <<<
     emirge_makedb_py \
-      ~{if (build_database_gene) then "-g" else ""} \
+      ~{if (build_database_default) then "-g" else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(tmpdir) then ("--tmpdir " +  '"' + tmpdir + '"') else ""} \
       ~{if defined(release) then ("--release " +  '"' + release + '"') else ""} \
@@ -28,8 +28,11 @@ task EmirgeMakedbpy {
       ~{if defined(bowtie_build) then ("--bowtie-build " +  '"' + bowtie_build + '"') else ""} \
       ~{if (silva_license_accepted) then "--silva-license-accepted" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    build_database_gene: "[SSU|LSU], --gene=[SSU|LSU]\\nbuild database from this gene (SSU=Small Subunit rRNA;\\nLSU=Large Subunit rRNA) default = SSU"
+    build_database_default: "[SSU|LSU], --gene=[SSU|LSU]\\nbuild database from this gene (SSU=Small Subunit rRNA;\\nLSU=Large Subunit rRNA) default = SSU"
     threads: "number of threads to use for vsearch clustering of\\ndatabase (default = use all available)"
     tmpdir: "working directory for temporary files (default = /tmp)"
     release: "SILVA release number (default: current SILVA release)"

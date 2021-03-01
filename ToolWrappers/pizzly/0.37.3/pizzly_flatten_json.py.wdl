@@ -14,6 +14,9 @@ task PizzlyFlattenJsonpy {
       ~{fusion_dot_out_dot_json} \
       ~{gene_table_dot_txt}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     python: ""
     flatten_json_do_tpy: ""

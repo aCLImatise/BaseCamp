@@ -16,6 +16,9 @@ task TrimFastqpl {
       ~{if (a_five) then "--a5" else ""} \
       ~{if (man) then "--man" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_q: "Fastq file for trimming"
     up: "Number of nucleotides to trim from read / quality string start"

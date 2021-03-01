@@ -30,6 +30,9 @@ task HicConvertFormat {
       ~{if defined(resolutions) then ("--resolutions " +  '"' + resolutions + '"') else ""} \
       ~{if defined(bed_file_hic_pro) then ("--bedFileHicpro " +  '"' + bed_file_hic_pro + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     matrices: "input file(s). Could be one or many files. (default:\\nNone)"
     out_filename: "File name to save the exported matrix. (default: None)"

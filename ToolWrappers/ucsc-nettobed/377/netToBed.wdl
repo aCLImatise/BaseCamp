@@ -12,6 +12,9 @@ task NetToBed {
       ~{if defined(max_gap) then ("-maxGap " +  '"' + max_gap + '"') else ""} \
       ~{if defined(min_fill) then ("-minFill " +  '"' + min_fill + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     max_gap: "- break up at gaps of given size or more"
     min_fill: "- only include fill of given size of above."

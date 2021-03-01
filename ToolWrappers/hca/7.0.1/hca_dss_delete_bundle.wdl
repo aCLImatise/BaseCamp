@@ -12,6 +12,9 @@ task HcaDssDeletebundle {
       ~{if defined(uuid) then ("--uuid " +  '"' + uuid + '"') else ""} \
       ~{if defined(replica) then ("--replica " +  '"' + replica + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     reason: "User-friendly reason for the bundle or timestamp-specfic bundle deletion."
     uuid: "A RFC4122-compliant ID for the bundle."

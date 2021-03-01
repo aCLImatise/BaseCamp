@@ -2,8 +2,8 @@ version 1.0
 
 task PhyluceAlignConvertOneAlignToAnother {
   input {
-    File? var_output
     Directory? alignments
+    Directory? output_directory_hold
     String? input_format
     String? output_format
     Int? cores
@@ -14,8 +14,8 @@ task PhyluceAlignConvertOneAlignToAnother {
   }
   command <<<
     phyluce_align_convert_one_align_to_another \
-      ~{if defined(var_output) then ("--output " +  '"' + var_output + '"') else ""} \
       ~{if defined(alignments) then ("--alignments " +  '"' + alignments + '"') else ""} \
+      ~{if defined(output_directory_hold) then ("--output " +  '"' + output_directory_hold + '"') else ""} \
       ~{if defined(input_format) then ("--input-format " +  '"' + input_format + '"') else ""} \
       ~{if defined(output_format) then ("--output-format " +  '"' + output_format + '"') else ""} \
       ~{if defined(cores) then ("--cores " +  '"' + cores + '"') else ""} \
@@ -24,9 +24,12 @@ task PhyluceAlignConvertOneAlignToAnother {
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""} \
       ~{if defined(log_path) then ("--log-path " +  '"' + log_path + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    var_output: "[--input-format {fasta,nexus,phylip,phylip-relaxed,phylip-sequential,clustal,emboss,stockholm}]\\n[--output-format {fasta,nexus,phylip,phylip-relaxed,phylip-sequential,clustal,emboss,stockholm}]\\n[--cores CORES]\\n[--shorten-names]\\n[--name-conf NAME_CONF]\\n[--verbosity {INFO,WARN,CRITICAL}]\\n[--log-path LOG_PATH]"
     alignments: "The directory containing the alignments to convert."
+    output_directory_hold: "An output directory to hold the converted alignments."
     input_format: "The input alignment format"
     output_format: "The input alignment format"
     cores: "The number of compute cores to use"
@@ -37,5 +40,6 @@ task PhyluceAlignConvertOneAlignToAnother {
   }
   output {
     File out_stdout = stdout()
+    Directory out_output_directory_hold = "${in_output_directory_hold}"
   }
 }

@@ -2,7 +2,7 @@ version 1.0
 
 task AlfredSplit {
   input {
-    Boolean? arg_min_quality
+    Boolean? arg_min_mapping
     Boolean? arg_reference_fasta
     File? p
     File? q
@@ -15,7 +15,7 @@ task AlfredSplit {
   command <<<
     alfred split \
       ~{un_phased_dot_bam} \
-      ~{if (arg_min_quality) then "-m" else ""} \
+      ~{if (arg_min_mapping) then "-m" else ""} \
       ~{if (arg_reference_fasta) then "-r" else ""} \
       ~{if (p) then "-p" else ""} \
       ~{if (q) then "-q" else ""} \
@@ -24,8 +24,11 @@ task AlfredSplit {
       ~{if (assign_unphased_reads) then "-a" else ""} \
       ~{if (single_haplotypetagged_bam) then "-i" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    arg_min_quality: "[ --map-qual ] arg (=10)     min. mapping quality"
+    arg_min_mapping: "[ --map-qual ] arg (=10)     min. mapping quality"
     arg_reference_fasta: "[ --reference ] arg          reference fasta file"
     p: "[ --hap1 ] arg (=\\\"h1.bam\\\")   haplotype1 output file"
     q: "[ --hap2 ] arg (=\\\"h2.bam\\\")   haplotype2 output file"

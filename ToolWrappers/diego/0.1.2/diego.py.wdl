@@ -26,6 +26,9 @@ task Diegopy {
       ~{if defined(den_do_gram) then ("--dendogram " +  '"' + den_do_gram + '"') else ""} \
       ~{if (random) then "--random" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     table: "table of splice junction supports per sample with gene\\ninformation (created with pre_std.py, pre_star.py or\\npre_segemehl.py)"
     list: "condition to sample relation in the format: condition\\ntab-delimiter sampleName (you can specify a subset of\\nthe samples included in the table, however the\\nsampleName has to be the same as used in table) (you\\ncan specify a label in the third column that is used\\n(if present) when the clustering mode is executed)"

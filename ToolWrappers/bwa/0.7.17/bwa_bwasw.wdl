@@ -14,12 +14,12 @@ task BwaBwasw {
     Boolean? copy_fastaq_comment
     Boolean? mark_multipart_alignments
     Boolean? skip_smithwaterman_read
-    Int? ignore_pairs_insert
+    Int? ignore_pairs_distr
     Int? score_threshold_divided
     Float? coefficient_lengththreshold_adjustment
     Int? zbest
     Int? maximum_seeding_interval
-    Int? seeds_trigger_int
+    Int? seeds_trigger_rev
     Int? maximum_gap_size
     String target_dot_prefix
     String query_dot_fa
@@ -42,14 +42,17 @@ task BwaBwasw {
       ~{if (copy_fastaq_comment) then "-C" else ""} \
       ~{if (mark_multipart_alignments) then "-M" else ""} \
       ~{if (skip_smithwaterman_read) then "-S" else ""} \
-      ~{if defined(ignore_pairs_insert) then ("-I " +  '"' + ignore_pairs_insert + '"') else ""} \
+      ~{if defined(ignore_pairs_distr) then ("-I " +  '"' + ignore_pairs_distr + '"') else ""} \
       ~{if defined(score_threshold_divided) then ("-T " +  '"' + score_threshold_divided + '"') else ""} \
       ~{if defined(coefficient_lengththreshold_adjustment) then ("-c " +  '"' + coefficient_lengththreshold_adjustment + '"') else ""} \
       ~{if defined(zbest) then ("-z " +  '"' + zbest + '"') else ""} \
       ~{if defined(maximum_seeding_interval) then ("-s " +  '"' + maximum_seeding_interval + '"') else ""} \
-      ~{if defined(seeds_trigger_int) then ("-N " +  '"' + seeds_trigger_int + '"') else ""} \
+      ~{if defined(seeds_trigger_rev) then ("-N " +  '"' + seeds_trigger_rev + '"') else ""} \
       ~{if defined(maximum_gap_size) then ("-G " +  '"' + maximum_gap_size + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     score_for_match: "score for a match [1]"
     mismatch_penalty: "mismatch penalty [3]"
@@ -63,12 +66,12 @@ task BwaBwasw {
     copy_fastaq_comment: "copy FASTA/Q comment to SAM output"
     mark_multipart_alignments: "mark multi-part alignments as secondary"
     skip_smithwaterman_read: "skip Smith-Waterman read pairing"
-    ignore_pairs_insert: "ignore pairs with insert >=INT for inferring the size distr [20000]"
+    ignore_pairs_distr: "ignore pairs with insert >=INT for inferring the size distr [20000]"
     score_threshold_divided: "score threshold divided by a [30]"
     coefficient_lengththreshold_adjustment: "coefficient of length-threshold adjustment [5.5]"
     zbest: "Z-best [1]"
     maximum_seeding_interval: "maximum seeding interval size [3]"
-    seeds_trigger_int: "# seeds to trigger rev aln; 2*INT is also the chaining threshold [5]"
+    seeds_trigger_rev: "# seeds to trigger rev aln; 2*INT is also the chaining threshold [5]"
     maximum_gap_size: "maximum gap size during chaining [10000]"
     target_dot_prefix: ""
     query_dot_fa: ""

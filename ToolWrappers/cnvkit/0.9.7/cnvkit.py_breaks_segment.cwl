@@ -3,12 +3,12 @@ id: cnvkit.py_breaks_segment.cwl
 inputs:
 - id: in_o
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_m
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -m
 - id: in_cnv_kit_do_tpy
@@ -35,6 +35,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - cnvkit.py

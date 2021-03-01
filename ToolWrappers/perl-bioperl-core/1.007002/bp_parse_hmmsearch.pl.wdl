@@ -18,6 +18,9 @@ task BpParseHmmsearchpl {
       ~{if (po) then "--po" else ""} \
       ~{if (ps) then "--ps" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     hmmsearch_file_parse: "HMMSEARCH file to parse."
     index_file_contains: "INDEX file that contains a list of HMMSEARCH files for multiple"

@@ -3,12 +3,12 @@ id: trimmomatic.cwl
 inputs:
 - id: in_threads
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -threads
 - id: in_version
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -version
 - id: in_pe
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - trimmomatic

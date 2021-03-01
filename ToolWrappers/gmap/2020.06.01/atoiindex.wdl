@@ -20,6 +20,9 @@ task Atoiindex {
       ~{if defined(sampling) then ("--sampling " +  '"' + sampling + '"') else ""} \
       ~{if defined(use_snps) then ("--use-snps " +  '"' + use_snps + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     source_dir: "Directory where to read cmet index files (default is\\nGMAP genome directory specified at compile time)"
     destdir: "Directory where to write cmet index files (default is\\nvalue of -F, if provided; otherwise the value of the\\nGMAP genome directory specified at compile time)"

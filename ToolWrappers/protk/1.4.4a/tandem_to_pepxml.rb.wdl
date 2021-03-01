@@ -14,6 +14,9 @@ task TandemToPepxmlrb {
       ~{if (replace_output) then "--replace-output" else ""} \
       ~{if defined(explicitly_named_output) then ("--output " +  '"' + explicitly_named_output + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_prefix: "A string to prepend to the name of output files"
     replace_output: "Dont skip analyses for which the output file already exists [false]"

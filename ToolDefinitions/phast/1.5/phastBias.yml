@@ -3,130 +3,133 @@ command:
 - phastBias
 positional:
 - !Positional
-  description: It can also produce gBGC tracts by thresholding this
+  optional: false
   position: 0
   name: states.
-  optional: false
+  description: It can also produce gBGC tracts by thresholding this
 named:
 - !Flag
-  description: ).  The neutral model must be in the .mod format
+  optional: true
   synonyms:
   - --msa-format
+  description: ).  The neutral model must be in the .mod format
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --bgc
   description: "The B parameter describes the strength of gBGC.  It must be > 0.\n\
     Too low of a value may yield false positives, as the gBGC model\nbecomes indistinguishable\
     \ from the non-gBGC model.\nDefault: 3"
-  synonyms:
-  - --bgc
   args: !SimpleFlagArg
     name: B
-  optional: true
 - !Flag
-  description: "Use \"--estimate-bgc 1\" to estimate B by maximum likelihood.\nDefault:\
-    \ 0"
+  optional: true
   synonyms:
   - --estimate-bgc
+  description: "Use \"--estimate-bgc 1\" to estimate B by maximum likelihood.\nDefault:\
+    \ 0"
   args: !SimpleFlagArg
     name: 0|1
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --bgc-exp-length
   description: "Set the prior expected length of gBGC tracts.  This is equivalent\
     \ to\n1/alpha in the parametrization defined by Capra et al, where\nalpha is the\
     \ rate out of gBGC states.\nDefault: 1000"
-  synonyms:
-  - --bgc-exp-length
   args: !SimpleFlagArg
     name: length
-  optional: true
 - !Flag
-  description: "Use \"--estimate-bgc-exp-length 1\" to estimate this parameter by\
-    \ an\nexpectation-maximization algorithm.\nDefault: 0"
+  optional: true
   synonyms:
   - --estimate-bgc-exp-length
+  description: "Use \"--estimate-bgc-exp-length 1\" to estimate this parameter by\
+    \ an\nexpectation-maximization algorithm.\nDefault: 0"
   args: !SimpleFlagArg
     name: 0|1
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --bgc-target-coverage
   description: "Set the prior for gBGC tract coverage (as a fraction between 0 and\
     \ 1).\nThis is represented in the model as beta/(alpha+beta), where beta\nis the\
     \ rate into the gBGC state, and alpha is the rate out of the\ngBGC state.\nDefault:\
     \ 0.01"
-  synonyms:
-  - --bgc-target-coverage
   args: !SimpleFlagArg
     name: coverage
-  optional: true
 - !Flag
-  description: "Use \"--estimate-bgc-target-coverage 0\" to hold this parameter constant.\n\
-    Default: 1 (This is the only parameter estimated by default.)"
+  optional: true
   synonyms:
   - --estimate-bgc-target-coverage
+  description: "Use \"--estimate-bgc-target-coverage 0\" to hold this parameter constant.\n\
+    Default: 1 (This is the only parameter estimated by default.)"
   args: !SimpleFlagArg
     name: 0|1
-  optional: true
 - !Flag
-  description: "Set the scaling factor for branch lengths in conserved states.  Rho\
-    \ should\nbe between 0 and 1.\nDefault: 0.31"
+  optional: true
   synonyms:
   - --rho
+  description: "Set the scaling factor for branch lengths in conserved states.  Rho\
+    \ should\nbe between 0 and 1.\nDefault: 0.31"
   args: !SimpleFlagArg
     name: rho
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --cons-exp-length
   description: "Set the prior expected length of conserved elements.  This parameter\
     \ is\nheld constant; if you want to tune it, it is recommended to do this\nwith\
     \ the phastCons program under a non-gBGC model (see the\n--expected-length option\
     \ in phastCons).\nDefault: 45"
-  synonyms:
-  - --cons-exp-length
   args: !SimpleFlagArg
     name: length
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --cons-target-coverage
   description: "Set the prior for coverage of conserved elements (as a fraction\n\
     between 0 and 1).  Like the --cons-exp-length above, this parameter\nis also held\
     \ constant, but can be tuned with phastCons (see\nphastCons --transitions).\n\
     Default: 0.3"
-  synonyms:
-  - --cons-target-coverage
   args: !SimpleFlagArg
     name: cov
-  optional: true
 - !Flag
-  description: "Set an overall scaling factor for the branch lengths in all states.\n\
-    Default: 1"
+  optional: true
   synonyms:
   - --scale
+  description: "Set an overall scaling factor for the branch lengths in all states.\n\
+    Default: 1"
   args: !SimpleFlagArg
     name: scale
-  optional: true
 - !Flag
-  description: "Rescale the branches in all states by a scaling factor determined\
-    \ by\nmaximum likelihood (initialized by --scale above).\nDefault: 0"
+  optional: true
   synonyms:
   - --estimate-scale
+  description: "Rescale the branches in all states by a scaling factor determined\
+    \ by\nmaximum likelihood (initialized by --scale above).\nDefault: 0"
   args: !SimpleFlagArg
     name: 0|1
-  optional: true
 - !Flag
-  description: "Reset equilibrium frequencies of A,C,G,T based on frequencies observed\n\
-    in the alignment.  Otherwise will not be altered from input model.\nDefault: 1"
+  optional: true
   synonyms:
   - --eqfreqs-from-msa
+  description: "Reset equilibrium frequencies of A,C,G,T based on frequencies observed\n\
+    in the alignment.  Otherwise will not be altered from input model.\nDefault: 1"
   args: !SimpleFlagArg
     name: 0|1
-  optional: true
 - !Flag
-  description: "Print a GFF file identifying all regions with posterior probability\
-    \ of\nbeing in a gBGC state > 0.5."
+  optional: true
   synonyms:
   - --output-tracts
+  description: "Print a GFF file identifying all regions with posterior probability\
+    \ of\nbeing in a gBGC state > 0.5."
   args: !SimpleFlagArg
     name: file.gff
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --posteriors
   description: "Use this option to control posterior probability output, which is\n\
     written to stdout.  \"none\" implies do not output anything; wig outputs\na standard\
     \ fixed-step wiggle file giving the probability that each\nbase is assigned to\
@@ -134,47 +137,44 @@ named:
     \ is the coordinate (1-based relative to\nthe first sequence in the alignment),\
     \ followed by the probabilities\nof each of the four states: neutral, conserved,\
     \ gBGC neutral,\ngBGC conserved.\nDefault: wig"
-  synonyms:
-  - --posteriors
   args: !SimpleFlagArg
     name: none|wig|full
-  optional: true
 - !Flag
-  description: "Print out the tree models for all four states to <output_root>.cons.mod,\n\
-    <output_root>.neutral.mod, <output_root>.gBGC_cons.mod, and\n<output_root>.gBGC_neutral.mod."
+  optional: true
   synonyms:
   - --output-mods
+  description: "Print out the tree models for all four states to <output_root>.cons.mod,\n\
+    <output_root>.neutral.mod, <output_root>.gBGC_cons.mod, and\n<output_root>.gBGC_neutral.mod."
   args: !SimpleFlagArg
     name: output_root
-  optional: true
 - !Flag
-  description: "Print a GFF containing regions of the alignment which are informative\n\
-    for gBGC. Note: only works properly if foreground branch is a single\nbranch (not\
-    \ a group of branches)."
+  optional: true
   synonyms:
   - --informative-fn
   - -i
+  description: "Print a GFF containing regions of the alignment which are informative\n\
+    for gBGC. Note: only works properly if foreground branch is a single\nbranch (not\
+    \ a group of branches)."
   args: !SimpleFlagArg
     name: file.gff
-  optional: true
 - !Flag
-  description: "(To be used with --informative-fn). Print the informative regions,\
-    \ then\nquit."
+  optional: true
   synonyms:
   - --informative-only
   - -o
+  description: "(To be used with --informative-fn). Print the informative regions,\
+    \ then\nquit."
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Print this help message.
+  optional: true
   synonyms:
   - --help
   - -h
+  description: Print this help message.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "\nPROGRAM: phastBias\n\nUSAGE: phastBias [OPTIONS] alignment neutral.mod\
@@ -250,3 +250,4 @@ help_text: "\nPROGRAM: phastBias\n\nUSAGE: phastBias [OPTIONS] alignment neutral
   \ in the Human and Chimpanzee Genomes.\n       (Manuscript in submission).\n"
 generated_using:
 - --help
+docker_image:

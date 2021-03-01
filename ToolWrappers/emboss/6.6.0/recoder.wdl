@@ -12,6 +12,9 @@ task Recoder {
       ~{if (s_show) then "-sshow" else ""} \
       ~{if (t_show) then "-tshow" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     enzymes: "string     [all] Comma separated enzyme list (Any\\nstring)"
     s_show: "boolean    [N] Display untranslated sequence"

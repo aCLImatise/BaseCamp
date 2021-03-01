@@ -14,6 +14,9 @@ task GcloudDeploymentmanagerResources {
       ~{list} \
       ~{if defined(deployment) then ("--deployment " +  '"' + deployment + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     deployment: "Deployment name"
     resources: "SYNOPSIS"

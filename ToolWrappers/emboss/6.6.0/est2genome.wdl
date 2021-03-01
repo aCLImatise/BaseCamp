@@ -32,6 +32,9 @@ task Est2genome {
       ~{if (align) then "-align" else ""} \
       ~{if (width) then "-width" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     match: "integer    [1] Score for matching two bases (Any\\ninteger value)"
     mismatch: "integer    [1] Cost for mismatching two bases (Any\\ninteger value)"

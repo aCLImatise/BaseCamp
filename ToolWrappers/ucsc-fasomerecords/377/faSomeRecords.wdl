@@ -12,6 +12,9 @@ task FaSomeRecords {
       ~{list_file} \
       ~{if (exclude) then "-exclude" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     exclude: "- output sequences not in the list file."
     in_dot_fa: ""

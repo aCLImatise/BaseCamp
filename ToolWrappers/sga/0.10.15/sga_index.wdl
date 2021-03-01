@@ -26,6 +26,9 @@ task SgaIndex {
       ~{if (no_sai) then "--no-sai" else ""} \
       ~{if defined(gap_array) then ("--gap-array " +  '"' + gap_array + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "display verbose output"
     algorithm: "BWT construction algorithm. STR can be:\\nsais - induced sort algorithm, slower but works for very long sequences (default)\\nropebwt - very fast and memory efficient. use this for short (<200bp) reads"

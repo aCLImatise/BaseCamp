@@ -3,12 +3,12 @@ id: rename_filter_fastq.cwl
 inputs:
 - id: in_output
   doc: Output file (stdout)
-  type: File
+  type: File?
   inputBinding:
     prefix: --output
 - id: in_base_quality
   doc: Lowest valide quality score (#)
-  type: string
+  type: string?
   inputBinding:
     prefix: --base-quality
 - id: in_args_t
@@ -27,9 +27,10 @@ outputs:
   type: stdout
 - id: out_output
   doc: Output file (stdout)
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rename_filter_fastq

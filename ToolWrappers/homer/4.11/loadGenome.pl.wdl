@@ -30,6 +30,9 @@ task LoadGenomepl {
       ~{if (tid) then "-tid" else ""} \
       ~{if defined(ensembl_repeats) then ("-ensemblRepeats " +  '"' + ensembl_repeats + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     name: "(i.e. hg19, tair10, etc.)"
     fast_a: "(Single genome sequence, preferrabley soft masked, unzipped)"

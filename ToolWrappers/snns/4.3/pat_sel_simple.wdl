@@ -12,6 +12,9 @@ task PatSelSimple {
       ~{in_pat_file} \
       ~{out_pat_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_file: ""
     in_pat_file: ""

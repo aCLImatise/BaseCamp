@@ -12,6 +12,9 @@ task SeqhaxFilter {
       ~{if (output_fasta_qualities) then "-f" else ""} \
       ~{if (paired_mode_reads) then "-p" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     minimum_length_read: "Minimum length of each read. [default 1]"
     output_fasta_qualities: "Output as fasta (no qualities)"

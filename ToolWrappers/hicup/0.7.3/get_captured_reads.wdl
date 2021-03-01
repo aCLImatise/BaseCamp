@@ -12,6 +12,9 @@ task GetCapturedReads {
       ~{if (header) then "--header" else ""} \
       ~{if (interactions) then "--interactions" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     baits: "Baits format file"
     header: "Specify number of header lines in the baits file (i.e. skip these)"

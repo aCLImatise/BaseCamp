@@ -3,7 +3,7 @@ id: agat_convert_sp_gff2gtf.pl.cwl
 inputs:
 - id: in_gff
   doc: Input GFF file that will be read
-  type: File
+  type: File?
   inputBinding:
     prefix: --gff
 - id: in_gtf_version
@@ -15,7 +15,7 @@ inputs:
     \ and exon\nGTF2.1 (6 feature types accepted): CDS, start_codon, stop_codon,\n\
     exon, 5UTR, 3UTR\nGTF2 (4 feature types accepted): CDS, start_codon, stop_codon,\n\
     exon\nGTF1 (5 feature types accepted): CDS, start_codon, stop_codon,\nexon, intron"
-  type: double
+  type: double?
   inputBinding:
     prefix: --gtf_version
 - id: in_relax
@@ -23,15 +23,15 @@ inputs:
     \ be kept. No modification e.g. mRNA to\ntranscript. No filtering i.e. feature\
     \ type not accepted by GTF\nformat are kept. gene_id and transcript_id attributes\
     \ will be\nadded, and the attributes will follow the GTF formating."
-  type: string
+  type: string?
   inputBinding:
     prefix: --relax
-- id: in__output_
-  doc: ", --output , --out , --outfile or --gtf\nOutput GTF file. If no output file\
-    \ is specified, the output will\nbe written to STDOUT."
-  type: File
+- id: in_outfile
+  doc: "Output GTF file. If no output file is specified, the output will\nbe written\
+    \ to STDOUT."
+  type: File?
   inputBinding:
-    prefix: -o
+    prefix: --outfile
 - id: in_title
   doc: ': _gff25_string'
   type: string
@@ -56,12 +56,13 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out__output_
-  doc: ", --output , --out , --outfile or --gtf\nOutput GTF file. If no output file\
-    \ is specified, the output will\nbe written to STDOUT."
-  type: File
+- id: out_outfile
+  doc: "Output GTF file. If no output file is specified, the output will\nbe written\
+    \ to STDOUT."
+  type: File?
   outputBinding:
-    glob: $(inputs.in__output_)
+    glob: $(inputs.in_outfile)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - agat_convert_sp_gff2gtf.pl

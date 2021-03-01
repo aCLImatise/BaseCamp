@@ -12,6 +12,9 @@ task UmisTo {
       ~{var_command} \
       ~{args}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     um_is: ""
     var_command: ""

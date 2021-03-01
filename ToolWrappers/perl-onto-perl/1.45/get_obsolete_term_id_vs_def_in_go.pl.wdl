@@ -10,6 +10,9 @@ task GetObsoleteTermIdVsDefInGopl {
       ~{usage} \
       ~{if (obo_input_file) then "-f" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     obo_input_file: "OBO input file"
     usage: ": get_obsolete_term_id_vs_def_in_go.pl [options]"

@@ -16,6 +16,9 @@ task Getinfopy {
       ~{if defined(allow_only_entries) then ("-t " +  '"' + allow_only_entries + '"') else ""} \
       ~{if defined(forbid_entries_tax) then ("-T " +  '"' + forbid_entries_tax + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     outfile: "write values to FILE (default: stdout)"
     output_format_nname: "output format: %n=name, %a=accession, %taxid=taxid,\\n%strain=strain, %c=code table, %seq=sequence, %s=size,\\n%t=taxonomy string, %r=references, %pmid=pubmed ids"

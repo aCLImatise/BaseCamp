@@ -3,42 +3,42 @@ id: phastaf.cwl
 inputs:
 - id: in_check
   doc: Check dependencies are installed
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --check
 - id: in_force
   doc: 'Force overwite of existing output folder (default: OFF)'
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --force
 - id: in_keep_files
   doc: 'Keep intermediate files (default: OFF)'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --keepfiles
 - id: in_outdir
   doc: "Output folder (default: '')"
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --outdir
 - id: in_db
   doc: "Diamond database of phage proteins (default: '/usr/local/db/phastaf.dmnd')"
-  type: string
+  type: string?
   inputBinding:
     prefix: --db
 - id: in_cpus
   doc: 'Number of CPUs to use (0=ALL) (default: 1)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --cpus
 - id: in_i_gff
   doc: 'Intergenic fuzz factor (default: 2000)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --igff
 - id: in_min_genes
   doc: 'Minimum genes in cluster (default: 5)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --mingenes
 outputs:
@@ -47,14 +47,15 @@ outputs:
   type: stdout
 - id: out_force
   doc: 'Force overwite of existing output folder (default: OFF)'
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_force)
 - id: out_outdir
   doc: "Output folder (default: '')"
-  type: Directory
+  type: Directory?
   outputBinding:
     glob: $(inputs.in_outdir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - phastaf

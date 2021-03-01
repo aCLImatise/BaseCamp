@@ -2,7 +2,7 @@ version 1.0
 
 task SnpSiftGwasCat {
   input {
-    Boolean? config_file_specify
+    File? config
     Boolean? _debug
     File? db
     Boolean? download
@@ -13,14 +13,12 @@ task SnpSiftGwasCat {
     String? jar
     String java
     String g_was_cat
-    File? file_dot_vcf
   }
   command <<<
     SnpSift gwasCat \
       ~{java} \
       ~{g_was_cat} \
-      ~{file_dot_vcf} \
-      ~{if (config_file_specify) then "-c" else ""} \
+      ~{if defined(config) then ("-config " +  '"' + config + '"') else ""} \
       ~{if (_debug) then "-d" else ""} \
       ~{if defined(db) then ("-db " +  '"' + db + '"') else ""} \
       ~{if (download) then "-download" else ""} \
@@ -30,8 +28,11 @@ task SnpSiftGwasCat {
       ~{if (_verbose) then "-v" else ""} \
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    config_file_specify: ", -config <file>  : Specify config file"
+    config: ": Specify config file"
     _debug: ": Debug."
     db: ": Database file name (for commands that require databases)."
     download: ": Download database, if not available locally. Default: true."
@@ -42,7 +43,6 @@ task SnpSiftGwasCat {
     jar: ""
     java: ""
     g_was_cat: ""
-    file_dot_vcf: ""
   }
   output {
     File out_stdout = stdout()

@@ -16,6 +16,9 @@ task SketchyUtilsFxtime {
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
       ~{if defined(delta) then ("--delta " +  '"' + delta + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_q: "Path to Fast{a,q} input file used in evaluation NOTE:\\nThis argument is mutually exclusive with  arguments:\\n[index].  [required]"
     index: "Path to input file read index from `sketchy utils fx-\\nsort` NOTE: This argument is mutually exclusive with\\narguments: [fastx]."

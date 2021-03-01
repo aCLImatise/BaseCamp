@@ -14,6 +14,9 @@ task PairSequences {
       ~{if defined(msa_file_containing) then ("-s " +  '"' + msa_file_containing + '"') else ""} \
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tsv_file_patientsampleclustertype: "tsv file of patient/sample/cluster/type mapping"
     msa_file_containing: "MSA file containing the alignments between patient-sample"

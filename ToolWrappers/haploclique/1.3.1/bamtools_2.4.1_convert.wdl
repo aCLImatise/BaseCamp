@@ -24,6 +24,9 @@ task Bamtools241Convert {
       ~{if (map_qual) then "-mapqual" else ""} \
       ~{if (noheader) then "-noheader" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "the input BAM file(s) [stdin]"
     list: "the input BAM file list, one\\nline per file"

@@ -12,6 +12,9 @@ task MbplotkmerenrichmentPrefix {
       ~{if defined(start) then ("--start " +  '"' + start + '"') else ""} \
       ~{if defined(km_er) then ("--kmer " +  '"' + km_er + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     start: ""
     km_er: ""

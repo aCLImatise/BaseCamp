@@ -14,6 +14,9 @@ task Gff2bedpl {
       ~{if (out) then "--out" else ""} \
       ~{if (man) then "--man" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gff: "Input GFF file."
     feature: "Specify feature type (eg. CDS,tRNA,rRNA,SBS, etc) to be extracted\\nfrom GFF3."

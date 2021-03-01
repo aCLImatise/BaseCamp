@@ -3,12 +3,12 @@ id: gfa2_to_gfa1.py.cwl
 inputs:
 - id: in_in
   doc: "GFA 2.0 file (format: 'xxx.gfa')"
-  type: File
+  type: File?
   inputBinding:
     prefix: -in
 - id: in_out
   doc: Output directory for saving the GFA 1.0 file
-  type: File
+  type: File?
   inputBinding:
     prefix: -out
 - id: in_gfa_dot_two_to_gfa_do_tone_do_tpy
@@ -22,9 +22,10 @@ outputs:
   type: stdout
 - id: out_out
   doc: Output directory for saving the GFA 1.0 file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gfa2_to_gfa1.py

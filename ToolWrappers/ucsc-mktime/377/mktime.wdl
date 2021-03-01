@@ -10,6 +10,9 @@ task Mktime {
       ~{yyyy_mm_dd} \
       ~{hh}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     yyyy_mm_dd: ""
     hh: ""

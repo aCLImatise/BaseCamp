@@ -20,6 +20,9 @@ task ParallelRunpl {
       ~{if (one_line) then "-oneline" else ""} \
       ~{if (pal_two_nal) then "-pal2nal" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     file_directory: "File directory"
     program_rundefault_mafft: "program to run\\ndefault: mafft"

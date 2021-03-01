@@ -52,6 +52,9 @@ task AmptkTaxonomy {
       ~{if (cpus) then "--cpus" else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_a: "Input FASTA file (i.e. OTUs from amptk cluster) (Required)"
     otu_table: "Input OTU table file (i.e. otu_table from amptk cluster)"

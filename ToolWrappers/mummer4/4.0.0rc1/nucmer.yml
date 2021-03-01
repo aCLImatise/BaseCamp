@@ -1,0 +1,249 @@
+!Command
+command:
+- nucmer
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: ref
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --maxmatch
+  description: different bevahiors.
+  args: !SimpleFlagArg
+    name: for
+- !Flag
+  optional: true
+  synonyms:
+  - --mum
+  description: Use anchor matches that are unique in both the reference and query
+    (false)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --breaklen
+  description: Set the distance an alignment extension will attempt to extend poor
+    scoring regions before giving up (200)
+  args: !SimpleFlagArg
+    name: uint32
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --mincluster
+  description: Sets the minimum length of a cluster of matches (65)
+  args: !SimpleFlagArg
+    name: uint32
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  - --diagdiff
+  description: Set the maximum diagonal difference between two adjacent anchors in
+    a cluster (5)
+  args: !SimpleFlagArg
+    name: uint32
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --diagfactor
+  description: Set the maximum diagonal difference between two adjacent anchors in
+    a cluster as a differential fraction of the gap length (0.12)
+  args: !SimpleFlagArg
+    name: double
+- !Flag
+  optional: true
+  synonyms:
+  - --noextend
+  description: Do not perform cluster extension step (false)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --forward
+  description: Use only the forward strand of the Query sequences (false)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --maxgap
+  description: Set the maximum gap between two adjacent matches in a cluster (90)
+  args: !SimpleFlagArg
+    name: uint32
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --minmatch
+  description: Set the minimum length of a single exact match (20)
+  args: !SimpleFlagArg
+    name: uint32
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  - --minalign
+  description: Minimum length of an alignment, after clustering and extension (0)
+  args: !SimpleFlagArg
+    name: uint32
+- !Flag
+  optional: true
+  synonyms:
+  - --nooptimize
+  description: No alignment score optimization, i.e. if an alignment extension reaches
+    the end of a sequence, it will not backtrack to optimize the alignment score and
+    instead terminate the alignment at the end of the sequence (false)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reverse
+  description: Use only the reverse complement of the Query sequences (false)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --nosimplify
+  description: Don't simplify alignments by removing shadowed clusters. Use this option
+    when aligning a sequence to itself to look for repeats (false)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --prefix
+  description: Write output to PREFIX.delta (out)
+  args: !SimpleFlagArg
+    name: PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - --delta
+  description: Output delta file to PATH (instead of PREFIX.delta)
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --sam-short
+  description: Output SAM file to PATH, short format
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --sam-long
+  description: Output SAM file to PATH, long format
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --save
+  description: Save suffix array to files starting with PREFIX
+  args: !SimpleFlagArg
+    name: PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - --load
+  description: Load suffix array from file starting with PREFIX
+  args: !SimpleFlagArg
+    name: PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - --batch
+  description: Proceed by batch of chunks of BASES from the reference
+  args: !SimpleFlagArg
+    name: BASES
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: Use NUM threads (# of cores)
+  args: !SimpleFlagArg
+    name: NUM
+- !Flag
+  optional: true
+  synonyms:
+  - --full-help
+  description: Detailed help
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: This message
+  args: !EmptyFlagArg {}
+usage_flag: !Flag
+  optional: true
+  synonyms:
+  - -U
+  - --usage
+  description: Usage
+  args: !EmptyFlagArg {}
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Version
+  args: !EmptyFlagArg {}
+help_text: "Usage: nucmer [options] ref:path qry:path+\n\nnucmer generates nucleotide\
+  \ alignments between two mutli-FASTA input\nfiles. The out.delta output file lists\
+  \ the distance between insertions\nand deletions that produce maximal scoring alignments\
+  \ between each\nsequence. The show-* utilities know how to read this format.\n\n\
+  By default, nucmer uses anchor matches that are unique in in the\nreference but\
+  \ not necessarily unique in the query. See --mum and\n--maxmatch for different bevahiors.\n\
+  \nOptions (default value in (), *required):\n     --mum                        \
+  \        Use anchor matches that are unique in both the reference and query (false)\n\
+  \     --maxmatch                           Use all anchor matches regardless of\
+  \ their uniqueness (false)\n -b, --breaklen=uint32                    Set the distance\
+  \ an alignment extension will attempt to extend poor scoring regions before giving\
+  \ up (200)\n -c, --mincluster=uint32                  Sets the minimum length of\
+  \ a cluster of matches (65)\n -D, --diagdiff=uint32                    Set the maximum\
+  \ diagonal difference between two adjacent anchors in a cluster (5)\n -d, --diagfactor=double\
+  \                  Set the maximum diagonal difference between two adjacent anchors\
+  \ in a cluster as a differential fraction of the gap length (0.12)\n     --noextend\
+  \                           Do not perform cluster extension step (false)\n -f,\
+  \ --forward                            Use only the forward strand of the Query\
+  \ sequences (false)\n -g, --maxgap=uint32                      Set the maximum gap\
+  \ between two adjacent matches in a cluster (90)\n -l, --minmatch=uint32       \
+  \             Set the minimum length of a single exact match (20)\n -L, --minalign=uint32\
+  \                    Minimum length of an alignment, after clustering and extension\
+  \ (0)\n     --nooptimize                         No alignment score optimization,\
+  \ i.e. if an alignment extension reaches the end of a sequence, it will not backtrack\
+  \ to optimize the alignment score and instead terminate the alignment at the end\
+  \ of the sequence (false)\n -r, --reverse                            Use only the\
+  \ reverse complement of the Query sequences (false)\n     --nosimplify         \
+  \                Don't simplify alignments by removing shadowed clusters. Use this\
+  \ option when aligning a sequence to itself to look for repeats (false)\n -p, --prefix=PREFIX\
+  \                      Write output to PREFIX.delta (out)\n     --delta=PATH   \
+  \                      Output delta file to PATH (instead of PREFIX.delta)\n   \
+  \  --sam-short=PATH                     Output SAM file to PATH, short format\n\
+  \     --sam-long=PATH                      Output SAM file to PATH, long format\n\
+  \     --save=PREFIX                        Save suffix array to files starting with\
+  \ PREFIX\n     --load=PREFIX                        Load suffix array from file\
+  \ starting with PREFIX\n     --batch=BASES                        Proceed by batch\
+  \ of chunks of BASES from the reference\n -t, --threads=NUM                    \
+  \    Use NUM threads (# of cores)\n -U, --usage                              Usage\n\
+  \ -h, --help                               This message\n     --full-help      \
+  \                    Detailed help\n -V, --version                            Version\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/mummer4:4.0.0rc1--pl526he1b5a44_0

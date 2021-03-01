@@ -3,17 +3,17 @@ id: dx_cwl_run_workflow.cwl
 inputs:
 - id: in_token
   doc: DNAnexus authentication token
-  type: string
+  type: string?
   inputBinding:
     prefix: --token
 - id: in_project
   doc: DNAnexus project ID
-  type: string
+  type: string?
   inputBinding:
     prefix: --project
 - id: in_rootdir
   doc: Root directory to place CWL workflow, tools, and
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --rootdir
 - id: in_workflow
@@ -37,6 +37,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - dx-cwl

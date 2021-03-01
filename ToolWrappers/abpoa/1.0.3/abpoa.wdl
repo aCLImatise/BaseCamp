@@ -15,7 +15,6 @@ task Abpoa {
     Boolean? out_pog
     Int? cons_alg
     Boolean? diploid
-    Int? a_slash_cons_alg
     Float? min_freq
     String in_dot_f_a_slash_fq
   }
@@ -35,9 +34,11 @@ task Abpoa {
       ~{if (out_pog) then "--out-pog" else ""} \
       ~{if defined(cons_alg) then ("--cons-alg " +  '"' + cons_alg + '"') else ""} \
       ~{if (diploid) then "--diploid" else ""} \
-      ~{if defined(a_slash_cons_alg) then ("-a/--cons-alg " +  '"' + a_slash_cons_alg + '"') else ""} \
       ~{if defined(min_freq) then ("--min-freq " +  '"' + min_freq + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     aln_mode: "alignment mode [0]\\n0: global, 1: local, 2: extension"
     match: "INT       match score [2]"
@@ -52,7 +53,6 @@ task Abpoa {
     out_pog: "FILE      dump final alignment graph to FILE (.pdf/.png) [Null]"
     cons_alg: "algorithm to use for consensus calling [0]\\n- 0: heaviest bundling\\n- 1: heaviest in column"
     diploid: "input data is diploid [False]"
-    a_slash_cons_alg: "be set as 1 when input is diploid"
     min_freq: "min frequency of each consensus for diploid input [0.30]"
     in_dot_f_a_slash_fq: ""
   }

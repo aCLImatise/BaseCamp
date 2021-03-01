@@ -30,6 +30,9 @@ task IgvHidpi {
       ~{if defined(header) then ("--header " +  '"' + header + '"') else ""} \
       ~{if defined(igv_directory) then ("--igvDirectory " +  '"' + igv_directory + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     preferences: "Path or URL to a preference property file"
     batch_dot: "Path or url to a batch command file"

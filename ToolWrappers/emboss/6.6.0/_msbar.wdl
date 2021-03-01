@@ -20,6 +20,9 @@ task Msbar {
       ~{if (minimum) then "-minimum" else ""} \
       ~{if (maximum) then "-maximum" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     count: "integer    [1] Number of times to perform the mutation\\noperations (Integer 0 or more)"
     menu_types_point: "menu       [0] Types of point mutations to perform\\n(Values: 0 (None); 1 (Any of the following);\\n2 (Insertions); 3 (Deletions); 4 (Changes);\\n5 (Duplications); 6 (Moves))"

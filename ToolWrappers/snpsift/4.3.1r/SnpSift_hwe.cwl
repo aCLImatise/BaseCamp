@@ -3,17 +3,17 @@ id: SnpSift_hwe.cwl
 inputs:
 - id: in__be_quite
   doc: ': Be quite'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -q
 - id: in__be_verbose
   doc: ': Be verbose'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_jar
   doc: ''
-  type: string
+  type: string?
   inputBinding:
     prefix: -jar
 - id: in_java
@@ -28,13 +28,14 @@ inputs:
     position: 1
 - id: in_file_dot_vcf
   doc: ''
-  type: File
+  type: File?
   inputBinding:
     position: 2
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - SnpSift

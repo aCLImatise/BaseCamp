@@ -16,6 +16,9 @@ task SequanaStartPipeline {
       ~{if defined(keywords) then ("--keywords " +  '"' + keywords + '"') else ""} \
       ~{if defined(description) then ("--description " +  '"' + description + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     force: "Force the creation to overwrite existing directory and"
     keywords: "Keywords (you can edit later)"

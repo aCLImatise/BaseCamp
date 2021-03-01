@@ -70,6 +70,9 @@ task BiocondautilsAutobump {
       ~{if defined(log_file_level) then ("--logfile-level " +  '"' + log_file_level + '"') else ""} \
       ~{if defined(log_command_max_lines) then ("--log-command-max-lines " +  '"' + log_command_max_lines + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     packages: "Glob(s) for package[s] to scan. Can be specified more\\nthan once (default: '*')"
     exclude: "Globs for package[s] to exclude from scan. Can be\\nspecified more than once (default: -)"

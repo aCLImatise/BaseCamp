@@ -3,7 +3,7 @@ version 1.0
 task Utgcns {
   input {
     File? test_computation_unitig
-    Boolean? recompute_unitigs_already
+    Boolean? recompute_unitigs_have
     Boolean? show_multialigns
     Boolean? enable_debugging_option
     Boolean? update_store_computing
@@ -23,7 +23,7 @@ task Utgcns {
       ~{partition} \
       ~{opts} \
       ~{if defined(test_computation_unitig) then ("-T " +  '"' + test_computation_unitig + '"') else ""} \
-      ~{if (recompute_unitigs_already) then "-f" else ""} \
+      ~{if (recompute_unitigs_have) then "-f" else ""} \
       ~{if (show_multialigns) then "-v" else ""} \
       ~{if (enable_debugging_option) then "-V" else ""} \
       ~{if (update_store_computing) then "-n" else ""} \
@@ -34,9 +34,12 @@ task Utgcns {
       ~{if (load_all) then "-loadall" else ""} \
       ~{if defined(g) then ("-g " +  '"' + g + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     test_computation_unitig: "Test the computation of the unitig layout in 'file'"
-    recompute_unitigs_already: "Recompute unitigs that already have a multialignment"
+    recompute_unitigs_have: "Recompute unitigs that already have a multialignment"
     show_multialigns: "Show multialigns."
     enable_debugging_option: "Enable debugging option 'verbosemultialign'."
     update_store_computing: "Do not update the store after computing consensus."

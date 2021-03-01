@@ -26,6 +26,9 @@ task UpdateBlastdbpl {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if (num_cores) then "--num_cores" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     decompress: "Downloads, decompresses the archives in the current working directory,\\nand deletes the downloaded archive to save disk space, while\\npreserving the archive checksum files (default: false)."
     show_all: "Show all available pre-formatted BLAST databases (default: false). The\\noutput of this option lists the database names which should be used\\nwhen requesting downloads or updates using this script.\\nIt accepts the optional arguments: 'tsv' and 'pretty' to produce\\ntab-separated values and a human-readable format respectively. These\\nparameters elicit the display of additional metadata if this is\\navailable to the program. This metadata is displayed in columnar\\nformat; the columns represent:\\nname, description, size in gigabytes, date of last update (YYYY-MM-DD\\nformat)."

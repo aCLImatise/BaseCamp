@@ -1,0 +1,253 @@
+!Command
+command:
+- dcmsign
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: dcmfile-in
+  description: DICOM input filename to be processed
+- !Positional
+  optional: false
+  position: 1
+  name: dcmfile-out
+  description: DICOM output filename
+- !Positional
+  optional: false
+  position: 0
+  name: string
+  description: use specified password
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --arguments
+  description: print expanded command line arguments
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  description: quiet mode, print no warnings and errors
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: verbose mode, print processing details
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --debug
+  description: debug mode, print debug information
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ll
+  - --log-level
+  description: "[l]evel: string constant\n(fatal, error, warn, info, debug, trace)\n\
+    use level l for the logger"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -lc
+  - --log-config
+  description: "[f]ilename: string\nuse config file f for the logger"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --read-dataset
+  description: read data set without file meta information
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: =   --read-xfer-auto       use TS recognition (default)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -td
+  - --read-xfer-detect
+  description: ignore TS specified in the file meta header
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -te
+  - --read-xfer-little
+  description: read with explicit VR little endian TS
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -tb
+  - --read-xfer-big
+  description: read with explicit VR big endian TS
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ti
+  - --read-xfer-implicit
+  description: read with implicit VR little endian TS
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verify
+  description: verify all signatures (default)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -pw
+  - --null-passwd
+  description: use empty string as password
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -pem
+  - --pem-keys
+  description: read keys/certificates as PEM file (default)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -der
+  - --der-keys
+  description: read keys/certificates as DER file
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -pf
+  - --profile-none
+  description: don't enforce any signature profile (default)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --tag
+  description: "[t]ag: \"gggg,eeee\" or dictionary name\nsign only specified tag\n\
+    (this option can be specified multiple times)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -tf
+  - --tag-file
+  description: "[f]ilename: string\nread list of tags from text file"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -fn
+  - --format-new
+  description: use correct DICOM signature format (default)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -fo
+  - --format-old
+  description: "use old (pre-3.5.4) DCMTK signature format,\nnon-conformant if signature\
+    \ includes\ncompressed pixel data"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --length-undefined
+  description: write with undefined lengths
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: print this help text and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: print version information and exit
+  args: !EmptyFlagArg {}
+help_text: "$dcmtk: dcmsign v3.6.5 2019-10-28 $\n\ndcmsign: Sign and Verify DICOM\
+  \ Files\nusage: dcmsign [options] dcmfile-in [dcmfile-out]\n\nparameters:\n  dcmfile-in\
+  \                     DICOM input filename to be processed\n  dcmfile-out      \
+  \              DICOM output filename\n\ngeneral options:\n  -h      --help     \
+  \            print this help text and exit\n          --version              print\
+  \ version information and exit\n          --arguments            print expanded\
+  \ command line arguments\n  -q      --quiet                quiet mode, print no\
+  \ warnings and errors\n  -v      --verbose              verbose mode, print processing\
+  \ details\n  -d      --debug                debug mode, print debug information\n\
+  \  -ll     --log-level            [l]evel: string constant\n                   \
+  \              (fatal, error, warn, info, debug, trace)\n                      \
+  \           use level l for the logger\n  -lc     --log-config           [f]ilename:\
+  \ string\n                                 use config file f for the logger\ninput\
+  \ options:\n  input file format:\n    +f    --read-file            read file format\
+  \ or data set (default)\n    +fo   --read-file-only       read file format only\n\
+  \    -f    --read-dataset         read data set without file meta information\n\
+  \  input transfer syntax:\n    -t=   --read-xfer-auto       use TS recognition (default)\n\
+  \    -td   --read-xfer-detect     ignore TS specified in the file meta header\n\
+  \    -te   --read-xfer-little     read with explicit VR little endian TS\n    -tb\
+  \   --read-xfer-big        read with explicit VR big endian TS\n    -ti   --read-xfer-implicit\
+  \   read with implicit VR little endian TS\nsignature commands:\n          --verify\
+  \               verify all signatures (default)\n  +s      --sign              \
+  \   [p]rivate key file, [c]ertificate file: string\n                           \
+  \      create signature in main object\n  +si     --sign-item            [k]eyfile,\
+  \ [c]ertfile, [i]tem location: string\n                                 create signature\
+  \ in sequence item\n  +r      --remove               [s]ignature UID: string\n \
+  \                                remove signature\n  +ra     --remove-all      \
+  \     remove all signatures from data set\nsignature creation options (only with\
+  \ --sign or --sign-item):\n  private key password:\n    +ps   --std-passwd     \
+  \      prompt user to type password on stdin (default)\n    +pw   --use-passwd \
+  \          [p]assword: string \n                                 use specified password\n\
+  \    -pw   --null-passwd          use empty string as password\n  key and certificate\
+  \ file format:\n    -pem  --pem-keys             read keys/certificates as PEM file\
+  \ (default)\n    -der  --der-keys             read keys/certificates as DER file\n\
+  \  digital signature profile:\n    -pf   --profile-none         don't enforce any\
+  \ signature profile (default)\n    +pb   --profile-base         enforce base RSA\
+  \ signature profile\n    +pc   --profile-creator      enforce creator RSA signature\
+  \ profile\n    +pa   --profile-auth         enforce authorization signature profile\n\
+  \  MAC algorithm:\n    +mr   --mac-ripemd160        use RIPEMD 160 (default)\n \
+  \   +ms   --mac-sha1             use SHA-1\n    +mm   --mac-md5              use\
+  \ MD 5\n    +m2   --mac-sha256           use SHA-256\n    +m3   --mac-sha384   \
+  \        use SHA-384\n    +m5   --mac-sha512           use SHA-512\n  tag selection:\n\
+  \    -t    --tag                  [t]ag: \"gggg,eeee\" or dictionary name\n    \
+  \                             sign only specified tag\n                        \
+  \         (this option can be specified multiple times)\n    -tf   --tag-file  \
+  \           [f]ilename: string\n                                 read list of tags\
+  \ from text file\n  signature format:\n    -fn   --format-new           use correct\
+  \ DICOM signature format (default)\n    -fo   --format-old           use old (pre-3.5.4)\
+  \ DCMTK signature format,\n                                 non-conformant if signature\
+  \ includes\n                                 compressed pixel data\noutput options:\n\
+  \  output transfer syntax:\n    +t=   --write-xfer-same      write with same TS\
+  \ as input (default)\n    +te   --write-xfer-little    write with explicit VR little\
+  \ endian TS\n    +tb   --write-xfer-big       write with explicit VR big endian\
+  \ TS\n    +ti   --write-xfer-implicit  write with implicit VR little endian TS\n\
+  \  length encoding in sequences and items:\n    +e    --length-explicit      write\
+  \ with explicit lengths (default)\n    -e    --length-undefined     write with undefined\
+  \ lengths\n  other output options:\n    +d    --dump                 [f]ilename:\
+  \ string\n                                 dump byte stream fed into the MAC codec\
+  \ to file\n                                 (only with --sign or --sign-item)\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/dcmtk:3.6.5--h5fca97b_0

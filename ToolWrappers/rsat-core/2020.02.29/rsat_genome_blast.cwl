@@ -1,12 +1,11 @@
 class: CommandLineTool
 id: rsat_genome_blast.cwl
 inputs:
-- id: in_db_tax_on
-  doc: "In the latter case, there is no need to run the reciprocal blast, since\n\
-    the query yaxon is the same as the database taxon."
-  type: string
+- id: in_task
+  doc: ',blastall'
+  type: string?
   inputBinding:
-    prefix: -dbtaxon
+    prefix: -task
 - id: in_genome_blast
   doc: "\e[1mDESCRIPTION\e[0m"
   type: string
@@ -52,6 +51,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - rsat

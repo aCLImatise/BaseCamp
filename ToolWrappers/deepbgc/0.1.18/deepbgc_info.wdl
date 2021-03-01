@@ -8,6 +8,9 @@ task DeepbgcInfo {
     deepbgc info \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: ""
   }

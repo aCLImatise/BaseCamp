@@ -3,16 +3,19 @@ version 1.0
 task GetNumBasesPerReadInFastaFileperl {
   input {
     String zcat
-    File? file
+    File? var_file
   }
   command <<<
     getNumBasesPerReadInFastaFile_perl \
       ~{zcat} \
-      ~{file}
+      ~{var_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     zcat: ""
-    file: ""
+    var_file: ""
   }
   output {
     File out_stdout = stdout()

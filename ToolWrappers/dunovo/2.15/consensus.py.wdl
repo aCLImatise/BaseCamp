@@ -8,6 +8,9 @@ task Consensuspy {
     consensus_py \
       ~{alignment}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     alignment: "The aligned sequences, in FASTA format (but no multi-line\\nsequences)."
   }

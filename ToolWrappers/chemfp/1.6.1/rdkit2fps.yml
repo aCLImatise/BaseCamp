@@ -1,0 +1,295 @@
+!Command
+command:
+- rdkit2fps
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: filenames
+  description: input structure files (default is stdin)
+- !Positional
+  optional: false
+  position: 0
+  name: SMILES
+  description: smi, ism, usm, can, smi.gz, ism.gz, usm.gz, can.gz
+- !Positional
+  optional: false
+  position: 1
+  name: SDF
+  description: sdf, mol, sd, mdl, sdf.gz, mol.gz, sd.gz, mdl.gz
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --fpSize
+  description: "number of bits in the fingerprint. Default of 2048 for\nRDK, Morgan,\
+    \ topological torsion, atom pair, and\npattern fingerprints, and 512 for Avalon\
+    \ fingerprints"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --from-atoms
+  description: ",INT,...\nfingerprint generation must use these atom indices\n(out\
+    \ of range indices are ignored)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --id-tag
+  description: tag name containing the record id (SD files only)
+  args: !SimpleFlagArg
+    name: NAME
+- !Flag
+  optional: true
+  synonyms:
+  - --in
+  description: input structure format (default guesses from filename)
+  args: !SimpleFlagArg
+    name: FORMAT
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: save the fingerprints to FILENAME (default=stdout)
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --out
+  description: "output structure format (default guesses from output\nfilename, or\
+    \ is 'fps')"
+  args: !SimpleFlagArg
+    name: FORMAT
+- !Flag
+  optional: true
+  synonyms:
+  - --errors
+  description: "how should structure parse errors be handled?\n(default=ignore)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      ignore:
+      strict:
+      report:
+- !Flag
+  optional: true
+  synonyms:
+  - --RDK
+  description: generate RDK fingerprints (default)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --minPath
+  description: "minimum number of bonds to include in the subgraph\n(default=1)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --maxPath
+  description: "maximum number of bonds to include in the subgraph\n(default=7)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --nBitsPerHash
+  description: number of bits to set per path (default=2)
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --useHs
+  description: "|1           include information about the number of hydrogens on\n\
+    each atom (default=1)"
+  args: !SimpleFlagArg
+    name: '0'
+- !Flag
+  optional: true
+  synonyms:
+  - --morgan
+  description: generate Morgan fingerprints
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --radius
+  description: radius for the Morgan algorithm (default=2)
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --useFeatures
+  description: '|1     use chemical-feature invariants (default=0)'
+  args: !SimpleFlagArg
+    name: '0'
+- !Flag
+  optional: true
+  synonyms:
+  - --useChirality
+  description: '|1    include chirality information (default=0)'
+  args: !SimpleFlagArg
+    name: '0'
+- !Flag
+  optional: true
+  synonyms:
+  - --useBondTypes
+  description: '|1    include bond type information (default=1)'
+  args: !SimpleFlagArg
+    name: '0'
+- !Flag
+  optional: true
+  synonyms:
+  - --torsions
+  description: generate Topological Torsion fingerprints
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --targetSize
+  description: number of bits in the fingerprint (default=4)
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --pairs
+  description: generate Atom Pair fingerprints
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --minLength
+  description: minimum bond count for a pair (default=1)
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --maxLength
+  description: maximum bond count for a pair (default=30)
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --maccs166
+  description: generate MACCS fingerprints
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --avalon
+  description: generate Avalon fingerprints
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --isQuery
+  description: "|1         is the fingerprint for a query structure? (1 if yes, 0\n\
+    if no) (default=0)"
+  args: !SimpleFlagArg
+    name: '0'
+- !Flag
+  optional: true
+  synonyms:
+  - --bitFlags
+  description: "bit flags, SSSBits are 32767 and similarity bits are\n15761407 (default=15761407)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --pattern
+  description: generate (substructure) pattern fingerprints
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --substruct
+  description: generate ChemFP substructure fingerprints
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: rdkit2fps [-h] [--fpSize INT] [--RDK] [--minPath INT] [--maxPath\
+  \ INT]\n                 [--nBitsPerHash INT] [--useHs 0|1] [--morgan] [--radius\
+  \ INT]\n                 [--useFeatures 0|1] [--useChirality 0|1] [--useBondTypes\
+  \ 0|1]\n                 [--torsions] [--targetSize INT] [--pairs] [--minLength\
+  \ INT]\n                 [--maxLength INT] [--maccs166] [--avalon] [--isQuery 0|1]\n\
+  \                 [--bitFlags INT] [--pattern] [--substruct] [--rdmaccs]\n     \
+  \            [--rdmaccs/1] [--from-atoms INT,INT,...] [--id-tag NAME]\n        \
+  \         [--in FORMAT] [-o FILENAME] [--out FORMAT]\n                 [--errors\
+  \ {strict,report,ignore}] [--version]\n                 [filenames [filenames ...]]\n\
+  \nGenerate FPS fingerprints from a structure file using RDKit\n\npositional arguments:\n\
+  \  filenames             input structure files (default is stdin)\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  --fpSize INT       \
+  \   number of bits in the fingerprint. Default of 2048 for\n                   \
+  \     RDK, Morgan, topological torsion, atom pair, and\n                       \
+  \ pattern fingerprints, and 512 for Avalon fingerprints\n  --from-atoms INT,INT,...\n\
+  \                        fingerprint generation must use these atom indices\n  \
+  \                      (out of range indices are ignored)\n  --id-tag NAME     \
+  \    tag name containing the record id (SD files only)\n  --in FORMAT          \
+  \ input structure format (default guesses from filename)\n  -o FILENAME, --output\
+  \ FILENAME\n                        save the fingerprints to FILENAME (default=stdout)\n\
+  \  --out FORMAT          output structure format (default guesses from output\n\
+  \                        filename, or is 'fps')\n  --errors {strict,report,ignore}\n\
+  \                        how should structure parse errors be handled?\n       \
+  \                 (default=ignore)\n  --version             show program's version\
+  \ number and exit\n\nRDKit topological fingerprints:\n  --RDK                 generate\
+  \ RDK fingerprints (default)\n  --minPath INT         minimum number of bonds to\
+  \ include in the subgraph\n                        (default=1)\n  --maxPath INT\
+  \         maximum number of bonds to include in the subgraph\n                 \
+  \       (default=7)\n  --nBitsPerHash INT    number of bits to set per path (default=2)\n\
+  \  --useHs 0|1           include information about the number of hydrogens on\n\
+  \                        each atom (default=1)\n\nRDKit Morgan fingerprints:\n \
+  \ --morgan              generate Morgan fingerprints\n  --radius INT          radius\
+  \ for the Morgan algorithm (default=2)\n  --useFeatures 0|1     use chemical-feature\
+  \ invariants (default=0)\n  --useChirality 0|1    include chirality information\
+  \ (default=0)\n  --useBondTypes 0|1    include bond type information (default=1)\n\
+  \nRDKit Topological Torsion fingerprints:\n  --torsions            generate Topological\
+  \ Torsion fingerprints\n  --targetSize INT      number of bits in the fingerprint\
+  \ (default=4)\n\nRDKit Atom Pair fingerprints:\n  --pairs               generate\
+  \ Atom Pair fingerprints\n  --minLength INT       minimum bond count for a pair\
+  \ (default=1)\n  --maxLength INT       maximum bond count for a pair (default=30)\n\
+  \n166 bit MACCS substructure keys:\n  --maccs166            generate MACCS fingerprints\n\
+  \nAvalon fingerprints:\n  --avalon              generate Avalon fingerprints\n \
+  \ --isQuery 0|1         is the fingerprint for a query structure? (1 if yes, 0\n\
+  \                        if no) (default=0)\n  --bitFlags INT        bit flags,\
+  \ SSSBits are 32767 and similarity bits are\n                        15761407 (default=15761407)\n\
+  \nRDKit Pattern fingerprints:\n  --pattern             generate (substructure) pattern\
+  \ fingerprints\n\n881 bit substructure keys:\n  --substruct           generate ChemFP\
+  \ substructure fingerprints\n\nChemFP version of the 166 bit RDKit/MACCS keys:\n\
+  \  --rdmaccs, --rdmaccs/2\n                        generate 166 bit RDKit/MACCS\
+  \ fingerprints (version 2)\n  --rdmaccs/1           use the version 1 definition\
+  \ for --rdmaccs\n\nThis program guesses the input structure format based on the\
+  \ filename\nextension. If the data comes from stdin, or the extension name us\n\
+  unknown, then use \"--in\" to change the default input format. The\nsupported format\
+  \ extensions are:\n\n  File Type      Valid FORMATs (use gz if compressed)\n  ---------\
+  \      ------------------------------------\n   SMILES        smi, ism, usm, can,\
+  \ smi.gz, ism.gz, usm.gz, can.gz\n   SDF           sdf, mol, sd, mdl, sdf.gz, mol.gz,\
+  \ sd.gz, mdl.gz\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/chemfp:1.6.1--py27h3dcb392_0

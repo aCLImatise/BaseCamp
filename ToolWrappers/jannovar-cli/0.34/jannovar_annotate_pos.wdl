@@ -32,6 +32,9 @@ task JannovarAnnotatepos {
       ~{if defined(https_proxy) then ("--https-proxy " +  '"' + https_proxy + '"') else ""} \
       ~{if defined(ftp_proxy) then ("--ftp-proxy " +  '"' + ftp_proxy + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     database: "Path to database .ser file"
     genomic_change: "Genomic change to annotate,  you can give multiple\\nones"

@@ -14,6 +14,9 @@ task DrawModelGraphOutput {
       ~{sequence_number} \
       ~{var_output}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     draw_model_graph: ""
     model: ""

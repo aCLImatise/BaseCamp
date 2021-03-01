@@ -14,6 +14,9 @@ task IvarGetmasked {
       ~{if (required_primer_pair) then "-f" else ""} \
       ~{if (required_prefix_output) then "-p" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     required_input_filtered: "(Required) Input filtered variants tsv generated from `ivar filtervariants`"
     required_bed_file: "(Required) BED file with primer sequences and positions"

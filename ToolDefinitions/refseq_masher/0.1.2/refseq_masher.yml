@@ -1,0 +1,218 @@
+&id001 !Command
+command:
+- refseq_masher
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: "Logging verbosity (-v for logging warnings; -vvv for logging\ndebug\
+    \ info)"
+  args: !EmptyFlagArg {}
+parent:
+subcommands:
+- !Command
+  command:
+  - refseq_masher
+  - matches
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: INPUT...
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --mash-bin
+    description: Mash binary path (default="mash")
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: Output file path (default="-"/stdout)
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - --output-type
+    description: '[tab|csv]         Output file type (tab|csv)'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    - --top-n-results
+    description: "Output top N results sorted by distance in\nascending order (default=5)"
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    - --min-kmer-threshold
+    description: "Mash sketch of reads: \"Minimum copies of\neach k-mer required to\
+      \ pass noise filter for\nreads\" (default=8)"
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - -T
+    - --tmp-dir
+    description: "Temporary analysis files path (where to save\ntemp Mash sketch file)\
+      \ (default=\"/tmp\")"
+    args: !SimpleFlagArg
+      name: DIRECTORY
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: refseq_masher matches [OPTIONS] INPUT...\n\n  Find NCBI RefSeq\
+    \ genome matches for an input genome fasta file\n\n  Input is expected to be one\
+    \ or more FASTA/FASTQ files or one or more\n  directories containing FASTA/FASTQ\
+    \ files. Files can be Gzipped.\n\nOptions:\n  --mash-bin TEXT                \
+    \ Mash binary path (default=\"mash\")\n  -o, --output PATH               Output\
+    \ file path (default=\"-\"/stdout)\n  --output-type [tab|csv]         Output file\
+    \ type (tab|csv)\n  -n, --top-n-results INTEGER     Output top N results sorted\
+    \ by distance in\n                                  ascending order (default=5)\n\
+    \n  -m, --min-kmer-threshold INTEGER\n                                  Mash sketch\
+    \ of reads: \"Minimum copies of\n                                  each k-mer\
+    \ required to pass noise filter for\n                                  reads\"\
+    \ (default=8)\n\n  -T, --tmp-dir DIRECTORY         Temporary analysis files path\
+    \ (where to save\n                                  temp Mash sketch file) (default=\"\
+    /tmp\")\n\n  -h, --help                      Show this message and exit.\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/refseq_masher:0.1.2--py_0
+- !Command
+  command:
+  - refseq_masher
+  - contains
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: Screen
+    description: Input is expected to be one or more FASTA/FASTQ files or one or more
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --mash-bin
+    description: Mash binary path (default="mash")
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: Output file path (default="-"/stdout)
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - --output-type
+    description: '[tab|csv]      Output file type (tab|csv)'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    - --top-n-results
+    description: "Output top N results sorted by identity in\nascending order (default=0/all)"
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --min-identity
+    description: "Mash screen min identity to report\n(default=0.9)"
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --max-pvalue
+    description: "Mash screen max p-value to report\n(default=0.01)"
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --parallelism
+    description: "Mash screen parallelism; number of threads to\nspawn (default=1)"
+    args: !SimpleFlagArg
+      name: INTEGER
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: refseq_masher contains [OPTIONS] INPUT...\n\n  Find the NCBI\
+    \ RefSeq genomes contained in your sequence files using Mash\n  Screen\n\n  Input\
+    \ is expected to be one or more FASTA/FASTQ files or one or more\n  directories\
+    \ containing FASTA/FASTQ files. Files can be Gzipped.\n\nOptions:\n  --mash-bin\
+    \ TEXT              Mash binary path (default=\"mash\")\n  -o, --output PATH \
+    \           Output file path (default=\"-\"/stdout)\n  --output-type [tab|csv]\
+    \      Output file type (tab|csv)\n  -n, --top-n-results INTEGER  Output top N\
+    \ results sorted by identity in\n                               ascending order\
+    \ (default=0/all)\n\n  -i, --min-identity FLOAT     Mash screen min identity to\
+    \ report\n                               (default=0.9)\n\n  -v, --max-pvalue FLOAT\
+    \       Mash screen max p-value to report\n                               (default=0.01)\n\
+    \n  -p, --parallelism INTEGER    Mash screen parallelism; number of threads to\n\
+    \                               spawn (default=1)\n\n  -h, --help            \
+    \       Show this message and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/refseq_masher:0.1.2--py_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Show the version and exit.
+  args: !EmptyFlagArg {}
+help_text: "Usage: refseq_masher [OPTIONS] COMMAND [ARGS]...\n\n  Find the closest\
+  \ matching NCBI RefSeq genomes or the genomes contained in\n  your contigs or reads.\n\
+  \nOptions:\n  --version      Show the version and exit.\n  -v, --verbose  Logging\
+  \ verbosity (-v for logging warnings; -vvv for logging\n                 debug info)\n\
+  \n  -h, --help     Show this message and exit.\n\nCommands:\n  contains  Find the\
+  \ NCBI RefSeq genomes contained in your sequence files...\n  matches   Find NCBI\
+  \ RefSeq genome matches for an input genome fasta file...\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/refseq_masher:0.1.2--py_0

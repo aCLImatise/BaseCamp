@@ -28,6 +28,9 @@ task HpAssembleAmplicons {
       ~{if defined(log_file) then ("--logfile " +  '"' + log_file + '"') else ""} \
       ~{if (debug) then "--debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ref_gtf: "[--outdir OUTDIR]"
     contigs_fa: "Fasta file with assembled contigs"

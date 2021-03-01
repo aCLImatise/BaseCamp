@@ -3,12 +3,12 @@ id: beauti.cwl
 inputs:
 - id: in_advanced
   doc: advanced & developer features
-  type: string
+  type: string?
   inputBinding:
     prefix: -advanced
 - id: in_version
   doc: the version and credits and stop
-  type: string
+  type: string?
   inputBinding:
     prefix: -version
 - id: in_alexei_atcs_dot_auckland_do_tac_dot_nz
@@ -30,6 +30,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - beauti

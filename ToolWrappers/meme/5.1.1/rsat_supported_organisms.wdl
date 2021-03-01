@@ -4,6 +4,9 @@ task Rsatsupportedorganisms {
   command <<<
     rsat_supported_organisms
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

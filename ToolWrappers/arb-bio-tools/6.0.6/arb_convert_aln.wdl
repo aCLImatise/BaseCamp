@@ -8,6 +8,9 @@ task ArbConvertAln {
     arb_convert_aln \
       ~{where}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     where: "INFMT  may be 'GenBank', 'EMBL', 'AE2' or 'SwissProt' and\\nOUTFMT may be 'GenBank', 'EMBL', 'AE2', 'NEXUS', 'PHYLIP', 'FASTDNAML', 'GCG' or 'Printable'"
   }

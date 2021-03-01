@@ -14,6 +14,9 @@ task Alleles {
       ~{if defined(gt) then ("--gt " +  '"' + gt + '"') else ""} \
       ~{if defined(sample) then ("--sample " +  '"' + sample + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     input_file: "Input VCF file."
     arg_output_file: "[ --output-file ] arg The output file name (VCF / BCF / VCF.gz)."

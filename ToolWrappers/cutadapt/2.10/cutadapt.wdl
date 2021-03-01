@@ -112,6 +112,9 @@ task Cutadapt {
       ~{if defined(too_short_paired_output) then ("--too-short-paired-output " +  '"' + too_short_paired_output + '"') else ""} \
       ~{if defined(too_long_paired_output) then ("--too-long-paired-output " +  '"' + too_long_paired_output + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     debug: "[{trace}]     Print debug log. 'trace' prints also DP matrices"
     cores: "Number of CPU cores to use. Use 0 to auto-detect.\\nDefault: 1"

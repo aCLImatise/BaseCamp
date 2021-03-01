@@ -14,6 +14,9 @@ task Mbannotatetable {
       ~{gff_three_an_not} \
       ~{if defined(max_n) then ("--max_n " +  '"' + max_n + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     max_n: ""
     par_clip_table: "path to parclip table"

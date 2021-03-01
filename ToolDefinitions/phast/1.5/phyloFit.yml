@@ -3,12 +3,16 @@ command:
 - phyloFit
 positional:
 - !Positional
-  description: They may also include information about parameters
+  optional: false
   position: 0
   name: frequencies.
-  optional: false
+  description: They may also include information about parameters
 named:
 - !Flag
+  optional: true
+  synonyms:
+  - --features
+  - -g
   description: "Annotations file (GFF or BED format) describing features on\none or\
     \ more sequences in the alignment.  Together with a\ncategory map (see --catmap),\
     \ will be taken to define site\ncategories, and a separate model will be estimated\
@@ -16,43 +20,21 @@ named:
     \ for each type of feature, and they will be numbered in\nthe order of appearance\
     \ of the features.  Features are assumed\nto use the coordinate frame of the first\
     \ sequence in the\nalignment and should be non-overlapping (see 'refeature\n--unique')."
-  synonyms:
-  - --features
-  - -g
   args: !SimpleFlagArg
     name: fname
-  optional: true
 - !Flag
-  description: "\").\nphyloFit --tree \"((human,chimp),(mouse,rat))\" --subst-mod\
-    \ HKY85\n--out-root myfile --nrates 4 --msa-format SS\nprimate-rodent.ss"
+  optional: true
   synonyms:
   - -o
+  description: "\").\nphyloFit --tree \"((human,chimp),(mouse,rat))\" --subst-mod\
+    \ HKY85\n--out-root myfile --nrates 4 --msa-format SS\nprimate-rodent.ss"
   args: !SimpleFlagArg
     name: SS
-  optional: true
 - !Flag
-  description: "(for use with context-dependent substitution models; not\ncompatible\
-    \ with --markov, --features, or\n--msa-format SS) Avoid using overlapping tuples\
-    \ of sites\nin parameter estimation.  If a dinucleotide model is selected,\nevery\
-    \ other tuple will be considered, and if a nucleotide\ntriplet model is selected,\
-    \ every third tuple will be\nconsidered.  This option cannot be used with an alignment\n\
-    represented only by unordered sufficient statistics."
+  optional: true
   synonyms:
-  - --non-overlapping
-  - -V
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "|MED|LOW\n(default HIGH) Level of precision to use in estimating model\n\
-    parameters.  Affects convergence criteria for iterative\nalgorithms: higher precision\
-    \ means more iterations and longer\nexecution time."
-  synonyms:
-  - --precision
-  - -p
-  args: !SimpleFlagArg
-    name: HIGH
-  optional: true
-- !Flag
+  - --tree
+  - -t
   description: "|<tree_string>\n(Required if more than three species, or more than\
     \ two species\nand a non-reversible substitution model, e.g., UNREST, U2, U3)\n\
     Name of file or literal string defining tree topology.  Tree\nmust be in Newick\
@@ -61,13 +43,13 @@ named:
     ,\n--tree \"(human,(mouse,rat))\".  Currently, the topology must be\nrooted. \
     \ When a reversible substitution model is used, the root\nis ignored during the\
     \ optimization procedure."
-  synonyms:
-  - --tree
-  - -t
   args: !SimpleFlagArg
     name: tree_fname
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --subst-mod
+  - -s
   description: "|F81|HKY85|HKY85+Gap|REV|SSREV|UNREST|R2|R2S|U2|U2S|R3|R3S|U3|U3S\n\
     (default REV).  Nucleotide substitution model.  JC69, F81, HKY85\nREV, and UNREST\
     \ have the usual meanings (see, e.g., Yang,\nGoldman, and Friday, 1994).  SSREV\
@@ -76,13 +58,13 @@ named:
     considered \"context-dependent\", are as defined in Siepel and\nHaussler, 2004.\
     \  The options --EM and --precision MED are\nrecommended with context-dependent\
     \ models (see below)."
-  synonyms:
-  - --subst-mod
-  - -s
   args: !SimpleFlagArg
     name: JC69
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --msa-format
+  - -i
   description: "|PHYLIP|MPM|MAF|SS\n(default is to guess format from file contents)\
     \ Alignment format.\nFASTA is as usual.  PHYLIP is compatible with the formats\
     \ used in\nthe PHYLIP and PAML packages.  MPM is the format used by the\nMultiPipMaker\
@@ -91,212 +73,231 @@ named:
     \ format describing the\nsufficient statistics for phylogenetic inference (distinct\
     \ columns\nor tuple of columns and their counts).  Note that the program\n\"msa_view\"\
     \ can be used for file conversion."
-  synonyms:
-  - --msa-format
-  - -i
   args: !SimpleFlagArg
     name: FASTA
-  optional: true
 - !Flag
-  description: "Require at least <ninf_sites> \"informative\" sites -- i.e.,\nsites\
-    \ at which at least two non-gap and non-missing-data ('N'\nor '*') characters\
-    \ are present.  Default is 50."
+  optional: true
+  synonyms:
+  - --out-root
+  - -o
+  description: "(default \"phyloFit\").  Use specified string as root filename\nfor\
+    \ all files created."
+  args: !SimpleFlagArg
+    name: output_fname_root
+- !Flag
+  optional: true
   synonyms:
   - --min-informative
   - -I
+  description: "Require at least <ninf_sites> \"informative\" sites -- i.e.,\nsites\
+    \ at which at least two non-gap and non-missing-data ('N'\nor '*') characters\
+    \ are present.  Default is 50."
   args: !SimpleFlagArg
     name: ninf_sites
-  optional: true
 - !Flag
-  description: "Treat alignment gap characters ('-') like ordinary bases.  By\ndefault,\
-    \ they are treated as missing data."
+  optional: true
   synonyms:
   - --gaps-as-bases
   - -G
+  description: "Treat alignment gap characters ('-') like ordinary bases.  By\ndefault,\
+    \ they are treated as missing data."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --ignore-branches
+  - -b
   description: "Ignore specified branches in likelihood computations and parameter\n\
     estimation, and treat the induced subtrees as independent.  Can be\nuseful for\
     \ likelihood ratio tests.  The argument <branches> should\nbe a comma-separated\
     \ list of nodes in the tree, indicating the\nbranches above these nodes, e.g.,\
     \ human-chimp,cow-dog.  (See\ntree_doctor --name-ancestors regarding names for\
     \ ancestral nodes.)\nThis option does not currently work with --EM."
-  synonyms:
-  - --ignore-branches
-  - -b
   args: !SimpleFlagArg
     name: branches
-  optional: true
 - !Flag
-  description: Proceed quietly.
+  optional: true
   synonyms:
   - --quiet
   - -q
+  description: Proceed quietly.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(for use with --init-model) Simply evaluate the log likelihood of\n\
-    the specified tree model, without performing any further\noptimization.  Can be\
-    \ used with --post-probs, --expected-subs, and\n--expected-total-subs."
+  optional: true
   synonyms:
   - --lnl
   - -L
+  description: "(for use with --init-model) Simply evaluate the log likelihood of\n\
+    the specified tree model, without performing any further\noptimization.  Can be\
+    \ used with --post-probs, --expected-subs, and\n--expected-total-subs."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Fit model(s) using EM rather than the BFGS quasi-Newton\nalgorithm\
-    \ (the default)."
+  optional: true
   synonyms:
   - --EM
   - -E
+  description: "Fit model(s) using EM rather than the BFGS quasi-Newton\nalgorithm\
+    \ (the default)."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Write log to <log_fname> describing details of the optimization\n\
-    procedure."
+  optional: true
+  synonyms:
+  - --precision
+  - -p
+  description: "|MED|LOW\n(default HIGH) Level of precision to use in estimating model\n\
+    parameters.  Affects convergence criteria for iterative\nalgorithms: higher precision\
+    \ means more iterations and longer\nexecution time."
+  args: !SimpleFlagArg
+    name: HIGH
+- !Flag
+  optional: true
   synonyms:
   - --log
   - -l
+  description: "Write log to <log_fname> describing details of the optimization\n\
+    procedure."
   args: !SimpleFlagArg
     name: log_fname
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --init-model
+  - -M
   description: "Initialize with specified tree model.  By choosing good\nstarting\
     \ values for parameters, it is possible to reduce\nexecution time dramatically.\
     \  If this option is chosen, --tree\nis not allowed.  The substitution model used\
     \ in the given\nmodel will be used unless --subst-mod is also specified.\nNote:\
     \ currently only one mod_fname may be specified; it will be\nused for all categories."
-  synonyms:
-  - --init-model
-  - -M
   args: !SimpleFlagArg
     name: mod_fname
-  optional: true
 - !Flag
-  description: "Initialize parameters randomly.  Can be used multiple times to test\n\
-    whether the m.l.e. is real."
+  optional: true
   synonyms:
   - --init-random
   - -r
+  description: "Initialize parameters randomly.  Can be used multiple times to test\n\
+    whether the m.l.e. is real."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --seed
+  - -D
   description: "Provide a random number seed for choosing initial parameter values\n\
     (usually with --init-random, though random values are used in some\nother cases\
     \ as well).  Should be an integer >=1.  If not provided,\nseed is chosen based\
     \ on current time."
-  synonyms:
-  - --seed
-  - -D
   args: !SimpleFlagArg
     name: seed
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --init-parsimony
+  - -y
   description: "Initialize branch lengths using parsimony counts for given data.\n\
     Only currently implemented for models with single character state\n(ie, not di-\
     \ or tri-nucleotides).  Other --init options such\nas --init-random or --init-model\
     \ can be used in conjunction to\ninitialize substitution matrix parameters."
-  synonyms:
-  - --init-parsimony
-  - -y
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Print parsimony score to given file, and quit.  (Does not optimize\n\
-    or report likelihoods)."
+  optional: true
   synonyms:
   - --print-parsimony
   - -Y
+  description: "Print parsimony score to given file, and quit.  (Does not optimize\n\
+    or report likelihoods)."
   args: !SimpleFlagArg
     name: filename
-  optional: true
 - !Flag
-  description: "Assume a molecular clock in estimation.  Causes the distances to all\n\
-    descendant leaves to be equal for each ancestral node and cuts the\nnumber of\
-    \ free branch-length parameters roughly in half."
+  optional: true
   synonyms:
   - --clock
   - -z
+  description: "Assume a molecular clock in estimation.  Causes the distances to all\n\
+    descendant leaves to be equal for each ancestral node and cuts the\nnumber of\
+    \ free branch-length parameters roughly in half."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --scale-only
+  - -B
   description: "(for use with --init-model) Estimate only the scale of the tree,\n\
     rather than individual branch lengths (branch proportions fixed).\nEquilibrium\
     \ frequencies and rate-matrix parameters will still be\nestimated unless --no-freqs\
     \ and --no-rates are used."
-  synonyms:
-  - --scale-only
-  - -B
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --scale-subtree
+  - -S
   description: "(for use with --scale-only) Estimate separate scale factors for\n\
     subtree beneath identified node and rest of tree.  The branch\nleading to the\
     \ subtree is included with the subtree.  If \":loss\" or\n\":gain\" is appended\
     \ to <node_name>, subtree scale is constrained to\nbe greater than or less than\
     \ (respectively) scale for rest of tree."
-  synonyms:
-  - --scale-subtree
-  - -S
   args: !SimpleFlagArg
     name: node_name
-  optional: true
 - !Flag
-  description: "Estimate equilibrium frequencies by maximum likelihood, rather\nthan\
-    \ approximating them by the relative frequencies in the data.\nIf using the SSREV\
-    \ model, this option implies --sym-freqs."
+  optional: true
   synonyms:
   - --estimate-freqs
   - -F
+  description: "Estimate equilibrium frequencies by maximum likelihood, rather\nthan\
+    \ approximating them by the relative frequencies in the data.\nIf using the SSREV\
+    \ model, this option implies --sym-freqs."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Estimate equilibrium frequencies, assuming freq(A)=freq(T) and\nfreq(C)=freq(G).\
-    \  This only works for an alphabet ACGT (and possibly\ngap).  This option implies\
-    \ --estimate-freqs."
+  optional: true
   synonyms:
   - --sym-freqs
   - -W
+  description: "Estimate equilibrium frequencies, assuming freq(A)=freq(T) and\nfreq(C)=freq(G).\
+    \  This only works for an alphabet ACGT (and possibly\ngap).  This option implies\
+    \ --estimate-freqs."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(for use with --init-model) Do not estimate equilibrium\nfrequencies;\
-    \ just use the ones from the given tree model."
+  optional: true
   synonyms:
   - --no-freqs
   - -f
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "(for use with --init-model) Do not estimate rate-matrix\nparameters;\
+  description: "(for use with --init-model) Do not estimate equilibrium\nfrequencies;\
     \ just use the ones from the given tree model."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - --no-rates
   - -n
+  description: "(for use with --init-model) Do not estimate rate-matrix\nparameters;\
+    \ just use the ones from the given tree model."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --ancestor
+  - -A
   description: "Treat specified sequence as the root of the tree.  The tree\ntopology\
     \ must define this sequence to be a child of the root\n(in practice, the branch\
     \ from the root to the specified\nsequence will be retained, but will be constrained\
     \ to have\nlength zero)."
-  synonyms:
-  - --ancestor
-  - -A
   args: !SimpleFlagArg
     name: seqname
-  optional: true
 - !Flag
-  description: "For each parameter, report estimate, variance, and 95%% confidence\n\
-    interval, printed to given filename, one parameter per line."
+  optional: true
   synonyms:
   - --error
   - -e
+  description: "For each parameter, report estimate, variance, and 95%% confidence\n\
+    interval, printed to given filename, one parameter per line."
   args: !SimpleFlagArg
     name: filename
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --no-opt
+  - -O
   description: "Hold parameters listed in comma-separated param_list constant at\n\
     initial values.  This applies only to the \"main\" model, and not to\nany models\
     \ defined with the --alt-mod option.  Param list can\ncontain values such as \"\
@@ -310,54 +311,54 @@ named:
     \ two branches\ncoming from root of tree are treated as one.  So they should both\n\
     be held constant, or not held constant.  This option does *not* work\nwith --scale-only\
     \ or --clock."
-  synonyms:
-  - --no-opt
-  - -O
   args: !SimpleFlagArg
     name: param_list
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --bound
   description: "<param_name[lower_bound,upper_bound]>\nSet boundaries for parameter.\
     \  lower_bound or upper_bound may be\nempty string to keep default.  For example\
     \ --bound gc_param[1,] will\nset the lower bound for gc_param to 1 (keeping upper\
     \ bound at infinity),\nfor a GC model.  Only applies to parameters for model in\
     \ the \"main\"\ntree, but similar syntax can be used within the --alt-mod arguments.\n\
     Can be used multiple times to set boundaries for different parameters."
-  synonyms:
-  - --bound
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --selection
   description: "Use selection in the model (is also implied if --init-model is used\n\
     and contains selection parameter).  Selection scales rate matrix\nentries by selection_param/(1-exp(-selection-param));\
     \ this is done\nafter rate matrix is scaled to set expected number of substitutions\n\
     per unit time to 1.  If using codon models selection acts only on\nnonysynonymous\
     \ mutations."
-  synonyms:
-  - --selection
   args: !SimpleFlagArg
     name: selection_param
-  optional: true
 - !Flag
-  description: "(default 1).  Number of rate categories to use.  Specifying a\nvalue\
-    \ of greater than one causes the discrete gamma model for\nrate variation to be\
-    \ used (Yang, 1994)."
+  optional: true
   synonyms:
   - --nrates
   - -k
+  description: "(default 1).  Number of rate categories to use.  Specifying a\nvalue\
+    \ of greater than one causes the discrete gamma model for\nrate variation to be\
+    \ used (Yang, 1994)."
   args: !SimpleFlagArg
     name: nratecats
-  optional: true
 - !Flag
-  description: "(for use with --nrates).  Initial value for alpha, the shape\nparameter\
-    \ of the gamma distribution.  Default is 1."
+  optional: true
   synonyms:
   - --alpha
   - -a
+  description: "(for use with --nrates).  Initial value for alpha, the shape\nparameter\
+    \ of the gamma distribution.  Default is 1."
   args: !SimpleFlagArg
     name: alpha
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --rate-constants
+  - -K
   description: "Use a non-parameteric mixture model for rates, instead of\nassuming\
     \ a gamma distribution.  The argument <rate_consts>\nmust be a comma-delimited\
     \ list explicitly defining the rate\nconstants to be used.  The \"weight\" (mixing\
@@ -365,47 +366,47 @@ named:
     \ option implies --EM).  If --alpha is used with\nthis option, then the mixing\
     \ proportions will be initialized\nto reflect a gamma distribution with the specified\
     \ shape\nparameter."
-  synonyms:
-  - --rate-constants
-  - -K
   args: !SimpleFlagArg
     name: rate_consts
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --catmap
+  - -c
   description: "|<string>\n(optionally use with --features) Mapping of feature types\
     \ to\ncategory numbers.  Can either give a filename or an \"inline\"\ndescription\
     \ of a simple category map, e.g., --catmap \"NCATS =\n3 ; CDS 1-3\" or --catmap\
     \ \"NCATS = 1 ; UTR 1\".  Note that\ncategory 0 is reserved for \"background\"\
     \ (everything that is\nnot described by a defined feature type)."
-  synonyms:
-  - --catmap
-  - -c
   args: !SimpleFlagArg
     name: fname
-  optional: true
 - !Flag
-  description: "(optionally use with --features) Estimate models for only the\nspecified\
-    \ categories (comma-delimited list categories, by name\nor numbera).  Default\
-    \ is to fit a model for every category."
+  optional: true
   synonyms:
   - --do-cats
   - -C
+  description: "(optionally use with --features) Estimate models for only the\nspecified\
+    \ categories (comma-delimited list categories, by name\nor numbera).  Default\
+    \ is to fit a model for every category."
   args: !SimpleFlagArg
     name: cat_list
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --reverse-groups
+  - -R
   description: "(optionally use with --features) Group features by <tag> (e.g.,\n\"\
     transcript_id\" or \"exon_id\") and reverse complement\nsegments of the alignment\
     \ corresponding to groups on the\nreverse strand.  Groups must be non-overlapping\
     \ (see refeature\n--unique).  Useful with categories corresponding to\nstrand-specific\
     \ phenomena (e.g., codon positions)."
-  synonyms:
-  - --reverse-groups
-  - -R
   args: !SimpleFlagArg
     name: tag
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --markov
+  - -N
   description: "(for use with context-dependent substitutions models and not\navailable\
     \ with --EM.)  Assume Markov dependence of alignment\ncolumns, and compute the\
     \ conditional probability of each\ncolumn given its N-1 predecessors using the\
@@ -419,12 +420,23 @@ named:
     \ desired,\nparameters can be estimated without --markov, and\nthen the likelihood\
     \ can be evaluated using --lnl and\n--markov together.  This gives a lower bound\
     \ on the\nlikelihood of the Markov-dependent model."
-  synonyms:
-  - --markov
-  - -N
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --non-overlapping
+  - -V
+  description: "(for use with context-dependent substitution models; not\ncompatible\
+    \ with --markov, --features, or\n--msa-format SS) Avoid using overlapping tuples\
+    \ of sites\nin parameter estimation.  If a dinucleotide model is selected,\nevery\
+    \ other tuple will be considered, and if a nucleotide\ntriplet model is selected,\
+    \ every third tuple will be\nconsidered.  This option cannot be used with an alignment\n\
+    represented only by unordered sufficient statistics."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --label-branches
   description: ",branch2,branch3...:label\nCreate a group of branches by giving a\
     \ set of branches a\nsingle label.  The label should be a word which does not\n\
     contain special characters (in particular, no spaces, brackets,\nparentheses,\
@@ -437,21 +449,22 @@ named:
     \ be defined without using --label-branches\nby specifing the tree (either on\
     \ the command-line or within\ninit-model) as follows:\n(((hg18 # HC, chimp #HC)#HC,\
     \ (mouse,rat))"
-  synonyms:
-  - --label-branches
   args: !SimpleFlagArg
     name: branch1
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --label-subtree
   description: "[+]:label\nSimilar to label-branches, except labels the entire subtree\n\
     of the named node.  If the node name is followed by a \"+\" sign,\nthen includes\
     \ the branch leading up to the node in the subtree."
-  synonyms:
-  - --label-subtree
   args: !SimpleFlagArg
     name: node
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --alt-model
+  - -d
   description: "<label:(model|param_list)>\nCreate a lineage-specific substitution\
     \ model on a group of branches.\nThe group is defined by a label, which can be\
     \ specified within\nthe tree string (using the # sign notation), or by using the\n\
@@ -483,87 +496,83 @@ named:
     \ mouse,rat,mouse-rat:MR \\\n--alt-model \"MR:kappa[0,1]\"\nor\nphyloFit align.fa\
     \ --subst-mod HKY85 \\\n--tree \"(human, (mouse,rat)mouse-rat, cow)\" \\\n--label-subtree\
     \ \"mouse-rat+:MR\" \\\n--alt-model \"MR:kappa[0,1]\""
-  synonyms:
-  - --alt-model
-  - -d
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Output posterior probabilities of all bases at all ancestral\nnodes.\
-    \  Output will be to auxiliary file(s) with suffix\n\".postprobs\"."
+  optional: true
   synonyms:
   - --post-probs
   - -P
+  description: "Output posterior probabilities of all bases at all ancestral\nnodes.\
+    \  Output will be to auxiliary file(s) with suffix\n\".postprobs\"."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Output posterior expected number of substitutions on each branch at\n\
-    each site, summed across all types of substitutions.\nOutput will be to auxiliary\
-    \ file(s) with suffix \".expsub\"."
+  optional: true
   synonyms:
   - --expected-subs
   - -X
+  description: "Output posterior expected number of substitutions on each branch at\n\
+    each site, summed across all types of substitutions.\nOutput will be to auxiliary\
+    \ file(s) with suffix \".expsub\"."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Output posterior expected number of substitutions of each type\non\
-    \ each branch, for each site.  Output will be to auxiliary\nfile(s) with suffix\
-    \ .expcolsub"
+  optional: true
   synonyms:
   - --expected-subs-col
   - -J
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
   description: "Output posterior expected number of substitutions of each type\non\
-    \ each branch, summed across all sites.  Output will be to\nauxiliary file(s)\
-    \ with suffix \".exptotsub\"."
+    \ each branch, for each site.  Output will be to auxiliary\nfile(s) with suffix\
+    \ .expcolsub"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
   synonyms:
   - --expected-total-subs
   - -Z
+  description: "Output posterior expected number of substitutions of each type\non\
+    \ each branch, summed across all sites.  Output will be to\nauxiliary file(s)\
+    \ with suffix \".exptotsub\"."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "(for use with -init-model; implies --lnl)  Output a separate log\n\
-    probability for each type of column in the input.  Output will\nbe to a file with\
-    \ suffix \".colprobs\".  Values are log base 2."
+  optional: true
   synonyms:
   - --column-probs
   - -U
+  description: "(for use with -init-model; implies --lnl)  Output a separate log\n\
+    probability for each type of column in the input.  Output will\nbe to a file with\
+    \ suffix \".colprobs\".  Values are log base 2."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --windows
+  - -w
   description: "<size,shift>\nApply a sliding window to the alignment, and fit a separate\n\
     tree to each window.  Arguments specify size of window and\namount by which to\
     \ shift it on each iteration, both in bases\nof the first sequence in the alignment\
     \ (assumed to be the\nreference sequence).  Separate versions of all output files\n\
     will be created for each window."
-  synonyms:
-  - --windows
-  - -w
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --windows-explicit
+  - -v
   description: "Like --windows, except that all start and end coordinates must\nbe\
     \ explicitly specified.  Each successive pair of numbers is\ninterpreted as defining\
     \ the start and end of a window.  Can be\nused with a two-column file and the\
     \ '*' operator, e.g.,\n--windows-explicit '*mycoords'."
-  synonyms:
-  - --windows-explicit
-  - -v
   args: !SimpleFlagArg
     name: window_coord_list
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Print this help message.
+  optional: true
   synonyms:
   - --help
   - -h
+  description: Print this help message.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "\nPROGRAM: phyloFit\n\nDESCRIPTION: \n\n    Fits one or more tree models\
@@ -874,3 +883,4 @@ help_text: "\nPROGRAM: phyloFit\n\nDESCRIPTION: \n\n    Fits one or more tree mo
   \ variable rates over sites: approximate\n      methods. J. Mol. Evol., 39:306-314.\n"
 generated_using:
 - --help
+docker_image:

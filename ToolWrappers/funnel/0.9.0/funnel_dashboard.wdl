@@ -1,15 +1,11 @@
 version 1.0
 
 task FunnelDashboard {
-  input {
-    Int? server
-  }
   command <<<
-    funnel dashboard \
-      ~{if defined(server) then ("--server " +  '"' + server + '"') else ""}
+    funnel dashboard
   >>>
-  parameter_meta {
-    server: "(default \\\"http://localhost:8000\\\")"
+  runtime {
+    docker: "None"
   }
   output {
     File out_stdout = stdout()

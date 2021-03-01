@@ -3,325 +3,326 @@ command:
 - emapper.py
 positional:
 - !Positional
-  description: --keep_mapping_files  Do not delete temporary mapping files used for
+  optional: false
   position: 0
   name: files
-  optional: false
+  description: --keep_mapping_files  Do not delete temporary mapping files used for
 named:
 - !Flag
-  description: "guess eggnog db based on the provided taxid\n--database , -d     \
-    \  specify the target database for sequence searches.\nChoose among: euk,bact,arch,\
-    \ host:port, or a local\nhmmpressed database\n--dbtype {hmmdb,seqdb}\n--data_dir\
-    \            Directory to use for DATA_PATH.\n--qtype {hmm,seq}"
+  optional: true
   synonyms:
   - --guessdb
+  description: guess eggnog db based on the provided taxid
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --database
+  - -d
+  description: "specify the target database for sequence searches.\nChoose among:\
+    \ euk,bact,arch, host:port, or a local\nhmmpressed database"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dbtype
+  - --data_dir
+  description: Directory to use for DATA_PATH.
+  args: !ChoiceFlagArg
+    choices: !!set
+      seqdb:
+      hmmdb:
+- !Flag
+  optional: true
+  synonyms:
+  - --tax_scope
   description: "Fix the taxonomic scope used for annotation, so only\northologs from\
     \ a particular clade are used for\nfunctional transfer. By default, this is automatically\n\
     adjusted for every query sequence."
-  synonyms:
-  - --tax_scope
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "defines what type of orthologs should be used for\nfunctional transfer"
+  optional: true
   synonyms:
   - --target_orthologs
+  description: "defines what type of orthologs should be used for\nfunctional transfer"
   args: !ChoiceFlagArg
     choices: !!set
-      one2one:
-      many2one:
+      one2many:
       many2many:
       all:
-      one2many:
-  optional: true
+      one2one:
+      many2one:
 - !Flag
-  description: (for debugging and benchmark purposes)
+  optional: true
   synonyms:
   - --excluded_taxa
+  description: (for debugging and benchmark purposes)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --go_evidence
   description: "Defines what type of GO terms should be used for\nannotation:experimental\
     \ = Use only terms inferred from\nexperimental evidencenon-electronic = Use only\
     \ non-\nelectronically curated terms"
-  synonyms:
-  - --go_evidence
   args: !ChoiceFlagArg
     choices: !!set
       non-electronic:
       experimental:
-  optional: true
 - !Flag
-  description: Max number of hits to report. Default=1
+  optional: true
   synonyms:
   - --hmm_maxhits
+  description: Max number of hits to report. Default=1
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: E-value threshold. Default=0.001
+  optional: true
   synonyms:
   - --hmm_evalue
+  description: E-value threshold. Default=0.001
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Bit score threshold. Default=20
+  optional: true
   synonyms:
   - --hmm_score
+  description: Bit score threshold. Default=20
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Ignore query sequences larger than `maxseqlen`.\nDefault=5000"
+  optional: true
   synonyms:
   - --hmm_maxseqlen
+  description: "Ignore query sequences larger than `maxseqlen`.\nDefault=5000"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: min query coverage (from 0 to 1). Default=(disabled)
+  optional: true
   synonyms:
   - --hmm_qcov
+  description: min query coverage (from 0 to 1). Default=(disabled)
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Fixed database size used in phmmer/hmmscan (allows\ncomparing e-values\
-    \ among databases).\nDefault=40,000,000"
+  optional: true
   synonyms:
   - --Z
+  description: "Fixed database size used in phmmer/hmmscan (allows\ncomparing e-values\
+    \ among databases).\nDefault=40,000,000"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Path to DIAMOND-compatible database
+  optional: true
   synonyms:
   - --dmnd_db
+  description: Path to DIAMOND-compatible database
   args: !SimpleFlagArg
     name: DMND_DB
-  optional: true
 - !Flag
-  description: Scoring matrix
+  optional: true
   synonyms:
   - --matrix
+  description: Scoring matrix
   args: !ChoiceFlagArg
     choices: !!set
-      BLOSUM45:
-      BLOSUM62:
-      PAM30:
-      BLOSUM90:
-      BLOSUM80:
-      PAM70:
-      BLOSUM50:
       PAM250:
-  optional: true
+      BLOSUM50:
+      BLOSUM90:
+      PAM30:
+      BLOSUM62:
+      PAM70:
+      BLOSUM80:
+      BLOSUM45:
 - !Flag
-  description: Gap open penalty
+  optional: true
   synonyms:
   - --gapopen
+  description: Gap open penalty
   args: !SimpleFlagArg
     name: GAPOPEN
-  optional: true
 - !Flag
-  description: Gap extend penalty
+  optional: true
   synonyms:
   - --gapextend
+  description: Gap extend penalty
   args: !SimpleFlagArg
     name: GAPEXTEND
-  optional: true
 - !Flag
-  description: "Report only alignments above the given percentage of\nquery cover.\
-    \ Default=0"
+  optional: true
   synonyms:
   - --query-cover
+  description: "Report only alignments above the given percentage of\nquery cover.\
+    \ Default=0"
   args: !SimpleFlagArg
     name: QUERY_COVER
-  optional: true
 - !Flag
-  description: "Report only alignments above the given percentage of\nsubject cover.\
-    \ Default=0"
+  optional: true
   synonyms:
   - --subject-cover
+  description: "Report only alignments above the given percentage of\nsubject cover.\
+    \ Default=0"
   args: !SimpleFlagArg
     name: SUBJECT_COVER
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --seed_ortholog_evalue
   description: "Min E-value expected when searching for seed eggNOG\northolog. Applies\
     \ to phmmer/diamond searches. Queries\nnot having a significant seed orthologs\
     \ will not be\nannotated. Default=0.001"
-  synonyms:
-  - --seed_ortholog_evalue
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --seed_ortholog_score
   description: "Min bit score expected when searching for seed eggNOG\northolog. Applies\
     \ to phmmer/diamond searches. Queries\nnot having a significant seed orthologs\
     \ will not be\nannotated. Default=60"
-  synonyms:
-  - --seed_ortholog_score
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: ', -o         base name for output files'
+  optional: true
   synonyms:
   - --output
+  - -o
+  description: base name for output files
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Resumes a previous execution skipping reported hits in\nthe output\
-    \ file."
+  optional: true
   synonyms:
   - --resume
+  description: "Resumes a previous execution skipping reported hits in\nthe output\
+    \ file."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Overwrites output files if they exist.
+  optional: true
   synonyms:
   - --override
+  description: Overwrites output files if they exist.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Skip hit refinement, reporting only HMM hits.
+  optional: true
   synonyms:
   - --no_refine
+  description: Skip hit refinement, reporting only HMM hits.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Skip functional annotation, reporting only hits
+  optional: true
   synonyms:
   - --no_annot
+  description: Skip functional annotation, reporting only hits
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Skip HMM search mapping. Use existing hits file
+  optional: true
   synonyms:
   - --no_search
+  description: Skip HMM search mapping. Use existing hits file
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: The list of predicted orthologs
+  optional: true
   synonyms:
   - --predict_ortho
+  description: The list of predicted orthologs
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "The list of orthologs used for functional transferred\nare dumped\
-    \ into a separate file"
+  optional: true
   synonyms:
   - --report_orthologs
+  description: "The list of orthologs used for functional transferred\nare dumped\
+    \ into a separate file"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --scratch_dir
   description: "Write output files in a temporary scratch dir, move\nthem to final\
     \ the final output dir when finished.\nSpeed up large computations using network\
     \ file\nsystems."
-  synonyms:
-  - --scratch_dir
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Where output files should be written
+  optional: true
   synonyms:
   - --output_dir
+  description: Where output files should be written
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Where temporary files are created. Better if this is a\nlocal disk."
+  optional: true
   synonyms:
   - --temp_dir
+  description: "Where temporary files are created. Better if this is a\nlocal disk."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: No header lines nor stats are included in the output
+  optional: true
   synonyms:
   - --no_file_comments
+  description: No header lines nor stats are included in the output
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: taxa that will be searched for orthologs
+  optional: true
   synonyms:
   - --target_taxa
+  description: taxa that will be searched for orthologs
   args: !RepeatFlagArg
     name: TARGET_TAXA
-  optional: true
 - !Flag
-  description: "Choose the output format among: per_query, per_species\n.Default =\
-    \ per_species"
+  optional: true
   synonyms:
   - --predict_output_format
+  description: "Choose the output format among: per_query, per_species\n.Default =\
+    \ per_species"
   args: !ChoiceFlagArg
     choices: !!set
       per_species:
       per_query:
-  optional: true
 - !Flag
-  description: Default:hmmer
+  optional: true
   synonyms:
   - -m
+  description: Default:hmmer
   args: !ChoiceFlagArg
     choices: !!set
       diamond:
       hmmer:
-  optional: true
 - !Flag
-  description: Input FASTA file containing query sequences
+  optional: true
   synonyms:
   - -i
+  description: Input FASTA file containing query sequences
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Assume sequences are genes instead of proteins
+  optional: true
   synonyms:
   - --translate
+  description: Assume sequences are genes instead of proteins
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --servermode
   description: "Loads target database in memory and keeps running in\nserver mode,\
     \ so another instance of eggnog-mapper can\nconnect to this sever. Auto turns\
     \ on the --usemem flag"
-  synonyms:
-  - --servermode
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --usemem
   description: "If a local hmmpressed database is provided as target\nusing --db,\
     \ this flag will allocate the whole database\nin memory using hmmpgmd. Database\
     \ will be unloaded\nafter execution."
-  synonyms:
-  - --usemem
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Annotatate TSV formatted table of query->hits. 4\nfields required:\
-    \ query, hit, evalue, score. Implies\n--no_search and --no_refine.\n"
+  optional: true
   synonyms:
   - --cpu
   - --annotate_hits_table
+  description: "Annotatate TSV formatted table of query->hits. 4\nfields required:\
+    \ query, hit, evalue, score. Implies\n--no_search and --no_refine.\n"
   args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --dbtype
-  args: !ChoiceFlagArg
-    choices: !!set
-      hmmdb:
-      seqdb:
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --database
-  args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n--version"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "/usr/local/bin/diamond /usr/local/lib/python2.7/site-packages\nusage:\
@@ -415,3 +416,4 @@ help_text: "/usr/local/bin/diamond /usr/local/lib/python2.7/site-packages\nusage
   \   --no_search and --no_refine.\n"
 generated_using:
 - --help
+docker_image:

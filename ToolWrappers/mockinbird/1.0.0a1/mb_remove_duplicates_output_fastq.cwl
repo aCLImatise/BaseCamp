@@ -3,7 +3,7 @@ id: mb_remove_duplicates_output_fastq.cwl
 inputs:
 - id: in_verbose
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_mb_remove_duplicates
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mb-remove-duplicates

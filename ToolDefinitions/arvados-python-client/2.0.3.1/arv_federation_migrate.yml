@@ -4,55 +4,52 @@ command:
 positional: []
 named:
 - !Flag
-  description: Generate report .csv file listing users by email address
-  synonyms:
-  - --report
-  args: !SimpleFlagArg
-    name: REPORT
   optional: true
-- !Flag
-  description: Consume report .csv and migrate users to designated
-  synonyms:
-  - --migrate
-  args: !SimpleFlagArg
-    name: MIGRATE
-  optional: true
-- !Flag
-  description: Consume report .csv and report how user would be migrated
-  synonyms:
-  - --dry-run
-  args: !SimpleFlagArg
-    name: DRY_RUN
-  optional: true
-- !Flag
-  description: Check that tokens are usable and the federation is well
-  synonyms:
-  - --check
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ''
   synonyms:
   - --tokens
+  - --report
+  description: "Generate report .csv file listing users by email address\nand their\
+    \ associated Arvados accounts"
   args: !SimpleFlagArg
     name: TOKENS
+- !Flag
   optional: true
+  synonyms:
+  - --migrate
+  description: "Consume report .csv and migrate users to designated\nArvados accounts"
+  args: !SimpleFlagArg
+    name: MIGRATE
+- !Flag
+  optional: true
+  synonyms:
+  - --dry-run
+  description: "Consume report .csv and report how user would be migrated\nto designated\
+    \ Arvados accounts"
+  args: !SimpleFlagArg
+    name: DRY_RUN
+- !Flag
+  optional: true
+  synonyms:
+  - --check
+  description: "Check that tokens are usable and the federation is well\nconnected\n"
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: ''
+  optional: true
   synonyms:
   - -h
+  - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: ''
+  optional: true
   synonyms:
   - --version
+  description: Print version and exit.
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "usage: arv-federation-migrate [-h] [--version] [--tokens TOKENS]\n   \
   \                           (--report REPORT | --migrate MIGRATE | --dry-run DRY_RUN\
   \ | --check)\n\nMigrate users to federated identity, see https://doc.arvados.org/admin/merge-\n\
@@ -67,3 +64,4 @@ help_text: "usage: arv-federation-migrate [-h] [--version] [--tokens TOKENS]\n  
   \       connected\n"
 generated_using:
 - --help
+docker_image:

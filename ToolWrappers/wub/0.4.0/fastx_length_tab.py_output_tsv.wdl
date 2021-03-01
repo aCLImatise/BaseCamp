@@ -14,6 +14,9 @@ task FastxLengthTabpyOutputTsv {
       ~{output_tsv} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     i: ""
     fast_x_length_tab_do_tpy: ""

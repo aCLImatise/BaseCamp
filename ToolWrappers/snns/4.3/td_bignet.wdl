@@ -8,6 +8,9 @@ task TdBignet {
     td_bignet \
       ~{link_definition}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     link_definition: ""
   }

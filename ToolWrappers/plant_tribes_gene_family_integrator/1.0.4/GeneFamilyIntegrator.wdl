@@ -4,6 +4,9 @@ task GeneFamilyIntegrator {
   command <<<
     GeneFamilyIntegrator
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

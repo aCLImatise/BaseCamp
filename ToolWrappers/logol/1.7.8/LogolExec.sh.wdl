@@ -24,6 +24,9 @@ task LogolExecsh {
       ~{if defined(g) then ("-g " +  '"' + g + '"') else ""} \
       ~{if defined(m) then ("-m " +  '"' + m + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     g: ""
     m: ""

@@ -14,6 +14,9 @@ task SplitByP7BarcodeP7File {
       ~{p_seven_file} \
       ~{if (f) then "-f" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     f: ""
     split_by_p_seven_barcode: ""

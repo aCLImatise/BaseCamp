@@ -6,6 +6,7 @@ task BedtoolsGenomecov {
     Boolean? report_depth_onebased
     Boolean? dz
     Boolean? bg
+    Boolean? bga
     Boolean? split
     Boolean? strand
     Boolean? pc
@@ -19,15 +20,14 @@ task BedtoolsGenomecov {
     Boolean? track_opts
     String? g
     String? i
-    String genome_dot_ucsc_dot_edu_slash_goldenpath_slash_help_slash_bed_graph_dot_html
   }
   command <<<
     bedtools genomecov \
-      ~{genome_dot_ucsc_dot_edu_slash_goldenpath_slash_help_slash_bed_graph_dot_html} \
       ~{if (i_bam) then "-ibam" else ""} \
       ~{if (report_depth_onebased) then "-d" else ""} \
       ~{if (dz) then "-dz" else ""} \
       ~{if (bg) then "-bg" else ""} \
+      ~{if (bga) then "-bga" else ""} \
       ~{if (split) then "-split" else ""} \
       ~{if (strand) then "-strand" else ""} \
       ~{if (pc) then "-pc" else ""} \
@@ -42,11 +42,15 @@ task BedtoolsGenomecov {
       ~{if defined(g) then ("-g " +  '"' + g + '"') else ""} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     i_bam: "The input file is in BAM format.\\nNote: BAM _must_ be sorted by position"
     report_depth_onebased: "Report the depth at each genome position (with one-based coordinates).\\nDefault behavior is to report a histogram."
     dz: "Report the depth at each genome position (with zero-based coordinates).\\nReports only non-zero positions.\\nDefault behavior is to report a histogram."
-    bg: "Report depth in BedGraph format. For details, see:"
+    bg: "Report depth in BedGraph format. For details, see:\\ngenome.ucsc.edu/goldenPath/help/bedgraph.html"
+    bga: "Report depth in BedGraph format, as above (-bg).\\nHowever with this option, regions with zero\\ncoverage are also reported. This allows one to\\nquickly extract all regions of a genome with 0\\ncoverage by applying: \\\"grep -w 0$\\\" to the output."
     split: "Treat \\\"split\\\" BAM or BED12 entries as distinct BED intervals.\\nwhen computing coverage.\\nFor BAM files, this uses the CIGAR \\\"N\\\" and \\\"D\\\" operations\\nto infer the blocks for computing coverage.\\nFor BED12 files, this uses the BlockCount, BlockStarts, and BlockEnds\\nfields (i.e., columns 10,11,12)."
     strand: "Calculate coverage of intervals from a specific strand.\\nWith BED files, requires at least 6 columns (strand is column 6).\\n- (STRING): can be + or -"
     pc: "Calculate coverage of pair-end fragments.\\nWorks for BAM files only"
@@ -60,7 +64,6 @@ task BedtoolsGenomecov {
     track_opts: "Writes additional track line definition parameters in the first line.\\n- Example:\\n-trackopts 'name=\\\"My Track\\\" visibility=2 color=255,30,30'\\nNote the use of single-quotes if you have spaces in your parameters.\\n- (TEXT)"
     g: ""
     i: ""
-    genome_dot_ucsc_dot_edu_slash_goldenpath_slash_help_slash_bed_graph_dot_html: "-bga            Report depth in BedGraph format, as above (-bg)."
   }
   output {
     File out_stdout = stdout()

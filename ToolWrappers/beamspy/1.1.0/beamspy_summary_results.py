@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import String, File, Boolean, Float
+
+Beamspy_Summary_Results_V0_1_0 = CommandToolBuilder(tool="beamspy_summary_results", base_command=["beamspy", "summary-results"], inputs=[ToolInput(tag="in_peak_list", input_type=String(optional=True), prefix="--peaklist", doc=InputDocumentation(doc="Tab-delimited peaklist")), ToolInput(tag="in_intensity_matrix", input_type=String(optional=True), prefix="--intensity-matrix", doc=InputDocumentation(doc="Tab-delimited intensity matrix.")), ToolInput(tag="in_output", input_type=File(optional=True), prefix="--output", doc=InputDocumentation(doc="Output file for the summary")), ToolInput(tag="in_pdf", input_type=File(optional=True), prefix="--pdf", doc=InputDocumentation(doc="Output pdf file for the summary plots")), ToolInput(tag="in_db", input_type=String(optional=True), prefix="--db", doc=InputDocumentation(doc="Sqlite database that contains the results from the\nprevious steps.")), ToolInput(tag="in_sep", input_type=String(optional=True), prefix="--sep", doc=InputDocumentation(doc="Values on each line of the output are separated by\nthis character.")), ToolInput(tag="in_single_row", input_type=Boolean(optional=True), prefix="--single-row", doc=InputDocumentation(doc="Concatenate the annotations for each spectral feature\nand represent in a single row.")), ToolInput(tag="in_single_column", input_type=Boolean(optional=True), prefix="--single-column", doc=InputDocumentation(doc="Concatenate the annotations for each spectral feature\nand keep seperate columns for molecular formula,\nadduct, name, etc.")), ToolInput(tag="in_n_digits_mz", input_type=Float(optional=True), prefix="--ndigits-mz", doc=InputDocumentation(doc="Digits after the decimal point for m/z values.")), ToolInput(tag="in_convert_rt", input_type=String(optional=True), prefix="--convert-rt", doc=InputDocumentation(doc="Covert the retention time to seconds or minutes. An\nadditional column will be added.\n"))], outputs=[ToolOutput(tag="out_output", output_type=File(optional=True), selector=InputSelector(input_to_select="in_output", type_hint=File()), doc=OutputDocumentation(doc="Output file for the summary")), ToolOutput(tag="out_pdf", output_type=File(optional=True), selector=InputSelector(input_to_select="in_pdf", type_hint=File()), doc=OutputDocumentation(doc="Output pdf file for the summary plots"))], container="quay.io/biocontainers/beamspy:1.1.0--py_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Beamspy_Summary_Results_V0_1_0().translate("wdl")
+

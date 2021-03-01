@@ -11,18 +11,18 @@ subcommands:
   - alignment database
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: name or accession
-    optional: false
+    description: ''
   named:
   - !Flag
-    description: ''
+    optional: true
     synonyms:
     - -options
+    description: ''
     args: !EmptyFlagArg {}
-    optional: true
-  parent: &id009 !Command
+  parent: &id010 !Command
     command: *id001
     positional: []
     named: []
@@ -32,18 +32,18 @@ subcommands:
       command: *id002
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: name or accession
-        optional: false
+        description: ''
       named:
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - -options
+        description: ''
         args: !EmptyFlagArg {}
-        optional: true
-      parent: &id008 !Command
+      parent: &id009 !Command
         command: *id001
         positional: []
         named: []
@@ -53,18 +53,18 @@ subcommands:
           command: *id002
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: name or accession
-            optional: false
+            description: ''
           named:
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - -options
+            description: ''
             args: !EmptyFlagArg {}
-            optional: true
-          parent: &id007 !Command
+          parent: &id008 !Command
             command: *id001
             positional: []
             named: []
@@ -74,103 +74,164 @@ subcommands:
               command: *id002
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: name or accession
-                optional: false
+                description: ''
               named:
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - -options
+                description: ''
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: &id003 !Command
+              parent: &id007 !Command
                 command: *id001
                 positional: []
-                named:
-                - !Flag
-                  description: ': construct indices for the database'
-                  synonyms:
-                  - --index
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: ''
-                  synonyms:
-                  - -options
-                  args: !EmptyFlagArg {}
-                  optional: true
+                named: []
                 parent:
                 subcommands:
                 - !Command
                   command: *id002
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: name or accession
-                    optional: false
+                    description: ''
                   named:
                   - !Flag
-                    description: ''
+                    optional: true
                     synonyms:
                     - -options
+                    description: ''
                     args: !EmptyFlagArg {}
-                    optional: true
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named:
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - --index
+                      description: ': construct indices for the database'
+                      args: !EmptyFlagArg {}
+                    - !Flag
+                      optional: true
+                      synonyms:
+                      - -options
+                      description: ''
+                      args: !EmptyFlagArg {}
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: name or accession
+                        description: ''
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -options
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        description: ': help; print version and usage info'
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "\nFATAL: Incorrect number of command line arguments.\n\
+                        Usage: afetch [-options] <alignment database> <name or accession>\n\
+                        \   or: afetch --index <alignment database>\n\n   Get an alignment\
+                        \ from a database.\n   Available options:\n   -h      : help;\
+                        \ print version and usage info\n\n\n"
+                      generated_using: &id004 []
+                      docker_image:
+                    - !Command
+                      command: &id005
+                      - afetch
+                      - name or accession
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: afetch
+                        description: ''
+                      - !Positional
+                        optional: false
+                        position: 1
+                        name: alignment database
+                        description: ''
+                      - !Positional
+                        optional: false
+                        position: 2
+                        name: name or accession
+                        description: ''
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - -options
+                        description: ''
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        description: ': help; print version and usage info'
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "\nFATAL: Incorrect number of command line arguments.\n\
+                        Usage: afetch [-options] <alignment database> <name or accession>\n\
+                        \   or: afetch --index <alignment database>\n\n   Get an alignment\
+                        \ from a database.\n   Available options:\n   -h      : help;\
+                        \ print version and usage info\n\n\n"
+                      generated_using: *id004
+                      docker_image:
+                    usage: []
+                    help_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - -h
+                      description: ': help; print version and usage info'
+                      args: !EmptyFlagArg {}
+                    usage_flag:
+                    version_flag:
+                    help_text: "afetch - retrieve an alignment from Pfam\nSQUID 1.9g\
+                      \ (Oct 2002)\nCopyright (C) 1992-2002 HHMI/Washington University\
+                      \ School of Medicine\nFreely distributed under the GNU General\
+                      \ Public License (GPL)\n- - - - - - - - - - - - - - - - - -\
+                      \ - - - - - - - - - - - - - - - - - -\nUsage: afetch [-options]\
+                      \ <alignment database> <name or accession>\n   or: afetch --index\
+                      \ <alignment database>\n\n   Get an alignment from a database.\n\
+                      \   Available options:\n   -h      : help; print version and\
+                      \ usage info\n\n   --index : construct indices for the database\n\
+                      \n"
+                    generated_using: &id006
+                    - -h
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: ': help; print version and usage info'
+                    optional: true
                     synonyms:
                     - -h
-                    args: !EmptyFlagArg {}
-                    optional: true
-                  usage_flag:
-                  version_flag:
-                  help_text: "\nFATAL: Incorrect number of command line arguments.\n\
-                    Usage: afetch [-options] <alignment database> <name or accession>\n\
-                    \   or: afetch --index <alignment database>\n\n   Get an alignment\
-                    \ from a database.\n   Available options:\n   -h      : help;\
-                    \ print version and usage info\n\n\n"
-                  generated_using: &id004 []
-                - !Command
-                  command: &id005
-                  - afetch
-                  - name or accession
-                  positional:
-                  - !Positional
-                    description: ''
-                    position: 0
-                    name: afetch
-                    optional: false
-                  - !Positional
-                    description: ''
-                    position: 1
-                    name: alignment database
-                    optional: false
-                  - !Positional
-                    description: ''
-                    position: 2
-                    name: name or accession
-                    optional: false
-                  named:
-                  - !Flag
-                    description: ''
-                    synonyms:
-                    - -options
-                    args: !EmptyFlagArg {}
-                    optional: true
-                  parent: *id003
-                  subcommands: []
-                  usage: []
-                  help_flag: !Flag
                     description: ': help; print version and usage info'
-                    synonyms:
-                    - -h
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "\nFATAL: Incorrect number of command line arguments.\n\
@@ -179,13 +240,52 @@ subcommands:
                     \ from a database.\n   Available options:\n   -h      : help;\
                     \ print version and usage info\n\n\n"
                   generated_using: *id004
+                  docker_image:
+                - !Command
+                  command: *id005
+                  positional:
+                  - !Positional
+                    optional: false
+                    position: 0
+                    name: afetch
+                    description: ''
+                  - !Positional
+                    optional: false
+                    position: 1
+                    name: alignment database
+                    description: ''
+                  - !Positional
+                    optional: false
+                    position: 2
+                    name: name or accession
+                    description: ''
+                  named:
+                  - !Flag
+                    optional: true
+                    synonyms:
+                    - -options
+                    description: ''
+                    args: !EmptyFlagArg {}
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    optional: true
+                    synonyms:
+                    - -h
+                    description: ': help; print version and usage info'
+                    args: !EmptyFlagArg {}
+                  usage_flag:
+                  version_flag:
+                  help_text: "\nFATAL: Incorrect number of command line arguments.\n\
+                    Usage: afetch [-options] <alignment database> <name or accession>\n\
+                    \   or: afetch --index <alignment database>\n\n   Get an alignment\
+                    \ from a database.\n   Available options:\n   -h      : help;\
+                    \ print version and usage info\n\n\n"
+                  generated_using: *id004
+                  docker_image:
                 usage: []
-                help_flag: !Flag
-                  description: ': help; print version and usage info'
-                  synonyms:
-                  - -h
-                  args: !EmptyFlagArg {}
-                  optional: true
+                help_flag:
                 usage_flag:
                 version_flag:
                 help_text: "afetch - retrieve an alignment from Pfam\nSQUID 1.9g (Oct\
@@ -197,16 +297,16 @@ subcommands:
                   \n   Get an alignment from a database.\n   Available options:\n\
                   \   -h      : help; print version and usage info\n\n   --index :\
                   \ construct indices for the database\n\n"
-                generated_using: &id006
-                - -h
+                generated_using: *id006
+                docker_image:
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: ': help; print version and usage info'
+                optional: true
                 synonyms:
                 - -h
+                description: ': help; print version and usage info'
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "\nFATAL: Incorrect number of command line arguments.\nUsage:\
@@ -215,40 +315,41 @@ subcommands:
                 \ a database.\n   Available options:\n   -h      : help; print version\
                 \ and usage info\n\n\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id005
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: afetch
-                optional: false
-              - !Positional
                 description: ''
+              - !Positional
+                optional: false
                 position: 1
                 name: alignment database
-                optional: false
-              - !Positional
                 description: ''
+              - !Positional
+                optional: false
                 position: 2
                 name: name or accession
-                optional: false
+                description: ''
               named:
               - !Flag
-                description: ''
+                optional: true
                 synonyms:
                 - -options
+                description: ''
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: *id003
+              parent: *id007
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: ': help; print version and usage info'
+                optional: true
                 synonyms:
                 - -h
+                description: ': help; print version and usage info'
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "\nFATAL: Incorrect number of command line arguments.\nUsage:\
@@ -257,6 +358,7 @@ subcommands:
                 \ a database.\n   Available options:\n   -h      : help; print version\
                 \ and usage info\n\n\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -271,14 +373,15 @@ subcommands:
               \ print version and usage info\n\n   --index : construct indices for\
               \ the database\n\n"
             generated_using: *id006
+            docker_image:
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: ': help; print version and usage info'
+            optional: true
             synonyms:
             - -h
+            description: ': help; print version and usage info'
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "\nFATAL: Incorrect number of command line arguments.\nUsage:\
@@ -287,40 +390,41 @@ subcommands:
             \   Available options:\n   -h      : help; print version and usage info\n\
             \n\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id005
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: afetch
-            optional: false
-          - !Positional
             description: ''
+          - !Positional
+            optional: false
             position: 1
             name: alignment database
-            optional: false
-          - !Positional
             description: ''
+          - !Positional
+            optional: false
             position: 2
             name: name or accession
-            optional: false
+            description: ''
           named:
           - !Flag
-            description: ''
+            optional: true
             synonyms:
             - -options
+            description: ''
             args: !EmptyFlagArg {}
-            optional: true
-          parent: *id007
+          parent: *id008
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: ': help; print version and usage info'
+            optional: true
             synonyms:
             - -h
+            description: ': help; print version and usage info'
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "\nFATAL: Incorrect number of command line arguments.\nUsage:\
@@ -329,6 +433,7 @@ subcommands:
             \   Available options:\n   -h      : help; print version and usage info\n\
             \n\n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -342,14 +447,15 @@ subcommands:
           \   Available options:\n   -h      : help; print version and usage info\n\
           \n   --index : construct indices for the database\n\n"
         generated_using: *id006
+        docker_image:
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: ': help; print version and usage info'
+        optional: true
         synonyms:
         - -h
+        description: ': help; print version and usage info'
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "\nFATAL: Incorrect number of command line arguments.\nUsage: afetch\
@@ -357,40 +463,41 @@ subcommands:
         \ <alignment database>\n\n   Get an alignment from a database.\n   Available\
         \ options:\n   -h      : help; print version and usage info\n\n\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id005
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: afetch
-        optional: false
-      - !Positional
         description: ''
+      - !Positional
+        optional: false
         position: 1
         name: alignment database
-        optional: false
-      - !Positional
         description: ''
+      - !Positional
+        optional: false
         position: 2
         name: name or accession
-        optional: false
+        description: ''
       named:
       - !Flag
-        description: ''
+        optional: true
         synonyms:
         - -options
+        description: ''
         args: !EmptyFlagArg {}
-        optional: true
-      parent: *id008
+      parent: *id009
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: ': help; print version and usage info'
+        optional: true
         synonyms:
         - -h
+        description: ': help; print version and usage info'
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "\nFATAL: Incorrect number of command line arguments.\nUsage: afetch\
@@ -398,6 +505,7 @@ subcommands:
         \ <alignment database>\n\n   Get an alignment from a database.\n   Available\
         \ options:\n   -h      : help; print version and usage info\n\n\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -411,14 +519,15 @@ subcommands:
       \   -h      : help; print version and usage info\n\n   --index : construct indices\
       \ for the database\n\n"
     generated_using: *id006
+    docker_image:
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: ': help; print version and usage info'
+    optional: true
     synonyms:
     - -h
+    description: ': help; print version and usage info'
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "\nFATAL: Incorrect number of command line arguments.\nUsage: afetch\
@@ -426,40 +535,41 @@ subcommands:
     \ database>\n\n   Get an alignment from a database.\n   Available options:\n \
     \  -h      : help; print version and usage info\n\n\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id005
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: afetch
-    optional: false
-  - !Positional
     description: ''
+  - !Positional
+    optional: false
     position: 1
     name: alignment database
-    optional: false
-  - !Positional
     description: ''
+  - !Positional
+    optional: false
     position: 2
     name: name or accession
-    optional: false
+    description: ''
   named:
   - !Flag
-    description: ''
+    optional: true
     synonyms:
     - -options
+    description: ''
     args: !EmptyFlagArg {}
-    optional: true
-  parent: *id009
+  parent: *id010
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: ': help; print version and usage info'
+    optional: true
     synonyms:
     - -h
+    description: ': help; print version and usage info'
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "\nFATAL: Incorrect number of command line arguments.\nUsage: afetch\
@@ -467,6 +577,7 @@ subcommands:
     \ database>\n\n   Get an alignment from a database.\n   Available options:\n \
     \  -h      : help; print version and usage info\n\n\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -479,3 +590,4 @@ help_text: "afetch - retrieve an alignment from Pfam\nSQUID 1.9g (Oct 2002)\nCop
   \ from a database.\n   Available options:\n   -h      : help; print version and\
   \ usage info\n\n   --index : construct indices for the database\n\n"
 generated_using: *id006
+docker_image:

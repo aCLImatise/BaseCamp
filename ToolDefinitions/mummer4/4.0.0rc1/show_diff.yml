@@ -1,0 +1,70 @@
+!Command
+command:
+- show-diff
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: deltafile
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: Output diff information as AMOS features
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -H
+  description: Do not show header
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  description: Show diff information for queries
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: "Show diff information for references (default)\nOutputs a list of\
+    \ structural differences for each sequence in"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: Display help information
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "\nUSAGE: show-diff  [options]  <deltafile>\n\n-f            Output diff\
+  \ information as AMOS features\n-h            Display help information\n-H     \
+  \       Do not show header\n-q            Show diff information for queries\n-r\
+  \            Show diff information for references (default)\n\n  Outputs a list\
+  \ of structural differences for each sequence in\nthe reference and query, sorted\
+  \ by position. For a reference\nsequence R, and its matching query sequence Q, differences\
+  \ are\ncategorized as GAP (gap between two mutually consistent alignments),\nDUP\
+  \ (inserted duplication), BRK (other inserted sequence), JMP\n(rearrangement), INV\
+  \ (rearrangement with inversion), SEQ\n(rearrangement with another sequence). The\
+  \ first five columns of\nthe output are seq ID, feature type, feature start, feature\
+  \ end,\nand feature length. Additional columns are added depending on the\nfeature\
+  \ type. Negative feature lengths indicate overlapping adjacent\nalignment blocks.\n\
+  \  IDR GAP gap-start gap-end gap-length-R gap-length-Q gap-diff\n  IDR DUP dup-start\
+  \ dup-end dup-length\n  IDR BRK gap-start gap-end gap-length\n  IDR JMP gap-start\
+  \ gap-end gap-length\n  IDR INV gap-start gap-end gap-length\n  IDR SEQ gap-start\
+  \ gap-end gap-length prev-sequence next-sequence\nPositions always reference the\
+  \ sequence with the given ID. The\nsum of the fifth column (ignoring negative values)\
+  \ is the total\namount of inserted sequence. Summing the fifth column after removing\n\
+  DUP features is total unique inserted sequence. Note that unaligned\nsequence are\
+  \ not counted, and could represent additional \"unique\"\nsequences. See documentation\
+  \ for tips on how to interpret these\nalignment break features.\n\n"
+generated_using:
+- -h
+docker_image: quay.io/biocontainers/mummer4:4.0.0rc1--pl526he1b5a44_0

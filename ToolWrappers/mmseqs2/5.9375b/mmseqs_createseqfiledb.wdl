@@ -16,6 +16,9 @@ task MmseqsCreateseqfiledb {
       ~{if (threads) then "--threads" else ""} \
       ~{if (verbosity_level_nothing) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_sequences: "1               minimum number of sequences a cluster may contain"
     max_sequences: "2147483647      maximum number of sequences a cluster may contain"

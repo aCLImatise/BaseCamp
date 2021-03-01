@@ -4,6 +4,9 @@ task Misp {
   command <<<
     misp
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

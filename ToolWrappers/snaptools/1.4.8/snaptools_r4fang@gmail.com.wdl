@@ -8,6 +8,9 @@ task SnaptoolsR4fanggmailcom {
     snaptools r4fang_gmail_com \
       ~{snap_tools}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     snap_tools: ""
   }

@@ -1,28 +1,27 @@
 class: CommandLineTool
 id: ngs_disambiguate.cwl
 inputs:
-- id: in__nosortdeprecated_option
-  doc: ",  --no-sort\n(Deprecated option for backwards compatibility)"
-  type: boolean
+- id: in_no_sort
+  doc: (Deprecated option for backwards compatibility)
+  type: boolean?
   inputBinding:
-    prefix: -d
-- id: in__prefix_stringrequired
-  doc: ",  --prefix <string>\n(required)  Sample ID or name used as prefix. Do not\
-    \ include .bam"
-  type: string
+    prefix: --no-sort
+- id: in_prefix
+  doc: (required)  Sample ID or name used as prefix. Do not include .bam
+  type: string?
   inputBinding:
-    prefix: -s
-- id: in__outputdir_stringrequired
-  doc: ",  --output-dir <string>\n(required)  Output directory"
-  type: Directory
+    prefix: --prefix
+- id: in_output_dir
+  doc: (required)  Output directory
+  type: Directory?
   inputBinding:
-    prefix: -o
-- id: in__aligner_stringaligner
-  doc: ",  --aligner <string>\nAligner option {tophat(default),hisat2,bwa,star}"
-  type: string
+    prefix: --output-dir
+- id: in_aligner
+  doc: Aligner option {tophat(default),hisat2,bwa,star}
+  type: long?
   inputBinding:
-    prefix: -a
-- id: in_var_4
+    prefix: --aligner
+- id: in_a
   doc: ''
   type: string
   inputBinding:
@@ -31,11 +30,12 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out__outputdir_stringrequired
-  doc: ",  --output-dir <string>\n(required)  Output directory"
-  type: Directory
+- id: out_output_dir
+  doc: (required)  Output directory
+  type: Directory?
   outputBinding:
-    glob: $(inputs.in__outputdir_stringrequired)
+    glob: $(inputs.in_output_dir)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - ngs_disambiguate

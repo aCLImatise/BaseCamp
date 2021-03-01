@@ -14,6 +14,9 @@ task GcloudDnsManagedzones {
       ~{describe} \
       ~{list}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     create: "Create a Cloud DNS managed-zone."
     delete: "Delete an empty Cloud DNS managed-zone."

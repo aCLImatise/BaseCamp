@@ -24,6 +24,9 @@ task Epiccount {
       ~{if defined(chrom_sizes) then ("--chromsizes " +  '"' + chrom_sizes + '"') else ""} \
       ~{if defined(file_write_matrix) then ("--outfile " +  '"' + file_write_matrix + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_files: "ChIP files to count reads in (bed/bedpe format)."
     number_cores: "Number of cpus to use. Can use at most one per\\nchromosome. Default: 1."

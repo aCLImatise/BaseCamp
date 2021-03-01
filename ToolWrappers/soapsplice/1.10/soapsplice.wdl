@@ -8,9 +8,9 @@ task Soapsplice {
     File? prefix_output_files
     Int? number_threads_default
     Int? forward_reverse_default
-    Int? maximum_mismatch_onesegment
-    Int? maximum_indel_onesegment
-    Int? length_can_ignored
+    Int? maximum_mismatch_default
+    Int? maximum_indel_default
+    Int? length_tail_ignored
     Int? longest_gap_two
     Int? shortest_length_segment
     File? output_read_output
@@ -30,9 +30,9 @@ task Soapsplice {
       ~{if defined(prefix_output_files) then ("-o " +  '"' + prefix_output_files + '"') else ""} \
       ~{if defined(number_threads_default) then ("-p " +  '"' + number_threads_default + '"') else ""} \
       ~{if defined(forward_reverse_default) then ("-S " +  '"' + forward_reverse_default + '"') else ""} \
-      ~{if defined(maximum_mismatch_onesegment) then ("-m " +  '"' + maximum_mismatch_onesegment + '"') else ""} \
-      ~{if defined(maximum_indel_onesegment) then ("-g " +  '"' + maximum_indel_onesegment + '"') else ""} \
-      ~{if defined(length_can_ignored) then ("-i " +  '"' + length_can_ignored + '"') else ""} \
+      ~{if defined(maximum_mismatch_default) then ("-m " +  '"' + maximum_mismatch_default + '"') else ""} \
+      ~{if defined(maximum_indel_default) then ("-g " +  '"' + maximum_indel_default + '"') else ""} \
+      ~{if defined(length_tail_ignored) then ("-i " +  '"' + length_tail_ignored + '"') else ""} \
       ~{if defined(longest_gap_two) then ("-t " +  '"' + longest_gap_two + '"') else ""} \
       ~{if defined(shortest_length_segment) then ("-a " +  '"' + shortest_length_segment + '"') else ""} \
       ~{if defined(output_read_output) then ("-c " +  '"' + output_read_output + '"') else ""} \
@@ -44,6 +44,9 @@ task Soapsplice {
       ~{if defined(insert_length_pairedend) then ("-I " +  '"' + insert_length_pairedend + '"') else ""} \
       ~{if defined(output_junction_information) then ("-j " +  '"' + output_junction_information + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     prefix_reference_index: "* Prefix of reference index files"
     _reads_file_fastafastq_format: "* Reads file 1, FASTA/FASTQ format"
@@ -51,9 +54,9 @@ task Soapsplice {
     prefix_output_files: "* Prefix of output files, (can be with file directory)"
     number_threads_default: "Number of threads, <= 20, 1 (default)"
     forward_reverse_default: "1: Forward, 2: Reverse, 3: Both (default)"
-    maximum_mismatch_onesegment: "Maximum mismatch for one-segment alignment, <= 5, 3 (default)"
-    maximum_indel_onesegment: "Maximum indel for one-segment alignment, <= 2, 2 (default)"
-    length_can_ignored: "Length of tail that can be ignored in one-segment alignment, 7 (default)"
+    maximum_mismatch_default: "Maximum mismatch for one-segment alignment, <= 5, 3 (default)"
+    maximum_indel_default: "Maximum indel for one-segment alignment, <= 2, 2 (default)"
+    length_tail_ignored: "Length of tail that can be ignored in one-segment alignment, 7 (default)"
     longest_gap_two: "Longest gap between two segments in two-segment alignment, 500000 (default)"
     shortest_length_segment: "Shortest length of a segment in two-segment alignment, 8 (default)"
     output_read_output: "1: Output read and its quality in one-segment alignment output file (default)\\n0: Don't output such information to save disk space"

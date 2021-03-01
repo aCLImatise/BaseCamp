@@ -3,76 +3,98 @@ command:
 - positionDB
 positional:
 - !Positional
-  description: ''
+  optional: true
   position: 0
   name: args
-  optional: true
+  description: ''
 named:
 - !Flag
-  description: The size of the mers, default=20.
+  optional: true
   synonyms:
   - -mersize
+  description: The size of the mers, default=20.
   args: !SimpleFlagArg
     name: k
-  optional: true
 - !Flag
-  description: The skip between mers, default=0
+  optional: true
   synonyms:
   - -merskip
+  description: The skip between mers, default=0
   args: !SimpleFlagArg
     name: k
-  optional: true
 - !Flag
-  description: ',c         Specify which sequences to use, default=all'
+  optional: true
   synonyms:
   - -use
+  description: ',c         Specify which sequences to use, default=all'
   args: !SimpleFlagArg
     name: a-b
-  optional: true
 - !Flag
-  description: 'Build on a subset of the mers, starting at mer #b, default=all mers'
+  optional: true
   synonyms:
   - -merbegin
+  description: 'Build on a subset of the mers, starting at mer #b, default=all mers'
   args: !SimpleFlagArg
     name: b
-  optional: true
 - !Flag
-  description: 'Build on a subset of the mers, ending at mer #e, default=all mers'
+  optional: true
   synonyms:
   - -merend
+  description: 'Build on a subset of the mers, ending at mer #e, default=all mers'
   args: !SimpleFlagArg
     name: e
-  optional: true
 - !Flag
-  description: Input sequences.
+  optional: true
   synonyms:
   - -sequence
+  description: Input sequences.
   args: !SimpleFlagArg
     name: s.fasta
-  optional: true
 - !Flag
-  description: Output filename.
+  optional: true
   synonyms:
   - -output
+  description: Output filename.
   args: !SimpleFlagArg
     name: p.posDB
-  optional: true
 - !Flag
-  description: "To run sanity tests:\n-buildonly [build opts] sequence.fasta\n-- \
-    \ just builds a table and exits\n-existence [build opts] sequence.fasta\n--  builds\
-    \ (or reads) a table reports if any mers\nin sequence.fasta cannot be found\n\
-    -extra [build opts] sequence.fasta\n--  builds (or reads) a table reports if any\
-    \ mers\nNOT in sequence.fasta are be found\n-test1 sequence.fasta\n--  Tests if\
-    \ each and every mer is found in the\npositionDB.  Reports if it doesn't find\
-    \ a mer\nat the correct position.  Doesn't report if table\nhas too much stuff.\n\
-    -test2 db.fasta sequence.fasta\n--  Builds a positionDB from db.fasta, then searches\n\
+  optional: true
+  synonyms:
+  - -buildonly
+  description: "[build opts] sequence.fasta\n--  just builds a table and exits"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -existence
+  description: "[build opts] sequence.fasta\n--  builds (or reads) a table reports\
+    \ if any mers\nin sequence.fasta cannot be found"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -extra
+  description: "[build opts] sequence.fasta\n--  builds (or reads) a table reports\
+    \ if any mers\nNOT in sequence.fasta are be found"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -test1
+  description: "--  Tests if each and every mer is found in the\npositionDB.  Reports\
+    \ if it doesn't find a mer\nat the correct position.  Doesn't report if table\n\
+    has too much stuff."
+  args: !SimpleFlagArg
+    name: sequence.fasta
+- !Flag
+  optional: true
+  synonyms:
+  - -test2
+  description: "sequence.fasta\n--  Builds a positionDB from db.fasta, then searches\n\
     the table for each mer in sequence.fasta.  Reports\nall mers it finds.\n-- This\
     \ is a silly test and you shouldn't do it.\n"
-  synonyms:
-  - -dump
   args: !SimpleFlagArg
-    name: datafile
-  optional: true
+    name: db.fasta
 parent:
 subcommands: []
 usage: []
@@ -101,3 +123,4 @@ help_text: "usage: positionDB [args]\n       -mersize k         The size of the 
   \ it.\n"
 generated_using:
 - --help
+docker_image:

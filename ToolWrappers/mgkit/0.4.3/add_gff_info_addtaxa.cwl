@@ -1,33 +1,60 @@
 class: CommandLineTool
 id: add_gff_info_addtaxa.cwl
 inputs:
-- id: in_verbose
-  doc: "-t, --gene-taxon-table TEXT  GIDs taxonomy table (e.g. gi_taxid_nucl.dmp.gz)\n\
-    or a similar file where GENE/TAXON are tab\nseparated and one per line\n-a, --gene-attr\
-    \ TEXT         In which attribute the GENEID in the table is\nstored (defaults\
-    \ to *gene_id*)\n-f, --hdf-table TEXT         HDF5 file and table name to use\
-    \ for taxon_id\nlookups. The format to pass is the file name,\ncolon and the table\
-    \ file hf5:taxa-table. The\nindex in the table is the accession_id, while\nthe\
-    \ column `taxon_id` stores the taxon_id as\nint\n-x, --taxonomy TEXT         \
-    \ Taxonomy file - If given, both *taxon_name* and\n*lineage* attributes will be\
-    \ set\n-d, --dictionary TEXT        A serialised dictionary, where the key is\
-    \ the\nGENEID and the value is TAXONID. It can be in\njson or msgpack format (can\
-    \ be a compressed\nfile) *Note*: the dictionary values takes\nprecedence over\
-    \ the table files\n-e, --skip-no-taxon          If used, annotations with no taxon_id\
-    \ won't be\noutputted\n-db, --taxon-db TEXT         DB used to add the taxonomic\
-    \ information\n-c, --cache-table            If used, annotations are not preloaded,\
-    \ but the\ntaxa table is cached, instead\n--progress                   Shows Progress\
-    \ Bar\n--help                       Show this message and exit.\n"
-  type: boolean
+- id: in_gene_tax_on_table
+  doc: "GIDs taxonomy table (e.g. gi_taxid_nucl.dmp.gz)\nor a similar file where GENE/TAXON\
+    \ are tab\nseparated and one per line"
+  type: File?
   inputBinding:
-    prefix: --verbose
-- id: in_input_file
-  doc: ''
-  type: string
+    prefix: --gene-taxon-table
+- id: in_gene_attr
+  doc: "In which attribute the GENEID in the table is\nstored (defaults to *gene_id*)"
+  type: string?
+  inputBinding:
+    prefix: --gene-attr
+- id: in_hdf_table
+  doc: "HDF5 file and table name to use for taxon_id\nlookups. The format to pass\
+    \ is the file name,\ncolon and the table file hf5:taxa-table. The\nindex in the\
+    \ table is the accession_id, while\nthe column `taxon_id` stores the taxon_id\
+    \ as\nint"
+  type: long?
+  inputBinding:
+    prefix: --hdf-table
+- id: in_taxonomy
+  doc: "Taxonomy file - If given, both *taxon_name* and\n*lineage* attributes will\
+    \ be set"
+  type: File?
+  inputBinding:
+    prefix: --taxonomy
+- id: in_dictionary
+  doc: "A serialised dictionary, where the key is the\nGENEID and the value is TAXONID.\
+    \ It can be in\njson or msgpack format (can be a compressed\nfile) *Note*: the\
+    \ dictionary values takes\nprecedence over the table files"
+  type: File?
+  inputBinding:
+    prefix: --dictionary
+- id: in_skip_no_tax_on
+  doc: If used, annotations with no taxon_id won't be
+  type: boolean?
+  inputBinding:
+    prefix: --skip-no-taxon
+- id: in_cache_table
+  doc: "If used, annotations are not preloaded, but the\ntaxa table is cached, instead"
+  type: boolean?
+  inputBinding:
+    prefix: --cache-table
+- id: in_progress
+  doc: Shows Progress Bar
+  type: boolean?
+  inputBinding:
+    prefix: --progress
+- id: in_file
+  doc: 'Options:'
+  type: File
   inputBinding:
     position: 0
-- id: in_output_file
-  doc: ''
+- id: in_outputted
+  doc: -db, --taxon-db TEXT         DB used to add the taxonomic information
   type: string
   inputBinding:
     position: 1
@@ -35,6 +62,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - add-gff-info

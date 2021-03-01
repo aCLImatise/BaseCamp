@@ -14,6 +14,9 @@ task BannerPredict {
       ~{if defined(probability) then ("--probability " +  '"' + probability + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     model: "The model that banner trained"
     probability: "The probability threshold for reporting\\nclassifications"

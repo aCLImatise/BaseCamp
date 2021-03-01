@@ -18,6 +18,9 @@ task BedpeGeneAnnotation {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "Input BEDPE file containing the SVs."
     out: "Output BEDPE file containing the annotated SVs."

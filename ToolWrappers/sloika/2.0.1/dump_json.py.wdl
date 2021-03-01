@@ -12,6 +12,9 @@ task DumpJsonpy {
       ~{if defined(out_file) then ("--out_file " +  '"' + out_file + '"') else ""} \
       ~{if (no_params) then "--no-params" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out_file: "Output JSON file to this file location (default: None)"
     no_params: "Output parameters as well as model structure (Default:\\n--params) (default: True)\\n"

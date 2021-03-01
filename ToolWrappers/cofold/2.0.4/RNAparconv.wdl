@@ -22,6 +22,9 @@ task RNAparconv {
       ~{if (dump) then "--dump" else ""} \
       ~{if (silent) then "--silent" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     full_help: "Print help, including hidden options, and exit"
     specify_output_name: "Specify an output file name. If argument is missing\\nthe converted energy parameters are printed to\\n'stdout'."

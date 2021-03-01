@@ -12,6 +12,9 @@ task JavacSourcefiles {
       ~{options} \
       ~{source_files}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     javac: ""
     options: ""

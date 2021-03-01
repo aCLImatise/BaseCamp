@@ -12,7 +12,7 @@ task MissingRegions {
     String a
     String fast_a
     String maf
-    File file
+    File var_file
     String for
     String the
   }
@@ -27,11 +27,14 @@ task MissingRegions {
       ~{a} \
       ~{fast_a} \
       ~{maf} \
-      ~{file} \
+      ~{var_file} \
       ~{for} \
       ~{the} \
       ~{if (h) then "-h" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     h: ""
     show: ""
@@ -43,7 +46,7 @@ task MissingRegions {
     a: ""
     fast_a: ""
     maf: ""
-    file: ""
+    var_file: ""
     for: ""
     the: ""
   }

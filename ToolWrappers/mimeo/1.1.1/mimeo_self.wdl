@@ -42,6 +42,9 @@ task Mimeoself {
       ~{if defined(intra_cov) then ("--intraCov " +  '"' + intra_cov + '"') else ""} \
       ~{if (strict_self) then "--strictSelf" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     a_dir: "Name of directory containing sequences from genome.\\nWrite split files here if providing genome as\\nmultifasta."
     a_fast_a: "Genome as multifasta."

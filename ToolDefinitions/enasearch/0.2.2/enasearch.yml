@@ -12,13 +12,13 @@ subcommands:
   positional: []
   named:
   - !Flag
-    description: Id of a result (accessible with get_results)  [required]
+    optional: true
     synonyms:
     - --result
+    description: Id of a result (accessible with get_results)  [required]
     args: !SimpleFlagArg
       name: TEXT
-    optional: true
-  parent: &id015 !Command
+  parent: &id016 !Command
     command: *id001
     positional: []
     named: []
@@ -29,13 +29,13 @@ subcommands:
       positional: []
       named:
       - !Flag
-        description: Id of a result (accessible with get_results)  [required]
+        optional: true
         synonyms:
         - --result
+        description: Id of a result (accessible with get_results)  [required]
         args: !SimpleFlagArg
           name: TEXT
-        optional: true
-      parent: &id014 !Command
+      parent: &id015 !Command
         command: *id001
         positional: []
         named: []
@@ -46,13 +46,13 @@ subcommands:
           positional: []
           named:
           - !Flag
-            description: Id of a result (accessible with get_results)  [required]
+            optional: true
             synonyms:
             - --result
+            description: Id of a result (accessible with get_results)  [required]
             args: !SimpleFlagArg
               name: TEXT
-            optional: true
-          parent: &id013 !Command
+          parent: &id014 !Command
             command: *id001
             positional: []
             named: []
@@ -63,13 +63,13 @@ subcommands:
               positional: []
               named:
               - !Flag
-                description: Id of a result (accessible with get_results)  [required]
+                optional: true
                 synonyms:
                 - --result
+                description: Id of a result (accessible with get_results)  [required]
                 args: !SimpleFlagArg
                   name: TEXT
-                optional: true
-              parent: &id003 !Command
+              parent: &id013 !Command
                 command: *id001
                 positional: []
                 named: []
@@ -80,22 +80,707 @@ subcommands:
                   positional: []
                   named:
                   - !Flag
-                    description: Id of a result (accessible with get_results)  [required]
+                    optional: true
                     synonyms:
                     - --result
+                    description: Id of a result (accessible with get_results)  [required]
                     args: !SimpleFlagArg
                       name: TEXT
-                    optional: true
-                  parent: *id003
+                  parent: &id003 !Command
+                    command: *id001
+                    positional: []
+                    named: []
+                    parent:
+                    subcommands:
+                    - !Command
+                      command: *id002
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --result
+                        description: Id of a result (accessible with get_results)  [required]
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: Show this message and exit.
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: enasearch get_sortable_fields [OPTIONS]\n\
+                        \n  Get the fields of a result that can sorted.\n\n  This\
+                        \ function returns the fields that can be used to sort the\
+                        \ output of a\n  query for a result on ENA. Each field is\
+                        \ described on a line with field\n  id, its description, its\
+                        \ type and to which results it is related\n\nOptions:\n  --result\
+                        \ TEXT  Id of a result (accessible with get_results)  [required]\n\
+                        \  -h, --help     Show this message and exit.\n"
+                      generated_using: &id004
+                      - --help
+                      docker_image:
+                    - !Command
+                      command: &id005
+                      - enasearch
+                      - get_returnable_fields
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --result
+                        description: Id of a result (accessible with get_results)  [required]
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: Show this message and exit.
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: enasearch get_returnable_fields [OPTIONS]\n\
+                        \n  Get the fields extractable for a result.\n\n  This function\
+                        \ returns the fields as a list.\n\nOptions:\n  --result TEXT\
+                        \  Id of a result (accessible with get_results)  [required]\n\
+                        \  -h, --help     Show this message and exit.\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id006
+                      - enasearch
+                      - retrieve_analysis_report
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --accession
+                        description: "Accession id (study accessions (ERP, SRP, DRP,\
+                          \ PRJ\nprefixes), experiment accessions (ERX, SRX, DRX prefixes),\n\
+                          sample accessions (ERS, SRS, DRS, SAM prefixes) and run\n\
+                          accessions))  [required]"
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --fields
+                        description: "Fields to return (accessible with get_analysis_fields)\n\
+                          [multiple or comma-separated]"
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --file
+                        description: File to save the report
+                        args: !SimpleFlagArg
+                          name: PATH
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: Show this message and exit.
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: enasearch retrieve_analysis_report [OPTIONS]\n\
+                        \n  Retrieve analysis report from ENA.\n\n  The output can\
+                        \ be redirected to a file and directly display to the\n  standard\
+                        \ output given the display chosen.\n\nOptions:\n  --accession\
+                        \ TEXT  Accession id (study accessions (ERP, SRP, DRP, PRJ\n\
+                        \                    prefixes), experiment accessions (ERX,\
+                        \ SRX, DRX prefixes),\n                    sample accessions\
+                        \ (ERS, SRS, DRS, SAM prefixes) and run\n                \
+                        \    accessions))  [required]\n  --fields TEXT     Fields\
+                        \ to return (accessible with get_analysis_fields)\n      \
+                        \              [multiple or comma-separated]\n  --file PATH\
+                        \       File to save the report\n  -h, --help        Show\
+                        \ this message and exit.\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id007
+                      - enasearch
+                      - retrieve_data
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: of
+                        description: fasta and fastq
+                      - !Positional
+                        optional: false
+                        position: 1
+                        name: separated
+                        description: by a -)
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --ids
+                        description: "Ids for records to return (other than Taxon\
+                          \ and\nProject) [multiple]  [required]"
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --display
+                        description: "Display option to specify the display format\n\
+                          (accessible with get_display_options)  [required]"
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --download
+                        description: "Download option to specify that records are\
+                          \ to be\nsaved in a file (used with file option, list\n\
+                          accessible with get_download_options)"
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --file
+                        description: "File to save the content of the search (used\
+                          \ with\ndownload option)"
+                        args: !SimpleFlagArg
+                          name: PATH
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --offset
+                        description: RANGE  First record to get (used only for display
+                          different
+                        args: !SimpleFlagArg
+                          name: INTEGER
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --length
+                        description: "RANGE  Number of records to retrieve (used only\
+                          \ for display\ndifferent of fasta and fastq"
+                        args: !SimpleFlagArg
+                          name: INTEGER
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --subseq_range
+                        description: Range for subsequences (integer start and stop
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --expanded
+                        description: Determine if a CON record is expanded
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --header
+                        description: To obtain only the header of a record
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: Show this message and exit.
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: enasearch retrieve_data [OPTIONS]\n\n  Retrieve\
+                        \ ENA data (other than taxon).\n\n  This function retrieves\
+                        \ data (other than taxon) from ENA by:\n\n  - Building the\
+                        \ URL based on the ids to retrieve and some parameters to\n\
+                        \  format the results - Requesting the URL to extract the\
+                        \ data\n\n  The output can be redirected to a file and directly\
+                        \ display to the\n  standard output given the display chosen.\n\
+                        \nOptions:\n  --ids TEXT              Ids for records to return\
+                        \ (other than Taxon and\n                          Project)\
+                        \ [multiple]  [required]\n  --display TEXT          Display\
+                        \ option to specify the display format\n                 \
+                        \         (accessible with get_display_options)  [required]\n\
+                        \  --download TEXT         Download option to specify that\
+                        \ records are to be\n                          saved in a\
+                        \ file (used with file option, list\n                    \
+                        \      accessible with get_download_options)\n  --file PATH\
+                        \             File to save the content of the search (used\
+                        \ with\n                          download option)\n  --offset\
+                        \ INTEGER RANGE  First record to get (used only for display\
+                        \ different\n                          of  fasta and fastq\n\
+                        \  --length INTEGER RANGE  Number of records to retrieve (used\
+                        \ only for display\n                          different of\
+                        \ fasta and fastq\n  --subseq_range TEXT     Range for subsequences\
+                        \ (integer start and stop\n                          separated\
+                        \  by a -)\n  --expanded              Determine if a CON record\
+                        \ is expanded\n  --header                To obtain only the\
+                        \ header of a record\n  -h, --help              Show this\
+                        \ message and exit.\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id008
+                      - enasearch
+                      - retrieve_run_report
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --accession
+                        description: "Accession id (study accessions (ERP, SRP, DRP,\
+                          \ PRJ\nprefixes), experiment accessions (ERX, SRX, DRX prefixes),\n\
+                          sample accessions (ERS, SRS, DRS, SAM prefixes) and run\n\
+                          accessions))  [required]"
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --fields
+                        description: "Fields to return (accessible with get_run_fields)\n\
+                          [multiple or comma-separated]"
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --file
+                        description: File to save the report
+                        args: !SimpleFlagArg
+                          name: PATH
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: Show this message and exit.
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: enasearch retrieve_run_report [OPTIONS]\n\
+                        \n  Retrieve run report from ENA.\n\n  The output can be redirected\
+                        \ to a file and directly display to the\n  standard output\
+                        \ given the display chosen.\n\nOptions:\n  --accession TEXT\
+                        \  Accession id (study accessions (ERP, SRP, DRP, PRJ\n  \
+                        \                  prefixes), experiment accessions (ERX,\
+                        \ SRX, DRX prefixes),\n                    sample accessions\
+                        \ (ERS, SRS, DRS, SAM prefixes) and run\n                \
+                        \    accessions))  [required]\n  --fields TEXT     Fields\
+                        \ to return (accessible with get_run_fields)\n           \
+                        \         [multiple or comma-separated]\n  --file PATH   \
+                        \    File to save the report\n  -h, --help        Show this\
+                        \ message and exit.\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id009
+                      - enasearch
+                      - type...
+                      positional:
+                      - !Positional
+                        optional: false
+                        position: 0
+                        name: enasearch
+                        description: ''
+                      - !Positional
+                        optional: false
+                        position: 1
+                        name: COMMAND
+                        description: ''
+                      - !Positional
+                        optional: true
+                        position: 2
+                        name: ARGS
+                        description: ''
+                      named: []
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: enasearch [OPTIONS] COMMAND [ARGS]...\nTry\
+                        \ \"enasearch -h\" for help.\n\nError: No such command \"\
+                        type...\".\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id010
+                      - enasearch
+                      - retrieve_taxons
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --ids
+                        description: Ids for taxon to return [multiple]  [required]
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --display
+                        description: "Display option to specify the display format\n\
+                          (accessible with get_display_options)  [required]"
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --result
+                        description: "Id of a taxonomy result (accessible with\nget_taxonomy_results)"
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --download
+                        description: "Download option to specify that records are\
+                          \ to be\nsaved in a file (used with file option, list\n\
+                          accessible with get_download_options)"
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --file
+                        description: "File to save the content of the search (used\
+                          \ with\ndownload option)"
+                        args: !SimpleFlagArg
+                          name: PATH
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --offset
+                        description: "RANGE  First record to get (used only for display\
+                          \ different\nof fasta and fastq"
+                        args: !SimpleFlagArg
+                          name: INTEGER
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --length
+                        description: "RANGE  Number of records to retrieve (used only\
+                          \ for display\ndifferent of fasta and fastq"
+                        args: !SimpleFlagArg
+                          name: INTEGER
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --subseq_range
+                        description: "Range for subsequences (integer start and stop\n\
+                          separated by a -)"
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --expanded
+                        description: Determine if a CON record is expanded
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --header
+                        description: To obtain only the header of a record
+                        args: !EmptyFlagArg {}
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: Show this message and exit.
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: enasearch retrieve_taxons [OPTIONS]\n\n \
+                        \ Retrieve data from the ENA Taxon Portal.\n\n  This function\
+                        \ retrieves data (other than taxon) from ENA by:\n\n  - Formatting\
+                        \ the ids to query then on the Taxon Portal - Building the\
+                        \ URL\n  based on the ids to retrieve and some parameters\
+                        \ to format the results -\n  Requesting the URL to extract\
+                        \ the data\n\n  The output can be redirected to a file and\
+                        \ directly display to the\n  standard output given the display\
+                        \ chosen.\n\nOptions:\n  --ids TEXT              Ids for taxon\
+                        \ to return [multiple]  [required]\n  --display TEXT     \
+                        \     Display option to specify the display format\n     \
+                        \                     (accessible with get_display_options)\
+                        \  [required]\n  --result TEXT           Id of a taxonomy\
+                        \ result (accessible with\n                          get_taxonomy_results)\n\
+                        \  --download TEXT         Download option to specify that\
+                        \ records are to be\n                          saved in a\
+                        \ file (used with file option, list\n                    \
+                        \      accessible with get_download_options)\n  --file PATH\
+                        \             File to save the content of the search (used\
+                        \ with\n                          download option)\n  --offset\
+                        \ INTEGER RANGE  First record to get (used only for display\
+                        \ different\n                          of fasta and fastq\n\
+                        \  --length INTEGER RANGE  Number of records to retrieve (used\
+                        \ only for display\n                          different of\
+                        \ fasta and fastq\n  --subseq_range TEXT     Range for subsequences\
+                        \ (integer start and stop\n                          separated\
+                        \ by a -)\n  --expanded              Determine if a CON record\
+                        \ is expanded\n  --header                To obtain only the\
+                        \ header of a record\n  -h, --help              Show this\
+                        \ message and exit.\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id011
+                      - enasearch
+                      - search_data
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --free_text_search
+                        description: "Use free text search, otherwise the data warehouse\n\
+                          is used"
+                        args: !EmptyFlagArg {}
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --query
+                        description: "Query string, made up of filtering conditions,\n\
+                          joined by logical ANDs, ORs and NOTs and bound by\ndouble\
+                          \ quotes; the filter fields for a query are\naccessible\
+                          \ with get_filter_fields and the type of\nfilters with get_filter_types\
+                          \  [required]"
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --result
+                        description: "Id of a result (accessible with get_results)\n\
+                          [required]"
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --display
+                        description: "Display option to specify the display format\n\
+                          (accessible with get_display_options)  [required]"
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --download
+                        description: "Download option to specify that records are\
+                          \ to be\nsaved in a file (used with file option, list\n\
+                          accessible with get_download_options)"
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --file
+                        description: "File to save the content of the search (used\
+                          \ with\ndownload option)"
+                        args: !SimpleFlagArg
+                          name: PATH
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --fields
+                        description: "Fields to return (accessible with\nget_returnable_fields,\
+                          \ used only for report as\ndisplay value) [multiple or comma-separated]"
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --sortfields
+                        description: "Fields to sort the results (accessible with\n\
+                          get_sortable_fields, used only for report as display\nvalue)\
+                          \ [multiple or comma-separated]"
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --offset
+                        description: "RANGE  First record to get (used only for display\
+                          \ different\nof fasta and fastq"
+                        args: !SimpleFlagArg
+                          name: INTEGER
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --length
+                        description: "RANGE  Number of records to retrieve (used only\
+                          \ for display\ndifferent of fasta and fastq"
+                        args: !SimpleFlagArg
+                          name: INTEGER
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: Show this message and exit.
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: enasearch search_data [OPTIONS]\n\n  Search\
+                        \ data given a query.\n\n  This function\n\n  - Extracts the\
+                        \ number of possible results for the query - Extracts the\
+                        \ all\n  the results of the query (by potentially running\
+                        \ several times the search\n  function)\n\n  The output can\
+                        \ be redirected to a file and directly display to the\n  standard\
+                        \ output given the display chosen.\n\nOptions:\n  --free_text_search\
+                        \      Use free text search, otherwise the data warehouse\n\
+                        \                          is used\n  --query TEXT       \
+                        \     Query string, made up of filtering conditions,\n   \
+                        \                       joined by logical ANDs, ORs and NOTs\
+                        \ and bound by\n                          double quotes; the\
+                        \ filter fields for a query are\n                        \
+                        \  accessible with get_filter_fields and the type of\n   \
+                        \                       filters with get_filter_types  [required]\n\
+                        \  --result TEXT           Id of a result (accessible with\
+                        \ get_results)\n                          [required]\n  --display\
+                        \ TEXT          Display option to specify the display format\n\
+                        \                          (accessible with get_display_options)\
+                        \  [required]\n  --download TEXT         Download option to\
+                        \ specify that records are to be\n                       \
+                        \   saved in a file (used with file option, list\n       \
+                        \                   accessible with get_download_options)\n\
+                        \  --file PATH             File to save the content of the\
+                        \ search (used with\n                          download option)\n\
+                        \  --fields TEXT           Fields to return (accessible with\n\
+                        \                          get_returnable_fields, used only\
+                        \ for report as\n                          display value)\
+                        \ [multiple or comma-separated]\n  --sortfields TEXT     \
+                        \  Fields to sort the results (accessible with\n         \
+                        \                 get_sortable_fields, used only for report\
+                        \ as display\n                          value) [multiple or\
+                        \ comma-separated]\n  --offset INTEGER RANGE  First record\
+                        \ to get (used only for display different\n              \
+                        \            of fasta and fastq\n  --length INTEGER RANGE\
+                        \  Number of records to retrieve (used only for display\n\
+                        \                          different of fasta and fastq\n\
+                        \  -h, --help              Show this message and exit.\n"
+                      generated_using: *id004
+                      docker_image:
+                    - !Command
+                      command: &id012
+                      - enasearch
+                      - get_filter_fields
+                      positional: []
+                      named:
+                      - !Flag
+                        optional: true
+                        synonyms:
+                        - --result
+                        description: Id of a result (accessible with get_results)  [required]
+                        args: !SimpleFlagArg
+                          name: TEXT
+                      parent: *id003
+                      subcommands: []
+                      usage: []
+                      help_flag: !Flag
+                        optional: true
+                        synonyms:
+                        - -h
+                        - --help
+                        description: Show this message and exit.
+                        args: !EmptyFlagArg {}
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: enasearch get_filter_fields [OPTIONS]\n\n\
+                        \  Get the filter fields of a result to build a query.\n\n\
+                        \  This function returns the fields that can be used to build\
+                        \ a query on a\n  result on ENA. Each field is described on\
+                        \ a line with field id, its\n  description, its type and to\
+                        \ which results it is related\n\nOptions:\n  --result TEXT\
+                        \  Id of a result (accessible with get_results)  [required]\n\
+                        \  -h, --help     Show this message and exit.\n"
+                      generated_using: *id004
+                      docker_image:
+                    usage: []
+                    help_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - -h
+                      - --help
+                      description: Show this message and exit.
+                      args: !EmptyFlagArg {}
+                    usage_flag:
+                    version_flag: !Flag
+                      optional: true
+                      synonyms:
+                      - --version
+                      description: Show the version and exit.
+                      args: !EmptyFlagArg {}
+                    help_text: "Usage: enasearch [OPTIONS] COMMAND [ARGS]...\n\n \
+                      \ The Python library for interacting with ENA's API\n\nOptions:\n\
+                      \  --version   Show the version and exit.\n  -h, --help  Show\
+                      \ this message and exit.\n\nCommands:\n  get_analysis_fields\
+                      \       Get the fields extractable for an analysis.\n  get_display_options\
+                      \       Get the list of possible formats to display the...\n\
+                      \  get_download_options      Get the options for download of\
+                      \ data from ENA.\n  get_filter_fields         Get the filter\
+                      \ fields of a result to build a...\n  get_filter_types     \
+                      \     Return the filters usable for the different\n        \
+                      \                    type...\n  get_results               Get\
+                      \ the possible results (type of data).\n  get_returnable_fields\
+                      \     Get the fields extractable for a result.\n  get_run_fields\
+                      \            Get the fields extractable for a run.\n  get_sortable_fields\
+                      \       Get the fields of a result that can sorted.\n  get_taxonomy_results\
+                      \      Get list of taxonomy results.\n  retrieve_analysis_report\
+                      \  Retrieve analysis report from ENA.\n  retrieve_data     \
+                      \        Retrieve ENA data (other than taxon).\n  retrieve_run_report\
+                      \       Retrieve run report from ENA.\n  retrieve_taxons   \
+                      \        Retrieve data from the ENA Taxon Portal.\n  search_data\
+                      \               Search data given a query.\n"
+                    generated_using: *id004
+                    docker_image:
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: Show this message and exit.
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: Show this message and exit.
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "Usage: enasearch get_sortable_fields [OPTIONS]\n\n \
@@ -106,31 +791,29 @@ subcommands:
                     \ it is related\n\nOptions:\n  --result TEXT  Id of a result (accessible\
                     \ with get_results)  [required]\n  -h, --help     Show this message\
                     \ and exit.\n"
-                  generated_using: &id004
-                  - --help
+                  generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id005
-                  - enasearch
-                  - get_returnable_fields
+                  command: *id005
                   positional: []
                   named:
                   - !Flag
-                    description: Id of a result (accessible with get_results)  [required]
+                    optional: true
                     synonyms:
                     - --result
+                    description: Id of a result (accessible with get_results)  [required]
                     args: !SimpleFlagArg
                       name: TEXT
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: Show this message and exit.
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: Show this message and exit.
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "Usage: enasearch get_returnable_fields [OPTIONS]\n\n\
@@ -139,47 +822,46 @@ subcommands:
                     \ Id of a result (accessible with get_results)  [required]\n \
                     \ -h, --help     Show this message and exit.\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id006
-                  - enasearch
-                  - retrieve_analysis_report
+                  command: *id006
                   positional: []
                   named:
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --accession
                     description: "Accession id (study accessions (ERP, SRP, DRP, PRJ\n\
                       prefixes), experiment accessions (ERX, SRX, DRX prefixes),\n\
                       sample accessions (ERS, SRS, DRS, SAM prefixes) and run\naccessions))\
                       \  [required]"
-                    synonyms:
-                    - --accession
                     args: !SimpleFlagArg
                       name: TEXT
-                    optional: true
                   - !Flag
-                    description: "Fields to return (accessible with get_analysis_fields)\n\
-                      [multiple or comma-separated]"
+                    optional: true
                     synonyms:
                     - --fields
+                    description: "Fields to return (accessible with get_analysis_fields)\n\
+                      [multiple or comma-separated]"
                     args: !SimpleFlagArg
                       name: TEXT
-                    optional: true
                   - !Flag
-                    description: File to save the report
+                    optional: true
                     synonyms:
                     - --file
+                    description: File to save the report
                     args: !SimpleFlagArg
                       name: PATH
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: Show this message and exit.
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: Show this message and exit.
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "Usage: enasearch retrieve_analysis_report [OPTIONS]\n\
@@ -195,100 +877,99 @@ subcommands:
                     \ comma-separated]\n  --file PATH       File to save the report\n\
                     \  -h, --help        Show this message and exit.\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id007
-                  - enasearch
-                  - retrieve_data
+                  command: *id007
                   positional:
                   - !Positional
-                    description: fasta and fastq
+                    optional: false
                     position: 0
                     name: of
-                    optional: false
+                    description: fasta and fastq
                   - !Positional
-                    description: by a -)
+                    optional: false
                     position: 1
                     name: separated
-                    optional: false
+                    description: by a -)
                   named:
                   - !Flag
-                    description: "Ids for records to return (other than Taxon and\n\
-                      Project) [multiple]  [required]"
+                    optional: true
                     synonyms:
                     - --ids
+                    description: "Ids for records to return (other than Taxon and\n\
+                      Project) [multiple]  [required]"
                     args: !SimpleFlagArg
                       name: TEXT
-                    optional: true
                   - !Flag
-                    description: "Display option to specify the display format\n(accessible\
-                      \ with get_display_options)  [required]"
+                    optional: true
                     synonyms:
                     - --display
+                    description: "Display option to specify the display format\n(accessible\
+                      \ with get_display_options)  [required]"
                     args: !SimpleFlagArg
                       name: TEXT
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --download
                     description: "Download option to specify that records are to be\n\
                       saved in a file (used with file option, list\naccessible with\
                       \ get_download_options)"
-                    synonyms:
-                    - --download
                     args: !SimpleFlagArg
                       name: TEXT
-                    optional: true
                   - !Flag
-                    description: "File to save the content of the search (used with\n\
-                      download option)"
+                    optional: true
                     synonyms:
                     - --file
+                    description: "File to save the content of the search (used with\n\
+                      download option)"
                     args: !SimpleFlagArg
                       name: PATH
-                    optional: true
                   - !Flag
-                    description: RANGE  First record to get (used only for display
-                      different
+                    optional: true
                     synonyms:
                     - --offset
+                    description: RANGE  First record to get (used only for display
+                      different
                     args: !SimpleFlagArg
                       name: INTEGER
-                    optional: true
                   - !Flag
-                    description: "RANGE  Number of records to retrieve (used only\
-                      \ for display\ndifferent of fasta and fastq"
+                    optional: true
                     synonyms:
                     - --length
+                    description: "RANGE  Number of records to retrieve (used only\
+                      \ for display\ndifferent of fasta and fastq"
                     args: !SimpleFlagArg
                       name: INTEGER
-                    optional: true
                   - !Flag
-                    description: Range for subsequences (integer start and stop
+                    optional: true
                     synonyms:
                     - --subseq_range
+                    description: Range for subsequences (integer start and stop
                     args: !SimpleFlagArg
                       name: TEXT
-                    optional: true
                   - !Flag
-                    description: Determine if a CON record is expanded
+                    optional: true
                     synonyms:
                     - --expanded
+                    description: Determine if a CON record is expanded
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: To obtain only the header of a record
+                    optional: true
                     synonyms:
                     - --header
+                    description: To obtain only the header of a record
                     args: !EmptyFlagArg {}
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: Show this message and exit.
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: Show this message and exit.
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "Usage: enasearch retrieve_data [OPTIONS]\n\n  Retrieve\
@@ -318,47 +999,46 @@ subcommands:
                     \               To obtain only the header of a record\n  -h, --help\
                     \              Show this message and exit.\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id008
-                  - enasearch
-                  - retrieve_run_report
+                  command: *id008
                   positional: []
                   named:
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --accession
                     description: "Accession id (study accessions (ERP, SRP, DRP, PRJ\n\
                       prefixes), experiment accessions (ERX, SRX, DRX prefixes),\n\
                       sample accessions (ERS, SRS, DRS, SAM prefixes) and run\naccessions))\
                       \  [required]"
-                    synonyms:
-                    - --accession
                     args: !SimpleFlagArg
                       name: TEXT
-                    optional: true
                   - !Flag
-                    description: "Fields to return (accessible with get_run_fields)\n\
-                      [multiple or comma-separated]"
+                    optional: true
                     synonyms:
                     - --fields
+                    description: "Fields to return (accessible with get_run_fields)\n\
+                      [multiple or comma-separated]"
                     args: !SimpleFlagArg
                       name: TEXT
-                    optional: true
                   - !Flag
-                    description: File to save the report
+                    optional: true
                     synonyms:
                     - --file
+                    description: File to save the report
                     args: !SimpleFlagArg
                       name: PATH
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: Show this message and exit.
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: Show this message and exit.
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "Usage: enasearch retrieve_run_report [OPTIONS]\n\n \
@@ -374,26 +1054,25 @@ subcommands:
                     \       File to save the report\n  -h, --help        Show this\
                     \ message and exit.\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id009
-                  - enasearch
-                  - type...
+                  command: *id009
                   positional:
                   - !Positional
-                    description: ''
+                    optional: false
                     position: 0
                     name: enasearch
-                    optional: false
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: false
                     position: 1
                     name: COMMAND
-                    optional: false
-                  - !Positional
                     description: ''
+                  - !Positional
+                    optional: true
                     position: 2
                     name: ARGS
-                    optional: true
+                    description: ''
                   named: []
                   parent: *id003
                   subcommands: []
@@ -405,97 +1084,96 @@ subcommands:
                     enasearch -h\" for help.\n\nError: No such command \"type...\"\
                     .\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id010
-                  - enasearch
-                  - retrieve_taxons
+                  command: *id010
                   positional: []
                   named:
                   - !Flag
-                    description: Ids for taxon to return [multiple]  [required]
+                    optional: true
                     synonyms:
                     - --ids
+                    description: Ids for taxon to return [multiple]  [required]
                     args: !SimpleFlagArg
                       name: TEXT
-                    optional: true
                   - !Flag
-                    description: "Display option to specify the display format\n(accessible\
-                      \ with get_display_options)  [required]"
+                    optional: true
                     synonyms:
                     - --display
+                    description: "Display option to specify the display format\n(accessible\
+                      \ with get_display_options)  [required]"
                     args: !SimpleFlagArg
                       name: TEXT
-                    optional: true
                   - !Flag
-                    description: "Id of a taxonomy result (accessible with\nget_taxonomy_results)"
+                    optional: true
                     synonyms:
                     - --result
+                    description: "Id of a taxonomy result (accessible with\nget_taxonomy_results)"
                     args: !SimpleFlagArg
                       name: TEXT
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --download
                     description: "Download option to specify that records are to be\n\
                       saved in a file (used with file option, list\naccessible with\
                       \ get_download_options)"
-                    synonyms:
-                    - --download
                     args: !SimpleFlagArg
                       name: TEXT
-                    optional: true
                   - !Flag
-                    description: "File to save the content of the search (used with\n\
-                      download option)"
+                    optional: true
                     synonyms:
                     - --file
+                    description: "File to save the content of the search (used with\n\
+                      download option)"
                     args: !SimpleFlagArg
                       name: PATH
-                    optional: true
                   - !Flag
-                    description: "RANGE  First record to get (used only for display\
-                      \ different\nof fasta and fastq"
+                    optional: true
                     synonyms:
                     - --offset
+                    description: "RANGE  First record to get (used only for display\
+                      \ different\nof fasta and fastq"
                     args: !SimpleFlagArg
                       name: INTEGER
-                    optional: true
                   - !Flag
-                    description: "RANGE  Number of records to retrieve (used only\
-                      \ for display\ndifferent of fasta and fastq"
+                    optional: true
                     synonyms:
                     - --length
+                    description: "RANGE  Number of records to retrieve (used only\
+                      \ for display\ndifferent of fasta and fastq"
                     args: !SimpleFlagArg
                       name: INTEGER
-                    optional: true
                   - !Flag
-                    description: "Range for subsequences (integer start and stop\n\
-                      separated by a -)"
+                    optional: true
                     synonyms:
                     - --subseq_range
+                    description: "Range for subsequences (integer start and stop\n\
+                      separated by a -)"
                     args: !SimpleFlagArg
                       name: TEXT
-                    optional: true
                   - !Flag
-                    description: Determine if a CON record is expanded
+                    optional: true
                     synonyms:
                     - --expanded
+                    description: Determine if a CON record is expanded
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
-                    description: To obtain only the header of a record
+                    optional: true
                     synonyms:
                     - --header
+                    description: To obtain only the header of a record
                     args: !EmptyFlagArg {}
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: Show this message and exit.
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: Show this message and exit.
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "Usage: enasearch retrieve_taxons [OPTIONS]\n\n  Retrieve\
@@ -527,103 +1205,102 @@ subcommands:
                     \              To obtain only the header of a record\n  -h, --help\
                     \              Show this message and exit.\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id011
-                  - enasearch
-                  - search_data
+                  command: *id011
                   positional: []
                   named:
                   - !Flag
-                    description: "Use free text search, otherwise the data warehouse\n\
-                      is used"
+                    optional: true
                     synonyms:
                     - --free_text_search
+                    description: "Use free text search, otherwise the data warehouse\n\
+                      is used"
                     args: !EmptyFlagArg {}
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --query
                     description: "Query string, made up of filtering conditions,\n\
                       joined by logical ANDs, ORs and NOTs and bound by\ndouble quotes;\
                       \ the filter fields for a query are\naccessible with get_filter_fields\
                       \ and the type of\nfilters with get_filter_types  [required]"
-                    synonyms:
-                    - --query
                     args: !SimpleFlagArg
                       name: TEXT
-                    optional: true
                   - !Flag
-                    description: "Id of a result (accessible with get_results)\n[required]"
+                    optional: true
                     synonyms:
                     - --result
+                    description: "Id of a result (accessible with get_results)\n[required]"
                     args: !SimpleFlagArg
                       name: TEXT
-                    optional: true
                   - !Flag
-                    description: "Display option to specify the display format\n(accessible\
-                      \ with get_display_options)  [required]"
+                    optional: true
                     synonyms:
                     - --display
+                    description: "Display option to specify the display format\n(accessible\
+                      \ with get_display_options)  [required]"
                     args: !SimpleFlagArg
                       name: TEXT
-                    optional: true
                   - !Flag
+                    optional: true
+                    synonyms:
+                    - --download
                     description: "Download option to specify that records are to be\n\
                       saved in a file (used with file option, list\naccessible with\
                       \ get_download_options)"
-                    synonyms:
-                    - --download
                     args: !SimpleFlagArg
                       name: TEXT
-                    optional: true
                   - !Flag
-                    description: "File to save the content of the search (used with\n\
-                      download option)"
+                    optional: true
                     synonyms:
                     - --file
+                    description: "File to save the content of the search (used with\n\
+                      download option)"
                     args: !SimpleFlagArg
                       name: PATH
-                    optional: true
                   - !Flag
-                    description: "Fields to return (accessible with\nget_returnable_fields,\
-                      \ used only for report as\ndisplay value) [multiple or comma-separated]"
+                    optional: true
                     synonyms:
                     - --fields
+                    description: "Fields to return (accessible with\nget_returnable_fields,\
+                      \ used only for report as\ndisplay value) [multiple or comma-separated]"
                     args: !SimpleFlagArg
                       name: TEXT
-                    optional: true
                   - !Flag
-                    description: "Fields to sort the results (accessible with\nget_sortable_fields,\
-                      \ used only for report as display\nvalue) [multiple or comma-separated]"
+                    optional: true
                     synonyms:
                     - --sortfields
+                    description: "Fields to sort the results (accessible with\nget_sortable_fields,\
+                      \ used only for report as display\nvalue) [multiple or comma-separated]"
                     args: !SimpleFlagArg
                       name: TEXT
-                    optional: true
                   - !Flag
-                    description: "RANGE  First record to get (used only for display\
-                      \ different\nof fasta and fastq"
+                    optional: true
                     synonyms:
                     - --offset
+                    description: "RANGE  First record to get (used only for display\
+                      \ different\nof fasta and fastq"
                     args: !SimpleFlagArg
                       name: INTEGER
-                    optional: true
                   - !Flag
-                    description: "RANGE  Number of records to retrieve (used only\
-                      \ for display\ndifferent of fasta and fastq"
+                    optional: true
                     synonyms:
                     - --length
+                    description: "RANGE  Number of records to retrieve (used only\
+                      \ for display\ndifferent of fasta and fastq"
                     args: !SimpleFlagArg
                       name: INTEGER
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: Show this message and exit.
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: Show this message and exit.
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "Usage: enasearch search_data [OPTIONS]\n\n  Search data\
@@ -663,29 +1340,28 @@ subcommands:
                     \              different of fasta and fastq\n  -h, --help    \
                     \          Show this message and exit.\n"
                   generated_using: *id004
+                  docker_image:
                 - !Command
-                  command: &id012
-                  - enasearch
-                  - get_filter_fields
+                  command: *id012
                   positional: []
                   named:
                   - !Flag
-                    description: Id of a result (accessible with get_results)  [required]
+                    optional: true
                     synonyms:
                     - --result
+                    description: Id of a result (accessible with get_results)  [required]
                     args: !SimpleFlagArg
                       name: TEXT
-                    optional: true
                   parent: *id003
                   subcommands: []
                   usage: []
                   help_flag: !Flag
-                    description: Show this message and exit.
+                    optional: true
                     synonyms:
                     - -h
                     - --help
+                    description: Show this message and exit.
                     args: !EmptyFlagArg {}
-                    optional: true
                   usage_flag:
                   version_flag:
                   help_text: "Usage: enasearch get_filter_fields [OPTIONS]\n\n  Get\
@@ -697,21 +1373,11 @@ subcommands:
                     \ with get_results)  [required]\n  -h, --help     Show this message\
                     \ and exit.\n"
                   generated_using: *id004
+                  docker_image:
                 usage: []
-                help_flag: !Flag
-                  description: Show this message and exit.
-                  synonyms:
-                  - -h
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
+                help_flag:
                 usage_flag:
-                version_flag: !Flag
-                  description: Show the version and exit.
-                  synonyms:
-                  - --version
-                  args: !EmptyFlagArg {}
-                  optional: true
+                version_flag:
                 help_text: "Usage: enasearch [OPTIONS] COMMAND [ARGS]...\n\n  The\
                   \ Python library for interacting with ENA's API\n\nOptions:\n  --version\
                   \   Show the version and exit.\n  -h, --help  Show this message\
@@ -733,15 +1399,16 @@ subcommands:
                   \    Retrieve data from the ENA Taxon Portal.\n  search_data   \
                   \            Search data given a query.\n"
                 generated_using: *id004
+                docker_image:
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: Show this message and exit.
+                optional: true
                 synonyms:
                 - -h
                 - --help
+                description: Show this message and exit.
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "Usage: enasearch get_sortable_fields [OPTIONS]\n\n  Get\
@@ -752,27 +1419,28 @@ subcommands:
                 \nOptions:\n  --result TEXT  Id of a result (accessible with get_results)\
                 \  [required]\n  -h, --help     Show this message and exit.\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id005
               positional: []
               named:
               - !Flag
-                description: Id of a result (accessible with get_results)  [required]
+                optional: true
                 synonyms:
                 - --result
+                description: Id of a result (accessible with get_results)  [required]
                 args: !SimpleFlagArg
                   name: TEXT
-                optional: true
-              parent: *id003
+              parent: *id013
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: Show this message and exit.
+                optional: true
                 synonyms:
                 - -h
                 - --help
+                description: Show this message and exit.
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "Usage: enasearch get_returnable_fields [OPTIONS]\n\n  Get\
@@ -781,45 +1449,46 @@ subcommands:
                 \ (accessible with get_results)  [required]\n  -h, --help     Show\
                 \ this message and exit.\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id006
               positional: []
               named:
               - !Flag
+                optional: true
+                synonyms:
+                - --accession
                 description: "Accession id (study accessions (ERP, SRP, DRP, PRJ\n\
                   prefixes), experiment accessions (ERX, SRX, DRX prefixes),\nsample\
                   \ accessions (ERS, SRS, DRS, SAM prefixes) and run\naccessions))\
                   \  [required]"
-                synonyms:
-                - --accession
                 args: !SimpleFlagArg
                   name: TEXT
-                optional: true
               - !Flag
-                description: "Fields to return (accessible with get_analysis_fields)\n\
-                  [multiple or comma-separated]"
+                optional: true
                 synonyms:
                 - --fields
+                description: "Fields to return (accessible with get_analysis_fields)\n\
+                  [multiple or comma-separated]"
                 args: !SimpleFlagArg
                   name: TEXT
-                optional: true
               - !Flag
-                description: File to save the report
+                optional: true
                 synonyms:
                 - --file
+                description: File to save the report
                 args: !SimpleFlagArg
                   name: PATH
-                optional: true
-              parent: *id003
+              parent: *id013
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: Show this message and exit.
+                optional: true
                 synonyms:
                 - -h
                 - --help
+                description: Show this message and exit.
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "Usage: enasearch retrieve_analysis_report [OPTIONS]\n\n\
@@ -834,96 +1503,97 @@ subcommands:
                 \ or comma-separated]\n  --file PATH       File to save the report\n\
                 \  -h, --help        Show this message and exit.\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id007
               positional:
               - !Positional
-                description: fasta and fastq
+                optional: false
                 position: 0
                 name: of
-                optional: false
+                description: fasta and fastq
               - !Positional
-                description: by a -)
+                optional: false
                 position: 1
                 name: separated
-                optional: false
+                description: by a -)
               named:
               - !Flag
-                description: "Ids for records to return (other than Taxon and\nProject)\
-                  \ [multiple]  [required]"
+                optional: true
                 synonyms:
                 - --ids
+                description: "Ids for records to return (other than Taxon and\nProject)\
+                  \ [multiple]  [required]"
                 args: !SimpleFlagArg
                   name: TEXT
-                optional: true
               - !Flag
-                description: "Display option to specify the display format\n(accessible\
-                  \ with get_display_options)  [required]"
+                optional: true
                 synonyms:
                 - --display
+                description: "Display option to specify the display format\n(accessible\
+                  \ with get_display_options)  [required]"
                 args: !SimpleFlagArg
                   name: TEXT
-                optional: true
               - !Flag
-                description: "Download option to specify that records are to be\n\
-                  saved in a file (used with file option, list\naccessible with get_download_options)"
+                optional: true
                 synonyms:
                 - --download
+                description: "Download option to specify that records are to be\n\
+                  saved in a file (used with file option, list\naccessible with get_download_options)"
                 args: !SimpleFlagArg
                   name: TEXT
-                optional: true
               - !Flag
-                description: "File to save the content of the search (used with\n\
-                  download option)"
+                optional: true
                 synonyms:
                 - --file
+                description: "File to save the content of the search (used with\n\
+                  download option)"
                 args: !SimpleFlagArg
                   name: PATH
-                optional: true
               - !Flag
-                description: RANGE  First record to get (used only for display different
+                optional: true
                 synonyms:
                 - --offset
+                description: RANGE  First record to get (used only for display different
                 args: !SimpleFlagArg
                   name: INTEGER
-                optional: true
               - !Flag
-                description: "RANGE  Number of records to retrieve (used only for\
-                  \ display\ndifferent of fasta and fastq"
+                optional: true
                 synonyms:
                 - --length
+                description: "RANGE  Number of records to retrieve (used only for\
+                  \ display\ndifferent of fasta and fastq"
                 args: !SimpleFlagArg
                   name: INTEGER
-                optional: true
               - !Flag
-                description: Range for subsequences (integer start and stop
+                optional: true
                 synonyms:
                 - --subseq_range
+                description: Range for subsequences (integer start and stop
                 args: !SimpleFlagArg
                   name: TEXT
-                optional: true
               - !Flag
-                description: Determine if a CON record is expanded
+                optional: true
                 synonyms:
                 - --expanded
+                description: Determine if a CON record is expanded
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: To obtain only the header of a record
+                optional: true
                 synonyms:
                 - --header
+                description: To obtain only the header of a record
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: *id003
+              parent: *id013
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: Show this message and exit.
+                optional: true
                 synonyms:
                 - -h
                 - --help
+                description: Show this message and exit.
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "Usage: enasearch retrieve_data [OPTIONS]\n\n  Retrieve ENA\
@@ -952,45 +1622,46 @@ subcommands:
                 \ only the header of a record\n  -h, --help              Show this\
                 \ message and exit.\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id008
               positional: []
               named:
               - !Flag
+                optional: true
+                synonyms:
+                - --accession
                 description: "Accession id (study accessions (ERP, SRP, DRP, PRJ\n\
                   prefixes), experiment accessions (ERX, SRX, DRX prefixes),\nsample\
                   \ accessions (ERS, SRS, DRS, SAM prefixes) and run\naccessions))\
                   \  [required]"
-                synonyms:
-                - --accession
                 args: !SimpleFlagArg
                   name: TEXT
-                optional: true
               - !Flag
-                description: "Fields to return (accessible with get_run_fields)\n\
-                  [multiple or comma-separated]"
+                optional: true
                 synonyms:
                 - --fields
+                description: "Fields to return (accessible with get_run_fields)\n\
+                  [multiple or comma-separated]"
                 args: !SimpleFlagArg
                   name: TEXT
-                optional: true
               - !Flag
-                description: File to save the report
+                optional: true
                 synonyms:
                 - --file
+                description: File to save the report
                 args: !SimpleFlagArg
                   name: PATH
-                optional: true
-              parent: *id003
+              parent: *id013
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: Show this message and exit.
+                optional: true
                 synonyms:
                 - -h
                 - --help
+                description: Show this message and exit.
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "Usage: enasearch retrieve_run_report [OPTIONS]\n\n  Retrieve\
@@ -1005,26 +1676,27 @@ subcommands:
                 \  --file PATH       File to save the report\n  -h, --help       \
                 \ Show this message and exit.\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id009
               positional:
               - !Positional
-                description: ''
+                optional: false
                 position: 0
                 name: enasearch
-                optional: false
-              - !Positional
                 description: ''
+              - !Positional
+                optional: false
                 position: 1
                 name: COMMAND
-                optional: false
-              - !Positional
                 description: ''
+              - !Positional
+                optional: true
                 position: 2
                 name: ARGS
-                optional: true
+                description: ''
               named: []
-              parent: *id003
+              parent: *id013
               subcommands: []
               usage: []
               help_flag:
@@ -1033,94 +1705,95 @@ subcommands:
               help_text: "Usage: enasearch [OPTIONS] COMMAND [ARGS]...\nTry \"enasearch\
                 \ -h\" for help.\n\nError: No such command \"type...\".\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id010
               positional: []
               named:
               - !Flag
-                description: Ids for taxon to return [multiple]  [required]
+                optional: true
                 synonyms:
                 - --ids
+                description: Ids for taxon to return [multiple]  [required]
                 args: !SimpleFlagArg
                   name: TEXT
-                optional: true
               - !Flag
-                description: "Display option to specify the display format\n(accessible\
-                  \ with get_display_options)  [required]"
+                optional: true
                 synonyms:
                 - --display
+                description: "Display option to specify the display format\n(accessible\
+                  \ with get_display_options)  [required]"
                 args: !SimpleFlagArg
                   name: TEXT
-                optional: true
               - !Flag
-                description: "Id of a taxonomy result (accessible with\nget_taxonomy_results)"
+                optional: true
                 synonyms:
                 - --result
+                description: "Id of a taxonomy result (accessible with\nget_taxonomy_results)"
                 args: !SimpleFlagArg
                   name: TEXT
-                optional: true
               - !Flag
-                description: "Download option to specify that records are to be\n\
-                  saved in a file (used with file option, list\naccessible with get_download_options)"
+                optional: true
                 synonyms:
                 - --download
+                description: "Download option to specify that records are to be\n\
+                  saved in a file (used with file option, list\naccessible with get_download_options)"
                 args: !SimpleFlagArg
                   name: TEXT
-                optional: true
               - !Flag
-                description: "File to save the content of the search (used with\n\
-                  download option)"
+                optional: true
                 synonyms:
                 - --file
+                description: "File to save the content of the search (used with\n\
+                  download option)"
                 args: !SimpleFlagArg
                   name: PATH
-                optional: true
               - !Flag
-                description: "RANGE  First record to get (used only for display different\n\
-                  of fasta and fastq"
+                optional: true
                 synonyms:
                 - --offset
+                description: "RANGE  First record to get (used only for display different\n\
+                  of fasta and fastq"
                 args: !SimpleFlagArg
                   name: INTEGER
-                optional: true
               - !Flag
-                description: "RANGE  Number of records to retrieve (used only for\
-                  \ display\ndifferent of fasta and fastq"
+                optional: true
                 synonyms:
                 - --length
+                description: "RANGE  Number of records to retrieve (used only for\
+                  \ display\ndifferent of fasta and fastq"
                 args: !SimpleFlagArg
                   name: INTEGER
-                optional: true
               - !Flag
-                description: "Range for subsequences (integer start and stop\nseparated\
-                  \ by a -)"
+                optional: true
                 synonyms:
                 - --subseq_range
+                description: "Range for subsequences (integer start and stop\nseparated\
+                  \ by a -)"
                 args: !SimpleFlagArg
                   name: TEXT
-                optional: true
               - !Flag
-                description: Determine if a CON record is expanded
+                optional: true
                 synonyms:
                 - --expanded
+                description: Determine if a CON record is expanded
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
-                description: To obtain only the header of a record
+                optional: true
                 synonyms:
                 - --header
+                description: To obtain only the header of a record
                 args: !EmptyFlagArg {}
-                optional: true
-              parent: *id003
+              parent: *id013
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: Show this message and exit.
+                optional: true
                 synonyms:
                 - -h
                 - --help
+                description: Show this message and exit.
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "Usage: enasearch retrieve_taxons [OPTIONS]\n\n  Retrieve\
@@ -1151,100 +1824,101 @@ subcommands:
                 \ only the header of a record\n  -h, --help              Show this\
                 \ message and exit.\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id011
               positional: []
               named:
               - !Flag
-                description: "Use free text search, otherwise the data warehouse\n\
-                  is used"
+                optional: true
                 synonyms:
                 - --free_text_search
+                description: "Use free text search, otherwise the data warehouse\n\
+                  is used"
                 args: !EmptyFlagArg {}
-                optional: true
               - !Flag
+                optional: true
+                synonyms:
+                - --query
                 description: "Query string, made up of filtering conditions,\njoined\
                   \ by logical ANDs, ORs and NOTs and bound by\ndouble quotes; the\
                   \ filter fields for a query are\naccessible with get_filter_fields\
                   \ and the type of\nfilters with get_filter_types  [required]"
-                synonyms:
-                - --query
                 args: !SimpleFlagArg
                   name: TEXT
-                optional: true
               - !Flag
-                description: "Id of a result (accessible with get_results)\n[required]"
+                optional: true
                 synonyms:
                 - --result
+                description: "Id of a result (accessible with get_results)\n[required]"
                 args: !SimpleFlagArg
                   name: TEXT
-                optional: true
               - !Flag
-                description: "Display option to specify the display format\n(accessible\
-                  \ with get_display_options)  [required]"
+                optional: true
                 synonyms:
                 - --display
+                description: "Display option to specify the display format\n(accessible\
+                  \ with get_display_options)  [required]"
                 args: !SimpleFlagArg
                   name: TEXT
-                optional: true
               - !Flag
-                description: "Download option to specify that records are to be\n\
-                  saved in a file (used with file option, list\naccessible with get_download_options)"
+                optional: true
                 synonyms:
                 - --download
+                description: "Download option to specify that records are to be\n\
+                  saved in a file (used with file option, list\naccessible with get_download_options)"
                 args: !SimpleFlagArg
                   name: TEXT
-                optional: true
               - !Flag
-                description: "File to save the content of the search (used with\n\
-                  download option)"
+                optional: true
                 synonyms:
                 - --file
+                description: "File to save the content of the search (used with\n\
+                  download option)"
                 args: !SimpleFlagArg
                   name: PATH
-                optional: true
               - !Flag
-                description: "Fields to return (accessible with\nget_returnable_fields,\
-                  \ used only for report as\ndisplay value) [multiple or comma-separated]"
+                optional: true
                 synonyms:
                 - --fields
+                description: "Fields to return (accessible with\nget_returnable_fields,\
+                  \ used only for report as\ndisplay value) [multiple or comma-separated]"
                 args: !SimpleFlagArg
                   name: TEXT
-                optional: true
               - !Flag
-                description: "Fields to sort the results (accessible with\nget_sortable_fields,\
-                  \ used only for report as display\nvalue) [multiple or comma-separated]"
+                optional: true
                 synonyms:
                 - --sortfields
+                description: "Fields to sort the results (accessible with\nget_sortable_fields,\
+                  \ used only for report as display\nvalue) [multiple or comma-separated]"
                 args: !SimpleFlagArg
                   name: TEXT
-                optional: true
               - !Flag
-                description: "RANGE  First record to get (used only for display different\n\
-                  of fasta and fastq"
+                optional: true
                 synonyms:
                 - --offset
+                description: "RANGE  First record to get (used only for display different\n\
+                  of fasta and fastq"
                 args: !SimpleFlagArg
                   name: INTEGER
-                optional: true
               - !Flag
-                description: "RANGE  Number of records to retrieve (used only for\
-                  \ display\ndifferent of fasta and fastq"
+                optional: true
                 synonyms:
                 - --length
+                description: "RANGE  Number of records to retrieve (used only for\
+                  \ display\ndifferent of fasta and fastq"
                 args: !SimpleFlagArg
                   name: INTEGER
-                optional: true
-              parent: *id003
+              parent: *id013
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: Show this message and exit.
+                optional: true
                 synonyms:
                 - -h
                 - --help
+                description: Show this message and exit.
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "Usage: enasearch search_data [OPTIONS]\n\n  Search data\
@@ -1281,27 +1955,28 @@ subcommands:
                 \ (used only for display\n                          different of fasta\
                 \ and fastq\n  -h, --help              Show this message and exit.\n"
               generated_using: *id004
+              docker_image:
             - !Command
               command: *id012
               positional: []
               named:
               - !Flag
-                description: Id of a result (accessible with get_results)  [required]
+                optional: true
                 synonyms:
                 - --result
+                description: Id of a result (accessible with get_results)  [required]
                 args: !SimpleFlagArg
                   name: TEXT
-                optional: true
-              parent: *id003
+              parent: *id013
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: Show this message and exit.
+                optional: true
                 synonyms:
                 - -h
                 - --help
+                description: Show this message and exit.
                 args: !EmptyFlagArg {}
-                optional: true
               usage_flag:
               version_flag:
               help_text: "Usage: enasearch get_filter_fields [OPTIONS]\n\n  Get the\
@@ -1312,6 +1987,7 @@ subcommands:
                 \ TEXT  Id of a result (accessible with get_results)  [required]\n\
                 \  -h, --help     Show this message and exit.\n"
               generated_using: *id004
+              docker_image:
             usage: []
             help_flag:
             usage_flag:
@@ -1336,15 +2012,16 @@ subcommands:
               \           Retrieve data from the ENA Taxon Portal.\n  search_data\
               \               Search data given a query.\n"
             generated_using: *id004
+            docker_image:
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: Show this message and exit.
+            optional: true
             synonyms:
             - -h
             - --help
+            description: Show this message and exit.
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "Usage: enasearch get_sortable_fields [OPTIONS]\n\n  Get the\
@@ -1355,27 +2032,28 @@ subcommands:
             \ TEXT  Id of a result (accessible with get_results)  [required]\n  -h,\
             \ --help     Show this message and exit.\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id005
           positional: []
           named:
           - !Flag
-            description: Id of a result (accessible with get_results)  [required]
+            optional: true
             synonyms:
             - --result
+            description: Id of a result (accessible with get_results)  [required]
             args: !SimpleFlagArg
               name: TEXT
-            optional: true
-          parent: *id013
+          parent: *id014
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: Show this message and exit.
+            optional: true
             synonyms:
             - -h
             - --help
+            description: Show this message and exit.
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "Usage: enasearch get_returnable_fields [OPTIONS]\n\n  Get the\
@@ -1384,44 +2062,45 @@ subcommands:
             \ with get_results)  [required]\n  -h, --help     Show this message and\
             \ exit.\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id006
           positional: []
           named:
           - !Flag
+            optional: true
+            synonyms:
+            - --accession
             description: "Accession id (study accessions (ERP, SRP, DRP, PRJ\nprefixes),\
               \ experiment accessions (ERX, SRX, DRX prefixes),\nsample accessions\
               \ (ERS, SRS, DRS, SAM prefixes) and run\naccessions))  [required]"
-            synonyms:
-            - --accession
             args: !SimpleFlagArg
               name: TEXT
-            optional: true
           - !Flag
-            description: "Fields to return (accessible with get_analysis_fields)\n\
-              [multiple or comma-separated]"
+            optional: true
             synonyms:
             - --fields
+            description: "Fields to return (accessible with get_analysis_fields)\n\
+              [multiple or comma-separated]"
             args: !SimpleFlagArg
               name: TEXT
-            optional: true
           - !Flag
-            description: File to save the report
+            optional: true
             synonyms:
             - --file
+            description: File to save the report
             args: !SimpleFlagArg
               name: PATH
-            optional: true
-          parent: *id013
+          parent: *id014
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: Show this message and exit.
+            optional: true
             synonyms:
             - -h
             - --help
+            description: Show this message and exit.
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "Usage: enasearch retrieve_analysis_report [OPTIONS]\n\n  Retrieve\
@@ -1436,96 +2115,97 @@ subcommands:
             \   File to save the report\n  -h, --help        Show this message and\
             \ exit.\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id007
           positional:
           - !Positional
-            description: fasta and fastq
+            optional: false
             position: 0
             name: of
-            optional: false
+            description: fasta and fastq
           - !Positional
-            description: by a -)
+            optional: false
             position: 1
             name: separated
-            optional: false
+            description: by a -)
           named:
           - !Flag
-            description: "Ids for records to return (other than Taxon and\nProject)\
-              \ [multiple]  [required]"
+            optional: true
             synonyms:
             - --ids
+            description: "Ids for records to return (other than Taxon and\nProject)\
+              \ [multiple]  [required]"
             args: !SimpleFlagArg
               name: TEXT
-            optional: true
           - !Flag
-            description: "Display option to specify the display format\n(accessible\
-              \ with get_display_options)  [required]"
+            optional: true
             synonyms:
             - --display
+            description: "Display option to specify the display format\n(accessible\
+              \ with get_display_options)  [required]"
             args: !SimpleFlagArg
               name: TEXT
-            optional: true
           - !Flag
-            description: "Download option to specify that records are to be\nsaved\
-              \ in a file (used with file option, list\naccessible with get_download_options)"
+            optional: true
             synonyms:
             - --download
+            description: "Download option to specify that records are to be\nsaved\
+              \ in a file (used with file option, list\naccessible with get_download_options)"
             args: !SimpleFlagArg
               name: TEXT
-            optional: true
           - !Flag
-            description: "File to save the content of the search (used with\ndownload\
-              \ option)"
+            optional: true
             synonyms:
             - --file
+            description: "File to save the content of the search (used with\ndownload\
+              \ option)"
             args: !SimpleFlagArg
               name: PATH
-            optional: true
           - !Flag
-            description: RANGE  First record to get (used only for display different
+            optional: true
             synonyms:
             - --offset
+            description: RANGE  First record to get (used only for display different
             args: !SimpleFlagArg
               name: INTEGER
-            optional: true
           - !Flag
-            description: "RANGE  Number of records to retrieve (used only for display\n\
-              different of fasta and fastq"
+            optional: true
             synonyms:
             - --length
+            description: "RANGE  Number of records to retrieve (used only for display\n\
+              different of fasta and fastq"
             args: !SimpleFlagArg
               name: INTEGER
-            optional: true
           - !Flag
-            description: Range for subsequences (integer start and stop
+            optional: true
             synonyms:
             - --subseq_range
+            description: Range for subsequences (integer start and stop
             args: !SimpleFlagArg
               name: TEXT
-            optional: true
           - !Flag
-            description: Determine if a CON record is expanded
+            optional: true
             synonyms:
             - --expanded
+            description: Determine if a CON record is expanded
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: To obtain only the header of a record
+            optional: true
             synonyms:
             - --header
+            description: To obtain only the header of a record
             args: !EmptyFlagArg {}
-            optional: true
-          parent: *id013
+          parent: *id014
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: Show this message and exit.
+            optional: true
             synonyms:
             - -h
             - --help
+            description: Show this message and exit.
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "Usage: enasearch retrieve_data [OPTIONS]\n\n  Retrieve ENA data\
@@ -1552,44 +2232,45 @@ subcommands:
             \  --header                To obtain only the header of a record\n  -h,\
             \ --help              Show this message and exit.\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id008
           positional: []
           named:
           - !Flag
+            optional: true
+            synonyms:
+            - --accession
             description: "Accession id (study accessions (ERP, SRP, DRP, PRJ\nprefixes),\
               \ experiment accessions (ERX, SRX, DRX prefixes),\nsample accessions\
               \ (ERS, SRS, DRS, SAM prefixes) and run\naccessions))  [required]"
-            synonyms:
-            - --accession
             args: !SimpleFlagArg
               name: TEXT
-            optional: true
           - !Flag
-            description: "Fields to return (accessible with get_run_fields)\n[multiple\
-              \ or comma-separated]"
+            optional: true
             synonyms:
             - --fields
+            description: "Fields to return (accessible with get_run_fields)\n[multiple\
+              \ or comma-separated]"
             args: !SimpleFlagArg
               name: TEXT
-            optional: true
           - !Flag
-            description: File to save the report
+            optional: true
             synonyms:
             - --file
+            description: File to save the report
             args: !SimpleFlagArg
               name: PATH
-            optional: true
-          parent: *id013
+          parent: *id014
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: Show this message and exit.
+            optional: true
             synonyms:
             - -h
             - --help
+            description: Show this message and exit.
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "Usage: enasearch retrieve_run_report [OPTIONS]\n\n  Retrieve\
@@ -1604,26 +2285,27 @@ subcommands:
             \   File to save the report\n  -h, --help        Show this message and\
             \ exit.\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id009
           positional:
           - !Positional
-            description: ''
+            optional: false
             position: 0
             name: enasearch
-            optional: false
-          - !Positional
             description: ''
+          - !Positional
+            optional: false
             position: 1
             name: COMMAND
-            optional: false
-          - !Positional
             description: ''
+          - !Positional
+            optional: true
             position: 2
             name: ARGS
-            optional: true
+            description: ''
           named: []
-          parent: *id013
+          parent: *id014
           subcommands: []
           usage: []
           help_flag:
@@ -1632,94 +2314,95 @@ subcommands:
           help_text: "Usage: enasearch [OPTIONS] COMMAND [ARGS]...\nTry \"enasearch\
             \ -h\" for help.\n\nError: No such command \"type...\".\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id010
           positional: []
           named:
           - !Flag
-            description: Ids for taxon to return [multiple]  [required]
+            optional: true
             synonyms:
             - --ids
+            description: Ids for taxon to return [multiple]  [required]
             args: !SimpleFlagArg
               name: TEXT
-            optional: true
           - !Flag
-            description: "Display option to specify the display format\n(accessible\
-              \ with get_display_options)  [required]"
+            optional: true
             synonyms:
             - --display
+            description: "Display option to specify the display format\n(accessible\
+              \ with get_display_options)  [required]"
             args: !SimpleFlagArg
               name: TEXT
-            optional: true
           - !Flag
-            description: "Id of a taxonomy result (accessible with\nget_taxonomy_results)"
+            optional: true
             synonyms:
             - --result
+            description: "Id of a taxonomy result (accessible with\nget_taxonomy_results)"
             args: !SimpleFlagArg
               name: TEXT
-            optional: true
           - !Flag
-            description: "Download option to specify that records are to be\nsaved\
-              \ in a file (used with file option, list\naccessible with get_download_options)"
+            optional: true
             synonyms:
             - --download
+            description: "Download option to specify that records are to be\nsaved\
+              \ in a file (used with file option, list\naccessible with get_download_options)"
             args: !SimpleFlagArg
               name: TEXT
-            optional: true
           - !Flag
-            description: "File to save the content of the search (used with\ndownload\
-              \ option)"
+            optional: true
             synonyms:
             - --file
+            description: "File to save the content of the search (used with\ndownload\
+              \ option)"
             args: !SimpleFlagArg
               name: PATH
-            optional: true
           - !Flag
-            description: "RANGE  First record to get (used only for display different\n\
-              of fasta and fastq"
+            optional: true
             synonyms:
             - --offset
+            description: "RANGE  First record to get (used only for display different\n\
+              of fasta and fastq"
             args: !SimpleFlagArg
               name: INTEGER
-            optional: true
           - !Flag
-            description: "RANGE  Number of records to retrieve (used only for display\n\
-              different of fasta and fastq"
+            optional: true
             synonyms:
             - --length
+            description: "RANGE  Number of records to retrieve (used only for display\n\
+              different of fasta and fastq"
             args: !SimpleFlagArg
               name: INTEGER
-            optional: true
           - !Flag
-            description: "Range for subsequences (integer start and stop\nseparated\
-              \ by a -)"
+            optional: true
             synonyms:
             - --subseq_range
+            description: "Range for subsequences (integer start and stop\nseparated\
+              \ by a -)"
             args: !SimpleFlagArg
               name: TEXT
-            optional: true
           - !Flag
-            description: Determine if a CON record is expanded
+            optional: true
             synonyms:
             - --expanded
+            description: Determine if a CON record is expanded
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
-            description: To obtain only the header of a record
+            optional: true
             synonyms:
             - --header
+            description: To obtain only the header of a record
             args: !EmptyFlagArg {}
-            optional: true
-          parent: *id013
+          parent: *id014
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: Show this message and exit.
+            optional: true
             synonyms:
             - -h
             - --help
+            description: Show this message and exit.
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "Usage: enasearch retrieve_taxons [OPTIONS]\n\n  Retrieve data\
@@ -1748,99 +2431,100 @@ subcommands:
             \                To obtain only the header of a record\n  -h, --help \
             \             Show this message and exit.\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id011
           positional: []
           named:
           - !Flag
-            description: "Use free text search, otherwise the data warehouse\nis used"
+            optional: true
             synonyms:
             - --free_text_search
+            description: "Use free text search, otherwise the data warehouse\nis used"
             args: !EmptyFlagArg {}
-            optional: true
           - !Flag
+            optional: true
+            synonyms:
+            - --query
             description: "Query string, made up of filtering conditions,\njoined by\
               \ logical ANDs, ORs and NOTs and bound by\ndouble quotes; the filter\
               \ fields for a query are\naccessible with get_filter_fields and the\
               \ type of\nfilters with get_filter_types  [required]"
-            synonyms:
-            - --query
             args: !SimpleFlagArg
               name: TEXT
-            optional: true
           - !Flag
-            description: "Id of a result (accessible with get_results)\n[required]"
+            optional: true
             synonyms:
             - --result
+            description: "Id of a result (accessible with get_results)\n[required]"
             args: !SimpleFlagArg
               name: TEXT
-            optional: true
           - !Flag
-            description: "Display option to specify the display format\n(accessible\
-              \ with get_display_options)  [required]"
+            optional: true
             synonyms:
             - --display
+            description: "Display option to specify the display format\n(accessible\
+              \ with get_display_options)  [required]"
             args: !SimpleFlagArg
               name: TEXT
-            optional: true
           - !Flag
-            description: "Download option to specify that records are to be\nsaved\
-              \ in a file (used with file option, list\naccessible with get_download_options)"
+            optional: true
             synonyms:
             - --download
+            description: "Download option to specify that records are to be\nsaved\
+              \ in a file (used with file option, list\naccessible with get_download_options)"
             args: !SimpleFlagArg
               name: TEXT
-            optional: true
           - !Flag
-            description: "File to save the content of the search (used with\ndownload\
-              \ option)"
+            optional: true
             synonyms:
             - --file
+            description: "File to save the content of the search (used with\ndownload\
+              \ option)"
             args: !SimpleFlagArg
               name: PATH
-            optional: true
           - !Flag
-            description: "Fields to return (accessible with\nget_returnable_fields,\
-              \ used only for report as\ndisplay value) [multiple or comma-separated]"
+            optional: true
             synonyms:
             - --fields
+            description: "Fields to return (accessible with\nget_returnable_fields,\
+              \ used only for report as\ndisplay value) [multiple or comma-separated]"
             args: !SimpleFlagArg
               name: TEXT
-            optional: true
           - !Flag
-            description: "Fields to sort the results (accessible with\nget_sortable_fields,\
-              \ used only for report as display\nvalue) [multiple or comma-separated]"
+            optional: true
             synonyms:
             - --sortfields
+            description: "Fields to sort the results (accessible with\nget_sortable_fields,\
+              \ used only for report as display\nvalue) [multiple or comma-separated]"
             args: !SimpleFlagArg
               name: TEXT
-            optional: true
           - !Flag
-            description: "RANGE  First record to get (used only for display different\n\
-              of fasta and fastq"
+            optional: true
             synonyms:
             - --offset
+            description: "RANGE  First record to get (used only for display different\n\
+              of fasta and fastq"
             args: !SimpleFlagArg
               name: INTEGER
-            optional: true
           - !Flag
-            description: "RANGE  Number of records to retrieve (used only for display\n\
-              different of fasta and fastq"
+            optional: true
             synonyms:
             - --length
+            description: "RANGE  Number of records to retrieve (used only for display\n\
+              different of fasta and fastq"
             args: !SimpleFlagArg
               name: INTEGER
-            optional: true
-          parent: *id013
+          parent: *id014
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: Show this message and exit.
+            optional: true
             synonyms:
             - -h
             - --help
+            description: Show this message and exit.
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "Usage: enasearch search_data [OPTIONS]\n\n  Search data given\
@@ -1875,27 +2559,28 @@ subcommands:
             \ display\n                          different of fasta and fastq\n  -h,\
             \ --help              Show this message and exit.\n"
           generated_using: *id004
+          docker_image:
         - !Command
           command: *id012
           positional: []
           named:
           - !Flag
-            description: Id of a result (accessible with get_results)  [required]
+            optional: true
             synonyms:
             - --result
+            description: Id of a result (accessible with get_results)  [required]
             args: !SimpleFlagArg
               name: TEXT
-            optional: true
-          parent: *id013
+          parent: *id014
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: Show this message and exit.
+            optional: true
             synonyms:
             - -h
             - --help
+            description: Show this message and exit.
             args: !EmptyFlagArg {}
-            optional: true
           usage_flag:
           version_flag:
           help_text: "Usage: enasearch get_filter_fields [OPTIONS]\n\n  Get the filter\
@@ -1906,6 +2591,7 @@ subcommands:
             \  Id of a result (accessible with get_results)  [required]\n  -h, --help\
             \     Show this message and exit.\n"
           generated_using: *id004
+          docker_image:
         usage: []
         help_flag:
         usage_flag:
@@ -1929,15 +2615,16 @@ subcommands:
           \ data from the ENA Taxon Portal.\n  search_data               Search data\
           \ given a query.\n"
         generated_using: *id004
+        docker_image:
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: Show this message and exit.
+        optional: true
         synonyms:
         - -h
         - --help
+        description: Show this message and exit.
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "Usage: enasearch get_sortable_fields [OPTIONS]\n\n  Get the fields\
@@ -1948,27 +2635,28 @@ subcommands:
         \ (accessible with get_results)  [required]\n  -h, --help     Show this message\
         \ and exit.\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id005
       positional: []
       named:
       - !Flag
-        description: Id of a result (accessible with get_results)  [required]
+        optional: true
         synonyms:
         - --result
+        description: Id of a result (accessible with get_results)  [required]
         args: !SimpleFlagArg
           name: TEXT
-        optional: true
-      parent: *id014
+      parent: *id015
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: Show this message and exit.
+        optional: true
         synonyms:
         - -h
         - --help
+        description: Show this message and exit.
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "Usage: enasearch get_returnable_fields [OPTIONS]\n\n  Get the fields\
@@ -1976,44 +2664,45 @@ subcommands:
         \nOptions:\n  --result TEXT  Id of a result (accessible with get_results)\
         \  [required]\n  -h, --help     Show this message and exit.\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id006
       positional: []
       named:
       - !Flag
+        optional: true
+        synonyms:
+        - --accession
         description: "Accession id (study accessions (ERP, SRP, DRP, PRJ\nprefixes),\
           \ experiment accessions (ERX, SRX, DRX prefixes),\nsample accessions (ERS,\
           \ SRS, DRS, SAM prefixes) and run\naccessions))  [required]"
-        synonyms:
-        - --accession
         args: !SimpleFlagArg
           name: TEXT
-        optional: true
       - !Flag
-        description: "Fields to return (accessible with get_analysis_fields)\n[multiple\
-          \ or comma-separated]"
+        optional: true
         synonyms:
         - --fields
+        description: "Fields to return (accessible with get_analysis_fields)\n[multiple\
+          \ or comma-separated]"
         args: !SimpleFlagArg
           name: TEXT
-        optional: true
       - !Flag
-        description: File to save the report
+        optional: true
         synonyms:
         - --file
+        description: File to save the report
         args: !SimpleFlagArg
           name: PATH
-        optional: true
-      parent: *id014
+      parent: *id015
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: Show this message and exit.
+        optional: true
         synonyms:
         - -h
         - --help
+        description: Show this message and exit.
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "Usage: enasearch retrieve_analysis_report [OPTIONS]\n\n  Retrieve\
@@ -2027,96 +2716,97 @@ subcommands:
         \        [multiple or comma-separated]\n  --file PATH       File to save the\
         \ report\n  -h, --help        Show this message and exit.\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id007
       positional:
       - !Positional
-        description: fasta and fastq
+        optional: false
         position: 0
         name: of
-        optional: false
+        description: fasta and fastq
       - !Positional
-        description: by a -)
+        optional: false
         position: 1
         name: separated
-        optional: false
+        description: by a -)
       named:
       - !Flag
-        description: "Ids for records to return (other than Taxon and\nProject) [multiple]\
-          \  [required]"
+        optional: true
         synonyms:
         - --ids
+        description: "Ids for records to return (other than Taxon and\nProject) [multiple]\
+          \  [required]"
         args: !SimpleFlagArg
           name: TEXT
-        optional: true
       - !Flag
-        description: "Display option to specify the display format\n(accessible with\
-          \ get_display_options)  [required]"
+        optional: true
         synonyms:
         - --display
+        description: "Display option to specify the display format\n(accessible with\
+          \ get_display_options)  [required]"
         args: !SimpleFlagArg
           name: TEXT
-        optional: true
       - !Flag
-        description: "Download option to specify that records are to be\nsaved in\
-          \ a file (used with file option, list\naccessible with get_download_options)"
+        optional: true
         synonyms:
         - --download
+        description: "Download option to specify that records are to be\nsaved in\
+          \ a file (used with file option, list\naccessible with get_download_options)"
         args: !SimpleFlagArg
           name: TEXT
-        optional: true
       - !Flag
-        description: "File to save the content of the search (used with\ndownload\
-          \ option)"
+        optional: true
         synonyms:
         - --file
+        description: "File to save the content of the search (used with\ndownload\
+          \ option)"
         args: !SimpleFlagArg
           name: PATH
-        optional: true
       - !Flag
-        description: RANGE  First record to get (used only for display different
+        optional: true
         synonyms:
         - --offset
+        description: RANGE  First record to get (used only for display different
         args: !SimpleFlagArg
           name: INTEGER
-        optional: true
       - !Flag
-        description: "RANGE  Number of records to retrieve (used only for display\n\
-          different of fasta and fastq"
+        optional: true
         synonyms:
         - --length
+        description: "RANGE  Number of records to retrieve (used only for display\n\
+          different of fasta and fastq"
         args: !SimpleFlagArg
           name: INTEGER
-        optional: true
       - !Flag
-        description: Range for subsequences (integer start and stop
+        optional: true
         synonyms:
         - --subseq_range
+        description: Range for subsequences (integer start and stop
         args: !SimpleFlagArg
           name: TEXT
-        optional: true
       - !Flag
-        description: Determine if a CON record is expanded
+        optional: true
         synonyms:
         - --expanded
+        description: Determine if a CON record is expanded
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: To obtain only the header of a record
+        optional: true
         synonyms:
         - --header
+        description: To obtain only the header of a record
         args: !EmptyFlagArg {}
-        optional: true
-      parent: *id014
+      parent: *id015
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: Show this message and exit.
+        optional: true
         synonyms:
         - -h
         - --help
+        description: Show this message and exit.
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "Usage: enasearch retrieve_data [OPTIONS]\n\n  Retrieve ENA data\
@@ -2142,44 +2832,45 @@ subcommands:
         \ CON record is expanded\n  --header                To obtain only the header\
         \ of a record\n  -h, --help              Show this message and exit.\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id008
       positional: []
       named:
       - !Flag
+        optional: true
+        synonyms:
+        - --accession
         description: "Accession id (study accessions (ERP, SRP, DRP, PRJ\nprefixes),\
           \ experiment accessions (ERX, SRX, DRX prefixes),\nsample accessions (ERS,\
           \ SRS, DRS, SAM prefixes) and run\naccessions))  [required]"
-        synonyms:
-        - --accession
         args: !SimpleFlagArg
           name: TEXT
-        optional: true
       - !Flag
-        description: "Fields to return (accessible with get_run_fields)\n[multiple\
-          \ or comma-separated]"
+        optional: true
         synonyms:
         - --fields
+        description: "Fields to return (accessible with get_run_fields)\n[multiple\
+          \ or comma-separated]"
         args: !SimpleFlagArg
           name: TEXT
-        optional: true
       - !Flag
-        description: File to save the report
+        optional: true
         synonyms:
         - --file
+        description: File to save the report
         args: !SimpleFlagArg
           name: PATH
-        optional: true
-      parent: *id014
+      parent: *id015
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: Show this message and exit.
+        optional: true
         synonyms:
         - -h
         - --help
+        description: Show this message and exit.
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "Usage: enasearch retrieve_run_report [OPTIONS]\n\n  Retrieve run\
@@ -2193,26 +2884,27 @@ subcommands:
         \ or comma-separated]\n  --file PATH       File to save the report\n  -h,\
         \ --help        Show this message and exit.\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id009
       positional:
       - !Positional
-        description: ''
+        optional: false
         position: 0
         name: enasearch
-        optional: false
-      - !Positional
         description: ''
+      - !Positional
+        optional: false
         position: 1
         name: COMMAND
-        optional: false
-      - !Positional
         description: ''
+      - !Positional
+        optional: true
         position: 2
         name: ARGS
-        optional: true
+        description: ''
       named: []
-      parent: *id014
+      parent: *id015
       subcommands: []
       usage: []
       help_flag:
@@ -2221,94 +2913,95 @@ subcommands:
       help_text: "Usage: enasearch [OPTIONS] COMMAND [ARGS]...\nTry \"enasearch -h\"\
         \ for help.\n\nError: No such command \"type...\".\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id010
       positional: []
       named:
       - !Flag
-        description: Ids for taxon to return [multiple]  [required]
+        optional: true
         synonyms:
         - --ids
+        description: Ids for taxon to return [multiple]  [required]
         args: !SimpleFlagArg
           name: TEXT
-        optional: true
       - !Flag
-        description: "Display option to specify the display format\n(accessible with\
-          \ get_display_options)  [required]"
+        optional: true
         synonyms:
         - --display
+        description: "Display option to specify the display format\n(accessible with\
+          \ get_display_options)  [required]"
         args: !SimpleFlagArg
           name: TEXT
-        optional: true
       - !Flag
-        description: "Id of a taxonomy result (accessible with\nget_taxonomy_results)"
+        optional: true
         synonyms:
         - --result
+        description: "Id of a taxonomy result (accessible with\nget_taxonomy_results)"
         args: !SimpleFlagArg
           name: TEXT
-        optional: true
       - !Flag
-        description: "Download option to specify that records are to be\nsaved in\
-          \ a file (used with file option, list\naccessible with get_download_options)"
+        optional: true
         synonyms:
         - --download
+        description: "Download option to specify that records are to be\nsaved in\
+          \ a file (used with file option, list\naccessible with get_download_options)"
         args: !SimpleFlagArg
           name: TEXT
-        optional: true
       - !Flag
-        description: "File to save the content of the search (used with\ndownload\
-          \ option)"
+        optional: true
         synonyms:
         - --file
+        description: "File to save the content of the search (used with\ndownload\
+          \ option)"
         args: !SimpleFlagArg
           name: PATH
-        optional: true
       - !Flag
-        description: "RANGE  First record to get (used only for display different\n\
-          of fasta and fastq"
+        optional: true
         synonyms:
         - --offset
+        description: "RANGE  First record to get (used only for display different\n\
+          of fasta and fastq"
         args: !SimpleFlagArg
           name: INTEGER
-        optional: true
       - !Flag
-        description: "RANGE  Number of records to retrieve (used only for display\n\
-          different of fasta and fastq"
+        optional: true
         synonyms:
         - --length
+        description: "RANGE  Number of records to retrieve (used only for display\n\
+          different of fasta and fastq"
         args: !SimpleFlagArg
           name: INTEGER
-        optional: true
       - !Flag
-        description: "Range for subsequences (integer start and stop\nseparated by\
-          \ a -)"
+        optional: true
         synonyms:
         - --subseq_range
+        description: "Range for subsequences (integer start and stop\nseparated by\
+          \ a -)"
         args: !SimpleFlagArg
           name: TEXT
-        optional: true
       - !Flag
-        description: Determine if a CON record is expanded
+        optional: true
         synonyms:
         - --expanded
+        description: Determine if a CON record is expanded
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
-        description: To obtain only the header of a record
+        optional: true
         synonyms:
         - --header
+        description: To obtain only the header of a record
         args: !EmptyFlagArg {}
-        optional: true
-      parent: *id014
+      parent: *id015
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: Show this message and exit.
+        optional: true
         synonyms:
         - -h
         - --help
+        description: Show this message and exit.
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "Usage: enasearch retrieve_taxons [OPTIONS]\n\n  Retrieve data from\
@@ -2336,99 +3029,100 @@ subcommands:
         \ obtain only the header of a record\n  -h, --help              Show this\
         \ message and exit.\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id011
       positional: []
       named:
       - !Flag
-        description: "Use free text search, otherwise the data warehouse\nis used"
+        optional: true
         synonyms:
         - --free_text_search
+        description: "Use free text search, otherwise the data warehouse\nis used"
         args: !EmptyFlagArg {}
-        optional: true
       - !Flag
+        optional: true
+        synonyms:
+        - --query
         description: "Query string, made up of filtering conditions,\njoined by logical\
           \ ANDs, ORs and NOTs and bound by\ndouble quotes; the filter fields for\
           \ a query are\naccessible with get_filter_fields and the type of\nfilters\
           \ with get_filter_types  [required]"
-        synonyms:
-        - --query
         args: !SimpleFlagArg
           name: TEXT
-        optional: true
       - !Flag
-        description: "Id of a result (accessible with get_results)\n[required]"
+        optional: true
         synonyms:
         - --result
+        description: "Id of a result (accessible with get_results)\n[required]"
         args: !SimpleFlagArg
           name: TEXT
-        optional: true
       - !Flag
-        description: "Display option to specify the display format\n(accessible with\
-          \ get_display_options)  [required]"
+        optional: true
         synonyms:
         - --display
+        description: "Display option to specify the display format\n(accessible with\
+          \ get_display_options)  [required]"
         args: !SimpleFlagArg
           name: TEXT
-        optional: true
       - !Flag
-        description: "Download option to specify that records are to be\nsaved in\
-          \ a file (used with file option, list\naccessible with get_download_options)"
+        optional: true
         synonyms:
         - --download
+        description: "Download option to specify that records are to be\nsaved in\
+          \ a file (used with file option, list\naccessible with get_download_options)"
         args: !SimpleFlagArg
           name: TEXT
-        optional: true
       - !Flag
-        description: "File to save the content of the search (used with\ndownload\
-          \ option)"
+        optional: true
         synonyms:
         - --file
+        description: "File to save the content of the search (used with\ndownload\
+          \ option)"
         args: !SimpleFlagArg
           name: PATH
-        optional: true
       - !Flag
-        description: "Fields to return (accessible with\nget_returnable_fields, used\
-          \ only for report as\ndisplay value) [multiple or comma-separated]"
+        optional: true
         synonyms:
         - --fields
+        description: "Fields to return (accessible with\nget_returnable_fields, used\
+          \ only for report as\ndisplay value) [multiple or comma-separated]"
         args: !SimpleFlagArg
           name: TEXT
-        optional: true
       - !Flag
-        description: "Fields to sort the results (accessible with\nget_sortable_fields,\
-          \ used only for report as display\nvalue) [multiple or comma-separated]"
+        optional: true
         synonyms:
         - --sortfields
+        description: "Fields to sort the results (accessible with\nget_sortable_fields,\
+          \ used only for report as display\nvalue) [multiple or comma-separated]"
         args: !SimpleFlagArg
           name: TEXT
-        optional: true
       - !Flag
-        description: "RANGE  First record to get (used only for display different\n\
-          of fasta and fastq"
+        optional: true
         synonyms:
         - --offset
+        description: "RANGE  First record to get (used only for display different\n\
+          of fasta and fastq"
         args: !SimpleFlagArg
           name: INTEGER
-        optional: true
       - !Flag
-        description: "RANGE  Number of records to retrieve (used only for display\n\
-          different of fasta and fastq"
+        optional: true
         synonyms:
         - --length
+        description: "RANGE  Number of records to retrieve (used only for display\n\
+          different of fasta and fastq"
         args: !SimpleFlagArg
           name: INTEGER
-        optional: true
-      parent: *id014
+      parent: *id015
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: Show this message and exit.
+        optional: true
         synonyms:
         - -h
         - --help
+        description: Show this message and exit.
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "Usage: enasearch search_data [OPTIONS]\n\n  Search data given a\
@@ -2462,27 +3156,28 @@ subcommands:
         \  different of fasta and fastq\n  -h, --help              Show this message\
         \ and exit.\n"
       generated_using: *id004
+      docker_image:
     - !Command
       command: *id012
       positional: []
       named:
       - !Flag
-        description: Id of a result (accessible with get_results)  [required]
+        optional: true
         synonyms:
         - --result
+        description: Id of a result (accessible with get_results)  [required]
         args: !SimpleFlagArg
           name: TEXT
-        optional: true
-      parent: *id014
+      parent: *id015
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: Show this message and exit.
+        optional: true
         synonyms:
         - -h
         - --help
+        description: Show this message and exit.
         args: !EmptyFlagArg {}
-        optional: true
       usage_flag:
       version_flag:
       help_text: "Usage: enasearch get_filter_fields [OPTIONS]\n\n  Get the filter\
@@ -2492,6 +3187,7 @@ subcommands:
         \ it is related\n\nOptions:\n  --result TEXT  Id of a result (accessible with\
         \ get_results)  [required]\n  -h, --help     Show this message and exit.\n"
       generated_using: *id004
+      docker_image:
     usage: []
     help_flag:
     usage_flag:
@@ -2514,15 +3210,16 @@ subcommands:
       \           Retrieve data from the ENA Taxon Portal.\n  search_data        \
       \       Search data given a query.\n"
     generated_using: *id004
+    docker_image:
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: Show this message and exit.
+    optional: true
     synonyms:
     - -h
     - --help
+    description: Show this message and exit.
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "Usage: enasearch get_sortable_fields [OPTIONS]\n\n  Get the fields of\
@@ -2532,27 +3229,28 @@ subcommands:
     \ is related\n\nOptions:\n  --result TEXT  Id of a result (accessible with get_results)\
     \  [required]\n  -h, --help     Show this message and exit.\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id005
   positional: []
   named:
   - !Flag
-    description: Id of a result (accessible with get_results)  [required]
+    optional: true
     synonyms:
     - --result
+    description: Id of a result (accessible with get_results)  [required]
     args: !SimpleFlagArg
       name: TEXT
-    optional: true
-  parent: *id015
+  parent: *id016
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: Show this message and exit.
+    optional: true
     synonyms:
     - -h
     - --help
+    description: Show this message and exit.
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "Usage: enasearch get_returnable_fields [OPTIONS]\n\n  Get the fields\
@@ -2560,44 +3258,45 @@ subcommands:
     \nOptions:\n  --result TEXT  Id of a result (accessible with get_results)  [required]\n\
     \  -h, --help     Show this message and exit.\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id006
   positional: []
   named:
   - !Flag
+    optional: true
+    synonyms:
+    - --accession
     description: "Accession id (study accessions (ERP, SRP, DRP, PRJ\nprefixes), experiment\
       \ accessions (ERX, SRX, DRX prefixes),\nsample accessions (ERS, SRS, DRS, SAM\
       \ prefixes) and run\naccessions))  [required]"
-    synonyms:
-    - --accession
     args: !SimpleFlagArg
       name: TEXT
-    optional: true
   - !Flag
-    description: "Fields to return (accessible with get_analysis_fields)\n[multiple\
-      \ or comma-separated]"
+    optional: true
     synonyms:
     - --fields
+    description: "Fields to return (accessible with get_analysis_fields)\n[multiple\
+      \ or comma-separated]"
     args: !SimpleFlagArg
       name: TEXT
-    optional: true
   - !Flag
-    description: File to save the report
+    optional: true
     synonyms:
     - --file
+    description: File to save the report
     args: !SimpleFlagArg
       name: PATH
-    optional: true
-  parent: *id015
+  parent: *id016
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: Show this message and exit.
+    optional: true
     synonyms:
     - -h
     - --help
+    description: Show this message and exit.
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "Usage: enasearch retrieve_analysis_report [OPTIONS]\n\n  Retrieve analysis\
@@ -2611,95 +3310,96 @@ subcommands:
     \  --file PATH       File to save the report\n  -h, --help        Show this message\
     \ and exit.\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id007
   positional:
   - !Positional
-    description: fasta and fastq
+    optional: false
     position: 0
     name: of
-    optional: false
+    description: fasta and fastq
   - !Positional
-    description: by a -)
+    optional: false
     position: 1
     name: separated
-    optional: false
+    description: by a -)
   named:
   - !Flag
-    description: "Ids for records to return (other than Taxon and\nProject) [multiple]\
-      \  [required]"
+    optional: true
     synonyms:
     - --ids
+    description: "Ids for records to return (other than Taxon and\nProject) [multiple]\
+      \  [required]"
     args: !SimpleFlagArg
       name: TEXT
-    optional: true
   - !Flag
-    description: "Display option to specify the display format\n(accessible with get_display_options)\
-      \  [required]"
+    optional: true
     synonyms:
     - --display
+    description: "Display option to specify the display format\n(accessible with get_display_options)\
+      \  [required]"
     args: !SimpleFlagArg
       name: TEXT
-    optional: true
   - !Flag
-    description: "Download option to specify that records are to be\nsaved in a file\
-      \ (used with file option, list\naccessible with get_download_options)"
+    optional: true
     synonyms:
     - --download
+    description: "Download option to specify that records are to be\nsaved in a file\
+      \ (used with file option, list\naccessible with get_download_options)"
     args: !SimpleFlagArg
       name: TEXT
-    optional: true
   - !Flag
-    description: "File to save the content of the search (used with\ndownload option)"
+    optional: true
     synonyms:
     - --file
+    description: "File to save the content of the search (used with\ndownload option)"
     args: !SimpleFlagArg
       name: PATH
-    optional: true
   - !Flag
-    description: RANGE  First record to get (used only for display different
+    optional: true
     synonyms:
     - --offset
+    description: RANGE  First record to get (used only for display different
     args: !SimpleFlagArg
       name: INTEGER
-    optional: true
   - !Flag
-    description: "RANGE  Number of records to retrieve (used only for display\ndifferent\
-      \ of fasta and fastq"
+    optional: true
     synonyms:
     - --length
+    description: "RANGE  Number of records to retrieve (used only for display\ndifferent\
+      \ of fasta and fastq"
     args: !SimpleFlagArg
       name: INTEGER
-    optional: true
   - !Flag
-    description: Range for subsequences (integer start and stop
+    optional: true
     synonyms:
     - --subseq_range
+    description: Range for subsequences (integer start and stop
     args: !SimpleFlagArg
       name: TEXT
-    optional: true
   - !Flag
-    description: Determine if a CON record is expanded
+    optional: true
     synonyms:
     - --expanded
+    description: Determine if a CON record is expanded
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: To obtain only the header of a record
+    optional: true
     synonyms:
     - --header
+    description: To obtain only the header of a record
     args: !EmptyFlagArg {}
-    optional: true
-  parent: *id015
+  parent: *id016
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: Show this message and exit.
+    optional: true
     synonyms:
     - -h
     - --help
+    description: Show this message and exit.
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "Usage: enasearch retrieve_data [OPTIONS]\n\n  Retrieve ENA data (other\
@@ -2724,44 +3424,45 @@ subcommands:
     \ expanded\n  --header                To obtain only the header of a record\n\
     \  -h, --help              Show this message and exit.\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id008
   positional: []
   named:
   - !Flag
+    optional: true
+    synonyms:
+    - --accession
     description: "Accession id (study accessions (ERP, SRP, DRP, PRJ\nprefixes), experiment\
       \ accessions (ERX, SRX, DRX prefixes),\nsample accessions (ERS, SRS, DRS, SAM\
       \ prefixes) and run\naccessions))  [required]"
-    synonyms:
-    - --accession
     args: !SimpleFlagArg
       name: TEXT
-    optional: true
   - !Flag
-    description: "Fields to return (accessible with get_run_fields)\n[multiple or\
-      \ comma-separated]"
+    optional: true
     synonyms:
     - --fields
+    description: "Fields to return (accessible with get_run_fields)\n[multiple or\
+      \ comma-separated]"
     args: !SimpleFlagArg
       name: TEXT
-    optional: true
   - !Flag
-    description: File to save the report
+    optional: true
     synonyms:
     - --file
+    description: File to save the report
     args: !SimpleFlagArg
       name: PATH
-    optional: true
-  parent: *id015
+  parent: *id016
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: Show this message and exit.
+    optional: true
     synonyms:
     - -h
     - --help
+    description: Show this message and exit.
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "Usage: enasearch retrieve_run_report [OPTIONS]\n\n  Retrieve run report\
@@ -2775,26 +3476,27 @@ subcommands:
     \ PATH       File to save the report\n  -h, --help        Show this message and\
     \ exit.\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id009
   positional:
   - !Positional
-    description: ''
+    optional: false
     position: 0
     name: enasearch
-    optional: false
-  - !Positional
     description: ''
+  - !Positional
+    optional: false
     position: 1
     name: COMMAND
-    optional: false
-  - !Positional
     description: ''
+  - !Positional
+    optional: true
     position: 2
     name: ARGS
-    optional: true
+    description: ''
   named: []
-  parent: *id015
+  parent: *id016
   subcommands: []
   usage: []
   help_flag:
@@ -2803,92 +3505,93 @@ subcommands:
   help_text: "Usage: enasearch [OPTIONS] COMMAND [ARGS]...\nTry \"enasearch -h\" for\
     \ help.\n\nError: No such command \"type...\".\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id010
   positional: []
   named:
   - !Flag
-    description: Ids for taxon to return [multiple]  [required]
+    optional: true
     synonyms:
     - --ids
+    description: Ids for taxon to return [multiple]  [required]
     args: !SimpleFlagArg
       name: TEXT
-    optional: true
   - !Flag
-    description: "Display option to specify the display format\n(accessible with get_display_options)\
-      \  [required]"
+    optional: true
     synonyms:
     - --display
+    description: "Display option to specify the display format\n(accessible with get_display_options)\
+      \  [required]"
     args: !SimpleFlagArg
       name: TEXT
-    optional: true
   - !Flag
-    description: "Id of a taxonomy result (accessible with\nget_taxonomy_results)"
+    optional: true
     synonyms:
     - --result
+    description: "Id of a taxonomy result (accessible with\nget_taxonomy_results)"
     args: !SimpleFlagArg
       name: TEXT
-    optional: true
   - !Flag
-    description: "Download option to specify that records are to be\nsaved in a file\
-      \ (used with file option, list\naccessible with get_download_options)"
+    optional: true
     synonyms:
     - --download
+    description: "Download option to specify that records are to be\nsaved in a file\
+      \ (used with file option, list\naccessible with get_download_options)"
     args: !SimpleFlagArg
       name: TEXT
-    optional: true
   - !Flag
-    description: "File to save the content of the search (used with\ndownload option)"
+    optional: true
     synonyms:
     - --file
+    description: "File to save the content of the search (used with\ndownload option)"
     args: !SimpleFlagArg
       name: PATH
-    optional: true
   - !Flag
-    description: "RANGE  First record to get (used only for display different\nof\
-      \ fasta and fastq"
+    optional: true
     synonyms:
     - --offset
+    description: "RANGE  First record to get (used only for display different\nof\
+      \ fasta and fastq"
     args: !SimpleFlagArg
       name: INTEGER
-    optional: true
   - !Flag
-    description: "RANGE  Number of records to retrieve (used only for display\ndifferent\
-      \ of fasta and fastq"
+    optional: true
     synonyms:
     - --length
+    description: "RANGE  Number of records to retrieve (used only for display\ndifferent\
+      \ of fasta and fastq"
     args: !SimpleFlagArg
       name: INTEGER
-    optional: true
   - !Flag
-    description: "Range for subsequences (integer start and stop\nseparated by a -)"
+    optional: true
     synonyms:
     - --subseq_range
+    description: "Range for subsequences (integer start and stop\nseparated by a -)"
     args: !SimpleFlagArg
       name: TEXT
-    optional: true
   - !Flag
-    description: Determine if a CON record is expanded
+    optional: true
     synonyms:
     - --expanded
+    description: Determine if a CON record is expanded
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
-    description: To obtain only the header of a record
+    optional: true
     synonyms:
     - --header
+    description: To obtain only the header of a record
     args: !EmptyFlagArg {}
-    optional: true
-  parent: *id015
+  parent: *id016
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: Show this message and exit.
+    optional: true
     synonyms:
     - -h
     - --help
+    description: Show this message and exit.
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "Usage: enasearch retrieve_taxons [OPTIONS]\n\n  Retrieve data from the\
@@ -2914,98 +3617,99 @@ subcommands:
     \ is expanded\n  --header                To obtain only the header of a record\n\
     \  -h, --help              Show this message and exit.\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id011
   positional: []
   named:
   - !Flag
-    description: "Use free text search, otherwise the data warehouse\nis used"
+    optional: true
     synonyms:
     - --free_text_search
+    description: "Use free text search, otherwise the data warehouse\nis used"
     args: !EmptyFlagArg {}
-    optional: true
   - !Flag
+    optional: true
+    synonyms:
+    - --query
     description: "Query string, made up of filtering conditions,\njoined by logical\
       \ ANDs, ORs and NOTs and bound by\ndouble quotes; the filter fields for a query\
       \ are\naccessible with get_filter_fields and the type of\nfilters with get_filter_types\
       \  [required]"
-    synonyms:
-    - --query
     args: !SimpleFlagArg
       name: TEXT
-    optional: true
   - !Flag
-    description: "Id of a result (accessible with get_results)\n[required]"
+    optional: true
     synonyms:
     - --result
+    description: "Id of a result (accessible with get_results)\n[required]"
     args: !SimpleFlagArg
       name: TEXT
-    optional: true
   - !Flag
-    description: "Display option to specify the display format\n(accessible with get_display_options)\
-      \  [required]"
+    optional: true
     synonyms:
     - --display
+    description: "Display option to specify the display format\n(accessible with get_display_options)\
+      \  [required]"
     args: !SimpleFlagArg
       name: TEXT
-    optional: true
   - !Flag
-    description: "Download option to specify that records are to be\nsaved in a file\
-      \ (used with file option, list\naccessible with get_download_options)"
+    optional: true
     synonyms:
     - --download
+    description: "Download option to specify that records are to be\nsaved in a file\
+      \ (used with file option, list\naccessible with get_download_options)"
     args: !SimpleFlagArg
       name: TEXT
-    optional: true
   - !Flag
-    description: "File to save the content of the search (used with\ndownload option)"
+    optional: true
     synonyms:
     - --file
+    description: "File to save the content of the search (used with\ndownload option)"
     args: !SimpleFlagArg
       name: PATH
-    optional: true
   - !Flag
-    description: "Fields to return (accessible with\nget_returnable_fields, used only\
-      \ for report as\ndisplay value) [multiple or comma-separated]"
+    optional: true
     synonyms:
     - --fields
+    description: "Fields to return (accessible with\nget_returnable_fields, used only\
+      \ for report as\ndisplay value) [multiple or comma-separated]"
     args: !SimpleFlagArg
       name: TEXT
-    optional: true
   - !Flag
-    description: "Fields to sort the results (accessible with\nget_sortable_fields,\
-      \ used only for report as display\nvalue) [multiple or comma-separated]"
+    optional: true
     synonyms:
     - --sortfields
+    description: "Fields to sort the results (accessible with\nget_sortable_fields,\
+      \ used only for report as display\nvalue) [multiple or comma-separated]"
     args: !SimpleFlagArg
       name: TEXT
-    optional: true
   - !Flag
-    description: "RANGE  First record to get (used only for display different\nof\
-      \ fasta and fastq"
+    optional: true
     synonyms:
     - --offset
+    description: "RANGE  First record to get (used only for display different\nof\
+      \ fasta and fastq"
     args: !SimpleFlagArg
       name: INTEGER
-    optional: true
   - !Flag
-    description: "RANGE  Number of records to retrieve (used only for display\ndifferent\
-      \ of fasta and fastq"
+    optional: true
     synonyms:
     - --length
+    description: "RANGE  Number of records to retrieve (used only for display\ndifferent\
+      \ of fasta and fastq"
     args: !SimpleFlagArg
       name: INTEGER
-    optional: true
-  parent: *id015
+  parent: *id016
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: Show this message and exit.
+    optional: true
     synonyms:
     - -h
     - --help
+    description: Show this message and exit.
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "Usage: enasearch search_data [OPTIONS]\n\n  Search data given a query.\n\
@@ -3037,27 +3741,28 @@ subcommands:
     \ retrieve (used only for display\n                          different of fasta\
     \ and fastq\n  -h, --help              Show this message and exit.\n"
   generated_using: *id004
+  docker_image:
 - !Command
   command: *id012
   positional: []
   named:
   - !Flag
-    description: Id of a result (accessible with get_results)  [required]
+    optional: true
     synonyms:
     - --result
+    description: Id of a result (accessible with get_results)  [required]
     args: !SimpleFlagArg
       name: TEXT
-    optional: true
-  parent: *id015
+  parent: *id016
   subcommands: []
   usage: []
   help_flag: !Flag
-    description: Show this message and exit.
+    optional: true
     synonyms:
     - -h
     - --help
+    description: Show this message and exit.
     args: !EmptyFlagArg {}
-    optional: true
   usage_flag:
   version_flag:
   help_text: "Usage: enasearch get_filter_fields [OPTIONS]\n\n  Get the filter fields\
@@ -3067,6 +3772,7 @@ subcommands:
     \ related\n\nOptions:\n  --result TEXT  Id of a result (accessible with get_results)\
     \  [required]\n  -h, --help     Show this message and exit.\n"
   generated_using: *id004
+  docker_image:
 usage: []
 help_flag:
 usage_flag:
@@ -3088,3 +3794,4 @@ help_text: "Usage: enasearch [OPTIONS] COMMAND [ARGS]...\n\n  The Python library
   \  Retrieve run report from ENA.\n  retrieve_taxons           Retrieve data from\
   \ the ENA Taxon Portal.\n  search_data               Search data given a query.\n"
 generated_using: *id004
+docker_image:

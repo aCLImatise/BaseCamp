@@ -12,6 +12,9 @@ task VsnpChromosomeReferencepy {
       ~{if defined(cwd) then ("--cwd " +  '"' + cwd + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     cwd: "Optional: path to VCF files"
     v: ""

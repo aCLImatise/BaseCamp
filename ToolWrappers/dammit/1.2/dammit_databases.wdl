@@ -32,6 +32,9 @@ task DammitDatabases {
       ~{if (nr) then "--nr" else ""} \
       ~{if (quick) then "--quick" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     install: "Install missing databases. Downloads and preps where\\nnecessary (default: False)"
     database_dir: "Directory to store databases. Existing databases will\\nnot be overwritten. By default, the database directory\\nis $HOME/.dammit/databases. (default:\\n/root/.dammit/databases)"

@@ -12,6 +12,9 @@ task KissreadsGraph {
       ~{if defined(t) then ("-t " +  '"' + t + '"') else ""} \
       ~{if (input_considered_obtained) then "-M" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     this_message_exit: "this message and exit"
     t: "\\\"c\\\" \\\"coverage\\\"\\n\\\"m\\\" \\\"modify\\\""

@@ -12,6 +12,9 @@ task Paragraph2dotpyOutput {
       ~{var_input} \
       ~{var_output}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     paragraph_two_dot_do_tpy: ""
     var_input: ""

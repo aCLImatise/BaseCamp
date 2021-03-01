@@ -16,6 +16,9 @@ task BlobtoolsMap2cov {
       ~{if defined(output_prefix) then ("--output " +  '"' + output_prefix + '"') else ""} \
       ~{if (calculate_cov) then "--calculate_cov" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_file: "FASTA file of assembly. Headers are split at whitespaces."
     bam: "...          BAM file (requires pysam)"

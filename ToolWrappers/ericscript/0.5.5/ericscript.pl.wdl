@@ -194,6 +194,9 @@ task Ericscriptpl {
       ~{if defined(dataset) then ("--dataset " +  '"' + dataset + '"') else ""} \
       ~{if defined(norm_roc) then ("--normroc " +  '"' + norm_roc + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     man: "print complete documentation"
     verbose: "use verbose output"

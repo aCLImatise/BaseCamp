@@ -14,11 +14,11 @@ task MACARON {
     Boolean? add_anim
     File? keep_tmp
     Boolean? g_atk_four_previous
-    File file
+    File gatk_gatkpath_you
   }
   command <<<
     MACARON \
-      ~{file} \
+      ~{gatk_gatkpath_you} \
       ~{if defined(script) then ("-Script " +  '"' + script + '"') else ""} \
       ~{if defined(in_file) then ("--infile " +  '"' + in_file + '"') else ""} \
       ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""} \
@@ -32,6 +32,9 @@ task MACARON {
       ~{if (keep_tmp) then "--keep_tmp" else ""} \
       ~{if (g_atk_four_previous) then "--gatk4_previous" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     script: "identify SnpClusters (SNPs within the same genetic codon)"
     in_file: "Full path of the input VCF file."
@@ -45,7 +48,7 @@ task MACARON {
     add_anim: "Add animation while running (looks good but costs a\\nthread)"
     keep_tmp: "Keep temporary files in the directory tmp_macaron, at\\nthe same location than the output file."
     g_atk_four_previous: "Use this option if you are using a version of gatk 4\\nolder than gatk 4.1.4.1\\n"
-    file: "--GATK GATK_PATH      You can use this option to directly indicate the full"
+    gatk_gatkpath_you: "--GATK GATK_PATH      You can use this option to directly indicate the full"
   }
   output {
     File out_stdout = stdout()

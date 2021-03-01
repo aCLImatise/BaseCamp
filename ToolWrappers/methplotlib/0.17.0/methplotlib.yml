@@ -1,0 +1,174 @@
+!Command
+command:
+- methplotlib
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: transcripts
+  description: --split               split, rather than overlay the methylation tracks
+- !Positional
+  optional: false
+  position: 1
+  name: nuances
+  description: --smooth SMOOTH       Rolling window size for averaging frequency values
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --methylation
+  description: "data in nanopolish, nanocompore, ont-cram or bedgraph\nformat"
+  args: !RepeatFlagArg
+    name: METHYLATION
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --names
+  description: names of datasets in --methylation
+  args: !RepeatFlagArg
+    name: NAMES
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --window
+  description: "window (region) to which the visualisation has to be\nrestricted"
+  args: !SimpleFlagArg
+    name: WINDOW
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --gtf
+  description: add annotation based on a gtf file
+  args: !SimpleFlagArg
+    name: GTF
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --bed
+  description: add annotation based on a bed file
+  args: !SimpleFlagArg
+    name: BED
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --fasta
+  description: "required when --window is an entire chromosome, contig\nor transcript"
+  args: !SimpleFlagArg
+    name: FASTA
+- !Flag
+  optional: true
+  synonyms:
+  - --simplify
+  description: simplify annotation track to show genes rather than
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --static
+  description: Make a static image of the browser window
+  args: !SimpleFlagArg
+    name: STATIC
+- !Flag
+  optional: true
+  synonyms:
+  - --binary
+  description: Make the nanopolish plot ignorning log likelihood
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dotsize
+  description: Control the size of dots in the per read plots
+  args: !SimpleFlagArg
+    name: DOTSIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --example
+  description: Show example command and exit.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --outfile
+  description: "File to write results to. Default:\nmethylation_browser_{chr}_{start}_{end}.html.\
+    \ Use\n{region} as a shorthand for {chr}_{start}_{end} in the\nfilename. Missing\
+    \ paths will be created."
+  args: !SimpleFlagArg
+    name: OUTFILE
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --qcfile
+  description: "File to write the qc report to. Default: The path in\noutfile prefixed\
+    \ with qc_, default is qc_report_methyl\nation_browser_{chr}_{start}_{end}.html.\
+    \ Use {region}\nas a shorthand for {chr}_{start}_{end} in the\nfilename. Missing\
+    \ paths will be created.\n"
+  args: !SimpleFlagArg
+    name: QCFILE
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: ''
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: Print version and exit.
+  args: !EmptyFlagArg {}
+help_text: "usage: methplotlib [-h] [-v] -m METHYLATION [METHYLATION ...] -n NAMES\n\
+  \                   [NAMES ...] -w WINDOW [-g GTF] [-b BED] [-f FASTA]\n       \
+  \            [--simplify] [--split] [--static STATIC] [--binary]\n             \
+  \      [--smooth SMOOTH] [--dotsize DOTSIZE] [--example]\n                   [-o\
+  \ OUTFILE] [-q QCFILE]\n\nplotting nanopolish methylation calls or frequency\n\n\
+  optional arguments:\n  -h, --help            show this help message and exit\n \
+  \ -v, --version         Print version and exit.\n  -m METHYLATION [METHYLATION ...],\
+  \ --methylation METHYLATION [METHYLATION ...]\n                        data in nanopolish,\
+  \ nanocompore, ont-cram or bedgraph\n                        format\n  -n NAMES\
+  \ [NAMES ...], --names NAMES [NAMES ...]\n                        names of datasets\
+  \ in --methylation\n  -w WINDOW, --window WINDOW\n                        window\
+  \ (region) to which the visualisation has to be\n                        restricted\n\
+  \  -g GTF, --gtf GTF     add annotation based on a gtf file\n  -b BED, --bed BED\
+  \     add annotation based on a bed file\n  -f FASTA, --fasta FASTA\n          \
+  \              required when --window is an entire chromosome, contig\n        \
+  \                or transcript\n  --simplify            simplify annotation track\
+  \ to show genes rather than\n                        transcripts\n  --split    \
+  \           split, rather than overlay the methylation tracks\n  --static STATIC\
+  \       Make a static image of the browser window\n  --binary              Make\
+  \ the nanopolish plot ignorning log likelihood\n                        nuances\n\
+  \  --smooth SMOOTH       Rolling window size for averaging frequency values\n  --dotsize\
+  \ DOTSIZE     Control the size of dots in the per read plots\n  --example      \
+  \       Show example command and exit.\n  -o OUTFILE, --outfile OUTFILE\n      \
+  \                  File to write results to. Default:\n                        methylation_browser_{chr}_{start}_{end}.html.\
+  \ Use\n                        {region} as a shorthand for {chr}_{start}_{end} in\
+  \ the\n                        filename. Missing paths will be created.\n  -q QCFILE,\
+  \ --qcfile QCFILE\n                        File to write the qc report to. Default:\
+  \ The path in\n                        outfile prefixed with qc_, default is qc_report_methyl\n\
+  \                        ation_browser_{chr}_{start}_{end}.html. Use {region}\n\
+  \                        as a shorthand for {chr}_{start}_{end} in the\n       \
+  \                 filename. Missing paths will be created.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/methplotlib:0.17.0--py_0

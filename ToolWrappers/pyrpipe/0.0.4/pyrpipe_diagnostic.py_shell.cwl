@@ -3,23 +3,23 @@ id: pyrpipe_diagnostic.py_shell.cwl
 inputs:
 - id: in_file_default_same
   doc: 'out file default: same as input logfile'
-  type: File
+  type: File?
   inputBinding:
     prefix: -o
 - id: in_dump_command_options
   doc: 'Dump command options [(a)ll,fa(i)l,(p)ass] default: a'
-  type: string
+  type: string?
   inputBinding:
     prefix: -c
 - id: in_verbose
   doc: verbose
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_filter_programs_provide
   doc: "Filter by programs. Provide a comma-separated list e.g.,\nprefetch,STAR,bowtie2\
     \ default None\n"
-  type: long
+  type: long?
   inputBinding:
     prefix: -f
 - id: in_log_file
@@ -31,6 +31,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - pyrpipe_diagnostic.py

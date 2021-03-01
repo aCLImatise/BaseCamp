@@ -8,6 +8,9 @@ task BpLocalTaxonomydbQuerypl {
     bp_local_taxonomydb_query_pl \
       ~{taxonid}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     taxonid: "DESCRIPTION"
   }

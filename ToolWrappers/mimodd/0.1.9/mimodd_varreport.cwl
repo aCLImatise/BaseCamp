@@ -3,22 +3,22 @@ id: mimodd_varreport.cwl
 inputs:
 - id: in_ofile
   doc: "redirect the output to the specified file (default:\nstdout)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --ofile
-- id: in_text__oformat
+- id: in_text__format
   doc: "|text, --oformat html|text\nthe format of the output file (default: html)"
-  type: File
+  type: File?
   inputBinding:
     prefix: -f
 - id: in_species
   doc: "the name of the species to be assumed when generating\nannotations"
-  type: string
+  type: string?
   inputBinding:
     prefix: --species
 - id: in_link
   doc: "file to read species-specific hyperlink formatting\ninstructions from\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --link
 - id: in_var_report
@@ -32,14 +32,15 @@ outputs:
   type: stdout
 - id: out_ofile
   doc: "redirect the output to the specified file (default:\nstdout)"
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_ofile)
-- id: out_text__oformat
+- id: out_text__format
   doc: "|text, --oformat html|text\nthe format of the output file (default: html)"
-  type: File
+  type: File?
   outputBinding:
-    glob: $(inputs.in_text__oformat)
+    glob: $(inputs.in_text__format)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - mimodd

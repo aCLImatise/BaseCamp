@@ -18,6 +18,9 @@ task AgatSpManageIntronspl {
       ~{if defined(modify_x_values) then ("--p " +  '"' + modify_x_values + '"') else ""} \
       ~{if (plot) then "--plot" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     ref_file: "Input GTF/GFF file. You can use several input files by doing: -f\\nfile1 -f file2 -f file3"
     window: "It the number of break used within the histogram plot. By\\ndefault it's 1000. You can modify the value to get something\\nmore or less precise."

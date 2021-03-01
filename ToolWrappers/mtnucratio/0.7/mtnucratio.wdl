@@ -4,6 +4,9 @@ task Mtnucratio {
   command <<<
     mtnucratio
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

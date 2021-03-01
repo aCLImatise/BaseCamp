@@ -14,6 +14,9 @@ task PlanemoNormalize {
       ~{if (skip_reorder) then "--skip_reorder" else ""} \
       ~{if (skip_re_indent) then "--skip_reindent" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     expand_macros: "Expand macros while normalizing tool XML - useful to see\\nhow macros are evaluated."
     skip_reorder: "Planemo will reorder top-level tool blocks according to\\ntool development best practices as part of this command,\\nthis flag will disable that behavior."

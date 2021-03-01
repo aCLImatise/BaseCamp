@@ -22,6 +22,9 @@ task CollectReadSequencesForLocalGapClosing {
       ~{if defined(num_joins_per_directory) then ("--num-joins-per-directory " +  '"' + num_joins_per_directory + '"') else ""} \
       ~{if defined(max_reads_in_memory) then ("--max-reads-in-memory " +  '"' + max_reads_in_memory + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     faux_reads_file: "*Name of the faux reads file"
     faux_read_matches_to_kunis_file: "*Name of the file with matches from faux reads to k-unitigs"

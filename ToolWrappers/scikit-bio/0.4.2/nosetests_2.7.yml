@@ -3,240 +3,243 @@ command:
 - nosetests-2.7
 positional:
 - !Positional
-  description: --first-package-wins, --first-pkg-wins, --1st-pkg-wins
+  optional: false
   position: 0
   name: package
-  optional: false
+  description: --first-package-wins, --first-pkg-wins, --1st-pkg-wins
 - !Positional
-  description: --no-byte-compile     Prevent nose from byte-compiling the source into
-    .pyc
+  optional: false
   position: 0
   name: behavior.
-  optional: false
+  description: --no-byte-compile     Prevent nose from byte-compiling the source into
+    .pyc
 - !Positional
-  description: --cover-tests         Include test modules in coverage report
+  optional: false
   position: 0
   name: run
-  optional: false
+  description: --cover-tests         Include test modules in coverage report
 named:
 - !Flag
-  description: "Output list of available plugins and exit. Combine\nwith higher verbosity\
-    \ for greater detail"
+  optional: true
   synonyms:
   - -p
   - --plugins
+  description: "Output list of available plugins and exit. Combine\nwith higher verbosity\
+    \ for greater detail"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Be more verbose. [NOSE_VERBOSE]
+  optional: true
   synonyms:
   - -v
   - --verbose
+  description: Be more verbose. [NOSE_VERBOSE]
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Set verbosity; --verbosity=2 is the same as -v
+  optional: true
   synonyms:
   - --verbosity
+  description: Set verbosity; --verbosity=2 is the same as -v
   args: !SimpleFlagArg
     name: VERBOSITY
-  optional: true
 - !Flag
-  description: Be less verbose
+  optional: true
   synonyms:
   - -q
   - --quiet
+  description: Be less verbose
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Load configuration from config file(s). May be\nspecified multiple\
-    \ times; in that case, all config\nfiles will be loaded and combined"
+  optional: true
   synonyms:
   - -c
   - --config
+  description: "Load configuration from config file(s). May be\nspecified multiple\
+    \ times; in that case, all config\nfiles will be loaded and combined"
   args: !SimpleFlagArg
     name: FILES
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --where
   description: "Look for tests in this directory. May be specified\nmultiple times.\
     \ The first directory passed will be\nused as the working directory, in place\
     \ of the current\nworking directory, which is the default. Others will\nbe added\
     \ to the list of tests to execute. [NOSE_WHERE]"
-  synonyms:
-  - -w
-  - --where
   args: !SimpleFlagArg
     name: WHERE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --py3where
   description: "Look for tests in this directory under Python 3.x.\nFunctions the\
     \ same as 'where', but only applies if\nrunning under Python 3.x or above.  Note\
     \ that, if\npresent under 3.x, this option completely replaces any\ndirectories\
     \ specified with 'where', so the 'where'\noption becomes ineffective. [NOSE_PY3WHERE]"
-  synonyms:
-  - --py3where
   args: !SimpleFlagArg
     name: PY3WHERE
-  optional: true
 - !Flag
-  description: "Files, directories, function names, and class names\nthat match this\
-    \ regular expression are considered\ntests.  Default: (?:^|[\\b_\\./-])[Tt]est\n\
-    [NOSE_TESTMATCH]"
+  optional: true
   synonyms:
   - -m
   - --match
   - --testmatch
+  description: "Files, directories, function names, and class names\nthat match this\
+    \ regular expression are considered\ntests.  Default: (?:^|[\\b_\\./-])[Tt]est\n\
+    [NOSE_TESTMATCH]"
   args: !SimpleFlagArg
     name: REGEX
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --tests
   description: "Run these tests (comma-separated list). This argument\nis useful mainly\
     \ from configuration files; on the\ncommand line, just pass the tests to run as\
     \ additional\narguments with no switch."
-  synonyms:
-  - --tests
   args: !SimpleFlagArg
     name: NAMES
-  optional: true
 - !Flag
-  description: "Activate debug logging for one or more systems.\nAvailable debug loggers:\
-    \ nose, nose.importer,\nnose.inspector, nose.plugins, nose.result and\nnose.selector.\
-    \ Separate multiple names with a comma."
+  optional: true
   synonyms:
   - -l
   - --debug
+  description: "Activate debug logging for one or more systems.\nAvailable debug loggers:\
+    \ nose, nose.importer,\nnose.inspector, nose.plugins, nose.result and\nnose.selector.\
+    \ Separate multiple names with a comma."
   args: !SimpleFlagArg
     name: DEBUG
-  optional: true
 - !Flag
-  description: 'Log debug messages to this file (default: sys.stderr)'
+  optional: true
   synonyms:
   - --debug-log
+  description: 'Log debug messages to this file (default: sys.stderr)'
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: "Load logging config from this file -- bypasses all\nother logging\
-    \ config settings."
+  optional: true
   synonyms:
   - --logging-config
   - --log-config
+  description: "Load logging config from this file -- bypasses all\nother logging\
+    \ config settings."
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -I
+  - --ignore-files
   description: "Completely ignore any file that matches this regular\nexpression.\
     \ Takes precedence over any other settings\nor plugins. Specifying this option\
     \ will replace the\ndefault setting. Specify this option multiple times to\nadd\
     \ more regular expressions [NOSE_IGNORE_FILES]"
-  synonyms:
-  - -I
-  - --ignore-files
   args: !SimpleFlagArg
     name: REGEX
-  optional: true
 - !Flag
-  description: "Don't run tests that match regular expression\n[NOSE_EXCLUDE]"
+  optional: true
   synonyms:
   - -e
   - --exclude
+  description: "Don't run tests that match regular expression\n[NOSE_EXCLUDE]"
   args: !SimpleFlagArg
     name: REGEX
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --include
   description: "This regular expression will be applied to files,\ndirectories, function\
     \ names, and class names for a\nchance to include additional tests that do not\
     \ match\nTESTMATCH.  Specify this option multiple times to add\nmore regular expressions\
     \ [NOSE_INCLUDE]"
-  synonyms:
-  - -i
-  - --include
   args: !SimpleFlagArg
     name: REGEX
-  optional: true
 - !Flag
-  description: Stop running tests after the first error or failure
+  optional: true
   synonyms:
   - -x
   - --stop
+  description: Stop running tests after the first error or failure
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Don't make any changes to sys.path when loading tests\n[NOSE_NOPATH]"
+  optional: true
   synonyms:
   - -P
   - --no-path-adjustment
+  description: "Don't make any changes to sys.path when loading tests\n[NOSE_NOPATH]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Look for tests in python modules that are executable.\nNormal behavior\
-    \ is to exclude executable modules,\nsince they may not be import-safe [NOSE_INCLUDE_EXE]"
+  optional: true
   synonyms:
   - --exe
+  description: "Look for tests in python modules that are executable.\nNormal behavior\
+    \ is to exclude executable modules,\nsince they may not be import-safe [NOSE_INCLUDE_EXE]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "DO NOT look for tests in python modules that are\nexecutable. (The\
-    \ default on the windows platform is to\ndo so.)"
+  optional: true
   synonyms:
   - --noexe
+  description: "DO NOT look for tests in python modules that are\nexecutable. (The\
+    \ default on the windows platform is to\ndo so.)"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Traverse through all path entries of a namespace
+  optional: true
   synonyms:
   - --traverse-namespace
+  description: Traverse through all path entries of a namespace
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Run only tests that have attributes specified by ATTR\n[NOSE_ATTR]"
+  optional: true
   synonyms:
   - -a
   - --attr
+  description: "Run only tests that have attributes specified by ATTR\n[NOSE_ATTR]"
   args: !SimpleFlagArg
     name: ATTR
-  optional: true
 - !Flag
-  description: "Run only tests for whose attributes the Python\nexpression EXPR evaluates\
-    \ to True [NOSE_EVAL_ATTR]"
+  optional: true
   synonyms:
   - -A
   - --eval-attr
+  description: "Run only tests for whose attributes the Python\nexpression EXPR evaluates\
+    \ to True [NOSE_EVAL_ATTR]"
   args: !SimpleFlagArg
     name: EXPR
-  optional: true
 - !Flag
-  description: "Don't capture stdout (any stdout output will be\nprinted immediately)\
-    \ [NOSE_NOCAPTURE]"
+  optional: true
   synonyms:
   - -s
   - --nocapture
+  description: "Don't capture stdout (any stdout output will be\nprinted immediately)\
+    \ [NOSE_NOCAPTURE]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Disable logging capture plugin. Logging configuration\nwill be left\
-    \ intact. [NOSE_NOLOGCAPTURE]"
+  optional: true
   synonyms:
   - --nologcapture
+  description: "Disable logging capture plugin. Logging configuration\nwill be left\
+    \ intact. [NOSE_NOLOGCAPTURE]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Specify custom format to print statements. Uses the\nsame format as\
-    \ used by standard logging handlers.\n[NOSE_LOGFORMAT]"
+  optional: true
   synonyms:
   - --logging-format
+  description: "Specify custom format to print statements. Uses the\nsame format as\
+    \ used by standard logging handlers.\n[NOSE_LOGFORMAT]"
   args: !SimpleFlagArg
     name: FORMAT
-  optional: true
 - !Flag
-  description: "Specify custom date/time format to print statements.\nUses the same\
-    \ format as used by standard logging\nhandlers. [NOSE_LOGDATEFMT]"
+  optional: true
   synonyms:
   - --logging-datefmt
+  description: "Specify custom date/time format to print statements.\nUses the same\
+    \ format as used by standard logging\nhandlers. [NOSE_LOGDATEFMT]"
   args: !SimpleFlagArg
     name: FORMAT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --logging-filter
   description: "Specify which statements to filter in/out. By default,\neverything\
     \ is captured. If the output is too verbose,\nuse this option to filter out needless\
     \ output.\nExample: filter=foo will capture statements issued\nONLY to  foo or\
@@ -244,317 +247,314 @@ named:
     \ with comma:\nfilter=foo,bar,baz. If any logger name is prefixed\nwith a minus,\
     \ eg filter=-foo, it will be excluded\nrather than included. Default: exclude\
     \ logging\nmessages from nose itself (-nose). [NOSE_LOGFILTER]"
-  synonyms:
-  - --logging-filter
   args: !SimpleFlagArg
     name: FILTER
-  optional: true
 - !Flag
-  description: Clear all other logging handlers
+  optional: true
   synonyms:
   - --logging-clear-handlers
+  description: Clear all other logging handlers
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Set the log level to capture
+  optional: true
   synonyms:
   - --logging-level
+  description: Set the log level to capture
   args: !SimpleFlagArg
     name: LOGCAPTURE_LEVEL
-  optional: true
 - !Flag
-  description: "Enable plugin Coverage:  Activate a coverage report\nusing Ned Batchelder's\
-    \ coverage module.\n[NOSE_WITH_COVERAGE]"
+  optional: true
   synonyms:
   - --with-coverage
+  description: "Enable plugin Coverage:  Activate a coverage report\nusing Ned Batchelder's\
+    \ coverage module.\n[NOSE_WITH_COVERAGE]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Restrict coverage output to selected packages\n[NOSE_COVER_PACKAGE]"
+  optional: true
   synonyms:
   - --cover-package
+  description: "Restrict coverage output to selected packages\n[NOSE_COVER_PACKAGE]"
   args: !SimpleFlagArg
     name: PACKAGE
-  optional: true
 - !Flag
-  description: Erase previously collected coverage statistics before
+  optional: true
   synonyms:
   - --cover-erase
+  description: Erase previously collected coverage statistics before
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Minimum percentage of coverage for tests to pass\n[NOSE_COVER_MIN_PERCENTAGE]"
+  optional: true
   synonyms:
   - --cover-min-percentage
+  description: "Minimum percentage of coverage for tests to pass\n[NOSE_COVER_MIN_PERCENTAGE]"
   args: !SimpleFlagArg
     name: COVER_MIN_PERCENTAGE
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --cover-inclusive
   description: "Include all python files under working directory in\ncoverage report.\
     \  Useful for discovering holes in test\ncoverage if not all files are imported\
     \ by the test\nsuite. [NOSE_COVER_INCLUSIVE]"
-  synonyms:
-  - --cover-inclusive
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Produce HTML coverage information
+  optional: true
   synonyms:
   - --cover-html
+  description: Produce HTML coverage information
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Produce HTML coverage information in dir
+  optional: true
   synonyms:
   - --cover-html-dir
+  description: Produce HTML coverage information in dir
   args: !SimpleFlagArg
     name: DIR
-  optional: true
 - !Flag
-  description: "Include branch coverage in coverage report\n[NOSE_COVER_BRANCHES]"
+  optional: true
   synonyms:
   - --cover-branches
+  description: "Include branch coverage in coverage report\n[NOSE_COVER_BRANCHES]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Produce XML coverage information
+  optional: true
   synonyms:
   - --cover-xml
+  description: Produce XML coverage information
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Produce XML coverage information in file
+  optional: true
   synonyms:
   - --cover-xml-file
+  description: Produce XML coverage information in file
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: Drop into debugger on failures or errors
+  optional: true
   synonyms:
   - --pdb
+  description: Drop into debugger on failures or errors
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Drop into debugger on failures
+  optional: true
   synonyms:
   - --pdb-failures
+  description: Drop into debugger on failures
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Drop into debugger on errors
+  optional: true
   synonyms:
   - --pdb-errors
+  description: Drop into debugger on errors
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Disable special handling of DeprecatedTest exceptions.
+  optional: true
   synonyms:
   - --no-deprecated
+  description: Disable special handling of DeprecatedTest exceptions.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Enable plugin Doctest:  Activate doctest plugin to\nfind and run doctests\
-    \ in non-test modules.\n[NOSE_WITH_DOCTEST]"
+  optional: true
   synonyms:
   - --with-doctest
+  description: "Enable plugin Doctest:  Activate doctest plugin to\nfind and run doctests\
+    \ in non-test modules.\n[NOSE_WITH_DOCTEST]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --doctest-tests
   description: "Also look for doctests in test modules. Note that\nclasses, methods\
     \ and functions should have either\ndoctests or non-doctest tests, not both.\n\
     [NOSE_DOCTEST_TESTS]"
-  synonyms:
-  - --doctest-tests
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Also look for doctests in files with this extension\n[NOSE_DOCTEST_EXTENSION]"
+  optional: true
   synonyms:
   - --doctest-extension
+  description: "Also look for doctests in files with this extension\n[NOSE_DOCTEST_EXTENSION]"
   args: !SimpleFlagArg
     name: EXT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --doctest-result-variable
   description: "Change the variable name set to the result of the last\ninterpreter\
     \ command from the default '_'. Can be used\nto avoid conflicts with the _() function\
     \ used for text\ntranslation. [NOSE_DOCTEST_RESULT_VAR]"
-  synonyms:
-  - --doctest-result-variable
   args: !SimpleFlagArg
     name: VAR
-  optional: true
 - !Flag
-  description: "Find fixtures for a doctest file in module with this\nname appended\
-    \ to the base name of the doctest file"
+  optional: true
   synonyms:
   - --doctest-fixtures
+  description: "Find fixtures for a doctest file in module with this\nname appended\
+    \ to the base name of the doctest file"
   args: !SimpleFlagArg
     name: SUFFIX
-  optional: true
 - !Flag
-  description: "Specify options to pass to doctest. Eg.\n'+ELLIPSIS,+NORMALIZE_WHITESPACE'"
+  optional: true
   synonyms:
   - --doctest-options
+  description: "Specify options to pass to doctest. Eg.\n'+ELLIPSIS,+NORMALIZE_WHITESPACE'"
   args: !SimpleFlagArg
     name: OPTIONS
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --with-isolation
   description: "Enable plugin IsolationPlugin:  Activate the isolation\nplugin to\
     \ isolate changes to external modules to a\nsingle test module or package. The\
     \ isolation plugin\nresets the contents of sys.modules after each test\nmodule\
     \ or package runs to its state before the test.\nPLEASE NOTE that this plugin\
     \ should not be used with\nthe coverage plugin, or in any other case where module\n\
     reloading may produce undesirable side-effects.\n[NOSE_WITH_ISOLATION]"
-  synonyms:
-  - --with-isolation
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Add detail to error output by attempting to evaluate\nfailed asserts\
-    \ [NOSE_DETAILED_ERRORS]"
+  optional: true
   synonyms:
   - -d
   - --detailed-errors
   - --failure-detail
+  description: "Add detail to error output by attempting to evaluate\nfailed asserts\
+    \ [NOSE_DETAILED_ERRORS]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Enable plugin Profile:  Use this plugin to run tests\nusing the hotshot\
-    \ profiler.   [NOSE_WITH_PROFILE]"
+  optional: true
   synonyms:
   - --with-profile
+  description: "Enable plugin Profile:  Use this plugin to run tests\nusing the hotshot\
+    \ profiler.   [NOSE_WITH_PROFILE]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Set sort order for profiler output
+  optional: true
   synonyms:
   - --profile-sort
+  description: Set sort order for profiler output
   args: !SimpleFlagArg
     name: SORT
-  optional: true
 - !Flag
-  description: "Profiler stats file; default is a new temp file on\neach run"
+  optional: true
   synonyms:
   - --profile-stats-file
+  description: "Profiler stats file; default is a new temp file on\neach run"
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: "Restrict profiler output. See help for pstats.Stats\nfor details"
+  optional: true
   synonyms:
   - --profile-restrict
+  description: "Restrict profiler output. See help for pstats.Stats\nfor details"
   args: !SimpleFlagArg
     name: RESTRICT
-  optional: true
 - !Flag
-  description: Disable special handling of SkipTest exceptions.
+  optional: true
   synonyms:
   - --no-skip
+  description: Disable special handling of SkipTest exceptions.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Enable plugin TestId:  Activate to add a test id (like\n#1) to each\
-    \ test name output. Activate with --failed\nto rerun failing tests only.  [NOSE_WITH_ID]"
+  optional: true
   synonyms:
   - --with-id
+  description: "Enable plugin TestId:  Activate to add a test id (like\n#1) to each\
+    \ test name output. Activate with --failed\nto rerun failing tests only.  [NOSE_WITH_ID]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Store test ids found in test runs in this file.\nDefault is the file\
-    \ .noseids in the working directory."
+  optional: true
   synonyms:
   - --id-file
+  description: "Store test ids found in test runs in this file.\nDefault is the file\
+    \ .noseids in the working directory."
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: Run the tests that failed in the last test run.
+  optional: true
   synonyms:
   - --failed
+  description: Run the tests that failed in the last test run.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --processes
   description: "Spread test run among this many processes. Set a\nnumber equal to\
     \ the number of processors or cores in\nyour machine for best results. Pass a\
     \ negative number\nto have the number of processes automatically set to\nthe number\
     \ of cores. Passing 0 means to disable\nparallel testing. Default is 0 unless\
     \ NOSE_PROCESSES\nis set. [NOSE_PROCESSES]"
-  synonyms:
-  - --processes
   args: !SimpleFlagArg
     name: NUM
-  optional: true
 - !Flag
-  description: "Set timeout for return of results from each test\nrunner process.\
-    \ Default is 10. [NOSE_PROCESS_TIMEOUT]"
+  optional: true
   synonyms:
   - --process-timeout
+  description: "Set timeout for return of results from each test\nrunner process.\
+    \ Default is 10. [NOSE_PROCESS_TIMEOUT]"
   args: !SimpleFlagArg
     name: SECONDS
-  optional: true
 - !Flag
-  description: "If set, will restart each worker process once their\ntests are done,\
-    \ this helps control memory leaks from\nkilling the system. [NOSE_PROCESS_RESTARTWORKER]"
+  optional: true
   synonyms:
   - --process-restartworker
+  description: "If set, will restart each worker process once their\ntests are done,\
+    \ this helps control memory leaks from\nkilling the system. [NOSE_PROCESS_RESTARTWORKER]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Enable plugin Xunit: This plugin provides test results\nin the standard\
-    \ XUnit XML format. [NOSE_WITH_XUNIT]"
+  optional: true
   synonyms:
   - --with-xunit
+  description: "Enable plugin Xunit: This plugin provides test results\nin the standard\
+    \ XUnit XML format. [NOSE_WITH_XUNIT]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Path to xml file to store the xunit report in. Default\nis nosetests.xml\
-    \ in the working directory\n[NOSE_XUNIT_FILE]"
+  optional: true
   synonyms:
   - --xunit-file
+  description: "Path to xml file to store the xunit report in. Default\nis nosetests.xml\
+    \ in the working directory\n[NOSE_XUNIT_FILE]"
   args: !SimpleFlagArg
     name: FILE
-  optional: true
 - !Flag
-  description: "Name of the testsuite in the xunit xml, generated by\nplugin. Default\
-    \ test suite name is nosetests."
+  optional: true
   synonyms:
   - --xunit-testsuite-name
+  description: "Name of the testsuite in the xunit xml, generated by\nplugin. Default\
+    \ test suite name is nosetests."
   args: !SimpleFlagArg
     name: PACKAGE
-  optional: true
 - !Flag
-  description: "Enable plugin AllModules: Collect tests from all\npython modules.\
-    \  [NOSE_ALL_MODULES]"
+  optional: true
   synonyms:
   - --all-modules
+  description: "Enable plugin AllModules: Collect tests from all\npython modules.\
+    \  [NOSE_ALL_MODULES]"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Enable collect-only:  Collect and output test names\nonly, don't run\
-    \ any tests.  [COLLECT_ONLY]\n"
+  optional: true
   synonyms:
   - --collect-only
+  description: "Enable collect-only:  Collect and output test names\nonly, don't run\
+    \ any tests.  [COLLECT_ONLY]\n"
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: Output nose version and exit
+  optional: true
   synonyms:
   - -V
   - --version
+  description: Output nose version and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "Usage: nosetests-2.7 [options]\n\nOptions:\n  -h, --help            show\
   \ this help message and exit\n  -V, --version         Output nose version and exit\n\
   \  -p, --plugins         Output list of available plugins and exit. Combine\n  \
@@ -724,3 +724,4 @@ help_text: "Usage: nosetests-2.7 [options]\n\nOptions:\n  -h, --help            
   \  [COLLECT_ONLY]\n"
 generated_using:
 - --help
+docker_image:

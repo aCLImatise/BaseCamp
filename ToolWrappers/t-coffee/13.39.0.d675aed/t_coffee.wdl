@@ -29,13 +29,11 @@ task TCoffee {
     Boolean? seq_source
     Boolean? new_tree
     Boolean? tree
-    Boolean? use_tree
     Boolean? tree_mode
     Boolean? distance_matrix_mode
     Boolean? distance_matrix_sim_mode
     Boolean? outfile
     Boolean? s_aln_html
-    Boolean? in_file
     Boolean? matrix
     Boolean? profile_mode
     Boolean? profile_comparison
@@ -46,11 +44,15 @@ task TCoffee {
     Boolean? in_order
     Boolean? seqno_s
     Boolean? case
+    Boolean? ulimit
+    Boolean? max_n_seq
+    Boolean? maxlen
     Boolean? weight
     Boolean? seq_weight
     Boolean? method_evaluate_mode
     Boolean? color_mode
     Boolean? evaluate_mode
+    Boolean? clean_evaluate_mode
     Boolean? pdb_blast_server
     Boolean? blast
     Boolean? blast_server
@@ -63,9 +65,11 @@ task TCoffee {
     Boolean? align_pdb_has_ch_mode
     Boolean? external_aligner
     Boolean? msa_mode
+    Boolean? et_mode
     Boolean? master
     Boolean? trim_file
     Boolean? seq_to_keep
+    Boolean? multi_core
     Boolean? lib_list
     Boolean? tip
     Boolean? rna_lib
@@ -106,13 +110,11 @@ task TCoffee {
       ~{if (seq_source) then "-seq_source" else ""} \
       ~{if (new_tree) then "-newtree" else ""} \
       ~{if (tree) then "-tree" else ""} \
-      ~{if (use_tree) then "-usetree" else ""} \
       ~{if (tree_mode) then "-tree_mode" else ""} \
       ~{if (distance_matrix_mode) then "-distance_matrix_mode" else ""} \
       ~{if (distance_matrix_sim_mode) then "-distance_matrix_sim_mode" else ""} \
       ~{if (outfile) then "-outfile" else ""} \
       ~{if (s_aln_html) then "-output" else ""} \
-      ~{if (in_file) then "-infile" else ""} \
       ~{if (matrix) then "-matrix" else ""} \
       ~{if (profile_mode) then "-profile_mode" else ""} \
       ~{if (profile_comparison) then "-profile_comparison" else ""} \
@@ -123,11 +125,15 @@ task TCoffee {
       ~{if (in_order) then "-inorder" else ""} \
       ~{if (seqno_s) then "-seqnos" else ""} \
       ~{if (case) then "-case" else ""} \
+      ~{if (ulimit) then "-ulimit" else ""} \
+      ~{if (max_n_seq) then "-maxnseq" else ""} \
+      ~{if (maxlen) then "-maxlen" else ""} \
       ~{if (weight) then "-weight" else ""} \
       ~{if (seq_weight) then "-seq_weight" else ""} \
       ~{if (method_evaluate_mode) then "-method_evaluate_mode" else ""} \
       ~{if (color_mode) then "-color_mode" else ""} \
       ~{if (evaluate_mode) then "-evaluate_mode" else ""} \
+      ~{if (clean_evaluate_mode) then "-clean_evaluate_mode" else ""} \
       ~{if (pdb_blast_server) then "-pdb_blast_server" else ""} \
       ~{if (blast) then "-blast" else ""} \
       ~{if (blast_server) then "-blast_server" else ""} \
@@ -140,9 +146,11 @@ task TCoffee {
       ~{if (align_pdb_has_ch_mode) then "-align_pdb_hasch_mode" else ""} \
       ~{if (external_aligner) then "-external_aligner" else ""} \
       ~{if (msa_mode) then "-msa_mode" else ""} \
+      ~{if (et_mode) then "-et_mode" else ""} \
       ~{if (master) then "-master" else ""} \
       ~{if (trim_file) then "-trimfile" else ""} \
       ~{if (seq_to_keep) then "-seq_to_keep" else ""} \
+      ~{if (multi_core) then "-multi_core" else ""} \
       ~{if (lib_list) then "-lib_list" else ""} \
       ~{if (tip) then "-tip" else ""} \
       ~{if (rna_lib) then "-rna_lib" else ""} \
@@ -154,6 +162,9 @@ task TCoffee {
       ~{if (exon_boundaries) then "-exon_boundaries" else ""} \
       ~{if (error) then "--ERROR" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     full_log: "S       [0]"
     gene_pred_score: "[0]     nsd"
@@ -182,13 +193,11 @@ task TCoffee {
     seq_source: "S       [0]     ANY"
     new_tree: "W_F     [0]     default"
     tree: "W_F     [0]     NO"
-    use_tree: "R_F     [0]"
     tree_mode: "S       [0]     nj"
     distance_matrix_mode: "S       [0]     ktup"
     distance_matrix_sim_mode: "S       [0]     idmat_sim1"
     outfile: "W_F     [0]     default"
     s_aln_html: "S       [0]     aln     html"
-    in_file: "R_F     [0]"
     matrix: "S       [0]     default"
     profile_mode: "S       [0]     cw_profile_profile"
     profile_comparison: "S       [0]     profile"
@@ -199,11 +208,15 @@ task TCoffee {
     in_order: "S       [0]     aligned"
     seqno_s: "S       [0]     off"
     case: "S       [0]     keep"
+    ulimit: "D       [0]     -1"
+    max_n_seq: "D       [0]     -1"
+    maxlen: "D       [0]     -1"
     weight: "S       [0]     default"
     seq_weight: "S       [0]     no"
     method_evaluate_mode: "S       [0]     default"
     color_mode: "S       [0]     new"
     evaluate_mode: "S       [0]     triplet"
+    clean_evaluate_mode: "S       [0]     t_coffee_fast"
     pdb_blast_server: "W_F     [0]     EBI"
     blast: "W_F     [0]"
     blast_server: "W_F     [0]     EBI"
@@ -216,9 +229,11 @@ task TCoffee {
     align_pdb_has_ch_mode: "W_F     [0]     hasch_ca_trace_bubble"
     external_aligner: "S       [0]     NO"
     msa_mode: "S       [0]     tree"
+    et_mode: "S       [0]     et"
     master: "S       [0]     no"
     trim_file: "S       [0]     default"
     seq_to_keep: "S       [0]"
+    multi_core: "S       [0]     templates_jobs_relax_msa_evaluate"
     lib_list: "S       [0]"
     tip: "S       [0]     none"
     rna_lib: "S       [0]"

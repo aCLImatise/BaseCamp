@@ -14,6 +14,9 @@ task Parsecasm {
       ~{if defined(output_prefix) then ("-o " +  '"' + output_prefix + '"') else ""} \
       ~{if (no_names) then "-nonames" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_fast_a: "Do not create .fasta output"
     just_fast_a: "Only create .fasta output"

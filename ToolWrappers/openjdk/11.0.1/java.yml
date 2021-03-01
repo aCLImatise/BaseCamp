@@ -3,75 +3,234 @@ command:
 - java
 positional:
 - !Positional
-  description: ''
+  optional: false
   position: 0
   name: mainclass
-  optional: false
-- !Positional
   description: ''
+- !Positional
+  optional: true
   position: 1
   name: args...
-  optional: true
+  description: ''
 named:
 - !Flag
-  description: /<mainclass> are passed as the arguments to
+  optional: true
   synonyms:
   - -m
   - --module
+  description: /<mainclass> are passed as the arguments to
   args: !SimpleFlagArg
     name: or
-  optional: true
 - !Flag
-  description: "-classpath <class search path of directories and zip/jar files>\n\
-    --class-path <class search path of directories and zip/jar files>\nA : separated\
-    \ list of directories, JAR archives,\nand ZIP archives to search for class files.\n\
-    -p <module path>\n--module-path <module path>...\nA : separated list of directories,\
-    \ each directory\nis a directory of modules.\n--upgrade-module-path <module path>...\n\
-    A : separated list of directories, each directory\nis a directory of modules that\
-    \ replace upgradeable\nmodules in the runtime image\n--add-modules <module name>[,<module\
-    \ name>...]\nroot modules to resolve in addition to the initial module.\n<module\
-    \ name> can also be ALL-DEFAULT, ALL-SYSTEM,\nALL-MODULE-PATH.\n--list-modules\n\
-    list observable modules and exit\n-d <module name>\n--describe-module <module\
-    \ name>\ndescribe a module and exit\n--dry-run     create VM and load main class\
-    \ but do not execute main method.\nThe --dry-run option may be useful for validating\
-    \ the\ncommand-line options such as the module system configuration.\n--validate-modules\n\
-    validate all modules and exit\nThe --validate-modules option may be useful for\
-    \ finding\nconflicts and other errors with modules on the module path.\n-D<name>=<value>\n\
-    set a system property\n-verbose:[class|module|gc|jni]\nenable verbose output\n\
-    -version      print product version to the error stream and exit\n--version  \
-    \   print product version to the output stream and exit\n-showversion  print product\
-    \ version to the error stream and continue\n--show-version\nprint product version\
-    \ to the output stream and continue\n--show-module-resolution\nshow module resolution\
-    \ output during startup\n-? -h -help\nprint this help message to the error stream\n\
-    --help        print this help message to the output stream\n-X            print\
-    \ help on extra options to the error stream\n--help-extra  print help on extra\
-    \ options to the output stream\n-ea[:<packagename>...|:<classname>]\n-enableassertions[:<packagename>...|:<classname>]\n\
-    enable assertions with specified granularity\n-da[:<packagename>...|:<classname>]\n\
-    -disableassertions[:<packagename>...|:<classname>]\ndisable assertions with specified\
-    \ granularity\n-esa | -enablesystemassertions\nenable system assertions\n-dsa\
-    \ | -disablesystemassertions\ndisable system assertions\n-agentlib:<libname>[=<options>]\n\
-    load native agent library <libname>, e.g. -agentlib:jdwp\nsee also -agentlib:jdwp=help\n\
-    -agentpath:<pathname>[=<options>]\nload native agent library by full pathname\n\
-    -javaagent:<jarpath>[=<options>]\nload Java programming language agent, see java.lang.instrument\n\
-    -splash:<imagepath>\nshow splash screen with specified image\nHiDPI scaled images\
-    \ are automatically supported and used\nif available. The unscaled image filename,\
-    \ e.g. image.ext,\nshould always be passed as the argument to the -splash option.\n\
-    The most appropriate scaled image provided will be picked up\nautomatically.\n\
-    See the SplashScreen API documentation for more information\n@argument files\n\
-    one or more argument files containing options\n-disable-@files\nprevent further\
-    \ argument file expansion\n--enable-preview\nallow classes to depend on preview\
-    \ features of this release"
+  optional: true
   synonyms:
   - -cp
+  - -classpath
+  - --class-path
+  description: "A : separated list of directories, JAR archives,\nand ZIP archives\
+    \ to search for class files."
   args: !SimpleFlagArg
     name: class search path of directories and zip/jar files
+- !Flag
   optional: true
+  synonyms:
+  - -p
+  - --module-path
+  description: "...\nA : separated list of directories, each directory\nis a directory\
+    \ of modules."
+  args: !SimpleFlagArg
+    name: module path
+- !Flag
+  optional: true
+  synonyms:
+  - --upgrade-module-path
+  description: "...\nA : separated list of directories, each directory\nis a directory\
+    \ of modules that replace upgradeable\nmodules in the runtime image"
+  args: !SimpleFlagArg
+    name: module path
+- !Flag
+  optional: true
+  synonyms:
+  - --add-modules
+  description: "[,<module name>...]\nroot modules to resolve in addition to the initial\
+    \ module.\n<module name> can also be ALL-DEFAULT, ALL-SYSTEM,\nALL-MODULE-PATH."
+  args: !SimpleFlagArg
+    name: module name
+- !Flag
+  optional: true
+  synonyms:
+  - --list-modules
+  description: list observable modules and exit
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --describe-module
+  description: describe a module and exit
+  args: !SimpleFlagArg
+    name: module name
+- !Flag
+  optional: true
+  synonyms:
+  - --dry-run
+  description: "create VM and load main class but do not execute main method.\nThe\
+    \ --dry-run option may be useful for validating the\ncommand-line options such\
+    \ as the module system configuration."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --validate-modules
+  description: "validate all modules and exit\nThe --validate-modules option may be\
+    \ useful for finding\nconflicts and other errors with modules on the module path."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  description: "<name>=<value>\nset a system property"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -verbose
+  description: ":[class|module|gc|jni]\nenable verbose output"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -version
+  description: print product version to the error stream and exit
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -showversion
+  description: print product version to the error stream and continue
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --show-version
+  description: print product version to the output stream and continue
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --show-module-resolution
+  description: show module resolution output during startup
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -X
+  description: print help on extra options to the error stream
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --help-extra
+  description: print help on extra options to the output stream
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ea
+  description: '[:<packagename>...|:<classname>]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -enableassertions
+  description: "[:<packagename>...|:<classname>]\nenable assertions with specified\
+    \ granularity"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -da
+  description: '[:<packagename>...|:<classname>]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -disableassertions
+  description: "[:<packagename>...|:<classname>]\ndisable assertions with specified\
+    \ granularity"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -esa
+  - -enablesystemassertions
+  description: enable system assertions
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -dsa
+  - -disablesystemassertions
+  description: disable system assertions
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -agentlib
+  description: ":<libname>[=<options>]\nload native agent library <libname>, e.g.\
+    \ -agentlib:jdwp\nsee also -agentlib:jdwp=help"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -agentpath
+  description: ":<pathname>[=<options>]\nload native agent library by full pathname"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -javaagent
+  description: ":<jarpath>[=<options>]\nload Java programming language agent, see\
+    \ java.lang.instrument"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -splash
+  description: ":<imagepath>\nshow splash screen with specified image\nHiDPI scaled\
+    \ images are automatically supported and used\nif available. The unscaled image\
+    \ filename, e.g. image.ext,\nshould always be passed as the argument to the -splash\
+    \ option.\nThe most appropriate scaled image provided will be picked up\nautomatically.\n\
+    See the SplashScreen API documentation for more information"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -disable-@files
+  description: prevent further argument file expansion
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --enable-preview
+  description: allow classes to depend on preview features of this release
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: print this help message to the output stream
+  args: !EmptyFlagArg {}
 usage_flag:
-version_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: print product version to the output stream and exit
+  args: !EmptyFlagArg {}
 help_text: "Usage: java [options] <mainclass> [args...]\n           (to execute a\
   \ class)\n   or  java [options] -jar <jarfile> [args...]\n           (to execute\
   \ a jar file)\n   or  java [options] -m <module>[/<mainclass>] [args...]\n     \
@@ -133,3 +292,4 @@ help_text: "Usage: java [options] <mainclass> [args...]\n           (to execute 
   \ option, you can use --<name>=<value> or\n--<name> <value>.\n\n"
 generated_using:
 - --help
+docker_image:

@@ -30,6 +30,9 @@ task SvtkVcf2bed {
       ~{if (no_unresolved) then "--no-unresolved" else ""} \
       ~{if (simple_sinks) then "--simple-sinks" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     no_samples: "Don't include comma-delimited list of called samples\\nfor each variant."
     info: "INFO field to include as column in output. May be\\nspecified more than once. To include all INFO fields,\\nspecify `--info ALL`. INFO fields are reported in the\\norder in which they are requested. If ALL INFO fields\\nare requested, they are reported in the order in which\\nthey appear in the VCF header."

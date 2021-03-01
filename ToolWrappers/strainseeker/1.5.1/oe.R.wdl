@@ -4,6 +4,9 @@ task OeR {
   command <<<
     oe_R
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

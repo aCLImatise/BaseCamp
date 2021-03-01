@@ -14,6 +14,9 @@ task VirmetTidytable {
       ~{tidy_table} \
       ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     outdir: "path to run results directory (virmet_output_...)"
     vir_met: ""

@@ -9,7 +9,7 @@ inputs:
     \ all Google Compute Engine zones\nglobally, and is disjoint from other Cloud\
     \ Dataproc regions. Overrides\nthe default dataproc/region property value for\
     \ this command invocation."
-  type: string
+  type: string?
   inputBinding:
     prefix: --region
 - id: in_clusters
@@ -31,6 +31,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - gcloud

@@ -10,6 +10,9 @@ task PdbClusterZip {
       ~{if defined(config) then ("--config " +  '"' + config + '"') else ""} \
       ~{if defined(output_pdb_zip_path) then ("--output_pdb_zip_path " +  '"' + output_pdb_zip_path + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     config: "This file can be a YAML file, JSON file or JSON string"
     output_pdb_zip_path: "Output ZIP file name\\n"

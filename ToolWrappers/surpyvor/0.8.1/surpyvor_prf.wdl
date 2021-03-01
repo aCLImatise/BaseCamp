@@ -28,6 +28,9 @@ task SurpyvorPrf {
       ~{if (matrix) then "--matrix" else ""} \
       ~{if (venn) then "--venn" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose: "Print out more information while running."
     truth: "vcf containing truth set"

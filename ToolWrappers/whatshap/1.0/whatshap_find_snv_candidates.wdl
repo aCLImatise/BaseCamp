@@ -28,6 +28,9 @@ task WhatshapFindSnvCandidates {
       ~{if (nano_pore) then "--nanopore" else ""} \
       ~{if (illumina) then "--illumina" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_abs: "Minimum absolute ALT depth to call a SNP (default: 3)."
     min_rel: "Minimum relative ALT depth to call a SNP (default:\\n0.25)."

@@ -44,26 +44,29 @@ task Utrrnaseq {
       ~{if (zero_coverage) then "--zero-coverage" else ""} \
       ~{if (format_examples) then "--format-examples" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    long: "-short option   data type       description"
-    in_scaffold_file: "-G              s               scaffold file in FASTA-format. Required."
-    in_coding_region_file: "-C              s               file with start and stop features in GTF/GFF format. Required."
-    in_intron_file: "-I              s               intron file in GTF/GFF format. Required."
-    in_wiggle_file: "-W              s               wiggle file in WIG-format. Required."
-    in_repeat_file: "-R              s               repeat file in GTF/GFF format."
-    out_file_name: "-o              s               output filename. Optional. Default Value: 'UTRs.gff'"
-    smoothing_window_size: "-w              i               smoothing window size. Optional. Default Value: 150"
-    read_length: "-r              i               read length of RNA-Seq data. Optional. Default Value: 150"
-    limit: "-l              i               maximal distance from computation start. Optional. Default Value: 5000"
-    drop_window_size: "-v              i               window size after UTR end. Optional. Default Value: 50"
-    minimum_length: "-n              i               minimal UTR length. Optional. Default Value: 2"
-    minimum_average_coverage: "-c              i               minimal average UTR coverage. Optional. Default Value: 10"
-    percent_window: "-p              d               percentage of window coverage after UTR. Optional. Default Value: 0.6"
-    percent_intron: "-i              d               percentage of coverage in introns. Optional. Default Value: 0.5"
-    percent_multiplicity: "-m              d               percentage of multiplicity of introns. Optional. Default Value: 0.1"
-    splices_sites: "-s              s               accepted splice sites. If 'all' is chosen, no splice site filtering is done.Optional. Default Value: GT_AG"
-    zero_coverage: "-z              none            Determination of UTRs based on zero coverage. Optional. Default Value: false"
-    format_examples: "-f              none            Only print format examples of input files. Optional. Default Value: false"
+    long: "data type       description"
+    in_scaffold_file: "s               scaffold file in FASTA-format. Required."
+    in_coding_region_file: "s               file with start and stop features in GTF/GFF format. Required."
+    in_intron_file: "s               intron file in GTF/GFF format. Required."
+    in_wiggle_file: "s               wiggle file in WIG-format. Required."
+    in_repeat_file: "s               repeat file in GTF/GFF format."
+    out_file_name: "s               output filename. Optional. Default Value: 'UTRs.gff'"
+    smoothing_window_size: "i               smoothing window size. Optional. Default Value: 150"
+    read_length: "i               read length of RNA-Seq data. Optional. Default Value: 150"
+    limit: "i               maximal distance from computation start. Optional. Default Value: 5000"
+    drop_window_size: "i               window size after UTR end. Optional. Default Value: 50"
+    minimum_length: "i               minimal UTR length. Optional. Default Value: 2"
+    minimum_average_coverage: "i               minimal average UTR coverage. Optional. Default Value: 10"
+    percent_window: "d               percentage of window coverage after UTR. Optional. Default Value: 0.6"
+    percent_intron: "d               percentage of coverage in introns. Optional. Default Value: 0.5"
+    percent_multiplicity: "d               percentage of multiplicity of introns. Optional. Default Value: 0.1"
+    splices_sites: "s               accepted splice sites. If 'all' is chosen, no splice site filtering is done.Optional. Default Value: GT_AG"
+    zero_coverage: "none            Determination of UTRs based on zero coverage. Optional. Default Value: false"
+    format_examples: "none            Only print format examples of input files. Optional. Default Value: false"
   }
   output {
     File out_stdout = stdout()

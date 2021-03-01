@@ -3,12 +3,12 @@ id: addFeatureToMatrix.cwl
 inputs:
 - id: in_matrix
   doc: 'deeptools matrix (default: None)'
-  type: string
+  type: string?
   inputBinding:
     prefix: --matrix
 - id: in_output
   doc: 'output matrix (default: None)'
-  type: string
+  type: string?
   inputBinding:
     prefix: --output
 - id: in_feature_dot_tables
@@ -20,18 +20,18 @@ inputs:
 - id: in_annotation_feature
   doc: "annotation file can be filtered by a feature such as\ngene, exon or transcript\
     \ (default: None)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --annotationFeature
 - id: in_filtered_genome_gtf_output_file
   doc: "saving filtered annotation file if --annotationFeature\n(default: None)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --filteredGenomeGtfOutputFile
 - id: in_genome_gtf
   doc: "genome annotation (gtf) to map peaks to closest gene.\nWill be filtered through\
     \ '--annotationFeature'\n(default: None)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --genomeGtf
 - id: in_feature_names
@@ -42,24 +42,25 @@ inputs:
     prefix: --featureNames
 - id: in_feature_id_column
   doc: "name of the column includes ids/names (default:\nGeneID)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --featureIdColumn
 - id: in_reference_point
   doc: "If closest TSS or TES is needed, otherwise closest\ngene body will be found\
     \ (default: None)"
-  type: string
+  type: string?
   inputBinding:
     prefix: --referencePoint
 - id: in_closest_genes_output
   doc: "A bed file to save the closest genes (default: None)\n"
-  type: File
+  type: File?
   inputBinding:
     prefix: --closestGenesOutput
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - addFeatureToMatrix

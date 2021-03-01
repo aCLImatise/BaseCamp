@@ -14,32 +14,32 @@ inputs:
     prefix: --genome-locations
 - id: in_num_regions
   doc: 'Number of regions to plot. Default: 10'
-  type: long
+  type: long?
   inputBinding:
     prefix: --num-regions
 - id: in_num_reads
   doc: 'Number of reads to plot. Default: 5'
-  type: long
+  type: long?
   inputBinding:
     prefix: --num-reads
 - id: in_num_obs
   doc: 'Number of observations to plot. Default: 500'
-  type: long
+  type: long?
   inputBinding:
     prefix: --num-obs
 - id: in_pdf_filename
   doc: "PDF filename to store plot(s). Default:\ntombo_results.multi_corrected.pdf"
-  type: File
+  type: File?
   inputBinding:
     prefix: --pdf-filename
 - id: in_include_original_base_calls
   doc: Include original basecalls in plots.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --include-original-basecalls
 - id: in_corrected_group
   doc: "FAST5 group created by resquiggle command. Default:\nRawGenomeCorrected_000"
-  type: long
+  type: long?
   inputBinding:
     prefix: --corrected-group
 - id: in_base_call_subgroups
@@ -50,13 +50,14 @@ inputs:
     prefix: --basecall-subgroups
 - id: in_quiet
   doc: Don't print status information.
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --quiet
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - tombo

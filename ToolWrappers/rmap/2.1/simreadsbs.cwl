@@ -3,62 +3,62 @@ id: simreadsbs.cwl
 inputs:
 - id: in_output
   doc: 'Name of output file (default: stdout)'
-  type: File
+  type: File?
   inputBinding:
     prefix: -output
 - id: in_reads
   doc: number of reads to simulate
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -reads
 - id: in_width
   doc: width of reads to simulate
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -width
 - id: in_err
   doc: maximum number of simulated sequencing errors
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -err
 - id: in_verbose
   doc: print more run info
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -verbose
 - id: in_fast_q
   doc: write FASTQ format reads
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -fastq
 - id: in_prob
   doc: prb output file
-  type: File
+  type: File?
   inputBinding:
     prefix: -prob
 - id: in_meth
   doc: rate of CpG methylation
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -meth
 - id: in_bs
   doc: rate of bisulfite conversion
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -bs
 - id: in_ag
   doc: generate A/G wildcard reads
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -ag
 - id: in_seed
   doc: random number seed
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -seed
 - id: in_about
   doc: print about message
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -about
 - id: in_fast_a_chrom_files
@@ -72,14 +72,15 @@ outputs:
   type: stdout
 - id: out_output
   doc: 'Name of output file (default: stdout)'
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_output)
 - id: out_prob
   doc: prb output file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_prob)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - simreadsbs

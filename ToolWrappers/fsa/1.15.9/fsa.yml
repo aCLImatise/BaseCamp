@@ -1,0 +1,480 @@
+!Command
+command:
+- fsa
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --log
+  description: turn on diagnostic logging (-loghelp shows syntax)
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --logfile
+  description: log to file
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - --logcopy
+  description: log to file and standard error
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - --logtime
+  description: timestamp standard error (logfile stamped automatically)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --logxml
+  description: (default) add XML timestamps (--nologxml to disable)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --logerr
+  description: log on standard error (default)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --stockholm
+  description: output Stockholm alignments (default is multi-FASTA format)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gui
+  description: record alignment & statistical model for interactive Java GUI
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --write-params
+  description: write learned emission distributions (substitution matrices) to disk
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --write-posteriors
+  description: write learned pairwise posterior alignment probability matrices to
+    disk
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --nucprot
+  description: align input nucleotide sequences (must all be nucleotide) in protein
+    space
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --indel2
+  description: (default) use two sets of indel states in Pair HMM (use --noindel2
+    to use 1 set only)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gapopen1
+  description: initial gap-open probability (for set 1 of indel states)
+  args: !SimpleFlagArg
+    name: real
+- !Flag
+  optional: true
+  synonyms:
+  - --gapextend1
+  description: initial gap-extend probability (for set 1 of indel states)
+  args: !SimpleFlagArg
+    name: real
+- !Flag
+  optional: true
+  synonyms:
+  - --gapopen2
+  description: initial gap-open probability (for set 2 of indel states)
+  args: !SimpleFlagArg
+    name: real
+- !Flag
+  optional: true
+  synonyms:
+  - --gapextend2
+  description: initial gap-extend probability (for set 2 of indel states)
+  args: !SimpleFlagArg
+    name: real
+- !Flag
+  optional: true
+  synonyms:
+  - --model
+  description: 'initial substitution model: 0 = Jukes-Cantor, 1 = Tamura-Nei / BLOSUM62-like
+    (proteins) (default is 1)'
+  args: !SimpleFlagArg
+    name: integer
+- !Flag
+  optional: true
+  synonyms:
+  - --time
+  description: Jukes-Cantor/Tamura-Nei evolutionary time parameter (default is 0.4)
+  args: !SimpleFlagArg
+    name: real
+- !Flag
+  optional: true
+  synonyms:
+  - --alphar
+  description: 'Tamura-Nei rate alpha_R (transition: purine) (default is 1.3)'
+  args: !SimpleFlagArg
+    name: real
+- !Flag
+  optional: true
+  synonyms:
+  - --alphay
+  description: 'Tamura-Nei rate alpha_Y (transition: pyrimidine) (default is 1.3)'
+  args: !SimpleFlagArg
+    name: real
+- !Flag
+  optional: true
+  synonyms:
+  - --beta
+  description: Tamura-Nei rate beta (transversion) (default is 1)
+  args: !SimpleFlagArg
+    name: real
+- !Flag
+  optional: true
+  synonyms:
+  - --load-probs
+  description: load pairwise posterior probabilities from a file rather than performing
+    inference with Pair HMM
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --learngap
+  description: estimate indel probabilities for each pair of sequences (--nolearngap
+    to disable)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --learnemit-bypair
+  description: (default for DNA and RNA) estimate emission probabilities for each
+    pair of sequences (--nolearnemit-bypair to disable)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --learnemit-all
+  description: (default for proteins) estimate emission probabilities averaged over
+    all sequences (--nolearnemit-all to disable)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --nolearn
+  description: disable ALL parameter learning (use ProbCons defaults)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --regularize
+  description: (default) regularize learned emission and gap probabilities with Dirichlet
+    prior (--noregularize to disable)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --regularization-gapscale
+  description: scaling factor for transition prior
+  args: !SimpleFlagArg
+    name: real
+- !Flag
+  optional: true
+  synonyms:
+  - --regularization-emitscale
+  description: scaling factor for emission Dirichlet prior
+  args: !SimpleFlagArg
+    name: real
+- !Flag
+  optional: true
+  synonyms:
+  - --mininc
+  description: minimum fractional increase in log-likelihood per round of EM (default
+    is 0.1)
+  args: !SimpleFlagArg
+    name: real
+- !Flag
+  optional: true
+  synonyms:
+  - --maxrounds
+  description: maximum number of iterations of EM (default is 3)
+  args: !SimpleFlagArg
+    name: integer
+- !Flag
+  optional: true
+  synonyms:
+  - --mingapdata
+  description: minimum amount of sequence data (# of aligned pairs of characters)
+    for training gap probs
+  args: !SimpleFlagArg
+    name: integer
+- !Flag
+  optional: true
+  synonyms:
+  - --minemitdata
+  description: minimum amount of sequence data (# of aligned pairs of characters)
+    for training emission probs
+  args: !SimpleFlagArg
+    name: integer
+- !Flag
+  optional: true
+  synonyms:
+  - --refinement
+  description: number of iterative refinement steps (default is unlimited; 0 for none)
+  args: !SimpleFlagArg
+    name: integer
+- !Flag
+  optional: true
+  synonyms:
+  - --maxsn
+  description: maximum sensitivity (instead of highest accuracy)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gapfactor
+  description: gap factor; 0 for highest sensitivity (the internal effective minimum
+    is 0.01); >1 for higher specificity (default is 1)
+  args: !SimpleFlagArg
+    name: real
+- !Flag
+  optional: true
+  synonyms:
+  - --dynamicweights
+  description: (default) enable dynamic edge re-weighting (--nodynamicweights to disable)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --treeweights
+  description: weights for sequence pairs based on a tree
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --require-homology
+  description: require that there be some detectable homology between all input sequences
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --fast
+  description: 'fast alignment: use 5 * Erdos-Renyi threshold percent of sequence
+    pairs for alignment and 2 * for learning'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --refalign
+  description: alignment to a reference sequence only (reference must be first sequence
+    in file)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --mst-min
+  description: build --mst-min minimum spanning trees on input sequences for pairwise
+    comparisons (default is 3)
+  args: !SimpleFlagArg
+    name: integer
+- !Flag
+  optional: true
+  synonyms:
+  - --mst-max
+  description: build --mst-max maximum spanning trees on input sequences for pairwise
+    comparisons (default is 0)
+  args: !SimpleFlagArg
+    name: integer
+- !Flag
+  optional: true
+  synonyms:
+  - --mst-palm
+  description: build --mst-palm minimum spanning palm trees on input sequences for
+    pairwise comparisons (default is 0)
+  args: !SimpleFlagArg
+    name: integer
+- !Flag
+  optional: true
+  synonyms:
+  - --degree
+  description: use --degree number of pairwise comparisons between closest sequences
+    (default is 0)
+  args: !SimpleFlagArg
+    name: integer
+- !Flag
+  optional: true
+  synonyms:
+  - --kmer
+  description: length of k-mers to use when determining sequence similarity
+  args: !SimpleFlagArg
+    name: integer
+- !Flag
+  optional: true
+  synonyms:
+  - --alignment-fraction
+  description: randomized fraction of all (n choose 2) pairs of sequences to consider
+    during alignment inference (default is 1)
+  args: !SimpleFlagArg
+    name: real
+- !Flag
+  optional: true
+  synonyms:
+  - --alignment-number
+  description: total number of (randomized) pairs of sequences to consider during
+    alignment inference
+  args: !SimpleFlagArg
+    name: integer
+- !Flag
+  optional: true
+  synonyms:
+  - --mercator
+  description: input Mercator constraints
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --maxram
+  description: maximum RAM to use (in megabytes) (default is 12809)
+  args: !SimpleFlagArg
+    name: integer
+- !Flag
+  optional: true
+  synonyms:
+  - --bandwidth
+  description: banding (default is no banding)
+  args: !SimpleFlagArg
+    name: integer
+- !Flag
+  optional: true
+  synonyms:
+  - --minprob
+  description: minimum posterior probability to store (default is 0.01)
+  args: !SimpleFlagArg
+    name: real
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - -help
+  - --help
+  description: display this message
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: display version
+  args: !EmptyFlagArg {}
+help_text: "fsa - Distance-based alignment of DNA, RNA and proteins.\nUsage: fsa [options]\
+  \ <sequence file(s)>\n\nCommand-line options (righthandmost options take precedence)\n\
+  ------------------------------------------------------------\n-h,-help,--help  \
+  \                 display this message\n-v,--version                      display\
+  \ version\n\nLogging options\n---------------\n--log <string>                  \
+  \  turn on diagnostic logging (-loghelp shows syntax)\n--logfile <file>        \
+  \          log to file\n--logcopy <file>                  log to file and standard\
+  \ error\n--logtime                         timestamp standard error (logfile stamped\
+  \ automatically)\n--logxml                          (default) add XML timestamps\
+  \ (--nologxml to disable)\n--logerr                          log on standard error\
+  \ (default)\n\nOutput options\n--------------\n--stockholm                     \
+  \  output Stockholm alignments (default is multi-FASTA format)\n--gui          \
+  \                   record alignment & statistical model for interactive Java GUI\n\
+  --write-params                    write learned emission distributions (substitution\
+  \ matrices) to disk\n--write-posteriors                write learned pairwise posterior\
+  \ alignment probability matrices to disk\n\nParallelization options\n-----------------------\n\
+  (Parallelization not available; please see the manual for more information.)\n\n\
+  Database options\n----------------\n(Database not available; please see the manual\
+  \ for more information.)\n\nPair HMM model options\n----------------------\n--nucprot\
+  \                         align input nucleotide sequences (must all be nucleotide)\
+  \ in protein space\n--indel2                          (default) use two sets of\
+  \ indel states in Pair HMM (use --noindel2 to use 1 set only)\n--gapopen1 <real>\
+  \                 initial gap-open probability (for set 1 of indel states)\n--gapextend1\
+  \ <real>               initial gap-extend probability (for set 1 of indel states)\n\
+  --gapopen2 <real>                 initial gap-open probability (for set 2 of indel\
+  \ states)\n--gapextend2 <real>               initial gap-extend probability (for\
+  \ set 2 of indel states)\n--model <integer>                 initial substitution\
+  \ model: 0 = Jukes-Cantor, 1 = Tamura-Nei / BLOSUM62-like (proteins) (default is\
+  \ 1)\n--time <real>                     Jukes-Cantor/Tamura-Nei evolutionary time\
+  \ parameter (default is 0.4)\n--alphar <real>                   Tamura-Nei rate\
+  \ alpha_R (transition: purine) (default is 1.3)\n--alphay <real>               \
+  \    Tamura-Nei rate alpha_Y (transition: pyrimidine) (default is 1.3)\n--beta <real>\
+  \                     Tamura-Nei rate beta (transversion) (default is 1)\n--load-probs\
+  \ <string>             load pairwise posterior probabilities from a file rather\
+  \ than performing inference with Pair HMM\n\nParameter estimation options\n----------------------------\n\
+  --learngap                        estimate indel probabilities for each pair of\
+  \ sequences (--nolearngap to disable)\n--learnemit-bypair                (default\
+  \ for DNA and RNA) estimate emission probabilities for each pair of sequences (--nolearnemit-bypair\
+  \ to disable)\n--learnemit-all                   (default for proteins) estimate\
+  \ emission probabilities averaged over all sequences (--nolearnemit-all to disable)\n\
+  --nolearn                         disable ALL parameter learning (use ProbCons defaults)\n\
+  --regularize                      (default) regularize learned emission and gap\
+  \ probabilities with Dirichlet prior (--noregularize to disable)\n--regularization-gapscale\
+  \ <real>  scaling factor for transition prior\n--regularization-emitscale <real>\
+  \ scaling factor for emission Dirichlet prior\n--mininc <real>                 \
+  \  minimum fractional increase in log-likelihood per round of EM (default is 0.1)\n\
+  --maxrounds <integer>             maximum number of iterations of EM (default is\
+  \ 3)\n--mingapdata <integer>            minimum amount of sequence data (# of aligned\
+  \ pairs of characters) for training gap probs\n--minemitdata <integer>         \
+  \  minimum amount of sequence data (# of aligned pairs of characters) for training\
+  \ emission probs\n\nMultiple alignment options: sequence annealing\n----------------------------------------------\n\
+  --refinement <integer>            number of iterative refinement steps (default\
+  \ is unlimited; 0 for none)\n--maxsn                           maximum sensitivity\
+  \ (instead of highest accuracy)\n--gapfactor <real>                gap factor; 0\
+  \ for highest sensitivity (the internal effective minimum is 0.01); >1 for higher\
+  \ specificity (default is 1)\n--dynamicweights                  (default) enable\
+  \ dynamic edge re-weighting (--nodynamicweights to disable)\n--treeweights <string>\
+  \            weights for sequence pairs based on a tree\n--require-homology    \
+  \            require that there be some detectable homology between all input sequences\n\
+  \nAlignment speedup options: many sequences\n-----------------------------------------\n\
+  --fast                            fast alignment: use 5 * Erdos-Renyi threshold\
+  \ percent of sequence pairs for alignment and 2 * for learning\n--refalign     \
+  \                   alignment to a reference sequence only (reference must be first\
+  \ sequence in file)\n--mst-min <integer>               build --mst-min minimum spanning\
+  \ trees on input sequences for pairwise comparisons (default is 3)\n--mst-max <integer>\
+  \               build --mst-max maximum spanning trees on input sequences for pairwise\
+  \ comparisons (default is 0)\n--mst-palm <integer>              build --mst-palm\
+  \ minimum spanning palm trees on input sequences for pairwise comparisons (default\
+  \ is 0)\n--degree <integer>                use --degree number of pairwise comparisons\
+  \ between closest sequences (default is 0)\n--kmer <integer>                  length\
+  \ of k-mers to use when determining sequence similarity\n--alignment-fraction <real>\
+  \       randomized fraction of all (n choose 2) pairs of sequences to consider during\
+  \ alignment inference (default is 1)\n--alignment-number <integer>      total number\
+  \ of (randomized) pairs of sequences to consider during alignment inference\n\n\
+  Alignment speedup options: long sequences (MUMmer)\n--------------------------------------------------\n\
+  (MUMmer not available; please see the manual for more information.)\n\nAlignment\
+  \ speedup options: long sequences (exonerate)\n-----------------------------------------------------\n\
+  (exonerate not available; please see the manual for more information.)\n\nAlignment\
+  \ speedup options: long sequences (Mercator)\n----------------------------------------------------\n\
+  --mercator <string>               input Mercator constraints\n\nMemory savings\n\
+  --------------\n--maxram <integer>                maximum RAM to use (in megabytes)\
+  \ (default is 12809)\n--bandwidth <integer>             banding (default is no banding)\n\
+  --minprob <real>                  minimum posterior probability to store (default\
+  \ is 0.01)\n\n\nInput sequence file(s) must be in FASTA format.\n\nFSA attempts\
+  \ to automatically figure out appropriate settings;\nyou can override its automated\
+  \ choices with the above options.\n\nPlease contact the FSA team at fsa@math.berkeley.edu\
+  \ with any questions or comments.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/fsa:1.15.9--h8b12597_1

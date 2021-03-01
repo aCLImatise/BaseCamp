@@ -5,27 +5,31 @@ command:
 positional: []
 named:
 - !Flag
-  description: Input file. Assumes "stdin" if omitted.
+  optional: true
   synonyms:
   - -i
+  description: Input file. Assumes "stdin" if omitted.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Specify the columns (1-based) for the grouping.\nThe columns must\
-    \ be comma separated.\n- Default: 1,2,3"
+  optional: true
   synonyms:
   - -g
   - -grp
+  description: "Specify the columns (1-based) for the grouping.\nThe columns must\
+    \ be comma separated.\n- Default: 1,2,3"
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Specify the column (1-based) that should be summarized.\n- Required."
+  optional: true
   synonyms:
   - -c
   - -opCols
+  description: "Specify the column (1-based) that should be summarized.\n- Required."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -o
+  - -ops
   description: "Specify the operation that should be applied to opCol.\nValid operations:\n\
     sum, count, count_distinct, min, max,\nmean, median, mode, antimode,\nstdev, sstdev\
     \ (sample standard dev.),\ncollapse (i.e., print a comma separated list (duplicates\
@@ -42,58 +46,54 @@ named:
     \ sum,mean,count\" will give the sum of column 5,\nthe mean of column 4, and the\
     \ count of column 6.\nThe order of output columns will match the ordering given\
     \ in the command."
-  synonyms:
-  - -o
-  - -ops
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Print all columns from input file.  The first line in the group is\
-    \ used.\nDefault: print only grouped columns."
+  optional: true
   synonyms:
   - -full
+  description: "Print all columns from input file.  The first line in the group is\
+    \ used.\nDefault: print only grouped columns."
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Input file has a header line - the first line will be ignored.
+  optional: true
   synonyms:
   - -inheader
+  description: Input file has a header line - the first line will be ignored.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -outheader
   description: "Print header line in the output, detailing the column names.\nIf the\
     \ input file has headers (-inheader), the output file\nwill use the input's column\
     \ names.\nIf the input file has no headers, the output file\nwill use \"col_1\"\
     , \"col_2\", etc. as the column names."
-  synonyms:
-  - -outheader
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: same as '-inheader -outheader'
+  optional: true
   synonyms:
   - -header
+  description: same as '-inheader -outheader'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: Group values regardless of upper/lower case.
+  optional: true
   synonyms:
   - -ignorecase
+  description: Group values regardless of upper/lower case.
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: 'Sets the decimal precision for output (Default: 5)'
+  optional: true
   synonyms:
   - -prec
+  description: 'Sets the decimal precision for output (Default: 5)'
   args: !EmptyFlagArg {}
-  optional: true
 - !Flag
-  description: "Specify a custom delimiter for the collapse operations.\n- Example:\
-    \ -delim \"|\"\n- Default: \",\"."
+  optional: true
   synonyms:
   - -delim
+  description: "Specify a custom delimiter for the collapse operations.\n- Example:\
+    \ -delim \"|\"\n- Default: \",\"."
   args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
@@ -147,3 +147,4 @@ help_text: "\nTool:    bedtools groupby \nVersion: v2.29.2\nSummary: Summarizes 
   \ is assumed to come from stdin.\n\n"
 generated_using:
 - --help
+docker_image:

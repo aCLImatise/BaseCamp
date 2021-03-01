@@ -4,6 +4,9 @@ task Bamexplode {
   command <<<
     bamexplode
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

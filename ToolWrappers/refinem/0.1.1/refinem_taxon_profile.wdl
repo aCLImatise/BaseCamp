@@ -32,6 +32,9 @@ task RefinemTaxonProfile {
       ~{if defined(cpus) then ("--cpus " +  '"' + cpus + '"') else ""} \
       ~{if (silent) then "--silent" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     per_to_classify: "minimum percentage of genes to assign a scaffold to a\\ntaxonomic group (default: 20.0)"
     evalue: "e-value of valid hits (default: 0.001)"

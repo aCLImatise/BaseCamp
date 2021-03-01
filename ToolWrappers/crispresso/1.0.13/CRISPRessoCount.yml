@@ -4,50 +4,92 @@ command:
 positional: []
 named:
 - !Flag
-  description: "perform sgRNA enumeration from deep sequencing data-\n)          \
-    \                                   )"
+  optional: true
   synonyms:
   - -Utility
+  description: "perform sgRNA enumeration from deep sequencing data-\n)          \
+    \                                   )"
   args: !SimpleFlagArg
     name: to
-  optional: true
 - !Flag
-  description: ''
-  synonyms:
-  - -q
-  args: !SimpleFlagArg
-    name: MIN_AVERAGE_READ_QUALITY
   optional: true
-- !Flag
-  description: ''
   synonyms:
   - -r
+  - --fastq
+  description: 'fastq file (default: Fastq filename)'
   args: !SimpleFlagArg
     name: FASTQ
+- !Flag
   optional: true
+  synonyms:
+  - -q
+  - --min_average_read_quality
+  description: "Minimum average quality score (phred33) to keep a read\n(default:\
+    \ 0)"
+  args: !SimpleFlagArg
+    name: MIN_AVERAGE_READ_QUALITY
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --min_single_bp_quality
+  description: "Minimum single bp score (phred33) to keep a read\n(default: 0)"
+  args: !SimpleFlagArg
+    name: MIN_SINGLE_BP_QUALITY
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --tracrRNA
+  description: "tracr RNA sequence in each read, for single end reads\nit may necessary\
+    \ to change this parameter if the\ntracRNA is not fully sequenced, for example\
+    \ to\nGTTTTAGAG (default: GTTTTAGAGCTAGAAATAGC)"
+  args: !SimpleFlagArg
+    name: TRACRRNA
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --sgRNA_file
+  description: "sgRNA description file. The format required is one\nsgRNA per line,\
+    \ for example:AAAAAGATGATTTTTTTCTC\nAAAATATTTTTATCCCCTAA (default: None)"
+  args: !SimpleFlagArg
+    name: SGRNA_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --name
+  description: 'Output name (default: )'
+  args: !SimpleFlagArg
+    name: NAME
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output_folder
+  - -l
+  - --guide_length
+  description: "Lenght in bp to extract the sgRNA upstream of the\ntracrRNA sequence\
+    \ (default: 20)"
+  args: !SimpleFlagArg
+    name: OUTPUT_FOLDER
+- !Flag
+  optional: true
+  synonyms:
+  - --keep_intermediate
+  description: 'Keep all the intermediate files (default: False)'
+  args: !EmptyFlagArg {}
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: "show this help message and exit\n-r FASTQ, --fastq FASTQ\nfastq file\
-    \ (default: Fastq filename)\n-q MIN_AVERAGE_READ_QUALITY, --min_average_read_quality\
-    \ MIN_AVERAGE_READ_QUALITY\nMinimum average quality score (phred33) to keep a\
-    \ read\n(default: 0)\n-s MIN_SINGLE_BP_QUALITY, --min_single_bp_quality MIN_SINGLE_BP_QUALITY\n\
-    Minimum single bp score (phred33) to keep a read\n(default: 0)\n-t TRACRRNA, --tracrRNA\
-    \ TRACRRNA\ntracr RNA sequence in each read, for single end reads\nit may necessary\
-    \ to change this parameter if the\ntracRNA is not fully sequenced, for example\
-    \ to\nGTTTTAGAG (default: GTTTTAGAGCTAGAAATAGC)\n-f SGRNA_FILE, --sgRNA_file SGRNA_FILE\n\
-    sgRNA description file. The format required is one\nsgRNA per line, for example:AAAAAGATGATTTTTTTCTC\n\
-    AAAATATTTTTATCCCCTAA (default: None)\n-n NAME, --name NAME  Output name (default:\
-    \ )\n-o OUTPUT_FOLDER, --output_folder OUTPUT_FOLDER\n-l GUIDE_LENGTH, --guide_length\
-    \ GUIDE_LENGTH\nLenght in bp to extract the sgRNA upstream of the\ntracrRNA sequence\
-    \ (default: 20)\n--keep_intermediate   Keep all the intermediate files (default:\
-    \ False)\n"
+  optional: true
   synonyms:
   - -h
   - --help
+  description: show this help message and exit
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag:
 help_text: "  \n~~~CRISPRessoCount~~~\n-Utility to perform sgRNA enumeration from\
@@ -82,3 +124,4 @@ help_text: "  \n~~~CRISPRessoCount~~~\n-Utility to perform sgRNA enumeration fro
   \ False)\n"
 generated_using:
 - --help
+docker_image:

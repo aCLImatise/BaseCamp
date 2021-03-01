@@ -3,28 +3,28 @@ id: extract_reference.py.cwl
 inputs:
 - id: in_input_strand_list
   doc: 'Strand summary file containing subset (default: None)'
-  type: File
+  type: File?
   inputBinding:
     prefix: --input_strand_list
 - id: in_jobs
   doc: "Number of threads to use when processing data\n(default: 1)"
-  type: long
+  type: long?
   inputBinding:
     prefix: --jobs
 - id: in_limit
   doc: 'Limit number of reads to process (default: None)'
-  type: long
+  type: long?
   inputBinding:
     prefix: --limit
 - id: in_no_overwrite
   doc: "Whether to overwrite any output files (Default: --no-\noverwrite) (default:\
     \ False)"
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --no-overwrite
 - id: in_section
   doc: "Section to call (default: template)\n"
-  type: string
+  type: string?
   inputBinding:
     prefix: --section
 - id: in_input_folder
@@ -41,6 +41,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - extract_reference.py

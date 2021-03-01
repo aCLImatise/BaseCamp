@@ -16,6 +16,9 @@ task RestclientPassword {
       ~{username} \
       ~{password}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     rest_client: ""
     get_vertical_line_put_vertical_line_post_vertical_line_delete: ""

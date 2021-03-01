@@ -10,6 +10,9 @@ task ChainFusionSamplespy {
       ~{config_file} \
       ~{if defined(fuzzy_junction) then ("--fuzzy_junction " +  '"' + fuzzy_junction + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fuzzy_junction: "Max allowed distance in junction to be considered\\nidentical (default: 5 bp)\\n"
     config_file: "{norm_fl,count_fl}    Which count field to use for chained sample (default:\\ncount_fl)"

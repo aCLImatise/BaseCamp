@@ -10,7 +10,7 @@ task Beeml2meme {
     String add
     String and
     String default
-    File file
+    File var_file
     String http
     File matrix_file
     String print
@@ -45,7 +45,7 @@ task Beeml2meme {
       ~{add} \
       ~{and} \
       ~{default} \
-      ~{file} \
+      ~{var_file} \
       ~{http} \
       ~{matrix_file} \
       ~{print} \
@@ -80,6 +80,9 @@ task Beeml2meme {
       ~{if (print_logodds_matrix) then "-logodds" else ""} \
       ~{if defined(url) then ("-url " +  '"' + url + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bg: "file with background frequencies of letters\\ndefault: uniform background"
     pseudo: "add <total pseudocounts> times letter\\nbackground to each frequency; default: 0"
@@ -89,7 +92,7 @@ task Beeml2meme {
     add: ""
     and: ""
     default: ""
-    file: ""
+    var_file: ""
     http: ""
     matrix_file: ""
     print: ""

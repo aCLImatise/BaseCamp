@@ -16,6 +16,9 @@ task RKPpy {
       ~{if defined(h) then ("-H " +  '"' + h + '"') else ""} \
       ~{if defined(a) then ("-A " +  '"' + a + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     at: ""
     k: ""

@@ -14,6 +14,9 @@ task GraphlanAnnotatepy {
       ~{if defined(an_not) then ("--annot " +  '"' + an_not + '"') else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     an_not: "specify the annotation file"
     v: ""

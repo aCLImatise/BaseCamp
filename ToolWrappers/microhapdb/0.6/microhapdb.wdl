@@ -12,6 +12,9 @@ task Microhapdb {
       ~{if (files) then "--files" else ""} \
       ~{if (v) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     files: "print data table filenames and exit"
     v: ""

@@ -40,6 +40,9 @@ task MixcrExportAlignmentsPretty {
       ~{if (nw) then "-nw" else ""} \
       ~{if (a_dft) then "-adft" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     filter: "Custom filter"
     verbose: "Verbose warning messages."

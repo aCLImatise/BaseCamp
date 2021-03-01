@@ -44,6 +44,9 @@ task GoalignRename {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     clean_names: "Replaces special characters (tabs, spaces, newick characters) with '-' from input sequence names before writing output alignment"
     map_file: "Name Mapping infile (default \\\"none\\\")"

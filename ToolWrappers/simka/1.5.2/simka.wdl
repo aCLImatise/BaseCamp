@@ -52,6 +52,9 @@ task Simka {
       ~{if (count_file) then "-count-file" else ""} \
       ~{if (merge_file) then "-merge-file" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "(1 arg) :    input file of samples. One sample per line: id1: filename1..."
     out: "(1 arg) :    output directory for result files (distance matrices)  [default './simka_results']"

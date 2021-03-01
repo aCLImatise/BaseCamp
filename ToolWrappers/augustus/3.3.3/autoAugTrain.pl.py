@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, String, Boolean, Int
+
+Autoaugtrain_Pl_V0_1_0 = CommandToolBuilder(tool="autoAugTrain.pl", base_command=["autoAugTrain.pl"], inputs=[ToolInput(tag="in_genome", input_type=File(optional=True), prefix="--genome", doc=InputDocumentation(doc="FASTA file with DNA sequences for training\ngenome.fa should include the corresponding sequences in this case")), ToolInput(tag="in_species", input_type=String(optional=True), prefix="--species", doc=InputDocumentation(doc="species name as used by AUGUSTUS")), ToolInput(tag="in_est_ali", input_type=String(optional=True), prefix="--estali", doc=InputDocumentation(doc="EST alignments are used to guess the UTR and its end point.")), ToolInput(tag="in_utr", input_type=Boolean(optional=True), prefix="--utr", doc=InputDocumentation(doc="Switch it on to train AUGUSTUS with untranslated regions. Off by default")), ToolInput(tag="in_flanking_dna", input_type=Int(optional=True), prefix="--flanking_DNA", doc=InputDocumentation(doc="flanking_DNA length, default:4000")), ToolInput(tag="in_working_dir", input_type=Boolean(optional=True), prefix="--workingdir", doc=InputDocumentation(doc="=/path/to/wd/      In the working directory results and temporary files are stored.\nDefault: current working directory\nBy case with 'utr', the directory 'autoTrainRandomNumber' which made by autoAugTrain.pl\nwithout 'utr' is expected.")), ToolInput(tag="in_verbose", input_type=Boolean(optional=True), prefix="--verbose", doc=InputDocumentation(doc="increase the verbosity level of the program by 1 each, default: 1, max level: 3, e.g. say -v -v -v")), ToolInput(tag="in_use_existing", input_type=Boolean(optional=True), prefix="--useexisting", doc=InputDocumentation(doc="use and change the present config and parameter files if they exist for 'species'")), ToolInput(tag="in_opt_rounds", input_type=Int(optional=True), prefix="--optrounds", doc=InputDocumentation(doc="optimization rounds - each meta parameter is optimized this often (default 1)")), ToolInput(tag="in_crf", input_type=Boolean(optional=True), prefix="--CRF", doc=InputDocumentation(doc="try training as Conditional Random Field. Off by default")), ToolInput(tag="in_aug", input_type=String(optional=True), prefix="--aug", doc=InputDocumentation(doc="Previous CDS predictions for constructing a training set of UTRs.")), ToolInput(tag="in_training_set", input_type=String(optional=True), prefix="--trainingset", doc=InputDocumentation(doc=""))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Autoaugtrain_Pl_V0_1_0().translate("wdl", allow_empty_container=True)
+

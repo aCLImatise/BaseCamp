@@ -10,6 +10,9 @@ task Installvst {
       ~{vs_template_file} \
       ~{destination_path}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     vs_template_file: ""
     destination_path: ""

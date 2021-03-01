@@ -20,6 +20,9 @@ task SpectrastCreaterb {
       ~{if defined(p_thresh) then ("--p-thresh " +  '"' + p_thresh + '"') else ""} \
       ~{if defined(instrument_acquisition) then ("--instrument-acquisition " +  '"' + instrument_acquisition + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     explicitly_named_output: "An explicitly named output file."
     spectrum_files: "Paths to raw spectrum files. These should be provided in a comma separated list"

@@ -2,8 +2,8 @@ version 1.0
 
 task Lastal {
   input {
-    Boolean? verbose_write_messages
-    Boolean? output_format_maf
+    Boolean? be_verbose_write
+    Boolean? output_format_tab
     Boolean? query_letters_e
     Boolean? maximum_expected_alignments
     Boolean? match_score_m
@@ -16,7 +16,7 @@ task Lastal {
     Boolean? insertion_extension_cost
     Boolean? unaligned_residue_pair
     Boolean? _frameshift_cost
-    Boolean? maximum_score_drop_z
+    Boolean? maximum_score_drop_preliminary
     Boolean? maximum_score_drop_gapless
     Boolean? maximum_score_drop_final
     Boolean? minimum_score_gapless
@@ -32,13 +32,13 @@ task Lastal {
     Boolean? omit_gapless_alignments
     Boolean? number_parallel_threads
     Boolean? query_batch_size
-    Boolean? find_alignments_faster
+    Boolean? find_minimumdifference_alignments
     Boolean? type_alignment_local
     Boolean? maximum_gapless_alignments
     Boolean? stop_first_n
     Boolean? repeatmarking_options_same
     Boolean? mask_lowercase_extensions
-    Boolean? suppress_repeats_exact
+    Boolean? suppress_repeats_distance
     Boolean? _genetic_code
     Boolean? calculating_probabilities_lambda
     Boolean? parameter_gammacentroid_lama
@@ -51,8 +51,8 @@ task Lastal {
     lastal \
       ~{last_db_name} \
       ~{fast_a_sequence_file} \
-      ~{if (verbose_write_messages) then "-v" else ""} \
-      ~{if (output_format_maf) then "-f" else ""} \
+      ~{if (be_verbose_write) then "-v" else ""} \
+      ~{if (output_format_tab) then "-f" else ""} \
       ~{if (query_letters_e) then "-D" else ""} \
       ~{if (maximum_expected_alignments) then "-E" else ""} \
       ~{if (match_score_m) then "-r" else ""} \
@@ -65,7 +65,7 @@ task Lastal {
       ~{if (insertion_extension_cost) then "-B" else ""} \
       ~{if (unaligned_residue_pair) then "-c" else ""} \
       ~{if (_frameshift_cost) then "-F" else ""} \
-      ~{if (maximum_score_drop_z) then "-x" else ""} \
+      ~{if (maximum_score_drop_preliminary) then "-x" else ""} \
       ~{if (maximum_score_drop_gapless) then "-y" else ""} \
       ~{if (maximum_score_drop_final) then "-z" else ""} \
       ~{if (minimum_score_gapless) then "-d" else ""} \
@@ -81,22 +81,25 @@ task Lastal {
       ~{if (omit_gapless_alignments) then "-C" else ""} \
       ~{if (number_parallel_threads) then "-P" else ""} \
       ~{if (query_batch_size) then "-i" else ""} \
-      ~{if (find_alignments_faster) then "-M" else ""} \
+      ~{if (find_minimumdifference_alignments) then "-M" else ""} \
       ~{if (type_alignment_local) then "-T" else ""} \
       ~{if (maximum_gapless_alignments) then "-n" else ""} \
       ~{if (stop_first_n) then "-N" else ""} \
       ~{if (repeatmarking_options_same) then "-R" else ""} \
       ~{if (mask_lowercase_extensions) then "-u" else ""} \
-      ~{if (suppress_repeats_exact) then "-w" else ""} \
+      ~{if (suppress_repeats_distance) then "-w" else ""} \
       ~{if (_genetic_code) then "-G" else ""} \
       ~{if (calculating_probabilities_lambda) then "-t" else ""} \
       ~{if (parameter_gammacentroid_lama) then "-g" else ""} \
       ~{if (output_type_match) then "-j" else ""} \
       ~{if (input_format_fasta) then "-Q" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    verbose_write_messages: ": be verbose: write messages about what lastal is doing"
-    output_format_maf: ": output format: TAB, MAF, BlastTab, BlastTab+ (default=MAF)"
+    be_verbose_write: ": be verbose: write messages about what lastal is doing"
+    output_format_tab: ": output format: TAB, MAF, BlastTab, BlastTab+ (default=MAF)"
     query_letters_e: ": query letters per random alignment (1e+06)"
     maximum_expected_alignments: ": maximum expected alignments per square giga (1e+18/D/refSize/numOfStrands)"
     match_score_m: ": match score   (2 if -M, else  6 if 0<Q<5, else 1 if DNA)"
@@ -109,7 +112,7 @@ task Lastal {
     insertion_extension_cost: ": insertion extension cost (b)"
     unaligned_residue_pair: ": unaligned residue pair cost (off)"
     _frameshift_cost: ": frameshift cost (off)"
-    maximum_score_drop_z: ": maximum score drop for preliminary gapped alignments (z)"
+    maximum_score_drop_preliminary: ": maximum score drop for preliminary gapped alignments (z)"
     maximum_score_drop_gapless: ": maximum score drop for gapless alignments (min[t*10, x])"
     maximum_score_drop_final: ": maximum score drop for final gapped alignments (e-1)"
     minimum_score_gapless: ": minimum score for gapless alignments (min[e, 2500/n query letters per hit])"
@@ -125,13 +128,13 @@ task Lastal {
     omit_gapless_alignments: ": omit gapless alignments in >= C others with > score-per-length (off)"
     number_parallel_threads: ": number of parallel threads (1)"
     query_batch_size: ": query batch size (8 KiB, unless there is > 1 thread or lastdb volume)"
-    find_alignments_faster: ": find minimum-difference alignments (faster but cruder)"
+    find_minimumdifference_alignments: ": find minimum-difference alignments (faster but cruder)"
     type_alignment_local: ": type of alignment: 0=local, 1=overlap (0)"
     maximum_gapless_alignments: ": maximum gapless alignments per query position (infinity if m=0, else m)"
     stop_first_n: ": stop after the first N alignments per query strand"
     repeatmarking_options_same: ": repeat-marking options (the same as was used for lastdb)"
     mask_lowercase_extensions: ": mask lowercase during extensions: 0=never, 1=gapless,\\n2=gapless+postmask, 3=always (2 if lastdb -c and Q<5, else 0)"
-    suppress_repeats_exact: ": suppress repeats inside exact matches, offset by <= this distance (1000)"
+    suppress_repeats_distance: ": suppress repeats inside exact matches, offset by <= this distance (1000)"
     _genetic_code: ": genetic code (1)"
     calculating_probabilities_lambda: ": 'temperature' for calculating probabilities (1/lambda)"
     parameter_gammacentroid_lama: ": 'gamma' parameter for gamma-centroid and LAMA (1)"

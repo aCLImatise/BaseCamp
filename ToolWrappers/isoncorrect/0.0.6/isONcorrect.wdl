@@ -38,6 +38,9 @@ task IsONcorrect {
       ~{if (compression) then "--compression" else ""} \
       ~{if defined(out_folder) then ("--outfolder " +  '"' + out_folder + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     fast_q: "Path to input fastq file with reads (default: False)"
     kmer_size_default: "Kmer size (default: 9)"

@@ -1,0 +1,227 @@
+!Command
+command:
+- hts_Overlapper
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: '[ --version ]                      Version print'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -N
+  description: '[ --notes ] arg                    Notes for the stats JSON'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  description: '[ --stats-file ] arg (=stats.log)  Write to stats file name'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -A
+  description: '[ --append-stats-file ] arg        Append to stats file name'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - '-1'
+  description: "[ --read1-input ] arg              Read 1 paired end fastq input <space\n\
+    separated for multiple files>"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - '-2'
+  description: "[ --read2-input ] arg              Read 2 paired end fastq input <space\n\
+    separated for multiple files>"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -U
+  description: "[ --singleend-input ] arg          Single end read fastq input <space\n\
+    separated for multiple files>"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -I
+  description: "[ --interleaved-input ] arg        Interleaved fastq input <space\n\
+    separated for multiple files>"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  description: "[ --tab-input ] arg                Tab-delimited (tab6) input <space\n\
+    separated for multiple files>"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  description: '[ --force ]                        Forces overwrite of files'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  description: '[ --uncompressed ]                 Output uncompressed (not gzipped)
+    files'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: "[ --fastq-output ] arg             Output to Fastq files <PE AND/OR\
+    \ SE\nfiles>"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: "[ --interleaved-output ] arg       Output to interleaved fastq files\n\
+    <INTERLEAVED PE AND/OR SE files>"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: '[ --tab-output ] arg               Output to tab-delimited (tab6)
+    file'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  description: '[ --unmapped-output ] arg          Output to unmapped sam file'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: '[ --number-of-threads ] arg (=1)   Number of worker threads (min 1,
+    max 8)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  description: "[ --kmer ] arg (=8)                Kmer size of the lookup table for\
+    \ the\nlonger read (min 5, max 64)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: "[ --kmer-offset ] arg (=1)         Offset of kmers. Offset of 1, would\
+    \ be\nperfect overlapping kmers. An offset of\nkmer would be non-overlapping kmers\n\
+    that are right next to each other. Must\nbe greater than 0."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  description: "[ --max-mismatch-errorDensity ] arg (=0.25)\nMax percent of mismatches\
+    \ allowed in\noverlapped section (min 0.0, max 1.0)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  description: "[ --max-mismatch ] arg (=100)      Max number of total mismatches\
+    \ allowed\nin overlapped section (min 0, max\n10000)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: "[ --check-lengths ] arg (=20)      Check lengths of the ends (min\
+    \ 5, max\n10000)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: "[ --min-overlap ] arg (=8)         Min overlap required to merge two\
+    \ reads\n(min 5, max 10000)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -X
+  description: "[ --force-pairs ]                  after overlapping a paired end\
+    \ read,\nsplit reads in half to output pairs."
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: '[ --help ]                         Prints help documentation'
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "HTStream <https://github.com/s4hts/HTStream> application: hts_Overlapper\n\
+  Version: 1.3.2\nThe hts_Overlapper application attempts to overlap paired end reads\n\
+  \  to produce the original transcript, trim adapters, and in some\n  cases, correct\
+  \ sequencing errors. single end reads are passed through unchanged.\nReads come\
+  \ in three flavors:\n  short: Reads produced from an insert shorter than the longest\
+  \ read\n        will result in a single read in the orientation of R1, and have\
+  \ overhanging\n        bases (adapters) trimmed to produce a SE read.\n  medium:\
+  \ Reads produced from a medium-insert greater than read length, but\n        somewhat\
+  \ shorter than 2x read length will produce a SE read in the\n        orientation\
+  \ of R1.\n  long: Reads produced from long-inserts which do not overlap\n  by at\
+  \ least min overlap , resulting in a PE read.\n\n\nStandard Options:\n  -v [ --version\
+  \ ]                      Version print\n  -h [ --help ]                        \
+  \ Prints help documentation\n  -N [ --notes ] arg                    Notes for the\
+  \ stats JSON\n  -L [ --stats-file ] arg (=stats.log)  Write to stats file name\n\
+  \  -A [ --append-stats-file ] arg        Append to stats file name\n\nInput Options\
+  \ [default: tab6 format on stdin]:\n  -1 [ --read1-input ] arg              Read\
+  \ 1 paired end fastq input <space \n                                        separated\
+  \ for multiple files>\n  -2 [ --read2-input ] arg              Read 2 paired end\
+  \ fastq input <space \n                                        separated for multiple\
+  \ files>\n  -U [ --singleend-input ] arg          Single end read fastq input <space\
+  \ \n                                        separated for multiple files>\n  -I\
+  \ [ --interleaved-input ] arg        Interleaved fastq input <space \n         \
+  \                               separated for multiple files>\n  -T [ --tab-input\
+  \ ] arg                Tab-delimited (tab6) input <space \n                    \
+  \                    separated for multiple files>\n\nhts_Overlapper Output Options\
+  \ [default: tab6 format to stdout]:\n  -F [ --force ]                        Forces\
+  \ overwrite of files\n  -u [ --uncompressed ]                 Output uncompressed\
+  \ (not gzipped) files\n  -f [ --fastq-output ] arg             Output to Fastq files\
+  \ <PE AND/OR SE \n                                        files>\n  -i [ --interleaved-output\
+  \ ] arg       Output to interleaved fastq files \n                             \
+  \           <INTERLEAVED PE AND/OR SE files>\n  -t [ --tab-output ] arg        \
+  \       Output to tab-delimited (tab6) file\n  -z [ --unmapped-output ] arg    \
+  \      Output to unmapped sam file\n\nApplication Specific Options:\n  -p [ --number-of-threads\
+  \ ] arg (=1)   Number of worker threads (min 1, max 8)\n  -k [ --kmer ] arg (=8)\
+  \                Kmer size of the lookup table for the \n                      \
+  \                  longer read (min 5, max 64)\n  -r [ --kmer-offset ] arg (=1)\
+  \         Offset of kmers. Offset of 1, would be \n                            \
+  \            perfect overlapping kmers. An offset of\n                         \
+  \               kmer would be non-overlapping kmers \n                         \
+  \               that are right next to each other. Must\n                      \
+  \                  be greater than 0.\n  -e [ --max-mismatch-errorDensity ] arg\
+  \ (=0.25)\n                                        Max percent of mismatches allowed\
+  \ in \n                                        overlapped section (min 0.0, max\
+  \ 1.0)\n  -x [ --max-mismatch ] arg (=100)      Max number of total mismatches allowed\
+  \ \n                                        in overlapped section (min 0, max \n\
+  \                                        10000)\n  -c [ --check-lengths ] arg (=20)\
+  \      Check lengths of the ends (min 5, max \n                                \
+  \        10000)\n  -o [ --min-overlap ] arg (=8)         Min overlap required to\
+  \ merge two reads\n                                        (min 5, max 10000)\n\
+  \  -X [ --force-pairs ]                  after overlapping a paired end read, \n\
+  \                                        split reads in half to output pairs.\n\n\
+  \nPlease report any issues, request for enhancement, or comments to <https://github.com/s4hts/HTStream/issues>\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/htstream:1.3.3--h5ca1c16_0

@@ -34,6 +34,9 @@ task SomaticQC {
       ~{if (changelog) then "--changelog" else ""} \
       ~{if (tdx) then "--tdx" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     tumor_bam: "Input tumor BAM file."
     normal_bam: "Input normal BAM file."

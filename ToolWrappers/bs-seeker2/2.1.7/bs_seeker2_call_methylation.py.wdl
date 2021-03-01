@@ -32,6 +32,9 @@ task BsSeeker2callMethylationpy {
       ~{if defined(read_no) then ("--read-no " +  '"' + read_no + '"') else ""} \
       ~{if defined(pile_up_maxdepth) then ("--pileup-maxdepth " +  '"' + pile_up_maxdepth + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     bam_output_bsseekeralignpy: "BAM output from bs_seeker2-align.py"
     db: "Path to the reference genome library (generated in\\npreprocessing genome) [Default:\\n/usr/local/bin/bs_utils/reference_genomes]"
