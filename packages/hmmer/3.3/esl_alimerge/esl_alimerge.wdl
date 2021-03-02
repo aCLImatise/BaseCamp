@@ -3,7 +3,7 @@ version 1.0
 task Eslalimerge {
   input {
     File? output_final_alignment
-    Boolean? print_info_stdout
+    Boolean? print_info_merge
     Boolean? small
     Boolean? rf_only
     String? out_format
@@ -19,7 +19,7 @@ task Eslalimerge {
       ~{pfam} \
       ~{psiblast} \
       ~{if defined(output_final_alignment) then ("-o " +  '"' + output_final_alignment + '"') else ""} \
-      ~{if (print_info_stdout) then "-v" else ""} \
+      ~{if (print_info_merge) then "-v" else ""} \
       ~{if (small) then "--small" else ""} \
       ~{if (rf_only) then "--rfonly" else ""} \
       ~{if defined(out_format) then ("--outformat " +  '"' + out_format + '"') else ""} \
@@ -28,9 +28,12 @@ task Eslalimerge {
       ~{if (amino) then "--amino" else ""} \
       ~{if defined(list) then ("--list " +  '"' + list + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_final_alignment: ": output the final alignment to file <f>, not stdout"
-    print_info_stdout: ": print info on merge to stdout; requires -o"
+    print_info_merge: ": print info on merge to stdout; requires -o"
     small: ": use minimal RAM (RAM usage will be independent of aln sizes)"
     rf_only: ": remove all columns that are gaps in GC RF annotation"
     out_format: ": specify that output aln be format <s> (see choices above)"

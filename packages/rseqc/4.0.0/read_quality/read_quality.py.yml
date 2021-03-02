@@ -1,0 +1,78 @@
+!Command
+command:
+- read_quality.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input-file
+  description: Alignment file in BAM or SAM format. [required]
+  args: !SimpleFlagArg
+    name: INPUT_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out-prefix
+  description: Prefix of output files(s). [required]
+  args: !SimpleFlagArg
+    name: OUTPUT_PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reduce
+  description: "To avoid making huge vector in R, nucleotide with\nparticular phred\
+    \ score less frequent than this number\nwill be ignored. Increase this number\
+    \ save more memory\nwhile reduce precision. Set to 1 achieves maximum\nprecision\
+    \ (i.e. every nucleotide will be considered).\nThis option only applies to the\
+    \ 'boxplot'. default=1"
+  args: !SimpleFlagArg
+    name: REDUCE_FOLD
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --mapq
+  description: "Minimum mapping quality (phred scaled) for an\nalignment to be called\
+    \ \"uniquely mapped\". default=30\n"
+  args: !SimpleFlagArg
+    name: MAP_QUAL
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "Usage: read_quality.py [options]\n-------------------------------------------------------------------------------------------------\n\
+  Calculating Phred Quality Score for each position on read. Note that each read should\
+  \ have \nthe fixed (same) length\n-------------------------------------------------------------------------------------------------\n\
+  \n\nOptions:\n  --version             show program's version number and exit\n \
+  \ -h, --help            show this help message and exit\n  -i INPUT_FILE, --input-file=INPUT_FILE\n\
+  \                        Alignment file in BAM or SAM format. [required]\n  -o OUTPUT_PREFIX,\
+  \ --out-prefix=OUTPUT_PREFIX\n                        Prefix of output files(s).\
+  \ [required]\n  -r REDUCE_FOLD, --reduce=REDUCE_FOLD\n                        To\
+  \ avoid making huge vector in R, nucleotide with\n                        particular\
+  \ phred score less frequent than this number\n                        will be ignored.\
+  \ Increase this number save more memory\n                        while reduce precision.\
+  \ Set to 1 achieves maximum\n                        precision (i.e. every nucleotide\
+  \ will be considered).\n                        This option only applies to the\
+  \ 'boxplot'. default=1\n  -q MAP_QUAL, --mapq=MAP_QUAL\n                       \
+  \ Minimum mapping quality (phred scaled) for an\n                        alignment\
+  \ to be called \"uniquely mapped\". default=30\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/rseqc:4.0.0--py38h0213d0e_0

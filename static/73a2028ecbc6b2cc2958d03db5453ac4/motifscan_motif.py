@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, String, Array, File, Directory, Int
+
+Motifscan_Motif_V0_1_0 = CommandToolBuilder(tool="motifscan_motif", base_command=["motifscan", "motif"], inputs=[ToolInput(tag="in_verbose", input_type=Boolean(optional=True), prefix="--verbose", doc=InputDocumentation(doc="Enable verbose log messages.")), ToolInput(tag="in_list", input_type=Boolean(optional=True), prefix="--list", doc=InputDocumentation(doc="Display installed motif sets.")), ToolInput(tag="in_list_remote", input_type=Boolean(optional=True), prefix="--list-remote", doc=InputDocumentation(doc="Display available remote motif sets.")), ToolInput(tag="in_install", input_type=Boolean(optional=True), prefix="--install", doc=InputDocumentation(doc="Install a new motif set with PFMs.")), ToolInput(tag="in_build", input_type=String(optional=True), prefix="--build", doc=InputDocumentation(doc="Build an installed motif set for additional genome")), ToolInput(tag="in_name", input_type=String(optional=True), prefix="--name", doc=InputDocumentation(doc="Name of the motif set (PFMs) to be installed.")), ToolInput(tag="in_local_motif_pfms", input_type=Array(t=File(), optional=True), prefix="-i", doc=InputDocumentation(doc="Local motif PFMs file(s) to be installed.")), ToolInput(tag="in_remote", input_type=String(optional=True), prefix="--remote", doc=InputDocumentation(doc="Download a remote motif PFMs set.")), ToolInput(tag="in_output_dir", input_type=Directory(optional=True), prefix="--output-dir", doc=InputDocumentation(doc="Write to a given directory instead of the default\ndirectory.")), ToolInput(tag="in_database", input_type=String(optional=True), prefix="--database", doc=InputDocumentation(doc="Which remote database is used to list/install motif\nset (PFMs). Default: jaspar_core")), ToolInput(tag="in_genome", input_type=String(optional=True), prefix="--genome", doc=InputDocumentation(doc="Genome assembly to build the motif set (PFMs) for.")), ToolInput(tag="in_n_random", input_type=Int(optional=True), prefix="--n-random", doc=InputDocumentation(doc="Generate N random background sequences to calculate\nmotif score cutoffs. Default: 1,000,000")), ToolInput(tag="in_seed", input_type=String(optional=True), prefix="--seed", doc=InputDocumentation(doc="Random seed used to generate background sequences.")), ToolInput(tag="in_assembly_dot", input_type=String(), position=0, doc=InputDocumentation(doc="--uninstall NAME      Uninstall a motif set."))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Motifscan_Motif_V0_1_0().translate("wdl", allow_empty_container=True)
+

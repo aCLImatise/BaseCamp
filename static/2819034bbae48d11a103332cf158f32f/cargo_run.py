@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import String, Int, Boolean, File
+
+Cargo_Run_V0_1_0 = CommandToolBuilder(tool="cargo_run", base_command=["cargo", "run"], inputs=[ToolInput(tag="in_bin", input_type=String(optional=True), prefix="--bin", doc=InputDocumentation(doc="Name of the bin target to run")), ToolInput(tag="in_example", input_type=String(optional=True), prefix="--example", doc=InputDocumentation(doc="Name of the example target to run")), ToolInput(tag="in_jobs", input_type=Int(optional=True), prefix="--jobs", doc=InputDocumentation(doc="Number of parallel jobs, defaults to # of CPUs")), ToolInput(tag="in_release", input_type=Boolean(optional=True), prefix="--release", doc=InputDocumentation(doc="Build artifacts in release mode, with optimizations")), ToolInput(tag="in_features", input_type=String(optional=True), prefix="--features", doc=InputDocumentation(doc="Space-separated list of features to also build")), ToolInput(tag="in_all_features", input_type=Boolean(optional=True), prefix="--all-features", doc=InputDocumentation(doc="Build all available features")), ToolInput(tag="in_no_default_features", input_type=Boolean(optional=True), prefix="--no-default-features", doc=InputDocumentation(doc="Do not build the `default` feature")), ToolInput(tag="in_target", input_type=String(optional=True), prefix="--target", doc=InputDocumentation(doc="Build for the target triple")), ToolInput(tag="in_manifest_path", input_type=File(optional=True), prefix="--manifest-path", doc=InputDocumentation(doc="Path to the manifest to execute")), ToolInput(tag="in_verbose", input_type=Boolean(optional=True), prefix="--verbose", doc=InputDocumentation(doc="...       Use verbose output")), ToolInput(tag="in_quiet", input_type=Boolean(optional=True), prefix="--quiet", doc=InputDocumentation(doc="No output printed to stdout")), ToolInput(tag="in_color", input_type=String(optional=True), prefix="--color", doc=InputDocumentation(doc="Coloring: auto, always, never")), ToolInput(tag="in_message_format", input_type=String(optional=True), prefix="--message-format", doc=InputDocumentation(doc="Error format: human, json [default: human]")), ToolInput(tag="in_frozen", input_type=Boolean(optional=True), prefix="--frozen", doc=InputDocumentation(doc="Require Cargo.lock and cache are up to date")), ToolInput(tag="in_locked", input_type=Boolean(optional=True), prefix="--locked", doc=InputDocumentation(doc="Require Cargo.lock is up to date"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Cargo_Run_V0_1_0().translate("wdl", allow_empty_container=True)
+

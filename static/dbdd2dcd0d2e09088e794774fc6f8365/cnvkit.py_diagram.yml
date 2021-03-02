@@ -1,0 +1,121 @@
+!Command
+command:
+- cnvkit.py
+- diagram
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: filename
+  description: "Processed coverage data file (*.cnr), the output of\nthe 'fix' sub-command."
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --segment
+  description: "Segmentation calls (.cns), the output of the 'segment'\ncommand."
+  args: !SimpleFlagArg
+    name: SEGMENT
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threshold
+  description: "Copy number change threshold to label genes. [Default:\n0.5]"
+  args: !SimpleFlagArg
+    name: THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --min-probes
+  description: "Minimum number of covered probes to label a gene.\n[Default: 3]"
+  args: !SimpleFlagArg
+    name: MIN_PROBES
+- !Flag
+  optional: true
+  synonyms:
+  - -y
+  - --male-reference
+  - --haploid-x-reference
+  description: "Assume inputs were normalized to a male reference\n(i.e. female samples\
+    \ will have +1 log-CNR of chrX;\notherwise male samples would have -1 chrX)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --sample-sex
+  - -g
+  - --gender
+  description: "Specify the sample's chromosomal sex as male or\nfemale. (Otherwise\
+    \ guessed from X and Y coverage)."
+  args: !ChoiceFlagArg
+    choices: !!set
+      Male:
+      x:
+      Female:
+      y:
+      f:
+      m:
+      female:
+      male:
+- !Flag
+  optional: true
+  synonyms:
+  - --no-shift-xy
+  description: "Don't adjust the X and Y chromosomes according to\nsample sex."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: Output PDF file name.
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --title
+  description: 'Plot title. [Default: sample ID, from filename or -i]'
+  args: !SimpleFlagArg
+    name: TITLE
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: cnvkit.py diagram [-h] [-s SEGMENT] [-t THRESHOLD] [-m MIN_PROBES]\
+  \ [-y]\n                         [-x {m,y,male,Male,f,x,female,Female}]\n      \
+  \                   [--no-shift-xy] [-o FILENAME] [--title TITLE]\n            \
+  \             [filename]\n\npositional arguments:\n  filename              Processed\
+  \ coverage data file (*.cnr), the output of\n                        the 'fix' sub-command.\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  -s SEGMENT, --segment SEGMENT\n                        Segmentation calls (.cns),\
+  \ the output of the 'segment'\n                        command.\n  -t THRESHOLD,\
+  \ --threshold THRESHOLD\n                        Copy number change threshold to\
+  \ label genes. [Default:\n                        0.5]\n  -m MIN_PROBES, --min-probes\
+  \ MIN_PROBES\n                        Minimum number of covered probes to label\
+  \ a gene.\n                        [Default: 3]\n  -y, --male-reference, --haploid-x-reference\n\
+  \                        Assume inputs were normalized to a male reference\n   \
+  \                     (i.e. female samples will have +1 log-CNR of chrX;\n     \
+  \                   otherwise male samples would have -1 chrX).\n  -x {m,y,male,Male,f,x,female,Female},\
+  \ --sample-sex {m,y,male,Male,f,x,female,Female}, -g {m,y,male,Male,f,x,female,Female},\
+  \ --gender {m,y,male,Male,f,x,female,Female}\n                        Specify the\
+  \ sample's chromosomal sex as male or\n                        female. (Otherwise\
+  \ guessed from X and Y coverage).\n  --no-shift-xy         Don't adjust the X and\
+  \ Y chromosomes according to\n                        sample sex.\n  -o FILENAME,\
+  \ --output FILENAME\n                        Output PDF file name.\n\nPlot aesthetics:\n\
+  \  --title TITLE         Plot title. [Default: sample ID, from filename or -i]\n"
+generated_using:
+- --help
+docker_image:

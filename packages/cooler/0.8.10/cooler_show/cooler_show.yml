@@ -1,0 +1,151 @@
+!Command
+command:
+- cooler
+- show
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: COOL_PATH
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: RANGE
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -r2
+  - --range2
+  description: "The coordinates of a genomic region shown\nalong the column dimension.\
+    \ If omitted, the\ncolumn range is the same as the row range.\nUse to display\
+    \ asymmetric matrices or trans\ninteractions."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --balanced
+  description: "Show the balanced contact matrix. If not\nprovided, display the unbalanced\
+    \ counts."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out
+  description: "Save the image of the contact matrix to a\nfile. If not specified,\
+    \ the matrix is\ndisplayed in an interactive window. The\nfigure format is deduced\
+    \ from the extension\nof the file, the supported formats are png,\njpg, svg, pdf,\
+    \ ps and eps."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --dpi
+  description: The DPI of the figure, if saving to a file
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --scale
+  description: "[linear|log2|log10]\nScale transformation of the colormap:\nlinear,\
+    \ log2 or log10. Default is log10."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --force
+  description: "Force display very large matrices (>=10^8\npixels). Use at your own\
+    \ risk as it may\ncause performance issues."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --zmin
+  description: "The minimal value of the color scale. Units\nmust match those of the\
+    \ colormap scale. To\nprovide a negative value use a equal sign\nand quotes, e.g.\
+    \ -zmin='-0.5'"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --zmax
+  description: "The maximal value of the color scale. Units\nmust match those of the\
+    \ colormap scale. To\nprovide a negative value use a equal sign\nand quotes, e.g.\
+    \ -zmax='-0.5'"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --cmap
+  description: "The colormap used to display the contact\nmatrix. See the full list\
+    \ at http://matplotl\nib.org/examples/color/colormaps_reference.ht\nml"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --field
+  description: 'Pixel values to display.  [default: count]'
+  args: !SimpleFlagArg
+    name: TEXT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: cooler show [OPTIONS] COOL_PATH RANGE\n\n  Display and browse a\
+  \ cooler in matplotlib.\n\n  COOL_PATH : Path to a COOL file or Cooler URI.\n\n\
+  \  RANGE : The coordinates of the genomic region to display, in UCSC\n  notation.\
+  \ Example: chr1:10,000,000-11,000,000\n\nOptions:\n  -r2, --range2 TEXT        \
+  \      The coordinates of a genomic region shown\n                             \
+  \     along the column dimension. If omitted, the\n                            \
+  \      column range is the same as the row range.\n                            \
+  \      Use to display asymmetric matrices or trans\n                           \
+  \       interactions.\n\n  -b, --balanced                  Show the balanced contact\
+  \ matrix. If not\n                                  provided, display the unbalanced\
+  \ counts.\n\n  -o, --out TEXT                  Save the image of the contact matrix\
+  \ to a\n                                  file. If not specified, the matrix is\n\
+  \                                  displayed in an interactive window. The\n   \
+  \                               figure format is deduced from the extension\n  \
+  \                                of the file, the supported formats are png,\n \
+  \                                 jpg, svg, pdf, ps and eps.\n\n  --dpi INTEGER\
+  \                   The DPI of the figure, if saving to a file\n  -s, --scale [linear|log2|log10]\n\
+  \                                  Scale transformation of the colormap:\n     \
+  \                             linear, log2 or log10. Default is log10.\n\n  -f,\
+  \ --force                     Force display very large matrices (>=10^8\n      \
+  \                            pixels). Use at your own risk as it may\n         \
+  \                         cause performance issues.\n\n  --zmin FLOAT          \
+  \          The minimal value of the color scale. Units\n                       \
+  \           must match those of the colormap scale. To\n                       \
+  \           provide a negative value use a equal sign\n                        \
+  \          and quotes, e.g. -zmin='-0.5'\n\n  --zmax FLOAT                    The\
+  \ maximal value of the color scale. Units\n                                  must\
+  \ match those of the colormap scale. To\n                                  provide\
+  \ a negative value use a equal sign\n                                  and quotes,\
+  \ e.g. -zmax='-0.5'\n\n  --cmap TEXT                     The colormap used to display\
+  \ the contact\n                                  matrix. See the full list at http://matplotl\n\
+  \                                  ib.org/examples/color/colormaps_reference.ht\n\
+  \                                  ml\n\n  --field TEXT                    Pixel\
+  \ values to display.  [default: count]\n  -h, --help                      Show this\
+  \ message and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/cooler:0.8.10--pyh3252c3a_0

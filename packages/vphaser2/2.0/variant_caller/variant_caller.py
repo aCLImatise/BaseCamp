@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Directory, Boolean, String
+
+Variant_Caller_V0_1_0 = CommandToolBuilder(tool="variant_caller", base_command=["variant_caller"], inputs=[ToolInput(tag="in__output_directory", input_type=Directory(optional=True), prefix="-o", doc=InputDocumentation(doc="[output DIR] -- output directory")), ToolInput(tag="in_default_pileup_phasing", input_type=Boolean(optional=True), prefix="-e", doc=InputDocumentation(doc="[1 or 2] -- default 1; 1: pileup + phasing; 2: pileup")), ToolInput(tag="in_default_alignment_window", input_type=Boolean(optional=True), prefix="-w", doc=InputDocumentation(doc="-- default 500; alignment window size")), ToolInput(tag="in_ig", input_type=Boolean(optional=True), prefix="-ig", doc=InputDocumentation(doc="-- default 0; # of bases to ignore on both end of a read")), ToolInput(tag="in_delta", input_type=Boolean(optional=True), prefix="-delta", doc=InputDocumentation(doc="-- default 2; constrain PE distance by delta x fragsize_variation (auto measured by program)")), ToolInput(tag="in_ps", input_type=Boolean(optional=True), prefix="-ps", doc=InputDocumentation(doc="(0, 100] -- default 30; percentage of reads to sample to get stats.")), ToolInput(tag="in_dt", input_type=Boolean(optional=True), prefix="-dt", doc=InputDocumentation(doc="[0 or 1] -- default 1; 1: dinucleotide for err prob measure; 0: not")), ToolInput(tag="in_cy", input_type=Boolean(optional=True), prefix="-cy", doc=InputDocumentation(doc="[0 or 1] -- default 1; 1: read cycle for err calibr; 0: not")), ToolInput(tag="in_mp", input_type=Boolean(optional=True), prefix="-mp", doc=InputDocumentation(doc="[0 or 1] -- default 1; 1: mate-pair for err calibr; 0: not")), ToolInput(tag="in_qual", input_type=Boolean(optional=True), prefix="-qual", doc=InputDocumentation(doc="[0, 40] -- default 20; quantile of qual for err calibr")), ToolInput(tag="in_default_significance_value", input_type=Boolean(optional=True), prefix="-a", doc=InputDocumentation(doc="-- default 0.05; significance value for stat test")), ToolInput(tag="in_variant_caller", input_type=String(), position=0, doc=InputDocumentation(doc="-i  [input.bam] -- input sorted bam file"))], outputs=[ToolOutput(tag="out__output_directory", output_type=Directory(optional=True), selector=InputSelector(input_to_select="in__output_directory", type_hint=File()), doc=OutputDocumentation(doc="[output DIR] -- output directory"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Variant_Caller_V0_1_0().translate("wdl", allow_empty_container=True)
+

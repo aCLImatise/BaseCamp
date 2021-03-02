@@ -1,0 +1,194 @@
+!Command
+command:
+- refinem
+- outliers
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: scaffold_stats_file
+  description: file with statistics for each scaffold
+- !Positional
+  optional: false
+  position: 1
+  name: output_dir
+  description: output directory
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --gc_perc
+  description: "percentile for identify scaffolds with divergent GC\ncontent (default:\
+    \ 98)"
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --td_perc
+  description: "percentile for identify scaffolds with divergent\ntetranucleotide\
+    \ signatures (default: 98)"
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --cov_corr
+  description: "correlation for identifying scaffolds with divergent\ncoverage profiles\
+    \ (default: -2)"
+  args: !SimpleFlagArg
+    name: COV_CORR
+- !Flag
+  optional: true
+  synonyms:
+  - --cov_perc
+  description: "mean absolute percent error for identifying scaffolds\nwith divergent\
+    \ coverage profiles (default: 50)"
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --report_type
+  description: "report sequences that are outliers in 'all' or 'any'\nreference distribution\
+    \ (default: any)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      all:
+      any:
+- !Flag
+  optional: true
+  synonyms:
+  - --create_plots
+  description: "create exploratory plots (currently unstable due to\nmpld3 limitations)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --individual_plots
+  description: create individual plots for each statistic
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --image_type
+  description: 'desired image type (default: png)'
+  args: !ChoiceFlagArg
+    choices: !!set
+      eps:
+      svg:
+      png:
+      pdf:
+      ps:
+- !Flag
+  optional: true
+  synonyms:
+  - --point_size
+  description: 'desired size of points in scatterplot (default: 36)'
+  args: !SimpleFlagArg
+    name: POINT_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --highlight_file
+  description: file indicating scaffolds to highlight
+  args: !SimpleFlagArg
+    name: HIGHLIGHT_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --links_file
+  description: file indicating pairs of scaffolds to join by a line
+  args: !SimpleFlagArg
+    name: LINKS_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --dpi
+  description: 'desired DPI of output image (default: 96)'
+  args: !SimpleFlagArg
+    name: DPI
+- !Flag
+  optional: true
+  synonyms:
+  - --label_font_size
+  description: 'desired font size for labels (default: 12)'
+  args: !SimpleFlagArg
+    name: LABEL_FONT_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --tick_font_size
+  description: 'desired font size for tick markers (default: 10)'
+  args: !SimpleFlagArg
+    name: TICK_FONT_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --width
+  description: 'width of output image (default: 12)'
+  args: !SimpleFlagArg
+    name: WIDTH
+- !Flag
+  optional: true
+  synonyms:
+  - --height
+  description: 'height of output image (default: 6)'
+  args: !SimpleFlagArg
+    name: HEIGHT
+- !Flag
+  optional: true
+  synonyms:
+  - --silent
+  description: suppress output of logger
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: refinem outliers [-h] [--gc_perc int] [--td_perc int]\n       \
+  \                 [--cov_corr COV_CORR] [--cov_perc int] [-r {any,all}]\n      \
+  \                  [--create_plots] [--individual_plots]\n                     \
+  \   [--image_type {eps,pdf,png,ps,svg}]\n                        [--point_size POINT_SIZE]\n\
+  \                        [--highlight_file HIGHLIGHT_FILE]\n                   \
+  \     [--links_file LINKS_FILE] [--dpi DPI]\n                        [--label_font_size\
+  \ LABEL_FONT_SIZE]\n                        [--tick_font_size TICK_FONT_SIZE] [--width\
+  \ WIDTH]\n                        [--height HEIGHT] [--silent]\n               \
+  \         scaffold_stats_file output_dir\n\nIdentify scaffolds with divergent genomic\
+  \ characteristics.\n\npositional arguments:\n  scaffold_stats_file   file with statistics\
+  \ for each scaffold\n  output_dir            output directory\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  --gc_perc int      \
+  \   percentile for identify scaffolds with divergent GC\n                      \
+  \  content (default: 98)\n  --td_perc int         percentile for identify scaffolds\
+  \ with divergent\n                        tetranucleotide signatures (default: 98)\n\
+  \  --cov_corr COV_CORR   correlation for identifying scaffolds with divergent\n\
+  \                        coverage profiles (default: -2)\n  --cov_perc int     \
+  \   mean absolute percent error for identifying scaffolds\n                    \
+  \    with divergent coverage profiles (default: 50)\n  -r, --report_type {any,all}\n\
+  \                        report sequences that are outliers in 'all' or 'any'\n\
+  \                        reference distribution (default: any)\n  --create_plots\
+  \        create exploratory plots (currently unstable due to\n                 \
+  \       mpld3 limitations)\n  --individual_plots    create individual plots for\
+  \ each statistic\n  --image_type {eps,pdf,png,ps,svg}\n                        desired\
+  \ image type (default: png)\n  --point_size POINT_SIZE\n                       \
+  \ desired size of points in scatterplot (default: 36)\n  --highlight_file HIGHLIGHT_FILE\n\
+  \                        file indicating scaffolds to highlight\n  --links_file\
+  \ LINKS_FILE\n                        file indicating pairs of scaffolds to join\
+  \ by a line\n  --dpi DPI             desired DPI of output image (default: 96)\n\
+  \  --label_font_size LABEL_FONT_SIZE\n                        desired font size\
+  \ for labels (default: 12)\n  --tick_font_size TICK_FONT_SIZE\n                \
+  \        desired font size for tick markers (default: 10)\n  --width WIDTH     \
+  \    width of output image (default: 12)\n  --height HEIGHT       height of output\
+  \ image (default: 6)\n  --silent              suppress output of logger\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/refinem:0.1.2--pyh3252c3a_0

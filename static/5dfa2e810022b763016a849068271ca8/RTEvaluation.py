@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, Float, Int, Boolean
+
+Rtevaluation_V0_1_0 = CommandToolBuilder(tool="RTEvaluation", base_command=["RTEvaluation"], inputs=[ToolInput(tag="in_in", input_type=File(optional=True), prefix="-in", doc=InputDocumentation(doc="*             Input file (valid formats: 'idXML')")), ToolInput(tag="in_sequences_file", input_type=File(optional=True), prefix="-sequences_file", doc=InputDocumentation(doc="Fasta File (valid formats: 'fasta')")), ToolInput(tag="in_out", input_type=File(optional=True), prefix="-out", doc=InputDocumentation(doc="*            Output file  (valid formats: 'tsv')")), ToolInput(tag="in_latex", input_type=File(optional=True), prefix="-latex", doc=InputDocumentation(doc="Indicates whether the output file format of the table should be LaTeX or TSV (default)")), ToolInput(tag="in_p_value_dim_one", input_type=Float(optional=True), prefix="-p_value_dim_1", doc=InputDocumentation(doc="Significance level of first dimension RT filter (default: '0.01' min: '0.0' max: '1.0')")), ToolInput(tag="in_p_value_dim_two", input_type=Float(optional=True), prefix="-p_value_dim_2", doc=InputDocumentation(doc="Significance level of second dimension RT filter (default: '0.05' min: '0.0' max: '1.0')")), ToolInput(tag="in_ini", input_type=File(optional=True), prefix="-ini", doc=InputDocumentation(doc="Use the given TOPP INI file")), ToolInput(tag="in_threads", input_type=Int(optional=True), prefix="-threads", doc=InputDocumentation(doc="Sets the number of threads allowed to be used by the TOPP tool (default: '1')")), ToolInput(tag="in_write_ini", input_type=File(optional=True), prefix="-write_ini", doc=InputDocumentation(doc="Writes the default configuration file")), ToolInput(tag="in_helphelp", input_type=Boolean(optional=True), prefix="--helphelp", doc=InputDocumentation(doc="Shows all options (including advanced)"))], outputs=[ToolOutput(tag="out_out", output_type=File(optional=True), selector=InputSelector(input_to_select="in_out", type_hint=File()), doc=OutputDocumentation(doc="*            Output file  (valid formats: 'tsv')")), ToolOutput(tag="out_latex", output_type=File(optional=True), selector=InputSelector(input_to_select="in_latex", type_hint=File()), doc=OutputDocumentation(doc="Indicates whether the output file format of the table should be LaTeX or TSV (default)"))], container="quay.io/biocontainers/openms:2.6.0--h4afb90d_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Rtevaluation_V0_1_0().translate("wdl")
+

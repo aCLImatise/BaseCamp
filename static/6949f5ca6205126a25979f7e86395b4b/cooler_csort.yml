@@ -1,0 +1,164 @@
+!Command
+command:
+- cooler
+- csort
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: command
+  description: -o, --out TEXT              Output gzip file
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -c1
+  - --chrom1
+  description: "chrom1 field number in the input file (starting\nfrom 1)  [required]"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -c2
+  - --chrom2
+  description: chrom2 field number  [required]
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -p1
+  - --pos1
+  description: pos1 field number  [required]
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -p2
+  - --pos2
+  description: pos2 field number  [required]
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --index
+  description: "[tabix|pairix]  Select the preset sort and indexing options\n[default:\
+    \ pairix]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --flip-only
+  description: "Only flip mates; no sorting or indexing. Write\nto stdout.  [default:\
+    \ False]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --nproc
+  description: 'Number of processors  [default: 8]'
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - '-0'
+  - --zero-based
+  description: 'Read positions are zero-based  [default: False]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sep
+  description: 'Data delimiter in the input file  [default: \t]'
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --comment-char
+  description: 'Comment character to skip header  [default: #]'
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --sort-options
+  description: Quoted list of additional options to `sort`
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -s1
+  - --strand1
+  description: strand1 field number (deprecated)
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -s2
+  - --strand2
+  description: strand2 field number (deprecated)
+  args: !SimpleFlagArg
+    name: INTEGER
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: cooler csort [OPTIONS] PAIRS_PATH CHROMOSOMES_PATH\n\n  Sort and\
+  \ index a contact list.\n\n  Order the mates of each pair record so that all contacts\
+  \ are upper\n  triangular with respect to the chromosome ordering given by the\n\
+  \  chromosomes file, sort contacts by genomic location, and index the\n  resulting\
+  \ file.\n\n  PAIRS_PATH : Contacts (i.e. read pairs) text file, optionally compressed.\n\
+  \n  CHROMOSOMES_PATH : File listing desired chromosomes in the desired order.\n\
+  \  May be tab-delimited, e.g. a UCSC-style chromsizes file. Contacts mapping\n \
+  \ to other chromosomes will be discarded.\n\n  **Notes**\n\n  - csort can also be\
+  \ used to sort and index a text representation of\n    a contact *matrix* in bedGraph-like\
+  \ format. In this case, substitute\n    `pos1` and `pos2` with `start1` and `start2`,\
+  \ respectively.\n  - Requires Unix tools: sort, bgzip + tabix or pairix.\n\n  If\
+  \ indexing with Tabix, the output file will have the following\n  properties:\n\n\
+  \  - Upper triangular: the read pairs on each row are assigned to side 1 or 2\n\
+  \    in such a way that (chrom1, pos1) is always \"less than\" (chrom2, pos2)\n\
+  \  - Rows are lexicographically sorted by chrom1, pos1, chrom2, pos2;\n    i.e.\
+  \ \"positionally sorted\"\n  - Compressed with bgzip [*]\n  - Indexed using Tabix\
+  \ [*] on chrom1 and pos1.\n\n  If indexing with Pairix, the output file will have\
+  \ the following\n  properties:\n\n  - Upper triangular: the read pairs on each row\
+  \ are assigned to side 1 or 2\n    in such a way that (chrom1, pos1) is always \"\
+  less than\" (chrom2, pos2)\n  - Rows are lexicographically sorted by chrom1, chrom2,\
+  \ pos1, pos2; i.e.\n    \"block sorted\"\n  - Compressed with bgzip [*]\n  - Indexed\
+  \ using Pairix [+] on chrom1, chrom2 and pos1.\n\n  [*] Tabix manpage: <http://www.htslib.org/doc/tabix.html>.\n\
+  \  [+] Pairix on Github: <https://github.com/4dn-dcic/pairix>\n\nOptions:\n  -c1,\
+  \ --chrom1 INTEGER       chrom1 field number in the input file (starting\n     \
+  \                         from 1)  [required]\n\n  -c2, --chrom2 INTEGER       chrom2\
+  \ field number  [required]\n  -p1, --pos1 INTEGER         pos1 field number  [required]\n\
+  \  -p2, --pos2 INTEGER         pos2 field number  [required]\n  -i, --index [tabix|pairix]\
+  \  Select the preset sort and indexing options\n                              [default:\
+  \ pairix]\n\n  --flip-only                 Only flip mates; no sorting or indexing.\
+  \ Write\n                              to stdout.  [default: False]\n\n  -p, --nproc\
+  \ INTEGER         Number of processors  [default: 8]\n  -0, --zero-based       \
+  \     Read positions are zero-based  [default: False]\n  --sep TEXT            \
+  \      Data delimiter in the input file  [default: \\t]\n  --comment-char TEXT \
+  \        Comment character to skip header  [default: #]\n  --sort-options TEXT \
+  \        Quoted list of additional options to `sort`\n                         \
+  \     command\n\n  -o, --out TEXT              Output gzip file\n  -s1, --strand1\
+  \ INTEGER      strand1 field number (deprecated)\n  -s2, --strand2 INTEGER     \
+  \ strand2 field number (deprecated)\n  -h, --help                  Show this message\
+  \ and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/cooler:0.8.10--pyh3252c3a_0

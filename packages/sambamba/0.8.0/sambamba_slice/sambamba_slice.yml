@@ -1,0 +1,59 @@
+!Command
+command:
+- sambamba
+- slice
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: sambamba-slice
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: input.bam|input.fasta
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-filename
+  description: output BAM or FASTA filename
+  args: !SimpleFlagArg
+    name: OUTPUT_FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  - --regions
+  description: output only reads overlapping one of regions from the BED file
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  - --fasta-input
+  description: "specify that input is in FASTA format\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nsambamba 0.8.0\n by Artem Tarasov and Pjotr Prins (C) 2012-2020\n  \
+  \  LDC 1.20.0 / DMD v2.090.1 / LLVM7.0.0 / bootstrap LDC - the LLVM D compiler (0.17.6)\n\
+  \nUsage: sambamba-slice [options] <input.bam|input.fasta> [region1 [...]]\n\n  \
+  \     Fast copy of a region from indexed BAM or FASTA file to a new file\n\n   \
+  \    Regions are given in standard form ref:beg-end.\n       FASTA index file name\
+  \ must match FASTA file name, e.g. <input.fai>\n       In addition, region '*' denotes\
+  \ reads with no reference.\n       Output is to STDOUT unless output filename is\
+  \ specified.\n\nOPTIONS: -o, --output-filename=OUTPUT_FILENAME\n            output\
+  \ BAM or FASTA filename\n         -L, --regions=FILENAME\n            output only\
+  \ reads overlapping one of regions from the BED file\n         -F, --fasta-input\n\
+  \               specify that input is in FASTA format\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/sambamba:0.8.0--h984e79f_0

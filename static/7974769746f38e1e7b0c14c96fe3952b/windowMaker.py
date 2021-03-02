@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Int, File, Boolean, String
+
+Windowmaker_V0_1_0 = CommandToolBuilder(tool="windowMaker", base_command=["windowMaker"], inputs=[ToolInput(tag="in_genome_file_size", input_type=Int(optional=True), prefix="-g", doc=InputDocumentation(doc="Genome file size (see notes below).\nWindows will be created for each chromosome in the file.")), ToolInput(tag="in_bed_file_chromstartend", input_type=File(optional=True), prefix="-b", doc=InputDocumentation(doc="BED file (with chrom,start,end fields).\nWindows will be created for each interval in the file.")), ToolInput(tag="in_divide_interval_fixedsized", input_type=Int(optional=True), prefix="-w", doc=InputDocumentation(doc="Divide each input interval (either a chromosome or a BED interval)\nto fixed-sized windows (i.e. same number of nucleotide in each window).\nCan be combined with -s <step_size>")), ToolInput(tag="in_step_size_ie", input_type=Int(optional=True), prefix="-s", doc=InputDocumentation(doc="Step size: i.e., how many base pairs to step before\ncreating a new window. Used to create 'sliding' windows.\n- Defaults to window size (non-sliding windows).")), ToolInput(tag="in_divide_interval_fixed", input_type=Int(optional=True), prefix="-n", doc=InputDocumentation(doc="Divide each input interval (either a chromosome or a BED interval)\nto fixed number of windows (i.e. same number of windows, with\nvarying window sizes).")), ToolInput(tag="in_reverse", input_type=Boolean(optional=True), prefix="-reverse", doc=InputDocumentation(doc="Reverse numbering of windows in the output, i.e. report\nwindows in decreasing order")), ToolInput(tag="in_default_output_columns", input_type=Int(optional=True), prefix="-i", doc=InputDocumentation(doc="|winnum|srcwinnum\nThe default output is 3 columns: chrom, start, end .\nWith this option, a name column will be added.\n'-i src' - use the source interval's name.\n'-i winnum' - use the window number as the ID (e.g. 1,2,3,4...).\n'-i srcwinnum' - use the source interval's name with the window number.\nSee below for usage examples.")), ToolInput(tag="in_bed_tools", input_type=String(), position=0, doc=InputDocumentation(doc="")), ToolInput(tag="in_make_windows", input_type=String(), position=1, doc=InputDocumentation(doc="")), ToolInput(tag="in_or", input_type=String(optional=True), position=2, doc=InputDocumentation(doc=""))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Windowmaker_V0_1_0().translate("wdl", allow_empty_container=True)
+

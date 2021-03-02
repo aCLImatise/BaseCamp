@@ -1,0 +1,92 @@
+!Command
+command:
+- ktClassifyBLAST
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: blast_output
+  description: "File containing BLAST results in tabular format (\"Hit table\n(text)\"\
+    \ when downloading from NCBI). If running BLAST locally,\nsubject IDs in the local\
+    \ database must contain accession\nnumbers, either bare or in the fourth field\
+    \ of the\npipe-separated (\"gi|12345|xx|ABC123.1|\") format.\n_________"
+- !Positional
+  optional: false
+  position: 0
+  name: e-value.
+  description: '[-b]           Use bit score for average scores instead of log[10]
+    e-value.'
+- !Positional
+  optional: false
+  position: 0
+  name: databases.
+  description: ________
+- !Positional
+  optional: false
+  position: 0
+  name: queryID
+  description: The query ID as it appears in the BLAST results.
+- !Positional
+  optional: false
+  position: 1
+  name: taxID
+  description: "The NCBI taxonomy ID the query was assigned to (or -1 if it has no\n\
+    hits)."
+- !Positional
+  optional: false
+  position: 2
+  name: score
+  description: "The score of the assignment(s); by default, the average E-value of\n\
+    \"best\" hits (see -p, -b)."
+- !Positional
+  optional: false
+  position: 3
+  name: count
+  description: The number of assignments.
+named: []
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "                                        ____________________________________\n\
+  _______________________________________/ KronaTools 2.7.1 - ktClassifyBLAST \\___\n\
+  \nAssigns each query in tabular BLAST results to an NCBI taxonomy ID. If the\nresults\
+  \ contain comment lines, queries with no hits will be included in the\noutput (with\
+  \ taxonomy IDs of -1 for consistency with MEGAN).\n                            \
+  \                                         _______\n____________________________________________________________________/\
+  \ Usage \\___\n\nktClassifyBLAST \\\n   [options] \\\n   blast_output_1 \\\n   [blast_output_2]\
+  \ \\\n   ...\n\n   blast_output  File containing BLAST results in tabular format\
+  \ (\"Hit table\n                 (text)\" when downloading from NCBI). If running\
+  \ BLAST locally,\n                 subject IDs in the local database must contain\
+  \ accession\n                 numbers, either bare or in the fourth field of the\n\
+  \                 pipe-separated (\"gi|12345|xx|ABC123.1|\") format.\n         \
+  \                                                          _________\n__________________________________________________________________/\
+  \ Options \\___\n\n   [-o <string>]  Output file name. [Default: 'blast.taxonomy.tab']\n\
+  \n   [-t <number>]  Threshold for bit score differences when determining \"best\"\
+  \n                  hits. Hits with scores that are within this distance of the\n\
+  \                  highest score will be included when computing the lowest\n  \
+  \                common ancestor (or picking randomly if -r is specified).\n   \
+  \               [Default: '3']\n\n   [-f]           If any best hits have unknown\
+  \ accessions, force\n                  classification to root instead of ignoring\
+  \ them.\n\n   [-r]           Pick from the best hits randomly instead of finding\
+  \ the\n                  lowest common ancestor.\n\n   [-p]           Use percent\
+  \ identity for average scores instead of log[10]\n                  e-value.\n\n\
+  \   [-b]           Use bit score for average scores instead of log[10] e-value.\n\
+  \n   [-s]           Summarize counts and average scores by taxonomy ID.\n\n   [-e\
+  \ <number>]  E-value factor for determining \"best\" hits. A bit score\n       \
+  \           difference threshold (-t) is recommended instead to avoid\n        \
+  \          comparing e-values that BLAST reports as 0 due to floating\n        \
+  \          point underflow. However, an e-value factor should be used if\n     \
+  \             the input is a concatination of BLASTs against different\n       \
+  \           databases.\n\n                                                     \
+  \               ________\n___________________________________________________________________/\
+  \ Output \\___\n\nDefault:          <queryID> <taxID> <score>\n\nSummarized (-s):\
+  \  <count> <taxID> <score>\n\n   queryID  The query ID as it appears in the BLAST\
+  \ results.\n\n   taxID    The NCBI taxonomy ID the query was assigned to (or -1\
+  \ if it has no\n            hits).\n\n   score    The score of the assignment(s);\
+  \ by default, the average E-value of\n            \"best\" hits (see -p, -b).\n\n\
+  \   count    The number of assignments.\n\n"
+generated_using: []
+docker_image: quay.io/biocontainers/krona:2.8--pl526_0

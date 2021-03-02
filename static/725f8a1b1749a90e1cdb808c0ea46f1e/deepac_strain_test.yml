@@ -1,0 +1,127 @@
+!Command
+command:
+- deepac-strain
+- test
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: deepac
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: test
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --n-cpus
+  description: 'Number of CPU cores. Default: all.'
+  args: !SimpleFlagArg
+    name: N_CPUS
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --gpus
+  description: 'GPU devices to use. Default: all'
+  args: !RepeatFlagArg
+    name: GPUS
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --explain
+  description: Test explain workflows.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --gwpa
+  description: Test gwpa workflows.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --all
+  description: Test all functions.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quick
+  description: "Don't test heavy models (e.g. on low-memory machines\nor when no GPU\
+    \ available)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --keep
+  description: Don't delete previous test output.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --scale
+  description: 'Generate s*1024 reads for testing (Default: s=1).'
+  args: !SimpleFlagArg
+    name: SCALE
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  - --large
+  description: Test a larger, more complex custom model.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --input-modes
+  description: "[INPUT_MODES [INPUT_MODES ...]]\nInput modes to test: memory, sequence\
+    \ and/or tfdata.\nDefault: all."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-check
+  description: Disable additivity check.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "DeePaC-strain 0.2.1. Using bacterial strain models.\nusage: deepac test\
+  \ [-h] [-n N_CPUS] [-g GPUS [GPUS ...]] [-x] [-p] [-a] [-q]\n                  \
+  \ [-k] [-s SCALE] [-L]\n                   [--input-modes [INPUT_MODES [INPUT_MODES\
+  \ ...]]]\n                   [--no-check]\n\noptional arguments:\n  -h, --help \
+  \           show this help message and exit\n  -n N_CPUS, --n-cpus N_CPUS\n    \
+  \                    Number of CPU cores. Default: all.\n  -g GPUS [GPUS ...], --gpus\
+  \ GPUS [GPUS ...]\n                        GPU devices to use. Default: all\n  -x,\
+  \ --explain         Test explain workflows.\n  -p, --gwpa            Test gwpa workflows.\n\
+  \  -a, --all             Test all functions.\n  -q, --quick           Don't test\
+  \ heavy models (e.g. on low-memory machines\n                        or when no\
+  \ GPU available).\n  -k, --keep            Don't delete previous test output.\n\
+  \  -s SCALE, --scale SCALE\n                        Generate s*1024 reads for testing\
+  \ (Default: s=1).\n  -L, --large           Test a larger, more complex custom model.\n\
+  \  --input-modes [INPUT_MODES [INPUT_MODES ...]]\n                        Input\
+  \ modes to test: memory, sequence and/or tfdata.\n                        Default:\
+  \ all.\n  --no-check            Disable additivity check.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/deepacstrain:0.2.1--py_0

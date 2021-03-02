@@ -1,0 +1,71 @@
+!Command
+command:
+- smof
+- md5sum
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: INPUT
+  description: input fasta sequence (default = stdin)
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --ignore-case
+  description: convert all to uppercase, before hashing
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --each-sequence
+  description: calculate md5sum for each sequence (TAB delimited)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --all-sequences
+  description: calculate one md5sum for all concatenated sequences
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --all-headers
+  description: calculate one md5sum for all concatenated headers
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --replace-header
+  description: "replace the header of each entry with the checksum of\nthe sequence\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: <fastafile> | smof md5sum <options>\n\nBy default, `smof md5sum`\
+  \ concantenates all headers and sequences and\ncalculates the md5sum for the resulting\
+  \ string. This is identical to `tr -d\n'\\n>' < a.fa | md5sum`.\n\npositional arguments:\n\
+  \  INPUT                 input fasta sequence (default = stdin)\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -i, --ignore-case  \
+  \   convert all to uppercase, before hashing\n  -q, --each-sequence   calculate\
+  \ md5sum for each sequence (TAB delimited)\n  -s, --all-sequences   calculate one\
+  \ md5sum for all concatenated sequences\n  -d, --all-headers     calculate one md5sum\
+  \ for all concatenated headers\n  -r, --replace-header  replace the header of each\
+  \ entry with the checksum of\n                        the sequence\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/smof:2.21.1--py_0

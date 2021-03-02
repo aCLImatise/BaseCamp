@@ -1,0 +1,148 @@
+!Command
+command:
+- callvariants.sh
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: in
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -Xmx
+  description: "This will set Java's memory usage, overriding autodetection.\n-Xmx20g\
+    \ will specify 20 gigs of RAM, and -Xmx200m will\nspecify 200 megs. The max is\
+    \ typically 85% of physical memory."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -eoom
+  description: "This flag will cause the process to exit if an out-of-memory\nexception\
+    \ occurs.  Requires Java 8u92+."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -da
+  description: Disable assertions.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nWritten by Brian Bushnell\nLast modified October 6, 2020\n\nDescription:\
+  \  Calls variants from sam or bam input.\nIn default mode, all input files are combined\
+  \ and treated as a single sample.\nIn multisample mode, each file is treated as\
+  \ an individual sample,\nand gets its own column in the VCF file.  Unless overridden,\
+  \ input file\nnames are used as sample names.\nPlease read bbmap/docs/guides/CallVariantsGuide.txt\
+  \ for more information,\nor bbmap/pipelines/variantPipeline.sh for a usage example.\n\
+  \nUsage:  callvariants.sh in=<file,file,...> ref=<file> vcf=<file>\n\nInput may\
+  \ be sorted or unsorted.\nThe reference should be fasta.\n\nI/O parameters:\nin=<file>\
+  \       Input; may be one file or multiple comma-delimited files.\nlist=<file> \
+  \    Optional text file containing one input file per line.\n                Use\
+  \ list or in, but not both.\nout=<file>      Output variant list in var format.\
+  \  If the name ends\n                with .vcf then it will be vcf format.\nvcf=<file>\
+  \      Output variant list in vcf format.\noutgff=<file>   Output variant list in\
+  \ gff format.\nref=<file>      Reference fasta.  Required to display ref alleles.\n\
+  \                Variant calling wil be more accurate with the reference.\nvcfin=<file>\
+  \    Force calls at these locations, even if allele count is 0.\nshist=<file>  \
+  \  (scorehist) Output for variant score histogram.\nzhist=<file>    (zygosityhist)\
+  \ Output for zygosity histogram.\nqhist=<file>    (qualityhist) Output for variant\
+  \ base quality histogram.\noverwrite=f     (ow) Set to false to force the program\
+  \ to abort rather than\n                overwrite an existing file.\nextended=t\
+  \      Print additional variant statistics columns.\nsample=         Optional comma-delimited\
+  \ list of sample names.\nmultisample=f   (multi) Set to true if there are multiple\
+  \ sam/bam files,\n                and each should be tracked as an individual sample.\n\
+  vcf0=           Optional comma-delimited list of per-sample outputs.\n         \
+  \       Only used in multisample mode.\nbgzip=t         Use bgzip for gzip compression.\n\
+  samstreamer=t   (ss) Load reads multithreaded to increase speed.\n             \
+  \   Disable to reduce the number of threads used.  The number of\n             \
+  \   streamer threads can be set with e.g. 'ss=4'; default is 6.\nstreamermf=8  \
+  \  (ssmf) Allow multiple sam files to be read simultaneously.\n                Set\
+  \ ssmf=X to specify the maximum number or ssmf=f\n                to disable.\n\n\
+  Processing Parameters:\nprefilter=f     Use a Bloom filter to exclude variants seen\
+  \ fewer than\n                minreads times.  Doubles the runtime but greatly reduces\n\
+  \                memory usage.  The results are identical.\ncoverage=t      (cc)\
+  \ Calculate coverage, to better call variants.\nploidy=1        Set the organism's\
+  \ ploidy.\nrarity=1.0      Penalize the quality of variants with allele fraction\
+  \ \n                lower than this.  For example, if you are interested in\n  \
+  \              4% frequency variants, you could set both rarity and\n          \
+  \      minallelefraction to 0.04.  This is affected by ploidy - \n             \
+  \   a variant with frequency indicating at least one copy\n                is never\
+  \ penalized.\ncovpenalty=0.8  (lowcoveragepenalty) A lower penalty will increase\
+  \ the \n                scores of low-coverage variants, and is useful for \n  \
+  \              low-coverage datasets.\nuseidentity=t   Include average read identity\
+  \ in score calculation.\nusepairing=t    Include pairing rate in score calculation.\n\
+  usebias=t       Include strand bias in score calculation.\nuseedist=t      Include\
+  \ read-end distance in score calculation.\nhomopolymer=t   Penalize scores of substitutions\
+  \ matching adjacent bases.\nnscan=t         Consider the distance of a variant from\
+  \ contig ends when \n                calculating strand bias.\ncallsub=t       Call\
+  \ substitutions.\ncalldel=t       Call deletions.\ncallins=t       Call insertions.\n\
+  calljunct=f     Call junctions (in development).\nnopassdot=f     Use . as genotype\
+  \ for variations failing the filter.\n\nCoverage Parameters (these mainly affect\
+  \ speed and memory use):\n32bit=f         Set to true to allow coverage tracking\
+  \ over depth 65535,\n                which increases memory use.  Variant calls\
+  \ are impacted\n                where coverage exceeds the maximum.\natomic=auto\
+  \     Increases multithreaded speed; forces 32bit to true.\n                Defaults\
+  \ to true if there are more than 8 threads.\nstrandedcov=f   (stranded) Tracks per-strand\
+  \ ref coverage to print the MCOV\n                and DP4 fields.  Requires more\
+  \ memory when enabled.  Strand\n                of variant reads is tracked regardless\
+  \ of this flag.\n\nTrimming Parameters:\nborder=5        Trim at least this many\
+  \ bases on both ends of reads.\nqtrim=r         Quality-trim reads on this end\n\
+  \                   r: right, l: left, rl: both, f: don't quality-trim.\ntrimq=10\
+  \        Quality-trim bases below this score.\n\nRealignment Parameters:\nrealign=f\
+  \       Realign all reads with more than a couple mismatches.\n                Decreases\
+  \ speed.  Recommended for aligners other than BBMap.\nunclip=f        Convert clip\
+  \ symbols from exceeding the ends of the\n                realignment zone into\
+  \ matches and substitutitions.\nrepadding=70    Pad alignment by this much on each\
+  \ end.  Typically,\n                longer is more accurate for long indels, but\
+  \ greatly\n                reduces speed.\nrerows=602      Use this many rows maximum\
+  \ for realignment.  Reads longer\n                than this cannot be realigned.\n\
+  recols=2000     Reads may not be aligned to reference seqments longer \n       \
+  \         than this.  Needs to be at least read length plus\n                max\
+  \ deletion length plus twice padding.\nmsa=            Select the aligner.  Options:\n\
+  \                   MultiStateAligner11ts:     Default.\n                   MultiStateAligner9PacBio:\
+  \  Use for PacBio reads, or for\n                   Illumina reads mapped to PacBio/Nanopore\
+  \ reads.\n\nSam-filtering Parameters:\nminpos=         Ignore alignments not overlapping\
+  \ this range.\nmaxpos=         Ignore alignments not overlapping this range.\nminreadmapq=4\
+  \   Ignore alignments with lower mapq.\ncontigs=        Comma-delimited list of\
+  \ contig names to include. These \n                should have no spaces, or underscores\
+  \ instead of spaces.\nsecondary=f     Include secondary alignments.\nsupplimentary=f\
+  \ Include supplimentary alignments.\nduplicate=f     Include reads flagged as duplicates.\n\
+  invert=f        Invert sam filters.\n\nVariant-Calling Cutoffs:\nminreads=2    \
+  \          (minad) Ignore variants seen in fewer reads.\nmaxreads=BIG          \
+  \  (maxad) Ignore variants seen in more reads.\nmincov=0                Ignore variants\
+  \ in lower-coverage locations.\nmaxcov=BIG              Ignore variants in higher-coverage\
+  \ locations.\nminqualitymax=15        Ignore variants with lower max base quality.\n\
+  minedistmax=20          Ignore variants with lower max distance from read ends.\n\
+  minmapqmax=0            Ignore variants with lower max mapq.\nminidmax=0       \
+  \       Ignore variants with lower max read identity.\nminpairingrate=0.1      Ignore\
+  \ variants with lower pairing rate.\nminstrandratio=0.1      Ignore variants with\
+  \ lower plus/minus strand ratio.\nminquality=12.0         Ignore variants with lower\
+  \ average base quality.\nminedist=10.0           Ignore variants with lower average\
+  \ distance from ends.\nminavgmapq=0.0          Ignore variants with lower average\
+  \ mapq.\nminallelefraction=0.1   Ignore variants with lower allele fraction.  This\n\
+  \                        should be adjusted for high ploidies.\nminid=0        \
+  \         Ignore variants with lower average read identity.\nminscore=20.0     \
+  \      Ignore variants with lower Phred-scaled score.\nclearfilters            Clear\
+  \ all filters.  Filter flags placed after\n                        the clearfilters\
+  \ flag will still be applied.\n\nThere are additionally max filters for score, quality,\
+  \ mapq, allelefraction,\nand identity.\n\nOther Parameters:\nminvarcopies=0    \
+  \      If set to 0, a genotype (vcf GT field) of 0 or 0/0\n                    \
+  \    will be called if observed allele frequency suggests\n                    \
+  \    this is a minor allele.  If set to 1, GT field will\n                     \
+  \   contain at least one 1.\n\nJava Parameters:\n-Xmx            This will set Java's\
+  \ memory usage, overriding autodetection.\n                -Xmx20g will specify\
+  \ 20 gigs of RAM, and -Xmx200m will\n                specify 200 megs. The max is\
+  \ typically 85% of physical memory.\n-eoom           This flag will cause the process\
+  \ to exit if an out-of-memory\n                exception occurs.  Requires Java\
+  \ 8u92+.\n-da             Disable assertions.\n\nPlease contact Brian Bushnell at\
+  \ bbushnell@lbl.gov if you encounter any problems.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bbmap:38.90--h1296035_0

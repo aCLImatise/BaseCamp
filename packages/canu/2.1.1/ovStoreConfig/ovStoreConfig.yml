@@ -1,0 +1,113 @@
+!Command
+command:
+- ovStoreConfig
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: ovOverlap
+  description: 2 words of 64 bits each.
+- !Positional
+  optional: false
+  position: 1
+  name: ovOverlapSortSize
+  description: 192 bits
+- !Positional
+  optional: false
+  position: 2
+  name: SC_CHILD_MAX
+  description: -1 processes
+- !Positional
+  optional: false
+  position: 3
+  name: SC_OPEN_MAX
+  description: 1048576 files
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  description: path to seqStore for this assembly
+  args: !SimpleFlagArg
+    name: asm.seqStore
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  description: a list of ovb files in 'fileList'
+  args: !SimpleFlagArg
+    name: fileList
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  description: "use up to 'g' gigabytes memory for sorting overlaps\ndefault 4; g-0.25\
+    \ gb is available for sorting overlaps"
+  args: !SimpleFlagArg
+    name: g
+- !Flag
+  optional: true
+  synonyms:
+  - -create
+  description: write overlap store configuration to file 'config'
+  args: !SimpleFlagArg
+    name: config
+- !Flag
+  optional: true
+  synonyms:
+  - -describe
+  description: write a readable description of the config in 'config' to the screen
+  args: !SimpleFlagArg
+    name: config
+- !Flag
+  optional: true
+  synonyms:
+  - -numbuckets
+  description: write the number of buckets to the screen
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -numslices
+  description: write the number of slices to the screen
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -sortmemory
+  description: write the memory needed (in GB) for a sort job to the screen
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -listinputs
+  description: write a list of the input ovb files needed for bucketizer job 'n'  -listslices
+    n         write a list of the input slice files needed for sorter job 'n'
+  args: !SimpleFlagArg
+    name: n
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "usage: ovStoreConfig -S asm.seqStore -create out.config [opts] [-L fileList\
+  \ | *.ovb]\n  -S asm.seqStore       path to seqStore for this assembly\n\n  -L fileList\
+  \           a list of ovb files in 'fileList'\n\n  -M g                  use up\
+  \ to 'g' gigabytes memory for sorting overlaps\n                          default\
+  \ 4; g-0.25 gb is available for sorting overlaps\n\n  -create config        write\
+  \ overlap store configuration to file 'config'\n\n  -describe config      write\
+  \ a readable description of the config in 'config' to the screen\n  -numbuckets\
+  \           write the number of buckets to the screen\n  -numslices            write\
+  \ the number of slices to the screen\n  -sortmemory           write the memory needed\
+  \ (in GB) for a sort job to the screen\n  -listinputs n         write a list of\
+  \ the input ovb files needed for bucketizer job 'n'  -listslices n         write\
+  \ a list of the input slice files needed for sorter job 'n'\n\n\nSizes and Limits:\n\
+  \  ovOverlap             2 words of 64 bits each.\n  ovOverlapSortSize     192 bits\n\
+  \  SC_CHILD_MAX          -1 processes\n  SC_OPEN_MAX           1048576 files\n\n\
+  ovStoreConfig: unknown option '--help'.\nERROR: No sequence store (-S) supplied.\n\
+  ERROR: No input overlap files (-L or last on the command line) supplied.\nERROR:\
+  \ Must supply one of -create or -describe.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/canu:2.1.1--he1b5a44_1

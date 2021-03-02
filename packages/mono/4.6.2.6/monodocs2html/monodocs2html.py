@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, File, Directory, String, Int
+
+Monodocs2Html_V0_1_0 = CommandToolBuilder(tool="monodocs2html", base_command=["monodocs2html"], inputs=[ToolInput(tag="in_default_template", input_type=Boolean(optional=True), prefix="--default-template", doc=InputDocumentation(doc="Writes the default XSLT to stdout.")), ToolInput(tag="in_ext", input_type=File(optional=True), prefix="--ext", doc=InputDocumentation(doc="The file EXTENSION to use for created files.  This\ndefaults to 'html'.")), ToolInput(tag="in_force_update", input_type=File(optional=True), prefix="--force-update", doc=InputDocumentation(doc="Always generate new files.  If not specified, will\nonly generate a new file if the source .xml file\nis newer than the current output file.")), ToolInput(tag="in_out", input_type=Directory(optional=True), prefix="--out", doc=InputDocumentation(doc="The DIRECTORY to place the generated files and")), ToolInput(tag="in_default_template_dot", input_type=String(optional=True), prefix="--default-template.", doc=InputDocumentation(doc="The .NET PROFILE to generate documentation for.")), ToolInput(tag="in_with_version", input_type=String(optional=True), prefix="--with-version", doc=InputDocumentation(doc="The assembly VERSION to generate documentation for.\nThis allows display of a subset of types/\nmembers that correspond to the given assembly\nversion.  May be specified multiple times.  If\nnot specified, all versions are displayed.")), ToolInput(tag="in_directories_dot", input_type=String(), position=0, doc=InputDocumentation(doc="--template=FILE        An XSLT FILE to use to generate the created files.")), ToolInput(tag="in_mono_touch", input_type=String(), position=0, doc=InputDocumentation(doc="net_1_0")), ToolInput(tag="in_net_one_one", input_type=Int(), position=1, doc=InputDocumentation(doc="net_2_0")), ToolInput(tag="in_net_three_zero", input_type=Int(), position=2, doc=InputDocumentation(doc="net_3_5")), ToolInput(tag="in_net_four_zero", input_type=Int(), position=3, doc=InputDocumentation(doc="silverlight"))], outputs=[ToolOutput(tag="out_force_update", output_type=File(optional=True), selector=InputSelector(input_to_select="in_force_update", type_hint=File()), doc=OutputDocumentation(doc="Always generate new files.  If not specified, will\nonly generate a new file if the source .xml file\nis newer than the current output file."))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Monodocs2Html_V0_1_0().translate("wdl", allow_empty_container=True)
+

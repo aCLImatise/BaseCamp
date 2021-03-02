@@ -1,0 +1,102 @@
+!Command
+command:
+- calctruequality.sh
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: variants.
+  description: The format can be produced by CallVariants.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -Xmx
+  description: "This will set Java's memory usage, overriding autodetection.\n-Xmx20g\
+    \ will specify 20 gigs of RAM, and -Xmx200m will specify 200 megs.\nThe max is\
+    \ typically 85% of physical memory."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -eoom
+  description: "This flag will cause the process to exit if an\nout-of-memory exception\
+    \ occurs.  Requires Java 8u92+."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -da
+  description: Disable assertions.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nWritten by Brian Bushnell\nLast modified March 21, 2019\n\nDescription:\
+  \  Calculates observed quality scores from mapped sam/bam files.\nGenerates matrices\
+  \ for use in recalibrating quality scores.  By default, \nthe matrices are written\
+  \ to /ref/qual/ in the current directory.\n\nIf you have multiple sam/bam files\
+  \ demultiplexed from a single sequencing run,\nit is recommended to use all of them\
+  \ as input for increased statistical power.\nOnce the matrices are generated, recalibration\
+  \ can be done on mapped or\nunmapped reads; you may get better results by recalibrating\
+  \ the fastq and \nremapping the calibrated reads.\n\nNote!  Diploid organisms with\
+  \ a high heterozygousity rate will induce\ninaccurate recalibration at the high\
+  \ end of the quality scale unless SNP\nlocations are masked or variations are called.\
+  \  For example, recalibrating \nhuman reads mapped to an unmasked human reference\
+  \ would generate an \nexpected maximal Q-score of roughly 30 due to the human 1/1000\
+  \ SNP rate.\nVariations can be ignored by using the callvars flag or providing\n\
+  a file of variations.\n\nUsage:\n\nStep 1.  Generate matrices (from mapped sam or\
+  \ bam files):\ncalctruequality.sh in=<file,file,...file> path=<directory>\n\nStep\
+  \ 2.  Recalibrate reads (any kind of files):\nbbduk.sh in=<file> out=<file> recalibrate\n\
+  \n\nParameters (and their defaults)\n\nInput parameters:\nin=<file,file>      Sam\
+  \ file or comma-delimited list of files.  Alignments \n                    must\
+  \ use = and X cigar symbols, or have MD tags, or\n                    ref must be\
+  \ specified.\nreads=-1            Stop after processing this many reads (if positive).\n\
+  samstreamer=t       (ss) Load reads multithreaded to increase speed.\nunpigz=t \
+  \           Use pigz to decompress.\n\nOutput parameters:\noverwrite=t         (ow)\
+  \ Set to true to allow overwriting of existing files.\npath=.              Directory\
+  \ to write quality matrices (within /ref subdir).\nwrite=t             Write matrices.\n\
+  showstats=t         Print a summary.\npigz=f              Use pigz to compress.\n\
+  \nOther parameters:\nt=auto              Number of worker threads.\npasses=2   \
+  \         Recalibration passes, 1 or 2.  2 is slower but gives more\n          \
+  \          accurate quality scores.\nrecalqmax=42        Adjust max quality scores\
+  \ tracked.  The actual highest\n                    quality score allowed is recalqmax-1.\n\
+  trackall=f          Track all available quality metrics and produce all\n      \
+  \              matrices, including the ones that are not selected for \n       \
+  \             quality adjustment.  Reduces speed, but allows testing the\n     \
+  \               effects of different recalibration matrices.\nindels=t         \
+  \   Include indels in quality calculations.\n\nVariation calling:\nvarfile=<file>\
+  \      Use the variants in this var file, instead of calling\n                 \
+  \   variants.  The format can be produced by CallVariants.\nvcf=<file>         \
+  \ Use the variants in this VCF file, instead of\n                    calling variants.\n\
+  callvars=f          Call SNPs, and do not count them as errors.\nploidy=1      \
+  \      Set the organism's ploidy.\nref=                Required for variation-calling.\n\
+  \n*** 'Variant-Calling Cutoffs' flags in callvariants.sh are also supported ***\n\
+  \nSelecting matrices:\nloadq102=           For each recalibration matrix, enable\
+  \ or disable that matrix with t/f.\n                    You can specify pass1 or\
+  \ pass2 like this: loadq102_p1=f loadq102_p2=t.\n                    The default\
+  \ is loadqbp_p1=t loadqbp_p2=t loadqb123_p=t.\nclearmatrices=f     If true, clear\
+  \ all the existing matrix selections.  For example:\n                    'clearmatrices\
+  \ loadqbp_p1'\n                    This would ignore defaults and select only qbp\
+  \ for the first pass.\n\nAvailable matrices:\nq102                Quality, leading\
+  \ quality, trailing quality.\nqap                 Quality, average quality, position.\n\
+  qbp                 Quality, current base, position.\nq10                 Quality,\
+  \ leading quality.\nq12                 Quality, trailing quality.\nqb12       \
+  \         Quality, leading base, current base.\nqb012               Quality, two\
+  \ leading bases, current base.\nqb123               Quality, leading base, current\
+  \ base, trailing base.\nqb234               Quality, current base, two trailing\
+  \ bases.\nq12b12              Quality, trailing quality, leading base, current base.\n\
+  qp                  Quality, position.\nq                   Current quality score\
+  \ only.\n\n\nJava Parameters:\n-Xmx                This will set Java's memory usage,\
+  \ overriding autodetection.\n                    -Xmx20g will specify 20 gigs of\
+  \ RAM, and -Xmx200m will specify 200 megs.\n                    The max is typically\
+  \ 85% of physical memory.\n-eoom               This flag will cause the process\
+  \ to exit if an\n                    out-of-memory exception occurs.  Requires Java\
+  \ 8u92+.\n-da                 Disable assertions.\n\nPlease contact Brian Bushnell\
+  \ at bbushnell@lbl.gov if you encounter any problems.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bbmap:38.90--h1296035_0

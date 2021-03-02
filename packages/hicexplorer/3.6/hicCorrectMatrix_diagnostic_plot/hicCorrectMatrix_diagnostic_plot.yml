@@ -1,0 +1,84 @@
+!Command
+command:
+- hicCorrectMatrix
+- diagnostic_plot
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --matrix
+  - -m
+  description: "Name of the Hi-C matrix to correct in .h5 format.\n(default: None)"
+  args: !SimpleFlagArg
+    name: MATRIX
+- !Flag
+  optional: true
+  synonyms:
+  - --plotName
+  - -o
+  description: 'File name to save the diagnostic plot. (default: None)'
+  args: !SimpleFlagArg
+    name: PLOTNAME
+- !Flag
+  optional: true
+  synonyms:
+  - --chromosomes
+  description: "List of chromosomes to be included in the iterative\ncorrection. The\
+    \ order of the given chromosomes will be\nthen kept for the resulting corrected\
+    \ matrix.\n(default: None)"
+  args: !RepeatFlagArg
+    name: CHROMOSOMES
+- !Flag
+  optional: true
+  synonyms:
+  - --xMax
+  description: "Max value for the x-axis in counts per bin. (default:\nNone)"
+  args: !SimpleFlagArg
+    name: XMAX
+- !Flag
+  optional: true
+  synonyms:
+  - --perchr
+  description: "Compute histogram per chromosome. For samples from\ncells with uneven\
+    \ number of chromosomes and/or\ntranslocations it is advisable to check the histograms\n\
+    per chromosome to find the most conservative\n`filterThreshold`. (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: 'Print processing status. (default: False)'
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: hicCorrectMatrix diagnostic_plot --matrix hic_matrix.h5 -o file.png\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \nRequired arguments:\n  --matrix MATRIX, -m MATRIX\n                        Name\
+  \ of the Hi-C matrix to correct in .h5 format.\n                        (default:\
+  \ None)\n  --plotName PLOTNAME, -o PLOTNAME\n                        File name to\
+  \ save the diagnostic plot. (default: None)\n\nOptional arguments:\n  --chromosomes\
+  \ CHROMOSOMES [CHROMOSOMES ...]\n                        List of chromosomes to\
+  \ be included in the iterative\n                        correction. The order of\
+  \ the given chromosomes will be\n                        then kept for the resulting\
+  \ corrected matrix.\n                        (default: None)\n  --xMax XMAX    \
+  \       Max value for the x-axis in counts per bin. (default:\n                \
+  \        None)\n  --perchr              Compute histogram per chromosome. For samples\
+  \ from\n                        cells with uneven number of chromosomes and/or\n\
+  \                        translocations it is advisable to check the histograms\n\
+  \                        per chromosome to find the most conservative\n        \
+  \                `filterThreshold`. (default: False)\n  --verbose             Print\
+  \ processing status. (default: False)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/hicexplorer:3.6--py_0

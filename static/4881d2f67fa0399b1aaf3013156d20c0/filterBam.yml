@@ -1,0 +1,160 @@
+!Command
+command:
+- filterBam
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --best
+  description: output all best matches that satisfy minId and minCover (default 0)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --noIntrons
+  description: do not allow longer gaps -for RNA-RNA alignments- (default 0)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --paired
+  description: "require that paired reads are on opposite strands of same target\n\
+    (default 0). NOTE: see prerequisite section above."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --uniq
+  description: take only best match, iff, second best is much worse  (default 0)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: output debugging info (default 0)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --insertLimit
+  description: maximum assumed size of inserts (default 10)
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --maxIntronLen
+  description: maximal separation of paired reads (default 500000)
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --maxSortesTest
+  description: maximal sortedness (default 100000)
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --minCover
+  description: minimal percentage of coverage of the query read (default 80)
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --minId
+  description: minimal percentage of identity (default 92)
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --minIntronLen
+  description: minimal     ''     ''   ''    ''   (default 35)
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --uniqThresh
+  description: "threshold % for uniq, second best must be at most this\nfraction of\
+    \ best (default 0.96)"
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --commonGeneFile
+  description: "file name in which to write cases where one read maps to\nseveral\
+    \ different genes"
+  args: !SimpleFlagArg
+    name: s
+- !Flag
+  optional: true
+  synonyms:
+  - --pairBedFile
+  description: "file name of pairedness coverage:\noptions:\na .bed format file in\
+    \ which for each position the number of\nfiltered read pairs is reported that\
+    \ contain the position in\nor between the reads"
+  args: !SimpleFlagArg
+    name: s
+- !Flag
+  optional: true
+  synonyms:
+  - --pairwiseAlignments
+  description: 'use in case alignments were done in pairwise fashion (default:  0)'
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: display this menu
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: " Usage: filterBam --in in.bam --out out.bam [options]\n--------------------------------------------------\n\
+  \ PREREQUISITE: (File sorted by query name)       \n File must be sorted lexicographically\
+  \ by 'queryname', with e.g.\n\n  1) sort -k 1,1 [be aware: 'export LC_ALL=C' might\
+  \ be used  because sort ignores characters like ':' \n      Note: bear in mind that\
+  \ this will require converting your BAM file into SAM.\n\n  2) samtools and bamtools\
+  \ provide facilities to do the sorting,\n      but they are not guaranteed to work\
+  \ because of the problem mentioned above.\n\n  3) In the case of samtools, the command\
+  \ is: 'samtools sort [-n] file.bam'\n      [-n] should sort by query name, just\
+  \ as 'sort -k 10,10' would do in a PSL file.\n      Without options, the sorting\
+  \ will be done by reference name and target coordinate,\n      just as a 'sort -n\
+  \ -k 16,16 | sort -k 14,14' would do with PSL.\n      For more information check\
+  \ the man page included in samtools distribution.\n\n  4) bamtools can also sort\
+  \ bam files 'bamtools sort -queryname -in file.bam',\n      but only provides the\
+  \ option to do it by queryname.\n--------------------------------------------------\n\
+  \ PREREQUISITE: (Paired alignments only)       \n\n If option 'paired'is used, then\
+  \ alignment names must include suffixes /1,/2 or /f, /r\n--------------------------------------------------\n\
+  \ Available options are                            \n--------------------------------------------------\n\
+  \  --best             output all best matches that satisfy minId and minCover (default\
+  \ 0)\n  --help             display this menu\n  --noIntrons        do not allow\
+  \ longer gaps -for RNA-RNA alignments- (default 0)\n  --paired           require\
+  \ that paired reads are on opposite strands of same target\n  \t\t     (default\
+  \ 0). NOTE: see prerequisite section above.\n  --uniq             take only best\
+  \ match, iff, second best is much worse  (default 0)\n  --verbose          output\
+  \ debugging info (default 0)\n  --insertLimit n    maximum assumed size of inserts\
+  \ (default 10)\n  --maxIntronLen n   maximal separation of paired reads (default\
+  \ 500000)\n  --maxSortesTest n  maximal sortedness (default 100000)\n  --minCover\
+  \ n       minimal percentage of coverage of the query read (default 80)\n  --minId\
+  \ n          minimal percentage of identity (default 92)\n  --minIntronLen n   minimal\
+  \     ''     ''   ''    ''   (default 35)\n  --uniqThresh n     threshold % for\
+  \ uniq, second best must be at most this\n                     fraction of best\
+  \ (default 0.96) \n  --commonGeneFile s file name in which to write cases where\
+  \ one read maps to \n                     several different genes\n  --pairBedFile\
+  \ s    file name of pairedness coverage:\n                     options:\n\t\t\t\
+  \ a .bed format file in which for each position the number of\n\t\t\t filtered read\
+  \ pairs is reported that contain the position in\n  \t\t\t or between the reads\n\
+  \  --pairwiseAlignments             use in case alignments were done in pairwise\
+  \ fashion (default:  0)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/augustus:3.4.0--pl526h0faeac2_0

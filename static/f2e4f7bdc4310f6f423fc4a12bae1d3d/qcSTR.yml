@@ -1,0 +1,212 @@
+!Command
+command:
+- qcSTR
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: Tool
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: for
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: generating
+  description: ''
+- !Positional
+  optional: false
+  position: 3
+  name: various
+  description: ''
+- !Positional
+  optional: false
+  position: 4
+  name: QC
+  description: ''
+- !Positional
+  optional: false
+  position: 5
+  name: plots
+  description: ''
+- !Positional
+  optional: false
+  position: 7
+  name: TR
+  description: ''
+- !Positional
+  optional: false
+  position: 8
+  name: callsets
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --vcf
+  description: VCF file to analyze.
+  args: !SimpleFlagArg
+    name: VCF
+- !Flag
+  optional: true
+  synonyms:
+  - --out
+  description: Output prefix for files generated
+  args: !SimpleFlagArg
+    name: OUT
+- !Flag
+  optional: true
+  synonyms:
+  - --vcftype
+  description: "Which type of VCF to restrict the input to, or 'auto'\nfor no restrction\
+    \ (default: auto)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      eh:
+      gangstr:
+      auto:
+      popstr:
+      hipstr:
+      advntr:
+- !Flag
+  optional: true
+  synonyms:
+  - --samples
+  description: File containing list of samples to include
+  args: !SimpleFlagArg
+    name: SAMPLES
+- !Flag
+  optional: true
+  synonyms:
+  - --period
+  description: Only consider repeats with this motif length
+  args: !SimpleFlagArg
+    name: PERIOD
+- !Flag
+  optional: true
+  synonyms:
+  - --quality
+  description: "Which quality plot(s) to produce. May be specified\nmore than once.\
+    \ See the README for more info (default:\n[])"
+  args: !ChoiceFlagArg
+    choices: !!set
+      locus-stratified:
+      sample-stratified:
+      per-locus:
+      per-call:
+      per-sample:
+- !Flag
+  optional: true
+  synonyms:
+  - --quality-ignore-no-call
+  description: "Exclude no-calls and calls without quality scores from\nquality graph\
+    \ distributions instead of the default,\nwhich is to include them as zero quality\
+    \ calls.\nSetting this can cause the plotting to crash if it\nreduces the number\
+    \ of valid calls (in a strata) to <=\n1 (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --refbias-metric
+  description: "Which metric to use for the y-axis on the reference\nbias plot. (default:\
+    \ mean)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      median:
+      mean:
+- !Flag
+  optional: true
+  synonyms:
+  - --refbias-mingts
+  description: "Don't compute points for the reference bias plot based\non fewer than\
+    \ this many genotypes (default: 100)"
+  args: !SimpleFlagArg
+    name: REFBIAS_MINGTS
+- !Flag
+  optional: true
+  synonyms:
+  - --refbias-xrange-min
+  description: "Minimum x-axis value (bp) to show on the reference\nbias plot (default:\
+    \ 0)"
+  args: !SimpleFlagArg
+    name: REFBIAS_XRANGE_MIN
+- !Flag
+  optional: true
+  synonyms:
+  - --refbias-xrange-max
+  description: "Maximum x-axis value (bp) to show on the reference\nbias plot (default:\
+    \ 100)"
+  args: !SimpleFlagArg
+    name: REFBIAS_XRANGE_MAX
+- !Flag
+  optional: true
+  synonyms:
+  - --refbias-binsize
+  description: "Size (bp) of x-axis bins for the reference bias plot\n(default: 5)"
+  args: !SimpleFlagArg
+    name: REFBIAS_BINSIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --numrecords
+  description: Only process this many records
+  args: !SimpleFlagArg
+    name: NUMRECORDS
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: \nTool for generating various QC plots for TR callsets\n\n    \
+  \   [-h] --vcf VCF --out OUT\n       [--vcftype {gangstr,advntr,hipstr,eh,popstr,auto}]\
+  \ [--samples SAMPLES]\n       [--period PERIOD]\n       [--quality {per-locus,sample-stratified,per-sample,locus-stratified,per-call}]\n\
+  \       [--quality-ignore-no-call] [--refbias-metric {mean,median}]\n       [--refbias-mingts\
+  \ REFBIAS_MINGTS]\n       [--refbias-xrange-min REFBIAS_XRANGE_MIN]\n       [--refbias-xrange-max\
+  \ REFBIAS_XRANGE_MAX]\n       [--refbias-binsize REFBIAS_BINSIZE] [--numrecords\
+  \ NUMRECORDS]\n       [--version]\n\noptional arguments:\n  -h, --help         \
+  \   show this help message and exit\n\nRequired arguments:\n  --vcf VCF        \
+  \     VCF file to analyze.\n  --out OUT             Output prefix for files generated\n\
+  \nOptional input arguments:\n  --vcftype {gangstr,advntr,hipstr,eh,popstr,auto}\n\
+  \                        Which type of VCF to restrict the input to, or 'auto'\n\
+  \                        for no restrction (default: auto)\n  --samples SAMPLES\
+  \     File containing list of samples to include\n  --period PERIOD       Only consider\
+  \ repeats with this motif length\n\nQuality plot options:\n  --quality {per-locus,sample-stratified,per-sample,locus-stratified,per-call}\n\
+  \                        Which quality plot(s) to produce. May be specified\n  \
+  \                      more than once. See the README for more info (default:\n\
+  \                        [])\n  --quality-ignore-no-call\n                     \
+  \   Exclude no-calls and calls without quality scores from\n                   \
+  \     quality graph distributions instead of the default,\n                    \
+  \    which is to include them as zero quality calls.\n                        Setting\
+  \ this can cause the plotting to crash if it\n                        reduces the\
+  \ number of valid calls (in a strata) to <=\n                        1 (default:\
+  \ False)\n\nReference bias plot options:\n  --refbias-metric {mean,median}\n   \
+  \                     Which metric to use for the y-axis on the reference\n    \
+  \                    bias plot. (default: mean)\n  --refbias-mingts REFBIAS_MINGTS\n\
+  \                        Don't compute points for the reference bias plot based\n\
+  \                        on fewer than this many genotypes (default: 100)\n  --refbias-xrange-min\
+  \ REFBIAS_XRANGE_MIN\n                        Minimum x-axis value (bp) to show\
+  \ on the reference\n                        bias plot (default: 0)\n  --refbias-xrange-max\
+  \ REFBIAS_XRANGE_MAX\n                        Maximum x-axis value (bp) to show\
+  \ on the reference\n                        bias plot (default: 100)\n  --refbias-binsize\
+  \ REFBIAS_BINSIZE\n                        Size (bp) of x-axis bins for the reference\
+  \ bias plot\n                        (default: 5)\n\nDebug group:\n  --numrecords\
+  \ NUMRECORDS\n                        Only process this many records\n\nVersion:\n\
+  \  --version             show program's version number and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/trtools:4.0.0--py_0

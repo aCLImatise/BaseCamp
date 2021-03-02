@@ -1,0 +1,149 @@
+!Command
+command:
+- ClusterMassTracesByPrecursor
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -in_ms1
+  description: "*                    MS1 mass traces (valid formats: 'consensusXML')"
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -in_swath
+  description: "*                  MS2 / SWATH mass traces (valid formats: 'consensusXML')"
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -out
+  description: "*                       Output file (valid formats: 'mzML')"
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -assign_unassigned_to_all
+  description: Assign unassigned MS2 fragments to all precursors (only for ms1_centrif)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -min_pearson_correlation
+  description: "Minimal pearson correlation score to match elution profiles to each\
+    \ other. (default: '0.7')"
+  args: !SimpleFlagArg
+    name: double
+- !Flag
+  optional: true
+  synonyms:
+  - -max_lag
+  description: "Maximal lag (e.g. by how many spectra the peak may be shifted at most).\
+    \ This parameter will depend on your chromatographic setup but a number between\
+    \ 1 and 3 is usually sensible. (default: '1')"
+  args: !SimpleFlagArg
+    name: number
+- !Flag
+  optional: true
+  synonyms:
+  - -min_nr_ions
+  description: "Minimal number of ions to report a spectrum. (default: '3')"
+  args: !SimpleFlagArg
+    name: number
+- !Flag
+  optional: true
+  synonyms:
+  - -max_rt_apex_difference
+  description: "Maximal difference of the apex in retention time (in seconds). This\
+    \ is a hard parameter, all profiles further away will not be considered at all.\
+    \ (default: '5.0')"
+  args: !SimpleFlagArg
+    name: double
+- !Flag
+  optional: true
+  synonyms:
+  - -swath_lower
+  description: "Swath lower isolation window (default: '0.0')"
+  args: !SimpleFlagArg
+    name: double
+- !Flag
+  optional: true
+  synonyms:
+  - -swath_upper
+  description: "Swath upper isolation window (default: '0.0')"
+  args: !SimpleFlagArg
+    name: double
+- !Flag
+  optional: true
+  synonyms:
+  - -ini
+  description: Use the given TOPP INI file
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -threads
+  description: "Sets the number of threads allowed to be used by the TOPP tool (default:\
+    \ '1')"
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - -write_ini
+  description: Writes the default configuration file
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - --helphelp
+  description: Shows all options (including advanced)
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Shows options
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "\nstty: standard input: Inappropriate ioctl for device\nClusterMassTracesByPrecursor\
+  \ -- Correlate precursor masstraces with fragment ion masstraces in SWATH maps based\
+  \ on their elution profile.\nFull documentation: http://www.openms.de/documentation/UTILS_ClusterMassTracesByPrecursor.html\n\
+  Version: 2.6.0-pre-exported-20201001 Oct  1 2020, 01:37:06\nTo cite OpenMS:\n  Rost\
+  \ HL, Sachsenberg T, Aiche S, Bielow C et al.. OpenMS: a flexible open-source software\
+  \ platform for mass spectrometry data analysis. Nat Meth. 2016; 13, 9: 741-748.\
+  \ doi:10.1038/nmeth.3959.\n\nUsage:\n  ClusterMassTracesByPrecursor <options>\n\n\
+  Options (mandatory options marked with '*'):\n  -in_ms1 <file>*                \
+  \    MS1 mass traces (valid formats: 'consensusXML')\n  -in_swath <file>*      \
+  \            MS2 / SWATH mass traces (valid formats: 'consensusXML')\n  -out <file>*\
+  \                       Output file (valid formats: 'mzML')\n  -assign_unassigned_to_all\
+  \          Assign unassigned MS2 fragments to all precursors (only for ms1_centrif)\n\
+  \  -min_pearson_correlation <double>  Minimal pearson correlation score to match\
+  \ elution profiles to each other. (default: '0.7')\n  -max_lag <number>        \
+  \          Maximal lag (e.g. by how many spectra the peak may be shifted at most).\
+  \ This parameter will depend on your chromatographic setup but a number between\
+  \ 1 and 3 is usually sensible. (default: '1')\n  -min_nr_ions <number>         \
+  \     Minimal number of ions to report a spectrum. (default: '3')\n  -max_rt_apex_difference\
+  \ <double>   Maximal difference of the apex in retention time (in seconds). This\
+  \ is a hard parameter, all profiles further away will not be considered at all.\
+  \ (default: '5.0')\n  -swath_lower <double>              Swath lower isolation window\
+  \ (default: '0.0')\n  -swath_upper <double>              Swath upper isolation window\
+  \ (default: '0.0')\n                                     \nCommon UTIL options:\n\
+  \  -ini <file>                        Use the given TOPP INI file\n  -threads <n>\
+  \                       Sets the number of threads allowed to be used by the TOPP\
+  \ tool (default: '1')\n  -write_ini <file>                  Writes the default configuration\
+  \ file\n  --help                             Shows options\n  --helphelp       \
+  \                  Shows all options (including advanced)\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/openms:2.6.0--h4afb90d_0

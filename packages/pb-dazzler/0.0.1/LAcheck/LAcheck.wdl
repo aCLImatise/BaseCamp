@@ -14,6 +14,9 @@ task LAcheck {
       ~{if (s_then_check) then "-a" else ""} \
       ~{if (vas) then "-vaS" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     verbose_mode_output: ": Verbose mode, output error messages."
     check_sorted_order: ": Check that .las is in sorted order."

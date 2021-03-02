@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, Int, Boolean, String
+
+Anvi_Script_Get_Primer_Matches_V0_1_0 = CommandToolBuilder(tool="anvi_script_get_primer_matches", base_command=["anvi-script-get-primer-matches"], inputs=[ToolInput(tag="in_primer_sequences", input_type=File(optional=True), prefix="--primer-sequences", doc=InputDocumentation(doc="[-m INT]")), ToolInput(tag="in_tabdelimited_file_are", input_type=File(optional=True), prefix="--samples-txt", doc=InputDocumentation(doc="A TAB-delimited file with columns ['sample', 'r1',\n'r2'] or ['sample', 'group', 'r1', 'r2'] where `r1`\nand `r2` columns are paths to compressed or flat FASTQ\nfiles for each `sample` and `group` is an optional\ncolumn for relevant applications where samples are\naffiliated with one-word categorical variables that\ndefine to which group they are assigned. (default:\nNone)")), ToolInput(tag="in_min_remainder_length", input_type=Int(optional=True), prefix="--min-remainder-length", doc=InputDocumentation(doc="Minimum length of the remainder of the read after a\nmatch. If your short read is XXXMMMMMMYYYYYYYYYYYYYY,\nwhere Ms indicate the primer sequence, min remainder\nlength is equal to the length of nucleotide matching\nY. Default is 60.")), ToolInput(tag="in_report_raw", input_type=Boolean(optional=True), prefix="--report-raw", doc=InputDocumentation(doc="Just report them sequences. Don't bother trimming.\n(default: False)")), ToolInput(tag="in_stop_after", input_type=Int(optional=True), prefix="--stop-after", doc=InputDocumentation(doc="Stop after X number of hits because who needs data.\n(default: 0)")), ToolInput(tag="in_output_dir", input_type=File(optional=True), prefix="--output-dir", doc=InputDocumentation(doc="Directory path for output files (default: None)")), ToolInput(tag="in_oligo_typing_dot", input_type=String(), position=0, doc=InputDocumentation(doc="🧀 Can consume: ")), ToolInput(tag="in__can_provide", input_type=String(), position=1, doc=InputDocumentation(doc="🍕 Can provide: ")), ToolInput(tag="in_short_reads_fast_a", input_type=String(), position=2, doc=InputDocumentation(doc="🍺 More on `anvi-script-get-primer-matches`:"))], outputs=[ToolOutput(tag="out_output_dir", output_type=File(optional=True), selector=InputSelector(input_to_select="in_output_dir", type_hint=File()), doc=OutputDocumentation(doc="Directory path for output files (default: None)"))], container="quay.io/biocontainers/anvio-minimal:7--py_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Anvi_Script_Get_Primer_Matches_V0_1_0().translate("wdl")
+

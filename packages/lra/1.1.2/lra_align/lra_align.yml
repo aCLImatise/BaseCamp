@@ -1,0 +1,158 @@
+!Command
+command:
+- lra
+- align
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: genome.fa
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: reads
+  description: ''
+- !Positional
+  optional: true
+  position: 2
+  name: reads2
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -CCS
+  description: (flag) Align CCS reads.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -CLR
+  description: (flag) Align CLR reads.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ONT
+  description: (flag) Align Nanopore reads.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -CONTIG
+  description: (flag) Align large contigs.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: "[FMT]   Print alignment format FMT='b' bed, 's' sam, 'p' PAF, 'pc'\
+    \ PAF with cigar, 'a' pairwise alignment."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -H
+  description: Use hard-clipping for SAM output format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Flag
+  description: F(int)  Skip reads with any flags in F set (bam input only).
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: n(int)   Use n threads (1)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  description: (flag)  Query all positions in a read, not just minimizers.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -SV
+  description: (int) (path to svsig file)  Print sv signatures for each alignment
+    with length above the given threshold (DEFAULT:25). And the path of output svsig
+    file
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -at
+  description: (float) a float in (0, 1), Threshold to decide secondary alignments
+    based on chaining value (DEFAULT:0.7).
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --start
+  description: (int)   Start aligning at this read.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --stride
+  description: (int)   Read stride (for multi-job alignment of the same file).
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: (flag)  Enable dotPlot
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -PAl
+  description: (int) Print at most how many alignments for one read
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Al
+  description: (int) Compute at most how many alignments for one read
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --passthrough
+  description: auxilary tags from the input unaligned bam to the output
+  args: !SimpleFlagArg
+    name: Pass
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Usage: lra align [options] genome.fa reads [reads2 ...]\n\n   The genome\
+  \ should be indexed using the 'lra index' program.\n   'reads' may be either fasta,\
+  \ sam, or bam, and multiple input files may be given.\n\nOptions:\n   -CCS (flag)\
+  \ Align CCS reads. \n   -CLR (flag) Align CLR reads. \n   -ONT (flag) Align Nanopore\
+  \ reads. \n   -CONTIG (flag) Align large contigs.\n   -p  [FMT]   Print alignment\
+  \ format FMT='b' bed, 's' sam, 'p' PAF, 'pc' PAF with cigar, 'a' pairwise alignment.\n\
+  \   -H          Use hard-clipping for SAM output format\n   -Flag  F(int)  Skip\
+  \ reads with any flags in F set (bam input only).\n   -t  n(int)   Use n threads\
+  \ (1)\n   -a  (flag)  Query all positions in a read, not just minimizers. \n   -SV\
+  \  (int) (path to svsig file)  Print sv signatures for each alignment with length\
+  \ above the given threshold (DEFAULT:25). And the path of output svsig file\n  \
+  \ -at  (float) a float in (0, 1), Threshold to decide secondary alignments based\
+  \ on chaining value (DEFAULT:0.7).\n   --start  (int)   Start aligning at this read.\n\
+  \   --stride (int)   Read stride (for multi-job alignment of the same file).\n \
+  \  -d \t(flag)  Enable dotPlot\n   -PAl (int) Print at most how many alignments\
+  \ for one read\n   -Al (int) Compute at most how many alignments for one read\n\
+  \   --passthrough Pass auxilary tags from the input unaligned bam to the output\n\
+  Examples: \nAligning CCS reads:  lra align -CCS -t 16 ref.fa input.fasta/input.bam/input.sam\
+  \ -p s > output.sam\nAligning CLR reads:  lra align -CLR -t 16 ref.fa input.fasta/input.bam/input.sam\
+  \ -p s > output.sam\nAligning Nanopore reads:  lra align -ONT -t 16 ref.fa input.fasta/input.bam/input.sam\
+  \ -p s > output.sam\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/lra:1.1.2--h5ef6573_0

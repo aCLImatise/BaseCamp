@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean
+
+Seqdb_Demo_V0_1_0 = CommandToolBuilder(tool="seqdb_demo", base_command=["seqdb_demo"], inputs=[ToolInput(tag="in_get_sequence", input_type=Boolean(optional=True), prefix="-get-sequence", doc=InputDocumentation(doc=":\nGetSequence() provides a basic interface to fetch\na sequence from a SeqDB object given an OID.")), ToolInput(tag="in_iteration_chunk", input_type=Boolean(optional=True), prefix="-iteration-chunk", doc=InputDocumentation(doc=":\nGetNextOIDChunk() provides versatile iteration meant\nfor multithreaded applications.  Each thread fetches\na set of OIDs to work with, only returning for more\nwhen done with that set.  SeqDB guarantees that all\nOIDs will be assigned, and no OID will be returned\nmore than once.\nThe data will be returned in one of two forms, either\nas a pair of numbers representing a range of OIDs, or\nin a vector.  The number of OIDs desired is indicated\nby setting the size of the vector on input.")), ToolInput(tag="in_iteration_simple", input_type=Boolean(optional=True), prefix="-iteration-simple", doc=InputDocumentation(doc=":\nCheckOrFindOID() provides a simple OID based iteration\nover the database.  The method works well as the test\nclause of a for loop.  This example counts the number\nof sequences in the 'swissprot' database, displaying\nthe count and the combined length of the first 1000.")), ToolInput(tag="in_iteration_threaded", input_type=Boolean(optional=True), prefix="-iteration-threaded", doc=InputDocumentation(doc=":\nGetNextOIDChunk() provides versatile iteration meant\nfor multithreaded applications.  Each thread fetches\na set of OIDs to work with, only returning for more\nwhen done with that set.  SeqDB guarantees that all\nOIDs will be assigned, and no OID will be returned\nmore than once.\nThe data will be returned in one of two forms, either\nas a pair of numbers representing a range of OIDs, or\nin a vector.  The number of OIDs desired is indicated\nby setting the size of the vector on input.")), ToolInput(tag="in_seq_id_to_bio_seq", input_type=Boolean(optional=True), prefix="-seqid-to-bioseq", doc=InputDocumentation(doc=":\nSeqidToBioseq() provides a basic interface to fetch\nsequences from a SeqDB object.  Given a Seq-id, the\nmethod returns the first matching CBioseq found in\nthe database.\n"))], outputs=[], container="quay.io/biocontainers/rmblast:2.10.0--h2d02072_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Seqdb_Demo_V0_1_0().translate("wdl")
+

@@ -1,0 +1,215 @@
+!Command
+command:
+- sdf2fps
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: filenames
+  description: input SD files (default is stdin)
+- !Positional
+  optional: false
+  position: 0
+  name: compressed
+  description: --num-bits INT        use the first INT bits of the input. Use only
+    when the
+- !Positional
+  optional: false
+  position: 0
+  name: fingerprint
+  description: 'shortcuts:'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --id-tag
+  description: "get the record id from TAG instead of the first line\nof the record"
+  args: !SimpleFlagArg
+    name: TAG
+- !Flag
+  optional: true
+  synonyms:
+  - --fp-tag
+  description: get the fingerprint from tag TAG (required)
+  args: !SimpleFlagArg
+    name: TAG
+- !Flag
+  optional: true
+  synonyms:
+  - --in
+  description: Specify if the input SD file is uncompressed or gzip
+  args: !SimpleFlagArg
+    name: FORMAT
+- !Flag
+  optional: true
+  synonyms:
+  - --errors
+  description: "how should structure parse errors be handled?\n(default=strict)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      ignore:
+      strict:
+      report:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: save the fingerprints to FILENAME (default=stdout)
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --out
+  description: "output structure format (default guesses from output\nfilename, or\
+    \ is 'fps')"
+  args: !SimpleFlagArg
+    name: FORMAT
+- !Flag
+  optional: true
+  synonyms:
+  - --software
+  description: use TEXT as the software description
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --type
+  description: use TEXT as the fingerprint type description
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --binary
+  description: "Encoded with the characters '0' and '1'. Bit #0 comes\nfirst. Example:\
+    \ 00100000 encodes the value 4"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --binary-msb
+  description: "Encoded with the characters '0' and '1'. Bit #0 comes\nlast. Example:\
+    \ 00000100 encodes the value 4"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --hex
+  description: "Hex encoded. Bit #0 is the first bit (1<<0) of the\nfirst byte. Example:\
+    \ 01f2 encodes the value \\x01\\xf2 =\n498"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --hex-lsb
+  description: "Hex encoded. Bit #0 is the eigth bit (1<<7) of the\nfirst byte. Example:\
+    \ 804f encodes the value \\x01\\xf2 =\n498"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --hex-msb
+  description: "Hex encoded. Bit #0 is the first bit (1<<0) of the\nlast byte. Example:\
+    \ f201 encodes the value \\x01\\xf2 =\n498"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --base64
+  description: "Base-64 encoded. Bit #0 is first bit (1<<0) of first\nbyte. Example:\
+    \ AfI= encodes value \\x01\\xf2 = 498"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --cactvs
+  description: "CACTVS encoding, based on base64 and includes a\nversion and bit length"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --daylight
+  description: Daylight encoding, which is is base64 variant
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --decoder
+  description: import and use the DECODER function to decode the
+  args: !SimpleFlagArg
+    name: DECODER
+- !Flag
+  optional: true
+  synonyms:
+  - --pubchem
+  description: "decode CACTVS substructure keys used in PubChem. Same\nas --software=CACTVS/unknown\
+    \ --type 'CACTVS-\nE_SCREEN/1.0 extended=2' --fp-\ntag=PUBCHEM_CACTVS_SUBSKEYS\
+    \ --cactvs\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: sdf2fps [-h] [--id-tag TAG] [--fp-tag TAG] [--in FORMAT]\n    \
+  \           [--num-bits INT] [--errors {strict,report,ignore}]\n               [-o\
+  \ FILENAME] [--out FORMAT] [--software TEXT] [--type TEXT]\n               [--version]\
+  \ [--binary] [--binary-msb] [--hex] [--hex-lsb]\n               [--hex-msb] [--base64]\
+  \ [--cactvs] [--daylight]\n               [--decoder DECODER] [--pubchem]\n    \
+  \           [filenames [filenames ...]]\n\nExtract a fingerprint tag from an SD\
+  \ file and generate FPS fingerprints\n\npositional arguments:\n  filenames     \
+  \        input SD files (default is stdin)\n\noptional arguments:\n  -h, --help\
+  \            show this help message and exit\n  --id-tag TAG          get the record\
+  \ id from TAG instead of the first line\n                        of the record\n\
+  \  --fp-tag TAG          get the fingerprint from tag TAG (required)\n  --in FORMAT\
+  \           Specify if the input SD file is uncompressed or gzip\n             \
+  \           compressed\n  --num-bits INT        use the first INT bits of the input.\
+  \ Use only when the\n                        last 1-7 bits of the last byte are\
+  \ not part of the\n                        fingerprint. Unexpected errors will occur\
+  \ if these\n                        bits are not all zero.\n  --errors {strict,report,ignore}\n\
+  \                        how should structure parse errors be handled?\n       \
+  \                 (default=strict)\n  -o FILENAME, --output FILENAME\n         \
+  \               save the fingerprints to FILENAME (default=stdout)\n  --out FORMAT\
+  \          output structure format (default guesses from output\n              \
+  \          filename, or is 'fps')\n  --software TEXT       use TEXT as the software\
+  \ description\n  --type TEXT           use TEXT as the fingerprint type description\n\
+  \  --version             show program's version number and exit\n\nFingerprint decoding\
+  \ options:\n  --binary              Encoded with the characters '0' and '1'. Bit\
+  \ #0 comes\n                        first. Example: 00100000 encodes the value 4\n\
+  \  --binary-msb          Encoded with the characters '0' and '1'. Bit #0 comes\n\
+  \                        last. Example: 00000100 encodes the value 4\n  --hex  \
+  \               Hex encoded. Bit #0 is the first bit (1<<0) of the\n           \
+  \             first byte. Example: 01f2 encodes the value \\x01\\xf2 =\n       \
+  \                 498\n  --hex-lsb             Hex encoded. Bit #0 is the eigth\
+  \ bit (1<<7) of the\n                        first byte. Example: 804f encodes the\
+  \ value \\x01\\xf2 =\n                        498\n  --hex-msb             Hex encoded.\
+  \ Bit #0 is the first bit (1<<0) of the\n                        last byte. Example:\
+  \ f201 encodes the value \\x01\\xf2 =\n                        498\n  --base64 \
+  \             Base-64 encoded. Bit #0 is first bit (1<<0) of first\n           \
+  \             byte. Example: AfI= encodes value \\x01\\xf2 = 498\n  --cactvs   \
+  \           CACTVS encoding, based on base64 and includes a\n                  \
+  \      version and bit length\n  --daylight            Daylight encoding, which\
+  \ is is base64 variant\n  --decoder DECODER     import and use the DECODER function\
+  \ to decode the\n                        fingerprint\n\nshortcuts:\n  --pubchem\
+  \             decode CACTVS substructure keys used in PubChem. Same\n          \
+  \              as --software=CACTVS/unknown --type 'CACTVS-\n                  \
+  \      E_SCREEN/1.0 extended=2' --fp-\n                        tag=PUBCHEM_CACTVS_SUBSKEYS\
+  \ --cactvs\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/chemfp:1.6.1--py27h3dcb392_0

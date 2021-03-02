@@ -1,0 +1,186 @@
+!Command
+command:
+- filter.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --p1
+  description: "Single end input files or left files for paired-end\ndata (.fastq,\
+    \ .fq). Multiple sample files must be\nseparated by comma or space"
+  args: !RepeatFlagArg
+    name: INPUT_FILES_1
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --p2
+  description: "Right files for paired-end data (.fastq, .fq).\nMultiple files must\
+    \ be separated by comma or space"
+  args: !RepeatFlagArg
+    name: INPUT_FILES_2
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --qfmt
+  description: "Quality value format [1= Illumina 1.8, 2= Illumina\n1.3,3= Sanger].\
+    \ If quality format not provided, it\nwill automatically detect based on sequence\
+    \ data"
+  args: !SimpleFlagArg
+    name: QUAL_FMT
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --nb
+  description: "Filter the reads containing given % of uncalled bases\n(N)"
+  args: !SimpleFlagArg
+    name: N_CONT
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --adp
+  description: "Trim the adapter and truncate the read sequence\n(multiple adapter\
+    \ sequences must be separated by\ncomma)"
+  args: !SimpleFlagArg
+    name: ADPT_SEQS
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --msz
+  description: Filter the reads which are lesser than minimum size
+  args: !SimpleFlagArg
+    name: MIN_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --per
+  description: "Truncate the read sequence if it matches to adapter\nsequence equal\
+    \ or more than given percent (0.0-1.0)\n[default=0.9]"
+  args: !SimpleFlagArg
+    name: ADPT_MATCH
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --qthr
+  description: "Filter the read sequence if average quality of bases\nin reads is\
+    \ lower than threshold (1-40) [default:20]"
+  args: !SimpleFlagArg
+    name: QUAL_THRESH
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --trim
+  description: "If trim option set to True, the reads with low quality\n(as defined\
+    \ by option --qthr) will be trimmed instead\nof discarding [True|False] [default:\
+    \ False]"
+  args: !SimpleFlagArg
+    name: TRIM_OPT
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --wsz
+  description: "The window size for trimming (5->3) the reads. This\noption should\
+    \ always set when -trim option is defined\n[default: 5]"
+  args: !SimpleFlagArg
+    name: WIND_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --mlk
+  description: Minimum length of the reads to retain after trimming
+  args: !SimpleFlagArg
+    name: MIN_LEN_FILT
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --cpu
+  description: Number of CPU [default:2]
+  args: !SimpleFlagArg
+    name: CPU
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --ofmt
+  description: Output file format (fastq/fasta) [default:fastq]
+  args: !SimpleFlagArg
+    name: OUT_FMT
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --no-vis
+  description: "No figures will be produced [True|False]\n[default:False]"
+  args: !SimpleFlagArg
+    name: VIS_OPT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: filter.py [-h] [-a INPUT_FILES_1 [INPUT_FILES_1 ...]]\n       \
+  \          [-b INPUT_FILES_2 [INPUT_FILES_2 ...]] [-c QUAL_FMT]\n              \
+  \   [-e N_CONT] [-f ADPT_SEQS] [-d MIN_SIZE] [-g ADPT_MATCH]\n                 [-i\
+  \ QUAL_THRESH] [-n TRIM_OPT] [-p WIND_SIZE]\n                 [-r MIN_LEN_FILT]\
+  \ [-q CPU] [-m OUT_FMT] [-v VIS_OPT]\n                 [--version]\n\nQuality control\
+  \ analysis of single and paired-end sequence data\n\noptional arguments:\n  -h,\
+  \ --help            show this help message and exit\n  -a INPUT_FILES_1 [INPUT_FILES_1\
+  \ ...], --p1 INPUT_FILES_1 [INPUT_FILES_1 ...]\n                        Single end\
+  \ input files or left files for paired-end\n                        data (.fastq,\
+  \ .fq). Multiple sample files must be\n                        separated by comma\
+  \ or space\n  -b INPUT_FILES_2 [INPUT_FILES_2 ...], --p2 INPUT_FILES_2 [INPUT_FILES_2\
+  \ ...]\n                        Right files for paired-end data (.fastq, .fq).\n\
+  \                        Multiple files must be separated by comma or space\n  -c\
+  \ QUAL_FMT, --qfmt QUAL_FMT\n                        Quality value format [1= Illumina\
+  \ 1.8, 2= Illumina\n                        1.3,3= Sanger]. If quality format not\
+  \ provided, it\n                        will automatically detect based on sequence\
+  \ data\n  -e N_CONT, --nb N_CONT\n                        Filter the reads containing\
+  \ given % of uncalled bases\n                        (N)\n  -f ADPT_SEQS, --adp\
+  \ ADPT_SEQS\n                        Trim the adapter and truncate the read sequence\n\
+  \                        (multiple adapter sequences must be separated by\n    \
+  \                    comma)\n  -d MIN_SIZE, --msz MIN_SIZE\n                   \
+  \     Filter the reads which are lesser than minimum size\n  -g ADPT_MATCH, --per\
+  \ ADPT_MATCH\n                        Truncate the read sequence if it matches to\
+  \ adapter\n                        sequence equal or more than given percent (0.0-1.0)\n\
+  \                        [default=0.9]\n  -i QUAL_THRESH, --qthr QUAL_THRESH\n \
+  \                       Filter the read sequence if average quality of bases\n \
+  \                       in reads is lower than threshold (1-40) [default:20]\n \
+  \ -n TRIM_OPT, --trim TRIM_OPT\n                        If trim option set to True,\
+  \ the reads with low quality\n                        (as defined by option --qthr)\
+  \ will be trimmed instead\n                        of discarding [True|False] [default:\
+  \ False]\n  -p WIND_SIZE, --wsz WIND_SIZE\n                        The window size\
+  \ for trimming (5->3) the reads. This\n                        option should always\
+  \ set when -trim option is defined\n                        [default: 5]\n  -r MIN_LEN_FILT,\
+  \ --mlk MIN_LEN_FILT\n                        Minimum length of the reads to retain\
+  \ after trimming\n  -q CPU, --cpu CPU     Number of CPU [default:2]\n  -m OUT_FMT,\
+  \ --ofmt OUT_FMT\n                        Output file format (fastq/fasta) [default:fastq]\n\
+  \  -v VIS_OPT, --no-vis VIS_OPT\n                        No figures will be produced\
+  \ [True|False]\n                        [default:False]\n  --version           \
+  \  show program's version number and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/htseqqc:v1.0--pyh5bfb8f1_0

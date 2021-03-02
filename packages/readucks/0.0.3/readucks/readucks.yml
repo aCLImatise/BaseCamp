@@ -1,0 +1,259 @@
+!Command
+command:
+- readucks
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  description: "FASTQ of input reads or a directory which will be\nrecursively searched\
+    \ for FASTQ files (required)."
+  args: !SimpleFlagArg
+    name: INPUT_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output_dir
+  description: 'Output directory (default: working directory)'
+  args: !SimpleFlagArg
+    name: OUTPUT_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --bin_barcodes
+  description: "Reads will be binned based on their barcode and\nsaved to separate\
+    \ files. (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --annotate_files
+  description: "Writes a CSV file for each input file containing\nbarcode calls for\
+    \ each read. (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --extended_info
+  description: "Writes extended information about barcode calls.\n(default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --summary_info
+  description: "Writes another file with information about barcode\ncalls. (default:\
+    \ False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --mode
+  description: "Demuxing mode, one of [\"stringent\",\"lenient\",\n\"porechop\"].\
+    \ (default: porechop)"
+  args: !SimpleFlagArg
+    name: MODE
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --prefix
+  description: Optional prefix to file names
+  args: !SimpleFlagArg
+    name: PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: "The number of threads to use (1 to turn off\nmultithreading) (default:\
+    \ 2)"
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --num_reads_in_batch
+  description: "The number of reads to process (and hold in memory)\nat a time (default:\
+    \ 200)"
+  args: !SimpleFlagArg
+    name: NUM_READS_IN_BATCH
+- !Flag
+  optional: true
+  synonyms:
+  - --check_reads
+  description: "Number of barcodes to classify before filtering\nbarcode set (default:\
+    \ 1000)"
+  args: !SimpleFlagArg
+    name: CHECK_READS
+- !Flag
+  optional: true
+  synonyms:
+  - --adapter_threshold
+  description: "Identity required for a barcode to be included after\nfiltering (default:\
+    \ 90)"
+  args: !SimpleFlagArg
+    name: ADAPTER_THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbosity
+  description: "Level of output information: 0 = none, 1 = some, 2 =\nlots (default:\
+    \ 1)"
+  args: !SimpleFlagArg
+    name: VERBOSITY
+- !Flag
+  optional: true
+  synonyms:
+  - --require_two_barcodes
+  description: Match barcodes at both ends of read (default single)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --report_alternate_call
+  description: "Reports double/single barcode call to csv in\nsingle/double barcoding\
+    \ mode (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --native_barcodes
+  description: "Only attempts to match the 24 native barcodes\n(default)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pcr_barcodes
+  description: "Only attempts to match the 96 PCR barcodes (default:\nFalse)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --rapid_barcodes
+  description: "Only attempts to match the 12 rapid barcodes\n(default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --limit_barcodes_to
+  description: "Specify a list of barcodes to look for (numbers\nrefer to native,\
+    \ PCR or rapid)"
+  args: !RepeatFlagArg
+    name: LIMIT_BARCODES_TO
+- !Flag
+  optional: true
+  synonyms:
+  - --threshold
+  description: "A read must have at least this percent identity to a\nbarcode (default:\
+    \ 75)"
+  args: !SimpleFlagArg
+    name: THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - --secondary_threshold
+  description: "The second barcode must have at least this percent\nidentity (and\
+    \ match the first one) (default: 65)"
+  args: !SimpleFlagArg
+    name: SECONDARY_THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - --score_diff
+  description: "The second barcode must have at least this percent\nidentity (and\
+    \ match the first one) (default: 5)"
+  args: !SimpleFlagArg
+    name: SCORE_DIFF
+- !Flag
+  optional: true
+  synonyms:
+  - --scoring_scheme
+  description: "Comma-delimited string of alignment scores: match,\nmismatch, gap\
+    \ open, gap extend (default: 3,-6,-5,-2)"
+  args: !SimpleFlagArg
+    name: SCORING_SCHEME
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: readucks -i INPUT_PATH [-o OUTPUT_DIR] [-b] [-a] [-e] [-s] [-m\
+  \ MODE]\n                [-p PREFIX] [-t THREADS] [-n NUM_READS_IN_BATCH]\n    \
+  \            [--check_reads CHECK_READS]\n                [--adapter_threshold ADAPTER_THRESHOLD]\
+  \ [-v VERBOSITY]\n                [--require_two_barcodes] [--report_alternate_call]\n\
+  \                [--native_barcodes] [--pcr_barcodes] [--rapid_barcodes]\n     \
+  \           [--limit_barcodes_to LIMIT_BARCODES_TO [LIMIT_BARCODES_TO ...]]\n  \
+  \              [--threshold THRESHOLD]\n                [--secondary_threshold SECONDARY_THRESHOLD]\n\
+  \                [--score_diff SCORE_DIFF] [--scoring_scheme SCORING_SCHEME]\n \
+  \               [-h] [--version]\n\nReaducks: a simple demuxing tool for nanopore\
+  \ data.\n\nMain options:\n  -i INPUT_PATH, --input INPUT_PATH\n                \
+  \          FASTQ of input reads or a directory which will be\n                 \
+  \         recursively searched for FASTQ files (required).\n  -o OUTPUT_DIR, --output_dir\
+  \ OUTPUT_DIR\n                          Output directory (default: working directory)\n\
+  \  -b, --bin_barcodes      Reads will be binned based on their barcode and\n   \
+  \                       saved to separate files. (default: False)\n  -a, --annotate_files\
+  \    Writes a CSV file for each input file containing\n                        \
+  \  barcode calls for each read. (default: False)\n  -e, --extended_info     Writes\
+  \ extended information about barcode calls.\n                          (default:\
+  \ False)\n  -s, --summary_info      Writes another file with information about barcode\n\
+  \                          calls. (default: False)\n  -m MODE, --mode MODE    Demuxing\
+  \ mode, one of [\"stringent\",\"lenient\",\n                          \"porechop\"\
+  ]. (default: porechop)\n  -p PREFIX, --prefix PREFIX\n                         \
+  \ Optional prefix to file names\n  -t THREADS, --threads THREADS\n             \
+  \             The number of threads to use (1 to turn off\n                    \
+  \      multithreading) (default: 2)\n  -n NUM_READS_IN_BATCH, --num_reads_in_batch\
+  \ NUM_READS_IN_BATCH\n                          The number of reads to process (and\
+  \ hold in memory)\n                          at a time (default: 200)\n  --check_reads\
+  \ CHECK_READS\n                          Number of barcodes to classify before filtering\n\
+  \                          barcode set (default: 1000)\n  --adapter_threshold ADAPTER_THRESHOLD\n\
+  \                          Identity required for a barcode to be included after\n\
+  \                          filtering (default: 90)\n  -v VERBOSITY, --verbosity\
+  \ VERBOSITY\n                          Level of output information: 0 = none, 1\
+  \ = some, 2 =\n                          lots (default: 1)\n\nDemuxing options:\n\
+  \  --require_two_barcodes  Match barcodes at both ends of read (default single)\n\
+  \  --report_alternate_call\n                          Reports double/single barcode\
+  \ call to csv in\n                          single/double barcoding mode (default:\
+  \ False)\n  --native_barcodes       Only attempts to match the 24 native barcodes\n\
+  \                          (default)\n  --pcr_barcodes          Only attempts to\
+  \ match the 96 PCR barcodes (default:\n                          False)\n  --rapid_barcodes\
+  \        Only attempts to match the 12 rapid barcodes\n                        \
+  \  (default: False)\n  --limit_barcodes_to LIMIT_BARCODES_TO [LIMIT_BARCODES_TO\
+  \ ...]\n                          Specify a list of barcodes to look for (numbers\n\
+  \                          refer to native, PCR or rapid)\n\nBarcode search settings:\n\
+  \  Settings for how to search for and call barcodes\n\n  --threshold THRESHOLD \
+  \  A read must have at least this percent identity to a\n                      \
+  \    barcode (default: 75)\n  --secondary_threshold SECONDARY_THRESHOLD\n      \
+  \                    The second barcode must have at least this percent\n      \
+  \                    identity (and match the first one) (default: 65)\n  --score_diff\
+  \ SCORE_DIFF\n                          The second barcode must have at least this\
+  \ percent\n                          identity (and match the first one) (default:\
+  \ 5)\n  --scoring_scheme SCORING_SCHEME\n                          Comma-delimited\
+  \ string of alignment scores: match,\n                          mismatch, gap open,\
+  \ gap extend (default: 3,-6,-5,-2)\n\nHelp:\n  -h, --help              Show this\
+  \ help message and exit\n  --version               Show program's version number\
+  \ and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/readucks:0.0.3--py_0

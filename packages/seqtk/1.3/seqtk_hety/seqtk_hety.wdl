@@ -14,6 +14,9 @@ task SeqtkHety {
       ~{if defined(start_positions_window) then ("-t " +  '"' + start_positions_window + '"') else ""} \
       ~{if (treat_lowercases_masked) then "-m" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     window_size: "window size [50000]"
     start_positions_window: "# start positions in a window [5]"

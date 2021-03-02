@@ -1,0 +1,83 @@
+!Command
+command:
+- junction_annotation.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input-file
+  description: Alignment file in BAM or SAM format.
+  args: !SimpleFlagArg
+    name: INPUT_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --refgene
+  description: "Reference gene model in bed format. This file is\nbetter to be a pooled\
+    \ gene model as it will be used to\nannotate splicing junctions [required]"
+  args: !SimpleFlagArg
+    name: REF_GENE_MODEL
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out-prefix
+  description: Prefix of output files(s). [required]
+  args: !SimpleFlagArg
+    name: OUTPUT_PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --min-intron
+  description: Minimum intron length (bp). default=50 [optional]
+  args: !SimpleFlagArg
+    name: MIN_INTRON
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --mapq
+  description: "Minimum mapping quality (phred scaled) for an\nalignment to be considered\
+    \ as \"uniquely mapped\".\ndefault=30\n"
+  args: !SimpleFlagArg
+    name: MAP_QUAL
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "Usage: junction_annotation.py [options]\n\nAnnotate splicing reads against\
+  \ gene model in two levels: reads level and  juncion level.\nNote:\n1) A read, especially\
+  \ long read, can be spliced 2 or more times\n2) Multiple splicing reads spanning\
+  \ the same intron can be consolidated into one splicing junction.\n\n\n\nOptions:\n\
+  \  --version             show program's version number and exit\n  -h, --help  \
+  \          show this help message and exit\n  -i INPUT_FILE, --input-file=INPUT_FILE\n\
+  \                        Alignment file in BAM or SAM format.\n  -r REF_GENE_MODEL,\
+  \ --refgene=REF_GENE_MODEL\n                        Reference gene model in bed\
+  \ format. This file is\n                        better to be a pooled gene model\
+  \ as it will be used to\n                        annotate splicing junctions [required]\n\
+  \  -o OUTPUT_PREFIX, --out-prefix=OUTPUT_PREFIX\n                        Prefix\
+  \ of output files(s). [required]\n  -m MIN_INTRON, --min-intron=MIN_INTRON\n   \
+  \                     Minimum intron length (bp). default=50 [optional]\n  -q MAP_QUAL,\
+  \ --mapq=MAP_QUAL\n                        Minimum mapping quality (phred scaled)\
+  \ for an\n                        alignment to be considered as \"uniquely mapped\"\
+  .\n                        default=30\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/rseqc:4.0.0--py38h0213d0e_0

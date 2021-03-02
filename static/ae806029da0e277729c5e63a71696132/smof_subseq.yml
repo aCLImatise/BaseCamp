@@ -1,0 +1,84 @@
+!Command
+command:
+- smof
+- subseq
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: INPUT
+  description: input fasta sequence (default = stdin)
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  description: N, --bounds N N  from and to values (indexed from 1)
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --gff
+  description: get bounds from this gff3 file
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --keep
+  description: With --gff, keep sequences with no matches
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --color
+  description: color subsequence (do not extract)
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --annotate
+  description: Append the subsequence interval to the defline
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Y
+  - --force-color
+  description: print in color even to non-tty (DANGEROUS)
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: <fastafile> | smof subseq <options>\n\nThe current default action\
+  \ is unfortunately excruciating death. The simplest\nusage is `smof subseq -b START\
+  \ STOP`, where START and STOP are two integers.\nIf START is greater than STOP,\
+  \ and if the sequence appears to be nucleic,\n`subseq` will write the reverse complement.\
+  \ Subseq can also read start and\nstop positions from a GFF file, where column 1\
+  \ in the GFF is checked against\nthe sequence id (the first word in the fasta header).\
+  \ In addition to sequence\nsubsetting, `subseq` can color the matched regions.\n\
+  \npositional arguments:\n  INPUT                 input fasta sequence (default =\
+  \ stdin)\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  -b N N, --bounds N N  from and to values (indexed from 1)\n  -f FILE,\
+  \ --gff FILE   get bounds from this gff3 file\n  -k, --keep            With --gff,\
+  \ keep sequences with no matches\n  -c STR, --color STR   color subsequence (do\
+  \ not extract)\n  -a, --annotate        Append the subsequence interval to the defline\n\
+  \  -Y, --force-color     print in color even to non-tty (DANGEROUS)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/smof:2.21.1--py_0

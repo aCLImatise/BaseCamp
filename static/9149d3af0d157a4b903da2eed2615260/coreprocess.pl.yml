@@ -1,0 +1,294 @@
+!Command
+command:
+- coreprocess.pl
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: argument
+  description: -s, --symbolic-link          make symbolic links instead of copying
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --archive
+  description: same as -dR --preserve=all
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --attributes-only
+  description: don't copy the file data, just the attributes
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --backup
+  description: '[=CONTROL]       make a backup of each existing destination file'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  description: like --backup but does not accept an argument
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --copy-contents
+  description: copy contents of special files when recursive
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: same as --no-dereference --preserve=links
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --force
+  description: "if an existing destination file cannot be\nopened, remove it and try\
+    \ again (this option\nis ignored when the -n option is also used)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --interactive
+  description: "prompt before overwrite (overrides a previous -n\noption)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -H
+  description: follow command-line symbolic links in SOURCE
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --link
+  description: hard link files instead of copying
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  - --dereference
+  description: always follow symbolic links in SOURCE
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --no-clobber
+  description: "do not overwrite an existing file (overrides\na previous -i option)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -P
+  - --no-dereference
+  description: never follow symbolic links in SOURCE
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: same as --preserve=mode,ownership,timestamps
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --preserve
+  description: "[=ATTR_LIST]   preserve the specified attributes (default:\nmode,ownership,timestamps),\
+    \ if possible\nadditional attributes: context, links, xattr,\nall"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-preserve
+  description: don't preserve the specified attributes
+  args: !SimpleFlagArg
+    name: ATTR_LIST
+- !Flag
+  optional: true
+  synonyms:
+  - --parents
+  description: use full source file name under DIRECTORY
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  - -r
+  - --recursive
+  description: copy directories recursively
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --reflink
+  description: '[=WHEN]         control clone/CoW copies. See below'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --remove-destination
+  description: "remove each existing destination file before\nattempting to open it\
+    \ (contrast with --force)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sparse
+  description: control creation of sparse files. See below
+  args: !SimpleFlagArg
+    name: WHEN
+- !Flag
+  optional: true
+  synonyms:
+  - --strip-trailing-slashes
+  description: remove any trailing slashes from each SOURCE
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --suffix
+  description: override the usual backup suffix
+  args: !SimpleFlagArg
+    name: SUFFIX
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --target-directory
+  description: copy all SOURCE arguments into DIRECTORY
+  args: !SimpleFlagArg
+    name: DIRECTORY
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --no-target-directory
+  description: treat DEST as a normal file
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --update
+  description: "copy only when the SOURCE file is newer\nthan the destination file\
+    \ or when the\ndestination file is missing"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: explain what is being done
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --one-file-system
+  description: stay on this file system
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Z
+  description: "set SELinux security context of destination\nfile to default type"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --context
+  description: "[=CTX]          like -Z, or if CTX is specified then set the\nSELinux\
+    \ or SMACK security context to CTX"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: display this help and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: output version information and exit
+  args: !EmptyFlagArg {}
+help_text: "Usage: cp [OPTION]... [-T] SOURCE DEST\n  or:  cp [OPTION]... SOURCE...\
+  \ DIRECTORY\n  or:  cp [OPTION]... -t DIRECTORY SOURCE...\nCopy SOURCE to DEST,\
+  \ or multiple SOURCE(s) to DIRECTORY.\n\nMandatory arguments to long options are\
+  \ mandatory for short options too.\n  -a, --archive                same as -dR --preserve=all\n\
+  \      --attributes-only        don't copy the file data, just the attributes\n\
+  \      --backup[=CONTROL]       make a backup of each existing destination file\n\
+  \  -b                           like --backup but does not accept an argument\n\
+  \      --copy-contents          copy contents of special files when recursive\n\
+  \  -d                           same as --no-dereference --preserve=links\n  -f,\
+  \ --force                  if an existing destination file cannot be\n         \
+  \                        opened, remove it and try again (this option\n        \
+  \                         is ignored when the -n option is also used)\n  -i, --interactive\
+  \            prompt before overwrite (overrides a previous -n\n                \
+  \                  option)\n  -H                           follow command-line symbolic\
+  \ links in SOURCE\n  -l, --link                   hard link files instead of copying\n\
+  \  -L, --dereference            always follow symbolic links in SOURCE\n  -n, --no-clobber\
+  \             do not overwrite an existing file (overrides\n                   \
+  \              a previous -i option)\n  -P, --no-dereference         never follow\
+  \ symbolic links in SOURCE\n  -p                           same as --preserve=mode,ownership,timestamps\n\
+  \      --preserve[=ATTR_LIST]   preserve the specified attributes (default:\n  \
+  \                               mode,ownership,timestamps), if possible\n      \
+  \                           additional attributes: context, links, xattr,\n    \
+  \                             all\n      --no-preserve=ATTR_LIST  don't preserve\
+  \ the specified attributes\n      --parents                use full source file\
+  \ name under DIRECTORY\n  -R, -r, --recursive          copy directories recursively\n\
+  \      --reflink[=WHEN]         control clone/CoW copies. See below\n      --remove-destination\
+  \     remove each existing destination file before\n                           \
+  \      attempting to open it (contrast with --force)\n      --sparse=WHEN      \
+  \      control creation of sparse files. See below\n      --strip-trailing-slashes\
+  \  remove any trailing slashes from each SOURCE\n                              \
+  \   argument\n  -s, --symbolic-link          make symbolic links instead of copying\n\
+  \  -S, --suffix=SUFFIX          override the usual backup suffix\n  -t, --target-directory=DIRECTORY\
+  \  copy all SOURCE arguments into DIRECTORY\n  -T, --no-target-directory    treat\
+  \ DEST as a normal file\n  -u, --update                 copy only when the SOURCE\
+  \ file is newer\n                                 than the destination file or when\
+  \ the\n                                 destination file is missing\n  -v, --verbose\
+  \                explain what is being done\n  -x, --one-file-system        stay\
+  \ on this file system\n  -Z                           set SELinux security context\
+  \ of destination\n                                 file to default type\n      --context[=CTX]\
+  \          like -Z, or if CTX is specified then set the\n                      \
+  \           SELinux or SMACK security context to CTX\n      --help     display this\
+  \ help and exit\n      --version  output version information and exit\n\nBy default,\
+  \ sparse SOURCE files are detected by a crude heuristic and the\ncorresponding DEST\
+  \ file is made sparse as well.  That is the behavior\nselected by --sparse=auto.\
+  \  Specify --sparse=always to create a sparse DEST\nfile whenever the SOURCE file\
+  \ contains a long enough sequence of zero bytes.\nUse --sparse=never to inhibit\
+  \ creation of sparse files.\n\nWhen --reflink[=always] is specified, perform a lightweight\
+  \ copy, where the\ndata blocks are copied only when modified.  If this is not possible\
+  \ the copy\nfails, or if --reflink=auto is specified, fall back to a standard copy.\n\
+  Use --reflink=never to ensure a standard copy is performed.\n\nThe backup suffix\
+  \ is '~', unless set with --suffix or SIMPLE_BACKUP_SUFFIX.\nThe version control\
+  \ method may be selected via the --backup option or through\nthe VERSION_CONTROL\
+  \ environment variable.  Here are the values:\n\n  none, off       never make backups\
+  \ (even if --backup is given)\n  numbered, t     make numbered backups\n  existing,\
+  \ nil   numbered if numbered backups exist, simple otherwise\n  simple, never  \
+  \ always make simple backups\n\nAs a special case, cp makes a backup of SOURCE when\
+  \ the force and backup\noptions are given and SOURCE and DEST are the same name\
+  \ for an existing,\nregular file.\n\nGNU coreutils online help: <https://www.gnu.org/software/coreutils/>\n\
+  Report any translation bugs to <https://translationproject.org/team/>\nFull documentation\
+  \ <https://www.gnu.org/software/coreutils/cp>\nor available locally via: info '(coreutils)\
+  \ cp invocation'\nError!! Wrong sequence type!! \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bttoxin_digger:1.0.8--0

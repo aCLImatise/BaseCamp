@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, Float, Int, String, Boolean
+
+Design_Multistate_Py_V0_1_0 = CommandToolBuilder(tool="design_multistate.py", base_command=["design-multistate.py"], inputs=[ToolInput(tag="in_input", input_type=File(optional=True), prefix="--input", doc=InputDocumentation(doc="Read structures from input file. Default: read from\nstdin. Format must be dot-bracket structures, each per\none line with a trailing line containing only a semi-\ncolon. (default: <_io.TextIOWrapper name='<stdin>'\nmode='r' encoding='utf-8'>)")), ToolInput(tag="in_temperature", input_type=Float(optional=True), prefix="--temperature", doc=InputDocumentation(doc="Temperature of the energy calculations. (default:\n37.0)")), ToolInput(tag="in_number", input_type=Int(optional=True), prefix="--number", doc=InputDocumentation(doc="Number of designs to generate (default: 1000)")), ToolInput(tag="in_model", input_type=String(optional=True), prefix="--model", doc=InputDocumentation(doc="Model for getting a new sequence: uniform, nussinov,\nbasepairs, stacking (default: basepairs)")), ToolInput(tag="in_energy", input_type=String(optional=True), prefix="--energy", doc=InputDocumentation(doc="Target energy (default: None)")), ToolInput(tag="in_gc", input_type=Float(optional=True), prefix="--gc", doc=InputDocumentation(doc="Target GC content. (default: 0.5)")), ToolInput(tag="in_simple_tolerance", input_type=Float(optional=True), prefix="--simple_tolerance", doc=InputDocumentation(doc="Tolerated relative deviation of simple energies.\n(default: 0.3)")), ToolInput(tag="in_tolerance", input_type=Int(optional=True), prefix="--tolerance", doc=InputDocumentation(doc="Turner energy tolerance of energies (default: 1\nkcal/mol, turn off by values <0) (default: 1)")), ToolInput(tag="in_gc_tolerance", input_type=Float(optional=True), prefix="--gctolerance", doc=InputDocumentation(doc="Tolerated relative deviation to target GC content.\n(default: 0.1)")), ToolInput(tag="in_csv_output", input_type=Boolean(optional=True), prefix="--csv_output", doc=InputDocumentation(doc="Output csv format (with additional information)\n(default: False)")), ToolInput(tag="in_debug", input_type=Boolean(optional=True), prefix="--debug", doc=InputDocumentation(doc="Show debug information of library (default: False)"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Design_Multistate_Py_V0_1_0().translate("wdl", allow_empty_container=True)
+

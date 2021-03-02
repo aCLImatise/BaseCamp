@@ -56,6 +56,9 @@ task BamtoolsFilter {
       ~{if defined(is_second_mate) then ("-isSecondMate " +  '"' + is_second_mate + '"') else ""} \
       ~{if defined(is_singleton) then ("-isSingleton " +  '"' + is_singleton + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "the input BAM file(s) [stdin]"
     list: "the input BAM file list, one\\nline per file"

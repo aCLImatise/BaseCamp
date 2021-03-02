@@ -1,0 +1,117 @@
+!Command
+command:
+- spades-gsimplifier
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --gfa
+  description: 'produce GFA output (default: true)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --spades-gp
+  description: "output graph pack in SPAdes internal format (default: false). Recommended\
+    \ if bulges are removed to improve further read mapping. In case GFA output is\
+    \ required with graph pack specify '--gfa'"
+  args: !SimpleFlagArg
+    name: produce
+- !Flag
+  optional: true
+  synonyms:
+  - --use-cov-ratios
+  description: 'enable procedures based on unitig coverage ratios (default: false)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  description: k-mer length to use
+  args: !SimpleFlagArg
+    name: value
+- !Flag
+  optional: true
+  synonyms:
+  - --read-length
+  description: read length
+  args: !SimpleFlagArg
+    name: value
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --coverage
+  description: "estimated average (k+1-mer) bin coverage (default: 0.) or 'auto' (works\
+    \ only with '-d/--dead-ends' provided)"
+  args: !SimpleFlagArg
+    name: coverage
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: '# of threads to use (default: max_threads / 2)'
+  args: !SimpleFlagArg
+    name: value
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --profile
+  description: file with edge coverage profiles across multiple samples
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --stop-codons
+  description: file stop codon positions
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --dead-ends
+  description: while processing a subgraph -- file listing edges which are dead-ends
+    in the original graph
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - --tmpdir
+  description: "scratch directory to use (default: <output prefix>.tmp)\n"
+  args: !SimpleFlagArg
+    name: dir
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "SYNOPSIS\n        spades-gsimplifier <graph. In GFA (ending with .gfa)\
+  \ or prefix to SPAdes graph pack> <output prefix> [--gfa] [--spades-gp] [--use-cov-ratios]\
+  \ -k <value> --read-length <value> [-c <coverage>] [-t <value>] [-p <file>] [-s\
+  \ <file>] [-d <file>] [--tmpdir <dir>]\n\nOPTIONS\n        --gfa       produce GFA\
+  \ output (default: true)\n        --spades-gp produce output graph pack in SPAdes\
+  \ internal format (default: false). Recommended if bulges are removed to improve\
+  \ further read mapping. In case GFA output is required with graph pack specify '--gfa'\n\
+  \n        --use-cov-ratios\n                    enable procedures based on unitig\
+  \ coverage ratios (default: false)\n\n        -k <value>  k-mer length to use\n\n\
+  \        --read-length <value>\n                    read length\n\n        -c, --coverage\
+  \ <coverage>\n                    estimated average (k+1-mer) bin coverage (default:\
+  \ 0.) or 'auto' (works only with '-d/--dead-ends' provided)\n\n        -t, --threads\
+  \ <value>\n                    # of threads to use (default: max_threads / 2)\n\n\
+  \        -p, --profile <file>\n                    file with edge coverage profiles\
+  \ across multiple samples\n\n        -s, --stop-codons <file>\n                \
+  \    file stop codon positions\n\n        -d, --dead-ends <file>\n             \
+  \       while processing a subgraph -- file listing edges which are dead-ends in\
+  \ the original graph\n\n        --tmpdir <dir>\n                    scratch directory\
+  \ to use (default: <output prefix>.tmp)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/spades:3.15.0--h633aebb_0

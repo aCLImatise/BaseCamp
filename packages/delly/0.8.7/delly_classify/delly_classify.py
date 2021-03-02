@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, File, String
+
+Delly_Classify_V0_1_0 = CommandToolBuilder(tool="delly_classify", base_command=["delly", "classify"], inputs=[ToolInput(tag="in_arg_somatic_somatic", input_type=Boolean(optional=True), prefix="-f", doc=InputDocumentation(doc="[ --filter ] arg (=somatic)        Filter mode (somatic, germline)")), ToolInput(tag="in_arg_filtered_file", input_type=File(optional=True), prefix="-o", doc=InputDocumentation(doc="[ --outfile ] arg (='cnv.bcf')     Filtered CNV BCF output file")), ToolInput(tag="in_arg_min_size", input_type=Boolean(optional=True), prefix="-m", doc=InputDocumentation(doc="[ --minsize ] arg (=1000)          min. CNV size")), ToolInput(tag="in_arg_max_size", input_type=Boolean(optional=True), prefix="-n", doc=InputDocumentation(doc="[ --maxsize ] arg (=500000000)     max. CNV size")), ToolInput(tag="in_filter_sites_pass", input_type=Boolean(optional=True), prefix="-p", doc=InputDocumentation(doc="[ --pass ]                         Filter sites for PASS")), ToolInput(tag="in_arg_twocolumn_sample", input_type=Boolean(optional=True), prefix="-s", doc=InputDocumentation(doc="[ --samples ] arg                  Two-column sample file listing sample\nname and tumor or control")), ToolInput(tag="in_arg_probability_germline", input_type=Boolean(optional=True), prefix="-e", doc=InputDocumentation(doc="[ --pgerm ] arg (=0.00100000005)   probability germline")), ToolInput(tag="in_arg_min_cn", input_type=Boolean(optional=True), prefix="-t", doc=InputDocumentation(doc="[ --cn-offset ] arg (=0.200000003) min. CN offset")), ToolInput(tag="in_arg_baseline_ploidy", input_type=Boolean(optional=True), prefix="-y", doc=InputDocumentation(doc="[ --ploidy ] arg (=2)              baseline ploidy")), ToolInput(tag="in_arg_min_site", input_type=Boolean(optional=True), prefix="-q", doc=InputDocumentation(doc="[ --qual ] arg (=50)               min. site quality")), ToolInput(tag="in_arg_max_population", input_type=Boolean(optional=True), prefix="-x", doc=InputDocumentation(doc="[ --maxsd ] arg (=0.150000006)     max. population SD")), ToolInput(tag="in_input_dot_bcf", input_type=String(), position=0, doc=InputDocumentation(doc=""))], outputs=[ToolOutput(tag="out_arg_filtered_file", output_type=File(optional=True), selector=InputSelector(input_to_select="in_arg_filtered_file", type_hint=File()), doc=OutputDocumentation(doc="[ --outfile ] arg (='cnv.bcf')     Filtered CNV BCF output file"))], container="quay.io/biocontainers/delly:0.8.7--hf3ca161_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Delly_Classify_V0_1_0().translate("wdl")
+

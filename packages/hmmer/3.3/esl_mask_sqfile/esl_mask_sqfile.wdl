@@ -8,6 +8,9 @@ task EslmaskSqfile {
     esl_mask sqfile \
       ~{mask_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mask_file: ""
   }

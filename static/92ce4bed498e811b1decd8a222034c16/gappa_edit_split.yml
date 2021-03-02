@@ -1,0 +1,120 @@
+!Command
+command:
+- gappa
+- edit
+- split
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --jplace-path
+  description: ":PATH(existing)=[] ... REQUIRED\nList of jplace files or directories\
+    \ to process. For directories, only files with the extension `.jplace[.gz]` are\
+    \ processed."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --split-file
+  description: ":FILE Excludes: --otu-table-file\nFile containing a comma-separated\
+    \ mapping of query names to sample names."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --otu-table-file
+  description: ":FILE Excludes: --split-file\nFile containing a tab-separated OTU\
+    \ table."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --out-dir
+  description: =.            Directory to write files to
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --file-prefix
+  description: File prefix for output files
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --file-suffix
+  description: File suffix for output files
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --compress
+  description: If set, compress the output files using gzip. Output file extensions
+    are automatically extended by `.gz`.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --allow-file-overwriting
+  description: Allow to overwrite existing output files instead of aborting the command.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: Produce more verbose output.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: =8            Number of threads to use for calculations.
+  args: !SimpleFlagArg
+    name: UINT
+- !Flag
+  optional: true
+  synonyms:
+  - --log-file
+  description: Write all output to a log file, in addition to standard output to the
+    terminal.
+  args: !SimpleFlagArg
+    name: TEXT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Print this help message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Split the queries in jplace files into multiple files, for example, according\
+  \ to an OTU table.\nUsage: gappa edit split [OPTIONS]\n\nInput:\n  --jplace-path\
+  \ TEXT:PATH(existing)=[] ... REQUIRED\n                              List of jplace\
+  \ files or directories to process. For directories, only files with the extension\
+  \ `.jplace[.gz]` are processed.\n  --split-file TEXT:FILE Excludes: --otu-table-file\n\
+  \                              File containing a comma-separated mapping of query\
+  \ names to sample names.\n  --otu-table-file TEXT:FILE Excludes: --split-file\n\
+  \                              File containing a tab-separated OTU table.\n\n\n\
+  Output:\n  --out-dir TEXT=.            Directory to write files to\n  --file-prefix\
+  \ TEXT          File prefix for output files\n  --file-suffix TEXT          File\
+  \ suffix for output files\n  --compress                  If set, compress the output\
+  \ files using gzip. Output file extensions are automatically extended by `.gz`.\n\
+  \n\nGlobal Options:\n  --allow-file-overwriting    Allow to overwrite existing output\
+  \ files instead of aborting the command.\n  --verbose                   Produce\
+  \ more verbose output.\n  --threads UINT=8            Number of threads to use for\
+  \ calculations.\n  --log-file TEXT             Write all output to a log file, in\
+  \ addition to standard output to the terminal.\n  --help                      Print\
+  \ this help message and exit.\n\ngappa - a toolkit for analyzing and visualizing\
+  \ phylogenetic (placement) data\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/gappa:0.7.0--he513fc3_0

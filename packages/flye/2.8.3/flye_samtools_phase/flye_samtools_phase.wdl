@@ -1,0 +1,60 @@
+version 1.0
+
+task FlyesamtoolsPhase {
+  input {
+    Int? block_length
+    String? prefix_bams_output
+    Int? min_het_phredlod
+    Int? min_base_quality
+    Int? max_read_depth
+    Boolean? attempt_fix_chimeras
+    Boolean? drop_reads_ambiguous
+    File? input_fmt_option
+    String? output_fmt
+    File? output_fmt_option
+    File? reference
+    String sam_tools
+    String phase
+    String in_dot_bam
+  }
+  command <<<
+    flye_samtools phase \
+      ~{sam_tools} \
+      ~{phase} \
+      ~{in_dot_bam} \
+      ~{if defined(block_length) then ("-k " +  '"' + block_length + '"') else ""} \
+      ~{if defined(prefix_bams_output) then ("-b " +  '"' + prefix_bams_output + '"') else ""} \
+      ~{if defined(min_het_phredlod) then ("-q " +  '"' + min_het_phredlod + '"') else ""} \
+      ~{if defined(min_base_quality) then ("-Q " +  '"' + min_base_quality + '"') else ""} \
+      ~{if defined(max_read_depth) then ("-D " +  '"' + max_read_depth + '"') else ""} \
+      ~{if (attempt_fix_chimeras) then "-F" else ""} \
+      ~{if (drop_reads_ambiguous) then "-A" else ""} \
+      ~{if defined(input_fmt_option) then ("--input-fmt-option " +  '"' + input_fmt_option + '"') else ""} \
+      ~{if defined(output_fmt) then ("--output-fmt " +  '"' + output_fmt + '"') else ""} \
+      ~{if defined(output_fmt_option) then ("--output-fmt-option " +  '"' + output_fmt_option + '"') else ""} \
+      ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""}
+  >>>
+  runtime {
+    docker: "quay.io/biocontainers/flye:2.8.3--py38h1c8e9b9_0"
+  }
+  parameter_meta {
+    block_length: "block length [13]"
+    prefix_bams_output: "prefix of BAMs to output [null]"
+    min_het_phredlod: "min het phred-LOD [37]"
+    min_base_quality: "min base quality in het calling [13]"
+    max_read_depth: "max read depth [256]"
+    attempt_fix_chimeras: "do not attempt to fix chimeras"
+    drop_reads_ambiguous: "drop reads with ambiguous phase"
+    input_fmt_option: "[=VAL]\\nSpecify a single input file format option in the form\\nof OPTION or OPTION=VALUE"
+    output_fmt: "[,OPT[=VAL]]...\\nSpecify output format (SAM, BAM, CRAM)"
+    output_fmt_option: "[=VAL]\\nSpecify a single output file format option in the form\\nof OPTION or OPTION=VALUE"
+    reference: "Reference sequence FASTA FILE [null]\\n"
+    sam_tools: ""
+    phase: ""
+    in_dot_bam: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_fmt_option = "${in_output_fmt_option}"
+  }
+}

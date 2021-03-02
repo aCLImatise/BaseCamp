@@ -1,0 +1,95 @@
+!Command
+command:
+- reports.py
+- assembly_stats
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: samples
+  description: Sample names.
+- !Positional
+  optional: false
+  position: 1
+  name: outFile
+  description: Output report file.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --cov_thresholds
+  description: "Genome coverage thresholds to report on. (default: (1,\n5, 20, 100))"
+  args: !RepeatFlagArg
+    name: COV_THRESHOLDS
+- !Flag
+  optional: true
+  synonyms:
+  - --assembly_dir
+  description: "Directory with assembly outputs. (default:\ndata/02_assembly)"
+  args: !SimpleFlagArg
+    name: ASSEMBLY_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --assembly_tmp
+  description: "Directory with assembly temp files. (default:\ntmp/02_assembly)"
+  args: !SimpleFlagArg
+    name: ASSEMBLY_TMP
+- !Flag
+  optional: true
+  synonyms:
+  - --align_dir
+  description: "Directory with reads aligned to own assembly.\n(default: data/02_align_to_self)"
+  args: !SimpleFlagArg
+    name: ALIGN_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --reads_dir
+  description: "Directory with unaligned filtered read BAMs. (default:\ndata/01_per_sample)"
+  args: !SimpleFlagArg
+    name: READS_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --raw_reads_dir
+  description: "Directory with unaligned raw read BAMs. (default:\ndata/00_raw)\n"
+  args: !SimpleFlagArg
+    name: RAW_READS_DIR
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: reports.py subcommand assembly_stats [-h]\n                   \
+  \                         [--cov_thresholds COV_THRESHOLDS [COV_THRESHOLDS ...]]\n\
+  \                                            [--assembly_dir ASSEMBLY_DIR]\n   \
+  \                                         [--assembly_tmp ASSEMBLY_TMP]\n      \
+  \                                      [--align_dir ALIGN_DIR]\n               \
+  \                             [--reads_dir READS_DIR]\n                        \
+  \                    [--raw_reads_dir RAW_READS_DIR]\n                         \
+  \                   samples [samples ...] outFile\n\nFetch assembly-level statistics\
+  \ for a given sample\n\npositional arguments:\n  samples               Sample names.\n\
+  \  outFile               Output report file.\n\noptional arguments:\n  -h, --help\
+  \            show this help message and exit\n  --cov_thresholds COV_THRESHOLDS\
+  \ [COV_THRESHOLDS ...]\n                        Genome coverage thresholds to report\
+  \ on. (default: (1,\n                        5, 20, 100))\n  --assembly_dir ASSEMBLY_DIR\n\
+  \                        Directory with assembly outputs. (default:\n          \
+  \              data/02_assembly)\n  --assembly_tmp ASSEMBLY_TMP\n              \
+  \          Directory with assembly temp files. (default:\n                     \
+  \   tmp/02_assembly)\n  --align_dir ALIGN_DIR\n                        Directory\
+  \ with reads aligned to own assembly.\n                        (default: data/02_align_to_self)\n\
+  \  --reads_dir READS_DIR\n                        Directory with unaligned filtered\
+  \ read BAMs. (default:\n                        data/01_per_sample)\n  --raw_reads_dir\
+  \ RAW_READS_DIR\n                        Directory with unaligned raw read BAMs.\
+  \ (default:\n                        data/00_raw)\n"
+generated_using:
+- --help
+docker_image:

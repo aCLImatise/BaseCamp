@@ -1,0 +1,198 @@
+!Command
+command:
+- fastr
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --sequence
+  description: Transliterate sequences (identifiers by default).
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --description
+  description: Transliterate descriptions.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  - --delete
+  description: Delete found but unreplaced characters.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --squash
+  description: Squash duplicate replaced characters.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --complement
+  description: "Character complement SEARCHLIST. The last character of\nREPLACELIST\
+    \ replaces all characters not in SEARCHLIST."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --no-replace
+  description: Delete or squash characters in SEARCHLIST.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --strict
+  description: "Transliterate illegal sequence characters to \"N\" (DNA or RNA) or\n\
+    \"X\" (protein). Takes precedence over --iupac. Other options\ndisallowed in combination\
+    \ except --ambig and --fastq. For DNA,\nequivalent to: \"fastr -sc ACTGactg\\\
+    - N\""
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --iupac
+  description: "illegal sequence characters (including IUPAC\nambiguities) to \"N\"\
+    \ (DNA or RNA) or \"X\" (protein). Other options\ndisallowed in combination except\
+    \ --ambig and --fastq. For DNA,\nequivalent to:\n\"fastr -sc ACTGactgMRWSYKVHDBXNmrwsykvhdbxn\\\
+    - N\""
+  args: !SimpleFlagArg
+    name: Transliterate
+- !Flag
+  optional: true
+  synonyms:
+  - --degap
+  description: "gap characters \"-\" from each sequence. May only be\ncombined with\
+    \ no other option except the --fastq option.\nEquivalent to:\n\"fastr -snD --\
+    \ -\""
+  args: !SimpleFlagArg
+    name: Delete
+- !Flag
+  optional: true
+  synonyms:
+  - -N
+  - -X
+  - --ambig
+  description: "Use <char> to replace illegal characters instead of \"N\" or \"X\"\
+    \nwith --strict or --iupac"
+  args: !SimpleFlagArg
+    name: char
+- !Flag
+  optional: true
+  synonyms:
+  - --man
+  description: Print the manual page and exit.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --log
+  description: "Creates, or appends to, a generic FAST logfile in the current\nworking\
+    \ directory. The logfile records date/time of execution,\nfull command with options\
+    \ and arguments, and an optional\ncomment."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  description: "[string], --logname=[string]\nUse [string] as the name of the logfile.\
+    \ Default is\n\"FAST.log.txt\"."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -C
+  description: "[string], --comment=[string]\nInclude comment [string] in logfile.\
+    \ No comment is saved by\ndefault."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --format
+  description: "=[format]\nUse alternative format for input. See man page for \"fasconvert\"\
+    \nfor allowed formats. This is for convenience; the FAST tools are\ndesigned to\
+    \ exchange data in Fasta format, and \"fasta\" is the\ndefault format for this\
+    \ tool."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: "[dna|rna|protein], --moltype=[dna|rna|protein]\nSpecify the type of\
+    \ sequence on input (should not be needed in\nmost cases, but sometimes Bioperl\
+    \ cannot guess and complains\nwhen processing data)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --fastq
+  description: "Use fastq format as input and output.\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Print a brief help message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Print version information and exit.
+  args: !EmptyFlagArg {}
+help_text: "Usage:\n    fastr [OPTION]... [SEARCHLIST] [REPLACELIST] [MULTIFASTA-FILE...]\n\
+  \n    fastr -n [OPTION]... [SEARCHLIST] [MULTIFASTA-FILE...]\n\n    fastr --strict\
+  \ [--ambig=<char>] [MULTIFASTA-FILE...]\n\n    fastr --iupac [--ambig=<char>] [MULTIFASTA-FILE...]\n\
+  \n    fastr --degap [MULTIFASTA-FILE...]\n\nOptions:\n    -s --sequence\n      \
+  \      Transliterate sequences (identifiers by default).\n\n    -d --description\n\
+  \            Transliterate descriptions.\n\n    -D --delete\n            Delete\
+  \ found but unreplaced characters.\n\n    -S --squash\n            Squash duplicate\
+  \ replaced characters.\n\n    -c --complement\n            Character complement\
+  \ SEARCHLIST. The last character of\n            REPLACELIST replaces all characters\
+  \ not in SEARCHLIST.\n\n    -n --no-replace\n            Delete or squash characters\
+  \ in SEARCHLIST.\n\n    --strict\n            Transliterate illegal sequence characters\
+  \ to \"N\" (DNA or RNA) or\n            \"X\" (protein). Takes precedence over --iupac.\
+  \ Other options\n            disallowed in combination except --ambig and --fastq.\
+  \ For DNA,\n            equivalent to: \"fastr -sc ACTGactg\\- N\"\n\n    --iupac\
+  \ Transliterate illegal sequence characters (including IUPAC\n            ambiguities)\
+  \ to \"N\" (DNA or RNA) or \"X\" (protein). Other options\n            disallowed\
+  \ in combination except --ambig and --fastq. For DNA,\n            equivalent to:\n\
+  \n            \"fastr -sc ACTGactgMRWSYKVHDBXNmrwsykvhdbxn\\- N\"\n\n    --degap\
+  \ Delete gap characters \"-\" from each sequence. May only be\n            combined\
+  \ with no other option except the --fastq option.\n            Equivalent to:\n\n\
+  \            \"fastr -snD -- -\"\n\n    -N <char>, -X <char>, --ambig=<char>\n \
+  \           Use <char> to replace illegal characters instead of \"N\" or \"X\"\n\
+  \            with --strict or --iupac\n\n    -h, --help\n            Print a brief\
+  \ help message and exit.\n\n    --man   Print the manual page and exit.\n\n    --version\n\
+  \            Print version information and exit.\n\n    -l, --log\n            Creates,\
+  \ or appends to, a generic FAST logfile in the current\n            working directory.\
+  \ The logfile records date/time of execution,\n            full command with options\
+  \ and arguments, and an optional\n            comment.\n\n    -L [string], --logname=[string]\n\
+  \            Use [string] as the name of the logfile. Default is\n            \"\
+  FAST.log.txt\".\n\n    -C [string], --comment=[string]\n            Include comment\
+  \ [string] in logfile. No comment is saved by\n            default.\n\n    --format=[format]\n\
+  \            Use alternative format for input. See man page for \"fasconvert\"\n\
+  \            for allowed formats. This is for convenience; the FAST tools are\n\
+  \            designed to exchange data in Fasta format, and \"fasta\" is the\n \
+  \           default format for this tool.\n\n    -m [dna|rna|protein], --moltype=[dna|rna|protein]\n\
+  \            Specify the type of sequence on input (should not be needed in\n  \
+  \          most cases, but sometimes Bioperl cannot guess and complains\n      \
+  \      when processing data).\n\n    -q --fastq\n            Use fastq format as\
+  \ input and output.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/perl-fast:1.06--pl526_0

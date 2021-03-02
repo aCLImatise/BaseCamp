@@ -1,0 +1,131 @@
+!Command
+command:
+- pb_mpi
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -cat
+  - -dp
+  description: ': infinite mixture (Dirichlet process) of equilibirium frequency profiles'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ncat
+  description: ': finite mixture of equilibirium frequency profiles'
+  args: !SimpleFlagArg
+    name: ncat
+- !Flag
+  optional: true
+  synonyms:
+  - -catfix
+  description: ': specifying a fixed pre-defined mixture of profiles'
+  args: !SimpleFlagArg
+    name: pr
+- !Flag
+  optional: true
+  synonyms:
+  - -lg
+  description: ': Le and Gascuel 2008'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -wag
+  description: ': Whelan and Goldman 2001'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -jtt
+  description: ': Jones, Taylor, Thornton 1992'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -gtr
+  description: ': general time reversible'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -poisson
+  description: ': Poisson matrix, all relative exchangeabilities equal to 1 (Felsenstein
+    1981)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -dgam
+  description: ': discrete gamma. ncat = number of categories (4 by default, 1 = uniform
+    rates model)'
+  args: !SimpleFlagArg
+    name: ncat
+- !Flag
+  optional: true
+  synonyms:
+  - -dc
+  description: ': excludes constant columns'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: ': starts from specified tree'
+  args: !SimpleFlagArg
+    name: treefile
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  description: ': chain run under fixed, specified tree'
+  args: !SimpleFlagArg
+    name: treefile
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  description: '<until>  : saving frequency, and chain length (until = -1 : forever)'
+  args: !SimpleFlagArg
+    name: every
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: ': forcing checks'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - -S
+  description: ': -s : save all / -S : save only the trees'
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\n\nmpirun -np <np> pb_mpi -d <datafile> [options] <chainname>\n\tcreates\
+  \ a new chain, sampling from the posterior distribution, conditional on specified\
+  \ data\n\nmpirun -np <np> pb_mpi <chainname>\n\tstarts an already existing chain\n\
+  \n\tmpirun -np <np>     : number of parallel processes (should be at least 2)\n\n\
+  \t-cat -dp            : infinite mixture (Dirichlet process) of equilibirium frequency\
+  \ profiles\n\t-ncat <ncat>        : finite mixture of equilibirium frequency profiles\n\
+  \t-catfix <pr>        : specifying a fixed pre-defined mixture of profiles\n\n\t\
+  -lg                 : Le and Gascuel 2008\n\t-wag                : Whelan and Goldman\
+  \ 2001\n\t-jtt                : Jones, Taylor, Thornton 1992\n\t-gtr           \
+  \     : general time reversible\n\t-poisson            : Poisson matrix, all relative\
+  \ exchangeabilities equal to 1 (Felsenstein 1981)\n\n\t-dgam <ncat>        : discrete\
+  \ gamma. ncat = number of categories (4 by default, 1 = uniform rates model)\n\n\
+  \t-dc                 : excludes constant columns\n\t-t <treefile>       : starts\
+  \ from specified tree\n\t-T <treefile>       : chain run under fixed, specified\
+  \ tree\n\n\t-x <every> <until>  : saving frequency, and chain length (until = -1\
+  \ : forever)\n\t-f                  : forcing checks\n\t-s/-S               : -s\
+  \ : save all / -S : save only the trees\n\n\nsee manual for details\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/phylobayes-mpi:1.8c--h78e549b_0

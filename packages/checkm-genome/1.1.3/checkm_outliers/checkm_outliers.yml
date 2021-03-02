@@ -1,0 +1,91 @@
+!Command
+command:
+- checkm
+- outliers
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: results_dir
+  description: directory specified during qa command
+- !Positional
+  optional: false
+  position: 1
+  name: bin_dir
+  description: directory containing bins (fasta format)
+- !Positional
+  optional: false
+  position: 2
+  name: tetra_profile
+  description: tetranucleotide profiles for each sequence (see tetra command)
+- !Positional
+  optional: false
+  position: 3
+  name: output_file
+  description: print results to file
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --distributions
+  description: 'reference distribution used to identify outliers; integer between
+    0 and 100 (default: 95)'
+  args: !SimpleFlagArg
+    name: dist_value
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --report_type
+  description: "report sequences that are outliers in 'all' or 'any' reference distribution\
+    \ (default: any)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      all:
+      any:
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --extension
+  description: 'extension of bins (other files in directory are ignored) (default:
+    fna)'
+  args: !SimpleFlagArg
+    name: EXTENSION
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  description: suppress console output
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: checkm outliers [-h] [-d dist_value] [-r {any,all}] [-x EXTENSION]\
+  \ [-q]\n                       results_dir bin_dir tetra_profile output_file\n\n\
+  Identify outliers in bins relative to reference distributions.\n\npositional arguments:\n\
+  \  results_dir           directory specified during qa command\n  bin_dir      \
+  \         directory containing bins (fasta format)\n  tetra_profile         tetranucleotide\
+  \ profiles for each sequence (see tetra command)\n  output_file           print\
+  \ results to file\n\noptional arguments:\n  -h, --help            show this help\
+  \ message and exit\n  -d, --distributions dist_value\n                        reference\
+  \ distribution used to identify outliers; integer between 0 and 100 (default: 95)\n\
+  \  -r, --report_type {any,all}\n                        report sequences that are\
+  \ outliers in 'all' or 'any' reference distribution (default: any)\n  -x, --extension\
+  \ EXTENSION\n                        extension of bins (other files in directory\
+  \ are ignored) (default: fna)\n  -q, --quiet           suppress console output\n\
+  \nExample: checkm outliers ./output ./bins tetra.tsv outliers.tsv\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/checkm-genome:1.1.3--py_1

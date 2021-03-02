@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, Boolean, String, Int
+
+Fusion_Finder_Py_V0_1_0 = CommandToolBuilder(tool="fusion_finder.py", base_command=["fusion_finder.py"], inputs=[ToolInput(tag="in_input", input_type=File(optional=True), prefix="--input", doc=InputDocumentation(doc="Input FA/FQ filename")), ToolInput(tag="in_fq", input_type=Boolean(optional=True), prefix="--fq", doc=InputDocumentation(doc="Input is a fastq file (default is fasta)")), ToolInput(tag="in_sam", input_type=File(optional=True), prefix="--sam", doc=InputDocumentation(doc="Sorted GMAP SAM filename")), ToolInput(tag="in_prefix", input_type=File(optional=True), prefix="--prefix", doc=InputDocumentation(doc="Output filename prefix")), ToolInput(tag="in_cluster_report_csv", input_type=String(optional=True), prefix="--cluster_report_csv", doc=InputDocumentation(doc="cluster_report.csv, optional, if given will generate\ncount info.")), ToolInput(tag="in_is_fl_nc", input_type=Boolean(optional=True), prefix="--is_flnc", doc=InputDocumentation(doc="Input are individual FLNC reads. If this option used,")), ToolInput(tag="in_dun_merge_five_shorter", input_type=Boolean(optional=True), prefix="--dun-merge-5-shorter", doc=InputDocumentation(doc="Don't collapse shorter 5' transcripts (default: turned\noff)")), ToolInput(tag="in_min_locus_coverage", input_type=Int(optional=True), prefix="--min_locus_coverage", doc=InputDocumentation(doc="Minimum per-locus coverage in percentage (default:\n0.05)")), ToolInput(tag="in_min_locus_coverage_bp", input_type=Int(optional=True), prefix="--min_locus_coverage_bp", doc=InputDocumentation(doc="Minimum per-locus coverage in bp (default: 1 bp)")), ToolInput(tag="in_min_total_coverage", input_type=Int(optional=True), prefix="--min_total_coverage", doc=InputDocumentation(doc="Minimum total coverage (default: 0.99)")), ToolInput(tag="in_min_dist_between_loci", input_type=Int(optional=True), prefix="--min_dist_between_loci", doc=InputDocumentation(doc="Minimum distance between loci, in bp (default: 10000)")), ToolInput(tag="in_min_identity", input_type=Int(optional=True), prefix="--min_identity", doc=InputDocumentation(doc="Minimum alignment identity (default: 0.95)\n"))], outputs=[ToolOutput(tag="out_prefix", output_type=File(optional=True), selector=InputSelector(input_to_select="in_prefix", type_hint=File()), doc=OutputDocumentation(doc="Output filename prefix"))], container="quay.io/biocontainers/cdna_cupcake:19.0.0--py37h97743b1_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Fusion_Finder_Py_V0_1_0().translate("wdl")
+

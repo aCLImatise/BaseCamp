@@ -1,0 +1,225 @@
+!Command
+command:
+- planemo
+- tool_init
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --id
+  description: Short identifier for new tool (no whitespace)
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --force
+  description: Overwrite existing tool if present.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --tool
+  description: Output path for new tool (default is <id>.xml)
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --name
+  description: Name for new tool (user facing)
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --description
+  description: Short description for new tool (user facing)
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --command
+  description: "Command potentially including cheetah variables\n()(e.g. 'seqtk seq\
+    \ -a $input > $output')"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --example_command
+  description: "Example to command with paths to build Cheetah\ntemplate from (e.g.\
+    \ 'seqtk seq -a 2.fastq >\n2.fasta'). Option cannot be used with --command,\n\
+    should be used --example_input and\n--example_output."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --example_input
+  description: "For use with --example_command, replace input file\n(e.g. 2.fastq\
+    \ with a data input parameter)."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --example_output
+  description: "For use with --example_command, replace input file\n(e.g. 2.fastq\
+    \ with a tool output)."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --named_output
+  description: "Create a named output for use with command block\nfor example specify\
+    \ --named_output=output1.bam and\nthen use '-o $output1' in your command block."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --input
+  description: An input description (e.g. input.fasta)
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --output
+  description: "An output location (e.g. output.bam), the Galaxy\ndatatype is inferred\
+    \ from the extension."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --help_text
+  description: Help text (reStructuredText)
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --help_from_command
+  description: Auto populate help from supplied command.
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --doi
+  description: "Supply a DOI (http://www.doi.org/) easing citation\nof the tool for\
+    \ Galxy users (e.g. 10.1101/014043)."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --cite_url
+  description: Supply a URL for citation.
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --test_case
+  description: "For use with --example_commmand, generate a tool\ntest case from the\
+    \ supplied example."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --macros
+  description: Generate a macros.xml for reuse across many tools.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --version_command
+  description: Command to print version (e.g. 'seqtk --version')
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --requirement
+  description: "Add a tool requirement package (e.g. 'seqtk' or\n'seqtk@1.68')."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --container
+  description: Add a Docker image identifier for this tool.
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --cwl
+  description: Build a CWL tool instead of a Galaxy tool.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Tool XML version.
+  args: !SimpleFlagArg
+    name: TEXT
+help_text: "Usage: planemo tool_init [OPTIONS]\n\n  Generate tool outline from given\
+  \ arguments.\n\nOptions:\n  -i, --id TEXT             Short identifier for new tool\
+  \ (no whitespace)\n  -f, --force               Overwrite existing tool if present.\n\
+  \  -t, --tool FILE           Output path for new tool (default is <id>.xml)\n  -n,\
+  \ --name TEXT           Name for new tool (user facing)\n  --version TEXT      \
+  \      Tool XML version.\n  -d, --description TEXT    Short description for new\
+  \ tool (user facing)\n  -c, --command TEXT        Command potentially including\
+  \ cheetah variables\n                            ()(e.g. 'seqtk seq -a $input >\
+  \ $output')\n\n  --example_command TEXT    Example to command with paths to build\
+  \ Cheetah\n                            template from (e.g. 'seqtk seq -a 2.fastq\
+  \ >\n                            2.fasta'). Option cannot be used with --command,\n\
+  \                            should be used --example_input and\n              \
+  \              --example_output.\n\n  --example_input TEXT      For use with --example_command,\
+  \ replace input file\n                            (e.g. 2.fastq with a data input\
+  \ parameter).\n\n  --example_output TEXT     For use with --example_command, replace\
+  \ input file\n                            (e.g. 2.fastq with a tool output).\n\n\
+  \  --named_output TEXT       Create a named output for use with command block\n\
+  \                            for example specify --named_output=output1.bam and\n\
+  \                            then use '-o $output1' in your command block.\n\n \
+  \ --input TEXT              An input description (e.g. input.fasta)\n  --output\
+  \ TEXT             An output location (e.g. output.bam), the Galaxy\n          \
+  \                  datatype is inferred from the extension.\n\n  --help_text TEXT\
+  \          Help text (reStructuredText)\n  --help_from_command TEXT  Auto populate\
+  \ help from supplied command.\n  --doi TEXT                Supply a DOI (http://www.doi.org/)\
+  \ easing citation\n                            of the tool for Galxy users (e.g.\
+  \ 10.1101/014043).\n\n  --cite_url TEXT           Supply a URL for citation.\n \
+  \ --test_case               For use with --example_commmand, generate a tool\n \
+  \                           test case from the supplied example.\n\n  --macros \
+  \                 Generate a macros.xml for reuse across many tools.\n  --version_command\
+  \ TEXT    Command to print version (e.g. 'seqtk --version')\n  --requirement TEXT\
+  \        Add a tool requirement package (e.g. 'seqtk' or\n                     \
+  \       'seqtk@1.68').\n\n  --container TEXT          Add a Docker image identifier\
+  \ for this tool.\n  --cwl                     Build a CWL tool instead of a Galaxy\
+  \ tool.\n  --help                    Show this message and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/planemo:0.74.2--py_0

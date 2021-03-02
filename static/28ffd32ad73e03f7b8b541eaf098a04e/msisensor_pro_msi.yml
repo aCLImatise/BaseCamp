@@ -1,0 +1,155 @@
+!Command
+command:
+- msisensor-pro
+- msi
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: <string>   homopolymers and microsatellites file
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: <string>   normal bam file with index
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: <string>   tumor  bam file with index
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: <string>   output prefix
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  description: <string>   bed file, optional
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: <double>   FDR threshold for somatic sites detection, default=0.05
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: '<int>      coverage threshold for msi analysis, WXS: 20; WGS: 15,
+    default=15'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  description: '<int>      coverage normalization for paired tumor and normal data,
+    0: no; 1: yes, default=0'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: '<string>   choose one region, format: 1:10000000-20000000'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: <int>      minimal homopolymer size for distribution analysis, default=8
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: <int>      maximal homopolymer size for distribution analysis, default=50
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: <int>      minimal microsatellite size for distribution analysis, default=5
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  description: <int>      maximal microsatellite size for distribution analysis, default=40
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  description: <int>      span size around window for extracting reads, default=500
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  description: <int>      threads number for parallel computing, default=1
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  description: '<int>      output homopolymer only, 0: no; 1: yes, default=0'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -y
+  description: '<int>      output microsatellites only, 0: no; 1: yes, default=0'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - '-0'
+  description: '<int>      output site have no read coverage, 1: no; 0: yes, default=0'
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: help
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "\nUsage:  msisensor-pro msi [options] \n\n       -d   <string>   homopolymers\
+  \ and microsatellites file\n       -n   <string>   normal bam file with index\n\
+  \       -t   <string>   tumor  bam file with index\n       -o   <string>   output\
+  \ prefix\n\n       -e   <string>   bed file, optional\n       -f   <double>   FDR\
+  \ threshold for somatic sites detection, default=0.05\n       -c   <int>      coverage\
+  \ threshold for msi analysis, WXS: 20; WGS: 15, default=15\n       -z   <int>  \
+  \    coverage normalization for paired tumor and normal data, 0: no; 1: yes, default=0\n\
+  \       -r   <string>   choose one region, format: 1:10000000-20000000\n       -p\
+  \   <int>      minimal homopolymer size for distribution analysis, default=8\n \
+  \      -m   <int>      maximal homopolymer size for distribution analysis, default=50\n\
+  \       -s   <int>      minimal microsatellite size for distribution analysis, default=5\n\
+  \       -w   <int>      maximal microsatellite size for distribution analysis, default=40\n\
+  \       -u   <int>      span size around window for extracting reads, default=500\n\
+  \       -b   <int>      threads number for parallel computing, default=1\n     \
+  \  -x   <int>      output homopolymer only, 0: no; 1: yes, default=0\n       -y\
+  \   <int>      output microsatellites only, 0: no; 1: yes, default=0\n       -0\
+  \   <int>      output site have no read coverage, 1: no; 0: yes, default=0\n   \
+  \    \n       -h   help\n\nFunction: \n   This module evaluate MSI using the difference\
+  \ between normal and tumor length distribution of microsatellites. You need to input\
+  \ (-d) microsatellites file and two bam files (-t, -n).\n\nExample:\n   msisensor-pro\
+  \ msi -d /path/to/reference.list -n /path/to/case1_normal_sorted.bam -t /path/to/case1_tumor_sorted.bam\
+  \ -o /path/to/case1_output\n\nNote:\n   This module inherits from msisensor.If you\
+  \ use it for your work, please cite:\n   Beifang Niu*, Kai Ye*, Qunyuan Zhang, Charles\
+  \ Lu, Mingchao Xie, Michael D. McLellan, Michael C. Wendl and Li Ding#.MSIsensor:\
+  \ microsatellite instability detection using paired tumor-normal sequence data.\
+  \ Bioinformatics 30, 1015–1016 (2014).\n \n\n"
+generated_using: []
+docker_image: quay.io/biocontainers/msisensor-pro:1.1.a--hb3646a4_0

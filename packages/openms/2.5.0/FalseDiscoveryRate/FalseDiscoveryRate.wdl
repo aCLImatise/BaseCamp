@@ -22,6 +22,9 @@ task FalseDiscoveryRate {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "*              Identifications from searching a target-decoy database. (valid formats: 'idXML')"
     out: "*             Identifications with annotated FDR (valid formats: 'idXML')"

@@ -1,0 +1,109 @@
+!Command
+command:
+- slivar
+- tsv
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --ped
+  description: required ped file describing the trios in the VCF
+  args: !SimpleFlagArg
+    name: PED
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --csq-field
+  description: INFO field containing the gene name and impact. Usually CSQ or BCSQ
+  args: !SimpleFlagArg
+    name: CSQ_FIELD
+- !Flag
+  optional: true
+  synonyms:
+  - --csq-column
+  description: CSQ sub-field(s) to extract (in addition to gene, impact, transcript).
+    may be specified multiple times.
+  args: !SimpleFlagArg
+    name: CSQ_COLUMN
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --sample-field
+  description: INFO field(s) that contains list of samples that have passed previous
+    filters.
+  args: !SimpleFlagArg
+    name: SAMPLE_FIELD
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --gene-description
+  description: tab-separated lookup of gene (column 1) to description (column 2) to
+    add to output. the gene is case-sensitive. can be specified multiple times
+  args: !SimpleFlagArg
+    name: GENE_DESCRIPTION
+- !Flag
+  optional: true
+  synonyms:
+  - --impact-order
+  description: ordering of impacts to override the default (https://raw.githubusercontent.com/brentp/slivar/master/src/slivarpkg/default-order.txt)
+  args: !SimpleFlagArg
+    name: IMPACT_ORDER
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --info-field
+  description: INFO field(s) that should be added to output (e.g. gnomad_popmax_af)
+  args: !SimpleFlagArg
+    name: INFO_FIELD
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out
+  description: 'path to output tab-separated file (default: /dev/stdout)'
+  args: !SimpleFlagArg
+    name: OUT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this help
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "slivar tsv\n\nconvert filtered VCF to tab-separated-value spreadsheet\
+  \ for final filtering\n\ncreate a --gene-description file e.g. from human phenotype\
+  \ ontology with:\n  wget -qO - http://compbio.charite.de/jenkins/job/hpo.annotations.monthly/lastSuccessfulBuild/artifact/annotation/ALL_SOURCES_ALL_FREQUENCIES_genes_to_phenotype.txt\
+  \ | cut -f 2,3 > gene_desc.txt\nor from clinvar with:\n  wget -qO - ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar/gene_condition_source_id\
+  \ | cut -f 2,5 | grep -v ^$'\\t' > clinvar_gene_desc.txt\nor gene->pLI with:\n \
+  \  wget -qO - https://storage.googleapis.com/gnomad-public/release/2.1.1/constraint/gnomad.v2.1.1.lof_metrics.by_gene.txt.bgz\
+  \ | zcat \\\n       | cut -f 1,21,24 | tail -n+2 | awk '{ printf(\"%s\\tpLI=%.3g;oe_lof=%.5g\\\
+  n\", $1, $2, $3)}'\n\n    \n\nUsage:\n  slivar tsv [options] [vcf]\n\nArguments:\n\
+  \  [vcf]            input VCF (default: /dev/stdin)\n\nOptions:\n  -p, --ped=PED\
+  \              required ped file describing the trios in the VCF\n  -c, --csq-field=CSQ_FIELD\
+  \  INFO field containing the gene name and impact. Usually CSQ or BCSQ\n  --csq-column=CSQ_COLUMN\
+  \    CSQ sub-field(s) to extract (in addition to gene, impact, transcript). may\
+  \ be specified multiple times.\n  -s, --sample-field=SAMPLE_FIELD\n            \
+  \                 INFO field(s) that contains list of samples that have passed previous\
+  \ filters.\ncan be specified multiple times.\n  -g, --gene-description=GENE_DESCRIPTION\n\
+  \                             tab-separated lookup of gene (column 1) to description\
+  \ (column 2) to add to output. the gene is case-sensitive. can be specified multiple\
+  \ times\n  --impact-order=IMPACT_ORDER\n                             ordering of\
+  \ impacts to override the default (https://raw.githubusercontent.com/brentp/slivar/master/src/slivarpkg/default-order.txt)\n\
+  \  -i, --info-field=INFO_FIELD\n                             INFO field(s) that\
+  \ should be added to output (e.g. gnomad_popmax_af)\n  -o, --out=OUT           \
+  \   path to output tab-separated file (default: /dev/stdout)\n  -h, --help     \
+  \            Show this help\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/slivar:0.2.1--hecda079_0

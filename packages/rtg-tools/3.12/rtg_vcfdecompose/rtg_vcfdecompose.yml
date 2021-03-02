@@ -1,0 +1,87 @@
+!Command
+command:
+- rtg
+- vcfdecompose
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: against
+  description: Sensitivity Tuning
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  description: "VCF file containing variants to decompose. Use '-' to read\nfrom standard\
+    \ input"
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: output VCF file name. Use '-' to write to standard output
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --template
+  description: SDF of the reference genome the variants are called
+  args: !SimpleFlagArg
+    name: SDF
+- !Flag
+  optional: true
+  synonyms:
+  - --break-indels
+  description: set, peel as many SNPs off an indel as possible
+  args: !SimpleFlagArg
+    name: if
+- !Flag
+  optional: true
+  synonyms:
+  - --break-mnps
+  description: if set, break MNPs into individual SNPs
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Z
+  - --no-gzip
+  description: do not gzip the output
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-header
+  description: prevent VCF header from being written
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: print help on command-line flag usage
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: rtg vcfdecompose [OPTION]... -i FILE -o FILE\n\nDecomposes complex\
+  \ variants within a VCF file into smaller components.\n\nFile Input/Output\n  -i,\
+  \ --input=FILE   VCF file containing variants to decompose. Use '-' to read\n  \
+  \                   from standard input\n  -o, --output=FILE  output VCF file name.\
+  \ Use '-' to write to standard output\n  -t, --template=SDF SDF of the reference\
+  \ genome the variants are called\n                     against\n\nSensitivity Tuning\n\
+  \      --break-indels if set, peel as many SNPs off an indel as possible\n     \
+  \ --break-mnps   if set, break MNPs into individual SNPs\n\nUtility\n  -h, --help\
+  \         print help on command-line flag usage\n  -Z, --no-gzip      do not gzip\
+  \ the output\n      --no-header    prevent VCF header from being written\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/rtg-tools:3.12--0

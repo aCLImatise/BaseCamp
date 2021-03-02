@@ -1,0 +1,431 @@
+!Command
+command:
+- fastq-dump-orig
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: recommended
+  description: '--bzip2                          Compress output using bzip2: deprecated, '
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -A
+  - --accession
+  description: "Replaces accession derived from <path> in\nfilename(s) and deflines\
+    \ (only for single\ntable dump)"
+  args: !SimpleFlagArg
+    name: accession
+- !Flag
+  optional: true
+  synonyms:
+  - --table
+  description: "Table name within cSRA object, default is\n\"SEQUENCE\""
+  args: !SimpleFlagArg
+    name: table-name
+- !Flag
+  optional: true
+  synonyms:
+  - --split-spot
+  description: Split spots into individual reads
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -N
+  - --minSpotId
+  description: Minimum spot id
+  args: !SimpleFlagArg
+    name: rowid
+- !Flag
+  optional: true
+  synonyms:
+  - -X
+  - --maxSpotId
+  description: Maximum spot id
+  args: !SimpleFlagArg
+    name: rowid
+- !Flag
+  optional: true
+  synonyms:
+  - --spot-groups
+  description: '<[list]>           Filter by SPOT_GROUP (member): name[,...]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -W
+  - --clip
+  description: Remove adapter sequences from reads
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  - --minReadLen
+  description: Filter by sequence length >= <len>
+  args: !SimpleFlagArg
+    name: len
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  - --read-filter
+  description: "<[filter]>      Split into files by READ_FILTER value\noptionally\
+    \ filter by value:\npass|reject|criteria|redacted"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -E
+  - --qual-filter
+  description: "Filter used in early 1000 Genomes data: no\nsequences starting or\
+    \ ending with >= 10N"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --qual-filter-1
+  description: Filter used in current 1000 Genomes data
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --aligned
+  description: Dump only aligned sequences
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --unaligned
+  description: Dump only unaligned sequences
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --aligned-region
+  description: "<name[:from-to]>  Filter by position on genome. Name can\neither be\
+    \ accession.version (ex:\nNC_000001.10) or file specific name (ex:\n\"chr1\" or\
+    \ \"1\"). \"from\" and \"to\" are 1-based\ncoordinates"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --matepair-distance
+  description: "Filter by distance between matepairs.\nUse \"unknown\" to find matepairs\
+    \ split\nbetween the references. Use from-to to limit\nmatepair distance on the\
+    \ same reference"
+  args: !SimpleFlagArg
+    name: from-to|unknown
+- !Flag
+  optional: true
+  synonyms:
+  - --skip-technical
+  description: Dump only biological reads
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -O
+  - --outdir
+  description: "Output directory, default is working\ndirectory '.' )"
+  args: !SimpleFlagArg
+    name: path
+- !Flag
+  optional: true
+  synonyms:
+  - -Z
+  - --stdout
+  description: "Output to stdout, all split data become\njoined into single stream"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gzip
+  description: 'Compress output using gzip: deprecated, not'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --split-files
+  description: "Write reads into separate files. Read\nnumber will be suffixed to\
+    \ the file name.\nNOTE! The `--split-3` option is recommended.\nIn cases where\
+    \ not all spots have the same\nnumber of reads, this option will produce\nfiles\
+    \ that WILL CAUSE ERRORS in most programs\nwhich process split pair fastq files."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --split-3
+  description: "3-way splitting for mate-pairs. For each\nspot, if there are two biological\
+    \ reads\nsatisfying filter conditions, the first is\nplaced in the `*_1.fastq`\
+    \ file, and the\nsecond is placed in the `*_2.fastq` file. If\nthere is only one\
+    \ biological read\nsatisfying the filter conditions, it is\nplaced in the `*.fastq`\
+    \ file.All other\nreads in the spot are ignored."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -G
+  - --spot-group
+  description: Split into files by SPOT_GROUP (member name)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --group-in-dirs
+  description: Split into subdirectories instead of files
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -K
+  - --keep-empty-files
+  description: Do not delete empty files
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -C
+  - --dumpcs
+  description: "<[cskey]>            Formats sequence using color space (default\n\
+    for SOLiD),\"cskey\" may be specified for\ntranslation"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -B
+  - --dumpbase
+  description: "Formats sequence using base space (default\nfor other than SOLiD)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Q
+  - --offset
+  description: "Offset to use for quality conversion,\ndefault is 33"
+  args: !SimpleFlagArg
+    name: integer
+- !Flag
+  optional: true
+  synonyms:
+  - --fasta
+  description: "<[line width]>           FASTA only, no qualities, optional line\n\
+    wrap width (set to zero for no wrapping)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --suppress-qual-for-cskey
+  description: suppress quality-value for cskey
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  - --origfmt
+  description: Defline contains only original sequence name
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -I
+  - --readids
+  description: "Append read id after spot id as\n'accession.spot.readid' on defline"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --helicos
+  description: Helicos style defline
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --defline-seq
+  description: Defline format specification for sequence.
+  args: !SimpleFlagArg
+    name: fmt
+- !Flag
+  optional: true
+  synonyms:
+  - --defline-qual
+  description: "Defline format specification for quality.\n<fmt> is string of characters\
+    \ and/or\nvariables. The variables can be one of: $ac\n- accession, $si spot id,\
+    \ $sn spot\nname, $sg spot group (barcode), $sl spot\nlength in bases, $ri read\
+    \ number, $rn\nread name, $rl read length in bases. '[]'\ncould be used for an\
+    \ optional output: if\nall vars in [] yield empty values whole\ngroup is not printed.\
+    \ Empty value is empty\nstring or for numeric variables. Ex:\n@$sn[_$rn]/$ri '_$rn'\
+    \ is omitted if name\nis empty"
+  args: !SimpleFlagArg
+    name: fmt
+- !Flag
+  optional: true
+  synonyms:
+  - --ngc
+  description: <path> to ngc file
+  args: !SimpleFlagArg
+    name: path
+- !Flag
+  optional: true
+  synonyms:
+  - --disable-multithreading
+  description: disable multithreading
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  - --log-level
+  description: "Logging level as number or enum string One\nof (fatal|sys|int|err|warn|info)\
+    \ or (0-5)\nCurrent/default is warn"
+  args: !SimpleFlagArg
+    name: level
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: "Increase the verbosity level of the program\nUse multiple times for\
+    \ more verbosity"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ncbi_error_report
+  description: "Control program execution environment\nreport generation (if implemented).\
+    \ One of\n(never|error|always). Default is error"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --legacy-report
+  description: use legacy style 'Written spots' for tool
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Output brief explanation of program usage
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Display the version of the program
+  args: !EmptyFlagArg {}
+help_text: "\nUsage:\n  fastq-dump-orig [options] <path> [<path>...]\n  fastq-dump-orig\
+  \ [options] <accession>\n\nINPUT\n  -A|--accession <accession>       Replaces accession\
+  \ derived from <path> in \n                                   filename(s) and deflines\
+  \ (only for single \n                                   table dump) \n  --table\
+  \ <table-name>             Table name within cSRA object, default is \n        \
+  \                           \"SEQUENCE\" \n\nPROCESSING\n\nRead Splitting      \
+  \               Sequence data may be used in raw form or\n                     \
+  \                split into individual reads\n  --split-spot                   \
+  \  Split spots into individual reads \n\nFull Spot Filters                  Applied\
+  \ to the full spot independently\n                                     of --split-spot\n\
+  \  -N|--minSpotId <rowid>           Minimum spot id \n  -X|--maxSpotId <rowid> \
+  \          Maximum spot id \n  --spot-groups <[list]>           Filter by SPOT_GROUP\
+  \ (member): name[,...] \n  -W|--clip                        Remove adapter sequences\
+  \ from reads \n\nCommon Filters                     Applied to spots when --split-spot\
+  \ is not\n                                     set, otherwise - to individual reads\n\
+  \  -M|--minReadLen <len>            Filter by sequence length >= <len> \n  -R|--read-filter\
+  \ <[filter]>      Split into files by READ_FILTER value \n                     \
+  \              optionally filter by value: \n                                  \
+  \ pass|reject|criteria|redacted \n  -E|--qual-filter                 Filter used\
+  \ in early 1000 Genomes data: no \n                                   sequences\
+  \ starting or ending with >= 10N \n  --qual-filter-1                  Filter used\
+  \ in current 1000 Genomes data \n\nFilters based on alignments        Filters are\
+  \ active when alignment\n                                     data are present\n\
+  \  --aligned                        Dump only aligned sequences \n  --unaligned\
+  \                      Dump only unaligned sequences \n  --aligned-region <name[:from-to]>\
+  \  Filter by position on genome. Name can \n                                   either\
+  \ be accession.version (ex: \n                                   NC_000001.10) or\
+  \ file specific name (ex: \n                                   \"chr1\" or \"1\"\
+  ). \"from\" and \"to\" are 1-based \n                                   coordinates\
+  \ \n  --matepair-distance <from-to|unknown>  Filter by distance between matepairs.\
+  \ \n                                   Use \"unknown\" to find matepairs split \n\
+  \                                   between the references. Use from-to to limit\
+  \ \n                                   matepair distance on the same reference \n\
+  \nFilters for individual reads       Applied only with --split-spot set\n  --skip-technical\
+  \                 Dump only biological reads \n\nOUTPUT\n  -O|--outdir <path>  \
+  \             Output directory, default is working \n                          \
+  \         directory '.' ) \n  -Z|--stdout                      Output to stdout,\
+  \ all split data become \n                                   joined into single\
+  \ stream \n  --gzip                           Compress output using gzip: deprecated,\
+  \ not \n                                   recommended \n  --bzip2             \
+  \             Compress output using bzip2: deprecated, \n                      \
+  \             not recommended \n\nMultiple File Options              Setting these\
+  \ options will produce more\n                                     than 1 file, each\
+  \ of which will be suffixed\n                                     according to splitting\
+  \ criteria.\n  --split-files                    Write reads into separate files.\
+  \ Read \n                                   number will be suffixed to the file\
+  \ name.  \n                                   NOTE! The `--split-3` option is recommended.\
+  \ \n                                   In cases where not all spots have the same\
+  \ \n                                   number of reads, this option will produce\
+  \ \n                                   files that WILL CAUSE ERRORS in most programs\
+  \ \n                                   which process split pair fastq files. \n\
+  \  --split-3                        3-way splitting for mate-pairs. For each \n\
+  \                                   spot, if there are two biological reads \n \
+  \                                  satisfying filter conditions, the first is \n\
+  \                                   placed in the `*_1.fastq` file, and the \n \
+  \                                  second is placed in the `*_2.fastq` file. If\
+  \ \n                                   there is only one biological read \n    \
+  \                               satisfying the filter conditions, it is \n     \
+  \                              placed in the `*.fastq` file.All other \n       \
+  \                            reads in the spot are ignored. \n  -G|--spot-group\
+  \                  Split into files by SPOT_GROUP (member name) \n  -R|--read-filter\
+  \ <[filter]>      Split into files by READ_FILTER value \n                     \
+  \              optionally filter by value: \n                                  \
+  \ pass|reject|criteria|redacted \n  -T|--group-in-dirs               Split into\
+  \ subdirectories instead of files \n  -K|--keep-empty-files            Do not delete\
+  \ empty files \n\nFORMATTING\n\nSequence\n  -C|--dumpcs <[cskey]>            Formats\
+  \ sequence using color space (default \n                                   for SOLiD),\"\
+  cskey\" may be specified for \n                                   translation \n\
+  \  -B|--dumpbase                    Formats sequence using base space (default \n\
+  \                                   for other than SOLiD). \n\nQuality\n  -Q|--offset\
+  \ <integer>            Offset to use for quality conversion, \n                \
+  \                   default is 33 \n  --fasta <[line width]>           FASTA only,\
+  \ no qualities, optional line \n                                   wrap width (set\
+  \ to zero for no wrapping) \n  --suppress-qual-for-cskey        suppress quality-value\
+  \ for cskey \n\nDefline\n  -F|--origfmt                     Defline contains only\
+  \ original sequence name \n  -I|--readids                     Append read id after\
+  \ spot id as \n                                   'accession.spot.readid' on defline\
+  \ \n  --helicos                        Helicos style defline \n  --defline-seq <fmt>\
+  \              Defline format specification for sequence. \n  --defline-qual <fmt>\
+  \             Defline format specification for quality. \n                     \
+  \              <fmt> is string of characters and/or \n                         \
+  \          variables. The variables can be one of: $ac \n                      \
+  \             - accession, $si spot id, $sn spot \n                            \
+  \       name, $sg spot group (barcode), $sl spot \n                            \
+  \       length in bases, $ri read number, $rn \n                               \
+  \    read name, $rl read length in bases. '[]' \n                              \
+  \     could be used for an optional output: if \n                              \
+  \     all vars in [] yield empty values whole \n                               \
+  \    group is not printed. Empty value is empty \n                             \
+  \      string or for numeric variables. Ex: \n                                 \
+  \  @$sn[_$rn]/$ri '_$rn' is omitted if name \n                                 \
+  \  is empty\n \nOTHER:\n  --ngc <path>                     <path> to ngc file \n\
+  \  --disable-multithreading         disable multithreading \n  -h|--help       \
+  \                 Output brief explanation of program usage \n  -V|--version   \
+  \                  Display the version of the program \n  -L|--log-level <level>\
+  \           Logging level as number or enum string One \n                      \
+  \             of (fatal|sys|int|err|warn|info) or (0-5) \n                     \
+  \              Current/default is warn \n  -v|--verbose                     Increase\
+  \ the verbosity level of the program \n                                   Use multiple\
+  \ times for more verbosity \n  --ncbi_error_report              Control program\
+  \ execution environment \n                                   report generation (if\
+  \ implemented). One of \n                                   (never|error|always).\
+  \ Default is error \n  --legacy-report                  use legacy style 'Written\
+  \ spots' for tool \n\nfastq-dump-orig : 2.10.8\n\n"
+generated_using:
+- --help
+docker_image:

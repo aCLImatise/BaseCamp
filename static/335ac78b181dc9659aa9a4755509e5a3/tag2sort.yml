@@ -1,0 +1,112 @@
+!Command
+command:
+- tag2sort
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --paired
+  description: 'Paired-end mode. (Default: OFF).'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --outdir
+  description: "Write all output files into this directory. By default the output\
+    \ files will be written into\nthe same folder as the input file(s)."
+  args: !SimpleFlagArg
+    name: dir
+- !Flag
+  optional: true
+  synonyms:
+  - --singletons
+  description: "If the allele-tagged paired-end file also contains singleton alignments\
+    \ (which is the\ndefault for e.g. TopHat), these will be written out to extra\
+    \ files (ending in _st.bam)\ninstead of writing everything to combined paired-end\
+    \ and singleton files. Default: OFF."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --hic
+  description: "Assumes Hi-C data processed with HiCUP (www.bioinformatics.babraham.ac.uk/projects/hicup/)\n\
+    as input, i.e. the input BAM file is paired-end and Reads 1 and 2 follow each\
+    \ other. Thus,\nthis option also sets the flags --paired and --no_sort. Default:\
+    \ OFF."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --samtools_path
+  description: "The path to your Samtools installation, e.g. /home/user/samtools/.\
+    \ Does not need to\nbe specified explicitly if Samtools is in the PATH already."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --conflicting
+  - --weird
+  description: "Reads or read pairs that were classified as 'Conflicting' (XX:Z:CF)\
+    \ will be written to\nan extra file (ending in .conflicting.bam) instead of being\
+    \ simply skipped. Reads may be\nclassified as 'Conflicting' if a single read contains\
+    \ SNP information for both genomes at\nthe same time, or if the SNP position was\
+    \ deleted from the read. Read-pairs are considered\n'Conflicting' if either read\
+    \ is was tagged with the XX:Z:CF flag. Default: OFF."
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Displays this help information and exits.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: "Displays version information and exits.\nScript last modified: 21\
+    \ November 2019\n"
+  args: !EmptyFlagArg {}
+help_text: "\n  SYNOPSIS:\n\n  This script processes allele tagged input files produced\
+  \ by SNPsplit and sorts the 'allele_tagged.bam'\n  file into several sub-files,\
+  \ depending on the experiment type and options selected. By default reads are\n\
+  \  written to the following files:\n\n   ... _genome1.bam\n   ... _genome2.bam\n\
+  \   ... _unassigned.bam\n\n  For more information on sorting options pelase refer\
+  \ to the SNPsplit documentation.\n\n  USAGE: tag2sort [options] [SNPsplit tagged\
+  \ input file(s)]\n\nSNPsplit tagged input file(s): These files are required to be\
+  \ SAM/BAM files that contain the\noptional field XX:Z: produced by the SNPsplit-flag\
+  \ module. The tags indicate if a read could\nbe assigned to a specific allele, and\
+  \ they are one of the following:\n\n                             XX:Z:UA - Unassigned\n\
+  \                             XX:Z:G1 - Genome 1-specific\n                    \
+  \         XX:Z:G2 - Genome 2-specific\n                             XX:Z:CF - Conflicting\n\
+  \n--paired               Paired-end mode. (Default: OFF).\n\n-o/--outdir <dir> \
+  \     Write all output files into this directory. By default the output files will\
+  \ be written into\n                       the same folder as the input file(s).\n\
+  \n--singletons           If the allele-tagged paired-end file also contains singleton\
+  \ alignments (which is the\n                       default for e.g. TopHat), these\
+  \ will be written out to extra files (ending in _st.bam)\n                     \
+  \  instead of writing everything to combined paired-end and singleton files. Default:\
+  \ OFF.\n\n--hic                  Assumes Hi-C data processed with HiCUP (www.bioinformatics.babraham.ac.uk/projects/hicup/)\n\
+  \                       as input, i.e. the input BAM file is paired-end and Reads\
+  \ 1 and 2 follow each other. Thus,\n                       this option also sets\
+  \ the flags --paired and --no_sort. Default: OFF.\n\n--samtools_path        The\
+  \ path to your Samtools installation, e.g. /home/user/samtools/. Does not need to\n\
+  \                       be specified explicitly if Samtools is in the PATH already.\n\
+  \n--conflicting/--weird  Reads or read pairs that were classified as 'Conflicting'\
+  \ (XX:Z:CF) will be written to\n                       an extra file (ending in\
+  \ .conflicting.bam) instead of being simply skipped. Reads may be\n            \
+  \           classified as 'Conflicting' if a single read contains SNP information\
+  \ for both genomes at\n                       the same time, or if the SNP position\
+  \ was deleted from the read. Read-pairs are considered\n                       'Conflicting'\
+  \ if either read is was tagged with the XX:Z:CF flag. Default: OFF.\n\n--help  \
+  \               Displays this help information and exits.\n\n--version         \
+  \     Displays version information and exits.\n\n\n\n                          Script\
+  \ last modified: 21 November 2019\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/snpsplit:0.4.0--0

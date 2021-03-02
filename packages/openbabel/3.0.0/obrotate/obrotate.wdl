@@ -4,6 +4,9 @@ task Obrotate {
   command <<<
     obrotate
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

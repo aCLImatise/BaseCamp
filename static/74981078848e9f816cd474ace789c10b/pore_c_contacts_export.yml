@@ -1,0 +1,102 @@
+!Command
+command:
+- pore_c
+- contacts
+- export
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: CONTACT_TABLE
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --min-mapping-quality
+  description: "Both alignments have mapping qualities\ngreater than this  [default:\
+    \ 0]"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --min-align-base-qscore
+  description: "Both alignments have mean base qualities\ngreater than this  [default:\
+    \ 0]"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --cooler-resolution
+  description: "The bin width of the resulting matrix\n[default: 1000]"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --fragment-table
+  description: "The fragment table for the corresponding\nvirtual digest(required\
+    \ if export format is\nin cooler)"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --by-haplotype
+  description: "Create a cooler for each pair of haplotypes\n(eg 1-1, 1-2, 2-2,...).\
+    \ Only valid with\n'cooler'"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --chromsizes
+  description: "The chromsizes file for the corresponding\ngenome(required if export\
+    \ format is in\ncooler,pairs)"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --reference-fasta
+  description: "The reference genome used to generate the\ncontact table(required\
+    \ if export format is\nin paired_end_fastq,merged_no_dups)"
+  args: !SimpleFlagArg
+    name: TEXT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: pore_c contacts export [OPTIONS] CONTACT_TABLE [cooler|salsa_bed|paired\n\
+  \                              _end_fastq|pairs|merged_no_dups] OUTPUT_PREFIX\n\n\
+  \  Export contacts to the following formats:\n\n   - cooler: a sparse representation\
+  \ of a contact matrix  -\n   paired_end_fastq: for each contact create a pseudo\
+  \ pair-end read using\n   the reference genome sequence\n\nOptions:\n  --min-mapping-quality\
+  \ INTEGER   Both alignments have mapping qualities\n                           \
+  \       greater than this  [default: 0]\n  --min-align-base-qscore INTEGER\n   \
+  \                               Both alignments have mean base qualities\n     \
+  \                             greater than this  [default: 0]\n  --cooler-resolution\
+  \ INTEGER     The bin width of the resulting matrix\n                          \
+  \        [default: 1000]\n  --fragment-table TEXT           The fragment table for\
+  \ the corresponding\n                                  virtual digest(required if\
+  \ export format is\n                                  in cooler)\n  --by-haplotype\
+  \                  Create a cooler for each pair of haplotypes\n               \
+  \                   (eg 1-1, 1-2, 2-2,...). Only valid with\n                  \
+  \                'cooler'\n  --chromsizes TEXT               The chromsizes file\
+  \ for the corresponding\n                                  genome(required if export\
+  \ format is in\n                                  cooler,pairs)\n  --reference-fasta\
+  \ TEXT          The reference genome used to generate the\n                    \
+  \              contact table(required if export format is\n                    \
+  \              in paired_end_fastq,merged_no_dups)\n  --help                   \
+  \       Show this message and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/pore-c:0.3.0--py_0

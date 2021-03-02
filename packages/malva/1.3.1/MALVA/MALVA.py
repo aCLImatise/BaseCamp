@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, String
+
+Malva_V0_1_0 = CommandToolBuilder(tool="MALVA", base_command=["MALVA"], inputs=[ToolInput(tag="in_size_kmers_index", input_type=Boolean(optional=True), prefix="-k", doc=InputDocumentation(doc="size of the kmers to index (default:35)")), ToolInput(tag="in_size_reference_kmers", input_type=Boolean(optional=True), prefix="-r", doc=InputDocumentation(doc="size of the reference kmers to index (default:43)")), ToolInput(tag="in_expected_sample_error", input_type=Boolean(optional=True), prefix="-e", doc=InputDocumentation(doc="expected sample error rate (default:0.001)")), ToolInput(tag="in_file_containing_list", input_type=Boolean(optional=True), prefix="-s", doc=InputDocumentation(doc="file containing the list of (VCF) samples to consider (default:-, i.e. all samples)")), ToolInput(tag="in_priori_frequency_key", input_type=Boolean(optional=True), prefix="-f", doc=InputDocumentation(doc="a priori frequency key in the INFO column of the input VCF (default:AF)")), ToolInput(tag="in_maximum_coverage_variant", input_type=Boolean(optional=True), prefix="-c", doc=InputDocumentation(doc="maximum coverage for variant alleles (default:200)")), ToolInput(tag="in_bloom_filter_size", input_type=Boolean(optional=True), prefix="-b", doc=InputDocumentation(doc="bloom filter size in GB (default:4)")), ToolInput(tag="in_max_amount_ram", input_type=Boolean(optional=True), prefix="-m", doc=InputDocumentation(doc="max amount of RAM in GB - KMC parameter (default:4)")), ToolInput(tag="in_strip_sequence_dafaultfalse", input_type=Boolean(optional=True), prefix="-p", doc=InputDocumentation(doc="strip \'chr\' from sequence names (dafault:false)")), ToolInput(tag="in_use_uniform_probabilities", input_type=Boolean(optional=True), prefix="-u", doc=InputDocumentation(doc="use uniform a priori probabilities (default:false)")), ToolInput(tag="in_output_covs_gts", input_type=Boolean(optional=True), prefix="-v", doc=InputDocumentation(doc="output COVS and GTS in INFO column (default: false)")), ToolInput(tag="in_run_malva_false", input_type=Boolean(optional=True), prefix="-1", doc=InputDocumentation(doc="run MALVA in haploid mode (default: false)")), ToolInput(tag="in_reference", input_type=String(), position=0, doc=InputDocumentation(doc="")), ToolInput(tag="in_variants", input_type=String(), position=1, doc=InputDocumentation(doc="")), ToolInput(tag="in_sample", input_type=String(), position=2, doc=InputDocumentation(doc=""))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Malva_V0_1_0().translate("wdl", allow_empty_container=True)
+

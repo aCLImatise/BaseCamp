@@ -1,0 +1,135 @@
+!Command
+command:
+- sambamba
+- sort
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: sambamba-sort
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: input.bam
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --memory-limit
+  description: approximate total memory limit for all threads (by default 2GB)
+  args: !SimpleFlagArg
+    name: LIMIT
+- !Flag
+  optional: true
+  synonyms:
+  - --tmpdir
+  description: directory for storing intermediate files; default is system directory
+    for temporary files
+  args: !SimpleFlagArg
+    name: TMPDIR
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out
+  description: output file name; if not provided, the result is written to a file
+    with .sorted.bam extension
+  args: !SimpleFlagArg
+    name: OUTPUTFILE
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --sort-by-name
+  description: sort by read name instead of coordinate (lexicographical order)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sort-picard
+  description: sort by query name like in picard
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -N
+  - --natural-sort
+  description: sort by read name instead of coordinate (so-called 'natural' sort as
+    in samtools)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  - --match-mates
+  description: pull mates of the same alignment together when sorting by read name
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --compression-level
+  description: level of compression for sorted BAM, from 0 to 9
+  args: !SimpleFlagArg
+    name: COMPRESSION_LEVEL
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --uncompressed-chunks
+  description: write sorted chunks as uncompressed BAM (default is writing with compression
+    level 1), that might be faster in some cases but uses more disk space
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --show-progress
+  description: show progressbar in STDERR
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --nthreads
+  description: use specified number of threads
+  args: !SimpleFlagArg
+    name: NTHREADS
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  - --filter
+  description: "keep only reads that satisfy FILTER\n"
+  args: !SimpleFlagArg
+    name: FILTER
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nsambamba 0.8.0\n by Artem Tarasov and Pjotr Prins (C) 2012-2020\n  \
+  \  LDC 1.20.0 / DMD v2.090.1 / LLVM7.0.0 / bootstrap LDC - the LLVM D compiler (0.17.6)\n\
+  \nUsage: sambamba-sort [options] <input.bam>\n\nOptions: -m, --memory-limit=LIMIT\n\
+  \               approximate total memory limit for all threads (by default 2GB)\n\
+  \         --tmpdir=TMPDIR\n               directory for storing intermediate files;\
+  \ default is system directory for temporary files\n         -o, --out=OUTPUTFILE\n\
+  \               output file name; if not provided, the result is written to a file\
+  \ with .sorted.bam extension\n         -n, --sort-by-name\n               sort by\
+  \ read name instead of coordinate (lexicographical order)\n         --sort-picard\n\
+  \               sort by query name like in picard\n         -N, --natural-sort\n\
+  \               sort by read name instead of coordinate (so-called 'natural' sort\
+  \ as in samtools)\n         -M, --match-mates\n               pull mates of the\
+  \ same alignment together when sorting by read name\n         -l, --compression-level=COMPRESSION_LEVEL\n\
+  \               level of compression for sorted BAM, from 0 to 9\n         -u, --uncompressed-chunks\n\
+  \               write sorted chunks as uncompressed BAM (default is writing with\
+  \ compression level 1), that might be faster in some cases but uses more disk space\n\
+  \         -p, --show-progress\n               show progressbar in STDERR\n     \
+  \    -t, --nthreads=NTHREADS\n               use specified number of threads\n \
+  \        -F, --filter=FILTER\n               keep only reads that satisfy FILTER\n"
+generated_using: []
+docker_image: quay.io/biocontainers/sambamba:0.8.0--h984e79f_0

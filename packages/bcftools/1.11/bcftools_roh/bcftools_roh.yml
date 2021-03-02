@@ -1,0 +1,254 @@
+!Command
+command:
+- bcftools
+- roh
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: in.vcf.gz
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --AF-dflt
+  description: if AF is not known, use this allele frequency [skip]
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - --AF-tag
+  description: use TAG for allele frequency
+  args: !SimpleFlagArg
+    name: TAG
+- !Flag
+  optional: true
+  synonyms:
+  - --AF-file
+  description: read allele frequencies from file (CHR\tPOS\tREF,ALT\tAF)
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --buffer-size
+  description: "<int[,int]>      buffer size and the number of overlapping sites,\
+    \ 0 for unlimited [0]\nIf the first number is negative, it is interpreted as the\
+    \ maximum memory to\nuse, in MB. The default overlap is set to roughly 1% of the\
+    \ buffer size."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --estimate-AF
+  description: "[TAG],<file>     estimate AF from FORMAT/TAG (GT or PL) of all samples\
+    \ (\"-\") or samples listed\nin <file>. If TAG is not given, the frequency is\
+    \ estimated from GT by default"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --exclude
+  description: exclude sites for which the expression is true
+  args: !SimpleFlagArg
+    name: expr
+- !Flag
+  optional: true
+  synonyms:
+  - -G
+  - --GTs-only
+  description: "use GTs and ignore PLs, instead using <float> for PL of the two least\
+    \ likely genotypes.\nSafe value to use is 30 to account for GT errors."
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - --include
+  description: select sites for which the expression is true
+  args: !SimpleFlagArg
+    name: expr
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --ignore-homref
+  description: skip hom-ref genotypes (0/0)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --include-noalt
+  description: include sites with no ALT allele (ignored by default)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -I
+  - --skip-indels
+  description: skip indels as their genotypes are enriched for errors
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --genetic-map
+  description: "genetic map in IMPUTE2 format, single file or mask, where string \"\
+    {CHROM}\"\nis replaced with chromosome name"
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  - --rec-rate
+  description: constant recombination rate per bp
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: write output to a file [standard output]
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -O
+  - --output-type
+  description: '[srz]            output s:per-site, r:regions, z:compressed [sr]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --regions
+  description: restrict to comma-separated list of regions
+  args: !SimpleFlagArg
+    name: region
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  - --regions-file
+  description: restrict to regions listed in a file
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --samples
+  description: list of samples to analyze [all samples]
+  args: !SimpleFlagArg
+    name: list
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --samples-file
+  description: file of samples to analyze [all samples]
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --targets
+  description: similar to -r but streams rather than index-jumps
+  args: !SimpleFlagArg
+    name: region
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --targets-file
+  description: similar to -R but streams rather than index-jumps
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: use multithreading with <int> worker threads [0]
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --hw-to-az
+  description: P(AZ|HW) transition probability from HW (Hardy-Weinberg) to AZ (autozygous)
+    state [6.7e-8]
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - -H
+  - --az-to-hw
+  description: P(HW|AZ) transition probability from AZ to HW state [5e-9]
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --viterbi-training
+  description: estimate HMM parameters, <float> is the convergence threshold, e.g.
+    1e-10 (experimental)
+  args: !SimpleFlagArg
+    name: float
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "roh: unrecognized option '--help'\n\nAbout:   HMM model for detecting\
+  \ runs of autozygosity.\nUsage:   bcftools roh [options] <in.vcf.gz>\n\nGeneral\
+  \ Options:\n        --AF-dflt <float>              if AF is not known, use this\
+  \ allele frequency [skip]\n        --AF-tag <TAG>                 use TAG for allele\
+  \ frequency\n        --AF-file <file>               read allele frequencies from\
+  \ file (CHR\\tPOS\\tREF,ALT\\tAF)\n    -b  --buffer-size <int[,int]>      buffer\
+  \ size and the number of overlapping sites, 0 for unlimited [0]\n              \
+  \                             If the first number is negative, it is interpreted\
+  \ as the maximum memory to\n                                           use, in MB.\
+  \ The default overlap is set to roughly 1% of the buffer size.\n    -e, --estimate-AF\
+  \ [TAG],<file>     estimate AF from FORMAT/TAG (GT or PL) of all samples (\"-\"\
+  ) or samples listed\n                                            in <file>. If TAG\
+  \ is not given, the frequency is estimated from GT by default\n        --exclude\
+  \ <expr>               exclude sites for which the expression is true\n    -G, --GTs-only\
+  \ <float>             use GTs and ignore PLs, instead using <float> for PL of the\
+  \ two least likely genotypes.\n                                           Safe value\
+  \ to use is 30 to account for GT errors.\n        --include <expr>             \
+  \  select sites for which the expression is true\n    -i, --ignore-homref      \
+  \          skip hom-ref genotypes (0/0)\n        --include-noalt               \
+  \ include sites with no ALT allele (ignored by default)\n    -I, --skip-indels \
+  \                 skip indels as their genotypes are enriched for errors\n    -m,\
+  \ --genetic-map <file>           genetic map in IMPUTE2 format, single file or mask,\
+  \ where string \"{CHROM}\"\n                                           is replaced\
+  \ with chromosome name\n    -M, --rec-rate <float>             constant recombination\
+  \ rate per bp\n    -o, --output <file>                write output to a file [standard\
+  \ output]\n    -O, --output-type [srz]            output s:per-site, r:regions,\
+  \ z:compressed [sr]\n    -r, --regions <region>             restrict to comma-separated\
+  \ list of regions\n    -R, --regions-file <file>          restrict to regions listed\
+  \ in a file\n    -s, --samples <list>               list of samples to analyze [all\
+  \ samples]\n    -S, --samples-file <file>          file of samples to analyze [all\
+  \ samples]\n    -t, --targets <region>             similar to -r but streams rather\
+  \ than index-jumps\n    -T, --targets-file <file>          similar to -R but streams\
+  \ rather than index-jumps\n        --threads <int>                use multithreading\
+  \ with <int> worker threads [0]\n\nHMM Options:\n    -a, --hw-to-az <float>    \
+  \         P(AZ|HW) transition probability from HW (Hardy-Weinberg) to AZ (autozygous)\
+  \ state [6.7e-8]\n    -H, --az-to-hw <float>             P(HW|AZ) transition probability\
+  \ from AZ to HW state [5e-9]\n    -V, --viterbi-training <float>     estimate HMM\
+  \ parameters, <float> is the convergence threshold, e.g. 1e-10 (experimental)\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bcftools:1.11--h7c999a4_0

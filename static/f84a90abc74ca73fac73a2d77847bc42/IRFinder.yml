@@ -1,0 +1,243 @@
+!Command
+command:
+- IRFinder
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: Unsorted.bam
+  description: ''
+- !Positional
+  optional: false
+  position: 0
+  name: ftp
+  description: ''
+- !Positional
+  optional: false
+  position: 0
+  name: raw_reads_1.fastq
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: version number of current IRFinder.
+  args: !SimpleFlagArg
+    name: Show
+- !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: this usage information.
+  args: !SimpleFlagArg
+    name: Show
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: "FastQ (default. Quantifies intron retention from FASTQ file);\nBAM\
+    \ (quantifies intron retention from a name-sorted BAM file);\nBuildRef (builds\
+    \ IRFinder reference from Ensembl FTP site. Requires Internet),\nBuildRefDownload\
+    \ (only downloads FASTA and GTF files from Ensembl FTP site, without building\
+    \ IRFinder reference. Requires Internet),\nBuildRefProcess (builds IRFinder reference\
+    \ from local FASTA and GTF files),\nBuildRefFromSTARRef (builds IRFinder reference\
+    \ from a local STAR reference)."
+  args: !SimpleFlagArg
+    name: RunMode.
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: ': Directory should not yet exist, will be created.'
+  args: !SimpleFlagArg
+    name: ReferenceDir
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: ': The number of physical CPUs to use by IRFinder. When ommited (default),
+    IRFinder will use all physical CPUs.'
+  args: !SimpleFlagArg
+    name: Threads
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  description: ": An integer that is parsed to '--sjdbOverhang' under STAR 'genomeGenerate'\
+    \ mode. Default: 150."
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  description: ': Typically an ERCC reference.'
+  args: !SimpleFlagArg
+    name: ExtraGenomeRef.fasta.gz
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  description: ': BED of regions to be excluded from analysis.'
+  args: !SimpleFlagArg
+    name: Blacklist.bed.gz
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  description: ': A non-overlapping BED file of additional Regions of Interest for
+    read counts.'
+  args: !SimpleFlagArg
+    name: ROI.bed.gz
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  description: "An existing STAR reference folder.\nPlease note: By default, BuildRefFromSTARRef\
+    \ mode automatically looks for the original FASTA and GTF files used to generate\
+    \ STARRefDir.\nSpecifically, IRFinder investigates 'genomeParameters.txt' in STARRefDir.\n\
+    If both files can be located, IRFinder will continue to generate reference, ignoring\
+    \ '-f' and '-g' options.\nIf either file is missing, IRFinder will quit and you\
+    \ have to re-run it by giving both '-f' and '-g' options."
+  args: !SimpleFlagArg
+    name: STARRefDir.
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: ': This MUST be the same FASTA file used to generate STARRefDir. Ignored
+    when IRFinder can automatically locate the original file.'
+  args: !SimpleFlagArg
+    name: GENOME.fa
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  description: ': This MUST be the same GTF file used to generate STARRefDir. Ignored
+    when IRFinder can automatically locate the original file.'
+  args: !SimpleFlagArg
+    name: TRANSCRIPTS.gtf
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  description: "sequence: 'none' to disable. Default: Illumina Universal is trimmed."
+  args: !SimpleFlagArg
+    name: Adaptor
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: 'Directory: Default is the current directory.'
+  args: !SimpleFlagArg
+    name: Output
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: 'memory mode: NoSharedMemory (default), LoadAndKeep, LoadAndRemove.'
+  args: !SimpleFlagArg
+    name: STAR
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  description: "executable: Default is 'STAR'."
+  args: !SimpleFlagArg
+    name: STAR
+- !Flag
+  optional: true
+  synonyms:
+  - -y
+  description: ': an extra string that is parsed to STAR for reads alignment.'
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  description: 'output: Do not sort the read fragment BAM file. Default is to sort
+    ONLY IF a novosort license is present.'
+  args: !SimpleFlagArg
+    name: Unsorted
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  description: memory. Maximum memory to use for sort, in MB. Default, auto-detected
+    no greater than 10,000MB.
+  args: !SimpleFlagArg
+    name: Sort
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "IRFinder version: 1.3.1\nUsage: IRFinder -r ReferenceDir raw_reads_1.fastq[.gz]\
+  \ [raw_reads_2.fastq[.gz]]\nUsage: IRFinder -m BAM -r ReferenceDir Unsorted.bam\n\
+  Usage: IRFinder -m BuildRef -r ReferenceDir ftp://ftp.ensembl.org/pub/release-89/gtf/mus_musculus/Mus_musculus.GRCm38.89.gtf.gz\n\
+  Usage: IRFinder -m BuildRefFromSTARRef -r ReferenceDir -x STARRefDir\n\n    -v Show\
+  \ version number of current IRFinder.\n    -h Show this usage information.\n   \
+  \ -m RunMode. FastQ (default. Quantifies intron retention from FASTQ file);\n  \
+  \              BAM (quantifies intron retention from a name-sorted BAM file);\n\
+  \                BuildRef (builds IRFinder reference from Ensembl FTP site. Requires\
+  \ Internet),\n                BuildRefDownload (only downloads FASTA and GTF files\
+  \ from Ensembl FTP site, without building IRFinder reference. Requires Internet),\n\
+  \                BuildRefProcess (builds IRFinder reference from local FASTA and\
+  \ GTF files),\n                BuildRefFromSTARRef (builds IRFinder reference from\
+  \ a local STAR reference).\n\nParameters for BuildRef mode:\n  required:\n    ftp://...\
+  \ A base Ensembl URL to a (gzipped) gtf file\n    -r ReferenceDir: Directory should\
+  \ not yet exist, will be created.\n  optional:\n    -t Threads: The number of physical\
+  \ CPUs to use by IRFinder. When ommited (default), IRFinder will use all physical\
+  \ CPUs.\n    -j INTEGER: An integer that is parsed to '--sjdbOverhang' under STAR\
+  \ 'genomeGenerate' mode. Default: 150.\n    -e ExtraGenomeRef.fasta.gz: Typically\
+  \ an ERCC reference.\n    -b Blacklist.bed.gz: BED of regions to be excluded from\
+  \ analysis.\n    -R ROI.bed.gz: A non-overlapping BED file of additional Regions\
+  \ of Interest for read counts.\n\nParameters for BuildRefProcess mode:\n  required:\n\
+  \    -r ReferenceDir. Directory should already contain EXACT files named 'genome.fa'\
+  \ and 'transcripts.gtf' (case-sensitive) for genome and transcriptome annotations\
+  \ respectively.\n  optional:\n    -t Threads: The number of physical CPUs to use\
+  \ by IRFinder. When ommited (default), IRFinder will use all physical CPUs.\n  \
+  \  -j INTEGER: an integer that is parsed to '--sjdbOverhang' under STAR 'genomeGenerate'\
+  \ mode. Default: 150.\n    -e ExtraGenomeRef.fasta.gz: Typically an ERCC reference.\n\
+  \    -b Blacklist.bed.gz: BED of regions to be excluded from analysis.\n    -R ROI.bed.gz:\
+  \ A non-overlapping BED file of additional Regions of Interest for read counts.\n\
+  \nParameters for BuildRefFromSTARRef mode (read the following carefully when using\
+  \ this mode):\n  required:\n    -r ReferenceDir. A directory to store IRFinder reference.\n\
+  \    -x STARRefDir. An existing STAR reference folder.\n       Please note: By default,\
+  \ BuildRefFromSTARRef mode automatically looks for the original FASTA and GTF files\
+  \ used to generate STARRefDir.\n       Specifically, IRFinder investigates 'genomeParameters.txt'\
+  \ in STARRefDir.\n       If both files can be located, IRFinder will continue to\
+  \ generate reference, ignoring '-f' and '-g' options.\n       If either file is\
+  \ missing, IRFinder will quit and you have to re-run it by giving both '-f' and\
+  \ '-g' options.\n  optional:\n    -t Threads: The number of physical CPUs to use\
+  \ by IRFinder. When ommited (default), IRFinder will use all physical CPUs.\n  \
+  \  -f GENOME.fa: This MUST be the same FASTA file used to generate STARRefDir. Ignored\
+  \ when IRFinder can automatically locate the original file.\n    -g TRANSCRIPTS.gtf:\
+  \ This MUST be the same GTF file used to generate STARRefDir. Ignored when IRFinder\
+  \ can automatically locate the original file.\n    -e ExtraGenomeRef.fasta.gz: Typically\
+  \ an ERCC reference.\n    -b Blacklist.bed.gz: BED of regions to be excluded from\
+  \ analysis.\n    -R ROI.bed.gz: A non-overlapping BED file of additional Regions\
+  \ of Interest for read counts.\n\nParameters for FastQ mode:\n  required:\n    raw_reads_1.fastq.gz:\
+  \ Either single or paired end fastq file.\n    Unsorted.bam: Mapped output, with\
+  \ pairs as sequential records. Paired end must not be coordinate sorted.\n    -r\
+  \ ReferenceDir. As built by the 'BuildRef' option.\n  optional:\n    -t Threads:\
+  \ The number of physical CPUs to use by IRFinder. When ommited (default), IRFinder\
+  \ will use all physical CPUs.\n    -a Adaptor sequence: 'none' to disable. Default:\
+  \ Illumina Universal is trimmed.\n    -d Output Directory: Default is the current\
+  \ directory.\n    -s STAR memory mode: NoSharedMemory (default), LoadAndKeep, LoadAndRemove.\n\
+  \    -S STAR executable: Default is 'STAR'.\n    -y STRING: an extra string that\
+  \ is parsed to STAR for reads alignment.\n    -u Unsorted output: Do not sort the\
+  \ read fragment BAM file. Default is to sort ONLY IF a novosort license is present.\n\
+  \    -M Sort memory. Maximum memory to use for sort, in MB. Default, auto-detected\
+  \ no greater than 10,000MB.\n\nParameters for BAM mode:\n  required:\n    Unsorted.bam:\
+  \ Mapped output, with pairs as sequential records. Paired end must not be coordinate\
+  \ sorted.\n    -r ReferenceDir: As built by the 'BuildRef' option.\n  optional:\n\
+  \    -t Threads: The number of physical CPUs to use by IRFinder. When ommited (default),\
+  \ IRFinder will use all physical CPUs.\n    -d Output Directory: Default is the\
+  \ current directory.\n"
+generated_using:
+- -h
+docker_image: quay.io/biocontainers/irfinder:1.3.1--h516909a_0

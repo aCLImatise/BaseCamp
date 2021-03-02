@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import String, Float, Directory, Boolean, Int
+
+Select_Db_Py_V0_1_0 = CommandToolBuilder(tool="select_db.py", base_command=["select_db.py"], inputs=[ToolInput(tag="in_c_mash_results", input_type=String(optional=True), prefix="--cmash_results", doc=InputDocumentation(doc="Give location of CMash query results if already done.")), ToolInput(tag="in_cut_off", input_type=Float(optional=True), prefix="--cutoff", doc=InputDocumentation(doc="CMash cutoff value. Default is 0.01.")), ToolInput(tag="in_db", input_type=String(optional=True), prefix="--db", doc=InputDocumentation(doc="Where to write subset database. Default:\ntemp_dir/cmashed_db.fna")), ToolInput(tag="in_db_dir", input_type=Directory(optional=True), prefix="--db_dir", doc=InputDocumentation(doc="Directory with all organism files in the full")), ToolInput(tag="in_db_info_out", input_type=String(optional=True), prefix="--dbinfo_out", doc=InputDocumentation(doc="Where to write subset db_info. Default:\ntemp_dir/subset_db_info.txt")), ToolInput(tag="in_input_type", input_type=String(optional=True), prefix="--input_type", doc=InputDocumentation(doc="Type of input file (fastq/fasta). Default: try to\nauto-determine")), ToolInput(tag="in_keep_temp_files", input_type=Boolean(optional=True), prefix="--keep_temp_files", doc=InputDocumentation(doc="Retain KMC files after this script finishes.")), ToolInput(tag="in_strain_level", input_type=Boolean(optional=True), prefix="--strain_level", doc=InputDocumentation(doc="Include all strains above cutoff. Default: 1 strain\nper species.")), ToolInput(tag="in_temp_dir", input_type=Directory(optional=True), prefix="--temp_dir", doc=InputDocumentation(doc="Directory to write temporary files to.")), ToolInput(tag="in_threads", input_type=Int(optional=True), prefix="--threads", doc=InputDocumentation(doc="How many compute threads for KMC to use. Default: 4")), ToolInput(tag="in_reads", input_type=String(), position=0, doc=InputDocumentation(doc="Path to reads file.")), ToolInput(tag="in_data", input_type=String(), position=1, doc=InputDocumentation(doc="Path to data/ directory with the files from")), ToolInput(tag="in_setup_data_dots_h", input_type=String(), position=2, doc=InputDocumentation(doc="optional arguments:")), ToolInput(tag="in_database_dot", input_type=String(), position=3, doc=InputDocumentation(doc="--dbinfo_in DBINFO_IN"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Select_Db_Py_V0_1_0().translate("wdl", allow_empty_container=True)
+

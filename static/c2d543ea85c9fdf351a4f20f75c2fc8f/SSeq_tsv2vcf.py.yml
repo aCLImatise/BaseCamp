@@ -1,0 +1,154 @@
+!Command
+command:
+- SSeq_tsv2vcf.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -tsv
+  - --tsv-in
+  description: 'TSV in (default: None)'
+  args: !SimpleFlagArg
+    name: TSV_IN
+- !Flag
+  optional: true
+  synonyms:
+  - -vcf
+  - --vcf-out
+  description: 'VCF iut (default: None)'
+  args: !SimpleFlagArg
+    name: VCF_OUT
+- !Flag
+  optional: true
+  synonyms:
+  - -pass
+  - --pass-threshold
+  description: 'Above which is automatically PASS (default: 0.5)'
+  args: !SimpleFlagArg
+    name: PASS_THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - -low
+  - --lowqual-threshold
+  description: 'Low quality subject to lenient filter (default: 0.1)'
+  args: !SimpleFlagArg
+    name: LOWQUAL_THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - -hom
+  - --hom-threshold
+  description: 'The VAF to be labeled 1/1 in GT (default: 0.85)'
+  args: !SimpleFlagArg
+    name: HOM_THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - -het
+  - --het-threshold
+  description: 'The VAF to be labeled 0/1 in GT (default: 0.01)'
+  args: !SimpleFlagArg
+    name: HET_THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - -N
+  - --normal-sample-name
+  description: 'Normal Sample Name (default: NORMAL)'
+  args: !SimpleFlagArg
+    name: NORMAL_SAMPLE_NAME
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --tumor-sample-name
+  description: 'Tumor Sample Name (default: TUMOR)'
+  args: !SimpleFlagArg
+    name: TUMOR_SAMPLE_NAME
+- !Flag
+  optional: true
+  synonyms:
+  - -tools
+  description: "[INDIVIDUAL_MUTATION_TOOLS [INDIVIDUAL_MUTATION_TOOLS ...]], --individual-mutation-tools\
+    \ [INDIVIDUAL_MUTATION_TOOLS [INDIVIDUAL_MUTATION_TOOLS ...]]\nA list of all tools\
+    \ used. Possible values are\nCGA/MuTect/MuTect2 (M), VarScan2 (V), JointSNVMix2\n\
+    (J), SomaticSniper (S), VarDict (D), MuSE (U), LoFreq\n(L), Scalpel (P), Strelka\
+    \ (K), TNscope (T), and/or\nPlatypus (Y) (default: None)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -all
+  - --emit-all
+  description: 'Flag it to print out everything (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -phred
+  - --phred-scale
+  description: "Flag it to print out Phred scale QUAL (proper VCF\nformat but more\
+    \ annoying to filter) (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -single
+  - --single-sample
+  description: 'Tumor-only mode (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -paired
+  - --paired-samples
+  description: "Paired tumor-normal samples (default: True)\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: SSeq_tsv2vcf.py [-h] -tsv TSV_IN -vcf VCF_OUT [-pass PASS_THRESHOLD]\n\
+  \                       [-low LOWQUAL_THRESHOLD] [-hom HOM_THRESHOLD]\n        \
+  \               [-het HET_THRESHOLD] [-N NORMAL_SAMPLE_NAME]\n                 \
+  \      [-T TUMOR_SAMPLE_NAME] -tools\n                       [INDIVIDUAL_MUTATION_TOOLS\
+  \ [INDIVIDUAL_MUTATION_TOOLS ...]]\n                       [-all] [-phred] [-single\
+  \ | -paired]\n\nThis is a SomaticSeq subroutine SomaticSeq TSV file into VCF file.\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  -tsv TSV_IN, --tsv-in TSV_IN\n                        TSV in (default: None)\n\
+  \  -vcf VCF_OUT, --vcf-out VCF_OUT\n                        VCF iut (default: None)\n\
+  \  -pass PASS_THRESHOLD, --pass-threshold PASS_THRESHOLD\n                     \
+  \   Above which is automatically PASS (default: 0.5)\n  -low LOWQUAL_THRESHOLD,\
+  \ --lowqual-threshold LOWQUAL_THRESHOLD\n                        Low quality subject\
+  \ to lenient filter (default: 0.1)\n  -hom HOM_THRESHOLD, --hom-threshold HOM_THRESHOLD\n\
+  \                        The VAF to be labeled 1/1 in GT (default: 0.85)\n  -het\
+  \ HET_THRESHOLD, --het-threshold HET_THRESHOLD\n                        The VAF\
+  \ to be labeled 0/1 in GT (default: 0.01)\n  -N NORMAL_SAMPLE_NAME, --normal-sample-name\
+  \ NORMAL_SAMPLE_NAME\n                        Normal Sample Name (default: NORMAL)\n\
+  \  -T TUMOR_SAMPLE_NAME, --tumor-sample-name TUMOR_SAMPLE_NAME\n               \
+  \         Tumor Sample Name (default: TUMOR)\n  -tools [INDIVIDUAL_MUTATION_TOOLS\
+  \ [INDIVIDUAL_MUTATION_TOOLS ...]], --individual-mutation-tools [INDIVIDUAL_MUTATION_TOOLS\
+  \ [INDIVIDUAL_MUTATION_TOOLS ...]]\n                        A list of all tools\
+  \ used. Possible values are\n                        CGA/MuTect/MuTect2 (M), VarScan2\
+  \ (V), JointSNVMix2\n                        (J), SomaticSniper (S), VarDict (D),\
+  \ MuSE (U), LoFreq\n                        (L), Scalpel (P), Strelka (K), TNscope\
+  \ (T), and/or\n                        Platypus (Y) (default: None)\n  -all, --emit-all\
+  \      Flag it to print out everything (default: False)\n  -phred, --phred-scale\n\
+  \                        Flag it to print out Phred scale QUAL (proper VCF\n   \
+  \                     format but more annoying to filter) (default: False)\n  -single,\
+  \ --single-sample\n                        Tumor-only mode (default: False)\n  -paired,\
+  \ --paired-samples\n                        Paired tumor-normal samples (default:\
+  \ True)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/somaticseq:3.6.2--py_0

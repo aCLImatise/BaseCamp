@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, File, String
+
+Diff3_V0_1_0 = CommandToolBuilder(tool="diff3", base_command=["diff3"], inputs=[ToolInput(tag="in_show_all", input_type=Boolean(optional=True), prefix="--show-all", doc=InputDocumentation(doc="output all changes, bracketing conflicts")), ToolInput(tag="in_ed", input_type=Boolean(optional=True), prefix="--ed", doc=InputDocumentation(doc="output ed script incorporating changes\nfrom OLDFILE to YOURFILE into MYFILE")), ToolInput(tag="in_show_overlap", input_type=Boolean(optional=True), prefix="--show-overlap", doc=InputDocumentation(doc="like -e, but bracket conflicts")), ToolInput(tag="in_easy_only", input_type=Boolean(optional=True), prefix="--easy-only", doc=InputDocumentation(doc="like -e, but incorporate only nonoverlapping changes")), ToolInput(tag="in_overlap_only", input_type=Boolean(optional=True), prefix="--overlap-only", doc=InputDocumentation(doc="like -e, but incorporate only overlapping changes")), ToolInput(tag="in_like_bracket_conflicts", input_type=Boolean(optional=True), prefix="-X", doc=InputDocumentation(doc="like -x, but bracket conflicts")), ToolInput(tag="in_append_commands_ed", input_type=Boolean(optional=True), prefix="-i", doc=InputDocumentation(doc="append 'w' and 'q' commands to ed scripts")), ToolInput(tag="in_merge", input_type=File(optional=True), prefix="--merge", doc=InputDocumentation(doc="output actual merged file, according to")), ToolInput(tag="in_text", input_type=Boolean(optional=True), prefix="--text", doc=InputDocumentation(doc="treat all files as text")), ToolInput(tag="in_strip_trailing_cr", input_type=Boolean(optional=True), prefix="--strip-trailing-cr", doc=InputDocumentation(doc="strip trailing carriage return on input")), ToolInput(tag="in_initial_tab", input_type=Boolean(optional=True), prefix="--initial-tab", doc=InputDocumentation(doc="make tabs line up by prepending a tab")), ToolInput(tag="in_diff_program", input_type=String(optional=True), prefix="--diff-program", doc=InputDocumentation(doc="use PROGRAM to compare files")), ToolInput(tag="in_label", input_type=File(optional=True), prefix="--label", doc=InputDocumentation(doc="use LABEL instead of file name\n(can be repeated up to three times)"))], outputs=[ToolOutput(tag="out_merge", output_type=File(optional=True), selector=InputSelector(input_to_select="in_merge", type_hint=File()), doc=OutputDocumentation(doc="output actual merged file, according to"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Diff3_V0_1_0().translate("wdl", allow_empty_container=True)
+

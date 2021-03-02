@@ -1,0 +1,76 @@
+!Command
+command:
+- gdtools
+- DOWNLOAD
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --login
+  description: Login user:password information for private server access.
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --download-dir
+  description: Output directory to download file to. (DEFAULT=02_Downloads)
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --genome-diff-dir
+  description: Directory to search for genome diff files. (DEFAULT=01_Data)
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --test
+  description: Test urls in genome diff files, doesn't download the file
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --reference-only
+  description: Only downloads the reference sequence files for this file
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  - --ungzip
+  description: Decompress gzipped read files
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Display detailed help message
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "\nUsage: gdtools DOWNLOAD -l <user:password> -d <download_dir> -g <genome_diff_dir>\n\
+  Usage: gdtools DOWNLOAD -l <user:password> -d <download_dir> <file1.gd file2.gd\
+  \ file3.gd ...>\n\n  -h,--help                        Display detailed help message\n\
+  \  -l,--login <arg>                 Login user:password information for private\
+  \ server access.\n  -d,--download-dir <arg>          Output directory to download\
+  \ file to. (DEFAULT=02_Downloads)\n  -g,--genome-diff-dir <arg>       Directory\
+  \ to search for genome diff files. (DEFAULT=01_Data)\n  --test                 \
+  \          Test urls in genome diff files, doesn't download the file\n  --reference-only\
+  \                 Only downloads the reference sequence files for this file\n  -z,--ungzip\
+  \                      Decompress gzipped read files\n\nExamples:\n  gdtools DOWNLOAD\
+  \ -l john:1234 -d downloads -g data\n  gdtools DOWNLOAD -l john:1234 -d downloads\
+  \ 1B4.gd GRC2000.gd\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/breseq:0.35.5--h8b12597_0

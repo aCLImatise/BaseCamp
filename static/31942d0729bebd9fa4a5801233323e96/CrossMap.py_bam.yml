@@ -1,0 +1,72 @@
+!Command
+command:
+- CrossMap.py
+- bam
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: chain_file
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: input_file
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: output_file
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --mean
+  description: "Average insert size of pair-end sequencing (bp).\n[default=200.0]"
+  args: !SimpleFlagArg
+    name: INSERT_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --stdev
+  description: Stanadard deviation of insert size. [default=30.0]
+  args: !SimpleFlagArg
+    name: INSERT_SIZE_STDEV
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --times
+  description: "A mapped pair is considered as \"proper pair\" if both\nends mapped\
+    \ to different strand and the distance\nbetween them is less then '-t' * stdev\
+    \ from the mean.\n[default=3.0]"
+  args: !SimpleFlagArg
+    name: INSERT_SIZE_FOLD
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --append-tags
+  description: Add tag to each alignment.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Usage: CrossMap.py bam chain_file input_file output_file [options]\nNote:\
+  \ If output_file == STDOUT or -, CrossMap will write BAM file to the screen\n\n\
+  Options:\n  -m INSERT_SIZE, --mean=INSERT_SIZE\n                        Average\
+  \ insert size of pair-end sequencing (bp).\n                        [default=200.0]\n\
+  \  -s INSERT_SIZE_STDEV, --stdev=INSERT_SIZE_STDEV\n                        Stanadard\
+  \ deviation of insert size. [default=30.0]\n  -t INSERT_SIZE_FOLD, --times=INSERT_SIZE_FOLD\n\
+  \                        A mapped pair is considered as \"proper pair\" if both\n\
+  \                        ends mapped to different strand and the distance\n    \
+  \                    between them is less then '-t' * stdev from the mean.\n   \
+  \                     [default=3.0]\n  -a, --append-tags     Add tag to each alignment.\n"
+generated_using: []
+docker_image:

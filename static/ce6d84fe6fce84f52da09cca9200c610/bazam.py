@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, String, Int, Boolean
+
+Bazam_V0_1_0 = CommandToolBuilder(tool="bazam", base_command=["bazam"], inputs=[ToolInput(tag="in_bam", input_type=File(optional=True), prefix="-bam", doc=InputDocumentation(doc="BAM file to extract read pairs from")), ToolInput(tag="in_dr", input_type=String(optional=True), prefix="-dr", doc=InputDocumentation(doc="Specify a read name to debug: processing of the read\nwill be verbosey printed")), ToolInput(tag="in_filter", input_type=String(optional=True), prefix="--filter", doc=InputDocumentation(doc="Filter using specified groovy expression")), ToolInput(tag="in_gene", input_type=String(optional=True), prefix="-gene", doc=InputDocumentation(doc="Extract region of given gene")), ToolInput(tag="in_regions", input_type=String(optional=True), prefix="--regions", doc=InputDocumentation(doc="Regions to include reads (and mates of reads) from")), ToolInput(tag="in_concurrency_parameter", input_type=Int(optional=True), prefix="-n", doc=InputDocumentation(doc="Concurrency parameter (4)")), ToolInput(tag="in_name_pos", input_type=Boolean(optional=True), prefix="-namepos", doc=InputDocumentation(doc="Add original position to the read names")), ToolInput(tag="in_output_file", input_type=File(optional=True), prefix="-o", doc=InputDocumentation(doc="Output file")), ToolInput(tag="in_pad", input_type=Int(optional=True), prefix="-pad", doc=InputDocumentation(doc="Amount to pad regions by (0)")), ToolInput(tag="in_r_one", input_type=Int(optional=True), prefix="-r1", doc=InputDocumentation(doc="Output for R1 if extracting FASTQ in separate files")), ToolInput(tag="in_r_two", input_type=Int(optional=True), prefix="-r2", doc=InputDocumentation(doc="Output for R2 if extracting FASTQ in separate files")), ToolInput(tag="in_sharding_factor_format", input_type=String(optional=True), prefix="-s", doc=InputDocumentation(doc="Sharding factor: format <n>,<N>: output only reads\nbelonging to shard n of N")), ToolInput(tag="in_jar", input_type=String(optional=True), prefix="-jar", doc=InputDocumentation(doc="")), ToolInput(tag="in_java", input_type=String(), position=0, doc=InputDocumentation(doc=""))], outputs=[ToolOutput(tag="out_output_file", output_type=File(optional=True), selector=InputSelector(input_to_select="in_output_file", type_hint=File()), doc=OutputDocumentation(doc="Output file"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Bazam_V0_1_0().translate("wdl", allow_empty_container=True)
+

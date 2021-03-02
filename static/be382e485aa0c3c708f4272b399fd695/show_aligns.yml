@@ -1,0 +1,88 @@
+!Command
+command:
+- show-aligns
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: deltafile
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: ref ID
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: qry ID
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  description: Sort alignments by the query start coordinate
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: Sort alignments by the reference start coordinate
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  description: Set the screen width - default is terminal width
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: Colorize bases on output
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  description: Set the matrix type - default is 2 (BLOSUM 62)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: "Space between markers - default is 10, disable with 0\nother options\
+    \ include 1 (BLOSUM 45) and 3 (BLOSUM 80)\nnote: only has effect on amino acid\
+    \ alignments"
+  args: !SimpleFlagArg
+    name: int
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: Display help information
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "\nUSAGE: show-aligns  [options]  <deltafile>  <ref ID>  <qry ID>\n\n-h\
+  \            Display help information\n-q            Sort alignments by the query\
+  \ start coordinate\n-r            Sort alignments by the reference start coordinate\n\
+  -w int        Set the screen width - default is terminal width\n-c            Colorize\
+  \ bases on output\n-x int        Set the matrix type - default is 2 (BLOSUM 62)\n\
+  -m int        Space between markers - default is 10, disable with 0\n          \
+  \    other options include 1 (BLOSUM 45) and 3 (BLOSUM 80)\n              note:\
+  \ only has effect on amino acid alignments\n\n  Input is the .delta output of either\
+  \ the \"nucmer\" or the\n\"promer\" program passed on the command line.\n  Output\
+  \ is to stdout, and consists of all the alignments between the\nquery and reference\
+  \ sequences identified on the command line.\n  NOTE: No sorting is done by default,\
+  \ therefore the alignments\nwill be ordered as found in the <deltafile> input.\n\
+  \n"
+generated_using:
+- -h
+docker_image: quay.io/biocontainers/mummer4:4.0.0rc1--pl526he1b5a44_0

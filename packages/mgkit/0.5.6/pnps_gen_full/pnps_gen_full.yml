@@ -1,0 +1,147 @@
+!Command
+command:
+- pnps-gen
+- full
+positional:
+- !Positional
+  optional: true
+  position: 0
+  name: TXT_FILE
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  - -t
+  - --taxonomy
+  description: Taxonomy file  [required]
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --snp-data
+  description: SNP data, output of `snp_parser`  [required]
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --rank
+  description: "[superkingdom|kingdom|phylum|class|order|family|genus|species|None]\n\
+    Taxonomic rank  [default: order]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --min-num
+  description: RANGE     Minimum number of samples with a pN/pS to
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --min-cov
+  description: "RANGE     Minimum coverage for SNPs to be accepted\n[default: 4]"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --taxon_ids
+  description: 'Taxon IDs to include  [default: 2]'
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --use-uid
+  description: "Use uids from the GFF file instead of\ngene_id as genes  [default:\
+    \ False]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --gene-map
+  description: Dictionary to map *gene_id* to another ID
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - '-2'
+  - --two-columns
+  description: "gene-map is a two columns table with\nrepeated keys"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --separator
+  description: "column separator for gene-map file\n[default:   ]"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --lineage
+  description: "Use lineage string instead of taxon_id\n[default: False]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ps
+  - --only-ps
+  description: 'Only calculate pS values  [default: False]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -pn
+  - --only-pn
+  description: 'Only calculate pN values  [default: False]'
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: pnps-gen full [OPTIONS] [TXT_FILE]\n\n  Calculates pN/pS\n\nOptions:\n\
+  \  -v, --verbose\n  -t, --taxonomy FILENAME         Taxonomy file  [required]\n\
+  \  -s, --snp-data FILENAME         SNP data, output of `snp_parser`  [required]\n\
+  \  -r, --rank [superkingdom|kingdom|phylum|class|order|family|genus|species|None]\n\
+  \                                  Taxonomic rank  [default: order]\n  -m, --min-num\
+  \ INTEGER RANGE     Minimum number of samples with a pN/pS to\n                \
+  \                  accept  [default: 2]\n\n  -c, --min-cov INTEGER RANGE     Minimum\
+  \ coverage for SNPs to be accepted\n                                  [default:\
+  \ 4]\n\n  -i, --taxon_ids INTEGER         Taxon IDs to include  [default: 2]\n \
+  \ -u, --use-uid                   Use uids from the GFF file instead of\n      \
+  \                            gene_id as genes  [default: False]\n\n  -g, --gene-map\
+  \ FILENAME         Dictionary to map *gene_id* to another ID\n  -2, --two-columns\
+  \               gene-map is a two columns table with\n                         \
+  \         repeated keys\n\n  -p, --separator TEXT            column separator for\
+  \ gene-map file\n                                  [default:   ]\n\n  -l, --lineage\
+  \                   Use lineage string instead of taxon_id\n                   \
+  \               [default: False]\n\n  -ps, --only-ps                  Only calculate\
+  \ pS values  [default: False]\n  -pn, --only-pn                  Only calculate\
+  \ pN values  [default: False]\n  --help                          Show this message\
+  \ and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/mgkit:0.5.6--py37hf01694f_0

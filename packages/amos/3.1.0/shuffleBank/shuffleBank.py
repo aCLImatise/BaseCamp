@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import String, File, Boolean, Int
+
+Shufflebank_V0_1_0 = CommandToolBuilder(tool="shuffleBank", base_command=["shuffleBank"], inputs=[ToolInput(tag="in_bank", input_type=String(optional=True), prefix="-bank", doc=InputDocumentation(doc="bank where assembly is stored")), ToolInput(tag="in_common_file_prefix", input_type=File(optional=True), prefix="-p", doc=InputDocumentation(doc="Common file prefix to add to the output")), ToolInput(tag="in_dump_contigs_bank", input_type=Boolean(optional=True), prefix="-c", doc=InputDocumentation(doc="Dump contigs from the bank (default)")), ToolInput(tag="in_dump_reads_bank", input_type=Boolean(optional=True), prefix="-r", doc=InputDocumentation(doc="Dump reads from the bank")), ToolInput(tag="in_eid", input_type=Boolean(optional=True), prefix="-eid", doc=InputDocumentation(doc="report eids")), ToolInput(tag="in_iid", input_type=Boolean(optional=True), prefix="-iid", doc=InputDocumentation(doc="report iids (default)")), ToolInput(tag="in_dump_fastq_format", input_type=Boolean(optional=True), prefix="-f", doc=InputDocumentation(doc="Dump in fastq format")), ToolInput(tag="in_use_sanger_fastq", input_type=Int(optional=True), prefix="-Q", doc=InputDocumentation(doc="Use this as the min base quality (default: 33 / Sanger FASTQ)")), ToolInput(tag="in_ignore_clear_range", input_type=Boolean(optional=True), prefix="-a", doc=InputDocumentation(doc="Ignore clear range and dump entire sequence")), ToolInput(tag="in_display_details_header", input_type=Boolean(optional=True), prefix="-d", doc=InputDocumentation(doc="Display details on header line")), ToolInput(tag="in_set_maximum_number", input_type=Int(optional=True), prefix="-L", doc=InputDocumentation(doc="Set the maximum number of bases per line (Default: 70)")), ToolInput(tag="in_fofn_list_specifying", input_type=Boolean(optional=True), prefix="-E", doc=InputDocumentation(doc="<fofn>      List of files specifying by EID where to write")), ToolInput(tag="in_list_specifying_write", input_type=String(optional=True), prefix="-I", doc=InputDocumentation(doc="List of files specifying by EID where to write"))], outputs=[ToolOutput(tag="out_common_file_prefix", output_type=File(optional=True), selector=InputSelector(input_to_select="in_common_file_prefix", type_hint=File()), doc=OutputDocumentation(doc="Common file prefix to add to the output"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Shufflebank_V0_1_0().translate("wdl", allow_empty_container=True)
+

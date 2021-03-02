@@ -1,0 +1,214 @@
+!Command
+command:
+- cdna_classifier.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: input_fastx
+  description: Input file.
+- !Positional
+  optional: false
+  position: 1
+  name: output_fastx
+  description: Output file.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  description: Primers fasta.
+  args: !SimpleFlagArg
+    name: primers
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  description: File with custom profile HMMs (None).
+  args: !SimpleFlagArg
+    name: phmm_file
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: "File to specify primer configurations for each\ndirection (None)."
+  args: !SimpleFlagArg
+    name: config_file
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  description: Use primer sequences from this kit (PCS109).
+  args: !SimpleFlagArg
+    name: kit
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  description: Cutoff parameter (autotuned).
+  args: !SimpleFlagArg
+    name: cutoff
+- !Flag
+  optional: true
+  synonyms:
+  - -Q
+  description: Minimum mean base quality (7.0).
+  args: !SimpleFlagArg
+    name: min_qual
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  description: Minimum segment length (50).
+  args: !SimpleFlagArg
+    name: min_len
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: Report PDF (cdna_classifier_report.pdf).
+  args: !SimpleFlagArg
+    name: report_pdf
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  description: Write unclassified reads to this file.
+  args: !SimpleFlagArg
+    name: unclass_output
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: Write fragments failing the length filter in this file.
+  args: !SimpleFlagArg
+    name: len_fail_output
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  description: Write rescued reads to this file.
+  args: !SimpleFlagArg
+    name: rescue_output
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  description: Write statistics to this file.
+  args: !SimpleFlagArg
+    name: stats_output
+- !Flag
+  optional: true
+  synonyms:
+  - -K
+  description: Write reads failing mean quality filter to this file.
+  args: !SimpleFlagArg
+    name: qc_fail_output
+- !Flag
+  optional: true
+  synonyms:
+  - -Y
+  description: "Approximate number of reads used for tuning the cutoff\nparameter\
+    \ (10000)."
+  args: !SimpleFlagArg
+    name: autotune_nr
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  description: "Number of samples taken when tuning cutoff parameter\n(30)."
+  args: !SimpleFlagArg
+    name: autotune_samples
+- !Flag
+  optional: true
+  synonyms:
+  - -A
+  description: Write alignment scores to this BED file.
+  args: !SimpleFlagArg
+    name: scores_output
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: 'Detection method: phmm or edlib (phmm).'
+  args: !SimpleFlagArg
+    name: method
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  description: 'Protocol-specific read rescue: DCS109 (None).'
+  args: !SimpleFlagArg
+    name: rescue
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: Keep primers, but trim the rest.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: Number of threads to use (8).
+  args: !SimpleFlagArg
+    name: threads
+- !Flag
+  optional: true
+  synonyms:
+  - -B
+  description: "Maximum number of reads processed in each batch\n(1000000)."
+  args: !SimpleFlagArg
+    name: batch_size
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  description: stats        Tab separated file with per-read stats (None).
+  args: !SimpleFlagArg
+    name: read
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: cdna_classifier.py [-h] [-b primers] [-g phmm_file] [-c config_file]\n\
+  \                          [-k kit] [-q cutoff] [-Q min_qual] [-z min_len]\n   \
+  \                       [-r report_pdf] [-u unclass_output]\n                  \
+  \        [-l len_fail_output] [-w rescue_output]\n                          [-S\
+  \ stats_output] [-K qc_fail_output]\n                          [-Y autotune_nr]\
+  \ [-L autotune_samples]\n                          [-A scores_output] [-m method]\
+  \ [-x rescue] [-p]\n                          [-t threads] [-B batch_size] [-D read\
+  \ stats]\n                          input_fastx output_fastx\n\nTool to identify,\
+  \ orient and rescue full-length cDNA reads.\n\npositional arguments:\n  input_fastx\
+  \          Input file.\n  output_fastx         Output file.\n\noptional arguments:\n\
+  \  -h, --help           show this help message and exit\n  -b primers          \
+  \ Primers fasta.\n  -g phmm_file         File with custom profile HMMs (None).\n\
+  \  -c config_file       File to specify primer configurations for each\n       \
+  \                direction (None).\n  -k kit               Use primer sequences\
+  \ from this kit (PCS109).\n  -q cutoff            Cutoff parameter (autotuned).\n\
+  \  -Q min_qual          Minimum mean base quality (7.0).\n  -z min_len         \
+  \  Minimum segment length (50).\n  -r report_pdf        Report PDF (cdna_classifier_report.pdf).\n\
+  \  -u unclass_output    Write unclassified reads to this file.\n  -l len_fail_output\
+  \   Write fragments failing the length filter in this file.\n  -w rescue_output\
+  \     Write rescued reads to this file.\n  -S stats_output      Write statistics\
+  \ to this file.\n  -K qc_fail_output    Write reads failing mean quality filter\
+  \ to this file.\n  -Y autotune_nr       Approximate number of reads used for tuning\
+  \ the cutoff\n                       parameter (10000).\n  -L autotune_samples \
+  \ Number of samples taken when tuning cutoff parameter\n                       (30).\n\
+  \  -A scores_output     Write alignment scores to this BED file.\n  -m method  \
+  \          Detection method: phmm or edlib (phmm).\n  -x rescue            Protocol-specific\
+  \ read rescue: DCS109 (None).\n  -p                   Keep primers, but trim the\
+  \ rest.\n  -t threads           Number of threads to use (8).\n  -B batch_size \
+  \       Maximum number of reads processed in each batch\n                      \
+  \ (1000000).\n  -D read stats        Tab separated file with per-read stats (None).\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/pychopper:2.5.0--py_0

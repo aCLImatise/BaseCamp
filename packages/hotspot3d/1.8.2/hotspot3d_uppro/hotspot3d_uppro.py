@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Directory, Boolean
+
+Hotspot3D_Uppro_V0_1_0 = CommandToolBuilder(tool="hotspot3d_uppro", base_command=["hotspot3d", "uppro"], inputs=[ToolInput(tag="in_output_dir", input_type=Directory(optional=True), prefix="--output-dir", doc=InputDocumentation(doc="Output directory of proximity files")), ToolInput(tag="in_pdb_file_dir", input_type=Boolean(optional=True), prefix="--pdb-file-dir", doc=InputDocumentation(doc="PDB file directory")), ToolInput(tag="in_measure", input_type=Boolean(optional=True), prefix="--measure", doc=InputDocumentation(doc="Distance measure between residues (shortest or average)")), ToolInput(tag="in_parallel", input_type=Boolean(optional=True), prefix="--parallel", doc=InputDocumentation(doc="Parallelization to use (bsub, local, or none)\nuse bsub if you want to use an LSF server\nuse local if you want to use your CPU (CAUTION: make sure you know your max CPU processes)\nuse none if you want to run calpro for each protein serially")), ToolInput(tag="in_max_processes", input_type=Boolean(optional=True), prefix="--max-processes", doc=InputDocumentation(doc="Set if using parallel type local (CAUTION: make sure you know your max CPU processes)")), ToolInput(tag="in_gene_file", input_type=Boolean(optional=True), prefix="--gene-file", doc=InputDocumentation(doc="File with HUGO gene names in the first column (like a .maf)")), ToolInput(tag="in_three_d_distance_cut_off", input_type=Boolean(optional=True), prefix="--3d-distance-cutoff", doc=InputDocumentation(doc="Maximum 3D distance (<= Angstroms), defaul: 100")), ToolInput(tag="in_linear_distance_cut_off", input_type=Boolean(optional=True), prefix="--linear-distance-cutoff", doc=InputDocumentation(doc="Minimum linear distance (> peptides), default: 0")), ToolInput(tag="in_cmd_list_submit_file", input_type=Boolean(optional=True), prefix="--cmd-list-submit-file", doc=InputDocumentation(doc="Batch jobs file to run calpro step in parallel, default: cmd_list_submit_file")), ToolInput(tag="in_hold", input_type=Boolean(optional=True), prefix="--hold", doc=InputDocumentation(doc="Do not submit batch jobs, just write cmd_list_submit_file, default: submits (takes no input)"))], outputs=[ToolOutput(tag="out_output_dir", output_type=Directory(optional=True), selector=InputSelector(input_to_select="in_output_dir", type_hint=File()), doc=OutputDocumentation(doc="Output directory of proximity files"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Hotspot3D_Uppro_V0_1_0().translate("wdl", allow_empty_container=True)
+

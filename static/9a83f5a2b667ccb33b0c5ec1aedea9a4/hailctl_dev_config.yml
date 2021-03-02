@@ -1,0 +1,55 @@
+!Command
+command:
+- hailctl
+- dev
+- config
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: namespace
+  description: "Default namespace. Show the current configuration if\nnot specified."
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --location
+  - -l
+  description: 'Location. (default: external)'
+  args: !ChoiceFlagArg
+    choices: !!set
+      external:
+      k8s:
+      gce:
+- !Flag
+  optional: true
+  synonyms:
+  - --override
+  - -o
+  description: "List of comma-separated service=namespace overrides.\n(default: none)\n"
+  args: !SimpleFlagArg
+    name: OVERRIDE
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: hailctl dev config [-h] [--location {external,gce,k8s}]\n     \
+  \                     [--override OVERRIDE]\n                          [namespace]\n\
+  \nConfigure deployment\n\npositional arguments:\n  namespace             Default\
+  \ namespace. Show the current configuration if\n                        not specified.\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  --location {external,gce,k8s}, -l {external,gce,k8s}\n                      \
+  \  Location. (default: external)\n  --override OVERRIDE, -o OVERRIDE\n         \
+  \               List of comma-separated service=namespace overrides.\n         \
+  \               (default: none)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/hail:0.2.61--py36hf1ae8f4_1

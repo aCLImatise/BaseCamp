@@ -4,6 +4,9 @@ task Blastdbcmd {
   command <<<
     blastdbcmd
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

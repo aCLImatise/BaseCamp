@@ -1,0 +1,161 @@
+!Command
+command:
+- PanACoTA
+- pangenome
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: "File containing the list of all genomes to include in the\npan-genome,\
+    \ 1 genome per line: it can be the\nLSTINFO-<list_file>.lst file of 'PanACoTA\
+    \ annotate'\nmodule.Here, only the first column (genome name without\nextension)\
+    \ will be used. All proteins of all these\ngenomes will be concatenated in a file\
+    \ called\n<dataset_name>.All.prt. The column header must be\n'gembase_name'."
+  args: !SimpleFlagArg
+    name: LSTINFO_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: "Name of the dataset which will be clustered (for example,\nSAEN1234\
+    \ for 1234 Salmonella enterica genomes). This name\nwill be used to name the protein\
+    \ databank, a well as the\npangenome files."
+  args: !SimpleFlagArg
+    name: DATASET_NAME
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: "Path to the folder containing all protein files\ncorresponding to\
+    \ the genomes of the dataset (output\ndirectory 'Proteins' of 'PanACoTA annotate'\
+    \ module)."
+  args: !SimpleFlagArg
+    name: DBPATH
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: "Output directory, where all results must be saved\n(including tmp\
+    \ folder)"
+  args: !SimpleFlagArg
+    name: OUTDIR
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: "Minimum sequence identity to be considered in the same\ncluster (float\
+    \ between 0 and 1). Default is 0.8."
+  args: !SimpleFlagArg
+    name: MIN_ID
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: "Use this option if you want to give the name of the\npangenome output\
+    \ file (without path). Otherwise, by\ndefault, it is called PanGenome-mmseq_<given_dataset_name\n\
+    >.All.prt_<information_on_parameters>.lst"
+  args: !SimpleFlagArg
+    name: OUTFILE
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: "Choose the clustering mode: 0 for 'set cover', 1 for\n'single-linkage',\
+    \ 2 for 'CD-Hit'. Default is 'single-\nlinkage' (1)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      '2':
+      '1':
+      '0':
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: "use this option if you want to save the concatenated\nprotein databank\
+    \ in another directory than the one\ncontaining all individual protein files ('Proteins'\n\
+    folder)."
+  args: !SimpleFlagArg
+    name: SPEDIR
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: "add this option if you want to parallelize on several\nthreads. Indicate\
+    \ on how many threads you want to\nparallelize. By default, it uses 1 thread.\
+    \ Put 0 if you\nwant to use all threads of your computer."
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: Increase verbosity in stdout/stderr.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  description: "Do not display anything to stdout/stderr. log files will\nstill be\
+    \ created."
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: PanACoTA pangenome -l LSTINFO_FILE -n DATASET_NAME -d DBPATH -o\
+  \ OUTDIR\n                          [-i MIN_ID] [-f OUTFILE] [-c {0,1,2}] [-s SPEDIR]\n\
+  \                          [--threads THREADS] [-v] [-q] [-h]\n\n ___          \
+  \       _____  ___         _____  _____\n(  _`\\              (  _  )(  _`\\   \
+  \   (_   _)(  _  )\n| |_) )  _ _   ___  | (_) || ( (_)   _   | |  | (_) |\n| ,__/'/'_`\
+  \ )/' _ `\\|  _  || |  _  /'_`\\ | |  |  _  |\n| |   ( (_| || ( ) || | | || (_(\
+  \ )( (_) )| |  | | | |\n(_)   `\\__,_)(_) (_)(_) (_)(____/'`\\___/'(_)  (_) (_)\n\
+  \n       Large scale comparative genomics tools\n\n     -------------------------------------------\n\
+  \n=> Generate a pan-genome of your dataset\n\nRequired arguments:\n  -l LSTINFO_FILE\
+  \    File containing the list of all genomes to include in the\n               \
+  \      pan-genome, 1 genome per line: it can be the\n                     LSTINFO-<list_file>.lst\
+  \ file of 'PanACoTA annotate'\n                     module.Here, only the first\
+  \ column (genome name without\n                     extension) will be used. All\
+  \ proteins of all these\n                     genomes will be concatenated in a\
+  \ file called\n                     <dataset_name>.All.prt. The column header must\
+  \ be\n                     'gembase_name'.\n  -n DATASET_NAME    Name of the dataset\
+  \ which will be clustered (for example,\n                     SAEN1234 for 1234\
+  \ Salmonella enterica genomes). This name\n                     will be used to\
+  \ name the protein databank, a well as the\n                     pangenome files.\n\
+  \  -d DBPATH          Path to the folder containing all protein files\n        \
+  \             corresponding to the genomes of the dataset (output\n            \
+  \         directory 'Proteins' of 'PanACoTA annotate' module).\n  -o OUTDIR    \
+  \      Output directory, where all results must be saved\n                     (including\
+  \ tmp folder)\n\nOptional arguments:\n  -i MIN_ID          Minimum sequence identity\
+  \ to be considered in the same\n                     cluster (float between 0 and\
+  \ 1). Default is 0.8.\n  -f OUTFILE         Use this option if you want to give\
+  \ the name of the\n                     pangenome output file (without path). Otherwise,\
+  \ by\n                     default, it is called PanGenome-mmseq_<given_dataset_name\n\
+  \                     >.All.prt_<information_on_parameters>.lst\n  -c {0,1,2}  \
+  \       Choose the clustering mode: 0 for 'set cover', 1 for\n                 \
+  \    'single-linkage', 2 for 'CD-Hit'. Default is 'single-\n                   \
+  \  linkage' (1)\n  -s SPEDIR          use this option if you want to save the concatenated\n\
+  \                     protein databank in another directory than the one\n     \
+  \                containing all individual protein files ('Proteins'\n         \
+  \            folder).\n  --threads THREADS  add this option if you want to parallelize\
+  \ on several\n                     threads. Indicate on how many threads you want\
+  \ to\n                     parallelize. By default, it uses 1 thread. Put 0 if you\n\
+  \                     want to use all threads of your computer.\n\nOthers:\n  -v,\
+  \ --verbose      Increase verbosity in stdout/stderr.\n  -q, --quiet        Do not\
+  \ display anything to stdout/stderr. log files will\n                     still\
+  \ be created.\n  -h, --help         show this help message and exit\n\nFor more\
+  \ details, see PanACoTA documentation.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/panacota:1.2.0--py_0

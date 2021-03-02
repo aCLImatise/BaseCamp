@@ -1,0 +1,100 @@
+!Command
+command:
+- seq-seq-pan
+- extract
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: seqseqpan.py
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: extract
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --quiet
+  description: Suppress warnings.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --output_path
+  description: path to output directory
+  args: !SimpleFlagArg
+    name: OUTPUT_P
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --name
+  description: "File prefix and sequence header for output FASTA /\nXFMA file"
+  args: !SimpleFlagArg
+    name: OUTPUT_NAME
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --xmfa
+  description: XMFA input file
+  args: !SimpleFlagArg
+    name: XMFA_F
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --genome_desc
+  description: "File containing genome description (name/chromosomes)\nfor .MAF file\
+    \ creation and 'split' task. Format:\n'genome id<TAB>name<TAB>length' Length information\
+    \ is\nonly necessary for FASTA files containing more than\none chromosome. Multiple\
+    \ chromosomes of a genome must\nbe listed in the same order as in original FASTA\
+    \ file."
+  args: !SimpleFlagArg
+    name: GENOME_DESC_F
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --extractregion
+  description: "Region to extract in the form genome_nr:start-end (one\nbased and\
+    \ inclusive) or only genome_nr for full\nsequence.\n"
+  args: !SimpleFlagArg
+    name: REGION
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: seqseqpan.py extract [-h] [--quiet] -p OUTPUT_P -n OUTPUT_NAME\
+  \ -x\n                            XMFA_F -g GENOME_DESC_F -e REGION\n\nExtract sequence\
+  \ for whole genome or genomic interval.\n\noptional arguments:\n  -h, --help   \
+  \         show this help message and exit\n  --quiet               Suppress warnings.\n\
+  \nrequired arguments:\n  -p OUTPUT_P, --output_path OUTPUT_P\n                 \
+  \       path to output directory\n  -n OUTPUT_NAME, --name OUTPUT_NAME\n       \
+  \                 File prefix and sequence header for output FASTA /\n         \
+  \               XFMA file\n  -x XMFA_F, --xmfa XMFA_F\n                        XMFA\
+  \ input file\n  -g GENOME_DESC_F, --genome_desc GENOME_DESC_F\n                \
+  \        File containing genome description (name/chromosomes)\n               \
+  \         for .MAF file creation and 'split' task. Format:\n                   \
+  \     'genome id<TAB>name<TAB>length' Length information is\n                  \
+  \      only necessary for FASTA files containing more than\n                   \
+  \     one chromosome. Multiple chromosomes of a genome must\n                  \
+  \      be listed in the same order as in original FASTA file.\n  -e REGION, --extractregion\
+  \ REGION\n                        Region to extract in the form genome_nr:start-end\
+  \ (one\n                        based and inclusive) or only genome_nr for full\n\
+  \                        sequence.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/seq-seq-pan:1.1.0--py_1

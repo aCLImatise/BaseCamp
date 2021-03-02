@@ -1,0 +1,192 @@
+!Command
+command:
+- psp-gen
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: score
+  description: 'default: do not report statistics'
+- !Positional
+  optional: false
+  position: 0
+  name: Copyright
+  description: (2009) The University of Queensland
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -minw
+  description: "minimum width of motif to consider\ndefault: 4"
+  args: !SimpleFlagArg
+    name: W
+- !Flag
+  optional: true
+  synonyms:
+  - -maxw
+  description: "maximum width of motif to consider\ndefault: 20"
+  args: !SimpleFlagArg
+    name: W
+- !Flag
+  optional: true
+  synonyms:
+  - -dna
+  description: use DNA alphabet; this is the default
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -protein
+  description: use protein alphabet
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -rna
+  description: use RNA alphabet
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -alph
+  description: use the alphabet defined in the file
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -triples
+  description: "use spaced triples for matches\ndefault: do exact matches of w-mers"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -fixedstart
+  description: "for triples, anchor the start when scoring\ntriples of width < w\n\
+    default: allow start to move"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -equiv
+  description: "specifiy sets of symbols that should be considered\nequalivent; sets\
+    \ should be separated with a '-',\nunless the alphabet contains a dash in which\
+    \ case\nthe option may be specified multiple times;\neg. for protein -equiv \"\
+    IVL-HKR\" means treat all\noccurrences of I, V or L (or any of their aliases\n\
+    in the alphabet) as the same and all occurrences of\nH, K, R as the same"
+  args: !SimpleFlagArg
+    name: sets
+- !Flag
+  optional: true
+  synonyms:
+  - -revcomp
+  description: "count reverse complements in computing scores\ndefault: only count\
+    \ forward matches"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -scalemin
+  description: "scale scores to mimumum <number>\ndefault: 0.1 or 1-scalemax if set"
+  args: !SimpleFlagArg
+    name: number
+- !Flag
+  optional: true
+  synonyms:
+  - -scalemax
+  description: "scale scores to maximum of <number>\ndefault: 0.9 or 1-scalemin if\
+    \ set"
+  args: !SimpleFlagArg
+    name: number
+- !Flag
+  optional: true
+  synonyms:
+  - -maxrange
+  description: "instead of choosing W with maximum score choose W with\nmaximum difference\
+    \ between maximum and minimum scores"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -raw
+  description: output scores instead of priors
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -reportscores
+  description: "report pos and neg file names, min and max scores,\nmin and max w\
+    \ : tab-separated to STDERR"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -verbose
+  description: send stats to stderr reporting frequency of each
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -pos
+  description: sequences likely to contain binding sites
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - -neg
+  description: sequences unlikely to contain binding sites
+  args: !SimpleFlagArg
+    name: filename
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Usage:\n    USAGE: psp-gen [options] -pos <filename> -neg <filename>\n\
+  \n      Options:\n         -minw W        minimum width of motif to consider\n \
+  \                       default: 4\n         -maxw W        maximum width of motif\
+  \ to consider\n                        default: 20\n         -dna           use\
+  \ DNA alphabet; this is the default\n         -protein       use protein alphabet\n\
+  \         -rna           use RNA alphabet\n         -alph <file>   use the alphabet\
+  \ defined in the file\n         -triples       use spaced triples for matches\n\
+  \                        default: do exact matches of w-mers\n         -fixedstart\
+  \    for triples, anchor the start when scoring\n                        triples\
+  \ of width < w\n                        default: allow start to move\n         -equiv\
+  \ <sets>  specifiy sets of symbols that should be considered\n                 \
+  \        equalivent; sets should be separated with a '-',\n                    \
+  \     unless the alphabet contains a dash in which case\n                      \
+  \   the option may be specified multiple times;\n                         eg. for\
+  \ protein -equiv \"IVL-HKR\" means treat all\n                         occurrences\
+  \ of I, V or L (or any of their aliases\n                         in the alphabet)\
+  \ as the same and all occurrences of\n                         H, K, R as the same\n\
+  \         -revcomp       count reverse complements in computing scores\n       \
+  \                 default: only count forward matches\n         -scalemin <number>\n\
+  \                        scale scores to mimumum <number>\n                    \
+  \    default: 0.1 or 1-scalemax if set\n         -scalemax <number>\n          \
+  \              scale scores to maximum of <number>\n                        default:\
+  \ 0.9 or 1-scalemin if set\n         -maxrange      instead of choosing W with maximum\
+  \ score choose W with\n                        maximum difference between maximum\
+  \ and minimum scores\n         -raw           output scores instead of priors\n\
+  \         -reportscores  report pos and neg file names, min and max scores,\n  \
+  \                      min and max w : tab-separated to STDERR\n         -verbose\
+  \       send stats to stderr reporting frequency of each\n                     \
+  \   score\n                        default: do not report statistics\n         \
+  \      \n      Compulsory:\n         -pos filename  sequences likely to contain\
+  \ binding sites\n         -neg filename  sequences unlikely to contain binding sites\n\
+  \n      Calculates a positional prior by classifying each position of width W\n\
+  \      as to how strongly it fits the positive set versus the negative set.\n  \
+  \    For each sequence:\n      >name scaledmin = 0.1 scaledmax = 0.9\n      prior\
+  \ probability for each position in the sequence\n  \n      The prior probabilities\
+  \ are each a single number, one per letter of the\n      sequence data. The actual\
+  \ values of the scaled minimum and maximum may\n      vary if either or both -scalemin\
+  \ and -scalemax are set.\n  \n      Each input file should be in FASTA format. Anything\
+  \ after the name on\n      the name line is echoed to output. The name has appended\
+  \ to it width\n      W chosen for the sequences' prior.\n    \n      Reads -pos\
+  \ FASTA file and -neg FASTA file.\n      Writes stdout. If -verbose is used, writes\
+  \ stderr.\n\n            Copyright\n            (2009) The University of Queensland\n\
+  \            All Rights Reserved.\n            Author: Philip Machanick\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/meme:5.3.0--py38pl526hc1f1133_0

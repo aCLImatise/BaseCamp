@@ -1,0 +1,104 @@
+!Command
+command:
+- fpcat
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: filename
+  description: 'input fingerprint filenames (default: use stdin)'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --in
+  description: "input fingerprint format. One of fps or fps.gz.\n(default guesses\
+    \ from filename or is fps)"
+  args: !SimpleFlagArg
+    name: FORMAT
+- !Flag
+  optional: true
+  synonyms:
+  - --merge
+  description: "assume the input fingerprint files are in popcount\norder and do a\
+    \ merge sort"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: save the fingerprints to FILENAME (default=stdout)
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --out
+  description: "output fingerprint format. One of fps or fps.gz.\n(default guesses\
+    \ from output filename, or is 'fps')"
+  args: !SimpleFlagArg
+    name: FORMAT
+- !Flag
+  optional: true
+  synonyms:
+  - --reorder
+  description: reorder the output fingerprints by popcount
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --preserve-order
+  description: "save the output fingerprints in the same order as the\ninput (default\
+    \ for FPS output)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --show-progress
+  description: show progress
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: fpcat [-h] [--in FORMAT] [--merge] [-o FILENAME] [--out FORMAT]\n\
+  \             [--reorder] [--preserve-order] [--show-progress] [--version]\n   \
+  \          [filename [filename ...]]\n\nCombine multiple fingerprint files into\
+  \ a single file.\n\npositional arguments:\n  filename              input fingerprint\
+  \ filenames (default: use stdin)\n\noptional arguments:\n  -h, --help          \
+  \  show this help message and exit\n  --in FORMAT           input fingerprint format.\
+  \ One of fps or fps.gz.\n                        (default guesses from filename\
+  \ or is fps)\n  --merge               assume the input fingerprint files are in\
+  \ popcount\n                        order and do a merge sort\n  -o FILENAME, --output\
+  \ FILENAME\n                        save the fingerprints to FILENAME (default=stdout)\n\
+  \  --out FORMAT          output fingerprint format. One of fps or fps.gz.\n    \
+  \                    (default guesses from output filename, or is 'fps')\n  --reorder\
+  \             reorder the output fingerprints by popcount\n  --preserve-order  \
+  \    save the output fingerprints in the same order as the\n                   \
+  \     input (default for FPS output)\n  --show-progress       show progress\n  --version\
+  \             show program's version number and exit\n\nExamples:\n\nfpcat can be\
+  \ used to merge multiple FPS files. For example, you might\nhave used GNU parallel\
+  \ to generate FPS files for each of the PubChem\nfiles, which you want to merge\
+  \ into a single file.:\n\n    fpcat Compound_*.fps -o pubchem.fps\n\nThe --merge\
+  \ option is experimental. Use it if the input fingerprints\nare in popcount order,\
+  \ because sorted output is a simple merge sort of\nthe individual sorted inputs.\
+  \ However, this option opens all input\nfiles at the same time, which may exceed\
+  \ your resource limit on file\ndescriptors. The current implementation also requires\
+  \ a lot of disk\nseeks so is slow for many files.\n\n    \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/chemfp:1.6.1--py27h3dcb392_0

@@ -1,0 +1,223 @@
+!Command
+command:
+- pileuppy
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: FILE
+  description: "Required: Input indexed BAM/CRAM files. Allows format name=path,\n\
+    in that case name will be displayed in pileup instead of filename."
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --fasta-ref
+  description: 'Optional: Input reference indexed FASTA file.'
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: 'Optional: Output file [stdout]. Disables colors.'
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --region
+  description: "Required: pileup region in one of the following formats:\nchrom:pos\
+    \ - pileup of a single position,\nchrom:start-end - closed interval, 1-based positions,\n\
+    chrom:pos^size - same as chrom:[pos - size]-[pos + size]."
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --display
+  description: "Display additional INT positions around the region.\nOnly displays\
+    \ reads that cover <region>."
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --size
+  description: '|none       Split region longer than INT [150].'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --min-mapq
+  description: Skip alignments with mapQ less than INT [0].
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -Q
+  - --min-bq
+  description: Print ? instead of base pairs with quality less than INT [0].
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --rf
+  - --req-flags
+  description: 'Required flags: skip reads with mask bits unset [0].'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --ff
+  - --filt-flags
+  description: 'Filter flags: skip reads with mask bits set [1796].'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: "[STR [STR ...]], --samples [STR [STR ...]]\nOnly use reads with matching\
+    \ samples. You can use multiple regex patterns\nor exact sample names. Pattern\
+    \ must match the sample name from start to end."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --join-samples
+  description: Do not split single BAM/CRAM file into multiple columns with different
+    samples.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -B
+  - --skip-bq
+  description: Do not print base qualities.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --show-names
+  description: Print read names in the header.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --header
+  description: "|comment|plain\nHow to write headers. If comment, every header line\
+    \ will start with \"#\"."
+  args: !SimpleFlagArg
+    name: skip
+- !Flag
+  optional: true
+  synonyms:
+  - --skip-legend
+  description: Do not write legend.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --skip-empty
+  description: Skip lines with zero coverage
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --skip-chrom
+  description: Do not show chromosome name
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  description: "|ansi|white|black, --scheme none|ansi|white|black\nPossible color\
+    \ schemes:\nnone - no colors (default if -o FILE),\nansi - 16 colors,\nwhite -\
+    \ 256 colors with white background,\nblack - 256 colors with black background\
+    \ (default unless -o FILE)."
+  args: !SimpleFlagArg
+    name: none
+- !Flag
+  optional: true
+  synonyms:
+  - --no-logo
+  description: Do not use logo colors for nucleotides.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -C
+  - --no-columns
+  description: Do not highlight columns with a different color.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Show version and exit.
+  args: !EmptyFlagArg {}
+help_text: "usage: pileuppy in1.bam [in2.bam ...] [-f ref.fa] -r chrom:start-end [-o\
+  \ out.pileup] [options]\n\nPileups reads in a specified region.\n\nInput/output\
+  \ arguments:\n  FILE                  Required: Input indexed BAM/CRAM files. Allows\
+  \ format name=path,\n                        in that case name will be displayed\
+  \ in pileup instead of filename.\n  -f FILE, --fasta-ref FILE\n                \
+  \        Optional: Input reference indexed FASTA file.\n  -o FILE, --output FILE\n\
+  \                        Optional: Output file [stdout]. Disables colors.\n\nRegion\
+  \ arguments:\n  -r STR, --region STR  Required: pileup region in one of the following\
+  \ formats:\n                          chrom:pos - pileup of a single position,\n\
+  \                          chrom:start-end - closed interval, 1-based positions,\n\
+  \                          chrom:pos^size - same as chrom:[pos - size]-[pos + size].\n\
+  \  -d INT, --display INT\n                        Display additional INT positions\
+  \ around the region.\n                        Only displays reads that cover <region>.\n\
+  \  --size INT|none       Split region longer than INT [150].\n\nFilering arguments:\n\
+  \  -q INT, --min-mapq INT\n                        Skip alignments with mapQ less\
+  \ than INT [0].\n  -Q INT, --min-bq INT  Print ? instead of base pairs with quality\
+  \ less than INT [0].\n  --rf INT, --req-flags INT\n                        Required\
+  \ flags: skip reads with mask bits unset [0].\n  --ff INT, --filt-flags INT\n  \
+  \                      Filter flags: skip reads with mask bits set [1796].\n\nSamples\
+  \ arguments:\n  -s [STR [STR ...]], --samples [STR [STR ...]]\n                \
+  \        Only use reads with matching samples. You can use multiple regex patterns\n\
+  \                        or exact sample names. Pattern must match the sample name\
+  \ from start to end.\n  --join-samples        Do not split single BAM/CRAM file\
+  \ into multiple columns with different samples.\n\nFormat arguments:\n  -B, --skip-bq\
+  \         Do not print base qualities.\n  -n, --show-names      Print read names\
+  \ in the header.\n  --header skip|comment|plain\n                        How to\
+  \ write headers. If comment, every header line will start with \"#\".\n  --skip-legend\
+  \         Do not write legend.\n  -e, --skip-empty      Skip lines with zero coverage\n\
+  \  --skip-chrom          Do not show chromosome name\n\nColoring arguments:\n  -S\
+  \ none|ansi|white|black, --scheme none|ansi|white|black\n                      \
+  \  Possible color schemes:\n                            none - no colors (default\
+  \ if -o FILE),\n                            ansi - 16 colors,\n                \
+  \            white - 256 colors with white background,\n                       \
+  \     black - 256 colors with black background (default unless -o FILE).\n  --no-logo\
+  \             Do not use logo colors for nucleotides.\n  -C, --no-columns      Do\
+  \ not highlight columns with a different color.\n\nOther arguments:\n  -h, --help\
+  \            Show this message and exit.\n  -V, --version         Show version and\
+  \ exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/pileuppy:1.1.1--py_0

@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, String, Int, File
+
+Ppserver_Py_V0_1_0 = CommandToolBuilder(tool="ppserver.py", base_command=["ppserver.py"], inputs=[ToolInput(tag="in_set_log_level", input_type=Boolean(optional=True), prefix="-d", doc=InputDocumentation(doc=": set log level to debug")), ToolInput(tag="in__log_format", input_type=String(optional=True), prefix="-f", doc=InputDocumentation(doc=": log format")), ToolInput(tag="in_enable_autodiscovery_service", input_type=Boolean(optional=True), prefix="-a", doc=InputDocumentation(doc=": enable auto-discovery service")), ToolInput(tag="in_restart_worker_process", input_type=Boolean(optional=True), prefix="-r", doc=InputDocumentation(doc=": restart worker process after each task completion")), ToolInput(tag="in_protocol_number_pickle", input_type=Int(optional=True), prefix="-n", doc=InputDocumentation(doc=": protocol number for pickle module")), ToolInput(tag="in_path_config_file", input_type=File(optional=True), prefix="-c", doc=InputDocumentation(doc=": path to config file")), ToolInput(tag="in__interface_listen", input_type=String(optional=True), prefix="-i", doc=InputDocumentation(doc=": interface to listen")), ToolInput(tag="in_broadcast_address_autodiscovery", input_type=String(optional=True), prefix="-b", doc=InputDocumentation(doc=": broadcast address for auto-discovery service")), ToolInput(tag="in__port_listen", input_type=String(optional=True), prefix="-p", doc=InputDocumentation(doc=": port to listen")), ToolInput(tag="in_number_workers_start", input_type=Int(optional=True), prefix="-w", doc=InputDocumentation(doc=": number of workers to start")), ToolInput(tag="in__secret_authentication", input_type=String(optional=True), prefix="-s", doc=InputDocumentation(doc=": secret for authentication")), ToolInput(tag="in_timeout_exit_exist", input_type=String(optional=True), prefix="-t", doc=InputDocumentation(doc=": timeout to exit if no connections with clients exist")), ToolInput(tag="in_socket_timeout_seconds", input_type=String(optional=True), prefix="-k", doc=InputDocumentation(doc=": socket timeout in seconds")), ToolInput(tag="in_file_write_pid", input_type=File(optional=True), prefix="-P", doc=InputDocumentation(doc=": file to write PID to")), ToolInput(tag="in_hd_ar", input_type=Boolean(optional=True), prefix="-hdar", doc=InputDocumentation(doc=""))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Ppserver_Py_V0_1_0().translate("wdl", allow_empty_container=True)
+

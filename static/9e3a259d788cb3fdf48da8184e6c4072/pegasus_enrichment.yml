@@ -1,0 +1,70 @@
+!Command
+command:
+- pegasus
+- enrichment
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: markers_spreadsheet
+  description: Output spreadsheet from de_analysis command.
+- !Positional
+  optional: false
+  position: 1
+  name: output_spreadsheet
+  description: File containing enrichment results.
+- !Positional
+  optional: false
+  position: 0
+  name: output
+  description: An xlsx file containing enrichment results.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --organism
+  description: 'Organism. See https://biit.cs.ut.ee/gprofiler/page/organism-list for
+    full list. [default: hsapiens]'
+  args: !SimpleFlagArg
+    name: value
+- !Flag
+  optional: true
+  synonyms:
+  - --enrichment_threshold
+  description: 'Include enrichment results with corrected p-value less than this threshold.
+    [default: 0.05]'
+  args: !SimpleFlagArg
+    name: value
+- !Flag
+  optional: true
+  synonyms:
+  - --max_genes
+  description: 'Maximum number of genes to include in query. [default: 100]'
+  args: !SimpleFlagArg
+    name: value
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Print out help information.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Perform enrichment analysis using gprofiler.\n\nUsage:\n  pegasus enrichment\
+  \ [options] <markers_spreadsheet> <output_spreadsheet>\n  pegasus enrichment -h\n\
+  \nArguments:\n  markers_spreadsheet        Output spreadsheet from de_analysis command.\n\
+  \  output_spreadsheet         File containing enrichment results.\n\nOptions:\n\
+  \  --organism <value>               Organism. See https://biit.cs.ut.ee/gprofiler/page/organism-list\
+  \ for full list. [default: hsapiens]\n  --enrichment_threshold <value>   Include\
+  \ enrichment results with corrected p-value less than this threshold. [default:\
+  \ 0.05]\n  --max_genes <value>              Maximum number of genes to include in\
+  \ query. [default: 100]\n  -h, --help                       Print out help information.\n\
+  \nOutputs:\n  output     An xlsx file containing enrichment results.\n\nExamples:\n\
+  \  pegasus enrichment manton_bm.de.xlsx manton_bm_enrichment.xlsx\n    \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/pegasuspy:1.2.0--py38h0213d0e_1

@@ -1,0 +1,206 @@
+!Command
+command:
+- make_midpoint_matrix
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: BAM-file-of-aligned-reads
+  description: The indexed BAM file containing the aligned ATAC-seq
+- !Positional
+  optional: false
+  position: 1
+  name: reads.
+  description: BED-file-of-motifs    The BED file containing the motifs. Use "-" to
+    read
+- !Positional
+  optional: false
+  position: 0
+  name: e.r.
+  description: motif     e.r.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --aggregate-output
+  description: Requests an aggregate matrix. See OUTPUT, below.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --discrete-output
+  description: Requests a discrete matrix. See OUTPUT, below.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --bins
+  description: "A list of fragment size bin groups and their\nresolutions. See BINNING,\
+    \ below."
+  args: !SimpleFlagArg
+    name: BINS
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  - --exclude-flags
+  description: "A SAM flag used to exclude alignments from the BAM\nfile. More than\
+    \ one may be specified. Alignments\nmatching any exclude flag will not be counted.\
+    \ The\ndefault is to exclude all unmapped reads/mates by\nfiltering out any alignments\
+    \ with SAM flags 4 or 8\nset."
+  args: !SimpleFlagArg
+    name: EXCLUDE_FLAGS
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --include-flags
+  description: "A SAM flag that determines which alignments from the\nBAM file will\
+    \ be included in the counts. More than one\nmay be specified. Any alignment matching\
+    \ any include\nflag will be counted. The default is to include\nproperly paired\
+    \ and mapped reads by filtering for SAM\nflags 83, 99, 147, or 163."
+  args: !SimpleFlagArg
+    name: INCLUDE_FLAGS
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --parallel
+  description: "The number of parallel scoring processes to use\n(default: 1)."
+  args: !SimpleFlagArg
+    name: PARALLEL
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quality
+  description: "The minimum mapping quality required for a read to be\ncounted (default:\
+    \ 30)."
+  args: !SimpleFlagArg
+    name: QUALITY
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --region-extension
+  description: "The number of bases to score on either side of the\nmotifs (default:\
+    \ 100)."
+  args: !SimpleFlagArg
+    name: EXTENSION
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: Requests more detailed output.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: make_midpoint_matrix [-h] (-a | -d) -b BINS [-F EXCLUDE_FLAGS]\n\
+  \                            [-f INCLUDE_FLAGS] [-p PARALLEL] [-q QUALITY]\n   \
+  \                         [-r EXTENSION] [-v] [--version]\n                    \
+  \        BAM-file-of-aligned-reads BED-file-of-motifs\n\npositional arguments:\n\
+  \  BAM-file-of-aligned-reads\n                        The indexed BAM file containing\
+  \ the aligned ATAC-seq\n                        reads.\n  BED-file-of-motifs   \
+  \ The BED file containing the motifs. Use \"-\" to read\n                      \
+  \  from standard input.\n\noptional arguments:\n  -h, --help            show this\
+  \ help message and exit\n  -a, --aggregate-output\n                        Requests\
+  \ an aggregate matrix. See OUTPUT, below.\n  -d, --discrete-output\n           \
+  \             Requests a discrete matrix. See OUTPUT, below.\n  -b BINS, --bins\
+  \ BINS  A list of fragment size bin groups and their\n                        resolutions.\
+  \ See BINNING, below.\n  -F EXCLUDE_FLAGS, --exclude-flags EXCLUDE_FLAGS\n     \
+  \                   A SAM flag used to exclude alignments from the BAM\n       \
+  \                 file. More than one may be specified. Alignments\n           \
+  \             matching any exclude flag will not be counted. The\n             \
+  \           default is to exclude all unmapped reads/mates by\n                \
+  \        filtering out any alignments with SAM flags 4 or 8\n                  \
+  \      set.\n  -f INCLUDE_FLAGS, --include-flags INCLUDE_FLAGS\n               \
+  \         A SAM flag that determines which alignments from the\n               \
+  \         BAM file will be included in the counts. More than one\n             \
+  \           may be specified. Any alignment matching any include\n             \
+  \           flag will be counted. The default is to include\n                  \
+  \      properly paired and mapped reads by filtering for SAM\n                 \
+  \       flags 83, 99, 147, or 163.\n  -p PARALLEL, --parallel PARALLEL\n       \
+  \                 The number of parallel scoring processes to use\n            \
+  \            (default: 1).\n  -q QUALITY, --quality QUALITY\n                  \
+  \      The minimum mapping quality required for a read to be\n                 \
+  \       counted (default: 30).\n  -r EXTENSION, --region-extension EXTENSION\n \
+  \                       The number of bases to score on either side of the\n   \
+  \                     motifs (default: 100).\n  -v, --verbose         Requests more\
+  \ detailed output.\n  --version             show program's version number and exit\n\
+  \nGiven a BAM file containing alignments from an ATAC-seq\nexperiment and a BED\
+  \ file of motifs, creates a matrix of\ncounts of the fragment midpoints around the\
+  \ motifs.\n\nBINNING\n=======\n\nEach motif in the BED file is scored for each of\
+  \ the given\nfragment length bins.\n\nThe bins are specified as a list of groups,\
+  \ each group comprising\none or more bins, and ending with a resolution value, which\n\
+  controls how many individual cuts in the extended region around\nthe feature are\
+  \ aggregated. Within the feature itself, we always\ncount the cut points for each\
+  \ base.\n\nWe recommend using the same resolution in all bins. The following\nexample\
+  \ only shows different resolutions to be thorough.\n\nAssume a --bins value of '(36-149\
+  \ 1) (150-224 225-324 2) (325-400 5)'.\n\nWith a resolution of 1, every base in\
+  \ the extended region\naround motifs overlapping fragments of length 36-149 would\
+  \ be\nscored independently; each base's cut count would be added to\nthe matrix.\n\
+  \nThe second group, for fragments of length 150-224 or 225-324,\nwith a resolution\
+  \ of 2, would result in every two bases in the\nextended region around motifs being\
+  \ added together. Then the\naggregate scores of the two bins in the group would\
+  \ be summed,\nand the result would be added to the matrix.\n\nThe last bin group,\
+  \ (325-400 5), with a resolution of 5, would\nalso produce aggregate scores in the\
+  \ extended region, each\nbeing the sum of five bases' cut counts.\n\nTo illustrate,\
+  \ assume these settings and an imaginary motif 5\nbases long, with a 10-base extended\
+  \ region on either side, and\nfor the sake of example pretend that each fragment\
+  \ length bin\nhad the same counts of cut points around the motif, shown\nhere::\n\
+  \n    extended region     motif     extended region\n    ------------------- ---------\
+  \ -------------------\n    0 1 2 3 3 4 4 4 4 5 9 2 0 2 7 5 4 4 4 4 3 3 2 1 0\n\n\
+  \    The scores for the first bin group, (36-149 1):\n\n    extended region    \
+  \ motif     extended region\n    ------------------- --------- -------------------\n\
+  \    0 1 2 3 3 4 4 4 4 5 9 2 0 2 7 5 4 4 4 4 3 3 2 1 0\n\n    The scores for the\
+  \ first bin group, (150-224 225-324 2):\n\n    e.r.      motif     e.r.\n    ---------\
+  \ --------- ---------\n    1 5 7 8 9 9 2 0 2 7 9 8 7 5 1\n\n    The scores for the\
+  \ last bin group, (325-400 5):\n\n    e.r. motif     e.r.\n    ---- --------- ----\n\
+  \    9 21 9 2 0 2 7 21 9\n\nParameters\n----------\nbins_string: str\n   A list\
+  \ of S-expressions representing groups of bin start and end positions and resolutions.\n\
+  \nReturns\n-------\nlist\n   A list of lists of tuples of (start, end, resolution).\n\
+  \nINPUT\n=====\n\nBAM files just work.\n\nBED files mean different things to different\
+  \ people. We\nrequire a file of tab-separated values, where the first six\nfields\
+  \ (and their labels in the BED format documentation at\nhttps://genome.ucsc.edu/FAQ/FAQformat.html)\
+  \ are:\n\n1. The reference sequence name ('chrom'): text\n2. The feature start position\
+  \ ('chromStart'): integer\n3. The feature end position ('chromEnd'): integer\n4.\
+  \ The name of the feature ('name'): text\n5. The feature's score ('score'): number\n\
+  6. The feature's strand ('strand'): '+' or '-'\n\nExtra fields are ignored.\n\n\
+  OUTPUT\n======\n\nYou can request either discrete or aggregate output. Discrete\n\
+  output is intended to be usable as input to CENTIPEDE. After\nyou've run CENTIPEDE,\
+  \ you can feed different parts of the\nresulting BED file back into this script\
+  \ and request aggregate\noutput to produce a file suitable for plotting with one\
+  \ of our\nR scripts. As an example, we like to extract from the CENTIPEDE\noutput\
+  \ all motifs with a posterior probability of binding greater\nthan 0.99, and a random\
+  \ sampling of motifs with a posterior\nprobability of less than 0.5. Plotting those\
+  \ provides a good\nvisual inspection of the results.\n\nEach row of the discrete\
+  \ matrix represents the scores around a\nsingle motif from your input BED file.\
+  \ The positions reported\ndepend on the resolution specified in the --bins argument.\
+  \ For\nexample, specifying a resolution of 1 will result in single\nnucleotide resolution\
+  \ -- you'll get the score at each position\nin the extended region around the motif.\
+  \ Specifying 10 will\nreport the sum of every 10 positions.\n\nAggregate output\
+  \ reports absolute counts and counts divided by\nthe number of motifs for all of\
+  \ your motifs at each position\nin the region around the motif, for each fragment\
+  \ size bin\nrepresented at that position.\n\n\0\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/atactk:0.1.9--pyh3252c3a_0

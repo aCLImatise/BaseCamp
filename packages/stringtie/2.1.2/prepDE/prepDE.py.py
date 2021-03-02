@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, String, Int, Boolean
+
+Prepde_Py_V0_1_0 = CommandToolBuilder(tool="prepDE.py", base_command=["prepDE.py"], inputs=[ToolInput(tag="in_input", input_type=File(optional=True), prefix="--input", doc=InputDocumentation(doc="a folder containing all sample sub-directories, or a\ntext file with sample ID and path to its GTF file on\neach line [default: ./]")), ToolInput(tag="in_where_output_default", input_type=String(optional=True), prefix="-g", doc=InputDocumentation(doc="where to output the gene count matrix [default:")), ToolInput(tag="in_length", input_type=Int(optional=True), prefix="--length", doc=InputDocumentation(doc="the average read length [default: 75]")), ToolInput(tag="in_pattern", input_type=String(optional=True), prefix="--pattern", doc=InputDocumentation(doc="a regular expression that selects the sample\nsubdirectories")), ToolInput(tag="in_cluster", input_type=Boolean(optional=True), prefix="--cluster", doc=InputDocumentation(doc="whether to cluster genes that overlap with different\ngene IDs, ignoring ones with geneID pattern (see\nbelow)")), ToolInput(tag="in_string", input_type=String(optional=True), prefix="--string", doc=InputDocumentation(doc="if a different prefix is used for geneIDs assigned by\nStringTie [default: MSTRG]")), ToolInput(tag="in_key", input_type=String(optional=True), prefix="--key", doc=InputDocumentation(doc="if clustering, what prefix to use for geneIDs assigned\nby this script [default: prepG]")), ToolInput(tag="in_enable_verbose_processing", input_type=Boolean(optional=True), prefix="-v", doc=InputDocumentation(doc="enable verbose processing")), ToolInput(tag="in_legend", input_type=File(optional=True), prefix="--legend", doc=InputDocumentation(doc="if clustering, where to output the legend file mapping\ntranscripts to assigned geneIDs [default: legend.csv]\n")), ToolInput(tag="in_gene_count_matrix_dot_csv", input_type=String(), position=0, doc=InputDocumentation(doc="-t T                  where to output the transcript count matrix [default:"))], outputs=[ToolOutput(tag="out_legend", output_type=File(optional=True), selector=InputSelector(input_to_select="in_legend", type_hint=File()), doc=OutputDocumentation(doc="if clustering, where to output the legend file mapping\ntranscripts to assigned geneIDs [default: legend.csv]\n"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Prepde_Py_V0_1_0().translate("wdl", allow_empty_container=True)
+

@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Float, Int, File, Boolean, String
+
+Bfc_V0_1_0 = CommandToolBuilder(tool="bfc", base_command=["bfc"], inputs=[ToolInput(tag="in_approx_genome_size", input_type=Float(optional=True), prefix="-s", doc=InputDocumentation(doc="approx genome size (k/m/g allowed; change -k and -b) [unset]")), ToolInput(tag="in_kmer_length", input_type=Int(optional=True), prefix="-k", doc=InputDocumentation(doc="k-mer length [33]")), ToolInput(tag="in_number_of_threads", input_type=Int(optional=True), prefix="-t", doc=InputDocumentation(doc="number of threads [1]")), ToolInput(tag="in_set_bloom_size", input_type=Int(optional=True), prefix="-b", doc=InputDocumentation(doc="set Bloom filter size to pow(2,INT) bits [33]")), ToolInput(tag="in_use_int_functions", input_type=Int(optional=True), prefix="-H", doc=InputDocumentation(doc="use INT hash functions for Bloom filter [4]")), ToolInput(tag="in_dump_hash_table", input_type=File(optional=True), prefix="-d", doc=InputDocumentation(doc="dump hash table to FILE [null]")), ToolInput(tag="in_skip_error_correction", input_type=Boolean(optional=True), prefix="-E", doc=InputDocumentation(doc="skip error correction")), ToolInput(tag="in_refine_bfccorrected_reads", input_type=Boolean(optional=True), prefix="-R", doc=InputDocumentation(doc="refine bfc-corrected reads")), ToolInput(tag="in_restore_hash_table", input_type=File(optional=True), prefix="-r", doc=InputDocumentation(doc="restore hash table from FILE [null]")), ToolInput(tag="in_no_more_ec", input_type=Int(optional=True), prefix="-w", doc=InputDocumentation(doc="no more than 5 ec or 2 highQ ec in INT-bp window [10]")), ToolInput(tag="in_min_kmer_coverage", input_type=Int(optional=True), prefix="-c", doc=InputDocumentation(doc="min k-mer coverage [3]")), ToolInput(tag="in_force_fasta_output", input_type=Boolean(optional=True), prefix="-Q", doc=InputDocumentation(doc="force FASTA output")), ToolInput(tag="in_drop_reads_containing", input_type=Boolean(optional=True), prefix="-1", doc=InputDocumentation(doc="drop reads containing unique k-mers")), ToolInput(tag="in_show_version_number", input_type=Boolean(optional=True), prefix="-v", doc=InputDocumentation(doc="show version number")), ToolInput(tag="in_to_count_dot_fq", input_type=String(), position=0, doc=InputDocumentation(doc="")), ToolInput(tag="in_to_correct_dot_fq", input_type=String(optional=True), position=1, doc=InputDocumentation(doc=""))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Bfc_V0_1_0().translate("wdl", allow_empty_container=True)
+

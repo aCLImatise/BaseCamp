@@ -20,6 +20,9 @@ task SequenceCoverageCalculator {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_database: "*  Input file containing the database in FASTA format (valid formats: 'fasta')"
     in_peptides: "*  Input file containing the identified peptides (valid formats: 'idXML')"

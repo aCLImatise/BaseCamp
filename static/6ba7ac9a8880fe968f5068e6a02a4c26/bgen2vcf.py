@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, String
+
+Bgen2Vcf_V0_1_0 = CommandToolBuilder(tool="bgen2vcf", base_command=["bgen2vcf"], inputs=[ToolInput(tag="in_in_bg_en", input_type=Boolean(optional=True), prefix="--inBgen", doc=InputDocumentation(doc=": Input BGEN File")), ToolInput(tag="in_in_bg_en_sample", input_type=Boolean(optional=True), prefix="--inBgenSample", doc=InputDocumentation(doc=": Input SAMPLE file for the BGEN File")), ToolInput(tag="in_out", input_type=Boolean(optional=True), prefix="--out", doc=InputDocumentation(doc=": Output prefix")), ToolInput(tag="in_people_include_id", input_type=Boolean(optional=True), prefix="--peopleIncludeID", doc=InputDocumentation(doc=": give IDs of people that will be included in study")), ToolInput(tag="in_people_include_file", input_type=Boolean(optional=True), prefix="--peopleIncludeFile", doc=InputDocumentation(doc=": from given file, set IDs of people that will be\nincluded in study")), ToolInput(tag="in_people_exclude_id", input_type=Boolean(optional=True), prefix="--peopleExcludeID", doc=InputDocumentation(doc=": give IDs of people that will be included in study")), ToolInput(tag="in_people_exclude_file", input_type=Boolean(optional=True), prefix="--peopleExcludeFile", doc=InputDocumentation(doc=": from given file, set IDs of people that will be\nincluded in study")), ToolInput(tag="in_range_list", input_type=Boolean(optional=True), prefix="--rangeList", doc=InputDocumentation(doc=": Specify some ranges to use, please use chr:begin-end")), ToolInput(tag="in_site_file", input_type=Boolean(optional=True), prefix="--siteFile", doc=InputDocumentation(doc=": Specify the file containing site to extract, please use\nchr:pos format.")), ToolInput(tag="in_hide_varid", input_type=Boolean(optional=True), prefix="--hideVarId", doc=InputDocumentation(doc=": Do not output Variant ID (only output rsid)")), ToolInput(tag="in_hide_gt", input_type=Boolean(optional=True), prefix="--hideGT", doc=InputDocumentation(doc=": Do not call genotypes by skipping the GT tag")), ToolInput(tag="in_show_ds", input_type=Boolean(optional=True), prefix="--showDS", doc=InputDocumentation(doc=": Calculate bi-allelic dosage using the DS tag")), ToolInput(tag="in_format_dot", input_type=String(), position=0, doc=InputDocumentation(doc="--rangeFile: Specify the file containing ranges, please use"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Bgen2Vcf_V0_1_0().translate("wdl", allow_empty_container=True)
+

@@ -1,0 +1,74 @@
+!Command
+command:
+- haphpipe
+- extract_pairwise
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --align_json
+  description: "JSON file describing alignment (output of\npairwise_align stage)"
+  args: !SimpleFlagArg
+    name: ALIGN_JSON
+- !Flag
+  optional: true
+  synonyms:
+  - --outfile
+  description: Output file. Default is stdout
+  args: !SimpleFlagArg
+    name: OUTFILE
+- !Flag
+  optional: true
+  synonyms:
+  - --outfmt
+  description: 'Format for output (default: nuc_fa)'
+  args: !ChoiceFlagArg
+    choices: !!set
+      tsv:
+      amp_gtf:
+      prot_fa:
+      nuc_fa:
+      aln_fa:
+- !Flag
+  optional: true
+  synonyms:
+  - --refreg
+  description: "Reference region. String format is ref:start-stop. For\nexample, the\
+    \ region string to extract pol when aligned\nto HXB2 is HIV_B.K03455.HXB2:2085-5096"
+  args: !SimpleFlagArg
+    name: REFREG
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: 'Print commands but do not run (default: False)'
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: haphpipe extract_pairwise [-h] --align_json ALIGN_JSON\n      \
+  \                           [--outfile OUTFILE]\n                              \
+  \   [--outfmt {nuc_fa,aln_fa,amp_gtf,tsv,prot_fa}]\n                           \
+  \      [--refreg REFREG] [--debug]\n\noptional arguments:\n  -h, --help        \
+  \    show this help message and exit\n\nInput/Output:\n  --align_json ALIGN_JSON\n\
+  \                        JSON file describing alignment (output of\n           \
+  \             pairwise_align stage)\n  --outfile OUTFILE     Output file. Default\
+  \ is stdout\n\nExtract pairwise options:\n  --outfmt {nuc_fa,aln_fa,amp_gtf,tsv,prot_fa}\n\
+  \                        Format for output (default: nuc_fa)\n  --refreg REFREG\
+  \       Reference region. String format is ref:start-stop. For\n               \
+  \         example, the region string to extract pol when aligned\n             \
+  \           to HXB2 is HIV_B.K03455.HXB2:2085-5096\n\nSettings:\n  --debug     \
+  \          Print commands but do not run (default: False)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/haphpipe:1.0.3--py_0

@@ -5,12 +5,12 @@ task Ttree {
     Boolean? _process_files
     Boolean? _recurse_recurse
     Boolean? _preserve_ownership
-    Boolean? _nothing_nothing
-    Boolean? _verbose_mode
+    Boolean? _nothing_do
+    Boolean? _verbose_verbose
     Directory? _srcdir_source
-    Directory? _destdir_destination
+    Directory? destdir_destination_directory
     String? _cfgdir_location
-    Directory? _libdir_directory
+    Directory? _libdir_library
     File? _filefile_read
     Boolean? colour
     Boolean? summary
@@ -57,12 +57,12 @@ task Ttree {
       ~{if (_process_files) then "-a" else ""} \
       ~{if (_recurse_recurse) then "-r" else ""} \
       ~{if (_preserve_ownership) then "-p" else ""} \
-      ~{if (_nothing_nothing) then "-n" else ""} \
-      ~{if (_verbose_mode) then "-v" else ""} \
+      ~{if (_nothing_do) then "-n" else ""} \
+      ~{if (_verbose_verbose) then "-v" else ""} \
       ~{if defined(_srcdir_source) then ("-s " +  '"' + _srcdir_source + '"') else ""} \
-      ~{if defined(_destdir_destination) then ("-d " +  '"' + _destdir_destination + '"') else ""} \
+      ~{if defined(destdir_destination_directory) then ("-d " +  '"' + destdir_destination_directory + '"') else ""} \
       ~{if defined(_cfgdir_location) then ("-c " +  '"' + _cfgdir_location + '"') else ""} \
-      ~{if defined(_libdir_directory) then ("-l " +  '"' + _libdir_directory + '"') else ""} \
+      ~{if defined(_libdir_library) then ("-l " +  '"' + _libdir_library + '"') else ""} \
       ~{if defined(_filefile_read) then ("-f " +  '"' + _filefile_read + '"') else ""} \
       ~{if (colour) then "--colour" else ""} \
       ~{if (summary) then "--summary" else ""} \
@@ -102,18 +102,21 @@ task Ttree {
       ~{if defined(perl_five_lib) then ("--perl5lib " +  '"' + perl_five_lib + '"') else ""} \
       ~{if defined(template_module) then ("--template_module " +  '"' + template_module + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     _process_files: "(--all)          Process all files, regardless of modification"
     _recurse_recurse: "(--recurse)      Recurse into sub-directories"
     _preserve_ownership: "(--preserve)     Preserve file ownership and permission"
-    _nothing_nothing: "(--nothing)      Do nothing, just print summary (enables -v)"
-    _verbose_mode: "(--verbose)      Verbose mode. Use twice for more verbosity: -v -v"
+    _nothing_do: "(--nothing)      Do nothing, just print summary (enables -v)"
+    _verbose_verbose: "(--verbose)      Verbose mode. Use twice for more verbosity: -v -v"
     _srcdir_source: "(--src=DIR)      Source directory"
-    _destdir_destination: "(--dest=DIR)     Destination directory"
+    destdir_destination_directory: "(--dest=DIR)     Destination directory"
     _cfgdir_location: "(--cfg=DIR)      Location of configuration files"
-    _libdir_directory: "(--lib=DIR)      Library directory (INCLUDE_PATH)  (multiple)"
+    _libdir_library: "(--lib=DIR)      Library directory (INCLUDE_PATH)  (multiple)"
     _filefile_read: "(--file=FILE)    Read named configuration file     (multiple)"
-    colour: "/ --color       Enable colo(u)rful verbose output."
+    colour: "Enable colo(u)rful verbose output."
     summary: "Show processing summary."
     ignore: "Ignore files matching REGEX"
     copy: "Copy files matching REGEX"

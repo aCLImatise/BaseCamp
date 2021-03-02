@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, String, File, Int
+
+Enasearch_Search_Data_V0_1_0 = CommandToolBuilder(tool="enasearch_search_data", base_command=["enasearch", "search_data"], inputs=[ToolInput(tag="in_free_text_search", input_type=Boolean(optional=True), prefix="--free_text_search", doc=InputDocumentation(doc="Use free text search, otherwise the data warehouse\nis used")), ToolInput(tag="in_query", input_type=String(optional=True), prefix="--query", doc=InputDocumentation(doc="Query string, made up of filtering conditions,\njoined by logical ANDs, ORs and NOTs and bound by\ndouble quotes; the filter fields for a query are\naccessible with get_filter_fields and the type of\nfilters with get_filter_types  [required]")), ToolInput(tag="in_result", input_type=String(optional=True), prefix="--result", doc=InputDocumentation(doc="Id of a result (accessible with get_results)\n[required]")), ToolInput(tag="in_display", input_type=String(optional=True), prefix="--display", doc=InputDocumentation(doc="Display option to specify the display format\n(accessible with get_display_options)  [required]")), ToolInput(tag="in_download", input_type=File(optional=True), prefix="--download", doc=InputDocumentation(doc="Download option to specify that records are to be\nsaved in a file (used with file option, list\naccessible with get_download_options)")), ToolInput(tag="in_file", input_type=File(optional=True), prefix="--file", doc=InputDocumentation(doc="File to save the content of the search (used with\ndownload option)")), ToolInput(tag="in_fields", input_type=String(optional=True), prefix="--fields", doc=InputDocumentation(doc="Fields to return (accessible with\nget_returnable_fields, used only for report as\ndisplay value) [multiple or comma-separated]")), ToolInput(tag="in_sort_fields", input_type=String(optional=True), prefix="--sortfields", doc=InputDocumentation(doc="Fields to sort the results (accessible with\nget_sortable_fields, used only for report as display\nvalue) [multiple or comma-separated]")), ToolInput(tag="in_offset", input_type=Int(optional=True), prefix="--offset", doc=InputDocumentation(doc="RANGE  First record to get (used only for display different\nof fasta and fastq")), ToolInput(tag="in_length", input_type=Int(optional=True), prefix="--length", doc=InputDocumentation(doc="RANGE  Number of records to retrieve (used only for display\ndifferent of fasta and fastq"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Enasearch_Search_Data_V0_1_0().translate("wdl", allow_empty_container=True)
+

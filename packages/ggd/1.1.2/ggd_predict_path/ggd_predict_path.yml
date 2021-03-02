@@ -1,0 +1,108 @@
+!Command
+command:
+- ggd
+- predict-path
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: PACKAGE_NAME
+  description: Get a predicted install file path for a data package before it is installed.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --channel
+  description: "The ggd channel of the recipe to find. (Default =\ngenomics)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      genomics:
+- !Flag
+  optional: true
+  synonyms:
+  - --prefix
+  description: "(Optional) The name or the full directory path to an\nconda environment.\
+    \ The predicted path will be based on\nthis conda environment. When installing,\
+    \ the data\npackage should also be installed in this environment.\n(Only needed\
+    \ if not predicting for a path in the\ncurrent conda environment)"
+  args: !SimpleFlagArg
+    name: PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - --id
+  description: "ID   (Optional) The ID to predict the path for if the\npackage is\
+    \ a meta-recipe. If it is not a meta-recipe\nit will be ignored"
+  args: !SimpleFlagArg
+    name: meta-recipe
+- !Flag
+  optional: true
+  synonyms:
+  - --dir-path
+  description: "(Required if '--file-name' not used) Whether or not to\nget the predicted\
+    \ directory path rather then the\npredicted file path. If both --file-name and\
+    \ --dir-\npath are provided the --file-name will be used and\n--dir-path will\
+    \ be ignored"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -fn
+  - --file-name
+  description: "(Required if '--dir-path' not used) The name of the\nfile to predict\
+    \ that path for. It is best if you give\nthe full and correct name of the file\
+    \ to predict the\npath for. If not, ggd will try to identify the right\nfile,\
+    \ but won't guarantee that it is the right file"
+  args: !SimpleFlagArg
+    name: FILE_NAME
+- !Flag
+  optional: true
+  synonyms:
+  - -pn
+  - --package-name
+  description: "(Required) The name of the data package to predict a\nfile path for\n"
+  args: !SimpleFlagArg
+    name: PACKAGE_NAME
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: ggd predict-path [-h] [-c {genomics}] [--prefix PREFIX]\n     \
+  \                   [--id meta-recipe ID] [--dir-path] [-fn FILE_NAME] -pn\n   \
+  \                     PACKAGE_NAME\n\nGet a predicted install file path for a data\
+  \ package before it is installed.\n(Use for workflows, such as Snakemake)\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  -c {genomics},\
+  \ --channel {genomics}\n                        The ggd channel of the recipe to\
+  \ find. (Default =\n                        genomics)\n  --prefix PREFIX       (Optional)\
+  \ The name or the full directory path to an\n                        conda environment.\
+  \ The predicted path will be based on\n                        this conda environment.\
+  \ When installing, the data\n                        package should also be installed\
+  \ in this environment.\n                        (Only needed if not predicting for\
+  \ a path in the\n                        current conda environment)\n  --id meta-recipe\
+  \ ID   (Optional) The ID to predict the path for if the\n                      \
+  \  package is a meta-recipe. If it is not a meta-recipe\n                      \
+  \  it will be ignored\n\nOne Argument Required:\n  --dir-path            (Required\
+  \ if '--file-name' not used) Whether or not to\n                        get the\
+  \ predicted directory path rather then the\n                        predicted file\
+  \ path. If both --file-name and --dir-\n                        path are provided\
+  \ the --file-name will be used and\n                        --dir-path will be ignored\n\
+  \  -fn FILE_NAME, --file-name FILE_NAME\n                        (Required if '--dir-path'\
+  \ not used) The name of the\n                        file to predict that path for.\
+  \ It is best if you give\n                        the full and correct name of the\
+  \ file to predict the\n                        path for. If not, ggd will try to\
+  \ identify the right\n                        file, but won't guarantee that it\
+  \ is the right file\n\nRequired Arguments:\n  -pn PACKAGE_NAME, --package-name PACKAGE_NAME\n\
+  \                        (Required) The name of the data package to predict a\n\
+  \                        file path for\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/ggd:1.1.2--pyh3252c3a_0

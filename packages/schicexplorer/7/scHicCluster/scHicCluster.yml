@@ -1,0 +1,265 @@
+!Command
+command:
+- scHicCluster
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: scHi-C
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: matrix
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --matrix
+  description: "scHi-C matrix, -m scool scHi-C matrix\nThe single cell Hi-C interaction\
+    \ matrices to cluster.\nNeeds to be in scool format (default: None)"
+  args: !SimpleFlagArg
+    name: scool
+- !Flag
+  optional: true
+  synonyms:
+  - --numberOfClusters
+  - -c
+  description: 'Number of to be computed clusters (default: 12)'
+  args: !SimpleFlagArg
+    name: NUMBEROFCLUSTERS
+- !Flag
+  optional: true
+  synonyms:
+  - --clusterMethod
+  - -cm
+  description: "Algorithm to cluster the Hi-C matrices (default:\nspectral)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      spectral:
+      kmeans:
+- !Flag
+  optional: true
+  synonyms:
+  - --chromosomes
+  description: 'List of to be plotted chromosomes (default: None)'
+  args: !RepeatFlagArg
+    name: CHROMOSOMES
+- !Flag
+  optional: true
+  synonyms:
+  - --intraChromosomalContactsOnly
+  - -ic
+  description: "This option loads only the intra-chromosomal contacts.\nCan improve\
+    \ the cluster result if data is very noisy.\n(default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --additionalPCA
+  - -pca
+  description: "Computes PCA on top of a k-nn. Can improve the cluster\nresult. (default:\
+    \ False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dimensionsPCA
+  - -dim_pca
+  description: "The number of dimensions from the PCA matrix that\nshould be considered\
+    \ for clustering. Can improve the\ncluster result. (default: 20)"
+  args: !SimpleFlagArg
+    name: DIMENSIONSPCA
+- !Flag
+  optional: true
+  synonyms:
+  - --dimensionReductionMethod
+  - -drm
+  description: "Dimension reduction methods, knn with euclidean\ndistance, pca (default:\
+    \ none)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      pca:
+      knn:
+      none:
+- !Flag
+  optional: true
+  synonyms:
+  - --createScatterPlot
+  - -csp
+  description: "Create a scatter plot for the clustering, the x and y\nare the first\
+    \ and second principal component of the\ncomputed k-nn graph. (default: None)"
+  args: !SimpleFlagArg
+    name: CREATESCATTERPLOT
+- !Flag
+  optional: true
+  synonyms:
+  - --numberOfNearestNeighbors
+  - -k
+  description: "Number of to be used computed nearest neighbors for\nthe knn graph.\
+    \ Default is either the default value or\nthe number of the provided cells, whatever\
+    \ is smaller.\n(default: 100)"
+  args: !SimpleFlagArg
+    name: NUMBEROFNEARESTNEIGHBORS
+- !Flag
+  optional: true
+  synonyms:
+  - --dpi
+  - -d
+  description: 'The dpi of the scatter plot. (default: 300)'
+  args: !SimpleFlagArg
+    name: DPI
+- !Flag
+  optional: true
+  synonyms:
+  - --outFileName
+  - -o
+  description: "File name to save the resulting clusters (default:\nclusters.txt)"
+  args: !SimpleFlagArg
+    name: OUTFILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --cell_coloring_type
+  - -cct
+  description: "A two column list, first colum the cell names as\nstored in the scool\
+    \ file, second column the associated\ncoloring for the scatter plot (default:\
+    \ None)"
+  args: !SimpleFlagArg
+    name: CELL_COLORING_TYPE
+- !Flag
+  optional: true
+  synonyms:
+  - --cell_coloring_batch
+  - -ccb
+  description: "A two column list, first colum the cell names as\nstored in the scool\
+    \ file, second column the associated\ncoloring for the scatter plot (default:\
+    \ None)"
+  args: !SimpleFlagArg
+    name: CELL_COLORING_BATCH
+- !Flag
+  optional: true
+  synonyms:
+  - --latexTable
+  - -lt
+  description: "Return the overlap statistics if --cell_coloring_type\nis given as\
+    \ a latex table. (default: None)"
+  args: !SimpleFlagArg
+    name: LATEXTABLE
+- !Flag
+  optional: true
+  synonyms:
+  - --figuresize
+  description: "y-size\nFontsize in the plot for x and y axis. (default: (15,\n6))"
+  args: !SimpleFlagArg
+    name: x-size
+- !Flag
+  optional: true
+  synonyms:
+  - --colorMap
+  description: "Color map to use for the heatmap, supported are the\ncategorical colormaps\
+    \ from holoviews:\nhttp://holoviews.org/user_guide/Colormaps.html\n(default: glasbey_dark)"
+  args: !SimpleFlagArg
+    name: COLORMAP
+- !Flag
+  optional: true
+  synonyms:
+  - --fontsize
+  description: 'Fontsize in the plot for x and y axis. (default: 15)'
+  args: !SimpleFlagArg
+    name: FONTSIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  - -t
+  description: "Number of threads. Using the python multiprocessing\nmodule. (default:\
+    \ 8)"
+  args: !SimpleFlagArg
+    name: THREADS
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: scHicCluster --matrix scool scHi-C matrix\n                   \
+  \ [--numberOfClusters NUMBEROFCLUSTERS]\n                    [--clusterMethod {spectral,kmeans}]\n\
+  \                    [--chromosomes CHROMOSOMES [CHROMOSOMES ...]]\n           \
+  \         [--intraChromosomalContactsOnly] [--additionalPCA]\n                 \
+  \   [--dimensionsPCA DIMENSIONSPCA]\n                    [--dimensionReductionMethod\
+  \ {none,knn,pca}]\n                    [--createScatterPlot CREATESCATTERPLOT]\n\
+  \                    [--numberOfNearestNeighbors NUMBEROFNEARESTNEIGHBORS]\n   \
+  \                 [--dpi DPI] --outFileName OUTFILENAME\n                    [--cell_coloring_type\
+  \ CELL_COLORING_TYPE]\n                    [--cell_coloring_batch CELL_COLORING_BATCH]\n\
+  \                    [--latexTable LATEXTABLE] [--figuresize x-size y-size]\n  \
+  \                  [--colorMap COLORMAP] [--fontsize FONTSIZE]\n               \
+  \     [--threads THREADS] [--help] [--version]\n\nscHicCluster uses kmeans or spectral\
+  \ clustering to associate each cell to a\ncluster and therefore to its cell cycle.\
+  \ The clustering can be run on the raw\ndata, on a kNN computed via the exact euclidean\
+  \ distance or via PCA. Please\nconsider also the other clustering and dimension\
+  \ reduction approaches of the\nscHicExplorer suite. They can give you better results,\
+  \ can be faster or less\nmemory demanding.\n\nRequired arguments:\n  --matrix scool\
+  \ scHi-C matrix, -m scool scHi-C matrix\n                        The single cell\
+  \ Hi-C interaction matrices to cluster.\n                        Needs to be in\
+  \ scool format (default: None)\n  --numberOfClusters NUMBEROFCLUSTERS, -c NUMBEROFCLUSTERS\n\
+  \                        Number of to be computed clusters (default: 12)\n  --clusterMethod\
+  \ {spectral,kmeans}, -cm {spectral,kmeans}\n                        Algorithm to\
+  \ cluster the Hi-C matrices (default:\n                        spectral)\n\nOptional\
+  \ arguments:\n  --chromosomes CHROMOSOMES [CHROMOSOMES ...]\n                  \
+  \      List of to be plotted chromosomes (default: None)\n  --intraChromosomalContactsOnly,\
+  \ -ic\n                        This option loads only the intra-chromosomal contacts.\n\
+  \                        Can improve the cluster result if data is very noisy.\n\
+  \                        (default: False)\n  --additionalPCA, -pca\n           \
+  \             Computes PCA on top of a k-nn. Can improve the cluster\n         \
+  \               result. (default: False)\n  --dimensionsPCA DIMENSIONSPCA, -dim_pca\
+  \ DIMENSIONSPCA\n                        The number of dimensions from the PCA matrix\
+  \ that\n                        should be considered for clustering. Can improve\
+  \ the\n                        cluster result. (default: 20)\n  --dimensionReductionMethod\
+  \ {none,knn,pca}, -drm {none,knn,pca}\n                        Dimension reduction\
+  \ methods, knn with euclidean\n                        distance, pca (default: none)\n\
+  \  --createScatterPlot CREATESCATTERPLOT, -csp CREATESCATTERPLOT\n             \
+  \           Create a scatter plot for the clustering, the x and y\n            \
+  \            are the first and second principal component of the\n             \
+  \           computed k-nn graph. (default: None)\n  --numberOfNearestNeighbors NUMBEROFNEARESTNEIGHBORS,\
+  \ -k NUMBEROFNEARESTNEIGHBORS\n                        Number of to be used computed\
+  \ nearest neighbors for\n                        the knn graph. Default is either\
+  \ the default value or\n                        the number of the provided cells,\
+  \ whatever is smaller.\n                        (default: 100)\n  --dpi DPI, -d\
+  \ DPI     The dpi of the scatter plot. (default: 300)\n  --outFileName OUTFILENAME,\
+  \ -o OUTFILENAME\n                        File name to save the resulting clusters\
+  \ (default:\n                        clusters.txt)\n  --cell_coloring_type CELL_COLORING_TYPE,\
+  \ -cct CELL_COLORING_TYPE\n                        A two column list, first colum\
+  \ the cell names as\n                        stored in the scool file, second column\
+  \ the associated\n                        coloring for the scatter plot (default:\
+  \ None)\n  --cell_coloring_batch CELL_COLORING_BATCH, -ccb CELL_COLORING_BATCH\n\
+  \                        A two column list, first colum the cell names as\n    \
+  \                    stored in the scool file, second column the associated\n  \
+  \                      coloring for the scatter plot (default: None)\n  --latexTable\
+  \ LATEXTABLE, -lt LATEXTABLE\n                        Return the overlap statistics\
+  \ if --cell_coloring_type\n                        is given as a latex table. (default:\
+  \ None)\n  --figuresize x-size y-size\n                        Fontsize in the plot\
+  \ for x and y axis. (default: (15,\n                        6))\n  --colorMap COLORMAP\
+  \   Color map to use for the heatmap, supported are the\n                      \
+  \  categorical colormaps from holoviews:\n                        http://holoviews.org/user_guide/Colormaps.html\n\
+  \                        (default: glasbey_dark)\n  --fontsize FONTSIZE   Fontsize\
+  \ in the plot for x and y axis. (default: 15)\n  --threads THREADS, -t THREADS\n\
+  \                        Number of threads. Using the python multiprocessing\n \
+  \                       module. (default: 8)\n  --help, -h            show this\
+  \ help message and exit\n  --version             show program's version number and\
+  \ exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/schicexplorer:7--py_0

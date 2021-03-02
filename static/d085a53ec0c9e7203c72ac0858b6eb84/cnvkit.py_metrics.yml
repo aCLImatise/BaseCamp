@@ -1,0 +1,67 @@
+!Command
+command:
+- cnvkit.py
+- metrics
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: cnarrays
+  description: "One or more bin-level coverage data files (*.cnn,\n*.cnr)."
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --segments
+  description: "One or more segmentation data files (*.cns, output of\nthe 'segment'\
+    \ command). If more than one file is\ngiven, the number must match the coverage\
+    \ data files,\nin which case the input files will be paired together\nin the given\
+    \ order. Otherwise, the same segments will\nbe used for all coverage files."
+  args: !RepeatFlagArg
+    name: SEGMENTS
+- !Flag
+  optional: true
+  synonyms:
+  - --drop-low-coverage
+  description: "Drop very-low-coverage bins before calculations to\nreduce negative\
+    \ \"fat tail\" of bin log2 values in poor-\nquality tumor samples."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: "Output table file name.\n"
+  args: !SimpleFlagArg
+    name: FILENAME
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: cnvkit.py metrics [-h] [-s SEGMENTS [SEGMENTS ...]]\n         \
+  \                [--drop-low-coverage] [-o FILENAME]\n                         cnarrays\
+  \ [cnarrays ...]\n\npositional arguments:\n  cnarrays              One or more bin-level\
+  \ coverage data files (*.cnn,\n                        *.cnr).\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -s SEGMENTS [SEGMENTS\
+  \ ...], --segments SEGMENTS [SEGMENTS ...]\n                        One or more\
+  \ segmentation data files (*.cns, output of\n                        the 'segment'\
+  \ command). If more than one file is\n                        given, the number\
+  \ must match the coverage data files,\n                        in which case the\
+  \ input files will be paired together\n                        in the given order.\
+  \ Otherwise, the same segments will\n                        be used for all coverage\
+  \ files.\n  --drop-low-coverage   Drop very-low-coverage bins before calculations\
+  \ to\n                        reduce negative \"fat tail\" of bin log2 values in\
+  \ poor-\n                        quality tumor samples.\n  -o FILENAME, --output\
+  \ FILENAME\n                        Output table file name.\n"
+generated_using:
+- --help
+docker_image:

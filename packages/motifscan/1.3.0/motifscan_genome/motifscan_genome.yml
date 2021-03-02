@@ -1,0 +1,146 @@
+!Command
+command:
+- motifscan
+- genome
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: Enable verbose log messages.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --list
+  description: Display installed genome assemblies.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --list-remote
+  description: Display available remote genome assemblies.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --search
+  description: Search for genome assemblies in a remote database.
+  args: !SimpleFlagArg
+    name: KEYWORD
+- !Flag
+  optional: true
+  synonyms:
+  - --install
+  description: Install a new genome assembly.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --uninstall
+  description: Uninstall a genome assembly.
+  args: !SimpleFlagArg
+    name: NAME
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --name
+  description: Name of the genome assembly to be installed.
+  args: !SimpleFlagArg
+    name: NAME
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: Local genome sequences file(s) in FASTA format.
+  args: !RepeatFlagArg
+    name: FASTA
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  description: Local gene annotation (refGene.txt) file.
+  args: !SimpleFlagArg
+    name: ANNOTATION
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --remote
+  description: Download required data files from a remote assembly.
+  args: !SimpleFlagArg
+    name: GENOME
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-dir
+  description: "Write to a given directory instead of the default\ndirectory."
+  args: !SimpleFlagArg
+    name: DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --database
+  description: "Which remote database is used to list/install/search\ngenome assemblies.\
+    \ Default: ucsc"
+  args: !ChoiceFlagArg
+    choices: !!set
+      ucsc:
+- !Flag
+  optional: true
+  synonyms:
+  - --clean
+  description: Clean the download directory after installation.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: motifscan genome [-h]\n                        (--list | --list-remote\
+  \ | --search KEYWORD | --install | --uninstall NAME)\n                        [-n\
+  \ NAME] [-i FASTA [FASTA ...]] [-a ANNOTATION]\n                        [-r GENOME]\
+  \ [-o DIR] [--database {ucsc}] [--clean]\n                        [--verbose]\n\n\
+  Genome assembly commands.\n\nThis subcommand controls the genome assemblies used\
+  \ by MotifScan.\nMotifScan requires a sequences FASTA file and a gene annotation\
+  \ file \n(if available) for each genome assembly, users can either download them\
+  \ \nfrom a remote database or install directly with local prepared files.\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  --verbose\
+  \             Enable verbose log messages.\n\nGenome Subcommands:\n  --list    \
+  \            Display installed genome assemblies.\n  --list-remote         Display\
+  \ available remote genome assemblies.\n  --search KEYWORD      Search for genome\
+  \ assemblies in a remote database.\n  --install             Install a new genome\
+  \ assembly.\n  --uninstall NAME      Uninstall a genome assembly.\n\nInstall Options:\n\
+  \  -n NAME, --name NAME  Name of the genome assembly to be installed.\n  -i FASTA\
+  \ [FASTA ...]  Local genome sequences file(s) in FASTA format.\n  -a ANNOTATION\
+  \         Local gene annotation (refGene.txt) file.\n  -r GENOME, --remote GENOME\n\
+  \                        Download required data files from a remote assembly.\n\
+  \  -o DIR, --output-dir DIR\n                        Write to a given directory\
+  \ instead of the default\n                        directory.\n\nRemote Database\
+  \ Options:\n  --database {ucsc}     Which remote database is used to list/install/search\n\
+  \                        genome assemblies. Default: ucsc\n  --clean           \
+  \    Clean the download directory after installation.\n\nExamples:\n--------- \n\
+  1) Display installed genomes:\n\n    motifscan genome --list\n\n2) Display all available\
+  \ genomes in a remote database:\n\n    motifscan genome --list-remote\n\n3) Search\
+  \ genomes in a remote database by keyword (e.g. 'human'):\n\n    motifscan genome\
+  \ --search human\n\n4) Install 'hg19' genome assembly from a remote database:\n\n\
+  \    motifscan genome --install -n hg19 -r hg19\n\n5) Install 'hg19' genome assembly\
+  \ with local prepared files:\n\n    motifscan genome --install -n hg19 -i <hg19.fa>\
+  \ -a <refGene.txt>   \n\n6) Uninstall a genome assembly:\n\n    motifscan genome\
+  \ --uninstall <genome_name>\n\nNotes:\n------       \nThe path of newly installed\
+  \ genome will be automatically saved. If you \nmove the directory to another location\
+  \ later, please reconfigure it:\n\n    motifscan config --set-genome <genome_name>\
+  \ <new_path>\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/motifscan:1.3.0--py36h4c5857e_0

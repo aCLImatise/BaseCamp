@@ -1,0 +1,324 @@
+!Command
+command:
+- RILseq_significant_regions.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --genome
+  description: 'genome fasta file (default: None)'
+  args: !SimpleFlagArg
+    name: GENOME
+- !Flag
+  optional: true
+  synonyms:
+  - --total_RNA
+  description: "Normalize in total RNA from these bam files. Enter a\ncomma separated\
+    \ list of bam files. (default: None)"
+  args: !SimpleFlagArg
+    name: TOTAL_RNA
+- !Flag
+  optional: true
+  synonyms:
+  - --total_reverse
+  description: 'Total library is the reverse strand. (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min_total_counts
+  description: "Minimal number of reads in the total library to assess\nnormalization\
+    \ from. (default: 10)"
+  args: !SimpleFlagArg
+    name: MIN_TOTAL_COUNTS
+- !Flag
+  optional: true
+  synonyms:
+  - --norm_percentile
+  description: "Percentile of IP/total to use when evaluating\nnormalization of odds\
+    \ ratio in total. The value\nIP/total is evaluated for every region with at least\n\
+    (--min_total_counts) reads and to avoid outliers the\n99th percentile is taken\
+    \ as the normalization value\nmeaning this is the highest amount of IP reads that\n\
+    can be obtained in this library given the amount of\ntotal RNA. (default: 0.99)"
+  args: !SimpleFlagArg
+    name: NORM_PERCENTILE
+- !Flag
+  optional: true
+  synonyms:
+  - --bc_dir
+  description: "BioCyc data dir, used to map the regions to genes. If\nnot given only\
+    \ the regions will be reported (default:\nNone)"
+  args: !SimpleFlagArg
+    name: BC_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --ribozero
+  description: "Remove rRNA prior to the statistical analysis.\n(default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --rrna_list
+  description: "rRNA list of types for rRNA_prod param in\nread_genes_data(). this\
+    \ is a no spaces comma-seperated\nlist. e.g. 'rRNA,rrna,RRNA' (default: rRNA,rrna,RRNA)"
+  args: !SimpleFlagArg
+    name: RRNA_LIST
+- !Flag
+  optional: true
+  synonyms:
+  - --all_interactions
+  description: "Skip all statistical tests and report all the\ninteractions. (default:\
+    \ False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --only_singles
+  description: "Return only the single interactions. This should be\nused with --all_interactions\
+    \ to count the number of\nsingle reads in the library. (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --est_utr_lens
+  description: "Estimated UTRs lengths when there is not data.\n(default: 100)"
+  args: !SimpleFlagArg
+    name: EST_UTR_LENS
+- !Flag
+  optional: true
+  synonyms:
+  - --BC_chrlist
+  description: "A comma separated dictionary of chromosome names from\nthe bam file\
+    \ to EcoCyc names. See the names of\nchromosomes in bam file using samtools view\
+    \ -H\nfoo.bam. (default: chr,COLI-K12)"
+  args: !SimpleFlagArg
+    name: BC_CHRLIST
+- !Flag
+  optional: true
+  synonyms:
+  - --refseq_dir
+  description: "RefSeq dir of organism to get the gene description\nfrom. (default:\
+    \ None)"
+  args: !SimpleFlagArg
+    name: REFSEQ_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --targets_file
+  description: "A list of sRNA-mRNA interactions, should be in EcoCyc\nacc. (default:\
+    \ None)"
+  args: !SimpleFlagArg
+    name: TARGETS_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --single_counts
+  description: "A file with the counts of single fragments per gene.\n(default: None)"
+  args: !SimpleFlagArg
+    name: SINGLE_COUNTS
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --rep_table
+  description: "A table containing data on REP elements. This file was\ngenerated\
+    \ using SmartTables (e.g. this:\nhttp://ecocyc.org/group?id=biocyc14-8223-3640227683)\n\
+    (default: None)"
+  args: !SimpleFlagArg
+    name: REP_TABLE
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --length
+  description: "Length of sequence used for mapping. Used to determine\nthe gene in\
+    \ the regions. (default: 25)"
+  args: !SimpleFlagArg
+    name: LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --shuffles
+  description: "Shuffle the first sequence to compute an empirical\np-value of the\
+    \ hybridization energy using RNAup.\n(default: 0)"
+  args: !SimpleFlagArg
+    name: SHUFFLES
+- !Flag
+  optional: true
+  synonyms:
+  - --servers
+  description: "A list of computers to run RNAup on (or number of\nCPUs) (default:\
+    \ None)"
+  args: !SimpleFlagArg
+    name: SERVERS
+- !Flag
+  optional: true
+  synonyms:
+  - --run_RNAup
+  description: "Run RNAup and compute the interactions predicted\nstrength (default:\
+    \ False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --RNAup_cmd
+  description: "Executable of RNAup with its parameters (default:\nRNAup)"
+  args: !SimpleFlagArg
+    name: RNAUP_CMD
+- !Flag
+  optional: true
+  synonyms:
+  - --pad_seqs
+  description: "When computing RNAup pad the interacting regions.\n(default: 50)"
+  args: !SimpleFlagArg
+    name: PAD_SEQS
+- !Flag
+  optional: true
+  synonyms:
+  - --seglen
+  description: "Length of minimal segment of interaction. (default:\n100)"
+  args: !SimpleFlagArg
+    name: SEGLEN
+- !Flag
+  optional: true
+  synonyms:
+  - --maxsegs
+  description: "Maximal number of consecutive segments that will be\ntreated as a\
+    \ region. (default: 5)"
+  args: !SimpleFlagArg
+    name: MAXSEGS
+- !Flag
+  optional: true
+  synonyms:
+  - --min_int
+  description: 'Minimal number of interactions to report. (default: 5)'
+  args: !SimpleFlagArg
+    name: MIN_INT
+- !Flag
+  optional: true
+  synonyms:
+  - --max_pv
+  description: "Maximal pvalue to report (after correction). (default:\n0.05)"
+  args: !SimpleFlagArg
+    name: MAX_PV
+- !Flag
+  optional: true
+  synonyms:
+  - --min_odds_ratio
+  description: 'Minimal odds ratio to report (default: 1.0)'
+  args: !SimpleFlagArg
+    name: MIN_ODDS_RATIO
+- !Flag
+  optional: true
+  synonyms:
+  - --linear_chromosome_list
+  description: "A list of chromosomes/plasmids names that are linear\nand not cyclic.The\
+    \ name should be identical to the\nchromosome/plasmid name in the given genome\
+    \ fasta\nfile. (default: )\n"
+  args: !SimpleFlagArg
+    name: LINEAR_CHROMOSOME_LIST
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: RILseq_significant_regions.py [-h] [-g GENOME] [--total_RNA TOTAL_RNA]\n\
+  \                                     [--total_reverse]\n                      \
+  \               [--min_total_counts MIN_TOTAL_COUNTS]\n                        \
+  \             [--norm_percentile NORM_PERCENTILE]\n                            \
+  \         [--bc_dir BC_DIR] [--ribozero]\n                                     [--rrna_list\
+  \ RRNA_LIST]\n                                     [--all_interactions] [--only_singles]\n\
+  \                                     [--est_utr_lens EST_UTR_LENS]\n          \
+  \                           [--BC_chrlist BC_CHRLIST]\n                        \
+  \             [--refseq_dir REFSEQ_DIR]\n                                     [-t\
+  \ TARGETS_FILE] [-c SINGLE_COUNTS]\n                                     [-r REP_TABLE]\
+  \ [-l LENGTH] [-s SHUFFLES]\n                                     [--servers SERVERS]\
+  \ [--run_RNAup]\n                                     [--RNAup_cmd RNAUP_CMD]\n\
+  \                                     [--pad_seqs PAD_SEQS] [--seglen SEGLEN]\n\
+  \                                     [--maxsegs MAXSEGS] [--min_int MIN_INT]\n\
+  \                                     [--max_pv MAX_PV]\n                      \
+  \               [--min_odds_ratio MIN_ODDS_RATIO]\n                            \
+  \         [--linear_chromosome_list LINEAR_CHROMOSOME_LIST]\n                  \
+  \                   reads_in\n\nFind over-represented regions of interactions.\n\
+  \npositional arguments:\n  reads_in              An output file of map_chimeric_fragments.py\
+  \ with the\n                        chimeric fragments.\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -g GENOME, --genome\
+  \ GENOME\n                        genome fasta file (default: None)\n  --total_RNA\
+  \ TOTAL_RNA\n                        Normalize in total RNA from these bam files.\
+  \ Enter a\n                        comma separated list of bam files. (default:\
+  \ None)\n  --total_reverse       Total library is the reverse strand. (default:\
+  \ False)\n  --min_total_counts MIN_TOTAL_COUNTS\n                        Minimal\
+  \ number of reads in the total library to assess\n                        normalization\
+  \ from. (default: 10)\n  --norm_percentile NORM_PERCENTILE\n                   \
+  \     Percentile of IP/total to use when evaluating\n                        normalization\
+  \ of odds ratio in total. The value\n                        IP/total is evaluated\
+  \ for every region with at least\n                        (--min_total_counts) reads\
+  \ and to avoid outliers the\n                        99th percentile is taken as\
+  \ the normalization value\n                        meaning this is the highest amount\
+  \ of IP reads that\n                        can be obtained in this library given\
+  \ the amount of\n                        total RNA. (default: 0.99)\n  --bc_dir\
+  \ BC_DIR       BioCyc data dir, used to map the regions to genes. If\n         \
+  \               not given only the regions will be reported (default:\n        \
+  \                None)\n  --ribozero            Remove rRNA prior to the statistical\
+  \ analysis.\n                        (default: False)\n  --rrna_list RRNA_LIST\n\
+  \                        rRNA list of types for rRNA_prod param in\n           \
+  \             read_genes_data(). this is a no spaces comma-seperated\n         \
+  \               list. e.g. 'rRNA,rrna,RRNA' (default: rRNA,rrna,RRNA)\n  --all_interactions\
+  \    Skip all statistical tests and report all the\n                        interactions.\
+  \ (default: False)\n  --only_singles        Return only the single interactions.\
+  \ This should be\n                        used with --all_interactions to count\
+  \ the number of\n                        single reads in the library. (default:\
+  \ False)\n  --est_utr_lens EST_UTR_LENS\n                        Estimated UTRs\
+  \ lengths when there is not data.\n                        (default: 100)\n  --BC_chrlist\
+  \ BC_CHRLIST\n                        A comma separated dictionary of chromosome\
+  \ names from\n                        the bam file to EcoCyc names. See the names\
+  \ of\n                        chromosomes in bam file using samtools view -H\n \
+  \                       foo.bam. (default: chr,COLI-K12)\n  --refseq_dir REFSEQ_DIR\n\
+  \                        RefSeq dir of organism to get the gene description\n  \
+  \                      from. (default: None)\n  -t TARGETS_FILE, --targets_file\
+  \ TARGETS_FILE\n                        A list of sRNA-mRNA interactions, should\
+  \ be in EcoCyc\n                        acc. (default: None)\n  -c SINGLE_COUNTS,\
+  \ --single_counts SINGLE_COUNTS\n                        A file with the counts\
+  \ of single fragments per gene.\n                        (default: None)\n  -r REP_TABLE,\
+  \ --rep_table REP_TABLE\n                        A table containing data on REP\
+  \ elements. This file was\n                        generated using SmartTables (e.g.\
+  \ this:\n                        http://ecocyc.org/group?id=biocyc14-8223-3640227683)\n\
+  \                        (default: None)\n  -l LENGTH, --length LENGTH\n       \
+  \                 Length of sequence used for mapping. Used to determine\n     \
+  \                   the gene in the regions. (default: 25)\n  -s SHUFFLES, --shuffles\
+  \ SHUFFLES\n                        Shuffle the first sequence to compute an empirical\n\
+  \                        p-value of the hybridization energy using RNAup.\n    \
+  \                    (default: 0)\n  --servers SERVERS     A list of computers to\
+  \ run RNAup on (or number of\n                        CPUs) (default: None)\n  --run_RNAup\
+  \           Run RNAup and compute the interactions predicted\n                 \
+  \       strength (default: False)\n  --RNAup_cmd RNAUP_CMD\n                   \
+  \     Executable of RNAup with its parameters (default:\n                      \
+  \  RNAup)\n  --pad_seqs PAD_SEQS   When computing RNAup pad the interacting regions.\n\
+  \                        (default: 50)\n  --seglen SEGLEN       Length of minimal\
+  \ segment of interaction. (default:\n                        100)\n  --maxsegs MAXSEGS\
+  \     Maximal number of consecutive segments that will be\n                    \
+  \    treated as a region. (default: 5)\n  --min_int MIN_INT     Minimal number of\
+  \ interactions to report. (default: 5)\n  --max_pv MAX_PV       Maximal pvalue to\
+  \ report (after correction). (default:\n                        0.05)\n  --min_odds_ratio\
+  \ MIN_ODDS_RATIO\n                        Minimal odds ratio to report (default:\
+  \ 1.0)\n  --linear_chromosome_list LINEAR_CHROMOSOME_LIST\n                    \
+  \    A list of chromosomes/plasmids names that are linear\n                    \
+  \    and not cyclic.The name should be identical to the\n                      \
+  \  chromosome/plasmid name in the given genome fasta\n                        file.\
+  \ (default: )\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/rilseq:0.81--py_0

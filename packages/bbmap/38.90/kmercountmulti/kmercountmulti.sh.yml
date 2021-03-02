@@ -1,0 +1,65 @@
+!Command
+command:
+- kmercountmulti.sh
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: in
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -Xmx
+  description: "This will set Java's memory usage, overriding autodetection.\n-Xmx20g\
+    \ will specify 20 gigs of RAM, and -Xmx200m will specify 200 megs.\nThe max is\
+    \ typically 85% of physical memory."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -eoom
+  description: "This flag will cause the process to exit if an\nout-of-memory exception\
+    \ occurs.  Requires Java 8u92+."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -da
+  description: Disable assertions.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nWritten by Brian Bushnell\nLast modified February 20, 2020\n\nDescription:\
+  \  Estimates cardinality of unique kmers in sequence data.\nProcesses multiple kmer\
+  \ lengths simultaneously to produce a histogram.\n\nUsage:  kmercountmulti.sh in=<file>\
+  \ sweep=<20,100,8> out=<histogram output>\n\nParameters:\nin=<file>           (in1)\
+  \ Input file, or comma-delimited list of files.\nin2=<file>          Optional second\
+  \ file for paired reads.\nout=<file>          Histogram output.  Default is stdout.\n\
+  k=                  Comma-delimited list of kmer lengths to use.\nsweep=min,max,incr\
+  \  Use incremented kmer values from min to max. For example,\n                 \
+  \   sweep=20,26,2 is equivalent to k=20,22,24,26.\nbuckets=2048        Use this\
+  \ many buckets for counting; higher decreases\n                    variance, for\
+  \ large datasets.  Must be a power of 2.\nseed=-1             Use this seed for\
+  \ hash functions.  \n                    A negative number forces a random seed.\n\
+  minprob=0           Set to a value between 0 and 1 to exclude kmers with a \n  \
+  \                  lower probability of being correct.\nhashes=1            Use\
+  \ this many hash functions.  More hashes yield greater\n                    accuracy,\
+  \ but H hashes takes H times as long.\nstdev=f             Print standard deviations.\n\
+  \nShortcuts:\nThe # symbol will be substituted for 1 and 2.\nFor example:\nkmercountmulti.sh\
+  \ in=read#.fq\n...is equivalent to:\nkmercountmulti.sh in1=read1.fq in2=read2.fq\n\
+  \nJava Parameters:\n-Xmx                This will set Java's memory usage, overriding\
+  \ autodetection.\n                    -Xmx20g will specify 20 gigs of RAM, and -Xmx200m\
+  \ will specify 200 megs.\n                    The max is typically 85% of physical\
+  \ memory.\n-eoom               This flag will cause the process to exit if an\n\
+  \                    out-of-memory exception occurs.  Requires Java 8u92+.\n-da\
+  \                 Disable assertions.\n\nPlease contact Brian Bushnell at bbushnell@lbl.gov\
+  \ if you encounter any problems.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bbmap:38.90--h1296035_0

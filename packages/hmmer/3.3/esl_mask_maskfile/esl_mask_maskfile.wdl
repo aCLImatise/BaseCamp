@@ -12,6 +12,9 @@ task EslmaskMaskfile {
       ~{sq_file} \
       ~{mask_file}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     esl_mask: ""
     sq_file: ""

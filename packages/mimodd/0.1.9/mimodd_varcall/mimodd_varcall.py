@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, Boolean, Int, String
+
+Mimodd_Varcall_V0_1_0 = CommandToolBuilder(tool="mimodd_varcall", base_command=["mimodd", "varcall"], inputs=[ToolInput(tag="in_index_files", input_type=File(optional=True), prefix="--index-files", doc=InputDocumentation(doc="FILE [INDEX FILE ...]\npre-computed index files for all input files")), ToolInput(tag="in_ofile", input_type=File(optional=True), prefix="--ofile", doc=InputDocumentation(doc="redirect the output (variant sites) to the specified\nfile (default: stdout)")), ToolInput(tag="in_group_by_id", input_type=Boolean(optional=True), prefix="--group-by-id", doc=InputDocumentation(doc="optional flag to control handling of multi-sample\ninput; if enabled, reads from different read groups\nare analyzed as separate samples even if the sample\nnames associated with the read groups are identical;\notherwise, the samtools default is used (reads are\ngrouped based on the sample names of their read\ngroups)")), ToolInput(tag="in_relaxed", input_type=Boolean(optional=True), prefix="--relaxed", doc=InputDocumentation(doc="turn off md5 checksum comparison between sequences in\nthe reference genome and those specified in the BAM\ninput file header(s)")), ToolInput(tag="in_max_depth", input_type=Int(optional=True), prefix="--max-depth", doc=InputDocumentation(doc="average sample depth cap applied to input with\nextraordinarily large numbers of samples sequenced at\nhigh coverage to limit memory usage (default: 250)")), ToolInput(tag="in_quiet", input_type=Boolean(optional=True), prefix="--quiet", doc=InputDocumentation(doc="suppress original messages from samtools mpileup and\nbcftools call")), ToolInput(tag="in_verbose", input_type=Boolean(optional=True), prefix="--verbose", doc=InputDocumentation(doc="verbose output independent of samtools/bcftools")), ToolInput(tag="in_threads", input_type=Int(optional=True), prefix="--threads", doc=InputDocumentation(doc="the number of threads to use (overrides config\nsetting)\n")), ToolInput(tag="in_reference_genome", input_type=String(), position=0, doc=InputDocumentation(doc="the reference genome (in fasta format)"))], outputs=[ToolOutput(tag="out_ofile", output_type=File(optional=True), selector=InputSelector(input_to_select="in_ofile", type_hint=File()), doc=OutputDocumentation(doc="redirect the output (variant sites) to the specified\nfile (default: stdout)"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Mimodd_Varcall_V0_1_0().translate("wdl", allow_empty_container=True)
+

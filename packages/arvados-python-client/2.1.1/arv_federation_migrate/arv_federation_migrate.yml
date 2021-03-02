@@ -1,0 +1,79 @@
+!Command
+command:
+- arv-federation-migrate
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: LoginCluster.
+  description: --data-into-subproject
+- !Positional
+  optional: false
+  position: 0
+  name: account.
+  description: --report FILE         Generate report .csv file listing users by email
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --tokens
+  description: Read tokens from FILE. Not needed when using
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --migrate
+  description: "Consume report .csv and migrate users to designated\nArvados accounts."
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --dry-run
+  description: "Consume report .csv and report how user would be\nmigrated to designated\
+    \ Arvados accounts."
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --check
+  description: "Check that tokens are usable and the federation is\nwell connected.\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Print version and exit.
+  args: !EmptyFlagArg {}
+help_text: "usage: arv-federation-migrate [-h] [--version] [--tokens FILE]\n     \
+  \                         [--data-into-subproject]\n                           \
+  \   (--report FILE | --migrate FILE | --dry-run FILE | --check)\n\nMigrate users\
+  \ to federated identity, see https://doc.arvados.org/admin/merge-\nremote-account.html\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  --version             Print version and exit.\n  --tokens FILE         Read tokens\
+  \ from FILE. Not needed when using\n                        LoginCluster.\n  --data-into-subproject\n\
+  \                        Migrate user's data into a separate subproject. This\n\
+  \                        can be used to avoid name collisions from within an\n \
+  \                       account.\n  --report FILE         Generate report .csv file\
+  \ listing users by email\n                        address and their associated Arvados\
+  \ accounts.\n  --migrate FILE        Consume report .csv and migrate users to designated\n\
+  \                        Arvados accounts.\n  --dry-run FILE        Consume report\
+  \ .csv and report how user would be\n                        migrated to designated\
+  \ Arvados accounts.\n  --check               Check that tokens are usable and the\
+  \ federation is\n                        well connected.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/arvados-python-client:2.1.1--py_0

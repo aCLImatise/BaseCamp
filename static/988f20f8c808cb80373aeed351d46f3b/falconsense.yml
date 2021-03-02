@@ -1,0 +1,159 @@
+!Command
+command:
+- falconsense
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  description: mandatory path to seqStore
+  args: !SimpleFlagArg
+    name: seqStore
+- !Flag
+  optional: true
+  synonyms:
+  - -C
+  description: mandatory path to corStore
+  args: !SimpleFlagArg
+    name: corStore
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: output filename prefix
+  args: !SimpleFlagArg
+    name: prefix
+- !Flag
+  optional: true
+  synonyms:
+  - -cns
+  description: enable primary output (to 'prefix.cns')
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -fastq
+  description: enable fastq output (to 'prefix.fastq')
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -log
+  description: enable (debug) logging output (to 'prefix.log')
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: 'number of compute threads to use (default: all)'
+  args: !SimpleFlagArg
+    name: numThreads
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: align evidence to the full read, ignore overlap position
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  description: only process reads listed in file 'readsToCorrect'
+  args: !SimpleFlagArg
+    name: readsToCorrect
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: "[-end]       only process reads from ID 'bgn' to 'end' (inclusive)"
+  args: !SimpleFlagArg
+    name: bgn
+- !Flag
+  optional: true
+  synonyms:
+  - -cc
+  description: 'output:   minimum consensus coverage needed call a corrected base'
+  args: !SimpleFlagArg
+    name: coverage
+- !Flag
+  optional: true
+  synonyms:
+  - -cl
+  description: 'output:   minimum length of corrected region to output as a corrected
+    read'
+  args: !SimpleFlagArg
+    name: length
+- !Flag
+  optional: true
+  synonyms:
+  - -oi
+  description: 'evidence: minimum identity of an aligned evidence read overlap'
+  args: !SimpleFlagArg
+    name: identity
+- !Flag
+  optional: true
+  synonyms:
+  - -ol
+  description: 'evidence: minimum length   of an aligned evidence read overlap'
+  args: !SimpleFlagArg
+    name: length
+- !Flag
+  optional: true
+  synonyms:
+  - -partition
+  description: "m R   configure jobs to fit in M GB memory with not more than R reads\
+    \ per batch,\nallowing m GB memory for processing.  write output to 'prefix.batches'."
+  args: !SimpleFlagArg
+    name: M
+- !Flag
+  optional: true
+  synonyms:
+  - -export
+  description: write the data used for the computation to file 'name'
+  args: !SimpleFlagArg
+    name: name
+- !Flag
+  optional: true
+  synonyms:
+  - -import
+  description: compute using the data in file 'name'
+  args: !SimpleFlagArg
+    name: name
+- !Flag
+  optional: true
+  synonyms:
+  - -O
+  description: ''
+  args: !RepeatFlagArg
+    name: INPUTS
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "usage: falconsense -S seqStore -O ovlStore ...\n\nINPUTS (all mandatory)\n\
+  \  -S seqStore        mandatory path to seqStore\n  -C corStore        mandatory\
+  \ path to corStore\n\nOUTPUTS:\n  -p prefix          output filename prefix\n  -cns\
+  \               enable primary output (to 'prefix.cns')\n  -fastq             enable\
+  \ fastq output (to 'prefix.fastq')\n  -log               enable (debug) logging\
+  \ output (to 'prefix.log')\n\nRESOURCE PARAMETERS:\n  -t numThreads      number\
+  \ of compute threads to use (default: all)\n\nALGORITHM PARAMETERS:\n  -f      \
+  \           align evidence to the full read, ignore overlap position\n\nREAD SELECTION:\n\
+  \  -R readsToCorrect  only process reads listed in file 'readsToCorrect'\n  -r bgn[-end]\
+  \       only process reads from ID 'bgn' to 'end' (inclusive)\n\nCONSENSUS PARAMETERS:\n\
+  \  -cc coverage       output:   minimum consensus coverage needed call a corrected\
+  \ base\n  -cl length         output:   minimum length of corrected region to output\
+  \ as a corrected read\n  -oi identity       evidence: minimum identity of an aligned\
+  \ evidence read overlap\n  -ol length         evidence: minimum length   of an aligned\
+  \ evidence read overlap\n\nPARTITIONING SUPPORT:\n  -partition M m R   configure\
+  \ jobs to fit in M GB memory with not more than R reads per batch,\n           \
+  \          allowing m GB memory for processing.  write output to 'prefix.batches'.\n\
+  \nDEBUGGING SUPPORT:\n  -export name       write the data used for the computation\
+  \ to file 'name'\n  -import name       compute using the data in file 'name'\n\n\
+  Unknown option '--help'.\nERROR: no seqStore input (-S) supplied.\nERROR: no corStore\
+  \ input (-C) supplied.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/canu:2.1.1--he1b5a44_1

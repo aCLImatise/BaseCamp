@@ -1,0 +1,155 @@
+!Command
+command:
+- anvi-script-calculate-pn-ps-ratio
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: pn-ps-data
+  description: '🍺 More on `anvi-script-calculate-pn-ps-ratio`:'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --engine
+  description: and the output filename.
+  args: !SimpleFlagArg
+    name: CDN
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --saav-table
+  description: 'Filepath to the SAAV table. (default: None)'
+  args: !SimpleFlagArg
+    name: SAAV_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --scv-table
+  description: 'Filepath to the SCV table. (default: None)'
+  args: !SimpleFlagArg
+    name: SCV_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --contigs-db
+  description: "Filepath to the contigs database used to generate\nvariability tables.\
+    \ (default: None)"
+  args: !SimpleFlagArg
+    name: CONTIGS_DB
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --min-departure-from-consensus
+  description: "Variants (either SCVs or SAAVs) will be ignored if\nthey have a departure\
+    \ from consensus less than this\nvalue. Note: Keep in mind you may have already\n\
+    supplied this parameter during anvi-gen-variability-\nprofile. The default value\
+    \ is 0.10."
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --minimum-num-variants
+  description: "Ignore genes with less than this number of single\ncodon variants.\
+    \ This avoids being impressed by pN/pS\nvalues of infinite, when in reality the\
+    \ gene had a\nsingle SAAV and no synonymous SCVs. The default is 4\nto ensure\
+    \ a default value with some level of\nstatistical importance."
+  args: !SimpleFlagArg
+    name: MINIMUM_NUM_VARIANTS
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --min-coverage
+  description: "If the coverage value at a codon is less than this\namount, any SAAVs\
+    \ or SCVs associated with it will be\nignored. The default is 30."
+  args: !SimpleFlagArg
+    name: MIN_COVERAGE
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-dir
+  description: 'Directory path for output files (default: None)'
+  args: !SimpleFlagArg
+    name: DIR_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --no-gene
+  description: "Normally, a value is provided for each sample-gene\ncombination. So\
+    \ if you have 10 genes and 100 samples,\nyou would get 10*100=1000 separate values.\
+    \ If this\nflag is provided, the output is not subdivided on a\nper-gene basis,\
+    \ and instead you will get 1 aggregated\nvalue for each sample. (default: False)"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: anvi-script-calculate-pn-ps-ratio [-h] [-a SAAV_FILE] [-b SCV_FILE]\
+  \ -c\n                                         CONTIGS_DB [-j FLOAT]\n         \
+  \                                [-i MINIMUM_NUM_VARIANTS]\n                   \
+  \                      [-m MIN_COVERAGE] -o DIR_PATH\n                         \
+  \                [--no-gene]\n\noptional arguments:\n  -h, --help            show\
+  \ this help message and exit\n\nVARIABILITY:\n  You provide two variability tables\
+  \ generated with anvi-gen-variability-\n  profile: one for SAAVs (generated with\
+  \ --engine AA) and for SCVs\n  (generated with --engine CDN). They must be generated\
+  \ with the same\n  profile and contigs database pair. To be safe, we recommended\
+  \ you use the\n  same settings during both commands except for changing --engine\
+  \ AA to\n  --engine CDN and the output filename.\n\n  -a SAAV_FILE, --saav-table\
+  \ SAAV_FILE\n                        Filepath to the SAAV table. (default: None)\n\
+  \  -b SCV_FILE, --scv-table SCV_FILE\n                        Filepath to the SCV\
+  \ table. (default: None)\n  -c CONTIGS_DB, --contigs-db CONTIGS_DB\n           \
+  \             Filepath to the contigs database used to generate\n              \
+  \          variability tables. (default: None)\n\nTUNABLES:\n  Successfully tune\
+  \ one or more of these parameters to unlock the badge\n  'Advanced anvian'.\n\n\
+  \  -j FLOAT, --min-departure-from-consensus FLOAT\n                        Variants\
+  \ (either SCVs or SAAVs) will be ignored if\n                        they have a\
+  \ departure from consensus less than this\n                        value. Note:\
+  \ Keep in mind you may have already\n                        supplied this parameter\
+  \ during anvi-gen-variability-\n                        profile. The default value\
+  \ is 0.10.\n  -i MINIMUM_NUM_VARIANTS, --minimum-num-variants MINIMUM_NUM_VARIANTS\n\
+  \                        Ignore genes with less than this number of single\n   \
+  \                     codon variants. This avoids being impressed by pN/pS\n   \
+  \                     values of infinite, when in reality the gene had a\n     \
+  \                   single SAAV and no synonymous SCVs. The default is 4\n     \
+  \                   to ensure a default value with some level of\n             \
+  \           statistical importance.\n  -m MIN_COVERAGE, --min-coverage MIN_COVERAGE\n\
+  \                        If the coverage value at a codon is less than this\n  \
+  \                      amount, any SAAVs or SCVs associated with it will be\n  \
+  \                      ignored. The default is 30.\n\nOUTPUT:\n  The output of this\
+  \ program is a folder directory with several tables.\n\n  -o DIR_PATH, --output-dir\
+  \ DIR_PATH\n                        Directory path for output files (default: None)\n\
+  \  --no-gene             Normally, a value is provided for each sample-gene\n  \
+  \                      combination. So if you have 10 genes and 100 samples,\n \
+  \                       you would get 10*100=1000 separate values. If this\n   \
+  \                     flag is provided, the output is not subdivided on a\n    \
+  \                    per-gene basis, and instead you will get 1 aggregated\n   \
+  \                     value for each sample. (default: False)\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\
+  \n\U0001F525 Program description:\n\n   This program calculates for each gene the\
+  \ ratio of pN/pS (the metagenomic\n   analogy of dN/dS) based on metagenomic read\
+  \ recruitment, however, unlike\n   standard pN/pS calculations, it relies on codons\
+  \ rather than nucleotides for\n   accurate estimations of synonimity\n\n\U0001F9C0\
+  \ Can consume: \n\n   contigs-db / variability-profile-txt\n   \n\U0001F355 Can\
+  \ provide: \n\n   pn-ps-data\n   \n\U0001F37A More on `anvi-script-calculate-pn-ps-ratio`:\n\
+  \n   https://merenlab.org/software/anvio/help/7/programs/anvi-script-calculate-pn-ps-ratio\n\
+  \n\U0001F37B All anvi'o programs and artifacts:\n\n   https://merenlab.org/software/anvio/help/7\n\
+  \n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\
+  \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/anvio-minimal:7--py_0

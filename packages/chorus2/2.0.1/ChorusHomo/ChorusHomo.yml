@@ -1,0 +1,102 @@
+!Command
+command:
+- ChorusHomo
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --jellyfish
+  description: The path where Jellyfish software installed
+  args: !SimpleFlagArg
+    name: JELLYFISH
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --bwa
+  description: The path where BWA software installed
+  args: !SimpleFlagArg
+    name: BWA
+- !Flag
+  optional: true
+  synonyms:
+  - -ga
+  - --source
+  description: "Fasta format genome file (GenomeA) which the probe\nwere generated\
+    \ from, should include all sequences from\ngenome"
+  args: !SimpleFlagArg
+    name: SOURCE
+- !Flag
+  optional: true
+  synonyms:
+  - -gb
+  - --target
+  description: "Fasta format genome file (GenomeB) which the probe\nwill be aligned\
+    \ to, should include all sequences from\ngenome"
+  args: !SimpleFlagArg
+    name: TARGET
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  description: "BED format input file, contains oligo probes generated\nfrom Chorus2"
+  args: !SimpleFlagArg
+    name: INPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --save
+  description: The output folder for saving results
+  args: !SimpleFlagArg
+    name: SAVED
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: 'Number of threads or CPUs to use. (Default: 1)'
+  args: !SimpleFlagArg
+    name: THREADS
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: ChorusHomo [-h] [--version] [-j JELLYFISH] [-b BWA] -ga SOURCE\
+  \ -gb\n                  TARGET -i INPUT [-s SAVED] [-t THREADS]\n\nFind probes\
+  \ which can hybridize to a close related species.\n\noptional arguments:\n  -h,\
+  \ --help            show this help message and exit\n  --version             show\
+  \ program's version number and exit\n  -j JELLYFISH, --jellyfish JELLYFISH\n   \
+  \                     The path where Jellyfish software installed\n  -b BWA, --bwa\
+  \ BWA     The path where BWA software installed\n  -ga SOURCE, --source SOURCE\n\
+  \                        Fasta format genome file (GenomeA) which the probe\n  \
+  \                      were generated from, should include all sequences from\n\
+  \                        genome\n  -gb TARGET, --target TARGET\n               \
+  \         Fasta format genome file (GenomeB) which the probe\n                 \
+  \       will be aligned to, should include all sequences from\n                \
+  \        genome\n  -i INPUT, --input INPUT\n                        BED format input\
+  \ file, contains oligo probes generated\n                        from Chorus2\n\
+  \  -s SAVED, --save SAVED\n                        The output folder for saving\
+  \ results\n  -t THREADS, --threads THREADS\n                        Number of threads\
+  \ or CPUs to use. (Default: 1)\n\nExample:\n  ChorusHomo -i probe.bed -ga source_genome.fasta\
+  \ -gb target_genome.fasta \\ \n             -j /opt/software/jellyfish/bin/jellyfish\
+  \ -b /opt/software/bwa/bwa \\ \n             -t 4 -s sample\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/chorus2:2.0.1--py38h0213d0e_0

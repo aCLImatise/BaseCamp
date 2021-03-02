@@ -1,0 +1,132 @@
+!Command
+command:
+- plot_circos_plot.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --summary
+  description: "Plot only significant interactions that appear in the\nsummary file.\
+    \ (default: None)"
+  args: !SimpleFlagArg
+    name: SUMMARY
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --region
+  description: "Split the genome to windows of this size. (default:\n200)"
+  args: !SimpleFlagArg
+    name: REGION
+- !Flag
+  optional: true
+  synonyms:
+  - --sRNAs
+  description: "Color the lines going to or coming from sRNAs in\norange. Must be\
+    \ used with ec_dir. (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --known
+  description: "Use this file to color the known interactions in red.\nMust give --refseq_dir\
+    \ as well. (default: None)"
+  args: !SimpleFlagArg
+    name: KNOWN
+- !Flag
+  optional: true
+  synonyms:
+  - --refseq_dir
+  description: "RefSeq dir of organism to get the gene description\nfrom. Should be\
+    \ given if --known is given. (default:\n/home/users/assafp/EC/)"
+  args: !SimpleFlagArg
+    name: REFSEQ_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --ec_dir
+  description: "EcoCyc data dir, used to map the regions to genes. If\nnot given only\
+    \ the regions will be reported (default:\nNone)"
+  args: !SimpleFlagArg
+    name: EC_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --chrn
+  description: 'Name of chromosome to plot. (default: chr)'
+  args: !SimpleFlagArg
+    name: CHRN
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --print_chr
+  description: 'Name of chromosome in circos. (default: ecmain)'
+  args: !SimpleFlagArg
+    name: PRINT_CHR
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --min_interactions
+  description: "Minimum number of interactions between two regions to\nplot. (default:\
+    \ 100)"
+  args: !SimpleFlagArg
+    name: MIN_INTERACTIONS
+- !Flag
+  optional: true
+  synonyms:
+  - --EC_chrlist
+  description: "A comma separated dictionary of chromosome names from\nthe EcoCyc\
+    \ names to the bam file names. The names in\nthe bam file should be the same as\
+    \ the UCSC genome\nbrowser (they will be printed). (default:\nCOLI-K12,chr)\n"
+  args: !SimpleFlagArg
+    name: EC_CHRLIST
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: plot_circos_plot.py [-h] [-s SUMMARY] [-r REGION] [--sRNAs]\n \
+  \                          [--known KNOWN] [--refseq_dir REFSEQ_DIR]\n         \
+  \                  [--ec_dir EC_DIR] [-c CHRN] [-p PRINT_CHR]\n                \
+  \           [-m MIN_INTERACTIONS] [--EC_chrlist EC_CHRLIST]\n                  \
+  \         reads_in\n\nGenerate circos data file.\n\npositional arguments:\n  reads_in\
+  \              An output file of map_chimeric_fragments.py with the\n          \
+  \              chimeric fragments.\n\noptional arguments:\n  -h, --help        \
+  \    show this help message and exit\n  -s SUMMARY, --summary SUMMARY\n        \
+  \                Plot only significant interactions that appear in the\n       \
+  \                 summary file. (default: None)\n  -r REGION, --region REGION\n\
+  \                        Split the genome to windows of this size. (default:\n \
+  \                       200)\n  --sRNAs               Color the lines going to or\
+  \ coming from sRNAs in\n                        orange. Must be used with ec_dir.\
+  \ (default: False)\n  --known KNOWN         Use this file to color the known interactions\
+  \ in red.\n                        Must give --refseq_dir as well. (default: None)\n\
+  \  --refseq_dir REFSEQ_DIR\n                        RefSeq dir of organism to get\
+  \ the gene description\n                        from. Should be given if --known\
+  \ is given. (default:\n                        /home/users/assafp/EC/)\n  --ec_dir\
+  \ EC_DIR       EcoCyc data dir, used to map the regions to genes. If\n         \
+  \               not given only the regions will be reported (default:\n        \
+  \                None)\n  -c CHRN, --chrn CHRN  Name of chromosome to plot. (default:\
+  \ chr)\n  -p PRINT_CHR, --print_chr PRINT_CHR\n                        Name of chromosome\
+  \ in circos. (default: ecmain)\n  -m MIN_INTERACTIONS, --min_interactions MIN_INTERACTIONS\n\
+  \                        Minimum number of interactions between two regions to\n\
+  \                        plot. (default: 100)\n  --EC_chrlist EC_CHRLIST\n     \
+  \                   A comma separated dictionary of chromosome names from\n    \
+  \                    the EcoCyc names to the bam file names. The names in\n    \
+  \                    the bam file should be the same as the UCSC genome\n      \
+  \                  browser (they will be printed). (default:\n                 \
+  \       COLI-K12,chr)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/rilseq:0.81--py_0

@@ -1,0 +1,98 @@
+!Command
+command:
+- augur
+- traits
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --tree
+  - -t
+  description: "tree to perform trait reconstruction on (default:\nNone)"
+  args: !SimpleFlagArg
+    name: TREE
+- !Flag
+  optional: true
+  synonyms:
+  - --metadata
+  description: 'table with metadata, as CSV or TSV (default: None)'
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --weights
+  description: "tsv/csv table with equilibrium probabilities of\ndiscrete states (default:\
+    \ None)"
+  args: !SimpleFlagArg
+    name: WEIGHTS
+- !Flag
+  optional: true
+  synonyms:
+  - --columns
+  description: "metadata fields to perform discrete reconstruction on\n(default: None)"
+  args: !RepeatFlagArg
+    name: COLUMNS
+- !Flag
+  optional: true
+  synonyms:
+  - --confidence
+  description: "record the distribution of subleading mugration states\n(default:\
+    \ False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sampling-bias-correction
+  description: "a rough estimate of how many more events would have\nbeen observed\
+    \ if sequences represented an even sample.\nThis should be roughly the (1-sum_i\
+    \ p_i^2)/(1-sum_i\nt_i^2), where p_i are the equilibrium frequencies and\nt_i\
+    \ are apparent ones.(or rather the time spent in a\nparticular state on the tree)\
+    \ (default: None)"
+  args: !SimpleFlagArg
+    name: SAMPLING_BIAS_CORRECTION
+- !Flag
+  optional: true
+  synonyms:
+  - --output-node-data
+  description: "name of JSON file to save trait inferences to\n(default: None)"
+  args: !SimpleFlagArg
+    name: OUTPUT_NODE_DATA
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: augur traits [-h] --tree TREE --metadata FILE [--weights WEIGHTS]\n\
+  \                    --columns COLUMNS [COLUMNS ...] [--confidence]\n          \
+  \          [--sampling-bias-correction SAMPLING_BIAS_CORRECTION]\n             \
+  \       [--output-node-data OUTPUT_NODE_DATA]\n\nInfer ancestral traits based on\
+  \ a tree.\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  --tree TREE, -t TREE  tree to perform trait reconstruction on (default:\n\
+  \                        None)\n  --metadata FILE       table with metadata, as\
+  \ CSV or TSV (default: None)\n  --weights WEIGHTS     tsv/csv table with equilibrium\
+  \ probabilities of\n                        discrete states (default: None)\n  --columns\
+  \ COLUMNS [COLUMNS ...]\n                        metadata fields to perform discrete\
+  \ reconstruction on\n                        (default: None)\n  --confidence   \
+  \       record the distribution of subleading mugration states\n               \
+  \         (default: False)\n  --sampling-bias-correction SAMPLING_BIAS_CORRECTION\n\
+  \                        a rough estimate of how many more events would have\n \
+  \                       been observed if sequences represented an even sample.\n\
+  \                        This should be roughly the (1-sum_i p_i^2)/(1-sum_i\n \
+  \                       t_i^2), where p_i are the equilibrium frequencies and\n\
+  \                        t_i are apparent ones.(or rather the time spent in a\n\
+  \                        particular state on the tree) (default: None)\n  --output-node-data\
+  \ OUTPUT_NODE_DATA\n                        name of JSON file to save trait inferences\
+  \ to\n                        (default: None)\n\nNote that missing data must be\
+  \ represented by a `?` character. Missing data\nwill currently be inferred.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/augur:11.1.2--py_1

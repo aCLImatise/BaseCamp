@@ -1,0 +1,53 @@
+!Command
+command:
+- hicstuff
+- subsample
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: contact_map
+  description: Sparse contact matrix in graal, bg2 or cool format.
+- !Positional
+  optional: false
+  position: 1
+  name: subsampled_prefix
+  description: "Path without extension to the output map in the same\nformat as the\
+    \ input containing only a fraction of the\ncontacts."
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --prop
+  description: "Proportion of contacts to sample from the input matrix\nif between\
+    \ 0 and 1. Raw number of contacts to keep if\nsuperior to 1. [default: 0.1]"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  - --force
+  description: Write even if the output file already exists.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "    Subsample contacts from a Hi-C matrix. Probability of sampling is\
+  \ proportional\n    to the intensity of the bin.\n    usage:\n        subsample\
+  \  [--prop=FLOAT] [--force] <contact_map> <subsampled_prefix>\n\n    arguments:\n\
+  \        contact_map             Sparse contact matrix in graal, bg2 or cool format.\n\
+  \        subsampled_prefix       Path without extension to the output map in the\
+  \ same\n                                format as the input containing only a fraction\
+  \ of the\n                                contacts.\n\n    options:\n        -p,\
+  \ --prop=FLOAT        Proportion of contacts to sample from the input matrix\n \
+  \                               if between 0 and 1. Raw number of contacts to keep\
+  \ if\n                                superior to 1. [default: 0.1]\n        -F,\
+  \ --force             Write even if the output file already exists.\n    \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/hicstuff:2.3.2--py_0

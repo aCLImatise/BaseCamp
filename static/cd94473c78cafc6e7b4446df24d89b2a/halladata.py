@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, Int, String, Float, Directory
+
+Halladata_V0_1_0 = CommandToolBuilder(tool="halladata", base_command=["halladata"], inputs=[ToolInput(tag="in_verbose", input_type=Boolean(optional=True), prefix="--verbose", doc=InputDocumentation(doc="additional output is printed")), ToolInput(tag="in_features", input_type=Int(optional=True), prefix="--features", doc=InputDocumentation(doc="number of features in the input file D*N, Rows: D features and columns: N samples")), ToolInput(tag="in_samples", input_type=Int(optional=True), prefix="--samples", doc=InputDocumentation(doc="number of samples in the input file D*N, Rows: D features and columns: N samples")), ToolInput(tag="in_clusters", input_type=Int(optional=True), prefix="--clusters", doc=InputDocumentation(doc="number of blocks, default = min(number_features/2.0, math.log(number_features,2)*1.5)")), ToolInput(tag="in_association", input_type=String(optional=True), prefix="--association", doc=InputDocumentation(doc="association type [sine, parabola, log, line, L, step, happy_face, default =parabola]")), ToolInput(tag="in_distribution", input_type=String(optional=True), prefix="--distribution", doc=InputDocumentation(doc="Distribution [normal, uniform, default =uniform]")), ToolInput(tag="in_noise_between", input_type=Float(optional=True), prefix="--noise-between", doc=InputDocumentation(doc="noise between associated blocks[0 is no noise, 1 is complete noise, default =0.25]")), ToolInput(tag="in_noise_within", input_type=Float(optional=True), prefix="--noise-within", doc=InputDocumentation(doc="noise within blocks[0 is no noise, 1 is complete noise, default =0.25]")), ToolInput(tag="in_output", input_type=Directory(optional=True), prefix="--output", doc=InputDocumentation(doc="the output directory")), ToolInput(tag="in_structure", input_type=String(optional=True), prefix="--structure", doc=InputDocumentation(doc="structure [balanced, imbalanced, default =balanced]")), ToolInput(tag="in_cluster_percentage", input_type=String(optional=True), prefix="--cluster-percentage", doc=InputDocumentation(doc="structure [balanced, imbalanced, default =balanced]\n"))], outputs=[ToolOutput(tag="out_output", output_type=Directory(optional=True), selector=InputSelector(input_to_select="in_output", type_hint=File()), doc=OutputDocumentation(doc="the output directory"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Halladata_V0_1_0().translate("wdl", allow_empty_container=True)
+

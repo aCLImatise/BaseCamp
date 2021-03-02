@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, String, File, Int
+
+Pod2Usage_V0_1_0 = CommandToolBuilder(tool="pod2usage", base_command=["pod2usage"], inputs=[ToolInput(tag="in_man", input_type=Boolean(optional=True), prefix="-man", doc=InputDocumentation(doc="Print this command's manual page and exit.")), ToolInput(tag="in_exit", input_type=String(optional=True), prefix="-exit", doc=InputDocumentation(doc="The exit status value to return.")), ToolInput(tag="in_output", input_type=File(optional=True), prefix="-output", doc=InputDocumentation(doc="The output file to print to. If the special names '-' or '>&1'\nor '>&STDOUT' are used then standard output is used. If '>&2' or\n'>&STDERR' is used then standard error is used.")), ToolInput(tag="in_verbose", input_type=Int(optional=True), prefix="-verbose", doc=InputDocumentation(doc="The desired level of verbosity to use:\n1 : print SYNOPSIS only\n2 : print SYNOPSIS sections and any OPTIONS/ARGUMENTS sections\n3 : print the entire manpage (similar to running pod2text)")), ToolInput(tag="in_path_list", input_type=File(optional=True), prefix="-pathlist", doc=InputDocumentation(doc="Specifies one or more directories to search for the input file\nif it was not supplied with an absolute path. Each directory\npath in the given list should be separated by a ':' on Unix (';'\non MSWin32 and DOS).")), ToolInput(tag="in_formatter", input_type=String(optional=True), prefix="-formatter", doc=InputDocumentation(doc="Which text formatter to use. Default is Pod::Text, or for very\nold Perl versions Pod::PlainText. An alternative would be e.g.\nPod::Text::Termcap.")), ToolInput(tag="in_utf_eight", input_type=Boolean(optional=True), prefix="-utf8", doc=InputDocumentation(doc="This option assumes that the formatter (see above) understands\nthe option 'utf8'. It turns on generation of utf8 output.")), ToolInput(tag="in_file", input_type=File(), position=0, doc=InputDocumentation(doc="The pathname of a file containing pod documentation to be output\nin usage message format (defaults to standard input).\n"))], outputs=[ToolOutput(tag="out_output", output_type=File(optional=True), selector=InputSelector(input_to_select="in_output", type_hint=File()), doc=OutputDocumentation(doc="The output file to print to. If the special names '-' or '>&1'\nor '>&STDOUT' are used then standard output is used. If '>&2' or\n'>&STDERR' is used then standard error is used."))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Pod2Usage_V0_1_0().translate("wdl", allow_empty_container=True)
+

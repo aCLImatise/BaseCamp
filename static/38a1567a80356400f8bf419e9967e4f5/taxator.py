@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, File, String
+
+Taxator_V0_1_0 = CommandToolBuilder(tool="taxator", base_command=["taxator"], inputs=[ToolInput(tag="in_citation", input_type=Boolean(optional=True), prefix="--citation", doc=InputDocumentation(doc="show citation info")), ToolInput(tag="in_advanced_options", input_type=Boolean(optional=True), prefix="--advanced-options", doc=InputDocumentation(doc="show advanced program options")), ToolInput(tag="in_arg_rpa_set", input_type=Boolean(optional=True), prefix="-a", doc=InputDocumentation(doc="[ --algorithm ] arg (=rpa)      set the algorithm that is used to predict\ntaxonomic ids from alignments")), ToolInput(tag="in_arg_filename_seqidtaxid", input_type=Boolean(optional=True), prefix="-g", doc=InputDocumentation(doc="[ --seqid-taxid-mapping ] arg   filename of seqid->taxid mapping for")), ToolInput(tag="in_arg_query_sequences_created", input_type=Boolean(optional=True), prefix="-v", doc=InputDocumentation(doc="[ --query-sequences-index ] arg query sequences FASTA index, for\nout-of-memory operation; is created if not\nexisting")), ToolInput(tag="in_arg_reference_sequences", input_type=Boolean(optional=True), prefix="-f", doc=InputDocumentation(doc="[ --ref-sequences ] arg         reference sequences FASTA")), ToolInput(tag="in_arg_fasta_file", input_type=File(optional=True), prefix="-i", doc=InputDocumentation(doc="[ --ref-sequences-index ] arg   FASTA file index, for out-of-memory\noperation; is created if not existing")), ToolInput(tag="in_arg_sets_number", input_type=Boolean(optional=True), prefix="-p", doc=InputDocumentation(doc="[ --processors ] arg (=1)       sets number of threads, number > 2 will\nheavily profit from multi-core\narchitectures, set to 0 for max.\nperformance")), ToolInput(tag="in_arg_devnull_specify", input_type=Boolean(optional=True), prefix="-l", doc=InputDocumentation(doc="[ --logfile ] arg (=/dev/null)  specify name of file for logging\n(appending lines)\n")), ToolInput(tag="in_reference", input_type=String(), position=0, doc=InputDocumentation(doc="-q [ --query-sequences ] arg       query sequences FASTA"))], outputs=[ToolOutput(tag="out_arg_fasta_file", output_type=File(optional=True), selector=InputSelector(input_to_select="in_arg_fasta_file", type_hint=File()), doc=OutputDocumentation(doc="[ --ref-sequences-index ] arg   FASTA file index, for out-of-memory\noperation; is created if not existing"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Taxator_V0_1_0().translate("wdl", allow_empty_container=True)
+

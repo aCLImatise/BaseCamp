@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, Int, Boolean
+
+Svmtheoreticalspectrumgeneratortrainer_V0_1_0 = CommandToolBuilder(tool="SvmTheoreticalSpectrumGeneratorTrainer", base_command=["SvmTheoreticalSpectrumGeneratorTrainer"], inputs=[ToolInput(tag="in_in_spectra", input_type=File(optional=True), prefix="-in_spectra", doc=InputDocumentation(doc="*          Input Training Spectra in mzML (valid formats: 'mzML')")), ToolInput(tag="in_in_identifications", input_type=File(optional=True), prefix="-in_identifications", doc=InputDocumentation(doc="*  Input file with corresponding sequences in idXML (valid formats: 'idXML')")), ToolInput(tag="in_model_output_file", input_type=File(optional=True), prefix="-model_output_file", doc=InputDocumentation(doc="*   Name for output files. For each ion_type one file <filename>_residue_loss_charge.svm and one <filename>.info which has to be passed to the SvmTheoretical SpectrumGenerator")), ToolInput(tag="in_precursor_charge", input_type=Int(optional=True), prefix="-precursor_charge", doc=InputDocumentation(doc="Precursor charge state used for model training (default: '2' min: '1' max: '3')")), ToolInput(tag="in_write_training_files", input_type=Boolean(optional=True), prefix="-write_training_files", doc=InputDocumentation(doc="No models are trained but input training files for libSVM command line tools are produced")), ToolInput(tag="in_ini", input_type=File(optional=True), prefix="-ini", doc=InputDocumentation(doc="Use the given TOPP INI file")), ToolInput(tag="in_threads", input_type=Int(optional=True), prefix="-threads", doc=InputDocumentation(doc="Sets the number of threads allowed to be used by the TOPP tool (default: '1')")), ToolInput(tag="in_write_ini", input_type=File(optional=True), prefix="-write_ini", doc=InputDocumentation(doc="Writes the default configuration file")), ToolInput(tag="in_helphelp", input_type=Boolean(optional=True), prefix="--helphelp", doc=InputDocumentation(doc="Shows all options (including advanced)"))], outputs=[ToolOutput(tag="out_model_output_file", output_type=File(optional=True), selector=InputSelector(input_to_select="in_model_output_file", type_hint=File()), doc=OutputDocumentation(doc="*   Name for output files. For each ion_type one file <filename>_residue_loss_charge.svm and one <filename>.info which has to be passed to the SvmTheoretical SpectrumGenerator"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Svmtheoreticalspectrumgeneratortrainer_V0_1_0().translate("wdl", allow_empty_container=True)
+

@@ -4,6 +4,9 @@ task Psiblast {
   command <<<
     psiblast
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

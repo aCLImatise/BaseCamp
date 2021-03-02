@@ -8,6 +8,9 @@ task Falcontask {
     falcon_task \
       ~{var_task}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     var_task: ""
   }

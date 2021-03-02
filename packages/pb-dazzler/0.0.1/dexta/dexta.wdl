@@ -8,6 +8,9 @@ task Dexta {
     dexta \
       ~{if (vk) then "-vk" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     vk: ""
   }

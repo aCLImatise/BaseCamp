@@ -1,0 +1,90 @@
+!Command
+command:
+- SplitBamByCell
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: (default 4g)
+  args: !SimpleFlagArg
+    name: jvm_heap_size
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: final command line before executing
+  args: !SimpleFlagArg
+    name: echo
+- !Flag
+  optional: true
+  synonyms:
+  - --stdhelp
+  - -H
+  description: "Displays options specific to this tool AND options common to all Picard\
+    \ command line\ntools."
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: Displays options specific to this tool.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Displays program version.
+  args: !EmptyFlagArg {}
+help_text: "USAGE: /usr/local/bin/SplitBamByCell [-m <jvm_heap_size>] [-v] program\
+  \ args...\n       -m <jvm_heap_size> (default 4g)\n       -v echo final command\
+  \ line before executing\n\nProgram options:\nUSAGE: SplitBamByCell [options]\n\n\
+  Splits input BAM file(s) into NUM_OUTPUTS output BAM files, in such a way that all\
+  \ the reads for each cell barcode are\nin exactly one output BAM file.\nOption NUM_OUTPUTS\
+  \ is either supplied explicitly, or computed by dividing the total input BAM file(s)\
+  \ size by the value\nof TARGET_BAM_SIZE.\nWhen submitting this command to UGER:\n\
+  * memory: -m 16G should be sufficient.\n* time:   3 minutes/GB of input BAM should\
+  \ be enough.\nVersion: 2.4.0(3d2b3d8_1600201514)\n\n\nOptions:\n\n--help\n-h   \
+  \                         Displays options specific to this tool.\n\n--stdhelp\n\
+  -H                            Displays options specific to this tool AND options\
+  \ common to all Picard command line\n                              tools.\n\n--version\
+  \                     Displays program version.\n\nINPUT=File\nI=File          \
+  \              The input SAM or BAM files to analyze.  They must all have the same\
+  \ sort order  Default\n                              value: null. This option must\
+  \ be specified at least 1 times. \n\nSPLIT_TAG=String              The tag to examine\
+  \ in order to partition reads.  Default value: XC. This option can be set\n    \
+  \                          to 'null' to clear the default value. \n\nNUM_OUTPUTS=Integer\n\
+  N=Integer                     Number of output files to create  Required.  Cannot\
+  \ be used in conjuction with option(s)\n                              TARGET_BAM_SIZE\
+  \ (S)\n\nTARGET_BAM_SIZE=String\nS=String                      Approximate size\
+  \ of split BAMs to be created. This can be a human-readable number like\n      \
+  \                        500M or 2G  Required.  Cannot be used in conjuction with\
+  \ option(s) NUM_OUTPUTS (N)\n\nOUTPUT=File\nO=File                        Template\
+  \ for output file names.  If OUTPUT_LIST is specified, and OUTPUT is a relative\n\
+  \                              path, output file paths will be relative to the directory\
+  \ of the OUTPUT_LIST.  Default\n                              value: null. \n\n\
+  OUTPUT_SLUG=String            For each output file, this string in the OUTPUT template\
+  \ will be replaced with an integer.\n                              Default value:\
+  \ __SPLITNUM__. This option can be set to 'null' to clear the default value. \n\n\
+  OUTPUT_LIST=File\nL=File                        If specified, this file will be\
+  \ created, with NUM_OUTPUTS lines, containing all the output\n                 \
+  \             files created.  Default value: null. \n\nREPORT=File             \
+  \      If specified, this file will be created, containing split BAM files' read\
+  \ count\n                              distribution stats.  Default value: null.\
+  \ \n\nOVERWRITE_EXISTING=Boolean\nW=Boolean                     Overwrite existing\
+  \ files. Default: fail if any files to be created already exist.  Default\n    \
+  \                          value: false. This option can be set to 'null' to clear\
+  \ the default value. Possible\n                              values: {true, false}\
+  \ \n\nDELETE_INPUTS=Boolean\nD=Boolean                     Delete input BAM(s) after\
+  \ splitting them. Default: delete input BAM(s).  Default value:\n              \
+  \                true. This option can be set to 'null' to clear the default value.\
+  \ Possible values: {true,\n                              false} \n\n"
+generated_using:
+- -h
+docker_image: quay.io/biocontainers/dropseq_tools:2.4.0--0

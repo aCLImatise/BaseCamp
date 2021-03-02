@@ -1,0 +1,104 @@
+!Command
+command:
+- count_chimeric_reads_per_gene.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: genes_gff
+  description: Name of gff file to count the reads per gene.
+- !Positional
+  optional: false
+  position: 1
+  name: reads_files
+  description: Reads files, output of map_chimeric_fragments.py
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - '-1'
+  - --only_first
+  description: 'Count only the first in fragment. (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - '-2'
+  - --only_second
+  description: 'Count only the second in fragment. (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --singles
+  description: "Count the fragments marked as \"single\", by default\ncount only the\
+    \ chimeric ones. This option forces -1\notherwise the counts will be doubled.\
+    \ (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  description: "Don't print header and antisense/IGR statistics.\n(default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --feature
+  description: "Name of features to count on the GTF file (column 2).\n(default: exon)"
+  args: !SimpleFlagArg
+    name: FEATURE
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --identifier
+  description: "Name of identifier to print (in column 8 of the GTF\nfile). (default:\
+    \ gene_id)"
+  args: !SimpleFlagArg
+    name: IDENTIFIER
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --overlap
+  description: "Minimal overlap between gene and read. (default: 5)\n"
+  args: !SimpleFlagArg
+    name: OVERLAP
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: count_chimeric_reads_per_gene.py [-h] [-1] [-2] [-s] [-q] [-f FEATURE]\n\
+  \                                        [-i IDENTIFIER] [-o OVERLAP]\n        \
+  \                                genes_gff reads_files\n                       \
+  \                 [reads_files ...]\n\nCount reads per gene.\n\npositional arguments:\n\
+  \  genes_gff             Name of gff file to count the reads per gene.\n  reads_files\
+  \           Reads files, output of map_chimeric_fragments.py\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -1, --only_first   \
+  \   Count only the first in fragment. (default: False)\n  -2, --only_second    \
+  \ Count only the second in fragment. (default: False)\n  -s, --singles         Count\
+  \ the fragments marked as \"single\", by default\n                        count\
+  \ only the chimeric ones. This option forces -1\n                        otherwise\
+  \ the counts will be doubled. (default: False)\n  -q, --quiet           Don't print\
+  \ header and antisense/IGR statistics.\n                        (default: False)\n\
+  \  -f FEATURE, --feature FEATURE\n                        Name of features to count\
+  \ on the GTF file (column 2).\n                        (default: exon)\n  -i IDENTIFIER,\
+  \ --identifier IDENTIFIER\n                        Name of identifier to print (in\
+  \ column 8 of the GTF\n                        file). (default: gene_id)\n  -o OVERLAP,\
+  \ --overlap OVERLAP\n                        Minimal overlap between gene and read.\
+  \ (default: 5)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/rilseq:0.81--py_0

@@ -1,0 +1,44 @@
+version 1.0
+
+task PhylophlanDrawMetagenomic {
+  input {
+    File? input_file_generated
+    File? mapping_file_maps
+    Int? top
+    String? prefix_output_files
+    File? separator
+    Int? dpi
+    String? images_output_format
+    Boolean? citation
+    Boolean? verbose
+  }
+  command <<<
+    phylophlan_draw_metagenomic \
+      ~{if defined(input_file_generated) then ("--input " +  '"' + input_file_generated + '"') else ""} \
+      ~{if defined(mapping_file_maps) then ("--map " +  '"' + mapping_file_maps + '"') else ""} \
+      ~{if defined(top) then ("--top " +  '"' + top + '"') else ""} \
+      ~{if defined(prefix_output_files) then ("--output " +  '"' + prefix_output_files + '"') else ""} \
+      ~{if defined(separator) then ("--separator " +  '"' + separator + '"') else ""} \
+      ~{if defined(dpi) then ("--dpi " +  '"' + dpi + '"') else ""} \
+      ~{if defined(images_output_format) then ("-f " +  '"' + images_output_format + '"') else ""} \
+      ~{if (citation) then "--citation" else ""} \
+      ~{if (verbose) then "--verbose" else ""}
+  >>>
+  runtime {
+    docker: "quay.io/biocontainers/phylophlan:3.0.2--py_0"
+  }
+  parameter_meta {
+    input_file_generated: "The input file generated from\\nphylophlan_metagenomic.py (default: None)"
+    mapping_file_maps: "A mapping file that maps each bin to its metagenome\\n(default: None)"
+    top: "The number of SGBs to display in the figure (default:\\n20)"
+    prefix_output_files: "Prefix output files (default: output_heatmap)"
+    separator: "The separator used in the mapping file (default: )"
+    dpi: "Dpi resolution of the images (default: 200)"
+    images_output_format: "Images output format (default: svg)"
+    citation: "Show citation"
+    verbose: "Prints more stuff (default: False)"
+  }
+  output {
+    File out_stdout = stdout()
+  }
+}

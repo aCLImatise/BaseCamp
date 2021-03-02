@@ -1,0 +1,185 @@
+!Command
+command:
+- phenix.py
+- vcf2fasta
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --directory
+  - -d
+  description: Path to the directory with .vcf files.
+  args: !SimpleFlagArg
+    name: DIRECTORY
+- !Flag
+  optional: true
+  synonyms:
+  - --input
+  - -i
+  description: List of VCF files to process.
+  args: !RepeatFlagArg
+    name: INPUT
+- !Flag
+  optional: true
+  synonyms:
+  - --regexp
+  description: Regular expression for finding VCFs in a directory.
+  args: !SimpleFlagArg
+    name: REGEXP
+- !Flag
+  optional: true
+  synonyms:
+  - --out
+  - -o
+  description: Path to the output FASTA file.
+  args: !SimpleFlagArg
+    name: OUT
+- !Flag
+  optional: true
+  synonyms:
+  - --with-mixtures
+  description: "Specify this option with a threshold to output\nmixtures above this\
+    \ threshold."
+  args: !SimpleFlagArg
+    name: WITH_MIXTURES
+- !Flag
+  optional: true
+  synonyms:
+  - --column-Ns
+  description: "Keeps columns with fraction of Ns below specified\nthreshold."
+  args: !SimpleFlagArg
+    name: COLUMN_NS
+- !Flag
+  optional: true
+  synonyms:
+  - --column-gaps
+  description: "Keeps columns with fraction of Ns below specified\nthreshold."
+  args: !SimpleFlagArg
+    name: COLUMN_GAPS
+- !Flag
+  optional: true
+  synonyms:
+  - --sample-Ns
+  description: "Keeps samples with fraction of Ns below specified\nthreshold or put\
+    \ 'auto'.Fraction expressed as fraction\nof genome. Requires --reflength or --reference."
+  args: !SimpleFlagArg
+    name: SAMPLE_NS
+- !Flag
+  optional: true
+  synonyms:
+  - --sample-gaps
+  description: "Keeps samples with fraction of gaps below specified\nthreshold or\
+    \ put 'auto'.Fraction expressed as fraction\nof genome. Requires --reflength or\
+    \ --reference."
+  args: !SimpleFlagArg
+    name: SAMPLE_GAPS
+- !Flag
+  optional: true
+  synonyms:
+  - --sample-Ns-gaps-auto-factor
+  description: "When using 'auto' option for --sample-gaps or\n--sample-Ns, remove\
+    \ sample that havegaps or Ns this\nmany times above the stddev of all samples.\
+    \ [Default:\n2.0]"
+  args: !SimpleFlagArg
+    name: SAMPLE_NS_GAPS_AUTO_FACTOR
+- !Flag
+  optional: true
+  synonyms:
+  - --reference
+  description: "If path to reference specified (FASTA), then whole\ngenome will be\
+    \ written to alignment."
+  args: !SimpleFlagArg
+    name: REFERENCE
+- !Flag
+  optional: true
+  synonyms:
+  - --remove-invariant-npos
+  description: "Remove all positions that invariant apart from N\npositions."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --reflength
+  description: "Length of reference. Either as int or can be worked\nout from fasta\
+    \ file. Ignored if --reference is used."
+  args: !SimpleFlagArg
+    name: REFLENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - --include
+  description: Only include positions in BED file in the FASTA
+  args: !SimpleFlagArg
+    name: INCLUDE
+- !Flag
+  optional: true
+  synonyms:
+  - --exclude
+  description: Exclude any positions specified in the BED file.
+  args: !SimpleFlagArg
+    name: EXCLUDE
+- !Flag
+  optional: true
+  synonyms:
+  - --with-stats
+  description: "If a path is specified, then position of the outputed\nSNPs is stored\
+    \ in this file.\n"
+  args: !SimpleFlagArg
+    name: WITH_STATS
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: phenix.py vcf2fasta [-h]\n                           (--directory\
+  \ DIRECTORY | --input INPUT [INPUT ...])\n                           [--regexp REGEXP]\
+  \ --out OUT\n                           [--with-mixtures WITH_MIXTURES]\n      \
+  \                     [--column-Ns COLUMN_NS] [--column-gaps COLUMN_GAPS]\n    \
+  \                       [--sample-Ns SAMPLE_NS] [--sample-gaps SAMPLE_GAPS]\n  \
+  \                         [--sample-Ns-gaps-auto-factor SAMPLE_NS_GAPS_AUTO_FACTOR]\n\
+  \                           [--reference REFERENCE | --remove-invariant-npos]\n\
+  \                           [--reflength REFLENGTH]\n                          \
+  \ [--include INCLUDE | --exclude EXCLUDE]\n                           [--with-stats\
+  \ WITH_STATS]\n\nCombine multiple VCFs into a single FASTA file.\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  --directory DIRECTORY,\
+  \ -d DIRECTORY\n                        Path to the directory with .vcf files.\n\
+  \  --input INPUT [INPUT ...], -i INPUT [INPUT ...]\n                        List\
+  \ of VCF files to process.\n  --regexp REGEXP       Regular expression for finding\
+  \ VCFs in a directory.\n  --out OUT, -o OUT     Path to the output FASTA file.\n\
+  \  --with-mixtures WITH_MIXTURES\n                        Specify this option with\
+  \ a threshold to output\n                        mixtures above this threshold.\n\
+  \  --column-Ns COLUMN_NS\n                        Keeps columns with fraction of\
+  \ Ns below specified\n                        threshold.\n  --column-gaps COLUMN_GAPS\n\
+  \                        Keeps columns with fraction of Ns below specified\n   \
+  \                     threshold.\n  --sample-Ns SAMPLE_NS\n                    \
+  \    Keeps samples with fraction of Ns below specified\n                       \
+  \ threshold or put 'auto'.Fraction expressed as fraction\n                     \
+  \   of genome. Requires --reflength or --reference.\n  --sample-gaps SAMPLE_GAPS\n\
+  \                        Keeps samples with fraction of gaps below specified\n \
+  \                       threshold or put 'auto'.Fraction expressed as fraction\n\
+  \                        of genome. Requires --reflength or --reference.\n  --sample-Ns-gaps-auto-factor\
+  \ SAMPLE_NS_GAPS_AUTO_FACTOR\n                        When using 'auto' option for\
+  \ --sample-gaps or\n                        --sample-Ns, remove sample that havegaps\
+  \ or Ns this\n                        many times above the stddev of all samples.\
+  \ [Default:\n                        2.0]\n  --reference REFERENCE\n           \
+  \             If path to reference specified (FASTA), then whole\n             \
+  \           genome will be written to alignment.\n  --remove-invariant-npos\n  \
+  \                      Remove all positions that invariant apart from N\n      \
+  \                  positions.\n  --reflength REFLENGTH\n                       \
+  \ Length of reference. Either as int or can be worked\n                        out\
+  \ from fasta file. Ignored if --reference is used.\n  --include INCLUDE     Only\
+  \ include positions in BED file in the FASTA\n  --exclude EXCLUDE     Exclude any\
+  \ positions specified in the BED file.\n  --with-stats WITH_STATS\n            \
+  \            If a path is specified, then position of the outputed\n           \
+  \             SNPs is stored in this file.\n"
+generated_using:
+- --help
+docker_image:

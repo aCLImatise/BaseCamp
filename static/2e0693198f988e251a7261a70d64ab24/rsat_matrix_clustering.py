@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import String, File
+
+Rsat_Matrix_Clustering_V0_1_0 = CommandToolBuilder(tool="rsat_matrix_clustering", base_command=["rsat", "matrix-clustering"], inputs=[ToolInput(tag="in_matrix_clustering", input_type=String(), position=0, doc=InputDocumentation(doc="[1mDESCRIPTION[0m")), ToolInput(tag="in_jacques_dot_van_helden_at_univ_am_udot_fr", input_type=String(), position=0, doc=InputDocumentation(doc="[1mConception[0m")), ToolInput(tag="in_util", input_type=String(), position=0, doc=InputDocumentation(doc="[1mUSAGE[0m")), ToolInput(tag="in_computer_dot", input_type=String(), position=0, doc=InputDocumentation(doc="[1mSEE ALSO[0m")), ToolInput(tag="in_results_dot", input_type=String(), position=0, doc=InputDocumentation(doc="This label is useful when two motifs for the same TF come from")), ToolInput(tag="in_displayed_dot", input_type=String(), position=0, doc=InputDocumentation(doc="[1m-task tasks[0m")), ToolInput(tag="in_step_dot", input_type=String(), position=0, doc=InputDocumentation(doc="Assumes the users already have the description table and")), ToolInput(tag="in_version_dot", input_type=String(), position=0, doc=InputDocumentation(doc="We suggest use this option for a big set of input motifs > 300")), ToolInput(tag="in_motifs_dot", input_type=String(), position=1, doc=InputDocumentation(doc="[1mNOTE:[0m By the moment the only a few thresholds can be used with this")), ToolInput(tag="in_file_dot", input_type=File(), position=0, doc=InputDocumentation(doc="NOTE: take into account the input file size")), ToolInput(tag="in_warning_dot", input_type=String(), position=0, doc=InputDocumentation(doc="This parameter can be useful to prevent submission of excessive")), ToolInput(tag="in_nodes_dot", input_type=String(), position=0, doc=InputDocumentation(doc="[33maverage[0m (default)")), ToolInput(tag="in_clustering_dot", input_type=String(), position=0, doc=InputDocumentation(doc="Supported metrics : cor, Ncor, dEucl, NdEucl, logocor, logoDP,")), ToolInput(tag="in_html_dot", input_type=String(), position=0, doc=InputDocumentation(doc="The hierarchical tree in JSON format is always exported, since")), ToolInput(tag="in_cluster_dot", input_type=String(), position=0, doc=InputDocumentation(doc="This option is useful when the user wants to explore the data"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Rsat_Matrix_Clustering_V0_1_0().translate("wdl", allow_empty_container=True)
+

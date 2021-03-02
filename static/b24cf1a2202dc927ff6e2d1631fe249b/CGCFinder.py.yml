@@ -1,0 +1,64 @@
+!Command
+command:
+- CGCFinder.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --distance
+  - -d
+  description: The distance allowed between two signature genes
+  args: !ChoiceFlagArg
+    choices: !!set
+      '10':
+      '7':
+      '0':
+      '6':
+      '3':
+      '9':
+      '4':
+      '5':
+      '2':
+      '1':
+      '8':
+- !Flag
+  optional: true
+  synonyms:
+  - --siggenes
+  description: "{all,tp,tf,stp,tp+tf,tp+stp,tf+stp}, -s {all,tp,tf,stp,tp+tf,tp+stp,tf+stp}\n\
+    Signature genes types required. all=CAZymes,TC,TF;\ntp=CAZymes,TC; tf=CAZymes,TF"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --output
+  - -o
+  description: "Output file name\n"
+  args: !SimpleFlagArg
+    name: OUTPUT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: CGCFinder.py [-h] [--distance {0,1,2,3,4,5,6,7,8,9,10}]\n     \
+  \               [--siggenes {all,tp,tf,stp,tp+tf,tp+stp,tf+stp}]\n             \
+  \       [--output OUTPUT]\n                    gffFile\n\nCAZyme Gene Cluster Finder\n\
+  \npositional arguments:\n  gffFile               GFF file containing genome information\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  --distance {0,1,2,3,4,5,6,7,8,9,10}, -d {0,1,2,3,4,5,6,7,8,9,10}\n          \
+  \              The distance allowed between two signature genes\n  --siggenes {all,tp,tf,stp,tp+tf,tp+stp,tf+stp},\
+  \ -s {all,tp,tf,stp,tp+tf,tp+stp,tf+stp}\n                        Signature genes\
+  \ types required. all=CAZymes,TC,TF;\n                        tp=CAZymes,TC; tf=CAZymes,TF\n\
+  \  --output OUTPUT, -o OUTPUT\n                        Output file name\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/run-dbcan:2.0.11--pyh3252c3a_0

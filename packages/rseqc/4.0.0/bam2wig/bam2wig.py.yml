@@ -1,0 +1,124 @@
+!Command
+command:
+- bam2wig.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input-file
+  description: "Alignment file in BAM format. BAM file must be sorted\nand indexed\
+    \ using samTools. .bam and .bai files should\nbe placed in the same directory."
+  args: !SimpleFlagArg
+    name: INPUT_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --chromSize
+  description: "Chromosome size file. Tab or space separated text file\nwith 2 columns:\
+    \ first column is chromosome name/ID,\nsecond column is chromosome size. Chromosome\
+    \ name\n(such as \"chr1\") should be consistent between this\nfile and the BAM\
+    \ file."
+  args: !SimpleFlagArg
+    name: CHROMSIZE
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out-prefix
+  description: "Prefix of output wiggle files(s). One wiggle file will\nbe generated\
+    \ for non strand-specific data, two wiggle\nfiles (\"Prefix_Forward.wig\" and\
+    \ \"Prefix_Reverse.wig\")\nwill be generated for strand-specific RNA-seq data."
+  args: !SimpleFlagArg
+    name: OUTPUT_PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --wigsum
+  description: "Specified wigsum. Eg: 1,000,000,000 equals to coverage\nof 10 million\
+    \ 100nt reads. Ignore this option to\ndisable normalization"
+  args: !SimpleFlagArg
+    name: TOTAL_WIGSUM
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --skip-multi-hits
+  description: Skip non-unique hit reads.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --strand
+  description: "How read(s) were stranded during sequencing. For\nexample: --strand='1++,1--,2+-,2-+'\
+    \ means that this is\na pair-end, strand-specific RNA-seq data, and the\nstrand\
+    \ rule is: read1 mapped to '+' => parental gene\non '+'; read1 mapped to '-' =>\
+    \ parental gene on '-';\nread2 mapped to '+' => parental gene on '-'; read2\n\
+    mapped to '-' => parental gene on '+'.  If you are not\nsure about the strand\
+    \ rule, run 'infer_experiment.py'\ndefault=none (Not a strand specific RNA-seq\
+    \ data)."
+  args: !SimpleFlagArg
+    name: STRAND_RULE
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --mapq
+  description: "Minimum mapping quality to determine \"uniquely\nmapped\". default=30\n"
+  args: !SimpleFlagArg
+    name: MAP_QUAL
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "Usage: bam2wig.py [options]\n\nConvert BAM file into wig file. BAM file\
+  \ must be sorted and indexed using SAMtools.\nNote: SAM format file is not supported.\n\
+  \n\n\nOptions:\n  --version             show program's version number and exit\n\
+  \  -h, --help            show this help message and exit\n  -i INPUT_FILE, --input-file=INPUT_FILE\n\
+  \                        Alignment file in BAM format. BAM file must be sorted\n\
+  \                        and indexed using samTools. .bam and .bai files should\n\
+  \                        be placed in the same directory.\n  -s CHROMSIZE, --chromSize=CHROMSIZE\n\
+  \                        Chromosome size file. Tab or space separated text file\n\
+  \                        with 2 columns: first column is chromosome name/ID,\n \
+  \                       second column is chromosome size. Chromosome name\n    \
+  \                    (such as \"chr1\") should be consistent between this\n    \
+  \                    file and the BAM file.\n  -o OUTPUT_PREFIX, --out-prefix=OUTPUT_PREFIX\n\
+  \                        Prefix of output wiggle files(s). One wiggle file will\n\
+  \                        be generated for non strand-specific data, two wiggle\n\
+  \                        files (\"Prefix_Forward.wig\" and \"Prefix_Reverse.wig\"\
+  )\n                        will be generated for strand-specific RNA-seq data.\n\
+  \  -t TOTAL_WIGSUM, --wigsum=TOTAL_WIGSUM\n                        Specified wigsum.\
+  \ Eg: 1,000,000,000 equals to coverage\n                        of 10 million 100nt\
+  \ reads. Ignore this option to\n                        disable normalization\n\
+  \  -u, --skip-multi-hits\n                        Skip non-unique hit reads.\n \
+  \ -d STRAND_RULE, --strand=STRAND_RULE\n                        How read(s) were\
+  \ stranded during sequencing. For\n                        example: --strand='1++,1--,2+-,2-+'\
+  \ means that this is\n                        a pair-end, strand-specific RNA-seq\
+  \ data, and the\n                        strand rule is: read1 mapped to '+' =>\
+  \ parental gene\n                        on '+'; read1 mapped to '-' => parental\
+  \ gene on '-';\n                        read2 mapped to '+' => parental gene on\
+  \ '-'; read2\n                        mapped to '-' => parental gene on '+'.  If\
+  \ you are not\n                        sure about the strand rule, run 'infer_experiment.py'\n\
+  \                        default=none (Not a strand specific RNA-seq data).\n  -q\
+  \ MAP_QUAL, --mapq=MAP_QUAL\n                        Minimum mapping quality to\
+  \ determine \"uniquely\n                        mapped\". default=30\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/rseqc:4.0.0--py38h0213d0e_0

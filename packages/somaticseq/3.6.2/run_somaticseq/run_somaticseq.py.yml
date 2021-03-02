@@ -1,0 +1,274 @@
+!Command
+command:
+- run_somaticseq.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -outdir
+  - --output-directory
+  description: 'output directory (default: .)'
+  args: !SimpleFlagArg
+    name: OUTPUT_DIRECTORY
+- !Flag
+  optional: true
+  synonyms:
+  - -ref
+  - --genome-reference
+  description: '.fasta.fai file to get the contigs (default: None)'
+  args: !SimpleFlagArg
+    name: GENOME_REFERENCE
+- !Flag
+  optional: true
+  synonyms:
+  - --truth-snv
+  description: 'VCF of true hits (default: None)'
+  args: !SimpleFlagArg
+    name: TRUTH_SNV
+- !Flag
+  optional: true
+  synonyms:
+  - --truth-indel
+  description: 'VCF of true hits (default: None)'
+  args: !SimpleFlagArg
+    name: TRUTH_INDEL
+- !Flag
+  optional: true
+  synonyms:
+  - --classifier-snv
+  description: 'RData for SNV (default: None)'
+  args: !SimpleFlagArg
+    name: CLASSIFIER_SNV
+- !Flag
+  optional: true
+  synonyms:
+  - --classifier-indel
+  description: 'RData for INDEL (default: None)'
+  args: !SimpleFlagArg
+    name: CLASSIFIER_INDEL
+- !Flag
+  optional: true
+  synonyms:
+  - --pass-threshold
+  description: 'SCORE for PASS (default: 0.5)'
+  args: !SimpleFlagArg
+    name: PASS_THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - --lowqual-threshold
+  description: 'SCORE for LowQual (default: 0.1)'
+  args: !SimpleFlagArg
+    name: LOWQUAL_THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - -algo
+  - --algorithm
+  description: 'ada or xgboost (default: xgboost)'
+  args: !ChoiceFlagArg
+    choices: !!set
+      ada.R:
+      xgboost:
+      ada:
+- !Flag
+  optional: true
+  synonyms:
+  - -hom
+  - --homozygous-threshold
+  description: 'VAF for homozygous (default: 0.85)'
+  args: !SimpleFlagArg
+    name: HOMOZYGOUS_THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - -het
+  - --heterozygous-threshold
+  description: 'VAF for heterozygous (default: 0.01)'
+  args: !SimpleFlagArg
+    name: HETEROZYGOUS_THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - -minMQ
+  - --minimum-mapping-quality
+  description: "Minimum mapping quality below which is considered poor\n(default:\
+    \ 1)"
+  args: !SimpleFlagArg
+    name: MINIMUM_MAPPING_QUALITY
+- !Flag
+  optional: true
+  synonyms:
+  - -minBQ
+  - --minimum-base-quality
+  description: "Minimum base quality below which is considered poor\n(default: 5)"
+  args: !SimpleFlagArg
+    name: MINIMUM_BASE_QUALITY
+- !Flag
+  optional: true
+  synonyms:
+  - -mincaller
+  - --minimum-num-callers
+  description: "Minimum number of tools to be considered (default:\n0.5)"
+  args: !SimpleFlagArg
+    name: MINIMUM_NUM_CALLERS
+- !Flag
+  optional: true
+  synonyms:
+  - -dbsnp
+  - --dbsnp-vcf
+  description: 'dbSNP VCF (default: None)'
+  args: !SimpleFlagArg
+    name: DBSNP_VCF
+- !Flag
+  optional: true
+  synonyms:
+  - -cosmic
+  - --cosmic-vcf
+  description: 'COSMIC VCF (default: None)'
+  args: !SimpleFlagArg
+    name: COSMIC_VCF
+- !Flag
+  optional: true
+  synonyms:
+  - -include
+  - --inclusion-region
+  description: 'inclusion bed (default: None)'
+  args: !SimpleFlagArg
+    name: INCLUSION_REGION
+- !Flag
+  optional: true
+  synonyms:
+  - -exclude
+  - --exclusion-region
+  description: 'exclusion bed (default: None)'
+  args: !SimpleFlagArg
+    name: EXCLUSION_REGION
+- !Flag
+  optional: true
+  synonyms:
+  - -nt
+  - --threads
+  description: 'number of threads (default: 1)'
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - -train
+  - --somaticseq-train
+  description: "Invoke training mode with ground truths (default:\nFalse)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -seed
+  - --seed
+  description: 'seed for xgboost training (default: 0)'
+  args: !SimpleFlagArg
+    name: SEED
+- !Flag
+  optional: true
+  synonyms:
+  - -tdepth
+  - --tree-depth
+  description: 'max tree depth for xgboost training (default: 12)'
+  args: !SimpleFlagArg
+    name: TREE_DEPTH
+- !Flag
+  optional: true
+  synonyms:
+  - -iters
+  - --iterations
+  description: "num boosting rounds for xgboost: default is 500 for\ntraining and\
+    \ 100 for predicting, i.e., by default, 500\ntrees are built for classifier, but\
+    \ only the first 100\ntrees are used. (default: None)"
+  args: !SimpleFlagArg
+    name: ITERATIONS
+- !Flag
+  optional: true
+  synonyms:
+  - --features-excluded
+  description: "[FEATURES_EXCLUDED [FEATURES_EXCLUDED ...]]\nfeatures to exclude for\
+    \ xgboost training. Must be same\nfor train/predict. (default: [])"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --keep-intermediates
+  description: 'Keep intermediate files (default: False)'
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: run_somaticseq.py [-h] [-outdir OUTPUT_DIRECTORY] -ref GENOME_REFERENCE\n\
+  \                         [--truth-snv TRUTH_SNV] [--truth-indel TRUTH_INDEL]\n\
+  \                         [--classifier-snv CLASSIFIER_SNV]\n                  \
+  \       [--classifier-indel CLASSIFIER_INDEL]\n                         [--pass-threshold\
+  \ PASS_THRESHOLD]\n                         [--lowqual-threshold LOWQUAL_THRESHOLD]\n\
+  \                         [-algo {ada,xgboost,ada.R}]\n                        \
+  \ [-hom HOMOZYGOUS_THRESHOLD]\n                         [-het HETEROZYGOUS_THRESHOLD]\n\
+  \                         [-minMQ MINIMUM_MAPPING_QUALITY]\n                   \
+  \      [-minBQ MINIMUM_BASE_QUALITY]\n                         [-mincaller MINIMUM_NUM_CALLERS]\
+  \ [-dbsnp DBSNP_VCF]\n                         [-cosmic COSMIC_VCF] [-include INCLUSION_REGION]\n\
+  \                         [-exclude EXCLUSION_REGION] [-nt THREADS] [-train]\n \
+  \                        [-seed SEED] [-tdepth TREE_DEPTH] [-iters ITERATIONS]\n\
+  \                         [--features-excluded [FEATURES_EXCLUDED [FEATURES_EXCLUDED\
+  \ ...]]]\n                         [--keep-intermediates]\n                    \
+  \     {paired,single} ...\n\nSomaticseq v3.6.2: a method to combine results from\
+  \ multiple somatic mutation\ncallers, extract genomic and sequencing features for\
+  \ each variant call from\nthe BAM files, and then use machine learning to score\
+  \ the variants.\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  -outdir OUTPUT_DIRECTORY, --output-directory OUTPUT_DIRECTORY\n  \
+  \                      output directory (default: .)\n  -ref GENOME_REFERENCE, --genome-reference\
+  \ GENOME_REFERENCE\n                        .fasta.fai file to get the contigs (default:\
+  \ None)\n  --truth-snv TRUTH_SNV\n                        VCF of true hits (default:\
+  \ None)\n  --truth-indel TRUTH_INDEL\n                        VCF of true hits (default:\
+  \ None)\n  --classifier-snv CLASSIFIER_SNV\n                        RData for SNV\
+  \ (default: None)\n  --classifier-indel CLASSIFIER_INDEL\n                     \
+  \   RData for INDEL (default: None)\n  --pass-threshold PASS_THRESHOLD\n       \
+  \                 SCORE for PASS (default: 0.5)\n  --lowqual-threshold LOWQUAL_THRESHOLD\n\
+  \                        SCORE for LowQual (default: 0.1)\n  -algo {ada,xgboost,ada.R},\
+  \ --algorithm {ada,xgboost,ada.R}\n                        ada or xgboost (default:\
+  \ xgboost)\n  -hom HOMOZYGOUS_THRESHOLD, --homozygous-threshold HOMOZYGOUS_THRESHOLD\n\
+  \                        VAF for homozygous (default: 0.85)\n  -het HETEROZYGOUS_THRESHOLD,\
+  \ --heterozygous-threshold HETEROZYGOUS_THRESHOLD\n                        VAF for\
+  \ heterozygous (default: 0.01)\n  -minMQ MINIMUM_MAPPING_QUALITY, --minimum-mapping-quality\
+  \ MINIMUM_MAPPING_QUALITY\n                        Minimum mapping quality below\
+  \ which is considered poor\n                        (default: 1)\n  -minBQ MINIMUM_BASE_QUALITY,\
+  \ --minimum-base-quality MINIMUM_BASE_QUALITY\n                        Minimum base\
+  \ quality below which is considered poor\n                        (default: 5)\n\
+  \  -mincaller MINIMUM_NUM_CALLERS, --minimum-num-callers MINIMUM_NUM_CALLERS\n \
+  \                       Minimum number of tools to be considered (default:\n   \
+  \                     0.5)\n  -dbsnp DBSNP_VCF, --dbsnp-vcf DBSNP_VCF\n        \
+  \                dbSNP VCF (default: None)\n  -cosmic COSMIC_VCF, --cosmic-vcf COSMIC_VCF\n\
+  \                        COSMIC VCF (default: None)\n  -include INCLUSION_REGION,\
+  \ --inclusion-region INCLUSION_REGION\n                        inclusion bed (default:\
+  \ None)\n  -exclude EXCLUSION_REGION, --exclusion-region EXCLUSION_REGION\n    \
+  \                    exclusion bed (default: None)\n  -nt THREADS, --threads THREADS\n\
+  \                        number of threads (default: 1)\n  -train, --somaticseq-train\n\
+  \                        Invoke training mode with ground truths (default:\n   \
+  \                     False)\n  -seed SEED, --seed SEED\n                      \
+  \  seed for xgboost training (default: 0)\n  -tdepth TREE_DEPTH, --tree-depth TREE_DEPTH\n\
+  \                        max tree depth for xgboost training (default: 12)\n  -iters\
+  \ ITERATIONS, --iterations ITERATIONS\n                        num boosting rounds\
+  \ for xgboost: default is 500 for\n                        training and 100 for\
+  \ predicting, i.e., by default, 500\n                        trees are built for\
+  \ classifier, but only the first 100\n                        trees are used. (default:\
+  \ None)\n  --features-excluded [FEATURES_EXCLUDED [FEATURES_EXCLUDED ...]]\n   \
+  \                     features to exclude for xgboost training. Must be same\n \
+  \                       for train/predict. (default: [])\n  --keep-intermediates\
+  \  Keep intermediate files (default: False)\n\nsample_mode:\n  {paired,single}\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/somaticseq:3.6.2--py_0

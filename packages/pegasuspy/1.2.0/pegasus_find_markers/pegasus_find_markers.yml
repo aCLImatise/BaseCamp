@@ -1,0 +1,85 @@
+!Command
+command:
+- pegasus
+- find_markers
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: input_data_file
+  description: Single cell data after running the de_analysis.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: 'Use <threads> threads. [default: 1]'
+  args: !SimpleFlagArg
+    name: threads
+- !Flag
+  optional: true
+  synonyms:
+  - --labels
+  description: '<attr> used as cluster labels. [default: louvain_labels]'
+  args: !SimpleFlagArg
+    name: attr
+- !Flag
+  optional: true
+  synonyms:
+  - --de-key
+  description: "Key for storing DE results in 'varm' field. [default: de_res]"
+  args: !SimpleFlagArg
+    name: key
+- !Flag
+  optional: true
+  synonyms:
+  - --remove-ribo
+  description: Remove ribosomal genes with either RPL or RPS as prefixes.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min-gain
+  description: 'Only report genes with a feature importance score (in gain) of at
+    least <gain>. [default: 1.0]'
+  args: !SimpleFlagArg
+    name: gain
+- !Flag
+  optional: true
+  synonyms:
+  - --random-state
+  description: 'Random state for initializing LightGBM and KMeans. [default: 0]'
+  args: !SimpleFlagArg
+    name: seed
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Print out help information.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Find markers using gradient boosting.\n\nUsage:\n  pegasus find_markers\
+  \ [options] <input_data_file> <output_spreadsheet>\n  pegasus find_markers -h\n\n\
+  Arguments:\n  input_data_file        Single cell data after running the de_analysis.\n\
+  \  output_spreadsheet     Output spreadsheet with LightGBM detected markers.\n\n\
+  Options:\n  -p <threads>                 Use <threads> threads. [default: 1]\n \
+  \ --labels <attr>              <attr> used as cluster labels. [default: louvain_labels]\n\
+  \  --de-key <key>               Key for storing DE results in 'varm' field. [default:\
+  \ de_res]\n  --remove-ribo                Remove ribosomal genes with either RPL\
+  \ or RPS as prefixes.\n  --min-gain <gain>            Only report genes with a feature\
+  \ importance score (in gain) of at least <gain>. [default: 1.0]\n  --random-state\
+  \ <seed>        Random state for initializing LightGBM and KMeans. [default: 0]\n\
+  \n  -h, --help                   Print out help information.\n\nOutputs:\n  output_spreadsheet\
+  \     An excel spreadsheet containing detected markers. Each cluster has one tab\
+  \ in the spreadsheet and each tab has six columns, listing markers that are strongly\
+  \ up-regulated, weakly up-regulated, down-regulated and their associated LightGBM\
+  \ gains.\n\nExamples:\n  pegasus find_markers --labels louvain_labels --remove-ribo\
+  \ --min-gain 10.0 -p 10 manton_bm.zarr.zip manton_bm.markers.xlsx\n    \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/pegasuspy:1.2.0--py38h0213d0e_1

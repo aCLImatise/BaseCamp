@@ -1,0 +1,73 @@
+!Command
+command:
+- cmph5tools.py
+- select
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --outFile
+  description: Either a pattern string or a filename
+  args: !SimpleFlagArg
+    name: out.cmp.h5
+- !Flag
+  optional: true
+  synonyms:
+  - --idxs
+  description: indices to select
+  args: !RepeatFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --groupBy
+  description: groupBy expression, e.g., Movie*Barcode
+  args: !SimpleFlagArg
+    name: groupBy-expression
+- !Flag
+  optional: true
+  synonyms:
+  - --groupByCsv
+  description: "groupByCsv file, e.g.\nGroup,Movie,Barcode\\ngroupname,movie,barcode"
+  args: !SimpleFlagArg
+    name: groupByCsv
+- !Flag
+  optional: true
+  synonyms:
+  - --where
+  description: where expression, e.g., ReadLength > 500
+  args: !SimpleFlagArg
+    name: where-expression
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: cmph5tools.py select [-h] [--outFile out.cmp.h5] [--idxs N [N ...]]\n\
+  \                            [--groupBy groupBy-expression]\n                  \
+  \          [--groupByCsv groupByCsv]\n                            [--where where-expression]\
+  \ [--outDir outputDir]\n                            input.cmp.h5\n\nCreate a new\
+  \ cmp.h5 file by selecting alignments. Users can specify indices\nusing the idx\
+  \ argument to select particular alignments. Alternatively, users\ncan specify a\
+  \ where expression which chooses the alignments which the\npredicate is true. If\
+  \ a groupBy expression is specified then mulitple cmp.h5\nfiles are generated according\
+  \ to the expression. For instance, if a user\nwantedto generate a cmp.h5 file for\
+  \ each reference sequence then\n--groupBy=Reference\n\npositional arguments:\n \
+  \ input.cmp.h5\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  --outFile out.cmp.h5  Either a pattern string or a filename\n  --idxs\
+  \ N [N ...]      indices to select\n  --groupBy groupBy-expression\n           \
+  \             groupBy expression, e.g., Movie*Barcode\n  --groupByCsv groupByCsv\n\
+  \                        groupByCsv file, e.g.\n                        Group,Movie,Barcode\\\
+  ngroupname,movie,barcode\n  --where where-expression\n                        where\
+  \ expression, e.g., ReadLength > 500\n  --outDir outputDir\n"
+generated_using:
+- --help
+docker_image:

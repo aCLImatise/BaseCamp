@@ -1,0 +1,92 @@
+!Command
+command:
+- megalodon_extras
+- calibrate
+- generate_modified_base_stats
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --control-megalodon-results-dir
+  description: "Megalodon output directory with modified base control\nsample."
+  args: !SimpleFlagArg
+    name: CONTROL_MEGALODON_RESULTS_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --exclude-modified-bases
+  description: "Set of modified bases (single letter codes) to\nexclude."
+  args: !RepeatFlagArg
+    name: EXCLUDE_MODIFIED_BASES
+- !Flag
+  optional: true
+  synonyms:
+  - --modified-bases-set
+  description: "Only process these modified bases (single letter\ncodes)."
+  args: !RepeatFlagArg
+    name: MODIFIED_BASES_SET
+- !Flag
+  optional: true
+  synonyms:
+  - --ground-truth-data
+  description: "Ground truth csv with (chrm, strand, pos, is_mod)\nvalues."
+  args: !SimpleFlagArg
+    name: GROUND_TRUTH_DATA
+- !Flag
+  optional: true
+  synonyms:
+  - --strand-specific-sites
+  description: "Sites in --ground-truth-data are strand-specific. If\nnot set, strand\
+    \ is ignored."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --out-filename
+  description: "Output filename for text summary. Default:\nmod_calibration_statistics.npz"
+  args: !SimpleFlagArg
+    name: OUT_FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --quiet
+  description: Suppress progress information.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: megalodon_extras calibrate generate_modified_base_stats\n     \
+  \  [-h] [--control-megalodon-results-dir CONTROL_MEGALODON_RESULTS_DIR]\n      \
+  \ [--exclude-modified-bases EXCLUDE_MODIFIED_BASES [EXCLUDE_MODIFIED_BASES ...]]\n\
+  \       [--modified-bases-set MODIFIED_BASES_SET [MODIFIED_BASES_SET ...]]\n   \
+  \    [--ground-truth-data GROUND_TRUTH_DATA] [--strand-specific-sites]\n       [--out-filename\
+  \ OUT_FILENAME] [--quiet]\n       megalodon_results_dir\n\npositional arguments:\n\
+  \  megalodon_results_dir\n                        Output directory from Megalodon\
+  \ with mappings and\n                        per_read_mods in outputs.\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  --control-megalodon-results-dir\
+  \ CONTROL_MEGALODON_RESULTS_DIR\n                        Megalodon output directory\
+  \ with modified base control\n                        sample.\n  --exclude-modified-bases\
+  \ EXCLUDE_MODIFIED_BASES [EXCLUDE_MODIFIED_BASES ...]\n                        Set\
+  \ of modified bases (single letter codes) to\n                        exclude.\n\
+  \  --modified-bases-set MODIFIED_BASES_SET [MODIFIED_BASES_SET ...]\n          \
+  \              Only process these modified bases (single letter\n              \
+  \          codes).\n  --ground-truth-data GROUND_TRUTH_DATA\n                  \
+  \      Ground truth csv with (chrm, strand, pos, is_mod)\n                     \
+  \   values.\n  --strand-specific-sites\n                        Sites in --ground-truth-data\
+  \ are strand-specific. If\n                        not set, strand is ignored.\n\
+  \  --out-filename OUT_FILENAME\n                        Output filename for text\
+  \ summary. Default:\n                        mod_calibration_statistics.npz\n  --quiet\
+  \               Suppress progress information.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/megalodon:2.2.10--py38h0213d0e_0

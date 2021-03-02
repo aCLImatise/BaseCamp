@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, String
+
+Shark_V0_1_0 = CommandToolBuilder(tool="shark", base_command=["shark"], inputs=[ToolInput(tag="in_reference", input_type=Boolean(optional=True), prefix="--reference", doc=InputDocumentation(doc="reference sequences in FASTA format (can be gzipped)")), ToolInput(tag="in_sample_one", input_type=Boolean(optional=True), prefix="--sample1", doc=InputDocumentation(doc="sample in FASTQ (can be gzipped)")), ToolInput(tag="in_sample_two", input_type=Boolean(optional=True), prefix="--sample2", doc=InputDocumentation(doc="second sample in FASTQ (optional, can be gzipped)")), ToolInput(tag="in_out_one", input_type=Boolean(optional=True), prefix="--out1", doc=InputDocumentation(doc="first output sample in FASTQ (default: sharked_sample.1)")), ToolInput(tag="in_out_two", input_type=Boolean(optional=True), prefix="--out2", doc=InputDocumentation(doc="second output sample in FASTQ (default: sharked_sample.2)")), ToolInput(tag="in_km_er_size", input_type=Boolean(optional=True), prefix="--kmer-size", doc=InputDocumentation(doc="size of the kmers to index (default:17, max:31)")), ToolInput(tag="in_confidence", input_type=Boolean(optional=True), prefix="--confidence", doc=InputDocumentation(doc="confidence for associating a read to a gene (default:0.6)")), ToolInput(tag="in_bf_size", input_type=Boolean(optional=True), prefix="--bf-size", doc=InputDocumentation(doc="bloom filter size in GB (default:1)")), ToolInput(tag="in_min_base_quality", input_type=Boolean(optional=True), prefix="--min-base-quality", doc=InputDocumentation(doc="minimum base quality (assume FASTQ Illumina 1.8+ Phred scale, default:0, i.e., no filtering)")), ToolInput(tag="in_single", input_type=Boolean(optional=True), prefix="--single", doc=InputDocumentation(doc="report an association only if a single gene is found")), ToolInput(tag="in_threads", input_type=Boolean(optional=True), prefix="--threads", doc=InputDocumentation(doc="number of threads (default:1)")), ToolInput(tag="in_verbose", input_type=Boolean(optional=True), prefix="--verbose", doc=InputDocumentation(doc="verbose mode")), ToolInput(tag="in_optional", input_type=String(optional=True), position=0, doc=InputDocumentation(doc="")), ToolInput(tag="in_arguments", input_type=String(optional=True), position=1, doc=InputDocumentation(doc=""))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Shark_V0_1_0().translate("wdl", allow_empty_container=True)
+

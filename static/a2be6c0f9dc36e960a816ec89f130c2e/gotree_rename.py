@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Int, String, Boolean, File
+
+Gotree_Rename_V0_1_0 = CommandToolBuilder(tool="gotree_rename", base_command=["gotree", "rename"], inputs=[ToolInput(tag="in_length", input_type=Int(optional=True), prefix="--length", doc=InputDocumentation(doc="Length of automatically generated id. Only with --auto (default 10)")), ToolInput(tag="in_tips", input_type=String(optional=True), prefix="--tips", doc=InputDocumentation(doc="true by default. To inactivate it, you must specify --tips=false .")), ToolInput(tag="in_auto", input_type=Boolean(optional=True), prefix="--auto", doc=InputDocumentation(doc="Renames automatically tips with auto generated id of length 10.")), ToolInput(tag="in_input", input_type=String(optional=True), prefix="--input", doc=InputDocumentation(doc="Input tree (default 'stdin')")), ToolInput(tag="in_internal", input_type=Boolean(optional=True), prefix="--internal", doc=InputDocumentation(doc="Internal nodes are taken into account")), ToolInput(tag="in_map", input_type=File(optional=True), prefix="--map", doc=InputDocumentation(doc="Tip name map file (default 'none')")), ToolInput(tag="in_output", input_type=File(optional=True), prefix="--output", doc=InputDocumentation(doc="Renamed tree output file (default 'stdout')")), ToolInput(tag="in_regexp", input_type=String(optional=True), prefix="--regexp", doc=InputDocumentation(doc="Regexp to get matching tip/node names (default 'none')")), ToolInput(tag="in_replace", input_type=String(optional=True), prefix="--replace", doc=InputDocumentation(doc="String replacement to the given regexp (default 'none')")), ToolInput(tag="in_revert", input_type=Boolean(optional=True), prefix="--revert", doc=InputDocumentation(doc="Revert orientation of map file")), ToolInput(tag="in_format", input_type=String(optional=True), prefix="--format", doc=InputDocumentation(doc="Input tree format (newick, nexus, or phyloxml) (default 'newick')")), ToolInput(tag="in_seed", input_type=Int(optional=True), prefix="--seed", doc=InputDocumentation(doc="Random Seed: -1 = nano seconds since 1970/01/01 00:00:00 (default -1)")), ToolInput(tag="in_threads", input_type=Int(optional=True), prefix="--threads", doc=InputDocumentation(doc="Number of threads (Max=8) (default 1)"))], outputs=[ToolOutput(tag="out_output", output_type=File(optional=True), selector=InputSelector(input_to_select="in_output", type_hint=File()), doc=OutputDocumentation(doc="Renamed tree output file (default 'stdout')"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Gotree_Rename_V0_1_0().translate("wdl", allow_empty_container=True)
+

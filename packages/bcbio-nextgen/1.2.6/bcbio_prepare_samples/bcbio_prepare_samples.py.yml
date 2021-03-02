@@ -1,0 +1,164 @@
+!Command
+command:
+- bcbio_prepare_samples.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --csv
+  description: csv file with metadata
+  args: !SimpleFlagArg
+    name: CSV
+- !Flag
+  optional: true
+  synonyms:
+  - --out
+  description: output dir
+  args: !SimpleFlagArg
+    name: OUT
+- !Flag
+  optional: true
+  synonyms:
+  - --force-single
+  description: Treat all files as single reads
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --separators
+  description: "[SEPARATORS [SEPARATORS ...]]\nSpace separated list of separators\
+    \ that indicates\npaired files."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --remove-source
+  description: Remove original files.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --numcores
+  description: Number of concurrent jobs to process.
+  args: !SimpleFlagArg
+    name: NUMCORES
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --cores-per-job
+  description: Number of cores to use.
+  args: !SimpleFlagArg
+    name: CORES_PER_JOB
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --memory-per-job
+  description: Memory in GB to reserve per job.
+  args: !SimpleFlagArg
+    name: MEMORY_PER_JOB
+- !Flag
+  optional: true
+  synonyms:
+  - --timeout
+  description: Time to wait before giving up starting.
+  args: !SimpleFlagArg
+    name: TIMEOUT
+- !Flag
+  optional: true
+  synonyms:
+  - --retries
+  description: "Number of retries of failed tasks during distributed\nprocessing.\
+    \ Default 0 (no retries)"
+  args: !SimpleFlagArg
+    name: RETRIES
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --scheduler
+  description: Type of scheduler to use.
+  args: !ChoiceFlagArg
+    choices: !!set
+      lsf:
+      sge:
+      pbspro:
+      slurm:
+      torque:
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --resources
+  description: Extra scheduler resource flags.
+  args: !SimpleFlagArg
+    name: RESOURCES
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --queue
+  description: Queue to submit jobs to.
+  args: !SimpleFlagArg
+    name: QUEUE
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --tag
+  description: Tag name to label jobs on the cluster
+  args: !SimpleFlagArg
+    name: TAG
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --paralleltype
+  description: "Run with iptyhon\n"
+  args: !ChoiceFlagArg
+    choices: !!set
+      local:
+      ipython:
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: bcbio_prepare_samples.py [-h] --csv CSV --out OUT [--force-single]\n\
+  \                                [--separators [SEPARATORS [SEPARATORS ...]]]\n\
+  \                                [--remove-source] [-n NUMCORES]\n             \
+  \                   [-c CORES_PER_JOB] [-m MEMORY_PER_JOB]\n                   \
+  \             [--timeout TIMEOUT] [--retries RETRIES]\n                        \
+  \        [-s {lsf,slurm,torque,sge,pbspro}]\n                                [-r\
+  \ RESOURCES] [-q QUEUE] [-p TAG]\n                                [-t {local,ipython}]\n\
+  \nMerge fastq or bam files\n\noptional arguments:\n  -h, --help            show\
+  \ this help message and exit\n  --csv CSV             csv file with metadata\n \
+  \ --out OUT             output dir\n  --force-single        Treat all files as single\
+  \ reads\n  --separators [SEPARATORS [SEPARATORS ...]]\n                        Space\
+  \ separated list of separators that indicates\n                        paired files.\n\
+  \  --remove-source       Remove original files.\n  -n NUMCORES, --numcores NUMCORES\n\
+  \                        Number of concurrent jobs to process.\n  -c CORES_PER_JOB,\
+  \ --cores-per-job CORES_PER_JOB\n                        Number of cores to use.\n\
+  \  -m MEMORY_PER_JOB, --memory-per-job MEMORY_PER_JOB\n                        Memory\
+  \ in GB to reserve per job.\n  --timeout TIMEOUT     Time to wait before giving\
+  \ up starting.\n  --retries RETRIES     Number of retries of failed tasks during\
+  \ distributed\n                        processing. Default 0 (no retries)\n  -s\
+  \ {lsf,slurm,torque,sge,pbspro}, --scheduler {lsf,slurm,torque,sge,pbspro}\n   \
+  \                     Type of scheduler to use.\n  -r RESOURCES, --resources RESOURCES\n\
+  \                        Extra scheduler resource flags.\n  -q QUEUE, --queue QUEUE\n\
+  \                        Queue to submit jobs to.\n  -p TAG, --tag TAG     Tag name\
+  \ to label jobs on the cluster\n  -t {local,ipython}, --paralleltype {local,ipython}\n\
+  \                        Run with iptyhon\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bcbio-nextgen:1.2.6--pyh3252c3a_0

@@ -1,0 +1,78 @@
+!Command
+command:
+- gofasta
+- sam
+- variants
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --genbank
+  description: Genbank format annotation of a sequence in the same coordinates as
+    the alignment
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --outfile
+  description: Where to write the variants (default "stdout")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reference
+  description: Reference fasta file used to generate the sam file
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --samfile
+  description: samfile to read. If none is specified, will read from stdin
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: Number of threads to use (default 1)
+  args: !SimpleFlagArg
+    name: int
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: help for variants
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Call variants between a reference sequence and query sequences aligned\
+  \ in sam format\n\nExample usage:\n\tgofasta sam variants -s aligned.sam -r reference.fasta\
+  \ -g annotation.gb -o variants.csv\n\nThe output is a csv-format file with one line\
+  \ per query sequence, and two columns: 'query' and\n'variants', the second of which\
+  \ is a \"|\"-delimited list of amino acid changes and synonymous SNPs\nin that query\
+  \ relative to the reference sequence specified using --reference/-r.\n\nIf input\
+  \ sam and output csv files are not specified, the behaviour is to read the sam from\
+  \ stdin and write\nthe variants to stdout.\n\nUsage:\n  gofasta sam variants [flags]\n\
+  \nFlags:\n  -g, --genbank string   Genbank format annotation of a sequence in the\
+  \ same coordinates as the alignment\n  -o, --outfile string   Where to write the\
+  \ variants (default \"stdout\")\n  -h, --help             help for variants\n\n\
+  Global Flags:\n  -r, --reference string   Reference fasta file used to generate\
+  \ the sam file\n  -s, --samfile string     samfile to read. If none is specified,\
+  \ will read from stdin\n  -t, --threads int        Number of threads to use (default\
+  \ 1)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/gofasta:0.0.3--0

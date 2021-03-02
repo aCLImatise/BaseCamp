@@ -1,0 +1,219 @@
+!Command
+command:
+- haystac
+- database
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: language.
+  description: --accessions-file <path>
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --mode
+  description: "Database creation mode for haystac [fetch, index,\nbuild]"
+  args: !SimpleFlagArg
+    name: mode
+- !Flag
+  optional: true
+  synonyms:
+  - --output
+  description: Path to the database output directory
+  args: !SimpleFlagArg
+    name: path
+- !Flag
+  optional: true
+  synonyms:
+  - --query
+  description: "Database query in the NCBI query language. Please\nrefer to the documentation\
+    \ for assistance with\nconstructing a valid query."
+  args: !SimpleFlagArg
+    name: query
+- !Flag
+  optional: true
+  synonyms:
+  - --query-file
+  description: File containing a database query in the NCBI query
+  args: !SimpleFlagArg
+    name: path
+- !Flag
+  optional: true
+  synonyms:
+  - --sequences-file
+  description: "Tab delimited file containing one record per row: the\nname of the\
+    \ taxon, a user defined accession code, and\nthe path to the fasta file (optionally\
+    \ compressed)."
+  args: !SimpleFlagArg
+    name: path
+- !Flag
+  optional: true
+  synonyms:
+  - --refseq-rep
+  description: "Use one of the RefSeq curated tables to construct a\nDB. Includes\
+    \ all prokaryotic species (excluding\nstrains) from the representative RefSeq\
+    \ DB, or all the\nspecies and strains from the viruses DB, or all the\nspecies\
+    \ and subspecies from the eukaryotes DB. If\nmultiple accessions exist for a given\
+    \ species/strain,\nthe first pair of species/accession is kept. Available\nRefSeq\
+    \ tables to use [prokaryote_rep, viruses,\neukaryotes]."
+  args: !SimpleFlagArg
+    name: table
+- !Flag
+  optional: true
+  synonyms:
+  - --force-accessions
+  description: "Disable validation checks for 'anomalous' assembly\nflags in NCBI\
+    \ (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --exclude-accessions
+  description: "[<accession> ...]\nList of NCBI accessions to exclude. (default: [])"
+  args: !SimpleFlagArg
+    name: accession
+- !Flag
+  optional: true
+  synonyms:
+  - --resolve-accessions
+  description: "Pick the first accession when two accessions for a\ntaxon can be found\
+    \ in user provided input files\n(default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --bowtie2-scaling
+  description: "Rescaling factor to keep the bowtie2 mutlifasta index\nbelow the maximum\
+    \ memory limit (default: 25.0)"
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - --rank
+  description: "Taxonomic rank to perform the identifications on\n[genus, species,\
+    \ subspecies, serotype] (default:\nspecies)"
+  args: !SimpleFlagArg
+    name: rank
+- !Flag
+  optional: true
+  synonyms:
+  - --genera
+  description: "[<genus> ...]\nList of genera to restrict the abundance calculations."
+  args: !SimpleFlagArg
+    name: genus
+- !Flag
+  optional: true
+  synonyms:
+  - --mtDNA
+  description: "For eukaryotes, download mitochondrial genomes only.\nNot to be used\
+    \ with --refseq-rep or queries containing\nprokaryotes (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --seed
+  description: Random seed for database indexing
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --cores
+  description: 'Maximum number of CPU cores to use (default: 8)'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --mem
+  description: 'Maximum memory (MB) to use (default: 16012)'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --unlock
+  description: "Unlock the output directory following a crash or hard\nrestart (default:\
+    \ False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: 'Enable debugging mode (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --snakemake
+  description: "'<json>'  Pass additional flags to the `snakemake` scheduler."
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: haystac database --mode <mode> --output <path> [--query <query>]\n\
+  \                        [--query-file <path>] [--accessions-file <path>]\n    \
+  \                    [--sequences-file <path>] [--refseq-rep <table>]\n        \
+  \                [--force-accessions]\n                        [--exclude-accessions\
+  \ <accession> [<accession> ...]]\n                        [--resolve-accessions]\
+  \ [--bowtie2-scaling <float>]\n                        [--rank <rank>] [--genera\
+  \ <genus> [<genus> ...]]\n                        [--mtDNA] [--seed <int>] [-h]\
+  \ [--cores <int>]\n                        [--mem <int>] [--unlock] [--debug]\n\
+  \                        [--snakemake '<json>']\n\nBuild a database of target species\n\
+  \nRequired arguments:\n  --mode <mode>         Database creation mode for haystac\
+  \ [fetch, index,\n                        build]\n  --output <path>       Path to\
+  \ the database output directory\n\nRequired choice:\n  --query <query>       Database\
+  \ query in the NCBI query language. Please\n                        refer to the\
+  \ documentation for assistance with\n                        constructing a valid\
+  \ query.\n  --query-file <path>   File containing a database query in the NCBI query\n\
+  \                        language.\n  --accessions-file <path>\n               \
+  \         Tab delimited file containing one record per row: the\n              \
+  \          name of the taxon, and a valid NCBI accession code\n                \
+  \        from the nucleotide, assembly or WGS databases.\n  --sequences-file <path>\n\
+  \                        Tab delimited file containing one record per row: the\n\
+  \                        name of the taxon, a user defined accession code, and\n\
+  \                        the path to the fasta file (optionally compressed).\n \
+  \ --refseq-rep <table>  Use one of the RefSeq curated tables to construct a\n  \
+  \                      DB. Includes all prokaryotic species (excluding\n       \
+  \                 strains) from the representative RefSeq DB, or all the\n     \
+  \                   species and strains from the viruses DB, or all the\n      \
+  \                  species and subspecies from the eukaryotes DB. If\n         \
+  \               multiple accessions exist for a given species/strain,\n        \
+  \                the first pair of species/accession is kept. Available\n      \
+  \                  RefSeq tables to use [prokaryote_rep, viruses,\n            \
+  \            eukaryotes].\n\nOptional arguments:\n  --force-accessions    Disable\
+  \ validation checks for 'anomalous' assembly\n                        flags in NCBI\
+  \ (default: False)\n  --exclude-accessions <accession> [<accession> ...]\n     \
+  \                   List of NCBI accessions to exclude. (default: [])\n  --resolve-accessions\
+  \  Pick the first accession when two accessions for a\n                        taxon\
+  \ can be found in user provided input files\n                        (default: False)\n\
+  \  --bowtie2-scaling <float>\n                        Rescaling factor to keep the\
+  \ bowtie2 mutlifasta index\n                        below the maximum memory limit\
+  \ (default: 25.0)\n  --rank <rank>         Taxonomic rank to perform the identifications\
+  \ on\n                        [genus, species, subspecies, serotype] (default:\n\
+  \                        species)\n  --genera <genus> [<genus> ...]\n          \
+  \              List of genera to restrict the abundance calculations.\n  --mtDNA\
+  \               For eukaryotes, download mitochondrial genomes only.\n         \
+  \               Not to be used with --refseq-rep or queries containing\n       \
+  \                 prokaryotes (default: False)\n  --seed <int>          Random seed\
+  \ for database indexing\n\nCommon arguments:\n  -h, --help            Show this\
+  \ help message and exit\n  --cores <int>         Maximum number of CPU cores to\
+  \ use (default: 8)\n  --mem <int>           Maximum memory (MB) to use (default:\
+  \ 16012)\n  --unlock              Unlock the output directory following a crash\
+  \ or hard\n                        restart (default: False)\n  --debug         \
+  \      Enable debugging mode (default: False)\n  --snakemake '<json>'  Pass additional\
+  \ flags to the `snakemake` scheduler.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/haystac:0.3.2--py36_0

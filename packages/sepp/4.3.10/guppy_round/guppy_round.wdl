@@ -22,6 +22,9 @@ task GuppyRound {
       ~{if (cut_off) then "--cutoff" else ""} \
       ~{if (help) then "--help" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     out_dir: "Specify the directory to write files to."
     prefix: "Specify a string to be prepended to filenames."

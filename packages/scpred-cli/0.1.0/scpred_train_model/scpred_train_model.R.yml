@@ -1,0 +1,194 @@
+!Command
+command:
+- scpred_train_model.R
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input-object
+  description: Path to the input object of Seurat class in .rds format
+  args: !SimpleFlagArg
+    name: INPUT-OBJECT
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --train-id
+  description: ID of the training dataset (optional)
+  args: !SimpleFlagArg
+    name: TRAIN-ID
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --model
+  description: "Model type used for training. Must be one of the models supported\
+    \ by Caret package.\nDefault: svmRadial"
+  args: !SimpleFlagArg
+    name: MODEL
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --resample-method
+  description: Resampling method used for model fit evaluation
+  args: !SimpleFlagArg
+    name: RESAMPLE-METHOD
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --iter-num
+  description: 'Number of resampling iterations. Default: 5'
+  args: !SimpleFlagArg
+    name: ITER-NUM
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --random-seed
+  description: Random seed
+  args: !SimpleFlagArg
+    name: RANDOM-SEED
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --allow-parallel
+  description: 'Should parallel processing be allowed? Default: TRUE'
+  args: !SimpleFlagArg
+    name: ALLOW-PARALLEL
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --num-cores
+  description: For parallel processing, how many cores should be used?
+  args: !SimpleFlagArg
+    name: NUM-CORES
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --tune-length
+  description: An integer denoting the amount of granularity in the tuning parameter
+    grid
+  args: !SimpleFlagArg
+    name: TUNE-LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --metric
+  description: Performance metric to be used to select best model
+  args: !SimpleFlagArg
+    name: METRIC
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --preprocess
+  description: "A string vector that defines a pre-processing of the predictor data.\
+    \ Enter values as comma-separated string. Current possibilities are\n'BoxCox',\
+    \ 'YeoJohnson', 'expoTrans', 'center', 'scale', 'range', 'knnImpute', 'bagImpute',\
+    \ 'medianImpute'\n'pca', 'ica' and 'spatialSign'. The default is 'center' and\
+    \ 'scale'."
+  args: !SimpleFlagArg
+    name: PREPROCESS
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --return-data
+  description: 'If TRUE, training data is returned within scPred object. Default:
+    FALSE'
+  args: !SimpleFlagArg
+    name: RETURN-DATA
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --save-predictions
+  description: "Specifies the set of hold-out predictions for each resample that should\
+    \ be\nreturned. Values can be either 'all', 'final' or 'none'."
+  args: !SimpleFlagArg
+    name: SAVE-PREDICTIONS
+- !Flag
+  optional: true
+  synonyms:
+  - -y
+  - --reclassify
+  description: Cell types to reclassify using a different model
+  args: !SimpleFlagArg
+    name: RECLASSIFY
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-path
+  description: Path for the output scPred object in .rds format
+  args: !SimpleFlagArg
+    name: OUTPUT-PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --get-scpred
+  description: 'Should scpred object be extracted from Seurat object after model training?
+    Default: FALSE'
+  args: !SimpleFlagArg
+    name: GET-SCPRED
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --train-probs-plot
+  description: Path for training probabilities plot in .png format
+  args: !SimpleFlagArg
+    name: TRAIN-PROBS-PLOT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: "Show this help message and exit\n"
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: /usr/local/bin/scpred_train_model.R [options]\n\n\nOptions:\n\t\
+  -i INPUT-OBJECT, --input-object=INPUT-OBJECT\n\t\tPath to the input object of Seurat\
+  \ class in .rds format\n\n\t-f TRAIN-ID, --train-id=TRAIN-ID\n\t\tID of the training\
+  \ dataset (optional)\n\n\t-m MODEL, --model=MODEL\n\t\tModel type used for training.\
+  \ Must be one of the models supported by Caret package. \n                Default:\
+  \ svmRadial\n\n\t-r RESAMPLE-METHOD, --resample-method=RESAMPLE-METHOD\n\t\tResampling\
+  \ method used for model fit evaluation\n\n\t-n ITER-NUM, --iter-num=ITER-NUM\n\t\
+  \tNumber of resampling iterations. Default: 5\n\n\t-s RANDOM-SEED, --random-seed=RANDOM-SEED\n\
+  \t\tRandom seed\n\n\t-p ALLOW-PARALLEL, --allow-parallel=ALLOW-PARALLEL\n\t\tShould\
+  \ parallel processing be allowed? Default: TRUE\n\n\t-c NUM-CORES, --num-cores=NUM-CORES\n\
+  \t\tFor parallel processing, how many cores should be used?\n\n\t-t TUNE-LENGTH,\
+  \ --tune-length=TUNE-LENGTH\n\t\tAn integer denoting the amount of granularity in\
+  \ the tuning parameter grid\n\n\t-a METRIC, --metric=METRIC\n\t\tPerformance metric\
+  \ to be used to select best model\n\n\t-e PREPROCESS, --preprocess=PREPROCESS\n\t\
+  \tA string vector that defines a pre-processing of the predictor data. Enter values\
+  \ as comma-separated string. Current possibilities are \n                'BoxCox',\
+  \ 'YeoJohnson', 'expoTrans', 'center', 'scale', 'range', 'knnImpute', 'bagImpute',\
+  \ 'medianImpute' \n                'pca', 'ica' and 'spatialSign'. The default is\
+  \ 'center' and 'scale'.\n\n\t-u RETURN-DATA, --return-data=RETURN-DATA\n\t\tIf TRUE,\
+  \ training data is returned within scPred object. Default: FALSE\n\n\t-v SAVE-PREDICTIONS,\
+  \ --save-predictions=SAVE-PREDICTIONS\n\t\tSpecifies the set of hold-out predictions\
+  \ for each resample that should be\n                returned. Values can be either\
+  \ 'all', 'final' or 'none'.\n\n\t-y RECLASSIFY, --reclassify=RECLASSIFY\n\t\tCell\
+  \ types to reclassify using a different model\n\n\t-o OUTPUT-PATH, --output-path=OUTPUT-PATH\n\
+  \t\tPath for the output scPred object in .rds format\n\n\t-g GET-SCPRED, --get-scpred=GET-SCPRED\n\
+  \t\tShould scpred object be extracted from Seurat object after model training? Default:\
+  \ FALSE\n\n\t-d TRAIN-PROBS-PLOT, --train-probs-plot=TRAIN-PROBS-PLOT\n\t\tPath\
+  \ for training probabilities plot in .png format\n\n\t-h, --help\n\t\tShow this\
+  \ help message and exit\n\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/scpred-cli:0.1.0--1

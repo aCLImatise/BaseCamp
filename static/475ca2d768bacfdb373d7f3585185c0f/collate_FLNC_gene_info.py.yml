@@ -1,0 +1,87 @@
+!Command
+command:
+- collate_FLNC_gene_info.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: output_filename
+  description: 'positional arguments:'
+- !Positional
+  optional: false
+  position: 1
+  name: group_filename
+  description: Collapse .group.txt
+- !Positional
+  optional: false
+  position: 2
+  name: csv_filename
+  description: Trimmed UMI/BC CSV info
+- !Positional
+  optional: false
+  position: 3
+  name: class_filename
+  description: SQANTI classification.txt
+- !Positional
+  optional: false
+  position: 4
+  name: output_filename
+  description: Output filename
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --ontarget_filename
+  description: (Optional) on target information text
+  args: !SimpleFlagArg
+    name: ONTARGET_FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --dedup_ORF_prefix
+  description: "(Optional) dedup-ed ORF group prefix, must have\n<pre>.faa and <pre>.group.txt"
+  args: !SimpleFlagArg
+    name: DEDUP_ORF_PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - --no-extra-base
+  description: Drop all reads where there are extra bases
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --is_clustered
+  description: group.txt contains post-UMI clustering result
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: collate_FLNC_gene_info.py [-h] [-i ONTARGET_FILENAME]\n       \
+  \                          [-p DEDUP_ORF_PREFIX] [--no-extra-base]\n           \
+  \                      [--is_clustered]\n                                 group_filename\
+  \ csv_filename class_filename\n                                 output_filename\n\
+  \npositional arguments:\n  group_filename        Collapse .group.txt\n  csv_filename\
+  \          Trimmed UMI/BC CSV info\n  class_filename        SQANTI classification.txt\n\
+  \  output_filename       Output filename\n\noptional arguments:\n  -h, --help  \
+  \          show this help message and exit\n  -i ONTARGET_FILENAME, --ontarget_filename\
+  \ ONTARGET_FILENAME\n                        (Optional) on target information text\n\
+  \  -p DEDUP_ORF_PREFIX, --dedup_ORF_prefix DEDUP_ORF_PREFIX\n                  \
+  \      (Optional) dedup-ed ORF group prefix, must have\n                       \
+  \ <pre>.faa and <pre>.group.txt\n  --no-extra-base       Drop all reads where there\
+  \ are extra bases\n  --is_clustered        group.txt contains post-UMI clustering\
+  \ result\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/cdna_cupcake:19.0.0--py37h97743b1_0

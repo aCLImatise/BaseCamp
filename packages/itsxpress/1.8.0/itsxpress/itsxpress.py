@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, Boolean, Int, String, Float
+
+Itsxpress_V0_1_0 = CommandToolBuilder(tool="itsxpress", base_command=["itsxpress"], inputs=[ToolInput(tag="in_fast_q", input_type=File(optional=True), prefix="--fastq", doc=InputDocumentation(doc="A .fastq, .fq, .fastq.gz or .fq.gz file. Interleaved\nor not.")), ToolInput(tag="in_single_end", input_type=Boolean(optional=True), prefix="--single_end", doc=InputDocumentation(doc="A flag to specify that the FASTQ file is single-ended\n(not paired). Default is false.")), ToolInput(tag="in_fast_q_two", input_type=Int(optional=True), prefix="--fastq2", doc=InputDocumentation(doc="A .fastq, .fq, .fastq.gz or .fq.gz file. representing\nread 2 (optional)")), ToolInput(tag="in_outfile", input_type=File(optional=True), prefix="--outfile", doc=InputDocumentation(doc="the trimmed Fastq file, if it ends in 'gz' it will be\ngzipped")), ToolInput(tag="in_outfile_two", input_type=Int(optional=True), prefix="--outfile2", doc=InputDocumentation(doc="the trimmed read 2 Fastq file, if it ends in 'gz' it\nwill be gzipped. If provided, reads will be returned\nunmerged.")), ToolInput(tag="in_tempdir", input_type=File(optional=True), prefix="--tempdir", doc=InputDocumentation(doc="The temp file directory")), ToolInput(tag="in_keep_temp", input_type=Boolean(optional=True), prefix="--keeptemp", doc=InputDocumentation(doc="Should intermediate files be kept?")), ToolInput(tag="in_region", input_type=String(optional=True), prefix="--region", doc=InputDocumentation(doc="The taxonomic group sequenced.")), ToolInput(tag="in_cluster_id", input_type=Float(optional=True), prefix="--cluster_id", doc=InputDocumentation(doc="The percent identity for clustering reads range\n[0.99-1.0], set to 1 for exact dereplication.")), ToolInput(tag="in_reversed_primers", input_type=Boolean(optional=True), prefix="--reversed_primers", doc=InputDocumentation(doc="Primers are in reverse orientation as in Taylor et al.\n2016, DOI:10.1128/AEM.02576-16. If selected ITSxpress\nreturns trimmed reads flipped to the forward\norientation")), ToolInput(tag="in_log", input_type=File(optional=True), prefix="--log", doc=InputDocumentation(doc="Log file")), ToolInput(tag="in_threads", input_type=Int(optional=True), prefix="--threads", doc=InputDocumentation(doc="Number of processor threads to use."))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Itsxpress_V0_1_0().translate("wdl", allow_empty_container=True)
+

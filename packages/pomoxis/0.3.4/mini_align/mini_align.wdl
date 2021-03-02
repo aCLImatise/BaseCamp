@@ -2,11 +2,11 @@ version 1.0
 
 task MiniAlign {
   input {
-    Boolean? reference_should_fasta
+    Boolean? reference_be_file
     Boolean? fastqa_input_reads
     Boolean? split_index_num
     Boolean? force_recreation_index
-    Boolean? aggressively_extend_sets
+    Boolean? aggressively_extend_gaps
     Boolean? filter_only_primary
     Boolean? filter_alignments_output
     Boolean? sort_bam_read
@@ -24,11 +24,11 @@ task MiniAlign {
   }
   command <<<
     mini_align \
-      ~{if (reference_should_fasta) then "-r" else ""} \
+      ~{if (reference_be_file) then "-r" else ""} \
       ~{if (fastqa_input_reads) then "-i" else ""} \
       ~{if (split_index_num) then "-I" else ""} \
       ~{if (force_recreation_index) then "-f" else ""} \
-      ~{if (aggressively_extend_sets) then "-a" else ""} \
+      ~{if (aggressively_extend_gaps) then "-a" else ""} \
       ~{if (filter_only_primary) then "-P" else ""} \
       ~{if (filter_alignments_output) then "-A" else ""} \
       ~{if (sort_bam_read) then "-n" else ""} \
@@ -44,12 +44,15 @@ task MiniAlign {
       ~{if (open_gat_penalty) then "-O" else ""} \
       ~{if (extend_gap_penalty) then "-E" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    reference_should_fasta: "reference, should be a fasta file. If correspondng minimap indices\\ndo not exist they will be created. (required)."
+    reference_be_file: "reference, should be a fasta file. If correspondng minimap indices\\ndo not exist they will be created. (required)."
     fastqa_input_reads: "fastq/a input reads (required)."
     split_index_num: "split index every ~NUM input bases (default: 16G, this is larger\\nthan the usual minimap2 default)."
     force_recreation_index: "force recreation of index file."
-    aggressively_extend_sets: "aggressively extend gaps (sets -A1 -B2 -O2 -E1 for minimap2)."
+    aggressively_extend_gaps: "aggressively extend gaps (sets -A1 -B2 -O2 -E1 for minimap2)."
     filter_only_primary: "filter to only primary alignments (i.e. run samtools view -F 2308).\\nDeprecated: this filter is now default and can be disabled with -A."
     filter_alignments_output: "do not filter alignments to primary alignments, output all."
     sort_bam_read: "sort bam by read name."

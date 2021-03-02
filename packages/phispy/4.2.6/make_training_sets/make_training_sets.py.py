@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, Boolean, Int, String
+
+Make_Training_Sets_Py_V0_1_0 = CommandToolBuilder(tool="make_training_sets.py", base_command=["make_training_sets.py"], inputs=[ToolInput(tag="in_in_dir", input_type=File(optional=True), prefix="--indir", doc=InputDocumentation(doc="Path to input directory with GenBank file(s) for\ntraining. This path will be added to file names in\ngroups file.")), ToolInput(tag="in_groups", input_type=File(optional=True), prefix="--groups", doc=InputDocumentation(doc="Path to file two tab-delimited columns: file name and\ngroup name. If not provided each file will have its\nown training set.")), ToolInput(tag="in_use_taxonomy", input_type=Boolean(optional=True), prefix="--use_taxonomy", doc=InputDocumentation(doc="If set, taxonomy from input files will be used to\nupdate or create new groups. This is performed after\nreading groups file.")), ToolInput(tag="in_km_er_size", input_type=Int(optional=True), prefix="--kmer_size", doc=InputDocumentation(doc="The size of required kmers. For codon approach use\nmultiplicity of 3. [Default: 12]")), ToolInput(tag="in_km_ers_type", input_type=Int(optional=True), prefix="--kmers_type", doc=InputDocumentation(doc="Approach for creating kmers. Options are: simple (just\nslicing the sequence from the first position), all\n(all possible kmers), codon (all possible kmers made\nwith step of 3 nts to get kmers corresponding\ntranslated aas). [Default: all]")), ToolInput(tag="in_ph_mms", input_type=String(optional=True), prefix="--phmms", doc=InputDocumentation(doc="Phage HMM profile database (like pVOGs) will be mapped\nagainst the genome of interest and used as additional\nfeature to identify prophages.")), ToolInput(tag="in_threads", input_type=Int(optional=True), prefix="--threads", doc=InputDocumentation(doc="Number of threads to use while searching with phmms.")), ToolInput(tag="in_retrain", input_type=Boolean(optional=True), prefix="--retrain", doc=InputDocumentation(doc="Set if any of reference files previously used for\ntraining has changed, e.g. prophage protein features\nindication was modified.")), ToolInput(tag="in_absolute_retrain", input_type=Boolean(optional=True), prefix="--absolute_retrain", doc=InputDocumentation(doc="If set, ignores trainingGenome_list file and PhiSpy's\ndefault reference genomes. This option allows to train\nPhiSpy with files provided just by the user."))], outputs=[], container="quay.io/biocontainers/phispy:4.2.6--py38hed8969a_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Make_Training_Sets_Py_V0_1_0().translate("wdl")
+

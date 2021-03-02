@@ -1,0 +1,386 @@
+!Command
+command:
+- debarcer
+- run
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: used
+  description: -cl, --Call           Convert consensus files to VCF format. Default
+    is
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --Outdir
+  description: Output directory where subdirectories are created
+  args: !SimpleFlagArg
+    name: OUTDIR
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --Config
+  description: Path to the config file
+  args: !SimpleFlagArg
+    name: CONFIG
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --Bamfile
+  description: Path to the BAM file
+  args: !SimpleFlagArg
+    name: BAMFILE
+- !Flag
+  optional: true
+  synonyms:
+  - -rf
+  - --Reference
+  description: Path to the refeence genome
+  args: !SimpleFlagArg
+    name: REFERENCE
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --Famsize
+  description: "Comma-separated list of minimum umi family size to\ncollapase on"
+  args: !SimpleFlagArg
+    name: FAMSIZE
+- !Flag
+  optional: true
+  synonyms:
+  - -bd
+  - --Bedfile
+  description: Path to the bed file
+  args: !SimpleFlagArg
+    name: BEDFILE
+- !Flag
+  optional: true
+  synonyms:
+  - -ct
+  - --CountThreshold
+  description: Base count threshold in pileup column
+  args: !SimpleFlagArg
+    name: COUNTTHRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - -pt
+  - --PercentThreshold
+  description: Base percent threshold in pileup column
+  args: !SimpleFlagArg
+    name: PERCENTTHRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --Position
+  description: Umi position threshold for grouping umis together
+  args: !SimpleFlagArg
+    name: POSTTHRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --Distance
+  description: "Hamming distance threshold for connecting parent-\nchildren umis"
+  args: !SimpleFlagArg
+    name: DISTTHRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - -rt
+  - --RefThreshold
+  description: "A position is considered variable of reference\nfrequency is <= ref_threshold"
+  args: !SimpleFlagArg
+    name: REFTHRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - -at
+  - --AlternativeThreshold
+  description: "Variable position is labeled PASS if allele frequency\n>= alt_threshold"
+  args: !SimpleFlagArg
+    name: ALTTHRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - -ft
+  - --FilterThreshold
+  description: Minimum number of reads to pass alternative variants
+  args: !SimpleFlagArg
+    name: FILTERTHRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --MaxDepth
+  description: Maximum read depth. Default is 1000000
+  args: !SimpleFlagArg
+    name: MAXDEPTH
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --Truncate
+  description: "Only pileup columns in the exact region specificied\nare returned.\
+    \ Default is False, becomes True is used"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -io
+  - --IgnoreOrphans
+  description: "Ignore orphans (paired reads that are not in a proper\npair). Default\
+    \ is False, becomes True if used"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --Ignore
+  description: "Keep the most abundant family and ignore families at\nother positions\
+    \ within each group. Default is False,\nbecomes True if used"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -mg
+  - --Merge
+  description: "Merge data, json and consensus files respectively into\na 1 single\
+    \ file. Default is True, becomes False if\nused"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -pl
+  - --Plot
+  description: "Generate figure plots. Default is True, becomes False\nif used"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -rp
+  - --Report
+  description: Generate report. Default is True, becomes False if
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ex
+  - --Extension
+  description: "Figure format. Does not generate a report if pdf, even\nwith -r True.\
+    \ Default is png"
+  args: !ChoiceFlagArg
+    choices: !!set
+      png:
+      jpeg:
+      pdf:
+- !Flag
+  optional: true
+  synonyms:
+  - -sp
+  - --Sample
+  description: "Sample name to appear to report. Optional, use Output\ndirectory basename\
+    \ if not provided"
+  args: !SimpleFlagArg
+    name: SAMPLE
+- !Flag
+  optional: true
+  synonyms:
+  - -pr
+  - --Project
+  description: Project for submitting jobs on Univa
+  args: !SimpleFlagArg
+    name: PROJECT
+- !Flag
+  optional: true
+  synonyms:
+  - -mm
+  - --Memory
+  description: "Requested memory for submitting jobs to SGE. Default\nis 20g"
+  args: !SimpleFlagArg
+    name: MEM
+- !Flag
+  optional: true
+  synonyms:
+  - -py
+  - --MyPython
+  description: "Path to python. Default is /.mounts/labs/PDE/Modules/s\nw/python/Python-3.6.4/bin/python3.6"
+  args: !SimpleFlagArg
+    name: MYPYTHON
+- !Flag
+  optional: true
+  synonyms:
+  - -db
+  - --MyDebarcer
+  description: "Path to the file debarcer.py. Default is /.mounts/labs\n/PDE/Modules/sw/python/Python-3.6.4/lib/python3.6/site\n\
+    -packages/debarcer/debarcer.py"
+  args: !SimpleFlagArg
+    name: MYDEBARCER
+- !Flag
+  optional: true
+  synonyms:
+  - -mv
+  - --MinCov
+  description: "Minimum coverage value. Values below are plotted in\nred"
+  args: !SimpleFlagArg
+    name: MINCOV
+- !Flag
+  optional: true
+  synonyms:
+  - -mr
+  - --MinRatio
+  description: "Minimum children to parent umi ratio. Values below are\nplotted in\
+    \ red"
+  args: !SimpleFlagArg
+    name: MINRATIO
+- !Flag
+  optional: true
+  synonyms:
+  - -mu
+  - --MinUmis
+  description: Minimum umi count. Values below are plotted in red
+  args: !SimpleFlagArg
+    name: MINUMIS
+- !Flag
+  optional: true
+  synonyms:
+  - -mc
+  - --MinChildren
+  description: "Minimum children umi count. Values below are plotted\nin red"
+  args: !SimpleFlagArg
+    name: MINCHILDREN
+- !Flag
+  optional: true
+  synonyms:
+  - -stp
+  - --Stepper
+  description: "Filter or include reads in the pileup. Options all:\nskip reads with\
+    \ BAM_FUNMAP, BAM_FSECONDARY,\nBAM_FQCFAIL, BAM_FDUP flags, nofilter: uses every\n\
+    single read turning off any filtering"
+  args: !ChoiceFlagArg
+    choices: !!set
+      all:
+      nofilter:
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --Separator
+  description: "String separating the UMI from the remaining of the\nread name"
+  args: !SimpleFlagArg
+    name: SEPARATOR
+- !Flag
+  optional: true
+  synonyms:
+  - -bq
+  - --Quality
+  description: "Base quality score threshold. Bases with quality\nscores below the\
+    \ threshold are not used in the\nconsensus. Default is 25"
+  args: !SimpleFlagArg
+    name: BASE_QUALITY_SCORE
+- !Flag
+  optional: true
+  synonyms:
+  - -rc
+  - --ReadCount
+  description: "Minimum number of reads in region required for\ngrouping. Default\
+    \ is 0\n"
+  args: !SimpleFlagArg
+    name: READCOUNT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: debarcer.py run [-h] [-o OUTDIR] [-c CONFIG] [-b BAMFILE]\n   \
+  \                    [-rf REFERENCE] [-f FAMSIZE] -bd BEDFILE\n                \
+  \       [-ct COUNTTHRESHOLD] [-pt PERCENTTHRESHOLD]\n                       [-p\
+  \ POSTTHRESHOLD] [-d DISTTHRESHOLD]\n                       [-rt REFTHRESHOLD] [-at\
+  \ ALTTHRESHOLD]\n                       [-ft FILTERTHRESHOLD] [-m MAXDEPTH] [-t]\
+  \ [-io] [-i]\n                       [-mg] [-pl] [-rp] [-cl] [-ex {png,jpeg,pdf}]\n\
+  \                       [-sp SAMPLE] [-pr PROJECT] [-mm MEM] [-py MYPYTHON]\n  \
+  \                     [-db MYDEBARCER] [-mv MINCOV] [-mr MINRATIO]\n           \
+  \            [-mu MINUMIS] [-mc MINCHILDREN] [-stp {all,nofilter}]\n           \
+  \            [-s SEPARATOR] [-bq BASE_QUALITY_SCORE] [-rc READCOUNT]\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  -o OUTDIR,\
+  \ --Outdir OUTDIR\n                        Output directory where subdirectories\
+  \ are created\n  -c CONFIG, --Config CONFIG\n                        Path to the\
+  \ config file\n  -b BAMFILE, --Bamfile BAMFILE\n                        Path to\
+  \ the BAM file\n  -rf REFERENCE, --Reference REFERENCE\n                       \
+  \ Path to the refeence genome\n  -f FAMSIZE, --Famsize FAMSIZE\n               \
+  \         Comma-separated list of minimum umi family size to\n                 \
+  \       collapase on\n  -bd BEDFILE, --Bedfile BEDFILE\n                       \
+  \ Path to the bed file\n  -ct COUNTTHRESHOLD, --CountThreshold COUNTTHRESHOLD\n\
+  \                        Base count threshold in pileup column\n  -pt PERCENTTHRESHOLD,\
+  \ --PercentThreshold PERCENTTHRESHOLD\n                        Base percent threshold\
+  \ in pileup column\n  -p POSTTHRESHOLD, --Position POSTTHRESHOLD\n             \
+  \           Umi position threshold for grouping umis together\n  -d DISTTHRESHOLD,\
+  \ --Distance DISTTHRESHOLD\n                        Hamming distance threshold for\
+  \ connecting parent-\n                        children umis\n  -rt REFTHRESHOLD,\
+  \ --RefThreshold REFTHRESHOLD\n                        A position is considered\
+  \ variable of reference\n                        frequency is <= ref_threshold\n\
+  \  -at ALTTHRESHOLD, --AlternativeThreshold ALTTHRESHOLD\n                     \
+  \   Variable position is labeled PASS if allele frequency\n                    \
+  \    >= alt_threshold\n  -ft FILTERTHRESHOLD, --FilterThreshold FILTERTHRESHOLD\n\
+  \                        Minimum number of reads to pass alternative variants\n\
+  \  -m MAXDEPTH, --MaxDepth MAXDEPTH\n                        Maximum read depth.\
+  \ Default is 1000000\n  -t, --Truncate        Only pileup columns in the exact region\
+  \ specificied\n                        are returned. Default is False, becomes True\
+  \ is used\n  -io, --IgnoreOrphans  Ignore orphans (paired reads that are not in\
+  \ a proper\n                        pair). Default is False, becomes True if used\n\
+  \  -i, --Ignore          Keep the most abundant family and ignore families at\n\
+  \                        other positions within each group. Default is False,\n\
+  \                        becomes True if used\n  -mg, --Merge          Merge data,\
+  \ json and consensus files respectively into\n                        a 1 single\
+  \ file. Default is True, becomes False if\n                        used\n  -pl,\
+  \ --Plot           Generate figure plots. Default is True, becomes False\n     \
+  \                   if used\n  -rp, --Report         Generate report. Default is\
+  \ True, becomes False if\n                        used\n  -cl, --Call          \
+  \ Convert consensus files to VCF format. Default is\n                        True,\
+  \ becomes False if used\n  -ex {png,jpeg,pdf}, --Extension {png,jpeg,pdf}\n    \
+  \                    Figure format. Does not generate a report if pdf, even\n  \
+  \                      with -r True. Default is png\n  -sp SAMPLE, --Sample SAMPLE\n\
+  \                        Sample name to appear to report. Optional, use Output\n\
+  \                        directory basename if not provided\n  -pr PROJECT, --Project\
+  \ PROJECT\n                        Project for submitting jobs on Univa\n  -mm MEM,\
+  \ --Memory MEM\n                        Requested memory for submitting jobs to\
+  \ SGE. Default\n                        is 20g\n  -py MYPYTHON, --MyPython MYPYTHON\n\
+  \                        Path to python. Default is /.mounts/labs/PDE/Modules/s\n\
+  \                        w/python/Python-3.6.4/bin/python3.6\n  -db MYDEBARCER,\
+  \ --MyDebarcer MYDEBARCER\n                        Path to the file debarcer.py.\
+  \ Default is /.mounts/labs\n                        /PDE/Modules/sw/python/Python-3.6.4/lib/python3.6/site\n\
+  \                        -packages/debarcer/debarcer.py\n  -mv MINCOV, --MinCov\
+  \ MINCOV\n                        Minimum coverage value. Values below are plotted\
+  \ in\n                        red\n  -mr MINRATIO, --MinRatio MINRATIO\n       \
+  \                 Minimum children to parent umi ratio. Values below are\n     \
+  \                   plotted in red\n  -mu MINUMIS, --MinUmis MINUMIS\n         \
+  \               Minimum umi count. Values below are plotted in red\n  -mc MINCHILDREN,\
+  \ --MinChildren MINCHILDREN\n                        Minimum children umi count.\
+  \ Values below are plotted\n                        in red\n  -stp {all,nofilter},\
+  \ --Stepper {all,nofilter}\n                        Filter or include reads in the\
+  \ pileup. Options all:\n                        skip reads with BAM_FUNMAP, BAM_FSECONDARY,\n\
+  \                        BAM_FQCFAIL, BAM_FDUP flags, nofilter: uses every\n   \
+  \                     single read turning off any filtering\n  -s SEPARATOR, --Separator\
+  \ SEPARATOR\n                        String separating the UMI from the remaining\
+  \ of the\n                        read name\n  -bq BASE_QUALITY_SCORE, --Quality\
+  \ BASE_QUALITY_SCORE\n                        Base quality score threshold. Bases\
+  \ with quality\n                        scores below the threshold are not used\
+  \ in the\n                        consensus. Default is 25\n  -rc READCOUNT, --ReadCount\
+  \ READCOUNT\n                        Minimum number of reads in region required\
+  \ for\n                        grouping. Default is 0\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/debarcer:2.1.3--py_0

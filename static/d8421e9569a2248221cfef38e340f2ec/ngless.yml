@@ -1,0 +1,285 @@
+!Command
+command:
+- ngless
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: INPUT
+  description: Filename of script to interpret
+- !Positional
+  optional: false
+  position: 1
+  name: deprecated
+  description: --search-dir ARG         Deprecated. Use --search-path instead
+- !Positional
+  optional: false
+  position: 2
+  name: REF
+  description: Name of reference to install
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --version-short
+  description: print just version string (useful for scripting)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --version-debug
+  description: print detailed version information
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --date-short
+  description: print just release date string (useful for scripting)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --script
+  description: inline script to execute
+  args: !SimpleFlagArg
+    name: ARG
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --validate-only
+  description: Only validate input, do not run script
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --print-last
+  description: print value of last line in script
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --trace
+  description: Set highest verbosity mode
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-trace
+  description: opposite of --trace
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --jobs
+  - --threads
+  description: Nr of threads to use
+  args: !SimpleFlagArg
+    name: ARG
+- !Flag
+  optional: true
+  synonyms:
+  - --strict-threads
+  description: "strictly respect the --threads option (by default,\nNGLess will, occasionally,\
+    \ use more threads than\nspecified)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-strict-threads
+  description: opposite of --strict-threads
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --create-report
+  description: create the report directory
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-create-report
+  description: opposite of --create-report
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --html-report-directory
+  description: name of output directory
+  args: !SimpleFlagArg
+    name: ARG
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --temporary-directory
+  description: Directory where to store temporary files
+  args: !SimpleFlagArg
+    name: ARG
+- !Flag
+  optional: true
+  synonyms:
+  - --keep-temporary-files
+  description: "Whether to keep temporary files (default is delete\nthem)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-keep-temporary-files
+  description: opposite of --keep-temporary-files
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --config-file
+  description: Configuration files to parse
+  args: !SimpleFlagArg
+    name: ARG
+- !Flag
+  optional: true
+  synonyms:
+  - --no-header
+  description: Do not print copyright information
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --subsample
+  description: "Subsample mode: quickly test a pipeline by discarding\n99% of the\
+    \ input"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --experimental-features
+  description: Whether to allow the use of experimental features
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --export-json
+  description: File to write JSON representation of script to
+  args: !SimpleFlagArg
+    name: ARG
+- !Flag
+  optional: true
+  synonyms:
+  - --export-cwl
+  description: File to write CWL wrapper of given script
+  args: !SimpleFlagArg
+    name: ARG
+- !Flag
+  optional: true
+  synonyms:
+  - --check-deprecation
+  description: Check if ngless version or any used modules have been
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --search-path
+  description: "Reference search directories (replace <references> in\nscript)"
+  args: !SimpleFlagArg
+    name: ARG
+- !Flag
+  optional: true
+  synonyms:
+  - --index-path
+  description: Index path (directory where indices are stored)
+  args: !SimpleFlagArg
+    name: ARG
+- !Flag
+  optional: true
+  synonyms:
+  - --check-install
+  description: Check if ngless is correctly installed
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: Print paths
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --color
+  description: "Color settings, one of 'auto' (color if writing to a\nterminal, this\
+    \ is the default), 'force' (always\ncolor), 'no' (no color)."
+  args: !SimpleFlagArg
+    name: ARG
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this help text
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: print version and exit
+  args: !EmptyFlagArg {}
+help_text: "Usage: ngless [-V|--version] [--version-short] [--version-debug] [--date-short]\n\
+  \              (((-e|--script ARG) | INPUT) [--debug ARG] [-n|--validate-only]\n\
+  \              [-p|--print-last] ([--trace] | [--no-trace])\n              [-j|--jobs|--threads\
+  \ ARG] ([--strict-threads] |\n              [--no-strict-threads]) ([--create-report]\
+  \ | [--no-create-report])\n              [-o|--html-report-directory ARG] [-t|--temporary-directory\
+  \ ARG]\n              ([--keep-temporary-files] | [--no-keep-temporary-files])\n\
+  \              [--config-file ARG] [--no-header] [--subsample]\n              [--experimental-features]\
+  \ [--export-json ARG] [--export-cwl ARG]\n              [--check-deprecation] ([--search-dir\
+  \ ARG] | [--search-path ARG])\n              [--index-path ARG] [ARGV] | --download-file\
+  \ --download-url ARG\n              --local-file ARG | --download-demo DEMO-NAME\
+  \ |\n              --install-reference-data REF | --print-path EXEC | --check-install\n\
+  \              [-v|--verbose]) [-v|--verbosity ARG] [-q|--quiet] [--color ARG]\n\
+  \  ngless implement the NGLess language\n\nAvailable options:\n  -V,--version  \
+  \           print version and exit\n  --version-short          print just version\
+  \ string (useful for scripting)\n  --version-debug          print detailed version\
+  \ information\n  --date-short             print just release date string (useful\
+  \ for scripting)\n  -h,--help                Show this help text\n  -e,--script\
+  \ ARG          inline script to execute\n  INPUT                    Filename of\
+  \ script to interpret\n  -n,--validate-only       Only validate input, do not run\
+  \ script\n  -p,--print-last          print value of last line in script\n  --trace\
+  \                  Set highest verbosity mode\n  --no-trace               opposite\
+  \ of --trace\n  -j,--jobs,--threads ARG  Nr of threads to use\n  --strict-threads\
+  \         strictly respect the --threads option (by default,\n                 \
+  \          NGLess will, occasionally, use more threads than\n                  \
+  \         specified)\n  --no-strict-threads      opposite of --strict-threads\n\
+  \  --create-report          create the report directory\n  --no-create-report  \
+  \     opposite of --create-report\n  -o,--html-report-directory ARG\n          \
+  \                 name of output directory\n  -t,--temporary-directory ARG\n   \
+  \                        Directory where to store temporary files\n  --keep-temporary-files\
+  \   Whether to keep temporary files (default is delete\n                       \
+  \    them)\n  --no-keep-temporary-files\n                           opposite of\
+  \ --keep-temporary-files\n  --config-file ARG        Configuration files to parse\n\
+  \  --no-header              Do not print copyright information\n  --subsample  \
+  \            Subsample mode: quickly test a pipeline by discarding\n           \
+  \                99% of the input\n  --experimental-features  Whether to allow the\
+  \ use of experimental features\n  --export-json ARG        File to write JSON representation\
+  \ of script to\n  --export-cwl ARG         File to write CWL wrapper of given script\n\
+  \  --check-deprecation      Check if ngless version or any used modules have been\n\
+  \                           deprecated\n  --search-dir ARG         Deprecated. Use\
+  \ --search-path instead\n  --search-path ARG        Reference search directories\
+  \ (replace <references> in\n                           script)\n  --index-path ARG\
+  \         Index path (directory where indices are stored)\n  REF               \
+  \       Name of reference to install\n  --check-install          Check if ngless\
+  \ is correctly installed\n  -v,--verbose             Print paths\n  --color ARG\
+  \              Color settings, one of 'auto' (color if writing to a\n          \
+  \                 terminal, this is the default), 'force' (always\n            \
+  \               color), 'no' (no color).\n\nngless v1.3.0(C) NGLess Authors 2013-2020\
+  \ For more information:\nhttps://ngless.embl.de/ For comments/discussion:\nhttps://groups.google.com/forum/#!forum/ngless\
+  \ Citation: LP Coelho et al., 2019.\nhttps://doi.org/10.1186/s40168-019-0684-8.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/ngless:1.3.0--h4529f3e_0

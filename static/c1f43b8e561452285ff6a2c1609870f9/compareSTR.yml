@@ -1,0 +1,232 @@
+!Command
+command:
+- compareSTR
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: Tool
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: for
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: comparing
+  description: ''
+- !Positional
+  optional: false
+  position: 3
+  name: genotypes
+  description: ''
+- !Positional
+  optional: false
+  position: 4
+  name: from
+  description: ''
+- !Positional
+  optional: false
+  position: 5
+  name: two
+  description: ''
+- !Positional
+  optional: false
+  position: 6
+  name: TR
+  description: ''
+- !Positional
+  optional: false
+  position: 7
+  name: VCFs
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --vcf1
+  description: "First VCF file to compare (must be sorted, bgzipped,\nand indexed)"
+  args: !SimpleFlagArg
+    name: VCF1
+- !Flag
+  optional: true
+  synonyms:
+  - --vcf2
+  description: "Second VCF file to compare (must be sorted, bgzipped,\nand indexed)"
+  args: !SimpleFlagArg
+    name: VCF2
+- !Flag
+  optional: true
+  synonyms:
+  - --out
+  description: Prefix to name output files
+  args: !SimpleFlagArg
+    name: OUT
+- !Flag
+  optional: true
+  synonyms:
+  - --samples
+  description: File containing list of samples to include
+  args: !SimpleFlagArg
+    name: SAMPLES
+- !Flag
+  optional: true
+  synonyms:
+  - --region
+  description: Restrict to this region chrom:start-end
+  args: !SimpleFlagArg
+    name: REGION
+- !Flag
+  optional: true
+  synonyms:
+  - --stratify-fields
+  description: Comma-separated list of FORMAT fields to stratify by
+  args: !SimpleFlagArg
+    name: STRATIFY_FIELDS
+- !Flag
+  optional: true
+  synonyms:
+  - --stratify-binsizes
+  description: "Comma-separated list of min:max:binsize to stratify\neach field on.\
+    \ Must be same length as --stratify-\nfields."
+  args: !SimpleFlagArg
+    name: STRATIFY_BINSIZES
+- !Flag
+  optional: true
+  synonyms:
+  - --stratify-file
+  description: "Set to 1 to stratify based on --vcf1. Set to 2 to\nstratify based\
+    \ on --vcf2. Set to 0 to apply\nstratification to both --vcf1 and --vcf2 (default:\
+    \ 0)"
+  args: !SimpleFlagArg
+    name: STRATIFY_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --period
+  description: "Report results overall and also stratified by repeat\nunit length\
+    \ (period) (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --bubble-min
+  description: Minimum x/y axis value to display on bubble plots
+  args: !SimpleFlagArg
+    name: BUBBLE_MIN
+- !Flag
+  optional: true
+  synonyms:
+  - --bubble-max
+  description: Maximum x/y axis value to display on bubble plots
+  args: !SimpleFlagArg
+    name: BUBBLE_MAX
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: 'Print helpful debugging info (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --numrecords
+  description: For debugging, only process this many records
+  args: !SimpleFlagArg
+    name: NUMRECORDS
+- !Flag
+  optional: true
+  synonyms:
+  - --noplot
+  description: "Don't output any plots. Only produce text output\n(default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --vcftype1
+  description: "Type of --vcf1. Options=['gangstr', 'advntr',\n'hipstr', 'eh', 'popstr']\
+    \ (default: auto)"
+  args: !SimpleFlagArg
+    name: VCFTYPE1
+- !Flag
+  optional: true
+  synonyms:
+  - --vcftype2
+  description: "Type of --vcf2. Options=['gangstr', 'advntr',\n'hipstr', 'eh', 'popstr']\
+    \ (default: auto)"
+  args: !SimpleFlagArg
+    name: VCFTYPE2
+- !Flag
+  optional: true
+  synonyms:
+  - --ignore-phasing
+  description: "Treat all calls as if they are unphased (default:\nFalse)"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: \nTool for comparing genotypes from two TR VCFs\n [-h] --vcf1 VCF1\
+  \ --vcf2\n                                                       VCF2 --out OUT\n\
+  \                                                       [--samples SAMPLES]\n  \
+  \                                                     [--region REGION]\n      \
+  \                                                 [--stratify-fields STRATIFY_FIELDS]\n\
+  \                                                       [--stratify-binsizes STRATIFY_BINSIZES]\n\
+  \                                                       [--stratify-file STRATIFY_FILE]\n\
+  \                                                       [--period]\n           \
+  \                                            [--bubble-min BUBBLE_MIN]\n       \
+  \                                                [--bubble-max BUBBLE_MAX]\n   \
+  \                                                    [--verbose]\n             \
+  \                                          [--numrecords NUMRECORDS]\n         \
+  \                                              [--noplot]\n                    \
+  \                                   [--vcftype1 VCFTYPE1]\n                    \
+  \                                   [--vcftype2 VCFTYPE2]\n                    \
+  \                                   [--ignore-phasing]\n                       \
+  \                                [--version]\n\noptional arguments:\n  -h, --help\
+  \            show this help message and exit\n\nRequired arguments:\n  --vcf1 VCF1\
+  \           First VCF file to compare (must be sorted, bgzipped,\n             \
+  \           and indexed)\n  --vcf2 VCF2           Second VCF file to compare (must\
+  \ be sorted, bgzipped,\n                        and indexed)\n  --out OUT      \
+  \       Prefix to name output files\n\nFiltering options:\n  --samples SAMPLES \
+  \    File containing list of samples to include\n  --region REGION       Restrict\
+  \ to this region chrom:start-end\n\nMetrics to stratify results:\n  --stratify-fields\
+  \ STRATIFY_FIELDS\n                        Comma-separated list of FORMAT fields\
+  \ to stratify by\n  --stratify-binsizes STRATIFY_BINSIZES\n                    \
+  \    Comma-separated list of min:max:binsize to stratify\n                     \
+  \   each field on. Must be same length as --stratify-\n                        fields.\n\
+  \  --stratify-file STRATIFY_FILE\n                        Set to 1 to stratify based\
+  \ on --vcf1. Set to 2 to\n                        stratify based on --vcf2. Set\
+  \ to 0 to apply\n                        stratification to both --vcf1 and --vcf2\
+  \ (default: 0)\n  --period              Report results overall and also stratified\
+  \ by repeat\n                        unit length (period) (default: False)\n\nPlotting\
+  \ options:\n  --bubble-min BUBBLE_MIN\n                        Minimum x/y axis\
+  \ value to display on bubble plots\n  --bubble-max BUBBLE_MAX\n                \
+  \        Maximum x/y axis value to display on bubble plots\n\nOptional arguments:\n\
+  \  --verbose             Print helpful debugging info (default: False)\n  --numrecords\
+  \ NUMRECORDS\n                        For debugging, only process this many records\n\
+  \  --noplot              Don't output any plots. Only produce text output\n    \
+  \                    (default: False)\n  --vcftype1 VCFTYPE1   Type of --vcf1. Options=['gangstr',\
+  \ 'advntr',\n                        'hipstr', 'eh', 'popstr'] (default: auto)\n\
+  \  --vcftype2 VCFTYPE2   Type of --vcf2. Options=['gangstr', 'advntr',\n       \
+  \                 'hipstr', 'eh', 'popstr'] (default: auto)\n  --ignore-phasing\
+  \      Treat all calls as if they are unphased (default:\n                     \
+  \   False)\n\nVersion:\n  --version             show program's version number and\
+  \ exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/trtools:4.0.0--py_0

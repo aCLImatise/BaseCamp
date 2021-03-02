@@ -1,0 +1,70 @@
+!Command
+command:
+- bedtools
+- spacing
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -bed
+  description: If using BAM input, write output as BED.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -header
+  description: the header from the A file prior to results.
+  args: !SimpleFlagArg
+    name: Print
+- !Flag
+  optional: true
+  synonyms:
+  - -nobuf
+  description: "Disable buffered output. Using this option will cause each line\n\
+    of output to be printed as it is generated, rather than saved\nin a buffer. This\
+    \ will make printing large output files\nnoticeably slower, but can be useful\
+    \ in conjunction with\nother software tools and scripts that need to process one\n\
+    line of bedtools output at a time."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -iobuf
+  description: "Specify amount of memory to use for input buffer.\nTakes an integer\
+    \ argument. Optional suffixes K/M/G supported.\nNote: currently has no effect\
+    \ with compressed files.\n"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: ''
+  args: !SimpleFlagArg
+    name: bed/gff/vcf/bam
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nTool:    bedtools spacing\nVersion: v2.30.0\nSummary: Report (last col.)\
+  \ the gap lengths between intervals in a file.\n\nUsage:   bedtools spacing [OPTIONS]\
+  \ -i <bed/gff/vcf/bam>\n\nNotes: \n\t(1)  Input must be sorted by chrom,start (sort\
+  \ -k1,1 -k2,2n for BED).\n\t(2)  The 1st element for each chrom will have NULL distance.\
+  \ (\".\").\n\t(3)  Distance for overlapping intervals is -1 and 0 for adjacent intervals.\n\
+  \nExample: \n\t$ cat test.bed \n\tchr1    0   10 \n\tchr1    10  20 \n\tchr1   \
+  \ 19  30 \n\tchr1    35  45 \n\tchr1    100 200 \n\n\t$ bedtools spacing -i test.bed\
+  \ \n\tchr1    0   10  . \n\tchr1    10  20  0 \n\tchr1    19  30  -1 \n\tchr1  \
+  \  35  45  5 \n\tchr1    100 200 55 \n\n\t-bed\tIf using BAM input, write output\
+  \ as BED.\n\n\t-header\tPrint the header from the A file prior to results.\n\n\t\
+  -nobuf\tDisable buffered output. Using this option will cause each line\n\t\tof\
+  \ output to be printed as it is generated, rather than saved\n\t\tin a buffer. This\
+  \ will make printing large output files \n\t\tnoticeably slower, but can be useful\
+  \ in conjunction with\n\t\tother software tools and scripts that need to process\
+  \ one\n\t\tline of bedtools output at a time.\n\n\t-iobuf\tSpecify amount of memory\
+  \ to use for input buffer.\n\t\tTakes an integer argument. Optional suffixes K/M/G\
+  \ supported.\n\t\tNote: currently has no effect with compressed files.\n\n\n\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bedtools:2.30.0--hc088bd4_0

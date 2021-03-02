@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, Directory, Boolean, Int, String
+
+Tinscan_Find_V0_1_0 = CommandToolBuilder(tool="tinscan_find", base_command=["tinscan-find"], inputs=[ToolInput(tag="in_in_file", input_type=File(optional=True), prefix="--infile", doc=InputDocumentation(doc="Input file containing tab delimited LASTZ alignment\ndata.")), ToolInput(tag="in_outdir", input_type=Directory(optional=True), prefix="--outdir", doc=InputDocumentation(doc="Optional: Directory to write output to.")), ToolInput(tag="in_gff_out", input_type=File(optional=True), prefix="--gffOut", doc=InputDocumentation(doc="Write features to this file as gff3.")), ToolInput(tag="in_no_flanks", input_type=Boolean(optional=True), prefix="--noflanks", doc=InputDocumentation(doc="If set, do not report flanking hit regions in GFF.")), ToolInput(tag="in_max_tsd", input_type=Int(optional=True), prefix="--maxTSD", doc=InputDocumentation(doc="Maximum overlap of insertion flanking sequences in\nQUERY genome to be considered as target site\nduplication. Flank pairs with greater overlaps will be\ndiscarded Note: Setting this value too high may result\nin tandem duplications in the target genome being\nfalsely classified as insertion events.")), ToolInput(tag="in_max_insert", input_type=Int(optional=True), prefix="--maxInsert", doc=InputDocumentation(doc="Maximum length of sequence to consider as an insertion\nevent.")), ToolInput(tag="in_min_insert", input_type=Int(optional=True), prefix="--minInsert", doc=InputDocumentation(doc="Minimum length of sequence to consider as an insertion\nevent. Note: If too short may detect small non-TE\nindels.")), ToolInput(tag="in_q_gap", input_type=String(optional=True), prefix="--qGap", doc=InputDocumentation(doc="Maximum gap allowed between aligned flanks in QUERY\nsequence. Equivalent to target sequence deleted upon\ninsertion event.")), ToolInput(tag="in_mini_dent", input_type=String(optional=True), prefix="--minIdent", doc=InputDocumentation(doc="Minimum identity for a hit to be considered.")), ToolInput(tag="in_max_ident_diff", input_type=Int(optional=True), prefix="--maxIdentDiff", doc=InputDocumentation(doc="Maximum divergence in identity (to query) allowed\nbetween insert flanking sequences.\n"))], outputs=[ToolOutput(tag="out_outdir", output_type=Directory(optional=True), selector=InputSelector(input_to_select="in_outdir", type_hint=File()), doc=OutputDocumentation(doc="Optional: Directory to write output to."))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Tinscan_Find_V0_1_0().translate("wdl", allow_empty_container=True)
+

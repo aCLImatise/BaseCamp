@@ -1,0 +1,106 @@
+!Command
+command:
+- pblayout
+- map-r2c
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: m4
+  description: STR    Input M4.
+- !Positional
+  optional: false
+  position: 1
+  name: tp
+  description: STR    Input Tiling path file.
+- !Positional
+  optional: false
+  position: 2
+  name: ctg_lens
+  description: "STR    File containing contig lengths. First column is the contigh\
+    \ name, second column contig\nlength, other columns are ignored. Can be space\
+    \ or tab separated. The .fai files are\nacceptable."
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --alias-seqdb
+  description: STR    Specifies the SeqDB to use for id-to-name lookup for every read
+    in the tiling path.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max-diag-diff
+  description: "INT    Maximum diagonal difference for clustering of read-to-contig\
+    \ projections during mapping.\n[100]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --secondary-frac
+  description: "FLOAT  If two mappings overlap by more than this fraction, one will\
+    \ be marked as secondary and\nremoved from output. [0.5]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max-dist-from-edge
+  description: "INT    For each mapped region, all overlap coordinates within this\
+    \ distance from the\nleft-/right-most query position will be recollected to find\
+    \ the optimal mapping\nposition. This allows for some 'jitter' in mapping. [3]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --log-level
+  description: 'STR    Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL).
+    [WARN]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --log-file
+  description: FILE   Log to a file, instead of stderr.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this help and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Show application version and exit.
+  args: !EmptyFlagArg {}
+help_text: "pblayout map-r2c - Map reads to contigs based on tiling paths and overlaps.\n\
+  \nUsage:\n  pblayout map-r2c [options] <m4> <tp> <ctg_lens>\n\n  m4            \
+  \        STR    Input M4.\n  tp                    STR    Input Tiling path file.\n\
+  \  ctg_lens              STR    File containing contig lengths. First column is\
+  \ the contigh name, second column contig\n                               length,\
+  \ other columns are ignored. Can be space or tab separated. The .fai files are\n\
+  \                               acceptable.\n\nOther Options:\n  --alias-seqdb \
+  \        STR    Specifies the SeqDB to use for id-to-name lookup for every read\
+  \ in the tiling path.\n  --max-diag-diff       INT    Maximum diagonal difference\
+  \ for clustering of read-to-contig projections during mapping.\n               \
+  \                [100]\n  --secondary-frac      FLOAT  If two mappings overlap by\
+  \ more than this fraction, one will be marked as secondary and\n               \
+  \                removed from output. [0.5]\n  --max-dist-from-edge  INT    For\
+  \ each mapped region, all overlap coordinates within this distance from the\n  \
+  \                             left-/right-most query position will be recollected\
+  \ to find the optimal mapping\n                               position. This allows\
+  \ for some 'jitter' in mapping. [3]\n\n  -h,--help                    Show this\
+  \ help and exit.\n  --version                    Show application version and exit.\n\
+  \  --log-level           STR    Set log level. Valid choices: (TRACE, DEBUG, INFO,\
+  \ WARN, FATAL). [WARN]\n  --log-file            FILE   Log to a file, instead of\
+  \ stderr.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/pbipa:1.3.2--hee625c5_0

@@ -1,0 +1,74 @@
+!Command
+command:
+- edit-gff
+- add
+positional:
+- !Positional
+  optional: true
+  position: 0
+  name: INPUT_FILE
+  description: ''
+- !Positional
+  optional: true
+  position: 1
+  name: OUTPUT_FILE
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  - -a
+  - --attributes
+  description: "Add attributes to the GFF file. For example `-a\ntaxon_id 2` will\
+    \ add taxon_id attribute with a\nvalue of 2 to all annotations. Multiple attributes\n\
+    can be set, for example: `-a taxon_id 2 -a gene_id\nTEST`  [required]"
+  args: !SimpleFlagArg
+    name: TEXT...
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --overwrite
+  description: Overwrite the attributes if present
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --only-edited
+  description: Only output edited annotations
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --uids
+  description: "Only edit annotations with `uid` in a file (one\nper line)"
+  args: !SimpleFlagArg
+    name: FILENAME
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: edit-gff add [OPTIONS] [INPUT_FILE] [OUTPUT_FILE]\n\n  Add fields\
+  \ to a GFF File\n\nOptions:\n  -v, --verbose\n  -a, --attributes TEXT...  Add attributes\
+  \ to the GFF file. For example `-a\n                            taxon_id 2` will\
+  \ add taxon_id attribute with a\n                            value of 2 to all annotations.\
+  \ Multiple attributes\n                            can be set, for example: `-a\
+  \ taxon_id 2 -a gene_id\n                            TEST`  [required]\n\n  -w,\
+  \ --overwrite           Overwrite the attributes if present\n  -o, --only-edited\
+  \         Only output edited annotations\n  -f, --uids FILENAME       Only edit\
+  \ annotations with `uid` in a file (one\n                            per line)\n\
+  \n  --help                    Show this message and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/mgkit:0.5.6--py37hf01694f_0

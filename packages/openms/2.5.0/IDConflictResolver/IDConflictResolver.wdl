@@ -20,6 +20,9 @@ task IDConflictResolver {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "*                                           Input file (data annotated with identifications) (valid formats: 'featureXML', 'consensusXML')"
     out: "*                                          Output file (data with one peptide identification per feature) (valid formats: 'featureXML', 'consensusXML')"

@@ -1,0 +1,82 @@
+!Command
+command:
+- tgStoreLoad
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: v
+  description: ''
+- !Positional
+  optional: true
+  position: 1
+  name: input.cns
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  description: Path to the sequence store
+  args: !SimpleFlagArg
+    name: seqStore
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  description: <v>     Path to the tigStore and version to add tigs to
+  args: !SimpleFlagArg
+    name: tigStore
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  description: "Load the tig(s) from files listed in 'file-of-files'\n(WARNING: program\
+    \ will succeed if this file is empty)"
+  args: !SimpleFlagArg
+    name: file-of-files
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: Don't load into store, just report what would have happened
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -dump
+  description: Dump the cns files as ASCII, don't load into store
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -test
+  description: Test the cns files for various errors, don't load into store
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "usage: tgStoreLoad -S <seqStore> -T <tigStore> <v> [input.cns]\n\n  -S\
+  \ <seqStore>         Path to the sequence store\n  -T <tigStore> <v>     Path to\
+  \ the tigStore and version to add tigs to\n\n  -L <file-of-files>    Load the tig(s)\
+  \ from files listed in 'file-of-files'\n                        (WARNING: program\
+  \ will succeed if this file is empty)\n\n  -n                    Don't load into\
+  \ store, just report what would have happened\n\n  -dump                 Dump the\
+  \ cns files as ASCII, don't load into store\n  -test                 Test the cns\
+  \ files for various errors, don't load into store\n\n  The primary operation is\
+  \ to replace tigs in the store with ones in a set of input files.\n  The input files\
+  \ can be either supplied directly on the command line or listed in\n  a text file\
+  \ (-L).\n\n  A new store is created if one doesn't exist, otherwise, whatever tigs\
+  \ are there are\n  replaced with those in the -R file.  If version 'v' doesn't exist,\
+  \ it is created.\n\n  Even if -n is supplied, a new store is created if one doesn't\
+  \ exist.\n\n  To add a new tig, give it a tig id of -1.  New tigs must be added\
+  \ to the latest version.\n  To delete a tig, remove all children, and set the number\
+  \ of them to zero.\n\nERROR:  Unknown option '--help'.\nERROR:  no sequence store\
+  \ (-S) supplied.\nERROR:  no tig store (-T) supplied.\nERROR:  no input tig files\
+  \ supplied on command line or via -L option.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/canu:2.1.1--he1b5a44_1

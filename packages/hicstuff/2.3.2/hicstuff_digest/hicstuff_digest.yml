@@ -1,0 +1,99 @@
+!Command
+command:
+- hicstuff
+- digest
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: fasta
+  description: Fasta file to be digested
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --circular
+  description: Specify if the genome is circular.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --enzyme
+  description: "[,ENZ2,...]     A restriction enzyme or an integer\nrepresenting fixed\
+    \ chunk sizes (in bp).\nMultiple comma-separated enzymes can\nbe given."
+  args: !SimpleFlagArg
+    name: ENZ
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  - --force
+  description: Write even if the output file already exists.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --size
+  description: "Minimum size threshold to keep\nfragments. [default: 0]"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --outdir
+  description: "Directory where the fragments and\ncontigs files will be written.\n\
+    Defaults to current directory."
+  args: !SimpleFlagArg
+    name: DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --plot
+  description: "Show a histogram of fragment length\ndistribution after digestion."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --figdir
+  description: "Path to directory of the output figure.\nBy default, the figure is\
+    \ only shown\nbut not saved."
+  args: !SimpleFlagArg
+    name: FILE
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Genome chunking command\n\n    Digests a fasta file into fragments based\
+  \ on a restriction enzyme or a\n    fixed chunk size. Generates two output files\
+  \ into the target directory\n    named \"info_contigs.txt\" and \"fragments_list.txt\"\
+  \n\n    usage:\n        digest [--plot] [--figdir=FILE] [--force] [--circular] [--size=INT]\n\
+  \               [--outdir=DIR] --enzyme=ENZ <fasta>\n\n    arguments:\n        fasta\
+  \                     Fasta file to be digested\n\n    options:\n        -c, --circular\
+  \                  Specify if the genome is circular.\n        -e, --enzyme=ENZ[,ENZ2,...]\
+  \     A restriction enzyme or an integer\n                                     \
+  \   representing fixed chunk sizes (in bp).\n                                  \
+  \      Multiple comma-separated enzymes can\n                                  \
+  \      be given.\n        -F, --force                     Write even if the output\
+  \ file already exists.\n        -s, --size=INT                  Minimum size threshold\
+  \ to keep\n                                        fragments. [default: 0]\n   \
+  \     -o, --outdir=DIR                Directory where the fragments and\n      \
+  \                                  contigs files will be written.\n            \
+  \                            Defaults to current directory.\n        -p, --plot\
+  \                      Show a histogram of fragment length\n                   \
+  \                     distribution after digestion.\n        -f, --figdir=FILE \
+  \              Path to directory of the output figure.\n                       \
+  \                 By default, the figure is only shown\n                       \
+  \                 but not saved.\n\n    output:\n        fragments_list.txt: information\
+  \ about restriction fragments (or chunks)\n        info_contigs.txt: information\
+  \ about contigs or chromosomes\n\n    \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/hicstuff:2.3.2--py_0

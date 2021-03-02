@@ -1,0 +1,51 @@
+!Command
+command:
+- checkm
+- taxon_list
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --rank
+  description: 'restrict list to specified taxonomic rank (default: ALL)'
+  args: !ChoiceFlagArg
+    choices: !!set
+      ALL:
+      domain:
+      species:
+      genus:
+      class:
+      order:
+      family:
+      phylum:
+      life:
+- !Flag
+  optional: true
+  synonyms:
+  - --tmpdir
+  description: specify an alternative directory for temporary files
+  args: !SimpleFlagArg
+    name: TMPDIR
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: checkm taxon_list [-h]\n                         [--rank {ALL,life,domain,phylum,class,order,family,genus,species}]\n\
+  \                         [--tmpdir TMPDIR]\n\nList available taxonomic-specific\
+  \ marker sets.\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  --rank {ALL,life,domain,phylum,class,order,family,genus,species}\n\
+  \                        restrict list to specified taxonomic rank (default: ALL)\n\
+  \  --tmpdir TMPDIR       specify an alternative directory for temporary files\n\n\
+  Example: checkm taxon_list --rank phylum\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/checkm-genome:1.1.3--py_1

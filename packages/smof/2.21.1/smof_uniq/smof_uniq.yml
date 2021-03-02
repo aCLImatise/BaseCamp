@@ -1,0 +1,98 @@
+!Command
+command:
+- smof
+- uniq
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: INPUT
+  description: input fasta sequence (default = stdin)
+- !Positional
+  optional: false
+  position: 0
+  name: headers
+  description: -P, --unpack          reverse the pack operation
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --count
+  description: writes (count|header) in tab-delimited format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --repeated
+  description: print only repeated entries
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --uniq
+  description: print only unique entries
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --pack
+  description: combine redundant sequences by concatenating the
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  - --pack-sep
+  description: "set delimiting string for pack/unpack operations (SOH,\n0x01, by default)"
+  args: !SimpleFlagArg
+    name: PACK_SEP
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --first-header
+  description: "remove entries with duplicate headers (keep only the\nfirst)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --removed
+  description: With -f, store removed sequences in FILE
+  args: !SimpleFlagArg
+    name: FILE
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: <fastafile> | smof uniq <options>\n\nEmulates the GNU uniq command.\
+  \ Two entries are considered equivalent only if\ntheir sequences AND headers are\
+  \ exactly equal. Newlines are ignored but all\ncomparisons are case-sensitive. The\
+  \ pack/unpack option is designed to be\ncompatible with the conventions used in\
+  \ the NCBI-BLAST non-redundant\ndatabases: entries with identical sequences are\
+  \ merged and their headers are\njoined with SOH (0x01) as a delimiter (by default).\n\
+  \npositional arguments:\n  INPUT                 input fasta sequence (default =\
+  \ stdin)\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  -c, --count           writes (count|header) in tab-delimited format\n\
+  \  -d, --repeated        print only repeated entries\n  -u, --uniq            print\
+  \ only unique entries\n  -p, --pack            combine redundant sequences by concatenating\
+  \ the\n                        headers\n  -P, --unpack          reverse the pack\
+  \ operation\n  -z PACK_SEP, --pack-sep PACK_SEP\n                        set delimiting\
+  \ string for pack/unpack operations (SOH,\n                        0x01, by default)\n\
+  \  -f, --first-header    remove entries with duplicate headers (keep only the\n\
+  \                        first)\n  --removed FILE        With -f, store removed\
+  \ sequences in FILE\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/smof:2.21.1--py_0

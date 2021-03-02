@@ -3,47 +3,47 @@ id: ParseAligns.cwl
 inputs:
 - id: in_min_align
   doc: minimum alignment length
-  type: long
+  type: long?
   inputBinding:
     prefix: --min-align
 - id: in_dist
   doc: write distance estimates to this file
-  type: File
+  type: File?
   inputBinding:
     prefix: --dist
 - id: in_frag
   doc: write fragment sizes to this file
-  type: File
+  type: File?
   inputBinding:
     prefix: --frag
 - id: in_hist
   doc: write the fragment size histogram to FILE
-  type: File
+  type: File?
   inputBinding:
     prefix: --hist
 - id: in_sam
   doc: alignments are in SAM format
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --sam
 - id: in_k_aligner
   doc: alignments are in KAligner format
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --kaligner
 - id: in_cover
   doc: coverage cut-off for distance estimates
-  type: string
+  type: string?
   inputBinding:
     prefix: --cover
 - id: in_verbose
   doc: display verbose output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_k
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -k
 - id: in_km_er
@@ -55,6 +55,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - ParseAligns

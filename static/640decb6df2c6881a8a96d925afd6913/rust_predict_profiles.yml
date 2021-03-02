@@ -1,0 +1,91 @@
+!Command
+command:
+- rust_predict_profiles
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: RUST_codon_file
+  description: Correlation between observed and predicted profiles from CDS start
+    + 120 to
+- !Positional
+  optional: false
+  position: 0
+  name: transcriptome
+  description: "fasta file of transcripts, CDS start and end may be\nprovided on description\
+    \ line using tab separation e.g.\n>NM_0001 10 5000, otherwise it searches for\
+    \ longest\nORF"
+- !Positional
+  optional: false
+  position: 1
+  name: alignment
+  description: sorted bam file of alignments to transcriptome
+- !Positional
+  optional: false
+  position: 2
+  name: offset
+  description: nucleotide offset to A-site
+- !Positional
+  optional: false
+  position: 3
+  name: lengths
+  description: "lengths of footprints included, for example 28:32 is\n28,29,30,31,32"
+- !Positional
+  optional: false
+  position: 4
+  name: RUST_codon_file
+  description: path to file produced from "rust_codon"
+- !Positional
+  optional: false
+  position: 0
+  name: files
+  description: --version             show program's version number and exit
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: directory  path to outputfile, default is "predict_profiles"
+  args: !SimpleFlagArg
+    name: outfile
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: writes all profiles in csv files, may produce >10,000
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: ''
+  args: !EmptyFlagArg {}
+help_text: "usage: rust_predict_profiles [-h] [-o outfile directory] [-p] [--version]\n\
+  \                             transcriptome alignment offset lengths\n         \
+  \                    RUST_codon_file\n\nCorrelation between observed and predicted\
+  \ profiles from CDS start + 120 to\nCDS stop - 60\n\npositional arguments:\n  transcriptome\
+  \         fasta file of transcripts, CDS start and end may be\n                \
+  \        provided on description line using tab separation e.g.\n              \
+  \          >NM_0001 10 5000, otherwise it searches for longest\n               \
+  \         ORF\n  alignment             sorted bam file of alignments to transcriptome\n\
+  \  offset                nucleotide offset to A-site\n  lengths               lengths\
+  \ of footprints included, for example 28:32 is\n                        28,29,30,31,32\n\
+  \  RUST_codon_file       path to file produced from \"rust_codon\"\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -o outfile directory\
+  \  path to outputfile, default is \"predict_profiles\"\n  -p                   \
+  \ writes all profiles in csv files, may produce >10,000\n                      \
+  \  files\n  --version             show program's version number and exit\n"
+generated_using:
+- --help
+docker_image:

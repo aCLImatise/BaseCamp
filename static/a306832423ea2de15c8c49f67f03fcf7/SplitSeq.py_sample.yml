@@ -1,0 +1,125 @@
+!Command
+command:
+- SplitSeq.py
+- sample
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: "A list of FASTA/FASTQ files containing sequences to\nprocess. (default:\
+    \ None)"
+  args: !RepeatFlagArg
+    name: SEQ_FILES
+- !Flag
+  optional: true
+  synonyms:
+  - --outdir
+  description: "Specify to changes the output directory to the\nlocation specified.\
+    \ The input file directory is used\nif this is not specified. (default: None)"
+  args: !SimpleFlagArg
+    name: OUT_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --outname
+  description: "Changes the prefix of the successfully processed\noutput file to the\
+    \ string specified. May not be\nspecified with multiple input files. (default:\
+    \ None)"
+  args: !SimpleFlagArg
+    name: OUT_NAME
+- !Flag
+  optional: true
+  synonyms:
+  - --fasta
+  description: "Specify to force output as FASTA rather than FASTQ.\n(default: None)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --delim
+  description: "DELIMITER DELIMITER\nA list of the three delimiters that separate\n\
+    annotation blocks, field names and values, and values\nwithin a field, respectively.\
+    \ (default: ('|', '=',\n','))"
+  args: !SimpleFlagArg
+    name: DELIMITER
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: "Maximum number of sequences to sample from each file,\nfield or annotation\
+    \ set. The default behavior, without\nthe -f argument, is to sample from the complete\
+    \ set of\nsequences in the input file. (default: None)"
+  args: !RepeatFlagArg
+    name: MAX_COUNT
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: "The annotation field for sampling criteria. If the -u\nargument is\
+    \ not also specified, then sampling will be\nperformed for each unique annotation\
+    \ value in the\ndeclared field separately. (default: None)"
+  args: !SimpleFlagArg
+    name: FIELD
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  description: "If specified, sampling will be restricted to sequences\nthat contain\
+    \ one of the declared annotation values in\nthe specified field. Requires the\
+    \ -f argument.\n(default: None)\n"
+  args: !RepeatFlagArg
+    name: VALUES
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: SplitSeq.py sample [--version] [-h] -s SEQ_FILES [SEQ_FILES ...]\n\
+  \                          [--outdir OUT_DIR] [--outname OUT_NAME] [--fasta]\n \
+  \                         [--delim DELIMITER DELIMITER DELIMITER] -n MAX_COUNT\n\
+  \                          [MAX_COUNT ...] [-f FIELD] [-u VALUES [VALUES ...]]\n\
+  \nRandomly samples from unpaired sequences files.\n\nhelp:\n  --version        \
+  \     show program's version number and exit\n  -h, --help            show this\
+  \ help message and exit\n\nstandard arguments:\n  -s SEQ_FILES [SEQ_FILES ...]\n\
+  \                        A list of FASTA/FASTQ files containing sequences to\n \
+  \                       process. (default: None)\n  --outdir OUT_DIR      Specify\
+  \ to changes the output directory to the\n                        location specified.\
+  \ The input file directory is used\n                        if this is not specified.\
+  \ (default: None)\n  --outname OUT_NAME    Changes the prefix of the successfully\
+  \ processed\n                        output file to the string specified. May not\
+  \ be\n                        specified with multiple input files. (default: None)\n\
+  \  --fasta               Specify to force output as FASTA rather than FASTQ.\n \
+  \                       (default: None)\n  --delim DELIMITER DELIMITER DELIMITER\n\
+  \                        A list of the three delimiters that separate\n        \
+  \                annotation blocks, field names and values, and values\n       \
+  \                 within a field, respectively. (default: ('|', '=',\n         \
+  \               ','))\n\nsplitting arguments:\n  -n MAX_COUNT [MAX_COUNT ...]\n\
+  \                        Maximum number of sequences to sample from each file,\n\
+  \                        field or annotation set. The default behavior, without\n\
+  \                        the -f argument, is to sample from the complete set of\n\
+  \                        sequences in the input file. (default: None)\n  -f FIELD\
+  \              The annotation field for sampling criteria. If the -u\n         \
+  \               argument is not also specified, then sampling will be\n        \
+  \                performed for each unique annotation value in the\n           \
+  \             declared field separately. (default: None)\n  -u VALUES [VALUES ...]\n\
+  \                        If specified, sampling will be restricted to sequences\n\
+  \                        that contain one of the declared annotation values in\n\
+  \                        the specified field. Requires the -f argument.\n      \
+  \                  (default: None)\n"
+generated_using:
+- --help
+docker_image:

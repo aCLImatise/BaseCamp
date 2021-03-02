@@ -1,0 +1,198 @@
+!Command
+command:
+- gdc-client
+- download
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: file_id
+  description: The GDC UUID of the file(s) to download
+- !Positional
+  optional: false
+  position: 0
+  name: directory
+  description: -s server, --server server
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: "Enable debug logging. If a failure occurs, the program\nwill stop."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --log-file
+  description: Save logs to file. Amount logged affected by --debug
+  args: !SimpleFlagArg
+    name: LOG_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --color_off
+  description: Disable colored output
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --token-file
+  description: GDC API auth token file
+  args: !SimpleFlagArg
+    name: TOKEN_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --dir
+  description: Directory to download files to. Defaults to current
+  args: !SimpleFlagArg
+    name: DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --no-segment-md5sums
+  description: "Do not calculate inbound segment md5sums and/or do not\nverify md5sums\
+    \ on restart"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-file-md5sum
+  description: Do not verify file md5sum after download
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --n-processes
+  description: Number of client connections.
+  args: !SimpleFlagArg
+    name: N_PROCESSES
+- !Flag
+  optional: true
+  synonyms:
+  - --http-chunk-size
+  - -c
+  description: Size in bytes of standard HTTP block size.
+  args: !SimpleFlagArg
+    name: HTTP_CHUNK_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --save-interval
+  description: "The number of chunks after which to flush state file.\nA lower save\
+    \ interval will result in more frequent\nprintout but lower performance."
+  args: !SimpleFlagArg
+    name: SAVE_INTERVAL
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --no-verify
+  description: Perform insecure SSL connection and transfer
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-related-files
+  description: Do not download related files.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-annotations
+  description: Do not download annotations.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-auto-retry
+  description: Ask before retrying to download a file
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --retry-amount
+  description: Number of times to retry a download
+  args: !SimpleFlagArg
+    name: RETRY_AMOUNT
+- !Flag
+  optional: true
+  synonyms:
+  - --wait-time
+  description: Amount of seconds to wait before retrying
+  args: !SimpleFlagArg
+    name: WAIT_TIME
+- !Flag
+  optional: true
+  synonyms:
+  - --latest
+  description: Download latest version of a file if it exists
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --config
+  description: Path to INI-type config file
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --manifest
+  description: "GDC download manifest file\n"
+  args: !SimpleFlagArg
+    name: MANIFEST
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: gdc-client download [-h] [--debug] [--log-file LOG_FILE] [--color_off]\n\
+  \                           [-t TOKEN_FILE] [-d DIR] [-s server]\n             \
+  \              [--no-segment-md5sums] [--no-file-md5sum]\n                     \
+  \      [-n N_PROCESSES]\n                           [--http-chunk-size HTTP_CHUNK_SIZE]\n\
+  \                           [--save-interval SAVE_INTERVAL] [-k]\n             \
+  \              [--no-related-files] [--no-annotations]\n                       \
+  \    [--no-auto-retry] [--retry-amount RETRY_AMOUNT]\n                         \
+  \  [--wait-time WAIT_TIME] [--latest] [--config FILE]\n                        \
+  \   [-m MANIFEST]\n                           [file_id [file_id ...]]\n\npositional\
+  \ arguments:\n  file_id               The GDC UUID of the file(s) to download\n\n\
+  optional arguments:\n  -h, --help            show this help message and exit\n \
+  \ --debug               Enable debug logging. If a failure occurs, the program\n\
+  \                        will stop.\n  --log-file LOG_FILE   Save logs to file.\
+  \ Amount logged affected by --debug\n  --color_off           Disable colored output\n\
+  \  -t TOKEN_FILE, --token-file TOKEN_FILE\n                        GDC API auth\
+  \ token file\n  -d DIR, --dir DIR     Directory to download files to. Defaults to\
+  \ current\n                        directory\n  -s server, --server server\n   \
+  \                     The TCP server address server[:port]\n  --no-segment-md5sums\
+  \  Do not calculate inbound segment md5sums and/or do not\n                    \
+  \    verify md5sums on restart\n  --no-file-md5sum      Do not verify file md5sum\
+  \ after download\n  -n N_PROCESSES, --n-processes N_PROCESSES\n                \
+  \        Number of client connections.\n  --http-chunk-size HTTP_CHUNK_SIZE, -c\
+  \ HTTP_CHUNK_SIZE\n                        Size in bytes of standard HTTP block\
+  \ size.\n  --save-interval SAVE_INTERVAL\n                        The number of\
+  \ chunks after which to flush state file.\n                        A lower save\
+  \ interval will result in more frequent\n                        printout but lower\
+  \ performance.\n  -k, --no-verify       Perform insecure SSL connection and transfer\n\
+  \  --no-related-files    Do not download related files.\n  --no-annotations    \
+  \  Do not download annotations.\n  --no-auto-retry       Ask before retrying to\
+  \ download a file\n  --retry-amount RETRY_AMOUNT\n                        Number\
+  \ of times to retry a download\n  --wait-time WAIT_TIME\n                      \
+  \  Amount of seconds to wait before retrying\n  --latest              Download latest\
+  \ version of a file if it exists\n  --config FILE         Path to INI-type config\
+  \ file\n  -m MANIFEST, --manifest MANIFEST\n                        GDC download\
+  \ manifest file\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/gdc-client:1.6.0--py_0

@@ -1,0 +1,197 @@
+!Command
+command:
+- seurat-find-neighbours.R
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input-object-file
+  description: File name in which a serialized R matrix object may be found.
+  args: !SimpleFlagArg
+    name: INPUT-OBJECT-FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --input-format
+  description: Either loom, seurat, anndata or singlecellexperiment for the input
+    format to read.
+  args: !SimpleFlagArg
+    name: INPUT-FORMAT
+- !Flag
+  optional: true
+  synonyms:
+  - --output-format
+  description: Either loom, seurat, anndata or singlecellexperiment for the output
+    format.
+  args: !SimpleFlagArg
+    name: OUTPUT-FORMAT
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --distance-matrix
+  description: Boolean value of whether the provided matrix is a distance matrix;
+    note, for objects of class dist, this parameter will be set automatically.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --k-param
+  description: Defines k for the k-nearest neighbor algorithm
+  args: !SimpleFlagArg
+    name: K-PARAM
+- !Flag
+  optional: true
+  synonyms:
+  - --compute-snn
+  description: Also compute the shared nearest neighbor graph
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --prune-snn
+  description: Sets the cutoff for acceptable Jaccard index when computing the neighborhood
+    overlap for the SNN construction. Any edges with values less than or equal to
+    this will be set to 0 and removed from the SNN graph. Essentially sets the strigency
+    of pruning (0 --- no pruning, 1 --- prune everything).
+  args: !SimpleFlagArg
+    name: PRUNE-SNN
+- !Flag
+  optional: true
+  synonyms:
+  - --nn-method
+  description: 'Method for nearest neighbor finding. Options include: rann (default),
+    annoy'
+  args: !SimpleFlagArg
+    name: NN-METHOD
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-object-file
+  description: File name in which to store serialized R object of type 'Seurat'.'
+  args: !SimpleFlagArg
+    name: OUTPUT-OBJECT-FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --annoy-metric
+  description: 'Distance metric for annoy. Options include: euclidean (default), cosine,
+    manhattan, and hamming'
+  args: !SimpleFlagArg
+    name: ANNOY-METRIC
+- !Flag
+  optional: true
+  synonyms:
+  - --graph-name
+  description: Name of graph to use for the clustering algorithm.
+  args: !SimpleFlagArg
+    name: GRAPH-NAME
+- !Flag
+  optional: true
+  synonyms:
+  - --nn-eps
+  description: Error bound when performing nearest neighbor seach using RANN; default
+    of 0.0 implies exact nearest neighbor search
+  args: !SimpleFlagArg
+    name: NN-EPS
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: Maximal number of iterations per random start
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --force-recalc
+  description: Force recalculation of SNN
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --features
+  description: Comma-separated list of genes to use for building SNN. Alternatively,
+    text file with one gene per line.
+  args: !SimpleFlagArg
+    name: FEATURES
+- !Flag
+  optional: true
+  synonyms:
+  - --reduction
+  description: Reduction to use as input for building the SNN
+  args: !SimpleFlagArg
+    name: REDUCTION
+- !Flag
+  optional: true
+  synonyms:
+  - --dims
+  description: Dimensions of reduction to use as input. A comma-separated list of
+    the dimensions to use in construction of the SNN graph (e.g. To use the first
+    5 PCs, pass 1,2,3,4,5).
+  args: !SimpleFlagArg
+    name: DIMS
+- !Flag
+  optional: true
+  synonyms:
+  - --assay
+  description: Assay to use in construction of SNN
+  args: !SimpleFlagArg
+    name: ASSAY
+- !Flag
+  optional: true
+  synonyms:
+  - --do-plot
+  description: Plot SNN graph on tSNE coordinates
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: "Show this help message and exit\n"
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: /usr/local/bin/seurat-find-neighbours.R [options]\n\n\nOptions:\n\
+  \t-i INPUT-OBJECT-FILE, --input-object-file=INPUT-OBJECT-FILE\n\t\tFile name in\
+  \ which a serialized R matrix object may be found.\n\n\t--input-format=INPUT-FORMAT\n\
+  \t\tEither loom, seurat, anndata or singlecellexperiment for the input format to\
+  \ read.\n\n\t--output-format=OUTPUT-FORMAT\n\t\tEither loom, seurat, anndata or\
+  \ singlecellexperiment for the output format.\n\n\t-d, --distance-matrix\n\t\tBoolean\
+  \ value of whether the provided matrix is a distance matrix; note, for objects of\
+  \ class dist, this parameter will be set automatically.\n\n\t-k K-PARAM, --k-param=K-PARAM\n\
+  \t\tDefines k for the k-nearest neighbor algorithm\n\n\t--compute-snn\n\t\tAlso\
+  \ compute the shared nearest neighbor graph\n\n\t--prune-snn=PRUNE-SNN\n\t\tSets\
+  \ the cutoff for acceptable Jaccard index when computing the neighborhood overlap\
+  \ for the SNN construction. Any edges with values less than or equal to this will\
+  \ be set to 0 and removed from the SNN graph. Essentially sets the strigency of\
+  \ pruning (0 --- no pruning, 1 --- prune everything).\n\n\t--nn-method=NN-METHOD\n\
+  \t\tMethod for nearest neighbor finding. Options include: rann (default), annoy\n\
+  \n\t-o OUTPUT-OBJECT-FILE, --output-object-file=OUTPUT-OBJECT-FILE\n\t\tFile name\
+  \ in which to store serialized R object of type 'Seurat'.'\n\n\t-a ANNOY-METRIC,\
+  \ --annoy-metric=ANNOY-METRIC\n\t\tDistance metric for annoy. Options include: euclidean\
+  \ (default), cosine, manhattan, and hamming\n\n\t--graph-name=GRAPH-NAME\n\t\tName\
+  \ of graph to use for the clustering algorithm.\n\n\t--nn-eps=NN-EPS\n\t\tError\
+  \ bound when performing nearest neighbor seach using RANN; default of 0.0 implies\
+  \ exact nearest neighbor search\n\n\t--verbose\n\t\tMaximal number of iterations\
+  \ per random start\n\n\t--force-recalc\n\t\tForce recalculation of SNN\n\n\t-f FEATURES,\
+  \ --features=FEATURES\n\t\tComma-separated list of genes to use for building SNN.\
+  \ Alternatively, text file with one gene per line.\n\n\t--reduction=REDUCTION\n\t\
+  \tReduction to use as input for building the SNN\n\n\t--dims=DIMS\n\t\tDimensions\
+  \ of reduction to use as input. A comma-separated list of the dimensions to use\
+  \ in construction of the SNN graph (e.g. To use the first 5 PCs, pass 1,2,3,4,5).\n\
+  \n\t--assay=ASSAY\n\t\tAssay to use in construction of SNN\n\n\t--do-plot\n\t\t\
+  Plot SNN graph on tSNE coordinates\n\n\t-h, --help\n\t\tShow this help message and\
+  \ exit\n\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/seurat-scripts:0.0.9--0

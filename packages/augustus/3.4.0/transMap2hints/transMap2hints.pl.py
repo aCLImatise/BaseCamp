@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, Int, String
+
+Transmap2Hints_Pl_V0_1_0 = CommandToolBuilder(tool="transMap2hints.pl", base_command=["transMap2hints.pl"], inputs=[ToolInput(tag="in_keep_ids", input_type=File(optional=True), prefix="--keepids", doc=InputDocumentation(doc="If idfile is given, then only those genes are used.")), ToolInput(tag="in_priority", input_type=Int(optional=True), prefix="--priority", doc=InputDocumentation(doc="larger number = higher priority (default 4)")), ToolInput(tag="in_ep_cut_off", input_type=Int(optional=True), prefix="--ep_cutoff", doc=InputDocumentation(doc="(default 1)")), ToolInput(tag="in_ep_margin", input_type=Int(optional=True), prefix="--ep_margin", doc=InputDocumentation(doc="(default 18)\neach exon suggested by the input yields 3 exonpart hints:\n|             exon as suggested by transmap          |\n|  ep   |    ep       |   ep  |\n|ep_cutoff |       |   exon      |       | ep_cutoff |\n|    ep_margin     |   exon      |    ep_margin      |")), ToolInput(tag="in_ip_cut_off", input_type=Int(optional=True), prefix="--ip_cutoff", doc=InputDocumentation(doc="the end of the intronpart interval are shorter by n bp than the intron (default 0)")), ToolInput(tag="in_u_trend_cut_off", input_type=Int(optional=True), prefix="--utrend_cutoff", doc=InputDocumentation(doc="UTRpart hint are cut off at the end by n bp (default 15)")), ToolInput(tag="in_min_intron_len", input_type=Int(optional=True), prefix="--min_intron_len", doc=InputDocumentation(doc="minimal intron len (default 50)")), ToolInput(tag="in_min_intron_len_utr", input_type=Int(optional=True), prefix="--min_intron_len_utr", doc=InputDocumentation(doc="a gap in the utr must be at least this long to be counted as an intron (default 80)")), ToolInput(tag="in_start_stop_radius", input_type=Int(optional=True), prefix="--start_stop_radius", doc=InputDocumentation(doc="(start and stop codon hint interval size)/2 (default 15)")), ToolInput(tag="in_tss_tts_radius", input_type=Int(optional=True), prefix="--tss_tts_radius", doc=InputDocumentation(doc="(tss and tts interval size)/2 (default 100)")), ToolInput(tag="in_source", input_type=String(optional=True), prefix="--source", doc=InputDocumentation(doc="source identifier in output (default 'T')")), ToolInput(tag="in_name", input_type=String(), position=0, doc=InputDocumentation(doc="chrom   strand  txStart txEnd   cdsStart        cdsEnd  exonCount       exonStarts      exonEnds"))], outputs=[], container="quay.io/biocontainers/augustus:3.4.0--pl526h0faeac2_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Transmap2Hints_Pl_V0_1_0().translate("wdl")
+

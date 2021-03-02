@@ -1,0 +1,77 @@
+!Command
+command:
+- chakin
+- feature
+- load_go
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: uniquename
+  description: --name_column INTEGER  Column containing the feature identifiers (2,
+    3, 10
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --query_type
+  description: "The feature type (e.g. 'gene', 'mRNA', 'polypeptide',\n'contig') of\
+    \ the query. It must be a valid Sequence\nOntology term.  [default: polypeptide]"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --match_on_name
+  description: Match features using their name instead of their
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --go_column
+  description: "Column containing the GO id (default=5).  [default:\n5]"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --re_name
+  description: "Regular expression to extract the feature name from\nthe input file\
+    \ (first capturing group will be used)."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --skip_missing
+  description: "Skip lines with unknown features or GO id instead of\naborting everything."
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: chakin feature load_go [OPTIONS] INPUT ORGANISM_ID ANALYSIS_ID\n\
+  \n  Load GO annotation from a tabular file\n\n  Output:\n\n      Number of inserted\
+  \ GO terms\n\nOptions:\n  --query_type TEXT      The feature type (e.g. 'gene',\
+  \ 'mRNA', 'polypeptide',\n                         'contig') of the query. It must\
+  \ be a valid Sequence\n                         Ontology term.  [default: polypeptide]\n\
+  \n  --match_on_name        Match features using their name instead of their\n  \
+  \                       uniquename\n\n  --name_column INTEGER  Column containing\
+  \ the feature identifiers (2, 3, 10\n                         or 11; default=2).\
+  \  [default: 2]\n\n  --go_column INTEGER    Column containing the GO id (default=5).\
+  \  [default:\n                         5]\n\n  --re_name TEXT         Regular expression\
+  \ to extract the feature name from\n                         the input file (first\
+  \ capturing group will be used).\n\n  --skip_missing         Skip lines with unknown\
+  \ features or GO id instead of\n                         aborting everything.\n\n\
+  \  -h, --help             Show this message and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/python-chado:2.3.4--pyh3252c3a_0

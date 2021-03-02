@@ -1,0 +1,128 @@
+!Command
+command:
+- fancplot
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: regions
+  description: "List of region selectors (<chr>:<start>-<end>) or\nfiles with region\
+    \ information (BED, GTF, ...)."
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --plot
+  description: "New plot, type will be chosen automatically by file\ntype, unless\
+    \ \"-t\" is provided."
+  args: !SimpleFlagArg
+    name: PLOT
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: "Suppresses interactive plotting window and redirects\nplot to file.\
+    \ Specify path to file when plotting a\nsingle region, and path to a folder for\
+    \ plotting\nmultiple regions."
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --script
+  description: Use a script file to define plot.
+  args: !SimpleFlagArg
+    name: SCRIPT
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --name
+  description: "Plot name to be used as prefix when plotting multiple\nregions. Is\
+    \ ignored for single region and interactive\nplot."
+  args: !SimpleFlagArg
+    name: NAME
+- !Flag
+  optional: true
+  synonyms:
+  - --width
+  description: 'Width of the figure in inches. Default: 4'
+  args: !SimpleFlagArg
+    name: WIDTH
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --window-size
+  description: "Plotting region size in base pairs. If provided, the\nactual size\
+    \ of the given region is ignored and instead\na region <chromosome>:<region center\
+    \ - window size/2>\n- <region center + window size/2> will be plotted."
+  args: !SimpleFlagArg
+    name: WINDOW_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --invert-x
+  description: Invert x-axis for this plot
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --tick-locations
+  description: "Manually define the locations of the tick labels on\nthe genome axis."
+  args: !RepeatFlagArg
+    name: TICK_LOCATIONS
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Print version information
+  args: !EmptyFlagArg {}
+help_text: "usage: fancplot [<fancplot global parameters>] <region> [<region> ...]\n\
+  \            --plot <plot type> [<plot parameters>] <plot data file(s)> [...]\n\n\
+  \            Run fancplot --plot <plot type> -h for help on a specific subplot.\n\
+  \nPlot types:\n\n-- Matrix --\ntriangular    Triangular Hi-C plot\nsquare      \
+  \  Square Hi-C plot\nsplit         Matrix vs matrix plot\nmirror        \"Mirrored\"\
+  \ matrix comparison plot\n\n-- Region --\nscores        Region scores plot with\
+  \ parameter dependency\nline          Line plot\nbar           Bar plot for region\
+  \ scores\nlayer         Layered feature plot\ngene          Gene plot\n\nfancplot\
+  \ plotting tool for fanc\n\npositional arguments:\n  regions               List\
+  \ of region selectors (<chr>:<start>-<end>) or\n                        files with\
+  \ region information (BED, GTF, ...).\n\noptional arguments:\n  -h, --help     \
+  \       show this help message and exit\n  -o OUTPUT, --output OUTPUT\n        \
+  \                Suppresses interactive plotting window and redirects\n        \
+  \                plot to file. Specify path to file when plotting a\n          \
+  \              single region, and path to a folder for plotting\n              \
+  \          multiple regions.\n  -s SCRIPT, --script SCRIPT\n                   \
+  \     Use a script file to define plot.\n  -p PLOT, --plot PLOT  New plot, type\
+  \ will be chosen automatically by file\n                        type, unless \"\
+  -t\" is provided.\n  -n NAME, --name NAME  Plot name to be used as prefix when plotting\
+  \ multiple\n                        regions. Is ignored for single region and interactive\n\
+  \                        plot.\n  --width WIDTH         Width of the figure in inches.\
+  \ Default: 4\n  -w WINDOW_SIZE, --window-size WINDOW_SIZE\n                    \
+  \    Plotting region size in base pairs. If provided, the\n                    \
+  \    actual size of the given region is ignored and instead\n                  \
+  \      a region <chromosome>:<region center - window size/2>\n                 \
+  \       - <region center + window size/2> will be plotted.\n  --invert-x       \
+  \     Invert x-axis for this plot\n  --tick-locations TICK_LOCATIONS [TICK_LOCATIONS\
+  \ ...]\n                        Manually define the locations of the tick labels\
+  \ on\n                        the genome axis.\n  -V, --version         Print version\
+  \ information\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/fanc:0.9.0--py37hf01694f_0

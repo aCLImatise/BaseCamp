@@ -1,0 +1,93 @@
+!Command
+command:
+- downsample.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: v.0.1
+  description: 'optional arguments:'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reads
+  description: "Readfile (flag can be used repeatadly to process\nseveral files"
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --sample
+  description: "Desired size of subsample in percent (1-100; default =\n50)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --interleave
+  description: "Optional. In case of two input files, data will be\ninterleaved from\
+    \ these in the output. Otherwise data\nwill be treated as already interleaved."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --seed
+  description: Optional. Seed for random number generator
+  args: !SimpleFlagArg
+    name: INT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: "show program's version number and exit\nexamples:\n# sample ~20 %\
+    \ of reads from three files\ndownsample.py -s 20 -r test.fastq.gz -r test2.fastq\
+    \ -r test3.fastq.gz\n# sample ~30 % of reads from two files, and interleave reads\
+    \ in output\ndownsample.py -s 30 --interleave -r test_R1.fastq.gz -r test_R2.fastq.gz\n\
+    # sample ~40 % of reads from three files, defining a seed for the random number\
+    \ generator, to allow replication of the process.\ndownsample.py -s 20 --rand\
+    \ -421039 -r test.fastq.gz -r test2.fastq -r test3.fastq.gz > test.subsample_40.fastq\n\
+    # sample ~20 % of reads from two files, compressing results on the fly.\ndownsample.py\
+    \ -s 20 -r test.fastq.gz -r test2.fastq | gzip > test.subsample_20.fastq.gz\n\
+    #sample ~5% of reads from a single file that contains interleaved read data\n\
+    downsample.py -s 5 --interleave -r test.interleaved.fastq.gz | gzip > test.interleaved.subsample_5.fastq.gz\n"
+  args: !EmptyFlagArg {}
+help_text: "usage: downsample.py [-h] [-r <FILE>] [-s <INT>] [--interleave] [--seed\
+  \ <INT>]\n                     [--version]\n\n        downsample.py - version: v.0.1\n\
+  \        \n        \n\noptional arguments:\n  -h, --help            show this help\
+  \ message and exit\n  -r <FILE>, --reads <FILE>\n                        Readfile\
+  \ (flag can be used repeatadly to process\n                        several files\n\
+  \  -s <INT>, --sample <INT>\n                        Desired size of subsample in\
+  \ percent (1-100; default =\n                        50)\n  --interleave       \
+  \   Optional. In case of two input files, data will be\n                       \
+  \ interleaved from these in the output. Otherwise data\n                       \
+  \ will be treated as already interleaved.\n  --seed <INT>          Optional. Seed\
+  \ for random number generator\n  --version             show program's version number\
+  \ and exit\n\n   examples: \n        # sample ~20 % of reads from three files\n\
+  \        downsample.py -s 20 -r test.fastq.gz -r test2.fastq -r test3.fastq.gz\n\
+  \        \n        # sample ~30 % of reads from two files, and interleave reads\
+  \ in output\n        downsample.py -s 30 --interleave -r test_R1.fastq.gz -r test_R2.fastq.gz\n\
+  \n\t# sample ~40 % of reads from three files, defining a seed for the random number\
+  \ generator, to allow replication of the process.\n\tdownsample.py -s 20 --rand\
+  \ -421039 -r test.fastq.gz -r test2.fastq -r test3.fastq.gz > test.subsample_40.fastq\n\
+  \n\t# sample ~20 % of reads from two files, compressing results on the fly.\n\t\
+  downsample.py -s 20 -r test.fastq.gz -r test2.fastq | gzip > test.subsample_20.fastq.gz\n\
+  \n\t#sample ~5% of reads from a single file that contains interleaved read data\n\
+  \tdownsample.py -s 5 --interleave -r test.interleaved.fastq.gz | gzip > test.interleaved.subsample_5.fastq.gz\n\
+  \n        \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/mitobim:1.9.1--0

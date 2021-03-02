@@ -1,0 +1,75 @@
+!Command
+command:
+- planemo
+- docker_build
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: image.
+  description: "% planemo docker_build bowtie2.xml # asssumes Dockerfile in same dir\n\
+    % planemo docker_shell --from_tag bowtie2.xml"
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --dockerfile
+  - --docker_image_cache
+  - --docker_cmd
+  description: "Command used to launch docker (defaults to\ndocker)."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --docker_sudo
+  - --no_docker_sudo
+  description: Flag to use sudo when running docker.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --docker_sudo_cmd
+  description: "sudo command to use when --docker_sudo is\nenabled (defaults to sudo)."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --docker_host
+  description: "Docker host to target when executing docker\ncommands (defaults to\
+    \ localhost)."
+  args: !SimpleFlagArg
+    name: TEXT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: planemo docker_build [OPTIONS] TOOL_PATH\n\n  Build (and optionally\
+  \ cache) Docker images.\n\n  Loads the tool or tools referenced by ``TOOL_PATH``\
+  \ (by default all tools\n  in current directory), and ensures they all reference\
+  \ the same Docker\n  image and then attempts to find a Dockerfile for these tools\
+  \ (can be\n  explicitly specified with ``--dockerfile`` but by default it will check\n\
+  \  the tool's directory and the current directory as well).\n\n  This command will\
+  \ then build and tag the image so it is ready to be tested\n  and published. The\
+  \ docker_shell command be used to test out the built\n  image.\n\n      % planemo\
+  \ docker_build bowtie2.xml # asssumes Dockerfile in same dir\n      % planemo docker_shell\
+  \ --from_tag bowtie2.xml\n\n  This can optionally also cache the images.\n\nOptions:\n\
+  \  --dockerfile TEXT\n  --docker_image_cache TEXT\n  --docker_cmd TEXT         \
+  \      Command used to launch docker (defaults to\n                            \
+  \      docker).\n\n  --docker_sudo / --no_docker_sudo\n                        \
+  \          Flag to use sudo when running docker.\n  --docker_sudo_cmd TEXT     \
+  \     sudo command to use when --docker_sudo is\n                              \
+  \    enabled (defaults to sudo).\n\n  --docker_host TEXT              Docker host\
+  \ to target when executing docker\n                                  commands (defaults\
+  \ to localhost).\n\n  --help                          Show this message and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/planemo:0.74.2--py_0

@@ -16,6 +16,9 @@ task Abysslongseqdist {
       ~{if defined(min_gap) then ("--min-gap " +  '"' + min_gap + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     km_er: "length of a k-mer"
     min_gap: "minimum scaffold gap length to output [200]"

@@ -1,0 +1,129 @@
+!Command
+command:
+- ivar
+- consensus
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: samtools
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: mpileup
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: input.bam
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  description: 'Minimum quality score threshold to count base (Default: 20)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: "Minimum frequency threshold(0 - 1) to call consensus. (Default: 0)\n\
+    Frequently used thresholds | Description\n---------------------------|------------\n\
+    0 | Majority or most common base\n0.2 | Bases that make up atleast 20% of the\
+    \ depth at a position\n0.5 | Strict or bases that make up atleast 50% of the depth\
+    \ at a position\n0.9 | Strict or bases that make up atleast 90% of the depth at\
+    \ a position\n1 | Identical or bases that make up 100% of the depth at a position.\
+    \ Will have highest ambiguities"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: 'Minimum depth to call consensus(Default: 10)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  description: If '-k' flag is added, regions with depth less than minimum depth will
+    not be added to the consensus sequence. Using '-k' will override any option specified
+    using -n
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: '(N/-) Character to print in regions with less than minimum coverage(Default:
+    N)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: (Required) Prefix for the output fasta file and quality file
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: (Optional) Name of fasta header. By default, the prefix is used to
+    create the fasta header in the following format, Consensus_<prefix>_threshold_<frequency-threshold>_quality_<minimum-quality>
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Q
+  description: ''
+  args: !SimpleFlagArg
+    name: '0'
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: ''
+  args: !SimpleFlagArg
+    name: '0'
+- !Flag
+  optional: true
+  synonyms:
+  - -A
+  description: ''
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -aa
+  description: ''
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Usage: samtools mpileup -aa -A -d 0 -Q 0 <input.bam> | ivar consensus\
+  \ -p <prefix> \n\nNote : samtools mpileup output must be piped into `ivar consensus`\n\
+  \nInput Options    Description\n           -q    Minimum quality score threshold\
+  \ to count base (Default: 20)\n           -t    Minimum frequency threshold(0 -\
+  \ 1) to call consensus. (Default: 0)\n                 Frequently used thresholds\
+  \ | Description\n                 ---------------------------|------------\n   \
+  \                                       0 | Majority or most common base\n     \
+  \                                   0.2 | Bases that make up atleast 20% of the\
+  \ depth at a position\n                                        0.5 | Strict or bases\
+  \ that make up atleast 50% of the depth at a position\n                        \
+  \                0.9 | Strict or bases that make up atleast 90% of the depth at\
+  \ a position\n                                          1 | Identical or bases that\
+  \ make up 100% of the depth at a position. Will have highest ambiguities\n     \
+  \      -m    Minimum depth to call consensus(Default: 10)\n           -k    If '-k'\
+  \ flag is added, regions with depth less than minimum depth will not be added to\
+  \ the consensus sequence. Using '-k' will override any option specified using -n\
+  \ \n           -n    (N/-) Character to print in regions with less than minimum\
+  \ coverage(Default: N)\n\nOutput Options   Description\n           -p    (Required)\
+  \ Prefix for the output fasta file and quality file\n           -i    (Optional)\
+  \ Name of fasta header. By default, the prefix is used to create the fasta header\
+  \ in the following format, Consensus_<prefix>_threshold_<frequency-threshold>_quality_<minimum-quality>\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/ivar:1.3.1--h089eab3_0

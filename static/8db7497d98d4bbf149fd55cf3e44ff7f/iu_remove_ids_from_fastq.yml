@@ -1,0 +1,83 @@
+!Command
+command:
+- iu-remove-ids-from-fastq
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input-fastq
+  description: "Sequences file from which reads will be removed in\nFASTQ format"
+  args: !SimpleFlagArg
+    name: FASTQ_FILE_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --ids-file-path
+  description: Input file that contains the list of ids for removal
+  args: !SimpleFlagArg
+    name: IDS_FILE_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --delimiter
+  description: "By default this script will perform exact match match\nfor IDs you\
+    \ listed in the IDs file. But using this\nparameter, you can ask the script to\
+    \ \"split\" the IDs\nfound in the FASTQ file, and then try to match the\nfirst\
+    \ part of the resulting ID to those you listed in\nthe IDs file."
+  args: !SimpleFlagArg
+    name: CHARACTER
+- !Flag
+  optional: true
+  synonyms:
+  - -G
+  - --generate-output-for-survived-only
+  description: "If provided then only one output file (the file with\n\"survived\"\
+    \ ids) will be produced."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -K
+  - --keep-ids
+  description: "If provided, then instead of removing the ids in the\nlist, only the\
+    \ ids in the list will be kept (and the\nrest would be removed).\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: iu-remove-ids-from-fastq [-h] -i FASTQ_FILE_PATH -l IDS_FILE_PATH\n\
+  \                                [-d CHARACTER] [-G] [-K]\n\nRemove reads from FASTQ\
+  \ File. Creates two output file that have the same path\nand name as the input FASTQ\
+  \ file, but with the added suffix of \".survived\",\nand \".removed\".\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  -i FASTQ_FILE_PATH,\
+  \ --input-fastq FASTQ_FILE_PATH\n                        Sequences file from which\
+  \ reads will be removed in\n                        FASTQ format\n  -l IDS_FILE_PATH,\
+  \ --ids-file-path IDS_FILE_PATH\n                        Input file that contains\
+  \ the list of ids for removal\n  -d CHARACTER, --delimiter CHARACTER\n         \
+  \               By default this script will perform exact match match\n        \
+  \                for IDs you listed in the IDs file. But using this\n          \
+  \              parameter, you can ask the script to \"split\" the IDs\n        \
+  \                found in the FASTQ file, and then try to match the\n          \
+  \              first part of the resulting ID to those you listed in\n         \
+  \               the IDs file.\n  -G, --generate-output-for-survived-only\n     \
+  \                   If provided then only one output file (the file with\n     \
+  \                   \"survived\" ids) will be produced.\n  -K, --keep-ids      \
+  \  If provided, then instead of removing the ids in the\n                      \
+  \  list, only the ids in the list will be kept (and the\n                      \
+  \  rest would be removed).\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/illumina-utils:2.10--py_0

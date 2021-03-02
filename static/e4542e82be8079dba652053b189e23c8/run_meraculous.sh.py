@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean
+
+Run_Meraculous_Sh_V0_1_0 = CommandToolBuilder(tool="run_meraculous.sh", base_command=["run_meraculous.sh"], inputs=[ToolInput(tag="in_config_config_file", input_type=Boolean(optional=True), prefix="-c", doc=InputDocumentation(doc="|config <config file>         : user config file")), ToolInput(tag="in_label", input_type=Boolean(optional=True), prefix="-label", doc=InputDocumentation(doc="<label>                : provide a label name for new runs ( Default: 'run' )")), ToolInput(tag="in_dir", input_type=Boolean(optional=True), prefix="-dir", doc=InputDocumentation(doc="<directory>            : provide a run directory name  ( Default: latest run )")), ToolInput(tag="in_restart", input_type=Boolean(optional=True), prefix="-restart", doc=InputDocumentation(doc=": restart a previously failed assembly")), ToolInput(tag="in_resume", input_type=Boolean(optional=True), prefix="-resume", doc=InputDocumentation(doc=": restart but preserve any partial results")), ToolInput(tag="in_step", input_type=Boolean(optional=True), prefix="-step", doc=InputDocumentation(doc=": execute one stage and stop")), ToolInput(tag="in_start", input_type=Boolean(optional=True), prefix="-start", doc=InputDocumentation(doc="<stage>                : re-run starting with this stage")), ToolInput(tag="in_stop", input_type=Boolean(optional=True), prefix="-stop", doc=InputDocumentation(doc="<stage>                : stop after this stage")), ToolInput(tag="in_archive", input_type=Boolean(optional=True), prefix="-archive", doc=InputDocumentation(doc=": save any old stage directories (valid only with -restart)")), ToolInput(tag="in_cleanup_level", input_type=Boolean(optional=True), prefix="-cleanup_level", doc=InputDocumentation(doc="[0|1|2]          : decide how agressively the pipeline should clean up intermediate data ( Default: 1)\n0 - do not delete any intermediate outputs (disk space footprint may be huge)\n1 - delete files that are not used in any of the subsequent stages and that are generally not informative to the user\n2 - delete files as soon as possible.  WARNING!!! You will not be able to rerun the\nstages individually once they have completed!")), ToolInput(tag="in_version__program", input_type=Boolean(optional=True), prefix="-v", doc=InputDocumentation(doc="|version                      : about this program"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Run_Meraculous_Sh_V0_1_0().translate("wdl", allow_empty_container=True)
+

@@ -20,6 +20,9 @@ task Sindex {
       ~{if (pfam_seq) then "--pfamseq" else ""} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_ssi_index: ": output the SSI index to file named <f>"
     force_index_mode: ": force index mode to 64-bit, even on small files"

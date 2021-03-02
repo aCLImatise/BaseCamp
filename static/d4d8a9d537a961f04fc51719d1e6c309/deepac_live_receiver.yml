@@ -1,0 +1,145 @@
+!Command
+command:
+- deepac-live
+- receiver
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --read-length
+  description: Expected read length
+  args: !SimpleFlagArg
+    name: READ_LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --seq-cycles
+  description: Comma-separated list of sequencing cycles to analyze.
+  args: !SimpleFlagArg
+    name: CYCLE_LIST
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --format
+  description: Format of temp files. bam or fasta.
+  args: !SimpleFlagArg
+    name: FORMAT
+- !Flag
+  optional: true
+  synonyms:
+  - -B
+  - --barcodes
+  description: "Comma-separated list of barcodes of samples to\nanalyze. Default:\
+    \ \"undetermined\""
+  args: !SimpleFlagArg
+    name: BARCODES
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --command
+  description: DeePaC command to use (switches builtin models).
+  args: !SimpleFlagArg
+    name: COMMAND
+- !Flag
+  optional: true
+  synonyms:
+  - -C
+  - --custom
+  description: Use a custom model.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --model
+  description: Model to use. "rapid", "sensitive" or custom .h5 file.
+  args: !SimpleFlagArg
+    name: MODEL
+- !Flag
+  optional: true
+  synonyms:
+  - -N
+  - --n-cpus-rec
+  description: 'Number of cores used by the receiver. Default: all'
+  args: !SimpleFlagArg
+    name: N_CPUS_REC
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --gpus
+  description: 'GPU devices to use (comma-separated). Default: all'
+  args: !RepeatFlagArg
+    name: GPUS
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threshold
+  description: Classification threshold.
+  args: !SimpleFlagArg
+    name: THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - -I
+  - --receiver-input
+  description: Receiver input directory.
+  args: !SimpleFlagArg
+    name: REC_IN_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -O
+  - --receiver-output
+  description: Receiver output directory.
+  args: !SimpleFlagArg
+    name: REC_OUT_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --discard-neg
+  description: Don't save predictions for nonpathogenic reads.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: deepac-live receiver [-h] -l READ_LENGTH -s CYCLE_LIST [-f FORMAT]\n\
+  \                            [-B BARCODES] [-c COMMAND | -C] [-m MODEL]\n      \
+  \                      [-N N_CPUS_REC] [-g GPUS [GPUS ...]]\n                  \
+  \          [-t THRESHOLD] -I REC_IN_DIR -O REC_OUT_DIR [-d]\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -l READ_LENGTH, --read-length\
+  \ READ_LENGTH\n                        Expected read length\n  -s CYCLE_LIST, --seq-cycles\
+  \ CYCLE_LIST\n                        Comma-separated list of sequencing cycles\
+  \ to analyze.\n  -f FORMAT, --format FORMAT\n                        Format of temp\
+  \ files. bam or fasta.\n  -B BARCODES, --barcodes BARCODES\n                   \
+  \     Comma-separated list of barcodes of samples to\n                        analyze.\
+  \ Default: \"undetermined\"\n  -c COMMAND, --command COMMAND\n                 \
+  \       DeePaC command to use (switches builtin models).\n  -C, --custom       \
+  \   Use a custom model.\n  -m MODEL, --model MODEL\n                        Model\
+  \ to use. \"rapid\", \"sensitive\" or custom .h5 file.\n  -N N_CPUS_REC, --n-cpus-rec\
+  \ N_CPUS_REC\n                        Number of cores used by the receiver. Default:\
+  \ all\n  -g GPUS [GPUS ...], --gpus GPUS [GPUS ...]\n                        GPU\
+  \ devices to use (comma-separated). Default: all\n  -t THRESHOLD, --threshold THRESHOLD\n\
+  \                        Classification threshold.\n  -I REC_IN_DIR, --receiver-input\
+  \ REC_IN_DIR\n                        Receiver input directory.\n  -O REC_OUT_DIR,\
+  \ --receiver-output REC_OUT_DIR\n                        Receiver output directory.\n\
+  \  -d, --discard-neg     Don't save predictions for nonpathogenic reads.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/deepaclive:0.3.2--py_0

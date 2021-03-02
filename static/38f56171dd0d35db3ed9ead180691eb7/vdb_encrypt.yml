@@ -1,0 +1,131 @@
+!Command
+command:
+- vdb-encrypt
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: source-file
+  description: file to encrypt
+- !Positional
+  optional: false
+  position: 1
+  name: destination-file
+  description: name of resulting file
+- !Positional
+  optional: false
+  position: 2
+  name: destination-directory
+  description: directory of resulting file
+- !Positional
+  optional: false
+  position: 3
+  name: directory
+  description: directory to encrypt
+- !Positional
+  optional: false
+  position: 0
+  name: quit.
+  description: '-L|--log-level <level>           Logging level as number or enum string.
+    One '
+- !Positional
+  optional: false
+  position: 0
+  name: file.
+  description: 'Details:'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --force
+  description: Force overwrite of existing files
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ngc
+  description: PATH to ngc file
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: "Increase the verbosity of the program\nstatus messages. Use multiple\
+    \ times for more\nverbosity. Negates quiet."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  description: "Turn off all status messages for the\nprogram. Negated by verbose."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --option-file
+  description: Read more options and parameters from the
+  args: !SimpleFlagArg
+    name: file
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Output brief explanation for the program.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Display the version of the program then
+  args: !EmptyFlagArg {}
+help_text: "\nUsage:\n  vdb-encrypt [options] <source-file>\n  vdb-encrypt [options]\
+  \ <source-file> <destination-file>\n  vdb-encrypt [options] <source-file> <destination-directory>\n\
+  \  vdb-encrypt [options] <directory>\n\nSummary:\n  Encrypt a file or all the files\
+  \ (recursively) in a directory\n\nParameters:\n  source-file                   \
+  \   file to encrypt\n  destination-file                 name of resulting file\n\
+  \  destination-directory            directory of resulting file\n  directory   \
+  \                     directory to encrypt\n\nOptions:\n  -f|--force           \
+  \            Force overwrite of existing files \n  --ngc <PATH>                \
+  \     PATH to ngc file \n\n  -h|--help                        Output brief explanation\
+  \ for the program. \n  -V|--version                     Display the version of the\
+  \ program then \n                                   quit. \n  -L|--log-level <level>\
+  \           Logging level as number or enum string. One \n                     \
+  \              of (fatal|sys|int|err|warn|info|debug) or \n                    \
+  \               (0-6) Current/default is warn \n  -v|--verbose                 \
+  \    Increase the verbosity of the program \n                                  \
+  \ status messages. Use multiple times for more \n                              \
+  \     verbosity. Negates quiet. \n  -q|--quiet                       Turn off all\
+  \ status messages for the \n                                   program. Negated\
+  \ by verbose. \n  --option-file <file>             Read more options and parameters\
+  \ from the \n                                   file. \n\nDetails:\n  All encryptions\
+  \ are non-destructive until successful. No files are deleted or\n  replaced until\
+  \ the encryptions are complete.\n\n  The extension '.ncbi_enc' will be added when\
+  \ a file is encrypted.\n\n  NCBI Archive files that contain NCBI database objects\
+  \ will not have the\n  .ncbi_enc extension added.\n\n  If the only parameter is\
+  \ a file name then it will be replaced by a file that\n  is encrypted with a possible\
+  \ changed extension.\n  \n  If the only parameter is a directory, all files in that\
+  \ directory including\n  all files in subdirectories will be replaced with a possible\
+  \ change\n  in the extension.\n\n  If there are two parameters  a copy is made but\
+  \ the copy will be encrypted.\n  If the second parameter is a directory the new\
+  \ file might have a different\n  extension. If it is not a directory, the extension\
+  \ will be as given in the\n  the parameter.\n\n  Missing directories in the destination\
+  \ path will be created.\n\n  Already existing destination files will cause the program\
+  \ to end with\n  an error and will be left unchanged unless the --force option is\
+  \ used to\n  force the files to be overwritten.\n\nEncryption key (file password):\n\
+  \  The encryption key or file password is handled by configuration. If not yet\n\
+  \  set, this program will fail.\n\n  Please consult configuration page at\n  https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=toolkit_doc&f=std\
+  \ or\n  https://github.com/ncbi/sra-tools/wiki/Toolkit-Configuration\n\nvdb-encrypt\
+  \ : 2.10.9\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/sra-tools:2.10.9--pl526haddd2b5_0

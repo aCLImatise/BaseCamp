@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Int, File, Boolean
+
+Spoa_V0_1_0 = CommandToolBuilder(tool="spoa", base_command=["spoa"], inputs=[ToolInput(tag="in_default_score_matching", input_type=Int(optional=True), prefix="-m", doc=InputDocumentation(doc="default: 5\nscore for matching bases")), ToolInput(tag="in_default_score_mismatching", input_type=Int(optional=True), prefix="-n", doc=InputDocumentation(doc="default: -4\nscore for mismatching bases")), ToolInput(tag="in_default_gap_opening_penalty_be", input_type=Int(optional=True), prefix="-g", doc=InputDocumentation(doc="default: -8\ngap opening penalty (must be non-positive)")), ToolInput(tag="in_default_gap_extension_penalty_be", input_type=Int(optional=True), prefix="-e", doc=InputDocumentation(doc="default: -6\ngap extension penalty (must be non-positive)")), ToolInput(tag="in_default_gap_opening_penalty_second", input_type=Int(optional=True), prefix="-q", doc=InputDocumentation(doc="default: -10\ngap opening penalty of the second affine function\n(must be non-positive)")), ToolInput(tag="in_default_gap_extension_penalty_second", input_type=Int(optional=True), prefix="-c", doc=InputDocumentation(doc="default: -4\ngap extension penalty of the second affine function\n(must be non-positive)")), ToolInput(tag="in_algorithm", input_type=Int(optional=True), prefix="--algorithm", doc=InputDocumentation(doc="default: 0\nalignment mode:\n0 - local (Smith-Waterman)\n1 - global (Needleman-Wunsch)\n2 - semi-global")), ToolInput(tag="in_result", input_type=Int(optional=True), prefix="--result", doc=InputDocumentation(doc="(option can be used multiple times)\ndefault: 0\nresult mode:\n0 - consensus (FASTA)\n1 - multiple sequence alignment (FASTA)\n2 - 0 & 1 (FASTA)\n3 - partial order graph (GFA)\n4 - 0 & 3 (GFA)")), ToolInput(tag="in_dot", input_type=File(optional=True), prefix="--dot", doc=InputDocumentation(doc="output file for the partial order graph in DOT format")), ToolInput(tag="in_strand_ambiguous", input_type=Boolean(optional=True), prefix="--strand-ambiguous", doc=InputDocumentation(doc="for each sequence pick the strand with the better alignment"))], outputs=[ToolOutput(tag="out_dot", output_type=File(optional=True), selector=InputSelector(input_to_select="in_dot", type_hint=File()), doc=OutputDocumentation(doc="output file for the partial order graph in DOT format"))], container="quay.io/biocontainers/spoa:4.0.7--he513fc3_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Spoa_V0_1_0().translate("wdl")
+

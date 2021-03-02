@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Int, File, String
+
+Parsesnp_V0_1_0 = CommandToolBuilder(tool="parseSNP", base_command=["parseSNP"], inputs=[ToolInput(tag="in_filter_matches_percent_identity", input_type=Int(optional=True), prefix="-i", doc=InputDocumentation(doc="filter matches on percent identity")), ToolInput(tag="in_filter_matches_percent_coverage", input_type=Int(optional=True), prefix="-c", doc=InputDocumentation(doc="filter matches on percent coverage")), ToolInput(tag="in_save_matches_contain", input_type=File(optional=True), prefix="-F", doc=InputDocumentation(doc="save matches that do not contain the\nto the file 'failed'")), ToolInput(tag="in_save_parsed_snps", input_type=File(optional=True), prefix="-O", doc=InputDocumentation(doc="save the parsed SNPs to the file\n'output'")), ToolInput(tag="in_report_debugging_stuff", input_type=String(optional=True), prefix="-D", doc=InputDocumentation(doc="report debugging stuff into files\nprefixed with 'prefix'")), ToolInput(tag="in_use_character_delimiter", input_type=String(optional=True), prefix="-d", doc=InputDocumentation(doc="Use the single character delimiter as\nthe end of the defline ID field.  The\ndefault is to split on any whitespace.")), ToolInput(tag="in_use_tag_size", input_type=Int(optional=True), prefix="-s", doc=InputDocumentation(doc="Use this tag as the size of the snp.\n'/size=' is tried by default.")), ToolInput(tag="in_use_tag_tried", input_type=Int(optional=True), prefix="-p", doc=InputDocumentation(doc="Use this tag as the position of the snp.\n'allelePos=' and '/pos=' are tried by\ndefault, and if posTag is not found.\nTAGS: The number immediately after the first\noccurance of the tag will be used.")), ToolInput(tag="in_additive_offset_positionthe", input_type=Int(optional=True), prefix="-o", doc=InputDocumentation(doc="An additive offset to the SNP position.\nThe default is 0.")), ToolInput(tag="in_format", input_type=String(optional=True), prefix="-format", doc=InputDocumentation(doc="1 - use the original (default) format\n2 - use an extended format, includes the\nposition in the alignment string"))], outputs=[ToolOutput(tag="out_save_parsed_snps", output_type=File(optional=True), selector=InputSelector(input_to_select="in_save_parsed_snps", type_hint=File()), doc=OutputDocumentation(doc="save the parsed SNPs to the file\n'output'"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Parsesnp_V0_1_0().translate("wdl", allow_empty_container=True)
+

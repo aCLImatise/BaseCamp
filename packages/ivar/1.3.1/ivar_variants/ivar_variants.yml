@@ -1,0 +1,115 @@
+!Command
+command:
+- ivar
+- variants
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: samtools
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: mpileup
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  description: 'Minimum quality score threshold to count base (Default: 20)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: 'Minimum frequency threshold(0 - 1) to call variants (Default: 0.03)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: 'Minimum read depth to call variants (Default: 0)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: Reference file used for alignment. This is used to translate the nucleotide
+    sequences and identify intra host single nucleotide variants
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  description: A GFF file in the GFF3 format can be supplied to specify coordinates
+    of open reading frames (ORFs). In absence of GFF file, amino acid translation
+    will not be done.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: (Required) Prefix for the output tsv variant file
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --reference
+  description: ''
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Q
+  description: ''
+  args: !SimpleFlagArg
+    name: '0'
+- !Flag
+  optional: true
+  synonyms:
+  - -B
+  description: ''
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: ''
+  args: !SimpleFlagArg
+    name: '0'
+- !Flag
+  optional: true
+  synonyms:
+  - -A
+  description: ''
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -aa
+  description: ''
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Usage: samtools mpileup -aa -A -d 0 -B -Q 0 --reference [<reference-fasta]\
+  \ <input.bam> | ivar variants -p <prefix> [-q <min-quality>] [-t <min-frequency-threshold>]\
+  \ [-m <minimum depth>] [-r <reference-fasta>] [-g GFF file]\n\nNote : samtools mpileup\
+  \ output must be piped into ivar variants\n\nInput Options    Description\n    \
+  \       -q    Minimum quality score threshold to count base (Default: 20)\n    \
+  \       -t    Minimum frequency threshold(0 - 1) to call variants (Default: 0.03)\n\
+  \           -m    Minimum read depth to call variants (Default: 0)\n           -r\
+  \    Reference file used for alignment. This is used to translate the nucleotide\
+  \ sequences and identify intra host single nucleotide variants\n           -g  \
+  \  A GFF file in the GFF3 format can be supplied to specify coordinates of open\
+  \ reading frames (ORFs). In absence of GFF file, amino acid translation will not\
+  \ be done.\n\nOutput Options   Description\n           -p    (Required) Prefix for\
+  \ the output tsv variant file\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/ivar:1.3.1--h089eab3_0

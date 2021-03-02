@@ -1,0 +1,91 @@
+!Command
+command:
+- read_analysis.py
+- genome
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --read
+  description: Input read for training
+  args: !SimpleFlagArg
+    name: READ
+- !Flag
+  optional: true
+  synonyms:
+  - -rg
+  - --ref_g
+  description: "Reference genome, not required if genome alignment\nfile is provided"
+  args: !SimpleFlagArg
+    name: REF_G
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --aligner
+  description: "The aligner to be used, minimap2 or LAST (Default =\nminimap2)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      LAST:
+      minimap2:
+- !Flag
+  optional: true
+  synonyms:
+  - -ga
+  - --g_alnm
+  description: Genome alignment file in sam or maf format (optional)
+  args: !SimpleFlagArg
+    name: G_ALNM
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: "The location and prefix of outputting profiles\n(Default = training)"
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - --no_model_fit
+  description: Disable model fitting step
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --num_threads
+  description: "Number of threads for alignment and model fitting\n(Default = 1)\n"
+  args: !SimpleFlagArg
+    name: NUM_THREADS
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: read_analysis.py genome [-h] -i READ [-rg REF_G] [-a {minimap2,LAST}]\n\
+  \                               [-ga G_ALNM] [-o OUTPUT] [--no_model_fit]\n    \
+  \                           [-t NUM_THREADS]\n\noptional arguments:\n  -h, --help\
+  \            show this help message and exit\n  -i READ, --read READ  Input read\
+  \ for training\n  -rg REF_G, --ref_g REF_G\n                        Reference genome,\
+  \ not required if genome alignment\n                        file is provided\n \
+  \ -a {minimap2,LAST}, --aligner {minimap2,LAST}\n                        The aligner\
+  \ to be used, minimap2 or LAST (Default =\n                        minimap2)\n \
+  \ -ga G_ALNM, --g_alnm G_ALNM\n                        Genome alignment file in\
+  \ sam or maf format (optional)\n  -o OUTPUT, --output OUTPUT\n                 \
+  \       The location and prefix of outputting profiles\n                       \
+  \ (Default = training)\n  --no_model_fit        Disable model fitting step\n  -t\
+  \ NUM_THREADS, --num_threads NUM_THREADS\n                        Number of threads\
+  \ for alignment and model fitting\n                        (Default = 1)\n"
+generated_using:
+- --help
+docker_image:

@@ -1,0 +1,72 @@
+!Command
+command:
+- fio
+- load
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: OUTPUT
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: FEATURES...
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --format
+  - --driver
+  description: Output format driver name.  [required]
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --src-crs
+  - --src_crs
+  description: Source CRS.
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --dst-crs
+  - --dst_crs
+  description: "Destination CRS.  Defaults to --src-crs when\nnot given."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --layer
+  description: "|NAME           Load features into specified layer.  Layers use\n\
+    zero-based numbering when accessed by index."
+  args: !SimpleFlagArg
+    name: INDEX
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: fio load [OPTIONS] OUTPUT FEATURES...\n\n  Load features from JSON\
+  \ to a file in another format.\n\n  The input is a GeoJSON feature collection or\
+  \ optionally a sequence of\n  GeoJSON feature objects.\n\nOptions:\n  -f, --format,\
+  \ --driver TEXT  Output format driver name.  [required]\n  --src-crs, --src_crs\
+  \ TEXT    Source CRS.\n  --dst-crs, --dst_crs TEXT    Destination CRS.  Defaults\
+  \ to --src-crs when\n                               not given.\n\n  --layer INDEX|NAME\
+  \           Load features into specified layer.  Layers use\n                  \
+  \             zero-based numbering when accessed by index.\n\n  --help         \
+  \              Show this message and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/fiona:1.8.6

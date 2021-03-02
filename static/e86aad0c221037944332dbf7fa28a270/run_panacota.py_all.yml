@@ -1,0 +1,252 @@
+!Command
+command:
+- run_panacota.py
+- all
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: parameters.
+  description: -o OUTDIR             Path to your output folder, where all results
+    from all
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: Path to your configuration file, defining values of
+  args: !SimpleFlagArg
+    name: CONFIGFILE
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: Specify how many threads can be used (default=1)
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: "Species taxid to download, corresponding to the\n'species taxid' provided\
+    \ by the NCBI. A comma-\nseparated list of taxid can also be provided."
+  args: !SimpleFlagArg
+    name: NCBI_SPECIES_TAXID
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: "Species to download, corresponding to the 'organism\nname' provided\
+    \ by the NCBI. Give name between quotes\n(for example \"escherichia coli\")"
+  args: !SimpleFlagArg
+    name: NCBI_SPECIES
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --assembly_level
+  description: "Assembly levels of genomes to download (default: all).\nPossible levels\
+    \ are: 'all', 'complete', 'chromosome',\n'scaffold', 'contig'.You can also provide\
+    \ a comma-\nseparated list of assembly levels. For ex:\n'complete,chromosome'"
+  args: !SimpleFlagArg
+    name: LEVELS
+- !Flag
+  optional: true
+  synonyms:
+  - --cutn
+  description: "By default, each genome will be cut into new contigs\nwhen at least\
+    \ 5 'N' in a row are found in its\nsequence. If you don't want to cut genomes\
+    \ into new\ncontigs when there are rows of 'N', put 0 to this\noption. If you\
+    \ want to cut from a different number of\n'N' in a row, put this value to this\
+    \ option."
+  args: !SimpleFlagArg
+    name: CUTN
+- !Flag
+  optional: true
+  synonyms:
+  - --l90
+  description: "Maximum value of L90 allowed to keep a genome. Default\nis 100."
+  args: !SimpleFlagArg
+    name: L90
+- !Flag
+  optional: true
+  synonyms:
+  - --nbcont
+  description: "Maximum number of contigs allowed to keep a genome.\nDefault is 999."
+  args: !SimpleFlagArg
+    name: NBCONT
+- !Flag
+  optional: true
+  synonyms:
+  - --prodigal
+  description: "Add this option if you only want syntactical\nannotation, given by\
+    \ prodigal, and not functional\nannotation requiring prokka and is slower."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: "Choose a name for your annotated genomes. This name\nshould contain\
+    \ 4 alphanumeric characters. Generally,\nthey correspond to the 2 first letters\
+    \ of genus, and 2\nfirst letters of species, e.g. ESCO for Escherichia\nColi."
+  args: !SimpleFlagArg
+    name: NAME
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: "Minimum sequence identity to be considered in the same\ncluster (float\
+    \ between 0 and 1). Default is 0.8."
+  args: !SimpleFlagArg
+    name: MIN_ID
+- !Flag
+  optional: true
+  synonyms:
+  - --tol
+  description: "min % of genomes having at least 1 member in a family\nto consider\
+    \ the family as persistent (between 0 and 1,\ndefault is 1 = 100% of genomes =\
+    \ Core genome).By\ndefault, the minimum number of genomes will be\nceil('tol'*N)\
+    \ (N being the total number of genomes).\nIf you want to use floor('tol'*N) instead,\
+    \ add the\n'-F' option."
+  args: !SimpleFlagArg
+    name: TOL
+- !Flag
+  optional: true
+  synonyms:
+  - -Mu
+  description: "Add this option if you allow several members in any\ngenome of a family.\
+    \ By default, only 1 (or 0 if tol<1)\nmember per genome are allowed in all genomes.\
+    \ If you\nwant to allow exactly 1 member in 'tol'% of the\ngenomes, and 0, 1 or\
+    \ several members in the '1-tol'%\nleft, use the option -X instead of this one:\
+    \ -M and -X\noptions are not compatible."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -X
+  description: "Add this option if you want to allow families having\nseveral members\
+    \ only in '1-tol'% of the genomes. In\nthe other genomes, only 1 member exactly\
+    \ is allowed.\nThis option is not compatible with -M (which is\nallowing multigenic\
+    \ families: having several members\nin any number of genomes)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --soft
+  description: "Choose with which software you want to infer the\nphylogenetic tree.\
+    \ Default is IQtree."
+  args: !ChoiceFlagArg
+    choices: !!set
+      fasttree:
+      quicktree:
+      iqtree:
+      fastme:
+      iqtree2:
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: Increase verbosity in stdout/stderr.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  description: "Do not display anything to stdout/stderr. log files\nwill still be\
+    \ created."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: ''
+  args: !SimpleFlagArg
+    name: OUTDIR
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: run_panacota.py all [-c CONFIGFILE] -o OUTDIR [--threads THREADS]\n\
+  \                           [-t NCBI_SPECIES_TAXID] [-s NCBI_SPECIES]\n        \
+  \                   [-l LEVELS] [--cutn CUTN] [--l90 L90]\n                    \
+  \       [--nbcont NBCONT] [--prodigal] -n NAME [-i MIN_ID]\n                   \
+  \        [--tol TOL] [-Mu] [-X]\n                           [--soft {fasttree,fastme,quicktree,iqtree,iqtree2}]\n\
+  \                           [-v] [-q] [-h]\n\n ___                 _____  ___  \
+  \       _____  _____\n(  _`\\              (  _  )(  _`\\      (_   _)(  _  )\n\
+  | |_) )  _ _   ___  | (_) || ( (_)   _   | |  | (_) |\n| ,__/'/'_` )/' _ `\\|  _\
+  \  || |  _  /'_`\\ | |  |  _  |\n| |   ( (_| || ( ) || | | || (_( )( (_) )| |  |\
+  \ | | |\n(_)   `\\__,_)(_) (_)(_) (_)(____/'`\\___/'(_)  (_) (_)\n\n       Large\
+  \ scale comparative genomics tools\n\n     -------------------------------------------\n\
+  \n=> Run all PanACoTA modules\n\nGeneral arguments:\n  -c CONFIGFILE         Path\
+  \ to your configuration file, defining values of\n                        parameters.\n\
+  \  -o OUTDIR             Path to your output folder, where all results from all\n\
+  \                        6 modules will be saved.\n  --threads THREADS     Specify\
+  \ how many threads can be used (default=1)\n\n'prepare' module arguments:\n  -t\
+  \ NCBI_SPECIES_TAXID\n                        Species taxid to download, corresponding\
+  \ to the\n                        'species taxid' provided by the NCBI. A comma-\n\
+  \                        separated list of taxid can also be provided.\n  -s NCBI_SPECIES\
+  \       Species to download, corresponding to the 'organism\n                  \
+  \      name' provided by the NCBI. Give name between quotes\n                  \
+  \      (for example \"escherichia coli\")\n  -l LEVELS, --assembly_level LEVELS\n\
+  \                        Assembly levels of genomes to download (default: all).\n\
+  \                        Possible levels are: 'all', 'complete', 'chromosome',\n\
+  \                        'scaffold', 'contig'.You can also provide a comma-\n  \
+  \                      separated list of assembly levels. For ex:\n            \
+  \            'complete,chromosome'\n\nCommon arguments to 'prepare' and 'annotate'\
+  \ modules:\n  --cutn CUTN           By default, each genome will be cut into new\
+  \ contigs\n                        when at least 5 'N' in a row are found in its\n\
+  \                        sequence. If you don't want to cut genomes into new\n \
+  \                       contigs when there are rows of 'N', put 0 to this\n    \
+  \                    option. If you want to cut from a different number of\n   \
+  \                     'N' in a row, put this value to this option.\n  --l90 L90\
+  \             Maximum value of L90 allowed to keep a genome. Default\n         \
+  \               is 100.\n  --nbcont NBCONT       Maximum number of contigs allowed\
+  \ to keep a genome.\n                        Default is 999.\n\n'annotate' module\
+  \ arguments:\n  --prodigal            Add this option if you only want syntactical\n\
+  \                        annotation, given by prodigal, and not functional\n   \
+  \                     annotation requiring prokka and is slower.\n  -n NAME    \
+  \           Choose a name for your annotated genomes. This name\n              \
+  \          should contain 4 alphanumeric characters. Generally,\n              \
+  \          they correspond to the 2 first letters of genus, and 2\n            \
+  \            first letters of species, e.g. ESCO for Escherichia\n             \
+  \           Coli.\n\n'pangenome' module arguments:\n  -i MIN_ID             Minimum\
+  \ sequence identity to be considered in the same\n                        cluster\
+  \ (float between 0 and 1). Default is 0.8.\n\n'corepers' module arguments:\n  --tol\
+  \ TOL             min % of genomes having at least 1 member in a family\n      \
+  \                  to consider the family as persistent (between 0 and 1,\n    \
+  \                    default is 1 = 100% of genomes = Core genome).By\n        \
+  \                default, the minimum number of genomes will be\n              \
+  \          ceil('tol'*N) (N being the total number of genomes).\n              \
+  \          If you want to use floor('tol'*N) instead, add the\n                \
+  \        '-F' option.\n  -Mu                   Add this option if you allow several\
+  \ members in any\n                        genome of a family. By default, only 1\
+  \ (or 0 if tol<1)\n                        member per genome are allowed in all\
+  \ genomes. If you\n                        want to allow exactly 1 member in 'tol'%\
+  \ of the\n                        genomes, and 0, 1 or several members in the '1-tol'%\n\
+  \                        left, use the option -X instead of this one: -M and -X\n\
+  \                        options are not compatible.\n  -X                    Add\
+  \ this option if you want to allow families having\n                        several\
+  \ members only in '1-tol'% of the genomes. In\n                        the other\
+  \ genomes, only 1 member exactly is allowed.\n                        This option\
+  \ is not compatible with -M (which is\n                        allowing multigenic\
+  \ families: having several members\n                        in any number of genomes).\n\
+  \n'tree' module arguments:\n  --soft {fasttree,fastme,quicktree,iqtree,iqtree2}\n\
+  \                        Choose with which software you want to infer the\n    \
+  \                    phylogenetic tree. Default is IQtree.\n\nOthers:\n  -v, --verbose\
+  \         Increase verbosity in stdout/stderr.\n  -q, --quiet           Do not display\
+  \ anything to stdout/stderr. log files\n                        will still be created.\n\
+  \  -h, --help            show this help message and exit\n\nFor more details, see\
+  \ PanACoTA documentation.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/panacota:1.2.0--py_0

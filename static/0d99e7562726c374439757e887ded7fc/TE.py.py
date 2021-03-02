@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, Int, Float, String
+
+Te_Py_V0_1_0 = CommandToolBuilder(tool="TE.py", base_command=["TE.py"], inputs=[ToolInput(tag="in_text_file_describing", input_type=File(optional=True), prefix="-e", doc=InputDocumentation(doc="Text file describing experiment Outline. Must follow\nrequired format, please see the manual.")), ToolInput(tag="in_text_file_containing", input_type=File(optional=True), prefix="-c", doc=InputDocumentation(doc="Text file containing the count data. Header line must be\nconsistent with information in experiment Outline.")), ToolInput(tag="in_tab_delimited_text", input_type=File(optional=True), prefix="-o", doc=InputDocumentation(doc="Tab delimited text file containing the results.")), ToolInput(tag="in_allow_different_dispersions", input_type=Int(optional=True), prefix="-d", doc=InputDocumentation(doc="Allow different dispersions for Ribo-seq and RNA-seq\ncount data. Off: 0; On: 1. [default: 0]")), ToolInput(tag="in_set_sum_normalized", input_type=Int(optional=True), prefix="-s", doc=InputDocumentation(doc="Set the sum of normalized read count as the threshold to\ndo the test. This option applies for both Ribo-seq and\nRNA-seq data. [default: 10]")), ToolInput(tag="in_set_initial_dispersion", input_type=Float(optional=True), prefix="-i", doc=InputDocumentation(doc="Set the initial dispersion to start the estimation.\n[default: 0.01]")), ToolInput(tag="in_method_multiple_test", input_type=String(optional=True), prefix="-m", doc=InputDocumentation(doc="Method for multiple test correction. Options: BH\n(Benjamini-Hochberg); Bonferroni. [default: BH]")), ToolInput(tag="in_rank_result_table", input_type=File(optional=True), prefix="-r", doc=InputDocumentation(doc="Rank the result table in ascending order by a specific\ncolumn. Adjusted p value: 1; TE change: 2; Gene id: 3;\nKeep the order as in count file: 0. [default: 0]")), ToolInput(tag="in_make_plots_show", input_type=Int(optional=True), prefix="-p", doc=InputDocumentation(doc="Make plots to show the data and results. Plots are in pdf\nformat. On: 1; Off: 0. [default: 0]")), ToolInput(tag="in_set_fdr_cutoff", input_type=Float(optional=True), prefix="-q", doc=InputDocumentation(doc="Set the FDR cutoff for significant case to plot.\n[default: 0.1]\n")), ToolInput(tag="in_arguments", input_type=String(), position=0, doc=InputDocumentation(doc=""))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Te_Py_V0_1_0().translate("wdl", allow_empty_container=True)
+

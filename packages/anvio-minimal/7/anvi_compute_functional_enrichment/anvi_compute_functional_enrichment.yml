@@ -1,0 +1,355 @@
+!Command
+command:
+- anvi-compute-functional-enrichment
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: functional-enrichment-txt
+  description: '🍺 More on `anvi-compute-functional-enrichment`:'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --pan-db
+  description: "Anvi'o pan database (default: None)"
+  args: !SimpleFlagArg
+    name: PAN_DB
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --genomes-storage
+  description: "Anvi'o genomes storage file (default: None)"
+  args: !SimpleFlagArg
+    name: GENOMES_STORAGE
+- !Flag
+  optional: true
+  synonyms:
+  - --category-variable
+  description: "The additional layers data variable name that divides\nlayers into\
+    \ multiple categories. (default: None)"
+  args: !SimpleFlagArg
+    name: CATEGORY
+- !Flag
+  optional: true
+  synonyms:
+  - --annotation-source
+  description: "NAME\nGet functional annotations for a specific annotation\nsource.\
+    \ You can use the flag '--list-annotation-\nsources' to learn about what sources\
+    \ are available.\n(default: None)"
+  args: !SimpleFlagArg
+    name: SOURCE
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --list-annotation-sources
+  description: "List available functional annotation sources.\n(default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --include-gc-identity-as-function
+  description: "This is an option that asks anvi'o to treat gene\ncluster names as\
+    \ functions. By doing so, you are in\nfact creating an opportunity to study functional\n\
+    enrichment statistics for each gene cluster\nindependently. For instance, multiple\
+    \ gene clusters\nmay have the same COG function. But if you wish to use\nthe same\
+    \ enrichment analysis in your pangenome without\ncollapsing multiple gene clusters\
+    \ into a single\nfunction name, you can use this flag, and ask for\n'IDENTITY'\
+    \ as the functional annotation source.\n(default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  - --modules-txt
+  description: "A tab-delimited text file specifying module\ncompleteness in every\
+    \ genome/MAG/sample that you are\ninterested in. The best way to get this file\
+    \ is to run\n`anvi-estimate-metabolism --kegg-output-modes modules`\non your samples\
+    \ of interest. Trust us. (default: None)"
+  args: !SimpleFlagArg
+    name: TEXT_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -G
+  - --groups-txt
+  description: "A 2-column tab-delimited text file specifying which\ngroup each sample\
+    \ belongs to. The first column should\nhave the header 'sample' and contain sample\
+    \ names\nmatching to those in the modules-txt file. The second\ncolumn should\
+    \ have the header 'group' and contain the\ngroup name/acronym for each sample\
+    \ (each sample should\nbe in 1 group only) (default: None)"
+  args: !SimpleFlagArg
+    name: TEXT_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --sample-header
+  description: "The header of the column containing your sample names\nin the modules-txt\
+    \ input file. By default this is\n'db_name' because we are assuming you got your\
+    \ modules\nmode output by running `anvi-estimate-metabolism` in\nmulti mode (on\
+    \ multiple genomes or metagenomes), but\njust in case you got it a different way,\
+    \ this is how\nyou can tell anvi'o which column to look at. The\nvalues in this\
+    \ column should correspond to those in\nthe 'sample' column in the groups-txt\
+    \ input file.\n(default: db_name)"
+  args: !SimpleFlagArg
+    name: SAMPLE_HEADER
+- !Flag
+  optional: true
+  synonyms:
+  - --module-completion-threshold
+  description: "This threshold defines the percent completeness score\nat which we\
+    \ consider a KEGG module to be 'present'in a\ngiven sample. That is, if a module's\
+    \ completeness in a\nsample is less than this value, then we say the module\n\
+    is not present in that sample, and this will affect\nthe module's enrichment score.\
+    \ By extension, if a\nmodule's completeness is less than this value in all\nsamples,\
+    \ it will have a very very low enrichment score\n(ie, it will not be considered\
+    \ enriched at all,\nbecause it doesn't occur in any groups). Note that the\ncloser\
+    \ this number is to 0, the more meaningless this\nwhole enrichment analysis is...\
+    \ but hey, this is your\nshow. This threshold CAN be different from the\ncompleteness\
+    \ threshold used in `anvi-estimate-\nmetabolism` if you wish. The default threshold\
+    \ is\n0.75."
+  args: !SimpleFlagArg
+    name: NUM
+- !Flag
+  optional: true
+  synonyms:
+  - --include-samples-missing-from-groups-txt
+  description: "Sometimes, you might have some sample names in your\nmodules-txt file\
+    \ that you did not include in the\ngroups-txt file. This is fine. By default,\
+    \ we will\nignore those samples because they do not have a group.\nBut if you\
+    \ use this flag, then instead those samples\nwill be included in a group called\
+    \ 'UNGROUPED'. Be\ncautious when using this flag in combination with the\n--include-ungrouped\
+    \ flag (which also sticks samples\nwithout groups into the 'UNGROUPED' group)\
+    \ so that you\ndon't accidentally group together samples that are not\nsupposed\
+    \ to be friends. (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --external-genomes
+  description: "A three-column TAB-delimited flat text file that lists\nanvi'o contigs\
+    \ databases. The first item in the header\nline should read 'name', the second\
+    \ should read\n'contigs_db_path', and the third should read 'group'.\nEach line\
+    \ in the file should describe a single entry,\nwhere the first column is the name\
+    \ of the genome (or\nMAG), the second column is the anvi'o contigs database\n\
+    generated for this genome, and the third is the group\nthat this genome belongs\
+    \ to. (default: None)"
+  args: !SimpleFlagArg
+    name: FILE_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --internal-genomes
+  description: "A six-column TAB-delimited flat text file. The header\nline must contain\
+    \ these columns: 'name', 'bin_id',\n'collection_id', 'profile_db_path', 'contigs_db_path',\n\
+    'group'. Each line should list a single entry, where\n'name' can be any name to\
+    \ describe the anvi'o bin\nidentified as 'bin_id' that is stored in a collection.\n\
+    The 'group' column should indicate which group the bin\nbelongs to. (default:\
+    \ None)"
+  args: !SimpleFlagArg
+    name: FILE_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-file
+  description: 'File path to store results. (default: None)'
+  args: !SimpleFlagArg
+    name: FILE_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --include-ungrouped
+  description: "Use this flag if you want anvi'o to include\ngenomes/samples with\
+    \ no group in the analysis. (For\npangenomes, this means the genome has no value\
+    \ set for\nthe category variable which you specified using\n--category-variable.\
+    \ For modules, this means the\nsample has no group specified in the groups-txt\
+    \ file.\nAnd for regular 'ol genomes, this means the genome has\nnothing in the\
+    \ 'group' column of the input file). By\ndefault all variables with no value will\
+    \ be ignored,\nbut if you apply this flag, they will instead be\nconsidered as\
+    \ a single group (called 'UNGROUPED' when\nperforming the statistical analysis.\
+    \ (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  - --functional-occurrence-table-output
+  description: "Saves the occurrence frequency information for\nfunctions in genomes\
+    \ in a TAB-delimited format. A file\nname must be provided. To learn more about\
+    \ how the\nfunctional occurrence is computed, please refer to the\ntutorial. (default:\
+    \ None)"
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --just-do-it
+  description: "Don't bother me with questions or warnings, just do\nit. (default:\
+    \ False)"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: anvi-compute-functional-enrichment [-h] [-p PAN_DB]\n         \
+  \                                 [-g GENOMES_STORAGE]\n                       \
+  \                   [--category-variable CATEGORY]\n                           \
+  \               [--annotation-source SOURCE NAME]\n                            \
+  \              [-l]\n                                          [--include-gc-identity-as-function]\n\
+  \                                          [-M TEXT_FILE] [-G TEXT_FILE]\n     \
+  \                                     [--sample-header SAMPLE_HEADER]\n        \
+  \                                  [--module-completion-threshold NUM]\n       \
+  \                                   [--include-samples-missing-from-groups-txt]\n\
+  \                                          [-e FILE_PATH] [-i FILE_PATH] -o\n  \
+  \                                        FILE_PATH [--include-ungrouped]\n     \
+  \                                     [-F FILE] [--just-do-it]\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n\nINPUT OPTION #1: PANGENOME:\n\
+  \  Estimating enriched functions across pangenome groups. You must provide a\n \
+  \ pan db and its genomes storage db, as well as the category variable to use\n \
+  \ for establishing groups and the annotation source which provides your\n  functions\
+  \ of interest.\n\n  -p PAN_DB, --pan-db PAN_DB\n                        Anvi'o pan\
+  \ database (default: None)\n  -g GENOMES_STORAGE, --genomes-storage GENOMES_STORAGE\n\
+  \                        Anvi'o genomes storage file (default: None)\n  --category-variable\
+  \ CATEGORY\n                        The additional layers data variable name that\
+  \ divides\n                        layers into multiple categories. (default: None)\n\
+  \  --annotation-source SOURCE NAME\n                        Get functional annotations\
+  \ for a specific annotation\n                        source. You can use the flag\
+  \ '--list-annotation-\n                        sources' to learn about what sources\
+  \ are available.\n                        (default: None)\n  -l, --list-annotation-sources\n\
+  \                        List available functional annotation sources.\n       \
+  \                 (default: False)\n  --include-gc-identity-as-function\n      \
+  \                  This is an option that asks anvi'o to treat gene\n          \
+  \              cluster names as functions. By doing so, you are in\n           \
+  \             fact creating an opportunity to study functional\n               \
+  \         enrichment statistics for each gene cluster\n                        independently.\
+  \ For instance, multiple gene clusters\n                        may have the same\
+  \ COG function. But if you wish to use\n                        the same enrichment\
+  \ analysis in your pangenome without\n                        collapsing multiple\
+  \ gene clusters into a single\n                        function name, you can use\
+  \ this flag, and ask for\n                        'IDENTITY' as the functional annotation\
+  \ source.\n                        (default: False)\n\nINPUT OPTION #2: ESTIMATED\
+  \ METABOLISM:\n  Estimating enriched modules across groups of samples. You must\
+  \ have\n  'modules mode' output from `anvi-estimate-metabolism` to serve as input\n\
+  \  for this option, as well as a separate file to specify which group each\n  sample\
+  \ belongs to.\n\n  -M TEXT_FILE, --modules-txt TEXT_FILE\n                     \
+  \   A tab-delimited text file specifying module\n                        completeness\
+  \ in every genome/MAG/sample that you are\n                        interested in.\
+  \ The best way to get this file is to run\n                        `anvi-estimate-metabolism\
+  \ --kegg-output-modes modules`\n                        on your samples of interest.\
+  \ Trust us. (default: None)\n  -G TEXT_FILE, --groups-txt TEXT_FILE\n          \
+  \              A 2-column tab-delimited text file specifying which\n           \
+  \             group each sample belongs to. The first column should\n          \
+  \              have the header 'sample' and contain sample names\n             \
+  \           matching to those in the modules-txt file. The second\n            \
+  \            column should have the header 'group' and contain the\n           \
+  \             group name/acronym for each sample (each sample should\n         \
+  \               be in 1 group only) (default: None)\n  --sample-header SAMPLE_HEADER\n\
+  \                        The header of the column containing your sample names\n\
+  \                        in the modules-txt input file. By default this is\n   \
+  \                     'db_name' because we are assuming you got your modules\n \
+  \                       mode output by running `anvi-estimate-metabolism` in\n \
+  \                       multi mode (on multiple genomes or metagenomes), but\n \
+  \                       just in case you got it a different way, this is how\n \
+  \                       you can tell anvi'o which column to look at. The\n     \
+  \                   values in this column should correspond to those in\n      \
+  \                  the 'sample' column in the groups-txt input file.\n         \
+  \               (default: db_name)\n  --module-completion-threshold NUM\n      \
+  \                  This threshold defines the percent completeness score\n     \
+  \                   at which we consider a KEGG module to be 'present'in a\n   \
+  \                     given sample. That is, if a module's completeness in a\n \
+  \                       sample is less than this value, then we say the module\n\
+  \                        is not present in that sample, and this will affect\n \
+  \                       the module's enrichment score. By extension, if a\n    \
+  \                    module's completeness is less than this value in all\n    \
+  \                    samples, it will have a very very low enrichment score\n  \
+  \                      (ie, it will not be considered enriched at all,\n       \
+  \                 because it doesn't occur in any groups). Note that the\n     \
+  \                   closer this number is to 0, the more meaningless this\n    \
+  \                    whole enrichment analysis is... but hey, this is your\n   \
+  \                     show. This threshold CAN be different from the\n         \
+  \               completeness threshold used in `anvi-estimate-\n               \
+  \         metabolism` if you wish. The default threshold is\n                  \
+  \      0.75.\n  --include-samples-missing-from-groups-txt\n                    \
+  \    Sometimes, you might have some sample names in your\n                     \
+  \   modules-txt file that you did not include in the\n                        groups-txt\
+  \ file. This is fine. By default, we will\n                        ignore those\
+  \ samples because they do not have a group.\n                        But if you\
+  \ use this flag, then instead those samples\n                        will be included\
+  \ in a group called 'UNGROUPED'. Be\n                        cautious when using\
+  \ this flag in combination with the\n                        --include-ungrouped\
+  \ flag (which also sticks samples\n                        without groups into the\
+  \ 'UNGROUPED' group) so that you\n                        don't accidentally group\
+  \ together samples that are not\n                        supposed to be friends.\
+  \ (default: False)\n\nINPUT OPTION #3: GROUPS OF GENOMES:\n  Estimating enriched\
+  \ functions across groups of genomes. You must provide\n  an external genomes file\
+  \ and/or an internal genomes file which include a\n  'group' column. You also have\
+  \ to indicate which functional annotation\n  source to use with --annotation-source\
+  \ (see OPTION #1 for details on that\n  parameter).\n\n  -e FILE_PATH, --external-genomes\
+  \ FILE_PATH\n                        A three-column TAB-delimited flat text file\
+  \ that lists\n                        anvi'o contigs databases. The first item in\
+  \ the header\n                        line should read 'name', the second should\
+  \ read\n                        'contigs_db_path', and the third should read 'group'.\n\
+  \                        Each line in the file should describe a single entry,\n\
+  \                        where the first column is the name of the genome (or\n\
+  \                        MAG), the second column is the anvi'o contigs database\n\
+  \                        generated for this genome, and the third is the group\n\
+  \                        that this genome belongs to. (default: None)\n  -i FILE_PATH,\
+  \ --internal-genomes FILE_PATH\n                        A six-column TAB-delimited\
+  \ flat text file. The header\n                        line must contain these columns:\
+  \ 'name', 'bin_id',\n                        'collection_id', 'profile_db_path',\
+  \ 'contigs_db_path',\n                        'group'. Each line should list a single\
+  \ entry, where\n                        'name' can be any name to describe the anvi'o\
+  \ bin\n                        identified as 'bin_id' that is stored in a collection.\n\
+  \                        The 'group' column should indicate which group the bin\n\
+  \                        belongs to. (default: None)\n\nOUTPUT OPTIONS:\n  What\
+  \ comes out the other end. (Please provide at least the output file\n  name.)\n\n\
+  \  -o FILE_PATH, --output-file FILE_PATH\n                        File path to store\
+  \ results. (default: None)\n  --include-ungrouped   Use this flag if you want anvi'o\
+  \ to include\n                        genomes/samples with no group in the analysis.\
+  \ (For\n                        pangenomes, this means the genome has no value set\
+  \ for\n                        the category variable which you specified using\n\
+  \                        --category-variable. For modules, this means the\n    \
+  \                    sample has no group specified in the groups-txt file.\n   \
+  \                     And for regular 'ol genomes, this means the genome has\n \
+  \                       nothing in the 'group' column of the input file). By\n \
+  \                       default all variables with no value will be ignored,\n \
+  \                       but if you apply this flag, they will instead be\n     \
+  \                   considered as a single group (called 'UNGROUPED' when\n    \
+  \                    performing the statistical analysis. (default: False)\n\nOUTPUT\
+  \ OPTIONS FOR FUNCTIONAL ENRICHMENT:\n  Reporting options that only make sense for\
+  \ input option #1 or #3.\n\n  -F FILE, --functional-occurrence-table-output FILE\n\
+  \                        Saves the occurrence frequency information for\n      \
+  \                  functions in genomes in a TAB-delimited format. A file\n    \
+  \                    name must be provided. To learn more about how the\n      \
+  \                  functional occurrence is computed, please refer to the\n    \
+  \                    tutorial. (default: None)\n\nOPTIONAL THINGIES:\n  If you want\
+  \ it, here it is, come and get it.\n\n  --just-do-it          Don't bother me with\
+  \ questions or warnings, just do\n                        it. (default: False)\n\
+  \n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\
+  \n\U0001F525 Program description:\n\n   This is a driver program for `anvi-script-enrichment-stats`,\
+  \ a script that\n   computes enrichment scores and group associations for annotated\
+  \ entities (ie,\n   functions, KEGG Modules) across groups of genomes or samples.\n\
+  \n\U0001F9C0 Can consume: \n\n   kegg-metabolism / groups-txt / misc-data-layers\
+  \ / pan-db / \n   genomes-storage-db / external-genomes / internal-genomes\n   \n\
+  \U0001F355 Can provide: \n\n   functional-enrichment-txt\n   \n\U0001F37A More on\
+  \ `anvi-compute-functional-enrichment`:\n\n   https://merenlab.org/software/anvio/help/7/programs/anvi-compute-functional-enrichment\n\
+  \n\U0001F37B All anvi'o programs and artifacts:\n\n   https://merenlab.org/software/anvio/help/7\n\
+  \n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\
+  \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/anvio-minimal:7--py_0

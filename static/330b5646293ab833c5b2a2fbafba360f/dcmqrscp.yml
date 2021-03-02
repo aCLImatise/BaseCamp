@@ -1,0 +1,639 @@
+!Command
+command:
+- dcmqrscp
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: port
+  description: "tcp/ip port number to listen on\n(default: in config file)"
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --arguments
+  description: print expanded command line arguments
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  description: quiet mode, print no warnings and errors
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: verbose mode, print processing details
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --debug
+  description: debug mode, print debug information
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ll
+  - --log-level
+  description: "[l]evel: string constant\n(fatal, error, warn, info, debug, trace)\n\
+    use level l for the logger"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -lc
+  - --log-config
+  description: "[f]ilename: string\nuse config file f for the logger"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --config
+  description: "[f]ilename: string\nuse specific configuration file\n(default: /usr/local/etc/dcmtk/dcmqrscp.cfg)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --single-process
+  description: single process mode
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --fork
+  description: fork child process for each assoc. (default)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --require-find
+  description: "reject all MOVE/GET presentation contexts for\nwhich no correspond.\
+    \ FIND context is proposed"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-parallel-store
+  description: "reject multiple simultaneous STORE presentat.\ncontexts for one application\
+    \ entity title"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --disable-get
+  description: disable C-GET support
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --allow-shutdown
+  description: allow external shutdown via private SOP class
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -XF
+  - --check-find
+  description: check C-FIND identifier validity
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-check-find
+  description: do not check C-FIND identifier validity (def.)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -XM
+  - --check-move
+  description: check C-MOVE identifier validity
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-check-move
+  description: do not check C-MOVE identifier validity (def.)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --move-unrestricted
+  description: do not restrict move destination (default)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ZA
+  - --move-aetitle
+  description: restrict move dest. to requesting AE title
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ZH
+  - --move-host
+  description: restrict move destination to requesting host
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ZV
+  - --move-vendor
+  description: restrict move destination to requesting vendor
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -QP
+  - --no-patient-root
+  description: do not support Patient Root Q/R models
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -QS
+  - --no-study-root
+  description: do not support Study Root Q/R models
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -QO
+  - --no-patient-study
+  description: do not support Patient/Study Only Q/R models
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -xf
+  - --assoc-config-file
+  description: "[f]ilename, [i]n-profile, [o]ut-profile: string\nuse profile i from\
+    \ f for incoming associations\nuse profile o from f for outgoing associations"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  description: "=   --propose-uncompr       propose all uncompressed TS, explicit\
+    \ VR\nwith local byte ordering first (default)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -xe
+  - --propose-little
+  description: "propose all uncompressed TS, explicit VR\nlittle endian first"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -xb
+  - --propose-big
+  description: "propose all uncompressed TS, explicit VR\nbig endian first"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -xi
+  - --propose-implicit
+  description: propose implicit VR little endian TS only
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -xs
+  - --propose-lossless
+  description: "propose default JPEG lossless TS\nand all uncompressed transfer syntaxes"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -xy
+  - --propose-jpeg8
+  description: "propose default JPEG lossy TS for 8 bit data\nand all uncompressed\
+    \ transfer syntaxes"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -xx
+  - --propose-jpeg12
+  description: "propose default JPEG lossy TS for 12 bit data\nand all uncompressed\
+    \ transfer syntaxes"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -xv
+  - --propose-j2k-lossless
+  description: "propose JPEG 2000 lossless TS\nand all uncompressed transfer syntaxes"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -xw
+  - --propose-j2k-lossy
+  description: "propose JPEG 2000 lossy TS\nand all uncompressed transfer syntaxes"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -xt
+  - --propose-jls-lossless
+  description: "propose JPEG-LS lossless TS\nand all uncompressed transfer syntaxes"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -xu
+  - --propose-jls-lossy
+  description: "propose JPEG-LS lossy TS\nand all uncompressed transfer syntaxes"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -xm
+  - --propose-mpeg2
+  description: propose MPEG2 Main Profile @ Main Level TS
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -xh
+  - --propose-mpeg2-high
+  description: propose MPEG2 Main Profile @ High Level TS
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -xn
+  - --propose-mpeg4
+  description: propose MPEG4 AVC/H.264 HP / Level 4.1 TS
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -xl
+  - --propose-mpeg4-bd
+  description: propose MPEG4 AVC/H.264 BD-compatible TS
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -x2
+  - --propose-mpeg4-2-2d
+  description: propose MPEG4 AVC/H.264 HP / Level 4.2 TS (2D)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -x3
+  - --propose-mpeg4-2-3d
+  description: propose MPEG4 AVC/H.264 HP / Level 4.2 TS (3D)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -xo
+  - --propose-mpeg4-2-st
+  description: propose MPEG4 AVC/H.264 Stereo / Level 4.2 TS
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -x4
+  - --propose-hevc
+  description: propose HEVC/H.265 Main Profile / Level 5.1 TS
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -x5
+  - --propose-hevc10
+  description: propose HEVC/H.265 Main 10 Profile / Level 5.1 TS
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -xr
+  - --propose-rle
+  description: "propose RLE lossless TS\nand all uncompressed transfer syntaxes"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -xd
+  - --propose-deflated
+  description: "propose deflated expl. VR little endian TS\nand all uncompressed transfer\
+    \ syntaxes"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -to
+  - --timeout
+  description: "[s]econds: integer (default: unlimited)\ntimeout for connection requests"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ta
+  - --acse-timeout
+  description: "[s]econds: integer (default: 30)\ntimeout for ACSE messages"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -td
+  - --dimse-timeout
+  description: "[s]econds: integer (default: unlimited)\ntimeout for DIMSE messages"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -pdu
+  - --max-pdu
+  description: "[n]umber of bytes: integer (4096..131072)\nset max receive pdu to\
+    \ n bytes\n(default: use value from configuration file)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -dhl
+  - --disable-host-lookup
+  description: disable hostname lookup
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --refuse
+  description: refuse association
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --reject
+  description: reject association if no implement. class UID
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ignore
+  description: ignore store data, receive but do not store
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -up
+  - --uid-padding
+  description: silently correct space-padded UIDs
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --convert-to-xxx
+  description: that is not possible
+  args: !SimpleFlagArg
+    name: if
+- !Flag
+  optional: true
+  synonyms:
+  - -Cr
+  - --override-charset
+  description: "convert affected element values to the\ncharacter set specified via\
+    \ --convert-to-xxx,\nignoring the one specified in the request"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Ct
+  - --transliterate
+  description: "try to approximate characters that cannot be\nrepresented through\
+    \ similar looking characters"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Cd
+  - --discard-illegal
+  description: "discard characters that cannot be represented\nin destination character\
+    \ set"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -B
+  - --normal
+  description: allow implicit format conversions (default)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  - --write-dataset
+  description: write data set without file meta information
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --disable-new-vr
+  description: disable support for new VRs, convert to OB
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --group-length-remove
+  description: always write without group length elements
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --length-undefined
+  description: write with undefined lengths
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --padding-off
+  description: no padding (default)
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: print this help text and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: print version information and exit
+  args: !EmptyFlagArg {}
+help_text: "$dcmtk: dcmqrscp v3.6.5 2019-10-28 $\n\ndcmqrscp: DICOM image archive\
+  \ (central test node)\nusage: dcmqrscp [options] [port]\n\nparameters:\n  port \
+  \                           tcp/ip port number to listen on\n                  \
+  \                (default: in config file)\n\ngeneral options:\n  -h      --help\
+  \                  print this help text and exit\n          --version          \
+  \     print version information and exit\n          --arguments             print\
+  \ expanded command line arguments\n  -q      --quiet                 quiet mode,\
+  \ print no warnings and errors\n  -v      --verbose               verbose mode,\
+  \ print processing details\n  -d      --debug                 debug mode, print\
+  \ debug information\n  -ll     --log-level             [l]evel: string constant\n\
+  \                                  (fatal, error, warn, info, debug, trace)\n  \
+  \                                use level l for the logger\n  -lc     --log-config\
+  \            [f]ilename: string\n                                  use config file\
+  \ f for the logger\n  -c      --config                [f]ilename: string\n     \
+  \                             use specific configuration file\n                \
+  \                  (default: /usr/local/etc/dcmtk/dcmqrscp.cfg)\nmulti-process options:\n\
+  \  -s      --single-process        single process mode\n          --fork       \
+  \           fork child process for each assoc. (default)\ndatabase options:\n  association\
+  \ negotiation:\n          --require-find          reject all MOVE/GET presentation\
+  \ contexts for\n                                  which no correspond. FIND context\
+  \ is proposed\n          --no-parallel-store     reject multiple simultaneous STORE\
+  \ presentat.\n                                  contexts for one application entity\
+  \ title\n          --disable-get           disable C-GET support\n          --allow-shutdown\
+  \        allow external shutdown via private SOP class\n  checking identifier validity:\n\
+  \    -XF   --check-find            check C-FIND identifier validity\n          --no-check-find\
+  \         do not check C-FIND identifier validity (def.)\n    -XM   --check-move\
+  \            check C-MOVE identifier validity\n          --no-check-move       \
+  \  do not check C-MOVE identifier validity (def.)\n  restriction of move targets:\n\
+  \          --move-unrestricted     do not restrict move destination (default)\n\
+  \    -ZA   --move-aetitle          restrict move dest. to requesting AE title\n\
+  \    -ZH   --move-host             restrict move destination to requesting host\n\
+  \    -ZV   --move-vendor           restrict move destination to requesting vendor\n\
+  \  restriction of query/retrieve models:\n    -QP   --no-patient-root       do not\
+  \ support Patient Root Q/R models\n    -QS   --no-study-root         do not support\
+  \ Study Root Q/R models\n    -QO   --no-patient-study      do not support Patient/Study\
+  \ Only Q/R models\nnetwork options:\n  association negotiation profiles from configuration\
+  \ file:\n    -xf   --assoc-config-file     [f]ilename, [i]n-profile, [o]ut-profile:\
+  \ string\n                                  use profile i from f for incoming associations\n\
+  \                                  use profile o from f for outgoing associations\n\
+  \  preferred network transfer syntaxes (incoming associations):\n    +x=   --prefer-uncompr\
+  \        prefer explicit VR local byte order (default)\n    +xe   --prefer-little\
+  \         prefer explicit VR little endian TS\n    +xb   --prefer-big          \
+  \  prefer explicit VR big endian TS\n    +xs   --prefer-lossless       prefer default\
+  \ JPEG lossless TS\n    +xy   --prefer-jpeg8          prefer default JPEG lossy\
+  \ TS for 8 bit data\n    +xx   --prefer-jpeg12         prefer default JPEG lossy\
+  \ TS for 12 bit data\n    +xv   --prefer-j2k-lossless   prefer JPEG 2000 lossless\
+  \ TS\n    +xw   --prefer-j2k-lossy      prefer JPEG 2000 lossy TS\n    +xt   --prefer-jls-lossless\
+  \   prefer JPEG-LS lossless TS\n    +xu   --prefer-jls-lossy      prefer JPEG-LS\
+  \ lossy TS\n    +xm   --prefer-mpeg2          prefer MPEG2 Main Profile @ Main Level\
+  \ TS\n    +xh   --prefer-mpeg2-high     prefer MPEG2 Main Profile @ High Level TS\n\
+  \    +xn   --prefer-mpeg4          prefer MPEG4 AVC/H.264 HP / Level 4.1 TS\n  \
+  \  +xl   --prefer-mpeg4-bd       prefer MPEG4 AVC/H.264 BD-compatible TS\n    +x2\
+  \   --prefer-mpeg4-2-2d     prefer MPEG4 AVC/H.264 HP / Level 4.2 TS (2D)\n    +x3\
+  \   --prefer-mpeg4-2-3d     prefer MPEG4 AVC/H.264 HP / Level 4.2 TS (3D)\n    +xo\
+  \   --prefer-mpeg4-2-st     prefer MPEG4 AVC/H.264 Stereo / Level 4.2 TS\n    +x4\
+  \   --prefer-hevc           prefer HEVC/H.265 Main Profile / Level 5.1 TS\n    +x5\
+  \   --prefer-hevc10         prefer HEVC/H.265 Main 10 Profile / Level 5.1 TS\n \
+  \   +xr   --prefer-rle            prefer RLE lossless TS\n    +xd   --prefer-deflated\
+  \       prefer deflated expl. VR little endian TS\n    +xi   --implicit        \
+  \      accept implicit VR little endian TS only\n  proposed transmission transfer\
+  \ syntaxes (outgoing associations):\n    -x=   --propose-uncompr       propose all\
+  \ uncompressed TS, explicit VR\n                                  with local byte\
+  \ ordering first (default)\n    -xe   --propose-little        propose all uncompressed\
+  \ TS, explicit VR\n                                  little endian first\n    -xb\
+  \   --propose-big           propose all uncompressed TS, explicit VR\n         \
+  \                         big endian first\n    -xi   --propose-implicit      propose\
+  \ implicit VR little endian TS only\n    -xs   --propose-lossless      propose default\
+  \ JPEG lossless TS\n                                  and all uncompressed transfer\
+  \ syntaxes\n    -xy   --propose-jpeg8         propose default JPEG lossy TS for\
+  \ 8 bit data\n                                  and all uncompressed transfer syntaxes\n\
+  \    -xx   --propose-jpeg12        propose default JPEG lossy TS for 12 bit data\n\
+  \                                  and all uncompressed transfer syntaxes\n    -xv\
+  \   --propose-j2k-lossless  propose JPEG 2000 lossless TS\n                    \
+  \              and all uncompressed transfer syntaxes\n    -xw   --propose-j2k-lossy\
+  \     propose JPEG 2000 lossy TS\n                                  and all uncompressed\
+  \ transfer syntaxes\n    -xt   --propose-jls-lossless  propose JPEG-LS lossless\
+  \ TS\n                                  and all uncompressed transfer syntaxes\n\
+  \    -xu   --propose-jls-lossy     propose JPEG-LS lossy TS\n                  \
+  \                and all uncompressed transfer syntaxes\n    -xm   --propose-mpeg2\
+  \         propose MPEG2 Main Profile @ Main Level TS\n    -xh   --propose-mpeg2-high\
+  \    propose MPEG2 Main Profile @ High Level TS\n    -xn   --propose-mpeg4     \
+  \    propose MPEG4 AVC/H.264 HP / Level 4.1 TS\n    -xl   --propose-mpeg4-bd   \
+  \   propose MPEG4 AVC/H.264 BD-compatible TS\n    -x2   --propose-mpeg4-2-2d   \
+  \ propose MPEG4 AVC/H.264 HP / Level 4.2 TS (2D)\n    -x3   --propose-mpeg4-2-3d\
+  \    propose MPEG4 AVC/H.264 HP / Level 4.2 TS (3D)\n    -xo   --propose-mpeg4-2-st\
+  \    propose MPEG4 AVC/H.264 Stereo / Level 4.2 TS\n    -x4   --propose-hevc   \
+  \       propose HEVC/H.265 Main Profile / Level 5.1 TS\n    -x5   --propose-hevc10\
+  \        propose HEVC/H.265 Main 10 Profile / Level 5.1 TS\n    -xr   --propose-rle\
+  \           propose RLE lossless TS\n                                  and all uncompressed\
+  \ transfer syntaxes\n    -xd   --propose-deflated      propose deflated expl. VR\
+  \ little endian TS\n                                  and all uncompressed transfer\
+  \ syntaxes\n  other network options:\n    -to   --timeout               [s]econds:\
+  \ integer (default: unlimited)\n                                  timeout for connection\
+  \ requests\n    -ta   --acse-timeout          [s]econds: integer (default: 30)\n\
+  \                                  timeout for ACSE messages\n    -td   --dimse-timeout\
+  \         [s]econds: integer (default: unlimited)\n                            \
+  \      timeout for DIMSE messages\n    -pdu  --max-pdu               [n]umber of\
+  \ bytes: integer (4096..131072)\n                                  set max receive\
+  \ pdu to n bytes\n                                  (default: use value from configuration\
+  \ file)\n    -dhl  --disable-host-lookup   disable hostname lookup\n          --refuse\
+  \                refuse association\n          --reject                reject association\
+  \ if no implement. class UID\n          --ignore                ignore store data,\
+  \ receive but do not store\n    -up   --uid-padding           silently correct space-padded\
+  \ UIDs\nprocessing options:\n  specific character set:\n    +Cr   --use-request-charset\
+  \   try to convert all element values that are\n                               \
+  \   affected by Specific Character Set (0008,0005)\n                           \
+  \       to the one specified in the request data set,\n                        \
+  \          fall back to the one specified via\n                                \
+  \  --convert-to-xxx if that is not possible\n                                  (default,\
+  \ unless overridden by config file)\n    -Cr   --override-charset      convert affected\
+  \ element values to the\n                                  character set specified\
+  \ via --convert-to-xxx,\n                                  ignoring the one specified\
+  \ in the request\n    +A7   --convert-to-ascii      convert affected element values\
+  \ to 7-bit ASCII\n                                  (default, unless overridden\
+  \ by config file)\n    +U8   --convert-to-utf8       convert affected element values\
+  \ to UTF-8\n    +L1   --convert-to-latin1     convert affected element values to\
+  \ ISO 8859-1\n    +C    --convert-to-charset    [c]harset: string\n            \
+  \                      convert affected element values to the char.\n          \
+  \                        set specified by the DICOM defined term c\n    -Ct   --transliterate\
+  \         try to approximate characters that cannot be\n                       \
+  \           represented through similar looking characters\n    -Cd   --discard-illegal\
+  \       discard characters that cannot be represented\n                        \
+  \          in destination character set\noutput options:\n  bit preserving mode:\n\
+  \    -B    --normal                allow implicit format conversions (default)\n\
+  \    +B    --bit-preserving        write data exactly as read\n  output file format:\n\
+  \    +F    --write-file            write file format (default)\n    -F    --write-dataset\
+  \         write data set without file meta information\n  output transfer syntax\
+  \ (not with --bit-preserving or compressed transmission):\n    +t=   --write-xfer-same\
+  \       write with same TS as input (default)\n    +te   --write-xfer-little   \
+  \  write with explicit VR little endian TS\n    +tb   --write-xfer-big        write\
+  \ with explicit VR big endian TS\n    +ti   --write-xfer-implicit   write with implicit\
+  \ VR little endian TS\n    +td   --write-xfer-deflated   write with deflated expl.\
+  \ VR little endian TS\n  post-1993 value representations:\n    +u    --enable-new-vr\
+  \         enable support for new VRs (UN/UT) (default)\n    -u    --disable-new-vr\
+  \        disable support for new VRs, convert to OB\n  group length encoding (not\
+  \ with --bit-preserving):\n    +g=   --group-length-recalc   recalculate group lengths\
+  \ if present (default)\n    +g    --group-length-create   always write with group\
+  \ length elements\n    -g    --group-length-remove   always write without group\
+  \ length elements\n  length encoding in sequences and items (not with --bit-preserving):\n\
+  \    +e    --length-explicit       write with explicit lengths (default)\n    -e\
+  \    --length-undefined      write with undefined lengths\n  data set trailing padding\
+  \ (not with --write-dataset or --bit-preserving):\n    -p    --padding-off     \
+  \      no padding (default)\n    +p    --padding-create        [f]ile-pad [i]tem-pad:\
+  \ integer\n                                  align file on multiple of f bytes\n\
+  \                                  and items on multiple of i bytes\n  deflate compression\
+  \ level (only with -xd or --write-xfer-deflated/same):\n    +cl   --compression-level\
+  \     [l]evel: integer (default: 6)\n                                  0=uncompressed,\
+  \ 1=fastest, 9=best compression\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/dcmtk:3.6.5--h5fca97b_0

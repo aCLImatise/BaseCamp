@@ -1,0 +1,210 @@
+!Command
+command:
+- XFDR
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -in
+  description: "Crosslink Identifications in either xquest.xml, idXML, or mzIdentML\
+    \ format (as produced by OpenPepXL) (valid formats: 'xml', 'idXML', 'mzid', 'xquest.xml')"
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -in_type
+  description: "Type of input file provided with -in. If omitted, the file type is\
+    \ guessed from the file extension. (valid: 'xml', 'idXML', 'mzid', 'xquest.xml')"
+  args: !SimpleFlagArg
+    name: in_type
+- !Flag
+  optional: true
+  synonyms:
+  - -out_idXML
+  description: "Output as idXML file (valid formats: 'idXML')"
+  args: !SimpleFlagArg
+    name: idXML_file
+- !Flag
+  optional: true
+  synonyms:
+  - -out_mzIdentML
+  description: "Output as mzIdentML file (valid formats: 'mzid')"
+  args: !SimpleFlagArg
+    name: mzIdentML_file
+- !Flag
+  optional: true
+  synonyms:
+  - -out_xquest
+  description: "Output as xquest.xml file (valid formats: 'xquest.xml')"
+  args: !SimpleFlagArg
+    name: xQuestXML_file
+- !Flag
+  optional: true
+  synonyms:
+  - -decoy_string
+  description: "Prefix of decoy protein ids. The correspondig target protein id should\
+    \ be retrievable by deleting this prefix. (default: 'DECOY_')"
+  args: !SimpleFlagArg
+    name: text
+- !Flag
+  optional: true
+  synonyms:
+  - -minborder
+  description: "Filter for minimum precursor mass error (ppm) before FDR estimation.\
+    \ Values outside of the tolerance window of the original search will effectively\
+    \ disable this filter. (default: '-50.0')"
+  args: !SimpleFlagArg
+    name: value
+- !Flag
+  optional: true
+  synonyms:
+  - -maxborder
+  description: "Filter for maximum precursor mass error (ppm) before FDR estimation.\
+    \ Values outside of the tolerance window of the original search will effectively\
+    \ disable this filter. (default: '50.0')"
+  args: !SimpleFlagArg
+    name: value
+- !Flag
+  optional: true
+  synonyms:
+  - -mindeltas
+  description: "Filter for delta score, 0 disables the filter. Minimum delta score\
+    \ required, hits are rejected if larger or equal. The delta score is a ratio of\
+    \ the score of a hit and the score of the next best hit to the same spectrum,\
+    \ so the value range is between 0 and 1 with 1.0 meaning the scores are equal\
+    \ and 0.5 meaning the next best score is half as high as the current one. (default:\
+    \ '0.0' min: '0.0' max: '1.0')"
+  args: !SimpleFlagArg
+    name: value
+- !Flag
+  optional: true
+  synonyms:
+  - -minionsmatched
+  description: "Filter for minimum matched ions per peptide. (default: '0' min: '0')"
+  args: !SimpleFlagArg
+    name: number
+- !Flag
+  optional: true
+  synonyms:
+  - -uniquexl
+  description: Calculate statistics based only on unique IDs. For a set of IDs from
+    equal candidates (same pair of peptides, modifications and cross-linked positions),
+    only the highest scoring hit will be considered. By default the score distribution
+    will be estimated using all 1st ranked candidates.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -no_qvalues
+  description: Do not transform simple FDR to q-values
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -minscore
+  description: "Minimum score to be considered for FDR calculation. A number lower\
+    \ than the lowest score will effectively disable this filter. (default: '-10.0')"
+  args: !SimpleFlagArg
+    name: value
+- !Flag
+  optional: true
+  synonyms:
+  - -binsize
+  description: "Bin size for the cumulative histograms for score distributions. Should\
+    \ be about the same size as the smallest expected difference between scores. Smaller\
+    \ numbers will make XFDR more robust, but much slower. Negative numbers are not\
+    \ allowed. Should only be changed if the range of the main score changes or another\
+    \ score than the OpenPepXL score is used. (default: '1.0e-04' min: '1.0e-15')"
+  args: !SimpleFlagArg
+    name: value
+- !Flag
+  optional: true
+  synonyms:
+  - -ini
+  description: Use the given TOPP INI file
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -threads
+  description: "Sets the number of threads allowed to be used by the TOPP tool (default:\
+    \ '1')"
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - -write_ini
+  description: Writes the default configuration file
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - --helphelp
+  description: Shows all options (including advanced)
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Shows options
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "\nstty: standard input: Inappropriate ioctl for device\nXFDR -- Calculates\
+  \ false discovery rate estimates on crosslink identifications\nFull documentation:\
+  \ http://www.openms.de/documentation/TOPP_XFDR.html\nVersion: 2.6.0-pre-exported-20201001\
+  \ Oct  1 2020, 01:37:06\nTo cite OpenMS:\n  Rost HL, Sachsenberg T, Aiche S, Bielow\
+  \ C et al.. OpenMS: a flexible open-source software platform for mass spectrometry\
+  \ data analysis. Nat Meth. 2016; 13, 9: 741-748. doi:10.1038/nmeth.3959.\n\nUsage:\n\
+  \  XFDR <options>\n\nOptions (mandatory options marked with '*'):\n  -in <file>\
+  \                       Crosslink Identifications in either xquest.xml, idXML, or\
+  \ mzIdentML format (as produced by OpenPepXL) (valid formats: 'xml', 'idXML', 'mzid',\
+  \ 'xquest.xml')\n  -in_type <in_type>               Type of input file provided\
+  \ with -in. If omitted, the file type is guessed from the file extension. (valid:\
+  \ 'xml', 'idXML', 'mzid', 'xquest.xml')\n  -out_idXML <idXML_file>          Output\
+  \ as idXML file (valid formats: 'idXML')\n  -out_mzIdentML <mzIdentML_file>  Output\
+  \ as mzIdentML file (valid formats: 'mzid')\n  -out_xquest <xQuestXML_file>    \
+  \ Output as xquest.xml file (valid formats: 'xquest.xml')\n  -decoy_string <text>\
+  \             Prefix of decoy protein ids. The correspondig target protein id should\
+  \ be retrievable by deleting this prefix. (default: 'DECOY_')\n  -minborder <value>\
+  \               Filter for minimum precursor mass error (ppm) before FDR estimation.\
+  \ Values outside of the tolerance window of the original search will effectively\
+  \ disable this filter. (default: '-50.0')\n  -maxborder <value>               Filter\
+  \ for maximum precursor mass error (ppm) before FDR estimation. Values outside of\
+  \ the tolerance window of the original search will effectively disable this filter.\
+  \ (default: '50.0')\n  -mindeltas <value>               Filter for delta score,\
+  \ 0 disables the filter. Minimum delta score required, hits are rejected if larger\
+  \ or equal. The delta score is a ratio of the score of a hit and the score of the\
+  \ next best hit to the same spectrum, so the value range is between 0 and 1 with\
+  \ 1.0 meaning the scores are equal and 0.5 meaning the next best score is half as\
+  \ high as the current one. (default: '0.0' min: '0.0' max: '1.0')\n  -minionsmatched\
+  \ <number>         Filter for minimum matched ions per peptide. (default: '0' min:\
+  \ '0')\n  -uniquexl                        Calculate statistics based only on unique\
+  \ IDs. For a set of IDs from equal candidates (same pair of peptides, modifications\
+  \ and cross-linked positions), only the highest scoring hit will be considered.\
+  \ By default the score distribution will be estimated using all 1st ranked candidates.\n\
+  \  -no_qvalues                      Do not transform simple FDR to q-values\n  -minscore\
+  \ <value>                Minimum score to be considered for FDR calculation. A number\
+  \ lower than the lowest score will effectively disable this filter. (default: '-10.0')\n\
+  \  -binsize <value>                 Bin size for the cumulative histograms for score\
+  \ distributions. Should be about the same size as the smallest expected difference\
+  \ between scores. Smaller numbers will make XFDR more robust, but much slower. Negative\
+  \ numbers are not allowed. Should only be changed if the range of the main score\
+  \ changes or another score than the OpenPepXL score is used. (default: '1.0e-04'\
+  \ min: '1.0e-15')\n                                   \nCommon TOPP options:\n \
+  \ -ini <file>                      Use the given TOPP INI file\n  -threads <n> \
+  \                    Sets the number of threads allowed to be used by the TOPP tool\
+  \ (default: '1')\n  -write_ini <file>                Writes the default configuration\
+  \ file\n  --help                           Shows options\n  --helphelp         \
+  \              Shows all options (including advanced)\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/openms:2.6.0--h4afb90d_0

@@ -1,0 +1,185 @@
+!Command
+command:
+- ThermoRawFileParser
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: verbose.
+  description: -e, --ignoreInstrumentErrors
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  description: "The raw file input (Required). Specify this or an\ninput directory\
+    \ -d."
+  args: !SimpleFlagArg
+    name: VALUE
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --input_directory
+  description: "The directory containing the raw files (Required).\nSpecify this or\
+    \ an input raw file -i."
+  args: !SimpleFlagArg
+    name: VALUE
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: "The output directory. Specify this or an output\nfile -b. Specifying\
+    \ neither writes to the input\ndirectory."
+  args: !SimpleFlagArg
+    name: VALUE
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --output_file
+  description: "The output file. Specify this or an output\ndirectory -o. Specifying\
+    \ neither writes to the\ninput directory."
+  args: !SimpleFlagArg
+    name: VALUE
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --format
+  description: "The spectra output format: 0 for MGF, 1 for mzML,\n2 for indexed mzML,\
+    \ 3 for Parquet. Defaults to\nmzML if no format is specified."
+  args: !SimpleFlagArg
+    name: VALUE
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --metadata
+  description: 'The metadata output format: 0 for JSON, 1 for TXT.'
+  args: !SimpleFlagArg
+    name: VALUE
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --metadata_output_file
+  description: "The metadata output file. By default the metadata\nfile is written\
+    \ to the output directory."
+  args: !SimpleFlagArg
+    name: VALUE
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --gzip
+  description: GZip the output file.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --noPeakPicking
+  description: "Don't use the peak picking provided by the native\nThermo library.\
+    \ By default peak picking is\nenabled."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  - --noZlibCompression
+  description: "Don't use zlib compression for the m/z ratios and\nintensities. By\
+    \ default zlib compression is\nenabled."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --logging
+  description: 'Optional logging level: 0 for silent, 1 for'
+  args: !SimpleFlagArg
+    name: VALUE
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --s3_url
+  description: "[=VALUE]       Optional property to write directly the data into\n\
+    S3 Storage."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --s3_accesskeyid
+  description: "[=VALUE]\nOptional key for the S3 bucket to write the file\noutput."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --s3_secretaccesskey
+  description: "[=VALUE]\nOptional key for the S3 bucket to write the file\noutput."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --s3_bucketName
+  description: "[=VALUE]\nS3 bucket name\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Prints out the options.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Prints out the library version.
+  args: !EmptyFlagArg {}
+help_text: "usage is ThermoRawFileParser.exe [subcommand] [options]\noptional subcommands\
+  \ are xic|query (use [subcommand] -h for more info]):\n  -h, --help            \
+  \     Prints out the options.\n      --version              Prints out the library\
+  \ version.\n  -i, --input=VALUE          The raw file input (Required). Specify\
+  \ this or an\n                               input directory -d.\n  -d, --input_directory=VALUE\n\
+  \                             The directory containing the raw files (Required).\n\
+  \                               Specify this or an input raw file -i.\n  -o, --output=VALUE\
+  \         The output directory. Specify this or an output\n                    \
+  \           file -b. Specifying neither writes to the input\n                  \
+  \             directory.\n  -b, --output_file=VALUE    The output file. Specify\
+  \ this or an output\n                               directory -o. Specifying neither\
+  \ writes to the\n                               input directory.\n  -f, --format=VALUE\
+  \         The spectra output format: 0 for MGF, 1 for mzML,\n                  \
+  \             2 for indexed mzML, 3 for Parquet. Defaults to\n                 \
+  \              mzML if no format is specified.\n  -m, --metadata=VALUE       The\
+  \ metadata output format: 0 for JSON, 1 for TXT.\n  -c, --metadata_output_file=VALUE\n\
+  \                             The metadata output file. By default the metadata\n\
+  \                               file is written to the output directory.\n  -g,\
+  \ --gzip                 GZip the output file.\n  -p, --noPeakPicking        Don't\
+  \ use the peak picking provided by the native\n                               Thermo\
+  \ library. By default peak picking is\n                               enabled.\n\
+  \  -z, --noZlibCompression    Don't use zlib compression for the m/z ratios and\n\
+  \                               intensities. By default zlib compression is\n  \
+  \                             enabled.\n  -l, --logging=VALUE        Optional logging\
+  \ level: 0 for silent, 1 for\n                               verbose.\n  -e, --ignoreInstrumentErrors\n\
+  \                             Ignore missing properties by the instrument.\n  -u,\
+  \ --s3_url[=VALUE]       Optional property to write directly the data into\n   \
+  \                            S3 Storage.\n  -k, --s3_accesskeyid[=VALUE]\n     \
+  \                        Optional key for the S3 bucket to write the file\n    \
+  \                           output.\n  -t, --s3_secretaccesskey[=VALUE]\n      \
+  \                       Optional key for the S3 bucket to write the file\n     \
+  \                          output.\n  -n, --s3_bucketName[=VALUE]\n            \
+  \                 S3 bucket name\n"
+generated_using:
+- --help
+docker_image:

@@ -1,0 +1,171 @@
+!Command
+command:
+- fastq-dl
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: ACCESSION
+  description: "ENA/SRA accession to query. (Study, Experiment, or Run\naccession)"
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --aspera
+  description: "Path to the Aspera Connect tool \"ascp\" (Default:\n\"which ascp\"\
+    )"
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --aspera_key
+  description: "Path to Aspera Connect private key, if not given,\nguess based on\
+    \ ascp path"
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --aspera_speed
+  description: "Speed at which Aspera Connect will download. (Default:\n100M)"
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --is_study
+  description: Query is a Study.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --is_experiment
+  description: Query is an Experiment.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --is_run
+  description: Query is a Run.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --group_by_experiment
+  description: Group Runs by experiment accession.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --group_by_sample
+  description: Group Runs by sample accession.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --outdir
+  description: 'Directory to output downloads to. (Default: ./)'
+  args: !SimpleFlagArg
+    name: OUTPUT_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --prefix
+  description: 'Prefix to use for naming log files (Default: fastq)'
+  args: !SimpleFlagArg
+    name: PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - --max_attempts
+  description: 'Maximum number of download attempts (Default: 10)'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --cpus
+  description: 'Total cpus used for downloading from SRA (Default: 1)'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --ftp_only
+  description: FTP only downloads.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sra_only
+  description: "Do not attempt to fall back on ENA if SRA download\ndoes not work\
+    \ (e.g. missing FASTQ)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --silent
+  description: Only critical errors will be printed.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: Print debug related text.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: Skip downloads, print what will be downloaded.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: fastq-dl [-h] [--aspera STRING] [--aspera_key STRING]\n       \
+  \         [--aspera_speed STRING] [--is_study] [--is_experiment]\n             \
+  \   [--is_run] [--group_by_experiment] [--group_by_sample]\n                [--outdir\
+  \ OUTPUT_DIR] [--prefix PREFIX] [--max_attempts INT]\n                [--cpus INT]\
+  \ [--ftp_only] [--sra_only] [--silent] [--verbose]\n                [--debug] [--version]\n\
+  \                ACCESSION {sra,SRA,ena,ENA}\n\nfastq-dl (v1.0.6) - Download FASTQs\
+  \ from ENA or SRA\n\noptional arguments:\n  -h, --help            show this help\
+  \ message and exit\n\nRequired Options:\n\n  ACCESSION             ENA/SRA accession\
+  \ to query. (Study, Experiment, or Run\n                        accession)\n  {sra,SRA,ena,ENA}\
+  \     Specify which provider (ENA or SRA) to use. Accepted\n                   \
+  \     Values: ENA SRA\n\nAspera Connect Options:\n  --aspera STRING       Path to\
+  \ the Aspera Connect tool \"ascp\" (Default:\n                        \"which ascp\"\
+  )\n  --aspera_key STRING   Path to Aspera Connect private key, if not given,\n \
+  \                       guess based on ascp path\n  --aspera_speed STRING\n    \
+  \                    Speed at which Aspera Connect will download. (Default:\n  \
+  \                      100M)\n\nQuery Related Options:\n  --is_study           \
+  \ Query is a Study.\n  --is_experiment       Query is an Experiment.\n  --is_run\
+  \              Query is a Run.\n  --group_by_experiment\n                      \
+  \  Group Runs by experiment accession.\n  --group_by_sample     Group Runs by sample\
+  \ accession.\n\nHelpful Options:\n  --outdir OUTPUT_DIR   Directory to output downloads\
+  \ to. (Default: ./)\n  --prefix PREFIX       Prefix to use for naming log files\
+  \ (Default: fastq)\n  --max_attempts INT    Maximum number of download attempts\
+  \ (Default: 10)\n  --cpus INT            Total cpus used for downloading from SRA\
+  \ (Default: 1)\n  --ftp_only            FTP only downloads.\n  --sra_only      \
+  \      Do not attempt to fall back on ENA if SRA download\n                    \
+  \    does not work (e.g. missing FASTQ).\n  --silent              Only critical\
+  \ errors will be printed.\n  --verbose             Print debug related text.\n \
+  \ --debug               Skip downloads, print what will be downloaded.\n  --version\
+  \             show program's version number and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/fastq-dl:1.0.6--0

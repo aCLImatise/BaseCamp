@@ -1,0 +1,208 @@
+!Command
+command:
+- cooler
+- balance
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: exists.
+  description: --stdout                        Print weight column to stdout instead
+    of
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --nproc
+  description: Number of processes to split the work
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --chunksize
+  description: "Control the number of pixels handled by each\nworker process at a\
+    \ time.  [default:\n10000000]"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --mad-max
+  description: "Ignore bins from the contact matrix using\nthe 'MAD-max' filter: bins\
+    \ whose log\nmarginal sum is less than ``mad-max`` median\nabsolute deviations\
+    \ below the median log\nmarginal sum of all the bins in the same\nchromosome.\
+    \  [default: 5]"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --min-nnz
+  description: "Ignore bins from the contact matrix whose\nmarginal number of nonzeros\
+    \ is less than\nthis number.  [default: 10]"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --min-count
+  description: "Ignore bins from the contact matrix whose\nmarginal count is less\
+    \ than this number.\n[default: 0]"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --blacklist
+  description: "Path to a 3-column BED file containing\ngenomic regions to mask out\
+    \ during the\nbalancing procedure, e.g. sequence gaps or\nregions of poor mappability."
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --ignore-diags
+  description: "Number of diagonals of the contact matrix to\nignore, including the\
+    \ main diagonal.\nExamples: 0 ignores nothing, 1 ignores the\nmain diagonal, 2\
+    \ ignores diagonals (-1, 0,\n1), etc.  [default: 2]"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --ignore-dist
+  description: Distance in bp to ignore.
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --tol
+  description: "Threshold value of variance of the marginals\nfor the algorithm to\
+    \ converge.  [default:\n1e-05]"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --max-iters
+  description: "Maximum number of iterations to perform if\nconvergence is not achieved.\
+    \  [default: 200]"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --cis-only
+  description: "Calculate weights against intra-chromosomal\ndata only instead of\
+    \ genome-wide."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --trans-only
+  description: "Calculate weights against inter-chromosomal\ndata only instead of\
+    \ genome-wide."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --name
+  description: "Name of column to write to.  [default:\nweight]"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --force
+  description: "Overwrite the target dataset, 'weight', if\nit already exists."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --check
+  description: Check whether a data column 'weight' already
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --convergence-policy
+  description: "[store_final|store_nan|discard|error]\nWhat to do with weights when\
+    \ balancing\ndoesn't converge in max_iters.\n'store_final': Store the final result,\n\
+    regardless of whether the iterations\nconverge to the specified tolerance;\n'store_nan':\
+    \ Store a vector of NaN values to\nindicate that the matrix failed to converge;\n\
+    'discard': Store nothing and exit\ngracefully; 'error': Abort with non-zero\n\
+    exit status.  [default: store_final]"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: cooler balance [OPTIONS] COOL_PATH\n\n  Out-of-core matrix balancing.\n\
+  \n  Matrix must be symmetric. See the help for various filtering options to\n  mask\
+  \ out poorly mapped bins.\n\n  COOL_PATH : Path to a COOL file.\n\nOptions:\n  -p,\
+  \ --nproc INTEGER             Number of processes to split the work\n          \
+  \                        between.  [default: 8]\n\n  -c, --chunksize INTEGER   \
+  \      Control the number of pixels handled by each\n                          \
+  \        worker process at a time.  [default:\n                                \
+  \  10000000]\n\n  --mad-max INTEGER               Ignore bins from the contact matrix\
+  \ using\n                                  the 'MAD-max' filter: bins whose log\n\
+  \                                  marginal sum is less than ``mad-max`` median\n\
+  \                                  absolute deviations below the median log\n  \
+  \                                marginal sum of all the bins in the same\n    \
+  \                              chromosome.  [default: 5]\n\n  --min-nnz INTEGER\
+  \               Ignore bins from the contact matrix whose\n                    \
+  \              marginal number of nonzeros is less than\n                      \
+  \            this number.  [default: 10]\n\n  --min-count INTEGER             Ignore\
+  \ bins from the contact matrix whose\n                                  marginal\
+  \ count is less than this number.\n                                  [default: 0]\n\
+  \n  --blacklist PATH                Path to a 3-column BED file containing\n   \
+  \                               genomic regions to mask out during the\n       \
+  \                           balancing procedure, e.g. sequence gaps or\n       \
+  \                           regions of poor mappability.\n\n  --ignore-diags INTEGER\
+  \          Number of diagonals of the contact matrix to\n                      \
+  \            ignore, including the main diagonal.\n                            \
+  \      Examples: 0 ignores nothing, 1 ignores the\n                            \
+  \      main diagonal, 2 ignores diagonals (-1, 0,\n                            \
+  \      1), etc.  [default: 2]\n\n  --ignore-dist INTEGER           Distance in bp\
+  \ to ignore.\n  --tol FLOAT                     Threshold value of variance of the\
+  \ marginals\n                                  for the algorithm to converge.  [default:\n\
+  \                                  1e-05]\n\n  --max-iters INTEGER             Maximum\
+  \ number of iterations to perform if\n                                  convergence\
+  \ is not achieved.  [default: 200]\n\n  --cis-only                      Calculate\
+  \ weights against intra-chromosomal\n                                  data only\
+  \ instead of genome-wide.\n\n  --trans-only                    Calculate weights\
+  \ against inter-chromosomal\n                                  data only instead\
+  \ of genome-wide.\n\n  --name TEXT                     Name of column to write to.\
+  \  [default:\n                                  weight]\n\n  -f, --force       \
+  \              Overwrite the target dataset, 'weight', if\n                    \
+  \              it already exists.\n\n  --check                         Check whether\
+  \ a data column 'weight' already\n                                  exists.\n\n\
+  \  --stdout                        Print weight column to stdout instead of\n  \
+  \                                saving to file.\n\n  --convergence-policy [store_final|store_nan|discard|error]\n\
+  \                                  What to do with weights when balancing\n    \
+  \                              doesn't converge in max_iters.\n                \
+  \                  'store_final': Store the final result,\n                    \
+  \              regardless of whether the iterations\n                          \
+  \        converge to the specified tolerance;\n                                \
+  \  'store_nan': Store a vector of NaN values to\n                              \
+  \    indicate that the matrix failed to converge;\n                            \
+  \      'discard': Store nothing and exit\n                                  gracefully;\
+  \ 'error': Abort with non-zero\n                                  exit status. \
+  \ [default: store_final]\n\n  -h, --help                      Show this message\
+  \ and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/cooler:0.8.10--pyh3252c3a_0

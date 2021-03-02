@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, Int, Float, File
+
+Parsegenes_V0_1_0 = CommandToolBuilder(tool="ParseGenes", base_command=["ParseGenes"], inputs=[ToolInput(tag="in_v", input_type=Boolean(optional=True), prefix="-v", doc=InputDocumentation(doc="verbose")), ToolInput(tag="in_syntax", input_type=Boolean(optional=True), prefix="-syntax", doc=InputDocumentation(doc="strong syntax control in input files")), ToolInput(tag="in_verbose", input_type=Int(optional=True), prefix="-verbose", doc=InputDocumentation(doc="verbose")), ToolInput(tag="in_s", input_type=Boolean(optional=True), prefix="-s", doc=InputDocumentation(doc="no output to stdout")), ToolInput(tag="in_silent", input_type=Int(optional=True), prefix="-silent", doc=InputDocumentation(doc="no output to stdout")), ToolInput(tag="in_bin", input_type=Int(optional=True), prefix="-bin", doc=InputDocumentation(doc="bin size for input averaging")), ToolInput(tag="in_clear", input_type=Int(optional=True), prefix="-clear", doc=InputDocumentation(doc="force binary profile preparation")), ToolInput(tag="in_force_binary_profile", input_type=Boolean(optional=True), prefix="-c", doc=InputDocumentation(doc="force  binary profile preparation")), ToolInput(tag="in_smooth_z", input_type=Float(optional=True), prefix="-smoothZ", doc=InputDocumentation(doc="Z-Score for smoothed profile")), ToolInput(tag="in_cfg", input_type=File(optional=True), prefix="-cfg", doc=InputDocumentation(doc="config file")), ToolInput(tag="in_prof_path", input_type=File(optional=True), prefix="-profPath", doc=InputDocumentation(doc="path for binary profiles")), ToolInput(tag="in_track_path", input_type=File(optional=True), prefix="-trackPath", doc=InputDocumentation(doc="path for tracks")), ToolInput(tag="in_confounder", input_type=File(optional=True), prefix="-confounder", doc=InputDocumentation(doc="confounder filename")), ToolInput(tag="in_log", input_type=File(optional=True), prefix="-log", doc=InputDocumentation(doc="cumulative log-file")), ToolInput(tag="in_chrom", input_type=File(optional=True), prefix="-chrom", doc=InputDocumentation(doc="chromosome file")), ToolInput(tag="in_bufsize", input_type=Int(optional=True), prefix="-BufSize", doc=InputDocumentation(doc="Buffer Size")), ToolInput(tag="in_bp_type", input_type=File(optional=True), prefix="-bpType", doc=InputDocumentation(doc="The value used as a score for BroadPeak input file"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Parsegenes_V0_1_0().translate("wdl", allow_empty_container=True)
+

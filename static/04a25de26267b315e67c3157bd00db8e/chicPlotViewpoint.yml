@@ -1,0 +1,328 @@
+!Command
+command:
+- chicPlotViewpoint
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: files.
+  description: --plotSampleNumber PLOTSAMPLENUMBER, -psn PLOTSAMPLENUMBER
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --interactionFile
+  - -if
+  description: "path to the interaction files which should be used for\nplotting"
+  args: !RepeatFlagArg
+    name: INTERACTIONFILE
+- !Flag
+  optional: true
+  synonyms:
+  - --range
+  description: "RANGE   Defines the region upstream and downstream of a\nreference\
+    \ point which should be included. Format is\n--region upstream downstream, e.g.:\
+    \ --region 500000\n500000 plots 500kb up- and 500kb downstream. This\nvalue should\
+    \ not exceed the range used in the other\nchic-tools."
+  args: !SimpleFlagArg
+    name: RANGE
+- !Flag
+  optional: true
+  synonyms:
+  - --backgroundModelFile
+  - -bmf
+  description: "path to the background file which should be used for\nplotting"
+  args: !SimpleFlagArg
+    name: BACKGROUNDMODELFILE
+- !Flag
+  optional: true
+  synonyms:
+  - --interactionFileFolder
+  - -iff
+  description: "Folder where the interaction files are stored. Applies\nonly for batch\
+    \ mode (Default: .)."
+  args: !SimpleFlagArg
+    name: INTERACTIONFILEFOLDER
+- !Flag
+  optional: true
+  synonyms:
+  - --differentialTestResult
+  - -dif
+  description: "Path to the H0 rejected files to highlight the regions\nin the plot."
+  args: !RepeatFlagArg
+    name: DIFFERENTIALTESTRESULT
+- !Flag
+  optional: true
+  synonyms:
+  - --significantInteractionFileFolder
+  - -siff
+  description: "Folder where the files with detected significant\ninteractions are\
+    \ stored. Applies only for batch mode\n(Default: .)."
+  args: !SimpleFlagArg
+    name: SIGNIFICANTINTERACTIONFILEFOLDER
+- !Flag
+  optional: true
+  synonyms:
+  - --differentialTestResultsFolder
+  - -diff
+  description: "Folder where the H0 rejected files are stored. Applies\nonly for batch\
+    \ mode (Default: .)."
+  args: !SimpleFlagArg
+    name: DIFFERENTIALTESTRESULTSFOLDER
+- !Flag
+  optional: true
+  synonyms:
+  - --significantInteractions
+  - -si
+  description: "Path to the files with detected significant\ninteractions to highlight\
+    \ the regions in the plot."
+  args: !RepeatFlagArg
+    name: SIGNIFICANTINTERACTIONS
+- !Flag
+  optional: true
+  synonyms:
+  - --plotSignificantInteractions
+  - -psi
+  description: "Highlights the significant interactions in the plot\nitself. If not\
+    \ set, only the p-values are updated"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --outputFolder
+  - -of
+  description: 'Output folder of the files (Default: .).'
+  args: !SimpleFlagArg
+    name: OUTPUTFOLDER
+- !Flag
+  optional: true
+  synonyms:
+  - --outputFormat
+  - -format
+  description: 'Output format of the plot (Default: png).'
+  args: !SimpleFlagArg
+    name: OUTPUTFORMAT
+- !Flag
+  optional: true
+  synonyms:
+  - --dpi
+  description: "Optional parameter: Resolution for the image, ifoutput\nis a raster\
+    \ graphics image (e.g png, jpg) (Default:\n300)."
+  args: !SimpleFlagArg
+    name: DPI
+- !Flag
+  optional: true
+  synonyms:
+  - --binResolution
+  - -r
+  description: "Resolution of the bin in genomic units. Values are set\nas number\
+    \ of bases, e.g. 1000 for a 1kb, 5000 for a\n5kb or 10000 for a 10kb resolution\
+    \ (Default: 1000)."
+  args: !SimpleFlagArg
+    name: BINRESOLUTION
+- !Flag
+  optional: true
+  synonyms:
+  - --colorMapPvalue
+  description: "Color map to use for the p-value. Available values can\nbe seen here:\
+    \ http://matplotlib.org/examples/color/col\normaps_reference.html (Default: RdYlBu)."
+  args: !SimpleFlagArg
+    name: COLORMAPPVALUE
+- !Flag
+  optional: true
+  synonyms:
+  - --maxPValue
+  - -map
+  description: "Maximal value for p-value. Values above this threshold\nare set to\
+    \ this value (Default: 0.1)."
+  args: !SimpleFlagArg
+    name: MAXPVALUE
+- !Flag
+  optional: true
+  synonyms:
+  - --minPValue
+  - -mp
+  description: "Minimal value for p-value. Values below this threshold\nare set to\
+    \ this value (Default: 0.0)."
+  args: !SimpleFlagArg
+    name: MINPVALUE
+- !Flag
+  optional: true
+  synonyms:
+  - --pValue
+  - -p
+  description: Plot p-values as a colorbar
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pValueSignificanceLevels
+  - -psl
+  description: "Highlight the p-values by the defined significance\nlevels."
+  args: !RepeatFlagArg
+    name: PVALUESIGNIFICANCELEVELS
+- !Flag
+  optional: true
+  synonyms:
+  - --xFold
+  - -xf
+  description: Plot x-fold region for the mean background.
+  args: !SimpleFlagArg
+    name: XFOLD
+- !Flag
+  optional: true
+  synonyms:
+  - --truncateZeroPvalues
+  - -tzpv
+  description: Sets all p-values which are equal to zero to one.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --outFileName
+  - -o
+  description: File name to save the image. Not used in batch mode.
+  args: !SimpleFlagArg
+    name: OUTFILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --batchMode
+  - -bm
+  description: The given file for --interactionFile and or
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --targetFile
+  description: a list of the to be processed
+  args: !SimpleFlagArg
+    name: contain
+- !Flag
+  optional: true
+  synonyms:
+  - --colorList
+  - -cl
+  description: "Colorlist for the viewpoint lines (Default g b c m y\nk)."
+  args: !RepeatFlagArg
+    name: COLORLIST
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  - -t
+  description: "Number of threads (uses the python multiprocessing\nmodule) (Default:\
+    \ 4)."
+  args: !SimpleFlagArg
+    name: THREADS
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: chicPlotViewpoint --interactionFile INTERACTIONFILE\n         \
+  \                [INTERACTIONFILE ...] --range RANGE RANGE\n                   \
+  \      [--backgroundModelFile BACKGROUNDMODELFILE]\n                         [--interactionFileFolder\
+  \ INTERACTIONFILEFOLDER]\n                         [--differentialTestResult DIFFERENTIALTESTRESULT\
+  \ [DIFFERENTIALTESTRESULT ...]]\n                         [--significantInteractionFileFolder\
+  \ SIGNIFICANTINTERACTIONFILEFOLDER]\n                         [--differentialTestResultsFolder\
+  \ DIFFERENTIALTESTRESULTSFOLDER]\n                         [--significantInteractions\
+  \ SIGNIFICANTINTERACTIONS [SIGNIFICANTINTERACTIONS ...]]\n                     \
+  \    [--plotSignificantInteractions]\n                         [--outputFolder OUTPUTFOLDER]\n\
+  \                         [--outputFormat OUTPUTFORMAT] [--dpi DPI]\n          \
+  \               [--binResolution BINRESOLUTION]\n                         [--colorMapPvalue\
+  \ COLORMAPPVALUE]\n                         [--maxPValue MAXPVALUE] [--minPValue\
+  \ MINPVALUE]\n                         [--pValue]\n                         [--pValueSignificanceLevels\
+  \ PVALUESIGNIFICANCELEVELS [PVALUESIGNIFICANCELEVELS ...]]\n                   \
+  \      [--xFold XFOLD] [--truncateZeroPvalues]\n                         [--outFileName\
+  \ OUTFILENAME] [--batchMode]\n                         [--plotSampleNumber PLOTSAMPLENUMBER]\n\
+  \                         [--colorList COLORLIST [COLORLIST ...]]\n            \
+  \             [--threads THREADS] [--help] [--version]\n\nchicPlotViewpoint plots\
+  \ one or many viewpoints with the average background model and the computed p-value\
+  \ per sample. In addition, it can highlight differential interactions of two samples\
+  \ and/or significant regions.\n\nAn example usage is:\n\n`$ chicPlotViewpoint --interactionFile\
+  \ viewpoint1.txt viewpoint2.txt --range 500000 500000  --backgroundModelFile background_model.txt\
+  \ --pValue --outFileName viewpoint1_2.png --dpi 300`\n\nIn batch mode the list of\
+  \ file names and the folders containing the files need to be given:\n\n`$ chicPlotViewpoint\
+  \ --interactionFile viewpoint_names.txt -interactionFileFolder viewpointFilesFolder\
+  \ --differentialTestResult rejected_H0.txt --differentialTestResultsFolder differentialFolder\
+  \ --range 500000 500000 --backgroundModelFile background_model.txt --pValue --outputFolder\
+  \ plotsFOlder --dpi 300 --threads 20`\n\nRequired arguments:\n  --interactionFile\
+  \ INTERACTIONFILE [INTERACTIONFILE ...], -if INTERACTIONFILE [INTERACTIONFILE ...]\n\
+  \                        path to the interaction files which should be used for\n\
+  \                        plotting\n  --range RANGE RANGE   Defines the region upstream\
+  \ and downstream of a\n                        reference point which should be included.\
+  \ Format is\n                        --region upstream downstream, e.g.: --region\
+  \ 500000\n                        500000 plots 500kb up- and 500kb downstream. This\n\
+  \                        value should not exceed the range used in the other\n \
+  \                       chic-tools.\n\nOptional arguments:\n  --backgroundModelFile\
+  \ BACKGROUNDMODELFILE, -bmf BACKGROUNDMODELFILE\n                        path to\
+  \ the background file which should be used for\n                        plotting\n\
+  \  --interactionFileFolder INTERACTIONFILEFOLDER, -iff INTERACTIONFILEFOLDER\n \
+  \                       Folder where the interaction files are stored. Applies\n\
+  \                        only for batch mode (Default: .).\n  --differentialTestResult\
+  \ DIFFERENTIALTESTRESULT [DIFFERENTIALTESTRESULT ...], -dif DIFFERENTIALTESTRESULT\
+  \ [DIFFERENTIALTESTRESULT ...]\n                        Path to the H0 rejected\
+  \ files to highlight the regions\n                        in the plot.\n  --significantInteractionFileFolder\
+  \ SIGNIFICANTINTERACTIONFILEFOLDER, -siff SIGNIFICANTINTERACTIONFILEFOLDER\n   \
+  \                     Folder where the files with detected significant\n       \
+  \                 interactions are stored. Applies only for batch mode\n       \
+  \                 (Default: .).\n  --differentialTestResultsFolder DIFFERENTIALTESTRESULTSFOLDER,\
+  \ -diff DIFFERENTIALTESTRESULTSFOLDER\n                        Folder where the\
+  \ H0 rejected files are stored. Applies\n                        only for batch\
+  \ mode (Default: .).\n  --significantInteractions SIGNIFICANTINTERACTIONS [SIGNIFICANTINTERACTIONS\
+  \ ...], -si SIGNIFICANTINTERACTIONS [SIGNIFICANTINTERACTIONS ...]\n            \
+  \            Path to the files with detected significant\n                     \
+  \   interactions to highlight the regions in the plot.\n  --plotSignificantInteractions,\
+  \ -psi\n                        Highlights the significant interactions in the plot\n\
+  \                        itself. If not set, only the p-values are updated\n  --outputFolder\
+  \ OUTPUTFOLDER, -of OUTPUTFOLDER\n                        Output folder of the files\
+  \ (Default: .).\n  --outputFormat OUTPUTFORMAT, -format OUTPUTFORMAT\n         \
+  \               Output format of the plot (Default: png).\n  --dpi DPI         \
+  \    Optional parameter: Resolution for the image, ifoutput\n                  \
+  \      is a raster graphics image (e.g png, jpg) (Default:\n                   \
+  \     300).\n  --binResolution BINRESOLUTION, -r BINRESOLUTION\n               \
+  \         Resolution of the bin in genomic units. Values are set\n             \
+  \           as number of bases, e.g. 1000 for a 1kb, 5000 for a\n              \
+  \          5kb or 10000 for a 10kb resolution (Default: 1000).\n  --colorMapPvalue\
+  \ COLORMAPPVALUE\n                        Color map to use for the p-value. Available\
+  \ values can\n                        be seen here: http://matplotlib.org/examples/color/col\n\
+  \                        ormaps_reference.html (Default: RdYlBu).\n  --maxPValue\
+  \ MAXPVALUE, -map MAXPVALUE\n                        Maximal value for p-value.\
+  \ Values above this threshold\n                        are set to this value (Default:\
+  \ 0.1).\n  --minPValue MINPVALUE, -mp MINPVALUE\n                        Minimal\
+  \ value for p-value. Values below this threshold\n                        are set\
+  \ to this value (Default: 0.0).\n  --pValue, -p          Plot p-values as a colorbar\n\
+  \  --pValueSignificanceLevels PVALUESIGNIFICANCELEVELS [PVALUESIGNIFICANCELEVELS\
+  \ ...], -psl PVALUESIGNIFICANCELEVELS [PVALUESIGNIFICANCELEVELS ...]\n         \
+  \               Highlight the p-values by the defined significance\n           \
+  \             levels.\n  --xFold XFOLD, -xf XFOLD\n                        Plot\
+  \ x-fold region for the mean background.\n  --truncateZeroPvalues, -tzpv\n     \
+  \                   Sets all p-values which are equal to zero to one.\n  --outFileName\
+  \ OUTFILENAME, -o OUTFILENAME\n                        File name to save the image.\
+  \ Not used in batch mode.\n  --batchMode, -bm      The given file for --interactionFile\
+  \ and or\n                        --targetFile contain a list of the to be processed\n\
+  \                        files.\n  --plotSampleNumber PLOTSAMPLENUMBER, -psn PLOTSAMPLENUMBER\n\
+  \                        Number of samples per plot. Applies only in batch mode\n\
+  \                        (Default: 2).\n  --colorList COLORLIST [COLORLIST ...],\
+  \ -cl COLORLIST [COLORLIST ...]\n                        Colorlist for the viewpoint\
+  \ lines (Default g b c m y\n                        k).\n  --threads THREADS, -t\
+  \ THREADS\n                        Number of threads (uses the python multiprocessing\n\
+  \                        module) (Default: 4).\n  --help, -h            show this\
+  \ help message and exit\n  --version             show program's version number and\
+  \ exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/hicexplorer:3.6--py_0

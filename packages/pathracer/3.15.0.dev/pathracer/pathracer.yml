@@ -1,0 +1,406 @@
+!Command
+command:
+- pathracer
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --global
+  description: perform global-local (aka glocal) HMM matching [default]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --local
+  description: perform local-local HMM matching
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --length
+  - -l
+  description: 'minimal length of resultant matched sequence; if <=1 then to be multiplied
+    on the length of the pHMM [default: 0.9]'
+  args: !SimpleFlagArg
+    name: value
+- !Flag
+  optional: true
+  synonyms:
+  - --indel-rate
+  - -r
+  description: 'expected rate of nucleotides indels in graph edges [default: 0]. Used
+    for AA pHMM alignment with frame shifts'
+  args: !SimpleFlagArg
+    name: value
+- !Flag
+  optional: true
+  synonyms:
+  - --top
+  description: 'extract top N paths [default: 10000]'
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  - -t
+  description: 'the number of parallel threads [default: 16]'
+  args: !SimpleFlagArg
+    name: NTHREADS
+- !Flag
+  optional: true
+  synonyms:
+  - --memory
+  - -m
+  description: 'RAM limit for PathRacer in GB (terminates if exceeded) [default: 100]'
+  args: !SimpleFlagArg
+    name: MEMORY
+- !Flag
+  optional: true
+  synonyms:
+  - --max-size
+  description: 'maximal component size to consider [default: INF]'
+  args: !SimpleFlagArg
+    name: SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --hmm
+  description: match against HMM(s) [default]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --nt
+  description: match against nucleotide string(s)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --aa
+  description: match agains amino acid string(s)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --queries
+  description: 'queries names to lookup [default: all queries from input query file]'
+  args: !SimpleFlagArg
+    name: queries
+- !Flag
+  optional: true
+  synonyms:
+  - --edges
+  description: 'match around particular edges [default: all graph edges]'
+  args: !SimpleFlagArg
+    name: edges
+- !Flag
+  optional: true
+  synonyms:
+  - --seed-edges
+  description: use graph edges as seeds
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --seed-scaffolds
+  description: use scaffolds paths as seeds
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --seed-edges-scaffolds
+  description: use edges AND scaffolds paths as seeds [default]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --seed-exhaustive
+  description: exhaustive mode, use ALL edges
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --seed-edges-1-by-1
+  description: use edges as seeds (1 by 1)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --seed-scaffolds-1-by-1
+  description: use scaffolds paths as seeds (1 by 1)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: extensive debug output
+  args: !SimpleFlagArg
+    name: enable
+- !Flag
+  optional: true
+  synonyms:
+  - --draw
+  description: draw pictures around the interesting edges
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --rescore
+  description: rescore paths via HMMer
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --annotate-graph
+  description: emit paths in GFA graph
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --acc
+  description: prefer accessions over names in output
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --noali
+  description: "'t output alignments, so output is smaller"
+  args: !SimpleFlagArg
+    name: don
+- !Flag
+  optional: true
+  synonyms:
+  - -E
+  description: report sequences <= this E-value threshold in output
+  args: !SimpleFlagArg
+    name: value
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  description: report sequences >= this score threshold in output
+  args: !SimpleFlagArg
+    name: value
+- !Flag
+  optional: true
+  synonyms:
+  - --domE
+  description: report domains <= this E-value threshold in output
+  args: !SimpleFlagArg
+    name: value
+- !Flag
+  optional: true
+  synonyms:
+  - --domT
+  description: report domains >= this score cutoff in output
+  args: !SimpleFlagArg
+    name: value
+- !Flag
+  optional: true
+  synonyms:
+  - -incE
+  description: consider sequences <= this E-value threshold as significant
+  args: !SimpleFlagArg
+    name: value
+- !Flag
+  optional: true
+  synonyms:
+  - -incT
+  description: consider sequences >= this score threshold as significant
+  args: !SimpleFlagArg
+    name: value
+- !Flag
+  optional: true
+  synonyms:
+  - -incdomE
+  description: consider domains <= this E-value threshold as significant
+  args: !SimpleFlagArg
+    name: value
+- !Flag
+  optional: true
+  synonyms:
+  - -incdomT
+  description: consider domains >= this score threshold as significant
+  args: !SimpleFlagArg
+    name: value
+- !Flag
+  optional: true
+  synonyms:
+  - --cut_ga
+  description: use profile's GA gathering cutoffs to set all thresholding
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --cut_nc
+  description: use profile's NC noise cutoffs to set all thresholding
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --cut_tc
+  description: use profile's TC trusted cutoffs to set all thresholding
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max
+  description: Turn all heuristic filters off (less speed, more power)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --F1
+  description: 'Stage 1 (MSV) threshold: promote hits w/ P <= F1'
+  args: !SimpleFlagArg
+    name: value
+- !Flag
+  optional: true
+  synonyms:
+  - --F2
+  description: 'Stage 2 (Vit) threshold: promote hits w/ P <= F2'
+  args: !SimpleFlagArg
+    name: value
+- !Flag
+  optional: true
+  synonyms:
+  - --F3
+  description: 'Stage 3 (Fwd) threshold: promote hits w/ P <= F3'
+  args: !SimpleFlagArg
+    name: value
+- !Flag
+  optional: true
+  synonyms:
+  - --parallel-components
+  description: 'process connected components of neighborhood subgraph in parallel
+    [default: false]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max-insertion-length
+  description: 'maximal allowed number of successive I-emissions [default: 30]'
+  args: !SimpleFlagArg
+    name: x
+- !Flag
+  optional: true
+  synonyms:
+  - --expand-coef
+  description: 'overhang expansion coefficient for neighborhood search [default: 2]'
+  args: !SimpleFlagArg
+    name: value
+- !Flag
+  optional: true
+  synonyms:
+  - --expand-const
+  description: 'const addition to overhang values for neighborhood search [default:
+    20]'
+  args: !SimpleFlagArg
+    name: value
+- !Flag
+  optional: true
+  synonyms:
+  - --no-top-score-filter
+  description: 'disable top score Event Graph vertices filter [default: false]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-fast-forward
+  description: 'disable fast forward in I-loops processing [default: false]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --known-sequences
+  description: FASTA file with known sequnces that should be definitely found
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - --export-event-graph
+  description: "export event graph in cereal format\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "SYNOPSIS\n        pathracer <input file (HMM or sequence)> <load from>\
+  \ --output <output directory> [--global|--local] [--length <value>] [--indel-rate\
+  \ <value>] [--top <N>] [--threads <NTHREADS>] [--memory <MEMORY>] [--max-size <SIZE>]\
+  \ [--hmm|--nt|--aa] [--queries <queries>...] [--edges <edges>...] [--seed-edges|--seed-scaffolds|--seed-edges-scaffolds|--seed-exhaustive|--seed-edges-1-by-1|--seed-scaffolds-1-by-1]\
+  \ [--debug] [--draw] [--rescore] [--annotate-graph] [--acc] [--noali] [-E <value>]\
+  \ [-T <value>] [--domE <value>] [--domT <value>] [-incE <value>] [-incT <value>]\
+  \ [-incdomE <value>] [-incdomT <value>] [--cut_ga] [--cut_nc] [--cut_tc] [--max]\
+  \ [--F1 <value>] [--F2 <value>] [--F3 <value>] [--parallel-components] [--max-insertion-length\
+  \ <x>] [--expand-coef <value>] [--expand-const <value>] [--no-top-score-filter]\
+  \ [--no-fast-forward] [--known-sequences <filename>] [--export-event-graph]\n\n\
+  OPTIONS\n        <output directory>\n                    output directory\n\n  \
+  \      --global    perform global-local (aka glocal) HMM matching [default]\n  \
+  \      --local     perform local-local HMM matching\n\n        --length, -l <value>\n\
+  \                    minimal length of resultant matched sequence; if <=1 then to\
+  \ be multiplied on the length of the pHMM [default: 0.9]\n\n        --indel-rate,\
+  \ -r <value>\n                    expected rate of nucleotides indels in graph edges\
+  \ [default: 0]. Used for AA pHMM alignment with frame shifts\n\n        --top <N>\
+  \   extract top N paths [default: 10000]\n\n        --threads, -t <NTHREADS>\n \
+  \                   the number of parallel threads [default: 16]\n\n        --memory,\
+  \ -m <MEMORY>\n                    RAM limit for PathRacer in GB (terminates if\
+  \ exceeded) [default: 100]\n\n        --max-size <SIZE>\n                    maximal\
+  \ component size to consider [default: INF]\n\n        Query type:\n           \
+  \ --hmm   match against HMM(s) [default]\n            --nt    match against nucleotide\
+  \ string(s)\n            --aa    match agains amino acid string(s)\n\n        --queries\
+  \ <queries>\n                    queries names to lookup [default: all queries from\
+  \ input query file]\n\n        --edges <edges>\n                    match around\
+  \ particular edges [default: all graph edges]\n\n        Seeding options:\n    \
+  \        --seed-edges\n                    use graph edges as seeds\n\n        \
+  \    --seed-scaffolds\n                    use scaffolds paths as seeds\n\n    \
+  \        --seed-edges-scaffolds\n                    use edges AND scaffolds paths\
+  \ as seeds [default]\n\n            --seed-exhaustive\n                    exhaustive\
+  \ mode, use ALL edges\n\n            --seed-edges-1-by-1\n                    use\
+  \ edges as seeds (1 by 1)\n\n            --seed-scaffolds-1-by-1\n             \
+  \       use scaffolds paths as seeds (1 by 1)\n\n        Control of the output:\n\
+  \            --debug enable extensive debug output\n            --draw  draw pictures\
+  \ around the interesting edges\n\n            --rescore\n                    rescore\
+  \ paths via HMMer\n\n            --annotate-graph\n                    emit paths\
+  \ in GFA graph\n\n        HMMER options (used for seeding and rescoring):\n    \
+  \        --acc   prefer accessions over names in output\n            --noali don't\
+  \ output alignments, so output is smaller\n\n            -E <value>\n          \
+  \          report sequences <= this E-value threshold in output\n\n            -T\
+  \ <value>\n                    report sequences >= this score threshold in output\n\
+  \n            --domE <value>\n                    report domains <= this E-value\
+  \ threshold in output\n\n            --domT <value>\n                    report\
+  \ domains >= this score cutoff in output\n\n            -incE <value>\n        \
+  \            consider sequences <= this E-value threshold as significant\n\n   \
+  \         -incT <value>\n                    consider sequences >= this score threshold\
+  \ as significant\n\n            -incdomE <value>\n                    consider domains\
+  \ <= this E-value threshold as significant\n\n            -incdomT <value>\n   \
+  \                 consider domains >= this score threshold as significant\n\n  \
+  \          --cut_ga\n                    use profile's GA gathering cutoffs to set\
+  \ all thresholding\n\n            --cut_nc\n                    use profile's NC\
+  \ noise cutoffs to set all thresholding\n\n            --cut_tc\n              \
+  \      use profile's TC trusted cutoffs to set all thresholding\n\n            --max\
+  \   Turn all heuristic filters off (less speed, more power)\n\n            --F1\
+  \ <value>\n                    Stage 1 (MSV) threshold: promote hits w/ P <= F1\n\
+  \n            --F2 <value>\n                    Stage 2 (Vit) threshold: promote\
+  \ hits w/ P <= F2\n\n            --F3 <value>\n                    Stage 3 (Fwd)\
+  \ threshold: promote hits w/ P <= F3\n\n        Developer options:\n           \
+  \ --parallel-components\n                    process connected components of neighborhood\
+  \ subgraph in parallel [default: false]\n\n            --max-insertion-length <x>\n\
+  \                    maximal allowed number of successive I-emissions [default:\
+  \ 30]\n\n            --expand-coef <value>\n                    overhang expansion\
+  \ coefficient for neighborhood search [default: 2]\n\n            --expand-const\
+  \ <value>\n                    const addition to overhang values for neighborhood\
+  \ search [default: 20]\n\n            --no-top-score-filter\n                  \
+  \  disable top score Event Graph vertices filter [default: false]\n\n          \
+  \  --no-fast-forward\n                    disable fast forward in I-loops processing\
+  \ [default: false]\n\n            --known-sequences <filename>\n               \
+  \     FASTA file with known sequnces that should be definitely found\n\n       \
+  \     --export-event-graph\n                    export event graph in cereal format\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/pathracer:3.15.0.dev--h2d02072_0

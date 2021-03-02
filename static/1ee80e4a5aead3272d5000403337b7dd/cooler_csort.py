@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Int, Boolean, File, String
+
+Cooler_Csort_V0_1_0 = CommandToolBuilder(tool="cooler_csort", base_command=["cooler", "csort"], inputs=[ToolInput(tag="in_chrom_one", input_type=Int(optional=True), prefix="--chrom1", doc=InputDocumentation(doc="chrom1 field number in the input file (starting\nfrom 1)  [required]")), ToolInput(tag="in_chrom_two", input_type=Int(optional=True), prefix="--chrom2", doc=InputDocumentation(doc="chrom2 field number  [required]")), ToolInput(tag="in_pos_one", input_type=Int(optional=True), prefix="--pos1", doc=InputDocumentation(doc="pos1 field number  [required]")), ToolInput(tag="in_pos_two", input_type=Int(optional=True), prefix="--pos2", doc=InputDocumentation(doc="pos2 field number  [required]")), ToolInput(tag="in_index", input_type=Boolean(optional=True), prefix="--index", doc=InputDocumentation(doc="[tabix|pairix]  Select the preset sort and indexing options\n[default: pairix]")), ToolInput(tag="in_flip_only", input_type=Boolean(optional=True), prefix="--flip-only", doc=InputDocumentation(doc="Only flip mates; no sorting or indexing. Write\nto stdout.  [default: False]")), ToolInput(tag="in_nproc", input_type=Int(optional=True), prefix="--nproc", doc=InputDocumentation(doc="Number of processors  [default: 8]")), ToolInput(tag="in_zero_based", input_type=Boolean(optional=True), prefix="--zero-based", doc=InputDocumentation(doc="Read positions are zero-based  [default: False]")), ToolInput(tag="in_sep", input_type=File(optional=True), prefix="--sep", doc=InputDocumentation(doc="Data delimiter in the input file  [default: \t]")), ToolInput(tag="in_comment_char", input_type=String(optional=True), prefix="--comment-char", doc=InputDocumentation(doc="Comment character to skip header  [default: #]")), ToolInput(tag="in_sort_options", input_type=String(optional=True), prefix="--sort-options", doc=InputDocumentation(doc="Quoted list of additional options to `sort`")), ToolInput(tag="in_strand_one", input_type=Int(optional=True), prefix="--strand1", doc=InputDocumentation(doc="strand1 field number (deprecated)")), ToolInput(tag="in_strand_two", input_type=Int(optional=True), prefix="--strand2", doc=InputDocumentation(doc="strand2 field number (deprecated)")), ToolInput(tag="in_command", input_type=String(), position=0, doc=InputDocumentation(doc="-o, --out TEXT              Output gzip file"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Cooler_Csort_V0_1_0().translate("wdl", allow_empty_container=True)
+

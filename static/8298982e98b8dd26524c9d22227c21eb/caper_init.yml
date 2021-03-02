@@ -1,0 +1,101 @@
+!Command
+command:
+- caper
+- init
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --conf
+  description: Specify config file
+  args: !SimpleFlagArg
+    name: CONF
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  - --debug
+  description: Prints all logs >= DEBUG level
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gcp-service-account-key-json
+  description: "Secret key JSON file for Google Cloud Platform service\naccount. This\
+    \ service account should have enough\npermission to Storage for client functions\
+    \ and\nStorage/Compute Engine/Genomics API/Life Sciences API\nfor server/runner\
+    \ functions."
+  args: !SimpleFlagArg
+    name: GCP_SERVICE_ACCOUNT_KEY_JSON
+- !Flag
+  optional: true
+  synonyms:
+  - --local-loc-dir
+  - --tmp-dir
+  description: "Temporary directory to store Cromwell's intermediate\nbackend files.\
+    \ These files include backend.conf,\nworkflow_opts.json, imports.zip. and localized\
+    \ input\nJSON files due to deepcopying (recursive\nlocalization). Cromwell's MySQL/PostgreSQL\
+    \ DB password\ncan be exposed on backend.conf on this directory.\nTherefore, DO\
+    \ NOT USE /tmp HERE. This directory is\nalso used for storing cached files for\n\
+    local/slurm/sge/pbs backends."
+  args: !SimpleFlagArg
+    name: LOCAL_LOC_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --gcp-loc-dir
+  - --tmp-gcs-bucket
+  description: "Temporary directory to store cached files for gcp\nbackend. e.g. gs://my-bucket/caper-cache-dir."
+  args: !SimpleFlagArg
+    name: GCP_LOC_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --aws-loc-dir
+  - --tmp-s3-bucket
+  description: "Temporary directory to store cached files for aws\nbackend. e.g. s3://my-bucket/caper-cache-dir.\n"
+  args: !SimpleFlagArg
+    name: AWS_LOC_DIR
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: caper init [-h] [-c CONF] [-D]\n                  [--gcp-service-account-key-json\
+  \ GCP_SERVICE_ACCOUNT_KEY_JSON]\n                  [--local-loc-dir LOCAL_LOC_DIR]\
+  \ [--gcp-loc-dir GCP_LOC_DIR]\n                  [--aws-loc-dir AWS_LOC_DIR]\n \
+  \                 platform\n\npositional arguments:\n  platform              Platform\
+  \ to initialize Caper for.\n\noptional arguments:\n  -h, --help            show\
+  \ this help message and exit\n  -c CONF, --conf CONF  Specify config file\n  -D,\
+  \ --debug           Prints all logs >= DEBUG level\n  --gcp-service-account-key-json\
+  \ GCP_SERVICE_ACCOUNT_KEY_JSON\n                        Secret key JSON file for\
+  \ Google Cloud Platform service\n                        account. This service account\
+  \ should have enough\n                        permission to Storage for client functions\
+  \ and\n                        Storage/Compute Engine/Genomics API/Life Sciences\
+  \ API\n                        for server/runner functions.\n\ncache directories\
+  \ for localization:\n  --local-loc-dir LOCAL_LOC_DIR, --tmp-dir LOCAL_LOC_DIR\n\
+  \                        Temporary directory to store Cromwell's intermediate\n\
+  \                        backend files. These files include backend.conf,\n    \
+  \                    workflow_opts.json, imports.zip. and localized input\n    \
+  \                    JSON files due to deepcopying (recursive\n                \
+  \        localization). Cromwell's MySQL/PostgreSQL DB password\n              \
+  \          can be exposed on backend.conf on this directory.\n                 \
+  \       Therefore, DO NOT USE /tmp HERE. This directory is\n                   \
+  \     also used for storing cached files for\n                        local/slurm/sge/pbs\
+  \ backends.\n  --gcp-loc-dir GCP_LOC_DIR, --tmp-gcs-bucket GCP_LOC_DIR\n       \
+  \                 Temporary directory to store cached files for gcp\n          \
+  \              backend. e.g. gs://my-bucket/caper-cache-dir.\n  --aws-loc-dir AWS_LOC_DIR,\
+  \ --tmp-s3-bucket AWS_LOC_DIR\n                        Temporary directory to store\
+  \ cached files for aws\n                        backend. e.g. s3://my-bucket/caper-cache-dir.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/caper:1.1.0--py_0

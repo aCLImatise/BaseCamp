@@ -1,0 +1,263 @@
+!Command
+command:
+- chewiesnake_join
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --sample_list
+  description: "List of allele profiles to analyze, containg a tab\nseparated file\
+    \ with the columns: sender profiles\nstatistics timestamps"
+  args: !SimpleFlagArg
+    name: SAMPLE_LIST
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --working_directory
+  description: Working directory where results are saved
+  args: !SimpleFlagArg
+    name: WORKING_DIRECTORY
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --snakefile
+  description: "Path to Snakefile of chewieSnake pipeline, default is\npath to Snakefile\
+    \ in same directory"
+  args: !SimpleFlagArg
+    name: SNAKEFILE
+- !Flag
+  optional: true
+  synonyms:
+  - --condaprefix
+  description: "Path of default conda environment, enables recycling\nbuilt environments,\
+    \ default is in folder conda_env in\nrepository directory."
+  args: !SimpleFlagArg
+    name: CONDAPREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - --clustering_method
+  description: "The agglomeration method to be used for hierarchical\nclustering.\
+    \ This should be (an unambiguous\nabbreviation of) one of \"ward.D\", \"ward.D2\"\
+    , \"single\",\n\"complete\", \"average\" (= UPGMA), \"mcquitty\" (= WPGMA),\n\"\
+    median\" (= WPGMC) or \"centroid\" (= UPGMC); default =\nsingle"
+  args: !SimpleFlagArg
+    name: CLUSTERING_METHOD
+- !Flag
+  optional: true
+  synonyms:
+  - --distance_threshold
+  description: "A single distance threshold for the exctraction of\nsub-trees; default\
+    \ = 10"
+  args: !SimpleFlagArg
+    name: DISTANCE_THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - --cluster_names
+  description: "A file with potential names for cluster names, one\nname per line,\
+    \ default:\nrepo_path/scripts/cluster_names_reservoir.txt"
+  args: !SimpleFlagArg
+    name: CLUSTER_NAMES
+- !Flag
+  optional: true
+  synonyms:
+  - --subcluster_thresholds
+  description: "A list of distance thresholds for subclustering;\ndefault = [3]"
+  args: !SimpleFlagArg
+    name: SUBCLUSTER_THRESHOLDS
+- !Flag
+  optional: true
+  synonyms:
+  - --subcluster_names
+  description: "A list of name types for nomenclature of subclusters;\nchoose from\
+    \ \"numerical\" and \"greek-alphabet\"; one\nentry for each subcluster_threshold;\
+    \ default =\n[\"greek-alphabet\"]"
+  args: !SimpleFlagArg
+    name: SUBCLUSTER_NAMES
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --external_cluster_names
+  description: "A tab seperated file with external cluster names, e.g.\nEpi clusters.\
+    \ Must contain one representative sample\nper cluster: sample<tab>cluster_name"
+  args: !SimpleFlagArg
+    name: EXTERNAL_CLUSTER_NAMES
+- !Flag
+  optional: true
+  synonyms:
+  - --serovar_info
+  description: "A tab seperated file with serovar or clade names:\nsample<tab>cluster_name"
+  args: !SimpleFlagArg
+    name: SEROVAR_INFO
+- !Flag
+  optional: true
+  synonyms:
+  - --noreport
+  description: Do not create html report
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --report_only
+  description: Only create html report
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --cluster
+  description: Assign cluster type and cluster addresses
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --distance_method
+  description: Grapetree distance method; default = 3
+  args: !SimpleFlagArg
+    name: DISTANCE_METHOD
+- !Flag
+  optional: true
+  synonyms:
+  - --species_shortname
+  description: "Abbreviated Species name for cluster names; default =\n\"SE\""
+  args: !SimpleFlagArg
+    name: SPECIES_SHORTNAME
+- !Flag
+  optional: true
+  synonyms:
+  - --use_conda
+  description: "Utilize \"--useconda\" option, i.e. all software\ndependencies are\
+    \ available in a single env"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --conda_frontend
+  description: "Do not mamba but conda as frontend to create\nindividual module' software\
+    \ environments"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: "Number of Threads to use. Note that samples can only\nbe processed\
+    \ sequentially due to the required database\naccess. However the allele calling\
+    \ can be executed in\nparallel for the different loci, default = 10"
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --dryrun
+  description: "Snakemake dryrun. Only calculate graph without\nexecuting anything"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --force
+  description: Snakemake force. Force recalculation of all steps
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --forceall
+  description: Snakemake force. Force recalculation of all steps
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --unlock
+  description: unlock snakemake
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --logdir
+  description: "Path to directory whete .snakemake output is to be\nsaved\n"
+  args: !SimpleFlagArg
+    name: LOGDIR
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: chewiesnake_join [-h] -l SAMPLE_LIST -d WORKING_DIRECTORY\n   \
+  \                     [-s SNAKEFILE] [--condaprefix CONDAPREFIX]\n             \
+  \           [--clustering_method CLUSTERING_METHOD]\n                        [--distance_threshold\
+  \ DISTANCE_THRESHOLD]\n                        [--cluster_names CLUSTER_NAMES]\n\
+  \                        [--subcluster_thresholds SUBCLUSTER_THRESHOLDS]\n     \
+  \                   [--subcluster_names SUBCLUSTER_NAMES]\n                    \
+  \    [-e EXTERNAL_CLUSTER_NAMES]\n                        [--serovar_info SEROVAR_INFO]\
+  \ [--noreport]\n                        [--report_only] [--cluster]\n          \
+  \              [--distance_method DISTANCE_METHOD]\n                        [--species_shortname\
+  \ SPECIES_SHORTNAME] [--use_conda]\n                        [--conda_frontend] [-t\
+  \ THREADS] [-n] [-f] [--forceall]\n                        [--unlock] [--logdir\
+  \ LOGDIR]\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  -l SAMPLE_LIST, --sample_list SAMPLE_LIST\n                      \
+  \  List of allele profiles to analyze, containg a tab\n                        separated\
+  \ file with the columns: sender profiles\n                        statistics timestamps\n\
+  \  -d WORKING_DIRECTORY, --working_directory WORKING_DIRECTORY\n               \
+  \         Working directory where results are saved\n  -s SNAKEFILE, --snakefile\
+  \ SNAKEFILE\n                        Path to Snakefile of chewieSnake pipeline,\
+  \ default is\n                        path to Snakefile in same directory\n  --condaprefix\
+  \ CONDAPREFIX\n                        Path of default conda environment, enables\
+  \ recycling\n                        built environments, default is in folder conda_env\
+  \ in\n                        repository directory.\n  --clustering_method CLUSTERING_METHOD\n\
+  \                        The agglomeration method to be used for hierarchical\n\
+  \                        clustering. This should be (an unambiguous\n          \
+  \              abbreviation of) one of \"ward.D\", \"ward.D2\", \"single\",\n  \
+  \                      \"complete\", \"average\" (= UPGMA), \"mcquitty\" (= WPGMA),\n\
+  \                        \"median\" (= WPGMC) or \"centroid\" (= UPGMC); default\
+  \ =\n                        single\n  --distance_threshold DISTANCE_THRESHOLD\n\
+  \                        A single distance threshold for the exctraction of\n  \
+  \                      sub-trees; default = 10\n  --cluster_names CLUSTER_NAMES\n\
+  \                        A file with potential names for cluster names, one\n  \
+  \                      name per line, default:\n                        repo_path/scripts/cluster_names_reservoir.txt\n\
+  \  --subcluster_thresholds SUBCLUSTER_THRESHOLDS\n                        A list\
+  \ of distance thresholds for subclustering;\n                        default = [3]\n\
+  \  --subcluster_names SUBCLUSTER_NAMES\n                        A list of name types\
+  \ for nomenclature of subclusters;\n                        choose from \"numerical\"\
+  \ and \"greek-alphabet\"; one\n                        entry for each subcluster_threshold;\
+  \ default =\n                        [\"greek-alphabet\"]\n  -e EXTERNAL_CLUSTER_NAMES,\
+  \ --external_cluster_names EXTERNAL_CLUSTER_NAMES\n                        A tab\
+  \ seperated file with external cluster names, e.g.\n                        Epi\
+  \ clusters. Must contain one representative sample\n                        per\
+  \ cluster: sample<tab>cluster_name\n  --serovar_info SEROVAR_INFO\n            \
+  \            A tab seperated file with serovar or clade names:\n               \
+  \         sample<tab>cluster_name\n  --noreport            Do not create html report\n\
+  \  --report_only         Only create html report\n  --cluster             Assign\
+  \ cluster type and cluster addresses\n  --distance_method DISTANCE_METHOD\n    \
+  \                    Grapetree distance method; default = 3\n  --species_shortname\
+  \ SPECIES_SHORTNAME\n                        Abbreviated Species name for cluster\
+  \ names; default =\n                        \"SE\"\n  --use_conda           Utilize\
+  \ \"--useconda\" option, i.e. all software\n                        dependencies\
+  \ are available in a single env\n  --conda_frontend      Do not mamba but conda\
+  \ as frontend to create\n                        individual module' software environments\n\
+  \  -t THREADS, --threads THREADS\n                        Number of Threads to use.\
+  \ Note that samples can only\n                        be processed sequentially\
+  \ due to the required database\n                        access. However the allele\
+  \ calling can be executed in\n                        parallel for the different\
+  \ loci, default = 10\n  -n, --dryrun          Snakemake dryrun. Only calculate graph\
+  \ without\n                        executing anything\n  -f, --force           Snakemake\
+  \ force. Force recalculation of all steps\n  --forceall            Snakemake force.\
+  \ Force recalculation of all steps\n  --unlock              unlock snakemake\n \
+  \ --logdir LOGDIR       Path to directory whete .snakemake output is to be\n   \
+  \                     saved\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/chewiesnake:3.0.0--1

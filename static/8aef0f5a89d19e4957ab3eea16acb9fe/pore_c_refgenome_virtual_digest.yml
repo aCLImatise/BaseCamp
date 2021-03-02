@@ -1,0 +1,70 @@
+!Command
+command:
+- pore_c
+- refgenome
+- virtual-digest
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: FASTA
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: CUT_ON
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: OUTPUT_PREFIX
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --digest-type
+  description: "[enzyme|regex|bin]\nThe type of digest you want to do"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --n_workers
+  description: "The number of dask_workers to use  [default:\n1]"
+  args: !SimpleFlagArg
+    name: INTEGER
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: pore_c refgenome virtual-digest [OPTIONS] FASTA CUT_ON OUTPUT_PREFIX\n\
+  \n  Carry out a virtual digestion of the genome/assembly FASTA.\n\n  The DIGEST_TYPE\
+  \ sets what type of value you can use for CUT_ON.\n\n      ---------------------------------------------------------------------\n\
+  \      | digest_type |  cut_on           | notes                           |\n \
+  \     ---------------------------------------------------------------------\n  \
+  \    | enzyme      | NlaIII            | Enzyme name is case sensitive   |\n   \
+  \   | enzyme      | HindIII           |                                 |\n    \
+  \  | regex       | (GAATTC|GCGGCCGC) | Two site EcoRI and NotI         |\n     \
+  \ | regex       | RAATY             | Degenerate site ApoI            |\n      |\
+  \ bin         | 50000             | Create equal-width bins of 50k  |\n      | bin\
+  \         | 50k               | Create equal-width bins of 50k  |\n      =====================================================================\n\
+  \n  This tool will create the following output files:\n\n      <output_prefix>.fragments.parquet\n\
+  \n        A table containing the coordinates and some metadata on each\n       \
+  \ fragment\n\n      <output_prefix>.digest_stats.csv\n\n        Per chromosome/contig\
+  \ summary statistics\n\n      <output_prefix>.catalog.yaml\n\n        An intake\
+  \ catalog of the digest files\n\nOptions:\n  --digest-type [enzyme|regex|bin]\n\
+  \                                  The type of digest you want to do\n  -n, --n_workers\
+  \ INTEGER         The number of dask_workers to use  [default:\n               \
+  \                   1]\n  --help                          Show this message and\
+  \ exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/pore-c:0.3.0--py_0

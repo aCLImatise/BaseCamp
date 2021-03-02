@@ -1,0 +1,175 @@
+!Command
+command:
+- get_tool_performance_table.R
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input-dir
+  description: "Path to the directory with standardised output .tsv files\nfrom multiple\
+    \ methods"
+  args: !SimpleFlagArg
+    name: INPUT-DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --ref-file
+  description: Path to the file with reference, "true" cell type assignments
+  args: !SimpleFlagArg
+    name: REF-FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --parallel
+  description: 'Boolean: Should computation be run in parallel? Default: FALSE'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --num-cores
+  description: 'Number of cores to run the process on. Default: all available cores.
+    --parallel must be set to "true" for this to take effect'
+  args: !SimpleFlagArg
+    name: NUM-CORES
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --exclusions
+  description: "Path to the yaml file with excluded terms. Must contain fields\n'unlabelled'\
+    \ and 'trivial_terms'"
+  args: !SimpleFlagArg
+    name: EXCLUSIONS
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --tmpdir
+  description: Cache directory path
+  args: !SimpleFlagArg
+    name: TMPDIR
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --ontology-graph
+  description: "Path to the ontology graph in .obo or .xml format.\nImport link can\
+    \ also be provided."
+  args: !SimpleFlagArg
+    name: ONTOLOGY-GRAPH
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --lab-cl-mapping
+  description: Path to serialised object containing cell label - CL terms mapping
+  args: !SimpleFlagArg
+    name: LAB-CL-MAPPING
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --barcode-col-ref
+  description: Name of the cell id field in reference file
+  args: !SimpleFlagArg
+    name: BARCODE-COL-REF
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --barcode-col-pred
+  description: Name of the cell id field in prediction file
+  args: !SimpleFlagArg
+    name: BARCODE-COL-PRED
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --label-column-ref
+  description: Name of the label column in reference file
+  args: !SimpleFlagArg
+    name: LABEL-COLUMN-REF
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --label-column-pred
+  description: Name of the label column in prediction file
+  args: !SimpleFlagArg
+    name: LABEL-COLUMN-PRED
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --semantic-sim-metric
+  description: "Semantic similarity scoring method. Must be supported by Onassis\n\
+    package. See listSimilarities()$pairwiseMeasures for a list\nof accepted options.\n\
+    NB: if included in combined score calculation, make sure to\nselect a metric with\
+    \ values in the [0;1] range."
+  args: !SimpleFlagArg
+    name: SEMANTIC-SIM-METRIC
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --include-sem-siml
+  description: "Should semantic similarity be included into combined score\ncalculation?\
+    \ Default: FALSE. If setting to TRUE, note that this\nconfines the options on\
+    \ semantic similarity metric\nto those with range in the [0;1] interval only."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-path
+  description: Path to the output table in .tsv format
+  args: !SimpleFlagArg
+    name: OUTPUT-PATH
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: "Show this help message and exit\n"
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: /usr/local/bin/get_tool_performance_table.R [options]\n\n\nOptions:\n\
+  \t-i INPUT-DIR, --input-dir=INPUT-DIR\n\t\tPath to the directory with standardised\
+  \ output .tsv files\n                from multiple methods\n\n\t-r REF-FILE, --ref-file=REF-FILE\n\
+  \t\tPath to the file with reference, \"true\" cell type assignments\n\n\t-n, --parallel\n\
+  \t\tBoolean: Should computation be run in parallel? Default: FALSE\n\n\t-c NUM-CORES,\
+  \ --num-cores=NUM-CORES\n\t\tNumber of cores to run the process on. Default: all\
+  \ available cores. --parallel must be set to \"true\" for this to take effect\n\n\
+  \t-e EXCLUSIONS, --exclusions=EXCLUSIONS\n\t\tPath to the yaml file with excluded\
+  \ terms. Must contain fields\n               'unlabelled' and 'trivial_terms'\n\n\
+  \t-d TMPDIR, --tmpdir=TMPDIR\n\t\tCache directory path\n\n\t-f ONTOLOGY-GRAPH, --ontology-graph=ONTOLOGY-GRAPH\n\
+  \t\tPath to the ontology graph in .obo or .xml format.\n                Import link\
+  \ can also be provided.\n\n\t-m LAB-CL-MAPPING, --lab-cl-mapping=LAB-CL-MAPPING\n\
+  \t\tPath to serialised object containing cell label - CL terms mapping\n\n\t-b BARCODE-COL-REF,\
+  \ --barcode-col-ref=BARCODE-COL-REF\n\t\tName of the cell id field in reference\
+  \ file\n\n\t-a BARCODE-COL-PRED, --barcode-col-pred=BARCODE-COL-PRED\n\t\tName of\
+  \ the cell id field in prediction file\n\n\t-l LABEL-COLUMN-REF, --label-column-ref=LABEL-COLUMN-REF\n\
+  \t\tName of the label column in reference file\n\n\t-p LABEL-COLUMN-PRED, --label-column-pred=LABEL-COLUMN-PRED\n\
+  \t\tName of the label column in prediction file\n\n\t-s SEMANTIC-SIM-METRIC, --semantic-sim-metric=SEMANTIC-SIM-METRIC\n\
+  \t\tSemantic similarity scoring method. Must be supported by Onassis\n         \
+  \       package. See listSimilarities()$pairwiseMeasures for a list\n          \
+  \      of accepted options. \n                NB: if included in combined score\
+  \ calculation, make sure to\n                select a metric with values in the\
+  \ [0;1] range.\n\n\t-k, --include-sem-siml\n\t\tShould semantic similarity be included\
+  \ into combined score\n                calculation? Default: FALSE. If setting to\
+  \ TRUE, note that this\n                confines the options on semantic similarity\
+  \ metric\n                to those with range in the [0;1] interval only.\n\n\t\
+  -o OUTPUT-PATH, --output-path=OUTPUT-PATH\n\t\tPath to the output table in .tsv\
+  \ format\n\n\t-h, --help\n\t\tShow this help message and exit\n\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/cell-types-analysis:0.1.11--0

@@ -1,0 +1,695 @@
+!Command
+command:
+- blasr
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: reads.bam
+  description: "is a PacBio BAM file of reads.\nThis is the preferred input to blasr\
+    \ because rich quality\nvalue (insertion,deletion, and substitution quality values)\
+    \ information is\nmaintained.  The extra quality information improves variant\
+    \ detection and mapping\nspeed."
+- !Positional
+  optional: false
+  position: 0
+  name: input.fofn
+  description: File of file names accepted.
+- !Positional
+  optional: false
+  position: 0
+  name: reads.
+  description: Reads produced by spurrious reads from empty ZMWs have a high
+- !Positional
+  optional: false
+  position: 0
+  name: specified.
+  description: Although reads may be input in FASTA format, the recommended input
+    is
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --sa
+  description: "Use the suffix array 'sa' for detecting matches\nbetween the reads\
+    \ and the reference.  The suffix\narray has been prepared by the sawriter program."
+  args: !SimpleFlagArg
+    name: suffixArrayFile
+- !Flag
+  optional: true
+  synonyms:
+  - --ctab
+  description: "A table of tuple counts used to estimate match significance.  This\
+    \ is\nby the program 'printTupleCountTable'.  While it is quick to generate on\n\
+    the fly, if there are many invocations of blasr, it is useful to\nprecompute the\
+    \ ctab."
+  args: !SimpleFlagArg
+    name: tab
+- !Flag
+  optional: true
+  synonyms:
+  - --regionTable
+  description: "(DEPRECATED)\nRead in a read-region table in HDF format for masking\
+    \ portions of reads.\nThis may be a single table if there is just one input file,\n\
+    or a fofn.  When a region table is specified, any region table inside\nthe reads.plx.h5\
+    \ or reads.bax.h5 files are ignored."
+  args: !SimpleFlagArg
+    name: table
+- !Flag
+  optional: true
+  synonyms:
+  - --noSplitSubreads
+  description: "Do not split subreads at adapters. This is typically only\nuseful\
+    \ when the genome in an unrolled version of a known template, and\ncontains template-adapter-reverse_template\
+    \ sequence.\nFor BAM input it reconstitutes full ZMW reads."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --polymerase
+  description: "Instead of reconstituting ZMW reads,\nthis option reconstitutes polymerase\
+    \ reads, omitting LQ regions.\nPolymerase reads are aligned, if at least one subread\
+    \ is present."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --useccs
+  description: "Align the circular consensus sequence (ccs), then report alignments\n\
+    of the ccs subreads to the window that the ccs was mapped to.  Only\nalignments\
+    \ of the subreads are reported."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --useccsall
+  description: "Similar to -useccs, except all subreads are aligned, rather than just\n\
+    the subreads used to call the ccs.  This will include reads that only\ncover part\
+    \ of the template."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --useccsdenovo
+  description: "Align the circular consensus, and report only the alignment of the\
+    \ ccs\nsequence."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ignoreRegions
+  description: "(false)\nIgnore any information in the region table."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ignoreHQRegions
+  description: (false)Ignore any hq regions in the region table.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --bestn
+  description: "(10)\nReport the top 'n' alignments."
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --hitPolicy
+  description: "(all) Specify a policy to treat multiple hits from [all, allbest,\
+    \ random, randombest, leftmost]\nall       : report all alignments.\nallbest \
+    \  : report all equally top scoring alignments.\nrandom    : report a random alignment.\n\
+    randombest: report a random alignment from multiple equally top scoring alignments.\n\
+    leftmost  : report an alignment which has the best alignmentscore and has the\
+    \ smallest mapping coordinate in any reference."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --placeRepeatsRandomly
+  description: "(false)\nDEPRECATED! If true, equivalent to --hitPolicy randombest."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --placeGapConsistently
+  description: "(false)\nPlace gaps consistently in alignments of a read as alignments\n\
+    of its reverse complementary sequence."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --randomSeed
+  description: "(0)\nSeed for random number generator. By default (0), use current\
+    \ time as seed."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --noSortRefinedAlignments
+  description: "(false)\nOnce candidate alignments are generated and scored via sparse\
+    \ dynamic\nprogramming, they are rescored using local alignment that accounts\n\
+    for different error profiles.\nResorting based on the local alignment may change\
+    \ the order the hits are returned."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --allowAdjacentIndels
+  description: "When specified, adjacent insertion or deletions are allowed. Otherwise,\
+    \ adjacent\ninsertion and deletions are merged into one operation.  Using quality\
+    \ values\nto guide pairwise alignments may dictate that the higher probability\
+    \ alignment\ncontains adjacent insertions or deletions.  Current tools such as\
+    \ GATK do not permit\nthis and so they are not reported by default."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --out
+  description: "(terminal)\nWrite output to 'out'."
+  args: !SimpleFlagArg
+    name: out
+- !Flag
+  optional: true
+  synonyms:
+  - --bam
+  description: "Write output in PacBio BAM format. This is the preferred output format.\n\
+    Input query reads must be in PacBio BAM format."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sam
+  description: "Write output in SAM format. Starting from version 5.2 is no longer\
+    \ supported\nUse --bam, then translate from .bam to .sam"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: "If not printing SAM, modify the output of the alignment.\nt=0 Print\
+    \ blast like output with |'s connecting matched nucleotides.\n1 Print only a summary:\
+    \ score and pos.\n2 Print in Compare.xml format.\n3 Print in vulgar format (DEPRECATED).\n\
+    4 Print a longer tabular version of the alignment.\n5 Print in a machine-parsable\
+    \ format that is read by compareSequences.py."
+  args: !SimpleFlagArg
+    name: t
+- !Flag
+  optional: true
+  synonyms:
+  - --header
+  description: Print a header as the first line of the output file describing the
+    contents of each column.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --titleTable
+  description: "(NULL)\nConstruct a table of reference sequence titles.  The reference\
+    \ sequences are\nenumerated by row, 0,1,...  The reference index is printed in\
+    \ alignment results\nrather than the full reference name.  This makes output concise,\
+    \ particularly when\nvery verbose titles exist in reference names."
+  args: !SimpleFlagArg
+    name: tab
+- !Flag
+  optional: true
+  synonyms:
+  - --unaligned
+  description: Output reads that are not aligned to 'file'
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - --noPrintUnalignedSeqs
+  description: Must be used together with -unaligned, print unaligned read names only.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --clipping
+  description: "[none|hard|subread|soft] (none)\nUse no/hard/subread/soft clipping,\
+    \ ONLY for SAM/BAM output."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --printSAMQV
+  description: "(false)\nPrint quality values to SAM output."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --minMatch
+  description: "(12)\nMinimum seed length.  Higher minMatch will speed up alignment,\n\
+    but decrease sensitivity."
+  args: !SimpleFlagArg
+    name: m
+- !Flag
+  optional: true
+  synonyms:
+  - --maxMatch
+  description: "(inf)\nStop mapping a read to the genome when the lcp length reaches\
+    \ l.\nThis is useful when the query is part of the reference, for example when\n\
+    constructing pairwise alignments for de novo assembly."
+  args: !SimpleFlagArg
+    name: l
+- !Flag
+  optional: true
+  synonyms:
+  - --maxLCPLength
+  description: "(inf)\nThe same as -maxMatch."
+  args: !SimpleFlagArg
+    name: l
+- !Flag
+  optional: true
+  synonyms:
+  - --maxAnchorsPerPosition
+  description: "(10000)\nDo not add anchors from a position if it matches to more\
+    \ than 'm' locations in the target."
+  args: !SimpleFlagArg
+    name: m
+- !Flag
+  optional: true
+  synonyms:
+  - --advanceExactMatches
+  description: "(0)\nAnother trick for speeding up alignments with match - E fewer\
+    \ anchors.  Rather than\nfinding anchors between the read and the genome at every\
+    \ position in the read,\nwhen an anchor is found at position i in a read of length\
+    \ L, the next position\nin a read to find an anchor is at i+L-E.\nUse this when\
+    \ alignining already assembled contigs."
+  args: !SimpleFlagArg
+    name: E
+- !Flag
+  optional: true
+  synonyms:
+  - --nCandidates
+  description: "(10)\nKeep up to 'n' candidates for the best alignment.  A large value\
+    \ of n will slow mapping\nbecause the slower dynamic programming steps are applied\
+    \ to more clusters of anchors\nwhich can be a rate limiting step when reads are\
+    \ very long."
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --concordant
+  description: "(false)\nMap all subreads of a zmw (hole) to where the longest full\
+    \ pass subread of the zmw\naligned to. This requires to use the region table and\
+    \ hq regions.\nThis option only works when reads are in base or pulse h5 format."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --fastMaxInterval
+  description: "(false)\nFast search maximum increasing intervals as alignment candidates.\
+    \ The search\nis not as exhaustive as the default, but is much faster."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --aggressiveIntervalCut
+  description: "(false)\nAgreesively filter out non-promising alignment candidates,\
+    \ if there\nexists at least one promising candidate. If this option is turned\
+    \ on,\nBlasr is likely to ignore short alignments of ALU elements."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --fastSDP
+  description: "(false)\nUse a fast heuristic algorithm to speed up sparse dynamic\
+    \ programming."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --refineConcordantAlignments
+  description: "(false)\nRefine concordant alignments. It slightly increases alignment\
+    \ accuracy at cost of time."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sdpTupleSize
+  description: "(11)\nUse matches of length K to speed dynamic programming alignments.\
+    \  This controls\naccuracy of assigning gaps in pairwise alignments once a mapping\
+    \ has been found,\nrather than mapping sensitivity itself."
+  args: !SimpleFlagArg
+    name: K
+- !Flag
+  optional: true
+  synonyms:
+  - --scoreMatrix
+  description: "\"score matrix string\"\nSpecify an alternative score matrix for scoring\
+    \ fasta reads.  The matrix is\nin the format\nACGTN\nA abcde\nC fghij\nG klmno\n\
+    T pqrst\nN uvwxy . The values a...y should be input as a quoted space separated\n\
+    string: \"a b c ... y\". Lower scores are better, so matches should be less\n\
+    than mismatches e.g. a,g,m,s = -5 (match), mismatch = 6."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --affineOpen
+  description: "(10)\nSet the penalty for opening an affine alignment."
+  args: !SimpleFlagArg
+    name: value
+- !Flag
+  optional: true
+  synonyms:
+  - --affineExtend
+  description: "(0)\nChange affine (extension) gap penalty. Lower value allows more\
+    \ gaps."
+  args: !SimpleFlagArg
+    name: a
+- !Flag
+  optional: true
+  synonyms:
+  - --useQuality
+  description: "(false)\nUse substitution/insertion/deletion/merge quality values\
+    \ to score gap and\nmismatch penalties in pairwise alignments.  Because the insertion\
+    \ and deletion\nrates are much higher than substitution, this will make many alignments\n\
+    favor an insertion/deletion over a substitution.  Naive consensus calling methods\n\
+    will then often miss substitution polymorphisms. This option should be\nused when\
+    \ calling consensus using the Quiver method.  Furthermore, when\nnot using quality\
+    \ values to score alignments, there will be a lower consensus\naccuracy in homolymer\
+    \ regions."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --affineAlign
+  description: "(false)\nRefine alignment using affine guided align."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --minReadLength
+  description: "(50)\nSkip reads that have a full length less than l. Subreads may\
+    \ be shorter."
+  args: !SimpleFlagArg
+    name: l
+- !Flag
+  optional: true
+  synonyms:
+  - --minSubreadLength
+  description: "(0)\nDo not align subreads of length less than l."
+  args: !SimpleFlagArg
+    name: l
+- !Flag
+  optional: true
+  synonyms:
+  - --minRawSubreadScore
+  description: "(0)\nDo not align subreads whose quality score in region table is\
+    \ less than m (quality scores should be in range [0, 1000])."
+  args: !SimpleFlagArg
+    name: m
+- !Flag
+  optional: true
+  synonyms:
+  - --maxScore
+  description: "(-200)\nMaximum score to output (high is bad, negative good)."
+  args: !SimpleFlagArg
+    name: m
+- !Flag
+  optional: true
+  synonyms:
+  - --minAlnLength
+  description: (0) Report alignments only if their lengths are greater than minAlnLength.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --minPctSimilarity
+  description: (0) Report alignments only if their percentage similarity is greater
+    than minPctSimilarity.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --minPctAccuracy
+  description: (0) Report alignments only if their percentage accuracy is greater
+    than minAccuracy.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --nproc
+  description: "(1)\nAlign using N processes.  All large data structures such as the\
+    \ suffix array and\ntuple count table are shared."
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --start
+  description: "(0)\nIndex of the first read to begin aligning. This is useful when\
+    \ multiple instances\nare running on the same data, for example when on a multi-rack\
+    \ cluster."
+  args: !SimpleFlagArg
+    name: S
+- !Flag
+  optional: true
+  synonyms:
+  - --stride
+  description: "(1)\nAlign one read every 'S' reads."
+  args: !SimpleFlagArg
+    name: S
+- !Flag
+  optional: true
+  synonyms:
+  - --subsample
+  description: "(0)\nProportion of reads to randomly subsample (expressed as a decimal)\
+    \ and align."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --holeNumbers
+  description: "When specified, only align reads whose ZMW hole numbers are in LIST.\n\
+    LIST is a comma-delimited string of ranges, such as '1,2,3,10-13'.\nThis option\
+    \ only works when reads are in bam, bax.h5 or plx.h5 format."
+  args: !SimpleFlagArg
+    name: LIST
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: Print this help file.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "   Options for blasr \n   Basic usage: 'blasr reads.{bam|fasta|bax.h5|fofn}\
+  \ genome.fasta [-options] \n option\tDescription (default_value).\n\n Input Files.\n\
+  \   reads.bam   is a PacBio BAM file of reads.\n               This is the preferred\
+  \ input to blasr because rich quality\n               value (insertion,deletion,\
+  \ and substitution quality values) information is \n               maintained. \
+  \ The extra quality information improves variant detection and mapping\n       \
+  \        speed.\n   reads.fasta is a multi-fasta file of reads.  While any fasta\
+  \ file is valid input, \n   reads.bax.h5|reads.plx.h5 is the old DEPRECATED output\
+  \ format of SMRT reads.\n   input.fofn  File of file names accepted.\n\n   --sa\
+  \ suffixArrayFile\n               Use the suffix array 'sa' for detecting matches\n\
+  \               between the reads and the reference.  The suffix\n             \
+  \  array has been prepared by the sawriter program.\n\n   --ctab tab \n        \
+  \       A table of tuple counts used to estimate match significance.  This is \n\
+  \               by the program 'printTupleCountTable'.  While it is quick to generate\
+  \ on \n               the fly, if there are many invocations of blasr, it is useful\
+  \ to\n               precompute the ctab.\n\n   --regionTable table (DEPRECATED)\n\
+  \               Read in a read-region table in HDF format for masking portions of\
+  \ reads.\n               This may be a single table if there is just one input file,\
+  \ \n               or a fofn.  When a region table is specified, any region table\
+  \ inside \n               the reads.plx.h5 or reads.bax.h5 files are ignored.\n\n\
+  \ Options for modifying reads.\n   --noSplitSubreads\n               Do not split\
+  \ subreads at adapters. This is typically only \n               useful when the\
+  \ genome in an unrolled version of a known template, and \n               contains\
+  \ template-adapter-reverse_template sequence.\n               For BAM input it reconstitutes\
+  \ full ZMW reads.\n\n Option for modifying BAM reads with --noSplitSubreads.\n \
+  \  --polymerase\n               Instead of reconstituting ZMW reads,\n         \
+  \      this option reconstitutes polymerase reads, omitting LQ regions.\n      \
+  \         Polymerase reads are aligned, if at least one subread is present.\n\n\
+  (DEPRECATED) Options for modifying HDF reads.\n               There is ancilliary\
+  \ information about substrings of reads \n               that is stored in a 'region\
+  \ table' for each read file.  Because \n               HDF is used, the region table\
+  \ may be part of the .bax.h5 or .plx.h5 file,\n               or a separate file.\
+  \  A contiguously read substring from the template \n               is a subread,\
+  \ and any read may contain multiple subreads. The boundaries \n               of\
+  \ the subreads may be inferred from the region table either directly or \n     \
+  \          by definition of adapter boundaries.  Typically region tables also\n\
+  \               contain information for the location of the high and low quality\
+  \ regions of\n               reads.  Reads produced by spurrious reads from empty\
+  \ ZMWs have a high\n               quality start coordinate equal to high quality\
+  \ end, making no usable read.\n   --useccs   \n               Align the circular\
+  \ consensus sequence (ccs), then report alignments\n               of the ccs subreads\
+  \ to the window that the ccs was mapped to.  Only \n               alignments of\
+  \ the subreads are reported.\n   --useccsall\n               Similar to -useccs,\
+  \ except all subreads are aligned, rather than just\n               the subreads\
+  \ used to call the ccs.  This will include reads that only\n               cover\
+  \ part of the template.\n   --useccsdenovo\n               Align the circular consensus,\
+  \ and report only the alignment of the ccs\n               sequence.\n   --ignoreRegions(false)\n\
+  \               Ignore any information in the region table.\n   --ignoreHQRegions\
+  \ (false)Ignore any hq regions in the region table.\n\n Alignments To Report.\n\
+  \   --bestn n (10)\n               Report the top 'n' alignments.\n   --hitPolicy\n\
+  \               (all) Specify a policy to treat multiple hits from [all, allbest,\
+  \ random, randombest, leftmost]\n                 all       : report all alignments.\n\
+  \                 allbest   : report all equally top scoring alignments.\n     \
+  \            random    : report a random alignment.\n                 randombest:\
+  \ report a random alignment from multiple equally top scoring alignments.\n    \
+  \             leftmost  : report an alignment which has the best alignmentscore\
+  \ and has the smallest mapping coordinate in any reference.\n   --placeRepeatsRandomly\
+  \ (false)\n               DEPRECATED! If true, equivalent to --hitPolicy randombest.\n\
+  \   --placeGapConsistently (false)\n               Place gaps consistently in alignments\
+  \ of a read as alignments \n               of its reverse complementary sequence.\n\
+  \   --randomSeed (0)\n               Seed for random number generator. By default\
+  \ (0), use current time as seed. \n   --noSortRefinedAlignments (false) \n     \
+  \          Once candidate alignments are generated and scored via sparse dynamic\
+  \ \n               programming, they are rescored using local alignment that accounts\
+  \ \n               for different error profiles.\n               Resorting based\
+  \ on the local alignment may change the order the hits are returned.\n   --allowAdjacentIndels\
+  \ \n               When specified, adjacent insertion or deletions are allowed.\
+  \ Otherwise, adjacent \n               insertion and deletions are merged into one\
+  \ operation.  Using quality values \n               to guide pairwise alignments\
+  \ may dictate that the higher probability alignment \n               contains adjacent\
+  \ insertions or deletions.  Current tools such as GATK do not permit\n         \
+  \      this and so they are not reported by default.\n\n Output Formats and Files\n\
+  \   --out out (terminal)  \n               Write output to 'out'.\n   --bam    \
+  \   Write output in PacBio BAM format. This is the preferred output format.\n  \
+  \             Input query reads must be in PacBio BAM format.\n   --sam       Write\
+  \ output in SAM format. Starting from version 5.2 is no longer supported\n     \
+  \          Use --bam, then translate from .bam to .sam\n   -m t           \n   \
+  \            If not printing SAM, modify the output of the alignment.\n        \
+  \        t=0 Print blast like output with |'s connecting matched nucleotides.\n\
+  \                  1 Print only a summary: score and pos.\n                  2 Print\
+  \ in Compare.xml format.\n                  3 Print in vulgar format (DEPRECATED).\n\
+  \                  4 Print a longer tabular version of the alignment.\n        \
+  \          5 Print in a machine-parsable format that is read by compareSequences.py.\n\
+  \   --header\n               Print a header as the first line of the output file\
+  \ describing the contents of each column.\n   --titleTable tab (NULL) \n       \
+  \        Construct a table of reference sequence titles.  The reference sequences\
+  \ are \n               enumerated by row, 0,1,...  The reference index is printed\
+  \ in alignment results\n               rather than the full reference name.  This\
+  \ makes output concise, particularly when\n               very verbose titles exist\
+  \ in reference names.\n   --unaligned file\n               Output reads that are\
+  \ not aligned to 'file'\n   --noPrintUnalignedSeqs\n               Must be used\
+  \ together with -unaligned, print unaligned read names only.\n   --clipping [none|hard|subread|soft]\
+  \ (none)\n               Use no/hard/subread/soft clipping, ONLY for SAM/BAM output.\n\
+  \   --printSAMQV (false)\n               Print quality values to SAM output.\n Options\
+  \ for anchoring alignment regions. This will have the greatest effect on speed and\
+  \ sensitivity.\n   --minMatch m (12) \n               Minimum seed length.  Higher\
+  \ minMatch will speed up alignment, \n               but decrease sensitivity.\n\
+  \   --maxMatch l (inf)\n               Stop mapping a read to the genome when the\
+  \ lcp length reaches l.  \n               This is useful when the query is part\
+  \ of the reference, for example when \n               constructing pairwise alignments\
+  \ for de novo assembly.\n   --maxLCPLength l (inf)\n               The same as -maxMatch.\n\
+  \   --maxAnchorsPerPosition m (10000) \n               Do not add anchors from a\
+  \ position if it matches to more than 'm' locations in the target.\n   --advanceExactMatches\
+  \ E (0)\n               Another trick for speeding up alignments with match - E\
+  \ fewer anchors.  Rather than\n               finding anchors between the read and\
+  \ the genome at every position in the read, \n               when an anchor is found\
+  \ at position i in a read of length L, the next position \n               in a read\
+  \ to find an anchor is at i+L-E.\n               Use this when alignining already\
+  \ assembled contigs.\n   --nCandidates n (10)\n               Keep up to 'n' candidates\
+  \ for the best alignment.  A large value of n will slow mapping\n              \
+  \ because the slower dynamic programming steps are applied to more clusters of anchors\n\
+  \               which can be a rate limiting step when reads are very long.\n  \
+  \ --concordant(false)\n               Map all subreads of a zmw (hole) to where\
+  \ the longest full pass subread of the zmw \n               aligned to. This requires\
+  \ to use the region table and hq regions.\n               This option only works\
+  \ when reads are in base or pulse h5 format.\n   --fastMaxInterval(false)\n    \
+  \           Fast search maximum increasing intervals as alignment candidates. The\
+  \ search \n               is not as exhaustive as the default, but is much faster.\n\
+  \   --aggressiveIntervalCut(false)\n               Agreesively filter out non-promising\
+  \ alignment candidates, if there \n               exists at least one promising\
+  \ candidate. If this option is turned on, \n               Blasr is likely to ignore\
+  \ short alignments of ALU elements.\n   --fastSDP(false)\n               Use a fast\
+  \ heuristic algorithm to speed up sparse dynamic programming.\n\n  Options for Refining\
+  \ Hits.\n   --refineConcordantAlignments(false)\n               Refine concordant\
+  \ alignments. It slightly increases alignment accuracy at cost of time.\n   --sdpTupleSize\
+  \ K (11)\n               Use matches of length K to speed dynamic programming alignments.\
+  \  This controls\n               accuracy of assigning gaps in pairwise alignments\
+  \ once a mapping has been found,\n               rather than mapping sensitivity\
+  \ itself.\n   --scoreMatrix \"score matrix string\" \n               Specify an\
+  \ alternative score matrix for scoring fasta reads.  The matrix is \n          \
+  \     in the format \n                  ACGTN\n                A abcde\n       \
+  \         C fghij\n                G klmno\n                T pqrst\n          \
+  \      N uvwxy . The values a...y should be input as a quoted space separated \n\
+  \               string: \"a b c ... y\". Lower scores are better, so matches should\
+  \ be less \n               than mismatches e.g. a,g,m,s = -5 (match), mismatch =\
+  \ 6. \n   --affineOpen value (10) \n               Set the penalty for opening an\
+  \ affine alignment.\n   --affineExtend a (0)\n               Change affine (extension)\
+  \ gap penalty. Lower value allows more gaps.\n\n Options for overlap/dynamic programming\
+  \ alignments and pairwise overlap for de novo assembly. \n   --useQuality (false)\n\
+  \               Use substitution/insertion/deletion/merge quality values to score\
+  \ gap and \n               mismatch penalties in pairwise alignments.  Because the\
+  \ insertion and deletion\n               rates are much higher than substitution,\
+  \ this will make many alignments \n               favor an insertion/deletion over\
+  \ a substitution.  Naive consensus calling methods \n               will then often\
+  \ miss substitution polymorphisms. This option should be \n               used when\
+  \ calling consensus using the Quiver method.  Furthermore, when \n             \
+  \  not using quality values to score alignments, there will be a lower consensus\
+  \ \n               accuracy in homolymer regions.\n   --affineAlign (false)\n  \
+  \             Refine alignment using affine guided align.\n\n Options for filtering\
+  \ reads and alignments\n   --minReadLength l(50)\n               Skip reads that\
+  \ have a full length less than l. Subreads may be shorter.\n   --minSubreadLength\
+  \ l(0)\n               Do not align subreads of length less than l.\n   --minRawSubreadScore\
+  \ m(0)\n               Do not align subreads whose quality score in region table\
+  \ is less than m (quality scores should be in range [0, 1000]).\n   --maxScore m(-200)\n\
+  \               Maximum score to output (high is bad, negative good).\n   --minAlnLength\n\
+  \               (0) Report alignments only if their lengths are greater than minAlnLength.\n\
+  \   --minPctSimilarity\n               (0) Report alignments only if their percentage\
+  \ similarity is greater than minPctSimilarity.\n   --minPctAccuracy\n          \
+  \     (0) Report alignments only if their percentage accuracy is greater than minAccuracy.\n\
+  \n Options for parallel alignment.\n   --nproc N (1)\n               Align using\
+  \ N processes.  All large data structures such as the suffix array and \n      \
+  \         tuple count table are shared.\n   --start S (0)\n               Index\
+  \ of the first read to begin aligning. This is useful when multiple instances \n\
+  \               are running on the same data, for example when on a multi-rack cluster.\n\
+  \   --stride S (1)\n               Align one read every 'S' reads.\n\n Options for\
+  \ subsampling reads.\n   --subsample (0)\n               Proportion of reads to\
+  \ randomly subsample (expressed as a decimal) and align.\n   --holeNumbers LIST\
+  \ \n               When specified, only align reads whose ZMW hole numbers are in\
+  \ LIST.\n               LIST is a comma-delimited string of ranges, such as '1,2,3,10-13'.\n\
+  \               This option only works when reads are in bam, bax.h5 or plx.h5 format.\n\
+  \n -h            Print this help file.\n\nIn release v5.1 of BLASR, command-line\
+  \ options will use the \nsingle dash/double dash convention: \nCharacter options\
+  \ are preceded by a single dash. (Example: -v) \nWord options are preceded by a\
+  \ double dash. (Example: --verbose) \nPlease modify your scripts accordingly when\
+  \ BLASR v5.1 is released. \n\nTo cite BLASR, please use: Chaisson M.J., and Tesler\
+  \ G., Mapping \nsingle molecule sequencing reads using Basic Local Alignment with\
+  \ \nSuccessive Refinement (BLASR): Theory and Application, BMC \nBioinformatics\
+  \ 2012, 13:238.\nPlease report any bugs to 'https://github.com/PacificBiosciences/blasr/issues'.\n\
+  \n\nDISCUSSION \n  blasr is a read mapping program that maps reads to positions\
+  \ \n  in a genome by clustering short exact matches between the read and\n  the\
+  \ genome, and scoring clusters using alignment. The matches are\n  generated by\
+  \ searching all suffixes of a read against the genome\n  using a suffix array. Global\
+  \ chaining methods are used to score \n  clusters of matches.\n\n  The only required\
+  \ inputs to blasr are a file of reads and a\n  reference genome.  It is exremely\
+  \ useful to have read filtering\n  information, and mapping runtime may decrease\
+  \ substantially when a\n  precomputed suffix array index on the reference sequence\
+  \ is\n  specified.\n  \n  Although reads may be input in FASTA format, the recommended\
+  \ input is\n  PacBio BAM files because these contain quality value\n  information\
+  \ that is used in the alignment and produces higher quality\n  variant detection.\n\
+  \  Although alignments can be output in various formats, the recommended \n  output\
+  \ format is PacBio BAM.\n  Support to bax.h5 and plx.h5 files will be DEPRECATED.\n\
+  \  Support to region tables for h5 files will be DEPRECATED.\n  \n  When suffix\
+  \ array index of a genome is not specified, the suffix array is\n  built before\
+  \ producing alignment.   This may be prohibitively slow\n  when the genome is large\
+  \ (e.g. Human).  It is best to precompute the\n  suffix array of a genome using\
+  \ the program sawriter, and then specify\n  the suffix array on the command line\
+  \ using -sa genome.fa.sa.\n  \n  The optional parameters are roughly divided into\
+  \ three categories:\n  control over anchoring, alignment scoring, and output. \n\
+  \  \n  The default anchoring parameters are optimal for small genomes and\n  samples\
+  \ with up to 5% divergence from the reference genome.  The main\n  parameter governing\
+  \ speed and sensitivity is the -minMatch parameter.\n  For human genome alignments,\
+  \ a value of 11 or higher is recommended.  \n  Several methods may be used to speed\
+  \ up alignments, at the expense of\n  possibly decreasing sensitivity.  \n  \n \
+  \ Regions that are too repetitive may be ignored during mapping by\n  limiting the\
+  \ number of positions a read maps to with the\n  -maxAnchorsPerPosition option.\
+  \  Values between 500 and 1000 are effective\n  in the human genome.\n  \n  For\
+  \ small genomes such as bacterial genomes or BACs, the default parameters \n  are\
+  \ sufficient for maximal sensitivity and good speed.\n\n\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/blasr:5.3.5--0

@@ -1,0 +1,142 @@
+!Command
+command:
+- get_empirical_dist.R
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input-ref-file
+  description: Path to file with reference cell types
+  args: !SimpleFlagArg
+    name: INPUT-REF-FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --exclusions
+  description: "Path to the yaml file with excluded terms.\nMust contain fields 'unlabelled'\
+    \ and 'trivial_terms'"
+  args: !SimpleFlagArg
+    name: EXCLUSIONS
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --label-column-ref
+  description: Name of the label column in reference file
+  args: !SimpleFlagArg
+    name: LABEL-COLUMN-REF
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --lab-cl-mapping
+  description: Path to serialised object containing cell label to CL terms mapping
+  args: !SimpleFlagArg
+    name: LAB-CL-MAPPING
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --parallel
+  description: 'Boolean: Should computation be run in parallel? Default: FALSE'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --num-iterations
+  description: Number of sampling iterations to construct empirical distribution
+  args: !SimpleFlagArg
+    name: NUM-ITERATIONS
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --sample-labs
+  description: Labels sample size to infer the distribution from.
+  args: !SimpleFlagArg
+    name: SAMPLE-LABS
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --num-cores
+  description: 'Number of cores to run the process on. Default: all available cores.
+    --parallel must be set to "true" for this to take effect'
+  args: !SimpleFlagArg
+    name: NUM-CORES
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --tmpdir
+  description: Cache directory path
+  args: !SimpleFlagArg
+    name: TMPDIR
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --ontology-graph
+  description: "Path to the ontology graph in .obo or .xml format.\nImport link can\
+    \ also be provided."
+  args: !SimpleFlagArg
+    name: ONTOLOGY-GRAPH
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --semantic-sim-metric
+  description: "Semantic similarity scoring method. Must be supported by\nOnassis\
+    \ package. See listSimilarities()$pairwiseMeasures\nfor a list of accepted options.\
+    \ Obviously must correspond\nto similarity metric used in other scripts."
+  args: !SimpleFlagArg
+    name: SEMANTIC-SIM-METRIC
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-path
+  description: Path to the output CDF list object in .rds format
+  args: !SimpleFlagArg
+    name: OUTPUT-PATH
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: "Show this help message and exit\n"
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: /usr/local/bin/get_empirical_dist.R [options]\n\n\nOptions:\n\t\
+  -i INPUT-REF-FILE, --input-ref-file=INPUT-REF-FILE\n\t\tPath to file with reference\
+  \ cell types\n\n\t-e EXCLUSIONS, --exclusions=EXCLUSIONS\n\t\tPath to the yaml file\
+  \ with excluded terms. \n                Must contain fields 'unlabelled' and 'trivial_terms'\n\
+  \n\t-l LABEL-COLUMN-REF, --label-column-ref=LABEL-COLUMN-REF\n\t\tName of the label\
+  \ column in reference file\n\n\t-m LAB-CL-MAPPING, --lab-cl-mapping=LAB-CL-MAPPING\n\
+  \t\tPath to serialised object containing cell label to CL terms mapping\n\n\t-p,\
+  \ --parallel\n\t\tBoolean: Should computation be run in parallel? Default: FALSE\n\
+  \n\t-n NUM-ITERATIONS, --num-iterations=NUM-ITERATIONS\n\t\tNumber of sampling iterations\
+  \ to construct empirical distribution\n\n\t-a SAMPLE-LABS, --sample-labs=SAMPLE-LABS\n\
+  \t\tLabels sample size to infer the distribution from.\n\n\t-c NUM-CORES, --num-cores=NUM-CORES\n\
+  \t\tNumber of cores to run the process on. Default: all available cores. --parallel\
+  \ must be set to \"true\" for this to take effect\n\n\t-r TMPDIR, --tmpdir=TMPDIR\n\
+  \t\tCache directory path\n\n\t-g ONTOLOGY-GRAPH, --ontology-graph=ONTOLOGY-GRAPH\n\
+  \t\tPath to the ontology graph in .obo or .xml format. \n                Import\
+  \ link can also be provided.\n\n\t-s SEMANTIC-SIM-METRIC, --semantic-sim-metric=SEMANTIC-SIM-METRIC\n\
+  \t\tSemantic similarity scoring method. Must be supported by\n                Onassis\
+  \ package. See listSimilarities()$pairwiseMeasures \n                for a list\
+  \ of accepted options. Obviously must correspond \n                to similarity\
+  \ metric used in other scripts.\n\n\t-o OUTPUT-PATH, --output-path=OUTPUT-PATH\n\
+  \t\tPath to the output CDF list object in .rds format\n\n\t-h, --help\n\t\tShow\
+  \ this help message and exit\n\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/cell-types-analysis:0.1.11--0

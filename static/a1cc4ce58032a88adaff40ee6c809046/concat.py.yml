@@ -1,0 +1,98 @@
+!Command
+command:
+- concat.py
+positional:
+- !Positional
+  optional: true
+  position: 0
+  name: INPUT_FILES
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -infiles
+  description: "[INPUT_FILES [INPUT_FILES ...]], --input-files [INPUT_FILES [INPUT_FILES\
+    \ ...]]\nInput files (default: None)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -outfile
+  - --output-file
+  description: 'Output file (default: None)'
+  args: !SimpleFlagArg
+    name: OUTPUT_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -outfiles
+  description: "[OUTPUT_FILES [OUTPUT_FILES ...]], --output-files [OUTPUT_FILES [OUTPUT_FILES\
+    \ ...]]\nOutput files for spreader (default: None)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -chunk
+  - --chunk-size
+  description: "In --spread mode, the number of lines to be written\ninto the output\
+    \ file each time. By default chunk=4 by\ndefault for fastq files, i.e., every\
+    \ 4 lines make up\none read record. (default: 4)"
+  args: !SimpleFlagArg
+    name: CHUNK_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - -nt
+  - --threads
+  description: "only invoked in -spread -bgzip when bgzip compress of\noutput files\
+    \ can be parallelized (default: None)"
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - -spread
+  - --spread
+  description: 'Spread content into multiple files. (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -bgzip
+  - --bgzip-output
+  description: "compress the output files (default: False)\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: concat.py [-h] [-infiles [INPUT_FILES [INPUT_FILES ...]]]\n   \
+  \              [-outfile OUTPUT_FILE]\n                 [-outfiles [OUTPUT_FILES\
+  \ [OUTPUT_FILES ...]]]\n                 [-chunk CHUNK_SIZE] [-nt THREADS] [-spread]\
+  \ [-bgzip]\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  -infiles [INPUT_FILES [INPUT_FILES ...]], --input-files [INPUT_FILES\
+  \ [INPUT_FILES ...]]\n                        Input files (default: None)\n  -outfile\
+  \ OUTPUT_FILE, --output-file OUTPUT_FILE\n                        Output file (default:\
+  \ None)\n  -outfiles [OUTPUT_FILES [OUTPUT_FILES ...]], --output-files [OUTPUT_FILES\
+  \ [OUTPUT_FILES ...]]\n                        Output files for spreader (default:\
+  \ None)\n  -chunk CHUNK_SIZE, --chunk-size CHUNK_SIZE\n                        In\
+  \ --spread mode, the number of lines to be written\n                        into\
+  \ the output file each time. By default chunk=4 by\n                        default\
+  \ for fastq files, i.e., every 4 lines make up\n                        one read\
+  \ record. (default: 4)\n  -nt THREADS, --threads THREADS\n                     \
+  \   only invoked in -spread -bgzip when bgzip compress of\n                    \
+  \    output files can be parallelized (default: None)\n  -spread, --spread     Spread\
+  \ content into multiple files. (default: False)\n  -bgzip, --bgzip-output\n    \
+  \                    compress the output files (default: False)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/somaticseq:3.6.2--py_0

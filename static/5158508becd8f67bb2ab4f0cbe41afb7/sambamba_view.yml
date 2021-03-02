@@ -1,0 +1,179 @@
+!Command
+command:
+- sambamba
+- view
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: sambamba-view
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: input.bam | input.sam
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  - --filter
+  description: set custom filter for alignments
+  args: !SimpleFlagArg
+    name: FILTER
+- !Flag
+  optional: true
+  synonyms:
+  - --num-filter
+  description: "filter flag bits; 'i1/i2' corresponds to -f i1 -F i2 samtools arguments;\n\
+    either of the numbers can be omitted"
+  args: !SimpleFlagArg
+    name: NUMFILTER
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --format
+  description: "|bam|json|unpack\nspecify which format to use for output (default\
+    \ is SAM);\nunpack streams unpacked BAM"
+  args: !SimpleFlagArg
+    name: sam
+- !Flag
+  optional: true
+  synonyms:
+  - -H
+  - --header
+  description: output only header to stdout (if format=bam, the header is printed
+    as SAM)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -I
+  - --reference-info
+  description: output to stdout only reference names and lengths in JSON
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  - --regions
+  description: output only reads overlapping one of regions from the BED file
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --count
+  description: output to stdout only count of matching records, hHI are ignored
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --valid
+  description: output only valid alignments
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --sam-input
+  description: specify that input is in SAM format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --ref-filename
+  description: specify reference for writing (NA)
+  args: !SimpleFlagArg
+    name: FASTA
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --show-progress
+  description: show progressbar in STDERR (works only for BAM files with no regions
+    specified)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --compression-level
+  description: specify compression level (from 0 to 9, works only for BAM output)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-filename
+  description: specify output filename
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --nthreads
+  description: maximum number of threads to use
+  args: !SimpleFlagArg
+    name: NTHREADS
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --subsample
+  description: subsample reads (read pairs)
+  args: !SimpleFlagArg
+    name: FRACTION
+- !Flag
+  optional: true
+  synonyms:
+  - --subsampling-seed
+  description: "set seed for subsampling\n"
+  args: !SimpleFlagArg
+    name: SEED
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --with-header
+  description: print header before reads (always done for BAM output)
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "\nsambamba 0.8.0\n by Artem Tarasov and Pjotr Prins (C) 2012-2020\n  \
+  \  LDC 1.20.0 / DMD v2.090.1 / LLVM7.0.0 / bootstrap LDC - the LLVM D compiler (0.17.6)\n\
+  \nUsage: sambamba-view [options] <input.bam | input.sam> [region1 [...]]\n\nOptions:\
+  \ -F, --filter=FILTER\n                    set custom filter for alignments\n  \
+  \       --num-filter=NUMFILTER\n                    filter flag bits; 'i1/i2' corresponds\
+  \ to -f i1 -F i2 samtools arguments;\n                    either of the numbers\
+  \ can be omitted\n         -f, --format=sam|bam|json|unpack\n                  \
+  \  specify which format to use for output (default is SAM);\n                  \
+  \  unpack streams unpacked BAM\n         -h, --with-header\n                   \
+  \ print header before reads (always done for BAM output)\n         -H, --header\n\
+  \                    output only header to stdout (if format=bam, the header is\
+  \ printed as SAM)\n         -I, --reference-info\n                    output to\
+  \ stdout only reference names and lengths in JSON\n         -L, --regions=FILENAME\n\
+  \                    output only reads overlapping one of regions from the BED file\n\
+  \         -c, --count\n                    output to stdout only count of matching\
+  \ records, hHI are ignored\n         -v, --valid\n                    output only\
+  \ valid alignments\n         -S, --sam-input\n                    specify that input\
+  \ is in SAM format\n         -T, --ref-filename=FASTA\n                    specify\
+  \ reference for writing (NA)\n         -p, --show-progress\n                   \
+  \ show progressbar in STDERR (works only for BAM files with no regions specified)\n\
+  \         -l, --compression-level\n                    specify compression level\
+  \ (from 0 to 9, works only for BAM output)\n         -o, --output-filename\n   \
+  \                 specify output filename\n         -t, --nthreads=NTHREADS\n  \
+  \                  maximum number of threads to use\n         -s, --subsample=FRACTION\n\
+  \                    subsample reads (read pairs)\n         --subsampling-seed=SEED\n\
+  \                    set seed for subsampling\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/sambamba:0.8.0--h984e79f_0

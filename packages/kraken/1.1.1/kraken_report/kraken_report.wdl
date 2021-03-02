@@ -10,6 +10,9 @@ task Krakenreport {
       ~{if (show_zeros) then "--show-zeros" else ""} \
       ~{if defined(db) then ("--db " +  '"' + db + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     show_zeros: ""
     db: ""

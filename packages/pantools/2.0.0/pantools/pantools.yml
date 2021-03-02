@@ -1,0 +1,402 @@
+!Command
+command:
+- pantools
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -server
+  description: ': To optimize JIT compilations for higher performance'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Xmn
+  description: '(a number followed by m/g) : Minimum heap size in mega/giga bytes'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Xmx
+  description: '(a number followed by m/g) : Maximum heap size in mega/giga bytes'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --database_path
+  - -dp
+  description: ': Path to the pangenome database.'
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - --genomes-file
+  - -gf
+  description: ': A text file containing paths to FASTA files of genomes;       each
+    in a seperated line.'
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - --kmer-size
+  - -ks
+  description: ': The size of k-mers. If it is not given or is out of valid range
+    (6 <= K_SIZE <= 255), then an optimal value would be calculated automatically.'
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - --proteomes_file
+  - -pf
+  description: ': A text file containing paths to FASTA files of proteomes; each in
+    a seperated line.'
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - --output-path
+  - -op
+  description: '(default value: Database path determined by -dp) : Path to the output
+    files.'
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - --annotations-file
+  - -af
+  description: ': A text file each line of which contains genome number and path to
+    the corresponding GFF file seperated by one space. Genomes are numbered in the
+    same order they have been added to the pangenome. The protein sequence of the
+    annotated genes will be also stored in the folder "/proteins" in the output path.'
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - --connect_annotations
+  - -ca
+  description: ': Connects the annotated genomic features to the nodes of gDBG.'
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - --genome-numbers
+  - -gn
+  description: ': A text file containing genome_numbers for which the features will
+    be retrieved.'
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - --feature-type
+  - -ft
+  description: '(default value: gene) : The feature name; for example gene, mRNA,
+    exon, tRNA, etc.'
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - --regions-file
+  - -rf
+  description: ': A text file containing records with genome_number, sequence_number,
+    begin and end positions seperated by one space for each region.'
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - --intersection-rate
+  - -ir
+  description: '(default valuue: 0.09, valid range: [0.001..0.1]) : The fraction of
+    k-mers needs to be shared by two intersecting proteins.'
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - --min-normalized-similarity
+  - -mns
+  description: '(default value: 95, valid range: [1..99]) : The minimum normalized
+    similarity score of two proteins.'
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - --mcl-inflation
+  - -mi
+  description: '(default value: 9.6, valid range: (1..19)): The MCL inflation.'
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - --contrast
+  - -ct
+  description: '(default value: 8, valid range: (0..10)) : The contrast factor.'
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - --relaxation
+  description: 'rn (default value: 1, valid range: [1..8]) : The relaxation in homology
+    calls.'
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - --threads-number
+  - -tn
+  description: '(default value: 1) : The number of parallel working threads.'
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - '-1'
+  description: ': The first short-read archive in FASTQ format, which can be gz/bz2
+    compressed. This file can be precessed interleaved by -il option.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - '-2'
+  description: ': Optionally, the second short-read archive in FASTQ format, which
+    can be gz/bz2 compressed.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min-mapping-identity
+  - -mmi
+  description: '(default value: 0.5, valid range: [0..1)) : The minimum acceptable
+    identity of the alignment.'
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - --num-kmer-samples
+  description: '*-nks (default value: 15, valid range: [1..r-k+1]) : The number of
+    kmers sampled from read.'
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - --min-hit-length
+  - -mhl
+  description: '(default value: 13, valid range: [10..100]) : The minimum acceptable
+    length of alignment after soft-clipping.'
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - --max-alignment-length
+  - -mal
+  description: '(default value: 1000, valid range: [50..5000]) : The maximum acceptable
+    length of alignment.'
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - --max-fragment-length
+  - -mfl
+  description: '(default value: 2000, valid range: [50..5000]) : The maximum acceptable
+    length of fragment.'
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - --max-num-locations
+  - -mnl
+  description: '(default value: 15, valid range: [1..100]) : The maximum number of
+    location of candidate hits to examine.'
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - --alignment-band
+  - -ab
+  description: '(default value: 5, valid range: [1..100]) : The length of bound of
+    banded alignment.'
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - --clipping-stringency
+  - -ci
+  description: '(default value: 1) : The stringency of soft-clipping.'
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - --out-format
+  - -of
+  description: ': Writes the alignment files in BAM|SAM|NONE format.'
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - --alignment-mode
+  - -am
+  description: '(default value: 2) : The alignment mode.'
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - '-3'
+  description: ': Competitive, all-bests'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --interleaved
+  - -i
+  description: ': Process the fastq file as an interleaved paired-end archive.'
+  args: !SimpleFlagArg
+    name: or
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\n------------------------------- PanTools ------------------------------\n\
+  OUTPUT_PATH has not been specified. Potential outputs will be written in null.\n\
+  PanTools version 2.0\nPanTools is pan-genomic toolkit for comparative analysis of\
+  \ large number of genomes developed in Bioinformatics group of Wageningen University\
+  \ and Research Renter, the Netherlands. Please cite the relevant publication(s)\
+  \ from the list of publications if you use PanTools in your research.\n\nLicence\n\
+  PanTools has been licensed under GNU GENERAL PUBLIC LICENSE version 3.\n\nPublications\n\
+  \nPanTools: representation, storage and exploration of pan-genomic data.\nEfficient\
+  \ inference of homologs in large eukaryotic pan-proteomes.\nPan-genomic read mapping\n\
+  \n\nFunctionalities\nPanTools currently provides these functionalities:\n\nConstruction\
+  \ of pan-genome\nConstruction of pan-proteome\nAdding new genomes to the pan-genome\n\
+  Adding strucureal annotaions to the genomes\nDetecting homology groups based on\
+  \ similarity of proteins\nRetrieving features/regions/genomes\nRead mappping\n\n\
+  \nRequirements\n\n\nJava Virtual Machine version 1.8 or higher,\nAdd path to the\
+  \ java executable to your OS path environment variable.\n\nKMC: A disk-based k-mer\
+  \ counter,\nAfter downloading the appropriate version (linux, macos or windows),\
+  \ add path to the kmc and kmc_tools executables to your OS path environment variable.\n\
+  \nMCL: The Markov Clustering Algorithm,\nAfter downloading and compiling the software,\
+  \ add path to the mcl executable to your OS path environment variable.\n\n\nRunning\
+  \ the program\nAdd path to the java archive of PanTools, located in the /dist sub-directory\
+  \ of PanTools project, to our OS path environment variable. Then run PanTools from\
+  \ command line by:\n$java <JVM options> -jar pantools.jar <sub-command> <arguments>\n\
+  \nUseful JVM options\n\n\n-server : To optimize JIT compilations for higher performance\n\
+  \n-Xmn(a number followed by m/g) : Minimum heap size in mega/giga bytes\n\n-Xmx(a\
+  \ number followed by m/g) : Maximum heap size in mega/giga bytes\n\n\nSub-commands\n\
+  \n\nbuild_pangenome or bpg : To build a pan-genome out of a set of genomes.\narguments:\n\
+  \n\n--database_path or -dp : Path to the pangenome database.\n\n--genomes-file or\
+  \ -gf : A text file containing paths to FASTA files of genomes;       each in a\
+  \ seperated line.\n\n--kmer-size or -ks : The size of k-mers. If it is not given\
+  \ or is out of valid range (6 <= K_SIZE <= 255), then an optimal value would be\
+  \ calculated automatically.\n\n\n\nbuild_panproteome or bpp : To build a pan-proteome\
+  \ out of a set of proteins.\narguments:\n\n\n--database_path or -dp : Path to the\
+  \ pangenome database.\n\n--proteomes_file or -pf : A text file containing paths\
+  \ to FASTA files of proteomes; each in a seperated line.\n\n\n\nadd_genomes or ag\
+  \ : To add new genomes to an available pan-genome.\narguments:\n\n\n--database_path\
+  \ or -dp : Path to the pangenome database.\n\n--genomes-file or -gf : A text file\
+  \ containing paths to FASTA files of the new genomes to be added to the pangeome;\
+  \ each in a seperated line.\n\n\n\nadd_annotations or aa : To add annotations to\
+  \ existing genomes.\narguments:\n\n\n--database_path or -dp : Path to the pangenome\
+  \ database.\n\n--output-path or -op (default value: Database path determined by\
+  \ -dp) : Path to the output files.\n\n--annotations-file or -af : A text file each\
+  \ line of which contains genome number and path to the corresponding GFF file seperated\
+  \ by one space. Genomes are numbered in the same order they have been added to the\
+  \ pangenome. The protein sequence of the annotated genes will be also stored in\
+  \ the folder \"/proteins\" in the output path.\n\n--connect_annotations or -ca :\
+  \ Connects the annotated genomic features to the nodes of gDBG.\n\n\n\nretrieve_features\
+  \ or rf : To retrieve the sequence of annotated features from the pan-genome. For\
+  \ each genome a FASTA file containing the retrieved features will be stored in the\
+  \ output path. For example, genes.1.fasta contains all the genes annotated in genome\
+  \ 1.\narguments:\n\n\n--database_path or -dp : Path to the pangenome database.\n\
+  \n--output-path or -op (default value: Database path determined by -dp) : Path to\
+  \ the output files.\n\n--genome-numbers or -gn : A text file containing genome_numbers\
+  \ for which the features will be retrieved.\n\n\n\n--feature-type or -ft (default\
+  \ value: gene) : The feature name; for example gene, mRNA, exon, tRNA, etc.\n\n\n\
+  retrieve_regions or rr : To retrieve the sequence of some genomic regios from the\
+  \ pan-genome. The resulting FASTA files will be stored in the output path.\narguments:\n\
+  \n\n--database_path or -dp : Path to the pangenome database.\n\n--output-path or\
+  \ -op (default value: Database path determined by -dp) : Path to the output files.\n\
+  \n--regions-file or -rf : A text file containing records with genome_number, sequence_number,\
+  \ begin and end positions seperated by one space for each region.\n\n\n\nretrieve_genomes\
+  \ or rg : To retrieve the full sequence of some genomes. The resulting FASTA files\
+  \ will be stored in the output path.\narguments:\n\n\n--database_path or -dp : Path\
+  \ to the pangenome database.\n\n--output-path or -op (default value: Database path\
+  \ determined by -dp) : Path to the output files.\n\n--genome-numbers or -gn : A\
+  \ text file containing genome_numbers to be retrieved in each line..\n\n\n\ngroup\
+  \ or g : To create homology groups in the protein space of the pan-genome (pan-proteome).\
+  \ The resulting homology groups will be stored in the output path.\narguments:\n\
+  \n\n--database_path or -dp : Path to the pangenome database.\n\n--output-path or\
+  \ -op (default value: Database path determined by -dp) : Path to the output files.\n\
+  \n--intersection-rate or -ir (default valuue: 0.09, valid range: [0.001..0.1]) :\
+  \ The fraction of k-mers needs to be shared by two intersecting proteins.\n\n--min-normalized-similarity\
+  \ or -mns (default value: 95, valid range: [1..99]) : The minimum normalized similarity\
+  \ score of two proteins.\n\n--mcl-inflation or -mi (default value: 9.6, valid range:\
+  \ (1..19)): The MCL inflation.\n\n--contrast or -ct (default value: 8, valid range:\
+  \ (0..10)) : The contrast factor.\n\n--relaxation or rn (default value: 1, valid\
+  \ range: [1..8]) : The relaxation in homology calls.\n\n--threads-number or -tn\
+  \ (default value: 1) : The number of parallel working threads.\n\n\n\nmap or m :\
+  \ To map single or paired-end short reads to all or a sebset of the constituent\
+  \ genomes. The resulting SAM/BAM files will be stored in the output path.\nargument:\n\
+  \n\n--database_path or -dp : Path to the pangenome database.\n\n\n-1 : The first\
+  \ short-read archive in FASTQ format, which can be gz/bz2 compressed. This file\
+  \ can be precessed interleaved by -il option.\n\n\n-2 : Optionally, the second short-read\
+  \ archive in FASTQ format, which can be gz/bz2 compressed.\n\n\n--genome-numbers\
+  \ or -gn : A text file containing genome_numbers to map reads against in each line.\n\
+  \n\n--output-path or -op (default value: Database path determined by -dp) : Path\
+  \ to the output files.\n\n\n--threads-number or -tn (default value: 1) : The number\
+  \ of parallel working threads.\n\n\n--min-mapping-identity or -mmi (default value:\
+  \ 0.5, valid range: [0..1)) : The minimum acceptable identity of the alignment.\n\
+  \n\n--num-kmer-samples or *-nks (default value: 15, valid range: [1..r-k+1]) : The\
+  \ number of kmers sampled from read.\n\n\n--min-hit-length or -mhl (default value:\
+  \ 13, valid range: [10..100]) : The minimum acceptable length of alignment after\
+  \ soft-clipping.\n\n\n--max-alignment-length or -mal (default value: 1000, valid\
+  \ range: [50..5000]) : The maximum acceptable length of alignment.\n\n\n--max-fragment-length\
+  \ or -mfl (default value: 2000, valid range: [50..5000]) : The maximum acceptable\
+  \ length of fragment.\n\n\n--max-num-locations or -mnl (default value: 15, valid\
+  \ range: [1..100]) : The maximum number of location of candidate hits to examine.\n\
+  \n\n--alignment-band or -ab (default value: 5, valid range: [1..100]) : The length\
+  \ of bound of banded alignment.\n\n\n--clipping-stringency or -ci (default value:\
+  \ 1) : The stringency of soft-clipping.\n0 : no soft clipping\n1 : low\n2 : medium\n\
+  3 : high\n\n\n--out-format or -of : Writes the alignment files in BAM|SAM|NONE format.\n\
+  \n\n--alignment-mode or -am (default value: 2) : The alignment mode.\n-1 : Competitive,\
+  \ none-bests\n-2 : Competitive, random-best\n-3 : Competitive, all-bests\n1 : Normal,\
+  \ none-bests\n2 : Normal, random-best\n3 : Normal, all-bests\n0 : Normal, all-hits\n\
+  \n\n--interleaved or -i : Process the fastq file as an interleaved paired-end archive.\n\
+  \n\n\n\nversion or v : To show the versions of PanTools, JVM and Neo4j.\n\n\nhelp\
+  \ or h: To show the mannual of the tool.\n\n\n\nVisualization in the Neo4j browser\n\
+  Neo4j browser allows you to visualize parts of the pan-genome graph and run Cypher\
+  \ queries and receive the results in a tabular or a graphic format. You need to\
+  \ download the appropriate version of Neo4j (use version sub-command to see the\
+  \ consistent version). To visualize a pan-genome:\n\nAdd path to the Neo4j /bin\
+  \ directory to the path environment variable.\nAdd path to your pan-genome in the\
+  \ Neo4j configuration file NEO4J-DIRECTORY/conf/neo4j.conf:\ndbms.directories.data\
+  \ = PATH_TO_THE_PANGENOME_DATABASE\nStart the Neo4j database server from the shell:\n\
+  \n   $neo4j start\n\nopen an internet browser and open http://localhost:7474.\n\
+  To visualize the whole pangenome, type this simple Cypher command in the browser:\n\
+  MATCH (n) RETURN n\nStop the Neo4j database server from the shell:\n\n$neo4j stop\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/pantools:2.0.0--0

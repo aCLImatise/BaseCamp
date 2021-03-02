@@ -1,0 +1,167 @@
+!Command
+command:
+- panaroo-merge
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: panaroo_merge_graphs
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --min_edge_support_sv
+  description: "minimum edge support required to call structural\nvariants in the\
+    \ presence/absence sv file\n(default=max(2, 0.01*n_samples))"
+  args: !SimpleFlagArg
+    name: MIN_EDGE_SUPPORT_SV
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: number of threads to use (default=1)
+  args: !SimpleFlagArg
+    name: N_CPU
+- !Flag
+  optional: true
+  synonyms:
+  - --quiet
+  description: suppress additional output
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --directories
+  description: Location of seperate Panaroo output directories
+  args: !RepeatFlagArg
+    name: DIRECTORIES
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out_dir
+  description: location of a new output directory
+  args: !SimpleFlagArg
+    name: OUTPUT_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --threshold
+  description: sequence identity threshold (default=0.95)
+  args: !SimpleFlagArg
+    name: ID
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --family_threshold
+  description: "protein family sequence identity threshold\n(default=0.7)"
+  args: !SimpleFlagArg
+    name: FAMILY_THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - --len_dif_percent
+  description: length difference cutoff (default=0.95)
+  args: !SimpleFlagArg
+    name: LEN_DIF_PERCENT
+- !Flag
+  optional: true
+  synonyms:
+  - --merge_paralogs
+  description: don't split paralogs
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --length_outlier_support_proportion
+  description: "proportion of genomes supporting a gene with a length\nmore than 1.5x\
+    \ outside the interquatile range for\ngenes in the same cluster (default=0.01).\
+    \ Genes\nfailing this test will be re-annotated at the shorter\nlength"
+  args: !SimpleFlagArg
+    name: LENGTH_OUTLIER_SUPPORT_PROPORTION
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --alignment
+  description: "Output alignments of core genes or all genes. Options\nare 'core'\
+    \ and 'pan'. Default: 'None'"
+  args: !ChoiceFlagArg
+    choices: !!set
+      pan:
+      core:
+- !Flag
+  optional: true
+  synonyms:
+  - --aligner
+  description: "Specify an aligner. Options:'prank', 'clustal', and\ndefault: 'mafft'"
+  args: !ChoiceFlagArg
+    choices: !!set
+      clustal:
+      mafft:
+      prank:
+- !Flag
+  optional: true
+  synonyms:
+  - --core_threshold
+  description: "Core-genome sample threshold (default=0.95)\n"
+  args: !SimpleFlagArg
+    name: CORE
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: panaroo_merge_graphs [-h] -d DIRECTORIES [DIRECTORIES ...] -o\n\
+  \                            OUTPUT_DIR [-c ID] [-f FAMILY_THRESHOLD]\n        \
+  \                    [--len_dif_percent LEN_DIF_PERCENT]\n                     \
+  \       [--merge_paralogs]\n                            [--length_outlier_support_proportion\
+  \ LENGTH_OUTLIER_SUPPORT_PROPORTION]\n                            [--min_edge_support_sv\
+  \ MIN_EDGE_SUPPORT_SV]\n                            [-a {core,pan}] [--aligner {prank,clustal,mafft}]\n\
+  \                            [--core_threshold CORE] [-t N_CPU] [--quiet]\n    \
+  \                        [--version]\n\nMerge independent runs of Panaroo\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  --min_edge_support_sv\
+  \ MIN_EDGE_SUPPORT_SV\n                        minimum edge support required to\
+  \ call structural\n                        variants in the presence/absence sv file\n\
+  \                        (default=max(2, 0.01*n_samples))\n  -t N_CPU, --threads\
+  \ N_CPU\n                        number of threads to use (default=1)\n  --quiet\
+  \               suppress additional output\n  --version             show program's\
+  \ version number and exit\n\nInput/output:\n  -d DIRECTORIES [DIRECTORIES ...],\
+  \ --directories DIRECTORIES [DIRECTORIES ...]\n                        Location\
+  \ of seperate Panaroo output directories\n  -o OUTPUT_DIR, --out_dir OUTPUT_DIR\n\
+  \                        location of a new output directory\n\nMatching:\n  -c ID,\
+  \ --threshold ID\n                        sequence identity threshold (default=0.95)\n\
+  \  -f FAMILY_THRESHOLD, --family_threshold FAMILY_THRESHOLD\n                  \
+  \      protein family sequence identity threshold\n                        (default=0.7)\n\
+  \  --len_dif_percent LEN_DIF_PERCENT\n                        length difference\
+  \ cutoff (default=0.95)\n  --merge_paralogs      don't split paralogs\n  --length_outlier_support_proportion\
+  \ LENGTH_OUTLIER_SUPPORT_PROPORTION\n                        proportion of genomes\
+  \ supporting a gene with a length\n                        more than 1.5x outside\
+  \ the interquatile range for\n                        genes in the same cluster\
+  \ (default=0.01). Genes\n                        failing this test will be re-annotated\
+  \ at the shorter\n                        length\n\nGene alignment:\n  -a {core,pan},\
+  \ --alignment {core,pan}\n                        Output alignments of core genes\
+  \ or all genes. Options\n                        are 'core' and 'pan'. Default:\
+  \ 'None'\n  --aligner {prank,clustal,mafft}\n                        Specify an\
+  \ aligner. Options:'prank', 'clustal', and\n                        default: 'mafft'\n\
+  \  --core_threshold CORE\n                        Core-genome sample threshold (default=0.95)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/panaroo:1.2.4--py_0

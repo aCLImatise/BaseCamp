@@ -1,0 +1,178 @@
+!Command
+command:
+- megalodon_extras
+- calibrate
+- generate_variant_stats
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: variant_calibration_statistics.txt
+  description: --num-reads NUM_READS
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --guppy-config
+  description: "Guppy config. Default: dna_r9.4.1_450bps_modbases_dam-\ndcm-cpg_hac.cfg"
+  args: !SimpleFlagArg
+    name: GUPPY_CONFIG
+- !Flag
+  optional: true
+  synonyms:
+  - --guppy-server-path
+  description: "Path to guppy server executable. Default: ./ont-\nguppy/bin/guppy_basecall_server"
+  args: !SimpleFlagArg
+    name: GUPPY_SERVER_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --guppy-server-port
+  description: 'Guppy server port. Default: Guppy auto'
+  args: !SimpleFlagArg
+    name: GUPPY_SERVER_PORT
+- !Flag
+  optional: true
+  synonyms:
+  - --guppy-params
+  description: "Extra guppy server parameters. Main purpose for\noptimal performance\
+    \ based on compute environment.\nQuote parameters to avoid them being parsed by\n\
+    megalodon."
+  args: !SimpleFlagArg
+    name: GUPPY_PARAMS
+- !Flag
+  optional: true
+  synonyms:
+  - --guppy-timeout
+  description: "Timeout to wait for guppy server to call a single read\nin seconds.\
+    \ Default: 30.000000"
+  args: !SimpleFlagArg
+    name: GUPPY_TIMEOUT
+- !Flag
+  optional: true
+  synonyms:
+  - --guppy-logs-output-directory
+  description: 'Directory to output guppy logs. Default: guppy_logs'
+  args: !SimpleFlagArg
+    name: GUPPY_LOGS_OUTPUT_DIRECTORY
+- !Flag
+  optional: true
+  synonyms:
+  - --reference
+  description: Reference FASTA file used for mapping called reads.
+  args: !SimpleFlagArg
+    name: REFERENCE
+- !Flag
+  optional: true
+  synonyms:
+  - --output
+  description: 'Filename to output statistics. Default:'
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - --read-ids-filename
+  description: "File containing read ids to process (one per line).\nDefault: All\
+    \ reads"
+  args: !SimpleFlagArg
+    name: READ_IDS_FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --devices
+  description: GPU devices for guppy or taiyaki basecalling backends.
+  args: !RepeatFlagArg
+    name: DEVICES
+- !Flag
+  optional: true
+  synonyms:
+  - --not-recursive
+  description: "Only search for fast5 read files directly found within\nthe fast5\
+    \ directory. Default: search recursively"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --processes
+  description: 'Number of parallel processes. Default: 1'
+  args: !SimpleFlagArg
+    name: PROCESSES
+- !Flag
+  optional: true
+  synonyms:
+  - --suppress-progress
+  description: Suppress progress bar.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --compute-false-reference-scores
+  description: "Compute scores given a false reference. Default:\ncompute all scores\
+    \ with ground truth correct\nreference.***** Experimental feature, may contain\
+    \ bugs\n*****.\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: megalodon_extras calibrate generate_variant_stats [-h]\n      \
+  \                                                   [--guppy-config GUPPY_CONFIG]\n\
+  \                                                         [--guppy-server-path GUPPY_SERVER_PATH]\n\
+  \                                                         [--guppy-server-port GUPPY_SERVER_PORT]\n\
+  \                                                         [--guppy-params GUPPY_PARAMS]\n\
+  \                                                         [--guppy-timeout GUPPY_TIMEOUT]\n\
+  \                                                         [--guppy-logs-output-directory\
+  \ GUPPY_LOGS_OUTPUT_DIRECTORY]\n                                               \
+  \          [--reference REFERENCE]\n                                           \
+  \              [--output OUTPUT]\n                                             \
+  \            [--num-reads NUM_READS]\n                                         \
+  \                [--read-ids-filename READ_IDS_FILENAME]\n                     \
+  \                                    [--devices DEVICES [DEVICES ...]]\n       \
+  \                                                  [--not-recursive]\n         \
+  \                                                [--processes PROCESSES]\n     \
+  \                                                    [--suppress-progress]\n   \
+  \                                                      [--compute-false-reference-scores]\n\
+  \                                                         fast5s_dir\n\npositional\
+  \ arguments:\n  fast5s_dir            Directory containing raw fast5 (will be searched\n\
+  \                        recursively).\n\noptional arguments:\n  -h, --help    \
+  \        show this help message and exit\n\nGuppy Backend Arguments:\n  --guppy-config\
+  \ GUPPY_CONFIG\n                        Guppy config. Default: dna_r9.4.1_450bps_modbases_dam-\n\
+  \                        dcm-cpg_hac.cfg\n  --guppy-server-path GUPPY_SERVER_PATH\n\
+  \                        Path to guppy server executable. Default: ./ont-\n    \
+  \                    guppy/bin/guppy_basecall_server\n  --guppy-server-port GUPPY_SERVER_PORT\n\
+  \                        Guppy server port. Default: Guppy auto\n  --guppy-params\
+  \ GUPPY_PARAMS\n                        Extra guppy server parameters. Main purpose\
+  \ for\n                        optimal performance based on compute environment.\n\
+  \                        Quote parameters to avoid them being parsed by\n      \
+  \                  megalodon.\n  --guppy-timeout GUPPY_TIMEOUT\n               \
+  \         Timeout to wait for guppy server to call a single read\n             \
+  \           in seconds. Default: 30.000000\n  --guppy-logs-output-directory GUPPY_LOGS_OUTPUT_DIRECTORY\n\
+  \                        Directory to output guppy logs. Default: guppy_logs\n\n\
+  Mapping Arguments:\n  --reference REFERENCE\n                        Reference FASTA\
+  \ file used for mapping called reads.\n\nOutput Arguments:\n  --output OUTPUT  \
+  \     Filename to output statistics. Default:\n                        variant_calibration_statistics.txt\n\
+  \  --num-reads NUM_READS\n                        Number of reads to process. Default:\
+  \ All reads\n  --read-ids-filename READ_IDS_FILENAME\n                        File\
+  \ containing read ids to process (one per line).\n                        Default:\
+  \ All reads\n\nMiscellaneous Arguments:\n  --devices DEVICES [DEVICES ...]\n   \
+  \                     GPU devices for guppy or taiyaki basecalling backends.\n \
+  \ --not-recursive       Only search for fast5 read files directly found within\n\
+  \                        the fast5 directory. Default: search recursively\n  --processes\
+  \ PROCESSES\n                        Number of parallel processes. Default: 1\n\
+  \  --suppress-progress   Suppress progress bar.\n  --compute-false-reference-scores\n\
+  \                        Compute scores given a false reference. Default:\n    \
+  \                    compute all scores with ground truth correct\n            \
+  \            reference.***** Experimental feature, may contain bugs\n          \
+  \              *****.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/megalodon:2.2.10--py38h0213d0e_0

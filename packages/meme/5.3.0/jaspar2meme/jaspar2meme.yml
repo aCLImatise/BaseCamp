@@ -1,0 +1,119 @@
+!Command
+command:
+- jaspar2meme
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: Jaspar directory | PFM bundle
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -bundle
+  description: "read a single file containing many JASPAR\ncount matrices in 2014\
+    \ or 2016 format with\ntheir names."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -pfm
+  description: "read JASPAR count files (.pfm);\ndefault: site files (.sites)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -cm
+  description: "read count file with line labels 'A|' etc. (.cm);\ndefault: site files\
+    \ (.sites)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -numbers
+  description: use numbers instead of strings as motif names
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -strands
+  description: "|2    print '+ -' '+' on the MEME strand line;\ndefault: 2 (prints\
+    \ '+ -')"
+  args: !SimpleFlagArg
+    name: '1'
+- !Flag
+  optional: true
+  synonyms:
+  - -bg
+  description: file with background frequencies in MEME
+  args: !SimpleFlagArg
+    name: bfile
+- !Flag
+  optional: true
+  synonyms:
+  - -bfile
+  description: '; default: uniform frequencies'
+  args: !SimpleFlagArg
+    name: format
+- !Flag
+  optional: true
+  synonyms:
+  - -pseudo
+  description: "add <A> times background frequency to\neach count when computing letter\
+    \ frequencies\ndefault: 0"
+  args: !SimpleFlagArg
+    name: A
+- !Flag
+  optional: true
+  synonyms:
+  - -logodds
+  description: "print log-odds matrix as well as frequency matrix;\ndefault: frequency\
+    \ matrix only"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -url
+  description: "website for the motif; The motif name\nis substituted for MOTIF_NAME;"
+  args: !SimpleFlagArg
+    name: website
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Unknown option: help\nUsage:\n    jaspar2meme [options] <Jaspar directory\
+  \ | PFM bundle>\n\n     Options: \n      -bundle         read a single file containing\
+  \ many JASPAR\n                      count matrices in 2014 or 2016 format with\
+  \ \n                      their names.\n      -pfm            read JASPAR count\
+  \ files (.pfm); \n                      default: site files (.sites)\n      -cm\
+  \             read count file with line labels 'A|' etc. (.cm);\n              \
+  \        default: site files (.sites)\n      -numbers        use numbers instead\
+  \ of strings as motif names\n      -strands 1|2    print '+ -' '+' on the MEME strand\
+  \ line;\n                      default: 2 (prints '+ -')\n      -bg <bfile>    \
+  \ file with background frequencies in MEME\n                      -bfile format;\
+  \ default: uniform frequencies\n      -pseudo <A>     add <A> times background frequency\
+  \ to\n                      each count when computing letter frequencies\n     \
+  \                 default: 0\n      -logodds        print log-odds matrix as well\
+  \ as frequency matrix;\n                      default: frequency matrix only\n \
+  \     -url <website>  website for the motif; The motif name\n                  \
+  \    is substituted for MOTIF_NAME;\n\n\n      Convert a directory of JASPAR files\
+  \ into a MEME version 4 formatted \n      file suitable for use with MAST and other\
+  \ MEME Suite programs.\n\n      A JASPAR '.sites' file describes a motif in terms\
+  \ of a multiple\n      alignment of sites.  It contains a multiple alignment in\
+  \ modified \n      FASTA format.  Only capitalized sequence letters are part of\
+  \ the alignment.\n\n      A JASPAR count file ('.pfm') contains a count matrix where\
+  \ the rows\n      correspond to A, C, G and T, respectively.  \n\n      A CM count\
+  \ file ('.cm') prefixes the rows with 'A| ', 'C| ', 'G| ' and 'T| '.\n\n      A\
+  \ log-odds matrix and a probability matrix are output for each\n      motif ('.sites')\
+  \ file.  The probability matrix is computed using\n      pseudo-counts consisting\
+  \ of the background frequency (see -bg, above)\n      multiplied by the total pseudocounts\
+  \ (see -pseudo, above).\n      The log-odds matrix uses the background frequencies\
+  \ in the denominator\n      and is log base 2.\n\n      If a matrix_list.txt file\
+  \ exists and -pfm is given, the JASPAR names of the\n      motifs are read from\
+  \ that file and included in the output.\n  \n      Writes standard output.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/meme:5.3.0--py38pl526hc1f1133_0

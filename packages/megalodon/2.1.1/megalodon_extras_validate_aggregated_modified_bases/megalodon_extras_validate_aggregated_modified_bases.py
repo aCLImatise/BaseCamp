@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Array, String, File, Int, Boolean
+
+Megalodon_Extras_Validate_Aggregated_Modified_Bases_V0_1_0 = CommandToolBuilder(tool="megalodon_extras_validate_aggregated_modified_bases", base_command=["megalodon_extras", "validate", "aggregated_modified_bases"], inputs=[ToolInput(tag="in_modified_bed_methyl_files", input_type=Array(t=String(), optional=True), prefix="--modified-bed-methyl-files", doc=InputDocumentation(doc="Bed methyl files from modified sample(s).")), ToolInput(tag="in_ground_truth_csv_s", input_type=Array(t=String(), optional=True), prefix="--ground-truth-csvs", doc=InputDocumentation(doc="Ground truth csvs with (chrm, strand, pos, is_mod)\nvalues. To collapse to forward strand coordinates,\nstrand should be '.'.")), ToolInput(tag="in_control_bed_methyl_files", input_type=Array(t=String(), optional=True), prefix="--control-bed-methyl-files", doc=InputDocumentation(doc="Bed methyl files from control sample(s).")), ToolInput(tag="in_valid_positions", input_type=File(optional=True), prefix="--valid-positions", doc=InputDocumentation(doc="BED file containing positions to be considered.\nMultiple files may be provided")), ToolInput(tag="in_coverage_threshold", input_type=Int(optional=True), prefix="--coverage-threshold", doc=InputDocumentation(doc="Only include sites with sufficient coverage. Default:\n1 (= All sites)")), ToolInput(tag="in_strand_offset", input_type=String(optional=True), prefix="--strand-offset", doc=InputDocumentation(doc="Offset to combine stranded results. Positive value\nindicates reverse strand sites have higher position\nvalues. Default treat strands independently.")), ToolInput(tag="in_allow_unbalance_classes", input_type=Boolean(optional=True), prefix="--allow-unbalance-classes", doc=InputDocumentation(doc="Allow unbalanced classes in modified base metric\ncomputation. Default: Balance size of modified and\ncanonical classes for each comparison made.")), ToolInput(tag="in_out_pdf", input_type=File(optional=True), prefix="--out-pdf", doc=InputDocumentation(doc="Output pdf filename. Default:")), ToolInput(tag="in_megalodon_agg_validation_dot_pdf", input_type=String(), position=0, doc=InputDocumentation(doc="--out-filename OUT_FILENAME"))], outputs=[ToolOutput(tag="out_out_pdf", output_type=File(optional=True), selector=InputSelector(input_to_select="in_out_pdf", type_hint=File()), doc=OutputDocumentation(doc="Output pdf filename. Default:"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Megalodon_Extras_Validate_Aggregated_Modified_Bases_V0_1_0().translate("wdl", allow_empty_container=True)
+

@@ -1,0 +1,169 @@
+!Command
+command:
+- PERsim
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -roi
+  description: Target region BED file.
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -count
+  description: Number of read pairs to generate.
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -out1
+  description: Forward reads output file in .FASTQ.GZ format.
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -out2
+  description: Reverse reads output file in .FASTQ.GZ format.
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -length
+  description: "Read length for forward/reverse reads.\nDefault value: '100'"
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -ins_mean
+  description: "Library insert size mean value.\nDefault value: '200'"
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -ins_stdev
+  description: "Library insert size mean standard deviation.\nDefault value: '70'"
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -error
+  description: "Base error probability (uniform distribution).\nDefault value: '0.01'"
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - -max_n
+  description: "Maximum number of N bases (from reference genome).\nDefault value:\
+    \ '5'"
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -a1
+  description: "Forward read sequencing adapter sequence (for read-through).\nDefault\
+    \ value: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCACGAGTTA'"
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -a2
+  description: "Reverse read sequencing adapter sequence (for read-through).\nDefault\
+    \ value: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTAGATCTC'"
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -ref
+  description: "Reference genome FASTA file. If unset 'reference_genome' from the\
+    \ 'settings.ini' file is used.\nDefault value: ''"
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: "Enable verbose debug output.\nDefault value: 'false'"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -compression_level
+  description: "Output FASTQ compression level from 1 (fastest) to 9 (best compression).\n\
+    Default value: '1'"
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --changelog
+  description: Prints changeloge and exits.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --tdx
+  description: Writes a Tool Definition Xml file. The file name is the application
+    name with the suffix '.tdx'.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Shows this help and exits.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Prints version and exits.
+  args: !EmptyFlagArg {}
+help_text: "PERsim (2020_12)\n\nPaired-end read simulator for Illumina reads.\n\n\
+  PERsim generates paired-end reads of a given length for a region of interest in\
+  \ the genome:\n - insert size is modelled using a gaussian distribution.\n - read-through\
+  \ into the sequencing adapters is modelled.\n - sequencing errors are modelled using\
+  \ a simple uniform distribution.\n\nMandatory parameters:\n  -roi <file>       \
+  \       Target region BED file.\n  -count <int>             Number of read pairs\
+  \ to generate.\n  -out1 <file>             Forward reads output file in .FASTQ.GZ\
+  \ format.\n  -out2 <file>             Reverse reads output file in .FASTQ.GZ format.\n\
+  \nOptional parameters:\n  -length <int>            Read length for forward/reverse\
+  \ reads.\n                           Default value: '100'\n  -ins_mean <int>   \
+  \       Library insert size mean value.\n                           Default value:\
+  \ '200'\n  -ins_stdev <int>         Library insert size mean standard deviation.\n\
+  \                           Default value: '70'\n  -error <float>           Base\
+  \ error probability (uniform distribution).\n                           Default\
+  \ value: '0.01'\n  -max_n <int>             Maximum number of N bases (from reference\
+  \ genome).\n                           Default value: '5'\n  -a1 <string>      \
+  \       Forward read sequencing adapter sequence (for read-through).\n         \
+  \                  Default value: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCACGAGTTA'\n \
+  \ -a2 <string>             Reverse read sequencing adapter sequence (for read-through).\n\
+  \                           Default value: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTAGATCTC'\n\
+  \  -ref <file>              Reference genome FASTA file. If unset 'reference_genome'\
+  \ from the 'settings.ini' file is used.\n                           Default value:\
+  \ ''\n  -v                       Enable verbose debug output.\n                \
+  \           Default value: 'false'\n  -compression_level <int> Output FASTQ compression\
+  \ level from 1 (fastest) to 9 (best compression).\n                           Default\
+  \ value: '1'\n\nSpecial parameters:\n  --help                   Shows this help\
+  \ and exits.\n  --version                Prints version and exits.\n  --changelog\
+  \              Prints changeloge and exits.\n  --tdx                    Writes a\
+  \ Tool Definition Xml file. The file name is the application name with the suffix\
+  \ '.tdx'.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/ngs-bits:2020_12--py39h5902420_0

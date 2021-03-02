@@ -1,0 +1,290 @@
+!Command
+command:
+- getscu
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: peer
+  description: hostname of DICOM peer
+- !Positional
+  optional: false
+  position: 1
+  name: port
+  description: tcp/ip port number of peer
+- !Positional
+  optional: false
+  position: 2
+  name: dcmfile-in
+  description: DICOM query file(s)
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --arguments
+  description: print expanded command line arguments
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  description: quiet mode, print no warnings and errors
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: verbose mode, print processing details
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --debug
+  description: debug mode, print debug information
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ll
+  - --log-level
+  description: "[l]evel: string constant\n(fatal, error, warn, info, debug, trace)\n\
+    use level l for the logger"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -lc
+  - --log-config
+  description: "[f]ilename: string\nuse config file f for the logger"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --key
+  description: "[k]ey: gggg,eeee=\"str\", path or dic. name=\"str\"\noverride matching\
+    \ key"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -P
+  - --patient
+  description: use patient root information model (default)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --study
+  description: use study root information model
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -O
+  - --psonly
+  description: use patient/study only information model
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -aet
+  - --aetitle
+  description: "[a]etitle: string\nset my calling AE title (default: GETSCU)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -aec
+  - --call
+  description: "[a]etitle: string\nset called AE title of peer (default: ANY-SCP)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  description: "=   --propose-uncompr      propose all uncompressed TS, explicit VR\n\
+    with local byte ordering first (default)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -xe
+  - --propose-little
+  description: "propose all uncompressed TS, explicit VR\nlittle endian first"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -xb
+  - --propose-big
+  description: "propose all uncompressed TS, explicit VR\nbig endian first"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -xd
+  - --propose-deflated
+  description: "propose deflated explicit VR little endian TS\nand all uncompressed\
+    \ transfer syntaxes"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -xi
+  - --propose-implicit
+  description: propose implicit VR little endian TS only
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -to
+  - --timeout
+  description: "[s]econds: integer (default: unlimited)\ntimeout for connection requests"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ta
+  - --acse-timeout
+  description: "[s]econds: integer (default: 30)\ntimeout for ACSE messages"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -td
+  - --dimse-timeout
+  description: "[s]econds: integer (default: unlimited)\ntimeout for DIMSE messages"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -pdu
+  - --max-pdu
+  description: "[n]umber of bytes: integer (4096..131072)\nset max receive pdu to\
+    \ n bytes (default: 16384)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --repeat
+  description: "[n]umber: integer\nrepeat n times"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --abort
+  description: abort association instead of releasing it
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -od
+  - --output-directory
+  description: "[d]irectory: string (default: \".\")\nwrite received objects to existing\
+    \ directory d"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -B
+  - --normal
+  description: receive in memory, then write to disk (default)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ignore
+  description: ignore store data, receive but do not store
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: print this help text and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: print version information and exit
+  args: !EmptyFlagArg {}
+help_text: "$dcmtk: getscu v3.6.5 2019-10-28 $\n\ngetscu: DICOM retrieve (C-GET) SCU\n\
+  usage: getscu [options] peer port [dcmfile-in...]\n\nparameters:\n  peer       \
+  \                    hostname of DICOM peer\n  port                           tcp/ip\
+  \ port number of peer\n  dcmfile-in                     DICOM query file(s)\n\n\
+  general options:\n  -h      --help                 print this help text and exit\n\
+  \          --version              print version information and exit\n         \
+  \ --arguments            print expanded command line arguments\n  -q      --quiet\
+  \                quiet mode, print no warnings and errors\n  -v      --verbose \
+  \             verbose mode, print processing details\n  -d      --debug        \
+  \        debug mode, print debug information\n  -ll     --log-level            [l]evel:\
+  \ string constant\n                                 (fatal, error, warn, info, debug,\
+  \ trace)\n                                 use level l for the logger\n  -lc   \
+  \  --log-config           [f]ilename: string\n                                 use\
+  \ config file f for the logger\n  +v      --verbose-pc           show presentation\
+  \ contexts in verbose mode\nnetwork options:\n  override matching keys:\n    -k\
+  \    --key                  [k]ey: gggg,eeee=\"str\", path or dic. name=\"str\"\n\
+  \                                 override matching key\n  retrieve information\
+  \ model:\n    -P    --patient              use patient root information model (default)\n\
+  \    -S    --study                use study root information model\n    -O    --psonly\
+  \               use patient/study only information model\n  application entity titles:\n\
+  \    -aet  --aetitle              [a]etitle: string\n                          \
+  \       set my calling AE title (default: GETSCU)\n    -aec  --call            \
+  \     [a]etitle: string\n                                 set called AE title of\
+  \ peer (default: ANY-SCP)\n  preferred storage transfer syntaxes (incoming associations):\n\
+  \    +x=   --prefer-uncompr       prefer explicit VR local byte order (default)\n\
+  \    +xe   --prefer-little        prefer explicit VR little endian TS\n    +xb \
+  \  --prefer-big           prefer explicit VR big endian TS\n    +xs   --prefer-lossless\
+  \      prefer default JPEG lossless TS\n    +xy   --prefer-jpeg8         prefer\
+  \ default JPEG lossy TS for 8 bit data\n    +xx   --prefer-jpeg12        prefer\
+  \ default JPEG lossy TS for 12 bit data\n    +xv   --prefer-j2k-lossless  prefer\
+  \ JPEG 2000 lossless TS\n    +xw   --prefer-j2k-lossy     prefer JPEG 2000 lossy\
+  \ TS\n    +xt   --prefer-jls-lossless  prefer JPEG-LS lossless TS\n    +xu   --prefer-jls-lossy\
+  \     prefer JPEG-LS lossy TS\n    +xm   --prefer-mpeg2         prefer MPEG2 Main\
+  \ Profile @ Main Level TS\n    +xh   --prefer-mpeg2-high    prefer MPEG2 Main Profile\
+  \ @ High Level TS\n    +xn   --prefer-mpeg4         prefer MPEG4 AVC/H.264 HP /\
+  \ Level 4.1 TS\n    +xl   --prefer-mpeg4-bd      prefer MPEG4 AVC/H.264 BD-compatible\
+  \ TS\n    +x2   --prefer-mpeg4-2-2d    prefer MPEG4 AVC/H.264 HP / Level 4.2 TS\
+  \ (2D)\n    +x3   --prefer-mpeg4-2-3d    prefer MPEG4 AVC/H.264 HP / Level 4.2 TS\
+  \ (3D)\n    +xo   --prefer-mpeg4-2-st    prefer MPEG4 AVC/H.264 Stereo HP / Level\
+  \ 4.2 TS\n    +x4   --prefer-hevc          prefer HEVC/H.265 Main Profile / Level\
+  \ 5.1 TS\n    +x5   --prefer-hevc10        prefer HEVC/H.265 Main 10 Profile / Level\
+  \ 5.1 TS\n    +xr   --prefer-rle           prefer RLE lossless TS\n    +xd   --prefer-deflated\
+  \      prefer deflated explicit VR little endian TS\n    +xi   --implicit      \
+  \       accept implicit VR little endian TS only\n  proposed retrieve transfer syntaxes\
+  \ (outgoing associations):\n    -x=   --propose-uncompr      propose all uncompressed\
+  \ TS, explicit VR\n                                 with local byte ordering first\
+  \ (default)\n    -xe   --propose-little       propose all uncompressed TS, explicit\
+  \ VR\n                                 little endian first\n    -xb   --propose-big\
+  \          propose all uncompressed TS, explicit VR\n                          \
+  \       big endian first\n    -xd   --propose-deflated     propose deflated explicit\
+  \ VR little endian TS\n                                 and all uncompressed transfer\
+  \ syntaxes\n    -xi   --propose-implicit     propose implicit VR little endian TS\
+  \ only\n  other network options:\n    -to   --timeout              [s]econds: integer\
+  \ (default: unlimited)\n                                 timeout for connection\
+  \ requests\n    -ta   --acse-timeout         [s]econds: integer (default: 30)\n\
+  \                                 timeout for ACSE messages\n    -td   --dimse-timeout\
+  \        [s]econds: integer (default: unlimited)\n                             \
+  \    timeout for DIMSE messages\n    -pdu  --max-pdu              [n]umber of bytes:\
+  \ integer (4096..131072)\n                                 set max receive pdu to\
+  \ n bytes (default: 16384)\n          --repeat               [n]umber: integer\n\
+  \                                 repeat n times\n          --abort            \
+  \    abort association instead of releasing it\noutput options:\n  general:\n  \
+  \  -od   --output-directory     [d]irectory: string (default: \".\")\n         \
+  \                        write received objects to existing directory d\n  storage\
+  \ mode:\n    -B    --normal               receive in memory, then write to disk\
+  \ (default)\n    +B    --bit-preserving       receive directly to disk\n       \
+  \   --ignore               ignore store data, receive but do not store\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/dcmtk:3.6.5--h5fca97b_0

@@ -1,0 +1,60 @@
+!Command
+command:
+- sambamba
+- subsample
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: input.bam
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --type
+  description: '[fasthash]   Algorithm for subsampling (fasthash, default is none)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max-cov
+  description: '[depth]   Maximum coverage (approx)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: Set output file (default stdout)
+  args: !SimpleFlagArg
+    name: fn
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --remove
+  description: Remove over sampled reads from output
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --logging
+  description: Set logging to debug|info|warning|critical -nyi
+  args: !SimpleFlagArg
+    name: type
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nUsage: sambamba subsample [options] <input.bam> [<input2.bam> [...]]\n\
+  \n       Subsample a bam file.\n\nOptions:\n\n         --type [fasthash]   Algorithm\
+  \ for subsampling (fasthash, default is none)\n         --max-cov [depth]   Maximum\
+  \ coverage (approx)\n         -o, --output fn     Set output file (default stdout)\n\
+  \         -r, --remove        Remove over sampled reads from output\n\n        \
+  \ --logging type   Set logging to debug|info|warning|critical -nyi\n\nExamples:\n\
+  \n       sambamba subsample --type=fasthash input.bam -ooutput.bam\n\n"
+generated_using: []
+docker_image: quay.io/biocontainers/sambamba:0.8.0--h984e79f_0

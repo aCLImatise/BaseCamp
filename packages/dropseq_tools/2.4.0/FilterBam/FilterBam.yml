@@ -1,0 +1,140 @@
+!Command
+command:
+- FilterBam
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: null.
+  description: MINIMUM_MAPPING_QUALITY=Integer
+- !Positional
+  optional: false
+  position: 0
+  name: side.
+  description: 'Default value: null. This option may be specified 0 or more times. '
+- !Positional
+  optional: false
+  position: 0
+  name: times.
+  description: REF_HARD_MATCHED_RETAINED=String
+- !Positional
+  optional: false
+  position: 0
+  name: null.
+  description: STRIP_REF_PREFIX=String       Edit contig names so that a contig that
+    starts with one of these prefixes has the prefix
+- !Positional
+  optional: false
+  position: 1
+  name: stripped.
+  description: 'Default value: null. This option may be specified 0 or more times. '
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: (default 4g)
+  args: !SimpleFlagArg
+    name: jvm_heap_size
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: final command line before executing
+  args: !SimpleFlagArg
+    name: echo
+- !Flag
+  optional: true
+  synonyms:
+  - --stdhelp
+  - -H
+  description: "Displays options specific to this tool AND options common to all Picard\
+    \ command line\ntools."
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: Displays options specific to this tool.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Displays program version.
+  args: !EmptyFlagArg {}
+help_text: "USAGE: /usr/local/bin/FilterBam [-m <jvm_heap_size>] [-v] program args...\n\
+  \       -m <jvm_heap_size> (default 4g)\n       -v echo final command line before\
+  \ executing\n\nProgram options:\nUSAGE: FilterBam [options]\n\nFilters a BAM file\
+  \ by various qualities to produce a new subset of the BAM containing the reads of\
+  \ interest.\nVersion: 2.4.0(3d2b3d8_1600201514)\n\n\nOptions:\n\n--help\n-h    \
+  \                        Displays options specific to this tool.\n\n--stdhelp\n\
+  -H                            Displays options specific to this tool AND options\
+  \ common to all Picard command line\n                              tools.\n\n--version\
+  \                     Displays program version.\n\nINPUT=File\nI=File          \
+  \              The input SAM or BAM file to analyze.  Required. \n\nOUTPUT=File\n\
+  O=File                        Output report  Required. \n\nSUMMARY=File        \
+  \          A file containing a summary of the number of reads accepted and rejected.\
+  \  Default value:\n                              null. \n\nMINIMUM_MAPPING_QUALITY=Integer\n\
+  READ_MQ=Integer               Minimum mapping quality to include the read in the\
+  \ analysis.  Reads are not filtered on\n                              map quality\
+  \ by default.  Default value: null. \n\nFILTER_PCR_DUPES=Boolean      Should PCR\
+  \ duplicates be filtered?  Default value: false. This option can be set to 'null'\n\
+  \                              to clear the default value. Possible values: {true,\
+  \ false} \n\nRETAIN_ONLY_PRIMARY_READS=Boolean\n                              Retain\
+  \ primary reads only  Default value: false. This option can be set to 'null' to\
+  \ clear\n                              the default value. Possible values: {true,\
+  \ false} \n\nSUM_MATCHING_BASES=Integer    Retain reads that have at least this\
+  \ many M bases total in the cigar string.  This sums\n                         \
+  \     all the M's in the cigar string.  Default value: null. \n\nREF_SOFT_MATCHED_RETAINED=String\n\
+  \                              Soft match reference names that have this string.\
+  \ If multiple matches are specified, they\n                              are OR'd\
+  \ together.This is the equivalent of a hard match with wrapped with .* on either\n\
+  \                              side.  Default value: null. This option may be specified\
+  \ 0 or more times. \n\nREF_SOFT_MATCHED_REJECTED=String\n                      \
+  \        Soft match and reject reference names that have this string.  If multiple\
+  \ matches are\n                              specified, they are OR'd together.\
+  \ This is the equivalent of a hard match with wrapped\n                        \
+  \      with .* on either side.   Default value: null. This option may be specified\
+  \ 0 or more\n                              times. \n\nREF_HARD_MATCHED_RETAINED=String\n\
+  \                              Exact match reference names that have this string.\
+  \  If multiple matches are specified,\n                              they are OR'd\
+  \ together.For example, '1' would retain only references that were exactly\n   \
+  \                           '1'. This method accepts regular expressions.  Default\
+  \ value: null. This option may be\n                              specified 0 or\
+  \ more times. \n\nREF_HARD_MATCHED_REJECTED=String\n                           \
+  \   Exact match and reject reference names that have this string.  If multiple matches\
+  \ are\n                              specified, they are OR'd together.This method\
+  \ accepts regular expressions.  Default value:\n                              null.\
+  \ This option may be specified 0 or more times. \n\nTAG_RETAIN=String          \
+  \   Retain reads that have these tags set with any value.  Can be set multiple times\
+  \  Default\n                              value: null. This option may be specified\
+  \ 0 or more times. \n\nTAG_RETAIN_COMBINE_FLAG=StringIf multiple TAG_RETAIN flags\
+  \ are set, should the result be the union of the filters, or\n                 \
+  \             the intersect?  [UNION/INTERSECT].  Default value: null. \n\nTAG_REJECT=String\
+  \             Reject reads that have these tags set with any value.  Can be set\
+  \ multiple times.  Default\n                              value: null. This option\
+  \ may be specified 0 or more times. \n\nTAG_REJECT_COMBINE_FLAG=StringIf multiple\
+  \ TAG_REJECT flags are set, should the result be the union of the filters, or\n\
+  \                              the intersect?  [UNION/INTERSECT].  Default value:\
+  \ null. \n\nSTRIP_REF_PREFIX=String       Edit contig names so that a contig that\
+  \ starts with one of these prefixes has the prefix\n                           \
+  \   stripped.  Default value: null. This option may be specified 0 or more times.\
+  \ \n\nDROP_REJECTED_REF=Boolean     Edit sequence dictionary and remove any contig\
+  \ that has been filtered by reference name\n                              filtering.\
+  \ A read with mate alignment info in which mate is aligned to a contig that has\n\
+  \                              been removed will be changed to have an unmapped\
+  \ mate.  Default value: false. This option\n                              can be\
+  \ set to 'null' to clear the default value. Possible values: {true, false} \n\n\
+  PASSING_READ_THRESHOLD=Double If set to a a value < 1, the program will fail if\
+  \ fewer than this fraction of reads pass\n                              filters.\
+  \  If set to a value >= 1, the program will fail if fewer than this many reads pass\n\
+  \                              filters.  Default value: null. \n\n"
+generated_using:
+- -h
+docker_image: quay.io/biocontainers/dropseq_tools:2.4.0--0

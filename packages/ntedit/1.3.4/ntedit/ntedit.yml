@@ -1,0 +1,159 @@
+!Command
+command:
+- ntedit
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: ',     number of threads [default=1]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: ',     draft genome assembly (FASTA, Multi-FASTA, and/or gzipped compatible),
+    REQUIRED'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: ',     Bloom filter file (generated from ntHits), REQUIRED'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  description: ',     secondary Bloom filter with kmers to reject (generated from
+    ntHits), OPTIONAL. EXPERIMENTAL'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  description: ',     output file prefix, OPTIONAL'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  description: ',     minimum contig length [default=100]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: ',     maximum number of insertion bases to try, range 0-5, [default=4]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: ',     maximum number of deletions bases to try, range 0-5, [default=5]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  description: ',     k/x ratio for the number of kmers that should be missing, [default=5.000]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -y
+  description: ',     k/y ratio for the number of editted kmers that should be present,
+    [default=9.000]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -X
+  description: ',     ratio of number of kmers in the k subset that should be missing
+    in order to attempt fix (higher=stringent), [default=0.5]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Y
+  description: ',     ratio of number of kmers in the k subset that should be present
+    to accept an edit (higher=stringent), [default=0.5]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: ',     cap for the number of base insertions that can be made at one
+    position, [default=k*1.5]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  description: ',     controls size of kmer subset. When checking subset of kmers,
+    check every jth kmer, [default=3]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: ",     mode of editing, range 0-2, [default=0]\n0: best substitution,\
+    \ or first good indel\n1: best substitution, or best indel\n2: best edit overall\
+    \ (suggestion that you reduce i and d for performance)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: ',     SNV mode. Overrides draft kmer checks, forcing reassessment
+    at each position (-s 1 = yes, default = 0, no. EXPERIMENTAL)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: ',     verbose mode (-v 1 = yes, default = 0, no)'
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: ',         display this message and exit'
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: ',      output version information and exit'
+  args: !EmptyFlagArg {}
+help_text: "ntedit v1.3.4\n\nFast, lightweight, scalable genome sequence polishing\
+  \ & snv detection*\n\n Options:\n\t-t,\tnumber of threads [default=1]\n\t-f,\tdraft\
+  \ genome assembly (FASTA, Multi-FASTA, and/or gzipped compatible), REQUIRED\n\t\
+  -r,\tBloom filter file (generated from ntHits), REQUIRED\n\t-e,\tsecondary Bloom\
+  \ filter with kmers to reject (generated from ntHits), OPTIONAL. EXPERIMENTAL\n\t\
+  -b,\toutput file prefix, OPTIONAL\n\t-z,\tminimum contig length [default=100]\n\t\
+  -i,\tmaximum number of insertion bases to try, range 0-5, [default=4]\n\t-d,\tmaximum\
+  \ number of deletions bases to try, range 0-5, [default=5]\n\t-x,\tk/x ratio for\
+  \ the number of kmers that should be missing, [default=5.000]\n\t-y, \tk/y ratio\
+  \ for the number of editted kmers that should be present, [default=9.000]\n\t-X,\
+  \ \tratio of number of kmers in the k subset that should be missing in order to\
+  \ attempt fix (higher=stringent), [default=0.5]\n\t-Y, \tratio of number of kmers\
+  \ in the k subset that should be present to accept an edit (higher=stringent), [default=0.5]\n\
+  \t-c,\tcap for the number of base insertions that can be made at one position, [default=k*1.5]\n\
+  \t-j, \tcontrols size of kmer subset. When checking subset of kmers, check every\
+  \ jth kmer, [default=3]\n\t-m,\tmode of editing, range 0-2, [default=0]\n\t\t\t\
+  0: best substitution, or first good indel\n\t\t\t1: best substitution, or best indel\n\
+  \t\t\t2: best edit overall (suggestion that you reduce i and d for performance)\n\
+  \t-s,     SNV mode. Overrides draft kmer checks, forcing reassessment at each position\
+  \ (-s 1 = yes, default = 0, no. EXPERIMENTAL)\n\t-v,\tverbose mode (-v 1 = yes,\
+  \ default = 0, no)\n\n\t--help,\t\tdisplay this message and exit \n\t--version,\t\
+  output version information and exit\n\n\tIf one of X/Y is set, ntEdit will use those\
+  \ parameters instead. Otherwise, it uses x/y by default.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/ntedit:1.3.4--he513fc3_0

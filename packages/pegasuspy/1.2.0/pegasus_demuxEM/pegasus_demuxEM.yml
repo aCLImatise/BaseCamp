@@ -1,0 +1,210 @@
+!Command
+command:
+- pegasus
+- demuxEM
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: input_raw_gene_bc_matrices_h5
+  description: Input raw RNA expression matrix in 10x hdf5 format.
+- !Positional
+  optional: false
+  position: 1
+  name: input_hto_csv_file
+  description: Input HTO (antibody tag) count matrix in CSV format.
+- !Positional
+  optional: false
+  position: 2
+  name: output_name
+  description: Output name. All outputs will use it as the prefix.
+- !Positional
+  optional: false
+  position: 0
+  name: output_name_demux.zarr.zip
+  description: RNA expression matrix with demultiplexed sample identities in Zarr
+    format.
+- !Positional
+  optional: false
+  position: 1
+  name: output_name.out.demuxEM.zarr.zip
+  description: DemuxEM-calculated results in Zarr format, containing two datasets,
+    one for HTO and one for RNA.
+- !Positional
+  optional: false
+  position: 2
+  name: output_name.ambient_hashtag.hist.pdf
+  description: Optional output. A histogram plot depicting hashtag distributions of
+    empty droplets and non-empty droplets.
+- !Positional
+  optional: false
+  position: 3
+  name: output_name.background_probabilities.bar.pdf
+  description: Optional output. A bar plot visualizing the estimated hashtag background
+    probability distribution.
+- !Positional
+  optional: false
+  position: 4
+  name: output_name.real_content.hist.pdf
+  description: Optional output. A histogram plot depicting hashtag distributions of
+    not-real-cells and real-cells as defined by total number of expressed genes in
+    the RNA assay.
+- !Positional
+  optional: false
+  position: 5
+  name: output_name.rna_demux.hist.pdf
+  description: Optional output. This figure consists of two plots. The first one is
+    a horizontal bar plot depicting the percentage of RNA barcodes with at least one
+    HTO count. The second plot is a histogram plot depicting RNA UMI distribution
+    for singlets, doublets and unknown cells.
+- !Positional
+  optional: false
+  position: 6
+  name: output_name.gene_name.violin.pdf
+  description: Optional outputs. Violin plots depicting gender-specific gene expression
+    across samples. We can have multiple plots if a gene list is provided in '--generate-gender-plot'
+    option.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --threads
+  description: 'Number of threads. [default: 1]'
+  args: !SimpleFlagArg
+    name: number
+- !Flag
+  optional: true
+  synonyms:
+  - --genome
+  description: Reference genome name. If not provided, we will infer it from the expression
+    matrix file.
+  args: !SimpleFlagArg
+    name: genome
+- !Flag
+  optional: true
+  synonyms:
+  - --alpha-on-samples
+  description: 'The Dirichlet prior concentration parameter (alpha) on samples. An
+    alpha value < 1.0 will make the prior sparse. [default: 0.0]'
+  args: !SimpleFlagArg
+    name: alpha
+- !Flag
+  optional: true
+  synonyms:
+  - --min-num-genes
+  description: 'We only demultiplex cells/nuclei with at least <number> of expressed
+    genes. [default: 100]'
+  args: !SimpleFlagArg
+    name: number
+- !Flag
+  optional: true
+  synonyms:
+  - --min-num-umis
+  description: 'We only demultiplex cells/nuclei with at least <number> of UMIs. [default:
+    100]'
+  args: !SimpleFlagArg
+    name: number
+- !Flag
+  optional: true
+  synonyms:
+  - --min-signal-hashtag
+  description: 'Any cell/nucleus with less than <count> hashtags from the signal will
+    be marked as unknown. [default: 10.0]'
+  args: !SimpleFlagArg
+    name: count
+- !Flag
+  optional: true
+  synonyms:
+  - --random-state
+  description: 'The random seed used in the KMeans algorithm to separate empty ADT
+    droplets from others. [default: 0]'
+  args: !SimpleFlagArg
+    name: seed
+- !Flag
+  optional: true
+  synonyms:
+  - --generate-diagnostic-plots
+  description: Generate a series of diagnostic plots, including the background/signal
+    between HTO counts, estimated background probabilities, HTO distributions of cells
+    and non-cells etc.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --generate-gender-plot
+  description: Generate violin plots using gender-specific genes (e.g. Xist). <gene>
+    is a comma-separated list of gene names.
+  args: !SimpleFlagArg
+    name: genes
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: ''
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Print out help information.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: Show version.
+  args: !EmptyFlagArg {}
+help_text: "Run the DemuxEM pipeline for cell-hashing/nucleus-hashing data.\n\nUsage:\n\
+  \  pegasus demuxEM [options] <input_raw_gene_bc_matrices_h5> <input_hto_csv_file>\
+  \ <output_name>\n  pegasus demuxEM -h | --help\n  pegasus demuxEM -v | --version\n\
+  \nArguments:\n  input_raw_gene_bc_matrices_h5           Input raw RNA expression\
+  \ matrix in 10x hdf5 format.\n  input_hto_csv_file                      Input HTO\
+  \ (antibody tag) count matrix in CSV format.\n  output_name                    \
+  \         Output name. All outputs will use it as the prefix.\n\nOptions:\n  -p\
+  \ <number>, --threads <number>            Number of threads. [default: 1]\n  --genome\
+  \ <genome>                          Reference genome name. If not provided, we will\
+  \ infer it from the expression matrix file.\n  --alpha-on-samples <alpha>      \
+  \           The Dirichlet prior concentration parameter (alpha) on samples. An alpha\
+  \ value < 1.0 will make the prior sparse. [default: 0.0]\n\n  --min-num-genes <number>\
+  \                   We only demultiplex cells/nuclei with at least <number> of expressed\
+  \ genes. [default: 100]\n  --min-num-umis <number>                    We only demultiplex\
+  \ cells/nuclei with at least <number> of UMIs. [default: 100]\n  --min-signal-hashtag\
+  \ <count>               Any cell/nucleus with less than <count> hashtags from the\
+  \ signal will be marked as unknown. [default: 10.0]\n  --random-state <seed>   \
+  \                   The random seed used in the KMeans algorithm to separate empty\
+  \ ADT droplets from others. [default: 0]\n\n  --generate-diagnostic-plots      \
+  \          Generate a series of diagnostic plots, including the background/signal\
+  \ between HTO counts, estimated background probabilities, HTO distributions of cells\
+  \ and non-cells etc.\n  --generate-gender-plot <genes>             Generate violin\
+  \ plots using gender-specific genes (e.g. Xist). <gene> is a comma-separated list\
+  \ of gene names.\n\n  -v, --version                              Show version.\n\
+  \  -h, --help                                 Print out help information.\n\nOutputs:\n\
+  \  output_name_demux.zarr.zip                             RNA expression matrix\
+  \ with demultiplexed sample identities in Zarr format.\n  output_name.out.demuxEM.zarr.zip\
+  \                       DemuxEM-calculated results in Zarr format, containing two\
+  \ datasets, one for HTO and one for RNA.\n  output_name.ambient_hashtag.hist.pdf\
+  \                   Optional output. A histogram plot depicting hashtag distributions\
+  \ of empty droplets and non-empty droplets.\n  output_name.background_probabilities.bar.pdf\
+  \           Optional output. A bar plot visualizing the estimated hashtag background\
+  \ probability distribution.\n  output_name.real_content.hist.pdf               \
+  \       Optional output. A histogram plot depicting hashtag distributions of not-real-cells\
+  \ and real-cells as defined by total number of expressed genes in the RNA assay.\n\
+  \  output_name.rna_demux.hist.pdf                         Optional output. This\
+  \ figure consists of two plots. The first one is a horizontal bar plot depicting\
+  \ the percentage of RNA barcodes with at least one HTO count. The second plot is\
+  \ a histogram plot depicting RNA UMI distribution for singlets, doublets and unknown\
+  \ cells.\n  output_name.gene_name.violin.pdf                       Optional outputs.\
+  \ Violin plots depicting gender-specific gene expression across samples. We can\
+  \ have multiple plots if a gene list is provided in '--generate-gender-plot' option.\n\
+  \nExamples:\n  pegasus demuxEM -p 8 --generate-diagnostic-plots sample_raw_gene_bc_matrices.h5\
+  \ sample_hto.csv sample_output\n    \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/pegasuspy:1.2.0--py38h0213d0e_1

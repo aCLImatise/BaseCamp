@@ -1,0 +1,140 @@
+!Command
+command:
+- chicQualityControl
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --matrices
+  - -m
+  description: The input matrices to apply the QC on.
+  args: !RepeatFlagArg
+    name: MATRICES
+- !Flag
+  optional: true
+  synonyms:
+  - --referencePoints
+  - -rp
+  description: "Bed file contains all reference points which are\nchecked for a sufficient\
+    \ number of interactions."
+  args: !SimpleFlagArg
+    name: REFERENCEPOINTS
+- !Flag
+  optional: true
+  synonyms:
+  - --sparsity
+  - -s
+  description: "Viewpoints with a sparsity less than the value given\nare considered\
+    \ of bad quality. If multiple matrices\nare given, the viewpoint is removed as\
+    \ soon as it is\nof bad quality in at least one matrix."
+  args: !SimpleFlagArg
+    name: SPARSITY
+- !Flag
+  optional: true
+  synonyms:
+  - --outFileName
+  - -o
+  description: "The output file name of the passed reference points.\nUsed as prefix\
+    \ for the plots as well (Default:\nnew_referencepoints.bed)."
+  args: !SimpleFlagArg
+    name: OUTFILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --outFileNameHistogram
+  - -oh
+  description: "The output file for the histogram plot (Default:\nhistogram.png)."
+  args: !SimpleFlagArg
+    name: OUTFILENAMEHISTOGRAM
+- !Flag
+  optional: true
+  synonyms:
+  - --outFileNameSparsity
+  - -os
+  description: "The output file for the sparsity distribution plot\n(Default: sparsity.png)."
+  args: !SimpleFlagArg
+    name: OUTFILENAMESPARSITY
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  - -t
+  description: 'Number of threads (Default: 4).'
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - --fixateRange
+  - -fs
+  description: "Fixate score of background model starting at distance\nx. E.g. all\
+    \ values greater than 500kb are set to the\nvalue of the 500kb bin (Default: 500000)."
+  args: !SimpleFlagArg
+    name: FIXATERANGE
+- !Flag
+  optional: true
+  synonyms:
+  - --dpi
+  description: "Optional parameter: Resolution for the image if\ntheoutput is a raster\
+    \ graphics image (e.g png, jpg)\n(Default: 300)."
+  args: !SimpleFlagArg
+    name: DPI
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: chicQualityControl --matrices MATRICES [MATRICES ...] --referencePoints\n\
+  \                          REFERENCEPOINTS --sparsity SPARSITY\n               \
+  \           [--outFileName OUTFILENAME]\n                          [--outFileNameHistogram\
+  \ OUTFILENAMEHISTOGRAM]\n                          [--outFileNameSparsity OUTFILENAMESPARSITY]\n\
+  \                          [--threads THREADS] [--fixateRange FIXATERANGE]\n   \
+  \                       [--dpi DPI] [--help] [--version]\n\nComputes the sparsity\
+  \ of each viewpoint to determine the quality. A viewpoint is considered to be of\
+  \ bad quality if it is too sparse i.e. if there are too many locations with no interactions\
+  \ recorded.\n\nThis script creates three output files: a plot with the sparsity\
+  \ distribution per matrix, a plot with the sparsity distribution as histograms and\
+  \ a filtered reference points file.\n\nAn example usage is:\n\n$ chicQualityControl\
+  \ -m matrix1.h5 matrix2.h5 -rp referencePointsFile.bed --range 20000 40000 --sparsity\
+  \ 0.01 -o referencePointFile_QC_passed.bed\n\nRequired arguments:\n  --matrices\
+  \ MATRICES [MATRICES ...], -m MATRICES [MATRICES ...]\n                        The\
+  \ input matrices to apply the QC on.\n  --referencePoints REFERENCEPOINTS, -rp REFERENCEPOINTS\n\
+  \                        Bed file contains all reference points which are\n    \
+  \                    checked for a sufficient number of interactions.\n  --sparsity\
+  \ SPARSITY, -s SPARSITY\n                        Viewpoints with a sparsity less\
+  \ than the value given\n                        are considered of bad quality. If\
+  \ multiple matrices\n                        are given, the viewpoint is removed\
+  \ as soon as it is\n                        of bad quality in at least one matrix.\n\
+  \nOptional arguments:\n  --outFileName OUTFILENAME, -o OUTFILENAME\n           \
+  \             The output file name of the passed reference points.\n           \
+  \             Used as prefix for the plots as well (Default:\n                 \
+  \       new_referencepoints.bed).\n  --outFileNameHistogram OUTFILENAMEHISTOGRAM,\
+  \ -oh OUTFILENAMEHISTOGRAM\n                        The output file for the histogram\
+  \ plot (Default:\n                        histogram.png).\n  --outFileNameSparsity\
+  \ OUTFILENAMESPARSITY, -os OUTFILENAMESPARSITY\n                        The output\
+  \ file for the sparsity distribution plot\n                        (Default: sparsity.png).\n\
+  \  --threads THREADS, -t THREADS\n                        Number of threads (Default:\
+  \ 4).\n  --fixateRange FIXATERANGE, -fs FIXATERANGE\n                        Fixate\
+  \ score of background model starting at distance\n                        x. E.g.\
+  \ all values greater than 500kb are set to the\n                        value of\
+  \ the 500kb bin (Default: 500000).\n  --dpi DPI             Optional parameter:\
+  \ Resolution for the image if\n                        theoutput is a raster graphics\
+  \ image (e.g png, jpg)\n                        (Default: 300).\n  --help, -h  \
+  \          show this help message and exit\n  --version             show program's\
+  \ version number and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/hicexplorer:3.6--py_0

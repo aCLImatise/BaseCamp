@@ -1,0 +1,93 @@
+!Command
+command:
+- TagReadWithGeneFunction
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: Required.
+  description: USE_STRAND_INFO=Boolean       Use strand info to determine what gene
+    to assign the read to.  If this is on, reads can be
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: (default 4g)
+  args: !SimpleFlagArg
+    name: jvm_heap_size
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: final command line before executing
+  args: !SimpleFlagArg
+    name: echo
+- !Flag
+  optional: true
+  synonyms:
+  - --stdhelp
+  - -H
+  description: "Displays options specific to this tool AND options common to all Picard\
+    \ command line\ntools."
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: Displays options specific to this tool.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Displays program version.
+  args: !EmptyFlagArg {}
+help_text: "USAGE: /usr/local/bin/TagReadWithGeneFunction [-m <jvm_heap_size>] [-v]\
+  \ program args...\n       -m <jvm_heap_size> (default 4g)\n       -v echo final\
+  \ command line before executing\n\nProgram options:\nUSAGE: TagReadWithGeneFunction\
+  \ [options]\n\nA special case tagger.  Tags reads that are exonic for the gene name\
+  \ of the overlapping exon.  This is done specifically\nto solve the case where a\
+  \ readmay be tagged with a gene and an exon, but the read may not be exonic for\
+  \ all genes\ntagged.  This limits the list of genes to only those where the read\
+  \ overlaps the exon and the gene.Reads that overlap\nmultiple genes are assigned\
+  \ to the gene that shares the strand with the read.  If that assignment is ambiguous\
+  \ (2 or\nmore genes share the strand of the read), then the read is not assigned\
+  \ any genes.\nVersion: 2.4.0(3d2b3d8_1600201514)\n\n\nOptions:\n\n--help\n-h   \
+  \                         Displays options specific to this tool.\n\n--stdhelp\n\
+  -H                            Displays options specific to this tool AND options\
+  \ common to all Picard command line\n                              tools.\n\n--version\
+  \                     Displays program version.\n\nINPUT=File\nI=File          \
+  \              The input SAM or BAM file to analyze  Required. \n\nOUTPUT=File\n\
+  O=File                        The output BAM, written with new Gene/Exon tag  Required.\
+  \ \n\nSUMMARY=File                  The strand specific summary info  Default value:\
+  \ null. \n\nGENE_NAME_TAG=String          Gene Name tag.  Takes on the gene name\
+  \ this read overlaps (if any)  Default value: gn.\n                            \
+  \  This option can be set to 'null' to clear the default value. \n\nGENE_STRAND_TAG=String\
+  \        Gene Strand tag.  For a given gene name , this is the strand of the gene.\
+  \  Default value:\n                              gs. This option can be set to 'null'\
+  \ to clear the default value. \n\nGENE_FUNCTION_TAG=String      Gene Function tag.\
+  \  For a given gene name , this is the function of the gene at this\n          \
+  \                    read's position: UTR/CODING/INTRONIC/...  Default value: gf.\
+  \ This option can be set to\n                              'null' to clear the default\
+  \ value. \n\nREAD_FUNCTION_TAG=String      READ functional annotation tag.  For\
+  \ this read, what is the function?  This only looks at\n                       \
+  \       reads on the right strand, and prioritizes coding over intron over intergenic.\
+  \  There is\n                              only 1 value for this tag.  Default value:\
+  \ XF. This option can be set to 'null' to clear\n                              the\
+  \ default value. \n\nANNOTATIONS_FILE=File         The annotations set to use to\
+  \ label the read.  This can be a GTF or a refFlat file. \n                     \
+  \         Required. \n\nUSE_STRAND_INFO=Boolean       Use strand info to determine\
+  \ what gene to assign the read to.  If this is on, reads can be\n              \
+  \                assigned to a maximum one one gene.  This is used for the READ_FUNCTION_TAG\
+  \ output only. \n                              Default value: true. This option\
+  \ can be set to 'null' to clear the default value. Possible\n                  \
+  \            values: {true, false} \n\n"
+generated_using:
+- -h
+docker_image: quay.io/biocontainers/dropseq_tools:2.4.0--0

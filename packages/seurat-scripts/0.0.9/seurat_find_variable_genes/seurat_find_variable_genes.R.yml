@@ -1,0 +1,196 @@
+!Command
+command:
+- seurat-find-variable-genes.R
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input-object-file
+  description: File name in which a serialized R matrix object may be found.
+  args: !SimpleFlagArg
+    name: INPUT-OBJECT-FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --input-format
+  description: Either loom, seurat, anndata or singlecellexperiment for the input
+    format to read.
+  args: !SimpleFlagArg
+    name: INPUT-FORMAT
+- !Flag
+  optional: true
+  synonyms:
+  - --output-format
+  description: Either loom, seurat, anndata or singlecellexperiment for the output
+    format.
+  args: !SimpleFlagArg
+    name: OUTPUT-FORMAT
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --selection-method
+  description: "How to choose top variable features. Choose one of: 'vst', 'mvp',\
+    \ disp."
+  args: !SimpleFlagArg
+    name: SELECTION-METHOD
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --mean-function
+  description: Function to compute x-axis value (average expression). Default is to
+    take the mean of the detected (i.e. non-zero) values.
+  args: !SimpleFlagArg
+    name: MEAN-FUNCTION
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --dispersion-function
+  description: Function to compute y-axis value (dispersion). Default is to take the
+    standard deviation of all values.
+  args: !SimpleFlagArg
+    name: DISPERSION-FUNCTION
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --x-low-cutoff
+  description: Bottom cutoff on x-axis (mean) for identifying variable genes.
+  args: !SimpleFlagArg
+    name: X-LOW-CUTOFF
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --x-high-cutoff
+  description: Top cutoff on x-axis (mean) for identifying variable genes.
+  args: !SimpleFlagArg
+    name: X-HIGH-CUTOFF
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --nfeatures
+  description: Number of features to return.
+  args: !SimpleFlagArg
+    name: NFEATURES
+- !Flag
+  optional: true
+  synonyms:
+  - -y
+  - --y-low-cutoff
+  description: Bottom cutoff on y-axis (dispersion) for identifying variable genes.
+  args: !SimpleFlagArg
+    name: Y-LOW-CUTOFF
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  - --y-high-cutoff
+  description: Top cutoff on y-axis (dispersion) for identifying variable genes.
+  args: !SimpleFlagArg
+    name: Y-HIGH-CUTOFF
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-object-file
+  description: File name in which to store serialized R object of type 'Seurat'.'
+  args: !SimpleFlagArg
+    name: OUTPUT-OBJECT-FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --output-text-file
+  description: File name in which to store variable genes in plain text.
+  args: !SimpleFlagArg
+    name: OUTPUT-TEXT-FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --loess-span
+  description: "SPAN PARAMETER FOR VST\n(vst method) Loess span parameter used when\
+    \ fitting the variance-mean relationship. Default: 0.3"
+  args: !SimpleFlagArg
+    name: LOESS
+- !Flag
+  optional: true
+  synonyms:
+  - --clip-max
+  description: "MAX FOR VST\n(vst method) After standardization values larger than\
+    \ clip.max will be set to clip.max; default is 'auto' which sets this value to\
+    \ the square root of the number of cells."
+  args: !SimpleFlagArg
+    name: CLIP
+- !Flag
+  optional: true
+  synonyms:
+  - --num-bin
+  description: "FOR SCALED ANALYSIS\nTotal number of bins to use in the scaled analysis\
+    \ (default is 20)."
+  args: !SimpleFlagArg
+    name: BINS
+- !Flag
+  optional: true
+  synonyms:
+  - --binning-method
+  description: "METHOD\nSpecifies how the bins should be computed. Available methods\
+    \ are either equal_width: each bin is of equal width along the x-axis [default];\
+    \ or equal_frequency: each bin contains an equal number of features (can increase\
+    \ statistical power to detect overdispersed features at high expression values,\
+    \ at the cost of reduced resolution along the x-axis)"
+  args: !SimpleFlagArg
+    name: BINNING
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: "Show this help message and exit\n"
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: /usr/local/bin/seurat-find-variable-genes.R [options]\n\n\nOptions:\n\
+  \t-i INPUT-OBJECT-FILE, --input-object-file=INPUT-OBJECT-FILE\n\t\tFile name in\
+  \ which a serialized R matrix object may be found.\n\n\t--input-format=INPUT-FORMAT\n\
+  \t\tEither loom, seurat, anndata or singlecellexperiment for the input format to\
+  \ read.\n\n\t--output-format=OUTPUT-FORMAT\n\t\tEither loom, seurat, anndata or\
+  \ singlecellexperiment for the output format.\n\n\t-s SELECTION-METHOD, --selection-method=SELECTION-METHOD\n\
+  \t\tHow to choose top variable features. Choose one of: 'vst', 'mvp', disp.\n\n\t\
+  -m MEAN-FUNCTION, --mean-function=MEAN-FUNCTION\n\t\tFunction to compute x-axis\
+  \ value (average expression). Default is to take the mean of the detected (i.e.\
+  \ non-zero) values.\n\n\t-d DISPERSION-FUNCTION, --dispersion-function=DISPERSION-FUNCTION\n\
+  \t\tFunction to compute y-axis value (dispersion). Default is to take the standard\
+  \ deviation of all values.\n\n\t-l X-LOW-CUTOFF, --x-low-cutoff=X-LOW-CUTOFF\n\t\
+  \tBottom cutoff on x-axis (mean) for identifying variable genes.\n\n\t-j X-HIGH-CUTOFF,\
+  \ --x-high-cutoff=X-HIGH-CUTOFF\n\t\tTop cutoff on x-axis (mean) for identifying\
+  \ variable genes.\n\n\t-n NFEATURES, --nfeatures=NFEATURES\n\t\tNumber of features\
+  \ to return.\n\n\t-y Y-LOW-CUTOFF, --y-low-cutoff=Y-LOW-CUTOFF\n\t\tBottom cutoff\
+  \ on y-axis (dispersion) for identifying variable genes.\n\n\t-z Y-HIGH-CUTOFF,\
+  \ --y-high-cutoff=Y-HIGH-CUTOFF\n\t\tTop cutoff on y-axis (dispersion) for identifying\
+  \ variable genes.\n\n\t-o OUTPUT-OBJECT-FILE, --output-object-file=OUTPUT-OBJECT-FILE\n\
+  \t\tFile name in which to store serialized R object of type 'Seurat'.'\n\n\t-t OUTPUT-TEXT-FILE,\
+  \ --output-text-file=OUTPUT-TEXT-FILE\n\t\tFile name in which to store variable\
+  \ genes in plain text.\n\n\t--loess-span=LOESS SPAN PARAMETER FOR VST\n\t\t(vst\
+  \ method) Loess span parameter used when fitting the variance-mean relationship.\
+  \ Default: 0.3\n\n\t--clip-max=CLIP MAX FOR VST\n\t\t(vst method) After standardization\
+  \ values larger than clip.max will be set to clip.max; default is 'auto' which sets\
+  \ this value to the square root of the number of cells.\n\n\t--num-bin=BINS FOR\
+  \ SCALED ANALYSIS\n\t\tTotal number of bins to use in the scaled analysis (default\
+  \ is 20).\n\n\t--binning-method=BINNING METHOD\n\t\tSpecifies how the bins should\
+  \ be computed. Available methods are either equal_width: each bin is of equal width\
+  \ along the x-axis [default]; or equal_frequency: each bin contains an equal number\
+  \ of features (can increase statistical power to detect overdispersed features at\
+  \ high expression values, at the cost of reduced resolution along the x-axis)\n\n\
+  \t-h, --help\n\t\tShow this help message and exit\n\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/seurat-scripts:0.0.9--0

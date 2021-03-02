@@ -1,0 +1,168 @@
+!Command
+command:
+- RNAplot
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: structure.
+  description: (default=off)
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --detailed-help
+  description: "Print help, including all details and hidden\noptions, and exit"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --full-help
+  description: Print help, including hidden options, and exit
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --jobs
+  description: "[=number]           Split batch input into jobs and start\nprocessing\
+    \ in parallel using multiple\nthreads.  (default=`0')"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --infile
+  description: Read a file instead of reading from stdin.
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --msa
+  description: "Input is multiple sequence alignment in\nStockholm 1.0 format.  (default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --mis
+  description: "Output \"most informative sequence\" instead of\nsimple consensus\
+    \  (default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --covar
+  description: Annotate covariance of base pairs in consensus
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --aln
+  description: "Produce a colored and structure annotated\nalignment in PostScript\
+    \ format in the file\n\"aln.ps\" in the current directory.\n(default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --layout-type
+  description: "Choose the plotting layout algorithm.\n(default=`1')"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --pre
+  description: "Add annotation macros to postscript file, and\nadd the postscript\
+    \ code in \"string\" just\nbefore the code to draw the structure. This\nis an\
+    \ easy way to add annotation."
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --post
+  description: "Same as --pre but in contrast to adding the\nannotation macros. E.g\
+    \ to mark position 15\nwith circle use --post \"15 cmark\"."
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --auto-id
+  description: "Automatically generate an ID for each sequence.\n(default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --id-prefix
+  description: "Prefix for automatically generated IDs (as used\nin output file names).\
+    \  (default=`sequence')"
+  args: !SimpleFlagArg
+    name: prefix
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Print help and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Print version and exit
+  args: !EmptyFlagArg {}
+help_text: "Usage: RNAplot [OPTIONS] [<input0>] [<input1>]...\nDraw RNA Secondary\
+  \ Structures\n\nThe program reads (aligned) RNA sequences and structures in the\
+  \ format as\nproduced by RNAfold or Stockholm 1.0 and produces drawings of the secondary\n\
+  structure graph.\nCoordinates for the structure graphs are produced using either\
+  \ E. Bruccoleri's\nnaview routines, or a simple radial layout method.\nFor aligned\
+  \ sequences and consensus structures (--msa option) the graph may be\nannotated\
+  \ by covariance information. Additionally, a color-annotated EPS\nalignment figure\
+  \ can be produced, similar to that obtained by RNAalifold and\nRNALalifold.\nIf\
+  \ the sequence was preceded by a FASTA header, or if the multiple sequence\nalignment\
+  \ contains an ID field, these IDs will be taken as names for the output\nfile(s):\
+  \ \"name_ss.ps\" and \"name_aln.ps\". Otherwise \"rna.ps\" and\n\"aln.ps\" will\
+  \ be used. This behavior may be over-ruled by explicitly setting\na filename prefix\
+  \ using the --auto-id option.\nExisting files of the same name will be overwritten.\n\
+  \n\n  -h, --help                    Print help and exit\n      --detailed-help \
+  \          Print help, including all details and hidden\n                      \
+  \            options, and exit\n      --full-help               Print help, including\
+  \ hidden options, and exit\n  -V, --version                 Print version and exit\n\
+  \  -j, --jobs[=number]           Split batch input into jobs and start\n       \
+  \                           processing in parallel using multiple\n            \
+  \                      threads.  (default=`0')\n  -i, --infile=<filename>      \
+  \ Read a file instead of reading from stdin.\n  -a, --msa                     Input\
+  \ is multiple sequence alignment in\n                                  Stockholm\
+  \ 1.0 format.  (default=off)\n      --mis                     Output \"most informative\
+  \ sequence\" instead of\n                                  simple consensus  (default=off)\n\
+  \      --covar                   Annotate covariance of base pairs in consensus\n\
+  \                                  structure.  (default=off)\n      --aln      \
+  \               Produce a colored and structure annotated\n                    \
+  \              alignment in PostScript format in the file\n                    \
+  \              \"aln.ps\" in the current directory.\n                          \
+  \        (default=off)\n  -t, --layout-type=INT         Choose the plotting layout\
+  \ algorithm.\n                                  (default=`1')\n      --pre=string\
+  \              Add annotation macros to postscript file, and\n                 \
+  \                 add the postscript code in \"string\" just\n                 \
+  \                 before the code to draw the structure. This\n                \
+  \                  is an easy way to add annotation.\n      --post=string      \
+  \       Same as --pre but in contrast to adding the\n                          \
+  \        annotation macros. E.g to mark position 15\n                          \
+  \        with circle use --post \"15 cmark\".\n      --auto-id                 Automatically\
+  \ generate an ID for each sequence.\n                                  (default=off)\n\
+  \      --id-prefix=prefix        Prefix for automatically generated IDs (as used\n\
+  \                                  in output file names).  (default=`sequence')\n\
+  \nIf in doubt our program is right, nature is at fault.\nComments should be sent\
+  \ to rna@tbi.univie.ac.at.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/viennarna:2.4.17--py36hd181a71_0

@@ -1,0 +1,145 @@
+!Command
+command:
+- SplitSeq.py
+- select
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: "A list of FASTA/FASTQ files containing sequences to\nprocess. (default:\
+    \ None)"
+  args: !RepeatFlagArg
+    name: SEQ_FILES
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: "Explicit output file name(s). Note, this argument\ncannot be used\
+    \ with the --failed, --outdir, or\n--outname arguments. If unspecified, then the\
+    \ output\nfilename will be based on the input filename(s).\n(default: None)"
+  args: !RepeatFlagArg
+    name: OUT_FILES
+- !Flag
+  optional: true
+  synonyms:
+  - --outdir
+  description: "Specify to changes the output directory to the\nlocation specified.\
+    \ The input file directory is used\nif this is not specified. (default: None)"
+  args: !SimpleFlagArg
+    name: OUT_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --outname
+  description: "Changes the prefix of the successfully processed\noutput file to the\
+    \ string specified. May not be\nspecified with multiple input files. (default:\
+    \ None)"
+  args: !SimpleFlagArg
+    name: OUT_NAME
+- !Flag
+  optional: true
+  synonyms:
+  - --fasta
+  description: "Specify to force output as FASTA rather than FASTQ.\n(default: None)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --delim
+  description: "DELIMITER DELIMITER\nA list of the three delimiters that separate\n\
+    annotation blocks, field names and values, and values\nwithin a field, respectively.\
+    \ (default: ('|', '=',\n','))"
+  args: !SimpleFlagArg
+    name: DELIMITER
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: "The annotation field for selection criteria. (default:\nNone)"
+  args: !SimpleFlagArg
+    name: FIELD
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  description: "A list of values to select for in the specified field.\nMutually exclusive\
+    \ with -t. (default: None)"
+  args: !RepeatFlagArg
+    name: VALUE_LIST
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: "A tab delimited file specifying values to select for\nin the specified\
+    \ field. The file must be formatted\nwith the given field name in the header row.\
+    \ Values\nwill be taken from that column. Mutually exclusive\nwith -u. (default:\
+    \ None)"
+  args: !SimpleFlagArg
+    name: VALUE_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --not
+  description: "If specified, will perform negative matching. Meaning,\nsequences\
+    \ will be selected if they fail to match for\nall specified values. (default:\
+    \ False)\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: SplitSeq.py select [--version] [-h] -s SEQ_FILES [SEQ_FILES ...]\n\
+  \                          [-o OUT_FILES [OUT_FILES ...]] [--outdir OUT_DIR]\n \
+  \                         [--outname OUT_NAME] [--fasta]\n                     \
+  \     [--delim DELIMITER DELIMITER DELIMITER] -f FIELD\n                       \
+  \   [-u VALUE_LIST [VALUE_LIST ...] | -t VALUE_FILE]\n                         \
+  \ [--not]\n\nSelects sequences from sequence files by annotation.\n\nhelp:\n  --version\
+  \             show program's version number and exit\n  -h, --help            show\
+  \ this help message and exit\n\nstandard arguments:\n  -s SEQ_FILES [SEQ_FILES ...]\n\
+  \                        A list of FASTA/FASTQ files containing sequences to\n \
+  \                       process. (default: None)\n  -o OUT_FILES [OUT_FILES ...]\n\
+  \                        Explicit output file name(s). Note, this argument\n   \
+  \                     cannot be used with the --failed, --outdir, or\n         \
+  \               --outname arguments. If unspecified, then the output\n         \
+  \               filename will be based on the input filename(s).\n             \
+  \           (default: None)\n  --outdir OUT_DIR      Specify to changes the output\
+  \ directory to the\n                        location specified. The input file directory\
+  \ is used\n                        if this is not specified. (default: None)\n \
+  \ --outname OUT_NAME    Changes the prefix of the successfully processed\n     \
+  \                   output file to the string specified. May not be\n          \
+  \              specified with multiple input files. (default: None)\n  --fasta \
+  \              Specify to force output as FASTA rather than FASTQ.\n           \
+  \             (default: None)\n  --delim DELIMITER DELIMITER DELIMITER\n       \
+  \                 A list of the three delimiters that separate\n               \
+  \         annotation blocks, field names and values, and values\n              \
+  \          within a field, respectively. (default: ('|', '=',\n                \
+  \        ','))\n\nsplitting arguments:\n  -f FIELD              The annotation field\
+  \ for selection criteria. (default:\n                        None)\n  -u VALUE_LIST\
+  \ [VALUE_LIST ...]\n                        A list of values to select for in the\
+  \ specified field.\n                        Mutually exclusive with -t. (default:\
+  \ None)\n  -t VALUE_FILE         A tab delimited file specifying values to select\
+  \ for\n                        in the specified field. The file must be formatted\n\
+  \                        with the given field name in the header row. Values\n \
+  \                       will be taken from that column. Mutually exclusive\n   \
+  \                     with -u. (default: None)\n  --not                 If specified,\
+  \ will perform negative matching. Meaning,\n                        sequences will\
+  \ be selected if they fail to match for\n                        all specified values.\
+  \ (default: False)\n"
+generated_using:
+- --help
+docker_image:

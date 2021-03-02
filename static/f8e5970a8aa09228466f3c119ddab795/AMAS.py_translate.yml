@@ -1,0 +1,164 @@
+!Command
+command:
+- AMAS.py
+- translate
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: check
+  description: -c CORES, --cores CORES
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --code
+  description: "NCBI genetic code to use: 1. The Standard Code, 2. The\nVertebrate\
+    \ Mitochondrial Code, 3. The Yeast\nMitochondrial Code, 4. The Mold, Protozoan,\
+    \ and\nCoelenterate Mitochondrial Code and the\nMycoplasma/Spiroplasma Code, 5.\
+    \ The Invertebrate\nMitochondrial Code, 6. The Ciliate, Dasycladacean and\nHexamita\
+    \ Nuclear Code, 9. The Echinoderm and Flatworm\nMitochondrial Code, 10. The Euplotid\
+    \ Nuclear Code, 11.\nThe Bacterial, Archaeal and Plant Plastid Code, 12.\nThe\
+    \ Alternative Yeast Nuclear Code, 13. The Ascidian\nMitochondrial Code, 14. The\
+    \ Alternative Flatworm\nMitochondrial Code, 16. Chlorophycean Mitochondrial\n\
+    Code, 21. Trematode Mitochondrial Code, 22.\nScenedesmus obliquus Mitochondrial\
+    \ Code, 23.\nThraustochytrium Mitochondrial Code, 24. Pterobranchia\nMitochondrial\
+    \ Code, 25. Candidate Division SR1 and\nGracilibacteria Code, 26. Pachysolen tannophilus\n\
+    Nuclear Code. Default: 1."
+  args: !ChoiceFlagArg
+    choices: !!set
+      '12':
+      '26':
+      '3':
+      '13':
+      '23':
+      '6':
+      '1':
+      '24':
+      '10':
+      '22':
+      '9':
+      '21':
+      '4':
+      '5':
+      '2':
+      '25':
+      '14':
+      '11':
+      '16':
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --reading-frame
+  description: "Number specifying reading frame; i.e. '2' means codons\nstart at the\
+    \ second character of the alignment.\nDefault: 1"
+  args: !ChoiceFlagArg
+    choices: !!set
+      '3':
+      '2':
+      '1':
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --out-format
+  description: 'File format for the output alignment. Default: fasta'
+  args: !ChoiceFlagArg
+    choices: !!set
+      nexus-int:
+      fasta:
+      phylip-int:
+      nexus:
+      phylip:
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --check-align
+  description: 'Check if input sequences are aligned. Default: no'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --in-files
+  description: "Alignment files to be taken as input. You can specify\nmultiple files\
+    \ using wildcards (e.g. --in-files\n*fasta)"
+  args: !RepeatFlagArg
+    name: IN_FILES
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --in-format
+  description: The format of input alignment
+  args: !ChoiceFlagArg
+    choices: !!set
+      nexus-int:
+      fasta:
+      phylip-int:
+      nexus:
+      phylip:
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --data-type
+  description: "Type of data\n"
+  args: !ChoiceFlagArg
+    choices: !!set
+      aa:
+      dna:
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: AMAS.py [-h] [-b {1,2,3,4,5,6,9,10,11,12,13,14,16,21,22,23,24,25,26}]\n\
+  \               [-k {1,2,3}] [-u {fasta,phylip,nexus,phylip-int,nexus-int}]\n  \
+  \             [-e] [-c CORES] -i IN_FILES [IN_FILES ...] -f\n               {fasta,phylip,nexus,phylip-int,nexus-int}\
+  \ -d {aa,dna}\n\nTranslate a protein-coding DNA alignment into amino acids\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  -b {1,2,3,4,5,6,9,10,11,12,13,14,16,21,22,23,24,25,26},\
+  \ --code {1,2,3,4,5,6,9,10,11,12,13,14,16,21,22,23,24,25,26}\n                 \
+  \       NCBI genetic code to use: 1. The Standard Code, 2. The\n               \
+  \         Vertebrate Mitochondrial Code, 3. The Yeast\n                        Mitochondrial\
+  \ Code, 4. The Mold, Protozoan, and\n                        Coelenterate Mitochondrial\
+  \ Code and the\n                        Mycoplasma/Spiroplasma Code, 5. The Invertebrate\n\
+  \                        Mitochondrial Code, 6. The Ciliate, Dasycladacean and\n\
+  \                        Hexamita Nuclear Code, 9. The Echinoderm and Flatworm\n\
+  \                        Mitochondrial Code, 10. The Euplotid Nuclear Code, 11.\n\
+  \                        The Bacterial, Archaeal and Plant Plastid Code, 12.\n \
+  \                       The Alternative Yeast Nuclear Code, 13. The Ascidian\n \
+  \                       Mitochondrial Code, 14. The Alternative Flatworm\n     \
+  \                   Mitochondrial Code, 16. Chlorophycean Mitochondrial\n      \
+  \                  Code, 21. Trematode Mitochondrial Code, 22.\n               \
+  \         Scenedesmus obliquus Mitochondrial Code, 23.\n                       \
+  \ Thraustochytrium Mitochondrial Code, 24. Pterobranchia\n                     \
+  \   Mitochondrial Code, 25. Candidate Division SR1 and\n                       \
+  \ Gracilibacteria Code, 26. Pachysolen tannophilus\n                        Nuclear\
+  \ Code. Default: 1.\n  -k {1,2,3}, --reading-frame {1,2,3}\n                   \
+  \     Number specifying reading frame; i.e. '2' means codons\n                 \
+  \       start at the second character of the alignment.\n                      \
+  \  Default: 1\n  -u {fasta,phylip,nexus,phylip-int,nexus-int}, --out-format {fasta,phylip,nexus,phylip-int,nexus-int}\n\
+  \                        File format for the output alignment. Default: fasta\n\
+  \  -e, --check-align     Check if input sequences are aligned. Default: no\n   \
+  \                     check\n  -c CORES, --cores CORES\n                       \
+  \ Number of cores used. Default: 1\n\nrequired arguments:\n  -i IN_FILES [IN_FILES\
+  \ ...], --in-files IN_FILES [IN_FILES ...]\n                        Alignment files\
+  \ to be taken as input. You can specify\n                        multiple files\
+  \ using wildcards (e.g. --in-files\n                        *fasta)\n  -f {fasta,phylip,nexus,phylip-int,nexus-int},\
+  \ --in-format {fasta,phylip,nexus,phylip-int,nexus-int}\n                      \
+  \  The format of input alignment\n  -d {aa,dna}, --data-type {aa,dna}\n        \
+  \                Type of data\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/amas:1.0--pyh864c0ab_0

@@ -1,0 +1,187 @@
+!Command
+command:
+- ganon-build
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: updated
+  description: -c, --update-complete         When using --update-filter-file and all
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reference-files
+  description: "Sequence files .fasta .fa .fna (e.g\nref.fna[.gz],[ref2.fna[.gz],...,refN.fna[.gz]])"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --directory-reference-files
+  description: "Directory with reference files. Do not\nprovide wildcards, just path\
+    \ (e.g. /path/to/folder/)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --extension
+  description: Extension of the files to search in the
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --seqid-bin-file
+  description: "Tab-separated file linking sequences and bin\nidentifiers. The file\
+    \ should contain the\nfollowing fields: Seq. Identifier <tab> Pos. Seq.\nStart\
+    \ <tab> Pos. Seq. End <tab> Bin Id"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-filter-file
+  description: Output file for filter (e.g. filter.ibf)
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --update-filter-file
+  description: Previously generated filter file to be
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --filter-size
+  description: "Final filter size in Megabytes (MB) [mutually\nexclusive --filter-size-bits]"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --filter-size-bits
+  description: "Final filter size in Bits (bit) [mutually\nexclusive --filter-size]"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --kmer-size
+  description: k size to build filter
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --hash-functions
+  description: Number of hash functions to build filter
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: Number of threads
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --n-refs
+  description: Number of sequences for each batch
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --n-batches
+  description: Number of batches of n-refs to hold in memory
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: Verbose output mode
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --quiet
+  description: "Quiet output mode (only outputs errors and\nwarnings to the stderr)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: ''
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: ''
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show help commands
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: Show current version
+  args: !EmptyFlagArg {}
+help_text: "Ganon builder\nUsage:\n  ganon-build [OPTION...]\n\n  -r, --reference-files\
+  \ arg     Sequence files .fasta .fa .fna (e.g\n                                ref.fna[.gz],[ref2.fna[.gz],...,refN.fna[.gz]])\n\
+  \  -d, --directory-reference-files arg\n                                Directory\
+  \ with reference files. Do not\n                                provide wildcards,\
+  \ just path (e.g. /path/to/folder/)\n  -x, --extension arg           Extension of\
+  \ the files to search in the\n                                --directory-reference-files\
+  \ (e.g. '.fna')\n  -e, --seqid-bin-file arg      Tab-separated file linking sequences\
+  \ and bin\n                                identifiers. The file should contain\
+  \ the\n                                following fields: Seq. Identifier <tab> Pos.\
+  \ Seq.\n                                Start <tab> Pos. Seq. End <tab> Bin Id\n\
+  \  -o, --output-filter-file arg  Output file for filter (e.g. filter.ibf)\n  -u,\
+  \ --update-filter-file arg  Previously generated filter file to be\n           \
+  \                     updated\n  -c, --update-complete         When using --update-filter-file\
+  \ and all\n                                sequences are provided to update index,\
+  \ set this\n                                option to not only add sequences to\
+  \ the filter\n                                but also remove\n  -s, --filter-size\
+  \ arg         Final filter size in Megabytes (MB) [mutually\n                  \
+  \              exclusive --filter-size-bits]\n  -b, --filter-size-bits arg    Final\
+  \ filter size in Bits (bit) [mutually\n                                exclusive\
+  \ --filter-size]\n  -k, --kmer-size arg           k size to build filter\n  -n,\
+  \ --hash-functions arg      Number of hash functions to build filter\n  -t, --threads\
+  \ arg             Number of threads\n      --n-refs arg              Number of sequences\
+  \ for each batch\n      --n-batches arg           Number of batches of n-refs to\
+  \ hold in memory\n      --verbose                 Verbose output mode\n      --quiet\
+  \                   Quiet output mode (only outputs errors and\n               \
+  \                 warnings to the stderr)\n  -h, --help                    Show\
+  \ help commands\n  -v, --version                 Show current version\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/ganon:0.4.0--py38hb45e0f6_0

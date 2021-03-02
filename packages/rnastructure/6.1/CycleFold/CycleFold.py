@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, String
+
+Cyclefold_V0_1_0 = CommandToolBuilder(tool="CycleFold", base_command=["CycleFold"], inputs=[ToolInput(tag="in_big_loops", input_type=Boolean(optional=True), prefix="--bigloops", doc=InputDocumentation(doc="Toggle whether large hairpins and internal loops are permitted in the\nstructure.\nDefault: off")), ToolInput(tag="in_fast_a_constraints", input_type=Boolean(optional=True), prefix="--fastaConstraints", doc=InputDocumentation(doc="Specify that the input fasta file contains secondary structure constraints\n(in dot-bracket format) to be applied to each structure.\nDefault: off.")), ToolInput(tag="in_max_expect", input_type=Boolean(optional=True), prefix="--maxExpect", doc=InputDocumentation(doc="Specify that a MaxExpect calculation should be performed.")), ToolInput(tag="in_partition_function", input_type=Boolean(optional=True), prefix="--partitionFunction", doc=InputDocumentation(doc="Specify that pair probabilities should be printed.")), ToolInput(tag="in_seq_format", input_type=Boolean(optional=True), prefix="--seqFormat", doc=InputDocumentation(doc="Indicate that the input file is a SEQ formatted sequence (rather than a\nFASTA, which is the default).")), ToolInput(tag="in_turbo", input_type=Boolean(optional=True), prefix="--turbo", doc=InputDocumentation(doc="Specify that a TurboFold calculation should be performed.")), ToolInput(tag="in_un_pairing_constraints", input_type=Boolean(optional=True), prefix="--unpairingConstraints", doc=InputDocumentation(doc="Toggle whether restraints should be treated as unpairing constraints.\nDefault: off.")), ToolInput(tag="in_constraint_file", input_type=Boolean(optional=True), prefix="--constraintFile", doc=InputDocumentation(doc="Specify a constraint file to be applied (in constraint file format).")), ToolInput(tag="in_constraint_ct", input_type=Boolean(optional=True), prefix="--constraintCt", doc=InputDocumentation(doc="Specify a constraint file to be applied (in ct format).")), ToolInput(tag="in_gamma", input_type=Boolean(optional=True), prefix="--gamma", doc=InputDocumentation(doc="Set gamma, the weighting parameter for extrinsic information inthe turbo\ncalculation.")), ToolInput(tag="in_iterations", input_type=Boolean(optional=True), prefix="--iterations", doc=InputDocumentation(doc="Set the number of iterations for the turbo calculation.\n")), ToolInput(tag="in_sequence", input_type=String(), position=0, doc=InputDocumentation(doc=""))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Cyclefold_V0_1_0().translate("wdl", allow_empty_container=True)
+

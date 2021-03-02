@@ -1,0 +1,227 @@
+!Command
+command:
+- iss
+- generate
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --quiet
+  - -q
+  description: 'Disable info logging. (default: False).'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  - -d
+  description: 'Enable debug logging. (default: False).'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --seed
+  description: Seed all the random number generators
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --cpus
+  - -p
+  description: 'number of cpus to use. (default: 2).'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --genomes
+  description: "[<genomes.fasta> ...], -g <genomes.fasta> [<genomes.fasta> ...]\n\
+    Input genome(s) from where the reads will originate"
+  args: !SimpleFlagArg
+    name: genomes.fasta
+- !Flag
+  optional: true
+  synonyms:
+  - --draft
+  description: "[<draft.fasta> ...]\nInput draft genome(s) from where the reads will\n\
+    originate"
+  args: !SimpleFlagArg
+    name: draft.fasta
+- !Flag
+  optional: true
+  synonyms:
+  - --n_genomes
+  - -u
+  description: "How many genomes will be used for the simulation. is\nset with --genomes/-g\
+    \ or/and --draft to take random\ngenomes from the input multifasta"
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --ncbi
+  description: "[<str> [<str> ...]], -k [<str> [<str> ...]]\nDownload input genomes\
+    \ from NCBI. Requires\n--n_genomes/-u option. Can be bacteria, viruses,\narchaea\
+    \ or a combination of the three (space-\nseparated)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --n_genomes_ncbi
+  description: "[<int> [<int> ...]], -U [<int> [<int> ...]]\nHow many genomes will\
+    \ be downloaded from NCBI.\nRequired if --ncbi/-k is set. If more than one kingdom\n\
+    is set with --ncbi, multiple values are necessary\n(space-separated)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --abundance
+  - -a
+  description: "abundance distribution (default: lognormal). Can be\nuniform, halfnormal,\
+    \ exponential, lognormal or zero-\ninflated-lognormal."
+  args: !SimpleFlagArg
+    name: str
+- !Flag
+  optional: true
+  synonyms:
+  - --abundance_file
+  - -b
+  description: "abundance file for coverage calculations (default:\nNone)."
+  args: !SimpleFlagArg
+    name: abundance.txt
+- !Flag
+  optional: true
+  synonyms:
+  - --coverage
+  - -C
+  description: "coverage distribution. Can be uniform, halfnormal,\nexponential, lognormal\
+    \ or zero-inflated-lognormal."
+  args: !SimpleFlagArg
+    name: str
+- !Flag
+  optional: true
+  synonyms:
+  - --coverage_file
+  - -D
+  description: 'file containing coverage information (default: None).'
+  args: !SimpleFlagArg
+    name: coverage.txt
+- !Flag
+  optional: true
+  synonyms:
+  - --n_reads
+  - -n
+  description: "Number of reads to generate (default: 1000000). Allows\nsuffixes k,\
+    \ K, m, M, g and G (ex 0.5M for 500000)."
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --mode
+  - -e
+  description: "Error model. If not specified, using kernel density\nestimation (default:\
+    \ kde). Can be kde, basic or\nperfect"
+  args: !SimpleFlagArg
+    name: str
+- !Flag
+  optional: true
+  synonyms:
+  - --model
+  - -m
+  description: "Error model file. (default: None). Use HiSeq, NovaSeq\nor MiSeq for\
+    \ a pre-computed error model provided with\nthe software, or a file generated\
+    \ with iss model. If\nyou do not wish to use a model, use --mode basic or\n--mode\
+    \ perfect. The name of the built-in models are\ncase insensitive."
+  args: !SimpleFlagArg
+    name: npz
+- !Flag
+  optional: true
+  synonyms:
+  - --gc_bias
+  - -c
+  description: "If set, may fail to sequence reads with abnormal GC\ncontent. (default:\
+    \ False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --compress
+  - -z
+  description: 'Compress the output in gzip format (default: False).'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --output
+  - -o
+  description: "Output file path and prefix (Required)\n"
+  args: !SimpleFlagArg
+    name: fastq
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: iss generate [-h] [--quiet | --debug] [--seed <int>] [--cpus <int>]\n\
+  \                    [--genomes <genomes.fasta> [<genomes.fasta> ...]]\n       \
+  \             [--draft <draft.fasta> [<draft.fasta> ...]]\n                    [--n_genomes\
+  \ <int>] [--ncbi [<str> [<str> ...]]]\n                    [--n_genomes_ncbi [<int>\
+  \ [<int> ...]]]\n                    [--abundance <str> | --abundance_file <abundance.txt>\
+  \ | --coverage <str> | --coverage_file <coverage.txt>]\n                    [--n_reads\
+  \ <int>] [--mode <str>] [--model <npz>]\n                    [--gc_bias] [--compress]\
+  \ --output <fastq>\n\nsimulate reads from an error model\n\narguments:\n  -h, --help\
+  \            show this help message and exit\n  --quiet, -q           Disable info\
+  \ logging. (default: False).\n  --debug, -d           Enable debug logging. (default:\
+  \ False).\n  --seed <int>          Seed all the random number generators\n  --cpus\
+  \ <int>, -p <int>\n                        number of cpus to use. (default: 2).\n\
+  \  --genomes <genomes.fasta> [<genomes.fasta> ...], -g <genomes.fasta> [<genomes.fasta>\
+  \ ...]\n                        Input genome(s) from where the reads will originate\n\
+  \  --draft <draft.fasta> [<draft.fasta> ...]\n                        Input draft\
+  \ genome(s) from where the reads will\n                        originate\n  --n_genomes\
+  \ <int>, -u <int>\n                        How many genomes will be used for the\
+  \ simulation. is\n                        set with --genomes/-g or/and --draft to\
+  \ take random\n                        genomes from the input multifasta\n  --ncbi\
+  \ [<str> [<str> ...]], -k [<str> [<str> ...]]\n                        Download\
+  \ input genomes from NCBI. Requires\n                        --n_genomes/-u option.\
+  \ Can be bacteria, viruses,\n                        archaea or a combination of\
+  \ the three (space-\n                        separated)\n  --n_genomes_ncbi [<int>\
+  \ [<int> ...]], -U [<int> [<int> ...]]\n                        How many genomes\
+  \ will be downloaded from NCBI.\n                        Required if --ncbi/-k is\
+  \ set. If more than one kingdom\n                        is set with --ncbi, multiple\
+  \ values are necessary\n                        (space-separated).\n  --abundance\
+  \ <str>, -a <str>\n                        abundance distribution (default: lognormal).\
+  \ Can be\n                        uniform, halfnormal, exponential, lognormal or\
+  \ zero-\n                        inflated-lognormal.\n  --abundance_file <abundance.txt>,\
+  \ -b <abundance.txt>\n                        abundance file for coverage calculations\
+  \ (default:\n                        None).\n  --coverage <str>, -C <str>\n    \
+  \                    coverage distribution. Can be uniform, halfnormal,\n      \
+  \                  exponential, lognormal or zero-inflated-lognormal.\n  --coverage_file\
+  \ <coverage.txt>, -D <coverage.txt>\n                        file containing coverage\
+  \ information (default: None).\n  --n_reads <int>, -n <int>\n                  \
+  \      Number of reads to generate (default: 1000000). Allows\n                \
+  \        suffixes k, K, m, M, g and G (ex 0.5M for 500000).\n  --mode <str>, -e\
+  \ <str>\n                        Error model. If not specified, using kernel density\n\
+  \                        estimation (default: kde). Can be kde, basic or\n     \
+  \                   perfect\n  --model <npz>, -m <npz>\n                       \
+  \ Error model file. (default: None). Use HiSeq, NovaSeq\n                      \
+  \  or MiSeq for a pre-computed error model provided with\n                     \
+  \   the software, or a file generated with iss model. If\n                     \
+  \   you do not wish to use a model, use --mode basic or\n                      \
+  \  --mode perfect. The name of the built-in models are\n                       \
+  \ case insensitive.\n  --gc_bias, -c         If set, may fail to sequence reads\
+  \ with abnormal GC\n                        content. (default: False)\n  --compress,\
+  \ -z        Compress the output in gzip format (default: False).\n  --output <fastq>,\
+  \ -o <fastq>\n                        Output file path and prefix (Required)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/insilicoseq:1.5.2--pyh3252c3a_0

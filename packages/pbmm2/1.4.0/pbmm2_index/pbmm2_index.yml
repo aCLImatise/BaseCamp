@@ -1,0 +1,95 @@
+!Command
+command:
+- pbmm2
+- index
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: out.mmi
+  description: STR   Output Reference Index
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --preset
+  description: "STR   Set alignment mode. See below for preset parameter details.\
+    \ Valid choices: (SUBREAD,\nCCS, ISOSEQ, UNROLLED). [SUBREAD]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  description: INT   k-mer size (no larger than 28). [-1]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  description: INT   Minimizer window size. [-1]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --no-kmer-compression
+  description: "Disable homopolymer-compressed k-mer (compression is active for SUBREAD\
+    \ & UNROLLED\npresets)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --num-threads
+  description: INT   Number of threads to use, 0 means autodetection. [0]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --log-level
+  description: 'STR   Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL).
+    [WARN]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --log-file
+  description: FILE  Log to a file, instead of stderr.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this help and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Show application version and exit.
+  args: !EmptyFlagArg {}
+help_text: "pbmm2 index - Index reference and store as .mmi file\n\nUsage:\n  pbmm2\
+  \ index [options] <ref.fa|xml> <out.mmi>\n\n  ref.fa|xml                STR   Reference\
+  \ FASTA, ReferenceSet XML\n  out.mmi                   STR   Output Reference Index\n\
+  \nParameter Set Option:\n  --preset                  STR   Set alignment mode. See\
+  \ below for preset parameter details. Valid choices: (SUBREAD,\n               \
+  \                   CCS, ISOSEQ, UNROLLED). [SUBREAD]\n\nParameter Override Options:\n\
+  \  -k                        INT   k-mer size (no larger than 28). [-1]\n  -w  \
+  \                      INT   Minimizer window size. [-1]\n  -u,--no-kmer-compression\
+  \        Disable homopolymer-compressed k-mer (compression is active for SUBREAD\
+  \ & UNROLLED\n                                  presets).\n\n  -h,--help       \
+  \                Show this help and exit.\n  --version                       Show\
+  \ application version and exit.\n  -j,--num-threads          INT   Number of threads\
+  \ to use, 0 means autodetection. [0]\n  --log-level               STR   Set log\
+  \ level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL). [WARN]\n  --log-file\
+  \                FILE  Log to a file, instead of stderr.\n\nAlignment modes of --preset:\n\
+  \    SUBREAD     : -k 19 -w 10\n    CCS or HiFi : -k 19 -w 10 -u\n    ISOSEQ   \
+  \   : -k 15 -w 5  -u\n    UNROLLED    : -k 15 -w 15\n    \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/pbmm2:1.4.0--h56fc30b_0

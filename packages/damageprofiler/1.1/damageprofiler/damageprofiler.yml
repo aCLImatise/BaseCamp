@@ -1,0 +1,171 @@
+!Command
+command:
+- damageprofiler
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: REQUIRED. The input sam/bam/cram file.
+  args: !SimpleFlagArg
+    name: INPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: REQUIRED. The output folder.
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: The reference file (fasta format).
+  args: !SimpleFlagArg
+    name: REFERENCE
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: "DamagePlot: Number of bases which are considered for plotting nucleotide\
+    \ misincorporations.\nDefault: 25"
+  args: !SimpleFlagArg
+    name: THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: Reference sequence name (Reference NAME flag of SAM record). For more
+    details see
+  args: !SimpleFlagArg
+    name: SPECIES
+- !Flag
+  optional: true
+  synonyms:
+  - -title
+  description: 'Title used for all plots. Default: input filename.'
+  args: !SimpleFlagArg
+    name: TITLE
+- !Flag
+  optional: true
+  synonyms:
+  - -yaxis_dp_max
+  description: 'DamagePlot: Maximal y-axis value.'
+  args: !SimpleFlagArg
+    name: MAX_VALUE
+- !Flag
+  optional: true
+  synonyms:
+  - -color_c_t
+  description: 'DamagePlot: Color (HEX code) for C to T misincoporation frequency.'
+  args: !SimpleFlagArg
+    name: COLOR_C_T
+- !Flag
+  optional: true
+  synonyms:
+  - -color_g_a
+  description: 'DamagePlot: Color (HEX code) for G to A misincoporation frequency.'
+  args: !SimpleFlagArg
+    name: COLOR_G_A
+- !Flag
+  optional: true
+  synonyms:
+  - -color_insertions
+  description: 'DamagePlot: Color (HEX code) for base insertions.'
+  args: !SimpleFlagArg
+    name: COLOR_C_T
+- !Flag
+  optional: true
+  synonyms:
+  - -color_deletions
+  description: 'DamagePlot: Color (HEX code) for base deletions.'
+  args: !SimpleFlagArg
+    name: COLOR_DELETIONS
+- !Flag
+  optional: true
+  synonyms:
+  - -color_other
+  description: 'DamagePlot: Color (HEX code) for other bases different to reference.'
+  args: !SimpleFlagArg
+    name: COLOR_OTHER
+- !Flag
+  optional: true
+  synonyms:
+  - -only_merged
+  description: "Use only mapped and merged (in case of paired-end sequencing) reads\
+    \ to calculate the damage\nplot instead of using all mapped reads. The SAM/BAM\
+    \ entry must start with 'M_', otherwise it\nwill be skipped. Default: false"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -sslib
+  description: 'Single-stranded library protocol was used. Default: false'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -sf
+  description: ''
+  args: !SimpleFlagArg
+    name: SPECIES FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: ''
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Shows this help page.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: Shows the version of DamageProfiler.
+  args: !EmptyFlagArg {}
+help_text: "usage: DamageProfiler [-h] [-v] [-i <INPUT>] [-o <OUTPUT>] [-r <REFERENCE>]\
+  \ [-t <THRESHOLD>] [-s <SPECIES>] [-sf <SPECIES FILE>]\n       [-l <LENGTH>] [-title\
+  \ <TITLE>] [-yaxis_dp_max <MAX_VALUE>] [-color_c_t <COLOR_C_T>] [-color_g_a <COLOR_G_A>]\n\
+  \       [-color_insertions <COLOR_C_T>] [-color_deletions <COLOR_DELETIONS>] [-color_other\
+  \ <COLOR_OTHER>] [-only_merged] [-sslib]\n\nDetailed description:\n\n -h,--help\
+  \                            Shows this help page.\n -v,--version              \
+  \           Shows the version of DamageProfiler.\n -i <INPUT>                  \
+  \         REQUIRED. The input sam/bam/cram file.\n -o <OUTPUT>                 \
+  \         REQUIRED. The output folder.\n -r <REFERENCE>                       The\
+  \ reference file (fasta format).\n -t <THRESHOLD>                       DamagePlot:\
+  \ Number of bases which are considered for plotting nucleotide misincorporations.\n\
+  \                                      Default: 25\n -s <SPECIES>              \
+  \           Reference sequence name (Reference NAME flag of SAM record). For more\
+  \ details see\n                                      Documentation.\n -sf <SPECIES\
+  \ FILE>                   List of species reference names (Reference NAME flag of\
+  \ SAM record). For more details see\n                                      Documentation.\n\
+  \ -l <LENGTH>                          Number of bases which are considered for\
+  \ frequency computations. Default: 100.\n -title <TITLE>                       Title\
+  \ used for all plots. Default: input filename.\n -yaxis_dp_max <MAX_VALUE>     \
+  \       DamagePlot: Maximal y-axis value.\n -color_c_t <COLOR_C_T>             \
+  \  DamagePlot: Color (HEX code) for C to T misincoporation frequency.\n -color_g_a\
+  \ <COLOR_G_A>               DamagePlot: Color (HEX code) for G to A misincoporation\
+  \ frequency.\n -color_insertions <COLOR_C_T>        DamagePlot: Color (HEX code)\
+  \ for base insertions.\n -color_deletions <COLOR_DELETIONS>   DamagePlot: Color\
+  \ (HEX code) for base deletions.\n -color_other <COLOR_OTHER>           DamagePlot:\
+  \ Color (HEX code) for other bases different to reference.\n -only_merged      \
+  \                   Use only mapped and merged (in case of paired-end sequencing)\
+  \ reads to calculate the damage\n                                      plot instead\
+  \ of using all mapped reads. The SAM/BAM entry must start with 'M_', otherwise it\n\
+  \                                      will be skipped. Default: false\n -sslib\
+  \                               Single-stranded library protocol was used. Default:\
+  \ false\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/damageprofiler:1.1--0

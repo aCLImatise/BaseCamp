@@ -1,0 +1,196 @@
+!Command
+command:
+- rtg
+- cgsim
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: SDF
+  description: -q, --qual-range=STRING          set the range of base quality values
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --input
+  description: SDF containing input genome
+  args: !SimpleFlagArg
+    name: SDF
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: name for reads output SDF
+  args: !SimpleFlagArg
+    name: SDF
+- !Flag
+  optional: true
+  synonyms:
+  - --abundance
+  description: "if set, the user-supplied distribution\nrepresents desired abundance"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -N
+  - --allow-unknowns
+  description: "allow reads to be drawn from template\nfragments containing unknown\
+    \ nucleotides"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --coverage
+  description: coverage, must be positive
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  - --distribution
+  description: "file containing probability distribution for\nsequence selection"
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --dna-fraction
+  description: "if set, the user-supplied distribution\nrepresents desired DNA fraction"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  - --max-fragment-size
+  description: maximum fragment size (Default is 500)
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --min-fragment-size
+  description: minimum fragment size (Default is 350)
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --n-rate
+  description: "rate that the machine will generate new\nunknowns in the read (Default\
+    \ is 0.0)"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --num-reads
+  description: number of reads to be generated
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --taxonomy-distribution
+  description: "file containing probability distribution for\nsequence selection expressed\
+    \ by taxonomy id"
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --cg-read-version
+  description: "select Complete Genomics read structure\nversion, 1 (35 bp) or 2 (29\
+    \ bp)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --comment
+  description: comment to include in the generated SDF
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --no-names
+  description: do not create read names in the output SDF
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-qualities
+  description: do not create read qualities in the output
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sam-rg
+  description: "|FILE         file containing a single valid read group\nSAM header\
+    \ line or a string in the form\n\"@RG\\tID:READGROUP1\\tSM:BACT_SAMPLE\\tPL:ILLUMINA\""
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --seed
+  description: seed for random number generator
+  args: !SimpleFlagArg
+    name: INT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: print help on command-line flag usage
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: rtg cgsim [OPTION]... -V INT -t SDF -o SDF -c FLOAT\n         \
+  \        [OPTION]... -V INT -t SDF -o SDF -n INT\n\nSimulate Complete Genomics Inc\
+  \ sequencing reads. Supports the original 35 bp\nread structure (5-10-10-10), and\
+  \ the newer 29 bp read structure (10-9-10).\n\nFile Input/Output\n  -t, --input=SDF\
+  \                  SDF containing input genome\n  -o, --output=SDF             \
+  \    name for reads output SDF\n\nFragment Generation\n      --abundance       \
+  \           if set, the user-supplied distribution\n                           \
+  \        represents desired abundance\n  -N, --allow-unknowns             allow\
+  \ reads to be drawn from template\n                                   fragments\
+  \ containing unknown nucleotides\n  -c, --coverage=FLOAT             coverage, must\
+  \ be positive\n  -D, --distribution=FILE          file containing probability distribution\
+  \ for\n                                   sequence selection\n      --dna-fraction\
+  \               if set, the user-supplied distribution\n                       \
+  \            represents desired DNA fraction\n  -M, --max-fragment-size=INT    \
+  \  maximum fragment size (Default is 500)\n  -m, --min-fragment-size=INT      minimum\
+  \ fragment size (Default is 350)\n      --n-rate=FLOAT               rate that the\
+  \ machine will generate new\n                                   unknowns in the\
+  \ read (Default is 0.0)\n  -n, --num-reads=INT              number of reads to be\
+  \ generated\n      --taxonomy-distribution=FILE file containing probability distribution\
+  \ for\n                                   sequence selection expressed by taxonomy\
+  \ id\n\nComplete Genomics\n  -V, --cg-read-version=INT        select Complete Genomics\
+  \ read structure\n                                   version, 1 (35 bp) or 2 (29\
+  \ bp)\n\nUtility\n      --comment=STRING             comment to include in the generated\
+  \ SDF\n  -h, --help                       print help on command-line flag usage\n\
+  \      --no-names                   do not create read names in the output SDF\n\
+  \      --no-qualities               do not create read qualities in the output\n\
+  \                                   SDF\n  -q, --qual-range=STRING          set\
+  \ the range of base quality values\n                                   permitted\
+  \ e.g.: 3-40 (Default is fixed\n                                   qualities corresponding\
+  \ to overall machine\n                                   base error rate)\n    \
+  \  --sam-rg=STRING|FILE         file containing a single valid read group\n    \
+  \                               SAM header line or a string in the form\n      \
+  \                             \"@RG\\tID:READGROUP1\\tSM:BACT_SAMPLE\\tPL:ILLUMINA\"\
+  \n  -s, --seed=INT                   seed for random number generator\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/rtg-tools:3.12--0

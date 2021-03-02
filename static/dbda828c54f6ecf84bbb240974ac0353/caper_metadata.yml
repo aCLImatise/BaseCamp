@@ -1,0 +1,157 @@
+!Command
+command:
+- caper
+- metadata
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: wf_id_or_label
+  description: "List of workflow IDs to find matching workflows to\ncommit a specified\
+    \ action (list, metadata and abort).\nWildcards (* and ?) are allowed."
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --conf
+  description: Specify config file
+  args: !SimpleFlagArg
+    name: CONF
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  - --debug
+  description: Prints all logs >= DEBUG level
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gcp-service-account-key-json
+  description: "Secret key JSON file for Google Cloud Platform service\naccount. This\
+    \ service account should have enough\npermission to Storage for client functions\
+    \ and\nStorage/Compute Engine/Genomics API/Life Sciences API\nfor server/runner\
+    \ functions."
+  args: !SimpleFlagArg
+    name: GCP_SERVICE_ACCOUNT_KEY_JSON
+- !Flag
+  optional: true
+  synonyms:
+  - --port
+  description: Port for Caper server
+  args: !SimpleFlagArg
+    name: PORT
+- !Flag
+  optional: true
+  synonyms:
+  - --no-server-heartbeat
+  description: Disable server heartbeat file.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --server-heartbeat-file
+  description: "Heartbeat file for Caper clients to get IP and port of\na server"
+  args: !SimpleFlagArg
+    name: SERVER_HEARTBEAT_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --server-heartbeat-timeout
+  description: "Timeout for a heartbeat file in Milliseconds. A\nheartbeat file older\
+    \ than this interval will be\nignored."
+  args: !SimpleFlagArg
+    name: SERVER_HEARTBEAT_TIMEOUT
+- !Flag
+  optional: true
+  synonyms:
+  - --hostname
+  - --ip
+  description: Hostname (or IP address) of Caper server.
+  args: !SimpleFlagArg
+    name: HOSTNAME
+- !Flag
+  optional: true
+  synonyms:
+  - --local-loc-dir
+  - --tmp-dir
+  description: "Temporary directory to store Cromwell's intermediate\nbackend files.\
+    \ These files include backend.conf,\nworkflow_opts.json, imports.zip. and localized\
+    \ input\nJSON files due to deepcopying (recursive\nlocalization). Cromwell's MySQL/PostgreSQL\
+    \ DB password\ncan be exposed on backend.conf on this directory.\nTherefore, DO\
+    \ NOT USE /tmp HERE. This directory is\nalso used for storing cached files for\n\
+    local/slurm/sge/pbs backends."
+  args: !SimpleFlagArg
+    name: LOCAL_LOC_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --gcp-loc-dir
+  - --tmp-gcs-bucket
+  description: "Temporary directory to store cached files for gcp\nbackend. e.g. gs://my-bucket/caper-cache-dir."
+  args: !SimpleFlagArg
+    name: GCP_LOC_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --aws-loc-dir
+  - --tmp-s3-bucket
+  description: "Temporary directory to store cached files for aws\nbackend. e.g. s3://my-bucket/caper-cache-dir.\n"
+  args: !SimpleFlagArg
+    name: AWS_LOC_DIR
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: caper metadata [-h] [-c CONF] [-D]\n                      [--gcp-service-account-key-json\
+  \ GCP_SERVICE_ACCOUNT_KEY_JSON]\n                      [--local-loc-dir LOCAL_LOC_DIR]\n\
+  \                      [--gcp-loc-dir GCP_LOC_DIR] [--aws-loc-dir AWS_LOC_DIR]\n\
+  \                      [--port PORT] [--no-server-heartbeat]\n                 \
+  \     [--server-heartbeat-file SERVER_HEARTBEAT_FILE]\n                      [--server-heartbeat-timeout\
+  \ SERVER_HEARTBEAT_TIMEOUT]\n                      [--hostname HOSTNAME]\n     \
+  \                 [wf_id_or_label [wf_id_or_label ...]]\n\npositional arguments:\n\
+  \  wf_id_or_label        List of workflow IDs to find matching workflows to\n  \
+  \                      commit a specified action (list, metadata and abort).\n \
+  \                       Wildcards (* and ?) are allowed.\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -c CONF, --conf CONF\
+  \  Specify config file\n  -D, --debug           Prints all logs >= DEBUG level\n\
+  \  --gcp-service-account-key-json GCP_SERVICE_ACCOUNT_KEY_JSON\n               \
+  \         Secret key JSON file for Google Cloud Platform service\n             \
+  \           account. This service account should have enough\n                 \
+  \       permission to Storage for client functions and\n                       \
+  \ Storage/Compute Engine/Genomics API/Life Sciences API\n                      \
+  \  for server/runner functions.\n  --port PORT           Port for Caper server\n\
+  \  --no-server-heartbeat\n                        Disable server heartbeat file.\n\
+  \  --server-heartbeat-file SERVER_HEARTBEAT_FILE\n                        Heartbeat\
+  \ file for Caper clients to get IP and port of\n                        a server\n\
+  \  --server-heartbeat-timeout SERVER_HEARTBEAT_TIMEOUT\n                       \
+  \ Timeout for a heartbeat file in Milliseconds. A\n                        heartbeat\
+  \ file older than this interval will be\n                        ignored.\n  --hostname\
+  \ HOSTNAME, --ip HOSTNAME\n                        Hostname (or IP address) of Caper\
+  \ server.\n\ncache directories for localization:\n  --local-loc-dir LOCAL_LOC_DIR,\
+  \ --tmp-dir LOCAL_LOC_DIR\n                        Temporary directory to store\
+  \ Cromwell's intermediate\n                        backend files. These files include\
+  \ backend.conf,\n                        workflow_opts.json, imports.zip. and localized\
+  \ input\n                        JSON files due to deepcopying (recursive\n    \
+  \                    localization). Cromwell's MySQL/PostgreSQL DB password\n  \
+  \                      can be exposed on backend.conf on this directory.\n     \
+  \                   Therefore, DO NOT USE /tmp HERE. This directory is\n       \
+  \                 also used for storing cached files for\n                     \
+  \   local/slurm/sge/pbs backends.\n  --gcp-loc-dir GCP_LOC_DIR, --tmp-gcs-bucket\
+  \ GCP_LOC_DIR\n                        Temporary directory to store cached files\
+  \ for gcp\n                        backend. e.g. gs://my-bucket/caper-cache-dir.\n\
+  \  --aws-loc-dir AWS_LOC_DIR, --tmp-s3-bucket AWS_LOC_DIR\n                    \
+  \    Temporary directory to store cached files for aws\n                       \
+  \ backend. e.g. s3://my-bucket/caper-cache-dir.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/caper:1.1.0--py_0

@@ -1,0 +1,275 @@
+!Command
+command:
+- biotransformer
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: metabolite
+  description: identification (default
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --annotate
+  description: "Search PuChem for each\nproduct, and store with\nCID and synonyms,\
+    \ when\navailable."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --btType
+  description: "The type of\ndescription: Type of\nbiotransformer -\nEC-based  (ecbased),\n\
+    CYP450 (cyp450), Phase\nII (phaseII), Human gut\nmicrobial (hgut), human\nsuper\
+    \ transformer*\n(superbio, or\nallHuman),\nEnvironmental microbial\n(envimicro)**.\n\
+    If option -m is\nenabled, the only valid\nbiotransformer types\nare allHuman,\
+    \ superbio\nand env."
+  args: !SimpleFlagArg
+    name: BioTransformer Option
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --formulas
+  description: "Semicolon-separated\nlist of formulas of\ncompounds to identify"
+  args: !SimpleFlagArg
+    name: Formulas
+- !Flag
+  optional: true
+  synonyms:
+  - -imol
+  - --molinput
+  description: "The input, which can be\na Mol file"
+  args: !SimpleFlagArg
+    name: MOL Input
+- !Flag
+  optional: true
+  synonyms:
+  - -isdf
+  - --sdfinput
+  description: "The input, which can be\nan SDF file."
+  args: !SimpleFlagArg
+    name: Sdf Input
+- !Flag
+  optional: true
+  synonyms:
+  - -ismi
+  - --ismiles
+  description: "The input, which can be\na SMILES string"
+  args: !SimpleFlagArg
+    name: SMILES Input
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --task
+  description: "The task to be permed:\npred for prediction, or\ncid for compound\n\
+    identification"
+  args: !SimpleFlagArg
+    name: BioTransformer Task
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --masses
+  description: "Semicolon-separated\nlist of masses of\ncompounds to identify"
+  args: !SimpleFlagArg
+    name: Masses
+- !Flag
+  optional: true
+  synonyms:
+  - -ocsv
+  - --csvoutput
+  description: "Select this option to\nreturn CSV output(s).\nYou must enter an\n\
+    output filename"
+  args: !SimpleFlagArg
+    name: Csv Output
+- !Flag
+  optional: true
+  synonyms:
+  - -osdf
+  - --sdfoutput
+  description: "Select this option to\nreturn SDF output(s).\nYou must enter an\n\
+    output filename"
+  args: !SimpleFlagArg
+    name: Sdf Output
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --bsequence
+  description: "Define an ordered\nsequence of\nbiotransformer/nr_of_st\neps to apply.\
+    \ Choose\nonly from the following\nBioTranformer Types:\nallHuman, cyp450,\necbased,\
+    \ env, hgut, and\nphaseII. For instance,\nthe following string\nrepresentation\n\
+    describes a sequence of\n2 steps of CYP450\nmetabolism, followed by\n1 step of\
+    \ Human Gut\nmetabolism, 1 step of\nPhase II, and 1 step of\nEnvironmental Microbial\n\
+    Degradation:\n'cyp450:2; hgut:1;\nphaseII:1; env:1'"
+  args: !SimpleFlagArg
+    name: BioTransformer Sequence Option
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --nsteps
+  description: "The number of steps for\nthe prediction. This\noption can be set by\n\
+    the user for the\nEC-based, CYP450, Phase\nII, and Environmental\nmicrobial\n\
+    biotransformers. The\ndefault value is 1."
+  args: !SimpleFlagArg
+    name: Number of steps
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --mTolerance
+  description: Mass tolerance for
+  args: !SimpleFlagArg
+    name: Mass Tolerance
+- !Flag
+  optional: true
+  synonyms:
+  - -jar
+  description: ''
+  args: !SimpleFlagArg
+    name: biotransformer-1.1.5.jar
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Prints the usage.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage:\njava -jar biotransformer-1.1.5.jar [-a] [-b <BioTransformer Option>]\
+  \ [-f\n       <Formulas>] [-h] [-imol <MOL Input>] [-isdf <Sdf Input>] [-ismi\n\
+  \       <SMILES Input>] -k <BioTransformer Task> [-m <Masses>] [-ocsv <Csv\n   \
+  \    Output>] [-osdf <Sdf Output>] [-q <BioTransformer Sequence Option>]\n     \
+  \  [-s <Number of steps>] [-t <Mass Tolerance>]\n\nThis is the version 1.1.5 of\
+  \ BioTransformer. BioTransformer is a software\ntool that predicts small molecule\
+  \ metabolism in mammals, their gut\nmicrobiota, as well as the soil/aquatic microbiota.\
+  \ BioTransformer also\nassists scientists in metabolite identification, based on\
+  \ the metabolism\nprediction.\n\n -a,--annotate                                \
+  \     Search PuChem for each\n                                                 \
+  \  product, and store with\n                                                   CID\
+  \ and synonyms, when\n                                                   available.\n\
+  \ -b,--btType <BioTransformer Option>               The type of\n              \
+  \                                     description: Type of\n                   \
+  \                                biotransformer -\n                            \
+  \                       EC-based  (ecbased),\n                                 \
+  \                  CYP450 (cyp450), Phase\n                                    \
+  \               II (phaseII), Human gut\n                                      \
+  \             microbial (hgut), human\n                                        \
+  \           super transformer*\n                                               \
+  \    (superbio, or\n                                                   allHuman),\n\
+  \                                                   Environmental microbial\n  \
+  \                                                 (envimicro)**.\n             \
+  \                                      If option -m is\n                       \
+  \                            enabled, the only valid\n                         \
+  \                          biotransformer types\n                              \
+  \                     are allHuman, superbio\n                                 \
+  \                  and env.\n -f,--formulas <Formulas>                         \
+  \ Semicolon-separated\n                                                   list of\
+  \ formulas of\n                                                   compounds to identify\n\
+  \ -h,--help                                         Prints the usage.\n -imol,--molinput\
+  \ <MOL Input>                      The input, which can be\n                   \
+  \                                a Mol file\n -isdf,--sdfinput <Sdf Input>     \
+  \                 The input, which can be\n                                    \
+  \               an SDF file.\n -ismi,--ismiles <SMILES Input>                  \
+  \  The input, which can be\n                                                   a\
+  \ SMILES string\n -k,--task <BioTransformer Task>                   The task to\
+  \ be permed:\n                                                   pred for prediction,\
+  \ or\n                                                   cid for compound\n    \
+  \                                               identification\n -m,--masses <Masses>\
+  \                              Semicolon-separated\n                           \
+  \                        list of masses of\n                                   \
+  \                compounds to identify\n -ocsv,--csvoutput <Csv Output>        \
+  \            Select this option to\n                                           \
+  \        return CSV output(s).\n                                               \
+  \    You must enter an\n                                                   output\
+  \ filename\n -osdf,--sdfoutput <Sdf Output>                    Select this option\
+  \ to\n                                                   return SDF output(s).\n\
+  \                                                   You must enter an\n        \
+  \                                           output filename\n -q,--bsequence <BioTransformer\
+  \ Sequence Option>   Define an ordered\n                                       \
+  \            sequence of\n                                                   biotransformer/nr_of_st\n\
+  \                                                   eps to apply. Choose\n     \
+  \                                              only from the following\n       \
+  \                                            BioTranformer Types:\n            \
+  \                                       allHuman, cyp450,\n                    \
+  \                               ecbased, env, hgut, and\n                      \
+  \                             phaseII. For instance,\n                         \
+  \                          the following string\n                              \
+  \                     representation\n                                         \
+  \          describes a sequence of\n                                           \
+  \        2 steps of CYP450\n                                                   metabolism,\
+  \ followed by\n                                                   1 step of Human\
+  \ Gut\n                                                   metabolism, 1 step of\n\
+  \                                                   Phase II, and 1 step of\n  \
+  \                                                 Environmental Microbial\n    \
+  \                                               Degradation:\n                 \
+  \                                  'cyp450:2; hgut:1;\n                        \
+  \                           phaseII:1; env:1'\n -s,--nsteps <Number of steps>  \
+  \                   The number of steps for\n                                  \
+  \                 the prediction. This\n                                       \
+  \            option can be set by\n                                            \
+  \       the user for the\n                                                   EC-based,\
+  \ CYP450, Phase\n                                                   II, and Environmental\n\
+  \                                                   microbial\n                \
+  \                                   biotransformers. The\n                     \
+  \                              default value is 1.\n -t,--mTolerance <Mass Tolerance>\
+  \                  Mass tolerance for\n                                        \
+  \           metabolite\n                                                   identification\
+  \ (default\n                                                   is 0.01).\n\n(* )\
+  \ While the 'superbio' option runs a set number of transformation steps\nin a pre-defined\
+  \ order (e.g. deconjugation first, then\nOxidation/reduction, etc.), the 'allHuman'\
+  \ option predicts all possible\nmetabolites from any applicable reaction(Oxidation,\
+  \ reduction,\n(de-)conjugation) at each step.(** ) For the environmental microbial\n\
+  biodegradation, all reactions (aerobic and anaerobic) are reported, and\nnot only\
+  \ the aerobic biotransformations (as per default in the EAWAG\nBBD/PPS system).\n\
+  \n*********\nExamples:\n*********\n\n1) To predict the biotransformation of a molecule\
+  \ from an SDF input using\nthe human super transformer (option superbio) and annotate\
+  \ the metabolites\nwith names and database IDs (from PubChem), run\n\n\njava -jar\
+  \ biotransformer-1.1.5.jar -k pred -b superbio -isdf #{input file\nname} -osdf #{output\
+  \ file} -a.\n\n2) To predict the 2-step biotransformation of Thymol (a monoterpene)\
+  \ using\nthe human super transformer (option allHuman) using the SMILES input and\n\
+  saving to a CSV file, run\n\njava -jar biotransformer-1.1.5.jar  -k pred -b allHuman\
+  \ -ismi\n\"CC(C)C1=CC=C(C)C=C1O\" -ocsv #{replace with output file name} -s 2\n\n\
+  3) Identify all human metabolites (max depth = 2) of Epicatechin\n(\"O[C@@H]1CC2=C(O)C=C(O)C=C2O[C@@H]1C1=CC=C(O)C(O)=C1\"\
+  ) with masses\n292.0946 Da and 304.0946 Da, with a mass tolerance of 0.01 Da. Provide\
+  \ an\nannotation (Common name, synonyms, and PubChem CID), when available.\n\njava\
+  \ -jar biotransformer-1.1.5.jar  -k cid -b allHuman -ismi\n\"O[C@@H]1CC2=C(O)C=C(O)C=C2O[C@@H]1C1=CC=C(O)C(O)=C1\"\
+  \ -osdf #{replace with\noutput file name} -s 2 -m \"292.0946;304.0946\" -t 0.01\
+  \ -a\n\n- DO NOT forget the quotes around the SMILES string or the list of masses\n\
+  4) Simulate an order sequence of metabolism of Atrazine\n(\"CCNC1=NC(=NC(=N1)Cl)NC(C)C\"\
+  ), starting with two steps of Cyp450\noxidation, followed by one step of conjugation.\n\
+  \ java -jar biotransformer-1.1.4.jar -ismi \"CCNC1=NC(=NC(=N1)Cl)NC(C)C\"\n-osdf\
+  \ ~/atrazine-sequence.sdf -k pred -q \"cyp450:2; phaseII:1\"\n\nTo report issues,\
+  \ provide feedback, or ask questions, please send an\ne-mail the following address:\
+  \ djoumbou@ualberta.ca\n\nBioTransformer is offered to the public as a freely acessible\
+  \ software\npackage under the GNU License GPL v2.1.Users are free to copy and\n\
+  redistribute the material in any medium or format. Moreover, they could\nmodify,\
+  \ and build upon the material unfer the condition that they must\ngive appropriate\
+  \ credit, provide links to the license, and indicate if\nchanges were made. Furthermore,\
+  \ the above copyright notice and this\npermission notice must be included. Use and\
+  \ re-distribution of the these\nresources, in whole or in part, for commercial purposes\
+  \ requires explicit\npermission of the authors. We ask that all users of the BioTransformer\n\
+  software tool, the BioTransformer web server, or BioTransformerDB to cite\nthe BioTransformer\
+  \ reference in any resulting publications, and to\nacknowledge the authors.\n\n\
+  Important Notice:\n-----------------\n\nBioTransformer's environmental microbial\
+  \ degradation module uses data from\nthe EAWAG's Biodegradation and Biocatalysis\
+  \ Database, which is licensed by\nEnviPath (https://envipath.com/license/)under\
+  \ the Creative Commons\nAttribution-NonCommercial-ShareAlike 4.0 International (CC\
+  \ BY-NC-SA 4.0).\nTherefore users of the environmental microbial degradation module\
+  \ must\ncite the following paper:\n\nenviPath?The environmental contaminant biotransformation\
+  \ pathway resource.\nJ Wicker, T Lorsbach, M G?tlein, E Schmid, D Latino, S Kramer,\
+  \ K Fenner.\nNucleic Acids Research, gkv1229 (full text).\n\nTo use the environmental\
+  \ microbial module for commercial purposes, users\nmust request an apropriate license\
+  \ from EnviPath.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/biotransformer:1.1.5--1

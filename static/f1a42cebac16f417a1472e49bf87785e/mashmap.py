@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, Int, Boolean, String
+
+Mashmap_V0_1_0 = CommandToolBuilder(tool="mashmap", base_command=["mashmap"], inputs=[ToolInput(tag="in_ref", input_type=File(optional=True), prefix="--ref", doc=InputDocumentation(doc="an input reference file (fasta/fastq)[.gz]")), ToolInput(tag="in_ref_list", input_type=File(optional=True), prefix="--refList", doc=InputDocumentation(doc="a file containing list of reference files, one per line")), ToolInput(tag="in_query", input_type=File(optional=True), prefix="--query", doc=InputDocumentation(doc="an input query file (fasta/fastq)[.gz]")), ToolInput(tag="in_query_list", input_type=File(optional=True), prefix="--queryList", doc=InputDocumentation(doc="a file containing list of query files, one per line")), ToolInput(tag="in_seg_length", input_type=Int(optional=True), prefix="--segLength", doc=InputDocumentation(doc="mapping segment length [default : 5,000]\nsequences shorter than segment length will be ignored")), ToolInput(tag="in_no_split", input_type=Boolean(optional=True), prefix="--noSplit", doc=InputDocumentation(doc="disable splitting of input sequences during mapping [enabled by default]")), ToolInput(tag="in_perc_identity", input_type=Int(optional=True), prefix="--perc_identity", doc=InputDocumentation(doc="threshold for identity [default : 85]")), ToolInput(tag="in_threads", input_type=Int(optional=True), prefix="--threads", doc=InputDocumentation(doc="count of threads for parallel execution [default : 1]")), ToolInput(tag="in_output", input_type=File(optional=True), prefix="--output", doc=InputDocumentation(doc="output file name [default : mashmap.out]")), ToolInput(tag="in_km_er", input_type=Int(optional=True), prefix="--kmer", doc=InputDocumentation(doc="kmer size <= 16 [default : 16]")), ToolInput(tag="in_filter_mode", input_type=String(optional=True), prefix="--filter_mode", doc=InputDocumentation(doc="filter modes in mashmap: 'map', 'one-to-one' or 'none' [default: map]\n'map' computes best mappings for each query sequence\n'one-to-one' computes best mappings for query as well as reference sequence\n'none' disables filtering\n"))], outputs=[ToolOutput(tag="out_output", output_type=File(optional=True), selector=InputSelector(input_to_select="in_output", type_hint=File()), doc=OutputDocumentation(doc="output file name [default : mashmap.out]"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Mashmap_V0_1_0().translate("wdl", allow_empty_container=True)
+

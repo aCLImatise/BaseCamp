@@ -4,6 +4,9 @@ task Picard {
   command <<<
     picard
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

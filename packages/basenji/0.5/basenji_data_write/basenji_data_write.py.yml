@@ -1,0 +1,99 @@
+!Command
+command:
+- basenji_data_write.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: fasta_file
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: seqs_bed_file
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: seqs_cov_dir
+  description: ''
+- !Positional
+  optional: false
+  position: 3
+  name: tfr_file
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: 'Sequence start index [Default: 0]'
+  args: !SimpleFlagArg
+    name: START_I
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  description: 'Sequence end index [Default: none]'
+  args: !SimpleFlagArg
+    name: END_I
+- !Flag
+  optional: true
+  synonyms:
+  - --te
+  description: 'Extend targets vector [Default: none]'
+  args: !SimpleFlagArg
+    name: TARGET_EXTEND
+- !Flag
+  optional: true
+  synonyms:
+  - --ts
+  description: "Write targets into vector starting at index [Default:\n0"
+  args: !SimpleFlagArg
+    name: TARGET_START
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  description: Unmappable array numpy file
+  args: !SimpleFlagArg
+    name: UMAP_NPY
+- !Flag
+  optional: true
+  synonyms:
+  - --umap_clip
+  description: "Clip values at unmappable positions to distribution\nquantiles, eg\
+    \ 0.25. [Default: 1]"
+  args: !SimpleFlagArg
+    name: UMAP_CLIP
+- !Flag
+  optional: true
+  synonyms:
+  - --umap_tfr
+  description: 'Save umap array into TFRecords [Default: False]'
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: basenji_data_write.py [options] <fasta_file> <seqs_bed_file> <seqs_cov_dir>\
+  \ <tfr_file>\n\nOptions:\n  -h, --help            show this help message and exit\n\
+  \  -s START_I            Sequence start index [Default: 0]\n  -e END_I         \
+  \     Sequence end index [Default: none]\n  --te=TARGET_EXTEND    Extend targets\
+  \ vector [Default: none]\n  --ts=TARGET_START     Write targets into vector starting\
+  \ at index [Default:\n                        0\n  -u UMAP_NPY           Unmappable\
+  \ array numpy file\n  --umap_clip=UMAP_CLIP\n                        Clip values\
+  \ at unmappable positions to distribution\n                        quantiles, eg\
+  \ 0.25. [Default: 1]\n  --umap_tfr            Save umap array into TFRecords [Default:\
+  \ False]\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/basenji:0.5--py_0

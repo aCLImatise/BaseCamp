@@ -30,6 +30,9 @@ task Muscle {
       ~{if (quiet) then "-quiet" else ""} \
       ~{if (version) then "-version" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "Input file in FASTA format (default stdin)"
     out: "Output alignment in FASTA format (default stdout)"

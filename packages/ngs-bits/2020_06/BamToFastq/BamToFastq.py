@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, String, Boolean, Int
+
+Bamtofastq_V0_1_0 = CommandToolBuilder(tool="BamToFastq", base_command=["BamToFastq"], inputs=[ToolInput(tag="in_in", input_type=File(optional=True), prefix="-in", doc=InputDocumentation(doc="Input BAM file.")), ToolInput(tag="in_out_one", input_type=File(optional=True), prefix="-out1", doc=InputDocumentation(doc="Read 1 output FASTQ.GZ file.")), ToolInput(tag="in_out_two", input_type=File(optional=True), prefix="-out2", doc=InputDocumentation(doc="Read 2 output FASTQ.GZ file.")), ToolInput(tag="in_reg", input_type=String(optional=True), prefix="-reg", doc=InputDocumentation(doc="Export only reads in the given region. Format: chr:start-end.\nDefault value: ''")), ToolInput(tag="in_remove_duplicates", input_type=Boolean(optional=True), prefix="-remove_duplicates", doc=InputDocumentation(doc="Does not export duplicate reads into the FASTQ file.\nDefault value: 'false'")), ToolInput(tag="in_compression_level", input_type=Int(optional=True), prefix="-compression_level", doc=InputDocumentation(doc="Output gzip compression level from 1 (fastest) to 9 (best compression).\nDefault value: '1'")), ToolInput(tag="in_write_buffer_size", input_type=Int(optional=True), prefix="-write_buffer_size", doc=InputDocumentation(doc="Output write buffer size (number of FASTQ entry pairs).\nDefault value: '100'")), ToolInput(tag="in_changelog", input_type=Boolean(optional=True), prefix="--changelog", doc=InputDocumentation(doc="Prints changeloge and exits.")), ToolInput(tag="in_tdx", input_type=Boolean(optional=True), prefix="--tdx", doc=InputDocumentation(doc="Writes a Tool Definition Xml file. The file name is the application name with the suffix '.tdx'."))], outputs=[ToolOutput(tag="out_out_one", output_type=File(optional=True), selector=InputSelector(input_to_select="in_out_one", type_hint=File()), doc=OutputDocumentation(doc="Read 1 output FASTQ.GZ file.")), ToolOutput(tag="out_out_two", output_type=File(optional=True), selector=InputSelector(input_to_select="in_out_two", type_hint=File()), doc=OutputDocumentation(doc="Read 2 output FASTQ.GZ file."))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Bamtofastq_V0_1_0().translate("wdl", allow_empty_container=True)
+

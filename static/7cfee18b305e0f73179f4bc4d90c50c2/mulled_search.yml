@@ -1,0 +1,85 @@
+!Command
+command:
+- mulled-search
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --destination
+  description: "Choose where to search. Options are 'conda', 'quay',\n'singularity'\
+    \ and 'github'. If no option are given,\nall will be searched."
+  args: !RepeatFlagArg
+    name: SEARCH_DEST
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --organization
+  description: "Change quay organization to search; default is\nbiocontainers."
+  args: !SimpleFlagArg
+    name: ORGANIZATION_STRING
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --channel
+  description: Change conda channel to search; default is bioconda.
+  args: !SimpleFlagArg
+    name: CHANNEL_STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --non-strict
+  description: "Autocorrection of typos activated. Lists more results\nbut can be\
+    \ confusing. For too many queries quay.io\nblocks the request and the results\
+    \ can be incomplete."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --json
+  description: Returns results as JSON.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --search
+  description: "The name of the tool(s) to search for.\n"
+  args: !RepeatFlagArg
+    name: SEARCH
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: mulled-search [-h] [-d SEARCH_DEST [SEARCH_DEST ...]]\n       \
+  \              [-o ORGANIZATION_STRING] [-c CHANNEL_STRING]\n                  \
+  \   [--non-strict] [-j] -s SEARCH [SEARCH ...]\n\nSearches in a given quay organization\
+  \ for a repository\n\noptional arguments:\n  -h, --help            show this help\
+  \ message and exit\n  -d SEARCH_DEST [SEARCH_DEST ...], --destination SEARCH_DEST\
+  \ [SEARCH_DEST ...]\n                        Choose where to search. Options are\
+  \ 'conda', 'quay',\n                        'singularity' and 'github'. If no option\
+  \ are given,\n                        all will be searched.\n  -o ORGANIZATION_STRING,\
+  \ --organization ORGANIZATION_STRING\n                        Change quay organization\
+  \ to search; default is\n                        biocontainers.\n  -c CHANNEL_STRING,\
+  \ --channel CHANNEL_STRING\n                        Change conda channel to search;\
+  \ default is bioconda.\n  --non-strict          Autocorrection of typos activated.\
+  \ Lists more results\n                        but can be confusing. For too many\
+  \ queries quay.io\n                        blocks the request and the results can\
+  \ be incomplete.\n  -j, --json            Returns results as JSON.\n  -s SEARCH\
+  \ [SEARCH ...], --search SEARCH [SEARCH ...]\n                        The name of\
+  \ the tool(s) to search for.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/galaxy-tool-util:20.9.1--py_0

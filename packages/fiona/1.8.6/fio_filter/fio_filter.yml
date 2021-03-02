@@ -1,0 +1,46 @@
+!Command
+command:
+- fio
+- filter
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: FILTER_EXPRESSION
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --rs
+  - --no-rs
+  description: "Use RS (0x1E) as a prefix for individual texts in a sequence\nas per\
+    \ http://tools.ietf.org/html/draft-ietf-json-text-\nsequence-13 (default is False)."
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: fio filter [OPTIONS] FILTER_EXPRESSION\n\n  Filter GeoJSON features\
+  \ by python expression.\n\n  Features are read from stdin.\n\n  The expression is\
+  \ evaluated in a restricted namespace containing:     -\n  sum, pow, min, max and\
+  \ the imported math module     - shape (optional,\n  imported from shapely.geometry\
+  \ if available)     - bool, int, str, len,\n  float type conversions     - f (the\
+  \ feature to be evaluated,\n  allows item access via javascript-style dot notation\
+  \ using munch)\n\n  The expression will be evaluated for each feature and, if true,\
+  \ the\n  feature will be included in the output.  For example:\n\n      $ fio cat\
+  \ data.shp \\\n          | fio filter \"f.properties.area > 1000.0\" \\\n      \
+  \    | fio collect > large_polygons.geojson\n\nOptions:\n  --rs / --no-rs  Use RS\
+  \ (0x1E) as a prefix for individual texts in a sequence\n                  as per\
+  \ http://tools.ietf.org/html/draft-ietf-json-text-\n                  sequence-13\
+  \ (default is False).\n\n  --help          Show this message and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/fiona:1.8.6

@@ -1,0 +1,74 @@
+!Command
+command:
+- gdtools
+- PHYLOGENY
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: produce output for each mutation counted.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: path to output file with added mutation data. (DEFAULT=.)
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reference
+  description: File containing reference sequences in GenBank, GFF3, or FASTA format.
+    Option may be provided multiple times for multiple files (REQUIRED)
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --missing-as-ancestral
+  description: Count missing data (mutations in UN regions) as the ancestral allele
+    rather than as an unknown allele (N).
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --phylogeny-aware
+  description: Check the optional 'phylogeny_id' field when deciding if entries are
+    equivalent
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Display detailed help message
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "\ngdtools PHYLOGENY [-o phylogeny] -r reference.gbk input.1.gd [input.2.gd\
+  \ ... ]\n  -h,--help                        Display detailed help message\n  -v,--verbose\
+  \                     produce output for each mutation counted.\n  -o,--output <arg>\
+  \                path to output file with added mutation data. (DEFAULT=.)\n  -r,--reference\
+  \ <arg>             File containing reference sequences in GenBank, GFF3, or FASTA\
+  \ format. Option may be provided multiple times for multiple files (REQUIRED)\n\
+  \  -a,--missing-as-ancestral        Count missing data (mutations in UN regions)\
+  \ as the ancestral allele rather than as an unknown allele (N).\n  -p,--phylogeny-aware\
+  \             Check the optional 'phylogeny_id' field when deciding if entries are\
+  \ equivalent\n\nUses PHYLIP to construct a phylogentic tree. If you are including\
+  \ an ancestor to root the tree, you should include it as the very first Genome Diff\
+  \ file.\n\nYou MUST have 'dnapars' from PHYLIP installed and in your path to use\
+  \ this commend.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/breseq:0.35.5--h8b12597_0

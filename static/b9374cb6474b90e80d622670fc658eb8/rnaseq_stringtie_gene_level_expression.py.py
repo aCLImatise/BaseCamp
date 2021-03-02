@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, Boolean, String
+
+Rnaseq_Stringtie_Gene_Level_Expression_Py_V0_1_0 = CommandToolBuilder(tool="rnaseq_stringtie_gene_level_expression.py", base_command=["rnaseq_stringtie_gene_level_expression.py"], inputs=[ToolInput(tag="in_string_tie_file", input_type=File(optional=True), prefix="--stringtie-file", doc=InputDocumentation(doc="Path of the StringTie output file .")), ToolInput(tag="in_gene_file", input_type=File(optional=True), prefix="--gene-file", doc=InputDocumentation(doc="File containing a list of protein-coding genes.")), ToolInput(tag="in_no_novel_transcripts", input_type=Boolean(optional=True), prefix="--no-novel-transcripts", doc=InputDocumentation(doc="Ignore novel transcripts.")), ToolInput(tag="in_output_file", input_type=File(optional=True), prefix="--output-file", doc=InputDocumentation(doc="Path of output file.")), ToolInput(tag="in_log_file", input_type=File(optional=True), prefix="--log-file", doc=InputDocumentation(doc="Path of log file (if specified, report to stdout AND file.")), ToolInput(tag="in_quiet", input_type=Boolean(optional=True), prefix="--quiet", doc=InputDocumentation(doc="Only output errors and warnings.")), ToolInput(tag="in_verbose", input_type=Boolean(optional=True), prefix="--verbose", doc=InputDocumentation(doc="Enable verbose output. Ignored if --quiet is specified.")), ToolInput(tag="in_extracts", input_type=String(), position=0, doc=InputDocumentation(doc="")), ToolInput(tag="in_gene_level", input_type=String(), position=1, doc=InputDocumentation(doc="")), ToolInput(tag="in_expression", input_type=String(), position=2, doc=InputDocumentation(doc="")), ToolInput(tag="in_data", input_type=String(), position=3, doc=InputDocumentation(doc="")), ToolInput(tag="in_from", input_type=String(), position=4, doc=InputDocumentation(doc="")), ToolInput(tag="in_string_tie", input_type=String(), position=5, doc=InputDocumentation(doc="")), ToolInput(tag="in_output_dot", input_type=String(), position=6, doc=InputDocumentation(doc=""))], outputs=[ToolOutput(tag="out_string_tie_file", output_type=File(optional=True), selector=InputSelector(input_to_select="in_string_tie_file", type_hint=File()), doc=OutputDocumentation(doc="Path of the StringTie output file .")), ToolOutput(tag="out_output_file", output_type=File(optional=True), selector=InputSelector(input_to_select="in_output_file", type_hint=File()), doc=OutputDocumentation(doc="Path of output file."))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Rnaseq_Stringtie_Gene_Level_Expression_Py_V0_1_0().translate("wdl", allow_empty_container=True)
+

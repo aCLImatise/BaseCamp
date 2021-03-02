@@ -1,0 +1,80 @@
+!Command
+command:
+- pyfastx
+- extract
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: fastx
+  description: fasta or fastq file, gzip support
+- !Positional
+  optional: false
+  position: 1
+  name: name
+  description: "sequence name or read name, multiple names were\nseparated by space"
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --list-file
+  description: "a file containing sequence or read names, one name per\nline"
+  args: !SimpleFlagArg
+    name: str
+- !Flag
+  optional: true
+  synonyms:
+  - --reverse-complement
+  description: output reverse complement sequence
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --out-fasta
+  description: "output fasta format when extract reads from fastq,\ndefault output\
+    \ fastq format"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out-file
+  description: 'output file, default: output to stdout'
+  args: !SimpleFlagArg
+    name: str
+- !Flag
+  optional: true
+  synonyms:
+  - --sequential-read
+  description: "start sequential reading, particularly suitable for\nextracting large\
+    \ numbers of sequences\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: pyfastx extract [-h] [-l str] [--reverse-complement] [--out-fasta]\n\
+  \                       [-o str] [--sequential-read]\n                       fastx\
+  \ [name [name ...]]\n\npositional arguments:\n  fastx                 fasta or fastq\
+  \ file, gzip support\n  name                  sequence name or read name, multiple\
+  \ names were\n                        separated by space\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -l str, --list-file\
+  \ str\n                        a file containing sequence or read names, one name\
+  \ per\n                        line\n  --reverse-complement  output reverse complement\
+  \ sequence\n  --out-fasta           output fasta format when extract reads from\
+  \ fastq,\n                        default output fastq format\n  -o str, --out-file\
+  \ str\n                        output file, default: output to stdout\n  --sequential-read\
+  \     start sequential reading, particularly suitable for\n                    \
+  \    extracting large numbers of sequences\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/pyfastx:0.8.2--py36h955c1b8_0

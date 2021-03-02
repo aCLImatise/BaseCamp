@@ -1,0 +1,341 @@
+!Command
+command:
+- hailctl
+- dataproc
+- start
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --master-machine-type
+  - --master
+  - -m
+  description: 'Master machine type (default: n1-highmem-8).'
+  args: !SimpleFlagArg
+    name: MASTER_MACHINE_TYPE
+- !Flag
+  optional: true
+  synonyms:
+  - --master-memory-fraction
+  description: "Fraction of master memory allocated to the JVM. Use a\nsmaller value\
+    \ to reserve more memory for Python.\n(default: 0.8)"
+  args: !SimpleFlagArg
+    name: MASTER_MEMORY_FRACTION
+- !Flag
+  optional: true
+  synonyms:
+  - --master-boot-disk-size
+  description: 'Disk size of master machine, in GB (default: 100).'
+  args: !SimpleFlagArg
+    name: MASTER_BOOT_DISK_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --num-master-local-ssds
+  description: "Number of local SSDs to attach to the master machine\n(default: 0)."
+  args: !SimpleFlagArg
+    name: NUM_MASTER_LOCAL_SSDS
+- !Flag
+  optional: true
+  synonyms:
+  - --num-secondary-workers
+  - --num-preemptible-workers
+  - --n-pre-workers
+  - -p
+  description: "Number of secondary (preemptible) worker machines\n(default: 0)."
+  args: !SimpleFlagArg
+    name: NUM_SECONDARY_WORKERS
+- !Flag
+  optional: true
+  synonyms:
+  - --num-worker-local-ssds
+  description: "Number of local SSDs to attach to each worker machine\n(default: 0)."
+  args: !SimpleFlagArg
+    name: NUM_WORKER_LOCAL_SSDS
+- !Flag
+  optional: true
+  synonyms:
+  - --num-workers
+  - --n-workers
+  - -w
+  description: 'Number of worker machines (default: 2).'
+  args: !SimpleFlagArg
+    name: NUM_WORKERS
+- !Flag
+  optional: true
+  synonyms:
+  - --secondary-worker-boot-disk-size
+  - --preemptible-worker-boot-disk-size
+  description: "Disk size of secondary (preemptible) worker machines,\nin GB (default:\
+    \ 40)."
+  args: !SimpleFlagArg
+    name: SECONDARY_WORKER_BOOT_DISK_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --worker-boot-disk-size
+  description: 'Disk size of worker machines, in GB (default: 40).'
+  args: !SimpleFlagArg
+    name: WORKER_BOOT_DISK_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --worker-machine-type
+  - --worker
+  description: "Worker machine type (default: n1-standard-8, or\nn1-highmem-8 with\
+    \ --vep)."
+  args: !SimpleFlagArg
+    name: WORKER_MACHINE_TYPE
+- !Flag
+  optional: true
+  synonyms:
+  - --region
+  description: Compute region for the cluster.
+  args: !SimpleFlagArg
+    name: REGION
+- !Flag
+  optional: true
+  synonyms:
+  - --zone
+  description: Compute zone for the cluster.
+  args: !SimpleFlagArg
+    name: ZONE
+- !Flag
+  optional: true
+  synonyms:
+  - --properties
+  description: Additional configuration properties for the cluster
+  args: !SimpleFlagArg
+    name: PROPERTIES
+- !Flag
+  optional: true
+  synonyms:
+  - --metadata
+  description: "Comma-separated list of metadata to add:\nKEY1=VALUE1,KEY2=VALUE2..."
+  args: !SimpleFlagArg
+    name: METADATA
+- !Flag
+  optional: true
+  synonyms:
+  - --packages
+  - --pkgs
+  description: "Comma-separated list of Python packages to be\ninstalled on the master\
+    \ node."
+  args: !SimpleFlagArg
+    name: PACKAGES
+- !Flag
+  optional: true
+  synonyms:
+  - --project
+  description: "Google Cloud project to start cluster (defaults to\ncurrently set\
+    \ project)."
+  args: !SimpleFlagArg
+    name: PROJECT
+- !Flag
+  optional: true
+  synonyms:
+  - --configuration
+  description: "Google Cloud configuration to start cluster (defaults\nto currently\
+    \ set configuration)."
+  args: !SimpleFlagArg
+    name: CONFIGURATION
+- !Flag
+  optional: true
+  synonyms:
+  - --max-idle
+  description: "If specified, maximum idle time before shutdown (e.g.\n60m)."
+  args: !SimpleFlagArg
+    name: MAX_IDLE
+- !Flag
+  optional: true
+  synonyms:
+  - --expiration-time
+  description: "If specified, time at which cluster is shutdown (e.g.\n2020-01-01T00:00:00Z)."
+  args: !SimpleFlagArg
+    name: EXPIRATION_TIME
+- !Flag
+  optional: true
+  synonyms:
+  - --max-age
+  description: If specified, maximum age before shutdown (e.g. 60m).
+  args: !SimpleFlagArg
+    name: MAX_AGE
+- !Flag
+  optional: true
+  synonyms:
+  - --bucket
+  description: "The Google Cloud Storage bucket to use for cluster\nstaging (just\
+    \ the bucket name, no gs:// prefix)."
+  args: !SimpleFlagArg
+    name: BUCKET
+- !Flag
+  optional: true
+  synonyms:
+  - --network
+  description: the network for all nodes in this cluster
+  args: !SimpleFlagArg
+    name: NETWORK
+- !Flag
+  optional: true
+  synonyms:
+  - --master-tags
+  description: "comma-separated list of instance tags to apply to the\nmastern node"
+  args: !SimpleFlagArg
+    name: MASTER_TAGS
+- !Flag
+  optional: true
+  synonyms:
+  - --wheel
+  description: 'Non-default Hail installation. Warning: experimental.'
+  args: !SimpleFlagArg
+    name: WHEEL
+- !Flag
+  optional: true
+  synonyms:
+  - --init
+  description: Comma-separated list of init scripts to run.
+  args: !SimpleFlagArg
+    name: INIT
+- !Flag
+  optional: true
+  synonyms:
+  - --init_timeout
+  description: "Flag to specify a timeout period for the\ninitialization action"
+  args: !SimpleFlagArg
+    name: INIT_TIMEOUT
+- !Flag
+  optional: true
+  synonyms:
+  - --vep
+  description: Install VEP for the specified reference genome.
+  args: !ChoiceFlagArg
+    choices: !!set
+      GRCh37:
+      GRCh38:
+- !Flag
+  optional: true
+  synonyms:
+  - --dry-run
+  description: Print gcloud dataproc command, but don't run it.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --requester-pays-allow-all
+  description: Allow reading from all requester-pays buckets.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --requester-pays-allow-buckets
+  description: "Comma-separated list of requester-pays buckets to\nallow reading from."
+  args: !SimpleFlagArg
+    name: REQUESTER_PAYS_ALLOW_BUCKETS
+- !Flag
+  optional: true
+  synonyms:
+  - --requester-pays-allow-annotation-db
+  description: "Allows reading from any of the requester-pays buckets\nthat hold data\
+    \ for the annotation database."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --debug-mode
+  description: "Enable debug features on created cluster (heap dump on\nout-of-memory\
+    \ error)\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: hailctl dataproc start [-h] [--master-machine-type MASTER_MACHINE_TYPE]\n\
+  \                              [--master-memory-fraction MASTER_MEMORY_FRACTION]\n\
+  \                              [--master-boot-disk-size MASTER_BOOT_DISK_SIZE]\n\
+  \                              [--num-master-local-ssds NUM_MASTER_LOCAL_SSDS]\n\
+  \                              [--num-secondary-workers NUM_SECONDARY_WORKERS]\n\
+  \                              [--num-worker-local-ssds NUM_WORKER_LOCAL_SSDS]\n\
+  \                              [--num-workers NUM_WORKERS]\n                   \
+  \           [--secondary-worker-boot-disk-size SECONDARY_WORKER_BOOT_DISK_SIZE]\n\
+  \                              [--worker-boot-disk-size WORKER_BOOT_DISK_SIZE]\n\
+  \                              [--worker-machine-type WORKER_MACHINE_TYPE]\n   \
+  \                           [--region REGION] [--zone ZONE]\n                  \
+  \            [--properties PROPERTIES] [--metadata METADATA]\n                 \
+  \             [--packages PACKAGES] [--project PROJECT]\n                      \
+  \        [--configuration CONFIGURATION]\n                              [--max-idle\
+  \ MAX_IDLE]\n                              [--expiration-time EXPIRATION_TIME |\
+  \ --max-age MAX_AGE]\n                              [--bucket BUCKET] [--network\
+  \ NETWORK]\n                              [--master-tags MASTER_TAGS] [--wheel WHEEL]\n\
+  \                              [--init INIT] [--init_timeout INIT_TIMEOUT]\n   \
+  \                           [--vep {GRCh37,GRCh38}] [--dry-run]\n              \
+  \                [--requester-pays-allow-all]\n                              [--requester-pays-allow-buckets\
+  \ REQUESTER_PAYS_ALLOW_BUCKETS]\n                              [--requester-pays-allow-annotation-db]\n\
+  \                              [--debug-mode]\n                              name\n\
+  \nStart a Dataproc cluster configured for Hail.\n\npositional arguments:\n  name\
+  \                  Cluster name.\n\noptional arguments:\n  -h, --help          \
+  \  show this help message and exit\n  --master-machine-type MASTER_MACHINE_TYPE,\
+  \ --master MASTER_MACHINE_TYPE, -m MASTER_MACHINE_TYPE\n                       \
+  \ Master machine type (default: n1-highmem-8).\n  --master-memory-fraction MASTER_MEMORY_FRACTION\n\
+  \                        Fraction of master memory allocated to the JVM. Use a\n\
+  \                        smaller value to reserve more memory for Python.\n    \
+  \                    (default: 0.8)\n  --master-boot-disk-size MASTER_BOOT_DISK_SIZE\n\
+  \                        Disk size of master machine, in GB (default: 100).\n  --num-master-local-ssds\
+  \ NUM_MASTER_LOCAL_SSDS\n                        Number of local SSDs to attach\
+  \ to the master machine\n                        (default: 0).\n  --num-secondary-workers\
+  \ NUM_SECONDARY_WORKERS, --num-preemptible-workers NUM_SECONDARY_WORKERS, --n-pre-workers\
+  \ NUM_SECONDARY_WORKERS, -p NUM_SECONDARY_WORKERS\n                        Number\
+  \ of secondary (preemptible) worker machines\n                        (default:\
+  \ 0).\n  --num-worker-local-ssds NUM_WORKER_LOCAL_SSDS\n                       \
+  \ Number of local SSDs to attach to each worker machine\n                      \
+  \  (default: 0).\n  --num-workers NUM_WORKERS, --n-workers NUM_WORKERS, -w NUM_WORKERS\n\
+  \                        Number of worker machines (default: 2).\n  --secondary-worker-boot-disk-size\
+  \ SECONDARY_WORKER_BOOT_DISK_SIZE, --preemptible-worker-boot-disk-size SECONDARY_WORKER_BOOT_DISK_SIZE\n\
+  \                        Disk size of secondary (preemptible) worker machines,\n\
+  \                        in GB (default: 40).\n  --worker-boot-disk-size WORKER_BOOT_DISK_SIZE\n\
+  \                        Disk size of worker machines, in GB (default: 40).\n  --worker-machine-type\
+  \ WORKER_MACHINE_TYPE, --worker WORKER_MACHINE_TYPE\n                        Worker\
+  \ machine type (default: n1-standard-8, or\n                        n1-highmem-8\
+  \ with --vep).\n  --region REGION       Compute region for the cluster.\n  --zone\
+  \ ZONE           Compute zone for the cluster.\n  --properties PROPERTIES\n    \
+  \                    Additional configuration properties for the cluster\n  --metadata\
+  \ METADATA   Comma-separated list of metadata to add:\n                        KEY1=VALUE1,KEY2=VALUE2...\n\
+  \  --packages PACKAGES, --pkgs PACKAGES\n                        Comma-separated\
+  \ list of Python packages to be\n                        installed on the master\
+  \ node.\n  --project PROJECT     Google Cloud project to start cluster (defaults\
+  \ to\n                        currently set project).\n  --configuration CONFIGURATION\n\
+  \                        Google Cloud configuration to start cluster (defaults\n\
+  \                        to currently set configuration).\n  --max-idle MAX_IDLE\
+  \   If specified, maximum idle time before shutdown (e.g.\n                    \
+  \    60m).\n  --expiration-time EXPIRATION_TIME\n                        If specified,\
+  \ time at which cluster is shutdown (e.g.\n                        2020-01-01T00:00:00Z).\n\
+  \  --max-age MAX_AGE     If specified, maximum age before shutdown (e.g. 60m).\n\
+  \  --bucket BUCKET       The Google Cloud Storage bucket to use for cluster\n  \
+  \                      staging (just the bucket name, no gs:// prefix).\n  --network\
+  \ NETWORK     the network for all nodes in this cluster\n  --master-tags MASTER_TAGS\n\
+  \                        comma-separated list of instance tags to apply to the\n\
+  \                        mastern node\n  --wheel WHEEL         Non-default Hail\
+  \ installation. Warning: experimental.\n  --init INIT           Comma-separated\
+  \ list of init scripts to run.\n  --init_timeout INIT_TIMEOUT\n                \
+  \        Flag to specify a timeout period for the\n                        initialization\
+  \ action\n  --vep {GRCh37,GRCh38}\n                        Install VEP for the specified\
+  \ reference genome.\n  --dry-run             Print gcloud dataproc command, but\
+  \ don't run it.\n  --requester-pays-allow-all\n                        Allow reading\
+  \ from all requester-pays buckets.\n  --requester-pays-allow-buckets REQUESTER_PAYS_ALLOW_BUCKETS\n\
+  \                        Comma-separated list of requester-pays buckets to\n   \
+  \                     allow reading from.\n  --requester-pays-allow-annotation-db\n\
+  \                        Allows reading from any of the requester-pays buckets\n\
+  \                        that hold data for the annotation database.\n  --debug-mode\
+  \          Enable debug features on created cluster (heap dump on\n            \
+  \            out-of-memory error)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/hail:0.2.61--py36hf1ae8f4_1

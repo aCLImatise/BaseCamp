@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Int
+
+Ggd_Search_Search_Term_V0_1_0 = CommandToolBuilder(tool="ggd_search_search_term", base_command=["ggd", "search", "search_term"], inputs=[ToolInput(tag="in_gr_ch_three_seven_autosomal_recessive_genes_berg_ble_kh_man_v_one_dot_bed_do_tgz", input_type=Int(), position=0, doc=InputDocumentation(doc="grch37-autosomal-recessive-genes-berg-blekhman-v1.bed.gz.tbi")), ToolInput(tag="in_gr_ch_three_seven_autosomal_recessive_genes_berg_ble_kh_man_v_one_dot_compliment_dot_bed_do_tgz", input_type=Int(), position=1, doc=InputDocumentation(doc="grch37-autosomal-recessive-genes-berg-blekhman-v1.compliment.bed.gz.tbi")), ToolInput(tag="in_gr_ch_three_seven_autosomal_recessive_genes_berg_v_one_dot_bed_do_tgz", input_type=Int(), position=0, doc=InputDocumentation(doc="grch37-autosomal-recessive-genes-berg-v1.bed.gz.tbi")), ToolInput(tag="in_gr_ch_three_seven_autosomal_recessive_genes_berg_v_one_dot_compliment_dot_bed_do_tgz", input_type=Int(), position=1, doc=InputDocumentation(doc="grch37-autosomal-recessive-genes-berg-v1.compliment.bed.gz.tbi")), ToolInput(tag="in_gr_ch_three_seven_autosomal_recessive_genes_ble_kh_man_v_one_dot_bed_do_tgz", input_type=Int(), position=0, doc=InputDocumentation(doc="grch37-autosomal-recessive-genes-blekhman-v1.bed.gz.tbi")), ToolInput(tag="in_gr_ch_three_seven_autosomal_recessive_genes_ble_kh_man_v_one_dot_compliment_dot_bed_do_tgz", input_type=Int(), position=1, doc=InputDocumentation(doc="grch37-autosomal-recessive-genes-blekhman-v1.compliment.bed.gz.tbi")), ToolInput(tag="in_gr_ch_three_eight_autosomal_recessive_genes_berg_ble_kh_man_v_one_dot_bed_do_tgz", input_type=Int(), position=0, doc=InputDocumentation(doc="grch38-autosomal-recessive-genes-berg-blekhman-v1.bed.gz.tbi")), ToolInput(tag="in_gr_ch_three_eight_autosomal_recessive_genes_berg_ble_kh_man_v_one_dot_compliment_dot_bed_do_tgz", input_type=Int(), position=1, doc=InputDocumentation(doc="grch38-autosomal-recessive-genes-berg-blekhman-v1.compliment.bed.gz.tbi")), ToolInput(tag="in_gr_ch_three_eight_autosomal_recessive_genes_berg_v_one_dot_bed_do_tgz", input_type=Int(), position=0, doc=InputDocumentation(doc="grch38-autosomal-recessive-genes-berg-v1.bed.gz.tbi")), ToolInput(tag="in_gr_ch_three_eight_autosomal_recessive_genes_berg_v_one_dot_compliment_dot_bed_do_tgz", input_type=Int(), position=1, doc=InputDocumentation(doc="grch38-autosomal-recessive-genes-berg-v1.compliment.bed.gz.tbi"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Ggd_Search_Search_Term_V0_1_0().translate("wdl", allow_empty_container=True)
+

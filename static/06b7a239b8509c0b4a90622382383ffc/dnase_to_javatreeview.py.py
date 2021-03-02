@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Int, Boolean, File, String
+
+Dnase_To_Javatreeview_Py_V0_1_0 = CommandToolBuilder(tool="dnase_to_javatreeview.py", base_command=["dnase_to_javatreeview.py"], inputs=[ToolInput(tag="in_window_size", input_type=Int(optional=True), prefix="--window_size", doc=InputDocumentation(doc="Size of flanking area around centre of the regions to\nplot (default: 100)")), ToolInput(tag="in_ignores_strand_information", input_type=Boolean(optional=True), prefix="-i", doc=InputDocumentation(doc="Ignores strand information in BED file")), ToolInput(tag="in_orders_output_same", input_type=Boolean(optional=True), prefix="-o", doc=InputDocumentation(doc="Orders output the same as the input (default: orders\nby FOS)")), ToolInput(tag="in_write_absolute_counts", input_type=Boolean(optional=True), prefix="-a", doc=InputDocumentation(doc="Write absolute cut counts instead strand imbalanced")), ToolInput(tag="in_disable_memory_caching", input_type=Boolean(optional=True), prefix="-c", doc=InputDocumentation(doc="Disable memory caching (low RAM mode)")), ToolInput(tag="in_normalise_cutting_bias", input_type=Boolean(optional=True), prefix="-b", doc=InputDocumentation(doc="Normalise for cutting bias")), ToolInput(tag="in_atacseq_mode_default", input_type=Boolean(optional=True), prefix="-A", doc=InputDocumentation(doc="ATAC-seq mode (default: False)")), ToolInput(tag="in_bias_file", input_type=File(optional=True), prefix="--bias-file", doc=InputDocumentation(doc="Location of the sorted, index")), ToolInput(tag="in_randomise_ordering_output", input_type=Boolean(optional=True), prefix="-r", doc=InputDocumentation(doc="Randomise the ordering of the output")), ToolInput(tag="in_n", input_type=Boolean(optional=True), prefix="-n", doc=InputDocumentation(doc="")), ToolInput(tag="in_regions", input_type=String(), position=0, doc=InputDocumentation(doc="BED file of the regions you want to generate the\nheatmap for")), ToolInput(tag="in_reads", input_type=String(), position=1, doc=InputDocumentation(doc="The BAM file containing the read data")), ToolInput(tag="in_output", input_type=String(), position=2, doc=InputDocumentation(doc="filename to write the CSV output to")), ToolInput(tag="in_counts", input_type=String(), position=0, doc=InputDocumentation(doc="-n                    Normalise the cut data for each region between 0 and 1"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Dnase_To_Javatreeview_Py_V0_1_0().translate("wdl", allow_empty_container=True)
+

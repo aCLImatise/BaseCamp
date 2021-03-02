@@ -1,0 +1,84 @@
+!Command
+command:
+- deepac-strain
+- explain
+- franking
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: OUT_DIR
+  description: 'optional arguments:'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --mode
+  description: "Use original filter scores or normalize scores\nrelative to true or\
+    \ predicted classes."
+  args: !ChoiceFlagArg
+    choices: !!set
+      original:
+      rel_true_class:
+      rel_pred_class:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --scores-dir
+  description: Directory containing filter contribution scores (.csv)
+  args: !SimpleFlagArg
+    name: SCORES_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -y
+  - --true-label
+  description: File with true read labels (.npy)
+  args: !SimpleFlagArg
+    name: TRUE_LABEL
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --pred-label
+  description: File with predicted read labels (.npy)
+  args: !SimpleFlagArg
+    name: PRED_LABEL
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out-dir
+  description: "Output directory\n"
+  args: !SimpleFlagArg
+    name: OUT_DIR
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "DeePaC-strain 0.2.1. Using bacterial strain models.\nusage: deepac explain\
+  \ franking [-h]\n                               [-m {original,rel_true_class,rel_pred_class}]\n\
+  \                               -f SCORES_DIR -y TRUE_LABEL -p PRED_LABEL -o\n \
+  \                              OUT_DIR\n\noptional arguments:\n  -h, --help    \
+  \        show this help message and exit\n  -m {original,rel_true_class,rel_pred_class},\
+  \ --mode {original,rel_true_class,rel_pred_class}\n                        Use original\
+  \ filter scores or normalize scores\n                        relative to true or\
+  \ predicted classes.\n  -f SCORES_DIR, --scores-dir SCORES_DIR\n               \
+  \         Directory containing filter contribution scores (.csv)\n  -y TRUE_LABEL,\
+  \ --true-label TRUE_LABEL\n                        File with true read labels (.npy)\n\
+  \  -p PRED_LABEL, --pred-label PRED_LABEL\n                        File with predicted\
+  \ read labels (.npy)\n  -o OUT_DIR, --out-dir OUT_DIR\n                        Output\
+  \ directory\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/deepacstrain:0.2.1--py_0

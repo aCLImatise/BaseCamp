@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File
+
+Dcmftest_V0_1_0 = CommandToolBuilder(tool="dcmftest", base_command=["dcmftest"], inputs=[ToolInput(tag="in_file_dot_dot_dot", input_type=File(), position=0, doc=InputDocumentation(doc=""))], outputs=[], container="quay.io/biocontainers/dcmtk:3.6.5--h5fca97b_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Dcmftest_V0_1_0().translate("wdl")
+

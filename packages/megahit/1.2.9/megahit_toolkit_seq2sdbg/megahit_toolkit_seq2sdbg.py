@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Int, String, Boolean
+
+Megahit_Toolkit_Seq2Sdbg_V0_1_0 = CommandToolBuilder(tool="megahit_toolkit_seq2sdbg", base_command=["megahit_toolkit", "seq2sdbg"], inputs=[ToolInput(tag="in_host_mem", input_type=Int(optional=True), prefix="--host_mem", doc=InputDocumentation(doc="(=0)                memory to be used. No more than 95% of the free memory is recommended. 0 for auto detect.")), ToolInput(tag="in_km_er_size", input_type=Int(optional=True), prefix="--kmer_size", doc=InputDocumentation(doc="(=0)               kmer size")), ToolInput(tag="in_km_er_from", input_type=Int(optional=True), prefix="--kmer_from", doc=InputDocumentation(doc="(=0)               previous k")), ToolInput(tag="in_num_cpu_threads", input_type=Int(optional=True), prefix="--num_cpu_threads", doc=InputDocumentation(doc="(=0)         number of CPU threads. At least 2.")), ToolInput(tag="in_contig", input_type=String(optional=True), prefix="--contig", doc=InputDocumentation(doc="contigs from previous k")), ToolInput(tag="in_bubble", input_type=String(optional=True), prefix="--bubble", doc=InputDocumentation(doc="bubble sequence from previous k")), ToolInput(tag="in_add_i_contig", input_type=String(optional=True), prefix="--addi_contig", doc=InputDocumentation(doc="additional contigs from previous k")), ToolInput(tag="in_local_contig", input_type=String(optional=True), prefix="--local_contig", doc=InputDocumentation(doc="local contigs from previous k")), ToolInput(tag="in_input_prefix", input_type=String(optional=True), prefix="--input_prefix", doc=InputDocumentation(doc="files input_prefix.edges.* output by count module, can be gzip'ed.")), ToolInput(tag="in_output_prefix", input_type=String(optional=True), prefix="--output_prefix", doc=InputDocumentation(doc="output prefix")), ToolInput(tag="in_need_mercy", input_type=Boolean(optional=True), prefix="--need_mercy", doc=InputDocumentation(doc="to add mercy edges. The file input_prefix.cand output by count module should exist.")), ToolInput(tag="in_mem_flag", input_type=Int(optional=True), prefix="--mem_flag", doc=InputDocumentation(doc="(=1)                memory options. 0: minimize memory usage; 1: automatically use moderate memory; other: use all available mem specified by '--host_mem'")), ToolInput(tag="in_s_dbg_builder", input_type=String(), position=0, doc=InputDocumentation(doc="")), ToolInput(tag="in_seq_two_s_dbg", input_type=Int(), position=1, doc=InputDocumentation(doc=""))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Megahit_Toolkit_Seq2Sdbg_V0_1_0().translate("wdl", allow_empty_container=True)
+

@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean
+
+Tpmcalculator_V0_1_0 = CommandToolBuilder(tool="TPMCalculator", base_command=["TPMCalculator"], inputs=[ToolInput(tag="in_print_info", input_type=Boolean(optional=True), prefix="-v", doc=InputDocumentation(doc="Print info")), ToolInput(tag="in_version", input_type=Boolean(optional=True), prefix="-version", doc=InputDocumentation(doc="Print version")), ToolInput(tag="in_gtf_file", input_type=Boolean(optional=True), prefix="-g", doc=InputDocumentation(doc="GTF file")), ToolInput(tag="in_directory_bam_files", input_type=Boolean(optional=True), prefix="-d", doc=InputDocumentation(doc="Directory with the BAM files")), ToolInput(tag="in_bam_file", input_type=Boolean(optional=True), prefix="-b", doc=InputDocumentation(doc="BAM file")), ToolInput(tag="in_gene_key_use", input_type=Boolean(optional=True), prefix="-k", doc=InputDocumentation(doc="Gene key to use from GTF file. Default: gene_id")), ToolInput(tag="in_transcript_key_use", input_type=Boolean(optional=True), prefix="-t", doc=InputDocumentation(doc="Transcript key to use from GTF file. Default: transcript_id")), ToolInput(tag="in_smaller_size_allowed", input_type=Boolean(optional=True), prefix="-c", doc=InputDocumentation(doc="Smaller size allowed for an intron created for genes. Default: 16. We recommend to use the reads length")), ToolInput(tag="in_use_properly_paired", input_type=Boolean(optional=True), prefix="-p", doc=InputDocumentation(doc="Use only properly paired reads. Default: No. Recommended for paired-end reads.")), ToolInput(tag="in_minimum_mapq_value", input_type=Boolean(optional=True), prefix="-q", doc=InputDocumentation(doc="Minimum MAPQ value to filter out reads. Default: 0. This value depends on the aligner MAPQ value.")), ToolInput(tag="in_minimum_overlap_reads", input_type=Boolean(optional=True), prefix="-o", doc=InputDocumentation(doc="Minimum overlap between a reads and a feature. Default: 8.")), ToolInput(tag="in_extended_output_include", input_type=Boolean(optional=True), prefix="-e", doc=InputDocumentation(doc="Extended output. This will include transcript level TPM values. Default: No.")), ToolInput(tag="in_print_features_read", input_type=Boolean(optional=True), prefix="-a", doc=InputDocumentation(doc="Print out all features with read counts equal to zero. Default: No."))], outputs=[], container="quay.io/biocontainers/tpmcalculator:0.0.4--h7376a40_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Tpmcalculator_V0_1_0().translate("wdl")
+

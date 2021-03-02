@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Array, String, Int
+
+Tadtool_Plot_V0_1_0 = CommandToolBuilder(tool="tadtool_plot", base_command=["tadtool", "plot"], inputs=[ToolInput(tag="in_window_sizes", input_type=Array(t=String(), optional=True), prefix="--window-sizes", doc=InputDocumentation(doc="Window sizes in base pairs used for TAD calculation.\nYou can pass (1) a filename with whitespace-delimited\nwindow sizes, (2) three integers denoting start, stop,\nand step size to generate a range of window sizes, or\n(3) more than three integers to define window sizes\ndirectly. If left at default, window sizes will be\nlogarithmically spaced between 10**4 and 10**6, or\n10**6.5 for the insulation and directionality index,\nrespectively.")), ToolInput(tag="in_algorithm", input_type=String(optional=True), prefix="--algorithm", doc=InputDocumentation(doc="TAD-calling algorithm. Options: insulation,\nninsulation, directionality. Default: insulation.")), ToolInput(tag="in_max_distance", input_type=Int(optional=True), prefix="--max-distance", doc=InputDocumentation(doc="Maximum distance in base-pairs away from the diagonal\nto be shown in Hi-C plot. Defaults to half the\nplotting window.")), ToolInput(tag="in_normalisation_window", input_type=Int(optional=True), prefix="--normalisation-window", doc=InputDocumentation(doc="Normalisation window in number of regions. Only\naffects ninsulation algorithm. If not specified,\nwindow will be the whole chromosome.")), ToolInput(tag="in_data", input_type=String(optional=True), prefix="--data", doc=InputDocumentation(doc="Matrix with index data. Rows correspond to window\nsizes, columns to Hi-C matrix bins. If provided,\nsuppresses inbuilt index calculation.\n")), ToolInput(tag="in_matrix", input_type=String(), position=0, doc=InputDocumentation(doc="Square Hi-C Matrix as tab-delimited or .npy file\n(created with numpy.save) or sparse matrix format\n(each line: <row region index> <column region index>\n<matrix value>)")), ToolInput(tag="in_regions", input_type=String(), position=1, doc=InputDocumentation(doc="BED file (no header) with regions corresponding to the\nnumber of rows in the provided matrix. Fourth column,\nif present, denotes name field, which is used as an\nidentifier in sparse matrix notation.")), ToolInput(tag="in_plotting_region", input_type=String(), position=2, doc=InputDocumentation(doc="Region of the Hi-C matrix to display in plot. Format:\n<chromosome>:<start>-<end>, e.g.\nchr12:31000000-33000000"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Tadtool_Plot_V0_1_0().translate("wdl", allow_empty_container=True)
+

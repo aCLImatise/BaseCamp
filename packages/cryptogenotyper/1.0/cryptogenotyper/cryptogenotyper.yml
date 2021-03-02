@@ -1,0 +1,128 @@
+!Command
+command:
+- cryptogenotyper
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: Turn on verbose logging [False].
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  description: "Path to directory with AB1 forward and reverse files\nOR path to a\
+    \ single AB1 file"
+  args: !SimpleFlagArg
+    name: INPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --marker
+  description: "Name of the marker. Currently gp60 and 18S markers are\nsupported"
+  args: !SimpleFlagArg
+    name: MARKER
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --seqtype
+  description: "Input sequences type. Select one option out of these\nthree: contig\
+    \ - both F and R sequences provided\nforward - forward only sequence provided\
+    \ reverse -\nreverse only sequence provided"
+  args: !SimpleFlagArg
+    name: SEQTYPE
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --forwardprimername
+  description: "Name of the forward primer to identify forward read\n(e.g. gp60F,\
+    \ SSUF)"
+  args: !SimpleFlagArg
+    name: FORWARDPRIMERNAME
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reverseprimername
+  description: "Name of the reverse primer to identify forward read\n(e.g. gp60R,\
+    \ SSUR)"
+  args: !SimpleFlagArg
+    name: REVERSEPRIMERNAME
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --outputprefix
+  description: "Output name prefix for the results (e.g. test results\nin test_report.fa)"
+  args: !SimpleFlagArg
+    name: OUTPUTPREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --databasefile
+  description: Path to custom database reference FASTA file
+  args: !SimpleFlagArg
+    name: DATABASEFILE
+- !Flag
+  optional: true
+  synonyms:
+  - --noheaderline
+  description: Display header on tab-delimited file [False]
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: cryptogenotyper [-h] [--verbose] -i INPUT -m MARKER -t SEQTYPE\n\
+  \                       [-f FORWARDPRIMERNAME] [-r REVERSEPRIMERNAME]\n        \
+  \               [-o OUTPUTPREFIX] [-d DATABASEFILE] [-v]\n                     \
+  \  [--noheaderline]\n\nIn silico type cryptosporidium from sanger reads in AB1 format\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  --verbose             Turn on verbose logging [False].\n  -i INPUT, --input INPUT\n\
+  \                        Path to directory with AB1 forward and reverse files\n\
+  \                        OR path to a single AB1 file\n  -m MARKER, --marker MARKER\n\
+  \                        Name of the marker. Currently gp60 and 18S markers are\n\
+  \                        supported\n  -t SEQTYPE, --seqtype SEQTYPE\n          \
+  \              Input sequences type. Select one option out of these\n          \
+  \              three: contig - both F and R sequences provided\n               \
+  \         forward - forward only sequence provided reverse -\n                 \
+  \       reverse only sequence provided\n  -f FORWARDPRIMERNAME, --forwardprimername\
+  \ FORWARDPRIMERNAME\n                        Name of the forward primer to identify\
+  \ forward read\n                        (e.g. gp60F, SSUF)\n  -r REVERSEPRIMERNAME,\
+  \ --reverseprimername REVERSEPRIMERNAME\n                        Name of the reverse\
+  \ primer to identify forward read\n                        (e.g. gp60R, SSUR)\n\
+  \  -o OUTPUTPREFIX, --outputprefix OUTPUTPREFIX\n                        Output\
+  \ name prefix for the results (e.g. test results\n                        in test_report.fa)\n\
+  \  -d DATABASEFILE, --databasefile DATABASEFILE\n                        Path to\
+  \ custom database reference FASTA file\n  -v, --version         show program's version\
+  \ number and exit\n  --noheaderline        Display header on tab-delimited file\
+  \ [False]\n\nExample usage using example ab1 files included in /example folder:\n\
+  \    cryptogenotyper -i example/P17705_Crypto16-2F-20170927_SSUF_G12_084.ab1 -m\
+  \ 18S -t forward -f SSUF -o test\n    cryptogenotyper -i example/P17705_gp60-Crypt14-1F-20170927_gp60F_G07_051.ab1\
+  \ -m gp60 -t forward -f gp60F -o test\n    cryptogenotyper -i example/ -m 18S -t\
+  \ contig -f SSUF -r SSUR -o test\n    cryptogenotyper -i example/ -m gp60 -t contig\
+  \ -f gp60F -r gp60R -o test\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/cryptogenotyper:1.0--py_3

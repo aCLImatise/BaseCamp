@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, Int, Boolean
+
+Ffeval_V0_1_0 = CommandToolBuilder(tool="FFEval", base_command=["FFEval"], inputs=[ToolInput(tag="in_in", input_type=File(optional=True), prefix="-in", doc=InputDocumentation(doc="*            Feature input file, which contains the data to be tested against the truth file. (valid formats: 'featureXML')")), ToolInput(tag="in_truth", input_type=File(optional=True), prefix="-truth", doc=InputDocumentation(doc="*         Truth feature file that defines what features should be found. (valid formats: 'featureXML')")), ToolInput(tag="in_rt_to_l", input_type=Int(optional=True), prefix="-rt_tol", doc=InputDocumentation(doc="Allowed tolerance of RT relative to average feature RT span. (default: '0.3' min: '0.0')")), ToolInput(tag="in_rt_to_l_abs", input_type=Int(optional=True), prefix="-rt_tol_abs", doc=InputDocumentation(doc="Allowed absolute tolerance of RT (overwrites 'rt_tol' if set above zero). (default: '-1.0' min: '-1.0')")), ToolInput(tag="in_mz_to_l", input_type=Int(optional=True), prefix="-mz_tol", doc=InputDocumentation(doc="Allowed tolerance in m/z (is divided by charge). (default: '0.25' min: '0.0')")), ToolInput(tag="in_out", input_type=File(optional=True), prefix="-out", doc=InputDocumentation(doc="Feature output file. If given, an annotated input file is written. (valid formats: 'featureXML')")), ToolInput(tag="in_abort_reasons", input_type=File(optional=True), prefix="-abort_reasons", doc=InputDocumentation(doc="Feature file containing seeds with abort reasons. (valid formats: 'featureXML')")), ToolInput(tag="in_out_roc", input_type=File(optional=True), prefix="-out_roc", doc=InputDocumentation(doc="If given, a ROC curve file is created (ROC points based on intensity threshold) (valid formats: 'csv')")), ToolInput(tag="in_ini", input_type=File(optional=True), prefix="-ini", doc=InputDocumentation(doc="Use the given TOPP INI file")), ToolInput(tag="in_threads", input_type=Int(optional=True), prefix="-threads", doc=InputDocumentation(doc="Sets the number of threads allowed to be used by the TOPP tool (default: '1')")), ToolInput(tag="in_write_ini", input_type=File(optional=True), prefix="-write_ini", doc=InputDocumentation(doc="Writes the default configuration file")), ToolInput(tag="in_helphelp", input_type=Boolean(optional=True), prefix="--helphelp", doc=InputDocumentation(doc="Shows all options (including advanced)"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Ffeval_V0_1_0().translate("wdl", allow_empty_container=True)
+

@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, Boolean, String, Int
+
+Preprocess_V0_1_0 = CommandToolBuilder(tool="preprocess", base_command=["preprocess"], inputs=[ToolInput(tag="in_input_vcf", input_type=File(optional=True), prefix="--input-vcf", doc=InputDocumentation(doc="VCF files to preprocess (use file:sample for\na specific sample column).")), ToolInput(tag="in_arg_output_variant", input_type=Boolean(optional=True), prefix="-o", doc=InputDocumentation(doc="[ --output-vcf ] arg          Output variant comparison results to VCF.")), ToolInput(tag="in_arg_reference_fasta", input_type=Boolean(optional=True), prefix="-r", doc=InputDocumentation(doc="[ --reference ] arg           The reference fasta file.")), ToolInput(tag="in_arg_location_start", input_type=Boolean(optional=True), prefix="-l", doc=InputDocumentation(doc="[ --location ] arg            The location to start at.")), ToolInput(tag="in_arg_subset_ofregions", input_type=Boolean(optional=True), prefix="-R", doc=InputDocumentation(doc="[ --regions ] arg             Use a bed file for getting a subset of\nregions (traversal via tabix).")), ToolInput(tag="in_subset_oftargets_streaming", input_type=Boolean(optional=True), prefix="-T", doc=InputDocumentation(doc="[ --targets ] arg             Use a bed file for getting a subset of\ntargets (streaming the whole file, ignoring\nthings outside the bed regions).")), ToolInput(tag="in_progress", input_type=String(optional=True), prefix="--progress", doc=InputDocumentation(doc="Set to true to output progress information.")), ToolInput(tag="in_haploid_x", input_type=Int(optional=True), prefix="--haploid-x", doc=InputDocumentation(doc="Expand GTs on chrX: turn 1 into 1/1")), ToolInput(tag="in_progress_seconds", input_type=String(optional=True), prefix="--progress-seconds", doc=InputDocumentation(doc="Output progress information every n seconds.")), ToolInput(tag="in_limit", input_type=Int(optional=True), prefix="--limit", doc=InputDocumentation(doc="Maximum number of records to process.")), ToolInput(tag="in_arg_apply_normalisations", input_type=Boolean(optional=True), prefix="-V", doc=InputDocumentation(doc="[ --preprocess-variants ] arg Apply variant normalisations, trimming,\nrealignment for complex variants (off by\ndefault).")), ToolInput(tag="in_arg_leftshift_indel", input_type=Boolean(optional=True), prefix="-L", doc=InputDocumentation(doc="[ --leftshift ] arg           Left-shift indel alleles (off by default)."))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Preprocess_V0_1_0().translate("wdl", allow_empty_container=True)
+

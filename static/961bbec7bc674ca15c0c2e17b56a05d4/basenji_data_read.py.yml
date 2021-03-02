@@ -1,0 +1,101 @@
+!Command
+command:
+- basenji_data_read.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: genome_cov_file
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: seqs_bed_file
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: seqs_cov_file
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  description: Set blacklist nucleotides to a baseline value.
+  args: !SimpleFlagArg
+    name: BLACKLIST_BED
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: 'Clip values post-summary to a maximum [Default: none]'
+  args: !SimpleFlagArg
+    name: CLIP
+- !Flag
+  optional: true
+  synonyms:
+  - --clip_soft
+  description: "Soft clip values, applying sqrt to the execess above\nthe threshold\
+    \ [Default: none]"
+  args: !SimpleFlagArg
+    name: CLIP_SOFT
+- !Flag
+  optional: true
+  synonyms:
+  - --crop
+  description: 'Crop bp off each end [Default: 0]'
+  args: !SimpleFlagArg
+    name: CROP_BP
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: 'Interpolate NaNs [Default: False]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: 'Scale values by [Default: 1.0]'
+  args: !SimpleFlagArg
+    name: SCALE
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  description: 'Summary statistic to compute in windows [Default: sum]'
+  args: !SimpleFlagArg
+    name: SUM_STAT
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  description: 'Average pooling width [Default: 1]'
+  args: !SimpleFlagArg
+    name: POOL_WIDTH
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: basenji_data_read.py [options] <genome_cov_file> <seqs_bed_file>\
+  \ <seqs_cov_file>\n\nOptions:\n  -h, --help            show this help message and\
+  \ exit\n  -b BLACKLIST_BED      Set blacklist nucleotides to a baseline value.\n\
+  \  -c CLIP               Clip values post-summary to a maximum [Default: none]\n\
+  \  --clip_soft=CLIP_SOFT\n                        Soft clip values, applying sqrt\
+  \ to the execess above\n                        the threshold [Default: none]\n\
+  \  --crop=CROP_BP        Crop bp off each end [Default: 0]\n  -i               \
+  \     Interpolate NaNs [Default: False]\n  -s SCALE              Scale values by\
+  \ [Default: 1.0]\n  -u SUM_STAT           Summary statistic to compute in windows\
+  \ [Default: sum]\n  -w POOL_WIDTH         Average pooling width [Default: 1]\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/basenji:0.5--py_0

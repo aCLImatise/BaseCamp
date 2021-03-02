@@ -1,0 +1,211 @@
+!Command
+command:
+- seurat-find-transfer-anchors.R
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --query-file
+  description: File containing seurat object to use as the query.
+  args: !SimpleFlagArg
+    name: QUERY-FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --query-format
+  description: Either loom, seurat, anndata or singlecellexperiment for the output
+    format.
+  args: !SimpleFlagArg
+    name: QUERY-FORMAT
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reference-file
+  description: File containing seurat object to use as the reference.
+  args: !SimpleFlagArg
+    name: REFERENCE-FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --reference-format
+  description: Either loom, seurat, anndata or singlecellexperiment for the output
+    format.
+  args: !SimpleFlagArg
+    name: REFERENCE-FORMAT
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-file
+  description: File name in which to store serialized R matrix object.
+  args: !SimpleFlagArg
+    name: OUTPUT-FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --normalization-method
+  description: 'Name of normalization method used: LogNormalize or SCT.'
+  args: !SimpleFlagArg
+    name: NORMALIZATION-METHOD
+- !Flag
+  optional: true
+  synonyms:
+  - --reference-assay
+  description: Assay to use from reference.
+  args: !SimpleFlagArg
+    name: REFERENCE-ASSAY
+- !Flag
+  optional: true
+  synonyms:
+  - --query-assay
+  description: Assay to use from query.
+  args: !SimpleFlagArg
+    name: QUERY-ASSAY
+- !Flag
+  optional: true
+  synonyms:
+  - --reduction
+  description: Dimensional reduction to perform when finding anchors.
+  args: !SimpleFlagArg
+    name: REDUCTION
+- !Flag
+  optional: true
+  synonyms:
+  - --project-query
+  description: Project the PCA from the query dataset onto the reference. Use only
+    in rare cases.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --l2-norm
+  description: Execute a l2 normalization on the query.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --features
+  description: Features to use for dimensional reductionFeatures to use for dimensional
+    reduction.
+  args: !SimpleFlagArg
+    name: FEATURES
+- !Flag
+  optional: true
+  synonyms:
+  - --npcs
+  description: Number of PCs to compute on reference. If null, then use an existing
+    PCA structure in the reference object.
+  args: !SimpleFlagArg
+    name: NPCS
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --dims
+  description: Which dimensions to use from the reduction to specify the neighbor
+    search space.
+  args: !SimpleFlagArg
+    name: DIMS
+- !Flag
+  optional: true
+  synonyms:
+  - --k-anchor
+  description: How many neighbors (k) to use when picking anchors.
+  args: !SimpleFlagArg
+    name: K-ANCHOR
+- !Flag
+  optional: true
+  synonyms:
+  - --k-filter
+  description: How many neighbors (k) to use when filtering anchors.
+  args: !SimpleFlagArg
+    name: K-FILTER
+- !Flag
+  optional: true
+  synonyms:
+  - --k-score
+  description: How many neighbors (k) to use when scoring anchors.
+  args: !SimpleFlagArg
+    name: K-SCORE
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --max-features
+  description: The maximum number of features to use when specifying the neighborhood
+    search space in the anchor filtering.
+  args: !SimpleFlagArg
+    name: MAX-FEATURES
+- !Flag
+  optional: true
+  synonyms:
+  - --nn-method
+  description: 'Method for nearest neighbor finding. Options include: rann, annoy.'
+  args: !SimpleFlagArg
+    name: NN-METHOD
+- !Flag
+  optional: true
+  synonyms:
+  - --eps
+  description: Error bound on the neighbor finding algorithm (from RANN).
+  args: !SimpleFlagArg
+    name: EPS
+- !Flag
+  optional: true
+  synonyms:
+  - --approx-pca
+  description: Use truncated singular value decomposition to approximate PCA.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: Print progress bars and output.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: "Show this help message and exit\n"
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: /usr/local/bin/seurat-find-transfer-anchors.R [options]\n\n\nOptions:\n\
+  \t-i QUERY-FILE, --query-file=QUERY-FILE\n\t\tFile containing seurat object to use\
+  \ as the query.\n\n\t--query-format=QUERY-FORMAT\n\t\tEither loom, seurat, anndata\
+  \ or singlecellexperiment for the output format.\n\n\t-r REFERENCE-FILE, --reference-file=REFERENCE-FILE\n\
+  \t\tFile containing seurat object to use as the reference.\n\n\t--reference-format=REFERENCE-FORMAT\n\
+  \t\tEither loom, seurat, anndata or singlecellexperiment for the output format.\n\
+  \n\t-o OUTPUT-FILE, --output-file=OUTPUT-FILE\n\t\tFile name in which to store serialized\
+  \ R matrix object.\n\n\t-n NORMALIZATION-METHOD, --normalization-method=NORMALIZATION-METHOD\n\
+  \t\tName of normalization method used: LogNormalize or SCT.\n\n\t--reference-assay=REFERENCE-ASSAY\n\
+  \t\tAssay to use from reference.\n\n\t--query-assay=QUERY-ASSAY\n\t\tAssay to use\
+  \ from query.\n\n\t--reduction=REDUCTION\n\t\tDimensional reduction to perform when\
+  \ finding anchors.\n\n\t--project-query\n\t\tProject the PCA from the query dataset\
+  \ onto the reference. Use only in rare cases.\n\n\t--l2-norm\n\t\tExecute a l2 normalization\
+  \ on the query.\n\n\t-f FEATURES, --features=FEATURES\n\t\tFeatures to use for dimensional\
+  \ reductionFeatures to use for dimensional reduction.\n\n\t--npcs=NPCS\n\t\tNumber\
+  \ of PCs to compute on reference. If null, then use an existing PCA structure in\
+  \ the reference object.\n\n\t-d DIMS, --dims=DIMS\n\t\tWhich dimensions to use from\
+  \ the reduction to specify the neighbor search space.\n\n\t--k-anchor=K-ANCHOR\n\
+  \t\tHow many neighbors (k) to use when picking anchors.\n\n\t--k-filter=K-FILTER\n\
+  \t\tHow many neighbors (k) to use when filtering anchors.\n\n\t--k-score=K-SCORE\n\
+  \t\tHow many neighbors (k) to use when scoring anchors.\n\n\t-m MAX-FEATURES, --max-features=MAX-FEATURES\n\
+  \t\tThe maximum number of features to use when specifying the neighborhood search\
+  \ space in the anchor filtering.\n\n\t--nn-method=NN-METHOD\n\t\tMethod for nearest\
+  \ neighbor finding. Options include: rann, annoy.\n\n\t--eps=EPS\n\t\tError bound\
+  \ on the neighbor finding algorithm (from RANN).\n\n\t--approx-pca\n\t\tUse truncated\
+  \ singular value decomposition to approximate PCA.\n\n\t--verbose\n\t\tPrint progress\
+  \ bars and output.\n\n\t-h, --help\n\t\tShow this help message and exit\n\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/seurat-scripts:0.0.9--0

@@ -1,0 +1,133 @@
+!Command
+command:
+- refinem
+- taxon_profile
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: genome_prot_dir
+  description: directory containing amino acid genes for each genome
+- !Positional
+  optional: false
+  position: 1
+  name: scaffold_stats_file
+  description: file with statistics for each scaffold
+- !Positional
+  optional: false
+  position: 2
+  name: db_file
+  description: DIAMOND database of reference genomes
+- !Positional
+  optional: false
+  position: 3
+  name: taxonomy_file
+  description: taxonomic assignment of each reference genomes
+- !Positional
+  optional: false
+  position: 4
+  name: output_dir
+  description: output directory
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --per_to_classify
+  description: "minimum percentage of genes to assign a scaffold to a\ntaxonomic group\
+    \ (default: 20.0)"
+  args: !SimpleFlagArg
+    name: PER_TO_CLASSIFY
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --evalue
+  description: 'e-value of valid hits (default: 0.001)'
+  args: !SimpleFlagArg
+    name: EVALUE
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --per_identity
+  description: 'percent identity of valid hits (default: 30.0)'
+  args: !SimpleFlagArg
+    name: PER_IDENTITY
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --per_aln_len
+  description: "minimum percent coverage of query sequence for\nreporting an alignment\
+    \ (default: 50.0)"
+  args: !SimpleFlagArg
+    name: PER_ALN_LEN
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --protein_ext
+  description: "extension of amino acid gene files (other files in\ndirectory are\
+    \ ignored) (default: faa)"
+  args: !SimpleFlagArg
+    name: PROTEIN_EXT
+- !Flag
+  optional: true
+  synonyms:
+  - --tmpdir
+  description: "specify alternative directory for temporary files\n(default: /tmp)"
+  args: !SimpleFlagArg
+    name: TMPDIR
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --cpus
+  description: 'number of CPUs to use (default: 1)'
+  args: !SimpleFlagArg
+    name: CPUS
+- !Flag
+  optional: true
+  synonyms:
+  - --silent
+  description: suppress output of logger
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: refinem taxon_profile [-h] [-p PER_TO_CLASSIFY] [-e EVALUE]\n \
+  \                            [-i PER_IDENTITY] [-a PER_ALN_LEN]\n              \
+  \               [-x PROTEIN_EXT] [--tmpdir TMPDIR] [-c CPUS]\n                 \
+  \            [--silent]\n                             genome_prot_dir scaffold_stats_file\
+  \ db_file\n                             taxonomy_file output_dir\n\nGenerate taxonomic\
+  \ profile of genes across scaffolds within a genome.\n\npositional arguments:\n\
+  \  genome_prot_dir       directory containing amino acid genes for each genome\n\
+  \  scaffold_stats_file   file with statistics for each scaffold\n  db_file     \
+  \          DIAMOND database of reference genomes\n  taxonomy_file         taxonomic\
+  \ assignment of each reference genomes\n  output_dir            output directory\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  -p, --per_to_classify PER_TO_CLASSIFY\n                        minimum percentage\
+  \ of genes to assign a scaffold to a\n                        taxonomic group (default:\
+  \ 20.0)\n  -e, --evalue EVALUE   e-value of valid hits (default: 0.001)\n  -i, --per_identity\
+  \ PER_IDENTITY\n                        percent identity of valid hits (default:\
+  \ 30.0)\n  -a, --per_aln_len PER_ALN_LEN\n                        minimum percent\
+  \ coverage of query sequence for\n                        reporting an alignment\
+  \ (default: 50.0)\n  -x, --protein_ext PROTEIN_EXT\n                        extension\
+  \ of amino acid gene files (other files in\n                        directory are\
+  \ ignored) (default: faa)\n  --tmpdir TMPDIR       specify alternative directory\
+  \ for temporary files\n                        (default: /tmp)\n  -c, --cpus CPUS\
+  \       number of CPUs to use (default: 1)\n  --silent              suppress output\
+  \ of logger\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/refinem:0.1.2--pyh3252c3a_0

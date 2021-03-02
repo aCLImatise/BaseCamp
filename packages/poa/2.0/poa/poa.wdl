@@ -24,7 +24,7 @@ task Poa {
     Boolean? preserve_seq_order
     String? print_matrix
     Boolean? best
-    Boolean? run_verbose_mode
+    Boolean? run_eg_penalties
     String matrix_file
   }
   command <<<
@@ -52,8 +52,11 @@ task Poa {
       ~{if (preserve_seq_order) then "-preserve_seqorder" else ""} \
       ~{if defined(print_matrix) then ("-printmatrix " +  '"' + print_matrix + '"') else ""} \
       ~{if (best) then "-best" else ""} \
-      ~{if (run_verbose_mode) then "-v" else ""}
+      ~{if (run_eg_penalties) then "-v" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     read_fast_a: "Read in FASTA sequence file."
     read_msa: "Read in MSA alignment file."
@@ -77,7 +80,7 @@ task Poa {
     preserve_seq_order: "Write out MSA with sequences in their input order."
     print_matrix: "Print score matrix to stdout."
     best: "Restrict MSA output to heaviest bundles (PIR only)."
-    run_verbose_mode: "Run in verbose mode (e.g. output gap penalties)."
+    run_eg_penalties: "Run in verbose mode (e.g. output gap penalties)."
     matrix_file: ""
   }
   output {

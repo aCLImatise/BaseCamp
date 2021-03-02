@@ -1,0 +1,202 @@
+!Command
+command:
+- AssemblePairs.py
+- join
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - '-1'
+  description: "An ordered list of FASTA/FASTQ files containing\nhead/primary sequences.\
+    \ (default: None)"
+  args: !RepeatFlagArg
+    name: SEQ_FILES_1
+- !Flag
+  optional: true
+  synonyms:
+  - '-2'
+  description: "An ordered list of FASTA/FASTQ files containing\ntail/secondary sequences.\
+    \ (default: None)"
+  args: !RepeatFlagArg
+    name: SEQ_FILES_2
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: "Explicit output file name(s). Note, this argument\ncannot be used\
+    \ with the --failed, --outdir, or\n--outname arguments. If unspecified, then the\
+    \ output\nfilename will be based on the input filename(s).\n(default: None)"
+  args: !RepeatFlagArg
+    name: OUT_FILES
+- !Flag
+  optional: true
+  synonyms:
+  - --outdir
+  description: "Specify to changes the output directory to the\nlocation specified.\
+    \ The input file directory is used\nif this is not specified. (default: None)"
+  args: !SimpleFlagArg
+    name: OUT_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --outname
+  description: "Changes the prefix of the successfully processed\noutput file to the\
+    \ string specified. May not be\nspecified with multiple input files. (default:\
+    \ None)"
+  args: !SimpleFlagArg
+    name: OUT_NAME
+- !Flag
+  optional: true
+  synonyms:
+  - --log
+  description: "Specify to write verbose logging to a file. May not be\nspecified\
+    \ with multiple input files. (default: None)"
+  args: !SimpleFlagArg
+    name: LOG_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --failed
+  description: "If specified create files containing records that fail\nprocessing.\
+    \ (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --fasta
+  description: "Specify to force output as FASTA rather than FASTQ.\n(default: None)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --delim
+  description: "DELIMITER DELIMITER\nA list of the three delimiters that separate\n\
+    annotation blocks, field names and values, and values\nwithin a field, respectively.\
+    \ (default: ('|', '=',\n','))"
+  args: !SimpleFlagArg
+    name: DELIMITER
+- !Flag
+  optional: true
+  synonyms:
+  - --nproc
+  description: "The number of simultaneous computational processes to\nexecute (CPU\
+    \ cores to utilized). (default: 8)"
+  args: !SimpleFlagArg
+    name: NPROC
+- !Flag
+  optional: true
+  synonyms:
+  - --coord
+  description: "The format of the sequence identifier which defines\nshared coordinate\
+    \ information across paired ends.\n(default: presto)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      '454':
+      illumina:
+      solexa:
+      presto:
+      sra:
+- !Flag
+  optional: true
+  synonyms:
+  - --rc
+  description: "Specify which read to reverse complement before\nstitching. (default:\
+    \ tail)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      both:
+      head:
+      none:
+      tail:
+- !Flag
+  optional: true
+  synonyms:
+  - --1f
+  description: "Specify annotation fields to copy from head records\ninto assembled\
+    \ record. (default: None)"
+  args: !RepeatFlagArg
+    name: HEAD_FIELDS
+- !Flag
+  optional: true
+  synonyms:
+  - --2f
+  description: "Specify annotation fields to copy from tail records\ninto assembled\
+    \ record. (default: None)"
+  args: !RepeatFlagArg
+    name: TAIL_FIELDS
+- !Flag
+  optional: true
+  synonyms:
+  - --gap
+  description: "Number of N characters to place between ends.\n(default: 0)\n"
+  args: !SimpleFlagArg
+    name: GAP
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: AssemblePairs.py join [--version] [-h] -1 SEQ_FILES_1 [SEQ_FILES_1\
+  \ ...]\n                             -2 SEQ_FILES_2 [SEQ_FILES_2 ...]\n        \
+  \                     [-o OUT_FILES [OUT_FILES ...]] [--outdir OUT_DIR]\n      \
+  \                       [--outname OUT_NAME] [--log LOG_FILE] [--failed]\n     \
+  \                        [--fasta] [--delim DELIMITER DELIMITER DELIMITER]\n   \
+  \                          [--nproc NPROC]\n                             [--coord\
+  \ {illumina,solexa,sra,454,presto}]\n                             [--rc {tail,head,both,none}]\n\
+  \                             [--1f HEAD_FIELDS [HEAD_FIELDS ...]]\n           \
+  \                  [--2f TAIL_FIELDS [TAIL_FIELDS ...]] [--gap GAP]\n\nAssemble\
+  \ pairs by concatenating ends.\n\nhelp:\n  --version             show program's\
+  \ version number and exit\n  -h, --help            show this help message and exit\n\
+  \nstandard arguments:\n  -1 SEQ_FILES_1 [SEQ_FILES_1 ...]\n                    \
+  \    An ordered list of FASTA/FASTQ files containing\n                        head/primary\
+  \ sequences. (default: None)\n  -2 SEQ_FILES_2 [SEQ_FILES_2 ...]\n             \
+  \           An ordered list of FASTA/FASTQ files containing\n                  \
+  \      tail/secondary sequences. (default: None)\n  -o OUT_FILES [OUT_FILES ...]\n\
+  \                        Explicit output file name(s). Note, this argument\n   \
+  \                     cannot be used with the --failed, --outdir, or\n         \
+  \               --outname arguments. If unspecified, then the output\n         \
+  \               filename will be based on the input filename(s).\n             \
+  \           (default: None)\n  --outdir OUT_DIR      Specify to changes the output\
+  \ directory to the\n                        location specified. The input file directory\
+  \ is used\n                        if this is not specified. (default: None)\n \
+  \ --outname OUT_NAME    Changes the prefix of the successfully processed\n     \
+  \                   output file to the string specified. May not be\n          \
+  \              specified with multiple input files. (default: None)\n  --log LOG_FILE\
+  \        Specify to write verbose logging to a file. May not be\n              \
+  \          specified with multiple input files. (default: None)\n  --failed    \
+  \          If specified create files containing records that fail\n            \
+  \            processing. (default: False)\n  --fasta               Specify to force\
+  \ output as FASTA rather than FASTQ.\n                        (default: None)\n\
+  \  --delim DELIMITER DELIMITER DELIMITER\n                        A list of the\
+  \ three delimiters that separate\n                        annotation blocks, field\
+  \ names and values, and values\n                        within a field, respectively.\
+  \ (default: ('|', '=',\n                        ','))\n  --nproc NPROC         The\
+  \ number of simultaneous computational processes to\n                        execute\
+  \ (CPU cores to utilized). (default: 8)\n\nformat arguments:\n  --coord {illumina,solexa,sra,454,presto}\n\
+  \                        The format of the sequence identifier which defines\n \
+  \                       shared coordinate information across paired ends.\n    \
+  \                    (default: presto)\n  --rc {tail,head,both,none}\n         \
+  \               Specify which read to reverse complement before\n              \
+  \          stitching. (default: tail)\n  --1f HEAD_FIELDS [HEAD_FIELDS ...]\n  \
+  \                      Specify annotation fields to copy from head records\n   \
+  \                     into assembled record. (default: None)\n  --2f TAIL_FIELDS\
+  \ [TAIL_FIELDS ...]\n                        Specify annotation fields to copy from\
+  \ tail records\n                        into assembled record. (default: None)\n\
+  \njoin assembly arguments:\n  --gap GAP             Number of N characters to place\
+  \ between ends.\n                        (default: 0)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/presto:0.6.2--py_0

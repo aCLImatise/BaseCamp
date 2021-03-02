@@ -1,0 +1,71 @@
+!Command
+command:
+- generate_plot.py
+positional:
+- !Positional
+  optional: true
+  position: 0
+  name: WORKING_DIRECTORY
+  description: ''
+- !Positional
+  optional: true
+  position: 1
+  name: OTHER
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -wd
+  - --working_directory
+  description: Define the location of your working directory
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -rt
+  - --run_type
+  description: type of summary to use, `generic` or `specific`
+  args: !SimpleFlagArg
+    name: RUN_TYPE
+- !Flag
+  optional: true
+  synonyms:
+  - --no_r
+  description: To avoid to run R. It will just create the R script file in the working
+    directory
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  description: Disable the info logs, displays only errors
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: python3 generate_plot.py -wd [WORKING_DIRECTORY] [OTHER OPTIONS]\n\
+  \nBUSCO plot generation tool.\nPlace all BUSCO short summary files (short_summary.[generic|specific].dataset.label.txt)\
+  \ in a single folder. It will be your working directory, in which the generated\
+  \ plot files will be written\nSee also the user guide for additional information\n\
+  \nrequired arguments:\n  -wd PATH, --working_directory PATH\n                  \
+  \      Define the location of your working directory\n\noptional arguments:\n  -rt\
+  \ RUN_TYPE, --run_type RUN_TYPE\n                        type of summary to use,\
+  \ `generic` or `specific`\n  --no_r                To avoid to run R. It will just\
+  \ create the R script file in the working directory\n  -q, --quiet           Disable\
+  \ the info logs, displays only errors\n  -h, --help            Show this help message\
+  \ and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/busco:5.0.0--py_0

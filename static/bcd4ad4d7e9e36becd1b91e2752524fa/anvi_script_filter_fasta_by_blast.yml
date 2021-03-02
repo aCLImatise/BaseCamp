@@ -1,0 +1,138 @@
+!Command
+command:
+- anvi-script-filter-fasta-by-blast
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: contigs-fasta
+  description: '🍺 More on `anvi-script-filter-fasta-by-blast`:'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --fasta-file
+  description: 'A FASTA-formatted input file (default: None)'
+  args: !SimpleFlagArg
+    name: FASTA
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-file
+  description: 'File path to store results. (default: None)'
+  args: !SimpleFlagArg
+    name: FILE_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  description: "DELIMITED FILE, --blast-output TAB DELIMITED FILE\nBLAST table generated\
+    \ with blastp. `--outfmt 6` as the\noutput format is assumed. (default: None)"
+  args: !SimpleFlagArg
+    name: TAB
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --outfmt
+  description: "Specify the column ordering of your BLAST report. We\nadd the following\
+    \ paramter to our BLAST searches so\nthe output report contains the `qlen` field,\
+    \ which is\nnot included by default: `-outfmt '6 qseqid sseqid\npident length\
+    \ mismatch gapopen qstart qend sstart send\nevalue bitscore qlen slen'`. You may\
+    \ have used a\ndifferent `-outfmt` paramter, and you should use this\nparameter\
+    \ to explicitly define the column names in\nyour output file. For instance, if\
+    \ you had used the\nparameter mentioned above, then the correct version of\nthis\
+    \ parameter would be: \"qseqid sseqid pident length\nmismatch gapopen qstart qend\
+    \ sstart send evalue\nbitscore qlen slen\". Regardless of the BLAST output\nformat,\
+    \ your columns MUST contain the following\nparameters for this program to work\
+    \ properly:\n'qseqid', 'bitscore', 'length', 'qlen', and 'pident'.\n(default:\
+    \ None)"
+  args: !SimpleFlagArg
+    name: OUTFMT
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threshold
+  description: "What `proper_pident` threshold do you want to use for\nfiltering out\
+    \ sequences whose top bit-score matches\nhave `proper_pident`s less than this\
+    \ threshold? We\nhave defined `proper_pident` to be the percentage of\nthe query\
+    \ amino acids that both aligned to and were\nidentical to the corresponding matched\
+    \ amino acid.\nNote that the `pident` parameter output by BLAST does\nnot include\
+    \ regions of the query sequence unaligned to\nthe matched sequence, whereas `proper_pident`\
+    \ does.\nFor example, a sequence that's only half aligned by a\nmatch but with\
+    \ 100% identity at matched regions has a\n`pident` of 100 but a `proper_pident`\
+    \ of 50. The\ndefault is 30.0%."
+  args: !SimpleFlagArg
+    name: THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - --just-do-it
+  description: "Don't bother me with questions or warnings, just do\nit. (default:\
+    \ False)"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: anvi-script-filter-fasta-by-blast [-h] [-f FASTA] [-o FILE_PATH]\
+  \ -b TAB\n                                         DELIMITED FILE -s OUTFMT -t THRESHOLD\n\
+  \                                         [--just-do-it]\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -f FASTA, --fasta-file\
+  \ FASTA\n                        A FASTA-formatted input file (default: None)\n\
+  \  -o FILE_PATH, --output-file FILE_PATH\n                        File path to store\
+  \ results. (default: None)\n  -b TAB DELIMITED FILE, --blast-output TAB DELIMITED\
+  \ FILE\n                        BLAST table generated with blastp. `--outfmt 6`\
+  \ as the\n                        output format is assumed. (default: None)\n  -s\
+  \ OUTFMT, --outfmt OUTFMT\n                        Specify the column ordering of\
+  \ your BLAST report. We\n                        add the following paramter to our\
+  \ BLAST searches so\n                        the output report contains the `qlen`\
+  \ field, which is\n                        not included by default: `-outfmt '6\
+  \ qseqid sseqid\n                        pident length mismatch gapopen qstart qend\
+  \ sstart send\n                        evalue bitscore qlen slen'`. You may have\
+  \ used a\n                        different `-outfmt` paramter, and you should use\
+  \ this\n                        parameter to explicitly define the column names\
+  \ in\n                        your output file. For instance, if you had used the\n\
+  \                        parameter mentioned above, then the correct version of\n\
+  \                        this parameter would be: \"qseqid sseqid pident length\n\
+  \                        mismatch gapopen qstart qend sstart send evalue\n     \
+  \                   bitscore qlen slen\". Regardless of the BLAST output\n     \
+  \                   format, your columns MUST contain the following\n          \
+  \              parameters for this program to work properly:\n                 \
+  \       'qseqid', 'bitscore', 'length', 'qlen', and 'pident'.\n                \
+  \        (default: None)\n  -t THRESHOLD, --threshold THRESHOLD\n              \
+  \          What `proper_pident` threshold do you want to use for\n             \
+  \           filtering out sequences whose top bit-score matches\n              \
+  \          have `proper_pident`s less than this threshold? We\n                \
+  \        have defined `proper_pident` to be the percentage of\n                \
+  \        the query amino acids that both aligned to and were\n                 \
+  \       identical to the corresponding matched amino acid.\n                   \
+  \     Note that the `pident` parameter output by BLAST does\n                  \
+  \      not include regions of the query sequence unaligned to\n                \
+  \        the matched sequence, whereas `proper_pident` does.\n                 \
+  \       For example, a sequence that's only half aligned by a\n                \
+  \        match but with 100% identity at matched regions has a\n               \
+  \         `pident` of 100 but a `proper_pident` of 50. The\n                   \
+  \     default is 30.0%.\n  --just-do-it          Don't bother me with questions\
+  \ or warnings, just do\n                        it. (default: False)\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\
+  \n\U0001F525 Program description:\n\n   Filter FASTA file according to BLAST table\
+  \ (remove sequences with bad BLAST\n   alignment)\n\n\U0001F9C0 Can consume: \n\n\
+  \   contigs-fasta / blast-table\n   \n\U0001F355 Can provide: \n\n   contigs-fasta\n\
+  \   \n\U0001F37A More on `anvi-script-filter-fasta-by-blast`:\n\n   https://merenlab.org/software/anvio/help/7/programs/anvi-script-filter-fasta-by-blast\n\
+  \n\U0001F37B All anvi'o programs and artifacts:\n\n   https://merenlab.org/software/anvio/help/7\n\
+  \n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\
+  \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/anvio-minimal:7--py_0

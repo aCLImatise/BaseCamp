@@ -12,6 +12,9 @@ task BamtoolsStats {
       ~{if defined(list) then ("-list " +  '"' + list + '"') else ""} \
       ~{if (insert) then "-insert" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "the input BAM file [stdin]"
     list: "the input BAM file list, one\\nline per file"

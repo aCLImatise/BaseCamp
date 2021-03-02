@@ -1,0 +1,62 @@
+!Command
+command:
+- pore_c
+- alignments
+- reformat-bam
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: INPUT_SAM
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: OUTPUT_SAM
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --input-is-bam
+  description: "If piping a BAM from stdin (rather than sam)  [default:\nFalse]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --output-is-bam
+  description: "If piping a BAM to stdout (rather than sam)  [default:\nFalse]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --set-bx-flag
+  description: 'Set the BX tag to the read name  [default: False]'
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: pore_c alignments reformat-bam [OPTIONS] INPUT_SAM OUTPUT_SAM\n\
+  \n  Reformat query_name in INPUT_SAM  and write to OUTPUT_SAM\n\n  This tool reformats\
+  \ an alignment file so that it works with downstream\n  steps in the Pore-C pipeline.\
+  \ For both files you can supply '-' if you\n  want to read/write from/to stdin/stdout.\
+  \ The 'query_name' field of the\n  alignment file will be reformatted so that each\
+  \ alignment in the SAM file\n  has a unique query name:\n\n      <read_id> -> <read_id>:<read_idx>:<align_idx>\n\
+  \n  Where 'read_idx' is a unique integer id for each read within the file and\n\
+  \  'align_idx' is a unique integer id for each alignment within the file. The\n\
+  \  tool also adds a 'BX' tag consisting of the 'read_id' to each record.\n\nOptions:\n\
+  \  --input-is-bam   If piping a BAM from stdin (rather than sam)  [default:\n  \
+  \                 False]\n  --output-is-bam  If piping a BAM to stdout (rather than\
+  \ sam)  [default:\n                   False]\n  --set-bx-flag    Set the BX tag\
+  \ to the read name  [default: False]\n  --help           Show this message and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/pore-c:0.3.0--py_0

@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, String, Int, Boolean, Array, Float
+
+Pyscaf_V0_1_0 = CommandToolBuilder(tool="pyScaf", base_command=["pyScaf"], inputs=[ToolInput(tag="in_fast_a", input_type=File(optional=True), prefix="--fasta", doc=InputDocumentation(doc="assembly FASTA file")), ToolInput(tag="in_output", input_type=String(optional=True), prefix="--output", doc=InputDocumentation(doc="output stream [scaffolds.fa]")), ToolInput(tag="in_threads", input_type=Int(optional=True), prefix="--threads", doc=InputDocumentation(doc="max no. of threads to run [4]")), ToolInput(tag="in_log", input_type=String(optional=True), prefix="--log", doc=InputDocumentation(doc="output log to [stderr]")), ToolInput(tag="in_dotplot", input_type=Boolean(optional=True), prefix="--dotplot", doc=InputDocumentation(doc="{,png,gif,pdf}\ngenerate dotplot as [png]")), ToolInput(tag="in_reference", input_type=File(optional=True), prefix="--reference", doc=InputDocumentation(doc="reference FastA file")), ToolInput(tag="in_identity", input_type=Int(optional=True), prefix="--identity", doc=InputDocumentation(doc="min. identity [0.33]")), ToolInput(tag="in_overlap", input_type=Int(optional=True), prefix="--overlap", doc=InputDocumentation(doc="min. overlap  [0.66]")), ToolInput(tag="in_max_gap", input_type=Int(optional=True), prefix="--maxgap", doc=InputDocumentation(doc="max. distance between adjacent contigs [0.01 * assembly_size]")), ToolInput(tag="in_no_rearrangements", input_type=Boolean(optional=True), prefix="--norearrangements", doc=InputDocumentation(doc="high identity mode (rearrangements not allowed)")), ToolInput(tag="in_long_reads", input_type=Array(t=String(), optional=True), prefix="--longreads", doc=InputDocumentation(doc="FastQ/FastA file(s) with PacBio/ONT reads")), ToolInput(tag="in_fast_q", input_type=Array(t=String(), optional=True), prefix="--fastq", doc=InputDocumentation(doc="FASTQ PE/MP files")), ToolInput(tag="in_joins", input_type=Int(optional=True), prefix="--joins", doc=InputDocumentation(doc="min pairs to join contigs [5]")), ToolInput(tag="in_link_ratio", input_type=Int(optional=True), prefix="--linkratio", doc=InputDocumentation(doc="max link ratio between two best contig pairs [0.7]")), ToolInput(tag="in_load", input_type=Float(optional=True), prefix="--load", doc=InputDocumentation(doc="align subset of reads [0.2]")), ToolInput(tag="in_mapq", input_type=Int(optional=True), prefix="--mapq", doc=InputDocumentation(doc="min mapping quality [10]"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Pyscaf_V0_1_0().translate("wdl", allow_empty_container=True)
+

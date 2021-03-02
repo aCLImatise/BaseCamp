@@ -1,0 +1,208 @@
+!Command
+command:
+- ClusterSets.py
+- all
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: "A list of FASTA/FASTQ files containing sequences to\nprocess. (default:\
+    \ None)"
+  args: !RepeatFlagArg
+    name: SEQ_FILES
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: "Explicit output file name(s). Note, this argument\ncannot be used\
+    \ with the --failed, --outdir, or\n--outname arguments. If unspecified, then the\
+    \ output\nfilename will be based on the input filename(s).\n(default: None)"
+  args: !RepeatFlagArg
+    name: OUT_FILES
+- !Flag
+  optional: true
+  synonyms:
+  - --outdir
+  description: "Specify to changes the output directory to the\nlocation specified.\
+    \ The input file directory is used\nif this is not specified. (default: None)"
+  args: !SimpleFlagArg
+    name: OUT_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --outname
+  description: "Changes the prefix of the successfully processed\noutput file to the\
+    \ string specified. May not be\nspecified with multiple input files. (default:\
+    \ None)"
+  args: !SimpleFlagArg
+    name: OUT_NAME
+- !Flag
+  optional: true
+  synonyms:
+  - --fasta
+  description: "Specify to force output as FASTA rather than FASTQ.\n(default: None)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --delim
+  description: "DELIMITER DELIMITER\nA list of the three delimiters that separate\n\
+    annotation blocks, field names and values, and values\nwithin a field, respectively.\
+    \ (default: ('|', '=',\n','))"
+  args: !SimpleFlagArg
+    name: DELIMITER
+- !Flag
+  optional: true
+  synonyms:
+  - --nproc
+  description: "The number of simultaneous computational processes to\nexecute (CPU\
+    \ cores to utilized). (default: 8)"
+  args: !SimpleFlagArg
+    name: NPROC
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  description: "The name of the output annotation field to add with\nthe cluster information\
+    \ for each sequence. (default:\nCLUSTER)"
+  args: !SimpleFlagArg
+    name: CLUSTER_FIELD
+- !Flag
+  optional: true
+  synonyms:
+  - --ident
+  description: "The sequence identity threshold to use for clustering.\nNote, how\
+    \ identity is calculated is specific to the\nclustering application used. (default:\
+    \ 0.9)"
+  args: !SimpleFlagArg
+    name: IDENT
+- !Flag
+  optional: true
+  synonyms:
+  - --length
+  description: "The minimum allowed shorter/longer sequence length\nratio allowed\
+    \ within a cluster. Setting this value to\n1.0 will require identical length matches\
+    \ within\nclusters. A value of 0.0 will allow clusters\ncontaining any length\
+    \ of substring. (default: 0.0)"
+  args: !SimpleFlagArg
+    name: LENGTH_RATIO
+- !Flag
+  optional: true
+  synonyms:
+  - --prefix
+  description: "A string to use as the prefix for each cluster\nidentifier. By default,\
+    \ cluster identifiers will be\nnumeric values only. (default: )"
+  args: !SimpleFlagArg
+    name: CLUSTER_PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - --cluster
+  description: "The clustering tool to use for assigning clusters.\nMust be one of\
+    \ usearch, vsearch or cd-hit-est. Note,\nfor cd-hit-est the maximum memory limit\
+    \ is set to 3GB.\n(default: usearch)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      cd-hit-est:
+      usearch:
+      vsearch:
+- !Flag
+  optional: true
+  synonyms:
+  - --exec
+  description: "The name or path of the usearch, vsearch or cd-hit-est\nexecutable.\
+    \ (default: None)"
+  args: !SimpleFlagArg
+    name: CLUSTER_EXEC
+- !Flag
+  optional: true
+  synonyms:
+  - --start
+  description: "The start of the region to be used for clustering.\nTogether with\
+    \ --end, this parameter can be used to\nspecify a subsequence of each read to\
+    \ use in the\nclustering algorithm. (default: None)"
+  args: !SimpleFlagArg
+    name: SEQ_START
+- !Flag
+  optional: true
+  synonyms:
+  - --end
+  description: "The end of the region to be used for clustering.\n(default: None)\n"
+  args: !SimpleFlagArg
+    name: SEQ_END
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: ClusterSets.py all [--version] [-h] -s SEQ_FILES [SEQ_FILES ...]\n\
+  \                          [-o OUT_FILES [OUT_FILES ...]] [--outdir OUT_DIR]\n \
+  \                         [--outname OUT_NAME] [--fasta]\n                     \
+  \     [--delim DELIMITER DELIMITER DELIMITER]\n                          [--nproc\
+  \ NPROC] [-k CLUSTER_FIELD] [--ident IDENT]\n                          [--length\
+  \ LENGTH_RATIO] [--prefix CLUSTER_PREFIX]\n                          [--cluster\
+  \ {usearch,vsearch,cd-hit-est}]\n                          [--exec CLUSTER_EXEC]\
+  \ [--start SEQ_START]\n                          [--end SEQ_END]\n\nCluster all\
+  \ sequences regardless of annotation.\n\nhelp:\n  --version             show program's\
+  \ version number and exit\n  -h, --help            show this help message and exit\n\
+  \nstandard arguments:\n  -s SEQ_FILES [SEQ_FILES ...]\n                        A\
+  \ list of FASTA/FASTQ files containing sequences to\n                        process.\
+  \ (default: None)\n  -o OUT_FILES [OUT_FILES ...]\n                        Explicit\
+  \ output file name(s). Note, this argument\n                        cannot be used\
+  \ with the --failed, --outdir, or\n                        --outname arguments.\
+  \ If unspecified, then the output\n                        filename will be based\
+  \ on the input filename(s).\n                        (default: None)\n  --outdir\
+  \ OUT_DIR      Specify to changes the output directory to the\n                \
+  \        location specified. The input file directory is used\n                \
+  \        if this is not specified. (default: None)\n  --outname OUT_NAME    Changes\
+  \ the prefix of the successfully processed\n                        output file\
+  \ to the string specified. May not be\n                        specified with multiple\
+  \ input files. (default: None)\n  --fasta               Specify to force output\
+  \ as FASTA rather than FASTQ.\n                        (default: None)\n  --delim\
+  \ DELIMITER DELIMITER DELIMITER\n                        A list of the three delimiters\
+  \ that separate\n                        annotation blocks, field names and values,\
+  \ and values\n                        within a field, respectively. (default: ('|',\
+  \ '=',\n                        ','))\n  --nproc NPROC         The number of simultaneous\
+  \ computational processes to\n                        execute (CPU cores to utilized).\
+  \ (default: 8)\n\ncommon clustering arguments:\n  -k CLUSTER_FIELD      The name\
+  \ of the output annotation field to add with\n                        the cluster\
+  \ information for each sequence. (default:\n                        CLUSTER)\n \
+  \ --ident IDENT         The sequence identity threshold to use for clustering.\n\
+  \                        Note, how identity is calculated is specific to the\n \
+  \                       clustering application used. (default: 0.9)\n  --length\
+  \ LENGTH_RATIO\n                        The minimum allowed shorter/longer sequence\
+  \ length\n                        ratio allowed within a cluster. Setting this value\
+  \ to\n                        1.0 will require identical length matches within\n\
+  \                        clusters. A value of 0.0 will allow clusters\n        \
+  \                containing any length of substring. (default: 0.0)\n  --prefix\
+  \ CLUSTER_PREFIX\n                        A string to use as the prefix for each\
+  \ cluster\n                        identifier. By default, cluster identifiers will\
+  \ be\n                        numeric values only. (default: )\n  --cluster {usearch,vsearch,cd-hit-est}\n\
+  \                        The clustering tool to use for assigning clusters.\n  \
+  \                      Must be one of usearch, vsearch or cd-hit-est. Note,\n  \
+  \                      for cd-hit-est the maximum memory limit is set to 3GB.\n\
+  \                        (default: usearch)\n  --exec CLUSTER_EXEC   The name or\
+  \ path of the usearch, vsearch or cd-hit-est\n                        executable.\
+  \ (default: None)\n\ntotal sequence clustering arguments:\n  --start SEQ_START \
+  \    The start of the region to be used for clustering.\n                      \
+  \  Together with --end, this parameter can be used to\n                        specify\
+  \ a subsequence of each read to use in the\n                        clustering algorithm.\
+  \ (default: None)\n  --end SEQ_END         The end of the region to be used for\
+  \ clustering.\n                        (default: None)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/presto:0.6.2--py_0

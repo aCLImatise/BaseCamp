@@ -1,0 +1,401 @@
+!Command
+command:
+- chromosight
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: convolution.
+  description: 'quantify:'
+- !Positional
+  optional: false
+  position: 0
+  name: contact_map
+  description: "The Hi-C contact map to detect patterns on, in\nbedgraph2d or cool\
+    \ format."
+- !Positional
+  optional: false
+  position: 1
+  name: prefix
+  description: "Common path prefix used to generate output files.\nExtensions will\
+    \ be added for each file."
+- !Positional
+  optional: false
+  position: 0
+  name: bed2d
+  description: "Tab-separated text files with columns chrom1, start1\nend1, chrom2,\
+    \ start2, end2. Each line correspond to\na pair of positions (i.e. a position\
+    \ in the matrix)."
+- !Positional
+  optional: false
+  position: 1
+  name: contact_map
+  description: "Path to the contact map, in bedgraph2d or\ncool format."
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --preset
+  description: "Generate a preset config for the given pattern.\nPreset configs available\
+    \ are \"loops\" and\n\"borders\". [default: loops]"
+  args: !SimpleFlagArg
+    name: loops
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --click
+  description: "Show input contact map and uses double clicks from\nuser to build\
+    \ the kernel. Warning: memory-heavy,\nreserve for small genomes or subsetted matrices."
+  args: !SimpleFlagArg
+    name: contact_map
+- !Flag
+  optional: true
+  synonyms:
+  - --name
+  description: "Only show information related to a particular\nkernel.[default: all]"
+  args: !SimpleFlagArg
+    name: kernel_name
+- !Flag
+  optional: true
+  synonyms:
+  - --long
+  description: Show default parameters in addition to kernel names.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --mat
+  description: Prints an ascii representation of the kernel matrix.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: Displays the logo.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --norm
+  description: "Normalization / balancing behaviour. auto: weights\npresent in the\
+    \ cool file are used. raw: raw contact\nvalues are used. force: recompute weights\
+    \ and\noverwrite existing values. raw[default: auto]"
+  args: !ChoiceFlagArg
+    choices: !!set
+      raw:
+      force:
+      auto:
+- !Flag
+  optional: true
+  synonyms:
+  - -I
+  - --inter
+  description: "Enable to consider interchromosomal contacts.\nWarning: Experimental\
+    \ feature with high memory\nconsumption, only use with small matrices."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --min-dist
+  description: "Minimum distance from the diagonal (in base pairs).\nat which detection\
+    \ should operate. [default: auto]"
+  args: !SimpleFlagArg
+    name: auto
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  - --max-dist
+  description: "Maximum distance from the diagonal (in base pairs)\nfor detection.\
+    \ [default: auto]"
+  args: !SimpleFlagArg
+    name: auto
+- !Flag
+  optional: true
+  synonyms:
+  - -P
+  - --pattern
+  description: "Which pattern to detect. This will use preset\nconfigurations for\
+    \ the given pattern. Possible\nvalues are: loops, loops_small, borders, hairpins\
+    \ and\ncentromeres. [default: loops]"
+  args: !SimpleFlagArg
+    name: loops
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --pearson
+  description: "Pearson correlation threshold when detecting patterns\nin the contact\
+    \ map. Lower values leads to potentially\nmore detections, but more false positives.\
+    \ [default: auto]"
+  args: !SimpleFlagArg
+    name: auto
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --subsample
+  description: "If greater than 1, subsample INT contacts from the\nmatrix. If between\
+    \ 0 and 1, subsample a proportion of\ncontacts instead. Useful when comparing\
+    \ matrices with\ndifferent coverages. [default: no]"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: 'Number of CPUs to use in parallel. [default: 1]'
+  args: !SimpleFlagArg
+    name: '1'
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --perc-undetected
+  description: "Maximum percentage of non-detectable pixels (nan) in\nwindows allowed\
+    \ to report patterns. [default: auto]"
+  args: !SimpleFlagArg
+    name: auto
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  - --perc-zero
+  description: "Maximum percentage of empty (0) pixels in windows\nallowed to report\
+    \ patterns. [default: auto]"
+  args: !SimpleFlagArg
+    name: auto
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --dump
+  description: "Directory where to save matrix dumps during\nprocessing and detection.\
+    \ Each dump is saved as\na compressed npz of a sparse matrix and can be\nloaded\
+    \ using scipy.sparse.load_npz."
+  args: !SimpleFlagArg
+    name: DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --iterations
+  description: "How many iterations to perform after the first\ntemplate-based pass.\
+    \ [default: 1]"
+  args: !SimpleFlagArg
+    name: auto
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --kernel-config
+  description: "Optionally give a path to a custom JSON kernel\nconfig path. Use this\
+    \ to override pattern if\nyou do not want to use one of the preset\npatterns."
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --no-plotting
+  description: Disable generation of pileup plots.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -N
+  - --n-mads
+  description: "Maximum number of median absolute deviations below\nthe median of\
+    \ the bin sums distribution allowed to\nconsider detectable bins. [default: 5]"
+  args: !SimpleFlagArg
+    name: '5'
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --min-separation
+  description: "Minimum distance required between patterns, in\nbasepairs. If two\
+    \ patterns are closer than this\ndistance in both axes, the one with the lowest\n\
+    score is discarded. [default: auto]"
+  args: !SimpleFlagArg
+    name: auto
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --smooth-trend
+  description: "Use isotonic regression when detrending to reduce\nnoise at long ranges.\
+    \ Do not enable this for circular\ngenomes."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --tsvd
+  description: "Enable kernel factorisation via truncated svd.\nAccelerates detection,\
+    \ at the cost of slight\ninaccuracies. Singular matrices are truncated to\nretain\
+    \ 99.9% of the information in the kernel."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --win-fmt
+  description: "File format used to store individual windows\naround each pattern.\
+    \ Window order matches\npatterns inside the associated text file.\nPossible formats\
+    \ are json and npy. [default: json]"
+  args: !ChoiceFlagArg
+    choices: !!set
+      npy:
+      json:
+- !Flag
+  optional: true
+  synonyms:
+  - -W
+  - --win-size
+  description: "Window size (width), in pixels, to use for the\nkernel when computing\
+    \ correlations. The pattern\nkernel will be resized to match this size. Linear\n\
+    linear interpolation is used to fill between pixels.\nIf not specified, the default\
+    \ kernel size will\nbe used instead. [default: auto]\n"
+  args: !SimpleFlagArg
+    name: auto
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Display this help message.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Display the program's current version.
+  args: !EmptyFlagArg {}
+help_text: "Pattern exploration and detection\n\nExplore and detect patterns (loops,\
+  \ borders, centromeres, etc.) in Hi-C contact\nmaps with pattern matching.\n\nUsage:\n\
+  \    chromosight detect  [--kernel-config=FILE] [--pattern=loops]\n            \
+  \            [--pearson=auto] [--win-size=auto] [--iterations=auto]\n          \
+  \              [--win-fmt={json,npy}] [--norm={auto,raw,force}]\n              \
+  \          [--subsample=no] [--inter] [--tsvd] [--smooth-trend]\n              \
+  \          [--n-mads=5] [--min-dist=0] [--max-dist=auto]\n                     \
+  \   [--no-plotting] [--min-separation=auto] [--dump=DIR]\n                     \
+  \   [--threads=1] [--perc-zero=auto]\n                        [--perc-undetected=auto]\
+  \ <contact_map> <prefix>\n    chromosight generate-config [--preset loops] [--click\
+  \ contact_map]\n                        [--norm={auto,raw,norm}] [--win-size=auto]\
+  \ [--n-mads=5]\n                        [--threads=1] <prefix>\n    chromosight\
+  \ quantify [--inter] [--pattern=loops] [--subsample=no]\n                      \
+  \   [--win-fmt=json] [--kernel-config=FILE] [--norm={auto,raw,norm}]\n         \
+  \                [--threads=1] [--n-mads=5] [--win-size=auto]\n                \
+  \         [--perc-undetected=auto] [--perc-zero=auto]\n                        \
+  \ [--no-plotting] [--tsvd] <bed2d> <contact_map> <prefix>\n    chromosight list-kernels\
+  \ [--long] [--mat] [--name=kernel_name]\n    chromosight test\n\n    detect:\n \
+  \       performs pattern detection on a Hi-C contact map via template matching\n\
+  \    generate-config:\n        Generate pre-filled config files to use for detect\
+  \ and quantify.\n        A config consists of a JSON file describing parameters\
+  \ for the\n        analysis and path pointing to kernel matrices files. Those matrices\n\
+  \        files are tsv files with numeric values as kernel to use for\n        convolution.\n\
+  \    quantify:\n        Given a list of pairs of positions and a contact map, computes\
+  \ the\n        correlation coefficients between those positions and the kernel of\
+  \ the\n        selected pattern.\n    list-kernels:\n        Prints information\
+  \ about available kernels.\n    test:\n        Download example data and run loop\
+  \ detection on it.\n\nArguments for detect:\n    contact_map                 The\
+  \ Hi-C contact map to detect patterns on, in\n                                bedgraph2d\
+  \ or cool format.\n    prefix                      Common path prefix used to generate\
+  \ output files.\n                                Extensions will be added for each\
+  \ file.\n\nArguments for quantify:\n    bed2d                       Tab-separated\
+  \ text files with columns chrom1, start1\n                                end1,\
+  \ chrom2, start2, end2. Each line correspond to\n                              \
+  \  a pair of positions (i.e. a position in the matrix).\n    contact_map       \
+  \          Path to the contact map, in bedgraph2d or\n                         \
+  \       cool format.\n    prefix                      Common path prefix used to\
+  \ generate output files.\n                                Extensions will be added\
+  \ for each file.\n\nArguments for generate-config:\n    prefix                 \
+  \     Path prefix for config files. If prefix is a/b,\n                        \
+  \        files a/b.json and a/b.1.txt will be generated.\n                     \
+  \           If a given pattern has N kernel matrices, N txt\n                  \
+  \              files are created they will be named a/b.[1-N].txt.\n    -e, --preset=loops\
+  \          Generate a preset config for the given pattern.\n                   \
+  \             Preset configs available are \"loops\" and\n                     \
+  \           \"borders\". [default: loops]\n    -c, --click contact_map     Show\
+  \ input contact map and uses double clicks from\n                              \
+  \  user to build the kernel. Warning: memory-heavy,\n                          \
+  \      reserve for small genomes or subsetted matrices.\n\nArguments for list-kernels:\n\
+  \    --name=kernel_name      Only show information related to a particular\n   \
+  \                         kernel.[default: all]\n    --long                  Show\
+  \ default parameters in addition to kernel names.\n    --mat                   Prints\
+  \ an ascii representation of the kernel matrix.\n\nBasic options:\n    -h, --help\
+  \                  Display this help message.\n    --version                   Display\
+  \ the program's current version.\n    --verbose                   Displays the logo.\n\
+  \    -n, --norm={auto,raw,force} Normalization / balancing behaviour. auto: weights\n\
+  \                                present in the cool file are used. raw: raw contact\n\
+  \                                values are used. force: recompute weights and\n\
+  \                                overwrite existing values. raw[default: auto]\n\
+  \    -I, --inter                 Enable to consider interchromosomal contacts.\n\
+  \                                Warning: Experimental feature with high memory\n\
+  \                                consumption, only use with small matrices.\n  \
+  \  -m, --min-dist=auto         Minimum distance from the diagonal (in base pairs).\n\
+  \                                at which detection should operate. [default: auto]\n\
+  \    -M, --max-dist=auto         Maximum distance from the diagonal (in base pairs)\n\
+  \                                for detection. [default: auto]\n    -P, --pattern=loops\
+  \         Which pattern to detect. This will use preset\n                      \
+  \          configurations for the given pattern. Possible\n                    \
+  \            values are: loops, loops_small, borders, hairpins and\n           \
+  \                     centromeres. [default: loops]\n    -p, --pearson=auto    \
+  \      Pearson correlation threshold when detecting patterns\n                 \
+  \               in the contact map. Lower values leads to potentially\n        \
+  \                        more detections, but more false positives. [default: auto]\n\
+  \    -s, --subsample=INT         If greater than 1, subsample INT contacts from\
+  \ the\n                                matrix. If between 0 and 1, subsample a proportion\
+  \ of\n                                contacts instead. Useful when comparing matrices\
+  \ with\n                                different coverages. [default: no]\n   \
+  \ -t, --threads=1             Number of CPUs to use in parallel. [default: 1]\n\
+  \    -u, --perc-undetected=auto  Maximum percentage of non-detectable pixels (nan)\
+  \ in\n                                windows allowed to report patterns. [default:\
+  \ auto]\n    -z, --perc-zero=auto        Maximum percentage of empty (0) pixels\
+  \ in windows\n                                allowed to report patterns. [default:\
+  \ auto]\n\nAdvanced options:\n    -d, --dump=DIR              Directory where to\
+  \ save matrix dumps during\n                                processing and detection.\
+  \ Each dump is saved as\n                                a compressed npz of a sparse\
+  \ matrix and can be\n                                loaded using scipy.sparse.load_npz.\n\
+  \    -i, --iterations=auto       How many iterations to perform after the first\n\
+  \                                template-based pass. [default: 1]\n    -k, --kernel-config=FILE\
+  \    Optionally give a path to a custom JSON kernel\n                          \
+  \      config path. Use this to override pattern if\n                          \
+  \      you do not want to use one of the preset\n                              \
+  \  patterns.\n    --no-plotting               Disable generation of pileup plots.\n\
+  \    -N, --n-mads=5              Maximum number of median absolute deviations below\n\
+  \                                the median of the bin sums distribution allowed\
+  \ to\n                                consider detectable bins. [default: 5]\n \
+  \   -S, --min-separation=auto   Minimum distance required between patterns, in\n\
+  \                                basepairs. If two patterns are closer than this\n\
+  \                                distance in both axes, the one with the lowest\n\
+  \                                score is discarded. [default: auto]\n    -T, --smooth-trend\
+  \          Use isotonic regression when detrending to reduce\n                 \
+  \               noise at long ranges. Do not enable this for circular\n        \
+  \                        genomes.\n    -V, --tsvd                  Enable kernel\
+  \ factorisation via truncated svd.\n                                Accelerates\
+  \ detection, at the cost of slight\n                                inaccuracies.\
+  \ Singular matrices are truncated to\n                                retain 99.9%\
+  \ of the information in the kernel.\n    -w, --win-fmt={json,npy}    File format\
+  \ used to store individual windows\n                                around each\
+  \ pattern. Window order matches\n                                patterns inside\
+  \ the associated text file.\n                                Possible formats are\
+  \ json and npy. [default: json]\n    -W, --win-size=auto         Window size (width),\
+  \ in pixels, to use for the\n                                kernel when computing\
+  \ correlations. The pattern\n                                kernel will be resized\
+  \ to match this size. Linear\n                                linear interpolation\
+  \ is used to fill between pixels.\n                                If not specified,\
+  \ the default kernel size will\n                                be used instead.\
+  \ [default: auto]\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/chromosight:1.4.1--py_0

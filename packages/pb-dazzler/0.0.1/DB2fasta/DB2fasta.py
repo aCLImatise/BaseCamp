@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean
+
+Db2Fasta_V0_1_0 = CommandToolBuilder(tool="DB2fasta", base_command=["DB2fasta"], inputs=[ToolInput(tag="in_use_upper_case", input_type=Boolean(optional=True), prefix="-U", doc=InputDocumentation(doc=": Use upper case for DNA (default is lower case).")), ToolInput(tag="in_print_bp_line", input_type=Boolean(optional=True), prefix="-w", doc=InputDocumentation(doc=": Print -w bp per line (default is 80).")), ToolInput(tag="in_vu", input_type=Boolean(optional=True), prefix="-vU", doc=InputDocumentation(doc=""))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Db2Fasta_V0_1_0().translate("wdl", allow_empty_container=True)
+

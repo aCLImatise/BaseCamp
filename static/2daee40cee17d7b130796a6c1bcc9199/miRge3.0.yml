@@ -1,0 +1,395 @@
+!Command
+command:
+- miRge3.0
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --samples
+  description: list of one or more samples separated by comma or a file with list
+    of samples separated by new line (accepts *.fastq, *.fastq.gz)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -db
+  - --mir-DB
+  description: 'the reference database of miRNA. Options: miRBase and miRGeneDB (Default:
+    miRBase)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -lib
+  - --libraries-path
+  description: the path to miRge libraries
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -on
+  - --organism-name
+  description: the organism name can be human, mouse, fruitfly, nematode, rat or zebrafish
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ex
+  - --crThreshold
+  description: 'the threshold of the proportion of canonical reads for the miRNAs
+    to retain. Range for ex (0 - 0.5), (Default: 0.1)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -phr
+  - --phred64
+  description: 'phred64 format (Default: 33)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -spk
+  - --spikeIn
+  description: "switch to annotate spike-ins if spike-in bowtie index files are located\
+    \ at the path of bowtie's index files (Default: off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ie
+  - --isoform-entropy
+  description: 'switch to calculate isomir entropy (default: off)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -cpu
+  - --threads
+  description: 'the number of processors to use for trimming, qc, and alignment (Default:
+    1)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ai
+  - --AtoI
+  description: 'switch to calculate A to I editing (Default: off)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -tcf
+  - --tcf-out
+  description: 'switch to write trimmed and collapsed fasta file (Default: off)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -gff
+  - --gff-out
+  description: 'switch to output isomiR results in gff format (Default: off)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -bam
+  - --bam-out
+  description: 'switch to output results in bam format (Default: off)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -trf
+  - --tRNA-frag
+  description: 'switch to analyze tRNA fragment and halves (Default: off)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --outDir
+  description: 'the directory of the outputs (Default: current directory)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -dex
+  - --diffex
+  description: 'perform differential expression with DESeq2 (Default: off)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -mdt
+  - --metadata
+  description: "the path to metadata file (Default: off, require '.csv' file format\
+    \ if -dex is opted)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -shh
+  - --quiet
+  description: 'enable quiet/silent mode, only show warnings and errors (Default:
+    off)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --adapter
+  description: Sequence of a 3' adapter. The adapter and subsequent bases are trimmed
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --front
+  description: Sequence of a 5' adapter. The adapter and any preceding bases are trimmed
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --cut
+  description: Remove bases from each read. If LENGTH is positive, remove bases from
+    the beginning. If LENGTH is negative, remove bases from the end
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -nxt
+  - --nextseq-trim
+  description: NextSeq-specific quality trimming (each read). Trims also dark cycles
+    appearing as high-quality G bases
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quality-cutoff
+  description: "Trim low-quality bases from 5' and/or 3' ends of each read before\
+    \ adapter removal. If one value is given, only the 3' end is trimmed\nIf two comma-separated\
+    \ cutoffs are given, the 5' end is trimmed with the first cutoff, the 3' end with\
+    \ the second"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --length
+  description: "Shorten reads to LENGTH. Positive values remove bases at the end while\
+    \ negative ones remove bases at the beginning. This and the following\nmodifications\
+    \ are applied after adapter trimming"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -NX
+  - --trim-n
+  description: Trim N's on ends of reads
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --minimum-length
+  description: 'Discard reads shorter than LEN. (Default: 16)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -umi
+  - --uniq-mol-ids
+  description: 'Removes PCR duplicates and trim UMI of length by specifying two comma-separated
+    cutoffs as 5’ cutoff,3’ bp from both ends of the read. eg: 4,4 or 0,4'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -udd
+  - --umiDedup
+  description: 'Specifies argument to removes PCR duplicates (Default: False); if
+    TRUE it will remove UMI and remove PCR duplicates otherwise it only remove UMI
+    and keep the raw counts'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -qumi
+  - --qiagenumi
+  description: 'Removes PCR duplicates of reads obtained from Qiagen platform (Default:
+    Illumina; "-umi x,y " Required)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -nmir
+  - --novel-miRNA
+  description: include prediction of novel miRNAs
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -minl
+  - --minLength
+  description: 'the minimum length of the retained reads for novel miRNA detection
+    (default: 16)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -maxl
+  - --maxLength
+  description: 'the maximum length of the retained reads for novel miRNA detection
+    (default: 25)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --minReadCounts
+  description: 'the minimum read counts supporting novel miRNA detection (default:
+    2)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -mloc
+  - --maxMappingLoci
+  description: 'the maximum number of mapping loci for the retained reads for novel
+    miRNA detection (default: 3)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -sl
+  - --seedLength
+  description: 'the seed length when invoking Bowtie for novel miRNA detection (default:
+    25)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -olc
+  - --overlapLenCutoff
+  description: "the length of overlapped seqence when joining reads into longer sequences\
+    \ based on the coordinate\non the genome for novel miRNA detection (default: 14)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -clc
+  - --clusterLength
+  description: 'the maximum length of the clustered sequences for novel miRNA detection
+    (default: 30)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -pbwt
+  - --bowtie-path
+  description: the path to system's directory containing bowtie binary
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -psam
+  - --samtools-path
+  description: the path to system's directory containing samtools binary
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -prf
+  - --RNAfold-path
+  description: the path to system's directory containing RNAfold binary
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: miRge3.0 [options]\n\nmiRge3.0 (Comprehensive analysis of small\
+  \ RNA sequencing Data)\n\noptional arguments:\n  -h, --help  show this help message\
+  \ and exit\n  --version   show program's version number and exit\n\nOptions:\n \
+  \ -s,    --samples            list of one or more samples separated by comma or\
+  \ a file with list of samples separated by new line (accepts *.fastq, *.fastq.gz)\
+  \ \n  -db,   --mir-DB             the reference database of miRNA. Options: miRBase\
+  \ and miRGeneDB (Default: miRBase) \n  -lib,  --libraries-path     the path to miRge\
+  \ libraries \n  -on,   --organism-name      the organism name can be human, mouse,\
+  \ fruitfly, nematode, rat or zebrafish\n  -ex,   --crThreshold        the threshold\
+  \ of the proportion of canonical reads for the miRNAs to retain. Range for ex (0\
+  \ - 0.5), (Default: 0.1)\n  -phr,  --phred64            phred64 format (Default:\
+  \ 33)\n  -spk,  --spikeIn            switch to annotate spike-ins if spike-in bowtie\
+  \ index files are located at the path of bowtie's index files (Default: off)\n \
+  \ -ie,   --isoform-entropy    switch to calculate isomir entropy (default: off)\n\
+  \  -cpu,  --threads            the number of processors to use for trimming, qc,\
+  \ and alignment (Default: 1)\n  -ai,   --AtoI               switch to calculate\
+  \ A to I editing (Default: off)\n  -tcf   --tcf-out            switch to write trimmed\
+  \ and collapsed fasta file (Default: off)\n  -gff   --gff-out            switch\
+  \ to output isomiR results in gff format (Default: off) \n  -bam   --bam-out   \
+  \         switch to output results in bam format (Default: off) \n  -trf   --tRNA-frag\
+  \          switch to analyze tRNA fragment and halves (Default: off)\n  -o     --outDir\
+  \             the directory of the outputs (Default: current directory) \n  -dex\
+  \   --diffex             perform differential expression with DESeq2 (Default: off)\n\
+  \  -mdt   --metadata           the path to metadata file (Default: off, require\
+  \ '.csv' file format if -dex is opted)\n  -shh   --quiet              enable quiet/silent\
+  \ mode, only show warnings and errors (Default: off)\n\nData pre-processing:\n \
+  \ -a,    --adapter            Sequence of a 3' adapter. The adapter and subsequent\
+  \ bases are trimmed\n  -g,    --front              Sequence of a 5' adapter. The\
+  \ adapter and any preceding bases are trimmed\n  -u,    --cut                Remove\
+  \ bases from each read. If LENGTH is positive, remove bases from the beginning.\
+  \ If LENGTH is negative, remove bases from the end\n  -nxt,  --nextseq-trim    \
+  \   NextSeq-specific quality trimming (each read). Trims also dark cycles appearing\
+  \ as high-quality G bases\n  -q,    --quality-cutoff     Trim low-quality bases\
+  \ from 5' and/or 3' ends of each read before adapter removal. If one value is given,\
+  \ only the 3' end is trimmed\n                              If two comma-separated\
+  \ cutoffs are given, the 5' end is trimmed with the first cutoff, the 3' end with\
+  \ the second\n  -l,    --length             Shorten reads to LENGTH. Positive values\
+  \ remove bases at the end while negative ones remove bases at the beginning. This\
+  \ and the following\n                              modifications are applied after\
+  \ adapter trimming\n  -NX,   --trim-n             Trim N's on ends of reads\n  -m,\
+  \    --minimum-length     Discard reads shorter than LEN. (Default: 16)\n  -umi,\
+  \  --uniq-mol-ids       Removes PCR duplicates and trim UMI of length by specifying\
+  \ two comma-separated cutoffs as 5’ cutoff,3’ bp from both ends of the read. eg:\
+  \ 4,4 or 0,4 \n  -udd,  --umiDedup           Specifies argument to removes PCR duplicates\
+  \ (Default: False); if TRUE it will remove UMI and remove PCR duplicates otherwise\
+  \ it only remove UMI and keep the raw counts\n  -qumi, --qiagenumi          Removes\
+  \ PCR duplicates of reads obtained from Qiagen platform (Default: Illumina; \"-umi\
+  \ x,y \" Required)\n  \n  \n\nPredicting novel miRNAs:\n  The predictive model for\
+  \ novel miRNA detection is trained on human and mouse!\n  -nmir, --novel-miRNA \
+  \       include prediction of novel miRNAs\n  -minl, --minLength          the minimum\
+  \ length of the retained reads for novel miRNA detection (default: 16)\n  -maxl,\
+  \ --maxLength          the maximum length of the retained reads for novel miRNA\
+  \ detection (default: 25)\n  -c,    --minReadCounts      the minimum read counts\
+  \ supporting novel miRNA detection (default: 2)\n  -mloc, --maxMappingLoci     the\
+  \ maximum number of mapping loci for the retained reads for novel miRNA detection\
+  \ (default: 3)\n  -sl,   --seedLength         the seed length when invoking Bowtie\
+  \ for novel miRNA detection (default: 25)\n  -olc,  --overlapLenCutoff   the length\
+  \ of overlapped seqence when joining reads into longer sequences based on the coordinate\
+  \ \n                              on the genome for novel miRNA detection (default:\
+  \ 14)\n  -clc,  --clusterLength      the maximum length of the clustered sequences\
+  \ for novel miRNA detection (default: 30)\n\nOptional PATH arguments:\n  -pbwt,\
+  \ --bowtie-path        the path to system's directory containing bowtie binary\n\
+  \  -psam, --samtools-path      the path to system's directory containing samtools\
+  \ binary\n  -prf,  --RNAfold-path       the path to system's directory containing\
+  \ RNAfold binary\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/mirge3:0.0.7--pyh3252c3a_0

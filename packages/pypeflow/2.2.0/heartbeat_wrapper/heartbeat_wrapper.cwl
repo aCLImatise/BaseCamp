@@ -3,23 +3,23 @@ id: heartbeat_wrapper.cwl
 inputs:
 - id: in_exit_file
   doc: '[--directory DIRECTORY]'
-  type: File
+  type: File?
   inputBinding:
     prefix: --exit-file
 - id: in_rate
   doc: 'Heartbeat rate, in seconds (default: 1.0)'
-  type: double
+  type: double?
   inputBinding:
     prefix: --rate
 - id: in_heartbeat_file
   doc: "Path to heartbeat file. The first line will have the\nformat '0 {pid} {pgid}\\\
     n'. The rest are just elapsed\ntime (default: None)"
-  type: File
+  type: File?
   inputBinding:
     prefix: --heartbeat-file
 - id: in_directory
   doc: 'Directory in which to run COMMAND. (default: .)'
-  type: Directory
+  type: Directory?
   inputBinding:
     prefix: --directory
 - id: in_command
@@ -32,6 +32,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - heartbeat-wrapper

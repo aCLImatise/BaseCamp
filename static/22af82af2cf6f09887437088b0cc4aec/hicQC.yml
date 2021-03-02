@@ -1,0 +1,74 @@
+!Command
+command:
+- hicQC
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --logfiles
+  - -l
+  description: Path to the log files to be processed
+  args: !RepeatFlagArg
+    name: LOGFILES
+- !Flag
+  optional: true
+  synonyms:
+  - --labels
+  description: "Label to assign to each log file. Each label should be\nseparated\
+    \ by a space. Quote labels that contain\nspaces: E.g. --labels label1 \"labels\
+    \ 2\""
+  args: !RepeatFlagArg
+    name: LABELS
+- !Flag
+  optional: true
+  synonyms:
+  - --outputFolder
+  - -o
+  description: "Several files with be saved under this folder: A table\ncontaining\
+    \ the results and a html file with several\nimages."
+  args: !SimpleFlagArg
+    name: OUTPUTFOLDER
+- !Flag
+  optional: true
+  synonyms:
+  - --dpi
+  description: "Image resolution. By default high resolution png\nimages with a 200\
+    \ dpi are created."
+  args: !SimpleFlagArg
+    name: DPI
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: hicQC --logfiles matrix1_QCfolder/QC.log matrix2_QCfolder/QC.log\
+  \ --labels \"sample 1\" \"sample 2\" --outputFolder QC_all_samples)\n\nTabulates\
+  \ and plots QC measures from hicBuildMatrix log files within an HTML\noutput\n\n\
+  Required arguments:\n  --logfiles LOGFILES [LOGFILES ...], -l LOGFILES [LOGFILES\
+  \ ...]\n                        Path to the log files to be processed\n  --labels\
+  \ LABELS [LABELS ...]\n                        Label to assign to each log file.\
+  \ Each label should be\n                        separated by a space. Quote labels\
+  \ that contain\n                        spaces: E.g. --labels label1 \"labels 2\"\
+  \n  --outputFolder OUTPUTFOLDER, -o OUTPUTFOLDER\n                        Several\
+  \ files with be saved under this folder: A table\n                        containing\
+  \ the results and a html file with several\n                        images.\n\n\
+  Optional arguments:\n  --dpi DPI             Image resolution. By default high resolution\
+  \ png\n                        images with a 200 dpi are created.\n  --help, -h\
+  \            show this help message and exit\n  --version             show program's\
+  \ version number and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/hicexplorer:3.6--py_0

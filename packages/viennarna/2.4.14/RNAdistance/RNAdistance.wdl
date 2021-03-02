@@ -16,6 +16,9 @@ task RNAdistance {
       ~{if (shapiro) then "--shapiro" else ""} \
       ~{if (backtrack) then "--backtrack" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     detailed_help: "Print help, including all details and hidden\\noptions, and exit"
     distance: "Specify the distance representation to be used\\nin calculations.\\n(default=`f')"

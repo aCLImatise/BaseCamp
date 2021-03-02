@@ -4,6 +4,9 @@ task Avro {
   command <<<
     avro
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

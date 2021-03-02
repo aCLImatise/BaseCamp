@@ -1,0 +1,216 @@
+!Command
+command:
+- locuspocus
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: iLocus
+  description: '-g|--genemap: FILE     print a mapping from each gene annotation to
+    its'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --debug
+  description: "print detailed debugging messages to terminal\n(standard error)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --delta
+  description: ": INT        when parsing interval loci, use the following\ndelta\
+    \ to extend gene loci and include potential\nregulatory regions; default is 500"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --skipends
+  description: "when enumerating interval loci, exclude\nunannotated (and presumably\
+    \ incomplete) iLoci at\neither end of the sequence"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --endsonly
+  description: "report only incomplete iLocus fragments at the\nunannotated ends of\
+    \ sequences (complement of\n--skipends)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -y
+  - --skipiiloci
+  description: do not report intergenic iLoci
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --refine
+  description: "by default genes are grouped in the same iLocus\nif they have any\
+    \ overlap; 'refine' mode allows\nfor a more nuanced handling of overlapping genes"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --cds
+  description: "use CDS rather than UTRs for determining gene\noverlap; implies 'refine'\
+    \ mode"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --minoverlap
+  description: ": INT   the minimum number of nucleotides two genes must\noverlap\
+    \ to be grouped in the same iLocus; default\nis 1"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --namefmt
+  description: ": STR     provide a printf-style format string to override\nthe default\
+    \ ID format for newly created loci;\ndefault is 'locus%lu' (locus1, locus2, etc)\
+    \ for\nloci and 'iLocus%lu' (iLocus1, iLocus2, etc) for\ninterval loci; note the\
+    \ format string should\ninclude a single %lu specifier to be filled in\nwith a\
+    \ long unsigned integer value"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --ilens
+  description: ': FILE       create a file with the lengths of each intergenic'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --outfile
+  description: ": FILE     name of file to which results will be written;\ndefault\
+    \ is terminal (standard output)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --retainids
+  description: "retain original feature IDs from input files;\nconflicts will arise\
+    \ if input contains duplicated\nID values"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --transmap
+  description: ": FILE    print a mapping from each transcript annotation\nto its\
+    \ corresponding locus to the given file"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --verbose
+  description: "include all locus subfeatures (genes, RNAs, etc)\nin the GFF3 output;\
+    \ default includes only locus\nfeatures"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --filter
+  description: ": TYPE      comma-separated list of feature types to use in\nconstructing\
+    \ loci/iLoci; default is 'gene'"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --parent
+  description: ": CT:PT     if a feature of type $CT exists without a parent,\ncreate\
+    \ a parent for this feature with type $PT;\nfor example, mRNA:gene will create\
+    \ a gene feature\nas a parent for any top-level mRNA feature;\nthis option can\
+    \ be specified multiple times"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --pseudo
+  description: correct erroneously labeled pseudogenes
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: print this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: print version number and exit
+  args: !EmptyFlagArg {}
+help_text: "\nLocusPocus: calculate locus coordinates for the given gene annotation\n\
+  Usage: locuspocus [options] gff3file1 [gff3file2 gff3file3 ...]\n  Basic options:\n\
+  \    -d|--debug             print detailed debugging messages to terminal\n    \
+  \                       (standard error)\n    -h|--help              print this\
+  \ help message and exit\n    -v|--version           print version number and exit\n\
+  \n  iLocus parsing:\n    -l|--delta: INT        when parsing interval loci, use\
+  \ the following\n                           delta to extend gene loci and include\
+  \ potential\n                           regulatory regions; default is 500\n   \
+  \ -s|--skipends          when enumerating interval loci, exclude\n             \
+  \              unannotated (and presumably incomplete) iLoci at\n              \
+  \             either end of the sequence\n    -e|--endsonly          report only\
+  \ incomplete iLocus fragments at the\n                           unannotated ends\
+  \ of sequences (complement of\n                           --skipends)\n    -y|--skipiiloci\
+  \        do not report intergenic iLoci\n\n  Refinement options:\n    -r|--refine\
+  \            by default genes are grouped in the same iLocus\n                 \
+  \          if they have any overlap; 'refine' mode allows\n                    \
+  \       for a more nuanced handling of overlapping genes\n    -c|--cds         \
+  \      use CDS rather than UTRs for determining gene\n                         \
+  \  overlap; implies 'refine' mode\n    -m|--minoverlap: INT   the minimum number\
+  \ of nucleotides two genes must\n                           overlap to be grouped\
+  \ in the same iLocus; default\n                           is 1\n\n  Output options:\n\
+  \    -n|--namefmt: STR     provide a printf-style format string to override\n  \
+  \                         the default ID format for newly created loci;\n      \
+  \                     default is 'locus%lu' (locus1, locus2, etc) for\n        \
+  \                   loci and 'iLocus%lu' (iLocus1, iLocus2, etc) for\n         \
+  \                  interval loci; note the format string should\n              \
+  \             include a single %lu specifier to be filled in\n                 \
+  \          with a long unsigned integer value\n    -i|--ilens: FILE       create\
+  \ a file with the lengths of each intergenic\n                           iLocus\n\
+  \    -g|--genemap: FILE     print a mapping from each gene annotation to its\n \
+  \                          corresponding locus to the given file\n    -o|--outfile:\
+  \ FILE     name of file to which results will be written;\n                    \
+  \       default is terminal (standard output)\n    -T|--retainids         retain\
+  \ original feature IDs from input files;\n                           conflicts will\
+  \ arise if input contains duplicated\n                           ID values\n   \
+  \ -t|--transmap: FILE    print a mapping from each transcript annotation\n     \
+  \                      to its corresponding locus to the given file\n    -V|--verbose\
+  \           include all locus subfeatures (genes, RNAs, etc)\n                 \
+  \          in the GFF3 output; default includes only locus\n                   \
+  \        features\n\n  Input options:\n    -f|--filter: TYPE      comma-separated\
+  \ list of feature types to use in\n                           constructing loci/iLoci;\
+  \ default is 'gene'\n    -p|--parent: CT:PT     if a feature of type $CT exists\
+  \ without a parent,\n                           create a parent for this feature\
+  \ with type $PT;\n                           for example, mRNA:gene will create\
+  \ a gene feature\n                           as a parent for any top-level mRNA\
+  \ feature;\n                           this option can be specified multiple times\n\
+  \    -u|--pseudo            correct erroneously labeled pseudogenes\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/aegean:0.16.0--hc2cb157_0

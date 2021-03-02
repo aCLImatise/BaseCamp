@@ -1,0 +1,65 @@
+!Command
+command:
+- lociCounterWithLabels.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -fai
+  - --fai-file
+  description: '.fa.fai file (default: None)'
+  args: !SimpleFlagArg
+    name: FAI_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -beds
+  - --bed-files
+  description: 'BED files (default: None)'
+  args: !RepeatFlagArg
+    name: BED_FILES
+- !Flag
+  optional: true
+  synonyms:
+  - -out
+  - --bed-out
+  description: 'BED file out (default: None)'
+  args: !SimpleFlagArg
+    name: BED_OUT
+- !Flag
+  optional: true
+  synonyms:
+  - -labels
+  description: "[BED_LABELS [BED_LABELS ...]], --bed-labels [BED_LABELS [BED_LABELS\
+    \ ...]]\nUse these labels instead of bed file names (default:\nNone)\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: lociCounterWithLabels.py [-h] -fai FAI_FILE -beds BED_FILES\n \
+  \                               [BED_FILES ...] -out BED_OUT\n                 \
+  \               [-labels [BED_LABELS [BED_LABELS ...]]]\n\nThis is a program to\
+  \ tally and count the overlapping regions when given\nmultiple input bed files.\
+  \ A CRITICAL REQUIREMENT is that each input bed file\nis sorted and non-overlapping,\
+  \ which could be achived with bedtools merge\nbefore they are used as input to this\
+  \ program.\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  -fai FAI_FILE, --fai-file FAI_FILE\n                        .fa.fai\
+  \ file (default: None)\n  -beds BED_FILES [BED_FILES ...], --bed-files BED_FILES\
+  \ [BED_FILES ...]\n                        BED files (default: None)\n  -out BED_OUT,\
+  \ --bed-out BED_OUT\n                        BED file out (default: None)\n  -labels\
+  \ [BED_LABELS [BED_LABELS ...]], --bed-labels [BED_LABELS [BED_LABELS ...]]\n  \
+  \                      Use these labels instead of bed file names (default:\n  \
+  \                      None)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/somaticseq:3.6.2--py_0

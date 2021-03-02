@@ -1,0 +1,135 @@
+!Command
+command:
+- eigenstrat_database_tools
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --Input
+  description: "The desired input file prefix. Input files are assumed\nto be <INPUT\
+    \ PREFIX>.geno, <INPUT PREFIX>.snp and\n<INPUT PREFIX>.ind ."
+  args: !SimpleFlagArg
+    name: INPUT FILES PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --Output
+  description: "The desired output file prefix. Three output files are\ncreated, <OUTPUT\
+    \ FILES PREFIX>.geno , <OUTPUT FILES\nPREFIX>.snp and <OUTPUT FILES PREFIX>.ind\
+    \ ."
+  args: !SimpleFlagArg
+    name: OUTPUT FILES PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --Suffix
+  description: "The suffix (if any) that follows .geno/.snp/.ind in\nthe input files.\
+    \ For example, specifying '-s .txt'\nwill treat <INPUT PREFIX>.{geno,snp,ind}.txt\
+    \ as the\ndesired input files."
+  args: !SimpleFlagArg
+    name: INPUT FILE SUFFIX
+- !Flag
+  optional: true
+  synonyms:
+  - -C
+  - --Check
+  description: "Check the -i .ind file and the second .ind file for\nduplicate individuals.\
+    \ Population assignment and/or\nindividual sex are not checked, only individual\
+    \ names.\nNames are case sensitive."
+  args: !SimpleFlagArg
+    name: INPUT FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -E
+  - --Extract
+  description: "Extract the selected individuals from the EigenStrat\ndatabase, creating\
+    \ a new set of EigenStrat files with\nthe selected individuals only."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  - --Remove
+  description: "Remove the selected individuals from the EigenStrat\ndatabase, creating\
+    \ a new set of EigenStrat files\nwithout the selected individuals."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  - --SampleList
+  description: "A list of samples to be Extracted (-E) or Removed (-R)\nfrom the database.\
+    \ Can be a list of individual names\n(1 per line), or the output of duplicate\
+    \ check (-C).\nRequired with -E or -R. Mutually exclusive with -S."
+  args: !SimpleFlagArg
+    name: INDIVIDUAL LIST FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --Sample
+  description: "A samples to be Extracted (-E) or Removed (-R) from\nthe database.\
+    \ Can be called multiple times. Required\nwith -E or -R. Mutually exclusive with\
+    \ -L."
+  args: !SimpleFlagArg
+    name: INDIVIDUAL
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: Print the version and exit.
+  args: !EmptyFlagArg {}
+help_text: "usage: eigenstrat_database_tools (-i <Input file prefix>) (-c <input ind\
+  \ file> | -R | -E) [-L <SAMPLE LIST> | -S Ind [-S Ind2]] [-o <OUTPUT FILE PREFIX>]\n\
+  \nA tool to check two different EingenStrat databses for shared individuals, and\n\
+  extract or remove individuals from an EigenStrat database.\n\nAvailable options:\n\
+  \  -h, --help            show this help message and exit\n  -i <INPUT FILES PREFIX>,\
+  \ --Input <INPUT FILES PREFIX>\n                        The desired input file prefix.\
+  \ Input files are assumed\n                        to be <INPUT PREFIX>.geno, <INPUT\
+  \ PREFIX>.snp and\n                        <INPUT PREFIX>.ind .\n  -o <OUTPUT FILES\
+  \ PREFIX>, --Output <OUTPUT FILES PREFIX>\n                        The desired output\
+  \ file prefix. Three output files are\n                        created, <OUTPUT\
+  \ FILES PREFIX>.geno , <OUTPUT FILES\n                        PREFIX>.snp and <OUTPUT\
+  \ FILES PREFIX>.ind .\n  -s <INPUT FILE SUFFIX>, --Suffix <INPUT FILE SUFFIX>\n\
+  \                        The suffix (if any) that follows .geno/.snp/.ind in\n \
+  \                       the input files. For example, specifying '-s .txt'\n   \
+  \                     will treat <INPUT PREFIX>.{geno,snp,ind}.txt as the\n    \
+  \                    desired input files.\n  -C <INPUT FILE>, --Check <INPUT FILE>\n\
+  \                        Check the -i .ind file and the second .ind file for\n \
+  \                       duplicate individuals. Population assignment and/or\n  \
+  \                      individual sex are not checked, only individual names.\n\
+  \                        Names are case sensitive.\n  -E, --Extract         Extract\
+  \ the selected individuals from the EigenStrat\n                        database,\
+  \ creating a new set of EigenStrat files with\n                        the selected\
+  \ individuals only.\n  -R, --Remove          Remove the selected individuals from\
+  \ the EigenStrat\n                        database, creating a new set of EigenStrat\
+  \ files\n                        without the selected individuals.\n  -L <INDIVIDUAL\
+  \ LIST FILE>, --SampleList <INDIVIDUAL LIST FILE>\n                        A list\
+  \ of samples to be Extracted (-E) or Removed (-R)\n                        from\
+  \ the database. Can be a list of individual names\n                        (1 per\
+  \ line), or the output of duplicate check (-C).\n                        Required\
+  \ with -E or -R. Mutually exclusive with -S.\n  -S <INDIVIDUAL>, --Sample <INDIVIDUAL>\n\
+  \                        A samples to be Extracted (-E) or Removed (-R) from\n \
+  \                       the database. Can be called multiple times. Required\n \
+  \                       with -E or -R. Mutually exclusive with -L.\n  -v, --version\
+  \         Print the version and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/eigenstratdatabasetools:1.0.2--0

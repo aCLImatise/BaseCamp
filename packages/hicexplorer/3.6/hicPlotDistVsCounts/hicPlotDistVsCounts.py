@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Array, String, File, Boolean, Int
+
+Hicplotdistvscounts_V0_1_0 = CommandToolBuilder(tool="hicPlotDistVsCounts", base_command=["hicPlotDistVsCounts"], inputs=[ToolInput(tag="in_matrices", input_type=Array(t=String(), optional=True), prefix="--matrices", doc=InputDocumentation(doc="Hi-C normalized (corrected) matrices. Each path should\nbe separated by a space.")), ToolInput(tag="in_plot_file", input_type=File(optional=True), prefix="--plotFile", doc=InputDocumentation(doc="name, -o file name\nFile name to save the file. The given file ending will\nbe used to determine the image format. The available\noptions are: .png, .emf, .eps, .pdf and .svg.")), ToolInput(tag="in_labels", input_type=Array(t=String(), optional=True), prefix="--labels", doc=InputDocumentation(doc="Label to assign to each matrix file. Each label should\nbe separated by a space. Quote labels that contain\nspaces: E.g. --labels label1 'labels 2'. If no labels\nare given then the file name is used.")), ToolInput(tag="in_skip_diagonal", input_type=Boolean(optional=True), prefix="--skipDiagonal", doc=InputDocumentation(doc="If set, diagonal counts are not included.")), ToolInput(tag="in_maxdepth", input_type=Int(optional=True), prefix="--maxdepth", doc=InputDocumentation(doc="bp     Maximum distance from diagonal to use. In other words,\ndistances up to maxDepth are computed. Default is 3\nmillion bp.")), ToolInput(tag="in_per_chr", input_type=Boolean(optional=True), prefix="--perchr", doc=InputDocumentation(doc="If given, computes and display distance versus Hi-C\ncounts plots for each chromosome stored in the\nmatrices passed to --matrices.")), ToolInput(tag="in_chromosome_exclude", input_type=Array(t=String(), optional=True), prefix="--chromosomeExclude", doc=InputDocumentation(doc="Exclude the given list of chromosomes. This is useful\nfor example to exclude the Y chromosome. The names of\nthe chromosomes should be separated by space.")), ToolInput(tag="in_outfile_data", input_type=File(optional=True), prefix="--outFileData", doc=InputDocumentation(doc="If given, the data underlying the plots is saved on\nthis file.")), ToolInput(tag="in_plot_size", input_type=Int(optional=True), prefix="--plotsize", doc=InputDocumentation(doc="PLOTSIZE\nWidth and height of the plot (in inches). Default is\n6*number of cols, 4 * number of rows. The maximum\nnumber of rows is 4. Example: --plotsize 6 5"))], outputs=[], container="quay.io/biocontainers/hicexplorer:3.6--py_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Hicplotdistvscounts_V0_1_0().translate("wdl")
+

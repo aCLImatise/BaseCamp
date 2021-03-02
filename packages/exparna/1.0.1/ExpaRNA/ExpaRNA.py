@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean
+
+Exparna_V0_1_0 = CommandToolBuilder(tool="ExpaRNA", base_command=["ExpaRNA"], inputs=[ToolInput(tag="in_minmal_size_epm", input_type=Boolean(optional=True), prefix="-s", doc=InputDocumentation(doc="#   : # minmal size of an EPM (gamma)\n2 is default and returns all EPMs with at least 2 nucleotides")), ToolInput(tag="in_determines_maximal_number", input_type=Boolean(optional=True), prefix="-n", doc=InputDocumentation(doc="#   : # determines the maximal number of returned EPMs\n0 is default an returns all EPMs\n1 is the largest EPM and so on...")), ToolInput(tag="in_initial_epm_score", input_type=Boolean(optional=True), prefix="-t", doc=InputDocumentation(doc="#   : 1: initial EPM score = EPM size (default)\n: 2: initial EPM score = (EPM size)^2 (prefers larger patterns in LCS-EPM)")), ToolInput(tag="in_ignore_gaps_input", input_type=Boolean(optional=True), prefix="-g", doc=InputDocumentation(doc=": Do NOT ignore gaps in input sequences")), ToolInput(tag="in_write_output_dir", input_type=Boolean(optional=True), prefix="-d", doc=InputDocumentation(doc="#   : write all output to dir <#>")), ToolInput(tag="in_write_file_alignment", input_type=Boolean(optional=True), prefix="-o", doc=InputDocumentation(doc=": write LCS-EPM into file 'LCSEPM_align.aln' as alignment")), ToolInput(tag="in_write_file_constraint", input_type=Boolean(optional=True), prefix="-i", doc=InputDocumentation(doc=": write LCS-EPM into file 'LCSEPM_LocARNA_input.fa' as constraint input for LocARNA")), ToolInput(tag="in_write_file_single", input_type=Boolean(optional=True), prefix="-e", doc=InputDocumentation(doc=": write LCS-EPM into file 'LCSEPM.epm' as single EPMs")), ToolInput(tag="in_write_epms_file", input_type=Boolean(optional=True), prefix="-a", doc=InputDocumentation(doc=": write all EPMs into file 'allEPM.epm' (depends on -s/ -n)")), ToolInput(tag="in_save_colored_postscript", input_type=Boolean(optional=True), prefix="-p", doc=InputDocumentation(doc=": DO NOT save LCS-EPM as colored postscript file")), ToolInput(tag="in_determine_similaritydifferences_reference", input_type=Boolean(optional=True), prefix="-A", doc=InputDocumentation(doc=": determine similarity/differences of LCS-EPM with reference alignment\nvia two colored postscript files")), ToolInput(tag="in__verbose_output", input_type=Boolean(optional=True), prefix="-v", doc=InputDocumentation(doc=": verbose output"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Exparna_V0_1_0().translate("wdl", allow_empty_container=True)
+

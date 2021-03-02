@@ -1,0 +1,95 @@
+!Command
+command:
+- tadtool
+- tads
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: matrix
+  description: "Square Hi-C Matrix as tab-delimited or .npy file\n(created with numpy.save)\
+    \ or sparse matrix format\n(each line: <row region index> <column region index>\n\
+    <matrix value>)"
+- !Positional
+  optional: false
+  position: 1
+  name: regions
+  description: "BED file (no header) with regions corresponding to the\nnumber of\
+    \ rows in the provided matrix. Fourth column,\nif present, denotes name field,\
+    \ which is used as an\nidentifier in sparse matrix notation."
+- !Positional
+  optional: false
+  position: 2
+  name: window_size
+  description: Window size in base pairs
+- !Positional
+  optional: false
+  position: 3
+  name: cutoff
+  description: Cutoff for TAD-calling algorithm at given window size.
+- !Positional
+  optional: false
+  position: 4
+  name: output
+  description: Optional output file to save TADs.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --algorithm
+  description: "TAD-calling algorithm. Options: insulation,\nninsulation, directionality.\
+    \ Default: insulation."
+  args: !SimpleFlagArg
+    name: ALGORITHM
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --normalisation-window
+  description: "Normalisation window in number of regions. Only\naffects ninsulation\
+    \ algorithm. If not specified,\nwindow will be the whole chromosome."
+  args: !SimpleFlagArg
+    name: NORMALISATION_WINDOW
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --write-values
+  description: Write index values to file instead of TADs.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: tadtool tads [-h] [-a ALGORITHM] [-n NORMALISATION_WINDOW] [-v]\n\
+  \                    matrix regions window_size cutoff [output]\n\nCall TADs with\
+  \ pre-defined parameters\n\npositional arguments:\n  matrix                Square\
+  \ Hi-C Matrix as tab-delimited or .npy file\n                        (created with\
+  \ numpy.save) or sparse matrix format\n                        (each line: <row\
+  \ region index> <column region index>\n                        <matrix value>)\n\
+  \  regions               BED file (no header) with regions corresponding to the\n\
+  \                        number of rows in the provided matrix. Fourth column,\n\
+  \                        if present, denotes name field, which is used as an\n \
+  \                       identifier in sparse matrix notation.\n  window_size   \
+  \        Window size in base pairs\n  cutoff                Cutoff for TAD-calling\
+  \ algorithm at given window size.\n  output                Optional output file\
+  \ to save TADs.\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  -a ALGORITHM, --algorithm ALGORITHM\n                        TAD-calling\
+  \ algorithm. Options: insulation,\n                        ninsulation, directionality.\
+  \ Default: insulation.\n  -n NORMALISATION_WINDOW, --normalisation-window NORMALISATION_WINDOW\n\
+  \                        Normalisation window in number of regions. Only\n     \
+  \                   affects ninsulation algorithm. If not specified,\n         \
+  \               window will be the whole chromosome.\n  -v, --write-values    Write\
+  \ index values to file instead of TADs.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/tadtool:0.82--pyh3252c3a_0

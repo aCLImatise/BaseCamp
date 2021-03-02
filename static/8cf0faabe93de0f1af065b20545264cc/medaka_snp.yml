@@ -1,0 +1,90 @@
+!Command
+command:
+- medaka
+- snp
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: ref_fasta
+  description: Reference sequence .fasta file.
+- !Positional
+  optional: false
+  position: 1
+  name: inputs
+  description: Consensus .hdf files.
+- !Positional
+  optional: false
+  position: 2
+  name: output
+  description: Output .vcf.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: 'Verbose logging of debug information. (default: 20)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --quiet
+  description: 'Minimal logging; warnings only). (default: 20)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --regions
+  description: "Genomic ref_names to process, or a bed file. (default:\nNone)"
+  args: !RepeatFlagArg
+    name: REGIONS
+- !Flag
+  optional: true
+  synonyms:
+  - --threshold
+  description: "Threshold for considering secondary calls. A value of\n1 will result\
+    \ in haploid decoding. (default: 0.04)"
+  args: !SimpleFlagArg
+    name: THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - --ref_vcf
+  description: 'Reference vcf. (default: None)'
+  args: !SimpleFlagArg
+    name: REF_VCF
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: 'Populate VCF info fields. (default: False)'
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: medaka snp [-h] [--debug | --quiet] [--regions REGIONS [REGIONS\
+  \ ...]]\n                  [--threshold THRESHOLD] [--ref_vcf REF_VCF] [--verbose]\n\
+  \                  ref_fasta inputs [inputs ...] output\n\npositional arguments:\n\
+  \  ref_fasta             Reference sequence .fasta file.\n  inputs             \
+  \   Consensus .hdf files.\n  output                Output .vcf.\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  --debug            \
+  \   Verbose logging of debug information. (default: 20)\n  --quiet             \
+  \  Minimal logging; warnings only). (default: 20)\n  --regions REGIONS [REGIONS\
+  \ ...]\n                        Genomic ref_names to process, or a bed file. (default:\n\
+  \                        None)\n  --threshold THRESHOLD\n                      \
+  \  Threshold for considering secondary calls. A value of\n                     \
+  \   1 will result in haploid decoding. (default: 0.04)\n  --ref_vcf REF_VCF    \
+  \ Reference vcf. (default: None)\n  --verbose             Populate VCF info fields.\
+  \ (default: False)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/medaka:1.2.3--py36hbcc4abb_0

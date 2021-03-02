@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, Int, Float, String
+
+Blobtools_Taxify_V0_1_0 = CommandToolBuilder(tool="blobtools_taxify", base_command=["blobtools", "taxify"], inputs=[ToolInput(tag="in_hit_file", input_type=File(optional=True), prefix="--hit_file", doc=InputDocumentation(doc="BLAST/Diamond similarity search result (TSV format).\nDefaults assume '-outfmt '6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore''")), ToolInput(tag="in_hit_column_q_seq_id", input_type=Int(optional=True), prefix="--hit_column_qseqid", doc=InputDocumentation(doc="Zero-based column of qseqid in similarity search result [default: 0]\nChange if different format than (-outfmt '6')")), ToolInput(tag="in_hit_column_s_seq_id", input_type=Int(optional=True), prefix="--hit_column_sseqid", doc=InputDocumentation(doc="Zero-based column of sseqid in similarity search result [default: 1]\nChange if different format than (-outfmt '6')")), ToolInput(tag="in_hit_column_score", input_type=Int(optional=True), prefix="--hit_column_score", doc=InputDocumentation(doc="Zero-based column of (bit)score in similarity search result [default: 11]\nChange if different format than (-outfmt '6')")), ToolInput(tag="in_taxid_mapping_file", input_type=File(optional=True), prefix="--taxid_mapping_file", doc=InputDocumentation(doc="TaxID mapping file (contains seqid and taxid)")), ToolInput(tag="in_map_col_s_seq_id", input_type=Int(optional=True), prefix="--map_col_sseqid", doc=InputDocumentation(doc="Zero-based column of sseqid in TaxID mapping file (it will search for sseqid in this column)")), ToolInput(tag="in_map_col_taxid", input_type=Int(optional=True), prefix="--map_col_taxid", doc=InputDocumentation(doc="Zero-based Column of taxid in TaxID mapping file (it will extract for taxid from this column)")), ToolInput(tag="in_custom", input_type=File(optional=True), prefix="--custom", doc=InputDocumentation(doc="File containing list of sequence IDs")), ToolInput(tag="in_custom_taxid", input_type=Int(optional=True), prefix="--custom_taxid", doc=InputDocumentation(doc="TaxID to assign to all sequence IDs in list")), ToolInput(tag="in_custom_score", input_type=Float(optional=True), prefix="--custom_score", doc=InputDocumentation(doc="Score to assign to all sequence IDs in list")), ToolInput(tag="in_general", input_type=String(), position=0, doc=InputDocumentation(doc="-o, --out <PREFIX>                  Output prefix"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Blobtools_Taxify_V0_1_0().translate("wdl", allow_empty_container=True)
+

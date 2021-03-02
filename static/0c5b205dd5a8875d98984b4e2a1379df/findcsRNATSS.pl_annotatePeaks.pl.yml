@@ -1,0 +1,193 @@
+!Command
+command:
+- findcsRNATSS.pl
+- annotatePeaks.pl
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - -i
+  description: (*see note below)
+  args: !SimpleFlagArg
+    name: prefix
+- !Flag
+  optional: true
+  synonyms:
+  - -rna
+  description: (*see note below)
+  args: !SimpleFlagArg
+    name: RNAseq tag directory
+- !Flag
+  optional: true
+  synonyms:
+  - -genome
+  description: (HOMER genome identifier or FASTA file)
+  args: !SimpleFlagArg
+    name: genome
+- !Flag
+  optional: true
+  synonyms:
+  - -gtf
+  description: (gene annotation, by default will use genome annotation if available)
+  args: !SimpleFlagArg
+    name: gtf file
+- !Flag
+  optional: true
+  synonyms:
+  - -ntagThreshold
+  description: '<#> (minimum number of norm. tags per TSS cluster, default: 7)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -size
+  description: '<#> (size of regions to check for significant TSS clusters, default:
+    150)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -includeSingleExons
+  description: '(include single exon genes for TP/FP calculations, default: only use
+    multiexon genes)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -metagene
+  description: (Include a metagene plot of read distributions)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -cpu
+  description: <#> (max CPUs to use)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -maxInputLog2Fold
+  description: '<#> (maximum log2 fold enrichment vs. input or RNA, default: 30000000000)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -maxRNALog2Fold
+  description: '<#> (maximum log2 fold enrichment vs. input or RNA, default: 30000000000)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -minDistDiff
+  description: '<#> (minimum CDF difference to consider for TP/FP calculation, default:
+    0.15)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -defaultLog2Fold
+  description: '<#> (if annotation-based TP/FP threshold calculation failes, default:
+    1)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -pseudoCount
+  description: '<#> (number of normalizaed reads added to input/target read counts,
+    default: 1.0)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  description: '<#> (local fold enrichment used for initial TSS identification, default:
+    2)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -noFilterRNA
+  description: (only use RNAseq for stability calculations, not for filtering putative
+    TSS)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -senseRegion
+  description: '<#>,<#> (Size of region to calculate RNA/input read density,default:
+    -100,500)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -antisenseRegion
+  description: '<#>,<#> (Size of region to calculate RNA/input read density,default:
+    -500,100)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -rnaRegion
+  description: '<#>,<#> (Size of region to calculate RNA coverage for FP identification,default:
+    -150,-10)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -stableThreshold
+  description: '<#> (minimum RNAseq read density for stable transcript, def: 2)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -biThreshold
+  description: '<#> (minimum divergent csRNAseq signal for bi/divergent TSS, def:
+    2)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -dist
+  description: "<#> (minimum distance from annotated TSS to assign 'distal' annotation,\
+    \ def: 500)"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\n\tfindcsRNATSS.pl <csRNA tag directory> [options]\n\n\tOptions:\n\t\t\
+  -o <prefix> \n\t\t-i <csRNA input tag directory> (*see note below)\n\t\t-rna <RNAseq\
+  \ tag directory> (*see note below)\n\t\t-genome <genome> (HOMER genome identifier\
+  \ or FASTA file)\n\t\t-gtf <gtf file> (gene annotation, by default will use genome\
+  \ annotation if available)\n\t\t\n\t\t-ntagThreshold <#> (minimum number of norm.\
+  \ tags per TSS cluster, default: 7)\n\t\t-size <#> (size of regions to check for\
+  \ significant TSS clusters, default: 150)\n\t\t-includeSingleExons (include single\
+  \ exon genes for TP/FP calculations, default: only use multiexon genes)\n\t\t-metagene\
+  \ (Include a metagene plot of read distributions)\n\t\t-cpu <#> (max CPUs to use)\n\
+  \n\t\tEnrichment threshold options:\n\t\t-maxInputLog2Fold <#> (maximum log2 fold\
+  \ enrichment vs. input or RNA, default: 30000000000)\n\t\t-maxRNALog2Fold <#> (maximum\
+  \ log2 fold enrichment vs. input or RNA, default: 30000000000)\n\t\t-minDistDiff\
+  \ <#> (minimum CDF difference to consider for TP/FP calculation, default: 0.15)\n\
+  \t\t-defaultLog2Fold <#> (if annotation-based TP/FP threshold calculation failes,\
+  \ default: 1)\n\t\t-pseudoCount <#> (number of normalizaed reads added to input/target\
+  \ read counts, default: 1.0)\n\t\t-ntagThreshold <#> (minimum number of norm. tags\
+  \ per TSS cluster, default: 7)\n\t\t-L <#> (local fold enrichment used for initial\
+  \ TSS identification, default: 2)\n\t\t-noFilterRNA (only use RNAseq for stability\
+  \ calculations, not for filtering putative TSS)\n\n\t\tRegion sizes:\n\t\t-size\
+  \ <#> (size of regions to check for significant TSS clusters, default: 150)\n\t\t\
+  -senseRegion <#>,<#> (Size of region to calculate RNA/input read density,default:\
+  \ -100,500)\n\t\t-antisenseRegion <#>,<#> (Size of region to calculate RNA/input\
+  \ read density,default: -500,100)\n\t\t-rnaRegion <#>,<#> (Size of region to calculate\
+  \ RNA coverage for FP identification,default: -150,-10)\n\n\t\tAnnotation options:\n\
+  \t\t-stableThreshold <#> (minimum RNAseq read density for stable transcript, def:\
+  \ 2)\n\t\t-biThreshold <#> (minimum divergent csRNAseq signal for bi/divergent TSS,\
+  \ def: 2)\n\t\t-dist <#> (minimum distance from annotated TSS to assign 'distal'\
+  \ annotation, def: 500)\n\n\t* Tag Directories are assumed to represent the 5' ends\
+  \ of RNA in sense orientation\n\n"
+generated_using:
+- --help
+docker_image:

@@ -1,0 +1,59 @@
+!Command
+command:
+- wg-blimp
+- create-config
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: FASTQ_DIR
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: REFERENCE_FASTA
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: GROUP1
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --genome_build
+  description: "[hg19|hg38|mmul10|None]\nBuild of the reference used for annotation."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --cores-per-job
+  description: "The number of cores to use per job.\n[required]"
+  args: !SimpleFlagArg
+    name: INTEGER
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: wg-blimp create-config [OPTIONS] FASTQ_DIR REFERENCE_FASTA GROUP1\n\
+  \                              GROUP2 OUTPUT_DIR TARGET_YAML\n\n  Create a config\
+  \ YAML file for running the Snakemake pipeline. Sample names\n  are either passed\
+  \ as comma seperated lists or are read from text files if\n  --use-sample-files\
+  \ parameter is set. Annotation files are automatically\n  downloaded if necessary.\n\
+  \nOptions:\n  --use-sample-files              Load sample names from text files\
+  \ instead of\n                                  passing them as a comma-seperated\
+  \ list.\n\n  --genome_build [hg19|hg38|mmul10|None]\n                          \
+  \        Build of the reference used for annotation.\n  --cores-per-job INTEGER\
+  \         The number of cores to use per job.\n                                \
+  \  [required]\n\n  --help                          Show this message and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/wg-blimp:0.9.7--pyh3252c3a_0

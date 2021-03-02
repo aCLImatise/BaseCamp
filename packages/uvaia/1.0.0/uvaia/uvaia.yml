@@ -1,0 +1,91 @@
+!Command
+command:
+- uvaia
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --nbest
+  description: number of best reference sequences per query to show (default=8)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --nmax
+  description: max number of best reference sequences when several optimal (default=2
+    x nbest)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --trim
+  description: number of sites to trim from both ends (default=0, suggested for sarscov2=230)
+    -- MAY CONTAIN BUGS
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reference
+  description: =[ref.fa(.gz)]    *aligned* reference sequences
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: =[chosen_refs.fa.gz] output reference sequences
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --nthreads
+  description: suggested number of threads (default is to let system decide; I may
+    not honour your suggestion btw)
+  args: !SimpleFlagArg
+    name: int
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: print a longer help and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: print version and exit
+  args: !EmptyFlagArg {}
+help_text: "uvaia 1.0.0 \nSearch query sequences against reference ones to describe\
+  \ closest ones\nThis program relies on aligned sequences (queries and references\
+  \ must have same size)\nThe complete syntax is:\n\n uvaia  [-h|--help] [-v|--version]\
+  \ [-n|--nbest=<int>] [-m|--nmax=<int>] [--trim=<int>] -r|--reference=[ref.fa(.gz)]\
+  \ [-o|--output=[chosen_refs.fa.gz]] [-t|--nthreads=<int>] [query.fa(.gz)]\n\n  -h,\
+  \ --help                       print a longer help and exit\n  -v, --version   \
+  \                 print version and exit\n  -n, --nbest=<int>                number\
+  \ of best reference sequences per query to show (default=8)\n  -m, --nmax=<int>\
+  \                 max number of best reference sequences when several optimal (default=2\
+  \ x nbest)\n  --trim=<int>                     number of sites to trim from both\
+  \ ends (default=0, suggested for sarscov2=230) -- MAY CONTAIN BUGS\n  -r, --reference=[ref.fa(.gz)]\
+  \    *aligned* reference sequences\n  -o, --output=[chosen_refs.fa.gz] output reference\
+  \ sequences\n  -t, --nthreads=<int>             suggested number of threads (default\
+  \ is to let system decide; I may not honour your suggestion btw)\n  [query.fa(.gz)]\
+  \                  *aligned* sequences to search for neighbour references\nAssumes\
+  \ relatively close sequences (e.g. in the SARS-CoV-2 context)\nOutputs a table with\
+  \ closest sequences to stdout, please redirect as appropriate\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/uvaia:1.0.0--hbcae180_0

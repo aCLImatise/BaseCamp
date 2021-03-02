@@ -22,6 +22,9 @@ task QCImporter {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "Input qcml file (valid formats: 'qcML')"
     table: "*     The table containing the additional qp values in the columns. First row is considered containing the header. The target run or set names/ids are indicated by column \\\"raw data file\\\", so each row after the header will contain the values of qps for that run. (csv without \\\"!) (valid formats: 'csv')"

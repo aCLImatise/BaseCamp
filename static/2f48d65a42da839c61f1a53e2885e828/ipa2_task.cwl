@@ -1,0 +1,13 @@
+class: CommandLineTool
+id: ipa2_task.cwl
+inputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+hints:
+- class: DockerRequirement
+  dockerPull: quay.io/biocontainers/pbipa:1.3.2--hee625c5_0
+cwlVersion: v1.1
+baseCommand:
+- ipa2-task

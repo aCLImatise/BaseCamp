@@ -1,0 +1,120 @@
+!Command
+command:
+- anvi-setup-ncbi-cogs
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --cog-version
+  description: "COG version. The default is the latest version, which\nis COG20, meaning\
+    \ that anvi'o will use the NCBI's 2020\nrelease of COGs to setup the database\
+    \ and run it on\ncontigs databases. There is also an older version of\nCOGs from\
+    \ 2014. If you would like anvi'o to work with\nthat one, please use COG14 as a\
+    \ parameter. On a single\ncomputer you can have both, and on a single contigs\n\
+    database you can run both. Cool and confusing. The\nanvi'o way. (default: None)"
+  args: !SimpleFlagArg
+    name: COG_VERSION
+- !Flag
+  optional: true
+  synonyms:
+  - --cog-data-dir
+  description: "The directory for COG data to be stored. If you leave\nit as is without\
+    \ specifying anything, the default\ndestination for the data directory will be\
+    \ used to set\nthings up. The advantage of it is that everyone will\nbe using\
+    \ a single data directory, but then you may\nneed superuser privileges to do it.\
+    \ Using this\nparameter you can choose the location of the data\ndirectory somewhere\
+    \ you like. However, when it is time\nto run COGs, you will need to remember that\
+    \ path and\nprovide it to the program. (default: None)"
+  args: !SimpleFlagArg
+    name: COG_DATA_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --reset
+  description: "Remove all the previously stored files and start over.\nIf something\
+    \ is feels wrong for some reason and if you\nbelieve re-downloading files and\
+    \ setting them up could\naddress the issue, this is the flag that will tell\n\
+    anvi'o to act like a real computer scientist\nchallenged with a computational\
+    \ problem. (default:\nFalse)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --just-do-it
+  description: "Don't bother me with questions or warnings, just do\nit. (default:\
+    \ False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --num-threads
+  description: "Maximum number of threads to use for multithreading\nwhenever possible.\
+    \ Very conservatively, the default is\n1. It is a good idea to not exceed the\
+    \ number of CPUs\n/ cores on your system. Plus, please be careful with\nthis option\
+    \ if you are running your commands on a SGE\n--if you are clusterizing your runs,\
+    \ and asking for\nmultiple threads to use, you may deplete your\nresources very\
+    \ fast. (default: 1)"
+  args: !SimpleFlagArg
+    name: NUM_THREADS
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: anvi-setup-ncbi-cogs [-h] [--cog-version COG_VERSION]\n       \
+  \                     [--cog-data-dir COG_DATA_DIR] [--reset]\n                \
+  \            [--just-do-it] [-T NUM_THREADS]\n\noptional arguments:\n  -h, --help\
+  \            show this help message and exit\n  --cog-version COG_VERSION\n    \
+  \                    COG version. The default is the latest version, which\n   \
+  \                     is COG20, meaning that anvi'o will use the NCBI's 2020\n \
+  \                       release of COGs to setup the database and run it on\n  \
+  \                      contigs databases. There is also an older version of\n  \
+  \                      COGs from 2014. If you would like anvi'o to work with\n \
+  \                       that one, please use COG14 as a parameter. On a single\n\
+  \                        computer you can have both, and on a single contigs\n \
+  \                       database you can run both. Cool and confusing. The\n   \
+  \                     anvi'o way. (default: None)\n  --cog-data-dir COG_DATA_DIR\n\
+  \                        The directory for COG data to be stored. If you leave\n\
+  \                        it as is without specifying anything, the default\n   \
+  \                     destination for the data directory will be used to set\n \
+  \                       things up. The advantage of it is that everyone will\n \
+  \                       be using a single data directory, but then you may\n   \
+  \                     need superuser privileges to do it. Using this\n         \
+  \               parameter you can choose the location of the data\n            \
+  \            directory somewhere you like. However, when it is time\n          \
+  \              to run COGs, you will need to remember that path and\n          \
+  \              provide it to the program. (default: None)\n  --reset           \
+  \    Remove all the previously stored files and start over.\n                  \
+  \      If something is feels wrong for some reason and if you\n                \
+  \        believe re-downloading files and setting them up could\n              \
+  \          address the issue, this is the flag that will tell\n                \
+  \        anvi'o to act like a real computer scientist\n                        challenged\
+  \ with a computational problem. (default:\n                        False)\n  --just-do-it\
+  \          Don't bother me with questions or warnings, just do\n               \
+  \         it. (default: False)\n  -T NUM_THREADS, --num-threads NUM_THREADS\n  \
+  \                      Maximum number of threads to use for multithreading\n   \
+  \                     whenever possible. Very conservatively, the default is\n \
+  \                       1. It is a good idea to not exceed the number of CPUs\n\
+  \                        / cores on your system. Plus, please be careful with\n\
+  \                        this option if you are running your commands on a SGE\n\
+  \                        --if you are clusterizing your runs, and asking for\n \
+  \                       multiple threads to use, you may deplete your\n        \
+  \                resources very fast. (default: 1)\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\
+  \n\U0001F525 Program description:\n\n   Download and setup NCBI's Clusters of Orthologous\
+  \ Groups database\n\n\U0001F9C0 Can consume: \n\n\U0001F355 Can provide: \n\n\U0001F37A\
+  \ More on `anvi-setup-ncbi-cogs`:\n\n   https://merenlab.org/software/anvio/help/7/programs/anvi-setup-ncbi-cogs\n\
+  \n\U0001F37B All anvi'o programs and artifacts:\n\n   https://merenlab.org/software/anvio/help/7\n\
+  \n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\
+  \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/anvio-minimal:7--py_0

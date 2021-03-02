@@ -1,0 +1,74 @@
+!Command
+command:
+- bamleftalign
+positional:
+- !Positional
+  optional: true
+  position: 0
+  name: BAM
+  description: ''
+- !Positional
+  optional: true
+  position: 1
+  name: data
+  description: ''
+- !Positional
+  optional: true
+  position: 2
+  name: stream
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --fasta-reference
+  description: FASTA reference file to use for realignment (required)
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --debug
+  description: Print debugging information about realignment process
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --suppress-output
+  description: Don't write BAM output stream (for debugging)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --max-iterations
+  description: Iterate the left-realignment no more than this many times
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --compressed
+  description: Write compressed BAM on stdout, default is uncompressed
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "usage: [BAM data stream] | bamleftalign [options]\n\nLeft-aligns and merges\
+  \ the insertions and deletions in all alignments in stdin.\nIterates until each\
+  \ alignment is stable through a left-realignment step.\n\narguments:\n      -f --fasta-reference\
+  \ FILE   FASTA reference file to use for realignment (required)\n      -d --debug\
+  \             Print debugging information about realignment process\n      -s --suppress-output\
+  \   Don't write BAM output stream (for debugging)\n      -m --max-iterations N \
+  \ Iterate the left-realignment no more than this many times\n      -c --compressed\
+  \        Write compressed BAM on stdout, default is uncompressed\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/freebayes:1.3.5--py39hd2e4403_0

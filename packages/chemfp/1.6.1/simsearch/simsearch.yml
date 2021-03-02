@@ -1,0 +1,191 @@
+!Command
+command:
+- simsearch
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --k-nearest
+  description: "select the k nearest neighbors (use 'all' for all\nneighbors)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threshold
+  description: minimum similarity score threshold
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --queries
+  - -q
+  description: filename containing the query fingerprints
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --NxN
+  description: "use the targets as the queries, and exclude the self-\nsimilarity\
+    \ term"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --query
+  description: "query as a structure record (default format: 'smi')"
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --hex-query
+  description: query in hex
+  args: !SimpleFlagArg
+    name: HEX
+- !Flag
+  optional: true
+  synonyms:
+  - --query-id
+  description: "id for the query or hex-query (default: 'Query1'"
+  args: !SimpleFlagArg
+    name: ID
+- !Flag
+  optional: true
+  synonyms:
+  - --query-structures
+  - -S
+  description: read strutures
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --query-format
+  - --in
+  description: "input query format (default uses the file extension,\nelse 'fps' for\
+    \ --queries and 'smi' for query\nstructures)"
+  args: !SimpleFlagArg
+    name: FORMAT
+- !Flag
+  optional: true
+  synonyms:
+  - --target-format
+  description: "input target format (default uses the file extension,\nelse 'fps')"
+  args: !SimpleFlagArg
+    name: FORMAT
+- !Flag
+  optional: true
+  synonyms:
+  - --id-tag
+  description: "tag containing the record id if --query-structures is\nan SD file)"
+  args: !SimpleFlagArg
+    name: NAME
+- !Flag
+  optional: true
+  synonyms:
+  - --errors
+  description: "how should structure parse errors be handled?\n(default=ignore)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      ignore:
+      strict:
+      report:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: output filename (default is stdout)
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --count
+  description: report counts
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --batch-size
+  description: batch size
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --scan
+  description: scan the file to find matches (low memory overhead)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --memory
+  description: "build and search an in-memory data structure (faster\nfor multiple\
+    \ queries)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --times
+  description: report load and execution times to stderr
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: simsearch [-h] [-k INT] [-t FLOAT] [--queries FILENAME] [--NxN]\n\
+  \                 [--query STRING] [--hex-query HEX] [--query-id ID]\n         \
+  \        [--query-structures FILENAME] [--query-format FORMAT]\n               \
+  \  [--target-format FORMAT] [--id-tag NAME]\n                 [--errors {strict,report,ignore}]\
+  \ [-o FILENAME] [-c] [-b INT]\n                 [--scan] [--memory] [--times] [--version]\n\
+  \                 target_filename\n\nSearch an FPS or FPB file for similar fingerprints\n\
+  \npositional arguments:\n  target_filename       target filename\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -k INT, --k-nearest\
+  \ INT\n                        select the k nearest neighbors (use 'all' for all\n\
+  \                        neighbors)\n  -t FLOAT, --threshold FLOAT\n           \
+  \             minimum similarity score threshold\n  --queries FILENAME, -q FILENAME\n\
+  \                        filename containing the query fingerprints\n  --NxN   \
+  \              use the targets as the queries, and exclude the self-\n         \
+  \               similarity term\n  --query STRING        query as a structure record\
+  \ (default format: 'smi')\n  --hex-query HEX       query in hex\n  --query-id ID\
+  \         id for the query or hex-query (default: 'Query1'\n  --query-structures\
+  \ FILENAME, -S FILENAME\n                        read strutures\n  --query-format\
+  \ FORMAT, --in FORMAT\n                        input query format (default uses\
+  \ the file extension,\n                        else 'fps' for --queries and 'smi'\
+  \ for query\n                        structures)\n  --target-format FORMAT\n   \
+  \                     input target format (default uses the file extension,\n  \
+  \                      else 'fps')\n  --id-tag NAME         tag containing the record\
+  \ id if --query-structures is\n                        an SD file)\n  --errors {strict,report,ignore}\n\
+  \                        how should structure parse errors be handled?\n       \
+  \                 (default=ignore)\n  -o FILENAME, --output FILENAME\n         \
+  \               output filename (default is stdout)\n  -c, --count           report\
+  \ counts\n  -b INT, --batch-size INT\n                        batch size\n  --scan\
+  \                scan the file to find matches (low memory overhead)\n  --memory\
+  \              build and search an in-memory data structure (faster\n          \
+  \              for multiple queries)\n  --times               report load and execution\
+  \ times to stderr\n  --version             show program's version number and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/chemfp:1.6.1--py27h3dcb392_0

@@ -20,6 +20,9 @@ task IDRipper {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "*        Input file, in which the protein/peptide identifications must be tagged with 'file_origin' (valid formats: 'idXML')"
     out: "The path to this file is used as the output directory. (valid formats: 'idXML')"

@@ -1,0 +1,169 @@
+!Command
+command:
+- ppanggolin
+- workflow
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --fasta
+  description: "A tab-separated file listing the organism names, and\nthe fasta filepath\
+    \ of its genomic sequence(s) (the\nfastas can be compressed). One line per organism.\
+    \ This\noption can be used alone. (default: None)"
+  args: !SimpleFlagArg
+    name: FASTA
+- !Flag
+  optional: true
+  synonyms:
+  - --anno
+  description: "A tab-separated file listing the organism names, and\nthe gff filepath\
+    \ of its annotations (the gffs can be\ncompressed). One line per organism. This\
+    \ option can be\nused alone IF the fasta sequences are in the gff\nfiles, otherwise\
+    \ --fasta needs to be used. (default:\nNone)"
+  args: !SimpleFlagArg
+    name: ANNO
+- !Flag
+  optional: true
+  synonyms:
+  - --clusters
+  description: "a tab-separated file listing the cluster names, the\ngene IDs, and\
+    \ optionnally whether they are a fragment\nor not. (default: None)"
+  args: !SimpleFlagArg
+    name: CLUSTERS
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: "Output directory (default:\nppanggolin_output_DATE2021-02-28_HOUR18.02.22_PID1236)"
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - --basename
+  description: 'basename for the output file (default: pangenome)'
+  args: !SimpleFlagArg
+    name: BASENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --rarefaction
+  description: "Use to compute the rarefaction curves (WARNING: can be\ntime consumming)\
+    \ (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -K
+  - --nb_of_partitions
+  description: "Number of partitions to use. Must be at least 3. If\nunder 3, it will\
+    \ be detected automatically. (default:\n-1)"
+  args: !SimpleFlagArg
+    name: NB_OF_PARTITIONS
+- !Flag
+  optional: true
+  synonyms:
+  - --no_defrag
+  description: "DO NOT Realign gene families to link fragments with\ntheir non-fragmented\
+    \ gene family. (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --tmpdir
+  description: 'directory for storing temporary files (default: /tmp)'
+  args: !SimpleFlagArg
+    name: TMPDIR
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: "Indicate verbose level (0 for warning and errors only,\n1 for info,\
+    \ 2 for debug) (default: 1)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      '2':
+      '1':
+      '0':
+- !Flag
+  optional: true
+  synonyms:
+  - --log
+  description: 'log output file (default: stdout)'
+  args: !SimpleFlagArg
+    name: LOG
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --disable_prog_bar
+  description: 'disables the progress bars (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --cpu
+  description: 'Number of available cpus (default: 1)'
+  args: !SimpleFlagArg
+    name: CPU
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --force
+  description: "Force writing in output directory and in pangenome\noutput file. (default:\
+    \ False)\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: ppanggolin workflow [-h] [--fasta FASTA] [--anno ANNO]\n      \
+  \                     [--clusters CLUSTERS] [-o OUTPUT]\n                      \
+  \     [--basename BASENAME] [--rarefaction]\n                           [-K NB_OF_PARTITIONS]\
+  \ [--no_defrag]\n                           [--tmpdir TMPDIR] [--verbose {0,1,2}]\
+  \ [--log LOG]\n                           [-d] [-c CPU] [-f]\n\nInput arguments:\n\
+  \  The possible input arguments :\n\n  --fasta FASTA         A tab-separated file\
+  \ listing the organism names, and\n                        the fasta filepath of\
+  \ its genomic sequence(s) (the\n                        fastas can be compressed).\
+  \ One line per organism. This\n                        option can be used alone.\
+  \ (default: None)\n  --anno ANNO           A tab-separated file listing the organism\
+  \ names, and\n                        the gff filepath of its annotations (the gffs\
+  \ can be\n                        compressed). One line per organism. This option\
+  \ can be\n                        used alone IF the fasta sequences are in the gff\n\
+  \                        files, otherwise --fasta needs to be used. (default:\n\
+  \                        None)\n  --clusters CLUSTERS   a tab-separated file listing\
+  \ the cluster names, the\n                        gene IDs, and optionnally whether\
+  \ they are a fragment\n                        or not. (default: None)\n\nOptional\
+  \ arguments:\n  -o OUTPUT, --output OUTPUT\n                        Output directory\
+  \ (default:\n                        ppanggolin_output_DATE2021-02-28_HOUR18.02.22_PID1236)\n\
+  \  --basename BASENAME   basename for the output file (default: pangenome)\n  --rarefaction\
+  \         Use to compute the rarefaction curves (WARNING: can be\n             \
+  \           time consumming) (default: False)\n  -K NB_OF_PARTITIONS, --nb_of_partitions\
+  \ NB_OF_PARTITIONS\n                        Number of partitions to use. Must be\
+  \ at least 3. If\n                        under 3, it will be detected automatically.\
+  \ (default:\n                        -1)\n  --no_defrag           DO NOT Realign\
+  \ gene families to link fragments with\n                        their non-fragmented\
+  \ gene family. (default: False)\n\nCommon arguments:\n  -h, --help            show\
+  \ this help message and exit\n  --tmpdir TMPDIR       directory for storing temporary\
+  \ files (default: /tmp)\n  --verbose {0,1,2}     Indicate verbose level (0 for warning\
+  \ and errors only,\n                        1 for info, 2 for debug) (default: 1)\n\
+  \  --log LOG             log output file (default: stdout)\n  -d, --disable_prog_bar\n\
+  \                        disables the progress bars (default: False)\n  -c CPU,\
+  \ --cpu CPU     Number of available cpus (default: 1)\n  -f, --force           Force\
+  \ writing in output directory and in pangenome\n                        output file.\
+  \ (default: False)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/ppanggolin:1.1.131--py37hf01694f_0

@@ -1,0 +1,138 @@
+!Command
+command:
+- panphlan_map.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --tmp
+  description: Location used for tmp files
+  args: !SimpleFlagArg
+    name: TMP
+- !Flag
+  optional: true
+  synonyms:
+  - --bt2
+  description: "Additional bowtie2 mapping options, separated by\nslash: /-D/20/-R/3/,\
+    \ default: -bt2 /--very-sensitive/"
+  args: !SimpleFlagArg
+    name: BT2
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --out_bam
+  description: Get BAM output file
+  args: !SimpleFlagArg
+    name: OUT_BAM
+- !Flag
+  optional: true
+  synonyms:
+  - --nproc
+  description: "Maximum number of processors to use. Default is 12 or\na lower number\
+    \ of available processors."
+  args: !SimpleFlagArg
+    name: NPROC
+- !Flag
+  optional: true
+  synonyms:
+  - --min_read_length
+  description: Minimum read length, default 70
+  args: !SimpleFlagArg
+    name: MIN_READ_LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - --th_mismatches
+  description: Number of mismatches to filter (bam)
+  args: !SimpleFlagArg
+    name: TH_MISMATCHES
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --sam_memory
+  description: "Maximum amount of memory for Samtools (in Gb). Default\n4"
+  args: !SimpleFlagArg
+    name: SAM_MEMORY
+- !Flag
+  optional: true
+  synonyms:
+  - --fasta
+  description: Read are fasta format. By default considered as fastq
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: Show progress information
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  description: Metagenomic sample to map
+  args: !SimpleFlagArg
+    name: INPUT
+- !Flag
+  optional: true
+  synonyms:
+  - --indexes
+  description: Bowtie2 indexes path and file prefix
+  args: !SimpleFlagArg
+    name: INDEXES
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --pangenome
+  description: Path to pangenome tsv file exported from ChocoPhlAn
+  args: !SimpleFlagArg
+    name: PANGENOME
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: "Path to output file\n"
+  args: !SimpleFlagArg
+    name: OUTPUT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: panphlan_map.py [-h] -i INPUT --indexes INDEXES -p PANGENOME -o\
+  \ OUTPUT\n                       [--tmp TMP] [--bt2 BT2] [-b OUT_BAM] [--nproc NPROC]\n\
+  \                       [--min_read_length MIN_READ_LENGTH]\n                  \
+  \     [--th_mismatches TH_MISMATCHES] [-m SAM_MEMORY]\n                       [--fasta]\
+  \ [-v]\n\noptional arguments:\n  -h, --help            show this help message and\
+  \ exit\n  --tmp TMP             Location used for tmp files\n  --bt2 BT2       \
+  \      Additional bowtie2 mapping options, separated by\n                      \
+  \  slash: /-D/20/-R/3/, default: -bt2 /--very-sensitive/\n  -b OUT_BAM, --out_bam\
+  \ OUT_BAM\n                        Get BAM output file\n  --nproc NPROC        \
+  \ Maximum number of processors to use. Default is 12 or\n                      \
+  \  a lower number of available processors.\n  --min_read_length MIN_READ_LENGTH\n\
+  \                        Minimum read length, default 70\n  --th_mismatches TH_MISMATCHES\n\
+  \                        Number of mismatches to filter (bam)\n  -m SAM_MEMORY,\
+  \ --sam_memory SAM_MEMORY\n                        Maximum amount of memory for\
+  \ Samtools (in Gb). Default\n                        4\n  --fasta              \
+  \ Read are fasta format. By default considered as fastq\n  -v, --verbose       \
+  \  Show progress information\n\nrequired arguments:\n  -i INPUT, --input INPUT\n\
+  \                        Metagenomic sample to map\n  --indexes INDEXES     Bowtie2\
+  \ indexes path and file prefix\n  -p PANGENOME, --pangenome PANGENOME\n        \
+  \                Path to pangenome tsv file exported from ChocoPhlAn\n  -o OUTPUT,\
+  \ --output OUTPUT\n                        Path to output file\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/panphlan:3.1--py_0

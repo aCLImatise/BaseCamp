@@ -1,0 +1,220 @@
+!Command
+command:
+- seqkit
+- amplicon
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  description: :y (invalid)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -3-1
+  description: "x/y\n1 3 5    x/y\nF             R"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --bed
+  description: output in BED6+1 format with amplicon as 7th columns
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --flanking-region
+  description: region is flanking region
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  - --forward
+  description: forward primer (5'-primer-3'), degenerate bases allowed
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --max-mismatch
+  description: max mismatch when matching primers, no degenerate bases allowed
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -P
+  - --only-positive-strand
+  description: only search on positive strand
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --primer-file
+  description: 3- or 2-column tabular primer file, with first column as primer name
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --region
+  description: specify region to return. type "seqkit amplicon -h" for detail
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  - --reverse
+  description: reverse primer (5'-primer-3'), degenerate bases allowed
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --strict-mode
+  description: strict mode, i.e., discarding seqs not fully matching (shorter) given
+    region range
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --alphabet-guess-seq-length
+  description: length of sequence prefix of the first FASTA record based on which
+    seqkit guesses the sequence type (0 for whole seq) (default 10000)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --id-ncbi
+  description: FASTA head is NCBI-style, e.g. >gi|110645304|ref|NC_002516.2| Pseud...
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --id-regexp
+  description: regular expression for parsing ID (default "^(\\S+)\\s?")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --infile-list
+  description: file of input files list (one file per line), if given, they are appended
+    to files from cli arguments
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --line-width
+  description: line width when outputing FASTA format (0 for no wrap) (default 60)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out-file
+  description: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --quiet
+  description: be quiet and do not show extra information
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --seq-type
+  description: sequence type (dna|rna|protein|unlimit|auto) (for auto, it automatically
+    detect by the first sequence) (default "auto")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --threads
+  description: 'number of CPUs. (default value: 1 for single-CPU PC, 2 for others.
+    can also set with environment variable SEQKIT_THREADS) (default 2)'
+  args: !SimpleFlagArg
+    name: int
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: help for amplicon
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "retrieve amplicon (or specific region around it) via primer(s).\n\nAttentions:\n\
+  \  1. Only one (the longest) matching location is returned for every primer pair.\n\
+  \  2. Mismatch is allowed, but the mismatch location (5' or 3') is not controled.\
+  \ \n  3. Degenerate bases/residues like \"RYMM..\" are also supported.\n     But\
+  \ do not use degenerate bases/residues in regular expression, you need\n     convert\
+  \ them to regular expression, e.g., change \"N\" or \"X\"  to \".\".\n\nExamples:\n\
+  \  0. no region given.\n  \n                    F\n        -----===============-----\n\
+  \             F             R\n        -----=====-----=====-----\n             \n\
+  \             ===============         amplicon\n\n  1. inner region (-r x:y).\n\n\
+  \                    F\n        -----===============-----\n             1 3 5  \
+  \                  x/y\n                      -5-3-1          x/y\n            \
+  \ F             R\n        -----=====-----=====-----     x:y\n        \n       \
+  \      ===============          1:-1\n             =======                  1:7\n\
+  \               =====                  3:7\n                  =====            \
+  \   6:10\n                  =====             -10:-6\n                     =====\
+  \           -7:-3\n                                     -x:y (invalid)\n       \
+  \             \n  2. flanking region (-r x:y -f)\n        \n                   \
+  \ F\n        -----===============-----\n         -3-1                        x/y\n\
+  \                            1 3 5    x/y\n             F             R\n      \
+  \  -----=====-----=====-----\n        \n        =====                        -5:-1\n\
+  \        ===                          -5:-3\n                            ===== \
+  \    1:5\n                              ===     3:5\n            =================\
+  \        -1:1\n        =========================    -5:5\n                     \
+  \                 x:-y (invalid)\n\nUsage:\n  seqkit amplicon [flags]\n\nFlags:\n\
+  \      --bed                    output in BED6+1 format with amplicon as 7th columns\n\
+  \  -f, --flanking-region        region is flanking region\n  -F, --forward string\
+  \         forward primer (5'-primer-3'), degenerate bases allowed\n  -h, --help\
+  \                   help for amplicon\n  -m, --max-mismatch int       max mismatch\
+  \ when matching primers, no degenerate bases allowed\n  -P, --only-positive-strand\
+  \   only search on positive strand\n  -p, --primer-file string     3- or 2-column\
+  \ tabular primer file, with first column as primer name\n  -r, --region string \
+  \         specify region to return. type \"seqkit amplicon -h\" for detail\n  -R,\
+  \ --reverse string         reverse primer (5'-primer-3'), degenerate bases allowed\n\
+  \  -s, --strict-mode            strict mode, i.e., discarding seqs not fully matching\
+  \ (shorter) given region range\n\nGlobal Flags:\n      --alphabet-guess-seq-length\
+  \ int   length of sequence prefix of the first FASTA record based on which seqkit\
+  \ guesses the sequence type (0 for whole seq) (default 10000)\n      --id-ncbi \
+  \                        FASTA head is NCBI-style, e.g. >gi|110645304|ref|NC_002516.2|\
+  \ Pseud...\n      --id-regexp string                regular expression for parsing\
+  \ ID (default \"^(\\\\S+)\\\\s?\")\n      --infile-list string              file\
+  \ of input files list (one file per line), if given, they are appended to files\
+  \ from cli arguments\n  -w, --line-width int                  line width when outputing\
+  \ FASTA format (0 for no wrap) (default 60)\n  -o, --out-file string           \
+  \      out file (\"-\" for stdout, suffix .gz for gzipped out) (default \"-\")\n\
+  \      --quiet                           be quiet and do not show extra information\n\
+  \  -t, --seq-type string                 sequence type (dna|rna|protein|unlimit|auto)\
+  \ (for auto, it automatically detect by the first sequence) (default \"auto\")\n\
+  \  -j, --threads int                     number of CPUs. (default value: 1 for single-CPU\
+  \ PC, 2 for others. can also set with environment variable SEQKIT_THREADS) (default\
+  \ 2)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/seqkit:0.15.0--0

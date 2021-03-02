@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, String, Boolean, Float
+
+Watchmedo_Shell_Command_V0_1_0 = CommandToolBuilder(tool="watchmedo_shell_command", base_command=["watchmedo", "shell-command"], inputs=[ToolInput(tag="in_command", input_type=File(optional=True), prefix="--command", doc=InputDocumentation(doc="shell command executed in response to matching events.\nThese interpolation variables are available to your\ncommand string:: ${watch_src_path} - event source\npath; ${watch_dest_path} - event destination path (for\nmoved events); ${watch_event_type} - event type;\n${watch_object} - ``file`` or ``directory`` Note::\nPlease ensure you do not use double quotes (') to\nquote your command string. That will force your shell\nto interpolate before the command is processed by this\nsubcommand. Example option usage:: --command='echo\n'${watch_src_path}'' (default: -)")), ToolInput(tag="in_patterns", input_type=String(optional=True), prefix="--patterns", doc=InputDocumentation(doc="matches event paths with these patterns (separated by\n;). (default: '*')")), ToolInput(tag="in_ignore_patterns", input_type=String(optional=True), prefix="--ignore-patterns", doc=InputDocumentation(doc="ignores event paths with these patterns (separated by\n;). (default: '')")), ToolInput(tag="in_ignore_directories", input_type=Boolean(optional=True), prefix="--ignore-directories", doc=InputDocumentation(doc="ignores events for directories (default: False)")), ToolInput(tag="in_recursive", input_type=Boolean(optional=True), prefix="--recursive", doc=InputDocumentation(doc="monitors the directories recursively (default: False)")), ToolInput(tag="in_interval", input_type=Float(optional=True), prefix="--interval", doc=InputDocumentation(doc="use this as the polling interval/blocking timeout\n(default: 1.0)")), ToolInput(tag="in_wait", input_type=Boolean(optional=True), prefix="--wait", doc=InputDocumentation(doc="wait for process to finish to avoid multiple\nsimultaneous instances (default: False)")), ToolInput(tag="in_drop", input_type=Boolean(optional=True), prefix="--drop", doc=InputDocumentation(doc="Ignore events that occur while command is still being\nexecuted to avoid multiple simultaneous instances\n(default: False)\n")), ToolInput(tag="in_directories", input_type=String(), position=0, doc=InputDocumentation(doc="directories to watch (default: '.')"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Watchmedo_Shell_Command_V0_1_0().translate("wdl", allow_empty_container=True)
+

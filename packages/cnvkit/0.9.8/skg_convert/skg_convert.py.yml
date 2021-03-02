@@ -1,0 +1,109 @@
+!Command
+command:
+- skg_convert.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: FILE
+  description: 'Input filename. [Default: stdin]'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: 'Output filename. [Default: stdout]'
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --from
+  description: 'Input format. [Default: auto-detect]'
+  args: !SimpleFlagArg
+    name: FORMAT
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --to
+  description: Output format. [Required]
+  args: !SimpleFlagArg
+    name: FORMAT
+- !Flag
+  optional: true
+  synonyms:
+  - --flatten
+  description: "Flatten overlapping regions, keeping original\nboundaries. Not recommended\
+    \ with --exons."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --merge
+  description: "[BASEPAIRS]   Merge overlapping regions with different names.\nRecommended\
+    \ with --exons. Optional argument value is\nthe number of overlapping bases between\
+    \ two regions to\ntrigger a merge. [Default: 1]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gff-tag
+  description: GFF attributes tag to use for gene names.
+  args: !SimpleFlagArg
+    name: GFF_TAG
+- !Flag
+  optional: true
+  synonyms:
+  - --gff-type
+  description: "GFF record type (column 3) to use exclusively. E.g.\nfor GFF3 files,\
+    \ 'exon', 'gene', and other SOFA terms\ncan be used here."
+  args: !SimpleFlagArg
+    name: GFF_TYPE
+- !Flag
+  optional: true
+  synonyms:
+  - --refflat-type
+  description: "Emit each exon instead of the whole gene regions.\n"
+  args: !ChoiceFlagArg
+    choices: !!set
+      cds:
+      exon:
+      transcript:
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: skg_convert.py [-h] [-o FILE] [-f FORMAT] [-t FORMAT] [--flatten]\n\
+  \                      [--merge [BASEPAIRS]] [--gff-tag GFF_TAG]\n             \
+  \         [--gff-type GFF_TYPE]\n                      [--refflat-type {exon,cds,transcript}]\n\
+  \                      [FILE]\n\nConvert between tabular formats using scikit-genome\
+  \ I/O.\n\npositional arguments:\n  FILE                  Input filename. [Default:\
+  \ stdin]\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  -o FILE, --output FILE\n                        Output filename. [Default:\
+  \ stdout]\n  -f FORMAT, --from FORMAT\n                        Input format. [Default:\
+  \ auto-detect]\n  -t FORMAT, --to FORMAT\n                        Output format.\
+  \ [Required]\n  --flatten             Flatten overlapping regions, keeping original\n\
+  \                        boundaries. Not recommended with --exons.\n  --merge [BASEPAIRS]\
+  \   Merge overlapping regions with different names.\n                        Recommended\
+  \ with --exons. Optional argument value is\n                        the number of\
+  \ overlapping bases between two regions to\n                        trigger a merge.\
+  \ [Default: 1]\n\nFormat-specific options:\n  --gff-tag GFF_TAG     GFF attributes\
+  \ tag to use for gene names.\n  --gff-type GFF_TYPE   GFF record type (column 3)\
+  \ to use exclusively. E.g.\n                        for GFF3 files, 'exon', 'gene',\
+  \ and other SOFA terms\n                        can be used here.\n  --refflat-type\
+  \ {exon,cds,transcript}\n                        Emit each exon instead of the whole\
+  \ gene regions.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/cnvkit:0.9.8--py_0

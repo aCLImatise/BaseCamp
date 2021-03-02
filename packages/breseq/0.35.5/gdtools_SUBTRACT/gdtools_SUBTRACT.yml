@@ -1,0 +1,68 @@
+!Command
+command:
+- gdtools
+- SUBTRACT
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: output GD file (DEFAULT=output.gd)
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --phylogeny-aware
+  description: Check the optional 'phylogeny_id' field when deciding if entries are
+    equivalent
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --frequency-aware
+  description: Use the frequencies of mutations when performing the subtraction. Normally
+    an input mutation is removed if it appears at any frequency in a subtracted file.
+    In this mode its frequency is reduced by the frequency in each subtracted file.
+    If the resulting frequency is zero or below, then the mutation is removed.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: verbose mode
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Display detailed help message
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "\ngdtools SUBTRACT [-o output.gd] input.gd subtract1.gd [subtract2.gd\
+  \ ...]\n  -h,--help                        Display detailed help message\n  -o,--output\
+  \ <arg>                output GD file (DEFAULT=output.gd)\n  -p,--phylogeny-aware\
+  \             Check the optional 'phylogeny_id' field when deciding if entries are\
+  \ equivalent\n  -f,--frequency-aware             Use the frequencies of mutations\
+  \ when performing the subtraction. Normally an input mutation is removed if it appears\
+  \ at any frequency in a subtracted file. In this mode its frequency is reduced by\
+  \ the frequency in each subtracted file. If the resulting frequency is zero or below,\
+  \ then the mutation is removed.\n  -v,--verbose                     verbose mode\n\
+  \nCreates a new Genome Diff file that contains all mutation entries that are still\n\
+  present in the input file after removing mutations that are in any of the\nsubtracted\
+  \ Genome Diff files. All evidence and validation entries are\nretained in the output\
+  \ file.\n\nInput Genome Diff and at least one Genome Diff to subtract not provided.\n\
+  \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/breseq:0.35.5--h8b12597_0

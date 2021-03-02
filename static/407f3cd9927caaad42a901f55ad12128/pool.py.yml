@@ -1,0 +1,143 @@
+!Command
+command:
+- pool.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: probe_count_tsv
+  description: "Path to TSV file that contains probe counts for each\ndataset and\
+    \ combination of parameters; the first row\nmust be a header, the first column\
+    \ must give a dataset\n('dataset'), the last column must list a number of\nprobes\
+    \ ('num_probes'), and the intermediary columns\ngive parameter values"
+- !Positional
+  optional: false
+  position: 1
+  name: target_probe_count
+  description: "Constraint on the total number of probes in the\ndesign; generally,\
+    \ parameters will be selected such\nthat the number of probes, when pooled across\n\
+    datasets, is just below this number"
+- !Positional
+  optional: false
+  position: 2
+  name: param_vals_tsv
+  description: Path to TSV file in which to output optimal parameter
+- !Positional
+  optional: false
+  position: 3
+  name: values
+  description: 'optional arguments:'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --round-params
+  description: "ROUND_PARAMS\n<m> <e>; round mismatches parameter to the nearest\n\
+    multiple of m and cover_extension parameter to the\nnearest multiple of e"
+  args: !SimpleFlagArg
+    name: ROUND_PARAMS
+- !Flag
+  optional: true
+  synonyms:
+  - --use-nd
+  description: "Use the higher dimensional (n > 2) interpolation and\nsearch functions\
+    \ for optimizing parameters. This is\nrequired if the input table of probe counts\
+    \ contains\nmore than 2 parameters. This does not round parameters\nto integers\
+    \ or to be placed on a grid -- i.e., they\nwill be output as fractional values\
+    \ (from which probe\ncounts were interpolated). When using this, --loss-\ncoeffs\
+    \ should also be set (default is 1 for all\nparameters)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --loss-coeffs
+  description: "Coefficients on parameters in the loss function. These\nmust be specified\
+    \ in the same order as the parameter\ncolumns in the input table. Default is 1\
+    \ for\nmismatches and 1/100 for cover_extension (or, when\n--use-nd is specified,\
+    \ 1 for all parameters)."
+  args: !RepeatFlagArg
+    name: LOSS_COEFFS
+- !Flag
+  optional: true
+  synonyms:
+  - --dataset-weights
+  description: "Path to TSV file that contains a weight for each\ndataset to use in\
+    \ the loss function. The first row\nmust be a header, the first column must provide\
+    \ the\ndataset ('dataset') and the second column must provide\nthe weight of the\
+    \ dataset ('weight'). If not provided,\nthe default is a weight of 1 for each\
+    \ dataset."
+  args: !SimpleFlagArg
+    name: DATASET_WEIGHTS_TSV
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: Debug output
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: Verbose output
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  - -V
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: pool.py [-h] [--round-params ROUND_PARAMS ROUND_PARAMS] [--use-nd]\n\
+  \               [--loss-coeffs LOSS_COEFFS [LOSS_COEFFS ...]]\n               [--dataset-weights\
+  \ DATASET_WEIGHTS_TSV] [--debug] [--verbose]\n               [--version]\n     \
+  \          probe_count_tsv target_probe_count param_vals_tsv\n\npositional arguments:\n\
+  \  probe_count_tsv       Path to TSV file that contains probe counts for each\n\
+  \                        dataset and combination of parameters; the first row\n\
+  \                        must be a header, the first column must give a dataset\n\
+  \                        ('dataset'), the last column must list a number of\n  \
+  \                      probes ('num_probes'), and the intermediary columns\n   \
+  \                     give parameter values\n  target_probe_count    Constraint\
+  \ on the total number of probes in the\n                        design; generally,\
+  \ parameters will be selected such\n                        that the number of probes,\
+  \ when pooled across\n                        datasets, is just below this number\n\
+  \  param_vals_tsv        Path to TSV file in which to output optimal parameter\n\
+  \                        values\n\noptional arguments:\n  -h, --help           \
+  \ show this help message and exit\n  --round-params ROUND_PARAMS ROUND_PARAMS\n\
+  \                        <m> <e>; round mismatches parameter to the nearest\n  \
+  \                      multiple of m and cover_extension parameter to the\n    \
+  \                    nearest multiple of e\n  --use-nd              Use the higher\
+  \ dimensional (n > 2) interpolation and\n                        search functions\
+  \ for optimizing parameters. This is\n                        required if the input\
+  \ table of probe counts contains\n                        more than 2 parameters.\
+  \ This does not round parameters\n                        to integers or to be placed\
+  \ on a grid -- i.e., they\n                        will be output as fractional\
+  \ values (from which probe\n                        counts were interpolated). When\
+  \ using this, --loss-\n                        coeffs should also be set (default\
+  \ is 1 for all\n                        parameters).\n  --loss-coeffs LOSS_COEFFS\
+  \ [LOSS_COEFFS ...]\n                        Coefficients on parameters in the loss\
+  \ function. These\n                        must be specified in the same order as\
+  \ the parameter\n                        columns in the input table. Default is\
+  \ 1 for\n                        mismatches and 1/100 for cover_extension (or, when\n\
+  \                        --use-nd is specified, 1 for all parameters).\n  --dataset-weights\
+  \ DATASET_WEIGHTS_TSV\n                        Path to TSV file that contains a\
+  \ weight for each\n                        dataset to use in the loss function.\
+  \ The first row\n                        must be a header, the first column must\
+  \ provide the\n                        dataset ('dataset') and the second column\
+  \ must provide\n                        the weight of the dataset ('weight'). If\
+  \ not provided,\n                        the default is a weight of 1 for each dataset.\n\
+  \  --debug               Debug output\n  --verbose             Verbose output\n\
+  \  --version, -V         show program's version number and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/catch:1.4.0--py_0

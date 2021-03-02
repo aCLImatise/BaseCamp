@@ -1,0 +1,78 @@
+!Command
+command:
+- deepbgc
+- prepare
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: inputs
+  description: Input sequence file path(s) (FASTA/GenBank)
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  - --limit-to-record
+  description: Process only specific record ID. Can be provided multiple times
+  args: !SimpleFlagArg
+    name: LIMIT_TO_RECORD
+- !Flag
+  optional: true
+  synonyms:
+  - --prodigal-meta-mode
+  description: Run Prodigal in '-p meta' mode to enable detecting genes in short contigs
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --protein
+  description: Accept amino-acid protein sequences as input (experimental). Will treat
+    each file as a single record with multiple proteins.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --output-gbk
+  description: Output GenBank file path
+  args: !SimpleFlagArg
+    name: OUTPUT_GBK
+- !Flag
+  optional: true
+  synonyms:
+  - --output-tsv
+  description: "Output TSV file path\n"
+  args: !SimpleFlagArg
+    name: OUTPUT_TSV
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: deepbgc prepare [-h] [--debug] [--limit-to-record LIMIT_TO_RECORD]\n\
+  \                       [--prodigal-meta-mode] [--protein]\n                   \
+  \    [--output-gbk OUTPUT_GBK] [--output-tsv OUTPUT_TSV]\n                     \
+  \  inputs [inputs ...]\n\nPrepare genomic sequence by annotating proteins and Pfam\
+  \ domains.\n    \nExamples:\n    \n  # Show detailed help \n  deepbgc prepare --help\
+  \ \n    \n  # Detect proteins and pfam domains in a FASTA sequence and save the\
+  \ result as GenBank file \n  deepbgc prepare --output sequence.prepared.gbk sequence.fa\n\
+  \  \n\npositional arguments:\n  inputs                Input sequence file path(s)\
+  \ (FASTA/GenBank)\n\noptional arguments:\n  -h, --help            show this help\
+  \ message and exit\n  --debug\n  --limit-to-record LIMIT_TO_RECORD\n           \
+  \             Process only specific record ID. Can be provided multiple times\n\n\
+  required arguments:\n\n  --prodigal-meta-mode  Run Prodigal in '-p meta' mode to\
+  \ enable detecting genes in short contigs\n  --protein             Accept amino-acid\
+  \ protein sequences as input (experimental). Will treat each file as a single record\
+  \ with multiple proteins.\n  --output-gbk OUTPUT_GBK\n                        Output\
+  \ GenBank file path\n  --output-tsv OUTPUT_TSV\n                        Output TSV\
+  \ file path\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/deepbgc:0.1.22--py_0

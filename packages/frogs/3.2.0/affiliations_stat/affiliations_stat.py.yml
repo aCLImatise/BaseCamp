@@ -1,0 +1,173 @@
+!Command
+command:
+- affiliations_stat.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --debug
+  description: Keep temporary files to debug program.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --taxonomic-ranks
+  description: "[TAXONOMIC_RANKS [TAXONOMIC_RANKS ...]]\nThe ordered ranks levels\
+    \ used in the metadata\ntaxonomy. [Default: ['Domain', 'Phylum', 'Class',\n'Order',\
+    \ 'Family', 'Genus', 'Species']]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --rarefaction-ranks
+  description: "[RAREFACTION_RANKS [RAREFACTION_RANKS ...]]\nThe ranks that will be\
+    \ evaluated in rarefaction.\n[Default: ['Genus']]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --taxonomy-tag
+  description: "The metadata tag used in BIOM file to store the\ntaxonomy. Use this\
+    \ parameter if the taxonomic\naffiliation has been processed by a software that\
+    \ adds\nonly one affiliation or if you does not have a\nmetadata with the consensus\
+    \ taxonomy (see \"--tax-\nconsensus-tag\").Not allowed with --tax-consensus-tag."
+  args: !SimpleFlagArg
+    name: TAXONOMY_TAG
+- !Flag
+  optional: true
+  synonyms:
+  - --tax-consensus-tag
+  description: "The metadata tag used in BIOM file to store the\nconsensus taxonomy.\
+    \ This parameter is used instead of\n\"--taxonomy-tag\" when you have several\
+    \ affiliations\nfor each OTU."
+  args: !SimpleFlagArg
+    name: TAX_CONSENSUS_TAG
+- !Flag
+  optional: true
+  synonyms:
+  - --multiple-tag
+  description: "The metadata tag used in BIOM file to store the list\nof possible\
+    \ taxonomies. Use this parameter if the\ntaxonomic affiliation has been processed\
+    \ by a software\nthat adds several affiliation in the BIOM file\n(example: same\
+    \ score ambiguity)."
+  args: !SimpleFlagArg
+    name: MULTIPLE_TAG
+- !Flag
+  optional: true
+  synonyms:
+  - --bootstrap-tag
+  description: "The metadata tag used in BIOM file to store the\ntaxonomy bootstraps."
+  args: !SimpleFlagArg
+    name: BOOTSTRAP_TAG
+- !Flag
+  optional: true
+  synonyms:
+  - --identity-tag
+  description: "The metadata tag used in BIOM file to store the\nalignment identity."
+  args: !SimpleFlagArg
+    name: IDENTITY_TAG
+- !Flag
+  optional: true
+  synonyms:
+  - --coverage-tag
+  description: "The metadata tag used in BIOM file to store the\nalignment observation\
+    \ coverage."
+  args: !SimpleFlagArg
+    name: COVERAGE_TAG
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input-biom
+  description: 'The input abundance file (format: BIOM).'
+  args: !SimpleFlagArg
+    name: INPUT_BIOM
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-file
+  description: "The HTML file containing the graphs. [Default:\naffiliations_stat.html]"
+  args: !SimpleFlagArg
+    name: OUTPUT_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --log-file
+  description: "The list of commands executed.\n"
+  args: !SimpleFlagArg
+    name: LOG_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: ''
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: affiliations_stat.py [-h] [-d] [-v]\n                         \
+  \   [--taxonomic-ranks [TAXONOMIC_RANKS [TAXONOMIC_RANKS ...]]]\n              \
+  \              [--rarefaction-ranks [RAREFACTION_RANKS [RAREFACTION_RANKS ...]]]\n\
+  \                            [--taxonomy-tag TAXONOMY_TAG | --tax-consensus-tag\
+  \ TAX_CONSENSUS_TAG]\n                            [--multiple-tag MULTIPLE_TAG]\n\
+  \                            [--bootstrap-tag BOOTSTRAP_TAG]\n                 \
+  \           [--identity-tag IDENTITY_TAG]\n                            [--coverage-tag\
+  \ COVERAGE_TAG] -i INPUT_BIOM\n                            [-o OUTPUT_FILE] [-l\
+  \ LOG_FILE]\n\nProduces several metrics describing OTUs based on their taxonomies\
+  \ and the\nquality of the affiliations.\n\noptional arguments:\n  -h, --help   \
+  \         show this help message and exit\n  -d, --debug           Keep temporary\
+  \ files to debug program.\n  -v, --version         show program's version number\
+  \ and exit\n  --taxonomic-ranks [TAXONOMIC_RANKS [TAXONOMIC_RANKS ...]]\n      \
+  \                  The ordered ranks levels used in the metadata\n             \
+  \           taxonomy. [Default: ['Domain', 'Phylum', 'Class',\n                \
+  \        'Order', 'Family', 'Genus', 'Species']]\n  --rarefaction-ranks [RAREFACTION_RANKS\
+  \ [RAREFACTION_RANKS ...]]\n                        The ranks that will be evaluated\
+  \ in rarefaction.\n                        [Default: ['Genus']]\n  --taxonomy-tag\
+  \ TAXONOMY_TAG\n                        The metadata tag used in BIOM file to store\
+  \ the\n                        taxonomy. Use this parameter if the taxonomic\n \
+  \                       affiliation has been processed by a software that adds\n\
+  \                        only one affiliation or if you does not have a\n      \
+  \                  metadata with the consensus taxonomy (see \"--tax-\n        \
+  \                consensus-tag\").Not allowed with --tax-consensus-tag.\n  --tax-consensus-tag\
+  \ TAX_CONSENSUS_TAG\n                        The metadata tag used in BIOM file\
+  \ to store the\n                        consensus taxonomy. This parameter is used\
+  \ instead of\n                        \"--taxonomy-tag\" when you have several affiliations\n\
+  \                        for each OTU.\n  --multiple-tag MULTIPLE_TAG\n        \
+  \                The metadata tag used in BIOM file to store the list\n        \
+  \                of possible taxonomies. Use this parameter if the\n           \
+  \             taxonomic affiliation has been processed by a software\n         \
+  \               that adds several affiliation in the BIOM file\n               \
+  \         (example: same score ambiguity).\n  --bootstrap-tag BOOTSTRAP_TAG\n  \
+  \                      The metadata tag used in BIOM file to store the\n       \
+  \                 taxonomy bootstraps.\n  --identity-tag IDENTITY_TAG\n        \
+  \                The metadata tag used in BIOM file to store the\n             \
+  \           alignment identity.\n  --coverage-tag COVERAGE_TAG\n               \
+  \         The metadata tag used in BIOM file to store the\n                    \
+  \    alignment observation coverage.\n\nInputs:\n  -i INPUT_BIOM, --input-biom INPUT_BIOM\n\
+  \                        The input abundance file (format: BIOM).\n\nOutputs:\n\
+  \  -o OUTPUT_FILE, --output-file OUTPUT_FILE\n                        The HTML file\
+  \ containing the graphs. [Default:\n                        affiliations_stat.html]\n\
+  \  -l LOG_FILE, --log-file LOG_FILE\n                        The list of commands\
+  \ executed.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/frogs:3.2.0--py37_0

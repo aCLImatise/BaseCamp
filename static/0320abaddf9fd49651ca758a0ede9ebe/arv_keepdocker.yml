@@ -1,0 +1,177 @@
+!Command
+command:
+- arv-keepdocker
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: image
+  description: 'Docker image to upload: repo, repo:tag, or hash'
+- !Positional
+  optional: false
+  position: 1
+  name: tag
+  description: "Tag of the Docker image to upload (default 'latest'),\nif image is\
+    \ given as an untagged repo name"
+- !Positional
+  optional: false
+  position: 0
+  name: server
+  description: --force-image-format  Proceed even if the image format is not supported
+    by
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --force
+  description: Re-upload the image even if it already exists on the
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pull
+  description: Try to pull the latest image from Docker registry
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-pull
+  description: "Use locally installed image only, don't pull image\nfrom Docker registry\
+    \ (default)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --project-uuid
+  description: "Store the collection in the specified project, instead\nof your Home\
+    \ project."
+  args: !SimpleFlagArg
+    name: UUID
+- !Flag
+  optional: true
+  synonyms:
+  - --name
+  description: Save the collection with the specified name.
+  args: !SimpleFlagArg
+    name: NAME
+- !Flag
+  optional: true
+  synonyms:
+  - --progress
+  description: "Display human-readable progress on stderr (bytes and,\nif possible,\
+    \ percentage of total data size). This is\nthe default behavior when stderr is\
+    \ a tty."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-progress
+  description: "Do not display human-readable progress on stderr, even\nif stderr\
+    \ is a tty."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --batch-progress
+  description: "Display machine-readable progress on stderr (bytes\nand, if known,\
+    \ total data size)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --silent
+  description: "Do not print any debug messages to console. (Any error\nmessages will\
+    \ still be displayed.)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --resume
+  description: "Continue interrupted uploads from cached state\n(default)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-resume
+  description: Do not continue interrupted uploads from cached state.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --cache
+  description: "Save upload state in a cache file for resuming\n(default)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-cache
+  description: Do not save upload state in a cache file for resuming.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --retries
+  description: "Maximum number of times to retry server requests that\nencounter temporary\
+    \ failures (e.g., server down).\nDefault 3.\n"
+  args: !SimpleFlagArg
+    name: RETRIES
+- !Flag
+  optional: true
+  synonyms:
+  - --force-image-format
+  description: ''
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Print version and exit.
+  args: !EmptyFlagArg {}
+help_text: "usage: arv-keepdocker [-h] [--version] [-f] [--force-image-format]\n \
+  \                     [--pull | --no-pull] [--project-uuid UUID] [--name NAME]\n\
+  \                      [--progress | --no-progress | --batch-progress]\n       \
+  \               [--silent] [--resume | --no-resume]\n                      [--cache\
+  \ | --no-cache] [--retries RETRIES]\n                      [image] [tag]\n\nUpload\
+  \ or list Docker images in Arvados\n\npositional arguments:\n  image           \
+  \      Docker image to upload: repo, repo:tag, or hash\n  tag                  \
+  \ Tag of the Docker image to upload (default 'latest'),\n                      \
+  \  if image is given as an untagged repo name\n\noptional arguments:\n  -h, --help\
+  \            show this help message and exit\n  --version             Print version\
+  \ and exit.\n  -f, --force           Re-upload the image even if it already exists\
+  \ on the\n                        server\n  --force-image-format  Proceed even if\
+  \ the image format is not supported by\n                        the server\n  --pull\
+  \                Try to pull the latest image from Docker registry\n  --no-pull\
+  \             Use locally installed image only, don't pull image\n             \
+  \           from Docker registry (default)\n  --project-uuid UUID   Store the collection\
+  \ in the specified project, instead\n                        of your Home project.\n\
+  \  --name NAME           Save the collection with the specified name.\n  --progress\
+  \            Display human-readable progress on stderr (bytes and,\n           \
+  \             if possible, percentage of total data size). This is\n           \
+  \             the default behavior when stderr is a tty.\n  --no-progress      \
+  \   Do not display human-readable progress on stderr, even\n                   \
+  \     if stderr is a tty.\n  --batch-progress      Display machine-readable progress\
+  \ on stderr (bytes\n                        and, if known, total data size).\n \
+  \ --silent              Do not print any debug messages to console. (Any error\n\
+  \                        messages will still be displayed.)\n  --resume        \
+  \      Continue interrupted uploads from cached state\n                        (default).\n\
+  \  --no-resume           Do not continue interrupted uploads from cached state.\n\
+  \  --cache               Save upload state in a cache file for resuming\n      \
+  \                  (default).\n  --no-cache            Do not save upload state\
+  \ in a cache file for resuming.\n  --retries RETRIES     Maximum number of times\
+  \ to retry server requests that\n                        encounter temporary failures\
+  \ (e.g., server down).\n                        Default 3.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/arvados-python-client:2.1.1--py_0

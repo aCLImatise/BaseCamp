@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import String, Int, File, Boolean, Float
+
+Samp_Hub_V0_1_0 = CommandToolBuilder(tool="samp_hub", base_command=["samp_hub"], inputs=[ToolInput(tag="in_secret", input_type=String(optional=True), prefix="--secret", doc=InputDocumentation(doc="custom secret code.")), ToolInput(tag="in_addr", input_type=String(optional=True), prefix="--addr", doc=InputDocumentation(doc="listening address (or IP).")), ToolInput(tag="in_port", input_type=Int(optional=True), prefix="--port", doc=InputDocumentation(doc="listening port number.")), ToolInput(tag="in_lock_file", input_type=File(optional=True), prefix="--lockfile", doc=InputDocumentation(doc="custom lockfile.")), ToolInput(tag="in_no_web_profile", input_type=Boolean(optional=True), prefix="--no-web-profile", doc=InputDocumentation(doc="run the Hub disabling the Web Profile.")), ToolInput(tag="in_pool_size", input_type=Int(optional=True), prefix="--pool-size", doc=InputDocumentation(doc="the socket connections pool size.")), ToolInput(tag="in_timeout", input_type=Int(optional=True), prefix="--timeout", doc=InputDocumentation(doc="set the Hub inactivity timeout in SECONDS. By default\nit is set to 0, that is the Hub never expires.")), ToolInput(tag="in_client_timeout", input_type=Int(optional=True), prefix="--client-timeout", doc=InputDocumentation(doc="set the client inactivity timeout in SECONDS. By\ndefault it is set to 0, that is the client never\nexpires.")), ToolInput(tag="in_log_level", input_type=String(optional=True), prefix="--log-level", doc=InputDocumentation(doc="set the Hub instance log level (OFF, ERROR, WARNING,\nINFO, DEBUG).")), ToolInput(tag="in_log_output", input_type=File(optional=True), prefix="--log-output", doc=InputDocumentation(doc="set the output file for the log messages.")), ToolInput(tag="in_label", input_type=String(optional=True), prefix="--label", doc=InputDocumentation(doc="assign a LABEL to the Hub.")), ToolInput(tag="in_multi", input_type=Boolean(optional=True), prefix="--multi", doc=InputDocumentation(doc="run the Hub in multi-instance mode generating a custom\nlockfile with a random name.\n")), ToolInput(tag="in_three_dot_zero_dot_five", input_type=Float(), position=0, doc=InputDocumentation(doc=""))], outputs=[ToolOutput(tag="out_log_output", output_type=File(optional=True), selector=InputSelector(input_to_select="in_log_output", type_hint=File()), doc=OutputDocumentation(doc="set the output file for the log messages."))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Samp_Hub_V0_1_0().translate("wdl", allow_empty_container=True)
+

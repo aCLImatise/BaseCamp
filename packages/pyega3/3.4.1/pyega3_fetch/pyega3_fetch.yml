@@ -1,0 +1,126 @@
+!Command
+command:
+- pyega3
+- fetch
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --reference-name
+  - -r
+  description: "The reference sequence name, for example 'chr1', '1',\nor 'chrX'.\
+    \ If unspecified, all data is returned."
+  args: !SimpleFlagArg
+    name: REFERENCE_NAME
+- !Flag
+  optional: true
+  synonyms:
+  - --reference-md5
+  - -m
+  description: "The MD5 checksum uniquely representing the requested\nreference sequence\
+    \ as a lower-case hexadecimal string,\ncalculated as the MD5 of the upper-case\
+    \ sequence\nexcluding all whitespace characters."
+  args: !SimpleFlagArg
+    name: REFERENCE_MD5
+- !Flag
+  optional: true
+  synonyms:
+  - --start
+  - -s
+  description: "The start position of the range on the reference,\n0-based, inclusive.\
+    \ If specified, reference-name or\nreference-md5 must also be specified."
+  args: !SimpleFlagArg
+    name: START
+- !Flag
+  optional: true
+  synonyms:
+  - --end
+  - -e
+  description: "The end position of the range on the reference,\n0-based exclusive.\
+    \ If specified, reference-name or\nreference-md5 must also be specified."
+  args: !SimpleFlagArg
+    name: END
+- !Flag
+  optional: true
+  synonyms:
+  - --format
+  - -f
+  description: The format of data to request.
+  args: !ChoiceFlagArg
+    choices: !!set
+      BAM:
+      CRAM:
+- !Flag
+  optional: true
+  synonyms:
+  - --max-retries
+  - -M
+  description: "The maximum number of times to retry a failed\ntransfer. Any negative\
+    \ number means infinite number of\nretries."
+  args: !SimpleFlagArg
+    name: MAX_RETRIES
+- !Flag
+  optional: true
+  synonyms:
+  - --retry-wait
+  - -W
+  description: "The number of seconds to wait before retrying a failed\ntransfer."
+  args: !SimpleFlagArg
+    name: RETRY_WAIT
+- !Flag
+  optional: true
+  synonyms:
+  - --saveto
+  description: '[SAVETO]     Output file(for files)/output dir(for datasets)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --delete-temp-files
+  description: "Do not keep those temporary, partial files which were\nleft on the\
+    \ disk after a failed transfer.\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: pyega3 fetch [-h] [--reference-name REFERENCE_NAME]\n         \
+  \           [--reference-md5 REFERENCE_MD5] [--start START]\n                  \
+  \  [--end END] [--format {BAM,CRAM}]\n                    [--max-retries MAX_RETRIES]\
+  \ [--retry-wait RETRY_WAIT]\n                    [--saveto [SAVETO]] [--delete-temp-files]\n\
+  \                    identifier\n\npositional arguments:\n  identifier         \
+  \   Id for dataset (e.g. EGAD00000000001) or file (e.g.\n                      \
+  \  EGAF12345678901)\n\noptional arguments:\n  -h, --help            show this help\
+  \ message and exit\n  --reference-name REFERENCE_NAME, -r REFERENCE_NAME\n     \
+  \                   The reference sequence name, for example 'chr1', '1',\n    \
+  \                    or 'chrX'. If unspecified, all data is returned.\n  --reference-md5\
+  \ REFERENCE_MD5, -m REFERENCE_MD5\n                        The MD5 checksum uniquely\
+  \ representing the requested\n                        reference sequence as a lower-case\
+  \ hexadecimal string,\n                        calculated as the MD5 of the upper-case\
+  \ sequence\n                        excluding all whitespace characters.\n  --start\
+  \ START, -s START\n                        The start position of the range on the\
+  \ reference,\n                        0-based, inclusive. If specified, reference-name\
+  \ or\n                        reference-md5 must also be specified.\n  --end END,\
+  \ -e END     The end position of the range on the reference,\n                 \
+  \       0-based exclusive. If specified, reference-name or\n                   \
+  \     reference-md5 must also be specified.\n  --format {BAM,CRAM}, -f {BAM,CRAM}\n\
+  \                        The format of data to request.\n  --max-retries MAX_RETRIES,\
+  \ -M MAX_RETRIES\n                        The maximum number of times to retry a\
+  \ failed\n                        transfer. Any negative number means infinite number\
+  \ of\n                        retries.\n  --retry-wait RETRY_WAIT, -W RETRY_WAIT\n\
+  \                        The number of seconds to wait before retrying a failed\n\
+  \                        transfer.\n  --saveto [SAVETO]     Output file(for files)/output\
+  \ dir(for datasets)\n  --delete-temp-files   Do not keep those temporary, partial\
+  \ files which were\n                        left on the disk after a failed transfer.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/pyega3:3.4.1--py_0

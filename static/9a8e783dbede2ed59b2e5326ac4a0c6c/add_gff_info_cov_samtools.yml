@@ -1,0 +1,81 @@
+!Command
+command:
+- add-gff-info
+- cov_samtools
+positional:
+- !Positional
+  optional: true
+  position: 0
+  name: INPUT_FILE
+  description: ''
+- !Positional
+  optional: true
+  position: 1
+  name: OUTPUT_FILE
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  - -m
+  - --average
+  description: "if one or more samples are provided, the average\ncoverage is calculated"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --samples
+  description: "Sample name, will add a `sample_cov` in the GFF\nfile. If not passed,\
+    \ the attribute will be `cov`"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --depths
+  description: '`samtools depth -aa` file  [required]'
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --num-seqs
+  description: "Number of sequences to update the log. If 0, no\nmessage is logged\
+    \  [default: 0]"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --progress
+  description: Shows Progress Bar
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: add-gff-info cov_samtools [OPTIONS] [INPUT_FILE] [OUTPUT_FILE]\n\
+  \n  Adds information from samtools_depth\n\nOptions:\n  -v, --verbose\n  -m, --average\
+  \           if one or more samples are provided, the average\n                 \
+  \         coverage is calculated\n\n  -s, --samples TEXT      Sample name, will\
+  \ add a `sample_cov` in the GFF\n                          file. If not passed,\
+  \ the attribute will be `cov`\n\n  -d, --depths TEXT       `samtools depth -aa`\
+  \ file  [required]\n  -n, --num-seqs INTEGER  Number of sequences to update the\
+  \ log. If 0, no\n                          message is logged  [default: 0]\n\n \
+  \ --progress              Shows Progress Bar\n  --help                  Show this\
+  \ message and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/mgkit:0.5.6--py37hf01694f_0

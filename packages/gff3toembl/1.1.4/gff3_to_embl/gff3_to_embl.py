@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import String, File
+
+Gff3_To_Embl_V0_1_0 = CommandToolBuilder(tool="gff3_to_embl", base_command=["gff3_to_embl"], inputs=[ToolInput(tag="in_authors", input_type=String(optional=True), prefix="--authors", doc=InputDocumentation(doc="Authors (in the EMBL RA line style)")), ToolInput(tag="in_title", input_type=String(optional=True), prefix="--title", doc=InputDocumentation(doc="Title of paper (in the EMBL RT line style)")), ToolInput(tag="in_publication", input_type=String(optional=True), prefix="--publication", doc=InputDocumentation(doc="Publication or journal name (in the EMBL RL line\nstyle)")), ToolInput(tag="in_genome_type", input_type=String(optional=True), prefix="--genome_type", doc=InputDocumentation(doc="Genome type (linear/circular)")), ToolInput(tag="in_classification", input_type=String(optional=True), prefix="--classification", doc=InputDocumentation(doc="Classification (PROK/UNC/..)")), ToolInput(tag="in_output_filename", input_type=File(optional=True), prefix="--output_filename", doc=InputDocumentation(doc="Output filename")), ToolInput(tag="in_locus_tag", input_type=File(optional=True), prefix="--locus_tag", doc=InputDocumentation(doc="Overwrite the locus tag in the annotation file")), ToolInput(tag="in_translation_table", input_type=String(optional=True), prefix="--translation_table", doc=InputDocumentation(doc="Translation table")), ToolInput(tag="in_chromosome_list", input_type=File(optional=True), prefix="--chromosome_list", doc=InputDocumentation(doc="Create a chromosome list file, and use the supplied\nname")), ToolInput(tag="in_organism", input_type=String(), position=0, doc=InputDocumentation(doc="Organism")), ToolInput(tag="in_taxonid", input_type=String(), position=1, doc=InputDocumentation(doc="Taxon id")), ToolInput(tag="in_project_accession", input_type=String(), position=2, doc=InputDocumentation(doc="Accession number for the project")), ToolInput(tag="in_description", input_type=String(), position=3, doc=InputDocumentation(doc="Genus species subspecies strain of organism")), ToolInput(tag="in_file", input_type=File(), position=4, doc=InputDocumentation(doc="GFF3 filename"))], outputs=[ToolOutput(tag="out_output_filename", output_type=File(optional=True), selector=InputSelector(input_to_select="in_output_filename", type_hint=File()), doc=OutputDocumentation(doc="Output filename"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Gff3_To_Embl_V0_1_0().translate("wdl", allow_empty_container=True)
+

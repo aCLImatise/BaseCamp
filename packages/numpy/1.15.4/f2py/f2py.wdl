@@ -6,7 +6,7 @@ task F2py {
     Boolean? two_d_numeric
     Boolean? two_d_numarray
     Boolean? g_three_numpy
-    File? write_signatures_file
+    File? write_signatures_fortran
     File? name_module_fpy
     String? lower
     Int? build_dir
@@ -30,7 +30,9 @@ task F2py {
     Boolean? no_opt
     Boolean? noarch
     Boolean? debug
-    Boolean? lslash_path_slash_to_slash_lib_slash
+    Boolean? pathtolib_llibname
+    Boolean? define_uname
+    Boolean? pathtoinclude
     String directories_dot
   }
   command <<<
@@ -40,7 +42,7 @@ task F2py {
       ~{if (two_d_numeric) then "--2d-numeric" else ""} \
       ~{if (two_d_numarray) then "--2d-numarray" else ""} \
       ~{if (g_three_numpy) then "--g3-numpy" else ""} \
-      ~{if defined(write_signatures_file) then ("-h " +  '"' + write_signatures_file + '"') else ""} \
+      ~{if defined(write_signatures_fortran) then ("-h " +  '"' + write_signatures_fortran + '"') else ""} \
       ~{if defined(name_module_fpy) then ("-m " +  '"' + name_module_fpy + '"') else ""} \
       ~{if defined(lower) then ("--lower " +  '"' + lower + '"') else ""} \
       ~{if defined(build_dir) then ("--build-dir " +  '"' + build_dir + '"') else ""} \
@@ -64,14 +66,19 @@ task F2py {
       ~{if (no_opt) then "--noopt" else ""} \
       ~{if (noarch) then "--noarch" else ""} \
       ~{if (debug) then "--debug" else ""} \
-      ~{if (lslash_path_slash_to_slash_lib_slash) then "-L/path/to/lib/" else ""}
+      ~{if (pathtolib_llibname) then "-L" else ""} \
+      ~{if (define_uname) then "-D" else ""} \
+      ~{if (pathtoinclude) then "-I" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     two_d_numpy: "Use numpy.f2py tool with NumPy support. [DEFAULT]"
     two_d_numeric: "Use f2py2e tool with Numeric support."
     two_d_numarray: "Use f2py2e tool with Numarray support."
     g_three_numpy: "Use 3rd generation f2py from the separate f2py package.\\n[NOT AVAILABLE YET]"
-    write_signatures_file: "Write signatures of the fortran routines to file <filename>\\nand exit. You can then edit <filename> and use it instead\\nof <fortran files>. If <filename>==stdout then the\\nsignatures are printed to stdout."
+    write_signatures_fortran: "Write signatures of the fortran routines to file <filename>\\nand exit. You can then edit <filename> and use it instead\\nof <fortran files>. If <filename>==stdout then the\\nsignatures are printed to stdout."
     name_module_fpy: "Name of the module; f2py generates a Python/C API\\nfile <modulename>module.c or extension module <modulename>.\\nDefault is 'untitled'."
     lower: "assumed with -h key, and --no-lower without -h key."
     build_dir: "All f2py generated files are created in <dirname>.\\nDefault is tempfile.mkdtemp()."
@@ -95,7 +102,9 @@ task F2py {
     no_opt: "Compile without optimization"
     noarch: "Compile without arch-dependent optimization"
     debug: "Compile with debugging information"
-    lslash_path_slash_to_slash_lib_slash: "<libname>\\n-D<define> -U<name>\\n-I/path/to/include/\\n<filename>.o <filename>.so <filename>.a\\nUsing the following macros may be required with non-gcc Fortran\\ncompilers:\\n-DPREPEND_FORTRAN -DNO_APPEND_FORTRAN -DUPPERCASE_FORTRAN\\n-DUNDERSCORE_G77\\nWhen using -DF2PY_REPORT_ATEXIT, a performance report of F2PY\\ninterface is printed out at exit (platforms: Linux).\\nWhen using -DF2PY_REPORT_ON_ARRAY_COPY=<int>, a message is\\nsent to stderr whenever F2PY interface makes a copy of an\\narray. Integer <int> sets the threshold for array sizes when\\na message should be shown."
+    pathtolib_llibname: "/path/to/lib/ -l<libname>"
+    define_uname: "<define> -U<name>"
+    pathtoinclude: "/path/to/include/"
     directories_dot: "--help-link [..] List system resources found by system_info.py. See also"
   }
   output {

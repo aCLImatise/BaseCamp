@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import String, Boolean, File, Int
+
+Parasol_V0_1_0 = CommandToolBuilder(tool="parasol", base_command=["parasol"], inputs=[ToolInput(tag="in_in", input_type=String(optional=True), prefix="-in", doc=InputDocumentation(doc="- Where to get stdin, default /dev/null")), ToolInput(tag="in_out", input_type=String(optional=True), prefix="-out", doc=InputDocumentation(doc="- Where to put stdout, default /dev/null")), ToolInput(tag="in_wait", input_type=Boolean(optional=True), prefix="-wait", doc=InputDocumentation(doc="- If set wait for job to finish to return and return with job status code")), ToolInput(tag="in_err", input_type=File(optional=True), prefix="-err", doc=InputDocumentation(doc="- set stderr to out file - only works with wait flag")), ToolInput(tag="in_verbose", input_type=Int(optional=True), prefix="-verbose", doc=InputDocumentation(doc="- set verbosity level, default level is 1")), ToolInput(tag="in_print_id", input_type=Boolean(optional=True), prefix="-printId", doc=InputDocumentation(doc="- prints jobId to stdout")), ToolInput(tag="in_dir", input_type=String(optional=True), prefix="-dir", doc=InputDocumentation(doc="- set output results dir, default is current dir")), ToolInput(tag="in_results", input_type=File(optional=True), prefix="-results", doc=InputDocumentation(doc="fully qualified path to the results file,\nor `results' in the current directory if not specified.")), ToolInput(tag="in_cpu", input_type=Int(optional=True), prefix="-cpu", doc=InputDocumentation(doc="Number of CPUs used by the jobs, default 1.")), ToolInput(tag="in_ram", input_type=Int(optional=True), prefix="-ram", doc=InputDocumentation(doc="Number of bytes of RAM used by the jobs.\nDefault is RAM on node divided by number of cpus on node.\nShorthand expressions allow t,g,m,k for tera, giga, mega, kilo.\ne.g. 4g = 4 Gigabytes.")), ToolInput(tag="in_host", input_type=String(optional=True), prefix="-host", doc=InputDocumentation(doc="- connect to a paraHub process on a remote host instead\nlocalhost.")), ToolInput(tag="in_or", input_type=String(), position=0, doc=InputDocumentation(doc="parasol add machine machineFullHostName cpus ramSizeMB localTempDir localDir localSizeMB switchName"))], outputs=[ToolOutput(tag="out_err", output_type=File(optional=True), selector=InputSelector(input_to_select="in_err", type_hint=File()), doc=OutputDocumentation(doc="- set stderr to out file - only works with wait flag"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Parasol_V0_1_0().translate("wdl", allow_empty_container=True)
+

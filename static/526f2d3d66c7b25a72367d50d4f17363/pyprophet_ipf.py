@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, Boolean, Float
+
+Pyprophet_Ipf_V0_1_0 = CommandToolBuilder(tool="pyprophet_ipf", base_command=["pyprophet", "ipf"], inputs=[ToolInput(tag="in_in", input_type=File(optional=True), prefix="--in", doc=InputDocumentation(doc="PyProphet input file.  [required]")), ToolInput(tag="in_out", input_type=File(optional=True), prefix="--out", doc=InputDocumentation(doc="PyProphet output file.")), ToolInput(tag="in_no_ipf_ms_one_scoring", input_type=Boolean(optional=True), prefix="--no-ipf_ms1_scoring", doc=InputDocumentation(doc="Use MS1 precursor data for IPF.  [default:\nTrue]")), ToolInput(tag="in_no_ipf_ms_two_scoring", input_type=Boolean(optional=True), prefix="--no-ipf_ms2_scoring", doc=InputDocumentation(doc="Use MS2 precursor data for IPF.  [default:\nTrue]")), ToolInput(tag="in_no_ipf_h_zero", input_type=Boolean(optional=True), prefix="--no-ipf_h0", doc=InputDocumentation(doc="Include possibility that peak groups are not\ncovered by peptidoform space.  [default:\nTrue]")), ToolInput(tag="in_no_ipf_grouped_fdr", input_type=Boolean(optional=True), prefix="--no-ipf_grouped_fdr", doc=InputDocumentation(doc="[Experimental] Compute grouped FDR instead\nof pooled FDR to better support data where\npeak groups are evaluated to originate from\nvery heterogeneous numbers of peptidoforms.\n[default: False]")), ToolInput(tag="in_ipf_max_precursor_pep", input_type=Float(optional=True), prefix="--ipf_max_precursor_pep", doc=InputDocumentation(doc="Maximum PEP to consider scored precursors in")), ToolInput(tag="in_ipf_max_peak_group_pep", input_type=Float(optional=True), prefix="--ipf_max_peakgroup_pep", doc=InputDocumentation(doc="Maximum PEP to consider scored peak groups\nin IPF.  [default: 0.7]")), ToolInput(tag="in_ipf_max_precursor_peak_group_pep", input_type=Float(optional=True), prefix="--ipf_max_precursor_peakgroup_pep", doc=InputDocumentation(doc="Maximum BHM layer 1 integrated precursor\npeakgroup PEP to consider in IPF.  [default:\n0.4]")), ToolInput(tag="in_ipf_max_transition_pep", input_type=Float(optional=True), prefix="--ipf_max_transition_pep", doc=InputDocumentation(doc="Maximum PEP to consider scored transitions\nin IPF.  [default: 0.6]"))], outputs=[ToolOutput(tag="out_out", output_type=File(optional=True), selector=InputSelector(input_to_select="in_out", type_hint=File()), doc=OutputDocumentation(doc="PyProphet output file."))], container="quay.io/biocontainers/pyprophet:2.1.6--py37hf01694f_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Pyprophet_Ipf_V0_1_0().translate("wdl")
+

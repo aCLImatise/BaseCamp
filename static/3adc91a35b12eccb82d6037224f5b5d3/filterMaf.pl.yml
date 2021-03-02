@@ -1,0 +1,57 @@
+!Command
+command:
+- filterMaf.pl
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --species
+  description: ",species2,...     a comma separated list of the species which shall\
+    \ be kept in the filtered alignment (at least 2 species,\nby default all species\
+    \ are kept)"
+  args: !SimpleFlagArg
+    name: species1
+- !Flag
+  optional: true
+  synonyms:
+  - --min-seq
+  description: only blocks that contain at list N sequences are taken (N=2 by default)
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --interval
+  description: :start-end          a genomic interval (seqID is equal to the first
+    field of an 's' line in the alignment)
+  args: !SimpleFlagArg
+    name: seqID
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: output this help message
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "filterMaf.pl\tfilter blocks from a MAF alignment that intersect with a\
+  \ given genomic interval\n\t\tor filter sequences for a given subset of species\n\
+  SYNOPSIS\n\nfilterMaf.pl < alignment.maf > filter.maf\n\nOPTIONS\n\n    --help \
+  \            \t\t\toutput this help message\n    --species=species1,species2,...\t\
+  a comma separated list of the species which shall be kept in the filtered alignment\
+  \ (at least 2 species,\n                                        by default all species\
+  \ are kept)\t\t\n    --min-seq N\t\t\t\tonly blocks that contain at list N sequences\
+  \ are taken (N=2 by default)\n    --interval=seqID:start-end\t        a genomic\
+  \ interval (seqID is equal to the first field of an 's' line in the alignment)\n\
+  \nDESCRIPTION\n      \n  Example:\n\n    filterMaf.pl --species=hg19,mm9,rheMac2,bosTau4\
+  \ < alignment.maf > filter.maf\n    filterMaf.pl --interval=hg19.chr21:43490000-43560000\
+  \ < alignment.maf > filter.maf\n    filterMaf.pl --min-seq 5 < alignment.maf > filter.maf\n\
+  \    filterMaf.pl --species=hg19,mm9,rheMac2,bosTau4 --min-seq 4 --interval=mm9.chr17:43490000-43560000\
+  \ < alignment.maf > filter.maf\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/augustus:3.4.0--pl526h0faeac2_0

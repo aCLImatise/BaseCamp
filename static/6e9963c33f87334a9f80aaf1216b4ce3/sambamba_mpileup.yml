@@ -1,0 +1,96 @@
+!Command
+command:
+- sambamba
+- mpileup
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: sambamba-pileup
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: input.bam
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  - --regions
+  description: "provide BED file with regions\n(no need to duplicate it in samtools\
+    \ args);\nall input files must be indexed"
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-filename
+  description: specify output filename
+  args: !SimpleFlagArg
+    name: STDOUT
+- !Flag
+  optional: true
+  synonyms:
+  - --tmpdir
+  description: directory for temporary files
+  args: !SimpleFlagArg
+    name: TMPDIR
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --nthreads
+  description: maximum number of threads to use
+  args: !SimpleFlagArg
+    name: NTHREADS
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --buffer-size
+  description: chunk size (in bytes)
+  args: !SimpleFlagArg
+    name: '64_000_000'
+- !Flag
+  optional: true
+  synonyms:
+  - -B
+  - --output-buffer-size
+  description: output buffer size (in bytes)
+  args: !SimpleFlagArg
+    name: '512_000_000'
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nsambamba 0.8.0\n by Artem Tarasov and Pjotr Prins (C) 2012-2020\n  \
+  \  LDC 1.20.0 / DMD v2.090.1 / LLVM7.0.0 / bootstrap LDC - the LLVM D compiler (0.17.6)\n\
+  \nusage: sambamba-pileup [options] input.bam [input2.bam [...]]\n              \
+  \         [--samtools <samtools mpileup args>]\n                       [--bcftools\
+  \ <bcftools call args>]\n\nThis subcommand relies on external tools and acts as\
+  \ a multi-core\nimplementation of samtools and bcftools.\n\nTherefore, the following\
+  \ tools should be present in $PATH:\n    * samtools\n    * bcftools (when used)\n\
+  \nIf --samtools is skipped, samtools mpileup is called with default arguments\n\
+  If --bcftools is used without parameters, samtools is called with\n     switch '-gu'\
+  \ and bcftools is called as 'bcftools view -'\nIf --bcftools is skipped, bcftools\
+  \ is not called\n\nSambamba splits input BAM files into chunks and feeds them\n\
+  to samtools mpileup and, optionally, bcftools in parallel.\nThe chunks are slightly\
+  \ overlapping so that variant calling\nshould not be impacted by these manipulations.\
+  \ The obtained results\nfrom the multiple processes are combined as ordered output.\n\
+  \nSambamba options:\n         -L, --regions=FILENAME\n                    provide\
+  \ BED file with regions\n                    (no need to duplicate it in samtools\
+  \ args);\n                    all input files must be indexed\n         -o, --output-filename=<STDOUT>\n\
+  \                    specify output filename\n         --tmpdir=TMPDIR\n       \
+  \             directory for temporary files\n         -t, --nthreads=NTHREADS\n\
+  \                    maximum number of threads to use\n         -b, --buffer-size=64_000_000\n\
+  \                    chunk size (in bytes)\n         -B, --output-buffer-size=512_000_000\n\
+  \                    output buffer size (in bytes)\n\nSambamba paths:\n\nsambamba-pileup:\
+  \ failed to locate samtools executable in PATH\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/sambamba:0.8.0--h984e79f_0

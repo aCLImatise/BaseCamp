@@ -1,0 +1,118 @@
+!Command
+command:
+- genomedata-load-assembly
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: gdarchive
+  description: genomedata archive
+- !Positional
+  optional: false
+  position: 1
+  name: seqfiles
+  description: sequences in FASTA format
+- !Positional
+  optional: false
+  position: 0
+  name: sequence
+  description: -s, --sizes           SEQFILE contains list of sizes instead of sequence
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --assembly
+  description: SEQFILE contains assembly (AGP) files instead of
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --file-mode
+  description: "If specified, the Genomedata archive will be\nimplemented as a single\
+    \ file, with a separate h5 group\nfor each Chromosome. This is recommended if\
+    \ there are\na large number of Chromosomes. The default behavior is\nto use a\
+    \ single file if there are at least 100\nChromosomes being added."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --directory-mode
+  description: "If specified, the Genomedata archive will be\nimplemented as a directory,\
+    \ with a separate file for\neach Chromosome. This is recommended if there are\
+    \ a\nsmall number of Chromosomes. The default behavior is\nto use a directory\
+    \ if there are fewer than 100\nChromosomes being added."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: Print status updates and diagnostic messages
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --assembly-report
+  description: "Tab-delimited file with columnar mappings between\nchromosome naming\
+    \ styles."
+  args: !SimpleFlagArg
+    name: ASSEMBLY-REPORT
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --name-style
+  description: "Chromsome naming style to use based on ASSEMBLY-\nREPORT. Default:\
+    \ UCSC-style-name\n"
+  args: !SimpleFlagArg
+    name: NAME_STYLE
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: genomedata-load-seq [-h] [-r ASSEMBLY-REPORT] [-n NAME_STYLE]\n\
+  \                           [--version] [-a] [-s] [-f] [-d] [--verbose]\n      \
+  \                     gdarchive seqfiles [seqfiles ...]\n\nStart a Genomedata archive\
+  \ at GENOMEDATAFILE with the provided sequences.\nSEQFILEs should be in fasta format,\
+  \ and a separate Chromosome will be created\nfor each definition line.\n\npositional\
+  \ arguments:\n  gdarchive             genomedata archive\n  seqfiles           \
+  \   sequences in FASTA format\n\noptional arguments:\n  -h, --help            show\
+  \ this help message and exit\n  --version             show program's version number\
+  \ and exit\n  -a, --assembly        SEQFILE contains assembly (AGP) files instead\
+  \ of\n                        sequence\n  -s, --sizes           SEQFILE contains\
+  \ list of sizes instead of sequence\n  -f, --file-mode       If specified, the Genomedata\
+  \ archive will be\n                        implemented as a single file, with a\
+  \ separate h5 group\n                        for each Chromosome. This is recommended\
+  \ if there are\n                        a large number of Chromosomes. The default\
+  \ behavior is\n                        to use a single file if there are at least\
+  \ 100\n                        Chromosomes being added.\n  -d, --directory-mode\
+  \  If specified, the Genomedata archive will be\n                        implemented\
+  \ as a directory, with a separate file for\n                        each Chromosome.\
+  \ This is recommended if there are a\n                        small number of Chromosomes.\
+  \ The default behavior is\n                        to use a directory if there are\
+  \ fewer than 100\n                        Chromosomes being added.\n  --verbose\
+  \             Print status updates and diagnostic messages\n\nChromosome naming:\n\
+  \  -r ASSEMBLY-REPORT, --assembly-report ASSEMBLY-REPORT\n                     \
+  \   Tab-delimited file with columnar mappings between\n                        chromosome\
+  \ naming styles.\n  -n NAME_STYLE, --name-style NAME_STYLE\n                   \
+  \     Chromsome naming style to use based on ASSEMBLY-\n                       \
+  \ REPORT. Default: UCSC-style-name\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/genomedata:1.5.0--py36h485661d_0

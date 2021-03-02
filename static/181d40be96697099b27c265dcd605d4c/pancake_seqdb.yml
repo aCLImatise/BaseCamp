@@ -1,0 +1,91 @@
+!Command
+command:
+- pancake
+- seqdb
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: prefix
+  description: STR    The prefix of the DB files.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --compression
+  description: INT    Compression level for output sequences. [1]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --buffer-size
+  description: FLOAT  Sequence buffer size in megabytes. Has to be >= 0.0. [1000]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --block-size
+  description: "FLOAT  Block size in megabases. Value 0 means one sequnece per block,\
+    \ value < 0 all sequences in\none block. [1000]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --split-blocks
+  description: Write seeds for each block into a separate file.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --num-threads
+  description: INT    Number of threads to use, 0 means autodetection. [0]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --log-level
+  description: 'STR    Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL).
+    [WARN]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --log-file
+  description: FILE   Log to a file, instead of stderr.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this help and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Show application version and exit.
+  args: !EmptyFlagArg {}
+help_text: "pancake - Convert FASTA/FASTQ sequences to SeqDB.\n\nUsage:\n  pancake\
+  \ [options] <prefix> <<input.fasta> [...]>\n\n  prefix               STR    The\
+  \ prefix of the DB files.\n  <input.fasta> [...]  STR    One or more input sequence\
+  \ files, in FASTA, FASTQ or FOFN formats.\n\nAlgorithm Options:\n  -c,--compression\
+  \     INT    Compression level for output sequences. [1]\n  --buffer-size      \
+  \  FLOAT  Sequence buffer size in megabytes. Has to be >= 0.0. [1000]\n  --block-size\
+  \         FLOAT  Block size in megabases. Value 0 means one sequnece per block,\
+  \ value < 0 all sequences in\n                              one block. [1000]\n\
+  \  --split-blocks              Write seeds for each block into a separate file.\n\
+  \n  -h,--help                   Show this help and exit.\n  --version          \
+  \         Show application version and exit.\n  -j,--num-threads     INT    Number\
+  \ of threads to use, 0 means autodetection. [0]\n  --log-level          STR    Set\
+  \ log level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL). [WARN]\n  --log-file\
+  \           FILE   Log to a file, instead of stderr.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/pbipa:1.3.2--hee625c5_0

@@ -1,0 +1,144 @@
+!Command
+command:
+- scpred_predict.R
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input-object
+  description: Path to the input object of scPred or seurat class in .rds format
+  args: !SimpleFlagArg
+    name: INPUT-OBJECT
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --pred-data
+  description: Path to the input prediction matrix in .rds format
+  args: !SimpleFlagArg
+    name: PRED-DATA
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --normalise-data
+  description: 'Should the predicted expression data be normalised? Default: False'
+  args: !SimpleFlagArg
+    name: NORMALISE-DATA
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --normalisation-method
+  description: "If --normalise-data specified, what normalisation method to use? Default:\
+    \ LogNormalize\nNB: normalisation method must be identical to that used for reference\
+    \ data"
+  args: !SimpleFlagArg
+    name: NORMALISATION-METHOD
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --scale-factor
+  description: "If --normalise-data specified, what scale factor should be applied?\n\
+    Note: for CPM normalisation, select 1e6"
+  args: !SimpleFlagArg
+    name: SCALE-FACTOR
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --threshold-level
+  description: Classification threshold value
+  args: !SimpleFlagArg
+    name: THRESHOLD-LEVEL
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --max-iter-harmony
+  description: Maximum number of rounds to run Harmony. One round of Harmony involves
+    one clustering and one correction step
+  args: !SimpleFlagArg
+    name: MAX-ITER-HARMONY
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --recompute-alignment
+  description: 'Recompute alignment? Useful if scPredict() has already been run. Default:
+    TRUE'
+  args: !SimpleFlagArg
+    name: RECOMPUTE-ALIGNMENT
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --reference-scaling
+  description: 'Scale new dataset based on means and stdevs from reference dataset
+    before alignment. Default: TRUE'
+  args: !SimpleFlagArg
+    name: REFERENCE-SCALING
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --random-seed
+  description: Random number generator seed
+  args: !SimpleFlagArg
+    name: RANDOM-SEED
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-path
+  description: Output path for Seurat object holding predicted values
+  args: !SimpleFlagArg
+    name: OUTPUT-PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --plot-path
+  description: Output path for prediction probabilities histograms in .png format
+  args: !SimpleFlagArg
+    name: PLOT-PATH
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: "Show this help message and exit\n"
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: /usr/local/bin/scpred_predict.R [options]\n\n\nOptions:\n\t-i INPUT-OBJECT,\
+  \ --input-object=INPUT-OBJECT\n\t\tPath to the input object of scPred or seurat\
+  \ class in .rds format\n\n\t-p PRED-DATA, --pred-data=PRED-DATA\n\t\tPath to the\
+  \ input prediction matrix in .rds format\n\n\t-n NORMALISE-DATA, --normalise-data=NORMALISE-DATA\n\
+  \t\tShould the predicted expression data be normalised? Default: False\n\n\t-m NORMALISATION-METHOD,\
+  \ --normalisation-method=NORMALISATION-METHOD\n\t\tIf --normalise-data specified,\
+  \ what normalisation method to use? Default: LogNormalize\n                NB: normalisation\
+  \ method must be identical to that used for reference data\n\n\t-s SCALE-FACTOR,\
+  \ --scale-factor=SCALE-FACTOR\n\t\tIf --normalise-data specified, what scale factor\
+  \ should be applied? \n                Note: for CPM normalisation, select 1e6\n\
+  \n\t-l THRESHOLD-LEVEL, --threshold-level=THRESHOLD-LEVEL\n\t\tClassification threshold\
+  \ value\n\n\t-x MAX-ITER-HARMONY, --max-iter-harmony=MAX-ITER-HARMONY\n\t\tMaximum\
+  \ number of rounds to run Harmony. One round of Harmony involves one clustering\
+  \ and one correction step\n\n\t-r RECOMPUTE-ALIGNMENT, --recompute-alignment=RECOMPUTE-ALIGNMENT\n\
+  \t\tRecompute alignment? Useful if scPredict() has already been run. Default: TRUE\n\
+  \n\t-k REFERENCE-SCALING, --reference-scaling=REFERENCE-SCALING\n\t\tScale new dataset\
+  \ based on means and stdevs from reference dataset before alignment. Default: TRUE\n\
+  \n\t-e RANDOM-SEED, --random-seed=RANDOM-SEED\n\t\tRandom number generator seed\n\
+  \n\t-o OUTPUT-PATH, --output-path=OUTPUT-PATH\n\t\tOutput path for Seurat object\
+  \ holding predicted values\n\n\t-a PLOT-PATH, --plot-path=PLOT-PATH\n\t\tOutput\
+  \ path for prediction probabilities histograms in .png format\n\n\t-h, --help\n\t\
+  \tShow this help message and exit\n\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/scpred-cli:0.1.0--1

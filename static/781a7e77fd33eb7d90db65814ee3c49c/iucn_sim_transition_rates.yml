@@ -1,0 +1,160 @@
+!Command
+command:
+- iucn_sim
+- transition_rates
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --species_data
+  description: "File containing species list and current IUCN status\nof species,\
+    \ as well as generation length (GL) data\nestimates if available. GL data is only\
+    \ used for '--\nextinction_probs_mode 0' ('species_data.txt' output\nfrom get_iucn_data\
+    \ function)."
+  args: !SimpleFlagArg
+    name: path
+- !Flag
+  optional: true
+  synonyms:
+  - --iucn_history
+  description: "File containing IUCN history of the reference group\nfor transition\
+    \ rate estimation ('*_iucn_history.txt'\noutput of get_iucn_data function)."
+  args: !SimpleFlagArg
+    name: path
+- !Flag
+  optional: true
+  synonyms:
+  - --outdir
+  description: Provide path to outdir where results will be saved.
+  args: !SimpleFlagArg
+    name: path
+- !Flag
+  optional: true
+  synonyms:
+  - --extinction_probs_mode
+  description: "Set to '0' to use the critE EX mode to determine\nextinction probabilities\
+    \ for each status (e.g. Mooers\net al, 2008 approach). Set to '1' to use empirical\
+    \ EX\nmode, based on the recorded extinction in the IUCN\nhistory of the reference\
+    \ group (e.g. Monroe et al,\n2019 approach). GL data can only be used in the critE\n\
+    EX mode ('0')."
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --possibly_extinct_list
+  description: "File containing list of taxa that are likely extinct,\nbut that are\
+    \ listed as extant in IUCN, including the\nyear of their assessment as possibly\
+    \ extinct\n('possibly_extinct_reference_taxa.txt' output from\nget_iucn_data function).\
+    \ These species will then be\nmodeled as extinct by the esimate_rates function,\n\
+    which will effect the estimated extinction\nprobabilities when chosing `--extinction_probs_mode\
+    \ 1`"
+  args: !SimpleFlagArg
+    name: path
+- !Flag
+  optional: true
+  synonyms:
+  - --species_specific_regression
+  description: "Enables species-specific regression fitting to model\nLC, NT, and\
+    \ VU extinction probabilities. Only\napplicable with --extinction_probs_mode 0\
+    \ (critE mode)\nand if GL is provided."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --rate_samples
+  description: "How many rates to sample from the posterior transition\nrate estimates.\
+    \ These rates will be used to populate\ntransition rate q-matrices for downstream\
+    \ simulations.\nLater on you can still chose to run more simulation\nreplicates\
+    \ than the here specified number of produced\ntransition rate q-matrices, in which\
+    \ case the\n`run_sim` function will randomely resample from the\navailable q-matrices\
+    \ (default=100, this is ususally\nsufficient, larger numbers can lead to very\
+    \ high\noutput file size volumes)."
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --n_gen
+  description: "Number of generations for MCMC for transition rate\nestimation (default=100000)."
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --burnin
+  description: "Burn-in for MCMC for transition rate estimation\n(default=1000)."
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --seed
+  description: Set starting seed for the MCMC.
+  args: !SimpleFlagArg
+    name: SEED
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: iucn_sim transition_rates [-h] --species_data <path> --iucn_history\n\
+  \                                 <path> --outdir <path>\n                     \
+  \            [--extinction_probs_mode N]\n                                 [--possibly_extinct_list\
+  \ <path>]\n                                 [--species_specific_regression]\n  \
+  \                               [--rate_samples N] [--n_gen N] [--burnin N]\n  \
+  \                               [--seed SEED]\n\nMCMC-estimation of status transition\
+  \ rates from IUCN record Created on Mon Oct\n28 14:43:44 2019 @author: Tobias Andermann\
+  \ (tobias.andermann@bioenv.gu.se)\n\noptional arguments:\n  -h, --help         \
+  \   show this help message and exit\n  --species_data <path>\n                 \
+  \       File containing species list and current IUCN status\n                 \
+  \       of species, as well as generation length (GL) data\n                   \
+  \     estimates if available. GL data is only used for '--\n                   \
+  \     extinction_probs_mode 0' ('species_data.txt' output\n                    \
+  \    from get_iucn_data function).\n  --iucn_history <path>\n                  \
+  \      File containing IUCN history of the reference group\n                   \
+  \     for transition rate estimation ('*_iucn_history.txt'\n                   \
+  \     output of get_iucn_data function).\n  --outdir <path>       Provide path to\
+  \ outdir where results will be saved.\n  --extinction_probs_mode N\n           \
+  \             Set to '0' to use the critE EX mode to determine\n               \
+  \         extinction probabilities for each status (e.g. Mooers\n              \
+  \          et al, 2008 approach). Set to '1' to use empirical EX\n             \
+  \           mode, based on the recorded extinction in the IUCN\n               \
+  \         history of the reference group (e.g. Monroe et al,\n                 \
+  \       2019 approach). GL data can only be used in the critE\n                \
+  \        EX mode ('0').\n  --possibly_extinct_list <path>\n                    \
+  \    File containing list of taxa that are likely extinct,\n                   \
+  \     but that are listed as extant in IUCN, including the\n                   \
+  \     year of their assessment as possibly extinct\n                        ('possibly_extinct_reference_taxa.txt'\
+  \ output from\n                        get_iucn_data function). These species will\
+  \ then be\n                        modeled as extinct by the esimate_rates function,\n\
+  \                        which will effect the estimated extinction\n          \
+  \              probabilities when chosing `--extinction_probs_mode 1`\n  --species_specific_regression\n\
+  \                        Enables species-specific regression fitting to model\n\
+  \                        LC, NT, and VU extinction probabilities. Only\n       \
+  \                 applicable with --extinction_probs_mode 0 (critE mode)\n     \
+  \                   and if GL is provided.\n  --rate_samples N      How many rates\
+  \ to sample from the posterior transition\n                        rate estimates.\
+  \ These rates will be used to populate\n                        transition rate\
+  \ q-matrices for downstream simulations.\n                        Later on you can\
+  \ still chose to run more simulation\n                        replicates than the\
+  \ here specified number of produced\n                        transition rate q-matrices,\
+  \ in which case the\n                        `run_sim` function will randomely resample\
+  \ from the\n                        available q-matrices (default=100, this is ususally\n\
+  \                        sufficient, larger numbers can lead to very high\n    \
+  \                    output file size volumes).\n  --n_gen N             Number\
+  \ of generations for MCMC for transition rate\n                        estimation\
+  \ (default=100000).\n  --burnin N            Burn-in for MCMC for transition rate\
+  \ estimation\n                        (default=1000).\n  --seed SEED           Set\
+  \ starting seed for the MCMC.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/iucn_sim:2.2.0--pyr40_0

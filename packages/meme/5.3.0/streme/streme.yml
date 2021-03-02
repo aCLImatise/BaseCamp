@@ -1,0 +1,275 @@
+!Command
+command:
+- streme
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --p
+  description: positive sequence file name (required)
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - --n
+  description: "negative sequence file name;\ndefault: if --n is not given, then STREME\n\
+    creates negative sequences by shuffling each of\nthe positive sequences preserving\
+    \ the positions\nof non-core characters and k-mer frequencies\n(see --kmer, below;\
+    \ ignored if --objfun cd given)"
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - --kmer
+  description: "estimates an order k-1 background model for scoring\nsites and preserves\
+    \ k-mer frequencies when creating\nnegative sequences by shuffling positive sequences;\n\
+    default: 3 (DNA), 3 (RNA), 1 (Protein), 1 (custom)"
+  args: !SimpleFlagArg
+    name: k
+- !Flag
+  optional: true
+  synonyms:
+  - --objfun
+  description: "|cd           objective function to optimize in motif discovery\n\
+    de : Differential Enrichment\ncd : Central Distance\ndefault: de"
+  args: !SimpleFlagArg
+    name: de
+- !Flag
+  optional: true
+  synonyms:
+  - --o
+  description: "output directory; default: 'streme_out'"
+  args: !SimpleFlagArg
+    name: output_dir
+- !Flag
+  optional: true
+  synonyms:
+  - --oc
+  description: "allow overwriting; default: 'streme_out'"
+  args: !SimpleFlagArg
+    name: output_dir
+- !Flag
+  optional: true
+  synonyms:
+  - --text
+  description: "output text only; overrides --o and --oc;\ndefault: create text, HTML\
+    \ and XML files in <output_dir>"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dna
+  description: sequences use standard DNA alphabet (default)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --rna
+  description: sequences use standard RNA alphabet
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --protein
+  description: sequences use standard protein alphabet
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --alph
+  description: "sequences use alphabet defined in <alph_file>;\nconverts to uppercase\
+    \ unless both cases in core"
+  args: !SimpleFlagArg
+    name: alph_file
+- !Flag
+  optional: true
+  synonyms:
+  - --minw
+  description: "minimum width for motifs (must be >= 3);\ndefault: 8"
+  args: !SimpleFlagArg
+    name: minwidth
+- !Flag
+  optional: true
+  synonyms:
+  - --maxw
+  description: "maximum width for motifs (must be <= 30);\ndefault: 15"
+  args: !SimpleFlagArg
+    name: maxwidth
+- !Flag
+  optional: true
+  synonyms:
+  - --w
+  description: "sets <minwidth> and <maxwidth> to <w> (must be <= 30);\ndefault: see\
+    \ --minw and --maxw"
+  args: !SimpleFlagArg
+    name: w
+- !Flag
+  optional: true
+  synonyms:
+  - --neval
+  description: "evaluate <neval> seeds of each width;\ndefault: 25"
+  args: !SimpleFlagArg
+    name: neval
+- !Flag
+  optional: true
+  synonyms:
+  - --nref
+  description: "refine <nref> evaluated seeds of each width;\nnref==0 means just evaluate\
+    \ single best seed;\ndefault: 4"
+  args: !SimpleFlagArg
+    name: nref
+- !Flag
+  optional: true
+  synonyms:
+  - --niter
+  description: "iterate refinement at most <niter> times per seed;\ndefault: 20"
+  args: !SimpleFlagArg
+    name: niter
+- !Flag
+  optional: true
+  synonyms:
+  - --pvt
+  description: "stop if hold-out set p-value greater than <pvt>\n(see --patience and\
+    \ --hofract, below);\noverrides --nmotifs;\ndefault: 0.05"
+  args: !SimpleFlagArg
+    name: pvt
+- !Flag
+  optional: true
+  synonyms:
+  - --patience
+  description: "quit after <patience> consecutive motifs exceed <pvt>;\ndefault: 3"
+  args: !SimpleFlagArg
+    name: patience
+- !Flag
+  optional: true
+  synonyms:
+  - --nmotifs
+  description: "stop if <nmotifs> motifs have been output;\noverrides --pvt if > 0;\n\
+    default: quit when new motif p-values exceed <pvt>"
+  args: !SimpleFlagArg
+    name: nmotifs
+- !Flag
+  optional: true
+  synonyms:
+  - --time
+  description: "quit before <t> CPU seconds consumed;\ndefault: no time limit"
+  args: !SimpleFlagArg
+    name: t
+- !Flag
+  optional: true
+  synonyms:
+  - --totallength
+  description: "truncate each sequence set to length <len>;\ndefault: 0 (do not truncate)"
+  args: !SimpleFlagArg
+    name: len
+- !Flag
+  optional: true
+  synonyms:
+  - --hofract
+  description: "fraction of sequences in hold-out set;\ndefault: 0.1"
+  args: !SimpleFlagArg
+    name: hofract
+- !Flag
+  optional: true
+  synonyms:
+  - --seed
+  description: "random seed for shuffling sequences;\ndefault: 0"
+  args: !SimpleFlagArg
+    name: seed
+- !Flag
+  optional: true
+  synonyms:
+  - --desc
+  description: include this description text in HTML
+  args: !SimpleFlagArg
+    name: desc
+- !Flag
+  optional: true
+  synonyms:
+  - --dfile
+  description: "include contents of this description file in HTML,\noverrides --desc"
+  args: !SimpleFlagArg
+    name: dfile
+- !Flag
+  optional: true
+  synonyms:
+  - --verbosity
+  description: "|2|3|4|5    level of diagnostic output (default: 2)\n1: none 2: helpful\
+    \ 3: debug 4: tons 5: ludicrous\n"
+  args: !SimpleFlagArg
+    name: '1'
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: print this message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: print the program version and exit
+  args: !EmptyFlagArg {}
+help_text: "\nUsage: streme [options]\n\n   Options:\n     --p <filename>        \
+  \   positive sequence file name (required)\n     --n <filename>           negative\
+  \ sequence file name;\n                              default: if --n is not given,\
+  \ then STREME\n                              creates negative sequences by shuffling\
+  \ each of\n                              the positive sequences preserving the positions\n\
+  \                              of non-core characters and k-mer frequencies\n  \
+  \                            (see --kmer, below; ignored if --objfun cd given)\n\
+  \     --kmer <k>               estimates an order k-1 background model for scoring\n\
+  \                              sites and preserves k-mer frequencies when creating\n\
+  \                              negative sequences by shuffling positive sequences;\n\
+  \                              default: 3 (DNA), 3 (RNA), 1 (Protein), 1 (custom)\n\
+  \     --objfun de|cd           objective function to optimize in motif discovery\n\
+  \                                de : Differential Enrichment\n                \
+  \                cd : Central Distance\n                              default: de\n\
+  \     --o <output_dir>         output directory; default: 'streme_out'\n     --oc\
+  \ <output_dir>        allow overwriting; default: 'streme_out'\n     --text    \
+  \               output text only; overrides --o and --oc;\n                    \
+  \          default: create text, HTML and XML files in <output_dir>\n     --dna\
+  \                    sequences use standard DNA alphabet (default)\n     --rna \
+  \                   sequences use standard RNA alphabet\n     --protein        \
+  \        sequences use standard protein alphabet\n     --alph <alph_file>      \
+  \ sequences use alphabet defined in <alph_file>;\n                             \
+  \ converts to uppercase unless both cases in core\n     --minw <minwidth>      \
+  \  minimum width for motifs (must be >= 3); \n                              default:\
+  \ 8\n     --maxw <maxwidth>        maximum width for motifs (must be <= 30);\n \
+  \                             default: 15\n     --w <w>                  sets <minwidth>\
+  \ and <maxwidth> to <w> (must be <= 30);\n                              default:\
+  \ see --minw and --maxw\n     --neval <neval>          evaluate <neval> seeds of\
+  \ each width;\n                              default: 25\n     --nref <nref>   \
+  \         refine <nref> evaluated seeds of each width;\n                       \
+  \       nref==0 means just evaluate single best seed;\n                        \
+  \      default: 4\n     --niter <niter>          iterate refinement at most <niter>\
+  \ times per seed;\n                              default: 20\n     --pvt <pvt> \
+  \             stop if hold-out set p-value greater than <pvt>\n                \
+  \              (see --patience and --hofract, below);\n                        \
+  \      overrides --nmotifs;\n                              default: 0.05\n     --patience\
+  \ <patience>    quit after <patience> consecutive motifs exceed <pvt>;\n       \
+  \                       default: 3\n     --nmotifs <nmotifs>      stop if <nmotifs>\
+  \ motifs have been output;\n                              overrides --pvt if > 0;\n\
+  \                              default: quit when new motif p-values exceed <pvt>\n\
+  \     --time <t>               quit before <t> CPU seconds consumed;\n         \
+  \                     default: no time limit\n     --totallength <len>      truncate\
+  \ each sequence set to length <len>;\n                              default: 0 (do\
+  \ not truncate)\n     --hofract <hofract>      fraction of sequences in hold-out\
+  \ set;\n                              default: 0.1\n     --seed <seed>         \
+  \   random seed for shuffling sequences;\n                              default:\
+  \ 0\n     --desc <desc>            include this description text in HTML\n     --dfile\
+  \ <dfile>          include contents of this description file in HTML,\n        \
+  \                      overrides --desc\n     --help                   print this\
+  \ message and exit\n     --version                print the program version and\
+  \ exit\n     --verbosity 1|2|3|4|5    level of diagnostic output (default: 2)\n\
+  \                              1: none 2: helpful 3: debug 4: tons 5: ludicrous\n\
+  \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/meme:5.3.0--py38pl526hc1f1133_0

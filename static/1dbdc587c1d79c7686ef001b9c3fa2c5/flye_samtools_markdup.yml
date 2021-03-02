@@ -1,0 +1,128 @@
+!Command
+command:
+- flye-samtools
+- markdup
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: samtools
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: markdup
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: input.bam
+  description: ''
+- !Positional
+  optional: false
+  position: 3
+  name: output.bam
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: Remove duplicate reads
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: Max read length (default 300 bases)
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  description: Mark supplemenary alignments of duplicates as duplicates (slower).
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: Report stats.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  description: Write temporary files to PREFIX.samtools.nnnn.nnnn.tmp.
+  args: !SimpleFlagArg
+    name: PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: Mark primary duplicates with the name of the original in a 'do' tag.
+    Mainly for information and debugging.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --input-fmt-option
+  description: "[=VAL]\nSpecify a single input file format option in the form\nof\
+    \ OPTION or OPTION=VALUE"
+  args: !SimpleFlagArg
+    name: OPT
+- !Flag
+  optional: true
+  synonyms:
+  - -O
+  - --output-fmt
+  description: "[,OPT[=VAL]]...\nSpecify output format (SAM, BAM, CRAM)"
+  args: !SimpleFlagArg
+    name: FORMAT
+- !Flag
+  optional: true
+  synonyms:
+  - --output-fmt-option
+  description: "[=VAL]\nSpecify a single output file format option in the form\nof\
+    \ OPTION or OPTION=VALUE"
+  args: !SimpleFlagArg
+    name: OPT
+- !Flag
+  optional: true
+  synonyms:
+  - --reference
+  description: Reference sequence FASTA FILE [null]
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -@
+  - --threads
+  description: Number of additional threads to use [0]
+  args: !SimpleFlagArg
+    name: INT
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "markdup: unrecognized option '--help'\n\nUsage:  samtools markdup <input.bam>\
+  \ <output.bam>\n\nOption: \n  -r           Remove duplicate reads\n  -l INT    \
+  \   Max read length (default 300 bases)\n  -S           Mark supplemenary alignments\
+  \ of duplicates as duplicates (slower).\n  -s           Report stats.\n  -T PREFIX\
+  \    Write temporary files to PREFIX.samtools.nnnn.nnnn.tmp.\n  -t           Mark\
+  \ primary duplicates with the name of the original in a 'do' tag. Mainly for information\
+  \ and debugging.\n      --input-fmt-option OPT[=VAL]\n               Specify a single\
+  \ input file format option in the form\n               of OPTION or OPTION=VALUE\n\
+  \  -O, --output-fmt FORMAT[,OPT[=VAL]]...\n               Specify output format\
+  \ (SAM, BAM, CRAM)\n      --output-fmt-option OPT[=VAL]\n               Specify\
+  \ a single output file format option in the form\n               of OPTION or OPTION=VALUE\n\
+  \      --reference FILE\n               Reference sequence FASTA FILE [null]\n \
+  \ -@, --threads INT\n               Number of additional threads to use [0]\n\n\
+  The input file must be coordinate sorted and must have gone through fixmates with\
+  \ the mate scoring option on.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/flye:2.8.3--py38h1c8e9b9_0

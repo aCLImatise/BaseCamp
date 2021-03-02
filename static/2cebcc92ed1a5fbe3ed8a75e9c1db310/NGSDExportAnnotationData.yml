@@ -1,0 +1,117 @@
+!Command
+command:
+- NGSDExportAnnotationData
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -variants
+  description: Output variant list as VCF.
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -genes
+  description: "Optional BED file containing the genes and the gene info (only germline).\n\
+    Default value: ''"
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -reference
+  description: "Reference genome FASTA file. If unset 'reference_genome' from the\
+    \ 'settings.ini' file is used.\nDefault value: ''"
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -test
+  description: "Uses the test database instead of on the production database.\nDefault\
+    \ value: 'false'"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -maxAF
+  description: "Determines the maximum allel frequency for the variants (default:\
+    \ 0.05).\nDefault value: '0.05'"
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - -gene_offset
+  description: "Defines the number of bases by which the region of each gene is extended.\n\
+    Default value: '5000'"
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -chr
+  description: "Limit export to the given chromosome.\nDefault value: ''"
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -mode
+  description: "Determines the database which is exported.\nDefault value: 'germline'\n\
+    Valid: 'germline,somatic'"
+  args: !SimpleFlagArg
+    name: enum
+- !Flag
+  optional: true
+  synonyms:
+  - --changelog
+  description: Prints changeloge and exits.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --tdx
+  description: Writes a Tool Definition Xml file. The file name is the application
+    name with the suffix '.tdx'.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Shows this help and exits.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Prints version and exits.
+  args: !EmptyFlagArg {}
+help_text: "NGSDExportAnnotationData (2020_12)\n\nGenerates a VCF file with all variants\
+  \ and annotations from the NGSD and a BED file containing the gene information of\
+  \ the NGSD.\n\nMandatory parameters:\n  -variants <file>   Output variant list as\
+  \ VCF.\n\nOptional parameters:\n  -genes <file>      Optional BED file containing\
+  \ the genes and the gene info (only germline).\n                     Default value:\
+  \ ''\n  -reference <file>  Reference genome FASTA file. If unset 'reference_genome'\
+  \ from the 'settings.ini' file is used.\n                     Default value: ''\n\
+  \  -test              Uses the test database instead of on the production database.\n\
+  \                     Default value: 'false'\n  -maxAF <float>     Determines the\
+  \ maximum allel frequency for the variants (default: 0.05).\n                  \
+  \   Default value: '0.05'\n  -gene_offset <int> Defines the number of bases by which\
+  \ the region of each gene is extended.\n                     Default value: '5000'\n\
+  \  -chr <string>      Limit export to the given chromosome.\n                  \
+  \   Default value: ''\n  -mode <enum>       Determines the database which is exported.\n\
+  \                     Default value: 'germline'\n                     Valid: 'germline,somatic'\n\
+  \nSpecial parameters:\n  --help             Shows this help and exits.\n  --version\
+  \          Prints version and exits.\n  --changelog        Prints changeloge and\
+  \ exits.\n  --tdx              Writes a Tool Definition Xml file. The file name\
+  \ is the application name with the suffix '.tdx'.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/ngs-bits:2020_12--py39h5902420_0

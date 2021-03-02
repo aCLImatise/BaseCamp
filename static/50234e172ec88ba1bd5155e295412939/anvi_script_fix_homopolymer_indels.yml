@@ -1,0 +1,141 @@
+!Command
+command:
+- anvi-script-fix-homopolymer-indels
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input-fasta
+  description: "A FASTA file of sequences you wish to fix (default:\nNone)"
+  args: !SimpleFlagArg
+    name: FASTA
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reference-fasta
+  description: 'A FASTA file for reference sequences (default: None)'
+  args: !SimpleFlagArg
+    name: FASTA
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-fasta
+  description: 'Corrected FASTA file (default: None)'
+  args: !SimpleFlagArg
+    name: FASTA
+- !Flag
+  optional: true
+  synonyms:
+  - --min-homopolymer-length
+  description: "Minimum number of identical nucleotides next to each\nother PLUS THE\
+    \ GAP CHARACTER to be considered a\nhomopolymer when these nucleotides are aligned\
+    \ to a\nregion in the other sequnce that is all composed of\nthe same nucleotides.\
+    \ Confused? Read on. The default\nis 3. So when this value is 2, the program would\n\
+    consider the following to match the definition of\nminimum homopolymer length\
+    \ to be considered for\nfixing: (R)eference: 'AA-' and (Q)uery: 'AAA'. The\nsame\
+    \ would be true for R: 'AA---' / Q: 'AAAAA' but not\nR: 'A-' / Q: 'AA' In contrast,\
+    \ when this value is 3,\nthen the minimum that would work would be this: R:\n\
+    'AAA-', Q: 'AAAA'. Obviously, you shouldn't go any\nlower than 2, but then why\
+    \ should you listen to a\ncomputer?"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: "Be verbose, print more messages whenever possible.\n(default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --num-threads
+  description: "Maximum number of threads to use for multithreading\nwhenever possible.\
+    \ Very conservatively, the default is\n1. It is a good idea to not exceed the\
+    \ number of CPUs\n/ cores on your system. Plus, please be careful with\nthis option\
+    \ if you are running your commands on a SGE\n--if you are clusterizing your runs,\
+    \ and asking for\nmultiple threads to use, you may deplete your\nresources very\
+    \ fast. (default: 1)"
+  args: !SimpleFlagArg
+    name: NUM_THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - --test-run
+  description: 'Just do a test run and nothing more. (default: False)'
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: anvi-script-fix-homopolymer-indels [-h] [-i FASTA] [-r FASTA]\n\
+  \                                          [-o FASTA]\n                        \
+  \                  [--min-homopolymer-length INT]\n                            \
+  \              [--verbose] [-T NUM_THREADS]\n                                  \
+  \        [--test-run]\n\noptional arguments:\n  -h, --help            show this\
+  \ help message and exit\n\nFILES THAT MATTER:\n  Here you provide file paths for\
+  \ input sequence(s) to be corrected,\n  reference sequence(s) to be used for correction,\
+  \ and the edited input\n  sequences to be stored. UNLESS you just want to do a test\
+  \ run. In which\n  case you don't need any of these but the parameter `--test-run`\n\
+  \n  -i FASTA, --input-fasta FASTA\n                        A FASTA file of sequences\
+  \ you wish to fix (default:\n                        None)\n  -r FASTA, --reference-fasta\
+  \ FASTA\n                        A FASTA file for reference sequences (default:\
+  \ None)\n  -o FASTA, --output-fasta FASTA\n                        Corrected FASTA\
+  \ file (default: None)\n\nSTUFF UNDER THE HOOD:\n  Like how should we define homopolymers\
+  \ or how much information should we\n  share with you as we go.\n\n  --min-homopolymer-length\
+  \ INT\n                        Minimum number of identical nucleotides next to each\n\
+  \                        other PLUS THE GAP CHARACTER to be considered a\n     \
+  \                   homopolymer when these nucleotides are aligned to a\n      \
+  \                  region in the other sequnce that is all composed of\n       \
+  \                 the same nucleotides. Confused? Read on. The default\n       \
+  \                 is 3. So when this value is 2, the program would\n           \
+  \             consider the following to match the definition of\n              \
+  \          minimum homopolymer length to be considered for\n                   \
+  \     fixing: (R)eference: 'AA-' and (Q)uery: 'AAA'. The\n                     \
+  \   same would be true for R: 'AA---' / Q: 'AAAAA' but not\n                   \
+  \     R: 'A-' / Q: 'AA' In contrast, when this value is 3,\n                   \
+  \     then the minimum that would work would be this: R:\n                     \
+  \   'AAA-', Q: 'AAAA'. Obviously, you shouldn't go any\n                       \
+  \ lower than 2, but then why should you listen to a\n                        computer?\n\
+  \  --verbose             Be verbose, print more messages whenever possible.\n  \
+  \                      (default: False)\n\nPERFORMANCE:\n  For the BLAST search\n\
+  \n  -T NUM_THREADS, --num-threads NUM_THREADS\n                        Maximum number\
+  \ of threads to use for multithreading\n                        whenever possible.\
+  \ Very conservatively, the default is\n                        1. It is a good idea\
+  \ to not exceed the number of CPUs\n                        / cores on your system.\
+  \ Plus, please be careful with\n                        this option if you are running\
+  \ your commands on a SGE\n                        --if you are clusterizing your\
+  \ runs, and asking for\n                        multiple threads to use, you may\
+  \ deplete your\n                        resources very fast. (default: 1)\n\nTEST\
+  \ RUN:\n  To have an idea about what is corrected and what is not\n\n  --test-run\
+  \            Just do a test run and nothing more. (default: False)\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\
+  \n\U0001F525 Program description:\n\n   Corrects homopolymer-region associated INDELs\
+  \ in a given genome based on a\n   reference genome. The most effective use of this\
+  \ script is when the input\n   genome is a genome reconstructed by minION long reads,\
+  \ and the reference\n   genome is one that is of high-quality. Essentially, this\
+  \ script will BLAST\n   the genome you wish to correct against the reference genome\
+  \ you provide,\n   identify INDELs in the BLAST results that are exclusively associated\
+  \ with\n   homopolymer regions, and will take the reference genome as a guide to\
+  \ correct\n   the input sequences, and report a new FASTA file. You can use the\
+  \ output\n   FASTA file that is fixed as the input FASTA file over and over again\
+  \ to see\n   if you can eliminate all homopolymer-associated INDELs\n\n\U0001F9C0\
+  \ Can consume: \n\n   fasta\n   \n\U0001F355 Can provide: \n\n   fasta\n   \n\U0001F37A\
+  \ More on `anvi-script-fix-homopolymer-indels`:\n\n   https://merenlab.org/software/anvio/help/7/programs/anvi-script-fix-homopolymer-indels\n\
+  \n\U0001F37B All anvi'o programs and artifacts:\n\n   https://merenlab.org/software/anvio/help/7\n\
+  \n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\
+  \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/anvio-minimal:7--py_0

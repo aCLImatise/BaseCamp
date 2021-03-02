@@ -1,0 +1,51 @@
+!Command
+command:
+- datafunk
+- AA_finder
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input-fasta
+  description: Alignment (to Wuhan-Hu-1) in Fasta format to type
+  args: !SimpleFlagArg
+    name: input.fasta
+- !Flag
+  optional: true
+  synonyms:
+  - --codons-file
+  description: "Input CSV file with codon locations to parse. Format\nis: name,1-based\
+    \ start position of codon (dont include\na header line), eg: d614g,23402"
+  args: !SimpleFlagArg
+    name: codons.csv
+- !Flag
+  optional: true
+  synonyms:
+  - --genotypes-table
+  description: "CSV file with amino acid typing results to write.\nReturns the amino\
+    \ acid at each position in --codons-\nfile for each sequence in --input-fasta,\
+    \ or \"X\" for\nmissing data\n"
+  args: !SimpleFlagArg
+    name: results.csv
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "usage: datafunk AA_finder -i <input.fasta> --codons-file <codons.csv>\
+  \ --genotypes-table <results.csv>\n\nQuery a codon position for amino acids\n\n\
+  required arguments:\n  -i input.fasta, --input-fasta input.fasta\n             \
+  \           Alignment (to Wuhan-Hu-1) in Fasta format to type\n  --codons-file codons.csv\n\
+  \                        Input CSV file with codon locations to parse. Format\n\
+  \                        is: name,1-based start position of codon (dont include\n\
+  \                        a header line), eg: d614g,23402\n  --genotypes-table results.csv\n\
+  \                        CSV file with amino acid typing results to write.\n   \
+  \                     Returns the amino acid at each position in --codons-\n   \
+  \                     file for each sequence in --input-fasta, or \"X\" for\n  \
+  \                      missing data\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/datafunk:0.0.8--pyh3252c3a_0

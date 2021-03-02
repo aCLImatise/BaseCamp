@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, String
+
+Pblayout_Subgraph_V0_1_0 = CommandToolBuilder(tool="pblayout_subgraph", base_command=["pblayout", "subgraph"], inputs=[ToolInput(tag="in_directed", input_type=Boolean(optional=True), prefix="--directed", doc=InputDocumentation(doc="Apply the directed ego-graph algorithm to extract the subgraph.")), ToolInput(tag="in_radius", input_type=Boolean(optional=True), prefix="--radius", doc=InputDocumentation(doc="INT   Radius (in the number of nodes) to extract in each direction. [100]")), ToolInput(tag="in_tp", input_type=Boolean(optional=True), prefix="--tp", doc=InputDocumentation(doc="STR   Path to a tiling path file. If specified, it will be used to create the Bandage CSV.")), ToolInput(tag="in_seq_db", input_type=Boolean(optional=True), prefix="--seqdb", doc=InputDocumentation(doc="STR   Path to a SeqDB file. If specified, it will be used to retrieve lengths of sequences.")), ToolInput(tag="in_use_seq_ids", input_type=Boolean(optional=True), prefix="--use-seq-ids", doc=InputDocumentation(doc="Indicates that the sequences in the input graph are actually IDs instead of headers.")), ToolInput(tag="in_write_seqs", input_type=Boolean(optional=True), prefix="--write-seqs", doc=InputDocumentation(doc="Write the sequences to the generated GFA file. This requires the '--seqdb' to be")), ToolInput(tag="in_num_threads", input_type=Boolean(optional=True), prefix="--num-threads", doc=InputDocumentation(doc="INT   Number of threads to use, 0 means autodetection. [0]")), ToolInput(tag="in_log_level", input_type=Boolean(optional=True), prefix="--log-level", doc=InputDocumentation(doc="STR   Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL). [WARN]")), ToolInput(tag="in_log_file", input_type=Boolean(optional=True), prefix="--log-file", doc=InputDocumentation(doc="FILE  Log to a file, instead of stderr.")), ToolInput(tag="in_in_sg", input_type=String(), position=0, doc=InputDocumentation(doc="STR   Input string graph in the sg_edges_list format.")), ToolInput(tag="in_out_prefix", input_type=String(), position=1, doc=InputDocumentation(doc="STR   Output prefix.")), ToolInput(tag="in_provided_dot", input_type=String(), position=0, doc=InputDocumentation(doc="--csv-nodes              STR   CSV file with a list of nodes to extract. Each line contains 2 columns: <node_name>"))], outputs=[], container="quay.io/biocontainers/pbipa:1.3.2--hee625c5_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Pblayout_Subgraph_V0_1_0().translate("wdl")
+

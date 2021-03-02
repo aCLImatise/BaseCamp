@@ -1,0 +1,215 @@
+!Command
+command:
+- ppanggolin
+- fasta
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --pangenome
+  description: 'The pangenome .h5 file (default: None)'
+  args: !SimpleFlagArg
+    name: PANGENOME
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: "Output directory where the file(s) will be written\n(default: None)"
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - --fasta
+  description: "A tab-separated file listing the organism names, and\nthe fasta filepath\
+    \ of its genomic sequence(s) (the\nfastas can be compressed with gzip). One line\
+    \ per\norganism. (default: None)"
+  args: !SimpleFlagArg
+    name: FASTA
+- !Flag
+  optional: true
+  synonyms:
+  - --anno
+  description: "A tab-separated file listing the organism names, and\nthe gff/gbff\
+    \ filepath of its annotations (the files\ncan be compressed with gzip). One line\
+    \ per organism.\nIf this is provided, those annotations will be used.\n(default:\
+    \ None)"
+  args: !SimpleFlagArg
+    name: ANNO
+- !Flag
+  optional: true
+  synonyms:
+  - --regions
+  description: "Write the RGP nucleotide sequences (requires --anno or\n--fasta used\
+    \ to compute the pangenome to be given)\n(default: None)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      complete:
+      all:
+- !Flag
+  optional: true
+  synonyms:
+  - --genes
+  description: 'Write all nucleotide CDS sequences (default: None)'
+  args: !ChoiceFlagArg
+    choices: !!set
+      core:
+      all:
+      cloud:
+      persistent:
+      shell:
+      rgp:
+      softcore:
+- !Flag
+  optional: true
+  synonyms:
+  - --prot_families
+  description: "Write representative amino acid sequences of gene\nfamilies (default:\
+    \ None)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      core:
+      all:
+      cloud:
+      persistent:
+      shell:
+      rgp:
+      softcore:
+- !Flag
+  optional: true
+  synonyms:
+  - --gene_families
+  description: "Write representative nucleotide sequences of gene\nfamilies (default:\
+    \ None)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      core:
+      all:
+      cloud:
+      persistent:
+      shell:
+      rgp:
+      softcore:
+- !Flag
+  optional: true
+  synonyms:
+  - --soft_core
+  description: "Soft core threshold to use if 'softcore' partition is\nchosen (default:\
+    \ 0.95)"
+  args: !SimpleFlagArg
+    name: SOFT_CORE
+- !Flag
+  optional: true
+  synonyms:
+  - --compress
+  description: 'Compress the files in .gz (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --tmpdir
+  description: 'directory for storing temporary files (default: /tmp)'
+  args: !SimpleFlagArg
+    name: TMPDIR
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: "Indicate verbose level (0 for warning and errors only,\n1 for info,\
+    \ 2 for debug) (default: 1)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      '2':
+      '1':
+      '0':
+- !Flag
+  optional: true
+  synonyms:
+  - --log
+  description: 'log output file (default: stdout)'
+  args: !SimpleFlagArg
+    name: LOG
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --disable_prog_bar
+  description: 'disables the progress bars (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --cpu
+  description: 'Number of available cpus (default: 1)'
+  args: !SimpleFlagArg
+    name: CPU
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --force
+  description: "Force writing in output directory and in pangenome\noutput file. (default:\
+    \ False)\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: ppanggolin fasta [-h] -p PANGENOME -o OUTPUT [--fasta FASTA]\n\
+  \                        [--anno ANNO] [--regions {all,complete}]\n            \
+  \            [--genes {all,persistent,shell,cloud,rgp,softcore,core}]\n        \
+  \                [--prot_families {all,persistent,shell,cloud,rgp,softcore,core}]\n\
+  \                        [--gene_families {all,persistent,shell,cloud,rgp,softcore,core}]\n\
+  \                        [--soft_core SOFT_CORE] [--compress] [--tmpdir TMPDIR]\n\
+  \                        [--verbose {0,1,2}] [--log LOG] [-d] [-c CPU] [-f]\n\n\
+  Required arguments:\n  One of the following arguments is required :\n\n  -p PANGENOME,\
+  \ --pangenome PANGENOME\n                        The pangenome .h5 file (default:\
+  \ None)\n  -o OUTPUT, --output OUTPUT\n                        Output directory\
+  \ where the file(s) will be written\n                        (default: None)\n\n\
+  Contextually required arguments:\n  With --regions, the following arguments are\
+  \ required:\n\n  --fasta FASTA         A tab-separated file listing the organism\
+  \ names, and\n                        the fasta filepath of its genomic sequence(s)\
+  \ (the\n                        fastas can be compressed with gzip). One line per\n\
+  \                        organism. (default: None)\n  --anno ANNO           A tab-separated\
+  \ file listing the organism names, and\n                        the gff/gbff filepath\
+  \ of its annotations (the files\n                        can be compressed with\
+  \ gzip). One line per organism.\n                        If this is provided, those\
+  \ annotations will be used.\n                        (default: None)\n\nOptional\
+  \ arguments. Indicating 'all' writes all elements. Writing a partition ('persistent',\
+  \ 'shell' or 'cloud') write the elements associated to said partition. Writing 'rgp'\
+  \ writes elements associated to RGPs.:\n  --regions {all,complete}\n           \
+  \             Write the RGP nucleotide sequences (requires --anno or\n         \
+  \               --fasta used to compute the pangenome to be given)\n           \
+  \             (default: None)\n  --genes {all,persistent,shell,cloud,rgp,softcore,core}\n\
+  \                        Write all nucleotide CDS sequences (default: None)\n  --prot_families\
+  \ {all,persistent,shell,cloud,rgp,softcore,core}\n                        Write\
+  \ representative amino acid sequences of gene\n                        families\
+  \ (default: None)\n  --gene_families {all,persistent,shell,cloud,rgp,softcore,core}\n\
+  \                        Write representative nucleotide sequences of gene\n   \
+  \                     families (default: None)\n  --soft_core SOFT_CORE\n      \
+  \                  Soft core threshold to use if 'softcore' partition is\n     \
+  \                   chosen (default: 0.95)\n  --compress            Compress the\
+  \ files in .gz (default: False)\n\nCommon arguments:\n  -h, --help            show\
+  \ this help message and exit\n  --tmpdir TMPDIR       directory for storing temporary\
+  \ files (default: /tmp)\n  --verbose {0,1,2}     Indicate verbose level (0 for warning\
+  \ and errors only,\n                        1 for info, 2 for debug) (default: 1)\n\
+  \  --log LOG             log output file (default: stdout)\n  -d, --disable_prog_bar\n\
+  \                        disables the progress bars (default: False)\n  -c CPU,\
+  \ --cpu CPU     Number of available cpus (default: 1)\n  -f, --force           Force\
+  \ writing in output directory and in pangenome\n                        output file.\
+  \ (default: False)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/ppanggolin:1.1.131--py37hf01694f_0

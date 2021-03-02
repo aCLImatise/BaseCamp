@@ -1,0 +1,138 @@
+!Command
+command:
+- cooltools
+- compute-expected
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: COOL_PATH
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --nproc
+  description: "Number of processes to split the work\nbetween.[default: 1, i.e. no\
+    \ process pool]"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --chunksize
+  description: "Control the number of pixels handled by each\nworker process at a\
+    \ time.  [default:\n10000000]"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: "Specify output file name to store the\nexpected in a tsv format."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --hdf
+  description: "Use hdf5 format instead of tsv. Output file\nname must be specified\
+    \ [Not Implemented]."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --contact-type
+  description: "[cis|trans]  compute expected for cis or trans region of\na Hi-C map.Ignored\
+    \ when genomic-regions are\nprovided  [default: cis]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --genomic-regions
+  description: "Path to a BED or BEDPE file containing\ngenomic regions for which\
+    \ expected will be\ncalculated. [Not Implemented]"
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --balance
+  - --no-balance
+  description: "Apply balancing weights to data before\ncalculating expected.Bins\
+    \ masked in the\nbalancing weights are ignored from\ncalcualtions.  [default:\
+    \ True]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --weight-name
+  description: "Use balancing weight with this name.\n[default: weight]"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --blacklist
+  description: "Path to a 3-column BED file containing\ngenomic regions to mask out\
+    \ during\ncalculation of expected. Overwrites\ninference of 'bad' regions from\
+    \ balancing\nweights. [Not Implemented]"
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --ignore-diags
+  description: "Number of diagonals to neglect for cis\ncontact type  [default: 2]"
+  args: !SimpleFlagArg
+    name: INTEGER
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: cooltools compute-expected [OPTIONS] COOL_PATH\n\n  Calculate expected\
+  \ Hi-C signal either for cis or for trans regions of\n  chromosomal interaction\
+  \ map.\n\n  When balancing weights are not applied to the data, there is no masking\
+  \ of\n  bad bins performed.\n\n  COOL_PATH : The paths to a .cool file with a balanced\
+  \ Hi-C map.\n\nOptions:\n  -p, --nproc INTEGER             Number of processes to\
+  \ split the work\n                                  between.[default: 1, i.e. no\
+  \ process pool]\n\n  -c, --chunksize INTEGER         Control the number of pixels\
+  \ handled by each\n                                  worker process at a time. \
+  \ [default:\n                                  10000000]\n\n  -o, --output TEXT\
+  \               Specify output file name to store the\n                        \
+  \          expected in a tsv format.\n\n  --hdf                           Use hdf5\
+  \ format instead of tsv. Output file\n                                  name must\
+  \ be specified [Not Implemented].\n\n  -t, --contact-type [cis|trans]  compute expected\
+  \ for cis or trans region of\n                                  a Hi-C map.Ignored\
+  \ when genomic-regions are\n                                  provided  [default:\
+  \ cis]\n\n  --genomic-regions PATH          Path to a BED or BEDPE file containing\n\
+  \                                  genomic regions for which expected will be\n\
+  \                                  calculated. [Not Implemented]\n\n  --balance\
+  \ / --no-balance        Apply balancing weights to data before\n               \
+  \                   calculating expected.Bins masked in the\n                  \
+  \                balancing weights are ignored from\n                          \
+  \        calcualtions.  [default: True]\n\n  --weight-name TEXT              Use\
+  \ balancing weight with this name.\n                                  [default:\
+  \ weight]\n\n  --blacklist PATH                Path to a 3-column BED file containing\n\
+  \                                  genomic regions to mask out during\n        \
+  \                          calculation of expected. Overwrites\n               \
+  \                   inference of 'bad' regions from balancing\n                \
+  \                  weights. [Not Implemented]\n\n  --ignore-diags INTEGER      \
+  \    Number of diagonals to neglect for cis\n                                  contact\
+  \ type  [default: 2]\n\n  -h, --help                      Show this message and\
+  \ exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/cooltools:0.3.2--py36h29c9776_0

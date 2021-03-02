@@ -1,0 +1,112 @@
+!Command
+command:
+- knot
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: contig
+  description: --help-all            show knot help and snakemake help
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --contigs
+  description: fasta file than contains contigs
+  args: !SimpleFlagArg
+    name: CONTIGS
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --contigs_graph
+  description: contigs graph
+  args: !SimpleFlagArg
+    name: CONTIGS_GRAPH
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --raw-reads
+  description: read used for assembly
+  args: !SimpleFlagArg
+    name: RAW_READS
+- !Flag
+  optional: true
+  synonyms:
+  - -C
+  - --correct-reads
+  description: read used for assembly
+  args: !SimpleFlagArg
+    name: CORRECT_READS
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: output prefix
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - --search-mode
+  description: "what path search optimize, number of base or number of\nnode"
+  args: !ChoiceFlagArg
+    choices: !!set
+      node:
+      base:
+- !Flag
+  optional: true
+  synonyms:
+  - --contig-min-length
+  description: contig with size lower this parameter are ignored
+  args: !SimpleFlagArg
+    name: CONTIG_MIN_LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - --read-type
+  description: type of input read, default pb
+  args: !ChoiceFlagArg
+    choices: !!set
+      pb:
+      ont:
+- !Flag
+  optional: true
+  synonyms:
+  - --self-lookup
+  description: if it set knot search path between extremity of same
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: KNOT [-h] -c CONTIGS [-g CONTIGS_GRAPH]\n            (-r RAW_READS\
+  \ | -C CORRECT_READS) -o OUTPUT\n            [--search-mode {base,node}]\n     \
+  \       [--contig-min-length CONTIG_MIN_LENGTH] [--read-type {pb,ont}]\n       \
+  \     [--self-lookup] [--help-all]\n\noptional arguments:\n  -h, --help        \
+  \    show this help message and exit\n  -c CONTIGS, --contigs CONTIGS\n        \
+  \                fasta file than contains contigs\n  -g CONTIGS_GRAPH, --contigs_graph\
+  \ CONTIGS_GRAPH\n                        contigs graph\n  -r RAW_READS, --raw-reads\
+  \ RAW_READS\n                        read used for assembly\n  -C CORRECT_READS,\
+  \ --correct-reads CORRECT_READS\n                        read used for assembly\n\
+  \  -o OUTPUT, --output OUTPUT\n                        output prefix\n  --search-mode\
+  \ {base,node}\n                        what path search optimize, number of base\
+  \ or number of\n                        node\n  --contig-min-length CONTIG_MIN_LENGTH\n\
+  \                        contig with size lower this parameter are ignored\n  --read-type\
+  \ {pb,ont}  type of input read, default pb\n  --self-lookup         if it set knot\
+  \ search path between extremity of same\n                        contig\n  --help-all\
+  \            show knot help and snakemake help\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/knot-asm-analysis:1.3.0--py_0

@@ -1,0 +1,63 @@
+!Command
+command:
+- msa.sh
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: in
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -Xmx
+  description: "This will set Java's memory usage, overriding automatic\nmemory detection.\
+    \ -Xmx20g will specify\n20 gigs of RAM, and -Xmx200m will specify 200 megs.\n\
+    The max is typically 85% of physical memory."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -eoom
+  description: "This flag will cause the process to exit if an out-of-memory\nexception\
+    \ occurs.  Requires Java 8u92+."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -da
+  description: Disable assertions.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nWritten by Brian Bushnell\nLast modified February 5, 2020\n\nDescription:\
+  \  Aligns a query sequence to reference sequences.\nOutputs the best matching position\
+  \ per reference sequence.\nIf there are multiple queries, only the best-matching\
+  \ query will be used.\nMSA in this context stands for MultiStateAligner, not Multiple\
+  \ Sequence Alignment.\n\nUsage:\nmsa.sh in=<file> out=<file> literal=<literal,literal,...>\n\
+  or\nmsa.sh in=<file> out=<file> ref=<lfile>\n\nParameters:\nin=<file>       File\
+  \ containing reads.\nout=<file>      Sam output file.\nliteral=        A sequence\
+  \ of bases to match, or a comma-delimited list.\nref=<file>      A fasta file of\
+  \ bases to match.  Please set either ref\n                or literal, not both.\n\
+  rcomp=t         Also look for reverse-complements of the sequences.\naddr=f    \
+  \      Add r_ prefix to reverse-complemented alignments.\nreplicate=f     Make copies\
+  \ of sequences with undefined bases for every\n                possible combination.\
+  \  For example, ATN would expand to\n                ATA, ATC, ATG, and ATT.\ncutoff=0\
+  \        Ignore alignments with identity below this (range 0-1).\nswap=f       \
+  \   Swap the reference and query; e.g., report read alignments\n               \
+  \ to the reference instead of reference alignments to the reads.\n\nJava Parameters:\n\
+  -Xmx            This will set Java's memory usage, overriding automatic\n      \
+  \          memory detection. -Xmx20g will specify \n                20 gigs of RAM,\
+  \ and -Xmx200m will specify 200 megs.  \n                The max is typically 85%\
+  \ of physical memory.\n-eoom           This flag will cause the process to exit\
+  \ if an out-of-memory\n                exception occurs.  Requires Java 8u92+.\n\
+  -da             Disable assertions.\n\nPlease contact Brian Bushnell at bbushnell@lbl.gov\
+  \ if you encounter any problems.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bbmap:38.90--h1296035_0

@@ -1,0 +1,161 @@
+!Command
+command:
+- secapr
+- align_sequences
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: alignments.
+  description: --aligner {muscle,mafft}
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --sequences
+  description: "The fasta file containing individual sequences for\nseveral samples\
+    \ and loci"
+  args: !SimpleFlagArg
+    name: SEQUENCES
+- !Flag
+  optional: true
+  synonyms:
+  - --outdir
+  description: The directory in which to store the resulting
+  args: !SimpleFlagArg
+    name: OUTDIR
+- !Flag
+  optional: true
+  synonyms:
+  - --exclude_ambiguous
+  description: Don't allow reads in alignments containing N-bases.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gap_opening_penalty
+  description: Set gap opening penalty for aligner.
+  args: !SimpleFlagArg
+    name: GAP_OPENING_PENALTY
+- !Flag
+  optional: true
+  synonyms:
+  - --gap_extension_penalty
+  description: Set gap extension penalty for aligner.
+  args: !SimpleFlagArg
+    name: GAP_EXTENSION_PENALTY
+- !Flag
+  optional: true
+  synonyms:
+  - --min_seqs_per_locus
+  description: "Minimum number of sequences required for building\nalignment."
+  args: !SimpleFlagArg
+    name: MIN_SEQS_PER_LOCUS
+- !Flag
+  optional: true
+  synonyms:
+  - --no_trim
+  description: "Suppress trimming of alignments. By default secapr\nuses trimal to\
+    \ trim gappy positions from alignments."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --trimal_setting
+  description: "Use one of trimal automated scenarios. These will\noverwrite all other\
+    \ trimming flags (see below). See\ntrimal tutorial for more info about settings."
+  args: !ChoiceFlagArg
+    choices: !!set
+      gappyout:
+      strict:
+      manual:
+      strictplus:
+- !Flag
+  optional: true
+  synonyms:
+  - --window_size
+  description: Sliding window size for trimming.
+  args: !SimpleFlagArg
+    name: WINDOW_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --seq_proportion
+  description: "The proportion of sequences required. All alignment\ncolumns with\
+    \ fewer sequences will be deleted (0-1)."
+  args: !SimpleFlagArg
+    name: SEQ_PROPORTION
+- !Flag
+  optional: true
+  synonyms:
+  - --conserve_alignment_percentage
+  description: "This setting will ensure to conserve the specified\npercentage of\
+    \ the alignment when trimming (0-100)."
+  args: !SimpleFlagArg
+    name: CONSERVE_ALIGNMENT_PERCENTAGE
+- !Flag
+  optional: true
+  synonyms:
+  - --min_length
+  description: The minimum length of alignments to keep.
+  args: !SimpleFlagArg
+    name: MIN_LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - --cores
+  description: "Process alignments in parallel using --cores for\nalignment. This\
+    \ is the number of PHYSICAL CPUs.\n"
+  args: !SimpleFlagArg
+    name: CORES
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: secapr align_sequences [-h] --sequences SEQUENCES --outdir OUTDIR\n\
+  \                              [--aligner {muscle,mafft}] [--exclude_ambiguous]\n\
+  \                              [--gap_opening_penalty GAP_OPENING_PENALTY]\n   \
+  \                           [--gap_extension_penalty GAP_EXTENSION_PENALTY]\n  \
+  \                            [--min_seqs_per_locus MIN_SEQS_PER_LOCUS]\n       \
+  \                       [--no_trim]\n                              [--trimal_setting\
+  \ {manual,gappyout,strict,strictplus}]\n                              [--window_size\
+  \ WINDOW_SIZE]\n                              [--seq_proportion SEQ_PROPORTION]\n\
+  \                              [--conserve_alignment_percentage CONSERVE_ALIGNMENT_PERCENTAGE]\n\
+  \                              [--min_length MIN_LENGTH] [--cores CORES]\n\nCreated\
+  \ on Thu Jan 14 22:04:36 2021 @author: Tobias Andermann\n(tobiasandermann88@gmail.com)\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  --sequences SEQUENCES\n                        The fasta file containing individual\
+  \ sequences for\n                        several samples and loci\n  --outdir OUTDIR\
+  \       The directory in which to store the resulting\n                        alignments.\n\
+  \  --aligner {muscle,mafft}\n                        The alignment engine to use.\n\
+  \  --exclude_ambiguous   Don't allow reads in alignments containing N-bases.\n \
+  \ --gap_opening_penalty GAP_OPENING_PENALTY\n                        Set gap opening\
+  \ penalty for aligner.\n  --gap_extension_penalty GAP_EXTENSION_PENALTY\n      \
+  \                  Set gap extension penalty for aligner.\n  --min_seqs_per_locus\
+  \ MIN_SEQS_PER_LOCUS\n                        Minimum number of sequences required\
+  \ for building\n                        alignment.\n  --no_trim             Suppress\
+  \ trimming of alignments. By default secapr\n                        uses trimal\
+  \ to trim gappy positions from alignments.\n  --trimal_setting {manual,gappyout,strict,strictplus}\n\
+  \                        Use one of trimal automated scenarios. These will\n   \
+  \                     overwrite all other trimming flags (see below). See\n    \
+  \                    trimal tutorial for more info about settings.\n  --window_size\
+  \ WINDOW_SIZE\n                        Sliding window size for trimming.\n  --seq_proportion\
+  \ SEQ_PROPORTION\n                        The proportion of sequences required.\
+  \ All alignment\n                        columns with fewer sequences will be deleted\
+  \ (0-1).\n  --conserve_alignment_percentage CONSERVE_ALIGNMENT_PERCENTAGE\n    \
+  \                    This setting will ensure to conserve the specified\n      \
+  \                  percentage of the alignment when trimming (0-100).\n  --min_length\
+  \ MIN_LENGTH\n                        The minimum length of alignments to keep.\n\
+  \  --cores CORES         Process alignments in parallel using --cores for\n    \
+  \                    alignment. This is the number of PHYSICAL CPUs.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/secapr:2.1.1--pyh3252c3a_0

@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, Int, File, String
+
+Rextract_V0_1_0 = CommandToolBuilder(tool="rextract", base_command=["rextract"], inputs=[ToolInput(tag="in_debug", input_type=Boolean(optional=True), prefix="--debug", doc=InputDocumentation(doc="increase output verbosity and perform additional")), ToolInput(tag="in_limit", input_type=Int(optional=True), prefix="--limit", doc=InputDocumentation(doc="Limit of FASTQ reads to extract. Default: no limit")), ToolInput(tag="in_max_reads", input_type=Int(optional=True), prefix="--maxreads", doc=InputDocumentation(doc="Maximum number of FASTQ reads to search for the taxa.\nDefault: no maximum")), ToolInput(tag="in_nodes_path", input_type=File(optional=True), prefix="--nodespath", doc=InputDocumentation(doc="path for the nodes information files (nodes.dmp and\nnames.dmp from NCBI)")), ToolInput(tag="in_include", input_type=String(optional=True), prefix="--include", doc=InputDocumentation(doc="NCBI taxid code to include a taxon and all underneath\n(multiple -i is available to include several taxid).\nBy default all the taxa is considered for inclusion.")), ToolInput(tag="in_exclude", input_type=String(optional=True), prefix="--exclude", doc=InputDocumentation(doc="NCBI taxid code to exclude a taxon and all underneath\n(multiple -x is available to exclude several taxid)")), ToolInput(tag="in_min_score", input_type=Int(optional=True), prefix="--minscore", doc=InputDocumentation(doc="minimum score/confidence of the classification of a\nread to pass the quality filter; all pass by default")), ToolInput(tag="in_fast_q", input_type=File(optional=True), prefix="--fastq", doc=InputDocumentation(doc="Single FASTQ file (no paired-ends)")), ToolInput(tag="in_mate_one", input_type=File(optional=True), prefix="--mate1", doc=InputDocumentation(doc="Paired-ends FASTQ file for mate 1s (filename usually\nincludes _1)")), ToolInput(tag="in_mate_two", input_type=File(optional=True), prefix="--mate2", doc=InputDocumentation(doc="Paired-ends FASTQ file for mate 2s (filename usually\nincludes _2)")), ToolInput(tag="in_f", input_type=File(optional=True), prefix="-f", doc=InputDocumentation(doc="")), ToolInput(tag="in_v", input_type=Boolean(optional=True), prefix="-V", doc=InputDocumentation(doc="")), ToolInput(tag="in_checks", input_type=String(), position=0, doc=InputDocumentation(doc="-f FILE, --file FILE  Centrifuge output file."))], outputs=[], container="quay.io/biocontainers/recentrifuge:1.3.1--py_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Rextract_V0_1_0().translate("wdl")
+

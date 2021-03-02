@@ -1,0 +1,188 @@
+!Command
+command:
+- cmcalibrate
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: cmfile
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  description: ': set random seq length to search in Mb to <x>  [1.6]  (0.01<=x<=160.)'
+  args: !SimpleFlagArg
+    name: x
+- !Flag
+  optional: true
+  synonyms:
+  - --forecast
+  description: ": don't do calibration, predict running time and exit"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --nforecast
+  description: ': w/--forecast, predict time with <n> processors (maybe for MPI)'
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --memreq
+  description: ": don't do calibration, print required memory and exit"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --noforecast
+  description: ': do calibration, but skip running time prediction'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gtailn
+  description: ': fit the top <n> hits/Mb in histogram for glocal modes [df: 250]'
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --ltailn
+  description: ': fit the top <n> hits/Mb in histogram for  local modes [df: 750]'
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --tailp
+  description: ': set fraction of histogram tail to fit to exp tail to <x>'
+  args: !SimpleFlagArg
+    name: x
+- !Flag
+  optional: true
+  synonyms:
+  - --hfile
+  description: ': save fitted score histogram(s) to file <f>'
+  args: !SimpleFlagArg
+    name: f
+- !Flag
+  optional: true
+  synonyms:
+  - --sfile
+  description: ': save survival plot to file <f>'
+  args: !SimpleFlagArg
+    name: f
+- !Flag
+  optional: true
+  synonyms:
+  - --qqfile
+  description: ': save Q-Q plot for score histograms to file <f>'
+  args: !SimpleFlagArg
+    name: f
+- !Flag
+  optional: true
+  synonyms:
+  - --ffile
+  description: ': save lambdas for different tail fit probs to file <f>'
+  args: !SimpleFlagArg
+    name: f
+- !Flag
+  optional: true
+  synonyms:
+  - --xfile
+  description: ': save scores in fit tail to file <f>'
+  args: !SimpleFlagArg
+    name: f
+- !Flag
+  optional: true
+  synonyms:
+  - --seed
+  description: ': set RNG seed to <n> (if 0: one-time arbitrary seed)'
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --beta
+  description: ': set tail loss prob for query dependent banding (QDB) to <x>'
+  args: !SimpleFlagArg
+    name: x
+- !Flag
+  optional: true
+  synonyms:
+  - --nonbanded
+  description: ': do not use QDB'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --nonull3
+  description: ': turn OFF the NULL3 post hoc additional null model'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --random
+  description: ': use GC content of random null background model of CM'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gc
+  description: ': use GC content distribution from file <f>'
+  args: !SimpleFlagArg
+    name: f
+- !Flag
+  optional: true
+  synonyms:
+  - --cpu
+  description: ': number of parallel CPU workers to use for multithreads'
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - -options
+  description: ''
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: ': show brief help on version and usage'
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "# cmcalibrate :: fit exponential tails for CM E-values\n# INFERNAL 1.1.3\
+  \ (Nov 2019)\n# Copyright (C) 2019 Howard Hughes Medical Institute.\n# Freely distributed\
+  \ under the BSD open source license.\n# - - - - - - - - - - - - - - - - - - - -\
+  \ - - - - - - - - - - - - - - - -\nUsage: cmcalibrate [-options] <cmfile>\n\nBasic\
+  \ options:\n  -h     : show brief help on version and usage\n  -L <x> : set random\
+  \ seq length to search in Mb to <x>  [1.6]  (0.01<=x<=160.)\n\nOptions for predicting\
+  \ running time and memory requirements:\n  --forecast      : don't do calibration,\
+  \ predict running time and exit\n  --nforecast <n> : w/--forecast, predict time\
+  \ with <n> processors (maybe for MPI)\n  --memreq        : don't do calibration,\
+  \ print required memory and exit\n  --noforecast    : do calibration, but skip running\
+  \ time prediction\n\nOptions controlling exponential tail fits:\n  --gtailn <n>\
+  \ : fit the top <n> hits/Mb in histogram for glocal modes [df: 250]\n  --ltailn\
+  \ <n> : fit the top <n> hits/Mb in histogram for  local modes [df: 750]\n  --tailp\
+  \ <x>  : set fraction of histogram tail to fit to exp tail to <x>\n\nOptional output\
+  \ files:\n  --hfile <f>  : save fitted score histogram(s) to file <f>\n  --sfile\
+  \ <f>  : save survival plot to file <f>\n  --qqfile <f> : save Q-Q plot for score\
+  \ histograms to file <f>\n  --ffile <f>  : save lambdas for different tail fit probs\
+  \ to file <f>\n  --xfile <f>  : save scores in fit tail to file <f>\n\nOther options:\n\
+  \  --seed <n>  : set RNG seed to <n> (if 0: one-time arbitrary seed)\n  --beta <x>\
+  \  : set tail loss prob for query dependent banding (QDB) to <x>\n  --nonbanded\
+  \ : do not use QDB\n  --nonull3   : turn OFF the NULL3 post hoc additional null\
+  \ model\n  --random    : use GC content of random null background model of CM\n\
+  \  --gc <f>    : use GC content distribution from file <f>\n  --cpu <n>   : number\
+  \ of parallel CPU workers to use for multithreads\n"
+generated_using:
+- -h
+docker_image: quay.io/biocontainers/infernal:1.1.3--h516909a_0

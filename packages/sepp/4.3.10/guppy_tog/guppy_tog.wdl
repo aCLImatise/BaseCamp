@@ -26,6 +26,9 @@ task GuppyTog {
       ~{if (node_numbers) then "--node-numbers" else ""} \
       ~{if (help) then "--help" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     pp: "Use posterior probability for the weight."
     specify_filename_write: "Specify the filename to write to."

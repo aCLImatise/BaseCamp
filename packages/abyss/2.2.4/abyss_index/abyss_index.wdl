@@ -32,6 +32,9 @@ task Abyssindex {
       ~{if (stdout) then "--stdout" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     both: "build both FAI and FM indexes [default]"
     fai: "build a FAI index"

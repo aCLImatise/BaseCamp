@@ -1,0 +1,264 @@
+!Command
+command:
+- grafimo
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: workflow
+  description: "This option accpets only two values: 'buildvg' or\n'findmotif'. This\
+    \ option is mandatory. When used\n'buildvg', GRAFIMO will compute the genome variation\n\
+    graph for each chromosome or a user defined subset,\nfrom the given reference\
+    \ genome and VCF file. When\nused 'findmotif' GRAFIMO will scan a given VG or\
+    \ all\nthe VGs contained in a given directory, for the given\nmotif occurrences"
+- !Positional
+  optional: false
+  position: 1
+  name: strand
+  description: -f, --text-only       Print the results in TSV directly to the standard
+- !Positional
+  optional: false
+  position: 2
+  name: output
+  description: -o [OUTDIR], --out [OUTDIR]
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --cores
+  description: "[NCORES]      Number of cores to use. The default value is 0 (auto-\n\
+    detection). If you chose to query the whole genome\nvariation graph note that\
+    \ the default option is to use\nonly one core to avoid memory issues"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: "[LINEAR-GENOME], --linear-genome [LINEAR-GENOME]\nPath to the linear\
+    \ genome (FASTA format required)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: "[VCF], --vcf [VCF]\nPath to the VCF file. The VCF must be compressed\
+    \ (e.g.\nmyvcf.vcf.gz)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  description: "[GRAPH-GENOME], --graph-genome [GRAPH-GENOME]\nPath to the VG genome\
+    \ graph file (VG or XG format)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: "[GRAPH-GENOMES-DIR], --graph-genome-dir [GRAPH-GENOMES-DIR]\nPath\
+    \ to a directory containing a variable number of\nVGs graph genomes (VG or XG\
+    \ format)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --bedfile
+  description: Path to the BED file containing the regions to scan
+  args: !SimpleFlagArg
+    name: BEDFILE
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --motif
+  description: "Path to the motif file (JASPAR or MEME format\nrequired)"
+  args: !RepeatFlagArg
+    name: MOTIF2
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: "[1 [X ...]], --chroms [1 [X ...]]\nChromosomes for which the VG will\
+    \ be built or in which\nGRAFIMO will search the given motif. To consider all\n\
+    the chromosomes, just skip this argument. This\nargument can be used during the\
+    \ building of VGs or\nduring their scan for the occurrences of the given\nmotif"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  description: "[BACKGROUND], --bgfile [BACKGROUND]\nPath to the background file [optional]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: "[PSEUDOCOUNT], --pseudo [PSEUDOCOUNT]\nPseudocount to add to motif\
+    \ counts [optional]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: "[THRESHOLD], --threshold [THRESHOLD]\nThreshold that will be applied\
+    \ on the P-values (by\ndefault) of each found motif occurrence. It is\npossible\
+    \ to apply the threshold on the q-values using\nthe -q (--qvalueT) option. Default\
+    \ is 1e-4 [optional]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --no-qvalue
+  description: With this parameter the q-values will not be computed
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --no-reverse
+  description: With this parameter GRAFIMO will scan only the forward
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --recomb
+  description: "While scanning the genome variation graph for the\ngiven motif occurrences\
+    \ will be considered all\npossible recombinants that can be obtained with the\n\
+    genomic variants used to build the VG"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --reindex
+  description: "When building the genome variation graph the VCF will\nbe indexed\
+    \ with tabix, even if its TBI file it is\nalready available. This option can only\
+    \ be used with\nthe 'buildvg' pipeline"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --qvalueT
+  description: "The threshold will be applied on the q-values, rather\nthan the P-values"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --top-graphs
+  description: "[GRAPHS_NUM]\nThe PNG image of the regions containing the top\nGRAPHS_NUM\
+    \ sequences (sorted by P-value) will be\nstored in the output directory"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: "Output a lot of additional information about the\nexecution\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show the help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Show the current version and exit
+  args: !EmptyFlagArg {}
+help_text: "GRAFIMO version 1.1.2\n\nCopyright (C) 2020 Manuel Tognon <manu.tognon@gmail.com>\
+  \ <manuel.tognon@univr.it>\n\nGRAph-based Find of Individual Motif Occurrences.\n\
+  \nGRAFIMO scans genome variation graphs in VG format (Garrison et al., 2018) \n\
+  for candidate binding site occurrences of a given DNA motif/ set of DNA \nmotifs.\
+  \ \n\nThis software requires that `Cython` (>= 0.28), `Pandas` (>= 0.24), \n`Numpy`\
+  \ (>= 1.16), `Multiprocessing`, `Statsmodels` (>= 0.10) and \n`Numba` (>= 0.47)\
+  \ to be installed within the Python3 enviroment you are \nusing while running it.\n\
+  \nThis software also requires that `VG` (>= 1.27.1), `tabix` and `graphviz` \nto\
+  \ be installed on your machine and have been added to your enviroment \nPATH (Unix\
+  \ PATH). \n\nGRAFIMO searches the DNA motif(s) given as a PWM (MEME, JASPAR format)\
+  \ \nin a set of genomic coordinates on the genome variation graph. These \ngenomic\
+  \ coordinates are given in UCSC BED file format.\n\nGRAFIMO scans in a single run\
+  \ many genomes, represented as genome \nvariation graphs, showing how genetic variation\
+  \ present within a \npopulation of individuals affects the affinity score  of the\
+  \ given DNA \nmotif(s).\n\nGRAFIMO provides the possibility to build from user data\
+  \ a new genome \nvariation graph, by building a VG for each chromosome.\n\nGRAFIMO\
+  \ results are reported in three files stored in a result directory \n(named `grafimo_out_JOBID`\
+  \ by default):\n* TSV report, containing all the reported binding site candidates,\
+  \ with \n    an associated score, P-value, q-value, haplotype frequency within \n\
+  \    the analyzed population and a flag stating if the current occurrence \n   \
+  \ contains a genomic variants\n* HTML version of the TSV report\n* GFF3 file to\
+  \ load the found motif candidates on the UCSC genome browser \n  as custom track\n\
+  \nUsage:\n\n    * to scan a precomputed genome variation graph:\n        `grafimo\
+  \ findmotif -g GENOME_GRAPH.xg -b BEDFILE.bed -m MOTIF.meme [options]`\n\n    *\
+  \ to scan a set of precomputed genome variation graphs \n      (-- SUGGESTED --):\n\
+  \        `grafimo findmotif -d path/to/my/vgs -b BEDFILE.bed -m MOTIF.meme [options]`\n\
+  \n    * to build a new set of genome variation graphs (one for each \n      chromosome\
+  \ or a user defined subset):\n        `grafimo buildvg -l REFERENCE.fa -v VCF.vcf.gz\
+  \ [options]`\n\nSee https://github.com/pinellolab/GRAFIMO or \nhttps://github.com/InfOmics/GRAFIMO\
+  \ or the `docs` directory for the full \ndocumentation.\n\nIf you use GRAFIMO in\
+  \ your research, please cite us:\n\n    Tognon, M., et al., \"GRAFIMO: variant-aware\
+  \ motif scanning via \n    genome variation graphs\", xxxx\n\nRun `grafimo --help`\
+  \ to see all command-line options.\n\nOptions:\n  -h, --help            Show the\
+  \ help message and exit\n  --version             Show the current version and exit\n\
+  \  --cores [NCORES]      Number of cores to use. The default value is 0 (auto-\n\
+  \                        detection). If you chose to query the whole genome\n  \
+  \                      variation graph note that the default option is to use\n\
+  \                        only one core to avoid memory issues\n  workflow      \
+  \        This option accpets only two values: 'buildvg' or\n                   \
+  \     'findmotif'. This option is mandatory. When used\n                       \
+  \ 'buildvg', GRAFIMO will compute the genome variation\n                       \
+  \ graph for each chromosome or a user defined subset,\n                        from\
+  \ the given reference genome and VCF file. When\n                        used 'findmotif'\
+  \ GRAFIMO will scan a given VG or all\n                        the VGs contained\
+  \ in a given directory, for the given\n                        motif occurrences\n\
+  \  -l [LINEAR-GENOME], --linear-genome [LINEAR-GENOME]\n                       \
+  \ Path to the linear genome (FASTA format required)\n  -v [VCF], --vcf [VCF]\n \
+  \                       Path to the VCF file. The VCF must be compressed (e.g.\n\
+  \                        myvcf.vcf.gz)\n  -g [GRAPH-GENOME], --graph-genome [GRAPH-GENOME]\n\
+  \                        Path to the VG genome graph file (VG or XG format)\n  -d\
+  \ [GRAPH-GENOMES-DIR], --graph-genome-dir [GRAPH-GENOMES-DIR]\n                \
+  \        Path to a directory containing a variable number of\n                 \
+  \       VGs graph genomes (VG or XG format)\n  -b BEDFILE, --bedfile BEDFILE\n \
+  \                       Path to the BED file containing the regions to scan\n  -m\
+  \ MOTIF1 [MOTIF2 ...], --motif MOTIF1 [MOTIF2 ...]\n                        Path\
+  \ to the motif file (JASPAR or MEME format\n                        required)\n\
+  \  -c [1 [X ...]], --chroms [1 [X ...]]\n                        Chromosomes for\
+  \ which the VG will be built or in which\n                        GRAFIMO will search\
+  \ the given motif. To consider all\n                        the chromosomes, just\
+  \ skip this argument. This\n                        argument can be used during\
+  \ the building of VGs or\n                        during their scan for the occurrences\
+  \ of the given\n                        motif\n  -k [BACKGROUND], --bgfile [BACKGROUND]\n\
+  \                        Path to the background file [optional]\n  -p [PSEUDOCOUNT],\
+  \ --pseudo [PSEUDOCOUNT]\n                        Pseudocount to add to motif counts\
+  \ [optional]\n  -t [THRESHOLD], --threshold [THRESHOLD]\n                      \
+  \  Threshold that will be applied on the P-values (by\n                        default)\
+  \ of each found motif occurrence. It is\n                        possible to apply\
+  \ the threshold on the q-values using\n                        the -q (--qvalueT)\
+  \ option. Default is 1e-4 [optional]\n  -q, --no-qvalue       With this parameter\
+  \ the q-values will not be computed\n  -r, --no-reverse      With this parameter\
+  \ GRAFIMO will scan only the forward\n                        strand\n  -f, --text-only\
+  \       Print the results in TSV directly to the standard\n                    \
+  \    output\n  -o [OUTDIR], --out [OUTDIR]\n                        Name of the\
+  \ output directory [optional]\n  --recomb              While scanning the genome\
+  \ variation graph for the\n                        given motif occurrences will\
+  \ be considered all\n                        possible recombinants that can be obtained\
+  \ with the\n                        genomic variants used to build the VG\n  --reindex\
+  \             When building the genome variation graph the VCF will\n          \
+  \              be indexed with tabix, even if its TBI file it is\n             \
+  \           already available. This option can only be used with\n             \
+  \           the 'buildvg' pipeline\n  --qvalueT             The threshold will be\
+  \ applied on the q-values, rather\n                        than the P-values\n \
+  \ --top-graphs [GRAPHS_NUM]\n                        The PNG image of the regions\
+  \ containing the top\n                        GRAPHS_NUM sequences (sorted by P-value)\
+  \ will be\n                        stored in the output directory\n  --verbose \
+  \            Output a lot of additional information about the\n                \
+  \        execution\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/grafimo:1.1.3--py38h0731a9c_0

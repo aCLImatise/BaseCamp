@@ -1,0 +1,117 @@
+!Command
+command:
+- secapr
+- find_target_contigs
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --contigs
+  description: "The directory containing the assembled contigs in\nfasta format. Alternatively\
+    \ you can provide a\ndirectory with subfolders containing results of\nvarious\
+    \ assembly runs (e.g. based on different kmer\nvalues). In the latter case it\
+    \ is recommended to use\nthe --keep_paralogs flag, to avoid the majority of\n\
+    loci being discarded as paralogous."
+  args: !SimpleFlagArg
+    name: CONTIGS
+- !Flag
+  optional: true
+  synonyms:
+  - --reference
+  description: "The fasta-file containing the reference sequences (one\nsequence per\
+    \ targeted locus)."
+  args: !SimpleFlagArg
+    name: REFERENCE
+- !Flag
+  optional: true
+  synonyms:
+  - --output
+  description: "The directory in which to store the extracted target\ncontigs and\
+    \ lastz results."
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - --target_length
+  description: "The required length of the matching sequence stretch\nbetween contigs\
+    \ and target sequences. This does not\nhave to be a perfect match but can be adjusted\
+    \ with\nthe --min_identity flag [default=50]."
+  args: !SimpleFlagArg
+    name: TARGET_LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - --min_identity
+  description: "The minimum percent identity required for a match\n[default=90]."
+  args: !SimpleFlagArg
+    name: MIN_IDENTITY
+- !Flag
+  optional: true
+  synonyms:
+  - --seed_length
+  description: "Length of initial seed sequence for finding BLAST\nmatches. The seed\
+    \ has to be a perfect match between a\ngiven contig and a reference locus (default=11)."
+  args: !SimpleFlagArg
+    name: SEED_LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - --remove_multilocus_contigs
+  description: Drop those contigs that match multiple exons.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --keep_paralogs
+  description: "Keep contigs for loci that are flagged as potentially\nparalogous\
+    \ (multiple contigs matching same locus). The\nlongest contig will be selected\
+    \ for these loci.\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: secapr find_target_contigs [-h] --contigs CONTIGS --reference REFERENCE\n\
+  \                                  --output OUTPUT\n                           \
+  \       [--target_length TARGET_LENGTH]\n                                  [--min_identity\
+  \ MIN_IDENTITY]\n                                  [--seed_length SEED_LENGTH]\n\
+  \                                  [--remove_multilocus_contigs]\n             \
+  \                     [--keep_paralogs]\n\nExtract the contigs that match the reference\
+  \ database\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  --contigs CONTIGS     The directory containing the assembled contigs\
+  \ in\n                        fasta format. Alternatively you can provide a\n  \
+  \                      directory with subfolders containing results of\n       \
+  \                 various assembly runs (e.g. based on different kmer\n        \
+  \                values). In the latter case it is recommended to use\n        \
+  \                the --keep_paralogs flag, to avoid the majority of\n          \
+  \              loci being discarded as paralogous.\n  --reference REFERENCE\n  \
+  \                      The fasta-file containing the reference sequences (one\n\
+  \                        sequence per targeted locus).\n  --output OUTPUT      \
+  \ The directory in which to store the extracted target\n                       \
+  \ contigs and lastz results.\n  --target_length TARGET_LENGTH\n                \
+  \        The required length of the matching sequence stretch\n                \
+  \        between contigs and target sequences. This does not\n                 \
+  \       have to be a perfect match but can be adjusted with\n                  \
+  \      the --min_identity flag [default=50].\n  --min_identity MIN_IDENTITY\n  \
+  \                      The minimum percent identity required for a match\n     \
+  \                   [default=90].\n  --seed_length SEED_LENGTH\n               \
+  \         Length of initial seed sequence for finding BLAST\n                  \
+  \      matches. The seed has to be a perfect match between a\n                 \
+  \       given contig and a reference locus (default=11).\n  --remove_multilocus_contigs\n\
+  \                        Drop those contigs that match multiple exons.\n  --keep_paralogs\
+  \       Keep contigs for loci that are flagged as potentially\n                \
+  \        paralogous (multiple contigs matching same locus). The\n              \
+  \          longest contig will be selected for these loci.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/secapr:2.1.1--pyh3252c3a_0

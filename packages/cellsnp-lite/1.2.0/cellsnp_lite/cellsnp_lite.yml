@@ -1,0 +1,231 @@
+!Command
+command:
+- cellsnp-lite
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --samFile
+  description: "Indexed sam/bam file(s), comma separated multiple samples.\nMode 1&2:\
+    \ one sam/bam file with single cell.\nMode 3: one or multiple bulk sam/bam files,\n\
+    no barcodes needed, but sample ids and regionsVCF."
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --samFileList
+  description: A list file containing bam files, each per line, for Mode 3.
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -O
+  - --outDir
+  description: Output directory for VCF and sparse matrices.
+  args: !SimpleFlagArg
+    name: DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  - --regionsVCF
+  description: "A vcf file listing all candidate SNPs, for fetch each variants.\n\
+    If None, pileup the genome. Needed for bulk samples."
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --targetsVCF
+  description: "Similar as -R, but the next position is accessed by streaming rather\n\
+    than indexing/jumping (like -T in samtools/bcftools mpileup)."
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --barcodeFile
+  description: A plain file listing all effective cell barcode.
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --sampleList
+  description: A list file containing sample IDs, each per line.
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -I
+  - --sampleIDs
+  description: Comma separated sample ids.
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - --genotype
+  description: If use, do genotyping in addition to counting.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gzip
+  description: If use, the output files will be zipped into BGZF format.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --printSkipSNPs
+  description: If use, the SNPs skipped when loading VCF will be printed.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --nproc
+  description: Number of subprocesses [1]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --chrom
+  description: The chromosomes to use, comma separated [1 to 22]
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - --cellTAG
+  description: Tag for cell barcodes, turn off with None [CB]
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - --UMItag
+  description: "Tag for UMI: UR, Auto, None. For Auto mode, use UR if barcodes is\
+    \ inputted,\notherwise use None. None mode means no UMI but read counts [Auto]"
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - --minCOUNT
+  description: Minimum aggragated count [20]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --minMAF
+  description: Minimum minor allele frequency [0.00]
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --doubletGL
+  description: If use, keep doublet GT likelihood, i.e., GT=0.5 and GT=1.5.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --inclFLAG
+  description: '|INT   Required flags: skip reads with all mask bits unset []'
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - --exclFLAG
+  description: "|INT   Filter flags: skip reads with any mask bits set [UNMAP,SECONDARY,QCFAIL\n\
+    (when use UMI) or UNMAP,SECONDARY,QCFAIL,DUP (otherwise)]"
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - --minLEN
+  description: Minimum mapped length for read filtering [30]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --minMAPQ
+  description: Minimum MAPQ for read filtering [20]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --countORPHAN
+  description: If use, do not skip anomalous read pairs.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this help message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Print software version and exit.
+  args: !EmptyFlagArg {}
+help_text: "\nUsage: cellsnp-lite [options]\n\nOptions:\n  -s, --samFile STR    Indexed\
+  \ sam/bam file(s), comma separated multiple samples.\n                       Mode\
+  \ 1&2: one sam/bam file with single cell.\n                       Mode 3: one or\
+  \ multiple bulk sam/bam files,\n                       no barcodes needed, but sample\
+  \ ids and regionsVCF.\n  -S, --samFileList FILE   A list file containing bam files,\
+  \ each per line, for Mode 3.\n  -O, --outDir DIR         Output directory for VCF\
+  \ and sparse matrices.\n  -R, --regionsVCF FILE    A vcf file listing all candidate\
+  \ SNPs, for fetch each variants.\n                           If None, pileup the\
+  \ genome. Needed for bulk samples.\n  -T, --targetsVCF FILE    Similar as -R, but\
+  \ the next position is accessed by streaming rather\n                          \
+  \ than indexing/jumping (like -T in samtools/bcftools mpileup).\n  -b, --barcodeFile\
+  \ FILE   A plain file listing all effective cell barcode.\n  -i, --sampleList FILE\
+  \    A list file containing sample IDs, each per line.\n  -I, --sampleIDs STR  \
+  \    Comma separated sample ids.\n  -V, --version            Print software version\
+  \ and exit.\n  -h, --help               Show this help message and exit.\n\nOptional\
+  \ arguments:\n  --genotype           If use, do genotyping in addition to counting.\n\
+  \  --gzip               If use, the output files will be zipped into BGZF format.\n\
+  \  --printSkipSNPs      If use, the SNPs skipped when loading VCF will be printed.\n\
+  \  -p, --nproc INT      Number of subprocesses [1]\n  --chrom STR          The chromosomes\
+  \ to use, comma separated [1 to 22]\n  --cellTAG STR        Tag for cell barcodes,\
+  \ turn off with None [CB]\n  --UMItag STR         Tag for UMI: UR, Auto, None. For\
+  \ Auto mode, use UR if barcodes is inputted,\n                       otherwise use\
+  \ None. None mode means no UMI but read counts [Auto]\n  --minCOUNT INT       Minimum\
+  \ aggragated count [20]\n  --minMAF FLOAT       Minimum minor allele frequency [0.00]\n\
+  \  --doubletGL          If use, keep doublet GT likelihood, i.e., GT=0.5 and GT=1.5.\n\
+  \nRead filtering:\n  --inclFLAG STR|INT   Required flags: skip reads with all mask\
+  \ bits unset []\n  --exclFLAG STR|INT   Filter flags: skip reads with any mask bits\
+  \ set [UNMAP,SECONDARY,QCFAIL\n                       (when use UMI) or UNMAP,SECONDARY,QCFAIL,DUP\
+  \ (otherwise)]\n  --minLEN INT         Minimum mapped length for read filtering\
+  \ [30]\n  --minMAPQ INT        Minimum MAPQ for read filtering [20]\n  --countORPHAN\
+  \        If use, do not skip anomalous read pairs.\n\nNote that the \"--maxFLAG\"\
+  \ option is now deprecated, please use \"--inclFLAG\" or \"--exclFLAG\" instead.\n\
+  You can easily aggregate and convert the flag mask bits to an integer by refering\
+  \ to:\nhttps://broadinstitute.github.io/picard/explain-flags.html\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/cellsnp-lite:1.2.0--hee625c5_0

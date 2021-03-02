@@ -1,0 +1,91 @@
+!Command
+command:
+- trim_adapters
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: forward
+  description: "The (optionally gzipped) FASTQ file containing the\nforward reads."
+- !Positional
+  optional: false
+  position: 1
+  name: reverse
+  description: "The (optionally gzipped) FASTQ file containing the\nreverse reads."
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --max-edit-distance
+  description: "The maximum edit distance permitted when aligning the\npaired reads\
+    \ (default: 1)."
+  args: !SimpleFlagArg
+    name: EDIT_DISTANCE
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --fudge
+  description: "An arbitrary number of extra bases to trim from the\nends of reads\
+    \ (default: 1) because the original\npyadapter_trim.py script did so."
+  args: !SimpleFlagArg
+    name: FUDGE
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --trim-from-start
+  description: "Trim this number of bases from the start of each\nsequence (default:\
+    \ 0)."
+  args: !SimpleFlagArg
+    name: TRIM_START
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --rc-length
+  description: "Use the reverse complement of this number of bases\nfrom the beginning\
+    \ of the reverse read to align the\nreads (default: 20)."
+  args: !SimpleFlagArg
+    name: RC_LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: Report on the handling of each FASTQ record.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: trim_adapters [-h] [-d EDIT_DISTANCE] [-f FUDGE] [-s TRIM_START]\n\
+  \                     [-r RC_LENGTH] [-v]\n                     forward reverse\n\
+  \nTrim adapters from paired-end HTS reads.\n\npositional arguments:\n  forward \
+  \              The (optionally gzipped) FASTQ file containing the\n            \
+  \            forward reads.\n  reverse               The (optionally gzipped) FASTQ\
+  \ file containing the\n                        reverse reads.\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -d EDIT_DISTANCE, --max-edit-distance\
+  \ EDIT_DISTANCE\n                        The maximum edit distance permitted when\
+  \ aligning the\n                        paired reads (default: 1).\n  -f FUDGE,\
+  \ --fudge FUDGE\n                        An arbitrary number of extra bases to trim\
+  \ from the\n                        ends of reads (default: 1) because the original\n\
+  \                        pyadapter_trim.py script did so.\n  -s TRIM_START, --trim-from-start\
+  \ TRIM_START\n                        Trim this number of bases from the start of\
+  \ each\n                        sequence (default: 0).\n  -r RC_LENGTH, --rc-length\
+  \ RC_LENGTH\n                        Use the reverse complement of this number of\
+  \ bases\n                        from the beginning of the reverse read to align\
+  \ the\n                        reads (default: 20).\n  -v, --verbose         Report\
+  \ on the handling of each FASTQ record.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/atactk:0.1.9--pyh3252c3a_0

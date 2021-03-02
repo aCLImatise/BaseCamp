@@ -1,0 +1,196 @@
+!Command
+command:
+- pegasus
+- aggregate_matrix
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: csv_file
+  description: This function takes as input a csv_file, which contains at least 2
+    columns — Sample, sample name; Location, file that contains the count matrices
+    (e.g. filtered_gene_bc_matrices_h5.h5), and merges matrices from the same genome
+    together. If multi-modality exists, a third Modality column might be required.
+- !Positional
+  optional: false
+  position: 1
+  name: output_name
+  description: The output file name.
+- !Positional
+  optional: false
+  position: 0
+  name: output_name.zarr.zip
+  description: A zipped Zarr file containing aggregated data.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --restriction
+  description: '...           Select data that satisfy all restrictions. Each restriction
+    takes the format of name:value,...,value or name:~value,..,value, where ~ refers
+    to not. You can specifiy multiple restrictions by setting this option multiple
+    times.'
+  args: !SimpleFlagArg
+    name: restriction
+- !Flag
+  optional: true
+  synonyms:
+  - --attributes
+  description: Specify a comma-separated list of outputted attributes. These attributes
+    should be column names in the csv file.
+  args: !SimpleFlagArg
+    name: attributes
+- !Flag
+  optional: true
+  synonyms:
+  - --default-reference
+  description: If sample count matrix is in either DGE, mtx, csv, tsv or loom format
+    and there is no Reference column in the csv_file, use <reference> as the reference.
+    This option can also be used for replacing genome names. For example, if <reference>
+    is 'hg19:GRCh38,GRCh38', we will change any genome with name 'hg19' to 'GRCh38'
+    and if no genome is provided, 'GRCh38' is the default.
+  args: !SimpleFlagArg
+    name: reference
+- !Flag
+  optional: true
+  synonyms:
+  - --select-only-singlets
+  description: If we have demultiplexed data, turning on this option will make pegasus
+    only include barcodes that are predicted as singlets.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --remap-singlets
+  description: "Remap singlet names using <remap_string>, where <remap_string> takes\
+    \ the format \"new_name_i:old_name_1,old_name_2;new_name_ii:old_name_3;...\".\
+    \ For example, if we hashed 5 libraries from 3 samples sample1_lib1, sample1_lib2,\
+    \ sample2_lib1, sample2_lib2 and sample3, we can remap them to 3 samples using\
+    \ this string: \"sample1:sample1_lib1,sample1_lib2;sample2:sample2_lib1,sample2_lib2\"\
+    . In this way, the new singlet names will be in metadata field with key 'assignment',\
+    \ while the old names will be kept in metadata field with key 'assignment.orig'."
+  args: !SimpleFlagArg
+    name: remap_string
+- !Flag
+  optional: true
+  synonyms:
+  - --subset-singlets
+  description: If select singlets, only select singlets in the <subset_string>, which
+    takes the format "name1,name2,...". Note that if --remap-singlets is specified,
+    subsetting happens after remapping. For example, we can only select singlets from
+    sampe 1 and 3 using "sample1,sample3".
+  args: !SimpleFlagArg
+    name: subset_string
+- !Flag
+  optional: true
+  synonyms:
+  - --min-genes
+  description: Only keep cells with at least <number> of genes.
+  args: !SimpleFlagArg
+    name: number
+- !Flag
+  optional: true
+  synonyms:
+  - --max-genes
+  description: Only keep cells with less than <number> of genes.
+  args: !SimpleFlagArg
+    name: number
+- !Flag
+  optional: true
+  synonyms:
+  - --min-umis
+  description: Only keep cells with at least <number> of UMIs.
+  args: !SimpleFlagArg
+    name: number
+- !Flag
+  optional: true
+  synonyms:
+  - --max-umis
+  description: Only keep cells with less than <number> of UMIs.
+  args: !SimpleFlagArg
+    name: number
+- !Flag
+  optional: true
+  synonyms:
+  - --mito-prefix
+  description: Prefix for mitochondrial genes. If multiple prefixes are provided,
+    separate them by comma (e.g. "MT-,mt-").
+  args: !SimpleFlagArg
+    name: prefix
+- !Flag
+  optional: true
+  synonyms:
+  - --percent-mito
+  description: Only keep cells with mitochondrial percent less than <percent>%. Only
+    when both mito_prefix and percent_mito set, the mitochondrial filter will be triggered.
+  args: !SimpleFlagArg
+    name: percent
+- !Flag
+  optional: true
+  synonyms:
+  - --no-append-sample-name
+  description: Turn this option on if you do not want to append sample name in front
+    of each sample's barcode (concatenated using '-').
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Print out help information.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Aggregate multiple single-modality or multi-modality data into one big\
+  \ MultimodalData object and write it back to disk as a zipped Zarr file.\n\nUsage:\n\
+  \  pegasus aggregate_matrix <csv_file> <output_name> [--restriction <restriction>...\
+  \ options]\n  pegasus aggregate_matrix -h\n\nArguments:\n  csv_file           This\
+  \ function takes as input a csv_file, which contains at least 2 columns — Sample,\
+  \ sample name; Location, file that contains the count matrices (e.g. filtered_gene_bc_matrices_h5.h5),\
+  \ and merges matrices from the same genome together. If multi-modality exists, a\
+  \ third Modality column might be required.\n  output_name        The output file\
+  \ name.\n\nOptions:\n  --restriction <restriction>...           Select data that\
+  \ satisfy all restrictions. Each restriction takes the format of name:value,...,value\
+  \ or name:~value,..,value, where ~ refers to not. You can specifiy multiple restrictions\
+  \ by setting this option multiple times.\n  --attributes <attributes>          \
+  \      Specify a comma-separated list of outputted attributes. These attributes\
+  \ should be column names in the csv file.\n  --default-reference <reference>   \
+  \       If sample count matrix is in either DGE, mtx, csv, tsv or loom format and\
+  \ there is no Reference column in the csv_file, use <reference> as the reference.\
+  \ This option can also be used for replacing genome names. For example, if <reference>\
+  \ is 'hg19:GRCh38,GRCh38', we will change any genome with name 'hg19' to 'GRCh38'\
+  \ and if no genome is provided, 'GRCh38' is the default.\n  --select-only-singlets\
+  \                   If we have demultiplexed data, turning on this option will make\
+  \ pegasus only include barcodes that are predicted as singlets.\n  --remap-singlets\
+  \ <remap_string>          Remap singlet names using <remap_string>, where <remap_string>\
+  \ takes the format \"new_name_i:old_name_1,old_name_2;new_name_ii:old_name_3;...\"\
+  . For example, if we hashed 5 libraries from 3 samples sample1_lib1, sample1_lib2,\
+  \ sample2_lib1, sample2_lib2 and sample3, we can remap them to 3 samples using this\
+  \ string: \"sample1:sample1_lib1,sample1_lib2;sample2:sample2_lib1,sample2_lib2\"\
+  . In this way, the new singlet names will be in metadata field with key 'assignment',\
+  \ while the old names will be kept in metadata field with key 'assignment.orig'.\n\
+  \  --subset-singlets <subset_string>        If select singlets, only select singlets\
+  \ in the <subset_string>, which takes the format \"name1,name2,...\". Note that\
+  \ if --remap-singlets is specified, subsetting happens after remapping. For example,\
+  \ we can only select singlets from sampe 1 and 3 using \"sample1,sample3\".\n  --min-genes\
+  \ <number>                     Only keep cells with at least <number> of genes.\n\
+  \  --max-genes <number>                     Only keep cells with less than <number>\
+  \ of genes. \n  --min-umis <number>                      Only keep cells with at\
+  \ least <number> of UMIs.\n  --max-umis <number>                      Only keep\
+  \ cells with less than <number> of UMIs.\n  --mito-prefix <prefix>             \
+  \      Prefix for mitochondrial genes. If multiple prefixes are provided, separate\
+  \ them by comma (e.g. \"MT-,mt-\").\n  --percent-mito <percent>                \
+  \ Only keep cells with mitochondrial percent less than <percent>%. Only when both\
+  \ mito_prefix and percent_mito set, the mitochondrial filter will be triggered.\n\
+  \  --no-append-sample-name                  Turn this option on if you do not want\
+  \ to append sample name in front of each sample's barcode (concatenated using '-').\n\
+  \  -h, --help                               Print out help information.\n\nOutputs:\n\
+  \  output_name.zarr.zip        A zipped Zarr file containing aggregated data.\n\n\
+  Examples:\n  pegasus aggregate_matrix --restriction Source:BM,CB --restriction Individual:1-8\
+  \ --attributes Source,Platform count_matrix.csv aggr_data\n    \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/pegasuspy:1.2.0--py38h0213d0e_1

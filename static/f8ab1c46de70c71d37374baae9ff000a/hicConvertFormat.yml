@@ -1,0 +1,182 @@
+!Command
+command:
+- hicConvertFormat
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --matrices
+  - -m
+  description: "input file(s). Could be one or many files. (default:\nNone)"
+  args: !RepeatFlagArg
+    name: MATRICES
+- !Flag
+  optional: true
+  synonyms:
+  - --outFileName
+  - -o
+  description: 'File name to save the exported matrix. (default: None)'
+  args: !RepeatFlagArg
+    name: OUTFILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --inputFormat
+  description: "File format of the input matrix file. The following\noptions are available:\
+    \ `h5` (native HiCExplorer format\nbased on hdf5 storage format), `cool`, `hic`,\
+    \ `homer`,\n`hicpro`. (default: None)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      hicpro:
+      homer:
+      hic:
+      h5:
+      cool:
+- !Flag
+  optional: true
+  synonyms:
+  - --outputFormat
+  description: "Output format. The following options are available:\n`h5` (native\
+    \ HiCExplorer format based on hdf5 storage\nformat). `cool`, `ginteractions`,\
+    \ `homer` and `mcool`\n(Default: cool)."
+  args: !ChoiceFlagArg
+    choices: !!set
+      ginteractions:
+      homer:
+      h5:
+      mcool:
+      cool:
+- !Flag
+  optional: true
+  synonyms:
+  - --correction_name
+  description: "Name of the column which stores the correction\nfactors. The information\
+    \ about the column names can be\nfigured out with the tool hicInfo. Option only\
+    \ for\ncool input files (Default: weight)."
+  args: !SimpleFlagArg
+    name: CORRECTION_NAME
+- !Flag
+  optional: true
+  synonyms:
+  - --correction_division
+  description: "If set, division is applied for correction. Default is\na multiplication.\
+    \ Option only for cool input files.\n(default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --store_applied_correction
+  description: "Store the applied correction and do not set correction\nfactors. Option\
+    \ only for cool input files. (default:\nFalse)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --chromosome
+  description: "Load only one chromosome. Option only for cool input\nfiles. (default:\
+    \ None)"
+  args: !SimpleFlagArg
+    name: CHROMOSOME
+- !Flag
+  optional: true
+  synonyms:
+  - --enforce_integer
+  description: "Enforce datatype of counts to integer. Option only for\ncool input\
+    \ files. (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --load_raw_values
+  description: "Load only 'count' data and do not apply a correction.\nOption only\
+    \ for cool input files. (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --resolutions
+  - -r
+  description: "List of resolutions that should be added. (default:\nNone)"
+  args: !RepeatFlagArg
+    name: RESOLUTIONS
+- !Flag
+  optional: true
+  synonyms:
+  - --bedFileHicpro
+  - -bf
+  description: "Bed file(s) of hicpro file format. (default: None)\n"
+  args: !RepeatFlagArg
+    name: BEDFILEHICPRO
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: show this help message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: hicConvertFormat --matrices MATRICES [MATRICES ...] --outFileName\n\
+  \                        OUTFILENAME [OUTFILENAME ...] --inputFormat\n         \
+  \               {h5,cool,hic,homer,hicpro} --outputFormat\n                    \
+  \    {cool,h5,homer,ginteractions,mcool}\n                        [--correction_name\
+  \ CORRECTION_NAME]\n                        [--correction_division] [--store_applied_correction]\n\
+  \                        [--chromosome CHROMOSOME] [--enforce_integer]\n       \
+  \                 [--load_raw_values]\n                        [--resolutions RESOLUTIONS\
+  \ [RESOLUTIONS ...]] [--help]\n                        [--version]\n           \
+  \             [--bedFileHicpro BEDFILEHICPRO [BEDFILEHICPRO ...]]\n\nConversion\
+  \ of Hi-C matrices of different file formats. We support the\nconversion of hic\
+  \ to cool format via hic2cool, and homer, HicPro, h5 and cool\nformat to h5, cool,\
+  \ homer or ginteractions format. Moreover, hicConvertFormat\naccepts multiple input\
+  \ files from one format with different resolutions and\ncreates a mcool file. Each\
+  \ original file is stored under the path e.g.\n::/resolutions/10000. A batch computation\
+  \ is possible, the number of input\nfiles and output files needs to match, all input\
+  \ files need to be of the same\nformat type and all output files too. For input\
+  \ and output of cooler files\nspecial options are available, for all other formats\
+  \ they will be\nignored.HiCPro file format needs an additional bed file as input.\n\
+  \nRequired arguments:\n  --matrices MATRICES [MATRICES ...], -m MATRICES [MATRICES\
+  \ ...]\n                        input file(s). Could be one or many files. (default:\n\
+  \                        None)\n  --outFileName OUTFILENAME [OUTFILENAME ...], -o\
+  \ OUTFILENAME [OUTFILENAME ...]\n                        File name to save the exported\
+  \ matrix. (default: None)\n  --inputFormat {h5,cool,hic,homer,hicpro}\n        \
+  \                File format of the input matrix file. The following\n         \
+  \               options are available: `h5` (native HiCExplorer format\n       \
+  \                 based on hdf5 storage format), `cool`, `hic`, `homer`,\n     \
+  \                   `hicpro`. (default: None)\n  --outputFormat {cool,h5,homer,ginteractions,mcool}\n\
+  \                        Output format. The following options are available:\n \
+  \                       `h5` (native HiCExplorer format based on hdf5 storage\n\
+  \                        format). `cool`, `ginteractions`, `homer` and `mcool`\n\
+  \                        (Default: cool).\n\nOptional arguments:\n  --correction_name\
+  \ CORRECTION_NAME\n                        Name of the column which stores the correction\n\
+  \                        factors. The information about the column names can be\n\
+  \                        figured out with the tool hicInfo. Option only for\n  \
+  \                      cool input files (Default: weight).\n  --correction_division\n\
+  \                        If set, division is applied for correction. Default is\n\
+  \                        a multiplication. Option only for cool input files.\n \
+  \                       (default: False)\n  --store_applied_correction\n       \
+  \                 Store the applied correction and do not set correction\n     \
+  \                   factors. Option only for cool input files. (default:\n     \
+  \                   False)\n  --chromosome CHROMOSOME\n                        Load\
+  \ only one chromosome. Option only for cool input\n                        files.\
+  \ (default: None)\n  --enforce_integer     Enforce datatype of counts to integer.\
+  \ Option only for\n                        cool input files. (default: False)\n\
+  \  --load_raw_values     Load only 'count' data and do not apply a correction.\n\
+  \                        Option only for cool input files. (default: False)\n  --resolutions\
+  \ RESOLUTIONS [RESOLUTIONS ...], -r RESOLUTIONS [RESOLUTIONS ...]\n            \
+  \            List of resolutions that should be added. (default:\n             \
+  \           None)\n  --help, -h            show this help message and exit.\n  --version\
+  \             show program's version number and exit\n  --bedFileHicpro BEDFILEHICPRO\
+  \ [BEDFILEHICPRO ...], -bf BEDFILEHICPRO [BEDFILEHICPRO ...]\n                 \
+  \       Bed file(s) of hicpro file format. (default: None)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/hicexplorer:3.6--py_0

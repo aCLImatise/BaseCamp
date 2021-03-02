@@ -1,0 +1,236 @@
+!Command
+command:
+- poppunk_visualise
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: query
+  description: --distances DISTANCES
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --ref-db
+  description: Location of built reference database
+  args: !SimpleFlagArg
+    name: REF_DB
+- !Flag
+  optional: true
+  synonyms:
+  - --query-db
+  description: Location of query database, if distances are from ref-
+  args: !SimpleFlagArg
+    name: QUERY_DB
+- !Flag
+  optional: true
+  synonyms:
+  - --include-files
+  description: "File with list of sequences to include in\nvisualisation. Default\
+    \ is to use all sequences in\ndatabase."
+  args: !SimpleFlagArg
+    name: INCLUDE_FILES
+- !Flag
+  optional: true
+  synonyms:
+  - --external-clustering
+  description: "File with cluster definitions or other labels\ngenerated with any\
+    \ other method."
+  args: !SimpleFlagArg
+    name: EXTERNAL_CLUSTERING
+- !Flag
+  optional: true
+  synonyms:
+  - --model-dir
+  description: "Directory containing model to use for assigning\nqueries to clusters\
+    \ [default = reference database\ndirectory]"
+  args: !SimpleFlagArg
+    name: MODEL_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --previous-clustering
+  description: "Directory containing previous cluster definitions and\nnetwork [default\
+    \ = use that in the directory\ncontaining the model]"
+  args: !SimpleFlagArg
+    name: PREVIOUS_CLUSTERING
+- !Flag
+  optional: true
+  synonyms:
+  - --previous-query-clustering
+  description: "Directory containing previous cluster definitions from\npoppunk_assign\
+    \ [default = use that in the directory\ncontaining the model]"
+  args: !SimpleFlagArg
+    name: PREVIOUS_QUERY_CLUSTERING
+- !Flag
+  optional: true
+  synonyms:
+  - --output
+  description: Prefix for output files (required)
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - --overwrite
+  description: Overwrite any existing visualisation files
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --core-only
+  description: "(with a 'refine' model) Use a core-distance only model\nfor assigning\
+    \ queries [default = False]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --accessory-only
+  description: "(with a 'refine' or 'lineage' model) Use an accessory-\ndistance only\
+    \ model for assigning queries [default =\nFalse]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --microreact
+  description: Generate output files for microreact visualisation
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --cytoscape
+  description: Generate network output files for Cytoscape
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --phandango
+  description: Generate phylogeny and TSV for Phandango visualisation
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --grapetree
+  description: Generate phylogeny and CSV for grapetree visualisation
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --rapidnj
+  description: Path to rapidNJ binary to build NJ tree for Microreact
+  args: !SimpleFlagArg
+    name: RAPIDNJ
+- !Flag
+  optional: true
+  synonyms:
+  - --perplexity
+  description: "Perplexity used to calculate t-SNE projection (with\n--microreact)\
+    \ [default=20.0]"
+  args: !SimpleFlagArg
+    name: PERPLEXITY
+- !Flag
+  optional: true
+  synonyms:
+  - --info-csv
+  description: "Epidemiological information CSV formatted for\nmicroreact (can be\
+    \ used with other outputs)"
+  args: !SimpleFlagArg
+    name: INFO_CSV
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: Number of threads to use [default = 1]
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - --gpu-dist
+  description: Use a GPU when calculating distances [default = False]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --deviceid
+  description: CUDA device ID, if using GPU [default = 0]
+  args: !SimpleFlagArg
+    name: DEVICEID
+- !Flag
+  optional: true
+  synonyms:
+  - --strand-preserved
+  description: "If distances being calculated, treat strand as known\nwhen calculating\
+    \ random match chances [default =\nFalse]"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: poppunk_visualise [-h] --ref-db REF_DB [--query-db QUERY_DB]\n\
+  \                         [--distances DISTANCES]\n                         [--include-files\
+  \ INCLUDE_FILES]\n                         [--external-clustering EXTERNAL_CLUSTERING]\n\
+  \                         [--model-dir MODEL_DIR]\n                         [--previous-clustering\
+  \ PREVIOUS_CLUSTERING]\n                         [--previous-query-clustering PREVIOUS_QUERY_CLUSTERING]\n\
+  \                         --output OUTPUT [--overwrite] [--core-only]\n        \
+  \                 [--accessory-only] [--microreact] [--cytoscape]\n            \
+  \             [--phandango] [--grapetree] [--rapidnj RAPIDNJ]\n                \
+  \         [--perplexity PERPLEXITY] [--info-csv INFO_CSV]\n                    \
+  \     [--threads THREADS] [--gpu-dist]\n                         [--deviceid DEVICEID]\
+  \ [--strand-preserved]\n                         [--version]\n\nCreate visualisations\
+  \ from PopPUNK results\n\noptional arguments:\n  -h, --help            show this\
+  \ help message and exit\n\nInput files:\n  --ref-db REF_DB       Location of built\
+  \ reference database\n  --query-db QUERY_DB   Location of query database, if distances\
+  \ are from ref-\n                        query\n  --distances DISTANCES\n      \
+  \                  Prefix of input pickle of pre-calculated distances\n  --include-files\
+  \ INCLUDE_FILES\n                        File with list of sequences to include\
+  \ in\n                        visualisation. Default is to use all sequences in\n\
+  \                        database.\n  --external-clustering EXTERNAL_CLUSTERING\n\
+  \                        File with cluster definitions or other labels\n       \
+  \                 generated with any other method.\n  --model-dir MODEL_DIR\n  \
+  \                      Directory containing model to use for assigning\n       \
+  \                 queries to clusters [default = reference database\n          \
+  \              directory]\n  --previous-clustering PREVIOUS_CLUSTERING\n       \
+  \                 Directory containing previous cluster definitions and\n      \
+  \                  network [default = use that in the directory\n              \
+  \          containing the model]\n  --previous-query-clustering PREVIOUS_QUERY_CLUSTERING\n\
+  \                        Directory containing previous cluster definitions from\n\
+  \                        poppunk_assign [default = use that in the directory\n \
+  \                       containing the model]\n\nOutput options:\n  --output OUTPUT\
+  \       Prefix for output files (required)\n  --overwrite           Overwrite any\
+  \ existing visualisation files\n\nDatabase querying options:\n  --core-only    \
+  \       (with a 'refine' model) Use a core-distance only model\n               \
+  \         for assigning queries [default = False]\n  --accessory-only      (with\
+  \ a 'refine' or 'lineage' model) Use an accessory-\n                        distance\
+  \ only model for assigning queries [default =\n                        False]\n\n\
+  Visualisation options:\n  --microreact          Generate output files for microreact\
+  \ visualisation\n  --cytoscape           Generate network output files for Cytoscape\n\
+  \  --phandango           Generate phylogeny and TSV for Phandango visualisation\n\
+  \  --grapetree           Generate phylogeny and CSV for grapetree visualisation\n\
+  \  --rapidnj RAPIDNJ     Path to rapidNJ binary to build NJ tree for Microreact\n\
+  \  --perplexity PERPLEXITY\n                        Perplexity used to calculate\
+  \ t-SNE projection (with\n                        --microreact) [default=20.0]\n\
+  \  --info-csv INFO_CSV   Epidemiological information CSV formatted for\n       \
+  \                 microreact (can be used with other outputs)\n\nOther options:\n\
+  \  --threads THREADS     Number of threads to use [default = 1]\n  --gpu-dist  \
+  \          Use a GPU when calculating distances [default = False]\n  --deviceid\
+  \ DEVICEID   CUDA device ID, if using GPU [default = 0]\n  --strand-preserved  \
+  \  If distances being calculated, treat strand as known\n                      \
+  \  when calculating random match chances [default =\n                        False]\n\
+  \  --version             show program's version number and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/poppunk:2.3.0--py_0

@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, String, Int, File
+
+Sam_Stats_V0_1_0 = CommandToolBuilder(tool="sam_stats", base_command=["sam-stats"], inputs=[ToolInput(tag="in_keep_track_multiple", input_type=Boolean(optional=True), prefix="-D", doc=InputDocumentation(doc="Keep track of multiple alignments")), ToolInput(tag="in_output_prefix_see", input_type=String(optional=True), prefix="-O", doc=InputDocumentation(doc="Output prefix enabling extended output (see below)")), ToolInput(tag="in_coveragerna_output_coverage", input_type=Int(optional=True), prefix="-R", doc=InputDocumentation(doc="Coverage/RNA output (coverage, 3' bias, etc, implies -A)")), ToolInput(tag="in_report_chr_sigs", input_type=Boolean(optional=True), prefix="-A", doc=InputDocumentation(doc="Report all chr sigs, even if there are more than 1000")), ToolInput(tag="in_number_reads_sample", input_type=Int(optional=True), prefix="-b", doc=InputDocumentation(doc="Number of reads to sample for per-base stats (1M)")), ToolInput(tag="in_size_of_asciisignature", input_type=Int(optional=True), prefix="-S", doc=InputDocumentation(doc="Size of ascii-signature (30)")), ToolInput(tag="in_file_extension_handling", input_type=File(optional=True), prefix="-x", doc=InputDocumentation(doc="File extension for handling multiple files (stats)")), ToolInput(tag="in_only_overwrite_requires", input_type=Boolean(optional=True), prefix="-M", doc=InputDocumentation(doc="Only overwrite if newer (requires -x, or multiple files)")), ToolInput(tag="in_input_bam_bother", input_type=Boolean(optional=True), prefix="-B", doc=InputDocumentation(doc="Input is bam, don't bother looking at magic")), ToolInput(tag="in_fail_when_entries", input_type=Boolean(optional=True), prefix="-z", doc=InputDocumentation(doc="Don't fail when zero entries in sam")), ToolInput(tag="in_reads", input_type=String(), position=0, doc=InputDocumentation(doc=": # of entries in the sam file, might not be # reads")), ToolInput(tag="in_phred", input_type=String(), position=1, doc=InputDocumentation(doc=": phred scale used")), ToolInput(tag="in_b_size", input_type=String(), position=2, doc=InputDocumentation(doc=": # reads used for qual stats")), ToolInput(tag="in_forward", input_type=String(), position=0, doc=InputDocumentation(doc=": number of forward-aligned reads")), ToolInput(tag="in_reverse", input_type=String(), position=1, doc=InputDocumentation(doc=": number of reverse-aligned reads"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Sam_Stats_V0_1_0().translate("wdl", allow_empty_container=True)
+

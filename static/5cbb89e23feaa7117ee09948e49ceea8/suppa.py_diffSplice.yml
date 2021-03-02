@@ -1,0 +1,200 @@
+!Command
+command:
+- suppa.py
+- diffSplice
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --method
+  description: Method to test significance. Required.
+  args: !ChoiceFlagArg
+    choices: !!set
+      empirical:
+      classical:
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --psi
+  description: "Path of the PSI files. PSI files and the transcript\nexpression (TPM)\
+    \ files must have the same order.The\nconditions files and the tpm files must\
+    \ have the same\norder."
+  args: !RepeatFlagArg
+    name: CONDS
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --tpm
+  description: "Path of the transcript expression (TPM) files.\nConditions files and\
+    \ the transcript expression (TPM)\nfiles must have the same order.The conditions\
+    \ files\nand the tpm files must have the same order."
+  args: !RepeatFlagArg
+    name: TPMS
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  description: "Input file with the event-transcripts equivalence\n(.ioe or .ioi format)"
+  args: !SimpleFlagArg
+    name: IOX
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --area
+  description: "Number indicating the number of points in the local\narea distribution.\
+    \ (default: 1000)"
+  args: !SimpleFlagArg
+    name: AREA
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --lower-bound
+  description: "Lower-bound for the absolute delta PSI value to test\nfor significance.\
+    \ (Default: 0)."
+  args: !SimpleFlagArg
+    name: LOWER_BOUND
+- !Flag
+  optional: true
+  synonyms:
+  - -pa
+  - --paired
+  description: "Boolean. Indicates if replicates in conditions are\npaired. (Default:\
+    \ False)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -gc
+  - --gene-correction
+  description: "Boolean. If True, SUPPA correct the p-values by gene.\n(Default: False)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -al
+  - --alpha
+  description: "Family-wise error rate to use for the multiple test\ncorrection. (Default:\
+    \ 0.05)."
+  args: !SimpleFlagArg
+    name: ALPHA
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --save_tpm_events
+  description: "Boolean. If True, the average log TPM of the events\nwill be saved\
+    \ in an external file (Default: False)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --combination
+  description: "Boolean. If True, SUPPA perform the analysis between\nall the possible\
+    \ combinations of conditions (Default:\nFalse)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -me
+  - --median
+  description: "Boolean. If True, SUPPA use the median to calculate\nthe Delta PSI.\
+    \ (Default: False)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -th
+  - --tpm-threshold
+  description: "Minimum transcript average TPM value within-replicates\nand between-conditions\
+    \ to be included in the analysis.\n(Default: 1.0)."
+  args: !SimpleFlagArg
+    name: TPM_TH
+- !Flag
+  optional: true
+  synonyms:
+  - -nan
+  - --nan-threshold
+  description: "Percentage allowed of samples per condition with nan\nvalues for returning\
+    \ a DeltaPSI (Default: 0, no\nmissing values allowed)."
+  args: !SimpleFlagArg
+    name: NAN_TH
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: Name of the output files.
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -mo
+  - --mode
+  description: "to choose from DEBUG, INFO, WARNING, ERROR and\nCRITICAL\n"
+  args: !SimpleFlagArg
+    name: MODE
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: suppa.py diffSplice [-h] -m {empirical,classical}\n           \
+  \                [-p CONDS [CONDS ...]] [-e TPMS [TPMS ...]]\n                 \
+  \          [-i IOX] [-a AREA] [-l LOWER_BOUND] [-pa] [-gc]\n                   \
+  \        [-al ALPHA] [-s] [-c] [-me] [-th TPM_TH]\n                           [-nan\
+  \ NAN_TH] [-o OUTPUT] [-mo MODE]\n\noptional arguments:\n  -h, --help          \
+  \  show this help message and exit\n  -m {empirical,classical}, --method {empirical,classical}\n\
+  \                        Method to test significance. Required.\n  -p CONDS [CONDS\
+  \ ...], --psi CONDS [CONDS ...]\n                        Path of the PSI files.\
+  \ PSI files and the transcript\n                        expression (TPM) files must\
+  \ have the same order.The\n                        conditions files and the tpm\
+  \ files must have the same\n                        order.\n  -e TPMS [TPMS ...],\
+  \ --tpm TPMS [TPMS ...]\n                        Path of the transcript expression\
+  \ (TPM) files.\n                        Conditions files and the transcript expression\
+  \ (TPM)\n                        files must have the same order.The conditions files\n\
+  \                        and the tpm files must have the same order.\n  -i IOX,\
+  \ --input IOX   Input file with the event-transcripts equivalence\n            \
+  \            (.ioe or .ioi format)\n  -a AREA, --area AREA  Number indicating the\
+  \ number of points in the local\n                        area distribution. (default:\
+  \ 1000)\n  -l LOWER_BOUND, --lower-bound LOWER_BOUND\n                        Lower-bound\
+  \ for the absolute delta PSI value to test\n                        for significance.\
+  \ (Default: 0).\n  -pa, --paired         Boolean. Indicates if replicates in conditions\
+  \ are\n                        paired. (Default: False).\n  -gc, --gene-correction\n\
+  \                        Boolean. If True, SUPPA correct the p-values by gene.\n\
+  \                        (Default: False).\n  -al ALPHA, --alpha ALPHA\n       \
+  \                 Family-wise error rate to use for the multiple test\n        \
+  \                correction. (Default: 0.05).\n  -s, --save_tpm_events\n       \
+  \                 Boolean. If True, the average log TPM of the events\n        \
+  \                will be saved in an external file (Default: False).\n  -c, --combination\
+  \     Boolean. If True, SUPPA perform the analysis between\n                   \
+  \     all the possible combinations of conditions (Default:\n                  \
+  \      False).\n  -me, --median         Boolean. If True, SUPPA use the median to\
+  \ calculate\n                        the Delta PSI. (Default: False).\n  -th TPM_TH,\
+  \ --tpm-threshold TPM_TH\n                        Minimum transcript average TPM\
+  \ value within-replicates\n                        and between-conditions to be\
+  \ included in the analysis.\n                        (Default: 1.0).\n  -nan NAN_TH,\
+  \ --nan-threshold NAN_TH\n                        Percentage allowed of samples\
+  \ per condition with nan\n                        values for returning a DeltaPSI\
+  \ (Default: 0, no\n                        missing values allowed).\n  -o OUTPUT,\
+  \ --output OUTPUT\n                        Name of the output files.\n  -mo MODE,\
+  \ --mode MODE\n                        to choose from DEBUG, INFO, WARNING, ERROR\
+  \ and\n                        CRITICAL\n"
+generated_using:
+- --help
+docker_image:

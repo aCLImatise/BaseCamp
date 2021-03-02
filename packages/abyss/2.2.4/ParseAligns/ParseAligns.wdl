@@ -26,6 +26,9 @@ task ParseAligns {
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (k) then "-k" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     min_align: "minimum alignment length"
     dist: "write distance estimates to this file"

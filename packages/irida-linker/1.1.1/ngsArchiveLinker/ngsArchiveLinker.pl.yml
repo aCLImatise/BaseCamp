@@ -1,0 +1,157 @@
+!Command
+command:
+- ngsArchiveLinker.pl
+positional:
+- !Positional
+  optional: true
+  position: 0
+  name: sampleId
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --projectId
+  description: "[ARG]\nThe ID of the project to get data from. (required)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: "[ARG]\nA directory to output the collection of links. (Default: Current\n\
+    working directory)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --config
+  description: "[ARG]\nThe location of the config file. Not required if --baseURL\n\
+    option is used. (Default: $HOME/.irida/ngs-archive-linker.conf,\n/etc/irida/ngs-archive-linker.conf)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --baseURL
+  description: "[ARG]\nThe base URL for the NGS Archive REST API. Overrides config\
+    \ file\nsetting."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --sample
+  description: "[ARG]\nA sample id to get sequence files for. Not required. Multiple\n\
+    samples may be listed as -s 1 -s 2 -s 3..."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --type
+  description: "[ARG]\nType of file to link or download. Not required. Available\n\
+    options: \"fastq\", \"assembly\". Default \"fastq\". To get both\ntypes, you can\
+    \ enter --type fastq,assembly"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --ignore
+  description: Ignore creating links for files that already exist.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --rename
+  description: "Rename existing files with _# suffix. Useful for topup runs with\n\
+    similar filenames. NOTE: This option overrides the --ignore\noption."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --flat
+  description: "Create links or files in a flat directory under the project name\n\
+    rather than in sample directories."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --username
+  description: "The username to use for API requests. Note: if this option is\nnot\
+    \ entered it will be requested during running of the script."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --password
+  description: "The password to use for API requests. Note: if this option is\nnot\
+    \ entered it will be requested during running of the script."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --download
+  description: "Option to download files from the REST API instead of\nsoftlinking.\
+    \ Note: Files may be quite large. This option is not\nrecommended if you have\
+    \ access to the sequencing filesystem."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: Print verbose messages.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Display a help message.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: "Print version.\n"
+  args: !EmptyFlagArg {}
+help_text: "Usage:\n    ngsArchiveLinker.pl -b <API URL> -p <projectId> -o <outputDirectory>\
+  \ [-s\n    <sampleId> ...] [-t <filetype>]\n\nOptions:\n    -p, --projectId [ARG]\n\
+  \            The ID of the project to get data from. (required)\n\n    -o, --output\
+  \ [ARG]\n            A directory to output the collection of links. (Default: Current\n\
+  \            working directory)\n\n    -c, --config [ARG]\n            The location\
+  \ of the config file. Not required if --baseURL\n            option is used. (Default:\
+  \ $HOME/.irida/ngs-archive-linker.conf,\n            /etc/irida/ngs-archive-linker.conf)\n\
+  \n    -b, --baseURL [ARG]\n            The base URL for the NGS Archive REST API.\
+  \ Overrides config file\n            setting.\n\n    -s, --sample [ARG]\n      \
+  \      A sample id to get sequence files for. Not required. Multiple\n         \
+  \   samples may be listed as -s 1 -s 2 -s 3...\n\n    -t, --type [ARG]\n       \
+  \     Type of file to link or download. Not required. Available\n            options:\
+  \ \"fastq\", \"assembly\". Default \"fastq\". To get both\n            types, you\
+  \ can enter --type fastq,assembly\n\n    -i, --ignore\n            Ignore creating\
+  \ links for files that already exist.\n\n    -r, --rename\n            Rename existing\
+  \ files with _# suffix. Useful for topup runs with\n            similar filenames.\
+  \ NOTE: This option overrides the --ignore\n            option.\n\n    --flat  Create\
+  \ links or files in a flat directory under the project name\n            rather\
+  \ than in sample directories.\n\n    --username\n            The username to use\
+  \ for API requests. Note: if this option is\n            not entered it will be\
+  \ requested during running of the script.\n\n    --password\n            The password\
+  \ to use for API requests. Note: if this option is\n            not entered it will\
+  \ be requested during running of the script.\n\n    --download\n            Option\
+  \ to download files from the REST API instead of\n            softlinking. Note:\
+  \ Files may be quite large. This option is not\n            recommended if you have\
+  \ access to the sequencing filesystem.\n\n    -v, --verbose\n            Print verbose\
+  \ messages.\n\n    -h, --help\n            Display a help message.\n\n    --version\n\
+  \            Print version.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/irida-linker:1.1.1--1

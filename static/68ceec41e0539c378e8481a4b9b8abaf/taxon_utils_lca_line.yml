@@ -1,0 +1,74 @@
+!Command
+command:
+- taxon-utils
+- lca_line
+positional:
+- !Positional
+  optional: true
+  position: 0
+  name: INPUT_FILE
+  description: ''
+- !Positional
+  optional: true
+  position: 1
+  name: OUTPUT_FILE
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  - -t
+  - --taxonomy
+  description: Taxonomy file  [required]
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --no-lca
+  description: File to which write records with no LCA
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --only-ranked
+  description: "If set, only taxa that have a rank will be used in\nthe lineageself.\
+    \ This is not advised for lineages\nsuch as Viruses, where the top levels have\
+    \ no rank"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --separator
+  description: separator for taxon_ids (defaults to TAB)
+  args: !SimpleFlagArg
+    name: TEXT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: taxon-utils lca_line [OPTIONS] [INPUT_FILE] [OUTPUT_FILE]\n\n \
+  \ Finds the last common ancestor for all IDs in a text file line\n\nOptions:\n \
+  \ -v, --verbose\n  -t, --taxonomy TEXT    Taxonomy file  [required]\n  -n, --no-lca\
+  \ FILENAME  File to which write records with no LCA\n  -a, --only-ranked      If\
+  \ set, only taxa that have a rank will be used in\n                         the\
+  \ lineageself. This is not advised for lineages\n                         such as\
+  \ Viruses, where the top levels have no rank\n\n  -s, --separator TEXT   separator\
+  \ for taxon_ids (defaults to TAB)\n  --help                 Show this message and\
+  \ exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/mgkit:0.5.6--py37hf01694f_0

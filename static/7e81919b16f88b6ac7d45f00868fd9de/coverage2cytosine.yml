@@ -1,0 +1,258 @@
+!Command
+command:
+- coverage2cytosine
+positional:
+- !Positional
+  optional: true
+  position: 0
+  name: input
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: Name of the output file, mandatory.
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - --dir
+  description: Output directory. Output is written to the current directory if not
+    specified explicitly.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --genome_folder
+  description: "Enter the genome folder you wish to use to extract sequences from\
+    \ (relative or full path). Accepted\nformats are FastA files ending with '.fa'\
+    \ or '.fasta'. Specifying a genome folder path is mandatory."
+  args: !SimpleFlagArg
+    name: path
+- !Flag
+  optional: true
+  synonyms:
+  - -CX
+  - --CX_context
+  description: "The output file contains information on every single cytosine in the\
+    \ genome irrespective of\nits context. This applies to both forward and reverse\
+    \ strands. Please be aware that this will\ngenerate output files with > 1.1 billion\
+    \ lines for a mammalian genome such as human or mouse.\nDefault: OFF (i.e. Default\
+    \ = CpG context only)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --merge_CpG
+  description: "Using this option will post-process the genome-wide report to write\
+    \ out an additional coverage\nfile (see above for the coverage file format) which\
+    \ has the top and bottom strand methylation\nevidence pooled into a single CpG\
+    \ dinucleotide entity. This may be the desirable input format\nfor some downstream\
+    \ processing tools such as the R-package bsseq (by K.D. Hansen). An example would\
+    \ be:"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --discordance
+  description: "When in '--merge_CpG' mode, apply a filter for the maximum allowed\
+    \ discordance between top and bottom\nstrand methylation values expressed as the\
+    \ absolute difference in percent methylation. Discordant CpGs\nare written to\
+    \ a file called 'discordant_CpG_evidence.cov' (not merged). As example consider:\n\
+    top:     gi|170079663|ref|NC_010473.1|   573     +       5       6       CG  \
+    \    CGC\nbottom:  gi|170079663|ref|NC_010473.1|   574     -       13      4 \
+    \      CG      CGG\nwith '--discordance 20'\nThe methylation % difference here\
+    \ is 31%, so the read would go into the discordant.cov file. CpG positions\nfor\
+    \ which either the top or bottom strand was not measured at all will not be assessed\
+    \ for discordance, and\nhence appear in the regular 'merged_CpG_evidence.cov'\
+    \ file."
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --gc
+  - --gc_context
+  description: "In addition to normal processing this option will reprocess the genome\
+    \ to find methylation in\nGpC context. This might be useful for specialist applications\
+    \ where GpC methylases had been\ndeployed. The output format is exactly the same\
+    \ as for the normal cytosine report, and only\npositions covered by at least one\
+    \ read are reported (output file ends in .GpC_report.txt). In addition\nthis will\
+    \ write out a Bismark coverage file (ending in GpC.cov)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --nome-seq
+  description: "Sample is NOMe-Seq (nucleosome occupancy and methylome sequencing)\
+    \ where accessible DNA gets methylated\nin a GpC context (sets option '--gc' as\
+    \ well). The option '--nome-seq':\n(i) filters the genome-wide CpG-report to only\
+    \ output cytosines in ACG and TCG context\n(ii) filters the GC context output\
+    \ to only report cytosines in GCA, GCC and GCT context\nBoth of these measures\
+    \ aim to reduce unwanted biases, i.e. the influence of GCG and CCG on endogenous\n\
+    CpG methylation, and the inlfluence of CpG methylation on (the NOMe-Seq specific)\
+    \ GC context methylation.\nPLEASE NOTE that NOMe-Seq data requires a .cov.gz file\
+    \ as input which has been generated in\nnon-CG mode (--CX), else the GpC output\
+    \ file will be empty... Default: OFF."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --coverage_threshold
+  description: "Positions have to be covered by at least INT calls (irrespective of\
+    \ their methylation state) before\nthey get reported. For NOMe-seq, the minimum\
+    \ threshold is automatically set to 1 unless specified explicitly.\nSetting a\
+    \ coverage threshold does not work in conjunction with --merge_CpGs. Default:\
+    \ 0 (i.e. all genomic positions get reported)."
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --drach
+  - --m6A
+  description: "Most m6A sites are found in the conserved sequence motif DRACH (where\
+    \ D=G/A/U, R=G/A, H=A/U/C), and if bound\nby anti-m6A antibody, it causes the\
+    \ reverse transcriptase to introduce C to T transitions at the C which\nfollows\
+    \ A in the DRACH motif. This option also sets a coverage threshold of at 1 unless\
+    \ specified explicitly."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ff
+  description: "In addition to the standard output selecting --ff will also extract\
+    \ a four and five (tetra/penta)\nnucleotide context for the cytosines in question.\
+    \ Too short sequences (e.g. at the edges of the\nchromosome) will be left blank;\
+    \ sequences containing Ns are ignored."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --zero_based
+  description: 'Uses 0-based coordinates instead of 1-based coordinates throughout.
+    Default: OFF.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --split_by_chromosome
+  description: "Writes the output into individual files for each chromosome instead\
+    \ of a single output file. Files\nwill be named to include the input filename\
+    \ and the chromosome number."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gzip
+  description: Output file will be GZIP compressed (ending in .gz). Only works for
+    standard CpG- and CX-output.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Displays this help message and exits
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "\n  SYNOPSIS:\n\n  This script generates a cytosine methylation report\
+  \ for a genome of interest and a sorted methylation input file produced\n  by the\
+  \ script bismark2bedGraph or the bismark_methylation_extractor when '--bedGraph'\
+  \ was specified. The input files\n  (.cov or .cov.gz) are expected to use 1-based\
+  \ genomic coordinates. By default, the output uses 1-based chromosomal coordinates\n\
+  \  and reports CpG positions only (for both strands individually and not merged\
+  \ in any way). Output coordinates may be changed\n  to 0-based coordinates using\
+  \ the option '--zero_based'.\n\n  The input file needs to have been generated with\
+  \ the script bismark2bedGraph (the file is called *.cov, or .cov.gz) or\n  otherwise\
+  \ be sorted by position and exactly in the following format:\n\n  <chromosome> \
+  \ <start position>  <end position>  <methylation percentage>  <count methylated>\
+  \  <count unmethylated>\n\n  The coordinates of the input file are expected to be\
+  \ 1-based throughout (do not use files ending in .zero.cov!).\n\n\n  USAGE: coverage2cytosine\
+  \ [options] --genome_folder <path> -o <output> [input]\n\n\n-o/--output <filename>\
+  \   Name of the output file, mandatory.\n\n--dir                    Output directory.\
+  \ Output is written to the current directory if not specified explicitly.\n\n--genome_folder\
+  \ <path>   Enter the genome folder you wish to use to extract sequences from (relative\
+  \ or full path). Accepted\n\t\t\t\t\t\t formats are FastA files ending with '.fa'\
+  \ or '.fasta'. Specifying a genome folder path is mandatory.\n\n-CX/--CX_context\
+  \         The output file contains information on every single cytosine in the genome\
+  \ irrespective of\n\t\t\t\t\t\t its context. This applies to both forward and reverse\
+  \ strands. Please be aware that this will\n\t\t\t\t\t\t generate output files with\
+  \ > 1.1 billion lines for a mammalian genome such as human or mouse.\n\t\t\t\t\t\
+  \t Default: OFF (i.e. Default = CpG context only).\n\n--merge_CpG              Using\
+  \ this option will post-process the genome-wide report to write out an additional\
+  \ coverage\n\t\t\t\t\t\t file (see above for the coverage file format) which has\
+  \ the top and bottom strand methylation\n\t\t\t\t\t\t evidence pooled into a single\
+  \ CpG dinucleotide entity. This may be the desirable input format\n\t\t\t\t\t\t\
+  \ for some downstream processing tools such as the R-package bsseq (by K.D. Hansen).\
+  \ An example would be:\n\n\t\t\t   genome-wide CpG report (old)\n\t\t\t   gi|9626372|ref|NC_001422.1|\
+  \     157     +       313     156     CG\n\t\t\t   gi|9626372|ref|NC_001422.1| \
+  \    158     -       335     156     CG\n\t\t\t   merged CpG evidence coverage file\
+  \ (new)\n\t\t\t   gi|9626372|ref|NC_001422.1|     157     158     67.500000    \
+  \   648     312\n\n\t\t\t This option is currently experimental, and only works\
+  \ if CpG context only and a single genome-wide report\n\t\t\t\t\t\t were specified\
+  \ (i.e. it doesn't work with the options --CX or --split_by_chromosome).\n\t\t\t\
+  \t\t\t If --zero_based was specified as well the output coverage file is in zero-based\
+  \ half-open format like\n\t\t\t\t\t\t bedGraph files.\n\n--discordance <int>   \
+  \   When in '--merge_CpG' mode, apply a filter for the maximum allowed discordance\
+  \ between top and bottom\n\t\t\t\t\t\t strand methylation values expressed as the\
+  \ absolute difference in percent methylation. Discordant CpGs\n\t\t\t\t\t\t are\
+  \ written to a file called 'discordant_CpG_evidence.cov' (not merged). As example\
+  \ consider:\n\n\t\t\t\t\t\t top:     gi|170079663|ref|NC_010473.1|   573     + \
+  \      5       6       CG      CGC\n\t\t\t\t\t\t bottom:  gi|170079663|ref|NC_010473.1|\
+  \   574     -       13      4       CG      CGG\n\t\t\t\t\t\t with '--discordance\
+  \ 20'\n\n\t\t\t\t\t\t The methylation % difference here is 31%, so the read would\
+  \ go into the discordant.cov file. CpG positions\n\t\t\t\t\t\t for which either\
+  \ the top or bottom strand was not measured at all will not be assessed for discordance,\
+  \ and\n\t\t\t\t\t\t hence appear in the regular 'merged_CpG_evidence.cov' file.\n\
+  \n\n--gc/--gc_context        In addition to normal processing this option will reprocess\
+  \ the genome to find methylation in\n\t\t\t\t\t\t GpC context. This might be useful\
+  \ for specialist applications where GpC methylases had been\n\t\t\t\t\t\t deployed.\
+  \ The output format is exactly the same as for the normal cytosine report, and only\n\
+  \t\t\t\t\t\t positions covered by at least one read are reported (output file ends\
+  \ in .GpC_report.txt). In addition\n\t\t\t\t\t\t this will write out a Bismark coverage\
+  \ file (ending in GpC.cov).\n\n--nome-seq               Sample is NOMe-Seq (nucleosome\
+  \ occupancy and methylome sequencing) where accessible DNA gets methylated\n\t\t\
+  \t\t\t\t in a GpC context (sets option '--gc' as well). The option '--nome-seq':\n\
+  \n\t\t\t\t\t\t\t(i) filters the genome-wide CpG-report to only output cytosines\
+  \ in ACG and TCG context\n\t\t\t\t\t\t   (ii) filters the GC context output to only\
+  \ report cytosines in GCA, GCC and GCT context\n\n\t\t\t\t\t\t Both of these measures\
+  \ aim to reduce unwanted biases, i.e. the influence of GCG and CCG on endogenous\n\
+  \t\t\t\t\t\t CpG methylation, and the inlfluence of CpG methylation on (the NOMe-Seq\
+  \ specific) GC context methylation.\n\t\t\t\t\t\t PLEASE NOTE that NOMe-Seq data\
+  \ requires a .cov.gz file as input which has been generated in\n\t\t\t\t\t\t non-CG\
+  \ mode (--CX), else the GpC output file will be empty... Default: OFF.\n\n--coverage_threshold\
+  \ INT   Positions have to be covered by at least INT calls (irrespective of their\
+  \ methylation state) before\n\t\t\t\t\t\t they get reported. For NOMe-seq, the minimum\
+  \ threshold is automatically set to 1 unless specified explicitly.\n\t\t\t\t\t\t\
+  \ Setting a coverage threshold does not work in conjunction with --merge_CpGs. Default:\
+  \ 0 (i.e. all genomic positions get reported).\n\n--drach/--m6A\t\t\t Most m6A sites\
+  \ are found in the conserved sequence motif DRACH (where D=G/A/U, R=G/A, H=A/U/C),\
+  \ and if bound\n\t\t\t\t\t\t by anti-m6A antibody, it causes the reverse transcriptase\
+  \ to introduce C to T transitions at the C which \n\t\t\t\t\t\t follows A in the\
+  \ DRACH motif. This option also sets a coverage threshold of at 1 unless specified\
+  \ explicitly.\n\n--ff                     In addition to the standard output selecting\
+  \ --ff will also extract a four and five (tetra/penta)\n\t\t\t\t\t\t nucleotide\
+  \ context for the cytosines in question. Too short sequences (e.g. at the edges\
+  \ of the\n\t\t\t\t\t\t chromosome) will be left blank; sequences containing Ns are\
+  \ ignored.\n\n--zero_based             Uses 0-based coordinates instead of 1-based\
+  \ coordinates throughout. Default: OFF.\n\n--split_by_chromosome    Writes the output\
+  \ into individual files for each chromosome instead of a single output file. Files\n\
+  \t\t\t\t\t\t will be named to include the input filename and the chromosome number.\n\
+  \n--gzip                   Output file will be GZIP compressed (ending in .gz).\
+  \ Only works for standard CpG- and CX-output.\n\n--help                   Displays\
+  \ this help message and exits\n\n\n\nOUTPUT FORMAT:\n\nThe genome-wide cytosine\
+  \ methylation output file is tab-delimited in the following format (1-based coords):\n\
+  ===========================================================================================================\n\
+  \n<chromosome>  <position>  <strand>  <count methylated>  <count non-methylated>\
+  \  <C-context>  <trinucleotide context>\n\n\n\t\t\t\t\t\t\t  Script last modified:\
+  \ 06 Oct 2020\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bismark:0.23.0--0

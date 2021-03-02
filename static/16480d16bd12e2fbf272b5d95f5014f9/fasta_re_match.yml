@@ -1,0 +1,52 @@
+!Command
+command:
+- fasta-re-match
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: IUPAC DNA Motif
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -norc
+  description: Only find matches to motifs in the given strand
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -erase
+  description: "erases this motif before finding matches;\nrepeatable; order matters!"
+  args: !SimpleFlagArg
+    name: IUPAC DNA Motif
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -help
+  description: prints this help message
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage:\n    fasta-re-match [options] <IUPAC DNA Motif>\n\n     Options:\n\
+  \      -norc                     Only find matches to motifs in the given strand\n\
+  \      -erase <IUPAC DNA Motif>  erases this motif before finding matches; \n  \
+  \                              repeatable; order matters!\n      -help         \
+  \            prints this help message\n\n     Reads sequences from standard input.\n\
+  \n     Writes to standard output tab separated (space padded) columns:\n     <matching\
+  \ sequence> <strand +-> <line number> <column number> <sequence offset> <sequence\
+  \ name>\n\n     If you are trying to recreate DREME motif sites note that DREME\
+  \ erases \n     previously found motifs so you will have to use the -erase option\
+  \ for any but \n     the first motif, like:\n     fasta-re-match -erase CCMCRCCC\
+  \ TTATCW < sample-dna-Klf1.fa\n\n     If you want a count of sites try piping the\
+  \ output to \"wc -l\" like:\n     fasta-re-match CCMCRCCC < sample-dna-Klf1.fa |\
+  \ wc -l\n\n     If you want only one of the columns try piping the output to \"\
+  cut -f <num>\" like:\n     fasta-re-match CCMCRCCC < sample-dna-Klf1.fa | cut -f\
+  \ 1\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/meme:5.3.0--py38pl526hc1f1133_0

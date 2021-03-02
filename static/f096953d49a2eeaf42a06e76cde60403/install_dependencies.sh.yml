@@ -1,0 +1,550 @@
+!Command
+command:
+- install_dependencies.sh
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -help
+  description: Print USAGE, DESCRIPTION and ARGUMENTS; ignore all other parameters
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -version
+  description: Print version number;  ignore other arguments
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -query
+  description: "Input file name\nDefault = `-'"
+  args: !SimpleFlagArg
+    name: File_In
+- !Flag
+  optional: true
+  synonyms:
+  - -query_loc
+  description: 'Location on the query sequence in 1-based offsets (Format: start-stop)'
+  args: !SimpleFlagArg
+    name: String
+- !Flag
+  optional: true
+  synonyms:
+  - -task
+  description: "<String, Permissible values: 'blastp' 'blastp-fast' 'blastp-short'\
+    \ >\nTask to execute\nDefault = `blastp'"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -db
+  description: "BLAST database name\n* Incompatible with:  subject, subject_loc"
+  args: !SimpleFlagArg
+    name: String
+- !Flag
+  optional: true
+  synonyms:
+  - -out
+  description: "Output file name\nDefault = `-'"
+  args: !SimpleFlagArg
+    name: File_Out
+- !Flag
+  optional: true
+  synonyms:
+  - -evalue
+  description: "Expectation value (E) threshold for saving hits\nDefault = `10'"
+  args: !SimpleFlagArg
+    name: Real
+- !Flag
+  optional: true
+  synonyms:
+  - -word_size
+  description: "<Integer, >=2>\nWord size for wordfinder algorithm"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -gapopen
+  description: Cost to open a gap
+  args: !SimpleFlagArg
+    name: Integer
+- !Flag
+  optional: true
+  synonyms:
+  - -gapextend
+  description: Cost to extend a gap
+  args: !SimpleFlagArg
+    name: Integer
+- !Flag
+  optional: true
+  synonyms:
+  - -matrix
+  description: Scoring matrix name (normally BLOSUM62)
+  args: !SimpleFlagArg
+    name: String
+- !Flag
+  optional: true
+  synonyms:
+  - -threshold
+  description: "<Real, >=0>\nMinimum word score such that the word is added to the\
+    \ BLAST lookup table"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -comp_based_stats
+  description: "Use composition-based statistics:\nD or d: default (equivalent to\
+    \ 2 )\n0 or F or f: No composition-based statistics\n1: Composition-based statistics\
+    \ as in NAR 29:2994-3005, 2001\n2 or T or t : Composition-based score adjustment\
+    \ as in Bioinformatics\n21:902-911,\n2005, conditioned on sequence properties\n\
+    3: Composition-based score adjustment as in Bioinformatics 21:902-911,\n2005,\
+    \ unconditionally\nDefault = `2'"
+  args: !SimpleFlagArg
+    name: String
+- !Flag
+  optional: true
+  synonyms:
+  - -subject
+  description: "Subject sequence(s) to search\n* Incompatible with:  db, gilist, seqidlist,\
+    \ negative_gilist,\ndb_soft_mask, db_hard_mask"
+  args: !SimpleFlagArg
+    name: File_In
+- !Flag
+  optional: true
+  synonyms:
+  - -subject_loc
+  description: "Location on the subject sequence in 1-based offsets (Format: start-stop)\n\
+    * Incompatible with:  db, gilist, seqidlist, negative_gilist,\ndb_soft_mask, db_hard_mask,\
+    \ remote"
+  args: !SimpleFlagArg
+    name: String
+- !Flag
+  optional: true
+  synonyms:
+  - -outfmt
+  description: "alignment view options:\n0 = pairwise,\n1 = query-anchored showing\
+    \ identities,\n2 = query-anchored no identities,\n3 = flat query-anchored, show\
+    \ identities,\n4 = flat query-anchored, no identities,\n5 = XML Blast output,\n\
+    6 = tabular,\n7 = tabular with comment lines,\n8 = Text ASN.1,\n9 = Binary ASN.1,\n\
+    10 = Comma-separated values,\n11 = BLAST archive format (ASN.1),\n12 = JSON Seqalign\
+    \ output,\n13 = JSON Blast output,\n14 = XML2 Blast output\nOptions 6, 7, and\
+    \ 10 can be additionally configured to produce\na custom format specified by space\
+    \ delimited format specifiers.\nThe supported format specifiers are:\nqseqid means\
+    \ Query Seq-id\nqgi means Query GI\nqacc means Query accesion\nqaccver means Query\
+    \ accesion.version\nqlen means Query sequence length\nsseqid means Subject Seq-id\n\
+    sallseqid means All subject Seq-id(s), separated by a ';'\nsgi means Subject GI\n\
+    sallgi means All subject GIs\nsacc means Subject accession\nsaccver means Subject\
+    \ accession.version\nsallacc means All subject accessions\nslen means Subject\
+    \ sequence length\nqstart means Start of alignment in query\nqend means End of\
+    \ alignment in query\nsstart means Start of alignment in subject\nsend means End\
+    \ of alignment in subject\nqseq means Aligned part of query sequence\nsseq means\
+    \ Aligned part of subject sequence\nevalue means Expect value\nbitscore means\
+    \ Bit score\nscore means Raw score\nlength means Alignment length\npident means\
+    \ Percentage of identical matches\nnident means Number of identical matches\n\
+    mismatch means Number of mismatches\npositive means Number of positive-scoring\
+    \ matches\ngapopen means Number of gap openings\ngaps means Total number of gaps\n\
+    ppos means Percentage of positive-scoring matches\nframes means Query and subject\
+    \ frames separated by a '/'\nqframe means Query frame\nsframe means Subject frame\n\
+    btop means Blast traceback operations (BTOP)\nstaxids means unique Subject Taxonomy\
+    \ ID(s), separated by a ';'\n(in numerical order)\nsscinames means unique Subject\
+    \ Scientific Name(s), separated by a ';'\nscomnames means unique Subject Common\
+    \ Name(s), separated by a ';'\nsblastnames means unique Subject Blast Name(s),\
+    \ separated by a ';'\n(in alphabetical order)\nsskingdoms means unique Subject\
+    \ Super Kingdom(s), separated by a ';'\n(in alphabetical order)\nstitle means\
+    \ Subject Title\nsalltitles means All Subject Title(s), separated by a '<>'\n\
+    sstrand means Subject Strand\nqcovs means Query Coverage Per Subject\nqcovhsp\
+    \ means Query Coverage Per HSP\nWhen not provided, the default value is:\n'qseqid\
+    \ sseqid pident length mismatch gapopen qstart qend sstart send\nevalue bitscore',\
+    \ which is equivalent to the keyword 'std'\nDefault = `0'"
+  args: !SimpleFlagArg
+    name: String
+- !Flag
+  optional: true
+  synonyms:
+  - -show_gis
+  description: Show NCBI GIs in deflines?
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -num_descriptions
+  description: "<Integer, >=0>\nNumber of database sequences to show one-line descriptions\
+    \ for\nNot applicable for outfmt > 4\nDefault = `500'\n* Incompatible with:  max_target_seqs"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -num_alignments
+  description: "<Integer, >=0>\nNumber of database sequences to show alignments for\n\
+    Default = `250'\n* Incompatible with:  max_target_seqs"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -line_length
+  description: "<Integer, >=1>\nLine length for formatting alignments\nNot applicable\
+    \ for outfmt > 4\nDefault = `60'"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -html
+  description: Produce HTML output?
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -seg
+  description: "Filter query sequence with SEG (Format: 'yes', 'window locut hicut',\
+    \ or\n'no' to disable)\nDefault = `no'"
+  args: !SimpleFlagArg
+    name: String
+- !Flag
+  optional: true
+  synonyms:
+  - -soft_masking
+  description: "Apply filtering locations as soft masks\nDefault = `false'"
+  args: !SimpleFlagArg
+    name: Boolean
+- !Flag
+  optional: true
+  synonyms:
+  - -lcase_masking
+  description: Use lower case filtering in query and subject sequence(s)?
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -gilist
+  description: "Restrict search of database to list of GI's\n* Incompatible with:\
+    \  negative_gilist, seqidlist, remote, subject,\nsubject_loc"
+  args: !SimpleFlagArg
+    name: String
+- !Flag
+  optional: true
+  synonyms:
+  - -seqidlist
+  description: "Restrict search of database to list of SeqId's\n* Incompatible with:\
+    \  gilist, negative_gilist, remote, subject,\nsubject_loc"
+  args: !SimpleFlagArg
+    name: String
+- !Flag
+  optional: true
+  synonyms:
+  - -negative_gilist
+  description: "Restrict search of database to everything except the listed GIs\n\
+    * Incompatible with:  gilist, seqidlist, remote, subject, subject_loc"
+  args: !SimpleFlagArg
+    name: String
+- !Flag
+  optional: true
+  synonyms:
+  - -entrez_query
+  description: "Restrict search with the given Entrez query\n* Requires:  remote"
+  args: !SimpleFlagArg
+    name: String
+- !Flag
+  optional: true
+  synonyms:
+  - -db_soft_mask
+  description: "Filtering algorithm ID to apply to the BLAST database as soft masking\n\
+    * Incompatible with:  db_hard_mask, subject, subject_loc"
+  args: !SimpleFlagArg
+    name: String
+- !Flag
+  optional: true
+  synonyms:
+  - -db_hard_mask
+  description: "Filtering algorithm ID to apply to the BLAST database as hard masking\n\
+    * Incompatible with:  db_soft_mask, subject, subject_loc"
+  args: !SimpleFlagArg
+    name: String
+- !Flag
+  optional: true
+  synonyms:
+  - -qcov_hsp_perc
+  description: "<Real, 0..100>\nPercent query coverage per hsp"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -max_hsps
+  description: "<Integer, >=1>\nSet maximum number of HSPs per subject sequence to\
+    \ save for each query"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -culling_limit
+  description: "<Integer, >=0>\nIf the query range of a hit is enveloped by that of\
+    \ at least this many\nhigher-scoring hits, delete the hit\n* Incompatible with:\
+    \  best_hit_overhang, best_hit_score_edge"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -best_hit_overhang
+  description: "<Real, (>0 and <0.5)>\nBest Hit algorithm overhang value (recommended\
+    \ value: 0.1)\n* Incompatible with:  culling_limit"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -best_hit_score_edge
+  description: "<Real, (>0 and <0.5)>\nBest Hit algorithm score edge value (recommended\
+    \ value: 0.1)\n* Incompatible with:  culling_limit"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -max_target_seqs
+  description: "<Integer, >=1>\nMaximum number of aligned sequences to keep\nNot applicable\
+    \ for outfmt <= 4\nDefault = `500'\n* Incompatible with:  num_descriptions, num_alignments"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -dbsize
+  description: Effective length of the database
+  args: !SimpleFlagArg
+    name: Int8
+- !Flag
+  optional: true
+  synonyms:
+  - -searchsp
+  description: "<Int8, >=0>\nEffective length of the search space"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -sum_stats
+  description: Use sum statistics
+  args: !SimpleFlagArg
+    name: Boolean
+- !Flag
+  optional: true
+  synonyms:
+  - -import_search_strategy
+  description: "Search strategy to use\n* Incompatible with:  export_search_strategy"
+  args: !SimpleFlagArg
+    name: File_In
+- !Flag
+  optional: true
+  synonyms:
+  - -export_search_strategy
+  description: "File name to record the search strategy used\n* Incompatible with:\
+    \  import_search_strategy"
+  args: !SimpleFlagArg
+    name: File_Out
+- !Flag
+  optional: true
+  synonyms:
+  - -xdrop_ungap
+  description: X-dropoff value (in bits) for ungapped extensions
+  args: !SimpleFlagArg
+    name: Real
+- !Flag
+  optional: true
+  synonyms:
+  - -xdrop_gap
+  description: X-dropoff value (in bits) for preliminary gapped extensions
+  args: !SimpleFlagArg
+    name: Real
+- !Flag
+  optional: true
+  synonyms:
+  - -xdrop_gap_final
+  description: X-dropoff value (in bits) for final gapped alignment
+  args: !SimpleFlagArg
+    name: Real
+- !Flag
+  optional: true
+  synonyms:
+  - -window_size
+  description: "<Integer, >=0>\nMultiple hits window size, use 0 to specify 1-hit\
+    \ algorithm"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ungapped
+  description: Perform ungapped alignment only?
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -parse_deflines
+  description: Should the query and subject defline(s) be parsed?
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -num_threads
+  description: "<Integer, >=1>\nNumber of threads (CPUs) to use in the BLAST search\n\
+    Default = `1'\n* Incompatible with:  remote"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -remote
+  description: "Execute search remotely?\n* Incompatible with:  gilist, seqidlist,\
+    \ negative_gilist, subject_loc,\nnum_threads"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -use_sw_tback
+  description: Compute locally optimal Smith-Waterman alignments?
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: Print USAGE and DESCRIPTION;  ignore all other parameters
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "--help\ndiamond version 0.9.24\nUSAGE\n  blastp [-h] [-help] [-import_search_strategy\
+  \ filename]\n    [-export_search_strategy filename] [-task task_name] [-db database_name]\n\
+  \    [-dbsize num_letters] [-gilist filename] [-seqidlist filename]\n    [-negative_gilist\
+  \ filename] [-entrez_query entrez_query]\n    [-db_soft_mask filtering_algorithm]\
+  \ [-db_hard_mask filtering_algorithm]\n    [-subject subject_input_file] [-subject_loc\
+  \ range] [-query input_file]\n    [-out output_file] [-evalue evalue] [-word_size\
+  \ int_value]\n    [-gapopen open_penalty] [-gapextend extend_penalty]\n    [-qcov_hsp_perc\
+  \ float_value] [-max_hsps int_value]\n    [-xdrop_ungap float_value] [-xdrop_gap\
+  \ float_value]\n    [-xdrop_gap_final float_value] [-searchsp int_value]\n    [-sum_stats\
+  \ bool_value] [-seg SEG_options] [-soft_masking soft_masking]\n    [-matrix matrix_name]\
+  \ [-threshold float_value] [-culling_limit int_value]\n    [-best_hit_overhang float_value]\
+  \ [-best_hit_score_edge float_value]\n    [-window_size int_value] [-lcase_masking]\
+  \ [-query_loc range]\n    [-parse_deflines] [-outfmt format] [-show_gis]\n    [-num_descriptions\
+  \ int_value] [-num_alignments int_value]\n    [-line_length line_length] [-html]\
+  \ [-max_target_seqs num_sequences]\n    [-num_threads int_value] [-ungapped] [-remote]\
+  \ [-comp_based_stats compo]\n    [-use_sw_tback] [-version]\n\nDESCRIPTION\n   Protein-Protein\
+  \ BLAST 2.2.31+\n\nOPTIONAL ARGUMENTS\n -h\n   Print USAGE and DESCRIPTION;  ignore\
+  \ all other parameters\n -help\n   Print USAGE, DESCRIPTION and ARGUMENTS; ignore\
+  \ all other parameters\n -version\n   Print version number;  ignore other arguments\n\
+  \n *** Input query options\n -query <File_In>\n   Input file name\n   Default =\
+  \ `-'\n -query_loc <String>\n   Location on the query sequence in 1-based offsets\
+  \ (Format: start-stop)\n\n *** General search options\n -task <String, Permissible\
+  \ values: 'blastp' 'blastp-fast' 'blastp-short' >\n   Task to execute\n   Default\
+  \ = `blastp'\n -db <String>\n   BLAST database name\n    * Incompatible with:  subject,\
+  \ subject_loc\n -out <File_Out>\n   Output file name\n   Default = `-'\n -evalue\
+  \ <Real>\n   Expectation value (E) threshold for saving hits \n   Default = `10'\n\
+  \ -word_size <Integer, >=2>\n   Word size for wordfinder algorithm\n -gapopen <Integer>\n\
+  \   Cost to open a gap\n -gapextend <Integer>\n   Cost to extend a gap\n -matrix\
+  \ <String>\n   Scoring matrix name (normally BLOSUM62)\n -threshold <Real, >=0>\n\
+  \   Minimum word score such that the word is added to the BLAST lookup table\n -comp_based_stats\
+  \ <String>\n   Use composition-based statistics:\n       D or d: default (equivalent\
+  \ to 2 )\n       0 or F or f: No composition-based statistics\n       1: Composition-based\
+  \ statistics as in NAR 29:2994-3005, 2001\n       2 or T or t : Composition-based\
+  \ score adjustment as in Bioinformatics\n   21:902-911,\n       2005, conditioned\
+  \ on sequence properties\n       3: Composition-based score adjustment as in Bioinformatics\
+  \ 21:902-911,\n       2005, unconditionally\n   Default = `2'\n\n *** BLAST-2-Sequences\
+  \ options\n -subject <File_In>\n   Subject sequence(s) to search\n    * Incompatible\
+  \ with:  db, gilist, seqidlist, negative_gilist,\n   db_soft_mask, db_hard_mask\n\
+  \ -subject_loc <String>\n   Location on the subject sequence in 1-based offsets\
+  \ (Format: start-stop)\n    * Incompatible with:  db, gilist, seqidlist, negative_gilist,\n\
+  \   db_soft_mask, db_hard_mask, remote\n\n *** Formatting options\n -outfmt <String>\n\
+  \   alignment view options:\n     0 = pairwise,\n     1 = query-anchored showing\
+  \ identities,\n     2 = query-anchored no identities,\n     3 = flat query-anchored,\
+  \ show identities,\n     4 = flat query-anchored, no identities,\n     5 = XML Blast\
+  \ output,\n     6 = tabular,\n     7 = tabular with comment lines,\n     8 = Text\
+  \ ASN.1,\n     9 = Binary ASN.1,\n    10 = Comma-separated values,\n    11 = BLAST\
+  \ archive format (ASN.1),\n    12 = JSON Seqalign output,\n    13 = JSON Blast output,\n\
+  \    14 = XML2 Blast output\n   \n   Options 6, 7, and 10 can be additionally configured\
+  \ to produce\n   a custom format specified by space delimited format specifiers.\n\
+  \   The supported format specifiers are:\n   \t    qseqid means Query Seq-id\n \
+  \  \t       qgi means Query GI\n   \t      qacc means Query accesion\n   \t   qaccver\
+  \ means Query accesion.version\n   \t      qlen means Query sequence length\n  \
+  \ \t    sseqid means Subject Seq-id\n   \t sallseqid means All subject Seq-id(s),\
+  \ separated by a ';'\n   \t       sgi means Subject GI\n   \t    sallgi means All\
+  \ subject GIs\n   \t      sacc means Subject accession\n   \t   saccver means Subject\
+  \ accession.version\n   \t   sallacc means All subject accessions\n   \t      slen\
+  \ means Subject sequence length\n   \t    qstart means Start of alignment in query\n\
+  \   \t      qend means End of alignment in query\n   \t    sstart means Start of\
+  \ alignment in subject\n   \t      send means End of alignment in subject\n   \t\
+  \      qseq means Aligned part of query sequence\n   \t      sseq means Aligned\
+  \ part of subject sequence\n   \t    evalue means Expect value\n   \t  bitscore\
+  \ means Bit score\n   \t     score means Raw score\n   \t    length means Alignment\
+  \ length\n   \t    pident means Percentage of identical matches\n   \t    nident\
+  \ means Number of identical matches\n   \t  mismatch means Number of mismatches\n\
+  \   \t  positive means Number of positive-scoring matches\n   \t   gapopen means\
+  \ Number of gap openings\n   \t      gaps means Total number of gaps\n   \t    \
+  \  ppos means Percentage of positive-scoring matches\n   \t    frames means Query\
+  \ and subject frames separated by a '/'\n   \t    qframe means Query frame\n   \t\
+  \    sframe means Subject frame\n   \t      btop means Blast traceback operations\
+  \ (BTOP)\n   \t   staxids means unique Subject Taxonomy ID(s), separated by a ';'\n\
+  \   \t\t\t (in numerical order)\n   \t sscinames means unique Subject Scientific\
+  \ Name(s), separated by a ';'\n   \t scomnames means unique Subject Common Name(s),\
+  \ separated by a ';'\n   \tsblastnames means unique Subject Blast Name(s), separated\
+  \ by a ';'\n   \t\t\t (in alphabetical order)\n   \tsskingdoms means unique Subject\
+  \ Super Kingdom(s), separated by a ';'\n   \t\t\t (in alphabetical order) \n   \t\
+  \    stitle means Subject Title\n   \tsalltitles means All Subject Title(s), separated\
+  \ by a '<>'\n   \t   sstrand means Subject Strand\n   \t     qcovs means Query Coverage\
+  \ Per Subject\n   \t   qcovhsp means Query Coverage Per HSP\n   When not provided,\
+  \ the default value is:\n   'qseqid sseqid pident length mismatch gapopen qstart\
+  \ qend sstart send\n   evalue bitscore', which is equivalent to the keyword 'std'\n\
+  \   Default = `0'\n -show_gis\n   Show NCBI GIs in deflines?\n -num_descriptions\
+  \ <Integer, >=0>\n   Number of database sequences to show one-line descriptions\
+  \ for\n   Not applicable for outfmt > 4\n   Default = `500'\n    * Incompatible\
+  \ with:  max_target_seqs\n -num_alignments <Integer, >=0>\n   Number of database\
+  \ sequences to show alignments for\n   Default = `250'\n    * Incompatible with:\
+  \  max_target_seqs\n -line_length <Integer, >=1>\n   Line length for formatting\
+  \ alignments\n   Not applicable for outfmt > 4\n   Default = `60'\n -html\n   Produce\
+  \ HTML output?\n\n *** Query filtering options\n -seg <String>\n   Filter query\
+  \ sequence with SEG (Format: 'yes', 'window locut hicut', or\n   'no' to disable)\n\
+  \   Default = `no'\n -soft_masking <Boolean>\n   Apply filtering locations as soft\
+  \ masks\n   Default = `false'\n -lcase_masking\n   Use lower case filtering in query\
+  \ and subject sequence(s)?\n\n *** Restrict search or results\n -gilist <String>\n\
+  \   Restrict search of database to list of GI's\n    * Incompatible with:  negative_gilist,\
+  \ seqidlist, remote, subject,\n   subject_loc\n -seqidlist <String>\n   Restrict\
+  \ search of database to list of SeqId's\n    * Incompatible with:  gilist, negative_gilist,\
+  \ remote, subject,\n   subject_loc\n -negative_gilist <String>\n   Restrict search\
+  \ of database to everything except the listed GIs\n    * Incompatible with:  gilist,\
+  \ seqidlist, remote, subject, subject_loc\n -entrez_query <String>\n   Restrict\
+  \ search with the given Entrez query\n    * Requires:  remote\n -db_soft_mask <String>\n\
+  \   Filtering algorithm ID to apply to the BLAST database as soft masking\n    *\
+  \ Incompatible with:  db_hard_mask, subject, subject_loc\n -db_hard_mask <String>\n\
+  \   Filtering algorithm ID to apply to the BLAST database as hard masking\n    *\
+  \ Incompatible with:  db_soft_mask, subject, subject_loc\n -qcov_hsp_perc <Real,\
+  \ 0..100>\n   Percent query coverage per hsp\n -max_hsps <Integer, >=1>\n   Set\
+  \ maximum number of HSPs per subject sequence to save for each query\n -culling_limit\
+  \ <Integer, >=0>\n   If the query range of a hit is enveloped by that of at least\
+  \ this many\n   higher-scoring hits, delete the hit\n    * Incompatible with:  best_hit_overhang,\
+  \ best_hit_score_edge\n -best_hit_overhang <Real, (>0 and <0.5)>\n   Best Hit algorithm\
+  \ overhang value (recommended value: 0.1)\n    * Incompatible with:  culling_limit\n\
+  \ -best_hit_score_edge <Real, (>0 and <0.5)>\n   Best Hit algorithm score edge value\
+  \ (recommended value: 0.1)\n    * Incompatible with:  culling_limit\n -max_target_seqs\
+  \ <Integer, >=1>\n   Maximum number of aligned sequences to keep \n   Not applicable\
+  \ for outfmt <= 4\n   Default = `500'\n    * Incompatible with:  num_descriptions,\
+  \ num_alignments\n\n *** Statistical options\n -dbsize <Int8>\n   Effective length\
+  \ of the database \n -searchsp <Int8, >=0>\n   Effective length of the search space\n\
+  \ -sum_stats <Boolean>\n   Use sum statistics\n\n *** Search strategy options\n\
+  \ -import_search_strategy <File_In>\n   Search strategy to use\n    * Incompatible\
+  \ with:  export_search_strategy\n -export_search_strategy <File_Out>\n   File name\
+  \ to record the search strategy used\n    * Incompatible with:  import_search_strategy\n\
+  \n *** Extension options\n -xdrop_ungap <Real>\n   X-dropoff value (in bits) for\
+  \ ungapped extensions\n -xdrop_gap <Real>\n   X-dropoff value (in bits) for preliminary\
+  \ gapped extensions\n -xdrop_gap_final <Real>\n   X-dropoff value (in bits) for\
+  \ final gapped alignment\n -window_size <Integer, >=0>\n   Multiple hits window\
+  \ size, use 0 to specify 1-hit algorithm\n -ungapped\n   Perform ungapped alignment\
+  \ only?\n\n *** Miscellaneous options\n -parse_deflines\n   Should the query and\
+  \ subject defline(s) be parsed?\n -num_threads <Integer, >=1>\n   Number of threads\
+  \ (CPUs) to use in the BLAST search\n   Default = `1'\n    * Incompatible with:\
+  \  remote\n -remote\n   Execute search remotely?\n    * Incompatible with:  gilist,\
+  \ seqidlist, negative_gilist, subject_loc,\n   num_threads\n -use_sw_tback\n   Compute\
+  \ locally optimal Smith-Waterman alignments?\n\nBio.Alphabet has been removed from\
+  \ Biopython. In many cases, the alphabet can simply be ignored and removed from\
+  \ scripts. In a few cases, you may need to specify the ``molecule_type`` as an annotation\
+  \ on a SeqRecord for your script to work correctly. Please see https://biopython.org/wiki/Alphabet\
+  \ for more information.\nThere was a problem installing BUSCO or importing one of\
+  \ its dependencies. See the user guide and the GitLab issue board (https://gitlab.com/ezlab/busco/issues)\
+  \ if you need further assistance.\n127\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/eukulele:1.0.2--pyhcb32578_1

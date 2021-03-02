@@ -1,0 +1,99 @@
+!Command
+command:
+- scHicManageScool
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --matrix
+  - -m
+  description: 'The scool matrix (default: None)'
+  args: !SimpleFlagArg
+    name: MATRIX
+- !Flag
+  optional: true
+  synonyms:
+  - --outFileName
+  - -o
+  description: "File name to save the exported matrix, in case of\nextract the folder\
+    \ name (default: None)"
+  args: !SimpleFlagArg
+    name: OUTFILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --action
+  - -a
+  description: "The different actions this tool is able to do. Update\ncan be used\
+    \ to update scool files from scHiCExplorer\nversion 4 to the file format as it\
+    \ is used starting\nfrom scHiCExplorer 5.ExtractToCool extracts either a\ngiven\
+    \ scool file to individual cool files or only a\nsubset given by a list. ExtractScool\
+    \ requires a list\nof internal cells that should be copied to a new scool\nfile.\
+    \ (default: none)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      extractScool:
+      update:
+      extractToCool:
+- !Flag
+  optional: true
+  synonyms:
+  - --cellList
+  - -cl
+  description: "A text file with the cells that should be extracted or\ncopied to\
+    \ the a new scool file. (default: None)"
+  args: !SimpleFlagArg
+    name: CELLLIST
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  - -t
+  description: "Number of threads. Using the python multiprocessing\nmodule. (default:\
+    \ 4)"
+  args: !SimpleFlagArg
+    name: THREADS
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: scHicManageScool --matrix MATRIX --outFileName OUTFILENAME\n  \
+  \                      [--action {update,extractToCool,extractScool}]\n        \
+  \                [--cellList CELLLIST] [--threads THREADS] [--help]\n          \
+  \              [--version]\n\nThis script offers methods to extract cool files or\
+  \ to update a scool file for\nscHiCExplorer version 5\n\nRequired arguments:\n \
+  \ --matrix MATRIX, -m MATRIX\n                        The scool matrix (default:\
+  \ None)\n  --outFileName OUTFILENAME, -o OUTFILENAME\n                        File\
+  \ name to save the exported matrix, in case of\n                        extract\
+  \ the folder name (default: None)\n\nOptional arguments:\n  --action {update,extractToCool,extractScool},\
+  \ -a {update,extractToCool,extractScool}\n                        The different\
+  \ actions this tool is able to do. Update\n                        can be used to\
+  \ update scool files from scHiCExplorer\n                        version 4 to the\
+  \ file format as it is used starting\n                        from scHiCExplorer\
+  \ 5.ExtractToCool extracts either a\n                        given scool file to\
+  \ individual cool files or only a\n                        subset given by a list.\
+  \ ExtractScool requires a list\n                        of internal cells that should\
+  \ be copied to a new scool\n                        file. (default: none)\n  --cellList\
+  \ CELLLIST, -cl CELLLIST\n                        A text file with the cells that\
+  \ should be extracted or\n                        copied to the a new scool file.\
+  \ (default: None)\n  --threads THREADS, -t THREADS\n                        Number\
+  \ of threads. Using the python multiprocessing\n                        module.\
+  \ (default: 4)\n  --help, -h            show this help message and exit\n  --version\
+  \             show program's version number and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/schicexplorer:7--py_0

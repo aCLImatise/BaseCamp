@@ -1,0 +1,205 @@
+!Command
+command:
+- TEtranscripts
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: analysis.
+  description: -n [normalization], --norm [normalization]
+- !Positional
+  optional: false
+  position: 0
+  name: DESeq_default
+  description: --sortByPos           Alignment files are sorted by chromosome position.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --TE
+  description: '[--format [input file format]]'
+  args: !SimpleFlagArg
+    name: TE-GTF-file
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: "sample [treatment sample ...], --treatment treatment sample [treatment\
+    \ sample ...]\nSample files in group 1 (e.g. treatment/mutant)"
+  args: !SimpleFlagArg
+    name: treatment
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: "sample [control sample ...], --control control sample [control sample\
+    \ ...]\nSample files in group 2 (e.g. control/wildtype)"
+  args: !SimpleFlagArg
+    name: control
+- !Flag
+  optional: true
+  synonyms:
+  - --GTF
+  description: GTF file for gene annotations
+  args: !SimpleFlagArg
+    name: genic-GTF-file
+- !Flag
+  optional: true
+  synonyms:
+  - --format
+  description: "[input file format]\nInput file format: BAM or SAM. DEFAULT: BAM"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --stranded
+  description: "[option]   Is this a stranded library? (no, forward, or reverse).\n\
+    For \"first-strand\" cDNA libraries (e.g. TruSeq\nstranded), choose reverse. For\
+    \ \"second-strand\" cDNA\nlibraries (e.g. QIAseq stranded), choose forward.\n\
+    DEFAULT: no."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --mode
+  description: "[TE counting mode]\nHow to count TE: uniq (unique mappers only), or\
+    \ multi\n(distribute among all alignments). DEFAULT: multi"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --project
+  description: '[name]      Name of this project. DEFAULT: TEtranscripts_out'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: "[pvalue], --padj [pvalue]\nFDR cutoff for significance. DEFAULT: 0.05"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: "[foldchange], --foldchange [foldchange]\nFold-change ratio (absolute)\
+    \ cutoff for differential\nexpression. DEFAULT: 1"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --minread
+  description: "[min_read]  read count cutoff. genes/TEs with reads less than the\n\
+    cutoff will not be considered. DEFAULT: 1"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --DESeq
+  description: Use DESeq (instead of DESeq2) for differential
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: "[iteration], --iteration [iteration]\nnumber of iteration to run the\
+    \ optimization. DEFAULT:\n100"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --maxL
+  description: '[maxL]         maximum fragment length. DEFAULT:500'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --minL
+  description: '[minL]         minimum fragment length. DEFAULT:0'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  description: "[fragLength], --fragmentLength [fragLength]\naverage fragment length\
+    \ for single end reads. For\npaired-end, estimated from the input alignment file.\n\
+    DEFAULT: for paired-end, estimate from the input\nalignment file; for single-end,\
+    \ ignored by default."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: "[verbose]   Set verbose level. 0: only show critical message, 1:\n\
+    show additional warning message, 2: show process\ninformation, 3: show debug messages.\
+    \ DEFAULT:2"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: TEtranscripts [-h] -t treatment sample [treatment sample ...] -c\n\
+  \                     control sample [control sample ...] --GTF genic-GTF-file\n\
+  \                     --TE TE-GTF-file [--format [input file format]]\n        \
+  \             [--stranded [option]] [--mode [TE counting mode]]\n              \
+  \       [--project [name]] [-p [pvalue]] [-f [foldchange]]\n                   \
+  \  [--minread [min_read]] [--DESeq] [-n [normalization]]\n                     [--sortByPos]\
+  \ [-i [iteration]] [--maxL [maxL]]\n                     [--minL [minL]] [-L [fragLength]]\
+  \ [--verbose [verbose]]\n                     [--version]\n\nIdentifying differential\
+  \ transcription of gene and transposable elements.\n\noptional arguments:\n  -h,\
+  \ --help            show this help message and exit\n  -t treatment sample [treatment\
+  \ sample ...], --treatment treatment sample [treatment sample ...]\n           \
+  \             Sample files in group 1 (e.g. treatment/mutant)\n  -c control sample\
+  \ [control sample ...], --control control sample [control sample ...]\n        \
+  \                Sample files in group 2 (e.g. control/wildtype)\n  --GTF genic-GTF-file\
+  \  GTF file for gene annotations\n  --TE TE-GTF-file      GTF file for transposable\
+  \ element annotations\n  --format [input file format]\n                        Input\
+  \ file format: BAM or SAM. DEFAULT: BAM\n  --stranded [option]   Is this a stranded\
+  \ library? (no, forward, or reverse).\n                        For \"first-strand\"\
+  \ cDNA libraries (e.g. TruSeq\n                        stranded), choose reverse.\
+  \ For \"second-strand\" cDNA\n                        libraries (e.g. QIAseq stranded),\
+  \ choose forward.\n                        DEFAULT: no.\n  --mode [TE counting mode]\n\
+  \                        How to count TE: uniq (unique mappers only), or multi\n\
+  \                        (distribute among all alignments). DEFAULT: multi\n  --project\
+  \ [name]      Name of this project. DEFAULT: TEtranscripts_out\n  -p [pvalue], --padj\
+  \ [pvalue]\n                        FDR cutoff for significance. DEFAULT: 0.05\n\
+  \  -f [foldchange], --foldchange [foldchange]\n                        Fold-change\
+  \ ratio (absolute) cutoff for differential\n                        expression.\
+  \ DEFAULT: 1\n  --minread [min_read]  read count cutoff. genes/TEs with reads less\
+  \ than the\n                        cutoff will not be considered. DEFAULT: 1\n\
+  \  --DESeq               Use DESeq (instead of DESeq2) for differential\n      \
+  \                  analysis.\n  -n [normalization], --norm [normalization]\n   \
+  \                     Normalization method : DESeq_default (DESeq default\n    \
+  \                    normalization method), TC (total annotated counts),\n     \
+  \                   quant (quantile normalization). Only applicable if\n       \
+  \                 DESeq is used instead of DESeq2. DEFAULT:\n                  \
+  \      DESeq_default\n  --sortByPos           Alignment files are sorted by chromosome\
+  \ position.\n  -i [iteration], --iteration [iteration]\n                       \
+  \ number of iteration to run the optimization. DEFAULT:\n                      \
+  \  100\n  --maxL [maxL]         maximum fragment length. DEFAULT:500\n  --minL [minL]\
+  \         minimum fragment length. DEFAULT:0\n  -L [fragLength], --fragmentLength\
+  \ [fragLength]\n                        average fragment length for single end reads.\
+  \ For\n                        paired-end, estimated from the input alignment file.\n\
+  \                        DEFAULT: for paired-end, estimate from the input\n    \
+  \                    alignment file; for single-end, ignored by default.\n  --verbose\
+  \ [verbose]   Set verbose level. 0: only show critical message, 1:\n           \
+  \             show additional warning message, 2: show process\n               \
+  \         information, 3: show debug messages. DEFAULT:2\n  --version          \
+  \   show program's version number and exit\n\nExample: TEtranscripts -t RNAseq1.bam\
+  \ RNAseq2.bam -c control_RNAseq1.bam\ncontrol_RNAseq2.bam --GTF gene_annotation.gtf\
+  \ --TE TE_annotation.gtf\n--sortByPos --mode multi\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/tetranscripts:2.2.1--pyh864c0ab_0

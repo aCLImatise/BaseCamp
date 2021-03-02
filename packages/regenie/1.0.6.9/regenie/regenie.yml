@@ -1,0 +1,419 @@
+!Command
+command:
+- regenie
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: variants
+  description: --minINFO DOUBLE(=0)      minimum imputation info score (Impute/Mach
+- !Positional
+  optional: false
+  position: 0
+  name: threshold
+  description: --approx                  use approximation to Firth correction for
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --helpFull
+  description: print list of all available options
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --step
+  description: "specify if fitting null model (=1) or\nassociation testing (=2)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --bed
+  description: prefix to PLINK .bed/.bim/.fam files
+  args: !SimpleFlagArg
+    name: PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - --pgen
+  description: prefix to PLINK2 .pgen/.pvar/.psam files
+  args: !SimpleFlagArg
+    name: PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - --bgen
+  description: BGEN file
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --sample
+  description: sample file corresponding to BGEN file
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --ref-first
+  description: "use the first allele as the reference for\nBGEN or PLINK bed/bim/fam\
+    \ input format [default\nassumes reference is last]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --keep
+  description: "file listing samples to retain in the\nanalysis (no header; starts\
+    \ with FID IID)"
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --remove
+  description: "file listing samples to remove from the\nanalysis (no header; starts\
+    \ with FID IID)"
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --extract
+  description: file with IDs of variants to retain in the
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --phenoCol
+  description: "phenotype name in header (use for each\nphenotype to keep)"
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --phenoColList
+  description: ",..,STRING\ncomma separated list of phenotype names to\nkeep"
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --covarFile
+  description: "covariate file (header required starting with\nFID IID)"
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --covarCol
+  description: "covariate name in header (use for each\ncovariate to keep)"
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --covarColList
+  description: ",..,STRING\ncomma separated list of covariate names to\nkeep"
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --bt
+  description: analyze phenotypes as binary
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - '-1'
+  - --cc12
+  description: "use control=1,case=2,missing=NA encoding for\nbinary traits"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --bsize
+  description: size of genotype blocks
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --cv
+  description: (=5)              number of cross validation (CV) folds
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --loocv
+  description: use leave-one out cross validation (LOOCV)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --l0
+  description: "(=5)              number of ridge parameters to use when\nfitting\
+    \ models within blocks [evenly spaced in\n(0,1)]"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --l1
+  description: "(=5)              number of ridge parameters to use when\nfitting\
+    \ model across blocks [evenly spaced in (0,1)]"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --lowmem
+  description: "reduce memory usage by writing level 0\npredictions to temporary files"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --lowmem-prefix
+  description: "prefix where to write the temporary files in\nstep 1 (default is to\
+    \ use prefix from --out)"
+  args: !SimpleFlagArg
+    name: PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - --strict
+  description: "remove all samples with missingness at any of\nthe traits"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --print-prs
+  description: "also output polygenic predictions without\nusing LOCO (=whole genome\
+    \ PRS)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out
+  description: prefix for output files
+  args: !SimpleFlagArg
+    name: PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: number of threads
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --pred
+  description: "file containing the list of predictions files\nfrom step 1"
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --ignore-pred
+  description: "skip reading predictions from step 1\n(equivalent to linear/logistic\
+    \ regression with only\ncovariates)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --use-prs
+  description: "when using whole genome PRS step 1 output in\n'--pred'"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --force-impute
+  description: "keep and impute missing observations when in\nstep 2 (default is to\
+    \ drop missing for each\ntrait)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --write-samples
+  description: "write IDs of samples included for each trait\n(only in step 2)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --minMAC
+  description: (=5)          minimum minor allele count (MAC) for tested
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --split
+  description: "split asssociation results into separate\nfiles for each trait"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --firth
+  description: use Firth correction for p-values less than
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --spa
+  description: "use Saddlepoint approximation (SPA) for\np-values less than threshold"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pThresh
+  description: "(=0.05)    P-value threshold below which to apply\nFirth/SPA correction"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --chr
+  description: "specify chromosome to test in step 2 (use for\neach chromosome)"
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --chrList
+  description: ",..,STRING\nComma separated list of chromosomes to test\nin step 2"
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --range
+  description: ":MINPOS-MAXPOS\nto specify a physical position window for\nvariants\
+    \ to test in step 2"
+  args: !SimpleFlagArg
+    name: CHR
+- !Flag
+  optional: true
+  synonyms:
+  - --test
+  description: "'dominant' or 'recessive' (default is\nadditive test)"
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --gz
+  description: compress output files (gzip format)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: ''
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --exclude
+  description: ''
+  args: !SimpleFlagArg
+    name: FILE
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: print list of available options
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "              |==============================|\n              |      REGENIE\
+  \ v1.0.6.9.gz     |\n              |==============================|\n\nCopyright\
+  \ (c) 2020 Joelle Mbatchou and Jonathan Marchini.\nDistributed under the MIT License.\n\
+  Compiled with Boost Iostream library.\nUsing Intel MKL with Eigen.\n\n\nUsage:\n\
+  \  regenie [OPTION...]\n\n  -h, --help      print list of available options\n  \
+  \    --helpFull  print list of all available options\n\n Main options:\n      --step\
+  \ INT                specify if fitting null model (=1) or\n                   \
+  \             association testing (=2)\n      --bed PREFIX              prefix to\
+  \ PLINK .bed/.bim/.fam files\n      --pgen PREFIX             prefix to PLINK2 .pgen/.pvar/.psam\
+  \ files\n      --bgen FILE               BGEN file\n      --sample FILE        \
+  \     sample file corresponding to BGEN file\n      --ref-first               use\
+  \ the first allele as the reference for\n                                BGEN or\
+  \ PLINK bed/bim/fam input format [default\n                                assumes\
+  \ reference is last]\n      --keep FILE               file listing samples to retain\
+  \ in the\n                                analysis (no header; starts with FID IID)\n\
+  \      --remove FILE             file listing samples to remove from the\n     \
+  \                           analysis (no header; starts with FID IID)\n      --extract\
+  \ FILE            file with IDs of variants to retain in the\n                 \
+  \               analysis\n      --exclude FILE            file with IDs of variants\
+  \ to remove from the\n                                analysis\n  -p, --phenoFile\
+  \ FILE          phenotype file (header required starting with\n                \
+  \                FID IID)\n      --phenoCol STRING         phenotype name in header\
+  \ (use for each\n                                phenotype to keep)\n      --phenoColList\
+  \ STRING,..,STRING\n                                comma separated list of phenotype\
+  \ names to\n                                keep\n  -c, --covarFile FILE       \
+  \   covariate file (header required starting with\n                            \
+  \    FID IID)\n      --covarCol STRING         covariate name in header (use for\
+  \ each\n                                covariate to keep)\n      --covarColList\
+  \ STRING,..,STRING\n                                comma separated list of covariate\
+  \ names to\n                                keep\n      --bt                   \
+  \   analyze phenotypes as binary\n  -1, --cc12                    use control=1,case=2,missing=NA\
+  \ encoding for\n                                binary traits\n  -b, --bsize INT\
+  \               size of genotype blocks\n      --cv INT(=5)              number\
+  \ of cross validation (CV) folds\n      --loocv                   use leave-one\
+  \ out cross validation (LOOCV)\n      --l0 INT(=5)              number of ridge\
+  \ parameters to use when\n                                fitting models within\
+  \ blocks [evenly spaced in\n                                (0,1)]\n      --l1 INT(=5)\
+  \              number of ridge parameters to use when\n                        \
+  \        fitting model across blocks [evenly spaced in (0,1)]\n      --lowmem  \
+  \                reduce memory usage by writing level 0\n                      \
+  \          predictions to temporary files\n      --lowmem-prefix PREFIX    prefix\
+  \ where to write the temporary files in\n                                step 1\
+  \ (default is to use prefix from --out)\n      --strict                  remove\
+  \ all samples with missingness at any of\n                                the traits\n\
+  \      --print-prs               also output polygenic predictions without\n   \
+  \                             using LOCO (=whole genome PRS)\n  -o, --out PREFIX\
+  \              prefix for output files\n      --threads INT             number of\
+  \ threads\n      --pred FILE               file containing the list of predictions\
+  \ files\n                                from step 1\n      --ignore-pred      \
+  \       skip reading predictions from step 1\n                                (equivalent\
+  \ to linear/logistic regression with only\n                                covariates)\n\
+  \      --use-prs                 when using whole genome PRS step 1 output in\n\
+  \                                '--pred'\n      --force-impute            keep\
+  \ and impute missing observations when in\n                                step\
+  \ 2 (default is to drop missing for each\n                                trait)\n\
+  \      --write-samples           write IDs of samples included for each trait\n\
+  \                                (only in step 2)\n      --minMAC INT(=5)      \
+  \    minimum minor allele count (MAC) for tested\n                             \
+  \   variants\n      --minINFO DOUBLE(=0)      minimum imputation info score (Impute/Mach\n\
+  \                                R^2) for tested variants\n      --split       \
+  \            split asssociation results into separate\n                        \
+  \        files for each trait\n      --firth                   use Firth correction\
+  \ for p-values less than\n                                threshold\n      --approx\
+  \                  use approximation to Firth correction for\n                 \
+  \               computational speedup\n      --spa                     use Saddlepoint\
+  \ approximation (SPA) for\n                                p-values less than threshold\n\
+  \      --pThresh FLOAT(=0.05)    P-value threshold below which to apply\n      \
+  \                          Firth/SPA correction\n      --chr STRING            \
+  \  specify chromosome to test in step 2 (use for\n                             \
+  \   each chromosome)\n      --chrList STRING,..,STRING\n                       \
+  \         Comma separated list of chromosomes to test\n                        \
+  \        in step 2\n      --range CHR:MINPOS-MAXPOS\n                          \
+  \      to specify a physical position window for\n                             \
+  \   variants to test in step 2\n      --test STRING             'dominant' or 'recessive'\
+  \ (default is\n                                additive test)\n      --gz      \
+  \                compress output files (gzip format)\n\nFor more information, use\
+  \ option '--help' or visit the website: https://rgcgithub.github.io/regenie/\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/regenie:1.0.6.9--h485b6fc_0

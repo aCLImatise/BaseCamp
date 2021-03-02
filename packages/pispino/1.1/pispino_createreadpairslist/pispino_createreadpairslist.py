@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Directory, File, Int, Boolean, String
+
+Pispino_Createreadpairslist_V0_1_0 = CommandToolBuilder(tool="pispino_createreadpairslist", base_command=["pispino_createreadpairslist"], inputs=[ToolInput(tag="in_directory_your_raw", input_type=Directory(optional=True), prefix="-i", doc=InputDocumentation(doc="[REQUIRED] Directory with your raw sequences in\ngzipped FASTQ")), ToolInput(tag="in_name_output_list", input_type=File(optional=True), prefix="-o", doc=InputDocumentation(doc="Name of output list file.")), ToolInput(tag="in_label_add_c_end", input_type=File(optional=True), prefix="--label-add-c-end", doc=InputDocumentation(doc="Add a label to the END of each sample ids in the\noutput file. N.B. '_' is not allowed")), ToolInput(tag="in_label_add_c_front", input_type=File(optional=True), prefix="--label-add-c-front", doc=InputDocumentation(doc="Add a label to the FRONT of each sample ids in the\noutput file. N.B. '_' is not allowed")), ToolInput(tag="in_label_re_index_c", input_type=Int(optional=True), prefix="--label-reindex-c", doc=InputDocumentation(doc="Rename samples with the given label. It will\nautomatically add 001, 002 etc. at the end of each\nname. N.B. '_' is not allowed")), ToolInput(tag="in_ignore_name_clash", input_type=Boolean(optional=True), prefix="-f", doc=InputDocumentation(doc="Ignore name clash and create a mapping file anyway.")), ToolInput(tag="in_makes", input_type=String(), position=0, doc=InputDocumentation(doc="")), ToolInput(tag="in_a", input_type=String(), position=1, doc=InputDocumentation(doc="")), ToolInput(tag="in_read_pairs_list_dot", input_type=String(), position=2, doc=InputDocumentation(doc=""))], outputs=[ToolOutput(tag="out_name_output_list", output_type=File(optional=True), selector=InputSelector(input_to_select="in_name_output_list", type_hint=File()), doc=OutputDocumentation(doc="Name of output list file.")), ToolOutput(tag="out_label_add_c_end", output_type=File(optional=True), selector=InputSelector(input_to_select="in_label_add_c_end", type_hint=File()), doc=OutputDocumentation(doc="Add a label to the END of each sample ids in the\noutput file. N.B. '_' is not allowed")), ToolOutput(tag="out_label_add_c_front", output_type=File(optional=True), selector=InputSelector(input_to_select="in_label_add_c_front", type_hint=File()), doc=OutputDocumentation(doc="Add a label to the FRONT of each sample ids in the\noutput file. N.B. '_' is not allowed"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Pispino_Createreadpairslist_V0_1_0().translate("wdl", allow_empty_container=True)
+

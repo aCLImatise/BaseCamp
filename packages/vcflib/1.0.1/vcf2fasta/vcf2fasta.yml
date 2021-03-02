@@ -1,0 +1,51 @@
+!Command
+command:
+- vcf2fasta
+positional:
+- !Positional
+  optional: true
+  position: 0
+  name: file
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --reference
+  description: Use this reference when decomposing samples.
+  args: !SimpleFlagArg
+    name: REF
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --prefix
+  description: Affix this output prefix to each file, none by default
+  args: !SimpleFlagArg
+    name: PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - -P
+  - --default-ploidy
+  description: Set a default ploidy for samples which do not have information in the
+    first record (2).
+  args: !SimpleFlagArg
+    name: N
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "usage: vcf2fasta [options] [file]\n\noptions:\n    -f, --reference REF\
+  \     Use this reference when decomposing samples.\n    -p, --prefix PREFIX    \
+  \ Affix this output prefix to each file, none by default\n    -P, --default-ploidy\
+  \ N  Set a default ploidy for samples which do not have information in the first\
+  \ record (2).\n\nOutputs sample_seq:N.fa for each sample, reference sequence, and\
+  \ chromosomal copy N in [0,1... ploidy].\nEach sequence in the fasta file is named\
+  \ using the same pattern used for the file name, allowing them to be combined.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/vcflib:1.0.1--hd2e4403_1

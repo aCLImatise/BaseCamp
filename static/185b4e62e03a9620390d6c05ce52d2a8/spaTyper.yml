@@ -1,0 +1,113 @@
+!Command
+command:
+- spaTyper
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: out
+  description: --version             show program's version number and exit
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --repeat_file
+  description: "List of spa repeats\n(http://spa.ridom.de/dynamic/sparepeats.fasta)"
+  args: !SimpleFlagArg
+    name: REPEAT_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --repeat_order_file
+  description: "List spa types and order of repeats\n(http://spa.ridom.de/dynamic/spatypes.txt)"
+  args: !SimpleFlagArg
+    name: REPEAT_ORDER_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --folder
+  description: Folder to save downloaded files from Ridom/Spa server
+  args: !SimpleFlagArg
+    name: FOLDER
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --fasta
+  description: List of one or more fasta files.
+  args: !RepeatFlagArg
+    name: FASTA
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --glob
+  description: "Uses unix style pathname expansion to run spa typing\non all files.\
+    \ If your shell autoexpands wildcards use\n-f."
+  args: !SimpleFlagArg
+    name: GLOB
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --do_enrich
+  description: 'Do PCR product enrichment. [Default: False]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --output
+  description: 'Provide a name for the output file. Default: Standard'
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: Developer messages
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --info
+  description: Prints additional information
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: spaTyper [-h] [-r REPEAT_FILE] [-o REPEAT_ORDER_FILE] [-d FOLDER]\n\
+  \                [-f FASTA [FASTA ...]] [-g GLOB] [-e] [--output OUTPUT]\n     \
+  \           [--version] [--debug] [--info]\n\nspaTyper.py: Get spa types\n\nVersion:\
+  \ 0.3.3\nLicense: GPLv3\n\nUSAGE: python spaTyper.py -f fasta_file.fasta\nPrints\
+  \ spa type to stdout\n\nIt will download sparepeats.fasta and spatypes.txt to repository\
+  \ directory \nif files not provided or already in directory. It can be loaded as\
+  \ a python\nmodule. Python 3 version only.\n\noptional arguments:\n  -h, --help\
+  \            show this help message and exit\n  -r REPEAT_FILE, --repeat_file REPEAT_FILE\n\
+  \                        List of spa repeats\n                        (http://spa.ridom.de/dynamic/sparepeats.fasta)\n\
+  \  -o REPEAT_ORDER_FILE, --repeat_order_file REPEAT_ORDER_FILE\n               \
+  \         List spa types and order of repeats\n                        (http://spa.ridom.de/dynamic/spatypes.txt)\n\
+  \  -d FOLDER, --folder FOLDER\n                        Folder to save downloaded\
+  \ files from Ridom/Spa server\n  -f FASTA [FASTA ...], --fasta FASTA [FASTA ...]\n\
+  \                        List of one or more fasta files.\n  -g GLOB, --glob GLOB\
+  \  Uses unix style pathname expansion to run spa typing\n                      \
+  \  on all files. If your shell autoexpands wildcards use\n                     \
+  \   -f.\n  -e, --do_enrich       Do PCR product enrichment. [Default: False]\n \
+  \ --output OUTPUT       Provide a name for the output file. Default: Standard\n\
+  \                        out\n  --version             show program's version number\
+  \ and exit\n  --debug               Developer messages\n  --info               \
+  \ Prints additional information\n\nOriginal code: mjsull. Modified by: JFSanchezHerrero\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/spatyper:0.3.3--py_0

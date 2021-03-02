@@ -1,0 +1,166 @@
+!Command
+command:
+- enr
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --p
+  description: positive sequence file name (required)
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - --m
+  description: motif file name (required, may be repeated)
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - --objfun
+  description: "|cd           objective function (<objfun>)\nde : Differential Enrichment\n\
+    cd : Central Distance\ndefault: de"
+  args: !SimpleFlagArg
+    name: de
+- !Flag
+  optional: true
+  synonyms:
+  - --n
+  description: "negative sequence file name;\ndefaults: if --n is not given, then\
+    \ STREME\ncreates negative sequences as follows:\n<objfun> = de, shuffle positive\
+    \ sequences\n= cd, no negative sequences allowed"
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - --kmer
+  description: "shuffle positive sequences preserving k-mers\nand the positions of\
+    \ the non-core characters\ndefault: 3 (DNA), 3 (RNA), 1 (Prot), 1 (custom)\ndefault:\
+    \ create text, HTML and XML files in <output_dir>"
+  args: !SimpleFlagArg
+    name: kmer
+- !Flag
+  optional: true
+  synonyms:
+  - --dna
+  description: sequences use standard DNA alphabet (default)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --rna
+  description: sequences use standard RNA alphabet
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --protein
+  description: sequences use standard protein alphabet
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --alph
+  description: "sequences use alphabet defined in <alph_file>;\nconverts to uppercase\
+    \ unless both cases in core"
+  args: !SimpleFlagArg
+    name: alph_file
+- !Flag
+  optional: true
+  synonyms:
+  - --hofract
+  description: "fraction of sequences in hold-out set;\ndefault: 0.1"
+  args: !SimpleFlagArg
+    name: hofract
+- !Flag
+  optional: true
+  synonyms:
+  - --seed
+  description: "random seed for shuffling sequences;\ndefault: -1718334814"
+  args: !SimpleFlagArg
+    name: seed
+- !Flag
+  optional: true
+  synonyms:
+  - --bfile
+  description: 'background model file; default: motif file freqs'
+  args: !SimpleFlagArg
+    name: bfile
+- !Flag
+  optional: true
+  synonyms:
+  - --pseudocount
+  description: "pseudocount for creating PWMs from motifs;\ndefault: 0"
+  args: !SimpleFlagArg
+    name: pc
+- !Flag
+  optional: true
+  synonyms:
+  - --inc
+  description: "name pattern to select as motif; may be\nrepeated; default: all motifs\
+    \ are used"
+  args: !SimpleFlagArg
+    name: pattern
+- !Flag
+  optional: true
+  synonyms:
+  - --exc
+  description: "name pattern to exclude as motif; may be\nrepeated; default: all motifs\
+    \ are used"
+  args: !SimpleFlagArg
+    name: pattern
+- !Flag
+  optional: true
+  synonyms:
+  - --verbosity
+  description: '|2|3|4|5    level of diagnostic output (default: -1718334814)'
+  args: !SimpleFlagArg
+    name: '1'
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: print the program version and exit
+  args: !EmptyFlagArg {}
+help_text: "enr: unrecognized option '--help'\n\nUsage: enr [options]\n\n   Options:\n\
+  \     --p <filename>           positive sequence file name (required)\n     --m\
+  \ <filename>           motif file name (required, may be repeated)\n     --objfun\
+  \ de|cd           objective function (<objfun>)\n                              \
+  \  de : Differential Enrichment\n                                cd : Central Distance\n\
+  \                              default: de\n     --n <filename>           negative\
+  \ sequence file name;\n                              defaults: if --n is not given,\
+  \ then STREME\n                              creates negative sequences as follows:\n\
+  \                                <objfun> = de, shuffle positive sequences\n   \
+  \                                      = cd, no negative sequences allowed\n   \
+  \  --kmer <kmer>            shuffle positive sequences preserving k-mers\n     \
+  \                         and the positions of the non-core characters\n       \
+  \                       default: 3 (DNA), 3 (RNA), 1 (Prot), 1 (custom)\n      \
+  \                        default: create text, HTML and XML files in <output_dir>\n\
+  \     --dna                    sequences use standard DNA alphabet (default)\n \
+  \    --rna                    sequences use standard RNA alphabet\n     --protein\
+  \                sequences use standard protein alphabet\n     --alph <alph_file>\
+  \       sequences use alphabet defined in <alph_file>;\n                       \
+  \       converts to uppercase unless both cases in core\n     --hofract <hofract>\
+  \      fraction of sequences in hold-out set;\n                              default:\
+  \ 0.1\n     --seed <seed>            random seed for shuffling sequences;\n    \
+  \                          default: -1718334814\n     --bfile <bfile>          background\
+  \ model file; default: motif file freqs\n     --pseudocount <pc>       pseudocount\
+  \ for creating PWMs from motifs;\n                              default: 0\n   \
+  \  --inc <pattern>          name pattern to select as motif; may be\n          \
+  \                    repeated; default: all motifs are used\n     --exc <pattern>\
+  \          name pattern to exclude as motif; may be\n                          \
+  \    repeated; default: all motifs are used\n     --verbosity 1|2|3|4|5    level\
+  \ of diagnostic output (default: -1718334814)\n     --version                print\
+  \ the program version and exit\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/meme:5.3.0--py38pl526hc1f1133_0

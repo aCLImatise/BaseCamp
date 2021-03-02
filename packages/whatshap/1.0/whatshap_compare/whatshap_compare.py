@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import String, File, Boolean, Int
+
+Whatshap_Compare_V0_1_0 = CommandToolBuilder(tool="whatshap_compare", base_command=["whatshap", "compare"], inputs=[ToolInput(tag="in_sample", input_type=String(optional=True), prefix="--sample", doc=InputDocumentation(doc="Name of the sample to process. If not given, use first\nsample found in VCF.")), ToolInput(tag="in_names", input_type=String(optional=True), prefix="--names", doc=InputDocumentation(doc="Comma-separated list of data set names to be used in\nthe report (in same order as VCFs).")), ToolInput(tag="in_tsv_pairwise", input_type=File(optional=True), prefix="--tsv-pairwise", doc=InputDocumentation(doc="Filename to write comparison results from pair-wise\ncomparison to (tab-separated).")), ToolInput(tag="in_tsv_multiway", input_type=File(optional=True), prefix="--tsv-multiway", doc=InputDocumentation(doc="Filename to write comparison results from multiway\ncomparison to (tab-separated). Only for diploid vcfs.")), ToolInput(tag="in_only_sn_vs", input_type=Boolean(optional=True), prefix="--only-snvs", doc=InputDocumentation(doc="Only process SNVs and ignore all other variants.")), ToolInput(tag="in_switch_error_bed", input_type=File(optional=True), prefix="--switch-error-bed", doc=InputDocumentation(doc="Write BED file with switch error positions to given\nfilename. Only for diploid vcfs.")), ToolInput(tag="in_plot_block_sizes", input_type=Int(optional=True), prefix="--plot-blocksizes", doc=InputDocumentation(doc="Write PDF file with a block length histogram to given\nfilename (requires matplotlib).")), ToolInput(tag="in_plot_sum_of_block_sizes", input_type=Int(optional=True), prefix="--plot-sum-of-blocksizes", doc=InputDocumentation(doc="Write PDF file with a block length histogram in which\nthe height of each bar corresponds to the sum of\nlengths.")), ToolInput(tag="in_longest_block_tsv", input_type=File(optional=True), prefix="--longest-block-tsv", doc=InputDocumentation(doc="Write position-wise agreement of longest joint blocks\nin each chromosome to tab-separated file. Only for\ndiploid vcfs.")), ToolInput(tag="in_ploidy", input_type=Int(optional=True), prefix="--ploidy", doc=InputDocumentation(doc="The ploidy of the sample(s) (default: 2).\n")), ToolInput(tag="in_vcf", input_type=String(), position=0, doc=InputDocumentation(doc="At least two phased VCF files to be compared."))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Whatshap_Compare_V0_1_0().translate("wdl", allow_empty_container=True)
+

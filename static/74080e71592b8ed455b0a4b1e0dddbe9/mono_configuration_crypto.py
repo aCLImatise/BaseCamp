@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, File, String, Int
+
+Mono_Configuration_Crypto_V0_1_0 = CommandToolBuilder(tool="mono_configuration_crypto", base_command=["mono-configuration-crypto"], inputs=[ToolInput(tag="in_verbose", input_type=Boolean(optional=True), prefix="--verbose", doc=InputDocumentation(doc="Show verbose information (including exception\nstacktraces)")), ToolInput(tag="in_machine", input_type=Boolean(optional=True), prefix="--machine", doc=InputDocumentation(doc="Use machine (global) store for all the key actions")), ToolInput(tag="in_local", input_type=Boolean(optional=True), prefix="--local", doc=InputDocumentation(doc="Use local (user) store for all the key actions [*]")), ToolInput(tag="in_list", input_type=Boolean(optional=True), prefix="--list", doc=InputDocumentation(doc="List all the key container names in the store")), ToolInput(tag="in_create", input_type=Boolean(optional=True), prefix="--create", doc=InputDocumentation(doc="Creates an RSA public/private key pair")), ToolInput(tag="in_import", input_type=Boolean(optional=True), prefix="--import", doc=InputDocumentation(doc="Import key to a container")), ToolInput(tag="in_export", input_type=Boolean(optional=True), prefix="--export", doc=InputDocumentation(doc="Export key from a container")), ToolInput(tag="in_remove", input_type=Boolean(optional=True), prefix="--remove", doc=InputDocumentation(doc="Remove a container")), ToolInput(tag="in_file", input_type=File(optional=True), prefix="--file", doc=InputDocumentation(doc="File name for import or export operations")), ToolInput(tag="in_config_file", input_type=File(optional=True), prefix="--config-file", doc=InputDocumentation(doc="Config file name (not path) [Web.config]")), ToolInput(tag="in_name", input_type=String(optional=True), prefix="--name", doc=InputDocumentation(doc="Container name [MonoFrameworkConfigurationKey]")), ToolInput(tag="in_size", input_type=Int(optional=True), prefix="--size", doc=InputDocumentation(doc="Key size [1024]")), ToolInput(tag="in_path", input_type=File(optional=True), prefix="--path", doc=InputDocumentation(doc="Application physical path [.]")), ToolInput(tag="in_decrypt", input_type=String(optional=True), prefix="--decrypt", doc=InputDocumentation(doc="Decrypt configuration section")), ToolInput(tag="in_encrypt", input_type=String(optional=True), prefix="--encrypt", doc=InputDocumentation(doc="Encrypt configuration section"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Mono_Configuration_Crypto_V0_1_0().translate("wdl", allow_empty_container=True)
+

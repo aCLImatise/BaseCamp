@@ -1,0 +1,260 @@
+!Command
+command:
+- sina
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: output
+  description: -S [ --search ]          enable search stage
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -H
+  description: '[ --help-all ]        show full help (long)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: '[ --in ] arg (="-")   input file (arb or fasta)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: "[ --out ] arg         output file (arb, fasta or csv; may be specified\n\
+    multiple times)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --add-relatives
+  description: add the ARG nearest relatives for each sequence to
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -P
+  description: '[ --prealigned ]      skip alignment stage'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: '[ --threads ] arg     limit number of threads (automatic)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --num-pts
+  description: (=8)       number of PT servers to start
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -V
+  description: '[ --version ]         show version'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: '[ --verbose ]         increase verbosity'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  description: '[ --quiet ]           decrease verbosity'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --log-file
+  description: file to write log to
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --meta-fmt
+  description: meta data in (*none*|header|comment|csv)
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: '[ --db ] arg          reference database'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: "[ --turn ] arg        check other strand as well\n'all' checks all\
+    \ four frames"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --fs-engine
+  description: "search engine to use for reference selection\n[*pt-server*|internal]"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --fs-kmer-len
+  description: length of k-mers (10)
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --fs-req
+  description: "required number of reference sequences (1)\nqueries with less matches\
+    \ will be dropped"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --fs-min
+  description: "number of references used regardless of shared\nfraction (40)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --fs-max
+  description: number of references used at most (40)
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --fs-msc
+  description: required fractional identity of references (0.7)
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --fs-req-full
+  description: required number of full length references (1)
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --fs-full-len
+  description: minimum length of full length reference (1400)
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --fs-req-gaps
+  description: ignore references with less internal gaps (10)
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --fs-min-len
+  description: minimal reference length (150)
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --search-db
+  description: reference db if different from -r/--db
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --search-engine
+  description: engine if different from --fs-engine
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --search-min-sim
+  description: required sequence similarity (0.7)
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --search-max-result
+  description: desired number of search results (10)
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --lca-fields
+  description: "names of fields containing source taxonomy (colon\nseparated list)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --lca-quorum
+  description: "fraction of search result that must share resulting\nclassification\
+    \ (0.7)\n"
+  args: !SimpleFlagArg
+    name: arg
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: '[ --help ]            show short help'
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage:\n sina -i input [-o output] [--prealigned|--db reference] [--search]\
+  \ [--search-db search.arb] [options]\n\nOptions:\n  -h [ --help ]            show\
+  \ short help\n  -H [ --help-all ]        show full help (long)\n  -i [ --in ] arg\
+  \ (=\"-\")   input file (arb or fasta)\n  -o [ --out ] arg         output file (arb,\
+  \ fasta or csv; may be specified \n                           multiple times)\n\
+  \  --add-relatives arg      add the ARG nearest relatives for each sequence to \n\
+  \                           output\n  -S [ --search ]          enable search stage\n\
+  \  -P [ --prealigned ]      skip alignment stage\n  -p [ --threads ] arg     limit\
+  \ number of threads (automatic)\n  --num-pts arg (=8)       number of PT servers\
+  \ to start\n  -V [ --version ]         show version\n  -v [ --verbose ]        \
+  \ increase verbosity\n  -q [ --quiet ]           decrease verbosity\n  --log-file\
+  \ arg           file to write log to\n  --meta-fmt arg           meta data in (*none*|header|comment|csv)\n\
+  \  -r [ --db ] arg          reference database\n  -t [ --turn ] arg        check\
+  \ other strand as well\n                           'all' checks all four frames\n\
+  \nReference Selection:\n  --fs-engine arg          search engine to use for reference\
+  \ selection \n                           [*pt-server*|internal]\n  --fs-kmer-len\
+  \ arg        length of k-mers (10)\n  --fs-req arg             required number of\
+  \ reference sequences (1)\n                           queries with less matches\
+  \ will be dropped\n  --fs-min arg             number of references used regardless\
+  \ of shared \n                           fraction (40)\n  --fs-max arg         \
+  \    number of references used at most (40)\n  --fs-msc arg             required\
+  \ fractional identity of references (0.7)\n  --fs-req-full arg        required number\
+  \ of full length references (1)\n  --fs-full-len arg        minimum length of full\
+  \ length reference (1400)\n  --fs-req-gaps arg        ignore references with less\
+  \ internal gaps (10)\n  --fs-min-len arg         minimal reference length (150)\n\
+  \nSearch & Classify:\n  --search-db arg          reference db if different from\
+  \ -r/--db\n  --search-engine arg      engine if different from --fs-engine\n  --search-min-sim\
+  \ arg     required sequence similarity (0.7)\n  --search-max-result arg  desired\
+  \ number of search results (10)\n  --lca-fields arg         names of fields containing\
+  \ source taxonomy (colon \n                           separated list)\n  --lca-quorum\
+  \ arg         fraction of search result that must share resulting \n           \
+  \                classification (0.7)\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/sina:1.7.2--h9aa86b4_0

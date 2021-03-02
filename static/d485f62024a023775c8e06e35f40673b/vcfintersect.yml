@@ -1,0 +1,146 @@
+!Command
+command:
+- vcfintersect
+positional:
+- !Positional
+  optional: true
+  position: 0
+  name: vcf file
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --bed
+  description: use intervals provided by this BED file
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  - --region
+  description: use 1-based tabix-style region (e.g. chrZ:10-20), multiples allowed
+  args: !SimpleFlagArg
+    name: REGION
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --start-only
+  description: "don't use the reference length information in the record to determine\n\
+    overlap status, just use the start posiion"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --invert
+  description: "invert the selection, printing only records which would\nnot have\
+    \ been printed out"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --intersect-vcf
+  description: use this VCF for set intersection generation
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --union-vcf
+  description: use this VCF for set union generation
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --window-size
+  description: compare records up to this many bp away (default 30)
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reference
+  description: FASTA reference file, required with -i and -u
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --loci
+  description: output whole loci when one alternate allele matches
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --ref-match
+  description: intersect on the basis of record REF string
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --tag
+  description: attach TAG to each record's info field if it would intersect
+  args: !SimpleFlagArg
+    name: TAG
+- !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --tag-value
+  description: "use this value to indicate that the allele is passing\n'.' will be\
+    \ used otherwise.  default: 'PASS'"
+  args: !SimpleFlagArg
+    name: VAL
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  - --merge-from
+  - -T
+  - --merge-to
+  description: "TO-TAG   merge from FROM-TAG used in the -i file, setting TO-TAG\n\
+    in the current file."
+  args: !SimpleFlagArg
+    name: FROM-TAG
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "usage: vcfintersect [options] [<vcf file>]\n\noptions:\n    -b, --bed\
+  \ FILE            use intervals provided by this BED file\n    -R, --region REGION\
+  \       use 1-based tabix-style region (e.g. chrZ:10-20), multiples allowed\n  \
+  \  -S, --start-only          don't use the reference length information in the record\
+  \ to determine\n                              overlap status, just use the start\
+  \ posiion\n    -v, --invert              invert the selection, printing only records\
+  \ which would\n                                not have been printed out\n    -i,\
+  \ --intersect-vcf FILE  use this VCF for set intersection generation\n    -u, --union-vcf\
+  \ FILE      use this VCF for set union generation\n    -w, --window-size N     \
+  \  compare records up to this many bp away (default 30)\n    -r, --reference FILE\
+  \      FASTA reference file, required with -i and -u\n    -l, --loci           \
+  \     output whole loci when one alternate allele matches\n    -m, --ref-match \
+  \          intersect on the basis of record REF string\n    -t, --tag TAG      \
+  \       attach TAG to each record's info field if it would intersect\n    -V, --tag-value\
+  \ VAL       use this value to indicate that the allele is passing\n            \
+  \                  '.' will be used otherwise.  default: 'PASS'\n    -M, --merge-from\
+  \ FROM-TAG\n    -T, --merge-to   TO-TAG   merge from FROM-TAG used in the -i file,\
+  \ setting TO-TAG\n                              in the current file.\n\nFor bed-vcf\
+  \ intersection, alleles which fall into the targets are retained.\n\nFor vcf-vcf\
+  \ intersection and union, unify on equivalent alleles within window-size bp\nas\
+  \ determined by haplotype comparison alleles.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/vcflib:1.0.1--hd2e4403_1

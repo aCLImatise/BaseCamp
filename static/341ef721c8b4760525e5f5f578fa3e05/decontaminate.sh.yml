@@ -1,0 +1,92 @@
+!Command
+command:
+- decontaminate.sh
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: reads
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -Xmx
+  description: "This will set Java's memory usage, overriding autodetection.\n-Xmx20g\
+    \ will specify 20 gigs of RAM, and -Xmx800m will specify 800 megs.\nThe max is\
+    \ typically 85% of physical memory."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -eoom
+  description: "This flag will cause the process to exit if an\nout-of-memory exception\
+    \ occurs.  Requires Java 8u92+."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -da
+  description: Disable assertions.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nWritten by Brian Bushnell.\nLast modified June 28, 2016\n\nDescription:\
+  \  Decontaminates multiplexed assemblies via normalization and mapping.\n\nUsage:\
+  \  decontaminate.sh reads=<file,file> ref=<file,file> out=<directory>\nor\ndecontaminate.sh\
+  \ readnamefile=<file> refnamefile=<file> out=<directory>\n\nInput Parameters:\n\
+  reads=<file,file>   Input reads, one file per library.\nref=<file,file>     Input\
+  \ assemblies, one file per library.\nreadnamefile=<file> List of input reads, one\
+  \ line per library.\nrefnamefile=<file>  List of input assemblies, one line per\
+  \ library.\n\ninterleaved=auto    True forces paired/interleaved input; false forces\
+  \ single-ended mapping.\n                    If not specified, interleaved status\
+  \ will be autodetected from read names.\nunpigz=t            Spawn a pigz (parallel\
+  \ gzip) process for faster decompression.  Requires pigz to be installed.\ntouppercase=t\
+  \       (tuc) Convert lowercase letters in reads to upper case (otherwise they will\
+  \ not match the reference).\n\nOutput Parameters:\npigz=f              Spawn a pigz\
+  \ (parallel gzip) process for faster compression.  Requires pigz to be installed.\n\
+  tmpdir=.            Write temp files here.  By default is uses the system's  or\
+  \ current directory.\noutdir=.            Write ouput files here.\n\nMapping Parameters:\n\
+  kfilter=55          Set to a positive number N to require minimum N contiguous matches\
+  \ for a mapped read.\nambig=random        Determines how coverage will be calculated\
+  \ for ambiguously-mapped reads.\n                        first: Add coverage only\
+  \ at first genomic mapping location.\n                        random: Add coverage\
+  \ at a random best-scoring location.\n                        all: Add coverage\
+  \ at all best-scoring locations.\n                        toss: Discard ambiguously-mapped\
+  \ reads without adding coverage.\n\nFiltering Parameters:\nminc=3.5            Min\
+  \ average coverage to retain scaffold.\nminp=20             Min percent coverage\
+  \ to retain scaffold.\nminr=18             Min mapped reads to retain scaffold.\n\
+  minl=500            Min length to retain scaffold.\nratio=1.2           Contigs\
+  \ will not be removed by minc unless the coverage changed by at least this factor.\
+  \  0 disables this filter.\nmapraw=t            Set true to map the unnormalized\
+  \ reads.  Required to filter by 'ratio'.\nbasesundermin=-1    If positive, removes\
+  \ contigs with at least this many bases in low-coverage windows.\nwindow=500   \
+  \       Sliding window size \nwindowcov=5         Average coverage below this will\
+  \ be classified as low.\n\nTadpole Parameters:\necct=f              Error-correct\
+  \ with Tadpole before normalization.\nkt=42               Kmer length for Tadpole.\n\
+  aggressive=f        Do aggressive error correction.\nconservative=f      Do conservative\
+  \ error correction.\ntadpoleprefilter=1  (tadpre) Ignore kmers under this depth\
+  \ to save memory.\n\nNormalization Parameters:\nmindepth=2          Min depth of\
+  \ reads to keep.\ntarget=20           Target normalization depth.\nhashes=4    \
+  \        Number of hashes in Bloom filter.\npasses=1            Normalization passes.\n\
+  minprob=0.5         Min probability of correctness to add a kmer.\ndp=0.75     \
+  \        (depthpercentile) Percentile to use for depth proxy (0.5 means median).\n\
+  prefilter=t         Prefilter, for large datasets.\nfilterbits=32       (fbits)\
+  \ Bits per cell in primary filter.\nprefilterbits=2     (pbits) Bits per cell in\
+  \ prefilter.\nk=31                Kmer length for normalization.  Longer is more\
+  \ precise but less sensitive.\n\nOther parameters:\nopfn=0              (onlyprocessfirstn)\
+  \ Set to a positive number to only process that many datasets.  This is for internal\
+  \ testing of specificity.\n\nJava Parameters:\n-Xmx                This will set\
+  \ Java's memory usage, overriding autodetection.\n                    -Xmx20g will\
+  \ specify 20 gigs of RAM, and -Xmx800m will specify 800 megs.\n                \
+  \    The max is typically 85% of physical memory.\n-eoom               This flag\
+  \ will cause the process to exit if an\n                    out-of-memory exception\
+  \ occurs.  Requires Java 8u92+.\n-da                 Disable assertions.\n\nPlease\
+  \ contact Brian Bushnell at bbushnell@lbl.gov if you encounter any problems.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bbmap:38.90--h1296035_0

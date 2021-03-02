@@ -1,0 +1,249 @@
+!Command
+command:
+- scapp
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --graph
+  description: Assembly graph FASTG file to process
+  args: !SimpleFlagArg
+    name: GRAPH
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output_dir
+  description: Output directory
+  args: !SimpleFlagArg
+    name: OUTPUT_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --max_k
+  description: "Integer reflecting maximum k value used by the\nassembler"
+  args: !SimpleFlagArg
+    name: MAX_K
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --min_length
+  description: 'Minimum length required for reporting [default: 1000]'
+  args: !SimpleFlagArg
+    name: MIN_LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --max_CV
+  description: "Coefficient of variation used for pre-selection\n[default: 0.5, higher-->\
+    \ less restrictive]"
+  args: !SimpleFlagArg
+    name: MAX_CV
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --num_processes
+  description: Number of processes to use
+  args: !SimpleFlagArg
+    name: NUM_PROCESSES
+- !Flag
+  optional: true
+  synonyms:
+  - -sc
+  - --use_scores
+  description: "Boolean flag of whether to use sequence classification\nscores in\
+    \ plasmid assembly"
+  args: !SimpleFlagArg
+    name: USE_SCORES
+- !Flag
+  optional: true
+  synonyms:
+  - -gh
+  - --use_gene_hits
+  description: "Boolean flag of whether to use plasmid-specific gene\nhits in plasmid\
+    \ assembly"
+  args: !SimpleFlagArg
+    name: USE_GENE_HITS
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --bam
+  description: "BAM file resulting from aligning reads to contigs\nfile, filtering\
+    \ for best matches"
+  args: !SimpleFlagArg
+    name: BAM
+- !Flag
+  optional: true
+  synonyms:
+  - -r1
+  - --reads1
+  description: 1st paired-end read file path
+  args: !SimpleFlagArg
+    name: READS1
+- !Flag
+  optional: true
+  synonyms:
+  - -r2
+  - --reads2
+  description: 1st paired-end read file path
+  args: !SimpleFlagArg
+    name: READS2
+- !Flag
+  optional: true
+  synonyms:
+  - -pc
+  - --plasclass
+  description: "PlasClass score file with scores of the assembly graph\nnodes"
+  args: !SimpleFlagArg
+    name: PLASCLASS
+- !Flag
+  optional: true
+  synonyms:
+  - -pf
+  - --plasflow
+  description: "PlasFlow score file with scores of the assembly graph\nnodes"
+  args: !SimpleFlagArg
+    name: PLASFLOW
+- !Flag
+  optional: true
+  synonyms:
+  - -clft
+  - --classification_thresh
+  description: threshold for classifying potential plasmid [0.5]
+  args: !SimpleFlagArg
+    name: CLASSIFICATION_THRESH
+- !Flag
+  optional: true
+  synonyms:
+  - -gm
+  - --gene_match_thresh
+  description: "threshold for % identity and fraction of length to\nmatch plasmid\
+    \ genes [0.75]"
+  args: !SimpleFlagArg
+    name: GENE_MATCH_THRESH
+- !Flag
+  optional: true
+  synonyms:
+  - -sls
+  - --selfloop_score_thresh
+  description: threshold for self-loop plasmid score [0.9]
+  args: !SimpleFlagArg
+    name: SELFLOOP_SCORE_THRESH
+- !Flag
+  optional: true
+  synonyms:
+  - -slm
+  - --selfloop_mate_thresh
+  description: threshold for self-loop off loop mates [0.1]
+  args: !SimpleFlagArg
+    name: SELFLOOP_MATE_THRESH
+- !Flag
+  optional: true
+  synonyms:
+  - -cst
+  - --chromosome_score_thresh
+  description: "threshold for high confidence chromosome node score\n[0.2]"
+  args: !SimpleFlagArg
+    name: CHROMOSOME_SCORE_THRESH
+- !Flag
+  optional: true
+  synonyms:
+  - -clt
+  - --chromosome_len_thresh
+  description: "threshold for high confidence chromosome node length\n[10000]"
+  args: !SimpleFlagArg
+    name: CHROMOSOME_LEN_THRESH
+- !Flag
+  optional: true
+  synonyms:
+  - -pst
+  - --plasmid_score_thresh
+  description: threshold for high confidence plasmid node score [0.9]
+  args: !SimpleFlagArg
+    name: PLASMID_SCORE_THRESH
+- !Flag
+  optional: true
+  synonyms:
+  - -plt
+  - --plasmid_len_thresh
+  description: "threshold for high confidence plasmid node length\n[10000]"
+  args: !SimpleFlagArg
+    name: PLASMID_LEN_THRESH
+- !Flag
+  optional: true
+  synonyms:
+  - -cd
+  - --good_cyc_dominated_thresh
+  description: "threshold for # of mate-pairs off the cycle in\ndominated node [0.5]\n"
+  args: !SimpleFlagArg
+    name: GOOD_CYC_DOMINATED_THRESH
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: scapp [-h] -g GRAPH -o OUTPUT_DIR [-k MAX_K] [-l MIN_LENGTH]\n\
+  \             [-m MAX_CV] [-p NUM_PROCESSES] [-sc USE_SCORES]\n             [-gh\
+  \ USE_GENE_HITS] [-b BAM] [-r1 READS1] [-r2 READS2]\n             [-pc PLASCLASS\
+  \ | -pf PLASFLOW] [-clft CLASSIFICATION_THRESH]\n             [-gm GENE_MATCH_THRESH]\
+  \ [-sls SELFLOOP_SCORE_THRESH]\n             [-slm SELFLOOP_MATE_THRESH] [-cst CHROMOSOME_SCORE_THRESH]\n\
+  \             [-clt CHROMOSOME_LEN_THRESH] [-pst PLASMID_SCORE_THRESH]\n       \
+  \      [-plt PLASMID_LEN_THRESH] [-cd GOOD_CYC_DOMINATED_THRESH]\n\nSCAPP extracts\
+  \ likely plasmids from de novo assembly graphs\n\noptional arguments:\n  -h, --help\
+  \            show this help message and exit\n  -g GRAPH, --graph GRAPH\n      \
+  \                  Assembly graph FASTG file to process\n  -o OUTPUT_DIR, --output_dir\
+  \ OUTPUT_DIR\n                        Output directory\n  -k MAX_K, --max_k MAX_K\n\
+  \                        Integer reflecting maximum k value used by the\n      \
+  \                  assembler\n  -l MIN_LENGTH, --min_length MIN_LENGTH\n       \
+  \                 Minimum length required for reporting [default: 1000]\n  -m MAX_CV,\
+  \ --max_CV MAX_CV\n                        Coefficient of variation used for pre-selection\n\
+  \                        [default: 0.5, higher--> less restrictive]\n  -p NUM_PROCESSES,\
+  \ --num_processes NUM_PROCESSES\n                        Number of processes to\
+  \ use\n  -sc USE_SCORES, --use_scores USE_SCORES\n                        Boolean\
+  \ flag of whether to use sequence classification\n                        scores\
+  \ in plasmid assembly\n  -gh USE_GENE_HITS, --use_gene_hits USE_GENE_HITS\n    \
+  \                    Boolean flag of whether to use plasmid-specific gene\n    \
+  \                    hits in plasmid assembly\n  -b BAM, --bam BAM     BAM file\
+  \ resulting from aligning reads to contigs\n                        file, filtering\
+  \ for best matches\n  -r1 READS1, --reads1 READS1\n                        1st paired-end\
+  \ read file path\n  -r2 READS2, --reads2 READS2\n                        1st paired-end\
+  \ read file path\n  -pc PLASCLASS, --plasclass PLASCLASS\n                     \
+  \   PlasClass score file with scores of the assembly graph\n                   \
+  \     nodes\n  -pf PLASFLOW, --plasflow PLASFLOW\n                        PlasFlow\
+  \ score file with scores of the assembly graph\n                        nodes\n\
+  \  -clft CLASSIFICATION_THRESH, --classification_thresh CLASSIFICATION_THRESH\n\
+  \                        threshold for classifying potential plasmid [0.5]\n  -gm\
+  \ GENE_MATCH_THRESH, --gene_match_thresh GENE_MATCH_THRESH\n                   \
+  \     threshold for % identity and fraction of length to\n                     \
+  \   match plasmid genes [0.75]\n  -sls SELFLOOP_SCORE_THRESH, --selfloop_score_thresh\
+  \ SELFLOOP_SCORE_THRESH\n                        threshold for self-loop plasmid\
+  \ score [0.9]\n  -slm SELFLOOP_MATE_THRESH, --selfloop_mate_thresh SELFLOOP_MATE_THRESH\n\
+  \                        threshold for self-loop off loop mates [0.1]\n  -cst CHROMOSOME_SCORE_THRESH,\
+  \ --chromosome_score_thresh CHROMOSOME_SCORE_THRESH\n                        threshold\
+  \ for high confidence chromosome node score\n                        [0.2]\n  -clt\
+  \ CHROMOSOME_LEN_THRESH, --chromosome_len_thresh CHROMOSOME_LEN_THRESH\n       \
+  \                 threshold for high confidence chromosome node length\n       \
+  \                 [10000]\n  -pst PLASMID_SCORE_THRESH, --plasmid_score_thresh PLASMID_SCORE_THRESH\n\
+  \                        threshold for high confidence plasmid node score [0.9]\n\
+  \  -plt PLASMID_LEN_THRESH, --plasmid_len_thresh PLASMID_LEN_THRESH\n          \
+  \              threshold for high confidence plasmid node length\n             \
+  \           [10000]\n  -cd GOOD_CYC_DOMINATED_THRESH, --good_cyc_dominated_thresh\
+  \ GOOD_CYC_DOMINATED_THRESH\n                        threshold for # of mate-pairs\
+  \ off the cycle in\n                        dominated node [0.5]\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/scapp:0.1.4--py_0

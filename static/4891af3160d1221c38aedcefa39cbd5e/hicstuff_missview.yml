@@ -1,0 +1,87 @@
+!Command
+command:
+- hicstuff
+- missview
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: genome
+  description: Genome file in fasta format.
+- !Positional
+  optional: false
+  position: 1
+  name: output
+  description: Path to the output image.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --aligner
+  description: "The read alignment software to use. Can be either\nbowtie2, minimap2\
+    \ or bwa. minimap2 should only be\nused for reads > 100 bp. [default: bowtie2]"
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --binning
+  description: 'Resolution to use to preview the Hi-C map. [default: 5000]'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  - --force
+  description: Write even if the output file already exists.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  - --read-len
+  description: Write even if the output file already exists.
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: 'Number of CPUs to use in parallel. [default: 1]'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --tmpdir
+  description: Directory where temporary files will be generated.
+  args: !SimpleFlagArg
+    name: STR
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "    Previews bins that will be missing in a Hi-C map with a given read\
+  \ length by\n    finding repetitive regions in the genome.\n\n    usage:\n     \
+  \   missview [--aligner=bowtie2] [--force] [--binning=5000]\n                 [--threads=1]\
+  \ [--tmpdir=STR] --read-len=INT <genome> <output>\n\n    arguments:\n        genome\
+  \               Genome file in fasta format.\n        output               Path\
+  \ to the output image.\n\n    options:\n        -a, --aligner=STR    The read alignment\
+  \ software to use. Can be either\n                             bowtie2, minimap2\
+  \ or bwa. minimap2 should only be \n                             used for reads\
+  \ > 100 bp. [default: bowtie2]\n        -b, --binning=INT    Resolution to use to\
+  \ preview the Hi-C map. [default: 5000]\n        -F, --force          Write even\
+  \ if the output file already exists.\n        -R, --read-len=INT   Write even if\
+  \ the output file already exists.\n        -t, --threads=INT    Number of CPUs to\
+  \ use in parallel. [default: 1]\n        -T, --tmpdir=STR     Directory where temporary\
+  \ files will be generated.\n    \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/hicstuff:2.3.2--py_0

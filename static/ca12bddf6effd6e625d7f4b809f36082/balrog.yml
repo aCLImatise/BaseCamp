@@ -1,0 +1,113 @@
+!Command
+command:
+- balrog
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --in
+  description: Path to input fasta or gzipped fasta
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out
+  description: Path to output annotation
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --max-overlap
+  description: "Maximum allowable overlap between genes in\nnucleotides (default:\
+    \ 60)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --min-length
+  description: "Minimum allowable gene length in nucleotides\n(default: 90)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --table
+  description: "Nucleotide to amino acid translation table. 11\nfor most bacteria/archaea,\
+    \ 4 for\nMycoplasma/Spiroplasma. (default: 11)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --max-connections
+  description: "Maximum number of forward connections in the\ndirected acyclic graph\
+    \ used to find a set of\ncoherent genes in each genome. (default: 50)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --gene-batch-size
+  description: "Batch size for the temporal convolutional\nnetwork used to score genes.\
+    \ (default: 200)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --TIS-batch-size
+  description: "Batch size for the temporal convolutional\nnetwork used to score TIS.\
+    \ (default: 5000)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: "Verbose output, set --verbose=false to suppress\noutput text (default:\
+    \ true)"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Print Balrog usage
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Balrog is a prokaryotic gene finder based on a temporal convolutional\
+  \ network\nUsage:\n  Balrog [OPTION...]\n\n  -i, --in arg               Path to\
+  \ input fasta or gzipped fasta\n  -o, --out arg              Path to output annotation\n\
+  \      --max-overlap arg      Maximum allowable overlap between genes in\n     \
+  \                        nucleotides (default: 60)\n      --min-length arg     \
+  \  Minimum allowable gene length in nucleotides\n                             (default:\
+  \ 90)\n      --table arg            Nucleotide to amino acid translation table.\
+  \ 11\n                             for most bacteria/archaea, 4 for\n          \
+  \                   Mycoplasma/Spiroplasma. (default: 11)\n      --max-connections\
+  \ arg  Maximum number of forward connections in the\n                          \
+  \   directed acyclic graph used to find a set of\n                             coherent\
+  \ genes in each genome. (default: 50)\n      --gene-batch-size arg  Batch size for\
+  \ the temporal convolutional\n                             network used to score\
+  \ genes. (default: 200)\n      --TIS-batch-size arg   Batch size for the temporal\
+  \ convolutional\n                             network used to score TIS. (default:\
+  \ 5000)\n      --verbose              Verbose output, set --verbose=false to suppress\n\
+  \                             output text (default: true)\n      --mmseqs      \
+  \         Use MMseqs2 to reduce false positive rate, set\n                     \
+  \        --mmseqs=false to run without mmseqs (default:\n                      \
+  \       true)\n      --clear-cache          Force MMseqs2 to remake index, set\n\
+  \                             --clear-cache=true to remake mmseqs reference database\
+  \ and\n                             index files\n  -h, --help                 Print\
+  \ Balrog usage\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/balrog:0.3.2--py37h8270d21_0

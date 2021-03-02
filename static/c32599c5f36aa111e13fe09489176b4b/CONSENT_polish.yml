@@ -1,0 +1,141 @@
+!Command
+command:
+- CONSENT-polish
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --windowSize
+  - -l
+  description: ':      Size of the windows to process. (default: 500)'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --minSupport
+  - -s
+  description: ':      Minimum support to consider a window for correction. (default:
+    1)'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --maxSupport
+  - -S
+  description: ':      Maximum number of overlaps to include in a pile. (default:
+    20,000)'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --merSize
+  - -k
+  description: ':         k-mer size for chaining and polishing. (default: 9)'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --solid
+  - -f
+  description: ':           Minimum number of occurrences to consider a k-mer as solid
+    during polishing. (default: 4)'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --anchorSupport
+  - -c
+  description: ':   Minimum number of sequences supporting (Ai) - (Ai+1) to keep the
+    two anchors in the chaining. (default: 8)'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --minAnchors
+  - -a
+  description: ':      Minimum number of anchors in a window to allow consensus computation.
+    (default: 10)'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --windowOverlap
+  - -o
+  description: ':   Overlap size between consecutive windows. (default: 50)'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --nproc
+  - -j
+  description: ':           Number of processes to run in parallel (default: number
+    of cores).'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --minimapIndex
+  - -m
+  description: ':    Split minimap2 index every INT input bases (default: 500M).'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --tmpdir
+  - -t
+  description: ':    Path where to store the temporary files (default: working directory).'
+  args: !SimpleFlagArg
+    name: STRING
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: ':                    Print this help message.'
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  - -v
+  description: ':                 Print version information.'
+  args: !EmptyFlagArg {}
+help_text: "Usage: /usr/local/bin/CONSENT-polish [options] --contigs contigs.fast[a|q]\
+  \ --reads longReads.fast[a|q] --out result.fasta\n\n\tInput:\n\tcontigs.fast[a|q]:\
+  \             fasta or fastq file of contigs to polish.\n\tlongReads.fast[a|q]:\
+  \           fasta or fastq file of long reads to use for polishing.\n\tresult.fasta:\
+  \                  fasta file where to output the polished contigs.\n\n\tOptions:\n\
+  \t--windowSize INT, -l INT:      Size of the windows to process. (default: 500)\n\
+  \t--minSupport INT, -s INT:      Minimum support to consider a window for correction.\
+  \ (default: 1)\n\t--maxSupport INT, -S INT:      Maximum number of overlaps to include\
+  \ in a pile. (default: 20,000)\n\t--merSize INT, -k INT:         k-mer size for\
+  \ chaining and polishing. (default: 9)\n\t--solid INT, -f INT:           Minimum\
+  \ number of occurrences to consider a k-mer as solid during polishing. (default:\
+  \ 4)\n\t--anchorSupport INT, -c INT:   Minimum number of sequences supporting (Ai)\
+  \ - (Ai+1) to keep the two anchors in the chaining. (default: 8)\n\t--minAnchors\
+  \ INT, -a INT:      Minimum number of anchors in a window to allow consensus computation.\
+  \ (default: 10)\n\t--windowOverlap INT, -o INT:   Overlap size between consecutive\
+  \ windows. (default: 50)\n\t--nproc INT, -j INT:           Number of processes to\
+  \ run in parallel (default: number of cores).\n\t--minimapIndex INT, -m INT:   \
+  \ Split minimap2 index every INT input bases (default: 500M).\n\t--tmpdir STRING,\
+  \ -t STRING:    Path where to store the temporary files (default: working directory).\n\
+  \t--help, -h:                    Print this help message.\n\t--version, -v: \t \
+  \              Print version information.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/consent:2.2.2--h8b12597_0

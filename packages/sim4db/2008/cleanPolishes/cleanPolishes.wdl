@@ -20,6 +20,9 @@ task CleanPolishes {
       ~{if (save_junk) then "-savejunk" else ""} \
       ~{if (debug) then "-debug" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     threshold: "Introns bigger than this are candidates for trimming (default = 100000)."
     quiet: "Don't print unmodified matches"

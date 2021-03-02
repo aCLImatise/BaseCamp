@@ -18,6 +18,9 @@ task DAssembler {
       ~{if defined(read_length) then ("--read_length " +  '"' + read_length + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     max_overlap: "maximum tier overlap for consensus calling [10]"
     max_mismatch: "maximum mismatches allowed for consensus calling [2]"

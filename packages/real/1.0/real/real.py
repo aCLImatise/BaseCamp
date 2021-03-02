@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, Boolean
+
+Real_V0_1_0 = CommandToolBuilder(tool="real", base_command=["real"], inputs=[ToolInput(tag="in_maximum_number_errors", input_type=File(optional=True), prefix="-t", doc=InputDocumentation(doc="<maximum number of errors in seed, default=2>")), ToolInput(tag="in_total_maximum_number", input_type=Boolean(optional=True), prefix="-e", doc=InputDocumentation(doc="<total maximum number of errors, default=5>")), ToolInput(tag="in_length_seed_default", input_type=Boolean(optional=True), prefix="-l", doc=InputDocumentation(doc="<length of seed, default=32>")), ToolInput(tag="in_search_unique_match", input_type=Boolean(optional=True), prefix="-u", doc=InputDocumentation(doc="<search for unique match, default=1>")), ToolInput(tag="in_fraction_use_default", input_type=Boolean(optional=True), prefix="-f", doc=InputDocumentation(doc="<fraction of physical memory to use, default=0.75>")), ToolInput(tag="in_use_quality_scores", input_type=Boolean(optional=True), prefix="-q", doc=InputDocumentation(doc="<use quality scores, default=1>")), ToolInput(tag="in_offset_quality_scores", input_type=Boolean(optional=True), prefix="-Q", doc=InputDocumentation(doc="<offset for quality scores, default=autodetect>")), ToolInput(tag="in_rewrite_pattern_default", input_type=Boolean(optional=True), prefix="-R", doc=InputDocumentation(doc="<rewrite pattern file, default=1>")), ToolInput(tag="in_number_matching_threads", input_type=Boolean(optional=True), prefix="-T", doc=InputDocumentation(doc="<number of matching threads, default=8>")), ToolInput(tag="in_similarity", input_type=Boolean(optional=True), prefix="-similarity", doc=InputDocumentation(doc="<sequence similarity, default=0.995>")), ToolInput(tag="in_trans", input_type=Boolean(optional=True), prefix="-trans", doc=InputDocumentation(doc="<transitions fraction of mutations, default=0.71>")), ToolInput(tag="in_gc", input_type=Boolean(optional=True), prefix="-gc", doc=InputDocumentation(doc="<composition bias, default=0.41>")), ToolInput(tag="in_gcm_ut_bias", input_type=Boolean(optional=True), prefix="-gcmut_bias", doc=InputDocumentation(doc="<mutability bias of G&C, default=2>")), ToolInput(tag="in_filter_level", input_type=Boolean(optional=True), prefix="-filter_level", doc=InputDocumentation(doc="<filtering level for equal hits 0-4, default=2>"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Real_V0_1_0().translate("wdl", allow_empty_container=True)
+

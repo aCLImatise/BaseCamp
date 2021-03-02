@@ -1,0 +1,299 @@
+!Command
+command:
+- stringMLST.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: locus1
+  description: locusFile1
+- !Positional
+  optional: false
+  position: 1
+  name: locus2
+  description: locusFile2
+- !Positional
+  optional: false
+  position: 0
+  name: profile
+  description: profileFile
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --buildDB
+  description: Identifier for build db module
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --config
+  description: "= <configuration file>\nConfig file in the format described above.\n\
+    All the files follow the structure followed by pubmlst. Refer extended document\
+    \ for details."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  description: "= <kmer length>\nKmer size for which the db has to be formed(Default\
+    \ k = 35). Note the tool works best with kmer length in between 35 and 66\nfor\
+    \ read lengths of 55 to 150 bp. Kmer size can be increased accordingly. It is\
+    \ advised to keep lower kmer sizes\nif the quality of reads is not very good."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -P
+  - --prefix
+  description: "= <prefix>\nPrefix for db and log files to be created(Default = kmer).\
+    \ Also you can specify folder where you want the dbb to be created."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  description: File location to write build log
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --predict
+  description: Identifier for predict module
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - '-1'
+  - --fastq1
+  description: "= <fastq1_filename>\nPath to first fastq file for paired end sample\
+    \ and path to the fastq file for single end file.\nShould have extension fastq\
+    \ or fq."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - '-2'
+  - --fastq2
+  description: "= <fastq2_filename>\nPath to second fastq file for paired end sample.\n\
+    Should have extension fastq or fq."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --dir
+  - --directory
+  description: "= <directory>\nBATCH MODE : Location of all the samples for batch\
+    \ mode."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -C
+  - --coverage
+  description: "Calculate sequence coverage for each allele. Turns on read generation\
+    \ (-r) and turns off fuzzy (-z 1)\nRequires bwa, bamtools and samtools be in your\
+    \ path"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --list
+  description: "= <list_file>\nLIST MODE : Location of list file and flag for list\
+    \ mode.\nlist file should have full file paths for all the samples/files.\nEach\
+    \ sample takes one line. For paired end samples the 2 files should be tab separated\
+    \ on single line."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: "= <output_filename>\nPrints the output to a file instead of stdout."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --paired
+  description: "Flag for specifying paired end files. Default option so would work\
+    \ the same if you do not specify for all modes.\nFor batch mode the paired end\
+    \ samples should be differentiated by 1/2.fastq or 1/2.fq"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: A separate reads file is created which has all the reads covering all
+    the locus.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --single
+  description: Flag for specifying single end files.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: Time for each analysis will also be reported.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: Prints the version of the software.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --overwrite
+  description: "By default stringMLST appends the results to the output_filename if\
+    \ same name is used.\nThis argument overwrites the previously specified output\
+    \ file."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  - --fuzzy
+  description: "= <fuzzy threshold int>\nThreshold for reporting a fuzzy match (Default=300).\
+    \ For higher coverage reads this threshold should be set higher to avoid\nindicating\
+    \ fuzzy match when exact match was more likely. For lower coverage reads, threshold\
+    \ of <100 is recommended"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --getMLST
+  description: Identifier for getMLST module
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --species
+  description: "= <species name>\nSpecies name from the pubMLST schemes (use \"--species\
+    \ show\" to get list of available schemes)\n\"all\" will download and build all"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --schemes
+  description: Display the list of available schemes
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Prints the help manual for this application
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "\nReadme for stringMLST\n=============================================================================================\n\
+  Usage\n./stringMLST.py\n[--buildDB]\n[--predict]\n[-1 filename_fastq1][--fastq1\
+  \ filename_fastq1]\n[-2 filename_fastq2][--fastq2 filename_fastq2]\n[-d directory][--dir\
+  \ directory][--directory directory]\n[-l list_file][--list list_file]\n[-p][--paired]\n\
+  [-s][--single]\n[-c][--config]\n[-P][--prefix]\n[-z][--fuzzy]\n[-a]\n[-C][--coverage]\n\
+  [-k]\n[-o output_filename][--output output_filename]\n[-x][--overwrite]\n[-t]\n\
+  [-r]\n[-v]\n[-h][--help]\n==============================================================================================\n\
+  There are two steps to predicting ST using stringMLST.\n1. Create DB : stringMLST.py\
+  \ --buildDB\n2. Predict : stringMLST --predict\n1. stringMLST.py --buildDB\nSynopsis:\n\
+  stringMLST.py --buildDB -c <config file> -k <kmer length(optional)> -P <DB prefix(optional)>\n\
+  \    config file : is a tab delimited file which has the information for typing\
+  \ scheme ie loci, its multifasta file and profile definition file.\n        Format\
+  \ :\n            [loci]\n            locus1      locusFile1\n            locus2\
+  \      locusFile2\n            [profile]\n            profile     profileFile\n\
+  \    kmer length : is the kmer length for the db. Note, while processing this should\
+  \ be smaller than the read length.\n        We suggest kmer lengths of 35, 66 depending\
+  \ on the read length.\n    DB prefix(optional) : holds the information for DB files\
+  \ to be created and their location. This module creates 3 files with this prefix.\n\
+  \        You can use a folder structure with prefix to store your db at particular\
+  \ location.\nRequired arguments\n--buildDB\n    Identifier for build db module\n\
+  -c,--config = <configuration file>\n    Config file in the format described above.\n\
+  \    All the files follow the structure followed by pubmlst. Refer extended document\
+  \ for details.\nOptional arguments\n-k = <kmer length>\n    Kmer size for which\
+  \ the db has to be formed(Default k = 35). Note the tool works best with kmer length\
+  \ in between 35 and 66\n    for read lengths of 55 to 150 bp. Kmer size can be increased\
+  \ accordingly. It is advised to keep lower kmer sizes\n    if the quality of reads\
+  \ is not very good.\n-P,--prefix = <prefix>\n    Prefix for db and log files to\
+  \ be created(Default = kmer). Also you can specify folder where you want the dbb\
+  \ to be created.\n-a\n        File location to write build log\n-h,--help\n  Prints\
+  \ the help manual for this application\n --------------------------------------------------------------------------------------------\n\
+  2. stringMLST.py --predict\nstringMLST --predict : can run in three modes\n  1)\
+  \ single sample (default mode)\n  2) batch mode : run stringMLST for all the samples\
+  \ in a folder (for a particular specie)\n  3) list mode : run stringMLST on samples\
+  \ specified in a file\nstringMLST can process both single and paired end files.\
+  \ By default program expects paired end files.\nSynopsis\nstringMLST.py --predict\
+  \ -1 <fastq file> -2 <fastq file> -d <directory location> -l <list file> -p -s -P\
+  \ <DB prefix(optional)> -k <kmer length(optional)> -o <output file> -x\nRequired\
+  \ arguments\n--predict\n    Identifier for predict module\nOptional arguments\n\
+  -1,--fastq1 = <fastq1_filename>\n  Path to first fastq file for paired end sample\
+  \ and path to the fastq file for single end file.\n  Should have extension fastq\
+  \ or fq.\n-2,--fastq2 = <fastq2_filename>\n  Path to second fastq file for paired\
+  \ end sample.\n  Should have extension fastq or fq.\n-d,--dir,--directory = <directory>\n\
+  \  BATCH MODE : Location of all the samples for batch mode.\n-C,--coverage\n   \
+  \ Calculate sequence coverage for each allele. Turns on read generation (-r) and\
+  \ turns off fuzzy (-z 1)\n    Requires bwa, bamtools and samtools be in your path\n\
+  -k = <kmer_length>\n  Kmer length for which the db was created(Default k = 35).\
+  \ Could be verified by looking at the name of the db file.\n  Could be used if the\
+  \ reads are of very bad quality or have a lot of N's.\n-l,--list = <list_file>\n\
+  \  LIST MODE : Location of list file and flag for list mode.\n  list file should\
+  \ have full file paths for all the samples/files.\n  Each sample takes one line.\
+  \ For paired end samples the 2 files should be tab separated on single line.\n-o,--output\
+  \ = <output_filename>\n  Prints the output to a file instead of stdout.\n-p,--paired\n\
+  \  Flag for specifying paired end files. Default option so would work the same if\
+  \ you do not specify for all modes.\n  For batch mode the paired end samples should\
+  \ be differentiated by 1/2.fastq or 1/2.fq\n-P,--prefix = <prefix>\n    Prefix using\
+  \ which the db was created(Defaults = kmer). The location of the db could also be\
+  \ provided.\n-r\n  A separate reads file is created which has all the reads covering\
+  \ all the locus.\n-s,--single\n  Flag for specifying single end files.\n-t\n  Time\
+  \ for each analysis will also be reported.\n-v\n  Prints the version of the software.\n\
+  -x,--overwrite\n  By default stringMLST appends the results to the output_filename\
+  \ if same name is used.\n  This argument overwrites the previously specified output\
+  \ file.\n-z,--fuzzy = <fuzzy threshold int>\n    Threshold for reporting a fuzzy\
+  \ match (Default=300). For higher coverage reads this threshold should be set higher\
+  \ to avoid\n    indicating fuzzy match when exact match was more likely. For lower\
+  \ coverage reads, threshold of <100 is recommended\n-h,--help\n  Prints the help\
+  \ manual for this application\n=============================================================================================\n\
+  3. stringMLST.py --getMLST\nSynopsis:\nstringMLST.py --getMLST --species= <species>\
+  \ [-k kmer length] [-P DB prefix]\nRequired arguments\n--getMLST\n    Identifier\
+  \ for getMLST module\n--species= <species name>\n    Species name from the pubMLST\
+  \ schemes (use \"--species show\" to get list of available schemes)\n    \"all\"\
+  \ will download and build all\nOptional arguments\n-k = <kmer length>\n    Kmer\
+  \ size for which the db has to be formed(Default k = 35). Note the tool works best\
+  \ with kmer length in between 35 and 66\n    for read lengths of 55 to 150 bp. Kmer\
+  \ size can be increased accordingly. It is advised to keep lower kmer sizes\n  \
+  \  if the quality of reads is not very good.\n-P,--prefix = <prefix>\n    Prefix\
+  \ for db and log files to be created(Default = kmer). Also you can specify folder\
+  \ where you want the db to be created.\n    We recommend that prefix and config\
+  \ point to the same folder for cleanliness but this is not required\n--schemes\n\
+  \    Display the list of available schemes\n-h,--help\n  Prints the help manual\
+  \ for this application\n=============================================================================================\n\
+  Example usage:\n./stringMLST.py --buildDB\n1) Build DB\n ./stringMLST.py --buildDB\
+  \ --config config.txt -k 35 -P NM\n --------------------------------------------------------------------------------------------\n\
+  ./stringMLST.py --predict\n1) Single sample, paired end\n ./stringMLST.py --predict\
+  \ -1 data/Neisseria/ERR017001_1.fastq -2 data/Neisseria/ERR017001_2.fastq -p --prefix\
+  \ NM -k 35 -o output.txt\n2) Single sample, single end, overwrite output\n  ./stringMLST.py\
+  \ --predict -1 data/Neisseria/ERR017001_1.fastq -s --prefix NM -k 35 -o output.txt\
+  \ -x\n3) Multiple sample batch mode, paired end\n   ./stringMLST.py --predict -d\
+  \ data/Neisseria/ -p --prefix NM -k 35 -o output.txt -x\n4) Multiple samples list\
+  \ mode, paired end\n   ./stringMLST.py --predict -l data/listFile.txt -p --prefix\
+  \ NM -k 35 -o output.txt -x\n5) Single, high coverage sample, paired end\n ./stringMLST.py\
+  \ --predict -1 data/Neisseria/ERR017001_1.fastq -2 data/Neisseria/ERR017001_2.fastq\
+  \ -p --prefix NM -k 35 -z 1000 -o output.txt\n--------------------------------------------------------------------------------------------\n\
+  ./stringMLST.py --getMLST\n1) List available schemes\n ./stringMLST.py --getMLST\
+  \ --schemes\n2) Download the Neisseria spp. pubMLST scheme\n  ./stringMLST.py --getMLST\
+  \ --species=neisseria -P datasets/nmb\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/stringmlst:0.6.3--py_0

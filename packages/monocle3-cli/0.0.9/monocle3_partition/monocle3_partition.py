@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Int, Boolean, String, Float
+
+Monocle3_Partition_V0_1_0 = CommandToolBuilder(tool="monocle3_partition", base_command=["monocle3", "partition"], inputs=[ToolInput(tag="in_input_object_format", input_type=Int(optional=True), prefix="--input-object-format", doc=InputDocumentation(doc="Format of input object. [Default: cds3]")), ToolInput(tag="in_output_object_format", input_type=Int(optional=True), prefix="--output-object-format", doc=InputDocumentation(doc="Format of output object. [Default: cds3]")), ToolInput(tag="in_introspective", input_type=Boolean(optional=True), prefix="--introspective", doc=InputDocumentation(doc="Print introspective information of the output object.")), ToolInput(tag="in_reduction_method", input_type=String(optional=True), prefix="--reduction-method", doc=InputDocumentation(doc="The dimensionality reduction to base the clustering on, choose from {UMAP, tSNE, PCA, LSI}. [Default: UMAP]")), ToolInput(tag="in_knn", input_type=Int(optional=True), prefix="--knn", doc=InputDocumentation(doc="Number of nearest neighbours used for Louvain clustering. [Default: 20]")), ToolInput(tag="in_weight", input_type=Boolean(optional=True), prefix="--weight", doc=InputDocumentation(doc="When this option is set, calculate the weight for each edge in the kNN graph.")), ToolInput(tag="in_louvain_iter", input_type=Int(optional=True), prefix="--louvain-iter", doc=InputDocumentation(doc="The number of iteration for Louvain clustering. [Default: 1]")), ToolInput(tag="in_resolution", input_type=Float(optional=True), prefix="--resolution", doc=InputDocumentation(doc="Resolution of clustering result, specifying the granularity of clusters. Not used by default and the standard igraph louvain clustering algorithm will be used.")), ToolInput(tag="in_partition_q_val", input_type=Float(optional=True), prefix="--partition-qval", doc=InputDocumentation(doc="The q-value threshold used to determine the partition of cells. [Default: 0.05]")), ToolInput(tag="in_verbose", input_type=Boolean(optional=True), prefix="--verbose", doc=InputDocumentation(doc="Emit verbose output.")), ToolInput(tag="in_input_object", input_type=String(), position=0, doc=InputDocumentation(doc="")), ToolInput(tag="in_output_object", input_type=String(), position=1, doc=InputDocumentation(doc=""))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Monocle3_Partition_V0_1_0().translate("wdl", allow_empty_container=True)
+

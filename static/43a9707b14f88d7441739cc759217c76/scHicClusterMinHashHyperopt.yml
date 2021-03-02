@@ -1,0 +1,180 @@
+!Command
+command:
+- scHicClusterMinHashHyperopt
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --matrix
+  - -m
+  description: The matrix to compute the loops on.
+  args: !SimpleFlagArg
+    name: MATRIX
+- !Flag
+  optional: true
+  synonyms:
+  - --cellColor
+  - -c
+  description: "The file with the associated cell types or cell cycle\nstages."
+  args: !SimpleFlagArg
+    name: CELLCOLOR
+- !Flag
+  optional: true
+  synonyms:
+  - --outputFileName
+  - -o
+  description: "File names for the result of the optimization\n(Default: hyperoptMinHash_result.txt)."
+  args: !SimpleFlagArg
+    name: OUTPUTFILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --method
+  - -me
+  description: "Method to optimize by hyperopt: random tree, tpe,\nadaptive tpe"
+  args: !ChoiceFlagArg
+    choices: !!set
+      random:
+      atpe:
+      tpe:
+- !Flag
+  optional: true
+  synonyms:
+  - --runs
+  description: Number of runs of hyperopt.
+  args: !SimpleFlagArg
+    name: RUNS
+- !Flag
+  optional: true
+  synonyms:
+  - --nearestNeighbors
+  - -k
+  description: Number of runs of hyperopt.
+  args: !SimpleFlagArg
+    name: NEARESTNEIGHBORS
+- !Flag
+  optional: true
+  synonyms:
+  - --numberOfHashfunctions
+  description: "NUMBEROFHASHFUNCTIONS NUMBEROFHASHFUNCTIONS, -noh NUMBEROFHASHFUNCTIONS\
+    \ NUMBEROFHASHFUNCTIONS NUMBEROFHASHFUNCTIONS\nNumber of hash functions range:\
+    \ start, stop, stepsize\n(Default: (1000, 20000, 1000))."
+  args: !SimpleFlagArg
+    name: NUMBEROFHASHFUNCTIONS
+- !Flag
+  optional: true
+  synonyms:
+  - --numberOfClusters
+  description: "NUMBEROFCLUSTERS, -noc NUMBEROFCLUSTERS NUMBEROFCLUSTERS\nNumber of\
+    \ cluster range (Default: (6, 15))."
+  args: !SimpleFlagArg
+    name: NUMBEROFCLUSTERS
+- !Flag
+  optional: true
+  synonyms:
+  - --numberPCADimensions
+  description: "NUMBERPCADIMENSIONS NUMBERPCADIMENSIONS, -nop NUMBERPCADIMENSIONS\
+    \ NUMBERPCADIMENSIONS NUMBERPCADIMENSIONS\nNumber of PCA range: start, stop, stepsize\
+    \ (Default:\n(30, 60, 1))."
+  args: !SimpleFlagArg
+    name: NUMBERPCADIMENSIONS
+- !Flag
+  optional: true
+  synonyms:
+  - --umap_numberOfNeighbors
+  description: "UMAP_NUMBEROFNEIGHBORS UMAP_NUMBEROFNEIGHBORS, -unon UMAP_NUMBEROFNEIGHBORS\
+    \ UMAP_NUMBEROFNEIGHBORS UMAP_NUMBEROFNEIGHBORS\nNumber of umap neighbors range:\
+    \ start, stop, stepsize\n(Default: (30, 60, 1))."
+  args: !SimpleFlagArg
+    name: UMAP_NUMBEROFNEIGHBORS
+- !Flag
+  optional: true
+  synonyms:
+  - --umap_n_components
+  description: "UMAP_N_COMPONENTS UMAP_N_COMPONENTS, -unoc UMAP_N_COMPONENTS UMAP_N_COMPONENTS\
+    \ UMAP_N_COMPONENTS\nNumber of umap n_components range: start, stop,\nstepsize\
+    \ (Default: (2, 10, 1))."
+  args: !SimpleFlagArg
+    name: UMAP_N_COMPONENTS
+- !Flag
+  optional: true
+  synonyms:
+  - --umap_min_dist
+  description: "UMAP_MIN_DIST, -umin UMAP_MIN_DIST UMAP_MIN_DIST\nNumber of umap neighbors\
+    \ range: start, stop (Default:\n(0.0, 0.5))."
+  args: !SimpleFlagArg
+    name: UMAP_MIN_DIST
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  - -t
+  description: "Number of threads (uses the python multiprocessing\nmodule) (Default:\
+    \ 16)."
+  args: !SimpleFlagArg
+    name: THREADS
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: Show this help message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: scHicClusterMinHashHyperopt --matrix MATRIX --cellColor CELLCOLOR\n\
+  \                                   [--outputFileName OUTPUTFILENAME]\n        \
+  \                           [--runs RUNS]\n                                   [--nearestNeighbors\
+  \ NEARESTNEIGHBORS]\n                                   [--numberOfHashfunctions\
+  \ NUMBEROFHASHFUNCTIONS NUMBEROFHASHFUNCTIONS NUMBEROFHASHFUNCTIONS]\n         \
+  \                          [--numberOfClusters NUMBEROFCLUSTERS NUMBEROFCLUSTERS]\n\
+  \                                   [--numberPCADimensions NUMBERPCADIMENSIONS NUMBERPCADIMENSIONS\
+  \ NUMBERPCADIMENSIONS]\n                                   [--umap_numberOfNeighbors\
+  \ UMAP_NUMBEROFNEIGHBORS UMAP_NUMBEROFNEIGHBORS UMAP_NUMBEROFNEIGHBORS]\n      \
+  \                             [--umap_n_components UMAP_N_COMPONENTS UMAP_N_COMPONENTS\
+  \ UMAP_N_COMPONENTS]\n                                   [--umap_min_dist UMAP_MIN_DIST\
+  \ UMAP_MIN_DIST]\n                                   --method {random,tpe,atpe}\n\
+  \                                   [--threads THREADS] [--help] [--version]\n\n\
+  Required arguments:\n  --matrix MATRIX, -m MATRIX\n                        The matrix\
+  \ to compute the loops on.\n  --cellColor CELLCOLOR, -c CELLCOLOR\n            \
+  \            The file with the associated cell types or cell cycle\n           \
+  \             stages.\n  --outputFileName OUTPUTFILENAME, -o OUTPUTFILENAME\n  \
+  \                      File names for the result of the optimization\n         \
+  \               (Default: hyperoptMinHash_result.txt).\n  --method {random,tpe,atpe},\
+  \ -me {random,tpe,atpe}\n                        Method to optimize by hyperopt:\
+  \ random tree, tpe,\n                        adaptive tpe\n\nOptional arguments:\n\
+  \  --runs RUNS           Number of runs of hyperopt.\n  --nearestNeighbors NEARESTNEIGHBORS,\
+  \ -k NEARESTNEIGHBORS\n                        Number of runs of hyperopt.\n  --numberOfHashfunctions\
+  \ NUMBEROFHASHFUNCTIONS NUMBEROFHASHFUNCTIONS NUMBEROFHASHFUNCTIONS, -noh NUMBEROFHASHFUNCTIONS\
+  \ NUMBEROFHASHFUNCTIONS NUMBEROFHASHFUNCTIONS\n                        Number of\
+  \ hash functions range: start, stop, stepsize\n                        (Default:\
+  \ (1000, 20000, 1000)).\n  --numberOfClusters NUMBEROFCLUSTERS NUMBEROFCLUSTERS,\
+  \ -noc NUMBEROFCLUSTERS NUMBEROFCLUSTERS\n                        Number of cluster\
+  \ range (Default: (6, 15)).\n  --numberPCADimensions NUMBERPCADIMENSIONS NUMBERPCADIMENSIONS\
+  \ NUMBERPCADIMENSIONS, -nop NUMBERPCADIMENSIONS NUMBERPCADIMENSIONS NUMBERPCADIMENSIONS\n\
+  \                        Number of PCA range: start, stop, stepsize (Default:\n\
+  \                        (30, 60, 1)).\n  --umap_numberOfNeighbors UMAP_NUMBEROFNEIGHBORS\
+  \ UMAP_NUMBEROFNEIGHBORS UMAP_NUMBEROFNEIGHBORS, -unon UMAP_NUMBEROFNEIGHBORS UMAP_NUMBEROFNEIGHBORS\
+  \ UMAP_NUMBEROFNEIGHBORS\n                        Number of umap neighbors range:\
+  \ start, stop, stepsize\n                        (Default: (30, 60, 1)).\n  --umap_n_components\
+  \ UMAP_N_COMPONENTS UMAP_N_COMPONENTS UMAP_N_COMPONENTS, -unoc UMAP_N_COMPONENTS\
+  \ UMAP_N_COMPONENTS UMAP_N_COMPONENTS\n                        Number of umap n_components\
+  \ range: start, stop,\n                        stepsize (Default: (2, 10, 1)).\n\
+  \  --umap_min_dist UMAP_MIN_DIST UMAP_MIN_DIST, -umin UMAP_MIN_DIST UMAP_MIN_DIST\n\
+  \                        Number of umap neighbors range: start, stop (Default:\n\
+  \                        (0.0, 0.5)).\n  --threads THREADS, -t THREADS\n       \
+  \                 Number of threads (uses the python multiprocessing\n         \
+  \               module) (Default: 16).\n  --help, -h            Show this help message\
+  \ and exit.\n  --version             show program's version number and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/schicexplorer:7--py_0

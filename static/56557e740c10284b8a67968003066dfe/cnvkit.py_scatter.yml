@@ -1,0 +1,228 @@
+!Command
+command:
+- cnvkit.py
+- scatter
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: filename
+  description: "Processed bin-level copy ratios (*.cnr), the output of\nthe 'fix'\
+    \ sub-command."
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --segment
+  description: "Segmentation calls (.cns), the output of the 'segment'\ncommand."
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --chromosome
+  description: "Chromosome or chromosomal range, e.g. 'chr1' or\n'chr1:2333000-2444000',\
+    \ to display. If a range is\ngiven, all targeted genes in this range will be shown,\n\
+    unless -g/--gene is also given."
+  args: !SimpleFlagArg
+    name: RANGE
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --gene
+  description: Name of gene or genes (comma-separated) to display.
+  args: !SimpleFlagArg
+    name: GENE
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --range-list
+  description: "File listing the chromosomal ranges to display, as\nBED, interval\
+    \ list or 'chr:start-end' text. Creates\nfocal plots similar to -c/--chromosome\
+    \ for each listed\nregion, combined into a multi-page PDF. The output\nfilename\
+    \ must also be specified (-o/--output)."
+  args: !SimpleFlagArg
+    name: RANGE_LIST
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --width
+  description: "Width of margin to show around the selected gene(s)\n(-g/--gene) or\
+    \ small chromosomal region\n(-c/--chromosome). [Default: 1000000]"
+  args: !SimpleFlagArg
+    name: WIDTH
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: Output PDF file name.
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --antitarget-marker
+  description: "Plot antitargets using this symbol when plotting in a\nselected chromosomal\
+    \ region (-g/--gene or\n-c/--chromosome). [Default: same as targets]"
+  args: !SimpleFlagArg
+    name: CHARACTER
+- !Flag
+  optional: true
+  synonyms:
+  - --by-bin
+  description: "Plot data x-coordinates by bin indices instead of\ngenomic coordinates.\
+    \ All bins will be shown with equal\nwidth, no blank regions will be shown, and\
+    \ x-axis\nvalues indicate bin number (within chromosome) instead\nof genomic position."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --segment-color
+  description: "Plot segment lines in this color. Value can be any\nstring accepted\
+    \ by matplotlib, e.g. 'red' or\n'#CC0000'."
+  args: !SimpleFlagArg
+    name: SEGMENT_COLOR
+- !Flag
+  optional: true
+  synonyms:
+  - --title
+  description: 'Plot title. [Default: sample ID, from filename or -i]'
+  args: !SimpleFlagArg
+    name: TITLE
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --trend
+  description: Draw a smoothed local trendline on the scatter plot.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --y-max
+  description: y-axis upper limit.
+  args: !SimpleFlagArg
+    name: Y_MAX
+- !Flag
+  optional: true
+  synonyms:
+  - --y-min
+  description: y-axis lower limit.
+  args: !SimpleFlagArg
+    name: Y_MIN
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --vcf
+  description: "VCF file name containing variants to plot for SNV\nb-allele frequencies."
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --sample-id
+  description: "Name of the sample in the VCF to use for b-allele\nfrequency extraction\
+    \ and as the default plot title."
+  args: !SimpleFlagArg
+    name: SAMPLE_ID
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --normal-id
+  description: "Corresponding normal sample ID in the input VCF. This\nsample is used\
+    \ to select only germline SNVs to plot."
+  args: !SimpleFlagArg
+    name: NORMAL_ID
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --min-variant-depth
+  description: "Minimum read depth for a SNV to be used in the\nb-allele frequency\
+    \ calculation. [Default: 20]"
+  args: !SimpleFlagArg
+    name: MIN_VARIANT_DEPTH
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  description: "[ALT_FREQ], --zygosity-freq [ALT_FREQ]\nIgnore VCF's genotypes (GT\
+    \ field) and instead infer\nzygosity from allele frequencies. [Default if used\n\
+    without a number: 0.25]\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: cnvkit.py scatter [-h] [-s FILENAME] [-c RANGE] [-g GENE]\n   \
+  \                      [-l RANGE_LIST] [-w WIDTH] [-o FILENAME]\n              \
+  \           [-a CHARACTER] [--by-bin]\n                         [--segment-color\
+  \ SEGMENT_COLOR] [--title TITLE] [-t]\n                         [--y-max Y_MAX]\
+  \ [--y-min Y_MIN] [-v FILENAME]\n                         [-i SAMPLE_ID] [-n NORMAL_ID]\
+  \ [-m MIN_VARIANT_DEPTH]\n                         [-z [ALT_FREQ]]\n           \
+  \              [filename]\n\npositional arguments:\n  filename              Processed\
+  \ bin-level copy ratios (*.cnr), the output of\n                        the 'fix'\
+  \ sub-command.\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  -s FILENAME, --segment FILENAME\n                        Segmentation\
+  \ calls (.cns), the output of the 'segment'\n                        command.\n\
+  \  -c RANGE, --chromosome RANGE\n                        Chromosome or chromosomal\
+  \ range, e.g. 'chr1' or\n                        'chr1:2333000-2444000', to display.\
+  \ If a range is\n                        given, all targeted genes in this range\
+  \ will be shown,\n                        unless -g/--gene is also given.\n  -g\
+  \ GENE, --gene GENE  Name of gene or genes (comma-separated) to display.\n  -l RANGE_LIST,\
+  \ --range-list RANGE_LIST\n                        File listing the chromosomal\
+  \ ranges to display, as\n                        BED, interval list or 'chr:start-end'\
+  \ text. Creates\n                        focal plots similar to -c/--chromosome\
+  \ for each listed\n                        region, combined into a multi-page PDF.\
+  \ The output\n                        filename must also be specified (-o/--output).\n\
+  \  -w WIDTH, --width WIDTH\n                        Width of margin to show around\
+  \ the selected gene(s)\n                        (-g/--gene) or small chromosomal\
+  \ region\n                        (-c/--chromosome). [Default: 1000000]\n  -o FILENAME,\
+  \ --output FILENAME\n                        Output PDF file name.\n\nPlot aesthetics:\n\
+  \  -a CHARACTER, --antitarget-marker CHARACTER\n                        Plot antitargets\
+  \ using this symbol when plotting in a\n                        selected chromosomal\
+  \ region (-g/--gene or\n                        -c/--chromosome). [Default: same\
+  \ as targets]\n  --by-bin              Plot data x-coordinates by bin indices instead\
+  \ of\n                        genomic coordinates. All bins will be shown with equal\n\
+  \                        width, no blank regions will be shown, and x-axis\n   \
+  \                     values indicate bin number (within chromosome) instead\n \
+  \                       of genomic position.\n  --segment-color SEGMENT_COLOR\n\
+  \                        Plot segment lines in this color. Value can be any\n  \
+  \                      string accepted by matplotlib, e.g. 'red' or\n          \
+  \              '#CC0000'.\n  --title TITLE         Plot title. [Default: sample\
+  \ ID, from filename or -i]\n  -t, --trend           Draw a smoothed local trendline\
+  \ on the scatter plot.\n  --y-max Y_MAX         y-axis upper limit.\n  --y-min Y_MIN\
+  \         y-axis lower limit.\n\nTo plot SNP b-allele frequencies:\n  -v FILENAME,\
+  \ --vcf FILENAME\n                        VCF file name containing variants to plot\
+  \ for SNV\n                        b-allele frequencies.\n  -i SAMPLE_ID, --sample-id\
+  \ SAMPLE_ID\n                        Name of the sample in the VCF to use for b-allele\n\
+  \                        frequency extraction and as the default plot title.\n \
+  \ -n NORMAL_ID, --normal-id NORMAL_ID\n                        Corresponding normal\
+  \ sample ID in the input VCF. This\n                        sample is used to select\
+  \ only germline SNVs to plot.\n  -m MIN_VARIANT_DEPTH, --min-variant-depth MIN_VARIANT_DEPTH\n\
+  \                        Minimum read depth for a SNV to be used in the\n      \
+  \                  b-allele frequency calculation. [Default: 20]\n  -z [ALT_FREQ],\
+  \ --zygosity-freq [ALT_FREQ]\n                        Ignore VCF's genotypes (GT\
+  \ field) and instead infer\n                        zygosity from allele frequencies.\
+  \ [Default if used\n                        without a number: 0.25]\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/cnvkit:0.9.8--py_0

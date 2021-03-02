@@ -1,0 +1,121 @@
+!Command
+command:
+- sambamba
+- markdup
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: sambamba-markdup
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: input.bam
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --remove-duplicates
+  description: remove duplicates instead of just marking them
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --nthreads
+  description: number of threads to use
+  args: !SimpleFlagArg
+    name: NTHREADS
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --compression-level
+  description: specify compression level of the resulting file (from 0 to 9)
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --show-progress
+  description: show progressbar in STDERR
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --tmpdir
+  description: specify directory for temporary files
+  args: !SimpleFlagArg
+    name: TMPDIR
+- !Flag
+  optional: true
+  synonyms:
+  - --hash-table-size
+  description: "size of hash table for finding read pairs (default is 262144 reads);\n\
+    will be rounded down to the nearest power of two;\nshould be > (average coverage)\
+    \ * (insert size) for good performance"
+  args: !SimpleFlagArg
+    name: HASH_TABLE_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --overflow-list-size
+  description: "size of the overflow list where reads, thrown from the hash table,\n\
+    get a second chance to meet their pairs (default is 200000 reads);\nincreasing\
+    \ the size reduces the number of temporary files created"
+  args: !SimpleFlagArg
+    name: OVERFLOW_LIST_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --sort-buffer-size
+  description: "total amount of memory (in *megabytes*) used for sorting purposes;\n\
+    the default is 2048, increasing it will reduce the number of created\ntemporary\
+    \ files and the time spent in the main thread"
+  args: !SimpleFlagArg
+    name: SORT_BUFFER_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --io-buffer-size
+  description: "two buffers of BUFFER_SIZE *megabytes* each are used\nfor reading\
+    \ and writing BAM during the second pass (default is 128)\n"
+  args: !SimpleFlagArg
+    name: BUFFER_SIZE
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nsambamba 0.8.0\n by Artem Tarasov and Pjotr Prins (C) 2012-2020\n  \
+  \  LDC 1.20.0 / DMD v2.090.1 / LLVM7.0.0 / bootstrap LDC - the LLVM D compiler (0.17.6)\n\
+  \nUsage: sambamba-markdup [options] <input.bam> [<input2.bam> [...]] <output.bam>\n\
+  \       By default, marks the duplicates without removing them\n\nOptions: -r, --remove-duplicates\n\
+  \                    remove duplicates instead of just marking them\n         -t,\
+  \ --nthreads=NTHREADS\n                    number of threads to use\n         -l,\
+  \ --compression-level=N\n                    specify compression level of the resulting\
+  \ file (from 0 to 9)\n         -p, --show-progress\n                    show progressbar\
+  \ in STDERR\n         --tmpdir=TMPDIR\n                    specify directory for\
+  \ temporary files\n\nPerformance tweaking parameters\n         --hash-table-size=HASH_TABLE_SIZE\n\
+  \                    size of hash table for finding read pairs (default is 262144\
+  \ reads);\n                    will be rounded down to the nearest power of two;\n\
+  \                    should be > (average coverage) * (insert size) for good performance\n\
+  \         --overflow-list-size=OVERFLOW_LIST_SIZE\n                    size of the\
+  \ overflow list where reads, thrown from the hash table,\n                    get\
+  \ a second chance to meet their pairs (default is 200000 reads);\n             \
+  \       increasing the size reduces the number of temporary files created\n    \
+  \     --sort-buffer-size=SORT_BUFFER_SIZE\n                    total amount of memory\
+  \ (in *megabytes*) used for sorting purposes;\n                    the default is\
+  \ 2048, increasing it will reduce the number of created\n                    temporary\
+  \ files and the time spent in the main thread\n         --io-buffer-size=BUFFER_SIZE\n\
+  \                    two buffers of BUFFER_SIZE *megabytes* each are used\n    \
+  \                for reading and writing BAM during the second pass (default is\
+  \ 128)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/sambamba:0.8.0--h984e79f_0

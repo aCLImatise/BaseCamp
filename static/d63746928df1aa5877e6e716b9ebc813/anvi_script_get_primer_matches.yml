@@ -1,0 +1,125 @@
+!Command
+command:
+- anvi-script-get-primer-matches
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: oligotyping.
+  description: '🧀 Can consume: '
+- !Positional
+  optional: false
+  position: 1
+  name: samples-txt
+  description: '🍕 Can provide: '
+- !Positional
+  optional: false
+  position: 2
+  name: short-reads-fasta
+  description: '🍺 More on `anvi-script-get-primer-matches`:'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --primer-sequences
+  description: '[-m INT]'
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --samples-txt
+  description: "A TAB-delimited file with columns ['sample', 'r1',\n'r2'] or ['sample',\
+    \ 'group', 'r1', 'r2'] where `r1`\nand `r2` columns are paths to compressed or\
+    \ flat FASTQ\nfiles for each `sample` and `group` is an optional\ncolumn for relevant\
+    \ applications where samples are\naffiliated with one-word categorical variables\
+    \ that\ndefine to which group they are assigned. (default:\nNone)"
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --min-remainder-length
+  description: "Minimum length of the remainder of the read after a\nmatch. If your\
+    \ short read is XXXMMMMMMYYYYYYYYYYYYYY,\nwhere Ms indicate the primer sequence,\
+    \ min remainder\nlength is equal to the length of nucleotide matching\nY. Default\
+    \ is 60."
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --report-raw
+  description: "Just report them sequences. Don't bother trimming.\n(default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --stop-after
+  description: "Stop after X number of hits because who needs data.\n(default: 0)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-dir
+  description: 'Directory path for output files (default: None)'
+  args: !SimpleFlagArg
+    name: DIR_PATH
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: anvi-script-get-primer-matches [-h] [--samples-txt FILE]\n    \
+  \                                  --primer-sequences FILE [-m INT]\n          \
+  \                            [--report-raw] [--stop-after INT]\n               \
+  \                       [-o DIR_PATH]\n\noptional arguments:\n  -h, --help     \
+  \       show this help message and exit\n\nINPUT FILES:\n  Here you are expected\
+  \ to declare your FASTQ files and sequences which you\n  are interested to find\
+  \ in those FASTQ files. Each file should have at\n  least one entry\n\n  --samples-txt\
+  \ FILE    A TAB-delimited file with columns ['sample', 'r1',\n                 \
+  \       'r2'] or ['sample', 'group', 'r1', 'r2'] where `r1`\n                  \
+  \      and `r2` columns are paths to compressed or flat FASTQ\n                \
+  \        files for each `sample` and `group` is an optional\n                  \
+  \      column for relevant applications where samples are\n                    \
+  \    affiliated with one-word categorical variables that\n                     \
+  \   define to which group they are assigned. (default:\n                       \
+  \ None)\n  --primer-sequences FILE\n                        A single-column file\
+  \ that contains one or more short\n                        sequences to be searhed.\
+  \ (default: None)\n\nPARAMETERS OF LIFE AND DEATH:\n  Here you are expected to set\
+  \ appropriate paramters for your search (or you\n  can choose to go with the defaults)\n\
+  \n  -m INT, --min-remainder-length INT\n                        Minimum length of\
+  \ the remainder of the read after a\n                        match. If your short\
+  \ read is XXXMMMMMMYYYYYYYYYYYYYY,\n                        where Ms indicate the\
+  \ primer sequence, min remainder\n                        length is equal to the\
+  \ length of nucleotide matching\n                        Y. Default is 60.\n  --report-raw\
+  \          Just report them sequences. Don't bother trimming.\n                \
+  \        (default: False)\n  --stop-after INT      Stop after X number of hits because\
+  \ who needs data.\n                        (default: 0)\n\nOUTPUT:\n  Tell anvi'o\
+  \ where to put your thingies\n\n  -o DIR_PATH, --output-dir DIR_PATH\n         \
+  \               Directory path for output files (default: None)\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\
+  \n\U0001F525 Program description:\n\n   You provide this program with FASTQ files\
+  \ for one or more samples AND one or\n   more short sequences, and it collects reads\
+  \ from FASTQ files that matches to\n   your sequences. This tool can be most powerful\
+  \ if you want to collect all\n   short reads from one or more metagenomes that are\
+  \ downstream to a known\n   sequence. Using the comprehensive output files you can\
+  \ analyze the diversity\n   of seuqences visually, manually, or using established\
+  \ strategies such as\n   oligotyping.\n\n\U0001F9C0 Can consume: \n\n   samples-txt\n\
+  \   \n\U0001F355 Can provide: \n\n   short-reads-fasta\n   \n\U0001F37A More on\
+  \ `anvi-script-get-primer-matches`:\n\n   https://merenlab.org/software/anvio/help/7/programs/anvi-script-get-primer-matches\n\
+  \n\U0001F37B All anvi'o programs and artifacts:\n\n   https://merenlab.org/software/anvio/help/7\n\
+  \n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\
+  \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/anvio-minimal:7--py_0

@@ -1,0 +1,183 @@
+!Command
+command:
+- cda2dcm
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: cdafile-in
+  description: CDA input filename to be converted
+- !Positional
+  optional: false
+  position: 1
+  name: dcmfile-out
+  description: DICOM output filename
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --arguments
+  description: print expanded command line arguments
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  description: quiet mode, print no warnings and errors
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: verbose mode, print processing details
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --debug
+  description: debug mode, print debug information
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ll
+  - --log-level
+  description: "[l]evel: string constant\n(fatal, error, warn, info, debug, trace)\n\
+    use level l for the logger"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -lc
+  - --log-config
+  description: "[f]ilename: string\nuse config file f for the logger"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -an
+  - --annotation-no
+  description: document does not contain patient identif. data
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ov
+  - --no-override
+  description: "CDA patient and document data must match study,\nseries or manually\
+    \ entered information (default)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --key
+  description: "[k]ey: gggg,eeee=\"str\", path or dict. name=\"str\"\nadd further\
+    \ attribute"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --group-length-remove
+  description: always write without group length elements
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --length-undefined
+  description: write with undefined lengths
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: =  --padding-retain       do not change padding (default)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --padding-off
+  description: no padding (implicit if --write-dataset)
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: print this help text and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: print version information and exit
+  args: !EmptyFlagArg {}
+help_text: "$dcmtk: cda2dcm v3.6.5 2019-10-28 $\n\ncda2dcm: Encapsulate CDA file into\
+  \ DICOM format\nusage: cda2dcm [options] cdafile-in dcmfile-out\n\nparameters:\n\
+  \  cdafile-in                    CDA input filename to be converted\n  dcmfile-out\
+  \                   DICOM output filename\n\ngeneral options:\n  -h     --help \
+  \                print this help text and exit\n         --version             \
+  \ print version information and exit\n         --arguments            print expanded\
+  \ command line arguments\n  -q     --quiet                quiet mode, print no warnings\
+  \ and errors\n  -v     --verbose              verbose mode, print processing details\n\
+  \  -d     --debug                debug mode, print debug information\n  -ll    --log-level\
+  \            [l]evel: string constant\n                                (fatal, error,\
+  \ warn, info, debug, trace)\n                                use level l for the\
+  \ logger\n  -lc    --log-config           [f]ilename: string\n                 \
+  \               use config file f for the logger\nDICOM document options:\n  document\
+  \ title:\n    +t   --title                [t]itle: string (default: empty)\n   \
+  \                             document title\n    +cn  --concept-name         [CSD]\
+  \ [CV] [CM]: string (default: empty)\n                                coded representation\
+  \ of document title defined\n                                by coding scheme designator\
+  \ CSD,\n                                code value CV and code meaning CM\n  patient\
+  \ data:\n    +pn  --patient-name         [n]ame: string\n                      \
+  \          patient's name in DICOM PN syntax\n    +pi  --patient-id           [i]d:\
+  \ string\n                                patient identifier\n    +pb  --patient-birthdate\
+  \    [d]ate: string (YYYYMMDD)\n                                patient's birth\
+  \ date\n    +ps  --patient-sex          [s]ex: string (M, F or O)\n            \
+  \                    patient's sex\n  study and series:\n    +sg  --generate   \
+  \          generate new study and\n                                series UIDs (default)\n\
+  \    +st  --study-from           [f]ilename: string\n                          \
+  \      read patient/study data from DICOM file\n    +se  --series-from         \
+  \ [f]ilename: string\n                                read patient/study/series\
+  \ data from DICOM file\n  instance number:\n    +i1  --instance-one         use\
+  \ instance number 1\n                                (default, not with +se)\n \
+  \   +ii  --instance-inc         increment instance number (only with +se)\n    +is\
+  \  --instance-set         [i]nstance number: integer\n                         \
+  \       use instance number i\n  burned-in annotation:\n    +an  --annotation-yes\
+  \       document contains patient identifying data\n                           \
+  \     (default)\n    -an  --annotation-no        document does not contain patient\
+  \ identif. data\n  override CDA data:\n    -ov  --no-override          CDA patient\
+  \ and document data must match study,\n                                series or\
+  \ manually entered information (default)\n    +ov  --override             CDA's\
+  \ data will be overwritten by study, series\n                                or\
+  \ manually entered information\nprocessing options:\n  other processing options:\n\
+  \    -k   --key                  [k]ey: gggg,eeee=\"str\", path or dict. name=\"\
+  str\"\n                                add further attribute\noutput options:\n\
+  \  output transfer syntax:\n    +te  --write-xfer-little    write with explicit\
+  \ VR little endian (default)\n    +tb  --write-xfer-big       write with explicit\
+  \ VR big endian TS\n    +ti  --write-xfer-implicit  write with implicit VR little\
+  \ endian TS\n  group length encoding:\n    +g=  --group-length-recalc  recalculate\
+  \ group lengths if present (default)\n    +g   --group-length-create  always write\
+  \ with group length elements\n    -g   --group-length-remove  always write without\
+  \ group length elements\n  length encoding in sequences and items:\n    +e   --length-explicit\
+  \      write with explicit lengths (default)\n    -e   --length-undefined     write\
+  \ with undefined lengths\n  data set trailing padding (not with --write-dataset):\n\
+  \    -p=  --padding-retain       do not change padding (default)\n    -p   --padding-off\
+  \          no padding (implicit if --write-dataset)\n    +p   --padding-create \
+  \      [f]ile-pad [i]tem-pad: integer\n                                align file\
+  \ on multiple of f bytes\n                                and items on multiple\
+  \ of i bytes\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/dcmtk:3.6.5--h5fca97b_0

@@ -1,0 +1,114 @@
+!Command
+command:
+- pancake
+- seeddb
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: input.seqdb
+  description: STR   Path to the SeqDB to process.
+- !Positional
+  optional: false
+  position: 1
+  name: prefix
+  description: STR   The prefix of the output SeedDB files.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --split-blocks
+  description: Write seeds for each block into a separate file.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --kmer-size
+  description: INT   Kmer size for indexing. [30]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --window
+  description: INT   Minimizer window size for indexing. [80]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --space
+  description: INT   Seed spacing. [0]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --use-hpc
+  description: Enable homopolymer compression.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max-hpc-len
+  description: INT   Maximum length of a homopolymer to compress. [10]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-rc
+  description: Do not produce seeds from the reverse complement strand.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --num-threads
+  description: INT   Number of threads to use, 0 means autodetection. [0]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --log-level
+  description: 'STR   Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL).
+    [WARN]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --log-file
+  description: FILE  Log to a file, instead of stderr.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this help and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Show application version and exit.
+  args: !EmptyFlagArg {}
+help_text: "pancake - Compute seeds from a SeqDB.\n\nUsage:\n  pancake [options] <input.seqdb>\
+  \ <prefix>\n\n  input.seqdb       STR   Path to the SeqDB to process.\n  prefix\
+  \            STR   The prefix of the output SeedDB files.\n\nAlgorithm Options:\n\
+  \  --split-blocks          Write seeds for each block into a separate file.\n  -k,--kmer-size\
+  \    INT   Kmer size for indexing. [30]\n  -w,--window       INT   Minimizer window\
+  \ size for indexing. [80]\n  -s,--space        INT   Seed spacing. [0]\n  --use-hpc\
+  \               Enable homopolymer compression.\n  --max-hpc-len     INT   Maximum\
+  \ length of a homopolymer to compress. [10]\n  --no-rc                 Do not produce\
+  \ seeds from the reverse complement strand.\n\n  -h,--help               Show this\
+  \ help and exit.\n  --version               Show application version and exit.\n\
+  \  -j,--num-threads  INT   Number of threads to use, 0 means autodetection. [0]\n\
+  \  --log-level       STR   Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN,\
+  \ FATAL). [WARN]\n  --log-file        FILE  Log to a file, instead of stderr.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/pbipa:1.3.2--hee625c5_0

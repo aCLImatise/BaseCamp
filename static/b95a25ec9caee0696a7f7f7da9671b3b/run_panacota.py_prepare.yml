@@ -1,0 +1,285 @@
+!Command
+command:
+- run_panacota.py
+- prepare
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  description: "Species taxid to download, corresponding to the\n'species taxid' provided\
+    \ by the NCBI. This will\ndownload all sequences of this species and all its\n\
+    sub-species.A comma-separated list of species taxids\ncan also be provided. (Ex:\
+    \ -T 573 for Klebsiella\npneumoniae)"
+  args: !SimpleFlagArg
+    name: NCBI_SPECIES_TAXID
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: "Taxid to download. This can be the taxid of a sub-\nspecies, or of\
+    \ a specific strain. A taxid of a\nsubspecies will download all strains in this\n\
+    subspecies EXCEPT the ones which have a specific\ntaxid.A comma-separated list\
+    \ of taxids can also be\nprovided.Ex: '-t 72407' will download all 'general' K.\n\
+    pneumoniae subsp. pneumoniae strains, and '-t 1123862'\nwill download the strain\
+    \ K. pneumoniae subsp.\npneumoniae Kp13 (not included in -t 72407, as it is a\n\
+    strain of the subspecies with a specific taxid)."
+  args: !SimpleFlagArg
+    name: NCBI_TAXID
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  description: "Species to download, corresponding to the 'organism\nname' provided\
+    \ by the NCBI. Give name between quotes\n(for example \"escherichia coli\")"
+  args: !SimpleFlagArg
+    name: NCBI_SPECIES_NAME
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: "NCBI section to download: all genbank, or only refseq\n(default)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      refseq:
+      genbank:
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --assembly_level
+  description: "Assembly levels of genomes to download (default: all).\nPossible levels\
+    \ are: 'all', 'complete', 'chromosome',\n'scaffold', 'contig'.You can also provide\
+    \ a comma-\nseparated list of assembly levels. For ex:\n'complete,chromosome'"
+  args: !SimpleFlagArg
+    name: LEVELS
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: "Give the path to the directory where you want to save\nthe downloaded\
+    \ database. In the given directory, it\nwill create a folder 'Database_init' containing\
+    \ all\nfasta files that will be sent to the control\nprocedure, as well as a folder\
+    \ 'refseq' with all\noriginal compressed files downloaded from refseq. By\ndefault,\
+    \ this output dir name is the ncbi_species name\nif given, or ncbi_species_taxid\
+    \ or ncbi_taxid\notherwise."
+  args: !SimpleFlagArg
+    name: OUTDIR
+- !Flag
+  optional: true
+  synonyms:
+  - --tmp
+  description: "Specify where the temporary files (sequence split by\nrows of 'N',\
+    \ sequence with new contig names etc.) must\nbe saved. By default, it will be\
+    \ saved in your\nout_dir/tmp_files."
+  args: !SimpleFlagArg
+    name: TMP_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --cutn
+  description: "By default, each genome will be cut into new contigs\nwhen at least\
+    \ 5 'N' in a row are found in its\nsequence. If you don't want to cut genomes\
+    \ into new\ncontigs when there are rows of 'N', put 0 to this\noption. If you\
+    \ want to cut from a different number of\n'N' in a row, put this value to this\
+    \ option."
+  args: !SimpleFlagArg
+    name: CUTN
+- !Flag
+  optional: true
+  synonyms:
+  - --l90
+  description: "Maximum value of L90 allowed to keep a genome. Default\nis 100."
+  args: !SimpleFlagArg
+    name: L90
+- !Flag
+  optional: true
+  synonyms:
+  - --nbcont
+  description: "Maximum number of contigs allowed to keep a genome.\nDefault is 999."
+  args: !SimpleFlagArg
+    name: NBCONT
+- !Flag
+  optional: true
+  synonyms:
+  - --min_dist
+  description: "By default, genomes whose distance to the reference is\nnot between\
+    \ 1e-4 and 0.06 are discarded. You can\nspecify your own lower limit (instead\
+    \ of 1e-4) with\nthis option."
+  args: !SimpleFlagArg
+    name: MIN_DIST
+- !Flag
+  optional: true
+  synonyms:
+  - --max_dist
+  description: "By default, genomes whose distance to the reference is\nnot between\
+    \ 1e-4 and 0.06 are discarded. You can\nspecify your own lower limit (instead\
+    \ of 0.06) with\nthis option."
+  args: !SimpleFlagArg
+    name: MAX_DIST
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --threads
+  description: "Run 'N' downloads in parallel (default=1). Put 0 if\nyou want to use\
+    \ all cores of your computer."
+  args: !SimpleFlagArg
+    name: PARALLEL
+- !Flag
+  optional: true
+  synonyms:
+  - --norefseq
+  description: "If you already downloaded refseq genomes and do not\nwant to check\
+    \ them, add this option to directly go to\nthe next steps:quality control (L90,\
+    \ number of\ncontigs...) and mash filter. Don't forget to specify\nthe db_dir\
+    \ (-d option) where you already have your\ngenome sequences."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: "If your already downloaded sequences are not in the\ndefault directory\
+    \ (outdir/Database_init), you can\nspecify here the path to those fasta files."
+  args: !SimpleFlagArg
+    name: DB_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  - --only-mash
+  description: "Add this option if you already downloaded complete and\nrefseq genomes,\
+    \ and ran quality control (you have, a\nfile containing all genome names, as well\
+    \ as their\ngenome size, number of contigs and L90 values). It\nwill then get\
+    \ information on genomes quality from this\nfile, and run mash steps."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --info
+  description: "If you already ran the quality control, specify from\nwhich file PanACoTA\
+    \ can read this information, in\norder to proceed to the mash step. This file\
+    \ must\ncontain at least 4 columns, tab separated, with the\nfollowing headers:\
+    \ 'to_annotate', 'gsize', 'nb_conts',\n'L90'. Any other column will be ignored."
+  args: !SimpleFlagArg
+    name: INFO_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: Increase verbosity in stdout/stderr and log files.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  description: "Do not display anything to stdout/stderr. log files\nwill still be\
+    \ created."
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: run_panacota.py prepare [-T NCBI_SPECIES_TAXID] [-t NCBI_TAXID]\n\
+  \                               [-g NCBI_SPECIES_NAME] [-s {refseq,genbank}]\n \
+  \                              [-l LEVELS] [-o OUTDIR] [--tmp TMP_DIR]\n       \
+  \                        [--cutn CUTN] [--l90 L90] [--nbcont NBCONT]\n         \
+  \                      [--min_dist MIN_DIST] [--max_dist MAX_DIST]\n           \
+  \                    [-p PARALLEL] [--norefseq] [-d DB_DIR] [-M]\n             \
+  \                  [--info INFO_FILE] [-v] [-q] [-h]\n\n ___                 _____\
+  \  ___         _____  _____\n(  _`\\              (  _  )(  _`\\      (_   _)( \
+  \ _  )\n| |_) )  _ _   ___  | (_) || ( (_)   _   | |  | (_) |\n| ,__/'/'_` )/' _\
+  \ `\\|  _  || |  _  /'_`\\ | |  |  _  |\n| |   ( (_| || ( ) || | | || (_( )( (_)\
+  \ )| |  | | | |\n(_)   `\\__,_)(_) (_)(_) (_)(____/'`\\___/'(_)  (_) (_)\n\n   \
+  \    Large scale comparative genomics tools\n\n     -------------------------------------------\n\
+  \n=> Prepare draft dataset\n\nGeneral arguments:\n  -T NCBI_SPECIES_TAXID\n    \
+  \                    Species taxid to download, corresponding to the\n         \
+  \               'species taxid' provided by the NCBI. This will\n              \
+  \          download all sequences of this species and all its\n                \
+  \        sub-species.A comma-separated list of species taxids\n                \
+  \        can also be provided. (Ex: -T 573 for Klebsiella\n                    \
+  \    pneumoniae)\n  -t NCBI_TAXID         Taxid to download. This can be the taxid\
+  \ of a sub-\n                        species, or of a specific strain. A taxid of\
+  \ a\n                        subspecies will download all strains in this\n    \
+  \                    subspecies EXCEPT the ones which have a specific\n        \
+  \                taxid.A comma-separated list of taxids can also be\n          \
+  \              provided.Ex: '-t 72407' will download all 'general' K.\n        \
+  \                pneumoniae subsp. pneumoniae strains, and '-t 1123862'\n      \
+  \                  will download the strain K. pneumoniae subsp.\n             \
+  \           pneumoniae Kp13 (not included in -t 72407, as it is a\n            \
+  \            strain of the subspecies with a specific taxid).\n  -g NCBI_SPECIES_NAME\
+  \  Species to download, corresponding to the 'organism\n                       \
+  \ name' provided by the NCBI. Give name between quotes\n                       \
+  \ (for example \"escherichia coli\")\n  -s {refseq,genbank}   NCBI section to download:\
+  \ all genbank, or only refseq\n                        (default)\n  -l LEVELS, --assembly_level\
+  \ LEVELS\n                        Assembly levels of genomes to download (default:\
+  \ all).\n                        Possible levels are: 'all', 'complete', 'chromosome',\n\
+  \                        'scaffold', 'contig'.You can also provide a comma-\n  \
+  \                      separated list of assembly levels. For ex:\n            \
+  \            'complete,chromosome'\n  -o OUTDIR             Give the path to the\
+  \ directory where you want to save\n                        the downloaded database.\
+  \ In the given directory, it\n                        will create a folder 'Database_init'\
+  \ containing all\n                        fasta files that will be sent to the control\n\
+  \                        procedure, as well as a folder 'refseq' with all\n    \
+  \                    original compressed files downloaded from refseq. By\n    \
+  \                    default, this output dir name is the ncbi_species name\n  \
+  \                      if given, or ncbi_species_taxid or ncbi_taxid\n         \
+  \               otherwise.\n  --tmp TMP_DIR         Specify where the temporary\
+  \ files (sequence split by\n                        rows of 'N', sequence with new\
+  \ contig names etc.) must\n                        be saved. By default, it will\
+  \ be saved in your\n                        out_dir/tmp_files.\n  --cutn CUTN  \
+  \         By default, each genome will be cut into new contigs\n               \
+  \         when at least 5 'N' in a row are found in its\n                      \
+  \  sequence. If you don't want to cut genomes into new\n                       \
+  \ contigs when there are rows of 'N', put 0 to this\n                        option.\
+  \ If you want to cut from a different number of\n                        'N' in\
+  \ a row, put this value to this option.\n  --l90 L90             Maximum value of\
+  \ L90 allowed to keep a genome. Default\n                        is 100.\n  --nbcont\
+  \ NBCONT       Maximum number of contigs allowed to keep a genome.\n           \
+  \             Default is 999.\n  --min_dist MIN_DIST   By default, genomes whose\
+  \ distance to the reference is\n                        not between 1e-4 and 0.06\
+  \ are discarded. You can\n                        specify your own lower limit (instead\
+  \ of 1e-4) with\n                        this option.\n  --max_dist MAX_DIST   By\
+  \ default, genomes whose distance to the reference is\n                        not\
+  \ between 1e-4 and 0.06 are discarded. You can\n                        specify\
+  \ your own lower limit (instead of 0.06) with\n                        this option.\n\
+  \  -p PARALLEL, --threads PARALLEL\n                        Run 'N' downloads in\
+  \ parallel (default=1). Put 0 if\n                        you want to use all cores\
+  \ of your computer.\n\nAlternatives:\n  --norefseq            If you already downloaded\
+  \ refseq genomes and do not\n                        want to check them, add this\
+  \ option to directly go to\n                        the next steps:quality control\
+  \ (L90, number of\n                        contigs...) and mash filter. Don't forget\
+  \ to specify\n                        the db_dir (-d option) where you already have\
+  \ your\n                        genome sequences.\n  -d DB_DIR             If your\
+  \ already downloaded sequences are not in the\n                        default directory\
+  \ (outdir/Database_init), you can\n                        specify here the path\
+  \ to those fasta files.\n  -M, --only-mash       Add this option if you already\
+  \ downloaded complete and\n                        refseq genomes, and ran quality\
+  \ control (you have, a\n                        file containing all genome names,\
+  \ as well as their\n                        genome size, number of contigs and L90\
+  \ values). It\n                        will then get information on genomes quality\
+  \ from this\n                        file, and run mash steps.\n  --info INFO_FILE\
+  \      If you already ran the quality control, specify from\n                  \
+  \      which file PanACoTA can read this information, in\n                     \
+  \   order to proceed to the mash step. This file must\n                        contain\
+  \ at least 4 columns, tab separated, with the\n                        following\
+  \ headers: 'to_annotate', 'gsize', 'nb_conts',\n                        'L90'. Any\
+  \ other column will be ignored.\n\nOthers:\n  -v, --verbose         Increase verbosity\
+  \ in stdout/stderr and log files.\n  -q, --quiet           Do not display anything\
+  \ to stdout/stderr. log files\n                        will still be created.\n\
+  \  -h, --help            show this help message and exit\n\nFor more details, see\
+  \ PanACoTA documentation.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/panacota:1.2.0--py_0

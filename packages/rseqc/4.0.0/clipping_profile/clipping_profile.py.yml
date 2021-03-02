@@ -1,0 +1,70 @@
+!Command
+command:
+- clipping_profile.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input-file
+  description: Alignment file in BAM or SAM format.
+  args: !SimpleFlagArg
+    name: INPUT_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out-prefix
+  description: Prefix of output files(s).
+  args: !SimpleFlagArg
+    name: OUTPUT_PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --mapq
+  description: "Minimum mapping quality (phred scaled) for an\nalignment to be considered\
+    \ as \"uniquely mapped\".\ndefault=30"
+  args: !SimpleFlagArg
+    name: MAP_QUAL
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --sequencing
+  description: "Sequencing layout. \"SE\"(single-end) or \"PE\"(pair-end).\n"
+  args: !SimpleFlagArg
+    name: LAYOUT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "Usage: clipping_profile.py [options]\n\nThis program is to estimate clipping\
+  \ profile of RNA-seq reads from BAM or SAM file\nNote that to use this funciton,\
+  \ CIGAR strings within SAM/BAM file should have 'S' operation \n(This means your\
+  \ reads mapper should support clipped mapping).\n\n\n\nOptions:\n  --version   \
+  \          show program's version number and exit\n  -h, --help            show\
+  \ this help message and exit\n  -i INPUT_FILE, --input-file=INPUT_FILE\n       \
+  \                 Alignment file in BAM or SAM format.\n  -o OUTPUT_PREFIX, --out-prefix=OUTPUT_PREFIX\n\
+  \                        Prefix of output files(s).\n  -q MAP_QUAL, --mapq=MAP_QUAL\n\
+  \                        Minimum mapping quality (phred scaled) for an\n       \
+  \                 alignment to be considered as \"uniquely mapped\".\n         \
+  \               default=30\n  -s LAYOUT, --sequencing=LAYOUT\n                 \
+  \       Sequencing layout. \"SE\"(single-end) or \"PE\"(pair-end).\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/rseqc:4.0.0--py38h0213d0e_0

@@ -1,0 +1,247 @@
+!Command
+command:
+- gem-2-gem
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: gem-2-gem
+  description: 'Options relevant to input (only one of -i, -m and -M can be specified):'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  description: (default=stdin)
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --sorted-merge
+  description: ', ...  (merge canonically labeled & sorted files)'
+  args: !SimpleFlagArg
+    name: file_1
+- !Flag
+  optional: true
+  synonyms:
+  - --gapped-merging
+  description: (allow missing reads when sorted merging)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  - --synchronous-merge
+  description: ", ...\n(merge files line by line)"
+  args: !SimpleFlagArg
+    name: file_1
+- !Flag
+  optional: true
+  synonyms:
+  - --lines-per-block
+  description: (default=50000)
+  args: !SimpleFlagArg
+    name: number
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --threads
+  description: (default=1)
+  args: !SimpleFlagArg
+    name: number
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: (default=stdout)
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -I
+  - --index
+  description: (GEM index, mandatory with -v,-r,-O)
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verify
+  description: (check alignment correctness)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --realign
+  description: (annotate alignments with substitutions)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -O
+  - --splice-orientation-from-consensus
+  description: ", ... ,<couple_s>\nwith <couple> := <donor_consensus>+<acceptor_consensus>\n\
+    (annotate splices with their orientation\nusing a splice site consensus,\ndefault=GT+AG)"
+  args: !SimpleFlagArg
+    name: couple_1
+- !Flag
+  optional: true
+  synonyms:
+  - --score-uniqueness-strata
+  description: "(strata considered to determine uniqueness,\ndefault=2)"
+  args: !SimpleFlagArg
+    name: strata_with_one_cumulative_alignment
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --score-quality-format
+  description: "'offset-33'|'offset-64'\n(mandatory before option -s if score)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --score-quality-levels
+  description: ",<medium_quality>,<hi_quality>\n(turning points to compute quality\
+    \ scores,\ndeafault=10,20,30)"
+  args: !SimpleFlagArg
+    name: low_quality
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --label
+  description: (canonically label reads, save state)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --trim
+  description: ',<right_len> (trim reads&qualities, save state)'
+  args: !SimpleFlagArg
+    name: left_len
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - -p
+  - --accumulate
+  - --push
+  description: (accumulate alignments, save state)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --score
+  description: "(give alignments the specified score,\n'-s help' shows syntax)"
+  args: !SimpleFlagArg
+    name: score_spec
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --filter
+  description: ",<max_strata_distance>,<max_alignments>\n(prune alignments based on\
+    \ their score)"
+  args: !SimpleFlagArg
+    name: score_strata_to_keep
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  - --full-filter
+  description: "(prune alignments based on the filter,\n'-F help' shows syntax)"
+  args: !SimpleFlagArg
+    name: full_filter_spec
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --strip
+  description: (erase last annotation from alignments)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --barrier
+  description: (put a barrier to collect operations)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --collect
+  description: (collect saved states, merging changes)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --show-license
+  description: (show license and exit)
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: (print usage and exit)
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Welcome to GEM-2-gem build 1.892 (beta) - (2019-12-26 00:28:27 GMT)\n\
+  \ (c) 2008-2013 Paolo Ribeca <paolo.ribeca@gmail.com>\n (c) 2010-2013 Santiago Marco\
+  \ Sola <santiagomsola@gmail.com>\n (c) 2010-2013 Leonor Frias Moya <leonor.frias@gmail.com>\n\
+  For the terms of use, run the program with the option --show-license.\n************************************************************************\n\
+  * WARNING: this is a beta version, provided for testing purposes only; *\n*    \
+  \      check for updates at <http://gemlibrary.sourceforge.net>.   *\n************************************************************************\n\
+  Usage:\n gem-2-gem\n  Options relevant to input (only one of -i, -m and -M can be\
+  \ specified):\n   -i|--input <file>                (default=stdin)\n   -m|--sorted-merge\
+  \ <file_1>, ...  (merge canonically labeled & sorted files)\n   --gapped-merging\
+  \                 (allow missing reads when sorted merging)\n   -M|--synchronous-merge\
+  \ <file_1>, ...\n                                    (merge files line by line)\n\
+  \  Options relevant to multithreading:\n   --lines-per-block <number>       (default=50000)\n\
+  \   -T|--threads <number>            (default=1)\n  Options relevant to output:\n\
+  \   -o|--output <file>               (default=stdout)\n  Options relevant to alignment\
+  \ refinement:\n   -I|--index <file>                (GEM index, mandatory with -v,-r,-O)\n\
+  \   -v|--verify                      (check alignment correctness)\n   -r|--realign\
+  \                     (annotate alignments with substitutions)\n   -O|--splice-orientation-from-consensus\
+  \ <couple_1>, ... ,<couple_s>\n      with <couple> := <donor_consensus>+<acceptor_consensus>\n\
+  \                                    (annotate splices with their orientation\n\
+  \                                      using a splice site consensus,\n        \
+  \                             default=GT+AG)\n   --score-uniqueness-strata <strata_with_one_cumulative_alignment>\n\
+  \                                    (strata considered to determine uniqueness,\n\
+  \                                     default=2)\n   -q|--score-quality-format 'offset-33'|'offset-64'\n\
+  \                                    (mandatory before option -s if score)\n   --score-quality-levels\
+  \ <low_quality>,<medium_quality>,<hi_quality>\n                                \
+  \    (turning points to compute quality scores,\n                              \
+  \       deafault=10,20,30)\n  Commands (are executed in the specified order, and\
+  \ can be repeated):\n   -l|--label                       (canonically label reads,\
+  \ save state)\n   -t|--trim <left_len>,<right_len> (trim reads&qualities, save state)\n\
+  \   -a|-p|--accumulate|--push        (accumulate alignments, save state)\n   -s|--score\
+  \ <score_spec>          (give alignments the specified score,\n                \
+  \                     '-s help' shows syntax)\n   -f|--filter <score_strata_to_keep>,<max_strata_distance>,<max_alignments>\n\
+  \                                    (prune alignments based on their score)\n \
+  \  -F|--full-filter <full_filter_spec>\n                                    (prune\
+  \ alignments based on the filter,\n                                     '-F help'\
+  \ shows syntax)\n   -S|--strip                       (erase last annotation from\
+  \ alignments)\n   -b|--barrier                     (put a barrier to collect operations)\n\
+  \   -c|--collect                     (collect saved states, merging changes)\n \
+  \  --show-license                   (show license and exit)\n   -h|--help      \
+  \                  (print usage and exit)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/gem2:20200110--0

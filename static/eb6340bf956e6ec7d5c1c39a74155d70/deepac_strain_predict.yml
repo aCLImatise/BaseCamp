@@ -1,0 +1,118 @@
+!Command
+command:
+- deepac-strain
+- predict
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: plot.
+  description: --replicates REPLICATES
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --array
+  description: Use .npy input instead.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --sensitive
+  description: Use the sensitive model.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --rapid
+  description: Use the rapid CNN model.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --custom
+  description: Use the user-supplied, already compiled CUSTOM model.
+  args: !SimpleFlagArg
+    name: CUSTOM
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: Output file path [.npy].
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --n-cpus
+  description: 'Number of CPU cores. Default: all.'
+  args: !SimpleFlagArg
+    name: N_CPUS
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --gpus
+  description: 'GPU devices to use (comma-separated). Default: all'
+  args: !RepeatFlagArg
+    name: GPUS
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  - --rc-check
+  description: Check RC-constraint compliance (requires .npy input).
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --plot-kind
+  description: Plot kind for the RC-constraint compliance check.
+  args: !SimpleFlagArg
+    name: PLOT_KIND
+- !Flag
+  optional: true
+  synonyms:
+  - --alpha
+  description: Alpha value for the RC-constraint compliance check
+  args: !SimpleFlagArg
+    name: ALPHA
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "DeePaC-strain 0.2.1. Using bacterial strain models.\nusage: deepac predict\
+  \ [-h] [-a] (-s | -r | -c CUSTOM) [-o OUTPUT] [-n N_CPUS]\n                    \
+  \  [-g GPUS [GPUS ...]] [-R] [--plot-kind PLOT_KIND]\n                      [--alpha\
+  \ ALPHA] [--replicates REPLICATES]\n                      input\n\npositional arguments:\n\
+  \  input                 Input file path [.fasta].\n\noptional arguments:\n  -h,\
+  \ --help            show this help message and exit\n  -a, --array           Use\
+  \ .npy input instead.\n  -s, --sensitive       Use the sensitive model.\n  -r, --rapid\
+  \           Use the rapid CNN model.\n  -c CUSTOM, --custom CUSTOM\n           \
+  \             Use the user-supplied, already compiled CUSTOM model.\n  -o OUTPUT,\
+  \ --output OUTPUT\n                        Output file path [.npy].\n  -n N_CPUS,\
+  \ --n-cpus N_CPUS\n                        Number of CPU cores. Default: all.\n\
+  \  -g GPUS [GPUS ...], --gpus GPUS [GPUS ...]\n                        GPU devices\
+  \ to use (comma-separated). Default: all\n  -R, --rc-check        Check RC-constraint\
+  \ compliance (requires .npy input).\n  --plot-kind PLOT_KIND\n                 \
+  \       Plot kind for the RC-constraint compliance check.\n  --alpha ALPHA     \
+  \    Alpha value for the RC-constraint compliance check\n                      \
+  \  plot.\n  --replicates REPLICATES\n                        Number of replicates\
+  \ for MC uncertainty estimation.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/deepacstrain:0.2.1--py_0

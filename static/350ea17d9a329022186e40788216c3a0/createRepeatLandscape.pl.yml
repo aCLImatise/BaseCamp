@@ -1,0 +1,78 @@
+!Command
+command:
+- createRepeatLandscape.pl
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: example.align.gz
+  description: This creates an additional file "example_with_div.align" which contains
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -version
+  description: Displays the version of the program
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -div
+  description: "The divergence summary file created with the\ncalcDivergenceFromAlign.pl\
+    \ script."
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  description: "#\nSet the genome size used in percentage calculations."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -twoBit
+  description: "Get the genome size directly from the sequence file ( excluding Ns\n\
+    ). This option requires that the UCSC utility \"twoBitInfo\" is in\nyour path."
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  description: Output javascript only and not a fully constructed HTML page.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "/usr/local/bin/createRepeatLandscape.pl - $Name:  $\n\nNAME\n    createRepeatLandscape.pl\
+  \ - Create a Repeat Landscape graph\n\nSYNOPSIS\n      createRepeatLandscape.pl\
+  \ [-version] -div *.divsum [-t \"graph title\"]\n                              \
+  \ [-j] -g # | -twoBit <twoBitFile>\n\nDESCRIPTION\n      Create a Repeat Landscape\
+  \ graph using the divergence summary data\n      generated with the calcDivergenceFromAlign.pl\
+  \ script.\n\nEXAMPLES\n      Older ( pre 4.0.4 ) RepeatMasker dataset:\n\n     \
+  \    ./calcDivergenceFromAlign.pl -s example.divsum -a example_with_div.align \n\
+  \                                      example.align.gz\n \n         This creates\
+  \ an additional file \"example_with_div.align\" which contains\n         the added\
+  \ Kimura divergence field after each alignment.\n\n         ./createRepeatLandscape.pl\
+  \ -div example.divsum > \n                                    /home/user/public_html/example.html\
+  \ \n\n\n      On newer RepeatMasker dataset that already contains the Kimura divergence\n\
+  \      line following each alignment:\n\n         ./calcDivergenceFromAlign.pl -s\
+  \ example.divsum example.align.gz\n\n         ./createRepeatLandscape.pl -div example.divsum\
+  \ > \n                                    /home/user/public_html/example.html\n\n\
+  \    The options are:\n\n    -version\n        Displays the version of the program\n\
+  \n    -div <file>\n        The divergence summary file created with the\n      \
+  \  calcDivergenceFromAlign.pl script.\n\n    -g #\n        Set the genome size used\
+  \ in percentage calculations.\n\n    -twoBit <filename>\n        Get the genome\
+  \ size directly from the sequence file ( excluding Ns\n        ). This option requires\
+  \ that the UCSC utility \"twoBitInfo\" is in\n        your path.\n\n    -j  Output\
+  \ javascript only and not a fully constructed HTML page.\n\nSEE ALSO\nCOPYRIGHT\n\
+  \    Copyright 2013-2014 Robert Hubley, Institute for Systems Biology\n\nAUTHORS\n\
+  \    Robert Hubley <rhubley@systemsbiology.org>\n\n    Juan Caballero <jcaballero@systemsbiology.org>\n\
+  \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/repeatmasker:4.1.1--pl526_1

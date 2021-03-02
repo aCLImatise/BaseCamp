@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Directory, File, Boolean, String
+
+Rgt_Hint_Tracks_V0_1_0 = CommandToolBuilder(tool="rgt_hint_tracks", base_command=["rgt-hint", "tracks"], inputs=[ToolInput(tag="in_organism", input_type=Directory(optional=True), prefix="--organism", doc=InputDocumentation(doc="Organism considered on the analysis. Must have been\nsetup in the RGTDATA folder. Common choices are hg19,\nhg38. mm9, and mm10. DEFAULT: hg19")), ToolInput(tag="in_bias_table", input_type=File(optional=True), prefix="--bias-table", doc=InputDocumentation(doc=",FILE1_R\nBias table files used to generate bias corrected\ntracks. DEFAULT: None")), ToolInput(tag="in_raw", input_type=Boolean(optional=True), prefix="--raw", doc=InputDocumentation(doc="If set, the raw signals from DNase-seq or ATAC-seq\ndata will be generated. DEFAULT: False")), ToolInput(tag="in_bc", input_type=Boolean(optional=True), prefix="--bc", doc=InputDocumentation(doc="If set, the bias corrected signals from DNase-seq or\nATAC-seq data will be generated. DEFAULT: False")), ToolInput(tag="in_norm", input_type=Boolean(optional=True), prefix="--norm", doc=InputDocumentation(doc="If set, the normalised signals from DNase-seq or ATAC-\nseq data will be generated. DEFAULT: False")), ToolInput(tag="in_bigwig", input_type=Boolean(optional=True), prefix="--bigWig", doc=InputDocumentation(doc="If set, all .wig files will be converted to .bw files.\nDEFAULT: False")), ToolInput(tag="in_strand_specific", input_type=Boolean(optional=True), prefix="--strand-specific", doc=InputDocumentation(doc="If set, the tracks will be splitted into two files,\none for forward and another for reverse strand.\nDEFAULT: False")), ToolInput(tag="in_output_location", input_type=File(optional=True), prefix="--output-location", doc=InputDocumentation(doc="Path where the output bias table files will be\nwritten. DEFAULT: current directory")), ToolInput(tag="in_output_prefix", input_type=String(optional=True), prefix="--output-prefix", doc=InputDocumentation(doc="The prefix for results files. DEFAULT: tracks\n"))], outputs=[ToolOutput(tag="out_output_location", output_type=File(optional=True), selector=InputSelector(input_to_select="in_output_location", type_hint=File()), doc=OutputDocumentation(doc="Path where the output bias table files will be\nwritten. DEFAULT: current directory"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Rgt_Hint_Tracks_V0_1_0().translate("wdl", allow_empty_container=True)
+

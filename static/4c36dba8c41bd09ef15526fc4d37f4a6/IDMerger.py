@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import String, File, Boolean, Int
+
+Idmerger_V0_1_0 = CommandToolBuilder(tool="IDMerger", base_command=["IDMerger"], inputs=[ToolInput(tag="in_in", input_type=String(optional=True), prefix="-in", doc=InputDocumentation(doc="*               Input files separated by blanks (valid formats: 'idXML')")), ToolInput(tag="in_out", input_type=File(optional=True), prefix="-out", doc=InputDocumentation(doc="*               Output file (valid formats: 'idXML')")), ToolInput(tag="in_add_to", input_type=File(optional=True), prefix="-add_to", doc=InputDocumentation(doc="Optional input file. IDs from 'in' are added to this file, but only if the (modified) peptide sequences are not present yet (considering only best hits per spectrum). (valid formats: 'idXML')")), ToolInput(tag="in_annotate_file_origin", input_type=Boolean(optional=True), prefix="-annotate_file_origin", doc=InputDocumentation(doc="Store the original filename in each protein/peptide identification (meta value: file_origin).")), ToolInput(tag="in_pep_xml_prot_xml", input_type=Boolean(optional=True), prefix="-pepxml_protxml", doc=InputDocumentation(doc="Merge idXML files derived from a pepXML and corresponding protXML file.\nExactly two input files are expected in this case. Not compatible with 'add_to'.")), ToolInput(tag="in_merge_proteins_add_psms", input_type=Boolean(optional=True), prefix="-merge_proteins_add_PSMs", doc=InputDocumentation(doc="Merge all identified proteins by accession into one protein identification run but keep all the PSMs with updated links to potential new protein ID#s. Not compatible with 'add_to'.")), ToolInput(tag="in_ini", input_type=File(optional=True), prefix="-ini", doc=InputDocumentation(doc="Use the given TOPP INI file")), ToolInput(tag="in_threads", input_type=Int(optional=True), prefix="-threads", doc=InputDocumentation(doc="Sets the number of threads allowed to be used by the TOPP tool (default: '1')")), ToolInput(tag="in_write_ini", input_type=File(optional=True), prefix="-write_ini", doc=InputDocumentation(doc="Writes the default configuration file")), ToolInput(tag="in_helphelp", input_type=Boolean(optional=True), prefix="--helphelp", doc=InputDocumentation(doc="Shows all options (including advanced)"))], outputs=[ToolOutput(tag="out_out", output_type=File(optional=True), selector=InputSelector(input_to_select="in_out", type_hint=File()), doc=OutputDocumentation(doc="*               Output file (valid formats: 'idXML')"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Idmerger_V0_1_0().translate("wdl", allow_empty_container=True)
+

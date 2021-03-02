@@ -1,0 +1,60 @@
+!Command
+command:
+- smof
+- filter
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: INPUT
+  description: input fasta sequence (default = stdin)
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --shorter-than
+  description: keep only if length is less than or equal to LEN
+  args: !SimpleFlagArg
+    name: LEN
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --longer-than
+  description: keep only if length is greater than or equal to LEN
+  args: !SimpleFlagArg
+    name: LEN
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --composition
+  description: "keep only if composition meets the condition (e.g. 'GC\n> .5')\n"
+  args: !SimpleFlagArg
+    name: EXPR
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: <fastafile> | smof filter <options>\n\nPrints every entry by default.\
+  \ You may add one or more criteria to filter the\nresults (e.g. `smof filter -s\
+  \ 200 -l 100 -c 'GC > .5'` will print only\nsequences between 100 and 200 resides\
+  \ in length and greater than 50% GC\ncontent).\n\npositional arguments:\n  INPUT\
+  \                 input fasta sequence (default = stdin)\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -s LEN, --shorter-than\
+  \ LEN\n                        keep only if length is less than or equal to LEN\n\
+  \  -l LEN, --longer-than LEN\n                        keep only if length is greater\
+  \ than or equal to LEN\n  -c EXPR, --composition EXPR\n                        keep\
+  \ only if composition meets the condition (e.g. 'GC\n                        > .5')\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/smof:2.21.1--py_0

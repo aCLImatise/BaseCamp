@@ -3,47 +3,47 @@ id: conus_train.cwl
 inputs:
 - id: in_use_string_defaults
   doc: ': Use grammar <string>, defaults to NUS'
-  type: string
+  type: string?
   inputBinding:
     prefix: -g
 - id: in_load_prior_specified
   doc: ': Load prior specified in <file>'
-  type: File
+  type: File?
   inputBinding:
     prefix: -l
 - id: in_turn_standard_one
   doc: ': Turn off the standard plus one prior'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: '-1'
 - id: in_save_model_file
   doc: ': save model file to <file>; defaults to conus.mod'
-  type: File
+  type: File?
   inputBinding:
     prefix: -s
 - id: in_print_parameters_model
   doc: ': print out parameters of model'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -x
 - id: in__print_traceback
   doc: ': print traceback'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -t
 - id: in__debugging_output
   doc: ': debugging output'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -d
 - id: in__verbose_output
   doc: ': verbose output'
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -v
 - id: in_options
   doc: ''
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: -options
 - id: in_code
@@ -100,6 +100,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - conus_train

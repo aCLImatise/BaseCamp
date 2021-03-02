@@ -1,0 +1,116 @@
+!Command
+command:
+- deepac-vir
+- explain
+- mcompare
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: deepac
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: explain
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: mcompare
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --in-file1
+  description: File containing all filter motifs in transfac format
+  args: !SimpleFlagArg
+    name: IN_FILE1
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --in-file2
+  description: File containing all filter motifs in transfac format
+  args: !SimpleFlagArg
+    name: IN_FILE2
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --train-data
+  description: "Training data (.npy), necessary to calculate\nbackground GC content"
+  args: !SimpleFlagArg
+    name: TRAIN_DATA
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --extensively
+  description: "Compare every motif from --in_file1 with every motif\nfrom --in_file2;\
+    \ default: compare only motifs with the\nsame ID"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --rc
+  description: Consider RC-complement of a motif
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --shift
+  description: Shift motifs to find best alignment
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --min-overlap
+  description: "Minimal overlap between two motifs if motifs are\nshifted to find\
+    \ the best alignment (--shift)"
+  args: !SimpleFlagArg
+    name: MIN_OVERLAP
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out-dir
+  description: "Output directory\n"
+  args: !SimpleFlagArg
+    name: OUT_DIR
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "DeePaC-vir 0.2.2. Using viral models.\nusage: deepac explain mcompare\
+  \ [-h] -q IN_FILE1 -t IN_FILE2 [-a TRAIN_DATA]\n                               [-e]\
+  \ [-r] [-s] [-m MIN_OVERLAP] [-o OUT_DIR]\n\noptional arguments:\n  -h, --help \
+  \           show this help message and exit\n  -q IN_FILE1, --in-file1 IN_FILE1\n\
+  \                        File containing all filter motifs in transfac format\n\
+  \  -t IN_FILE2, --in-file2 IN_FILE2\n                        File containing all\
+  \ filter motifs in transfac format\n  -a TRAIN_DATA, --train-data TRAIN_DATA\n \
+  \                       Training data (.npy), necessary to calculate\n         \
+  \               background GC content\n  -e, --extensively     Compare every motif\
+  \ from --in_file1 with every motif\n                        from --in_file2; default:\
+  \ compare only motifs with the\n                        same ID\n  -r, --rc    \
+  \          Consider RC-complement of a motif\n  -s, --shift           Shift motifs\
+  \ to find best alignment\n  -m MIN_OVERLAP, --min-overlap MIN_OVERLAP\n        \
+  \                Minimal overlap between two motifs if motifs are\n            \
+  \            shifted to find the best alignment (--shift)\n  -o OUT_DIR, --out-dir\
+  \ OUT_DIR\n                        Output directory\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/deepacvir:0.2.2--py_0

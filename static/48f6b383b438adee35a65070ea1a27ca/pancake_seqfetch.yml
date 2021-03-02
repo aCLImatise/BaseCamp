@@ -1,0 +1,132 @@
+!Command
+command:
+- pancake
+- seqfetch
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: out_fn
+  description: STR   Output file for the fetched sequences.
+- !Positional
+  optional: false
+  position: 1
+  name: fetch_list
+  description: STR   List of sequences to fetch, one per line.
+- !Positional
+  optional: false
+  position: 0
+  name: formats.
+  description: 'Algorithm Options:'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --out-fmt
+  description: "STR   Output format. If an input file is FASTA and out format is FASTQ,\
+    \ dummy QVs\nwill be added. Valid choices: (fasta, fastq). [fasta]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dummy-qv
+  description: "STR   Dummy QV to be added to sequences when input format is FASTA\
+    \ and output\nFASTQ. [!]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --alias
+  description: "STR   SeqDB file path. If provided, the SeqDB will be used to look-up\
+    \ the\nprovided sequences by their IDs."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --fail
+  description: Exit non-zero if not all seqs are found.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --write-ids
+  description: "The output sequence names will be replaced by their IDs in the SeqDB,\
+    \ if\nthe SeqDB was provided as input."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --use-hpc
+  description: Fetch homopolymer compressed sequences.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --use-rle
+  description: "Write a run-length-encoded file alongside to the output file. The\
+    \ RLE file\ncontains conversion coordinates from the HPC space to the original\
+    \ space\ninstead of the run-length-encoding. This option does not write the HPC\n\
+    sequence, for that please specify '--user-hpc'."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --log-level
+  description: 'STR   Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL).
+    [WARN]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --log-file
+  description: FILE  Log to a file, instead of stderr.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this help and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Show application version and exit.
+  args: !EmptyFlagArg {}
+help_text: "pancake seqfetch - Fetches a set of sequences in random access from a\
+  \ list of specified indexed sequence files.\n\nUsage:\n  pancake seqfetch [options]\
+  \ <out_fn> <fetch_list> <<input.fasta/fastq/bam/fofn> [...]>\n\n  out_fn       \
+  \                       STR   Output file for the fetched sequences.\n  fetch_list\
+  \                          STR   List of sequences to fetch, one per line.\n  <input.fasta/fastq/bam/fofn>\
+  \ [...]  STR   One or more input sequence files, in FASTA, FASTQ, BAM, SeqDB or\
+  \ FOFN\n                                            formats.\n\nAlgorithm Options:\n\
+  \  --out-fmt                           STR   Output format. If an input file is\
+  \ FASTA and out format is FASTQ, dummy QVs\n                                   \
+  \         will be added. Valid choices: (fasta, fastq). [fasta]\n  --dummy-qv  \
+  \                        STR   Dummy QV to be added to sequences when input format\
+  \ is FASTA and output\n                                            FASTQ. [!]\n\
+  \  --alias                             STR   SeqDB file path. If provided, the SeqDB\
+  \ will be used to look-up the\n                                            provided\
+  \ sequences by their IDs.\n  --fail                                    Exit non-zero\
+  \ if not all seqs are found.\n  --write-ids                               The output\
+  \ sequence names will be replaced by their IDs in the SeqDB, if\n              \
+  \                              the SeqDB was provided as input.\n  --use-hpc   \
+  \                              Fetch homopolymer compressed sequences.\n  --use-rle\
+  \                                 Write a run-length-encoded file alongside to the\
+  \ output file. The RLE file\n                                            contains\
+  \ conversion coordinates from the HPC space to the original space\n            \
+  \                                instead of the run-length-encoding. This option\
+  \ does not write the HPC\n                                            sequence,\
+  \ for that please specify '--user-hpc'.\n\n  -h,--help                         \
+  \        Show this help and exit.\n  --version                                 Show\
+  \ application version and exit.\n  --log-level                         STR   Set\
+  \ log level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL). [WARN]\n  --log-file\
+  \                          FILE  Log to a file, instead of stderr.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/pbipa:1.3.2--hee625c5_0

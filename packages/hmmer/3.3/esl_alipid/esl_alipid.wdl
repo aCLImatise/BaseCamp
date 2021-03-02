@@ -20,6 +20,9 @@ task Eslalipid {
       ~{if (rna) then "--rna" else ""} \
       ~{if (amino) then "--amino" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in_format: ": specify the input MSA file is in format <s>"
     out_format: ": write the output MSA in format <s>  [Clustal]"

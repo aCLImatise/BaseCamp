@@ -1,0 +1,185 @@
+!Command
+command:
+- pxseqgen
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --treef
+  description: input treefile, STDIN otherwise
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --outf
+  description: output seq file, STOUT otherwise
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --length
+  description: length of sequences to generate. default is 1000
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --basef
+  description: 'comma-delimited base freqs in order: A,C,G,T. default is equal'
+  args: !SimpleFlagArg
+    name: Input
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --gamma
+  description: gamma shape value. default is no rate variation
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --pinvar
+  description: proportion of invariable sites. default is 0.0
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --ratemat
+  description: "comma-delimited input values for rate matrix. default is JC69\norder:\
+    \ A<->C,A<->G,A<->T,C<->G,C<->T,G<->T"
+  args: !SimpleFlagArg
+    name: Input
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --aaratemat
+  description: "comma-delimited amino acid rate matrix. default is all freqs equal\n\
+    order is ARNDCQEGHILKMFPSTWYV"
+  args: !SimpleFlagArg
+    name: Input
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --aabasefreq
+  description: 'AA frequencies, order: ARNDCQEGHILKMFPSTWYV'
+  args: !SimpleFlagArg
+    name: Input
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --protein
+  description: run as amino acid
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --nreps
+  description: number of replicates
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --seed
+  description: random number seed, clock otherwise
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --ancestors
+  description: "print the ancestral node sequences. default is no\nuse -p for the\
+    \ nodes labels"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --printnodelabels
+  description: print newick with internal node labels. default is no
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --multimodel
+  description: "specify multiple models across tree\ninput is as follows:\nA<->C,A<->G,A<->T,C<->G,C<->T,G<->T,Node#,A<->C,A<->G,A<->T,C<->G,C<->T,G<->T\n\
+    EX:.3,.3,.3,.3,.3,1,.3,.3,.2,.5,.4"
+  args: !SimpleFlagArg
+    name: Input
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --rootseq
+  description: set root sequence. default is random (from basefreqs)
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - -C
+  - --citation
+  description: display phyx citation and exit
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: display this help and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: display version and exit
+  args: !EmptyFlagArg {}
+help_text: "Basic sequence simulator under the GTR model.\nThis will take fasta, fastq,\
+  \ phylip, and nexus formats from a file or STDIN.\n\nUsage: pxseqgen [OPTIONS]...\n\
+  \nOptions:\n -t, --treef=FILE       input treefile, STDIN otherwise\n -o, --outf=FILE\
+  \        output seq file, STOUT otherwise\n -l, --length=INT       length of sequences\
+  \ to generate. default is 1000\n -b, --basef=Input      comma-delimited base freqs\
+  \ in order: A,C,G,T. default is equal\n -g, --gamma=INT        gamma shape value.\
+  \ default is no rate variation\n -i, --pinvar=FLOAT     proportion of invariable\
+  \ sites. default is 0.0\n -r, --ratemat=Input    comma-delimited input values for\
+  \ rate matrix. default is JC69\n                          order: A<->C,A<->G,A<->T,C<->G,C<->T,G<->T\n\
+  \ -w, --aaratemat=Input  comma-delimited amino acid rate matrix. default is all\
+  \ freqs equal\n                        order is ARNDCQEGHILKMFPSTWYV\n -q, --aabasefreq=Input\
+  \ AA frequencies, order: ARNDCQEGHILKMFPSTWYV\n -c, --protein          run as amino\
+  \ acid\n -n, --nreps=INT        number of replicates\n -x, --seed=INT         random\
+  \ number seed, clock otherwise\n -a, --ancestors        print the ancestral node\
+  \ sequences. default is no\n                          use -p for the nodes labels\n\
+  \ -p, --printnodelabels  print newick with internal node labels. default is no\n\
+  \ -m, --multimodel=Input specify multiple models across tree\n                 \
+  \         input is as follows:\n                            A<->C,A<->G,A<->T,C<->G,C<->T,G<->T,Node#,A<->C,A<->G,A<->T,C<->G,C<->T,G<->T\n\
+  \                            EX:.3,.3,.3,.3,.3,1,.3,.3,.2,.5,.4\n -k, --rootseq=STRING\
+  \   set root sequence. default is random (from basefreqs)\n -h, --help         \
+  \    display this help and exit\n -V, --version          display version and exit\n\
+  \ -C, --citation      display phyx citation and exit\n\nReport bugs to: <https://github.com/FePhyFoFum/phyx/issues>\n\
+  phyx home page: <https://github.com/FePhyFoFum/phyx>\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/phyx:1.1--h937addc_0

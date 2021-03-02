@@ -1,0 +1,84 @@
+!Command
+command:
+- planemo
+- docker_shell
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: TOOL_PATH
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --from_tag
+  description: "Treat the tool's Docker container identifier\nas a locally cached\
+    \ tag."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --shell
+  description: "Shell to launch in container (defaults to\n/bin/bash)."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --docker_cmd
+  description: "Command used to launch docker (defaults to\ndocker)."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --docker_sudo
+  - --no_docker_sudo
+  description: Flag to use sudo when running docker.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --docker_sudo_cmd
+  description: "sudo command to use when --docker_sudo is\nenabled (defaults to sudo)."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --docker_host
+  description: "Docker host to target when executing docker\ncommands (defaults to\
+    \ localhost)."
+  args: !SimpleFlagArg
+    name: TEXT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: planemo docker_shell [OPTIONS] TOOL_PATH\n\n  Launch shell in Docker\
+  \ container for a tool.\n\n  Will launch a shell in the Docker container referenced\
+  \ by the specified\n  tool. Prints a command to do this the way Galaxy would in\
+  \ job files it\n  generates - so be sure to wrap this in $(...) to launch the subshell.\n\
+  \n      $ $(planemo docker_shell bowtie2.xml)\n      ...\n      root@b8754062f875:/#\n\
+  \nOptions:\n  --from_tag                      Treat the tool's Docker container\
+  \ identifier\n                                  as a locally cached tag.\n\n  --shell\
+  \ TEXT                    Shell to launch in container (defaults to\n          \
+  \                        /bin/bash).\n\n  --docker_cmd TEXT               Command\
+  \ used to launch docker (defaults to\n                                  docker).\n\
+  \n  --docker_sudo / --no_docker_sudo\n                                  Flag to\
+  \ use sudo when running docker.\n  --docker_sudo_cmd TEXT          sudo command\
+  \ to use when --docker_sudo is\n                                  enabled (defaults\
+  \ to sudo).\n\n  --docker_host TEXT              Docker host to target when executing\
+  \ docker\n                                  commands (defaults to localhost).\n\n\
+  \  --help                          Show this message and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/planemo:0.74.2--py_0

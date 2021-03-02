@@ -1,0 +1,102 @@
+!Command
+command:
+- msgf_plus
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: java
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -jar
+  description: ''
+  args: !SimpleFlagArg
+    name: MSGFPlus.jar
+- !Flag
+  optional: true
+  synonyms:
+  - -Xmx3500M
+  description: ''
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\n\nMS-GF+ Release (v2021.01.08) (8 January 2021)\n\nUsage: java -Xmx3500M\
+  \ -jar MSGFPlus.jar\n\t[-conf ConfigurationFile] (Configuration file path; options\
+  \ specified at the command line will override settings in the config file)\n\t \
+  \  Example parameter file is at https://github.com/MSGFPlus/msgfplus/blob/master/docs/examples/MSGFPlus_Params.txt\n\
+  \t[-s SpectrumFile] (*.mzML, *.mzXML, *.mgf, *.ms2, *.pkl or *_dta.txt)\n\t   Spectra\
+  \ should be centroided (see below for MSConvert example). Profile spectra will be\
+  \ ignored.\n\t[-d DatabaseFile] (*.fasta or *.fa or *.faa)\n\t[-decoy DecoyPrefix]\
+  \ (Prefix for decoy protein names; Default: XXX)\n\t[-o OutputFile (*.mzid)] (Default:\
+  \ [SpectrumFileName].mzid)\n\t[-t PrecursorMassTolerance] (e.g. 2.5Da, 20ppm or\
+  \ 0.5Da,2.5Da; Default: 20ppm)\n\t   Use a comma to define asymmetric values. E.g.\
+  \ \"-t 0.5Da,2.5Da\" will set 0.5Da to the left (ObsMass < TheoMass) and 2.5Da to\
+  \ the right (ObsMass > TheoMass)\n\t[-ti IsotopeErrorRange] (Range of allowed isotope\
+  \ peak errors; Default: 0,1)\n\t   Takes into account the error introduced by choosing\
+  \ a non-monoisotopic peak for fragmentation.\n\t   The combination of -t and -ti\
+  \ determines the precursor mass tolerance.\n\t   E.g. \"-t 20ppm -ti -1,2\" tests\
+  \ abs(ObservedPepMass - TheoreticalPepMass - n * 1.00335Da) < 20ppm for n = -1,\
+  \ 0, 1, 2.\n\t[-thread NumThreads] (Number of concurrent threads to be executed;\
+  \ Default: Number of available cores)\n\t   This is best set to the number of physical\
+  \ cores in a single NUMA node.\n\t   Generally a single NUMA node is 1 physical\
+  \ processor.\n\t   The default will try to use hyperthreading cores, which can increase\
+  \ the amount of time this process will take.\n\t   This is because the part of Scoring\
+  \ param generation that is multithreaded is also I/O intensive.\n\t[-tasks NumTasks]\
+  \ (Override the number of tasks to use on the threads; Default: (internally calculated\
+  \ based on inputs))\n\t   More tasks than threads will reduce the memory requirements\
+  \ of the search, but will be slower (how much depends on the inputs).\n\t   1 <=\
+  \ tasks <= numThreads: will create one task per thread, which is the original behavior.\n\
+  \t   tasks = 0: use default calculation - minimum of: (threads*3) and (numSpectra/250).\n\
+  \t   tasks < 0: multiply number of threads by abs(tasks) to determine number of\
+  \ tasks (i.e., -2 means \"2 * numThreads\" tasks).\n\t   One task per thread will\
+  \ use the most memory, but will usually finish the fastest.\n\t   2-3 tasks per\
+  \ thread will use comparably less memory, but may cause the search to take 1.5 to\
+  \ 2 times as long.\n\t[-verbose 0/1] (Console output message verbosity, Default:\
+  \ 0)\n\t   0 means Report total progress only\n\t   1 means Report total and per-thread\
+  \ progress/status\n\t[-tda TDA] (Target decoy strategy, Default: 0)\n\t   0 means\
+  \ Don't search decoy database (Default)\n\t   1 means search the decoy database\
+  \ (forward + reverse proteins)\n\t[-m FragmentationMethodID] (Fragmentation Method,\
+  \ Default: 0)\n\t   0 means as written in the spectrum or CID if no info (Default)\n\
+  \t   1 means CID\n\t   2 means ETD\n\t   3 means HCD\n\t[-inst InstrumentID] (0:\
+  \ Low-res LCQ/LTQ (Default), 1: Orbitrap/FTICR/Lumos, 2: TOF, 3: Q-Exactive)\n\t\
+  [-e EnzymeID] (0: unspecific cleavage, 1: Trypsin (Default), 2: Chymotrypsin, 3:\
+  \ Lys-C, 4: Lys-N, 5: glutamyl endopeptidase, 6: Arg-C, 7: Asp-N, 8: alphaLP, 9:\
+  \ no cleavage)\n\t[-protocol ProtocolID] (0: Automatic (Default), 1: Phosphorylation,\
+  \ 2: iTRAQ, 3: iTRAQPhospho, 4: TMT, 5: Standard)\n\t[-ntt NTT] (Number of Tolerable\
+  \ Termini, Default: 2)\n\t   E.g. For trypsin, 0: non-tryptic, 1: semi-tryptic,\
+  \ 2: fully-tryptic peptides only.\n\t[-mod ModificationFileName] (Modification file;\
+  \ Default: standard amino acids with fixed C+57; only if -mod is not specified)\n\
+  \t[-minLength MinPepLength] (Minimum peptide length to consider; Default: 6)\n\t\
+  [-maxLength MaxPepLength] (Maximum peptide length to consider; Default: 40)\n\t\
+  [-minCharge MinCharge] (Minimum precursor charge to consider if charges are not\
+  \ specified in the spectrum file; Default: 2)\n\t[-maxCharge MaxCharge] (Maximum\
+  \ precursor charge to consider if charges are not specified in the spectrum file;\
+  \ Default: 3)\n\t[-n NumMatchesPerSpec] (Number of matches per spectrum to be reported;\
+  \ Default: 1)\n\t[-addFeatures AddFeatures] (Include additional features in the\
+  \ output (enable this to post-process results with Percolator), Default: 0)\n\t\
+  \   0 means Output basic scores only (Default)\n\t   1 means Output additional features\n\
+  \t[-ccm ChargeCarrierMass] (Mass of charge carrier; Default: mass of proton (1.00727649))\n\
+  \t[-maxMissedCleavages MaxMissedCleavages] (Exclude peptides with more than this\
+  \ number of missed cleavages from the search; Default: -1 (no limit))\n\t[-numMods\
+  \ NumMods] (Maximum number of dynamic (variable) modifications per peptide; Default:\
+  \ 3)\n\nExample (high-precision): java -Xmx3500M -jar MSGFPlus.jar -s test.mzML\
+  \ -d IPI_human_3.79.fasta -inst 1 -t 20ppm -ti -1,2 -ntt 2 -tda 1 -o testMSGFPlus.mzid\
+  \ -mod Mods.txt\nExample (low-precision):  java -Xmx3500M -jar MSGFPlus.jar -s test.mzML\
+  \ -d IPI_human_3.79.fasta -inst 0 -t 0.5Da,2.5Da    -ntt 2 -tda 1 -o testMSGFPlus.mzid\
+  \ -mod Mods.txt\n\nFor Thermo .raw files, obtain a centroided .mzML file using MSConvert,\
+  \ which is part of ProteoWizard (http://proteowizard.sourceforge.net/)\n  MSConvert.exe\
+  \ DatasetName.raw --filter \"peakPicking true 1-\" --mzML --32\n\nTo add or override\
+  \ the enzyme definitions, create a file named enzymes.txt in a directory named params\
+  \ below the working directory.\nFor example, create file C:\\Work\\params\\enzymes.txt\
+  \ when the working directory is C:\\Work\nExample enzymes.txt file: https://github.com/MSGFPlus/msgfplus/blob/master/docs/examples/enzymes.txt\n\
+  \nDocumentation: https://msgfplus.github.io/msgfplus/\nReleases:      https://github.com/MSGFPlus/msgfplus/releases\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/msgf_plus:2021.01.08--0

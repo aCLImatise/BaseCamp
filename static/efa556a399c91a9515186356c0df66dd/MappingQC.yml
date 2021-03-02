@@ -1,0 +1,137 @@
+!Command
+command:
+- MappingQC
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -in
+  description: Input BAM/CRAM file.
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -out
+  description: "Output qcML file. If unset, writes to STDOUT.\nDefault value: ''"
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -roi
+  description: "Input target region BED file (for panel, WES, etc.).\nDefault value:\
+    \ ''"
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -wgs
+  description: "WGS mode without target region. Genome information is taken from the\
+    \ BAM/CRAM file.\nDefault value: 'false'"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -rna
+  description: "RNA mode without target region. Genome information is taken from the\
+    \ BAM/CRAM file.\nDefault value: 'false'"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -txt
+  description: "Writes TXT format instead of qcML.\nDefault value: 'false'"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -min_mapq
+  description: "Minmum mapping quality to consider a read mapped.\nDefault value:\
+    \ '1'"
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -no_cont
+  description: "Disables sample contamination calculation, e.g. for tumor or non-human\
+    \ samples.\nDefault value: 'false'"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -debug
+  description: "Enables verbose debug outout.\nDefault value: 'false'"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -build
+  description: "Genome build used to generate the input (needed for contamination\
+    \ only).\nDefault value: 'hg19'\nValid: 'hg19,hg38'"
+  args: !SimpleFlagArg
+    name: enum
+- !Flag
+  optional: true
+  synonyms:
+  - -ref
+  description: "Reference genome for CRAM support (mandatory if CRAM is used).\nDefault\
+    \ value: ''"
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --changelog
+  description: Prints changeloge and exits.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --tdx
+  description: Writes a Tool Definition Xml file. The file name is the application
+    name with the suffix '.tdx'.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Shows this help and exits.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Prints version and exits.
+  args: !EmptyFlagArg {}
+help_text: "MappingQC (2020_12)\n\nCalculates QC metrics based on mapped NGS reads.\n\
+  \nMandatory parameters:\n  -in <file>      Input BAM/CRAM file.\n\nOptional parameters:\n\
+  \  -out <file>     Output qcML file. If unset, writes to STDOUT.\n             \
+  \     Default value: ''\n  -roi <file>     Input target region BED file (for panel,\
+  \ WES, etc.).\n                  Default value: ''\n  -wgs            WGS mode without\
+  \ target region. Genome information is taken from the BAM/CRAM file.\n         \
+  \         Default value: 'false'\n  -rna            RNA mode without target region.\
+  \ Genome information is taken from the BAM/CRAM file.\n                  Default\
+  \ value: 'false'\n  -txt            Writes TXT format instead of qcML.\n       \
+  \           Default value: 'false'\n  -min_mapq <int> Minmum mapping quality to\
+  \ consider a read mapped.\n                  Default value: '1'\n  -no_cont    \
+  \    Disables sample contamination calculation, e.g. for tumor or non-human samples.\n\
+  \                  Default value: 'false'\n  -debug          Enables verbose debug\
+  \ outout.\n                  Default value: 'false'\n  -build <enum>   Genome build\
+  \ used to generate the input (needed for contamination only).\n                \
+  \  Default value: 'hg19'\n                  Valid: 'hg19,hg38'\n  -ref <string>\
+  \   Reference genome for CRAM support (mandatory if CRAM is used).\n           \
+  \       Default value: ''\n\nSpecial parameters:\n  --help          Shows this help\
+  \ and exits.\n  --version       Prints version and exits.\n  --changelog     Prints\
+  \ changeloge and exits.\n  --tdx           Writes a Tool Definition Xml file. The\
+  \ file name is the application name with the suffix '.tdx'.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/ngs-bits:2020_12--py39h5902420_0

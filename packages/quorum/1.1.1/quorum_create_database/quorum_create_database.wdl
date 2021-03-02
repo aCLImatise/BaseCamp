@@ -26,6 +26,9 @@ task QuorumCreateDatabase {
       ~{if defined(output_file_combineddatabase) then ("--output " +  '"' + output_file_combineddatabase + '"') else ""} \
       ~{if defined(re_probe) then ("--reprobe " +  '"' + re_probe + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     size: "*Initial hash size"
     mer: "*Mer length"

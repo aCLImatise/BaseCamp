@@ -1,0 +1,80 @@
+!Command
+command:
+- splitnextera.sh
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: in
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -Xmx
+  description: "This will set Java's memory usage, overriding autodetection.\n-Xmx20g\
+    \ will specify 20 gigs of RAM, and -Xmx200m will specify 200 megs.\nThe max is\
+    \ typically 85% of physical memory."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -eoom
+  description: "This flag will cause the process to exit if an out-of-memory\nexception\
+    \ occurs.  Requires Java 8u92+."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -da
+  description: Disable assertions.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nWritten by Brian Bushnell\nLast modified March 6, 2015\n\nDescription:\
+  \  Splits Nextera LMP libraries into subsets based on linker orientation:\nLMP,\
+  \ fragment, unknown, and singleton.\nPlease read bbmap/docs/guides/SplitNexteraGuide.txt\
+  \ for more information.\n\nUsage:  splitnextera.sh in=<file> out=<file> outf=<file>\
+  \ outu=<file> outs=<file>\n\nFor pairs in two files, use in1, in2, out1, out2, etc.\n\
+  \n*** Note ***\nFor maximal speed, before running splitnextera, the linkers can\
+  \ be replaced with a constant first.\n\nIn other words, you can either do this (which\
+  \ is slightly faster):\nbbduk.sh in=reads.fq out=replaced.fq ktmask=J k=19 hdist=1\
+  \ mink=11 hdist2=0 literal=CTGTCTCTTATACACATCTAGATGTGTATAAGAGACAG\nsplitnextera.sh\
+  \ in=replaced.fq out=longmate.fq outf=frag.fq outu=unknown.fq outs=singleton.fq\n\
+  \nOr this:\nsplitnextera.sh in=reads.fq out=longmate.fq outf=frag.fq outu=unknown.fq\
+  \ outs=singleton.fq mask=t\n\n\nI/O parameters:\nin=<file>       Input reads.  Set\
+  \ to 'stdin.fq' to read from stdin.\nout=<file>      Output for pairs with LMP orientation.\n\
+  outf=<file>     Output for pairs with fragment orientation.\noutu=<file>     Pairs\
+  \ with unknown orientation.\nouts=<file>     Singleton output.\now=f           \
+  \ (overwrite) Overwrites files that already exist.\napp=f           (append) Append\
+  \ to files that already exist.\nzl=4            (ziplevel) Set compression level,\
+  \ 1 (low) to 9 (max).\nint=f           (interleaved) Determines whether INPUT file\
+  \ is considered interleaved.\nqin=auto        ASCII offset for input quality.  May\
+  \ be 33 (Sanger), 64 (Illumina), or auto.\nqout=auto       ASCII offset for output\
+  \ quality.  May be 33 (Sanger), 64 (Illumina), or auto (same as input).\n\nProcessing\
+  \ Parameters:\nmask=f          Set to true if you did not already convert junctions\
+  \ to some symbol, and it will be done automatically.\njunction=J      Look for this\
+  \ symbol to designate the junction bases.\ninnerlmp=f      Generate long mate pairs\
+  \ from the inner pair also, when the junction is found in both reads.\nrename=t\
+  \        Rename read 2 of output when using single-ended input.\nminlength=40  \
+  \  (ml) Do not output reads shorter than this.\nmerge=f         Attempt to merge\
+  \ overlapping reads before looking for junctions.\ntestmerge=0.0   If nonzero, only\
+  \ merge reads if at least the fraction of input reads are mergable.\n\nSampling\
+  \ parameters:\n\nreads=-1        Set to a positive number to only process this many\
+  \ INPUT reads (or pairs), then quit.\nsamplerate=1    Randomly output only this\
+  \ fraction of reads; 1 means sampling is disabled.\nsampleseed=-1   Set to a positive\
+  \ number to use that prng seed for sampling (allowing deterministic sampling).\n\
+  \nJava Parameters:\n-Xmx            This will set Java's memory usage, overriding\
+  \ autodetection.\n                -Xmx20g will specify 20 gigs of RAM, and -Xmx200m\
+  \ will specify 200 megs.\n                    The max is typically 85% of physical\
+  \ memory.\n-eoom           This flag will cause the process to exit if an out-of-memory\n\
+  \                exception occurs.  Requires Java 8u92+.\n-da             Disable\
+  \ assertions.\n\nPlease contact Brian Bushnell at bbushnell@lbl.gov if you encounter\
+  \ any problems.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bbmap:38.90--h1296035_0

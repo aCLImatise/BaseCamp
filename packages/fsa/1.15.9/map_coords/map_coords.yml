@@ -1,0 +1,101 @@
+!Command
+command:
+- map_coords
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: source genome
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: chromosome
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: start
+  description: ''
+- !Positional
+  optional: false
+  position: 3
+  name: end
+  description: ''
+- !Positional
+  optional: false
+  position: 4
+  name: strand
+  description: ''
+- !Positional
+  optional: false
+  position: 5
+  name: target genome
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  - --data
+  description: path to map, genome and alignment files
+  args: !SimpleFlagArg
+    name: directory
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  - --map
+  description: path to map and genome files
+  args: !SimpleFlagArg
+    name: directory
+- !Flag
+  optional: true
+  synonyms:
+  - -A
+  - --align
+  description: path to alignment files
+  args: !SimpleFlagArg
+    name: directory
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  - --lazy
+  description: warn, rather than die, if the subalignment can't be obtained
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -U
+  - --truncate
+  description: truncate unmappable sequence (rather than skipping) and show truncated
+    subalignment
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this message
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "map_coords from FSA 1.15.9\n\nUsage: map_coords [options] <source genome>\
+  \ <chromosome> <start> <end> <strand> <target genome>\n\nMap coordinates from one\
+  \ genome to another using a Mercator multiple alignment.\n\nOptions:\n    -h, --help\
+  \                  show this message\n\n    -D, --data <directory>      path to\
+  \ map, genome and alignment files\n    -M, --map <directory>       path to map and\
+  \ genome files\n    -A, --align <directory>     path to alignment files\n    -L,\
+  \ --lazy                  warn, rather than die, if the subalignment can't be obtained\n\
+  \    -U, --truncate              truncate unmappable sequence (rather than skipping)\
+  \ and show truncated subalignment\n\nAssumes that coordinates are 1-based and fully-closed,\n\
+  therefore representing the interval [start, end].\n\nIf requested, unmappable sequence\
+  \ will be truncated to the mappable portion;\nnote that the truncation will favor\
+  \ the beginning of the requested sequence.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/fsa:1.15.9--h8b12597_1

@@ -1,0 +1,169 @@
+!Command
+command:
+- ProcessRepeats
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: Biology
+  description: AUTHORS
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -species
+  description: "Post process RepeatMasker results run on sequence from this species.\n\
+    Default is human."
+  args: !SimpleFlagArg
+    name: query species
+- !Flag
+  optional: true
+  synonyms:
+  - -lib
+  description: "Skips most processing, does not produce a .tbl file unless the\ncustome\
+    \ library is in the \">name#class\" format."
+  args: !SimpleFlagArg
+    name: libfile
+- !Flag
+  optional: true
+  synonyms:
+  - -nolow
+  description: "Does not display simple repeats or low_complexity DNA in the\nannotation."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -noint
+  description: Skips steps specific to interspersed repeats, saving lots of time.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -lcambig
+  description: "Outputs ambiguous DNA transposon fragments using a lower case name.\n\
+    All other repeats are listed in upper case. Ambiguous fragments\nmatch multiple\
+    \ repeat elements and can only be called based on\nflanking repeat information."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  description: Creates an untouched annotation file besides the manipulated file.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -xm
+  description: "an additional output file in cross_match format (for\nparsing)."
+  args: !SimpleFlagArg
+    name: Creates
+- !Flag
+  optional: true
+  synonyms:
+  - -ace
+  description: Creates an additional output file in ACeDB format.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -gff
+  description: Creates an additional Gene Feature Finding format.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -poly
+  description: "Creates an output file listing only potentially polymorphic simple\n\
+    repeats."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -no_id
+  description: "Leaves out final column with unique number for each element (was\n\
+    default)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -excln
+  description: "Calculates repeat densities excluding long stretches of Ns in the\n\
+    query."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -orf2
+  description: "Results in sometimes negative coordinates for L1 elements; all L1\n\
+    subfamilies are aligned over the ORF2 region, sometimes improving\ninterpretation\
+    \ of data."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  description: Shows the alignments in a .align output file.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -maskSource
+  description: "Instructs ProcessRepeats to mask the sequence file using the\nannotation."
+  args: !SimpleFlagArg
+    name: originalSeqenceFile
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  description: Mask repeats with a lower case 'x'.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -xsmall
+  description: Mask repeats by making the sequence lowercase.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: "(elp)\nDetailed help"
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "NAME\n    ProcessRepeats - Post process results from RepeatMasker and\
+  \ produce an\n    annotation file.\n\nSYNOPSIS\n      ProcessRepeats [-options]\
+  \ <RepeatMasker *.cat file>\n\nDESCRIPTION\n    The options are:\n\n    -h(elp)\n\
+  \        Detailed help\n\n    -species <query species>\n        Post process RepeatMasker\
+  \ results run on sequence from this species.\n        Default is human.\n\n    -lib\
+  \ <libfile>\n        Skips most processing, does not produce a .tbl file unless\
+  \ the\n        custome library is in the \">name#class\" format.\n\n    -nolow\n\
+  \        Does not display simple repeats or low_complexity DNA in the\n        annotation.\n\
+  \n    -noint\n        Skips steps specific to interspersed repeats, saving lots\
+  \ of time.\n\n    -lcambig\n        Outputs ambiguous DNA transposon fragments using\
+  \ a lower case name.\n        All other repeats are listed in upper case. Ambiguous\
+  \ fragments\n        match multiple repeat elements and can only be called based\
+  \ on\n        flanking repeat information.\n\n    -u  Creates an untouched annotation\
+  \ file besides the manipulated file.\n\n    -xm Creates an additional output file\
+  \ in cross_match format (for\n        parsing).\n\n    -ace\n        Creates an\
+  \ additional output file in ACeDB format.\n\n    -gff\n        Creates an additional\
+  \ Gene Feature Finding format.\n\n    -poly\n        Creates an output file listing\
+  \ only potentially polymorphic simple\n        repeats.\n\n    -no_id\n        Leaves\
+  \ out final column with unique number for each element (was\n        default).\n\
+  \n    -excln\n        Calculates repeat densities excluding long stretches of Ns\
+  \ in the\n        query.\n\n    -orf2\n        Results in sometimes negative coordinates\
+  \ for L1 elements; all L1\n        subfamilies are aligned over the ORF2 region,\
+  \ sometimes improving\n        interpretation of data.\n\n    -a  Shows the alignments\
+  \ in a .align output file.\n\n    -maskSource <originalSeqenceFile>\n        Instructs\
+  \ ProcessRepeats to mask the sequence file using the\n        annotation.\n\n  \
+  \  -x  Mask repeats with a lower case 'x'.\n\n    -xsmall\n        Mask repeats\
+  \ by making the sequence lowercase.\n\nSEE ALSO\n        RepeatMasker, Crossmatch,\
+  \ Blast\n\nCOPYRIGHT\n    Copyright 2002-2012 Arian Smit, Robert Hubley, Institute\
+  \ for Systems\n    Biology\n\nAUTHORS\n    Arian Smit <asmit@systemsbiology.org>\n\
+  \n    Robert Hubley <rhubley@systemsbiology.org>\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/repeatmasker:4.1.1--pl526_1

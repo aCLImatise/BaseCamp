@@ -1,0 +1,76 @@
+!Command
+command:
+- GatherReadQualityMetrics
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: value.
+  description: TAG=String                    Optionally aggregate reads by a tag and
+    output per-tag metrics.  The map quality scores
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: (default 4g)
+  args: !SimpleFlagArg
+    name: jvm_heap_size
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: final command line before executing
+  args: !SimpleFlagArg
+    name: echo
+- !Flag
+  optional: true
+  synonyms:
+  - --stdhelp
+  - -H
+  description: "Displays options specific to this tool AND options common to all Picard\
+    \ command line\ntools."
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: Displays options specific to this tool.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Displays program version.
+  args: !EmptyFlagArg {}
+help_text: "USAGE: /usr/local/bin/GatherReadQualityMetrics [-m <jvm_heap_size>] [-v]\
+  \ program args...\n       -m <jvm_heap_size> (default 4g)\n       -v echo final\
+  \ command line before executing\n\nProgram options:\nUSAGE: GatherReadQualityMetrics\
+  \ [options]\n\nCalculate the number of reads that are in the BAM, that are mapped,\
+  \ mapped + HQ, mapped + HQ + not PCR duplicated. The\noutput lines are ordered by\
+  \ cell barcodes, with the first line containing the summary counts for all the cell\
+  \ barcodes\nVersion: 2.4.0(3d2b3d8_1600201514)\n\n\nOptions:\n\n--help\n-h     \
+  \                       Displays options specific to this tool.\n\n--stdhelp\n-H\
+  \                            Displays options specific to this tool AND options\
+  \ common to all Picard command line\n                              tools.\n\n--version\
+  \                     Displays program version.\n\nINPUT=File\nI=File          \
+  \              The input SAM or BAM file to analyze.  Must be coordinate sorted.\
+  \  Required. \n\nOUTPUT=File\nO=File                        The file to write stats\
+  \ to.  Required. \n\nMINIMUM_MAPPING_QUALITY=Integer\nREAD_MQ=Integer          \
+  \     Minimum mapping quality to include the read in the analysis. Set to 0 to not\
+  \ filter reads\n                              by map quality.  Default value: 10.\
+  \ This option can be set to 'null' to clear the default\n                      \
+  \        value. \n\nTAG=String                    Optionally aggregate reads by\
+  \ a tag and output per-tag metrics.  The map quality scores\n                  \
+  \            histogram will still be computed globally.  Default value: null. \n\
+  \nINCLUDE_NON_PF_READS=Boolean  Include non-PF reads when gathering metrics  Default\
+  \ value: false. This option can be set\n                              to 'null'\
+  \ to clear the default value. Possible values: {true, false} \n\n"
+generated_using:
+- -h
+docker_image: quay.io/biocontainers/dropseq_tools:2.4.0--0

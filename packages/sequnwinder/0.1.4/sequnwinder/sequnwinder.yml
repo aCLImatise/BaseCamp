@@ -1,0 +1,215 @@
+!Command
+command:
+- sequnwinder
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: AND
+  description: '--seq <path>: A directory containing fasta format files corresponding
+    to every named chromosome is required'
+- !Positional
+  optional: false
+  position: 0
+  name: OR
+  description: '--genseqs <DNA sequences around at TF binding sites; eg: ATGC...TGC     Shared;Proximal>'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --out
+  description: ': Ouput file prefix. All output will be put into a directory with
+    the prefix name'
+  args: !SimpleFlagArg
+    name: prefix
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: ': Use n threads to train SeqUnwinder model. Default is 5 threads'
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: ': Flag to run in debug mode; prints extra output'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --memepath
+  description: ': path to the meme bin dir (default: meme is in $PATH)'
+  args: !SimpleFlagArg
+    name: path
+- !Flag
+  optional: true
+  synonyms:
+  - --geninfo
+  description: This file should list the lengths of all chromosomes on separate lines
+    using the format chrName<tab>chrLength
+  args: !SimpleFlagArg
+    name: genome info file
+- !Flag
+  optional: true
+  synonyms:
+  - --genregs
+  description: '<List of TF binding sites with annotations; eg: chr1:151736000  Shared;Proximal>'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --win
+  description: ': Size of the genomic regions in bp. Default = 150.'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --makerandregs
+  description: ': Flag to make random genomic regions as an extra outgroup class in
+    classification (Only applicable when genome is provide.)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --mink
+  description: ': Minimum length of k-mer (default = 4)'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --maxk
+  description: ': Maximum length of k-mer (default = 5)'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --r
+  description: ': Regularization constant (default = 10)'
+  args: !SimpleFlagArg
+    name: value
+- !Flag
+  optional: true
+  synonyms:
+  - --x
+  description: ': Number of folds for cross validation, default = 3.'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --mergelow
+  description: ': Flag to merge subclasses with less than 200 sites with other relevant
+    classes. By default, all subclasses with less that 200 sites are removed.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --minscanlen
+  description: ': Minimum length of the window to scan K-mer models. Default=8.'
+  args: !SimpleFlagArg
+    name: value
+- !Flag
+  optional: true
+  synonyms:
+  - --maxscanlen
+  description: ': Maximum length of the window to scan K-mer models. Default=14.'
+  args: !SimpleFlagArg
+    name: value
+- !Flag
+  optional: true
+  synonyms:
+  - --hillsthresh
+  description: ': Scoring threshold to identify hills. Default=0.1.'
+  args: !SimpleFlagArg
+    name: value
+- !Flag
+  optional: true
+  synonyms:
+  - --mememinw
+  description: ': minw arg for MEME. Default=6.'
+  args: !SimpleFlagArg
+    name: value
+- !Flag
+  optional: true
+  synonyms:
+  - --mememaxw
+  description: ': maxw arg for MEME. Default=13. This value should always be less
+    than "maxscanlen".'
+  args: !SimpleFlagArg
+    name: value
+- !Flag
+  optional: true
+  synonyms:
+  - --memenmotifs
+  description: ': Number of motifs MEME should find in each condition (default=3)'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --memeargs
+  description: ': Additional args for MEME (default:  -dna -mod zoops -revcomp -nostatus)'
+  args: !SimpleFlagArg
+    name: args
+- !Flag
+  optional: true
+  synonyms:
+  - --memesearchwin
+  description: ': Window around hills to search for discriminative motifs. Default=16.
+    (Only applicable when run with "genregs").'
+  args: !SimpleFlagArg
+    name: value
+- !Flag
+  optional: true
+  synonyms:
+  - --motifminROC
+  description: ': minimum class-specific ROC required to report motif. Default=0.7.        --a
+    <int>: Maximum number of allowed ADMM iterations. Default=400.'
+  args: !SimpleFlagArg
+    name: value
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "SeqUnwinder version 0.1.4\n\n\nCopyright (C) Akshay Kakumanu 2016-2017\n\
+  \nSeqUnwinder comes with ABSOLUTELY NO WARRANTY. This is free software, and you\n\
+  are welcome to redistribute it under certain conditions.  See the MIT license \n\
+  for details.\n\n OPTIONS:\n General:\n\t--out <prefix>: Ouput file prefix. All output\
+  \ will be put into a directory with the prefix name\n\t--threads <n>: Use n threads\
+  \ to train SeqUnwinder model. Default is 5 threads\n\t--debug: Flag to run in debug\
+  \ mode; prints extra output\n\t--memepath <path>: path to the meme bin dir (default:\
+  \ meme is in $PATH)\n Specify the genome:\n\t--geninfo <genome info file> This file\
+  \ should list the lengths of all chromosomes on separate lines using the format\
+  \ chrName<tab>chrLength\n\t\tAND\n\t--seq <path>: A directory containing fasta format\
+  \ files corresponding to every named chromosome is required\n Input Genomic Regions:\n\
+  \t--genregs <List of TF binding sites with annotations; eg: chr1:151736000  Shared;Proximal>\n\
+  \t\tOR\n\t--genseqs <DNA sequences around at TF binding sites; eg: ATGC...TGC\t\
+  Shared;Proximal>\n\t--win <int>: Size of the genomic regions in bp. Default = 150.\n\
+  \t--makerandregs: Flag to make random genomic regions as an extra outgroup class\
+  \ in classification (Only applicable when genome is provide.) \n SeqUnwinder modelling\
+  \ options \n\t--mink <int>: Minimum length of k-mer (default = 4)\n\t--maxk <int>:\
+  \ Maximum length of k-mer (default = 5)\n\t--r <value>: Regularization constant\
+  \ (default = 10)\n\t--x <int>: Number of folds for cross validation, default = 3.\n\
+  \t--mergelow: Flag to merge subclasses with less than 200 sites with other relevant\
+  \ classes. By default, all subclasses with less that 200 sites are removed. \n Other\
+  \ SeqUnwinder options (Highly recommend using defaul options): \n\t--minscanlen\
+  \ <value>: Minimum length of the window to scan K-mer models. Default=8.\n\t--maxscanlen\
+  \ <value>: Maximum length of the window to scan K-mer models. Default=14.\n\t--hillsthresh\
+  \ <value>: Scoring threshold to identify hills. Default=0.1.\n\t--mememinw <value>:\
+  \ minw arg for MEME. Default=6.\n\t--mememaxw <value>: maxw arg for MEME. Default=13.\
+  \ This value should always be less than \"maxscanlen\".\n\t--memenmotifs <int>:\
+  \ Number of motifs MEME should find in each condition (default=3)\n\t--memeargs\
+  \ <args> : Additional args for MEME (default:  -dna -mod zoops -revcomp -nostatus)\n\
+  \t--memesearchwin <value>: Window around hills to search for discriminative motifs.\
+  \ Default=16. (Only applicable when run with \"genregs\").\n\t--motifminROC <value>:\
+  \ minimum class-specific ROC required to report motif. Default=0.7.\t--a <int>:\
+  \ Maximum number of allowed ADMM iterations. Default=400.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/sequnwinder:0.1.4--0

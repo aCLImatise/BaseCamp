@@ -20,6 +20,9 @@ task SemanticValidator {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "*            Input file (any xml file) (valid formats: 'analysisXML', 'mzML', 'TraML', 'mzid', 'mzData', 'xml')"
     mapping_file: "*  Mapping file which is used to semantically validate the given XML file against this mapping file (see 'share/OpenMS/MAPPING' for templates). (valid formats: 'xml')"

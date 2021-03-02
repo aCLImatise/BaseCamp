@@ -1,0 +1,113 @@
+!Command
+command:
+- mageckGSEA
+positional:
+- !Positional
+  optional: true
+  position: 0
+  name: pathway_name
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --reverse_value
+  description: Reverse the order of the gene.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --sort_byp
+  description: Sort the pathways by p value.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --score_column
+  description: "The column for gene scores. If you just want to use the ranking of\
+    \ the\ngene (located at the 1st column), use 0. The column number starts from\n\
+    0. Default: 0."
+  args: !SimpleFlagArg
+    name: score_column
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --perm_time
+  description: Permutations, default 1000.
+  args: !SimpleFlagArg
+    name: perm_time
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --pathway_name
+  description: "Name of the pathway to be tested. If not found, will test all\npathways."
+  args: !SimpleFlagArg
+    name: pathway_name
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output_file
+  description: The name of the output file. Use - to print to standard output.
+  args: !SimpleFlagArg
+    name: output_file
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --rank_file
+  description: "(required)  Rank file. The first column of the rank file must be the\n\
+    gene name."
+  args: !SimpleFlagArg
+    name: rank_file
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --gmt_file
+  description: (required)  The pathway annotation in GMT format.
+  args: !SimpleFlagArg
+    name: gmt_file
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Displays usage information and exits.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Displays version information and exits.
+  args: !EmptyFlagArg {}
+help_text: "\nUSAGE: \n\n   mageckGSEA  [-e] [-s] [-c <score_column>] [-p <perm_time>]\
+  \ [-n\n               <pathway_name>] [-o <output_file>] -r <rank_file> -g\n   \
+  \            <gmt_file> [--] [--version] [-h]\n\n\nWhere: \n\n   -e,  --reverse_value\n\
+  \     Reverse the order of the gene.\n\n   -s,  --sort_byp\n     Sort the pathways\
+  \ by p value.\n\n   -c <score_column>,  --score_column <score_column>\n     The\
+  \ column for gene scores. If you just want to use the ranking of the\n     gene\
+  \ (located at the 1st column), use 0. The column number starts from\n     0. Default:\
+  \ 0.\n\n   -p <perm_time>,  --perm_time <perm_time>\n     Permutations, default\
+  \ 1000.\n\n   -n <pathway_name>,  --pathway_name <pathway_name>\n     Name of the\
+  \ pathway to be tested. If not found, will test all\n     pathways.\n\n   -o <output_file>,\
+  \  --output_file <output_file>\n     The name of the output file. Use - to print\
+  \ to standard output.\n\n   -r <rank_file>,  --rank_file <rank_file>\n     (required)\
+  \  Rank file. The first column of the rank file must be the\n     gene name.\n\n\
+  \   -g <gmt_file>,  --gmt_file <gmt_file>\n     (required)  The pathway annotation\
+  \ in GMT format.\n\n   --,  --ignore_rest\n     Ignores the rest of the labeled\
+  \ arguments following this flag.\n\n   --version\n     Displays version information\
+  \ and exits.\n\n   -h,  --help\n     Displays usage information and exits.\n\n\n\
+  \   mageckGSEA: A fast implementation of GSEA enrichment test.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/mageck:0.5.9.4--py38hed8969a_0

@@ -1,0 +1,189 @@
+!Command
+command:
+- abyss-scaffold
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: FASTA
+  description: contigs in FASTA format
+- !Positional
+  optional: false
+  position: 1
+  name: OVERLAP
+  description: the contig overlap graph
+- !Positional
+  optional: false
+  position: 2
+  name: DIST
+  description: estimates of the distance between contigs
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --npairs
+  description: "minimum number of pairs [0]\nor -n A-B:S       Find the value of n\
+    \ in [A,B] with step size S\nthat maximizes the scaffold N50.\nDefault value for\
+    \ the step size is 1, if unspecified."
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --seed-length
+  description: "minimum contig length [1000]\nor -s A-B         Find the value of\
+    \ s in [A,B]\nthat maximizes the scaffold N50.\n--grid            optimize using\
+    \ a grid search [default]\n--line            optimize using a line search"
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --kmer
+  description: length of a k-mer
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -G
+  - --genome-size
+  description: "expected genome size. Used to calculate NG50\nand associated stats\
+    \ [disabled]"
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --min-gap
+  description: minimum scaffold gap length to output [50]
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --max-gap
+  description: maximum scaffold gap length to output [inf]
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --complex
+  description: remove complex transitive edges
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-complex
+  description: don't remove complex transitive edges [default]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --SS
+  description: expect contigs to be oriented correctly
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-SS
+  description: no assumption about contig orientation [default]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out
+  description: write the paths to FILE
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --graph
+  description: write the graph to FILE
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: display verbose output
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --db
+  description: specify path of database repository in FILE
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --library
+  description: specify library NAME for sqlite
+  args: !SimpleFlagArg
+    name: NAME
+- !Flag
+  optional: true
+  synonyms:
+  - --strain
+  description: specify strain NAME for sqlite
+  args: !SimpleFlagArg
+    name: NAME
+- !Flag
+  optional: true
+  synonyms:
+  - --species
+  description: specify species NAME for sqlite
+  args: !SimpleFlagArg
+    name: NAME
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: display this help and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: output version information and exit
+  args: !EmptyFlagArg {}
+help_text: "Usage: abyss-scaffold -k<kmer> [OPTION]... FASTA|OVERLAP DIST...\nScaffold\
+  \ contigs using the distance estimate graph.\n\n Arguments:\n\n  FASTA    contigs\
+  \ in FASTA format\n  OVERLAP  the contig overlap graph\n  DIST     estimates of\
+  \ the distance between contigs\n\n Options:\n\n  -n, --npairs=N        minimum number\
+  \ of pairs [0]\n      or -n A-B:S       Find the value of n in [A,B] with step size\
+  \ S\n                        that maximizes the scaffold N50.\n                \
+  \        Default value for the step size is 1, if unspecified.\n  -s, --seed-length=N\
+  \   minimum contig length [1000]\n      or -s A-B         Find the value of s in\
+  \ [A,B]\n                        that maximizes the scaffold N50.\n      --grid\
+  \            optimize using a grid search [default]\n      --line            optimize\
+  \ using a line search\n  -k, --kmer=N          length of a k-mer\n  -G, --genome-size=N\
+  \   expected genome size. Used to calculate NG50\n                        and associated\
+  \ stats [disabled]\n      --min-gap=N       minimum scaffold gap length to output\
+  \ [50]\n      --max-gap=N       maximum scaffold gap length to output [inf]\n  \
+  \    --complex         remove complex transitive edges\n      --no-complex     \
+  \ don't remove complex transitive edges [default]\n      --SS              expect\
+  \ contigs to be oriented correctly\n      --no-SS           no assumption about\
+  \ contig orientation [default]\n  -o, --out=FILE        write the paths to FILE\n\
+  \  -g, --graph=FILE      write the graph to FILE\n  -v, --verbose         display\
+  \ verbose output\n      --help            display this help and exit\n      --version\
+  \         output version information and exit\n      --db=FILE         specify path\
+  \ of database repository in FILE\n      --library=NAME    specify library NAME for\
+  \ sqlite\n      --strain=NAME     specify strain NAME for sqlite\n      --species=NAME\
+  \    specify species NAME for sqlite\n\nReport bugs to <abyss-users@bcgsc.ca>.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/abyss:2.2.5--ha4ec83a_0

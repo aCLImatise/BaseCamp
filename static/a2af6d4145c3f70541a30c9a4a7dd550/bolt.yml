@@ -1,0 +1,362 @@
+!Command
+command:
+- bolt
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: files
+  description: '--fam arg                       PLINK .fam file (note: file names
+    ending in '
+- !Positional
+  optional: false
+  position: 0
+  name: phenotype
+  description: --covarFile arg                 covariate file (header required; FID
+    IID must
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --helpFull
+  description: print help message with full option list
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --bfile
+  description: prefix of PLINK .fam, .bim, .bed files
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --bfilegz
+  description: prefix of PLINK .fam.gz, .bim.gz, .bed.gz
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --bed
+  description: PLINK .bed file(s); for >1, use multiple
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --bim
+  description: /or {i:j} expansion
+  args: !SimpleFlagArg
+    name: and
+- !Flag
+  optional: true
+  synonyms:
+  - --geneticMapFile
+  description: "Oxford-format file for interpolating genetic\ndistances: tables/genetic_map_hg##.txt.gz"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --remove
+  description: "file(s) listing individuals to ignore (no\nheader; FID IID must be\
+    \ first two columns)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --exclude
+  description: "file(s) listing SNPs to ignore (no header;\nSNP ID must be first column)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --maxMissingPerSnp
+  description: '(=0.1)   QC filter: max missing rate per SNP'
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --maxMissingPerIndiv
+  description: '(=0.1) QC filter: max missing rate per person'
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --phenoFile
+  description: "phenotype file (header required; FID IID must\nbe first two columns)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --phenoCol
+  description: phenotype column header
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --phenoUseFam
+  description: use last (6th) column of .fam file as
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --covarCol
+  description: "categorical covariate column(s); for >1, use\nmultiple --covarCol\
+    \ and/or {i:j} expansion"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --qCovarCol
+  description: "quantitative covariate column(s); for >1, use\nmultiple --qCovarCol\
+    \ and/or {i:j} expansion"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --covarUseMissingIndic
+  description: "include samples with missing covariates in\nanalysis via missing indicator\
+    \ method\n(default: ignore such samples)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --reml
+  description: "run variance components analysis to precisely\nestimate heritability\
+    \ (but not compute assoc\nstats)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --lmm
+  description: "compute assoc stats under the inf model and\nwith Bayesian non-inf\
+    \ prior (VB approx), if\npower gain expected"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --lmmInfOnly
+  description: "compute mixed model assoc stats under the\ninfinitesimal model"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --lmmForceNonInf
+  description: "compute non-inf assoc stats even if BOLT-LMM\nexpects no power gain"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --modelSnps
+  description: "file(s) listing SNPs to use in model (i.e.,\nGRM) (default: use all\
+    \ non-excluded SNPs)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --LDscoresFile
+  description: "LD Scores for calibration of Bayesian assoc\nstats: tables/LDSCORE.1000G_EUR.tab.gz"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --numThreads
+  description: (=1)           number of computational threads
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --statsFile
+  description: output file for assoc stats at PLINK
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --dosageFidIidFile
+  description: "file listing FIDs and IIDs of samples in\ndosageFile(s), one line\
+    \ per sample"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --statsFileDosageSnps
+  description: output file for assoc stats at dosage format
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --impute2FidIidFile
+  description: "file listing FIDs and IIDs of samples in\nIMPUTE2 files, one line\
+    \ per sample"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --impute2MinMAF
+  description: "(=0)        MAF threshold on IMPUTE2 genotypes; lower-MAF\nSNPs will\
+    \ be ignored"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --bgenFile
+  description: "file(s) containing Oxford BGEN-format\ngenotypes to test for association"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --sampleFile
+  description: "file containing Oxford sample file\ncorresponding to BGEN file(s)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --bgenSampleFileList
+  description: "list of [bgen sample] file pairs containing\nBGEN imputed variants\
+    \ to test for association"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --bgenMinMAF
+  description: "(=0)           MAF threshold on Oxford BGEN-format\ngenotypes; lower-MAF\
+    \ SNPs will be ignored"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --bgenMinINFO
+  description: "(=0)          INFO threshold on Oxford BGEN-format\ngenotypes; lower-INFO\
+    \ SNPs will be ignored"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --statsFileBgenSnps
+  description: output file for assoc stats at BGEN-format
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --statsFileDosage2Snps
+  description: "output file for assoc stats at 2-dosage\nformat genotypes\n"
+  args: !SimpleFlagArg
+    name: arg
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: '[ --help ]                   print help message with typical options'
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "                      +-----------------------------+\n              \
+  \        |                       ___   |\n                      |   BOLT-LMM, v2.3.4\
+  \   /_ /   |\n                      |   August 10, 2019     /_/   |\n          \
+  \            |   Po-Ru Loh            //   |\n                      |          \
+  \              /    |\n                      +-----------------------------+\n\n\
+  Copyright (C) 2014-2019 Harvard University.\nDistributed under the GNU GPLv3 open\
+  \ source license.\n\nCompiled with USE_SSE: fast aligned memory access\nBoost version:\
+  \ 1_70\n\nCommand line options:\n\nbolt \\\n    --help \n\n\nTypical options:\n\
+  \  -h [ --help ]                   print help message with typical options\n  --helpFull\
+  \                      print help message with full option list\n  --bfile arg \
+  \                    prefix of PLINK .fam, .bim, .bed files\n  --bfilegz arg   \
+  \                prefix of PLINK .fam.gz, .bim.gz, .bed.gz \n                  \
+  \                files\n  --fam arg                       PLINK .fam file (note:\
+  \ file names ending in \n                                  .gz are auto-[de]compressed)\n\
+  \  --bim arg                       PLINK .bim file(s); for >1, use multiple \n \
+  \                                 --bim and/or {i:j}, e.g., data.chr{1:22}.bim\n\
+  \  --bed arg                       PLINK .bed file(s); for >1, use multiple \n \
+  \                                 --bim and/or {i:j} expansion\n  --geneticMapFile\
+  \ arg            Oxford-format file for interpolating genetic \n               \
+  \                   distances: tables/genetic_map_hg##.txt.gz\n  --remove arg  \
+  \                  file(s) listing individuals to ignore (no \n                \
+  \                  header; FID IID must be first two columns)\n  --exclude arg \
+  \                  file(s) listing SNPs to ignore (no header; \n               \
+  \                   SNP ID must be first column)\n  --maxMissingPerSnp arg (=0.1)\
+  \   QC filter: max missing rate per SNP\n  --maxMissingPerIndiv arg (=0.1) QC filter:\
+  \ max missing rate per person\n  --phenoFile arg                 phenotype file\
+  \ (header required; FID IID must\n                                  be first two\
+  \ columns)\n  --phenoCol arg                  phenotype column header\n  --phenoUseFam\
+  \                   use last (6th) column of .fam file as \n                   \
+  \               phenotype\n  --covarFile arg                 covariate file (header\
+  \ required; FID IID must\n                                  be first two columns)\n\
+  \  --covarCol arg                  categorical covariate column(s); for >1, use\
+  \ \n                                  multiple --covarCol and/or {i:j} expansion\n\
+  \  --qCovarCol arg                 quantitative covariate column(s); for >1, use\n\
+  \                                  multiple --qCovarCol and/or {i:j} expansion\n\
+  \  --covarUseMissingIndic          include samples with missing covariates in \n\
+  \                                  analysis via missing indicator method \n    \
+  \                              (default: ignore such samples)\n  --reml        \
+  \                  run variance components analysis to precisely\n             \
+  \                     estimate heritability (but not compute assoc \n          \
+  \                        stats)\n  --lmm                           compute assoc\
+  \ stats under the inf model and \n                                  with Bayesian\
+  \ non-inf prior (VB approx), if \n                                  power gain expected\n\
+  \  --lmmInfOnly                    compute mixed model assoc stats under the \n\
+  \                                  infinitesimal model\n  --lmmForceNonInf     \
+  \           compute non-inf assoc stats even if BOLT-LMM \n                    \
+  \              expects no power gain\n  --modelSnps arg                 file(s)\
+  \ listing SNPs to use in model (i.e., \n                                  GRM) (default:\
+  \ use all non-excluded SNPs)\n  --LDscoresFile arg              LD Scores for calibration\
+  \ of Bayesian assoc \n                                  stats: tables/LDSCORE.1000G_EUR.tab.gz\n\
+  \  --numThreads arg (=1)           number of computational threads\n  --statsFile\
+  \ arg                 output file for assoc stats at PLINK \n                  \
+  \                genotypes\n  --dosageFile arg                file(s) containing\
+  \ imputed SNP dosages to \n                                  test for association\
+  \ (see manual for format)\n  --dosageFidIidFile arg          file listing FIDs and\
+  \ IIDs of samples in \n                                  dosageFile(s), one line\
+  \ per sample\n  --statsFileDosageSnps arg       output file for assoc stats at dosage\
+  \ format \n                                  genotypes\n  --impute2FileList arg\
+  \           list of [chr file] pairs containing IMPUTE2 \n                     \
+  \             SNP probabilities to test for association\n  --impute2FidIidFile arg\
+  \         file listing FIDs and IIDs of samples in \n                          \
+  \        IMPUTE2 files, one line per sample\n  --impute2MinMAF arg (=0)        MAF\
+  \ threshold on IMPUTE2 genotypes; lower-MAF\n                                  SNPs\
+  \ will be ignored\n  --bgenFile arg                  file(s) containing Oxford BGEN-format\
+  \ \n                                  genotypes to test for association\n  --sampleFile\
+  \ arg                file containing Oxford sample file \n                     \
+  \             corresponding to BGEN file(s)\n  --bgenSampleFileList arg        list\
+  \ of [bgen sample] file pairs containing \n                                  BGEN\
+  \ imputed variants to test for association\n  --bgenMinMAF arg (=0)           MAF\
+  \ threshold on Oxford BGEN-format \n                                  genotypes;\
+  \ lower-MAF SNPs will be ignored\n  --bgenMinINFO arg (=0)          INFO threshold\
+  \ on Oxford BGEN-format \n                                  genotypes; lower-INFO\
+  \ SNPs will be ignored\n  --statsFileBgenSnps arg         output file for assoc\
+  \ stats at BGEN-format \n                                  genotypes\n  --statsFileImpute2Snps\
+  \ arg      output file for assoc stats at IMPUTE2 format\n                     \
+  \             genotypes\n  --dosage2FileList arg           list of [map dosage]\
+  \ file pairs with 2-dosage\n                                  SNP probabilities\
+  \ (Ricopili/plink2 --dosage \n                                  format=2) to test\
+  \ for association\n  --statsFileDosage2Snps arg      output file for assoc stats\
+  \ at 2-dosage \n                                  format genotypes\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bolt-lmm:2.3.4--hbe668fe_0

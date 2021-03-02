@@ -3,12 +3,12 @@ id: bamtools_coverage.cwl
 inputs:
 - id: in_in
   doc: the input BAM file [stdin]
-  type: File
+  type: File?
   inputBinding:
     prefix: -in
 - id: in_out
   doc: the output file [stdout]
-  type: File
+  type: File?
   inputBinding:
     prefix: -out
 outputs:
@@ -17,9 +17,10 @@ outputs:
   type: stdout
 - id: out_out
   doc: the output file [stdout]
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_out)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - bamtools

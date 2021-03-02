@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, Boolean, String, Int, Float
+
+Igdiscover_Discoverjd_V0_1_0 = CommandToolBuilder(tool="igdiscover_discoverjd", base_command=["igdiscover", "discoverjd"], inputs=[ToolInput(tag="in_database", input_type=File(optional=True), prefix="--database", doc=InputDocumentation(doc="FASTA file with reference gene sequences")), ToolInput(tag="in_merge", input_type=Boolean(optional=True), prefix="--merge", doc=InputDocumentation(doc="Merge overlapping genes. Default: Enabled for D,\ndisabled for J and V.")), ToolInput(tag="in_no_merge", input_type=Boolean(optional=True), prefix="--no-merge", doc=InputDocumentation(doc="Do not merge overlapping genes")), ToolInput(tag="in_gene", input_type=String(optional=True), prefix="--gene", doc=InputDocumentation(doc="Which gene category to discover. Default: J")), ToolInput(tag="in_j_coverage", input_type=Int(optional=True), prefix="--j-coverage", doc=InputDocumentation(doc="Require that the sequence covers at least PERCENT of\nthe J gene. Default: 90 when --gene=J; 0 otherwise")), ToolInput(tag="in_allele_ratio", input_type=Float(optional=True), prefix="--allele-ratio", doc=InputDocumentation(doc="Required allele ratio. Works only for genes named\n'NAME*ALLELE'. Default: 0.2")), ToolInput(tag="in_cross_mapping_ratio", input_type=Float(optional=True), prefix="--cross-mapping-ratio", doc=InputDocumentation(doc="Ratio for detection of cross-mapping artifacts.\nDefault: 0.1")), ToolInput(tag="in_min_count", input_type=Int(optional=True), prefix="--min-count", doc=InputDocumentation(doc="Omit candidates with fewer than N exact occurrences in\nthe input table. Default: 1 for J; 10 for D; 100 for V")), ToolInput(tag="in_no_perfect_matches", input_type=Boolean(optional=True), prefix="--no-perfect-matches", doc=InputDocumentation(doc="Do not filter out sequences for which the V assignment\n(or J for --gene=V) has at least one error")), ToolInput(tag="in_d_core_length", input_type=Int(optional=True), prefix="--d-core-length", doc=InputDocumentation(doc="Use only D core regions that have at least length L\n(only applies when --gene=D). Default: 6")), ToolInput(tag="in_d_core", input_type=Int(optional=True), prefix="--d-core", doc=InputDocumentation(doc="D core region location (only applies when --gene=D).\nDefault: slice(2, -2, None)")), ToolInput(tag="in_fast_a", input_type=File(optional=True), prefix="--fasta", doc=InputDocumentation(doc="Write discovered sequences to FASTA file"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Igdiscover_Discoverjd_V0_1_0().translate("wdl", allow_empty_container=True)
+

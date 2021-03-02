@@ -1,0 +1,166 @@
+!Command
+command:
+- TEsorter
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -db
+  - --hmm-database
+  description: the database used [default=rexdb]
+  args: !ChoiceFlagArg
+    choices: !!set
+      rexdb-tir:
+      rexdb-metazoa:
+      rexdb-pnas:
+      rexdb:
+      rexdb-plant:
+      gydb:
+- !Flag
+  optional: true
+  synonyms:
+  - -st
+  - --seq-type
+  description: "'nucl' for DNA or 'prot' for protein [default=nucl]"
+  args: !ChoiceFlagArg
+    choices: !!set
+      nucl:
+      prot:
+- !Flag
+  optional: true
+  synonyms:
+  - -pre
+  - --prefix
+  description: output prefix [default='{-s}.{-db}']
+  args: !SimpleFlagArg
+    name: PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - -fw
+  - --force-write-hmmscan
+  description: "if False, will use the existed hmmscan outfile and\nskip hmmscan [default=False]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --processors
+  description: processors to use [default=4]
+  args: !SimpleFlagArg
+    name: PROCESSORS
+- !Flag
+  optional: true
+  synonyms:
+  - -tmp
+  - --tmp-dir
+  description: directory for temporary files [default=./tmp]
+  args: !SimpleFlagArg
+    name: TMP_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -cov
+  - --min-coverage
+  description: "mininum coverage for protein domains in HMMScan output\n[default=20]"
+  args: !SimpleFlagArg
+    name: MIN_COVERAGE
+- !Flag
+  optional: true
+  synonyms:
+  - -eval
+  - --max-evalue
+  description: "maxinum E-value for protein domains in HMMScan output\n[default=0.001]"
+  args: !SimpleFlagArg
+    name: MAX_EVALUE
+- !Flag
+  optional: true
+  synonyms:
+  - -dp2
+  - --disable-pass2
+  description: "do not further classify the unclassified sequences\n[default=False\
+    \ for `nucl`, True for `prot`]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -rule
+  - --pass2-rule
+  description: "classifying rule [identity-coverage-length] in pass-2\nbased on similarity\
+    \ [default=80-80-80]"
+  args: !SimpleFlagArg
+    name: PASS2_RULE
+- !Flag
+  optional: true
+  synonyms:
+  - -nolib
+  - --no-library
+  description: "do not generate a library file for RepeatMasker\n[default=False]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -norc
+  - --no-reverse
+  description: "do not reverse complement sequences if they are\ndetected in minus\
+    \ strand [default=False]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -nocln
+  - --no-cleanup
+  description: "do not clean up the temporary directory\n[default=False]\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: TEsorter [-h] [--version]\n                [-db {gydb,rexdb,rexdb-plant,rexdb-metazoa,rexdb-tir,rexdb-pnas}]\n\
+  \                [-st {nucl,prot}] [-pre PREFIX] [-fw] [-p PROCESSORS]\n       \
+  \         [-tmp TMP_DIR] [-cov MIN_COVERAGE] [-eval MAX_EVALUE] [-dp2]\n       \
+  \         [-rule PASS2_RULE] [-nolib] [-norc] [-nocln]\n                sequence\n\
+  \nlineage-level classification of transposable elements using conserved protein\n\
+  domains\n\npositional arguments:\n  sequence              input TE sequences in\
+  \ fasta format [required]\n\noptional arguments:\n  -h, --help            show this\
+  \ help message and exit\n  --version             show program's version number and\
+  \ exit\n  -db {gydb,rexdb,rexdb-plant,rexdb-metazoa,rexdb-tir,rexdb-pnas}, --hmm-database\
+  \ {gydb,rexdb,rexdb-plant,rexdb-metazoa,rexdb-tir,rexdb-pnas}\n                \
+  \        the database used [default=rexdb]\n  -st {nucl,prot}, --seq-type {nucl,prot}\n\
+  \                        'nucl' for DNA or 'prot' for protein [default=nucl]\n \
+  \ -pre PREFIX, --prefix PREFIX\n                        output prefix [default='{-s}.{-db}']\n\
+  \  -fw, --force-write-hmmscan\n                        if False, will use the existed\
+  \ hmmscan outfile and\n                        skip hmmscan [default=False]\n  -p\
+  \ PROCESSORS, --processors PROCESSORS\n                        processors to use\
+  \ [default=4]\n  -tmp TMP_DIR, --tmp-dir TMP_DIR\n                        directory\
+  \ for temporary files [default=./tmp]\n  -cov MIN_COVERAGE, --min-coverage MIN_COVERAGE\n\
+  \                        mininum coverage for protein domains in HMMScan output\n\
+  \                        [default=20]\n  -eval MAX_EVALUE, --max-evalue MAX_EVALUE\n\
+  \                        maxinum E-value for protein domains in HMMScan output\n\
+  \                        [default=0.001]\n  -dp2, --disable-pass2\n            \
+  \            do not further classify the unclassified sequences\n              \
+  \          [default=False for `nucl`, True for `prot`]\n  -rule PASS2_RULE, --pass2-rule\
+  \ PASS2_RULE\n                        classifying rule [identity-coverage-length]\
+  \ in pass-2\n                        based on similarity [default=80-80-80]\n  -nolib,\
+  \ --no-library  do not generate a library file for RepeatMasker\n              \
+  \          [default=False]\n  -norc, --no-reverse   do not reverse complement sequences\
+  \ if they are\n                        detected in minus strand [default=False]\n\
+  \  -nocln, --no-cleanup  do not clean up the temporary directory\n             \
+  \           [default=False]\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/tesorter:1.3.0--py_0

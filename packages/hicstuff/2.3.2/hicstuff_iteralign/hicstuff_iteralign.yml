@@ -1,0 +1,110 @@
+!Command
+command:
+- hicstuff
+- iteralign
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: reads.fq
+  description: Fastq file containing the reads to be aligned
+- !Positional
+  optional: false
+  position: 0
+  name: directory.
+  description: -a, --aligner=bowtie2    Choose alignment software between bowtie2,
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --genome
+  description: "The genome on which to map the reads. Must be\nthe path to the bowtie2/bwa\
+    \ index if using bowtie2/bwa\nor to the genome in fasta format if using minimap2."
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: "Number of parallel threads allocated for the\nalignment [default:\
+    \ 1]."
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --tempdir
+  description: Temporary directory. Defaults to current
+  args: !SimpleFlagArg
+    name: DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --min-len
+  description: "Length to which the reads should be\ntruncated [default: 20]."
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out-bam
+  description: "Path where the alignment will be written in\nBAM format."
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  - --read-len
+  description: "Read length in input FASTQ file. If not provided,\nthis is estimated\
+    \ from the first read in the file.\n"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  description: ''
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --aligner
+  description: ''
+  args: !SimpleFlagArg
+    name: bowtie2
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Iterative mapping command\n\n    Truncate reads from a fastq file to 20\
+  \ basepairs and iteratively extend and\n    re-align the unmapped reads to optimize\
+  \ the proportion of uniquely aligned\n    reads in a 3C library.\n\n    usage:\n\
+  \        iteralign [--aligner=bowtie2] [--threads=1] [--min-len=20] [--read-len=INT]\n\
+  \                  [--tempdir=DIR] --out-bam=FILE --genome=FILE <reads.fq>\n\n \
+  \   arguments:\n        reads.fq                Fastq file containing the reads\
+  \ to be aligned\n\n    options:\n        -g, --genome=FILE        The genome on\
+  \ which to map the reads. Must be\n                                 the path to\
+  \ the bowtie2/bwa index if using bowtie2/bwa\n                                 or\
+  \ to the genome in fasta format if using minimap2.\n        -t, --threads=INT  \
+  \      Number of parallel threads allocated for the\n                          \
+  \       alignment [default: 1].\n        -T, --tempdir=DIR        Temporary directory.\
+  \ Defaults to current\n                                 directory.\n        -a,\
+  \ --aligner=bowtie2    Choose alignment software between bowtie2,\n            \
+  \                     minimap2 or bwa. minimap2 should only be used for\n      \
+  \                           reads > 100 bp. [default: bowtie2]\n        -l, --min-len=INT\
+  \        Length to which the reads should be\n                                 truncated\
+  \ [default: 20].\n        -o, --out-bam=FILE       Path where the alignment will\
+  \ be written in\n                                 BAM format.\n        -R, --read-len=INT\
+  \       Read length in input FASTQ file. If not provided,\n                    \
+  \             this is estimated from the first read in the file.\n    \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/hicstuff:2.3.2--py_0

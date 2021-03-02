@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Int, File, Float, Boolean, String
+
+Comparem_Classify_V0_1_0 = CommandToolBuilder(tool="comparem_classify", base_command=["comparem", "classify"], inputs=[ToolInput(tag="in_num_top_targets", input_type=Int(optional=True), prefix="--num_top_targets", doc=InputDocumentation(doc="number of top scoring target genomes to report per\nquery genome (default: 1)")), ToolInput(tag="in_taxonomy_file", input_type=File(optional=True), prefix="--taxonomy_file", doc=InputDocumentation(doc="file indicating taxonomic identification of all target\ngenomes")), ToolInput(tag="in_evalue", input_type=Float(optional=True), prefix="--evalue", doc=InputDocumentation(doc="e-value cutoff for identifying initial blast hits\n(default: 0.001)")), ToolInput(tag="in_per_identity", input_type=Float(optional=True), prefix="--per_identity", doc=InputDocumentation(doc="percent identity for defining homology (default: 30.0)")), ToolInput(tag="in_per_aln_len", input_type=Int(optional=True), prefix="--per_aln_len", doc=InputDocumentation(doc="percent alignment length of query sequence for\ndefining homology (default: 70.0)")), ToolInput(tag="in_file_ext", input_type=File(optional=True), prefix="--file_ext", doc=InputDocumentation(doc="extension of files to process (default: fna)")), ToolInput(tag="in_keep_r_bhs", input_type=Boolean(optional=True), prefix="--keep_rbhs", doc=InputDocumentation(doc="create file with reciprocal best hits")), ToolInput(tag="in_cpus", input_type=Int(optional=True), prefix="--cpus", doc=InputDocumentation(doc="number of CPUs to use (default: 1)")), ToolInput(tag="in_silent", input_type=Boolean(optional=True), prefix="--silent", doc=InputDocumentation(doc="suppress output")), ToolInput(tag="in_identify_similar_genomes", input_type=String(), position=0, doc=InputDocumentation(doc="Identify similar genomes based on AAI value.")), ToolInput(tag="in_query_gene_file", input_type=String(), position=0, doc=InputDocumentation(doc="file with all query genes")), ToolInput(tag="in_target_gene_file", input_type=String(), position=1, doc=InputDocumentation(doc="file with all target genes")), ToolInput(tag="in_sorted_hit_table", input_type=String(), position=2, doc=InputDocumentation(doc="sorted file indicating genes passing sequence\nsimilarity criteria")), ToolInput(tag="in_output_directory", input_type=String(), position=3, doc=InputDocumentation(doc="output directory"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Comparem_Classify_V0_1_0().translate("wdl", allow_empty_container=True)
+

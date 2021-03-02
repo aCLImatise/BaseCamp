@@ -1,0 +1,106 @@
+!Command
+command:
+- hicAverageRegions
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --range
+  description: "RANGE, -ra RANGE RANGE\nRange of region up- and downstream of each\
+    \ region to\ninclude in genomic units."
+  args: !SimpleFlagArg
+    name: RANGE
+- !Flag
+  optional: true
+  synonyms:
+  - --rangeInBins
+  description: "RANGEINBINS, -rib RANGEINBINS RANGEINBINS\nRange of region up- and\
+    \ downstream of each region to\ninclude in bin units."
+  args: !SimpleFlagArg
+    name: RANGEINBINS
+- !Flag
+  optional: true
+  synonyms:
+  - --matrix
+  - -m
+  description: The matrix to use for the average of TAD regions.
+  args: !SimpleFlagArg
+    name: MATRIX
+- !Flag
+  optional: true
+  synonyms:
+  - --regions
+  - -r
+  description: "BED file which stores a list of regions that are\nsummed and averaged"
+  args: !SimpleFlagArg
+    name: REGIONS
+- !Flag
+  optional: true
+  synonyms:
+  - --outFileName
+  - -o
+  description: File name to save the average regions TADs matrix.
+  args: !SimpleFlagArg
+    name: OUTFILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --coordinatesToBinMapping
+  - -cb
+  description: "If the region contains start and end coordinates,\ndefine if the start,\
+    \ center (start + (end-start) / 2)\nor end bin should be used as start for range.This\n\
+    parameter is only important to set if the given start\nand end coordinates are\
+    \ not in the same bin (Default:\nstart)."
+  args: !ChoiceFlagArg
+    choices: !!set
+      center:
+      end:
+      start:
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: hicAverageRegions --matrix MATRIX --regions REGIONS\n         \
+  \                (--range RANGE RANGE | --rangeInBins RANGEINBINS RANGEINBINS)\n\
+  \                         --outFileName OUTFILENAME [--help]\n                 \
+  \        [--coordinatesToBinMapping {start,center,end}]\n                      \
+  \   [--version]\n\n       Sums Hi-C contacts around given reference points and computes\
+  \ their average. This tool is useful to detect differences at certain reference\
+  \ points as for example TAD boundaries between samples.\n\nWARNING: This tool can\
+  \ only be used with fixed bin size Hi-C matrices. No guarantees how and if it works\
+  \ on restriction site interaction matrices.\n\noptional arguments:\n  --range RANGE\
+  \ RANGE, -ra RANGE RANGE\n                        Range of region up- and downstream\
+  \ of each region to\n                        include in genomic units.\n  --rangeInBins\
+  \ RANGEINBINS RANGEINBINS, -rib RANGEINBINS RANGEINBINS\n                      \
+  \  Range of region up- and downstream of each region to\n                      \
+  \  include in bin units.\n\nRequired arguments:\n  --matrix MATRIX, -m MATRIX\n\
+  \                        The matrix to use for the average of TAD regions.\n  --regions\
+  \ REGIONS, -r REGIONS\n                        BED file which stores a list of regions\
+  \ that are\n                        summed and averaged\n  --outFileName OUTFILENAME,\
+  \ -o OUTFILENAME\n                        File name to save the average regions\
+  \ TADs matrix.\n\nOptional arguments:\n  --help, -h            show this help message\
+  \ and exit\n  --coordinatesToBinMapping {start,center,end}, -cb {start,center,end}\n\
+  \                        If the region contains start and end coordinates,\n   \
+  \                     define if the start, center (start + (end-start) / 2)\n  \
+  \                      or end bin should be used as start for range.This\n     \
+  \                   parameter is only important to set if the given start\n    \
+  \                    and end coordinates are not in the same bin (Default:\n   \
+  \                     start).\n  --version             show program's version number\
+  \ and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/hicexplorer:3.6--py_0

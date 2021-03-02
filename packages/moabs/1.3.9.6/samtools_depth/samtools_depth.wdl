@@ -20,6 +20,9 @@ task SamtoolsDepth {
       ~{if defined(mapping_quality_threshold) then ("-Q " +  '"' + mapping_quality_threshold + '"') else ""} \
       ~{if (chrfromto__region) then "-r" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     list_positions_regions: "list of positions or regions"
     list_input_bam: "list of input BAM filenames, one per line [null]"

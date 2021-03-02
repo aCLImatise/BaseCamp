@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import String, File, Boolean
+
+Kraken_Biom_V0_1_0 = CommandToolBuilder(tool="kraken_biom", base_command=["kraken-biom"], inputs=[ToolInput(tag="in_max", input_type=String(optional=True), prefix="--max", doc=InputDocumentation(doc="Assigned reads will be recorded only if they are at or\nbelow max rank. Default: O.")), ToolInput(tag="in_min", input_type=String(optional=True), prefix="--min", doc=InputDocumentation(doc="Reads assigned at and below min rank will be recorded\nas being assigned to the min rank level. Default: S.")), ToolInput(tag="in_output_fp", input_type=File(optional=True), prefix="--output_fp", doc=InputDocumentation(doc="Path to the BIOM-format file. By default, the table\nwill be in the HDF5 BIOM 2.x format. Users can output\nto a different format using the --fmt option. The\noutput can also be gzipped using the --gzip option.\nDefault path is: ./table.biom")), ToolInput(tag="in_otu_fp", input_type=File(optional=True), prefix="--otu_fp", doc=InputDocumentation(doc="Create a file containing just the (NCBI) OTU IDs for\nuse with a service such as phyloT\n(http://phylot.biobyte.de/) to generate a phylogenetic\ntree for use in downstream analysis such as UniFrac,\niTol (itol.embl.de), or PhyloToAST (phylotoast.org).")), ToolInput(tag="in_fmt", input_type=String(optional=True), prefix="--fmt", doc=InputDocumentation(doc="Set the output format of the BIOM table. Default is\nHDF5.")), ToolInput(tag="in_gzip", input_type=Boolean(optional=True), prefix="--gzip", doc=InputDocumentation(doc="Compress the output BIOM table with gzip. HDF5 BIOM\n(v2.x) files are internally compressed by default, so\nthis option is not needed when specifying --fmt hdf5.")), ToolInput(tag="in_verbose", input_type=Boolean(optional=True), prefix="--verbose", doc=InputDocumentation(doc="Prints status messages during program execution.")), ToolInput(tag="in_kraken_reports", input_type=String(), position=0, doc=InputDocumentation(doc="Results files from the kraken-report tool."))], outputs=[ToolOutput(tag="out_output_fp", output_type=File(optional=True), selector=InputSelector(input_to_select="in_output_fp", type_hint=File()), doc=OutputDocumentation(doc="Path to the BIOM-format file. By default, the table\nwill be in the HDF5 BIOM 2.x format. Users can output\nto a different format using the --fmt option. The\noutput can also be gzipped using the --gzip option.\nDefault path is: ./table.biom"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Kraken_Biom_V0_1_0().translate("wdl", allow_empty_container=True)
+

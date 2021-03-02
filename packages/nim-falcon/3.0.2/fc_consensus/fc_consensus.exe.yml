@@ -1,0 +1,150 @@
+!Command
+command:
+- fc_consensus.exe
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: consensus
+  description: --min_cov_aln=          int     10      minimum coverage of alignment
+    data; a
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: =, --min_cov=         int     6       minimum coverage to break the
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max_cov_aln
+  description: "=          int     0       maximum coverage of alignment data; a\n\
+    seed read with more than MAX_COV_ALN\naverage depth of coverage of the\nlongest\
+    \ alignments will be capped,\nexcess shorter alignments will be\nignored"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min_len_aln
+  description: "=          int     0       minimum length of a sequence in an\nalignment\
+    \ to be used in consensus; any\nshorter sequence will be completely\nignored"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min_n_read
+  description: "=           int     10      1 + minimum number of reads used in\n\
+    generating the consensus; a seed read\nwith fewer alignments will be\ncompletely\
+    \ ignored"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max_n_read
+  description: "=           int     500     1 + maximum number of reads used in\n\
+    generating the consensus"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --trim
+  description: "bool    false   trim the input sequence with k-mer\nspare dynamic\
+    \ programming to find the\nmapped range"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output_full
+  description: bool    false   output uncorrected regions too
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --output_multi
+  description: bool    false   output multiple correct regions
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min_idt
+  description: "=              string  \"0.70\"  minimum identity of the alignments\n\
+    used for correction (32-bit float)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  description: "=, --edge_tolerance=  int     1000    for trimming, the there is unaligned\n\
+    edge leng > edge_tolerance, ignore the\nread"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --trim_size
+  description: "=            int     50      the size for triming both ends from\n\
+    initial sparse aligned region"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: "=, --n_core=          int     24      number of processes used for\n\
+    generating consensus (not sure this\nlimit works yet); 0 for main process\nonly\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: print this help message
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage:\n  main [optional-params]\nsame as `assert` but is always turned\
+  \ on and not affected by the\n``--assertions`` command line switch. same as `assert`\
+  \ but is always turned on and not affected by the\n``--assertions`` command line\
+  \ switch.\n  Options(opt-arg sep :|=|spc):\n  -h, --help                       \
+  \       print this help message\n  -m=, --min_cov=         int     6       minimum\
+  \ coverage to break the\n                                          consensus\n \
+  \ --min_cov_aln=          int     10      minimum coverage of alignment data; a\n\
+  \                                          seed read with less than MIN_COV_ALN\n\
+  \                                          average depth of coverage will be\n \
+  \                                         completely ignored\n  --max_cov_aln= \
+  \         int     0       maximum coverage of alignment data; a\n              \
+  \                            seed read with more than MAX_COV_ALN\n            \
+  \                              average depth of coverage of the\n              \
+  \                            longest alignments will be capped,\n              \
+  \                            excess shorter alignments will be\n               \
+  \                           ignored\n  --min_len_aln=          int     0       minimum\
+  \ length of a sequence in an\n                                          alignment\
+  \ to be used in consensus; any\n                                          shorter\
+  \ sequence will be completely\n                                          ignored\n\
+  \  --min_n_read=           int     10      1 + minimum number of reads used in\n\
+  \                                          generating the consensus; a seed read\n\
+  \                                          with fewer alignments will be\n     \
+  \                                     completely ignored\n  --max_n_read=      \
+  \     int     500     1 + maximum number of reads used in\n                    \
+  \                      generating the consensus\n  -t, --trim              bool\
+  \    false   trim the input sequence with k-mer\n                              \
+  \            spare dynamic programming to find the\n                           \
+  \               mapped range\n  -o, --output_full       bool    false   output uncorrected\
+  \ regions too\n  --output_multi          bool    false   output multiple correct\
+  \ regions\n  --min_idt=              string  \"0.70\"  minimum identity of the alignments\n\
+  \                                          used for correction (32-bit float)\n\
+  \  -e=, --edge_tolerance=  int     1000    for trimming, the there is unaligned\n\
+  \                                          edge leng > edge_tolerance, ignore the\n\
+  \                                          read\n  --trim_size=            int \
+  \    50      the size for triming both ends from\n                             \
+  \             initial sparse aligned region\n  -n=, --n_core=          int     24\
+  \      number of processes used for\n                                          generating\
+  \ consensus (not sure this\n                                          limit works\
+  \ yet); 0 for main process\n                                          only\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/nim-falcon:3.0.2--h1341992_0

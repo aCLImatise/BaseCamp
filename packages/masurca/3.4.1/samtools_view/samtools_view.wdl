@@ -3,14 +3,14 @@ version 1.0
 task SamtoolsView {
   input {
     Boolean? output_bam
-    Boolean? print_header_alignments
+    Boolean? print_header_only
     Boolean? input_is_sam
     Boolean? uncompressed_bam_output
     Boolean? fast_compression_force
-    Boolean? output_flag_hex
-    Boolean? output_flag_string
+    Boolean? output_flag_hex_specific
+    Boolean? output_flag_string_specific
     Boolean? print_only_count
-    Boolean? collapse_backward_operation
+    Boolean? collapse_cigar_operation
     Int? at
     File? output_alignments_overlapping
     File? list_reference_names
@@ -22,21 +22,21 @@ task SamtoolsView {
     Int? minimum_mapping_quality
     String? only_output_reads_library_str
     String? only_output_reads_read_str
-    Float? fraction_subsample_part
+    Float? fraction_templates_subsample
     String in_dot_bam
   }
   command <<<
     samtools view \
       ~{in_dot_bam} \
       ~{if (output_bam) then "-b" else ""} \
-      ~{if (print_header_alignments) then "-H" else ""} \
+      ~{if (print_header_only) then "-H" else ""} \
       ~{if (input_is_sam) then "-S" else ""} \
       ~{if (uncompressed_bam_output) then "-u" else ""} \
       ~{if (fast_compression_force) then "-1" else ""} \
-      ~{if (output_flag_hex) then "-x" else ""} \
-      ~{if (output_flag_string) then "-X" else ""} \
+      ~{if (output_flag_hex_specific) then "-x" else ""} \
+      ~{if (output_flag_string_specific) then "-X" else ""} \
       ~{if (print_only_count) then "-c" else ""} \
-      ~{if (collapse_backward_operation) then "-B" else ""} \
+      ~{if (collapse_cigar_operation) then "-B" else ""} \
       ~{if defined(at) then ("-@ " +  '"' + at + '"') else ""} \
       ~{if defined(output_alignments_overlapping) then ("-L " +  '"' + output_alignments_overlapping + '"') else ""} \
       ~{if defined(list_reference_names) then ("-t " +  '"' + list_reference_names + '"') else ""} \
@@ -48,18 +48,21 @@ task SamtoolsView {
       ~{if defined(minimum_mapping_quality) then ("-q " +  '"' + minimum_mapping_quality + '"') else ""} \
       ~{if defined(only_output_reads_library_str) then ("-l " +  '"' + only_output_reads_library_str + '"') else ""} \
       ~{if defined(only_output_reads_read_str) then ("-r " +  '"' + only_output_reads_read_str + '"') else ""} \
-      ~{if defined(fraction_subsample_part) then ("-s " +  '"' + fraction_subsample_part + '"') else ""}
+      ~{if defined(fraction_templates_subsample) then ("-s " +  '"' + fraction_templates_subsample + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_bam: "output BAM"
-    print_header_alignments: "print header only (no alignments)"
+    print_header_only: "print header only (no alignments)"
     input_is_sam: "input is SAM"
     uncompressed_bam_output: "uncompressed BAM output (force -b)"
     fast_compression_force: "fast compression (force -b)"
-    output_flag_hex: "output FLAG in HEX (samtools-C specific)"
-    output_flag_string: "output FLAG in string (samtools-C specific)"
+    output_flag_hex_specific: "output FLAG in HEX (samtools-C specific)"
+    output_flag_string_specific: "output FLAG in string (samtools-C specific)"
     print_only_count: "print only the count of matching records"
-    collapse_backward_operation: "collapse the backward CIGAR operation"
+    collapse_cigar_operation: "collapse the backward CIGAR operation"
     at: "number of BAM compression threads [0]"
     output_alignments_overlapping: "output alignments overlapping the input BED FILE [null]"
     list_reference_names: "list of reference names and lengths (force -S) [null]"
@@ -71,7 +74,7 @@ task SamtoolsView {
     minimum_mapping_quality: "minimum mapping quality [0]"
     only_output_reads_library_str: "only output reads in library STR [null]"
     only_output_reads_read_str: "only output reads in read group STR [null]"
-    fraction_subsample_part: "fraction of templates to subsample; integer part as seed [-1]"
+    fraction_templates_subsample: "fraction of templates to subsample; integer part as seed [-1]"
     in_dot_bam: ""
   }
   output {

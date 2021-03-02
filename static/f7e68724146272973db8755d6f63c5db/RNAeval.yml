@@ -1,0 +1,335 @@
+!Command
+command:
+- RNAeval
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: program
+  description: "--noconv                  Do not automatically substitude nucleotide\n\
+    \"T\" with \"U\"\n(default=off)"
+- !Positional
+  optional: false
+  position: 0
+  name: molecule.
+  description: (default=off)
+- !Positional
+  optional: false
+  position: 1
+  name: characters.
+  description: (default=off)
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --detailed-help
+  description: "Print help, including all details and hidden\noptions, and exit"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --full-help
+  description: Print help, including hidden options, and exit
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: "Print out energy contribution of each loop in\nthe structure.\n(default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --jobs
+  description: "[=number]           Split batch input into jobs and start\nprocessing\
+    \ in parallel using multiple\nthreads. A value of 0 indicates to use as\nmany\
+    \ parallel threads as computation cores\nare available.\n(default=`0')"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --infile
+  description: Read a file instead of reading from stdin
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --msa
+  description: "Input is multiple sequence alignment in\nStockholm 1.0 format\n(default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --auto-id
+  description: "Automatically generate an ID for each sequence.\n(default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --id-prefix
+  description: "Prefix for automatically generated IDs (as used\nin output file names)\n\
+    (default=`sequence')"
+  args: !SimpleFlagArg
+    name: prefix
+- !Flag
+  optional: true
+  synonyms:
+  - --id-delim
+  description: "Change the delimiter between prefix and\nincreasing number for automatically\
+    \ generated\nIDs (as used in output file names)\n(default=`_')"
+  args: !SimpleFlagArg
+    name: delimiter
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --temp
+  description: "Rescale energy parameters to a temperature of\ntemp C. Default is\
+    \ 37C."
+  args: !SimpleFlagArg
+    name: DOUBLE
+- !Flag
+  optional: true
+  synonyms:
+  - '-4'
+  - --noTetra
+  description: "Do not include special tabulated stabilizing\nenergies for tri-, tetra-\
+    \ and hexaloop\nhairpins. Mostly for testing.\n(default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --dangles
+  description: "How to treat \"dangling end\" energies for\nbases adjacent to helices\
+    \ in free ends and\nmulti-loops\n(default=`2')"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --energyModel
+  description: "Rarely used option to fold sequences from the\nartificial ABCD...\
+    \ alphabet, where A pairs B,\nC-D etc.  Use the energy parameters for GC\n(-e\
+    \ 1) or AU (-e 2) pairs."
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -P
+  - --paramFile
+  description: "Read energy parameters from paramfile, instead\nof using the default\
+    \ parameter set."
+  args: !SimpleFlagArg
+    name: paramfile
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --circ
+  description: Assume a circular (instead of linear) RNA
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --gquad
+  description: "Incoorporate G-Quadruplex formation into the\nstructure prediction\
+    \ algorithm\n(default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --logML
+  description: "Recalculate energies of structures using a\nlogarithmic energy function\
+    \ for multi-loops\nbefore output.\n(default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --shape
+  description: "file        Use SHAPE reactivity data in the folding\nrecursions (does\
+    \ not work for PF yet)"
+  args: !SimpleFlagArg
+    name: SHAPE
+- !Flag
+  optional: true
+  synonyms:
+  - --shapeMethod
+  description: "=[D/Z/W] + [optional parameters]\nSpecify the method how to convert\
+    \ SHAPE\nreactivity data to pseudo energy\ncontributions\n(default=`D')"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --shapeConversion
+  description: "/C/S/L/O  + [optional parameters]\nSpecify the method used to convert\
+    \ SHAPE\nreactivities to pairing probabilities when\nusing the SHAPE approach\
+    \ of Zarringhalam et\nal.\n(default=`O')"
+  args: !SimpleFlagArg
+    name: M
+- !Flag
+  optional: true
+  synonyms:
+  - --mis
+  description: "Output \"most informative sequence\" instead of\nsimple consensus:\
+    \ For each column of the\nalignment output the set of nucleotides with\nfrequency\
+    \ greater than average in IUPAC\nnotation.\n(default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --cfactor
+  description: "Set the weight of the covariance term in the\nenergy function\n(default=`1.0')"
+  args: !SimpleFlagArg
+    name: DOUBLE
+- !Flag
+  optional: true
+  synonyms:
+  - --nfactor
+  description: "Set the penalty for non-compatible sequences in\nthe covariance term\
+    \ of the energy function\n(default=`1.0')"
+  args: !SimpleFlagArg
+    name: DOUBLE
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  - --ribosum_file
+  description: "use specified Ribosum Matrix instead of normal\nenergy model. Matrixes\
+    \ to use should be 6x6\nmatrices, the order of the terms is AU, CG,\nGC, GU, UA,\
+    \ UG."
+  args: !SimpleFlagArg
+    name: ribosumfile
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --ribosum_scoring
+  description: "use ribosum scoring matrix. The matrix is\nchosen according to the\
+    \ minimal and maximal\npairwise identities of the sequences in the\nfile.\n(default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --old
+  description: use old energy evaluation, treating gaps as
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Print help and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Print version and exit
+  args: !EmptyFlagArg {}
+help_text: "Usage: RNAeval [OPTIONS] [<input0>] [<input1>]...\nDetermine the free\
+  \ energy of a (consensus) secondary structure for (an\nalignment of) RNA sequence(s)\n\
+  \nEvaluates the free energy of a particular (consensus) secondary structure for\n\
+  an (an alignment of) RNA molecule(s). The energy unit is kcal/mol and contains\n\
+  a covariance pseudo-energy term for multiple sequence alignments (--msa option)\n\
+  and corresponding consensus structures.\nThe program will continue to read new sequences\
+  \ and structures until a line\nconsisting of the single character \"@\" or an end\
+  \ of file condition is\nencountered.\nIf the input sequence or structure contains\
+  \ the separator character \"&\" the\nprogram calculates the energy of the co-folding\
+  \ of two RNA strands, where the\n\"&\" marks the boundary between the two strands.\n\
+  \n\n  -h, --help                    Print help and exit\n      --detailed-help \
+  \          Print help, including all details and hidden\n                      \
+  \            options, and exit\n      --full-help               Print help, including\
+  \ hidden options, and exit\n  -V, --version                 Print version and exit\n\
+  \nGeneral Options:\n  Below are command line options which alter the general behavior\
+  \ of this\n  program\n\n      --noconv                  Do not automatically substitude\
+  \ nucleotide\n                                  \"T\" with \"U\"\n\n           \
+  \                         (default=off)\n  -v, --verbose                 Print out\
+  \ energy contribution of each loop in\n                                  the structure.\n\
+  \n                                    (default=off)\n  -j, --jobs[=number]     \
+  \      Split batch input into jobs and start\n                                 \
+  \ processing in parallel using multiple\n                                  threads.\
+  \ A value of 0 indicates to use as\n                                  many parallel\
+  \ threads as computation cores\n                                  are available.\n\
+  \                                    (default=`0')\n  -i, --infile=<filename>  \
+  \     Read a file instead of reading from stdin\n\n  -a, --msa                 \
+  \    Input is multiple sequence alignment in\n                                 \
+  \ Stockholm 1.0 format\n                                    (default=off)\n    \
+  \  --auto-id                 Automatically generate an ID for each sequence.\n \
+  \                                   (default=off)\n      --id-prefix=prefix    \
+  \    Prefix for automatically generated IDs (as used\n                         \
+  \         in output file names)\n\n                                    (default=`sequence')\n\
+  \      --id-delim=delimiter      Change the delimiter between prefix and\n     \
+  \                             increasing number for automatically generated\n  \
+  \                                IDs (as used in output file names)\n\n        \
+  \                            (default=`_')\n\nModel Details:\n  -T, --temp=DOUBLE\
+  \             Rescale energy parameters to a temperature of\n                  \
+  \                temp C. Default is 37C.\n\n\n  -4, --noTetra                 Do\
+  \ not include special tabulated stabilizing\n                                  energies\
+  \ for tri-, tetra- and hexaloop\n                                  hairpins. Mostly\
+  \ for testing.\n\n                                    (default=off)\n  -d, --dangles=INT\
+  \             How to treat \"dangling end\" energies for\n                     \
+  \             bases adjacent to helices in free ends and\n                     \
+  \             multi-loops\n                                    (default=`2')\n \
+  \ -e, --energyModel=INT         Rarely used option to fold sequences from the\n\
+  \                                  artificial ABCD... alphabet, where A pairs B,\n\
+  \                                  C-D etc.  Use the energy parameters for GC\n\
+  \                                  (-e 1) or AU (-e 2) pairs.\n\n\n  -P, --paramFile=paramfile\
+  \     Read energy parameters from paramfile, instead\n                         \
+  \         of using the default parameter set.\n\n  -c, --circ                  \
+  \  Assume a circular (instead of linear) RNA\n                                 \
+  \ molecule.\n\n                                    (default=off)\n  -g, --gquad\
+  \                   Incoorporate G-Quadruplex formation into the\n             \
+  \                     structure prediction algorithm\n\n                       \
+  \             (default=off)\n      --logML                   Recalculate energies\
+  \ of structures using a\n                                  logarithmic energy function\
+  \ for multi-loops\n                                  before output.\n          \
+  \                          (default=off)\n      --shape=SHAPE file        Use SHAPE\
+  \ reactivity data in the folding\n                                  recursions (does\
+  \ not work for PF yet)\n\n\n      --shapeMethod=[D/Z/W] + [optional parameters]\n\
+  \                                Specify the method how to convert SHAPE\n     \
+  \                             reactivity data to pseudo energy\n               \
+  \                   contributions\n                                    (default=`D')\n\
+  \      --shapeConversion=M/C/S/L/O  + [optional parameters]\n                  \
+  \              Specify the method used to convert SHAPE\n                      \
+  \            reactivities to pairing probabilities when\n                      \
+  \            using the SHAPE approach of Zarringhalam et\n                     \
+  \             al.\n                                    (default=`O')\n      --mis\
+  \                     Output \"most informative sequence\" instead of\n        \
+  \                          simple consensus: For each column of the\n          \
+  \                        alignment output the set of nucleotides with\n        \
+  \                          frequency greater than average in IUPAC\n           \
+  \                       notation.\n\n                                    (default=off)\n\
+  \      --cfactor=DOUBLE          Set the weight of the covariance term in the\n\
+  \                                  energy function\n\n                         \
+  \           (default=`1.0')\n      --nfactor=DOUBLE          Set the penalty for\
+  \ non-compatible sequences in\n                                  the covariance\
+  \ term of the energy function\n\n                                    (default=`1.0')\n\
+  \  -R, --ribosum_file=ribosumfile\n                                use specified\
+  \ Ribosum Matrix instead of normal\n                                  energy model.\
+  \ Matrixes to use should be 6x6\n                                  matrices, the\
+  \ order of the terms is AU, CG,\n                                  GC, GU, UA, UG.\n\
+  \n\n  -r, --ribosum_scoring         use ribosum scoring matrix. The matrix is\n\
+  \                                  chosen according to the minimal and maximal\n\
+  \                                  pairwise identities of the sequences in the\n\
+  \                                  file.\n\n                                   \
+  \ (default=off)\n      --old                     use old energy evaluation, treating\
+  \ gaps as\n                                  characters.\n\n                   \
+  \                 (default=off)\n\nIf in doubt our program is right, nature is at\
+  \ fault.\nComments should be sent to rna@tbi.univie.ac.at.\n\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/viennarna:2.4.17--py36hd181a71_0

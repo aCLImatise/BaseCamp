@@ -1,0 +1,115 @@
+!Command
+command:
+- samtools
+- split
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: output filename format string ["%*_%#.%."]
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  description: put reads with no RG tag or an unrecognised RG tag in FILE1
+  args: !SimpleFlagArg
+    name: FILE1
+- !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: override the header with FILE2 (-u file only)
+  args: !RepeatFlagArg
+    name: and
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: verbose output
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-PG
+  description: do not add a PG line
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --input-fmt-option
+  description: "[=VAL]\nSpecify a single input file format option in the form\nof\
+    \ OPTION or OPTION=VALUE"
+  args: !SimpleFlagArg
+    name: OPT
+- !Flag
+  optional: true
+  synonyms:
+  - --output-fmt
+  description: "[,OPT[=VAL]]...\nSpecify output format (SAM, BAM, CRAM)"
+  args: !SimpleFlagArg
+    name: FORMAT
+- !Flag
+  optional: true
+  synonyms:
+  - --output-fmt-option
+  description: "[=VAL]\nSpecify a single output file format option in the form\nof\
+    \ OPTION or OPTION=VALUE"
+  args: !SimpleFlagArg
+    name: OPT
+- !Flag
+  optional: true
+  synonyms:
+  - --reference
+  description: Reference sequence FASTA FILE [null]
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -@
+  - --threads
+  description: Number of additional threads to use [0]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --write-index
+  description: Automatically index the output files [off]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbosity
+  description: Set level of verbosity
+  args: !SimpleFlagArg
+    name: INT
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Usage: samtools split [-u <unaccounted.bam>] [-h <unaccounted_header.sam>]\n\
+  \                      [-f <format_string>] [-v] <merged.bam>\nOptions:\n  -f STRING\
+  \       output filename format string [\"%*_%#.%.\"]\n  -u FILE1        put reads\
+  \ with no RG tag or an unrecognised RG tag in FILE1\n  -h FILE2        ... and override\
+  \ the header with FILE2 (-u file only)\n  -v              verbose output\n  --no-PG\
+  \         do not add a PG line\n      --input-fmt-option OPT[=VAL]\n           \
+  \    Specify a single input file format option in the form\n               of OPTION\
+  \ or OPTION=VALUE\n      --output-fmt FORMAT[,OPT[=VAL]]...\n               Specify\
+  \ output format (SAM, BAM, CRAM)\n      --output-fmt-option OPT[=VAL]\n        \
+  \       Specify a single output file format option in the form\n               of\
+  \ OPTION or OPTION=VALUE\n      --reference FILE\n               Reference sequence\
+  \ FASTA FILE [null]\n  -@, --threads INT\n               Number of additional threads\
+  \ to use [0]\n      --write-index\n               Automatically index the output\
+  \ files [off]\n      --verbosity INT\n               Set level of verbosity\n\n\
+  Format string expansions:\n  %%     %\n  %*     basename\n  %#     @RG index\n \
+  \ %!     @RG ID\n  %.     filename extension for output format\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/samtools:1.11--h6270b1f_0

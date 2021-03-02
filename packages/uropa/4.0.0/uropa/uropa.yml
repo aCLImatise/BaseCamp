@@ -1,0 +1,205 @@
+!Command
+command:
+- uropa
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: attribute
+  description: '--show-attributes [ [ ...]]      A list of attributes to show in output
+    (default: all)'
+- !Positional
+  optional: false
+  position: 0
+  name: seperately
+  description: -s, --summary                    Create additional visualisation of
+    results in graphical
+- !Positional
+  optional: false
+  position: 1
+  name: format
+  description: '-t n, --threads n                Multiprocessed run: n = number of
+    threads to run'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --bed
+  description: Filename of .bed-file to annotate
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --gtf
+  description: Filename of .gtf-file with features
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --feature
+  description: '[ [ ...]]              Feature for annotation'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --feature-anchor
+  description: '[ [ ...]]       Specific feature anchor to annotate to'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --distance
+  description: "[ [ ...]]             Maximum permitted distance from feature (1 or\
+    \ 2\narguments)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --strand
+  description: Desired strand of annotated feature relative to peak
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --relative-location
+  description: '[ [ ...]]    Peak location relative to feature location'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --internals
+  description: "Set minimum overlap fraction for internal feature\nannotations. 0\
+    \ equates to internals=False and 1 equates\nto internals=True. Default is False."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --filter-attribute
+  description: Filter on 9th column of GTF
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --attribute-values
+  description: '[ [ ...]]     Value(s) of attribute corresponding to --filter-'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  description: "Filename of configuration file (keys in this file\noverwrite command-line\
+    \ arguments about query)"
+  args: !SimpleFlagArg
+    name: config.json
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --prefix
+  description: "Prefix for result file names (defaults to basename of\n.bed-file)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --outdir
+  description: "Output directory for output files (default: current\ndir)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --output-by-query
+  description: Additionally create output files for each named query
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --log
+  description: "Log file name for messages and warnings (default: log\nis written\
+    \ to stdout)"
+  args: !SimpleFlagArg
+    name: uropa.log
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --debug
+  description: Print verbose messages (for debugging)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --chunk
+  description: "Number of lines per chunk for multiprocessing (default:\n1000)"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: Prints the version and exits
+  args: !EmptyFlagArg {}
+help_text: "usage: uropa [-h] [-b] [-g] [--feature [[...]]] [--feature-anchor [[...]]]\n\
+  \             [--distance [[...]]] [--strand] [--relative-location [[...]]] [--internals]\n\
+  \             [--filter-attribute] [--attribute-values [[...]]] [--show-attributes\
+  \ [[...]]]\n             [-i config.json] [-p] [-o] [--output-by-query] [-s] [-t\
+  \ n] [-l uropa.log]\n             [-d] [-v] [-c]\n\nUROPA - Universal RObust Peak\
+  \ Annotator.\n\noptional arguments:\n  -h, --help                       show this\
+  \ help message and exit\n\nArguments for one query:\n  -b , --bed              \
+  \         Filename of .bed-file to annotate\n  -g , --gtf                      \
+  \ Filename of .gtf-file with features\n  --feature [ [ ...]]              Feature\
+  \ for annotation\n  --feature-anchor [ [ ...]]       Specific feature anchor to\
+  \ annotate to\n  --distance [ [ ...]]             Maximum permitted distance from\
+  \ feature (1 or 2\n                                   arguments)\n  --strand   \
+  \                      Desired strand of annotated feature relative to peak\n  --relative-location\
+  \ [ [ ...]]    Peak location relative to feature location\n  --internals       \
+  \               Set minimum overlap fraction for internal feature\n            \
+  \                       annotations. 0 equates to internals=False and 1 equates\n\
+  \                                   to internals=True. Default is False.\n  --filter-attribute\
+  \               Filter on 9th column of GTF\n  --attribute-values [ [ ...]]    \
+  \ Value(s) of attribute corresponding to --filter-\n                           \
+  \        attribute\n  --show-attributes [ [ ...]]      A list of attributes to show\
+  \ in output (default: all)\n\nMulti-query configuration file:\n  -i config.json,\
+  \ --input config.json\n                                   Filename of configuration\
+  \ file (keys in this file\n                                   overwrite command-line\
+  \ arguments about query)\n\nAdditional arguments:\n  -p , --prefix             \
+  \       Prefix for result file names (defaults to basename of\n                \
+  \                   .bed-file)\n  -o , --outdir                    Output directory\
+  \ for output files (default: current\n                                   dir)\n\
+  \  --output-by-query                Additionally create output files for each named\
+  \ query\n                                   seperately\n  -s, --summary        \
+  \            Create additional visualisation of results in graphical\n         \
+  \                          format\n  -t n, --threads n                Multiprocessed\
+  \ run: n = number of threads to run\n                                   annotation\
+  \ process\n  -l uropa.log, --log uropa.log    Log file name for messages and warnings\
+  \ (default: log\n                                   is written to stdout)\n  -d,\
+  \ --debug                      Print verbose messages (for debugging)\n  -v, --version\
+  \                    Prints the version and exits\n  -c , --chunk              \
+  \       Number of lines per chunk for multiprocessing (default:\n              \
+  \                     1000)\n\nUROPA is a peak annotation tool facilitating the\
+  \ analysis of next-generation sequencing methods such\nas ChIPseq and ATACseq. The\
+  \ advantage of UROPA is that it can accommodate advanced structures of annotation\n\
+  requirements. UROPA is developed as an open source analysis pipeline for peaks generated\
+  \ from standard peak callers.\n\nPlease cite upon usage:\nKondili M, Fust A, Preussner\
+  \ J, Kuenne C, Braun T and Looso M. UROPA: A tool for Universal RObust Peak Annotation.\n\
+  Scientific Reports 7 (2017), doi: 10.1038/s41598-017-02464-y\n\nPlease visit http://uropa-manual.readthedocs.io/config.html\
+  \ for detailed information on configuration.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/uropa:4.0.0--py_0

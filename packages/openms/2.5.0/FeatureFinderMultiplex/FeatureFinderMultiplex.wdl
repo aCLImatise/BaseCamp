@@ -18,6 +18,9 @@ task FeatureFinderMultiplex {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "*                              LC-MS dataset in either centroid or profile mode (valid formats: 'mzML')"
     out: "Output file containing the individual peptide features. (valid formats: 'featureXML')"

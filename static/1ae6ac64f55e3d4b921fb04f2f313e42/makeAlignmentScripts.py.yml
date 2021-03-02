@@ -1,0 +1,168 @@
+!Command
+command:
+- makeAlignmentScripts.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -outbam
+  description: '[-nt THREADS]'
+  args: !SimpleFlagArg
+    name: OUT_BAM
+- !Flag
+  optional: true
+  synonyms:
+  - -outdir
+  - --output-directory
+  - -inbam
+  - --in-bam
+  description: 'input bam path if already aligned (default: None)'
+  args: !SimpleFlagArg
+    name: OUTPUT_DIRECTORY
+- !Flag
+  optional: true
+  synonyms:
+  - -outbam
+  - --out-bam
+  description: 'output bam file name (default: None)'
+  args: !SimpleFlagArg
+    name: OUT_BAM
+- !Flag
+  optional: true
+  synonyms:
+  - -nt
+  - --threads
+  - -ref
+  - --genome-reference
+  - -tech
+  - --container-tech
+  - -trim
+  - --run-trimming
+  - -fq1
+  description: "[IN_FASTQ1S [IN_FASTQ1S ...]], --in-fastq1s [IN_FASTQ1S [IN_FASTQ1S\
+    \ ...]]\npaths of forward reads (default: None)"
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - -fq2
+  description: "[IN_FASTQ2S [IN_FASTQ2S ...]], --in-fastq2s [IN_FASTQ2S [IN_FASTQ2S\
+    \ ...]]\npaths of reverse reads in paired-end sequencing\n(default: None)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -fout1
+  - --out-fastq1-name
+  description: 'file name of forward reads (default: None)'
+  args: !SimpleFlagArg
+    name: OUT_FASTQ1_NAME
+- !Flag
+  optional: true
+  synonyms:
+  - -fout2
+  - --out-fastq2-name
+  description: 'file name of reverse reads (default: None)'
+  args: !SimpleFlagArg
+    name: OUT_FASTQ2_NAME
+- !Flag
+  optional: true
+  synonyms:
+  - --trim-software
+  - --extra-trim-arguments
+  - --split-input-fastqs
+  description: "split input fastq files before trimming to maximize\nmulti-threading\
+    \ efficiency in trimming. (default:\nFalse)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      trimmomatic:
+      alientrimmer:
+- !Flag
+  optional: true
+  synonyms:
+  - -align
+  - --run-alignment
+  - -header
+  - --bam-header
+  - --extra-bwa-arguments
+  - -markdup
+  - --run-mark-duplicates
+  - --markdup-software
+  - --extra-picard-arguments
+  - --extra-markdup-arguments
+  description: 'place holder for now (default: )'
+  args: !SimpleFlagArg
+    name: BAM_HEADER
+- !Flag
+  optional: true
+  synonyms:
+  - --parallelize-markdup
+  description: "parallelize by splitting input bam files and work on\neach independently,\
+    \ and then merge. (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -run
+  - --run-workflow
+  description: "Execute the bash scripts locally right here. Only\nworks on Linux\
+    \ machines with modern bash shells.\n(default: False)\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: makeAlignmentScripts.py [-h] [-outdir OUTPUT_DIRECTORY] [-inbam\
+  \ IN_BAM]\n                               -outbam OUT_BAM [-nt THREADS]\n      \
+  \                         [-ref GENOME_REFERENCE]\n                            \
+  \   [-tech {docker,singularity}] [-trim]\n                               [-fq1 [IN_FASTQ1S\
+  \ [IN_FASTQ1S ...]]]\n                               [-fq2 [IN_FASTQ2S [IN_FASTQ2S\
+  \ ...]]]\n                               [-fout1 OUT_FASTQ1_NAME]\n            \
+  \                   [-fout2 OUT_FASTQ2_NAME]\n                               [--trim-software\
+  \ {alientrimmer,trimmomatic}]\n                               [--extra-trim-arguments\
+  \ EXTRA_TRIM_ARGUMENTS]\n                               [--split-input-fastqs] [-align]\n\
+  \                               [-header BAM_HEADER]\n                         \
+  \      [--extra-bwa-arguments EXTRA_BWA_ARGUMENTS]\n                           \
+  \    [-markdup]\n                               [--markdup-software {picard,sambamba}]\n\
+  \                               [--extra-picard-arguments EXTRA_PICARD_ARGUMENTS]\n\
+  \                               [--extra-markdup-arguments EXTRA_MARKDUP_ARGUMENTS]\n\
+  \                               [--parallelize-markdup] [-run]\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -outdir OUTPUT_DIRECTORY,\
+  \ --output-directory OUTPUT_DIRECTORY\n  -inbam IN_BAM, --in-bam IN_BAM\n      \
+  \                  input bam path if already aligned (default: None)\n  -outbam\
+  \ OUT_BAM, --out-bam OUT_BAM\n                        output bam file name (default:\
+  \ None)\n  -nt THREADS, --threads THREADS\n  -ref GENOME_REFERENCE, --genome-reference\
+  \ GENOME_REFERENCE\n  -tech {docker,singularity}, --container-tech {docker,singularity}\n\
+  \  -trim, --run-trimming\n  -fq1 [IN_FASTQ1S [IN_FASTQ1S ...]], --in-fastq1s [IN_FASTQ1S\
+  \ [IN_FASTQ1S ...]]\n                        paths of forward reads (default: None)\n\
+  \  -fq2 [IN_FASTQ2S [IN_FASTQ2S ...]], --in-fastq2s [IN_FASTQ2S [IN_FASTQ2S ...]]\n\
+  \                        paths of reverse reads in paired-end sequencing\n     \
+  \                   (default: None)\n  -fout1 OUT_FASTQ1_NAME, --out-fastq1-name\
+  \ OUT_FASTQ1_NAME\n                        file name of forward reads (default:\
+  \ None)\n  -fout2 OUT_FASTQ2_NAME, --out-fastq2-name OUT_FASTQ2_NAME\n         \
+  \               file name of reverse reads (default: None)\n  --trim-software {alientrimmer,trimmomatic}\n\
+  \  --extra-trim-arguments EXTRA_TRIM_ARGUMENTS\n  --split-input-fastqs  split input\
+  \ fastq files before trimming to maximize\n                        multi-threading\
+  \ efficiency in trimming. (default:\n                        False)\n  -align, --run-alignment\n\
+  \  -header BAM_HEADER, --bam-header BAM_HEADER\n  --extra-bwa-arguments EXTRA_BWA_ARGUMENTS\n\
+  \  -markdup, --run-mark-duplicates\n  --markdup-software {picard,sambamba}\n  --extra-picard-arguments\
+  \ EXTRA_PICARD_ARGUMENTS\n  --extra-markdup-arguments EXTRA_MARKDUP_ARGUMENTS\n\
+  \                        place holder for now (default: )\n  --parallelize-markdup\n\
+  \                        parallelize by splitting input bam files and work on\n\
+  \                        each independently, and then merge. (default: False)\n\
+  \  -run, --run-workflow  Execute the bash scripts locally right here. Only\n   \
+  \                     works on Linux machines with modern bash shells.\n       \
+  \                 (default: False)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/somaticseq:3.6.2--py_0

@@ -1,0 +1,307 @@
+!Command
+command:
+- mhcflurry-class1-select-allele-specific-models
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: Model
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: select
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: class1
+  description: ''
+- !Positional
+  optional: false
+  position: 3
+  name: single
+  description: ''
+- !Positional
+  optional: false
+  position: 4
+  name: allele
+  description: ''
+- !Positional
+  optional: false
+  position: 5
+  name: models.
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --data
+  description: "Model selection data CSV. Expected columns: allele,\npeptide, measurement_value"
+  args: !SimpleFlagArg
+    name: FILE.csv
+- !Flag
+  optional: true
+  synonyms:
+  - --exclude-data
+  description: "Data to EXCLUDE from model selection. Useful to\nspecify the original\
+    \ training data used"
+  args: !SimpleFlagArg
+    name: FILE.csv
+- !Flag
+  optional: true
+  synonyms:
+  - --models-dir
+  description: Directory to read models
+  args: !SimpleFlagArg
+    name: DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --out-models-dir
+  description: Directory to write selected models
+  args: !SimpleFlagArg
+    name: DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --out-unselected-predictions
+  description: "Write predictions for validation data using unselected\npredictor\
+    \ to FILE.csv"
+  args: !SimpleFlagArg
+    name: FILE.csv
+- !Flag
+  optional: true
+  synonyms:
+  - --unselected-accuracy-scorer
+  - --unselected-accuracy-scorer-num-samples
+  - --unselected-accuracy-percentile-threshold
+  - --allele
+  description: "Alleles to select models for. If not specified, all\nalleles with\
+    \ enough measurements will be used."
+  args: !SimpleFlagArg
+    name: SCORER
+- !Flag
+  optional: true
+  synonyms:
+  - --combined-min-models
+  description: "Min number of models to select per allele when using\ncombined selector"
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --combined-max-models
+  description: "Max number of models to select per allele when using\ncombined selector"
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --combined-min-contribution-percent
+  description: "Use only model selectors that can contribute at least\nX % to the\
+    \ total score. Default: 1.0"
+  args: !SimpleFlagArg
+    name: X
+- !Flag
+  optional: true
+  synonyms:
+  - --mass-spec-min-measurements
+  description: "Min number of measurements required for an allele to\nuse mass-spec\
+    \ model selection"
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --mass-spec-min-models
+  description: "Min number of models to select per allele when using\nmass-spec selector"
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --mass-spec-max-models
+  description: "Max number of models to select per allele when using\nmass-spec selector"
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --mse-min-measurements
+  description: "Min number of measurements required for an allele to\nuse MSE model\
+    \ selection"
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --mse-min-models
+  description: "Min number of models to select per allele when using\nMSE selector"
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --mse-max-models
+  description: "Max number of models to select per allele when using\nMSE selector"
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --scoring
+  description: Scoring procedures to use in order
+  args: !RepeatFlagArg
+    name: SCORING
+- !Flag
+  optional: true
+  synonyms:
+  - --consensus-min-models
+  description: "Min number of models to select per allele when using\nconsensus selector"
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --consensus-max-models
+  description: "Max number of models to select per allele when using\nconsensus selector"
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --consensus-num-peptides-per-length
+  description: Num peptides per length to use for consensus scoring
+  args: !SimpleFlagArg
+    name: CONSENSUS_NUM_PEPTIDES_PER_LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - --mass-spec-regex
+  description: "Regular expression for mass-spec data. Runs on\nmeasurement_source\
+    \ col.Default: mass[- ]spec."
+  args: !SimpleFlagArg
+    name: REGEX
+- !Flag
+  optional: true
+  synonyms:
+  - --verbosity
+  description: 'Keras verbosity. Default: 0'
+  args: !SimpleFlagArg
+    name: VERBOSITY
+- !Flag
+  optional: true
+  synonyms:
+  - --num-jobs
+  description: "Number of local processes to parallelize training\nover. Set to 0\
+    \ for serial run. Default: 0."
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --backend
+  description: "Keras backend. If not specified will use system\ndefault."
+  args: !ChoiceFlagArg
+    choices: !!set
+      tensorflow-default:
+      tensorflow-gpu:
+      tensorflow-cpu:
+- !Flag
+  optional: true
+  synonyms:
+  - --gpus
+  description: "Number of GPUs to attempt to parallelize across.\nRequires running\
+    \ in parallel."
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --max-workers-per-gpu
+  description: "Maximum number of workers to assign to a GPU.\nAdditional tasks will\
+    \ run on CPU."
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --max-tasks-per-worker
+  description: "Restart workers after N tasks. Workaround for\ntensorflow memory leaks.\
+    \ Requires Python >=3.2."
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --worker-log-dir
+  description: "Write worker stdout and stderr logs to given\ndirectory.\n"
+  args: !SimpleFlagArg
+    name: WORKER_LOG_DIR
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "To show stack trace, run:\nkill -s USR1 724\nusage: \nModel select class1\
+  \ single allele models.\n\noptional arguments:\n  -h, --help            show this\
+  \ help message and exit\n  --data FILE.csv       Model selection data CSV. Expected\
+  \ columns: allele,\n                        peptide, measurement_value\n  --exclude-data\
+  \ FILE.csv\n                        Data to EXCLUDE from model selection. Useful\
+  \ to\n                        specify the original training data used\n  --models-dir\
+  \ DIR      Directory to read models\n  --out-models-dir DIR  Directory to write\
+  \ selected models\n  --out-unselected-predictions FILE.csv\n                   \
+  \     Write predictions for validation data using unselected\n                 \
+  \       predictor to FILE.csv\n  --unselected-accuracy-scorer SCORER\n  --unselected-accuracy-scorer-num-samples\
+  \ UNSELECTED_ACCURACY_SCORER_NUM_SAMPLES\n  --unselected-accuracy-percentile-threshold\
+  \ X\n  --allele ALLELE [ALLELE ...]\n                        Alleles to select models\
+  \ for. If not specified, all\n                        alleles with enough measurements\
+  \ will be used.\n  --combined-min-models N\n                        Min number of\
+  \ models to select per allele when using\n                        combined selector\n\
+  \  --combined-max-models N\n                        Max number of models to select\
+  \ per allele when using\n                        combined selector\n  --combined-min-contribution-percent\
+  \ X\n                        Use only model selectors that can contribute at least\n\
+  \                        X % to the total score. Default: 1.0\n  --mass-spec-min-measurements\
+  \ N\n                        Min number of measurements required for an allele to\n\
+  \                        use mass-spec model selection\n  --mass-spec-min-models\
+  \ N\n                        Min number of models to select per allele when using\n\
+  \                        mass-spec selector\n  --mass-spec-max-models N\n      \
+  \                  Max number of models to select per allele when using\n      \
+  \                  mass-spec selector\n  --mse-min-measurements N\n            \
+  \            Min number of measurements required for an allele to\n            \
+  \            use MSE model selection\n  --mse-min-models N    Min number of models\
+  \ to select per allele when using\n                        MSE selector\n  --mse-max-models\
+  \ N    Max number of models to select per allele when using\n                  \
+  \      MSE selector\n  --scoring SCORING [SCORING ...]\n                       \
+  \ Scoring procedures to use in order\n  --consensus-min-models N\n             \
+  \           Min number of models to select per allele when using\n             \
+  \           consensus selector\n  --consensus-max-models N\n                   \
+  \     Max number of models to select per allele when using\n                   \
+  \     consensus selector\n  --consensus-num-peptides-per-length CONSENSUS_NUM_PEPTIDES_PER_LENGTH\n\
+  \                        Num peptides per length to use for consensus scoring\n\
+  \  --mass-spec-regex REGEX\n                        Regular expression for mass-spec\
+  \ data. Runs on\n                        measurement_source col.Default: mass[-\
+  \ ]spec.\n  --verbosity VERBOSITY\n                        Keras verbosity. Default:\
+  \ 0\n\nLocal parallelism:\n  --num-jobs N          Number of local processes to\
+  \ parallelize training\n                        over. Set to 0 for serial run. Default:\
+  \ 0.\n  --backend {tensorflow-gpu,tensorflow-cpu,tensorflow-default}\n         \
+  \               Keras backend. If not specified will use system\n              \
+  \          default.\n  --gpus N              Number of GPUs to attempt to parallelize\
+  \ across.\n                        Requires running in parallel.\n  --max-workers-per-gpu\
+  \ N\n                        Maximum number of workers to assign to a GPU.\n   \
+  \                     Additional tasks will run on CPU.\n  --max-tasks-per-worker\
+  \ N\n                        Restart workers after N tasks. Workaround for\n   \
+  \                     tensorflow memory leaks. Requires Python >=3.2.\n  --worker-log-dir\
+  \ WORKER_LOG_DIR\n                        Write worker stdout and stderr logs to\
+  \ given\n                        directory.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/mhcflurry:2.0.1--pyh864c0ab_0

@@ -1,0 +1,121 @@
+!Command
+command:
+- rtg
+- mendelian
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  description: "VCF file containing multi-sample variant\ncalls. Use '-' to read from\
+    \ standard input"
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: "if set, output annotated calls to this VCF\nfile. Use '-' to write\
+    \ to standard output"
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --output-consistent
+  description: "if set, output only consistent calls to this\nVCF file"
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --output-inconsistent
+  description: "if set, output only non-Mendelian calls to\nthis VCF file"
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --template
+  description: SDF containing the reference genome
+  args: !SimpleFlagArg
+    name: SDF
+- !Flag
+  optional: true
+  synonyms:
+  - --all-records
+  description: "use all records, regardless of filters\n(Default is to only process\
+    \ records where\nFILTER is \".\" or \"PASS\")"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --lenient
+  description: "allow homozygous diploid calls in place of\nhaploid calls and assume\
+    \ missing values are\nequal to the reference"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min-concordance
+  description: "percentage concordance required for consistent\nparentage (Default\
+    \ is 99.0)"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --pedigree
+  description: "genome relationships PED file (Default is to\nextract pedigree information\
+    \ from VCF header\nfields)"
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -Z
+  - --no-gzip
+  description: do not gzip the output
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: print help on command-line flag usage
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: rtg mendelian [OPTION]... -i FILE -t SDF\n\nCheck a multi-sample\
+  \ VCF for Mendelian consistency.\n\nFile Input/Output\n  -i, --input=FILE      \
+  \         VCF file containing multi-sample variant\n                           \
+  \      calls. Use '-' to read from standard input\n  -o, --output=FILE         \
+  \     if set, output annotated calls to this VCF\n                             \
+  \    file. Use '-' to write to standard output\n      --output-consistent=FILE \
+  \  if set, output only consistent calls to this\n                              \
+  \   VCF file\n      --output-inconsistent=FILE if set, output only non-Mendelian\
+  \ calls to\n                                 this VCF file\n  -t, --template=SDF\
+  \             SDF containing the reference genome\n\nSensitivity Tuning\n      --all-records\
+  \              use all records, regardless of filters\n                        \
+  \         (Default is to only process records where\n                          \
+  \       FILTER is \".\" or \"PASS\")\n  -l, --lenient                  allow homozygous\
+  \ diploid calls in place of\n                                 haploid calls and\
+  \ assume missing values are\n                                 equal to the reference\n\
+  \      --min-concordance=FLOAT    percentage concordance required for consistent\n\
+  \                                 parentage (Default is 99.0)\n      --pedigree=FILE\
+  \            genome relationships PED file (Default is to\n                    \
+  \             extract pedigree information from VCF header\n                   \
+  \              fields)\n\nUtility\n  -h, --help                     print help on\
+  \ command-line flag usage\n  -Z, --no-gzip                  do not gzip the output\n\
+  \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/rtg-tools:3.12--0

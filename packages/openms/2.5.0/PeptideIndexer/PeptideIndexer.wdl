@@ -40,6 +40,9 @@ task PeptideIndexer {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "*                      Input idXML file containing the identifications. (valid formats: 'idXML')"
     fast_a: "*                   Input sequence database in FASTA format. Non-existing relative filenames are looked up via 'OpenMS.ini:id_db_dir' (valid formats: 'fasta')"

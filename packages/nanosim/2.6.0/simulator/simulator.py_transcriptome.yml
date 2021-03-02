@@ -1,0 +1,214 @@
+!Command
+command:
+- simulator.py
+- transcriptome
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -rt
+  - --ref_t
+  description: Input reference transcriptome
+  args: !SimpleFlagArg
+    name: REF_T
+- !Flag
+  optional: true
+  synonyms:
+  - -rg
+  - --ref_g
+  description: "Input reference genome, required if intron retention\nsimulatin is\
+    \ on"
+  args: !SimpleFlagArg
+    name: REF_G
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --exp
+  description: "Expression profile in the specified format as\ndescribed in README"
+  args: !SimpleFlagArg
+    name: EXP
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --model_prefix
+  description: "Location and prefix of error profiles generated from\ncharacterization\
+    \ step (Default = training)"
+  args: !SimpleFlagArg
+    name: MODEL_PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: "Output location and prefix for simulated reads\n(Default = simulated)"
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --number
+  description: Number of reads to be simulated (Default = 20000)
+  args: !SimpleFlagArg
+    name: NUMBER
+- !Flag
+  optional: true
+  synonyms:
+  - -max
+  - --max_len
+  description: "The maximum length for simulated reads (Default =\nInfinity)"
+  args: !SimpleFlagArg
+    name: MAX_LEN
+- !Flag
+  optional: true
+  synonyms:
+  - -min
+  - --min_len
+  description: The minimum length for simulated reads (Default = 50)
+  args: !SimpleFlagArg
+    name: MIN_LEN
+- !Flag
+  optional: true
+  synonyms:
+  - --seed
+  description: Manually seeds the pseudo-random number generator
+  args: !SimpleFlagArg
+    name: SEED
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --KmerBias
+  description: "Minimum homopolymer length to simulate homopolymer\ncontraction and\
+    \ expansion events in"
+  args: !SimpleFlagArg
+    name: KMERBIAS
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --basecaller
+  description: "Simulate homopolymers and/or base qualities with\nrespect to chosen\
+    \ basecaller: albacore or guppy"
+  args: !ChoiceFlagArg
+    choices: !!set
+      guppy:
+      albacore:
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --read_type
+  description: "Simulate homopolymers and/or base qualities with\nrespect to chosen\
+    \ read type: dRNA, cDNA_1D or cDNA_1D2"
+  args: !ChoiceFlagArg
+    choices: !!set
+      cDNA_1D:
+      dRNA:
+      cDNA_1D2:
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --strandness
+  description: "Percentage of antisense sequences. Overrides the value\nprofiled in\
+    \ characterization stage. Should be between\n0 and 1"
+  args: !SimpleFlagArg
+    name: STRANDNESS
+- !Flag
+  optional: true
+  synonyms:
+  - --no_model_ir
+  description: Ignore simulating intron retention events
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --perfect
+  description: Ignore profiles and simulate perfect reads
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --polya
+  description: Simulate polyA tails for given list of transcripts
+  args: !SimpleFlagArg
+    name: POLYA
+- !Flag
+  optional: true
+  synonyms:
+  - --fastq
+  description: Output fastq files instead of fasta files
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --num_threads
+  description: Number of threads for simulation (Default = 1)
+  args: !SimpleFlagArg
+    name: NUM_THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - --uracil
+  description: "Converts the thymine (T) bases to uracil (U) in the\noutput fasta\
+    \ format\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: simulator.py transcriptome [-h] -rt REF_T [-rg REF_G] -e EXP\n\
+  \                                  [-c MODEL_PREFIX] [-o OUTPUT] [-n NUMBER]\n \
+  \                                 [-max MAX_LEN] [-min MIN_LEN] [--seed SEED]\n\
+  \                                  [-k KMERBIAS] [-b {albacore,guppy}]\n       \
+  \                           [-r {dRNA,cDNA_1D,cDNA_1D2}] [-s STRANDNESS]\n     \
+  \                             [--no_model_ir] [--perfect] [--polya POLYA]\n    \
+  \                              [--fastq] [-t NUM_THREADS] [--uracil]\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  -rt REF_T,\
+  \ --ref_t REF_T\n                        Input reference transcriptome\n  -rg REF_G,\
+  \ --ref_g REF_G\n                        Input reference genome, required if intron\
+  \ retention\n                        simulatin is on\n  -e EXP, --exp EXP     Expression\
+  \ profile in the specified format as\n                        described in README\n\
+  \  -c MODEL_PREFIX, --model_prefix MODEL_PREFIX\n                        Location\
+  \ and prefix of error profiles generated from\n                        characterization\
+  \ step (Default = training)\n  -o OUTPUT, --output OUTPUT\n                    \
+  \    Output location and prefix for simulated reads\n                        (Default\
+  \ = simulated)\n  -n NUMBER, --number NUMBER\n                        Number of\
+  \ reads to be simulated (Default = 20000)\n  -max MAX_LEN, --max_len MAX_LEN\n \
+  \                       The maximum length for simulated reads (Default =\n    \
+  \                    Infinity)\n  -min MIN_LEN, --min_len MIN_LEN\n            \
+  \            The minimum length for simulated reads (Default = 50)\n  --seed SEED\
+  \           Manually seeds the pseudo-random number generator\n  -k KMERBIAS, --KmerBias\
+  \ KMERBIAS\n                        Minimum homopolymer length to simulate homopolymer\n\
+  \                        contraction and expansion events in\n  -b {albacore,guppy},\
+  \ --basecaller {albacore,guppy}\n                        Simulate homopolymers and/or\
+  \ base qualities with\n                        respect to chosen basecaller: albacore\
+  \ or guppy\n  -r {dRNA,cDNA_1D,cDNA_1D2}, --read_type {dRNA,cDNA_1D,cDNA_1D2}\n\
+  \                        Simulate homopolymers and/or base qualities with\n    \
+  \                    respect to chosen read type: dRNA, cDNA_1D or cDNA_1D2\n  -s\
+  \ STRANDNESS, --strandness STRANDNESS\n                        Percentage of antisense\
+  \ sequences. Overrides the value\n                        profiled in characterization\
+  \ stage. Should be between\n                        0 and 1\n  --no_model_ir   \
+  \      Ignore simulating intron retention events\n  --perfect             Ignore\
+  \ profiles and simulate perfect reads\n  --polya POLYA         Simulate polyA tails\
+  \ for given list of transcripts\n  --fastq               Output fastq files instead\
+  \ of fasta files\n  -t NUM_THREADS, --num_threads NUM_THREADS\n                \
+  \        Number of threads for simulation (Default = 1)\n  --uracil            \
+  \  Converts the thymine (T) bases to uracil (U) in the\n                       \
+  \ output fasta format\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/nanosim:2.6.0--0

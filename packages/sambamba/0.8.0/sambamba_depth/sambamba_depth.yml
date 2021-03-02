@@ -1,0 +1,176 @@
+!Command
+command:
+- sambamba
+- depth
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: sambamba-depth
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: region|window|base
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: input.bam
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  - --filter
+  description: "set custom filter for alignments; the default value is\n'mapping_quality\
+    \ > 0 and not duplicate and not failed_quality_control'"
+  args: !SimpleFlagArg
+    name: FILTER
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-file
+  description: output filename (by default /dev/stdout)
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --nthreads
+  description: maximum number of threads to use
+  args: !SimpleFlagArg
+    name: NTHREADS
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --min-coverage
+  description: 'minimum mean coverage for output (default: 0 for region/window, 1
+    for base)'
+  args: !SimpleFlagArg
+    name: MINCOVERAGE
+- !Flag
+  optional: true
+  synonyms:
+  - -C
+  - --max-coverage
+  description: maximum mean coverage for output
+  args: !SimpleFlagArg
+    name: MAXCOVERAGE
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --min-base-quality
+  description: don't count bases with lower base quality
+  args: !SimpleFlagArg
+    name: QUAL
+- !Flag
+  optional: true
+  synonyms:
+  - --combined
+  description: output combined statistics for all samples
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --annotate
+  description: "add additional column of y/n instead of\nskipping records not satisfying\
+    \ the criteria"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --fix-mate-overlaps
+  description: detect overlaps of mate reads and handle them on per-base basis
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  - --regions
+  description: "|REGION\nlist or regions of interest or a single region in form chr:beg-end\
+    \ (optional)"
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  - --report-zero-coverage
+  description: "(DEPRECATED, use --min-coverage=0 instead)\ndon't skip zero coverage\
+    \ bases"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --cov-threshold
+  description: "multiple thresholds can be provided,\nfor each one an extra column\
+    \ will be added,\nthe percentage of bases in the region\nwhere coverage is more\
+    \ than this value"
+  args: !SimpleFlagArg
+    name: COVTHRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --window-size
+  description: breadth of the window, in bp (required)
+  args: !SimpleFlagArg
+    name: WINDOWSIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --overlap
+  description: overlap of successive windows, in bp (default is 0)
+  args: !SimpleFlagArg
+    name: OVERLAP
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nsambamba 0.8.0\n by Artem Tarasov and Pjotr Prins (C) 2012-2020\n  \
+  \  LDC 1.20.0 / DMD v2.090.1 / LLVM7.0.0 / bootstrap LDC - the LLVM D compiler (0.17.6)\n\
+  \nUsage: sambamba-depth region|window|base [options] input.bam  [input2.bam [...]]\n\
+  \n          All BAM files must be coordinate-sorted and indexed.\n\n          The\
+  \ tool has three modes: base, region, and window,\n          each name means per\
+  \ which unit to print the statistics.\n\nCommon options:\n         -F, --filter=FILTER\n\
+  \                    set custom filter for alignments; the default value is\n  \
+  \                  'mapping_quality > 0 and not duplicate and not failed_quality_control'\n\
+  \         -o, --output-file=FILENAME\n                    output filename (by default\
+  \ /dev/stdout)\n         -t, --nthreads=NTHREADS\n                    maximum number\
+  \ of threads to use\n         -c, --min-coverage=MINCOVERAGE\n                 \
+  \   minimum mean coverage for output (default: 0 for region/window, 1 for base)\n\
+  \         -C, --max-coverage=MAXCOVERAGE\n                    maximum mean coverage\
+  \ for output\n         -q, --min-base-quality=QUAL\n                    don't count\
+  \ bases with lower base quality\n         --combined\n                    output\
+  \ combined statistics for all samples\n         -a, --annotate\n               \
+  \     add additional column of y/n instead of\n                    skipping records\
+  \ not satisfying the criteria\n         -m, --fix-mate-overlaps\n              \
+  \      detect overlaps of mate reads and handle them on per-base basis\nbase subcommand\
+  \ options:\n         -L, --regions=FILENAME|REGION\n                    list or\
+  \ regions of interest or a single region in form chr:beg-end (optional)\n      \
+  \   -z, --report-zero-coverage (DEPRECATED, use --min-coverage=0 instead)\n    \
+  \                don't skip zero coverage bases\nregion subcommand options:\n  \
+  \       -L, --regions=FILENAME|REGION\n                    list or regions of interest\
+  \ or a single region in form chr:beg-end (required)\n         -T, --cov-threshold=COVTHRESHOLD\n\
+  \                    multiple thresholds can be provided,\n                    for\
+  \ each one an extra column will be added,\n                    the percentage of\
+  \ bases in the region\n                    where coverage is more than this value\n\
+  window subcommand options:\n         -w, --window-size=WINDOWSIZE\n            \
+  \        breadth of the window, in bp (required)\n         --overlap=OVERLAP\n \
+  \                   overlap of successive windows, in bp (default is 0)\n      \
+  \   -T, --cov-threshold=COVTHRESHOLD\n                    same meaning as in 'region'\
+  \ subcommand\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/sambamba:0.8.0--h984e79f_0

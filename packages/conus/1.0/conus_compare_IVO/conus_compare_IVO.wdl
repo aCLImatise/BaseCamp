@@ -12,6 +12,9 @@ task ConusCompareIVO {
       ~{test_file_two} \
       ~{if (options) then "-options" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     options: ""
     conus_compare: ""

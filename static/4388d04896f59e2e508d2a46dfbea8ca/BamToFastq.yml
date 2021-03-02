@@ -1,0 +1,114 @@
+!Command
+command:
+- BamToFastq
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -in
+  description: Input BAM/CRAM file.
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -out1
+  description: Read 1 output FASTQ.GZ file.
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -out2
+  description: Read 2 output FASTQ.GZ file.
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -reg
+  description: "Export only reads in the given region. Format: chr:start-end.\nDefault\
+    \ value: ''"
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -remove_duplicates
+  description: "Does not export duplicate reads into the FASTQ file.\nDefault value:\
+    \ 'false'"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -compression_level
+  description: "Output FASTQ compression level from 1 (fastest) to 9 (best compression).\n\
+    Default value: '1'"
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -write_buffer_size
+  description: "Output write buffer size (number of FASTQ entry pairs).\nDefault value:\
+    \ '100'"
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -ref
+  description: "Reference genome for CRAM support (mandatory if CRAM is used).\nDefault\
+    \ value: ''"
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --changelog
+  description: Prints changeloge and exits.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --tdx
+  description: Writes a Tool Definition Xml file. The file name is the application
+    name with the suffix '.tdx'.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Shows this help and exits.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Prints version and exits.
+  args: !EmptyFlagArg {}
+help_text: "BamToFastq (2020_12)\n\nConverts a coordinate-sorted BAM file to FASTQ\
+  \ files (paired-end only).\n\nMandatory parameters:\n  -in <file>              \
+  \ Input BAM/CRAM file.\n  -out1 <file>             Read 1 output FASTQ.GZ file.\n\
+  \  -out2 <file>             Read 2 output FASTQ.GZ file.\n\nOptional parameters:\n\
+  \  -reg <string>            Export only reads in the given region. Format: chr:start-end.\n\
+  \                           Default value: ''\n  -remove_duplicates       Does not\
+  \ export duplicate reads into the FASTQ file.\n                           Default\
+  \ value: 'false'\n  -compression_level <int> Output FASTQ compression level from\
+  \ 1 (fastest) to 9 (best compression).\n                           Default value:\
+  \ '1'\n  -write_buffer_size <int> Output write buffer size (number of FASTQ entry\
+  \ pairs).\n                           Default value: '100'\n  -ref <string>    \
+  \        Reference genome for CRAM support (mandatory if CRAM is used).\n      \
+  \                     Default value: ''\n\nSpecial parameters:\n  --help       \
+  \            Shows this help and exits.\n  --version                Prints version\
+  \ and exits.\n  --changelog              Prints changeloge and exits.\n  --tdx \
+  \                   Writes a Tool Definition Xml file. The file name is the application\
+  \ name with the suffix '.tdx'.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/ngs-bits:2020_12--py39h5902420_0

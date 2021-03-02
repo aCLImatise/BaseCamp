@@ -1,0 +1,81 @@
+!Command
+command:
+- deseq2_preprocess.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: Keep temporary files to debug program.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --var
+  description: "Experimental variable suspected to have an impact on\nOTUs abundances.\
+    \ You may precise complexe string such\nas variables with confounding effect (ex:\n\
+    Treatment+Gender or Treatmet*Gender)"
+  args: !SimpleFlagArg
+    name: VAR
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --data
+  description: "The path of RData file containing a phyloseq object,\nresult of FROGS\
+    \ Phyloseq Import Data"
+  args: !SimpleFlagArg
+    name: DATA
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out-Rdata
+  description: "The path to store resulting dataframe of DESeq2.\n[Default: DESeq2_preprocess.Rdata]"
+  args: !SimpleFlagArg
+    name: OUT_RDATA
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --log-file
+  description: "This output file will contain several information on\nexecuted commands.\n"
+  args: !SimpleFlagArg
+    name: LOG_FILE
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: deseq2_preprocess.py [-h] [--debug] [--version] -v VAR -d DATA\n\
+  \                            [-o OUT_RDATA] [-l LOG_FILE]\n\nLaunch Rscript to generate\
+  \ dataframe of DESEq2 from a phyloseq object in RData\nfile\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  --debug            \
+  \   Keep temporary files to debug program.\n  --version             show program's\
+  \ version number and exit\n  -v VAR, --var VAR     Experimental variable suspected\
+  \ to have an impact on\n                        OTUs abundances. You may precise\
+  \ complexe string such\n                        as variables with confounding effect\
+  \ (ex:\n                        Treatment+Gender or Treatmet*Gender)\n\nInputs:\n\
+  \  -d DATA, --data DATA  The path of RData file containing a phyloseq object,\n\
+  \                        result of FROGS Phyloseq Import Data\n\nOutputs:\n  -o\
+  \ OUT_RDATA, --out-Rdata OUT_RDATA\n                        The path to store resulting\
+  \ dataframe of DESeq2.\n                        [Default: DESeq2_preprocess.Rdata]\n\
+  \  -l LOG_FILE, --log-file LOG_FILE\n                        This output file will\
+  \ contain several information on\n                        executed commands.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/frogs:3.2.0--py37_0

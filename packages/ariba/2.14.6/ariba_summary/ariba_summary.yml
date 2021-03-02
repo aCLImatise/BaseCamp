@@ -1,0 +1,152 @@
+!Command
+command:
+- ariba
+- summary
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: outprefix
+  description: Prefix of output files
+- !Positional
+  optional: false
+  position: 1
+  name: infiles
+  description: Files to be summarised
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --fofn
+  description: "File of filenames of ariba reports to be summarised.\nMust be used\
+    \ if no input files listed after the\noutfile. The first column should be the\
+    \ filename. An\noptional second column can be used to specify a sample\nname for\
+    \ that file, which will be used instead of the\nfilename in output files. Columns\
+    \ separated by\nwhitespace."
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --preset
+  description: "|cluster_small|cluster_all|cluster_var_groups|all|all_no_filter\n\
+    Shorthand for setting --cluster_cols,--col_filter,--\nrow_filter,--v_groups,--variants.\
+    \ Using this overrides\nthose options"
+  args: !SimpleFlagArg
+    name: minimal
+- !Flag
+  optional: true
+  synonyms:
+  - --cluster_cols
+  description: ",col2,...\nComma separated list of cluster columns to include.\nChoose\
+    \ from: assembled, match, ref_seq, pct_id,\nctg_cov, known_var, novel_var [match]"
+  args: !SimpleFlagArg
+    name: col1
+- !Flag
+  optional: true
+  synonyms:
+  - --col_filter
+  description: "|n      Choose whether columns where all values are \"no\" or\n\"\
+    NA\" are removed [y]"
+  args: !SimpleFlagArg
+    name: y
+- !Flag
+  optional: true
+  synonyms:
+  - --no_tree
+  description: Do not make phandango tree
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --row_filter
+  description: "|n      Choose whether rows where all values are \"no\" or \"NA\"\n\
+    are removed [y]"
+  args: !SimpleFlagArg
+    name: y
+- !Flag
+  optional: true
+  synonyms:
+  - --min_id
+  description: "Minimum percent identity cutoff to count as assembled\n[90]"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --only_clusters
+  description: "Only report data for the given comma-separated list of\ncluster names,\
+    \ eg: cluster1,cluster2,cluster42"
+  args: !SimpleFlagArg
+    name: Cluster_names
+- !Flag
+  optional: true
+  synonyms:
+  - --v_groups
+  description: Show a group column for each group of variants
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --known_variants
+  description: Report all known variants
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --novel_variants
+  description: Report all novel variants
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: Be verbose
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: ariba summary [options] <outprefix> [report1.tsv report2.tsv ...]\n\
+  \nMake a summary of multiple ARIBA report files, and also make Phandango files\n\
+  \npositional arguments:\n  outprefix             Prefix of output files\n  infiles\
+  \               Files to be summarised\n\noptional arguments:\n  -h, --help    \
+  \        show this help message and exit\n  -f FILENAME, --fofn FILENAME\n     \
+  \                   File of filenames of ariba reports to be summarised.\n     \
+  \                   Must be used if no input files listed after the\n          \
+  \              outfile. The first column should be the filename. An\n          \
+  \              optional second column can be used to specify a sample\n        \
+  \                name for that file, which will be used instead of the\n       \
+  \                 filename in output files. Columns separated by\n             \
+  \           whitespace.\n  --preset minimal|cluster_small|cluster_all|cluster_var_groups|all|all_no_filter\n\
+  \                        Shorthand for setting --cluster_cols,--col_filter,--\n\
+  \                        row_filter,--v_groups,--variants. Using this overrides\n\
+  \                        those options\n  --cluster_cols col1,col2,...\n       \
+  \                 Comma separated list of cluster columns to include.\n        \
+  \                Choose from: assembled, match, ref_seq, pct_id,\n             \
+  \           ctg_cov, known_var, novel_var [match]\n  --col_filter y|n      Choose\
+  \ whether columns where all values are \"no\" or\n                        \"NA\"\
+  \ are removed [y]\n  --no_tree             Do not make phandango tree\n  --row_filter\
+  \ y|n      Choose whether rows where all values are \"no\" or \"NA\"\n         \
+  \               are removed [y]\n  --min_id FLOAT        Minimum percent identity\
+  \ cutoff to count as assembled\n                        [90]\n  --only_clusters\
+  \ Cluster_names\n                        Only report data for the given comma-separated\
+  \ list of\n                        cluster names, eg: cluster1,cluster2,cluster42\n\
+  \  --v_groups            Show a group column for each group of variants\n  --known_variants\
+  \      Report all known variants\n  --novel_variants      Report all novel variants\n\
+  \  --verbose             Be verbose\n\nFiles must be listed after the output file\
+  \ and/or the option --fofn must be\nused. If both used, all files in the filename\
+  \ specified by --fofn AND the\nfiles listed after the output file will be used as\
+  \ input.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/ariba:2.14.6--py36hf0b53f7_0

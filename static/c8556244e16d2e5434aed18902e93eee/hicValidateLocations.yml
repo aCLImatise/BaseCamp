@@ -1,0 +1,112 @@
+!Command
+command:
+- hicValidateLocations
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --data
+  - -d
+  description: "The loop file from hicDetectLoops. To use files from\nother sources,\
+    \ please follow 'chr start end chr start\nend' format."
+  args: !SimpleFlagArg
+    name: DATA
+- !Flag
+  optional: true
+  synonyms:
+  - --protein
+  - -p
+  description: The protein peak file. Can be narrowPeak or broadPeak
+  args: !SimpleFlagArg
+    name: PROTEIN
+- !Flag
+  optional: true
+  synonyms:
+  - --method
+  - -m
+  description: "The method used (for the moment only loop is possible)\n(Default:\
+    \ loops)."
+  args: !ChoiceFlagArg
+    choices: !!set
+      loops:
+- !Flag
+  optional: true
+  synonyms:
+  - --resolution
+  - -r
+  description: The used resolution of the Hi-C interaction matrix.
+  args: !SimpleFlagArg
+    name: RESOLUTION
+- !Flag
+  optional: true
+  synonyms:
+  - --outFileName
+  - -o
+  description: "The prefix name of the output files. Two file are\nwritten: output_matched_locations\
+    \ and\noutput_statistics.First file contains all loop\nlocations with protein\
+    \ location matches, second file\ncontains statistics about this matching."
+  args: !SimpleFlagArg
+    name: OUTFILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --addChrPrefixLoops
+  - -cl
+  description: Adding a 'chr'-prefix to chromosome name of the loops.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --addChrPrefixProtein
+  - -cp
+  description: "Adding a 'chr'-prefix to chromosome name of the\nprotein."
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: hicValidateLocations --data DATA --protein PROTEIN [--method {loops}]\n\
+  \                            --resolution RESOLUTION\n                         \
+  \   [--outFileName OUTFILENAME] [--addChrPrefixLoops]\n                        \
+  \    [--addChrPrefixProtein] [--help] [--version]\n\nThis script overlaps the loop\
+  \ locations with protein locations to determine the accuracy of the loop detection.\n\
+  Loops need to have format as follows:\n\n`chr start end chr start end`\n\nThe protein\
+  \ peaks need to be in narrowPeaks or broadPeak format.\n\nA protein match is successfull\
+  \ if at the bin of the x and y location a protein peak is overlapped.\nA bin is\
+  \ assumed to have a protein if one or more protein peaks falling within the bin\
+  \ region.\nThe value of the protein is not considered, only match or non-match.\n\
+  \nRequired arguments:\n  --data DATA, -d DATA  The loop file from hicDetectLoops.\
+  \ To use files from\n                        other sources, please follow 'chr start\
+  \ end chr start\n                        end' format.\n  --protein PROTEIN, -p PROTEIN\n\
+  \                        The protein peak file. Can be narrowPeak or broadPeak\n\
+  \  --method {loops}, -m {loops}\n                        The method used (for the\
+  \ moment only loop is possible)\n                        (Default: loops).\n  --resolution\
+  \ RESOLUTION, -r RESOLUTION\n                        The used resolution of the\
+  \ Hi-C interaction matrix.\n\nOptional arguments:\n  --outFileName OUTFILENAME,\
+  \ -o OUTFILENAME\n                        The prefix name of the output files. Two\
+  \ file are\n                        written: output_matched_locations and\n    \
+  \                    output_statistics.First file contains all loop\n          \
+  \              locations with protein location matches, second file\n          \
+  \              contains statistics about this matching.\n  --addChrPrefixLoops,\
+  \ -cl\n                        Adding a 'chr'-prefix to chromosome name of the loops.\n\
+  \  --addChrPrefixProtein, -cp\n                        Adding a 'chr'-prefix to\
+  \ chromosome name of the\n                        protein.\n  --help, -h       \
+  \     show this help message and exit\n  --version             show program's version\
+  \ number and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/hicexplorer:3.6--py_0

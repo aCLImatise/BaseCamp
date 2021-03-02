@@ -1,0 +1,65 @@
+!Command
+command:
+- lilypad.sh
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: in
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -Xmx
+  description: "This will set Java's memory usage, overriding autodetection.\n-Xmx20g\
+    \ will specify 20 gigs of RAM, and -Xmx200m will\nspecify 200 megs. The max is\
+    \ typically 85% of physical memory."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -eoom
+  description: "This flag will cause the process to exit if an out-of-memory\nexception\
+    \ occurs.  Requires Java 8u92+."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -da
+  description: Disable assertions.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nWritten by Brian Bushnell\nLast modified September 13, 2019\n\nDescription:\
+  \  Uses mapped paired reads to generate scaffolds from contigs.\nDesigned for use\
+  \ with ordinary paired-end Illumina libraries.\n\nUsage:  lilypad.sh in=mapped.sam\
+  \ ref=contigs.fa out=scaffolds.fa\n\nStandard parameters:\nin=<file>       Reads\
+  \ mapped to the reference; should be sam or bam.\nref=<file>      Reference; may\
+  \ be fasta or fastq.\nout=<file>      Modified reference; should be fasta.\noverwrite=f\
+  \     (ow) Set to false to force the program to abort rather than\n            \
+  \    overwrite an existing file.\n\nProcessing parameters:\ngap=10          Pad\
+  \ gaps with a minimum of this many Ns.\nmindepth=4      Minimum spanning read pairs\
+  \ to join contigs.\nmaxinsert=3000  Maximum allowed insert size for proper pairs.\n\
+  mincontig=200   Ignore contigs under this length if there is a \n              \
+  \  longer alternative.\nminwr=0.8       (minWeightRatio) Minimum fraction of outgoing\
+  \ edges \n                pointing to the same contig.  Lower values will increase\n\
+  \                continuity at a risk of misassemblies.\nminsr=0.8       (minStrandRatio)\
+  \ Minimum fraction of outgoing edges \n                indicating the same orientation.\
+  \  Lower values will increase\n                continuity at a possible risk of\
+  \ inversions.\npasses=8        More passes may increase continuity.\nsamestrandpairs=f\
+  \  Read pairs map to the same strand.  Currently untested.\n\nJava Parameters:\n\
+  -Xmx            This will set Java's memory usage, overriding autodetection.\n \
+  \               -Xmx20g will specify 20 gigs of RAM, and -Xmx200m will\n       \
+  \         specify 200 megs. The max is typically 85% of physical memory.\n-eoom\
+  \           This flag will cause the process to exit if an out-of-memory\n     \
+  \           exception occurs.  Requires Java 8u92+.\n-da             Disable assertions.\n\
+  \nPlease contact Brian Bushnell at bbushnell@lbl.gov if you encounter any problems.\n\
+  \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bbmap:38.90--h1296035_0

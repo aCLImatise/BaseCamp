@@ -1,0 +1,188 @@
+!Command
+command:
+- TOBIAS
+- BINDetect
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --signals
+  description: "[<bigwig> [<bigwig> ...]]\nSignal per condition (.bigwig format)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --peaks
+  description: Peaks.bed containing open chromatin regions across all
+  args: !SimpleFlagArg
+    name: bed
+- !Flag
+  optional: true
+  synonyms:
+  - --genome
+  description: Genome .fasta file
+  args: !SimpleFlagArg
+    name: fasta
+- !Flag
+  optional: true
+  synonyms:
+  - --cond-names
+  description: "[<name> [<name> ...]]\nNames of conditions fitting to --signals (default:\n\
+    prefix of --signals)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --peak-header
+  description: "File containing the header of --peaks separated by\nwhitespace or\
+    \ newlines (default: peak columns are named\n\"_additional_<count>\")"
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - --naming
+  description: "Naming convention for TF output files ('id', 'name',\n'name_id', 'id_name')\
+    \ (default: 'name_id')"
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --motif-pvalue
+  description: "Set p-value threshold for motif scanning (default:\n1e-4)"
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - --bound-pvalue
+  description: "Set p-value threshold for bound/unbound split (default:\n0.001)"
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - --pseudo
+  description: "Pseudocount for calculating log2fcs (default: estimated\nfrom data)"
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - --time-series
+  description: "Will only compare signals1<->signals2<->signals3 (...)\nin order of\
+    \ input, and skip all-against-all comparison."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --skip-excel
+  description: "Skip creation of excel files - for large datasets, this\nwill speed\
+    \ up BINDetect considerably"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --output-peaks
+  description: "Gives the possibility to set the output peak set\ndifferently than\
+    \ the input --peaks. This will limit all\nanalysis to the regions in --output-peaks.\
+    \ NOTE:\n--peaks must still be set to the full peak set!"
+  args: !SimpleFlagArg
+    name: bed
+- !Flag
+  optional: true
+  synonyms:
+  - --prefix
+  description: "Prefix for overview files in --outdir folder (default:\nbindetect)"
+  args: !SimpleFlagArg
+    name: prefix
+- !Flag
+  optional: true
+  synonyms:
+  - --outdir
+  description: "Output directory to place TFBS/plots in (default:\nbindetect_output)"
+  args: !SimpleFlagArg
+    name: directory
+- !Flag
+  optional: true
+  synonyms:
+  - --cores
+  description: 'Number of cores to use for computation (default: 1)'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --split
+  description: 'Split of multiprocessing jobs (default: 100)'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --verbosity
+  description: "Level of output logging (0: silent, 1: errors/warnings,\n2: info,\
+    \ 3: stats, 4: debug, 5: spam) (default: 3)\n"
+  args: !SimpleFlagArg
+    name: int
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "__________________________________________________________________________________________\n\
+  \n                                    TOBIAS ~ BINDetect                       \
+  \             \n__________________________________________________________________________________________\n\
+  \nBINDetect takes motifs, signals (footprints) and genome as input to estimate bound\n\
+  transcription factor binding sites and differential binding between conditions.\
+  \ The\nunderlying method is a modified motif enrichment test to see which motifs\
+  \ have the largest\ndifferences in signal across input conditions. The output is\
+  \ an in-depth overview of\nglobal changes as well as the individual binding site\
+  \ signal-differences.\n\nUsage:\nTOBIAS BINDetect --signals <bigwig1> (<bigwig2>\
+  \ (...)) --motifs <motifs.txt> --genome\n<genome.fasta> --peaks <peaks.bed>\n\n\
+  Output files:\n- <outdir>/<prefix>_figures.pdf\n- <outdir>/<prefix>_results.{txt,xlsx}\n\
+  - <outdir>/<prefix>_distances.txt\n- <outdir>/<TF>/<TF>_overview.{txt,xlsx} (per\
+  \ motif)\n- <outdir>/<TF>/beds/<TF>_all.bed (per motif)\n- <outdir>/<TF>/beds/<TF>_<condition>_bound.bed\
+  \ (per motif-condition pair)\n- <outdir>/<TF>/beds/<TF>_<condition>_unbound.bed\
+  \ (per motif-condition pair)\n\n------------------------------------------------------------------------------------------\n\
+  \nRequired arguments:\n  --signals [<bigwig> [<bigwig> ...]]\n                 \
+  \                  Signal per condition (.bigwig format)\n  --peaks <bed>      \
+  \              Peaks.bed containing open chromatin regions across all\n        \
+  \                           conditions\n  --motifs [<motifs> [<motifs> ...]]\n \
+  \                                  Motif file(s) in pfm/jaspar/meme format\n  --genome\
+  \ <fasta>                 Genome .fasta file\n\nOptional arguments:\n  --cond-names\
+  \ [<name> [<name> ...]]\n                                   Names of conditions\
+  \ fitting to --signals (default:\n                                   prefix of --signals)\n\
+  \  --peak-header <file>             File containing the header of --peaks separated\
+  \ by\n                                   whitespace or newlines (default: peak columns\
+  \ are named\n                                   \"_additional_<count>\")\n  --naming\
+  \ <string>                Naming convention for TF output files ('id', 'name',\n\
+  \                                   'name_id', 'id_name') (default: 'name_id')\n\
+  \  --motif-pvalue <float>           Set p-value threshold for motif scanning (default:\n\
+  \                                   1e-4)\n  --bound-pvalue <float>           Set\
+  \ p-value threshold for bound/unbound split (default:\n                        \
+  \           0.001)\n  --pseudo <float>                 Pseudocount for calculating\
+  \ log2fcs (default: estimated\n                                   from data)\n \
+  \ --time-series                    Will only compare signals1<->signals2<->signals3\
+  \ (...)\n                                   in order of input, and skip all-against-all\
+  \ comparison.\n  --skip-excel                     Skip creation of excel files -\
+  \ for large datasets, this\n                                   will speed up BINDetect\
+  \ considerably\n  --output-peaks <bed>             Gives the possibility to set\
+  \ the output peak set\n                                   differently than the input\
+  \ --peaks. This will limit all\n                                   analysis to the\
+  \ regions in --output-peaks. NOTE:\n                                   --peaks must\
+  \ still be set to the full peak set!\n  --prefix <prefix>                Prefix\
+  \ for overview files in --outdir folder (default:\n                            \
+  \       bindetect)\n\nRun arguments:\n  --outdir <directory>             Output\
+  \ directory to place TFBS/plots in (default:\n                                 \
+  \  bindetect_output)\n  --cores <int>                    Number of cores to use\
+  \ for computation (default: 1)\n  --split <int>                    Split of multiprocessing\
+  \ jobs (default: 100)\n  --verbosity <int>                Level of output logging\
+  \ (0: silent, 1: errors/warnings,\n                                   2: info, 3:\
+  \ stats, 4: debug, 5: spam) (default: 3)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/tobias:0.12.9--py36h29c9776_0

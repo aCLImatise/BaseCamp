@@ -1,0 +1,199 @@
+!Command
+command:
+- design_naively.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: in_fasta
+  description: Path to input FASTA (aligned)
+- !Positional
+  optional: false
+  position: 1
+  name: out_tsv
+  description: Path to TSV file to which to write the output
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --window-size
+  description: "Output guide(s) within each window (sliding along the\nalignment)\
+    \ of this length"
+  args: !SimpleFlagArg
+    name: WINDOW_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - -gl
+  - --guide-length
+  description: Length of guide to construct
+  args: !SimpleFlagArg
+    name: GUIDE_LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - -gm
+  - --guide-mismatches
+  description: "Allow for this number of mismatches when determining\nwhether a guide\
+    \ covers a sequence"
+  args: !SimpleFlagArg
+    name: GUIDE_MISMATCHES
+- !Flag
+  optional: true
+  synonyms:
+  - --best-n
+  description: Find the best BEST_N guides in each window
+  args: !SimpleFlagArg
+    name: BEST_N
+- !Flag
+  optional: true
+  synonyms:
+  - --do-not-allow-gu-pairing
+  description: "When determining whether a guide binds to a region of\ntarget sequence,\
+    \ do not count G-U (wobble) base pairs\nas matching. Default is to tolerate G-U\
+    \ pairing:\nnamely, A in an output guide sequence matches G in the\ntarget and\
+    \ C in an output guide sequence matches T in\nthe target (since the synthesized\
+    \ guide is the reverse\ncomplement of the output guide sequence)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --skip-gaps
+  description: "If this fraction or more of sequences at a position\ncontain a gap\
+    \ character, do not design a guide there"
+  args: !SimpleFlagArg
+    name: SKIP_GAPS
+- !Flag
+  optional: true
+  synonyms:
+  - --ref-seq
+  description: "The label used in the FASTA file of the reference\nsequence to design\
+    \ guides based on sequence diversity;\nrequired for diversity method"
+  args: !SimpleFlagArg
+    name: REF_SEQ
+- !Flag
+  optional: true
+  synonyms:
+  - --no-consensus
+  description: "If set, do not use the consensus method to determine\nguides; otherwise,\
+    \ will use the consensus method"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-mode
+  description: "If set, do not use the mode method to determine\nguides; otherwise,\
+    \ will use the mode method"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --diversity
+  description: "A string of which diversity method to use to determine\nguides ('entropy');\
+    \ None (default) to not use a\ndiversity method. 'entropy' will calculate the\
+    \ average\nper position entropy of each potential guide, then\nreturn the guides\
+    \ at the positions with the lowest\nentropy; nucleotides are determined by the\
+    \ reference\nsequence"
+  args: !ChoiceFlagArg
+    choices: !!set
+      entropy:
+- !Flag
+  optional: true
+  synonyms:
+  - --require-flanking5
+  description: "Require the given sequence on the 5' protospacer\nflanking site (PFS)\
+    \ of each designed guide; this\ntolerates ambiguity in the sequence (e.g., 'H'\n\
+    requires 'A', 'C', or 'T', or, equivalently, avoids\nguides flanked by 'G'). Note\
+    \ that this is the 5' end\nin the target sequence (not the spacer sequence)."
+  args: !SimpleFlagArg
+    name: REQUIRE_FLANKING5
+- !Flag
+  optional: true
+  synonyms:
+  - --require-flanking3
+  description: "Require the given sequence on the 3' protospacer\nflanking site (PFS)\
+    \ of each designed guide; this\ntolerates ambiguity in the sequence (e.g., 'H'\n\
+    requires 'A', 'C', or 'T', or, equivalently, avoids\nguides flanked by 'G'). Note\
+    \ that this is the 3' end\nin the target sequence (not the spacer sequence)."
+  args: !SimpleFlagArg
+    name: REQUIRE_FLANKING3
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: Debug output
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: Verbose output
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: design_naively.py [-h] [-w WINDOW_SIZE] [-gl GUIDE_LENGTH]\n  \
+  \                       [-gm GUIDE_MISMATCHES] [--best-n BEST_N]\n             \
+  \            [--do-not-allow-gu-pairing] [--skip-gaps SKIP_GAPS]\n             \
+  \            [--ref-seq REF_SEQ] [--no-consensus] [--no-mode]\n                \
+  \         [--diversity {entropy}]\n                         [--require-flanking5\
+  \ REQUIRE_FLANKING5]\n                         [--require-flanking3 REQUIRE_FLANKING3]\
+  \ [--debug]\n                         [--verbose]\n                         in_fasta\
+  \ out_tsv\n\npositional arguments:\n  in_fasta              Path to input FASTA\
+  \ (aligned)\n  out_tsv               Path to TSV file to which to write the output\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  -w WINDOW_SIZE, --window-size WINDOW_SIZE\n                        Output guide(s)\
+  \ within each window (sliding along the\n                        alignment) of this\
+  \ length\n  -gl GUIDE_LENGTH, --guide-length GUIDE_LENGTH\n                    \
+  \    Length of guide to construct\n  -gm GUIDE_MISMATCHES, --guide-mismatches GUIDE_MISMATCHES\n\
+  \                        Allow for this number of mismatches when determining\n\
+  \                        whether a guide covers a sequence\n  --best-n BEST_N  \
+  \     Find the best BEST_N guides in each window\n  --do-not-allow-gu-pairing\n\
+  \                        When determining whether a guide binds to a region of\n\
+  \                        target sequence, do not count G-U (wobble) base pairs\n\
+  \                        as matching. Default is to tolerate G-U pairing:\n    \
+  \                    namely, A in an output guide sequence matches G in the\n  \
+  \                      target and C in an output guide sequence matches T in\n \
+  \                       the target (since the synthesized guide is the reverse\n\
+  \                        complement of the output guide sequence)\n  --skip-gaps\
+  \ SKIP_GAPS\n                        If this fraction or more of sequences at a\
+  \ position\n                        contain a gap character, do not design a guide\
+  \ there\n  --ref-seq REF_SEQ     The label used in the FASTA file of the reference\n\
+  \                        sequence to design guides based on sequence diversity;\n\
+  \                        required for diversity method\n  --no-consensus       \
+  \ If set, do not use the consensus method to determine\n                       \
+  \ guides; otherwise, will use the consensus method\n  --no-mode             If set,\
+  \ do not use the mode method to determine\n                        guides; otherwise,\
+  \ will use the mode method\n  --diversity {entropy}\n                        A string\
+  \ of which diversity method to use to determine\n                        guides\
+  \ ('entropy'); None (default) to not use a\n                        diversity method.\
+  \ 'entropy' will calculate the average\n                        per position entropy\
+  \ of each potential guide, then\n                        return the guides at the\
+  \ positions with the lowest\n                        entropy; nucleotides are determined\
+  \ by the reference\n                        sequence\n  --require-flanking5 REQUIRE_FLANKING5\n\
+  \                        Require the given sequence on the 5' protospacer\n    \
+  \                    flanking site (PFS) of each designed guide; this\n        \
+  \                tolerates ambiguity in the sequence (e.g., 'H'\n              \
+  \          requires 'A', 'C', or 'T', or, equivalently, avoids\n               \
+  \         guides flanked by 'G'). Note that this is the 5' end\n               \
+  \         in the target sequence (not the spacer sequence).\n  --require-flanking3\
+  \ REQUIRE_FLANKING3\n                        Require the given sequence on the 3'\
+  \ protospacer\n                        flanking site (PFS) of each designed guide;\
+  \ this\n                        tolerates ambiguity in the sequence (e.g., 'H'\n\
+  \                        requires 'A', 'C', or 'T', or, equivalently, avoids\n \
+  \                       guides flanked by 'G'). Note that this is the 3' end\n \
+  \                       in the target sequence (not the spacer sequence).\n  --debug\
+  \               Debug output\n  --verbose             Verbose output\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/adapt:1.2.0--py_0

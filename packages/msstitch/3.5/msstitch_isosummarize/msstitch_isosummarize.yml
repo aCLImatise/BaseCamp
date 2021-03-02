@@ -1,0 +1,186 @@
+!Command
+command:
+- msstitch
+- isosummarize
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: Input file of {} format
+  args: !SimpleFlagArg
+    name: FN
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: Directory to output in
+  args: !SimpleFlagArg
+    name: OUTDIR
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: Output file
+  args: !SimpleFlagArg
+    name: OUTFILE
+- !Flag
+  optional: true
+  synonyms:
+  - --isobquantcolpattern
+  description: "Unique text pattern to identify isobaric quant columns\nin input table."
+  args: !SimpleFlagArg
+    name: QUANTCOLPATTERN
+- !Flag
+  optional: true
+  synonyms:
+  - --denompatterns
+  description: "Regex patterns to detect denominator channels in a PSM\ntable, when\
+    \ creating a table with summarized feature\nisobaric ratios. If both --denompatterns\
+    \ and\n--denomcol are given then column numbers are used.\nUsage e.g. --denompattern\
+    \ _126 _131. Also possible:\n--denompattern _12[6-7] to detect multiple columns."
+  args: !RepeatFlagArg
+    name: DENOMPATTERNS
+- !Flag
+  optional: true
+  synonyms:
+  - --denomcols
+  description: "Column numbers of denominator channels when creating a\nsummarized\
+    \ feature table with isobaric ratios from\nPSMs"
+  args: !RepeatFlagArg
+    name: DENOMCOLS
+- !Flag
+  optional: true
+  synonyms:
+  - --mediansweep
+  description: "Instead of choosing a denominator channel, use the\nmedian intensity\
+    \ of each PSM as its denominator."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --medianintensity
+  description: "Instead of choosing a denominator channel or median-\nsweeping, report\
+    \ the the median intensity of each\nsummarized feat per channel. This results\
+    \ in reported\nintensities rather than ratios."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --summarize-average
+  description: "Use average isobaric quantification values for\nsummarizing quant\
+    \ from PSMs, instead of default PSM\nmedian values"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --keep-psms-na-quant
+  description: "When summarizing isobaric quantification data, also\nuse the PSMs\
+    \ that have an NA in any channel, even if\nthese may contain overly noisy quant\
+    \ data in the other\nchannels. Normally these PSMs would be skipped in\nquantification"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --minint
+  description: "Intensity threshold of PSMs when calculating isobaric\nratios. Values\
+    \ below threshold will be set to NA.\nDefaults to no threshold."
+  args: !SimpleFlagArg
+    name: MININT
+- !Flag
+  optional: true
+  synonyms:
+  - --featcol
+  description: "Column number in table in which desired accessions to\nsummarize are\
+    \ stored. First column number is 1. If not\nspecified this will summarize to PSMs\
+    \ themselves, i.e.\nonly calculate the ratios and add those to the PSM\ntable."
+  args: !SimpleFlagArg
+    name: FEATCOL
+- !Flag
+  optional: true
+  synonyms:
+  - --logisoquant
+  description: "Output log2 values for isoquant ratios. This\nlog2-transforms input\
+    \ PSM data prior to summarizing\nand optional normalization. Ratios will be calculated\n\
+    subtracted rather than divided, obviously."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --median-normalize
+  description: "Median-centering normalization for isobaric quant data\non protein\
+    \ or peptide level. This median-centers the\ndata for each channel by dividing\
+    \ with the median\nchannel value (or subtracting in case of log data),\nfor each\
+    \ channel in output features, e.g. proteins.\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: msstitch isosummarize [-h] [--version] -i FN [-d OUTDIR] [-o OUTFILE]\n\
+  \                             --isobquantcolpattern QUANTCOLPATTERN\n          \
+  \                   [--denompatterns DENOMPATTERNS [DENOMPATTERNS ...]]\n      \
+  \                       [--denomcols DENOMCOLS [DENOMCOLS ...]]\n              \
+  \               [--mediansweep] [--medianintensity]\n                          \
+  \   [--summarize-average] [--keep-psms-na-quant]\n                             [--minint\
+  \ MININT] [--featcol FEATCOL]\n                             [--logisoquant] [--median-normalize]\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  --version             show program's version number and exit\n  -i FN       \
+  \          Input file of {} format\n  -d OUTDIR             Directory to output\
+  \ in\n  -o OUTFILE            Output file\n  --isobquantcolpattern QUANTCOLPATTERN\n\
+  \                        Unique text pattern to identify isobaric quant columns\n\
+  \                        in input table.\n  --denompatterns DENOMPATTERNS [DENOMPATTERNS\
+  \ ...]\n                        Regex patterns to detect denominator channels in\
+  \ a PSM\n                        table, when creating a table with summarized feature\n\
+  \                        isobaric ratios. If both --denompatterns and\n        \
+  \                --denomcol are given then column numbers are used.\n          \
+  \              Usage e.g. --denompattern _126 _131. Also possible:\n           \
+  \             --denompattern _12[6-7] to detect multiple columns.\n  --denomcols\
+  \ DENOMCOLS [DENOMCOLS ...]\n                        Column numbers of denominator\
+  \ channels when creating a\n                        summarized feature table with\
+  \ isobaric ratios from\n                        PSMs\n  --mediansweep         Instead\
+  \ of choosing a denominator channel, use the\n                        median intensity\
+  \ of each PSM as its denominator.\n  --medianintensity     Instead of choosing a\
+  \ denominator channel or median-\n                        sweeping, report the the\
+  \ median intensity of each\n                        summarized feat per channel.\
+  \ This results in reported\n                        intensities rather than ratios.\n\
+  \  --summarize-average   Use average isobaric quantification values for\n      \
+  \                  summarizing quant from PSMs, instead of default PSM\n       \
+  \                 median values\n  --keep-psms-na-quant  When summarizing isobaric\
+  \ quantification data, also\n                        use the PSMs that have an NA\
+  \ in any channel, even if\n                        these may contain overly noisy\
+  \ quant data in the other\n                        channels. Normally these PSMs\
+  \ would be skipped in\n                        quantification\n  --minint MININT\
+  \       Intensity threshold of PSMs when calculating isobaric\n                \
+  \        ratios. Values below threshold will be set to NA.\n                   \
+  \     Defaults to no threshold.\n  --featcol FEATCOL     Column number in table\
+  \ in which desired accessions to\n                        summarize are stored.\
+  \ First column number is 1. If not\n                        specified this will\
+  \ summarize to PSMs themselves, i.e.\n                        only calculate the\
+  \ ratios and add those to the PSM\n                        table.\n  --logisoquant\
+  \         Output log2 values for isoquant ratios. This\n                       \
+  \ log2-transforms input PSM data prior to summarizing\n                        and\
+  \ optional normalization. Ratios will be calculated\n                        subtracted\
+  \ rather than divided, obviously.\n  --median-normalize    Median-centering normalization\
+  \ for isobaric quant data\n                        on protein or peptide level.\
+  \ This median-centers the\n                        data for each channel by dividing\
+  \ with the median\n                        channel value (or subtracting in case\
+  \ of log data),\n                        for each channel in output features, e.g.\
+  \ proteins.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/msstitch:3.5--py_0

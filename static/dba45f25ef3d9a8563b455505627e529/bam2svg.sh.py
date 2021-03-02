@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, File, String
+
+Bam2Svg_Sh_V0_1_0 = CommandToolBuilder(tool="bam2svg.sh", base_command=["bam2svg.sh"], inputs=[ToolInput(tag="in_filter", input_type=Boolean(optional=True), prefix="--filter", doc=InputDocumentation(doc="A filter expression. Reads matching the expression will be filtered-out.\nEmpty String means 'filter out nothing/Accept all'. See https://github.com/lindenb/jvarkit/blob/master/src/main/resources/javacc/com/github/lindenb/jvarkit/util/bio/samfilter/SamFilterParser.jj\nfor a complete syntax.\nDefault: Accept All/ Filter out nothing")), ToolInput(tag="in_group_by", input_type=Boolean(optional=True), prefix="--groupby", doc=InputDocumentation(doc="Group Reads by. Data partitioning using the SAM Read Group (see\nhttps://gatkforums.broadinstitute.org/gatk/discussion/6472/ ) . It can\nbe any combination of sample, library....\nDefault: sample\nPossible Values: [readgroup, sample, library, platform, center, sample_by_platform, sample_by_center, sample_by_platform_by_center, any]")), ToolInput(tag="in_help_format", input_type=Boolean(optional=True), prefix="--helpFormat", doc=InputDocumentation(doc="What kind of help. One of [usage,markdown,xml].")), ToolInput(tag="in_output", input_type=File(optional=True), prefix="--output", doc=InputDocumentation(doc="Output file. Optional . Default: stdout")), ToolInput(tag="in_reference", input_type=Boolean(optional=True), prefix="--reference", doc=InputDocumentation(doc="Indexed fasta Reference file. This file must be indexed with samtools\nfaidx and with picard CreateSequenceDictionary")), ToolInput(tag="in_show_clipping", input_type=Boolean(optional=True), prefix="--showclipping", doc=InputDocumentation(doc="Show clipping\nDefault: false")), ToolInput(tag="in_vcf", input_type=Boolean(optional=True), prefix="--vcf", doc=InputDocumentation(doc="add VCF indexed with tabix. Optinal. the Samples's name must be the same\nthan in the BAM\nDefault: []")), ToolInput(tag="in_width", input_type=Boolean(optional=True), prefix="--width", doc=InputDocumentation(doc="Page width\nDefault: 1000\n")), ToolInput(tag="in_files", input_type=String(), position=0, doc=InputDocumentation(doc=""))], outputs=[ToolOutput(tag="out_output", output_type=File(optional=True), selector=InputSelector(input_to_select="in_output", type_hint=File()), doc=OutputDocumentation(doc="Output file. Optional . Default: stdout"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Bam2Svg_Sh_V0_1_0().translate("wdl", allow_empty_container=True)
+

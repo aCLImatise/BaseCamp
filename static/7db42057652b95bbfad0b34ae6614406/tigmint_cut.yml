@@ -1,0 +1,111 @@
+!Command
+command:
+- tigmint-cut
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: fasta
+  description: "Reference genome fasta file (must have FAI index\ngenerated)"
+- !Positional
+  optional: false
+  position: 1
+  name: bed
+  description: Sorted bed file of molecule extents
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --fastaout
+  description: The output FASTA file.
+  args: !SimpleFlagArg
+    name: FASTAOUT
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --bedout
+  description: "The output BED file. Default is the output FASTA\nfilename plus .bed"
+  args: !SimpleFlagArg
+    name: BEDOUT
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --processes
+  description: Number of parallel processes to launch [8]
+  args: !SimpleFlagArg
+    name: PROCESSES
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --window
+  description: "Window size used to check for spanning molecules (bp)\n[1000]"
+  args: !SimpleFlagArg
+    name: WINDOW
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --spanning
+  description: "Spanning molecules threshold (no misassembly in window\nif num. spanning\
+    \ molecules >= n) [2]."
+  args: !SimpleFlagArg
+    name: SPANNING
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --trim
+  description: Number of base pairs to trim at contig cuts (bp) [0]
+  args: !SimpleFlagArg
+    name: TRIM
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --param_file
+  description: "File containing calculated parameters for tigmint-long\n"
+  args: !SimpleFlagArg
+    name: PARAM_FILE
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: tigmint-cut [-h] [--version] -o FASTAOUT [-b BEDOUT] [-p PROCESSES]\n\
+  \                   [-w WINDOW] [-n SPANNING] [-t TRIM] [-f PARAM_FILE]\n      \
+  \             fasta bed\n\nFind misassembled regions in assembly using Chromium\
+  \ molecule extents\n\npositional arguments:\n  fasta                 Reference genome\
+  \ fasta file (must have FAI index\n                        generated)\n  bed   \
+  \                Sorted bed file of molecule extents\n\noptional arguments:\n  -h,\
+  \ --help            show this help message and exit\n  --version             show\
+  \ program's version number and exit\n  -o FASTAOUT, --fastaout FASTAOUT\n      \
+  \                  The output FASTA file.\n  -b BEDOUT, --bedout BEDOUT\n      \
+  \                  The output BED file. Default is the output FASTA\n          \
+  \              filename plus .bed\n  -p PROCESSES, --processes PROCESSES\n     \
+  \                   Number of parallel processes to launch [8]\n  -w WINDOW, --window\
+  \ WINDOW\n                        Window size used to check for spanning molecules\
+  \ (bp)\n                        [1000]\n  -n SPANNING, --spanning SPANNING\n   \
+  \                     Spanning molecules threshold (no misassembly in window\n \
+  \                       if num. spanning molecules >= n) [2].\n  -t TRIM, --trim\
+  \ TRIM  Number of base pairs to trim at contig cuts (bp) [0]\n  -f PARAM_FILE, --param_file\
+  \ PARAM_FILE\n                        File containing calculated parameters for\
+  \ tigmint-long\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/tigmint:1.2.2--py_1

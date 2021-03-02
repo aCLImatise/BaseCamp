@@ -1,0 +1,184 @@
+!Command
+command:
+- check_structure
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: command
+  description: 'Command to execute (help: check_structure commands)'
+- !Positional
+  optional: false
+  position: 1
+  name: options
+  description: Specific command options
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  description: Input structure. Formats PDB|mmCIF. Remote pdb:{pdbid}
+  args: !SimpleFlagArg
+    name: INPUT_STRUCTURE_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --file_format
+  description: "Format for retrieving structures\n(default=mmCif|pdb|xml)"
+  args: !SimpleFlagArg
+    name: FILE_FORMAT
+- !Flag
+  optional: true
+  synonyms:
+  - --sequence
+  description: "Canonical sequence in FASTA format, pdb_chain[,chain]\nin header"
+  args: !SimpleFlagArg
+    name: FASTA_SEQ_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --pdb_server
+  description: Server for retrieving structures (default|MMB)
+  args: !SimpleFlagArg
+    name: PDB_SERVER
+- !Flag
+  optional: true
+  synonyms:
+  - --cache_dir
+  description: "Path for structure's cache directory (default:\n./tmpPDB)"
+  args: !SimpleFlagArg
+    name: CACHE_DIR_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --modeller_key
+  description: "User key for modeller, required for backbone fix,\nregister at\nhttps://salilab.org/modeller/registration.html"
+  args: !SimpleFlagArg
+    name: MODELLER_KEY
+- !Flag
+  optional: true
+  synonyms:
+  - --res_lib
+  description: "Override settings default residue library (AMBER prep\nformat)"
+  args: !SimpleFlagArg
+    name: RES_LIBRARY_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --data_lib
+  description: Override settings default data library
+  args: !SimpleFlagArg
+    name: DATA_LIBRARY_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: Output structure. Format PDB
+  args: !SimpleFlagArg
+    name: OUTPUT_STRUCTURE_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --rename_terms
+  description: Renames terminal residues to NXXX, CXXX
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --json
+  description: Summary checking results on a json file
+  args: !SimpleFlagArg
+    name: JSON_OUTPUT_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --quiet
+  description: Reduces output, removing labels and progress info
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --limit
+  description: Limit on number of atoms,0:nolimit
+  args: !SimpleFlagArg
+    name: ATOM_LIMIT
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: Add debug information
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --force_save
+  description: Force saving an output file even if no modification
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --check_only
+  description: Perform checks only, structure is not modified
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --non_interactive
+  description: Do not prompt for missing parameters
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: check_structure [-h] [-i INPUT_STRUCTURE_PATH]\n              \
+  \         [--file_format FILE_FORMAT] [--sequence FASTA_SEQ_PATH]\n            \
+  \           [--pdb_server PDB_SERVER] [--cache_dir CACHE_DIR_PATH]\n           \
+  \            [--modeller_key MODELLER_KEY]\n                       [--res_lib RES_LIBRARY_PATH]\n\
+  \                       [--data_lib DATA_LIBRARY_PATH]\n                       [-o\
+  \ OUTPUT_STRUCTURE_PATH] [--rename_terms]\n                       [--json JSON_OUTPUT_PATH]\
+  \ [--quiet]\n                       [--limit ATOM_LIMIT] [--debug] [--force_save]\n\
+  \                       [--check_only] [--non_interactive] [--version]\n       \
+  \                command ...\n\nBasic Structure checking based on MDWeb\n\npositional\
+  \ arguments:\n  command               Command to execute (help: check_structure\
+  \ commands)\n  options               Specific command options\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -i INPUT_STRUCTURE_PATH,\
+  \ --input INPUT_STRUCTURE_PATH\n                        Input structure. Formats\
+  \ PDB|mmCIF. Remote pdb:{pdbid}\n  --file_format FILE_FORMAT\n                 \
+  \       Format for retrieving structures\n                        (default=mmCif|pdb|xml)\n\
+  \  --sequence FASTA_SEQ_PATH\n                        Canonical sequence in FASTA\
+  \ format, pdb_chain[,chain]\n                        in header\n  --pdb_server PDB_SERVER\n\
+  \                        Server for retrieving structures (default|MMB)\n  --cache_dir\
+  \ CACHE_DIR_PATH\n                        Path for structure's cache directory (default:\n\
+  \                        ./tmpPDB)\n  --modeller_key MODELLER_KEY\n            \
+  \            User key for modeller, required for backbone fix,\n               \
+  \         register at\n                        https://salilab.org/modeller/registration.html\n\
+  \  --res_lib RES_LIBRARY_PATH\n                        Override settings default\
+  \ residue library (AMBER prep\n                        format)\n  --data_lib DATA_LIBRARY_PATH\n\
+  \                        Override settings default data library\n  -o OUTPUT_STRUCTURE_PATH,\
+  \ --output OUTPUT_STRUCTURE_PATH\n                        Output structure. Format\
+  \ PDB\n  --rename_terms        Renames terminal residues to NXXX, CXXX\n  --json\
+  \ JSON_OUTPUT_PATH\n                        Summary checking results on a json file\n\
+  \  --quiet               Reduces output, removing labels and progress info\n  --limit\
+  \ ATOM_LIMIT    Limit on number of atoms,0:nolimit\n  --debug               Add\
+  \ debug information\n  --force_save          Force saving an output file even if\
+  \ no modification\n  --check_only          Perform checks only, structure is not\
+  \ modified\n  --non_interactive     Do not prompt for missing parameters\n  --version\
+  \             show program's version number and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/biobb_structure_checking:3.7.3--py_0

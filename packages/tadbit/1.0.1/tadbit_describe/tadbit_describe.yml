@@ -1,0 +1,136 @@
+!Command
+command:
+- tadbit
+- describe
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --workdir
+  description: path to working directory (generated with the tool tadbit map)
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --noX
+  description: no display server (X screen)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: "[ ...], --tables  [ ...]\n[['1', '2', '3', '4', '5', '6', '7', '8',\
+    \ '9', '10', '11', '12',\n'13']] what tables to show, write either the sequence\
+    \ of names or\nindexes, according to this list: 1: paths, 2: jobs, 3:\nmapped_outputs,\
+    \ 4: mapped_inputs, 5: parsed_outputs, 6:\nintersection_outputs, 7: filter_outputs,\
+    \ 8: normalize_outputs, 9:\nmerge_stats, 10: merge_outputs, 11: segment_outputs,\
+    \ 12: models, 13:\nmodeled_regions"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  description: "[ ...], --skip_tables  [ ...]\n[[]] what tables NOT to show, write\
+    \ either the sequence of names or\nindexes, according to this list: 1: paths,\
+    \ 2: jobs, 3:\nmapped_outputs, 4: mapped_inputs, 5: parsed_outputs, 6:\nintersection_outputs,\
+    \ 7: filter_outputs, 8: normalize_outputs, 9:\nmerge_stats, 10: merge_outputs,\
+    \ 11: segment_outputs, 12: models, 13:\nmodeled_regions"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --jobids
+  description: Display only items matching these jobids.
+  args: !RepeatFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -W
+  - --where
+  description: "Select rows. List pairs of keywords (column header) and values to\n\
+    filter results. For example to get only results where \"18\" appears\nin the column\
+    \ \"Chromosome\", the option should be set as: `-W\nChromosome,18`"
+  args: !RepeatFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --select
+  description: "Select columns. List the keyword (column headers) to be displayed.\n\
+    E.g. to show only the colmns JobIds: `-s Jobids`"
+  args: !RepeatFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - --tmpdb
+  description: if provided uses this directory to manipulate the database
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --tsv
+  description: Print output in tab separated format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: "Writes output in specified file.\n"
+  args: !SimpleFlagArg
+    name: OUTPUT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: tadbit describe [-h] [-w PATH] [--noX] [-t  [...]] [-T  [...]]\
+  \ [-j INT [INT ...]]\n                       [-W STR [STR ...]] [-s STR [STR ...]]\
+  \ [--tmpdb PATH] [--tsv] [-o OUTPUT]\n\nDescribe jobs and results in a given working\
+  \ directory\n\noptional arguments:\n  -h, --help               show this help message\
+  \ and exit\n\nGeneral options:\n  -w PATH, --workdir PATH  path to working directory\
+  \ (generated with the tool tadbit map)\n  --noX                    no display server\
+  \ (X screen)\n  -t  [ ...], --tables  [ ...]\n                           [['1',\
+  \ '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12',\n                  \
+  \         '13']] what tables to show, write either the sequence of names or\n  \
+  \                         indexes, according to this list: 1: paths, 2: jobs, 3:\n\
+  \                           mapped_outputs, 4: mapped_inputs, 5: parsed_outputs,\
+  \ 6:\n                           intersection_outputs, 7: filter_outputs, 8: normalize_outputs,\
+  \ 9:\n                           merge_stats, 10: merge_outputs, 11: segment_outputs,\
+  \ 12: models, 13:\n                           modeled_regions\n  -T  [ ...], --skip_tables\
+  \  [ ...]\n                           [[]] what tables NOT to show, write either\
+  \ the sequence of names or\n                           indexes, according to this\
+  \ list: 1: paths, 2: jobs, 3:\n                           mapped_outputs, 4: mapped_inputs,\
+  \ 5: parsed_outputs, 6:\n                           intersection_outputs, 7: filter_outputs,\
+  \ 8: normalize_outputs, 9:\n                           merge_stats, 10: merge_outputs,\
+  \ 11: segment_outputs, 12: models, 13:\n                           modeled_regions\n\
+  \  -j INT [INT ...], --jobids INT [INT ...]\n                           Display\
+  \ only items matching these jobids.\n  -W STR [STR ...], --where STR [STR ...]\n\
+  \                           Select rows. List pairs of keywords (column header)\
+  \ and values to\n                           filter results. For example to get only\
+  \ results where \"18\" appears\n                           in the column \"Chromosome\"\
+  , the option should be set as: `-W\n                           Chromosome,18`\n\
+  \  -s STR [STR ...], --select STR [STR ...]\n                           Select columns.\
+  \ List the keyword (column headers) to be displayed.\n                         \
+  \  E.g. to show only the colmns JobIds: `-s Jobids`\n  --tmpdb PATH            \
+  \ if provided uses this directory to manipulate the database\n  --tsv          \
+  \          Print output in tab separated format\n  -o OUTPUT, --output OUTPUT\n\
+  \                           Writes output in specified file.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/tadbit:1.0.1--py38h6ed170a_0

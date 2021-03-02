@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Array, File, Directory, String, Int
+
+Plasmidfinder_Py_V0_1_0 = CommandToolBuilder(tool="plasmidfinder.py", base_command=["plasmidfinder.py"], inputs=[ToolInput(tag="in_in_file", input_type=Array(t=File(), optional=True), prefix="--infile", doc=InputDocumentation(doc="FASTA or FASTQ input files.")), ToolInput(tag="in_output_path", input_type=File(optional=True), prefix="--outputPath", doc=InputDocumentation(doc="Path to blast output")), ToolInput(tag="in_tmp_dir", input_type=Directory(optional=True), prefix="--tmp_dir", doc=InputDocumentation(doc="Temporary directory for storage of the results from\nthe external software.")), ToolInput(tag="in_method_path", input_type=File(optional=True), prefix="--methodPath", doc=InputDocumentation(doc="Path to method to use (kma or blastn)")), ToolInput(tag="in_database_path", input_type=File(optional=True), prefix="--databasePath", doc=InputDocumentation(doc="Path to the databases")), ToolInput(tag="in_databases", input_type=String(optional=True), prefix="--databases", doc=InputDocumentation(doc="Databases chosen to search in - if non is specified\nall is used")), ToolInput(tag="in_min_cov", input_type=Int(optional=True), prefix="--mincov", doc=InputDocumentation(doc="Minimum coverage")), ToolInput(tag="in_threshold", input_type=String(optional=True), prefix="--threshold", doc=InputDocumentation(doc="Minimum hreshold for identity")), ToolInput(tag="in_extented_output", input_type=File(optional=True), prefix="--extented_output", doc=InputDocumentation(doc="Give extented output with allignment files, template\nand query hits in fasta and a tab seperated file with\ngene profile results")), ToolInput(tag="in_species_info_json", input_type=String(optional=True), prefix="--speciesinfo_json", doc=InputDocumentation(doc="Argument used by the cge pipeline. It takes a list in\njson format consisting of taxonomy, from domain ->\nspecies. A database is chosen based on the taxonomy."))], outputs=[ToolOutput(tag="out_output_path", output_type=File(optional=True), selector=InputSelector(input_to_select="in_output_path", type_hint=File()), doc=OutputDocumentation(doc="Path to blast output")), ToolOutput(tag="out_extented_output", output_type=File(optional=True), selector=InputSelector(input_to_select="in_extented_output", type_hint=File()), doc=OutputDocumentation(doc="Give extented output with allignment files, template\nand query hits in fasta and a tab seperated file with\ngene profile results"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Plasmidfinder_Py_V0_1_0().translate("wdl", allow_empty_container=True)
+

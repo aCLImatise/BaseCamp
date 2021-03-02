@@ -1,0 +1,98 @@
+!Command
+command:
+- secapr
+- automate_all
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --input
+  description: The directory containing cleaned fastq files
+  args: !SimpleFlagArg
+    name: INPUT
+- !Flag
+  optional: true
+  synonyms:
+  - --output
+  description: "The output directory where all intermediate and final\ndata files\
+    \ will be stored"
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - --reference
+  description: "Provide a reference library (FASTA) containing\nsequences for the\
+    \ genes of interest (required to find\ncontigs matching targeted regions)."
+  args: !SimpleFlagArg
+    name: REFERENCE
+- !Flag
+  optional: true
+  synonyms:
+  - --setting
+  description: "The setting you want to run SECAPR on. \"relaxed\" uses\nvery non-restrictive\
+    \ default values (use when samples\nare expected to differ considerably from provided\n\
+    reference or are covering wide evolutionary range,\ne.g. different families or\
+    \ orders). \"conservative\" is\nvery restrictive and can be used when samples\
+    \ are\nclosely related and match provided reference very\nwell."
+  args: !ChoiceFlagArg
+    choices: !!set
+      relaxed:
+      medium:
+      conservative:
+- !Flag
+  optional: true
+  synonyms:
+  - --assembler
+  description: "The assembler to use for de-novo assembly\n(default=spades)."
+  args: !ChoiceFlagArg
+    choices: !!set
+      trinity:
+      spades:
+      abyss:
+- !Flag
+  optional: true
+  synonyms:
+  - --cores
+  description: "Number of computational cores for parallelization of\ncomputation.\n"
+  args: !SimpleFlagArg
+    name: CORES
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: secapr automate_all [-h] --input INPUT --output OUTPUT --reference\n\
+  \                           REFERENCE [--setting {relaxed,medium,conservative}]\n\
+  \                           [--assembler {spades,abyss,trinity}]\n             \
+  \              [--cores CORES]\n\nThis script automates the complete secapr pipeline,\
+  \ producing MSAs (allele,\ncontig and BAM-consensus) from FASTQ files\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  --input\
+  \ INPUT         The directory containing cleaned fastq files\n  --output OUTPUT\
+  \       The output directory where all intermediate and final\n                \
+  \        data files will be stored\n  --reference REFERENCE\n                  \
+  \      Provide a reference library (FASTA) containing\n                        sequences\
+  \ for the genes of interest (required to find\n                        contigs matching\
+  \ targeted regions).\n  --setting {relaxed,medium,conservative}\n              \
+  \          The setting you want to run SECAPR on. \"relaxed\" uses\n           \
+  \             very non-restrictive default values (use when samples\n          \
+  \              are expected to differ considerably from provided\n             \
+  \           reference or are covering wide evolutionary range,\n               \
+  \         e.g. different families or orders). \"conservative\" is\n            \
+  \            very restrictive and can be used when samples are\n               \
+  \         closely related and match provided reference very\n                  \
+  \      well.\n  --assembler {spades,abyss,trinity}\n                        The\
+  \ assembler to use for de-novo assembly\n                        (default=spades).\n\
+  \  --cores CORES         Number of computational cores for parallelization of\n\
+  \                        computation.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/secapr:2.1.1--pyh3252c3a_0

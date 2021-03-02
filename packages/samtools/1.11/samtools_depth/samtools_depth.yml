@@ -1,0 +1,165 @@
+!Command
+command:
+- samtools
+- depth
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: in1.bam
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  description: list of positions or regions
+  args: !SimpleFlagArg
+    name: bed
+- !Flag
+  optional: true
+  synonyms:
+  - -X
+  description: use customized index files
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: list of input BAM filenames, one per line [null]
+  args: !SimpleFlagArg
+    name: list
+- !Flag
+  optional: true
+  synonyms:
+  - -H
+  description: print a file header
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: read length threshold (ignore reads shorter than <int>) [0]
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - -m
+  description: "maximum coverage depth [8000]. If 0, depth is set to the maximum\n\
+    integer value, effectively removing any depth limit."
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: where to write output to [stdout]
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  description: base quality threshold [0]
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -Q
+  description: mapping quality threshold [0]
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: <chr:from-to>    region
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  description: remove the specified flags from the set used to filter out reads
+  args: !SimpleFlagArg
+    name: flags
+- !Flag
+  optional: true
+  synonyms:
+  - -G
+  description: "add the specified flags to the set used to filter out reads\nThe default\
+    \ set is UNMAP,SECONDARY,QCFAIL,DUP or 0x704"
+  args: !SimpleFlagArg
+    name: flags
+- !Flag
+  optional: true
+  synonyms:
+  - -J
+  description: include reads with deletions in depth computation
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: "for the overlapping section of a read pair, count only the bases\n\
+    of a single read. This option requires raising the base quality\nthreshold to\
+    \ 1."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --input-fmt-option
+  description: "[=VAL]\nSpecify a single input file format option in the form\nof\
+    \ OPTION or OPTION=VALUE"
+  args: !SimpleFlagArg
+    name: OPT
+- !Flag
+  optional: true
+  synonyms:
+  - --reference
+  description: Reference sequence FASTA FILE [null]
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --verbosity
+  description: Set level of verbosity
+  args: !SimpleFlagArg
+    name: INT
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "depth: unrecognized option '--help'\n\nUsage: samtools depth [options]\
+  \ in1.bam [in2.bam [...]]\nOptions:\n   -a                  output all positions\
+  \ (including zero depth)\n   -a -a (or -aa)      output absolutely all positions,\
+  \ including unused ref. sequences\n   -b <bed>            list of positions or regions\n\
+  \   -X                  use customized index files\n   -f <list>           list\
+  \ of input BAM filenames, one per line [null]\n   -H                  print a file\
+  \ header\n   -l <int>            read length threshold (ignore reads shorter than\
+  \ <int>) [0]\n   -d/-m <int>         maximum coverage depth [8000]. If 0, depth\
+  \ is set to the maximum\n                       integer value, effectively removing\
+  \ any depth limit.\n   -o FILE             where to write output to [stdout]\n \
+  \  -q <int>            base quality threshold [0]\n   -Q <int>            mapping\
+  \ quality threshold [0]\n   -r <chr:from-to>    region\n   -g <flags>          remove\
+  \ the specified flags from the set used to filter out reads\n   -G <flags>     \
+  \     add the specified flags to the set used to filter out reads\n            \
+  \           The default set is UNMAP,SECONDARY,QCFAIL,DUP or 0x704\n   -J      \
+  \            include reads with deletions in depth computation\n   -s          \
+  \        for the overlapping section of a read pair, count only the bases\n    \
+  \                   of a single read. This option requires raising the base quality\n\
+  \                       threshold to 1.\n      --input-fmt-option OPT[=VAL]\n  \
+  \             Specify a single input file format option in the form\n          \
+  \     of OPTION or OPTION=VALUE\n      --reference FILE\n               Reference\
+  \ sequence FASTA FILE [null]\n      --verbosity INT\n               Set level of\
+  \ verbosity\n\nThe output is a simple tab-separated table with three columns: reference\
+  \ name,\nposition, and coverage depth.  Note that positions with zero coverage may\
+  \ be\nomitted by default; see the -a option.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/samtools:1.11--h6270b1f_0

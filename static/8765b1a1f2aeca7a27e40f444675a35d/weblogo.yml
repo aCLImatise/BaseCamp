@@ -1,0 +1,561 @@
+!Command
+command:
+- weblogo
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: 'sequence_data.fa '
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: sequence_logo.eps
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --fin
+  description: 'Sequence input file (default: stdin)'
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --upload
+  description: Upload input file from URL
+  args: !SimpleFlagArg
+    name: URL
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  - --datatype
+  description: "Type of multiple sequence alignment or\nposition weight matrix file:\
+    \ (clustal, fasta,\nmsf, genbank, nbrf, nexus, phylip, stockholm,\nintelligenetics,\
+    \ table, array, transfac)"
+  args: !SimpleFlagArg
+    name: FORMAT
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --fout
+  description: 'Output file (default: stdout)'
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  - --format
+  description: "Format of output: eps (default), png,\npng_print, pdf, jpeg, svg,\
+    \ logodata"
+  args: !SimpleFlagArg
+    name: FORMAT
+- !Flag
+  optional: true
+  synonyms:
+  - -A
+  - --sequence-type
+  description: "The type of sequence data: 'protein', 'rna' or\n'dna'."
+  args: !SimpleFlagArg
+    name: TYPE
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --alphabet
+  description: "The set of symbols to count, e.g. 'AGTC'. All\ncharacters not in the\
+    \ alphabet are ignored. If\nneither the alphabet nor sequence-type are\nspecified\
+    \ then weblogo will examine the input\ndata and make an educated guess. See also\n\
+    --sequence-type, --ignore-lower-case"
+  args: !SimpleFlagArg
+    name: ALPHABET
+- !Flag
+  optional: true
+  synonyms:
+  - -U
+  - --units
+  description: "A unit of entropy ('bits' (default), 'nats',\n'digits'), or a unit\
+    \ offree energy ('kT',\n'kJ/mol', 'kcal/mol'), or 'probability' for\nprobabilities"
+  args: !SimpleFlagArg
+    name: UNIT
+- !Flag
+  optional: true
+  synonyms:
+  - --composition
+  description: "The expected composition of the sequences:\n'auto' (default), 'equiprobable',\
+    \ 'none' (do\nnot perform any compositional adjustment), a\nCG percentage, a species\
+    \ name (e.g. 'E. coli',\n'H. sapiens'), or an explicit distribution\n(e.g. \"\
+    {'A':10, 'C':40, 'G':40, 'T':10}\"). The\nautomatic option uses a typical distribution\n\
+    for proteins and equiprobable distribution for\neverything else."
+  args: !SimpleFlagArg
+    name: COMP.
+- !Flag
+  optional: true
+  synonyms:
+  - --weight
+  description: "The weight of prior data.  Default depends on\nalphabet length"
+  args: !SimpleFlagArg
+    name: NUMBER
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --first-index
+  description: "Index of first position in sequence data\n(default: 1)"
+  args: !SimpleFlagArg
+    name: INDEX
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --lower
+  description: Lower bound of sequence to display
+  args: !SimpleFlagArg
+    name: INDEX
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --upper
+  description: Upper bound of sequence to display
+  args: !SimpleFlagArg
+    name: INDEX
+- !Flag
+  optional: true
+  synonyms:
+  - --ignore-lower-case
+  description: "Disregard lower case letters and only count\nupper case letters in\
+    \ sequences."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --reverse
+  description: reverse sequences
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --complement
+  description: complement nucleic sequences
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --revcomp
+  description: reverse complement nucleic sequences
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --size
+  description: "Specify a standard logo size (small, medium\n(default), large)"
+  args: !SimpleFlagArg
+    name: LOGOSIZE
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --stacks-per-line
+  description: "Maximum number of logo stacks per logo line.\n(default: 40)"
+  args: !SimpleFlagArg
+    name: COUNT
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --title
+  description: Logo title text.
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --label
+  description: A figure label, e.g. '2a'
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -X
+  - --show-xaxis
+  description: "/NO      Display sequence numbers along x-axis?\n(default: True)"
+  args: !SimpleFlagArg
+    name: YES
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --xlabel
+  description: X-axis label
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --annotate
+  description: "A comma separated list of custom stack\nannotations, e.g. '1,3,4,5,6,7'.\
+    \  Annotation\nlist must be same length as sequences."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --rotate-numbers
+  description: "/NO  Draw X-axis numbers with vertical orientation\n(default: False)."
+  args: !SimpleFlagArg
+    name: YES
+- !Flag
+  optional: true
+  synonyms:
+  - --number-interval
+  description: "Distance between numbers on X-axis (default:\n5)"
+  args: !SimpleFlagArg
+    name: NUMBER
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --yaxis
+  description: "Height of yaxis in units. (Default: Maximum\nvalue with uninformative\
+    \ prior.)"
+  args: !SimpleFlagArg
+    name: NUMBER
+- !Flag
+  optional: true
+  synonyms:
+  - -Y
+  - --show-yaxis
+  description: "/NO      Display entropy scale along y-axis? (default:\nTrue)"
+  args: !SimpleFlagArg
+    name: YES
+- !Flag
+  optional: true
+  synonyms:
+  - -y
+  - --ylabel
+  description: "Y-axis label (default depends on plot type and\nunits)"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -E
+  - --show-ends
+  description: "/NO       Label the ends of the sequence? (default:\nFalse)"
+  args: !SimpleFlagArg
+    name: YES
+- !Flag
+  optional: true
+  synonyms:
+  - -P
+  - --fineprint
+  description: 'The fine print (default: weblogo version)'
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --ticmarks
+  description: 'Distance between ticmarks (default: 1.0)'
+  args: !SimpleFlagArg
+    name: NUMBER
+- !Flag
+  optional: true
+  synonyms:
+  - --errorbars
+  description: '/NO       Display error bars? (default: True)'
+  args: !SimpleFlagArg
+    name: YES
+- !Flag
+  optional: true
+  synonyms:
+  - --reverse-stacks
+  description: "/NO  Draw stacks with largest letters on top?\n(default: True)"
+  args: !SimpleFlagArg
+    name: YES
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --color-scheme
+  description: "Specify a standard color scheme (auto, base\npairing, charge, chemistry,\
+    \ classic,\nhydrophobicity, monochrome)"
+  args: !SimpleFlagArg
+    name: SCHEME
+- !Flag
+  optional: true
+  synonyms:
+  - -C
+  - --color
+  description: "SYMBOLS DESCRIPTION\nSpecify symbol colors, e.g. --color black AG\n\
+    'Purine' --color red TC 'Pyrimidine'"
+  args: !SimpleFlagArg
+    name: COLOR
+- !Flag
+  optional: true
+  synonyms:
+  - --default-color
+  description: Symbol color if not otherwise specified.
+  args: !SimpleFlagArg
+    name: COLOR
+- !Flag
+  optional: true
+  synonyms:
+  - --fontsize
+  description: 'Regular text font size in points (default: 10)'
+  args: !SimpleFlagArg
+    name: POINTS
+- !Flag
+  optional: true
+  synonyms:
+  - --title-fontsize
+  description: 'Title text font size in points (default: 12)'
+  args: !SimpleFlagArg
+    name: POINTS
+- !Flag
+  optional: true
+  synonyms:
+  - --small-fontsize
+  description: 'Small text font size in points (default: 6)'
+  args: !SimpleFlagArg
+    name: POINTS
+- !Flag
+  optional: true
+  synonyms:
+  - --number-fontsize
+  description: 'Axis numbers font size in points (default: 8)'
+  args: !SimpleFlagArg
+    name: POINTS
+- !Flag
+  optional: true
+  synonyms:
+  - --text-font
+  description: 'Specify font for labels (default: ArialMT)'
+  args: !SimpleFlagArg
+    name: FONT
+- !Flag
+  optional: true
+  synonyms:
+  - --logo-font
+  description: 'Specify font for logo (default: Arial-BoldMT)'
+  args: !SimpleFlagArg
+    name: FONT
+- !Flag
+  optional: true
+  synonyms:
+  - --title-font
+  description: 'Specify font for title (default: ArialMT)'
+  args: !SimpleFlagArg
+    name: FONT
+- !Flag
+  optional: true
+  synonyms:
+  - -W
+  - --stack-width
+  description: 'Width of a logo stack (default: 10.8)'
+  args: !SimpleFlagArg
+    name: POINTS
+- !Flag
+  optional: true
+  synonyms:
+  - --aspect-ratio
+  description: 'Ratio of stack height to width (default: 5)'
+  args: !SimpleFlagArg
+    name: POINTS
+- !Flag
+  optional: true
+  synonyms:
+  - --box
+  description: '/NO             Draw boxes around symbols? (default: no)'
+  args: !SimpleFlagArg
+    name: YES
+- !Flag
+  optional: true
+  synonyms:
+  - --resolution
+  description: "Bitmap resolution in dots per inch (DPI).\n(Default: 96 DPI, except\
+    \ png_print, 600 DPI)\nLow resolution bitmaps (DPI<300) are\nantialiased."
+  args: !SimpleFlagArg
+    name: DPI
+- !Flag
+  optional: true
+  synonyms:
+  - --scale-width
+  description: "/NO     Scale the visible stack width by the fraction\nof symbols\
+    \ in the column?  (I.e. columns with\nmany gaps of unknowns are narrow.)  (Default:\n\
+    yes)"
+  args: !SimpleFlagArg
+    name: YES
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: "/NO           Output additional diagnostic information.\n(Default:\
+    \ False)"
+  args: !SimpleFlagArg
+    name: YES
+- !Flag
+  optional: true
+  synonyms:
+  - --errorbar-fraction
+  description: "Sets error bars display proportion (default:\n0.9)"
+  args: !SimpleFlagArg
+    name: NUMBER
+- !Flag
+  optional: true
+  synonyms:
+  - --errorbar-width-fraction
+  description: "Sets error bars width display proportion\n(default: 0.25)"
+  args: !SimpleFlagArg
+    name: NUMBER
+- !Flag
+  optional: true
+  synonyms:
+  - --errorbar-gray
+  description: "Sets error bars' gray scale percentage\n(default: 0.75)"
+  args: !SimpleFlagArg
+    name: NUMBER
+- !Flag
+  optional: true
+  synonyms:
+  - --serve
+  description: "Start a standalone WebLogo server for creating\nsequence logos."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --port
+  description: 'Listen to this local port. (Default: 8080)'
+  args: !SimpleFlagArg
+    name: PORT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "Usage: weblogo [options]  < sequence_data.fa > sequence_logo.eps\n\nCreate\
+  \ sequence logos from biological sequence alignments.\n\nOptions:\n     --version\
+  \                  show program's version number and exit\n  -h --help         \
+  \            show this help message and exit\n\n  Input/Output Options:\n    -f\
+  \ --fin FILENAME           Sequence input file (default: stdin)\n       --upload\
+  \ URL             Upload input file from URL\n    -D --datatype FORMAT        Type\
+  \ of multiple sequence alignment or\n                                position weight\
+  \ matrix file: (clustal, fasta,\n                                msf, genbank, nbrf,\
+  \ nexus, phylip, stockholm,\n                                intelligenetics, table,\
+  \ array, transfac)\n    -o --fout FILENAME          Output file (default: stdout)\n\
+  \    -F --format FORMAT          Format of output: eps (default), png,\n       \
+  \                         png_print, pdf, jpeg, svg, logodata\n\n  Logo Data Options:\n\
+  \    -A --sequence-type TYPE     The type of sequence data: 'protein', 'rna' or\n\
+  \                                'dna'.\n    -a --alphabet ALPHABET      The set\
+  \ of symbols to count, e.g. 'AGTC'. All\n                                characters\
+  \ not in the alphabet are ignored. If\n                                neither the\
+  \ alphabet nor sequence-type are\n                                specified then\
+  \ weblogo will examine the input\n                                data and make\
+  \ an educated guess. See also\n                                --sequence-type,\
+  \ --ignore-lower-case\n    -U --units UNIT             A unit of entropy ('bits'\
+  \ (default), 'nats',\n                                'digits'), or a unit offree\
+  \ energy ('kT',\n                                'kJ/mol', 'kcal/mol'), or 'probability'\
+  \ for\n                                probabilities\n       --composition COMP.\
+  \      The expected composition of the sequences:\n                            \
+  \    'auto' (default), 'equiprobable', 'none' (do\n                            \
+  \    not perform any compositional adjustment), a\n                            \
+  \    CG percentage, a species name (e.g. 'E. coli',\n                          \
+  \      'H. sapiens'), or an explicit distribution\n                            \
+  \    (e.g. \"{'A':10, 'C':40, 'G':40, 'T':10}\"). The\n                        \
+  \        automatic option uses a typical distribution\n                        \
+  \        for proteins and equiprobable distribution for\n                      \
+  \          everything else.\n       --weight NUMBER          The weight of prior\
+  \ data.  Default depends on\n                                alphabet length\n \
+  \   -i --first-index INDEX      Index of first position in sequence data\n     \
+  \                           (default: 1)\n    -l --lower INDEX            Lower\
+  \ bound of sequence to display\n    -u --upper INDEX            Upper bound of sequence\
+  \ to display\n\n  Transformations:\n    Optional transformations of the sequence\
+  \ data.\n\n       --ignore-lower-case      Disregard lower case letters and only\
+  \ count\n                                upper case letters in sequences.\n    \
+  \   --reverse                reverse sequences\n       --complement            \
+  \ complement nucleic sequences\n       --revcomp                reverse complement\
+  \ nucleic sequences\n\n  Logo Format Options:\n    These options control the format\
+  \ and display of the logo.\n\n    -s --size LOGOSIZE          Specify a standard\
+  \ logo size (small, medium\n                                (default), large)\n\
+  \    -n --stacks-per-line COUNT  Maximum number of logo stacks per logo line.\n\
+  \                                (default: 40)\n    -t --title TEXT            \
+  \ Logo title text.\n       --label TEXT             A figure label, e.g. '2a'\n\
+  \    -X --show-xaxis YES/NO      Display sequence numbers along x-axis?\n      \
+  \                          (default: True)\n    -x --xlabel TEXT            X-axis\
+  \ label\n       --annotate TEXT          A comma separated list of custom stack\n\
+  \                                annotations, e.g. '1,3,4,5,6,7'.  Annotation\n\
+  \                                list must be same length as sequences.\n      \
+  \ --rotate-numbers YES/NO  Draw X-axis numbers with vertical orientation\n     \
+  \                           (default: False).\n       --number-interval NUMBER\n\
+  \                                Distance between numbers on X-axis (default:\n\
+  \                                5)\n    -S --yaxis NUMBER           Height of yaxis\
+  \ in units. (Default: Maximum\n                                value with uninformative\
+  \ prior.)\n    -Y --show-yaxis YES/NO      Display entropy scale along y-axis? (default:\n\
+  \                                True)\n    -y --ylabel TEXT            Y-axis label\
+  \ (default depends on plot type and\n                                units)\n  \
+  \  -E --show-ends YES/NO       Label the ends of the sequence? (default:\n     \
+  \                           False)\n    -P --fineprint TEXT         The fine print\
+  \ (default: weblogo version)\n       --ticmarks NUMBER        Distance between ticmarks\
+  \ (default: 1.0)\n       --errorbars YES/NO       Display error bars? (default:\
+  \ True)\n       --reverse-stacks YES/NO  Draw stacks with largest letters on top?\n\
+  \                                (default: True)\n\n  Color Options:\n    Colors\
+  \ can be specified using CSS2 syntax. e.g. 'red', '#FF0000', etc\n\n    -c --color-scheme\
+  \ SCHEME    Specify a standard color scheme (auto, base\n                      \
+  \          pairing, charge, chemistry, classic,\n                              \
+  \  hydrophobicity, monochrome)\n    -C --color COLOR SYMBOLS DESCRIPTION \n    \
+  \                            Specify symbol colors, e.g. --color black AG\n    \
+  \                            'Purine' --color red TC 'Pyrimidine'\n       --default-color\
+  \ COLOR    Symbol color if not otherwise specified.\n\n  Font Format Options:\n\
+  \    These options provide control over the font sizes and types.\n\n       --fontsize\
+  \ POINTS        Regular text font size in points (default: 10)\n       --title-fontsize\
+  \ POINTS  Title text font size in points (default: 12)\n       --small-fontsize\
+  \ POINTS  Small text font size in points (default: 6)\n       --number-fontsize\
+  \ POINTS\n                                Axis numbers font size in points (default:\
+  \ 8)\n       --text-font FONT         Specify font for labels (default: ArialMT)\n\
+  \       --logo-font FONT         Specify font for logo (default: Arial-BoldMT)\n\
+  \       --title-font FONT        Specify font for title (default: ArialMT)\n\n \
+  \ Advanced Format Options:\n    These options provide fine control over the display\
+  \ of the logo.\n\n    -W --stack-width POINTS     Width of a logo stack (default:\
+  \ 10.8)\n       --aspect-ratio POINTS    Ratio of stack height to width (default:\
+  \ 5)\n       --box YES/NO             Draw boxes around symbols? (default: no)\n\
+  \       --resolution DPI         Bitmap resolution in dots per inch (DPI).\n   \
+  \                             (Default: 96 DPI, except png_print, 600 DPI)\n   \
+  \                             Low resolution bitmaps (DPI<300) are\n           \
+  \                     antialiased.\n       --scale-width YES/NO     Scale the visible\
+  \ stack width by the fraction\n                                of symbols in the\
+  \ column?  (I.e. columns with\n                                many gaps of unknowns\
+  \ are narrow.)  (Default:\n                                yes)\n       --debug\
+  \ YES/NO           Output additional diagnostic information.\n                 \
+  \               (Default: False)\n       --errorbar-fraction NUMBER\n          \
+  \                      Sets error bars display proportion (default:\n          \
+  \                      0.9)\n       --errorbar-width-fraction NUMBER\n         \
+  \                       Sets error bars width display proportion\n             \
+  \                   (default: 0.25)\n       --errorbar-gray NUMBER   Sets error\
+  \ bars' gray scale percentage\n                                (default: 0.75)\n\
+  \n  WebLogo Server:\n    Run a standalone webserver on a local port.\n\n       --serve\
+  \                  Start a standalone WebLogo server for creating\n            \
+  \                    sequence logos.\n       --port PORT              Listen to\
+  \ this local port. (Default: 8080)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/weblogo:3.7.8--py_0

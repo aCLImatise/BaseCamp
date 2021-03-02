@@ -1,0 +1,156 @@
+!Command
+command:
+- hicMergeDomains
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --domainFiles
+  - -d
+  description: "The domain files of the different resolutions is\nrequired"
+  args: !RepeatFlagArg
+    name: DOMAINFILES
+- !Flag
+  optional: true
+  synonyms:
+  - --proteinFile
+  - -p
+  description: "In order to be able to better assess the relationship\nbetween TADs,\
+    \ the associated protein file (e.g. CTCF\nfor mammals) can be included. The protein\
+    \ file is\nrequired in broadpeak format"
+  args: !SimpleFlagArg
+    name: PROTEINFILE
+- !Flag
+  optional: true
+  synonyms:
+  - --minimumNumberOfPeaks
+  - -m
+  description: "Optional parameter to adjust the number of protein\npeaks when adapting\
+    \ the resolution to the domain\nfiles. At least minimumNumberOfPeaks of unique\
+    \ peaks\nmust be in a bin to considered. Otherwise the bin is\ntreated like it\
+    \ has no peaks (Default: 1)."
+  args: !SimpleFlagArg
+    name: MINIMUMNUMBEROFPEAKS
+- !Flag
+  optional: true
+  synonyms:
+  - --value
+  - -v
+  description: "Determine a value by how much the boundaries of two\nTADs must at\
+    \ least differ to consider them as two\nseparate TADs (Default: 5000)."
+  args: !SimpleFlagArg
+    name: VALUE
+- !Flag
+  optional: true
+  synonyms:
+  - --percent
+  - -pe
+  description: "For the relationship determination, a percentage is\nrequired from\
+    \ which area coverage the TADs are related\nto each other.For example, a relationship\
+    \ should be\nentered from 5 percent area coverage -p 0.05 (Default:\n0.5)."
+  args: !SimpleFlagArg
+    name: PERCENT
+- !Flag
+  optional: true
+  synonyms:
+  - --outputMergedList
+  - -om
+  description: "File name for the merged domains list (Default:\nmergedDomains.bed)."
+  args: !SimpleFlagArg
+    name: OUTPUTMERGEDLIST
+- !Flag
+  optional: true
+  synonyms:
+  - --outputRelationList
+  - -or
+  description: "File name for the relationship list of the TADs\n(Default: relationList.txt)."
+  args: !SimpleFlagArg
+    name: OUTPUTRELATIONLIST
+- !Flag
+  optional: true
+  synonyms:
+  - --outputTreePlotPrefix
+  - -ot
+  description: "File name prefix for the relationship tree of the TADs\n(Default:\
+    \ relationship_tree_)."
+  args: !SimpleFlagArg
+    name: OUTPUTTREEPLOTPREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - --outputTreePlotFormat
+  - -of
+  description: "File format of the relationship tree. Supported\nformats are listed\
+    \ on:\nhttps://www.graphviz.org/doc/info/output.html\n(Default: pdf)."
+  args: !SimpleFlagArg
+    name: OUTPUTTREEPLOTFORMAT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: hicMergeDomains --domainFiles DOMAINFILES [DOMAINFILES ...]\n \
+  \                      [--proteinFile PROTEINFILE]\n                       [--minimumNumberOfPeaks\
+  \ MINIMUMNUMBEROFPEAKS]\n                       [--value VALUE] [--percent PERCENT]\n\
+  \                       [--outputMergedList OUTPUTMERGEDLIST]\n                \
+  \       [--outputRelationList OUTPUTRELATIONLIST]\n                       [--outputTreePlotPrefix\
+  \ OUTPUTTREEPLOTPREFIX]\n                       [--outputTreePlotFormat OUTPUTTREEPLOTFORMAT]\
+  \ [--help]\n                       [--version]\n\nhicMergeDomains takes as input\
+  \ multiple TAD domain files from hicFindTads. It merges TADs from different resolutions\
+  \ to one TAD domains file,\nconsiders protein peaks from known TAD binding sites\
+  \ and computes a dependency graph of the TADs.\n\nTwo TADs are considered as one\
+  \ if they don't overlap at x bins given by `--value`; TAD borders need to match\
+  \ the protein peaks given by `--proteinFile`;\na relation between two TADs is given\
+  \ by their overlap of area in percent, parameter `--percent`. The protein peaks\
+  \ are only considered if in one bin at least `--minPeak`.\n\nAn example usage is:\n\
+  \n`$ hicMergeDomains --domainFiles 10kbtad_domains.bed 50kbtad_domains.bed --proteinFile\
+  \ ctcf_sorted.bed --outputMergedList two_files_ctcf --outputRelationList two_files_relation_ctcf\
+  \ --outputTreePlotPrefix two_files_plot_ctcf --outputTreePlotFormat pdf`\n\nRequired\
+  \ arguments:\n  --domainFiles DOMAINFILES [DOMAINFILES ...], -d DOMAINFILES [DOMAINFILES\
+  \ ...]\n                        The domain files of the different resolutions is\n\
+  \                        required\n\nOptional arguments:\n  --proteinFile PROTEINFILE,\
+  \ -p PROTEINFILE\n                        In order to be able to better assess the\
+  \ relationship\n                        between TADs, the associated protein file\
+  \ (e.g. CTCF\n                        for mammals) can be included. The protein\
+  \ file is\n                        required in broadpeak format\n  --minimumNumberOfPeaks\
+  \ MINIMUMNUMBEROFPEAKS, -m MINIMUMNUMBEROFPEAKS\n                        Optional\
+  \ parameter to adjust the number of protein\n                        peaks when\
+  \ adapting the resolution to the domain\n                        files. At least\
+  \ minimumNumberOfPeaks of unique peaks\n                        must be in a bin\
+  \ to considered. Otherwise the bin is\n                        treated like it has\
+  \ no peaks (Default: 1).\n  --value VALUE, -v VALUE\n                        Determine\
+  \ a value by how much the boundaries of two\n                        TADs must at\
+  \ least differ to consider them as two\n                        separate TADs (Default:\
+  \ 5000).\n  --percent PERCENT, -pe PERCENT\n                        For the relationship\
+  \ determination, a percentage is\n                        required from which area\
+  \ coverage the TADs are related\n                        to each other.For example,\
+  \ a relationship should be\n                        entered from 5 percent area\
+  \ coverage -p 0.05 (Default:\n                        0.5).\n  --outputMergedList\
+  \ OUTPUTMERGEDLIST, -om OUTPUTMERGEDLIST\n                        File name for\
+  \ the merged domains list (Default:\n                        mergedDomains.bed).\n\
+  \  --outputRelationList OUTPUTRELATIONLIST, -or OUTPUTRELATIONLIST\n           \
+  \             File name for the relationship list of the TADs\n                \
+  \        (Default: relationList.txt).\n  --outputTreePlotPrefix OUTPUTTREEPLOTPREFIX,\
+  \ -ot OUTPUTTREEPLOTPREFIX\n                        File name prefix for the relationship\
+  \ tree of the TADs\n                        (Default: relationship_tree_).\n  --outputTreePlotFormat\
+  \ OUTPUTTREEPLOTFORMAT, -of OUTPUTTREEPLOTFORMAT\n                        File format\
+  \ of the relationship tree. Supported\n                        formats are listed\
+  \ on:\n                        https://www.graphviz.org/doc/info/output.html\n \
+  \                       (Default: pdf).\n  --help, -h            show this help\
+  \ message and exit\n  --version             show program's version number and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/hicexplorer:3.6--py_0

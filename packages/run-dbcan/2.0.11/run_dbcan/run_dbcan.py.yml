@@ -1,0 +1,239 @@
+!Command
+command:
+- run_dbcan.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: inputFile
+  description: User input file. Must be in FASTA format.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --cluster
+  - -c
+  description: "Predict CGCs via CGCFinder. This argument requires an\nauxillary locations\
+    \ file if a protein input is being\nused"
+  args: !SimpleFlagArg
+    name: CLUSTER
+- !Flag
+  optional: true
+  synonyms:
+  - --dbCANFile
+  description: "Indicate the file name of HMM database such as\ndbCAN.txt, please\
+    \ use the newest one from dbCAN2\nwebsite."
+  args: !SimpleFlagArg
+    name: DBCANFILE
+- !Flag
+  optional: true
+  synonyms:
+  - --dia_eval
+  description: DIAMOND E Value
+  args: !SimpleFlagArg
+    name: DIA_EVAL
+- !Flag
+  optional: true
+  synonyms:
+  - --dia_cpu
+  description: Number of CPU cores that DIAMOND is allowed to use
+  args: !SimpleFlagArg
+    name: DIA_CPU
+- !Flag
+  optional: true
+  synonyms:
+  - --hmm_eval
+  description: HMMER E Value
+  args: !SimpleFlagArg
+    name: HMM_EVAL
+- !Flag
+  optional: true
+  synonyms:
+  - --hmm_cov
+  description: HMMER Coverage val
+  args: !SimpleFlagArg
+    name: HMM_COV
+- !Flag
+  optional: true
+  synonyms:
+  - --hmm_cpu
+  description: Number of CPU cores that HMMER is allowed to use
+  args: !SimpleFlagArg
+    name: HMM_CPU
+- !Flag
+  optional: true
+  synonyms:
+  - --hotpep_hits
+  description: Hotpep Hit value
+  args: !SimpleFlagArg
+    name: HOTPEP_HITS
+- !Flag
+  optional: true
+  synonyms:
+  - --hotpep_freq
+  description: Hotpep Frequency value
+  args: !SimpleFlagArg
+    name: HOTPEP_FREQ
+- !Flag
+  optional: true
+  synonyms:
+  - --hotpep_cpu
+  description: Number of CPU cores that Hotpep is allowed to use
+  args: !SimpleFlagArg
+    name: HOTPEP_CPU
+- !Flag
+  optional: true
+  synonyms:
+  - --tf_eval
+  description: tf.hmm HMMER E Value
+  args: !SimpleFlagArg
+    name: TF_EVAL
+- !Flag
+  optional: true
+  synonyms:
+  - --tf_cov
+  description: tf.hmm HMMER Coverage val
+  args: !SimpleFlagArg
+    name: TF_COV
+- !Flag
+  optional: true
+  synonyms:
+  - --tf_cpu
+  description: tf.hmm Number of CPU cores that HMMER is allowed to
+  args: !SimpleFlagArg
+    name: TF_CPU
+- !Flag
+  optional: true
+  synonyms:
+  - --stp_cov
+  description: stp.hmm HMMER Coverage val
+  args: !SimpleFlagArg
+    name: STP_COV
+- !Flag
+  optional: true
+  synonyms:
+  - --stp_cpu
+  description: stp.hmm Number of CPU cores that HMMER is allowed to
+  args: !SimpleFlagArg
+    name: STP_CPU
+- !Flag
+  optional: true
+  synonyms:
+  - --out_dir
+  description: Output directory
+  args: !SimpleFlagArg
+    name: OUT_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --db_dir
+  description: Database directory
+  args: !SimpleFlagArg
+    name: DB_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --cgc_dis
+  description: CGCFinder Distance value
+  args: !SimpleFlagArg
+    name: CGC_DIS
+- !Flag
+  optional: true
+  synonyms:
+  - --cgc_sig_genes
+  description: CGCFinder Signature Genes value
+  args: !ChoiceFlagArg
+    choices: !!set
+      all:
+      tp:
+      tf:
+- !Flag
+  optional: true
+  synonyms:
+  - --tools
+  description: "[{hmmer,diamond,hotpep,all} ...], -t {hmmer,diamond,hotpep,all} [{hmmer,diamond,hotpep,all}\
+    \ ...]\nChoose a combination of tools to run"
+  args: !ChoiceFlagArg
+    choices: !!set
+      hotpep:
+      hmmer:
+      all:
+      diamond:
+- !Flag
+  optional: true
+  synonyms:
+  - --use_signalP
+  description: "Use signalP or not, remember, you need to setup\nsignalP tool first.\
+    \ Because of signalP license, Docker\nversion does not have signalP."
+  args: !SimpleFlagArg
+    name: USE_SIGNALP
+- !Flag
+  optional: true
+  synonyms:
+  - --gram
+  - -g
+  description: "Choose gram+(p) or gram-(n) for proteome/prokaryote\nnucleotide, which\
+    \ are params of SingalP, only if user\nuse singalP\n"
+  args: !ChoiceFlagArg
+    choices: !!set
+      p:
+      n:
+      all:
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: run_dbcan.py [-h] [--cluster CLUSTER] [--dbCANFile DBCANFILE]\n\
+  \                    [--dia_eval DIA_EVAL] [--dia_cpu DIA_CPU]\n               \
+  \     [--hmm_eval HMM_EVAL] [--hmm_cov HMM_COV]\n                    [--hmm_cpu\
+  \ HMM_CPU] [--hotpep_hits HOTPEP_HITS]\n                    [--hotpep_freq HOTPEP_FREQ]\
+  \ [--hotpep_cpu HOTPEP_CPU]\n                    [--tf_eval TF_EVAL] [--tf_cov TF_COV]\
+  \ [--tf_cpu TF_CPU]\n                    [--stp_eval STP_EVAL] [--stp_cov STP_COV]\n\
+  \                    [--stp_cpu STP_CPU] [--out_pre OUT_PRE]\n                 \
+  \   [--out_dir OUT_DIR] [--db_dir DB_DIR] [--cgc_dis CGC_DIS]\n                \
+  \    [--cgc_sig_genes {tp,tf,all}]\n                    [--tools {hmmer,diamond,hotpep,all}\
+  \ [{hmmer,diamond,hotpep,all} ...]]\n                    [--use_signalP USE_SIGNALP]\
+  \ [--gram {p,n,all}]\n                    inputFile {protein,prok,meta}\n\ndbCAN2\
+  \ Driver Script\n\npositional arguments:\n  inputFile             User input file.\
+  \ Must be in FASTA format.\n  {protein,prok,meta}   Type of sequence input. protein=proteome;\n\
+  \                        prok=prokaryote; meta=metagenome\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  --cluster CLUSTER, -c\
+  \ CLUSTER\n                        Predict CGCs via CGCFinder. This argument requires\
+  \ an\n                        auxillary locations file if a protein input is being\n\
+  \                        used\n  --dbCANFile DBCANFILE\n                       \
+  \ Indicate the file name of HMM database such as\n                        dbCAN.txt,\
+  \ please use the newest one from dbCAN2\n                        website.\n  --dia_eval\
+  \ DIA_EVAL   DIAMOND E Value\n  --dia_cpu DIA_CPU     Number of CPU cores that DIAMOND\
+  \ is allowed to use\n  --hmm_eval HMM_EVAL   HMMER E Value\n  --hmm_cov HMM_COV\
+  \     HMMER Coverage val\n  --hmm_cpu HMM_CPU     Number of CPU cores that HMMER\
+  \ is allowed to use\n  --hotpep_hits HOTPEP_HITS\n                        Hotpep\
+  \ Hit value\n  --hotpep_freq HOTPEP_FREQ\n                        Hotpep Frequency\
+  \ value\n  --hotpep_cpu HOTPEP_CPU\n                        Number of CPU cores\
+  \ that Hotpep is allowed to use\n  --tf_eval TF_EVAL     tf.hmm HMMER E Value\n\
+  \  --tf_cov TF_COV       tf.hmm HMMER Coverage val\n  --tf_cpu TF_CPU       tf.hmm\
+  \ Number of CPU cores that HMMER is allowed to\n                        use\n  --stp_eval\
+  \ STP_EVAL   stp.hmm HMMER E Value\n  --stp_cov STP_COV     stp.hmm HMMER Coverage\
+  \ val\n  --stp_cpu STP_CPU     stp.hmm Number of CPU cores that HMMER is allowed\
+  \ to\n                        use\n  --out_pre OUT_PRE     Output files prefix\n\
+  \  --out_dir OUT_DIR     Output directory\n  --db_dir DB_DIR       Database directory\n\
+  \  --cgc_dis CGC_DIS     CGCFinder Distance value\n  --cgc_sig_genes {tp,tf,all}\n\
+  \                        CGCFinder Signature Genes value\n  --tools {hmmer,diamond,hotpep,all}\
+  \ [{hmmer,diamond,hotpep,all} ...], -t {hmmer,diamond,hotpep,all} [{hmmer,diamond,hotpep,all}\
+  \ ...]\n                        Choose a combination of tools to run\n  --use_signalP\
+  \ USE_SIGNALP\n                        Use signalP or not, remember, you need to\
+  \ setup\n                        signalP tool first. Because of signalP license,\
+  \ Docker\n                        version does not have signalP.\n  --gram {p,n,all},\
+  \ -g {p,n,all}\n                        Choose gram+(p) or gram-(n) for proteome/prokaryote\n\
+  \                        nucleotide, which are params of SingalP, only if user\n\
+  \                        use singalP\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/run-dbcan:2.0.11--pyh3252c3a_0

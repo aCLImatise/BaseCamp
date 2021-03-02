@@ -3,12 +3,12 @@ id: abyss_junction.cwl
 inputs:
 - id: in_ignore
   doc: ignore junctions seen in FILE
-  type: File
+  type: File?
   inputBinding:
     prefix: --ignore
 - id: in_verbose
   doc: display verbose output
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --verbose
 - id: in_overlap
@@ -25,6 +25,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - abyss-junction

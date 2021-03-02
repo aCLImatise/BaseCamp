@@ -1,0 +1,357 @@
+!Command
+command:
+- msaccess
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: options
+  description: FILTER OPTIONS
+- !Positional
+  optional: false
+  position: 0
+  name: metadata
+  description: (write file-level metadata)
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: '[ --filelist ] arg    : text file containing filenames to process'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: '[ --outdir ] arg (=.) : output directory'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: "[ --config ] arg      : configuration file (containing settings as\n\
+    optionName=value)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  description: '[ --exec ] arg        : execute command, e.g --exec "tic mz=409-412"'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --filter
+  description: ": add a spectrum list filter, e.g. --filter=\"msLevel\n[2,3]\""
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: '[ --verbose ]         : print progress messages'
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: ': show this message, with extra detail on filter'
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: msaccess [options] [filenames]\nMassSpecAccess - command line access\
+  \ to mass spec data files\n                 uses -x/--exec to specify analysis command.\n\
+  \nOptions:\n\n  -f [ --filelist ] arg    : text file containing filenames to process\n\
+  \  -o [ --outdir ] arg (=.) : output directory\n  -c [ --config ] arg      : configuration\
+  \ file (containing settings as \n                           optionName=value)\n\
+  \  -x [ --exec ] arg        : execute command, e.g --exec \"tic mz=409-412\"\n \
+  \ --filter arg             : add a spectrum list filter, e.g. --filter=\"msLevel\n\
+  \                           [2,3]\"\n  -v [ --verbose ]         : print progress\
+  \ messages\n  --help                   : show this message, with extra detail on\
+  \ filter \n                           options\n\nFILTER OPTIONS\n\nNote: Filters\
+  \ are applied sequentially in the order that you list them, and the\nsequence order\n\
+  can make a large difference in your output.  In particular, the peakPicking\nfilter\
+  \ must be first\nin line if you wish to use the vendor-supplied centroiding algorithms\
+  \ since\nthese use the vendor\nDLLs, which only operate on raw untransformed data.\n\
+  \nMany filters take 'int_set' arguments.  An 'int_set' is a list of intervals of\n\
+  the form [a,b] or a[-][b].\nFor example '[0,3]' and '0-3' both mean 'the set of\
+  \ integers from 0 to 3\ninclusive'.\n'1-' means 'the set of integers from 1 to the\
+  \ largest allowable number'.  \n'9' is also an integer set, equivalent to '[9,9]'.\n\
+  '[0,2] 5-7' is the set '0 1 2 5 6 7'. \nindex <index_value_set>\nSelects spectra\
+  \ by index - an index value 0-based numerical order in which the\nspectrum appears\
+  \ in the input.\n  <index_value_set> is an int_set of indexes.\n\nmsLevel <mslevels>\n\
+  This filter selects only spectra with the indicated <mslevels>, expressed as an\n\
+  int_set.\n\nchargeState <charge_states>\nThis filter keeps spectra that match the\
+  \ listed charge state(s), expressed as an\nint_set.  Both known/single and possible/multiple\
+  \ charge states are tested.  Use\n0 to include spectra with no charge state at all.\n\
+  \nprecursorRecalculation \nThis filter recalculates the precursor m/z and charge\
+  \ for MS2 spectra. It looks\nat the prior MS1 scan to better infer the parent mass.\
+  \  However, it only works\non orbitrap and FT data,although it does not use any\
+  \ 3rd party (vendor DLL)\ncode.  Since the time the code was written, Thermo has\
+  \ since fixed up its own\nestimation in response, so it's less critical than it\
+  \ used to be (though can\nstill be useful).\n\nmzRefiner input1.pepXML input2.mzid\
+  \ [msLevels=<1->]\n[thresholdScore=<CV_Score_Name>] [thresholdValue=<floatset>]\n\
+  [thresholdStep=<float>] [maxSteps=<count>]\nThis filter recalculates the m/z and\
+  \ charges, adjusting precursors for MS2\nspectra and spectra masses for MS1 spectra.\
+  \ It uses an ident file with a\nthreshold field and value to calculate the error\
+  \ and will then choose a shifting\nmechanism to correct masses throughout the file.\
+  \ It only works on orbitrap, FT,\nand TOF data. It is designed to work on mzML files\
+  \ created by msconvert from a\nsingle dataset (single run), and with an identification\
+  \ file created using that\nmzML file. It does not use any 3rd party (vendor DLL)\
+  \ code. Recommended Scores\nand thresholds: MS-GF:SpecEValue,-1e-10 (<1e-10); MyriMatch:MVH,35-\
+  \ (>35);\nxcorr,3- (>3)\n\nlockmassRefiner mz=<real> mzNegIons=<real (mz)> tol=<real\
+  \ (1.0 Daltons)>\nFor Waters data, adjusts m/z values according to the specified\
+  \ lockmass m/z and\ntolerance. Distinct m/z value for negative ions is optional\
+  \ and defaults to the\ngiven mz value. For other data, currently does nothing.\n\
+  \nprecursorRefine \nThis filter recalculates the precursor m/z and charge for MS2\
+  \ spectra. It looks\nat the prior MS1 scan to better infer the parent mass.  It\
+  \ only works on\norbitrap, FT, and TOF data. It does not use any 3rd party (vendor\
+  \ DLL) code.\n\npeakPicking [<PickerType> [snr=<minimum signal-to-noise ratio>]\n\
+  [peakSpace=<minimum peak spacing>] [msLevel=<ms_levels>]]\nThis filter performs\
+  \ centroiding on spectrawith the selected <ms_levels>,\nexpressed as an int_set.\
+  \  The value for <PickerType> must be \"cwt\" or \"vendor\":\nwhen <PickerType>\
+  \ = \"vendor\", vendor (Windows DLL) code is used if available. \nIMPORTANT NOTE:\
+  \ since this filter operates on the raw data through the vendor\nDLLs, IT MUST BE\
+  \ THE FIRST FILTER IN ANY LIST OF FILTERS when \"vendor\" is used.\nThe other option\
+  \ for PickerType is \"cwt\", which uses ProteoWizard's\nwavelet-based algorithm\
+  \ for performing peak-picking with a wavelet-space\nsignal-to-noise ratio of <signal-to-noise\
+  \ ratio>.\nDefaults:\n <PickerType> is a low-quality (non-vendor) local maxima algorithm\n\
+  \ <signal-to-noise ratio> = 1.0\n <minimum peak spacing> = 0.1\n <ms_levels> = 1-\n\
+  \ \n\nscanNumber <scan_numbers>\nThis filter selects spectra by scan number.  Depending\
+  \ on the input data type,\nscan number and spectrum index are not always the same\
+  \ thing - scan numbers are\nnot always contiguous, and are usually 1-based.\n<scan_numbers>\
+  \ is an int_set of scan numbers to be kept.\n\nscanEvent <scan_event_set>\nThis\
+  \ filter selects spectra by scan event.  For example, to include all scan\nevents\
+  \ except scan event 5, use filter \"scanEvent 1-4 6-\".  A \"scan event\" is a\n\
+  preset scan configuration: a user-defined scan configuration that specifies the\n\
+  instrumental settings in which a spectrum is acquired. An instrument may cycle\n\
+  through a list of preset scan configurations to acquire data. This is a more\ngeneric\
+  \ term for the Thermo \"scan event\", which is defined in the Thermo\nXcalibur glossary\
+  \ as: \"a mass spectrometer scan that is defined by choosing the\nnecessary scan\
+  \ parameter settings. Multiple scan events can be defined for each\nsegment of time.\"\
+  .\n\nscanTime <scan_time_range>\nThis filter selects only spectra within a given\
+  \ time range.\n  <scan_time_range> is a time range, specified in seconds.  For example,\
+  \ to\nselect only spectra within the second minute of the run, use \"scanTime\n\
+  [60-119.99]\".\n\nsortByScanTime \nThis filter reorders spectra, sorting them by\
+  \ ascending scan start time.\n\nstripIT \nThis filter rejects ion trap data spectra\
+  \ with MS level 1.\n\nmetadataFixer \nThis filter is used to add or replace a spectra's\
+  \ TIC/BPI metadata, usually\nafter peakPicking where the change from profile to\
+  \ centroided data may make the\nTIC and BPI values inconsistent with the revised\
+  \ scan data.  The filter\ntraverses the m/z intensity arrays to find the sum and\
+  \ max. For example, in\nmsconvert it can be used as: --filter \"peakPicking true\
+  \ 1-\" --filter\nmetadataFixer.  It can also be used without peak picking for some\
+  \ strange\nresults. Certainly adding up all the samples of profile data to get the\
+  \ TIC is\njust wrong, but we do it anyway.\n\ntitleMaker <format_string>\nThis filter\
+  \ adds or replaces spectrum titles according to specified\n<format_string>. You\
+  \ can use it, for example, to customize the TITLE line in MGF\noutput in msconvert.\
+  \  The following keywords are recognized: \n   \"<RunId>\" - prints the spectrum's\
+  \ Run id - for example, \"Data.d\" from\n\"C:/Agilent/Data.d/AcqData/mspeak.bin\"\
+  \n   \"<Index>\" - prints the spectrum's index\n   \"<Id>\" - prints the spectrum's\
+  \ nativeID\n   \"<SourcePath>\" - prints the path of the spectrum's source data\n\
+  \   \"<ScanNumber>\" - if the nativeID can be represented as a single number,\n\
+  prints that number, else index+1\n   \"<ActivationType>\" - for the first precursor,\
+  \ prints the spectrum's\n\"dissociation method\" value\n   \"<IsolationMz>\" - for\
+  \ the first precursor, prints the the spectrum's\n\"isolation target m/z\" value\n\
+  \   \"<PrecursorSpectrumId>\" - prints the nativeID of the spectrum of the first\n\
+  precursor\n   \"<SelectedIonMz>\" - prints the m/z value of the first selected ion\
+  \ of the\nfirst precursor\n   \"<ChargeState>\" - prints the charge state for the\
+  \ first selected ion of the\nfirst precursor\n   \"<SpectrumType>\" - prints the\
+  \ spectrum type\n   \"<ScanStartTimeInSeconds>\" - prints the spectrum's first scan's\
+  \ start time,\nin seconds\n   \"<ScanStartTimeInMinutes>\" - prints the spectrum's\
+  \ first scan's start time,\nin minutes\n   \"<BasePeakMz>\" - prints the spectrum's\
+  \ base peak m/z\n   \"<BasePeakIntensity>\" - prints the spectrum's base peak intensity\n\
+  \   \"<TotalIonCurrent>\" - prints the spectrum's total ion current\n   \"<MsLevel>\"\
+  \ - prints the spectrum's MS level\nFor example, to create a TITLE line in msconvert\
+  \ MGF output with the\n\"name.first_scan.last_scan.charge\" style (eg. \"mydata.145.145.2\"\
+  ), use\n--filter \"titleMaker <RunId>.<ScanNumber>.<ScanNumber>.<ChargeState>\"\n\
+  \nthreshold <type> <threshold> <orientation> [<mslevels>]\nThis filter keeps data\
+  \ whose values meet various threshold criteria.\n   <type> must be one of:\n   \
+  \   count - keep the n=<threshold> [most|least] intense data points, where n\nis\
+  \ an integer.  Any data points with the same intensity as the nth [most|least]\n\
+  intense data point are removed.\n      count-after-ties - like \"count\", except\
+  \ that any data points with the same\nintensity as the nth [most|least] data point\
+  \ are retained.\n      absolute - keep data whose absolute intensity is [more|less]\
+  \ than\n<threshold>\n      bpi-relative - keep data whose intensity is [more|less]\
+  \ than <threshold>\npercent of the base peak intensity.  Percentage is expressed\
+  \ as a number between\n0 and 1, for example 75 percent is \"0.75\".\n      tic-relative\
+  \ - keep data whose individual intensities are [more|less] than\n<threshold> percent\
+  \ of the total ion current for the scan. Again, precentage is\nexpressed as a number\
+  \ between 0 and 1.\n      tic-cutoff - keep the [most|least] intense data points\
+  \ up to <threshold>\npercent of the total ion current.  That is, the TIC of the\
+  \ retained points is\n<threshold> percent (expressed as a number between 0 and 1)\
+  \ of the original TIC.\n   <orientation> must be one of:\n      most-intense (keep\
+  \ m/z-intensity pairs above the threshold)\n      least-intense (keep m/z-intensity\
+  \ pairs below the threshold)\n   <mslevels> is an optional int_set of MS levels\
+  \ - if provided, only scans with\nthose MS levels will be filtered, and others left\
+  \ untouched.\n\nmzWindow <mzrange>\nkeeps mz/intensity pairs whose m/z values fall\
+  \ within the specified range.\n  <mzrange> is formatted as [mzLow,mzHigh].  For\
+  \ example, in msconvert to retain\ndata in the m/z range 100.1 to 307.5, use --filter\
+  \ \"mzWindow [100.1,307.5]\" .\n\nmzPrecursors <precursor_mz_list>\nRetains spectra\
+  \ with precursor m/z values found in the <precursor_mz_list>.  For\nexample, in\
+  \ msconvert to retain only spectra with precursor m/z values of 123.4\nand 567.8\
+  \ you would use --filter \"mzPrecursors [123.4,567.8]\".  Note that this\nfilter\
+  \ will drop MS1 scans unless you include 0.0 in the list of precursor\nvalues.\n\
+  \ndefaultArrayLength <peak_count_range>\nKeeps only spectra with peak counts within\
+  \ <peak_count_range>, expressed as an\nint_set. (In mzML the peak list length is\
+  \ expressed as \"defaultArrayLength\",\nhence the name.)  For example, to include\
+  \ only spectra with 100 or more peaks,\nyou would use filter \"defaultArrayLength\
+  \ 100-\" .\n\nzeroSamples <mode> [<MS_levels>]\nThis filter deals with zero values\
+  \ in spectra - either removing them, or adding\nthem where they are missing.\n \
+  \ <mode> is either removeExtra or addMissing[=<flankingZeroCount>] .\n  <MS_levels>\
+  \ is optional, when provided (as an int_set) the filter is applied\nonly to spectra\
+  \ with those MS levels.\nWhen <mode> is \"removeExtra\", consecutive zero intensity\
+  \ peaks are removed from\nspectra.  For example, a peak list\n  \"100.1,1000 100.2,0\
+  \ 100.3,0 100.4,0 100.5,0 100.6,1030\"\nwould become \n  \"100.1,1000 100.2,0 100.5,0\
+  \ 100.6,1030\"\nand a peak list \n  \"100.1,0 100.2,0 100.3,0 100.4,0 100.5,0 100.6,1030\
+  \ 100.7,0 100.8,1020 100.9,0\n101.0,0\"\nwould become \n  \"100.5,0 100.6,1030 100.7,0\
+  \ 100.8,1020 100.9,0\"\nWhen <mode> is \"addMissing\", each spectrum's sample rate\
+  \ is automatically\ndetermined (the rate can change but only gradually) and flanking\
+  \ zeros are\ninserted around non-zero data points.  The optional [=<flankingZeroCount>]\
+  \ value\ncan be used to limit the number of flanking zeros, otherwise the spectrum\
+  \ is\ncompletely populated between nonzero points. For example, to make sure spectra\n\
+  have at least 5 flanking zeros around runs on nonzero points, use filter\n\"addMissing=5\"\
+  .\n\nmzPresent <tolerance> <type> <threshold> <orientation> <mz_list>\n[<include_or_exclude>]\n\
+  This filter is similar to the \"threshold\" filter, with a few more options.\n \
+  \  <tolerance> is specified as a number and units (PPM or MZ). For example, \"5\n\
+  PPM\" or \"2.1 MZ\".\n   <type>, <threshold>, and <orientation> operate as in the\
+  \ \"threshold\" filter\n(see above).\n   <mz_list> is a list of mz values of the\
+  \ form [mz1,mz2, ... mzn] (for example,\n\"[100, 300, 405.6]\"). Data points within\
+  \ <tolerance> of any of these values will\nbe kept.\n   <include_or_exclude> is\
+  \ optional and has value \"include\" (the default) or\n\"exclude\".  If \"exclude\"\
+  \ is used the filter drops data points that match the\nvarious criteria instead\
+  \ of keeping them.\n\nscanSumming [precursorTol=<precursor tolerance>] [scanTimeTol=<scan\
+  \ time\ntolerance>]\nThis filter sums MS2 sub-scans whose precursors are within\
+  \ <precursor\ntolerance>(default: 0.05 Th.)and <scan time tolerance> (default: 10\
+  \ secs.). Its\nuse is intended for some Waters DDA data, where sub-scans should\
+  \ be summed\ntogether to increase the SNR. This filter has only been tested for\
+  \ Waters data.\n\nMS2Denoise [<peaks_in_window> [<window_width_Da>\n[multicharge_fragment_relaxation]]]\n\
+  Noise peak removal for spectra with precursor ions.\n   <peaks_in_window> - the\
+  \ number peaks to select in moving window, default is\n6.\n   <window_width_Da>\
+  \ - the width of the window in Da, default is 30.\n   <multicharge_fragment_relaxation>\
+  \ - if \"true\" (the default), allows more data\nbelow multiply charged precursors.\n\
+  The filter first removes any m/z values above the precursor mass minus the mass\n\
+  of glycine.\nIt then removes any m/z values within .5 Da of the unfragmented precursor\
+  \ mass.\nFinally it retains only the <peaks_in_window> most intense ions within\
+  \ a sliding\nwindow of <window_width_Da>.\nIf <multicharge_fragment_relaxation>\
+  \ is true, allows more peaks at lower mass\n(i.e. below precursor).\nIf <window_width_Da>\
+  \ is set to 0, the window size defaults to the highest\nobserved mass in the spectrum\
+  \ (this leaving only <peaks_in_window> ions in the\noutput spectrum).\nReference:\
+  \ \"When less can yield more - Computational preprocessing of MS/MS\nspectra for\
+  \ peptide identification\", Bernhard Y. Renard, Marc Kirchner, Flavio\nMonigatti,\
+  \ Alexander R. Ivanov, Juri Rappsilber, Dominic Winter, Judith A. J.\nSteen, Fred\
+  \ A. Hamprecht and Hanno Steen  Proteomics, 9, 4978-4984, 2009.\n\n\nMS2Deisotope\
+  \ [hi_res [mzTol=<mzTol>]] [Poisson [minCharge=<minCharge>]\n[maxCharge=<maxCharge>]]\n\
+  Deisotopes ms2 spectra using the Markey method or a Poisson model.\n  For the Markey\
+  \ method, hi_res sets high resolution mode to \"false\" (the\ndefault) or \"true\"\
+  .\n  <mzTol> sets the mz tolerance.  It defaults to .01 in high resoltion mode,\n\
+  otherwise it defaults to 0.5.\n  Poisson activates a Poisson model based on the\
+  \ relative intensity\ndistribution.\n  <minCharge> (default: 1) and <maxCharge>\
+  \ (default: 3) define the charge search\nrange within the Poisson deisotoper. (default:\
+  \ 1)\n\nETDFilter [<removePrecursor> [<removeChargeReduced> [<removeNeutralLoss>\n\
+  [<blanketRemoval> [<matchingTolerance> ]]]]]\nFilters ETD MSn spectrum data points,\
+  \ removing unreacted precursors,\ncharge-reduced precursors, and neutral losses.\n\
+  \  <removePrecursor> - if \"true\", remove unreacted precursor (default is \"true\"\
+  )\n  <removeChargeReduced> - if \"true\", remove charge reduced precursor (default\
+  \ is\n\"true\")\n  <removeNeutralLoss> - if \"true\", remove neutral loss species\
+  \ from charge\nreduced precursor (default is \"true\")\n  <blanketRemoval> - if\
+  \ \"true\", remove neutral losses in a charge-scaled 60 Da\nswath rather than only\
+  \ around known loss species (default is \"true\")\n  <matchingTolerance> - specify\
+  \ matching tolerance in m/z or ppm (examples: \"3.1\nmz\" (the default) or \"2.2\
+  \ ppm\")\n\nchargeStatePredictor [overrideExistingCharge=<true|false (false)>]\n\
+  [maxMultipleCharge=<int (3)>] [minMultipleCharge=<int (2)>]\n[singleChargeFractionTIC=<real\
+  \ (0.9)>] [maxKnownCharge=<int (0)>]\n[makeMS2=<true|false (false)>]\nPredicts MSn\
+  \ spectrum precursors to be singly or multiply charged depending on\nthe ratio of\
+  \ intensity above and below the precursor m/z, or optionally using\nthe \"makeMS2\"\
+  \ algorithm\n  <overrideExistingCharge> : always override existing charge information\n\
+  (default:\"false\")\n  <maxMultipleCharge> (default 3) and <minMultipleCharge> (default\
+  \ 2): range of\nvalues to add to the spectrum's existing \"MS_possible_charge_state\"\
+  \ values.If\nthese are the same values, the spectrum's MS_possible_charge_state\
+  \ values are\nremoved and replaced with this single value.\n  <singleChargeFractionTIC>\
+  \ : is a percentage expressed as a value between 0 and\n1 (the default is 0.9, or\
+  \ 90 percent). This is the value used as the previously\nmentioned ratio of intensity\
+  \ above and below the precursor m/z.\n  <maxKnownCharge> (default is 0, meaning\
+  \ no maximum): the maximum charge\nallowed for \"known\" charges even if override\
+  \ existing charge is false. This\nallows overriding junk charge calls like +15 peptides.\n\
+  \  <algorithmMakeMS2> : default is \"false\", when set to \"true\" the \"makeMS2\"\
+  \nalgorithm is used instead of the one described above.\n\nturbocharger [minCharge=<minCharge>]\
+  \ [maxCharge=<maxCharge>]\n[precursorsBefore=<before>] [precursorsAfter=<after>]\
+  \ [halfIsoWidth=<half-width\nof isolation window>] [defaultMinCharge=<defaultMinCharge>]\n\
+  [defaultMaxCharge=<defaultMaxCharge>] [useVendorPeaks=<useVendorPeaks>]\nPredicts\
+  \ MSn spectrum precursor charge based on the isotopic distribution\nassociated with\
+  \ the survey scan(s) of the selected precursor\n  <maxCharge> (default: 8) and <minCharge>\
+  \ (default 1): defines range of\npossible precursor charge states.\n  <before> (default:\
+  \ 2) and <after> (default 0): number of survey (MS1) scans to\ncheck for precursor\
+  \ isotopes, before and after a MS/MS in retention time.\n  <half-width of isolation\
+  \ window> (default: 1.25): half-width of the isolation\nwindow (in Th.) from which\
+  \ precursor is derived. Window is centered at target\nm/z with a total size of +/-\
+  \ the value entered.\n  <defaultMinCharge> (default: 0) and <defaultMaxCharge> (default:\
+  \ 0): in the\nevent that no isotope is found in the isolation window, a range of\
+  \ charges\nbetween these two values will be assigned to the spectrum. If both values\
+  \ are\nleft at zero, no charge will be assigned to the spectrum.\n\nactivation <precursor_activation_type>\n\
+  Keeps only spectra whose precursors have the specifed activation type.  It\ndoesn't\
+  \ affect non-MS spectra, and doesn't affect MS1 spectra. Use it to create\noutput\
+  \ files containing only ETD or CID MSn data where both activation modes\nhave been\
+  \ interleaved within a given input vendor data file (eg: Thermo's\nDecision Tree\
+  \ acquisition mode).\n   <precursor_activation_type> is any one of: ETD CID SA HCD\
+  \ HECID BIRD ECD\nIRMPD PD PSD PQD SID or SORI.\n\nanalyzer <analyzer>\nThis filter\
+  \ keeps only spectra with the indicated mass analyzer type. \n  <analyzer> is any\
+  \ one of \"quad\" \"orbi\" \"FT\" \"IT\" or \"TOF\".\nSometimes people use the terms\
+  \ FT and Orbi interchangeably, which is OK because\nthere are no hybrid FT+Orbi\
+  \ instruments - so this filter does too.\n\n\nanalyzerType <analyzer>\nThis is deprecated\
+  \ syntax for filtering by mass analyzer type.\n  <analyzer> can be \"FTMS\" or \"\
+  ITMS\".\n\npolarity <polarity>\nKeeps only spectra with scan of the selected <polarity>.\n\
+  \   <polarity> is any one of \"positive\" \"negative\" \"+\" or \"-\".\n\n\n\n\n\
+  Analysis commands (used with -x/--exec):\n\n  metadata \n    (write file-level metadata)\n\
+  \n  run_summary [msLevels=<int_set>] [charges=<int_set>] [delimiter=<fixed|space|comma|tab>]\n\
+  \    (print summary statistics about a run)\n      msLevels: if specified, summary\
+  \ only operates on these MS levels; default is all MS levels\n      charges: if\
+  \ specified, summary only operates on these charge states; default is all charges\n\
+  \      delimiter: sets column separation; default is fixed width\n\n  spectrum_table\
+  \ [delimiter=<fixed|space|comma|tab>]\n    (write spectrum metadata as read from\
+  \ scan headers, in a table format)\n      delimiter: sets column separation; default\
+  \ is fixed width\n\n  binary index=<spectrumIndexLow>[,<spectrumIndexHigh>] | sn=<scanNumberLow>[,<scanNumberHigh>]\
+  \ [precision=<precision>]\n    (write binary data for selected spectra)\n      index:\
+  \ write data for spectra in this index range\n      sn: write data for spectra in\
+  \ this scan number range\n      precision: write d decimal places\n\n  slice [mz=<mzLow>[,<mzHigh>]]\
+  \ [rt=<rtLow>[,<rtHigh>]]] [index=<indexLow>[,<indexHigh>] | sn=<scanLow>[,<scanHigh>]]\
+  \ [delimiter=<fixed|space|comma|tab>]\n    (write data from a rectangular region)\n\
+  \      mz: set m/z range\n      rt: set retention time range\n      index: set spectrum\
+  \ index range\n      sn: set scan number range\n      delimiter: sets column separation;\
+  \ default is fixed width\n\n  tic [mz=<mzLow>[,<mzHigh>]] [delimiter=<fixed|space|comma|tab>]\n\
+  \    (write total ion counts for an m/z range)\n      mz: set mz range\n      delimiter:\
+  \ sets column separation; default is fixed width\n\n  sic mzCenter=<mz> radius=<radius>\
+  \ radiusUnits=<amu|ppm> [delimiter=<fixed|space|comma|tab>]\n    (write selected\
+  \ ion chromatogram for an m/z and radius)\n      mzCenter: set mz value\n      radius:\
+  \ set radius value\n      radiusUnits: set units for radius value (must be amu or\
+  \ ppm)\n      delimiter: sets column separation; default is fixed width\n\n  image\
+  \ [args - see list]\n    (create pseudo-2D-gel image)\n      args:\n      label=<xxxx>\
+  \ (set filename label to xxxx)\n      mz=<mzLow>[,<mzHigh>] (set m/z cutoff range)\n\
+  \      timeScale=<N> (set scaling factor for time axis)\n      binCount=<N> (set\
+  \ histogram bin count)\n      zRadius=<N> (set intensity function z-score radius,\
+  \ default=2)\n      scan (render y-axis linear with scans)\n      time (render y-axis\
+  \ linear with time)\n      bry (use blue-red-yellow gradient)\n      grey (use grey-scale\
+  \ gradient)\n      binSum (sum intensity in bins, else show max intensity)\n   \
+  \   ms2locs (indicate masses selected for ms2)\n      pepxml=<xxx> (set ms2 id's\
+  \ from pepxml file xxx)\n      msi=<xxx> (set ms2 id's from msinspect output file\
+  \ xxx)\n      flat=<xxx> (set ms2 id's from tab delim file xxx)\n      width=<xxx>\
+  \ (set image width to xxx pixels, default is calculated)\n      height=<yyy> (set\
+  \ image height to yyy pixels, default is calculated)\n\n\nExamples:\n\nmsaccess\
+  \ data.mzML -x \"tic mz=409-410\" --filter=\"msLevel 2\"\n(creates data.mzML.tic.409.00-410.00.txt\
+  \ with total ion current info for mass range 409-410 in ms2 scans)\nThis could also\
+  \ be achieved as \"msaccess data.mzML -c mycfg.txt\" where mycfg.txt is a file containing\
+  \ the lines\n   exec = tic mz=409-410\n   filter = msLevel 2\n\nmsaccess data.mzML\
+  \ -x spectrum_table\n(creates data.mzML.spectrum_table.txt with summary information\
+  \ for all spectra as read from the scan headers)\n\nmsaccess data.mzML -x \"binary\
+  \ index=0-3\"\n(creates files data.mzML.binary.*.txt with binary data for spectra\
+  \ 0 through 3)\n\nmsaccess data.mzML -x \"slice index=2,6 mz=100,600 delimiter=tab\"\
+  \n(creates data.mzML.slice.index_2-6.mz_100.0000-600.0000.tsv with a table of data\
+  \ in the selected range)\n\nmsaccess data.mzML -x \"image width=800 height=600\"\
+  \n(creates data.mzML.image* with pseudo-2D-gel image of the data file)\n\n\nQuestions,\
+  \ comments, and bug reports:\nhttp://proteowizard.sourceforge.net\nsupport@proteowizard.org\n\
+  \nProteoWizard release: 3.0.9992\nBuild date: Jul 16 2018 03:17:29\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/proteowizard:3.0.9992

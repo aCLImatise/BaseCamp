@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import String, File, Boolean
+
+Qualimap_Comp_Counts_V0_1_0 = CommandToolBuilder(tool="qualimap_comp_counts", base_command=["qualimap", "comp-counts"], inputs=[ToolInput(tag="in_algorithm", input_type=String(optional=True), prefix="--algorithm", doc=InputDocumentation(doc="Counting algorithm:\nuniquely-mapped-reads(default) or proportional")), ToolInput(tag="in_bam", input_type=File(optional=True), prefix="-bam", doc=InputDocumentation(doc="Mapping file in BAM format")), ToolInput(tag="in_gtf", input_type=File(optional=True), prefix="-gtf", doc=InputDocumentation(doc="Region file in GTF, GFF or BED format. If GTF\nformat is provided, counting is based on\nattributes, otherwise based on feature name")), ToolInput(tag="in_id", input_type=String(optional=True), prefix="-id", doc=InputDocumentation(doc="GTF-specific. Attribute of the GTF to be used\nas feature ID. Regions with the same ID will\nbe aggregated as part of the same feature.\nDefault: gene_id.")), ToolInput(tag="in_out", input_type=File(optional=True), prefix="-out", doc=InputDocumentation(doc="Output file of coverage report.")), ToolInput(tag="in_sequencing_protocol", input_type=String(optional=True), prefix="--sequencing-protocol", doc=InputDocumentation(doc="Sequencing library protocol:\nstrand-specific-forward,\nstrand-specific-reverse or non-strand-specific\n(default)")), ToolInput(tag="in_paired", input_type=Boolean(optional=True), prefix="--paired", doc=InputDocumentation(doc="Setting this flag for paired-end experiments\nwill result in counting fragments instead of\nreads")), ToolInput(tag="in_sorted", input_type=Boolean(optional=True), prefix="--sorted", doc=InputDocumentation(doc="This flag indicates that the input file is\nalready sorted by name. If not set, additional\nsorting by name will be performed. Only\nrequired for paired-end analysis.")), ToolInput(tag="in_type", input_type=String(optional=True), prefix="-type", doc=InputDocumentation(doc="GTF-specific. Value of the third column of the\nGTF considered for counting. Other types will\nbe ignored. Default: exon\n")), ToolInput(tag="in_arg", input_type=String(optional=True), position=0, doc=InputDocumentation(doc=""))], outputs=[ToolOutput(tag="out_out", output_type=File(optional=True), selector=InputSelector(input_to_select="in_out", type_hint=File()), doc=OutputDocumentation(doc="Output file of coverage report."))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Qualimap_Comp_Counts_V0_1_0().translate("wdl", allow_empty_container=True)
+

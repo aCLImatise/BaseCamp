@@ -1,0 +1,80 @@
+!Command
+command:
+- planemo
+- mull
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: subdirectories.
+  description: --mulled_conda_version TEXT     Install a specific version of Conda
+    before
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --recursive
+  description: Recursively perform command for
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --mulled_namespace
+  description: "Build a mulled image with the specified\nnamespace - defaults to biocontainers.\n\
+    Galaxy currently only recognizes images with\nthe namespace biocontainers."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --mulled_command
+  description: "Mulled action to perform for targets - this\ndefaults to 'build-and-test'."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --conda_channels
+  - --conda_ensure_channels
+  description: "Ensure conda is configured with specified\ncomma separated list of\
+    \ channels."
+  args: !SimpleFlagArg
+    name: TEXT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: planemo mull [OPTIONS] TOOL_PATH\n\n  Build containers for specified\
+  \ tools.\n\n  Supplied tools will be inspected for referenced requirement packages.\
+  \ For\n  each combination of requirements a \"mulled\" container will be built.\n\
+  \  Galaxy can automatically discover this container and subsequently use it\n  to\
+  \ run or test the tool.\n\n  For this to work, the tool's requirements will need\
+  \ to be present in a\n  known Conda channel such as bioconda\n  (https://github.com/bioconda/bioconda-recipes).\
+  \ This can be verified by\n  running ``planemo lint --conda_requirements`` on the\
+  \ target tool(s).\n\nOptions:\n  -r, --recursive                 Recursively perform\
+  \ command for\n                                  subdirectories.\n\n  --mulled_conda_version\
+  \ TEXT     Install a specific version of Conda before\n                        \
+  \          running the command, by default the version\n                       \
+  \           that comes with the continuumio miniconda3\n                       \
+  \           image will be used under Linux and under Mac\n                     \
+  \             OS X Conda will be upgraded to to work\n                         \
+  \         around a bug in 4.2.\n\n  --mulled_namespace TEXT         Build a mulled\
+  \ image with the specified\n                                  namespace - defaults\
+  \ to biocontainers.\n                                  Galaxy currently only recognizes\
+  \ images with\n                                  the namespace biocontainers.\n\n\
+  \  --mulled_command TEXT           Mulled action to perform for targets - this\n\
+  \                                  defaults to 'build-and-test'.\n\n  --conda_channels,\
+  \ --conda_ensure_channels TEXT\n                                  Ensure conda is\
+  \ configured with specified\n                                  comma separated list\
+  \ of channels.\n\n  --help                          Show this message and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/planemo:0.74.2--py_0

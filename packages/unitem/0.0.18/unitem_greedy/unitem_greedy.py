@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, File, Int, String
+
+Unitem_Greedy_V0_1_0 = CommandToolBuilder(tool="unitem_greedy", base_command=["unitem", "greedy"], inputs=[ToolInput(tag="in_bin_dirs", input_type=Boolean(optional=True), prefix="--bin_dirs", doc=InputDocumentation(doc="[BIN_DIRS [BIN_DIRS ...]]\ndirectories with bins from different binning methods")), ToolInput(tag="in_bin_file", input_type=File(optional=True), prefix="--bin_file", doc=InputDocumentation(doc="tab-separated file indicating directories with bins\nfrom binning methods (two columns: method name and\ndirectory)")), ToolInput(tag="in_weight", input_type=Int(optional=True), prefix="--weight", doc=InputDocumentation(doc="weight given to contamination for assessing genome\nqualitys (default: 2)")), ToolInput(tag="in_sel_min_quality", input_type=Int(optional=True), prefix="--sel_min_quality", doc=InputDocumentation(doc="minimum quality of bin to consider during bin\nselection process (default: 50)")), ToolInput(tag="in_sel_min_comp", input_type=Int(optional=True), prefix="--sel_min_comp", doc=InputDocumentation(doc="minimum completeness of bin to consider during bin\nselection process (default: 50)")), ToolInput(tag="in_sel_max_cont", input_type=Int(optional=True), prefix="--sel_max_cont", doc=InputDocumentation(doc="maximum contamination of bin to consider during bin\nselection process (default: 10)")), ToolInput(tag="in_report_min_quality", input_type=Int(optional=True), prefix="--report_min_quality", doc=InputDocumentation(doc="minimum quality of bin to report (default: 10)")), ToolInput(tag="in_simple_headers", input_type=Boolean(optional=True), prefix="--simple_headers", doc=InputDocumentation(doc="do not added additional information to FASTA headers")), ToolInput(tag="in_bin_prefix", input_type=String(optional=True), prefix="--bin_prefix", doc=InputDocumentation(doc="prefix for output bins (default: bin)")), ToolInput(tag="in_silent", input_type=Boolean(optional=True), prefix="--silent", doc=InputDocumentation(doc="suppress output of logger")), ToolInput(tag="in_profile_dir", input_type=String(), position=0, doc=InputDocumentation(doc="directory with bin profiles (output of 'profile'\ncommand)")), ToolInput(tag="in_output_dir", input_type=String(), position=1, doc=InputDocumentation(doc="output directory"))], outputs=[], container="quay.io/biocontainers/unitem:0.0.18--py_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Unitem_Greedy_V0_1_0().translate("wdl")
+

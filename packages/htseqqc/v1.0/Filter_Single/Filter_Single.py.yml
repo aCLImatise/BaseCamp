@@ -1,0 +1,158 @@
+!Command
+command:
+- Filter_Single.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: srap
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --p1
+  description: Input file (.fastq, .fq)
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --msz
+  description: filter the reads which are lesser than minimum size
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --qfmt
+  description: "Quality value format\n1= Illumina 1.8\n2= Illumina 1.3\n3= Sanger"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --nb
+  description: filter the reads containing given % of N
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --adp
+  description: Trim the adapter sequence and truncate the read sequence [adapter sequence]
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --per
+  description: Truncate the read sequence if it matches to adapter sequence equal
+    or more than given percent (0.0-1.0) [default=0.9]
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --qthr
+  description: Filter the read sequence if average quality of bases in reads is lower
+    than threshold (1-40) [default:20]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --trim
+  description: 'If trim option set to true, the reads with low quality (as defined
+    by option --qthr) will be trimmed instead of discarding [default: False]'
+  args: !SimpleFlagArg
+    name: BOOLEAN
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --wsz
+  description: "The window size for trimming (5'->3') the reads. This option should\
+    \ always set when -trim option is defined.\nThe recommended windowsize for best\
+    \ result should be between 2-5 [default:5]"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --mlk
+  description: The minimum length of the reads to retain after trimming
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --cpu
+  description: Number of CPU [default:2]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --ofmt
+  description: Output file format (fastq/fasta) [default:fastq]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --no-vis
+  description: No figures will be produced [yes|no] [default:no]
+  args: !SimpleFlagArg
+    name: BOOLEAN
+- !Flag
+  optional: true
+  synonyms:
+  - -filter-s
+  description: ''
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Print this help message
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "\nusage: srap -filter-s [options] -a fastq_file\n\nOptions:\n  -a, --p1\
+  \ INT           Input file (.fastq, .fq)\n  -d, --msz INT          filter the reads\
+  \ which are lesser than minimum size\n  -c, --qfmt INT         Quality value format\
+  \ \n                         1= Illumina 1.8\n                         2= Illumina\
+  \ 1.3\n                         3= Sanger\n\n  -e, --nb INT           filter the\
+  \ reads containing given % of N \n  -f, --adp STRING       Trim the adapter sequence\
+  \ and truncate the read sequence [adapter sequence]\n  -g, --per FLOAT        Truncate\
+  \ the read sequence if it matches to adapter sequence equal or more than given percent\
+  \ (0.0-1.0) [default=0.9]\n  -i, --qthr INT         Filter the read sequence if\
+  \ average quality of bases in reads is lower than threshold (1-40) [default:20]\n\
+  \  -n, --trim BOOLEAN     If trim option set to true, the reads with low quality\
+  \ (as defined by option --qthr) will be trimmed instead of discarding [default:\
+  \ False]\n  -p, --wsz INT          The window size for trimming (5'->3') the reads.\
+  \ This option should always set when -trim option is defined. \n               \
+  \          The recommended windowsize for best result should be between 2-5 [default:5]\n\
+  \  -r, --mlk INT          The minimum length of the reads to retain after trimming\n\
+  \  -q, --cpu              Number of CPU [default:2]\n  -m, --ofmt             Output\
+  \ file format (fastq/fasta) [default:fastq]\n  -v, --no-vis BOOLEAN   No figures\
+  \ will be produced [yes|no] [default:no]\n  -h, --help             Print this help\
+  \ message\n\n\n"
+generated_using:
+- -h
+docker_image: quay.io/biocontainers/htseqqc:v1.0--pyh5bfb8f1_0

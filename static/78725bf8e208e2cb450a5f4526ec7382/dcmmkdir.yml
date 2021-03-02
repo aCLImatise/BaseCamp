@@ -1,0 +1,526 @@
+!Command
+command:
+- dcmmkdir
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: dcmfile-in
+  description: ref. DICOM file (or directory to be scanned)
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --arguments
+  description: print expanded command line arguments
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  description: quiet mode, print no warnings and errors
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: verbose mode, print processing details
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --debug
+  description: debug mode, print debug information
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ll
+  - --log-level
+  description: "[l]evel: string constant\n(fatal, error, warn, info, debug, trace)\n\
+    use level l for the logger"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -lc
+  - --log-config
+  description: "[f]ilename: string\nuse config file f for the logger"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --keep-filenames
+  description: expect filenames to be in DICOM format (def.)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --no-recurse
+  description: do not recurse within directories (default)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -W
+  - --no-consistency-check
+  description: do not check files for consistency
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --abort-inconsist-file
+  description: abort on first inconsistent file
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -I
+  - --strict
+  description: "exit with error if DICOMDIR type 1 attributes\nare missing in DICOM\
+    \ file (default)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Nxc
+  - --no-xfer-check
+  description: "do not reject images with non-standard\ntransfer syntax (just warn)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Nec
+  - --no-encoding-check
+  description: "do not reject images with non-standard\npixel encoding (just warn)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Nrc
+  - --no-resolution-check
+  description: "do not reject images with non-standard\nspatial resolution (just warn)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Xs
+  - --icon-image-size
+  description: "[s]ize: integer (1..128)\nwidth and height of the icon image (in pixel)\n\
+    (fixed: 128 for XA, 64 for CT/MR profile)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Xi
+  - --icon-file-prefix
+  description: "[p]refix: string\nuse PGM image 'prefix'+'dcmfile-in' as icon\n(default:\
+    \ create icon from DICOM image)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Xd
+  - --default-icon
+  description: "[f]ilename: string\nuse specified PGM image if icon cannot be\ncreated\
+    \ automatically (default: black image)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Pgp
+  - --general-purpose
+  description: "General Purpose Interchange on CD-R or\nDVD-RAM Media (STD-GEN-CD/DVD-RAM,\
+    \ default)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Pdv
+  - --general-dvd-jpeg
+  description: "General Purpose DVD Interchange with JPEG\n(STD-GEN-DVD-JPEG)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Pd2
+  - --general-dvd-j2k
+  description: "General Purpose DVD Interchange with JPEG\n2000 (STD-GEN-DVD-J2K)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Pbd
+  - --general-bd-jpeg
+  description: "General Purpose BD Interchange with JPEG\n(STD-GEN-BD-JPEG)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Pb2
+  - --general-bd-j2k
+  description: "General Purpose BD Interchange with JPEG\n2000 (STD-GEN-BD-J2K)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Pbm
+  - --general-bd-mpeg2-mpml
+  description: "General Purpose BD Interchange with MPEG2\nMP@ML (STD-GEN-BD-MPEG2-MPML)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Pbh
+  - --general-bd-mpeg2-mphl
+  description: "General Purpose BD Interchange with MPEG2\nMP@HL (STD-GEN-BD-MPEG2-MPHL)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Pba
+  - --general-bd-mpeg4-hp
+  description: "General Purpose BD Interchange with MPEG-4\nAVC/H.264 HiP@Level4.1\n\
+    (STD-GEN-BD-MPEG4-HPLV41)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Pbb
+  - --general-bd-mpeg4-hpbd
+  description: "General Purpose BD Interchange with MPEG-4\nAVC/H.264 BD-Compatible\
+    \ HiP@Level4.1\n(STD-GEN-BD-MPEG4-HPLV41BD)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --general-bd-mpeg4-hp2d
+  description: "General Purpose BD Interchange with MPEG-4\nAVC/H.264 HiP@Level4.2\
+    \ for 2D video\n(STD-GEN-BD-MPEG4-HPLV42-2D)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --general-bd-mpeg4-hp3d
+  description: "General Purpose BD Interchange with MPEG-4\nAVC/H.264 HiP@Level4.2\
+    \ for 3D video\n(STD-GEN-BD-MPEG4-HPLV42-3D)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --general-bd-mpeg4-hpst
+  description: "General Purpose BD Interchange with MPEG-4\nAVC/H.264 Stereo HiP@Level4.2\n\
+    (STD-GEN-BD-MPEG4-SHPLV42)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Pfl
+  - --usb-and-flash-jpeg
+  description: "General Purpose USB/Flash Memory Interchange\nwith JPEG (STD-GEN-USB/MMC/CF/SD-JPEG)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Pf2
+  - --usb-and-flash-j2k
+  description: "General Purpose USB/Flash Memory Interchange\nwith JPEG 2000 (STD-GEN-USB/MMC/CF/SD-J2K)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Pmi
+  - --general-mime
+  description: "General Purpose MIME Interchange\n(STD-GEN-MIME)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Pmp
+  - --mpeg2-mpml-dvd
+  description: "DVD Interchange with MPEG2 Main Profile @\nMain Level (STD-DVD-MPEG2-MPML)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Pbc
+  - --basic-cardiac
+  description: "Basic Cardiac X-Ray Angiographic Studies on\nCD-R Media (STD-XABC-CD)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Pxa
+  - --xray-angiographic
+  description: "1024 X-Ray Angiographic Studies on CD-R Media\n(STD-XA1K-CD)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Pxd
+  - --xray-angiographic-dvd
+  description: "1024 X-Ray Angiographic Studies on DVD Media\n(STD-XA1K-DVD)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Pde
+  - --dental-radiograph
+  description: Dental Radiograph Interchange (STD-DEN-CD)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Pcm
+  - --ct-and-mr
+  description: CT/MR Studies (STD-CTMR-xxxx)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Pus
+  - --ultrasound-id-sf
+  description: "Ultrasound Single Frame for Image Display\n(STD-US-ID-SF-xxxx)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ultrasound-sc-sf
+  description: "Ultrasound Single Frame with Spatial\nCalibration (STD-US-SC-SF-xxxx)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ultrasound-cc-sf
+  description: "Ultrasound Single Frame with Combined\nCalibration (STD-US-CC-SF-xxxx)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Pum
+  - --ultrasound-id-mf
+  description: "Ultrasound Single & Multi-Frame for Image\nDisplay (STD-US-ID-MF-xxxx)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ultrasound-sc-mf
+  description: "Ultrasound Single & Multi-Frame with Spatial\nCalibration (STD-UD-SC-MF-xxxx)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ultrasound-cc-mf
+  description: "Ultrasound Single & Multi-Frame with Combined\nCalibration (STD-UD-CC-MF-xxxx)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Pec
+  - --12-lead-ecg
+  description: "12-lead ECG Interchange on Diskette\n(STD-WVFM-ECG-FD)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Phd
+  - --hemodynamic-waveform
+  description: "Hemodynamic Waveform Interchange on Diskette\n(STD-WVFM-HD-FD)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -A
+  - --replace
+  description: replace existing DICOMDIR (default)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --discard
+  description: do not write out DICOMDIR
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --create-backup
+  description: create a backup of existing DICOMDIR (def.)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -nb
+  - --no-backup
+  description: do not create a backup of existing DICOMDIR
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --disable-new-vr
+  description: disable support for new VRs, convert to OB
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --group-length-remove
+  description: write without group length elements (default)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --length-undefined
+  description: write with undefined lengths
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: print this help text and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: print version information and exit
+  args: !EmptyFlagArg {}
+help_text: "$dcmtk: dcmmkdir v3.6.5 2019-10-28 $\n\ndcmmkdir: Create a DICOMDIR file\n\
+  usage: dcmmkdir [options] [dcmfile-in...]\n\nparameters:\n  dcmfile-in         \
+  \              ref. DICOM file (or directory to be scanned)\n\ngeneral options:\n\
+  \  -h      --help                   print this help text and exit\n          --version\
+  \                print version information and exit\n          --arguments     \
+  \         print expanded command line arguments\n  -q      --quiet             \
+  \     quiet mode, print no warnings and errors\n  -v      --verbose            \
+  \    verbose mode, print processing details\n  -d      --debug                 \
+  \ debug mode, print debug information\n  -ll     --log-level              [l]evel:\
+  \ string constant\n                                   (fatal, error, warn, info,\
+  \ debug, trace)\n                                   use level l for the logger\n\
+  \  -lc     --log-config             [f]ilename: string\n                       \
+  \            use config file f for the logger\ninput options:\n  DICOMDIR identifiers:\n\
+  \    +F    --fileset-id             [i]d: string\n                             \
+  \      use specific file-set ID\n                                   (default: DCMTK_MEDIA_DEMO,\
+  \ \"\" for none)\n    +R    --descriptor             [f]ilename: string\n      \
+  \                             add a file-set descriptor file ID\n              \
+  \                     (e.g. README, default: no descriptor)\n    +C    --char-set\
+  \               [c]harset: string\n                                   add a specific\
+  \ character set for descriptor\n                                   (default: \"\
+  ISO_IR 100\" if descriptor present)\n  reading:\n    +id   --input-directory   \
+  \     [d]irectory: string\n                                   read referenced DICOM\
+  \ files from directory d\n                                   (default for --recurse:\
+  \ current directory)\n    -m    --keep-filenames         expect filenames to be\
+  \ in DICOM format (def.)\n    +m    --map-filenames          map to DICOM filenames\
+  \ (lowercase->uppercase,\n                                   and remove trailing\
+  \ period)\n    -r    --no-recurse             do not recurse within directories\
+  \ (default)\n    +r    --recurse                recurse within filesystem directories\n\
+  \    +p    --pattern                [p]attern: string (only with --recurse)\n  \
+  \                                 pattern for filename matching (wildcards)\nprocessing\
+  \ options:\n  consistency check:\n    -W    --no-consistency-check   do not check\
+  \ files for consistency\n    +W    --warn-inconsist-files   warn about inconsistent\
+  \ files (default)\n    -a    --abort-inconsist-file   abort on first inconsistent\
+  \ file\n  type 1 attributes:\n    -I    --strict                 exit with error\
+  \ if DICOMDIR type 1 attributes\n                                   are missing\
+  \ in DICOM file (default)\n    +I    --invent                 invent DICOMDIR type\
+  \ 1 attributes\n                                   if missing in DICOM file\n  \
+  \  +Ipi  --invent-patient-id      invent new PatientID in case of inconsistent\n\
+  \                                   PatientName attributes\n  other checks:\n  \
+  \  +Nrs  --allow-retired-sop      allow retired SOP classes defined in previous\n\
+  \                                   editions of the DICOM standard\n    -Nxc  --no-xfer-check\
+  \          do not reject images with non-standard\n                            \
+  \       transfer syntax (just warn)\n    -Nec  --no-encoding-check      do not reject\
+  \ images with non-standard\n                                   pixel encoding (just\
+  \ warn)\n    -Nrc  --no-resolution-check    do not reject images with non-standard\n\
+  \                                   spatial resolution (just warn)\n  icon images:\n\
+  \    +X    --add-icon-image         add monochrome icon image on IMAGE level\n \
+  \                                  (default for cardiac profiles)\n    -Xs   --icon-image-size\
+  \        [s]ize: integer (1..128)\n                                   width and\
+  \ height of the icon image (in pixel)\n                                   (fixed:\
+  \ 128 for XA, 64 for CT/MR profile)\n    -Xi   --icon-file-prefix       [p]refix:\
+  \ string\n                                   use PGM image 'prefix'+'dcmfile-in'\
+  \ as icon\n                                   (default: create icon from DICOM image)\n\
+  \    -Xd   --default-icon           [f]ilename: string\n                       \
+  \            use specified PGM image if icon cannot be\n                       \
+  \            created automatically (default: black image)\noutput options:\n  DICOMDIR\
+  \ file:\n    +D    --output-file            [f]ilename: string\n               \
+  \                    generate specific DICOMDIR file\n                         \
+  \          (default: DICOMDIR in current directory)\n  profiles:\n    -Pgp  --general-purpose\
+  \        General Purpose Interchange on CD-R or\n                              \
+  \     DVD-RAM Media (STD-GEN-CD/DVD-RAM, default)\n    -Pdv  --general-dvd-jpeg\
+  \       General Purpose DVD Interchange with JPEG\n                            \
+  \       (STD-GEN-DVD-JPEG)\n    -Pd2  --general-dvd-j2k        General Purpose DVD\
+  \ Interchange with JPEG\n                                   2000 (STD-GEN-DVD-J2K)\n\
+  \    -Pbd  --general-bd-jpeg        General Purpose BD Interchange with JPEG\n \
+  \                                  (STD-GEN-BD-JPEG)\n    -Pb2  --general-bd-j2k\
+  \         General Purpose BD Interchange with JPEG\n                           \
+  \        2000 (STD-GEN-BD-J2K)\n    -Pbm  --general-bd-mpeg2-mpml  General Purpose\
+  \ BD Interchange with MPEG2\n                                   MP@ML (STD-GEN-BD-MPEG2-MPML)\n\
+  \    -Pbh  --general-bd-mpeg2-mphl  General Purpose BD Interchange with MPEG2\n\
+  \                                   MP@HL (STD-GEN-BD-MPEG2-MPHL)\n    -Pba  --general-bd-mpeg4-hp\
+  \    General Purpose BD Interchange with MPEG-4\n                              \
+  \     AVC/H.264 HiP@Level4.1\n                                   (STD-GEN-BD-MPEG4-HPLV41)\n\
+  \    -Pbb  --general-bd-mpeg4-hpbd  General Purpose BD Interchange with MPEG-4\n\
+  \                                   AVC/H.264 BD-Compatible HiP@Level4.1\n     \
+  \                              (STD-GEN-BD-MPEG4-HPLV41BD)\n          --general-bd-mpeg4-hp2d\
+  \  General Purpose BD Interchange with MPEG-4\n                                \
+  \   AVC/H.264 HiP@Level4.2 for 2D video\n                                   (STD-GEN-BD-MPEG4-HPLV42-2D)\n\
+  \          --general-bd-mpeg4-hp3d  General Purpose BD Interchange with MPEG-4\n\
+  \                                   AVC/H.264 HiP@Level4.2 for 3D video\n      \
+  \                             (STD-GEN-BD-MPEG4-HPLV42-3D)\n          --general-bd-mpeg4-hpst\
+  \  General Purpose BD Interchange with MPEG-4\n                                \
+  \   AVC/H.264 Stereo HiP@Level4.2\n                                   (STD-GEN-BD-MPEG4-SHPLV42)\n\
+  \    -Pfl  --usb-and-flash-jpeg     General Purpose USB/Flash Memory Interchange\n\
+  \                                   with JPEG (STD-GEN-USB/MMC/CF/SD-JPEG)\n   \
+  \ -Pf2  --usb-and-flash-j2k      General Purpose USB/Flash Memory Interchange\n\
+  \                                   with JPEG 2000 (STD-GEN-USB/MMC/CF/SD-J2K)\n\
+  \    -Pmi  --general-mime           General Purpose MIME Interchange\n         \
+  \                          (STD-GEN-MIME)\n    -Pmp  --mpeg2-mpml-dvd         DVD\
+  \ Interchange with MPEG2 Main Profile @\n                                   Main\
+  \ Level (STD-DVD-MPEG2-MPML)\n    -Pbc  --basic-cardiac          Basic Cardiac X-Ray\
+  \ Angiographic Studies on\n                                   CD-R Media (STD-XABC-CD)\n\
+  \    -Pxa  --xray-angiographic      1024 X-Ray Angiographic Studies on CD-R Media\n\
+  \                                   (STD-XA1K-CD)\n    -Pxd  --xray-angiographic-dvd\
+  \  1024 X-Ray Angiographic Studies on DVD Media\n                              \
+  \     (STD-XA1K-DVD)\n    -Pde  --dental-radiograph      Dental Radiograph Interchange\
+  \ (STD-DEN-CD)\n    -Pcm  --ct-and-mr              CT/MR Studies (STD-CTMR-xxxx)\n\
+  \    -Pus  --ultrasound-id-sf       Ultrasound Single Frame for Image Display\n\
+  \                                   (STD-US-ID-SF-xxxx)\n          --ultrasound-sc-sf\
+  \       Ultrasound Single Frame with Spatial\n                                 \
+  \  Calibration (STD-US-SC-SF-xxxx)\n          --ultrasound-cc-sf       Ultrasound\
+  \ Single Frame with Combined\n                                   Calibration (STD-US-CC-SF-xxxx)\n\
+  \    -Pum  --ultrasound-id-mf       Ultrasound Single & Multi-Frame for Image\n\
+  \                                   Display (STD-US-ID-MF-xxxx)\n          --ultrasound-sc-mf\
+  \       Ultrasound Single & Multi-Frame with Spatial\n                         \
+  \          Calibration (STD-UD-SC-MF-xxxx)\n          --ultrasound-cc-mf       Ultrasound\
+  \ Single & Multi-Frame with Combined\n                                   Calibration\
+  \ (STD-UD-CC-MF-xxxx)\n    -Pec  --12-lead-ecg            12-lead ECG Interchange\
+  \ on Diskette\n                                   (STD-WVFM-ECG-FD)\n    -Phd  --hemodynamic-waveform\
+  \   Hemodynamic Waveform Interchange on Diskette\n                             \
+  \      (STD-WVFM-HD-FD)\n  writing:\n    -A    --replace                replace\
+  \ existing DICOMDIR (default)\n    +A    --append                 append to existing\
+  \ DICOMDIR\n    +U    --update                 update existing DICOMDIR\n    -w\
+  \    --discard                do not write out DICOMDIR\n  backup:\n          --create-backup\
+  \          create a backup of existing DICOMDIR (def.)\n    -nb   --no-backup  \
+  \            do not create a backup of existing DICOMDIR\n  post-1993 value representations:\n\
+  \    +u    --enable-new-vr          enable support for new VRs (UN/UT) (default)\n\
+  \    -u    --disable-new-vr         disable support for new VRs, convert to OB\n\
+  \  group length encoding:\n    -g    --group-length-remove    write without group\
+  \ length elements (default)\n    +g    --group-length-create    write with group\
+  \ length elements\n  length encoding in sequences and items:\n    +e    --length-explicit\
+  \        write with explicit lengths (default)\n    -e    --length-undefined   \
+  \    write with undefined lengths\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/dcmtk:3.6.5--h5fca97b_0

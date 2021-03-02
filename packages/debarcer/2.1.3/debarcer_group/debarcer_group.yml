@@ -1,0 +1,131 @@
+!Command
+command:
+- debarcer
+- group
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --Outdir
+  description: Output directory where subdirectories are created
+  args: !SimpleFlagArg
+    name: OUTDIR
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --Region
+  description: "Region coordinates to search for UMIs. chrN:posA-posB.\nposA and posB\
+    \ are 1-based included"
+  args: !SimpleFlagArg
+    name: REGION
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --Bamfile
+  description: Path to the BAM file
+  args: !SimpleFlagArg
+    name: BAMFILE
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --Config
+  description: Path to the config file
+  args: !SimpleFlagArg
+    name: CONFIG
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --Distance
+  description: "Hamming distance threshold for connecting parent-\nchildren umis"
+  args: !SimpleFlagArg
+    name: DISTTHRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --Position
+  description: Umi position threshold for grouping umis together
+  args: !SimpleFlagArg
+    name: POSTTHRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --Ignore
+  description: "Keep the most abundant family and ignore families at\nother positions\
+    \ within each group. Default is False"
+  args: !ChoiceFlagArg
+    choices: !!set
+      'True':
+      'False':
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --Truncate
+  description: "Discard reads overlapping with the genomic region if\nTrue. Default\
+    \ is False"
+  args: !ChoiceFlagArg
+    choices: !!set
+      'True':
+      'False':
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --Separator
+  description: "String separating the UMI from the remaining of the\nread name"
+  args: !SimpleFlagArg
+    name: SEPARATOR
+- !Flag
+  optional: true
+  synonyms:
+  - -rc
+  - --ReadCount
+  description: "Minimum number of reads in region required for\ngrouping. Default\
+    \ is 0\n"
+  args: !SimpleFlagArg
+    name: READCOUNT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: debarcer.py group [-h] [-o OUTDIR] -r REGION [-b BAMFILE] [-c CONFIG]\n\
+  \                         [-d DISTTHRESHOLD] [-p POSTTHRESHOLD]\n              \
+  \           [-i {True,False}] [-t {True,False}] [-s SEPARATOR]\n               \
+  \          [-rc READCOUNT]\n\noptional arguments:\n  -h, --help            show\
+  \ this help message and exit\n  -o OUTDIR, --Outdir OUTDIR\n                   \
+  \     Output directory where subdirectories are created\n  -r REGION, --Region REGION\n\
+  \                        Region coordinates to search for UMIs. chrN:posA-posB.\n\
+  \                        posA and posB are 1-based included\n  -b BAMFILE, --Bamfile\
+  \ BAMFILE\n                        Path to the BAM file\n  -c CONFIG, --Config CONFIG\n\
+  \                        Path to the config file\n  -d DISTTHRESHOLD, --Distance\
+  \ DISTTHRESHOLD\n                        Hamming distance threshold for connecting\
+  \ parent-\n                        children umis\n  -p POSTTHRESHOLD, --Position\
+  \ POSTTHRESHOLD\n                        Umi position threshold for grouping umis\
+  \ together\n  -i {True,False}, --Ignore {True,False}\n                        Keep\
+  \ the most abundant family and ignore families at\n                        other\
+  \ positions within each group. Default is False\n  -t {True,False}, --Truncate {True,False}\n\
+  \                        Discard reads overlapping with the genomic region if\n\
+  \                        True. Default is False\n  -s SEPARATOR, --Separator SEPARATOR\n\
+  \                        String separating the UMI from the remaining of the\n \
+  \                       read name\n  -rc READCOUNT, --ReadCount READCOUNT\n    \
+  \                    Minimum number of reads in region required for\n          \
+  \              grouping. Default is 0\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/debarcer:2.1.3--py_0

@@ -1,0 +1,144 @@
+!Command
+command:
+- taxonkit
+- lineage
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --delimiter
+  description: field delimiter in lineage (default ";")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  - --no-lineage
+  description: do not show lineage, when user just want names or/and ranks
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  - --show-lineage-ranks
+  description: appending ranks of all levels
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --show-lineage-taxids
+  description: appending lineage consisting of taxids
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --show-name
+  description: appending scientific name
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --show-rank
+  description: appending rank of taxids
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --show-status-code
+  description: show status code before lineage
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --taxid-field
+  description: field index of taxid. input data should be tab-separated (default 1)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --data-dir
+  description: directory containing nodes.dmp and names.dmp (default "/root/.taxonkit")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --line-buffered
+  description: use line buffering on output, i.e., immediately writing to stdin/file
+    for every line of output
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out-file
+  description: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --threads
+  description: number of CPUs. 4 is enough (default 4)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: print verbose information
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: help for lineage
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Query taxonomic lineage of given taxIDs\n\nInput:\n\n  - List of taxIDs,\
+  \ one taxID per line.\n  - Or tab-delimited format, please specify taxID field \n\
+  \    with flag -i/--taxid-field (default 1).\n  - Supporting (gzipped) file or STDIN.\n\
+  \nOutput:\n\n  1. Input line data.\n  2. (Optional) Status code (-c/--show-status-code),\
+  \ values:\n     - \"-1\" for queries not found in whole database.\n     - \"0\"\
+  \ for deleted taxIDs, provided by \"delnodes.dmp\".\n     - New taxIDs for merged\
+  \ taxIDs, provided by \"merged.dmp\".\n     - Taxids for these found in \"nodes.dmp\"\
+  .\n  3. Lineage, delimiter can be changed with flag -d/--delimiter.\n  4. (Optional)\
+  \ Lineage in taxIDs (-t/--show-lineage-taxids)\n  5. (Optional) Rank (-r/--show-rank)\n\
+  \nFilter out invalid and deleted taxids, and replace merged \ntaxids with new ones:\n\
+  \    \n    # input is one-column-taxid\n    $ taxonkit lineage -c taxids.txt \\\n\
+  \        | awk '$2>0' \\\n        | cut -f 2-\n        \n    # taxids are in 3rd\
+  \ field in a 4-columns tab-delimited file,\n    # for $5, where 5 = 4 + 1.\n   \
+  \ $ cat input.txt \\\n        | taxonkit lineage -c -i 3 \\\n        | csvtk filter2\
+  \ -H -t -f '$5>0' \\\n        | csvtk -H -t cut -f -3\n\nUsage:\n  taxonkit lineage\
+  \ [flags]\n\nFlags:\n  -d, --delimiter string      field delimiter in lineage (default\
+  \ \";\")\n  -h, --help                  help for lineage\n  -L, --no-lineage   \
+  \         do not show lineage, when user just want names or/and ranks\n  -R, --show-lineage-ranks\
+  \    appending ranks of all levels\n  -t, --show-lineage-taxids   appending lineage\
+  \ consisting of taxids\n  -n, --show-name             appending scientific name\n\
+  \  -r, --show-rank             appending rank of taxids\n  -c, --show-status-code\
+  \      show status code before lineage\n  -i, --taxid-field int       field index\
+  \ of taxid. input data should be tab-separated (default 1)\n\nGlobal Flags:\n  \
+  \    --data-dir string   directory containing nodes.dmp and names.dmp (default \"\
+  /root/.taxonkit\")\n      --line-buffered     use line buffering on output, i.e.,\
+  \ immediately writing to stdin/file for every line of output\n  -o, --out-file string\
+  \   out file (\"-\" for stdout, suffix .gz for gzipped out) (default \"-\")\n  -j,\
+  \ --threads int       number of CPUs. 4 is enough (default 4)\n      --verbose \
+  \          print verbose information\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/taxonkit:0.7.2--0

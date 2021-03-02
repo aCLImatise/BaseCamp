@@ -1,0 +1,136 @@
+!Command
+command:
+- hicDifferentialTAD
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --targetMatrix
+  - -tm
+  description: The matrix which was used to compute the TADs
+  args: !SimpleFlagArg
+    name: TARGETMATRIX
+- !Flag
+  optional: true
+  synonyms:
+  - --controlMatrix
+  - -cm
+  description: "The control matrix to test the TADs for a differential\ninteraction\
+    \ pattern."
+  args: !SimpleFlagArg
+    name: CONTROLMATRIX
+- !Flag
+  optional: true
+  synonyms:
+  - --tadDomains
+  - -td
+  description: The TADs domain file computed by hicFindTADs.
+  args: !SimpleFlagArg
+    name: TADDOMAINS
+- !Flag
+  optional: true
+  synonyms:
+  - --outFileNamePrefix
+  - -o
+  description: "Outfile name prefix to store the accepted / rejected\nH0 TADs."
+  args: !SimpleFlagArg
+    name: OUTFILENAMEPREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - --pValue
+  - -p
+  description: "H0 is considered as 'two regions are identical.' i.e.\nall regions\
+    \ with a test result of <= p-value are\nrejected and considered as differential\
+    \ (Default:\n0.05)."
+  args: !SimpleFlagArg
+    name: PVALUE
+- !Flag
+  optional: true
+  synonyms:
+  - --mode
+  - -m
+  description: "Consider only intra-TAD interactions, or additional\nleft inter-TAD,\
+    \ right inter-TAD or all (Default: all)."
+  args: !ChoiceFlagArg
+    choices: !!set
+      left-inter-TAD:
+      all:
+      intra-TAD:
+      right-inter-TAD:
+- !Flag
+  optional: true
+  synonyms:
+  - --modeReject
+  - -mr
+  description: "All test of a mode must be rejected (all) or reject\nregion (and accept\
+    \ it is differential) as soon as at\nleast one region is having a p-value <= --pValue\n\
+    (Default: one)."
+  args: !ChoiceFlagArg
+    choices: !!set
+      all:
+      one:
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  - -t
+  description: "Number of threads to use, the parallelization is\nimplemented per\
+    \ chromosome (Default: 4)."
+  args: !SimpleFlagArg
+    name: THREADS
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: hicDifferentialTAD [--targetMatrix TARGETMATRIX]\n            \
+  \              [--controlMatrix CONTROLMATRIX]\n                          [--tadDomains\
+  \ TADDOMAINS]\n                          [--outFileNamePrefix OUTFILENAMEPREFIX]\n\
+  \                          [--pValue PVALUE]\n                          [--mode\
+  \ {intra-TAD,left-inter-TAD,right-inter-TAD,all}]\n                          [--modeReject\
+  \ {all,one}] [--threads THREADS]\n                          [--help] [--version]\n\
+  \nComputes differential TADs by comparing the precomputed TAD regions of the target\
+  \ matrix with the same regions of the control matrix.\nPlease notice that the matrices\
+  \ need to have the same read coverage, this can be achieved with hicNormalize and\
+  \ the 'smallest'-mode.\nH0 is the assumption that two regions are identical, the\
+  \ rejected files contain therefore the as differential considered regions.\n\nRequired\
+  \ arguments:\n  --targetMatrix TARGETMATRIX, -tm TARGETMATRIX\n                \
+  \        The matrix which was used to compute the TADs\n  --controlMatrix CONTROLMATRIX,\
+  \ -cm CONTROLMATRIX\n                        The control matrix to test the TADs\
+  \ for a differential\n                        interaction pattern.\n  --tadDomains\
+  \ TADDOMAINS, -td TADDOMAINS\n                        The TADs domain file computed\
+  \ by hicFindTADs.\n  --outFileNamePrefix OUTFILENAMEPREFIX, -o OUTFILENAMEPREFIX\n\
+  \                        Outfile name prefix to store the accepted / rejected\n\
+  \                        H0 TADs.\n\nOptional arguments:\n  --pValue PVALUE, -p\
+  \ PVALUE\n                        H0 is considered as 'two regions are identical.'\
+  \ i.e.\n                        all regions with a test result of <= p-value are\n\
+  \                        rejected and considered as differential (Default:\n   \
+  \                     0.05).\n  --mode {intra-TAD,left-inter-TAD,right-inter-TAD,all},\
+  \ -m {intra-TAD,left-inter-TAD,right-inter-TAD,all}\n                        Consider\
+  \ only intra-TAD interactions, or additional\n                        left inter-TAD,\
+  \ right inter-TAD or all (Default: all).\n  --modeReject {all,one}, -mr {all,one}\n\
+  \                        All test of a mode must be rejected (all) or reject\n \
+  \                       region (and accept it is differential) as soon as at\n \
+  \                       least one region is having a p-value <= --pValue\n     \
+  \                   (Default: one).\n  --threads THREADS, -t THREADS\n         \
+  \               Number of threads to use, the parallelization is\n             \
+  \           implemented per chromosome (Default: 4).\n  --help, -h            show\
+  \ this help message and exit\n  --version             show program's version number\
+  \ and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/hicexplorer:3.6--py_0

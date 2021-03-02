@@ -1,0 +1,78 @@
+!Command
+command:
+- gdtools
+- MUMMER2MASK
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reference
+  description: File containing reference sequences in GenBank, GFF3, or FASTA format.
+    Option may be provided multiple times for multiple files (REQUIRED)
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: Output Genome Diff file. (DEFAULT=output.gd)
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --padding
+  description: Additional padding to add to each end of every MASK region. (DEFAULT=0)
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --merge
+  description: Merge regions if they are within this distance (before adding padding).
+    (DEFAULT=0)
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --minimum
+  description: Minimum size of a region after padding and merging to remain in the
+    MASK list. (DEFAULT=0)
+  args: !SimpleFlagArg
+    name: arg
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Display detailed help message
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "\ngdtools MUMMER2MASK [-o output.gd -p 36] -r reference.fna input.coords\n\
+  \  -h,--help                        Display detailed help message\n  -r,--reference\
+  \ <arg>             File containing reference sequences in GenBank, GFF3, or FASTA\
+  \ format. Option may be provided multiple times for multiple files (REQUIRED)\n\
+  \  -o,--output <arg>                Output Genome Diff file. (DEFAULT=output.gd)\n\
+  \  -p,--padding <arg>               Additional padding to add to each end of every\
+  \ MASK region. (DEFAULT=0)\n  -g,--merge <arg>                 Merge regions if\
+  \ they are within this distance (before adding padding). (DEFAULT=0)\n  -m,--minimum\
+  \ <arg>               Minimum size of a region after padding and merging to remain\
+  \ in the MASK list. (DEFAULT=0)\n\nThe input file of repeats should be generated\
+  \ using a MUMmer command like this:\n  mummer -maxmatch -b -c -l 36 reference.fna\
+  \ reference.fna > input.coords\n\nCreates a GD file with MASK entries from the output\
+  \ of MUMmer on the reference genome.\nThis file can be used to remove mutation predictions\
+  \ that overlap the masked regions\nusing the gdtools MASK command.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/breseq:0.35.5--h8b12597_0

@@ -20,6 +20,9 @@ task BamtoolsRandom {
       ~{if defined(number_alignments_grabnote) then ("-n " +  '"' + number_alignments_grabnote + '"') else ""} \
       ~{if defined(seed) then ("-seed " +  '"' + seed + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "the input BAM file [stdin]"
     list: "the input BAM file list, one\\nline per file"

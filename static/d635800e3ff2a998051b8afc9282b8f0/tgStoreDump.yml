@@ -1,0 +1,241 @@
+!Command
+command:
+- tgStoreDump
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: v
+  description: ''
+- !Positional
+  optional: true
+  position: 1
+  name: opts
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  description: path to the sequence store
+  args: !SimpleFlagArg
+    name: seqStore
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  description: <v>       path to the tigStore, version, to use
+  args: !SimpleFlagArg
+    name: tigStore
+- !Flag
+  optional: true
+  synonyms:
+  - -tig
+  description: '[-B]              only dump tigs between ids A and B'
+  args: !SimpleFlagArg
+    name: A
+- !Flag
+  optional: true
+  synonyms:
+  - -unassembled
+  description: only dump tigs that are 'unassembled'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -contigs
+  description: only dump tigs that are 'contigs'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -repeats
+  description: only dump tigs that are (probably) repeats
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -bubbles
+  description: only dump tigs that are (probably) bubbles
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -circular
+  description: only dump tigs that are (probably) circular
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -nreads
+  description: max         only dump tigs with between min and max reads
+  args: !SimpleFlagArg
+    name: min
+- !Flag
+  optional: true
+  synonyms:
+  - -length
+  description: max         only dump tigs with length between 'min' and 'max' bases
+  args: !SimpleFlagArg
+    name: min
+- !Flag
+  optional: true
+  synonyms:
+  - -coverage
+  description: "C g G       only dump tigs with between fraction g and G at coverage\
+    \ between c and C\nexample:  -coverage 10 inf 0.5 1.0 would report tigs where\
+    \ half of the\nbases are at 10+ times coverage."
+  args: !SimpleFlagArg
+    name: c
+- !Flag
+  optional: true
+  synonyms:
+  - -status
+  description: the number of tigs in the store
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -tigs
+  description: a list of tigs, and some information about them
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -consensus
+  description: '[opts]       the consensus sequence, with options:'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -reverse
+  description: reverse complement the sequence
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -fasta
+  description: report sequences in FASTA format (the default)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -fastq
+  description: report sequences in FASTQ format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -multialign
+  description: '[opts]      the full multialignment, output is to stdout'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  description: width of the page
+  args: !SimpleFlagArg
+    name: width
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: spacing between reads on the same line
+  args: !SimpleFlagArg
+    name: spacing
+- !Flag
+  optional: true
+  synonyms:
+  - -sizes
+  description: '[opts]           size statistics'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: write plots to 'outputPrefix.*' in the current directory
+  args: !SimpleFlagArg
+    name: outputPrefix
+- !Flag
+  optional: true
+  synonyms:
+  - -depth
+  description: '[opts]           a histogram of depths'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -single
+  description: one histogram per tig
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -overlap
+  description: read overlaps
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -thin
+  description: report regions where the (thickest) read overlap is less than 'overlap'
+    bases
+  args: !SimpleFlagArg
+    name: overlap
+- !Flag
+  optional: true
+  synonyms:
+  - -overlaphistogram
+  description: a histogram of the thickest overlaps used
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "usage: tgStoreDump -S <seqStore> -T <tigStore> <v> [opts]\n\nSTORE SELECTION\
+  \ (mandatory)\n\n  -S <seqStore>           path to the sequence store\n  -T <tigStore>\
+  \ <v>       path to the tigStore, version, to use\n\nTIG SELECTION - if nothing\
+  \ specified, all tigs are reported\n              - all ranges are inclusive.\n\n\
+  \  -tig A[-B]              only dump tigs between ids A and B\n  -unassembled  \
+  \          only dump tigs that are 'unassembled'\n  -contigs                only\
+  \ dump tigs that are 'contigs'\n\n  -repeats                only dump tigs that\
+  \ are (probably) repeats\n  -bubbles                only dump tigs that are (probably)\
+  \ bubbles\n  -circular               only dump tigs that are (probably) circular\n\
+  \n  -nreads min max         only dump tigs with between min and max reads\n  -length\
+  \ min max         only dump tigs with length between 'min' and 'max' bases\n  -coverage\
+  \ c C g G       only dump tigs with between fraction g and G at coverage between\
+  \ c and C\n                            example:  -coverage 10 inf 0.5 1.0 would\
+  \ report tigs where half of the\n                                      bases are\
+  \ at 10+ times coverage.\n\nDUMP TYPE - all dumps, except status, report on tigs\
+  \ selected as above\n\n  -status                 the number of tigs in the store\n\
+  \n  -tigs                   a list of tigs, and some information about them\n\n\
+  \  -consensus [opts]       the consensus sequence, with options:\n             \
+  \               -reverse          reverse complement the sequence\n            \
+  \                -fasta            report sequences in FASTA format (the default)\n\
+  \                            -fastq            report sequences in FASTQ format\n\
+  \n  -layout -o name         metadata and read-to-tig position mapping.  -o is mandatory.\n\
+  \                          creates two files:\n                            name.layout.readToTig\
+  \ - read to tig position\n                            name.layout.tigInfo   - metadata\
+  \ for each tig\n\n  -layout [opts]          the layout of reads in each tig and\
+  \ the consensus sequence if available\n                          and enabled with\
+  \ option:\n                            -sequence         also include consensus\
+  \ sequence and quality\n\n\n  -multialign [opts]      the full multialignment, output\
+  \ is to stdout\n                            -w width          width of the page\n\
+  \                            -s spacing        spacing between reads on the same\
+  \ line\n\n  -sizes [opts]           size statistics\n                          \
+  \  -s genomesize     denominator to use for n50 computation\n\n  -coverage [opts]\
+  \        read coverage plots, one plot per tig\n                            -o outputPrefix\
+  \   write plots to 'outputPrefix.*' in the current directory\n\n  -depth [opts]\
+  \           a histogram of depths\n                            -single         \
+  \  one histogram per tig\n\n  -overlap                read overlaps\n          \
+  \                  -thin overlap     report regions where the (thickest) read overlap\
+  \ is less than 'overlap' bases\n\n  -overlaphistogram       a histogram of the thickest\
+  \ overlaps used\n                            -o outputPrefix   write plots to 'outputPrefix.*'\
+  \ in the current directory\n\n\ntgStoreDump: Unknown option '--help'\nNo sequence\
+  \ store (-S option) supplied.\nNo tig store (-T option) supplied.\nNo tig store\
+  \ version (-T option) supplied.\nNo DUMP TYPE supplied.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/canu:2.1.1--he1b5a44_1

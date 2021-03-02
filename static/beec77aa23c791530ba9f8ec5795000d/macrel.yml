@@ -1,0 +1,145 @@
+!Command
+command:
+- macrel
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: Number of threads to use
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: path to the output directory
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - --file-output
+  description: path to the output file
+  args: !SimpleFlagArg
+    name: OUTPUT_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --tag
+  description: Set output tag
+  args: !SimpleFlagArg
+    name: OUTTAG
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --fasta
+  description: "path to the input FASTA file. This is used in both the\npeptides command\
+    \ (where the file is expected to\ncontain short amino-acid sequences) and in the\
+    \ contigs\ncommand (where the file is expected to contain longer\nnucleotide contigs)"
+  args: !SimpleFlagArg
+    name: FASTA_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - '-1'
+  - --reads1
+  - '-2'
+  - --reads2
+  - --mem
+  - --cluster
+  description: "Whether to pre-cluster the smORFs (at 100% identity)\nto avoid repeats"
+  args: !SimpleFlagArg
+    name: READS1
+- !Flag
+  optional: true
+  synonyms:
+  - --force
+  - --keep-fasta-headers
+  description: Keep complete FASTA headers [get-smorfs command]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --tmpdir
+  description: "Temporary directory to use (default: $TMPDIR in the\nenvironment or\
+    \ /tmp)"
+  args: !SimpleFlagArg
+    name: TMPDIR
+- !Flag
+  optional: true
+  synonyms:
+  - --keep-negatives
+  description: Whether to keep non-AMPs in the output
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --log-file
+  description: Path to the output logfile
+  args: !SimpleFlagArg
+    name: LOGFILE
+- !Flag
+  optional: true
+  synonyms:
+  - --log-append
+  description: "If set, then the log file is appended to (default:\noverwrite existing\
+    \ file)"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  - -v
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: macrel [-h] [-t THREADS] [-o OUTPUT] [--file-output OUTPUT_FILE]\n\
+  \              [--tag OUTTAG] [-f FASTA_FILE] [-1 READS1] [-2 READS2]\n        \
+  \      [--mem MEM] [--cluster] [--force] [--keep-fasta-headers]\n              [--tmpdir\
+  \ TMPDIR] [--keep-negatives] [--version]\n              [--log-file LOGFILE] [--log-append]\n\
+  \              command\n\nmacrel v1.0.0\n\npositional arguments:\n  command    \
+  \           Macrel command to execute (see documentation)\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -t THREADS, --threads\
+  \ THREADS\n                        Number of threads to use\n  -o OUTPUT, --output\
+  \ OUTPUT\n                        path to the output directory\n  --file-output\
+  \ OUTPUT_FILE\n                        path to the output file\n  --tag OUTTAG \
+  \         Set output tag\n  -f FASTA_FILE, --fasta FASTA_FILE\n                \
+  \        path to the input FASTA file. This is used in both the\n              \
+  \          peptides command (where the file is expected to\n                   \
+  \     contain short amino-acid sequences) and in the contigs\n                 \
+  \       command (where the file is expected to contain longer\n                \
+  \        nucleotide contigs)\n  -1 READS1, --reads1 READS1\n  -2 READS2, --reads2\
+  \ READS2\n  --mem MEM\n  --cluster             Whether to pre-cluster the smORFs\
+  \ (at 100% identity)\n                        to avoid repeats\n  --force\n  --keep-fasta-headers\
+  \  Keep complete FASTA headers [get-smorfs command]\n  --tmpdir TMPDIR       Temporary\
+  \ directory to use (default: $TMPDIR in the\n                        environment\
+  \ or /tmp)\n  --keep-negatives      Whether to keep non-AMPs in the output\n  --version,\
+  \ -v         show program's version number and exit\n  --log-file LOGFILE    Path\
+  \ to the output logfile\n  --log-append          If set, then the log file is appended\
+  \ to (default:\n                        overwrite existing file)\n\nExamples:\n\
+  \    run Macrel on peptides:  \n    macrel peptides --fasta example_seqs/expep.faa.gz\
+  \ --output out_peptides\n\n    run Macrel on contigs:\n    macrel contigs --fasta\
+  \ example_seqs/excontigs.fna.gz --output out_contigs\n\n    run Macrel on paired-end\
+  \ reads:\n    macrel reads -1 example_seqs/R1.fq.gz -2 example_seqs/R2.fq.gz --output\
+  \ out_metag --outtag example_metag\n\n    run Macrel to get abundance profiles:\
+  \ \n    macrel abundance -1 example_seqs/R1.fq.gz --fasta example_seqs/ref.faa.gz\
+  \ --output out_abundance --outtag example_abundance\n\n    For more information,please\
+  \ read the docs: https://macrel.readthedocs.io/en/latest/\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/macrel:1.0.0--py38h0213d0e_0

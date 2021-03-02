@@ -1,0 +1,76 @@
+!Command
+command:
+- checkm
+- unbinned
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: bin_dir
+  description: directory containing bins (fasta format)
+- !Positional
+  optional: false
+  position: 1
+  name: seq_file
+  description: sequences used to generate bins (fasta format)
+- !Positional
+  optional: false
+  position: 2
+  name: output_seq_file
+  description: write unbinned sequences to file
+- !Positional
+  optional: false
+  position: 3
+  name: output_stats_file
+  description: write unbinned sequence statistics to file
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --extension
+  description: 'extension of bins (other files in directory are ignored) (default:
+    fna)'
+  args: !SimpleFlagArg
+    name: EXTENSION
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --min_seq_len
+  description: required length of sequence
+  args: !SimpleFlagArg
+    name: MIN_SEQ_LEN
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  description: suppress console output
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: checkm unbinned [-h] [-x EXTENSION] [-s MIN_SEQ_LEN] [-q]\n   \
+  \                    bin_dir seq_file output_seq_file output_stats_file\n\nIdentify\
+  \ unbinned sequences.\n\npositional arguments:\n  bin_dir               directory\
+  \ containing bins (fasta format)\n  seq_file              sequences used to generate\
+  \ bins (fasta format)\n  output_seq_file       write unbinned sequences to file\n\
+  \  output_stats_file     write unbinned sequence statistics to file\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  -x, --extension\
+  \ EXTENSION\n                        extension of bins (other files in directory\
+  \ are ignored) (default: fna)\n  -s, --min_seq_len MIN_SEQ_LEN\n               \
+  \         required length of sequence\n  -q, --quiet           suppress console\
+  \ output\n\nExample: checkm unbinned ./bins seqs.fna unbinned.fna unbinned_stats.tsv\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/checkm-genome:1.1.3--py_1

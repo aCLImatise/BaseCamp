@@ -1,0 +1,685 @@
+!Command
+command:
+- anvi-trnaseq
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: trnaseq-fasta
+  description: '🍕 Can provide: '
+- !Positional
+  optional: false
+  position: 1
+  name: trnaseq-db
+  description: '🍺 More on `anvi-trnaseq`:'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --trnaseq-fasta
+  description: "The FASTA file containing merged (quality-controlled)\ntRNA-seq reads\
+    \ from a sample. We recommend generating\nthis file via `anvi-run-workflow -w\
+    \ trnaseq` to ensure\nproper merging of read pairs that may be partially or\n\
+    fully overlapping, and to automatically produce\nanvi'o-compliant simple deflines.\
+    \ If there is a\nproblem, anvi'o will gracefully complain about it.\n(default:\
+    \ None)"
+  args: !SimpleFlagArg
+    name: FASTA
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --sample-name
+  description: "Unique sample name, considering all others in the\nexperiment, that\
+    \ only includes ASCII letters and\ndigits, without spaces (default: None)"
+  args: !SimpleFlagArg
+    name: NAME
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-dir
+  description: 'Directory path for output files (default: None)'
+  args: !SimpleFlagArg
+    name: DIR_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --treatment
+  description: "The type of treatment applied during tRNA-seq sample\npreparation.\
+    \ The values which are currently known to\nanvi'o are \"untreated\" and \"demethylase\"\
+    , as tRNA-seq\nsamples are commonly split for these treatments.\nAnvi'o will warn\
+    \ you if you do not choose one of these\nknown options, but it will not affect\
+    \ data processing.\nTreatment type is stored for further reference in the\noutput\
+    \ tRNA-seq database, and can be used in anvi-\nconvert-trnaseq-database to affect\
+    \ which nucleotides\nare called at predicted modification sites in tRNA\nseed\
+    \ sequences. (default: untreated)"
+  args: !SimpleFlagArg
+    name: TREATMENT
+- !Flag
+  optional: true
+  synonyms:
+  - -W
+  - --overwrite-output-destinations
+  description: "Overwrite if the output files and/or directories\nexist. (default:\
+    \ False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --description
+  description: "A plain text file that contains some description about\nthe project.\
+    \ You can use Markdown syntax. The\ndescription text will be rendered and shown\
+    \ in all\nrelevant interfaces, including the anvi'o interactive\ninterface, or\
+    \ anvi'o summary outputs. (default: None)"
+  args: !SimpleFlagArg
+    name: TEXT_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --write-checkpoints
+  description: "Use this flag to write pickle files of intermediate\nresults at key\
+    \ points in anvi-trnaseq. If anvi'o\ncrashes for some reason, the argument, --load-\n\
+    checkpoint, with the associated checkpoint name can be\nused to restart the program\
+    \ from the given checkpoint.\nThis can be useful for saving time if anvi'o crashes\n\
+    or in comparing the results of different advanced\nprogram parameterizations involved\
+    \ in later stages of\nthe analytical pipeline after the checkpoint, such as\n\
+    --min-trna-fragment-size and --agglomeration-max-\nmismatch-freq. This flag will\
+    \ overwrite existing\nintermediate files in the output directory as needed.\n\
+    (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --load-checkpoint
+  description: "Use this option to restart anvi-trnaseq from a\ncheckpoint. This can\
+    \ be useful for saving time if\nanvi'o crashed or in comparing the results of\n\
+    different advanced program parameterizations involved\nin later stages of the\
+    \ analytical pipeline after the\ncheckpoint, such as --min-trna-fragment-size\
+    \ and\n--agglomeration-max-mismatch-freq. Use of this option\nrequires that anvi-trnaseq\
+    \ was previously run with the\nflag, --write-checkpoints, so that intermediate\
+    \ files\nwere generated. The checkpoint, profile, restarts\nafter tRNA have been\
+    \ profiled and dereplicated. The\ncheckpoint, fragment_mapping, restarts after\n\
+    unprofiled tRNA fragments have been mapped to\nnormalized tRNA sequences. To overwrite\
+    \ subsequent\ncheckpoints after loading a checkpoint (i.e.,\noverwrite the fragment_mapping\
+    \ checkpoint files after\nloading the profile checkpoint), remember to also use\n\
+    the flag, --write-checkpoints. (default: None)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      fragment_mapping:
+      profile:
+- !Flag
+  optional: true
+  synonyms:
+  - --feature-param-file
+  description: "A .ini file can be provided to set tRNA feature\nparameters used in\
+    \ de novo profiling/identification of\ntRNA sequences from the 3' end. Generate\
+    \ the default\nfile with the command, `anvi-trnaseq --default-\nfeature-param-file`.\
+    \ Dashes in the default file show\nparameters that cannot be changed, because\
+    \ they do not\nexist or are set in stone. For instance, the program\nonly detects\
+    \ base pairing in stems, so only stem\nfeatures are parameterized with a maximum\
+    \ allowed\nnumber of unpaired nucleotides, while every other\nfeature has a dash\
+    \ in the \"Number allowed unpaired\"\ncolumn. Two quotes in the default file show\
+    \ parameters\nthat are not currently set. To lift a constraint, a\nparameter value\
+    \ can be replaced by \"\". For instance,\nthe conserved purine at D loop/position\
+    \ 21 indicated\nby the value, 0,R, can be replaced by \"\" to prevent\nthe program\
+    \ from seeking a conserved nucleotide there.\nConserved nucleotides in a feature\
+    \ are set by pairs of\nzero-based indices and nucleotide symbols. The index\n\
+    indicates the conserved position in the feature,\nrelative to the 5' end of the\
+    \ feature. The nucleotide\nsymbol can be A, C, G, T (U in cDNA), R (purine), or\
+    \ Y\n(pyrimidine). The index is separated from the symbol\nby a comma. Multiple\
+    \ conserved positions in a feature\nare separted by a semicolon. Feature profiling\
+    \ of a\nsequence halts when the number of allowed unconserved\nnucleotides in\
+    \ a feature or the number of allowed\nunpaired positions in a stem is exceeded.\
+    \ The default\nallowed number of unconserved nucleotides in the D\nloop, for example,\
+    \ is 1, so 4 of the 5 conserved\npositions must be found for the D loop to be\n\
+    positively identified. By default, 1 position is\nallowed to be unpaired (no Watson-Crick\
+    \ or G-T wobble\nbase pair) in each of the 4 stems; the user could, for\ninstance,\
+    \ lift this constraint on the acceptor stem by\nchanging the value from 1 to \"\
+    \". There are 4 variable-\nlength sections of tRNA. The user could, for whatever\n\
+    strange reason, prevent the program from considering D\nstems of length 3 as well\
+    \ as 4 by changing the allowed\nlengths of the distal section of the D stem, positions\n\
+    13 and 22, from 0-1 to 1-1. (Logically, the allowed\nlength range of both paired\
+    \ positions in the stem, 13\nand 22, must be changed here.) (default: None)"
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --min-length-long-fiveprime
+  description: "tRNA reads often extend beyond the 5' end of a mature\ntRNA sequence.\
+    \ This can be biological in origin when\nthe read is from pre-tRNA; artifactual\
+    \ in origin when\nthe reverse transcriptase runs off the end of the\ntemplate,\
+    \ adding a small number ofs random bases; or\nartifactual when the read is a chimera\
+    \ of tRNA at the\n3' end and another, potentially non-tRNA, transcript\nat the\
+    \ 5' end. Longer 5' extensions are more likely to\nbe biological than artifactual\
+    \ due to the exclusion of\nrunoff bases. This parameter sets the minimum length\n\
+    of 5' sequence extensions that are recorded in the\ntRNA-seq database output for\
+    \ further analysis.\n(default: 4)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --min-trna-fragment-size
+  description: "Anvi'o profiles a sequence as tRNA by identifying tRNA\nfeatures from\
+    \ the 3' end of the sequence. tRNA-seq\ndatasets can include a significant number\
+    \ of tRNA\nfragments that are not from the 3' end of the sequence\nending in a\
+    \ recognized acceptor tail (CCA, CC, C,\nCCAN, CCANN). These \"interior\" and\
+    \ 5' fragments can be\nof significant biological interest. Fragments are\nidentified\
+    \ by mapping unprofiled reads to profiled\ntRNAs that have their 3' acceptor variants\
+    \ trimmed\noff. This parameter sets the minimum length of\nunprofiled reads searched\
+    \ in this manner. The choice\nof 25 as the default value is motivated by\nconsiderations\
+    \ of false positive matches and\ncomputational performance with a shorter minimum\n\
+    sequence length. Since unprofiled reads are mapped to\nevery unique profiled tRNA\
+    \ sequence, a shorter minimum\nsequence length can make mapping take a very long\
+    \ time\nand return too many alignments to store in memory for\ndatasets of millions\
+    \ of reads. Pay attention to python\nmemory usage if you adjust this parameter\
+    \ downwards."
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --agglomeration-max-mismatch-freq
+  description: "Anvi'o finds potential tRNA modifications by first\nagglomerating\
+    \ sequences differing from one or more\nother sequences in the cluster by mismatches\
+    \ at a\ncertain fraction of nucleotides. This parameter sets\nthe maximum mismatch\
+    \ fraction that is allowed, by\ndefault 2/71. This number represents 2 mismatches\
+    \ in a\nfull-length tRNA of length 74, not 71, as 3' sequence\nvariants, including\
+    \ the canonical 3'-CCA, are trimmed\noff prior to sequences being agglomerated.\
+    \ (Average\nnon-mitochondrial tRNAs range in length from 74-95.)\nFor example,\
+    \ consider 3 trimmed sequences of length 71\n-- A, B and C -- and 1 sequence of\
+    \ length 70, D. If A\ndiffers from B by a substitution at position 1, and C\n\
+    differs from B at positions 10 and 20, such that C\ndiffers from A by 3 substitutions,\
+    \ then A, B, and C\nwill still agglomerate into a single cluster, as each\ndiffers\
+    \ by no more than 2 substitutions from some\nother sequence in the cluster. In\
+    \ contrast, sequence D\ndiffers from B at positions 30 and 40, exceeding the\n\
+    2/71 fraction required to agglomerate (2/70 > 2/71),\nso D forms its own cluster\
+    \ and is not consolidated\ninto a single modified sequence with the others.\n\
+    (default: 0.028169014084507043)"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --fiveprimemost-deletion-start
+  description: "The 5'-most position relative to a potential modified\nnucleotide\
+    \ at which prospective deletions can begin.\nThe default value of -2 means deletions\
+    \ can start at\nmost 2 nucleotides 5' of a modification. Logically,\nthe parameter\
+    \ value must be less than or equal to the\nvalue of --threeprimemost-deletion-start\
+    \ and less than\nor equal to the value of --fiveprimemost-deletion-\nstop. (default:\
+    \ -2)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --threeprimemost-deletion-start
+  description: "The 3'-most position relative to a potential modified\nnucleotide\
+    \ at which prospective deletions can begin.\nThe default value of 0 means the\
+    \ 3'-most start\nposition of a deletion is the modification site\nitself. Logically,\
+    \ the parameter value must be greater\nthan or equal to the value of --fiveprimemost-\n\
+    deletion-start and less than or equal to the value of\n--threeprimemost-deletion-stop.\
+    \ (default: 0)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --fiveprimemost-deletion-stop
+  description: "The 5'-most position relative to a potential modified\nnucleotide\
+    \ at which prospective deletions can end. The\ndefault value of -1 means deletions\
+    \ can end at most 1\nnucleotide 5' of a modification. Logically, the\nparameter\
+    \ value must be greater than or equal to the\nvalue of --fiveprimemost-deletion-start\
+    \ and less than\nor equal to the value of --threeprimemost-deletion-\nstop. (default:\
+    \ -1)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --threeprimemost-deletion-stop
+  description: "The 3'-most position relative to a potential modified\nnucleotide\
+    \ at which prospective deletions can end. The\ndefault value of 0 means the 3'-most\
+    \ stop position of\na deletion is the modification site itself. Logically,\nthe\
+    \ parameter value must be greater than or equal to\nthe value of --threeprimemost-deletion-start\
+    \ and\ngreater than or equal to the value of --fiveprimemost-\ndeletion-stop.\
+    \ (default: 0)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --max-distinct-deletions
+  description: "The maximum number of distinct deletions -- which can\nbe of varying\
+    \ size -- that can be introduced around\npotential modifications in the search\
+    \ for deletions.\nHigher values of this parameter may lead to\nidentification\
+    \ of more deletions (at the expense of\nruntime). For example, with the default\
+    \ value of 2 and\na sequence containing 3 potential substitutions\npositions,\
+    \ then some in silico template sequences will\nbe produced containing deletions\
+    \ around the first\nposition; others will be produced containing deletions\nat\
+    \ the first and second positions; the first and third\npositions; the second position;\
+    \ the second and third;\nand the third. (default: 2)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --num-threads
+  description: "Maximum number of threads to use for multithreading\nwhenever possible.\
+    \ Very conservatively, the default is\n1. It is a good idea to not exceed the\
+    \ number of CPUs\n/ cores on your system. Plus, please be careful with\nthis option\
+    \ if you are running your commands on a SGE\n--if you are clusterizing your runs,\
+    \ and asking for\nmultiple threads to use, you may deplete your\nresources very\
+    \ fast. (default: 1)"
+  args: !SimpleFlagArg
+    name: NUM_THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - --skip-fasta-check
+  description: "Don't check the input FASTA file for such things as\nproper defline\
+    \ formatting to speed things up.\n(default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --write-buffer-size
+  description: "The number of tRNA feature profiles to be kept in\nmemory before writing\
+    \ to the tRNA-seq database. The\ndefault is 100,000. The larger the buffer size,\
+    \ the\nless frequently the program will access the disk, yet\nthe more memory\
+    \ will be consumed, as profiles are\ncleared from memory once processed. Keep\
+    \ an eye on\npython memory usage to make sure it never exceeds the\nphysical memory\
+    \ limit. (default: 100000)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --alignment-target-chunk-size
+  description: "The anvi'o sequence aligner manages memory consumption\nby chunking\
+    \ the list of alignment targets, so that\nqueries are aligned to the first chunk\
+    \ of targets,\nthen the second chunk, and so on. This parameter sets\nthe maximum\
+    \ number of target sequences in each chunk\n(by default 20000). Memory management\
+    \ becomes\nimportant when aligning short queries to a large\nnumber of targets,\
+    \ which involves searching queries\nagainst a massive number of k-mers (equal\
+    \ in length to\nthe shortest query) that have been extracted from\ntargets. Adjust\
+    \ this parameter downward if your system\nruns out of memory during alignment;\
+    \ adjust this\nparameter upward to speed up alignment if you find\nthat you are\
+    \ not memory-limited. Ideally, we would set\nthis parameter using a heuristic\
+    \ function\nparameterized with the numbers and lengths of query\nand target sequences..."
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --fragment-mapping-query-chunk-length
+  description: "Mapping potential tRNA fragments to profiled tRNA can\ngenerate massive\
+    \ data structures. To manage memory\nconsumption, the fragment queries are chunked\
+    \ and run\nas separate alignment tasks. Queries are chunked based\non sequence\
+    \ length, as longer k-mers can be used with\nlonger queries to speed up mapping.\
+    \ This parameter\nsets the sequence length interval used to chunk\nqueries. For\
+    \ a standard tRNA-seq dataset with --min-\ntrna-fragment-size set to the default\
+    \ of 25 and a\nmaximum unprofiled query length of, say, 170, the\ndefault length\
+    \ interval of 20 would result in 8\nchunks. Adjust this parameter downward if\
+    \ your system\nruns out of memory during alignment; adjust this\nparameter upward\
+    \ to speed up alignment if you find\nthat you are not memory-limited. Ideally,\
+    \ we would set\nthis parameter using a heuristic function\nparameterized with\
+    \ the numbers and lengths of query\nand target sequences..."
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --alignment-progress-interval
+  description: "Progress is reported after a certain number of queries\nhave been\
+    \ processed (by default 100000) in mapping\nunprofiled sequences to profiled tRNA\
+    \ to find interior\nand 5' tRNA fragments and in mapping sequences to each\nother\
+    \ in agglomeration, a stage in the identification\nof modifications."
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --agglomeration-progress-interval
+  description: "Progress in sequence agglomeration, a stage in the\nidentification\
+    \ of modifications, is reported after a\ncertain number of sequences have been\
+    \ processed.\n(default: 10000)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --default-feature-param-file
+  description: "Writes a tab-delimited .ini file containing default\ntRNA feature\
+    \ parameterizations used in de novo\nprofiling/identification of tRNA sequences\
+    \ from the 3'\nend. Parameters can be modified by the user and the\nfile fed back\
+    \ into anvi-trnaseq through the --feature-\nparam-file argument, the help description\
+    \ of which\nexplains the file format. (default: None)"
+  args: !SimpleFlagArg
+    name: OUTPUT_FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --print-default-feature-params
+  description: "Prints to standard output a nicely formatted table of\nthe default\
+    \ tRNA feature parameterizations (which can\nbe written to a tab-delimited .ini\
+    \ file by the option,\n--default-feature-param-file). (default: False)"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: anvi-trnaseq [-h] [-f FASTA] [-S NAME] [-o DIR_PATH]\n        \
+  \            [--treatment TREATMENT] [-W] [--description TEXT_FILE]\n          \
+  \          [--write-checkpoints]\n                    [--load-checkpoint {profile,fragment_mapping}]\n\
+  \                    [--feature-param-file FILE]\n                    [--min-length-long-fiveprime\
+  \ INT]\n                    [--min-trna-fragment-size INT]\n                   \
+  \ [--agglomeration-max-mismatch-freq FLOAT]\n                    [--fiveprimemost-deletion-start\
+  \ INT]\n                    [--threeprimemost-deletion-start INT]\n            \
+  \        [--fiveprimemost-deletion-stop INT]\n                    [--threeprimemost-deletion-stop\
+  \ INT]\n                    [--max-distinct-deletions INT] [-T NUM_THREADS]\n  \
+  \                  [--skip-fasta-check] [--write-buffer-size INT]\n            \
+  \        [--alignment-target-chunk-size INT]\n                    [--fragment-mapping-query-chunk-length\
+  \ INT]\n                    [--alignment-progress-interval INT]\n              \
+  \      [--agglomeration-progress-interval INT]\n                    [--default-feature-param-file\
+  \ OUTPUT_FILENAME]\n                    [--print-default-feature-params]\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n\nMANDATORY:\n\
+  \  -f FASTA, --trnaseq-fasta FASTA\n                        The FASTA file containing\
+  \ merged (quality-controlled)\n                        tRNA-seq reads from a sample.\
+  \ We recommend generating\n                        this file via `anvi-run-workflow\
+  \ -w trnaseq` to ensure\n                        proper merging of read pairs that\
+  \ may be partially or\n                        fully overlapping, and to automatically\
+  \ produce\n                        anvi'o-compliant simple deflines. If there is\
+  \ a\n                        problem, anvi'o will gracefully complain about it.\n\
+  \                        (default: None)\n  -S NAME, --sample-name NAME\n      \
+  \                  Unique sample name, considering all others in the\n         \
+  \               experiment, that only includes ASCII letters and\n             \
+  \           digits, without spaces (default: None)\n  -o DIR_PATH, --output-dir\
+  \ DIR_PATH\n                        Directory path for output files (default: None)\n\
+  \nEXTRAS:\n  --treatment TREATMENT\n                        The type of treatment\
+  \ applied during tRNA-seq sample\n                        preparation. The values\
+  \ which are currently known to\n                        anvi'o are \"untreated\"\
+  \ and \"demethylase\", as tRNA-seq\n                        samples are commonly\
+  \ split for these treatments.\n                        Anvi'o will warn you if you\
+  \ do not choose one of these\n                        known options, but it will\
+  \ not affect data processing.\n                        Treatment type is stored\
+  \ for further reference in the\n                        output tRNA-seq database,\
+  \ and can be used in anvi-\n                        convert-trnaseq-database to\
+  \ affect which nucleotides\n                        are called at predicted modification\
+  \ sites in tRNA\n                        seed sequences. (default: untreated)\n\
+  \  -W, --overwrite-output-destinations\n                        Overwrite if the\
+  \ output files and/or directories\n                        exist. (default: False)\n\
+  \  --description TEXT_FILE\n                        A plain text file that contains\
+  \ some description about\n                        the project. You can use Markdown\
+  \ syntax. The\n                        description text will be rendered and shown\
+  \ in all\n                        relevant interfaces, including the anvi'o interactive\n\
+  \                        interface, or anvi'o summary outputs. (default: None)\n\
+  \nADVANCED:\n  --write-checkpoints   Use this flag to write pickle files of intermediate\n\
+  \                        results at key points in anvi-trnaseq. If anvi'o\n    \
+  \                    crashes for some reason, the argument, --load-\n          \
+  \              checkpoint, with the associated checkpoint name can be\n        \
+  \                used to restart the program from the given checkpoint.\n      \
+  \                  This can be useful for saving time if anvi'o crashes\n      \
+  \                  or in comparing the results of different advanced\n         \
+  \               program parameterizations involved in later stages of\n        \
+  \                the analytical pipeline after the checkpoint, such as\n       \
+  \                 --min-trna-fragment-size and --agglomeration-max-\n          \
+  \              mismatch-freq. This flag will overwrite existing\n              \
+  \          intermediate files in the output directory as needed.\n             \
+  \           (default: False)\n  --load-checkpoint {profile,fragment_mapping}\n \
+  \                       Use this option to restart anvi-trnaseq from a\n       \
+  \                 checkpoint. This can be useful for saving time if\n          \
+  \              anvi'o crashed or in comparing the results of\n                 \
+  \       different advanced program parameterizations involved\n                \
+  \        in later stages of the analytical pipeline after the\n                \
+  \        checkpoint, such as --min-trna-fragment-size and\n                    \
+  \    --agglomeration-max-mismatch-freq. Use of this option\n                   \
+  \     requires that anvi-trnaseq was previously run with the\n                 \
+  \       flag, --write-checkpoints, so that intermediate files\n                \
+  \        were generated. The checkpoint, profile, restarts\n                   \
+  \     after tRNA have been profiled and dereplicated. The\n                    \
+  \    checkpoint, fragment_mapping, restarts after\n                        unprofiled\
+  \ tRNA fragments have been mapped to\n                        normalized tRNA sequences.\
+  \ To overwrite subsequent\n                        checkpoints after loading a checkpoint\
+  \ (i.e.,\n                        overwrite the fragment_mapping checkpoint files\
+  \ after\n                        loading the profile checkpoint), remember to also\
+  \ use\n                        the flag, --write-checkpoints. (default: None)\n\
+  \  --feature-param-file FILE\n                        A .ini file can be provided\
+  \ to set tRNA feature\n                        parameters used in de novo profiling/identification\
+  \ of\n                        tRNA sequences from the 3' end. Generate the default\n\
+  \                        file with the command, `anvi-trnaseq --default-\n     \
+  \                   feature-param-file`. Dashes in the default file show\n     \
+  \                   parameters that cannot be changed, because they do not\n   \
+  \                     exist or are set in stone. For instance, the program\n   \
+  \                     only detects base pairing in stems, so only stem\n       \
+  \                 features are parameterized with a maximum allowed\n          \
+  \              number of unpaired nucleotides, while every other\n             \
+  \           feature has a dash in the \"Number allowed unpaired\"\n            \
+  \            column. Two quotes in the default file show parameters\n          \
+  \              that are not currently set. To lift a constraint, a\n           \
+  \             parameter value can be replaced by \"\". For instance,\n         \
+  \               the conserved purine at D loop/position 21 indicated\n         \
+  \               by the value, 0,R, can be replaced by \"\" to prevent\n        \
+  \                the program from seeking a conserved nucleotide there.\n      \
+  \                  Conserved nucleotides in a feature are set by pairs of\n    \
+  \                    zero-based indices and nucleotide symbols. The index\n    \
+  \                    indicates the conserved position in the feature,\n        \
+  \                relative to the 5' end of the feature. The nucleotide\n       \
+  \                 symbol can be A, C, G, T (U in cDNA), R (purine), or Y\n     \
+  \                   (pyrimidine). The index is separated from the symbol\n     \
+  \                   by a comma. Multiple conserved positions in a feature\n    \
+  \                    are separted by a semicolon. Feature profiling of a\n     \
+  \                   sequence halts when the number of allowed unconserved\n    \
+  \                    nucleotides in a feature or the number of allowed\n       \
+  \                 unpaired positions in a stem is exceeded. The default\n      \
+  \                  allowed number of unconserved nucleotides in the D\n        \
+  \                loop, for example, is 1, so 4 of the 5 conserved\n            \
+  \            positions must be found for the D loop to be\n                    \
+  \    positively identified. By default, 1 position is\n                        allowed\
+  \ to be unpaired (no Watson-Crick or G-T wobble\n                        base pair)\
+  \ in each of the 4 stems; the user could, for\n                        instance,\
+  \ lift this constraint on the acceptor stem by\n                        changing\
+  \ the value from 1 to \"\". There are 4 variable-\n                        length\
+  \ sections of tRNA. The user could, for whatever\n                        strange\
+  \ reason, prevent the program from considering D\n                        stems\
+  \ of length 3 as well as 4 by changing the allowed\n                        lengths\
+  \ of the distal section of the D stem, positions\n                        13 and\
+  \ 22, from 0-1 to 1-1. (Logically, the allowed\n                        length range\
+  \ of both paired positions in the stem, 13\n                        and 22, must\
+  \ be changed here.) (default: None)\n  --min-length-long-fiveprime INT\n       \
+  \                 tRNA reads often extend beyond the 5' end of a mature\n      \
+  \                  tRNA sequence. This can be biological in origin when\n      \
+  \                  the read is from pre-tRNA; artifactual in origin when\n     \
+  \                   the reverse transcriptase runs off the end of the\n        \
+  \                template, adding a small number ofs random bases; or\n        \
+  \                artifactual when the read is a chimera of tRNA at the\n       \
+  \                 3' end and another, potentially non-tRNA, transcript\n       \
+  \                 at the 5' end. Longer 5' extensions are more likely to\n     \
+  \                   be biological than artifactual due to the exclusion of\n   \
+  \                     runoff bases. This parameter sets the minimum length\n   \
+  \                     of 5' sequence extensions that are recorded in the\n     \
+  \                   tRNA-seq database output for further analysis.\n           \
+  \             (default: 4)\n  --min-trna-fragment-size INT\n                   \
+  \     Anvi'o profiles a sequence as tRNA by identifying tRNA\n                 \
+  \       features from the 3' end of the sequence. tRNA-seq\n                   \
+  \     datasets can include a significant number of tRNA\n                      \
+  \  fragments that are not from the 3' end of the sequence\n                    \
+  \    ending in a recognized acceptor tail (CCA, CC, C,\n                       \
+  \ CCAN, CCANN). These \"interior\" and 5' fragments can be\n                   \
+  \     of significant biological interest. Fragments are\n                      \
+  \  identified by mapping unprofiled reads to profiled\n                        tRNAs\
+  \ that have their 3' acceptor variants trimmed\n                        off. This\
+  \ parameter sets the minimum length of\n                        unprofiled reads\
+  \ searched in this manner. The choice\n                        of 25 as the default\
+  \ value is motivated by\n                        considerations of false positive\
+  \ matches and\n                        computational performance with a shorter\
+  \ minimum\n                        sequence length. Since unprofiled reads are mapped\
+  \ to\n                        every unique profiled tRNA sequence, a shorter minimum\n\
+  \                        sequence length can make mapping take a very long time\n\
+  \                        and return too many alignments to store in memory for\n\
+  \                        datasets of millions of reads. Pay attention to python\n\
+  \                        memory usage if you adjust this parameter downwards.\n\
+  \  --agglomeration-max-mismatch-freq FLOAT\n                        Anvi'o finds\
+  \ potential tRNA modifications by first\n                        agglomerating sequences\
+  \ differing from one or more\n                        other sequences in the cluster\
+  \ by mismatches at a\n                        certain fraction of nucleotides. This\
+  \ parameter sets\n                        the maximum mismatch fraction that is\
+  \ allowed, by\n                        default 2/71. This number represents 2 mismatches\
+  \ in a\n                        full-length tRNA of length 74, not 71, as 3' sequence\n\
+  \                        variants, including the canonical 3'-CCA, are trimmed\n\
+  \                        off prior to sequences being agglomerated. (Average\n \
+  \                       non-mitochondrial tRNAs range in length from 74-95.)\n \
+  \                       For example, consider 3 trimmed sequences of length 71\n\
+  \                        -- A, B and C -- and 1 sequence of length 70, D. If A\n\
+  \                        differs from B by a substitution at position 1, and C\n\
+  \                        differs from B at positions 10 and 20, such that C\n  \
+  \                      differs from A by 3 substitutions, then A, B, and C\n   \
+  \                     will still agglomerate into a single cluster, as each\n  \
+  \                      differs by no more than 2 substitutions from some\n     \
+  \                   other sequence in the cluster. In contrast, sequence D\n   \
+  \                     differs from B at positions 30 and 40, exceeding the\n   \
+  \                     2/71 fraction required to agglomerate (2/70 > 2/71),\n   \
+  \                     so D forms its own cluster and is not consolidated\n     \
+  \                   into a single modified sequence with the others.\n         \
+  \               (default: 0.028169014084507043)\n  --fiveprimemost-deletion-start\
+  \ INT\n                        The 5'-most position relative to a potential modified\n\
+  \                        nucleotide at which prospective deletions can begin.\n\
+  \                        The default value of -2 means deletions can start at\n\
+  \                        most 2 nucleotides 5' of a modification. Logically,\n \
+  \                       the parameter value must be less than or equal to the\n\
+  \                        value of --threeprimemost-deletion-start and less than\n\
+  \                        or equal to the value of --fiveprimemost-deletion-\n  \
+  \                      stop. (default: -2)\n  --threeprimemost-deletion-start INT\n\
+  \                        The 3'-most position relative to a potential modified\n\
+  \                        nucleotide at which prospective deletions can begin.\n\
+  \                        The default value of 0 means the 3'-most start\n      \
+  \                  position of a deletion is the modification site\n           \
+  \             itself. Logically, the parameter value must be greater\n         \
+  \               than or equal to the value of --fiveprimemost-\n               \
+  \         deletion-start and less than or equal to the value of\n              \
+  \          --threeprimemost-deletion-stop. (default: 0)\n  --fiveprimemost-deletion-stop\
+  \ INT\n                        The 5'-most position relative to a potential modified\n\
+  \                        nucleotide at which prospective deletions can end. The\n\
+  \                        default value of -1 means deletions can end at most 1\n\
+  \                        nucleotide 5' of a modification. Logically, the\n     \
+  \                   parameter value must be greater than or equal to the\n     \
+  \                   value of --fiveprimemost-deletion-start and less than\n    \
+  \                    or equal to the value of --threeprimemost-deletion-\n     \
+  \                   stop. (default: -1)\n  --threeprimemost-deletion-stop INT\n\
+  \                        The 3'-most position relative to a potential modified\n\
+  \                        nucleotide at which prospective deletions can end. The\n\
+  \                        default value of 0 means the 3'-most stop position of\n\
+  \                        a deletion is the modification site itself. Logically,\n\
+  \                        the parameter value must be greater than or equal to\n\
+  \                        the value of --threeprimemost-deletion-start and\n    \
+  \                    greater than or equal to the value of --fiveprimemost-\n  \
+  \                      deletion-stop. (default: 0)\n  --max-distinct-deletions INT\n\
+  \                        The maximum number of distinct deletions -- which can\n\
+  \                        be of varying size -- that can be introduced around\n \
+  \                       potential modifications in the search for deletions.\n \
+  \                       Higher values of this parameter may lead to\n          \
+  \              identification of more deletions (at the expense of\n           \
+  \             runtime). For example, with the default value of 2 and\n         \
+  \               a sequence containing 3 potential substitutions\n              \
+  \          positions, then some in silico template sequences will\n            \
+  \            be produced containing deletions around the first\n               \
+  \         position; others will be produced containing deletions\n             \
+  \           at the first and second positions; the first and third\n           \
+  \             positions; the second position; the second and third;\n          \
+  \              and the third. (default: 2)\n\nPERFORMANCE:\n  -T NUM_THREADS, --num-threads\
+  \ NUM_THREADS\n                        Maximum number of threads to use for multithreading\n\
+  \                        whenever possible. Very conservatively, the default is\n\
+  \                        1. It is a good idea to not exceed the number of CPUs\n\
+  \                        / cores on your system. Plus, please be careful with\n\
+  \                        this option if you are running your commands on a SGE\n\
+  \                        --if you are clusterizing your runs, and asking for\n \
+  \                       multiple threads to use, you may deplete your\n        \
+  \                resources very fast. (default: 1)\n  --skip-fasta-check    Don't\
+  \ check the input FASTA file for such things as\n                        proper\
+  \ defline formatting to speed things up.\n                        (default: False)\n\
+  \  --write-buffer-size INT\n                        The number of tRNA feature profiles\
+  \ to be kept in\n                        memory before writing to the tRNA-seq database.\
+  \ The\n                        default is 100,000. The larger the buffer size, the\n\
+  \                        less frequently the program will access the disk, yet\n\
+  \                        the more memory will be consumed, as profiles are\n   \
+  \                     cleared from memory once processed. Keep an eye on\n     \
+  \                   python memory usage to make sure it never exceeds the\n    \
+  \                    physical memory limit. (default: 100000)\n  --alignment-target-chunk-size\
+  \ INT\n                        The anvi'o sequence aligner manages memory consumption\n\
+  \                        by chunking the list of alignment targets, so that\n  \
+  \                      queries are aligned to the first chunk of targets,\n    \
+  \                    then the second chunk, and so on. This parameter sets\n   \
+  \                     the maximum number of target sequences in each chunk\n   \
+  \                     (by default 20000). Memory management becomes\n          \
+  \              important when aligning short queries to a large\n              \
+  \          number of targets, which involves searching queries\n               \
+  \         against a massive number of k-mers (equal in length to\n             \
+  \           the shortest query) that have been extracted from\n                \
+  \        targets. Adjust this parameter downward if your system\n              \
+  \          runs out of memory during alignment; adjust this\n                  \
+  \      parameter upward to speed up alignment if you find\n                    \
+  \    that you are not memory-limited. Ideally, we would set\n                  \
+  \      this parameter using a heuristic function\n                        parameterized\
+  \ with the numbers and lengths of query\n                        and target sequences...\n\
+  \  --fragment-mapping-query-chunk-length INT\n                        Mapping potential\
+  \ tRNA fragments to profiled tRNA can\n                        generate massive\
+  \ data structures. To manage memory\n                        consumption, the fragment\
+  \ queries are chunked and run\n                        as separate alignment tasks.\
+  \ Queries are chunked based\n                        on sequence length, as longer\
+  \ k-mers can be used with\n                        longer queries to speed up mapping.\
+  \ This parameter\n                        sets the sequence length interval used\
+  \ to chunk\n                        queries. For a standard tRNA-seq dataset with\
+  \ --min-\n                        trna-fragment-size set to the default of 25 and\
+  \ a\n                        maximum unprofiled query length of, say, 170, the\n\
+  \                        default length interval of 20 would result in 8\n     \
+  \                   chunks. Adjust this parameter downward if your system\n    \
+  \                    runs out of memory during alignment; adjust this\n        \
+  \                parameter upward to speed up alignment if you find\n          \
+  \              that you are not memory-limited. Ideally, we would set\n        \
+  \                this parameter using a heuristic function\n                   \
+  \     parameterized with the numbers and lengths of query\n                    \
+  \    and target sequences...\n\nPROGRESS:\n  --alignment-progress-interval INT\n\
+  \                        Progress is reported after a certain number of queries\n\
+  \                        have been processed (by default 100000) in mapping\n  \
+  \                      unprofiled sequences to profiled tRNA to find interior\n\
+  \                        and 5' tRNA fragments and in mapping sequences to each\n\
+  \                        other in agglomeration, a stage in the identification\n\
+  \                        of modifications.\n  --agglomeration-progress-interval\
+  \ INT\n                        Progress in sequence agglomeration, a stage in the\n\
+  \                        identification of modifications, is reported after a\n\
+  \                        certain number of sequences have been processed.\n    \
+  \                    (default: 10000)\n\nDEFAULTS:\n  --default-feature-param-file\
+  \ OUTPUT_FILENAME\n                        Writes a tab-delimited .ini file containing\
+  \ default\n                        tRNA feature parameterizations used in de novo\n\
+  \                        profiling/identification of tRNA sequences from the 3'\n\
+  \                        end. Parameters can be modified by the user and the\n \
+  \                       file fed back into anvi-trnaseq through the --feature-\n\
+  \                        param-file argument, the help description of which\n  \
+  \                      explains the file format. (default: None)\n  --print-default-feature-params\n\
+  \                        Prints to standard output a nicely formatted table of\n\
+  \                        the default tRNA feature parameterizations (which can\n\
+  \                        be written to a tab-delimited .ini file by the option,\n\
+  \                        --default-feature-param-file). (default: False)\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\
+  \n\U0001F525 Program description:\n\n   A program to process raw tRNA-seq dataset,\
+  \ which is the sequencing of tRNA\n   transcripts in a given sample, to generate\
+  \ an anvi'o tRNA-seq database\n\n\U0001F9C0 Can consume: \n\n   trnaseq-fasta\n\
+  \   \n\U0001F355 Can provide: \n\n   trnaseq-db\n   \n\U0001F37A More on `anvi-trnaseq`:\n\
+  \n   https://merenlab.org/software/anvio/help/7/programs/anvi-trnaseq\n\n\U0001F37B\
+  \ All anvi'o programs and artifacts:\n\n   https://merenlab.org/software/anvio/help/7\n\
+  \n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\
+  \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/anvio-minimal:7--py_0

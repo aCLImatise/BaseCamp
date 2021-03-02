@@ -1,0 +1,185 @@
+!Command
+command:
+- dcmicmp
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: dcmfile-in-1
+  description: Reference DICOM image file for comparison
+- !Positional
+  optional: false
+  position: 1
+  name: dcmfile-in-2
+  description: Test DICOM image file for comparison
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --arguments
+  description: print expanded command line arguments
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  description: quiet mode, print no warnings and errors
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: verbose mode, print processing details
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --debug
+  description: debug mode, print debug information
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ll
+  - --log-level
+  description: "[l]evel: string constant\n(fatal, error, warn, info, debug, trace)\n\
+    use level l for the logger"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -lc
+  - --log-config
+  description: "[f]ilename: string\nuse config file f for the logger"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --read-dataset
+  description: read data set without file meta information
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: =   --read-xfer-auto      use TS recognition (default)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -td
+  - --read-xfer-detect
+  description: ignore TS specified in the file meta header
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -te
+  - --read-xfer-little
+  description: read with explicit VR little endian TS
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -tb
+  - --read-xfer-big
+  description: read with explicit VR big endian TS
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ti
+  - --read-xfer-implicit
+  description: read with implicit VR little endian TS
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  - --no-modality
+  description: ignore stored modality LUT transformation
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -W
+  - --no-windowing
+  description: no VOI windowing (default)
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: print this help text and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: print version information and exit
+  args: !EmptyFlagArg {}
+help_text: "$dcmtk: dcmicmp v3.6.5 2019-10-28 $\n\ndcmicmp: Compare DICOM images and\
+  \ compute difference metrics\nusage: dcmicmp [options] dcmfile-in-1 dcmfile-in-2\n\
+  \nparameters:\n  dcmfile-in-1  Reference DICOM image file for comparison\n  dcmfile-in-2\
+  \  Test DICOM image file for comparison\n\ngeneral options:\n  -h      --help  \
+  \              print this help text and exit\n          --version             print\
+  \ version information and exit\n          --arguments           print expanded command\
+  \ line arguments\n  -q      --quiet               quiet mode, print no warnings\
+  \ and errors\n  -v      --verbose             verbose mode, print processing details\n\
+  \  -d      --debug               debug mode, print debug information\n  -ll    \
+  \ --log-level           [l]evel: string constant\n                             \
+  \   (fatal, error, warn, info, debug, trace)\n                                use\
+  \ level l for the logger\n  -lc     --log-config          [f]ilename: string\n \
+  \                               use config file f for the logger\ninput options:\n\
+  \  input file format:\n    +f    --read-file           read file format or data\
+  \ set (default)\n    +fo   --read-file-only      read file format only\n    -f \
+  \   --read-dataset        read data set without file meta information\n  input transfer\
+  \ syntax:\n    -t=   --read-xfer-auto      use TS recognition (default)\n    -td\
+  \   --read-xfer-detect    ignore TS specified in the file meta header\n    -te \
+  \  --read-xfer-little    read with explicit VR little endian TS\n    -tb   --read-xfer-big\
+  \       read with explicit VR big endian TS\n    -ti   --read-xfer-implicit  read\
+  \ with implicit VR little endian TS\nimage processing options:\n  modality LUT transformation:\n\
+  \    +M    --use-modality        use modality LUT transformation (default)\n   \
+  \ -M    --no-modality         ignore stored modality LUT transformation\n  VOI LUT\
+  \ transformation:\n    -W    --no-windowing        no VOI windowing (default)\n\
+  \    +Wi   --use-window          [n]umber: integer\n                           \
+  \     use the n-th VOI window from image file\n    +Wl   --use-voi-lut         [n]umber:\
+  \ integer\n                                use the n-th VOI look up table from image\
+  \ file\n    +Wm   --min-max-window      compute VOI window using min-max algorithm\n\
+  \                                on both images separately\n    +Wn   --min-max-window-n\
+  \    compute VOI window using min-max algorithm\n                              \
+  \  on both images separately, ignoring extremes\n    +Wr   --min-max-ref       \
+  \  compute VOI window using min-max algorithm\n                                and\
+  \ use same window for the test image\n    +Wq   --min-max-n-ref       compute VOI\
+  \ window using min-max algorithm,\n                                ignoring extreme\
+  \ values\n                                and use same window for the test image\n\
+  \    +Ww   --set-window          [c]enter [w]idth: float\n                     \
+  \           compute VOI window using center c and width w\n    +Wfl  --linear-function\
+  \     set VOI LUT function to LINEAR\n    +Wfs  --sigmoid-function    set VOI LUT\
+  \ function to SIGMOID\n  presentation LUT transformation:\n    +Pid  --identity-shape\
+  \      set presentation LUT shape to IDENTITY\n    +Piv  --inverse-shape       set\
+  \ presentation LUT shape to INVERSE\n    +Pod  --lin-od-shape        set presentation\
+  \ LUT shape to LIN OD\nimage comparison metrics options:\n  +ce     --check-error\
+  \         [l]imit: integer\n                                check if max absolute\
+  \ error <= limit\n  +cm     --check-mae           [l]imit: float\n             \
+  \                   check if mean absolute error <= limit\n  +cr     --check-rmse\
+  \          [l]imit: float\n                                check if root mean square\
+  \ error <= limit\n  +cp     --check-psnr          [l]imit: float\n             \
+  \                   check if PSNR >= limit\n  +cs     --check-snr           [l]imit:\
+  \ float\n                                check if SNR >= limit\noutput options:\n\
+  \  +sd     --save-diff           [f]ilename: string\n                          \
+  \      write secondary capture difference image\n  +a      --amplify           \
+  \  [f]actor: float\n                                multiply diff image pixel values\
+  \ by f\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/dcmtk:3.6.5--h5fca97b_0

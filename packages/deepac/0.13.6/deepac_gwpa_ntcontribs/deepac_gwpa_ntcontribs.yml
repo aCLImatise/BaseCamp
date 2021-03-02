@@ -1,0 +1,131 @@
+!Command
+command:
+- deepac
+- gwpa
+- ntcontribs
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --model
+  description: Model file (.h5)
+  args: !SimpleFlagArg
+    name: MODEL
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --dir-fragmented-genomes
+  description: Directory containing the fragmented genomes (.fasta)
+  args: !SimpleFlagArg
+    name: DIR_FRAGMENTED_GENOMES
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --genomes-dir
+  description: Directory containing genomes (.genome)
+  args: !SimpleFlagArg
+    name: GENOMES_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out-dir
+  description: Output directory
+  args: !SimpleFlagArg
+    name: OUT_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --ref-mode
+  description: Modus to calculate reference sequences
+  args: !ChoiceFlagArg
+    choices: !!set
+      GC:
+      own_ref_file:
+      N:
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --train-data
+  description: "Train data (.npy), necessary to calculate reference\nsequences if\
+    \ ref_mode is 'GC'"
+  args: !SimpleFlagArg
+    name: TRAIN_DATA
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  - --ref-seqs
+  description: "User provided reference sequences (.fasta) if ref_mode\nis 'own_ref_file'"
+  args: !SimpleFlagArg
+    name: REF_SEQS
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  - --read-length
+  description: Fragment length
+  args: !SimpleFlagArg
+    name: READ_LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --seq-chunk
+  description: Sequence chunk size. Decrease for lower memory usage.
+  args: !SimpleFlagArg
+    name: CHUNK_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - -G
+  - --gradient
+  description: Use Integrated Gradients instead of DeepLIFT.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-check
+  description: Disable additivity check.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: deepac gwpa ntcontribs [-h] -m MODEL -f DIR_FRAGMENTED_GENOMES\
+  \ -g\n                              GENOMES_DIR [-o OUT_DIR]\n                 \
+  \             [-r {N,GC,own_ref_file}] [-a TRAIN_DATA]\n                       \
+  \       [-F REF_SEQS] [-L READ_LENGTH] [-c CHUNK_SIZE]\n                       \
+  \       [-G] [--no-check]\n\noptional arguments:\n  -h, --help            show this\
+  \ help message and exit\n  -m MODEL, --model MODEL\n                        Model\
+  \ file (.h5)\n  -f DIR_FRAGMENTED_GENOMES, --dir-fragmented-genomes DIR_FRAGMENTED_GENOMES\n\
+  \                        Directory containing the fragmented genomes (.fasta)\n\
+  \  -g GENOMES_DIR, --genomes-dir GENOMES_DIR\n                        Directory\
+  \ containing genomes (.genome)\n  -o OUT_DIR, --out-dir OUT_DIR\n              \
+  \          Output directory\n  -r {N,GC,own_ref_file}, --ref-mode {N,GC,own_ref_file}\n\
+  \                        Modus to calculate reference sequences\n  -a TRAIN_DATA,\
+  \ --train-data TRAIN_DATA\n                        Train data (.npy), necessary\
+  \ to calculate reference\n                        sequences if ref_mode is 'GC'\n\
+  \  -F REF_SEQS, --ref-seqs REF_SEQS\n                        User provided reference\
+  \ sequences (.fasta) if ref_mode\n                        is 'own_ref_file'\n  -L\
+  \ READ_LENGTH, --read-length READ_LENGTH\n                        Fragment length\n\
+  \  -c CHUNK_SIZE, --seq-chunk CHUNK_SIZE\n                        Sequence chunk\
+  \ size. Decrease for lower memory usage.\n  -G, --gradient        Use Integrated\
+  \ Gradients instead of DeepLIFT.\n  --no-check            Disable additivity check.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/deepac:0.13.6--py_0

@@ -1,0 +1,218 @@
+!Command
+command:
+- mirtrace
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: trace
+  description: miRNA trace mode. Produces a clade report. --species is ignored.
+- !Positional
+  optional: false
+  position: 1
+  name: qc
+  description: Quality control mode (full set of reports). --species must be given.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --species
+  description: "Species (miRBase encoding). EXAMPLE: \"hsa\" for Homo sapiens.\nTo\
+    \ list all codes, run \"miRTrace --list-species\"."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --config
+  description: "List of FASTQ files to process. This is a CSV (comma separated\nvalue)\
+    \ file, i.e. with one entry per row.\nEach row consists of the following columns\n\
+    (only the first is required):\nfilename,name-displayed-in-report,adapter,PHRED-ASCII-offset\n\
+    NOTE: the PHRED ASCII offset can typically be reliably\nauto-detected and is not\
+    \ necessary to specify.\nEXAMPLE CONFIG FILE:\npath/sample1.fastq,sample 1 (control),TGGAATTC\n\
+    path/sample2.fastq,sample 2 (+drug X),TGGAATTC"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --adapter
+  description: '<DNA sequence>. [DEFAULT: none].'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --protocol
+  description: "One of the following (read structure schematic in parens):\nillumina\
+    \ (miRNA--3'-adapter--index) [DEFAULT]\nqiaseq (miRNA--3'-adapter--UMI--3'-adapter--index)\n\
+    NOTE: Only the first (leftmost) 3' adapter should be specified.\ncats (NNN--miRNA--poly-A--3'-adapter--index)\n\
+    NOTE: It's not possible to specify an adapter for -p cats.\nnextflex (NNNN--miRNA--NNNN--3'-adapter--index)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-dir
+  description: 'Directory for output files. [DEFAULT: <file listing>.output]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --force
+  description: Overwrite output directory if it exists.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --enable-pipes
+  description: "Enable support for named pipes (fifos) as input.\nNOTE: Requires a\
+    \ config file with PHRED and adapter\ngiven for each entry. Input must not be\
+    \ compressed."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --write-fasta
+  description: "Write QC-passed reads and unknown reads (as defined\nin the RNA type\
+    \ plot) to the output folder.\nIdentical reads are collapsed. Entries are sorted\
+    \ by abundance."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --uncollapse-fasta
+  description: Write one FASTA entry per original FASTQ entry.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --title
+  description: Set the report title.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --comment
+  description: "Add a comment to the generated report. Multiple\narguments can be\
+    \ given."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --num-threads
+  description: "Maximum number of processing threads to use.\n[DEFAULT: <number of\
+    \ virtual cores>]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbosity-level
+  description: 'Level of detail for debug messages. [default: 1]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --global-mem-reserve
+  description: "Amount of Java memory reserved for\n\"housekeeping\" tasks (in MB).\n\
+    Increase only if OutOfMemoryErrors are occurring.\nDecrease only if available\
+    \ system memory is very low.\n[Current value: 400 MB]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --custom-db-folder
+  description: Folder containing user-generated reference databases.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --list-species
+  description: List all species that miRTrace has reference databases for.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --cite
+  description: Show information about how to cite our paper.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Display this help text.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: Display miRTrace version number.
+  args: !EmptyFlagArg {}
+help_text: "USAGE: mirtrace MODE [-s SPECIES] [-a ADAPTER] [OTHER OPTIONS]... [FASTQ\
+  \ filenames]...\n\nSIMPLE USAGE EXAMPLE (QUALITY CONTROL MODE):\nmirtrace qc --adapter\
+  \ ACGTACGT --species hsa sample_A.fq sample_B.fq.gz\n\nSIMPLE USAGE EXAMPLE (TRACE\
+  \ MODE):\nmirtrace trace --adapter ACGTACGT sample_A.fq sample_B.fq.gz\n\nMODES\n\
+  The first argument must specify what mode miRTrace should operate in. Available\
+  \ modes:\n    trace                  miRNA trace mode. Produces a clade report.\
+  \ --species is ignored.\n    qc                     Quality control mode (full set\
+  \ of reports). --species must be given.\n\nARGUMENT REQUIRED IN QC MODE:\n    -s,\
+  \ --species          Species (miRBase encoding). EXAMPLE: \"hsa\" for Homo sapiens.\n\
+  \                           To list all codes, run \"miRTrace --list-species\".\n\
+  \nSPECIFYING INPUT FILES USING A CONFIG FILE:\nIf the input samples are not given\
+  \ as arguments directly, a config file must be used.\n    -c, --config         \
+  \  List of FASTQ files to process. This is a CSV (comma separated\n            \
+  \               value) file, i.e. with one entry per row.\n                    \
+  \       \n                           Each row consists of the following columns\n\
+  \                           (only the first is required):\n                    \
+  \       filename,name-displayed-in-report,adapter,PHRED-ASCII-offset\n         \
+  \                  \n                           NOTE: the PHRED ASCII offset can\
+  \ typically be reliably\n                           auto-detected and is not necessary\
+  \ to specify.\n                           \n                           EXAMPLE CONFIG\
+  \ FILE:\n                           path/sample1.fastq,sample 1 (control),TGGAATTC\n\
+  \                           path/sample2.fastq,sample 2 (+drug X),TGGAATTC\n\nOPTIONAL\
+  \ ARGUMENTS:\n    -a, --adapter          <DNA sequence>. [DEFAULT: none].\n    -p,\
+  \ --protocol         One of the following (read structure schematic in parens):\n\
+  \                               illumina (miRNA--3'-adapter--index) [DEFAULT]\n\
+  \                               qiaseq (miRNA--3'-adapter--UMI--3'-adapter--index)\n\
+  \                                   NOTE: Only the first (leftmost) 3' adapter should\
+  \ be specified.\n                               cats (NNN--miRNA--poly-A--3'-adapter--index)\n\
+  \                                   NOTE: It's not possible to specify an adapter\
+  \ for -p cats.\n                               nextflex (NNNN--miRNA--NNNN--3'-adapter--index)\n\
+  \    -o, --output-dir       Directory for output files. [DEFAULT: <file listing>.output]\n\
+  \    -f, --force            Overwrite output directory if it exists.\n    --enable-pipes\
+  \         Enable support for named pipes (fifos) as input.\n                   \
+  \        NOTE: Requires a config file with PHRED and adapter\n                 \
+  \          given for each entry. Input must not be compressed.\n    -w, --write-fasta\
+  \      Write QC-passed reads and unknown reads (as defined\n                   \
+  \        in the RNA type plot) to the output folder.\n                         \
+  \  Identical reads are collapsed. Entries are sorted by abundance.\n\nOPTIONAL ARGUMENTS\
+  \ [FASTA OUTPUT] (Only relevant if --write-fasta given):\n    --uncollapse-fasta\
+  \     Write one FASTA entry per original FASTQ entry.\n\nOPTIONAL ARGUMENTS [HTML\
+  \ REPORT OPTIONS]:\n    --title                Set the report title.\n    --comment\
+  \              Add a comment to the generated report. Multiple\n               \
+  \            arguments can be given.\n\nOPTIONAL ARGUMENTS [PERFORMANCE / TROUBLESHOOTING]:\n\
+  \    -t, --num-threads      Maximum number of processing threads to use.\n     \
+  \                      [DEFAULT: <number of virtual cores>]\n    --verbosity-level\
+  \      Level of detail for debug messages. [default: 1]\n    --global-mem-reserve\
+  \   Amount of Java memory reserved for \n                           \"housekeeping\"\
+  \ tasks (in MB).\n                           Increase only if OutOfMemoryErrors\
+  \ are occurring.\n                           Decrease only if available system memory\
+  \ is very low.\n                           [Current value: 400 MB]\n\nOPTIONAL ARGUMENTS\
+  \ [CUSTOM DATABASES]:\n    --custom-db-folder     Folder containing user-generated\
+  \ reference databases.\n\nHELP\n    --list-species         List all species that\
+  \ miRTrace has reference databases for.\n    --cite                 Show information\
+  \ about how to cite our paper.\n    -h, --help             Display this help text.\n\
+  \    -v, --version          Display miRTrace version number.\n\n"
+generated_using:
+- --help
+docker_image:

@@ -1,0 +1,114 @@
+!Command
+command:
+- tb-profiler
+- fasta_profile
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: fasta
+  description: VCF file
+- !Positional
+  optional: false
+  position: 1
+  name: prefix
+  description: VCF file
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --db
+  description: 'Mutation panel name (default: tbdb)'
+  args: !SimpleFlagArg
+    name: DB
+- !Flag
+  optional: true
+  synonyms:
+  - --external_db
+  description: "Path to db files prefix (overrides \"--db\" parameter)\n(default:\
+    \ None)"
+  args: !SimpleFlagArg
+    name: EXTERNAL_DB
+- !Flag
+  optional: true
+  synonyms:
+  - --dir
+  - -d
+  description: 'Storage directory (default: .)'
+  args: !SimpleFlagArg
+    name: DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --txt
+  description: 'Add text output (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --csv
+  description: 'Add CSV output (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pdf
+  description: "Add PDF output. This requires pdflatex to be installed\n(default:\
+    \ False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --add_columns
+  description: "Add additional columns found in the mutation database\nto the text\
+    \ and pdf results (default: None)"
+  args: !SimpleFlagArg
+    name: ADD_COLUMNS
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  - -v
+  description: 'Verbosity increases from 0 to 2 (default: 0)'
+  args: !ChoiceFlagArg
+    choices: !!set
+      '2':
+      '1':
+      '0':
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: tb-profiler fasta_profile [-h] [--db DB] [--external_db EXTERNAL_DB]\n\
+  \                                 [--dir DIR] [--txt] [--csv] [--pdf]\n        \
+  \                         [--add_columns ADD_COLUMNS]\n                        \
+  \         [--verbose {0,1,2}] [--version]\n                                 fasta\
+  \ prefix\n\npositional arguments:\n  fasta                 VCF file\n  prefix  \
+  \              VCF file\n\noptional arguments:\n  -h, --help            show this\
+  \ help message and exit\n  --db DB               Mutation panel name (default: tbdb)\n\
+  \  --external_db EXTERNAL_DB\n                        Path to db files prefix (overrides\
+  \ \"--db\" parameter)\n                        (default: None)\n  --dir DIR, -d\
+  \ DIR     Storage directory (default: .)\n  --txt                 Add text output\
+  \ (default: False)\n  --csv                 Add CSV output (default: False)\n  --pdf\
+  \                 Add PDF output. This requires pdflatex to be installed\n     \
+  \                   (default: False)\n  --add_columns ADD_COLUMNS\n            \
+  \            Add additional columns found in the mutation database\n           \
+  \             to the text and pdf results (default: None)\n  --verbose {0,1,2},\
+  \ -v {0,1,2}\n                        Verbosity increases from 0 to 2 (default:\
+  \ 0)\n  --version             show program's version number and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/tb-profiler:2.8.14--pypyh3252c3a_0

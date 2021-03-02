@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import String, File, Boolean
+
+Augur_Ancestral_V0_1_0 = CommandToolBuilder(tool="augur_ancestral", base_command=["augur", "ancestral"], inputs=[ToolInput(tag="in_tree", input_type=String(optional=True), prefix="--tree", doc=InputDocumentation(doc="prebuilt Newick (default: None)")), ToolInput(tag="in_alignment", input_type=String(optional=True), prefix="--alignment", doc=InputDocumentation(doc="alignment in fasta or VCF format (default: None)")), ToolInput(tag="in_output_node_data", input_type=File(optional=True), prefix="--output-node-data", doc=InputDocumentation(doc="name of JSON file to save mutations and ancestral\nsequences to (default: None)")), ToolInput(tag="in_output_sequences", input_type=File(optional=True), prefix="--output-sequences", doc=InputDocumentation(doc="name of FASTA file to save ancestral sequences to\n(FASTA alignments only) (default: None)")), ToolInput(tag="in_inference", input_type=String(optional=True), prefix="--inference", doc=InputDocumentation(doc="calculate joint or marginal maximum likelihood\nancestral sequence states (default: joint)")), ToolInput(tag="in_vcf_reference", input_type=File(optional=True), prefix="--vcf-reference", doc=InputDocumentation(doc="fasta file of the sequence the VCF was mapped to\n(default: None)")), ToolInput(tag="in_output_vcf", input_type=File(optional=True), prefix="--output-vcf", doc=InputDocumentation(doc="name of output VCF file which will include ancestral\nseqs (default: None)")), ToolInput(tag="in_keep_ambiguous", input_type=Boolean(optional=True), prefix="--keep-ambiguous", doc=InputDocumentation(doc="do not infer nucleotides at ambiguous (N) sites on tip\nsequences (leave as N). (default: True)")), ToolInput(tag="in_infer_ambiguous", input_type=Boolean(optional=True), prefix="--infer-ambiguous", doc=InputDocumentation(doc="infer nucleotides at ambiguous (N,W,R,..) sites on tip\nsequences and replace with most likely state.\n(default: False)")), ToolInput(tag="in_keep_overhangs", input_type=Boolean(optional=True), prefix="--keep-overhangs", doc=InputDocumentation(doc="do not infer nucleotides for gaps (-) on either side\nof the alignment (default: False)\n"))], outputs=[ToolOutput(tag="out_output_vcf", output_type=File(optional=True), selector=InputSelector(input_to_select="in_output_vcf", type_hint=File()), doc=OutputDocumentation(doc="name of output VCF file which will include ancestral\nseqs (default: None)"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Augur_Ancestral_V0_1_0().translate("wdl", allow_empty_container=True)
+

@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, Boolean, String, Int
+
+Ting_V0_1_0 = CommandToolBuilder(tool="ting", base_command=["ting"], inputs=[ToolInput(tag="in_tcr_sequences", input_type=File(optional=True), prefix="--tcr_sequences", doc=InputDocumentation(doc="File holding TCRs")), ToolInput(tag="in_reference", input_type=File(optional=True), prefix="--reference", doc=InputDocumentation(doc="Reference fasta file of naive CDR3 amino acid\nsequences used for estimation of significant k-mers.")), ToolInput(tag="in_km_er_file", input_type=File(optional=True), prefix="--kmer_file", doc=InputDocumentation(doc="tab separated file holding kmers in first row")), ToolInput(tag="in_output", input_type=File(optional=True), prefix="--output", doc=InputDocumentation(doc="path of output-file")), ToolInput(tag="in_use_structural_boundaries", input_type=Boolean(optional=True), prefix="--use_structural_boundaries", doc=InputDocumentation(doc="First and last three amino acids are included in\nprocessing")), ToolInput(tag="in_no_global", input_type=Boolean(optional=True), prefix="--no_global", doc=InputDocumentation(doc="If set global clustering is excluded")), ToolInput(tag="in_no_local", input_type=Boolean(optional=True), prefix="--no_local", doc=InputDocumentation(doc="If set local clustering is excluded")), ToolInput(tag="in_max_p_value", input_type=String(optional=True), prefix="--max_p_value", doc=InputDocumentation(doc="p-value threshold for identifying significant k-mers\nby fisher exact test")), ToolInput(tag="in_gli_ph_min_p", input_type=Int(optional=True), prefix="--gliph_minp", doc=InputDocumentation(doc="probability threshold for identifying significant\nk-mers by gliph test")), ToolInput(tag="in_stringent_filtering", input_type=Boolean(optional=True), prefix="--stringent_filtering", doc=InputDocumentation(doc="If used only TCRs starting with a cystein and ending\nwith phenylalanine will be used")), ToolInput(tag="in_km_ers_gli_ph", input_type=Boolean(optional=True), prefix="--kmers_gliph", doc=InputDocumentation(doc="If set kmers are identified by the non-deterministic\napproach as implemented by gliph\n"))], outputs=[ToolOutput(tag="out_output", output_type=File(optional=True), selector=InputSelector(input_to_select="in_output", type_hint=File()), doc=OutputDocumentation(doc="path of output-file"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Ting_V0_1_0().translate("wdl", allow_empty_container=True)
+

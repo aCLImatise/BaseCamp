@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, Int, Boolean
+
+Hhconsensus_V0_1_0 = CommandToolBuilder(tool="hhconsensus", base_command=["hhconsensus"], inputs=[ToolInput(tag="in_query_alignment_am", input_type=File(optional=True), prefix="-i", doc=InputDocumentation(doc="query alignment (A2M, A3M, or FASTA), or query HMM")), ToolInput(tag="in_append_consensus_sequence", input_type=File(optional=True), prefix="-s", doc=InputDocumentation(doc="append consensus sequence in FASTA (default=<infile.seq>)")), ToolInput(tag="in_o", input_type=File(optional=True), prefix="-o", doc=InputDocumentation(doc="write alignment with consensus sequence in A3M")), ToolInput(tag="in_o_a_three_m", input_type=File(optional=True), prefix="-oa3m", doc=InputDocumentation(doc="same")), ToolInput(tag="in_o_a_two_m", input_type=File(optional=True), prefix="-oa2m", doc=InputDocumentation(doc="write alignment with consensus sequence in A2M")), ToolInput(tag="in_of_as", input_type=File(optional=True), prefix="-ofas", doc=InputDocumentation(doc="write alignment with consensus sequence in FASTA")), ToolInput(tag="in_verbose_mode_screen", input_type=Int(optional=True), prefix="-v", doc=InputDocumentation(doc="verbose mode: 0:no screen output  1:only warings  2: verbose")), ToolInput(tag="in_id", input_type=Boolean(optional=True), prefix="-id", doc=InputDocumentation(doc="[0,100] maximum pairwise sequence identity (%) (def=100)")), ToolInput(tag="in_diff", input_type=Boolean(optional=True), prefix="-diff", doc=InputDocumentation(doc="[0,inf[ filter most diverse set of sequences, keeping at least this\nmany sequences in each block of >50 columns (def=0)")), ToolInput(tag="in_cov", input_type=Boolean(optional=True), prefix="-cov", doc=InputDocumentation(doc="[0,100] minimum coverage with query (%) (def=0)")), ToolInput(tag="in_qid", input_type=Boolean(optional=True), prefix="-qid", doc=InputDocumentation(doc="[0,100] minimum sequence identity with query (%) (def=0)")), ToolInput(tag="in_qsc", input_type=Boolean(optional=True), prefix="-qsc", doc=InputDocumentation(doc="[0,100] minimum score per column with query  (def=-20.0)")), ToolInput(tag="in_max_seq", input_type=Int(optional=True), prefix="-maxseq", doc=InputDocumentation(doc="max number of input rows (def=65535)")), ToolInput(tag="in_max_res", input_type=Int(optional=True), prefix="-maxres", doc=InputDocumentation(doc="max number of HMM columns (def=20001)"))], outputs=[], container="quay.io/biocontainers/hhsuite:3.3.0--py38pl526h6ed170a_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Hhconsensus_V0_1_0().translate("wdl")
+

@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, Int, String, File
+
+Nucamino_Hiv1B_V0_1_0 = CommandToolBuilder(tool="nucamino_hiv1b", base_command=["nucamino", "hiv1b"], inputs=[ToolInput(tag="in_quiet", input_type=Boolean(optional=True), prefix="--quiet", doc=InputDocumentation(doc="hide non-error information")), ToolInput(tag="in_in_del_codon_opening_bonus", input_type=Int(optional=True), prefix="--indel-codon-opening-bonus", doc=InputDocumentation(doc="bonus score when a indel\ncodon was opened (default:\n0)")), ToolInput(tag="in_in_del_codon_extension_bonus", input_type=Int(optional=True), prefix="--indel-codon-extension-bonus", doc=InputDocumentation(doc="bonus score when a indel\ncodon was extended\n(default: 2)")), ToolInput(tag="in_stop_codon_penalty", input_type=Int(optional=True), prefix="--stop-codon-penalty", doc=InputDocumentation(doc="penalty score when a stop\ncodon was met (default: 4)")), ToolInput(tag="in_gap_opening_penalty", input_type=Int(optional=True), prefix="--gap-opening-penalty", doc=InputDocumentation(doc="penalty score when a gap\nwas opened (default: 10)")), ToolInput(tag="in_gap_extension_penalty", input_type=Int(optional=True), prefix="--gap-extension-penalty", doc=InputDocumentation(doc="penalty score when a gap\nwas extended (default: 2)")), ToolInput(tag="in_go_routines", input_type=Int(optional=True), prefix="--goroutines", doc=InputDocumentation(doc="number of goroutines the\nalignment will use. Use\nthe core number when\nequals to 0 (default: 0)")), ToolInput(tag="in_output_format", input_type=String(optional=True), prefix="--output-format", doc=InputDocumentation(doc="[tsv|json]    output format of the\nalignment result (default:\ntsv)")), ToolInput(tag="in_input", input_type=File(optional=True), prefix="--input", doc=InputDocumentation(doc="FASTA file contains one or\nmore DNA sequences\n(default: -)")), ToolInput(tag="in_output_destination_thealignment", input_type=String(optional=True), prefix="--output", doc=InputDocumentation(doc="output destination of the\nalignment results\n(default: -)")), ToolInput(tag="in_ppr_of", input_type=Boolean(optional=True), prefix="--pprof", doc=InputDocumentation(doc="output pprof benchmark\nresult\n")), ToolInput(tag="in_g__gene", input_type=String(), position=0, doc=InputDocumentation(doc="-g, --gene=[GAG|POL|GP41]                      gene(s) the input"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Nucamino_Hiv1B_V0_1_0().translate("wdl", allow_empty_container=True)
+

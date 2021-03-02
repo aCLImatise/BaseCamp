@@ -1,0 +1,232 @@
+!Command
+command:
+- mhcflurry-class1-train-pan-allele-models
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: measurement_value
+  description: --pretrain-data FILE.csv
+- !Positional
+  optional: false
+  position: 0
+  name: train.
+  description: --max-epochs N        Max training epochs. If specified here it overrides
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --data
+  description: 'Training data CSV. Expected columns: allele, peptide,'
+  args: !SimpleFlagArg
+    name: FILE.csv
+- !Flag
+  optional: true
+  synonyms:
+  - --out-models-dir
+  description: Directory to write models and manifest
+  args: !SimpleFlagArg
+    name: DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --hyperparameters
+  description: JSON or YAML of hyperparameters
+  args: !SimpleFlagArg
+    name: FILE.json
+- !Flag
+  optional: true
+  synonyms:
+  - --held-out-measurements-per-allele-fraction-and-max
+  description: "X\nFraction of measurements per allele to hold out, and\nmaximum number"
+  args: !SimpleFlagArg
+    name: X
+- !Flag
+  optional: true
+  synonyms:
+  - --ignore-inequalities
+  description: "Do not use affinity value inequalities even when\npresent in data"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --num-folds
+  description: Number of training folds.
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --num-replicates
+  description: Number of replicates per (architecture, fold) pair to
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --allele-sequences
+  description: Allele sequences file.
+  args: !SimpleFlagArg
+    name: FILE.csv
+- !Flag
+  optional: true
+  synonyms:
+  - --verbosity
+  description: 'Keras verbosity. Default: 0'
+  args: !SimpleFlagArg
+    name: VERBOSITY
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: Launch python debugger on error
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --continue-incomplete
+  description: "Continue training models from an incomplete training\nrun. If this\
+    \ is specified then the only required\nargument is --out-models-dir"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --only-initialize
+  description: "Do not actually train models. The initialized run can\nbe continued\
+    \ later with --continue-incomplete."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --num-jobs
+  description: "Number of local processes to parallelize training\nover. Set to 0\
+    \ for serial run. Default: 0."
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --backend
+  description: "Keras backend. If not specified will use system\ndefault."
+  args: !ChoiceFlagArg
+    choices: !!set
+      tensorflow-default:
+      tensorflow-gpu:
+      tensorflow-cpu:
+- !Flag
+  optional: true
+  synonyms:
+  - --gpus
+  description: "Number of GPUs to attempt to parallelize across.\nRequires running\
+    \ in parallel."
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --max-workers-per-gpu
+  description: "Maximum number of workers to assign to a GPU.\nAdditional tasks will\
+    \ run on CPU."
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --max-tasks-per-worker
+  description: "Restart workers after N tasks. Workaround for\ntensorflow memory leaks.\
+    \ Requires Python >=3.2."
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --worker-log-dir
+  description: "Write worker stdout and stderr logs to given\ndirectory."
+  args: !SimpleFlagArg
+    name: WORKER_LOG_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --cluster-parallelism
+  - --cluster-submit-command
+  description: 'Default: sh'
+  args: !SimpleFlagArg
+    name: CLUSTER_SUBMIT_COMMAND
+- !Flag
+  optional: true
+  synonyms:
+  - --cluster-results-workdir
+  description: 'Default: ./cluster-workdir'
+  args: !SimpleFlagArg
+    name: CLUSTER_RESULTS_WORKDIR
+- !Flag
+  optional: true
+  synonyms:
+  - --additional-complete-file
+  description: "Additional file to monitor for job completion.\nDefault: STDERR"
+  args: !SimpleFlagArg
+    name: ADDITIONAL_COMPLETE_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --cluster-script-prefix-path
+  - --cluster-max-retries
+  description: "How many times to rerun failing jobs. Default: 3\n"
+  args: !SimpleFlagArg
+    name: CLUSTER_SCRIPT_PREFIX_PATH
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "To show stack trace, run:\nkill -s USR1 447\nusage: \nTrain Class1 pan-allele\
+  \ models.\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  --data FILE.csv       Training data CSV. Expected columns: allele,\
+  \ peptide,\n                        measurement_value\n  --pretrain-data FILE.csv\n\
+  \                        Pre-training data CSV. Expected columns: allele,\n    \
+  \                    peptide, measurement_value\n  --out-models-dir DIR  Directory\
+  \ to write models and manifest\n  --hyperparameters FILE.json\n                \
+  \        JSON or YAML of hyperparameters\n  --held-out-measurements-per-allele-fraction-and-max\
+  \ X X\n                        Fraction of measurements per allele to hold out,\
+  \ and\n                        maximum number\n  --ignore-inequalities\n       \
+  \                 Do not use affinity value inequalities even when\n           \
+  \             present in data\n  --num-folds N         Number of training folds.\n\
+  \  --num-replicates N    Number of replicates per (architecture, fold) pair to\n\
+  \                        train.\n  --max-epochs N        Max training epochs. If\
+  \ specified here it overrides\n                        any 'max_epochs' specified\
+  \ in the hyperparameters.\n  --allele-sequences FILE.csv\n                     \
+  \   Allele sequences file.\n  --verbosity VERBOSITY\n                        Keras\
+  \ verbosity. Default: 0\n  --debug               Launch python debugger on error\n\
+  \  --continue-incomplete\n                        Continue training models from\
+  \ an incomplete training\n                        run. If this is specified then\
+  \ the only required\n                        argument is --out-models-dir\n  --only-initialize\
+  \     Do not actually train models. The initialized run can\n                  \
+  \      be continued later with --continue-incomplete.\n\nLocal parallelism:\n  --num-jobs\
+  \ N          Number of local processes to parallelize training\n               \
+  \         over. Set to 0 for serial run. Default: 0.\n  --backend {tensorflow-gpu,tensorflow-cpu,tensorflow-default}\n\
+  \                        Keras backend. If not specified will use system\n     \
+  \                   default.\n  --gpus N              Number of GPUs to attempt\
+  \ to parallelize across.\n                        Requires running in parallel.\n\
+  \  --max-workers-per-gpu N\n                        Maximum number of workers to\
+  \ assign to a GPU.\n                        Additional tasks will run on CPU.\n\
+  \  --max-tasks-per-worker N\n                        Restart workers after N tasks.\
+  \ Workaround for\n                        tensorflow memory leaks. Requires Python\
+  \ >=3.2.\n  --worker-log-dir WORKER_LOG_DIR\n                        Write worker\
+  \ stdout and stderr logs to given\n                        directory.\n\nCluster\
+  \ parallelism:\n  --cluster-parallelism\n  --cluster-submit-command CLUSTER_SUBMIT_COMMAND\n\
+  \                        Default: sh\n  --cluster-results-workdir CLUSTER_RESULTS_WORKDIR\n\
+  \                        Default: ./cluster-workdir\n  --additional-complete-file\
+  \ ADDITIONAL_COMPLETE_FILE\n                        Additional file to monitor for\
+  \ job completion.\n                        Default: STDERR\n  --cluster-script-prefix-path\
+  \ CLUSTER_SCRIPT_PREFIX_PATH\n  --cluster-max-retries CLUSTER_MAX_RETRIES\n    \
+  \                    How many times to rerun failing jobs. Default: 3\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/mhcflurry:2.0.1--pyh864c0ab_0

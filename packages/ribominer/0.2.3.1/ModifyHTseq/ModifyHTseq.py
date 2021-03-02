@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, String, Int
+
+Modifyhtseq_V0_1_0 = CommandToolBuilder(tool="ModifyHTseq", base_command=["ModifyHTseq"], inputs=[ToolInput(tag="in_input", input_type=File(optional=True), prefix="--input", doc=InputDocumentation(doc="Input file in bam format. default=none")), ToolInput(tag="in_gtf_file", input_type=File(optional=True), prefix="--gtfFile", doc=InputDocumentation(doc="Standard GTF file of a specific species.")), ToolInput(tag="in_output_file", input_type=File(optional=True), prefix="--outputFile", doc=InputDocumentation(doc="File name of output files.")), ToolInput(tag="in_type", input_type=File(optional=True), prefix="--type", doc=InputDocumentation(doc="Feature type (3rd column in GFF file) to be used.\n[exon or CDS]")), ToolInput(tag="in_mode", input_type=String(optional=True), prefix="--mode", doc=InputDocumentation(doc="mode to handle reads overlapping more than one\nfeature, the same as htseq-count [union,intersection-\nstrict,intersection-nonempty]. default=union")), ToolInput(tag="in_min_quality", input_type=Int(optional=True), prefix="--min-quality", doc=InputDocumentation(doc="The minimum quality of base to be required! default=10")), ToolInput(tag="in_min_len", input_type=Int(optional=True), prefix="--minLen", doc=InputDocumentation(doc="The minimum length of reads to be considered.\ndefault=25(nt)")), ToolInput(tag="in_maxlen", input_type=Int(optional=True), prefix="--maxLen", doc=InputDocumentation(doc="The max length of reads to be considered.\ndefault=35(nt)")), ToolInput(tag="in_exclude_first", input_type=Int(optional=True), prefix="--exclude-first", doc=InputDocumentation(doc="The number of nucleotides need to be excluded from\nstart codon. default=45(nt)=15(codon)")), ToolInput(tag="in_exclude_last", input_type=Int(optional=True), prefix="--exclude-last", doc=InputDocumentation(doc="The number of nucleotides need to be excluded from\nstop codon. default=15(nt)=5(codon)")), ToolInput(tag="in_id_type", input_type=String(optional=True), prefix="--id-type", doc=InputDocumentation(doc="define the id type users input. the default is gene\nid, the same as '-i' in htseq-count. default=gene_id\n"))], outputs=[ToolOutput(tag="out_output_file", output_type=File(optional=True), selector=InputSelector(input_to_select="in_output_file", type_hint=File()), doc=OutputDocumentation(doc="File name of output files."))], container="quay.io/biocontainers/ribominer:0.2.3.1--pyh3252c3a_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Modifyhtseq_V0_1_0().translate("wdl")
+

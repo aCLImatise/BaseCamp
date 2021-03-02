@@ -1,0 +1,77 @@
+!Command
+command:
+- strling
+- extract
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: bam
+  description: path to bam file
+- !Positional
+  optional: false
+  position: 1
+  name: bin
+  description: path bin to output bin file to be created
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --fasta
+  description: path to fasta file (required for CRAM)
+  args: !SimpleFlagArg
+    name: FASTA
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --genome-repeats
+  description: optional path to genome repeats file. if it does not exist, it will
+    be created
+  args: !SimpleFlagArg
+    name: GENOME_REPEATS
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --proportion-repeat
+  description: 'proportion of read that is repetitive to be considered as STR (default:
+    0.8)'
+  args: !SimpleFlagArg
+    name: PROPORTION_REPEAT
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --min-mapq
+  description: 'minimum mapping quality (does not apply to STR reads) (default: 40)'
+  args: !SimpleFlagArg
+    name: MIN_MAPQ
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  - -h
+  - --help
+  description: Show this help
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "strling extract\n\nUsage:\n  strling extract [options] bam bin\n\nArguments:\n\
+  \  bam              path to bam file\n  bin              path bin to output bin\
+  \ file to be created\n\nOptions:\n  -f, --fasta=FASTA          path to fasta file\
+  \ (required for CRAM)\n  -g, --genome-repeats=GENOME_REPEATS\n                 \
+  \            optional path to genome repeats file. if it does not exist, it will\
+  \ be created\n  -p, --proportion-repeat=PROPORTION_REPEAT\n                    \
+  \         proportion of read that is repetitive to be considered as STR (default:\
+  \ 0.8)\n  -q, --min-mapq=MIN_MAPQ    minimum mapping quality (does not apply to\
+  \ STR reads) (default: 40)\n  -v, --verbose\n  -h, --help                 Show this\
+  \ help\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/strling:0.4.1--hbeb723e_1

@@ -1,0 +1,69 @@
+!Command
+command:
+- fasta-subsample
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: file.
+  description: By default the sequences will be selected using a random number
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -len
+  description: ''
+  args: !SimpleFlagArg
+    name: len
+- !Flag
+  optional: true
+  synonyms:
+  - -off
+  description: ''
+  args: !SimpleFlagArg
+    name: off
+- !Flag
+  optional: true
+  synonyms:
+  - -norand
+  description: ''
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -seed
+  description: ''
+  args: !SimpleFlagArg
+    name: seed
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Usage:\n    fasta-subsample <fasta> <n> [-seed <seed>] [-norand] [-rest\
+  \ <rest>]\n    [-off <off>] [-len <len>]\n\n        <fasta>         name of FASTA\
+  \ sequence file\n        <n>             number of sequences to output\n       \
+  \ [-seed <seed>]  random number seed; default: 1\n        [-norand]       disable\
+  \ random selection and selects sequences in file order;\n                      \
+  \   overrides the -seed option\n        [-rest <rest>]  name of file to receive\
+  \ the FASTA\n                         sequences not being output; default: none\n\
+  \        [-off <off>]    print starting at position <off> in each\n            \
+  \             sequence; default: 1\n        [-len <len>]    print up to <len> characters\
+  \ for each \n                         sequence; default: print entire sequence\n\
+  \n        Output a subsample of size <n> of the sequences in a FASTA sequence\n\
+  \        file.  By default the sequences will be selected using a random number\n\
+  \        generator that is always seeded to 1 resulting in the same subset of\n\
+  \        sequences always being output.  You may modify the seed of the random\n\
+  \        number generator and hence the selected subset by using the -seed option\n\
+  \        or alternatively you may disable it altogether with the -norand option\n\
+  \        and just select the first <n> sequences in the file.  If requested, the\n\
+  \        remaining sequences will be output to a file named <rest>, which is useful\n\
+  \        for cross-validation.\n\n        You can also choose to only output portions\
+  \ of each sequence\n        using the -off and -len switches.  If the sequences\
+  \ have \n        UCSC BED file headers (e.g., \">chr1:0-99999\"), the headers will\n\
+  \        be adjusted to reflect -off and -len.\n\n        Writes to standard output.\n\
+  \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/meme:5.3.0--py38pl526hc1f1133_0

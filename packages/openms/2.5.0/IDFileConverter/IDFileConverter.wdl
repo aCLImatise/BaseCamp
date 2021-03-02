@@ -28,6 +28,9 @@ task IDFileConverter {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "*           Input file or directory containing the data to convert. This may be:\\n- a single file in a multi-purpose XML format (.pepXML, .protXML, .idXML, .mzid),\\n- a single file in a search engine-specific format (Mascot: .mascotXML, OMSSA: .omssaXML, X! Tandem: .xml, Percolator: .psms, xQuest: .xquest.xml),\\n- a single text file (tab separated) with one line for all peptide sequences matching a spectrum (top N hits),\\n- for Sequest results, a directory containing .out files.\\n(valid formats: 'pepXML', 'protXML', 'mascotXML', 'omssaXML', 'xml', 'psms', 'tsv', 'idXML', 'mzid', 'xquest.xml')"
     out: "*               Output file (valid formats: 'idXML', 'mzid', 'pepXML', 'FASTA', 'xquest.xml')"

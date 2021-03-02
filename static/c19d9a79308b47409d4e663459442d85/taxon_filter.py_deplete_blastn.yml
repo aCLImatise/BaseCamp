@@ -1,0 +1,93 @@
+!Command
+command:
+- taxon_filter.py
+- deplete_blastn
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: inFastq
+  description: Input fastq file.
+- !Positional
+  optional: false
+  position: 1
+  name: outFastq
+  description: Output fastq file with matching reads removed.
+- !Positional
+  optional: false
+  position: 2
+  name: refDbs
+  description: One or more reference databases for blast.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: The number of threads to use in running blastn.
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - --loglevel
+  description: 'Verboseness of output. [default: DEBUG]'
+  args: !ChoiceFlagArg
+    choices: !!set
+      INFO:
+      DEBUG:
+      CRITICAL:
+      WARNING:
+      ERROR:
+      EXCEPTION:
+- !Flag
+  optional: true
+  synonyms:
+  - --tmp_dir
+  description: 'Base directory for temp files. [default: /tmp]'
+  args: !SimpleFlagArg
+    name: TMP_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --tmp_dirKeep
+  description: "Keep the tmp_dir if an exception occurs while running.\nDefault is\
+    \ to delete all temp files at the end, even\nif there's a failure.\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  - -V
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: taxon_filter.py subcommand deplete_blastn [-h] [--threads THREADS]\n\
+  \                                                 [--loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}]\n\
+  \                                                 [--version]\n                \
+  \                                 [--tmp_dir TMP_DIR]\n                        \
+  \                         [--tmp_dirKeep]\n                                    \
+  \             inFastq outFastq refDbs\n                                        \
+  \         [refDbs ...]\n\nUse blastn to remove reads that match at least one of\
+  \ the databases.\n\npositional arguments:\n  inFastq               Input fastq file.\n\
+  \  outFastq              Output fastq file with matching reads removed.\n  refDbs\
+  \                One or more reference databases for blast.\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  --threads THREADS  \
+  \   The number of threads to use in running blastn.\n  --loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}\n\
+  \                        Verboseness of output. [default: DEBUG]\n  --version, -V\
+  \         show program's version number and exit\n  --tmp_dir TMP_DIR     Base directory\
+  \ for temp files. [default: /tmp]\n  --tmp_dirKeep         Keep the tmp_dir if an\
+  \ exception occurs while running.\n                        Default is to delete\
+  \ all temp files at the end, even\n                        if there's a failure.\n"
+generated_using:
+- --help
+docker_image:

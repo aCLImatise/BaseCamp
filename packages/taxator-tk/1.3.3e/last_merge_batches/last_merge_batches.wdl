@@ -8,6 +8,9 @@ task Lastmergebatches {
     last_merge_batches \
       ~{files}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     files: ""
   }

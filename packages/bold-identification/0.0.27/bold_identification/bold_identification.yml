@@ -1,0 +1,138 @@
+!Command
+command:
+- bold_identification
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: 0.0.27
+  description: 'optional arguments:'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: input file name
+  args: !SimpleFlagArg
+    name: str
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: input file format [fasta]
+  args: !SimpleFlagArg
+    name: str
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: outfile prefix
+  args: !SimpleFlagArg
+    name: str
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: database to search [COX1]
+  args: !ChoiceFlagArg
+    choices: !!set
+      ITS:
+      MATK_RBCL:
+      COX1:
+      COX1_SPECIES:
+      COX1_SPECIES_PUBLIC:
+      COX1_L640bp:
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: how many first top hits will be output. [1]
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: "Maximum submission time for a sequence, useful for\nhandling TimeOutException.\
+    \ [4]"
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: "continuous mode, jump over the ones already in \"-o\"\nfile, will\
+    \ resubmit all the remained. use \"-cc\" to\nalso jump over the ones in \"*.NoBoldMatchError.fasta\"\
+    \nfile."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -C
+  description: "For chimera check purpose. If set, for each sequence,\nI will query\
+    \ the BOLD database using the subsequences\nfrom 5'- and 3'-ends with a length\
+    \ of '-q <int>' bp,\nrespectively"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  description: The length of subsequences for chimera check [400]
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  description: debug mode output [False]
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: bold_identification [-h] -i <str> [-f <str>] -o <str>\n       \
+  \                    [-d {COX1,COX1_SPECIES,COX1_SPECIES_PUBLIC,COX1_L640bp,ITS,MATK_RBCL}]\n\
+  \                           [-n <int>] [-r <int>] [-c] [-C] [-q <int>] [-D]\n  \
+  \                         [--version]\n\nTo identify taxa of given sequences from\
+  \ BOLD (http://www.boldsystems.org/).\nSome sequences can fail to get taxon information,\
+  \ which can be caused by\nTimeoutException if your network to the BOLD server is\
+  \ bad.\nThose sequences will be output in the file '*.TimeoutException.fasta'.\n\
+  \nYou can:\n1) run another searching with the same command directly (but add -c\
+  \ option);\n2) lengthen the time to wait for each query (-t option);\n3) increase\
+  \ submission times (-r option) for a sequence.\n\nAlso, the sequences without BOLD\
+  \ matches will be output in the\nfile '*.NoBoldMatchError.fasta'\n\nBy Guanliang\
+  \ Meng.\nSee https://github.com/linzhi2013/bold_identification.\n\nCitation:\nYang\
+  \ C, Zheng Y, Tan S, Meng G, et al.\nEfficient COI barcoding using high throughput\
+  \ single-end 400 bp sequencing.\nhttps://doi.org/10.1186/s12864-020-07255-w\n\n\
+  version: 0.0.27\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  -i <str>              input file name\n  -f <str>              input\
+  \ file format [fasta]\n  -o <str>              outfile prefix\n  -d {COX1,COX1_SPECIES,COX1_SPECIES_PUBLIC,COX1_L640bp,ITS,MATK_RBCL}\n\
+  \                        database to search [COX1]\n  -n <int>              how\
+  \ many first top hits will be output. [1]\n  -r <int>              Maximum submission\
+  \ time for a sequence, useful for\n                        handling TimeOutException.\
+  \ [4]\n  -c                    continuous mode, jump over the ones already in \"\
+  -o\"\n                        file, will resubmit all the remained. use \"-cc\"\
+  \ to\n                        also jump over the ones in \"*.NoBoldMatchError.fasta\"\
+  \n                        file.\n  -C                    For chimera check purpose.\
+  \ If set, for each sequence,\n                        I will query the BOLD database\
+  \ using the subsequences\n                        from 5'- and 3'-ends with a length\
+  \ of '-q <int>' bp,\n                        respectively\n  -q <int>          \
+  \    The length of subsequences for chimera check [400]\n  -D                  \
+  \  debug mode output [False]\n  --version             show program's version number\
+  \ and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bold-identification:0.0.27--py_0

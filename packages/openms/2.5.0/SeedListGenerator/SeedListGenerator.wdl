@@ -20,6 +20,9 @@ task SeedListGenerator {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "*         Input file (see below for details) (valid formats: 'mzML', 'idXML', 'featureXML', 'consensusXML')"
     out: "<file(s)>*     Output file(s) (valid formats: 'featureXML')"

@@ -1,0 +1,160 @@
+!Command
+command:
+- isoseq3
+- cluster
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: isoseq
+  description: ''
+- !Positional
+  optional: false
+  position: 0
+  name: unpolished.bam|xml
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: STR
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: cluster
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: Input
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: flnc.bam|xml
+  description: ''
+- !Positional
+  optional: false
+  position: 3
+  name: flnc
+  description: ''
+- !Positional
+  optional: false
+  position: 3
+  name: unpolished
+  description: ''
+- !Positional
+  optional: false
+  position: 4
+  name: BAM
+  description: ''
+- !Positional
+  optional: false
+  position: 5
+  name: or
+  description: ''
+- !Positional
+  optional: false
+  position: 6
+  name: ConsensusReadSet
+  description: ''
+- !Positional
+  optional: false
+  position: 6
+  name: TranscriptSet
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --poa-cov
+  description: INT   Maximum number of CCS reads used for POA consensus. [10]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --use-qvs
+  description: Use CCS QVs, sets --poa-cov 100.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min-subreads-split
+  description: INT   Subread threshold for HQ/LQ split, only works with --use-qvs.
+    [7]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --split-bam
+  description: INT   Split BAM output files into at maximum N files; 0 means no splitting
+    [0]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --singletons
+  description: Output FLNCs that could not be clustered.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --num-threads
+  description: INT   Number of threads to use, 0 means autodetection. [0]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --log-level
+  description: 'STR   Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL).
+    [WARN]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --log-file
+  description: FILE  Log to a file, instead of stderr.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: Use verbose output.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this help and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Show application version and exit.
+  args: !EmptyFlagArg {}
+help_text: "isoseq cluster - Cluster FLNC reads and generate unpolished transcripts\
+  \ (FLNC to UNPOLISHED)\n\nUsage:\n  isoseq cluster [options] <flnc.bam|xml> <unpolished.bam|xml>\n\
+  \n  flnc.bam|xml          STR   Input flnc BAM or ConsensusReadSet XML\n  unpolished.bam|xml\
+  \    STR   Input unpolished BAM or TranscriptSet XML\n\nClustering:\n  --poa-cov\
+  \             INT   Maximum number of CCS reads used for POA consensus. [10]\n \
+  \ --use-qvs                   Use CCS QVs, sets --poa-cov 100.\n\nOutput:\n  --min-subreads-split\
+  \  INT   Subread threshold for HQ/LQ split, only works with --use-qvs. [7]\n  --split-bam\
+  \           INT   Split BAM output files into at maximum N files; 0 means no splitting\
+  \ [0]\n  --singletons                Output FLNCs that could not be clustered.\n\
+  \n  -h,--help                   Show this help and exit.\n  --version          \
+  \         Show application version and exit.\n  -j,--num-threads      INT   Number\
+  \ of threads to use, 0 means autodetection. [0]\n  --log-level           STR   Set\
+  \ log level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL). [WARN]\n  --log-file\
+  \            FILE  Log to a file, instead of stderr.\n  -v,--verbose           \
+  \     Use verbose output.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/isoseq3:3.4.0--0

@@ -1,0 +1,92 @@
+!Command
+command:
+- bam2bedgraph
+positional:
+- !Positional
+  optional: true
+  position: 0
+  name: cr|b
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: am
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  description: 'Path to bam/cram input file. [default: stdin]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: 'File path for output. [default: stdout]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --region
+  description: Region in bam to access.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  - --filter
+  description: Ignore reads with the filter flags [int].
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --filter-include
+  description: "[int]      SAM flags to include. [default: 0]\nN.B. if properly paired\
+    \ reads are filtered for inclusion bam2bw will assume paired-end data\nand exclude\
+    \ any proper-pair flagged reads not in F/R orientation.-a --overlap          \
+    \         Use overlapping read check."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: ''
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Display this usage information.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: Prints the version number.
+  args: !EmptyFlagArg {}
+help_text: "Usage: bam2bedgraph -i input.[cr|b]am -o file [-r region] [-h] [-v]\n\n\
+  Create a BEDGraph file of genomic coverage. BAM file must be sorted.\n-i --input\
+  \                     Path to bam/cram input file. [default: stdin]\n-o --output\
+  \                    File path for output. [default: stdout]\n\nOptional:\n-r --region\
+  \                    Region in bam to access.\n-F --filter                    Ignore\
+  \ reads with the filter flags [int].\n-f --filter-include [int]      SAM flags to\
+  \ include. [default: 0]\n                               N.B. if properly paired\
+  \ reads are filtered for inclusion bam2bw will assume paired-end data\n        \
+  \                       and exclude any proper-pair flagged reads not in F/R orientation.-a\
+  \ --overlap                   Use overlapping read check.\n\nOther:\n-h --help \
+  \                     Display this usage information.\n-v --version            \
+  \       Prints the version number.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/cgpbigwig:1.5.2--h93d22ca_0

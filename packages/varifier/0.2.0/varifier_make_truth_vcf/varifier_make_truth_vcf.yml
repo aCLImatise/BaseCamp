@@ -1,0 +1,74 @@
+!Command
+command:
+- varifier
+- make_truth_vcf
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: truth_fasta
+  description: FASTA file of truth genome
+- !Positional
+  optional: false
+  position: 1
+  name: ref_fasta
+  description: FASTA file of reference genome
+- !Positional
+  optional: false
+  position: 2
+  name: outdir
+  description: Name of output directory
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --max_recall_ref_len
+  description: "Do not include variants where REF length is more than\nthis number.\
+    \ Default is no limit"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --flank_length
+  description: "Length of sequence to add either side of variant when\nmaking probe\
+    \ sequences [100]"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --truth_mask
+  description: "BED file of truth genome regions to mask. Any variants\nin the VCF\
+    \ matching to the mask are flagged and will\nnot count towards precision or recall\
+    \ if the output\nVCF is used with vcf_eval\n"
+  args: !SimpleFlagArg
+    name: FILENAME
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: varifier make_truth_vcf [options] <truth_fasta> <ref_fasta> <outdir>\n\
+  \nMake truth VCF file\n\npositional arguments:\n  truth_fasta           FASTA file\
+  \ of truth genome\n  ref_fasta             FASTA file of reference genome\n  outdir\
+  \                Name of output directory\n\noptional arguments:\n  -h, --help \
+  \           show this help message and exit\n  --max_recall_ref_len INT\n      \
+  \                  Do not include variants where REF length is more than\n     \
+  \                   this number. Default is no limit\n  --flank_length INT    Length\
+  \ of sequence to add either side of variant when\n                        making\
+  \ probe sequences [100]\n  --truth_mask FILENAME\n                        BED file\
+  \ of truth genome regions to mask. Any variants\n                        in the\
+  \ VCF matching to the mask are flagged and will\n                        not count\
+  \ towards precision or recall if the output\n                        VCF is used\
+  \ with vcf_eval\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/varifier:0.2.0--py_0

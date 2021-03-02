@@ -1,0 +1,230 @@
+!Command
+command:
+- RNAup
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: program
+  description: "-C, --constraint            Apply structural constraint(s) during\
+    \ prediction.\n(default=off)"
+- !Positional
+  optional: false
+  position: 0
+  name: only.
+  description: (default=off)
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --detailed-help
+  description: "Print help, including all details and hidden\noptions, and exit"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --full-help
+  description: Print help, including hidden options, and exit
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --no_output_file
+  description: Do not produce an output file.  (default=off)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no_header
+  description: "Do not produce a header with the command line\nparameters used in\
+    \ the outputfile.\n(default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --noconv
+  description: "Do not automatically substitude nucleotide \"T\"\nwith \"U\".  (default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --ulength
+  description: "Specify the length of the unstructured region in\nthe output.  (default=`4')"
+  args: !SimpleFlagArg
+    name: length
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --contributions
+  description: "Specify the contributions listed in the output.\n(default=`S')"
+  args: !SimpleFlagArg
+    name: SHIME
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --window
+  description: Set the maximal length of the region of
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --include_both
+  description: "Include the probability of unpaired regions in\nboth (b) RNAs.  (default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - '-5'
+  - --extend5
+  description: "Extend the region of interaction in the target to\nsome residues on\
+    \ the 5' side."
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - '-3'
+  - --extend3
+  description: "Extend the region of interaction in the target to\nsome residues on\
+    \ the 3' side."
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --interaction_pairwise
+  description: "Activate pairwise interaction mode.\n(default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --interaction_first
+  description: Activate interaction mode using first sequence
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --temp
+  description: "Rescale energy parameters to a temperature in\ndegrees centigrade.\
+    \  (default=`37.0')"
+  args: !SimpleFlagArg
+    name: DOUBLE
+- !Flag
+  optional: true
+  synonyms:
+  - '-4'
+  - --noTetra
+  description: "Do not include special tabulated stabilizing\nenergies for tri-, tetra-\
+    \ and hexaloop\nhairpins.  (default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --dangles
+  description: "Specify \"dangling end\" model for bases adjacent\nto helices in free\
+    \ ends and multi-loops.\n(default=`2')"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --noLP
+  description: "Produce structures without lonely pairs (helices\nof length 1).  (default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --noGU
+  description: Do not allow GU pairs.  (default=off)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --noClosingGU
+  description: "Do not allow GU pairs at the end of helices.\n(default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -P
+  - --paramFile
+  description: "Read energy parameters from paramfile, instead of\nusing the default\
+    \ parameter set."
+  args: !SimpleFlagArg
+    name: paramfile
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Print help and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Print version and exit
+  args: !EmptyFlagArg {}
+help_text: "Usage: RNAup [OPTION]...\nCalculate the thermodynamics of RNA-RNA interactions\n\
+  \nRNAup calculates the thermodynamics of RNA-RNA interactions, by decomposing the\n\
+  binding into two stages. (1) First the probability that a potential binding\nsites\
+  \ remains unpaired (equivalent to the free energy needed to open the site)\nis computed.\
+  \ (2) Then this accessibility is combined with the interaction\nenergy to obtain\
+  \ the total binding energy. All calculations are done by\ncomputing partition functions\
+  \ over all possible conformations.\n\n\n  -h, --help                  Print help\
+  \ and exit\n      --detailed-help         Print help, including all details and\
+  \ hidden\n                                options, and exit\n      --full-help \
+  \            Print help, including hidden options, and exit\n  -V, --version   \
+  \            Print version and exit\n\nGeneral Options:\n  Below are command line\
+  \ options which alter the general behavior of this\n  program\n\n  -C, --constraint\
+  \            Apply structural constraint(s) during prediction.\n               \
+  \                 (default=off)\n  -o, --no_output_file        Do not produce an\
+  \ output file.  (default=off)\n      --no_header             Do not produce a header\
+  \ with the command line\n                                parameters used in the\
+  \ outputfile.\n                                (default=off)\n      --noconv   \
+  \             Do not automatically substitude nucleotide \"T\"\n               \
+  \                 with \"U\".  (default=off)\n\nCalculations of opening energies:\n\
+  \  -u, --ulength=length        Specify the length of the unstructured region in\n\
+  \                                the output.  (default=`4')\n  -c, --contributions=SHIME\
+  \   Specify the contributions listed in the output.\n                          \
+  \      (default=`S')\n\nCalculations of RNA-RNA interactions:\n  -w, --window=INT\
+  \            Set the maximal length of the region of\n                         \
+  \       interaction.  (default=`25')\n  -b, --include_both          Include the\
+  \ probability of unpaired regions in\n                                both (b) RNAs.\
+  \  (default=off)\n  -5, --extend5=INT           Extend the region of interaction\
+  \ in the target to\n                                some residues on the 5' side.\n\
+  \  -3, --extend3=INT           Extend the region of interaction in the target to\n\
+  \                                some residues on the 3' side.\n      --interaction_pairwise\
+  \  Activate pairwise interaction mode.\n                                (default=off)\n\
+  \      --interaction_first     Activate interaction mode using first sequence\n\
+  \                                only.  (default=off)\n\nModel Details:\n  -T, --temp=DOUBLE\
+  \           Rescale energy parameters to a temperature in\n                    \
+  \            degrees centigrade.  (default=`37.0')\n  -4, --noTetra            \
+  \   Do not include special tabulated stabilizing\n                             \
+  \   energies for tri-, tetra- and hexaloop\n                                hairpins.\
+  \  (default=off)\n  -d, --dangles=INT           Specify \"dangling end\" model for\
+  \ bases adjacent\n                                to helices in free ends and multi-loops.\n\
+  \                                (default=`2')\n      --noLP                  Produce\
+  \ structures without lonely pairs (helices\n                                of length\
+  \ 1).  (default=off)\n      --noGU                  Do not allow GU pairs.  (default=off)\n\
+  \      --noClosingGU           Do not allow GU pairs at the end of helices.\n  \
+  \                              (default=off)\n  -P, --paramFile=paramfile   Read\
+  \ energy parameters from paramfile, instead of\n                               \
+  \ using the default parameter set.\n\nIf in doubt our program is right, nature is\
+  \ at fault.\nComments should be sent to rna@tbi.univie.ac.at.\n\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/viennarna:2.4.17--py36hd181a71_0

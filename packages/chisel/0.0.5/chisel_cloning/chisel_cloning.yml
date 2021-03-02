@@ -1,0 +1,90 @@
+!Command
+command:
+- chisel_cloning
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: INPUT
+  description: Input file with combined RDR and BAF per bin and per
+- !Positional
+  optional: false
+  position: 1
+  name: cell
+  description: 'optional arguments:'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --rundir
+  description: 'Running directory (default: current directory)'
+  args: !SimpleFlagArg
+    name: RUNDIR
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --maxdiff
+  description: "Maximum haplotype-specific distance between the genome\nof cells in\
+    \ the same clone (default: 0.06, when -1 is\nchosen the maximum cluster method\
+    \ of SciPy is used)"
+  args: !SimpleFlagArg
+    name: MAXDIFF
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --minsize
+  description: "Minimum number of cells in a subpopulation to define a\nclone (default:\
+    \ 14)"
+  args: !SimpleFlagArg
+    name: MINSIZE
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --refinement
+  description: "Maximum difference to assign noisy cells to the\nclosest clone (default:\
+    \ 0.0, note that 1.0 can be used\nto force the assigment of all cells)"
+  args: !SimpleFlagArg
+    name: REFINEMENT
+- !Flag
+  optional: true
+  synonyms:
+  - --seed
+  description: 'Random seed for replication (default: None)'
+  args: !SimpleFlagArg
+    name: SEED
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: chisel_cloning [-h] [-x RUNDIR] [-f MAXDIFF] [-s MINSIZE]\n   \
+  \                   [-r REFINEMENT] [--seed SEED]\n                      [INPUT]\n\
+  \nCHISEL command to run the pipeline starting from inferred copy numbers.\n\npositional\
+  \ arguments:\n  INPUT                 Input file with combined RDR and BAF per bin\
+  \ and per\n                        cell\n\noptional arguments:\n  -h, --help   \
+  \         show this help message and exit\n  -x RUNDIR, --rundir RUNDIR\n      \
+  \                  Running directory (default: current directory)\n  -f MAXDIFF,\
+  \ --maxdiff MAXDIFF\n                        Maximum haplotype-specific distance\
+  \ between the genome\n                        of cells in the same clone (default:\
+  \ 0.06, when -1 is\n                        chosen the maximum cluster method of\
+  \ SciPy is used)\n  -s MINSIZE, --minsize MINSIZE\n                        Minimum\
+  \ number of cells in a subpopulation to define a\n                        clone\
+  \ (default: 14)\n  -r REFINEMENT, --refinement REFINEMENT\n                    \
+  \    Maximum difference to assign noisy cells to the\n                        closest\
+  \ clone (default: 0.0, note that 1.0 can be used\n                        to force\
+  \ the assigment of all cells)\n  --seed SEED           Random seed for replication\
+  \ (default: None)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/chisel:0.0.5--py_0

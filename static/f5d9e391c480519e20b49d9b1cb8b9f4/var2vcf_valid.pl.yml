@@ -1,0 +1,199 @@
+!Command
+command:
+- var2vcf_valid.pl
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: this usage.
+  args: !SimpleFlagArg
+    name: Print
+- !Flag
+  optional: true
+  synonyms:
+  - -H
+  description: this usage.
+  args: !SimpleFlagArg
+    name: Print
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  description: set, variants that didn't pass filters will not be present in VCF file
+  args: !SimpleFlagArg
+    name: If
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  description: amplicon based variant calling.  Variant not supported by all amplicons
+    will be considered false positive, with filter set to "AMPBIAS".
+  args: !SimpleFlagArg
+    name: For
+- !Flag
+  optional: true
+  synonyms:
+  - -A
+  description: to output all variants at the same position.  By default, only the
+    variant with the highest allele frequency is converted to VCF.
+  args: !SimpleFlagArg
+    name: Indicate
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: "int\nIf two seemingly high quality SNV variants are within {int} bp,\
+    \ they're both filtered.  Default: 0, or no filtering"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -I
+  description: "int\nThe maximum non-monomer MSI allowed for a HT variant with AF\
+    \ < 0.5.  By default, 12, or any variants with AF < 0.5 in a region\nwith >6 non-monomer\
+    \ MSI will be considered false positive.  For monomers, that number is 13."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: "double\nThe maximum mean mismatches allowed.  Default: 5.25, or if\
+    \ a variant is supported by reads with more than 5.25 mean mismatches, it'll be\
+    \ considered\nfalse positive.  Mismatches don't includes indels in the alignment."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: "float\nThe minimum mean position of variants in the read.  Default:\
+    \ 8."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -P
+  description: "0 or 1\nWhether to filter variants with pstd = 0.  Default: 1 or yes.\
+    \  Set it to 0 for targeted PCR based sequencing, where pstd is expected."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  description: "float\nThe minimum mean base quality.  Default to 22.5 for Illumina\
+    \ sequencing"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Q
+  description: "float\nThe minimum mapping quality.  Default to 10.0 for Illumina\
+    \ sequencing.  Variants with lower quality (<10) will be kept only if af >= 0.8"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: "integer\nThe minimum total depth.  Default to 3, might consider lower\
+    \ depth if (high quality variant count)*af >= 0.5"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: "integer\nThe minimum high quality variant depth.  Default to 2.  Would\
+    \ consider lower depth (high quality variant count)*af >= 0.5"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: "float\nThe minimum allele frequency.  Default to 0.02"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: "signal/noise\nThe minimum signal to noise, or the ratio of hi/(lo+0.5).\
+    \  Default to 1.5, that is both 2 variant reads are high quality."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  description: "float\nThe minimum allele frequency to consider to be homozygous.\
+    \  Default to 0.2.  Thus frequency < 0.2 will\nbe considered homozygous REF, while\
+    \ frequency > 0.2 will be considered homozygous ALT."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -N
+  description: "string\nThe sample name to be used directly."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -E
+  description: If set, do not print END tag
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  description: "integer\nThe minimum number of split reads for SV.  Default: 1.  Change\
+    \ to 0 if you want SV called from discordant pairs only.\n-b  Path to the *.bed\
+    \ file which is used to generate contigs in the header\n-G  Path to the *.fasta\
+    \ (*.fa) file which is used to generate reference tag in the header"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "/usr/local/bin/var2vcf_valid.pl [-hHS] [-p pos] [-q qual] [-d depth] [-v\
+  \ depth] [-f frequency] [-F frequency] vars.txt\nVersion: 1.8.2\nThe program will\
+  \ convert the variant output from checkVar.pl script into validated VCF file.\n\n\
+  Options are:\n    -h Print this usage.\n    -H Print this usage.\n    -S If set,\
+  \ variants that didn't pass filters will not be present in VCF file\n    -a For\
+  \ amplicon based variant calling.  Variant not supported by all amplicons will be\
+  \ considered false positive, with filter set to \"AMPBIAS\".\n    -A Indicate to\
+  \ output all variants at the same position.  By default, only the variant with the\
+  \ highest allele frequency is converted to VCF.\n    -c  int\n        If two seemingly\
+  \ high quality SNV variants are within {int} bp, they're both filtered.  Default:\
+  \ 0, or no filtering\n    -I  int\n        The maximum non-monomer MSI allowed for\
+  \ a HT variant with AF < 0.5.  By default, 12, or any variants with AF < 0.5 in\
+  \ a region\n        with >6 non-monomer MSI will be considered false positive. \
+  \ For monomers, that number is 13.\n    -m  double\n        The maximum mean mismatches\
+  \ allowed.  Default: 5.25, or if a variant is supported by reads with more than\
+  \ 5.25 mean mismatches, it'll be considered\n        false positive.  Mismatches\
+  \ don't includes indels in the alignment.\n    -p  float\n    \tThe minimum mean\
+  \ position of variants in the read.  Default: 8.\n    -P  0 or 1\n        Whether\
+  \ to filter variants with pstd = 0.  Default: 1 or yes.  Set it to 0 for targeted\
+  \ PCR based sequencing, where pstd is expected.\n    -q  float\n    \tThe minimum\
+  \ mean base quality.  Default to 22.5 for Illumina sequencing\n    -Q  float\n \
+  \   \tThe minimum mapping quality.  Default to 10.0 for Illumina sequencing.  Variants\
+  \ with lower quality (<10) will be kept only if af >= 0.8\n    -d  integer\n   \
+  \ \tThe minimum total depth.  Default to 3, might consider lower depth if (high\
+  \ quality variant count)*af >= 0.5\n    -v  integer\n    \tThe minimum high quality\
+  \ variant depth.  Default to 2.  Would consider lower depth (high quality variant\
+  \ count)*af >= 0.5\n    -f  float\n    \tThe minimum allele frequency.  Default\
+  \ to 0.02\n    -o  signal/noise\n    \tThe minimum signal to noise, or the ratio\
+  \ of hi/(lo+0.5).  Default to 1.5, that is both 2 variant reads are high quality.\n\
+  \    -F  float\n    \tThe minimum allele frequency to consider to be homozygous.\
+  \  Default to 0.2.  Thus frequency < 0.2 will \n\tbe considered homozygous REF,\
+  \ while frequency > 0.2 will be considered homozygous ALT.\n    -N  string\n   \
+  \     The sample name to be used directly.\n    -E  If set, do not print END tag\n\
+  \    -T  integer\n        The minimum number of split reads for SV.  Default: 1.\
+  \  Change to 0 if you want SV called from discordant pairs only.\n\t-b  Path to\
+  \ the *.bed file which is used to generate contigs in the header\n\t-G  Path to\
+  \ the *.fasta (*.fa) file which is used to generate reference tag in the header\n\
+  \nAUTHOR\n       Written by Zhongwu Lai, AstraZeneca, Boston, USA\n\nREPORTING BUGS\n\
+  \       Report bugs to zhongwu@yahoo.com\n\nCOPYRIGHT\n       This is free software:\
+  \ you are free to change and redistribute it.  There is NO WARRANTY, to the extent\
+  \ permitted by law.\n\n"
+generated_using:
+- -h
+docker_image: quay.io/biocontainers/vardict-java:1.8.2--0

@@ -1,0 +1,96 @@
+!Command
+command:
+- debarcer
+- bed
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --Bamfile
+  description: Path to the BAM file
+  args: !SimpleFlagArg
+    name: BAMFILE
+- !Flag
+  optional: true
+  synonyms:
+  - -bd
+  - --Bedfile
+  description: Path to the output bed file
+  args: !SimpleFlagArg
+    name: BED
+- !Flag
+  optional: true
+  synonyms:
+  - -mv
+  - --MinCov
+  description: "Minimum read depth value at all positions in genomic\ninterval"
+  args: !SimpleFlagArg
+    name: MINCOV
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --RegionSize
+  description: Minimum length of the genomic interval (in bp)
+  args: !SimpleFlagArg
+    name: REGIONSIZE
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --MaxDepth
+  description: Maximum read depth. Default is 1000000
+  args: !SimpleFlagArg
+    name: MAXDEPTH
+- !Flag
+  optional: true
+  synonyms:
+  - -io
+  - --IgnoreOrphans
+  description: "Ignore orphans (paired reads that are not in a proper\npair). Default\
+    \ is False, becomes True if used"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -stp
+  - --Stepper
+  description: "Filter or include reads in the pileup. Options all:\nskip reads with\
+    \ BAM_FUNMAP, BAM_FSECONDARY,\nBAM_FQCFAIL, BAM_FDUP flags, nofilter: uses every\n\
+    single read turning off any filtering\n"
+  args: !ChoiceFlagArg
+    choices: !!set
+      all:
+      nofilter:
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: debarcer.py bed [-h] -b BAMFILE -bd BED -mv MINCOV -r REGIONSIZE\n\
+  \                       [-m MAXDEPTH] [-io] [-stp {all,nofilter}]\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -b BAMFILE, --Bamfile\
+  \ BAMFILE\n                        Path to the BAM file\n  -bd BED, --Bedfile BED\n\
+  \                        Path to the output bed file\n  -mv MINCOV, --MinCov MINCOV\n\
+  \                        Minimum read depth value at all positions in genomic\n\
+  \                        interval\n  -r REGIONSIZE, --RegionSize REGIONSIZE\n  \
+  \                      Minimum length of the genomic interval (in bp)\n  -m MAXDEPTH,\
+  \ --MaxDepth MAXDEPTH\n                        Maximum read depth. Default is 1000000\n\
+  \  -io, --IgnoreOrphans  Ignore orphans (paired reads that are not in a proper\n\
+  \                        pair). Default is False, becomes True if used\n  -stp {all,nofilter},\
+  \ --Stepper {all,nofilter}\n                        Filter or include reads in the\
+  \ pileup. Options all:\n                        skip reads with BAM_FUNMAP, BAM_FSECONDARY,\n\
+  \                        BAM_FQCFAIL, BAM_FDUP flags, nofilter: uses every\n   \
+  \                     single read turning off any filtering\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/debarcer:2.1.3--py_0

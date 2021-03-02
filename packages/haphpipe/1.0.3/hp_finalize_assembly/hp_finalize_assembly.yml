@@ -1,0 +1,128 @@
+!Command
+command:
+- hp_finalize_assembly
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --fq1
+  description: Fastq file with read 1
+  args: !SimpleFlagArg
+    name: FQ1
+- !Flag
+  optional: true
+  synonyms:
+  - --fq2
+  description: Fastq file with read 1
+  args: !SimpleFlagArg
+    name: FQ2
+- !Flag
+  optional: true
+  synonyms:
+  - --fqU
+  description: Fastq file with unpaired reads
+  args: !SimpleFlagArg
+    name: FQU
+- !Flag
+  optional: true
+  synonyms:
+  - --ref_fa
+  description: Consensus fasta file
+  args: !SimpleFlagArg
+    name: REF_FA
+- !Flag
+  optional: true
+  synonyms:
+  - --outdir
+  description: 'Output directory (default: .)'
+  args: !SimpleFlagArg
+    name: OUTDIR
+- !Flag
+  optional: true
+  synonyms:
+  - --bt2_preset
+  description: 'Bowtie2 preset to use (default: very-sensitive)'
+  args: !ChoiceFlagArg
+    choices: !!set
+      very-fast:
+      very-fast-local:
+      fast:
+      very-sensitive-local:
+      very-sensitive:
+      fast-local:
+      sensitive-local:
+      sensitive:
+- !Flag
+  optional: true
+  synonyms:
+  - --sample_id
+  description: 'Sample ID (default: sampleXX)'
+  args: !SimpleFlagArg
+    name: SAMPLE_ID
+- !Flag
+  optional: true
+  synonyms:
+  - --ncpu
+  description: Number of CPU to use
+  args: !SimpleFlagArg
+    name: NCPU
+- !Flag
+  optional: true
+  synonyms:
+  - --keep_tmp
+  description: 'Do not delete temporary directory (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --quiet
+  description: "Do not write output to console (silence stdout and\nstderr) (default:\
+    \ False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --logfile
+  description: Append console output to this file
+  args: !SimpleFlagArg
+    name: LOGFILE
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: 'Print commands but do not run (default: False)'
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: hp_finalize_assembly [-h] [--fq1 FQ1] [--fq2 FQ2] [--fqU FQU] --ref_fa\n\
+  \                            REF_FA [--outdir OUTDIR]\n                        \
+  \    [--bt2_preset {very-fast,fast,sensitive,very-sensitive,very-fast-local,fast-local,sensitive-local,very-sensitive-local}]\n\
+  \                            [--sample_id SAMPLE_ID] [--ncpu NCPU] [--keep_tmp]\n\
+  \                            [--quiet] [--logfile LOGFILE] [--debug]\n\nFinalize\
+  \ consensus sequence.\n\noptional arguments:\n  -h, --help            show this\
+  \ help message and exit\n\nInput/Output:\n  --fq1 FQ1             Fastq file with\
+  \ read 1\n  --fq2 FQ2             Fastq file with read 1\n  --fqU FQU          \
+  \   Fastq file with unpaired reads\n  --ref_fa REF_FA       Consensus fasta file\n\
+  \  --outdir OUTDIR       Output directory (default: .)\n\nFix consensus options:\n\
+  \  --bt2_preset {very-fast,fast,sensitive,very-sensitive,very-fast-local,fast-local,sensitive-local,very-sensitive-local}\n\
+  \                        Bowtie2 preset to use (default: very-sensitive)\n  --sample_id\
+  \ SAMPLE_ID\n                        Sample ID (default: sampleXX)\n\nSettings:\n\
+  \  --ncpu NCPU           Number of CPU to use\n  --keep_tmp            Do not delete\
+  \ temporary directory (default: False)\n  --quiet               Do not write output\
+  \ to console (silence stdout and\n                        stderr) (default: False)\n\
+  \  --logfile LOGFILE     Append console output to this file\n  --debug         \
+  \      Print commands but do not run (default: False)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/haphpipe:1.0.3--py_0

@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, Boolean, Int, String
+
+Utgcns_V0_1_0 = CommandToolBuilder(tool="utgcns", base_command=["utgcns"], inputs=[ToolInput(tag="in_test_computation_unitig", input_type=File(optional=True), prefix="-T", doc=InputDocumentation(doc="Test the computation of the unitig layout in 'file'")), ToolInput(tag="in_recompute_unitigs_have", input_type=Boolean(optional=True), prefix="-f", doc=InputDocumentation(doc="Recompute unitigs that already have a multialignment")), ToolInput(tag="in_show_multialigns", input_type=Boolean(optional=True), prefix="-v", doc=InputDocumentation(doc="Show multialigns.")), ToolInput(tag="in_enable_debugging_option", input_type=Boolean(optional=True), prefix="-V", doc=InputDocumentation(doc="Enable debugging option 'verbosemultialign'.")), ToolInput(tag="in_update_store_computing", input_type=Boolean(optional=True), prefix="-n", doc=InputDocumentation(doc="Do not update the store after computing consensus.")), ToolInput(tag="in_max_coverage", input_type=Int(optional=True), prefix="-maxcoverage", doc=InputDocumentation(doc="Use non-contained reads and the longest contained reads, up to\nC coverage, for consensus generation.  The default is 0, and will\nuse all reads.")), ToolInput(tag="in_maxlength", input_type=String(optional=True), prefix="-maxlength", doc=InputDocumentation(doc="Do not compute consensus for unitigs longer than l bases.")), ToolInput(tag="in_in_place", input_type=Boolean(optional=True), prefix="-inplace", doc=InputDocumentation(doc="Write the updated unitig to the same version it was read from.")), ToolInput(tag="in_v_p_use", input_type=String(optional=True), prefix="-t", doc=InputDocumentation(doc="V P        If 'partition' is '.', use an unpartitioned tigStore/gkpStore.")), ToolInput(tag="in_load_all", input_type=Boolean(optional=True), prefix="-loadall", doc=InputDocumentation(doc="Load ALL reads into memory.  Ignores partition if it exists.")), ToolInput(tag="in_g", input_type=String(optional=True), prefix="-g", doc=InputDocumentation(doc="")), ToolInput(tag="in_version", input_type=String(), position=0, doc=InputDocumentation(doc="")), ToolInput(tag="in_partition", input_type=String(), position=1, doc=InputDocumentation(doc="")), ToolInput(tag="in_opts", input_type=String(optional=True), position=2, doc=InputDocumentation(doc=""))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Utgcns_V0_1_0().translate("wdl", allow_empty_container=True)
+

@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, Boolean, Array, String, Int
+
+Internalcalibration_V0_1_0 = CommandToolBuilder(tool="InternalCalibration", base_command=["InternalCalibration"], inputs=[ToolInput(tag="in_in", input_type=File(optional=True), prefix="-in", doc=InputDocumentation(doc="*                                Input peak file (valid formats: 'mzML')")), ToolInput(tag="in_out", input_type=File(optional=True), prefix="-out", doc=InputDocumentation(doc="*                               Output file  (valid formats: 'mzML')")), ToolInput(tag="in_r_script_executable", input_type=File(optional=True), prefix="-rscript_executable", doc=InputDocumentation(doc="Path to the Rscript executable (default: 'Rscript').")), ToolInput(tag="in_ppm_match_tolerance", input_type=Boolean(optional=True), prefix="-ppm_match_tolerance", doc=InputDocumentation(doc="<delta m/z in [ppm]>  Finding calibrants in raw data uses this tolerance (for lock masses and ID's). (default: '25')")), ToolInput(tag="in_ms_level", input_type=Array(t=String(), optional=True), prefix="-ms_level", doc=InputDocumentation(doc="MS levels to apply the transformation onto. Does not affect calibrant collection. (default: '[1 2 3]')")), ToolInput(tag="in_rt_chunking", input_type=Boolean(optional=True), prefix="-RT_chunking", doc=InputDocumentation(doc="<RT window in [sec]>          RT window (one-sided, i.e. left->center, or center->right) around an MS scan in which calibrants are collected to build a model. Set to -1 to use ALL calibrants for all scans, i.e. a global model. (default: '300')")), ToolInput(tag="in_ini", input_type=File(optional=True), prefix="-ini", doc=InputDocumentation(doc="Use the given TOPP INI file")), ToolInput(tag="in_threads", input_type=Int(optional=True), prefix="-threads", doc=InputDocumentation(doc="Sets the number of threads allowed to be used by the TOPP tool (default: '1')")), ToolInput(tag="in_write_ini", input_type=File(optional=True), prefix="-write_ini", doc=InputDocumentation(doc="Writes the default configuration file")), ToolInput(tag="in_helphelp", input_type=Boolean(optional=True), prefix="--helphelp", doc=InputDocumentation(doc="Shows all options (including advanced)"))], outputs=[ToolOutput(tag="out_out", output_type=File(optional=True), selector=InputSelector(input_to_select="in_out", type_hint=File()), doc=OutputDocumentation(doc="*                               Output file  (valid formats: 'mzML')"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Internalcalibration_V0_1_0().translate("wdl", allow_empty_container=True)
+

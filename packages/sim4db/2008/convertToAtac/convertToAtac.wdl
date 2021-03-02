@@ -20,6 +20,9 @@ task ConvertToAtac {
       ~{if defined(one) then ("-1 " +  '"' + one + '"') else ""} \
       ~{if (f) then "-f" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     two: ""
     one: ""

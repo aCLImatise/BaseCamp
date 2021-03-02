@@ -1,0 +1,191 @@
+!Command
+command:
+- gappa
+- prepare
+- phat
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --taxonomy-file
+  description: ":FILE REQUIRED\nFile that lists the taxa of the database."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --sequence-file
+  description: ":FILE REQUIRED\nFasta file containing the sequences of the database."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --target-size
+  description: "=0 REQUIRED\nTarget size of how many taxa to select for building consensus\
+    \ sequences."
+  args: !SimpleFlagArg
+    name: UINT
+- !Flag
+  optional: true
+  synonyms:
+  - --sub-taxonomy
+  description: If a taxopath from the taxonomy is provided, only the respective sub-taxonomy
+    is used.
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --min-subclade-size
+  description: =0  Minimal size of sub-clades. Everything below is expanded.
+  args: !SimpleFlagArg
+    name: UINT
+- !Flag
+  optional: true
+  synonyms:
+  - --max-subclade-size
+  description: =0  Maximal size of a non-expanded sub-clades. Everything bigger is
+    first expanded.
+  args: !SimpleFlagArg
+    name: UINT
+- !Flag
+  optional: true
+  synonyms:
+  - --min-tax-level
+  description: =0      Minimal taxonomic level. Taxa below this level are always expanded.
+  args: !SimpleFlagArg
+    name: UINT
+- !Flag
+  optional: true
+  synonyms:
+  - --allow-approximation
+  description: Allow to expand taxa that help getting closer to the --target-size,
+    even if they are not the ones with the highest entropy.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-taxa-selection
+  description: If set, no taxa selection using entropy is performed. Instead, all
+    taxa on all levels/ranks are used and consensus sequences for all of them are
+    calculated. This is useful for testing and to try out new ideas.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --consensus-method
+  description: ":{majorities,cavener,threshold}=majorities\nConsensus method to use\
+    \ for combining sequences."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --consensus-threshold
+  description: ":FLOAT in [0 - 1]=0.5 Needs: --consensus-method\nThreshold value to\
+    \ use with --consensus-method threshold. Has to be in [ 0.0, 1.0 ]."
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --out-dir
+  description: =.            Directory to write files to
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --file-prefix
+  description: File prefix for output files
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --file-suffix
+  description: File suffix for output files
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --write-info-files
+  description: If set, two additional info files are written, containing the new pruned
+    taxonomy, as well as the entropy of all clades of the original taxonomy.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --allow-file-overwriting
+  description: Allow to overwrite existing output files instead of aborting the command.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: Produce more verbose output.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: =8            Number of threads to use for calculations.
+  args: !SimpleFlagArg
+    name: UINT
+- !Flag
+  optional: true
+  synonyms:
+  - --log-file
+  description: Write all output to a log file, in addition to standard output to the
+    terminal.
+  args: !SimpleFlagArg
+    name: TEXT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Print this help message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Generate consensus sequences from a sequence database according to the\
+  \ PhAT method.\nUsage: gappa prepare phat [OPTIONS]\n\nInput:\n  --taxonomy-file\
+  \ TEXT:FILE REQUIRED\n                              File that lists the taxa of\
+  \ the database.\n  --sequence-file TEXT:FILE REQUIRED\n                        \
+  \      Fasta file containing the sequences of the database.\n\n\nTaxonomy Expansion:\n\
+  \  --target-size UINT=0 REQUIRED\n                              Target size of how\
+  \ many taxa to select for building consensus sequences.\n  --sub-taxonomy TEXT \
+  \        If a taxopath from the taxonomy is provided, only the respective sub-taxonomy\
+  \ is used.\n  --min-subclade-size UINT=0  Minimal size of sub-clades. Everything\
+  \ below is expanded.\n  --max-subclade-size UINT=0  Maximal size of a non-expanded\
+  \ sub-clades. Everything bigger is first expanded.\n  --min-tax-level UINT=0   \
+  \   Minimal taxonomic level. Taxa below this level are always expanded.\n  --allow-approximation\
+  \       Allow to expand taxa that help getting closer to the --target-size, even\
+  \ if they are not the ones with the highest entropy.\n  --no-taxa-selection    \
+  \     If set, no taxa selection using entropy is performed. Instead, all taxa on\
+  \ all levels/ranks are used and consensus sequences for all of them are calculated.\
+  \ This is useful for testing and to try out new ideas.\n\n\nConsensus Method:\n\
+  \  --consensus-method TEXT:{majorities,cavener,threshold}=majorities\n         \
+  \                     Consensus method to use for combining sequences.\n  --consensus-threshold\
+  \ FLOAT:FLOAT in [0 - 1]=0.5 Needs: --consensus-method\n                       \
+  \       Threshold value to use with --consensus-method threshold. Has to be in [\
+  \ 0.0, 1.0 ].\n\n\nOutput:\n  --out-dir TEXT=.            Directory to write files\
+  \ to\n  --file-prefix TEXT          File prefix for output files\n  --file-suffix\
+  \ TEXT          File suffix for output files\n  --write-info-files          If set,\
+  \ two additional info files are written, containing the new pruned taxonomy, as\
+  \ well as the entropy of all clades of the original taxonomy.\n\n\nGlobal Options:\n\
+  \  --allow-file-overwriting    Allow to overwrite existing output files instead\
+  \ of aborting the command.\n  --verbose                   Produce more verbose output.\n\
+  \  --threads UINT=8            Number of threads to use for calculations.\n  --log-file\
+  \ TEXT             Write all output to a log file, in addition to standard output\
+  \ to the terminal.\n  --help                      Print this help message and exit.\n\
+  \ngappa - a toolkit for analyzing and visualizing phylogenetic (placement) data\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/gappa:0.7.0--he513fc3_0

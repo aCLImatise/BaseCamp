@@ -1,0 +1,116 @@
+!Command
+command:
+- pyrpipe
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: 'False'
+  description: --dry-run             Only print pyrpipe's commands and not execute
+    anything
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: Num processes/threads to use Default:mp.cpu_count()
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - --max-memory
+  description: 'Max memory to use (in GB) default: None'
+  args: !SimpleFlagArg
+    name: MEM
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: "Print pyrpipe_engine's stdout and stderr Default:"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --force
+  description: "Force execution of commands if their target files\nalready exist Default:\
+    \ False"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --safe-mode
+  description: "Disable file deletions through pyrpipe_engine module\nDefault: False"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-logs
+  description: 'Disable pyrpipe logs Default: False'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --param-dir
+  description: "Directory containing parameter yaml files Default:\n./params"
+  args: !SimpleFlagArg
+    name: PARAMDIR
+- !Flag
+  optional: true
+  synonyms:
+  - --logs-dir
+  description: 'Directory for saving log files Default: ./pyrpipe_logs'
+  args: !SimpleFlagArg
+    name: LOGSDIR
+- !Flag
+  optional: true
+  synonyms:
+  - --multiqc
+  description: 'Autorun MultiQC after execution Default: False'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --in
+  description: The input python script
+  args: !SimpleFlagArg
+    name: INFILE
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Print version information and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: \npyrpipe [<pyrpipe options>] --in <script.py> [<script options>]\n\
+  OR\npython <script.py> [<pyrpipe options>] [<script options>]\n\nuse pyrpipe_diagnostic\
+  \ command for reports, and tests and installation of RNA-Seq tools\n\npyrpipe: A\
+  \ lightweight python package for RNA-Seq workflows (version 0.0.5)\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  --threads THREADS  \
+  \   Num processes/threads to use Default:mp.cpu_count()\n  --max-memory MEM    \
+  \  Max memory to use (in GB) default: None\n  --verbose             Print pyrpipe_engine's\
+  \ stdout and stderr Default:\n                        False\n  --dry-run       \
+  \      Only print pyrpipe's commands and not execute anything\n                \
+  \        through pyrpipe_engine module Default: False\n  --force               Force\
+  \ execution of commands if their target files\n                        already exist\
+  \ Default: False\n  --safe-mode           Disable file deletions through pyrpipe_engine\
+  \ module\n                        Default: False\n  --no-logs             Disable\
+  \ pyrpipe logs Default: False\n  --param-dir PARAMDIR  Directory containing parameter\
+  \ yaml files Default:\n                        ./params\n  --logs-dir LOGSDIR  \
+  \  Directory for saving log files Default: ./pyrpipe_logs\n  --multiqc         \
+  \    Autorun MultiQC after execution Default: False\n  --version             Print\
+  \ version information and exit\n\nRequired input file if invoking via pyrpipe command:\n\
+  \  --in INFILE           The input python script\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/pyrpipe:0.0.5--py_0

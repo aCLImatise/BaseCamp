@@ -3,7 +3,7 @@ id: seqtk_fqchk.cwl
 inputs:
 - id: in_q
   doc: ''
-  type: long
+  type: long?
   inputBinding:
     prefix: -q
 - id: in_in_dot_fq
@@ -15,6 +15,7 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - seqtk

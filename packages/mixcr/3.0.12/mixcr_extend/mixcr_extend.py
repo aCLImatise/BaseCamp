@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import String, Int, Boolean, File
+
+Mixcr_Extend_V0_1_0 = CommandToolBuilder(tool="mixcr_extend", base_command=["mixcr", "extend"], inputs=[ToolInput(tag="in_j_anchor", input_type=String(optional=True), prefix="--j-anchor", doc=InputDocumentation(doc="J extension anchor point.")), ToolInput(tag="in_min_j_score", input_type=Int(optional=True), prefix="--min-j-score", doc=InputDocumentation(doc="Minimal J hit score alignment to perform right extension.")), ToolInput(tag="in_min_v_score", input_type=Int(optional=True), prefix="--min-v-score", doc=InputDocumentation(doc="Minimal V hit score to perform left extension.")), ToolInput(tag="in_overwrite_if_required", input_type=Boolean(optional=True), prefix="--overwrite-if-required", doc=InputDocumentation(doc="Overwrite output file if it is corrupted or if it was generated from\ndifferent input file or with different parameters. -f / --force-overwrite\noverrides this option.")), ToolInput(tag="in_v_anchor", input_type=String(optional=True), prefix="--v-anchor", doc=InputDocumentation(doc="V extension anchor point.")), ToolInput(tag="in_verbose", input_type=Boolean(optional=True), prefix="--verbose", doc=InputDocumentation(doc="Verbose warning messages.")), ToolInput(tag="in_chains", input_type=String(optional=True), prefix="--chains", doc=InputDocumentation(doc="Apply procedure only to alignments with specific immunological-receptor")), ToolInput(tag="in_json_report", input_type=File(optional=True), prefix="--json-report", doc=InputDocumentation(doc="JSON formatted report file")), ToolInput(tag="in_no_warnings", input_type=Boolean(optional=True), prefix="--no-warnings", doc=InputDocumentation(doc="Suppress all warning messages.")), ToolInput(tag="in_quality", input_type=String(optional=True), prefix="--quality", doc=InputDocumentation(doc="Quality score value to assign imputed sequences")), ToolInput(tag="in_report", input_type=File(optional=True), prefix="--report", doc=InputDocumentation(doc="Report file (human readable version, see -j / --json-report for machine\nreadable report)")), ToolInput(tag="in_threads", input_type=String(optional=True), prefix="--threads", doc=InputDocumentation(doc="Processing threads")), ToolInput(tag="in_f", input_type=Boolean(optional=True), prefix="-f", doc=InputDocumentation(doc="")), ToolInput(tag="in_chains_dot", input_type=String(), position=0, doc=InputDocumentation(doc="-f, --force-overwrite     Force overwrite of output file(s)."))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Mixcr_Extend_V0_1_0().translate("wdl", allow_empty_container=True)
+

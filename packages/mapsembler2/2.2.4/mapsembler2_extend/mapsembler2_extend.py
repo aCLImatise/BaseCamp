@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Int, File, String
+
+Mapsembler2_Extend_V0_1_0 = CommandToolBuilder(tool="mapsembler2_extend", base_command=["mapsembler2_extend"], inputs=[ToolInput(tag="in_default_strict_sequence", input_type=Int(optional=True), prefix="-t", doc=InputDocumentation(doc="Default: 1\n1: a strict sequence: any branching stops the extension\n2: a consensus sequence: contiging approach\n3: a strict graph: any branching is conserved in the graph\n4: a consensus graph: 'small' polymorphism is merged, but 'large' structures are represented")), ToolInput(tag="in_size_kmers_used", input_type=Int(optional=True), prefix="-k", doc=InputDocumentation(doc=": Size of the k-mers used duriung the extension phase Default: 31. Accepted range, depends on the compilation (make k=42 for instance)")), ToolInput(tag="in_sequence_covered_at", input_type=Int(optional=True), prefix="-c", doc=InputDocumentation(doc=": a sequence is covered by at least min_coverage coherent reads. Default: 2")), ToolInput(tag="in_estimation_size_genome", input_type=Int(optional=True), prefix="-g", doc=InputDocumentation(doc=": estimation of the size of the genome whose reads come from.\nIt is in bp, does not need to be accurate, only controls memory usage. Default: 3 billion")), ToolInput(tag="in_limit_max_length", input_type=Int(optional=True), prefix="-x", doc=InputDocumentation(doc=": limit max of nodes length. Default: 40")), ToolInput(tag="in_limit_max_graph", input_type=Int(optional=True), prefix="-y", doc=InputDocumentation(doc=": limit max of graph depth.Default: 10000")), ToolInput(tag="in_stores_index_files", input_type=File(optional=True), prefix="-i", doc=InputDocumentation(doc=": stores the index files in files starting with this prefix name. Can be re-used latter. Default: 'index'\nIF THE FILE 'index_name.bloom' EXISTS: the index is not re-created")), ToolInput(tag="in_where_write_outputs", input_type=File(optional=True), prefix="-o", doc=InputDocumentation(doc=": where to write outputs. Default: 'res_mapsembler'")), ToolInput(tag="in_kind_of_prosses", input_type=String(optional=True), prefix="-p", doc=InputDocumentation(doc=": kind of prosses Breadth or Depth. Default: Breadth")), ToolInput(tag="in_this_message_exit", input_type=String(optional=True), prefix="-h", doc=InputDocumentation(doc="this message and exit")), ToolInput(tag="in_to_do", input_type=String(), position=0, doc=InputDocumentation(doc="OPTIONS"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Mapsembler2_Extend_V0_1_0().translate("wdl", allow_empty_container=True)
+

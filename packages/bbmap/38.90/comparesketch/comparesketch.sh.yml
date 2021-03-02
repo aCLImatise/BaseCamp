@@ -1,0 +1,223 @@
+!Command
+command:
+- comparesketch.sh
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: nucleotides.
+  description: Designed for prokaryotes.
+- !Positional
+  optional: false
+  position: 0
+  name: organisms.
+  description: Intended for finding misclassified organisms
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -Xmx
+  description: "This will set Java's memory usage, overriding autodetection.\n-Xmx20g\
+    \ will specify 20 gigs of RAM, and -Xmx200m will specify 200 megs.\nThe max is\
+    \ typically 85% of physical memory."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -eoom
+  description: "This flag will cause the process to exit if an\nout-of-memory exception\
+    \ occurs.  Requires Java 8u92+."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -da
+  description: Disable assertions.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nWritten by Brian Bushnell\nLast modified Jan 7, 2020\n\nDescription:\
+  \  Compares query sketches to others, and prints their kmer identity.\nThe input\
+  \ can be sketches made by sketch.sh, or fasta/fastq files.\nIt's recommended to\
+  \ first sketch references with sketch.sh for large files,\nor when taxonomic information\
+  \ is desired.\n\nPlease read bbmap/docs/guides/BBSketchGuide.txt for more information.\n\
+  \nUsage:  comparesketch.sh in=<file,file,file...> ref=<file,file,file...>\nAlternative:\
+  \  comparesketch.sh in=<file,file,file...> file file file\nAlternative:  comparesketch.sh\
+  \ in=<file,file,file...> *.sketch\nAlternative:  comparesketch.sh alltoall *.sketch.gz\n\
+  \nFile parameters:\nin=<file,file...>   Sketches or fasta files to compare.\nout=stdout\
+  \          Comparison output.  Can be set to a file instead.\noutsketch=<file> \
+  \   Optionally write sketch files generated from the input.\nref=<file,file...>\
+  \  List of sketches to compare against.  Files given without\n                 \
+  \   a prefix (ref=) will be treated as references,\n                    so you can\
+  \ use *.sketch without ref=.\n                    You can also do ref=nt#.sketch\
+  \ to load all numbered files\n                    fitting that pattern.\n      \
+  \              On NERSC, you can use these abbreviations (e.g. ref=nt):\n      \
+  \                 nt:      nt sketches\n                       refseq:  Refseq sketches\n\
+  \                       silva:   Silva sketches\n                       img:   \
+  \  IMG sketches\n                       mito:    RefSeq mitochondrial sketches\n\
+  \                       fungi:   RefSeq fungi sketches\n                       protein:\
+  \ RefSeq prokaryotic amino acid sketches\n                    Using an abbreviation\
+  \ automatically sets the blacklist, \n                    and k.  If the reference\
+  \ is in amino space, the query\n                    also be in amino acid space\
+  \ with the flag amino added.\n                    If the query is in nucleotide\
+  \ space, use the flag\n                    'translate', but this will only work\
+  \ for prokaryotes.\n\nBlacklist and Whitelist parameters:\nblacklist=<file>    Ignore\
+  \ keys in this sketch file.  Additionally, there are\n                    built-in\
+  \ blacklists that can be specified:\n                       nt:      Blacklist for\
+  \ nt\n                       refseq:  Blacklist for Refseq\n                   \
+  \    silva:   Blacklist for Silva\n                       img:     Blacklist for\
+  \ IMG\nwhitelist=f         Ignore keys that are not in the index.  Requires index=t.\n\
+  \nSketch-making parameters:\nmode=perfile        Possible modes, for sequence input:\n\
+  \                       single: Generate one sketch.\n                       sequence:\
+  \ Generate one sketch per sequence.\n                       perfile: Generate one\
+  \ sketch per file.\nsketchonly=f        Don't run comparisons, just write the output\
+  \ sketch file.\nk=31                Kmer length, 1-32.  To maximize sensitivity\
+  \ and \n                    specificity, dual kmer lengths may be used:  k=31,24\n\
+  \                    Dual kmers are fastest if the shorter is a multiple \n    \
+  \                of 4.  Query and reference k must match.\nsamplerate=1        Set\
+  \ to a lower value to sample a fraction of input reads.\n                    For\
+  \ raw reads (rather than an assembly), 1-3x coverage\n                    gives\
+  \ best results, by reducing error kmers.  Somewhat\n                    higher is\
+  \ better for high-error-rate data like PacBio.\nminkeycount=1       Ignore kmers\
+  \ that occur fewer times than this.  Values\n                    over 1 can be used\
+  \ with raw reads to avoid error kmers.\nminprob=0.0001      Ignore kmers below this\
+  \ probability of correctness.\nminqual=0           Ignore kmers spanning bases below\
+  \ this quality.\nentropy=0.66        Ignore sequence with entropy below this value.\n\
+  merge=f             Merge paired reads prior to sketching.\namino=f            \
+  \ Use amino acid mode.  Input should be amino acids.\ntranslate=f         Call genes\
+  \ and translate to proteins.  Input should be\n                    nucleotides.\
+  \  Designed for prokaryotes.\nsixframes=f         Translate all 6 frames instead\
+  \ of predicting genes.\nssu=t               Scan for and retain full-length SSU\
+  \ sequence.\nprintssusequence=f  Print the query SSU sequence (JSON mode only).\n\
+  \nSize parameters:\nsize=10000          Desired size of sketches (if not using autosize).\n\
+  mgf=0.01            (maxfraction) Max fraction of genomic kmers to use.\nminsize=100\
+  \         Do not generate sketches for genomes smaller than this.\nautosize=t  \
+  \        Use flexible sizing instead of fixed-length.  This is\n               \
+  \     nonlinear; a human sketch is only ~6x a bacterial sketch.\nsizemult=1    \
+  \      Multiply the autosized size of sketches by this factor.\n               \
+  \     Normally a bacterial-size genome will get a sketch size\n                \
+  \    of around 10000; if autosizefactor=2, it would be ~20000.\ndensity=       \
+  \     If this flag is set (to a number between 0 and 1),\n                    autosize\
+  \ and sizemult are ignored, and this fraction of\n                    genomic kmers\
+  \ are used.  For example, at density=0.001,\n                    a 4.5Mbp bacteria\
+  \ will get a 4500-kmer sketch.\nsketchheapfactor=4  If minkeycount>1, temporarily\
+  \ track this many kmers until\n                    counts are known and low-count\
+  \ kmers are discarded.\n\nSketch comparing parameters:\nthreads=auto        Use\
+  \ this many threads for comparison.\nindex=auto          Index the sketches for\
+  \ much faster searching.\n                    Requires more memory and adds startup\
+  \ time.\n                    Recommended true for many query sketches, false for\
+  \ few.\nprealloc=f          Preallocate the index for greater efficiency.\n    \
+  \                Can be set to a number between 0 and 1 to determine how \n    \
+  \                much of total memory should be used.\nalltoall            (ata)\
+  \ Compare all refs to all.  Must be sketches.\ncompareself=f       In all-to-all\
+  \ mode, compare a sketch to itself.\n\nTaxonomy-related parameters:\ntree=<file>\
+  \         Specify a TaxTree file.  On Genepool, use tree=auto.\n               \
+  \     Only necessary for use with printtaxa and level.\n                    Assumes\
+  \ comparisons are done against reference sketches\n                    with known\
+  \ taxonomy information.\nlevel=2             Only report the best record per taxa\
+  \ at this level.\n                    Either level names or numbers may be used.\n\
+  \                        0: disabled\n                        1: subspecies\n  \
+  \                      2: species\n                        3: genus\n          \
+  \             ...etc\ninclude=            Restrict output to organisms in these\
+  \ clades.\n                    May be a comma-delimited list of names or NCBI TaxIDs.\n\
+  includelevel=0      Promote the include list to this taxonomic level.\n        \
+  \            For example, include=h.sapiens includelevel=phylum\n              \
+  \      would only include organisms in the same phylum as human.\nincludestring=\
+  \      Only report records whose name contains this string.\nexclude=          \
+  \  Ignore organisms in these clades.\n                    May be a comma-delimited\
+  \ list of names or NCBI TaxIDs.\nexcludelevel=0      Promote the exclude list to\
+  \ this taxonomic level.\n                    For example, exclude=h.sapiens excludelevel=phylum\n\
+  \                    would exclude all organisms in the same phylum as human.\n\
+  excludestring=      Do not records whose name contains this string.\nminlevel= \
+  \          Use this to restrict comparisons to distantly-related\n             \
+  \       organisms.  Intended for finding misclassified organisms\n             \
+  \       using all-to-all comparisons.  minlevel=order would only\n             \
+  \       report hits between organisms related at the order level\n             \
+  \       or higher, not between same species or genus.\nbanunclassified=f   Ignore\
+  \ organisms descending from nodes like \n                    'unclassified Bacteria'\n\
+  banvirus=f          Ignore viruses.\nrequiressu=f        Ignore records without\
+  \ SSUs.\nminrefsize=0        Ignore ref sketches smaller than this (unique kmers).\n\
+  minrefsizebases=0   Ignore ref sketches smaller than this (total base pairs).\n\n\
+  Output format:\nformat=2            2: Default format with, per query, one query\
+  \ header line;\n                       one column header line; and one reference\
+  \ line per hit.\n                    3: One line per hit, with columns query, reference,\
+  \ ANI,\n                       and sizeRatio. Useful for all-to-all comparisons.\n\
+  \                    4: JSON (format=json also works).\n                    5: Constellation\
+  \ (format=constellation also works).\nusetaxidname=f      For format 3, print the\
+  \ taxID in the name column.\nusetaxname          for format 3, print the taxonomic\
+  \ name in the name column.\nuseimgname          For format 3, print the img ID in\
+  \ the name column.\n\nOutput columns (for format=2):\nprintall=f          Enable\
+  \ all output columns.\nprintani=t          (ani) Print average nucleotide identity\
+  \ estimate.\ncompleteness=t      Genome completeness estimate.\nscore=f        \
+  \     Score (used for sorting the output).\nprintmatches=t      Number of kmer matches\
+  \ to reference.\nprintlength=f       Number of kmers compared.\nprinttaxid=t   \
+  \     NCBI taxID.\nprintimg=f          IMG identifier (only for IMG data).\nprintgbases=f\
+  \       Number of genomic bases.\nprintgkmers=f       Number of genomic kmers.\n\
+  printgsize=t        Estimated number of unique genomic kmers.\nprintgseqs=t    \
+  \    Number of sequences (scaffolds/reads).\nprinttaxname=t      Name associated\
+  \ with this taxID.\nprintname0=f        (pn0) Original seqeuence name.\nprintfname=t\
+  \        Query filename.\nprinttaxa=f         Full taxonomy of each record.\nprintcontam=t\
+  \       Print contamination estimate, and factor contaminant kmers\n           \
+  \         into calculations.  Kmers are considered contaminant if\n            \
+  \        present in some ref sketch but not the current one.\nprintunique=t    \
+  \   Number of matches unique to this reference.\nprintunique2=f      Number of matches\
+  \ unique to this reference's taxa.\nprintunique3=f      Number of query kmers unique\
+  \ to this reference's taxa,\n                    regardless of whether they are\
+  \ in this reference sketch.\nprintnohit=f        Number of kmers that don't hit\
+  \ anything.\nprintrefhits=f      Average number of ref sketches hit by shared kmers.\n\
+  printgc=f           GC content.\nprintucontam=f      Contam hits that hit exactly\
+  \ one reference sketch.\nprintcontam2=f      Print contamination estimate using\
+  \ only kmer hits\n                    to unrelated taxa.\ncontamlevel=species Taxonomic\
+  \ level to use for contam2/unique2/unique3.\nNOTE: unique2/unique3/contam2/refhits\
+  \ require an index.\n\nprintdepth=f        (depth) Print average depth of sketch\
+  \ kmers; intended\n                    for shotgun read input.\nprintdepth2=f  \
+  \     (depth2) Print depth compensating for genomic repeats.\n                 \
+  \   Requires reference sketches to be generated with depth.\nactualdepth=t     \
+  \  If this is false, the raw average count is printed.\n                    If true,\
+  \ the raw average (observed depth) is converted \n                    to estimated\
+  \ actual depth (including uncovered areas).\nprintvolume=f       (volume) Product\
+  \ of average depth and matches.\nprintca=f           Print common ancestor, if query\
+  \ taxID is known.\nprintcal=f          Print common ancestor tax level, if query\
+  \ taxID is known.\nrecordsperlevel=0   If query TaxID is known, and this is positive,\
+  \ print this\n                    many records per common ancestor level.\n\nSorting:\n\
+  sortbyscore=t       Default sort order is by score, a composite metric.\nsortbydepth=f\
+  \       Include depth as a factor in sort order.\nsortbydepth2=f      Include depth2\
+  \ as a factor in sort order.\nsortbyvolume=f      Include volume as a factor in\
+  \ sort order.\nsortbykid=f         Sort strictly by KID.\nsortbyani=f         Sort\
+  \ strictly by ANI/AAI/WKID.\nsortbyhits=f        Sort strictly by the number of\
+  \ kmer hits.\n\nOther output parameters:\nminhits=3           (hits) Only report\
+  \ records with at least this many hits.\nminani=0            (ani) Only report records\
+  \ with at least this ANI (0-1).\nminwkid=0.0001      (wkid) Only report records\
+  \ with at least this WKID (0-1).\nanifromwkid=t       Calculate ani from wkid. \
+  \ If false, use kid.\nminbases=0          Ignore ref sketches of sequences shortert\
+  \ than this.\nminsizeratio=0      Don't compare sketches if the smaller genome is\
+  \ less than\n                    this fraction of the size of the larger.\nrecords=20\
+  \          Report at most this many best-matching records.\ncolor=family       \
+  \ Color records at the family level.  color=f will disable.\n                  \
+  \  Colors work in most terminals but may cause odd characters\n                \
+  \    to appear in text editors.  So, color defaults to f if \n                 \
+  \   writing to a file.  Requires the taxtree to be loaded.\nintersect=f        \
+  \ Print sketch intersections.  delta=f is suggested.\n\nMetadata flags (optional,\
+  \ for the query sketch header):\ntaxid=-1            Set the NCBI taxid.\nimgid=-1\
+  \            Set the IMG id.\nspid=-1             Set the JGI sequencing project\
+  \ id.\nname=               Set the name (taxname).\nname0=              Set name0\
+  \ (normally the first sequence header).\nfname=              Set fname (normally\
+  \ the file name).\nmeta_=              Set an arbitrary metadata field.\n      \
+  \              For example, meta_Month=March.\n\nOther parameters:\nrequiredmeta=\
+  \       (rmeta) Required optional metadata values.  For example:\n             \
+  \       rmeta=subunit:ssu,source:silva\nbannedmeta=         (bmeta) Forbidden optional\
+  \ metadata values.\n\n\nJava Parameters:\n-Xmx                This will set Java's\
+  \ memory usage, overriding autodetection.\n                    -Xmx20g will specify\
+  \ 20 gigs of RAM, and -Xmx200m will specify 200 megs.\n                    The max\
+  \ is typically 85% of physical memory.\n-eoom               This flag will cause\
+  \ the process to exit if an\n                    out-of-memory exception occurs.\
+  \  Requires Java 8u92+.\n-da                 Disable assertions.\n\nFor more detailed\
+  \ information, please read /bbmap/docs/guides/BBSketchGuide.txt.\nPlease contact\
+  \ Brian Bushnell at bbushnell@lbl.gov if you encounter any problems.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bbmap:38.90--h1296035_0

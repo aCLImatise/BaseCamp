@@ -1,0 +1,97 @@
+!Command
+command:
+- fio
+- cat
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: box
+  description: --help                          Show this message and exit.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --layer
+  description: "Input layer(s), specified as\n'fileindex:layer` For example, '1:foo,2:bar'\n\
+    will concatenate layer foo from file 1 and\nlayer bar from file 2"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --precision
+  description: Decimal precision of coordinates.
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --indent
+  description: Indentation level for JSON output
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --compact
+  - --not-compact
+  description: Use compact separators (',', ':').
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ignore-errors
+  - --no-ignore-errors
+  description: log errors but do not stop serialization.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dst-crs
+  - --dst_crs
+  description: Destination CRS.
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --rs
+  - --no-rs
+  description: "Use RS (0x1E) as a prefix for individual\ntexts in a sequence as per\n\
+    http://tools.ietf.org/html/draft-ietf-json-\ntext-sequence-13 (default is False)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --bbox
+  description: ',s,e,n                  filter for features intersecting a bounding'
+  args: !SimpleFlagArg
+    name: w
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Usage: fio cat [OPTIONS] INPUTS...\n\n  Concatenate and print the features\
+  \ of input datasets as a sequence of\n  GeoJSON features.\n\n  When working with\
+  \ a multi-layer dataset the first layer is used by\n  default. Use the '--layer'\
+  \ option to select a different layer.\n\nOptions:\n  --layer TEXT              \
+  \      Input layer(s), specified as\n                                  'fileindex:layer`\
+  \ For example, '1:foo,2:bar'\n                                  will concatenate\
+  \ layer foo from file 1 and\n                                  layer bar from file\
+  \ 2\n\n  --precision INTEGER             Decimal precision of coordinates.\n  --indent\
+  \ INTEGER                Indentation level for JSON output\n  --compact / --not-compact\
+  \       Use compact separators (',', ':').\n  --ignore-errors / --no-ignore-errors\n\
+  \                                  log errors but do not stop serialization.\n \
+  \ --dst-crs, --dst_crs TEXT       Destination CRS.\n  --rs / --no-rs           \
+  \       Use RS (0x1E) as a prefix for individual\n                             \
+  \     texts in a sequence as per\n                                  http://tools.ietf.org/html/draft-ietf-json-\n\
+  \                                  text-sequence-13 (default is False).\n\n  --bbox\
+  \ w,s,e,n                  filter for features intersecting a bounding\n       \
+  \                           box\n\n  --help                          Show this message\
+  \ and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/fiona:1.8.6

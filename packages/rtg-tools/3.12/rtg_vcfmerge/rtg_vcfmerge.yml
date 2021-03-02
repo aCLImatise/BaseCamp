@@ -1,0 +1,143 @@
+!Command
+command:
+- rtg
+- vcfmerge
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: output
+  description: --region=REGION          if set, only read VCF records within the
+- !Positional
+  optional: false
+  position: 0
+  name: declarations
+  description: -h, --help                   print help on command-line flag usage
+- !Positional
+  optional: false
+  position: 1
+  name: different
+  description: --no-merge-records       do not merge multiple records at the same
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --bed-regions
+  description: "if set, only read VCF records that overlap the\nranges contained in\
+    \ the specified BED file"
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -I
+  - --input-list-file
+  description: "file containing a list of VCF format files (1\nper line) to be merged"
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: output VCF file. Use '-' to write to standard
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --add-header
+  description: "|FILE file containing VCF header lines to add, or a\nliteral header\
+    \ line. May be specified 0 or more\ntimes"
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --force-merge
+  description: "allow merging of specified header ID even when\ndescriptions do not\
+    \ match. May be specified 0 or\nmore times, or as a comma separated list"
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  - --force-merge-all
+  description: attempt merging of all non-matching header
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Z
+  - --no-gzip
+  description: do not gzip the output
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-header
+  description: prevent VCF header from being written
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-merge-alts
+  description: do not merge multiple records if the ALTs are
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --preserve-formats
+  description: "do not merge multiple records containing\nunmergeable FORMAT fields\
+    \ (Default is to remove\nthose FORMAT fields so the variants can be\ncombined)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --stats
+  description: output statistics for the merged VCF file
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Usage: rtg vcfmerge [OPTION]... -o FILE FILE+\n                    [OPTION]...\
+  \ -o FILE -I FILE\n\nMerge a one or more input VCF files to a single output VCF.\
+  \ Use cases include\ncombining single sample calls into a multi-sample VCF, or to\
+  \ combine calls on\nseparate chromosomes into a single VCF.\n\nFile Input/Output\n\
+  \      --bed-regions=FILE       if set, only read VCF records that overlap the\n\
+  \                               ranges contained in the specified BED file\n  -I,\
+  \ --input-list-file=FILE   file containing a list of VCF format files (1\n     \
+  \                          per line) to be merged\n  -o, --output=FILE         \
+  \   output VCF file. Use '-' to write to standard\n                            \
+  \   output\n      --region=REGION          if set, only read VCF records within\
+  \ the\n                               specified range. The format is one of\n  \
+  \                             <sequence_name>, <sequence_name>:<start>-<end>,\n\
+  \                               <sequence_name>:<pos>+<length> or\n            \
+  \                   <sequence_name>:<pos>~<padding>\n      FILE+               \
+  \     input VCF files to merge. May be specified 0 or\n                        \
+  \       more times\n\nUtility\n  -a, --add-header=STRING|FILE file containing VCF\
+  \ header lines to add, or a\n                               literal header line.\
+  \ May be specified 0 or more\n                               times\n  -f, --force-merge=STRING\
+  \     allow merging of specified header ID even when\n                         \
+  \      descriptions do not match. May be specified 0 or\n                      \
+  \         more times, or as a comma separated list\n  -F, --force-merge-all    \
+  \    attempt merging of all non-matching header\n                              \
+  \ declarations\n  -h, --help                   print help on command-line flag usage\n\
+  \  -Z, --no-gzip                do not gzip the output\n      --no-header      \
+  \        prevent VCF header from being written\n      --no-merge-alts          do\
+  \ not merge multiple records if the ALTs are\n                               different\n\
+  \      --no-merge-records       do not merge multiple records at the same\n    \
+  \                           position into one\n      --preserve-formats       do\
+  \ not merge multiple records containing\n                               unmergeable\
+  \ FORMAT fields (Default is to remove\n                               those FORMAT\
+  \ fields so the variants can be\n                               combined)\n    \
+  \  --stats                  output statistics for the merged VCF file\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/rtg-tools:3.12--0

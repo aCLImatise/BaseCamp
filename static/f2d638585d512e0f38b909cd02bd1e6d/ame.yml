@@ -1,0 +1,217 @@
+!Command
+command:
+- ame
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: sequence file
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: motif file
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --o
+  description: 'output directory; default: ame_out'
+  args: !SimpleFlagArg
+    name: output dir
+- !Flag
+  optional: true
+  synonyms:
+  - --oc
+  description: 'overwrite output; default: ame_out'
+  args: !SimpleFlagArg
+    name: output dir
+- !Flag
+  optional: true
+  synonyms:
+  - --control
+  description: "control sequences in FASTA format or the keyword\n'--shuffle--' to\
+    \ use shuffled versions of the\nprimary sequences"
+  args: !SimpleFlagArg
+    name: control file
+- !Flag
+  optional: true
+  synonyms:
+  - --kmer
+  description: "preserve k-mer frequencies when shuffling;\ndefault: 2"
+  args: !SimpleFlagArg
+    name: k
+- !Flag
+  optional: true
+  synonyms:
+  - --seed
+  description: 'random number seed (integer); default: 1'
+  args: !SimpleFlagArg
+    name: s
+- !Flag
+  optional: true
+  synonyms:
+  - --method
+  description: "[fisher|3dmhg|4dmhg|ranksum|pearson|spearman]\nstatistical test; default:\
+    \ fisher"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --scoring
+  description: "[avg|max|sum|totalhits]\nsequence scoring method; default: avg"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --hit-lo-fraction
+  description: "fraction of maximum log-odds for a hit;\ndefault: 0.25"
+  args: !SimpleFlagArg
+    name: fraction
+- !Flag
+  optional: true
+  synonyms:
+  - --evalue-report-threshold
+  description: "motif significance reporting threshold;\ndefault: 10"
+  args: !SimpleFlagArg
+    name: ev
+- !Flag
+  optional: true
+  synonyms:
+  - --fasta-threshold
+  description: "maximum FASTA score for sequence to be positive\n(requires --poslist\
+    \ pwm); default: 0.001"
+  args: !SimpleFlagArg
+    name: ft
+- !Flag
+  optional: true
+  synonyms:
+  - --fix-partition
+  description: number of sequences in positive partition;
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --poslist
+  description: "[fasta|pwm]     partition on affinity (fasta) or motif (pwm)\nscores;\
+    \ default: fasta"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --log-fscores
+  description: "use log of FASTA scores (pearson) or log of\nranks (spearman)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --log-pwmscores
+  description: use log of log of PWM scores
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --linreg-switchxy
+  description: switch roles of X=FASTA scores and Y=PWM scores
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --xalph
+  description: motifs will be converted to this custom alphabet
+  args: !SimpleFlagArg
+    name: alph file
+- !Flag
+  optional: true
+  synonyms:
+  - --bfile
+  description: "background model file; default: motif file freqs\ndefault: unconstrained\
+    \ partition maximization"
+  args: !SimpleFlagArg
+    name: bfile
+- !Flag
+  optional: true
+  synonyms:
+  - --motif-pseudo
+  description: "pseudocount for creating PWMs from motifs;\ndefault: 0.1"
+  args: !SimpleFlagArg
+    name: pc
+- !Flag
+  optional: true
+  synonyms:
+  - --inc
+  description: "name pattern to select as motif; may be\nrepeated; default: all motifs\
+    \ are used"
+  args: !SimpleFlagArg
+    name: pattern
+- !Flag
+  optional: true
+  synonyms:
+  - --exc
+  description: "name pattern to exclude as motif; may be\nrepeated; default: all motifs\
+    \ are used"
+  args: !SimpleFlagArg
+    name: pattern
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: "[1|2|3|4|5]     controls program verbosity (5=maximum verbosity);\n\
+    default: 2"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: print this message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: print the version and exit
+  args: !EmptyFlagArg {}
+help_text: "Usage: ame [options] <sequence file> <motif file>+\n     <sequence file>\
+  \           file of sequences in FASTA format\n     <motif file>+             file(s)\
+  \ of motifs in MEME format\n\n     --o <output dir>          output directory; default:\
+  \ ame_out\n     --oc <output dir>         overwrite output; default: ame_out\n \
+  \    --control <control file>  control sequences in FASTA format or the keyword\n\
+  \                               '--shuffle--' to use shuffled versions of the\n\
+  \                               primary sequences\n     --kmer <k>             \
+  \   preserve k-mer frequencies when shuffling;\n                               default:\
+  \ 2\n     --seed <s>                random number seed (integer); default: 1\n \
+  \    --method [fisher|3dmhg|4dmhg|ranksum|pearson|spearman]\n                  \
+  \             statistical test; default: fisher\n     --scoring [avg|max|sum|totalhits]\n\
+  \                               sequence scoring method; default: avg\n     --hit-lo-fraction\
+  \ <fraction>\n                               fraction of maximum log-odds for a\
+  \ hit;\n                               default: 0.25\n     --evalue-report-threshold\
+  \ <ev>\n                               motif significance reporting threshold;\n\
+  \                               default: 10\n     --fasta-threshold <ft>    maximum\
+  \ FASTA score for sequence to be positive\n                               (requires\
+  \ --poslist pwm); default: 0.001\n     --fix-partition <int>     number of sequences\
+  \ in positive partition;\n     --poslist [fasta|pwm]     partition on affinity (fasta)\
+  \ or motif (pwm)\n                               scores; default: fasta\n     --log-fscores\
+  \             use log of FASTA scores (pearson) or log of\n                    \
+  \           ranks (spearman)\n     --log-pwmscores           use log of log of PWM\
+  \ scores\n     --linreg-switchxy         switch roles of X=FASTA scores and Y=PWM\
+  \ scores\n     --xalph <alph file>       motifs will be converted to this custom\
+  \ alphabet\n     --bfile <bfile>           background model file; default: motif\
+  \ file freqs\n                               default: unconstrained partition maximization\n\
+  \     --motif-pseudo <pc>       pseudocount for creating PWMs from motifs;\n   \
+  \                            default: 0.1\n     --inc <pattern>           name pattern\
+  \ to select as motif; may be\n                               repeated; default:\
+  \ all motifs are used\n     --exc <pattern>           name pattern to exclude as\
+  \ motif; may be\n                               repeated; default: all motifs are\
+  \ used\n     --verbose [1|2|3|4|5]     controls program verbosity (5=maximum verbosity);\n\
+  \                               default: 2\n     --help                    print\
+  \ this message and exit\n     --version                 print the version and exit\n\
+  \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/meme:5.3.0--py38pl526hc1f1133_0

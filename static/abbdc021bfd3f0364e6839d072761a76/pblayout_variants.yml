@@ -1,0 +1,155 @@
+!Command
+command:
+- pblayout
+- variants
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: in_fn
+  description: STR   Path to a file in IPAOvl format.
+- !Positional
+  optional: false
+  position: 0
+  name: IDs.
+  description: --min-allele-count    INT   Maximum number of times a diff can occur
+    in a pile to call it an error. Threshold is
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --alias-seqdb
+  description: STR   If provided, read names will be looked up in the SeqDB index
+    cache to determine their
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max-indel-len
+  description: "INT   Indels above this length will be masked and not used for error\
+    \ correction and variant\ncalling, and they won't contribute to the consensus.\
+    \ [10000000]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min-coverage
+  description: INT   Minimum coverage of a pile for phasing. [6]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max-alleles
+  description: "INT   Ignore variant sites with more alleles than this value. If <=\
+    \ 0 no thresholding is\napplied. [2]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --mask-diff-window
+  description: INT   If two or more diffs are within this many bases from each other,
+    mask them. [0]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --num-rss-iterations
+  description: INT   Number of times to repeat NumRss beyond the first. [0]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --phase
+  description: Run the phasing. Write <out_prefix>.keepers.ovl and .scraps.ovl
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --batch
+  description: INT   Number of piles to load in a batch. [1000]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --write-rss-ascii
+  description: Write the read similarity scores in ASCII format instead of binary.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --debug-verbose
+  description: Prints out extremely verbose debug information.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --prefix
+  description: "STR   Prefix of the output files. Two files will be written: {out_prefix}.ovl\
+    \ and\n{out_prefix}.(ascii|binary).rss [pblayout]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --num-threads
+  description: INT   Number of threads to use, 0 means autodetection. [0]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --log-level
+  description: 'STR   Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL).
+    [WARN]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --log-file
+  description: FILE  Log to a file, instead of stderr.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this help and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Show application version and exit.
+  args: !EmptyFlagArg {}
+help_text: "variants - Call variants and errors from a set of overlaps with variant\
+  \ strings.\n\nUsage:\n  variants [options] <in_fn>\n\n  in_fn                 STR\
+  \   Path to a file in IPAOvl format.\n\nOptions:\n  --alias-seqdb         STR  \
+  \ If provided, read names will be looked up in the SeqDB index cache to determine\
+  \ their\n                              IDs.\n  --min-allele-count    INT   Maximum\
+  \ number of times a diff can occur in a pile to call it an error. Threshold is\n\
+  \                              inclusive. [3]\n  --max-indel-len       INT   Indels\
+  \ above this length will be masked and not used for error correction and variant\n\
+  \                              calling, and they won't contribute to the consensus.\
+  \ [10000000]\n  --min-coverage        INT   Minimum coverage of a pile for phasing.\
+  \ [6]\n  --max-alleles         INT   Ignore variant sites with more alleles than\
+  \ this value. If <= 0 no thresholding is\n                              applied.\
+  \ [2]\n  --mask-diff-window    INT   If two or more diffs are within this many bases\
+  \ from each other, mask them. [0]\n  --num-rss-iterations  INT   Number of times\
+  \ to repeat NumRss beyond the first. [0]\n  --phase                     Run the\
+  \ phasing. Write <out_prefix>.keepers.ovl and .scraps.ovl\n  --batch           \
+  \    INT   Number of piles to load in a batch. [1000]\n  --write-rss-ascii     \
+  \      Write the read similarity scores in ASCII format instead of binary.\n  --debug-verbose\
+  \             Prints out extremely verbose debug information.\n  --prefix      \
+  \        STR   Prefix of the output files. Two files will be written: {out_prefix}.ovl\
+  \ and\n                              {out_prefix}.(ascii|binary).rss [pblayout]\n\
+  \n  -h,--help                   Show this help and exit.\n  --version          \
+  \         Show application version and exit.\n  -j,--num-threads      INT   Number\
+  \ of threads to use, 0 means autodetection. [0]\n  --log-level           STR   Set\
+  \ log level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL). [WARN]\n  --log-file\
+  \            FILE  Log to a file, instead of stderr.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/pbipa:1.3.2--hee625c5_0

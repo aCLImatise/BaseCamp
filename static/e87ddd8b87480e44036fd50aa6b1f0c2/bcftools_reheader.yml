@@ -1,0 +1,69 @@
+!Command
+command:
+- bcftools
+- reheader
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: in.vcf.gz
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --fai
+  description: update sequences and their lengths from the .fai file
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --header
+  description: new header
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: write output to a file [standard output]
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --samples
+  description: new sample names
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: use multithreading with <int> worker threads (BCF only) [0]
+  args: !SimpleFlagArg
+    name: int
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "reheader: unrecognized option '--help'\n\nAbout:   Modify header of VCF/BCF\
+  \ files, change sample names.\nUsage:   bcftools reheader [OPTIONS] <in.vcf.gz>\n\
+  \nOptions:\n    -f, --fai <file>        update sequences and their lengths from\
+  \ the .fai file\n    -h, --header <file>     new header\n    -o, --output <file>\
+  \     write output to a file [standard output]\n    -s, --samples <file>    new\
+  \ sample names\n        --threads <int>     use multithreading with <int> worker\
+  \ threads (BCF only) [0]\n\nExample:\n   # Write out the header to be modified\n\
+  \   bcftools view -h old.bcf > header.txt\n\n   # Edit the header using your favorite\
+  \ text editor\n   vi header.txt\n\n   # Reheader the file\n   bcftools reheader\
+  \ -h header.txt -o new.bcf old.bcf\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bcftools:1.11--h7c999a4_0

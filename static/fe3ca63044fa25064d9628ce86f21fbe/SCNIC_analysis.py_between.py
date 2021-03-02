@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Int, File, String, Boolean, Directory
+
+Scnic_Analysis_Py_Between_V0_1_0 = CommandToolBuilder(tool="SCNIC_analysis.py_between", base_command=["SCNIC_analysis.py", "between"], inputs=[ToolInput(tag="in_table_one", input_type=Int(optional=True), prefix="--table1", doc=InputDocumentation(doc="table to be correlated (default: None)")), ToolInput(tag="in_table_two", input_type=Int(optional=True), prefix="--table2", doc=InputDocumentation(doc="second table to be correlated (default: None)")), ToolInput(tag="in_output_loc", input_type=File(optional=True), prefix="--output_loc", doc=InputDocumentation(doc="output file location (default: None)")), ToolInput(tag="in_correl_method", input_type=String(optional=True), prefix="--correl_method", doc=InputDocumentation(doc="correlation method (default: spearman)")), ToolInput(tag="in_p_adjust", input_type=String(optional=True), prefix="--p_adjust", doc=InputDocumentation(doc="p-value adjustment (default: fdr_bh)")), ToolInput(tag="in_min_sample", input_type=Int(optional=True), prefix="--min_sample", doc=InputDocumentation(doc="minimum number of samples present in (default: None)")), ToolInput(tag="in_max_p", input_type=String(optional=True), prefix="--max_p", doc=InputDocumentation(doc="minimum p-value to determine edges (default: None)")), ToolInput(tag="in_min_r", input_type=Int(optional=True), prefix="--min_r", doc=InputDocumentation(doc="minimum R to determine edges (default: None)")), ToolInput(tag="in_sparc_c_filter", input_type=Boolean(optional=True), prefix="--sparcc_filter", doc=InputDocumentation(doc="filter using parameters from SparCC publication\n(default: False)")), ToolInput(tag="in_procs", input_type=Int(optional=True), prefix="--procs", doc=InputDocumentation(doc="number of processors to use (default: 1)")), ToolInput(tag="in_force", input_type=Directory(optional=True), prefix="--force", doc=InputDocumentation(doc="force overwrite output folder if it already exists\n(default: False)\n"))], outputs=[ToolOutput(tag="out_output_loc", output_type=File(optional=True), selector=InputSelector(input_to_select="in_output_loc", type_hint=File()), doc=OutputDocumentation(doc="output file location (default: None)")), ToolOutput(tag="out_force", output_type=Directory(optional=True), selector=InputSelector(input_to_select="in_force", type_hint=File()), doc=OutputDocumentation(doc="force overwrite output folder if it already exists\n(default: False)\n"))], container="quay.io/biocontainers/scnic:0.6.2--py_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Scnic_Analysis_Py_Between_V0_1_0().translate("wdl")
+

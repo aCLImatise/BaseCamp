@@ -1,0 +1,113 @@
+!Command
+command:
+- filter_euk_bins.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: bins
+  description: all bins to classify
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --output
+  description: path for the output table
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  - -t
+  description: 'How many bins should be run in parallel (Default: 1)'
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - --minl
+  description: "define minimal length of contig for EukRep to classify\n(default:\
+    \ 1500)"
+  args: !SimpleFlagArg
+    name: MINL
+- !Flag
+  optional: true
+  synonyms:
+  - --eukratio
+  description: "This ratio of eukaryotic DNA to all DNA has to be\nfound at least\
+    \ (default: 0, ignore)"
+  args: !SimpleFlagArg
+    name: EUKRATIO
+- !Flag
+  optional: true
+  synonyms:
+  - --bacratio
+  description: "discard bins with bacterial ratio of higher than\n(default: 1, ignore)"
+  args: !SimpleFlagArg
+    name: BACRATIO
+- !Flag
+  optional: true
+  synonyms:
+  - --minbp
+  description: "Only keep bins with at least n bp of dna (default:\n8000000)"
+  args: !SimpleFlagArg
+    name: MINBP
+- !Flag
+  optional: true
+  synonyms:
+  - --minbpeuks
+  description: "Only keep bins with at least n bp of Eukaryotic dna\n(default: 5000000)"
+  args: !SimpleFlagArg
+    name: MINBPEUKS
+- !Flag
+  optional: true
+  synonyms:
+  - --rerun
+  description: rerun even if output exists
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --quiet
+  description: supress information
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: Make it more verbose
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: filter_euk_bins.py [-h] [--output OUTPUT] [--threads THREADS]\n\
+  \                          [--minl MINL] [--eukratio EUKRATIO]\n               \
+  \           [--bacratio BACRATIO] [--minbp MINBP]\n                          [--minbpeuks\
+  \ MINBPEUKS] [--rerun] [--quiet]\n                          [--debug]\n        \
+  \                  bins [bins ...]\n\npositional arguments:\n  bins            \
+  \      all bins to classify\n\noptional arguments:\n  -h, --help            show\
+  \ this help message and exit\n  --output OUTPUT       path for the output table\n\
+  \  --threads THREADS, -t THREADS\n                        How many bins should be\
+  \ run in parallel (Default: 1)\n  --minl MINL           define minimal length of\
+  \ contig for EukRep to classify\n                        (default: 1500)\n  --eukratio\
+  \ EUKRATIO   This ratio of eukaryotic DNA to all DNA has to be\n               \
+  \         found at least (default: 0, ignore)\n  --bacratio BACRATIO   discard bins\
+  \ with bacterial ratio of higher than\n                        (default: 1, ignore)\n\
+  \  --minbp MINBP         Only keep bins with at least n bp of dna (default:\n  \
+  \                      8000000)\n  --minbpeuks MINBPEUKS\n                     \
+  \   Only keep bins with at least n bp of Eukaryotic dna\n                      \
+  \  (default: 5000000)\n  --rerun               rerun even if output exists\n  --quiet\
+  \               supress information\n  --debug               Make it more verbose\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/eukcc:0.3--py_0

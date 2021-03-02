@@ -4,36 +4,40 @@ command:
 positional: []
 named:
 - !Flag
-  description: "Genome of UCSC (eg hg18). If -d (--db) is not given,\nthis script\
-    \ searches for a local sqlite3 referenced by\n-g (--gt). WARNING: MySQLdb must\
-    \ be installed to use\nthe tables of UCSC."
+  optional: true
   synonyms:
   - -d
   - --db
+  description: "Genome of UCSC (eg hg18). If -d (--db) is not given,\nthis script\
+    \ searches for a local sqlite3 referenced by\n-g (--gt). WARNING: MySQLdb must\
+    \ be installed to use\nthe tables of UCSC."
   args: !SimpleFlagArg
     name: DB
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --gt
   description: "Name of the gene annotation table (or local sqlite3\nfile) (eg refGene\
     \ or knownGene). If -d (--db) is\ngiven, build_genomeBG will connect to UCSC and\n\
     download the specified gene table. Otherwise,\nbuild_genomeBG search for a local\
     \ sqlite3 file with\nthe name."
-  synonyms:
-  - -g
-  - --gt
   args: !SimpleFlagArg
     name: GT
-  optional: true
 - !Flag
-  description: "WIG file needed to obtain genome locations in BG\nannotation. VariableStep\
-    \ and fixedWig files are\naccepted."
+  optional: true
   synonyms:
   - -w
   - --wig
+  description: "WIG file needed to obtain genome locations in BG\nannotation. VariableStep\
+    \ and fixedWig files are\naccepted."
   args: !SimpleFlagArg
     name: WIG
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --ot
   description: "Output sqlite3 db file name. The gene annotation table\nread from\
     \ the local sqlite3 file or UCSC DB will be\nsaved in a table named as 'GeneTable'\
     \ and the computed\ngenome bg annotation will be saved in two tables named\nas\
@@ -41,65 +45,61 @@ named:
     \ a sqlite3 file with the\nsame name as given through -g (--gt). WARNING! When\
     \ an\nexisting local sqlite3 file is opened and saved as the\nsame name, the tables\
     \ in the file will be overwritten."
-  synonyms:
-  - -o
-  - --ot
   args: !SimpleFlagArg
     name: OT
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --promoter
   description: "Maximum promoter size to consider for genome bg\nannotation. This\
     \ must be >= 1000bp. Any value less\nthan 1000bp will be set to 1000bp. DEFAULT:\
     \ 10000bp"
-  synonyms:
-  - --promoter
   args: !SimpleFlagArg
     name: PROMOTER
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --bipromoter
   description: "Maximum Bidirectional promoter size to consider for\ngenome bg annotation.\
     \ This must be >= 1000bp. Any\nvalue less than 1000bp will be set to 1000bp. DEFAULT:\n\
     20000bp"
-  synonyms:
-  - --bipromoter
   args: !SimpleFlagArg
     name: BIPROMOTER
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --downstream
   description: "Maximum immediate downstream size to consider for\ngenome bg annotation.\
     \ This must be >= 1000bp. Any\nvalue less than 1000bp will be set to 1000bp. DEFAULT:\n\
     10000bp"
-  synonyms:
-  - --downstream
   args: !SimpleFlagArg
     name: DOWNSTREAM
-  optional: true
 - !Flag
+  optional: true
+  synonyms:
+  - --binsize
   description: "Binsize with which to bin promoter, bidirectional\npromoter, and immediate\
     \ downstream sizes. In each bin,\nthe percentage of genome will be calculated.\n\
     DEFAULT=1000bp\n"
-  synonyms:
-  - --binsize
   args: !SimpleFlagArg
     name: BINSIZE
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: Show this help message and exit.
+  optional: true
   synonyms:
   - -h
   - --help
+  description: Show this help message and exit.
   args: !EmptyFlagArg {}
-  optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  optional: true
   synonyms:
   - --version
+  description: show program's version number and exit
   args: !EmptyFlagArg {}
-  optional: true
 help_text: "Usage: build_genomeBG <-g gt -w wig> [options]\n\nbuild_genomeBG, do genome\
   \ bg annotation and save it for CEAS\n\nOptions:\n  --version             show program's\
   \ version number and exit\n  -h, --help            Show this help message and exit.\n\
@@ -138,3 +138,4 @@ help_text: "Usage: build_genomeBG <-g gt -w wig> [options]\n\nbuild_genomeBG, do
   \    the percentage of genome will be calculated.\n                        DEFAULT=1000bp\n"
 generated_using:
 - --help
+docker_image:

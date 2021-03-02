@@ -1,0 +1,539 @@
+!Command
+command:
+- chap
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: CCCCCC
+  description: 'HH     HH    AAA    PPPPPPPP  '
+- !Positional
+  optional: false
+  position: 6
+  name: CCCCCC
+  description: 'HH     HH AA     AA PP        '
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: "[<.xtc/.trr/...>]  (traj.xtc)       (Opt.)\nInput trajectory or single\
+    \ configuration: xtc trr cpt gro g96 pdb\ntng"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: "[<.tpr/.gro/...>]  (topol.tpr)      (Opt.)\nInput structure: tpr gro\
+    \ g96 pdb brk ent"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: "[<.ndx>]           (index.ndx)      (Opt.)\nExtra index groups"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  description: "<time>             (0)\nFirst frame (ps) to read from trajectory"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  description: "<time>             (0)\nLast frame (ps) to read from trajectory"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -dt
+  description: "<time>             (0)\nOnly use frame if t MOD dt == first time (ps)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -tu
+  description: "<enum>             (ps)\nUnit for time values: fs, ps, ns, us, ms,\
+    \ s"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -fgroup
+  description: "Atoms stored in the trajectory file (if not set, assume first N\n\
+    atoms)"
+  args: !SimpleFlagArg
+    name: selection
+- !Flag
+  optional: true
+  synonyms:
+  - -xvg
+  description: "<enum>             (xmgrace)\nPlot formatting: none, xmgrace, xmgr"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -sf
+  description: "<file>\nProvide selections from files"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -selrpos
+  description: "(atom)\nSelection reference positions: atom, res_com, res_cog, mol_com,\n\
+    mol_cog, whole_res_com, whole_res_cog, whole_mol_com,\nwhole_mol_cog, part_res_com,\
+    \ part_res_cog, part_mol_com,\npart_mol_cog, dyn_res_com, dyn_res_cog, dyn_mol_com,\
+    \ dyn_mol_cog"
+  args: !SimpleFlagArg
+    name: enum
+- !Flag
+  optional: true
+  synonyms:
+  - -seltype
+  description: "(atom)\nDefault selection output positions: atom, res_com, res_cog,\n\
+    mol_com, mol_cog, whole_res_com, whole_res_cog, whole_mol_com,\nwhole_mol_cog,\
+    \ part_res_com, part_res_cog, part_mol_com,\npart_mol_cog, dyn_res_com, dyn_res_cog,\
+    \ dyn_mol_com, dyn_mol_cog"
+  args: !SimpleFlagArg
+    name: enum
+- !Flag
+  optional: true
+  synonyms:
+  - -sel-pathway
+  description: "Reference group that defines the permeation pathway (usually\n'Protein')"
+  args: !SimpleFlagArg
+    name: selection
+- !Flag
+  optional: true
+  synonyms:
+  - -sel-solvent
+  description: Group of small particles to calculate density of (usually 'Water')
+  args: !SimpleFlagArg
+    name: selection
+- !Flag
+  optional: true
+  synonyms:
+  - -out-filename
+  description: "(output)\nFile name for output files without file extension."
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -out-num-points
+  description: "(1000)\nNumber of spatial sample points that are written to the JSON\
+    \ output\nfile."
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -out-extrap-dist
+  description: "(0)\nExtrapolation distance beyond the pathway endpoints for both\
+    \ JSON\nand OBJ output."
+  args: !SimpleFlagArg
+    name: real
+- !Flag
+  optional: true
+  synonyms:
+  - -out-grid-dist
+  description: "(0.15)\nControls the sampling distance of vertices on the pathway\
+    \ surface\nwhich are subsequently interpolated to yield a smooth surface. Very\n\
+    small values may yield visual artifacts."
+  args: !SimpleFlagArg
+    name: real
+- !Flag
+  optional: true
+  synonyms:
+  - -out-vis-tweak
+  description: "(0.1)\nVisual tweaking factor that controls the smoothness of the\
+    \ pathway\nsurface in the OBJ output. Varies between -1 and 1 (exculisvely),\n\
+    where larger values result in a smoother surface. Negative values\nmay result\
+    \ in visualisation artifacts."
+  args: !SimpleFlagArg
+    name: real
+- !Flag
+  optional: true
+  synonyms:
+  - -pf-method
+  description: "(inplane_optim)\nPath finding method. The default inplane_optim implements\
+    \ the\nalgorithm used in the HOLE programme, where the position of a probe\nsphere\
+    \ is optimised in subsequent parallel planes so as to maximise\nits radius. The\
+    \ alternative naive_cylindrical simply uses a\ncylindrical volume as permeation\
+    \ pathway.: cylindrical,\ninplane_optim"
+  args: !SimpleFlagArg
+    name: enum
+- !Flag
+  optional: true
+  synonyms:
+  - -pf-vdwr-database
+  description: "(hole_simple)\nDatabase of van-der-Waals radii to be used in pore\
+    \ finding:\nhole_amberuni, hole_bondi, hole_hardcore, hole_simple, hole_xplor,\n\
+    user"
+  args: !SimpleFlagArg
+    name: enum
+- !Flag
+  optional: true
+  synonyms:
+  - -pf-vdwr-fallback
+  description: "(nan)\nFallback van-der-Waals radius for atoms that are not listed\
+    \ in\nvan-der-Waals radius database. Unless this is set to a positive\nvalue,\
+    \ an error will be thrown if a pathway-forming atom has no\nassociated van-der-Waals\
+    \ radius in the database."
+  args: !SimpleFlagArg
+    name: real
+- !Flag
+  optional: true
+  synonyms:
+  - -pf-vdwr-json
+  description: "JSON file with user defined van-der-Waals radii. Will be ignored\n\
+    unless -pf-vdwr-database is set to 'user'."
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -pf-align-method
+  description: "(ipp)\nMethod for aligning pathway coordinates across time steps:\
+    \ none,\nipp"
+  args: !SimpleFlagArg
+    name: enum
+- !Flag
+  optional: true
+  synonyms:
+  - -pf-probe-step
+  description: "(0.1)\nStep length for probe movement."
+  args: !SimpleFlagArg
+    name: real
+- !Flag
+  optional: true
+  synonyms:
+  - -pf-max-free-dist
+  description: "(1)\nMaximum radius of pore."
+  args: !SimpleFlagArg
+    name: real
+- !Flag
+  optional: true
+  synonyms:
+  - -pf-max-probe-steps
+  description: "(10000)\nMaximum number of steps the probe is moved in either direction."
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -pf-sel-ipp
+  description: "Selection of atoms whose COM will be used as initial probe\nposition.\
+    \ If not set, the selection specified with 'sel-pathway'\nwill be used."
+  args: !SimpleFlagArg
+    name: selection
+- !Flag
+  optional: true
+  synonyms:
+  - -pf-init-probe-pos
+  description: "(nan nan nan)\nInitial position of probe in probe-based pore finding\
+    \ algorithms.\nIf set explicitly, it will overwrite the COM-based initial position\n\
+    set with the ippSelflag."
+  args: !SimpleFlagArg
+    name: real
+- !Flag
+  optional: true
+  synonyms:
+  - -pf-chan-dir-vec
+  description: "(0 0 1)\nChannel direction vector. Will be normalised to unit vector\n\
+    internally."
+  args: !SimpleFlagArg
+    name: real
+- !Flag
+  optional: true
+  synonyms:
+  - -pf-cutoff
+  description: "(nan)\nCutoff for distance searches in path finding algorithm. A value\
+    \ of\nzero or less means no cutoff is applied. If unset, an appropriate\ncutoff\
+    \ is determined automatically."
+  args: !SimpleFlagArg
+    name: real
+- !Flag
+  optional: true
+  synonyms:
+  - -sa-seed
+  description: "(0)\nSeed used in pseudo random number generation for simulated\n\
+    annealing. If not set explicitly, a random seed is used."
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -sa-max-iter
+  description: "(0)\nNumber of cooling iterations in one simulated annealing run."
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -sa-init-temp
+  description: "(0.1)\nSimulated annealing initial temperature."
+  args: !SimpleFlagArg
+    name: real
+- !Flag
+  optional: true
+  synonyms:
+  - -sa-cooling-fac
+  description: "(0.98)\nSimulated annealing cooling factor."
+  args: !SimpleFlagArg
+    name: real
+- !Flag
+  optional: true
+  synonyms:
+  - -sa-step
+  description: "(0.001)\nStep length factor used in candidate generation."
+  args: !SimpleFlagArg
+    name: real
+- !Flag
+  optional: true
+  synonyms:
+  - -nm-max-iter
+  description: "(100)\nNumber of Nelder-Mead simplex iterations in path finding algorithm."
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -nm-init-shift
+  description: "(0.1)\nDistance of vertices in initial Nelder-Mead simplex."
+  args: !SimpleFlagArg
+    name: real
+- !Flag
+  optional: true
+  synonyms:
+  - -pm-pl-margin
+  description: "(0.75)\nMargin for determining pathway lining residues. A residue\
+    \ is\nconsidered to be pathway lining if it is no further than the local\npath\
+    \ radius plus this margin from the pathway's centre line."
+  args: !SimpleFlagArg
+    name: real
+- !Flag
+  optional: true
+  synonyms:
+  - -pm-pf-sel
+  description: "(name CA)\nSelection string that determines the group of atoms in\
+    \ each residue\nwhose centre of geometry's distance from the centre line is used\
+    \ to\ndetermine if a residue is pore-facing."
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -de-method
+  description: "(kernel)\nMethod used for estimating the probability density of the\
+    \ solvent\nparticles along the permeation pathway: histogram, kernel"
+  args: !SimpleFlagArg
+    name: enum
+- !Flag
+  optional: true
+  synonyms:
+  - -de-res
+  description: "(0.01)\nSpatial resolution of the density estimator. In case of a\n\
+    histogram, this is the bin width, in case of a kernel density\nestimator, this\
+    \ is the spacing of the evaluation points."
+  args: !SimpleFlagArg
+    name: real
+- !Flag
+  optional: true
+  synonyms:
+  - -de-bandwidth
+  description: "(-1)\nBandwidth for the kernel density estimator. Ignored for other\n\
+    methods. If negative or zero, bandwidth will be determined\nautomatically to minimise\
+    \ the asymptotic mean integrated squared\nerror (AMISE)."
+  args: !SimpleFlagArg
+    name: real
+- !Flag
+  optional: true
+  synonyms:
+  - -de-bw-scale
+  description: "(1)\nScaling factor for the band width. Useful to set a bandwidth\n\
+    relative to the AMISE-optimal value."
+  args: !SimpleFlagArg
+    name: real
+- !Flag
+  optional: true
+  synonyms:
+  - -de-eval-cutoff
+  description: "(5)\nEvaluation range cutoff for kernel density estimator in multiples\n\
+    of bandwidth. Ignored for other methods. Ensures that the density\nfalls off smoothly\
+    \ to zero outside the data range."
+  args: !SimpleFlagArg
+    name: real
+- !Flag
+  optional: true
+  synonyms:
+  - -hydrophob-database
+  description: "(wimley_white_1996)\nDatabase of hydrophobicity scale for pore forming\
+    \ residues:\nhessa_2005, kyte_doolittle_1982, monera_1995, moon_2011,\nwimley_white_1996,\
+    \ zhu_2016, memprotmd, user"
+  args: !SimpleFlagArg
+    name: enum
+- !Flag
+  optional: true
+  synonyms:
+  - -hydrophob-fallback
+  description: "(nan)\nFallback hydrophobicity for residues in the pathway defining\
+    \ group.\nIf unset (nan), residues missing in the database will cause an\nerror."
+  args: !SimpleFlagArg
+    name: real
+- !Flag
+  optional: true
+  synonyms:
+  - -hydrophob-json
+  description: "JSON file with user defined hydrophobicity scale. Will be ignored\n\
+    unless -hydrophobicity-database is set to 'user'."
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -hydrophob-bandwidth
+  description: "(0.35)\nBandwidth for hydrophobicity kernel."
+  args: !SimpleFlagArg
+    name: real
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\n\t\t CCCCCC  HH     HH    AAA    PPPPPPPP  \n\t\tCC    CC HH     HH\
+  \   AA AA   PP     PP \n\t\tCC       HH     HH  AA   AA  PP     PP \n\t\tCC    \
+  \   HHHHHHHHH AA     AA PPPPPPPP  \n\t\tCC       HH     HH AAAAAAAAA PP        \n\
+  \t\tCC    CC HH     HH AA     AA PP        \n \t\t CCCCCC  HH     HH AA     AA PP\
+  \        \n\n             The Channel Annotation Package, version 0.9.1\n\nSYNOPSIS\n\
+  \nchap [-f [<.xtc/.trr/...>]] [-s [<.tpr/.gro/...>]] [-n [<.ndx>]] [-b <time>]\n\
+  \     [-e <time>] [-dt <time>] [-tu <enum>] [-fgroup <selection>]\n     [-xvg <enum>]\
+  \ [-sf <file>] [-selrpos <enum>] [-seltype <enum>]\n     [-sel-pathway <selection>]\
+  \ [-sel-solvent <selection>]\n     [-out-filename <string>] [-out-num-points <int>]\n\
+  \     [-out-extrap-dist <real>] [-out-grid-dist <real>]\n     [-out-vis-tweak <real>]\
+  \ [-[no]out-detailed] [-pf-method <enum>]\n     [-pf-vdwr-database <enum>] [-pf-vdwr-fallback\
+  \ <real>]\n     [-pf-vdwr-json <string>] [-pf-align-method <enum>]\n     [-pf-probe-step\
+  \ <real>] [-pf-max-free-dist <real>]\n     [-pf-max-probe-steps <int>] [-pf-sel-ipp\
+  \ <selection>]\n     [-pf-init-probe-pos <real>] [-pf-chan-dir-vec <real>]\n   \
+  \  [-pf-cutoff <real>] [-sa-seed <int>] [-sa-max-iter <int>]\n     [-sa-init-temp\
+  \ <real>] [-sa-cooling-fac <real>] [-sa-step <real>]\n     [-nm-max-iter <int>]\
+  \ [-nm-init-shift <real>] [-pm-pl-margin <real>]\n     [-pm-pf-sel <string>] [-de-method\
+  \ <enum>] [-de-res <real>]\n     [-de-bandwidth <real>] [-de-bw-scale <real>] [-de-eval-cutoff\
+  \ <real>]\n     [-hydrophob-database <enum>] [-hydrophob-fallback <real>]\n    \
+  \ [-hydrophob-json <string>] [-hydrophob-bandwidth <real>]\n\nDESCRIPTION\n\nCHAP\
+  \ finds pores in biological macromolecules like ion channels and determines\nthe\
+  \ hydration state of these permeation pathways. It can operate on both\nindividual\
+  \ structures and on molecular dynamics trajectories. Visit\nwww.channotation.org\
+  \ for the full documentation.\n\nOPTIONS\n\nOptions to specify input files:\n\n\
+  \ -f      [<.xtc/.trr/...>]  (traj.xtc)       (Opt.)\n           Input trajectory\
+  \ or single configuration: xtc trr cpt gro g96 pdb\n           tng\n -s      [<.tpr/.gro/...>]\
+  \  (topol.tpr)      (Opt.)\n           Input structure: tpr gro g96 pdb brk ent\n\
+  \ -n      [<.ndx>]           (index.ndx)      (Opt.)\n           Extra index groups\n\
+  \nOther options:\n\n -b      <time>             (0)\n           First frame (ps)\
+  \ to read from trajectory\n -e      <time>             (0)\n           Last frame\
+  \ (ps) to read from trajectory\n -dt     <time>             (0)\n           Only\
+  \ use frame if t MOD dt == first time (ps)\n -tu     <enum>             (ps)\n \
+  \          Unit for time values: fs, ps, ns, us, ms, s\n -fgroup <selection>\n \
+  \          Atoms stored in the trajectory file (if not set, assume first N\n   \
+  \        atoms)\n -xvg    <enum>             (xmgrace)\n           Plot formatting:\
+  \ none, xmgrace, xmgr\n -sf     <file>\n           Provide selections from files\n\
+  \ -selrpos <enum>            (atom)\n           Selection reference positions: atom,\
+  \ res_com, res_cog, mol_com,\n           mol_cog, whole_res_com, whole_res_cog,\
+  \ whole_mol_com,\n           whole_mol_cog, part_res_com, part_res_cog, part_mol_com,\n\
+  \           part_mol_cog, dyn_res_com, dyn_res_cog, dyn_mol_com, dyn_mol_cog\n -seltype\
+  \ <enum>            (atom)\n           Default selection output positions: atom,\
+  \ res_com, res_cog,\n           mol_com, mol_cog, whole_res_com, whole_res_cog,\
+  \ whole_mol_com,\n           whole_mol_cog, part_res_com, part_res_cog, part_mol_com,\n\
+  \           part_mol_cog, dyn_res_com, dyn_res_cog, dyn_mol_com, dyn_mol_cog\n -sel-pathway\
+  \ <selection>\n           Reference group that defines the permeation pathway (usually\n\
+  \           'Protein')\n -sel-solvent <selection>\n           Group of small particles\
+  \ to calculate density of (usually 'Water')\n -out-filename <string>     (output)\n\
+  \           File name for output files without file extension.\n -out-num-points\
+  \ <int>      (1000)\n           Number of spatial sample points that are written\
+  \ to the JSON output\n           file.\n -out-extrap-dist <real>    (0)\n      \
+  \     Extrapolation distance beyond the pathway endpoints for both JSON\n      \
+  \     and OBJ output.\n -out-grid-dist <real>      (0.15)\n           Controls the\
+  \ sampling distance of vertices on the pathway surface\n           which are subsequently\
+  \ interpolated to yield a smooth surface. Very\n           small values may yield\
+  \ visual artifacts.\n -out-vis-tweak <real>      (0.1)\n           Visual tweaking\
+  \ factor that controls the smoothness of the pathway\n           surface in the\
+  \ OBJ output. Varies between -1 and 1 (exculisvely),\n           where larger values\
+  \ result in a smoother surface. Negative values\n           may result in visualisation\
+  \ artifacts.\n -[no]out-detailed          (no)\n           If true, CHAP will write\
+  \ detailed per-frame information to a\n           newline delimited JSON file including\
+  \ original probe positions and\n           spline parameters. This is mostly useful\
+  \ for debugging.\n -pf-method <enum>          (inplane_optim)\n           Path finding\
+  \ method. The default inplane_optim implements the\n           algorithm used in\
+  \ the HOLE programme, where the position of a probe\n           sphere is optimised\
+  \ in subsequent parallel planes so as to maximise\n           its radius. The alternative\
+  \ naive_cylindrical simply uses a\n           cylindrical volume as permeation pathway.:\
+  \ cylindrical,\n           inplane_optim\n -pf-vdwr-database <enum>   (hole_simple)\n\
+  \           Database of van-der-Waals radii to be used in pore finding:\n      \
+  \     hole_amberuni, hole_bondi, hole_hardcore, hole_simple, hole_xplor,\n     \
+  \      user\n -pf-vdwr-fallback <real>   (nan)\n           Fallback van-der-Waals\
+  \ radius for atoms that are not listed in\n           van-der-Waals radius database.\
+  \ Unless this is set to a positive\n           value, an error will be thrown if\
+  \ a pathway-forming atom has no\n           associated van-der-Waals radius in the\
+  \ database.\n -pf-vdwr-json <string>\n           JSON file with user defined van-der-Waals\
+  \ radii. Will be ignored\n           unless -pf-vdwr-database is set to 'user'.\n\
+  \ -pf-align-method <enum>    (ipp)\n           Method for aligning pathway coordinates\
+  \ across time steps: none,\n           ipp\n -pf-probe-step <real>      (0.1)\n\
+  \           Step length for probe movement.\n -pf-max-free-dist <real>   (1)\n \
+  \          Maximum radius of pore.\n -pf-max-probe-steps <int>  (10000)\n      \
+  \     Maximum number of steps the probe is moved in either direction.\n -pf-sel-ipp\
+  \ <selection>\n           Selection of atoms whose COM will be used as initial probe\n\
+  \           position. If not set, the selection specified with 'sel-pathway'\n \
+  \          will be used.\n -pf-init-probe-pos <real>  (nan nan nan)\n          \
+  \ Initial position of probe in probe-based pore finding algorithms.\n          \
+  \ If set explicitly, it will overwrite the COM-based initial position\n        \
+  \   set with the ippSelflag.\n -pf-chan-dir-vec <real>    (0 0 1)\n           Channel\
+  \ direction vector. Will be normalised to unit vector\n           internally.\n\
+  \ -pf-cutoff <real>          (nan)\n           Cutoff for distance searches in path\
+  \ finding algorithm. A value of\n           zero or less means no cutoff is applied.\
+  \ If unset, an appropriate\n           cutoff is determined automatically.\n -sa-seed\
+  \ <int>             (0)\n           Seed used in pseudo random number generation\
+  \ for simulated\n           annealing. If not set explicitly, a random seed is used.\n\
+  \ -sa-max-iter <int>         (0)\n           Number of cooling iterations in one\
+  \ simulated annealing run.\n -sa-init-temp <real>       (0.1)\n           Simulated\
+  \ annealing initial temperature.\n -sa-cooling-fac <real>     (0.98)\n         \
+  \  Simulated annealing cooling factor.\n -sa-step <real>            (0.001)\n  \
+  \         Step length factor used in candidate generation.\n -nm-max-iter <int>\
+  \         (100)\n           Number of Nelder-Mead simplex iterations in path finding\
+  \ algorithm.\n -nm-init-shift <real>      (0.1)\n           Distance of vertices\
+  \ in initial Nelder-Mead simplex.\n -pm-pl-margin <real>       (0.75)\n        \
+  \   Margin for determining pathway lining residues. A residue is\n           considered\
+  \ to be pathway lining if it is no further than the local\n           path radius\
+  \ plus this margin from the pathway's centre line.\n -pm-pf-sel <string>       \
+  \ (name CA)\n           Selection string that determines the group of atoms in each\
+  \ residue\n           whose centre of geometry's distance from the centre line is\
+  \ used to\n           determine if a residue is pore-facing.\n -de-method <enum>\
+  \          (kernel)\n           Method used for estimating the probability density\
+  \ of the solvent\n           particles along the permeation pathway: histogram,\
+  \ kernel\n -de-res <real>             (0.01)\n           Spatial resolution of the\
+  \ density estimator. In case of a\n           histogram, this is the bin width,\
+  \ in case of a kernel density\n           estimator, this is the spacing of the\
+  \ evaluation points.\n -de-bandwidth <real>       (-1)\n           Bandwidth for\
+  \ the kernel density estimator. Ignored for other\n           methods. If negative\
+  \ or zero, bandwidth will be determined\n           automatically to minimise the\
+  \ asymptotic mean integrated squared\n           error (AMISE).\n -de-bw-scale <real>\
+  \        (1)\n           Scaling factor for the band width. Useful to set a bandwidth\n\
+  \           relative to the AMISE-optimal value.\n -de-eval-cutoff <real>     (5)\n\
+  \           Evaluation range cutoff for kernel density estimator in multiples\n\
+  \           of bandwidth. Ignored for other methods. Ensures that the density\n\
+  \           falls off smoothly to zero outside the data range.\n -hydrophob-database\
+  \ <enum> (wimley_white_1996)\n           Database of hydrophobicity scale for pore\
+  \ forming residues:\n           hessa_2005, kyte_doolittle_1982, monera_1995, moon_2011,\n\
+  \           wimley_white_1996, zhu_2016, memprotmd, user\n -hydrophob-fallback <real>\
+  \ (nan)\n           Fallback hydrophobicity for residues in the pathway defining\
+  \ group.\n           If unset (nan), residues missing in the database will cause\
+  \ an\n           error.\n -hydrophob-json <string>\n           JSON file with user\
+  \ defined hydrophobicity scale. Will be ignored\n           unless -hydrophobicity-database\
+  \ is set to 'user'.\n -hydrophob-bandwidth <real> (0.35)\n           Bandwidth for\
+  \ hydrophobicity kernel.\n\n\nThank you for using CHAP - The Channel Annotation\
+  \ Package! \n\n"
+generated_using:
+- -h
+docker_image: quay.io/biocontainers/chap:0.9.1--h78a066a_0

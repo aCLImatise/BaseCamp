@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, Boolean, String
+
+Datafunk_Sam_2_Fasta_V0_1_0 = CommandToolBuilder(tool="datafunk_sam_2_fasta", base_command=["datafunk", "sam_2_fasta"], inputs=[ToolInput(tag="in_output_fast_a", input_type=File(optional=True), prefix="--output-fasta", doc=InputDocumentation(doc="FASTA format file to write. Prints to stdout if not\nspecified")), ToolInput(tag="in_trim_alignment_basedhalfopen", input_type=Boolean(optional=True), prefix="-t", doc=InputDocumentation(doc="[[start]:[end]], --trim [[start]:[end]]\ntrim the alignment to these coordinates (0-based,\nhalf-open)")), ToolInput(tag="in_pad", input_type=Boolean(optional=True), prefix="--pad", doc=InputDocumentation(doc="if --trim, pad trimmed ends with Ns, to retain\nreference length")), ToolInput(tag="in_prefix_ref", input_type=Boolean(optional=True), prefix="--prefix-ref", doc=InputDocumentation(doc="write the reference sequence at the beginning of the")), ToolInput(tag="in_log_all_inserts", input_type=Boolean(optional=True), prefix="--log-all-inserts", doc=InputDocumentation(doc="log all (including singleton) insertions relative to\nthe reference")), ToolInput(tag="in_log_deletions", input_type=Boolean(optional=True), prefix="--log-deletions", doc=InputDocumentation(doc="log non-singleton deletions relative to the reference")), ToolInput(tag="in_log_all_deletions", input_type=Boolean(optional=True), prefix="--log-all-deletions", doc=InputDocumentation(doc="log all (including singleton) deletions relative to\nthe reference")), ToolInput(tag="in_stdout", input_type=Boolean(optional=True), prefix="--stdout", doc=InputDocumentation(doc="Overides -o/--output-fasta if present and prints\noutput to stdout\n")), ToolInput(tag="in_r", input_type=String(optional=True), prefix="-r", doc=InputDocumentation(doc="")), ToolInput(tag="in_s", input_type=String(optional=True), prefix="-s", doc=InputDocumentation(doc="")), ToolInput(tag="in_sam_file", input_type=String(), position=0, doc=InputDocumentation(doc="-r reference.fasta, --reference reference.fasta")), ToolInput(tag="in_reference", input_type=String(), position=1, doc=InputDocumentation(doc="optional arguments:")), ToolInput(tag="in_file", input_type=File(), position=2, doc=InputDocumentation(doc="--log-inserts         log non-singleton insertions relative to the reference"))], outputs=[], container="quay.io/biocontainers/datafunk:0.0.8--pyh3252c3a_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Datafunk_Sam_2_Fasta_V0_1_0().translate("wdl")
+

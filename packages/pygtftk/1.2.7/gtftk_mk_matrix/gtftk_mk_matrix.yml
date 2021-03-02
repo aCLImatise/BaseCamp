@@ -1,0 +1,210 @@
+!Command
+command:
+- gtftk
+- mk_matrix
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: '2018-01-20'
+  description: 'Arguments:'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --inputfile
+  description: 'A GTF file or bed file. A GTF if <stdin>. (default: <stdin>)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -y
+  - --bigwiglist
+  description: 'A list of Bigwig files (last argument). (default: None)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --outputfile
+  description: 'Output file name (.zip extension will be added). (default: <stdout>)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --labels
+  description: 'Bigwig labels (i.e short name version for plotting). (default: None)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --ft-type
+  description: 'If input is a GTF, the region to analyse. (default: promoter)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --pseudo-count
+  description: 'Pseudo-count to add to all values. (default: 0)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --upstream
+  description: "Extend the region of interest in 5' by a given value. (default: 1000)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --downstream
+  description: "Extend the region of interest in 3' by a given value. (default: 1000)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --chrom-info
+  description: 'Tabulated file (chr as column 1, sizes as column 2.) (default: None)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --bin-nb
+  description: 'Split the region into w bins. (default: 100)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --nb-proc
+  description: 'Use this many threads to compute coverage. (default: 1)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --bin-around-frac
+  description: "Fraction of bins used in 5' and 3' regions. (default: 0.1)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -zn
+  - --zero-to-na
+  description: 'Use NA not zero when region is undefined in bigwig. (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -nst
+  - --no-stranded
+  description: 'The bins should not be oriented relative to strand. (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --verbosity
+  description: 'Set output verbosity ([0-3]). (default: 0)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  - --no-date
+  description: 'Do not add date to output file names. (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -C
+  - --add-chr
+  description: "Add 'chr' to chromosome names before printing output. (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -K
+  - --tmp-dir
+  description: 'Keep all temporary files into this folder. (default: None)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -A
+  - --keep-all
+  description: 'Try to keep all temporary files even if process does not terminate
+    normally. (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  - --logger-file
+  description: 'Stores the arguments passed to the command into a file. (default:
+    None)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -W
+  - --write-message-to-file
+  description: 'Store all message into a file. (default: None)'
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this help message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "  Usage: gtftk mk_matrix [-i GTF/BED] -y bigwiglist [bigwiglist ...] -o\
+  \ GTF/TXT [-l labels] [-t {promoter,tts,transcript,user_regions,single_nuc}] [-p\
+  \ pseudo_count] [-u upstream] [-d downstream] -c chrom_info [-w bin_nb] [-k nb_proc]\
+  \ [-b bin_around_frac] [-zn] [-nst] [-h] [-V [verbosity]] [-D] [-C] [-K tmp_dir]\
+  \ [-A] [-L logger_file] [-W write_message_to_file]\n\n  Description: \n     *  Create\
+  \ a matrix storing the bigwig coverage computed from binned regions.\n\n  Notes:\n\
+  \     *  --chrom-info may also accept 'mm8', 'mm9', 'mm10', 'hg19', 'hg38', 'rn3'\
+  \ or 'rn4'. In this\n     case the  corresponding size of conventional chromosomes\
+  \ are used. ChrM is not used.\n\n  Version:  2018-01-20\n\nArguments:\n -i, --inputfile\
+  \              A GTF file or bed file. A GTF if <stdin>. (default: <stdin>)\n -y,\
+  \ --bigwiglist             A list of Bigwig files (last argument). (default: None)\n\
+  \ -o, --outputfile             Output file name (.zip extension will be added).\
+  \ (default: <stdout>)\n -l, --labels                 Bigwig labels (i.e short name\
+  \ version for plotting). (default: None)\n -t, --ft-type                If input\
+  \ is a GTF, the region to analyse. (default: promoter)\n -p, --pseudo-count    \
+  \       Pseudo-count to add to all values. (default: 0)\n -u, --upstream       \
+  \        Extend the region of interest in 5' by a given value. (default: 1000)\n\
+  \ -d, --downstream             Extend the region of interest in 3' by a given value.\
+  \ (default: 1000)\n -c, --chrom-info             Tabulated file (chr as column 1,\
+  \ sizes as column 2.) (default: None)\n -w, --bin-nb                 Split the region\
+  \ into w bins. (default: 100)\n -k, --nb-proc                Use this many threads\
+  \ to compute coverage. (default: 1)\n -b, --bin-around-frac        Fraction of bins\
+  \ used in 5' and 3' regions. (default: 0.1)\n -zn, --zero-to-na            Use NA\
+  \ not zero when region is undefined in bigwig. (default: False)\n -nst, --no-stranded\
+  \          The bins should not be oriented relative to strand. (default: False)\n\
+  \nCommand-wise optional arguments:\n -h, --help                   Show this help\
+  \ message and exit.\n -V, --verbosity              Set output verbosity ([0-3]).\
+  \ (default: 0)\n -D, --no-date                Do not add date to output file names.\
+  \ (default: False)\n -C, --add-chr                Add 'chr' to chromosome names\
+  \ before printing output. (default: False)\n -K, --tmp-dir                Keep all\
+  \ temporary files into this folder. (default: None)\n -A, --keep-all           \
+  \    Try to keep all temporary files even if process does not terminate normally.\
+  \ (default: False)\n -L, --logger-file            Stores the arguments passed to\
+  \ the command into a file. (default: None)\n -W, --write-message-to-file  Store\
+  \ all message into a file. (default: None)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/pygtftk:1.2.7--py36h4edd4cd_1

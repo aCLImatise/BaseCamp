@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, Boolean, Int
+
+Eicextractor_V0_1_0 = CommandToolBuilder(tool="EICExtractor", base_command=["EICExtractor"], inputs=[ToolInput(tag="in_in", input_type=File(optional=True), prefix="-in", doc=InputDocumentation(doc="*        Input raw data file (valid formats: 'mzML')")), ToolInput(tag="in_in_header", input_type=File(optional=True), prefix="-in_header", doc=InputDocumentation(doc="[for Waters data only] Read additional information from _HEADER.TXT. Provide one for each raw input file. (valid formats: 'txt')")), ToolInput(tag="in_pos", input_type=File(optional=True), prefix="-pos", doc=InputDocumentation(doc="*       Input config file stating where to find signal (valid formats: 'edta')")), ToolInput(tag="in_rt_to_l", input_type=Boolean(optional=True), prefix="-rt_tol", doc=InputDocumentation(doc="RT tolerance in [s] for finding max peak (whole RT range around RT middle) (default: '3.0')")), ToolInput(tag="in_mz_to_l", input_type=Boolean(optional=True), prefix="-mz_tol", doc=InputDocumentation(doc="M/z tolerance in [ppm] for finding a peak (default: '10.0')")), ToolInput(tag="in_rt_collect", input_type=Boolean(optional=True), prefix="-rt_collect", doc=InputDocumentation(doc="# of scans up & down in RT from highest point for ppm estimation in result (default: '1')")), ToolInput(tag="in_auto_rt", input_type=Boolean(optional=True), prefix="-auto_rt", doc=InputDocumentation(doc=":enabled   Automatically detect injection peaks from TIC and quantify all m/z x RT combinations.")), ToolInput(tag="in_out", input_type=File(optional=True), prefix="-out", doc=InputDocumentation(doc="*       Output quantitation file (multiple columns for each input compound) (valid formats: 'csv')")), ToolInput(tag="in_ini", input_type=File(optional=True), prefix="-ini", doc=InputDocumentation(doc="Use the given TOPP INI file")), ToolInput(tag="in_threads", input_type=Int(optional=True), prefix="-threads", doc=InputDocumentation(doc="Sets the number of threads allowed to be used by the TOPP tool (default: '1')")), ToolInput(tag="in_write_ini", input_type=File(optional=True), prefix="-write_ini", doc=InputDocumentation(doc="Writes the default configuration file")), ToolInput(tag="in_helphelp", input_type=Boolean(optional=True), prefix="--helphelp", doc=InputDocumentation(doc="Shows all options (including advanced)"))], outputs=[], container="quay.io/biocontainers/openms:2.6.0--h4afb90d_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Eicextractor_V0_1_0().translate("wdl")
+

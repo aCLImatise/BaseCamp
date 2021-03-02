@@ -1,0 +1,418 @@
+!Command
+command:
+- cmfinder04
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: input-sto-file
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  description: ': input alignment file (.sto)'
+  args: !SimpleFlagArg
+    name: f
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: ': output alignment file (.sto)'
+  args: !SimpleFlagArg
+    name: f
+- !Flag
+  optional: true
+  synonyms:
+  - --degen-rand
+  description: ': randomize degenerate nucs like CMfinder 0.3'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --degen-keep
+  description: ': keep degenerate nucs and marginalize  [default]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --fragmentary
+  description: ': allow truncated hits (independent of --degen-X, unlike pscore)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --non-frag-avg-bppr
+  description: ': ignore --fragmentary for calculating average base pair probs'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --wgsc
+  description: ': use GSC alg to weight sequences for redundancy'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --wpb
+  description: ': use PB alg to weight sequences for redundancy'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ints-like-03
+  description: ': use ints for mutual info and partition func, like CMfinder 0.3 did'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min-seq-weight
+  description: ': eliminate seqs from MSA whose TCM weight is below this value  [0.01]'
+  args: !SimpleFlagArg
+    name: x
+- !Flag
+  optional: true
+  synonyms:
+  - --no-elim-iden-seq
+  description: ": don't eliminate identical sequences as candidate members"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-elim-iden-subseq
+  description: ": don't eliminate identical sub-sequences of other sequences as candidate\
+    \ members"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --allow-untested-code
+  description: ": run code that was never exercized in tests; don't abort to allow\
+    \ testing"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min-cand-score-in-final
+  description: ': min cmsearch score to put a seq into the saved MSA.  [0]'
+  args: !SimpleFlagArg
+    name: x
+- !Flag
+  optional: true
+  synonyms:
+  - --bg-score-size
+  description: ': create this many randomized seqs for each input seq to get background
+    score, below which candidates are rejected  [0]'
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --bg-score-evalue
+  description: ': try to get an EVD from --bg-score-size, and apply this E-value  [-1]'
+  args: !SimpleFlagArg
+    name: x
+- !Flag
+  optional: true
+  synonyms:
+  - --bg-score-scan-thresh
+  description: ': bitscore threshold (-T in cmsearch) to use for scanning --bg-score-size
+    data.  [0]'
+  args: !SimpleFlagArg
+    name: x
+- !Flag
+  optional: true
+  synonyms:
+  - --bg-score-non-frag
+  description: ': prevent --bg-score-size scans from using fragmentary modes -- force
+    --nontrunc'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --filter-non-frag
+  description: ': first run cmsearch with --notrunc, then run normal cmsearch only
+    on the hits from --notrunc'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --filter-non-frag-pad
+  description: ": with --filter-non-frag, add this many nucs on 5' and 3' side of\
+    \ the non-frag hits  [20]"
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --max-degen-per-hit
+  description: ': eliminate hits with this many degen nucs or more'
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --max-degen-flanking-nucs
+  description: ": consider this many nucs beyond the 5' and 3' ends of each hit in\
+    \ counting degen nucs for --max-degen-per-hit"
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --bad-distal-pairs-to-loop
+  description: ': shift non-canon pairs in distal part of stems to the terminal loop'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --bad-distal-pairs-to-loop-only
+  description: ': just run the input msa (-a flag) thru --bad-distal-pairs-to-loop-test
+    and save to output msa (-o flag)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min-term-loop-nucs
+  description: ': only with --bad-distal-pairs-to-loop, move even good base pairs
+    into loop if there are fewer than this many nucs in term loop.  But leave it alone
+    if bp is truncated (with --fragmentary)'
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --seed
+  description: ": set random number generator's seed to <n>  [0]  (n>=0)"
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --evalue
+  description: ': use this E-value in ScanCand, in addition to a threshold (note:
+    implies running internal cmcalibrate, which will be very slow)'
+  args: !SimpleFlagArg
+    name: x
+- !Flag
+  optional: true
+  synonyms:
+  - --create-file-on-success
+  description: ': create this file, empty, upon successful completion of the program,
+    for convenience elsewhere'
+  args: !SimpleFlagArg
+    name: f
+- !Flag
+  optional: true
+  synonyms:
+  - --save-after-first-M-step
+  description: ': for debugging.  program exits after saving the file'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --save-in-progress
+  description: ": for debugging, save MSA's as we processed"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --timer-append
+  description: ': append timing stats to tab-delimited file'
+  args: !SimpleFlagArg
+    name: f
+- !Flag
+  optional: true
+  synonyms:
+  - --tailn
+  description: ": pass --gtailn or --ltailn as appropriate to cmcalibrate (default:\
+    \ accept cmcalibrate's default)"
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --local
+  description: ": local mode, i.e. don't pass -g to internal cmsearch"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --noF4F5
+  description: ': set --noF4 and --noF5 (env def) to avoid glocal hmm'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max
+  description: ': pass --max to cmsearch (and skip calibrations in cmbuild)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --amaa
+  description: ": use maximal-alignment accuracy in cmsearch, i.e. don't pass --acyk"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --cpu
+  description: ': pass to internal cmsearch/cmcalibrate.  --cpu -1 means use all CPUs
+    (default is --cpu 0, which is single-threaded)  [0]  (n>=-1)'
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --p56
+  description: ': use the default prior from Infernal v0.56 through v1.0.2'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --prior
+  description: ': read priors from file <f>'
+  args: !SimpleFlagArg
+    name: f
+- !Flag
+  optional: true
+  synonyms:
+  - --eent
+  description: ': adjust eff seq # to achieve relative entropy target  [default]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --enone
+  description: ': no effective seq # weighting: just use nseq'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --EmN
+  description: ': number of sampled seqs to use for p7 local MSV calibration  [200]  (n>0)'
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --EvN
+  description: ': number of sampled seqs to use for p7 local Vit calibration  [200]  (n>0)'
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --ElfN
+  description: ': number of sampled seqs to use for p7 local Fwd calibration  [200]  (n>0)'
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --EgfN
+  description: ': number of sampled seqs to use for p7 glocal Fwd calibration  [200]  (n>0)'
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --summarize
+  description: ": perform functionality like 'summarize' program.  commandline has\
+    \ the .sto file"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --summarize-gsc
+  description: ': use GSC alg weighting for --summarize'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --summarize-save-msa
+  description: ': save MSA used by --summarize, for debugging modifications on loading'
+  args: !SimpleFlagArg
+    name: f
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: ': show brief help on version and usage'
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: ': show version'
+  args: !EmptyFlagArg {}
+help_text: "Usage: cmfinder04 [options] <input-sto-file>\nOR --summarize [options]\
+  \ <input-sto-file>\n\nBasic options:\n  -h        : show brief help on version and\
+  \ usage\n  -a <f>    : input alignment file (.sto)\n  -o <f>    : output alignment\
+  \ file (.sto)\n  --version : show version\n\nGeneral cmfinder options:\n  --degen-rand\
+  \                    : randomize degenerate nucs like CMfinder 0.3\n  --degen-keep\
+  \                    : keep degenerate nucs and marginalize  [default]\n  --fragmentary\
+  \                   : allow truncated hits (independent of --degen-X, unlike pscore)\n\
+  \  --non-frag-avg-bppr             : ignore --fragmentary for calculating average\
+  \ base pair probs\n  --wgsc                          : use GSC alg to weight sequences\
+  \ for redundancy\n  --wpb                           : use PB alg to weight sequences\
+  \ for redundancy\n  --ints-like-03                  : use ints for mutual info and\
+  \ partition func, like CMfinder 0.3 did\n  --min-seq-weight <x>            : eliminate\
+  \ seqs from MSA whose TCM weight is below this value  [0.01]\n  --no-elim-iden-seq\
+  \              : don't eliminate identical sequences as candidate members\n  --no-elim-iden-subseq\
+  \           : don't eliminate identical sub-sequences of other sequences as candidate\
+  \ members\n  --allow-untested-code           : run code that was never exercized\
+  \ in tests; don't abort to allow testing\n  --min-cand-score-in-final <x>   : min\
+  \ cmsearch score to put a seq into the saved MSA.  [0]\n  --bg-score-size <n>  \
+  \           : create this many randomized seqs for each input seq to get background\
+  \ score, below which candidates are rejected  [0]\n  --bg-score-evalue <x>     \
+  \      : try to get an EVD from --bg-score-size, and apply this E-value  [-1]\n\
+  \  --bg-score-scan-thresh <x>      : bitscore threshold (-T in cmsearch) to use\
+  \ for scanning --bg-score-size data.  [0]\n  --bg-score-non-frag             : prevent\
+  \ --bg-score-size scans from using fragmentary modes -- force --nontrunc\n  --filter-non-frag\
+  \               : first run cmsearch with --notrunc, then run normal cmsearch only\
+  \ on the hits from --notrunc\n  --filter-non-frag-pad <n>       : with --filter-non-frag,\
+  \ add this many nucs on 5' and 3' side of the non-frag hits  [20]\n  --max-degen-per-hit\
+  \ <n>         : eliminate hits with this many degen nucs or more\n  --max-degen-flanking-nucs\
+  \ <n>   : consider this many nucs beyond the 5' and 3' ends of each hit in counting\
+  \ degen nucs for --max-degen-per-hit\n  --bad-distal-pairs-to-loop      : shift\
+  \ non-canon pairs in distal part of stems to the terminal loop\n  --bad-distal-pairs-to-loop-only\
+  \ : just run the input msa (-a flag) thru --bad-distal-pairs-to-loop-test and save\
+  \ to output msa (-o flag)\n  --min-term-loop-nucs <n>        : only with --bad-distal-pairs-to-loop,\
+  \ move even good base pairs into loop if there are fewer than this many nucs in\
+  \ term loop.  But leave it alone if bp is truncated (with --fragmentary)\n  --seed\
+  \ <n>                      : set random number generator's seed to <n>  [0]  (n>=0)\n\
+  \  --evalue <x>                    : use this E-value in ScanCand, in addition to\
+  \ a threshold (note: implies running internal cmcalibrate, which will be very slow)\n\
+  \  --create-file-on-success <f>    : create this file, empty, upon successful completion\
+  \ of the program, for convenience elsewhere\n  --save-after-first-M-step       :\
+  \ for debugging.  program exits after saving the file\n  --save-in-progress    \
+  \          : for debugging, save MSA's as we processed\n  --timer-append <f>   \
+  \           : append timing stats to tab-delimited file\n\noptions related to internal\
+  \ cmcalibrate/cmsearch:\n  --tailn <n> : pass --gtailn or --ltailn as appropriate\
+  \ to cmcalibrate (default: accept cmcalibrate's default)\n  --local     : local\
+  \ mode, i.e. don't pass -g to internal cmsearch\n  --noF4F5    : set --noF4 and\
+  \ --noF5 (env def) to avoid glocal hmm\n  --max       : pass --max to cmsearch (and\
+  \ skip calibrations in cmbuild)\n  --amaa      : use maximal-alignment accuracy\
+  \ in cmsearch, i.e. don't pass --acyk\n  --cpu <n>   : pass to internal cmsearch/cmcalibrate.\
+  \  --cpu -1 means use all CPUs (default is --cpu 0, which is single-threaded)  [0]\
+  \  (n>=-1)\n\noptions related to internal cmbuild:\n  --p56       : use the default\
+  \ prior from Infernal v0.56 through v1.0.2\n  --prior <f> : read priors from file\
+  \ <f>\n  --eent      : adjust eff seq # to achieve relative entropy target  [default]\n\
+  \  --enone     : no effective seq # weighting: just use nseq\n  --EmN <n>   : number\
+  \ of sampled seqs to use for p7 local MSV calibration  [200]  (n>0)\n  --EvN <n>\
+  \   : number of sampled seqs to use for p7 local Vit calibration  [200]  (n>0)\n\
+  \  --ElfN <n>  : number of sampled seqs to use for p7 local Fwd calibration  [200]\
+  \  (n>0)\n  --EgfN <n>  : number of sampled seqs to use for p7 glocal Fwd calibration\
+  \  [200]  (n>0)\n\noptions for --summarizea:\n  --summarize              : perform\
+  \ functionality like 'summarize' program.  commandline has the .sto file\n  --summarize-gsc\
+  \          : use GSC alg weighting for --summarize\n  --summarize-save-msa <f> :\
+  \ save MSA used by --summarize, for debugging modifications on loading\n"
+generated_using:
+- -h
+docker_image:

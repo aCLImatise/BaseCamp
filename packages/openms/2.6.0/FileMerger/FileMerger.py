@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Int, File, Boolean, String
+
+Filemerger_V0_1_0 = CommandToolBuilder(tool="FileMerger", base_command=["FileMerger"], inputs=[ToolInput(tag="in_in", input_type=Int(optional=True), prefix="-in", doc=InputDocumentation(doc="*                  Input files separated by blank (valid formats: 'mzData', 'mzXML', 'mzML', 'dta', 'dta2d', 'mgf', 'featureXML', 'consensusXML', 'fid', 'traML', 'fasta')")), ToolInput(tag="in_in_type", input_type=File(optional=True), prefix="-in_type", doc=InputDocumentation(doc="Input file type (default: determined from file extension or content) (valid: 'mzData', 'mzXML', 'mzML', 'dta', 'dta2d', 'mgf', 'featureXML', 'consensusXML', 'fid', 'traML', 'fasta')")), ToolInput(tag="in_out", input_type=File(optional=True), prefix="-out", doc=InputDocumentation(doc="*                  Output file (valid formats: 'mzML', 'featureXML', 'consensusXML', 'traML', 'fasta')")), ToolInput(tag="in_annotate_file_origin", input_type=Boolean(optional=True), prefix="-annotate_file_origin", doc=InputDocumentation(doc="Store the original filename in each feature using meta value 'file_origin' (for featureXML and consensusXML only).")), ToolInput(tag="in_append_method", input_type=String(optional=True), prefix="-append_method", doc=InputDocumentation(doc="Append consensusMaps rowise or colwise. (Please use colwise for the MSstatsConverter) (default: 'append_rows' valid: 'append_rows', 'append_cols')")), ToolInput(tag="in_ini", input_type=File(optional=True), prefix="-ini", doc=InputDocumentation(doc="Use the given TOPP INI file")), ToolInput(tag="in_threads", input_type=Int(optional=True), prefix="-threads", doc=InputDocumentation(doc="Sets the number of threads allowed to be used by the TOPP tool (default: '1')")), ToolInput(tag="in_write_ini", input_type=File(optional=True), prefix="-write_ini", doc=InputDocumentation(doc="Writes the default configuration file")), ToolInput(tag="in_helphelp", input_type=Boolean(optional=True), prefix="--helphelp", doc=InputDocumentation(doc="Shows all options (including advanced)"))], outputs=[ToolOutput(tag="out_out", output_type=File(optional=True), selector=InputSelector(input_to_select="in_out", type_hint=File()), doc=OutputDocumentation(doc="*                  Output file (valid formats: 'mzML', 'featureXML', 'consensusXML', 'traML', 'fasta')"))], container="quay.io/biocontainers/openms:2.6.0--h4afb90d_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Filemerger_V0_1_0().translate("wdl")
+

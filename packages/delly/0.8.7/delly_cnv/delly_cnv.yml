@@ -1,0 +1,183 @@
+!Command
+command:
+- delly
+- cnv
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: aligned.bam
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  description: '[ --genome ] arg                   genome file'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  description: '[ --quality ] arg (=10)            min. mapping quality'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: '[ --mappability ] arg              input mappability map'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -y
+  description: '[ --ploidy ] arg (=2)              baseline ploidy'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: '[ --outfile ] arg (="cnv.bcf")     output CNV file'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: '[ --covfile ] arg (="cov.gz")      output coverage file'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  description: '[ --sdrd ] arg (=2)                min. SD read-depth shift'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: '[ --cn-offset ] arg (=0.100000001) min. CN offset'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  description: '[ --cnv-size ] arg (=1000)         min. CNV size'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: '[ --svfile ] arg                   delly SV file for breakpoint refinement'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: '[ --vcffile ] arg                  input VCF/BCF file for re-genotyping'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  description: '[ --segmentation ]                 copy-number segmentation'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: '[ --window-size ] arg (=10000)     window size'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  description: '[ --window-offset ] arg (=10000)   window offset'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  description: '[ --bed-intervals ] arg            input BED file'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  description: '[ --fraction-window ] arg (=0.25)  min. callable window fraction [0,1]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  description: '[ --adaptive-windowing ]           use mappable bases for window size'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  description: '[ --scan-window ] arg (=10000)     scanning window size'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: "[ --fraction-unique ] arg (=0.800000012)\nuniqueness filter for scan\
+    \ windows\n[0,1]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: '[ --scan-regions ] arg             scanning regions in BED format'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: '[ --mad-cutoff ] arg (=3)          median + 3 * mad count cutoff'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: "[ --percentile ] arg (=0.000500000024)\nexcl. extreme GC fraction"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: '[ --no-window-selection ]          no scan window selection'
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nUsage: delly cnv [OPTIONS] -g <genome.fa> -m <genome.map> <aligned.bam>\n\
+  \nGeneric options:\n  -? [ --help ]                         show help message\n\
+  \  -g [ --genome ] arg                   genome file\n  -q [ --quality ] arg (=10)\
+  \            min. mapping quality\n  -m [ --mappability ] arg              input\
+  \ mappability map\n  -y [ --ploidy ] arg (=2)              baseline ploidy\n  -o\
+  \ [ --outfile ] arg (=\"cnv.bcf\")     output CNV file\n  -c [ --covfile ] arg (=\"\
+  cov.gz\")      output coverage file\n\nCNV calling:\n  -x [ --sdrd ] arg (=2)  \
+  \              min. SD read-depth shift\n  -t [ --cn-offset ] arg (=0.100000001)\
+  \ min. CN offset\n  -z [ --cnv-size ] arg (=1000)         min. CNV size\n  -l [\
+  \ --svfile ] arg                   delly SV file for breakpoint refinement\n  -v\
+  \ [ --vcffile ] arg                  input VCF/BCF file for re-genotyping\n  -u\
+  \ [ --segmentation ]                 copy-number segmentation\n\nRead-depth windows:\n\
+  \  -i [ --window-size ] arg (=10000)     window size\n  -j [ --window-offset ] arg\
+  \ (=10000)   window offset\n  -b [ --bed-intervals ] arg            input BED file\n\
+  \  -k [ --fraction-window ] arg (=0.25)  min. callable window fraction [0,1]\n \
+  \ -a [ --adaptive-windowing ]           use mappable bases for window size\n\nGC\
+  \ fragment normalization:\n  -w [ --scan-window ] arg (=10000)     scanning window\
+  \ size\n  -f [ --fraction-unique ] arg (=0.800000012)\n                        \
+  \                uniqueness filter for scan windows \n                         \
+  \               [0,1]\n  -r [ --scan-regions ] arg             scanning regions\
+  \ in BED format\n  -d [ --mad-cutoff ] arg (=3)          median + 3 * mad count\
+  \ cutoff\n  -p [ --percentile ] arg (=0.000500000024)\n                        \
+  \                excl. extreme GC fraction\n  -n [ --no-window-selection ]     \
+  \     no scan window selection\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/delly:0.8.7--hf3ca161_0

@@ -1,0 +1,222 @@
+!Command
+command:
+- RNApvmin
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: program
+  description: -j, --numThreads=INT          Set the number of threads used for
+- !Positional
+  optional: false
+  position: 1
+  name: calculations.
+  description: --shapeConversion=STRING  Specify the method used to convert SHAPE
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --detailed-help
+  description: "Print help, including all details and hidden\noptions, and exit"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --full-help
+  description: Print help, including hidden options, and exit
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --tauSigmaRatio
+  description: "Ratio of the weighting factors tau and sigma.\n(default=`1.0')"
+  args: !SimpleFlagArg
+    name: DOUBLE
+- !Flag
+  optional: true
+  synonyms:
+  - --objectiveFunction
+  description: "The energies of the perturbation vector and the\ndiscripancies between\
+    \ predicted and observed\npairing probabilities contribute to the\nobjective function.\
+    \ This parameter defines,\nwhich function is used to process the\ncontributions\
+    \ before summing them up.\n0 square\n1 absolute.  (default=`0')"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --sampleSize
+  description: "The iterative minimization process requires to\nevaluate the gradient\
+    \ of the objective\nfunction.  (default=`1000')"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -N
+  - --nonRedundant
+  description: "Enable non-redundant sampling strategy.\n(default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --intermediatePath
+  description: "Write an output file for each iteration of the\nminimization process."
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --initialVector
+  description: "Specify the vector of initial pertubations.\n(default=`0')"
+  args: !SimpleFlagArg
+    name: DOUBLE
+- !Flag
+  optional: true
+  synonyms:
+  - --minimizer
+  description: "Set the minimizing algorithm used for finding\nan appropriate perturbation\
+    \ vector.\n(possible values=\"conjugate_fr\",\n\"conjugate_pr\", \"vector_bfgs\"\
+    ,\n\"vector_bfgs2\", \"steepest_descent\",\n\"default\" default=`default')"
+  args: !SimpleFlagArg
+    name: ENUM
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --temp
+  description: "Rescale energy parameters to a temperature in\ndegrees centigrade.\
+    \  (default=`37.0')"
+  args: !SimpleFlagArg
+    name: DOUBLE
+- !Flag
+  optional: true
+  synonyms:
+  - '-4'
+  - --noTetra
+  description: "Do not include special tabulated stabilizing\nenergies for tri-, tetra-\
+    \ and hexaloop\nhairpins.  (default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --dangles
+  description: "Specify \"dangling end\" model for bases\nadjacent to helices in free\
+    \ ends and\nmulti-loops.  (default=`2')"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --noLP
+  description: "Produce structures without lonely pairs\n(helices of length 1).  (default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --noGU
+  description: Do not allow GU pairs.  (default=off)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --noClosingGU
+  description: "Do not allow GU pairs at the end of helices.\n(default=off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -P
+  - --paramFile
+  description: "Read energy parameters from paramfile, instead\nof using the default\
+    \ parameter set."
+  args: !SimpleFlagArg
+    name: paramfile
+- !Flag
+  optional: true
+  synonyms:
+  - --maxBPspan
+  description: Set the maximum base pair span.  (default=`-1')
+  args: !SimpleFlagArg
+    name: INT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Print help and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Print version and exit
+  args: !EmptyFlagArg {}
+help_text: "Usage: RNApvmin [options] <file.shape>\nCalculate a perturbation vector\
+  \ that minimizes discripancies between predicted\nand observed pairing probabilities\n\
+  \nThe program reads a RNA sequence from stdin and uses an iterative minimization\n\
+  process to calculate a perturbation vector that minimizes the discripancies\nbetween\
+  \ predicted pairing probabilites and observed pairing probabilities\n(deduced from\
+  \ given shape reactivities). Experimental data is read from a given\nSHAPE file\
+  \ and normalized to pairing probabilities. The experimental data has\nto be provided\
+  \ in a multiline plain text file where each line has the format\n'[position] [nucleotide]\
+  \ [absolute shape reactivity]' (e.g. '3 A 0.7'). The\nobjective function used for\
+  \ the minimization may be weighted by choosing\nappropriate values for sigma and\
+  \ tau.\n\nThe minimization progress will be written to stderr. Once the minimization\
+  \ has\nterminated, the obtained perturbation vector is written to stdout.\n\n  -h,\
+  \ --help                    Print help and exit\n      --detailed-help         \
+  \  Print help, including all details and hidden\n                              \
+  \    options, and exit\n      --full-help               Print help, including hidden\
+  \ options, and exit\n  -V, --version                 Print version and exit\n\n\
+  General Options:\n  Below are command line options which alter the general behavior\
+  \ of this\n  program\n\n\n  -j, --numThreads=INT          Set the number of threads\
+  \ used for\n                                  calculations.\n      --shapeConversion=STRING\
+  \  Specify the method used to convert SHAPE\n                                  reactivities\
+  \ to pairing probabilities.\n                                  (default=`O')\n \
+  \     --tauSigmaRatio=DOUBLE    Ratio of the weighting factors tau and sigma.\n\
+  \                                  (default=`1.0')\n      --objectiveFunction=INT\
+  \   The energies of the perturbation vector and the\n                          \
+  \        discripancies between predicted and observed\n                        \
+  \          pairing probabilities contribute to the\n                           \
+  \       objective function. This parameter defines,\n                          \
+  \        which function is used to process the\n                               \
+  \   contributions before summing them up.\n                                  0 square\n\
+  \                                  1 absolute.  (default=`0')\n      --sampleSize=INT\
+  \          The iterative minimization process requires to\n                    \
+  \              evaluate the gradient of the objective\n                        \
+  \          function.  (default=`1000')\n  -N, --nonRedundant            Enable non-redundant\
+  \ sampling strategy.\n                                  (default=off)\n      --intermediatePath=STRING\
+  \ Write an output file for each iteration of the\n                             \
+  \     minimization process.\n      --initialVector=DOUBLE    Specify the vector\
+  \ of initial pertubations.\n                                  (default=`0')\n  \
+  \    --minimizer=ENUM          Set the minimizing algorithm used for finding\n \
+  \                                 an appropriate perturbation vector.\n        \
+  \                          (possible values=\"conjugate_fr\",\n                \
+  \                  \"conjugate_pr\", \"vector_bfgs\",\n                        \
+  \          \"vector_bfgs2\", \"steepest_descent\",\n                           \
+  \       \"default\" default=`default')\n\nModel Details:\n  -T, --temp=DOUBLE  \
+  \           Rescale energy parameters to a temperature in\n                    \
+  \              degrees centigrade.  (default=`37.0')\n  -4, --noTetra          \
+  \       Do not include special tabulated stabilizing\n                         \
+  \         energies for tri-, tetra- and hexaloop\n                             \
+  \     hairpins.  (default=off)\n  -d, --dangles=INT             Specify \"dangling\
+  \ end\" model for bases\n                                  adjacent to helices in\
+  \ free ends and\n                                  multi-loops.  (default=`2')\n\
+  \      --noLP                    Produce structures without lonely pairs\n     \
+  \                             (helices of length 1).  (default=off)\n      --noGU\
+  \                    Do not allow GU pairs.  (default=off)\n      --noClosingGU\
+  \             Do not allow GU pairs at the end of helices.\n                   \
+  \               (default=off)\n  -P, --paramFile=paramfile     Read energy parameters\
+  \ from paramfile, instead\n                                  of using the default\
+  \ parameter set.\n      --maxBPspan=INT           Set the maximum base pair span.\
+  \  (default=`-1')\n\nIf in doubt our program is right, nature is at fault.\nComments\
+  \ should be sent to rna@tbi.univie.ac.at.\n\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/viennarna:2.4.17--py36hd181a71_0

@@ -1,0 +1,133 @@
+!Command
+command:
+- esl-construct
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: msafile
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  description: ': print info on all conflicting bps in individual structures'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: ': be verbose'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  description: ': set SS_cons as max set of non-conflicting bps from indi SSs'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: ': remove SS_cons basepairs that conflicts with > 0 indi SS'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: ': set SS_cons as indi SS with max bps consistent with SS_cons'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --rfc
+  description: ': with -c, set RF annotation as seq SS_cons structure comes from'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --indi
+  description: ': define SS_cons as individual SS for sequence <x>'
+  args: !SimpleFlagArg
+    name: s
+- !Flag
+  optional: true
+  synonyms:
+  - --rfindi
+  description: ': with --indi <x>, define RF annotation as <x>'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ffreq
+  description: ': aln cols i:j become SS_cons bps if paired in > <x> indi SS'
+  args: !SimpleFlagArg
+    name: x
+- !Flag
+  optional: true
+  synonyms:
+  - --fmin
+  description: ': same as --ffreq but find min <x> that gives consistent SS_cons'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: ': output a new alignment to file <f>'
+  args: !SimpleFlagArg
+    name: f
+- !Flag
+  optional: true
+  synonyms:
+  - --pfam
+  description: ': output alignment in Pfam (non-interleaved, 1 line/seq) format'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: ': list seqs w/> 0 indi bp that conflicts w/a SS_cons bp to file <f>'
+  args: !SimpleFlagArg
+    name: f
+- !Flag
+  optional: true
+  synonyms:
+  - --lmax
+  description: ': with -l, change maximum allowed conflicts of 0 to <x>  [0]  (n>=0)'
+  args: !SimpleFlagArg
+    name: n
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: ': help; show brief info on version and usage'
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "# esl-construct :: describe or create a consensus secondary structure\n\
+  # Easel 0.47 (Jul 2020)\n# Copyright (C) 2020 Howard Hughes Medical Institute\n\
+  # Freely distributed under the BSD open source license.\n# - - - - - - - - - - -\
+  \ - - - - - - - - - - - - - - - - - - - - - - - - -\nUsage: esl-construct [options]\
+  \ <msafile>\n<msafile> must contain RNA or DNA sequences and be in Stockholm format.\n\
+  \nwhere basic options are:\n  -h : help; show brief info on version and usage\n\
+  \  -a : print info on all conflicting bps in individual structures\n  -v : be verbose\n\
+  \noptions for defining a new consensus structure (all of these require -o):\n  -x\
+  \          : set SS_cons as max set of non-conflicting bps from indi SSs\n  -r \
+  \         : remove SS_cons basepairs that conflicts with > 0 indi SS\n  -c     \
+  \     : set SS_cons as indi SS with max bps consistent with SS_cons\n  --rfc   \
+  \    : with -c, set RF annotation as seq SS_cons structure comes from\n  --indi\
+  \ <s>  : define SS_cons as individual SS for sequence <x>\n  --rfindi    : with\
+  \ --indi <x>, define RF annotation as <x>\n  --ffreq <x> : aln cols i:j become SS_cons\
+  \ bps if paired in > <x> indi SS\n  --fmin      : same as --ffreq but find min <x>\
+  \ that gives consistent SS_cons\n  -o <f>      : output a new alignment to file\
+  \ <f>\n  --pfam      : output alignment in Pfam (non-interleaved, 1 line/seq) format\n\
+  \noptions for listing sequences based on structure:\n  -l <f>     : list seqs w/>\
+  \ 0 indi bp that conflicts w/a SS_cons bp to file <f>\n  --lmax <n> : with -l, change\
+  \ maximum allowed conflicts of 0 to <x>  [0]  (n>=0)\n"
+generated_using:
+- -h
+docker_image: quay.io/biocontainers/easel:0.47--h516909a_0

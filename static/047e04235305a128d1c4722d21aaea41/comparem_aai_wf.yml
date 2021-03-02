@@ -1,0 +1,144 @@
+!Command
+command:
+- comparem
+- aai_wf
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: input_files
+  description: genome files
+- !Positional
+  optional: false
+  position: 1
+  name: output_dir
+  description: output directory
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --evalue
+  description: "e-value cutoff for identifying initial blast hits\n(default: 0.001)"
+  args: !SimpleFlagArg
+    name: EVALUE
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --per_identity
+  description: 'percent identity for defining homology (default: 30.0)'
+  args: !SimpleFlagArg
+    name: PER_IDENTITY
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --per_aln_len
+  description: "percent alignment length of query sequence for\ndefining homology\
+    \ (default: 70.0)"
+  args: !SimpleFlagArg
+    name: PER_ALN_LEN
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --file_ext
+  description: 'extension of files to process (default: fna)'
+  args: !SimpleFlagArg
+    name: FILE_EXT
+- !Flag
+  optional: true
+  synonyms:
+  - --proteins
+  description: indicates the input files contain protein sequences
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --force_table
+  description: force use of specific translation table
+  args: !SimpleFlagArg
+    name: FORCE_TABLE
+- !Flag
+  optional: true
+  synonyms:
+  - --blastp
+  description: use blastp instead of DIAMOND
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sensitive
+  description: use sensitive mode of DIAMOND
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --keep_headers
+  description: "indicates FASTA headers already have the format\n<genome_id>~<gene_id>"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --keep_rbhs
+  description: create file with reciprocal best hits
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --tmp_dir
+  description: "specify alternative directory for temporary files\n(default: /tmp)"
+  args: !SimpleFlagArg
+    name: TMP_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --cpus
+  description: 'number of CPUs to use (default: 1)'
+  args: !SimpleFlagArg
+    name: CPUS
+- !Flag
+  optional: true
+  synonyms:
+  - --silent
+  description: suppress output
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: comparem aai_wf [-h] [-e EVALUE] [-p PER_IDENTITY] [-a PER_ALN_LEN]\n\
+  \                       [-x FILE_EXT] [--proteins] [--force_table FORCE_TABLE]\n\
+  \                       [--blastp] [--sensitive] [--keep_headers] [--keep_rbhs]\n\
+  \                       [--tmp_dir TMP_DIR] [-c CPUS] [--silent]\n             \
+  \          input_files output_dir\n\nCalculate AAI between all pairs of genomes\n\
+  \npositional arguments:\n  input_files           genome files\n  output_dir    \
+  \        output directory\n\noptional arguments:\n  -h, --help            show this\
+  \ help message and exit\n  -e, --evalue EVALUE   e-value cutoff for identifying\
+  \ initial blast hits\n                        (default: 0.001)\n  -p, --per_identity\
+  \ PER_IDENTITY\n                        percent identity for defining homology (default:\
+  \ 30.0)\n  -a, --per_aln_len PER_ALN_LEN\n                        percent alignment\
+  \ length of query sequence for\n                        defining homology (default:\
+  \ 70.0)\n  -x, --file_ext FILE_EXT\n                        extension of files to\
+  \ process (default: fna)\n  --proteins            indicates the input files contain\
+  \ protein sequences\n  --force_table FORCE_TABLE\n                        force\
+  \ use of specific translation table\n  --blastp              use blastp instead\
+  \ of DIAMOND\n  --sensitive           use sensitive mode of DIAMOND\n  --keep_headers\
+  \        indicates FASTA headers already have the format\n                     \
+  \   <genome_id>~<gene_id>\n  --keep_rbhs           create file with reciprocal best\
+  \ hits\n  --tmp_dir TMP_DIR     specify alternative directory for temporary files\n\
+  \                        (default: /tmp)\n  -c, --cpus CPUS       number of CPUs\
+  \ to use (default: 1)\n  --silent              suppress output\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/comparem:0.1.2--py_0

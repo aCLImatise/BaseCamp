@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, String, File, Int
+
+Mafgene_V0_1_0 = CommandToolBuilder(tool="mafGene", base_command=["mafGene"], inputs=[ToolInput(tag="in_use_file", input_type=Boolean(optional=True), prefix="-useFile", doc=InputDocumentation(doc="genePredTable argument is a genePred file name")), ToolInput(tag="in_gene_name", input_type=String(optional=True), prefix="-geneName", doc=InputDocumentation(doc="name of gene as it appears in genePred")), ToolInput(tag="in_gene_list", input_type=File(optional=True), prefix="-geneList", doc=InputDocumentation(doc="name of file with list of genes")), ToolInput(tag="in_gene_beds", input_type=File(optional=True), prefix="-geneBeds", doc=InputDocumentation(doc="name of bed file with genes and positions")), ToolInput(tag="in_chrom", input_type=Int(optional=True), prefix="-chrom", doc=InputDocumentation(doc="name of chromosome from which to grab genes")), ToolInput(tag="in_exons", input_type=Boolean(optional=True), prefix="-exons", doc=InputDocumentation(doc="output exons")), ToolInput(tag="in_no_trans", input_type=Boolean(optional=True), prefix="-noTrans", doc=InputDocumentation(doc="don't translate output into amino acids")), ToolInput(tag="in_uniq_aa", input_type=Boolean(optional=True), prefix="-uniqAA", doc=InputDocumentation(doc="put out unique pseudo-AA for every different codon")), ToolInput(tag="in_include_utr", input_type=Boolean(optional=True), prefix="-includeUtr", doc=InputDocumentation(doc="include the UTRs, use only with -noTrans")), ToolInput(tag="in_delay", input_type=Int(optional=True), prefix="-delay", doc=InputDocumentation(doc="delay N seconds between genes (default 0)")), ToolInput(tag="in_no_dash", input_type=Boolean(optional=True), prefix="-noDash", doc=InputDocumentation(doc="don't output lines with all dashes")), ToolInput(tag="in_dbname", input_type=String(), position=0, doc=InputDocumentation(doc="name of SQL database")), ToolInput(tag="in_maf_table", input_type=String(), position=1, doc=InputDocumentation(doc="name of maf file table")), ToolInput(tag="in_gene_pred_table", input_type=String(), position=2, doc=InputDocumentation(doc="name of the genePred table")), ToolInput(tag="in_species_dot_lst", input_type=String(), position=3, doc=InputDocumentation(doc="list of species names")), ToolInput(tag="in_output", input_type=String(), position=4, doc=InputDocumentation(doc="put output here"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Mafgene_V0_1_0().translate("wdl", allow_empty_container=True)
+

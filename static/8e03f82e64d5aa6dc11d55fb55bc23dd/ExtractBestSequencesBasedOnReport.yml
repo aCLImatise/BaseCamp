@@ -1,0 +1,72 @@
+!Command
+command:
+- ExtractBestSequencesBasedOnReport
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --stdhelp
+  - -H
+  description: "Displays options specific to this tool AND options common to all Picard\
+    \ command line\ntools."
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: Displays options specific to this tool.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Displays program version.
+  args: !EmptyFlagArg {}
+help_text: "USAGE: ExtractBestSequencesBasedOnReport [options]\n\nProcesses a Kraken2\
+  \ report and extracts the sequences with the most hits\nVersion: 2.10.2-gridss\n\
+  \n\nOptions:\n\n--help\n-h                            Displays options specific\
+  \ to this tool.\n\n--stdhelp\n-H                            Displays options specific\
+  \ to this tool AND options common to all Picard command line\n                 \
+  \             tools.\n\n--version                     Displays program version.\n\
+  \nINPUT=File\nI=File                        Kraken2 report file.  Required. \n\n\
+  OUTPUT=File\nO=File                        Output fasta file  Required. \n\nREPORT_OUTPUT=File\n\
+  RO=File                       Kraken2 report filtered to only taxa of interest.\
+  \  Default value: null. \n\nSUMMARY_REPORT_OUTPUT=File\nSRO=File               \
+  \       Kraken2 report filtered to only taxa included in the output fasta file.\
+  \  Default value:\n                              null. \n\nSUMMARY_OUTPUT=File\n\
+  SO=File                       Summary csv  Default value: null. \n\nTAXONOMY_IDS=Integer\
+  \          NCBI Taxonomy IDs to extract. All taxonomic entries under these IDs are\
+  \ also extracted.\n                              Defaults to all viruses.  Default\
+  \ value: [10239]. This option can be set to 'null' to\n                        \
+  \      clear the default value. This option may be specified 0 or more times. This\
+  \ option can be\n                              set to 'null' to clear the default\
+  \ list. \n\nNCBI_NODES_DMP=File           NCBI taxonomy nodes.dmp. Download and\
+  \ extract from\n                              https://ftp.ncbi.nlm.nih.gov/pub/taxonomy/taxdmp.zip\
+  \  Required. \n\nKRAKEN_REFERENCES=File        Kraken2 library.fna files. Downloaded\
+  \ by kraken2-build. Must be indexed. Do not run\n                              kraken2-build\
+  \ --clean as these files will be removed. Files are checked in order and all\n \
+  \                             the contigs for the given taxid from the first matching\
+  \ file are extracted.  Default\n                              value: null. This\
+  \ option may be specified 0 or more times. \n\nTAXA_TO_RETURN=Integer        Maximum\
+  \ number of NCBI taxonomic identifiers to extract sequences for.  Default value:\n\
+  \                              null. \n\nCONTIGS_PER_TAXID=Integer     Maximum number\
+  \ of contigs to extract per NCBI taxonomic identifiers.  Default value: 1.\n   \
+  \                           This option can be set to 'null' to clear the default\
+  \ value. \n\nMIN_SUPPORTING_READS=Integer  Minimum number of supporting reads  Default\
+  \ value: 1. This option can be set to 'null' to\n                              clear\
+  \ the default value. \n\nTAXONOMIC_DEDUPLICATION_LEVEL=TaxonomyLevel\n         \
+  \                     Taxonomic level for which only one sequence will be output.\
+  \ Useful to prevent multiple\n                              strains of the same/similar\
+  \ viruses being output.  Default value: Genus. This option can\n               \
+  \               be set to 'null' to clear the default value. Possible values: {Root,\
+  \ Domain, Kingdom,\n                              Phylum, Class, Order, Family,\
+  \ Genus, Species} \n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/gridss:2.10.2--0

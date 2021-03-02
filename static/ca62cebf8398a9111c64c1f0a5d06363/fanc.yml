@@ -1,0 +1,129 @@
+!Command
+command:
+- fanc
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: command
+  description: Subcommand to run
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  - -v
+  description: "Set verbosity level: Can be chained like \"-vvv\" to\nincrease verbosity.\
+    \ Default is to show errors,\nwarnings, and info messages (same as \"-vv\"). \"\
+    -v\"\nshows only errors and warnings, \"-vvv\" shows errors,\nwarnings, info,\
+    \ and debug messages."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --silent
+  description: Do not print log messages to command line.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --log-file
+  description: Path to file in which to save log.
+  args: !SimpleFlagArg
+    name: LOG_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --email
+  description: Email address for fanc command summary.
+  args: !SimpleFlagArg
+    name: EMAIL_TO_ADDRESS
+- !Flag
+  optional: true
+  synonyms:
+  - --smtp-server
+  description: SMTP server in the form smtp.server.com[:port].
+  args: !SimpleFlagArg
+    name: SMTP_SERVER
+- !Flag
+  optional: true
+  synonyms:
+  - --smtp-username
+  description: SMTP username.
+  args: !SimpleFlagArg
+    name: SMTP_USERNAME
+- !Flag
+  optional: true
+  synonyms:
+  - --smtp-password
+  description: SMTP password.
+  args: !SimpleFlagArg
+    name: SMTP_PASSWORD
+- !Flag
+  optional: true
+  synonyms:
+  - --smtp-sender-address
+  description: "SMTP sender email address.\n"
+  args: !SimpleFlagArg
+    name: EMAIL_FROM_ADDRESS
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Print version information
+  args: !EmptyFlagArg {}
+help_text: "usage: fanc <command> [options]\n\n-- Matrix generation --\nauto     \
+  \         Automatically process an entire Hi-C data set\nmap               Map reads\
+  \ in a FASTQ file to a reference genome\npairs             Process and filter read\
+  \ pairs\nhic               Process, filter, and correct Hic files\n\n-- Matrix analysis\
+  \ --\ncis-trans         Calculate cis/trans ratio of this Hi-C object\nexpected\
+  \          Calculate Hi-C expected values (distance decay)\npca               Do\
+  \ a PCA on multiple Hi-C objects\ncompartments      Calculate AB compartment matrix\n\
+  insulation        Calculate insulation scores for Hic object\ndirectionality   \
+  \ Calculate directionality index for Hic object\nboundaries        Determine domain\
+  \ boundaries\ncompare           Create pairwise comparisons of Hi-C comparison maps\n\
+  loops             Call loops in a Hic object using FAN-C implementation of HICCUPS\n\
+  aggregate         Make aggregate plots with FAN-C\n\n-- Other helpers --\nfragments\
+  \         In-silico genome digestion\nsort-sam          Convenience function to\
+  \ sort a SAM file by name\nfrom-juicer       Import a Hi-C object from juicer (Aiden\
+  \ lab)\nfrom-txt          Import a Hi-C object from a sparse matrix txt format\n\
+  to-cooler         Convert a Hic file into cooler format\nto-juicer         Convert\
+  \ a ReadPairs file to Juicer \ndump              Dump Hic file to txt file(s)\n\
+  overlap-peaks     Overlap peaks from multiple samples\nsubset            Create\
+  \ a new Hic object by subsetting\nstats             Get statistics on number of\
+  \ reads used at each step of a pipeline\nwrite-config      Write default config\
+  \ file to specified location\ndownsample        Downsample contacts from a Hic object\n\
+  upgrade           Upgrade objects from old FAN-C versions\n\nfanc processing tool\
+  \ for Hi-C data\n\npositional arguments:\n  command               Subcommand to\
+  \ run\n\noptional arguments:\n  -h, --help            show this help message and\
+  \ exit\n  -V, --version         Print version information\n  --verbose, -v     \
+  \    Set verbosity level: Can be chained like \"-vvv\" to\n                    \
+  \    increase verbosity. Default is to show errors,\n                        warnings,\
+  \ and info messages (same as \"-vv\"). \"-v\"\n                        shows only\
+  \ errors and warnings, \"-vvv\" shows errors,\n                        warnings,\
+  \ info, and debug messages.\n  -s, --silent          Do not print log messages to\
+  \ command line.\n  -l LOG_FILE, --log-file LOG_FILE\n                        Path\
+  \ to file in which to save log.\n  -m EMAIL_TO_ADDRESS, --email EMAIL_TO_ADDRESS\n\
+  \                        Email address for fanc command summary.\n  --smtp-server\
+  \ SMTP_SERVER\n                        SMTP server in the form smtp.server.com[:port].\n\
+  \  --smtp-username SMTP_USERNAME\n                        SMTP username.\n  --smtp-password\
+  \ SMTP_PASSWORD\n                        SMTP password.\n  --smtp-sender-address\
+  \ EMAIL_FROM_ADDRESS\n                        SMTP sender email address.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/fanc:0.9.0--py37hf01694f_0

@@ -1,0 +1,75 @@
+!Command
+command:
+- combine_tool_outputs.R
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input-dir
+  description: "Path to the directory with standardised output .tsv files from\nmultiple\
+    \ classifiers. It is expected that input files follow\nthe format: A_B_final-labs.tsv,\
+    \ where A is dataset or origin and\nB is classifier used to obtain predictions."
+  args: !SimpleFlagArg
+    name: INPUT-DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --top-labels-num
+  description: Number of top labels to keep
+  args: !SimpleFlagArg
+    name: TOP-LABELS-NUM
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --exclusions
+  description: "Path to the yaml file with excluded terms. Must contain fields\n'unlabelled'\
+    \ and 'trivial_terms'"
+  args: !SimpleFlagArg
+    name: EXCLUSIONS
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --scores
+  description: "Boolean: Are prediction scores available for the given method?\nDefault:\
+    \ FALSE"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-table
+  description: Path to the output table in text format
+  args: !SimpleFlagArg
+    name: OUTPUT-TABLE
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: "Show this help message and exit\n"
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: /usr/local/bin/combine_tool_outputs.R [options]\n\n\nOptions:\n\
+  \t-i INPUT-DIR, --input-dir=INPUT-DIR\n\t\tPath to the directory with standardised\
+  \ output .tsv files from \n                multiple classifiers. It is expected\
+  \ that input files follow \n                the format: A_B_final-labs.tsv, where\
+  \ A is dataset or origin and\n                B is classifier used to obtain predictions.\n\
+  \n\t-n TOP-LABELS-NUM, --top-labels-num=TOP-LABELS-NUM\n\t\tNumber of top labels\
+  \ to keep\n\n\t-e EXCLUSIONS, --exclusions=EXCLUSIONS\n\t\tPath to the yaml file\
+  \ with excluded terms. Must contain fields\n                'unlabelled' and 'trivial_terms'\n\
+  \n\t-s, --scores\n\t\tBoolean: Are prediction scores available for the given method?\n\
+  \                Default: FALSE\n\n\t-o OUTPUT-TABLE, --output-table=OUTPUT-TABLE\n\
+  \t\tPath to the output table in text format\n\n\t-h, --help\n\t\tShow this help\
+  \ message and exit\n\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/cell-types-analysis:0.1.11--0

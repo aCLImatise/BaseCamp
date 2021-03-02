@@ -1,0 +1,109 @@
+!Command
+command:
+- blast2gff
+- uniprot
+positional:
+- !Positional
+  optional: true
+  position: 0
+  name: BLAST_FILE
+  description: ''
+- !Positional
+  optional: true
+  position: 1
+  name: GFF_FILE
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  - -db
+  - --db-used
+  description: "Uniprot database used with BLAST  [default:\nUNIPROT-SP]"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --no-split
+  description: "if used, the script assumes that the sequence\nheader will be used\
+    \ as gene_id"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --fasta-file
+  description: Optional FASTA file with the query sequences
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -dbq
+  - --db-quality
+  description: 'Quality of the DB used  [default: 10]'
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --bitscore
+  description: "Minimum bitscore to keep the annotation\n[default: 0.0]"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --attr-value
+  description: "Additional attribute and value to add to each\nannotation, in the\
+    \ form attr:value"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -ft
+  - --feat-type
+  description: 'Feature type to use in the GFF  [default: CDS]'
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --progress
+  description: Shows Progress Bar
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: blast2gff uniprot [OPTIONS] [BLAST_FILE] [GFF_FILE]\n\n  Reads\
+  \ a BLAST output file [blast-file] in tabular format (using -outfmt 6)\n  from a\
+  \ Uniprot DB and outputs a GFF file [gff-file]\n\nOptions:\n  -v, --verbose\n  -db,\
+  \ --db-used TEXT         Uniprot database used with BLAST  [default:\n         \
+  \                     UNIPROT-SP]\n\n  -n, --no-split              if used, the\
+  \ script assumes that the sequence\n                              header will be\
+  \ used as gene_id\n\n  -a, --fasta-file PATH       Optional FASTA file with the\
+  \ query sequences\n  -dbq, --db-quality INTEGER  Quality of the DB used  [default:\
+  \ 10]\n  -b, --bitscore FLOAT        Minimum bitscore to keep the annotation\n \
+  \                             [default: 0.0]\n\n  -k, --attr-value TEXT       Additional\
+  \ attribute and value to add to each\n                              annotation,\
+  \ in the form attr:value\n\n  -ft, --feat-type TEXT       Feature type to use in\
+  \ the GFF  [default: CDS]\n  --progress                  Shows Progress Bar\n  --help\
+  \                      Show this message and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/mgkit:0.5.6--py37hf01694f_0

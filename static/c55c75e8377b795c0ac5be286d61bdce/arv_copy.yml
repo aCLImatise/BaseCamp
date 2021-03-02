@@ -1,0 +1,124 @@
+!Command
+command:
+- arv-copy
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: Verbose output.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --progress
+  description: Report progress on copying collections. (default)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-progress
+  description: Do not report progress on copying collections.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --force
+  description: "Perform copy even if the object appears to exist at\nthe remote destination."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --src
+  description: "The name of the source Arvados instance (required) -\npoints at an\
+    \ Arvados config file. May be either a\npathname to a config file, or (for example)\
+    \ \"foo\" as\nshorthand for $HOME/.config/arvados/foo.conf."
+  args: !SimpleFlagArg
+    name: SOURCE_ARVADOS
+- !Flag
+  optional: true
+  synonyms:
+  - --dst
+  description: "The name of the destination Arvados instance\n(required) - points\
+    \ at an Arvados config file. May be\neither a pathname to a config file, or (for\
+    \ example)\n\"foo\" as shorthand for $HOME/.config/arvados/foo.conf."
+  args: !SimpleFlagArg
+    name: DESTINATION_ARVADOS
+- !Flag
+  optional: true
+  synonyms:
+  - --recursive
+  description: "Recursively copy any dependencies for this object, and\nsubprojects.\
+    \ (default)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-recursive
+  description: Do not copy any dependencies or subprojects.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --project-uuid
+  description: "The UUID of the project at the destination to which\nthe collection\
+    \ or workflow should be copied."
+  args: !SimpleFlagArg
+    name: PROJECT_UUID
+- !Flag
+  optional: true
+  synonyms:
+  - --retries
+  description: "Maximum number of times to retry server requests that\nencounter temporary\
+    \ failures (e.g., server down).\nDefault 3.\n"
+  args: !SimpleFlagArg
+    name: RETRIES
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Print version and exit.
+  args: !EmptyFlagArg {}
+help_text: "usage: arv-copy [-h] [--version] [-v] [--progress] [--no-progress] [-f]\n\
+  \                [--src SOURCE_ARVADOS] [--dst DESTINATION_ARVADOS]\n          \
+  \      [--recursive] [--no-recursive] [--project-uuid PROJECT_UUID]\n          \
+  \      [--retries RETRIES]\n                object_uuid\n\nCopy a workflow or collection\
+  \ from one Arvados instance to another.\n\npositional arguments:\n  object_uuid\
+  \           The UUID of the object to be copied.\n\noptional arguments:\n  -h, --help\
+  \            show this help message and exit\n  --version             Print version\
+  \ and exit.\n  -v, --verbose         Verbose output.\n  --progress            Report\
+  \ progress on copying collections. (default)\n  --no-progress         Do not report\
+  \ progress on copying collections.\n  -f, --force           Perform copy even if\
+  \ the object appears to exist at\n                        the remote destination.\n\
+  \  --src SOURCE_ARVADOS  The name of the source Arvados instance (required) -\n\
+  \                        points at an Arvados config file. May be either a\n   \
+  \                     pathname to a config file, or (for example) \"foo\" as\n \
+  \                       shorthand for $HOME/.config/arvados/foo.conf.\n  --dst DESTINATION_ARVADOS\n\
+  \                        The name of the destination Arvados instance\n        \
+  \                (required) - points at an Arvados config file. May be\n       \
+  \                 either a pathname to a config file, or (for example)\n       \
+  \                 \"foo\" as shorthand for $HOME/.config/arvados/foo.conf.\n  --recursive\
+  \           Recursively copy any dependencies for this object, and\n           \
+  \             subprojects. (default)\n  --no-recursive        Do not copy any dependencies\
+  \ or subprojects.\n  --project-uuid PROJECT_UUID\n                        The UUID\
+  \ of the project at the destination to which\n                        the collection\
+  \ or workflow should be copied.\n  --retries RETRIES     Maximum number of times\
+  \ to retry server requests that\n                        encounter temporary failures\
+  \ (e.g., server down).\n                        Default 3.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/arvados-python-client:2.1.1--py_0

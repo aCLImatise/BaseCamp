@@ -1,0 +1,272 @@
+!Command
+command:
+- PanACoTA
+- annotate
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: saved
+  description: 'Optional arguments:'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: Path to folder containing all multifasta genome files
+  args: !SimpleFlagArg
+    name: DB_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: Path to folder where output annotated genomes must be
+  args: !SimpleFlagArg
+    name: RES_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: "File containing the list of genome filenames to\nannotate (1 genome\
+    \ per line). Each genome must be in\nmulti-fasta format. You can specify the species\
+    \ name\n(4 characters) you want to give to some genome, as\nwell as the download\
+    \ (or any other reason) date of\nyour choice. Format 'genome_name :: name.date'.\
+    \ name\nand date are optional. See doc for more information on\nthis file format.\
+    \ If you want to run this module from\n'prepare_module' results, use '--info'\
+    \ instead."
+  args: !SimpleFlagArg
+    name: LIST_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: "Choose a name for your annotated genomes. This name\nshould contain\
+    \ 4 alphanumeric characters. Generally,\nthey correspond to the 2 first letters\
+    \ of genus, and 2\nfirst letters of species, e.g. ESCO for Escherichia\nColi."
+  args: !SimpleFlagArg
+    name: NAME
+- !Flag
+  optional: true
+  synonyms:
+  - -Q
+  description: "Add this option if you want only to do quality control\non your genomes\
+    \ (cut at 5N if asked, calculate L90 and\nnumber of contigs and plot their distributions).\
+    \ This\nallows you to check which genomes would be annotated\nwith the given parameters,\
+    \ and to modify those\nparameters if you want, before you launch the\nannotation\
+    \ and formatting steps."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --info
+  description: "If you already ran the 'prepare' data module, or\nalready calculated\
+    \ yourself the L90 and number of\ncontigs for each genome, you can give this\n\
+    information, to go directly to annotation and\nformatting steps. This file contains\
+    \ at least 4\ncolumns, tab separated, with the following headers:\n'to_annotate',\
+    \ 'gsize', 'nb_conts', 'L90'. Any other\ncolumn will be ignored."
+  args: !SimpleFlagArg
+    name: FROM_INFO
+- !Flag
+  optional: true
+  synonyms:
+  - --prodigal
+  description: "Add this option if you only want syntactical\nannotation, given by\
+    \ prodigal, and not functional\nannotation requiring prokka and is slower."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --small
+  description: "If you use Prodigal to annotate genomes, if you\nsequences are too\
+    \ small (less than 20000 characters),\nit cannot annotate them with the default\
+    \ options. Add\nthis option to use 'meta' procedure."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --l90
+  description: "Maximum value of L90 allowed to keep a genome. Default\nis 100."
+  args: !SimpleFlagArg
+    name: L90
+- !Flag
+  optional: true
+  synonyms:
+  - --nbcont
+  description: "Maximum number of contigs allowed to keep a genome.\nDefault is 999."
+  args: !SimpleFlagArg
+    name: NBCONT
+- !Flag
+  optional: true
+  synonyms:
+  - --cutn
+  description: "By default, each genome will be cut into new contigs\nwhen at least\
+    \ 5 'N' in a row are found in its\nsequence. If you don't want to cut genomes\
+    \ into new\ncontigs when there are rows of 'N', put 0 to this\noption. If you\
+    \ want to cut from a different number of\n'N' occurrences, put this value to this\
+    \ option."
+  args: !SimpleFlagArg
+    name: CUTN
+- !Flag
+  optional: true
+  synonyms:
+  - --date
+  description: "Specify the date (MMYY) to give to your annotated\ngenomes. By default,\
+    \ will give today's date. The only\nrequirement on the given date is that it is\
+    \ 4\ncharacters long. You can use letters if you want. But\nthe common way is\
+    \ to use 4 digits, corresponding to\nMMYY."
+  args: !SimpleFlagArg
+    name: DATE
+- !Flag
+  optional: true
+  synonyms:
+  - --tmp
+  description: "Specify where the temporary files (sequence split by\nrows of 'N',\
+    \ sequence with new contig names etc.) must\nbe saved. By default, it will be\
+    \ saved in your\nresult_directory/tmp_files."
+  args: !SimpleFlagArg
+    name: TMPDIR
+- !Flag
+  optional: true
+  synonyms:
+  - --annot_dir
+  description: "Specify in which directory the prokka/prodigal output\nfiles (1 folder\
+    \ per genome, called\n<genome_name>-[prokka, Prodigal]Res) must be saved. By\n\
+    default, they are saved in the same directory as your\ntemporary files (see --tmp\
+    \ option to change it)."
+  args: !SimpleFlagArg
+    name: ANNOTDIR
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  - --force
+  description: "Force run: Add this option if you want to (re)run\nannotation and\
+    \ formatting steps for all genomes even\nif their result folder (for annotation\
+    \ step) or files\n(for format step) already exist: override existing\nresults.\
+    \ Without this option, if there already are\nresults in the given result folder,\
+    \ the program stops.\nIf there are no results, but prokka/prodigal folder\nalready\
+    \ exists, prokka/prodigal won't run again, and\nthe formating step will use the\
+    \ already existing\nfolder if correct, or skip the genome if there are\nproblems\
+    \ in prokka/prodigal folder."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: Specify how many threads can be used (default=1)
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: Increase verbosity in stdout/stderr.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  description: "Do not display anything to stdout/stderr. log files\nwill still be\
+    \ created."
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: PanACoTA annotate [-d DB_PATH] -r RES_PATH [-l LIST_FILE] [-n NAME]\n\
+  \                         [-Q] [--info FROM_INFO] [--prodigal] [--small]\n     \
+  \                    [--l90 L90] [--nbcont NBCONT] [--cutn CUTN]\n             \
+  \            [--date DATE] [--tmp TMPDIR] [--annot_dir ANNOTDIR]\n             \
+  \            [-F] [--threads THREADS] [-v] [-q] [-h]\n\n ___                 _____\
+  \  ___         _____  _____\n(  _`\\              (  _  )(  _`\\      (_   _)( \
+  \ _  )\n| |_) )  _ _   ___  | (_) || ( (_)   _   | |  | (_) |\n| ,__/'/'_` )/' _\
+  \ `\\|  _  || |  _  /'_`\\ | |  |  _  |\n| |   ( (_| || ( ) || | | || (_( )( (_)\
+  \ )| |  | | | |\n(_)   `\\__,_)(_) (_)(_) (_)(____/'`\\___/'(_)  (_) (_)\n\n   \
+  \    Large scale comparative genomics tools\n\n     -------------------------------------------\n\
+  \n=> Quality control and annotation of genomes\n\nRequired arguments:\n  -d DB_PATH\
+  \            Path to folder containing all multifasta genome files\n  -r RES_PATH\
+  \           Path to folder where output annotated genomes must be\n            \
+  \            saved\n\nOptional arguments:\n  -l LIST_FILE          File containing\
+  \ the list of genome filenames to\n                        annotate (1 genome per\
+  \ line). Each genome must be in\n                        multi-fasta format. You\
+  \ can specify the species name\n                        (4 characters) you want\
+  \ to give to some genome, as\n                        well as the download (or any\
+  \ other reason) date of\n                        your choice. Format 'genome_name\
+  \ :: name.date'. name\n                        and date are optional. See doc for\
+  \ more information on\n                        this file format. If you want to\
+  \ run this module from\n                        'prepare_module' results, use '--info'\
+  \ instead.\n  -n NAME               Choose a name for your annotated genomes. This\
+  \ name\n                        should contain 4 alphanumeric characters. Generally,\n\
+  \                        they correspond to the 2 first letters of genus, and 2\n\
+  \                        first letters of species, e.g. ESCO for Escherichia\n \
+  \                       Coli.\n  -Q                    Add this option if you want\
+  \ only to do quality control\n                        on your genomes (cut at 5N\
+  \ if asked, calculate L90 and\n                        number of contigs and plot\
+  \ their distributions). This\n                        allows you to check which\
+  \ genomes would be annotated\n                        with the given parameters,\
+  \ and to modify those\n                        parameters if you want, before you\
+  \ launch the\n                        annotation and formatting steps.\n  --info\
+  \ FROM_INFO      If you already ran the 'prepare' data module, or\n            \
+  \            already calculated yourself the L90 and number of\n               \
+  \         contigs for each genome, you can give this\n                        information,\
+  \ to go directly to annotation and\n                        formatting steps. This\
+  \ file contains at least 4\n                        columns, tab separated, with\
+  \ the following headers:\n                        'to_annotate', 'gsize', 'nb_conts',\
+  \ 'L90'. Any other\n                        column will be ignored.\n  --prodigal\
+  \            Add this option if you only want syntactical\n                    \
+  \    annotation, given by prodigal, and not functional\n                       \
+  \ annotation requiring prokka and is slower.\n  --small               If you use\
+  \ Prodigal to annotate genomes, if you\n                        sequences are too\
+  \ small (less than 20000 characters),\n                        it cannot annotate\
+  \ them with the default options. Add\n                        this option to use\
+  \ 'meta' procedure.\n  --l90 L90             Maximum value of L90 allowed to keep\
+  \ a genome. Default\n                        is 100.\n  --nbcont NBCONT       Maximum\
+  \ number of contigs allowed to keep a genome.\n                        Default is\
+  \ 999.\n  --cutn CUTN           By default, each genome will be cut into new contigs\n\
+  \                        when at least 5 'N' in a row are found in its\n       \
+  \                 sequence. If you don't want to cut genomes into new\n        \
+  \                contigs when there are rows of 'N', put 0 to this\n           \
+  \             option. If you want to cut from a different number of\n          \
+  \              'N' occurrences, put this value to this option.\n  --date DATE  \
+  \         Specify the date (MMYY) to give to your annotated\n                  \
+  \      genomes. By default, will give today's date. The only\n                 \
+  \       requirement on the given date is that it is 4\n                        characters\
+  \ long. You can use letters if you want. But\n                        the common\
+  \ way is to use 4 digits, corresponding to\n                        MMYY.\n  --tmp\
+  \ TMPDIR          Specify where the temporary files (sequence split by\n       \
+  \                 rows of 'N', sequence with new contig names etc.) must\n     \
+  \                   be saved. By default, it will be saved in your\n           \
+  \             result_directory/tmp_files.\n  --annot_dir ANNOTDIR  Specify in which\
+  \ directory the prokka/prodigal output\n                        files (1 folder\
+  \ per genome, called\n                        <genome_name>-[prokka, Prodigal]Res)\
+  \ must be saved. By\n                        default, they are saved in the same\
+  \ directory as your\n                        temporary files (see --tmp option to\
+  \ change it).\n  -F, --force           Force run: Add this option if you want to\
+  \ (re)run\n                        annotation and formatting steps for all genomes\
+  \ even\n                        if their result folder (for annotation step) or\
+  \ files\n                        (for format step) already exist: override existing\n\
+  \                        results. Without this option, if there already are\n  \
+  \                      results in the given result folder, the program stops.\n\
+  \                        If there are no results, but prokka/prodigal folder\n \
+  \                       already exists, prokka/prodigal won't run again, and\n \
+  \                       the formating step will use the already existing\n     \
+  \                   folder if correct, or skip the genome if there are\n       \
+  \                 problems in prokka/prodigal folder.\n  --threads THREADS     Specify\
+  \ how many threads can be used (default=1)\n\nOthers:\n  -v, --verbose         Increase\
+  \ verbosity in stdout/stderr.\n  -q, --quiet           Do not display anything to\
+  \ stdout/stderr. log files\n                        will still be created.\n  -h,\
+  \ --help            show this help message and exit\n\nFor more details, see PanACoTA\
+  \ documentation.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/panacota:1.2.0--py_0

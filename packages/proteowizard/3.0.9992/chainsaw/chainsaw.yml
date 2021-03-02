@@ -1,0 +1,122 @@
+!Command
+command:
+- chainsaw
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: allow.
+  description: '-s [ --specificity ] arg              : specify minimum specificity.
+    Options:'
+- !Positional
+  optional: false
+  position: 0
+  name: fully
+  description: '-m [ --minLength ] arg (=0)           : specify minimum length of
+    digested '
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: "[ --cleavageAgentName ] arg        : specify cleavage by name. Options:\n\
+    Trypsin, Arg-C, Asp-N, Asp-N_ambic,\nChymotrypsin, CNBr, Formic_acid, Lys-C,\n\
+    Lys-C/P, PepsinA, TrypChymo, Trypsin/P,\nV8-DE, V8-E, leukocyte elastase, proline\n\
+    endopeptidase, glutamyl endopeptidase,\n2-iodobenzoate, no cleavage, unspecific\n\
+    cleavage\nDefault : trypsin"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: "[ --cleavageAgentRegex ] arg       : specify a cleavage agent regex\
+    \ (e.g.\ntrypsin = \"(?<=[KR])(?!P)\")"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: '[ --numMissedCleavages ] arg (=0)  : specify number of missed cleavages
+    to'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --benchmark
+  description: ': do not write results'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --indexOnly
+  description: ': create database index (if necessary)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --proteinSummary
+  description: ": print a table with index, id, length,\nMW, and description for each\
+    \ protein"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --subset
+  description: ": create a subset database (use filters\nto define the subset)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --filter
+  description: ': add a protein list filter'
+  args: !SimpleFlagArg
+    name: arg
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Usage: chainsaw [options] [filenames] \n\nOptions:\n  -c [ --cleavageAgentName\
+  \ ] arg        : specify cleavage by name. Options: \n                         \
+  \              Trypsin, Arg-C, Asp-N, Asp-N_ambic, \n                          \
+  \             Chymotrypsin, CNBr, Formic_acid, Lys-C, \n                       \
+  \                Lys-C/P, PepsinA, TrypChymo, Trypsin/P, \n                    \
+  \                   V8-DE, V8-E, leukocyte elastase, proline\n                 \
+  \                      endopeptidase, glutamyl endopeptidase, \n               \
+  \                        2-iodobenzoate, no cleavage, unspecific \n            \
+  \                           cleavage\n                                       Default\
+  \ : trypsin\n  -r [ --cleavageAgentRegex ] arg       : specify a cleavage agent\
+  \ regex (e.g. \n                                       trypsin = \"(?<=[KR])(?!P)\"\
+  )\n  -n [ --numMissedCleavages ] arg (=0)  : specify number of missed cleavages\
+  \ to\n                                       allow.\n  -s [ --specificity ] arg\
+  \              : specify minimum specificity. Options:\n                       \
+  \                none, semi, fully. \n                                       Default:\
+  \ fully\n  -m [ --minLength ] arg (=0)           : specify minimum length of digested\
+  \ \n                                       peptides\n  -M [ --maxLength ] arg (=100000)\
+  \      : specify maximum length of digested \n                                 \
+  \      peptides\n  -p [ --massPrecison ] arg (=12)       : specify precision of\
+  \ calculated mass \n                                       of digested peptides\n\
+  \  --benchmark                           : do not write results\n  --indexOnly \
+  \                          : create database index (if necessary)\n  --proteinSummary\
+  \                      : print a table with index, id, length,\n               \
+  \                        MW, and description for each protein\n  --subset arg  \
+  \                        : create a subset database (use filters\n             \
+  \                          to define the subset)\n  --filter arg               \
+  \          : add a protein list filter\n\nFilter options:\n\nindex int_set\nid filepath\
+  \ to a line-by-line list OR semicolon-delimited list of protein ids (unique accession\
+  \ strings)\ndecoyGenerator <reverse|shuffle[=random seed]> <decoy prefix>\n\n'int_set'\
+  \ means that a set of integers must be specified, as a list of intervals of the\
+  \ form [a,b] or a[-][b]\n\n\nExamples:\n\n# tryptically digest database.fasta into\
+  \ database.fasta_digestedPeptides.txt\nchainsaw database.fasta\n\n# test semi-tryptic\
+  \ digestion of all files matching the pattern *.fasta\nchainsaw --benchmark *.fasta\n\
+  \n# create an index file for database.fasta\nchainsaw --indexOnly database.fasta\n\
+  \n# create a summary table for database.fasta\nchainsaw --proteinSummary database.fasta\n\
+  \n# create a subset database (database-subset.fasta) of database.fasta using only\
+  \ the ids from subset.txt.\nchainsaw database.fasta --subset database-subset.fasta\
+  \ --filter \"id subset.txt\"\n\n\nQuestions, comments, and bug reports:\nhttp://proteowizard.sourceforge.net\n\
+  support@proteowizard.org\n\nProteoWizard release: 3.0.9992 (2016-8-30)\nProteoWizard\
+  \ Proteome: 3.0.9198 (2015-12-4)\nBuild date: Jul 16 2018 03:18:33\n\n"
+generated_using: []
+docker_image: quay.io/biocontainers/proteowizard:3.0.9992

@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, Float, Int, Boolean
+
+Clustermasstraces_V0_1_0 = CommandToolBuilder(tool="ClusterMassTraces", base_command=["ClusterMassTraces"], inputs=[ToolInput(tag="in_in", input_type=File(optional=True), prefix="-in", doc=InputDocumentation(doc="*                        Mass traces (valid formats: 'consensusXML')")), ToolInput(tag="in_out", input_type=File(optional=True), prefix="-out", doc=InputDocumentation(doc="*                       Output file (valid formats: 'mzML')")), ToolInput(tag="in_min_pearson_correlation", input_type=Float(optional=True), prefix="-min_pearson_correlation", doc=InputDocumentation(doc="Minimal pearson correlation score (default: '0.7')")), ToolInput(tag="in_min_peak_nr", input_type=Int(optional=True), prefix="-min_peak_nr", doc=InputDocumentation(doc="Minimal peak nr to output pseudo spectra (default: '1')")), ToolInput(tag="in_max_lag", input_type=Int(optional=True), prefix="-max_lag", doc=InputDocumentation(doc="Maximal lag (default: '1')")), ToolInput(tag="in_max_rt_apex_difference", input_type=Float(optional=True), prefix="-max_rt_apex_difference", doc=InputDocumentation(doc="Maximal difference of the apex in retention time (default: '5.0')")), ToolInput(tag="in_max_intensity_cut_off", input_type=Float(optional=True), prefix="-max_intensity_cutoff", doc=InputDocumentation(doc="Maximal intensity to be added to a spectrum (default: '0.0')")), ToolInput(tag="in_add_precursor", input_type=Float(optional=True), prefix="-add_precursor", doc=InputDocumentation(doc="Add a precursor mass (default: '0.0')")), ToolInput(tag="in_ini", input_type=File(optional=True), prefix="-ini", doc=InputDocumentation(doc="Use the given TOPP INI file")), ToolInput(tag="in_threads", input_type=Int(optional=True), prefix="-threads", doc=InputDocumentation(doc="Sets the number of threads allowed to be used by the TOPP tool (default: '1')")), ToolInput(tag="in_write_ini", input_type=File(optional=True), prefix="-write_ini", doc=InputDocumentation(doc="Writes the default configuration file")), ToolInput(tag="in_helphelp", input_type=Boolean(optional=True), prefix="--helphelp", doc=InputDocumentation(doc="Shows all options (including advanced)"))], outputs=[ToolOutput(tag="out_out", output_type=File(optional=True), selector=InputSelector(input_to_select="in_out", type_hint=File()), doc=OutputDocumentation(doc="*                       Output file (valid formats: 'mzML')"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Clustermasstraces_V0_1_0().translate("wdl", allow_empty_container=True)
+

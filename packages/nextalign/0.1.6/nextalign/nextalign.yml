@@ -1,0 +1,456 @@
+!Command
+command:
+- nextalign
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --version-detailed
+  description: Show detailed version
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: "Increase verbosity of the console output. By\ndefault only errors\
+    \ and warnings are shown.\nWith this option more information will be\nprinted."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --jobs
+  description: "(optional, integer) Number of CPU threads\nused by the algorithm.\
+    \ If not specified or if a\nnon-positive value specified, the algorithm\nwill\
+    \ use all the available threads. (default: 0)"
+  args: !SimpleFlagArg
+    name: JOBS
+- !Flag
+  optional: true
+  synonyms:
+  - --in-order
+  description: "Force parallel processing in-order. With this\nflag the program will\
+    \ wait for results from\nthe previous sequences to be written to the\noutput files\
+    \ before writing the results of the\nnext sequences, preserving the same order\
+    \ as in\nthe input file. Due to variable sequence\nprocessing times, this might\
+    \ introduce unnecessary\nwaiting times, but ensures that the resulting\nsequences\
+    \ are written in the same order as\nthey occur in the inputs (except for sequences\n\
+    which have errors). By default, without this\nflag, processing might happen out\
+    \ of order, which\nis faster, due to the elimination of waiting,\nbut might also\
+    \ lead to results written out of\norder - the order of results is not specified\n\
+    and depends on thread scheduling and\nprocessing times of individual sequences.\
+    \ This option\nis only relevant when `--jobs` is greater than\n1. Note: the sequences\
+    \ which trigger errors\nduring processing will be omitted from outputs,\nregardless\
+    \ of this flag."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --sequences
+  description: "(required, string) Path to a FASTA file with\ninput sequences"
+  args: !SimpleFlagArg
+    name: SEQS
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reference
+  description: "(required, string) Path to a FASTA or plain\ntext file containing\
+    \ reference sequence"
+  args: !SimpleFlagArg
+    name: REF
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --genes
+  description: "(optional, string) List of genes to\ntranslate. Requires `--genemap`.\
+    \ If not supplied or\nempty, sequence will not be translated. If\nnon-empty, should\
+    \ contain a coma-separated list of\ngene names. Parameters `--genes` and\n`--genemap`\
+    \ should be either both specified or both\nomitted."
+  args: !SimpleFlagArg
+    name: GENES
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --genemap
+  description: "(optional, string) Path to a GFF file\ncontaining custom gene map.\
+    \ Requires `--genes.` If\nnot supplied, sequence will not be translated.\nParameters\
+    \ `--genes` and `--genemap` should be\neither both specified or both omitted."
+  args: !SimpleFlagArg
+    name: GENEMAP
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --output-dir
+  description: "(optional, string) Write output files to this\ndirectory. The base\
+    \ filename can be set using\n`--output-basename` flag. The paths can be\noverridden\
+    \ on a per-file basis using\n`--output-*` flags. If the required directory tree\
+    \ does\nnot exist, it will be created."
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --output-basename
+  description: "(optional, string) Set the base filename to\nuse for output files.\
+    \ To be used together with\n`--output-dir` flag. By default uses the\nfilename\
+    \ of the sequences file (provided with\n`--sequences`). The paths can be overridden\
+    \ on a\nper-file basis using `--output-*` flags."
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-fasta
+  description: "(required, string) Path to output aligned\nsequences in FASTA format\
+    \ (overrides paths given\nwith `--output-dir` and `--output-basename`).\nIf the\
+    \ required directory tree does not exist,\nit will be created."
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -I
+  - --output-insertions
+  description: "(optional, string) Path to output stripped\ninsertions data in CSV\
+    \ format (overrides paths\ngiven with `--output-dir` and\n`--output-basename`).\
+    \ If the required directory tree does not\nexist, it will be created."
+  args: !SimpleFlagArg
+    name: OUTPUT_INSERTIONS
+- !Flag
+  optional: true
+  synonyms:
+  - --min-length
+  description: "(optional, integer, non-negative) Minimum\nlength of nucleotide sequence\
+    \ to consider for\nalignment. If a sequence is shorter than that,\nalignment will\
+    \ not be attempted and a warning\nwill be emitted. When adjusting this parameter,\n\
+    note that alignment of short sequences can be\nunreliable. (default: 100)"
+  args: !SimpleFlagArg
+    name: MIN_LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - --penalty-gap-extend
+  description: "(optional, integer, non-negative) Penalty for\nextending a gap. If\
+    \ zero, all gaps regardless\nof length incur the same penalty. (default:\n0)"
+  args: !SimpleFlagArg
+    name: PENALTY_GAP_EXTEND
+- !Flag
+  optional: true
+  synonyms:
+  - --penalty-gap-open
+  description: "(optional, integer, positive) Penalty for\nopening of a gap. A higher\
+    \ penalty results in\nfewer gaps and more mismatches. Should be less\nthan `--penalty-gap-open-in-frame`\
+    \ to avoid gaps\nin genes. (default: 6)"
+  args: !SimpleFlagArg
+    name: PENALTY_GAP_OPEN
+- !Flag
+  optional: true
+  synonyms:
+  - --penalty-gap-open-in-frame
+  description: "(optional, integer, positive) As\n`--penalty-gap-open`, but for opening\
+    \ gaps at the\nbeginning of a codon. Should be greater than\n`--penalty-gap-open`\
+    \ and less than\n`--penalty-gap-open-out-of-frame`, to avoid gaps in genes, but\n\
+    favor gaps that align with codons. (default: 7)"
+  args: !SimpleFlagArg
+    name: PENALTY_GAP_OPEN_IN_FRAME
+- !Flag
+  optional: true
+  synonyms:
+  - --penalty-gap-open-out-of-frame
+  description: "(optional, integer, positive) As\n`--penalty-gap-open`, but for opening\
+    \ gaps in the body of\na codon. Should be greater than\n`--penalty-gap-open-in-frame`\
+    \ to favor gaps that align with\ncodons. (default: 8)"
+  args: !SimpleFlagArg
+    name: PENALTY_GAP_OPEN_OUT_OF_FRAME
+- !Flag
+  optional: true
+  synonyms:
+  - --penalty-mismatch
+  description: "(optional, integer, positive) Penalty for\naligned nucleotides or\
+    \ aminoacids that differ in\nstate during alignment. Note that this is\nredundantly\
+    \ parameterized with `--score-match`.\n(default: 1)"
+  args: !SimpleFlagArg
+    name: PENALTY_MISMATCH
+- !Flag
+  optional: true
+  synonyms:
+  - --score-match
+  description: "(optional, integer, positive) Score for\nencouraging aligned nucleotides\
+    \ or aminoacids with\nmatching state. (default: 3)"
+  args: !SimpleFlagArg
+    name: SCORE_MATCH
+- !Flag
+  optional: true
+  synonyms:
+  - --max-indel
+  description: "(optional, integer, non-negative) Maximum\nlength of insertions or\
+    \ deletions allowed to\nproceed with alignment. Alignments with long\nindels are\
+    \ slow to compute and require substantial\nmemory in the current implementation.\n\
+    Alignment of sequences with indels longer that this\nvalue, will not be attempted\
+    \ and a warning will\nbe emitted. (default: 400)"
+  args: !SimpleFlagArg
+    name: MAX_INDEL
+- !Flag
+  optional: true
+  synonyms:
+  - --nuc-seed-length
+  description: "(optional, integer, positive) Seed length for\nnucleotide alignment.\
+    \ Seeds should be long\nenough to be unique, but short enough to match\nwith high\
+    \ probability. (default: 21)"
+  args: !SimpleFlagArg
+    name: NUC_SEED_LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - --nuc-min-seeds
+  description: "(optional, integer, positive) Minimum number\nof seeds to search for\
+    \ during nucleotide\nalignment. Relevant for short sequences. In long\nsequences,\
+    \ the number of seeds is determined by\n`--nuc-seed-spacing`. Should be a positive\n\
+    integer. (default: 10)"
+  args: !SimpleFlagArg
+    name: NUC_MIN_SEEDS
+- !Flag
+  optional: true
+  synonyms:
+  - --nuc-seed-spacing
+  description: "(optional, integer, non-negative) Spacing\nbetween seeds during nucleotide\
+    \ alignment.\n(default: 100)"
+  args: !SimpleFlagArg
+    name: NUC_SEED_SPACING
+- !Flag
+  optional: true
+  synonyms:
+  - --nuc-mismatches-allowed
+  description: "(optional, integer, non-negative) Maximum\nnumber of mismatching nucleotides\
+    \ allowed for a\nseed to be considered a match. (default: 3)"
+  args: !SimpleFlagArg
+    name: NUC_MISMATCHES_ALLOWED
+- !Flag
+  optional: true
+  synonyms:
+  - --aa-seed-length
+  description: "(optional, integer, positive) Seed length for\naminoacid alignment.\
+    \ (default: 12)"
+  args: !SimpleFlagArg
+    name: AA_SEED_LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - --aa-min-seeds
+  description: "(optional, integer, positive) Minimum number\nof seeds to search for\
+    \ during aminoacid\nalignment. Relevant for short sequences. In long\nsequences,\
+    \ the number of seeds is determined by\n`--aa-seed-spacing`. (default: 10)"
+  args: !SimpleFlagArg
+    name: AA_MIN_SEEDS
+- !Flag
+  optional: true
+  synonyms:
+  - --aa-seed-spacing
+  description: "(optional, integer, non-negative) Spacing\nbetween seeds during aminoacid\
+    \ alignment.\n(default: 100)"
+  args: !SimpleFlagArg
+    name: AA_SEED_SPACING
+- !Flag
+  optional: true
+  synonyms:
+  - --aa-mismatches-allowed
+  description: "(optional, integer, non-negative) Maximum\nnumber of mismatching aminoacids\
+    \ allowed for a\nseed to be considered a match. (default: 2)\n"
+  args: !SimpleFlagArg
+    name: AA_MISMATCHES_ALLOWED
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: ''
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this help
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: Show version
+  args: !EmptyFlagArg {}
+help_text: "nextalign 0.1.6\nbased on libnextalign 0.1.6\n\n\nNextalign is a viral\
+  \ genome sequence alignment algorithm used in Nextclade, ported to C++ and made\
+  \ into the standalone command-line tool.\n\nNextalign performs pairwise alignment\
+  \ of provided sequences against a given reference sequence using banded local alignment\
+  \ algorithm with affine gap-cost. Band width and rough relative positions are determined\
+  \ through seed matching.\n\nNextalign will strip insertions relative to the reference\
+  \ and output them in a separate CSV file.\n\nOptionally, when provided with a gene\
+  \ map and a list of genes, Nextalign can perform translation of these genes.\n\n\
+  Currently Nextalign primarily focuses on SARS-CoV-2 genome, but it can be used on\
+  \ any virus, given a sufficiently similar reference sequence (less than a 5% divergence).\n\
+  \n\nNextalign is a free and open-source software and the source code can be found\
+  \ in the Nextclade GitHub repository:\nhttps://github.com/nextstrain/nextclade\n\
+  \nThe latest downloads are available at:\nhttps://github.com/nextstrain/nextclade/releases\n\
+  \nDocker container images are available at:\nhttps://hub.docker.com/r/neherlab/nextalign\n\
+  \nPlease report bugs and request features using GitHub Issues:\nhttps://github.com/nextstrain/nextclade/issues/new\n\
+  \nFor questions and general discussion join Nextstrain discussion forum:\nhttps://discussion.nextstrain.org\n\
+  \n\nQuick Example:\n\n 1. Download the example data files from:\n    https://github.com/nextstrain/nextclade/tree/master/data/example\n\
+  \n 2. Run:\n    nextalign --sequences=sequences.fasta --reference=reference.txt\
+  \ --genemap=genemap.gff --genes=E,M,N,ORF10,ORF14,ORF1a,ORF1b,ORF3a,ORF6,ORF7a,ORF7b,ORF8,ORF9b,S\
+  \ --output-dir=output/ --output-basename=nextalign\n\n 3. Find the output files\
+  \ in the `output/` directory\n\n\nUsage:\n  nextalign [OPTION...]\n\n  -h, --help\
+  \                    Show this help\n  -v, --version                 Show version\n\
+  \      --version-detailed        Show detailed version\n      --verbose        \
+  \         Increase verbosity of the console output. By\n                       \
+  \         default only errors and warnings are shown.\n                        \
+  \        With this option more information will be\n                           \
+  \     printed.\n  -j, --jobs JOBS               (optional, integer) Number of CPU\
+  \ threads\n                                used by the algorithm. If not specified\
+  \ or if a\n                                non-positive value specified, the algorithm\n\
+  \                                will use all the available threads. (default: 0)\n\
+  \      --in-order                Force parallel processing in-order. With this\n\
+  \                                flag the program will wait for results from\n \
+  \                               the previous sequences to be written to the\n  \
+  \                              output files before writing the results of the\n\
+  \                                next sequences, preserving the same order as in\n\
+  \                                the input file. Due to variable sequence\n    \
+  \                            processing times, this might introduce unnecessary\n\
+  \                                waiting times, but ensures that the resulting\n\
+  \                                sequences are written in the same order as\n  \
+  \                              they occur in the inputs (except for sequences\n\
+  \                                which have errors). By default, without this\n\
+  \                                flag, processing might happen out of order, which\n\
+  \                                is faster, due to the elimination of waiting,\n\
+  \                                but might also lead to results written out of\n\
+  \                                order - the order of results is not specified\n\
+  \                                and depends on thread scheduling and\n        \
+  \                        processing times of individual sequences. This option\n\
+  \                                is only relevant when `--jobs` is greater than\n\
+  \                                1. Note: the sequences which trigger errors\n \
+  \                               during processing will be omitted from outputs,\n\
+  \                                regardless of this flag.\n  -i, --sequences SEQS\
+  \          (required, string) Path to a FASTA file with\n                      \
+  \          input sequences\n  -r, --reference REF           (required, string) Path\
+  \ to a FASTA or plain\n                                text file containing reference\
+  \ sequence\n  -g, --genes GENES             (optional, string) List of genes to\n\
+  \                                translate. Requires `--genemap`. If not supplied\
+  \ or\n                                empty, sequence will not be translated. If\n\
+  \                                non-empty, should contain a coma-separated list\
+  \ of\n                                gene names. Parameters `--genes` and\n   \
+  \                             `--genemap` should be either both specified or both\n\
+  \                                omitted.\n  -m, --genemap GENEMAP         (optional,\
+  \ string) Path to a GFF file\n                                containing custom\
+  \ gene map. Requires `--genes.` If\n                                not supplied,\
+  \ sequence will not be translated.\n                                Parameters `--genes`\
+  \ and `--genemap` should be\n                                either both specified\
+  \ or both omitted.\n  -d, --output-dir OUTPUT       (optional, string) Write output\
+  \ files to this\n                                directory. The base filename can\
+  \ be set using\n                                `--output-basename` flag. The paths\
+  \ can be\n                                overridden on a per-file basis using\n\
+  \                                `--output-*` flags. If the required directory tree\
+  \ does\n                                not exist, it will be created.\n  -n, --output-basename\
+  \ OUTPUT  (optional, string) Set the base filename to\n                        \
+  \        use for output files. To be used together with\n                      \
+  \          `--output-dir` flag. By default uses the\n                          \
+  \      filename of the sequences file (provided with\n                         \
+  \       `--sequences`). The paths can be overridden on a\n                     \
+  \           per-file basis using `--output-*` flags.\n  -o, --output-fasta OUTPUT\
+  \     (required, string) Path to output aligned\n                              \
+  \  sequences in FASTA format (overrides paths given\n                          \
+  \      with `--output-dir` and `--output-basename`).\n                         \
+  \       If the required directory tree does not exist,\n                       \
+  \         it will be created.\n  -I, --output-insertions OUTPUT_INSERTIONS\n   \
+  \                             (optional, string) Path to output stripped\n     \
+  \                           insertions data in CSV format (overrides paths\n   \
+  \                             given with `--output-dir` and\n                  \
+  \              `--output-basename`). If the required directory tree does not\n \
+  \                               exist, it will be created.\n      --min-length MIN_LENGTH\
+  \   (optional, integer, non-negative) Minimum\n                                length\
+  \ of nucleotide sequence to consider for\n                                alignment.\
+  \ If a sequence is shorter than that,\n                                alignment\
+  \ will not be attempted and a warning\n                                will be emitted.\
+  \ When adjusting this parameter,\n                                note that alignment\
+  \ of short sequences can be\n                                unreliable. (default:\
+  \ 100)\n      --penalty-gap-extend PENALTY_GAP_EXTEND\n                        \
+  \        (optional, integer, non-negative) Penalty for\n                       \
+  \         extending a gap. If zero, all gaps regardless\n                      \
+  \          of length incur the same penalty. (default:\n                       \
+  \         0)\n      --penalty-gap-open PENALTY_GAP_OPEN\n                      \
+  \          (optional, integer, positive) Penalty for\n                         \
+  \       opening of a gap. A higher penalty results in\n                        \
+  \        fewer gaps and more mismatches. Should be less\n                      \
+  \          than `--penalty-gap-open-in-frame` to avoid gaps\n                  \
+  \              in genes. (default: 6)\n      --penalty-gap-open-in-frame PENALTY_GAP_OPEN_IN_FRAME\n\
+  \                                (optional, integer, positive) As\n            \
+  \                    `--penalty-gap-open`, but for opening gaps at the\n       \
+  \                         beginning of a codon. Should be greater than\n       \
+  \                         `--penalty-gap-open` and less than\n                 \
+  \               `--penalty-gap-open-out-of-frame`, to avoid gaps in genes, but\n\
+  \                                favor gaps that align with codons. (default: 7)\n\
+  \      --penalty-gap-open-out-of-frame PENALTY_GAP_OPEN_OUT_OF_FRAME\n         \
+  \                       (optional, integer, positive) As\n                     \
+  \           `--penalty-gap-open`, but for opening gaps in the body of\n        \
+  \                        a codon. Should be greater than\n                     \
+  \           `--penalty-gap-open-in-frame` to favor gaps that align with\n      \
+  \                          codons. (default: 8)\n      --penalty-mismatch PENALTY_MISMATCH\n\
+  \                                (optional, integer, positive) Penalty for\n   \
+  \                             aligned nucleotides or aminoacids that differ in\n\
+  \                                state during alignment. Note that this is\n   \
+  \                             redundantly parameterized with `--score-match`.\n\
+  \                                (default: 1)\n      --score-match SCORE_MATCH\n\
+  \                                (optional, integer, positive) Score for\n     \
+  \                           encouraging aligned nucleotides or aminoacids with\n\
+  \                                matching state. (default: 3)\n      --max-indel\
+  \ MAX_INDEL     (optional, integer, non-negative) Maximum\n                    \
+  \            length of insertions or deletions allowed to\n                    \
+  \            proceed with alignment. Alignments with long\n                    \
+  \            indels are slow to compute and require substantial\n              \
+  \                  memory in the current implementation.\n                     \
+  \           Alignment of sequences with indels longer that this\n              \
+  \                  value, will not be attempted and a warning will\n           \
+  \                     be emitted. (default: 400)\n      --nuc-seed-length NUC_SEED_LENGTH\n\
+  \                                (optional, integer, positive) Seed length for\n\
+  \                                nucleotide alignment. Seeds should be long\n  \
+  \                              enough to be unique, but short enough to match\n\
+  \                                with high probability. (default: 21)\n      --nuc-min-seeds\
+  \ NUC_MIN_SEEDS\n                                (optional, integer, positive) Minimum\
+  \ number\n                                of seeds to search for during nucleotide\n\
+  \                                alignment. Relevant for short sequences. In long\n\
+  \                                sequences, the number of seeds is determined by\n\
+  \                                `--nuc-seed-spacing`. Should be a positive\n  \
+  \                              integer. (default: 10)\n      --nuc-seed-spacing\
+  \ NUC_SEED_SPACING\n                                (optional, integer, non-negative)\
+  \ Spacing\n                                between seeds during nucleotide alignment.\n\
+  \                                (default: 100)\n      --nuc-mismatches-allowed\
+  \ NUC_MISMATCHES_ALLOWED\n                                (optional, integer, non-negative)\
+  \ Maximum\n                                number of mismatching nucleotides allowed\
+  \ for a\n                                seed to be considered a match. (default:\
+  \ 3)\n      --aa-seed-length AA_SEED_LENGTH\n                                (optional,\
+  \ integer, positive) Seed length for\n                                aminoacid\
+  \ alignment. (default: 12)\n      --aa-min-seeds AA_MIN_SEEDS\n                \
+  \                (optional, integer, positive) Minimum number\n                \
+  \                of seeds to search for during aminoacid\n                     \
+  \           alignment. Relevant for short sequences. In long\n                 \
+  \               sequences, the number of seeds is determined by\n              \
+  \                  `--aa-seed-spacing`. (default: 10)\n      --aa-seed-spacing AA_SEED_SPACING\n\
+  \                                (optional, integer, non-negative) Spacing\n   \
+  \                             between seeds during aminoacid alignment.\n      \
+  \                          (default: 100)\n      --aa-mismatches-allowed AA_MISMATCHES_ALLOWED\n\
+  \                                (optional, integer, non-negative) Maximum\n   \
+  \                             number of mismatching aminoacids allowed for a\n \
+  \                               seed to be considered a match. (default: 2)\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/nextalign:0.1.6--0

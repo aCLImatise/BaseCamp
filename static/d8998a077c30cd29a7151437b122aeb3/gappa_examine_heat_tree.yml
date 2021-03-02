@@ -1,0 +1,288 @@
+!Command
+command:
+- gappa
+- examine
+- heat-tree
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --jplace-path
+  description: ":PATH(existing)=[] ... REQUIRED\nList of jplace files or directories\
+    \ to process. For directories, only files with the extension `.jplace[.gz]` are\
+    \ processed."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --mass-norm
+  description: ":{absolute,relative}=absolute\nSet the per-sample normalization method.\
+    \ 'absolute' does not change the masses, while 'relative' normalizes them to a\
+    \ total mass of 1 per input jplace sample."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --point-mass
+  description: Treat every pquery as a point mass concentrated on the highest-weight
+    placement.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ignore-multiplicities
+  description: Set the multiplicity of each pquery to 1.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --color-list
+  description: =BuPuBk    List of colors to use for the palette. Can either be the
+    name of a color list, a file containing one color per line, or an actual list
+    of colors.
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --reverse-color-list
+  description: If set, the `--color-list` is reversed.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --log-scaling
+  description: If set, the sequential color list is logarithmically scaled instead
+    of linearily.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max-value
+  description: =1         Maximum value that is represented by the color scale. If
+    not set, the maximum value in the data is used.
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --clip-over
+  description: Clip (clamp) values greater than max to be inside `[ min, max ]`. If
+    set, `--over-color` is not used to indicate values out of range.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --over-color
+  description: =#00ffff   Color used to indicate values above max.
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --min-value
+  description: =0         Minimum value that is represented by the color scale. If
+    not set, the minimum value in the data is used.
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --clip-under
+  description: Clip (clamp) values less than min to be inside `[ min, max ]`. If set,
+    `--under-color` is not used to indicate values out of range.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --under-color
+  description: =#ff00ff  Color used to indicate values below min.
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --clip
+  description: Clip (clamp) values to be inside `[ min, max ]`. This option is a shortcut
+    to set `--clip-under` and `--clip-over` at once.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --mask-value
+  description: =nan      Mask value that identifies invalid values. Value in the data
+    that compare equal to the mask value are colored using --mask-color. This is meant
+    as a simple means of filtering and visualizing invalid values. If not set, no
+    masking value is applied.
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --mask-color
+  description: =#ffff00   Color used to indicate masked or invalid values.
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --out-dir
+  description: =.            Directory to write files to
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --file-prefix
+  description: File prefix for output files
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --file-suffix
+  description: File suffix for output files
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --write-newick-tree
+  description: If set, the tree is written to a Newick file.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --write-nexus-tree
+  description: If set, the tree is written to a Nexus file.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --write-phyloxml-tree
+  description: If set, the tree is written to a Phyloxml file.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --write-svg-tree
+  description: If set, the tree is written to a Svg file.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --svg-tree-shape
+  description: ":{circular,rectangular}=circular\nShape of the tree."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --svg-tree-type
+  description: ":{cladogram,phylogram}=cladogram\nType of the tree."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --svg-tree-stroke-width
+  description: "=5\nSvg stroke width for the branches of the tree."
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --svg-tree-ladderize
+  description: If set, the tree is ladderized.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --allow-file-overwriting
+  description: Allow to overwrite existing output files instead of aborting the command.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: Produce more verbose output.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: =8            Number of threads to use for calculations.
+  args: !SimpleFlagArg
+    name: UINT
+- !Flag
+  optional: true
+  synonyms:
+  - --log-file
+  description: Write all output to a log file, in addition to standard output to the
+    terminal.
+  args: !SimpleFlagArg
+    name: TEXT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Print this help message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Make a tree with edges colored according to the placement mass of the\
+  \ samples.\nUsage: gappa examine heat-tree [OPTIONS]\n\nInput:\n  --jplace-path\
+  \ TEXT:PATH(existing)=[] ... REQUIRED\n                              List of jplace\
+  \ files or directories to process. For directories, only files with the extension\
+  \ `.jplace[.gz]` are processed.\n\n\nSettings:\n  --mass-norm TEXT:{absolute,relative}=absolute\n\
+  \                              Set the per-sample normalization method. 'absolute'\
+  \ does not change the masses, while 'relative' normalizes them to a total mass of\
+  \ 1 per input jplace sample.\n  --point-mass                Treat every pquery as\
+  \ a point mass concentrated on the highest-weight placement.\n  --ignore-multiplicities\
+  \     Set the multiplicity of each pquery to 1.\n\n\nColor:\n  --color-list TEXT=BuPuBk\
+  \    List of colors to use for the palette. Can either be the name of a color list,\
+  \ a file containing one color per line, or an actual list of colors.\n  --reverse-color-list\
+  \        If set, the `--color-list` is reversed.\n  --log-scaling              \
+  \ If set, the sequential color list is logarithmically scaled instead of linearily.\n\
+  \  --max-value FLOAT=1         Maximum value that is represented by the color scale.\
+  \ If not set, the maximum value in the data is used.\n  --clip-over            \
+  \     Clip (clamp) values greater than max to be inside `[ min, max ]`. If set,\
+  \ `--over-color` is not used to indicate values out of range.\n  --over-color TEXT=#00ffff\
+  \   Color used to indicate values above max.\n  --min-value FLOAT=0         Minimum\
+  \ value that is represented by the color scale. If not set, the minimum value in\
+  \ the data is used.\n  --clip-under                Clip (clamp) values less than\
+  \ min to be inside `[ min, max ]`. If set, `--under-color` is not used to indicate\
+  \ values out of range.\n  --under-color TEXT=#ff00ff  Color used to indicate values\
+  \ below min.\n  --clip                      Clip (clamp) values to be inside `[\
+  \ min, max ]`. This option is a shortcut to set `--clip-under` and `--clip-over`\
+  \ at once.\n  --mask-value FLOAT=nan      Mask value that identifies invalid values.\
+  \ Value in the data that compare equal to the mask value are colored using --mask-color.\
+  \ This is meant as a simple means of filtering and visualizing invalid values. If\
+  \ not set, no masking value is applied.\n  --mask-color TEXT=#ffff00   Color used\
+  \ to indicate masked or invalid values.\n\n\nOutput:\n  --out-dir TEXT=.       \
+  \     Directory to write files to\n  --file-prefix TEXT          File prefix for\
+  \ output files\n  --file-suffix TEXT          File suffix for output files\n\n\n\
+  Tree Output:\n  --write-newick-tree         If set, the tree is written to a Newick\
+  \ file.\n  --write-nexus-tree          If set, the tree is written to a Nexus file.\n\
+  \  --write-phyloxml-tree       If set, the tree is written to a Phyloxml file.\n\
+  \  --write-svg-tree            If set, the tree is written to a Svg file.\n\n\n\
+  Svg Tree Output:\n  --svg-tree-shape TEXT:{circular,rectangular}=circular\n    \
+  \                          Shape of the tree.\n  --svg-tree-type TEXT:{cladogram,phylogram}=cladogram\n\
+  \                              Type of the tree.\n  --svg-tree-stroke-width FLOAT=5\n\
+  \                              Svg stroke width for the branches of the tree.\n\
+  \  --svg-tree-ladderize        If set, the tree is ladderized.\n\n\nGlobal Options:\n\
+  \  --allow-file-overwriting    Allow to overwrite existing output files instead\
+  \ of aborting the command.\n  --verbose                   Produce more verbose output.\n\
+  \  --threads UINT=8            Number of threads to use for calculations.\n  --log-file\
+  \ TEXT             Write all output to a log file, in addition to standard output\
+  \ to the terminal.\n  --help                      Print this help message and exit.\n\
+  \ngappa - a toolkit for analyzing and visualizing phylogenetic (placement) data\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/gappa:0.7.0--he513fc3_0

@@ -1,0 +1,64 @@
+!Command
+command:
+- checkv
+- update_database
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: source_db
+  description: Path to current CheckV database.
+- !Positional
+  optional: false
+  position: 1
+  name: dest_db
+  description: Path to updated CheckV database.
+- !Positional
+  optional: false
+  position: 2
+  name: genomes
+  description: "FASTA file of complete genomes to add to database, where each\nnucleotide\
+    \ sequence represents one genome."
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --quiet
+  description: Suppress logging messages
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --restart
+  description: Overwrite existing database
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: Number of threads for Prodigal and DIAMOND
+  args: !SimpleFlagArg
+    name: INT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Update CheckV's database with your own complete genomes\n\nusage: checkv\
+  \ update_database <source_db> <dest_db> <genomes> [options]\n\npositional arguments:\n\
+  \  source_db      Path to current CheckV database.\n  dest_db        Path to updated\
+  \ CheckV database.\n  genomes        FASTA file of complete genomes to add to database,\
+  \ where each\n                 nucleotide sequence represents one genome.\n\noptional\
+  \ arguments:\n  -h, --help     show this help message and exit\n  --quiet      \
+  \  Suppress logging messages\n  --restart      Overwrite existing database\n  --threads\
+  \ INT  Number of threads for Prodigal and DIAMOND\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/checkv:0.7.0--py_1

@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import String, File, Boolean
+
+Enet_Predict_Pyseer_V0_1_0 = CommandToolBuilder(tool="enet_predict_pyseer", base_command=["enet_predict_pyseer"], inputs=[ToolInput(tag="in_threshold", input_type=String(optional=True), prefix="--threshold", doc=InputDocumentation(doc="Threshold to pick binary predictions")), ToolInput(tag="in_lineage_clusters", input_type=String(optional=True), prefix="--lineage-clusters", doc=InputDocumentation(doc="Custom clusters to use as lineages to report\nstratified accuracy")), ToolInput(tag="in_true_values", input_type=File(optional=True), prefix="--true-values", doc=InputDocumentation(doc="Pheno file with known phenotypes to calculate accuracy")), ToolInput(tag="in_ignore_missing", input_type=Boolean(optional=True), prefix="--ignore-missing", doc=InputDocumentation(doc="Treat missing values as REF/0 rather than using the\nmean AF")), ToolInput(tag="in_km_ers", input_type=File(optional=True), prefix="--kmers", doc=InputDocumentation(doc="Kmers file")), ToolInput(tag="in_vcf", input_type=File(optional=True), prefix="--vcf", doc=InputDocumentation(doc="VCF file. Will filter any non 'PASS' sites")), ToolInput(tag="in_pres", input_type=String(optional=True), prefix="--pres", doc=InputDocumentation(doc="Presence/absence .Rtab matrix as produced by roary and")), ToolInput(tag="in_uncompressed", input_type=Boolean(optional=True), prefix="--uncompressed", doc=InputDocumentation(doc="Uncompressed kmers file [Default: gzipped]")), ToolInput(tag="in_covariates", input_type=File(optional=True), prefix="--covariates", doc=InputDocumentation(doc="User-defined covariates file (tab-delimited, no\nheader, first column contains sample names)")), ToolInput(tag="in_use_covariates", input_type=Boolean(optional=True), prefix="--use-covariates", doc=InputDocumentation(doc="[USE_COVARIATES [USE_COVARIATES ...]]\nCovariates to use. Format is '2 3q 4' (q for\nquantitative) [Default: load covariates but don't use\nthem]\n")), ToolInput(tag="in_model", input_type=String(), position=0, doc=InputDocumentation(doc="Name of fitted model pickle file (.pkl)")), ToolInput(tag="in_samples", input_type=String(), position=1, doc=InputDocumentation(doc="File with samples to predict")), ToolInput(tag="in_piggy", input_type=String(), position=0, doc=InputDocumentation(doc="--burden BURDEN       VCF regions to group variants by for burden testing"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Enet_Predict_Pyseer_V0_1_0().translate("wdl", allow_empty_container=True)
+

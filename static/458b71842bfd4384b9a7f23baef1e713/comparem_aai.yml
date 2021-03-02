@@ -1,0 +1,95 @@
+!Command
+command:
+- comparem
+- aai
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: query_gene_file
+  description: file with all query genes
+- !Positional
+  optional: false
+  position: 1
+  name: sorted_hit_table
+  description: "sorted file indicating genes passing sequence\nsimilarity criteria"
+- !Positional
+  optional: false
+  position: 2
+  name: output_dir
+  description: output directory
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --evalue
+  description: "maximum e-value for reporting an alignments (default:\n0.001)"
+  args: !SimpleFlagArg
+    name: EVALUE
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --per_identity
+  description: "minimum percent identity for reporting an alignment\n(default: 30.0)"
+  args: !SimpleFlagArg
+    name: PER_IDENTITY
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --per_aln_len
+  description: "minimum percent coverage of query sequence for\nreporting an alignment\
+    \ (default: 70.0)"
+  args: !SimpleFlagArg
+    name: PER_ALN_LEN
+- !Flag
+  optional: true
+  synonyms:
+  - --keep_rbhs
+  description: create file with reciprocal best hits
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --cpus
+  description: 'number of CPUs to use (default: 1)'
+  args: !SimpleFlagArg
+    name: CPUS
+- !Flag
+  optional: true
+  synonyms:
+  - --silent
+  description: suppress output
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: comparem aai [-h] [-e EVALUE] [-p PER_IDENTITY] [-a PER_ALN_LEN]\n\
+  \                    [--keep_rbhs] [-c CPUS] [--silent]\n                    query_gene_file\
+  \ sorted_hit_table output_dir\n\nCalculate the AAI between all genome pairs.\n\n\
+  positional arguments:\n  query_gene_file       file with all query genes\n  sorted_hit_table\
+  \      sorted file indicating genes passing sequence\n                        similarity\
+  \ criteria\n  output_dir            output directory\n\noptional arguments:\n  -h,\
+  \ --help            show this help message and exit\n  -e, --evalue EVALUE   maximum\
+  \ e-value for reporting an alignments (default:\n                        0.001)\n\
+  \  -p, --per_identity PER_IDENTITY\n                        minimum percent identity\
+  \ for reporting an alignment\n                        (default: 30.0)\n  -a, --per_aln_len\
+  \ PER_ALN_LEN\n                        minimum percent coverage of query sequence\
+  \ for\n                        reporting an alignment (default: 70.0)\n  --keep_rbhs\
+  \           create file with reciprocal best hits\n  -c, --cpus CPUS       number\
+  \ of CPUs to use (default: 1)\n  --silent              suppress output\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/comparem:0.1.2--py_0

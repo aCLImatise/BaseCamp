@@ -1,0 +1,118 @@
+!Command
+command:
+- taxon_filter.py
+- deplete_blastn_bam
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: outBam
+  description: Use blastn to remove reads that match at least one of the specified
+    databases.
+- !Positional
+  optional: false
+  position: 0
+  name: inBam
+  description: Input BAM file.
+- !Positional
+  optional: false
+  position: 1
+  name: refDbs
+  description: One or more reference databases for blast.
+- !Positional
+  optional: false
+  position: 2
+  name: outBam
+  description: Output BAM file with matching reads removed.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: The number of threads to use in running blastn.
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - --chunkSize
+  description: 'FASTA chunk size (default: 1000000)'
+  args: !SimpleFlagArg
+    name: CHUNKSIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --JVMmemory
+  description: 'JVM virtual memory size (default: 4g)'
+  args: !SimpleFlagArg
+    name: JVMMEMORY
+- !Flag
+  optional: true
+  synonyms:
+  - --loglevel
+  description: 'Verboseness of output. [default: DEBUG]'
+  args: !ChoiceFlagArg
+    choices: !!set
+      INFO:
+      DEBUG:
+      CRITICAL:
+      WARNING:
+      ERROR:
+      EXCEPTION:
+- !Flag
+  optional: true
+  synonyms:
+  - --tmp_dir
+  description: 'Base directory for temp files. [default: /tmp]'
+  args: !SimpleFlagArg
+    name: TMP_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --tmp_dirKeep
+  description: "Keep the tmp_dir if an exception occurs while running.\nDefault is\
+    \ to delete all temp files at the end, even\nif there's a failure.\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  - -V
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: taxon_filter.py subcommand deplete_blastn_bam [-h] [--threads THREADS]\n\
+  \                                                     [--chunkSize CHUNKSIZE]\n\
+  \                                                     [--JVMmemory JVMMEMORY]\n\
+  \                                                     [--loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}]\n\
+  \                                                     [--version]\n            \
+  \                                         [--tmp_dir TMP_DIR]\n                \
+  \                                     [--tmp_dirKeep]\n                        \
+  \                             inBam refDbs [refDbs ...]\n                      \
+  \                               outBam\n\nUse blastn to remove reads that match\
+  \ at least one of the specified databases.\n\npositional arguments:\n  inBam   \
+  \              Input BAM file.\n  refDbs                One or more reference databases\
+  \ for blast.\n  outBam                Output BAM file with matching reads removed.\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  --threads THREADS     The number of threads to use in running blastn.\n  --chunkSize\
+  \ CHUNKSIZE\n                        FASTA chunk size (default: 1000000)\n  --JVMmemory\
+  \ JVMMEMORY\n                        JVM virtual memory size (default: 4g)\n  --loglevel\
+  \ {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}\n                        Verboseness\
+  \ of output. [default: DEBUG]\n  --version, -V         show program's version number\
+  \ and exit\n  --tmp_dir TMP_DIR     Base directory for temp files. [default: /tmp]\n\
+  \  --tmp_dirKeep         Keep the tmp_dir if an exception occurs while running.\n\
+  \                        Default is to delete all temp files at the end, even\n\
+  \                        if there's a failure.\n"
+generated_using:
+- --help
+docker_image:

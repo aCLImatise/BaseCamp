@@ -1,0 +1,88 @@
+!Command
+command:
+- tagDir2hicFile.pl
+- FILE
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: tagDir2hicFile.pl
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: tag directory
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -juicer
+  description: (create *.hic file with juicer, "-juicer auto" places file in tagdir)
+  args: !SimpleFlagArg
+    name: filename.hic
+- !Flag
+  optional: true
+  synonyms:
+  - -genome
+  description: "(genome is passed on to juicer_tools - if using a normal genome, i.e.\
+    \ hg38,\nmm10, etc. it's probably best to specify the genome code - if juicer_tools\
+    \ can recognize it.\nOtherwise specify the path to a chrom.sizes file instead\
+    \ of the genome code)"
+  args: !SimpleFlagArg
+    name: genome
+- !Flag
+  optional: true
+  synonyms:
+  - -juicerExe
+  description: "<\"command to run juicer_tools\"> (executable for running juicer_tools,\n\
+    by default assumes \"juicer_tools\" is in the executable PATH)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -juicerOpt
+  description: <"juicer options"> (command line options to pass to juicer, use quotes
+    "...")
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: '<#> (number of CPUs to use during sort command for juicer file creation,
+    default: 1)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -short
+  description: "(output read pairs in \"short format\" for processing with juicer,\n\
+    but don't run juicer_tools. This file will not be sorted the way juicer wants\
+    \ it)\n"
+  args: !SimpleFlagArg
+    name: filename
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "What is --help??\n\n\tUsage: tagDir2hicFile.pl <tag directory> [options]\n\
+  \n\tBy default, this program will output a file in \"HiC summary\" format to stdout:\n\
+  \t\tid<tab>chr1<tab>pos1<tab>strand1<tab>chr2<tab>pos2<tab>strand2\n\n\tOptions\
+  \ below can be set to help output a *.hic file for use with juicebox/juicer\n\n\t\
+  Options (most are for use with juicer):\n\t\t-juicer <filename.hic> (create *.hic\
+  \ file with juicer, \"-juicer auto\" places file in tagdir)\n\t\t-genome <genome>\
+  \ (genome is passed on to juicer_tools - if using a normal genome, i.e. hg38,\n\t\
+  \t\tmm10, etc. it's probably best to specify the genome code - if juicer_tools can\
+  \ recognize it.\n\t\t\tOtherwise specify the path to a chrom.sizes file instead\
+  \ of the genome code)\n\t\t-juicerExe <\"command to run juicer_tools\"> (executable\
+  \ for running juicer_tools,\n\t\t\tby default assumes \"juicer_tools\" is in the\
+  \ executable PATH)\n\t\t-juicerOpt <\"juicer options\"> (command line options to\
+  \ pass to juicer, use quotes \"...\")\n\t\t-p <#> (number of CPUs to use during\
+  \ sort command for juicer file creation, default: 1)\n\t\t-short <filename> (output\
+  \ read pairs in \"short format\" for processing with juicer,\n\t\t\tbut don't run\
+  \ juicer_tools. This file will not be sorted the way juicer wants it)\n\n"
+generated_using:
+- --help
+docker_image:

@@ -1,0 +1,459 @@
+!Command
+command:
+- tRNAscan-SE
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -E
+  description: ': search for eukaryotic tRNAs (default)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -B
+  description: ': search for bacterial tRNAs'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -A
+  description: ': search for archaeal tRNAs'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  description: ": search for mitochondrial tRNAs\noptions: mammal, vert"
+  args: !SimpleFlagArg
+    name: model
+- !Flag
+  optional: true
+  synonyms:
+  - -O
+  description: ': search for other organellar tRNAs'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -G
+  description: ': use general tRNA model (cytoslic tRNAs from all 3 domains included)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --mt
+  description: ": use mito tRNA models for cytosolic/mito detemination\n(if not specified,\
+    \ only cytosolic isotype-specific model scan will be performed)"
+  args: !SimpleFlagArg
+    name: model
+- !Flag
+  optional: true
+  synonyms:
+  - -I
+  description: ": search using Infernal\ndefault use with -E, -B, -A, or -G; optional\
+    \ for -O"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max
+  description: ': maximum sensitivity mode - search using Infernal without hmm filter
+    (very slow)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  description: ": search using the legacy method (tRNAscan, EufindtRNA, and COVE)\n\
+    use with -E, -B, -A or -G"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -C
+  - --cove
+  description: ": search using COVE analysis only (legacy, extremely slow)\ndefault\
+    \ use with -O"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -H
+  - --breakdown
+  description: ": show breakdown of primary and secondary structure components to\n\
+    covariance model bit scores"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  - --nopseudo
+  description: ': disable pseudogene checking'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: ': save final results in <file>'
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --struct
+  description: ': save tRNA secondary structures to <file>'
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --isospecific
+  description: ': save results using isotype-specific models in <file>'
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --stats
+  description: ": save statistics summary for run in <file>\n(speed, # tRNAs found\
+    \ in each part of search, etc)"
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --bed
+  description: ': save results in BED file format of <file>'
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --fasta
+  description: ': save predicted tRNA sequences in FASTA file format of <file>'
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --log
+  description: ': save log of program progress in <file>'
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - --detail
+  description: ': display prediction outputs in detailed view'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --brief
+  description: ': brief output format (no column headers)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --prefix
+  description: ': use <label> prefix for all default output file names'
+  args: !SimpleFlagArg
+    name: label
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --progress
+  description: ': display program progress messages'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  description: ': quiet mode (credits & run option selections suppressed)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -y
+  - --hitsrc
+  description: ": show origin of hits (Ts=tRNAscan 1.4, Eu=EufindtRNA,\nBo=Both Ts\
+    \ and Eu, Inf=Infernal)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -X
+  - --score
+  description: ': set cutoff score (in bits) for reporting tRNAs (default=20)'
+  args: !SimpleFlagArg
+    name: score
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --gencode
+  description: ": use alternate genetic codes specified in <file> for\ndetermining\
+    \ tRNA type"
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  - --pad
+  description: ": use <number> nucleotides padding when passing first-pass\ntRNA bounds\
+    \ predictions to CM analysis (default=8)"
+  args: !SimpleFlagArg
+    name: number
+- !Flag
+  optional: true
+  synonyms:
+  - --len
+  description: ": set max length of tRNA intron+variable region for legacy search\
+    \ mode\n(default=116bp)"
+  args: !SimpleFlagArg
+    name: length
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --conf
+  description: ': tRNAscan-SE configuration file (default: tRNAscan-SE.conf)'
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -Q
+  - --forceow
+  description: ": do not prompt user before overwriting pre-existing\nresult files\
+    \  (for batch processing)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --match
+  description: ": search only sequences with names matching <EXPR> string\n(<EXPR>\
+    \ may contain * or ? wildcard chars)"
+  args: !SimpleFlagArg
+    name: EXPR
+- !Flag
+  optional: true
+  synonyms:
+  - --search
+  description: ": start search at sequence with name matching <EXPR> string\nand continue\
+    \ to end of input sequence file(s)"
+  args: !SimpleFlagArg
+    name: EXPR
+- !Flag
+  optional: true
+  synonyms:
+  - -U
+  description: ': search for tRNAs with alternate models defined in configuration
+    file'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --tscan
+  description: ': search using tRNAscan only (defaults to strict params)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --tmode
+  description: ": explicitly set tRNAscan params, where <mode>=R or S\n(R=relaxed,\
+    \ S=strict tRNAscan v1.3 params)"
+  args: !SimpleFlagArg
+    name: mode
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: ': save verbose tRNAscan 1.3 output to <file>'
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - --nomerge
+  description: ": Keep redundant tRNAscan 1.3 hits (don't filter out multiple\npredictions\
+    \ per tRNA identification)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --eufind
+  description: ": search using Eukaryotic tRNA finder (EufindtRNA) only\n(defaults\
+    \ to Normal seach parameters when run alone,\nor to Relaxed search params when\
+    \ run with Cove)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --emode
+  description: ": explicitly set EufindtRNA params, where <mode>=R, N, or S\n(relaxed,\
+    \ normal, or strict)"
+  args: !SimpleFlagArg
+    name: mode
+- !Flag
+  optional: true
+  synonyms:
+  - --iscore
+  description: ': manually set "intermediate" cutoff score for EufindtRNA'
+  args: !SimpleFlagArg
+    name: score
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --fsres
+  description: ": save first-pass scan results from EufindtRNA, tRNAscan, or\nInfernal\
+    \ hmm in <file> in tabular results format"
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - --mid
+  description: ': fast scan mode - search using Infernal with mid-level strictness
+    of hmm filter'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  - --falsepos
+  description: ": save first-pass candidate tRNAs in <file> that were then\nfound\
+    \ to be false positives by second-pass analysis"
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - --missed
+  description: ": save all seqs that do NOT have at least one\ntRNA prediction in\
+    \ them (aka \"missed\" seqs)"
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - --thread
+  description: ': number of threads used for running infernal (default is to use available
+    threads)'
+  args: !SimpleFlagArg
+    name: number
+- !Flag
+  optional: true
+  synonyms:
+  - -options
+  description: ''
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: ': print this help message'
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "\nUsage: tRNAscan-SE [-options] <FASTA file(s)>\n\n  Scan a sequence file\
+  \ for tRNAs \n   -- default: use Infernal & tRNA covariance models\n      with eukaryotic\
+  \ sequences \n      (use 'Search Mode Options' below to scan other types of sequences)\n\
+  \nSearch Mode Options:\n\n  -E                          : search for eukaryotic\
+  \ tRNAs (default)\n  -B                          : search for bacterial tRNAs\n\
+  \  -A                          : search for archaeal tRNAs\n  -M <model>       \
+  \           : search for mitochondrial tRNAs\n                                 \
+  \ options: mammal, vert\n  -O                          : search for other organellar\
+  \ tRNAs\n  -G                          : use general tRNA model (cytoslic tRNAs\
+  \ from all 3 domains included)\n  --mt <model>                : use mito tRNA models\
+  \ for cytosolic/mito detemination\n                                  (if not specified,\
+  \ only cytosolic isotype-specific model scan will be performed)\n  -I          \
+  \                : search using Infernal\n                                  default\
+  \ use with -E, -B, -A, or -G; optional for -O\n      --max                   : maximum\
+  \ sensitivity mode - search using Infernal without hmm filter (very slow)\n  -L\
+  \                          : search using the legacy method (tRNAscan, EufindtRNA,\
+  \ and COVE)\n                                  use with -E, -B, -A or -G\n  -C \
+  \ --cove                  : search using COVE analysis only (legacy, extremely slow)\n\
+  \                                  default use with -O\n  -H  --breakdown      \
+  \       : show breakdown of primary and secondary structure components to\n    \
+  \                              covariance model bit scores\n  -D  --nopseudo   \
+  \           : disable pseudogene checking\n\nOutput options:\n\n  -o  --output <file>\
+  \         : save final results in <file>\n  -f  --struct <file>         : save tRNA\
+  \ secondary structures to <file>\n  -s  --isospecific <file>    : save results using\
+  \ isotype-specific models in <file>\n  -m  --stats <file>          : save statistics\
+  \ summary for run in <file>\n                                  (speed, # tRNAs found\
+  \ in each part of search, etc)\n  -b  --bed <file>            : save results in\
+  \ BED file format of <file>\n  -a  --fasta <file>          : save predicted tRNA\
+  \ sequences in FASTA file format of <file>\n  -l  --log <file>            : save\
+  \ log of program progress in <file>\n  --detail                    : display prediction\
+  \ outputs in detailed view\n  --brief                     : brief output format\
+  \ (no column headers)\n\n  -? #                       : '#' in place of <file> chooses\
+  \ default name for output files\n  -p  --prefix <label>        : use <label> prefix\
+  \ for all default output file names\n\n  -d  --progress              : display program\
+  \ progress messages\n  -q  --quiet                 : quiet mode (credits & run option\
+  \ selections suppressed)\n  -y  --hitsrc                : show origin of hits (Ts=tRNAscan\
+  \ 1.4, Eu=EufindtRNA, \n                                  Bo=Both Ts and Eu, Inf=Infernal)\n\
+  \nSpecify Alternate Cutoffs / Data Files:\n\n  -X  --score <score>         : set\
+  \ cutoff score (in bits) for reporting tRNAs (default=20)\n  -g  --gencode <file>\
+  \        : use alternate genetic codes specified in <file> for\n               \
+  \                   determining tRNA type\n  -z  --pad <number>          : use <number>\
+  \ nucleotides padding when passing first-pass\n                                \
+  \  tRNA bounds predictions to CM analysis (default=8)\n  --len <length>        \
+  \      : set max length of tRNA intron+variable region for legacy search mode\n\
+  \                                  (default=116bp)\nMisc Options:\n\n  -h  --help\
+  \                  : print this help message\n  -c  --conf <file>           : tRNAscan-SE\
+  \ configuration file (default: tRNAscan-SE.conf)\n  -Q  --forceow              \
+  \ : do not prompt user before overwriting pre-existing\n                       \
+  \           result files  (for batch processing)\n\n  --match <EXPR>           \
+  \   : search only sequences with names matching <EXPR> string\n                \
+  \                  (<EXPR> may contain * or ? wildcard chars)\n  --search <EXPR>\
+  \             : start search at sequence with name matching <EXPR> string\n    \
+  \                              and continue to end of input sequence file(s)\nSpecial\
+  \ Advanced Options (for testing & special purposes)\n\n  -U                    \
+  \      : search for tRNAs with alternate models defined in configuration file\n\n\
+  \  -t  --tscan                 : search using tRNAscan only (defaults to strict\
+  \ params)\n  --tmode <mode>              : explicitly set tRNAscan params, where\
+  \ <mode>=R or S\n                                  (R=relaxed, S=strict tRNAscan\
+  \ v1.3 params)\n\n  -v  --verbose <file>        : save verbose tRNAscan 1.3 output\
+  \ to <file>\n  --nomerge                   : Keep redundant tRNAscan 1.3 hits (don't\
+  \ filter out multiple\n                                  predictions per tRNA identification)\n\
+  \  -e  --eufind                : search using Eukaryotic tRNA finder (EufindtRNA)\
+  \ only\n                                  (defaults to Normal seach parameters when\
+  \ run alone,\n                                  or to Relaxed search params when\
+  \ run with Cove)\n  --emode <mode>              : explicitly set EufindtRNA params,\
+  \ where <mode>=R, N, or S\n                                  (relaxed, normal, or\
+  \ strict)\n\n  --iscore <score>            : manually set \"intermediate\" cutoff\
+  \ score for EufindtRNA\n  -r  --fsres <file>          : save first-pass scan results\
+  \ from EufindtRNA, tRNAscan, or\n                                  Infernal hmm\
+  \ in <file> in tabular results format\n  --mid                       : fast scan\
+  \ mode - search using Infernal with mid-level strictness of hmm filter\n  -F  --falsepos\
+  \ <file>       : save first-pass candidate tRNAs in <file> that were then\n    \
+  \                              found to be false positives by second-pass analysis\n\
+  \  --missed <file>             : save all seqs that do NOT have at least one\n \
+  \                                 tRNA prediction in them (aka \"missed\" seqs)\n\
+  \  --thread <number>           : number of threads used for running infernal (default\
+  \ is to use available threads)\n\n\n"
+generated_using:
+- --help
+docker_image:

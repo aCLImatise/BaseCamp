@@ -1,0 +1,137 @@
+!Command
+command:
+- rtg
+- rocplot
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: startup
+  description: --interpolate           if set, interpolate curves at regular intervals
+- !Positional
+  optional: false
+  position: 1
+  name: ROC
+  description: --scores                if set, show scores on the plot
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --curve
+  description: "ROC data file with title optionally specified\n(path[=title]). May\
+    \ be specified 0 or more times"
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --png
+  description: if set, output a PNG image to the given file
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --svg
+  description: if set, output a SVG image to the given file
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --zoom
+  description: "show a zoomed view with the given coordinates,\nsupplied in the form\
+    \ <xmax>,<ymax> or\n<xmin>,<ymin>,<xmax>,<ymax>"
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --cmd
+  description: "if set, print rocplot command used in previously\nsaved image"
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --hide-sidepane
+  description: if set, hide the side pane from the GUI on
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --line-width
+  description: sets the plot line width (Default is 2)
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --palette
+  description: "name of color palette to use. Allowed values are\n[blind_13, blind_15,\
+    \ blind_8, brewer_accent,\nbrewer_dark2, brewer_paired, brewer_pastel1,\nbrewer_pastel2,\
+    \ brewer_set1, brewer_set2,\nbrewer_set3, classic] (Default is classic)"
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --plain
+  description: if set, use a plain plot style
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -P
+  - --precision-sensitivity
+  description: set, plot precision vs sensitivity rather than
+  args: !SimpleFlagArg
+    name: if
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --title
+  description: title for the plot
+  args: !SimpleFlagArg
+    name: STRING
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: print help on command-line flag usage
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: rtg rocplot [OPTION]... FILE+\n                   [OPTION]... --curve\
+  \ STRING\n\nPlot ROC curves from vcfeval ROC data files, either to an image, or\
+  \ an\ninteractive GUI.\n\nFile Input/Output\n      --curve=STRING          ROC data\
+  \ file with title optionally specified\n                              (path[=title]).\
+  \ May be specified 0 or more times\n      --png=FILE              if set, output\
+  \ a PNG image to the given file\n      --svg=FILE              if set, output a\
+  \ SVG image to the given file\n      --zoom=STRING           show a zoomed view\
+  \ with the given coordinates,\n                              supplied in the form\
+  \ <xmax>,<ymax> or\n                              <xmin>,<ymin>,<xmax>,<ymax>\n\
+  \      FILE+                   ROC data file. May be specified 0 or more times\n\
+  \nReporting\n      --cmd=FILE              if set, print rocplot command used in\
+  \ previously\n                              saved image\n      --hide-sidepane \
+  \        if set, hide the side pane from the GUI on\n                          \
+  \    startup\n      --interpolate           if set, interpolate curves at regular\
+  \ intervals\n      --line-width=INT        sets the plot line width (Default is\
+  \ 2)\n      --palette=STRING        name of color palette to use. Allowed values\
+  \ are\n                              [blind_13, blind_15, blind_8, brewer_accent,\n\
+  \                              brewer_dark2, brewer_paired, brewer_pastel1,\n  \
+  \                            brewer_pastel2, brewer_set1, brewer_set2,\n       \
+  \                       brewer_set3, classic] (Default is classic)\n      --plain\
+  \                 if set, use a plain plot style\n  -P, --precision-sensitivity\
+  \ if set, plot precision vs sensitivity rather than\n                          \
+  \    ROC\n      --scores                if set, show scores on the plot\n  -t, --title=STRING\
+  \          title for the plot\n\nUtility\n  -h, --help                  print help\
+  \ on command-line flag usage\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/rtg-tools:3.12--0

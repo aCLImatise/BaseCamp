@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, Directory, String, File
+
+Tester_V0_1_0 = CommandToolBuilder(tool="tester", base_command=["tester"], inputs=[ToolInput(tag="in_quiet", input_type=Boolean(optional=True), prefix="--quiet", doc=InputDocumentation(doc="quiet")), ToolInput(tag="in_verbose", input_type=Boolean(optional=True), prefix="--verbose", doc=InputDocumentation(doc="verbose, default behavior")), ToolInput(tag="in_noisy", input_type=Boolean(optional=True), prefix="--noisy", doc=InputDocumentation(doc="noisy")), ToolInput(tag="in_recursive", input_type=Boolean(optional=True), prefix="--recursive", doc=InputDocumentation(doc="option to get tests from package recursively\n(default=false)")), ToolInput(tag="in_testdir", input_type=Directory(optional=True), prefix="--testdir", doc=InputDocumentation(doc="option to specify the name of the directory containing\nthe tests (default='Tests')")), ToolInput(tag="in_func_prefix", input_type=String(optional=True), prefix="--funcPrefix", doc=InputDocumentation(doc="option to specify the prefix a method or a function\nneeds, to be included in the list of tests.\n(default='test_')")), ToolInput(tag="in_mod_prefix", input_type=String(optional=True), prefix="--modPrefix", doc=InputDocumentation(doc="option to specify the prefix a test module needs, to\nbe included in the list of tests. (default= no prefix)")), ToolInput(tag="in_output", input_type=File(optional=True), prefix="--output", doc=InputDocumentation(doc="name of an output file")), ToolInput(tag="in_subprocess", input_type=Boolean(optional=True), prefix="--subprocess", doc=InputDocumentation(doc="option to specify whether or not to run each test\nmodule in a subprocess (default=False)")), ToolInput(tag="in_no_report", input_type=Boolean(optional=True), prefix="--noreport", doc=InputDocumentation(doc="option to specify whether or not a report file will be\ncreated. When the option is given no report will be\ncreated otherwise a report will be created in a\nTESTREPORT subdirectory. (default=a report will be\ncreated)")), ToolInput(tag="in_exit_on_fail", input_type=Boolean(optional=True), prefix="--exitOnFail", doc=InputDocumentation(doc="option to specify whether or not the tester should\nexit after the first failed test. (default=False)\n"))], outputs=[ToolOutput(tag="out_output", output_type=File(optional=True), selector=InputSelector(input_to_select="in_output", type_hint=File()), doc=OutputDocumentation(doc="name of an output file"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Tester_V0_1_0().translate("wdl", allow_empty_container=True)
+

@@ -1,0 +1,146 @@
+!Command
+command:
+- prepare_prot.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: ns
+  description: -CA_LOW_time CA_LOW_TIME
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: Input PDB file
+  args: !SimpleFlagArg
+    name: F
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: Output Directory
+  args: !SimpleFlagArg
+    name: O
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: Output file name
+  args: !SimpleFlagArg
+    name: NAME
+- !Flag
+  optional: true
+  synonyms:
+  - -no_vsite
+  description: Use virtual site for hydrogens
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -C
+  description: Ion concentration (mM), default = 0.15 (150mM)
+  args: !SimpleFlagArg
+    name: CONC
+- !Flag
+  optional: true
+  synonyms:
+  - -m_steps
+  description: Minimisation nsteps, default=10000
+  args: !SimpleFlagArg
+    name: MIN_STEPS
+- !Flag
+  optional: true
+  synonyms:
+  - -HA_time
+  description: "Equilibration with HA constraint time(ns), default =\n2.5 ns"
+  args: !SimpleFlagArg
+    name: HA_TIME
+- !Flag
+  optional: true
+  synonyms:
+  - -CA_time
+  description: Equilibration with HA constraint time(ns), default = 5
+  args: !SimpleFlagArg
+    name: CA_TIME
+- !Flag
+  optional: true
+  synonyms:
+  - -dt_HA
+  description: Equi HA dt, default=0.002 (2 fs)
+  args: !SimpleFlagArg
+    name: DT_HA
+- !Flag
+  optional: true
+  synonyms:
+  - -dt
+  description: Equi CA, CA_LOW, dt, default=0.005 (5 fs)
+  args: !SimpleFlagArg
+    name: DT
+- !Flag
+  optional: true
+  synonyms:
+  - -maxwarn
+  description: "Total number of warnings allowed for the\nequilibration, default=0"
+  args: !SimpleFlagArg
+    name: MAXWARN
+- !Flag
+  optional: true
+  synonyms:
+  - -nt
+  description: Total number of threads to start, default=0
+  args: !SimpleFlagArg
+    name: NT
+- !Flag
+  optional: true
+  synonyms:
+  - -ntmpi
+  description: Number of thread-MPI threads to start, default=0
+  args: !SimpleFlagArg
+    name: NTMPI
+- !Flag
+  optional: true
+  synonyms:
+  - -gpu_id
+  description: List of GPU device id-s to use, default=""
+  args: !SimpleFlagArg
+    name: GPUID
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: prepare_prot.py [-h] -f F -o O -n NAME [-no_vsite] [-C CONC]\n\
+  \                       [-m_steps MIN_STEPS] [-HA_time HA_TIME]\n              \
+  \         [-CA_time CA_TIME] [-CA_LOW_time CA_LOW_TIME]\n                      \
+  \ [-dt_HA DT_HA] [-dt DT] [-maxwarn MAXWARN] [-nt NT]\n                       [-ntmpi\
+  \ NTMPI] [-gpu_id GPUID]\n\n(i) Create topologie for a protein, (ii) minimize the\
+  \ protein structure in 2\nsteps, (iii) Sovate and add ions, (iv) minimize the system\
+  \ structure, (v)\nfirst equilibration with heavy atoms position restraints, (vi)\
+  \ second\nequilibration with alpha carbon position restraints and (vii) finaly\n\
+  equilibration with weak alpha carbon position restraints\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -f F               \
+  \   Input PDB file\n  -o O                  Output Directory\n  -n NAME        \
+  \       Output file name\n  -no_vsite             Use virtual site for hydrogens\n\
+  \  -C CONC               Ion concentration (mM), default = 0.15 (150mM)\n  -m_steps\
+  \ MIN_STEPS    Minimisation nsteps, default=10000\n  -HA_time HA_TIME      Equilibration\
+  \ with HA constraint time(ns), default =\n                        2.5 ns\n  -CA_time\
+  \ CA_TIME      Equilibration with HA constraint time(ns), default = 5\n        \
+  \                ns\n  -CA_LOW_time CA_LOW_TIME\n                        Equilibration\
+  \ with HA constraint time(ns), default =\n                        10 ns\n  -dt_HA\
+  \ DT_HA          Equi HA dt, default=0.002 (2 fs)\n  -dt DT                Equi\
+  \ CA, CA_LOW, dt, default=0.005 (5 fs)\n  -maxwarn MAXWARN      Total number of\
+  \ warnings allowed for the\n                        equilibration, default=0\n \
+  \ -nt NT                Total number of threads to start, default=0\n  -ntmpi NTMPI\
+  \          Number of thread-MPI threads to start, default=0\n  -gpu_id GPUID   \
+  \      List of GPU device id-s to use, default=\"\"\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/gromacs_py:1.2.1--py_0

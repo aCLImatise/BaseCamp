@@ -1,0 +1,117 @@
+!Command
+command:
+- htseq-qa
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --type
+  description: "type of read_file (one of: sam [default], bam, solexa-\nexport, fastq,\
+    \ solexa-fastq)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      bam:
+      solexa-fastq:
+      fastq:
+      sam:
+      solexa-export:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --outfile
+  description: output filename (default is <read_file>.pdf)
+  args: !SimpleFlagArg
+    name: OUTFILE
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --readlength
+  description: "the maximum read length (when not specified, the\nscript guesses from\
+    \ the file"
+  args: !SimpleFlagArg
+    name: READLEN
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --gamma
+  description: "the gamma factor for the contrast adjustment of the\nquality score\
+    \ plot"
+  args: !SimpleFlagArg
+    name: GAMMA
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --nosplit
+  description: do not split reads in unaligned and aligned ones
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --maxqual
+  description: "the maximum quality score that appears in the data\n(default: 41)"
+  args: !SimpleFlagArg
+    name: MAXQUAL
+- !Flag
+  optional: true
+  synonyms:
+  - --primary-only
+  description: "For SAM/BAM input files, ignore alignments that are\nnot primary.\
+    \ This only affects 'multimapper' reads\nthat align to several regions in the\
+    \ genome. By\nchoosing this option, each read will only count as\none; without\
+    \ this option, each of its alignments\ncounts as one."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max-records
+  description: "Limit the analysis to the first N reads/alignments.\n"
+  args: !SimpleFlagArg
+    name: MAX_RECORDS
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: htseq-qa [-h] [-t {sam,bam,solexa-export,fastq,solexa-fastq}]\n\
+  \                [-o OUTFILE] [-r READLEN] [-g GAMMA] [-n] [-m MAXQUAL]\n      \
+  \          [--primary-only] [--max-records MAX_RECORDS]\n                readfilename\n\
+  \nThis script take a file with high-throughput sequencing reads (supported\nformats:\
+  \ SAM, Solexa _export.txt, FASTQ, Solexa _sequence.txt) and performs a\nsimply quality\
+  \ assessment by producing plots showing the distribution of\ncalled bases and base-call\
+  \ quality scores by position within the reads. The\nplots are output as a PDF file.\n\
+  \npositional arguments:\n  readfilename          The file to count reads in (SAM/BAM\
+  \ or Fastq)\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  -t {sam,bam,solexa-export,fastq,solexa-fastq}, --type {sam,bam,solexa-export,fastq,solexa-fastq}\n\
+  \                        type of read_file (one of: sam [default], bam, solexa-\n\
+  \                        export, fastq, solexa-fastq)\n  -o OUTFILE, --outfile OUTFILE\n\
+  \                        output filename (default is <read_file>.pdf)\n  -r READLEN,\
+  \ --readlength READLEN\n                        the maximum read length (when not\
+  \ specified, the\n                        script guesses from the file\n  -g GAMMA,\
+  \ --gamma GAMMA\n                        the gamma factor for the contrast adjustment\
+  \ of the\n                        quality score plot\n  -n, --nosplit         do\
+  \ not split reads in unaligned and aligned ones\n  -m MAXQUAL, --maxqual MAXQUAL\n\
+  \                        the maximum quality score that appears in the data\n  \
+  \                      (default: 41)\n  --primary-only        For SAM/BAM input\
+  \ files, ignore alignments that are\n                        not primary. This only\
+  \ affects 'multimapper' reads\n                        that align to several regions\
+  \ in the genome. By\n                        choosing this option, each read will\
+  \ only count as\n                        one; without this option, each of its alignments\n\
+  \                        counts as one.\n  --max-records MAX_RECORDS\n         \
+  \               Limit the analysis to the first N reads/alignments.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/htseq:0.13.5--py37h0498b6d_0

@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, Int, String, Boolean
+
+Kodoja_Build_Py_V0_1_0 = CommandToolBuilder(tool="kodoja_build.py", base_command=["kodoja_build.py"], inputs=[ToolInput(tag="in_output_dir", input_type=File(optional=True), prefix="--output_dir", doc=InputDocumentation(doc="Output directory path, required")), ToolInput(tag="in_threads", input_type=Int(optional=True), prefix="--threads", doc=InputDocumentation(doc="Number of threads, default=1")), ToolInput(tag="in_host_taxid", input_type=String(optional=True), prefix="--host_taxid", doc=InputDocumentation(doc="Host tax ID")), ToolInput(tag="in_download_parallel", input_type=Int(optional=True), prefix="--download_parallel", doc=InputDocumentation(doc="Parallel genome download, default=4")), ToolInput(tag="in_no_download", input_type=Boolean(optional=True), prefix="--no_download", doc=InputDocumentation(doc="Genomes have already been downloaded")), ToolInput(tag="in_list_extra_files", input_type=Boolean(optional=True), prefix="-e", doc=InputDocumentation(doc="[EXTRA_FILES [EXTRA_FILES ...]], --extra_files [EXTRA_FILES [EXTRA_FILES ...]]\nList of extra files added to 'extra' dir")), ToolInput(tag="in_list_taxid_extra", input_type=Boolean(optional=True), prefix="-x", doc=InputDocumentation(doc="[EXTRA_TAXIDS [EXTRA_TAXIDS ...]], --extra_taxids [EXTRA_TAXIDS [EXTRA_TAXIDS ...]]\nList of taxID of extra files")), ToolInput(tag="in_all_viruses", input_type=Boolean(optional=True), prefix="--all_viruses", doc=InputDocumentation(doc="Build databases with all viruses (not plant specific)")), ToolInput(tag="in_kraken_tax", input_type=File(optional=True), prefix="--kraken_tax", doc=InputDocumentation(doc="Path to taxonomy directory")), ToolInput(tag="in_kraken_km_er", input_type=Int(optional=True), prefix="--kraken_kmer", doc=InputDocumentation(doc="Kraken kmer size, default=31")), ToolInput(tag="in_kraken_minimizer", input_type=Int(optional=True), prefix="--kraken_minimizer", doc=InputDocumentation(doc="Kraken minimizer size, default=15")), ToolInput(tag="in_db_tag", input_type=String(optional=True), prefix="--db_tag", doc=InputDocumentation(doc="Suffix for databases"))], outputs=[ToolOutput(tag="out_output_dir", output_type=File(optional=True), selector=InputSelector(input_to_select="in_output_dir", type_hint=File()), doc=OutputDocumentation(doc="Output directory path, required"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Kodoja_Build_Py_V0_1_0().translate("wdl", allow_empty_container=True)
+

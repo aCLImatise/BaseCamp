@@ -1,0 +1,49 @@
+!Command
+command:
+- cutgff.sh
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: in
+  description: ''
+named: []
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nWritten by Brian Bushnell\nLast modified October 15, 2019\n\nDescription:\
+  \  Cuts out features defined by a gff file, and writes them\nto a new fasta.  Features\
+  \ are output in their sense strand.\n\nUsage:  cutgff.sh in=<fna file> gff=<gff\
+  \ file> out=<fna file>\n\nin= is optional, and gff filenames will be automaitically\
+  \ assumed based on\nthe fasta name if not specified.  This allows running on multiple\
+  \ files\nlike this:\n\ncutgff.sh types=rRNA out=16S.fa minlen=1440 maxlen=1620 attributes=16S\
+  \ bacteria/*.fna.gz\n\n\nFile Parameters:\nin=<file>           Input FNA (fasta)\
+  \ file.\ngff=<file>          Input GFF file (optional).\nout=<file>          Output\
+  \ FNA file.\n\nOther Parameters:\ntypes=CDS           Types of features to cut.\n\
+  invert=false        Invert selection: rather outputting the features,\n        \
+  \            mask them with Ns in the original sequences.\nattributes=         A\
+  \ comma-delimited list of strings.  If present, one of\n                    these\
+  \ strings must be in the gff line attributes.\nbannedattributes=   A comma-delimited\
+  \ list of banned strings.\nbanpartial=t        Ignore lines with 'partial=true'\
+  \ in attributes.\nminlen=1            Ignore lines shorter than this.\nmaxlen=2147483647\
+  \   Ignore lines longer than this.\nrenamebytaxid=f     Rename sequences with their\
+  \ taxID.  Input sequences\n                    must be named appropriately, e.g.\
+  \ in NCBI format.\ntaxmode=accession   Valid modes are:\n                      \
+  \ accession: Sequence names must start with an accession.\n                    \
+  \   gi:        Seqence names must start with gi|number\n                       taxid:\
+  \     Sequence names must start with tid|number\n                       header:\
+  \    Best effort for various header formats.\nrequirepresent=t    Crash if a taxID\
+  \ cannot be found for a sequence.\noneperfile=f        Only output one sequence\
+  \ per file.\nalign=f             Align ribosomal sequences to consensus (if available);\n\
+  \                    discard those with low identity, and flip those\n         \
+  \           annotated on the wrong strand.\nmaxns=-1            If non-negative,\
+  \ ignore features with more than this many\n                    undefined bases\
+  \ (Ns or IUPAC symbols).\nmaxnfraction=-1.0   If non-negative, ignore features with\
+  \ more than this\n                    fraction of undefined bases (Ns or IUPAC symbols).\n\
+  \                    Should be 0.0 to 1.0.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bbmap:38.90--h1296035_0

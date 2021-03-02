@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Int, File, String, Boolean, Directory
+
+Macrel_V0_1_0 = CommandToolBuilder(tool="macrel", base_command=["macrel"], inputs=[ToolInput(tag="in_threads", input_type=Int(optional=True), prefix="--threads", doc=InputDocumentation(doc="Number of threads to use (default: 1)")), ToolInput(tag="in_output", input_type=File(optional=True), prefix="--output", doc=InputDocumentation(doc="path to the output directory (default: None)")), ToolInput(tag="in_file_output", input_type=File(optional=True), prefix="--file-output", doc=InputDocumentation(doc="path to the output file (default: None)")), ToolInput(tag="in_tag", input_type=String(optional=True), prefix="--tag", doc=InputDocumentation(doc="Set output tag (default: macrel.out)")), ToolInput(tag="in_fast_a", input_type=File(optional=True), prefix="--fasta", doc=InputDocumentation(doc="path to the input FASTA file. This is used in both the\npeptides command (where the file is expected to\ncontain short amino-acid sequences) and in the contigs\ncommand (where the file is expected to contain longer\nnucleotide contigs) (default: None)")), ToolInput(tag="in_cluster", input_type=Int(optional=True), prefix="--cluster", doc=InputDocumentation(doc="Whether to pre-cluster the smORFs (at 100% identity)\nto avoid repeats (default: False)")), ToolInput(tag="in_keep_fast_a_headers", input_type=Boolean(optional=True), prefix="--keep-fasta-headers", doc=InputDocumentation(doc="Keep complete FASTA headers [get-smorfs command]\n(default: False)")), ToolInput(tag="in_tmpdir", input_type=Directory(optional=True), prefix="--tmpdir", doc=InputDocumentation(doc="Temporary directory to use (default: $TMPDIR in the\nenvironment or /tmp) (default: None)")), ToolInput(tag="in_keep_negatives", input_type=Boolean(optional=True), prefix="--keep-negatives", doc=InputDocumentation(doc="Whether to keep non-AMPs in the output (default:\nFalse)"))], outputs=[ToolOutput(tag="out_output", output_type=File(optional=True), selector=InputSelector(input_to_select="in_output", type_hint=File()), doc=OutputDocumentation(doc="path to the output directory (default: None)")), ToolOutput(tag="out_file_output", output_type=File(optional=True), selector=InputSelector(input_to_select="in_file_output", type_hint=File()), doc=OutputDocumentation(doc="path to the output file (default: None)"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Macrel_V0_1_0().translate("wdl", allow_empty_container=True)
+

@@ -1,0 +1,242 @@
+!Command
+command:
+- msstitch
+- peptides
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: SCORECOLPATTERN
+  description: '[--isobquantcolpattern QUANTCOLPATTERN]'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: Input file of {} format
+  args: !SimpleFlagArg
+    name: FN
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: Directory to output in
+  args: !SimpleFlagArg
+    name: OUTDIR
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: Output file
+  args: !SimpleFlagArg
+    name: OUTFILE
+- !Flag
+  optional: true
+  synonyms:
+  - --spectracol
+  description: "Specify this column number (first col. is 1)\ncontaining PSM table\
+    \ spectrafiles (e.g. mzML) if you\nwant to track PSMs when creating peptide tables"
+  args: !SimpleFlagArg
+    name: SPECTRACOL
+- !Flag
+  optional: true
+  synonyms:
+  - --scorecolpattern
+  description: "Regular expression pattern to find column where score\nto use (e.g.\
+    \ percolator svm-score) is written."
+  args: !SimpleFlagArg
+    name: SCORECOLPATTERN
+- !Flag
+  optional: true
+  synonyms:
+  - --isobquantcolpattern
+  description: "Unique text pattern to identify isobaric quant columns\nin input table."
+  args: !SimpleFlagArg
+    name: QUANTCOLPATTERN
+- !Flag
+  optional: true
+  synonyms:
+  - --ms1quantcolpattern
+  description: "Unique text pattern to identify precursor quant column\nin input table."
+  args: !SimpleFlagArg
+    name: PRECURSORQUANTCOLPATTERN
+- !Flag
+  optional: true
+  synonyms:
+  - --minint
+  description: "Intensity threshold of PSMs when calculating isobaric\nratios. Values\
+    \ below threshold will be set to NA.\nDefaults to no threshold."
+  args: !SimpleFlagArg
+    name: MININT
+- !Flag
+  optional: true
+  synonyms:
+  - --denomcols
+  description: "Column numbers of denominator channels when creating a\nsummarized\
+    \ feature table with isobaric ratios from\nPSMs"
+  args: !RepeatFlagArg
+    name: DENOMCOLS
+- !Flag
+  optional: true
+  synonyms:
+  - --denompatterns
+  description: "Regex patterns to detect denominator channels in a PSM\ntable, when\
+    \ creating a table with summarized feature\nisobaric ratios. If both --denompatterns\
+    \ and\n--denomcol are given then column numbers are used.\nUsage e.g. --denompattern\
+    \ _126 _131. Also possible:\n--denompattern _12[6-7] to detect multiple columns."
+  args: !RepeatFlagArg
+    name: DENOMPATTERNS
+- !Flag
+  optional: true
+  synonyms:
+  - --mediansweep
+  description: "Instead of choosing a denominator channel, use the\nmedian intensity\
+    \ of each PSM as its denominator."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --medianintensity
+  description: "Instead of choosing a denominator channel or median-\nsweeping, report\
+    \ the the median intensity of each\nsummarized feat per channel. This results\
+    \ in reported\nintensities rather than ratios."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --summarize-average
+  description: "Use average isobaric quantification values for\nsummarizing quant\
+    \ from PSMs, instead of default PSM\nmedian values"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --logisoquant
+  description: "Output log2 values for isoquant ratios. This\nlog2-transforms input\
+    \ PSM data prior to summarizing\nand optional normalization. Ratios will be calculated\n\
+    subtracted rather than divided, obviously."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --median-normalize
+  description: "Median-centering normalization for isobaric quant data\non protein\
+    \ or peptide level. This median-centers the\ndata for each channel by dividing\
+    \ with the median\nchannel value (or subtracting in case of log data),\nfor each\
+    \ channel in output features, e.g. proteins."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --modelqvals
+  description: "Create linear-modeled q-vals for peptides, to avoid\noverlapping stepped\
+    \ low-qvalue data of peptides with\ndifferent scores"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --qvalthreshold
+  description: "Specifies the inclusion threshold for q-values to fit\na linear model\
+    \ to. Any scores/q-values below this\nthreshold will not be used."
+  args: !SimpleFlagArg
+    name: QVALTHRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - --keep-psms-na-quant
+  description: "When summarizing isobaric quantification data, also\nuse the PSMs\
+    \ that have an NA in any channel, even if\nthese may contain overly noisy quant\
+    \ data in the other\nchannels. Normally these PSMs would be skipped in\nquantification"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --minpepnr
+  description: "Specifies the minimal amount of peptides (passing the\n--qvalthreshold)\
+    \ needed to fit a linear model, default\nis 10.\n"
+  args: !SimpleFlagArg
+    name: MINPEPTIDENR
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: msstitch peptides [-h] [--version] -i FN [-d OUTDIR] [-o OUTFILE]\n\
+  \                         [--spectracol SPECTRACOL] --scorecolpattern\n        \
+  \                 SCORECOLPATTERN\n                         [--isobquantcolpattern\
+  \ QUANTCOLPATTERN]\n                         [--ms1quantcolpattern PRECURSORQUANTCOLPATTERN]\n\
+  \                         [--minint MININT]\n                         [--denomcols\
+  \ DENOMCOLS [DENOMCOLS ...]]\n                         [--denompatterns DENOMPATTERNS\
+  \ [DENOMPATTERNS ...]]\n                         [--mediansweep] [--medianintensity]\n\
+  \                         [--summarize-average] [--logisoquant]\n              \
+  \           [--median-normalize] [--modelqvals]\n                         [--qvalthreshold\
+  \ QVALTHRESHOLD]\n                         [--keep-psms-na-quant] [--minpepnr MINPEPTIDENR]\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  --version             show program's version number and exit\n  -i FN       \
+  \          Input file of {} format\n  -d OUTDIR             Directory to output\
+  \ in\n  -o OUTFILE            Output file\n  --spectracol SPECTRACOL\n         \
+  \               Specify this column number (first col. is 1)\n                 \
+  \       containing PSM table spectrafiles (e.g. mzML) if you\n                 \
+  \       want to track PSMs when creating peptide tables\n  --scorecolpattern SCORECOLPATTERN\n\
+  \                        Regular expression pattern to find column where score\n\
+  \                        to use (e.g. percolator svm-score) is written.\n  --isobquantcolpattern\
+  \ QUANTCOLPATTERN\n                        Unique text pattern to identify isobaric\
+  \ quant columns\n                        in input table.\n  --ms1quantcolpattern\
+  \ PRECURSORQUANTCOLPATTERN\n                        Unique text pattern to identify\
+  \ precursor quant column\n                        in input table.\n  --minint MININT\
+  \       Intensity threshold of PSMs when calculating isobaric\n                \
+  \        ratios. Values below threshold will be set to NA.\n                   \
+  \     Defaults to no threshold.\n  --denomcols DENOMCOLS [DENOMCOLS ...]\n     \
+  \                   Column numbers of denominator channels when creating a\n   \
+  \                     summarized feature table with isobaric ratios from\n     \
+  \                   PSMs\n  --denompatterns DENOMPATTERNS [DENOMPATTERNS ...]\n\
+  \                        Regex patterns to detect denominator channels in a PSM\n\
+  \                        table, when creating a table with summarized feature\n\
+  \                        isobaric ratios. If both --denompatterns and\n        \
+  \                --denomcol are given then column numbers are used.\n          \
+  \              Usage e.g. --denompattern _126 _131. Also possible:\n           \
+  \             --denompattern _12[6-7] to detect multiple columns.\n  --mediansweep\
+  \         Instead of choosing a denominator channel, use the\n                 \
+  \       median intensity of each PSM as its denominator.\n  --medianintensity  \
+  \   Instead of choosing a denominator channel or median-\n                     \
+  \   sweeping, report the the median intensity of each\n                        summarized\
+  \ feat per channel. This results in reported\n                        intensities\
+  \ rather than ratios.\n  --summarize-average   Use average isobaric quantification\
+  \ values for\n                        summarizing quant from PSMs, instead of default\
+  \ PSM\n                        median values\n  --logisoquant         Output log2\
+  \ values for isoquant ratios. This\n                        log2-transforms input\
+  \ PSM data prior to summarizing\n                        and optional normalization.\
+  \ Ratios will be calculated\n                        subtracted rather than divided,\
+  \ obviously.\n  --median-normalize    Median-centering normalization for isobaric\
+  \ quant data\n                        on protein or peptide level. This median-centers\
+  \ the\n                        data for each channel by dividing with the median\n\
+  \                        channel value (or subtracting in case of log data),\n \
+  \                       for each channel in output features, e.g. proteins.\n  --modelqvals\
+  \          Create linear-modeled q-vals for peptides, to avoid\n               \
+  \         overlapping stepped low-qvalue data of peptides with\n               \
+  \         different scores\n  --qvalthreshold QVALTHRESHOLD\n                  \
+  \      Specifies the inclusion threshold for q-values to fit\n                 \
+  \       a linear model to. Any scores/q-values below this\n                    \
+  \    threshold will not be used.\n  --keep-psms-na-quant  When summarizing isobaric\
+  \ quantification data, also\n                        use the PSMs that have an NA\
+  \ in any channel, even if\n                        these may contain overly noisy\
+  \ quant data in the other\n                        channels. Normally these PSMs\
+  \ would be skipped in\n                        quantification\n  --minpepnr MINPEPTIDENR\n\
+  \                        Specifies the minimal amount of peptides (passing the\n\
+  \                        --qvalthreshold) needed to fit a linear model, default\n\
+  \                        is 10.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/msstitch:3.5--py_0

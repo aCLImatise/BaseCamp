@@ -1,0 +1,511 @@
+!Command
+command:
+- snpEff
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: variants_file
+  description: ': Default is STDIN'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -chr
+  description: ": Prepend 'string' to chromosome name (e.g. 'chr1' instead of '1').\
+    \ Only on TXT output."
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -classic
+  description: ': Use old style annotations instead of Sequence Ontology and Hgvs.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -csvStats
+  description: ': Create CSV summary file.'
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -download
+  description: ': Download reference genome if not available. Default: true'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: ': Input format [ vcf, bed ]. Default: VCF.'
+  args: !SimpleFlagArg
+    name: format
+- !Flag
+  optional: true
+  synonyms:
+  - -fileList
+  description: ': Input actually contains a list of files to process.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: ': Ouput format [ vcf, gatk, bed, bedAnn ]. Default: VCF.'
+  args: !SimpleFlagArg
+    name: format
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - -stats
+  - -htmlStats
+  description: ": Create HTML summary file.  Default is 'snpEff_summary.html'"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -noStats
+  description: ': Do not create stats (summary) file'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -fi
+  - -filterInterval
+  description: '<file>   : Only analyze changes that intersect with the intervals
+    specified in this file (you may use this option many times)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -no-downstream
+  description: ': Do not show DOWNSTREAM changes'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -no-intergenic
+  description: ': Do not show INTERGENIC changes'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -no-intron
+  description: ': Do not show INTRON changes'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -no-upstream
+  description: ': Do not show UPSTREAM changes'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -no-utr
+  description: ': Do not show 5_PRIME_UTR or 3_PRIME_UTR changes'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -no
+  description: ": Do not show 'EffectType'. This option can be used several times."
+  args: !SimpleFlagArg
+    name: effectType
+- !Flag
+  optional: true
+  synonyms:
+  - -cancer
+  description: ": Perform 'cancer' comparisons (Somatic vs Germline). Default: false"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -cancerSamples
+  description: ": Two column TXT file defining 'oringinal \\t derived' samples."
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -fastaProt
+  description: ': Create an output file containing the resulting protein sequences.'
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -formatEff
+  description: ": Use 'EFF' field compatible with older versions (instead of 'ANN')."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -geneId
+  description: ': Use gene ID instead of gene name (VCF output). Default: false'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -hgvs
+  description: ': Use HGVS annotations for amino acid sub-field. Default: true'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -hgvsOld
+  description: ': Use old HGVS notation. Default: false'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -hgvs1LetterAa
+  description: ': Use one letter Amino acid codes in HGVS notation. Default: false'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -hgvsTrId
+  description: ': Use transcript ID in HGVS notation. Default: false'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -lof
+  description: ': Add loss of function (LOF) and Nonsense mediated decay (NMD) tags.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -noHgvs
+  description: ': Do not add HGVS annotations.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -noLof
+  description: ': Do not add LOF and NMD annotations.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -noShiftHgvs
+  description: ': Do not shift variants according to HGVS notation (most 3prime end).'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -oicr
+  description: ': Add OICR tag in VCF file. Default: false'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -sequenceOntology
+  description: ': Use Sequence Ontology terms. Default: true'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - -config
+  description: ': Specify config file'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -configOption
+  description: '=value     : Override a config file option'
+  args: !SimpleFlagArg
+    name: name
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - -debug
+  description: ': Debug mode (very verbose).'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -dataDir
+  description: ': Override data_dir parameter from config file.'
+  args: !SimpleFlagArg
+    name: path
+- !Flag
+  optional: true
+  synonyms:
+  - -nodownload
+  description: ': Do not download a SnpEff database, if not available locally.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -noLog
+  description: ': Do not report usage statistics to server'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - -quiet
+  description: ': Quiet mode (do not show any messages or errors)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - -verbose
+  description: ': Verbose mode'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -version
+  description: ': Show version number and exit'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -canon
+  description: ': Only use canonical transcripts.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -canonList
+  description: ": Only use canonical transcripts, replace some transcripts using the\
+    \ 'gene_id       transcript_id' entries in <file>."
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -interaction
+  description: ': Annotate using inteactions (requires interaciton database). Default:
+    true'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -interval
+  description: ': Use a custom intervals in TXT/BED/BigBed/VCF/GFF file (you may use
+    this option many times)'
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -maxTSL
+  description: ': Only use transcripts having Transcript Support Level lower than
+    <TSL_number>.'
+  args: !SimpleFlagArg
+    name: TSL_number
+- !Flag
+  optional: true
+  synonyms:
+  - -motif
+  description: ': Annotate using motifs (requires Motif database). Default: true'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -nextProt
+  description: ': Annotate using NextProt (requires NextProt database).'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -noGenome
+  description: ': Do not load any genomic database (e.g. annotate using custom files).'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -noExpandIUB
+  description: ': Disable IUB code expansion in input variants'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -noInteraction
+  description: ': Disable inteaction annotations'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -noMotif
+  description: ': Disable motif annotations.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -noNextProt
+  description: ': Disable NextProt annotations.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -onlyReg
+  description: ': Only use regulation tracks.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -onlyProtein
+  description: ': Only use protein coding transcripts. Default: false'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -onlyTr
+  description: ': Only use the transcripts in this file. Format: One transcript ID
+    per line.'
+  args: !SimpleFlagArg
+    name: file.txt
+- !Flag
+  optional: true
+  synonyms:
+  - -reg
+  description: ': Regulation track to use (this option can be used add several times).'
+  args: !SimpleFlagArg
+    name: name
+- !Flag
+  optional: true
+  synonyms:
+  - -ss
+  - -spliceSiteSize
+  description: ': Set size for splice sites (donor and acceptor) in bases. Default:
+    2'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -spliceRegionExonSize
+  description: ': Set size for splice site region within exons. Default: 3 bases'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -spliceRegionIntronMin
+  description: ': Set minimum number of bases for splice site region within intron.
+    Default: 3 bases'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -spliceRegionIntronMax
+  description: ': Set maximum number of bases for splice site region within intron.
+    Default: 8 bases'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -strict
+  description: ": Only use 'validated' transcripts (i.e. sequence has been checked).\
+    \ Default: false"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ud
+  - -upDownStreamLen
+  description: ': Set upstream downstream interval length (in bases)'
+  args: !SimpleFlagArg
+    name: int
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - -help
+  description: ': Show this help and exit'
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Error        :\tUnknown option '--help'\nCommand line :\tSnpEff  --help\
+  \ \n\nsnpEff version SnpEff 5.0 (build 2020-08-09 21:23), by Pablo Cingolani\nUsage:\
+  \ snpEff [eff] [options] genome_version [input_file]\n\n\n\tvariants_file      \
+  \             : Default is STDIN\n\n\n\nOptions:\n\t-chr <string>              \
+  \     : Prepend 'string' to chromosome name (e.g. 'chr1' instead of '1'). Only on\
+  \ TXT output.\n\t-classic                        : Use old style annotations instead\
+  \ of Sequence Ontology and Hgvs.\n\t-csvStats <file>                : Create CSV\
+  \ summary file.\n\t-download                       : Download reference genome if\
+  \ not available. Default: true\n\t-i <format>                     : Input format\
+  \ [ vcf, bed ]. Default: VCF.\n\t-fileList                       : Input actually\
+  \ contains a list of files to process.\n\t-o <format>                     : Ouput\
+  \ format [ vcf, gatk, bed, bedAnn ]. Default: VCF.\n\t-s , -stats, -htmlStats  \
+  \       : Create HTML summary file.  Default is 'snpEff_summary.html'\n\t-noStats\
+  \                        : Do not create stats (summary) file\n\nResults filter\
+  \ options:\n\t-fi , -filterInterval  <file>   : Only analyze changes that intersect\
+  \ with the intervals specified in this file (you may use this option many times)\n\
+  \t-no-downstream                  : Do not show DOWNSTREAM changes\n\t-no-intergenic\
+  \                  : Do not show INTERGENIC changes\n\t-no-intron              \
+  \        : Do not show INTRON changes\n\t-no-upstream                    : Do not\
+  \ show UPSTREAM changes\n\t-no-utr                         : Do not show 5_PRIME_UTR\
+  \ or 3_PRIME_UTR changes\n\t-no <effectType>                : Do not show 'EffectType'.\
+  \ This option can be used several times.\n\nAnnotations options:\n\t-cancer    \
+  \                     : Perform 'cancer' comparisons (Somatic vs Germline). Default:\
+  \ false\n\t-cancerSamples <file>           : Two column TXT file defining 'oringinal\
+  \ \\t derived' samples.\n\t-fastaProt <file>               : Create an output file\
+  \ containing the resulting protein sequences.\n\t-formatEff                    \
+  \  : Use 'EFF' field compatible with older versions (instead of 'ANN').\n\t-geneId\
+  \                         : Use gene ID instead of gene name (VCF output). Default:\
+  \ false\n\t-hgvs                           : Use HGVS annotations for amino acid\
+  \ sub-field. Default: true\n\t-hgvsOld                        : Use old HGVS notation.\
+  \ Default: false\n\t-hgvs1LetterAa                  : Use one letter Amino acid\
+  \ codes in HGVS notation. Default: false\n\t-hgvsTrId                       : Use\
+  \ transcript ID in HGVS notation. Default: false\n\t-lof                       \
+  \     : Add loss of function (LOF) and Nonsense mediated decay (NMD) tags.\n\t-noHgvs\
+  \                         : Do not add HGVS annotations.\n\t-noLof             \
+  \             : Do not add LOF and NMD annotations.\n\t-noShiftHgvs            \
+  \        : Do not shift variants according to HGVS notation (most 3prime end).\n\
+  \t-oicr                           : Add OICR tag in VCF file. Default: false\n\t\
+  -sequenceOntology               : Use Sequence Ontology terms. Default: true\n\n\
+  Generic options:\n\t-c , -config                 : Specify config file\n\t-configOption\
+  \ name=value     : Override a config file option\n\t-d , -debug                \
+  \  : Debug mode (very verbose).\n\t-dataDir <path>              : Override data_dir\
+  \ parameter from config file.\n\t-download                    : Download a SnpEff\
+  \ database, if not available locally. Default: true\n\t-nodownload             \
+  \     : Do not download a SnpEff database, if not available locally.\n\t-h , -help\
+  \                   : Show this help and exit\n\t-noLog                       :\
+  \ Do not report usage statistics to server\n\t-q , -quiet                  : Quiet\
+  \ mode (do not show any messages or errors)\n\t-v , -verbose                : Verbose\
+  \ mode\n\t-version                     : Show version number and exit\n\nDatabase\
+  \ options:\n\t-canon                       : Only use canonical transcripts.\n\t\
+  -canonList <file>            : Only use canonical transcripts, replace some transcripts\
+  \ using the 'gene_id \t transcript_id' entries in <file>.\n\t-interaction      \
+  \           : Annotate using inteactions (requires interaciton database). Default:\
+  \ true\n\t-interval <file>             : Use a custom intervals in TXT/BED/BigBed/VCF/GFF\
+  \ file (you may use this option many times)\n\t-maxTSL <TSL_number>         : Only\
+  \ use transcripts having Transcript Support Level lower than <TSL_number>.\n\t-motif\
+  \                       : Annotate using motifs (requires Motif database). Default:\
+  \ true\n\t-nextProt                    : Annotate using NextProt (requires NextProt\
+  \ database).\n\t-noGenome                    : Do not load any genomic database\
+  \ (e.g. annotate using custom files).\n\t-noExpandIUB                 : Disable\
+  \ IUB code expansion in input variants\n\t-noInteraction               : Disable\
+  \ inteaction annotations\n\t-noMotif                     : Disable motif annotations.\n\
+  \t-noNextProt                  : Disable NextProt annotations.\n\t-onlyReg     \
+  \                : Only use regulation tracks.\n\t-onlyProtein                 :\
+  \ Only use protein coding transcripts. Default: false\n\t-onlyTr <file.txt>    \
+  \       : Only use the transcripts in this file. Format: One transcript ID per line.\n\
+  \t-reg <name>                  : Regulation track to use (this option can be used\
+  \ add several times).\n\t-ss , -spliceSiteSize <int>  : Set size for splice sites\
+  \ (donor and acceptor) in bases. Default: 2\n\t-spliceRegionExonSize <int>  : Set\
+  \ size for splice site region within exons. Default: 3 bases\n\t-spliceRegionIntronMin\
+  \ <int> : Set minimum number of bases for splice site region within intron. Default:\
+  \ 3 bases\n\t-spliceRegionIntronMax <int> : Set maximum number of bases for splice\
+  \ site region within intron. Default: 8 bases\n\t-strict                      :\
+  \ Only use 'validated' transcripts (i.e. sequence has been checked). Default: false\n\
+  \t-ud , -upDownStreamLen <int> : Set upstream downstream interval length (in bases)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/snpeff:5.0--0

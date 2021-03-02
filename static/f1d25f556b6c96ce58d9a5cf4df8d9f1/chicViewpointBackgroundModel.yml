@@ -1,0 +1,119 @@
+!Command
+command:
+- chicViewpointBackgroundModel
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --matrices
+  - -m
+  description: "The input matrices (samples) to build the background\nmodel on."
+  args: !RepeatFlagArg
+    name: MATRICES
+- !Flag
+  optional: true
+  synonyms:
+  - --referencePoints
+  - -rp
+  description: "Bed file contains all reference points which should be\nused to build\
+    \ the background model."
+  args: !SimpleFlagArg
+    name: REFERENCEPOINTS
+- !Flag
+  optional: true
+  synonyms:
+  - --averageContactBin
+  description: "Average the contacts of n bins via a sliding window\napproach (Default:\
+    \ 5)."
+  args: !SimpleFlagArg
+    name: AVERAGECONTACTBIN
+- !Flag
+  optional: true
+  synonyms:
+  - --truncateZeros
+  - -tz
+  description: "Truncates the zeros before the distributions are\nfitted. Use it in\
+    \ case you observe an over dispersion."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --outFileName
+  - -o
+  description: "The name of the background model file (Default:\nbackground_model.txt)."
+  args: !SimpleFlagArg
+    name: OUTFILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  - -t
+  description: "Number of threads (uses the python multiprocessing\nmodule) (Default:\
+    \ 4)."
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - --fixateRange
+  - -fs
+  description: "Fixate score of backgroundmodel starting at distance\nx. E.g. all\
+    \ values greater 500kb are set to the value\nof the 500kb bin (Default: 500000)."
+  args: !SimpleFlagArg
+    name: FIXATERANGE
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: chicViewpointBackgroundModel --matrices MATRICES [MATRICES ...]\n\
+  \                                    --referencePoints REFERENCEPOINTS\n       \
+  \                             [--averageContactBin AVERAGECONTACTBIN]\n        \
+  \                            [--truncateZeros]\n                               \
+  \     [--outFileName OUTFILENAME]\n                                    [--threads\
+  \ THREADS]\n                                    [--fixateRange FIXATERANGE] [--help]\n\
+  \                                    [--version]\n\nchicViewpointBackgroundModel\
+  \ computes a background model for all given samples with all reference points. For\
+  \ all relative distances to a reference point\na negative binomial distribution\
+  \ is fitted. In addition, for each relative distance to a reference point the average\
+  \ value for this location is computed. Both\nbackground models are used, the first\
+  \ one for p-value and significance computation, the second one to filter out interactions\
+  \ with a smaller x-fold over the mean.\n\nThe background distributions are fixed\
+  \ at `--fixateRange`, i.e. all distances lower or higher than this value use the\
+  \ fixed background distribution.\n\nAn example usage is:\n\n$ chicViewpointBackgroundModel\
+  \ --matrices matrix1.cool matrix2.cool matrix3.cool --referencePoints referencePointsFile.bed\
+  \ --range 20000 40000 --outFileName background_model.bed\n\nRequired arguments:\n\
+  \  --matrices MATRICES [MATRICES ...], -m MATRICES [MATRICES ...]\n            \
+  \            The input matrices (samples) to build the background\n            \
+  \            model on.\n  --referencePoints REFERENCEPOINTS, -rp REFERENCEPOINTS\n\
+  \                        Bed file contains all reference points which should be\n\
+  \                        used to build the background model.\n\nOptional arguments:\n\
+  \  --averageContactBin AVERAGECONTACTBIN\n                        Average the contacts\
+  \ of n bins via a sliding window\n                        approach (Default: 5).\n\
+  \  --truncateZeros, -tz  Truncates the zeros before the distributions are\n    \
+  \                    fitted. Use it in case you observe an over dispersion.\n  --outFileName\
+  \ OUTFILENAME, -o OUTFILENAME\n                        The name of the background\
+  \ model file (Default:\n                        background_model.txt).\n  --threads\
+  \ THREADS, -t THREADS\n                        Number of threads (uses the python\
+  \ multiprocessing\n                        module) (Default: 4).\n  --fixateRange\
+  \ FIXATERANGE, -fs FIXATERANGE\n                        Fixate score of backgroundmodel\
+  \ starting at distance\n                        x. E.g. all values greater 500kb\
+  \ are set to the value\n                        of the 500kb bin (Default: 500000).\n\
+  \  --help, -h            show this help message and exit\n  --version          \
+  \   show program's version number and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/hicexplorer:3.6--py_0

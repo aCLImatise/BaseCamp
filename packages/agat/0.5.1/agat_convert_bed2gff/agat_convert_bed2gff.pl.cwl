@@ -1,0 +1,67 @@
+class: CommandLineTool
+id: agat_convert_bed2gff.pl.cwl
+inputs:
+- id: in_bed
+  doc: Input bed file that will be converted.
+  type: boolean?
+  inputBinding:
+    prefix: --bed
+- id: in_source
+  doc: "The source informs about the tool used to produce the data and\nis stored\
+    \ in 2nd field of a gff file. Example:\nStringtie,Maker,Augustus,etc. [default:\
+    \ data]"
+  type: boolean?
+  inputBinding:
+    prefix: --source
+- id: in_primary_tag
+  doc: "The primary_tag corresponds to the data type and is stored in\n3rd field of\
+    \ a gff file. Example: gene,mRNA,CDS,etc. [default:\ngene]"
+  type: boolean?
+  inputBinding:
+    prefix: --primary_tag
+- id: in_inflate_off
+  doc: "By default we inflate the block fields (blockCount, blockSizes,\nblockStarts)\
+    \ to create subfeatures of the main feature\n(primary_tag). The type of subfeature\
+    \ created is based on the\ninflate_type parameter. If you do not want this inflating\n\
+    behaviour you can deactivate it by using the --inflate_off\noption."
+  type: boolean?
+  inputBinding:
+    prefix: --inflate_off
+- id: in_inflate_type
+  doc: "Feature type (3rd column in gff) created when inflate parameter\nactivated\
+    \ [default: exon]."
+  type: boolean?
+  inputBinding:
+    prefix: --inflate_type
+- id: in_verbose
+  doc: add verbosity
+  type: boolean?
+  inputBinding:
+    prefix: --verbose
+- id: in_outfile
+  doc: "Output GFF file. If no output file is specified, the output will\nbe written\
+    \ to STDOUT."
+  type: File?
+  inputBinding:
+    prefix: --outfile
+- id: in_agat_convert_bed_two_gff_do_tpl
+  doc: 'Description:'
+  type: long
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_outfile
+  doc: "Output GFF file. If no output file is specified, the output will\nbe written\
+    \ to STDOUT."
+  type: File?
+  outputBinding:
+    glob: $(inputs.in_outfile)
+hints:
+- class: DockerRequirement
+  dockerPull: quay.io/biocontainers/agat:0.5.1--pl526r35_0
+cwlVersion: v1.1
+baseCommand:
+- agat_convert_bed2gff.pl

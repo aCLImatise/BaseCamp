@@ -1,0 +1,124 @@
+!Command
+command:
+- junction_saturation.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input-file
+  description: Alignment file in BAM or SAM format.[required]
+  args: !SimpleFlagArg
+    name: INPUT_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out-prefix
+  description: Prefix of output files(s). [required]
+  args: !SimpleFlagArg
+    name: OUTPUT_PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --refgene
+  description: "Reference gene model in bed fomat. This gene model is\nused to determine\
+    \ known splicing junctions. [required]"
+  args: !SimpleFlagArg
+    name: REFGENE_BED
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --percentile-floor
+  description: "Sampling starts from this percentile. A integer\nbetween 0 and 100.\
+    \ default=5"
+  args: !SimpleFlagArg
+    name: PERCENTILE_LOW_BOUND
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --percentile-ceiling
+  description: "Sampling ends at this percentile. A integer between 0\nand 100. default=100"
+  args: !SimpleFlagArg
+    name: PERCENTILE_UP_BOUND
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --percentile-step
+  description: "Sampling frequency. Smaller value means more sampling\ntimes. A integer\
+    \ between 0 and 100. default=5"
+  args: !SimpleFlagArg
+    name: PERCENTILE_STEP
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --min-intron
+  description: Minimum intron size (bp). default=50
+  args: !SimpleFlagArg
+    name: MINIMUM_INTRON_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --min-coverage
+  description: "Minimum number of supportting reads to call a\njunction. default=1"
+  args: !SimpleFlagArg
+    name: MINIMUM_SPLICE_READ
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --mapq
+  description: "Minimum mapping quality (phred scaled) for an\nalignment to be called\
+    \ \"uniquely mapped\". default=30\n"
+  args: !SimpleFlagArg
+    name: MAP_QUAL
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "Usage: junction_saturation.py [options]\n\nCheck if sequencing depth is\
+  \ saturated or not, based on the concept that when sequencing depth is \napproaching\
+  \ saturation, less NEW junctions will be discovered. \nSee http://rseqc.sourceforge.net/\
+  \ for details.\n\n\n\nOptions:\n  --version             show program's version number\
+  \ and exit\n  -h, --help            show this help message and exit\n  -i INPUT_FILE,\
+  \ --input-file=INPUT_FILE\n                        Alignment file in BAM or SAM\
+  \ format.[required]\n  -o OUTPUT_PREFIX, --out-prefix=OUTPUT_PREFIX\n          \
+  \              Prefix of output files(s). [required]\n  -r REFGENE_BED, --refgene=REFGENE_BED\n\
+  \                        Reference gene model in bed fomat. This gene model is\n\
+  \                        used to determine known splicing junctions. [required]\n\
+  \  -l PERCENTILE_LOW_BOUND, --percentile-floor=PERCENTILE_LOW_BOUND\n          \
+  \              Sampling starts from this percentile. A integer\n               \
+  \         between 0 and 100. default=5\n  -u PERCENTILE_UP_BOUND, --percentile-ceiling=PERCENTILE_UP_BOUND\n\
+  \                        Sampling ends at this percentile. A integer between 0\n\
+  \                        and 100. default=100\n  -s PERCENTILE_STEP, --percentile-step=PERCENTILE_STEP\n\
+  \                        Sampling frequency. Smaller value means more sampling\n\
+  \                        times. A integer between 0 and 100. default=5\n  -m MINIMUM_INTRON_SIZE,\
+  \ --min-intron=MINIMUM_INTRON_SIZE\n                        Minimum intron size\
+  \ (bp). default=50\n  -v MINIMUM_SPLICE_READ, --min-coverage=MINIMUM_SPLICE_READ\n\
+  \                        Minimum number of supportting reads to call a\n       \
+  \                 junction. default=1\n  -q MAP_QUAL, --mapq=MAP_QUAL\n        \
+  \                Minimum mapping quality (phred scaled) for an\n               \
+  \         alignment to be called \"uniquely mapped\". default=30\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/rseqc:4.0.0--py38h0213d0e_0

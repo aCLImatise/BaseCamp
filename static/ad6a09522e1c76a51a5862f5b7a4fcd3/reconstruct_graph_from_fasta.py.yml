@@ -1,0 +1,83 @@
+!Command
+command:
+- reconstruct_graph_from_fasta.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: Input fasta file.
+  args: !SimpleFlagArg
+    name: INPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: "Output graph file. The output format is GFA by\ndefault, but FASTG\
+    \ only when indicated with postfix\n'.fastg'."
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  - --overlap
+  description: overlap for reconstructing De Bruijn graph. Default:55
+  args: !SimpleFlagArg
+    name: OVERLAP
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --circular
+  description: "Sequences in input fasta file are all circular\n(yes/no/auto). The\
+    \ auto mode enables detection by\nchecking the existence of '(circular)' in the\
+    \ end of\nthe header of each sequence. Default:auto"
+  args: !SimpleFlagArg
+    name: CIRCULAR
+- !Flag
+  optional: true
+  synonyms:
+  - --single-chain
+  description: "The input sequence(s) was by default treated as DNA\ndouble-chain\
+    \ with its complementary sequence. Choose\nthis flag to turn off."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --out-kg
+  description: Output kmer node graph.
+  args: !SimpleFlagArg
+    name: OUT_KG
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: reconstruct_graph_from_fasta.py -i fasta_file -o out.gfa\n\nThis\
+  \ script uses an naive De Bruijn approach to convert sequence back into an\nassembly\
+  \ graph file, such as a gfa (Graphical Fragment Assembly) or a fastg\nfile.\n\n\
+  Options:\n  -h, --help            show this help message and exit\n  -i INPUT  \
+  \            Input fasta file.\n  -o OUTPUT             Output graph file. The output\
+  \ format is GFA by\n                        default, but FASTG only when indicated\
+  \ with postfix\n                        '.fastg'.\n  -L OVERLAP, --overlap=OVERLAP\n\
+  \                        overlap for reconstructing De Bruijn graph. Default:55\n\
+  \  -c CIRCULAR, --circular=CIRCULAR\n                        Sequences in input\
+  \ fasta file are all circular\n                        (yes/no/auto). The auto mode\
+  \ enables detection by\n                        checking the existence of '(circular)'\
+  \ in the end of\n                        the header of each sequence. Default:auto\n\
+  \  --single-chain        The input sequence(s) was by default treated as DNA\n \
+  \                       double-chain with its complementary sequence. Choose\n \
+  \                       this flag to turn off.\n  --out-kg=OUT_KG       Output kmer\
+  \ node graph.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/getorganelle:1.7.3.4--pyh3252c3a_0

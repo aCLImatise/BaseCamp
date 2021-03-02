@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Float, Boolean, Int, String
+
+Dbtrash_V0_1_0 = CommandToolBuilder(tool="dbTrash", base_command=["dbTrash"], inputs=[ToolInput(tag="in_age", input_type=Float(optional=True), prefix="-age", doc=InputDocumentation(doc="- number of hours old to qualify for drop.  N can be a float.")), ToolInput(tag="in_drop", input_type=Boolean(optional=True), prefix="-drop", doc=InputDocumentation(doc="- actually drop the tables, default is merely to display tables.")), ToolInput(tag="in_drop_limit", input_type=Int(optional=True), prefix="-dropLimit", doc=InputDocumentation(doc="- ERROR out if number of tables to drop is greater than limit,\n- default is to drop all expired tables")), ToolInput(tag="in_db", input_type=String(optional=True), prefix="-db", doc=InputDocumentation(doc="- Specify a database to work with, default is customTrash.")), ToolInput(tag="in_history_too", input_type=Boolean(optional=True), prefix="-historyToo", doc=InputDocumentation(doc="- also consider the table called 'history' for deletion.\n- default is to leave 'history' alone no matter how old.\n- this applies to the table 'metaInfo' also.")), ToolInput(tag="in_ext_file", input_type=Boolean(optional=True), prefix="-extFile", doc=InputDocumentation(doc="- check extFile for lines that reference files\n- no longer in trash")), ToolInput(tag="in_ext_del", input_type=Boolean(optional=True), prefix="-extDel", doc=InputDocumentation(doc="- delete lines in extFile that fail file check\n- otherwise just verbose(2) lines that would be deleted")), ToolInput(tag="in_topdir", input_type=Boolean(optional=True), prefix="-topDir", doc=InputDocumentation(doc="- directory name to prepend to file names in extFile\n- default is /usr/local/apache/trash\n- file names in extFile are typically: '../trash/ct/...'")), ToolInput(tag="in_table_status", input_type=Boolean(optional=True), prefix="-tableStatus", doc=InputDocumentation(doc="- use 'show table status' to get size data, very inefficient")), ToolInput(tag="in_del_lost_table", input_type=Boolean(optional=True), prefix="-delLostTable", doc=InputDocumentation(doc="- delete tables that exist but are missing from metaInfo\n- this operation can be even slower than -tableStatus\n- if there are many tables to check.")), ToolInput(tag="in_verbose", input_type=Int(optional=True), prefix="-verbose", doc=InputDocumentation(doc="- 2 == show arguments, dates, and dropped tables,\n- 3 == show date information for all tables.\n"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Dbtrash_V0_1_0().translate("wdl", allow_empty_container=True)
+

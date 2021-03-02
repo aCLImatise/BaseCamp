@@ -1,0 +1,148 @@
+!Command
+command:
+- gappa
+- prepare
+- unchunkify
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --abundances-path
+  description: ":PATH(existing)=[] ... REQUIRED\nList of abundances files or directories\
+    \ to process. For directories, only files with the extension `.json[.gz]` are\
+    \ processed."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --jplace-path
+  description: ":PATH(existing)=[] ... Excludes: --chunk-list-file --chunk-file-expression\n\
+    List of jplace files or directories to process. For directories, only files with\
+    \ the extension `.jplace[.gz]` are processed."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --chunk-list-file
+  description: "Excludes: --jplace-path --chunk-file-expression\nIf provided, needs\
+    \ to contain a list of chunk file paths in the numerical order that was produced\
+    \ by the chunkify command."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --chunk-file-expression
+  description: "Excludes: --jplace-path --chunk-list-file\nIf provided, the expression\
+    \ is used to load jplace files by replacing any '@' character with the chunk number."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --jplace-cache-size
+  description: =0  Cache size to determine how many jplace files are kept in memory.
+    Default (0) means all. Use this if the command runs out of memory. It however
+    comes at the cost of longer runtime.
+  args: !SimpleFlagArg
+    name: UINT
+- !Flag
+  optional: true
+  synonyms:
+  - --hash-function
+  description: ":{SHA1,SHA256,MD5}=SHA1\nHash function that was used for re-naming\
+    \ and identifying sequences in the chunkify command."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --out-dir
+  description: =.            Directory to write files to
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --file-prefix
+  description: File prefix for output files
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --file-suffix
+  description: File suffix for output files
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --allow-file-overwriting
+  description: Allow to overwrite existing output files instead of aborting the command.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: Produce more verbose output.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: =8            Number of threads to use for calculations.
+  args: !SimpleFlagArg
+    name: UINT
+- !Flag
+  optional: true
+  synonyms:
+  - --log-file
+  description: Write all output to a log file, in addition to standard output to the
+    terminal.
+  args: !SimpleFlagArg
+    name: TEXT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Print this help message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Unchunkify a set of jplace files using abundace map files and create per-sample\
+  \ jplace files.\nUsage: gappa prepare unchunkify [OPTIONS]\n\nInput:\n  --abundances-path\
+  \ TEXT:PATH(existing)=[] ... REQUIRED\n                              List of abundances\
+  \ files or directories to process. For directories, only files with the extension\
+  \ `.json[.gz]` are processed.\n  --jplace-path TEXT:PATH(existing)=[] ... Excludes:\
+  \ --chunk-list-file --chunk-file-expression\n                              List\
+  \ of jplace files or directories to process. For directories, only files with the\
+  \ extension `.jplace[.gz]` are processed.\n  --chunk-list-file TEXT Excludes: --jplace-path\
+  \ --chunk-file-expression\n                              If provided, needs to contain\
+  \ a list of chunk file paths in the numerical order that was produced by the chunkify\
+  \ command.\n  --chunk-file-expression TEXT Excludes: --jplace-path --chunk-list-file\n\
+  \                              If provided, the expression is used to load jplace\
+  \ files by replacing any '@' character with the chunk number.\n\n\nSettings:\n \
+  \ --jplace-cache-size UINT=0  Cache size to determine how many jplace files are\
+  \ kept in memory. Default (0) means all. Use this if the command runs out of memory.\
+  \ It however comes at the cost of longer runtime.\n  --hash-function TEXT:{SHA1,SHA256,MD5}=SHA1\n\
+  \                              Hash function that was used for re-naming and identifying\
+  \ sequences in the chunkify command.\n\n\nOutput:\n  --out-dir TEXT=.          \
+  \  Directory to write files to\n  --file-prefix TEXT          File prefix for output\
+  \ files\n  --file-suffix TEXT          File suffix for output files\n\n\nGlobal\
+  \ Options:\n  --allow-file-overwriting    Allow to overwrite existing output files\
+  \ instead of aborting the command.\n  --verbose                   Produce more verbose\
+  \ output.\n  --threads UINT=8            Number of threads to use for calculations.\n\
+  \  --log-file TEXT             Write all output to a log file, in addition to standard\
+  \ output to the terminal.\n  --help                      Print this help message\
+  \ and exit.\n\ngappa - a toolkit for analyzing and visualizing phylogenetic (placement)\
+  \ data\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/gappa:0.7.0--he513fc3_0

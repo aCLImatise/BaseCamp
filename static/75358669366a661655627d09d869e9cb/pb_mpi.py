@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, String, Int, File
+
+Pb_Mpi_V0_1_0 = CommandToolBuilder(tool="pb_mpi", base_command=["pb_mpi"], inputs=[ToolInput(tag="in_cat", input_type=Boolean(optional=True), prefix="-cat", doc=InputDocumentation(doc=": infinite mixture (Dirichlet process) of equilibirium frequency profiles")), ToolInput(tag="in_nc_at", input_type=String(optional=True), prefix="-ncat", doc=InputDocumentation(doc=": finite mixture of equilibirium frequency profiles")), ToolInput(tag="in_cat_fix", input_type=String(optional=True), prefix="-catfix", doc=InputDocumentation(doc=": specifying a fixed pre-defined mixture of profiles")), ToolInput(tag="in_lg", input_type=Boolean(optional=True), prefix="-lg", doc=InputDocumentation(doc=": Le and Gascuel 2008")), ToolInput(tag="in_wag", input_type=Boolean(optional=True), prefix="-wag", doc=InputDocumentation(doc=": Whelan and Goldman 2001")), ToolInput(tag="in_jtt", input_type=Boolean(optional=True), prefix="-jtt", doc=InputDocumentation(doc=": Jones, Taylor, Thornton 1992")), ToolInput(tag="in_gtr", input_type=Boolean(optional=True), prefix="-gtr", doc=InputDocumentation(doc=": general time reversible")), ToolInput(tag="in_poisson", input_type=Boolean(optional=True), prefix="-poisson", doc=InputDocumentation(doc=": Poisson matrix, all relative exchangeabilities equal to 1 (Felsenstein 1981)")), ToolInput(tag="in_dg_am", input_type=Int(optional=True), prefix="-dgam", doc=InputDocumentation(doc=": discrete gamma. ncat = number of categories (4 by default, 1 = uniform rates model)")), ToolInput(tag="in_dc", input_type=Boolean(optional=True), prefix="-dc", doc=InputDocumentation(doc=": excludes constant columns")), ToolInput(tag="in_starts_specified_tree", input_type=File(optional=True), prefix="-t", doc=InputDocumentation(doc=": starts from specified tree")), ToolInput(tag="in_chain_run_fixed", input_type=File(optional=True), prefix="-T", doc=InputDocumentation(doc=": chain run under fixed, specified tree")), ToolInput(tag="in_saving_frequency_length", input_type=Int(optional=True), prefix="-x", doc=InputDocumentation(doc="<until>  : saving frequency, and chain length (until = -1 : forever)")), ToolInput(tag="in__forcing_checks", input_type=Boolean(optional=True), prefix="-f", doc=InputDocumentation(doc=": forcing checks")), ToolInput(tag="in_save_s_save", input_type=Boolean(optional=True), prefix="-s", doc=InputDocumentation(doc=": -s : save all / -S : save only the trees"))], outputs=[], container="quay.io/biocontainers/phylobayes-mpi:1.8c--h78e549b_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Pb_Mpi_V0_1_0().translate("wdl")
+

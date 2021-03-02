@@ -1,0 +1,85 @@
+!Command
+command:
+- isoseq3
+- collapse
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: out.fastq
+  description: STR    Collapsed transcripts in FASTQ
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --min-aln-coverage
+  description: FLOAT  Ignore alignments with less than minimum query read coverage.
+    [0.99]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min-aln-identity
+  description: FLOAT  Ignore alignments with less than minimum alignment identity.
+    [0.95]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max-fuzzy-junction
+  description: INT    Ignore mismatches or indels shorter than or equal to N. [5]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --num-threads
+  description: INT    Number of threads to use, 0 means autodetection. [0]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --log-level
+  description: 'STR    Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL).
+    [WARN]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --log-file
+  description: FILE   Log to a file, instead of stderr.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this help and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Show application version and exit.
+  args: !EmptyFlagArg {}
+help_text: "isoseq collapse - Collapse transcripts based on genomic mapping\n\nUsage:\n\
+  \  isoseq collapse [options] <alignments.bam|xml> <ccs.bam|xml> <out.fastq>\n\n\
+  \  alignments.bam|xml    STR    Alignments mapping Transcripts to reference genome\n\
+  \  ccs.bam|xml           STR    CCS BAM, optional input\n  out.fastq           \
+  \  STR    Collapsed transcripts in FASTQ\n\nAlignment Filter Options:\n  --min-aln-coverage\
+  \    FLOAT  Ignore alignments with less than minimum query read coverage. [0.99]\n\
+  \  --min-aln-identity    FLOAT  Ignore alignments with less than minimum alignment\
+  \ identity. [0.95]\n\nCollapse Options:\n  --max-fuzzy-junction  INT    Ignore mismatches\
+  \ or indels shorter than or equal to N. [5]\n\n  -h,--help                    Show\
+  \ this help and exit.\n  --version                    Show application version and\
+  \ exit.\n  -j,--num-threads      INT    Number of threads to use, 0 means autodetection.\
+  \ [0]\n  --log-level           STR    Set log level. Valid choices: (TRACE, DEBUG,\
+  \ INFO, WARN, FATAL). [WARN]\n  --log-file            FILE   Log to a file, instead\
+  \ of stderr.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/isoseq3:3.4.0--0

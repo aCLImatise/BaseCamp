@@ -2,20 +2,23 @@ version 1.0
 
 task ReportAlignmentDifferences {
   input {
-    Int? queries
-    Int? o_q
     String? o
+    Int? i
+    Int snapper_two
   }
   command <<<
     reportAlignmentDifferences \
-      ~{if defined(queries) then ("-queries " +  '"' + queries + '"') else ""} \
-      ~{if defined(o_q) then ("-i " +  '"' + o_q + '"') else ""} \
-      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
+      ~{snapper_two} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
+      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
-    queries: "-genomic G.fasta\\n-positions G.posDB\\n-aligns\\n-minmatchidentity 94\\n-minmatchcoverage 90\\n-mersize 18\\n-ignore 500\\n-numthreads 16\\n-verbose\\n-output Q.sim4db"
-    o_q: "-o Q\\n"
     o: ""
+    i: ""
+    snapper_two: "-queries Q.fasta"
   }
   output {
     File out_stdout = stdout()

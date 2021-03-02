@@ -1,0 +1,104 @@
+!Command
+command:
+- smof
+- clean
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: INPUT
+  description: input fasta sequence (default = stdin)
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: '|p, --type n|p    sequence type'
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --toupper
+  description: convert to uppercase
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --tolower
+  description: convert to lowercase
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --toseq
+  description: removes all non-letter characters (gaps, stops, etc.)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --reduce-header
+  description: "Remove all text from header that follows the first\nword (delimited\
+    \ by [ |])"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --mask-irregular
+  description: converts irregular letters to unknown
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --mask-lowercase
+  description: convert lower-case to unknown
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --col_width
+  description: width of the sequence output (0 indicates no wrapping)
+  args: !SimpleFlagArg
+    name: W
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --standardize
+  description: Convert 'X' in DNA to 'N' and '[._]' to '-' (for gaps)
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: <fastafile> | smof clean <options>\n\nRemove all space within the\
+  \ sequences and write them in even columns (default\nwidth of 80 characters). Case\
+  \ and all characters (except whitespace) are\npreserved by default.\n\npositional\
+  \ arguments:\n  INPUT                 input fasta sequence (default = stdin)\n\n\
+  optional arguments:\n  -h, --help            show this help message and exit\n \
+  \ -t n|p, --type n|p    sequence type\n  -u, --toupper         convert to uppercase\n\
+  \  -l, --tolower         convert to lowercase\n  -x, --toseq           removes all\
+  \ non-letter characters (gaps, stops, etc.)\n  -s, --reduce-header   Remove all\
+  \ text from header that follows the first\n                        word (delimited\
+  \ by [ |])\n  -r, --mask-irregular  converts irregular letters to unknown\n  -m,\
+  \ --mask-lowercase  convert lower-case to unknown\n  -w W, --col_width W   width\
+  \ of the sequence output (0 indicates no wrapping)\n  -d, --standardize     Convert\
+  \ 'X' in DNA to 'N' and '[._]' to '-' (for gaps)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/smof:2.21.1--py_0

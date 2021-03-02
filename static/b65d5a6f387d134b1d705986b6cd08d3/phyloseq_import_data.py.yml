@@ -1,0 +1,119 @@
+!Command
+command:
+- phyloseq_import_data.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: Keep temporary files to debug program.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --normalization
+  description: "To normalize data before analysis. Use this option if\nyou didnt do\
+    \ it in FROGS Abundance normalisation.\n[Default: False]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: "[RANKS [RANKS ...]], --ranks [RANKS [RANKS ...]]\nThe ordered taxonomic\
+    \ ranks levels stored in BIOM.\nEach rank is separated by one space. [Default:\n\
+    ['Kingdom', 'Phylum', 'Class', 'Order', 'Family',\n'Genus', 'Species']]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --biomfile
+  description: path to the abundance BIOM file.
+  args: !SimpleFlagArg
+    name: BIOMFILE
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --samplefile
+  description: 'path to sample file (format: TSV).'
+  args: !SimpleFlagArg
+    name: SAMPLEFILE
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --treefile
+  description: "path to tree file from FROGS Tree (format: Newick\n\"nhx\" or \"nwk\"\
+    \ )."
+  args: !SimpleFlagArg
+    name: TREEFILE
+- !Flag
+  optional: true
+  synonyms:
+  - --rdata
+  description: "path to store phyloseq-class object in Rdata file.\n[Default: phyloseq_data.Rdata]"
+  args: !SimpleFlagArg
+    name: RDATA
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --html
+  description: "The HTML file containing the graphs. [Default:\nphyloseq_import_summary.nb.html]"
+  args: !SimpleFlagArg
+    name: HTML
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --log-file
+  description: "This output file will contain several informations on\nexecuted commands.\n"
+  args: !SimpleFlagArg
+    name: LOG_FILE
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: phyloseq_import_data.py [-h] [--debug] [--version] [-n]\n     \
+  \                          [-r [RANKS [RANKS ...]]] -b BIOMFILE -s\n           \
+  \                    SAMPLEFILE [-t TREEFILE] [--rdata RDATA]\n                \
+  \               [-o HTML] [-l LOG_FILE]\n\nLaunch Rmardown script to import data\
+  \ from 3 files: biomfile, samplefile,\ntreefile into a phyloseq object\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  --debug\
+  \               Keep temporary files to debug program.\n  --version            \
+  \ show program's version number and exit\n  -n, --normalization   To normalize data\
+  \ before analysis. Use this option if\n                        you didnt do it in\
+  \ FROGS Abundance normalisation.\n                        [Default: False]\n  -r\
+  \ [RANKS [RANKS ...]], --ranks [RANKS [RANKS ...]]\n                        The\
+  \ ordered taxonomic ranks levels stored in BIOM.\n                        Each rank\
+  \ is separated by one space. [Default:\n                        ['Kingdom', 'Phylum',\
+  \ 'Class', 'Order', 'Family',\n                        'Genus', 'Species']]\n\n\
+  Inputs:\n  -b BIOMFILE, --biomfile BIOMFILE\n                        path to the\
+  \ abundance BIOM file.\n  -s SAMPLEFILE, --samplefile SAMPLEFILE\n             \
+  \           path to sample file (format: TSV).\n  -t TREEFILE, --treefile TREEFILE\n\
+  \                        path to tree file from FROGS Tree (format: Newick\n   \
+  \                     \"nhx\" or \"nwk\" ).\n\nOutputs:\n  --rdata RDATA       \
+  \  path to store phyloseq-class object in Rdata file.\n                        [Default:\
+  \ phyloseq_data.Rdata]\n  -o HTML, --html HTML  The HTML file containing the graphs.\
+  \ [Default:\n                        phyloseq_import_summary.nb.html]\n  -l LOG_FILE,\
+  \ --log-file LOG_FILE\n                        This output file will contain several\
+  \ informations on\n                        executed commands.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/frogs:3.2.0--py37_0

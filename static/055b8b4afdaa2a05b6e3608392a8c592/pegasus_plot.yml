@@ -1,0 +1,244 @@
+!Command
+command:
+- pegasus
+- plot
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: plot_type
+  description: Plot type, either 'scatter' for scatter plots or 'compo' for composition
+    plots
+- !Positional
+  optional: false
+  position: 1
+  name: input_file
+  description: Single cell data in Zarr or H5ad format.
+- !Positional
+  optional: false
+  position: 2
+  name: output_file
+  description: Output image file.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --dpi
+  description: 'DPI value for the figure. [default: 500]'
+  args: !SimpleFlagArg
+    name: dpi
+- !Flag
+  optional: true
+  synonyms:
+  - --restriction
+  description: "...     Set restriction if you only want to plot a subset of data.\
+    \ Multiple <restriction> strings are allowed. There are two types of <restriction>s:\
+    \ global restriction and attribute-specific restriction. Global restriction appiles\
+    \ to all attributes in ``attrs`` and takes the format of 'key:value,value...',\
+    \ or 'key:~value,value...'. This restriction selects cells with the ``data.obs[key]``\
+    \ values belong to 'value,value...' (or not belong to if '~' shows). Attribute-specific\
+    \ restriction takes the format of 'attr:key:value,value...', or 'attr:key:~value,value...'.\
+    \ It only applies to one attribute 'attr'. If 'attr' and 'key' are the same, one\
+    \ can use '.' to replace 'key' (e.g. ``cluster_labels:.:value1,value2``).Each\
+    \ <restriction> takes the format of 'attr:value,value', or 'attr:~value,value...\"\
+    \ which means excluding values. This option is used in both 'composition' and\
+    \ 'scatter'."
+  args: !SimpleFlagArg
+    name: restriction
+- !Flag
+  optional: true
+  synonyms:
+  - --attributes
+  description: <attrs> is a comma-separated list of attributes to color the basis.
+    This option is only used in 'scatter'.
+  args: !SimpleFlagArg
+    name: attrs
+- !Flag
+  optional: true
+  synonyms:
+  - --basis
+  description: "Basis for 2D plotting, chosen from 'umap', 'tsne', 'fitsne', 'fle',\
+    \ 'net_umap', 'net_tsne', 'net_fitsne' or 'net_fle'. [default: umap]"
+  args: !SimpleFlagArg
+    name: basis
+- !Flag
+  optional: true
+  synonyms:
+  - --alpha
+  description: Point transparent parameter. Can be a single value or a list of values
+    separated by comma used for each attribute in <attrs>.
+  args: !SimpleFlagArg
+    name: alpha
+- !Flag
+  optional: true
+  synonyms:
+  - --legend-loc
+  description: "Legend location, can be either \"right margin\" or \"on data\". If\
+    \ a list is provided, set 'legend_loc' for each attribute in 'attrs' separately.\
+    \ [default: right margin]"
+  args: !SimpleFlagArg
+    name: str
+- !Flag
+  optional: true
+  synonyms:
+  - --palette
+  description: Used for setting colors for every categories in categorical attributes.
+    Multiple <palette> strings are allowed. Each string takes the format of 'attr:color1,color2,...,colorn'.
+    'attr' is the categorical attribute and 'color1' - 'colorn' are the colors for
+    each category in 'attr' (e.g. 'cluster_labels:black,blue,red,...,yellow'). If
+    there is only one categorical attribute in 'attrs', ``palletes`` can be set as
+    a single string and the 'attr' keyword can be omitted (e.g. "blue,yellow,red").
+  args: !SimpleFlagArg
+    name: str
+- !Flag
+  optional: true
+  synonyms:
+  - --show-background
+  description: Show points that are not selected as gray.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --nrows
+  description: Number of rows in the figure. If not set, pegasus will figure it out
+    automatically.
+  args: !SimpleFlagArg
+    name: nrows
+- !Flag
+  optional: true
+  synonyms:
+  - --ncols
+  description: Number of columns in the figure. If not set, pegasus will figure it
+    out automatically.
+  args: !SimpleFlagArg
+    name: ncols
+- !Flag
+  optional: true
+  synonyms:
+  - --panel-size
+  description: Panel size in inches, w x h, separated by comma. Note that margins
+    are not counted in the sizes. For composition, default is (6, 4). For scatter
+    plots, default is (4, 4).
+  args: !SimpleFlagArg
+    name: sizes
+- !Flag
+  optional: true
+  synonyms:
+  - --left
+  description: Figure's left margin in fraction with respect to panel width.
+  args: !SimpleFlagArg
+    name: left
+- !Flag
+  optional: true
+  synonyms:
+  - --bottom
+  description: Figure's bottom margin in fraction with respect to panel height.
+  args: !SimpleFlagArg
+    name: bottom
+- !Flag
+  optional: true
+  synonyms:
+  - --wspace
+  description: Horizontal space between panels in fraction with respect to panel width.
+  args: !SimpleFlagArg
+    name: wspace
+- !Flag
+  optional: true
+  synonyms:
+  - --hspace
+  description: Vertical space between panels in fraction with respect to panel height.
+  args: !SimpleFlagArg
+    name: hspace
+- !Flag
+  optional: true
+  synonyms:
+  - --groupby
+  description: Use <attr> to categorize the cells for the composition plot, e.g. cell
+    type.
+  args: !SimpleFlagArg
+    name: attr
+- !Flag
+  optional: true
+  synonyms:
+  - --condition
+  description: Use <attr> to calculate frequency within each category defined by '--groupby'
+    for the composition plot, e.g. donor.
+  args: !SimpleFlagArg
+    name: attr
+- !Flag
+  optional: true
+  synonyms:
+  - --style
+  description: "Composition plot styles. Can be either 'frequency' or 'normalized'.\
+    \ [default: normalized]"
+  args: !SimpleFlagArg
+    name: style
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Print out help information.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Generate cluster composition plots.\n\nUsage:\n  pegasus plot [options]\
+  \ [--restriction <restriction>...] [--palette <palette>...] <plot_type> <input_file>\
+  \ <output_file>\n  pegasus plot -h\n\nArguments:\n  plot_type              Plot\
+  \ type, either 'scatter' for scatter plots or 'compo' for composition plots\n  input_file\
+  \             Single cell data in Zarr or H5ad format.\n  output_file          \
+  \  Output image file.\n\nOptions:\n  --dpi <dpi>                        DPI value\
+  \ for the figure. [default: 500]\n  --restriction <restriction>...     Set restriction\
+  \ if you only want to plot a subset of data. Multiple <restriction> strings are\
+  \ allowed. There are two types of <restriction>s: global restriction and attribute-specific\
+  \ restriction. Global restriction appiles to all attributes in ``attrs`` and takes\
+  \ the format of 'key:value,value...', or 'key:~value,value...'. This restriction\
+  \ selects cells with the ``data.obs[key]`` values belong to 'value,value...' (or\
+  \ not belong to if '~' shows). Attribute-specific restriction takes the format of\
+  \ 'attr:key:value,value...', or 'attr:key:~value,value...'. It only applies to one\
+  \ attribute 'attr'. If 'attr' and 'key' are the same, one can use '.' to replace\
+  \ 'key' (e.g. ``cluster_labels:.:value1,value2``).Each <restriction> takes the format\
+  \ of 'attr:value,value', or 'attr:~value,value...\" which means excluding values.\
+  \ This option is used in both 'composition' and 'scatter'.\n  --attributes <attrs>\
+  \               <attrs> is a comma-separated list of attributes to color the basis.\
+  \ This option is only used in 'scatter'.\n  --basis <basis>                    Basis\
+  \ for 2D plotting, chosen from 'umap', 'tsne', 'fitsne', 'fle', 'net_umap', 'net_tsne',\
+  \ 'net_fitsne' or 'net_fle'. [default: umap]\n  --alpha <alpha>                \
+  \    Point transparent parameter. Can be a single value or a list of values separated\
+  \ by comma used for each attribute in <attrs>.\n  --legend-loc <str>           \
+  \      Legend location, can be either \"right margin\" or \"on data\". If a list\
+  \ is provided, set 'legend_loc' for each attribute in 'attrs' separately. [default:\
+  \ right margin]\n  --palette <str>                    Used for setting colors for\
+  \ every categories in categorical attributes. Multiple <palette> strings are allowed.\
+  \ Each string takes the format of 'attr:color1,color2,...,colorn'. 'attr' is the\
+  \ categorical attribute and 'color1' - 'colorn' are the colors for each category\
+  \ in 'attr' (e.g. 'cluster_labels:black,blue,red,...,yellow'). If there is only\
+  \ one categorical attribute in 'attrs', ``palletes`` can be set as a single string\
+  \ and the 'attr' keyword can be omitted (e.g. \"blue,yellow,red\").\n  --show-background\
+  \                  Show points that are not selected as gray.\n  --nrows <nrows>\
+  \                    Number of rows in the figure. If not set, pegasus will figure\
+  \ it out automatically.\n  --ncols <ncols>                    Number of columns\
+  \ in the figure. If not set, pegasus will figure it out automatically.\n  --panel-size\
+  \ <sizes>               Panel size in inches, w x h, separated by comma. Note that\
+  \ margins are not counted in the sizes. For composition, default is (6, 4). For\
+  \ scatter plots, default is (4, 4).\n  --left <left>                      Figure's\
+  \ left margin in fraction with respect to panel width.\n  --bottom <bottom>    \
+  \              Figure's bottom margin in fraction with respect to panel height.\n\
+  \  --wspace <wspace>                  Horizontal space between panels in fraction\
+  \ with respect to panel width.\n  --hspace <hspace>                  Vertical space\
+  \ between panels in fraction with respect to panel height.\n  --groupby <attr> \
+  \                  Use <attr> to categorize the cells for the composition plot,\
+  \ e.g. cell type.\n  --condition <attr>                 Use <attr> to calculate\
+  \ frequency within each category defined by '--groupby' for the composition plot,\
+  \ e.g. donor.\n  --style <style>                    Composition plot styles. Can\
+  \ be either 'frequency' or 'normalized'. [default: normalized]\n\n  -h, --help \
+  \                        Print out help information.\n\nExamples:\n  pegasus plot\
+  \ scatter --basis tsne --attributes louvain_labels,Donor example.h5ad scatter.pdf\n\
+  \  pegasus plot compo --groupby louvain_labels --condition Donor example.zarr.zip\
+  \ compo.pdf\n    \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/pegasuspy:1.2.0--py38h0213d0e_1

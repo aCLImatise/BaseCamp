@@ -1,0 +1,106 @@
+!Command
+command:
+- alleleCounter.pl
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: alleleCounts.pl
+  description: 'Required:'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -bam
+  - -b
+  description: "BAM/CRAM file (expects co-located index)\n- if CRAM see '-ref'"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -output
+  - -o
+  description: Output file [STDOUT]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -loci
+  - -l
+  description: "Alternate loci file (just needs chr pos)\n- output is different, counts\
+    \ for each residue"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ref
+  - -r
+  description: genome.fa, required for CRAM (with colocated .fai)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -minqual
+  - -m
+  description: Minimum base quality to include (integer) [30]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -mapqual
+  - -q
+  description: Minimum mapping quality of read (integer) [35]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -gender
+  - -g
+  description: "flag, presence indicates loci file to be treated as gender SNPs.\n\
+    - cannot be used with 's'"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -snp6
+  - -s
+  description: "flag, presence indicates loci file is SNP6 format.\n- cannot be used\
+    \ with 'g'\n- changes output format"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -version
+  - -v
+  description: Version number
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -help
+  - -h
+  description: This message
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage:\n    Where possible use the C version for large data (it's also\
+  \ more\n    configurable).\n\n    alleleCounts.pl\n\n      Required:\n\n       \
+  \ -bam      -b      BAM/CRAM file (expects co-located index)\n                 \
+  \          - if CRAM see '-ref'\n        -output   -o      Output file [STDOUT]\n\
+  \        -loci     -l      Alternate loci file (just needs chr pos)\n          \
+  \                 - output is different, counts for each residue\n\n      Optional:\n\
+  \        -ref      -r      genome.fa, required for CRAM (with colocated .fai)\n\
+  \        -minqual  -m      Minimum base quality to include (integer) [30]\n    \
+  \    -mapqual  -q      Minimum mapping quality of read (integer) [35]\n        -gender\
+  \   -g      flag, presence indicates loci file to be treated as gender SNPs.\n \
+  \                          - cannot be used with 's'\n        -snp6     -s     \
+  \ flag, presence indicates loci file is SNP6 format.\n                         \
+  \  - cannot be used with 'g'\n                           - changes output format\n\
+  \        -help     -h      This message\n        -version  -v      Version number\n\
+  \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/perl-sanger-cgp-allelecount:4.2.1--pl526h516909a_0

@@ -1,0 +1,143 @@
+!Command
+command:
+- gnali
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input_file
+  description: 'File of genes to test. Accepted formats: csv, txt'
+  args: !SimpleFlagArg
+    name: INPUT_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output_dir
+  description: 'Name of output directory. Default: results-ID/'
+  args: !SimpleFlagArg
+    name: OUTPUT_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --force
+  description: Force existing output folder to be overwritten
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --database
+  description: "Database to query. Default: gnomadv2.1.1 Options:\n['gnomadv2.1.1',\
+    \ 'gnomadv3']"
+  args: !SimpleFlagArg
+    name: DATABASE
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --vcf
+  description: Generate vcf file for filtered variants
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: "[PREDEFINED_FILTERS [PREDEFINED_FILTERS ...]], --predefined_filters\
+    \ [PREDEFINED_FILTERS [PREDEFINED_FILTERS ...]]\nPredefined filters. To use multiple,\
+    \ separate them by\nspaces. Options: {'gnomadv2.1.1': {'homozygous-\ncontrols':\
+    \ 'controls_nhomalt>0', 'heterozygous-\ncontrols': 'controls_nhomalt=0', 'homozygous':\n\
+    'nhomalt>0'}, 'gnomadv3': {'homozygous': 'nhomalt>0'}}"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  description: "[ADDITIONAL_FILTERS [ADDITIONAL_FILTERS ...]], --additional_filters\
+    \ [ADDITIONAL_FILTERS [ADDITIONAL_FILTERS ...]]\nAdditional filters. To use multiple,\
+    \ separate them by\nspaces. Please enclose each in quotes (ex. \"AC>3\")"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -P
+  - --pop_freqs
+  description: Get population frequencies (in detailed output file)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --config
+  description: "Use a custom config file. To get started, check out\nthe --config_template\
+    \ commands"
+  args: !SimpleFlagArg
+    name: CONFIG
+- !Flag
+  optional: true
+  synonyms:
+  - --config_template_grch37
+  description: "Create a fillable template for a config for a database\nusing the\
+    \ GRCh37 assembly"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --config_template_grch38
+  description: "Create a fillable template for a config for a database\nusing the\
+    \ GRCh38 assembly\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: gNALI [-h] [-i INPUT_FILE] [-o OUTPUT_DIR] [-f] [-d DATABASE] [-v]\n\
+  \             [-p [PREDEFINED_FILTERS [PREDEFINED_FILTERS ...]]]\n             [-a\
+  \ [ADDITIONAL_FILTERS [ADDITIONAL_FILTERS ...]]] [-V] [-P]\n             [-c CONFIG]\
+  \ [--config_template_grch37] [--config_template_grch38]\n\nGiven a list of genes\
+  \ to test, gNALI finds all potential loss of function\nvariants of those genes.\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  -i INPUT_FILE, --input_file INPUT_FILE\n                        File of genes\
+  \ to test. Accepted formats: csv, txt\n  -o OUTPUT_DIR, --output_dir OUTPUT_DIR\n\
+  \                        Name of output directory. Default: results-ID/\n  -f, --force\
+  \           Force existing output folder to be overwritten\n  -d DATABASE, --database\
+  \ DATABASE\n                        Database to query. Default: gnomadv2.1.1 Options:\n\
+  \                        ['gnomadv2.1.1', 'gnomadv3']\n  -v, --vcf             Generate\
+  \ vcf file for filtered variants\n  -p [PREDEFINED_FILTERS [PREDEFINED_FILTERS ...]],\
+  \ --predefined_filters [PREDEFINED_FILTERS [PREDEFINED_FILTERS ...]]\n         \
+  \               Predefined filters. To use multiple, separate them by\n        \
+  \                spaces. Options: {'gnomadv2.1.1': {'homozygous-\n             \
+  \           controls': 'controls_nhomalt>0', 'heterozygous-\n                  \
+  \      controls': 'controls_nhomalt=0', 'homozygous':\n                        'nhomalt>0'},\
+  \ 'gnomadv3': {'homozygous': 'nhomalt>0'}}\n  -a [ADDITIONAL_FILTERS [ADDITIONAL_FILTERS\
+  \ ...]], --additional_filters [ADDITIONAL_FILTERS [ADDITIONAL_FILTERS ...]]\n  \
+  \                      Additional filters. To use multiple, separate them by\n \
+  \                       spaces. Please enclose each in quotes (ex. \"AC>3\")\n \
+  \ -V, --version         show program's version number and exit\n  -P, --pop_freqs\
+  \       Get population frequencies (in detailed output file)\n  -c CONFIG, --config\
+  \ CONFIG\n                        Use a custom config file. To get started, check\
+  \ out\n                        the --config_template commands\n  --config_template_grch37\n\
+  \                        Create a fillable template for a config for a database\n\
+  \                        using the GRCh37 assembly\n  --config_template_grch38\n\
+  \                        Create a fillable template for a config for a database\n\
+  \                        using the GRCh38 assembly\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/gnali:1.0.2--py37heccd8a3_0

@@ -1,0 +1,222 @@
+!Command
+command:
+- dcmgpdir
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: dcmfile-in
+  description: ref. DICOM file (or directory to be scanned)
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --arguments
+  description: print expanded command line arguments
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  description: quiet mode, print no warnings and errors
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: verbose mode, print processing details
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --debug
+  description: debug mode, print debug information
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ll
+  - --log-level
+  description: "[l]evel: string constant\n(fatal, error, warn, info, debug, trace)\n\
+    use level l for the logger"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -lc
+  - --log-config
+  description: "[f]ilename: string\nuse config file f for the logger"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --keep-filenames
+  description: expect filenames to be in DICOM format (def.)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --no-recurse
+  description: do not recurse within directories (default)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -W
+  - --no-consistency-check
+  description: do not check files for consistency
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --abort-inconsist-file
+  description: abort on first inconsistent file
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -I
+  - --strict
+  description: "exit with error if DICOMDIR type 1 attributes\nare missing in DICOM\
+    \ file (default)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Nxc
+  - --no-xfer-check
+  description: "do not reject images with non-standard\ntransfer syntax (just warn)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -A
+  - --replace
+  description: replace existing DICOMDIR (default)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --discard
+  description: do not write out DICOMDIR
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --create-backup
+  description: create a backup of existing DICOMDIR (def.)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -nb
+  - --no-backup
+  description: do not create a backup of existing DICOMDIR
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --disable-new-vr
+  description: disable support for new VRs, convert to OB
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --group-length-remove
+  description: write without group length elements (default)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --length-undefined
+  description: write with undefined lengths
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: print this help text and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: print version information and exit
+  args: !EmptyFlagArg {}
+help_text: "$dcmtk: dcmgpdir v3.6.5 2019-10-28 $\n\ndcmgpdir: Create a general purpose\
+  \ DICOMDIR\nusage: dcmgpdir [options] [dcmfile-in...]\n\nparameters:\n  dcmfile-in\
+  \                       ref. DICOM file (or directory to be scanned)\n\ngeneral\
+  \ options:\n  -h      --help                   print this help text and exit\n \
+  \         --version                print version information and exit\n        \
+  \  --arguments              print expanded command line arguments\n  -q      --quiet\
+  \                  quiet mode, print no warnings and errors\n  -v      --verbose\
+  \                verbose mode, print processing details\n  -d      --debug     \
+  \             debug mode, print debug information\n  -ll     --log-level       \
+  \       [l]evel: string constant\n                                   (fatal, error,\
+  \ warn, info, debug, trace)\n                                   use level l for\
+  \ the logger\n  -lc     --log-config             [f]ilename: string\n          \
+  \                         use config file f for the logger\ninput options:\n  DICOMDIR\
+  \ identifiers:\n    +F    --fileset-id             [i]d: string\n              \
+  \                     use specific file-set ID\n                               \
+  \    (default: DCMTK_MEDIA_DEMO, \"\" for none)\n    +R    --descriptor        \
+  \     [f]ilename: string\n                                   add a file-set descriptor\
+  \ file ID\n                                   (e.g. README, default: no descriptor)\n\
+  \    +C    --char-set               [c]harset: string\n                        \
+  \           add a specific character set for descriptor\n                      \
+  \             (default: \"ISO_IR 100\" if descriptor present)\n  reading:\n    +id\
+  \   --input-directory        [d]irectory: string\n                             \
+  \      read referenced DICOM files from directory d\n                          \
+  \         (default for --recurse: current directory)\n    -m    --keep-filenames\
+  \         expect filenames to be in DICOM format (def.)\n    +m    --map-filenames\
+  \          map to DICOM filenames (lowercase->uppercase,\n                     \
+  \              and remove trailing period)\n    -r    --no-recurse             do\
+  \ not recurse within directories (default)\n    +r    --recurse                recurse\
+  \ within filesystem directories\n    +p    --pattern                [p]attern: string\
+  \ (only with --recurse)\n                                   pattern for filename\
+  \ matching (wildcards)\nprocessing options:\n  consistency check:\n    -W    --no-consistency-check\
+  \   do not check files for consistency\n    +W    --warn-inconsist-files   warn\
+  \ about inconsistent files (default)\n    -a    --abort-inconsist-file   abort on\
+  \ first inconsistent file\n  type 1 attributes:\n    -I    --strict            \
+  \     exit with error if DICOMDIR type 1 attributes\n                          \
+  \         are missing in DICOM file (default)\n    +I    --invent              \
+  \   invent DICOMDIR type 1 attributes\n                                   if missing\
+  \ in DICOM file\n    +Ipi  --invent-patient-id      invent new PatientID in case\
+  \ of inconsistent\n                                   PatientName attributes\n \
+  \ other checks:\n    +Nrs  --allow-retired-sop      allow retired SOP classes defined\
+  \ in previous\n                                   editions of the DICOM standard\n\
+  \    -Nxc  --no-xfer-check          do not reject images with non-standard\n   \
+  \                                transfer syntax (just warn)\noutput options:\n\
+  \  DICOMDIR file:\n    +D    --output-file            [f]ilename: string\n     \
+  \                              generate specific DICOMDIR file\n               \
+  \                    (default: DICOMDIR in current directory)\n  writing:\n    -A\
+  \    --replace                replace existing DICOMDIR (default)\n    +A    --append\
+  \                 append to existing DICOMDIR\n    +U    --update              \
+  \   update existing DICOMDIR\n    -w    --discard                do not write out\
+  \ DICOMDIR\n  backup:\n          --create-backup          create a backup of existing\
+  \ DICOMDIR (def.)\n    -nb   --no-backup              do not create a backup of\
+  \ existing DICOMDIR\n  post-1993 value representations:\n    +u    --enable-new-vr\
+  \          enable support for new VRs (UN/UT) (default)\n    -u    --disable-new-vr\
+  \         disable support for new VRs, convert to OB\n  group length encoding:\n\
+  \    -g    --group-length-remove    write without group length elements (default)\n\
+  \    +g    --group-length-create    write with group length elements\n  length encoding\
+  \ in sequences and items:\n    +e    --length-explicit        write with explicit\
+  \ lengths (default)\n    -e    --length-undefined       write with undefined lengths\n\
+  \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/dcmtk:3.6.5--h5fca97b_0

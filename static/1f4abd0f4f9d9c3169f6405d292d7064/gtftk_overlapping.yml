@@ -1,0 +1,211 @@
+!Command
+command:
+- gtftk
+- overlapping
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: '2018-01-24'
+  description: 'Arguments:'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --annotate-gtf
+  description: 'All lines of the original GTF will be printed. (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --inputfile
+  description: 'Path to the GTF file. Default to STDIN (default: <stdin>)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --outputfile
+  description: 'Output file. (default: <stdout>)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --chrom-info
+  description: 'Chromosome information. A tabulated two-columns file with chromosomes
+    as column 1 and sizes as column 2 (default: None)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --upstream
+  description: "Extend the region in 5'. Used to define the region around the TSS/TTS.\
+    \ (default: 1500)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --downstream
+  description: "Extend the region in 3'. Used to define the region around the TSS/TTS.\
+    \ (default: 1500)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --feature-type
+  description: 'The feature of interest. (default: transcript)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --same-strandedness
+  description: 'Require same strandedness (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --diff-strandedness
+  description: 'Require different strandedness (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --invert-match
+  description: 'Not/Invert match. (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --key-name
+  description: 'The name of the key. (default: None)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --bool
+  description: 'When --annotate-gtf is used use 0 or 1 as key values (instead of overlapping
+    transcripts id). (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -@
+  - --annotate-all
+  description: "When --annotate-gtf annotate all transcripts (default value would\
+    \ be '0'). (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --verbosity
+  description: 'Set output verbosity ([0-3]). (default: 0)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  - --no-date
+  description: 'Do not add date to output file names. (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -C
+  - --add-chr
+  description: "Add 'chr' to chromosome names before printing output. (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -K
+  - --tmp-dir
+  description: 'Keep all temporary files into this folder. (default: None)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -A
+  - --keep-all
+  description: 'Try to keep all temporary files even if process does not terminate
+    normally. (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  - --logger-file
+  description: 'Stores the arguments passed to the command into a file. (default:
+    None)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -W
+  - --write-message-to-file
+  description: 'Store all message into a file. (default: None)'
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this help message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "  Usage: gtftk overlapping [-i GTF] [-o GTF] -c CHROMINFO [-u UPSTREAM]\
+  \ [-d DOWNSTREAM] [-t {transcript,promoter,tts}] [-s] [-S] [-n] [-a] [-k key_name]\
+  \ [-b] [-@] [-h] [-V [verbosity]] [-D] [-C] [-K tmp_dir] [-A] [-L logger_file] [-W\
+  \ write_message_to_file]\n\n  Description: \n     *  Find transcripts whose body/TSS/TTS\
+  \ region extended in 5' and 3' (-u/-d) overlaps with any\n     transcript from another\
+  \ gene. Strandness is not considered by default. Used --invert-match to\n     find\
+  \ those that do not overlap. If --annotate-gtf is used, all lines of the input GTF\
+  \ file will\n     be printed and a new key containing the list of overlapping transcripts\
+  \ will be added to the\n     transcript features/lines (key will be 'overlapping_*'\
+  \ with * one of body/TSS/TTS). The\n     --annotate-gtf and --invert-match arguments\
+  \ are mutually exclusive.\n\n  Notes:\n     *  --chrom-info may also accept 'mm8',\
+  \ 'mm9', 'mm10', 'hg19', 'hg38', 'rn3' or 'rn4'. In this\n     case the  corresponding\
+  \ size of conventional chromosomes are used. ChrM is not used.\n\n  Version:  2018-01-24\n\
+  \nArguments:\n -i, --inputfile              Path to the GTF file. Default to STDIN\
+  \ (default: <stdin>)\n -o, --outputfile             Output file. (default: <stdout>)\n\
+  \ -c, --chrom-info             Chromosome information. A tabulated two-columns file\
+  \ with chromosomes as column 1 and sizes as column 2 (default: None)\n -u, --upstream\
+  \               Extend the region in 5'. Used to define the region around the TSS/TTS.\
+  \ (default: 1500)\n -d, --downstream             Extend the region in 3'. Used to\
+  \ define the region around the TSS/TTS. (default: 1500)\n -t, --feature-type   \
+  \        The feature of interest. (default: transcript)\n -s, --same-strandedness\
+  \      Require same strandedness (default: False)\n -S, --diff-strandedness    \
+  \  Require different strandedness (default: False)\n -n, --invert-match        \
+  \   Not/Invert match. (default: False)\n -a, --annotate-gtf           All lines\
+  \ of the original GTF will be printed. (default: False)\n -k, --key-name       \
+  \        The name of the key. (default: None)\n -b, --bool                   When\
+  \ --annotate-gtf is used use 0 or 1 as key values (instead of overlapping transcripts\
+  \ id). (default: False)\n -@, --annotate-all           When --annotate-gtf annotate\
+  \ all transcripts (default value would be '0'). (default: False)\n\nCommand-wise\
+  \ optional arguments:\n -h, --help                   Show this help message and\
+  \ exit.\n -V, --verbosity              Set output verbosity ([0-3]). (default: 0)\n\
+  \ -D, --no-date                Do not add date to output file names. (default: False)\n\
+  \ -C, --add-chr                Add 'chr' to chromosome names before printing output.\
+  \ (default: False)\n -K, --tmp-dir                Keep all temporary files into\
+  \ this folder. (default: None)\n -A, --keep-all               Try to keep all temporary\
+  \ files even if process does not terminate normally. (default: False)\n -L, --logger-file\
+  \            Stores the arguments passed to the command into a file. (default: None)\n\
+  \ -W, --write-message-to-file  Store all message into a file. (default: None)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/pygtftk:1.2.7--py36h4edd4cd_1

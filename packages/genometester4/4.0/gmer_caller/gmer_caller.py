@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Int, Boolean, String
+
+Gmer_Caller_V0_1_0 = CommandToolBuilder(tool="gmer_caller", base_command=["gmer_caller"], inputs=[ToolInput(tag="in_training_size", input_type=Int(optional=True), prefix="--training_size", doc=InputDocumentation(doc="- Use NUM markers for training (default 100000)")), ToolInput(tag="in_runs", input_type=Int(optional=True), prefix="--runs", doc=InputDocumentation(doc="- Perfom NUMBER runs of model training (use 0 for no training)")), ToolInput(tag="in_num_threads", input_type=Int(optional=True), prefix="--num_threads", doc=InputDocumentation(doc="- Use NUM threads (min 1, max 32, default 16)")), ToolInput(tag="in_header", input_type=Boolean(optional=True), prefix="--header", doc=InputDocumentation(doc="- Print table header")), ToolInput(tag="in_non_canonical", input_type=Boolean(optional=True), prefix="--non_canonical", doc=InputDocumentation(doc="- Output non-canonical genotypes")), ToolInput(tag="in_prob_cut_off", input_type=Boolean(optional=True), prefix="--prob_cutoff", doc=InputDocumentation(doc="- probability cutoff for calling genotype (default 0)")), ToolInput(tag="in_alternatives", input_type=Boolean(optional=True), prefix="--alternatives", doc=InputDocumentation(doc="- Print probabilities of all alternative genotypes")), ToolInput(tag="in_info", input_type=Boolean(optional=True), prefix="--info", doc=InputDocumentation(doc="- Print information about individual")), ToolInput(tag="in_no_genotypes", input_type=Boolean(optional=True), prefix="--no_genotypes", doc=InputDocumentation(doc="- Print only summary information, not actual genotypes")), ToolInput(tag="in_model", input_type=String(optional=True), prefix="--model", doc=InputDocumentation(doc="- Model type (full, diploid, haploid)")), ToolInput(tag="in_params", input_type=Int(optional=True), prefix="--params", doc=InputDocumentation(doc="- Model parameters (error, p0, p1, p2, coverage, size, size2)")), ToolInput(tag="in_coverage", input_type=Int(optional=True), prefix="--coverage", doc=InputDocumentation(doc="- Average coverage of reads")), ToolInput(tag="in_increase_debug_level", input_type=Boolean(optional=True), prefix="-D", doc=InputDocumentation(doc="- increase debug level")), ToolInput(tag="in_arguments", input_type=String(), position=0, doc=InputDocumentation(doc=""))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Gmer_Caller_V0_1_0().translate("wdl", allow_empty_container=True)
+

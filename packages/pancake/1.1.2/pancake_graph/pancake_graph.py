@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, Array, String, Int, Boolean
+
+Pancake_Graph_V0_1_0 = CommandToolBuilder(tool="pancake_graph", base_command=["pancake", "graph"], inputs=[ToolInput(tag="in_pan_file", input_type=File(optional=True), prefix="--panfile", doc=InputDocumentation(doc="Name of PanCake Data Object File (required)")), ToolInput(tag="in_chrom_s", input_type=Array(t=String(), optional=True), prefix="--chroms", doc=InputDocumentation(doc="Chromosomes in Output (by default all chromosomes\ncovered in PAN_FILE)")), ToolInput(tag="in_starts", input_type=Array(t=String(), optional=True), prefix="-starts", doc=InputDocumentation(doc="Start positions (in same order as chromosomes),\nDEFAULT=1 on all chromosomes")), ToolInput(tag="in_stops", input_type=Array(t=String(), optional=True), prefix="-stops", doc=InputDocumentation(doc="Stop positions (in same order as chromosomes),\nDEFAULT=length of chromosomes")), ToolInput(tag="in_max_nodes", input_type=Int(optional=True), prefix="--max_nodes", doc=InputDocumentation(doc="Maximal number of nodes in output graph.\n(DEFAULT=10,000): if exceeded, PanCake will warn and\ninterrupt!")), ToolInput(tag="in_max_edges", input_type=Int(optional=True), prefix="--max_edges", doc=InputDocumentation(doc="Maximal number of edges in output graph.\n(DEFAULT=10,000): if exceeded, PanCake will warn and\ninterrupt!")), ToolInput(tag="in_max_entries", input_type=Int(optional=True), prefix="--max_entries", doc=InputDocumentation(doc="Shared features are truncated in output if number of\ncontained feature instances > MAX_ENTRIES (DEFAULT:\nMAX_ENTRIES=50)")), ToolInput(tag="in_all", input_type=Boolean(optional=True), prefix="-all", doc=InputDocumentation(doc="if set, all chromosomes contained in PAN_FILE appear\nin output (irrespective to CHROMS), DEFAULT=False")), ToolInput(tag="in_regions", input_type=Boolean(optional=True), prefix="-regions", doc=InputDocumentation(doc="if set, only specified regions are shown in output\n(DEFAULT=False), ignored if -all is set")), ToolInput(tag="in_output", input_type=File(optional=True), prefix="--output", doc=InputDocumentation(doc="output DOT file (DEFAULT: STDOUT)\n"))], outputs=[ToolOutput(tag="out_output", output_type=File(optional=True), selector=InputSelector(input_to_select="in_output", type_hint=File()), doc=OutputDocumentation(doc="output DOT file (DEFAULT: STDOUT)\n"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Pancake_Graph_V0_1_0().translate("wdl", allow_empty_container=True)
+

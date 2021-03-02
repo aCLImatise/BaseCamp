@@ -1,0 +1,83 @@
+!Command
+command:
+- hailctl
+- dataproc
+- diagnose
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --dest
+  - -d
+  description: Directory for diagnose output -- must be local.
+  args: !SimpleFlagArg
+    name: DEST
+- !Flag
+  optional: true
+  synonyms:
+  - --hail-log
+  - -l
+  description: Path for hail.log file.
+  args: !SimpleFlagArg
+    name: HAIL_LOG
+- !Flag
+  optional: true
+  synonyms:
+  - --overwrite
+  description: Delete dest directory before adding new files.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-diagnose
+  description: Do not run gcloud dataproc clusters diagnose.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --compress
+  - -z
+  description: GZIP all files.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --workers
+  description: "[WORKERS [WORKERS ...]]\nSpecific workers to get log files from."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --take
+  description: Only download logs from the first N workers.
+  args: !SimpleFlagArg
+    name: TAKE
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: hailctl dataproc diagnose [-h] --dest DEST [--hail-log HAIL_LOG]\n\
+  \                                 [--overwrite] [--no-diagnose] [--compress]\n \
+  \                                [--workers [WORKERS [WORKERS ...]]]\n         \
+  \                        [--take TAKE]\n                                 name\n\n\
+  Diagnose problems in a Dataproc cluster.\n\npositional arguments:\n  name      \
+  \            Cluster name.\n\noptional arguments:\n  -h, --help            show\
+  \ this help message and exit\n  --dest DEST, -d DEST  Directory for diagnose output\
+  \ -- must be local.\n  --hail-log HAIL_LOG, -l HAIL_LOG\n                      \
+  \  Path for hail.log file.\n  --overwrite           Delete dest directory before\
+  \ adding new files.\n  --no-diagnose         Do not run gcloud dataproc clusters\
+  \ diagnose.\n  --compress, -z        GZIP all files.\n  --workers [WORKERS [WORKERS\
+  \ ...]]\n                        Specific workers to get log files from.\n  --take\
+  \ TAKE           Only download logs from the first N workers.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/hail:0.2.61--py36hf1ae8f4_1

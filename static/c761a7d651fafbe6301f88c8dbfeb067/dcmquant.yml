@@ -1,0 +1,218 @@
+!Command
+command:
+- dcmquant
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: dcmfile-in
+  description: DICOM input filename to be converted
+- !Positional
+  optional: false
+  position: 1
+  name: dcmfile-out
+  description: DICOM output filename to be written
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --arguments
+  description: print expanded command line arguments
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  description: quiet mode, print no warnings and errors
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: verbose mode, print processing details
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --debug
+  description: debug mode, print debug information
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ll
+  - --log-level
+  description: "[l]evel: string constant\n(fatal, error, warn, info, debug, trace)\n\
+    use level l for the logger"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -lc
+  - --log-config
+  description: "[f]ilename: string\nuse config file f for the logger"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --read-dataset
+  description: read data set without file meta information
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: =  --read-xfer-auto       use TS recognition (default)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -td
+  - --read-xfer-detect
+  description: ignore TS specified in the file meta header
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -te
+  - --read-xfer-little
+  description: read with explicit VR little endian TS
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -tb
+  - --read-xfer-big
+  description: read with explicit VR big endian TS
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ti
+  - --read-xfer-implicit
+  description: read with implicit VR little endian TS
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  - --write-dataset
+  description: write data set without file meta information
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --disable-new-vr
+  description: disable support for new VRs, convert to OB
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --group-length-remove
+  description: always write without group length elements
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --length-undefined
+  description: write with undefined lengths
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: "=  --padding-retain       do not change padding\n(default if not --write-dataset)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --padding-off
+  description: no padding (implicit if --write-dataset)
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: print this help text and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: print version information and exit
+  args: !EmptyFlagArg {}
+help_text: "$dcmtk: dcmquant v3.6.5 2019-10-28 $\n\ndcmquant: Convert DICOM color\
+  \ images to palette color\nusage: dcmquant [options] dcmfile-in dcmfile-out\n\n\
+  parameters:\n  dcmfile-in   DICOM input filename to be converted\n  dcmfile-out\
+  \  DICOM output filename to be written\n\ngeneral options:\n  -h     --help    \
+  \             print this help text and exit\n         --version              print\
+  \ version information and exit\n         --arguments            print expanded command\
+  \ line arguments\n  -q     --quiet                quiet mode, print no warnings\
+  \ and errors\n  -v     --verbose              verbose mode, print processing details\n\
+  \  -d     --debug                debug mode, print debug information\n  -ll    --log-level\
+  \            [l]evel: string constant\n                                (fatal, error,\
+  \ warn, info, debug, trace)\n                                use level l for the\
+  \ logger\n  -lc    --log-config           [f]ilename: string\n                 \
+  \               use config file f for the logger\ninput options:\n  input file format:\n\
+  \    +f   --read-file            read file format or data set (default)\n    +fo\
+  \  --read-file-only       read file format only\n    -f   --read-dataset       \
+  \  read data set without file meta information\n  input transfer syntax:\n    -t=\
+  \  --read-xfer-auto       use TS recognition (default)\n    -td  --read-xfer-detect\
+  \     ignore TS specified in the file meta header\n    -te  --read-xfer-little \
+  \    read with explicit VR little endian TS\n    -tb  --read-xfer-big        read\
+  \ with explicit VR big endian TS\n    -ti  --read-xfer-implicit   read with implicit\
+  \ VR little endian TS\nimage processing and encoding options:\n  frame selection:\n\
+  \    +fr  --frame                [n]umber: integer\n                           \
+  \     select specified frame\n    +fa  --all-frames           select all frames\
+  \ (default)\n  compatibility:\n    +Mp  --accept-palettes      accept incorrect\
+  \ palette attribute tags\n                                (0028,111x) and (0028,121x)\n\
+  \  median cut dimension selection:\n    +Dr  --mc-dimension-rgb     max dimension\
+  \ from RGB range (default)\n    +Dl  --mc-dimension-lum     max dimension from luminance\n\
+  \  median cut representative color selection:\n    +Cb  --mc-color-avgbox      average\
+  \ colors in box (default)\n    +Cp  --mc-color-avgpixel    average pixels in box\n\
+  \    +Cc  --mc-color-center      select center of box\n  color palette value representation:\n\
+  \    +pw  --write-ow             write Palette LUT as OW (default)\n    +pu  --write-us\
+  \             write Palette LUT as US (retired)\n  color palette creation:\n   \
+  \ +pe  --lut-entries-word     write Palette LUT with 16-bit entries\n    +pf  --floyd-steinberg\
+  \      use Floyd-Steinberg error diffusion\n    +pc  --colors               number\
+  \ of colors: 2..65536 (default 256)\n                                number of colors\
+  \ to quantize to\n  SOP Class UID:\n    +cd  --class-default        keep SOP Class\
+  \ UID (default)\n    +cs  --class-sc             convert to Secondary Capture Image\n\
+  \                                (implies --uid-always)\n  SOP Instance UID:\n \
+  \   +ua  --uid-always           always assign new UID (default)\n    +un  --uid-never\
+  \            never assign new UID\noutput options:\n  output file format:\n    +F\
+  \   --write-file           write file format (default)\n    -F   --write-dataset\
+  \        write data set without file meta information\n  output transfer syntax:\n\
+  \    +t=  --write-xfer-same      write with same TS as input (default)\n    +te\
+  \  --write-xfer-little    write with explicit VR little endian TS\n    +tb  --write-xfer-big\
+  \       write with explicit VR big endian TS\n    +ti  --write-xfer-implicit  write\
+  \ with implicit VR little endian TS\n  post-1993 value representations:\n    +u\
+  \   --enable-new-vr        enable support for new VRs (UN/UT) (default)\n    -u\
+  \   --disable-new-vr       disable support for new VRs, convert to OB\n  group length\
+  \ encoding:\n    +g=  --group-length-recalc  recalculate group lengths if present\
+  \ (default)\n    +g   --group-length-create  always write with group length elements\n\
+  \    -g   --group-length-remove  always write without group length elements\n  length\
+  \ encoding in sequences and items:\n    +e   --length-explicit      write with explicit\
+  \ lengths (default)\n    -e   --length-undefined     write with undefined lengths\n\
+  \  data set trailing padding (not with --write-dataset):\n    -p=  --padding-retain\
+  \       do not change padding\n                                (default if not --write-dataset)\n\
+  \    -p   --padding-off          no padding (implicit if --write-dataset)\n    +p\
+  \   --padding-create       [f]ile-pad [i]tem-pad: integer\n                    \
+  \            align file on multiple of f bytes\n                               \
+  \ and items on multiple of i bytes\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/dcmtk:3.6.5--h5fca97b_0

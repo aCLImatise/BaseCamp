@@ -1,0 +1,119 @@
+!Command
+command:
+- SingleCellRnaSeqMetricsCollector
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: null.
+  description: STRAND_SPECIFICITY=StrandSpecificity
+- !Positional
+  optional: false
+  position: 0
+  name: CELL_BC_FILE
+  description: CELL_BC_FILE=File             Override NUM_CORE_BARCODES, and process
+    reads that have the cell barcodes in this file
+- !Positional
+  optional: false
+  position: 1
+  name: instead.
+  description: When supplied, output is ordered to match the input barcode ordering.
+    The file
+- !Positional
+  optional: false
+  position: 0
+  name: NUM_CORE_BARCODES
+  description: 'READ_MQ=Integer               The map quality of the read to be included
+    for determining which cells will be measured. '
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: (default 4g)
+  args: !SimpleFlagArg
+    name: jvm_heap_size
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: final command line before executing
+  args: !SimpleFlagArg
+    name: echo
+- !Flag
+  optional: true
+  synonyms:
+  - --stdhelp
+  - -H
+  description: "Displays options specific to this tool AND options common to all Picard\
+    \ command line\ntools."
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: Displays options specific to this tool.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Displays program version.
+  args: !EmptyFlagArg {}
+help_text: "USAGE: /usr/local/bin/SingleCellRnaSeqMetricsCollector [-m <jvm_heap_size>]\
+  \ [-v] program args...\n       -m <jvm_heap_size> (default 4g)\n       -v echo final\
+  \ command line before executing\n\nProgram options:\nUSAGE: SingleCellRnaSeqMetricsCollector\
+  \ [options]\n\nAn adaptation of the Picard RnaSeqMetricsCollector to collect per-cell\
+  \ data.  In particular, the\nexon/intron/genic/intragenic/rRNA levels This program\
+  \ looks at the mapping from each of the reads in both genomic and\nlibrary space,\
+  \ and selects the better mapping.\nVersion: 2.4.0(3d2b3d8_1600201514)\n\n\nOptions:\n\
+  \n--help\n-h                            Displays options specific to this tool.\n\
+  \n--stdhelp\n-H                            Displays options specific to this tool\
+  \ AND options common to all Picard command line\n                              tools.\n\
+  \n--version                     Displays program version.\n\nINPUT=File\nI=File\
+  \                        The input SAM or BAM file to analyze.  Required. \n\nOUTPUT=File\n\
+  O=File                        Output file of per-cell exonic/intronic/genic/intergenic/rRNA\
+  \ levels.  This supports\n                              zipped formats like gz and\
+  \ bz2.  Required. \n\nCELL_BARCODE_TAG=String       The cell barcode tag.  If there\
+  \ are no reads with this tag, the program will assume that\n                   \
+  \           all reads belong to the same cell and process in single sample mode.\
+  \  Default value: XC.\n                              This option can be set to 'null'\
+  \ to clear the default value. \n\nANNOTATIONS_FILE=File         Gene annotations\
+  \ in refFlat or GTF format.  Required. \n\nRIBOSOMAL_INTERVALS=File      Location\
+  \ of rRNA sequences in genome, in interval_list format.  If not specified no bases\n\
+  \                              will be identified as being ribosomal.  Format described\
+  \ here:\n                              http://picard.sourceforge.net/javadoc/net/sf/picard/util/IntervalList.html\
+  \  Default value:\n                              null. \n\nSTRAND_SPECIFICITY=StrandSpecificity\n\
+  STRAND=StrandSpecificity      For strand-specific library prep. For unpaired reads,\
+  \ use FIRST_READ_TRANSCRIPTION_STRAND\n                              if the reads\
+  \ are expected to be on the transcription strand.  Default value: NONE. This\n \
+  \                             option can be set to 'null' to clear the default value.\
+  \ Possible values: {NONE,\n                              FIRST_READ_TRANSCRIPTION_STRAND,\
+  \ SECOND_READ_TRANSCRIPTION_STRAND} \n\nRRNA_FRAGMENT_PERCENTAGE=Double\n      \
+  \                        This percentage of the length of a fragment must overlap\
+  \ one of the ribosomal intervals\n                              for a read or read\
+  \ pair by this must in order to be considered rRNA.  Default value: 0.8.\n     \
+  \                         This option can be set to 'null' to clear the default\
+  \ value. \n\nNUM_CORE_BARCODES=Integer     Number of cells that you think are in\
+  \ the library. The top NUM_CORE_BARCODES will be\n                             \
+  \ reported in the output.  Required.  Cannot be used in conjuction with option(s)\n\
+  \                              CELL_BC_FILE\n\nCELL_BC_FILE=File             Override\
+  \ NUM_CORE_BARCODES, and process reads that have the cell barcodes in this file\n\
+  \                              instead.  When supplied, output is ordered to match\
+  \ the input barcode ordering. The file\n                              has 1 column\
+  \ with no header.  Required.  Cannot be used in conjuction with option(s)\n    \
+  \                          NUM_CORE_BARCODES\n\nREAD_MQ=Integer               The\
+  \ map quality of the read to be included for determining which cells will be measured.\
+  \ \n                              Default value: 10. This option can be set to 'null'\
+  \ to clear the default value. \n\nMT_SEQUENCE=String            If specified, count\
+  \ bases that align to this sequence separately from other categories \n        \
+  \                      Default value: null. This option may be specified 0 or more\
+  \ times. \n\n"
+generated_using:
+- -h
+docker_image: quay.io/biocontainers/dropseq_tools:2.4.0--0

@@ -1,0 +1,197 @@
+!Command
+command:
+- chisel_prep
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: INPUT
+  description: "Input FASTQs, BAMs, or TSV file with different\nbehaviors: .........................................\n\
+    (1) FASTQs -- specified in a directory DIR as\n`DIR/*.fastq` or `DIR/*.fastq.gz`\
+    \ -- will be barcoded\nand aligned with (optionally) marked duplicates into a\n\
+    barcoded BAM file; .................................\n(2) BAMs -- specified in\
+    \ a directory DIR as\n`DIR/*.bam` -- will be barcoded and aligned with\n(optionally)\
+    \ marked duplicates into a barcoded BAM\nfile; ..............................................\n\
+    (3) a single BAM file with unique cells names in the\nfield `RG:Z:` will be converted\
+    \ into a barcoded BAM\nfile with the additional `CB:Z:` tag; ..............\n\
+    (4) a tab-separated table of inputs (TSV with optional\nheader starting with `#`)\
+    \ with two columns: the first\ncolumn is an input file (FASTQ or BAM) and the\
+    \ second\ncolumn is the corresponding cell name. When FASTQs are\nprovided, a\
+    \ third column can be optionally specified\nto indicate the read name in paired-end\
+    \ sequencing,\ne.g., indicating either R1 or R2 for the first or\nsecond mate\
+    \ of paired-end reads, respectively. If a\nthird column is not present, FASTQs\
+    \ are assumed to be\nfrom single-end sequencing."
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reference
+  description: "Reference genome, which is mandatory in FASTQ mode\n(default: None)"
+  args: !SimpleFlagArg
+    name: REFERENCE
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --rundir
+  description: 'Running directory (default: current directory)'
+  args: !SimpleFlagArg
+    name: RUNDIR
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: "Output name in running directory (default:\nbarcodedcells.bam)"
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - --rexpname
+  description: "Regulare expression to extract cell name from input\nFASTQ filenames\
+    \ (default:\n`(.*)_S.*_L.*_R[1|2]_001.fastq.*`)"
+  args: !SimpleFlagArg
+    name: REXPNAME
+- !Flag
+  optional: true
+  synonyms:
+  - --rexpread
+  description: "Regulare expression to extract cell name from input\nFASTQ filenames\
+    \ (default:\n`.*_S.*_L.*_(R[1|2])_001.fastq.*`)"
+  args: !SimpleFlagArg
+    name: REXPREAD
+- !Flag
+  optional: true
+  synonyms:
+  - --noduplicates
+  description: "Do not perform marking duplicates and recalibration\nwith Picard tools\
+    \ (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --keeptmpdir
+  description: 'Do not erase temporary directory (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --barcodelength
+  description: 'Length of barcodes (default: 12)'
+  args: !SimpleFlagArg
+    name: BARCODELENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - --bcftools
+  description: "Path to the directory to \"bcftools\" executable\n(default: in $PATH)"
+  args: !SimpleFlagArg
+    name: BCFTOOLS
+- !Flag
+  optional: true
+  synonyms:
+  - --samtools
+  description: "Path to the directory to \"samtools\" executable\n(default: in $PATH)"
+  args: !SimpleFlagArg
+    name: SAMTOOLS
+- !Flag
+  optional: true
+  synonyms:
+  - --bwa
+  description: "Path to the directory to \"bwa\" executable (default: in\n$PATH)"
+  args: !SimpleFlagArg
+    name: BWA
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --jobs
+  description: "Number of parallele jobs to use (default: equal to\nnumber of available\
+    \ processors)"
+  args: !SimpleFlagArg
+    name: JOBS
+- !Flag
+  optional: true
+  synonyms:
+  - --seed
+  description: 'Random seed for replication (default: None)'
+  args: !SimpleFlagArg
+    name: SEED
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: chisel_prep [-h] [-r REFERENCE] [-x RUNDIR] [-o OUTPUT]\n     \
+  \              [--rexpname REXPNAME] [--rexpread REXPREAD]\n                   [--noduplicates]\
+  \ [--keeptmpdir]\n                   [--barcodelength BARCODELENGTH] [--bcftools\
+  \ BCFTOOLS]\n                   [--samtools SAMTOOLS] [--bwa BWA] [-j JOBS] [--seed\
+  \ SEED]\n                   INPUT [INPUT ...]\n\nCHISEL command to create a barcoded\
+  \ BAM file from single-cell FASTQs (or gz-\ncompressed FASTQs), single-cell BAMs,\
+  \ or a `RG:Z:`-barcoded BAM files without\n`CB:Z:` tags. When single-cell FASTQs\
+  \ or BAMs are provided a CELL name is\nassigned to each file (through either filename\
+  \ or table) and the same cell\nbarcode will be assigned to all corresponding reads,\
+  \ but a different RG tag as\nthey are considered as different repetitions of sequencing\
+  \ of the same cell.\nSpecifically, when a table of inputs is not provied, for FASTQs\
+  \ each CELL name\nis extracted from the filename through the provided regular expression\n\
+  (default matches Illumina standard format), for BAMs basename is used as CELL\n\
+  name. When single-cell FASTQs are provided a READ value is also assigned to\neach\
+  \ file (through either filename or table) and files with the same filename\nwhen\
+  \ removing READ values are considered as pairs of sequencing read mates.\nInput\
+  \ files, CELL names, and possible READ values can be provided through a\ntable of\
+  \ inputs.\n\npositional arguments:\n  INPUT                 Input FASTQs, BAMs,\
+  \ or TSV file with different\n                        behaviors: .........................................\n\
+  \                        (1) FASTQs -- specified in a directory DIR as\n       \
+  \                 `DIR/*.fastq` or `DIR/*.fastq.gz` -- will be barcoded\n      \
+  \                  and aligned with (optionally) marked duplicates into a\n    \
+  \                    barcoded BAM file; .................................\n    \
+  \                    (2) BAMs -- specified in a directory DIR as\n             \
+  \           `DIR/*.bam` -- will be barcoded and aligned with\n                 \
+  \       (optionally) marked duplicates into a barcoded BAM\n                   \
+  \     file; ..............................................\n                   \
+  \     (3) a single BAM file with unique cells names in the\n                   \
+  \     field `RG:Z:` will be converted into a barcoded BAM\n                    \
+  \    file with the additional `CB:Z:` tag; ..............\n                    \
+  \    (4) a tab-separated table of inputs (TSV with optional\n                  \
+  \      header starting with `#`) with two columns: the first\n                 \
+  \       column is an input file (FASTQ or BAM) and the second\n                \
+  \        column is the corresponding cell name. When FASTQs are\n              \
+  \          provided, a third column can be optionally specified\n              \
+  \          to indicate the read name in paired-end sequencing,\n               \
+  \         e.g., indicating either R1 or R2 for the first or\n                  \
+  \      second mate of paired-end reads, respectively. If a\n                   \
+  \     third column is not present, FASTQs are assumed to be\n                  \
+  \      from single-end sequencing.\n\noptional arguments:\n  -h, --help        \
+  \    show this help message and exit\n  -r REFERENCE, --reference REFERENCE\n  \
+  \                      Reference genome, which is mandatory in FASTQ mode\n    \
+  \                    (default: None)\n  -x RUNDIR, --rundir RUNDIR\n           \
+  \             Running directory (default: current directory)\n  -o OUTPUT, --output\
+  \ OUTPUT\n                        Output name in running directory (default:\n \
+  \                       barcodedcells.bam)\n  --rexpname REXPNAME   Regulare expression\
+  \ to extract cell name from input\n                        FASTQ filenames (default:\n\
+  \                        `(.*)_S.*_L.*_R[1|2]_001.fastq.*`)\n  --rexpread REXPREAD\
+  \   Regulare expression to extract cell name from input\n                      \
+  \  FASTQ filenames (default:\n                        `.*_S.*_L.*_(R[1|2])_001.fastq.*`)\n\
+  \  --noduplicates        Do not perform marking duplicates and recalibration\n \
+  \                       with Picard tools (default: False)\n  --keeptmpdir     \
+  \     Do not erase temporary directory (default: False)\n  --barcodelength BARCODELENGTH\n\
+  \                        Length of barcodes (default: 12)\n  --bcftools BCFTOOLS\
+  \   Path to the directory to \"bcftools\" executable\n                        (default:\
+  \ in $PATH)\n  --samtools SAMTOOLS   Path to the directory to \"samtools\" executable\n\
+  \                        (default: in $PATH)\n  --bwa BWA             Path to the\
+  \ directory to \"bwa\" executable (default: in\n                        $PATH)\n\
+  \  -j JOBS, --jobs JOBS  Number of parallele jobs to use (default: equal to\n  \
+  \                      number of available processors)\n  --seed SEED          \
+  \ Random seed for replication (default: None)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/chisel:0.0.5--py_0

@@ -1,0 +1,178 @@
+!Command
+command:
+- shorah
+- amplicon
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: shorah
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: subcommand
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: amplicon
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --alpha
+  description: "alpha in dpm sampling (controls the probability of\ncreating new classes)"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: ":start-stop, --region chrm:start-stop\nregion in format 'chr:start-stop',\
+    \ e.g.\n'chrm:1000-3000'"
+  args: !SimpleFlagArg
+    name: chrm
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  - --seed
+  description: set seed for reproducible results
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --maxcov
+  description: approximate max coverage allowed
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --sigma
+  description: sigma value to use when calling SNVs
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - -I
+  - --ignore_indels
+  description: "ignore SNVs adjacent to insertions/deletions (legacy\nbehaviour of\
+    \ 'fil', ignore this option if you don't\nunderstand)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --threshold
+  description: pos threshold when calling variants from support files
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - -of
+  description: "[{csv,vcf} ...], --out_format {csv,vcf} [{csv,vcf} ...]\noutput format\
+    \ of called SNVs"
+  args: !ChoiceFlagArg
+    choices: !!set
+      csv:
+      vcf:
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --win_coverage
+  description: coverage threshold. Omit windows with low coverage
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --diversity
+  description: detect the highest entropy region and run there
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --min_overlap
+  description: fraction of read overlap to be included
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --bam
+  description: sorted bam format alignment file
+  args: !SimpleFlagArg
+    name: BAM
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --fasta
+  description: reference genome in fasta format
+  args: !SimpleFlagArg
+    name: REF
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: ''
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: shorah <subcommand> [options] amplicon [-h] [-v] -b BAM -f REF\n\
+  \                                              [-a FLOAT] [-r chrm:start-stop]\n\
+  \                                              [-R INT] [-x INT] [-S FLOAT]\n  \
+  \                                            [-I] [-p FLOAT]\n                 \
+  \                             [-of {csv,vcf} [{csv,vcf} ...]]\n                \
+  \                              [-c INT] [-d] [-m FLOAT]\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -v, --version      \
+  \   show program's version number and exit\n  -a FLOAT, --alpha FLOAT\n        \
+  \                alpha in dpm sampling (controls the probability of\n          \
+  \              creating new classes)\n  -r chrm:start-stop, --region chrm:start-stop\n\
+  \                        region in format 'chr:start-stop', e.g.\n             \
+  \           'chrm:1000-3000'\n  -R INT, --seed INT    set seed for reproducible\
+  \ results\n  -x INT, --maxcov INT  approximate max coverage allowed\n  -S FLOAT,\
+  \ --sigma FLOAT\n                        sigma value to use when calling SNVs\n\
+  \  -I, --ignore_indels   ignore SNVs adjacent to insertions/deletions (legacy\n\
+  \                        behaviour of 'fil', ignore this option if you don't\n \
+  \                       understand)\n  -p FLOAT, --threshold FLOAT\n           \
+  \             pos threshold when calling variants from support files\n  -of {csv,vcf}\
+  \ [{csv,vcf} ...], --out_format {csv,vcf} [{csv,vcf} ...]\n                    \
+  \    output format of called SNVs\n  -c INT, --win_coverage INT\n              \
+  \          coverage threshold. Omit windows with low coverage\n  -d, --diversity\
+  \       detect the highest entropy region and run there\n  -m FLOAT, --min_overlap\
+  \ FLOAT\n                        fraction of read overlap to be included\n\nrequired\
+  \ arguments:\n  -b BAM, --bam BAM     sorted bam format alignment file\n  -f REF,\
+  \ --fasta REF   reference genome in fasta format\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/shorah:1.99.2--py38h032b7f5_1

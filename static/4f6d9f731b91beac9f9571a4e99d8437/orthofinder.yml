@@ -1,0 +1,222 @@
+!Command
+command:
+- orthofinder
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: Number of parallel sequence search threads [Default = 8]
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  description: Number of parallel analysis threads
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: Input is DNA sequences
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  description: "Method for gene tree inference. Options 'dendroblast' & 'msa'\n[Default\
+    \ = dendroblast]"
+  args: !SimpleFlagArg
+    name: txt
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  description: "Sequence search program [Default = diamond]\nOptions: blast, diamond,\
+    \ diamond_ultra_sens, blast_gz, mmseqs, blast_nucl"
+  args: !SimpleFlagArg
+    name: txt
+- !Flag
+  optional: true
+  synonyms:
+  - -A
+  description: "MSA program, requires '-M msa' [Default = mafft]\nOptions: mafft,\
+    \ muscle"
+  args: !SimpleFlagArg
+    name: txt
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  description: "Tree inference method, requires '-M msa' [Default = fasttree]\nOptions:\
+    \ fasttree, raxml, raxml-ng, iqtree"
+  args: !SimpleFlagArg
+    name: txt
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: User-specified rooted species tree
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -I
+  description: MCL inflation parameter [Default = 1.5]
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  description: Info for outputting results in OrthoXML format
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: Write the temporary pickle files to <dir>
+  args: !SimpleFlagArg
+    name: dir
+- !Flag
+  optional: true
+  synonyms:
+  - '-1'
+  description: Only perform one-way sequence search
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -X
+  description: Don't add species names to sequence IDs
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -y
+  description: Split paralogous clades below root of a HOG into separate HOGs
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  description: Don't trim MSAs (columns>=90% gap, min. alignment length 500)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: Name to append to the results directory
+  args: !SimpleFlagArg
+    name: txt
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: Non-default results directory
+  args: !SimpleFlagArg
+    name: txt
+- !Flag
+  optional: true
+  synonyms:
+  - -op
+  description: Stop after preparing input files for BLAST
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -og
+  description: Stop after inferring orthogroups
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -os
+  description: "Stop after writing sequence files for orthogroups\n(requires '-M msa')"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -oa
+  description: "Stop after inferring alignments for orthogroups\n(requires '-M msa')"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ot
+  description: Stop after inferring gene trees for orthogroups
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  description: <dir>         Start OrthoFinder from pre-computed BLAST results in
+    <dir>
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -fg
+  description: Start OrthoFinder from pre-computed orthogroups in <dir>
+  args: !SimpleFlagArg
+    name: dir
+- !Flag
+  optional: true
+  synonyms:
+  - -ft
+  description: Start OrthoFinder from pre-computed gene trees in <dir>
+  args: !SimpleFlagArg
+    name: dir
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: Print this help text
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "\nOrthoFinder version 2.5.2 Copyright (C) 2014 David Emms\n\nSIMPLE USAGE:\n\
+  Run full OrthoFinder analysis on FASTA format proteomes in <dir>\n  orthofinder\
+  \ [options] -f <dir>\n\nAdd new species in <dir1> to previous run in <dir2> and\
+  \ run new analysis\n  orthofinder [options] -f <dir1> -b <dir2>\n\nOPTIONS:\n -t\
+  \ <int>        Number of parallel sequence search threads [Default = 8]\n -a <int>\
+  \        Number of parallel analysis threads\n -d              Input is DNA sequences\n\
+  \ -M <txt>        Method for gene tree inference. Options 'dendroblast' & 'msa'\n\
+  \                 [Default = dendroblast]\n -S <txt>        Sequence search program\
+  \ [Default = diamond]\n                 Options: blast, diamond, diamond_ultra_sens,\
+  \ blast_gz, mmseqs, blast_nucl\n -A <txt>        MSA program, requires '-M msa'\
+  \ [Default = mafft]\n                 Options: mafft, muscle\n -T <txt>        Tree\
+  \ inference method, requires '-M msa' [Default = fasttree]\n                 Options:\
+  \ fasttree, raxml, raxml-ng, iqtree\n -s <file>       User-specified rooted species\
+  \ tree\n -I <int>        MCL inflation parameter [Default = 1.5]\n -x <file>   \
+  \    Info for outputting results in OrthoXML format\n -p <dir>        Write the\
+  \ temporary pickle files to <dir>\n -1              Only perform one-way sequence\
+  \ search\n -X              Don't add species names to sequence IDs\n -y        \
+  \      Split paralogous clades below root of a HOG into separate HOGs\n -z     \
+  \         Don't trim MSAs (columns>=90% gap, min. alignment length 500)\n -n <txt>\
+  \        Name to append to the results directory\n -o <txt>        Non-default results\
+  \ directory\n -h              Print this help text\n\nWORKFLOW STOPPING OPTIONS:\n\
+  \ -op             Stop after preparing input files for BLAST\n -og             Stop\
+  \ after inferring orthogroups\n -os             Stop after writing sequence files\
+  \ for orthogroups\n                 (requires '-M msa')\n -oa             Stop after\
+  \ inferring alignments for orthogroups\n                 (requires '-M msa')\n -ot\
+  \             Stop after inferring gene trees for orthogroups \n\nWORKFLOW RESTART\
+  \ COMMANDS:\n -b  <dir>         Start OrthoFinder from pre-computed BLAST results\
+  \ in <dir>\n -fg <dir>         Start OrthoFinder from pre-computed orthogroups in\
+  \ <dir>\n -ft <dir>         Start OrthoFinder from pre-computed gene trees in <dir>\n\
+  \nLICENSE:\n Distributed under the GNU General Public License (GPLv3). See License.md\n\
+  \nCITATION:\n When publishing work that uses OrthoFinder please cite:\n Emms D.M.\
+  \ & Kelly S. (2019), Genome Biology 20:238\n\n If you use the species tree in your\
+  \ work then please also cite:\n Emms D.M. & Kelly S. (2017), MBE 34(12): 3267-3278\n\
+  \ Emms D.M. & Kelly S. (2018), bioRxiv https://doi.org/10.1101/267914\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/orthofinder:2.5.2--0

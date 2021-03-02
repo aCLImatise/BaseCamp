@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Float, Int, File
+
+Brs_V0_1_0 = CommandToolBuilder(tool="BRS", base_command=["BRS"], inputs=[ToolInput(tag="in_quantile_used_identification", input_type=Float(optional=True), prefix="-q", doc=InputDocumentation(doc=": the quantile used for identification of the singular genomic positions; default is 0.95")), ToolInput(tag="in_window_size_calculating", input_type=Int(optional=True), prefix="-w", doc=InputDocumentation(doc=": the window size for calculating the quantiles; default is 200")), ToolInput(tag="in_output_bin_file", input_type=File(optional=True), prefix="-o", doc=InputDocumentation(doc=": the output bin file; if unspecified, print to the stdout.")), ToolInput(tag="in_mappability_file_provided", input_type=File(optional=True), prefix="-m", doc=InputDocumentation(doc=": the mappability file; If provided, filter by mappability and the output will contain uniquely mappable positions with no reads mapped")), ToolInput(tag="in_gap_file_file", input_type=File(optional=True), prefix="-g", doc=InputDocumentation(doc=": the gap file (two column data file with 1st column the start positions of the gaps and the 2nd column the end positions of the gaps)")), ToolInput(tag="in_report_summary_statistics", input_type=File(optional=True), prefix="-s", doc=InputDocumentation(doc=": report the summary statistics to the file <string>")), ToolInput(tag="in_multiplicity", input_type=Float(optional=True), prefix="--multiplicity", doc=InputDocumentation(doc=": If a genomic position has more than multiplicity*quantile number of reads,\nit will be viewed as an outlier\nand the number of reads at this position will be set as multiplicity*quantile;\ndefault is 5.0\n")), ToolInput(tag="in_seq_file", input_type=File(), position=0, doc=InputDocumentation(doc=""))], outputs=[ToolOutput(tag="out_output_bin_file", output_type=File(optional=True), selector=InputSelector(input_to_select="in_output_bin_file", type_hint=File()), doc=OutputDocumentation(doc=": the output bin file; if unspecified, print to the stdout.")), ToolOutput(tag="out_mappability_file_provided", output_type=File(optional=True), selector=InputSelector(input_to_select="in_mappability_file_provided", type_hint=File()), doc=OutputDocumentation(doc=": the mappability file; If provided, filter by mappability and the output will contain uniquely mappable positions with no reads mapped"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Brs_V0_1_0().translate("wdl", allow_empty_container=True)
+

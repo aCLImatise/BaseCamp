@@ -1,0 +1,271 @@
+!Command
+command:
+- bcftools
+- call
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: in.vcf.gz
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --no-version
+  description: do not append version and command line to the header
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: write output to a file [standard output]
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -O
+  - --output-type
+  description: "output type: 'b' compressed BCF; 'u' uncompressed BCF; 'z' compressed\
+    \ VCF; 'v' uncompressed VCF [v]"
+  args: !SimpleFlagArg
+    name: b|u|z|v
+- !Flag
+  optional: true
+  synonyms:
+  - --ploidy
+  description: "[?]      predefined ploidy, 'list' to print available settings, append\
+    \ '?' for details"
+  args: !SimpleFlagArg
+    name: assembly
+- !Flag
+  optional: true
+  synonyms:
+  - --ploidy-file
+  description: space/tab-delimited list of CHROM,FROM,TO,SEX,PLOIDY
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --regions
+  description: restrict to comma-separated list of regions
+  args: !SimpleFlagArg
+    name: region
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  - --regions-file
+  description: restrict to regions listed in a file
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --samples
+  description: list of samples to include [all samples]
+  args: !SimpleFlagArg
+    name: list
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --samples-file
+  description: PED file or a file with an optional column with sex (see man page for
+    details) [all samples]
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --targets
+  description: similar to -r but streams rather than index-jumps
+  args: !SimpleFlagArg
+    name: region
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --targets-file
+  description: similar to -R but streams rather than index-jumps
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: use multithreading with <int> worker threads [0]
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -A
+  - --keep-alts
+  description: keep all possible alternate alleles at variant sites
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --format-fields
+  description: 'output format fields: GQ,GP (lowercase allowed) []'
+  args: !SimpleFlagArg
+    name: list
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  - --prior-freqs
+  description: <AN,AC>       use prior allele frequencies
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -G
+  - --group-samples
+  description: group samples by population (file with "sample\tgroup") or "-" for
+    single-sample calling
+  args: !SimpleFlagArg
+    name: file|-
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --gvcf
+  description: ',[...]          group non-variant sites into gVCF blocks by minimum
+    per-sample DP'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --insert-missed
+  description: output also sites missed by mpileup but present in -T
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  - --keep-masked-ref
+  description: keep sites with masked reference allele (REF=N)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --skip-variants
+  description: skip indels/snps
+  args: !SimpleFlagArg
+    name: type
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --variants-only
+  description: output variant sites only
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --consensus-caller
+  description: the original calling method (conflicts with -m)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -C
+  - --constrain
+  description: 'one of: alleles, trio (see manual)'
+  args: !SimpleFlagArg
+    name: str
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --multiallelic-caller
+  description: alternative model for multiallelic and rare-variant calling (conflicts
+    with -c)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --novel-rate
+  description: ',[...]  likelihood of novel mutation for constrained trio calling,
+    see man page for details [1e-8,1e-9,1e-9]'
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --pval-threshold
+  description: variant if P(ref|D)<FLOAT with -c [0.5]
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - -P
+  - --prior
+  description: mutation rate (use bigger for greater sensitivity), use with -m [1.1e-3]
+  args: !SimpleFlagArg
+    name: float
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nAbout:   SNP/indel variant calling from VCF/BCF. To be used in conjunction\
+  \ with bcftools mpileup.\n         This command replaces the former \"bcftools view\"\
+  \ caller. Some of the original\n         functionality has been temporarily lost\
+  \ in the process of transition to htslib,\n         but will be added back on popular\
+  \ demand. The original calling model can be\n         invoked with the -c option.\n\
+  Usage:   bcftools call [options] <in.vcf.gz>\n\nFile format options:\n       --no-version\
+  \                do not append version and command line to the header\n   -o, --output\
+  \ <file>             write output to a file [standard output]\n   -O, --output-type\
+  \ <b|u|z|v>     output type: 'b' compressed BCF; 'u' uncompressed BCF; 'z' compressed\
+  \ VCF; 'v' uncompressed VCF [v]\n       --ploidy <assembly>[?]      predefined ploidy,\
+  \ 'list' to print available settings, append '?' for details\n       --ploidy-file\
+  \ <file>        space/tab-delimited list of CHROM,FROM,TO,SEX,PLOIDY\n   -r, --regions\
+  \ <region>          restrict to comma-separated list of regions\n   -R, --regions-file\
+  \ <file>       restrict to regions listed in a file\n   -s, --samples <list>   \
+  \         list of samples to include [all samples]\n   -S, --samples-file <file>\
+  \       PED file or a file with an optional column with sex (see man page for details)\
+  \ [all samples]\n   -t, --targets <region>          similar to -r but streams rather\
+  \ than index-jumps\n   -T, --targets-file <file>       similar to -R but streams\
+  \ rather than index-jumps\n       --threads <int>             use multithreading\
+  \ with <int> worker threads [0]\n\nInput/output options:\n   -A, --keep-alts   \
+  \              keep all possible alternate alleles at variant sites\n   -f, --format-fields\
+  \ <list>      output format fields: GQ,GP (lowercase allowed) []\n   -F, --prior-freqs\
+  \ <AN,AC>       use prior allele frequencies\n   -G, --group-samples <file|->  \
+  \  group samples by population (file with \"sample\\tgroup\") or \"-\" for single-sample\
+  \ calling\n   -g, --gvcf <int>,[...]          group non-variant sites into gVCF\
+  \ blocks by minimum per-sample DP\n   -i, --insert-missed             output also\
+  \ sites missed by mpileup but present in -T\n   -M, --keep-masked-ref          \
+  \ keep sites with masked reference allele (REF=N)\n   -V, --skip-variants <type>\
+  \      skip indels/snps\n   -v, --variants-only             output variant sites\
+  \ only\n\nConsensus/variant calling options:\n   -c, --consensus-caller        \
+  \  the original calling method (conflicts with -m)\n   -C, --constrain <str>   \
+  \        one of: alleles, trio (see manual)\n   -m, --multiallelic-caller      \
+  \ alternative model for multiallelic and rare-variant calling (conflicts with -c)\n\
+  \   -n, --novel-rate <float>,[...]  likelihood of novel mutation for constrained\
+  \ trio calling, see man page for details [1e-8,1e-9,1e-9]\n   -p, --pval-threshold\
+  \ <float>    variant if P(ref|D)<FLOAT with -c [0.5]\n   -P, --prior <float>   \
+  \          mutation rate (use bigger for greater sensitivity), use with -m [1.1e-3]\n\
+  \nExample:\n   # See also http://samtools.github.io/bcftools/howtos/variant-calling.html\n\
+  \   bcftools mpileup -Ou -f reference.fa alignments.bam | bcftools call -mv -Ob\
+  \ -o calls.bcf\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bcftools:1.11--h7c999a4_0

@@ -1,0 +1,147 @@
+!Command
+command:
+- bcftools
+- plugin
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: name
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: file
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --exclude
+  description: exclude sites for which the expression is true
+  args: !SimpleFlagArg
+    name: expr
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --include
+  description: select sites for which the expression is true
+  args: !SimpleFlagArg
+    name: expr
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --regions
+  description: restrict to comma-separated list of regions
+  args: !SimpleFlagArg
+    name: region
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  - --regions-file
+  description: restrict to regions listed in a file
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --targets
+  description: similar to -r but streams rather than index-jumps
+  args: !SimpleFlagArg
+    name: region
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --targets-file
+  description: similar to -R but streams rather than index-jumps
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - --no-version
+  description: do not append version and command line to the header
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: write output to a file [standard output]
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -O
+  - --output-type
+  description: "'b' compressed BCF; 'u' uncompressed BCF; 'z' compressed VCF; 'v'\
+    \ uncompressed VCF [v]"
+  args: !SimpleFlagArg
+    name: type
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: use multithreading with <int> worker threads [0]
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --list-plugins
+  description: list available plugins. See BCFTOOLS_PLUGINS environment variable and
+    man page for details
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: print verbose information, -vv increases verbosity
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: list plugin's options
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: print version string and exit
+  args: !EmptyFlagArg {}
+help_text: "\nAbout:   Run user defined plugin\nUsage:   bcftools plugin <name> [OPTIONS]\
+  \ <file> [-- PLUGIN_OPTIONS]\n         bcftools +name [OPTIONS] <file>  [-- PLUGIN_OPTIONS]\n\
+  \nVCF input options:\n   -e, --exclude <expr>        exclude sites for which the\
+  \ expression is true\n   -i, --include <expr>        select sites for which the\
+  \ expression is true\n   -r, --regions <region>      restrict to comma-separated\
+  \ list of regions\n   -R, --regions-file <file>   restrict to regions listed in\
+  \ a file\n   -t, --targets <region>      similar to -r but streams rather than index-jumps\n\
+  \   -T, --targets-file <file>   similar to -R but streams rather than index-jumps\n\
+  VCF output options:\n       --no-version            do not append version and command\
+  \ line to the header\n   -o, --output <file>         write output to a file [standard\
+  \ output]\n   -O, --output-type <type>    'b' compressed BCF; 'u' uncompressed BCF;\
+  \ 'z' compressed VCF; 'v' uncompressed VCF [v]\n       --threads <int>         use\
+  \ multithreading with <int> worker threads [0]\nPlugin options:\n   -h, --help \
+  \                 list plugin's options\n   -l, --list-plugins          list available\
+  \ plugins. See BCFTOOLS_PLUGINS environment variable and man page for details\n\
+  \   -v, --verbose               print verbose information, -vv increases verbosity\n\
+  \   -V, --version               print version string and exit\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bcftools:1.11--h7c999a4_0

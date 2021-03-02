@@ -1,0 +1,207 @@
+!Command
+command:
+- abyss-map
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: alignment
+  description: --no-multi          don't Align unaligned segments [default]
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --min-align
+  description: find matches at least N bp [1]
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --threads
+  description: use N parallel threads [1]
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -C
+  - --append-comment
+  description: append the FASTA/FASTQ comment to the SAM tags
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --sample
+  description: sample the suffix array [1]
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --dup
+  description: "identify and print duplicate sequence\nIDs between QUERY and TARGET"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --order
+  description: "print alignments in the same order as\nread from QUERY"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-order
+  description: print alignments ASAP [default]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --multi
+  description: Align unaligned segments of primary
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --SS
+  description: expect contigs to be oriented correctly
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-SS
+  description: no assumption about contig orientation
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --rc
+  description: map the sequence and its reverse complement [default]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-rc
+  description: do not map the reverse complement sequence
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --alphabet
+  description: use the alphabet STRING [-ACGT]
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --alpha
+  description: equivalent to --no-rc -a' ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dna
+  description: equivalent to --rc    -a'-ACGT'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --protein
+  description: equivalent to --no-rc -a'#*ACDEFGHIKLMNPQRSTVWY'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --chastity
+  description: discard unchaste reads
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-chastity
+  description: do not discard unchaste reads [default]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: display verbose output
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --db
+  description: specify path of database repository in FILE
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --library
+  description: specify library NAME for database
+  args: !SimpleFlagArg
+    name: NAME
+- !Flag
+  optional: true
+  synonyms:
+  - --strain
+  description: specify strain NAME for database
+  args: !SimpleFlagArg
+    name: NAME
+- !Flag
+  optional: true
+  synonyms:
+  - --species
+  description: specify species NAME for database
+  args: !SimpleFlagArg
+    name: NAME
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: display this help and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: output version information and exit
+  args: !EmptyFlagArg {}
+help_text: "Usage: abyss-map [OPTION]... QUERY... TARGET\nMap the sequences of the\
+  \ files QUERY to those of the file TARGET.\nThe index files TARGET.fai and TARGET.fm\
+  \ will be used if present.\n\n Options:\n\n  -l, --min-align=N       find matches\
+  \ at least N bp [1]\n  -j, --threads=N         use N parallel threads [1]\n  -C,\
+  \ --append-comment    append the FASTA/FASTQ comment to the SAM tags\n  -s, --sample=N\
+  \          sample the suffix array [1]\n  -d, --dup               identify and print\
+  \ duplicate sequence\n                          IDs between QUERY and TARGET\n \
+  \     --order             print alignments in the same order as\n              \
+  \            read from QUERY\n      --no-order          print alignments ASAP [default]\n\
+  \      --multi             Align unaligned segments of primary\n               \
+  \           alignment\n      --no-multi          don't Align unaligned segments\
+  \ [default]\n      --SS                expect contigs to be oriented correctly\n\
+  \      --no-SS             no assumption about contig orientation\n      --rc  \
+  \              map the sequence and its reverse complement [default]\n      --no-rc\
+  \             do not map the reverse complement sequence\n  -a, --alphabet=STRING\
+  \   use the alphabet STRING [-ACGT]\n      --alpha             equivalent to --no-rc\
+  \ -a' ABCDEFGHIJKLMNOPQRSTUVWXYZ'\n      --dna               equivalent to --rc\
+  \    -a'-ACGT'\n      --protein           equivalent to --no-rc -a'#*ACDEFGHIKLMNPQRSTVWY'\n\
+  \      --chastity          discard unchaste reads\n      --no-chastity       do\
+  \ not discard unchaste reads [default]\n  -v, --verbose           display verbose\
+  \ output\n      --help              display this help and exit\n      --version\
+  \           output version information and exit\n      --db=FILE           specify\
+  \ path of database repository in FILE\n      --library=NAME      specify library\
+  \ NAME for database\n      --strain=NAME       specify strain NAME for database\n\
+  \      --species=NAME      specify species NAME for database\n\nReport bugs to <abyss-users@bcgsc.ca>.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/abyss:2.2.5--ha4ec83a_0

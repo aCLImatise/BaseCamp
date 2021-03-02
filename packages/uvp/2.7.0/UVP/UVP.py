@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, String, Int, Directory, Boolean
+
+Uvp_V0_1_0 = CommandToolBuilder(tool="UVP", base_command=["UVP"], inputs=[ToolInput(tag="in_fast_q", input_type=File(optional=True), prefix="--fastq", doc=InputDocumentation(doc="Input FASTQ file")), ToolInput(tag="in_reference", input_type=String(optional=True), prefix="--reference", doc=InputDocumentation(doc="Reference genome in FASTA format.")), ToolInput(tag="in_name", input_type=String(optional=True), prefix="--name", doc=InputDocumentation(doc="Sample name to be used as a prefix.")), ToolInput(tag="in_fast_q_two", input_type=Int(optional=True), prefix="--fastq2", doc=InputDocumentation(doc="Second paired-end FASTQ file.")), ToolInput(tag="in_outdir", input_type=Directory(optional=True), prefix="--outdir", doc=InputDocumentation(doc="Output directory")), ToolInput(tag="in_keep_files", input_type=Boolean(optional=True), prefix="--keepfiles", doc=InputDocumentation(doc="Keep intermediate files.")), ToolInput(tag="in_bwa", input_type=Boolean(optional=True), prefix="--bwa", doc=InputDocumentation(doc="Align Illumina reads using bwa. (Default)")), ToolInput(tag="in_all", input_type=Boolean(optional=True), prefix="--all", doc=InputDocumentation(doc="Run all SNP / InDel calling programs.")), ToolInput(tag="in_g_atk", input_type=Boolean(optional=True), prefix="--gatk", doc=InputDocumentation(doc="Run GATK SNP / InDel calling. (Default)")), ToolInput(tag="in_sam_tools", input_type=Boolean(optional=True), prefix="--samtools", doc=InputDocumentation(doc="Run SamTools SNP / InDel calling.")), ToolInput(tag="in_annotate", input_type=Boolean(optional=True), prefix="--annotate", doc=InputDocumentation(doc="Run snpEff functional annotation.")), ToolInput(tag="in_threads", input_type=Int(optional=True), prefix="--threads", doc=InputDocumentation(doc="Num CPU threads for parallel execution")), ToolInput(tag="in_kraken_db", input_type=File(optional=True), prefix="--krakendb", doc=InputDocumentation(doc="Path to kraken database")), ToolInput(tag="in_config", input_type=File(optional=True), prefix="--config", doc=InputDocumentation(doc="Config file")), ToolInput(tag="in_verbose", input_type=Boolean(optional=True), prefix="--verbose", doc=InputDocumentation(doc="Produce status updates of the run."))], outputs=[ToolOutput(tag="out_outdir", output_type=Directory(optional=True), selector=InputSelector(input_to_select="in_outdir", type_hint=File()), doc=OutputDocumentation(doc="Output directory"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Uvp_V0_1_0().translate("wdl", allow_empty_container=True)
+

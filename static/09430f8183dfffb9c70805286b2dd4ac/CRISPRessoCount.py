@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import String, File, Int, Directory, Boolean
+
+Crispressocount_V0_1_0 = CommandToolBuilder(tool="CRISPRessoCount", base_command=["CRISPRessoCount"], inputs=[ToolInput(tag="in_utility", input_type=String(optional=True), prefix="-Utility", doc=InputDocumentation(doc="perform sgRNA enumeration from deep sequencing data-\n)                                             )")), ToolInput(tag="in_fast_q", input_type=File(optional=True), prefix="--fastq", doc=InputDocumentation(doc="fastq file (default: Fastq filename)")), ToolInput(tag="in_min_average_read_quality", input_type=Int(optional=True), prefix="--min_average_read_quality", doc=InputDocumentation(doc="Minimum average quality score (phred33) to keep a read\n(default: 0)")), ToolInput(tag="in_min_single_bp_quality", input_type=Int(optional=True), prefix="--min_single_bp_quality", doc=InputDocumentation(doc="Minimum single bp score (phred33) to keep a read\n(default: 0)")), ToolInput(tag="in_trac_rrna", input_type=String(optional=True), prefix="--tracrRNA", doc=InputDocumentation(doc="tracr RNA sequence in each read, for single end reads\nit may necessary to change this parameter if the\ntracRNA is not fully sequenced, for example to\nGTTTTAGAG (default: GTTTTAGAGCTAGAAATAGC)")), ToolInput(tag="in_sg_rna_file", input_type=File(optional=True), prefix="--sgRNA_file", doc=InputDocumentation(doc="sgRNA description file. The format required is one\nsgRNA per line, for example:AAAAAGATGATTTTTTTCTC\nAAAATATTTTTATCCCCTAA (default: None)")), ToolInput(tag="in_name", input_type=String(optional=True), prefix="--name", doc=InputDocumentation(doc="Output name (default: )")), ToolInput(tag="in_output_folder", input_type=Directory(optional=True), prefix="--output_folder", doc=InputDocumentation(doc="Lenght in bp to extract the sgRNA upstream of the\ntracrRNA sequence (default: 20)")), ToolInput(tag="in_keep_intermediate", input_type=Boolean(optional=True), prefix="--keep_intermediate", doc=InputDocumentation(doc="Keep all the intermediate files (default: False)"))], outputs=[ToolOutput(tag="out_output_folder", output_type=Directory(optional=True), selector=InputSelector(input_to_select="in_output_folder", type_hint=File()), doc=OutputDocumentation(doc="Lenght in bp to extract the sgRNA upstream of the\ntracrRNA sequence (default: 20)"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Crispressocount_V0_1_0().translate("wdl", allow_empty_container=True)
+

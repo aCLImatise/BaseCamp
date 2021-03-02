@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, File, String
+
+Minced_V0_1_0 = CommandToolBuilder(tool="minced", base_command=["minced"], inputs=[ToolInput(tag="in_search_wl", input_type=Boolean(optional=True), prefix="-searchWL", doc=InputDocumentation(doc="Length of search window used to discover CRISPRs (range: 6-9). Default: 8")), ToolInput(tag="in_min_nr", input_type=Boolean(optional=True), prefix="-minNR", doc=InputDocumentation(doc="Minimum number of repeats a CRISPR must contain. Default: 3")), ToolInput(tag="in_min_rl", input_type=Boolean(optional=True), prefix="-minRL", doc=InputDocumentation(doc="Minimum length of the CRISPR repeats. Default: 23")), ToolInput(tag="in_max_rl", input_type=Boolean(optional=True), prefix="-maxRL", doc=InputDocumentation(doc="Maximum length of the CRISPR repeats. Default: 47")), ToolInput(tag="in_mins_l", input_type=Boolean(optional=True), prefix="-minSL", doc=InputDocumentation(doc="Minimum length of the CRISPR spacers. Default: 26")), ToolInput(tag="in_max_sl", input_type=Boolean(optional=True), prefix="-maxSL", doc=InputDocumentation(doc="Maximum length of the CRISPR spacers. Default: 50")), ToolInput(tag="in_gff", input_type=Boolean(optional=True), prefix="-gff", doc=InputDocumentation(doc="Output summary results in gff format containing\nonly the positions of the CRISPR arrays. Default: false")), ToolInput(tag="in_gff_full", input_type=Boolean(optional=True), prefix="-gffFull", doc=InputDocumentation(doc="Output detailed results in gff format containing\npositions of CRISPR arrays and all repeat units. Default: false")), ToolInput(tag="in_spacers", input_type=File(optional=True), prefix="-spacers", doc=InputDocumentation(doc="Output a fasta formatted file containing the spacers. Default: false")), ToolInput(tag="in_file_dot_fa", input_type=File(), position=0, doc=InputDocumentation(doc="")), ToolInput(tag="in_output_file_dot_txt", input_type=String(optional=True), position=1, doc=InputDocumentation(doc="")), ToolInput(tag="in_output_file_dot_gff", input_type=String(optional=True), position=2, doc=InputDocumentation(doc=""))], outputs=[ToolOutput(tag="out_spacers", output_type=File(optional=True), selector=InputSelector(input_to_select="in_spacers", type_hint=File()), doc=OutputDocumentation(doc="Output a fasta formatted file containing the spacers. Default: false"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Minced_V0_1_0().translate("wdl", allow_empty_container=True)
+

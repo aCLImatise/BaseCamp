@@ -1,0 +1,120 @@
+!Command
+command:
+- suppa.py
+- generateEvents
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: CRITICAL
+  description: -f {ioe,ioi}, --format {ioe,ioi}
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input-file
+  description: specify input file
+  args: !SimpleFlagArg
+    name: INPUT_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-file
+  description: specify output path and name without extension
+  args: !SimpleFlagArg
+    name: OUTPUT_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  description: "[{SE,SS,MX,RI,FL} ...], --event-type {SE,SS,MX,RI,FL} [{SE,SS,MX,RI,FL}\
+    \ ...]\nlist of events to analyze. (space separated) Options:\nSE -- Skipping\
+    \ Exon SS -- Alternative Splice Site\n(5'/3') MX -- Mutually Exclusive Exon RI\
+    \ -- Retained\nIntron FL -- Alternative First/Last Exon"
+  args: !ChoiceFlagArg
+    choices: !!set
+      RI:
+      MX:
+      SS:
+      SE:
+      FL:
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --boundary
+  description: "Boundary type.Options: S -- Strict (Default) V --\nVariable"
+  args: !ChoiceFlagArg
+    choices: !!set
+      S:
+      V:
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threshold
+  description: "Variability treshold. In case of strict boundaries\nthis argument\
+    \ is ignored(Default: 10nt)."
+  args: !SimpleFlagArg
+    name: THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --pool-genes
+  description: pool together overlapping genes.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --exon-length
+  description: "length of the exons for its visualization. (Default:\n100nt)"
+  args: !SimpleFlagArg
+    name: EXON_LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --mode
+  description: to choose from DEBUG, INFO, WARNING, ERROR and
+  args: !SimpleFlagArg
+    name: MODE
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: suppa.py generateEvents [-h] -i INPUT_FILE -o OUTPUT_FILE\n   \
+  \                            [-e {SE,SS,MX,RI,FL} [{SE,SS,MX,RI,FL} ...]]\n    \
+  \                           [-b {S,V}] [-t THRESHOLD] [-p] [-l EXON_LENGTH]\n  \
+  \                             [-m MODE] -f {ioe,ioi}\n\noptional arguments:\n  -h,\
+  \ --help            show this help message and exit\n  -i INPUT_FILE, --input-file\
+  \ INPUT_FILE\n                        specify input file\n  -o OUTPUT_FILE, --output-file\
+  \ OUTPUT_FILE\n                        specify output path and name without extension\n\
+  \  -e {SE,SS,MX,RI,FL} [{SE,SS,MX,RI,FL} ...], --event-type {SE,SS,MX,RI,FL} [{SE,SS,MX,RI,FL}\
+  \ ...]\n                        list of events to analyze. (space separated) Options:\n\
+  \                        SE -- Skipping Exon SS -- Alternative Splice Site\n   \
+  \                     (5'/3') MX -- Mutually Exclusive Exon RI -- Retained\n   \
+  \                     Intron FL -- Alternative First/Last Exon\n  -b {S,V}, --boundary\
+  \ {S,V}\n                        Boundary type.Options: S -- Strict (Default) V\
+  \ --\n                        Variable\n  -t THRESHOLD, --threshold THRESHOLD\n\
+  \                        Variability treshold. In case of strict boundaries\n  \
+  \                      this argument is ignored(Default: 10nt).\n  -p, --pool-genes\
+  \      pool together overlapping genes.\n  -l EXON_LENGTH, --exon-length EXON_LENGTH\n\
+  \                        length of the exons for its visualization. (Default:\n\
+  \                        100nt)\n  -m MODE, --mode MODE  to choose from DEBUG, INFO,\
+  \ WARNING, ERROR and\n                        CRITICAL\n  -f {ioe,ioi}, --format\
+  \ {ioe,ioi}\n                        Format of the annotation file. Required.\n"
+generated_using:
+- --help
+docker_image:

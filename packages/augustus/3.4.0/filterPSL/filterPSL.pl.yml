@@ -1,0 +1,110 @@
+!Command
+command:
+- filterPSL.pl
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --pairbed
+  description: "file name of pairedness coverage:\na .bed format file in which for\
+    \ each position the number of filtered\nread pairs is reported that contain the\
+    \ position in or between the reads"
+  args: !SimpleFlagArg
+    name: s
+- !Flag
+  optional: true
+  synonyms:
+  - --minId
+  description: minimal percentage of identity (default 92)
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --minCover
+  description: minimal percentage of coverage of the query read (default 80)
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --uniq
+  description: take only best match and only, when second best is much worse (default
+    false)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --uniqthresh
+  description: threshold % for uniq, second best must be at most this fraction of
+    best (default .96)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --best
+  description: output all best matches that satisfy minId and minCover
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --commongenefile
+  description: file name in which to write cases where one read maps to several different
+    genes
+  args: !SimpleFlagArg
+    name: s
+- !Flag
+  optional: true
+  synonyms:
+  - --nointrons
+  description: do not allow longer gaps (for RNA-RNA alignments)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --paired
+  description: require that paired reads are on opposite strands of same target(default
+    false)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --maxintronlen
+  description: maximal separation of paired reads (default 500000
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: output debugging info (default false)
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "/usr/local/bin/filterPSL.pl -- filter a psl file (e.g. BLAT or GMAP)\n\
+  \nUsage: /usr/local/bin/filterPSL.pl <in.psl >out.f.psl\n  PREREQUISITE: input psl\
+  \ file must be sorted by query name (standard with BLAT and GMAP)\n            \
+  \    Do a sort -k 10,10 but be aware: LC_ALL may have to be set to C because sort\
+  \ ignores characters like \":\"\n  if option 'paired' is used then it expects .f,.r\
+  \ or /1,/2 suffixes of mate pairs\n  \n  options:\n  --pairbed=s        file name\
+  \ of pairedness coverage:\n                     a .bed format file in which for\
+  \ each position the number of filtered\n                     read pairs is reported\
+  \ that contain the position in or between the reads\n  --minId=n          minimal\
+  \ percentage of identity (default 92)\n  --minCover=n       minimal percentage of\
+  \ coverage of the query read (default 80)\n  --uniq             take only best match\
+  \ and only, when second best is much worse (default false)\n  --uniqthresh     \
+  \  threshold % for uniq, second best must be at most this fraction of best (default\
+  \ .96)\n  --best             output all best matches that satisfy minId and minCover\n\
+  \  --commongenefile=s file name in which to write cases where one read maps to several\
+  \ different genes\n  --nointrons        do not allow longer gaps (for RNA-RNA alignments)\n\
+  \  --paired           require that paired reads are on opposite strands of same\
+  \ target(default false)\n  --maxintronlen=n   maximal separation of paired reads\
+  \ (default 500000\n  --verbose          output debugging info (default false)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/augustus:3.4.0--pl526h0faeac2_0

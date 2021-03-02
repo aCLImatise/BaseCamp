@@ -1,0 +1,272 @@
+!Command
+command:
+- feature_alignment.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: features
+  description: --iso_max_rt_diff 30  Maximal difference in RT (in seconds) for two
+    isotopic
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --in
+  description: "A list of mProphet output files containing all\npeakgroups (use quotes\
+    \ around the filenames)"
+  args: !RepeatFlagArg
+    name: INP
+- !Flag
+  optional: true
+  synonyms:
+  - --file_format
+  description: Input file format (openswath, mprophet or peakview)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --out
+  description: Output file with filtered peakgroups
+  args: !SimpleFlagArg
+    name: OUTFILE
+- !Flag
+  optional: true
+  synonyms:
+  - --out_matrix
+  description: "Matrix containing one peak group per row (supports\n.csv, .tsv or\
+    \ .xlsx)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --out_ids
+  description: Id file only containing the ids
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --out_meta
+  description: Outfile containing meta information
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --fdr_cutoff
+  description: "Fixed FDR cutoff used for seeding (only assays where\nat least one\
+    \ peakgroup in one run is below this cutoff\nwill be included in the result),\
+    \ see also target_fdr\nfor a non-fixed cutoff"
+  args: !SimpleFlagArg
+    name: '0.01'
+- !Flag
+  optional: true
+  synonyms:
+  - --target_fdr
+  description: "If parameter estimation is used, which target FDR\nshould be optimized\
+    \ for. If set to lower than 0,\nparameter estimation is turned off."
+  args: !SimpleFlagArg
+    name: '0.01'
+- !Flag
+  optional: true
+  synonyms:
+  - --max_fdr_quality
+  - '-1'
+  description: "Extension m-score score cutoff, peakgroups of this\nquality will still\
+    \ be considered for alignment during\nextension"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max_rt_diff
+  description: Maximal difference in RT (in seconds) for two aligned
+  args: !SimpleFlagArg
+    name: '30'
+- !Flag
+  optional: true
+  synonyms:
+  - --frac_selected
+  description: "Do not write peakgroup if selected in less than this\nfraction of\
+    \ runs (range 0 to 1)"
+  args: !SimpleFlagArg
+    name: '0'
+- !Flag
+  optional: true
+  synonyms:
+  - --method
+  description: "Method to use for the clustering (best_overall,\nbest_cluster_score\
+    \ or global_best_cluster_score,\nglobal_best_overall, LocalMST, LocalMSTAllCluster)."
+  args: !SimpleFlagArg
+    name: METHOD
+- !Flag
+  optional: true
+  synonyms:
+  - --verbosity
+  description: Verbosity (0 = little)
+  args: !SimpleFlagArg
+    name: '0'
+- !Flag
+  optional: true
+  synonyms:
+  - --matrix_output_method
+  description: "Which columns are written besides Intensity (none, RT,\nscore, source\
+    \ or full)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --realign_method
+  description: "RT alignment method (diRT, linear, splineR,\nsplineR_external, splinePy,\
+    \ lowess, lowess_biostats,\nlowess_statsmodels, lowess_cython, nonCVSpline,\n\
+    CVSpline, Earth, WeightedNearestNeighbour,\nSmoothLLDMedian, None)"
+  args: !SimpleFlagArg
+    name: diRT
+- !Flag
+  optional: true
+  synonyms:
+  - --force
+  description: Force alignment
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --disable_isotopic_grouping
+  description: "Disable grouping of isotopic variants by\npeptide_group_label"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --use_dscore_filter
+  - --dscore_cutoff
+  description: Discard all peakgroups below this d-score
+  args: !SimpleFlagArg
+    name: '1.96'
+- !Flag
+  optional: true
+  synonyms:
+  - --nr_high_conf_exp
+  description: "Number of experiments in which the peptide needs to be\nidentified\
+    \ with confidence above fdr_cutoff"
+  args: !SimpleFlagArg
+    name: '1'
+- !Flag
+  optional: true
+  synonyms:
+  - --readmethod
+  description: "Read full or minimal transition groups\n(cminimal,minimal,full)"
+  args: !SimpleFlagArg
+    name: minimal
+- !Flag
+  optional: true
+  synonyms:
+  - --tmpdir
+  description: Temporary directory
+  args: !SimpleFlagArg
+    name: TMPDIR
+- !Flag
+  optional: true
+  synonyms:
+  - --alignment_score
+  description: "Minimal score needed for a feature to be considered\nfor alignment\
+    \ between runs"
+  args: !SimpleFlagArg
+    name: '0.0001'
+- !Flag
+  optional: true
+  synonyms:
+  - --realign_runs
+  description: "Deprecated option (equals '--realign_method\nexternal_r')"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --use_external_r
+  description: "Deprecated option (equals '--realign_method\nexternal_r')\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Print version and exit
+  args: !SimpleFlagArg
+    name: VERSION
+help_text: "WARNING: cannot import optimized MST alignment, will use Python version\
+  \ (slower).\nusage: feature_alignment.py [-h] --in INP [INP ...] [--file_format]\
+  \ --out\n                            OUTFILE [--out_matrix] [--out_ids] [--out_meta]\n\
+  \                            [--fdr_cutoff 0.01] [--target_fdr 0.01]\n         \
+  \                   [--max_fdr_quality -1] [--max_rt_diff 30]\n                \
+  \            [--iso_max_rt_diff 30] [--frac_selected 0]\n                      \
+  \      [--method METHOD] [--verbosity 0]\n                            [--matrix_output_method]\
+  \ [--realign_method diRT]\n                            [--force] [--version VERSION]\n\
+  \                            [--mst:useRTCorrection True]\n                    \
+  \        [--mst:Stdev_multiplier -1.0]\n                            [--mst:useLocalStdev\
+  \ False]\n                            [--mst:useReference False]\n             \
+  \               [--disable_isotopic_grouping]\n                            [--use_dscore_filter]\
+  \ [--dscore_cutoff 1.96]\n                            [--nr_high_conf_exp 1] [--readmethod\
+  \ minimal]\n                            [--tmpdir TMPDIR] [--alignment_score 0.0001]\n\
+  \                            [--realign_runs] [--use_external_r]\n\nFeature Alignment\
+  \ -- version 0.11.0 This program will select all peakgroups\nbelow the FDR cutoff\
+  \ in all files and try to align them to each other. If only\none file is given,\
+  \ it will act as peakgroup selector (best by m_score) and\nwill apply the provided\
+  \ FDR cutoff.\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  --in INP [INP ...]    A list of mProphet output files containing all\n\
+  \                        peakgroups (use quotes around the filenames)\n  --file_format\
+  \         Input file format (openswath, mprophet or peakview)\n  --out OUTFILE \
+  \        Output file with filtered peakgroups\n  --out_matrix          Matrix containing\
+  \ one peak group per row (supports\n                        .csv, .tsv or .xlsx)\n\
+  \  --out_ids             Id file only containing the ids\n  --out_meta         \
+  \   Outfile containing meta information\n  --fdr_cutoff 0.01     Fixed FDR cutoff\
+  \ used for seeding (only assays where\n                        at least one peakgroup\
+  \ in one run is below this cutoff\n                        will be included in the\
+  \ result), see also target_fdr\n                        for a non-fixed cutoff\n\
+  \  --target_fdr 0.01     If parameter estimation is used, which target FDR\n   \
+  \                     should be optimized for. If set to lower than 0,\n       \
+  \                 parameter estimation is turned off.\n  --max_fdr_quality -1  Extension\
+  \ m-score score cutoff, peakgroups of this\n                        quality will\
+  \ still be considered for alignment during\n                        extension\n\
+  \  --max_rt_diff 30      Maximal difference in RT (in seconds) for two aligned\n\
+  \                        features\n  --iso_max_rt_diff 30  Maximal difference in\
+  \ RT (in seconds) for two isotopic\n                        channels in the same\
+  \ run\n  --frac_selected 0     Do not write peakgroup if selected in less than this\n\
+  \                        fraction of runs (range 0 to 1)\n  --method METHOD    \
+  \   Method to use for the clustering (best_overall,\n                        best_cluster_score\
+  \ or global_best_cluster_score,\n                        global_best_overall, LocalMST,\
+  \ LocalMSTAllCluster).\n  --verbosity 0         Verbosity (0 = little)\n  --matrix_output_method\
+  \ \n                        Which columns are written besides Intensity (none, RT,\n\
+  \                        score, source or full)\n  --realign_method diRT\n     \
+  \                   RT alignment method (diRT, linear, splineR,\n              \
+  \          splineR_external, splinePy, lowess, lowess_biostats,\n              \
+  \          lowess_statsmodels, lowess_cython, nonCVSpline,\n                   \
+  \     CVSpline, Earth, WeightedNearestNeighbour,\n                        SmoothLLDMedian,\
+  \ None)\n  --force               Force alignment\n  --version VERSION     Print\
+  \ version and exit\n\noptions for the MST:\n  --mst:useRTCorrection True\n     \
+  \                   Use aligned peakgroup RT to continue threading\n  --mst:Stdev_multiplier\
+  \ -1.0\n                        How many standard deviations the peakgroup can deviate\n\
+  \                        in RT during the alignment (if less than max_rt_diff,\n\
+  \                        then max_rt_diff is used)\n  --mst:useLocalStdev False\n\
+  \                        Use local standard deviation of the alignment\n  --mst:useReference\
+  \ False\n                        Use a reference-based tree for alignment\n\nexperimental\
+  \ options:\n  --disable_isotopic_grouping\n                        Disable grouping\
+  \ of isotopic variants by\n                        peptide_group_label\n  --use_dscore_filter\n\
+  \  --dscore_cutoff 1.96  Discard all peakgroups below this d-score\n  --nr_high_conf_exp\
+  \ 1  Number of experiments in which the peptide needs to be\n                  \
+  \      identified with confidence above fdr_cutoff\n  --readmethod minimal  Read\
+  \ full or minimal transition groups\n                        (cminimal,minimal,full)\n\
+  \  --tmpdir TMPDIR       Temporary directory\n  --alignment_score 0.0001\n     \
+  \                   Minimal score needed for a feature to be considered\n      \
+  \                  for alignment between runs\n  --realign_runs        Deprecated\
+  \ option (equals '--realign_method\n                        external_r')\n  --use_external_r\
+  \      Deprecated option (equals '--realign_method\n                        external_r')\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/msproteomicstools:0.11.0--py27ha968a36_1

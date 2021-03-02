@@ -1,0 +1,130 @@
+!Command
+command:
+- run_panacota.py
+- corepers
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: genome.
+  description: 'Optional arguments:'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: "PanGenome file (1 line per family, first column is fam\nnumber)"
+  args: !SimpleFlagArg
+    name: PANGENOME
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: Specify the output directory for your core/persistent
+  args: !SimpleFlagArg
+    name: OUTPUTDIR
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --tol
+  description: "min % of genomes having at least 1 member in a family to\nconsider\
+    \ the family as persistent (between 0 and 1,\ndefault is 1 = 100% of genomes =\
+    \ Core genome).By default,\nthe minimum number of genomes will be ceil('tol'*N)\
+    \ (N\nbeing the total number of genomes). If you want to use\nfloor('tol'*N) instead,\
+    \ add the '-F' option."
+  args: !SimpleFlagArg
+    name: TOL
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  description: "Add this option if you allow several members in any\ngenome of a family.\
+    \ By default, only 1 (or 0 if tol<1)\nmember per genome are allowed in all genomes.\
+    \ If you want\nto allow exactly 1 member in 'tol'% of the genomes, and\n0, 1 or\
+    \ several members in the '1-tol'% left, use the\noption -X instead of this one:\
+    \ -M and -X options are not\ncompatible."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -X
+  description: "Add this option if you want to allow families having\nseveral members\
+    \ only in '1-tol'% of the genomes. In the\nother genomes, only 1 member exactly\
+    \ is allowed. This\noption is not compatible with -M (which is allowing\nmultigenic\
+    \ families: having several members in any number\nof genomes)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  description: "When you specify the '-tol' option, with a number lower\nthan 1, you\
+    \ can add this option to use floor('tol'*N) as\na minimum number of genomes instead\
+    \ of ceil('tol'*N)\nwhich is the default behavior."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: Increase verbosity in stdout/stderr.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  description: "Do not display anything to stdout/stderr. log files will\nstill be\
+    \ created."
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: run_panacota.py corepers -p PANGENOME -o OUTPUTDIR [-t TOL] [-M]\
+  \ [-X]\n                                [-F] [-v] [-q] [-h]\n\n ___            \
+  \     _____  ___         _____  _____\n(  _`\\              (  _  )(  _`\\     \
+  \ (_   _)(  _  )\n| |_) )  _ _   ___  | (_) || ( (_)   _   | |  | (_) |\n| ,__/'/'_`\
+  \ )/' _ `\\|  _  || |  _  /'_`\\ | |  |  _  |\n| |   ( (_| || ( ) || | | || (_(\
+  \ )( (_) )| |  | | | |\n(_)   `\\__,_)(_) (_)(_) (_)(____/'`\\___/'(_)  (_) (_)\n\
+  \n       Large scale comparative genomics tools\n\n     -------------------------------------------\n\
+  \n=> Compute a Core or Persistent genome of your dataset\n\nRequired arguments:\n\
+  \  -p PANGENOME       PanGenome file (1 line per family, first column is fam\n \
+  \                    number)\n  -o OUTPUTDIR       Specify the output directory\
+  \ for your core/persistent\n                     genome.\n\nOptional arguments:\n\
+  \  -t TOL, --tol TOL  min % of genomes having at least 1 member in a family to\n\
+  \                     consider the family as persistent (between 0 and 1,\n    \
+  \                 default is 1 = 100% of genomes = Core genome).By default,\n  \
+  \                   the minimum number of genomes will be ceil('tol'*N) (N\n   \
+  \                  being the total number of genomes). If you want to use\n    \
+  \                 floor('tol'*N) instead, add the '-F' option.\n  -M           \
+  \      Add this option if you allow several members in any\n                   \
+  \  genome of a family. By default, only 1 (or 0 if tol<1)\n                    \
+  \ member per genome are allowed in all genomes. If you want\n                  \
+  \   to allow exactly 1 member in 'tol'% of the genomes, and\n                  \
+  \   0, 1 or several members in the '1-tol'% left, use the\n                    \
+  \ option -X instead of this one: -M and -X options are not\n                   \
+  \  compatible.\n  -X                 Add this option if you want to allow families\
+  \ having\n                     several members only in '1-tol'% of the genomes.\
+  \ In the\n                     other genomes, only 1 member exactly is allowed.\
+  \ This\n                     option is not compatible with -M (which is allowing\n\
+  \                     multigenic families: having several members in any number\n\
+  \                     of genomes).\n  -F                 When you specify the '-tol'\
+  \ option, with a number lower\n                     than 1, you can add this option\
+  \ to use floor('tol'*N) as\n                     a minimum number of genomes instead\
+  \ of ceil('tol'*N)\n                     which is the default behavior.\n\nOthers:\n\
+  \  -v, --verbose      Increase verbosity in stdout/stderr.\n  -q, --quiet      \
+  \  Do not display anything to stdout/stderr. log files will\n                  \
+  \   still be created.\n  -h, --help         show this help message and exit\n\n\
+  For more details, see PanACoTA documentation.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/panacota:1.2.0--py_0

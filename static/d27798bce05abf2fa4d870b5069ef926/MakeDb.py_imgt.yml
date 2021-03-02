@@ -1,0 +1,197 @@
+!Command
+command:
+- MakeDb.py
+- imgt
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: "Explicit output file name. Note, this argument cannot\nbe used with\
+    \ the --failed, --outdir, or --outname\narguments. If unspecified, then the output\
+    \ filename\nwill be based on the input filename(s). (default:\nNone)"
+  args: !RepeatFlagArg
+    name: OUT_FILES
+- !Flag
+  optional: true
+  synonyms:
+  - --outdir
+  description: "Specify to changes the output directory to the\nlocation specified.\
+    \ The input file directory is used\nif this is not specified. (default: None)"
+  args: !SimpleFlagArg
+    name: OUT_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --outname
+  description: "Changes the prefix of the successfully processed\noutput file to the\
+    \ string specified. May not be\nspecified with multiple input files. (default:\
+    \ None)"
+  args: !SimpleFlagArg
+    name: OUT_NAME
+- !Flag
+  optional: true
+  synonyms:
+  - --log
+  description: "Specify to write verbose logging to a file. May not be\nspecified\
+    \ with multiple input files. (default: None)"
+  args: !SimpleFlagArg
+    name: LOG_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --failed
+  description: "If specified create files containing records that fail\nprocessing.\
+    \ (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --format
+  description: 'Specify input and output format. (default: airr)'
+  args: !ChoiceFlagArg
+    choices: !!set
+      airr:
+      changeo:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: "Either zipped IMGT output files (.zip or .txz) or a\nfolder containing\
+    \ unzipped IMGT output files (which\nmust include 1_Summary, 2_IMGT-gapped, 3_Nt-sequences,\n\
+    and 6_Junction). (default: None)"
+  args: !RepeatFlagArg
+    name: ALIGNER_FILES
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: "[SEQ_FILES [SEQ_FILES ...]]\nList of FASTA files (with .fasta, .fna\
+    \ or .fa\nextension) that were submitted to IMGT/HighV-QUEST. If\nunspecified,\
+    \ sequence identifiers truncated by\nIMGT/HighV-QUEST will not be corrected. (default:\n\
+    None)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: "List of folders and/or fasta files containing the\ngermline sequence\
+    \ set used by IMGT/HighV-QUEST. These\nreference sequences must contain IMGT-numbering\n\
+    spacers (gaps) in the V segment. If unspecified, the\ngermline sequence reconstruction\
+    \ will not be included\nin the output. (default: None)"
+  args: !RepeatFlagArg
+    name: REPO
+- !Flag
+  optional: true
+  synonyms:
+  - --10x
+  description: "Table file containing 10X annotations (with .csv or\n.tsv extension).\
+    \ (default: None)"
+  args: !RepeatFlagArg
+    name: CELLRANGER_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --asis-id
+  description: "Specify to prevent input sequence headers from being\nparsed to add\
+    \ new columns to database. Parsing of\nsequence headers requires headers to be\
+    \ in the pRESTO\nannotation format, so this should be specified when\nsequence\
+    \ headers are incompatible with the pRESTO\nannotation scheme. Note, unrecognized\
+    \ header formats\nwill default to this behavior. (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --partial
+  description: "If specified, include incomplete V(D)J alignments in\nthe pass file\
+    \ instead of the fail file. An incomplete\nalignment is defined as a record that\
+    \ is missing a V\ngene assignment, J gene assignment, junction region,\nor productivity\
+    \ call. (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --extended
+  description: "Specify to include additional aligner specific fields\nin the output.\
+    \ Adds <vdj>_score, <vdj>_identity>,\nfwr1, fwr2, fwr3, fwr4, cdr1, cdr2, cdr3,\
+    \ n1_length,\nn2_length, p3v_length, p5d_length, p3d_length,\np5j_length and d_frame.\
+    \ (default: False)\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: MakeDb.py imgt [--version] [-h] [-o OUT_FILES [OUT_FILES ...]]\n\
+  \                      [--outdir OUT_DIR] [--outname OUT_NAME] [--log LOG_FILE]\n\
+  \                      [--failed] [--format {airr,changeo}]\n                  \
+  \    [-i ALIGNER_FILES [ALIGNER_FILES ...]]\n                      [-s [SEQ_FILES\
+  \ [SEQ_FILES ...]]] [-r REPO [REPO ...]]\n                      [--10x CELLRANGER_FILE\
+  \ [CELLRANGER_FILE ...]]\n                      [--asis-id] [--partial] [--extended]\n\
+  \nProcess IMGT/HighV-Quest output\n                                            \
+  \ (does not work with V-QUEST).\n\nhelp:\n  --version             show program's\
+  \ version number and exit\n  -h, --help            show this help message and exit\n\
+  \nstandard arguments:\n  -o OUT_FILES [OUT_FILES ...]\n                        Explicit\
+  \ output file name. Note, this argument cannot\n                        be used\
+  \ with the --failed, --outdir, or --outname\n                        arguments.\
+  \ If unspecified, then the output filename\n                        will be based\
+  \ on the input filename(s). (default:\n                        None)\n  --outdir\
+  \ OUT_DIR      Specify to changes the output directory to the\n                \
+  \        location specified. The input file directory is used\n                \
+  \        if this is not specified. (default: None)\n  --outname OUT_NAME    Changes\
+  \ the prefix of the successfully processed\n                        output file\
+  \ to the string specified. May not be\n                        specified with multiple\
+  \ input files. (default: None)\n  --log LOG_FILE        Specify to write verbose\
+  \ logging to a file. May not be\n                        specified with multiple\
+  \ input files. (default: None)\n  --failed              If specified create files\
+  \ containing records that fail\n                        processing. (default: False)\n\
+  \  --format {airr,changeo}\n                        Specify input and output format.\
+  \ (default: airr)\n\naligner parsing arguments:\n  -i ALIGNER_FILES [ALIGNER_FILES\
+  \ ...]\n                        Either zipped IMGT output files (.zip or .txz) or\
+  \ a\n                        folder containing unzipped IMGT output files (which\n\
+  \                        must include 1_Summary, 2_IMGT-gapped, 3_Nt-sequences,\n\
+  \                        and 6_Junction). (default: None)\n  -s [SEQ_FILES [SEQ_FILES\
+  \ ...]]\n                        List of FASTA files (with .fasta, .fna or .fa\n\
+  \                        extension) that were submitted to IMGT/HighV-QUEST. If\n\
+  \                        unspecified, sequence identifiers truncated by\n      \
+  \                  IMGT/HighV-QUEST will not be corrected. (default:\n         \
+  \               None)\n  -r REPO [REPO ...]    List of folders and/or fasta files\
+  \ containing the\n                        germline sequence set used by IMGT/HighV-QUEST.\
+  \ These\n                        reference sequences must contain IMGT-numbering\n\
+  \                        spacers (gaps) in the V segment. If unspecified, the\n\
+  \                        germline sequence reconstruction will not be included\n\
+  \                        in the output. (default: None)\n  --10x CELLRANGER_FILE\
+  \ [CELLRANGER_FILE ...]\n                        Table file containing 10X annotations\
+  \ (with .csv or\n                        .tsv extension). (default: None)\n  --asis-id\
+  \             Specify to prevent input sequence headers from being\n           \
+  \             parsed to add new columns to database. Parsing of\n              \
+  \          sequence headers requires headers to be in the pRESTO\n             \
+  \           annotation format, so this should be specified when\n              \
+  \          sequence headers are incompatible with the pRESTO\n                 \
+  \       annotation scheme. Note, unrecognized header formats\n                 \
+  \       will default to this behavior. (default: False)\n  --partial           \
+  \  If specified, include incomplete V(D)J alignments in\n                      \
+  \  the pass file instead of the fail file. An incomplete\n                     \
+  \   alignment is defined as a record that is missing a V\n                     \
+  \   gene assignment, J gene assignment, junction region,\n                     \
+  \   or productivity call. (default: False)\n  --extended            Specify to include\
+  \ additional aligner specific fields\n                        in the output. Adds\
+  \ <vdj>_score, <vdj>_identity>,\n                        fwr1, fwr2, fwr3, fwr4,\
+  \ cdr1, cdr2, cdr3, n1_length,\n                        n2_length, p3v_length, p5d_length,\
+  \ p3d_length,\n                        p5j_length and d_frame. (default: False)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/changeo:1.0.2--py_0

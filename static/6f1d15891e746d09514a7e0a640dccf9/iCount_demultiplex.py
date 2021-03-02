@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, Directory, String
+
+Icount_Demultiplex_V0_1_0 = CommandToolBuilder(tool="iCount_demultiplex", base_command=["iCount", "demultiplex"], inputs=[ToolInput(tag="in_mismatches", input_type=Boolean(optional=True), prefix="--mismatches", doc=InputDocumentation(doc="Number of tolerated mismatches when comparing barcodes (default: 1)")), ToolInput(tag="in_minimum_length", input_type=Boolean(optional=True), prefix="--minimum_length", doc=InputDocumentation(doc="Minimum length of trimmed sequence to keep (default: 15)")), ToolInput(tag="in_prefix", input_type=Boolean(optional=True), prefix="--prefix", doc=InputDocumentation(doc="Prefix of generated FASTQ files (default: demux)")), ToolInput(tag="in_out_dir", input_type=Directory(optional=True), prefix="--out_dir", doc=InputDocumentation(doc="Output folder. Use local folder if none given (default: .)")), ToolInput(tag="in_stdout_log", input_type=Boolean(optional=True), prefix="--stdout_log", doc=InputDocumentation(doc="Threshold value (0-50) for logging to stdout. If 0, logging to stdout if turned OFF.")), ToolInput(tag="in_file_log", input_type=Boolean(optional=True), prefix="--file_log", doc=InputDocumentation(doc="Threshold value (0-50) for logging to file. If 0, logging to file if turned OFF.")), ToolInput(tag="in_file_log_path", input_type=Boolean(optional=True), prefix="--file_logpath", doc=InputDocumentation(doc="Path to log file.")), ToolInput(tag="in_results_file", input_type=Boolean(optional=True), prefix="--results_file", doc=InputDocumentation(doc="File into which to store Metrics.")), ToolInput(tag="in_i_count_dot_demultiplex_dot_run", input_type=String(), position=0, doc=InputDocumentation(doc="positional arguments:")), ToolInput(tag="in_reads", input_type=String(), position=1, doc=InputDocumentation(doc="Path to reads from a sequencing library")), ToolInput(tag="in_adapter", input_type=String(), position=2, doc=InputDocumentation(doc="Adapter sequence to remove from ends of reads")), ToolInput(tag="in_barcodes", input_type=String(), position=3, doc=InputDocumentation(doc="List of barcodes used for library"))], outputs=[ToolOutput(tag="out_out_dir", output_type=Directory(optional=True), selector=InputSelector(input_to_select="in_out_dir", type_hint=File()), doc=OutputDocumentation(doc="Output folder. Use local folder if none given (default: .)"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Icount_Demultiplex_V0_1_0().translate("wdl", allow_empty_container=True)
+

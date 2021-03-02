@@ -1,0 +1,94 @@
+!Command
+command:
+- cnvkit.py
+- fix
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: target
+  description: Target coverage file (.targetcoverage.cnn).
+- !Positional
+  optional: false
+  position: 1
+  name: antitarget
+  description: Antitarget coverage file (.antitargetcoverage.cnn).
+- !Positional
+  optional: false
+  position: 2
+  name: reference
+  description: Reference coverage (.cnn).
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --cluster
+  description: "Compare and use cluster-specific values present in the\nreference\
+    \ profile. (Requires that the reference\nprofile was built with the --cluster\
+    \ option.)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --sample-id
+  description: "Sample ID for target/antitarget files. Otherwise\ninferred from file\
+    \ names."
+  args: !SimpleFlagArg
+    name: SAMPLE_ID
+- !Flag
+  optional: true
+  synonyms:
+  - --no-gc
+  description: Skip GC correction.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-edge
+  description: Skip edge-effect correction.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-rmask
+  description: Skip RepeatMasker correction.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: "Output file name.\n"
+  args: !SimpleFlagArg
+    name: FILENAME
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: cnvkit.py fix [-h] [-c] [-i SAMPLE_ID] [--no-gc] [--no-edge]\n\
+  \                     [--no-rmask] [-o FILENAME]\n                     target antitarget\
+  \ reference\n\npositional arguments:\n  target                Target coverage file\
+  \ (.targetcoverage.cnn).\n  antitarget            Antitarget coverage file (.antitargetcoverage.cnn).\n\
+  \  reference             Reference coverage (.cnn).\n\noptional arguments:\n  -h,\
+  \ --help            show this help message and exit\n  -c, --cluster         Compare\
+  \ and use cluster-specific values present in the\n                        reference\
+  \ profile. (Requires that the reference\n                        profile was built\
+  \ with the --cluster option.)\n  -i SAMPLE_ID, --sample-id SAMPLE_ID\n         \
+  \               Sample ID for target/antitarget files. Otherwise\n             \
+  \           inferred from file names.\n  --no-gc               Skip GC correction.\n\
+  \  --no-edge             Skip edge-effect correction.\n  --no-rmask            Skip\
+  \ RepeatMasker correction.\n  -o FILENAME, --output FILENAME\n                 \
+  \       Output file name.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/cnvkit:0.9.8--py_0

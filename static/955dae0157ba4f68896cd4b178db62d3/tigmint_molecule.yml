@@ -1,0 +1,126 @@
+!Command
+command:
+- tigmint-molecule
+positional:
+- !Positional
+  optional: false
+  position: 1
+  name: stdin
+  description: 'optional arguments:'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: Output TSV file [stdout]
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --out-bam
+  description: Output BAM file with MI tags (optional)
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --bed
+  description: Output in BED format [default]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --tsv
+  description: Output in TSV format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --dist
+  description: "Maximum distance between reads in the same molecule\n[50000]"
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --reads
+  description: "Minimum number of reads per molecule (duplicates are\nfiltered out)\
+    \ [4]"
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --mapq
+  description: Minimum mapping quality [0]
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --as-ratio
+  description: "Minimum ratio of alignment score (AS) over read length\n[0.65]"
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --nm
+  description: Maximum number of mismatches (NM) [5]
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --size
+  description: Minimum molecule size [2000]
+  args: !SimpleFlagArg
+    name: N
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: tigmint-molecule [-h] [--version] [-o FILE] [-w FILE] [--bed] [--tsv]\n\
+  \                        [-d N] [-m N] [-q N] [-a N] [-n N] [-s N]\n           \
+  \             [-p PARAM_FILE]\n                        BAM\n\nGroup linked reads\
+  \ into molecules. Read a SAM/BAM file and output a TSV file.\nThe SAM/BAM file must\
+  \ be sorted by BX tag and then by position.\n\npositional arguments:\n  BAM    \
+  \               Input BAM file sorted by BX tag then position, - for\n         \
+  \               stdin\n\noptional arguments:\n  -h, --help            show this\
+  \ help message and exit\n  --version             show program's version number and\
+  \ exit\n  -o FILE, --output FILE\n                        Output TSV file [stdout]\n\
+  \  -w FILE, --out-bam FILE\n                        Output BAM file with MI tags\
+  \ (optional)\n  --bed                 Output in BED format [default]\n  --tsv  \
+  \               Output in TSV format\n  -d N, --dist N        Maximum distance between\
+  \ reads in the same molecule\n                        [50000]\n  -m N, --reads N\
+  \       Minimum number of reads per molecule (duplicates are\n                 \
+  \       filtered out) [4]\n  -q N, --mapq N        Minimum mapping quality [0]\n\
+  \  -a N, --as-ratio N    Minimum ratio of alignment score (AS) over read length\n\
+  \                        [0.65]\n  -n N, --nm N          Maximum number of mismatches\
+  \ (NM) [5]\n  -s N, --size N        Minimum molecule size [2000]\n  -p PARAM_FILE,\
+  \ --params PARAM_FILE\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/tigmint:1.2.2--py_1

@@ -1,0 +1,187 @@
+!Command
+command:
+- taxonkit
+- filter
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --save-predictable-norank
+  description: save some special ranks without order,
+  args: !SimpleFlagArg
+    name: to
+- !Flag
+  optional: true
+  synonyms:
+  - -B
+  - --black-list
+  description: black list of ranks to discard, e.g., '-B "no rank" -B "clade"
+  args: !SimpleFlagArg
+    name: strings
+- !Flag
+  optional: true
+  synonyms:
+  - -N
+  - --discard-noranks
+  description: discard all ranks without order, type "taxonkit filter --help" for
+    details
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  - --discard-root
+  description: discard root taxid, defined by --root-taxid
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -E
+  - --equal-to
+  description: output taxIDs with rank equal to some ranks, multiple values can be
+    separated with comma "," (e.g., -E "genus,species"), or give multiple times (e.g.,
+    -E genus -E species)
+  args: !SimpleFlagArg
+    name: strings
+- !Flag
+  optional: true
+  synonyms:
+  - -H
+  - --higher-than
+  description: output taxIDs with rank higher than a rank, exclusive with --lower-than
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --list-order
+  description: list user defined ranks in order, from "$HOME/.taxonkit/ranks.txt"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --list-ranks
+  description: list ordered ranks in taxonomy database, sorted in user defined order
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  - --lower-than
+  description: output taxIDs with rank lower than a rank, exclusive with --higher-than
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --rank-file
+  description: user-defined ordered taxonomic ranks, type "taxonkit filter --help"
+    for details
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --root-taxid
+  description: root taxid (default 1)
+  args: !SimpleFlagArg
+    name: uint32
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --taxid-field
+  description: field index of taxid. input data should be tab-separated (default 1)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --data-dir
+  description: directory containing nodes.dmp and names.dmp (default "/root/.taxonkit")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --line-buffered
+  description: use line buffering on output, i.e., immediately writing to stdin/file
+    for every line of output
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out-file
+  description: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --threads
+  description: number of CPUs. 4 is enough (default 4)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: print verbose information
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: help for filter
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Filter taxIDs by taxonomic rank range\n\nAttentions:\n\n  1. Flag -L/--lower-than\
+  \ and -H/--higher-than are exclusive, and can be\n     used along with -E/--equal-to\
+  \ which values can be different.\n  2. A list of pre-ordered ranks is in ~/.taxonkit/ranks.txt,\
+  \ you can use\n     your list by -r/--rank-file, the format specification is below.\n\
+  \  3. All ranks in taxonomy database should be defined in rank file.\n  4. Ranks\
+  \ can be removed with black list via -B/--black-list.\n  5. TaxIDs with no rank\
+  \ can be optionally discarded by -N/--discard-noranks.\n  6. But when filtering\
+  \ with -L/--lower-than, you can use\n    -n/--save-predictable-norank to save some\
+  \ special ranks without order,\n    where rank of the closest higher node is still\
+  \ lower than rank cutoff.\n\nRank file:\n\n  1. Blank lines or lines starting with\
+  \ \"#\" are ignored.\n  2. Ranks are in decending order and case ignored.\n  3.\
+  \ Ranks with same order should be in one line separated with comma (\",\", no space).\n\
+  \  4. Ranks without order should be assigned a prefix symbol \"!\" for each rank.\n\
+  \nUsage:\n  taxonkit filter [flags]\n\nFlags:\n  -B, --black-list strings      \
+  \  black list of ranks to discard, e.g., '-B \"no rank\" -B \"clade\"\n  -N, --discard-noranks\
+  \           discard all ranks without order, type \"taxonkit filter --help\" for\
+  \ details\n  -R, --discard-root              discard root taxid, defined by --root-taxid\n\
+  \  -E, --equal-to strings          output taxIDs with rank equal to some ranks,\
+  \ multiple values can be separated with comma \",\" (e.g., -E \"genus,species\"\
+  ), or give multiple times (e.g., -E genus -E species)\n  -h, --help            \
+  \          help for filter\n  -H, --higher-than string        output taxIDs with\
+  \ rank higher than a rank, exclusive with --lower-than\n      --list-order     \
+  \           list user defined ranks in order, from \"$HOME/.taxonkit/ranks.txt\"\
+  \n      --list-ranks                list ordered ranks in taxonomy database, sorted\
+  \ in user defined order\n  -L, --lower-than string         output taxIDs with rank\
+  \ lower than a rank, exclusive with --higher-than\n  -r, --rank-file string    \
+  \      user-defined ordered taxonomic ranks, type \"taxonkit filter --help\" for\
+  \ details\n      --root-taxid uint32         root taxid (default 1)\n  -n, --save-predictable-norank\
+  \   do not discard some special ranks without order when using -L, where rank of\
+  \ the closest higher node is still lower than rank cutoff\n  -i, --taxid-field int\
+  \           field index of taxid. input data should be tab-separated (default 1)\n\
+  \nGlobal Flags:\n      --data-dir string   directory containing nodes.dmp and names.dmp\
+  \ (default \"/root/.taxonkit\")\n      --line-buffered     use line buffering on\
+  \ output, i.e., immediately writing to stdin/file for every line of output\n  -o,\
+  \ --out-file string   out file (\"-\" for stdout, suffix .gz for gzipped out) (default\
+  \ \"-\")\n  -j, --threads int       number of CPUs. 4 is enough (default 4)\n  \
+  \    --verbose           print verbose information\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/taxonkit:0.7.2--0

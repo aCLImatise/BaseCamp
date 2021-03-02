@@ -1,0 +1,101 @@
+!Command
+command:
+- tbox-scan
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: Options
+  description: '-f <file>  : input FASTA <file> (required)'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: ": save final results in <file> as .csv\ndefault: out.csv"
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: ": save INFERNAL output predictions to .txt <file>\ndefault: INFERNAL.txt"
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: ': save a .txt log <file> of pipeline output'
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: "<model#> : search for T-boxes using different covariance models\n\
+    1: RFAM model (RFAM00230.cm), finds mostly class I transcriptional T-boxes (default)\n\
+    2: Translational Ile (TBDB001.cm), finds mostly class II translational T-boxes"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: ': score cutoff for INFERNAL model predictions (default = 15)'
+  args: !SimpleFlagArg
+    name: value
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: ': save verbose output'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: ': silence console output'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -options
+  description: ''
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: ''
+  args: !SimpleFlagArg
+    name: Input FASTA file
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: ': print out summary of available options'
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "\n  \n  tbox-scan v1.0.2 (December 2020)\n\n  Usage: tbox-scan -f <Input\
+  \ FASTA file> [-options]\n\n  Scan a fasta sequence file for T-boxes and predict\
+  \ specifier & T-box sequence.\n            -- Default: Will use INFERNAL with RFAM00230\
+  \ covariance model with basic output\n            -- Example: tbox-scan  -f input.fa\
+  \ -o output_file.csv -v -m 1 -c 100\n  Dependencies: INFERNAL, cmsearch, biopython,\
+  \ python3, pandas.\n\n            \n  Options\n    -f <file>  : input FASTA <file>\
+  \ (required)\n    -o <file>  : save final results in <file> as .csv\n          \
+  \          default: out.csv\n    -i <file>  : save INFERNAL output predictions to\
+  \ .txt <file>\n                    default: INFERNAL.txt\n    -l <file>  : save\
+  \ a .txt log <file> of pipeline output\n    -m <model#> : search for T-boxes using\
+  \ different covariance models\n                    1: RFAM model (RFAM00230.cm),\
+  \ finds mostly class I transcriptional T-boxes (default)\n                    2:\
+  \ Translational Ile (TBDB001.cm), finds mostly class II translational T-boxes\n\
+  \    -c <value> : score cutoff for INFERNAL model predictions (default = 15)\n \
+  \   -v         : save verbose output\n    -s         : silence console output\n\
+  \    -h         : print out summary of available options\n\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/tbox-scan:1.0.2--0

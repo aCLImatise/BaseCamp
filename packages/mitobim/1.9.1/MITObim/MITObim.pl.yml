@@ -1,0 +1,217 @@
+!Command
+command:
+- MITObim.pl
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -start
+  description: iteration to start with (default=0, when using '-quick' reference)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -end
+  description: iteration to end with (default=startiteration, i.e. if not specified
+    otherwise stop after 1 iteration)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -sample
+  description: sampleID (please don't use '.' in the sampleID). If resuming, the sampleID
+    needs to be identical to that of the previous iteration / MIRA assembly.
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -ref
+  description: referenceID. If resuming, use the same as in previous iteration/initial
+    MIRA assembly.
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -readpool
+  description: readpool in fastq format (*.gz is also allowed). read pairs need to
+    be interleaved for full functionality of the '-pair' option below.
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -quick
+  description: reference sequence to be used as bait in fasta format
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -maf
+  description: extracts reference from maf file created by previous MITObim iteration/MIRA
+    assembly (resume)
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --kbait
+  description: 'set kmer for baiting stringency (default: 31)'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --platform
+  description: "specify sequencing platform (default: 'solexa'; other options: 'iontor',\
+    \ '454', 'pacbio')"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --denovo
+  description: runs MIRA in denovo mode
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pair
+  description: 'extend readpool to contain full read pairs, even if only one member
+    was baited (relies on /1 and /2 header convention for read pairs) (default: no).'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: 'show detailed output of MIRA modules (default: no)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --split
+  description: 'split reference at positions with more than 5N (default: no)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --clean
+  description: 'retain only the last 2 iteration directories (default: no)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --trimreads
+  description: 'trim data (default: no; we recommend to trim beforehand and feed MITObim
+    with pre trimmed data)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --trimoverhang
+  description: "trim overhang up- and downstream of reference, i.e. don't extend the\
+    \ bait, just re-assemble (default: no)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --mismatch
+  description: 'number of allowed mismatches in mapping - only for illumina data (default:
+    15% of avg. read length)'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --min_cov
+  description: 'minimum average coverage of contigs to be retained (default: 0 - off)'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --min_len
+  description: 'minimum length of contig to be retained as backbone (default: 0 -
+    off)'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --mirapath
+  description: full path to MIRA binaries (only needed if MIRA is not in PATH)
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --redirect_tmp
+  description: redirect temporary output to this location (useful in case you are
+    running MITObim on an NFS mount)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --NFS_warn_only
+  description: allow MIRA to run on NFS mount without aborting -  warn only (expert
+    option - see MIRA documentation 'check_nfs')
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: shows this helpful information
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: display MITObim version
+  args: !EmptyFlagArg {}
+help_text: "\nMITObim - mitochondrial baiting and iterative mapping\nversion 1.9.1\n\
+  author: Christoph Hahn, (c) 2012-2018\n\nusage: ./MITObim.pl <parameters>\n\t \t\
+  \nparameters:\n\t\t-start <int>\t\titeration to start with (default=0, when using\
+  \ '-quick' reference)\n\t\t-end <int>\t\titeration to end with (default=startiteration,\
+  \ i.e. if not specified otherwise stop after 1 iteration)\n\t\t-sample <string>\t\
+  sampleID (please don't use '.' in the sampleID). If resuming, the sampleID needs\
+  \ to be identical to that of the previous iteration / MIRA assembly.\n\t\t-ref <string>\t\
+  \treferenceID. If resuming, use the same as in previous iteration/initial MIRA assembly.\n\
+  \t\t-readpool <FILE>\treadpool in fastq format (*.gz is also allowed). read pairs\
+  \ need to be interleaved for full functionality of the '-pair' option below.\n \
+  \               -quick <FILE>           reference sequence to be used as bait in\
+  \ fasta format\n                -maf <FILE>             extracts reference from\
+  \ maf file created by previous MITObim iteration/MIRA assembly (resume)\n\t\t\n\
+  optional:\n\t\t--kbait <int>\t\tset kmer for baiting stringency (default: 31)\n\t\
+  \t--platform\t\tspecify sequencing platform (default: 'solexa'; other options: 'iontor',\
+  \ '454', 'pacbio')\n\t\t--denovo\t\truns MIRA in denovo mode\n\t\t--pair\t\t\textend\
+  \ readpool to contain full read pairs, even if only one member was baited (relies\
+  \ on /1 and /2 header convention for read pairs) (default: no).\n\t\t--verbose\t\
+  \tshow detailed output of MIRA modules (default: no)\n\t\t--split\t\t\tsplit reference\
+  \ at positions with more than 5N (default: no)\n\t\t--help\t\t\tshows this helpful\
+  \ information\n\t\t--clean                 retain only the last 2 iteration directories\
+  \ (default: no)\n\t\t--trimreads\t\ttrim data (default: no; we recommend to trim\
+  \ beforehand and feed MITObim with pre trimmed data)\n\t\t--trimoverhang\t\ttrim\
+  \ overhang up- and downstream of reference, i.e. don't extend the bait, just re-assemble\
+  \ (default: no)\n\t\t--mismatch <int>\tnumber of allowed mismatches in mapping -\
+  \ only for illumina data (default: 15% of avg. read length)\n\t\t--min_cov <int>\t\
+  \tminimum average coverage of contigs to be retained (default: 0 - off)\n\t\t--min_len\
+  \ <int>\t\tminimum length of contig to be retained as backbone (default: 0 - off)\n\
+  \t\t--mirapath <string>     full path to MIRA binaries (only needed if MIRA is not\
+  \ in PATH)\n\t\t--redirect_tmp\t\tredirect temporary output to this location (useful\
+  \ in case you are running MITObim on an NFS mount)\n\t\t--NFS_warn_only\t\tallow\
+  \ MIRA to run on NFS mount without aborting -  warn only (expert option - see MIRA\
+  \ documentation 'check_nfs')\n\t\t--version\t\tdisplay MITObim version\n\t\t\nexamples:\n\
+  \t\t./MITObim.pl -start 1 -end 5 -sample StrainX -ref reference-mt -readpool illumina_readpool.fastq\
+  \ -maf initial_assembly.maf\n\t\t./MITObim.pl -end 10 -quick reference.fasta -sample\
+  \ StrainY -ref reference-mt -readpool illumina_readpool.fastq\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/mitobim:1.9.1--0

@@ -1,0 +1,245 @@
+!Command
+command:
+- skesa
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: '[ --version ]              Print version'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --cores
+  description: (=0)              Number of cores to use (default all) [integer]
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --memory
+  description: "(=32)            Memory available (GB, only for sorted counter)\n\
+    [integer]"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --hash_count
+  description: Use hash counter [flag]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --estimated_kmers
+  description: "(=100)  Estimated number of unique kmers for bloom\nfilter (millions,\
+    \ only for hash counter)\n[integer]"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --skip_bloom_filter
+  description: "Don't do bloom filter; use --estimated_kmers as\nthe hash table size\
+    \ (only for hash counter)\n[flag]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --reads
+  description: "Input fasta/fastq file(s) for reads (could be\nused multiple times\
+    \ for different runs, could\nbe gzipped) [string]"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --use_paired_ends
+  description: "Indicates that a single (not comma separated)\nfasta/fastq file contains\
+    \ paired reads [flag]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --contigs_out
+  description: "Output file for contigs (stdout if not\nspecified) [string]"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --kmer
+  description: (=21)              Minimal kmer length for assembly [integer]
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --min_count
+  description: "Minimal count for kmers retained for comparing\nalternate choices\
+    \ [integer]"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --max_kmer
+  description: Maximal kmer length for assembly [integer]
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --max_kmer_count
+  description: "Minimum acceptable average count for estimating\nthe maximal kmer\
+    \ length in reads [integer]"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --vector_percent
+  description: "(=0.05)  Count for  vectors as a fraction of the read\nnumber (1.\
+    \ disables) [float (0,1]]"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --insert_size
+  description: "Expected insert size for paired reads (if not\nprovided, it will be\
+    \ estimated) [integer]"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --steps
+  description: "(=11)             Number of assembly iterations from minimal to\n\
+    maximal kmer length in reads [integer]"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --fraction
+  description: "(=0.1)         Maximum noise to signal ratio acceptable for\nextension\
+    \ [float [0,1)]"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --max_snp_len
+  description: (=150)      Maximal snp length [integer]
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --min_contig
+  description: "(=200)       Minimal contig length reported in output\n[integer]"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --allow_snps
+  description: Allow additional step for snp discovery [flag]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --force_single_ends
+  description: Don't use paired-end information [flag]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --seeds
+  description: Input file with seeds [string]
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --all
+  description: Output fasta for each iteration [string]
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --dbg_out
+  description: Output kmer file [string]
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --hist
+  description: File for histogram [string]
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --connected_reads
+  description: File for connected paired reads [string]
+  args: !SimpleFlagArg
+    name: arg
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: '[ --help ]                 Produce help message'
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "\nGeneral options:\n  -h [ --help ]                 Produce help message\n\
+  \  -v [ --version ]              Print version\n  --cores arg (=0)             \
+  \ Number of cores to use (default all) [integer]\n  --memory arg (=32)         \
+  \   Memory available (GB, only for sorted counter) \n                          \
+  \      [integer]\n  --hash_count                  Use hash counter [flag]\n  --estimated_kmers\
+  \ arg (=100)  Estimated number of unique kmers for bloom \n                    \
+  \            filter (millions, only for hash counter) \n                       \
+  \         [integer]\n  --skip_bloom_filter           Don't do bloom filter; use\
+  \ --estimated_kmers as\n                                the hash table size (only\
+  \ for hash counter) \n                                [flag]\n\nInput/output options\
+  \ : at least one input providing reads for assembly must be specified:\n  --reads\
+  \ arg                   Input fasta/fastq file(s) for reads (could be \n       \
+  \                         used multiple times for different runs, could \n     \
+  \                           be gzipped) [string]\n  --use_paired_ends          \
+  \   Indicates that a single (not comma separated) \n                           \
+  \     fasta/fastq file contains paired reads [flag]\n  --contigs_out arg       \
+  \      Output file for contigs (stdout if not \n                               \
+  \ specified) [string]\n\nAssembly options:\n  --kmer arg (=21)              Minimal\
+  \ kmer length for assembly [integer]\n  --min_count arg               Minimal count\
+  \ for kmers retained for comparing \n                                alternate choices\
+  \ [integer]\n  --max_kmer arg                Maximal kmer length for assembly [integer]\n\
+  \  --max_kmer_count arg          Minimum acceptable average count for estimating\n\
+  \                                the maximal kmer length in reads [integer]\n  --vector_percent\
+  \ arg (=0.05)  Count for  vectors as a fraction of the read \n                 \
+  \               number (1. disables) [float (0,1]]\n  --insert_size arg        \
+  \     Expected insert size for paired reads (if not \n                         \
+  \       provided, it will be estimated) [integer]\n  --steps arg (=11)         \
+  \    Number of assembly iterations from minimal to \n                          \
+  \      maximal kmer length in reads [integer]\n  --fraction arg (=0.1)         Maximum\
+  \ noise to signal ratio acceptable for \n                                extension\
+  \ [float [0,1)]\n  --max_snp_len arg (=150)      Maximal snp length [integer]\n\
+  \  --min_contig arg (=200)       Minimal contig length reported in output \n   \
+  \                             [integer]\n  --allow_snps                  Allow additional\
+  \ step for snp discovery [flag]\n\nDebugging options:\n  --force_single_ends   \
+  \        Don't use paired-end information [flag]\n  --seeds arg                \
+  \   Input file with seeds [string]\n  --all arg                     Output fasta\
+  \ for each iteration [string]\n  --dbg_out arg                 Output kmer file\
+  \ [string]\n  --hist arg                    File for histogram [string]\n  --connected_reads\
+  \ arg         File for connected paired reads [string]\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/skesa:2.4.0--he1c1bb9_0

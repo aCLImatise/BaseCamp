@@ -1,0 +1,88 @@
+!Command
+command:
+- ntcard
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: use N parallel threads [1] (N>=2 should be used when input files are
+    >=2)
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --kmer
+  description: the length of kmer
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --gap
+  description: the length of gap in the gap seed [0]. g mod 2 must equal k mod 2 unless
+    g == 0
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --cov
+  description: the maximum coverage of kmer in output [1000]
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --pref
+  description: the prefix for output file name(s)
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: the name for output file name (used when output should be a single
+    file)
+  args: !SimpleFlagArg
+    name: STRING
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: display this help and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: version information and exit
+  args: !SimpleFlagArg
+    name: output
+help_text: "Usage: ntCard [OPTION]... FILE(S)...\nEstimates k-mer coverage histogram\
+  \ in FILE(S).\n\nAcceptable file formats: fastq, fasta, sam, bam and in compressed\
+  \ formats gz, bz, zip, xz.\nA list of files containing file names in each row can\
+  \ be passed with @ prefix.\n\n Options:\n\n  -t, --threads=N\tuse N parallel threads\
+  \ [1] (N>=2 should be used when input files are >=2)\n  -k, --kmer=N\tthe length\
+  \ of kmer \n  -g, --gap=N\tthe length of gap in the gap seed [0]. g mod 2 must equal\
+  \ k mod 2 unless g == 0\n           \t-g does not support multiple k currently.\n\
+  \  -c, --cov=N\tthe maximum coverage of kmer in output [1000]\n  -p, --pref=STRING\
+  \    the prefix for output file name(s)\n  -o, --output=STRING\tthe name for output\
+  \ file name (used when output should be a single file)\n      --help\tdisplay this\
+  \ help and exit\n      --version\toutput version information and exit\n\nReport\
+  \ bugs to https://github.com/bcgsc/ntCard/issues\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/ntcard:1.2.2--he513fc3_0

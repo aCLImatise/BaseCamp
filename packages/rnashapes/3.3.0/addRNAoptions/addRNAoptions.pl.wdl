@@ -8,6 +8,9 @@ task AddRNAoptionspl {
     addRNAoptions_pl \
       ~{perl}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     perl: ""
   }

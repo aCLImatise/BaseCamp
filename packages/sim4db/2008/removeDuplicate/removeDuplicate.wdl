@@ -12,6 +12,9 @@ task RemoveDuplicate {
       ~{var_2} \
       ~{if (gff_three) then "-gff3" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     gff_three: ""
     var_1: ""

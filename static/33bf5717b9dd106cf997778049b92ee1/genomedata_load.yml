@@ -1,0 +1,154 @@
+!Command
+command:
+- genomedata-load
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: GENOMEDATAFILE
+  description: Create Genomedata archive named GENOMEDATAFILE by loading
+- !Positional
+  optional: false
+  position: 0
+  name: respectively.
+  description: 'Example: genomedata-load -t high=signal.high.wig -t low=signal.low.bed.gz
+    -s chrX.fa -s chrY.fa.gz GENOMEDATAFILE'
+- !Positional
+  optional: false
+  position: 0
+  name: GENOMEDATAFILE
+  description: genomedata archive
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --sequence
+  description: "Add the sequence data in the specified file or files\n(may use UNIX\
+    \ glob wildcard syntax)"
+  args: !SimpleFlagArg
+    name: SEQUENCE
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --assembly-report
+  description: "Tab-delimited file with columnar mappings between\nchromosome naming\
+    \ styles."
+  args: !SimpleFlagArg
+    name: ASSEMBLY-REPORT
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --name-style
+  description: "Chromsome naming style to use based on ASSEMBLY-\nREPORT. Default:\
+    \ UCSC-style-name"
+  args: !SimpleFlagArg
+    name: NAME_STYLE
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: Print status updates and diagnostic messages
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: "=FILE, --track NAME=FILE\nAdd data from FILE as the track NAME, such\
+    \ as: -t\nsignal=signal.wig"
+  args: !SimpleFlagArg
+    name: NAME
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --maskfile
+  description: "A BED file containing regions to mask out from tracks\nbefore loading"
+  args: !SimpleFlagArg
+    name: MASKFILE
+- !Flag
+  optional: true
+  synonyms:
+  - --assembly
+  description: sequence files contain assembly (AGP) files instead of
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --file-mode
+  description: "If specified, the Genomedata archive will be\nimplemented as a single\
+    \ file, with a separate h5 group\nfor each Chromosome. This is recommended if\
+    \ there are\na large number of Chromosomes. The default behavior is\nto use a\
+    \ single file if there are at least 100\nChromosomes being added."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --directory-mode
+  description: "If specified, the Genomedata archive will be\nimplemented as a directory,\
+    \ with a separate file for\neach Chromosome. This is recommended if there are\
+    \ a\nsmall number of Chromosomes. The default behavior is\nto use a directory\
+    \ if there are fewer than 100\nChromosomes being added."
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: genomedata-load [-h] [-r ASSEMBLY-REPORT] [-n NAME_STYLE] [--version]\n\
+  \                       [--verbose] -s SEQUENCE -t NAME=FILE [-m MASKFILE]\n   \
+  \                    [--assembly | --sizes] [-f | -d]\n                       GENOMEDATAFILE\n\
+  \nCreate Genomedata archive named GENOMEDATAFILE by loading\n specified track data\
+  \ and sequences. If GENOMEDATAFILE\n already exists, it will be overwritten.\n --track\
+  \ and --sequence may be repeated to specify\n multiple trackname=trackfile pairings\
+  \ and sequence files,\n respectively.\n\n Example: genomedata-load -t high=signal.high.wig\
+  \ -t low=signal.low.bed.gz -s chrX.fa -s chrY.fa.gz GENOMEDATAFILE\n\npositional\
+  \ arguments:\n  GENOMEDATAFILE        genomedata archive\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  --version          \
+  \   show program's version number and exit\n\nChromosome naming:\n  -r ASSEMBLY-REPORT,\
+  \ --assembly-report ASSEMBLY-REPORT\n                        Tab-delimited file\
+  \ with columnar mappings between\n                        chromosome naming styles.\n\
+  \  -n NAME_STYLE, --name-style NAME_STYLE\n                        Chromsome naming\
+  \ style to use based on ASSEMBLY-\n                        REPORT. Default: UCSC-style-name\n\
+  \nFlags:\n  --verbose             Print status updates and diagnostic messages\n\
+  \nInput data:\n  -s SEQUENCE, --sequence SEQUENCE\n                        Add the\
+  \ sequence data in the specified file or files\n                        (may use\
+  \ UNIX glob wildcard syntax)\n  -t NAME=FILE, --track NAME=FILE\n              \
+  \          Add data from FILE as the track NAME, such as: -t\n                 \
+  \       signal=signal.wig\n  -m MASKFILE, --maskfile MASKFILE\n                \
+  \        A BED file containing regions to mask out from tracks\n               \
+  \         before loading\n  --assembly            sequence files contain assembly\
+  \ (AGP) files instead of\n                        sequence\n  --sizes          \
+  \     sequence files contain list of sizes instead of\n                        sequence\n\
+  \nImplementation:\n  -f, --file-mode       If specified, the Genomedata archive\
+  \ will be\n                        implemented as a single file, with a separate\
+  \ h5 group\n                        for each Chromosome. This is recommended if\
+  \ there are\n                        a large number of Chromosomes. The default\
+  \ behavior is\n                        to use a single file if there are at least\
+  \ 100\n                        Chromosomes being added.\n  -d, --directory-mode\
+  \  If specified, the Genomedata archive will be\n                        implemented\
+  \ as a directory, with a separate file for\n                        each Chromosome.\
+  \ This is recommended if there are a\n                        small number of Chromosomes.\
+  \ The default behavior is\n                        to use a directory if there are\
+  \ fewer than 100\n                        Chromosomes being added.\n\nCitation:\
+  \ Hoffman MM, Buske OJ, Noble WS.\n2010. The Genomedata format for storing large-scale\
+  \ functional genomics data.\nBioinformatics 26 (11):1458-1459.\nhttp://dx.doi.org/10.1093/bioinformatics/btq164\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/genomedata:1.5.0--py36h485661d_0

@@ -1,0 +1,29 @@
+class: CommandLineTool
+id: vcfnormalizesvs.cwl
+inputs:
+- id: in_reference
+  doc: FASTA-format reference genome from which to pull SV sequences.
+  type: string?
+  inputBinding:
+    prefix: --reference
+- id: in_insertions
+  doc: FASTA-format insertion sequences, with IDs matching the ALT allele tags in
+    the vcf
+  type: string?
+  inputBinding:
+    prefix: --insertions
+- id: in_var_dot_vcf
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+hints:
+- class: DockerRequirement
+  dockerPull: quay.io/biocontainers/vcflib:1.0.1--hd2e4403_1
+cwlVersion: v1.1
+baseCommand:
+- vcfnormalizesvs

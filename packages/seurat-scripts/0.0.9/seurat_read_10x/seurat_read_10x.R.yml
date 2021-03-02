@@ -1,0 +1,144 @@
+!Command
+command:
+- seurat-read-10x.R
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --data-file
+  description: A tab-separated file containing expression data.
+  args: !SimpleFlagArg
+    name: DATA-FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --data-dir
+  description: Directory containing the matrix.mtx, genes.tsv, and barcodes.tsv files
+    matching 10X conventions (overrides --data-file).
+  args: !SimpleFlagArg
+    name: DATA-DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-object-file
+  description: File name in which to store serialized R matrix object.
+  args: !SimpleFlagArg
+    name: OUTPUT-OBJECT-FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --output-format
+  description: Either loom, seurat, anndata or singlecellexperiment for the output
+    format.
+  args: !SimpleFlagArg
+    name: OUTPUT-FORMAT
+- !Flag
+  optional: true
+  synonyms:
+  - --metadata
+  description: Path to a file with metdata for the cells, first column should be cell
+    identifiers as used in the cells 10x file.
+  args: !SimpleFlagArg
+    name: METADATA
+- !Flag
+  optional: true
+  synonyms:
+  - --min-cells
+  description: Include features detected in at least this many cells. Will subset
+    the counts matrix as well. To reintroduce excluded features, create a new object
+    with a lower cutoff.
+  args: !SimpleFlagArg
+    name: MIN-CELLS
+- !Flag
+  optional: true
+  synonyms:
+  - --min-features
+  description: Include cells where at least this many features are detected.
+  args: !SimpleFlagArg
+    name: MIN-FEATURES
+- !Flag
+  optional: true
+  synonyms:
+  - --gene-column
+  description: "NAME COLUMN\nSpecify which column of genes.tsv or features.tsv to\
+    \ use for gene names; default is 2."
+  args: !SimpleFlagArg
+    name: GENE
+- !Flag
+  optional: true
+  synonyms:
+  - --not-unique-features
+  description: Do not make feature names unique (default FALSE - make them unique).
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --project
+  description: "THE PROJECT NAME FOR THE SEURAT OBJECT.\nSets the project name for\
+    \ the Seurat object."
+  args: !SimpleFlagArg
+    name: SETS
+- !Flag
+  optional: true
+  synonyms:
+  - --names-field
+  description: "FOR FIELD WITH CELLS NAME\nFor the initial identity class for each\
+    \ cell, choose this field for the cell's name. E.g. If your cells are named as\
+    \ BARCODE_CLUSTER_CELLTYPE in the input matrix, set names.field to 3 to set the\
+    \ initial identities to CELLTYPE."
+  args: !SimpleFlagArg
+    name: INDEX
+- !Flag
+  optional: true
+  synonyms:
+  - --names-delim
+  description: "FIELD WITHIN CELLS NAME\nFor the initial identity class for each cell,\
+    \ choose this delimiter from the cell's column name. E.g. If your cells are named\
+    \ as BARCODE-CLUSTER-CELLTYPE, set this to '-' to separate the cell name into\
+    \ its component parts for picking the relevant field."
+  args: !SimpleFlagArg
+    name: DELIMITER
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: "Show this help message and exit\n"
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: /usr/local/bin/seurat-read-10x.R [options]\n\n\nOptions:\n\t-f\
+  \ DATA-FILE, --data-file=DATA-FILE\n\t\tA tab-separated file containing expression\
+  \ data.\n\n\t-d DATA-DIR, --data-dir=DATA-DIR\n\t\tDirectory containing the matrix.mtx,\
+  \ genes.tsv, and barcodes.tsv files matching 10X conventions (overrides --data-file).\n\
+  \n\t-o OUTPUT-OBJECT-FILE, --output-object-file=OUTPUT-OBJECT-FILE\n\t\tFile name\
+  \ in which to store serialized R matrix object.\n\n\t--output-format=OUTPUT-FORMAT\n\
+  \t\tEither loom, seurat, anndata or singlecellexperiment for the output format.\n\
+  \n\t--metadata=METADATA\n\t\tPath to a file with metdata for the cells, first column\
+  \ should be cell identifiers as used in the cells 10x file.\n\n\t--min-cells=MIN-CELLS\n\
+  \t\tInclude features detected in at least this many cells. Will subset the counts\
+  \ matrix as well. To reintroduce excluded features, create a new object with a lower\
+  \ cutoff.\n\n\t--min-features=MIN-FEATURES\n\t\tInclude cells where at least this\
+  \ many features are detected.\n\n\t--gene-column=GENE NAME COLUMN\n\t\tSpecify which\
+  \ column of genes.tsv or features.tsv to use for gene names; default is 2.\n\n\t\
+  --not-unique-features\n\t\tDo not make feature names unique (default FALSE - make\
+  \ them unique).\n\n\t--project=SETS THE PROJECT NAME FOR THE SEURAT OBJECT.\n\t\t\
+  Sets the project name for the Seurat object.\n\n\t--names-field=INDEX FOR FIELD\
+  \ WITH CELLS NAME\n\t\tFor the initial identity class for each cell, choose this\
+  \ field for the cell's name. E.g. If your cells are named as BARCODE_CLUSTER_CELLTYPE\
+  \ in the input matrix, set names.field to 3 to set the initial identities to CELLTYPE.\n\
+  \n\t--names-delim=DELIMITER FIELD WITHIN CELLS NAME\n\t\tFor the initial identity\
+  \ class for each cell, choose this delimiter from the cell's column name. E.g. If\
+  \ your cells are named as BARCODE-CLUSTER-CELLTYPE, set this to '-' to separate\
+  \ the cell name into its component parts for picking the relevant field.\n\n\t-h,\
+  \ --help\n\t\tShow this help message and exit\n\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/seurat-scripts:0.0.9--0

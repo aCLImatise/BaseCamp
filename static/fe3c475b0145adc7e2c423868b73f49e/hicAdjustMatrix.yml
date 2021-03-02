@@ -1,0 +1,105 @@
+!Command
+command:
+- hicAdjustMatrix
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --chromosomes
+  - -c
+  description: List of chromosomes to keep/remove.
+  args: !RepeatFlagArg
+    name: CHROMOSOMES
+- !Flag
+  optional: true
+  synonyms:
+  - --regions
+  - -r
+  description: "BED file which stores a list of regions to\nkeep/remove."
+  args: !SimpleFlagArg
+    name: REGIONS
+- !Flag
+  optional: true
+  synonyms:
+  - --maskBadRegions
+  - -mbr
+  description: Bad regions are identified and masked.
+  args: !SimpleFlagArg
+    name: MASKBADREGIONS
+- !Flag
+  optional: true
+  synonyms:
+  - --matrix
+  - -m
+  description: "The Hi-C matrix to adjust. HiCExplorer supports the\nfollowing file\
+    \ formats: h5 (native HiCExplorer format)\nand cool."
+  args: !SimpleFlagArg
+    name: MATRIX
+- !Flag
+  optional: true
+  synonyms:
+  - --outFileName
+  - -o
+  description: File name to save the adjusted matrix.
+  args: !SimpleFlagArg
+    name: OUTFILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --action
+  - -a
+  description: "Keep, remove or mask the list of specified\nchromosomes/regions. keep/remove:\
+    \ These options\nkeep/remove bins of matrix by deleting them. This may\ncause\
+    \ issue plotting the matrix if several parts of a\nsingle chromosome are going\
+    \ to be deleted. In that\ncase, one may consider using the mask option (Default:\n\
+    keep)."
+  args: !ChoiceFlagArg
+    choices: !!set
+      mask:
+      remove:
+      keep:
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: hicAdjustMatrix --matrix MATRIX --outFileName OUTFILENAME\n   \
+  \                    [--chromosomes CHROMOSOMES [CHROMOSOMES ...] |\n          \
+  \             --regions REGIONS | --maskBadRegions MASKBADREGIONS]\n           \
+  \            [--action {keep,remove,mask}] [--help] [--version]\n\n            \
+  \        This tool adjusts hic matrices by keeping, removing or masking a given\
+  \ list of regions or chromosmes.\n                    \n\noptional arguments:\n\
+  \  --chromosomes CHROMOSOMES [CHROMOSOMES ...], -c CHROMOSOMES [CHROMOSOMES ...]\n\
+  \                        List of chromosomes to keep/remove.\n  --regions REGIONS,\
+  \ -r REGIONS\n                        BED file which stores a list of regions to\n\
+  \                        keep/remove.\n  --maskBadRegions MASKBADREGIONS, -mbr MASKBADREGIONS\n\
+  \                        Bad regions are identified and masked.\n\nRequired arguments:\n\
+  \  --matrix MATRIX, -m MATRIX\n                        The Hi-C matrix to adjust.\
+  \ HiCExplorer supports the\n                        following file formats: h5 (native\
+  \ HiCExplorer format)\n                        and cool.\n  --outFileName OUTFILENAME,\
+  \ -o OUTFILENAME\n                        File name to save the adjusted matrix.\n\
+  \nOptional arguments:\n  --action {keep,remove,mask}, -a {keep,remove,mask}\n  \
+  \                      Keep, remove or mask the list of specified\n            \
+  \            chromosomes/regions. keep/remove: These options\n                 \
+  \       keep/remove bins of matrix by deleting them. This may\n                \
+  \        cause issue plotting the matrix if several parts of a\n               \
+  \         single chromosome are going to be deleted. In that\n                 \
+  \       case, one may consider using the mask option (Default:\n               \
+  \         keep).\n  --help, -h            show this help message and exit\n  --version\
+  \             show program's version number and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/hicexplorer:3.6--py_0

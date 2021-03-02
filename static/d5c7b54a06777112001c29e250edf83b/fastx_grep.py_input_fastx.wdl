@@ -1,0 +1,29 @@
+version 1.0
+
+task FastxGreppyInputFastx {
+  input {
+    String? n
+    String? o
+    String? i
+    String fast_x_grep_do_tpy
+  }
+  command <<<
+    fastx_grep_py input_fastx \
+      ~{fast_x_grep_do_tpy} \
+      ~{if defined(n) then ("-n " +  '"' + n + '"') else ""} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
+      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
+  >>>
+  runtime {
+    docker: "quay.io/biocontainers/wub:0.5.1--pyh3252c3a_0"
+  }
+  parameter_meta {
+    n: ""
+    o: ""
+    i: ""
+    fast_x_grep_do_tpy: ""
+  }
+  output {
+    File out_stdout = stdout()
+  }
+}

@@ -4,6 +4,9 @@ task Makeprofiledb {
   command <<<
     makeprofiledb
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

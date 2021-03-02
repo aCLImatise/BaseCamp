@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import String, File, Boolean, Int
+
+Snpsift_Filter_V0_1_0 = CommandToolBuilder(tool="SnpSift_filter", base_command=["SnpSift", "filter"], inputs=[ToolInput(tag="in_add_filter", input_type=String(optional=True), prefix="--addFilter", doc=InputDocumentation(doc=": Add a string to FILTER VCF field if 'expression' is true. Default: '' (none)")), ToolInput(tag="in_expr_file", input_type=File(optional=True), prefix="--exprFile", doc=InputDocumentation(doc=": Read expression from a file")), ToolInput(tag="in_file", input_type=File(optional=True), prefix="--file", doc=InputDocumentation(doc=": VCF input file. Default: STDIN")), ToolInput(tag="in_filter_id", input_type=String(optional=True), prefix="--filterId", doc=InputDocumentation(doc=": ID for this filter (##FILTER tag in header and FILTER VCF field). Default: 'SnpSift'")), ToolInput(tag="in_inverse", input_type=Boolean(optional=True), prefix="--inverse", doc=InputDocumentation(doc=": Inverse. Show lines that do not match filter expression")), ToolInput(tag="in_pass", input_type=Boolean(optional=True), prefix="--pass", doc=InputDocumentation(doc=": Use 'PASS' field instead of filtering out VCF entries")), ToolInput(tag="in_rm_filter", input_type=String(optional=True), prefix="--rmFilter", doc=InputDocumentation(doc=": Remove a string from FILTER VCF field if 'expression' is true (and 'str' is in the field). Default: '' (none)")), ToolInput(tag="in_set", input_type=File(optional=True), prefix="--set", doc=InputDocumentation(doc=": Create a SET using 'file'")), ToolInput(tag="in_err_missing", input_type=Boolean(optional=True), prefix="--errMissing", doc=InputDocumentation(doc=": Error is a field is missing. Default: false")), ToolInput(tag="in_format", input_type=Int(optional=True), prefix="--format", doc=InputDocumentation(doc=": SnpEff format version: {2, 3}. Default: Auto")), ToolInput(tag="in_galaxy", input_type=Boolean(optional=True), prefix="--galaxy", doc=InputDocumentation(doc=": Used from Galaxy (expressions have been sanitized).")), ToolInput(tag="in_jar", input_type=String(optional=True), prefix="-jar", doc=InputDocumentation(doc="")), ToolInput(tag="in_java", input_type=String(), position=0, doc=InputDocumentation(doc="")), ToolInput(tag="in_filter", input_type=String(), position=1, doc=InputDocumentation(doc=""))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Snpsift_Filter_V0_1_0().translate("wdl", allow_empty_container=True)
+

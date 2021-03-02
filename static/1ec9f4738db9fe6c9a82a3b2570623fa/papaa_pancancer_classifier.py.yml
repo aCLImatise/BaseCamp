@@ -1,0 +1,317 @@
+!Command
+command:
+- papaa_pancancer_classifier.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --genes
+  description: string of the genes to extract or genelist file
+  args: !SimpleFlagArg
+    name: GENES
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --diseases
+  description: "Comma sep string of TCGA disease acronyms.\ndiseases_list_fileIf no\
+    \ arguments are passed,\nfiltering will default to options given in\n--filter_count\
+    \ and --filter_prop."
+  args: !SimpleFlagArg
+    name: DISEASES
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --folds
+  description: Number of cross validation folds to perform
+  args: !SimpleFlagArg
+    name: FOLDS
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --drop
+  description: Decision to drop input genes from X matrix
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --copy_number
+  description: Supplement Y matrix with copy number events
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --filter_count
+  description: Min number of mutations in diseases to include
+  args: !SimpleFlagArg
+    name: FILTER_COUNT
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --filter_prop
+  description: Min proportion of positives to include disease
+  args: !SimpleFlagArg
+    name: FILTER_PROP
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --num_features
+  description: Number of MAD genes to include in classifier
+  args: !SimpleFlagArg
+    name: NUM_FEATURES
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --alphas
+  description: the alphas for parameter sweep
+  args: !SimpleFlagArg
+    name: ALPHAS
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --l1_ratios
+  description: the l1 ratios for parameter sweep
+  args: !SimpleFlagArg
+    name: L1_RATIOS
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --alt_genes
+  description: "string of the alt_genes to extract or alt_genelist\nfile to test performance"
+  args: !SimpleFlagArg
+    name: ALT_GENES
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --alt_diseases
+  description: The alternative diseases to test performance
+  args: !SimpleFlagArg
+    name: ALT_DISEASES
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --alt_filter_count
+  description: Min number of mutations in disease to include
+  args: !SimpleFlagArg
+    name: ALT_FILTER_COUNT
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --alt_filter_prop
+  description: Min proportion of positives to include disease
+  args: !SimpleFlagArg
+    name: ALT_FILTER_PROP
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --classifier_results
+  description: Location to save classifier outputs
+  args: !SimpleFlagArg
+    name: CLASSIFIER_RESULTS
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --remove_hyper
+  description: Remove hypermutated samples
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --keep_intermediate
+  description: Keep intermediate ROC values for plotting
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --x_matrix
+  description: Filename of features to use in model
+  args: !SimpleFlagArg
+    name: X_MATRIX
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --shuffled
+  description: Shuffle the input gene exprs matrix alongside
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --shuffled_before_training
+  description: Shuffle the gene exprs matrix before training
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --no_mutation
+  description: Remove mutation data from y matrix
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --drop_x_genes
+  description: "Comma separated list of genes to be dropped from X\nmatrix, x_genelist\
+    \ file"
+  args: !SimpleFlagArg
+    name: DROP_X_GENES
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --drop_expression
+  description: Decision to drop gene expression values from X
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --drop_covariates
+  description: Decision to drop covariate information from X
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --filename_mut
+  description: Filename of sample/gene mutations to use in model
+  args: !SimpleFlagArg
+    name: FILENAME_MUT
+- !Flag
+  optional: true
+  synonyms:
+  - --filename_mut_burden
+  description: Filename of sample mutation burden to use in model
+  args: !SimpleFlagArg
+    name: FILENAME_MUT_BURDEN
+- !Flag
+  optional: true
+  synonyms:
+  - --filename_sample
+  description: Filename of patient/samples to use in model
+  args: !SimpleFlagArg
+    name: FILENAME_SAMPLE
+- !Flag
+  optional: true
+  synonyms:
+  - --filename_copy_loss
+  description: Filename of copy number loss
+  args: !SimpleFlagArg
+    name: FILENAME_COPY_LOSS
+- !Flag
+  optional: true
+  synonyms:
+  - --filename_copy_gain
+  description: Filename of copy number gain
+  args: !SimpleFlagArg
+    name: FILENAME_COPY_GAIN
+- !Flag
+  optional: true
+  synonyms:
+  - --filename_cancer_gene_classification
+  description: Filename of cancer gene classification table
+  args: !SimpleFlagArg
+    name: FILENAME_CANCER_GENE_CLASSIFICATION
+- !Flag
+  optional: true
+  synonyms:
+  - -y
+  - --seed
+  description: option to set seed
+  args: !SimpleFlagArg
+    name: SEED
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Print version and quit
+  args: !EmptyFlagArg {}
+help_text: "usage: papaa_pancancer_classifier.py [-h] [--version] [-g GENES] [-t DISEASES]\n\
+  \                                     [-f FOLDS] [-d] [-u] [-c FILTER_COUNT]\n \
+  \                                    [-p FILTER_PROP] [-n NUM_FEATURES]\n      \
+  \                               [-a ALPHAS] [-l L1_RATIOS] [-b ALT_GENES]\n    \
+  \                                 [-s ALT_DISEASES] [-i ALT_FILTER_COUNT]\n    \
+  \                                 [-r ALT_FILTER_PROP]\n                       \
+  \              [-o CLASSIFIER_RESULTS] [-v] [-k]\n                             \
+  \        [-x X_MATRIX] [-e]\n                                     [--shuffled_before_training]\
+  \ [-m]\n                                     [--drop_x_genes DROP_X_GENES] [-q]\
+  \ [-j]\n                                     [--filename_mut FILENAME_MUT]\n   \
+  \                                  [--filename_mut_burden FILENAME_MUT_BURDEN]\n\
+  \                                     [--filename_sample FILENAME_SAMPLE]\n    \
+  \                                 [--filename_copy_loss FILENAME_COPY_LOSS]\n  \
+  \                                   [--filename_copy_gain FILENAME_COPY_GAIN]\n\
+  \                                     [--filename_cancer_gene_classification FILENAME_CANCER_GENE_CLASSIFICATION]\n\
+  \                                     [-y SEED]\n\noptional arguments:\n  -h, --help\
+  \            show this help message and exit\n  --version             Print version\
+  \ and quit\n  -g GENES, --genes GENES\n                        string of the genes\
+  \ to extract or genelist file\n  -t DISEASES, --diseases DISEASES\n            \
+  \            Comma sep string of TCGA disease acronyms.\n                      \
+  \  diseases_list_fileIf no arguments are passed,\n                        filtering\
+  \ will default to options given in\n                        --filter_count and --filter_prop.\n\
+  \  -f FOLDS, --folds FOLDS\n                        Number of cross validation folds\
+  \ to perform\n  -d, --drop            Decision to drop input genes from X matrix\n\
+  \  -u, --copy_number     Supplement Y matrix with copy number events\n  -c FILTER_COUNT,\
+  \ --filter_count FILTER_COUNT\n                        Min number of mutations in\
+  \ diseases to include\n  -p FILTER_PROP, --filter_prop FILTER_PROP\n           \
+  \             Min proportion of positives to include disease\n  -n NUM_FEATURES,\
+  \ --num_features NUM_FEATURES\n                        Number of MAD genes to include\
+  \ in classifier\n  -a ALPHAS, --alphas ALPHAS\n                        the alphas\
+  \ for parameter sweep\n  -l L1_RATIOS, --l1_ratios L1_RATIOS\n                 \
+  \       the l1 ratios for parameter sweep\n  -b ALT_GENES, --alt_genes ALT_GENES\n\
+  \                        string of the alt_genes to extract or alt_genelist\n  \
+  \                      file to test performance\n  -s ALT_DISEASES, --alt_diseases\
+  \ ALT_DISEASES\n                        The alternative diseases to test performance\n\
+  \  -i ALT_FILTER_COUNT, --alt_filter_count ALT_FILTER_COUNT\n                  \
+  \      Min number of mutations in disease to include\n  -r ALT_FILTER_PROP, --alt_filter_prop\
+  \ ALT_FILTER_PROP\n                        Min proportion of positives to include\
+  \ disease\n  -o CLASSIFIER_RESULTS, --classifier_results CLASSIFIER_RESULTS\n  \
+  \                      Location to save classifier outputs\n  -v, --remove_hyper\
+  \    Remove hypermutated samples\n  -k, --keep_intermediate\n                  \
+  \      Keep intermediate ROC values for plotting\n  -x X_MATRIX, --x_matrix X_MATRIX\n\
+  \                        Filename of features to use in model\n  -e, --shuffled\
+  \        Shuffle the input gene exprs matrix alongside\n  --shuffled_before_training\n\
+  \                        Shuffle the gene exprs matrix before training\n  -m, --no_mutation\
+  \     Remove mutation data from y matrix\n  --drop_x_genes DROP_X_GENES\n      \
+  \                  Comma separated list of genes to be dropped from X\n        \
+  \                matrix, x_genelist file\n  -q, --drop_expression\n            \
+  \            Decision to drop gene expression values from X\n  -j, --drop_covariates\n\
+  \                        Decision to drop covariate information from X\n  --filename_mut\
+  \ FILENAME_MUT\n                        Filename of sample/gene mutations to use\
+  \ in model\n  --filename_mut_burden FILENAME_MUT_BURDEN\n                      \
+  \  Filename of sample mutation burden to use in model\n  --filename_sample FILENAME_SAMPLE\n\
+  \                        Filename of patient/samples to use in model\n  --filename_copy_loss\
+  \ FILENAME_COPY_LOSS\n                        Filename of copy number loss\n  --filename_copy_gain\
+  \ FILENAME_COPY_GAIN\n                        Filename of copy number gain\n  --filename_cancer_gene_classification\
+  \ FILENAME_CANCER_GENE_CLASSIFICATION\n                        Filename of cancer\
+  \ gene classification table\n  -y SEED, --seed SEED  option to set seed\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/papaa:0.1.9--0

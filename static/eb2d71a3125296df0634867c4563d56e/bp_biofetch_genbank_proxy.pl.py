@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import String
+
+Bp_Biofetch_Genbank_Proxy_Pl_V0_1_0 = CommandToolBuilder(tool="bp_biofetch_genbank_proxy.pl", base_command=["bp_biofetch_genbank_proxy.pl"], inputs=[ToolInput(tag="in_db", input_type=String(), position=0, doc=InputDocumentation(doc="Option  : db")), ToolInput(tag="in__database_name", input_type=String(), position=1, doc=InputDocumentation(doc=": database name")), ToolInput(tag="in_var_2", input_type=String(), position=2, doc=InputDocumentation(doc=": required")), ToolInput(tag="in__dbgenpep_dbgenbank", input_type=String(), position=3, doc=InputDocumentation(doc=": db=genpep | db=genbank")), ToolInput(tag="in_var_4", input_type=String(), position=4, doc=InputDocumentation(doc=": string ")), ToolInput(tag="in_style", input_type=String(), position=0, doc=InputDocumentation(doc="Option  : style")), ToolInput(tag="in__html_tags", input_type=String(), position=1, doc=InputDocumentation(doc=": +/- HTML tags")), ToolInput(tag="in_var_7", input_type=String(), position=2, doc=InputDocumentation(doc=": required")), ToolInput(tag="in__styleraw_dbhtml", input_type=String(), position=3, doc=InputDocumentation(doc=": style=raw | db=html")), ToolInput(tag="in__enum_rawhtml", input_type=String(), position=4, doc=InputDocumentation(doc=": enum (raw|html)")), ToolInput(tag="in_format", input_type=String(), position=0, doc=InputDocumentation(doc="Option  : format")), ToolInput(tag="in_format_database_entries", input_type=String(), position=1, doc=InputDocumentation(doc=": format of the database entries returned")), ToolInput(tag="in__optional", input_type=String(), position=2, doc=InputDocumentation(doc=": optional")), ToolInput(tag="in__formatgenbank", input_type=String(), position=3, doc=InputDocumentation(doc=": format=genbank")), ToolInput(tag="in__enum", input_type=String(), position=4, doc=InputDocumentation(doc=": enum")), ToolInput(tag="in_id", input_type=String(), position=0, doc=InputDocumentation(doc="Option  : id")), ToolInput(tag="in_unique_database_identifiers", input_type=String(), position=1, doc=InputDocumentation(doc=": unique database identifier(s)")), ToolInput(tag="in_var_17", input_type=String(), position=2, doc=InputDocumentation(doc=": required")), ToolInput(tag="in__dbj_idjhsfos", input_type=String(), position=3, doc=InputDocumentation(doc=": db=J00231 | id=J00231+HSFOS")), ToolInput(tag="in_var_19", input_type=String(), position=4, doc=InputDocumentation(doc=": string "))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Bp_Biofetch_Genbank_Proxy_Pl_V0_1_0().translate("wdl", allow_empty_container=True)
+

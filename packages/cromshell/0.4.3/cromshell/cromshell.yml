@@ -1,0 +1,132 @@
+!Command
+command:
+- cromshell
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: included_wdl_zip_file
+  description: Zip file containing any WDL files included in the input WDL
+- !Positional
+  optional: false
+  position: 0
+  name: jobs.
+  description: 'Query workflow status:'
+- !Positional
+  optional: false
+  position: 0
+  name: email
+  description: Email address to which to send the notification.
+- !Positional
+  optional: false
+  position: 1
+  name: daemon-server
+  description: Server on which to run the notification daemon.
+- !Positional
+  optional: false
+  position: 0
+  name: ANYTHING_BUT_ZERO
+  description: FAILURE/ERROR
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: "Set the curl connect timeout to TIMEOUT seconds.\nAlso sets the curl\
+    \ max timeout to 2*TIMEOUT seconds.\nTIMEOUT must be an integer."
+  args: !SimpleFlagArg
+    name: TIMEOUT
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  description: "Wait for workflow to transition from 'Submitted' to some other status\n\
+    before cromshell exits"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: Enable pretty-printing.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  description: Expand sub-workflow information.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: Color the output by completion status.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  description: Check completion status of all unfinished jobs.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: If provided, will only remove jobs with the given STATUS from the local
+    list.
+  args: !SimpleFlagArg
+    name: STATUS
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Usage:    cromshell [-t TIMEOUT] SUB-COMMAND [options]\nRun and inspect\
+  \ workflows on a Cromwell server.\n\nCROMWELL_URL=\n\nIf no workflow-id is specified\
+  \ then the last submitted workflow-id is assumed.\nAlternatively, negative numbers\
+  \ can be used to refer to previous workflows.\n\n  example usage:\n      cromshell\
+  \ submit workflow.wdl inputs.json options.json dependencies.zip\n      cromshell\
+  \ status\n      cromshell -t 50 status\n      cromshell logs -2\n\nSupported Flags:\n\
+  \  -t TIMEOUT             Set the curl connect timeout to TIMEOUT seconds.\n   \
+  \                      Also sets the curl max timeout to 2*TIMEOUT seconds.\n  \
+  \                       TIMEOUT must be an integer.\n\nSupported Subcommands:\n\n\
+  \  Start/Stop workflows:\n   submit [-w] <wdl> <inputs_json> [options_json] [included_wdl_zip_file]\
+  \ Submit a new workflow\n        -w                     Wait for workflow to transition\
+  \ from 'Submitted' to some other status\n                               before cromshell\
+  \ exits\n        included_wdl_zip_file  Zip file containing any WDL files included\
+  \ in the input WDL\n\n   abort [workflow-id] [[workflow-id]...]                \
+  \            Abort a running workflow.\n\n  Workflow information:\n\n   alias workflow-id\
+  \ alias                                           Label the given workflow ID with\
+  \ the given alias.\n                                                           \
+  \          Aliases can be used in place of workflow IDs to reference\n         \
+  \                                                            jobs.\n\n  Query workflow\
+  \ status:\n   status [workflow-id] [[workflow-id]...]                          \
+  \ Check the status of a workflow.\n   metadata [workflow-id] [[workflow-id]...]\
+  \                         Get the full metadata of a workflow.\n   slim-metadata\
+  \ [workflow-id] [[workflow-id]...]                    Get a subset of the metadata\
+  \ from a workflow.\n   execution-status-count, counts [-p] [-x] [workflow-id] [[workflow-id]...]\
+  \ Get the summarized status of all jobs in the workflow.\n         -p          \
+  \     Enable pretty-printing.\n         -x               Expand sub-workflow information.\n\
+  \   timing [workflow-id] [[workflow-id]...]                           Open the timing\
+  \ diagram in a browser.\n\n  Logs:\n   logs [workflow-id] [[workflow-id]...]   \
+  \                          List the log files produced by a workflow.\n   fetch-logs\
+  \ [workflow-id] [[workflow-id]...]                       Download all logs produced\
+  \ by a workflow.\n\n  Job Outputs:\n   list-outputs [workflow-id] [[workflow-id]...]\
+  \                     List all output files produced by a workflow.\n   fetch-all\
+  \ [workflow-id] [[workflow-id]...]                        Download all output files\
+  \ produced by a workflow.\n\n  Get email notification on job completion:\n   notify\
+  \ [workflow-id] [daemon-server] email [cromwell-server]\n        email         \
+  \    Email address to which to send the notification.\n        daemon-server   \
+  \  Server on which to run the notification daemon.\n\n  Display a list jobs submitted\
+  \ through cromshell:\n   list [-c] [-u]                                        \
+  \    \n         -c               Color the output by completion status.\n      \
+  \   -u               Check completion status of all unfinished jobs.\n\n  Clean\
+  \ up local cached list:\n   cleanup [-s STATUS]    Remove completed jobs from local\
+  \ list.\n                          Will remove all jobs from the local list that\
+  \ are in a completed state,\n                          where a completed state is\
+  \ one of: Succeeded,Failed,Aborted\n         -s STATUS        If provided, will\
+  \ only remove jobs with the given STATUS from the local list.\n\nReturn values:\n\
+  \  0                  SUCCESS\n  ANYTHING_BUT_ZERO  FAILURE/ERROR\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/cromshell:0.4.3--0

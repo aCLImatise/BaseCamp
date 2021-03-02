@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import String
+
+Survivor_V0_1_0 = CommandToolBuilder(tool="SURVIVOR", base_command=["SURVIVOR"], inputs=[ToolInput(tag="in_sims_v", input_type=String(), position=0, doc=InputDocumentation(doc="Simulates SVs and SNPs on a reference genome.")), ToolInput(tag="in_scan_reads", input_type=String(), position=1, doc=InputDocumentation(doc="Obtain error profiles form mapped reads for simulation.")), ToolInput(tag="in_sim_reads", input_type=String(), position=2, doc=InputDocumentation(doc="Simulates long reads (Pacio or ONT).")), ToolInput(tag="in_eval", input_type=String(), position=3, doc=InputDocumentation(doc="Evaluates a VCF file after SV calling over simulated data.")), ToolInput(tag="in_merge", input_type=String(), position=0, doc=InputDocumentation(doc="Compare or merge VCF files to generate a consensus or multi sample VCF files.")), ToolInput(tag="in_filter", input_type=String(), position=0, doc=InputDocumentation(doc="Filter a vcf file based on size and/or regions to ignore")), ToolInput(tag="in_stats", input_type=String(), position=1, doc=InputDocumentation(doc="Report multipe stats over a VCF file")), ToolInput(tag="in_comp_mummer", input_type=String(), position=2, doc=InputDocumentation(doc="Annotates a VCF file with the breakpoints found with MUMMer (Show-diff).")), ToolInput(tag="in_bin_cov", input_type=String(), position=0, doc=InputDocumentation(doc="Bins coverage vector to a bed file to filter SVs in low MQ regions")), ToolInput(tag="in_vcf_to_bed", input_type=String(), position=1, doc=InputDocumentation(doc="Converts a VCF file to a bed file")), ToolInput(tag="in_bed_to_vcf", input_type=String(), position=2, doc=InputDocumentation(doc="Converts a bed file to a VCF file ")), ToolInput(tag="in_smap_to_vcf", input_type=String(), position=3, doc=InputDocumentation(doc="Converts the smap file to a VCF file (beta version)")), ToolInput(tag="in_bed_pe_to_vcf", input_type=String(), position=4, doc=InputDocumentation(doc="Converts a bedpe file ot a VCF file (beta version)")), ToolInput(tag="in_hap_cut_to_vcf", input_type=String(), position=5, doc=InputDocumentation(doc="Converts the Hapcut2 final file to a VCF file using the original SNP file provided to Hapcut2")), ToolInput(tag="in_convert_assembly_tics", input_type=String(), position=6, doc=InputDocumentation(doc="Converts Assemblytics to a VCF file"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Survivor_V0_1_0().translate("wdl", allow_empty_container=True)
+

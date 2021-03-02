@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import String, Boolean, File, Int
+
+Fastadigest_Py_V0_1_0 = CommandToolBuilder(tool="fastadigest.py", base_command=["fastadigest.py"], inputs=[ToolInput(tag="in_threads_to_run", input_type=String(optional=True), prefix="-p", doc=InputDocumentation(doc="Threads to run")), ToolInput(tag="in_fasta_file_operate", input_type=Boolean(optional=True), prefix="-f", doc=InputDocumentation(doc="[FASTA], --fasta [FASTA]\nThe fasta file to operate on.")), ToolInput(tag="in_type", input_type=String(optional=True), prefix="--type", doc=InputDocumentation(doc="The type of fasta file (default protein).")), ToolInput(tag="in_frame", input_type=String(optional=True), prefix="--frame", doc=InputDocumentation(doc="If using a nucleotide file, translate in how many\nframes?")), ToolInput(tag="in_genome", input_type=Boolean(optional=True), prefix="--genome", doc=InputDocumentation(doc="Are we translating a genome? This will keep chromosome\npositions in the header.")), ToolInput(tag="in_file_write_results", input_type=File(optional=True), prefix="-o", doc=InputDocumentation(doc="[OUT], --out [OUT]\nThe file to write results to. Leave blank for stdout,")), ToolInput(tag="in_enzyme", input_type=String(optional=True), prefix="--enzyme", doc=InputDocumentation(doc="[{trypsin,lysc,none,argc,gluc,aspn,V8} ...]\nThe enzyme to cleave with.")), ToolInput(tag="in_enzyme_pattern", input_type=String(optional=True), prefix="--enzyme-pattern", doc=InputDocumentation(doc="A regex cleavage pattern such as [KR]|{P} to cleave\nproteins with.")), ToolInput(tag="in_min", input_type=Int(optional=True), prefix="--min", doc=InputDocumentation(doc="Minimum cleavage length")), ToolInput(tag="in_max", input_type=Int(optional=True), prefix="--max", doc=InputDocumentation(doc="Maximum cleavage length")), ToolInput(tag="in_unique", input_type=Boolean(optional=True), prefix="--unique", doc=InputDocumentation(doc="Only return unique peptides per cleavage")), ToolInput(tag="in_fast_a", input_type=String(optional=True), position=0, doc=InputDocumentation(doc=""))], outputs=[ToolOutput(tag="out_file_write_results", output_type=File(optional=True), selector=InputSelector(input_to_select="in_file_write_results", type_hint=File()), doc=OutputDocumentation(doc="[OUT], --out [OUT]\nThe file to write results to. Leave blank for stdout,"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Fastadigest_Py_V0_1_0().translate("wdl", allow_empty_container=True)
+

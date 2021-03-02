@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, File, String
+
+Rsat_Add_Gene_Info_V0_1_0 = CommandToolBuilder(tool="rsat_add_gene_info", base_command=["rsat", "add-gene-info"], inputs=[ToolInput(tag="in_help", input_type=Boolean(optional=True), prefix="-help", doc=InputDocumentation(doc="display options")), ToolInput(tag="in_verbose", input_type=Boolean(optional=True), prefix="-v", doc=InputDocumentation(doc="verbose")), ToolInput(tag="in_col", input_type=Boolean(optional=True), prefix="-col", doc=InputDocumentation(doc="column containing gene IDs.")), ToolInput(tag="in_specified_standard_input", input_type=File(optional=True), prefix="-i", doc=InputDocumentation(doc="if not specified, the standard input is used.\nThis allows to place the command within a pipe.")), ToolInput(tag="in_specified_standard_output", input_type=File(optional=True), prefix="-o", doc=InputDocumentation(doc="if not specified, the standard output is used.\nThis allows to place the command within a pipe.")), ToolInput(tag="in_info", input_type=String(optional=True), prefix="-info", doc=InputDocumentation(doc="information type (supported: id,ctg,strand,left,right,name,descr,names,upstr_neighb_name,upstr_neighb_id,upstr_limit,upstr_size,downstr_neighb_name,downstr_neighb_id,downstr_limit,downstr_size,right_neighb_name,right_neighb_id,right_limit,right_size,left_neighb_name,left_neighb_id,left_limit,left_size)")), ToolInput(tag="in_before", input_type=String(optional=True), prefix="-before", doc=InputDocumentation(doc="the information before the input line (by default,\nthe info is added at the end of each input line).")), ToolInput(tag="in_null", input_type=String(optional=True), prefix="-null", doc=InputDocumentation(doc="to display for undefined values (default: <NULL>).")), ToolInput(tag="in_feat_type", input_type=Boolean(optional=True), prefix="-feattype", doc=InputDocumentation(doc="Feature type.\nSupported: gene,mRNA,tRNA,rRNA,scRNA,misc_RNA,CDS,start_codon,stop_codon,exon")), ToolInput(tag="in_add_gene_info", input_type=String(), position=0, doc=InputDocumentation(doc="DESCRIPTION"))], outputs=[ToolOutput(tag="out_specified_standard_output", output_type=File(optional=True), selector=InputSelector(input_to_select="in_specified_standard_output", type_hint=File()), doc=OutputDocumentation(doc="if not specified, the standard output is used.\nThis allows to place the command within a pipe."))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Rsat_Add_Gene_Info_V0_1_0().translate("wdl", allow_empty_container=True)
+

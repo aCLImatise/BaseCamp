@@ -1,0 +1,100 @@
+!Command
+command:
+- CompareDropSeqAlignments
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: times.
+  description: CONTIG_REPORT=File            Output file that maps the contig the
+    read uniquely mapped to in INPUT_1, and the contig
+- !Positional
+  optional: false
+  position: 0
+  name: null.
+  description: READ_REPORT=File              Output each read that disagrees on mapping
+    by contig/position.  Emits the read name,
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: (default 4g)
+  args: !SimpleFlagArg
+    name: jvm_heap_size
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: final command line before executing
+  args: !SimpleFlagArg
+    name: echo
+- !Flag
+  optional: true
+  synonyms:
+  - --stdhelp
+  - -H
+  description: "Displays options specific to this tool AND options common to all Picard\
+    \ command line\ntools."
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: Displays options specific to this tool.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Displays program version.
+  args: !EmptyFlagArg {}
+help_text: "USAGE: /usr/local/bin/CompareDropSeqAlignments [-m <jvm_heap_size>] [-v]\
+  \ program args...\n       -m <jvm_heap_size> (default 4g)\n       -v echo final\
+  \ command line before executing\n\nProgram options:\nUSAGE: CompareDropSeqAlignments\
+  \ [options]\n\nCompare two dropseq alignments across different sets of annotations\
+  \ or genome builds to see what genes present in the\noriginal set are lost in the\
+  \ second set.  The input data should be the same set of data aligned to different\
+  \ references,\non either the same genome build or different builds.  If the second\
+  \ input is aligned with secondary reads emitted during\nalignment,all contigs for\
+  \ a mapping for non-unique contigs will be listed.  This can be helpful to detect\
+  \ if additional\ncontigs [such as alternative haplotypes] create mapping problems\
+  \ that make some subset of genes invisible to the dropseq\ntoolkit.\nVersion: 2.4.0(3d2b3d8_1600201514)\n\
+  \n\nOptions:\n\n--help\n-h                            Displays options specific\
+  \ to this tool.\n\n--stdhelp\n-H                            Displays options specific\
+  \ to this tool AND options common to all Picard command line\n                 \
+  \             tools.\n\n--version                     Displays program version.\n\
+  \nINPUT_1=File                  The input SAM or BAM file to analyze.  If query\
+  \ name sorted this will save time, but is\n                              not required.\
+  \  Default value: null. This option may be specified 0 or more times. \n\nINPUT_2=File\
+  \                  The comparison input SAM or BAM file to analyze.  If query name\
+  \ sorted this will save\n                              time, but is not required.\
+  \  Default value: null. This option may be specified 0 or more\n               \
+  \               times. \n\nCONTIG_REPORT=File            Output file that maps the\
+  \ contig the read uniquely mapped to in INPUT_1, and the contig\n              \
+  \                the read mapped to in INPUT_2, with reads partitioned into groups\
+  \ that did/did not\n                              remained uniquely mapped.  This\
+  \ supports zipped formats like gz and bz2.  Default value:\n                   \
+  \           null. \n\nREAD_REPORT=File              Output each read that disagrees\
+  \ on mapping by contig/position.  Emits the read name,\n                       \
+  \       location, and map quality of the read in both alignments.  Also emits the\
+  \ TAG_NAME and\n                              values for those tags for the read\
+  \ in each alignment.  Default value: null. \n\nTAG_NAMES=String              A list\
+  \ of 1 or more tags who's values can be reported for read in the READ_REPORT. \n\
+  \                              Default value: null. This option may be specified\
+  \ 0 or more times. \n\nREAD_QUALITY=Integer          The map quality for a read\
+  \ to be considered uniquely mapped.  Default value: 10. This\n                 \
+  \             option can be set to 'null' to clear the default value. \n\nTRIM_CONTIG_STRING=String\
+  \     Trim this string from the contig names of both BAMs to make contig names comparable.\
+  \  This\n                              is useful when one alignment strategy calls\
+  \ the first contig 'chr1' and the second\n                              strategy\
+  \ '1'  Default value: . This option can be set to 'null' to clear the default\n\
+  \                              value. \n\n"
+generated_using:
+- -h
+docker_image: quay.io/biocontainers/dropseq_tools:2.4.0--0

@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import String, Boolean, File
+
+Estorient_V0_1_0 = CommandToolBuilder(tool="estOrient", base_command=["estOrient"], inputs=[ToolInput(tag="in_chrom", input_type=String(optional=True), prefix="-chrom", doc=InputDocumentation(doc="- process this chromosome, maybe repeated")), ToolInput(tag="in_keep_disoriented", input_type=Boolean(optional=True), prefix="-keepDisoriented", doc=InputDocumentation(doc="- don't drop ESTs where orientation can't\nbe determined.")), ToolInput(tag="in_disoriented", input_type=File(optional=True), prefix="-disoriented", doc=InputDocumentation(doc="- output ESTs that where orientation can't\nbe determined to this file.")), ToolInput(tag="in_incl_ver", input_type=Boolean(optional=True), prefix="-inclVer", doc=InputDocumentation(doc="- add NCBI version number to accession if not already")), ToolInput(tag="in_est_orient_info", input_type=File(optional=True), prefix="-estOrientInfo", doc=InputDocumentation(doc="- instead of getting the orientation information\nfrom the estOrientInfo table, load it from this file.  This data is the\noutput of polyInfo command.  If this option is specified, the direction\nwill not be looked up in the gbCdnaInfo table and db can be `no'.")), ToolInput(tag="in_info", input_type=File(optional=True), prefix="-info", doc=InputDocumentation(doc="- write information about each EST to this tab\nseparated file\nqName tName tStart tEnd origStrand newStrand orient\nwhere orient is < 0 if PSL was reverse, > 0 if it was left unchanged\nand 0 if the orientation couldn't be determined (and was left\nunchanged).\n")), ToolInput(tag="in_present_dot", input_type=String(), position=0, doc=InputDocumentation(doc="-fileInput - estTable is a psl file"))], outputs=[ToolOutput(tag="out_disoriented", output_type=File(optional=True), selector=InputSelector(input_to_select="in_disoriented", type_hint=File()), doc=OutputDocumentation(doc="- output ESTs that where orientation can't\nbe determined to this file.")), ToolOutput(tag="out_est_orient_info", output_type=File(optional=True), selector=InputSelector(input_to_select="in_est_orient_info", type_hint=File()), doc=OutputDocumentation(doc="- instead of getting the orientation information\nfrom the estOrientInfo table, load it from this file.  This data is the\noutput of polyInfo command.  If this option is specified, the direction\nwill not be looked up in the gbCdnaInfo table and db can be `no'."))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Estorient_V0_1_0().translate("wdl", allow_empty_container=True)
+

@@ -24,6 +24,9 @@ task SamtoolsBamshuf {
       ~{if defined(c) then ("-c " +  '"' + c + '"') else ""} \
       ~{if (ou) then "-Ou" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     output_to_stdout: "output to stdout"
     uncompressed_bam_output: "uncompressed BAM output"

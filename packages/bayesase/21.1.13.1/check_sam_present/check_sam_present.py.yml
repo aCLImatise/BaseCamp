@@ -1,0 +1,76 @@
+!Command
+command:
+- check_sam_present.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -fq
+  - --fq
+  description: Name of the fq file]
+  args: !SimpleFlagArg
+    name: FQ
+- !Flag
+  optional: true
+  synonyms:
+  - -alnType
+  - --alnType
+  description: "Input SE for single end or PE for paired end\nalignments [Default\
+    \ = SE]"
+  args: !ChoiceFlagArg
+    choices: !!set
+      PE:
+      SE:
+- !Flag
+  optional: true
+  synonyms:
+  - -s1
+  - --sam1
+  description: "sam file used in sam compare script, aligned to G1\n[Required]"
+  args: !SimpleFlagArg
+    name: SAM1
+- !Flag
+  optional: true
+  synonyms:
+  - -s2
+  - --sam2
+  description: "sam file used in sam compare script, aligned to G2\n[Required]"
+  args: !SimpleFlagArg
+    name: SAM2
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out
+  description: "Output file containing info on whether each fq file\nhas 2 sam files\
+    \ [Required]\n"
+  args: !SimpleFlagArg
+    name: OUTFILE
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: check_sam_present.py [-h] -fq FQ [-alnType {SE,PE}] -s1 SAM1 -s2\
+  \ SAM2\n                            -o OUTFILE\n\nCheck number of reads per FQ file\
+  \ into and out of sam compare\n\noptional arguments:\n  -h, --help            show\
+  \ this help message and exit\n  -fq FQ, --fq FQ       Name of the fq file]\n  -alnType\
+  \ {SE,PE}, --alnType {SE,PE}\n                        Input SE for single end or\
+  \ PE for paired end\n                        alignments [Default = SE]\n  -s1 SAM1,\
+  \ --sam1 SAM1\n                        sam file used in sam compare script, aligned\
+  \ to G1\n                        [Required]\n  -s2 SAM2, --sam2 SAM2\n         \
+  \               sam file used in sam compare script, aligned to G2\n           \
+  \             [Required]\n  -o OUTFILE, --out OUTFILE\n                        Output\
+  \ file containing info on whether each fq file\n                        has 2 sam\
+  \ files [Required]\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bayesase:21.1.13.1--py_0

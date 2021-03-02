@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, String
+
+Drive_Index_V0_1_0 = CommandToolBuilder(tool="drive_index", base_command=["drive", "index"], inputs=[ToolInput(tag="in_all_ops", input_type=Boolean(optional=True), prefix="-all-ops", doc=InputDocumentation(doc="perform all the index related operations")), ToolInput(tag="in_exclude_ops", input_type=String(optional=True), prefix="-exclude-ops", doc=InputDocumentation(doc="exclude operations")), ToolInput(tag="in_force", input_type=Boolean(optional=True), prefix="-force", doc=InputDocumentation(doc="forces a fetch even if no changes present")), ToolInput(tag="in_id", input_type=Boolean(optional=True), prefix="-id", doc=InputDocumentation(doc="fetch by id instead of path")), ToolInput(tag="in_ignore_checksum", input_type=Boolean(optional=True), prefix="-ignore-checksum", doc=InputDocumentation(doc="avoids computation of checksums as a final check.")), ToolInput(tag="in_ignore_conflict", input_type=Boolean(optional=True), prefix="-ignore-conflict", doc=InputDocumentation(doc="turns off the conflict resolution safety (default true)")), ToolInput(tag="in_ignore_name_clashes", input_type=Boolean(optional=True), prefix="-ignore-name-clashes", doc=InputDocumentation(doc="ignore name clashes (default true)")), ToolInput(tag="in_matches", input_type=Boolean(optional=True), prefix="-matches", doc=InputDocumentation(doc="search by prefix")), ToolInput(tag="in_no_clobber", input_type=Boolean(optional=True), prefix="-no-clobber", doc=InputDocumentation(doc="prevents overwriting of old content")), ToolInput(tag="in_no_prompt", input_type=Boolean(optional=True), prefix="-no-prompt", doc=InputDocumentation(doc="shows no prompt before applying the fetch action")), ToolInput(tag="in_prune", input_type=Boolean(optional=True), prefix="-prune", doc=InputDocumentation(doc="remove stale indices")), ToolInput(tag="in_quiet", input_type=Boolean(optional=True), prefix="-quiet", doc=InputDocumentation(doc="if set, do not log anything but errors")), ToolInput(tag="in_recursive", input_type=Boolean(optional=True), prefix="-recursive", doc=InputDocumentation(doc="fetch recursively for children (default true)")), ToolInput(tag="in_skip_mime", input_type=String(optional=True), prefix="-skip-mime", doc=InputDocumentation(doc="skip elements with mimeTypes derived from these extensions\n"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Drive_Index_V0_1_0().translate("wdl", allow_empty_container=True)
+

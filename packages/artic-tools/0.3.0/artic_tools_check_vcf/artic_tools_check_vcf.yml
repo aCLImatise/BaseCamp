@@ -1,0 +1,63 @@
+!Command
+command:
+- artic-tools
+- check_vcf
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: vcf
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: scheme
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --summaryOut
+  description: "REQUIRED\nSummary of variant checks will be written here (TSV format)"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --vcfOut
+  description: If provided, will write variants that pass checks to this file
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --minQual
+  description: Minimum quality score to keep a variant (default = 10)
+  args: !SimpleFlagArg
+    name: FLOAT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Print this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Check a VCF file based on primer scheme info and user-defined cut offs\n\
+  Usage: artic-tools check_vcf [OPTIONS] vcf scheme\n\nPositionals:\n  vcf TEXT:FILE\
+  \ REQUIRED      The input VCF file to filter\n  scheme TEXT:FILE REQUIRED   The\
+  \ primer scheme to use\n\nOptions:\n  -h,--help                   Print this help\
+  \ message and exit\n  -o,--summaryOut TEXT REQUIRED\n                          \
+  \    Summary of variant checks will be written here (TSV format)\n  --vcfOut TEXT\
+  \               If provided, will write variants that pass checks to this file\n\
+  \  -q,--minQual FLOAT          Minimum quality score to keep a variant (default\
+  \ = 10)\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/artic-tools:0.3.0--hee4d88c_0

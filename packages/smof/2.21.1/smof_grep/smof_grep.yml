@@ -1,0 +1,258 @@
+!Command
+command:
+- smof
+- grep
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: PATTERN
+  description: pattern to match
+- !Positional
+  optional: false
+  position: 1
+  name: INPUT
+  description: input fasta sequence (default = stdin)
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --match-sequence
+  description: match sequence rather than header
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --file
+  description: obtain patterns from FILE, one per line
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  - --files-without-match
+  description: print names files with no matches
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --files-with-matches
+  description: print names input files with matches
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --wrap
+  description: a regular expression to capture patterns
+  args: !SimpleFlagArg
+    name: REG
+- !Flag
+  optional: true
+  synonyms:
+  - -P
+  - --perl-regexp
+  description: treat patterns as perl regular expressions
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -G
+  - --ambiguous-nucl
+  description: parse extended nucleotide alphabet
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -I
+  - --case-sensitive
+  description: DO NOT ignore case distinctions (ignore by default)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --invert-match
+  description: print non-matching entries
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --only-matching
+  description: show only the part that matches
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -B
+  - --before-context
+  description: Include N characters before match
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -A
+  - --after-context
+  description: Include N characters after match
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -C
+  - --context
+  description: Include N characters before and after match
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --count
+  description: print number of entries with matches
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --count-matches
+  description: print number of non-overlapping matches
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --line-regexp
+  description: force PATTERN to match the whole text (regex allowed)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -X
+  - --exact
+  description: force PATTERN to literally equal the text (fast)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --gapped
+  description: match across gaps when searching aligned sequences
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --both-strands
+  description: search both strands
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reverse-only
+  description: only search the reverse strand
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -y
+  - --no-color
+  description: do not print in color
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Y
+  - --force-color
+  description: print in color even to non-tty (DANGEROUS)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --preserve-color
+  description: Preserve incoming color
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --color
+  description: Choose a highlight color
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - --gff
+  description: output matches in gff format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gff-type
+  description: name of searched feature
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - --fastain
+  description: Search for exact sequence matches against FASTA
+  args: !SimpleFlagArg
+    name: FASTA
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: <fastafile> | smof grep <options>\n\nSmof grep is based on GNU\
+  \ grep but operates on fasta entries.\nIt allows you to extract entries where either\
+  \ the header or the\nsequence match the search term. For sequence searches, it can\n\
+  produce GFF formatted output, which specifies the location of\neach match.\n\nThe\
+  \ --wrap option limits search space to expressions captured\nby a Perl regular expression.\
+  \ This, coupled with the --file\noption, allows thousands of sequences to be rapidly\
+  \ extracted\nbased on terms from a file.\n\nSmof grep can also take a fasta file\
+  \ as a search term input\n(--fastain) and return sequences containing exact matches\
+  \ to\nthe sequences in the search fasta file. See the documentation\nfor examples.\n\
+  \npositional arguments:\n  PATTERN               pattern to match\n  INPUT     \
+  \            input fasta sequence (default = stdin)\n\noptional arguments:\n  -h,\
+  \ --help            show this help message and exit\n  -q, --match-sequence  match\
+  \ sequence rather than header\n  -f FILE, --file FILE  obtain patterns from FILE,\
+  \ one per line\n  -L, --files-without-match\n                        print names\
+  \ files with no matches\n  -l, --files-with-matches\n                        print\
+  \ names input files with matches\n  -w REG, --wrap REG    a regular expression to\
+  \ capture patterns\n  -P, --perl-regexp     treat patterns as perl regular expressions\n\
+  \  -G, --ambiguous-nucl  parse extended nucleotide alphabet\n  -I, --case-sensitive\
+  \  DO NOT ignore case distinctions (ignore by default)\n  -v, --invert-match   \
+  \ print non-matching entries\n  -o, --only-matching   show only the part that matches\n\
+  \  -B N, --before-context N\n                        Include N characters before\
+  \ match\n  -A N, --after-context N\n                        Include N characters\
+  \ after match\n  -C N, --context N     Include N characters before and after match\n\
+  \  -c, --count           print number of entries with matches\n  -m, --count-matches\
+  \   print number of non-overlapping matches\n  -x, --line-regexp     force PATTERN\
+  \ to match the whole text (regex allowed)\n  -X, --exact           force PATTERN\
+  \ to literally equal the text (fast)\n  -g, --gapped          match across gaps\
+  \ when searching aligned sequences\n  -b, --both-strands    search both strands\n\
+  \  -r, --reverse-only    only search the reverse strand\n  -y, --no-color      \
+  \  do not print in color\n  -Y, --force-color     print in color even to non-tty\
+  \ (DANGEROUS)\n  -S, --preserve-color  Preserve incoming color\n  --color STR  \
+  \         Choose a highlight color\n  --gff                 output matches in gff\
+  \ format\n  --gff-type STR        name of searched feature\n  --fastain FASTA  \
+  \     Search for exact sequence matches against FASTA\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/smof:2.21.1--py_0

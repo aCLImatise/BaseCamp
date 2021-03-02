@@ -1,0 +1,157 @@
+!Command
+command:
+- anvi-script-compute-ani-for-fasta
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: fasta
+  description: '🍕 Can provide: '
+- !Positional
+  optional: false
+  position: 1
+  name: genome-similarity
+  description: '🍺 More on `anvi-script-compute-ani-for-fasta`:'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --fasta-file
+  description: 'A FASTA-formatted input file (default: None)'
+  args: !SimpleFlagArg
+    name: FASTA
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-dir
+  description: 'Directory path for output files (default: None)'
+  args: !SimpleFlagArg
+    name: DIR_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --pan-db
+  description: "Anvi'o pan database (default: None)"
+  args: !SimpleFlagArg
+    name: PAN_DB
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --num-threads
+  description: "Maximum number of threads to use for multithreading\nwhenever possible.\
+    \ Very conservatively, the default is\n1. It is a good idea to not exceed the\
+    \ number of CPUs\n/ cores on your system. Plus, please be careful with\nthis option\
+    \ if you are running your commands on a SGE\n--if you are clusterizing your runs,\
+    \ and asking for\nmultiple threads to use, you may deplete your\nresources very\
+    \ fast. (default: 1)"
+  args: !SimpleFlagArg
+    name: NUM_THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - --log-file
+  description: "File path to store debug/output messages. (default:\nNone)"
+  args: !SimpleFlagArg
+    name: FILE_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --method
+  description: "Method for pyANI. The default is ANIb. You must have\nthe necessary\
+    \ binary in path for whichever method you\nchoose. According to the pyANI help\
+    \ for v0.2.7 at\nhttps://github.com/widdowquinn/pyani, the method\n'ANIm' uses\
+    \ MUMmer (NUCmer) to align the input\nsequences. 'ANIb' uses BLASTN+ to align\
+    \ 1020nt\nfragments of the input sequences. 'ANIblastall': uses\nthe legacy BLASTN\
+    \ to align 1020nt fragments Finally,\n'TETRA': calculates tetranucleotide frequencies\
+    \ of\neach input sequence"
+  args: !ChoiceFlagArg
+    choices: !!set
+      ANIblastall:
+      ANIb:
+      TETRA:
+      ANIm:
+- !Flag
+  optional: true
+  synonyms:
+  - --distance
+  description: "The distance metric for the hierarchical clustering.\nThe default\
+    \ is \"euclidean\"."
+  args: !SimpleFlagArg
+    name: DISTANCE_METRIC
+- !Flag
+  optional: true
+  synonyms:
+  - --linkage
+  description: "The linkage method for the hierarchical clustering.\nThe default is\
+    \ \"ward\"."
+  args: !SimpleFlagArg
+    name: LINKAGE_METHOD
+- !Flag
+  optional: true
+  synonyms:
+  - --just-do-it
+  description: "Don't bother me with questions or warnings, just do\nit. (default:\
+    \ False)"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: anvi-script-compute-ani-for-fasta [-h] -f FASTA -o DIR_PATH [-p\
+  \ PAN_DB]\n                                         [-T NUM_THREADS]\n         \
+  \                                [--log-file FILE_PATH]\n                      \
+  \                   [--method {ANIm,ANIb,ANIblastall,TETRA}]\n                 \
+  \                        [--distance DISTANCE_METRIC]\n                        \
+  \                 [--linkage LINKAGE_METHOD]\n                                 \
+  \        [--just-do-it]\n\noptional arguments:\n  -h, --help            show this\
+  \ help message and exit\n  -f FASTA, --fasta-file FASTA\n                      \
+  \  A FASTA-formatted input file (default: None)\n  -o DIR_PATH, --output-dir DIR_PATH\n\
+  \                        Directory path for output files (default: None)\n  -p PAN_DB,\
+  \ --pan-db PAN_DB\n                        Anvi'o pan database (default: None)\n\
+  \  -T NUM_THREADS, --num-threads NUM_THREADS\n                        Maximum number\
+  \ of threads to use for multithreading\n                        whenever possible.\
+  \ Very conservatively, the default is\n                        1. It is a good idea\
+  \ to not exceed the number of CPUs\n                        / cores on your system.\
+  \ Plus, please be careful with\n                        this option if you are running\
+  \ your commands on a SGE\n                        --if you are clusterizing your\
+  \ runs, and asking for\n                        multiple threads to use, you may\
+  \ deplete your\n                        resources very fast. (default: 1)\n  --log-file\
+  \ FILE_PATH  File path to store debug/output messages. (default:\n             \
+  \           None)\n  --method {ANIm,ANIb,ANIblastall,TETRA}\n                  \
+  \      Method for pyANI. The default is ANIb. You must have\n                  \
+  \      the necessary binary in path for whichever method you\n                 \
+  \       choose. According to the pyANI help for v0.2.7 at\n                    \
+  \    https://github.com/widdowquinn/pyani, the method\n                        'ANIm'\
+  \ uses MUMmer (NUCmer) to align the input\n                        sequences. 'ANIb'\
+  \ uses BLASTN+ to align 1020nt\n                        fragments of the input sequences.\
+  \ 'ANIblastall': uses\n                        the legacy BLASTN to align 1020nt\
+  \ fragments Finally,\n                        'TETRA': calculates tetranucleotide\
+  \ frequencies of\n                        each input sequence\n  --distance DISTANCE_METRIC\n\
+  \                        The distance metric for the hierarchical clustering.\n\
+  \                        The default is \"euclidean\".\n  --linkage LINKAGE_METHOD\n\
+  \                        The linkage method for the hierarchical clustering.\n \
+  \                       The default is \"ward\".\n  --just-do-it          Don't\
+  \ bother me with questions or warnings, just do\n                        it. (default:\
+  \ False)\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\
+  \n\U0001F525 Program description:\n\n   Run ANI between contigs in a single FASTA\
+  \ file\n\n\U0001F9C0 Can consume: \n\n   fasta\n   \n\U0001F355 Can provide: \n\n\
+  \   genome-similarity\n   \n\U0001F37A More on `anvi-script-compute-ani-for-fasta`:\n\
+  \n   https://merenlab.org/software/anvio/help/7/programs/anvi-script-compute-ani-for-fasta\n\
+  \n\U0001F37B All anvi'o programs and artifacts:\n\n   https://merenlab.org/software/anvio/help/7\n\
+  \n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\
+  \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/anvio-minimal:7--py_0

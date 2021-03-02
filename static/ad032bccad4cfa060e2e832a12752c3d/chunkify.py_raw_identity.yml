@@ -1,0 +1,161 @@
+!Command
+command:
+- chunkify.py
+- raw_identity
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: input_folder
+  description: Directory containing single-read fast5 files
+- !Positional
+  optional: false
+  position: 1
+  name: output
+  description: Output HDF5 file
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --alphabet
+  description: "Alphabet of the sequences (default: b'ACGT')"
+  args: !SimpleFlagArg
+    name: ALPHABET
+- !Flag
+  optional: true
+  synonyms:
+  - --input_strand_list
+  description: 'Strand summary file containing subset (default: None)'
+  args: !SimpleFlagArg
+    name: INPUT_STRAND_LIST
+- !Flag
+  optional: true
+  synonyms:
+  - --jobs
+  description: "Number of threads to use when processing data\n(default: 1)"
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --kmer_len
+  description: 'Length of kmer to estimate (default: 5)'
+  args: !SimpleFlagArg
+    name: k
+- !Flag
+  optional: true
+  synonyms:
+  - --limit
+  description: 'Limit number of reads to process (default: None)'
+  args: !SimpleFlagArg
+    name: LIMIT
+- !Flag
+  optional: true
+  synonyms:
+  - --overwrite
+  - --no-overwrite
+  description: "Whether to overwrite any output files (Default: --no-\noverwrite)\
+    \ (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --blanks_percentile
+  description: "Percentile above which to filter out chunks with too\nmany blanks\
+    \ (default: 95)"
+  args: !SimpleFlagArg
+    name: percentage
+- !Flag
+  optional: true
+  synonyms:
+  - --chunk_len
+  description: 'Length of each read chunk (default: 2000)'
+  args: !SimpleFlagArg
+    name: samples
+- !Flag
+  optional: true
+  synonyms:
+  - --normalisation
+  description: "Whether to perform median-mad normalisation and with\nwhat scope (default:\
+    \ per-read)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      per-read:
+      none:
+      per-chunk:
+- !Flag
+  optional: true
+  synonyms:
+  - --trim
+  description: "end  Number of samples to trim off start and end (default:\n(200,\
+    \ 50))"
+  args: !SimpleFlagArg
+    name: beginning
+- !Flag
+  optional: true
+  synonyms:
+  - --min_length
+  description: 'Minimum samples in acceptable read (default: 2500)'
+  args: !SimpleFlagArg
+    name: samples
+- !Flag
+  optional: true
+  synonyms:
+  - --downsample_factor
+  description: 'Rate of label downsampling (default: 1)'
+  args: !SimpleFlagArg
+    name: DOWNSAMPLE_FACTOR
+- !Flag
+  optional: true
+  synonyms:
+  - --interpolation
+  - --no-interpolation
+  description: "Interpolate reference sequence positions between\nmapped samples (Default:\
+    \ --no-interpolation) (default:\nFalse)\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: chunkify.py raw_identity [-h] [--alphabet ALPHABET]\n         \
+  \                       [--input_strand_list INPUT_STRAND_LIST]\n              \
+  \                  [--jobs n] [--kmer_len k] [--limit LIMIT]\n                 \
+  \               [--overwrite] [--blanks_percentile percentage]\n               \
+  \                 [--chunk_len samples]\n                                [--normalisation\
+  \ {per-chunk,none,per-read}]\n                                [--trim beginning\
+  \ end] [--min_length samples]\n                                [--downsample_factor\
+  \ DOWNSAMPLE_FACTOR]\n                                [--interpolation]\n      \
+  \                          input_folder output\n\npositional arguments:\n  input_folder\
+  \          Directory containing single-read fast5 files\n  output              \
+  \  Output HDF5 file\n\noptional arguments:\n  -h, --help            show this help\
+  \ message and exit\n  --alphabet ALPHABET   Alphabet of the sequences (default:\
+  \ b'ACGT')\n  --input_strand_list INPUT_STRAND_LIST\n                        Strand\
+  \ summary file containing subset (default: None)\n  --jobs n              Number\
+  \ of threads to use when processing data\n                        (default: 1)\n\
+  \  --kmer_len k          Length of kmer to estimate (default: 5)\n  --limit LIMIT\
+  \         Limit number of reads to process (default: None)\n  --overwrite, --no-overwrite\n\
+  \                        Whether to overwrite any output files (Default: --no-\n\
+  \                        overwrite) (default: False)\n  --blanks_percentile percentage\n\
+  \                        Percentile above which to filter out chunks with too\n\
+  \                        many blanks (default: 95)\n  --chunk_len samples   Length\
+  \ of each read chunk (default: 2000)\n  --normalisation {per-chunk,none,per-read}\n\
+  \                        Whether to perform median-mad normalisation and with\n\
+  \                        what scope (default: per-read)\n  --trim beginning end\
+  \  Number of samples to trim off start and end (default:\n                     \
+  \   (200, 50))\n  --min_length samples  Minimum samples in acceptable read (default:\
+  \ 2500)\n  --downsample_factor DOWNSAMPLE_FACTOR\n                        Rate of\
+  \ label downsampling (default: 1)\n  --interpolation, --no-interpolation\n     \
+  \                   Interpolate reference sequence positions between\n         \
+  \               mapped samples (Default: --no-interpolation) (default:\n       \
+  \                 False)\n"
+generated_using:
+- --help
+docker_image:

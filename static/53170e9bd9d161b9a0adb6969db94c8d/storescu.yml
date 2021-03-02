@@ -1,0 +1,601 @@
+!Command
+command:
+- storescu
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: peer
+  description: hostname of DICOM peer
+- !Positional
+  optional: false
+  position: 1
+  name: port
+  description: tcp/ip port number of peer
+- !Positional
+  optional: false
+  position: 2
+  name: dcmfile-in
+  description: DICOM file or directory to be transmitted
+- !Positional
+  optional: false
+  position: 0
+  name: sent
+  description: '+IR   --invent-series      [n]umber: integer (implies --invent-instance)'
+- !Positional
+  optional: false
+  position: 0
+  name: string
+  description: use specified password
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --arguments
+  description: print expanded command line arguments
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  description: quiet mode, print no warnings and errors
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: verbose mode, print processing details
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --debug
+  description: debug mode, print debug information
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ll
+  - --log-level
+  description: "[l]evel: string constant\n(fatal, error, warn, info, debug, trace)\n\
+    use level l for the logger"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -lc
+  - --log-config
+  description: "[f]ilename: string\nuse config file f for the logger"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --read-dataset
+  description: read data set without file meta information
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --no-recurse
+  description: do not recurse within directories (default)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -rn
+  - --no-rename
+  description: do not rename processed files (default)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -aet
+  - --aetitle
+  description: "[a]etitle: string\nset my calling AE title (default: STORESCU)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -aec
+  - --call
+  description: "[a]etitle: string\nset called AE title of peer (default: ANY-SCP)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -xf
+  - --config-file
+  description: "[f]ilename, [p]rofile: string\nuse profile p from config file f"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  description: "=   --propose-uncompr       propose all uncompressed TS, explicit\
+    \ VR\nwith local byte ordering first (default)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -xe
+  - --propose-little
+  description: "propose all uncompressed TS, explicit VR\nlittle endian first"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -xb
+  - --propose-big
+  description: "propose all uncompressed TS, explicit VR\nbig endian first"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -xi
+  - --propose-implicit
+  description: propose implicit VR little endian TS only
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -xs
+  - --propose-lossless
+  description: "propose default JPEG lossless TS\nand all uncompressed transfer syntaxes"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -xy
+  - --propose-jpeg8
+  description: "propose default JPEG lossy TS for 8 bit data\nand all uncompressed\
+    \ transfer syntaxes"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -xx
+  - --propose-jpeg12
+  description: "propose default JPEG lossy TS for 12 bit data\nand all uncompressed\
+    \ transfer syntaxes"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -xv
+  - --propose-j2k-lossless
+  description: "propose JPEG 2000 lossless TS\nand all uncompressed transfer syntaxes"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -xw
+  - --propose-j2k-lossy
+  description: "propose JPEG 2000 lossy TS\nand all uncompressed transfer syntaxes"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -xt
+  - --propose-jls-lossless
+  description: "propose JPEG-LS lossless TS\nand all uncompressed transfer syntaxes"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -xu
+  - --propose-jls-lossy
+  description: "propose JPEG-LS lossy TS\nand all uncompressed transfer syntaxes"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -xm
+  - --propose-mpeg2
+  description: propose MPEG2 Main Profile @ Main Level TS
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -xh
+  - --propose-mpeg2-high
+  description: propose MPEG2 Main Profile @ High Level TS
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -xn
+  - --propose-mpeg4
+  description: propose MPEG4 AVC/H.264 HP / Level 4.1 TS
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -xl
+  - --propose-mpeg4-bd
+  description: propose MPEG4 AVC/H.264 BD-compatible TS
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -x2
+  - --propose-mpeg4-2-2d
+  description: propose MPEG4 AVC/H.264 HP / Level 4.2 TS (2D)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -x3
+  - --propose-mpeg4-2-3d
+  description: propose MPEG4 AVC/H.264 HP / Level 4.2 TS (3D)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -xo
+  - --propose-mpeg4-2-st
+  description: propose MPEG4 AVC/H.264 Stereo / Level 4.2 TS
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -x4
+  - --propose-hevc
+  description: propose HEVC/H.265 Main Profile / Level 5.1 TS
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -x5
+  - --propose-hevc10
+  description: propose HEVC/H.265 Main 10 Profile / Level 5.1 TS
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -xr
+  - --propose-rle
+  description: "propose RLE lossless TS\nand all uncompressed transfer syntaxes"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -xd
+  - --propose-deflated
+  description: "propose deflated expl. VR little endian TS\nand all uncompressed transfer\
+    \ syntaxes"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  - --required
+  description: "propose only required presentation contexts\n(default: propose all\
+    \ supported)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --disable-new-vr
+  description: disable support for new VRs, convert to OB
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -usr
+  - --user
+  description: "[u]ser name: string\nauthenticate using user name u"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -pwd
+  - --password
+  description: "[p]assword: string (only with --user)\nauthenticate using password\
+    \ p"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -epw
+  - --empty-password
+  description: send empty password (only with --user)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -kt
+  - --kerberos
+  description: "[f]ilename: string\nread kerberos ticket from file f"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --saml
+  description: "[f]ilename: string\nread SAML request from file f"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --jwt
+  description: "[f]ilename: string\nread JWT data from file f"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -rsp
+  - --pos-response
+  description: expect positive response
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -to
+  - --timeout
+  description: "[s]econds: integer (default: unlimited)\ntimeout for connection requests"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ts
+  - --socket-timeout
+  description: "[s]econds: integer (default: 60)\ntimeout for network socket (0 for\
+    \ none)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ta
+  - --acse-timeout
+  description: "[s]econds: integer (default: 30)\ntimeout for ACSE messages"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -td
+  - --dimse-timeout
+  description: "[s]econds: integer (default: unlimited)\ntimeout for DIMSE messages"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -pdu
+  - --max-pdu
+  description: "[n]umber of bytes: integer (4096..131072)\nset max receive pdu to\
+    \ n bytes (default: 16384)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max-send-pdu
+  description: "[n]umber of bytes: integer (4096..131072)\nrestrict max send pdu to\
+    \ n bytes"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --repeat
+  description: "[n]umber: integer\nrepeat n times"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --abort
+  description: abort association instead of releasing it
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -nh
+  - --no-halt
+  description: "do not halt if unsuccessful store encountered\n(default: do halt)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -up
+  - --uid-padding
+  description: silently correct space-padded UIDs
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -tls
+  - --disable-tls
+  description: use normal TCP/IP connection (default)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -pw
+  - --null-passwd
+  description: use empty string as password
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -pem
+  - --pem-keys
+  description: read keys and certificates as PEM file (default)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -der
+  - --der-keys
+  description: read keys and certificates as DER file
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -rc
+  - --require-peer-cert
+  description: verify peer certificate, fail if absent (default)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ic
+  - --ignore-peer-cert
+  description: don't verify peer certificate
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: print this help text and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: print version information and exit
+  args: !EmptyFlagArg {}
+help_text: "$dcmtk: storescu v3.6.5 2019-10-28 $\n\nstorescu: DICOM storage (C-STORE)\
+  \ SCU\nusage: storescu [options] peer port dcmfile-in...\n\nparameters:\n  peer\
+  \                         hostname of DICOM peer\n  port                       \
+  \  tcp/ip port number of peer\n  dcmfile-in                   DICOM file or directory\
+  \ to be transmitted\n\ngeneral options:\n  -h      --help               print this\
+  \ help text and exit\n          --version            print version information and\
+  \ exit\n          --arguments          print expanded command line arguments\n \
+  \ -q      --quiet              quiet mode, print no warnings and errors\n  -v  \
+  \    --verbose            verbose mode, print processing details\n  -d      --debug\
+  \              debug mode, print debug information\n  -ll     --log-level      \
+  \    [l]evel: string constant\n                               (fatal, error, warn,\
+  \ info, debug, trace)\n                               use level l for the logger\n\
+  \  -lc     --log-config         [f]ilename: string\n                           \
+  \    use config file f for the logger\n  +v      --verbose-pc         show presentation\
+  \ contexts in verbose mode\ninput options:\n  input file format:\n    +f    --read-file\
+  \          read file format or data set (default)\n    +fo   --read-file-only  \
+  \   read file format only\n    -f    --read-dataset       read data set without\
+  \ file meta information\n  input files:\n    +sd   --scan-directories   scan directories\
+  \ for input files (dcmfile-in)\n    +sp   --scan-pattern       [p]attern: string\
+  \ (only with --scan-directories)\n                               pattern for filename\
+  \ matching (wildcards)\n    -r    --no-recurse         do not recurse within directories\
+  \ (default)\n    +r    --recurse            recurse within specified directories\n\
+  \    -rn   --no-rename          do not rename processed files (default)\n    +rn\
+  \   --rename             append .done/.bad to processed files\nnetwork options:\n\
+  \  application entity titles:\n    -aet  --aetitle            [a]etitle: string\n\
+  \                               set my calling AE title (default: STORESCU)\n  \
+  \  -aec  --call               [a]etitle: string\n                              \
+  \ set called AE title of peer (default: ANY-SCP)\n  association negotiation profile\
+  \ from configuration file:\n    -xf   --config-file        [f]ilename, [p]rofile:\
+  \ string\n                               use profile p from config file f\n  proposed\
+  \ transmission transfer syntaxes (not with --config-file):\n    -x=   --propose-uncompr\
+  \       propose all uncompressed TS, explicit VR\n                             \
+  \     with local byte ordering first (default)\n    -xe   --propose-little     \
+  \   propose all uncompressed TS, explicit VR\n                                 \
+  \ little endian first\n    -xb   --propose-big           propose all uncompressed\
+  \ TS, explicit VR\n                                  big endian first\n    -xi \
+  \  --propose-implicit      propose implicit VR little endian TS only\n    -xs  \
+  \ --propose-lossless      propose default JPEG lossless TS\n                   \
+  \               and all uncompressed transfer syntaxes\n    -xy   --propose-jpeg8\
+  \         propose default JPEG lossy TS for 8 bit data\n                       \
+  \           and all uncompressed transfer syntaxes\n    -xx   --propose-jpeg12 \
+  \       propose default JPEG lossy TS for 12 bit data\n                        \
+  \          and all uncompressed transfer syntaxes\n    -xv   --propose-j2k-lossless\
+  \  propose JPEG 2000 lossless TS\n                                  and all uncompressed\
+  \ transfer syntaxes\n    -xw   --propose-j2k-lossy     propose JPEG 2000 lossy TS\n\
+  \                                  and all uncompressed transfer syntaxes\n    -xt\
+  \   --propose-jls-lossless  propose JPEG-LS lossless TS\n                      \
+  \            and all uncompressed transfer syntaxes\n    -xu   --propose-jls-lossy\
+  \     propose JPEG-LS lossy TS\n                                  and all uncompressed\
+  \ transfer syntaxes\n    -xm   --propose-mpeg2         propose MPEG2 Main Profile\
+  \ @ Main Level TS\n    -xh   --propose-mpeg2-high    propose MPEG2 Main Profile\
+  \ @ High Level TS\n    -xn   --propose-mpeg4         propose MPEG4 AVC/H.264 HP\
+  \ / Level 4.1 TS\n    -xl   --propose-mpeg4-bd      propose MPEG4 AVC/H.264 BD-compatible\
+  \ TS\n    -x2   --propose-mpeg4-2-2d    propose MPEG4 AVC/H.264 HP / Level 4.2 TS\
+  \ (2D)\n    -x3   --propose-mpeg4-2-3d    propose MPEG4 AVC/H.264 HP / Level 4.2\
+  \ TS (3D)\n    -xo   --propose-mpeg4-2-st    propose MPEG4 AVC/H.264 Stereo / Level\
+  \ 4.2 TS\n    -x4   --propose-hevc          propose HEVC/H.265 Main Profile / Level\
+  \ 5.1 TS\n    -x5   --propose-hevc10        propose HEVC/H.265 Main 10 Profile /\
+  \ Level 5.1 TS\n    -xr   --propose-rle           propose RLE lossless TS\n    \
+  \                              and all uncompressed transfer syntaxes\n    -xd \
+  \  --propose-deflated      propose deflated expl. VR little endian TS\n        \
+  \                          and all uncompressed transfer syntaxes\n    -R    --required\
+  \              propose only required presentation contexts\n                   \
+  \               (default: propose all supported)\n    +C    --combine          \
+  \     combine proposed transfer syntaxes\n                                  (default:\
+  \ separate pres. context for each TS)\n  post-1993 value representations:\n    +u\
+  \    --enable-new-vr      enable support for new VRs (UN/UT) (default)\n    -u \
+  \   --disable-new-vr     disable support for new VRs, convert to OB\n  deflate compression\
+  \ level (only with --propose-deflated or --config-file):\n    +cl   --compression-level\
+  \  [l]evel: integer (default: 6)\n                               0=uncompressed,\
+  \ 1=fastest, 9=best compression\n  user identity negotiation:\n    -usr  --user\
+  \               [u]ser name: string\n                               authenticate\
+  \ using user name u\n    -pwd  --password           [p]assword: string (only with\
+  \ --user)\n                               authenticate using password p\n    -epw\
+  \  --empty-password     send empty password (only with --user)\n    -kt   --kerberos\
+  \           [f]ilename: string\n                               read kerberos ticket\
+  \ from file f\n          --saml               [f]ilename: string\n             \
+  \                  read SAML request from file f\n          --jwt              \
+  \  [f]ilename: string\n                               read JWT data from file f\n\
+  \    -rsp  --pos-response       expect positive response\n  other network options:\n\
+  \    -to   --timeout            [s]econds: integer (default: unlimited)\n      \
+  \                         timeout for connection requests\n    -ts   --socket-timeout\
+  \     [s]econds: integer (default: 60)\n                               timeout for\
+  \ network socket (0 for none)\n    -ta   --acse-timeout       [s]econds: integer\
+  \ (default: 30)\n                               timeout for ACSE messages\n    -td\
+  \   --dimse-timeout      [s]econds: integer (default: unlimited)\n             \
+  \                  timeout for DIMSE messages\n    -pdu  --max-pdu            [n]umber\
+  \ of bytes: integer (4096..131072)\n                               set max receive\
+  \ pdu to n bytes (default: 16384)\n          --max-send-pdu       [n]umber of bytes:\
+  \ integer (4096..131072)\n                               restrict max send pdu to\
+  \ n bytes\n          --repeat             [n]umber: integer\n                  \
+  \             repeat n times\n          --abort              abort association instead\
+  \ of releasing it\n    -nh   --no-halt            do not halt if unsuccessful store\
+  \ encountered\n                               (default: do halt)\n    -up   --uid-padding\
+  \        silently correct space-padded UIDs\n    +II   --invent-instance    invent\
+  \ a new SOP instance UID for every image\n                               sent\n\
+  \    +IR   --invent-series      [n]umber: integer (implies --invent-instance)\n\
+  \                               invent a new series UID after n images\n       \
+  \                        have been sent (default: 100)\n    +IS   --invent-study\
+  \       [n]umber: integer (implies --invent-instance)\n                        \
+  \       invent a new study UID after n series\n                               have\
+  \ been sent (default: 50)\n    +IP   --invent-patient     [n]umber: integer (implies\
+  \ --invent-instance)\n                               invent a new patient ID and\
+  \ name after n studies\n                               have been sent (default:\
+  \ 25)\ntransport layer security (TLS) options:\n  transport protocol stack:\n  \
+  \  -tls  --disable-tls        use normal TCP/IP connection (default)\n    +tls \
+  \ --enable-tls         [p]rivate key file, [c]ertificate file: string\n        \
+  \                       use authenticated secure TLS connection\n    +tla  --anonymous-tls\
+  \      use secure TLS connection without certificate\n  private key password (only\
+  \ with --enable-tls):\n    +ps   --std-passwd         prompt user to type password\
+  \ on stdin (default)\n    +pw   --use-passwd         [p]assword: string \n     \
+  \                          use specified password\n    -pw   --null-passwd     \
+  \   use empty string as password\n  key and certificate file format:\n    -pem \
+  \ --pem-keys           read keys and certificates as PEM file (default)\n    -der\
+  \  --der-keys           read keys and certificates as DER file\n  certification\
+  \ authority:\n    +cf   --add-cert-file      [c]ertificate filename: string\n  \
+  \                             add certificate file to list of certificates\n   \
+  \ +cd   --add-cert-dir       [c]ertificate directory: string\n                 \
+  \              add certificates in d to list of certificates\n  security profile:\n\
+  \    +px   --profile-bcp195     BCP 195 TLS Profile (default)\n    +py   --profile-bcp195-nd\
+  \  Non-downgrading BCP 195 TLS Profile\n    +pz   --profile-bcp195-ex  Extended\
+  \ BCP 195 TLS Profile\n    +pa   --profile-aes        AES TLS Secure Transport Connection\
+  \ Profile\n                               (retired)\n    +pn   --profile-null  \
+  \     Authenticated unencrypted communication\n                               (retired,\
+  \ was used in IHE ATNA)\n  ciphersuite:\n    +cc   --list-ciphers       show list\
+  \ of supported TLS ciphersuites and exit\n    +cs   --cipher             [c]iphersuite\
+  \ name: string\n                               add ciphersuite to list of negotiated\
+  \ suites\n                               (not with --profile-bcp195-ex)\n  pseudo\
+  \ random generator:\n    +rs   --seed               [f]ilename: string\n       \
+  \                        seed random generator with contents of f\n    +ws   --write-seed\
+  \         write back modified seed (only with --seed)\n    +wf   --write-seed-file\
+  \    [f]ilename: string (only with --seed)\n                               write\
+  \ modified seed to file f\n  peer authentication:\n    -rc   --require-peer-cert\
+  \  verify peer certificate, fail if absent (default)\n    -ic   --ignore-peer-cert\
+  \   don't verify peer certificate\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/dcmtk:3.6.5--h5fca97b_0

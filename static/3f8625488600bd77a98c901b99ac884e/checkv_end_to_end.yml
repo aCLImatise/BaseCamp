@@ -1,0 +1,68 @@
+!Command
+command:
+- checkv
+- end_to_end
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: input
+  description: Input nucleotide sequences in FASTA format
+- !Positional
+  optional: false
+  position: 1
+  name: output
+  description: Output directory
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: "Reference database path. By default the CHECKVDB environment\nvariable\
+    \ is used"
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: Number of threads to use for Prodigal and DIAMOND
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --restart
+  description: "Overwrite existing intermediate files. By default CheckV\ncontinues\
+    \ where program left off"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --quiet
+  description: Suppress logging messages
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Run full pipeline to estimate completeness, contamination, and identify\
+  \ closed genomes\n\nusage: checkv end_to_end <input> <output> [options]\n\npositional\
+  \ arguments:\n  input       Input nucleotide sequences in FASTA format\n  output\
+  \      Output directory\n\noptional arguments:\n  -h, --help  show this help message\
+  \ and exit\n  -d PATH     Reference database path. By default the CHECKVDB environment\n\
+  \              variable is used\n  -t INT      Number of threads to use for Prodigal\
+  \ and DIAMOND\n  --restart   Overwrite existing intermediate files. By default CheckV\n\
+  \              continues where program left off\n  --quiet     Suppress logging\
+  \ messages\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/checkv:0.7.0--py_1

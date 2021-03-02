@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Int, Boolean, File, String
+
+Fasplit_V0_1_0 = CommandToolBuilder(tool="faSplit", base_command=["faSplit"], inputs=[ToolInput(tag="in_verbose", input_type=Int(optional=True), prefix="-verbose", doc=InputDocumentation(doc="- Write names of each file created (=3 more details)")), ToolInput(tag="in_max_n", input_type=Int(optional=True), prefix="-maxN", doc=InputDocumentation(doc="- Suppress pieces with more than maxN n's.  Only used with size.\ndefault is size-1 (only suppresses pieces that are all N).")), ToolInput(tag="in_one_file", input_type=Boolean(optional=True), prefix="-oneFile", doc=InputDocumentation(doc="- Put output in one file. Only used with size")), ToolInput(tag="in_extra", input_type=Int(optional=True), prefix="-extra", doc=InputDocumentation(doc="- Add N extra bytes at the end to form overlapping pieces.  Only used with size.")), ToolInput(tag="in_out", input_type=Int(optional=True), prefix="-out", doc=InputDocumentation(doc="Get masking from outfile.  Only used with size.")), ToolInput(tag="in_lift", input_type=File(optional=True), prefix="-lift", doc=InputDocumentation(doc="Put info on how to reconstruct sequence from\npieces in file.lft.  Only used with size and gap.")), ToolInput(tag="in_min_gap_size", input_type=Int(optional=True), prefix="-minGapSize", doc=InputDocumentation(doc="Consider a block of Ns to be a gap if block size >= X.\nDefault value 1000.  Only used with gap.")), ToolInput(tag="in_no_gap_drops", input_type=Boolean(optional=True), prefix="-noGapDrops", doc=InputDocumentation(doc="- include all N's when splitting by gap.")), ToolInput(tag="in_outdir_depth", input_type=Int(optional=True), prefix="-outDirDepth", doc=InputDocumentation(doc="Create N levels of output directory under current dir.\nThis helps prevent NFS problems with a large number of\nfile in a directory.  Using -outDirDepth=3 would\nproduce ./1/2/3/outRoot123.fa.")), ToolInput(tag="in_prefix_length", input_type=Int(optional=True), prefix="-prefixLength", doc=InputDocumentation(doc="- used with byname option. create a separate output\nfile for each group of sequences names with same prefix\nof length N.\n")), ToolInput(tag="in_how", input_type=String(), position=0, doc=InputDocumentation(doc="")), ToolInput(tag="in_input_dot_fa", input_type=String(), position=1, doc=InputDocumentation(doc="")), ToolInput(tag="in_count", input_type=String(), position=2, doc=InputDocumentation(doc=""))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Fasplit_V0_1_0().translate("wdl", allow_empty_container=True)
+

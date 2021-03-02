@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, String, Int
+
+Seurat_Filter_Cells_R_V0_1_0 = CommandToolBuilder(tool="seurat_filter_cells.R", base_command=["seurat-filter-cells.R"], inputs=[ToolInput(tag="in_input_object_file", input_type=File(optional=True), prefix="--input-object-file", doc=InputDocumentation(doc="File name in which a serialized R matrix object may be found.")), ToolInput(tag="in_input_format", input_type=String(optional=True), prefix="--input-format", doc=InputDocumentation(doc="Either loom, seurat, anndata or singlecellexperiment for the input format to read.")), ToolInput(tag="in_output_format", input_type=String(optional=True), prefix="--output-format", doc=InputDocumentation(doc="Either loom, seurat, anndata or singlecellexperiment for the output format.")), ToolInput(tag="in_subset_names", input_type=Int(optional=True), prefix="--subset-names", doc=InputDocumentation(doc="Parameters to subset on. Eg, the name of a gene, PC1, a column name in object@meta.data, etc. Any argument that can be retreived using FetchData.")), ToolInput(tag="in_low_thresholds", input_type=String(optional=True), prefix="--low-thresholds", doc=InputDocumentation(doc="Low cutoffs for the parameters (default is -Inf).")), ToolInput(tag="in_high_thresholds", input_type=String(optional=True), prefix="--high-thresholds", doc=InputDocumentation(doc="High cutoffs for the parameters (default is Inf).")), ToolInput(tag="in_cells_use", input_type=File(optional=True), prefix="--cells-use", doc=InputDocumentation(doc="Comma-separated list of cell names to use as a subset. Alternatively, text file with one cell per line.")), ToolInput(tag="in_output_object_file", input_type=File(optional=True), prefix="--output-object-file", doc=InputDocumentation(doc="File name in which to store serialized R object of type 'Seurat'.'")), ToolInput(tag="in_idents", input_type=String(optional=True), prefix="--idents", doc=InputDocumentation(doc="CLASSES TO KEEP\nComma-separated list of identity classes to keep")), ToolInput(tag="in_features", input_type=File(optional=True), prefix="--features", doc=InputDocumentation(doc="TO KEEP\nComma-separated list or file path with features (normally genes) to keep"))], outputs=[ToolOutput(tag="out_output_object_file", output_type=File(optional=True), selector=InputSelector(input_to_select="in_output_object_file", type_hint=File()), doc=OutputDocumentation(doc="File name in which to store serialized R object of type 'Seurat'.'"))], container="quay.io/biocontainers/seurat-scripts:0.0.9--0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Seurat_Filter_Cells_R_V0_1_0().translate("wdl")
+

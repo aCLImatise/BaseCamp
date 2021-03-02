@@ -1,0 +1,131 @@
+!Command
+command:
+- taxon_filter.py
+- filter_lastal_bam
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: inBam
+  description: Input reads
+- !Positional
+  optional: false
+  position: 1
+  name: db
+  description: Database of taxa we keep
+- !Positional
+  optional: false
+  position: 2
+  name: outBam
+  description: Output reads, filtered to refDb
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: "maximum gapless alignments per query position\n(default: 1)"
+  args: !SimpleFlagArg
+    name: MAX_GAPLESS_ALIGNMENTS_PER_POSITION
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: 'minimum length for initial matches (default: 5)'
+  args: !SimpleFlagArg
+    name: MIN_LENGTH_FOR_INITIAL_MATCHES
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  description: 'maximum length for initial matches (default: 50)'
+  args: !SimpleFlagArg
+    name: MAX_LENGTH_FOR_INITIAL_MATCHES
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: "maximum initial matches per query position (default:\n100)"
+  args: !SimpleFlagArg
+    name: MAX_INITIAL_MATCHES_PER_POSITION
+- !Flag
+  optional: true
+  synonyms:
+  - --JVMmemory
+  description: 'JVM virtual memory size (default: 4g)'
+  args: !SimpleFlagArg
+    name: JVMMEMORY
+- !Flag
+  optional: true
+  synonyms:
+  - --loglevel
+  description: 'Verboseness of output. [default: DEBUG]'
+  args: !ChoiceFlagArg
+    choices: !!set
+      INFO:
+      DEBUG:
+      CRITICAL:
+      WARNING:
+      ERROR:
+      EXCEPTION:
+- !Flag
+  optional: true
+  synonyms:
+  - --tmp_dir
+  description: 'Base directory for temp files. [default: /tmp]'
+  args: !SimpleFlagArg
+    name: TMP_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --tmp_dirKeep
+  description: "Keep the tmp_dir if an exception occurs while running.\nDefault is\
+    \ to delete all temp files at the end, even\nif there's a failure.\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  - -V
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: taxon_filter.py subcommand filter_lastal_bam [-h]\n           \
+  \                                         [-n MAX_GAPLESS_ALIGNMENTS_PER_POSITION]\n\
+  \                                                    [-l MIN_LENGTH_FOR_INITIAL_MATCHES]\n\
+  \                                                    [-L MAX_LENGTH_FOR_INITIAL_MATCHES]\n\
+  \                                                    [-m MAX_INITIAL_MATCHES_PER_POSITION]\n\
+  \                                                    [--JVMmemory JVMMEMORY]\n \
+  \                                                   [--loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}]\n\
+  \                                                    [--version]\n             \
+  \                                       [--tmp_dir TMP_DIR]\n                  \
+  \                                  [--tmp_dirKeep]\n                           \
+  \                         inBam db outBam\n\nRestrict input reads to those that\
+  \ align to the given reference database using\nLASTAL.\n\npositional arguments:\n\
+  \  inBam                 Input reads\n  db                    Database of taxa we\
+  \ keep\n  outBam                Output reads, filtered to refDb\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -n MAX_GAPLESS_ALIGNMENTS_PER_POSITION\n\
+  \                        maximum gapless alignments per query position\n       \
+  \                 (default: 1)\n  -l MIN_LENGTH_FOR_INITIAL_MATCHES\n          \
+  \              minimum length for initial matches (default: 5)\n  -L MAX_LENGTH_FOR_INITIAL_MATCHES\n\
+  \                        maximum length for initial matches (default: 50)\n  -m\
+  \ MAX_INITIAL_MATCHES_PER_POSITION\n                        maximum initial matches\
+  \ per query position (default:\n                        100)\n  --JVMmemory JVMMEMORY\n\
+  \                        JVM virtual memory size (default: 4g)\n  --loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}\n\
+  \                        Verboseness of output. [default: DEBUG]\n  --version, -V\
+  \         show program's version number and exit\n  --tmp_dir TMP_DIR     Base directory\
+  \ for temp files. [default: /tmp]\n  --tmp_dirKeep         Keep the tmp_dir if an\
+  \ exception occurs while running.\n                        Default is to delete\
+  \ all temp files at the end, even\n                        if there's a failure.\n"
+generated_using:
+- --help
+docker_image:

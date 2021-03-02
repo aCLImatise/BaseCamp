@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, File
+
+Dynaligndotplot_V0_1_0 = CommandToolBuilder(tool="DynalignDotPlot", base_command=["DynalignDotPlot"], inputs=[ToolInput(tag="in_sequence_two", input_type=Boolean(optional=True), prefix="--sequence2", doc=InputDocumentation(doc="Specifies that the dot plot should be the second sequence. If no sequence\nis specified, the plot is the first sequence.")), ToolInput(tag="in_svg", input_type=File(optional=True), prefix="--svg", doc=InputDocumentation(doc="Specify that the output file should be an SVG image file, rather than a\nPostscript image file.")), ToolInput(tag="in_text", input_type=File(optional=True), prefix="--text", doc=InputDocumentation(doc="Specifies that output should be a dot plot (text) file.")), ToolInput(tag="in_entries", input_type=Boolean(optional=True), prefix="--entries", doc=InputDocumentation(doc="Specifies the number of colors in the dot plot.\nDefault is 5 colors. Minimum is 3 colors. Maximum is 15 colors.")), ToolInput(tag="in_maximum", input_type=Boolean(optional=True), prefix="--maximum", doc=InputDocumentation(doc="Specifies the maximum value that is viewable in the plot.\nDefault is the largest allowable point in a given data file. If the given\nvalue is greater than the default, it is ignored.")), ToolInput(tag="in_minimum", input_type=Boolean(optional=True), prefix="--minimum", doc=InputDocumentation(doc="Specifies the minimum value that is viewable in the plot.\nDefault is the smallest allowable point in a given data file. If the given\nvalue is less than the default, it is ignored.\n")), ToolInput(tag="in_dyn_align_save_file", input_type=File(), position=0, doc=InputDocumentation(doc="")), ToolInput(tag="in_output_file", input_type=File(), position=1, doc=InputDocumentation(doc=""))], outputs=[ToolOutput(tag="out_svg", output_type=File(optional=True), selector=InputSelector(input_to_select="in_svg", type_hint=File()), doc=OutputDocumentation(doc="Specify that the output file should be an SVG image file, rather than a\nPostscript image file.")), ToolOutput(tag="out_text", output_type=File(optional=True), selector=InputSelector(input_to_select="in_text", type_hint=File()), doc=OutputDocumentation(doc="Specifies that output should be a dot plot (text) file.")), ToolOutput(tag="out_output_file", output_type=File(), selector=InputSelector(input_to_select="in_output_file", type_hint=File()), doc=OutputDocumentation(doc=""))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Dynaligndotplot_V0_1_0().translate("wdl", allow_empty_container=True)
+

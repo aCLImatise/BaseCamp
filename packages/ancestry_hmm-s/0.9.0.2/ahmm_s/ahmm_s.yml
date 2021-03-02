@@ -1,0 +1,170 @@
+!Command
+command:
+- ahmm-s
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: "[string]\ninput file name"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: "[string]\nsample id and ploidy file"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: "[int] [int] [float]\nancestry pulse with format, ancestral population,\
+    \ time,\nand proportion of final ancestry from this pulse"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ne
+  description: "[int]\neffective population size of the admixed population"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gss
+  description: "[int] [int] [int] [float] [float]\ngolden section search for optimal\
+    \ selection coeffient at each site.\nparameters: chromosomal position start, stop,\
+    \ step, selection coefficient start, stop"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --grid
+  description: "[int] [int] [int] [float] [float] [float]\ncalculate likelihood ratios\
+    \ in a grid.\nparameters: chromosomal position start, stop, step, selection coefficient\
+    \ start, stop, step."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --site
+  description: "[int] [float]\ncalculate likelihood ratios for a single value of s\
+    \ at a single site.\nparameters: chromosomal position, selective coeffient"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  description: samples are specified with genotypes rather than read counts
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --chr
+  description: "[string]\nspecify chromosome that will be analyzed\n(only necessary\
+    \ when there are multiple chromosomes in input file)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --chr_win
+  description: "[int] [int]\nlimit region on chromosome that will be analyzed"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gss_precision
+  description: "[float]\nspecify precision in finding optimal value of s using golden\
+    \ section search. default: 1e-5"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --unit_coords
+  description: "unit for start and stop position in grid and gss search can be defined\
+    \ as chromosome\ncoordinates rather than as line number in input file. default\
+    \ off"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --window
+  description: "[string] [float]\nspecify size of Markov chain in percent or Morgans.\n\
+    \"p 10\" extends the markov chain 10% of chromosome length on each side of selected\
+    \ site.\n\"m 0.1\" extends the windows 0.1 Morgan on each side of the selected\
+    \ site.\ndefault: \"p 100\""
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --traj
+  description: "[int]\nchange algorithm for generating selection trajectories.\n4:\
+    \ 4-point approximation, 3: 3-point approximation (legacy option, not recommended).\n\
+    default: forward iteration."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --stochastic
+  description: "enables the stochastic method for generation selection trajectory.\n\
+    (Experimental. Slow. Use for small values of s.)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --stochastic_reps
+  description: "[int]\nspecifies number of simulations for the stochastic trajectory\
+    \ algorithm.\ndefault: 10000"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --full_selection_space
+  description: "turns off optimization of the selection coeffient search space. (Experimental)\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: print this help statement
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "reading command line\n\nahmm-s usage:\n\n\trequired:\n\t\t-i [string]\n\
+  \t\t\tinput file name\n\t\t-s [string]\n\t\t\tsample id and ploidy file\n\t\t-p\
+  \ [int] [int] [float]\n\t\t\t ancestry pulse with format, ancestral population,\
+  \ time,\n\t\t\t and proportion of final ancestry from this pulse\n\t\t--ne [int]\n\
+  \t\t\teffective population size of the admixed population\n\n\tselect one of the\
+  \ following working modes:\n\t\t--gss [int] [int] [int] [float] [float]\n\t\t\t\
+  \ golden section search for optimal selection coeffient at each site.\n\t\t\t parameters:\
+  \ chromosomal position start, stop, step, selection coefficient start, stop\n\t\t\
+  --grid [int] [int] [int] [float] [float] [float]\n\t\t\t calculate likelihood ratios\
+  \ in a grid.\n\t\t\t parameters: chromosomal position start, stop, step, selection\
+  \ coefficient start, stop, step.\n\t\t--site [int] [float]\n\t\t\t calculate likelihood\
+  \ ratios for a single value of s at a single site.\n\t\t\t parameters: chromosomal\
+  \ position, selective coeffient\n\n\toptional:\n\t\t--help\n\t\t\tprint this help\
+  \ statement\n\t\t-g\n\t\t\tsamples are specified with genotypes rather than read\
+  \ counts\n\t\t--chr [string]\n\t\t\t specify chromosome that will be analyzed\n\t\
+  \t\t (only necessary when there are multiple chromosomes in input file)\n\t\t--chr_win\
+  \ [int] [int]\n\t\t\t limit region on chromosome that will be analyzed\n\t\t--gss_precision\
+  \ [float]\n\t\t\t specify precision in finding optimal value of s using golden section\
+  \ search. default: 1e-5\n\t\t--unit_coords\n\t\t\t unit for start and stop position\
+  \ in grid and gss search can be defined as chromosome\n\t\t\t coordinates rather\
+  \ than as line number in input file. default off\n\t\t--window [string] [float]\n\
+  \t\t\t specify size of Markov chain in percent or Morgans.\n\t\t\t \"p 10\" extends\
+  \ the markov chain 10% of chromosome length on each side of selected site.\n\t\t\
+  \t \"m 0.1\" extends the windows 0.1 Morgan on each side of the selected site.\n\
+  \t\t\t default: \"p 100\"\n\t\t--traj [int]\n\t\t\t change algorithm for generating\
+  \ selection trajectories.\n\t\t\t 4: 4-point approximation, 3: 3-point approximation\
+  \ (legacy option, not recommended).\n\t\t\t default: forward iteration.\n\t\t--stochastic\n\
+  \t\t\t enables the stochastic method for generation selection trajectory.\n\t\t\t\
+  \ (Experimental. Slow. Use for small values of s.)\n\t\t--stochastic_reps [int]\n\
+  \t\t\t specifies number of simulations for the stochastic trajectory algorithm.\n\
+  \t\t\t default: 10000\n\t\t--full_selection_space\n\t\t\t turns off optimization\
+  \ of the selection coeffient search space. (Experimental)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/ancestry_hmm-s:0.9.0.2--hc9558a2_0

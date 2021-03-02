@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Int, String
+
+Pgcgap_V0_1_0 = CommandToolBuilder(tool="pgcgap", base_command=["pgcgap"], inputs=[ToolInput(tag="in_for_thresholds_", input_type=Int(optional=True), prefix="-n", doc=InputDocumentation(doc="for thresholds 0.5-0.6, -n 4 for")), ToolInput(tag="in_roar_y", input_type=String(), position=0, doc=InputDocumentation(doc="[--OrthoF]                    Identify orthologous protein sequence")), ToolInput(tag="in_families", input_type=String(), position=1, doc=InputDocumentation(doc="[--ANI]                       Compute whole-genome Average Nucleotide")), ToolInput(tag="in_genes", input_type=String(), position=0, doc=InputDocumentation(doc="[--STREE]                     Construct a phylogenetic tree based on")), ToolInput(tag="in_euplotid_nuclear_code", input_type=Int(), position=0, doc=InputDocumentation(doc="Euplotid nuclear code")), ToolInput(tag="in_bacterial_archaeal_plant", input_type=Int(), position=1, doc=InputDocumentation(doc="Bacterial, archaeal and plant plastid code ( Default )")), ToolInput(tag="in_alternative_yeast_nuclear", input_type=Int(), position=2, doc=InputDocumentation(doc="Alternative yeast nuclear code")), ToolInput(tag="in_ascidian_mitochondrial_code", input_type=Int(), position=3, doc=InputDocumentation(doc="Ascidian mitochondrial code")), ToolInput(tag="in_alternative_flatworm_mitochondrial", input_type=Int(), position=4, doc=InputDocumentation(doc="Alternative flatworm mitochondrial code")), ToolInput(tag="in_blepharisma_nuclear_code", input_type=Int(), position=5, doc=InputDocumentation(doc="Blepharisma nuclear code")), ToolInput(tag="in_chlorophycean_mitochondrial_code", input_type=Int(), position=6, doc=InputDocumentation(doc="Chlorophycean mitochondrial code")), ToolInput(tag="in_trematode_mitochondrial_code", input_type=Int(), position=7, doc=InputDocumentation(doc="Trematode mitochondrial code")), ToolInput(tag="in_scenedesmus_obliquus_code", input_type=Int(), position=8, doc=InputDocumentation(doc="Scenedesmus obliquus mitochondrial code")), ToolInput(tag="in_thraustochytrium_mitochondrial_code", input_type=Int(), position=9, doc=InputDocumentation(doc="Thraustochytrium mitochondrial code")), ToolInput(tag="in_programs", input_type=String(), position=0, doc=InputDocumentation(doc="[--abyss-bin (PATH)]          Path to abyss binary file. Default tries\nif abyss is in PATH;"))], outputs=[], container="quay.io/biocontainers/pgcgap:1.0.26--py37pl526_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Pgcgap_V0_1_0().translate("wdl")
+

@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Directory, Int, String
+
+Secapr_Phase_Alleles_V0_1_0 = CommandToolBuilder(tool="secapr_phase_alleles", base_command=["secapr", "phase_alleles"], inputs=[ToolInput(tag="in_input", input_type=Directory(optional=True), prefix="--input", doc=InputDocumentation(doc="Call the folder that contains the results of the\nreference based assembly (output of reference_assembly\nfunction, containing the bam-files).")), ToolInput(tag="in_output", input_type=Directory(optional=True), prefix="--output", doc=InputDocumentation(doc="The output directory where results will be safed.")), ToolInput(tag="in_min_coverage", input_type=Int(optional=True), prefix="--min_coverage", doc=InputDocumentation(doc="Set the minimum read coverage. Only positions that are\ncovered by this number of reads will be called in the\nconsensus sequence, otherwise the program will add an\nambiguity at this position.")), ToolInput(tag="in_provide_reference_used", input_type=Directory(optional=True), prefix="--reference", doc=InputDocumentation(doc="Provide the reference that was used for read-mapping.\nIf you used the alignment-consensus method, provide\nthe joined_fasta_library.fasta which is found in the\nreference_seqs folder within the reference-assembly\noutput.\n")), ToolInput(tag="in_phase_remapped_form", input_type=String(), position=0, doc=InputDocumentation(doc="Phase remapped reads form reference-based assembly into two separate alleles."))], outputs=[ToolOutput(tag="out_input", output_type=Directory(optional=True), selector=InputSelector(input_to_select="in_input", type_hint=File()), doc=OutputDocumentation(doc="Call the folder that contains the results of the\nreference based assembly (output of reference_assembly\nfunction, containing the bam-files).")), ToolOutput(tag="out_output", output_type=Directory(optional=True), selector=InputSelector(input_to_select="in_output", type_hint=File()), doc=OutputDocumentation(doc="The output directory where results will be safed.")), ToolOutput(tag="out_provide_reference_used", output_type=Directory(optional=True), selector=InputSelector(input_to_select="in_provide_reference_used", type_hint=File()), doc=OutputDocumentation(doc="Provide the reference that was used for read-mapping.\nIf you used the alignment-consensus method, provide\nthe joined_fasta_library.fasta which is found in the\nreference_seqs folder within the reference-assembly\noutput.\n"))], container="quay.io/biocontainers/secapr:2.1.1--pyh3252c3a_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Secapr_Phase_Alleles_V0_1_0().translate("wdl")
+

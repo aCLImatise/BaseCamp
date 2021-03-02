@@ -1,0 +1,88 @@
+!Command
+command:
+- refinem
+- modify_bin
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: scaffold_file
+  description: scaffolds binned to generate putative genomes
+- !Positional
+  optional: false
+  position: 1
+  name: genome_file
+  description: genome to be modified
+- !Positional
+  optional: false
+  position: 2
+  name: output_genome
+  description: modified genome
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --min_len
+  description: "minimum length of scaffold to allow it to be added to\na genome"
+  args: !SimpleFlagArg
+    name: MIN_LEN
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --add
+  description: "ID of scaffold to add to genome (may specify multiple\ntimes)"
+  args: !SimpleFlagArg
+    name: ADD
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --remove
+  description: "ID of scaffold to remove from bin (may specify\nmultiple times)"
+  args: !SimpleFlagArg
+    name: REMOVE
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --outlier_file
+  description: "remove all scaffolds identified as outliers (see\noutlier command)"
+  args: !SimpleFlagArg
+    name: OUTLIER_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --silent
+  description: suppress output of logger
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: refinem modify_bin [-h] [-m MIN_LEN] [-a ADD] [-r REMOVE]\n   \
+  \                       [-o OUTLIER_FILE] [--silent]\n                         \
+  \ scaffold_file genome_file output_genome\n\nModify scaffolds in a single bin.\n\
+  \npositional arguments:\n  scaffold_file         scaffolds binned to generate putative\
+  \ genomes\n  genome_file           genome to be modified\n  output_genome      \
+  \   modified genome\n\noptional arguments:\n  -h, --help            show this help\
+  \ message and exit\n  -m, --min_len MIN_LEN\n                        minimum length\
+  \ of scaffold to allow it to be added to\n                        a genome\n  -a,\
+  \ --add ADD         ID of scaffold to add to genome (may specify multiple\n    \
+  \                    times)\n  -r, --remove REMOVE   ID of scaffold to remove from\
+  \ bin (may specify\n                        multiple times)\n  -o, --outlier_file\
+  \ OUTLIER_FILE\n                        remove all scaffolds identified as outliers\
+  \ (see\n                        outlier command)\n  --silent              suppress\
+  \ output of logger\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/refinem:0.1.2--pyh3252c3a_0

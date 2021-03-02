@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import String, File, Boolean, Int
+
+Filtercorrectionoverlaps_V0_1_0 = CommandToolBuilder(tool="filterCorrectionOverlaps", base_command=["filterCorrectionOverlaps"], inputs=[ToolInput(tag="in_input_reads", input_type=String(optional=True), prefix="-S", doc=InputDocumentation(doc="input reads")), ToolInput(tag="in_input_overlaps", input_type=String(optional=True), prefix="-O", doc=InputDocumentation(doc="input overlaps")), ToolInput(tag="in_scores", input_type=File(optional=True), prefix="-scores", doc=InputDocumentation(doc="output scores for each read, binary file, to file 'sf'\nper-read logging to 'sf.log' (see -nolog)\nsummary statistics to 'sf.stats' (see -nostats)")), ToolInput(tag="in_estimate", input_type=Boolean(optional=True), prefix="-estimate", doc=InputDocumentation(doc="estimate the cutoff from precomputed scores")), ToolInput(tag="in_exact", input_type=Boolean(optional=True), prefix="-exact", doc=InputDocumentation(doc="compute an exact cutoff by reading all overlaps")), ToolInput(tag="in_compare", input_type=Boolean(optional=True), prefix="-compare", doc=InputDocumentation(doc="output a comparison of estimated vs exact scores")), ToolInput(tag="in_retain_most_many", input_type=String(optional=True), prefix="-c", doc=InputDocumentation(doc="retain at most this many overlaps per read")), ToolInput(tag="in_filter_overlaps_shorter", input_type=Int(optional=True), prefix="-l", doc=InputDocumentation(doc="filter overlaps shorter than this length")), ToolInput(tag="in_minmax_filter_overlaps", input_type=Boolean(optional=True), prefix="-e", doc=InputDocumentation(doc="(min-)max    filter overlaps outside this range of fraction error\nexample:  -e 0.20          filter overlaps above 20% error\nexample:  -e 0.05-0.20     filter overlaps below 5% error\nor above 20% error")), ToolInput(tag="in_no_log", input_type=Boolean(optional=True), prefix="-nolog", doc=InputDocumentation(doc="don't create 'scoreFile.log'")), ToolInput(tag="in_no_stats", input_type=Boolean(optional=True), prefix="-nostats", doc=InputDocumentation(doc="don't create 'scoreFile.stats'"))], outputs=[ToolOutput(tag="out_scores", output_type=File(optional=True), selector=InputSelector(input_to_select="in_scores", type_hint=File()), doc=OutputDocumentation(doc="output scores for each read, binary file, to file 'sf'\nper-read logging to 'sf.log' (see -nolog)\nsummary statistics to 'sf.stats' (see -nostats)"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Filtercorrectionoverlaps_V0_1_0().translate("wdl", allow_empty_container=True)
+

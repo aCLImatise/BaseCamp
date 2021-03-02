@@ -1,0 +1,193 @@
+!Command
+command:
+- PairSeq.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: pair-pass
+  description: successfully paired reads with modified annotations.
+- !Positional
+  optional: false
+  position: 1
+  name: pair-fail
+  description: raw reads that could not be assigned to a mate-pair.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - '-1'
+  description: "An ordered list of FASTA/FASTQ files containing\nhead/primary sequences.\
+    \ (default: None)"
+  args: !RepeatFlagArg
+    name: SEQ_FILES_1
+- !Flag
+  optional: true
+  synonyms:
+  - '-2'
+  description: "An ordered list of FASTA/FASTQ files containing\ntail/secondary sequences.\
+    \ (default: None)"
+  args: !RepeatFlagArg
+    name: SEQ_FILES_2
+- !Flag
+  optional: true
+  synonyms:
+  - --outdir
+  description: "Specify to changes the output directory to the\nlocation specified.\
+    \ The input file directory is used\nif this is not specified. (default: None)"
+  args: !SimpleFlagArg
+    name: OUT_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --outname
+  description: "Changes the prefix of the successfully processed\noutput file to the\
+    \ string specified. May not be\nspecified with multiple input files. (default:\
+    \ None)"
+  args: !SimpleFlagArg
+    name: OUT_NAME
+- !Flag
+  optional: true
+  synonyms:
+  - --failed
+  description: "If specified create files containing records that fail\nprocessing.\
+    \ (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --fasta
+  description: "Specify to force output as FASTA rather than FASTQ.\n(default: None)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --delim
+  description: "DELIMITER DELIMITER\nA list of the three delimiters that separate\n\
+    annotation blocks, field names and values, and values\nwithin a field, respectively.\
+    \ (default: ('|', '=',\n','))"
+  args: !SimpleFlagArg
+    name: DELIMITER
+- !Flag
+  optional: true
+  synonyms:
+  - --1f
+  description: "The annotation fields to copy from file 1 records into\nfile 2 records.\
+    \ If a copied annotation already exists\nin a file 2 record, then the annotations\
+    \ copied from\nfile 1 will be added to the front of the existing\nannotation.\
+    \ (default: None)"
+  args: !RepeatFlagArg
+    name: FIELDS_1
+- !Flag
+  optional: true
+  synonyms:
+  - --2f
+  description: "The annotation fields to copy from file 2 records into\nfile 1 records.\
+    \ If a copied annotation already exists\nin a file 1 record, then the annotations\
+    \ copied from\nfile 2 will be added to the end of the existing\nannotation. (default:\
+    \ None)"
+  args: !RepeatFlagArg
+    name: FIELDS_2
+- !Flag
+  optional: true
+  synonyms:
+  - --act
+  description: "The collapse actions to take on all fields copied\nbetween files to\
+    \ combine duplicate fields into a\nsingle value. The actions \"min\", \"max\"\
+    , \"sum\" perform\nthe corresponding mathematical operation on numeric\nannotations.\
+    \ The action \"set\" collapses annotations\ninto a comma delimited list of unique\
+    \ values. The\naction \"cat\" concatenates the values together into a\nsingle\
+    \ string. Only applies if the field already\nexists in the header before being\
+    \ copying from the\nother file. (default: None)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      sum:
+      set:
+      max:
+      min:
+      cat:
+- !Flag
+  optional: true
+  synonyms:
+  - --coord
+  description: "The format of the sequence identifier which defines\nshared coordinate\
+    \ information across mate pairs.\n(default: presto)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      '454':
+      illumina:
+      solexa:
+      presto:
+      sra:
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: PairSeq.py [--version] [-h] -1 SEQ_FILES_1 [SEQ_FILES_1 ...] -2\n\
+  \                  SEQ_FILES_2 [SEQ_FILES_2 ...] [--outdir OUT_DIR]\n          \
+  \        [--outname OUT_NAME] [--failed] [--fasta]\n                  [--delim DELIMITER\
+  \ DELIMITER DELIMITER]\n                  [--1f FIELDS_1 [FIELDS_1 ...]]\n     \
+  \             [--2f FIELDS_2 [FIELDS_2 ...]] [--act {min,max,sum,set,cat}]\n   \
+  \               [--coord {illumina,solexa,sra,454,presto}]\n\nSorts and matches\
+  \ sequence records with matching coordinates across files\n\nhelp:\n  --version\
+  \             show program's version number and exit\n  -h, --help            show\
+  \ this help message and exit\n\nstandard arguments:\n  -1 SEQ_FILES_1 [SEQ_FILES_1\
+  \ ...]\n                        An ordered list of FASTA/FASTQ files containing\n\
+  \                        head/primary sequences. (default: None)\n  -2 SEQ_FILES_2\
+  \ [SEQ_FILES_2 ...]\n                        An ordered list of FASTA/FASTQ files\
+  \ containing\n                        tail/secondary sequences. (default: None)\n\
+  \  --outdir OUT_DIR      Specify to changes the output directory to the\n      \
+  \                  location specified. The input file directory is used\n      \
+  \                  if this is not specified. (default: None)\n  --outname OUT_NAME\
+  \    Changes the prefix of the successfully processed\n                        output\
+  \ file to the string specified. May not be\n                        specified with\
+  \ multiple input files. (default: None)\n  --failed              If specified create\
+  \ files containing records that fail\n                        processing. (default:\
+  \ False)\n  --fasta               Specify to force output as FASTA rather than FASTQ.\n\
+  \                        (default: None)\n  --delim DELIMITER DELIMITER DELIMITER\n\
+  \                        A list of the three delimiters that separate\n        \
+  \                annotation blocks, field names and values, and values\n       \
+  \                 within a field, respectively. (default: ('|', '=',\n         \
+  \               ','))\n\npairing arguments:\n  --1f FIELDS_1 [FIELDS_1 ...]\n  \
+  \                      The annotation fields to copy from file 1 records into\n\
+  \                        file 2 records. If a copied annotation already exists\n\
+  \                        in a file 2 record, then the annotations copied from\n\
+  \                        file 1 will be added to the front of the existing\n   \
+  \                     annotation. (default: None)\n  --2f FIELDS_2 [FIELDS_2 ...]\n\
+  \                        The annotation fields to copy from file 2 records into\n\
+  \                        file 1 records. If a copied annotation already exists\n\
+  \                        in a file 1 record, then the annotations copied from\n\
+  \                        file 2 will be added to the end of the existing\n     \
+  \                   annotation. (default: None)\n  --act {min,max,sum,set,cat}\n\
+  \                        The collapse actions to take on all fields copied\n   \
+  \                     between files to combine duplicate fields into a\n       \
+  \                 single value. The actions \"min\", \"max\", \"sum\" perform\n\
+  \                        the corresponding mathematical operation on numeric\n \
+  \                       annotations. The action \"set\" collapses annotations\n\
+  \                        into a comma delimited list of unique values. The\n   \
+  \                     action \"cat\" concatenates the values together into a\n \
+  \                       single string. Only applies if the field already\n     \
+  \                   exists in the header before being copying from the\n       \
+  \                 other file. (default: None)\n  --coord {illumina,solexa,sra,454,presto}\n\
+  \                        The format of the sequence identifier which defines\n \
+  \                       shared coordinate information across mate pairs.\n     \
+  \                   (default: presto)\n\noutput files:\n    pair-pass\n        successfully\
+  \ paired reads with modified annotations.\n    pair-fail\n        raw reads that\
+  \ could not be assigned to a mate-pair.\n\noutput annotation fields:\n    <user\
+  \ defined>\n        annotation fields specified by the --1f or --2f arguments.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/presto:0.6.2--py_0

@@ -1,0 +1,98 @@
+!Command
+command:
+- datafunk
+- process_gisaid_data
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --input-json
+  description: Gisaid json data
+  args: !SimpleFlagArg
+    name: gisaid.json
+- !Flag
+  optional: true
+  synonyms:
+  - --input-metadata
+  description: previous metadata (can be 'False')
+  args: !SimpleFlagArg
+    name: metadata.in.csv
+- !Flag
+  optional: true
+  synonyms:
+  - --output-fasta
+  description: fasta format file to write.
+  args: !SimpleFlagArg
+    name: output.fasta
+- !Flag
+  optional: true
+  synonyms:
+  - --output-metadata
+  description: metadata file to write.
+  args: !SimpleFlagArg
+    name: metadata.out.csv
+- !Flag
+  optional: true
+  synonyms:
+  - --exclude-file
+  description: "A file that contains (anywhere) EPI_ISL_###### IDs to\nexclude (can\
+    \ provide many files, e.g. -e FILE1 -e\nFILE2 ...)"
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --exclude-uk
+  description: "Excludes GISAID entries from England, Ireland,\nScotland or Wales\
+    \ from being written to fasta (default\nis to include them)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --exclude-undated
+  description: "Excludes GISAID entries with an incomplete date from\nbeing written\
+    \ to fasta (default is to include them)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --include-subsampled
+  description: "Write GISAID entries previously flagged as duplicated\nto fasta (default\
+    \ is to exclude them)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --include-omitted-file
+  description: "Write GISAID entries excluded in --exclude-file FILE\nto fasta (default\
+    \ is to exclude them)\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "usage: datafunk process_gisaid_data --input-json <export.json> --input-metadata\
+  \ <in.csv>\n                 --output-fasta <out.fa> --output-metadata <out.csv>\
+  \ --exclude-file <omissions.txt> --exclude-uk --exclude-undated\n\nGisaid json (+\
+  \ metadata) -> (new) gisaid.fasta + metadata\n\nrequired arguments:\n  --input-json\
+  \ gisaid.json\n                        Gisaid json data\n  --input-metadata metadata.in.csv\n\
+  \                        previous metadata (can be 'False')\n\noptional arguments:\n\
+  \  --output-fasta output.fasta\n                        fasta format file to write.\n\
+  \  --output-metadata metadata.out.csv\n                        metadata file to\
+  \ write.\n  --exclude-file FILE   A file that contains (anywhere) EPI_ISL_######\
+  \ IDs to\n                        exclude (can provide many files, e.g. -e FILE1\
+  \ -e\n                        FILE2 ...)\n  --exclude-uk          Excludes GISAID\
+  \ entries from England, Ireland,\n                        Scotland or Wales from\
+  \ being written to fasta (default\n                        is to include them)\n\
+  \  --exclude-undated     Excludes GISAID entries with an incomplete date from\n\
+  \                        being written to fasta (default is to include them)\n \
+  \ --include-subsampled  Write GISAID entries previously flagged as duplicated\n\
+  \                        to fasta (default is to exclude them)\n  --include-omitted-file\n\
+  \                        Write GISAID entries excluded in --exclude-file FILE\n\
+  \                        to fasta (default is to exclude them)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/datafunk:0.0.8--pyh3252c3a_0

@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import String, File, Int, Boolean
+
+Pandoc_V0_1_0 = CommandToolBuilder(tool="pandoc", base_command=["pandoc"], inputs=[ToolInput(tag="in_strip_empty_paragraphs", input_type=String(optional=True), prefix="--strip-empty-paragraphs", doc=InputDocumentation(doc="|reject|all")), ToolInput(tag="in_v", input_type=String(optional=True), prefix="-V", doc=InputDocumentation(doc="[:VALUE]        --variable=KEY[:VALUE]")), ToolInput(tag="in_print_default_data_file", input_type=File(optional=True), prefix="--print-default-data-file", doc=InputDocumentation(doc="|FILE")), ToolInput(tag="in_dpi", input_type=Int(optional=True), prefix="--dpi", doc=InputDocumentation(doc="|lf|native")), ToolInput(tag="in_wrap", input_type=String(optional=True), prefix="--wrap", doc=InputDocumentation(doc="|none|preserve")), ToolInput(tag="in_table_of_contents", input_type=Int(optional=True), prefix="--table-of-contents", doc=InputDocumentation(doc="|FILE")), ToolInput(tag="in_include_before_body", input_type=File(optional=True), prefix="--include-before-body", doc=InputDocumentation(doc=":VALUE")), ToolInput(tag="in_reference_location", input_type=String(optional=True), prefix="--reference-location", doc=InputDocumentation(doc="|section|document")), ToolInput(tag="in_top_level_division", input_type=String(optional=True), prefix="--top-level-division", doc=InputDocumentation(doc="|chapter|part")), ToolInput(tag="in_default_image_extension", input_type=String(optional=True), prefix="--default-image-extension", doc=InputDocumentation(doc="|javascript|references")), ToolInput(tag="in_citation_abbreviations", input_type=String(optional=True), prefix="--citation-abbreviations", doc=InputDocumentation(doc="[=URL]")), ToolInput(tag="in_math_jax", input_type=Boolean(optional=True), prefix="--mathjax", doc=InputDocumentation(doc="[=URL]")), ToolInput(tag="in_kate_x", input_type=Boolean(optional=True), prefix="--katex", doc=InputDocumentation(doc="[=URL]")), ToolInput(tag="in_m", input_type=Boolean(optional=True), prefix="-m", doc=InputDocumentation(doc="[URL]               --latexmathml[=URL], --asciimathml[=URL]")), ToolInput(tag="in_mime_tex", input_type=Boolean(optional=True), prefix="--mimetex", doc=InputDocumentation(doc="[=URL]")), ToolInput(tag="in_js_math", input_type=Boolean(optional=True), prefix="--jsmath", doc=InputDocumentation(doc="[=URL]"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Pandoc_V0_1_0().translate("wdl", allow_empty_container=True)
+

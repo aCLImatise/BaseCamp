@@ -1,0 +1,301 @@
+!Command
+command:
+- find_enrichment.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: filenames
+  description: data/study data/population data/association
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --alpha
+  description: ": test-wise alpha; for each GO term, what significance level to apply\n\
+    (most often you don't need to change this other than 0.05 or 0.01)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pval
+  description: ": experiment-wise alpha; for the entire experiment, what significance\n\
+    level to apply after Bonferroni correction"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --annofmt
+  description: "Annotation file format. Not needed if type can be\ndetermined using\
+    \ filename (default: None)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      gene2go:
+      gaf:
+      gpad:
+      id2gos:
+- !Flag
+  optional: true
+  synonyms:
+  - --taxid
+  description: "When using NCBI's gene2go annotation file, specify\ndesired taxid\
+    \ (default: 9606)"
+  args: !SimpleFlagArg
+    name: TAXID
+- !Flag
+  optional: true
+  synonyms:
+  - --pval_field
+  description: "Only print results when PVAL_FIELD < PVAL. (default:\nNone)"
+  args: !SimpleFlagArg
+    name: PVAL_FIELD
+- !Flag
+  optional: true
+  synonyms:
+  - --outfile
+  description: "Write enrichment results into xlsx or tsv file\n(default: None)"
+  args: !SimpleFlagArg
+    name: OUTFILE
+- !Flag
+  optional: true
+  synonyms:
+  - --ns
+  description: "Limit GOEA to specified branch categories.\nBP=Biological Process;\
+    \ MF=Molecular Function;\nCC=Cellular Component (default: BP,MF,CC)"
+  args: !SimpleFlagArg
+    name: NS
+- !Flag
+  optional: true
+  synonyms:
+  - --id2sym
+  description: "ASCII file containing one geneid and its symbol per\nline (default:\
+    \ None)"
+  args: !SimpleFlagArg
+    name: ID2SYM
+- !Flag
+  optional: true
+  synonyms:
+  - --sections
+  description: "Use sections file for printing grouped GOEA results.\nExample SECTIONS\
+    \ values:\ngoatools.test_data.sections.gjoneska_pfenning\ngoatools/test_data/sections/gjoneska_pfenning.py\n\
+    data/gjoneska_pfenning/sections_in.txt (default: None)"
+  args: !SimpleFlagArg
+    name: SECTIONS
+- !Flag
+  optional: true
+  synonyms:
+  - --outfile_detail
+  description: "Write enrichment results into a text file containing\nthe following\
+    \ information: 1) GOEA GO terms, grouped\ninto sections 2) List of genes and ASCII\
+    \ art showing\nsection membership 3) Detailed list of each gene and\nGO terms\
+    \ w/their P-values (default: None)"
+  args: !SimpleFlagArg
+    name: OUTFILE_DETAIL
+- !Flag
+  optional: true
+  synonyms:
+  - --compare
+  description: "the population file as a comparison group. if this\nflag is specified,\
+    \ the population is used as the study\nplus the `population/comparison` (default:\
+    \ False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ratio
+  description: "only show values where the difference between study\nand population\
+    \ ratios is greater than this. useful for\nexcluding GO categories with small\
+    \ differences, but\ncontaining large numbers of genes. should be a value\nbetween\
+    \ 1 and 2. (default: None)"
+  args: !SimpleFlagArg
+    name: RATIO
+- !Flag
+  optional: true
+  synonyms:
+  - --prt_study_gos_only
+  description: "Print GO terms only if they are associated with study\ngenes. This\
+    \ is useful if printng all GO results\nregardless of their significance (--pval=1.0).\n\
+    (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --indent
+  description: 'indent GO terms (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --obo
+  description: "Specifies location and name of the obo file (default:\ngo-basic.obo)"
+  args: !SimpleFlagArg
+    name: OBO
+- !Flag
+  optional: true
+  synonyms:
+  - --no_propagate_counts
+  description: "Do not propagate counts to parent terms (default:\nFalse)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --relationship
+  description: "Propagate counts up all relationships, (default:\nFalse)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --relationships
+  description: "[RELATIONSHIPS ...]\nPropagate counts up user-specified relationships,\n\
+    which include: part_of regulates negatively_regulates\npositively_regulates (default:\
+    \ None)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --method
+  description: "Available methods: local( bonferroni sidak holm fdr )\nstatsmodels(\
+    \ sm_bonferroni sm_sidak holm_sidak sm_holm\nsimes_hochberg hommel fdr_bh fdr_by\
+    \ fdr_tsbh fdr_tsbky\nfdr_gbs ) (default: bonferroni,sidak,holm,fdr_bh)"
+  args: !SimpleFlagArg
+    name: METHOD
+- !Flag
+  optional: true
+  synonyms:
+  - --pvalcalc
+  description: 'fisher fisher_scipy_stats (default: fisher)'
+  args: !SimpleFlagArg
+    name: PVALCALC
+- !Flag
+  optional: true
+  synonyms:
+  - --min_overlap
+  description: "Check that a minimum amount of study genes are in the\npopulation\
+    \ (default: 0.7)"
+  args: !SimpleFlagArg
+    name: MIN_OVERLAP
+- !Flag
+  optional: true
+  synonyms:
+  - --goslim
+  description: "The GO slim file is used when grouping GO terms.\n(default: goslim_generic.obo)"
+  args: !SimpleFlagArg
+    name: GOSLIM
+- !Flag
+  optional: true
+  synonyms:
+  - --ev_inc
+  description: "Include specified evidence codes and groups separated\nby commas (default:\
+    \ None)"
+  args: !SimpleFlagArg
+    name: EV_INC
+- !Flag
+  optional: true
+  synonyms:
+  - --ev_exc
+  description: "Exclude specified evidence codes and groups separated\nby commas (default:\
+    \ None)"
+  args: !SimpleFlagArg
+    name: EV_EXC
+- !Flag
+  optional: true
+  synonyms:
+  - --ev_help
+  description: "Print all Evidence codes, with descriptions (default:\nTrue)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ev_help_short
+  description: 'Print all Evidence codes (default: True)'
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "fisher module not installed.  Falling back on scipy.stats.fisher_exact\n\
+  usage: \npython find_enrichment.py study.file population.file gene-association.file\n\
+  \nThis program returns P-values for functional enrichment in a cluster of study\n\
+  genes using Fisher's exact test, and corrected for multiple testing (including\n\
+  Bonferroni, Holm, Sidak, and false discovery rate).\n\nAbout significance cutoff:\n\
+  --alpha: test-wise alpha; for each GO term, what significance level to apply\n \
+  \       (most often you don't need to change this other than 0.05 or 0.01)\n--pval:\
+  \ experiment-wise alpha; for the entire experiment, what significance\n        level\
+  \ to apply after Bonferroni correction\n\n       [-h] [--annofmt {gene2go,gaf,gpad,id2gos}]\
+  \ [--taxid TAXID]\n       [--alpha ALPHA] [--pval PVAL] [--pval_field PVAL_FIELD]\n\
+  \       [--outfile OUTFILE] [--ns NS] [--id2sym ID2SYM] [--sections SECTIONS]\n\
+  \       [--outfile_detail OUTFILE_DETAIL] [--compare] [--ratio RATIO]\n       [--prt_study_gos_only]\
+  \ [--indent] [--obo OBO] [--no_propagate_counts]\n       [-r] [--relationships [RELATIONSHIPS\
+  \ ...]] [--method METHOD]\n       [--pvalcalc PVALCALC] [--min_overlap MIN_OVERLAP]\
+  \ [--goslim GOSLIM]\n       [--ev_inc EV_INC] [--ev_exc EV_EXC] [--ev_help] [--ev_help_short]\n\
+  \       filenames filenames filenames\n\npositional arguments:\n  filenames    \
+  \         data/study data/population data/association\n\noptional arguments:\n \
+  \ -h, --help            show this help message and exit\n  --annofmt {gene2go,gaf,gpad,id2gos}\n\
+  \                        Annotation file format. Not needed if type can be\n   \
+  \                     determined using filename (default: None)\n  --taxid TAXID\
+  \         When using NCBI's gene2go annotation file, specify\n                 \
+  \       desired taxid (default: 9606)\n  --alpha ALPHA         Test-wise alpha for\
+  \ multiple testing (default: 0.05)\n  --pval PVAL           Only print results with\
+  \ uncorrected p-value < PVAL.\n                        Print all results, significant\
+  \ and otherwise, by\n                        setting --pval=1.0 (default: 0.05)\n\
+  \  --pval_field PVAL_FIELD\n                        Only print results when PVAL_FIELD\
+  \ < PVAL. (default:\n                        None)\n  --outfile OUTFILE     Write\
+  \ enrichment results into xlsx or tsv file\n                        (default: None)\n\
+  \  --ns NS               Limit GOEA to specified branch categories.\n          \
+  \              BP=Biological Process; MF=Molecular Function;\n                 \
+  \       CC=Cellular Component (default: BP,MF,CC)\n  --id2sym ID2SYM       ASCII\
+  \ file containing one geneid and its symbol per\n                        line (default:\
+  \ None)\n  --sections SECTIONS   Use sections file for printing grouped GOEA results.\n\
+  \                        Example SECTIONS values:\n                        goatools.test_data.sections.gjoneska_pfenning\n\
+  \                        goatools/test_data/sections/gjoneska_pfenning.py\n    \
+  \                    data/gjoneska_pfenning/sections_in.txt (default: None)\n  --outfile_detail\
+  \ OUTFILE_DETAIL\n                        Write enrichment results into a text file\
+  \ containing\n                        the following information: 1) GOEA GO terms,\
+  \ grouped\n                        into sections 2) List of genes and ASCII art\
+  \ showing\n                        section membership 3) Detailed list of each gene\
+  \ and\n                        GO terms w/their P-values (default: None)\n  --compare\
+  \             the population file as a comparison group. if this\n             \
+  \           flag is specified, the population is used as the study\n           \
+  \             plus the `population/comparison` (default: False)\n  --ratio RATIO\
+  \         only show values where the difference between study\n                \
+  \        and population ratios is greater than this. useful for\n              \
+  \          excluding GO categories with small differences, but\n               \
+  \         containing large numbers of genes. should be a value\n               \
+  \         between 1 and 2. (default: None)\n  --prt_study_gos_only  Print GO terms\
+  \ only if they are associated with study\n                        genes. This is\
+  \ useful if printng all GO results\n                        regardless of their\
+  \ significance (--pval=1.0).\n                        (default: False)\n  --indent\
+  \              indent GO terms (default: False)\n  --obo OBO             Specifies\
+  \ location and name of the obo file (default:\n                        go-basic.obo)\n\
+  \  --no_propagate_counts\n                        Do not propagate counts to parent\
+  \ terms (default:\n                        False)\n  -r, --relationship    Propagate\
+  \ counts up all relationships, (default:\n                        False)\n  --relationships\
+  \ [RELATIONSHIPS ...]\n                        Propagate counts up user-specified\
+  \ relationships,\n                        which include: part_of regulates negatively_regulates\n\
+  \                        positively_regulates (default: None)\n  --method METHOD\
+  \       Available methods: local( bonferroni sidak holm fdr )\n                \
+  \        statsmodels( sm_bonferroni sm_sidak holm_sidak sm_holm\n              \
+  \          simes_hochberg hommel fdr_bh fdr_by fdr_tsbh fdr_tsbky\n            \
+  \            fdr_gbs ) (default: bonferroni,sidak,holm,fdr_bh)\n  --pvalcalc PVALCALC\
+  \   fisher fisher_scipy_stats (default: fisher)\n  --min_overlap MIN_OVERLAP\n \
+  \                       Check that a minimum amount of study genes are in the\n\
+  \                        population (default: 0.7)\n  --goslim GOSLIM       The\
+  \ GO slim file is used when grouping GO terms.\n                        (default:\
+  \ goslim_generic.obo)\n  --ev_inc EV_INC       Include specified evidence codes\
+  \ and groups separated\n                        by commas (default: None)\n  --ev_exc\
+  \ EV_EXC       Exclude specified evidence codes and groups separated\n         \
+  \               by commas (default: None)\n  --ev_help             Print all Evidence\
+  \ codes, with descriptions (default:\n                        True)\n  --ev_help_short\
+  \       Print all Evidence codes (default: True)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/goatools:1.0.15--pyh3252c3a_0

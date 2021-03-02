@@ -1,0 +1,278 @@
+!Command
+command:
+- utgcns
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: INPUT
+  description: -S g            Load reads from seqStore 'g'
+- !Positional
+  optional: false
+  position: 1
+  name: ALGORITHM
+  description: "-quick          Stitch reads together to cover the contig.  The bases\
+    \ in the contig\nis formed from exactly one read; no consensus sequence is computed.\n\
+    This is useful for checking intermediate assembly structure by mapping\nto reference,\
+    \ or as input to a polishing step.  Read positions will be\nincorrect, and no\
+    \ BAM output is possible."
+- !Positional
+  optional: false
+  position: 2
+  name: ALIGNER
+  description: "-edlib          Myers' O(ND) algorithm from Edlib (https://github.com/Martinsos/edlib).\n\
+    This is the default (and, yes, there is no non-default aligner)."
+- !Positional
+  optional: false
+  position: 3
+  name: OUTPUT
+  description: -O results      Write computed tigs to binary output file 'results'
+- !Positional
+  optional: false
+  position: 0
+  name: PARAMETERS
+  description: -e e            Expect alignments at up to fraction e error
+- !Positional
+  optional: false
+  position: 1
+  name: LOGGING
+  description: -v              Show multialigns.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  description: Load reads from partition file 'f'
+  args: !SimpleFlagArg
+    name: f
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  description: v          Load tig from tigStore 't'.
+  args: !SimpleFlagArg
+    name: t
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: "Test the computation of the tig layout in 'file'\n'file' can be from:\n\
+    'tgStoreDump -d layout' (human readable layout format)\n'utgcns -L'          \
+    \   (human readable layout format)\n'utgcns -O'             (binary multialignment\
+    \ format)"
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -import
+  description: "Load tig and reads from file 'name' created with -export.  This\n\
+    is usually used by developers."
+  args: !SimpleFlagArg
+    name: name
+- !Flag
+  optional: true
+  synonyms:
+  - -partition
+  description: "b c\nCreate partitions in the tigStore.  Canu uses a=0.8 b=1.0 c=0.1.\n\
+    a - Set partition size to be 'a * largest_tig'.  Any tig larger\nthan this size\
+    \ is placed entirely in one partition; it is not\nsplit between partitions.\n\
+    b - Scale each tig by 'b' when computing its size.  Only really useful\nfor adjusting\
+    \ for homopolymer compression; b=1.5 suggested.\nc - Allow up to 'c * NR' reads\
+    \ per partition, where NR is the number\nof reads in the assembly."
+  args: !SimpleFlagArg
+    name: a
+- !Flag
+  optional: true
+  synonyms:
+  - -pbdagcon
+  description: "Use pbdagcon (https://github.com/PacificBiosciences/pbdagcon).\nThis\
+    \ is fast and robust.  It is the default algorithm.  It does not\ngenerate a final\
+    \ multialignment output (the -v option will not show\nanything useful)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -norealign
+  description: Disable alignment of reads back to the final consensus sequence.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  description: Write computed tigs to layout output file 'layouts'
+  args: !SimpleFlagArg
+    name: layouts
+- !Flag
+  optional: true
+  synonyms:
+  - -A
+  description: Write computed tigs to fasta  output file 'fasta'
+  args: !SimpleFlagArg
+    name: fasta
+- !Flag
+  optional: true
+  synonyms:
+  - -Q
+  description: Write computed tigs to fastq  output file 'fastq'
+  args: !SimpleFlagArg
+    name: fastq
+- !Flag
+  optional: true
+  synonyms:
+  - -export
+  description: "Create a copy of the inputs needed to compute the tigs.  This\nfile\
+    \ can then be sent to the developers for debugging.  The tig(s)\nare not processed\
+    \ and no other outputs are created.  Ideally,\nonly one tig is selected (-u, below)."
+  args: !SimpleFlagArg
+    name: name
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  description: Alias for -tig
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -minlength
+  description: Do not compute consensus for tigs shorter than l bases.
+  args: !SimpleFlagArg
+    name: l
+- !Flag
+  optional: true
+  synonyms:
+  - -maxlength
+  description: Do not compute consensus for tigs longer than l bases.
+  args: !SimpleFlagArg
+    name: l
+- !Flag
+  optional: true
+  synonyms:
+  - -onlyunassem
+  description: Only compute consensus for unassembled tigs.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -onlycontig
+  description: Only compute consensus for real unitigs/contigs.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -norepeat
+  description: Do not compute consensus for repeat tigs.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -nobubble
+  description: Do not compute consensus for bubble tigs.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -nosingleton
+  description: Do not compute consensus for singleton (single-read) tigs.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -em
+  description: Don't ever allow alignments more than fraction m error
+  args: !SimpleFlagArg
+    name: m
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: Expect alignments of at least l bases
+  args: !SimpleFlagArg
+    name: l
+- !Flag
+  optional: true
+  synonyms:
+  - -maxcoverage
+  description: "Use non-contained reads and the longest contained reads, up to\nC\
+    \ coverage, for consensus generation.  The default is 0, and will\nuse all reads."
+  args: !SimpleFlagArg
+    name: c
+- !Flag
+  optional: true
+  synonyms:
+  - -threads
+  description: Use 't' compute threads; default 1.
+  args: !SimpleFlagArg
+    name: t
+- !Flag
+  optional: true
+  synonyms:
+  - -V
+  description: Enable debugging option 'verbosemultialign'.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "usage: utgcns [opts]\n\n  INPUT\n    -S g            Load reads from seqStore\
+  \ 'g'\n    -R f            Load reads from partition file 'f'\n    -T t v      \
+  \    Load tig from tigStore 't'.\n    -t file         Test the computation of the\
+  \ tig layout in 'file'\n                      'file' can be from:\n            \
+  \            'tgStoreDump -d layout' (human readable layout format)\n          \
+  \              'utgcns -L'             (human readable layout format)\n        \
+  \                'utgcns -O'             (binary multialignment format)\n\n    -import\
+  \ name    Load tig and reads from file 'name' created with -export.  This\n    \
+  \                is usually used by developers.\n\n\n    -partition a b c\n    \
+  \                Create partitions in the tigStore.  Canu uses a=0.8 b=1.0 c=0.1.\n\
+  \                      a - Set partition size to be 'a * largest_tig'.  Any tig\
+  \ larger\n                          than this size is placed entirely in one partition;\
+  \ it is not\n                          split between partitions.\n             \
+  \         b - Scale each tig by 'b' when computing its size.  Only really useful\n\
+  \                          for adjusting for homopolymer compression; b=1.5 suggested.\n\
+  \                      c - Allow up to 'c * NR' reads per partition, where NR is\
+  \ the number\n                          of reads in the assembly.\n\n  ALGORITHM\n\
+  \    -quick          Stitch reads together to cover the contig.  The bases in the\
+  \ contig\n                    is formed from exactly one read; no consensus sequence\
+  \ is computed.\n                    This is useful for checking intermediate assembly\
+  \ structure by mapping\n                    to reference, or as input to a polishing\
+  \ step.  Read positions will be\n                    incorrect, and no BAM output\
+  \ is possible.\n\n    -pbdagcon       Use pbdagcon (https://github.com/PacificBiosciences/pbdagcon).\n\
+  \                    This is fast and robust.  It is the default algorithm.  It\
+  \ does not\n                    generate a final multialignment output (the -v option\
+  \ will not show\n                    anything useful).\n\n    -norealign      Disable\
+  \ alignment of reads back to the final consensus sequence.\n\n\n  ALIGNER\n    -edlib\
+  \          Myers' O(ND) algorithm from Edlib (https://github.com/Martinsos/edlib).\n\
+  \                    This is the default (and, yes, there is no non-default aligner).\n\
+  \n  OUTPUT\n    -O results      Write computed tigs to binary output file 'results'\n\
+  \    -L layouts      Write computed tigs to layout output file 'layouts'\n    -A\
+  \ fasta        Write computed tigs to fasta  output file 'fasta'\n    -Q fastq \
+  \       Write computed tigs to fastq  output file 'fastq'\n\n    -export name  \
+  \  Create a copy of the inputs needed to compute the tigs.  This\n             \
+  \       file can then be sent to the developers for debugging.  The tig(s)\n   \
+  \                 are not processed and no other outputs are created.  Ideally,\n\
+  \                    only one tig is selected (-u, below).\n\n  TIG SELECTION (if\
+  \ -T input is used)\n    -tig b          Compute only tig ID 'b' (must be in the\
+  \ correct partition!)\n    -tig b-e        Compute only tigs from ID 'b' to ID 'e'\n\
+  \    -u              Alias for -tig\n    -minlength l    Do not compute consensus\
+  \ for tigs shorter than l bases.\n    -maxlength l    Do not compute consensus for\
+  \ tigs longer than l bases.\n\n    -onlyunassem    Only compute consensus for unassembled\
+  \ tigs.\n    -onlycontig     Only compute consensus for real unitigs/contigs.\n\n\
+  \    -norepeat       Do not compute consensus for repeat tigs.\n    -nobubble  \
+  \     Do not compute consensus for bubble tigs.\n    -nosingleton    Do not compute\
+  \ consensus for singleton (single-read) tigs.\n\n  PARAMETERS\n    -e e        \
+  \    Expect alignments at up to fraction e error\n    -em m           Don't ever\
+  \ allow alignments more than fraction m error\n    -l l            Expect alignments\
+  \ of at least l bases\n    -maxcoverage c  Use non-contained reads and the longest\
+  \ contained reads, up to\n                    C coverage, for consensus generation.\
+  \  The default is 0, and will\n                    use all reads.\n    -threads\
+  \ t      Use 't' compute threads; default 1.\n\n  LOGGING\n    -v              Show\
+  \ multialigns.\n    -V              Enable debugging option 'verbosemultialign'.\n\
+  \nUnknown option '--help'.\nERROR:  No sequence data!  Need one of seqStore (-S),\
+  \ read file (-R) or package (-p).\nERROR:  No tigStore (-T) OR no test tig (-t)\
+  \ OR no package (-p) supplied.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/canu:2.1.1--he1b5a44_1

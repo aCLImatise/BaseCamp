@@ -1,0 +1,284 @@
+!Command
+command:
+- hicPlotMatrix
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --matrix
+  - -m
+  description: Path of the Hi-C matrix to plot.
+  args: !SimpleFlagArg
+    name: MATRIX
+- !Flag
+  optional: true
+  synonyms:
+  - --outFileName
+  - -out
+  description: File name to save the image.
+  args: !SimpleFlagArg
+    name: OUTFILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --title
+  - -t
+  description: Plot title.
+  args: !SimpleFlagArg
+    name: TITLE
+- !Flag
+  optional: true
+  synonyms:
+  - --scoreName
+  - -s
+  description: Score name label for the heatmap legend.
+  args: !SimpleFlagArg
+    name: SCORENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --perChromosome
+  description: "Instead of plotting the whole matrix, each chromosome\nis plotted\
+    \ next to the other. This parameter is not\ncompatible with --region."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --clearMaskedBins
+  description: "If set, masked bins are removed from the matrix and\nthe nearest bins\
+    \ are extended to cover the empty space\ninstead of plotting black lines."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --chromosomeOrder
+  description: "Chromosomes and order in which the chromosomes should\nbe plotted.\
+    \ This option overrides --region and\n--region2."
+  args: !RepeatFlagArg
+    name: CHROMOSOMEORDER
+- !Flag
+  optional: true
+  synonyms:
+  - --region
+  description: "Plot only this region. The format is chr:start-end The\nplotted region\
+    \ contains the main diagonal and is\nsymmetric unless --region2 is given."
+  args: !SimpleFlagArg
+    name: REGION
+- !Flag
+  optional: true
+  synonyms:
+  - --region1.
+  - --log1p
+  description: Plot the log1p of the matrix values.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --log
+  description: Plot the *MINUS* log of the matrix values.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --colorMap
+  description: "Color map to use for the heatmap. Available values can\nbe seen here:\
+    \ http://matplotlib.org/examples/color/col\normaps_reference.html (Default: RdYlBu_r)."
+  args: !SimpleFlagArg
+    name: COLORMAP
+- !Flag
+  optional: true
+  synonyms:
+  - --vMin
+  description: Minimum score value.
+  args: !SimpleFlagArg
+    name: VMIN
+- !Flag
+  optional: true
+  synonyms:
+  - --vMax
+  description: Maximum score value.
+  args: !SimpleFlagArg
+    name: VMAX
+- !Flag
+  optional: true
+  synonyms:
+  - --dpi
+  description: "Resolution for the image in case theoutput is a raster\ngraphics image\
+    \ (e.g png, jpg) (Default: 72)."
+  args: !SimpleFlagArg
+    name: DPI
+- !Flag
+  optional: true
+  synonyms:
+  - --bigwig
+  description: "Bigwig file to plot below the matrix. This can for\nexample be used\
+    \ to visualize A/B compartments or ChIP-\nseq data."
+  args: !RepeatFlagArg
+    name: BIGWIG
+- !Flag
+  optional: true
+  synonyms:
+  - --bigwigAdditionalVerticalAxis
+  description: "Add an additional axis to determine the values of a\nbigwig file in\
+    \ 2D better."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --vMinBigwig
+  description: Minimum score value for bigwig.
+  args: !SimpleFlagArg
+    name: VMINBIGWIG
+- !Flag
+  optional: true
+  synonyms:
+  - --vMaxBigwig
+  description: Maximum score value for bigwig
+  args: !SimpleFlagArg
+    name: VMAXBIGWIG
+- !Flag
+  optional: true
+  synonyms:
+  - --flipBigwigSign
+  description: "The sign of the bigwig values are flipped. Useful if\nhicPCA gives\
+    \ inverted values."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --scaleFactorBigwig
+  description: "Scale the values of a bigwig file by the given factor\n(Default: 1.0)."
+  args: !SimpleFlagArg
+    name: SCALEFACTORBIGWIG
+- !Flag
+  optional: true
+  synonyms:
+  - --fontsize
+  description: 'Fontsize in the plot for x and y axis (Default: 10).'
+  args: !SimpleFlagArg
+    name: FONTSIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --rotationX
+  description: "Rotation in degrees for the labels of x axis (Default:\n0)."
+  args: !SimpleFlagArg
+    name: ROTATIONX
+- !Flag
+  optional: true
+  synonyms:
+  - --rotationY
+  description: "Rotation in degrees for the labels of y axis (Default:\n0)."
+  args: !SimpleFlagArg
+    name: ROTATIONY
+- !Flag
+  optional: true
+  synonyms:
+  - --increaseFigureWidth
+  description: "Plotting additional bigwig tracks can cause\ncompression in x or y\
+    \ direction of the heatmap. Set\nthis factor to a value unequal to 0 to correct\
+    \ this\n(Default: 0.5)."
+  args: !SimpleFlagArg
+    name: INCREASEFIGUREWIDTH
+- !Flag
+  optional: true
+  synonyms:
+  - --increaseFigureHeight
+  description: "Plotting additional bigwig tracks can cause\ncompression in x or y\
+    \ direction of the heatmap. Set\nthis factor to a value unequal to 0 to correct\
+    \ this\n(Default: 0.5)."
+  args: !SimpleFlagArg
+    name: INCREASEFIGUREHEIGHT
+- !Flag
+  optional: true
+  synonyms:
+  - --loops
+  description: "Bedgraph file to plot detected long range contacts\nfrom hicDetectLoops."
+  args: !SimpleFlagArg
+    name: LOOPS
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: hicPlotMatrix --matrix MATRIX --outFileName OUTFILENAME [--title\
+  \ TITLE]\n                     [--scoreName SCORENAME] [--perChromosome]\n     \
+  \                [--clearMaskedBins]\n                     [--chromosomeOrder CHROMOSOMEORDER\
+  \ [CHROMOSOMEORDER ...]]\n                     [--region REGION] [--region2 REGION2]\
+  \ [--log1p] [--log]\n                     [--colorMap COLORMAP] [--vMin VMIN] [--vMax\
+  \ VMAX]\n                     [--dpi DPI] [--bigwig BIGWIG [BIGWIG ...]]\n     \
+  \                [--bigwigAdditionalVerticalAxis]\n                     [--vMinBigwig\
+  \ VMINBIGWIG] [--vMaxBigwig VMAXBIGWIG]\n                     [--flipBigwigSign]\n\
+  \                     [--scaleFactorBigwig SCALEFACTORBIGWIG]\n                \
+  \     [--fontsize FONTSIZE] [--rotationX ROTATIONX]\n                     [--rotationY\
+  \ ROTATIONY]\n                     [--increaseFigureWidth INCREASEFIGUREWIDTH]\n\
+  \                     [--increaseFigureHeight INCREASEFIGUREHEIGHT]\n          \
+  \           [--loops LOOPS] [--help] [--version]\n\nCreates a heatmap of a Hi-C\
+  \ matrix.\n\nRequired arguments:\n  --matrix MATRIX, -m MATRIX\n               \
+  \         Path of the Hi-C matrix to plot.\n  --outFileName OUTFILENAME, -out OUTFILENAME\n\
+  \                        File name to save the image.\n\nOptional arguments:\n \
+  \ --title TITLE, -t TITLE\n                        Plot title.\n  --scoreName SCORENAME,\
+  \ -s SCORENAME\n                        Score name label for the heatmap legend.\n\
+  \  --perChromosome       Instead of plotting the whole matrix, each chromosome\n\
+  \                        is plotted next to the other. This parameter is not\n \
+  \                       compatible with --region.\n  --clearMaskedBins     If set,\
+  \ masked bins are removed from the matrix and\n                        the nearest\
+  \ bins are extended to cover the empty space\n                        instead of\
+  \ plotting black lines.\n  --chromosomeOrder CHROMOSOMEORDER [CHROMOSOMEORDER ...]\n\
+  \                        Chromosomes and order in which the chromosomes should\n\
+  \                        be plotted. This option overrides --region and\n      \
+  \                  --region2.\n  --region REGION       Plot only this region. The\
+  \ format is chr:start-end The\n                        plotted region contains the\
+  \ main diagonal and is\n                        symmetric unless --region2 is given.\n\
+  \  --region2 REGION2     If given, then only the region defined by --region and\n\
+  \                        --region2 is given. The format is the same as\n       \
+  \                 --region1.\n  --log1p               Plot the log1p of the matrix\
+  \ values.\n  --log                 Plot the *MINUS* log of the matrix values.\n\
+  \  --colorMap COLORMAP   Color map to use for the heatmap. Available values can\n\
+  \                        be seen here: http://matplotlib.org/examples/color/col\n\
+  \                        ormaps_reference.html (Default: RdYlBu_r).\n  --vMin VMIN\
+  \           Minimum score value.\n  --vMax VMAX           Maximum score value.\n\
+  \  --dpi DPI             Resolution for the image in case theoutput is a raster\n\
+  \                        graphics image (e.g png, jpg) (Default: 72).\n  --bigwig\
+  \ BIGWIG [BIGWIG ...]\n                        Bigwig file to plot below the matrix.\
+  \ This can for\n                        example be used to visualize A/B compartments\
+  \ or ChIP-\n                        seq data.\n  --bigwigAdditionalVerticalAxis\n\
+  \                        Add an additional axis to determine the values of a\n \
+  \                       bigwig file in 2D better.\n  --vMinBigwig VMINBIGWIG\n \
+  \                       Minimum score value for bigwig.\n  --vMaxBigwig VMAXBIGWIG\n\
+  \                        Maximum score value for bigwig\n  --flipBigwigSign    \
+  \  The sign of the bigwig values are flipped. Useful if\n                      \
+  \  hicPCA gives inverted values.\n  --scaleFactorBigwig SCALEFACTORBIGWIG\n    \
+  \                    Scale the values of a bigwig file by the given factor\n   \
+  \                     (Default: 1.0).\n  --fontsize FONTSIZE   Fontsize in the plot\
+  \ for x and y axis (Default: 10).\n  --rotationX ROTATIONX\n                   \
+  \     Rotation in degrees for the labels of x axis (Default:\n                 \
+  \       0).\n  --rotationY ROTATIONY\n                        Rotation in degrees\
+  \ for the labels of y axis (Default:\n                        0).\n  --increaseFigureWidth\
+  \ INCREASEFIGUREWIDTH\n                        Plotting additional bigwig tracks\
+  \ can cause\n                        compression in x or y direction of the heatmap.\
+  \ Set\n                        this factor to a value unequal to 0 to correct this\n\
+  \                        (Default: 0.5).\n  --increaseFigureHeight INCREASEFIGUREHEIGHT\n\
+  \                        Plotting additional bigwig tracks can cause\n         \
+  \               compression in x or y direction of the heatmap. Set\n          \
+  \              this factor to a value unequal to 0 to correct this\n           \
+  \             (Default: 0.5).\n  --loops LOOPS         Bedgraph file to plot detected\
+  \ long range contacts\n                        from hicDetectLoops.\n  --help, -h\
+  \            show this help message and exit\n  --version             show program's\
+  \ version number and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/hicexplorer:3.6--py_0

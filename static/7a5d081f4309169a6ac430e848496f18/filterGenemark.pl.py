@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Int, File, Boolean
+
+Filtergenemark_Pl_V0_1_0 = CommandToolBuilder(tool="filterGenemark.pl", base_command=["filterGenemark.pl"], inputs=[ToolInput(tag="in_hints", input_type=Int(optional=True), prefix="--hints", doc=InputDocumentation(doc="Corresponding hints file in gff format;\nit is vital that this file contains intron\nhints; start/stop hints are optional;\ndo not mix start/stop hints with --singleCDSfile\n(this might double the number of evidence supported\nsingle exon genes)")), ToolInput(tag="in_genemark", input_type=File(optional=True), prefix="--genemark", doc=InputDocumentation(doc="File in gtf format")), ToolInput(tag="in_output", input_type=File(optional=True), prefix="--output", doc=InputDocumentation(doc="Specifies output file name. Default are\n'genemark-input_file_name.c.gtf'\nand 'genemark-input_file_name.f.good.gtf'\nand 'genemark-input_file_name.f.bad.gtf' for\nevidence anchored genes and genes not anchored by\nevidence (but included in the output file), respectively")), ToolInput(tag="in_suppress", input_type=File(optional=True), prefix="--suppress", doc=InputDocumentation(doc="Suppress file output")), ToolInput(tag="in_filter_out_short", input_type=Boolean(optional=True), prefix="--filterOutShort", doc=InputDocumentation(doc="Filters intron containing genes as 'bad' that\nhave an RNA-Seq supported intron\nwithin 2*maximal CDS length of the gene with at\nleast 20% of average intron\nmultiplicity for that gene (screens also\ndownstream of stop, which either indicates\nwrong reading frame, or a downstream UTR)")), ToolInput(tag="in_single_cds_file", input_type=Int(optional=True), prefix="--singleCDSfile", doc=InputDocumentation(doc="file with single exon genes CDSpart hints, they\nare used to filter single exon training genes as\n'good'. If number is not sufficient, unsupported\ngenes are still added to 'good genes' in order\nto generate a good training gene set for\nAUGUSTUS")), ToolInput(tag="in_cds_part_cut_off", input_type=Int(optional=True), prefix="--cdspart_cutoff", doc=InputDocumentation(doc="CDSpart cutoff that was used for generating hints\ndefault 15"))], outputs=[ToolOutput(tag="out_suppress", output_type=File(optional=True), selector=InputSelector(input_to_select="in_suppress", type_hint=File()), doc=OutputDocumentation(doc="Suppress file output"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Filtergenemark_Pl_V0_1_0().translate("wdl", allow_empty_container=True)
+

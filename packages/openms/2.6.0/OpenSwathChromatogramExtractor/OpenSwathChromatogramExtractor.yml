@@ -1,0 +1,163 @@
+!Command
+command:
+- OpenSwathChromatogramExtractor
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -in
+  description: "*                   Input files separated by blank (valid formats:\
+    \ 'mzML')"
+  args: !SimpleFlagArg
+    name: files
+- !Flag
+  optional: true
+  synonyms:
+  - -tr
+  description: "*                    Transition file ('TraML' or 'csv') (valid formats:\
+    \ 'csv', 'traML')"
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -rt_norm
+  description: "RT normalization file (how to map the RTs of this run to the ones\
+    \ stored in the library) (valid formats: 'trafoXML')"
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -out
+  description: "*                   Output file (valid formats: 'mzML')"
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -min_upper_edge_dist
+  description: "Minimal distance to the edge to still consider a precursor, in Thomson\
+    \ (default: '0.0')"
+  args: !SimpleFlagArg
+    name: double
+- !Flag
+  optional: true
+  synonyms:
+  - -rt_window
+  description: "Extraction window in RT dimension (-1 means extract over the whole\
+    \ range). This is the full window size, e.g. a value of 1000 seconds would extract\
+    \ 500 seconds on either side. (default: '-1.0')"
+  args: !SimpleFlagArg
+    name: double
+- !Flag
+  optional: true
+  synonyms:
+  - -ion_mobility_window
+  description: "Extraction window in ion mobility dimension (in milliseconds). This\
+    \ is the full window size, e.g. a value of 10 milliseconds would extract 5 milliseconds\
+    \ on either side. (default: '-1.0')"
+  args: !SimpleFlagArg
+    name: double
+- !Flag
+  optional: true
+  synonyms:
+  - -mz_window
+  description: "Extraction window in m/z dimension (in Thomson, to use ppm see -ppm\
+    \ flag). This is the full window size, e.g. 100 ppm would extract 50 ppm on either\
+    \ side. (default: '0.05' min: '0.0')"
+  args: !SimpleFlagArg
+    name: double
+- !Flag
+  optional: true
+  synonyms:
+  - -ppm
+  description: M/z extraction_window is in ppm
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -is_swath
+  description: Set this flag if the data is SWATH data
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -extract_MS1
+  description: Extract the MS1 transitions based on the precursor values in the TraML
+    file (useful for extracting MS1 XIC)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ini
+  description: Use the given TOPP INI file
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -threads
+  description: "Sets the number of threads allowed to be used by the TOPP tool (default:\
+    \ '1')"
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - -write_ini
+  description: Writes the default configuration file
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - --helphelp
+  description: Shows all options (including advanced)
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Shows options
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "\nstty: standard input: Inappropriate ioctl for device\nOpenSwathChromatogramExtractor\
+  \ -- Extract chromatograms (XIC) from a MS2 map file.\nFull documentation: http://www.openms.de/documentation/TOPP_OpenSwathChromatogramExtractor.html\n\
+  Version: 2.6.0-pre-exported-20201001 Oct  1 2020, 01:37:06\nTo cite OpenMS:\n  Rost\
+  \ HL, Sachsenberg T, Aiche S, Bielow C et al.. OpenMS: a flexible open-source software\
+  \ platform for mass spectrometry data analysis. Nat Meth. 2016; 13, 9: 741-748.\
+  \ doi:10.1038/nmeth.3959.\n\nUsage:\n  OpenSwathChromatogramExtractor <options>\n\
+  \nOptions (mandatory options marked with '*'):\n  -in <files>*                 \
+  \  Input files separated by blank (valid formats: 'mzML')\n  -tr <file>*       \
+  \             Transition file ('TraML' or 'csv') (valid formats: 'csv', 'traML')\n\
+  \  -rt_norm <file>                RT normalization file (how to map the RTs of this\
+  \ run to the ones stored in the library) (valid formats: 'trafoXML')\n  -out <file>*\
+  \                   Output file (valid formats: 'mzML')\n  -min_upper_edge_dist\
+  \ <double>  Minimal distance to the edge to still consider a precursor, in Thomson\
+  \ (default: '0.0')\n  -rt_window <double>            Extraction window in RT dimension\
+  \ (-1 means extract over the whole range). This is the full window size, e.g. a\
+  \ value of 1000 seconds would extract 500 seconds on either side. (default: '-1.0')\n\
+  \  -ion_mobility_window <double>  Extraction window in ion mobility dimension (in\
+  \ milliseconds). This is the full window size, e.g. a value of 10 milliseconds would\
+  \ extract 5 milliseconds on either side. (default: '-1.0')\n  -mz_window <double>\
+  \            Extraction window in m/z dimension (in Thomson, to use ppm see -ppm\
+  \ flag). This is the full window size, e.g. 100 ppm would extract 50 ppm on either\
+  \ side. (default: '0.05' min: '0.0')\n  -ppm                           M/z extraction_window\
+  \ is in ppm\n  -is_swath                      Set this flag if the data is SWATH\
+  \ data\n  -extract_MS1                   Extract the MS1 transitions based on the\
+  \ precursor values in the TraML file (useful for extracting MS1 XIC)\n         \
+  \                        \nCommon TOPP options:\n  -ini <file>                 \
+  \   Use the given TOPP INI file\n  -threads <n>                   Sets the number\
+  \ of threads allowed to be used by the TOPP tool (default: '1')\n  -write_ini <file>\
+  \              Writes the default configuration file\n  --help                 \
+  \        Shows options\n  --helphelp                     Shows all options (including\
+  \ advanced)\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/openms:2.6.0--h4afb90d_0

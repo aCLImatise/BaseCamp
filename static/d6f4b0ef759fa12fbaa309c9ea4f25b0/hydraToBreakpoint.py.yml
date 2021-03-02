@@ -1,0 +1,78 @@
+!Command
+command:
+- hydraToBreakpoint.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: bedpe file in which entry 1 < entry 2; for stdin type "stdin"
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: "slop out from the HYDRA footprint towards the breakpoint (half\nof\
+    \ average library size seems like a good number for predicting\nbreakpoints) [default\
+    \ = 200]"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: "slop in towards the HYDRA footprint, away from the breakpoint\n[default\
+    \ = 10]"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: "the range of bedpe coordinates considered local [default =\n1000000]\
+    \ Calculated by subtracting field 6 from field 2.\n"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: ''
+  args: !SimpleFlagArg
+    name: contigFile.bedpe
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  description: ''
+  args: !SimpleFlagArg
+    name: bedpe
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: hydraToBreakpoint.py -b <bedpe> -c <contigFile.bedpe> [options]\n\
+  Version: 0.1\nAuthor: Mitchell L. Leibowitz and Michael Linderg (Fixed Zero-based/half\
+  \ open)\n\n    Note: Add slopOut at your own risk.  If you add slopOut that goes\
+  \ across an entire deletion, you may get a false validation!\n\nOptions:\n  -h,\
+  \ --help  show this help message and exit\n  -i FILE     bedpe file in which entry\
+  \ 1 < entry 2; for stdin type \"stdin\"\n  -t INT      slop out from the HYDRA footprint\
+  \ towards the breakpoint (half\n              of average library size seems like\
+  \ a good number for predicting\n              breakpoints) [default = 200]\n  -n\
+  \ INT      slop in towards the HYDRA footprint, away from the breakpoint\n     \
+  \         [default = 10]\n  -r INT      the range of bedpe coordinates considered\
+  \ local [default =\n              1000000] Calculated by subtracting field 6 from\
+  \ field 2.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/hydra-multi:0.5.4--py27h8b12597_0

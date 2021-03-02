@@ -22,6 +22,9 @@ task TargetedFileConverter {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "*        Input file to convert.\\nSee http://www.openms.de/current_doxygen/html/UTILS_TargetedFileConverter.html for format of OpenSWATH transition TSV file or SpectraST MRM file. (valid formats: 'tsv', 'mrm', 'pqp', 'TraML')"
     in_type: "Input file type -- default: determined from file extension or content\\n(valid: 'tsv', 'mrm', 'pqp', 'TraML')"

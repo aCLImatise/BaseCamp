@@ -1,0 +1,101 @@
+!Command
+command:
+- phylorank
+- mark_tree
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: input_tree
+  description: input tree to mark
+- !Positional
+  optional: false
+  position: 1
+  name: output_tree
+  description: output tree with assigned taxonomic ranks
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --thresholds
+  description: "relative divergence thresholds for taxonomic ranks\n(default: {\"\
+    d\": 0.33, \"p\": 0.56, \"c\": 0.65, \"o\": 0.78,\n\"f\": 0.92, \"g\": 0.99})"
+  args: !SimpleFlagArg
+    name: THRESHOLDS
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --min_support
+  description: "only mark nodes above the specified support value\n(default=0) (default:\
+    \ 0)"
+  args: !SimpleFlagArg
+    name: MIN_SUPPORT
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --only_named_clades
+  description: only mark nodes with an existing label
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --min_length
+  description: "only mark nodes with a parent branch above the\nspecified length (default=0)\
+    \ (default: 0.0)"
+  args: !SimpleFlagArg
+    name: MIN_LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - --no_percentile
+  description: do not mark with percentile information
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no_relative_divergence
+  description: do not mark with relative divergence information
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no_prediction
+  description: do not mark with predicted rank information
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: phylorank mark_tree [-h] [-t THRESHOLDS] [-s MIN_SUPPORT] [-n]\n\
+  \                           [-l MIN_LENGTH] [--no_percentile]\n                \
+  \           [--no_relative_divergence] [--no_prediction]\n                     \
+  \      input_tree output_tree\n\nMark nodes with distribution information and predicted\
+  \ taxonomic ranks.\n\npositional arguments:\n  input_tree            input tree\
+  \ to mark\n  output_tree           output tree with assigned taxonomic ranks\n\n\
+  optional arguments:\n  -h, --help            show this help message and exit\n \
+  \ -t, --thresholds THRESHOLDS\n                        relative divergence thresholds\
+  \ for taxonomic ranks\n                        (default: {\"d\": 0.33, \"p\": 0.56,\
+  \ \"c\": 0.65, \"o\": 0.78,\n                        \"f\": 0.92, \"g\": 0.99})\n\
+  \  -s, --min_support MIN_SUPPORT\n                        only mark nodes above\
+  \ the specified support value\n                        (default=0) (default: 0)\n\
+  \  -n, --only_named_clades\n                        only mark nodes with an existing\
+  \ label\n  -l, --min_length MIN_LENGTH\n                        only mark nodes\
+  \ with a parent branch above the\n                        specified length (default=0)\
+  \ (default: 0.0)\n  --no_percentile       do not mark with percentile information\n\
+  \  --no_relative_divergence\n                        do not mark with relative divergence\
+  \ information\n  --no_prediction       do not mark with predicted rank information\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/phylorank:0.1.9--py_0

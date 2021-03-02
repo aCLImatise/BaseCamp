@@ -1,0 +1,18 @@
+class: CommandLineTool
+id: samsum.cwl
+inputs:
+- id: in_command
+  doc: 'optional arguments:'
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+hints:
+- class: DockerRequirement
+  dockerPull: quay.io/biocontainers/samsum:0.1.4--py38h5d069a8_0
+cwlVersion: v1.1
+baseCommand:
+- samsum

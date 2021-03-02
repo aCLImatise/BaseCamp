@@ -1,0 +1,155 @@
+!Command
+command:
+- gtftk
+- intronic
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: '2018-01-20'
+  description: 'Arguments:'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --inputfile
+  description: 'Path to the GTF file. Default to STDIN (default: <stdin>)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --outputfile
+  description: 'Output file (BED). (default: <stdout>)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --by-transcript
+  description: 'The intronic regions are returned for each transcript. (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --names
+  description: 'The key(s) that should be used as name (if -b is used). (default:
+    gene_id,transcript_id)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --separator
+  description: 'The separator to be used for separating name elements (if -b is used).
+    (default: |)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --intron-nb-in-name
+  description: "By default intron number is written in 'score' column. Force it to\
+    \ be written in 'name' column. (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  - --no-feature-name
+  description: "Don't add the feature name ('intron') in the name column. (default:\
+    \ False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --verbosity
+  description: 'Set output verbosity ([0-3]). (default: 0)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  - --no-date
+  description: 'Do not add date to output file names. (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -C
+  - --add-chr
+  description: "Add 'chr' to chromosome names before printing output. (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -K
+  - --tmp-dir
+  description: 'Keep all temporary files into this folder. (default: None)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -A
+  - --keep-all
+  description: 'Try to keep all temporary files even if process does not terminate
+    normally. (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  - --logger-file
+  description: 'Stores the arguments passed to the command into a file. (default:
+    None)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -W
+  - --write-message-to-file
+  description: 'Store all message into a file. (default: None)'
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this help message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "  Usage: gtftk intronic [-i GTF] [-o BED] [-b] [-n NAME] [-s SEP] [-w]\
+  \ [-F] [-h] [-V [verbosity]] [-D] [-C] [-K tmp_dir] [-A] [-L logger_file] [-W write_message_to_file]\n\
+  \n  Description: \n     *  Returns a bed file containing the intronic regions. If\
+  \ by_transcript is false (default), returns\n     merged genic regions with no exonic\
+  \ overlap (\"strict\" mode). Otherwise, the intronic regions\n     corresponding\
+  \ to each transcript are returned (may contain exonic overlap and redundancy).\n\
+  \n  Version:  2018-01-20\n\nArguments:\n -i, --inputfile              Path to the\
+  \ GTF file. Default to STDIN (default: <stdin>)\n -o, --outputfile             Output\
+  \ file (BED). (default: <stdout>)\n -b, --by-transcript          The intronic regions\
+  \ are returned for each transcript. (default: False)\n -n, --names             \
+  \     The key(s) that should be used as name (if -b is used). (default: gene_id,transcript_id)\n\
+  \ -s, --separator              The separator to be used for separating name elements\
+  \ (if -b is used). (default: |)\n -w, --intron-nb-in-name      By default intron\
+  \ number is written in 'score' column. Force it to be written in 'name' column.\
+  \ (default: False)\n -F, --no-feature-name        Don't add the feature name ('intron')\
+  \ in the name column. (default: False)\n\nCommand-wise optional arguments:\n -h,\
+  \ --help                   Show this help message and exit.\n -V, --verbosity  \
+  \            Set output verbosity ([0-3]). (default: 0)\n -D, --no-date        \
+  \        Do not add date to output file names. (default: False)\n -C, --add-chr\
+  \                Add 'chr' to chromosome names before printing output. (default:\
+  \ False)\n -K, --tmp-dir                Keep all temporary files into this folder.\
+  \ (default: None)\n -A, --keep-all               Try to keep all temporary files\
+  \ even if process does not terminate normally. (default: False)\n -L, --logger-file\
+  \            Stores the arguments passed to the command into a file. (default: None)\n\
+  \ -W, --write-message-to-file  Store all message into a file. (default: None)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/pygtftk:1.2.7--py36h4edd4cd_1

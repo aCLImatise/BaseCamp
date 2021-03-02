@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, String
+
+Repeatclassifier_V0_1_0 = CommandToolBuilder(tool="RepeatClassifier", base_command=["RepeatClassifier"], inputs=[ToolInput(tag="in_maff_t_dir", input_type=File(optional=True), prefix="-mafft_dir", doc=InputDocumentation(doc="The path to the installation of the MAFFT multiple alignment\nprogram.")), ToolInput(tag="in_genome_tools_dir", input_type=File(optional=True), prefix="-genometools_dir", doc=InputDocumentation(doc="The path to the installation of the GenomeTools package.")), ToolInput(tag="in_ltr_retriever_dir", input_type=File(optional=True), prefix="-ltr_retriever_dir", doc=InputDocumentation(doc="The path to the installation of the LTR_Retriever structural LTR\nanalysis package.")), ToolInput(tag="in_abb_last_dir", input_type=File(optional=True), prefix="-abblast_dir", doc=InputDocumentation(doc="The path to the installation of the ABBLAST sequence alignment\nprogram.")), ToolInput(tag="in_ninja_dir", input_type=File(optional=True), prefix="-ninja_dir", doc=InputDocumentation(doc="The path to the installation of the Ninja phylogenetic analysis\npackage.")), ToolInput(tag="in_rmb_last_dir", input_type=File(optional=True), prefix="-rmblast_dir", doc=InputDocumentation(doc="The path to the installation of the RMBLAST sequence alignment\nprogram.")), ToolInput(tag="in_repeatmasker_dir", input_type=File(optional=True), prefix="-repeatmasker_dir", doc=InputDocumentation(doc="The path to the installation of RepeatMasker.")), ToolInput(tag="in_recon_dir", input_type=File(optional=True), prefix="-recon_dir", doc=InputDocumentation(doc="The path to the installation of the RECON de-novo repeatfinding\nprogram.")), ToolInput(tag="in_r_scout_dir", input_type=File(optional=True), prefix="-rscout_dir", doc=InputDocumentation(doc="The path to the installation of the RepeatScout ( 1.0.6 or higher )\nde-novo repeatfinding program.")), ToolInput(tag="in_trf_prgm", input_type=File(optional=True), prefix="-trf_prgm", doc=InputDocumentation(doc="The full path including the name for the TRF program ( 4.0.9 or\nhigher )")), ToolInput(tag="in_cd_hit_dir", input_type=File(optional=True), prefix="-cdhit_dir", doc=InputDocumentation(doc="The path to the installation of the CD-Hit sequence clustering\npackage.")), ToolInput(tag="in_repeat_modeler", input_type=String(), position=0, doc=InputDocumentation(doc="COPYRIGHT"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Repeatclassifier_V0_1_0().translate("wdl", allow_empty_container=True)
+

@@ -14,6 +14,9 @@ task MappedCoverage {
       ~{if (raw) then "-raw" else ""} \
       ~{if (blast) then "-blast" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     mask: "Read sequences from in.fasta, lower-case mask\\nany base with an alignment, write to out.fasta"
     cov: "Write coverage statistics to 'dat' instead of stdout"

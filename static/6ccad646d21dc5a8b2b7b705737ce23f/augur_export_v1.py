@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import String, File, Array, Boolean
+
+Augur_Export_V1_V0_1_0 = CommandToolBuilder(tool="augur_export_v1", base_command=["augur", "export", "v1"], inputs=[ToolInput(tag="in_tree", input_type=String(optional=True), prefix="--tree", doc=InputDocumentation(doc="tree to perform trait reconstruction on")), ToolInput(tag="in_metadata", input_type=File(optional=True), prefix="--metadata", doc=InputDocumentation(doc="sequence metadata, as CSV or TSV")), ToolInput(tag="in_node_data", input_type=Array(t=String(), optional=True), prefix="--node-data", doc=InputDocumentation(doc="JSON files with meta data for each node")), ToolInput(tag="in_output_tree", input_type=File(optional=True), prefix="--output-tree", doc=InputDocumentation(doc="JSON file name that is passed on to auspice (e.g.,\nzika_tree.json).")), ToolInput(tag="in_output_meta", input_type=File(optional=True), prefix="--output-meta", doc=InputDocumentation(doc="JSON file name that is passed on to auspice (e.g.,\nzika_meta.json).")), ToolInput(tag="in_auspice_config", input_type=File(optional=True), prefix="--auspice-config", doc=InputDocumentation(doc="file with auspice configuration")), ToolInput(tag="in_colors", input_type=File(optional=True), prefix="--colors", doc=InputDocumentation(doc="Custom color definitions, one per line in the format\n`TRAIT_TYPE\tTRAIT_VALUE\tHEX_CODE`")), ToolInput(tag="in_lat_longs", input_type=File(optional=True), prefix="--lat-longs", doc=InputDocumentation(doc="file latitudes and longitudes, overrides built in\nmappings")), ToolInput(tag="in_tree_name", input_type=String(optional=True), prefix="--tree-name", doc=InputDocumentation(doc="Tree name (needed for tangle tree functionality)")), ToolInput(tag="in_mini_fy_json", input_type=Boolean(optional=True), prefix="--minify-json", doc=InputDocumentation(doc="export JSONs without indentation or line returns")), ToolInput(tag="in_output_sequence", input_type=File(optional=True), prefix="--output-sequence", doc=InputDocumentation(doc="JSON file name that is passed on to auspice (e.g.,\nzika_seq.json).")), ToolInput(tag="in_reference", input_type=String(optional=True), prefix="--reference", doc=InputDocumentation(doc="reference sequence for export to browser, only vcf")), ToolInput(tag="in_reference_translations", input_type=String(optional=True), prefix="--reference-translations", doc=InputDocumentation(doc="reference translations for export to browser, only vcf\n"))], outputs=[], container="quay.io/biocontainers/augur:11.1.2--py_1", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Augur_Export_V1_V0_1_0().translate("wdl")
+

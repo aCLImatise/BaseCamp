@@ -1,0 +1,87 @@
+!Command
+command:
+- refseq_masher
+- matches
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: INPUT...
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --mash-bin
+  description: Mash binary path (default="mash")
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: Output file path (default="-"/stdout)
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --output-type
+  description: '[tab|csv]         Output file type (tab|csv)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --top-n-results
+  description: "Output top N results sorted by distance in\nascending order (default=5)"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --min-kmer-threshold
+  description: "Mash sketch of reads: \"Minimum copies of\neach k-mer required to\
+    \ pass noise filter for\nreads\" (default=8)"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --tmp-dir
+  description: "Temporary analysis files path (where to save\ntemp Mash sketch file)\
+    \ (default=\"/tmp\")"
+  args: !SimpleFlagArg
+    name: DIRECTORY
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: refseq_masher matches [OPTIONS] INPUT...\n\n  Find NCBI RefSeq\
+  \ genome matches for an input genome fasta file\n\n  Input is expected to be one\
+  \ or more FASTA/FASTQ files or one or more\n  directories containing FASTA/FASTQ\
+  \ files. Files can be Gzipped.\n\nOptions:\n  --mash-bin TEXT                 Mash\
+  \ binary path (default=\"mash\")\n  -o, --output PATH               Output file\
+  \ path (default=\"-\"/stdout)\n  --output-type [tab|csv]         Output file type\
+  \ (tab|csv)\n  -n, --top-n-results INTEGER     Output top N results sorted by distance\
+  \ in\n                                  ascending order (default=5)\n\n  -m, --min-kmer-threshold\
+  \ INTEGER\n                                  Mash sketch of reads: \"Minimum copies\
+  \ of\n                                  each k-mer required to pass noise filter\
+  \ for\n                                  reads\" (default=8)\n\n  -T, --tmp-dir\
+  \ DIRECTORY         Temporary analysis files path (where to save\n             \
+  \                     temp Mash sketch file) (default=\"/tmp\")\n\n  -h, --help\
+  \                      Show this message and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/refseq_masher:0.1.2--py_0

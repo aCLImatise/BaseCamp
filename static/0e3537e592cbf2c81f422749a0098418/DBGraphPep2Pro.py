@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, Int, Boolean
+
+Dbgraphpep2Pro_V0_1_0 = CommandToolBuilder(tool="DBGraphPep2Pro", base_command=["DBGraphPep2Pro"], inputs=[ToolInput(tag="in_input_edge_file", input_type=File(optional=True), prefix="-e", doc=InputDocumentation(doc=": The input edge file name")), ToolInput(tag="in_input_edge_sequence", input_type=File(optional=True), prefix="-s", doc=InputDocumentation(doc=": The input edge sequence (contig) file name")), ToolInput(tag="in_input_sequence_identified", input_type=File(optional=True), prefix="-p", doc=InputDocumentation(doc=": The input sequence (identified peptides) file name")), ToolInput(tag="in_base_name_name", input_type=File(optional=True), prefix="-o", doc=InputDocumentation(doc="(base name only): The output protein Sequences file name")), ToolInput(tag="in_output_transcript_sequences", input_type=File(optional=True), prefix="-n", doc=InputDocumentation(doc=": The output transcript sequences file name")), ToolInput(tag="in_maximum_protein_sequence", input_type=Int(optional=True), prefix="-L", doc=InputDocumentation(doc=": maximum protein sequence length (for memory allocation, default 3000)")), ToolInput(tag="in_k", input_type=Int(optional=True), prefix="-k", doc=InputDocumentation(doc=": default 31")), ToolInput(tag="in_c", input_type=Int(optional=True), prefix="-c", doc=InputDocumentation(doc=": default 0")), ToolInput(tag="in_d", input_type=Int(optional=True), prefix="-d", doc=InputDocumentation(doc=": default 10")), ToolInput(tag="in_m", input_type=Int(optional=True), prefix="-m", doc=InputDocumentation(doc=": default 100")), ToolInput(tag="in_soap_when_set", input_type=Boolean(optional=True), prefix="-u", doc=InputDocumentation(doc="(SOAP when set; default off for SOAP2)")), ToolInput(tag="in_fastg_when_set", input_type=Boolean(optional=True), prefix="-f", doc=InputDocumentation(doc="(FastG when set; default off for SOAP2)"))], outputs=[ToolOutput(tag="out_base_name_name", output_type=File(optional=True), selector=InputSelector(input_to_select="in_base_name_name", type_hint=File()), doc=OutputDocumentation(doc="(base name only): The output protein Sequences file name")), ToolOutput(tag="out_output_transcript_sequences", output_type=File(optional=True), selector=InputSelector(input_to_select="in_output_transcript_sequences", type_hint=File()), doc=OutputDocumentation(doc=": The output transcript sequences file name"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Dbgraphpep2Pro_V0_1_0().translate("wdl", allow_empty_container=True)
+

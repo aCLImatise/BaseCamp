@@ -1,0 +1,100 @@
+!Command
+command:
+- clipcontext
+- exb
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --max-dist
+  description: "Maximum distance of CLIP peak region end to nearest exon end\nfor\
+    \ CLIP region to still be output (default: 50)"
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --min-len
+  description: "Minimum input site length for filtering --in BED file\n(default: False)"
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --max-len
+  description: "Maximum input site length for filtering --in BED file\n(default: False)"
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --thr
+  description: "Filter out --in BED regions < --thr column 5 score (default:\nno filtering)"
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - --rev-filter
+  description: "Reverse filtering (keep values <= --thr and prefer sites\nwith smaller\
+    \ values) (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --in
+  description: CLIP peak regions input BED file (6-column format)
+  args: !SimpleFlagArg
+    name: str
+- !Flag
+  optional: true
+  synonyms:
+  - --tr
+  description: Transcript sequence IDs list file to define exon regions
+  args: !SimpleFlagArg
+    name: str
+- !Flag
+  optional: true
+  synonyms:
+  - --gtf
+  description: Genomic annotations (hg38) GTF file (.gtf or .gtf.gz)
+  args: !SimpleFlagArg
+    name: str
+- !Flag
+  optional: true
+  synonyms:
+  - --out
+  description: CLIP peak regions near exon borders output BED file
+  args: !SimpleFlagArg
+    name: str
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: clipcontext exb [-h] --in str --tr str --gtf str --out str\n  \
+  \                     [--max-dist int] [--min-len int] [--max-len int]\n       \
+  \                [--thr float] [--rev-filter]\n\noptional arguments:\n  -h, --help\
+  \      show this help message and exit\n  --max-dist int  Maximum distance of CLIP\
+  \ peak region end to nearest exon end\n                  for CLIP region to still\
+  \ be output (default: 50)\n  --min-len int   Minimum input site length for filtering\
+  \ --in BED file\n                  (default: False)\n  --max-len int   Maximum input\
+  \ site length for filtering --in BED file\n                  (default: False)\n\
+  \  --thr float     Filter out --in BED regions < --thr column 5 score (default:\n\
+  \                  no filtering)\n  --rev-filter    Reverse filtering (keep values\
+  \ <= --thr and prefer sites\n                  with smaller values) (default: False)\n\
+  \nrequired arguments:\n  --in str        CLIP peak regions input BED file (6-column\
+  \ format)\n  --tr str        Transcript sequence IDs list file to define exon regions\n\
+  \  --gtf str       Genomic annotations (hg38) GTF file (.gtf or .gtf.gz)\n  --out\
+  \ str       CLIP peak regions near exon borders output BED file\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/clipcontext:0.7--py_0

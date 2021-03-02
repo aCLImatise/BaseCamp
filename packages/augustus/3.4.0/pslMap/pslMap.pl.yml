@@ -1,0 +1,73 @@
+!Command
+command:
+- pslMap.pl
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: in
+  description: psl input file, e.g. from an alignment of transcript reads against
+    mRNA sequences
+- !Positional
+  optional: false
+  position: 1
+  name: map
+  description: "psl input file, e.g. from an alignment of mRNA sequences against a\
+    \ genome\nThe queries of map must be the targets of in."
+- !Positional
+  optional: false
+  position: 2
+  name: out
+  description: psl output file, e.g. the inferred alignment of transcript reads against
+    the genome
+- !Positional
+  optional: false
+  position: 3
+  name: filterunspliced
+  description: alignments in in.psl that do not cover an intron in map.psl are not
+    reported in out.psl
+- !Positional
+  optional: false
+  position: 4
+  name: minmatch
+  description: 'filter out alignments with a number of matches (first column) that
+    is below this (default: 0)'
+named: []
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "NAME\n    pslMap.pl combine two psl files transitively\n\nSYNOPSIS\n \
+  \   pslMap.pl [ --filterunspliced ] --in=in.psl --map=map.psl --out=out.psl\n\n\
+  \        If in and map are considered to be mappings from the query to the target,\
+  \ then\n        out is the consecutive application of in and map. The map is assumed\
+  \ to not contain mismatches.\n        In contrast to the UCSC pslMap C program,\
+  \ this program is reporting the mismatches of in.psl in\n        the output alignments.\n\
+  \nOPTIONS\n      in               psl input file, e.g. from an alignment of transcript\
+  \ reads against mRNA sequences\n      map              psl input file, e.g. from\
+  \ an alignment of mRNA sequences against a genome\n                       The queries\
+  \ of map must be the targets of in.\n      out              psl output file, e.g.\
+  \ the inferred alignment of transcript reads against the genome\n      filterunspliced\
+  \  alignments in in.psl that do not cover an intron in map.psl are not reported\
+  \ in out.psl\n      minmatch         filter out alignments with a number of matches\
+  \ (first column) that is below this (default: 0)\n\nDESCRIPTION\n        The planned\
+  \ typical usage of this script is for RNA-Seq alignment.\n        Then in.psl can\
+  \ contain alignments of reads against small exon-exon windows (or candidates thereof)\n\
+  \        and can be done with a fast almost exact mapper that does no spliced alignments.\n\
+  \        out.pl will then be the spliced alignments of the reads against the genome.\n\
+  \        The option --filterunspliced can then be used to ensure that read alignments\
+  \ are not reported twice.\n        The unspliced alignments can be done directly\
+  \ to the genome and the spliced only through this indirect approach.\n        Example\
+  \ input visualized:\n    \n            map target (genome)\n         \\        \
+  \   \\      /           /\n          \\           \\    /           /\n        \
+  \   \\           \\  /           /\n            \\           \\/           /\n \
+  \            ------------------------   map query = in target (mRNA)\n         \
+  \      -- ----  -----   ---    \n              / / |  |  \\   \\   | |\n       \
+  \      / /  |  |   \\   \\  | |\n            / /   |  |    \\   \\ | |\n       \
+  \    / /    |  |     \\   \\| |\n           --     ----      -------    \n     \
+  \      in query (transcript reads)\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/augustus:3.4.0--pl526h0faeac2_0

@@ -1,0 +1,248 @@
+!Command
+command:
+- ProteomicsLFQ
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -in
+  description: "*                                         Input files (valid formats:\
+    \ 'mzML')"
+  args: !SimpleFlagArg
+    name: file list
+- !Flag
+  optional: true
+  synonyms:
+  - -ids
+  description: "*                                        Identifications filtered\
+    \ at PSM level (e.g., q-value < 0.01).And annotated with PEP as main score.\n\
+    We suggest using:\n1. PeptideIndexer to annotate target and decoy information.\n\
+    2. PSMFeatureExtractor to annotate percolator features.\n3. PercolatorAdapter\
+    \ tool (score_type = 'q-value', -post-processing-tdc)\n4. IDFilter (pep:score\
+    \ = 0.01)\nTo obtain well calibrated PEPs and an inital reduction of PSMs\nID\
+    \ files must be provided in same order as spectra files. (valid formats: 'idXML',\
+    \ 'mzId')"
+  args: !SimpleFlagArg
+    name: file list
+- !Flag
+  optional: true
+  synonyms:
+  - -design
+  description: "Design file (valid formats: 'tsv')"
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -fasta
+  description: "Fasta file (valid formats: 'fasta')"
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -out
+  description: "*                                             Output mzTab file (valid\
+    \ formats: 'mzTab')"
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -out_msstats
+  description: "Output MSstats input file (valid formats: 'csv')"
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -out_cxml
+  description: "Output consensusXML file (valid formats: 'consensusXML')"
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -proteinFDR
+  description: "Protein FDR threshold (0.05=5%). (default: '0.05' min: '0.0' max:\
+    \ '1.0')"
+  args: !SimpleFlagArg
+    name: threshold
+- !Flag
+  optional: true
+  synonyms:
+  - -psmFDR
+  description: "PSM FDR threshold (e.g. 0.05=5%). If Bayesian inference was chosen,\
+    \ it is equivalent with a peptide FDR (default: '1.0' min: '0.0' max: '1.0')"
+  args: !SimpleFlagArg
+    name: threshold
+- !Flag
+  optional: true
+  synonyms:
+  - -quantification_method
+  description: "Feature_intensity: MS1 signal.\nspectral_counting: PSM counts. (default:\
+    \ 'feature_intensity' valid: 'feature_intensity', 'spectral_counting')"
+  args: !SimpleFlagArg
+    name: option
+- !Flag
+  optional: true
+  synonyms:
+  - -targeted_only
+  description: "True: Only ID based quantification.\nfalse: include unidentified features\
+    \ so they can be linked to identified ones (=match between runs). (default: 'false'\
+    \ valid: 'true', 'false')"
+  args: !SimpleFlagArg
+    name: option
+- !Flag
+  optional: true
+  synonyms:
+  - -transfer_ids
+  description: "Requantification using mean of aligned RTs of a peptide feature.\n\
+    Only applies to peptides that were quantified in more than 50% of all runs (of\
+    \ a fraction). (default: 'false' valid: 'false', 'mean')"
+  args: !SimpleFlagArg
+    name: option
+- !Flag
+  optional: true
+  synonyms:
+  - -ini
+  description: Use the given TOPP INI file
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -threads
+  description: "Sets the number of threads allowed to be used by the TOPP tool (default:\
+    \ '1')"
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - -write_ini
+  description: Writes the default configuration file
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - --helphelp
+  description: Shows all options (including advanced)
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Shows options
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "\nstty: standard input: Inappropriate ioctl for device\nProteomicsLFQ\
+  \ -- A standard proteomics LFQ pipeline.\nFull documentation: \nVersion: 2.6.0-pre-exported-20201001\
+  \ Oct  1 2020, 01:37:06\nTo cite OpenMS:\n  Rost HL, Sachsenberg T, Aiche S, Bielow\
+  \ C et al.. OpenMS: a flexible open-source software platform for mass spectrometry\
+  \ data analysis. Nat Meth. 2016; 13, 9: 741-748. doi:10.1038/nmeth.3959.\n\nUsage:\n\
+  \  ProteomicsLFQ <options>\n\nOptions (mandatory options marked with '*'):\n  -in\
+  \ <file list>*                                         Input files (valid formats:\
+  \ 'mzML')\n  -ids <file list>*                                        Identifications\
+  \ filtered at PSM level (e.g., q-value < 0.01).And annotated with PEP as main score.\n\
+  \                                                           We suggest using:\n\
+  \                                                           1. PeptideIndexer to\
+  \ annotate target and decoy information.\n                                     \
+  \                      2. PSMFeatureExtractor to annotate percolator features.\n\
+  \                                                           3. PercolatorAdapter\
+  \ tool (score_type = 'q-value', -post-processing-tdc)\n                        \
+  \                                   4. IDFilter (pep:score = 0.01)\n           \
+  \                                                To obtain well calibrated PEPs\
+  \ and an inital reduction of PSMs\n                                            \
+  \               ID files must be provided in same order as spectra files. (valid\
+  \ formats: 'idXML', 'mzId')\n  -design <file>                                  \
+  \         Design file (valid formats: 'tsv')\n  -fasta <file>                  \
+  \                          Fasta file (valid formats: 'fasta')\n  -out <file>* \
+  \                                            Output mzTab file (valid formats: 'mzTab')\n\
+  \  -out_msstats <file>                                      Output MSstats input\
+  \ file (valid formats: 'csv')\n  -out_cxml <file>                              \
+  \           Output consensusXML file (valid formats: 'consensusXML')\n  -proteinFDR\
+  \ <threshold>                                  Protein FDR threshold (0.05=5%).\
+  \ (default: '0.05' min: '0.0' max: '1.0')\n  -psmFDR <threshold>               \
+  \                       PSM FDR threshold (e.g. 0.05=5%). If Bayesian inference\
+  \ was chosen, it is equivalent with a peptide FDR (default: '1.0' min: '0.0' max:\
+  \ '1.0')\n  -quantification_method <option>                          Feature_intensity:\
+  \ MS1 signal.\n                                                           spectral_counting:\
+  \ PSM counts. (default: 'feature_intensity' valid: 'feature_intensity', 'spectral_counting')\n\
+  \  -targeted_only <option>                                  True: Only ID based\
+  \ quantification.\n                                                           false:\
+  \ include unidentified features so they can be linked to identified ones (=match\
+  \ between runs). (default: 'false' valid: 'true', 'false')\n  -transfer_ids <option>\
+  \                                   Requantification using mean of aligned RTs of\
+  \ a peptide feature.\n                                                         \
+  \  Only applies to peptides that were quantified in more than 50% of all runs (of\
+  \ a fraction). (default: 'false' valid: 'false', 'mean')\n\nCentroiding:\n  -Centroiding:signal_to_noise\
+  \ <value>                     Minimal signal-to-noise ratio for a peak to be picked\
+  \ (0.0 disables SNT estimation!) (default: '0.0' min: '0.0')\n  -Centroiding:ms_levels\
+  \ <numbers>                         List of MS levels for which the peak picking\
+  \ is applied. If empty, auto mode is enabled, all peaks which aren't picked yet\
+  \ will get picked. Other scans are copied to the output without changes. (min: '1')\n\
+  \nParameters for ion chromatogram extraction:\n  -PeptideQuantification:extract:batch_size\
+  \ <number>       Nr of peptides used in each batch of chromatogram extraction. Smaller\
+  \ values decrease memory usage but increase runtime. (default: '1000' min: '1')\n\
+  \  -PeptideQuantification:extract:mz_window <value>         M/z window size for\
+  \ chromatogram extraction (unit: ppm if 1 or greater, else Da/Th) (default: '10.0'\
+  \ min: '0.0')\n\nParameters for detecting features in extracted ion chromatograms:\n\
+  \  -PeptideQuantification:detect:mapping_tolerance <value>  RT tolerance (plus/minus)\
+  \ for mapping peptide IDs to features. Absolute value in seconds if 1 or greater,\
+  \ else relative to the RT span of the feature. (default: '0.0' min: '0.0')\n\nAlignment:\n\
+  \  -Alignment:min_run_occur <number>                        Minimum number of runs\
+  \ (incl. reference, if any) in which a peptide must occur to be used for the alignment.\n\
+  \                                                           Unless you have very\
+  \ few runs or identifications, increase this value to focus on more informative\
+  \ peptides. (default: '2' min: '2')\n  -Alignment:max_rt_shift <value>         \
+  \                 Maximum realistic RT difference for a peptide (median per run\
+  \ vs. reference). Peptides with higher shifts (outliers) are not used to compute\
+  \ the alignment.\n                                                           If\
+  \ 0, no limit (disable filter); if > 1, the final value in seconds; if <= 1, taken\
+  \ as a fraction of the range of the reference RT scale. (default: '0.1' min: '0.0')\n\
+  \nLinking:\n  -Linking:nr_partitions <number>                          How many\
+  \ partitions in m/z space should be used for the algorithm (more partitions means\
+  \ faster runtime and more memory efficient execution ) (default: '100' min: '1')\n\
+  \nDistance component based on m/z differences:\n  -Linking:distance_MZ:max_difference\
+  \ <value>              Never pair features with larger m/z distance (unit defined\
+  \ by 'unit') (default: '10.0' min: '0.0')\n  -Linking:distance_MZ:unit <choice>\
+  \                       Unit of the 'max_difference' parameter (default: 'ppm' valid:\
+  \ 'Da', 'ppm')\n\nProteinQuantification:\n  -ProteinQuantification:top <number>\
+  \                      Calculate protein abundance from this number of proteotypic\
+  \ peptides (most abundant first; '0' for all) (default: '3' min: '0')\n  -ProteinQuantification:average\
+  \ <choice>                  Averaging method used to compute protein abundances\
+  \ from peptide abundances (default: 'median' valid: 'median', 'mean', 'weighted_mean',\
+  \ 'sum')\n  -ProteinQuantification:best_charge_and_fraction          Distinguish\
+  \ between fraction and charge states of a peptide. For peptides, abundances will\
+  \ be reported separately for each fraction and charge;\n                       \
+  \                                    for proteins, abundances will be computed based\
+  \ only on the most prevalent charge observed of each peptide (over all fractions).\n\
+  \                                                           By default, abundances\
+  \ are summed over all charge states.\n\nAdditional options for consensus maps (and\
+  \ identification results comprising multiple runs):\n  -ProteinQuantification:consensus:normalize\
+  \               Scale peptide abundances so that medians of all samples are equal\n\
+  \  -ProteinQuantification:consensus:fix_peptides            Use the same peptides\
+  \ for protein quantification across all samples.\n                             \
+  \                              With 'top 0', all peptides that occur in every sample\
+  \ are considered.\n                                                           Otherwise\
+  \ ('top N'), the N peptides that occur in the most samples (independently of each\
+  \ other) are selected,\n                                                       \
+  \    breaking ties by total abundance (there is no guarantee that the best co-ocurring\
+  \ peptides are chosen!).\n\n                                                   \
+  \        \nCommon TOPP options:\n  -ini <file>                                 \
+  \             Use the given TOPP INI file\n  -threads <n>                      \
+  \                       Sets the number of threads allowed to be used by the TOPP\
+  \ tool (default: '1')\n  -write_ini <file>                                     \
+  \   Writes the default configuration file\n  --help                            \
+  \                       Shows options\n  --helphelp                            \
+  \                   Shows all options (including advanced)\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/openms:2.6.0--h4afb90d_0

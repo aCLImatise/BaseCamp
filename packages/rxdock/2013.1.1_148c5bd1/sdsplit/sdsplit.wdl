@@ -8,6 +8,9 @@ task Sdsplit {
     sdsplit \
       ~{if (outputroot_root_name) then "-o" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     outputroot_root_name: "<OutputRoot>  Root name for output files (default = tmp)"
   }

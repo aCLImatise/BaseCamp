@@ -1,0 +1,199 @@
+!Command
+command:
+- map_single_fragments.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - '-1'
+  - --fastq_1
+  description: "A list of the first read of the sequencing. (default:\nNone)"
+  args: !RepeatFlagArg
+    name: FASTQ_1
+- !Flag
+  optional: true
+  synonyms:
+  - '-2'
+  description: "[FASTQ_2 [FASTQ_2 ...]], --fastq_2 [FASTQ_2 [FASTQ_2 ...]]\nA list\
+    \ of the second read of the sequencing. The order\nof these files should be as\
+    \ same as -1. Optional.\n(default: None)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --genes_gff
+  description: "Name of gff file to count the reads per gene. If not\ngiven or not\
+    \ readable, skip this stage. (default:\nNone)"
+  args: !SimpleFlagArg
+    name: GENES_GFF
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reverse_complement
+  description: "Treat the reads as reverse complement only when\ncounting number of\
+    \ reads per gene and generating wig\nfile. The resulting BAM files will be the\
+    \ original\nones. Use this when treating libraries built using\nLivny's protocol.\
+    \ (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --feature
+  description: "Name of features to count on the GTF file (column 2).\n(default: exon)"
+  args: !SimpleFlagArg
+    name: FEATURE
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --identifier
+  description: "Name of identifier to print (in column 8 of the GTF\nfile). (default:\
+    \ gene_id)"
+  args: !SimpleFlagArg
+    name: IDENTIFIER
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --overlap
+  description: "Minimal required overlap between the fragment and the\nfeature. (default:\
+    \ 5)"
+  args: !SimpleFlagArg
+    name: OVERLAP
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --allowed_mismatches
+  description: 'Allowed mismatches for BWA mapping. (default: 2)'
+  args: !SimpleFlagArg
+    name: ALLOWED_MISMATCHES
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --outhead
+  description: "Output file names of counts table (suffixed\n_counts.txt) and wiggle\
+    \ file (suffixed _coverage.wig)\n(default: bwa_mapped_single_reads)"
+  args: !SimpleFlagArg
+    name: OUTHEAD
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --dirout
+  description: "Output directory, default is this directory. (default:\n.)"
+  args: !SimpleFlagArg
+    name: DIROUT
+- !Flag
+  optional: true
+  synonyms:
+  - --bwa_exec
+  description: 'bwa command (default: bwa)'
+  args: !SimpleFlagArg
+    name: BWA_EXEC
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --samtools_cmd
+  description: 'Samtools executable. (default: samtools)'
+  args: !SimpleFlagArg
+    name: SAMTOOLS_CMD
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --params_aln
+  description: "Additional parameters for aln function of bwa.\n(default: -t 8 -R\
+    \ 200)"
+  args: !SimpleFlagArg
+    name: PARAMS_ALN
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --sampe_params
+  description: "Additional parameters for sampe function of bwa.\n(default: -a 1500\
+    \ -P)"
+  args: !SimpleFlagArg
+    name: SAMPE_PARAMS
+- !Flag
+  optional: true
+  synonyms:
+  - --samse_params
+  description: "Additional parameters for samse function of bwa.\n(default: )"
+  args: !SimpleFlagArg
+    name: SAMSE_PARAMS
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --create_wig
+  description: 'Create a coverage wiggle file. (default: False)'
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: map_single_fragments.py [-h] [-1 FASTQ_1 [FASTQ_1 ...]]\n     \
+  \                          [-2 [FASTQ_2 [FASTQ_2 ...]]] [-g GENES_GFF]\n       \
+  \                        [-r] [-f FEATURE] [-i IDENTIFIER] [-v OVERLAP]\n      \
+  \                         [-m ALLOWED_MISMATCHES] [-o OUTHEAD]\n               \
+  \                [-d DIROUT] [--bwa_exec BWA_EXEC]\n                           \
+  \    [-S SAMTOOLS_CMD] [-a PARAMS_ALN]\n                               [-s SAMPE_PARAMS]\
+  \ [--samse_params SAMSE_PARAMS]\n                               [-w]\n         \
+  \                      genome_fasta\n\nMap fastq files to the genome using bwa.\n\
+  \npositional arguments:\n  genome_fasta          Name of genome fasta file. The\
+  \ file must be indexed\n                        usingbwa index command prior to\
+  \ this run.\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  -1 FASTQ_1 [FASTQ_1 ...], --fastq_1 FASTQ_1 [FASTQ_1 ...]\n      \
+  \                  A list of the first read of the sequencing. (default:\n     \
+  \                   None)\n  -2 [FASTQ_2 [FASTQ_2 ...]], --fastq_2 [FASTQ_2 [FASTQ_2\
+  \ ...]]\n                        A list of the second read of the sequencing. The\
+  \ order\n                        of these files should be as same as -1. Optional.\n\
+  \                        (default: None)\n  -g GENES_GFF, --genes_gff GENES_GFF\n\
+  \                        Name of gff file to count the reads per gene. If not\n\
+  \                        given or not readable, skip this stage. (default:\n   \
+  \                     None)\n  -r, --reverse_complement\n                      \
+  \  Treat the reads as reverse complement only when\n                        counting\
+  \ number of reads per gene and generating wig\n                        file. The\
+  \ resulting BAM files will be the original\n                        ones. Use this\
+  \ when treating libraries built using\n                        Livny's protocol.\
+  \ (default: False)\n  -f FEATURE, --feature FEATURE\n                        Name\
+  \ of features to count on the GTF file (column 2).\n                        (default:\
+  \ exon)\n  -i IDENTIFIER, --identifier IDENTIFIER\n                        Name\
+  \ of identifier to print (in column 8 of the GTF\n                        file).\
+  \ (default: gene_id)\n  -v OVERLAP, --overlap OVERLAP\n                        Minimal\
+  \ required overlap between the fragment and the\n                        feature.\
+  \ (default: 5)\n  -m ALLOWED_MISMATCHES, --allowed_mismatches ALLOWED_MISMATCHES\n\
+  \                        Allowed mismatches for BWA mapping. (default: 2)\n  -o\
+  \ OUTHEAD, --outhead OUTHEAD\n                        Output file names of counts\
+  \ table (suffixed\n                        _counts.txt) and wiggle file (suffixed\
+  \ _coverage.wig)\n                        (default: bwa_mapped_single_reads)\n \
+  \ -d DIROUT, --dirout DIROUT\n                        Output directory, default\
+  \ is this directory. (default:\n                        .)\n  --bwa_exec BWA_EXEC\
+  \   bwa command (default: bwa)\n  -S SAMTOOLS_CMD, --samtools_cmd SAMTOOLS_CMD\n\
+  \                        Samtools executable. (default: samtools)\n  -a PARAMS_ALN,\
+  \ --params_aln PARAMS_ALN\n                        Additional parameters for aln\
+  \ function of bwa.\n                        (default: -t 8 -R 200)\n  -s SAMPE_PARAMS,\
+  \ --sampe_params SAMPE_PARAMS\n                        Additional parameters for\
+  \ sampe function of bwa.\n                        (default: -a 1500 -P)\n  --samse_params\
+  \ SAMSE_PARAMS\n                        Additional parameters for samse function\
+  \ of bwa.\n                        (default: )\n  -w, --create_wig      Create a\
+  \ coverage wiggle file. (default: False)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/rilseq:0.81--py_0

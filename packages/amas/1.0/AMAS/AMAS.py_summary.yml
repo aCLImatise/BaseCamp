@@ -1,0 +1,104 @@
+!Command
+command:
+- AMAS.py
+- summary
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: check
+  description: -c CORES, --cores CORES
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --summary-out
+  description: "File name for the alignment summary. Default:\n'summary.txt'"
+  args: !SimpleFlagArg
+    name: SUMMARY_OUT
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --by-taxon
+  description: "In addition to alignment summary, write by\nsequence/taxon summaries.\
+    \ Default: Don't write"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --check-align
+  description: 'Check if input sequences are aligned. Default: no'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --in-files
+  description: "Alignment files to be taken as input. You can specify\nmultiple files\
+    \ using wildcards (e.g. --in-files\n*fasta)"
+  args: !RepeatFlagArg
+    name: IN_FILES
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --in-format
+  description: The format of input alignment
+  args: !ChoiceFlagArg
+    choices: !!set
+      nexus-int:
+      fasta:
+      phylip-int:
+      nexus:
+      phylip:
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --data-type
+  description: "Type of data\n"
+  args: !ChoiceFlagArg
+    choices: !!set
+      aa:
+      dna:
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: ''
+  args: !SimpleFlagArg
+    name: CORES
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: AMAS.py [-h] [-o SUMMARY_OUT] [-s] [-e] [-c CORES] -i IN_FILES\n\
+  \               [IN_FILES ...] -f {fasta,phylip,nexus,phylip-int,nexus-int} -d\n\
+  \               {aa,dna}\n\nWrite alignment summary\n\noptional arguments:\n  -h,\
+  \ --help            show this help message and exit\n  -o SUMMARY_OUT, --summary-out\
+  \ SUMMARY_OUT\n                        File name for the alignment summary. Default:\n\
+  \                        'summary.txt'\n  -s, --by-taxon        In addition to alignment\
+  \ summary, write by\n                        sequence/taxon summaries. Default:\
+  \ Don't write\n  -e, --check-align     Check if input sequences are aligned. Default:\
+  \ no\n                        check\n  -c CORES, --cores CORES\n               \
+  \         Number of cores used. Default: 1\n\nrequired arguments:\n  -i IN_FILES\
+  \ [IN_FILES ...], --in-files IN_FILES [IN_FILES ...]\n                        Alignment\
+  \ files to be taken as input. You can specify\n                        multiple\
+  \ files using wildcards (e.g. --in-files\n                        *fasta)\n  -f\
+  \ {fasta,phylip,nexus,phylip-int,nexus-int}, --in-format {fasta,phylip,nexus,phylip-int,nexus-int}\n\
+  \                        The format of input alignment\n  -d {aa,dna}, --data-type\
+  \ {aa,dna}\n                        Type of data\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/amas:1.0--pyh864c0ab_0

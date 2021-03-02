@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Directory, String, Int, Float, Boolean
+
+Fseq_V0_1_0 = CommandToolBuilder(tool="fseq", base_command=["fseq"], inputs=[ToolInput(tag="in_background_directory_defaultnone", input_type=Directory(optional=True), prefix="-b", doc=InputDocumentation(doc="background directory (default=none)")), ToolInput(tag="in_genomic_count_sequence", input_type=String(optional=True), prefix="-c", doc=InputDocumentation(doc="genomic count of sequence reads (defualt =\ncalculated)")), ToolInput(tag="in_input_directory_defaultcurrent", input_type=Directory(optional=True), prefix="-d", doc=InputDocumentation(doc="input directory (default=current directory)")), ToolInput(tag="in_fragment_size_defaultestimated", input_type=Int(optional=True), prefix="-f", doc=InputDocumentation(doc="fragment size (default=estimated from data)")), ToolInput(tag="in_feature_length_default", input_type=Int(optional=True), prefix="-l", doc=InputDocumentation(doc="feature length (default=600)")), ToolInput(tag="in_output_directory_defaultcurrent", input_type=Directory(optional=True), prefix="-o", doc=InputDocumentation(doc="output directory (default=current directory)")), ToolInput(tag="in_of", input_type=String(optional=True), prefix="-of", doc=InputDocumentation(doc="output format (default wig)")), ToolInput(tag="in_ploidyinput_directory_defaultnone", input_type=Directory(optional=True), prefix="-p", doc=InputDocumentation(doc="ploidy/input directory (default=none)")), ToolInput(tag="in_wiggle_step_default", input_type=Int(optional=True), prefix="-s", doc=InputDocumentation(doc="wiggle track step (default=1)")), ToolInput(tag="in_threshold_standard_deviations", input_type=Float(optional=True), prefix="-t", doc=InputDocumentation(doc="threshold (standard deviations) (default=4.0)")), ToolInput(tag="in_verbose_output", input_type=Boolean(optional=True), prefix="-v", doc=InputDocumentation(doc="verbose output")), ToolInput(tag="in_wg", input_type=String(optional=True), prefix="-wg", doc=InputDocumentation(doc="wg threshold set (defualt = calculated)"))], outputs=[ToolOutput(tag="out_output_directory_defaultcurrent", output_type=Directory(optional=True), selector=InputSelector(input_to_select="in_output_directory_defaultcurrent", type_hint=File()), doc=OutputDocumentation(doc="output directory (default=current directory)"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Fseq_V0_1_0().translate("wdl", allow_empty_container=True)
+

@@ -1,0 +1,176 @@
+!Command
+command:
+- xml2dcm
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: xmlfile-in
+  description: 'XML input filename to be converted (stdin: "-")'
+- !Positional
+  optional: false
+  position: 1
+  name: dcmfile-out
+  description: DICOM output filename
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --arguments
+  description: print expanded command line arguments
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  description: quiet mode, print no warnings and errors
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: verbose mode, print processing details
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --debug
+  description: debug mode, print debug information
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ll
+  - --log-level
+  description: "[l]evel: string constant\n(fatal, error, warn, info, debug, trace)\n\
+    use level l for the logger"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -lc
+  - --log-config
+  description: "[f]ilename: string\nuse config file f for the logger"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --ignore-meta-info
+  description: ignore file meta information
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Uo
+  - --dont-overwrite-uids
+  description: do not overwrite existing UIDs (default)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  - --write-dataset
+  description: write data set without file meta information
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --disable-new-vr
+  description: disable support for new VRs, convert to OB
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --group-length-remove
+  description: always write without group length elements
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --length-undefined
+  description: write with undefined lengths
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: "=  --padding-retain       do not change padding\n(default if not --write-dataset)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --padding-off
+  description: no padding (implicit if --write-dataset)
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: print this help text and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: print version information and exit
+  args: !EmptyFlagArg {}
+help_text: "$dcmtk: xml2dcm v3.6.5 2019-10-28 $\n\nxml2dcm: Convert XML document to\
+  \ DICOM file or data set\nusage: xml2dcm [options] xmlfile-in dcmfile-out\n\nparameters:\n\
+  \  xmlfile-in                    XML input filename to be converted (stdin: \"-\"\
+  )\n  dcmfile-out                   DICOM output filename\n\ngeneral options:\n \
+  \ -h     --help                 print this help text and exit\n         --version\
+  \              print version information and exit\n         --arguments        \
+  \    print expanded command line arguments\n  -q     --quiet                quiet\
+  \ mode, print no warnings and errors\n  -v     --verbose              verbose mode,\
+  \ print processing details\n  -d     --debug                debug mode, print debug\
+  \ information\n  -ll    --log-level            [l]evel: string constant\n      \
+  \                          (fatal, error, warn, info, debug, trace)\n          \
+  \                      use level l for the logger\n  -lc    --log-config       \
+  \    [f]ilename: string\n                                use config file f for the\
+  \ logger\ninput options:\n  input file format:\n    +f   --read-meta-info      \
+  \ read meta information if present (default)\n    -f   --ignore-meta-info     ignore\
+  \ file meta information\nprocessing options:\n  validation:\n    +Vd  --validate-document\
+  \    validate XML document against DTD\n    +Vn  --check-namespace      check XML\
+  \ namespace in document root\n  unique identifiers:\n    +Ug  --generate-new-uids\
+  \    generate new Study/Series/SOP Instance UID\n    -Uo  --dont-overwrite-uids\
+  \  do not overwrite existing UIDs (default)\n    +Uo  --overwrite-uids       overwrite\
+  \ existing UIDs\noutput options:\n  output file format:\n    +F   --write-file \
+  \          write file format (default)\n    -F   --write-dataset        write data\
+  \ set without file meta information\n    +Fu  --update-meta-info     update particular\
+  \ file meta information\n  output transfer syntax:\n    +t=  --write-xfer-same \
+  \     write with same TS as input (default)\n    +te  --write-xfer-little    write\
+  \ with explicit VR little endian TS\n    +tb  --write-xfer-big       write with\
+  \ explicit VR big endian TS\n    +ti  --write-xfer-implicit  write with implicit\
+  \ VR little endian TS\n    +td  --write-xfer-deflated  write with deflated expl.\
+  \ VR little endian TS\n  post-1993 value representations:\n    +u   --enable-new-vr\
+  \        enable support for new VRs (UN/UT) (default)\n    -u   --disable-new-vr\
+  \       disable support for new VRs, convert to OB\n  group length encoding:\n \
+  \   +g=  --group-length-recalc  recalculate group lengths if present (default)\n\
+  \    +g   --group-length-create  always write with group length elements\n    -g\
+  \   --group-length-remove  always write without group length elements\n  length\
+  \ encoding in sequences and items:\n    +e   --length-explicit      write with explicit\
+  \ lengths (default)\n    -e   --length-undefined     write with undefined lengths\n\
+  \  data set trailing padding (not with --write-dataset):\n    -p=  --padding-retain\
+  \       do not change padding\n                                (default if not --write-dataset)\n\
+  \    -p   --padding-off          no padding (implicit if --write-dataset)\n    +p\
+  \   --padding-create       [f]ile-pad [i]tem-pad: integer\n                    \
+  \            align file on multiple of f bytes\n                               \
+  \ and items on multiple of i bytes\n  deflate compression level (only with --write-xfer-deflated):\n\
+  \    +cl  --compression-level    [l]evel: integer (default: 6)\n               \
+  \                 0=uncompressed, 1=fastest, 9=best compression\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/dcmtk:3.6.5--h5fca97b_0

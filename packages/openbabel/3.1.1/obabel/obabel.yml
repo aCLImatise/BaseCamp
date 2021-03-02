@@ -1,0 +1,162 @@
+!Command
+command:
+- obabel
+positional:
+- !Positional
+  optional: true
+  position: 0
+  name: input-type
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: infilename
+  description: ''
+- !Positional
+  optional: true
+  position: 2
+  name: output-type
+  description: ''
+- !Positional
+  optional: false
+  position: 3
+  name: outfilename
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: '<#> Start import at molecule # specified'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: '<#> End import at molecule # specified'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  description: with next object after error, if possible
+  args: !SimpleFlagArg
+    name: Continue
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  description: the output with gzip
+  args: !SimpleFlagArg
+    name: Compress
+- !Flag
+  optional: true
+  synonyms:
+  - -zin
+  description: the input with gzip
+  args: !SimpleFlagArg
+    name: Decompress
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  description: to translate keywords
+  args: !SimpleFlagArg
+    name: Attempt
+- !Flag
+  optional: true
+  synonyms:
+  - -H
+  description: this help text
+  args: !SimpleFlagArg
+    name: Outputs
+- !Flag
+  optional: true
+  synonyms:
+  - -Hxxx
+  description: (xxx is file format ID e.g. -Hcml) gives format info
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Hall
+  description: details of all formats
+  args: !SimpleFlagArg
+    name: Outputs
+- !Flag
+  optional: true
+  synonyms:
+  - -V
+  description: version number
+  args: !SimpleFlagArg
+    name: Outputs
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  description: "Lists plugin classes of this category, e.g. <formats>\nUse just -L\
+    \ for a list of plugin categories.\nUse -L <ID> e.g. -L sdf for details of a format\
+    \ or other plugin."
+  args: !SimpleFlagArg
+    name: category
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: "multiple output files, to allow:\nSplitting: e.g.        obabel infile.mol\
+    \ -O new.smi -m\nputs each molecule into new1.smi new2.smi etc\nBatch conversion:\
+    \ e.g. obabel *.mol -osmi -m\nconverts each input file to a .smi file"
+  args: !SimpleFlagArg
+    name: Produces
+- !Flag
+  optional: true
+  synonyms:
+  - -O
+  description: ''
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: ''
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: ''
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Open Babel converts chemical structures from one file format to another\n\
+  \nUsage: \nobabel[-i<input-type>] <infilename> [-o<output-type>] -O<outfilename>\
+  \ [Options]\nThe extension of a file decides the format, unless it is overridden\n\
+  \ by -i or -o options, e.g. -icml, or -o smi\nSee below for available format-types,\
+  \ which are the same as the \nfile extensions and are case independent.\nIf no input\
+  \ or output file is given stdin or stdout are used instead.\n\nMore than one input\
+  \ file can be specified and their names can contain\nwildcard chars (* and ?). The\
+  \ format of each file can be different unless\nthe -i option has been used, when\
+  \ they are all the same.\nBy default, the molecules are aggregated in the output\
+  \ file,\n but see -m option, Splitting, below.\n\nOptions, other than -i -o -O -m,\
+  \ must come after the input files.\n\nConversion options\n-f <#> Start import at\
+  \ molecule # specified\n-l <#> End import at molecule # specified\n-e Continue with\
+  \ next object after error, if possible\n-z Compress the output with gzip\n-zin Decompress\
+  \ the input with gzip\n-k Attempt to translate keywords\n-H Outputs this help text\n\
+  -Hxxx (xxx is file format ID e.g. -Hcml) gives format info\n-Hall Outputs details\
+  \ of all formats\n-V Outputs version number\n-L <category> Lists plugin classes\
+  \ of this category, e.g. <formats>\n   Use just -L for a list of plugin categories.\n\
+  \   Use -L <ID> e.g. -L sdf for details of a format or other plugin.\n-m Produces\
+  \ multiple output files, to allow:\n    Splitting: e.g.        obabel infile.mol\
+  \ -O new.smi -m\n      puts each molecule into new1.smi new2.smi etc\n    Batch\
+  \ conversion: e.g. obabel *.mol -osmi -m\n      converts each input file to a .smi\
+  \ file\nInterface to OBAPI internals\nAPI options, e.g. ---errorlevel 2\n errorlevel\
+  \ # min warning level displayed\n\nTo see a list of recognized file formats use\n\
+  \  babel -L formats [read] [write]\nTo see details and specific options for a particular\
+  \ format, e.g CML, use\n  babel -L cml\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/openbabel:3.1.1

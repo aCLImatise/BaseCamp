@@ -1,0 +1,99 @@
+!Command
+command:
+- sidr
+- runfile
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: sources.
+  description: Input data will be read for all variables which will be used to construct
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --infile
+  description: Comma-delimited input file.
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --taxdump
+  description: "Location of the NCBI Taxonomy dump. Default is\n$BLASTDB."
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  - -k
+  - --tokeep
+  description: "Location to save the contigs identified as the target\norganism(optional)."
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --toremove
+  description: "Location to save the contigs identified as not\nbelonging to the target\
+    \ organism (optional)."
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --target
+  description: "The identity of the target organism at the chosen\nclassification\
+    \ level. It is recommended to use the\norganism's phylum."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --binary
+  description: Use binary target/nontarget classification.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --level
+  description: "The classification level to use when constructing the\nmodel. Default\
+    \ is 'phylum'."
+  args: !SimpleFlagArg
+    name: TEXT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: sidr runfile [OPTIONS]\n\n  Runs a custom analysis using pre-computed\
+  \ data from BBMap or other\n  sources.\n\n  Input data will be read for all variables\
+  \ which will be used to construct\n  a Decision Tree model.\n\nOptions:\n  -i, --infile\
+  \ PATH    Comma-delimited input file.\n  -d, --taxdump PATH   Location of the NCBI\
+  \ Taxonomy dump. Default is\n                       $BLASTDB.\n\n  -o, --output\
+  \ PATH\n  -k, --tokeep PATH    Location to save the contigs identified as the target\n\
+  \                       organism(optional).\n\n  -x, --toremove PATH  Location to\
+  \ save the contigs identified as not\n                       belonging to the target\
+  \ organism (optional).\n\n  -t, --target TEXT    The identity of the target organism\
+  \ at the chosen\n                       classification level. It is recommended\
+  \ to use the\n                       organism's phylum.\n\n  --binary          \
+  \   Use binary target/nontarget classification.\n  -l, --level TEXT     The classification\
+  \ level to use when constructing the\n                       model. Default is 'phylum'.\n\
+  \n  -h, --help           Show this message and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/sidr:0.0.2a2--pyh3252c3a_0

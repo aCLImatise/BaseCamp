@@ -22,6 +22,9 @@ task IDDecoyProbability {
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
       ~{if (helphelp) then "--helphelp" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     in: "Identification input of combined forward decoy search (reindex with PeptideIndexer first) (valid formats: 'idXML')"
     fwd_in: "Identification input of forward run (valid formats: 'idXML')"

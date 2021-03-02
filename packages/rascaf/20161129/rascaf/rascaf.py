@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, Int, Boolean
+
+Rascaf_V0_1_0 = CommandToolBuilder(tool="rascaf", base_command=["rascaf"], inputs=[ToolInput(tag="in_required_path_coordinatesorted", input_type=File(optional=True), prefix="-b", doc=InputDocumentation(doc="(required): the path to the coordinate-sorted alignment BAM file")), ToolInput(tag="in_recommended_paths_raw", input_type=File(optional=True), prefix="-f", doc=InputDocumentation(doc="(recommended): the paths to the raw assembly fasta file(default: not used)")), ToolInput(tag="in_prefix_output_file", input_type=File(optional=True), prefix="-o", doc=InputDocumentation(doc=": prefix of the output file (default: rascaf)")), ToolInput(tag="in_bc", input_type=File(optional=True), prefix="-bc", doc=InputDocumentation(doc=": the path to the alignment BAM file allowing clipping from non-spliced aligner (default: not used)")), ToolInput(tag="in_ms", input_type=Int(optional=True), prefix="-ms", doc=InputDocumentation(doc=": minimum support for connecting two contigs(default: 2)")), ToolInput(tag="in_ml", input_type=Int(optional=True), prefix="-ml", doc=InputDocumentation(doc=": minimum exonic length(default: 200)")), ToolInput(tag="in_break_n", input_type=Int(optional=True), prefix="-breakN", doc=InputDocumentation(doc=": the least number of Ns to break a scaffold in the raw assembly (default: 1)")), ToolInput(tag="in_size_kmer_you", input_type=Int(optional=True), prefix="-k", doc=InputDocumentation(doc=": the size of a kmer(<=32; <=0 if you do not want to use kmer. default: 23)")), ToolInput(tag="in_cs", input_type=File(optional=True), prefix="-cs", doc=InputDocumentation(doc=": output the genomic sequence involved in connections in file $prefix_cs.fa (default: not used)")), ToolInput(tag="in_verbose_mode_default", input_type=Boolean(optional=True), prefix="-v", doc=InputDocumentation(doc=": verbose mode (default: false)"))], outputs=[ToolOutput(tag="out_prefix_output_file", output_type=File(optional=True), selector=InputSelector(input_to_select="in_prefix_output_file", type_hint=File()), doc=OutputDocumentation(doc=": prefix of the output file (default: rascaf)")), ToolOutput(tag="out_cs", output_type=File(optional=True), selector=InputSelector(input_to_select="in_cs", type_hint=File()), doc=OutputDocumentation(doc=": output the genomic sequence involved in connections in file $prefix_cs.fa (default: not used)"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Rascaf_V0_1_0().translate("wdl", allow_empty_container=True)
+

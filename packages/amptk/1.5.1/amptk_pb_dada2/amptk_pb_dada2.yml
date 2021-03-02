@@ -1,0 +1,126 @@
+!Command
+command:
+- amptk
+- pb-dada2
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: arguments
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --fastq
+  description: Input FASTQ file (Required)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out
+  description: Output base name.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --min_reads
+  description: 'Minimum number of reads per sample. Default: 10'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --read_qual
+  description: 'Minimum read quality. Default: 0.95 [0-1]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --barcode_qual
+  description: 'Barcode Quality score. Default: 80 [0-100]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --pct_otu
+  description: 'OTU Clustering Radius (percent). Default: 97'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --platform
+  description: 'Sequencing platform. Default: pacbio'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --chimera_method
+  description: 'DADA2 de novo chimera method. Default: consensus [consensus,pooled,per-sample]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pool
+  description: 'Pool all samples together for DADA2. Default: off'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pseudopool
+  description: 'Pseudopooling samples for DADA2. Default: off'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --uchime_ref
+  description: 'Run Ref Chimera filtering. Default: off [ITS, LSU, COI, 16S, custom
+    path]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --cpus
+  description: 'Number of CPUs to use. Default: all'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: Keep intermediate files.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nUsage:       amptk pb-dada2 <arguments>\nversion:     1.5.1\n\nDescription:\
+  \ Script is a \"wrapper\" for the DADA2 pipeline with PacBio CCS reads.\n      \
+  \       It will \"pick OTUs\" based on denoising the data for each read\n      \
+  \       predicting the original sequence.  This pipeline is sensitive to\n     \
+  \        1 bp differences between sequences. Since most reference databases classify\
+  \ \"species\"\n             at 97%% threshold, the inferred sequences (iSeqs) from\
+  \ DADA2 are then clusterd at --pct_otu\n             to create OTUs. Both results\
+  \ are saved.  Requires R packages: dada2, ShortRead\n\nArguments:   -i, --fastq\
+  \         Input FASTQ file (Required)\n             -o, --out           Output base\
+  \ name.\n             -m, --min_reads     Minimum number of reads per sample. Default:\
+  \ 10\n             -q, --read_qual     Minimum read quality. Default: 0.95 [0-1]\n\
+  \             -b, --barcode_qual  Barcode Quality score. Default: 80 [0-100]\n \
+  \            -p, --pct_otu       OTU Clustering Radius (percent). Default: 97\n\
+  \             --platform          Sequencing platform. Default: pacbio\n       \
+  \      --chimera_method    DADA2 de novo chimera method. Default: consensus [consensus,pooled,per-sample]\n\
+  \             --pool              Pool all samples together for DADA2. Default:\
+  \ off\n             --pseudopool        Pseudopooling samples for DADA2. Default:\
+  \ off\n             --uchime_ref        Run Ref Chimera filtering. Default: off\
+  \ [ITS, LSU, COI, 16S, custom path]\n             --cpus              Number of\
+  \ CPUs to use. Default: all\n             --debug             Keep intermediate\
+  \ files.\n        \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/amptk:1.5.1--py_1

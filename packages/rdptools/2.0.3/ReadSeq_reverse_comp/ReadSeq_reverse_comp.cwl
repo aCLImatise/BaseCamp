@@ -4,22 +4,22 @@ inputs:
 - id: in_check
   doc: If set, will check orientation of the rRNA sequenc, only reverse complement
     if needed
-  type: boolean
+  type: boolean?
   inputBinding:
     prefix: --check
 - id: in_format
   doc: output format, fasta or fastq. Default is fasta
-  type: string
+  type: string?
   inputBinding:
     prefix: --format
 - id: in_in_file
   doc: input fasta file
-  type: File
+  type: File?
   inputBinding:
     prefix: --infile
 - id: in_outfile
   doc: output fasta file
-  type: File
+  type: File?
   inputBinding:
     prefix: --outfile
 - id: in_rev_complement
@@ -33,9 +33,10 @@ outputs:
   type: stdout
 - id: out_outfile
   doc: output fasta file
-  type: File
+  type: File?
   outputBinding:
     glob: $(inputs.in_outfile)
+hints: []
 cwlVersion: v1.1
 baseCommand:
 - ReadSeq

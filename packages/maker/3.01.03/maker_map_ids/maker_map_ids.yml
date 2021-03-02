@@ -1,0 +1,97 @@
+!Command
+command:
+- maker_map_ids
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --prefix
+  description: The prefix to use for all IDs (default = 'MAKER_')
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --suffix
+  description: "A suffix to use for all transcript IDs (default = '-R').\nSpecifying\
+    \ --suffix will also turn on --iterate."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --initial
+  description: "The initial value to start with for ID count. If --initial\nis supplied\
+    \ more than once than the first value will be used\nfor genes and the second for\
+    \ transcripts (default = 1)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --abrv_gene
+  description: Optional abreviation added to IDs for genes (i.e. = 'G')
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --abrv_tran
+  description: Optioanl abreviation added to IDs for transcripts (i.e. = 'T')
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --iterate
+  description: "Transcript iteration to add to IDs. Value can be '0', '1',\nor 'A',\
+    \ i.e. mRNA-0 or mRNA-1 or mRNA-A (default = 'A')"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --justify
+  description: "The unique integer portion of the ID will be right justified\nwith\
+    \ '0's to this length (default = 8)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sort_order
+  description: "A tab delimited file containing two columns: contig_id\nand sort_order.\
+    \  Genes and transcripts will be named\nin consecutive order along the contigs,\
+    \ and the\ncontigs will be sorted in the order specified by the\nfile.  If sort_order\
+    \ is not given and there are\n##sequence-region directives at the top of the gff\n\
+    file then naming will be ordered by decreasing contig\nlength."
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\n\nSynopsis:\n\nmaker_map_ids --prefix PYU1_ --justify 8 genome.all.gff\
+  \ > genome.all.id.map\n\nDescription:\n\nThis script wil take a GFF3 file and create\
+  \ a mapping file of gene and\ntranscript IDs to more numerically incremented human\
+  \ friendly unique\nIDs.\n\nOptions:\n\n  --prefix      The prefix to use for all\
+  \ IDs (default = 'MAKER_')\n  --suffix      A suffix to use for all transcript IDs\
+  \ (default = '-R').\n                Specifying --suffix will also turn on --iterate.\n\
+  \  --initial     The initial value to start with for ID count. If --initial\n  \
+  \              is supplied more than once than the first value will be used\n  \
+  \              for genes and the second for transcripts (default = 1)\n  --abrv_gene\
+  \   Optional abreviation added to IDs for genes (i.e. = 'G')\n  --abrv_tran   Optioanl\
+  \ abreviation added to IDs for transcripts (i.e. = 'T')\n  --iterate     Transcript\
+  \ iteration to add to IDs. Value can be '0', '1',\n                or 'A', i.e.\
+  \ mRNA-0 or mRNA-1 or mRNA-A (default = 'A')\n  --justify     The unique integer\
+  \ portion of the ID will be right justified\n                with '0's to this length\
+  \ (default = 8)\n  --sort_order  A tab delimited file containing two columns: contig_id\n\
+  \                and sort_order.  Genes and transcripts will be named\n        \
+  \        in consecutive order along the contigs, and the\n                contigs\
+  \ will be sorted in the order specified by the\n                file.  If sort_order\
+  \ is not given and there are\n                ##sequence-region directives at the\
+  \ top of the gff\n                file then naming will be ordered by decreasing\
+  \ contig\n                length.\n\nFormating:\n  By default gene and transcript\
+  \ abreviations will appear at the end of the\n  suffix and the iterate value will\
+  \ appear at the end of the prefix (only on\n  transcripts).  You can specify an\
+  \ alternate location for the abbreviation by\n  placing a '?' character as part\
+  \ of the prefix or the sufix. An alternate\n  location for the iterator can be given\
+  \ by adding a % character to the\n  suffix or prefix.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/maker:3.01.03--pl526hb8757ab_0

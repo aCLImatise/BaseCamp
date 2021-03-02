@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean
+
+Analyzesnps_V0_1_0 = CommandToolBuilder(tool="analyzeSNPs", base_command=["analyzeSNPs"], inputs=[ToolInput(tag="in_bank", input_type=Boolean(optional=True), prefix="-bank", doc=InputDocumentation(doc="bank where assembly is stored")), ToolInput(tag="in_t_cov", input_type=Boolean(optional=True), prefix="-tcov", doc=InputDocumentation(doc="print snp positions in TCOV format (DEFAULT)")), ToolInput(tag="in_report", input_type=Boolean(optional=True), prefix="-report", doc=InputDocumentation(doc="print a report on the snps")), ToolInput(tag="in_all", input_type=Boolean(optional=True), prefix="-all", doc=InputDocumentation(doc="print all positions (not just SNP positions)")), ToolInput(tag="in_skip_header", input_type=Boolean(optional=True), prefix="-H", doc=InputDocumentation(doc="Skip header")), ToolInput(tag="in_skip_printing_bases", input_type=Boolean(optional=True), prefix="-B", doc=InputDocumentation(doc="Skip printing bases")), ToolInput(tag="in_print_readnames", input_type=Boolean(optional=True), prefix="-r", doc=InputDocumentation(doc="Print readnames")), ToolInput(tag="in_print_libid", input_type=Boolean(optional=True), prefix="-l", doc=InputDocumentation(doc="Print libid")), ToolInput(tag="in_print_qvs", input_type=Boolean(optional=True), prefix="-q", doc=InputDocumentation(doc="Print qvs")), ToolInput(tag="in_print_reads_majority", input_type=Boolean(optional=True), prefix="-K", doc=InputDocumentation(doc="Don't print reads in majority")), ToolInput(tag="in_min_snps", input_type=Boolean(optional=True), prefix="-minsnps", doc=InputDocumentation(doc="<val> Set Minimum number of consistent disagreeing reads to report (default: 1)")), ToolInput(tag="in_cum_qv", input_type=Boolean(optional=True), prefix="-cumqv", doc=InputDocumentation(doc="<val> Set Minimum conflicting cummulative qv to report (default: 0)")), ToolInput(tag="in_min_qv", input_type=Boolean(optional=True), prefix="-minqv", doc=InputDocumentation(doc="<val> Set Minimum conflicting qv to report (default: 0)")), ToolInput(tag="in_eid", input_type=Boolean(optional=True), prefix="-eid", doc=InputDocumentation(doc="Display eids")), ToolInput(tag="in_iid", input_type=Boolean(optional=True), prefix="-iid", doc=InputDocumentation(doc="Display iids")), ToolInput(tag="in_display_based_coordinates", input_type=Boolean(optional=True), prefix="-1", doc=InputDocumentation(doc="Display 1-based gapped coordinates"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Analyzesnps_V0_1_0().translate("wdl", allow_empty_container=True)
+

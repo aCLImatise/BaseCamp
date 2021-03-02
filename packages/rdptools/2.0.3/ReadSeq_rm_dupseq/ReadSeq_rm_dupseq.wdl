@@ -18,6 +18,9 @@ task ReadSeqRmdupseq {
       ~{if defined(min_seq_length) then ("--min_seq_length " +  '"' + min_seq_length + '"') else ""} \
       ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     duplicates: "remove identical sequence, or sequence contained by another sequence"
     debug: "output the ids that are contained by other sequences to standard out"

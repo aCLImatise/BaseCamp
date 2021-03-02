@@ -24,6 +24,9 @@ task Eslafetch {
       ~{if defined(out_format) then ("--outformat " +  '"' + out_format + '"') else ""} \
       ~{if (index) then "--index" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     second_cmdline_arg: ": second cmdline arg is a file of names to retrieve"
     output_alignments_file: ": output alignments to file <f> instead of stdout"

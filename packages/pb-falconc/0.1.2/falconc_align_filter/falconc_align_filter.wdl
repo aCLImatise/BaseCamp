@@ -16,6 +16,9 @@ task FalconcAlignfilter {
       ~{if (_minlen_int) then "-m" else ""} \
       ~{if (min_frac) then "--min-frac" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     help_syntax: "advanced: prepend,plurals,.."
     _bamsfofn_string: "=, --bams-fofn=             string  REQUIRED  set bams_fofn"

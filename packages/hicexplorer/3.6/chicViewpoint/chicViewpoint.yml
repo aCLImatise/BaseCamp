@@ -1,0 +1,182 @@
+!Command
+command:
+- chicViewpoint
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: RANGE
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --matrices
+  - -m
+  description: "Path to the Hi-C matrices which store the captured\nHi-C data per\
+    \ sample."
+  args: !RepeatFlagArg
+    name: MATRICES
+- !Flag
+  optional: true
+  synonyms:
+  - --range
+  description: "RANGE   Defines the region upstream and downstream of a\nreference\
+    \ point which should be considered in the\nanalysis. Please remember to use the\
+    \ same fixate range\nsetting as for the background model computation and\nthat\
+    \ distances of the range larger than the fixate\nrange use the background model\
+    \ of those.Format is\n--region upstream downstream"
+  args: !SimpleFlagArg
+    name: RANGE
+- !Flag
+  optional: true
+  synonyms:
+  - --referencePoints
+  - -rp
+  description: "Reference point file. Needs to be in the format: 'chr\n100' for a\
+    \ single reference point or 'chr 100 200' for\na reference region and with a single\
+    \ reference point\nper line"
+  args: !SimpleFlagArg
+    name: REFERENCEPOINTS
+- !Flag
+  optional: true
+  synonyms:
+  - --backgroundModelFile
+  - -bmf
+  description: "path to the background file computed by\nchicViewpointBackgroundModel"
+  args: !SimpleFlagArg
+    name: BACKGROUNDMODELFILE
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  - -t
+  description: "Number of threads (uses the python multiprocessing\nmodule) (Default:\
+    \ 4)."
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - --averageContactBin
+  description: "Average the contacts of n bins via a sliding window\napproach to smooth\
+    \ the values and be less sensitive\nfor outliers (Default: 5)."
+  args: !SimpleFlagArg
+    name: AVERAGECONTACTBIN
+- !Flag
+  optional: true
+  synonyms:
+  - --decimalPlaces
+  description: "Decimal places for all output floating numbers in the\nviewpoint files\
+    \ (Default: 12)."
+  args: !SimpleFlagArg
+    name: DECIMALPLACES
+- !Flag
+  optional: true
+  synonyms:
+  - --writeFileNamesToFile
+  - -w
+  description: "Set this parameter to have a file with all file names\nof the viewpoint\
+    \ files (useful only in batch\nprocessing mode)."
+  args: !SimpleFlagArg
+    name: WRITEFILENAMESTOFILE
+- !Flag
+  optional: true
+  synonyms:
+  - --fixateRange
+  - -fs
+  description: "Fixate range of background model starting at distance\nx. E.g. all\
+    \ values greater 500kb are set to the value\nof the 500kb bin (Default: 500000)."
+  args: !SimpleFlagArg
+    name: FIXATERANGE
+- !Flag
+  optional: true
+  synonyms:
+  - --allViewpointsList
+  - -avl
+  description: "Writes a file where all viewpoints all samples are\nsorted by the\
+    \ viewpoints."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --outputFolder
+  - -o
+  description: "This folder contains all created viewpoint files\n(Default: interactionFiles)."
+  args: !SimpleFlagArg
+    name: OUTPUTFOLDER
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: chicViewpoint --matrices MATRICES [MATRICES ...] --range RANGE\
+  \ RANGE\n                     --referencePoints REFERENCEPOINTS --backgroundModelFile\n\
+  \                     BACKGROUNDMODELFILE [--threads THREADS]\n                \
+  \     [--averageContactBin AVERAGECONTACTBIN]\n                     [--decimalPlaces\
+  \ DECIMALPLACES]\n                     [--writeFileNamesToFile WRITEFILENAMESTOFILE]\n\
+  \                     [--fixateRange FIXATERANGE] [--allViewpointsList]\n      \
+  \               [--outputFolder OUTPUTFOLDER] [--help] [--version]\n\nComputes per\
+  \ input matrix all viewpoints which are defined in the reference points file. All\
+  \ files are stored in the folder defined by `--outputFolder`, and the files\nare\
+  \ named by the name of the reference point, the sample name and the location of\
+  \ the reference point:\n\ngene_matrix_name_chr_start_end.txt\n\nIf multiple reference\
+  \ points are used and the processing downstream should be automated via batch processing\
+  \ mode, please activate `--writeFileNamesToFile`. All the file names will be written\
+  \ to this file; in the case of multiple samples two consecutive lines are considered\
+  \ as treatment vs. control for the differential analysis.\n\nAn example usage is:\n\
+  \n$ chicViewpoint --matrices matrix1.cool matrix2.cool matrix3.cool --referencePoints\
+  \ referencePointsFile.txt --range 20000 40000 --outputFolder interactionFilesFolder\n\
+  \nAn example usage for batch mode is:\n\n$ chicViewpoint --matrices matrix1.cool\
+  \ matrix2.cool matrix3.cool --referencePoints referencePointsFile.txt --range 20000\
+  \ 40000 --outputFolder interactionFilesFolder --writeFileNamesToFile interactionFile.txt\n\
+  \nRequired arguments:\n  --matrices MATRICES [MATRICES ...], -m MATRICES [MATRICES\
+  \ ...]\n                        Path to the Hi-C matrices which store the captured\n\
+  \                        Hi-C data per sample.\n  --range RANGE RANGE   Defines\
+  \ the region upstream and downstream of a\n                        reference point\
+  \ which should be considered in the\n                        analysis. Please remember\
+  \ to use the same fixate range\n                        setting as for the background\
+  \ model computation and\n                        that distances of the range larger\
+  \ than the fixate\n                        range use the background model of those.Format\
+  \ is\n                        --region upstream downstream\n  --referencePoints\
+  \ REFERENCEPOINTS, -rp REFERENCEPOINTS\n                        Reference point\
+  \ file. Needs to be in the format: 'chr\n                        100' for a single\
+  \ reference point or 'chr 100 200' for\n                        a reference region\
+  \ and with a single reference point\n                        per line\n  --backgroundModelFile\
+  \ BACKGROUNDMODELFILE, -bmf BACKGROUNDMODELFILE\n                        path to\
+  \ the background file computed by\n                        chicViewpointBackgroundModel\n\
+  \nOptional arguments:\n  --threads THREADS, -t THREADS\n                       \
+  \ Number of threads (uses the python multiprocessing\n                        module)\
+  \ (Default: 4).\n  --averageContactBin AVERAGECONTACTBIN\n                     \
+  \   Average the contacts of n bins via a sliding window\n                      \
+  \  approach to smooth the values and be less sensitive\n                       \
+  \ for outliers (Default: 5).\n  --decimalPlaces DECIMALPLACES\n                \
+  \        Decimal places for all output floating numbers in the\n               \
+  \         viewpoint files (Default: 12).\n  --writeFileNamesToFile WRITEFILENAMESTOFILE,\
+  \ -w WRITEFILENAMESTOFILE\n                        Set this parameter to have a\
+  \ file with all file names\n                        of the viewpoint files (useful\
+  \ only in batch\n                        processing mode).\n  --fixateRange FIXATERANGE,\
+  \ -fs FIXATERANGE\n                        Fixate range of background model starting\
+  \ at distance\n                        x. E.g. all values greater 500kb are set\
+  \ to the value\n                        of the 500kb bin (Default: 500000).\n  --allViewpointsList,\
+  \ -avl\n                        Writes a file where all viewpoints all samples are\n\
+  \                        sorted by the viewpoints.\n  --outputFolder OUTPUTFOLDER,\
+  \ -o OUTPUTFOLDER\n                        This folder contains all created viewpoint\
+  \ files\n                        (Default: interactionFiles).\n  --help, -h    \
+  \        show this help message and exit\n  --version             show program's\
+  \ version number and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/hicexplorer:3.6--py_0

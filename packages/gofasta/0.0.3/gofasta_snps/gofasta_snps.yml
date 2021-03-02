@@ -1,0 +1,56 @@
+!Command
+command:
+- gofasta
+- snps
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --outfile
+  description: Output to write (default "stdout")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --query
+  description: Alignment of sequences to find snps in, in fasta format (default "stdin")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reference
+  description: Reference sequence, in fasta format
+  args: !SimpleFlagArg
+    name: string
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: help for snps
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Find snps relative to a reference.\n\nExample usage:\n\tgofasta snps -r\
+  \ reference.fasta -q alignment.fasta -o snps.csv\n\nThe output is a csv-format file\
+  \ with one line per query sequence, and two columns:\n'query' and 'SNPs', the second\
+  \ of which is a \"|\"-delimited list of snps in that query.\n\nIf input and output\
+  \ files are not specified, the behaviour is to read the query alignment\nfrom stdin\
+  \ and write the snps file to stdout, e.g. you could do this:\n\tcat alignment.fasta\
+  \ | gofasta snps -r reference.fasta > snps.csv\n\nUsage:\n  gofasta snps [flags]\n\
+  \nFlags:\n  -h, --help               help for snps\n  -o, --outfile string     Output\
+  \ to write (default \"stdout\")\n  -q, --query string       Alignment of sequences\
+  \ to find snps in, in fasta format (default \"stdin\")\n  -r, --reference string\
+  \   Reference sequence, in fasta format\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/gofasta:0.0.3--0

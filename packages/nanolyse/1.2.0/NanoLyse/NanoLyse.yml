@@ -1,0 +1,74 @@
+!Command
+command:
+- NanoLyse
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --summary_in
+  description: Summary file to filter
+  args: !SimpleFlagArg
+    name: SUMMARY_IN
+- !Flag
+  optional: true
+  synonyms:
+  - --summary_out
+  description: 'with --summary_in: name of output file.'
+  args: !SimpleFlagArg
+    name: SUMMARY_OUT
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reference
+  description: Specify a fasta file against which to filter. Standard is DNA CS.
+  args: !SimpleFlagArg
+    name: REFERENCE
+- !Flag
+  optional: true
+  synonyms:
+  - --logfile
+  description: Specify the path and filename for the log file.
+  args: !SimpleFlagArg
+    name: LOGFILE
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: ''
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show the help and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: Print version and exit.
+  args: !EmptyFlagArg {}
+help_text: "usage: NanoLyse [-h] [-v] [--summary_in SUMMARY_IN]\n                [--summary_out\
+  \ SUMMARY_OUT] [-r REFERENCE] [--logfile LOGFILE]\n\nRemove reads mapping to DNA\
+  \ CS. Reads fastq on stdin and writes to stdout.\n\noptional arguments:\n  --summary_in\
+  \ SUMMARY_IN\n                        Summary file to filter\n  --summary_out SUMMARY_OUT\n\
+  \                        with --summary_in: name of output file.\n  -r, --reference\
+  \ REFERENCE\n                        Specify a fasta file against which to filter.\
+  \ Standard is DNA CS.\n  --logfile LOGFILE     Specify the path and filename for\
+  \ the log file.\n\nGeneral options:\n  -h, --help            show the help and exit\n\
+  \  -v, --version         Print version and exit.\n\nEXAMPLES:\n    gunzip -c reads.fastq.gz\
+  \ | NanoLyse | gzip > reads_without_lambda.fastq.gz\n    gunzip -c reads.fastq.gz\
+  \ | NanoLyse | NanoFilt -q 12 | gzip > filt_reads_without_lambda.fastq.gz\n    gunzip\
+  \ -c reads.fastq.gz | NanoLyse --reference mydb.fa.gz | gzip > reads_without_mydb.fastq.gz\n\
+  \    \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/nanolyse:1.2.0--py_0

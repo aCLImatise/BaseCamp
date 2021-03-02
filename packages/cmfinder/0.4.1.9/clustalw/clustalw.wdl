@@ -4,6 +4,9 @@ task Clustalw {
   command <<<
     clustalw
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

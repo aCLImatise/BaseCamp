@@ -1,0 +1,158 @@
+!Command
+command:
+- bedtools
+- merge
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: "Force strandedness.  That is, only merge features\nthat are on the\
+    \ same strand.\n- By default, merging is done without respect to strand."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  description: "Force merge for one specific strand only.\nFollow with + or - to force\
+    \ merge from only\nthe forward or reverse strand, respectively.\n- By default,\
+    \ merging is done without respect to strand."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: "Maximum distance between features allowed for features\nto be merged.\n\
+    - Def. 0. That is, overlapping & book-ended features are merged.\n- (INTEGER)\n\
+    - Note: negative values enforce the number of b.p. required for overlap."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: "Specify columns from the B file to map onto intervals in A.\nDefault:\
+    \ 5.\nMultiple columns can be specified in a comma-delimited list."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: "Specify the operation that should be applied to -c.\nValid operations:\n\
+    sum, min, max, absmin, absmax,\nmean, median, mode, antimode\nstdev, sstdev\n\
+    collapse (i.e., print a delimited list (duplicates allowed)),\ndistinct (i.e.,\
+    \ print a delimited list (NO duplicates allowed)),\ndistinct_sort_num (as distinct,\
+    \ sorted numerically, ascending),\ndistinct_sort_num_desc (as distinct, sorted\
+    \ numerically, desscending),\ndistinct_only (delimited list of only unique values),\n\
+    count\ncount_distinct (i.e., a count of the unique values in the column),\nfirst\
+    \ (i.e., just the first value in the column),\nlast (i.e., just the last value\
+    \ in the column),\nDefault: sum\nMultiple operations can be specified in a comma-delimited\
+    \ list.\nIf there is only column, but multiple operations, all operations will\
+    \ be\napplied on that column. Likewise, if there is only one operation, but\n\
+    multiple columns, that operation will be applied to all columns.\nOtherwise, the\
+    \ number of columns must match the the number of operations,\nand will be applied\
+    \ in respective order.\nE.g., \"-c 5,4,6 -o sum,mean,count\" will give the sum\
+    \ of column 5,\nthe mean of column 4, and the count of column 6.\nThe order of\
+    \ output columns will match the ordering given in the command."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -delim
+  description: "Specify a custom delimiter for the collapse operations.\n- Example:\
+    \ -delim \"|\"\n- Default: \",\"."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -prec
+  description: 'Sets the decimal precision for output (Default: 5)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -bed
+  description: If using BAM input, write output as BED.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -header
+  description: the header from the A file prior to results.
+  args: !SimpleFlagArg
+    name: Print
+- !Flag
+  optional: true
+  synonyms:
+  - -nobuf
+  description: "Disable buffered output. Using this option will cause each line\n\
+    of output to be printed as it is generated, rather than saved\nin a buffer. This\
+    \ will make printing large output files\nnoticeably slower, but can be useful\
+    \ in conjunction with\nother software tools and scripts that need to process one\n\
+    line of bedtools output at a time."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -iobuf
+  description: "Specify amount of memory to use for input buffer.\nTakes an integer\
+    \ argument. Optional suffixes K/M/G supported.\nNote: currently has no effect\
+    \ with compressed files."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: ''
+  args: !SimpleFlagArg
+    name: bed/gff/vcf
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nTool:    bedtools merge (aka mergeBed)\nVersion: v2.30.0\nSummary: Merges\
+  \ overlapping BED/GFF/VCF entries into a single interval.\n\nUsage:   bedtools merge\
+  \ [OPTIONS] -i <bed/gff/vcf>\n\nOptions: \n\t-s\tForce strandedness.  That is, only\
+  \ merge features\n\t\tthat are on the same strand.\n\t\t- By default, merging is\
+  \ done without respect to strand.\n\n\t-S\tForce merge for one specific strand only.\n\
+  \t\tFollow with + or - to force merge from only\n\t\tthe forward or reverse strand,\
+  \ respectively.\n\t\t- By default, merging is done without respect to strand.\n\n\
+  \t-d\tMaximum distance between features allowed for features\n\t\tto be merged.\n\
+  \t\t- Def. 0. That is, overlapping & book-ended features are merged.\n\t\t- (INTEGER)\n\
+  \t\t- Note: negative values enforce the number of b.p. required for overlap.\n\n\
+  \t-c\tSpecify columns from the B file to map onto intervals in A.\n\t\tDefault:\
+  \ 5.\n\t\tMultiple columns can be specified in a comma-delimited list.\n\n\t-o\t\
+  Specify the operation that should be applied to -c.\n\t\tValid operations:\n\t\t\
+  \    sum, min, max, absmin, absmax,\n\t\t    mean, median, mode, antimode\n\t\t\
+  \    stdev, sstdev\n\t\t    collapse (i.e., print a delimited list (duplicates allowed)),\
+  \ \n\t\t    distinct (i.e., print a delimited list (NO duplicates allowed)), \n\t\
+  \t    distinct_sort_num (as distinct, sorted numerically, ascending),\n\t\t    distinct_sort_num_desc\
+  \ (as distinct, sorted numerically, desscending),\n\t\t    distinct_only (delimited\
+  \ list of only unique values),\n\t\t    count\n\t\t    count_distinct (i.e., a count\
+  \ of the unique values in the column), \n\t\t    first (i.e., just the first value\
+  \ in the column), \n\t\t    last (i.e., just the last value in the column), \n\t\
+  \tDefault: sum\n\t\tMultiple operations can be specified in a comma-delimited list.\n\
+  \n\t\tIf there is only column, but multiple operations, all operations will be\n\
+  \t\tapplied on that column. Likewise, if there is only one operation, but\n\t\t\
+  multiple columns, that operation will be applied to all columns.\n\t\tOtherwise,\
+  \ the number of columns must match the the number of operations,\n\t\tand will be\
+  \ applied in respective order.\n\t\tE.g., \"-c 5,4,6 -o sum,mean,count\" will give\
+  \ the sum of column 5,\n\t\tthe mean of column 4, and the count of column 6.\n\t\
+  \tThe order of output columns will match the ordering given in the command.\n\n\n\
+  \t-delim\tSpecify a custom delimiter for the collapse operations.\n\t\t- Example:\
+  \ -delim \"|\"\n\t\t- Default: \",\".\n\n\t-prec\tSets the decimal precision for\
+  \ output (Default: 5)\n\n\t-bed\tIf using BAM input, write output as BED.\n\n\t\
+  -header\tPrint the header from the A file prior to results.\n\n\t-nobuf\tDisable\
+  \ buffered output. Using this option will cause each line\n\t\tof output to be printed\
+  \ as it is generated, rather than saved\n\t\tin a buffer. This will make printing\
+  \ large output files \n\t\tnoticeably slower, but can be useful in conjunction with\n\
+  \t\tother software tools and scripts that need to process one\n\t\tline of bedtools\
+  \ output at a time.\n\n\t-iobuf\tSpecify amount of memory to use for input buffer.\n\
+  \t\tTakes an integer argument. Optional suffixes K/M/G supported.\n\t\tNote: currently\
+  \ has no effect with compressed files.\n\nNotes: \n\t(1) The input file (-i) file\
+  \ must be sorted by chrom, then start.\n\n\n\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bedtools:2.30.0--hc088bd4_0

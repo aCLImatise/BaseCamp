@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, String
+
+Make_Logitmodel_Py_V0_1_0 = CommandToolBuilder(tool="make_logitModel.py", base_command=["make_logitModel.py"], inputs=[ToolInput(tag="in_c_gene", input_type=File(optional=True), prefix="--cgene", doc=InputDocumentation(doc="Protein coding transcripts (used to build logit model)\neither in BED format or mRNA sequences in FASTA\nformat: If this is BED format file, '-r' must be\nspecified; if this is mRNA sequence file in FASTA\nformat, ignore the '-r' option. The input BED or FASTA\nfile could be regular text file or compressed file\n(*.gz, *.bz2) or accessible url. NOTE: transcript ID\nshould be unique.")), ToolInput(tag="in_n_gene", input_type=File(optional=True), prefix="--ngene", doc=InputDocumentation(doc="Non protein coding transcripts (used to build logit\nmodel) either in BED format or mRNA sequences in FASTA\nformat: If this is BED format file, '-r' must be\nspecified; if this is mRNA sequence file in FASTA\nformat, ignore the '-r' option. The input BED or FASTA\nfile could be regular text file or compressed file\n(*.gz, *.bz2) or accessible url.  NOTE: transcript ID\nshould be unique.")), ToolInput(tag="in_outfile", input_type=String(optional=True), prefix="--outfile", doc=InputDocumentation(doc="output prefix.")), ToolInput(tag="in_hex", input_type=String(optional=True), prefix="--hex", doc=InputDocumentation(doc="Prebuilt hexamer frequency table (Human, Mouse, Fly,\nZebrafish). Run 'make_hexamer_tab.py' to generate this\ntable.")), ToolInput(tag="in_ref", input_type=File(optional=True), prefix="--ref", doc=InputDocumentation(doc="Reference genome sequences in FASTA format. Ignore\nthis option if mRNA sequences file was provided to\n'-g'. Reference genome file will be indexed\nautomatically (produce *.fai file along with the\noriginal *.fa file within the same directory) if\nhasn't been done.")), ToolInput(tag="in_start", input_type=String(optional=True), prefix="--start", doc=InputDocumentation(doc="Start codon (DNA sequence, so use 'T' instead of 'U')\nused to define open reading frame (ORF). default=ATG")), ToolInput(tag="in_stop", input_type=String(optional=True), prefix="--stop", doc=InputDocumentation(doc="Stop codon (DNA sequence, so use 'T' instead of 'U')\nused to define open reading frame (ORF). Multiple stop\ncodons should be separated by ','. default=TAG,TAA,TGA\n"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Make_Logitmodel_Py_V0_1_0().translate("wdl", allow_empty_container=True)
+

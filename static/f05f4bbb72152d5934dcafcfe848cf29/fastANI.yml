@@ -1,0 +1,133 @@
+!Command
+command:
+- fastANI
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --ref
+  description: reference genome (fasta/fastq)[.gz]
+  args: !SimpleFlagArg
+    name: value
+- !Flag
+  optional: true
+  synonyms:
+  - --refList
+  - --rl
+  description: a file containing list of reference genome files, one genome per line
+  args: !SimpleFlagArg
+    name: value
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --query
+  description: query genome (fasta/fastq)[.gz]
+  args: !SimpleFlagArg
+    name: value
+- !Flag
+  optional: true
+  synonyms:
+  - --ql
+  - --queryList
+  description: a file containing list of query genome files, one genome per line
+  args: !SimpleFlagArg
+    name: value
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --kmer
+  description: 'kmer size <= 16 [default : 16]'
+  args: !SimpleFlagArg
+    name: value
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: 'thread count for parallel execution [default : 1]'
+  args: !SimpleFlagArg
+    name: value
+- !Flag
+  optional: true
+  synonyms:
+  - --fragLen
+  description: 'fragment length [default : 3,000]'
+  args: !SimpleFlagArg
+    name: value
+- !Flag
+  optional: true
+  synonyms:
+  - --minFraction
+  description: "minimum fraction of genome that must be shared for trusting ANI. If\n\
+    reference and query genome size differ, smaller one among the two is\nconsidered.\
+    \ [default : 0.2]"
+  args: !SimpleFlagArg
+    name: value
+- !Flag
+  optional: true
+  synonyms:
+  - --visualize
+  description: "output mappings for visualization, can be enabled for single genome\
+    \ to\nsingle genome comparison only [disabled by default]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --matrix
+  description: "also output ANI values as lower triangular matrix (format inspired\
+    \ from\nphylip). If enabled, you should expect an output file with .matrix\nextension\
+    \ [disabled by default]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: "[required]\noutput file name"
+  args: !SimpleFlagArg
+    name: value
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Print this help page
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: "Show version\n"
+  args: !EmptyFlagArg {}
+help_text: "-----------------\nfastANI is a fast alignment-free implementation for\
+  \ computing whole-genome\nAverage Nucleotide Identity (ANI) between genomes\n-----------------\n\
+  Example usage:\n$ fastANI -q genome1.fa -r genome2.fa -o output.txt\n$ fastANI -q\
+  \ genome1.fa --rl genome_list.txt -o output.txt\n\nAvailable options\n-----------------\n\
+  -h, --help\n    Print this help page\n\n-r <value>, --ref <value>\n    reference\
+  \ genome (fasta/fastq)[.gz]\n\n--refList <value>, --rl <value>\n    a file containing\
+  \ list of reference genome files, one genome per line\n\n-q <value>, --query <value>\n\
+  \    query genome (fasta/fastq)[.gz]\n\n--ql <value>, --queryList <value>\n    a\
+  \ file containing list of query genome files, one genome per line\n\n-k <value>,\
+  \ --kmer <value>\n    kmer size <= 16 [default : 16]\n\n-t <value>, --threads <value>\n\
+  \    thread count for parallel execution [default : 1]\n\n--fragLen <value>\n  \
+  \  fragment length [default : 3,000]\n\n--minFraction <value>\n    minimum fraction\
+  \ of genome that must be shared for trusting ANI. If\n    reference and query genome\
+  \ size differ, smaller one among the two is\n    considered. [default : 0.2]\n\n\
+  --visualize\n    output mappings for visualization, can be enabled for single genome\
+  \ to\n    single genome comparison only [disabled by default]\n\n--matrix\n    also\
+  \ output ANI values as lower triangular matrix (format inspired from\n    phylip).\
+  \ If enabled, you should expect an output file with .matrix\n    extension [disabled\
+  \ by default]\n\n-o <value>, --output <value> [required]\n    output file name\n\
+  \n-v, --version\n    Show version\n\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/fastani:1.32--he1c1bb9_0

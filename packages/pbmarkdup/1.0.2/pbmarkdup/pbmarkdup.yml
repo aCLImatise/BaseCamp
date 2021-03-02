@@ -1,0 +1,127 @@
+!Command
+command:
+- pbmarkdup
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: INFILE.bam|xml|fa|fq|fofn
+  description: ''
+- !Positional
+  optional: false
+  position: 0
+  name: OUTFILE.bam|xml|fa.gz|fq.gz
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: STR
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: Input
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: Output
+  description: ''
+- !Positional
+  optional: false
+  position: 3
+  name: file
+  description: ''
+- !Positional
+  optional: false
+  position: 4
+  name: as
+  description: ''
+- !Positional
+  optional: false
+  position: 5
+  name: BAM
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --cross-library
+  - -x
+  description: Identify duplicates across sequencing libraries (LB tag in read group).
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --rmdup
+  - -r
+  description: Exclude duplicates from OUTFILE. Redundant when --dup-file is provided.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dup-file
+  description: STR   Write duplicates to this file instead of OUTFILE.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --clobber
+  - -f
+  description: Overwrite OUTFILE if it exists.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --num-threads
+  description: INT   Number of threads to use, 0 means autodetection. [0]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --log-level
+  description: 'STR   Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL).
+    [WARN]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --log-file
+  description: FILE  Log to a file, instead of stderr.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this help and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Show application version and exit.
+  args: !EmptyFlagArg {}
+help_text: "pbmarkdup - Mark duplicate reads from PacBio sequencing of an amplified\
+  \ library.\n\nUsage:\n  pbmarkdup [options] <INFILE.bam|xml|fa|fq|fofn> <OUTFILE.bam|xml|fa.gz|fq.gz>\n\
+  \n  INFILE.bam|xml|fa|fq|fofn    STR   Input file(s) as BAM, DATASET.XML, FASTA[.GZ],\
+  \ FASTQ[.GZ], or FOFN\n  OUTFILE.bam|xml|fa.gz|fq.gz  STR   Output file as BAM,\
+  \ DATASET.XML, FASTA.GZ or FASTQ.GZ\n\n\nDuplicate Marking Options:\n  --cross-library,-x\
+  \                 Identify duplicates across sequencing libraries (LB tag in read\
+  \ group).\n\nOutput Options:\n  --rmdup,-r                         Exclude duplicates\
+  \ from OUTFILE. Redundant when --dup-file is provided.\n  --dup-file           \
+  \        STR   Write duplicates to this file instead of OUTFILE.\n  --clobber,-f\
+  \                       Overwrite OUTFILE if it exists.\n\n  -h,--help         \
+  \                 Show this help and exit.\n  --version                        \
+  \  Show application version and exit.\n  -j,--num-threads             INT   Number\
+  \ of threads to use, 0 means autodetection. [0]\n  --log-level                 \
+  \ STR   Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL). [WARN]\n\
+  \  --log-file                   FILE  Log to a file, instead of stderr.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/pbmarkdup:1.0.2--0

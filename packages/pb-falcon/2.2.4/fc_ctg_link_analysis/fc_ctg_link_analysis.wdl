@@ -4,6 +4,9 @@ task FcCtgLinkAnalysis {
   command <<<
     fc_ctg_link_analysis
   >>>
+  runtime {
+    docker: "None"
+  }
   output {
     File out_stdout = stdout()
   }

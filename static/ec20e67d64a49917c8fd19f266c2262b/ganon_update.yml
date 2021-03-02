@@ -1,0 +1,174 @@
+!Command
+command:
+- ganon
+- update
+positional:
+- !Positional
+  optional: true
+  position: 0
+  name: INPUT_FILES
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-db-prefix
+  description: "Output database prefix (.ibf, .map, .tax, .gnn).\nDefault: overwrite\
+    \ current --db-prefix"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: 'Number of sub-processes/threads to use. Default: 2'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --specialization
+  description: "Change specialization mode. Can only be used if\ndatabase was built\
+    \ with some specialization. Options:\n[sequence,file,assembly,custom]. \"sequence\"\
+    \ will use\nsequence accession as target. \"file\" uses the filename\nas target.\
+    \ \"assembly\" will use assembly info from NCBI\nas target. \"custom\" uses the\
+    \ 4th column of the file\nprovided in --seq-info-file as target."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --seq-info-mode
+  description: "[ [ ...]]\nAutomatic mode to retrieve tax. info and seq. length.\n\
+    [auto,eutils] or one or more accession2taxid files\nfrom NCBI [nucl_gb nucl_wgs\
+    \ nucl_est nucl_gss pdb prot\ndead_nucl dead_wgs dead_prot]. auto will either\
+    \ use\neutils for less than 50000 input sequences or nucl_gb\nnucl_wgs. Alternatively\
+    \ a file can be directly\nprovided (see --seq-info-file). Default: auto"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --seq-info-file
+  description: "Tab-separated file with sequence information (seqid\n<tab> seq.len\
+    \ <tab> taxid [<tab> assembly id])\n[Mutually exclusive --seq-info]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --taxdump-file
+  description: "[ [ ...]]\nForce use of a specific version of the\n(taxdump.tar.gz)\
+    \ or (nodes.dmp names.dmp [merged.dmp])\nfile(s) from NCBI Taxonomy (otherwise\
+    \ it will be\nautomatically downloaded)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --input-directory
+  description: Directory containing input files
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --input-extension
+  description: "Extension of files to use with --input-directory\n(provide it without\
+    \ * expansion, e.g. \".fna.gz\")"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --update-complete
+  description: "Update adding and removing sequences. Input files\nshould represent\
+    \ the complete updated set of\nreferences, not only new sequences."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --write-seq-info-file
+  description: Write sequence information to DB_PREFIX.seqinfo.txt
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: Verbose output mode
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --quiet
+  description: Quiet output mode
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --db-prefix
+  description: Database input prefix (.ibf, .map, .tax, .gnn)
+  args: !SimpleFlagArg
+    name: DB_PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: "[INPUT_FILES [INPUT_FILES ...]], --input-files [INPUT_FILES [INPUT_FILES\
+    \ ...]]\nInput reference sequence fasta files [.gz] to be\nincluded to the database.\
+    \ Complete set of updated\nsequences should be provided when using --update-\n\
+    complete\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: ganon update [-h] -d DB_PREFIX [-i [INPUT_FILES [INPUT_FILES ...]]]\n\
+  \                    [-o] [-t] [-s] [--seq-info-mode [[...]]] [--seq-info-file]\n\
+  \                    [--taxdump-file [[...]]] [--input-directory]\n            \
+  \        [--input-extension] [--update-complete]\n                    [--write-seq-info-file]\
+  \ [--verbose] [--quiet]\n\noptional arguments:\n  -h, --help            show this\
+  \ help message and exit\n  -o , --output-db-prefix \n                        Output\
+  \ database prefix (.ibf, .map, .tax, .gnn).\n                        Default: overwrite\
+  \ current --db-prefix\n  -t , --threads        Number of sub-processes/threads to\
+  \ use. Default: 2\n  -s , --specialization \n                        Change specialization\
+  \ mode. Can only be used if\n                        database was built with some\
+  \ specialization. Options:\n                        [sequence,file,assembly,custom].\
+  \ \"sequence\" will use\n                        sequence accession as target. \"\
+  file\" uses the filename\n                        as target. \"assembly\" will use\
+  \ assembly info from NCBI\n                        as target. \"custom\" uses the\
+  \ 4th column of the file\n                        provided in --seq-info-file as\
+  \ target.\n  --seq-info-mode [ [ ...]]\n                        Automatic mode to\
+  \ retrieve tax. info and seq. length.\n                        [auto,eutils] or\
+  \ one or more accession2taxid files\n                        from NCBI [nucl_gb\
+  \ nucl_wgs nucl_est nucl_gss pdb prot\n                        dead_nucl dead_wgs\
+  \ dead_prot]. auto will either use\n                        eutils for less than\
+  \ 50000 input sequences or nucl_gb\n                        nucl_wgs. Alternatively\
+  \ a file can be directly\n                        provided (see --seq-info-file).\
+  \ Default: auto\n  --seq-info-file       Tab-separated file with sequence information\
+  \ (seqid\n                        <tab> seq.len <tab> taxid [<tab> assembly id])\n\
+  \                        [Mutually exclusive --seq-info]\n  --taxdump-file [ [ ...]]\n\
+  \                        Force use of a specific version of the\n              \
+  \          (taxdump.tar.gz) or (nodes.dmp names.dmp [merged.dmp])\n            \
+  \            file(s) from NCBI Taxonomy (otherwise it will be\n                \
+  \        automatically downloaded)\n  --input-directory     Directory containing\
+  \ input files\n  --input-extension     Extension of files to use with --input-directory\n\
+  \                        (provide it without * expansion, e.g. \".fna.gz\")\n  --update-complete\
+  \     Update adding and removing sequences. Input files\n                      \
+  \  should represent the complete updated set of\n                        references,\
+  \ not only new sequences.\n  --write-seq-info-file\n                        Write\
+  \ sequence information to DB_PREFIX.seqinfo.txt\n  --verbose             Verbose\
+  \ output mode\n  --quiet               Quiet output mode\n\nrequired arguments:\n\
+  \  -d DB_PREFIX, --db-prefix DB_PREFIX\n                        Database input prefix\
+  \ (.ibf, .map, .tax, .gnn)\n  -i [INPUT_FILES [INPUT_FILES ...]], --input-files\
+  \ [INPUT_FILES [INPUT_FILES ...]]\n                        Input reference sequence\
+  \ fasta files [.gz] to be\n                        included to the database. Complete\
+  \ set of updated\n                        sequences should be provided when using\
+  \ --update-\n                        complete\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/ganon:0.4.0--py38hb45e0f6_0

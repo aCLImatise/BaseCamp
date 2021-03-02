@@ -54,6 +54,9 @@ task Nucmer {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if (full_help) then "--full-help" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     max_match: "different bevahiors."
     mum: "Use anchor matches that are unique in both the reference and query (false)"

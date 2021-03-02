@@ -1,0 +1,138 @@
+!Command
+command:
+- query_testlists
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --debug
+  description: Print debug information (very verbose) to file /query_testlists.log
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: Add additional context (time and file) to log messages
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --silent
+  description: Print only warnings and error messages
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --count
+  description: Rather than listing tests, just give counts by category/machine/compiler.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --list
+  description: "Rather than listing tests, list the available options for\n--xml-category,\
+    \ --xml-machine, or --xml-compiler.\n(The singular and plural forms are equivalent\
+    \ - so '--list category'\nis equivalent to '--list categories', etc.)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      machine:
+      categories:
+      compilers:
+      category:
+      compiler:
+      machines:
+- !Flag
+  optional: true
+  synonyms:
+  - --show-options
+  description: "For each test, also show options for that test\n(wallclock time, memory\
+    \ leak tolerance, etc.).\n(Has no effect with --list or --count options.)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --define-testtypes
+  description: "At the top of the list of tests, define all of the possible test types.\n\
+    (Has no effect with --list or --count options.)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --xml-category
+  description: Only include tests in this category; default is all categories.
+  args: !SimpleFlagArg
+    name: XML_CATEGORY
+- !Flag
+  optional: true
+  synonyms:
+  - --xml-machine
+  description: Only include tests for this machine; default is all machines.
+  args: !SimpleFlagArg
+    name: XML_MACHINE
+- !Flag
+  optional: true
+  synonyms:
+  - --xml-compiler
+  description: Only include tests for this compiler; default is all compilers.
+  args: !SimpleFlagArg
+    name: XML_COMPILER
+- !Flag
+  optional: true
+  synonyms:
+  - --xml-testlist
+  description: "Path to testlist file from which tests are gathered;\ndefault is all\
+    \ files specified in config_files.xml.\n"
+  args: !SimpleFlagArg
+    name: XML_TESTLIST
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: query_testlists [-h] [-d] [-v] [-s] [--count]\n               \
+  \        [--list {category,categories,machine,machines,compiler,compilers}]\n  \
+  \                     [--show-options] [--define-testtypes]\n                  \
+  \     [--xml-category XML_CATEGORY]\n                       [--xml-machine XML_MACHINE]\n\
+  \                       [--xml-compiler XML_COMPILER]\n                       [--xml-testlist\
+  \ XML_TESTLIST]\n\nScript to query xml test lists, displaying all tests in human-readable\
+  \ form.\n\nUsage:\n   ./query_testlists [--show-options] [--define-testtypes]\n\
+  \      Display a list of tests\n   ./query_testlists --count\n      Count tests\
+  \ by category/machine/compiler\n   ./query_testlists --list {category,categories,machine,machines,compiler,compilers}\n\
+  \      List the available options for --xml-category, --xml-machine, or --xml-compiler\n\
+  \n   All of the above support the various --xml-* arguments for subsetting which\
+  \ tests are included.\n\noptional arguments:\n  -h, --help            show this\
+  \ help message and exit\n  -d, --debug           Print debug information (very verbose)\
+  \ to file /query_testlists.log\n  -v, --verbose         Add additional context (time\
+  \ and file) to log messages\n  -s, --silent          Print only warnings and error\
+  \ messages\n  --count               Rather than listing tests, just give counts\
+  \ by category/machine/compiler.\n  --list {category,categories,machine,machines,compiler,compilers}\n\
+  \                        Rather than listing tests, list the available options for\n\
+  \                        --xml-category, --xml-machine, or --xml-compiler.\n   \
+  \                     (The singular and plural forms are equivalent - so '--list\
+  \ category'\n                        is equivalent to '--list categories', etc.)\n\
+  \  --show-options        For each test, also show options for that test\n      \
+  \                  (wallclock time, memory leak tolerance, etc.).\n            \
+  \            (Has no effect with --list or --count options.)\n  --define-testtypes\
+  \    At the top of the list of tests, define all of the possible test types.\n \
+  \                       (Has no effect with --list or --count options.)\n  --xml-category\
+  \ XML_CATEGORY\n                        Only include tests in this category; default\
+  \ is all categories.\n  --xml-machine XML_MACHINE\n                        Only\
+  \ include tests for this machine; default is all machines.\n  --xml-compiler XML_COMPILER\n\
+  \                        Only include tests for this compiler; default is all compilers.\n\
+  \  --xml-testlist XML_TESTLIST\n                        Path to testlist file from\
+  \ which tests are gathered;\n                        default is all files specified\
+  \ in config_files.xml.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/fates-emerald:2.0.1

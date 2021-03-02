@@ -30,6 +30,9 @@ task Abyssfac {
       ~{if (no_count_am_big) then "--no-count-ambig" else ""} \
       ~{if (verbose) then "--verbose" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     genome_size: "expected genome size. Used to calculate NG50\\nand associated stats [disabled]"
     min_length: "ignore sequences shorter than N bp [500]"

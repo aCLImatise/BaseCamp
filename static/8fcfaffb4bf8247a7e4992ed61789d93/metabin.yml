@@ -1,0 +1,209 @@
+!Command
+command:
+- metabin
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  description: TSV file name
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out
+  description: output file prefix
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --Species
+  description: species %id threshold [default= 99]
+  args: !SimpleFlagArg
+    name: DOUBLE
+- !Flag
+  optional: true
+  synonyms:
+  - -G
+  - --Genus
+  description: genus %id threshold [default= 97]
+  args: !SimpleFlagArg
+    name: DOUBLE
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  - --Family
+  description: family %id threshold [default= 95]
+  args: !SimpleFlagArg
+    name: DOUBLE
+- !Flag
+  optional: true
+  synonyms:
+  - -A
+  - --AboveF
+  description: above family %id threshold [default= 90]
+  args: !SimpleFlagArg
+    name: DOUBLE
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  - --db
+  description: directory containing the taxonomy db (nodes.dmp and names.dmp) [default=
+    /usr/local/bin/../db/]
+  args: !SimpleFlagArg
+    name: FOLDER
+- !Flag
+  optional: true
+  synonyms:
+  - --SpeciesNegFilter
+  description: negative filter (file with one word per line) [default= NULL]
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --SpeciesBL
+  description: species blacklist (file with one taxid per line) [default= NULL]
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --GenusBL
+  description: genera blacklist (file with one taxid per line) [default= NULL]
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --FamilyBL
+  description: families blacklist (file with one taxid per line) [default= NULL]
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --FilterFile
+  description: file name with the entries from the input to exclude (on entry per
+    line)  [default= NULL]
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --FilterCol
+  description: "NAME\nColumn name to look for the values found the the file provided\
+    \ in the --Filter parameter  [default= sseqid]"
+  args: !SimpleFlagArg
+    name: COLUMN
+- !Flag
+  optional: true
+  synonyms:
+  - --rm_predicted
+  description: Where to look (column name) for in-silico 'predicted' entries (XM_,XR_,
+    and XP_). If no column is given then  the filter is not applied.  [default= NULL]
+  args: !SimpleFlagArg
+    name: COLNAME
+- !Flag
+  optional: true
+  synonyms:
+  - --TopAF
+  description: above family? [default= 100]
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  description: enable quiet mode (less messages are printed to stdout)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no_mbk
+  description: 'Do not use mbk: codes in the output file to explain why a sequence
+    was not binned at a given level (NA is used throughout)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sp_discard_sp
+  description: Discard species with sp. in the name
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sp_discard_mt2w
+  description: Discard species with more than two words
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sp_discard_num
+  description: Discard species with numbers
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  - --minimal_cols
+  description: Include only the seqid and lineage information in the output table
+    [FALSE]
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: "Show this help message and exit\n"
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: print version and exit
+  args: !EmptyFlagArg {}
+help_text: "Usage: /usr/local/bin/metabin [options]\n\n\nOptions:\n\t-i FILENAME,\
+  \ --input=FILENAME\n\t\tTSV file name\n\n\t-o FILENAME, --out=FILENAME\n\t\toutput\
+  \ file prefix \n\n\t-S DOUBLE, --Species=DOUBLE\n\t\tspecies %id threshold [default=\
+  \ 99]\n\n\t-G DOUBLE, --Genus=DOUBLE\n\t\tgenus %id threshold [default= 97]\n\n\t\
+  -F DOUBLE, --Family=DOUBLE\n\t\tfamily %id threshold [default= 95]\n\n\t-A DOUBLE,\
+  \ --AboveF=DOUBLE\n\t\tabove family %id threshold [default= 90]\n\n\t-D FOLDER,\
+  \ --db=FOLDER\n\t\tdirectory containing the taxonomy db (nodes.dmp and names.dmp)\
+  \ [default= /usr/local/bin/../db/]\n\n\t--SpeciesNegFilter=FILENAME\n\t\tnegative\
+  \ filter (file with one word per line) [default= NULL]\n\n\t--SpeciesBL=FILENAME\n\
+  \t\tspecies blacklist (file with one taxid per line) [default= NULL]\n\n\t--GenusBL=FILENAME\n\
+  \t\tgenera blacklist (file with one taxid per line) [default= NULL]\n\n\t--FamilyBL=FILENAME\n\
+  \t\tfamilies blacklist (file with one taxid per line) [default= NULL]\n\n\t--FilterFile=FILENAME\n\
+  \t\tfile name with the entries from the input to exclude (on entry per line)  [default=\
+  \ NULL]\n\n\t--FilterCol=COLUMN NAME\n\t\tColumn name to look for the values found\
+  \ the the file provided in the --Filter parameter  [default= sseqid]\n\n\t--rm_predicted=COLNAME\n\
+  \t\tWhere to look (column name) for in-silico 'predicted' entries (XM_,XR_, and\
+  \ XP_). If no column is given then  the filter is not applied.  [default= NULL]\n\
+  \n\t--TopSpecies=INTEGER\n\t\t [default= 100]\n\n\t--TopGenus=INTEGER\n\t\t [default=\
+  \ 100]\n\n\t--TopFamily=INTEGER\n\t\t [default= 100]\n\n\t--TopAF=INTEGER\n\t\t\
+  \ above family? [default= 100]\n\n\t-v, --version\n\t\tprint version and exit\n\n\
+  \t-q, --quiet\n\t\tenable quiet mode (less messages are printed to stdout)\n\n\t\
+  --no_mbk\n\t\tDo not use mbk: codes in the output file to explain why a sequence\
+  \ was not binned at a given level (NA is used throughout)\n\n\t--sp_discard_sp\n\
+  \t\tDiscard species with sp. in the name\n\n\t--sp_discard_mt2w\n\t\tDiscard species\
+  \ with more than two words\n\n\t--sp_discard_num\n\t\tDiscard species with numbers\n\
+  \n\t-M, --minimal_cols\n\t\tInclude only the seqid and lineage information in the\
+  \ output table [FALSE]\n\n\t-h, --help\n\t\tShow this help message and exit\n\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/metabinkit:0.2.2--r40hed695b0_1

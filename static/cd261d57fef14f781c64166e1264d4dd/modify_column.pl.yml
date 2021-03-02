@@ -1,0 +1,503 @@
+!Command
+command:
+- modify_column.pl
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: 'The column to modify (default: 0; specify multiple columns using commas)
+    (zero-based)'
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: 'The rows to modify (default: All except -skipped; specify multiple
+    rows using commas) (zero-based)'
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -A
+  description: Apply transformation to ALL columns
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -min
+  description: Apply transformation only if entry is above (or equal) num
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -max
+  description: Apply transformation only if entry is below (or equal) num
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -mins
+  description: Apply transformation only if entry is strictly above num
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -maxs
+  description: Apply transformation only if entry is strictly below num
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -rng
+  description: <num1,num2> Apply transformation only if num1<=entry<=num2
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -rngs
+  description: <num1,num2> Apply transformation only if num1<entry<num2
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -abs
+  description: ':    Apply transformation only if entry is above <num> or below -<num>'
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -babs
+  description: ':   Apply transformation only if entry is above -<num> and below <num>'
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -str
+  description: ':    Apply transformation only if entry contains <str>'
+  args: !SimpleFlagArg
+    name: str
+- !Flag
+  optional: true
+  synonyms:
+  - -estr
+  description: ':   Apply transformation only if entry is equal to <str>'
+  args: !SimpleFlagArg
+    name: str
+- !Flag
+  optional: true
+  synonyms:
+  - -nstr
+  description: ':   Apply transformation only if entry is *not* equal to <str>'
+  args: !SimpleFlagArg
+    name: str
+- !Flag
+  optional: true
+  synonyms:
+  - -ne
+  description: ':           Apply transormation only if entry is not empty'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -empty
+  description: ':        Apply transormation only if entry is empty'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -pairs
+  description: ": Apply transformation only if the entry is from a row and column\n\
+    that appear in a line of <file> as <row name> <tab> <column name>"
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -skip
+  description: ':   Skip num rows in the file (default: 0)'
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -skipc
+  description: ':  Skip num columns (when applying to all columns, can skip the first
+    few) (default: 0)'
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  description: 'Add <num> to the column (default: 0)'
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: 'Substract <num> to the column (default: 0)'
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: "Multiply column by <num> (default: 1) (write '\"-1\"' to pass negative\
+    \ numbers)"
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: "Divide column by <num> (default: 1) (write '\"-1\"' to pass negative\
+    \ numbers)"
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -inv
+  description: Inverse of column
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ab
+  description: Absolute value of column
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -neg2pos
+  description: Convert negative numbers to positive
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -log
+  description: Take log (natural base) of the column
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -log2
+  description: Take log (base 2) of the column
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -log10
+  description: Take log (base 10) of the column
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -exp
+  description: Take num ** (value of the column)
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  description: Take e=2.1782... ** (value of column)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -pow
+  description: Raise vaule to the power of num (value of the column)
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -substr
+  description: If the column has more than num chars, then substr the first num
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -set_min
+  description: If the column has a value less than num, set it to num
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -set_max
+  description: If the column has a value greater than num, set it to num
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -type
+  description: ':   <Number/String> (default: Number)'
+  args: !SimpleFlagArg
+    name: str
+- !Flag
+  optional: true
+  synonyms:
+  - -len
+  description: Replace value (treated as a string) by its length in characters
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -reverse
+  description: Reverse the string (ABC becomes CBA)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -dc
+  description: Divide the column by the number in column <col>
+  args: !SimpleFlagArg
+    name: col
+- !Flag
+  optional: true
+  synonyms:
+  - -mc
+  description: Multiply the column by the number in column <col>
+  args: !SimpleFlagArg
+    name: col
+- !Flag
+  optional: true
+  synonyms:
+  - -ac
+  description: Add the number in column <col> to the column
+  args: !SimpleFlagArg
+    name: col
+- !Flag
+  optional: true
+  synonyms:
+  - -sc
+  description: Subtract the number in column <col> from the column
+  args: !SimpleFlagArg
+    name: col
+- !Flag
+  optional: true
+  synonyms:
+  - -minc
+  description: Take the min of the column and <col>
+  args: !SimpleFlagArg
+    name: col
+- !Flag
+  optional: true
+  synonyms:
+  - -maxc
+  description: Take the max of the column and <col>
+  args: !SimpleFlagArg
+    name: col
+- !Flag
+  optional: true
+  synonyms:
+  - -bins
+  description: ':   discretize the column into <num> bins.'
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -rescale
+  description: "given as 'bottom,top'. linearly rescales the data in the column so\
+    \ that the smallest value will\nbe <bottom> and the largest will be <top>. If\
+    \ the data is equal in all entries, all entries\nwill be set to <bottom>."
+  args: !SimpleFlagArg
+    name: str
+- !Flag
+  optional: true
+  synonyms:
+  - -rescale_limits
+  description: ": given as 'min,max'. when used with -rescale assumes that the maximal\
+    \ value of the column is\nmax and the minimal value is min."
+  args: !SimpleFlagArg
+    name: str
+- !Flag
+  optional: true
+  synonyms:
+  - -pd
+  description: "makes the column a probability distribution by changing negative values\
+    \ to zero and\nthen dividing by the sum of the column."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: "Precision (take only <num> sig. digits. default: don't fix)"
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -res
+  description: Convert numbers to a <num> resolution (e.g., 0.05)
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -astr
+  description: 'Add <str> to the end of the column (default: "")'
+  args: !SimpleFlagArg
+    name: str
+- !Flag
+  optional: true
+  synonyms:
+  - -bstr
+  description: 'Add <str> to the beginning of the column (default: "")'
+  args: !SimpleFlagArg
+    name: str
+- !Flag
+  optional: true
+  synonyms:
+  - -set
+  description: Set the entry to <str> (put EMPTY for getting an empty entry)
+  args: !SimpleFlagArg
+    name: str
+- !Flag
+  optional: true
+  synonyms:
+  - -rmre
+  description: Remove string that matches the regular expression <regexp> from column
+  args: !SimpleFlagArg
+    name: regexp
+- !Flag
+  optional: true
+  synonyms:
+  - -pv
+  description: "Set numerical values around a given pivot (see -pv_val, -pv_high,\
+    \ -pv_low). Activated when <bool> = 1.\nNon numerical values are not modified."
+  args: !SimpleFlagArg
+    name: bool
+- !Flag
+  optional: true
+  synonyms:
+  - -pv_val
+  description: '<num> The pivot value (default: 0.05)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -pv_high
+  description: 'The number to set values greater then the pivot value (default: 0)'
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -pv_low
+  description: '<num> The number to set values smaller equal then the pivot value
+    (default: 1)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -splt_d
+  description: 'Split the column by the delimiter <del> (default: none).'
+  args: !SimpleFlagArg
+    name: del
+- !Flag
+  optional: true
+  synonyms:
+  - -cumul
+  description: Accumulate (row i = row 1 + .. + row i)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -zero
+  description: 'When dividing by zero, uses <num> instead of giving an error (default:
+    999999)'
+  args: !SimpleFlagArg
+    name: num
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nEXE_BASE_DIR/lib/modify_column.pl <file>\n\n   Modifies a column according\
+  \ to predefined operations\n\n   WHAT TO MODIFY:\n\n      -c <num>       The column\
+  \ to modify (default: 0; specify multiple columns using commas) (zero-based)\n \
+  \     -r <num>       The rows to modify (default: All except -skipped; specify multiple\
+  \ rows using commas) (zero-based)\n      -A             Apply transformation to\
+  \ ALL columns\n      -min <num>     Apply transformation only if entry is above\
+  \ (or equal) num\n      -max <num>     Apply transformation only if entry is below\
+  \ (or equal) num\n      -mins <num>    Apply transformation only if entry is strictly\
+  \ above num\n      -maxs <num>    Apply transformation only if entry is strictly\
+  \ below num\n      -rng <num1,num2> Apply transformation only if num1<=entry<=num2\n\
+  \      -rngs <num1,num2> Apply transformation only if num1<entry<num2\n      -abs\
+  \ <num>:    Apply transformation only if entry is above <num> or below -<num>\n\
+  \      -babs <num>:   Apply transformation only if entry is above -<num> and below\
+  \ <num>\n      -str <str>:    Apply transformation only if entry contains <str>\n\
+  \      -estr <str>:   Apply transformation only if entry is equal to <str>\n   \
+  \   -nstr <str>:   Apply transformation only if entry is *not* equal to <str>\n\
+  \      -ne:           Apply transormation only if entry is not empty\n      -empty:\
+  \        Apply transormation only if entry is empty\n      -pairs <file>: Apply\
+  \ transformation only if the entry is from a row and column \n                 \
+  \    that appear in a line of <file> as <row name> <tab> <column name> \n      -skip\
+  \ <num>:   Skip num rows in the file (default: 0)\n      -skipc <num>:  Skip num\
+  \ columns (when applying to all columns, can skip the first few) (default: 0)\n\n\
+  \   HOW TO MODIFY:\n\n      -a <num>       Add <num> to the column (default: 0)\n\
+  \      -s <num>       Substract <num> to the column (default: 0)\n      -m <num>\
+  \       Multiply column by <num> (default: 1) (write '\"-1\"' to pass negative numbers)\n\
+  \      -d <num>       Divide column by <num> (default: 1) (write '\"-1\"' to pass\
+  \ negative numbers)\n      -inv           Inverse of column\n      -ab         \
+  \   Absolute value of column\n      -neg2pos       Convert negative numbers to positive\n\
+  \      -log           Take log (natural base) of the column\n      -log2       \
+  \   Take log (base 2) of the column\n      -log10         Take log (base 10) of\
+  \ the column\n      -exp <num>     Take num ** (value of the column)\n      -e \
+  \            Take e=2.1782... ** (value of column)\n      -pow <num>     Raise vaule\
+  \ to the power of num (value of the column)\n      -substr <num>  If the column\
+  \ has more than num chars, then substr the first num\n      -set_min <num> If the\
+  \ column has a value less than num, set it to num\n      -set_max <num> If the column\
+  \ has a value greater than num, set it to num\n      -type <str>:   <Number/String>\
+  \ (default: Number)\n      -len           Replace value (treated as a string) by\
+  \ its length in characters\n      -reverse       Reverse the string (ABC becomes\
+  \ CBA)\n\n      -dc <col>      Divide the column by the number in column <col>\n\
+  \      -mc <col>      Multiply the column by the number in column <col>\n      -ac\
+  \ <col>      Add the number in column <col> to the column\n      -sc <col>     \
+  \ Subtract the number in column <col> from the column\n      -minc <col>    Take\
+  \ the min of the column and <col>\n      -maxc <col>    Take the max of the column\
+  \ and <col>\n\n      -bins <num>:   discretize the column into <num> bins.\n   \
+  \   -rescale <str> given as 'bottom,top'. linearly rescales the data in the column\
+  \ so that the smallest value will\n                     be <bottom> and the largest\
+  \ will be <top>. If the data is equal in all entries, all entries\n            \
+  \         will be set to <bottom>.\n      -rescale_limits <str>: given as 'min,max'.\
+  \ when used with -rescale assumes that the maximal value of the column is\n    \
+  \                 max and the minimal value is min.\n      -pd            makes\
+  \ the column a probability distribution by changing negative values to zero and\n\
+  \                     then dividing by the sum of the column.\n\n      -p <num>\
+  \       Precision (take only <num> sig. digits. default: don't fix)\n      -res\
+  \ <num>     Convert numbers to a <num> resolution (e.g., 0.05)\n      -astr <str>\
+  \    Add <str> to the end of the column (default: \"\")\n      -bstr <str>    Add\
+  \ <str> to the beginning of the column (default: \"\")\n      -set <str>     Set\
+  \ the entry to <str> (put EMPTY for getting an empty entry)\n      -rmre <regexp>\
+  \ Remove string that matches the regular expression <regexp> from column\n\n   \
+  \   -pv <bool>     Set numerical values around a given pivot (see -pv_val, -pv_high,\
+  \ -pv_low). Activated when <bool> = 1.\n                     Non numerical values\
+  \ are not modified.\n      -pv_val  <num> The pivot value (default: 0.05)     \n\
+  \      -pv_high <num> The number to set values greater then the pivot value (default:\
+  \ 0)\n      -pv_low  <num> The number to set values smaller equal then the pivot\
+  \ value (default: 1)\n\n      -splt_d <del>  Split the column by the delimiter <del>\
+  \ (default: none).\n      -cumul         Accumulate (row i = row 1 + .. + row i)\n\
+  \      -zero <num>    When dividing by zero, uses <num> instead of giving an error\
+  \ (default: 999999)\n\n"
+generated_using:
+- --help
+docker_image:

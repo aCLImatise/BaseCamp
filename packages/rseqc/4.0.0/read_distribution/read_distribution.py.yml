@@ -1,0 +1,59 @@
+!Command
+command:
+- read_distribution.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: qc_failed
+  description: PCR duplicate
+- !Positional
+  optional: false
+  position: 1
+  name: Unmapped
+  description: 'Non-primary (or secondary)      '
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input-file
+  description: Alignment file in BAM or SAM format.
+  args: !SimpleFlagArg
+    name: INPUT_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --refgene
+  description: "Reference gene model in bed format.\n"
+  args: !SimpleFlagArg
+    name: REF_GENE_MODEL
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "Usage: read_distribution.py [options]\n\nCheck reads distribution over\
+  \ exon, intron, UTR, intergenic ... etc\nThe following reads will be skipped:\n\t\
+  qc_failed\n\tPCR duplicate\n\tUnmapped\n\tNon-primary (or secondary)\t\n\n\n\nOptions:\n\
+  \  --version             show program's version number and exit\n  -h, --help  \
+  \          show this help message and exit\n  -i INPUT_FILE, --input-file=INPUT_FILE\n\
+  \                        Alignment file in BAM or SAM format.\n  -r REF_GENE_MODEL,\
+  \ --refgene=REF_GENE_MODEL\n                        Reference gene model in bed\
+  \ format.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/rseqc:4.0.0--py38h0213d0e_0

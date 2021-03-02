@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, String, Int
+
+Caiplot_V0_1_0 = CommandToolBuilder(tool="cAIPlot", base_command=["cAIPlot"], inputs=[ToolInput(tag="in_input", input_type=File(optional=True), prefix="--input", doc=InputDocumentation(doc="Input file in txt format.And the files has three\ncolumns; column 1: sample;columns 2: start_density;\ncolumn 3: stop_density")), ToolInput(tag="in_downstream_codon", input_type=String(optional=True), prefix="--downstream_codon", doc=InputDocumentation(doc="Downstream codon corresponding to start codon (codon\nunit). While corresponding to stop codon, it is the\nupstream codon.")), ToolInput(tag="in_upstream_codon", input_type=String(optional=True), prefix="--upstream_codon", doc=InputDocumentation(doc="Upstream codon corresponding to start codon (codon\nunit). While corresponding to stop codon, it is the\ndownstream codon.")), ToolInput(tag="in_output", input_type=String(optional=True), prefix="--output", doc=InputDocumentation(doc="Prefix of output files.[required]")), ToolInput(tag="in_format", input_type=File(optional=True), prefix="--format", doc=InputDocumentation(doc="Output file format,'pdf','png' or 'jpg'. default=pdf")), ToolInput(tag="in_mode", input_type=String(optional=True), prefix="--mode", doc=InputDocumentation(doc="Control the mode for plot.[all or single]. default=all")), ToolInput(tag="in_a_xv_line", input_type=String(optional=True), prefix="--axvline", doc=InputDocumentation(doc="Position to plot vetical line")), ToolInput(tag="in_start", input_type=Int(optional=True), prefix="--start", doc=InputDocumentation(doc="The start position need to be averaged.default=5")), ToolInput(tag="in_window", input_type=Int(optional=True), prefix="--window", doc=InputDocumentation(doc="The length of silde window. ddefault=7")), ToolInput(tag="in_step", input_type=Int(optional=True), prefix="--step", doc=InputDocumentation(doc="The step length of slide window. default=1")), ToolInput(tag="in_ymax", input_type=Int(optional=True), prefix="--ymax", doc=InputDocumentation(doc="The max of ylim. default=none")), ToolInput(tag="in_ymin", input_type=Int(optional=True), prefix="--ymin", doc=InputDocumentation(doc="The min of ylim. default=none"))], outputs=[ToolOutput(tag="out_format", output_type=File(optional=True), selector=InputSelector(input_to_select="in_format", type_hint=File()), doc=OutputDocumentation(doc="Output file format,'pdf','png' or 'jpg'. default=pdf"))], container="quay.io/biocontainers/ribominer:0.2.3.1--pyh3252c3a_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Caiplot_V0_1_0().translate("wdl")
+

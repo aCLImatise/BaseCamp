@@ -12,6 +12,9 @@ task DepCheck {
       ~{if (skip_lock) then "-skip-lock" else ""} \
       ~{if (skip_vendor) then "-skip-vendor" else ""}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     suppress_nonerror_output: "Suppress non-error output (default: false)"
     skip_lock: "Skip checking that imports and Gopkg.toml are in sync with Gopkg.lock (default: false)"

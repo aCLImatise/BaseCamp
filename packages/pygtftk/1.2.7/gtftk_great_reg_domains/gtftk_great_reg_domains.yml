@@ -1,0 +1,204 @@
+!Command
+command:
+- gtftk
+- great_reg_domains
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: produced
+  description: a set of 'labeled' regions with the same rules as those described in
+    GREAT (Genomic
+- !Positional
+  optional: false
+  position: 0
+  name: '2018-01-25'
+  description: 'Argument:'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --inputfile
+  description: 'Path to the GTF file. Default to STDIN (default: <stdin>)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --outputfile
+  description: 'Output file. (default: <stdout>)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --go-id
+  description: 'The GO ID (e.g GO:0003700). Default is to return all genes. (default:
+    None)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --species
+  description: 'The dataset/species. Use select_by_go to get the list of species (default:
+    hsapiens)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --upstream
+  description: "Extend the TSS in 5' by a given value. (default: 5000)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --downstream
+  description: "Extend the TSS 3' by a given value. (default: 1000)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --distal
+  description: 'Maximum extension in one direction (default: 1000000)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --chrom-info
+  description: 'Tabulated two-columns file. Chromosomes as column 1, sizes as column
+    2 (default: None)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --mode
+  description: "The type of 'association rule'. (default: basal_plus_extension)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p1
+  - --http-proxy
+  description: 'Use this http proxy (not tested/experimental). (default: )'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p2
+  - --https-proxy
+  description: 'Use this https proxy (not tested/experimental). (default: )'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --verbosity
+  description: 'Set output verbosity ([0-3]). (default: 0)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  - --no-date
+  description: 'Do not add date to output file names. (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -C
+  - --add-chr
+  description: "Add 'chr' to chromosome names before printing output. (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -K
+  - --tmp-dir
+  description: 'Keep all temporary files into this folder. (default: None)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -A
+  - --keep-all
+  description: 'Try to keep all temporary files even if process does not terminate
+    normally. (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  - --logger-file
+  description: 'Stores the arguments passed to the command into a file. (default:
+    None)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -W
+  - --write-message-to-file
+  description: 'Store all message into a file. (default: None)'
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this help message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "  Usage: gtftk great_reg_domains [-i GTF] [-o GTF] [-g go_id] [-s species]\
+  \ [-u upstream] [-d downstream] [-t distal] -c TXT [-m TXT] [-p1 http_proxy] [-p2\
+  \ https_proxy] [-h] [-V [verbosity]] [-D] [-C] [-K tmp_dir] [-A] [-L logger_file]\
+  \ [-W write_message_to_file]\n\n  Description: \n     *  Given a GTF and a GO term\
+  \ computes labeled regions using GREAT 'association rule'.\n\n  Notes:\n     * \
+  \ This tool represents an attempt to process genomic annotations in GTF format in\
+  \ order to\n     produced  a set of 'labeled' regions with the same rules as those\
+  \ described in GREAT (Genomic\n     Regions Enrichment of Annotations Tool) documentation.\
+  \ We can not warrant that the procedure is\n     exactly the same.\n     *  The\
+  \ tool only currently supports 'basal_plus_extension' association rule.\n     *\
+  \  Operations are performed on a transcript TSS basis rather than a gene TSS basis.\
+  \ To our\n     knowledge, the way  representative TSS are selected for each gene\
+  \ is not described in GREAT\n     paper nor documentation. As a consequence  the\
+  \ output contains several regulatory domain for a\n     given gene (one per TSS).\n\
+  \     *  The tool does not include 'curated regulatory domains' as proposed by GREAT.\n\
+  \     *  The tool does not allow background regions to be imported.\n     *  The\
+  \ resulting BED file can be used for instance as OLOGRAM input (using -z/\n    \
+  \ *  no-gtf and -b/\n     *  more-bed) to check the GREAT results by assessing whether\
+  \ the enrichment is also significant\n     regarding the number of overlapping nucleotides.\n\
+  \n  Version:  2018-01-25\n\nArgument:\n -i, --inputfile              Path to the\
+  \ GTF file. Default to STDIN (default: <stdin>)\n -o, --outputfile             Output\
+  \ file. (default: <stdout>)\n -g, --go-id                  The GO ID (e.g GO:0003700).\
+  \ Default is to return all genes. (default: None)\n -s, --species              \
+  \  The dataset/species. Use select_by_go to get the list of species (default: hsapiens)\n\
+  \ -u, --upstream               Extend the TSS in 5' by a given value. (default:\
+  \ 5000)\n -d, --downstream             Extend the TSS 3' by a given value. (default:\
+  \ 1000)\n -t, --distal                 Maximum extension in one direction (default:\
+  \ 1000000)\n -c, --chrom-info             Tabulated two-columns file. Chromosomes\
+  \ as column 1, sizes as column 2 (default: None)\n -m, --mode                  \
+  \ The type of 'association rule'. (default: basal_plus_extension)\n -p1, --http-proxy\
+  \            Use this http proxy (not tested/experimental). (default: )\n -p2, --https-proxy\
+  \           Use this https proxy (not tested/experimental). (default: )\n\nCommand-wise\
+  \ optional arguments:\n -h, --help                   Show this help message and\
+  \ exit.\n -V, --verbosity              Set output verbosity ([0-3]). (default: 0)\n\
+  \ -D, --no-date                Do not add date to output file names. (default: False)\n\
+  \ -C, --add-chr                Add 'chr' to chromosome names before printing output.\
+  \ (default: False)\n -K, --tmp-dir                Keep all temporary files into\
+  \ this folder. (default: None)\n -A, --keep-all               Try to keep all temporary\
+  \ files even if process does not terminate normally. (default: False)\n -L, --logger-file\
+  \            Stores the arguments passed to the command into a file. (default: None)\n\
+  \ -W, --write-message-to-file  Store all message into a file. (default: None)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/pygtftk:1.2.7--py36h4edd4cd_1

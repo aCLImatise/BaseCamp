@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Int, Boolean, String, File
+
+Affiliation_Postprocess_Py_V0_1_0 = CommandToolBuilder(tool="affiliation_postprocess.py", base_command=["affiliation_postprocess.py"], inputs=[ToolInput(tag="in_identity", input_type=Int(optional=True), prefix="--identity", doc=InputDocumentation(doc="Min percentage identity to agggregate OTU. [Default:\n99.0]")), ToolInput(tag="in_coverage", input_type=Int(optional=True), prefix="--coverage", doc=InputDocumentation(doc="Min percentage coverage to agggregate OTU. [Default:\n99.0]")), ToolInput(tag="in_taxon_list_ignore", input_type=Boolean(optional=True), prefix="-t", doc=InputDocumentation(doc="[TAXON_IGNORED [TAXON_IGNORED ...]], --taxon-ignored [TAXON_IGNORED [TAXON_IGNORED ...]]\nTaxon list to ignore when OTUs agggregation")), ToolInput(tag="in_debug", input_type=Boolean(optional=True), prefix="--debug", doc=InputDocumentation(doc="Keep temporary files to debug program.")), ToolInput(tag="in_input_biom", input_type=String(optional=True), prefix="--input-biom", doc=InputDocumentation(doc="Abundance table with affiliations metadata from the\naffiliation_OTU program (format: BIOM).")), ToolInput(tag="in_input_fast_a", input_type=File(optional=True), prefix="--input-fasta", doc=InputDocumentation(doc="OTU seed sequence file (format: FASTA).")), ToolInput(tag="in_reference", input_type=File(optional=True), prefix="--reference", doc=InputDocumentation(doc="amplicon reference file, to resolve inclusive amplicon\naffiliations (format: FASTA)")), ToolInput(tag="in_output_biom", input_type=File(optional=True), prefix="--output-biom", doc=InputDocumentation(doc="BIOM file whith refind affiliation annotations.\n(format: BIOM) [Default:\naffiliation_postprocess_abundance.biom]")), ToolInput(tag="in_output_compo", input_type=String(optional=True), prefix="--output-compo", doc=InputDocumentation(doc="Aggregated OTU composition (format: TSV) [Default:\naffiliation_postprocess_otu_composition.tsv]")), ToolInput(tag="in_output_fast_a", input_type=File(optional=True), prefix="--output-fasta", doc=InputDocumentation(doc="Updated OTU FASTA file (format: FASTA) [Default:\naffiliation_postprocess_OTU.fasta]")), ToolInput(tag="in_log_file", input_type=File(optional=True), prefix="--log-file", doc=InputDocumentation(doc="The list of commands executed."))], outputs=[], container="quay.io/biocontainers/frogs:3.2.0--py37_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Affiliation_Postprocess_Py_V0_1_0().translate("wdl")
+

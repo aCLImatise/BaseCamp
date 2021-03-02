@@ -1,0 +1,110 @@
+!Command
+command:
+- sidr
+- default
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: format.
+  description: -f, --fasta PATH         Preliminary assembly, in FASTA format.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --bam
+  description: Alignment of reads to preliminary assembly, in BAM
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --blastresults
+  description: "Classification of preliminary assembly from BLAST\n(or similar tools)."
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --taxdump
+  description: "Location of the NCBI Taxonomy dump. Default is\n$BLASTDB."
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  - -k
+  - --tokeep
+  description: "Location to save the contigs identified as the\ntarget organism(optional)."
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --toremove
+  description: "Location to save the contigs identified as not\nbelonging to the target\
+    \ organism (optional)."
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --binary
+  description: Use binary target/nontarget classification.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --target
+  description: "The identity of the target organism at the chosen\nclassification\
+    \ level. It is recommended to use the\norganism's phylum."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --level
+  description: "The classification level to use when constructing\nthe model. Default\
+    \ is 'phylum'."
+  args: !SimpleFlagArg
+    name: TEXT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: sidr default [OPTIONS]\n\n  Runs the default analysis using raw\
+  \ preassembly data.\n\nOptions:\n  -b, --bam PATH           Alignment of reads to\
+  \ preliminary assembly, in BAM\n                           format.\n\n  -f, --fasta\
+  \ PATH         Preliminary assembly, in FASTA format.\n  -r, --blastresults PATH\
+  \  Classification of preliminary assembly from BLAST\n                         \
+  \  (or similar tools).\n\n  -d, --taxdump PATH       Location of the NCBI Taxonomy\
+  \ dump. Default is\n                           $BLASTDB.\n\n  -o, --output PATH\n\
+  \  -k, --tokeep PATH        Location to save the contigs identified as the\n   \
+  \                        target organism(optional).\n\n  -x, --toremove PATH   \
+  \   Location to save the contigs identified as not\n                           belonging\
+  \ to the target organism (optional).\n\n  --binary                 Use binary target/nontarget\
+  \ classification.\n  -t, --target TEXT        The identity of the target organism\
+  \ at the chosen\n                           classification level. It is recommended\
+  \ to use the\n                           organism's phylum.\n\n  -l, --level TEXT\
+  \         The classification level to use when constructing\n                  \
+  \         the model. Default is 'phylum'.\n\n  -h, --help               Show this\
+  \ message and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/sidr:0.0.2a2--pyh3252c3a_0

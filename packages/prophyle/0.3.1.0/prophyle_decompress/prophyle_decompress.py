@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, String
+
+Prophyle_Decompress_V0_1_0 = CommandToolBuilder(tool="prophyle_decompress", base_command=["prophyle", "decompress"], inputs=[ToolInput(tag="in_skip_klcp_construction", input_type=Boolean(optional=True), prefix="-K", doc=InputDocumentation(doc="skip k-LCP construction")), ToolInput(tag="in_advanced_configuration_json", input_type=Boolean(optional=True), prefix="-c", doc=InputDocumentation(doc="[STR [STR ...]]  advanced configuration (a JSON dictionary)")), ToolInput(tag="in_str", input_type=String(optional=True), position=0, doc=InputDocumentation(doc=""))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Prophyle_Decompress_V0_1_0().translate("wdl", allow_empty_container=True)
+

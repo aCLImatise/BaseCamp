@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import String
+
+Hotspot3D_Help_V0_1_0 = CommandToolBuilder(tool="hotspot3d_help", base_command=["hotspot3d", "help"], inputs=[ToolInput(tag="in_preprocessing", input_type=String(), position=0, doc=InputDocumentation(doc="drugport  --  0) Parse drugport database (OPTIONAL)")), ToolInput(tag="in_up_pro", input_type=String(), position=1, doc=InputDocumentation(doc="--  1) Update proximity files")), ToolInput(tag="in_prep", input_type=String(), position=2, doc=InputDocumentation(doc="--  2) Run steps 2a-2f of preprocessing")), ToolInput(tag="in_cal_roi", input_type=String(), position=3, doc=InputDocumentation(doc="--  2a) Generate region of interest (ROI) information")), ToolInput(tag="in_statis", input_type=String(), position=4, doc=InputDocumentation(doc="--  2b) Calculate p_values for pairs of mutations")), ToolInput(tag="in_an_no", input_type=String(), position=5, doc=InputDocumentation(doc="--  2c) Add region of interest (ROI) annotation")), ToolInput(tag="in_trans", input_type=String(), position=6, doc=InputDocumentation(doc="--  2d) Add transcript annotation ")), ToolInput(tag="in_cosmic", input_type=String(), position=7, doc=InputDocumentation(doc="--  2e) Add COSMIC annotation to proximity file")), ToolInput(tag="in_prior", input_type=String(), position=8, doc=InputDocumentation(doc="--  2f) Prioritization")), ToolInput(tag="in_analysis", input_type=String(), position=9, doc=InputDocumentation(doc="main      --  0) Run steps a-f of analysis (BETA)")), ToolInput(tag="in_search", input_type=String(), position=10, doc=InputDocumentation(doc="--  a) 3D mutation proximity searching")), ToolInput(tag="in_cluster", input_type=String(), position=11, doc=InputDocumentation(doc="--  b) Determine mutation-mutation and mutation-drug clusters")), ToolInput(tag="in_sig_clus", input_type=String(), position=12, doc=InputDocumentation(doc="--  c) Determine significance of clusters (BETA)")), ToolInput(tag="in_summary", input_type=String(), position=13, doc=InputDocumentation(doc="--  d) Summarize clusters")), ToolInput(tag="in_visual", input_type=String(), position=14, doc=InputDocumentation(doc="--  e) Visulization of 3D proximity")), ToolInput(tag="in_help", input_type=String(), position=15, doc=InputDocumentation(doc="--  this message")), ToolInput(tag="in_support", input_type=String(), position=16, doc=InputDocumentation(doc="For user support please email adamscott@wustl.edu"))], outputs=[], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Hotspot3D_Help_V0_1_0().translate("wdl", allow_empty_container=True)
+

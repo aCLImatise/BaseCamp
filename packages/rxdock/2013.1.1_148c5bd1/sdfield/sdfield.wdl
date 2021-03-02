@@ -12,6 +12,9 @@ task Sdfield {
       ~{this} \
       ~{value}
   >>>
+  runtime {
+    docker: "None"
+  }
   parameter_meta {
     field_name: ""
     this: ""

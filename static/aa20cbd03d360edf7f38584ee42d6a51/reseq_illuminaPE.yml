@@ -1,0 +1,373 @@
+!Command
+command:
+- reseq
+- illuminaPE
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: errors
+  description: '--numReads arg (=0)                   Approximate number of read pairs '
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  description: '[ --threads ] arg (=0)             Number of threads used (0=auto)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbosity
+  description: "(=4)                  Sets the level of verbosity\n(4=everything,\
+    \ 0=nothing)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --adapterFile
+  description: "Fasta file with adapter sequences\n[(AutoDetect)]"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --adapterMatrix
+  description: "0/1 matrix with valid adapter pairing\n(first read in rows, second\
+    \ read in\ncolumns) [(AutoDetect)]"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  description: "[ --bamIn ] arg                    Position sorted bam/sam file with\
+    \ reads\nmapped to refIn"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --binSizeBiasFit
+  description: "(=100000000)     Reference sequences large then this are\nsplit for\
+    \ bias fitting to limit memory\nconsumption"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --maxFragLen
+  description: "(=2000)              Maximum fragment length to include\npairs into\
+    \ statistics"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --minMapQ
+  description: "(=2)                    Minimum mapping quality to include\npairs\
+    \ into statistics"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --noBias
+  description: "Do not perform bias fit. Results in\nuniform coverage if simulated\
+    \ from"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --noTiles
+  description: "Ignore tiles for the statistics\n[default]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: "[ --refIn ] arg                    Reference sequences in fasta format\
+    \ (gz\nand bz2 supported)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --statsOnly
+  description: Only generate the statistics
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: "[ --statsIn ] arg                  Skips statistics generation and\
+    \ reads\ndirectly from stats file"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  description: "[ --statsOut ] arg                 Stores the real data statistics\
+    \ for\nreuse in given file [<bamIn>.reseq]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --tiles
+  description: Use tiles for the statistics
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: "[ --vcfIn ] arg                    Ignore all positions with a listed\n\
+    variant for stats generation"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ipfIterations
+  description: "(=200)            Maximum number of iterations for\niterative proportional\
+    \ fitting"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --ipfPrecision
+  description: "(=5)               Iterative proportional fitting\nprocedure stops\
+    \ after reaching this\nprecision (%)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: "[ --probabilitiesIn ] arg          Loads last estimated probabilities\
+    \ and\ncontinues from there if precision is\nnot met [<statsIn>.ipf]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -P
+  description: "[ --probabilitiesOut ] arg         Stores the probabilities estimated\
+    \ by\niterative proportional fitting\n[<probabilitiesIn>]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --stopAfterEstimation
+  description: Stop after estimating the probabilities
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - '-1'
+  description: "[ --firstReadsOut ] arg            Writes the simulated first reads\
+    \ into\nthis file [reseq-R1.fq]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - '-2'
+  description: "[ --secondReadsOut ] arg           Writes the simulated second reads\
+    \ into\nthis file [reseq-R2.fq]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: "[ --coverage ] arg (=0)            Approximate average read depth\n\
+    simulated (0 = Corrected original\ncoverage)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --errorMutliplier
+  description: "(=1)            Divides the original probability of\ncorrect base\
+    \ calls(no substitution\nerror) by this value and renormalizes"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --methylation
+  description: "Extended bed graph file specifying\nmethylation for regions. Multiple\
+    \ score\ncolumns for individual alleles are\npossible, but must match with vcfSim.\n\
+    C->T conversions for 1-specified value\nin region."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --noInDelErrors
+  description: Simulate reads without InDel errors
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --noSubstitutionErrors
+  description: Simulate reads without substitution
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --readSysError
+  description: "Read systematic errors from file in\nfastq format (seq=dominant error,\n\
+    qual=error percentage)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --recordBaseIdentifier
+  description: "(=ReseqRead)\nBase Identifier for the simulated fastq\nrecords, followed\
+    \ by a count and other\ninformation about the read"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --refBias
+  description: "Way to select the reference biases for\nsimulation (keep [from refIn]/no\n\
+    [biases]/draw [with replacement from\noriginal biases]/file) [keep/no]"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --refBiasFile
+  description: "File to read reference biases from: One\nsequence per file (identifier\
+    \ bias)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  description: "[ --refSim ] arg                   Reference sequences in fasta format\
+    \ to\nsimulate from [<refIn>]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --seed
+  description: "Seed used for simulation, if none is\ngiven random seed will be used"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -V
+  description: "[ --vcfSim ] arg                   Defines genotypes to simulate alleles\n\
+    or populations"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --writeSysError
+  description: "Write the randomly drawn systematic\nerrors to file in fastq format\n\
+    (seq=dominant error, qual=error\npercentage)\n"
+  args: !SimpleFlagArg
+    name: arg
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: '[ --help ]                         Prints help information and exits'
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Prints version info and exits
+  args: !EmptyFlagArg {}
+help_text: ">>> 28-02-21 16:30:29: info:  Running ReSeq version 1.1 in illuminaPE\
+  \ mode\nUsage:  reseq illuminaPE -b <file.bam> -r <ref.fa> -1 <file1.fq> -2 <file2.fq>\
+  \ [options]\nGeneral:\n  -h [ --help ]                         Prints help information\
+  \ and exits\n  -j [ --threads ] arg (=0)             Number of threads used (0=auto)\n\
+  \  --verbosity arg (=4)                  Sets the level of verbosity \n        \
+  \                                (4=everything, 0=nothing)\n  --version        \
+  \                     Prints version info and exits\n\nStats:\n  --adapterFile arg\
+  \                     Fasta file with adapter sequences \n                     \
+  \                   [(AutoDetect)]\n  --adapterMatrix arg                   0/1\
+  \ matrix with valid adapter pairing \n                                        (first\
+  \ read in rows, second read in \n                                        columns)\
+  \ [(AutoDetect)]\n  -b [ --bamIn ] arg                    Position sorted bam/sam\
+  \ file with reads\n                                        mapped to refIn\n  --binSizeBiasFit\
+  \ arg (=100000000)     Reference sequences large then this are\n               \
+  \                         split for bias fitting to limit memory \n            \
+  \                            consumption\n  --maxFragLen arg (=2000)           \
+  \   Maximum fragment length to include \n                                      \
+  \  pairs into statistics\n  --minMapQ arg (=2)                    Minimum mapping\
+  \ quality to include \n                                        pairs into statistics\n\
+  \  --noBias                              Do not perform bias fit. Results in \n\
+  \                                        uniform coverage if simulated from\n  --noTiles\
+  \                             Ignore tiles for the statistics \n               \
+  \                         [default]\n  -r [ --refIn ] arg                    Reference\
+  \ sequences in fasta format (gz\n                                        and bz2\
+  \ supported)\n  --statsOnly                           Only generate the statistics\n\
+  \  -s [ --statsIn ] arg                  Skips statistics generation and reads \n\
+  \                                        directly from stats file\n  -S [ --statsOut\
+  \ ] arg                 Stores the real data statistics for \n                 \
+  \                       reuse in given file [<bamIn>.reseq]\n  --tiles         \
+  \                      Use tiles for the statistics\n  -v [ --vcfIn ] arg      \
+  \              Ignore all positions with a listed \n                           \
+  \             variant for stats generation\n\nProbabilities:\n  --ipfIterations\
+  \ arg (=200)            Maximum number of iterations for \n                    \
+  \                    iterative proportional fitting\n  --ipfPrecision arg (=5) \
+  \              Iterative proportional fitting \n                               \
+  \         procedure stops after reaching this \n                               \
+  \         precision (%)\n  -p [ --probabilitiesIn ] arg          Loads last estimated\
+  \ probabilities and \n                                        continues from there\
+  \ if precision is \n                                        not met [<statsIn>.ipf]\n\
+  \  -P [ --probabilitiesOut ] arg         Stores the probabilities estimated by \n\
+  \                                        iterative proportional fitting \n     \
+  \                                   [<probabilitiesIn>]\n  --stopAfterEstimation\
+  \                 Stop after estimating the probabilities\n\nSimulation:\n  -1 [\
+  \ --firstReadsOut ] arg            Writes the simulated first reads into \n    \
+  \                                    this file [reseq-R1.fq]\n  -2 [ --secondReadsOut\
+  \ ] arg           Writes the simulated second reads into \n                    \
+  \                    this file [reseq-R2.fq]\n  -c [ --coverage ] arg (=0)     \
+  \       Approximate average read depth \n                                      \
+  \  simulated (0 = Corrected original \n                                        coverage)\n\
+  \  --errorMutliplier arg (=1)            Divides the original probability of \n\
+  \                                        correct base calls(no substitution \n \
+  \                                       error) by this value and renormalizes\n\
+  \  --methylation arg                     Extended bed graph file specifying \n \
+  \                                       methylation for regions. Multiple score\n\
+  \                                        columns for individual alleles are \n \
+  \                                       possible, but must match with vcfSim. \n\
+  \                                        C->T conversions for 1-specified value\
+  \ \n                                        in region.\n  --noInDelErrors      \
+  \                 Simulate reads without InDel errors\n  --noSubstitutionErrors\
+  \                Simulate reads without substitution \n                        \
+  \                errors\n  --numReads arg (=0)                   Approximate number\
+  \ of read pairs \n                                        simulated (0 = Use <coverage>)\n\
+  \  --readSysError arg                    Read systematic errors from file in \n\
+  \                                        fastq format (seq=dominant error, \n  \
+  \                                      qual=error percentage)\n  --recordBaseIdentifier\
+  \ arg (=ReseqRead)\n                                        Base Identifier for\
+  \ the simulated fastq\n                                        records, followed\
+  \ by a count and other \n                                        information about\
+  \ the read\n  --refBias arg                         Way to select the reference\
+  \ biases for \n                                        simulation (keep [from refIn]/no\
+  \ \n                                        [biases]/draw [with replacement from\
+  \ \n                                        original biases]/file) [keep/no]\n \
+  \ --refBiasFile arg                     File to read reference biases from: One\n\
+  \                                        sequence per file (identifier bias)\n \
+  \ -R [ --refSim ] arg                   Reference sequences in fasta format to \n\
+  \                                        simulate from [<refIn>]\n  --seed arg \
+  \                           Seed used for simulation, if none is \n            \
+  \                            given random seed will be used\n  -V [ --vcfSim ] arg\
+  \                   Defines genotypes to simulate alleles \n                   \
+  \                     or populations\n  --writeSysError arg                   Write\
+  \ the randomly drawn systematic \n                                        errors\
+  \ to file in fastq format \n                                        (seq=dominant\
+  \ error, qual=error \n                                        percentage)\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/reseq:1.1--py38h56fca86_0

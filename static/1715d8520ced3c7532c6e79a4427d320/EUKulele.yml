@@ -1,0 +1,226 @@
+!Command
+command:
+- EUKulele
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: subroutine
+  description: Choice of subroutine to run.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --config_file
+  - --perc_mem
+  description: "The percentage of the total available memory which\nshould be targeted\
+    \ for use by processes."
+  args: !SimpleFlagArg
+    name: CONFIG_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --use_salmon_counts
+  - --salmon_dir
+  description: "Salmon directory is required if use_salmon_counts is\ntrue."
+  args: !SimpleFlagArg
+    name: SALMON_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --names_to_reads
+  description: "A file to be created or used if it exists that relates\ntranscript\
+    \ names to salmon counts from the salmon\ndirectory."
+  args: !SimpleFlagArg
+    name: NAMES_TO_READS
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --database
+  description: "The name of the database to be used to assess the\nreads."
+  args: !SimpleFlagArg
+    name: DATABASE
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out_dir
+  - --output_dir
+  description: Folder where the output will be written.
+  args: !SimpleFlagArg
+    name: OUT_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --sample_dir
+  description: "Folder where the input data is located (the protein or\npeptide files\
+    \ to be assessed)."
+  args: !SimpleFlagArg
+    name: SAMPLE_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --reference_dir
+  description: "Folder containing the reference files for the chosen\ndatabase."
+  args: !SimpleFlagArg
+    name: REFERENCE_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --ref_fasta
+  description: "Either a file in the reference directory where the\nfasta file for\
+    \ the database is located, or a directory\ncontaining multiple fasta files that\
+    \ constitute the\ndatabase."
+  args: !SimpleFlagArg
+    name: REF_FASTA
+- !Flag
+  optional: true
+  synonyms:
+  - --tax_table
+  - --protein_map
+  - --alignment_choice
+  - --busco_file
+  description: "If specified, the following two arguments ('--\norganisms' and '--taxonomy_organisms'\
+    \ are overwritten\nby the two columns of this tab-separated file."
+  args: !SimpleFlagArg
+    name: TAX_TABLE
+- !Flag
+  optional: true
+  synonyms:
+  - --individual_or_summary
+  description: These arguments are used if 'individual' is specified.
+  args: !ChoiceFlagArg
+    choices: !!set
+      individual:
+      summary:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --individual
+  - --organisms
+  description: List of organisms to check BUSCO completeness on.
+  args: !RepeatFlagArg
+    name: ORGANISMS
+- !Flag
+  optional: true
+  synonyms:
+  - --taxonomy_organisms
+  description: "Taxonomic level of organisms specified in organisms\ntag."
+  args: !RepeatFlagArg
+    name: TAXONOMY_ORGANISMS
+- !Flag
+  optional: true
+  synonyms:
+  - --cutoff_file
+  - --filter_metric
+  - --consensus_cutoff
+  - --transdecoder_orfsize
+  - --CPUs
+  - --busco_threshold
+  - --create_fasta
+  description: "Whether to create FASTA files containing ID'd\ntranscripts during\
+    \ BUSCO analysis."
+  args: !SimpleFlagArg
+    name: CUTOFF_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --run_transdecoder
+  description: "Whether TransDecoder should be run on\nmetatranscriptomic samples.\
+    \ Otherwise, BLASTp is run\nif protein translated samples are providedotherwise\n\
+    BLASTx is run on nucleotide samples."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --test
+  description: "Whether we're just running a test and should not\nexecute downloads.\n"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --mets_or_mags
+  description: ''
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  - -m
+  - --mets_or_mags
+  - --n_ext
+  - --nucleotide_extension
+  - --p_ext
+  - --protein_extension
+  - -f
+  - --force_rerun
+  - --scratch
+  description: The scratch location to store intermediate files.
+  args: !SimpleFlagArg
+    name: METS_OR_MAGS
+help_text: "Running EUKulele with command line arguments, as no valid configuration\
+  \ file was provided.\nusage: eukulele [subroutine] --mets_or_mags [dataset_type]\
+  \ --sample_dir [sample_directory] --reference_dir [reference_database_location]\
+  \ [all other options]\n\nThanks for using EUKulele! EUKulele is a standalone taxonomic\
+  \ annotation\nsoftware. EUKulele is designed primarily for marine microbial eukaryotes.\n\
+  Check the README for further information.\n\npositional arguments:\n  subroutine\
+  \            Choice of subroutine to run.\n\noptional arguments:\n  -h, --help \
+  \           show this help message and exit\n  -v, --version\n  -m METS_OR_MAGS,\
+  \ --mets_or_mags METS_OR_MAGS\n  --n_ext NUCLEOTIDE_EXTENSION, --nucleotide_extension\
+  \ NUCLEOTIDE_EXTENSION\n  --p_ext PROTEIN_EXTENSION, --protein_extension PROTEIN_EXTENSION\n\
+  \  -f, --force_rerun\n  --scratch SCRATCH     The scratch location to store intermediate\
+  \ files.\n  --config_file CONFIG_FILE\n  --perc_mem PERC_MEM   The percentage of\
+  \ the total available memory which\n                        should be targeted for\
+  \ use by processes.\n  --use_salmon_counts\n  --salmon_dir SALMON_DIR\n        \
+  \                Salmon directory is required if use_salmon_counts is\n        \
+  \                true.\n  --names_to_reads NAMES_TO_READS\n                    \
+  \    A file to be created or used if it exists that relates\n                  \
+  \      transcript names to salmon counts from the salmon\n                     \
+  \   directory.\n  -d DATABASE, --database DATABASE\n                        The\
+  \ name of the database to be used to assess the\n                        reads.\n\
+  \  -o OUT_DIR, --out_dir OUT_DIR, --output_dir OUT_DIR\n                       \
+  \ Folder where the output will be written.\n  -s SAMPLE_DIR, --sample_dir SAMPLE_DIR\n\
+  \                        Folder where the input data is located (the protein or\n\
+  \                        peptide files to be assessed).\n  --reference_dir REFERENCE_DIR\n\
+  \                        Folder containing the reference files for the chosen\n\
+  \                        database.\n  --ref_fasta REF_FASTA\n                  \
+  \      Either a file in the reference directory where the\n                    \
+  \    fasta file for the database is located, or a directory\n                  \
+  \      containing multiple fasta files that constitute the\n                   \
+  \     database.\n  --tax_table TAX_TABLE\n  --protein_map PROTEIN_MAP\n  --alignment_choice\
+  \ {diamond,blast}\n  --busco_file BUSCO_FILE\n                        If specified,\
+  \ the following two arguments ('--\n                        organisms' and '--taxonomy_organisms'\
+  \ are overwritten\n                        by the two columns of this tab-separated\
+  \ file.\n  --individual_or_summary {summary,individual}\n                      \
+  \  These arguments are used if 'individual' is specified.\n  -i, --individual\n\
+  \  --organisms ORGANISMS [ORGANISMS ...]\n                        List of organisms\
+  \ to check BUSCO completeness on.\n  --taxonomy_organisms TAXONOMY_ORGANISMS [TAXONOMY_ORGANISMS\
+  \ ...]\n                        Taxonomic level of organisms specified in organisms\n\
+  \                        tag.\n  --cutoff_file CUTOFF_FILE\n  --filter_metric {pid,evalue,bitscore}\n\
+  \  --consensus_cutoff CONSENSUS_CUTOFF\n  --transdecoder_orfsize TRANSDECODER_ORFSIZE\n\
+  \  --CPUs CPUS\n  --busco_threshold BUSCO_THRESHOLD\n  --create_fasta        Whether\
+  \ to create FASTA files containing ID'd\n                        transcripts during\
+  \ BUSCO analysis.\n  --run_transdecoder    Whether TransDecoder should be run on\n\
+  \                        metatranscriptomic samples. Otherwise, BLASTp is run\n\
+  \                        if protein translated samples are providedotherwise\n \
+  \                       BLASTx is run on nucleotide samples.\n  --test         \
+  \       Whether we're just running a test and should not\n                     \
+  \   execute downloads.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/eukulele:1.0.2--pyhcb32578_1

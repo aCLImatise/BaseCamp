@@ -1,0 +1,120 @@
+!Command
+command:
+- kaiju-mkbwt
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -outfilename
+  - -o
+  description: "(string)\nName of output. Several files with different extensions\
+    \ are produced\n(if not given, input file name is used).\nValue:  NULL (null)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Alphabet
+  - -a
+  description: "(string)\nAlphabet used. Must end with the sequence terminator. Instead\
+    \ of alphabet\nyou can specify DNA, RNA or protein, in which case the alphabet\
+    \ is ACGT,\nACGU, or ACDEFGHIKLMNPQRSTVWYX\nValue:  protein"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -nThreads
+  - -n
+  description: "(integer)\nNumber of threads\nValue:  2"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -length
+  - -l
+  description: "(double)\nLength of concatenated sequence in millions (one decimal,\
+    \ round up).\nUsed when reading from stdin. If file name is given, length is estimated\n\
+    from file size and length needs not be specified.\nValue:  0.000000"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -checkpoint
+  - -e
+  description: "(integer)\nExponent for suffix array checkpoints. There is a checkpoint\
+    \ for every\n2^e points. Value around 5 is a good compromise between speed and\
+    \ space.\nValue:  5"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -caseSens
+  - -c
+  description: "The sequence is read case sensitive\nValue: OFF"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -revComp
+  - -r
+  description: "Reverse complement sequence. Works only for DNA.\nValue: OFF"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -term
+  - -t
+  description: "(string)\nTerminating symbol (only used for debugging)\nValue:  *"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -revsort
+  - -s
+  description: "The termination symbols sorts as reverse sequences. This will make\
+    \ the\nBWT more compressible.\nValue: OFF"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -help
+  - -h
+  description: "Prints summary of options and arguments\nValue: OFF"
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Didn't understand argument --help\n\n---\nmkbwt takes a fasta file as\
+  \ argument and calculates the BWT.\nOutput file name given with -o (defaults to\
+  \ the input file name)\n\nExample cmd line\n   mkbwt -a DNA -o outputname infilename.fsa\n\
+  or for proteins (default alphabet)\n   mkbwt -o outputname infilename.fsa\nor for\
+  \ some other alphabet\n   mkbwt -a abcdefgHIJK -o outputname infilename.fsa\n\n\
+  It can also take sequences on stdin, in which case you have to give\nthe filesize\
+  \ in millions of letters (rounded up), e.g. -l 3000\ncorresponding to 3 billion\
+  \ letters.\n\nFiles are created with outputname followed by various extensions\n\
+  \nSee options below\n---\n\nOptions and arguments:\n\nARG 1, -infilename (string)\n\
+  \      Name of an input file (stdin if no file is given, in which case you\n   \
+  \   need to give length)\n      Value:  NULL (null)\n\n-outfilename, -o (string)\n\
+  \      Name of output. Several files with different extensions are produced\n  \
+  \    (if not given, input file name is used).\n      Value:  NULL (null)\n\n-Alphabet,\
+  \ -a (string)\n      Alphabet used. Must end with the sequence terminator. Instead\
+  \ of alphabet\n      you can specify DNA, RNA or protein, in which case the alphabet\
+  \ is ACGT,\n      ACGU, or ACDEFGHIKLMNPQRSTVWYX\n      Value:  protein\n\n-nThreads,\
+  \ -n (integer)\n      Number of threads\n      Value:  2\n\n-length, -l (double)\n\
+  \      Length of concatenated sequence in millions (one decimal, round up).\n  \
+  \    Used when reading from stdin. If file name is given, length is estimated\n\
+  \      from file size and length needs not be specified.\n      Value:  0.000000\n\
+  \n-checkpoint, -e (integer)\n      Exponent for suffix array checkpoints. There\
+  \ is a checkpoint for every\n      2^e points. Value around 5 is a good compromise\
+  \ between speed and space.\n      Value:  5\n\n-caseSens, -c\n      The sequence\
+  \ is read case sensitive\n      Value: OFF\n\n-revComp, -r\n      Reverse complement\
+  \ sequence. Works only for DNA.\n      Value: OFF\n\n-term, -t (string)\n      Terminating\
+  \ symbol (only used for debugging)\n      Value:  *\n\n-revsort, -s\n      The termination\
+  \ symbols sorts as reverse sequences. This will make the\n      BWT more compressible.\n\
+  \      Value: OFF\n\n-help, -h\n      Prints summary of options and arguments\n\
+  \      Value: OFF\n\nOPT_Error: \n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/kaiju:1.7.4--h8b12597_0

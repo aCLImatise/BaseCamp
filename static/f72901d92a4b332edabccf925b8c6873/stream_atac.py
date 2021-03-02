@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, Int, String, Boolean, Directory
+
+Stream_Atac_V0_1_0 = CommandToolBuilder(tool="stream_atac", base_command=["stream_atac"], inputs=[ToolInput(tag="in_file_count", input_type=File(optional=True), prefix="--file_count", doc=InputDocumentation(doc="scATAC-seq counts file name (default: None)")), ToolInput(tag="in_file_region", input_type=File(optional=True), prefix="--file_region", doc=InputDocumentation(doc="scATAC-seq regions file name in .bed or .bed.gz format\n(default: None)")), ToolInput(tag="in_file_sample", input_type=File(optional=True), prefix="--file_sample", doc=InputDocumentation(doc="scATAC-seq samples file name (default: None)")), ToolInput(tag="in_genome", input_type=Int(optional=True), prefix="--genome", doc=InputDocumentation(doc="Reference genome. Choose from {{'mm9', 'mm10', 'hg38',\n'hg19'}} (default: hg19)")), ToolInput(tag="in_feature", input_type=String(optional=True), prefix="--feature", doc=InputDocumentation(doc="Features used to have the analysis. Choose from\n{{'kmer', 'motif'}} (default: kmer)")), ToolInput(tag="in_kmer_length_scatacseq", input_type=Int(optional=True), prefix="-k", doc=InputDocumentation(doc="k-mer length for scATAC-seq analysis (default: 7)")), ToolInput(tag="in_resize_peak", input_type=Boolean(optional=True), prefix="--resize_peak", doc=InputDocumentation(doc="Resize peaks when peaks have different widths.\n(default: False)")), ToolInput(tag="in_peak_width", input_type=Int(optional=True), prefix="--peak_width", doc=InputDocumentation(doc="Specify the width of peak when resizing them. Only\nvalid when resize_peak is True. (default: 450)")), ToolInput(tag="in_n_jobs", input_type=Int(optional=True), prefix="--n_jobs", doc=InputDocumentation(doc="The number of parallel jobs to run. (default,1)\n(default: 1)")), ToolInput(tag="in_file_format", input_type=File(optional=True), prefix="--file_format", doc=InputDocumentation(doc="File format of file_count. Currently supported file\nformats: 'tsv','txt','csv','mtx'. (default: tsv)")), ToolInput(tag="in_output_folder", input_type=Directory(optional=True), prefix="--output_folder", doc=InputDocumentation(doc="Output folder (default: None)\n"))], outputs=[ToolOutput(tag="out_output_folder", output_type=Directory(optional=True), selector=InputSelector(input_to_select="in_output_folder", type_hint=File()), doc=OutputDocumentation(doc="Output folder (default: None)\n"))], container=None, version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Stream_Atac_V0_1_0().translate("wdl", allow_empty_container=True)
+
