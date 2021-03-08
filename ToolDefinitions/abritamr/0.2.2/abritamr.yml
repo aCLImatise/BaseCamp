@@ -1,0 +1,180 @@
+!Command
+command:
+- abritamr
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --mduqc
+  - -m
+  description: "Set if running on MDU QC data. If set please provide\nthe MDU QC .csv\
+    \ as further input and an additional\noutput suitable for lims input will be provided.\n\
+    (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --qc
+  - -q
+  description: "Name of checked MDU QC file. (default:\nmdu_qc_checked.csv)"
+  args: !SimpleFlagArg
+    name: QC
+- !Flag
+  optional: true
+  synonyms:
+  - --positive_control
+  - -p
+  description: "Path to positive control sequence - must be set if\nusing -m (default:\
+    \ )"
+  args: !SimpleFlagArg
+    name: POSITIVE_CONTROL
+- !Flag
+  optional: true
+  synonyms:
+  - --Singularity
+  - -S
+  description: "If using singularity container for AMRfinderplus\n(default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --singularity_path
+  - -s
+  description: "Path to the singularity container for AMRfinderplus,\nif empty will\
+    \ defualt to shub://phgenomics-\nsingularity/amrfinderplus (default: )"
+  args: !SimpleFlagArg
+    name: SINGULARITY_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --contigs
+  - -c
+  description: "Tab-delimited file with sample ID as column 1 and path\nto assemblies\
+    \ as column 2 OR path to a contig file\n(used if only doing a single sample -\
+    \ should provide\nvalue for -pfx). (default: )"
+  args: !SimpleFlagArg
+    name: CONTIGS
+- !Flag
+  optional: true
+  synonyms:
+  - --amrfinder_output
+  - -o
+  description: "Tab-delimited file with sample ID as column 1 and path\nto amr_finder\
+    \ output files as column 2 OR path to a\namrfinder ouptu file (used if only doing\
+    \ a single\nsample - should provide value for -pfx). (default: )"
+  args: !SimpleFlagArg
+    name: AMRFINDER_OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -pfx
+  - --prefix
+  description: "If using abriTAMR on single file please provide a\nprefix (default:\
+    \ )"
+  args: !SimpleFlagArg
+    name: PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - --workdir
+  - -w
+  description: "Working directory, default is current directory\n(default: /)"
+  args: !SimpleFlagArg
+    name: WORKDIR
+- !Flag
+  optional: true
+  synonyms:
+  - --resources
+  - -r
+  description: "Directory where templates are stored (default:\n/usr/local/lib/python3.7/site-packages/abritamr)"
+  args: !SimpleFlagArg
+    name: RESOURCES
+- !Flag
+  optional: true
+  synonyms:
+  - --species_detect
+  - -sd
+  description: "Set if you would like to use point mutations.\n(default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --jobs
+  - -j
+  description: "Number of AMR finder jobs to run in parallel.\n(default: 16)"
+  args: !SimpleFlagArg
+    name: JOBS
+- !Flag
+  optional: true
+  synonyms:
+  - --keep
+  - -k
+  description: "If you would like to keep intermediate files and\nsnakemake log. Default\
+    \ is to remove (default: False)\n"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: ''
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: abritamr [-h] [-v] [--mduqc] [--qc QC]\n                [--positive_control\
+  \ POSITIVE_CONTROL] [--Singularity]\n                [--singularity_path SINGULARITY_PATH]\
+  \ [--contigs CONTIGS]\n                [--amrfinder_output AMRFINDER_OUTPUT] [-pfx\
+  \ PREFIX]\n                [--workdir WORKDIR] [--resources RESOURCES] [--species_detect]\n\
+  \                [--jobs JOBS] [--keep]\n\nMDU AMR gene detection pipeline\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  -v, --version\
+  \         show program's version number and exit\n  --mduqc, -m           Set if\
+  \ running on MDU QC data. If set please provide\n                        the MDU\
+  \ QC .csv as further input and an additional\n                        output suitable\
+  \ for lims input will be provided.\n                        (default: False)\n \
+  \ --qc QC, -q QC        Name of checked MDU QC file. (default:\n               \
+  \         mdu_qc_checked.csv)\n  --positive_control POSITIVE_CONTROL, -p POSITIVE_CONTROL\n\
+  \                        Path to positive control sequence - must be set if\n  \
+  \                      using -m (default: )\n  --Singularity, -S     If using singularity\
+  \ container for AMRfinderplus\n                        (default: False)\n  --singularity_path\
+  \ SINGULARITY_PATH, -s SINGULARITY_PATH\n                        Path to the singularity\
+  \ container for AMRfinderplus,\n                        if empty will defualt to\
+  \ shub://phgenomics-\n                        singularity/amrfinderplus (default:\
+  \ )\n  --contigs CONTIGS, -c CONTIGS\n                        Tab-delimited file\
+  \ with sample ID as column 1 and path\n                        to assemblies as\
+  \ column 2 OR path to a contig file\n                        (used if only doing\
+  \ a single sample - should provide\n                        value for -pfx). (default:\
+  \ )\n  --amrfinder_output AMRFINDER_OUTPUT, -o AMRFINDER_OUTPUT\n              \
+  \          Tab-delimited file with sample ID as column 1 and path\n            \
+  \            to amr_finder output files as column 2 OR path to a\n             \
+  \           amrfinder ouptu file (used if only doing a single\n                \
+  \        sample - should provide value for -pfx). (default: )\n  -pfx PREFIX, --prefix\
+  \ PREFIX\n                        If using abriTAMR on single file please provide\
+  \ a\n                        prefix (default: )\n  --workdir WORKDIR, -w WORKDIR\n\
+  \                        Working directory, default is current directory\n     \
+  \                   (default: /)\n  --resources RESOURCES, -r RESOURCES\n      \
+  \                  Directory where templates are stored (default:\n            \
+  \            /usr/local/lib/python3.7/site-packages/abritamr)\n  --species_detect,\
+  \ -sd\n                        Set if you would like to use point mutations.\n \
+  \                       (default: False)\n  --jobs JOBS, -j JOBS  Number of AMR\
+  \ finder jobs to run in parallel.\n                        (default: 16)\n  --keep,\
+  \ -k            If you would like to keep intermediate files and\n             \
+  \           snakemake log. Default is to remove (default: False)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/abritamr:0.2.2--py_0

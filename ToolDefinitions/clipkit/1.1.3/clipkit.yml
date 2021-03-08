@@ -1,0 +1,167 @@
+!Command
+command:
+- clipkit
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: Modes
+  description: "smart-gap: dynamic determination of gaps threshold\ngappy: trim sites\
+    \ that are greater than the gaps threshold\nkpic: keeps parismony informative\
+    \ and constant sites\nkpic-smart-gap: a combination of kpic- and smart-gap-based\
+    \ trimming\nkpic-gappy: a combination of kpic- and gappy-based trimming\nkpi:\
+    \ keep only parsimony informative sites\nkpi-smart-gap: a combination of kpi-\
+    \ and smart-gap-based trimming\nkpi-gappy: a combination of kpi- and gappy-based\
+    \ trimming"
+- !Positional
+  optional: false
+  position: 1
+  name: Gaps
+  description: "Positions with gappyness greater than threshold will be trimmed. \n\
+    Must be between 0 and 1. (Default: 0.9). This argument is ignored\nwhen using\
+    \ the kpi and kpic mdoes of trimming as well as an\niteration of trimming that\
+    \ uses smart-gap."
+- !Positional
+  optional: false
+  position: 0
+  name: Log
+  description: "Creates a log file that summarizes the characteristics of each position.\n\
+    The log file has four columns.\n- Column 1 is the position in the alignment (starting\
+    \ at 1),\n- Column 2 reports if the site was trimmed or kept (trim and keep, respectively),\n\
+    - Column 3 reports if the site is a parsimony informative site or not (PI and\
+    \ nPI, respectively), or\na constant site or not (Const, nConst), or neither (nConst,\
+    \ nPI)\n- Column 4 reports the gappyness of the the position (number of gaps /\
+    \ entries in alignment)"
+- !Positional
+  optional: false
+  position: 1
+  name: Complementary
+  description: Creates an alignment file of only the trimmed sequences
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: "output file name\n(default: input file named with '.clipkit' suffix)"
+  args: !SimpleFlagArg
+    name: output_file_name
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --modes
+  description: "<smart-gap,                     trimming mode\ngappy,            \
+    \              (default: smart-gap)\nkpic,\nkpic-smart-gap,\nkpic-gappy,\nkpi,\n\
+    kpi-smart-gap,\nkpi-gappy>"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --gaps
+  description: "specifies gaps threshold\n(default: 0.9)"
+  args: !SimpleFlagArg
+    name: threshold of gaps
+- !Flag
+  optional: true
+  synonyms:
+  - -if
+  - --input_file_format
+  description: "specifies input file format\n(default: auto-detect)"
+  args: !SimpleFlagArg
+    name: file_format
+- !Flag
+  optional: true
+  synonyms:
+  - -of
+  - --output_file_format
+  description: "specifies output file format\n(default: same as input file format)"
+  args: !SimpleFlagArg
+    name: file_format
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --log
+  description: "creates a log file\n(input file named with '.log' suffix)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --complementary
+  description: "creates complementary alignment of trimmed sequences\n(input file\
+    \ named with '.log' suffix)"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: help message
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: print version
+  args: !EmptyFlagArg {}
+help_text: "      _____ _ _       _  _______ _______ \n     / ____| (_)     | |/ /_\
+  \   _|__   __|\n    | |    | |_ _ __ | ' /  | |    | |   \n    | |    | | | '_ \\\
+  |  <   | |    | |   \n    | |____| | | |_) | . \\ _| |_   | |   \n     \\_____|_|_|\
+  \ .__/|_|\\_\\_____|  |_|   \n               | |                       \n      \
+  \         |_|  \n\nVersion: 1.1.3\nCitation: Steenwyk et al. 2020, PLOS Biology.\
+  \ doi: 10.1371/journal.pbio.3001007\nhttps://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.3001007\n\
+  \nClipKIT trims multiple sequence alignments and maintains phylogenetically informative\
+  \ sites.\n\nUsage: clipkit <input> [optional arguments]\n\nrequired arguments:\n\
+  \  <input>                                     input file\n                    \
+  \                          (must be the first argument)\n\noptional arguments:\n\
+  \  -o, --output <output_file_name>             output file name \n             \
+  \                                 (default: input file named with '.clipkit' suffix)\n\
+  \  \n  -m, --modes <smart-gap,                     trimming mode \n            \
+  \  gappy,                          (default: smart-gap)\n              kpic,\n \
+  \             kpic-smart-gap,           \n              kpic-gappy,            \
+  \    \n              kpi,\n              kpi-smart-gap,\n              kpi-gappy>\
+  \                      \n  \n  -g, --gaps <threshold of gaps>              specifies\
+  \ gaps threshold\n                                              (default: 0.9)\n\
+  \  \n  -if, --input_file_format <file_format>      specifies input file format\n\
+  \                                              (default: auto-detect)    \n  \n\
+  \  -of, --output_file_format <file_format>     specifies output file format\n  \
+  \                                            (default: same as input file format)\n\
+  \  \n  -l, --log                                   creates a log file\n        \
+  \                                      (input file named with '.log' suffix)\n \
+  \ \n  -c, --complementary                         creates complementary alignment\
+  \ of trimmed sequences\n                                              (input file\
+  \ named with '.log' suffix)\n  \n  -h, --help                                  help\
+  \ message\n  -v, --version                               print version\n  \n  -------------------------------------\n\
+  \  | Detailed explanation of arguments | \n  -------------------------------------\n\
+  \  Modes\n      smart-gap: dynamic determination of gaps threshold\n      gappy:\
+  \ trim sites that are greater than the gaps threshold\n      kpic: keeps parismony\
+  \ informative and constant sites\n      kpic-smart-gap: a combination of kpic- and\
+  \ smart-gap-based trimming\n      kpic-gappy: a combination of kpic- and gappy-based\
+  \ trimming\n      kpi: keep only parsimony informative sites\n      kpi-smart-gap:\
+  \ a combination of kpi- and smart-gap-based trimming\n      kpi-gappy: a combination\
+  \ of kpi- and gappy-based trimming\n  \n  Gaps\n      Positions with gappyness greater\
+  \ than threshold will be trimmed. \n      Must be between 0 and 1. (Default: 0.9).\
+  \ This argument is ignored\n      when using the kpi and kpic mdoes of trimming\
+  \ as well as an \n      iteration of trimming that uses smart-gap.\n  \n  Input\
+  \ and output file formats\n      Supported input and output files include:\n   \
+  \   fasta, clustal, maf, mauve, phylip, phylip-sequential, \n      phylip-relaxed,\
+  \ and stockholm\n  \n  Log\n      Creates a log file that summarizes the characteristics\
+  \ of each position.\n      The log file has four columns.\n      - Column 1 is the\
+  \ position in the alignment (starting at 1), \n      - Column 2 reports if the site\
+  \ was trimmed or kept (trim and keep, respectively),\n      - Column 3 reports if\
+  \ the site is a parsimony informative site or not (PI and nPI, respectively), or\n\
+  \        a constant site or not (Const, nConst), or neither (nConst, nPI)\n    \
+  \  - Column 4 reports the gappyness of the the position (number of gaps / entries\
+  \ in alignment)\n  \n  Complementary\n      Creates an alignment file of only the\
+  \ trimmed sequences\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/clipkit:1.1.3--py_0

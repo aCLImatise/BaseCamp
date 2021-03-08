@@ -1,0 +1,322 @@
+&id001 !Command
+command:
+- bohra
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: ''
+  args: !EmptyFlagArg {}
+parent:
+subcommands:
+- !Command
+  command:
+  - bohra
+  - run
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --input_file
+    - -i
+    description: "Input file = tab-delimited with 3 columns\n<isolatename> <path_to_read1>\
+      \ <path_to_read2>\n(default: )"
+    args: !SimpleFlagArg
+      name: INPUT_FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --job_id
+    - -j
+    description: "Job ID, will be the name of the output directory\n(default: )"
+    args: !SimpleFlagArg
+      name: JOB_ID
+  - !Flag
+    optional: true
+    synonyms:
+    - --reference
+    - -r
+    description: 'Path to reference (.gbk or .fa) (default: )'
+    args: !SimpleFlagArg
+      name: REFERENCE
+  - !Flag
+    optional: true
+    synonyms:
+    - --mask
+    - -m
+    description: 'Path to mask file if used (.bed) (default: False)'
+    args: !SimpleFlagArg
+      name: MASK
+  - !Flag
+    optional: true
+    synonyms:
+    - --kraken_db
+    - -k
+    description: "Path to DB for use with kraken2, if no DB present\nspeciation will\
+      \ not be performed. (default:\nKRAKEN2_DEFAULT_DB)"
+    args: !SimpleFlagArg
+      name: KRAKEN_DB
+  - !Flag
+    optional: true
+    synonyms:
+    - --kraken_threads
+    - -kt
+    description: 'Number of threads for each kraken2 (default: 16)'
+    args: !SimpleFlagArg
+      name: KRAKEN_THREADS
+  - !Flag
+    optional: true
+    synonyms:
+    - --pipeline
+    - -p
+    description: "The pipeline to run. Preview (--preview - default)\nwill calculate\
+      \ mash-distances and a mash-tree for\nquick inspection of your dataset. SNPs\
+      \ and ASSEMBLIES\n('sa') will perform SNPs and ASSEMBLIES. ALL ('all')\nwill\
+      \ perform SNPS, ASSEMBLIES and ROARY for pan-genome\nanalysis (default: preview)"
+    args: !ChoiceFlagArg
+      choices: !!set
+        sa:
+        preview:
+        all:
+  - !Flag
+    optional: true
+    synonyms:
+    - --assembler
+    - -a
+    description: 'Assembler to use. (default: shovill)'
+    args: !ChoiceFlagArg
+      choices: !!set
+        skesa:
+        shovill:
+        spades:
+  - !Flag
+    optional: true
+    synonyms:
+    - --cpus
+    - -c
+    description: "Number of CPU cores to run, will define how many rules\nare run\
+      \ at a time (default: 16)"
+    args: !SimpleFlagArg
+      name: CPUS
+  - !Flag
+    optional: true
+    synonyms:
+    - --minaln
+    - -ma
+    description: "Minimum percent alignment. Isolates which do not align\nto reference\
+      \ at this threshold will not be included in\ncore phylogeny. (default: 0)"
+    args: !SimpleFlagArg
+      name: MINALN
+  - !Flag
+    optional: true
+    synonyms:
+    - --mincov
+    - -mc
+    description: "Minimum percent alignment. Isolates which do not have\naverage read\
+      \ coverage above this threshold will not be\nincluded further analysis. (default:\
+      \ 0)"
+    args: !SimpleFlagArg
+      name: MINCOV
+  - !Flag
+    optional: true
+    synonyms:
+    - --prefillpath
+    - -pf
+    description: "Path to existing assemblies - in the form\npath_to_somewhere/isolatename/contigs.fa\
+      \ (default:\nNone)"
+    args: !SimpleFlagArg
+      name: PREFILLPATH
+  - !Flag
+    optional: true
+    synonyms:
+    - -mdu
+    description: 'If running on MDU data (default: False)'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -workdir
+    - -w
+    description: "The directory where Bohra will be run, default is\ncurrent directory\
+      \ (default: /)"
+    args: !SimpleFlagArg
+      name: WORKDIR
+  - !Flag
+    optional: true
+    synonyms:
+    - -resources
+    - -s
+    description: "Directory where templates are stored (default:\n/usr/local/lib/python3.7/site-\n\
+      packages/bohra/templates)"
+    args: !SimpleFlagArg
+      name: RESOURCES
+  - !Flag
+    optional: true
+    synonyms:
+    - -force
+    - -f
+    description: "Add if you would like to force a complete restart of\nthe pipeline.\
+      \ All previous logs will be lost.\n(default: False)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -dry-run
+    - -n
+    description: "If you would like to see a dry run of commands to be\nexecuted.\
+      \ (default: False)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --cluster
+    description: "If you are running Bohra on a cluster. (default:\nFalse)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --json
+    description: "Path to cluster.json - required if --cluster is set\n(default: )"
+    args: !SimpleFlagArg
+      name: JSON
+  - !Flag
+    optional: true
+    synonyms:
+    - --queue
+    description: "Type of queue (sbatch or qsub currently supported) -\nrequired if\
+      \ --cluster is set. (default: )"
+    args: !SimpleFlagArg
+      name: QUEUE
+  - !Flag
+    optional: true
+    synonyms:
+    - --gubbins
+    - -g
+    description: "Set to use gubbins for recombination correction.\n(default: False)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --keep
+    description: "If you are rerunning bohra over an exisiting directory\nset --keep\
+      \ to 'Y' to archive report files - otherwise\nprevious reprot files will be\
+      \ removed. (default: N)"
+    args: !ChoiceFlagArg
+      choices: !!set
+        N:
+        Y:
+  - !Flag
+    optional: true
+    synonyms:
+    - --verbose
+    description: 'Output verbose snakemake (default: False)'
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: bohra run [-h] [--input_file INPUT_FILE] [--job_id JOB_ID]\n\
+    \                 [--reference REFERENCE] [--mask MASK] [--kraken_db KRAKEN_DB]\n\
+    \                 [--kraken_threads KRAKEN_THREADS]\n                 [--pipeline\
+    \ {preview,sa,all}]\n                 [--assembler {shovill,skesa,spades}] [--cpus\
+    \ CPUS]\n                 [--minaln MINALN] [--mincov MINCOV]\n              \
+    \   [--prefillpath PREFILLPATH] [-mdu] [-workdir WORKDIR]\n                 [-resources\
+    \ RESOURCES] [-force] [-dry-run] [--cluster]\n                 [--json JSON] [--queue\
+    \ QUEUE] [--gubbins] [--keep {Y,N}]\n                 [--verbose]\n\nArgs that\
+    \ start with '--' (eg. --input_file) can also be set in a config file\n(/bohra.conf).\
+    \ Config file syntax allows: key=value, flag=true, stuff=[a,b,c]\n(for details,\
+    \ see syntax at https://goo.gl/R74nmi). If an arg is specified in\nmore than one\
+    \ place, then commandline values override config file values which\noverride defaults.\n\
+    \noptional arguments:\n  -h, --help            show this help message and exit\n\
+    \  --input_file INPUT_FILE, -i INPUT_FILE\n                        Input file\
+    \ = tab-delimited with 3 columns\n                        <isolatename> <path_to_read1>\
+    \ <path_to_read2>\n                        (default: )\n  --job_id JOB_ID, -j\
+    \ JOB_ID\n                        Job ID, will be the name of the output directory\n\
+    \                        (default: )\n  --reference REFERENCE, -r REFERENCE\n\
+    \                        Path to reference (.gbk or .fa) (default: )\n  --mask\
+    \ MASK, -m MASK  Path to mask file if used (.bed) (default: False)\n  --kraken_db\
+    \ KRAKEN_DB, -k KRAKEN_DB\n                        Path to DB for use with kraken2,\
+    \ if no DB present\n                        speciation will not be performed.\
+    \ (default:\n                        KRAKEN2_DEFAULT_DB)\n  --kraken_threads KRAKEN_THREADS,\
+    \ -kt KRAKEN_THREADS\n                        Number of threads for each kraken2\
+    \ (default: 16)\n  --pipeline {preview,sa,all}, -p {preview,sa,all}\n        \
+    \                The pipeline to run. Preview (--preview - default)\n        \
+    \                will calculate mash-distances and a mash-tree for\n         \
+    \               quick inspection of your dataset. SNPs and ASSEMBLIES\n      \
+    \                  ('sa') will perform SNPs and ASSEMBLIES. ALL ('all')\n    \
+    \                    will perform SNPS, ASSEMBLIES and ROARY for pan-genome\n\
+    \                        analysis (default: preview)\n  --assembler {shovill,skesa,spades},\
+    \ -a {shovill,skesa,spades}\n                        Assembler to use. (default:\
+    \ shovill)\n  --cpus CPUS, -c CPUS  Number of CPU cores to run, will define how\
+    \ many rules\n                        are run at a time (default: 16)\n  --minaln\
+    \ MINALN, -ma MINALN\n                        Minimum percent alignment. Isolates\
+    \ which do not align\n                        to reference at this threshold will\
+    \ not be included in\n                        core phylogeny. (default: 0)\n \
+    \ --mincov MINCOV, -mc MINCOV\n                        Minimum percent alignment.\
+    \ Isolates which do not have\n                        average read coverage above\
+    \ this threshold will not be\n                        included further analysis.\
+    \ (default: 0)\n  --prefillpath PREFILLPATH, -pf PREFILLPATH\n               \
+    \         Path to existing assemblies - in the form\n                        path_to_somewhere/isolatename/contigs.fa\
+    \ (default:\n                        None)\n  -mdu                  If running\
+    \ on MDU data (default: False)\n  -workdir WORKDIR, -w WORKDIR\n             \
+    \           The directory where Bohra will be run, default is\n              \
+    \          current directory (default: /)\n  -resources RESOURCES, -s RESOURCES\n\
+    \                        Directory where templates are stored (default:\n    \
+    \                    /usr/local/lib/python3.7/site-\n                        packages/bohra/templates)\n\
+    \  -force, -f            Add if you would like to force a complete restart of\n\
+    \                        the pipeline. All previous logs will be lost.\n     \
+    \                   (default: False)\n  -dry-run, -n          If you would like\
+    \ to see a dry run of commands to be\n                        executed. (default:\
+    \ False)\n  --cluster             If you are running Bohra on a cluster. (default:\n\
+    \                        False)\n  --json JSON           Path to cluster.json\
+    \ - required if --cluster is set\n                        (default: )\n  --queue\
+    \ QUEUE         Type of queue (sbatch or qsub currently supported) -\n       \
+    \                 required if --cluster is set. (default: )\n  --gubbins, -g \
+    \        Set to use gubbins for recombination correction.\n                  \
+    \      (default: False)\n  --keep {Y,N}          If you are rerunning bohra over\
+    \ an exisiting directory\n                        set --keep to 'Y' to archive\
+    \ report files - otherwise\n                        previous reprot files will\
+    \ be removed. (default: N)\n  --verbose             Output verbose snakemake (default:\
+    \ False)\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/bohra:1.2.19--py_1
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: bohra [-h] [-v] {run,nulla2bohra,check} ...\n\nBohra - a bacterial\
+  \ genomics pipeline - version 1.2.19\n\npositional arguments:\n  {run,nulla2bohra,check}\n\
+  \                        Task to perform\n    run                 Initial run of\
+  \ Bohra\n    nulla2bohra         Ensure that bohra can be rerun over an existing\n\
+  \                        nullarbor folder. Can also be used to update older\n  \
+  \                      bohra directories. Must supply name of nullarbor\n      \
+  \                  directory, and your isolates.tab file\n    check            \
+  \   Check that all dependencies for bohra have been\n                        installed.\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  -v, --version         show program's version number and exit\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/bohra:1.2.19--py_1

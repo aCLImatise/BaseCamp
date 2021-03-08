@@ -1,0 +1,165 @@
+!Command
+command:
+- lamassemble
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: last-train.out
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: sequences.fx
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --alignment
+  description: print an alignment, not a consensus
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --consensus
+  description: just make a consensus, of already-aligned sequences
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --gap-max
+  description: use alignment columns with <= G% gaps (default=50)
+  args: !SimpleFlagArg
+    name: G
+- !Flag
+  optional: true
+  synonyms:
+  - --end
+  description: '... including gaps past the ends of the sequences'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --seq-min
+  description: omit consensus flanks with < S sequences (default=1)
+  args: !SimpleFlagArg
+    name: S
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --name
+  description: name of the consensus sequence (default=lamassembled)
+  args: !SimpleFlagArg
+    name: NAME
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out
+  description: just write MAFFT input files, named BASE.xxx
+  args: !SimpleFlagArg
+    name: BASE
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --prob
+  description: "use pairwise restrictions with error probability <= P\n(default=0.002)"
+  args: !SimpleFlagArg
+    name: P
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --diagonal-max
+  description: "max change in alignment diagonal between pairwise\nalignments (default=1000)"
+  args: !SimpleFlagArg
+    name: D
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: show progress messages
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --all
+  description: use all of each sequence, not just aligning part
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --mafft
+  description: additional arguments for MAFFT
+  args: !SimpleFlagArg
+    name: ARGS
+- !Flag
+  optional: true
+  synonyms:
+  - -P
+  description: number of parallel threads (default=1)
+  args: !SimpleFlagArg
+    name: P
+- !Flag
+  optional: true
+  synonyms:
+  - -W
+  description: use minimum positions in length-W windows (default=19)
+  args: !SimpleFlagArg
+    name: W
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: max initial matches per query position (default=5)
+  args: !SimpleFlagArg
+    name: M
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  description: max gap length (default=30)
+  args: !SimpleFlagArg
+    name: Z
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: lamassemble [options] last-train.out sequences.fx > consensus.fa\n\
+  \nMerge DNA sequences into a consensus sequence.\n\nOptions:\n  -h, --help     \
+  \       show this help message and exit\n  -a, --alignment       print an alignment,\
+  \ not a consensus\n  -c, --consensus       just make a consensus, of already-aligned\
+  \ sequences\n  -g G, --gap-max=G     use alignment columns with <= G% gaps (default=50)\n\
+  \  --end                 ... including gaps past the ends of the sequences\n  -s\
+  \ S, --seq-min=S     omit consensus flanks with < S sequences (default=1)\n  -n\
+  \ NAME, --name=NAME  name of the consensus sequence (default=lamassembled)\n  -o\
+  \ BASE, --out=BASE   just write MAFFT input files, named BASE.xxx\n  -p P, --prob=P\
+  \        use pairwise restrictions with error probability <= P\n               \
+  \         (default=0.002)\n  -d D, --diagonal-max=D\n                        max\
+  \ change in alignment diagonal between pairwise\n                        alignments\
+  \ (default=1000)\n  -v, --verbose         show progress messages\n  --all      \
+  \           use all of each sequence, not just aligning part\n  --mafft=ARGS   \
+  \       additional arguments for MAFFT\n\n  LAST options:\n    -P P            \
+  \    number of parallel threads (default=1)\n    -W W                use minimum\
+  \ positions in length-W windows (default=19)\n    -m M                max initial\
+  \ matches per query position (default=5)\n    -z Z                max gap length\
+  \ (default=30)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/lamassemble:1.4.2--pyh3252c3a_0

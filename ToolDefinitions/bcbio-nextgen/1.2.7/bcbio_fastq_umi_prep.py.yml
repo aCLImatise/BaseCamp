@@ -1,0 +1,199 @@
+&id001 !Command
+command:
+- bcbio_fastq_umi_prep.py
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - bcbio_fastq_umi_prep.py
+  - autopair
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: files
+    description: All fastq files to pair and process
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --cores
+    description: Number of cores, allowing running samples in parallel
+    args: !SimpleFlagArg
+      name: CORES
+  - !Flag
+    optional: true
+    synonyms:
+    - --outdir
+    description: Output directory to write UMI prepped fastqs
+    args: !SimpleFlagArg
+      name: OUTDIR
+  - !Flag
+    optional: true
+    synonyms:
+    - --tag1
+    description: Duplex read 1 tag -- bases to trim from 5' end
+    args: !SimpleFlagArg
+      name: TAG1
+  - !Flag
+    optional: true
+    synonyms:
+    - --tag2
+    description: Duplex read 2 tag -- bases to trim from 5' end
+    args: !SimpleFlagArg
+      name: TAG2
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: bcbio_fastq_umi_prep.py autopair [-h] [-c CORES] [--outdir OUTDIR]\n\
+    \                                        [--tag1 TAG1] [--tag2 TAG2]\n       \
+    \                                 [files [files ...]]\n\npositional arguments:\n\
+    \  files                 All fastq files to pair and process\n\noptional arguments:\n\
+    \  -h, --help            show this help message and exit\n  -c CORES, --cores\
+    \ CORES\n                        Number of cores, allowing running samples in\
+    \ parallel\n  --outdir OUTDIR       Output directory to write UMI prepped fastqs\n\
+    \  --tag1 TAG1           Duplex read 1 tag -- bases to trim from 5' end\n  --tag2\
+    \ TAG2           Duplex read 2 tag -- bases to trim from 5' end\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/bcbio-nextgen:1.2.7--pyh3252c3a_0
+- !Command
+  command:
+  - bcbio_fastq_umi_prep.py
+  - single
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: out_base
+    description: "Base name for output files -- you get\n<base_name>_R1.fq.gz"
+  - !Positional
+    optional: false
+    position: 1
+    name: read1_fq
+    description: Input fastq, read 1
+  - !Positional
+    optional: false
+    position: 2
+    name: read2_fq
+    description: Input fastq, read 2
+  - !Positional
+    optional: false
+    position: 3
+    name: umi_fq
+    description: Input fastq, UMIs
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --cores
+    description: Number of cores to use for parallel bgzip
+    args: !SimpleFlagArg
+      name: CORES
+  - !Flag
+    optional: true
+    synonyms:
+    - --tag1
+    description: Duplex read 1 tag -- bases to trim from 5' end
+    args: !SimpleFlagArg
+      name: TAG1
+  - !Flag
+    optional: true
+    synonyms:
+    - --tag2
+    description: Duplex read 2 tag -- bases to trim from 5' end
+    args: !SimpleFlagArg
+      name: TAG2
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: bcbio_fastq_umi_prep.py single [-h] [-c CORES] [--tag1 TAG1]\n\
+    \                                      [--tag2 TAG2]\n                       \
+    \               out_base read1_fq read2_fq [umi_fq]\n\npositional arguments:\n\
+    \  out_base              Base name for output files -- you get\n             \
+    \           <base_name>_R1.fq.gz\n  read1_fq              Input fastq, read 1\n\
+    \  read2_fq              Input fastq, read 2\n  umi_fq                Input fastq,\
+    \ UMIs\n\noptional arguments:\n  -h, --help            show this help message\
+    \ and exit\n  -c CORES, --cores CORES\n                        Number of cores\
+    \ to use for parallel bgzip\n  --tag1 TAG1           Duplex read 1 tag -- bases\
+    \ to trim from 5' end\n  --tag2 TAG2           Duplex read 2 tag -- bases to trim\
+    \ from 5' end\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/bcbio-nextgen:1.2.7--pyh3252c3a_0
+- !Command
+  command:
+  - bcbio_fastq_umi_prep.py
+  - dragen
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: files
+    description: All fastq files to pair and process
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --outdir
+    description: Output directory to write UMI prepped fastqs
+    args: !SimpleFlagArg
+      name: OUTDIR
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: bcbio_fastq_umi_prep.py dragen [-h] [--outdir OUTDIR]\n     \
+    \                                 [files [files ...]]\n\npositional arguments:\n\
+    \  files            All fastq files to pair and process\n\noptional arguments:\n\
+    \  -h, --help       show this help message and exit\n  --outdir OUTDIR  Output\
+    \ directory to write UMI prepped fastqs\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/bcbio-nextgen:1.2.7--pyh3252c3a_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: bcbio_fastq_umi_prep.py [-h] {autopair,single,dragen} ...\n\nAdd\
+  \ UMIs to fastq read names\n\noptional arguments:\n  -h, --help            show\
+  \ this help message and exit\n\n[sub-commands]:\n  {autopair,single,dragen}\n  \
+  \  autopair            Automatically pair R1/R2 (and maybe R3) fastq inputs\n  \
+  \  single              Run single set of fastq files with UMIs/duplexes\n    dragen\
+  \              Make Dragen UMI input suitable for bcbio\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/bcbio-nextgen:1.2.7--pyh3252c3a_0

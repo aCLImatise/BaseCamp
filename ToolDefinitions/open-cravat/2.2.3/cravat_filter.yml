@@ -1,0 +1,151 @@
+&id001 !Command
+command:
+- cravat-filter
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: Path of a result database file (.sqlite)
+  args: !SimpleFlagArg
+    name: DBPATH
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: Path of a filtering criteria file
+  args: !SimpleFlagArg
+    name: FILTERPATH
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  description: Name of the filter to apply (saved in the database)
+  args: !SimpleFlagArg
+    name: FILTERNAME
+- !Flag
+  optional: true
+  synonyms:
+  - --filterstring
+  description: Filter in JSON
+  args: !SimpleFlagArg
+    name: FILTERSTRING
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: Analysis level to filter
+  args: !ChoiceFlagArg
+    choices: !!set
+      gene:
+      variant:
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: Name to save the filter as (in the database)
+  args: !SimpleFlagArg
+    name: SAVEFILTERNAME
+parent:
+subcommands:
+- !Command
+  command:
+  - cravat-filter
+  - Command
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: cravat-filter
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -F
+    description: ''
+    args: !SimpleFlagArg
+      name: FILTERNAME
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    description: ''
+    args: !SimpleFlagArg
+      name: FILTERPATH
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    description: ''
+    args: !SimpleFlagArg
+      name: DBPATH
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    description: ''
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: cravat-filter [-h] -d DBPATH [-f FILTERPATH] [-F FILTERNAME]\n\
+    \                     [--filterstring FILTERSTRING] [-l {variant,gene}]\n    \
+    \                 [-s SAVEFILTERNAME]\n                     {uidpipe,count,rows,pipe,save,list}\n\
+    cravat-filter: error: argument command: invalid choice: 'Command' (choose from\
+    \ 'uidpipe', 'count', 'rows', 'pipe', 'save', 'list')\nTask exception was never\
+    \ retrieved\nfuture: <Task finished name='Task-2' coro=<CravatFilter.run() done,\
+    \ defined at /usr/local/lib/python3.9/site-packages/cravat/cravat_filter.py:206>\
+    \ exception=SystemExit(2)>\nTraceback (most recent call last):\n  File \"/usr/local/lib/python3.9/argparse.py\"\
+    , line 1851, in parse_known_args\n    namespace, args = self._parse_known_args(args,\
+    \ namespace)\n  File \"/usr/local/lib/python3.9/argparse.py\", line 2042, in _parse_known_args\n\
+    \    positionals_end_index = consume_positionals(start_index)\n  File \"/usr/local/lib/python3.9/argparse.py\"\
+    , line 2019, in consume_positionals\n    take_action(action, args)\n  File \"\
+    /usr/local/lib/python3.9/argparse.py\", line 1912, in take_action\n    argument_values\
+    \ = self._get_values(action, argument_strings)\n  File \"/usr/local/lib/python3.9/argparse.py\"\
+    , line 2444, in _get_values\n    self._check_value(action, value)\n  File \"/usr/local/lib/python3.9/argparse.py\"\
+    , line 2500, in _check_value\n    raise ArgumentError(action, msg % args)\nargparse.ArgumentError:\
+    \ argument command: invalid choice: 'Command' (choose from 'uidpipe', 'count',\
+    \ 'rows', 'pipe', 'save', 'list')\n\nDuring handling of the above exception, another\
+    \ exception occurred:\n\nTraceback (most recent call last):\n  File \"/usr/local/lib/python3.9/site-packages/nest_asyncio.py\"\
+    , line 92, in run_until_complete\n    self._run_once()\n  File \"/usr/local/lib/python3.9/site-packages/nest_asyncio.py\"\
+    , line 130, in _run_once\n    handle._run()\n  File \"/usr/local/lib/python3.9/site-packages/nest_asyncio.py\"\
+    , line 199, in run\n    ctx.run(self._callback, *self._args)\n  File \"/usr/local/lib/python3.9/site-packages/nest_asyncio.py\"\
+    , line 157, in step\n    step_orig(task, exc)\n  File \"/usr/local/lib/python3.9/asyncio/tasks.py\"\
+    , line 256, in __step\n    result = coro.send(None)\n  File \"/usr/local/lib/python3.9/site-packages/cravat/cravat_filter.py\"\
+    , line 208, in run\n    self.parse_args(args)\n  File \"/usr/local/lib/python3.9/site-packages/cravat/cravat_filter.py\"\
+    , line 281, in parse_args\n    parsed_args = parser.parse_args(args)\n  File \"\
+    /usr/local/lib/python3.9/argparse.py\", line 1818, in parse_args\n    args, argv\
+    \ = self.parse_known_args(args, namespace)\n  File \"/usr/local/lib/python3.9/argparse.py\"\
+    , line 1854, in parse_known_args\n    self.error(str(err))\n  File \"/usr/local/lib/python3.9/argparse.py\"\
+    , line 2575, in error\n    self.exit(2, _('%(prog)s: error: %(message)s\\n') %\
+    \ args)\n  File \"/usr/local/lib/python3.9/argparse.py\", line 2562, in exit\n\
+    \    _sys.exit(status)\nSystemExit: 2\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/open-cravat:2.2.3--pyh3252c3a_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: cravat-filter [-h] -d DBPATH [-f FILTERPATH] [-F FILTERNAME]\n\
+  \                     [--filterstring FILTERSTRING] [-l {variant,gene}]\n      \
+  \               [-s SAVEFILTERNAME]\n                     {uidpipe,count,rows,pipe,save,list}\n\
+  \npositional arguments:\n  {uidpipe,count,rows,pipe,save,list}\n               \
+  \         Command\n\noptional arguments:\n  -h, --help            show this help\
+  \ message and exit\n  -d DBPATH             Path of a result database file (.sqlite)\n\
+  \  -f FILTERPATH         Path of a filtering criteria file\n  -F FILTERNAME    \
+  \     Name of the filter to apply (saved in the database)\n  --filterstring FILTERSTRING\n\
+  \                        Filter in JSON\n  -l {variant,gene}     Analysis level\
+  \ to filter\n  -s SAVEFILTERNAME     Name to save the filter as (in the database)\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/open-cravat:2.2.3--pyh3252c3a_0

@@ -1,0 +1,80 @@
+!Command
+command:
+- rm_low_coverage_duplicated_contigs.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: file
+  description: -t THREADS, --threads=THREADS
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --cov-t
+  description: "With ratio (coverage of query/coverage of subject)\nbelow which, the\
+    \ query would be exposed to discarded.\nDefault: 0.12"
+  args: !SimpleFlagArg
+    name: COVERAGE_THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - --len-t
+  description: "With overlap (length of hit of query/ length of query)\nabove which,\
+    \ the query would be exposed to discarded.\nDefault: 0.9"
+  args: !SimpleFlagArg
+    name: LENGTH_THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - --blur
+  description: Replace hit low-coverage bases with N.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --keep-temp
+  description: Keep temp blast files.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --which-blast
+  description: "Assign the path to BLAST binary files if not added to\nthe path."
+  args: !SimpleFlagArg
+    name: WHICH_BLAST
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: 'Output directory. Default: along with the original'
+  args: !SimpleFlagArg
+    name: OUTPUT_DIR
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: rm_low_coverage_duplicated_contigs.py *.fastg\n\nOptions:\n  -h,\
+  \ --help            show this help message and exit\n  --cov-t=COVERAGE_THRESHOLD\n\
+  \                        With ratio (coverage of query/coverage of subject)\n  \
+  \                      below which, the query would be exposed to discarded.\n \
+  \                       Default: 0.12\n  --len-t=LENGTH_THRESHOLD\n            \
+  \            With overlap (length of hit of query/ length of query)\n          \
+  \              above which, the query would be exposed to discarded.\n         \
+  \               Default: 0.9\n  --blur                Replace hit low-coverage bases\
+  \ with N.\n  --keep-temp           Keep temp blast files.\n  --which-blast=WHICH_BLAST\n\
+  \                        Assign the path to BLAST binary files if not added to\n\
+  \                        the path.\n  -o OUTPUT_DIR         Output directory. Default:\
+  \ along with the original\n                        file\n  -t THREADS, --threads=THREADS\n\
+  \                        Threads of blastn.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/getorganelle:1.7.3.5--pyh3252c3a_0

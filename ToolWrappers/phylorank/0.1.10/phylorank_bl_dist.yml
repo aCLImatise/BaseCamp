@@ -1,0 +1,69 @@
+!Command
+command:
+- phylorank
+- bl_dist
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: input_tree
+  description: input tree to calculate branch length distributions
+- !Positional
+  optional: false
+  position: 1
+  name: output_dir
+  description: desired output directory for generated files
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --trusted_taxa_file
+  description: "file indicating trusted taxonomic groups to use for\ninferring distribution\
+    \ (default: all taxa)"
+  args: !SimpleFlagArg
+    name: TRUSTED_TAXA_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --min_children
+  description: "minimum required child taxa to consider taxa when\ninferring distribution\
+    \ (default: 2)"
+  args: !SimpleFlagArg
+    name: MIN_CHILDREN
+- !Flag
+  optional: true
+  synonyms:
+  - --taxonomy_file
+  description: "read taxonomy from this file instead of directly from\ntree\n"
+  args: !SimpleFlagArg
+    name: TAXONOMY_FILE
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: phylorank bl_dist [-h] [-t TRUSTED_TAXA_FILE] [-m MIN_CHILDREN]\n\
+  \                         [--taxonomy_file TAXONOMY_FILE]\n                    \
+  \     input_tree output_dir\n\nCalculate distribution of branch lengths at each\
+  \ taxonomic rank.\n\npositional arguments:\n  input_tree            input tree to\
+  \ calculate branch length distributions\n  output_dir            desired output\
+  \ directory for generated files\n\noptional arguments:\n  -h, --help           \
+  \ show this help message and exit\n  -t, --trusted_taxa_file TRUSTED_TAXA_FILE\n\
+  \                        file indicating trusted taxonomic groups to use for\n \
+  \                       inferring distribution (default: all taxa)\n  -m, --min_children\
+  \ MIN_CHILDREN\n                        minimum required child taxa to consider\
+  \ taxa when\n                        inferring distribution (default: 2)\n  --taxonomy_file\
+  \ TAXONOMY_FILE\n                        read taxonomy from this file instead of\
+  \ directly from\n                        tree\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/phylorank:0.1.10--py_0

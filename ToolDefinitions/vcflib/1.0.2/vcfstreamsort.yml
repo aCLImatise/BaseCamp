@@ -1,0 +1,51 @@
+!Command
+command:
+- vcfstreamsort
+positional:
+- !Positional
+  optional: true
+  position: 0
+  name: vcf
+  description: ''
+- !Positional
+  optional: true
+  position: 1
+  name: file
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --window
+  description: number of sites to sort (default 10000)
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --all
+  description: load all sites and then sort in memory
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: this dialog
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: vcfstreamsort [options] [vcf file]\n\nSorts the input (either stdin\
+  \ or file) using a streaming sort algorithm. Guarantees that the positional order\
+  \ is correct provided out-of-order variants are no more than 100 positions in the\
+  \ VCF file apart.\noptions:\n\n    -h, --help             this dialog\n    -w, --window\
+  \ N         number of sites to sort (default 10000)\n    -a, --all             \
+  \ load all sites and then sort in memory\n\nType: transformation\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/vcflib:1.0.2--hfbaaabd_0

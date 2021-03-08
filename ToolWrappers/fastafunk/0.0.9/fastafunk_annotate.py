@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, File, String
+
+Fastafunk_Annotate_V0_1_0 = CommandToolBuilder(tool="fastafunk_annotate", base_command=["fastafunk", "annotate"], inputs=[ToolInput(tag="in_verbose", input_type=Boolean(optional=True), prefix="--verbose", doc=InputDocumentation(doc="Run with high verbosity (debug level logging)")), ToolInput(tag="in_log_file", input_type=File(optional=True), prefix="--log-file", doc=InputDocumentation(doc="Log file to use (otherwise uses stdout, or stderr if\nout-fasta to stdout)")), ToolInput(tag="in_in_fast_a", input_type=File(optional=True), prefix="--in-fasta", doc=InputDocumentation(doc="[<filename> ...]\nOne or more FASTA files of sequences (else reads from\nstdin)")), ToolInput(tag="in_in_metadata", input_type=File(optional=True), prefix="--in-metadata", doc=InputDocumentation(doc="[<filename> ...]\nOne or more CSV or TSV tables of metadata")), ToolInput(tag="in_index_field", input_type=String(optional=True), prefix="--index-field", doc=InputDocumentation(doc="[<field> ...]\nField(s) in the fasta header to match the metadata\n(else matches column names)")), ToolInput(tag="in_index_column", input_type=File(optional=True), prefix="--index-column", doc=InputDocumentation(doc="Column in the metadata file to use to match to the\nsequence")), ToolInput(tag="in_out_fast_a", input_type=File(optional=True), prefix="--out-fasta", doc=InputDocumentation(doc="A FASTA file (else writes to stdout)")), ToolInput(tag="in_out_metadata", input_type=File(optional=True), prefix="--out-metadata", doc=InputDocumentation(doc="A metadata file")), ToolInput(tag="in_header_delimiter", input_type=String(optional=True), prefix="--header-delimiter", doc=InputDocumentation(doc="Header delimiter")), ToolInput(tag="in_add_cov_id", input_type=Boolean(optional=True), prefix="--add-cov-id", doc=InputDocumentation(doc="Parses header for COG or GISAID unique id and stores")), ToolInput(tag="in_low_memory", input_type=Boolean(optional=True), prefix="--low-memory", doc=InputDocumentation(doc="Assumes no duplicate sequences within a FASTA so can\nuse SeqIO index\n"))], outputs=[ToolOutput(tag="out_log_file", output_type=File(optional=True), selector=InputSelector(input_to_select="in_log_file", type_hint=File()), doc=OutputDocumentation(doc="Log file to use (otherwise uses stdout, or stderr if\nout-fasta to stdout)"))], container="quay.io/biocontainers/fastafunk:0.0.9--pyh3252c3a_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Fastafunk_Annotate_V0_1_0().translate("wdl")
+

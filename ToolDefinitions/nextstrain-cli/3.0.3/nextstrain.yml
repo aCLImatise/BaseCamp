@@ -1,0 +1,442 @@
+&id001 !Command
+command:
+- nextstrain
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - nextstrain
+  - check-setup
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --set-default
+    description: "Set the default environment to the first which passes check-\nsetup.\
+      \ Checks run in the order: docker, native, aws-batch.\n(default: False)\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: nextstrain check-setup [-h] [--set-default]\n\nChecks your local\
+    \ setup to see if you have a supported build environment.\n\nThree environments\
+    \ are supported, each of which will be tested:\n\n  • Our Docker image is the\
+    \ preferred build environment.  Docker itself must\n    be installed and configured\
+    \ on your computer first, but once it is, the\n    build environment is robust\
+    \ and reproducible.\n\n  • Your native ambient environment will be tested for\
+    \ snakemake, augur, and\n    auspice. Their presence implies a working build environment,\
+    \ but does not\n    guarantee it.\n\n  • Remote jobs on AWS Batch.  Your AWS account,\
+    \ if credentials are available\n    in your environment or via aws-cli configuration,\
+    \ will be tested for the\n    presence of appropriate resources.  Their presence\
+    \ implies a working AWS\n    Batch environment, but does not guarantee it.\n\n\
+    optional arguments:\n  -h, --help     show this help message and exit\n  --set-default\
+    \  Set the default environment to the first which passes check-\n            \
+    \     setup. Checks run in the order: docker, native, aws-batch.\n           \
+    \      (default: False)\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/nextstrain-cli:3.0.3--py_0
+- !Command
+  command:
+  - nextstrain
+  - update
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: nextstrain
+    description: ''
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    description: ''
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: nextstrain [-h]\n                  {build,view,deploy,remote,shell,update,check-setup,version}\n\
+    \                  ...\nnextstrain: error: unrecognized arguments: --usage\n"
+  generated_using:
+  - --usage
+  docker_image: quay.io/biocontainers/nextstrain-cli:3.0.3--py_0
+- !Command
+  command:
+  - nextstrain
+  - shell
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: directory
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --help-all
+    description: Show a full help message of all options and exit
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    - -h
+    description: Show a brief help message of common options and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: nextstrain shell [options] <directory> [...]\n       nextstrain\
+    \ shell --help\n\nStart a new shell inside the Nextstrain containerized build\
+    \ environment to\nrun ad-hoc commands and perform debugging.\n\nThe shell runs\
+    \ inside a container, which requires Docker.  Run `nextstrain\ncheck-setup` to\
+    \ check if Docker is installed and works.\n\npositional arguments:\n  <directory>\
+    \       Path to pathogen build directory\n  ...               Additional arguments\
+    \ to pass to the executed program\n\noptional arguments:\n  --help, -h       \
+    \ Show a brief help message of common options and exit\n  --help-all        Show\
+    \ a full help message of all options and exit\n\nRun again with --help-all instead\
+    \ to see more options.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/nextstrain-cli:3.0.3--py_0
+- &id003 !Command
+  command:
+  - nextstrain
+  - remote
+  positional: []
+  named: []
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - nextstrain
+    - remote
+    - download
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --recursively
+      - -r
+      description: "Download all files with the given remote path prefix\n(default:\
+        \ False)\n"
+      args: !EmptyFlagArg {}
+    parent: *id003
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: show this help message and exit
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "usage: nextstrain remote download [-h] [--recursively]\n         \
+      \                         <s3://bucket-name> [<path>]\n\nDownloads pathogen\
+      \ JSON data files or Markdown narratives from a remote\nsource.\n \nSource URLs\
+      \ specify the file(s) to download:\n\n    nextstrain remote download s3://my-bucket/some/prefix/data.json\n\
+      \nwill download \"data.json\" into the current directory.\n\nRecursive downloads\
+      \ are supported for downloading multiple files:\n\n    nextstrain remote download\
+      \ --recursive s3://my-bucket/some/prefix/\n\nwill download all files under \"\
+      some/prefix/\" into the current directory.\n\nSee `nextstrain remote --help`\
+      \ for more information on remote sources.\n\npositional arguments:\n  <s3://bucket-name>\
+      \  Remote file path as a URL\n  <path>              Local directory to save\
+      \ files in. May be a local\n                      filename to use if the remote\
+      \ path points to a single\n                      file. (default: .)\n\noptional\
+      \ arguments:\n  -h, --help          show this help message and exit\n  --recursively,\
+      \ -r   Download all files with the given remote path prefix\n              \
+      \        (default: False)\n"
+    generated_using: *id002
+    docker_image: quay.io/biocontainers/nextstrain-cli:3.0.3--py_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: nextstrain remote [-h] {upload,download,list,ls,delete,rm} ...\n\
+    \nUpload, download, and manage Nextstrain files on remote sources.\n\nRemote sources\
+    \ host the Auspice JSON data files and Markdown narratives that\nare fetched by\
+    \ nextstrain.org or standalone instances of Auspice.\n \nCurrently only Amazon\
+    \ S3 buckets (s3://…) are supported as the remote\nsource, but others can be added\
+    \ in the future.\n\nCredentials for authentication should generally be provided\
+    \ by environment\nvariables specific to each source.\n\nAmazon S3\n---------\n\
+    \n* AWS_ACCESS_KEY_ID\n* AWS_SECRET_ACCESS_KEY\n\nMore information at:\n\n   \
+    \ https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html#environment-variables\n\
+    \nA persistent credentials file, ~/.aws/credentials, is also supported:\n\n  \
+    \  https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html#shared-credentials-file\n\
+    \ \n\noptional arguments:\n  -h, --help            show this help message and\
+    \ exit\n\ncommands:\n  {upload,download,list,ls,delete,rm}\n    upload       \
+    \       Upload dataset and narrative files\n    download            Download dataset\
+    \ and narrative files\n    list (ls)           List dataset and narrative files\n\
+    \    delete (rm)         Delete dataset and narrative files\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/nextstrain-cli:3.0.3--py_0
+- !Command
+  command:
+  - nextstrain
+  - view
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: '4000'
+    description: Run again with --help-all instead to see more options.
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --help-all
+    description: Show a full help message of all options and exit
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --allow-remote-access
+    description: "Allow other computers on the network to access the\nwebsite (default:\
+      \ False)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --port
+    description: Listen on the given port instead of the default port
+    args: !SimpleFlagArg
+      name: number
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    - -h
+    description: Show a brief help message of common options and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: nextstrain view [options] <directory>\n       nextstrain view\
+    \ --help\n\nVisualizes a completed pathogen build in Auspice, the Nextstrain visualization\
+    \ app.\n\nThe data directory should contain sets of Auspice JSON¹ files like\n\
+    \n    <name>.json\n\nor\n\n    <name>_tree.json\n    <name>_meta.json\n\nThe viewer\
+    \ runs inside a container, which requires Docker.  Run `nextstrain\ncheck-setup`\
+    \ to check if Docker is installed and works.\n\n¹ <https://nextstrain.github.io/auspice/introduction/how-to-run#input-file-formats>\n\
+    \npositional arguments:\n  <directory>           Path to directory containing\
+    \ JSONs for Auspice\n\noptional arguments:\n  --help, -h            Show a brief\
+    \ help message of common options and exit\n  --help-all            Show a full\
+    \ help message of all options and exit\n  --allow-remote-access\n            \
+    \            Allow other computers on the network to access the\n            \
+    \            website (default: False)\n  --port <number>       Listen on the given\
+    \ port instead of the default port\n                        4000\n\nRun again\
+    \ with --help-all instead to see more options.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/nextstrain-cli:3.0.3--py_0
+- !Command
+  command:
+  - nextstrain
+  - build
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: directory
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --help-all
+    description: Show a full help message of all options and exit
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --detach
+    description: "Run the build in the background, detached from your\nterminal. Re-attach\
+      \ later using --attach. Currently\nonly supported when also using --aws-batch.\
+      \ (default:\nFalse)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --attach
+    description: "Re-attach to a --detach'ed build to view output and\ndownload results.\
+      \ Currently only supported when also\nusing --aws-batch. (default: None)"
+    args: !SimpleFlagArg
+      name: job-id
+  - !Flag
+    optional: true
+    synonyms:
+    - --cpus
+    description: "Number of CPUs/cores/threads/jobs to utilize at once.\nLimits containerized\
+      \ (Docker, AWS Batch) builds to\nthis amount. Informs Snakemake's resource scheduler\n\
+      when applicable. Informs the AWS Batch instance size\nselection. (default: None)"
+    args: !SimpleFlagArg
+      name: count
+  - !Flag
+    optional: true
+    synonyms:
+    - --memory
+    description: "Amount of memory to make available to the build. Units\nof b, kb,\
+      \ mb, gb, kib, mib, gib are supported. Limits\ncontainerized (Docker, AWS Batch)\
+      \ builds to this\namount. Informs Snakemake's resource scheduler when\napplicable.\
+      \ Informs the AWS Batch instance size\nselection. (default: None)"
+    args: !SimpleFlagArg
+      name: quantity
+  - !Flag
+    optional: true
+    synonyms:
+    - --download
+    description: "Only download new or modified files matching <pattern>\nfrom the\
+      \ remote build. Basic shell-style globbing is\nsupported, but be sure to escape\
+      \ wildcards or quote\nthe whole pattern so your shell doesn't expand them.\n\
+      May be passed more than once. Currently only supported\nwhen also using --aws-batch.\
+      \ Default is to download\nevery new or modified file."
+    args: !SimpleFlagArg
+      name: pattern
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-download
+    description: "Do not download any files from the remote build when\nit completes.\
+      \ Currently only supported when also using\n--aws-batch."
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    - -h
+    description: Show a brief help message of common options and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: nextstrain build [options] <directory> [...]\n       nextstrain\
+    \ build --help\n\nRuns a pathogen build in the Nextstrain build environment.\n\
+    \nThe build directory should contain a Snakefile, which will be run with\nsnakemake.\n\
+    \nThe default build environment is inside an ephemeral Docker container which\
+    \ has\nall the necessary Nextstrain components available.  You may instead run\
+    \ the\nbuild in the native ambient environment by passing the --native flag, but\
+    \ all\ndependencies must already be installed and configured.  For larger builds,\
+    \ you\nmay want to use the --aws-batch flag to launch jobs on AWS Batch instead\
+    \ of\nrunning locally (if the required AWS resources are configured in your AWS\n\
+    account).\n\nYou can test if Docker, native, or AWS Batch build environments are\
+    \ properly\nsupported on your computer by running:\n\n    nextstrain check-setup\n\
+    \nThe `nextstrain build` command is designed to cleanly separate the Nextstrain\n\
+    build interface from provisioning a build environment, so that running builds\n\
+    is as easy as possible.  It also lets us more seamlessly make environment\nchanges\
+    \ in the future as desired or necessary.\n\npositional arguments:\n  <directory>\
+    \           Path to pathogen build directory\n  ...                   Additional\
+    \ arguments to pass to the executed program\n\noptional arguments:\n  --help,\
+    \ -h            Show a brief help message of common options and exit\n  --help-all\
+    \            Show a full help message of all options and exit\n  --detach    \
+    \          Run the build in the background, detached from your\n             \
+    \           terminal. Re-attach later using --attach. Currently\n            \
+    \            only supported when also using --aws-batch. (default:\n         \
+    \               False)\n  --attach <job-id>     Re-attach to a --detach'ed build\
+    \ to view output and\n                        download results. Currently only\
+    \ supported when also\n                        using --aws-batch. (default: None)\n\
+    \  --cpus <count>        Number of CPUs/cores/threads/jobs to utilize at once.\n\
+    \                        Limits containerized (Docker, AWS Batch) builds to\n\
+    \                        this amount. Informs Snakemake's resource scheduler\n\
+    \                        when applicable. Informs the AWS Batch instance size\n\
+    \                        selection. (default: None)\n  --memory <quantity>   Amount\
+    \ of memory to make available to the build. Units\n                        of\
+    \ b, kb, mb, gb, kib, mib, gib are supported. Limits\n                       \
+    \ containerized (Docker, AWS Batch) builds to this\n                        amount.\
+    \ Informs Snakemake's resource scheduler when\n                        applicable.\
+    \ Informs the AWS Batch instance size\n                        selection. (default:\
+    \ None)\n  --download <pattern>  Only download new or modified files matching\
+    \ <pattern>\n                        from the remote build. Basic shell-style\
+    \ globbing is\n                        supported, but be sure to escape wildcards\
+    \ or quote\n                        the whole pattern so your shell doesn't expand\
+    \ them.\n                        May be passed more than once. Currently only\
+    \ supported\n                        when also using --aws-batch. Default is to\
+    \ download\n                        every new or modified file.\n  --no-download\
+    \         Do not download any files from the remote build when\n             \
+    \           it completes. Currently only supported when also using\n         \
+    \               --aws-batch.\n\nRun again with --help-all instead to see more\
+    \ options.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/nextstrain-cli:3.0.3--py_0
+- !Command
+  command:
+  - nextstrain
+  - version
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --verbose
+    description: "Show versions of individual Nextstrain components in the image\n\
+      (default: False)\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: nextstrain version [-h] [--verbose]\n\nPrints the version of\
+    \ the Nextstrain CLI.\n\noptional arguments:\n  -h, --help  show this help message\
+    \ and exit\n  --verbose   Show versions of individual Nextstrain components in\
+    \ the image\n              (default: False)\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/nextstrain-cli:3.0.3--py_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: nextstrain [-h]\n                  {build,view,deploy,remote,shell,update,check-setup,version}\n\
+  \                  ...\n\nNextstrain command-line interface (CLI)\n\nThe `nextstrain`\
+  \ program and its subcommands aim to provide a consistent way to\nrun and visualize\
+  \ pathogen builds and access Nextstrain components like Augur\nand Auspice across\
+  \ computing environments such as Docker, Conda, and AWS Batch.\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n\ncommands:\n  {build,view,deploy,remote,shell,update,check-setup,version}\n\
+  \    build               Run pathogen build\n    view                View pathogen\
+  \ build\n    deploy              Deploy pathogen build\n    remote             \
+  \ Upload, download, and manage Nextstrain files on\n                        remote\
+  \ sources.\n    shell               Start a new shell in the build environment\n\
+  \    update              Update your local image copy\n    check-setup         Test\
+  \ your local setup\n    version             Show version information\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/nextstrain-cli:3.0.3--py_0

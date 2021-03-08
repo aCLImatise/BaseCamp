@@ -1,0 +1,166 @@
+!Command
+command:
+- arv-get
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: locator
+  description: Collection locator, optionally with a file path or
+- !Positional
+  optional: false
+  position: 1
+  name: prefix.
+  description: destination        Local file or directory where the data is to be
+    written.
+- !Positional
+  optional: false
+  position: 0
+  name: stdout.
+  description: 'optional arguments:'
+- !Positional
+  optional: false
+  position: 1
+  name: Keep.
+  description: -n                 Do not write any data -- just read from Keep, and
+    report
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --retries
+  description: "Maximum number of times to retry server requests that\nencounter temporary\
+    \ failures (e.g., server down). Default\n3."
+  args: !SimpleFlagArg
+    name: RETRIES
+- !Flag
+  optional: true
+  synonyms:
+  - --progress
+  description: "Display human-readable progress on stderr (bytes and, if\npossible,\
+    \ percentage of total data size). This is the\ndefault behavior when it is not\
+    \ expected to interfere\nwith the output: specifically, stderr is a tty _and_\n\
+    either stdout is not a tty, or output is being written to\nnamed files rather\
+    \ than stdout."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-progress
+  description: Do not display human-readable progress on stderr.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --batch-progress
+  description: "Display machine-readable progress on stderr (bytes and,\nif known,\
+    \ total data size)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --hash
+  description: "Display the hash of each file as it is read from Keep,\nusing the\
+    \ given hash algorithm. Supported algorithms\ninclude md5, sha1, sha224, sha256,\
+    \ sha384, and sha512."
+  args: !SimpleFlagArg
+    name: HASH
+- !Flag
+  optional: true
+  synonyms:
+  - --md5sum
+  description: Display the MD5 hash of each file as it is read from
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: "Retrieve all files in the specified collection/prefix.\nThis is the\
+    \ default behavior if the \"locator\" argument\nends with a forward slash."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: "Overwrite existing files while writing. The default\nbehavior is to\
+    \ refuse to write *anything* if any of the\noutput files already exist. As a special\
+    \ case, -f is not\nneeded to write to stdout."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: Once for verbose mode, twice for debug mode.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --skip-existing
+  description: "Skip files that already exist. The default behavior is to\nrefuse\
+    \ to write *anything* if any files exist that would\nhave to be overwritten. This\
+    \ option causes even devices,\nsockets, and fifos to be skipped."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --strip-manifest
+  description: "When getting a collection manifest, strip its access\ntokens before\
+    \ writing it.\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Print version and exit.
+  args: !EmptyFlagArg {}
+help_text: "usage: arv-get [-h] [--retries RETRIES] [--version]\n               [--progress\
+  \ | --no-progress | --batch-progress]\n               [--hash HASH | --md5sum] [-n]\
+  \ [-r]\n               [-f | -v | --skip-existing | --strip-manifest]\n        \
+  \       locator [destination]\n\nCopy data from Keep to a local file or pipe.\n\n\
+  positional arguments:\n  locator            Collection locator, optionally with\
+  \ a file path or\n                     prefix.\n  destination        Local file\
+  \ or directory where the data is to be written.\n                     Default: stdout.\n\
+  \noptional arguments:\n  -h, --help         show this help message and exit\n  --retries\
+  \ RETRIES  Maximum number of times to retry server requests that\n             \
+  \        encounter temporary failures (e.g., server down). Default\n           \
+  \          3.\n  --version          Print version and exit.\n  --progress      \
+  \   Display human-readable progress on stderr (bytes and, if\n                 \
+  \    possible, percentage of total data size). This is the\n                   \
+  \  default behavior when it is not expected to interfere\n                     with\
+  \ the output: specifically, stderr is a tty _and_\n                     either stdout\
+  \ is not a tty, or output is being written to\n                     named files\
+  \ rather than stdout.\n  --no-progress      Do not display human-readable progress\
+  \ on stderr.\n  --batch-progress   Display machine-readable progress on stderr (bytes\
+  \ and,\n                     if known, total data size).\n  --hash HASH        Display\
+  \ the hash of each file as it is read from Keep,\n                     using the\
+  \ given hash algorithm. Supported algorithms\n                     include md5,\
+  \ sha1, sha224, sha256, sha384, and sha512.\n  --md5sum           Display the MD5\
+  \ hash of each file as it is read from\n                     Keep.\n  -n       \
+  \          Do not write any data -- just read from Keep, and report\n          \
+  \           md5sums if requested.\n  -r                 Retrieve all files in the\
+  \ specified collection/prefix.\n                     This is the default behavior\
+  \ if the \"locator\" argument\n                     ends with a forward slash.\n\
+  \  -f                 Overwrite existing files while writing. The default\n    \
+  \                 behavior is to refuse to write *anything* if any of the\n    \
+  \                 output files already exist. As a special case, -f is not\n   \
+  \                  needed to write to stdout.\n  -v                 Once for verbose\
+  \ mode, twice for debug mode.\n  --skip-existing    Skip files that already exist.\
+  \ The default behavior is to\n                     refuse to write *anything* if\
+  \ any files exist that would\n                     have to be overwritten. This\
+  \ option causes even devices,\n                     sockets, and fifos to be skipped.\n\
+  \  --strip-manifest   When getting a collection manifest, strip its access\n   \
+  \                  tokens before writing it.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/arvados-python-client:2.1.2--py_0

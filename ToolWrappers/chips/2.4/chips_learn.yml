@@ -1,0 +1,146 @@
+!Command
+command:
+- chips
+- learn
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  description: ':     BAM file with ChIP reads (.bai index required)'
+  args: !SimpleFlagArg
+    name: reads.bam
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: ':     BED file with peak regions (Homer format or BED format)'
+  args: !SimpleFlagArg
+    name: peaks.bed
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: ': File type of the input peak file. Only `homer` or `bed` supported.'
+  args: !SimpleFlagArg
+    name: peakfile_type
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: ':     Prefix for output files'
+  args: !SimpleFlagArg
+    name: outprefix
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: ':           The index of the BED file column used to score each peak
+    (index starting from 1)'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: ":         Ratio of high score peaks to ignore\nDefault: 0"
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - --noscale
+  description: ":          Don't scale peak scores by the max score.\nDefault: false"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --scale-outliers
+  description: ":   Set all peaks with scores >2*median score to have binding prob\
+    \ 1. Recommended with real data.\nDefault: false"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --region
+  description: ":     Only consider peaks from this region chrom:start-end\nDefault:\
+    \ genome-wide"
+  args: !SimpleFlagArg
+    name: str
+- !Flag
+  optional: true
+  synonyms:
+  - --paired
+  description: ":           Loading paired-end reads\nDefault: false"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --est
+  description: ":        The estimated fragment length. Please set this number as\
+    \ the loose upper-bound of your estimated fragment length.\nThis can result in\
+    \ more robust estimates especially for data with narrow peaks.\nDefault: 300"
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --thres
+  description: ":    Absolute threshold for peak scores. Only consider peaks with\
+    \ at least this score.\nChIPs applies `--thres` or `--thres-scale` whichever is\
+    \ stricter.\nDefault: 100"
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - --thres-scale
+  description: ": Scale threshold for peak scores. Only consider peaks with at least\
+    \ this score.\nafter scaling scores to be between 0-1.\nChIPs applies `--thres`\
+    \ or `--thres-scale` whichever is stricter.\nDefault: 0"
+  args: !SimpleFlagArg
+    name: float
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Print this help menu.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "\nTool:    chips learn\nVersion: 2.4\nSummary: Learn parameters from a\
+  \ ChIP dataset.\n\nUsage:   chips learn -b reads.bam -p peak.bed -o outprefix [OPTIONS]\
+  \ \n\n[Required arguments]: \n         -b <reads.bam>:     BAM file with ChIP reads\
+  \ (.bai index required)\n         -p <peaks.bed>:     BED file with peak regions\
+  \ (Homer format or BED format)\n         -t <peakfile_type>: File type of the input\
+  \ peak file. Only `homer` or `bed` supported.\n         -o <outprefix>:     Prefix\
+  \ for output files\n         -c <int>:           The index of the BED file column\
+  \ used to score each peak (index starting from 1)\n[Optional arguments]: \n    \
+  \     -r <float>:         Ratio of high score peaks to ignore\n                \
+  \             Default: 0\n         --noscale:          Don't scale peak scores by\
+  \ the max score.\n                             Default: false\n         --scale-outliers:\
+  \   Set all peaks with scores >2*median score to have binding prob 1. Recommended\
+  \ with real data.\n                             Default: false\n         --region\
+  \ <str>:     Only consider peaks from this region chrom:start-end\n            \
+  \                 Default: genome-wide \n[BAM-file arguments]: \n         --paired:\
+  \           Loading paired-end reads\n                             Default: false\n\
+  [Fragment length estimation arguments]: \n (only relevant for single-end data) \n\
+  \         --est <int>:        The estimated fragment length. Please set this number\
+  \ as the loose upper-bound of your estimated fragment length.\n                \
+  \             This can result in more robust estimates especially for data with\
+  \ narrow peaks.\n                             Default: 300\n         --thres <float>:\
+  \    Absolute threshold for peak scores. Only consider peaks with at least this\
+  \ score.\n                             ChIPs applies `--thres` or `--thres-scale`\
+  \ whichever is stricter.\n                             Default: 100\n         --thres-scale\
+  \ <float>: Scale threshold for peak scores. Only consider peaks with at least this\
+  \ score.\n                                after scaling scores to be between 0-1.\n\
+  \                                ChIPs applies `--thres` or `--thres-scale` whichever\
+  \ is stricter.\n                                Default: 0\n\n[ General help ]:\n\
+  \    --help        Print this help menu.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/chips:2.4--h5ef6573_0

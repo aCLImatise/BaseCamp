@@ -1,0 +1,106 @@
+!Command
+command:
+- arv-ws
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --uuid
+  description: Filter events on object_uuid
+  args: !SimpleFlagArg
+    name: UUID
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --filters
+  description: "Arvados query filter to apply to log events (JSON\nencoded)"
+  args: !SimpleFlagArg
+    name: FILTERS
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --start-time
+  description: "Arvados query filter to fetch log events created at or\nafter this\
+    \ time. This will be server time in UTC.\nAllowed format: YYYY-MM-DD or YYYY-MM-DD\
+    \ hh:mm:ss"
+  args: !SimpleFlagArg
+    name: START_TIME
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --id
+  description: Start from given log id.
+  args: !SimpleFlagArg
+    name: ID
+- !Flag
+  optional: true
+  synonyms:
+  - --poll-interval
+  description: "If websockets is not available, specify the polling\ninterval, default\
+    \ is every 15 seconds"
+  args: !SimpleFlagArg
+    name: POLL_INTERVAL
+- !Flag
+  optional: true
+  synonyms:
+  - --no-poll
+  description: Do not poll if websockets are not available, just fail
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --pipeline
+  description: "Supply pipeline uuid, print log output from pipeline\nand its jobs"
+  args: !SimpleFlagArg
+    name: PIPELINE
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --job
+  description: Supply job uuid, print log output from jobs
+  args: !SimpleFlagArg
+    name: JOB
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Print version and exit.
+  args: !EmptyFlagArg {}
+help_text: "usage: arv-ws [-h] [--version] [-u UUID] [-f FILTERS] [-s START_TIME]\
+  \ [-i ID]\n              [--poll-interval POLL_INTERVAL | --no-poll]\n         \
+  \     [-p PIPELINE | -j JOB]\n\noptional arguments:\n  -h, --help            show\
+  \ this help message and exit\n  --version             Print version and exit.\n\
+  \  -u UUID, --uuid UUID  Filter events on object_uuid\n  -f FILTERS, --filters FILTERS\n\
+  \                        Arvados query filter to apply to log events (JSON\n   \
+  \                     encoded)\n  -s START_TIME, --start-time START_TIME\n     \
+  \                   Arvados query filter to fetch log events created at or\n   \
+  \                     after this time. This will be server time in UTC.\n      \
+  \                  Allowed format: YYYY-MM-DD or YYYY-MM-DD hh:mm:ss\n  -i ID, --id\
+  \ ID        Start from given log id.\n  --poll-interval POLL_INTERVAL\n        \
+  \                If websockets is not available, specify the polling\n         \
+  \               interval, default is every 15 seconds\n  --no-poll             Do\
+  \ not poll if websockets are not available, just fail\n  -p PIPELINE, --pipeline\
+  \ PIPELINE\n                        Supply pipeline uuid, print log output from\
+  \ pipeline\n                        and its jobs\n  -j JOB, --job JOB     Supply\
+  \ job uuid, print log output from jobs\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/arvados-python-client:2.1.2--py_0

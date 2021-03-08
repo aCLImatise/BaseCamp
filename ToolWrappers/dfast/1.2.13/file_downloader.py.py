@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, File, Directory
+
+File_Downloader_Py_V0_1_0 = CommandToolBuilder(tool="file_downloader.py", base_command=["file_downloader.py"], inputs=[ToolInput(tag="in_protein", input_type=Boolean(optional=True), prefix="--protein", doc=InputDocumentation(doc=": For DFAST reference libraries.\nFiles will be downloaded to DB root directory by default.\nDB root can be specified with '--dbroot' option.")), ToolInput(tag="in_assembly_fast_a", input_type=File(optional=True), prefix="--assembly_fasta", doc=InputDocumentation(doc=": For Reference genomes\nReference genome file will be downloaded from NCBI Assembly Database either in GenBank or Fasta format.\nFiles will be written to the current directory or the directory specified with '--out' option.")), ToolInput(tag="in_no_indexing", input_type=Boolean(optional=True), prefix="--no_indexing", doc=InputDocumentation(doc="Do not perform database indexing")), ToolInput(tag="in_out", input_type=Directory(optional=True), prefix="--out", doc=InputDocumentation(doc="Output directory (default: current directory.\nFor --assembly, --assembly_fasta. Not allowed with argument --dbroot)")), ToolInput(tag="in_db_root", input_type=Directory(optional=True), prefix="--dbroot", doc=InputDocumentation(doc="DB root directory (default: APP_ROOT/db.\nFor --protein, --cdd, --hmm. Not allowed with argument --out)\n"))], outputs=[ToolOutput(tag="out_assembly_fast_a", output_type=File(optional=True), selector=InputSelector(input_to_select="in_assembly_fast_a", type_hint=File()), doc=OutputDocumentation(doc=": For Reference genomes\nReference genome file will be downloaded from NCBI Assembly Database either in GenBank or Fasta format.\nFiles will be written to the current directory or the directory specified with '--out' option.")), ToolOutput(tag="out_out", output_type=Directory(optional=True), selector=InputSelector(input_to_select="in_out", type_hint=File()), doc=OutputDocumentation(doc="Output directory (default: current directory.\nFor --assembly, --assembly_fasta. Not allowed with argument --dbroot)")), ToolOutput(tag="out_db_root", output_type=Directory(optional=True), selector=InputSelector(input_to_select="in_db_root", type_hint=File()), doc=OutputDocumentation(doc="DB root directory (default: APP_ROOT/db.\nFor --protein, --cdd, --hmm. Not allowed with argument --out)\n"))], container="quay.io/biocontainers/dfast:1.2.13--h8b12597_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    File_Downloader_Py_V0_1_0().translate("wdl")
+

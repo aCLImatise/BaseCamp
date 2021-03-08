@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import String, File, Float, Boolean, Int
+
+Bnmapper_Py_V0_1_0 = CommandToolBuilder(tool="bnMapper.py", base_command=["bnMapper.py"], inputs=[ToolInput(tag="in_format", input_type=String(optional=True), prefix="--format", doc=InputDocumentation(doc="Output format. BED4 output reports all aligned blocks\nas separate BED records. BED12 reports a single BED\nrecord for each mapped element, with individual blocks\ngiven in the BED12 fields. NarrowPeak reports a single\nnarrowPeak record for each mapped element, in which\nthe chromosome, start, end, and peak positions are\nmapped to the target species and all other columns are\npassed through unchanged. (default: BED4)")), ToolInput(tag="in_output", input_type=File(optional=True), prefix="--output", doc=InputDocumentation(doc="Output file. Mandatory if more than on file in input.\n(default: stdout)")), ToolInput(tag="in_threshold", input_type=Float(optional=True), prefix="--threshold", doc=InputDocumentation(doc="Mapping threshold i.e., |elem| * threshold <=\n|mapped_elem| (default: 0.0)")), ToolInput(tag="in_screen", input_type=Boolean(optional=True), prefix="--screen", doc=InputDocumentation(doc="Only report elements in the alignment (without\nmapping). -t has not effect here (TODO) (default:\nFalse)")), ToolInput(tag="in_gap", input_type=Int(optional=True), prefix="--gap", doc=InputDocumentation(doc="Ignore elements with an insertion/deletion of this or\nbigger size. (default: -1)")), ToolInput(tag="in_verbose", input_type=String(optional=True), prefix="--verbose", doc=InputDocumentation(doc="Verbosity level (default: info)")), ToolInput(tag="in_keep_split", input_type=Boolean(optional=True), prefix="--keep_split", doc=InputDocumentation(doc="If elements span multiple chains, report the segment\nwith the longest overlap instead of silently dropping\nthem. (This is the default behavior for liftOver.)\n(default: False)")), ToolInput(tag="in_in_format", input_type=String(optional=True), prefix="--in_format", doc=InputDocumentation(doc="Input file format. (default: BED)")), ToolInput(tag="in_input", input_type=String(), position=0, doc=InputDocumentation(doc="Input to process. If more than a file is specified,\nall files will be mapped and placed on --output, which\nshould be a directory.")), ToolInput(tag="in_alignment", input_type=String(), position=1, doc=InputDocumentation(doc="Alignment file (.chain or .pkl)"))], outputs=[], container="quay.io/biocontainers/bx-python:0.8.10--py36h5e0341f_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Bnmapper_Py_V0_1_0().translate("wdl")
+

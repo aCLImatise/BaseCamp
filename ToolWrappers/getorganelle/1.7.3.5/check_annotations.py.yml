@@ -1,0 +1,93 @@
+!Command
+command:
+- check_annotations.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: tRNA.
+  description: --c-ends=ENDS_CDS   Default:not activated. Activate this calculation
+    and
+- !Positional
+  optional: false
+  position: 0
+  name: calculation.
+  description: --s-threshold=SIMILARITY
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: input reference *.gb file
+  args: !SimpleFlagArg
+    name: REFERENCE_GB
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: "input reference fasta file exported exported by\n\"Extract Annotations\"\
+    -\"Export\"-\"Selected\nDocuments\"-fasta in Geneious, remember to choose\n\"\
+    Replace spaces in sequence name with underscores\""
+  args: !SimpleFlagArg
+    name: REFERENCE_FASTA
+- !Flag
+  optional: true
+  synonyms:
+  - --t-ends
+  description: Default=10. The length to check at the both ends of
+  args: !SimpleFlagArg
+    name: ENDS_TRNA
+- !Flag
+  optional: true
+  synonyms:
+  - --a-ends
+  description: "Default:not activated. Activate this calculation and\nassign the length\
+    \ to check at the both ends of\nannotated all regions."
+  args: !SimpleFlagArg
+    name: ENDS_ALL
+- !Flag
+  optional: true
+  synonyms:
+  - --l-threshold
+  description: Default=0.9. Length threshold to report warning.
+  args: !SimpleFlagArg
+    name: LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - --similarity
+  description: Default=False. Choose to enable similarity
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: python this_script.py Query.gb -r Reference.gb\n\nThis script only\
+  \ checks the mainly check the reliability of automatically annotated tRNA and CDS.\n\
+  By jinjianjun@mail.kib.ac.cn\n\nOptions:\n  -h, --help            show this help\
+  \ message and exit\n\n  NECESSARY OPTIONS:\n    -r REFERENCE_GB     input reference\
+  \ *.gb file\n\n  ALTERNATION of NECESSARY OPTIONS:\n    -d REFERENCE_FASTA  input\
+  \ reference fasta file exported exported by\n                        \"Extract Annotations\"\
+  -\"Export\"-\"Selected\n                        Documents\"-fasta in Geneious, remember\
+  \ to choose\n                        \"Replace spaces in sequence name with underscores\"\
+  \n\n  OPTIONAL OPTIONS:\n    --t-ends=ENDS_TRNA  Default=10. The length to check\
+  \ at the both ends of\n                        tRNA.\n    --c-ends=ENDS_CDS   Default:not\
+  \ activated. Activate this calculation and\n                        assign the length\
+  \ to check at the both ends of CDS.\n    --a-ends=ENDS_ALL   Default:not activated.\
+  \ Activate this calculation and\n                        assign the length to check\
+  \ at the both ends of\n                        annotated all regions.\n    --l-threshold=LENGTH\n\
+  \                        Default=0.9. Length threshold to report warning.\n    --similarity\
+  \        Default=False. Choose to enable similarity\n                        calculation.\n\
+  \    --s-threshold=SIMILARITY\n                        Default=0.9. Similarity threshold\
+  \ to report warning.\n                        Should be < length threshold.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/getorganelle:1.7.3.5--pyh3252c3a_0

@@ -1,0 +1,87 @@
+class: CommandLineTool
+id: chips_learn.cwl
+inputs:
+- id: in_bam_file_chip
+  doc: ':     BAM file with ChIP reads (.bai index required)'
+  type: File?
+  inputBinding:
+    prefix: -b
+- id: in_bed_file_peak
+  doc: ':     BED file with peak regions (Homer format or BED format)'
+  type: File?
+  inputBinding:
+    prefix: -p
+- id: in_file_type_supported
+  doc: ': File type of the input peak file. Only `homer` or `bed` supported.'
+  type: File?
+  inputBinding:
+    prefix: -t
+- id: in_prefix_output_files
+  doc: ':     Prefix for output files'
+  type: string?
+  inputBinding:
+    prefix: -o
+- id: in_index_bed_file
+  doc: ':           The index of the BED file column used to score each peak (index
+    starting from 1)'
+  type: long?
+  inputBinding:
+    prefix: -c
+- id: in_ratio_high_score
+  doc: ":         Ratio of high score peaks to ignore\nDefault: 0"
+  type: double?
+  inputBinding:
+    prefix: -r
+- id: in_no_scale
+  doc: ":          Don't scale peak scores by the max score.\nDefault: false"
+  type: boolean?
+  inputBinding:
+    prefix: --noscale
+- id: in_scale_outliers
+  doc: ":   Set all peaks with scores >2*median score to have binding prob 1. Recommended\
+    \ with real data.\nDefault: false"
+  type: boolean?
+  inputBinding:
+    prefix: --scale-outliers
+- id: in_region
+  doc: ":     Only consider peaks from this region chrom:start-end\nDefault: genome-wide"
+  type: string?
+  inputBinding:
+    prefix: --region
+- id: in_paired
+  doc: ":           Loading paired-end reads\nDefault: false"
+  type: boolean?
+  inputBinding:
+    prefix: --paired
+- id: in_est
+  doc: ":        The estimated fragment length. Please set this number as the loose\
+    \ upper-bound of your estimated fragment length.\nThis can result in more robust\
+    \ estimates especially for data with narrow peaks.\nDefault: 300"
+  type: long?
+  inputBinding:
+    prefix: --est
+- id: in_th_res
+  doc: ":    Absolute threshold for peak scores. Only consider peaks with at least\
+    \ this score.\nChIPs applies `--thres` or `--thres-scale` whichever is stricter.\n\
+    Default: 100"
+  type: double?
+  inputBinding:
+    prefix: --thres
+- id: in_th_res_scale
+  doc: ": Scale threshold for peak scores. Only consider peaks with at least this\
+    \ score.\nafter scaling scores to be between 0-1.\nChIPs applies `--thres` or\
+    \ `--thres-scale` whichever is stricter.\nDefault: 0"
+  type: double?
+  inputBinding:
+    prefix: --thres-scale
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+hints:
+- class: DockerRequirement
+  dockerPull: quay.io/biocontainers/chips:2.4--h5ef6573_0
+cwlVersion: v1.1
+baseCommand:
+- chips
+- learn

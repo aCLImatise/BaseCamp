@@ -1,0 +1,1002 @@
+&id001 !Command
+command:
+- ggd
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: ''
+  args: !EmptyFlagArg {}
+parent:
+subcommands:
+- !Command
+  command:
+  - ggd
+  - list
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --pattern
+    description: "(Optional) pattern to match the name of the ggd data\npackage."
+    args: !SimpleFlagArg
+      name: PATTERN
+  - !Flag
+    optional: true
+    synonyms:
+    - --prefix
+    description: "(Optional) The name or the full directory path to a\nconda environment\
+      \ where a ggd recipe is stored. (Only\nneeded if listing data files not in the\
+      \ current\nenvironment)\n"
+    args: !SimpleFlagArg
+      name: PREFIX
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: ggd list [-h] [-p PATTERN] [--prefix PREFIX]\n\nGet a list of\
+    \ ggd data packages installed in the current or specified conda\nprefix/environment.\n\
+    \noptional arguments:\n  -h, --help            show this help message and exit\n\
+    \  -p PATTERN, --pattern PATTERN\n                        (Optional) pattern to\
+    \ match the name of the ggd data\n                        package.\n  --prefix\
+    \ PREFIX       (Optional) The name or the full directory path to a\n         \
+    \               conda environment where a ggd recipe is stored. (Only\n      \
+    \                  needed if listing data files not in the current\n         \
+    \               environment)\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/ggd:1.1.3--pyh3252c3a_0
+- !Command
+  command:
+  - ggd
+  - search
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: search_term
+    description: "**Required** The term(s) to search for. Multiple terms\ncan be used.\
+      \ Example: 'ggd search reference genome'"
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --search-type
+    description: "(Optional) How to search for data packages with the\nsearch terms\
+      \ provided. Options = 'combined-only',\n'non-combined-only', and 'both'. 'combined-only'\
+      \ will\nuse the provided search terms as a single search term.\n'non-combined-only'\
+      \ will use the provided search term\nto search for data package that match each\
+      \ search term\nseparately. 'both' will use the search terms combined\nand each\
+      \ search term separately to search for data\npackages. Default = 'both'"
+    args: !ChoiceFlagArg
+      choices: !!set
+        non-combined-only:
+        combined-only:
+        both:
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    - --genome-build
+    description: "(Optional) Filter results by the genome build of the\ndesired recipe"
+    args: !ChoiceFlagArg
+      choices: !!set
+        hg19:
+        dm6:
+        GRCz11:
+        GRCz10:
+        dm3:
+        canFam3:
+        meta-recipe:
+        mm9:
+        danRer10:
+        danRer11:
+        mm10:
+        GRCh37:
+        GRCh38:
+        hg38:
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --species
+    description: "(Optional) Filter results by the species for the\ndesired recipe"
+    args: !ChoiceFlagArg
+      choices: !!set
+        Homo_sapiens:
+        Drosophila_melanogaster:
+        meta-recipe:
+        Danio_rerio:
+        Mus_musculus:
+        Canis_familiaris:
+  - !Flag
+    optional: true
+    synonyms:
+    - -dn
+    - --display-number
+    description: "(Optional) The number of search results to display.\n(Default =\
+      \ 5)"
+    args: !SimpleFlagArg
+      name: DISPLAY_NUMBER
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    - --match-score
+    description: "(Optional) A score between 0 and 100 to use to filter\nthe results\
+      \ by. (Default = 90). The lower the number\nthe more results will be output"
+    args: !SimpleFlagArg
+      name: MATCH_SCORE
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --channel
+    description: "(Optional) The ggd channel to search. (Default =\ngenomics)\n"
+    args: !ChoiceFlagArg
+      choices: !!set
+        genomics:
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: ggd search [-h] [--search-type {both,combined-only,non-combined-only}]\n\
+    \                  [-g {GRCh37,GRCh38,GRCz10,GRCz11,canFam3,danRer10,danRer11,dm3,dm6,hg19,hg38,meta-recipe,mm10,mm9}]\n\
+    \                  [-s {Canis_familiaris,Danio_rerio,Drosophila_melanogaster,Homo_sapiens,Mus_musculus,meta-recipe}]\n\
+    \                  [-dn DISPLAY_NUMBER] [-m MATCH_SCORE] [-c {genomics}]\n   \
+    \               search_term [search_term ...]\n\nSearch for available ggd data\
+    \ packages. Results are filtered by match score\nfrom high to low. (Only 5 results\
+    \ will be reported unless the -dn flag is\nchanged)\n\npositional arguments:\n\
+    \  search_term           **Required** The term(s) to search for. Multiple terms\n\
+    \                        can be used. Example: 'ggd search reference genome'\n\
+    \noptional arguments:\n  -h, --help            show this help message and exit\n\
+    \  --search-type {both,combined-only,non-combined-only}\n                    \
+    \    (Optional) How to search for data packages with the\n                   \
+    \     search terms provided. Options = 'combined-only',\n                    \
+    \    'non-combined-only', and 'both'. 'combined-only' will\n                 \
+    \       use the provided search terms as a single search term.\n             \
+    \           'non-combined-only' will use the provided search term\n          \
+    \              to search for data package that match each search term\n      \
+    \                  separately. 'both' will use the search terms combined\n   \
+    \                     and each search term separately to search for data\n   \
+    \                     packages. Default = 'both'\n  -g {GRCh37,GRCh38,GRCz10,GRCz11,canFam3,danRer10,danRer11,dm3,dm6,hg19,hg38,meta-recipe,mm10,mm9},\
+    \ --genome-build {GRCh37,GRCh38,GRCz10,GRCz11,canFam3,danRer10,danRer11,dm3,dm6,hg19,hg38,meta-recipe,mm10,mm9}\n\
+    \                        (Optional) Filter results by the genome build of the\n\
+    \                        desired recipe\n  -s {Canis_familiaris,Danio_rerio,Drosophila_melanogaster,Homo_sapiens,Mus_musculus,meta-recipe},\
+    \ --species {Canis_familiaris,Danio_rerio,Drosophila_melanogaster,Homo_sapiens,Mus_musculus,meta-recipe}\n\
+    \                        (Optional) Filter results by the species for the\n  \
+    \                      desired recipe\n  -dn DISPLAY_NUMBER, --display-number\
+    \ DISPLAY_NUMBER\n                        (Optional) The number of search results\
+    \ to display.\n                        (Default = 5)\n  -m MATCH_SCORE, --match-score\
+    \ MATCH_SCORE\n                        (Optional) A score between 0 and 100 to\
+    \ use to filter\n                        the results by. (Default = 90). The lower\
+    \ the number\n                        the more results will be output\n  -c {genomics},\
+    \ --channel {genomics}\n                        (Optional) The ggd channel to\
+    \ search. (Default =\n                        genomics)\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/ggd:1.1.3--pyh3252c3a_0
+- !Command
+  command:
+  - ggd
+  - predict-path
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: PACKAGE_NAME
+    description: Get a predicted install file path for a data package before it is
+      installed.
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --channel
+    description: "The ggd channel of the recipe to find. (Default =\ngenomics)"
+    args: !ChoiceFlagArg
+      choices: !!set
+        genomics:
+  - !Flag
+    optional: true
+    synonyms:
+    - --prefix
+    description: "(Optional) The name or the full directory path to an\nconda environment.\
+      \ The predicted path will be based on\nthis conda environment. When installing,\
+      \ the data\npackage should also be installed in this environment.\n(Only needed\
+      \ if not predicting for a path in the\ncurrent conda environment)"
+    args: !SimpleFlagArg
+      name: PREFIX
+  - !Flag
+    optional: true
+    synonyms:
+    - --id
+    description: "ID   (Optional) The ID to predict the path for if the\npackage is\
+      \ a meta-recipe. If it is not a meta-recipe\nit will be ignored"
+    args: !SimpleFlagArg
+      name: meta-recipe
+  - !Flag
+    optional: true
+    synonyms:
+    - --dir-path
+    description: "(Required if '--file-name' not used) Whether or not to\nget the\
+      \ predicted directory path rather then the\npredicted file path. If both --file-name\
+      \ and --dir-\npath are provided the --file-name will be used and\n--dir-path\
+      \ will be ignored"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -fn
+    - --file-name
+    description: "(Required if '--dir-path' not used) The name of the\nfile to predict\
+      \ that path for. It is best if you give\nthe full and correct name of the file\
+      \ to predict the\npath for. If not, ggd will try to identify the right\nfile,\
+      \ but won't guarantee that it is the right file"
+    args: !SimpleFlagArg
+      name: FILE_NAME
+  - !Flag
+    optional: true
+    synonyms:
+    - -pn
+    - --package-name
+    description: "(Required) The name of the data package to predict a\nfile path\
+      \ for\n"
+    args: !SimpleFlagArg
+      name: PACKAGE_NAME
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: ggd predict-path [-h] [-c {genomics}] [--prefix PREFIX]\n   \
+    \                     [--id meta-recipe ID] [--dir-path] [-fn FILE_NAME] -pn\n\
+    \                        PACKAGE_NAME\n\nGet a predicted install file path for\
+    \ a data package before it is installed.\n(Use for workflows, such as Snakemake)\n\
+    \noptional arguments:\n  -h, --help            show this help message and exit\n\
+    \  -c {genomics}, --channel {genomics}\n                        The ggd channel\
+    \ of the recipe to find. (Default =\n                        genomics)\n  --prefix\
+    \ PREFIX       (Optional) The name or the full directory path to an\n        \
+    \                conda environment. The predicted path will be based on\n    \
+    \                    this conda environment. When installing, the data\n     \
+    \                   package should also be installed in this environment.\n  \
+    \                      (Only needed if not predicting for a path in the\n    \
+    \                    current conda environment)\n  --id meta-recipe ID   (Optional)\
+    \ The ID to predict the path for if the\n                        package is a\
+    \ meta-recipe. If it is not a meta-recipe\n                        it will be\
+    \ ignored\n\nOne Argument Required:\n  --dir-path            (Required if '--file-name'\
+    \ not used) Whether or not to\n                        get the predicted directory\
+    \ path rather then the\n                        predicted file path. If both --file-name\
+    \ and --dir-\n                        path are provided the --file-name will be\
+    \ used and\n                        --dir-path will be ignored\n  -fn FILE_NAME,\
+    \ --file-name FILE_NAME\n                        (Required if '--dir-path' not\
+    \ used) The name of the\n                        file to predict that path for.\
+    \ It is best if you give\n                        the full and correct name of\
+    \ the file to predict the\n                        path for. If not, ggd will\
+    \ try to identify the right\n                        file, but won't guarantee\
+    \ that it is the right file\n\nRequired Arguments:\n  -pn PACKAGE_NAME, --package-name\
+    \ PACKAGE_NAME\n                        (Required) The name of the data package\
+    \ to predict a\n                        file path for\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/ggd:1.1.3--pyh3252c3a_0
+- !Command
+  command:
+  - ggd
+  - get-files
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --channel
+    description: "The ggd channel of the recipe to find. (Default =\ngenomics)"
+    args: !ChoiceFlagArg
+      choices: !!set
+        genomics:
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --species
+    description: "(Optional) species recipe is for. Use '*' for any\nspecies"
+    args: !ChoiceFlagArg
+      choices: !!set
+        Homo_sapiens:
+        Drosophila_melanogaster:
+        meta-recipe:
+        Danio_rerio:
+        Mus_musculus:
+        Canis_familiaris:
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    - --genome-build
+    description: "(Optional) genome build the recipe is for. Use '*' for\nany genome\
+      \ build."
+    args: !ChoiceFlagArg
+      choices: !!set
+        hg19:
+        dm6:
+        GRCz11:
+        GRCz10:
+        dm3:
+        canFam3:
+        meta-recipe:
+        mm9:
+        danRer10:
+        danRer11:
+        mm10:
+        GRCh37:
+        GRCh38:
+        hg38:
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --pattern
+    description: "(Optional) pattern to match the name of the file\ndesired. To list\
+      \ all files for a ggd package, do not\nuse the -p option"
+    args: !SimpleFlagArg
+      name: PATTERN
+  - !Flag
+    optional: true
+    synonyms:
+    - --prefix
+    description: "(Optional) The name or the full directory path to an\nconda environment\
+      \ where a ggd recipe is stored. (Only\nneeded if not getting file paths for\
+      \ files in the\ncurrent conda environment)\n"
+    args: !SimpleFlagArg
+      name: PREFIX
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --version
+    description: "(Optional) pattern to match the version of the file\ndesired. Use\
+      \ '*' for any version"
+    args: !SimpleFlagArg
+      name: VERSION
+  help_text: "usage: ggd get-files [-h] [-c {genomics}]\n                     [-s\
+    \ {Canis_familiaris,Danio_rerio,Drosophila_melanogaster,Homo_sapiens,Mus_musculus,meta-recipe}]\n\
+    \                     [-g {GRCh37,GRCh38,GRCz10,GRCz11,canFam3,danRer10,danRer11,dm3,dm6,hg19,hg38,meta-recipe,mm10,mm9}]\n\
+    \                     [-v VERSION] [-p PATTERN] [--prefix PREFIX]\n          \
+    \           name\n\nGet a list of file(s) for a specific installed ggd package\n\
+    \npositional arguments:\n  name                  recipe name\n\noptional arguments:\n\
+    \  -h, --help            show this help message and exit\n  -c {genomics}, --channel\
+    \ {genomics}\n                        The ggd channel of the recipe to find. (Default\
+    \ =\n                        genomics)\n  -s {Canis_familiaris,Danio_rerio,Drosophila_melanogaster,Homo_sapiens,Mus_musculus,meta-recipe},\
+    \ --species {Canis_familiaris,Danio_rerio,Drosophila_melanogaster,Homo_sapiens,Mus_musculus,meta-recipe}\n\
+    \                        (Optional) species recipe is for. Use '*' for any\n \
+    \                       species\n  -g {GRCh37,GRCh38,GRCz10,GRCz11,canFam3,danRer10,danRer11,dm3,dm6,hg19,hg38,meta-recipe,mm10,mm9},\
+    \ --genome-build {GRCh37,GRCh38,GRCz10,GRCz11,canFam3,danRer10,danRer11,dm3,dm6,hg19,hg38,meta-recipe,mm10,mm9}\n\
+    \                        (Optional) genome build the recipe is for. Use '*' for\n\
+    \                        any genome build.\n  -v VERSION, --version VERSION\n\
+    \                        (Optional) pattern to match the version of the file\n\
+    \                        desired. Use '*' for any version\n  -p PATTERN, --pattern\
+    \ PATTERN\n                        (Optional) pattern to match the name of the\
+    \ file\n                        desired. To list all files for a ggd package,\
+    \ do not\n                        use the -p option\n  --prefix PREFIX       (Optional)\
+    \ The name or the full directory path to an\n                        conda environment\
+    \ where a ggd recipe is stored. (Only\n                        needed if not getting\
+    \ file paths for files in the\n                        current conda environment)\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/ggd:1.1.3--pyh3252c3a_0
+- !Command
+  command:
+  - ggd
+  - make-recipe
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --channel
+    description: the ggd channel to use. (Default = genomics)
+    args: !ChoiceFlagArg
+      choices: !!set
+        genomics:
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --dependency
+    description: "any software dependencies (in bioconda, conda-forge)\nor data-dependency\
+      \ (in ggd). May be as many times as\nneeded."
+    args: !SimpleFlagArg
+      name: DEPENDENCY
+  - !Flag
+    optional: true
+    synonyms:
+    - -e
+    - --extra-file
+    description: "any files that the recipe creates that are not a *.gz\nand *.gz.tbi\
+      \ pair or *.fa and *.fai pair. May be used\nmore than once"
+    args: !SimpleFlagArg
+      name: EXTRA_FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --platform
+    description: "Whether to use noarch as the platform or the system\nplatform. If\
+      \ set to 'none' the system platform will be\nused. (Default = noarch. Noarch\
+      \ means no architecture\nand is platform agnostic.)"
+    args: !ChoiceFlagArg
+      choices: !!set
+        noarch:
+        none:
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --species
+    description: The species recipe is for
+    args: !ChoiceFlagArg
+      choices: !!set
+        Homo_sapiens:
+        Drosophila_melanogaster:
+        meta-recipe:
+        Danio_rerio:
+        Mus_musculus:
+        Canis_familiaris:
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    - --genome-build
+    description: The genome build the recipe is for
+    args: !ChoiceFlagArg
+      choices: !!set
+        hg19:
+        dm6:
+        GRCz11:
+        GRCz10:
+        dm3:
+        canFam3:
+        meta-recipe:
+        mm9:
+        danRer10:
+        danRer11:
+        mm10:
+        GRCh37:
+        GRCh38:
+        hg38:
+  - !Flag
+    optional: true
+    synonyms:
+    - --authors
+    description: "The author(s) of the data recipe being created, (This\nrecipe)"
+    args: !SimpleFlagArg
+      name: AUTHORS
+  - !Flag
+    optional: true
+    synonyms:
+    - -pv
+    - --package-version
+    description: "The version of the ggd package. (First time package =\n1, updated\
+      \ package > 1)"
+    args: !SimpleFlagArg
+      name: PACKAGE_VERSION
+  - !Flag
+    optional: true
+    synonyms:
+    - -dv
+    - --data-version
+    description: "The version of the data (itself) being downloaded and\nprocessed\
+      \ (EX: dbsnp-127) If there is no data version\napparent we recommend you use\
+      \ the date associated with\nthe files or something else that can uniquely identify\n\
+      the 'version' of the data"
+    args: !SimpleFlagArg
+      name: DATA_VERSION
+  - !Flag
+    optional: true
+    synonyms:
+    - -dp
+    - --data-provider
+    description: "The data provider where the data was accessed.\n(Example: UCSC,\
+      \ Ensembl, gnomAD, etc.)"
+    args: !SimpleFlagArg
+      name: DATA_PROVIDER
+  - !Flag
+    optional: true
+    synonyms:
+    - --summary
+    description: A detailed comment describing the recipe
+    args: !SimpleFlagArg
+      name: SUMMARY
+  - !Flag
+    optional: true
+    synonyms:
+    - -k
+    - --keyword
+    description: "A keyword to associate with the recipe. May be\nspecified more that\
+      \ once. Please add enough keywords\nto better describe and distinguish the recipe"
+    args: !SimpleFlagArg
+      name: KEYWORD
+  - !Flag
+    optional: true
+    synonyms:
+    - -cb
+    - --coordinate-base
+    description: "The genomic coordinate basing for the file(s) in the\nrecipe. That\
+      \ is, the coordinates start at genomic\ncoordinate 0 or 1, and the end coordinate\
+      \ is either\ninclusive (everything up to and including the end\ncoordinate)\
+      \ or exclusive (everything up to but not\nincluding the end coordinate) Files\
+      \ that do not have\ncoordinate basing, like fasta files, specify NA for\nnot\
+      \ applicable."
+    args: !ChoiceFlagArg
+      choices: !!set
+        0-based-exclusive:
+        1-based-exclusive:
+        0-based-inclusive:
+        NA:
+        1-based-inclusive:
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    - --name
+    description: "The sub-name of the recipe being created. (e.g. cpg-\nislands, pfam-domains,\
+      \ gaps, etc.) This will not be\nthe final name of the recipe, but will specific\
+      \ to the\ndata gathered and processed by the recipe"
+    args: !SimpleFlagArg
+      name: NAME
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: ggd make-recipe [-h] [-c {genomics}] [-d DEPENDENCY] [-e EXTRA_FILE]\n\
+    \                       [-p {noarch,none}] -s\n                       {Canis_familiaris,Danio_rerio,Drosophila_melanogaster,Homo_sapiens,Mus_musculus,meta-recipe}\n\
+    \                       -g\n                       {GRCh37,GRCh38,GRCz10,GRCz11,canFam3,danRer10,danRer11,dm3,dm6,hg19,hg38,meta-recipe,mm10,mm9}\n\
+    \                       [--authors AUTHORS] -pv PACKAGE_VERSION -dv\n        \
+    \               DATA_VERSION -dp DATA_PROVIDER --summary SUMMARY -k\n        \
+    \               KEYWORD -cb\n                       {0-based-inclusive,0-based-exclusive,1-based-inclusive,1-based-exclusive,NA}\n\
+    \                       -n NAME\n                       script\n\nMake a ggd data\
+    \ recipe from a bash script\n\noptional arguments:\n  -h, --help            show\
+    \ this help message and exit\n  -c {genomics}, --channel {genomics}\n        \
+    \                the ggd channel to use. (Default = genomics)\n  -d DEPENDENCY,\
+    \ --dependency DEPENDENCY\n                        any software dependencies (in\
+    \ bioconda, conda-forge)\n                        or data-dependency (in ggd).\
+    \ May be as many times as\n                        needed.\n  -e EXTRA_FILE, --extra-file\
+    \ EXTRA_FILE\n                        any files that the recipe creates that are\
+    \ not a *.gz\n                        and *.gz.tbi pair or *.fa and *.fai pair.\
+    \ May be used\n                        more than once\n  -p {noarch,none}, --platform\
+    \ {noarch,none}\n                        Whether to use noarch as the platform\
+    \ or the system\n                        platform. If set to 'none' the system\
+    \ platform will be\n                        used. (Default = noarch. Noarch means\
+    \ no architecture\n                        and is platform agnostic.)\n\nrequired\
+    \ arguments:\n  -s {Canis_familiaris,Danio_rerio,Drosophila_melanogaster,Homo_sapiens,Mus_musculus,meta-recipe},\
+    \ --species {Canis_familiaris,Danio_rerio,Drosophila_melanogaster,Homo_sapiens,Mus_musculus,meta-recipe}\n\
+    \                        The species recipe is for\n  -g {GRCh37,GRCh38,GRCz10,GRCz11,canFam3,danRer10,danRer11,dm3,dm6,hg19,hg38,meta-recipe,mm10,mm9},\
+    \ --genome-build {GRCh37,GRCh38,GRCz10,GRCz11,canFam3,danRer10,danRer11,dm3,dm6,hg19,hg38,meta-recipe,mm10,mm9}\n\
+    \                        The genome build the recipe is for\n  --authors AUTHORS\
+    \     The author(s) of the data recipe being created, (This\n                \
+    \        recipe)\n  -pv PACKAGE_VERSION, --package-version PACKAGE_VERSION\n \
+    \                       The version of the ggd package. (First time package =\n\
+    \                        1, updated package > 1)\n  -dv DATA_VERSION, --data-version\
+    \ DATA_VERSION\n                        The version of the data (itself) being\
+    \ downloaded and\n                        processed (EX: dbsnp-127) If there is\
+    \ no data version\n                        apparent we recommend you use the date\
+    \ associated with\n                        the files or something else that can\
+    \ uniquely identify\n                        the 'version' of the data\n  -dp\
+    \ DATA_PROVIDER, --data-provider DATA_PROVIDER\n                        The data\
+    \ provider where the data was accessed.\n                        (Example: UCSC,\
+    \ Ensembl, gnomAD, etc.)\n  --summary SUMMARY     A detailed comment describing\
+    \ the recipe\n  -k KEYWORD, --keyword KEYWORD\n                        A keyword\
+    \ to associate with the recipe. May be\n                        specified more\
+    \ that once. Please add enough keywords\n                        to better describe\
+    \ and distinguish the recipe\n  -cb {0-based-inclusive,0-based-exclusive,1-based-inclusive,1-based-exclusive,NA},\
+    \ --coordinate-base {0-based-inclusive,0-based-exclusive,1-based-inclusive,1-based-exclusive,NA}\n\
+    \                        The genomic coordinate basing for the file(s) in the\n\
+    \                        recipe. That is, the coordinates start at genomic\n \
+    \                       coordinate 0 or 1, and the end coordinate is either\n\
+    \                        inclusive (everything up to and including the end\n \
+    \                       coordinate) or exclusive (everything up to but not\n \
+    \                       including the end coordinate) Files that do not have\n\
+    \                        coordinate basing, like fasta files, specify NA for\n\
+    \                        not applicable.\n  -n NAME, --name NAME  The sub-name\
+    \ of the recipe being created. (e.g. cpg-\n                        islands, pfam-domains,\
+    \ gaps, etc.) This will not be\n                        the final name of the\
+    \ recipe, but will specific to the\n                        data gathered and\
+    \ processed by the recipe\n  script                bash script that contains the\
+    \ commands to obtain and\n                        process the data\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/ggd:1.1.3--pyh3252c3a_0
+- !Command
+  command:
+  - ggd
+  - install
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: name
+    description: "The data package name to install. Can use more than\nonce (e.g.\
+      \ ggd install <pkg 1> <pkg 2> <pkg 3> ).\n(NOTE: No need to designate version\
+      \ as it is\nimplicated in the package name)"
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --channel
+    description: "The ggd channel the desired recipe is stored in.\n(Default = genomics)"
+    args: !ChoiceFlagArg
+      choices: !!set
+        genomics:
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --debug
+    description: "(Optional) When the -d flag is set debug output will\nbe printed\
+      \ to stdout."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --file
+    description: "A file with a list of ggd data packages to install.\nOne package\
+      \ per line. Can use more than one (e.g. ggd\ninstall --file <file_1> --file\
+      \ <file_2> )"
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --prefix
+    description: "(Optional) The name or the full directory path to an\nexisting conda\
+      \ environment where you want to install a\nggd data package. (Only needed if\
+      \ you want to install\nthe data package into a different conda environment\n\
+      then the one you are currently in)"
+    args: !SimpleFlagArg
+      name: PREFIX
+  - !Flag
+    optional: true
+    synonyms:
+    - --id
+    description: "ID   The ID to use for the meta recipe being installed. For\nexample,\
+      \ if installing the GEO meta-recipe for GEO\nAccession ID GSE123, use `--id\
+      \ GSE123` NOTE: GGD will\nNOT try to correct the ID. The ID must be accurately\n\
+      entered with case sensitive alphanumeric order\n"
+    args: !SimpleFlagArg
+      name: Meta-recipe
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: ggd install [-h] [-c {genomics}] [-d] [--file FILE] [--prefix\
+    \ PREFIX]\n                   [--id Meta-recipe ID]\n                   [name\
+    \ [name ...]]\n\nInstall a ggd data package into the current or specified conda\
+    \ environment\n\npositional arguments:\n  name                  The data package\
+    \ name to install. Can use more than\n                        once (e.g. ggd install\
+    \ <pkg 1> <pkg 2> <pkg 3> ).\n                        (NOTE: No need to designate\
+    \ version as it is\n                        implicated in the package name)\n\n\
+    optional arguments:\n  -h, --help            show this help message and exit\n\
+    \  -c {genomics}, --channel {genomics}\n                        The ggd channel\
+    \ the desired recipe is stored in.\n                        (Default = genomics)\n\
+    \  -d, --debug           (Optional) When the -d flag is set debug output will\n\
+    \                        be printed to stdout.\n  --file FILE           A file\
+    \ with a list of ggd data packages to install.\n                        One package\
+    \ per line. Can use more than one (e.g. ggd\n                        install --file\
+    \ <file_1> --file <file_2> )\n  --prefix PREFIX       (Optional) The name or the\
+    \ full directory path to an\n                        existing conda environment\
+    \ where you want to install a\n                        ggd data package. (Only\
+    \ needed if you want to install\n                        the data package into\
+    \ a different conda environment\n                        then the one you are\
+    \ currently in)\n  --id Meta-recipe ID   The ID to use for the meta recipe being\
+    \ installed. For\n                        example, if installing the GEO meta-recipe\
+    \ for GEO\n                        Accession ID GSE123, use `--id GSE123` NOTE:\
+    \ GGD will\n                        NOT try to correct the ID. The ID must be\
+    \ accurately\n                        entered with case sensitive alphanumeric\
+    \ order\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/ggd:1.1.3--pyh3252c3a_0
+- &id003 !Command
+  command:
+  - ggd
+  - check-recipe
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --id
+    description: ''
+    args: !SimpleFlagArg
+      name: Meta-recipe
+  - !Flag
+    optional: true
+    synonyms:
+    - -du
+    description: ''
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    description: ''
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - ggd
+    - check-recipe
+    - recipe_path
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: recipe_path
+      description: "path to recipe directory (can also be path to the\n.bz2)"
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -d
+      - --debug
+      description: (Optional) Set the stdout log level to debug
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - -du
+      - --dont_uninstall
+      description: "(Optional) By default the newly installed local ggd\ndata package\
+        \ is uninstalled after the check has\nfinished. To bypass this uninstall step\
+        \ (to keep the\nlocal package installed) set this flag \"--\ndont_uninstall\""
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --id
+      description: "ID   If checking a meta-recipe the associated meta-recipe\nid\
+        \ needs to be supplied. (Example: for a geo meta-\nrecipe use something like\
+        \ --id GSE123) NOTE: GGD does\nnot try to correct the ID. Please provide the\
+        \ correct\ncase sensitive ID.\n"
+      args: !SimpleFlagArg
+        name: Meta-recipe
+    parent: *id003
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: show this help message and exit
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "usage: ggd check-recipe [-h] [-d] [-du] [--id Meta-recipe ID] recipe_path\n\
+      \nConvert a ggd recipe created from `ggd make-recipe` into a data package. Test\n\
+      both ggd data recipe and data package\n\npositional arguments:\n  recipe_path\
+      \           path to recipe directory (can also be path to the\n            \
+      \            .bz2)\n\noptional arguments:\n  -h, --help            show this\
+      \ help message and exit\n  -d, --debug           (Optional) Set the stdout log\
+      \ level to debug\n  -du, --dont_uninstall\n                        (Optional)\
+      \ By default the newly installed local ggd\n                        data package\
+      \ is uninstalled after the check has\n                        finished. To bypass\
+      \ this uninstall step (to keep the\n                        local package installed)\
+      \ set this flag \"--\n                        dont_uninstall\"\n  --id Meta-recipe\
+      \ ID   If checking a meta-recipe the associated meta-recipe\n              \
+      \          id needs to be supplied. (Example: for a geo meta-\n            \
+      \            recipe use something like --id GSE123) NOTE: GGD does\n       \
+      \                 not try to correct the ID. Please provide the correct\n  \
+      \                      case sensitive ID.\n"
+    generated_using: *id002
+    docker_image: quay.io/biocontainers/ggd:1.1.3--pyh3252c3a_0
+  - !Command
+    command:
+    - ggd
+    - check-recipe
+    - ID
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: recipe_path
+      description: "path to recipe directory (can also be path to the\n.bz2)"
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -d
+      - --debug
+      description: (Optional) Set the stdout log level to debug
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - -du
+      - --dont_uninstall
+      description: "(Optional) By default the newly installed local ggd\ndata package\
+        \ is uninstalled after the check has\nfinished. To bypass this uninstall step\
+        \ (to keep the\nlocal package installed) set this flag \"--\ndont_uninstall\""
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --id
+      description: "ID   If checking a meta-recipe the associated meta-recipe\nid\
+        \ needs to be supplied. (Example: for a geo meta-\nrecipe use something like\
+        \ --id GSE123) NOTE: GGD does\nnot try to correct the ID. Please provide the\
+        \ correct\ncase sensitive ID.\n"
+      args: !SimpleFlagArg
+        name: Meta-recipe
+    parent: *id003
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: show this help message and exit
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "usage: ggd check-recipe [-h] [-d] [-du] [--id Meta-recipe ID] recipe_path\n\
+      \nConvert a ggd recipe created from `ggd make-recipe` into a data package. Test\n\
+      both ggd data recipe and data package\n\npositional arguments:\n  recipe_path\
+      \           path to recipe directory (can also be path to the\n            \
+      \            .bz2)\n\noptional arguments:\n  -h, --help            show this\
+      \ help message and exit\n  -d, --debug           (Optional) Set the stdout log\
+      \ level to debug\n  -du, --dont_uninstall\n                        (Optional)\
+      \ By default the newly installed local ggd\n                        data package\
+      \ is uninstalled after the check has\n                        finished. To bypass\
+      \ this uninstall step (to keep the\n                        local package installed)\
+      \ set this flag \"--\n                        dont_uninstall\"\n  --id Meta-recipe\
+      \ ID   If checking a meta-recipe the associated meta-recipe\n              \
+      \          id needs to be supplied. (Example: for a geo meta-\n            \
+      \            recipe use something like --id GSE123) NOTE: GGD does\n       \
+      \                 not try to correct the ID. Please provide the correct\n  \
+      \                      case sensitive ID.\n"
+    generated_using: *id002
+    docker_image: quay.io/biocontainers/ggd:1.1.3--pyh3252c3a_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    description: ''
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: ggd check-recipe [-h] [-d] [-du] [--id Meta-recipe ID] recipe_path\n\
+    ggd check-recipe: error: the following arguments are required: recipe_path\n"
+  generated_using: []
+  docker_image: quay.io/biocontainers/ggd:1.1.3--pyh3252c3a_0
+- !Command
+  command:
+  - ggd
+  - uninstall
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: names
+    description: the name(s) of the ggd package(s) to uninstall
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --channel
+    description: "The ggd channel of the recipe to uninstall. (Default =\ngenomics)\n"
+    args: !ChoiceFlagArg
+      choices: !!set
+        genomics:
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: ggd uninstall [-h] [-c {genomics}] names [names ...]\n\nUse ggd\
+    \ to uninstall a ggd data package installed in the current conda\nenvironment\n\
+    \npositional arguments:\n  names                 the name(s) of the ggd package(s)\
+    \ to uninstall\n\noptional arguments:\n  -h, --help            show this help\
+    \ message and exit\n  -c {genomics}, --channel {genomics}\n                  \
+    \      The ggd channel of the recipe to uninstall. (Default =\n              \
+    \          genomics)\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/ggd:1.1.3--pyh3252c3a_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: Installed version
+  args: !EmptyFlagArg {}
+help_text: "usage: ggd [-h] [-v]\n           {search,predict-path,install,uninstall,list,get-files,pkg-info,show-env,make-recipe,make-meta-recipe,check-recipe}\n\
+  \           ...\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  -v, --version         Installed version\n\n[sub-commands]:\n  {search,predict-path,install,uninstall,list,get-files,pkg-info,show-env,make-recipe,make-meta-recipe,check-recipe}\n\
+  \    search              Search for a ggd data package\n    predict-path       \
+  \ Predict the install file path of a data package that\n                       \
+  \ hasn't been installed yet. (Use for workflows, such as\n                     \
+  \   Snakemake)\n    install             Install a ggd data package\n    uninstall\
+  \           Uninstall a ggd data package\n    list                List the ggd data\
+  \ package(s) that are currently\n                        installed in a specific\
+  \ conda environment\n    get-files           Get the data files for a specific installed\
+  \ ggd data\n                        package\n    pkg-info            List data package\
+  \ info for a specific installed ggd\n                        data package\n    show-env\
+  \            Show ggd data package environment variables available\n           \
+  \             for the current conda environment\n    make-recipe         Make a\
+  \ new ggd data recipe with a user developed bash\n                        script\n\
+  \    make-meta-recipe    Make a new ggd data meta-recipe\n    check-recipe     \
+  \   Build, install, check, and test a ggd data recipe\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/ggd:1.1.3--pyh3252c3a_0

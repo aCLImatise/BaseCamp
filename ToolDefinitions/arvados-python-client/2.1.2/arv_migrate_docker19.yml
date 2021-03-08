@@ -1,0 +1,122 @@
+&id001 !Command
+command:
+- arv-migrate-docker19
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: Print stdout/stderr even on success
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --force
+  description: Try to migrate even if there isn't enough space
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --storage-driver
+  description: Docker storage driver, e.g. aufs, overlay, vfs
+  args: !SimpleFlagArg
+    name: STORAGE_DRIVER
+- !Flag
+  optional: true
+  synonyms:
+  - --dry-run
+  description: Print number of pending migrations.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --print-unmigrated
+  description: Print list of images needing migration.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --tempdir
+  description: Set temporary directory
+  args: !SimpleFlagArg
+    name: TEMPDIR
+parent:
+subcommands:
+- !Command
+  command:
+  - arv-migrate-docker19
+  - infile
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: arv-migrate-docker19
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --force
+    description: ''
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --verbose
+    description: ''
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    description: ''
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - --version
+    description: ''
+    args: !EmptyFlagArg {}
+  help_text: "usage: arv-migrate-docker19 [-h] [--version] [--verbose] [--force]\n\
+    \                            [--storage-driver STORAGE_DRIVER]\n             \
+    \               [--dry-run | --print-unmigrated]\n                           \
+    \ [--tempdir TEMPDIR]\n                            [infile]\narv-migrate-docker19:\
+    \ error: argument infile: can't open 'infile': [Errno 2] No such file or directory:\
+    \ 'infile'\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/arvados-python-client:2.1.2--py_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Print version and exit.
+  args: !EmptyFlagArg {}
+help_text: "usage: arv-migrate-docker19 [-h] [--version] [--verbose] [--force]\n \
+  \                           [--storage-driver STORAGE_DRIVER]\n                \
+  \            [--dry-run | --print-unmigrated]\n                            [--tempdir\
+  \ TEMPDIR]\n                            [infile]\n\npositional arguments:\n  infile\
+  \                List of images to be migrated\n\noptional arguments:\n  -h, --help\
+  \            show this help message and exit\n  --version             Print version\
+  \ and exit.\n  --verbose             Print stdout/stderr even on success\n  --force\
+  \               Try to migrate even if there isn't enough space\n  --storage-driver\
+  \ STORAGE_DRIVER\n                        Docker storage driver, e.g. aufs, overlay,\
+  \ vfs\n  --dry-run             Print number of pending migrations.\n  --print-unmigrated\
+  \    Print list of images needing migration.\n  --tempdir TEMPDIR     Set temporary\
+  \ directory\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/arvados-python-client:2.1.2--py_0

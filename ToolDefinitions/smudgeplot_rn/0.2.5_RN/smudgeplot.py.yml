@@ -1,0 +1,311 @@
+&id001 !Command
+command:
+- smudgeplot.py
+positional: []
+named: []
+parent:
+subcommands:
+- &id002 !Command
+  command:
+  - smudgeplot.py
+  - cutoff
+  positional: []
+  named: []
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - smudgeplot.py
+    - cutoff
+    - infile
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: boundary
+      description: ''
+    named: []
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      description: ''
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "usage: smudgeplot cutoff [-h] infile boundary\nsmudgeplot cutoff:\
+      \ error: argument infile: can't open 'infile': [Errno 2] No such file or directory:\
+      \ 'infile'\n"
+    generated_using: &id003
+    - --help
+    docker_image: quay.io/biocontainers/smudgeplot_rn:0.2.5_RN--py39r40h516909a_0
+  - !Command
+    command:
+    - smudgeplot.py
+    - cutoff
+    - boundary
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: smudgeplot
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: cutoff
+      description: ''
+    - !Positional
+      optional: false
+      position: 2
+      name: infile
+      description: ''
+    - !Positional
+      optional: false
+      position: 3
+      name: boundary
+      description: ''
+    named: []
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      description: ''
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "usage: smudgeplot cutoff [-h] infile boundary\nsmudgeplot cutoff:\
+      \ error: argument infile: can't open 'boundary': [Errno 2] No such file or directory:\
+      \ 'boundary'\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/smudgeplot_rn:0.2.5_RN--py39r40h516909a_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: smudgeplot cutoff [-h] infile boundary\n\nCalculate meaningful\
+    \ values for lower/upper kmer histogram cutoff.\n\npositional arguments:\n  infile\
+    \      Name of the input kmer histogram file (default \"kmer.hist\").\"\n  boundary\
+    \    Which bounary to compute L (lower) or U (upper)\n\noptional arguments:\n\
+    \  -h, --help  show this help message and exit\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/smudgeplot_rn:0.2.5_RN--py39r40h516909a_0
+- !Command
+  command:
+  - smudgeplot.py
+  - plot
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: infile
+    description: "name of the input tsv file with covarages (default\n\"coverages_2.tsv\"\
+      ).\""
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: The pattern used to name the output (smudgeplot).
+    args: !SimpleFlagArg
+      name: O
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    description: "Remove kmer pairs with coverage over the specified\nquantile; (default\
+      \ none)."
+    args: !SimpleFlagArg
+      name: Q
+  - !Flag
+    optional: true
+    synonyms:
+    - -L
+    description: "The lower boundary used when dumping kmers (default\nmin(total_pair_cov)\
+      \ / 2)."
+    args: !SimpleFlagArg
+      name: L
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    description: "The expected haploid coverage (default estimated from\ndata)."
+    args: !SimpleFlagArg
+      name: N
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --title
+    description: "name printed at the top of the smudgeplot (default\nnone)."
+    args: !SimpleFlagArg
+      name: TITLE
+  - !Flag
+    optional: true
+    synonyms:
+    - -nbins
+    description: "The number of nbins used for smudgeplot matrix (nbins\nx nbins)\
+      \ (default autodetection)."
+    args: !SimpleFlagArg
+      name: NBINS
+  - !Flag
+    optional: true
+    synonyms:
+    - -k
+    description: The length of the kmer.
+    args: !SimpleFlagArg
+      name: K
+  - !Flag
+    optional: true
+    synonyms:
+    - --homozygous
+    description: "Assume no heterozygosity in the genome - plotting a\nparalog structure;\
+      \ (default False).\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: smudgeplot plot [-h] [-o O] [-q Q] [-L L] [-n N] [-t TITLE]\n\
+    \                       [-nbins NBINS] [-k K] [--homozygous]\n               \
+    \        [infile]\n\nGenerate 2d histogram for smudgeplot\n\npositional arguments:\n\
+    \  infile                name of the input tsv file with covarages (default\n\
+    \                        \"coverages_2.tsv\").\"\n\noptional arguments:\n  -h,\
+    \ --help            show this help message and exit\n  -o O                  The\
+    \ pattern used to name the output (smudgeplot).\n  -q Q                  Remove\
+    \ kmer pairs with coverage over the specified\n                        quantile;\
+    \ (default none).\n  -L L                  The lower boundary used when dumping\
+    \ kmers (default\n                        min(total_pair_cov) / 2).\n  -n N  \
+    \                The expected haploid coverage (default estimated from\n     \
+    \                   data).\n  -t TITLE, --title TITLE\n                      \
+    \  name printed at the top of the smudgeplot (default\n                      \
+    \  none).\n  -nbins NBINS          The number of nbins used for smudgeplot matrix\
+    \ (nbins\n                        x nbins) (default autodetection).\n  -k K  \
+    \                The length of the kmer.\n  --homozygous          Assume no heterozygosity\
+    \ in the genome - plotting a\n                        paralog structure; (default\
+    \ False).\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/smudgeplot_rn:0.2.5_RN--py39r40h516909a_0
+- &id004 !Command
+  command:
+  - smudgeplot.py
+  - hetkmers
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: The pattern used to name the output (kmerpairs).
+    args: !SimpleFlagArg
+      name: O
+  - !Flag
+    optional: true
+    synonyms:
+    - --pos
+    description: Position in k-mer to look for pairs, 0-based, min(1) - max(k-2)
+    args: !SimpleFlagArg
+      name: POS
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - smudgeplot.py
+    - hetkmers
+    - infile
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --pos
+      description: ''
+      args: !SimpleFlagArg
+        name: POS
+    - !Flag
+      optional: true
+      synonyms:
+      - -o
+      description: ''
+      args: !SimpleFlagArg
+        name: O
+    parent: *id004
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      description: ''
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "usage: smudgeplot hetkmers [-h] [-o O] [--pos POS] [infile]\nsmudgeplot\
+      \ hetkmers: error: argument infile: can't open 'infile': [Errno 2] No such file\
+      \ or directory: 'infile'\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/smudgeplot_rn:0.2.5_RN--py39r40h516909a_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: smudgeplot hetkmers [-h] [-o O] [--pos POS] [infile]\n\nCalculate\
+    \ unique kmer pairs from a Jellyfish or KMC dump file.\n\npositional arguments:\n\
+    \  infile      Alphabetically sorted Jellyfish or KMC dump file (stdin).\n\noptional\
+    \ arguments:\n  -h, --help  show this help message and exit\n  -o O        The\
+    \ pattern used to name the output (kmerpairs).\n  --pos POS   Position in k-mer\
+    \ to look for pairs, 0-based, min(1) - max(k-2)\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/smudgeplot_rn:0.2.5_RN--py39r40h516909a_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: print the version and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: smudgeplot <task> [options] \n\ntasks: cutoff    Calculate meaningful\
+  \ values for lower/upper kmer histogram cutoff.\n       hetkmers  Calculate unique\
+  \ kmer pairs from a Jellyfish or KMC dump file.\n       aggregate Retrieve unique\
+  \ k-mer pairs from files containing IDs.\n       plot      Generate 2d histogram;\
+  \ infere ploidy and plot a smudgeplot.\n        \n\npositional arguments:\n  task\
+  \           Task to execute; for task specific options execute smudgeplot\n    \
+  \             <task> -h\n\noptional arguments:\n  -h, --help     show this help\
+  \ message and exit\n  -v, --version  print the version and exit\n"
+generated_using: *id003
+docker_image: quay.io/biocontainers/smudgeplot_rn:0.2.5_RN--py39r40h516909a_0

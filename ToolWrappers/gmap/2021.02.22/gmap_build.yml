@@ -1,0 +1,289 @@
+!Command
+command:
+- gmap_build
+positional:
+- !Positional
+  optional: true
+  position: 0
+  name: options...
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: genome_fasta_files
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  - --dir
+  description: "Destination directory for installation (defaults to gmapdb\ndirectory\
+    \ specified at configure time)"
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --genomedb
+  description: Genome name (required)
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --names
+  description: "Substitute names for contigs, provided in a file.\nThe file can have\
+    \ two formats:\n1.  A file with one column per line, with each line\ncorresponding\
+    \ to a FASTA file, in the order given to\ngmap_build.  The chromosome name for\
+    \ each FASTA file will\nbe replaced with the desired chromosome name in the file.\n\
+    Every chromosome in the FASTA must have a corresponding line\nin the file.  This\
+    \ is useful if you want to rename chromosomes\nwith a systematic numbering pattern.\n\
+    2.  A file with two columns per line, separated by white\nspace.  In each line,\
+    \ the original FASTA chromosome name\nshould be in column 1 and the desired chromosome\
+    \ name\nwill be in column 2.\nThe meaning of file format 2 depends on whether\n\
+    --limit-to-names is specified.  If so, the genome build will\nbe limited to those\
+    \ chromosomes in this file.  Otherwise,\nall chromosomes in the FASTA file will\
+    \ be included,\nbut only those chromosomes in this file will be re-named, which\n\
+    provides an easy way to change just a few chromosome names.\nThis file can be\
+    \ combined with the --sort=names option, in\nwhich the order of chromosomes is\
+    \ that given in the file.  In\nthis case, every chromosome must be listed in the\
+    \ file, and\nfor chromosome names that should not be changed, column 2 can\nbe\
+    \ blank (or the same as column 1).  The option of a blank\ncolumn 2 is allowed\
+    \ only when specifying --sort=names,\nbecause otherwise, the program cannot distinguish\
+    \ between a\n1-column and 2-column names file."
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  - --limit-to-names
+  description: "Determines whether to limit the genome build to the lines listed\n\
+    in the --names file.  You can limit a genome build to certain\nchromosomes with\
+    \ this option, plus a --names file that either\nrenames chromosomes, or lists\
+    \ the same names in both columns for\nthe desired chromosomes."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --kmer
+  description: 'k-mer value for genomic index (allowed: 15 or less, default is 15)'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  description: 'sampling interval for genomoe (allowed: 1-3, default 3)'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --sort
+  description: "Sort chromosomes using given method:\nnone - use chromosomes as found\
+    \ in FASTA file(s) (default)\nalpha - sort chromosomes alphabetically (chr10 before\
+    \ chr 1)\nnumeric-alpha - chr1, chr1U, chr2, chrM, chrU, chrX, chrY\nchrom - chr1,\
+    \ chr2, chrM, chrX, chrY, chr1U, chrU\nnames - sort chromosomes based on file\
+    \ provided to --names flag"
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --gunzip
+  description: Files are gzipped, so need to gunzip each file first
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -E
+  - --fasta-pipe
+  description: Interpret argument as a command, instead of a list of FASTA files
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - -Q
+  - --fastq
+  description: Files are in FASTQ format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  - --revcomp
+  description: Reverse complement all contigs
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  description: Wait (sleep) this many seconds after each step (default 2)
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --circular
+  description: "Circular chromosomes (either a list of chromosomes separated\nby a\
+    \ comma, or a filename containing circular chromosomes,\none per line).  If you\
+    \ use the --names feature, then you\nshould use the substitute name of the chromosome,\
+    \ not the\noriginal name, for this option.  (NOTE: This behavior is different\n\
+    from previous versions, and starts with version 2020-10-20.)"
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - '-2'
+  - --altscaffold
+  description: "File with alt scaffold info, listing alternate scaffolds,\none per\
+    \ line, tab-delimited, with the following fields:\n(1) alt_scaf_acc, (2) parent_name,\
+    \ (3) orientation,\n(4) alt_scaf_start, (5) alt_scaf_stop, (6) parent_start, (7)\
+    \ parent_end."
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --nmessages
+  description: Maximum number of messages (warnings, contig reports) to report (default
+    50)
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  - --mdflag
+  description: "Use MD file from NCBI for mapping contigs to\nchromosomal coordinates"
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - -C
+  - --contigs-are-mapped
+  description: "Find a chromosomal region in each FASTA header line.\nUseful for contigs\
+    \ that have been mapped\nto chromosomal coordinates.  Ignored if the --mdflag\
+    \ is provided."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --transcriptomedb
+  description: Transcriptome name
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --transcripts
+  description: FASTA file containing transcripts (required if specifying
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --nthreads
+  description: "Number of threads for GMAP alignment of transcripts to genome\n(default\
+    \ 8)\n"
+  args: !SimpleFlagArg
+    name: INT
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\ngmap_build: Builds a gmap database for a genome to be used by GMAP or\
+  \ GSNAP.\nPart of GMAP package, version 2021-02-22.\n\nUsage: gmap_build [options...]\
+  \ -d <genome> [-c <transcriptome> -T <transcript_fasta>] <genome_fasta_files>\n\n\
+  You are free to name <genome> and <transcriptome> as you wish.  You\nwill use the\
+  \ same names when performing alignments subsequently using\nGMAP or GSNAP.\n\nNote:\
+  \ If adding a transcriptome to an existing genome, then there is\nno need to specify\
+  \ the genome_fasta_files.  This way you can add\ntranscriptome information to an\
+  \ existing genome database.\n\nOptions:\n    -D, --dir=STRING          Destination\
+  \ directory for installation (defaults to gmapdb\n                             \
+  \   directory specified at configure time)\n    -d, --genomedb=STRING     Genome\
+  \ name (required)\n\n    -n, --names=STRING        Substitute names for contigs,\
+  \ provided in a file.\n        The file can have two formats:\n\n        1.  A file\
+  \ with one column per line, with each line\n            corresponding to a FASTA\
+  \ file, in the order given to\n            gmap_build.  The chromosome name for\
+  \ each FASTA file will\n            be replaced with the desired chromosome name\
+  \ in the file.\n            Every chromosome in the FASTA must have a corresponding\
+  \ line\n            in the file.  This is useful if you want to rename chromosomes\n\
+  \            with a systematic numbering pattern.\n\n        2.  A file with two\
+  \ columns per line, separated by white\n            space.  In each line, the original\
+  \ FASTA chromosome name\n            should be in column 1 and the desired chromosome\
+  \ name\n            will be in column 2.\n\n            The meaning of file format\
+  \ 2 depends on whether\n            --limit-to-names is specified.  If so, the genome\
+  \ build will\n            be limited to those chromosomes in this file.  Otherwise,\n\
+  \            all chromosomes in the FASTA file will be included,\n            but\
+  \ only those chromosomes in this file will be re-named, which\n            provides\
+  \ an easy way to change just a few chromosome names.\n\n        This file can be\
+  \ combined with the --sort=names option, in\n        which the order of chromosomes\
+  \ is that given in the file.  In\n        this case, every chromosome must be listed\
+  \ in the file, and\n        for chromosome names that should not be changed, column\
+  \ 2 can\n        be blank (or the same as column 1).  The option of a blank\n  \
+  \      column 2 is allowed only when specifying --sort=names,\n        because otherwise,\
+  \ the program cannot distinguish between a\n        1-column and 2-column names\
+  \ file.\n\n    -L, --limit-to-names      Determines whether to limit the genome\
+  \ build to the lines listed\n                              in the --names file.\
+  \  You can limit a genome build to certain\n                              chromosomes\
+  \ with this option, plus a --names file that either\n                          \
+  \    renames chromosomes, or lists the same names in both columns for\n        \
+  \                      the desired chromosomes.\n\n    -k, --kmer=INT          \
+  \  k-mer value for genomic index (allowed: 15 or less, default is 15)\n    -q INT\
+  \                    sampling interval for genomoe (allowed: 1-3, default 3)\n\n\
+  \    -s, --sort=STRING         Sort chromosomes using given method:\n          \
+  \                      none - use chromosomes as found in FASTA file(s) (default)\n\
+  \                                alpha - sort chromosomes alphabetically (chr10\
+  \ before chr 1)\n                                numeric-alpha - chr1, chr1U, chr2,\
+  \ chrM, chrU, chrX, chrY\n                                chrom - chr1, chr2, chrM,\
+  \ chrX, chrY, chr1U, chrU\n                                names - sort chromosomes\
+  \ based on file provided to --names flag\n\n    -g, --gunzip              Files\
+  \ are gzipped, so need to gunzip each file first\n    -E, --fasta-pipe=STRING  \
+  \ Interpret argument as a command, instead of a list of FASTA files\n    -Q, --fastq\
+  \               Files are in FASTQ format\n    -R, --revcomp             Reverse\
+  \ complement all contigs\n    -w INT                    Wait (sleep) this many seconds\
+  \ after each step (default 2)\n\n    -o, --circular=STRING     Circular chromosomes\
+  \ (either a list of chromosomes separated\n                                by a\
+  \ comma, or a filename containing circular chromosomes,\n                      \
+  \          one per line).  If you use the --names feature, then you\n          \
+  \                      should use the substitute name of the chromosome, not the\n\
+  \                                original name, for this option.  (NOTE: This behavior\
+  \ is different\n                                from previous versions, and starts\
+  \ with version 2020-10-20.)\n\n    -2, --altscaffold=STRING  File with alt scaffold\
+  \ info, listing alternate scaffolds,\n                                one per line,\
+  \ tab-delimited, with the following fields:\n                                (1)\
+  \ alt_scaf_acc, (2) parent_name, (3) orientation,\n                            \
+  \    (4) alt_scaf_start, (5) alt_scaf_stop, (6) parent_start, (7) parent_end.\n\n\
+  \    -e, --nmessages=INT       Maximum number of messages (warnings, contig reports)\
+  \ to report (default 50)\n\n\nOptions for older genome formats:\n    -M, --mdflag=STRING\
+  \       Use MD file from NCBI for mapping contigs to\n                         \
+  \       chromosomal coordinates\n\n    -C, --contigs-are-mapped  Find a chromosomal\
+  \ region in each FASTA header line.\n                                Useful for\
+  \ contigs that have been mapped\n                                to chromosomal\
+  \ coordinates.  Ignored if the --mdflag is provided.\n\n\nOptions for transcriptome-guided\
+  \ alignment:\n    -c, --transcriptomedb=STRING    Transcriptome name\n\n    -T,\
+  \ --transcripts=FILE    FASTA file containing transcripts (required if specifying\n\
+  \                                --transcriptomedb)\n\n    -t, --nthreads=INT  \
+  \      Number of threads for GMAP alignment of transcripts to genome\n         \
+  \                       (default 8)\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/gmap:2021.02.22--pl526h2f06484_0

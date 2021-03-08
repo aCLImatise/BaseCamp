@@ -1,0 +1,117 @@
+!Command
+command:
+- make_batch_for_iteratively_mapping_assembling.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - '-1'
+  description: Input 1st fastq format file as pool
+  args: !SimpleFlagArg
+    name: FASTQ_FILE_1
+- !Flag
+  optional: true
+  synonyms:
+  - '-2'
+  description: Input 2nd fastq format file as pool
+  args: !SimpleFlagArg
+    name: FASTQ_FILE_2
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: Input fasta format file as initial seed
+  args: !SimpleFlagArg
+    name: SEED_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  description: How many iterations would you like to have? Default=3
+  args: !SimpleFlagArg
+    name: ROUNDS
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: theads used for bowtie2 and SPAdes. Default=1
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  description: "SPAdes k-mer settings. Use the same format as in\nSPAdes. Default=21,45,65,85,105"
+  args: !SimpleFlagArg
+    name: SPADES_KMER
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: Executable output batch file.
+  args: !SimpleFlagArg
+    name: OUTPUT_SH_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --un
+  description: Try to map and assembly without paired information.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --random-seed
+  description: 'seed for random generator for bowtie2. Default: 12345'
+  args: !SimpleFlagArg
+    name: RANDOM_SEED
+- !Flag
+  optional: true
+  synonyms:
+  - --which-bowtie2
+  description: "Assign the path to Bowtie2 binary files if not added\nto the path.\
+    \ Default: try\nGetOrganelleDep/linux/bowtie2 first, then $PATH"
+  args: !SimpleFlagArg
+    name: WHICH_BOWTIE2
+- !Flag
+  optional: true
+  synonyms:
+  - --which-spades
+  description: "Assign the path to SPAdes binary files if not added to\nthe path.\
+    \ Default: try GetOrganelleDep/linux/SPAdes\nfirst, then $PATH\n"
+  args: !SimpleFlagArg
+    name: WHICH_SPADES
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "\nThis is a script for making batch file for iteratively mapping with\
+  \ bowtie2 and assemblying with SPAdes.\n\nUsage: \nmake_batch_for_iteratively_mapping_assembling.py\
+  \ -1 original_1.fq -2 original_2.fq -s seed.fasta -R 5 -k 21,45,65,85,105 -o output_base\n\
+  \nOptions:\n  -h, --help            show this help message and exit\n  -1 FASTQ_FILE_1\
+  \       Input 1st fastq format file as pool\n  -2 FASTQ_FILE_2       Input 2nd fastq\
+  \ format file as pool\n  -s SEED_DIR           Input fasta format file as initial\
+  \ seed\n  -R ROUNDS             How many iterations would you like to have? Default=3\n\
+  \  -t THREADS            theads used for bowtie2 and SPAdes. Default=1\n  -k SPADES_KMER\
+  \        SPAdes k-mer settings. Use the same format as in\n                    \
+  \    SPAdes. Default=21,45,65,85,105\n  -o OUTPUT_SH_FILE     Executable output\
+  \ batch file.\n  --un                  Try to map and assembly without paired information.\n\
+  \  --random-seed=RANDOM_SEED\n                        seed for random generator\
+  \ for bowtie2. Default: 12345\n  --which-bowtie2=WHICH_BOWTIE2\n               \
+  \         Assign the path to Bowtie2 binary files if not added\n               \
+  \         to the path. Default: try\n                        GetOrganelleDep/linux/bowtie2\
+  \ first, then $PATH\n  --which-spades=WHICH_SPADES\n                        Assign\
+  \ the path to SPAdes binary files if not added to\n                        the path.\
+  \ Default: try GetOrganelleDep/linux/SPAdes\n                        first, then\
+  \ $PATH\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/getorganelle:1.7.3.5--pyh3252c3a_0

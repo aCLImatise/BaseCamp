@@ -1,0 +1,132 @@
+!Command
+command:
+- mmseqs
+- filterresult
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --comp-bias-corr
+  description: Correct for locally biased amino acid composition (range 0-1) [1]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --gap-open
+  description: Gap open cost [nucl:5,aa:11]
+  args: !SimpleFlagArg
+    name: TWIN
+- !Flag
+  optional: true
+  synonyms:
+  - --gap-extend
+  description: Gap extension cost [nucl:2,aa:1]
+  args: !SimpleFlagArg
+    name: TWIN
+- !Flag
+  optional: true
+  synonyms:
+  - --max-seq-id
+  description: Reduce redundancy of output MSA using max. pairwise sequence identity
+    [0.0,1.0] [0.900]
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --qid
+  description: Reduce diversity of output MSAs using min.seq. identity with query
+    sequences [0.0,1.0] [0.000]
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --qsc
+  description: Reduce diversity of output MSAs using min. score per aligned residue
+    with query sequences [-50.0,100.0] [-20.000]
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --cov
+  description: Filter output MSAs using min. fraction of query residues covered by
+    matched sequences [0.0,1.0] [0.000]
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --diff
+  description: Filter MSAs by selecting most diverse set of sequences, keeping at
+    least this many seqs in each MSA block of length 50 [1000]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --allow-deletion
+  description: Allow deletions in a MSA [0]
+  args: !SimpleFlagArg
+    name: BOOL
+- !Flag
+  optional: true
+  synonyms:
+  - --sub-mat
+  description: Substitution matrix file [nucl:nucleotide.out,aa:blosum62.out]
+  args: !SimpleFlagArg
+    name: TWIN
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: Number of CPU-cores used (all by default) [2]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --compressed
+  description: Write compressed output [0]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: 'Verbosity level: 0: quiet, 1: +errors, 2: +warnings, 3: +info [3]'
+  args: !SimpleFlagArg
+    name: INT
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "usage: mmseqs filterresult <i:queryDB> <i:targetDB> <i:resultDB> <o:resultDB>\
+  \ [options]\n By Milot Mirdita <milot@mirdita.de>\noptions: prefilter:         \
+  \   \n --comp-bias-corr INT   Correct for locally biased amino acid composition\
+  \ (range 0-1) [1]\nalign:                \n --gap-open TWIN        Gap open cost\
+  \ [nucl:5,aa:11]\n --gap-extend TWIN      Gap extension cost [nucl:2,aa:1]\nprofile:\
+  \              \n --max-seq-id FLOAT     Reduce redundancy of output MSA using max.\
+  \ pairwise sequence identity [0.0,1.0] [0.900]\n --qid FLOAT            Reduce diversity\
+  \ of output MSAs using min.seq. identity with query sequences [0.0,1.0] [0.000]\n\
+  \ --qsc FLOAT            Reduce diversity of output MSAs using min. score per aligned\
+  \ residue with query sequences [-50.0,100.0] [-20.000]\n --cov FLOAT           \
+  \ Filter output MSAs using min. fraction of query residues covered by matched sequences\
+  \ [0.0,1.0] [0.000]\n --diff INT             Filter MSAs by selecting most diverse\
+  \ set of sequences, keeping at least this many seqs in each MSA block of length\
+  \ 50 [1000]\nmisc:                 \n --allow-deletion BOOL  Allow deletions in\
+  \ a MSA [0]\ncommon:               \n --sub-mat TWIN         Substitution matrix\
+  \ file [nucl:nucleotide.out,aa:blosum62.out]\n --threads INT          Number of\
+  \ CPU-cores used (all by default) [2]\n --compressed INT       Write compressed\
+  \ output [0]\n -v INT                 Verbosity level: 0: quiet, 1: +errors, 2:\
+  \ +warnings, 3: +info [3]\n\nreferences:\n - Steinegger M, Soding J: MMseqs2 enables\
+  \ sensitive protein sequence searching for the analysis of massive data sets. Nature\
+  \ Biotechnology, 35(11), 1026-1028 (2017)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/mmseqs2:13.45111--h2d02072_0

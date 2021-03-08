@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Int, File, Boolean, String
+
+Pmh_Tr_V0_1_0 = CommandToolBuilder(tool="pmh_tr", base_command=["pmh_tr"], inputs=[ToolInput(tag="in__t_leaflabeling", input_type=Int(optional=True), prefix="-p", doc=InputDocumentation(doc="[-t int] T leaf_labeling")), ToolInput(tag="in_optional_file_migration", input_type=File(optional=True), prefix="-G", doc=InputDocumentation(doc="Optional file with migration graphs")), ToolInput(tag="in_old", input_type=Boolean(optional=True), prefix="-OLD", doc=InputDocumentation(doc="Use old ILP (typically much slower)")), ToolInput(tag="in_ub_gamma", input_type=Int(optional=True), prefix="-UB_gamma", doc=InputDocumentation(doc="Upper bound on the comigration number (default: -1, disabled)")), ToolInput(tag="in_ub_mu", input_type=Int(optional=True), prefix="-UB_mu", doc=InputDocumentation(doc="Upper bound on the migration number (default: -1, disabled)")), ToolInput(tag="in_ub_sigma", input_type=Int(optional=True), prefix="-UB_sigma", doc=InputDocumentation(doc="Upper bound on the seeding site number (default: -1, disabled)")), ToolInput(tag="in_color_map_file", input_type=File(optional=True), prefix="-c", doc=InputDocumentation(doc="Color map file")), ToolInput(tag="in_export_ilp", input_type=Boolean(optional=True), prefix="-e", doc=InputDocumentation(doc="Export ILP")), ToolInput(tag="in_output_search_graph", input_type=Boolean(optional=True), prefix="-g", doc=InputDocumentation(doc="Output search graph")), ToolInput(tag="in_time_limit_seconds", input_type=Int(optional=True), prefix="-l", doc=InputDocumentation(doc="Time limit in seconds (default: -1, no time limit)")), ToolInput(tag="in_log", input_type=Boolean(optional=True), prefix="-log", doc=InputDocumentation(doc="Gurobi logging")), ToolInput(tag="in_allowed_migration_patterns", input_type=Int(optional=True), prefix="-m", doc=InputDocumentation(doc="Allowed migration patterns:\n0 : PS\n1 : PS, S\n2 : PS, S, M\n3 : PS, S, M, R\nIf no pattern is specified, all allowed patterns will be\nenumerated (default: '0,1,2,3')")), ToolInput(tag="in_output_prefix", input_type=String(optional=True), prefix="-o", doc=InputDocumentation(doc="Output prefix")), ToolInput(tag="in_number_threads_default", input_type=Int(optional=True), prefix="-t", doc=InputDocumentation(doc="Number of threads (default: -1, #cores)\n")), ToolInput(tag="in_leaf_labeling", input_type=String(), position=0, doc=InputDocumentation(doc="Leaf labeling"))], outputs=[], container="quay.io/biocontainers/machina:1.2--h176a8bc_1", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Pmh_Tr_V0_1_0().translate("wdl")
+
