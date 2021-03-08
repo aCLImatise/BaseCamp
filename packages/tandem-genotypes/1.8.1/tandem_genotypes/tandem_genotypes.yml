@@ -1,0 +1,138 @@
+!Command
+command:
+- tandem-genotypes
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: microsat.txt
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: alignments.maf
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --genes
+  description: read genes from a genePred or BED file
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: 'output format: 1=original, 2=alleles (default=1)'
+  args: !SimpleFlagArg
+    name: NUM
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --mismap
+  description: "ignore any alignment with mismap probability > PROB\n(default=1e-06)"
+  args: !SimpleFlagArg
+    name: PROB
+- !Flag
+  optional: true
+  synonyms:
+  - --postmask
+  description: ignore mostly-lowercase alignments (default=1)
+  args: !SimpleFlagArg
+    name: NUMBER
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --promoter
+  description: promoter length (default=300)
+  args: !SimpleFlagArg
+    name: BP
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --select
+  description: "select: all repeats (0), non-intergenic repeats (1),\nnon-intergenic\
+    \ non-intronic repeats (2) (default=0)"
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --min-unit
+  description: ignore repeats with unit shorter than BP (default=2)
+  args: !SimpleFlagArg
+    name: BP
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --far
+  description: "require alignment >= BP beyond both sides of a repeat\n(default=100)"
+  args: !SimpleFlagArg
+    name: BP
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --near
+  description: count insertions <= BP beyond a repeat (default=60)
+  args: !SimpleFlagArg
+    name: BP
+- !Flag
+  optional: true
+  synonyms:
+  - --mode
+  description: L=lenient, S=strict (default=L)
+  args: !SimpleFlagArg
+    name: LETTER
+- !Flag
+  optional: true
+  synonyms:
+  - --scores
+  description: importance scores for gene parts
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: show more details
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: tandem-genotypes [options] microsat.txt alignments.maf\n\nTry to\
+  \ indicate genotypes of tandem repeats.\n\nOptions:\n  -h, --help            show\
+  \ this help message and exit\n  -g FILE, --genes=FILE\n                        read\
+  \ genes from a genePred or BED file\n  -o NUM, --output=NUM  output format: 1=original,\
+  \ 2=alleles (default=1)\n  -m PROB, --mismap=PROB\n                        ignore\
+  \ any alignment with mismap probability > PROB\n                        (default=1e-06)\n\
+  \  --postmask=NUMBER     ignore mostly-lowercase alignments (default=1)\n  -p BP,\
+  \ --promoter=BP  promoter length (default=300)\n  -s N, --select=N      select:\
+  \ all repeats (0), non-intergenic repeats (1),\n                        non-intergenic\
+  \ non-intronic repeats (2) (default=0)\n  -u BP, --min-unit=BP  ignore repeats with\
+  \ unit shorter than BP (default=2)\n  -f BP, --far=BP       require alignment >=\
+  \ BP beyond both sides of a repeat\n                        (default=100)\n  -n\
+  \ BP, --near=BP      count insertions <= BP beyond a repeat (default=60)\n  --mode=LETTER\
+  \         L=lenient, S=strict (default=L)\n  --scores=FILE         importance scores\
+  \ for gene parts\n  -v, --verbose         show more details\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/tandem-genotypes:1.8.1--pyh3252c3a_0

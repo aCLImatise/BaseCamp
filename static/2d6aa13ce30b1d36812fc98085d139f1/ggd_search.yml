@@ -1,0 +1,136 @@
+!Command
+command:
+- ggd
+- search
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: search_term
+  description: "**Required** The term(s) to search for. Multiple terms\ncan be used.\
+    \ Example: 'ggd search reference genome'"
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --search-type
+  description: "(Optional) How to search for data packages with the\nsearch terms\
+    \ provided. Options = 'combined-only',\n'non-combined-only', and 'both'. 'combined-only'\
+    \ will\nuse the provided search terms as a single search term.\n'non-combined-only'\
+    \ will use the provided search term\nto search for data package that match each\
+    \ search term\nseparately. 'both' will use the search terms combined\nand each\
+    \ search term separately to search for data\npackages. Default = 'both'"
+  args: !ChoiceFlagArg
+    choices: !!set
+      non-combined-only:
+      combined-only:
+      both:
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --genome-build
+  description: "(Optional) Filter results by the genome build of the\ndesired recipe"
+  args: !ChoiceFlagArg
+    choices: !!set
+      hg19:
+      dm6:
+      GRCz11:
+      GRCz10:
+      dm3:
+      canFam3:
+      meta-recipe:
+      mm9:
+      danRer10:
+      danRer11:
+      mm10:
+      GRCh37:
+      GRCh38:
+      hg38:
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --species
+  description: "(Optional) Filter results by the species for the\ndesired recipe"
+  args: !ChoiceFlagArg
+    choices: !!set
+      Homo_sapiens:
+      Drosophila_melanogaster:
+      meta-recipe:
+      Danio_rerio:
+      Mus_musculus:
+      Canis_familiaris:
+- !Flag
+  optional: true
+  synonyms:
+  - -dn
+  - --display-number
+  description: "(Optional) The number of search results to display.\n(Default = 5)"
+  args: !SimpleFlagArg
+    name: DISPLAY_NUMBER
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --match-score
+  description: "(Optional) A score between 0 and 100 to use to filter\nthe results\
+    \ by. (Default = 90). The lower the number\nthe more results will be output"
+  args: !SimpleFlagArg
+    name: MATCH_SCORE
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --channel
+  description: "(Optional) The ggd channel to search. (Default =\ngenomics)\n"
+  args: !ChoiceFlagArg
+    choices: !!set
+      genomics:
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: ggd search [-h] [--search-type {both,combined-only,non-combined-only}]\n\
+  \                  [-g {GRCh37,GRCh38,GRCz10,GRCz11,canFam3,danRer10,danRer11,dm3,dm6,hg19,hg38,meta-recipe,mm10,mm9}]\n\
+  \                  [-s {Canis_familiaris,Danio_rerio,Drosophila_melanogaster,Homo_sapiens,Mus_musculus,meta-recipe}]\n\
+  \                  [-dn DISPLAY_NUMBER] [-m MATCH_SCORE] [-c {genomics}]\n     \
+  \             search_term [search_term ...]\n\nSearch for available ggd data packages.\
+  \ Results are filtered by match score\nfrom high to low. (Only 5 results will be\
+  \ reported unless the -dn flag is\nchanged)\n\npositional arguments:\n  search_term\
+  \           **Required** The term(s) to search for. Multiple terms\n           \
+  \             can be used. Example: 'ggd search reference genome'\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  --search-type {both,combined-only,non-combined-only}\n\
+  \                        (Optional) How to search for data packages with the\n \
+  \                       search terms provided. Options = 'combined-only',\n    \
+  \                    'non-combined-only', and 'both'. 'combined-only' will\n   \
+  \                     use the provided search terms as a single search term.\n \
+  \                       'non-combined-only' will use the provided search term\n\
+  \                        to search for data package that match each search term\n\
+  \                        separately. 'both' will use the search terms combined\n\
+  \                        and each search term separately to search for data\n  \
+  \                      packages. Default = 'both'\n  -g {GRCh37,GRCh38,GRCz10,GRCz11,canFam3,danRer10,danRer11,dm3,dm6,hg19,hg38,meta-recipe,mm10,mm9},\
+  \ --genome-build {GRCh37,GRCh38,GRCz10,GRCz11,canFam3,danRer10,danRer11,dm3,dm6,hg19,hg38,meta-recipe,mm10,mm9}\n\
+  \                        (Optional) Filter results by the genome build of the\n\
+  \                        desired recipe\n  -s {Canis_familiaris,Danio_rerio,Drosophila_melanogaster,Homo_sapiens,Mus_musculus,meta-recipe},\
+  \ --species {Canis_familiaris,Danio_rerio,Drosophila_melanogaster,Homo_sapiens,Mus_musculus,meta-recipe}\n\
+  \                        (Optional) Filter results by the species for the\n    \
+  \                    desired recipe\n  -dn DISPLAY_NUMBER, --display-number DISPLAY_NUMBER\n\
+  \                        (Optional) The number of search results to display.\n \
+  \                       (Default = 5)\n  -m MATCH_SCORE, --match-score MATCH_SCORE\n\
+  \                        (Optional) A score between 0 and 100 to use to filter\n\
+  \                        the results by. (Default = 90). The lower the number\n\
+  \                        the more results will be output\n  -c {genomics}, --channel\
+  \ {genomics}\n                        (Optional) The ggd channel to search. (Default\
+  \ =\n                        genomics)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/ggd:1.1.3--pyh3252c3a_0

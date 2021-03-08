@@ -1,0 +1,175 @@
+!Command
+command:
+- ppanggolin
+- annotate
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --fasta
+  description: "A tab-separated file listing the organism names, and\nthe fasta filepath\
+    \ of its genomic sequence(s) (the\nfastas can be compressed with gzip). One line\
+    \ per\norganism. (default: None)"
+  args: !SimpleFlagArg
+    name: FASTA
+- !Flag
+  optional: true
+  synonyms:
+  - --anno
+  description: "A tab-separated file listing the organism names, and\nthe gff/gbff\
+    \ filepath of its annotations (the files\ncan be compressed with gzip). One line\
+    \ per organism.\nIf this is provided, those annotations will be used.\n(default:\
+    \ None)"
+  args: !SimpleFlagArg
+    name: ANNO
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: "Output directory (default:\nppanggolin_output_DATE2021-03-08_HOUR12.47.28_PID1545)"
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - --overlap
+  description: "Use to not remove genes overlapping with RNA features.\n(default:\
+    \ True)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --norna
+  description: 'Use to avoid annotating RNA features. (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --kingdom
+  description: "Kingdom to which the prokaryota belongs to, to know\nwhich models\
+    \ to use for rRNA annotation. (default:\nbacteria)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      archaea:
+      bacteria:
+- !Flag
+  optional: true
+  synonyms:
+  - --translation_table
+  description: 'Translation table (genetic code) to use. (default: 11)'
+  args: !SimpleFlagArg
+    name: TRANSLATION_TABLE
+- !Flag
+  optional: true
+  synonyms:
+  - --basename
+  description: 'basename for the output file (default: pangenome)'
+  args: !SimpleFlagArg
+    name: BASENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --use_pseudo
+  description: "In the context of provided annotation, use this option\nto read pseudogenes.\
+    \ (Default behavior is to ignore\nthem) (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --tmpdir
+  description: 'directory for storing temporary files (default: /tmp)'
+  args: !SimpleFlagArg
+    name: TMPDIR
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: "Indicate verbose level (0 for warning and errors only,\n1 for info,\
+    \ 2 for debug) (default: 1)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      '1':
+      '0':
+      '2':
+- !Flag
+  optional: true
+  synonyms:
+  - --log
+  description: 'log output file (default: stdout)'
+  args: !SimpleFlagArg
+    name: LOG
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --disable_prog_bar
+  description: 'disables the progress bars (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --cpu
+  description: 'Number of available cpus (default: 1)'
+  args: !SimpleFlagArg
+    name: CPU
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --force
+  description: "Force writing in output directory and in pangenome\noutput file. (default:\
+    \ False)\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: ppanggolin annotate [-h] [--fasta FASTA] [--anno ANNO] [-o OUTPUT]\n\
+  \                           [--overlap] [--norna]\n                           [--kingdom\
+  \ {bacteria,archaea}]\n                           [--translation_table TRANSLATION_TABLE]\n\
+  \                           [--basename BASENAME] [--use_pseudo]\n             \
+  \              [--tmpdir TMPDIR] [--verbose {0,1,2}] [--log LOG]\n             \
+  \              [-d] [-c CPU] [-f]\n\nRequired arguments:\n  One of the following\
+  \ arguments is required :\n\n  --fasta FASTA         A tab-separated file listing\
+  \ the organism names, and\n                        the fasta filepath of its genomic\
+  \ sequence(s) (the\n                        fastas can be compressed with gzip).\
+  \ One line per\n                        organism. (default: None)\n  --anno ANNO\
+  \           A tab-separated file listing the organism names, and\n             \
+  \           the gff/gbff filepath of its annotations (the files\n              \
+  \          can be compressed with gzip). One line per organism.\n              \
+  \          If this is provided, those annotations will be used.\n              \
+  \          (default: None)\n\nOptional arguments:\n  -o OUTPUT, --output OUTPUT\n\
+  \                        Output directory (default:\n                        ppanggolin_output_DATE2021-03-08_HOUR12.47.28_PID1545)\n\
+  \  --overlap             Use to not remove genes overlapping with RNA features.\n\
+  \                        (default: True)\n  --norna               Use to avoid annotating\
+  \ RNA features. (default: False)\n  --kingdom {bacteria,archaea}\n             \
+  \           Kingdom to which the prokaryota belongs to, to know\n              \
+  \          which models to use for rRNA annotation. (default:\n                \
+  \        bacteria)\n  --translation_table TRANSLATION_TABLE\n                  \
+  \      Translation table (genetic code) to use. (default: 11)\n  --basename BASENAME\
+  \   basename for the output file (default: pangenome)\n  --use_pseudo          In\
+  \ the context of provided annotation, use this option\n                        to\
+  \ read pseudogenes. (Default behavior is to ignore\n                        them)\
+  \ (default: False)\n\nCommon arguments:\n  -h, --help            show this help\
+  \ message and exit\n  --tmpdir TMPDIR       directory for storing temporary files\
+  \ (default: /tmp)\n  --verbose {0,1,2}     Indicate verbose level (0 for warning\
+  \ and errors only,\n                        1 for info, 2 for debug) (default: 1)\n\
+  \  --log LOG             log output file (default: stdout)\n  -d, --disable_prog_bar\n\
+  \                        disables the progress bars (default: False)\n  -c CPU,\
+  \ --cpu CPU     Number of available cpus (default: 1)\n  -f, --force           Force\
+  \ writing in output directory and in pangenome\n                        output file.\
+  \ (default: False)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/ppanggolin:1.1.136--py37hf01694f_0

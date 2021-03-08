@@ -1,0 +1,78 @@
+!Command
+command:
+- mmseqs
+- tar2db
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --output-dbtype
+  description: 'Set database type for resulting database: Amino acid sequences 0,
+    Nucl. seq. 1, Profiles 2, Alignment result 5, Clustering result 6, Prefiltering
+    result 7, Taxonomy result 8, Indexed database 9, cA3M MSAs 10, FASTA or A3M MSAs
+    11, Generic database 12, Omit dbtype file 13, Bi-directional prefiltering result
+    14, Offsetted headers 15 [12]'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --tar-include
+  description: Include file names based on this regex [.*]
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - --tar-exclude
+  description: Exclude file names based on this regex [^$]
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - --compressed
+  description: Write compressed output [0]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: Number of CPU-cores used (all by default) [2]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: 'Verbosity level: 0: quiet, 1: +errors, 2: +warnings, 3: +info [3]'
+  args: !SimpleFlagArg
+    name: INT
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "usage: mmseqs tar2db <i:tar[.gz]> ... <i:tar[.gz]> <o:resultDB> [options]\n\
+  \ By Milot Mirdita <milot@mirdita.de>\noptions: misc:                \n --output-dbtype\
+  \ INT   Set database type for resulting database: Amino acid sequences 0, Nucl.\
+  \ seq. 1, Profiles 2, Alignment result 5, Clustering result 6, Prefiltering result\
+  \ 7, Taxonomy result 8, Indexed database 9, cA3M MSAs 10, FASTA or A3M MSAs 11,\
+  \ Generic database 12, Omit dbtype file 13, Bi-directional prefiltering result 14,\
+  \ Offsetted headers 15 [12]\n --tar-include STR     Include file names based on\
+  \ this regex [.*]\n --tar-exclude STR     Exclude file names based on this regex\
+  \ [^$]\ncommon:              \n --compressed INT      Write compressed output [0]\n\
+  \ --threads INT         Number of CPU-cores used (all by default) [2]\n -v INT \
+  \               Verbosity level: 0: quiet, 1: +errors, 2: +warnings, 3: +info [3]\n\
+  \nexamples:\n # Assuming tar archive containing three aligned FASTA files:\n # \
+  \ * folder/msa1.fa.gz  * folder/msa2.fa  * folder/msa3.fa\n # Create a msaDB with\
+  \ three DB entries each containing a separate MSA\n mmseqs tar2db archive.tar.gz\
+  \ msaDB --output-dbtype 11\n \nreferences:\n - Steinegger M, Soding J: MMseqs2 enables\
+  \ sensitive protein sequence searching for the analysis of massive data sets. Nature\
+  \ Biotechnology, 35(11), 1026-1028 (2017)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/mmseqs2:13.45111--h2d02072_0

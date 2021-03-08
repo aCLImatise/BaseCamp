@@ -1,0 +1,83 @@
+!Command
+command:
+- mmseqs
+- createdb
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --dbtype
+  description: 'Database type 0: auto, 1: amino acid 2: nucleotides [0]'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --shuffle
+  description: Shuffle input database [1]
+  args: !SimpleFlagArg
+    name: BOOL
+- !Flag
+  optional: true
+  synonyms:
+  - --createdb-mode
+  description: 'Createdb mode 0: copy data, 1: soft link data and write new index
+    (works only with single line fasta/q) [0]'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --id-offset
+  description: Numeric ids in index file are offset by this value [0]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --compressed
+  description: Write compressed output [0]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: 'Verbosity level: 0: quiet, 1: +errors, 2: +warnings, 3: +info [3]'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --write-lookup
+  description: write .lookup file containing mapping from internal id, fasta id and
+    file number [1]
+  args: !SimpleFlagArg
+    name: INT
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "usage: mmseqs createdb <i:fastaFile1[.gz|.bz2]> ... <i:fastaFileN[.gz|.bz2]>|<i:stdin>\
+  \ <o:sequenceDB> [options]\n By Martin Steinegger <martin.steinegger@snu.ac.kr>\n\
+  options: misc:                \n --dbtype INT          Database type 0: auto, 1:\
+  \ amino acid 2: nucleotides [0]\n --shuffle BOOL        Shuffle input database [1]\n\
+  \ --createdb-mode INT   Createdb mode 0: copy data, 1: soft link data and write\
+  \ new index (works only with single line fasta/q) [0]\n --id-offset INT       Numeric\
+  \ ids in index file are offset by this value [0]\ncommon:              \n --compressed\
+  \ INT      Write compressed output [0]\n -v INT                Verbosity level:\
+  \ 0: quiet, 1: +errors, 2: +warnings, 3: +info [3]\nexpert:              \n --write-lookup\
+  \ INT    write .lookup file containing mapping from internal id, fasta id and file\
+  \ number [1]\n\nexamples:\n # Create a sequence database from multiple FASTA files\n\
+  \ mmseqs createdb file1.fa file2.fa.gz file3.fa sequenceDB\n \n # Create a seqDB\
+  \ from stdin\n cat seq.fasta | mmseqs createdb stdin sequenceDB\n \n # Create a\
+  \ seqDB by indexing existing FASTA/Q (for single line fasta entries only)\n mmseqs\
+  \ createdb seq.fasta sequenceDB --createdb-mode 1\n \nreferences:\n - Steinegger\
+  \ M, Soding J: MMseqs2 enables sensitive protein sequence searching for the analysis\
+  \ of massive data sets. Nature Biotechnology, 35(11), 1026-1028 (2017)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/mmseqs2:13.45111--h2d02072_0

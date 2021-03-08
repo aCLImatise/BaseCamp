@@ -1,0 +1,68 @@
+!Command
+command:
+- mmseqs
+- concatdbs
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --preserve-keys
+  description: The keys of the two DB should be distinct, and they will be preserved
+    in the concatenation [0]
+  args: !SimpleFlagArg
+    name: BOOL
+- !Flag
+  optional: true
+  synonyms:
+  - --take-larger-entry
+  description: Only keep the larger entry (dataSize >) in the concatenation, both
+    databases need the same keys in the index [0]
+  args: !SimpleFlagArg
+    name: BOOL
+- !Flag
+  optional: true
+  synonyms:
+  - --compressed
+  description: Write compressed output [0]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: Number of CPU-cores used (all by default) [1]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: 'Verbosity level: 0: quiet, 1: +errors, 2: +warnings, 3: +info [3]'
+  args: !SimpleFlagArg
+    name: INT
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "usage: mmseqs concatdbs <i:DB> <i:DB> <o:DB> [options]\n By Clovis Galiez,\
+  \ Eli Levy Karin & Martin Steinegger (martin.steinegger@snu.ac.kr)\noptions: misc:\
+  \                    \n --preserve-keys BOOL      The keys of the two DB should\
+  \ be distinct, and they will be preserved in the concatenation [0]\n --take-larger-entry\
+  \ BOOL  Only keep the larger entry (dataSize >) in the concatenation, both databases\
+  \ need the same keys in the index [0]\ncommon:                  \n --compressed\
+  \ INT          Write compressed output [0]\n --threads INT             Number of\
+  \ CPU-cores used (all by default) [1]\n -v INT                    Verbosity level:\
+  \ 0: quiet, 1: +errors, 2: +warnings, 3: +info [3]\n\nexamples:\n # Download two\
+  \ sequences databases and concat them\n mmseqs databases PDB pdbDB tmp\n mmseqs\
+  \ UniProtKB/Swiss-Prot swissprotDB tmp\n # Works only single threaded since seq.\
+  \ and header DB need the same ordering\n mmseqs concatdbs pdbDB swissprotDB pdbAndSwissprotDB\
+  \ --threads 1\n mmseqs concatdbs pdbDB_h swissprotDB_h pdbAndSwissprotDB_h --threads\
+  \ 1\n \nreferences:\n - Steinegger M, Soding J: MMseqs2 enables sensitive protein\
+  \ sequence searching for the analysis of massive data sets. Nature Biotechnology,\
+  \ 35(11), 1026-1028 (2017)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/mmseqs2:13.45111--h2d02072_0

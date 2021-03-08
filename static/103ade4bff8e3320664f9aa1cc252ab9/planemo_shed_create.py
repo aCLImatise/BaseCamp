@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, String, Directory, Int
+
+Planemo_Shed_Create_V0_1_0 = CommandToolBuilder(tool="planemo_shed_create", base_command=["planemo", "shed_create"], inputs=[ToolInput(tag="in_recursive", input_type=Boolean(optional=True), prefix="--recursive", doc=InputDocumentation(doc="Recursively perform command for nested repository")), ToolInput(tag="in_owner", input_type=String(optional=True), prefix="--owner", doc=InputDocumentation(doc="Tool Shed repository owner (username).")), ToolInput(tag="in_name", input_type=Directory(optional=True), prefix="--name", doc=InputDocumentation(doc="Tool Shed repository name (defaults to the\ninferred tool directory name).")), ToolInput(tag="in_shed_email", input_type=String(optional=True), prefix="--shed_email", doc=InputDocumentation(doc="E-mail for Tool Shed auth (required unless\nshed_key is specified).")), ToolInput(tag="in_shed_key", input_type=String(optional=True), prefix="--shed_key", doc=InputDocumentation(doc="API key for Tool Shed access. An API key is\nrequired unless e-mail and password is specified.\nThis key can be specified with either --shed_key\nor --shed_key_from_env.")), ToolInput(tag="in_shed_key_from_env", input_type=String(optional=True), prefix="--shed_key_from_env", doc=InputDocumentation(doc="Environment variable to read API key for Tool Shed\naccess from.")), ToolInput(tag="in_shed_password", input_type=String(optional=True), prefix="--shed_password", doc=InputDocumentation(doc="Password for Tool Shed auth (required unless\nshed_key is specified).")), ToolInput(tag="in_shed_target", input_type=Int(optional=True), prefix="--shed_target", doc=InputDocumentation(doc="Tool Shed to target (this can be 'toolshed',\n'testtoolshed', 'local' (alias for\nhttp://localhost:9009/), an arbitrary url or\nmappings defined ~/.planemo.yml.")), ToolInput(tag="in_message", input_type=String(optional=True), prefix="--message", doc=InputDocumentation(doc="Commit message for tool shed upload.")), ToolInput(tag="in_skip_upload", input_type=Boolean(optional=True), prefix="--skip_upload", doc=InputDocumentation(doc="Skip upload contents as part of operation, only\nupdate metadata.")), ToolInput(tag="in_directories_dot", input_type=String(), position=0, doc=InputDocumentation(doc="--fail_fast               If multiple repositories are specified and an"))], outputs=[], container="quay.io/biocontainers/planemo:0.74.3--py_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Planemo_Shed_Create_V0_1_0().translate("wdl")
+

@@ -1,0 +1,122 @@
+!Command
+command:
+- fastafunk
+- fetch
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: entry
+  description: --low-memory          Assumes no duplicate sequences within a FASTA
+    so can
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: Run with high verbosity (debug level logging)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --log-file
+  description: "Log file to use (otherwise uses stdout, or stderr if\nout-fasta to\
+    \ stdout)"
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - --in-fasta
+  description: "[<filename> ...]\nOne or more FASTA files of sequences (else reads\
+    \ from\nstdin)"
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - --in-metadata
+  description: "CSV or TSV of metadata with same naming convention as\nfasta file"
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - --index-column
+  description: "Column in the metadata file to use to match to the\nsequence"
+  args: !SimpleFlagArg
+    name: column
+- !Flag
+  optional: true
+  synonyms:
+  - --filter-column
+  description: "[<column> ...]\nMetadata column name(s) to keep"
+  args: !SimpleFlagArg
+    name: column
+- !Flag
+  optional: true
+  synonyms:
+  - --where-column
+  description: "=<regex> [<column>=<regex> ...]\nAdditional matches to columns e.g.\
+    \ if want to rename"
+  args: !SimpleFlagArg
+    name: column
+- !Flag
+  optional: true
+  synonyms:
+  - --restrict
+  description: Only outputs metadata rows with a corresponding fasta
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --out-fasta
+  description: A FASTA file (else writes to stdout)
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - --out-metadata
+  description: "A metadata file\n"
+  args: !SimpleFlagArg
+    name: filename
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: fastafunk fetch [-h] [-v] [--log-file <filename>]\n           \
+  \            [--in-fasta <filename> [<filename> ...]] --in-metadata\n          \
+  \             <filename> --index-column <column>\n                       [--filter-column\
+  \ <column> [<column> ...]]\n                       [--where-column <column>=<regex>\
+  \ [<column>=<regex> ...]]\n                       [--restrict] [--low-memory] [--out-fasta\
+  \ <filename>]\n                       [--out-metadata <filename>]\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -v, --verbose      \
+  \   Run with high verbosity (debug level logging)\n  --log-file <filename>\n   \
+  \                     Log file to use (otherwise uses stdout, or stderr if\n   \
+  \                     out-fasta to stdout)\n  --in-fasta <filename> [<filename>\
+  \ ...]\n                        One or more FASTA files of sequences (else reads\
+  \ from\n                        stdin)\n  --in-metadata <filename>\n           \
+  \             CSV or TSV of metadata with same naming convention as\n          \
+  \              fasta file\n  --index-column <column>\n                        Column\
+  \ in the metadata file to use to match to the\n                        sequence\n\
+  \  --filter-column <column> [<column> ...]\n                        Metadata column\
+  \ name(s) to keep\n  --where-column <column>=<regex> [<column>=<regex> ...]\n  \
+  \                      Additional matches to columns e.g. if want to rename\n  --restrict\
+  \            Only outputs metadata rows with a corresponding fasta\n           \
+  \             entry\n  --low-memory          Assumes no duplicate sequences within\
+  \ a FASTA so can\n                        use SeqIO index\n  --out-fasta <filename>\n\
+  \                        A FASTA file (else writes to stdout)\n  --out-metadata\
+  \ <filename>\n                        A metadata file\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/fastafunk:0.0.9--pyh3252c3a_0

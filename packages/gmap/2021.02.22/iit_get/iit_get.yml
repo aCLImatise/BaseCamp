@@ -1,0 +1,177 @@
+!Command
+command:
+- iit_get
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: start
+  description: 'chr:'
+- !Positional
+  optional: false
+  position: 1
+  name: start..end
+  description: start
+- !Positional
+  optional: false
+  position: 2
+  name: label
+  description: Options
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --field
+  description: Show given field part of the annotation
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  - --label
+  description: Interpret query or queries as a label, even if it is numeric
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -C
+  - --coords
+  description: Interpret query or queries as coords
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -A
+  - --annotonly
+  description: Show annotation lines only (no headers)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --sort
+  description: Sort results by coordinates
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -U
+  - --unsigned
+  description: Print all intervals as low..high, even those entered as reverse (high
+    < low)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --flanking
+  description: Show flanking segments on left and right
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --lowval
+  description: Low bound on a values IIT (default -Inf)
+  args: !SimpleFlagArg
+    name: DOUBLE
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --highval
+  description: High bound on a values IIT (default +Inf)
+  args: !SimpleFlagArg
+    name: DOUBLE
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --center
+  description: Align reads so given position is centered at given column
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -H
+  - --centeruc
+  description: Report only reads with upper-case letter at given position
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  - --runlength
+  description: Report runlength IIT file in tally format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --tally
+  description: Report tally IIT file in tally format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Z
+  - --zeroes
+  description: Include zeroes in tally format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -N
+  - --stats
+  description: Statistics (count, npositions, mean) of tally format
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Show version
+  args: !EmptyFlagArg {}
+help_text: "Usage: iit_get [OPTIONS...] iitfile query\n       iit_get [OPTIONS...]\
+  \ iitfile query types...\n       iit_get [OPTIONS...] iitfile\n\nwhere query is\
+  \ one of the following forms:\n\n   chr:start..end\n   chr:start\n   chr:\n   start..end\n\
+  \   start\n   label\n\nOptions\n  -f, --field=STRING      Show given field part\
+  \ of the annotation\n  -L, --label             Interpret query or queries as a label,\
+  \ even if it is numeric\n  -C, --coords            Interpret query or queries as\
+  \ coords\n  -A, --annotonly         Show annotation lines only (no headers)\n  -S,\
+  \ --sort              Sort results by coordinates\n  -U, --unsigned          Print\
+  \ all intervals as low..high, even those entered as reverse (high < low)\n  -u,\
+  \ --flanking=INT      Show flanking segments on left and right\n\nOptions for specific\
+  \ IIT formats\n  -a, --lowval=DOUBLE     Low bound on a values IIT (default -Inf)\n\
+  \  -b, --highval=DOUBLE    High bound on a values IIT (default +Inf)\n  -c, --center=INT\
+  \        Align reads so given position is centered at given column\n  -H, --centeruc\
+  \          Report only reads with upper-case letter at given position\n  -R, --runlength\
+  \         Report runlength IIT file in tally format\n  -T, --tally             Report\
+  \ tally IIT file in tally format\n  -Z, --zeroes            Include zeroes in tally\
+  \ format\n  -N, --stats             Statistics (count, npositions, mean) of tally\
+  \ format\n\n  -V, --version           Show version\n  -?, --help              Show\
+  \ this help message\n\n\nThe iit_get program retrieves segments from an iit file\
+  \ that overlap a\ngiven coordinate or pair of coordinates.  Retrieval is done in\n\
+  logarithmic time (for more details on IIT files, see Wu and Watanabe,\nBioinformatics\
+  \ 21:1859-1875, 2005).  The start coordinate should be\nless than or equal to the\
+  \ end coordinate.  If they are not, the program\nwill reverse them for you.  If\
+  \ only a single coordinate is provided,\nthis is equivalent to providing the same\
+  \ number for the start and end\ncoordinate.\n\nThe given iit file may contain types\
+  \ (which can be displayed by using\nthe -T flag of the iit_dump program).  These\
+  \ types may be used to\nfilter the output of the iit file.  Multiple types may be\
+  \ specified,\nwhich indicates a disjunctive query, such that iit_get returns entries\n\
+  that match any one of the given tags.\n\nIf no query is provided on the command\
+  \ line, the program will expect\none or more queries from stdin, one per line.\n\
+  \nSee also: iit_store, iit_dump\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/gmap:2021.02.22--pl526h2f06484_0

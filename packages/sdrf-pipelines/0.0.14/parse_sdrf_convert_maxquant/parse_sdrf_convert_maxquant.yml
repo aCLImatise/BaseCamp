@@ -1,0 +1,124 @@
+!Command
+command:
+- parse_sdrf
+- convert-maxquant
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: identifications
+  description: -pef, --peptidefdr FLOAT     posterior error probability calculation
+    based
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --sdrf
+  description: SDRF file  [required]
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --fastafilepath
+  description: protein database file path  [required]
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -mcf
+  - --mqconfdir
+  description: MaxQuant default configure path
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --matchbetweenruns
+  description: via matching between runs to boosts number of
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -prf
+  - --proteinfdr
+  description: "protein score = product of peptide PEPs (one\nfor each sequence)"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --tempfolder
+  description: "temporary folder: place on SSD (if possible)\nfor faster search"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --raw_folder
+  description: spectrum raw data folder  [required]
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --numthreads
+  description: "each thread needs at least 2 GB of RAM,number\nof threads should be\
+    \ ≤ number of logical cores\navailable (otherwise, MaxQuant can crash)"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -o1
+  - --output1
+  description: parameters .xml file  output file path
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -o2
+  - --output2
+  description: maxquant experimental design .txt file
+  args: !SimpleFlagArg
+    name: TEXT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: parse_sdrf convert-maxquant [OPTIONS]\n\nOptions:\n  -s, --sdrf\
+  \ TEXT              SDRF file  [required]\n  -f, --fastafilepath TEXT     protein\
+  \ database file path  [required]\n  -mcf, --mqconfdir TEXT       MaxQuant default\
+  \ configure path\n  -m, --matchbetweenruns TEXT  via matching between runs to boosts\
+  \ number of\n                               identifications\n\n  -pef, --peptidefdr\
+  \ FLOAT     posterior error probability calculation based\n                    \
+  \           on target-decoy search\n\n  -prf, --proteinfdr FLOAT     protein score\
+  \ = product of peptide PEPs (one\n                               for each sequence)\n\
+  \n  -t, --tempfolder TEXT        temporary folder: place on SSD (if possible)\n\
+  \                               for faster search\n\n  -r, --raw_folder TEXT   \
+  \     spectrum raw data folder  [required]\n  -n, --numthreads INTEGER     each\
+  \ thread needs at least 2 GB of RAM,number\n                               of threads\
+  \ should be ≤ number of logical cores\n                               available\
+  \ (otherwise, MaxQuant can crash)\n\n  -o1, --output1 TEXT          parameters .xml\
+  \ file  output file path\n  -o2, --output2 TEXT          maxquant experimental design\
+  \ .txt file\n  -h, --help                   Show this message and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/sdrf-pipelines:0.0.14--py_0

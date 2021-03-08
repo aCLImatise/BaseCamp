@@ -1,0 +1,183 @@
+!Command
+command:
+- mmseqs
+- filterdb
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --add-self-matches
+  description: Artificially add entries of queries with themselves (for clustering)
+    [0]
+  args: !SimpleFlagArg
+    name: BOOL
+- !Flag
+  optional: true
+  synonyms:
+  - --filter-expression
+  description: Specify a mathematical expression to filter lines []
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - --filter-column
+  description: column [1]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --column-to-take
+  description: column to take in join mode. If -1, the whole line is taken [-1]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --filter-regex
+  description: 'Regex to select column (example float: [0-9]*(.[0-9]+)? int:[1-9]{1}[0-9])
+    [^.*$]'
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - --positive-filter
+  description: Used in conjunction with --filter-file. If true, out  = in \intersect
+    filter ; if false, out = in - filter [1]
+  args: !SimpleFlagArg
+    name: BOOL
+- !Flag
+  optional: true
+  synonyms:
+  - --filter-file
+  description: Specify a file that contains the filtering elements []
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - --beats-first
+  description: Filter by comparing each entry to the first entry [0]
+  args: !SimpleFlagArg
+    name: BOOL
+- !Flag
+  optional: true
+  synonyms:
+  - --mapping-file
+  description: Specify a file that translates the keys of a DB to new keys, TSV format
+    []
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - --trim-to-one-column
+  description: Output only the column specified by --filter-column [0]
+  args: !SimpleFlagArg
+    name: BOOL
+- !Flag
+  optional: true
+  synonyms:
+  - --extract-lines
+  description: Extract n lines of each entry [0]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --comparison-operator
+  description: Filter by comparing each entry row numerically by using the le) less-than-equal,
+    ge) greater-than-equal or e) equal operator []
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - --comparison-value
+  description: Filter by comparing each entry to this value [0.000E+00]
+  args: !SimpleFlagArg
+    name: DOUBLE
+- !Flag
+  optional: true
+  synonyms:
+  - --sort-entries
+  description: 'Sort column set by --filter-column, by 0: no sorting, 1: increasing,
+    2: decreasing, 3: random shuffle [0]'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --join-db
+  description: Join another database entry with respect to the database identifier
+    in the chosen column []
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: Number of CPU-cores used (all by default) [2]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --compressed
+  description: Write compressed output [0]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: 'Verbosity level: 0: quiet, 1: +errors, 2: +warnings, 3: +info [3]'
+  args: !SimpleFlagArg
+    name: INT
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "usage: mmseqs filterdb <i:resultDB> <o:resultDB> [options]\n By Clovis\
+  \ Galiez & Martin Steinegger <martin.steinegger@snu.ac.kr>\noptions: prefilter:\
+  \                 \n --add-self-matches BOOL     Artificially add entries of queries\
+  \ with themselves (for clustering) [0]\nmisc:                      \n --filter-expression\
+  \ STR     Specify a mathematical expression to filter lines []\n --filter-column\
+  \ INT         column [1]\n --column-to-take INT        column to take in join mode.\
+  \ If -1, the whole line is taken [-1]\n --filter-regex STR          Regex to select\
+  \ column (example float: [0-9]*(.[0-9]+)? int:[1-9]{1}[0-9]) [^.*$]\n --positive-filter\
+  \ BOOL      Used in conjunction with --filter-file. If true, out  = in \\intersect\
+  \ filter ; if false, out = in - filter [1]\n --filter-file STR           Specify\
+  \ a file that contains the filtering elements []\n --beats-first BOOL          Filter\
+  \ by comparing each entry to the first entry [0]\n --mapping-file STR          Specify\
+  \ a file that translates the keys of a DB to new keys, TSV format []\n --trim-to-one-column\
+  \ BOOL   Output only the column specified by --filter-column [0]\n --extract-lines\
+  \ INT         Extract n lines of each entry [0]\n --comparison-operator STR   Filter\
+  \ by comparing each entry row numerically by using the le) less-than-equal, ge)\
+  \ greater-than-equal or e) equal operator []\n --comparison-value DOUBLE   Filter\
+  \ by comparing each entry to this value [0.000E+00]\n --sort-entries INT       \
+  \   Sort column set by --filter-column, by 0: no sorting, 1: increasing, 2: decreasing,\
+  \ 3: random shuffle [0]\n --join-db STR               Join another database entry\
+  \ with respect to the database identifier in the chosen column []\ncommon:     \
+  \               \n --threads INT               Number of CPU-cores used (all by\
+  \ default) [2]\n --compressed INT            Write compressed output [0]\n -v INT\
+  \                      Verbosity level: 0: quiet, 1: +errors, 2: +warnings, 3: +info\
+  \ [3]\n\nexamples:\n # Retain top alignment for each query (alignment DBs are sorted\
+  \ by E-value)\n mmseqs filterdb alignmentDB topHitAlignmentDB --extract-lines 1\n\
+  \ \n # Extract alignments with Seq.id. greater than 90%\n mmseqs filterdb alignmentDB\
+  \ scoreGreater35AlignmentDB --comparison-operator ge --comparison-value 0.9 --filter-column\
+  \ 2\n \n # Retain all hits matching a regular expression\n mmseqs filterdb alignmentDB\
+  \ regexFilteredDB --filter-regex '^[1-9].$' --filter-column 2\n \n # Remove all\
+  \ hits to target keys contained in file db.index\n mmseqs filterdb --filter-file\
+  \ db.index --positive-filter false\n \n # Retain all hits matching any boolean expression\n\
+  \ mmseqs filterdb --filter-expression '$1 * $2 >= 200'\n \nreferences:\n - Steinegger\
+  \ M, Soding J: MMseqs2 enables sensitive protein sequence searching for the analysis\
+  \ of massive data sets. Nature Biotechnology, 35(11), 1026-1028 (2017)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/mmseqs2:13.45111--h2d02072_0

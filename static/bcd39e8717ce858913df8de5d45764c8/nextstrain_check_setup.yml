@@ -1,0 +1,42 @@
+!Command
+command:
+- nextstrain
+- check-setup
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --set-default
+  description: "Set the default environment to the first which passes check-\nsetup.\
+    \ Checks run in the order: docker, native, aws-batch.\n(default: False)\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: nextstrain check-setup [-h] [--set-default]\n\nChecks your local\
+  \ setup to see if you have a supported build environment.\n\nThree environments\
+  \ are supported, each of which will be tested:\n\n  • Our Docker image is the preferred\
+  \ build environment.  Docker itself must\n    be installed and configured on your\
+  \ computer first, but once it is, the\n    build environment is robust and reproducible.\n\
+  \n  • Your native ambient environment will be tested for snakemake, augur, and\n\
+  \    auspice. Their presence implies a working build environment, but does not\n\
+  \    guarantee it.\n\n  • Remote jobs on AWS Batch.  Your AWS account, if credentials\
+  \ are available\n    in your environment or via aws-cli configuration, will be tested\
+  \ for the\n    presence of appropriate resources.  Their presence implies a working\
+  \ AWS\n    Batch environment, but does not guarantee it.\n\noptional arguments:\n\
+  \  -h, --help     show this help message and exit\n  --set-default  Set the default\
+  \ environment to the first which passes check-\n                 setup. Checks run\
+  \ in the order: docker, native, aws-batch.\n                 (default: False)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/nextstrain-cli:3.0.3--py_0

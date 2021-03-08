@@ -1,0 +1,167 @@
+!Command
+command:
+- planemo
+- shed_upload
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: '117'
+  description: 'Options:'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --recursive
+  description: "Recursively perform command for nested\nrepository directories."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --fail_fast
+  description: "If multiple repositories are specified and an\nerror occurs stop immediately\
+    \ instead of\nprocessing remaining repositories."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --owner
+  description: Tool Shed repository owner (username).
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --name
+  description: "Tool Shed repository name (defaults to the\ninferred tool directory\
+    \ name)."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --shed_email
+  description: "E-mail for Tool Shed auth (required unless\nshed_key is specified)."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --shed_key
+  description: "API key for Tool Shed access. An API key is\nrequired unless e-mail\
+    \ and password is\nspecified. This key can be specified with\neither --shed_key\
+    \ or --shed_key_from_env."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --shed_key_from_env
+  description: "Environment variable to read API key for Tool\nShed access from."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --shed_password
+  description: "Password for Tool Shed auth (required unless\nshed_key is specified)."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --shed_target
+  description: "Tool Shed to target (this can be 'toolshed',\n'testtoolshed', 'local'\
+    \ (alias for\nhttp://localhost:9009/), an arbitrary url or\nmappings defined ~/.planemo.yml."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --message
+  description: Commit message for tool shed upload.
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --force_repository_creation
+  description: "If a repository cannot be found for the\nspecified user/repo name\
+    \ pair, then\nautomatically create the repository in the\ntoolshed."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --check_diff
+  description: "Skip uploading if the shed_diff detects there\nwould be no 'difference'\
+    \ (only attributes\npopulated by the shed would be updated.)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --tar_only
+  description: "Produce tar file for upload but do not publish\nto a tool shed."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --tar
+  description: "Specify a pre-existing tar file instead of\nautomatically building\
+    \ one as part of this\ncommand."
+  args: !SimpleFlagArg
+    name: FILE
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: planemo shed_upload [OPTIONS] PROJECT\n\n  Low-level command to\
+  \ upload tarballs.\n\n  Generally, ``shed_update`` should be used instead since\
+  \ it also updates\n  both tool shed contents (via tar ball generation and upload)\
+  \ as well as\n  metadata (to handle metadata changes in ``.shed.yml`` files).\n\n\
+  \      % planemo shed_upload --tar_only  ~/\n      % tar -tzf shed_upload.tar.gz\n\
+  \      test-data/blastdb.loc\n      ...\n      tools/ncbi_blast_plus/tool_dependencies.xml\n\
+  \      % tar -tzf shed_upload.tar.gz | wc -l\n      117\n\nOptions:\n  -r, --recursive\
+  \              Recursively perform command for nested\n                        \
+  \       repository directories.\n\n  --fail_fast                  If multiple repositories\
+  \ are specified and an\n                               error occurs stop immediately\
+  \ instead of\n                               processing remaining repositories.\n\
+  \n  --owner TEXT                 Tool Shed repository owner (username).\n  --name\
+  \ TEXT                  Tool Shed repository name (defaults to the\n           \
+  \                    inferred tool directory name).\n\n  --shed_email TEXT     \
+  \       E-mail for Tool Shed auth (required unless\n                           \
+  \    shed_key is specified).\n\n  --shed_key TEXT              API key for Tool\
+  \ Shed access. An API key is\n                               required unless e-mail\
+  \ and password is\n                               specified. This key can be specified\
+  \ with\n                               either --shed_key or --shed_key_from_env.\n\
+  \n  --shed_key_from_env TEXT     Environment variable to read API key for Tool\n\
+  \                               Shed access from.\n\n  --shed_password TEXT    \
+  \     Password for Tool Shed auth (required unless\n                           \
+  \    shed_key is specified).\n\n  -t, --shed_target TEXT       Tool Shed to target\
+  \ (this can be 'toolshed',\n                               'testtoolshed', 'local'\
+  \ (alias for\n                               http://localhost:9009/), an arbitrary\
+  \ url or\n                               mappings defined ~/.planemo.yml.\n\n  -m,\
+  \ --message TEXT           Commit message for tool shed upload.\n  --force_repository_creation\
+  \  If a repository cannot be found for the\n                               specified\
+  \ user/repo name pair, then\n                               automatically create\
+  \ the repository in the\n                               toolshed.\n\n  --check_diff\
+  \                 Skip uploading if the shed_diff detects there\n              \
+  \                 would be no 'difference' (only attributes\n                  \
+  \             populated by the shed would be updated.)\n\n  --tar_only         \
+  \          Produce tar file for upload but do not publish\n                    \
+  \           to a tool shed.\n\n  --tar FILE                   Specify a pre-existing\
+  \ tar file instead of\n                               automatically building one\
+  \ as part of this\n                               command.\n\n  --help         \
+  \              Show this message and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/planemo:0.74.3--py_0

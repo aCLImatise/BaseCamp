@@ -1,0 +1,127 @@
+!Command
+command:
+- planemo
+- container_register
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: tools.
+  description: 'Options:'
+- !Positional
+  optional: false
+  position: 1
+  name: subdirectories.
+  description: --mulled_namespace TEXT         Build a mulled image with the specified
+- !Positional
+  optional: false
+  position: 0
+  name: commands.
+  description: --conda_exec FILE               Location of conda executable.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --recursive
+  description: Recursively perform command for
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --conda_prefix
+  description: Conda prefix to use for conda dependency
+  args: !SimpleFlagArg
+    name: DIRECTORY
+- !Flag
+  optional: true
+  synonyms:
+  - --conda_debug
+  description: Enable more verbose conda logging.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --conda_channels
+  - --conda_ensure_channels
+  description: "Ensure conda is configured with specified\ncomma separated list of\
+    \ channels."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --conda_use_local
+  description: "Use locally built packages while building\nConda environments."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --output_directory
+  description: "Container registration directory (defaults\nto ~/.planemo/multi-package-containers."
+  args: !SimpleFlagArg
+    name: DIRECTORY
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --message
+  description: "Commit and pull request message template for\nregistration interactions."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --pull_request
+  - --no_pull_request
+  description: "Fork and create a pull request against\nBioContainers/multi-package-containers\
+    \ for\nthese changes."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --force_push
+  - --no_force_push
+  description: "Force push branch for pull request in case\nit already exists."
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: planemo container_register [OPTIONS] TOOL_PATH\n\n  Register multi-requirement\
+  \ containers as needed.\n\n  BioContainers publishes all Bioconda packages automatically\
+  \ as individual\n  container images. These however are not enough for tools with\
+  \ multiple\n  best-practice requirements. Such requirements should be recorded and\n\
+  \  published so that a container can be created and registered for these\n  tools.\n\
+  \nOptions:\n  -r, --recursive                 Recursively perform command for\n\
+  \                                  subdirectories.\n\n  --mulled_namespace TEXT\
+  \         Build a mulled image with the specified\n                            \
+  \      namespace - defaults to biocontainers.\n                                \
+  \  Galaxy currently only recognizes images with\n                              \
+  \    the namespace biocontainers.\n\n  --conda_prefix DIRECTORY        Conda prefix\
+  \ to use for conda dependency\n                                  commands.\n\n \
+  \ --conda_exec FILE               Location of conda executable.\n  --conda_debug\
+  \                   Enable more verbose conda logging.\n  --conda_channels, --conda_ensure_channels\
+  \ TEXT\n                                  Ensure conda is configured with specified\n\
+  \                                  comma separated list of channels.\n\n  --conda_use_local\
+  \               Use locally built packages while building\n                    \
+  \              Conda environments.\n\n  --output_directory DIRECTORY    Container\
+  \ registration directory (defaults\n                                  to ~/.planemo/multi-package-containers.\n\
+  \n  -m, --message TEXT              Commit and pull request message template for\n\
+  \                                  registration interactions.\n\n  --pull_request\
+  \ / --no_pull_request\n                                  Fork and create a pull\
+  \ request against\n                                  BioContainers/multi-package-containers\
+  \ for\n                                  these changes.\n\n  --force_push / --no_force_push\
+  \  Force push branch for pull request in case\n                                \
+  \  it already exists.\n\n  --help                          Show this message and\
+  \ exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/planemo:0.74.3--py_0

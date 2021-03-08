@@ -1,0 +1,361 @@
+!Command
+command:
+- arv-put
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: path
+  description: "Local file or directory. If path is a directory\nreference with a\
+    \ trailing slash, then just upload the\ndirectory's contents; otherwise upload\
+    \ the directory\nitself. Default: read from standard input."
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --normalize
+  description: "Normalize the manifest by re-ordering files and\nstreams after writing\
+    \ data."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dry-run
+  description: "Don't actually upload files, but only check if any\nfile should be\
+    \ uploaded. Exit with code=2 when files\nare pending for upload."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --as-stream
+  description: Synonym for --stream.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --stream
+  description: "Store the file content and display the resulting\nmanifest on stdout.\
+    \ Do not write the manifest to Keep\nor save a Collection object in Arvados."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --as-manifest
+  description: Synonym for --manifest.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --in-manifest
+  description: Synonym for --manifest.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --manifest
+  description: "Store the file data and resulting manifest in Keep,\nsave a Collection\
+    \ object in Arvados, and display the\nmanifest locator (Collection uuid) on stdout.\
+    \ This is\nthe default behavior."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --as-raw
+  description: Synonym for --raw.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --raw
+  description: "Store the file content and display the data block\nlocators on stdout,\
+    \ separated by commas, with a\ntrailing newline. Do not store a manifest."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --update-collection
+  description: "Update an existing collection identified by the given\nArvados collection\
+    \ UUID. All new local files will be\nuploaded."
+  args: !SimpleFlagArg
+    name: UUID
+- !Flag
+  optional: true
+  synonyms:
+  - --use-filename
+  description: Synonym for --filename.
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --filename
+  description: "Use the given filename in the manifest, instead of the\nname of the\
+    \ local file. This is useful when \"-\" or\n\"/dev/stdin\" is given as an input\
+    \ file. It can be used\nonly if there is exactly one path given and it is not\n\
+    a directory. Implies --manifest."
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --portable-data-hash
+  description: "Print the portable data hash instead of the Arvados\nUUID for the\
+    \ collection created by the upload."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --replication
+  description: "Set the replication level for the new collection: how\nmany different\
+    \ physical storage devices (e.g., disks)\nshould have a copy of each data block.\
+    \ Default is to\nuse the server-provided default (if any) or 2."
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --storage-classes
+  description: "Specify comma separated list of storage classes to be\nused when saving\
+    \ data to Keep."
+  args: !SimpleFlagArg
+    name: STORAGE_CLASSES
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: "Set the number of upload threads to be used. Take into\naccount that\
+    \ using lots of threads will increase the\nRAM requirements. Default is to use\
+    \ 2 threads. On high\nlatency installations, using a greater number will\nimprove\
+    \ overall throughput."
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --exclude
+  description: "Exclude files and directories whose names match the\ngiven glob pattern.\
+    \ When using a path-like pattern\nlike 'subdir/*.txt', all text files inside 'subdir'\n\
+    directory, relative to the provided input dirs will be\nexcluded. When using a\
+    \ filename pattern like '*.txt',\nany text file will be excluded no matter where\
+    \ it is\nplaced. For the special case of needing to exclude\nonly files or dirs\
+    \ directly below the given input\ndirectory, you can use a pattern like\n'./exclude_this.gif'.\
+    \ You can specify multiple\npatterns by using this argument more than once."
+  args: !SimpleFlagArg
+    name: PATTERN
+- !Flag
+  optional: true
+  synonyms:
+  - --follow-links
+  description: Follow file and directory symlinks (default).
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-follow-links
+  description: Do not follow file and directory symlinks.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --trash-at
+  description: ":MM\nSet the trash date of the resulting collection to an\nabsolute\
+    \ date in the future. The accepted format is\ndefined by the ISO 8601 standard.\
+    \ Examples: 20090103,\n2009-01-03, 20090103T181505, 2009-01-03T18:15:05.\nTimezone\
+    \ information can be added. If not, the\nprovided date/time is assumed as being\
+    \ in the local\nsystem's timezone."
+  args: !SimpleFlagArg
+    name: YYYY-MM-DDTHH
+- !Flag
+  optional: true
+  synonyms:
+  - --trash-after
+  description: "Set the trash date of the resulting collection to an\namount of days\
+    \ from the date/time that the upload\nprocess finishes."
+  args: !SimpleFlagArg
+    name: DAYS
+- !Flag
+  optional: true
+  synonyms:
+  - --project-uuid
+  description: "Store the collection in the specified project, instead\nof your Home\
+    \ project."
+  args: !SimpleFlagArg
+    name: UUID
+- !Flag
+  optional: true
+  synonyms:
+  - --name
+  description: Save the collection with the specified name.
+  args: !SimpleFlagArg
+    name: NAME
+- !Flag
+  optional: true
+  synonyms:
+  - --progress
+  description: "Display human-readable progress on stderr (bytes and,\nif possible,\
+    \ percentage of total data size). This is\nthe default behavior when stderr is\
+    \ a tty."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-progress
+  description: "Do not display human-readable progress on stderr, even\nif stderr\
+    \ is a tty."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --batch-progress
+  description: "Display machine-readable progress on stderr (bytes\nand, if known,\
+    \ total data size)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --silent
+  description: "Do not print any debug messages to console. (Any error\nmessages will\
+    \ still be displayed.)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --resume
+  description: "Continue interrupted uploads from cached state\n(default)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-resume
+  description: Do not continue interrupted uploads from cached state.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --cache
+  description: "Save upload state in a cache file for resuming\n(default)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-cache
+  description: Do not save upload state in a cache file for resuming.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --retries
+  description: "Maximum number of times to retry server requests that\nencounter temporary\
+    \ failures (e.g., server down).\nDefault 3.\n"
+  args: !SimpleFlagArg
+    name: RETRIES
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Print version and exit.
+  args: !EmptyFlagArg {}
+help_text: "usage: arv-put [-h] [--version] [--normalize | --dry-run]\n          \
+  \     [--as-stream | --stream | --as-manifest | --in-manifest | --manifest | --as-raw\
+  \ | --raw]\n               [--update-collection UUID] [--use-filename FILENAME]\n\
+  \               [--filename FILENAME] [--portable-data-hash] [--replication N]\n\
+  \               [--storage-classes STORAGE_CLASSES] [--threads N]\n            \
+  \   [--exclude PATTERN] [--follow-links | --no-follow-links]\n               [--trash-at\
+  \ YYYY-MM-DDTHH:MM | --trash-after DAYS]\n               [--project-uuid UUID] [--name\
+  \ NAME]\n               [--progress | --no-progress | --batch-progress] [--silent]\n\
+  \               [--resume | --no-resume] [--cache | --no-cache]\n              \
+  \ [--retries RETRIES]\n               [path [path ...]]\n\nCopy data from the local\
+  \ filesystem to Keep.\n\npositional arguments:\n  path                  Local file\
+  \ or directory. If path is a directory\n                        reference with a\
+  \ trailing slash, then just upload the\n                        directory's contents;\
+  \ otherwise upload the directory\n                        itself. Default: read\
+  \ from standard input.\n\noptional arguments:\n  -h, --help            show this\
+  \ help message and exit\n  --version             Print version and exit.\n  --normalize\
+  \           Normalize the manifest by re-ordering files and\n                  \
+  \      streams after writing data.\n  --dry-run             Don't actually upload\
+  \ files, but only check if any\n                        file should be uploaded.\
+  \ Exit with code=2 when files\n                        are pending for upload.\n\
+  \  --as-stream           Synonym for --stream.\n  --stream              Store the\
+  \ file content and display the resulting\n                        manifest on stdout.\
+  \ Do not write the manifest to Keep\n                        or save a Collection\
+  \ object in Arvados.\n  --as-manifest         Synonym for --manifest.\n  --in-manifest\
+  \         Synonym for --manifest.\n  --manifest            Store the file data and\
+  \ resulting manifest in Keep,\n                        save a Collection object\
+  \ in Arvados, and display the\n                        manifest locator (Collection\
+  \ uuid) on stdout. This is\n                        the default behavior.\n  --as-raw\
+  \              Synonym for --raw.\n  --raw                 Store the file content\
+  \ and display the data block\n                        locators on stdout, separated\
+  \ by commas, with a\n                        trailing newline. Do not store a manifest.\n\
+  \  --update-collection UUID\n                        Update an existing collection\
+  \ identified by the given\n                        Arvados collection UUID. All\
+  \ new local files will be\n                        uploaded.\n  --use-filename FILENAME\n\
+  \                        Synonym for --filename.\n  --filename FILENAME   Use the\
+  \ given filename in the manifest, instead of the\n                        name of\
+  \ the local file. This is useful when \"-\" or\n                        \"/dev/stdin\"\
+  \ is given as an input file. It can be used\n                        only if there\
+  \ is exactly one path given and it is not\n                        a directory.\
+  \ Implies --manifest.\n  --portable-data-hash  Print the portable data hash instead\
+  \ of the Arvados\n                        UUID for the collection created by the\
+  \ upload.\n  --replication N       Set the replication level for the new collection:\
+  \ how\n                        many different physical storage devices (e.g., disks)\n\
+  \                        should have a copy of each data block. Default is to\n\
+  \                        use the server-provided default (if any) or 2.\n  --storage-classes\
+  \ STORAGE_CLASSES\n                        Specify comma separated list of storage\
+  \ classes to be\n                        used when saving data to Keep.\n  --threads\
+  \ N           Set the number of upload threads to be used. Take into\n         \
+  \               account that using lots of threads will increase the\n         \
+  \               RAM requirements. Default is to use 2 threads. On high\n       \
+  \                 latency installations, using a greater number will\n         \
+  \               improve overall throughput.\n  --exclude PATTERN     Exclude files\
+  \ and directories whose names match the\n                        given glob pattern.\
+  \ When using a path-like pattern\n                        like 'subdir/*.txt', all\
+  \ text files inside 'subdir'\n                        directory, relative to the\
+  \ provided input dirs will be\n                        excluded. When using a filename\
+  \ pattern like '*.txt',\n                        any text file will be excluded\
+  \ no matter where it is\n                        placed. For the special case of\
+  \ needing to exclude\n                        only files or dirs directly below\
+  \ the given input\n                        directory, you can use a pattern like\n\
+  \                        './exclude_this.gif'. You can specify multiple\n      \
+  \                  patterns by using this argument more than once.\n  --follow-links\
+  \        Follow file and directory symlinks (default).\n  --no-follow-links    \
+  \ Do not follow file and directory symlinks.\n  --trash-at YYYY-MM-DDTHH:MM\n  \
+  \                      Set the trash date of the resulting collection to an\n  \
+  \                      absolute date in the future. The accepted format is\n   \
+  \                     defined by the ISO 8601 standard. Examples: 20090103,\n  \
+  \                      2009-01-03, 20090103T181505, 2009-01-03T18:15:05.\n     \
+  \                   Timezone information can be added. If not, the\n           \
+  \             provided date/time is assumed as being in the local\n            \
+  \            system's timezone.\n  --trash-after DAYS    Set the trash date of the\
+  \ resulting collection to an\n                        amount of days from the date/time\
+  \ that the upload\n                        process finishes.\n  --project-uuid UUID\
+  \   Store the collection in the specified project, instead\n                   \
+  \     of your Home project.\n  --name NAME           Save the collection with the\
+  \ specified name.\n  --progress            Display human-readable progress on stderr\
+  \ (bytes and,\n                        if possible, percentage of total data size).\
+  \ This is\n                        the default behavior when stderr is a tty.\n\
+  \  --no-progress         Do not display human-readable progress on stderr, even\n\
+  \                        if stderr is a tty.\n  --batch-progress      Display machine-readable\
+  \ progress on stderr (bytes\n                        and, if known, total data size).\n\
+  \  --silent              Do not print any debug messages to console. (Any error\n\
+  \                        messages will still be displayed.)\n  --resume        \
+  \      Continue interrupted uploads from cached state\n                        (default).\n\
+  \  --no-resume           Do not continue interrupted uploads from cached state.\n\
+  \  --cache               Save upload state in a cache file for resuming\n      \
+  \                  (default).\n  --no-cache            Do not save upload state\
+  \ in a cache file for resuming.\n  --retries RETRIES     Maximum number of times\
+  \ to retry server requests that\n                        encounter temporary failures\
+  \ (e.g., server down).\n                        Default 3.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/arvados-python-client:2.1.2--py_0

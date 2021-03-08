@@ -1,0 +1,169 @@
+!Command
+command:
+- fastmlst
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: genomes
+  description: 'optional arguments:'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: Number of threads to use (default 2)
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: 'Verbose output level choices: [0, 1, 2]'
+  args: !ChoiceFlagArg
+    choices: !!set
+      '1':
+      '0':
+      '2':
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --separator
+  description: Choose a character to use as a separator (default ",")
+  args: !SimpleFlagArg
+    name: SEPARATOR
+- !Flag
+  optional: true
+  synonyms:
+  - -sch
+  - --scheme
+  description: "Set a scheme target (I am not dumb, let me choose a\nscheme by myself!)"
+  args: !SimpleFlagArg
+    name: SCHEME
+- !Flag
+  optional: true
+  synonyms:
+  - --scheme-list
+  description: Show all schemes supported
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -fo
+  - --fastaoutput
+  description: "File name of the concatenated alleles output (default\n\"\")"
+  args: !SimpleFlagArg
+    name: FASTAOUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -to
+  - --tableoutput
+  description: File name of the MLST table output (default STDOUT)
+  args: !SimpleFlagArg
+    name: TABLEOUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -cov
+  - --coverage
+  description: "DNA %Cov to report high quality partial allele [?]\n(default 99%)"
+  args: !SimpleFlagArg
+    name: COVERAGE
+- !Flag
+  optional: true
+  synonyms:
+  - -pid
+  - --identity
+  description: "DNA %Identity of full allelle to consider 'similar'\n[~] (default\
+    \ 95%)"
+  args: !SimpleFlagArg
+    name: IDENTITY
+- !Flag
+  optional: true
+  synonyms:
+  - --update-mlst
+  description: Perform an update of the PubMLST database
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --fasta2line
+  description: The fasta files will be in fasta2line format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --longheader
+  description: "If --longheader is invoked, the header of FASTA file\ncontain a long\
+    \ description"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --legacy
+  description: "If --legacy is invoked, the csv reported contain the\ngene name and\
+    \ the allele id in the row [adk(1),atpA(4)\n,dxr(7),glyA(1),recA(1),sodA(3),tpi(3)].\
+    \ This option\nis only available when the --scheme is defined"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --novel
+  description: File name of the novel alleles
+  args: !SimpleFlagArg
+    name: NOVEL
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: fastmlst [-h] [-t THREADS] [-v {0,1,2}] [-s SEPARATOR] [-sch SCHEME]\n\
+  \                [--scheme-list] [-fo FASTAOUTPUT] [-to TABLEOUTPUT]\n         \
+  \       [-cov COVERAGE] [-pid IDENTITY] [--update-mlst] [--fasta2line]\n       \
+  \         [--longheader] [--legacy] [-n NOVEL] [-V]\n                [genomes ...]\n\
+  \npositional arguments:\n  genomes\n\noptional arguments:\n  -h, --help        \
+  \    show this help message and exit\n  -t THREADS, --threads THREADS\n        \
+  \                Number of threads to use (default 2)\n  -v {0,1,2}, --verbose {0,1,2}\n\
+  \                        Verbose output level choices: [0, 1, 2]\n  -s SEPARATOR,\
+  \ --separator SEPARATOR\n                        Choose a character to use as a\
+  \ separator (default \",\")\n  -sch SCHEME, --scheme SCHEME\n                  \
+  \      Set a scheme target (I am not dumb, let me choose a\n                   \
+  \     scheme by myself!)\n  --scheme-list         Show all schemes supported\n \
+  \ -fo FASTAOUTPUT, --fastaoutput FASTAOUTPUT\n                        File name\
+  \ of the concatenated alleles output (default\n                        \"\")\n \
+  \ -to TABLEOUTPUT, --tableoutput TABLEOUTPUT\n                        File name\
+  \ of the MLST table output (default STDOUT)\n  -cov COVERAGE, --coverage COVERAGE\n\
+  \                        DNA %Cov to report high quality partial allele [?]\n  \
+  \                      (default 99%)\n  -pid IDENTITY, --identity IDENTITY\n   \
+  \                     DNA %Identity of full allelle to consider 'similar'\n    \
+  \                    [~] (default 95%)\n  --update-mlst         Perform an update\
+  \ of the PubMLST database\n  --fasta2line          The fasta files will be in fasta2line\
+  \ format\n  --longheader          If --longheader is invoked, the header of FASTA\
+  \ file\n                        contain a long description\n  --legacy         \
+  \     If --legacy is invoked, the csv reported contain the\n                   \
+  \     gene name and the allele id in the row [adk(1),atpA(4)\n                 \
+  \       ,dxr(7),glyA(1),recA(1),sodA(3),tpi(3)]. This option\n                 \
+  \       is only available when the --scheme is defined\n  -n NOVEL, --novel NOVEL\n\
+  \                        File name of the novel alleles\n  -V, --version       \
+  \  Show program's version number and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/fastmlst:0.0.13--py_0

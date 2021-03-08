@@ -1,0 +1,120 @@
+!Command
+command:
+- komb
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: 'Output directory [Default: output_yyyymmdd_hhmmss]'
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: 'Number of Threads [Default: Max]'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --kmer
+  description: 'Kmer size for Abyss, Bifrost uses 31 [Default: 31]'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --numhits
+  description: 'Bowtie2 maximum number of hits [Default: 1000]'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --readlen
+  description: 'Read Length (can be average) [Default: 100]'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reads
+  description: "(required)  Paired-read file separated by ',' [Default: read1.fq\n\
+    ,read2.fq]"
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --alignment
+  description: 'Keep alignment files [Default: delete alignment]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --fasta
+  description: 'Reads provided are fasta files [Default: fastq]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --bifrost
+  description: 'Run bifrost instead of abyss [Default: run abyss]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --spades
+  description: "Runs spades and uses GFA graph instead of bifrost + bowtie2 [Default:\n\
+    run abyss]"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Displays usage information and exits.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Displays version information and exits.
+  args: !EmptyFlagArg {}
+help_text: "\nUSAGE: \n\n   komb  [-o <string>] [-t <int>] [-k <int>] [-n <int>] [-l\
+  \ <int>] -r\n         <string> [-a] [-f] [-b] [-s] [--] [--version] [-h]\n\n\nWhere:\
+  \ \n\n   -o <string>,  --output <string>\n     Output directory [Default: output_yyyymmdd_hhmmss]\n\
+  \n   -t <int>,  --threads <int>\n     Number of Threads [Default: Max]\n\n   -k\
+  \ <int>,  --kmer <int>\n     Kmer size for Abyss, Bifrost uses 31 [Default: 31]\n\
+  \n   -n <int>,  --numhits <int>\n     Bowtie2 maximum number of hits [Default: 1000]\n\
+  \n   -l <int>,  --readlen <int>\n     Read Length (can be average) [Default: 100]\n\
+  \n   -r <string>,  --reads <string>\n     (required)  Paired-read file separated\
+  \ by ',' [Default: read1.fq\n     ,read2.fq]\n\n   -a,  --alignment\n     Keep alignment\
+  \ files [Default: delete alignment]\n\n   -f,  --fasta\n     Reads provided are\
+  \ fasta files [Default: fastq]\n\n   -b,  --bifrost\n     Run bifrost instead of\
+  \ abyss [Default: run abyss]\n\n   -s,  --spades\n     Runs spades and uses GFA\
+  \ graph instead of bifrost + bowtie2 [Default:\n     run abyss]\n\n   --,  --ignore_rest\n\
+  \     Ignores the rest of the labeled arguments following this flag.\n\n   --version\n\
+  \     Displays version information and exits.\n\n   -h,  --help\n     Displays usage\
+  \ information and exits.\n\n\n   KOMB: Taxonomy-oblivious characterization of metagenome\
+  \ dynamics\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/komb:1.0--py36h5202f60_0

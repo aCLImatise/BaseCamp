@@ -1,0 +1,376 @@
+!Command
+command:
+- dfast
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --genome
+  description: Genomic FASTA file
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out
+  description: Output directory (default:OUT)
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --config
+  description: "Configuration file (default config will be used if not\nspecified)"
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --organism
+  description: Organism name
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - --strain
+  description: Strain name
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - --complete
+  description: "Treat the query as a complete genome. Not required\nunless you need\
+    \ INSDC submission files.\n[t|f(=default)]"
+  args: !SimpleFlagArg
+    name: BOOL
+- !Flag
+  optional: true
+  synonyms:
+  - --use_original_name
+  description: "Use original sequence names in a query FASTA file\n[t|f(=default)]"
+  args: !SimpleFlagArg
+    name: BOOL
+- !Flag
+  optional: true
+  synonyms:
+  - --sort_sequence
+  description: Sort sequences by length [t(=default)|f]
+  args: !SimpleFlagArg
+    name: BOOL
+- !Flag
+  optional: true
+  synonyms:
+  - --minimum_length
+  description: Minimum sequence length (default:200)
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --fix_origin
+  description: "Rotate/flip the chromosome so that the dnaA gene comes\nfirst. (ONLY\
+    \ FOR A FINISHED GENOME)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --offset
+  description: Offset from the start codon of the dnaA gene. (for
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --locus_tag_prefix
+  description: Locus tag prefix (defaut:LOCUS)
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - --step
+  description: Increment step of locus tag (default:10)
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --use_separate_tags
+  description: "Use separate tags according to feature types\n[t(=default)|f]"
+  args: !SimpleFlagArg
+    name: BOOL
+- !Flag
+  optional: true
+  synonyms:
+  - --threshold
+  description: "Thresholds for default database search (format:\n\"pident,q_cov,s_cov,e_value\"\
+    , default: \"0,75,75,1e-6\")"
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - --database
+  description: "Additional reference database to be searched against\nprior to the\
+    \ default database. (format:\ndb_path[,db_name[,pident,q_cov,s_cov,e_value]])"
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --references
+  description: "Reference file(s) for OrthoSearch. Use semicolons for\nmultiple files,\
+    \ e.g. 'genome1.faa;genome2.gbk'"
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --aligner
+  description: Aligner to use [ghostx(=default)|blastp|diamond]
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - --use_prodigal
+  description: Use Prodigal to predict CDS instead of MGA
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --use_genemarks2
+  description: "Use GeneMarkS2 to predict CDS instead of MGA.\n[auto|bact|arch]"
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - --use_trnascan
+  description: "Use tRNAscan-SE to predict tRNA instead of Aragorn.\n[bact|arch]"
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - --use_rnammer
+  description: "Use RNAmmer to predict rRNA instead of Barrnap.\n[bact|arch]"
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - --gcode
+  description: Genetic code [11(=default),4(=Mycoplasma)]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --no_hmm
+  description: Disable HMMscan
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no_cdd
+  description: Disable CDDsearch
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no_cds
+  description: Disable CDS prediction
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no_rrna
+  description: Disable rRNA prediction
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no_trna
+  description: Disable tRNA prediction
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no_crispr
+  description: Disable CRISPR prediction
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gff
+  description: "[Preliminary implementation] Read GFF to import\nstructural annotation.\
+    \ Ignores --use_original_name,\n--sort_sequence, --fix_origin."
+  args: !SimpleFlagArg
+    name: GFF
+- !Flag
+  optional: true
+  synonyms:
+  - --seq_names
+  description: Sequence names for each sequence (for complete genome)
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - --seq_types
+  description: "Sequence types for each sequence (chromosome/plasmid,\nfor complete\
+    \ genome)"
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - --seq_topologies
+  description: "Sequence topologies for each sequence\n(linear/circular, for complete\
+    \ genome)"
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - --additional_modifiers
+  description: Additional modifiers for source features
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - --metadata_file
+  description: "Path to a metadata file (optional for DDBJ submission\nfile)"
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --center_name
+  description: "Genome center name (optional for GenBank submission\nfile)"
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - --cpu
+  description: Number of CPUs to use
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --use_locustag_as_gene_id
+  description: "Use locustag as gene ID for FASTA and GFF. (Useful\nwhen providing\
+    \ DFAST results to other tools such as\nRoary)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dbroot
+  description: DB root directory (default:APP_ROOT/db
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --force
+  description: Force overwriting output
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: "Run in debug mode (Extra logging and retaining\ntemporary files)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --show_config
+  description: Show pipeline configuration and exit
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this help message
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Show program version
+  args: !EmptyFlagArg {}
+help_text: "usage: dfast -g your_genome.fna [options]\n\nDFAST: DDBJ Fast Annotation\
+  \ and Submission Tool version 1.2.13.\n\nBasic options:\n  -g PATH, --genome PATH\n\
+  \                        Genomic FASTA file\n  -o PATH, --out PATH   Output directory\
+  \ (default:OUT)\n  -c PATH, --config PATH\n                        Configuration\
+  \ file (default config will be used if not\n                        specified)\n\
+  \  --organism STR        Organism name\n  --strain STR          Strain name\n\n\
+  Genome settings:\n  --complete BOOL       Treat the query as a complete genome.\
+  \ Not required\n                        unless you need INSDC submission files.\n\
+  \                        [t|f(=default)]\n  --use_original_name BOOL\n         \
+  \               Use original sequence names in a query FASTA file\n            \
+  \            [t|f(=default)]\n  --sort_sequence BOOL  Sort sequences by length [t(=default)|f]\n\
+  \  --minimum_length INT  Minimum sequence length (default:200)\n  --fix_origin \
+  \         Rotate/flip the chromosome so that the dnaA gene comes\n             \
+  \           first. (ONLY FOR A FINISHED GENOME)\n  --offset INT          Offset\
+  \ from the start codon of the dnaA gene. (for\n                        --fix_origin\
+  \ option, default=0)\n\nLocus_tag settings:\n  --locus_tag_prefix STR\n        \
+  \                Locus tag prefix (defaut:LOCUS)\n  --step INT            Increment\
+  \ step of locus tag (default:10)\n  --use_separate_tags BOOL\n                 \
+  \       Use separate tags according to feature types\n                        [t(=default)|f]\n\
+  \nWorkflow options:\n  --threshold STR       Thresholds for default database search\
+  \ (format:\n                        \"pident,q_cov,s_cov,e_value\", default: \"\
+  0,75,75,1e-6\")\n  --database PATH       Additional reference database to be searched\
+  \ against\n                        prior to the default database. (format:\n   \
+  \                     db_path[,db_name[,pident,q_cov,s_cov,e_value]])\n  --references\
+  \ PATH     Reference file(s) for OrthoSearch. Use semicolons for\n             \
+  \           multiple files, e.g. 'genome1.faa;genome2.gbk'\n  --aligner STR    \
+  \     Aligner to use [ghostx(=default)|blastp|diamond]\n  --use_prodigal       \
+  \ Use Prodigal to predict CDS instead of MGA\n  --use_genemarks2 STR  Use GeneMarkS2\
+  \ to predict CDS instead of MGA.\n                        [auto|bact|arch]\n  --use_trnascan\
+  \ STR    Use tRNAscan-SE to predict tRNA instead of Aragorn.\n                 \
+  \       [bact|arch]\n  --use_rnammer STR     Use RNAmmer to predict rRNA instead\
+  \ of Barrnap.\n                        [bact|arch]\n  --gcode INT           Genetic\
+  \ code [11(=default),4(=Mycoplasma)]\n  --no_hmm              Disable HMMscan\n\
+  \  --no_cdd              Disable CDDsearch\n  --no_cds              Disable CDS\
+  \ prediction\n  --no_rrna             Disable rRNA prediction\n  --no_trna     \
+  \        Disable tRNA prediction\n  --no_crispr           Disable CRISPR prediction\n\
+  \  --gff GFF             [Preliminary implementation] Read GFF to import\n     \
+  \                   structural annotation. Ignores --use_original_name,\n      \
+  \                  --sort_sequence, --fix_origin.\n\nGenome source modifiers and\
+  \ metadata [advanced]:\n  These values are only used to create INSDC submission\
+  \ files and do not\n  affect the annotation result. See documents for more detail.\n\
+  \n  --seq_names STR       Sequence names for each sequence (for complete genome)\n\
+  \  --seq_types STR       Sequence types for each sequence (chromosome/plasmid,\n\
+  \                        for complete genome)\n  --seq_topologies STR  Sequence\
+  \ topologies for each sequence\n                        (linear/circular, for complete\
+  \ genome)\n  --additional_modifiers STR\n                        Additional modifiers\
+  \ for source features\n  --metadata_file PATH  Path to a metadata file (optional\
+  \ for DDBJ submission\n                        file)\n  --center_name STR     Genome\
+  \ center name (optional for GenBank submission\n                        file)\n\n\
+  Run options:\n  --cpu INT             Number of CPUs to use\n  --use_locustag_as_gene_id\n\
+  \                        Use locustag as gene ID for FASTA and GFF. (Useful\n  \
+  \                      when providing DFAST results to other tools such as\n   \
+  \                     Roary)\n  --dbroot PATH         DB root directory (default:APP_ROOT/db\n\
+  \  --force               Force overwriting output\n  --debug               Run in\
+  \ debug mode (Extra logging and retaining\n                        temporary files)\n\
+  \  --show_config         Show pipeline configuration and exit\n  --version     \
+  \        Show program version\n  -h, --help            Show this help message\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/dfast:1.2.13--h8b12597_0

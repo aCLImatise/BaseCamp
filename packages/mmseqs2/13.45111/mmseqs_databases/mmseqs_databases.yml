@@ -1,0 +1,150 @@
+!Command
+command:
+- mmseqs
+- databases
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: Name
+  description: 'Type            Taxonomy        Url                                                           '
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --force-reuse
+  description: Reuse tmp filse in tmp/latest folder ignoring parameters and version
+    changes [0]
+  args: !SimpleFlagArg
+    name: BOOL
+- !Flag
+  optional: true
+  synonyms:
+  - --remove-tmp-files
+  description: Delete temporary files [0]
+  args: !SimpleFlagArg
+    name: BOOL
+- !Flag
+  optional: true
+  synonyms:
+  - --compressed
+  description: Write compressed output [0]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: Number of CPU-cores used (all by default) [2]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: 'Verbosity level: 0: quiet, 1: +errors, 2: +warnings, 3: +info [3]'
+  args: !SimpleFlagArg
+    name: INT
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "usage: mmseqs databases <name> <o:sequenceDB> <tmpDir> [options]\n By\
+  \ Milot Mirdita <milot@mirdita.de>\n\n  Name                \tType      \tTaxonomy\t\
+  Url                                                           \n- UniRef100    \
+  \       \tAminoacid \t     yes\thttps://www.uniprot.org/help/uniref\n  The UniProt\
+  \ Reference Clusters provide clustered sets of sequences from the UniProt Knowledgebase.\n\
+  \  Cite: Suzek et al: UniRef: comprehensive and non-redundant UniProt reference\
+  \ clusters. Bioinformatics 23(10), 1282–1288 (2007)\n\n- UniRef90            \t\
+  Aminoacid \t     yes\thttps://www.uniprot.org/help/uniref\n  The UniProt Reference\
+  \ Clusters provide clustered sets of sequences from the UniProt Knowledgebase.\n\
+  \  Cite: Suzek et al: UniRef: comprehensive and non-redundant UniProt reference\
+  \ clusters. Bioinformatics 23(10), 1282–1288 (2007)\n\n- UniRef50            \t\
+  Aminoacid \t     yes\thttps://www.uniprot.org/help/uniref\n  The UniProt Reference\
+  \ Clusters provide clustered sets of sequences from the UniProt Knowledgebase.\n\
+  \  Cite: Suzek et al: UniRef: comprehensive and non-redundant UniProt reference\
+  \ clusters. Bioinformatics 23(10), 1282–1288 (2007)\n\n- UniProtKB           \t\
+  Aminoacid \t     yes\thttps://www.uniprot.org/help/uniprotkb\n  The UniProt Knowledgebase\
+  \ is the central hub for the collection of functional information on proteins, with\
+  \ accurate, consistent and rich annotation.\n  Cite: The UniProt Consortium: UniProt:\
+  \ a worldwide hub of protein knowledge. Nucleic Acids Res 47(D1), D506-515 (2019)\n\
+  \n- UniProtKB/TrEMBL    \tAminoacid \t     yes\thttps://www.uniprot.org/help/uniprotkb\n\
+  \  UniProtKB/TrEMBL (unreviewed) contains protein sequences associated with computationally\
+  \ generated annotation and large-scale functional characterization.\n  Cite: The\
+  \ UniProt Consortium: UniProt: a worldwide hub of protein knowledge. Nucleic Acids\
+  \ Res 47(D1), D506-515 (2019)\n\n- UniProtKB/Swiss-Prot\tAminoacid \t     yes\t\
+  https://uniprot.org\n  UniProtKB/Swiss-Prot (reviewed) is a high quality manually\
+  \ annotated and non-redundant protein sequence database, which brings together experimental\
+  \ results, computed features and scientific conclusions.\n  Cite: The UniProt Consortium:\
+  \ UniProt: a worldwide hub of protein knowledge. Nucleic Acids Res 47(D1), D506-515\
+  \ (2019)\n\n- NR                  \tAminoacid \t     yes\thttps://ftp.ncbi.nlm.nih.gov/blast/db/FASTA\n\
+  \  Non-redundant protein sequences from GenPept, Swissprot, PIR, PDF, PDB, and NCBI\
+  \ RefSeq.\n  Cite: NCBI Resource Coordinators: Database resources of the National\
+  \ Center for Biotechnology Information. Nucleic Acids Res 46(D1), D8-D13 (2018)\n\
+  \n- NT                  \tNucleotide\t       -\thttps://ftp.ncbi.nlm.nih.gov/blast/db/FASTA\n\
+  \  Partially non-redundant nucleotide sequences from all traditional divisions of\
+  \ GenBank, EMBL, and DDBJ excluding GSS, STS, PAT, EST, HTG, and WGS.\n  Cite: NCBI\
+  \ Resource Coordinators: Database resources of the National Center for Biotechnology\
+  \ Information. Nucleic Acids Res 46(D1), D8-D13 (2018)\n\n- GTDB               \
+  \ \tAminoacid \t     yes\thttps://gtdb.ecogenomic.org\n  Genome Taxonomy Database\
+  \ is a phylogenetically consistent, genome-based taxonomy that provides rank-normalized\
+  \ classifications for ~150,000 bacterial and archaeal genomes from domain to genus.\n\
+  \  Cite: Parks et al: A complete domain-to-species taxonomy for Bacteria and Archaea.\
+  \ Nat Biotechnol 38(9), 1079–1086 (2020)\n\n- PDB                 \tAminoacid \t\
+  \       -\thttps://www.rcsb.org\n  The Protein Data Bank is the single worldwide\
+  \ archive of structural data of biological macromolecules.\n  Cite: Berman et al:\
+  \ The Protein Data Bank. Nucleic Acids Res 28(1), 235-242 (2000)\n\n- PDB70    \
+  \           \tProfile   \t       -\thttps://github.com/soedinglab/hh-suite\n  PDB\
+  \ clustered to 70% sequence identity and enriched using HHblits with Uniclust sequences.\n\
+  \  Cite: Steinegger et al: HH-suite3 for fast remote homology detection and deep\
+  \ protein annotation. BMC Bioinform 20(1), 473 (2019)\n\n- Pfam-A.full         \t\
+  Profile   \t       -\thttps://pfam.xfam.org\n  The Pfam database is a large collection\
+  \ of protein families, each represented by multiple sequence alignments and hidden\
+  \ Markov models.\n  Cite: El-Gebali and Mistry et al: The Pfam protein families\
+  \ database in 2019. Nucleic Acids Res 47(D1), D427-D432 (2019)\n\n- Pfam-A.seed\
+  \         \tProfile   \t       -\thttps://pfam.xfam.org\n  The Pfam database is\
+  \ a large collection of protein families, each represented by multiple sequence\
+  \ alignments and hidden Markov models.\n  Cite: El-Gebali and Mistry et al: The\
+  \ Pfam protein families database in 2019. Nucleic Acids Res 47(D1), D427-D432 (2019)\n\
+  \n- Pfam-B              \tProfile   \t       -\thttps://xfam.wordpress.com/2020/06/30/a-new-pfam-b-is-released\n\
+  \  Pfam-B is a large automatically generated supplement to the Pfam database.\n\
+  \  Cite: Sonnhammer et al: A new Pfam-B is released. Xfam Blog (2020)\n\n- CDD \
+  \                \tProfile   \t       -\thttps://www.ncbi.nlm.nih.gov/Structure/cdd/cdd.shtml\n\
+  \  Conserved Domain Database is a protein annotation resource consisting of well-annotated\
+  \ MSAs for ancient domains and full-length proteins.\n  Cite: Lu et al: CDD/SPARCLE:\
+  \ the conserved domain database in 2020. Nucleic Acids Res 48(D1), D265–D268 (2020)\n\
+  \n- eggNOG              \tProfile   \t       -\thttp://eggnog5.embl.de\n  eggNOG\
+  \ is a hierarchical, functionally and phylogenetically annotated orthology resource\n\
+  \  Cite: Huerta-Cepas et al: eggNOG 5.0: a hierarchical, functionally and phylogenetically\
+  \ annotated orthology resource based on 5090 organisms and 2502 viruses. Nucleic\
+  \ Acids Res 47(D1), D309–D314 (2019)\n\n- dbCAN2              \tProfile   \t   \
+  \    -\thttp://bcb.unl.edu/dbCAN2\n  dbCAN2 is a database of carbohydrate-active\
+  \ enzymes.\n  Cite: Zhang et al: dbCAN2: a meta server for automated carbohydrate-active\
+  \ enzyme annotation. Nucleic Acids Res 46(W1), W95-W101 (2018)\n\n- SILVA      \
+  \         \tNucleotide\t     yes\thttps://www.arb-silva.de\n  SILVA provides datasets\
+  \ of aligned small and large subunit ribosomal RNA sequences for all three domains\
+  \ of life.\n  Cite: Yilmaz et al: The SILVA and \"All-species Living Tree Project\
+  \ (LTP)\" taxonomic frameworks. Nucleic Acids Res 42(D1), D643-D648 (2014)\n\n-\
+  \ Resfinder           \tNucleotide\t       -\thttps://cge.cbs.dtu.dk/services/ResFinder\n\
+  \  ResFinder is a database that captures antimicrobial resistance genes from whole-genome\
+  \ data sets.\n  Cite: Zankari et al: Identification of acquired antimicrobial resistance\
+  \ genes. J Antimicrob Chemother 67(11), 2640-2644 (2012)\n\n- Kalamari         \
+  \   \tNucleotide\t     yes\thttps://github.com/lskatz/Kalamari\n  Kalamari contains\
+  \ over 250 genomes chosen to be representative of agents tracked by genome-based\
+  \ foodborne disease surveillance, common contaminants, and diverse phyla and bacterial\
+  \ genera.\n  Cite: Katz et al: Kraken with Kalamari: Contamination Detection. ASM\
+  \ Poster, 270 (2018)\n\noptions:                         \n --force-reuse BOOL \
+  \      Reuse tmp filse in tmp/latest folder ignoring parameters and version changes\
+  \ [0]\n --remove-tmp-files BOOL  Delete temporary files [0]\n --compressed INT \
+  \        Write compressed output [0]\n --threads INT            Number of CPU-cores\
+  \ used (all by default) [2]\n -v INT                   Verbosity level: 0: quiet,\
+  \ 1: +errors, 2: +warnings, 3: +info [3]\n\nreferences:\n - Steinegger M, Soding\
+  \ J: MMseqs2 enables sensitive protein sequence searching for the analysis of massive\
+  \ data sets. Nature Biotechnology, 35(11), 1026-1028 (2017)\n - Mirdita M, Steinegger\
+  \ M, Breitwieser F, Soding J, Levy Karin E: Fast and sensitive taxonomic assignment\
+  \ to metagenomic contigs. bioRxiv, 2020.11.27.401018 (2020)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/mmseqs2:13.45111--h2d02072_0

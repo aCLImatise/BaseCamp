@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, String, File
+
+Vcffilter_V0_1_0 = CommandToolBuilder(tool="vcffilter", base_command=["vcffilter"], inputs=[ToolInput(tag="in_info_filter", input_type=Boolean(optional=True), prefix="--info-filter", doc=InputDocumentation(doc="specifies a filter to apply to the info fields of records,\nremoves alleles which do not pass the filter")), ToolInput(tag="in_genotype_filter", input_type=String(optional=True), prefix="--genotype-filter", doc=InputDocumentation(doc="a filter to apply to the genotype fields of records")), ToolInput(tag="in_keep_info", input_type=Boolean(optional=True), prefix="--keep-info", doc=InputDocumentation(doc="used in conjunction with '-g', keeps variant info, but removes genotype")), ToolInput(tag="in_filter_sites", input_type=Boolean(optional=True), prefix="--filter-sites", doc=InputDocumentation(doc="filter entire records, not just alleles")), ToolInput(tag="in_tag_pass", input_type=Boolean(optional=True), prefix="--tag-pass", doc=InputDocumentation(doc="tag vcf records as positively filtered with this tag, print all records")), ToolInput(tag="in_tag_fail", input_type=Boolean(optional=True), prefix="--tag-fail", doc=InputDocumentation(doc="tag vcf records as negatively filtered with this tag, print all records")), ToolInput(tag="in_append_filter", input_type=Boolean(optional=True), prefix="--append-filter", doc=InputDocumentation(doc="append the existing filter tag, don't just replace it")), ToolInput(tag="in_allele_tag", input_type=Boolean(optional=True), prefix="--allele-tag", doc=InputDocumentation(doc="apply -t on a per-allele basis.  adds or sets the corresponding INFO field tag")), ToolInput(tag="in_invert", input_type=Boolean(optional=True), prefix="--invert", doc=InputDocumentation(doc="inverts the filter, e.g. grep -v")), ToolInput(tag="in_or", input_type=Boolean(optional=True), prefix="--or", doc=InputDocumentation(doc="use logical OR instead of AND to combine filters")), ToolInput(tag="in_region", input_type=Boolean(optional=True), prefix="--region", doc=InputDocumentation(doc="specify a region on which to target the filtering, requires a BGZF\ncompressed file which has been indexed with tabix.  any number of\nregions may be specified.")), ToolInput(tag="in_vcf_file", input_type=File(), position=0, doc=InputDocumentation(doc=""))], outputs=[], container="quay.io/biocontainers/vcflib:1.0.2--hfbaaabd_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Vcffilter_V0_1_0().translate("wdl")
+

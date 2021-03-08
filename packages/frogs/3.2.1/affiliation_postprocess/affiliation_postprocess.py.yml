@@ -1,0 +1,140 @@
+!Command
+command:
+- affiliation_postprocess.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --identity
+  description: "Min percentage identity to agggregate OTU. [Default:\n99.0]"
+  args: !SimpleFlagArg
+    name: IDENTITY
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --coverage
+  description: "Min percentage coverage to agggregate OTU. [Default:\n99.0]"
+  args: !SimpleFlagArg
+    name: COVERAGE
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: "[TAXON_IGNORED [TAXON_IGNORED ...]], --taxon-ignored [TAXON_IGNORED\
+    \ [TAXON_IGNORED ...]]\nTaxon list to ignore when OTUs agggregation"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --debug
+  description: Keep temporary files to debug program.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --input-biom
+  description: "Abundance table with affiliations metadata from the\naffiliation_OTU\
+    \ program (format: BIOM)."
+  args: !SimpleFlagArg
+    name: INPUT_BIOM
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --input-fasta
+  description: 'OTU seed sequence file (format: FASTA).'
+  args: !SimpleFlagArg
+    name: INPUT_FASTA
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reference
+  description: "amplicon reference file, to resolve inclusive amplicon\naffiliations\
+    \ (format: FASTA)"
+  args: !SimpleFlagArg
+    name: REFERENCE
+- !Flag
+  optional: true
+  synonyms:
+  - --output-biom
+  description: "BIOM file whith refind affiliation annotations.\n(format: BIOM) [Default:\n\
+    affiliation_postprocess_abundance.biom]"
+  args: !SimpleFlagArg
+    name: OUTPUT_BIOM
+- !Flag
+  optional: true
+  synonyms:
+  - --output-compo
+  description: "Aggregated OTU composition (format: TSV) [Default:\naffiliation_postprocess_otu_composition.tsv]"
+  args: !SimpleFlagArg
+    name: OUTPUT_COMPO
+- !Flag
+  optional: true
+  synonyms:
+  - --output-fasta
+  description: "Updated OTU FASTA file (format: FASTA) [Default:\naffiliation_postprocess_OTU.fasta]"
+  args: !SimpleFlagArg
+    name: OUTPUT_FASTA
+- !Flag
+  optional: true
+  synonyms:
+  - --log-file
+  description: The list of commands executed.
+  args: !SimpleFlagArg
+    name: LOG_FILE
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: affiliation_postprocess.py [-h] [-i IDENTITY] [-c COVERAGE]\n \
+  \                                 [-t [TAXON_IGNORED [TAXON_IGNORED ...]]]\n   \
+  \                               [-d] [-v] -b INPUT_BIOM -f INPUT_FASTA\n       \
+  \                           [-r REFERENCE] [--output-biom OUTPUT_BIOM]\n       \
+  \                           [--output-compo OUTPUT_COMPO]\n                    \
+  \              [--output-fasta OUTPUT_FASTA]\n                                 \
+  \ [--log-file LOG_FILE]\n\nRefine affiliations, to manage amplicon included in other\
+  \ sequence, and to\ndeal with surnumerary OTU (OTU with same affiliations.\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  -i IDENTITY,\
+  \ --identity IDENTITY\n                        Min percentage identity to agggregate\
+  \ OTU. [Default:\n                        99.0]\n  -c COVERAGE, --coverage COVERAGE\n\
+  \                        Min percentage coverage to agggregate OTU. [Default:\n\
+  \                        99.0]\n  -t [TAXON_IGNORED [TAXON_IGNORED ...]], --taxon-ignored\
+  \ [TAXON_IGNORED [TAXON_IGNORED ...]]\n                        Taxon list to ignore\
+  \ when OTUs agggregation\n  -d, --debug           Keep temporary files to debug\
+  \ program.\n  -v, --version         show program's version number and exit\n\nInputs:\n\
+  \  -b INPUT_BIOM, --input-biom INPUT_BIOM\n                        Abundance table\
+  \ with affiliations metadata from the\n                        affiliation_OTU program\
+  \ (format: BIOM).\n  -f INPUT_FASTA, --input-fasta INPUT_FASTA\n               \
+  \         OTU seed sequence file (format: FASTA).\n  -r REFERENCE, --reference REFERENCE\n\
+  \                        amplicon reference file, to resolve inclusive amplicon\n\
+  \                        affiliations (format: FASTA)\n\nOutputs:\n  --output-biom\
+  \ OUTPUT_BIOM\n                        BIOM file whith refind affiliation annotations.\n\
+  \                        (format: BIOM) [Default:\n                        affiliation_postprocess_abundance.biom]\n\
+  \  --output-compo OUTPUT_COMPO\n                        Aggregated OTU composition\
+  \ (format: TSV) [Default:\n                        affiliation_postprocess_otu_composition.tsv]\n\
+  \  --output-fasta OUTPUT_FASTA\n                        Updated OTU FASTA file (format:\
+  \ FASTA) [Default:\n                        affiliation_postprocess_OTU.fasta]\n\
+  \  --log-file LOG_FILE   The list of commands executed.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/frogs:3.2.1--py37_0

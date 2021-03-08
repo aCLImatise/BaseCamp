@@ -1,0 +1,128 @@
+!Command
+command:
+- planemo
+- database_delete
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: local
+  description: all   all                    trust
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --postgres
+  description: Use postgres database type.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --database_type
+  description: "[postgres|postgres_docker|sqlite|auto]\nType of database to use for\
+    \ profile -\n'auto', 'sqlite', 'postgres', and\n'postgres_docker' are available\
+    \ options. Use\npostgres to use an existing postgres server\nyou user can access\
+    \ without a password via\nthe psql command. Use postgres_docker to\nhave Planemo\
+    \ manage a docker container\nrunning postgres. Data with postgres_docker\nis not\
+    \ yet persisted past when you restart\nthe docker container launched by Planemo\
+    \ so\nbe careful with this option."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --postgres_psql_path
+  description: "Name or or path to postgres client binary\n(psql)."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --postgres_database_user
+  description: Postgres username for managed development
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --docker_sudo
+  - --no_docker_sudo
+  description: Flag to use sudo when running docker.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --docker_host
+  description: "Docker host to target when executing docker\ncommands (defaults to\
+    \ localhost)."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --docker_sudo_cmd
+  description: "sudo command to use when --docker_sudo is\nenabled (defaults to sudo)."
+  args: !SimpleFlagArg
+    name: TEXT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: planemo database_delete [OPTIONS] IDENTIFIER\n\n  Delete a *development*\
+  \ database.\n\n  Currently the only implementation is postgres which will be managed\
+  \ with\n  ``psql``.\n\n  Planemo ``database_`` commands make it very easy to create\
+  \ and destroy\n  databases, therefore it should not be used for production data\
+  \ - and it\n  should not even be connnected to a production database server. Planemo\
+  \ is\n  intended for development purposes only.\n\n  Planemo will assume that it\
+  \ can manage and access postgres databases\n  without specifying a password. This\
+  \ can be accomplished by configuring\n  postgres to not required a password for\
+  \ the planemo user or by specifying\n  a password in a ``.pgpass`` file.\n\n  Planemo\
+  \ can be configured to not require a password for the planemo user\n  in the postgres\
+  \ configuration file ``pg_hba.conf`` (on Ubuntu/Debian linux\n  distros this file\
+  \ is in /etc/postgresql/<postgres_version>/main/\n  directory). Adding the following\
+  \ lines to that file will allow planemo and\n  Galaxy to access the databases without\
+  \ a password.\n\n      # \"local\" is for Unix domain socket connections only\n\
+  \      local   all   all                    trust\n      # IPv4 local connections:\n\
+  \      host    all   all    127.0.0.1/32    trust\n      # IPv6 local connections:\n\
+  \      host    all   all    ::1/128         trust\n\n  More information on the ``pg_hda.conf``\
+  \ configuration file can be found at\n  http://www.postgresql.org/docs/9.3/static/auth-pg-hba-conf.html.\n\
+  \n  Information on ``.pgpass`` files can be found at at the following\n  location:\
+  \ http://www.postgresql.org/docs/9.4/static/libpq-pgpass.html. In\n  Ubuntu and\
+  \ Debian distros - a postgres user likely already exists and its\n  password can\
+  \ be set by setting up a file ``~/.pgpass`` file with the\n  following contents.\n\
+  \n      *:*:*:postgres:<postgres_password>\n\nOptions:\n  --postgres           \
+  \           Use postgres database type.\n  --database_type [postgres|postgres_docker|sqlite|auto]\n\
+  \                                  Type of database to use for profile -\n     \
+  \                             'auto', 'sqlite', 'postgres', and\n              \
+  \                    'postgres_docker' are available options. Use\n            \
+  \                      postgres to use an existing postgres server\n           \
+  \                       you user can access without a password via\n           \
+  \                       the psql command. Use postgres_docker to\n             \
+  \                     have Planemo manage a docker container\n                 \
+  \                 running postgres. Data with postgres_docker\n                \
+  \                  is not yet persisted past when you restart\n                \
+  \                  the docker container launched by Planemo so\n               \
+  \                   be careful with this option.\n\n  --postgres_psql_path TEXT\
+  \       Name or or path to postgres client binary\n                            \
+  \      (psql).\n\n  --postgres_database_user TEXT   Postgres username for managed\
+  \ development\n                                  databases.\n\n  --postgres_database_host\
+  \ TEXT   Postgres host name for managed development\n                          \
+  \        databases.\n\n  --postgres_database_port TEXT   Postgres port for managed\
+  \ development\n                                  databases.\n\n  --docker_cmd TEXT\
+  \               Command used to launch docker (defaults to\n                   \
+  \               docker).\n\n  --docker_sudo / --no_docker_sudo\n               \
+  \                   Flag to use sudo when running docker.\n  --docker_host TEXT\
+  \              Docker host to target when executing docker\n                   \
+  \               commands (defaults to localhost).\n\n  --docker_sudo_cmd TEXT  \
+  \        sudo command to use when --docker_sudo is\n                           \
+  \       enabled (defaults to sudo).\n\n  --help                          Show this\
+  \ message and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/planemo:0.74.3--py_0

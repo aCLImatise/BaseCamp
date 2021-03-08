@@ -1,0 +1,133 @@
+!Command
+command:
+- fmlrc2
+positional:
+- !Positional
+  optional: true
+  position: 0
+  name: FLAGS
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: COMP_MSBWT.NPY
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: LONG_READS.FA
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: enable verbose output
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --begin_index
+  description: 'index of read to start with (default: 0)'
+  args: !SimpleFlagArg
+    name: begin_id
+- !Flag
+  optional: true
+  synonyms:
+  - -B
+  - --branch_factor
+  description: 'branching factor for correction, scaled by k (default: 4.0)'
+  args: !SimpleFlagArg
+    name: branch_factor
+- !Flag
+  optional: true
+  synonyms:
+  - -C
+  - --cache_size
+  description: 'the length of k-mer to precompute in cache (default: 8)'
+  args: !SimpleFlagArg
+    name: cache_size
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --end_index
+  description: 'index of read to end with (default: end of file)'
+  args: !SimpleFlagArg
+    name: end_id
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --K
+  description: "...                k-mer sizes for correction, can be specified multiple\
+    \ times (default: \"-k 21\n59\")"
+  args: !SimpleFlagArg
+    name: kmer_sizes
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --min_count
+  description: 'absolute minimum k-mer count to consisder a path (default: 5)'
+  args: !SimpleFlagArg
+    name: min_count
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --min_dynamic_count
+  description: "dynamic minimum k-mer count fraction of median to consider a path\
+    \ (default:\n0.1)"
+  args: !SimpleFlagArg
+    name: min_frac
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: 'number of correction threads (default: 1)'
+  args: !SimpleFlagArg
+    name: threads
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Prints help information
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Prints version information
+  args: !EmptyFlagArg {}
+help_text: "FMLRC2 0.1.4\nJ. Matthew Holt <jholt@hudsonalpha.org>\nFM-index Long Read\
+  \ Corrector - Rust implementation\n\nUSAGE:\n    fmlrc2 [FLAGS] [OPTIONS] <COMP_MSBWT.NPY>\
+  \ <LONG_READS.FA> <CORRECTED_READS.FA>\n\nFLAGS:\n    -h, --help       Prints help\
+  \ information\n    -V, --version    Prints version information\n    -v, --verbose\
+  \    enable verbose output\n\nOPTIONS:\n    -b, --begin_index <begin_id>       \
+  \    index of read to start with (default: 0)\n    -B, --branch_factor <branch_factor>\
+  \    branching factor for correction, scaled by k (default: 4.0)\n    -C, --cache_size\
+  \ <cache_size>          the length of k-mer to precompute in cache (default: 8)\n\
+  \    -e, --end_index <end_id>               index of read to end with (default:\
+  \ end of file)\n    -k, --K <kmer_sizes>...                k-mer sizes for correction,\
+  \ can be specified multiple times (default: \"-k 21\n                          \
+  \                 59\")\n    -m, --min_count <min_count>            absolute minimum\
+  \ k-mer count to consisder a path (default: 5)\n    -f, --min_dynamic_count <min_frac>\
+  \     dynamic minimum k-mer count fraction of median to consider a path (default:\n\
+  \                                           0.1)\n    -t, --threads <threads>  \
+  \              number of correction threads (default: 1)\n\nARGS:\n    <COMP_MSBWT.NPY>\
+  \        The compressed BWT file with high accuracy reads\n    <LONG_READS.FA> \
+  \        The FASTX file with uncorrected reads\n    <CORRECTED_READS.FA>    The\
+  \ FASTA file to write corrected reads to\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/fmlrc2:0.1.4--heda7bfa_0

@@ -1,0 +1,115 @@
+!Command
+command:
+- fastafunk
+- split
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --in-metadata
+  description: '[--index-column <column>]'
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - --index-field
+  description: '[--lineage LINEAGE [LINEAGE ...]]'
+  args: !SimpleFlagArg
+    name: field
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: Run with high verbosity (debug level logging)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --log-file
+  description: "Log file to use (otherwise uses stdout, or stderr if\nout-fasta to\
+    \ stdout)"
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - --in-fasta
+  description: One FASTA files of sequences (else reads from stdin)
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - --index-column
+  description: "Column(s) in the metadata file to use to match to the\nsequence"
+  args: !SimpleFlagArg
+    name: column
+- !Flag
+  optional: true
+  synonyms:
+  - --lineage
+  description: "Specific list of lineages to split by with others\ncollpasing to nearest\
+    \ lineage."
+  args: !RepeatFlagArg
+    name: LINEAGE
+- !Flag
+  optional: true
+  synonyms:
+  - --lineage-csv
+  description: "CSV with lineage and outgroup columns defining the\nlineages to split\
+    \ by."
+  args: !SimpleFlagArg
+    name: LINEAGE_CSV
+- !Flag
+  optional: true
+  synonyms:
+  - --aliases
+  description: JSON with aliases for lettered lineages.
+  args: !SimpleFlagArg
+    name: ALIASES
+- !Flag
+  optional: true
+  synonyms:
+  - --out-folder
+  description: "A directory for output FASTA files\n"
+  args: !SimpleFlagArg
+    name: filename
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: fastafunk split [-h] [-v] [--log-file <filename>] --in-fasta <filename>\n\
+  \                       --in-metadata <filename> [--index-column <column>]\n   \
+  \                    --index-field <field> [--lineage LINEAGE [LINEAGE ...]]\n \
+  \                      [--lineage-csv LINEAGE_CSV] [--aliases ALIASES]\n       \
+  \                [--out-folder <filename>]\n\noptional arguments:\n  -h, --help\
+  \            show this help message and exit\n  -v, --verbose         Run with high\
+  \ verbosity (debug level logging)\n  --log-file <filename>\n                   \
+  \     Log file to use (otherwise uses stdout, or stderr if\n                   \
+  \     out-fasta to stdout)\n  --in-fasta <filename>\n                        One\
+  \ FASTA files of sequences (else reads from stdin)\n  --in-metadata <filename>\n\
+  \                        One CSV of metadata\n  --index-column <column>\n      \
+  \                  Column(s) in the metadata file to use to match to the\n     \
+  \                   sequence\n  --index-field <field>\n                        Field(s)\
+  \ in the fasta header to match the metadata\n                        (else matches\
+  \ column names)\n  --lineage LINEAGE [LINEAGE ...]\n                        Specific\
+  \ list of lineages to split by with others\n                        collpasing to\
+  \ nearest lineage.\n  --lineage-csv LINEAGE_CSV\n                        CSV with\
+  \ lineage and outgroup columns defining the\n                        lineages to\
+  \ split by.\n  --aliases ALIASES     JSON with aliases for lettered lineages.\n\
+  \  --out-folder <filename>\n                        A directory for output FASTA\
+  \ files\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/fastafunk:0.0.9--pyh3252c3a_0

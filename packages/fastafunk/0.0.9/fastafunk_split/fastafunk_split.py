@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, String, Boolean, Array, Directory
+
+Fastafunk_Split_V0_1_0 = CommandToolBuilder(tool="fastafunk_split", base_command=["fastafunk", "split"], inputs=[ToolInput(tag="in_in_metadata", input_type=File(optional=True), prefix="--in-metadata", doc=InputDocumentation(doc="[--index-column <column>]")), ToolInput(tag="in_index_field", input_type=String(optional=True), prefix="--index-field", doc=InputDocumentation(doc="[--lineage LINEAGE [LINEAGE ...]]")), ToolInput(tag="in_verbose", input_type=Boolean(optional=True), prefix="--verbose", doc=InputDocumentation(doc="Run with high verbosity (debug level logging)")), ToolInput(tag="in_log_file", input_type=File(optional=True), prefix="--log-file", doc=InputDocumentation(doc="Log file to use (otherwise uses stdout, or stderr if\nout-fasta to stdout)")), ToolInput(tag="in_in_fast_a", input_type=File(optional=True), prefix="--in-fasta", doc=InputDocumentation(doc="One FASTA files of sequences (else reads from stdin)")), ToolInput(tag="in_index_column", input_type=File(optional=True), prefix="--index-column", doc=InputDocumentation(doc="Column(s) in the metadata file to use to match to the\nsequence")), ToolInput(tag="in_lineage", input_type=Array(t=String(), optional=True), prefix="--lineage", doc=InputDocumentation(doc="Specific list of lineages to split by with others\ncollpasing to nearest lineage.")), ToolInput(tag="in_lineage_csv", input_type=String(optional=True), prefix="--lineage-csv", doc=InputDocumentation(doc="CSV with lineage and outgroup columns defining the\nlineages to split by.")), ToolInput(tag="in_aliases", input_type=String(optional=True), prefix="--aliases", doc=InputDocumentation(doc="JSON with aliases for lettered lineages.")), ToolInput(tag="in_out_folder", input_type=Directory(optional=True), prefix="--out-folder", doc=InputDocumentation(doc="A directory for output FASTA files\n"))], outputs=[ToolOutput(tag="out_log_file", output_type=File(optional=True), selector=InputSelector(input_to_select="in_log_file", type_hint=File()), doc=OutputDocumentation(doc="Log file to use (otherwise uses stdout, or stderr if\nout-fasta to stdout)")), ToolOutput(tag="out_out_folder", output_type=Directory(optional=True), selector=InputSelector(input_to_select="in_out_folder", type_hint=File()), doc=OutputDocumentation(doc="A directory for output FASTA files\n"))], container="quay.io/biocontainers/fastafunk:0.0.9--pyh3252c3a_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Fastafunk_Split_V0_1_0().translate("wdl")
+

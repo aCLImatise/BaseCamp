@@ -1,0 +1,66 @@
+!Command
+command:
+- mmseqs
+- filtertaxseqdb
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --taxon-list
+  description: Taxonomy ID, possibly multiple values separated by ',' []
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - --subdb-mode
+  description: 'Subdb mode 0: copy data 1: soft link data and write index [0]'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --compressed
+  description: Write compressed output [0]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: Number of CPU-cores used (all by default) [2]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: 'Verbosity level: 0: quiet, 1: +errors, 2: +warnings, 3: +info [3]'
+  args: !SimpleFlagArg
+    name: INT
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "usage: mmseqs filtertaxseqdb <i:taxSeqDB> <o:taxSeqDB> [options]\n By\
+  \ Eli Levy Karin <eli.levy.karin@gmail.com> & Martin Steinegger <martin.steinegger@snu.ac.kr>\n\
+  options: misc:             \n --taxon-list STR   Taxonomy ID, possibly multiple\
+  \ values separated by ',' []\n --subdb-mode INT   Subdb mode 0: copy data 1: soft\
+  \ link data and write index [0]\ncommon:           \n --compressed INT   Write compressed\
+  \ output [0]\n --threads INT      Number of CPU-cores used (all by default) [2]\n\
+  \ -v INT             Verbosity level: 0: quiet, 1: +errors, 2: +warnings, 3: +info\
+  \ [3]\n\nexamples:\n # Download a sequence database with taxonomy information\n\
+  \ mmseqs databases UniProtKB/Swiss-Prot swissprotDB tmp\n \n # Retain all bacterial\
+  \ sequences\n mmseqs filtertaxseqdb swissprotDB swissprotDB_only_bac --taxon-list\
+  \ 2\n \n # Retain all eukaryotic sequences except fungi\n mmseqs filtertaxseqdb\
+  \ swissprotDB swissprotDB_euk_wo_fungi --taxon-list '2759&&!4751'\n \n # Retain\
+  \ all human and chlamydia sequences\n mmseqs filtertaxseqdb swissprotDB swissprotDB_human_and_chlamydia\
+  \ --taxon-list '9606||810'\n \n \nreferences:\n - Mirdita M, Steinegger M, Breitwieser\
+  \ F, Soding J, Levy Karin E: Fast and sensitive taxonomic assignment to metagenomic\
+  \ contigs. bioRxiv, 2020.11.27.401018 (2020)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/mmseqs2:13.45111--h2d02072_0

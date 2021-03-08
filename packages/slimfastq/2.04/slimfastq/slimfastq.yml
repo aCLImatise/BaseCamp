@@ -1,0 +1,113 @@
+!Command
+command:
+- slimfastq
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: usr-filename
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  description: 'usr-filename : (default: stdin)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: ': required - compressed'
+  args: !SimpleFlagArg
+    name: comp-filename
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: ': decode (instead of encoding)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -O
+  description: ': silently overwrite existing files'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: ': compression level 1 to 4 (default is 3 )'
+  args: !SimpleFlagArg
+    name: level
+- !Flag
+  optional: true
+  synonyms:
+  - '-1'
+  - '-2'
+  - '-3'
+  - '-4'
+  description: ": alias for -l 1, -l 2, etc\nWhere levels are:\n1: Uses less than\
+    \ 4M memory (!), yields the worse compression (still much better than gzip)\n\
+    2: Uses about 30M memory, resonable compression\n3: Uses about 80M memory, best\
+    \ compression <default level>\n4: Compress a little more, but very costly (competition\
+    \ mode?)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: ': version : internal version'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: ': stat : information about a compressed file'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  description: ': suppress extra stats info that could have been seen by -s'
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: ': help : this message'
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: \n-u  usr-filename : (default: stdin)\n-f comp-filename : required\
+  \ - compressed\n-d               : decode (instead of encoding) \n-O           \
+  \    : silently overwrite existing files\n-l level         : compression level 1\
+  \ to 4 (default is 3 ) \n-1, -2, -3, -4   : alias for -l 1, -l 2, etc \n Where levels\
+  \ are:\n 1: Uses less than 4M memory (!), yields the worse compression (still much\
+  \ better than gzip)\n 2: Uses about 30M memory, resonable compression \n 3: Uses\
+  \ about 80M memory, best compression <default level> \n 4: Compress a little more,\
+  \ but very costly (competition mode?) \n\n-v               : version : internal\
+  \ version \n-h               : help : this message \n-s               : stat : information\
+  \ about a compressed file \n-q               : suppress extra stats info that could\
+  \ have been seen by -s \n\nDWIM (Do what I mean) - Intuitive use of 'slimfastq A\
+  \ B' : \nIf A appears to be a fastq file, and:\n    B does not exists, or -O option\
+  \ is used: compress A to B \nIf A appears to be a slimfastq file, and: \n    B does\
+  \ not exist, or -O option is used: decompress A to B \n    B is omitted: decompress\
+  \ A to stdout \nExamples: \n% slimfastq <file.fastq> <new-file.sfq>   : compress\
+  \ <file.fastq> to <new-file.sfq> \n% slimfastq -1 <file.fastq> <new-file.sfq*: compress\
+  \ <file.fastq> to <new-file.sfq>, using level 1 \n% slimfastq <file.sfq>       \
+  \             : decompress <file.sfq> to stdout \n% slimfastq <file.sfq> <file.fastq\
+  \        : decompress <file.sfq> to <file.fastq*\n% gzip -dc <file.fastq.gz> | slimfastq\
+  \ -f <file.sfq> : convert from gzip to sfq format\nVerification example:\n% md5sum\
+  \ <file.fastq>                      : remember checksum \n% slimfastq <file.fastq>\
+  \ <new-file.sfq>    : compress \n% slimfastq <new-file.sfq> | md5sum -      : decompress\
+  \ pipe to md5sum, compare checksums \n\nNote: to support pipes and reduce the use\
+  \ of resources, slimfastq was coded to run in a \nsingle thread. For a multi-session\
+  \ example - efficiently compressing multiple files in \nparallel - please use tools/slimfastq.multi\
+  \ -h (or make install; slimfastq.multi -h) \n\n"
+generated_using:
+- -h
+docker_image: quay.io/biocontainers/slimfastq:2.04--he1b5a44_0

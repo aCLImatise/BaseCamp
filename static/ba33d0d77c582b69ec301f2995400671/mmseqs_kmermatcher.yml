@@ -1,0 +1,206 @@
+!Command
+command:
+- mmseqs
+- kmermatcher
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --alph-size
+  description: Alphabet size (range 2-21) [nucl:5,aa:13]
+  args: !SimpleFlagArg
+    name: TWIN
+- !Flag
+  optional: true
+  synonyms:
+  - --spaced-kmer-mode
+  description: '0: use consecutive positions in k-mers; 1: use spaced k-mers [0]'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --spaced-kmer-pattern
+  description: User-specified spaced k-mer pattern []
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - --mask
+  description: 'Mask sequences in k-mer stage: 0: w/o low complexity masking, 1: with
+    low complexity masking [0]'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --mask-lower-case
+  description: 'Lowercase letters will be excluded from k-mer search 0: include region,
+    1: exclude region [0]'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  description: 'k-mer length (0: automatically set to optimum) [0]'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --split-memory-limit
+  description: Set max memory per split. E.g. 800B, 5K, 10M, 1G. Default (0) to all
+    available system memory [0]
+  args: !SimpleFlagArg
+    name: BYTE
+- !Flag
+  optional: true
+  synonyms:
+  - --min-seq-id
+  description: List matches above this sequence identity (for clustering) (range 0.0-1.0)
+    [0.000]
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --cov-mode
+  description: "0: coverage of query and target\n1: coverage of target\n2: coverage\
+    \ of query\n3: target seq. length has to be at least x% of query length\n4: query\
+    \ seq. length has to be at least x% of target length\n5: short seq. needs to be\
+    \ at least x% of the other seq. length [0]"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: List matches above this fraction of aligned (covered) residues (see
+    --cov-mode) [0.800]
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --kmer-per-seq
+  description: k-mers per sequence [0]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --kmer-per-seq-scale
+  description: Scale k-mer per sequence based on sequence length as kmer-per-seq val
+    + scale x seqlen [nucl:0.200,aa:0.000]
+  args: !SimpleFlagArg
+    name: TWIN
+- !Flag
+  optional: true
+  synonyms:
+  - --adjust-kmer-len
+  description: Adjust k-mer length based on specificity (only for nucleotides) [0]
+  args: !SimpleFlagArg
+    name: BOOL
+- !Flag
+  optional: true
+  synonyms:
+  - --hash-shift
+  description: Shift k-mer hash initialization [67]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --include-only-extendable
+  description: Include only extendable [0]
+  args: !SimpleFlagArg
+    name: BOOL
+- !Flag
+  optional: true
+  synonyms:
+  - --ignore-multi-kmer
+  description: Skip k-mers occurring multiple times (>=2) [0]
+  args: !SimpleFlagArg
+    name: BOOL
+- !Flag
+  optional: true
+  synonyms:
+  - --sub-mat
+  description: Substitution matrix file [nucl:nucleotide.out,aa:blosum62.out]
+  args: !SimpleFlagArg
+    name: TWIN
+- !Flag
+  optional: true
+  synonyms:
+  - --max-seq-len
+  description: Maximum sequence length [65535]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: Number of CPU-cores used (all by default) [2]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --compressed
+  description: Write compressed output [0]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: 'Verbosity level: 0: quiet, 1: +errors, 2: +warnings, 3: +info [3]'
+  args: !SimpleFlagArg
+    name: INT
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "usage: mmseqs kmermatcher <i:sequenceDB> <o:prefilterDB> [options]\n By\
+  \ Martin Steinegger <martin.steinegger@snu.ac.kr>\noptions: prefilter:         \
+  \            \n --alph-size TWIN                Alphabet size (range 2-21) [nucl:5,aa:13]\n\
+  \ --spaced-kmer-mode INT          0: use consecutive positions in k-mers; 1: use\
+  \ spaced k-mers [0]\n --spaced-kmer-pattern STR       User-specified spaced k-mer\
+  \ pattern []\n --mask INT                      Mask sequences in k-mer stage: 0:\
+  \ w/o low complexity masking, 1: with low complexity masking [0]\n --mask-lower-case\
+  \ INT           Lowercase letters will be excluded from k-mer search 0: include\
+  \ region, 1: exclude region [0]\n -k INT                          k-mer length (0:\
+  \ automatically set to optimum) [0]\n --split-memory-limit BYTE       Set max memory\
+  \ per split. E.g. 800B, 5K, 10M, 1G. Default (0) to all available system memory\
+  \ [0]\nalign:                         \n --min-seq-id FLOAT              List matches\
+  \ above this sequence identity (for clustering) (range 0.0-1.0) [0.000]\n --cov-mode\
+  \ INT                  0: coverage of query and target\n                       \
+  \          1: coverage of target\n                                 2: coverage of\
+  \ query\n                                 3: target seq. length has to be at least\
+  \ x% of query length\n                                 4: query seq. length has\
+  \ to be at least x% of target length\n                                 5: short\
+  \ seq. needs to be at least x% of the other seq. length [0]\n -c FLOAT         \
+  \               List matches above this fraction of aligned (covered) residues (see\
+  \ --cov-mode) [0.800]\nkmermatcher:                   \n --kmer-per-seq INT    \
+  \          k-mers per sequence [0]\n --kmer-per-seq-scale TWIN       Scale k-mer\
+  \ per sequence based on sequence length as kmer-per-seq val + scale x seqlen [nucl:0.200,aa:0.000]\n\
+  \ --adjust-kmer-len BOOL          Adjust k-mer length based on specificity (only\
+  \ for nucleotides) [0]\n --hash-shift INT                Shift k-mer hash initialization\
+  \ [67]\n --include-only-extendable BOOL  Include only extendable [0]\n --ignore-multi-kmer\
+  \ BOOL        Skip k-mers occurring multiple times (>=2) [0]\ncommon:          \
+  \              \n --sub-mat TWIN                  Substitution matrix file [nucl:nucleotide.out,aa:blosum62.out]\n\
+  \ --max-seq-len INT               Maximum sequence length [65535]\n --threads INT\
+  \                   Number of CPU-cores used (all by default) [2]\n --compressed\
+  \ INT                Write compressed output [0]\n -v INT                      \
+  \    Verbosity level: 0: quiet, 1: +errors, 2: +warnings, 3: +info [3]\n\nreferences:\n\
+  \ - Steinegger M, Soding J: MMseqs2 enables sensitive protein sequence searching\
+  \ for the analysis of massive data sets. Nature Biotechnology, 35(11), 1026-1028\
+  \ (2017)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/mmseqs2:13.45111--h2d02072_0

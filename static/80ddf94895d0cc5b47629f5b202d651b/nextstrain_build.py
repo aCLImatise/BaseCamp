@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, String, Int, File, Directory
+
+Nextstrain_Build_V0_1_0 = CommandToolBuilder(tool="nextstrain_build", base_command=["nextstrain", "build"], inputs=[ToolInput(tag="in_help_all", input_type=Boolean(optional=True), prefix="--help-all", doc=InputDocumentation(doc="Show a full help message of all options and exit")), ToolInput(tag="in_detach", input_type=Boolean(optional=True), prefix="--detach", doc=InputDocumentation(doc="Run the build in the background, detached from your\nterminal. Re-attach later using --attach. Currently\nonly supported when also using --aws-batch. (default:\nFalse)")), ToolInput(tag="in_attach", input_type=String(optional=True), prefix="--attach", doc=InputDocumentation(doc="Re-attach to a --detach'ed build to view output and\ndownload results. Currently only supported when also\nusing --aws-batch. (default: None)")), ToolInput(tag="in_cpus", input_type=Int(optional=True), prefix="--cpus", doc=InputDocumentation(doc="Number of CPUs/cores/threads/jobs to utilize at once.\nLimits containerized (Docker, AWS Batch) builds to\nthis amount. Informs Snakemake's resource scheduler\nwhen applicable. Informs the AWS Batch instance size\nselection. (default: None)")), ToolInput(tag="in_memory", input_type=Int(optional=True), prefix="--memory", doc=InputDocumentation(doc="Amount of memory to make available to the build. Units\nof b, kb, mb, gb, kib, mib, gib are supported. Limits\ncontainerized (Docker, AWS Batch) builds to this\namount. Informs Snakemake's resource scheduler when\napplicable. Informs the AWS Batch instance size\nselection. (default: None)")), ToolInput(tag="in_download", input_type=File(optional=True), prefix="--download", doc=InputDocumentation(doc="Only download new or modified files matching <pattern>\nfrom the remote build. Basic shell-style globbing is\nsupported, but be sure to escape wildcards or quote\nthe whole pattern so your shell doesn't expand them.\nMay be passed more than once. Currently only supported\nwhen also using --aws-batch. Default is to download\nevery new or modified file.")), ToolInput(tag="in_no_download", input_type=Boolean(optional=True), prefix="--no-download", doc=InputDocumentation(doc="Do not download any files from the remote build when\nit completes. Currently only supported when also using\n--aws-batch.")), ToolInput(tag="in_directory", input_type=Directory(), position=0, doc=InputDocumentation(doc=""))], outputs=[], container="quay.io/biocontainers/nextstrain-cli:3.0.3--py_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Nextstrain_Build_V0_1_0().translate("wdl")
+

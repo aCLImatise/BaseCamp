@@ -1,0 +1,125 @@
+!Command
+command:
+- vcffilter
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: vcf file
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --info-filter
+  description: "specifies a filter to apply to the info fields of records,\nremoves\
+    \ alleles which do not pass the filter"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --genotype-filter
+  description: a filter to apply to the genotype fields of records
+  args: !SimpleFlagArg
+    name: specifies
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --keep-info
+  description: used in conjunction with '-g', keeps variant info, but removes genotype
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --filter-sites
+  description: filter entire records, not just alleles
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --tag-pass
+  description: tag vcf records as positively filtered with this tag, print all records
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  - --tag-fail
+  description: tag vcf records as negatively filtered with this tag, print all records
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -A
+  - --append-filter
+  description: append the existing filter tag, don't just replace it
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --allele-tag
+  description: apply -t on a per-allele basis.  adds or sets the corresponding INFO
+    field tag
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --invert
+  description: inverts the filter, e.g. grep -v
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --or
+  description: use logical OR instead of AND to combine filters
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --region
+  description: "specify a region on which to target the filtering, requires a BGZF\n\
+    compressed file which has been indexed with tabix.  any number of\nregions may\
+    \ be specified."
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "vcflib 1.0.2 filter the specified vcf file using the set of filters\n\n\
+  usage: vcffilter [options] <vcf file>\n\noptions:\n    -f, --info-filter     specifies\
+  \ a filter to apply to the info fields of records,\n                          removes\
+  \ alleles which do not pass the filter\n    -g, --genotype-filter specifies a filter\
+  \ to apply to the genotype fields of records\n    -k, --keep-info       used in\
+  \ conjunction with '-g', keeps variant info, but removes genotype\n    -s, --filter-sites\
+  \    filter entire records, not just alleles\n    -t, --tag-pass        tag vcf\
+  \ records as positively filtered with this tag, print all records\n    -F, --tag-fail\
+  \        tag vcf records as negatively filtered with this tag, print all records\n\
+  \    -A, --append-filter   append the existing filter tag, don't just replace it\n\
+  \    -a, --allele-tag      apply -t on a per-allele basis.  adds or sets the corresponding\
+  \ INFO field tag\n    -v, --invert          inverts the filter, e.g. grep -v\n \
+  \   -o, --or              use logical OR instead of AND to combine filters\n   \
+  \ -r, --region          specify a region on which to target the filtering, requires\
+  \ a BGZF\n                          compressed file which has been indexed with\
+  \ tabix.  any number of\n                          regions may be specified.\n\n\
+  Filter the specified vcf file using the set of filters.\nFilters are specified in\
+  \ the form \"<ID> <operator> <value>:\n -f \"DP > 10\"  # for info fields\n -g \"\
+  GT = 1|1\" # for genotype fields\n -f \"CpG\"  # for 'flag' fields\n\nOperators\
+  \ can be any of: =, !, <, >, |, &\n\nAny number of filters may be specified.  They\
+  \ are combined via logical AND\nunless --or is specified on the command line.  Obtain\
+  \ logical negation through\nthe use of parentheses, e.g. \"! ( DP = 10 )\"\n\nFor\
+  \ convenience, you can specify \"QUAL\" to refer to the quality of the site, even\n\
+  though it does not appear in the INFO fields.\n\ntype: filter\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/vcflib:1.0.2--hfbaaabd_0

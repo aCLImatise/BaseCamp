@@ -1,0 +1,178 @@
+!Command
+command:
+- mmseqs
+- rescorediagonal
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --add-self-matches
+  description: Artificially add entries of queries with themselves (for clustering)
+    [0]
+  args: !SimpleFlagArg
+    name: BOOL
+- !Flag
+  optional: true
+  synonyms:
+  - --wrapped-scoring
+  description: Double the (nucleotide) query sequence during the scoring process to
+    allow wrapped diagonal scoring around end and start [0]
+  args: !SimpleFlagArg
+    name: BOOL
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  description: List matches below this E-value (range 0.0-inf) [1.000E-03]
+  args: !SimpleFlagArg
+    name: DOUBLE
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: List matches above this fraction of aligned (covered) residues (see
+    --cov-mode) [0.000]
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  description: Add backtrace string (convert to alignments with mmseqs convertalis
+    module) [0]
+  args: !SimpleFlagArg
+    name: BOOL
+- !Flag
+  optional: true
+  synonyms:
+  - --cov-mode
+  description: "0: coverage of query and target\n1: coverage of target\n2: coverage\
+    \ of query\n3: target seq. length has to be at least x% of query length\n4: query\
+    \ seq. length has to be at least x% of target length\n5: short seq. needs to be\
+    \ at least x% of the other seq. length [0]"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --min-seq-id
+  description: List matches above this sequence identity (for clustering) (range 0.0-1.0)
+    [0.000]
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --min-aln-len
+  description: Minimum alignment length (range 0-INT_MAX) [0]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --seq-id-mode
+  description: '0: alignment length 1: shorter, 2: longer sequence [0]'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --rescore-mode
+  description: "Rescore diagonals with:\n0: Hamming distance\n1: local alignment (score\
+    \ only)\n2: local alignment\n3: global alignment\n4: longest alignment fulfilling\
+    \ window quality criterion [0]"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --sub-mat
+  description: Substitution matrix file [nucl:nucleotide.out,aa:blosum62.out]
+  args: !SimpleFlagArg
+    name: TWIN
+- !Flag
+  optional: true
+  synonyms:
+  - --db-load-mode
+  description: 'Database preload mode 0: auto, 1: fread, 2: mmap, 3: mmap+touch [0]'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: Number of CPU-cores used (all by default) [2]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --compressed
+  description: Write compressed output [0]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: 'Verbosity level: 0: quiet, 1: +errors, 2: +warnings, 3: +info [3]'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --filter-hits
+  description: Filter hits by seq.id. and coverage [0]
+  args: !SimpleFlagArg
+    name: BOOL
+- !Flag
+  optional: true
+  synonyms:
+  - --sort-results
+  description: 'Sort results: 0: no sorting, 1: sort by E-value (Alignment) or seq.id.
+    (Hamming) [0]'
+  args: !SimpleFlagArg
+    name: INT
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "usage: mmseqs rescorediagonal <i:queryDB> <i:targetDB> <i:prefilterDB>\
+  \ <o:resultDB> [options]\n By Martin Steinegger <martin.steinegger@snu.ac.kr>\n\
+  options: prefilter:              \n --add-self-matches BOOL  Artificially add entries\
+  \ of queries with themselves (for clustering) [0]\nalign:                  \n --wrapped-scoring\
+  \ BOOL   Double the (nucleotide) query sequence during the scoring process to allow\
+  \ wrapped diagonal scoring around end and start [0]\n -e DOUBLE                List\
+  \ matches below this E-value (range 0.0-inf) [1.000E-03]\n -c FLOAT            \
+  \     List matches above this fraction of aligned (covered) residues (see --cov-mode)\
+  \ [0.000]\n -a BOOL                  Add backtrace string (convert to alignments\
+  \ with mmseqs convertalis module) [0]\n --cov-mode INT           0: coverage of\
+  \ query and target\n                          1: coverage of target\n          \
+  \                2: coverage of query\n                          3: target seq.\
+  \ length has to be at least x% of query length\n                          4: query\
+  \ seq. length has to be at least x% of target length\n                         \
+  \ 5: short seq. needs to be at least x% of the other seq. length [0]\n --min-seq-id\
+  \ FLOAT       List matches above this sequence identity (for clustering) (range\
+  \ 0.0-1.0) [0.000]\n --min-aln-len INT        Minimum alignment length (range 0-INT_MAX)\
+  \ [0]\n --seq-id-mode INT        0: alignment length 1: shorter, 2: longer sequence\
+  \ [0]\nmisc:                   \n --rescore-mode INT       Rescore diagonals with:\n\
+  \                          0: Hamming distance\n                          1: local\
+  \ alignment (score only)\n                          2: local alignment\n       \
+  \                   3: global alignment\n                          4: longest alignment\
+  \ fulfilling window quality criterion [0]\ncommon:                 \n --sub-mat\
+  \ TWIN           Substitution matrix file [nucl:nucleotide.out,aa:blosum62.out]\n\
+  \ --db-load-mode INT       Database preload mode 0: auto, 1: fread, 2: mmap, 3:\
+  \ mmap+touch [0]\n --threads INT            Number of CPU-cores used (all by default)\
+  \ [2]\n --compressed INT         Write compressed output [0]\n -v INT          \
+  \         Verbosity level: 0: quiet, 1: +errors, 2: +warnings, 3: +info [3]\nexpert:\
+  \                 \n --filter-hits BOOL       Filter hits by seq.id. and coverage\
+  \ [0]\n --sort-results INT       Sort results: 0: no sorting, 1: sort by E-value\
+  \ (Alignment) or seq.id. (Hamming) [0]\n\nreferences:\n - Steinegger M, Soding J:\
+  \ MMseqs2 enables sensitive protein sequence searching for the analysis of massive\
+  \ data sets. Nature Biotechnology, 35(11), 1026-1028 (2017)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/mmseqs2:13.45111--h2d02072_0

@@ -1,0 +1,107 @@
+!Command
+command:
+- fastafunk
+- add_columns
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: Run with high verbosity (debug level logging)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --log-file
+  description: "Log file to use (otherwise uses stdout, or stderr if\nout-fasta to\
+    \ stdout)"
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - --in-metadata
+  description: ONE CSV table of metadata
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - --in-data
+  description: "One CSV table of additional data. Must have --index-\ncolumn in common\
+    \ with metadata"
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - --index-column
+  description: Column in the metadata files used to match rows
+  args: !SimpleFlagArg
+    name: column
+- !Flag
+  optional: true
+  synonyms:
+  - --join-on
+  description: Column in the data file used to match rows
+  args: !SimpleFlagArg
+    name: column
+- !Flag
+  optional: true
+  synonyms:
+  - --new-columns
+  description: "[<column> ...]\nColumn(s) in the in_data file to add to the metadata,\n\
+    if not provided, all columns added"
+  args: !SimpleFlagArg
+    name: column
+- !Flag
+  optional: true
+  synonyms:
+  - --out-metadata
+  description: A metadata file to write
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - --where-column
+  description: "=<regex> [<column>=<regex> ...]\nAdditional matches to columns e.g.\
+    \ if want to rename\n"
+  args: !SimpleFlagArg
+    name: column
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: fastafunk add_columns [-h] [-v] [--log-file <filename>] --in-metadata\n\
+  \                             <filename> --in-data <filename> --index-column\n \
+  \                            <column> --join-on <column>\n                     \
+  \        [--new-columns <column> [<column> ...]]\n                             --out-metadata\
+  \ <filename>\n                             [--where-column <column>=<regex> [<column>=<regex>\
+  \ ...]]\n\noptional arguments:\n  -h, --help            show this help message and\
+  \ exit\n  -v, --verbose         Run with high verbosity (debug level logging)\n\
+  \  --log-file <filename>\n                        Log file to use (otherwise uses\
+  \ stdout, or stderr if\n                        out-fasta to stdout)\n  --in-metadata\
+  \ <filename>\n                        ONE CSV table of metadata\n  --in-data <filename>\
+  \  One CSV table of additional data. Must have --index-\n                      \
+  \  column in common with metadata\n  --index-column <column>\n                 \
+  \       Column in the metadata files used to match rows\n  --join-on <column>  \
+  \  Column in the data file used to match rows\n  --new-columns <column> [<column>\
+  \ ...]\n                        Column(s) in the in_data file to add to the metadata,\n\
+  \                        if not provided, all columns added\n  --out-metadata <filename>\n\
+  \                        A metadata file to write\n  --where-column <column>=<regex>\
+  \ [<column>=<regex> ...]\n                        Additional matches to columns\
+  \ e.g. if want to rename\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/fastafunk:0.0.9--pyh3252c3a_0

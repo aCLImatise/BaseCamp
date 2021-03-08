@@ -1,0 +1,366 @@
+!Command
+command:
+- mmseqs
+- createindex
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --seed-sub-mat
+  description: Substitution matrix file for k-mer generation [nucl:nucleotide.out,aa:VTML80.out]
+  args: !SimpleFlagArg
+    name: TWIN
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  description: 'k-mer length (0: automatically set to optimum) [0]'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --alph-size
+  description: Alphabet size (range 2-21) [nucl:5,aa:21]
+  args: !SimpleFlagArg
+    name: TWIN
+- !Flag
+  optional: true
+  synonyms:
+  - --comp-bias-corr
+  description: Correct for locally biased amino acid composition (range 0-1) [1]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --max-seqs
+  description: Maximum results per query sequence allowed to pass the prefilter (affects
+    sensitivity) [300]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --mask
+  description: 'Mask sequences in k-mer stage: 0: w/o low complexity masking, 1: with
+    low complexity masking [1]'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --mask-lower-case
+  description: 'Lowercase letters will be excluded from k-mer search 0: include region,
+    1: exclude region [0]'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --spaced-kmer-mode
+  description: '0: use consecutive positions in k-mers; 1: use spaced k-mers [1]'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --spaced-kmer-pattern
+  description: User-specified spaced k-mer pattern []
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: 'Sensitivity: 1.0 faster; 4.0 fast; 7.5 sensitive [7.500]'
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --k-score
+  description: k-mer threshold for generating similar k-mer lists [0]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --split
+  description: 'Split input into N equally distributed chunks. 0: set the best split
+    automatically [0]'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --split-memory-limit
+  description: Set max memory per split. E.g. 800B, 5K, 10M, 1G. Default (0) to all
+    available system memory [0]
+  args: !SimpleFlagArg
+    name: BYTE
+- !Flag
+  optional: true
+  synonyms:
+  - --check-compatible
+  description: '0: Always recreate index, 1: Check if recreating index is needed,
+    2: Fail if index is incompatible [0]'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --search-type
+  description: 'Search type 0: auto 1: amino acid, 2: translated, 3: nucleotide, 4:
+    translated nucleotide alignment [0]'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --min-length
+  description: Minimum codon number in open reading frames [30]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --max-length
+  description: Maximum codon number in open reading frames [32734]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --max-gaps
+  description: Maximum number of codons with gaps or unknown residues before an open
+    reading frame is rejected [2147483647]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --contig-start-mode
+  description: 'Contig start can be 0: incomplete, 1: complete, 2: both [2]'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --contig-end-mode
+  description: 'Contig end can be 0: incomplete, 1: complete, 2: both [2]'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --orf-start-mode
+  description: 'Orf fragment can be 0: from start to stop, 1: from any to stop, 2:
+    from last encountered start to stop (no start in the middle) [1]'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --forward-frames
+  description: Comma-separated list of frames on the forward strand to be extracted
+    [1,2,3]
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - --reverse-frames
+  description: Comma-separated list of frames on the reverse strand to be extracted
+    [1,2,3]
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - --translation-table
+  description: "1) CANONICAL, 2) VERT_MITOCHONDRIAL, 3) YEAST_MITOCHONDRIAL, 4) MOLD_MITOCHONDRIAL,\
+    \ 5) INVERT_MITOCHONDRIAL, 6) CILIATE\n9) FLATWORM_MITOCHONDRIAL, 10) EUPLOTID,\
+    \ 11) PROKARYOTE, 12) ALT_YEAST, 13) ASCIDIAN_MITOCHONDRIAL, 14) ALT_FLATWORM_MITOCHONDRIAL\n\
+    15) BLEPHARISMA, 16) CHLOROPHYCEAN_MITOCHONDRIAL, 21) TREMATODE_MITOCHONDRIAL,\
+    \ 22) SCENEDESMUS_MITOCHONDRIAL\n23) THRAUSTOCHYTRIUM_MITOCHONDRIAL, 24) PTEROBRANCHIA_MITOCHONDRIAL,\
+    \ 25) GRACILIBACTERIA, 26) PACHYSOLEN, 27) KARYORELICT, 28) CONDYLOSTOMA\n29)\
+    \ MESODINIUM, 30) PERTRICH, 31) BLASTOCRITHIDIA [1]"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --translate
+  description: Translate ORF to amino acid [0]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --use-all-table-starts
+  description: Use all alternatives for a start codon in the genetic table, if false
+    - only ATG (AUG) [0]
+  args: !SimpleFlagArg
+    name: BOOL
+- !Flag
+  optional: true
+  synonyms:
+  - --id-offset
+  description: Numeric ids in index file are offset by this value [0]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --add-orf-stop
+  description: Add stop codon '*' at complete start and end [0]
+  args: !SimpleFlagArg
+    name: BOOL
+- !Flag
+  optional: true
+  synonyms:
+  - --sequence-overlap
+  description: Overlap between sequences [0]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --sequence-split-mode
+  description: 'Sequence split mode 0: copy data, 1: soft link data and write new
+    index, [1]'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --headers-split-mode
+  description: 'Header split mode: 0: split position, 1: original header [0]'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --max-seq-len
+  description: Maximum sequence length [65535]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: 'Verbosity level: 0: quiet, 1: +errors, 2: +warnings, 3: +info [3]'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: Number of CPU-cores used (all by default) [2]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --compressed
+  description: Write compressed output [0]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --remove-tmp-files
+  description: Delete temporary files [0]
+  args: !SimpleFlagArg
+    name: BOOL
+- !Flag
+  optional: true
+  synonyms:
+  - --create-lookup
+  description: Create database lookup file (can be very large) [0]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --strand
+  description: 'Strand selection only works for DNA/DNA search 0: reverse, 1: forward,
+    2: both [1]'
+  args: !SimpleFlagArg
+    name: INT
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "usage: mmseqs createindex <i:sequenceDB> <tmpDir> [options]\n By Martin\
+  \ Steinegger <martin.steinegger@snu.ac.kr>\noptions: prefilter:                \
+  \  \n --seed-sub-mat TWIN          Substitution matrix file for k-mer generation\
+  \ [nucl:nucleotide.out,aa:VTML80.out]\n -k INT                       k-mer length\
+  \ (0: automatically set to optimum) [0]\n --alph-size TWIN             Alphabet\
+  \ size (range 2-21) [nucl:5,aa:21]\n --comp-bias-corr INT         Correct for locally\
+  \ biased amino acid composition (range 0-1) [1]\n --max-seqs INT               Maximum\
+  \ results per query sequence allowed to pass the prefilter (affects sensitivity)\
+  \ [300]\n --mask INT                   Mask sequences in k-mer stage: 0: w/o low\
+  \ complexity masking, 1: with low complexity masking [1]\n --mask-lower-case INT\
+  \        Lowercase letters will be excluded from k-mer search 0: include region,\
+  \ 1: exclude region [0]\n --spaced-kmer-mode INT       0: use consecutive positions\
+  \ in k-mers; 1: use spaced k-mers [1]\n --spaced-kmer-pattern STR    User-specified\
+  \ spaced k-mer pattern []\n -s FLOAT                     Sensitivity: 1.0 faster;\
+  \ 4.0 fast; 7.5 sensitive [7.500]\n --k-score INT                k-mer threshold\
+  \ for generating similar k-mer lists [0]\n --split INT                  Split input\
+  \ into N equally distributed chunks. 0: set the best split automatically [0]\n --split-memory-limit\
+  \ BYTE    Set max memory per split. E.g. 800B, 5K, 10M, 1G. Default (0) to all available\
+  \ system memory [0]\nmisc:                       \n --check-compatible INT     \
+  \  0: Always recreate index, 1: Check if recreating index is needed, 2: Fail if\
+  \ index is incompatible [0]\n --search-type INT            Search type 0: auto 1:\
+  \ amino acid, 2: translated, 3: nucleotide, 4: translated nucleotide alignment [0]\n\
+  \ --min-length INT             Minimum codon number in open reading frames [30]\n\
+  \ --max-length INT             Maximum codon number in open reading frames [32734]\n\
+  \ --max-gaps INT               Maximum number of codons with gaps or unknown residues\
+  \ before an open reading frame is rejected [2147483647]\n --contig-start-mode INT\
+  \      Contig start can be 0: incomplete, 1: complete, 2: both [2]\n --contig-end-mode\
+  \ INT        Contig end can be 0: incomplete, 1: complete, 2: both [2]\n --orf-start-mode\
+  \ INT         Orf fragment can be 0: from start to stop, 1: from any to stop, 2:\
+  \ from last encountered start to stop (no start in the middle) [1]\n --forward-frames\
+  \ STR         Comma-separated list of frames on the forward strand to be extracted\
+  \ [1,2,3]\n --reverse-frames STR         Comma-separated list of frames on the reverse\
+  \ strand to be extracted [1,2,3]\n --translation-table INT      1) CANONICAL, 2)\
+  \ VERT_MITOCHONDRIAL, 3) YEAST_MITOCHONDRIAL, 4) MOLD_MITOCHONDRIAL, 5) INVERT_MITOCHONDRIAL,\
+  \ 6) CILIATE\n                              9) FLATWORM_MITOCHONDRIAL, 10) EUPLOTID,\
+  \ 11) PROKARYOTE, 12) ALT_YEAST, 13) ASCIDIAN_MITOCHONDRIAL, 14) ALT_FLATWORM_MITOCHONDRIAL\n\
+  \                              15) BLEPHARISMA, 16) CHLOROPHYCEAN_MITOCHONDRIAL,\
+  \ 21) TREMATODE_MITOCHONDRIAL, 22) SCENEDESMUS_MITOCHONDRIAL\n                 \
+  \             23) THRAUSTOCHYTRIUM_MITOCHONDRIAL, 24) PTEROBRANCHIA_MITOCHONDRIAL,\
+  \ 25) GRACILIBACTERIA, 26) PACHYSOLEN, 27) KARYORELICT, 28) CONDYLOSTOMA\n     \
+  \                          29) MESODINIUM, 30) PERTRICH, 31) BLASTOCRITHIDIA [1]\n\
+  \ --translate INT              Translate ORF to amino acid [0]\n --use-all-table-starts\
+  \ BOOL  Use all alternatives for a start codon in the genetic table, if false -\
+  \ only ATG (AUG) [0]\n --id-offset INT              Numeric ids in index file are\
+  \ offset by this value [0]\n --add-orf-stop BOOL          Add stop codon '*' at\
+  \ complete start and end [0]\n --sequence-overlap INT       Overlap between sequences\
+  \ [0]\n --sequence-split-mode INT    Sequence split mode 0: copy data, 1: soft link\
+  \ data and write new index, [1]\n --headers-split-mode INT     Header split mode:\
+  \ 0: split position, 1: original header [0]\ncommon:                     \n --max-seq-len\
+  \ INT            Maximum sequence length [65535]\n -v INT                      \
+  \ Verbosity level: 0: quiet, 1: +errors, 2: +warnings, 3: +info [3]\n --threads\
+  \ INT                Number of CPU-cores used (all by default) [2]\n --compressed\
+  \ INT             Write compressed output [0]\n --remove-tmp-files BOOL      Delete\
+  \ temporary files [0]\nexpert:                     \n --create-lookup INT      \
+  \    Create database lookup file (can be very large) [0]\n --strand INT        \
+  \         Strand selection only works for DNA/DNA search 0: reverse, 1: forward,\
+  \ 2: both [1]\n\nexamples:\n # Create protein sequence index\n mmseqs createindex\
+  \ sequenceDB tmp\n \n # Create TBLASTX/N index from nucleotide sequences\n mmseqs\
+  \ createindex sequenceDB tmp --search-type 2\n \n # Create BLASTN index from nucleotide\
+  \ sequences\n mmseqs createindex sequenceDB tmp --search-type 3\n \nreferences:\n\
+  \ - Steinegger M, Soding J: MMseqs2 enables sensitive protein sequence searching\
+  \ for the analysis of massive data sets. Nature Biotechnology, 35(11), 1026-1028\
+  \ (2017)\n - Mirdita M, Steinegger M, Soding J: MMseqs2 desktop and local web server\
+  \ app for fast, interactive sequence searches. Bioinformatics, 35(16), 2856–2858\
+  \ (2019)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/mmseqs2:13.45111--h2d02072_0

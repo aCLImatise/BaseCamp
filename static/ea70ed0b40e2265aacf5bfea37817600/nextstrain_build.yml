@@ -1,0 +1,129 @@
+!Command
+command:
+- nextstrain
+- build
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: directory
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --help-all
+  description: Show a full help message of all options and exit
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --detach
+  description: "Run the build in the background, detached from your\nterminal. Re-attach\
+    \ later using --attach. Currently\nonly supported when also using --aws-batch.\
+    \ (default:\nFalse)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --attach
+  description: "Re-attach to a --detach'ed build to view output and\ndownload results.\
+    \ Currently only supported when also\nusing --aws-batch. (default: None)"
+  args: !SimpleFlagArg
+    name: job-id
+- !Flag
+  optional: true
+  synonyms:
+  - --cpus
+  description: "Number of CPUs/cores/threads/jobs to utilize at once.\nLimits containerized\
+    \ (Docker, AWS Batch) builds to\nthis amount. Informs Snakemake's resource scheduler\n\
+    when applicable. Informs the AWS Batch instance size\nselection. (default: None)"
+  args: !SimpleFlagArg
+    name: count
+- !Flag
+  optional: true
+  synonyms:
+  - --memory
+  description: "Amount of memory to make available to the build. Units\nof b, kb,\
+    \ mb, gb, kib, mib, gib are supported. Limits\ncontainerized (Docker, AWS Batch)\
+    \ builds to this\namount. Informs Snakemake's resource scheduler when\napplicable.\
+    \ Informs the AWS Batch instance size\nselection. (default: None)"
+  args: !SimpleFlagArg
+    name: quantity
+- !Flag
+  optional: true
+  synonyms:
+  - --download
+  description: "Only download new or modified files matching <pattern>\nfrom the remote\
+    \ build. Basic shell-style globbing is\nsupported, but be sure to escape wildcards\
+    \ or quote\nthe whole pattern so your shell doesn't expand them.\nMay be passed\
+    \ more than once. Currently only supported\nwhen also using --aws-batch. Default\
+    \ is to download\nevery new or modified file."
+  args: !SimpleFlagArg
+    name: pattern
+- !Flag
+  optional: true
+  synonyms:
+  - --no-download
+  description: "Do not download any files from the remote build when\nit completes.\
+    \ Currently only supported when also using\n--aws-batch."
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: Show a brief help message of common options and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: nextstrain build [options] <directory> [...]\n       nextstrain\
+  \ build --help\n\nRuns a pathogen build in the Nextstrain build environment.\n\n\
+  The build directory should contain a Snakefile, which will be run with\nsnakemake.\n\
+  \nThe default build environment is inside an ephemeral Docker container which has\n\
+  all the necessary Nextstrain components available.  You may instead run the\nbuild\
+  \ in the native ambient environment by passing the --native flag, but all\ndependencies\
+  \ must already be installed and configured.  For larger builds, you\nmay want to\
+  \ use the --aws-batch flag to launch jobs on AWS Batch instead of\nrunning locally\
+  \ (if the required AWS resources are configured in your AWS\naccount).\n\nYou can\
+  \ test if Docker, native, or AWS Batch build environments are properly\nsupported\
+  \ on your computer by running:\n\n    nextstrain check-setup\n\nThe `nextstrain\
+  \ build` command is designed to cleanly separate the Nextstrain\nbuild interface\
+  \ from provisioning a build environment, so that running builds\nis as easy as possible.\
+  \  It also lets us more seamlessly make environment\nchanges in the future as desired\
+  \ or necessary.\n\npositional arguments:\n  <directory>           Path to pathogen\
+  \ build directory\n  ...                   Additional arguments to pass to the executed\
+  \ program\n\noptional arguments:\n  --help, -h            Show a brief help message\
+  \ of common options and exit\n  --help-all            Show a full help message of\
+  \ all options and exit\n  --detach              Run the build in the background,\
+  \ detached from your\n                        terminal. Re-attach later using --attach.\
+  \ Currently\n                        only supported when also using --aws-batch.\
+  \ (default:\n                        False)\n  --attach <job-id>     Re-attach to\
+  \ a --detach'ed build to view output and\n                        download results.\
+  \ Currently only supported when also\n                        using --aws-batch.\
+  \ (default: None)\n  --cpus <count>        Number of CPUs/cores/threads/jobs to\
+  \ utilize at once.\n                        Limits containerized (Docker, AWS Batch)\
+  \ builds to\n                        this amount. Informs Snakemake's resource scheduler\n\
+  \                        when applicable. Informs the AWS Batch instance size\n\
+  \                        selection. (default: None)\n  --memory <quantity>   Amount\
+  \ of memory to make available to the build. Units\n                        of b,\
+  \ kb, mb, gb, kib, mib, gib are supported. Limits\n                        containerized\
+  \ (Docker, AWS Batch) builds to this\n                        amount. Informs Snakemake's\
+  \ resource scheduler when\n                        applicable. Informs the AWS Batch\
+  \ instance size\n                        selection. (default: None)\n  --download\
+  \ <pattern>  Only download new or modified files matching <pattern>\n          \
+  \              from the remote build. Basic shell-style globbing is\n          \
+  \              supported, but be sure to escape wildcards or quote\n           \
+  \             the whole pattern so your shell doesn't expand them.\n           \
+  \             May be passed more than once. Currently only supported\n         \
+  \               when also using --aws-batch. Default is to download\n          \
+  \              every new or modified file.\n  --no-download         Do not download\
+  \ any files from the remote build when\n                        it completes. Currently\
+  \ only supported when also using\n                        --aws-batch.\n\nRun again\
+  \ with --help-all instead to see more options.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/nextstrain-cli:3.0.3--py_0

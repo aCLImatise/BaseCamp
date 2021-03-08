@@ -1,0 +1,296 @@
+!Command
+command:
+- tb-profiler
+- profile
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --read1
+  - '-1'
+  description: 'First read file (default: None)'
+  args: !SimpleFlagArg
+    name: READ1
+- !Flag
+  optional: true
+  synonyms:
+  - --read2
+  - '-2'
+  description: 'Second read file (default: None)'
+  args: !SimpleFlagArg
+    name: READ2
+- !Flag
+  optional: true
+  synonyms:
+  - --bam
+  - -a
+  description: "BAM file. Make sure it has been generated using the\nH37Rv genome\
+    \ (GCA_000195955.2) (default: None)"
+  args: !SimpleFlagArg
+    name: BAM
+- !Flag
+  optional: true
+  synonyms:
+  - --platform
+  - -m
+  description: 'NGS Platform used to generate data (default: illumina)'
+  args: !ChoiceFlagArg
+    choices: !!set
+      nanopore:
+      illumina:
+- !Flag
+  optional: true
+  synonyms:
+  - --db
+  description: 'Mutation panel name (default: tbdb)'
+  args: !SimpleFlagArg
+    name: DB
+- !Flag
+  optional: true
+  synonyms:
+  - --external_db
+  description: "Path to db files prefix (overrides \"--db\" parameter)\n(default:\
+    \ None)"
+  args: !SimpleFlagArg
+    name: EXTERNAL_DB
+- !Flag
+  optional: true
+  synonyms:
+  - --prefix
+  - -p
+  description: "Sample prefix for all results generated (default:\ntbprofiler)"
+  args: !SimpleFlagArg
+    name: PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - --dir
+  - -d
+  description: 'Storage directory (default: .)'
+  args: !SimpleFlagArg
+    name: DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --csv
+  description: 'Add CSV output (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --txt
+  description: 'Add text output (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pdf
+  description: "Add PDF output. This requires pdflatex to be installed\n(default:\
+    \ False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --add_columns
+  description: "Add additional columns found in the mutation database\nto the text\
+    \ and csv results (default: None)"
+  args: !SimpleFlagArg
+    name: ADD_COLUMNS
+- !Flag
+  optional: true
+  synonyms:
+  - --add_mutation_metadata
+  description: "Add mutation data from the tbdr database (not\ncurrently functional)\
+    \ (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --mapper
+  description: "Mapping tool to use. If you are using nanopore data it\nwill default\
+    \ to minimap2 (default: bwa)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      bwa:
+      bowtie2:
+      minimap2:
+      bwa-mem2:
+- !Flag
+  optional: true
+  synonyms:
+  - --caller
+  description: 'Variant calling tool to use. (default: bcftools)'
+  args: !ChoiceFlagArg
+    choices: !!set
+      gatk:
+      freebayes:
+      bcftools:
+- !Flag
+  optional: true
+  synonyms:
+  - --calling_params
+  description: "Override default parameters for variant calling\n(default: None)"
+  args: !SimpleFlagArg
+    name: CALLING_PARAMS
+- !Flag
+  optional: true
+  synonyms:
+  - --min_depth
+  description: "Minimum depth required to call variant. Bases with\ndepth below this\
+    \ cutoff will be marked as missing\n(default: 10)"
+  args: !SimpleFlagArg
+    name: MIN_DEPTH
+- !Flag
+  optional: true
+  synonyms:
+  - --af
+  description: "Minimum allele frequency to call variants (default:\n0.1)"
+  args: !SimpleFlagArg
+    name: AF
+- !Flag
+  optional: true
+  synonyms:
+  - --reporting_af
+  description: "Minimum allele frequency to use variants for\nprediction (default:\
+    \ 0.1)"
+  args: !SimpleFlagArg
+    name: REPORTING_AF
+- !Flag
+  optional: true
+  synonyms:
+  - --coverage_fraction_threshold
+  description: "Cutoff used to calculate fraction of region covered by\n<= this value\
+    \ (default: 0)"
+  args: !SimpleFlagArg
+    name: COVERAGE_FRACTION_THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - --missing_cov_threshold
+  description: "Cutoff used to positions/codons in genes which are\nmissing (this\
+    \ argument has now been merged with\n--min_depth argument and will be deprecated\
+    \ in future\nreleases) (default: None)"
+  args: !SimpleFlagArg
+    name: MISSING_COV_THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - --no_trim
+  description: "Don't trim files using trimmomatic (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no_flagstat
+  description: "Don't collect flagstats (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no_delly
+  description: "Don't run delly (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  - -t
+  description: 'Threads to use (default: 1)'
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  - -v
+  description: 'Verbosity increases from 0 to 2 (default: 0)'
+  args: !ChoiceFlagArg
+    choices: !!set
+      '1':
+      '0':
+      '2':
+- !Flag
+  optional: true
+  synonyms:
+  - --no_cleanup
+  description: "Don't remove temporary files on error (default: False)"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: tb-profiler profile [-h] [--read1 READ1] [--read2 READ2] [--bam\
+  \ BAM]\n                           [--platform {illumina,nanopore}] [--db DB]\n\
+  \                           [--external_db EXTERNAL_DB] [--prefix PREFIX]\n    \
+  \                       [--dir DIR] [--csv] [--txt] [--pdf]\n                  \
+  \         [--add_columns ADD_COLUMNS]\n                           [--add_mutation_metadata]\n\
+  \                           [--mapper {bwa,minimap2,bowtie2,bwa-mem2}]\n       \
+  \                    [--caller {bcftools,gatk,freebayes}]\n                    \
+  \       [--calling_params CALLING_PARAMS]\n                           [--min_depth\
+  \ MIN_DEPTH] [--af AF]\n                           [--reporting_af REPORTING_AF]\n\
+  \                           [--coverage_fraction_threshold COVERAGE_FRACTION_THRESHOLD]\n\
+  \                           [--missing_cov_threshold MISSING_COV_THRESHOLD]\n  \
+  \                         [--no_trim] [--no_flagstat] [--no_delly]\n           \
+  \                [--threads THREADS] [--verbose {0,1,2}] [--version]\n         \
+  \                  [--no_cleanup]\n\noptional arguments:\n  -h, --help         \
+  \   show this help message and exit\n\nInput options:\n  --read1 READ1, -1 READ1\n\
+  \                        First read file (default: None)\n  --read2 READ2, -2 READ2\n\
+  \                        Second read file (default: None)\n  --bam BAM, -a BAM \
+  \    BAM file. Make sure it has been generated using the\n                     \
+  \   H37Rv genome (GCA_000195955.2) (default: None)\n  --platform {illumina,nanopore},\
+  \ -m {illumina,nanopore}\n                        NGS Platform used to generate\
+  \ data (default: illumina)\n  --db DB               Mutation panel name (default:\
+  \ tbdb)\n  --external_db EXTERNAL_DB\n                        Path to db files prefix\
+  \ (overrides \"--db\" parameter)\n                        (default: None)\n\nOutput\
+  \ options:\n  --prefix PREFIX, -p PREFIX\n                        Sample prefix\
+  \ for all results generated (default:\n                        tbprofiler)\n  --dir\
+  \ DIR, -d DIR     Storage directory (default: .)\n  --csv                 Add CSV\
+  \ output (default: False)\n  --txt                 Add text output (default: False)\n\
+  \  --pdf                 Add PDF output. This requires pdflatex to be installed\n\
+  \                        (default: False)\n  --add_columns ADD_COLUMNS\n       \
+  \                 Add additional columns found in the mutation database\n      \
+  \                  to the text and csv results (default: None)\n  --add_mutation_metadata\n\
+  \                        Add mutation data from the tbdr database (not\n       \
+  \                 currently functional) (default: False)\n\nAlgorithm options:\n\
+  \  --mapper {bwa,minimap2,bowtie2,bwa-mem2}\n                        Mapping tool\
+  \ to use. If you are using nanopore data it\n                        will default\
+  \ to minimap2 (default: bwa)\n  --caller {bcftools,gatk,freebayes}\n           \
+  \             Variant calling tool to use. (default: bcftools)\n  --calling_params\
+  \ CALLING_PARAMS\n                        Override default parameters for variant\
+  \ calling\n                        (default: None)\n  --min_depth MIN_DEPTH\n  \
+  \                      Minimum depth required to call variant. Bases with\n    \
+  \                    depth below this cutoff will be marked as missing\n       \
+  \                 (default: 10)\n  --af AF               Minimum allele frequency\
+  \ to call variants (default:\n                        0.1)\n  --reporting_af REPORTING_AF\n\
+  \                        Minimum allele frequency to use variants for\n        \
+  \                prediction (default: 0.1)\n  --coverage_fraction_threshold COVERAGE_FRACTION_THRESHOLD\n\
+  \                        Cutoff used to calculate fraction of region covered by\n\
+  \                        <= this value (default: 0)\n  --missing_cov_threshold MISSING_COV_THRESHOLD\n\
+  \                        Cutoff used to positions/codons in genes which are\n  \
+  \                      missing (this argument has now been merged with\n       \
+  \                 --min_depth argument and will be deprecated in future\n      \
+  \                  releases) (default: None)\n  --no_trim             Don't trim\
+  \ files using trimmomatic (default: False)\n  --no_flagstat         Don't collect\
+  \ flagstats (default: False)\n  --no_delly            Don't run delly (default:\
+  \ False)\n  --threads THREADS, -t THREADS\n                        Threads to use\
+  \ (default: 1)\n\nOther options:\n  --verbose {0,1,2}, -v {0,1,2}\n            \
+  \            Verbosity increases from 0 to 2 (default: 0)\n  --version         \
+  \    show program's version number and exit\n  --no_cleanup          Don't remove\
+  \ temporary files on error (default: False)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/tb-profiler:3.0.0--pypyh3252c3a_0

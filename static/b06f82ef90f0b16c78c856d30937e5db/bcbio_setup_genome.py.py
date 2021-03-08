@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import String, Int, Boolean, File
+
+Bcbio_Setup_Genome_Py_V0_1_0 = CommandToolBuilder(tool="bcbio_setup_genome.py", base_command=["bcbio_setup_genome.py"], inputs=[ToolInput(tag="in__name_build", input_type=String(optional=True), prefix="-f", doc=InputDocumentation(doc="[-g GTF] -n NAME -b BUILD")), ToolInput(tag="in_cores", input_type=Int(optional=True), prefix="--cores", doc=InputDocumentation(doc="number of cores to use")), ToolInput(tag="in_gff_three", input_type=Boolean(optional=True), prefix="--gff3", doc=InputDocumentation(doc="File is a GFF3 file.")), ToolInput(tag="in_space_separated_list", input_type=Boolean(optional=True), prefix="-i", doc=InputDocumentation(doc="[{bwa,rtg,hisat2,bbmap,bowtie,bowtie2,minimap2,novoalign,twobit,bismark,snap,star,seq} [{bwa,rtg,hisat2,bbmap,bowtie,bowtie2,minimap2,novoalign,twobit,bismark,snap,star,seq} ...]], --indexes [{bwa,rtg,hisat2,bbmap,bowtie,bowtie2,minimap2,novoalign,twobit,bismark,snap,star,seq} [{bwa,rtg,hisat2,bbmap,bowtie,bowtie2,minimap2,novoalign,twobit,bismark,snap,star,seq} ...]]\nSpace separated list of indexes to make")), ToolInput(tag="in_er_cc", input_type=Boolean(optional=True), prefix="--ercc", doc=InputDocumentation(doc="Add ERCC spike-ins.")), ToolInput(tag="in_mir_base", input_type=String(optional=True), prefix="--mirbase", doc=InputDocumentation(doc="species in mirbase for smallRNAseq data.")), ToolInput(tag="in_srna_gtf", input_type=String(optional=True), prefix="--srna_gtf", doc=InputDocumentation(doc="gtf to use for smallRNAseq data.")), ToolInput(tag="in_build_version", input_type=String(optional=True), prefix="--buildversion", doc=InputDocumentation(doc="String describing build of genome used. Examples:\nEnsembl_94, EnsemblMetazoa_94, Flybase_21, etc")), ToolInput(tag="in_fast_a", input_type=File(optional=True), prefix="--fasta", doc=InputDocumentation(doc="FASTA file of the genome.")), ToolInput(tag="in_gtf", input_type=File(optional=True), prefix="--gtf", doc=InputDocumentation(doc="GTF file of the transcriptome")), ToolInput(tag="in_name", input_type=String(optional=True), prefix="--name", doc=InputDocumentation(doc="Name of organism, for example Hsapiens.")), ToolInput(tag="in_build", input_type=Int(optional=True), prefix="--build", doc=InputDocumentation(doc="Build of genome, for example hg19.\n"))], outputs=[], container="quay.io/biocontainers/bcbio-nextgen:1.2.7--pyh3252c3a_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Bcbio_Setup_Genome_Py_V0_1_0().translate("wdl")
+

@@ -1,0 +1,258 @@
+!Command
+command:
+- MethylDackel
+- mbias
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: ref.fa
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: sorted_alignments.bam
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: output.prefix
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  description: Minimum MAPQ threshold to include an alignment (default 10)
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: "Minimum Phred threshold to include a base (default 5). This\nmust\
+    \ be >0."
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  description: Maximum per-base depth (default 2000)
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: Region string in which to extract methylation
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: A BED file listing regions for inclusion.
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --keepStrand
+  description: "If a BED file is specified, then this option will cause the\nstrand\
+    \ column (column 6) to be utilized, if present. Thus, if\na region has a '+' in\
+    \ this column, then only metrics from the\ntop strand will be output. Note that\
+    \ the -r option can be used\nto limit the regions of -l."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -@
+  description: The number of threads to use, the default 1
+  args: !SimpleFlagArg
+    name: nThreads
+- !Flag
+  optional: true
+  synonyms:
+  - --chunkSize
+  description: "The size of the genome processed by a single thread at a time.\nThe\
+    \ default is 1000000 bases. This value MUST be at least 1."
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --keepDupes
+  description: "By default, any alignment marked as a duplicate is ignored.\nThis\
+    \ option causes them to be incorporated."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --keepSingleton
+  description: "By default, if only one read in a pair aligns (a singleton)\nthen\
+    \ it's ignored."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --keepDiscordant
+  description: "default, paired-end alignments with the properly-paired bit\nunset\
+    \ in the FLAG field are ignored. Note that the definition\nof concordant and discordant\
+    \ is based on your aligner\nsettings."
+  args: !SimpleFlagArg
+    name: By
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  - --ignoreFlags
+  description: "By deault, any alignment marked as secondary (bit 0x100),\nfailing\
+    \ QC (bit 0x200), a PCR/optical duplicate (0x400) or\nsupplemental (0x800) is\
+    \ ignored. This equates to a value of\n0xF00 or 3840 in decimal. If you would\
+    \ like to change that,\nyou can specify a new value here.\nignored. Specifying\
+    \ this causes them to be included."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  - --requireFlags
+  description: "Require each alignment to have all bits in this value\npresent, or\
+    \ else the alignment is ignored. This is equivalent\nto the -f option in samtools.\
+    \ The default is 0, which\nincludes all alignments."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --txt
+  description: "Output tab separated metrics to the screen. These can be\nimported\
+    \ into R or another program for manual plotting and\nanalysis. Note that coordinates\
+    \ are 1-based."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --noSVG
+  description: "Don't produce the SVG files. This option implies --txt. Note\nthat\
+    \ an output prefix is no longer required with this option."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --noCpG
+  description: Do not output CpG methylation metrics
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --CHG
+  description: Output CHG methylation metrics
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --CHH
+  description: Output CHH methylation metrics
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --nOT
+  description: ",INT,INT,INT Inclusion bound for methylation calls from reads/pairs\n\
+    originating from the original top strand. Each integer\nrepresents a 1-based position\
+    \ from the end of a read. For\nexample \"--nOT A,B,C,D\" translates to, \"Include\
+    \ calls from\nposition A through the Bth read from the end on read #1 and\nCth\
+    \ through the Dth from the end base on read #2\". In other\nwords \"--nOT 5,10,0,0\"\
+    \ for a 100 base long read would result\nin bases 5 through 90 being used. If\
+    \ a 0 is used in any\nposition then that is translated to mean start/end of the\n\
+    alignment, as appropriate. For example, --nOT 5,0,0,0 would\ninclude all but the\
+    \ first 4 bases on read #1."
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --nOB
+  description: ',INT,INT,INT'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --nCTOT
+  description: ',INT,INT,INT'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --nCTOB
+  description: ",INT,INT,INT As with --nOT, but for the original bottom, complementary\n\
+    to the original top, and complementary to the original bottom\nstrands, respectively."
+  args: !SimpleFlagArg
+    name: INT
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Print version and the quit
+  args: !EmptyFlagArg {}
+help_text: "\nUsage: MethylDackel mbias [OPTIONS] <ref.fa> <sorted_alignments.bam>\
+  \ <output.prefix>\n\nOptions:\n -q INT           Minimum MAPQ threshold to include\
+  \ an alignment (default 10)\n -p INT           Minimum Phred threshold to include\
+  \ a base (default 5). This\n                  must be >0.\n -D INT           Maximum\
+  \ per-base depth (default 2000)\n -r STR           Region string in which to extract\
+  \ methylation\n -l FILE          A BED file listing regions for inclusion.\n --keepStrand\
+  \     If a BED file is specified, then this option will cause the\n            \
+  \      strand column (column 6) to be utilized, if present. Thus, if\n         \
+  \         a region has a '+' in this column, then only metrics from the\n      \
+  \            top strand will be output. Note that the -r option can be used\n  \
+  \                to limit the regions of -l.\n -@ nThreads      The number of threads\
+  \ to use, the default 1\n --chunkSize INT  The size of the genome processed by a\
+  \ single thread at a time.\n                  The default is 1000000 bases. This\
+  \ value MUST be at least 1.\n --keepDupes      By default, any alignment marked\
+  \ as a duplicate is ignored.\n                  This option causes them to be incorporated.\n\
+  \ --keepSingleton  By default, if only one read in a pair aligns (a singleton)\n\
+  \                  then it's ignored.\n --keepDiscordant By default, paired-end\
+  \ alignments with the properly-paired bit\n                  unset in the FLAG field\
+  \ are ignored. Note that the definition\n                  of concordant and discordant\
+  \ is based on your aligner\n                  settings.\n -F, --ignoreFlags    By\
+  \ deault, any alignment marked as secondary (bit 0x100),\n                  failing\
+  \ QC (bit 0x200), a PCR/optical duplicate (0x400) or\n                  supplemental\
+  \ (0x800) is ignored. This equates to a value of\n                  0xF00 or 3840\
+  \ in decimal. If you would like to change that,\n                  you can specify\
+  \ a new value here.\n                  ignored. Specifying this causes them to be\
+  \ included.\n -R, --requireFlags   Require each alignment to have all bits in this\
+  \ value\n                  present, or else the alignment is ignored. This is equivalent\n\
+  \                  to the -f option in samtools. The default is 0, which\n     \
+  \             includes all alignments.\n --txt            Output tab separated metrics\
+  \ to the screen. These can be\n                  imported into R or another program\
+  \ for manual plotting and\n                  analysis. Note that coordinates are\
+  \ 1-based.\n --noSVG          Don't produce the SVG files. This option implies --txt.\
+  \ Note\n                  that an output prefix is no longer required with this\
+  \ option.\n --noCpG          Do not output CpG methylation metrics\n --CHG     \
+  \       Output CHG methylation metrics\n --CHH            Output CHH methylation\
+  \ metrics\n --nOT INT,INT,INT,INT Inclusion bound for methylation calls from reads/pairs\n\
+  \                  originating from the original top strand. Each integer\n    \
+  \              represents a 1-based position from the end of a read. For\n     \
+  \             example \"--nOT A,B,C,D\" translates to, \"Include calls from\n  \
+  \                position A through the Bth read from the end on read #1 and\n \
+  \                 Cth through the Dth from the end base on read #2\". In other\n\
+  \                  words \"--nOT 5,10,0,0\" for a 100 base long read would result\n\
+  \                  in bases 5 through 90 being used. If a 0 is used in any\n   \
+  \               position then that is translated to mean start/end of the\n    \
+  \              alignment, as appropriate. For example, --nOT 5,0,0,0 would\n   \
+  \               include all but the first 4 bases on read #1.\n --nOB INT,INT,INT,INT\n\
+  \ --nCTOT INT,INT,INT,INT\n --nCTOB INT,INT,INT,INT As with --nOT, but for the original\
+  \ bottom, complementary\n                  to the original top, and complementary\
+  \ to the original bottom\n                  strands, respectively.\n --version \
+  \       Print version and the quit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/methyldackel:0.5.2--h7435645_0
