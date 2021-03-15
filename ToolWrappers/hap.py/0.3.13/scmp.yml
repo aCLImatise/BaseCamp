@@ -1,0 +1,161 @@
+!Command
+command:
+- scmp
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --input-file
+  description: "Input VCF file. Must have exactly two\nsamples, the first sample will\
+    \ be used\nas truth, the second one as query. This\ncan be obtained using bcftools:\n\
+    bcftools merge truth.vcf.gz\nquery.vcf.gz --force-samples"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: "[ --output-file ] arg              The output file name (VCF / BCF\
+    \ /\nVCF.gz)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: "[ --reference ] arg                The reference fasta file (needed\
+    \ only\nfor VCF output)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: '[ --location ] arg                 Start location.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --qq-field
+  description: "QQ field name -- this can be QUAL, an\nINFO or FORMAT field name"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -O
+  description: "[ --only ] arg                     Bed file of locations (equivalent\
+    \ to -R\nin bcftools)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --limit-records
+  description: Maximum umber of records to process
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --message-every
+  description: Print a message every N records.
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: '[ --apply-filters ] arg            Apply filtering in VCF.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: Number of threads to use.
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --blocksize
+  description: Number of variants per block.
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --min-var-distance
+  description: "Minimum distance between variants\nallowed to end up in separate blocks"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  description: "[ --comparison-mode ] arg (=allele)\nHow to compare variants: allele\n\
+    (default) / distance / enumerate"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --distance-maxdist
+  description: "(=50)          For distance comparison, this is the\nmaximum distance\
+    \ between variants s.t.\nthey get matched."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --enumerate-maxenum
+  description: "(=65536)      For haplotype enumeration comparison,\nthis is the number\
+    \ of possibilities to\nenumerate before giving up\n"
+  args: !SimpleFlagArg
+    name: arg
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: '[ --help ]                         produce help message'
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Show version
+  args: !EmptyFlagArg {}
+help_text: "Allowed options:\n  -h [ --help ]                         produce help\
+  \ message\n  --version                             Show version\n  --input-file\
+  \ arg                      Input VCF file. Must have exactly two \n            \
+  \                            samples, the first sample will be used \n         \
+  \                               as truth, the second one as query. This\n      \
+  \                                  can be obtained using bcftools: \n          \
+  \                              bcftools merge truth.vcf.gz \n                  \
+  \                      query.vcf.gz --force-samples\n  -o [ --output-file ] arg\
+  \              The output file name (VCF / BCF / \n                            \
+  \            VCF.gz).\n  -r [ --reference ] arg                The reference fasta\
+  \ file (needed only \n                                        for VCF output).\n\
+  \  -l [ --location ] arg                 Start location.\n  --qq-field arg     \
+  \                   QQ field name -- this can be QUAL, an \n                   \
+  \                     INFO or FORMAT field name\n  -O [ --only ] arg           \
+  \          Bed file of locations (equivalent to -R\n                           \
+  \             in bcftools)\n  --limit-records arg                   Maximum umber\
+  \ of records to process\n  --message-every arg                   Print a message\
+  \ every N records.\n  -f [ --apply-filters ] arg            Apply filtering in VCF.\n\
+  \  --threads arg                         Number of threads to use.\n  --blocksize\
+  \ arg                       Number of variants per block.\n  --min-var-distance\
+  \ arg                Minimum distance between variants \n                      \
+  \                  allowed to end up in separate blocks\n  -M [ --comparison-mode\
+  \ ] arg (=allele)\n                                        How to compare variants:\
+  \ allele \n                                        (default) / distance / enumerate\n\
+  \  --distance-maxdist arg (=50)          For distance comparison, this is the \n\
+  \                                        maximum distance between variants s.t.\
+  \ \n                                        they get matched.\n  --enumerate-maxenum\
+  \ arg (=65536)      For haplotype enumeration comparison, \n                   \
+  \                     this is the number of possibilities to \n                \
+  \                        enumerate before giving up\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/hap.py:0.3.13--py27h5c5a3ab_0

@@ -1,0 +1,192 @@
+!Command
+command:
+- metagraph_DNA
+- build
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: FILE1
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --min-count
+  description: '[INT]    min k-mer abundance, including [1]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max-count
+  description: '[INT]    max k-mer abundance, excluding [inf]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min-count-q
+  description: '[INT]  min k-mer abundance quantile (min-count is used by default)
+    [0.0]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max-count-q
+  description: '[INT]  max k-mer abundance quantile (max-count is used by default)
+    [1.0]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --reference
+  description: '[STR]    basename of reference sequence (for parsing VCF files) []'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --graph
+  description: '[STR]        graph representation: succinct / bitmap / hash / hashstr
+    / hashfast [succinct]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --count-kmers
+  description: count k-mers and build weighted graph [off]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --count-width
+  description: number of bits used to represent k-mer abundance [8]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --index-ranges
+  description: '[INT] index all node ranges in BOSS for suffixes of given length [10]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --kmer-length
+  description: '[INT]  length of the k-mer to use [3]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --mode
+  description: 'k-mer indexing mode: basic / canonical / primary [basic]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --complete
+  description: construct a complete graph (only for Bitmap graph) [off]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --mem-cap-gb
+  description: '[INT]   preallocated buffer size in Gb [1]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dynamic
+  description: use dynamic build method [off]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --len-suffix
+  description: '[INT]   k-mer suffix length for building graph from chunks [0]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --suffix
+  description: build graph chunk only for k-mers with the suffix given [off]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --outfile-base
+  description: '[STR] basename of output file []'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --mask-dummy
+  description: build mask for dummy k-mers (only for Succinct graph) [off]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --parallel
+  description: '[INT]     use multiple threads for computation [1]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --disk-swap
+  description: '[STR]    directory to use for temporary files [off]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --disk-cap-gb
+  description: '[INT]  max temp disk space to use before forcing a merge, in GB [inf]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: switch on verbose output [off]
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: print usage info
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "#############################\n### Welcome to MetaGraph! ###\n#############################\n\
+  \nMetagraph: comprehensive metagenome graph representation -- Version 0.1\n\nUsage:\
+  \ metagraph_DNA build [options] -o <outfile-base> FILE1 [[FILE2] ...]\n\tEach input\
+  \ file is given in FASTA, FASTQ, VCF, or KMC format.\n\tNote that VCF files must\
+  \ be in plain text or bgzip format.\n\nAvailable options for build:\n\t   --min-count\
+  \ [INT] \tmin k-mer abundance, including [1]\n\t   --max-count [INT] \tmax k-mer\
+  \ abundance, excluding [inf]\n\t   --min-count-q [INT] \tmin k-mer abundance quantile\
+  \ (min-count is used by default) [0.0]\n\t   --max-count-q [INT] \tmax k-mer abundance\
+  \ quantile (max-count is used by default) [1.0]\n\t   --reference [STR] \tbasename\
+  \ of reference sequence (for parsing VCF files) []\n\n\t   --graph [STR] \tgraph\
+  \ representation: succinct / bitmap / hash / hashstr / hashfast [succinct]\n\t \
+  \  --count-kmers \tcount k-mers and build weighted graph [off]\n\t   --count-width\
+  \ \tnumber of bits used to represent k-mer abundance [8]\n\t   --index-ranges [INT]\t\
+  index all node ranges in BOSS for suffixes of given length [10]\n\t-k --kmer-length\
+  \ [INT] \tlength of the k-mer to use [3]\n\t   --mode \t\tk-mer indexing mode: basic\
+  \ / canonical / primary [basic]\n\t   --complete \t\tconstruct a complete graph\
+  \ (only for Bitmap graph) [off]\n\t   --mem-cap-gb [INT] \tpreallocated buffer size\
+  \ in Gb [1]\n\t   --dynamic \t\tuse dynamic build method [off]\n\t-l --len-suffix\
+  \ [INT] \tk-mer suffix length for building graph from chunks [0]\n\t   --suffix\
+  \ \t\tbuild graph chunk only for k-mers with the suffix given [off]\n\t-o --outfile-base\
+  \ [STR]\tbasename of output file []\n\t   --mask-dummy \tbuild mask for dummy k-mers\
+  \ (only for Succinct graph) [off]\n\t-p --parallel [INT] \tuse multiple threads\
+  \ for computation [1]\n\t   --disk-swap [STR] \tdirectory to use for temporary files\
+  \ [off]\n\t   --disk-cap-gb [INT] \tmax temp disk space to use before forcing a\
+  \ merge, in GB [inf]\n\n\tGeneral options:\n\t-v --verbose \t\tswitch on verbose\
+  \ output [off]\n\t-h --help \t\tprint usage info\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/metagraph:0.1.0--hcb16fcb_0

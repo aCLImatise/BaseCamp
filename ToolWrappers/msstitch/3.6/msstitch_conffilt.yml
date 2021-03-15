@@ -1,0 +1,109 @@
+!Command
+command:
+- msstitch
+- conffilt
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: Input file of {} format
+  args: !SimpleFlagArg
+    name: FN
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: Directory to output in
+  args: !SimpleFlagArg
+    name: OUTDIR
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: Output file
+  args: !SimpleFlagArg
+    name: OUTFILE
+- !Flag
+  optional: true
+  synonyms:
+  - --confidence-col
+  description: "Confidence column number or name in the tsv file.\nFirst column has\
+    \ number 1."
+  args: !SimpleFlagArg
+    name: CONFCOL
+- !Flag
+  optional: true
+  synonyms:
+  - --confcolpattern
+  description: "Text pattern to identify column in table on which\nconfidence filtering\
+    \ should be done. Use in case of\nnot using standard {} column"
+  args: !SimpleFlagArg
+    name: CONFPATTERN
+- !Flag
+  optional: true
+  synonyms:
+  - --confidence-lvl
+  description: Confidence cutoff level as a floating point number
+  args: !SimpleFlagArg
+    name: CONFLVL
+- !Flag
+  optional: true
+  synonyms:
+  - --confidence-better
+  description: "Confidence type to define if higher or lower score is\nbetter. One\
+    \ of [higher, lower]"
+  args: !ChoiceFlagArg
+    choices: !!set
+      higher:
+      lower:
+- !Flag
+  optional: true
+  synonyms:
+  - --unroll
+  description: "PSM table from Mzid2TSV contains either one PSM per\nline with all\
+    \ the proteins of that shared peptide on\nthe same line (not unrolled, default),\
+    \ or one\nPSM/protein match per line where each protein from\nthat shared peptide\
+    \ gets its own line (unrolled).\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: msstitch conffilt [-h] [--version] -i FN [-d OUTDIR] [-o OUTFILE]\n\
+  \                         [--confidence-col CONFCOL]\n                         [--confcolpattern\
+  \ CONFPATTERN] --confidence-lvl\n                         CONFLVL --confidence-better\
+  \ {higher,lower} [--unroll]\n\noptional arguments:\n  -h, --help            show\
+  \ this help message and exit\n  --version             show program's version number\
+  \ and exit\n  -i FN                 Input file of {} format\n  -d OUTDIR       \
+  \      Directory to output in\n  -o OUTFILE            Output file\n  --confidence-col\
+  \ CONFCOL\n                        Confidence column number or name in the tsv file.\n\
+  \                        First column has number 1.\n  --confcolpattern CONFPATTERN\n\
+  \                        Text pattern to identify column in table on which\n   \
+  \                     confidence filtering should be done. Use in case of\n    \
+  \                    not using standard {} column\n  --confidence-lvl CONFLVL\n\
+  \                        Confidence cutoff level as a floating point number\n  --confidence-better\
+  \ {higher,lower}\n                        Confidence type to define if higher or\
+  \ lower score is\n                        better. One of [higher, lower]\n  --unroll\
+  \              PSM table from Mzid2TSV contains either one PSM per\n           \
+  \             line with all the proteins of that shared peptide on\n           \
+  \             the same line (not unrolled, default), or one\n                  \
+  \      PSM/protein match per line where each protein from\n                    \
+  \    that shared peptide gets its own line (unrolled).\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/msstitch:3.6--py_0

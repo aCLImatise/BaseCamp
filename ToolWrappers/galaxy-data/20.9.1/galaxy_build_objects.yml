@@ -1,0 +1,76 @@
+!Command
+command:
+- galaxy-build-objects
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --object-store-config
+  description: object store configuration file
+  args: !SimpleFlagArg
+    name: OBJECT_STORE_CONFIG
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --export
+  description: export path
+  args: !SimpleFlagArg
+    name: EXPORT
+- !Flag
+  optional: true
+  synonyms:
+  - --export-type
+  description: "export type (if needed)\n"
+  args: !SimpleFlagArg
+    name: EXPORT_TYPE
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: galaxy-build-objects [-h] [--object-store-config OBJECT_STORE_CONFIG]\n\
+  \                            [-e EXPORT] [--export-type EXPORT_TYPE]\n         \
+  \                   OBJECT_CONFIG\n\nBuild import ready model objects from YAML\
+  \ description of files.\n\nThe positional argument to this script should be a a\
+  \ YAML file containing a\ndata fetch API-like YAML file describing files. This script\
+  \ will then import\nthis data into a defined object store and populate metadata\
+  \ corresponding to\nthese files as datasets into a \"model store\".\n\nThe YAML\
+  \ file should contain a dictionary of destination+elements objects or a\nlist of\
+  \ such dictionaries. Each such destination+elements dictionary should\ncontain at\
+  \ least two keys - 'destination' and 'items'.\n\nExamples of destinations for creating\
+  \ libraries and just populating history\ndatasets are as follows:\n\n```\ndestination:\n\
+  \  type: library\n  name: Training Material\n  description: Data for selected tutorials\
+  \ from https://training.galaxyproject.org.\n```\n\n```\ndestination:\n  type: hdas\n\
+  ````\n\nThe 'items' definition should be a list of files or library folders. If\
+  \ library\nfolders need to be setup they should each be defined with a name and\
+  \ recursive\nset of items (again files or folders). The following code fragment\
+  \ describes\nboth a library folder definition and a file entry:\n\n```\nitems:\n\
+  \  - name: \"Example Folder 1\"\n    description: \"Description of what is in Example\
+  \ Folder 1\"\n    items:\n      - url: https://raw.githubusercontent.com/eteriSokhoyan/test-data/master/cliques-high-representatives.fa\n\
+  \        filename: cliques-high-representatives.fa\n        ext: fasta\n       \
+  \ info: \"A cool longer description.\"\n        dbkey: \"hg19\"\n        md5: e5d21b1ea57fc9a31f8ea0110531bf3d\n\
+  ```\n\nCurrently for each file a filename must be supplied, url information will\
+  \ be\nstored if provided but not fetched on-demand like the upload 2.0/data fetch\n\
+  endpoint.\n\nDifferences with respect to the Upload 2.0 YAML/JSON format: currently\
+  \ various\nsrc tags such as 'url' are not supported, data cleaning options such\
+  \ as\nto_posix_lines, and space_to_tab are not supported, unpacking zip files and\n\
+  walking directories etc.. are not supported either. The format consumed by\nthis\
+  \ script should continue to evolve to converge with the upload 2.0 format.\n\npositional\
+  \ arguments:\n  OBJECT_CONFIG         config file describing files to build objects\
+  \ for\n\noptional arguments:\n  -h, --help            show this help message and\
+  \ exit\n  --object-store-config OBJECT_STORE_CONFIG\n                        object\
+  \ store configuration file\n  -e EXPORT, --export EXPORT\n                     \
+  \   export path\n  --export-type EXPORT_TYPE\n                        export type\
+  \ (if needed)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/galaxy-data:20.9.1--py_2

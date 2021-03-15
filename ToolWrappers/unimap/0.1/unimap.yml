@@ -1,0 +1,278 @@
+!Command
+command:
+- unimap
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: target.fa
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  description: k-mer size (no larger than 28) [21]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  description: minimizer window size [11]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  description: number of bits for bloom filter [35]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: dump index to FILE []
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  description: high k-mer occurrence threshold when indexing [50]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: max minimizer occurrence [1000]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  description: stop chain enlongation if there are no minimizers in INT-bp [5000]
+  args: !SimpleFlagArg
+    name: NUM
+- !Flag
+  optional: true
+  synonyms:
+  - -G
+  description: max intron length (effective with -xsplice; changing -r) [200k]
+  args: !SimpleFlagArg
+    name: NUM
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: bandwidth used in chaining and DP-based alignment [100000]
+  args: !SimpleFlagArg
+    name: NUM
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: minimal number of minimizers on a chain [3]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: minimal chaining score (matching bases minus log gap penalty) [40]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: min secondary-to-primary score ratio [0.8]
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - -N
+  description: retain at most INT secondary alignments [10,25]
+  args: !OptionalFlagArg
+    names:
+    - INT
+    - INT
+    separator: ','
+- !Flag
+  optional: true
+  synonyms:
+  - -A
+  description: matching score [1]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -B
+  description: mismatch penalty [3]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -O
+  description: gap open penalty [5,25]
+  args: !OptionalFlagArg
+    names:
+    - INT
+    - INT
+    separator: ','
+- !Flag
+  optional: true
+  synonyms:
+  - -E
+  description: gap extension penalty; a k-long gap costs min{O1+k*E1,O2+k*E2} [2,1]
+  args: !OptionalFlagArg
+    names:
+    - INT
+    - INT
+    separator: ','
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  description: Z-drop score and inversion Z-drop score [400,200]
+  args: !OptionalFlagArg
+    names:
+    - INT
+    - INT
+    separator: ','
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: minimal peak DP alignment score [200]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  description: how to find GT-AG. f:transcript strand, b:both strands, n:don't match
+    GT-AG [n]
+  args: !SimpleFlagArg
+    name: CHAR
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: perform base-alignment and output CIGAR in the PAF format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  description: perform base-alignment and output in SAM (PAF by default)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: output alignments to FILE [stdout]
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  description: SAM read group line in a format like '@RG\tID:foo\tSM:bar' []
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - --cs
+  description: "[=STR]   output the cs tag; STR is 'short' (if absent) or 'long' [none]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --MD
+  description: output the MD tag
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Y
+  description: use soft clipping for supplementary alignments
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: number of threads [3]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -K
+  description: minibatch size for mapping [1G]
+  args: !SimpleFlagArg
+    name: NUM
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  description: "preset (always applied before other options; see unimap.1 for details)\
+    \ []\n- ont/clr:  --rmq=no -r10k -A2 -B4 -O4,24 -E2,1 -z400,200 -s80 -K500M\n\
+    - hifi/ccs: --rmq=no -r10k -A1 -B4 -O6,26 -E2,1 -w21 -K500M\n- asm5:  -A1 -B19\
+    \ -O39,81 -E2,1 -N50 -w21\n- asm10: -A1 -B9  -O16,41 -E2,1 -N50 -w21\n- asm20:\
+    \ -A1 -B4  -O6,26  -E2,1 -N50\n- splice:hq/splice: spliced alignment"
+  args: !SimpleFlagArg
+    name: STR
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show version number
+  args: !EmptyFlagArg {}
+help_text: "Usage: unimap [options] <target.fa>|<target.idx> [query.fa] [...]\nOptions:\n\
+  \  Indexing:\n    -k INT       k-mer size (no larger than 28) [21]\n    -w INT \
+  \      minimizer window size [11]\n    -b INT       number of bits for bloom filter\
+  \ [35]\n    -d FILE      dump index to FILE []\n    -F INT       high k-mer occurrence\
+  \ threshold when indexing [50]\n  Mapping:\n    -f INT       max minimizer occurrence\
+  \ [1000]\n    -g NUM       stop chain enlongation if there are no minimizers in\
+  \ INT-bp [5000]\n    -G NUM       max intron length (effective with -xsplice; changing\
+  \ -r) [200k]\n    -r NUM       bandwidth used in chaining and DP-based alignment\
+  \ [100000]\n    -n INT       minimal number of minimizers on a chain [3]\n    -m\
+  \ INT       minimal chaining score (matching bases minus log gap penalty) [40]\n\
+  \    -p FLOAT     min secondary-to-primary score ratio [0.8]\n    -N INT[,INT] retain\
+  \ at most INT secondary alignments [10,25]\n  Alignment:\n    -A INT       matching\
+  \ score [1]\n    -B INT       mismatch penalty [3]\n    -O INT[,INT] gap open penalty\
+  \ [5,25]\n    -E INT[,INT] gap extension penalty; a k-long gap costs min{O1+k*E1,O2+k*E2}\
+  \ [2,1]\n    -z INT[,INT] Z-drop score and inversion Z-drop score [400,200]\n  \
+  \  -s INT       minimal peak DP alignment score [200]\n    -u CHAR      how to find\
+  \ GT-AG. f:transcript strand, b:both strands, n:don't match GT-AG [n]\n  Input/Output:\n\
+  \    -c           perform base-alignment and output CIGAR in the PAF format\n  \
+  \  -a           perform base-alignment and output in SAM (PAF by default)\n    -o\
+  \ FILE      output alignments to FILE [stdout]\n    -R STR       SAM read group\
+  \ line in a format like '@RG\\tID:foo\\tSM:bar' []\n    --cs[=STR]   output the\
+  \ cs tag; STR is 'short' (if absent) or 'long' [none]\n    --MD         output the\
+  \ MD tag\n    -Y           use soft clipping for supplementary alignments\n    -t\
+  \ INT       number of threads [3]\n    -K NUM       minibatch size for mapping [1G]\n\
+  \    --version    show version number\n  Preset:\n    -x STR       preset (always\
+  \ applied before other options; see unimap.1 for details) []\n                 -\
+  \ ont/clr:  --rmq=no -r10k -A2 -B4 -O4,24 -E2,1 -z400,200 -s80 -K500M\n        \
+  \         - hifi/ccs: --rmq=no -r10k -A1 -B4 -O6,26 -E2,1 -w21 -K500M\n        \
+  \         - asm5:  -A1 -B19 -O39,81 -E2,1 -N50 -w21\n                 - asm10: -A1\
+  \ -B9  -O16,41 -E2,1 -N50 -w21\n                 - asm20: -A1 -B4  -O6,26  -E2,1\
+  \ -N50\n                 - splice:hq/splice: spliced alignment\n\nSee `man ./unimap.1'\
+  \ for detailed description of these and other advanced command-line options.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/unimap:0.1--hed695b0_0

@@ -1,0 +1,269 @@
+!Command
+command:
+- qfy.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: stderr
+  description: --bcf                 Use BCF internally. This is the default when
+    the input
+- !Positional
+  optional: false
+  position: 0
+  name: header.
+  description: --verbose             Raise logging level from warning to info.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --adjust-conf-regions
+  description: "When hap.py was run with --adjust-conf-regions, on the\noriginal VCF,\
+    \ then quantify needs the truthset VCF in\norder to correctly reproduce the results.\
+    \ This switch\nallows us to pass the truth VCF into quantify."
+  args: !SimpleFlagArg
+    name: PREPROCESSING_TRUTH_CONFREGIONS
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --type
+  description: Annotation format in input VCF file.
+  args: !ChoiceFlagArg
+    choices: !!set
+      xcmp:
+      ga4gh:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --false-positives
+  description: "False positive / confident call regions (.bed or\n.bed.gz). Calls\
+    \ outside these regions will be labelled\nas UNK."
+  args: !SimpleFlagArg
+    name: FP_BEDFILE
+- !Flag
+  optional: true
+  synonyms:
+  - --stratification
+  description: "Stratification file list (TSV format -- first column\nis region name,\
+    \ second column is file name)."
+  args: !SimpleFlagArg
+    name: STRAT_TSV
+- !Flag
+  optional: true
+  synonyms:
+  - --stratification-region
+  description: "Add single stratification region, e.g.\n--stratification-region TEST:test.bed"
+  args: !SimpleFlagArg
+    name: STRAT_REGIONS
+- !Flag
+  optional: true
+  synonyms:
+  - --stratification-fixchr
+  description: Add chr prefix to stratification files if necessary
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --write-vcf
+  description: Write an annotated VCF.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -X
+  - --write-counts
+  description: Write advanced counts and metrics.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-write-counts
+  description: Do not write advanced counts and metrics.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --output-vtc
+  description: "Write VTC field in the final VCF which gives the\ncounts each position\
+    \ has contributed to."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --preserve-info
+  description: "When using XCMP, preserve and merge the INFO fields in\ntruth and\
+    \ query. Useful for ROC computation."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --roc
+  description: "Select a feature to produce a ROC on (INFO feature,\nQUAL, GQX, ...)."
+  args: !SimpleFlagArg
+    name: ROC
+- !Flag
+  optional: true
+  synonyms:
+  - --no-roc
+  description: "Disable ROC computation and only output summary\nstatistics for more\
+    \ concise output."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --roc-regions
+  description: "Select a list of regions to compute ROCs in. By\ndefault, only the\
+    \ '*' region will produce ROC output\n(aggregate variant counts)."
+  args: !SimpleFlagArg
+    name: ROC_REGIONS
+- !Flag
+  optional: true
+  synonyms:
+  - --roc-filter
+  description: Select a filter to ignore when making ROCs.
+  args: !SimpleFlagArg
+    name: ROC_FILTER
+- !Flag
+  optional: true
+  synonyms:
+  - --roc-delta
+  description: Minimum spacing between ROC QQ levels.
+  args: !SimpleFlagArg
+    name: ROC_DELTA
+- !Flag
+  optional: true
+  synonyms:
+  - --ci-alpha
+  description: "Confidence level for Jeffrey's CI for recall,\nprecision and fraction\
+    \ of non-assessed calls."
+  args: !SimpleFlagArg
+    name: CI_ALPHA
+- !Flag
+  optional: true
+  synonyms:
+  - --no-json
+  description: Disable JSON file output.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --report-prefix
+  description: Filename prefix for report output.
+  args: !SimpleFlagArg
+    name: REPORTS_PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reference
+  description: Specify a reference file.
+  args: !SimpleFlagArg
+    name: REF
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: Number of threads to use.
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - --logfile
+  description: Write logging information into file rather than to
+  args: !SimpleFlagArg
+    name: LOGFILE
+- !Flag
+  optional: true
+  synonyms:
+  - --quiet
+  description: Set logging level to output errors only.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: ''
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: Show version number and exit.
+  args: !EmptyFlagArg {}
+help_text: "usage: Quantify annotated VCFs [-h] [-v]\n                           \
+  \    [--adjust-conf-regions PREPROCESSING_TRUTH_CONFREGIONS]\n                 \
+  \              [-t {xcmp,ga4gh}] [-f FP_BEDFILE]\n                             \
+  \  [--stratification STRAT_TSV]\n                               [--stratification-region\
+  \ STRAT_REGIONS]\n                               [--stratification-fixchr] [-V]\
+  \ [-X]\n                               [--no-write-counts] [--output-vtc]\n    \
+  \                           [--preserve-info] [--roc ROC] [--no-roc]\n         \
+  \                      [--roc-regions ROC_REGIONS]\n                           \
+  \    [--roc-filter ROC_FILTER]\n                               [--roc-delta ROC_DELTA]\
+  \ [--ci-alpha CI_ALPHA]\n                               [--no-json] -o REPORTS_PREFIX\
+  \ [-r REF]\n                               [--threads THREADS] [--logfile LOGFILE]\
+  \ [--bcf]\n                               [--verbose | --quiet]\n              \
+  \                 in_vcf\n\npositional arguments:\n  in_vcf                Comparison\
+  \ intermediate VCF file to quantify (two\n                        column TRUTH/QUERY\
+  \ format)\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  -v, --version         Show version number and exit.\n  --adjust-conf-regions\
+  \ PREPROCESSING_TRUTH_CONFREGIONS\n                        When hap.py was run with\
+  \ --adjust-conf-regions, on the\n                        original VCF, then quantify\
+  \ needs the truthset VCF in\n                        order to correctly reproduce\
+  \ the results. This switch\n                        allows us to pass the truth\
+  \ VCF into quantify.\n  -t {xcmp,ga4gh}, --type {xcmp,ga4gh}\n                 \
+  \       Annotation format in input VCF file.\n  -f FP_BEDFILE, --false-positives\
+  \ FP_BEDFILE\n                        False positive / confident call regions (.bed\
+  \ or\n                        .bed.gz). Calls outside these regions will be labelled\n\
+  \                        as UNK.\n  --stratification STRAT_TSV\n               \
+  \         Stratification file list (TSV format -- first column\n               \
+  \         is region name, second column is file name).\n  --stratification-region\
+  \ STRAT_REGIONS\n                        Add single stratification region, e.g.\n\
+  \                        --stratification-region TEST:test.bed\n  --stratification-fixchr\n\
+  \                        Add chr prefix to stratification files if necessary\n \
+  \ -V, --write-vcf       Write an annotated VCF.\n  -X, --write-counts    Write advanced\
+  \ counts and metrics.\n  --no-write-counts     Do not write advanced counts and\
+  \ metrics.\n  --output-vtc          Write VTC field in the final VCF which gives\
+  \ the\n                        counts each position has contributed to.\n  --preserve-info\
+  \       When using XCMP, preserve and merge the INFO fields in\n               \
+  \         truth and query. Useful for ROC computation.\n  --roc ROC            \
+  \ Select a feature to produce a ROC on (INFO feature,\n                        QUAL,\
+  \ GQX, ...).\n  --no-roc              Disable ROC computation and only output summary\n\
+  \                        statistics for more concise output.\n  --roc-regions ROC_REGIONS\n\
+  \                        Select a list of regions to compute ROCs in. By\n     \
+  \                   default, only the '*' region will produce ROC output\n     \
+  \                   (aggregate variant counts).\n  --roc-filter ROC_FILTER\n   \
+  \                     Select a filter to ignore when making ROCs.\n  --roc-delta\
+  \ ROC_DELTA\n                        Minimum spacing between ROC QQ levels.\n  --ci-alpha\
+  \ CI_ALPHA   Confidence level for Jeffrey's CI for recall,\n                   \
+  \     precision and fraction of non-assessed calls.\n  --no-json             Disable\
+  \ JSON file output.\n  -o REPORTS_PREFIX, --report-prefix REPORTS_PREFIX\n     \
+  \                   Filename prefix for report output.\n  -r REF, --reference REF\n\
+  \                        Specify a reference file.\n  --threads THREADS     Number\
+  \ of threads to use.\n  --logfile LOGFILE     Write logging information into file\
+  \ rather than to\n                        stderr\n  --bcf                 Use BCF\
+  \ internally. This is the default when the input\n                        file is\
+  \ in BCF format already. Using BCF can speed up\n                        temp file\
+  \ access, but may fail for VCF files that have\n                        broken headers\
+  \ or records that don't comply with the\n                        header.\n  --verbose\
+  \             Raise logging level from warning to info.\n  --quiet             \
+  \  Set logging level to output errors only.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/hap.py:0.3.13--py27h5c5a3ab_0

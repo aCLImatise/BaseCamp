@@ -1,0 +1,381 @@
+&id001 !Command
+command:
+- mg-toolkit
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --debug
+  description: print debugging information
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -V
+  description: ''
+  args: !EmptyFlagArg {}
+parent:
+subcommands:
+- &id002 !Command
+  command:
+  - mg-toolkit
+  - sequence_search
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -seq
+    - --sequence
+    description: Provide path to fasta file.
+    args: !RepeatFlagArg
+      name: SEQUENCE
+  - !Flag
+    optional: true
+    synonyms:
+    - -db
+    - --database
+    description: "Choose peptide database (default: full).\n"
+    args: !ChoiceFlagArg
+      choices: !!set
+        partial:
+        all:
+        full:
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - mg-toolkit
+    - sequence_search
+    - evalue
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -incE
+      - --seq-evalue-threshold
+      description: "Sequence E-value threshold. Accepted value 0 < x ≤ 10\n(default:\
+        \ 0.01)."
+      args: !SimpleFlagArg
+        name: SEQ_EVALUE_THRESHOLD
+    - !Flag
+      optional: true
+      synonyms:
+      - -incdomE
+      - --hit-evalue-threshold
+      description: "Hit E-value threshold. Accepted value 0 < x ≤ 10\n(default: 0.03)."
+      args: !SimpleFlagArg
+        name: HIT_EVALUE_THRESHOLD
+    - !Flag
+      optional: true
+      synonyms:
+      - -E
+      - --report-seq-evalue-threshold
+      description: "Sequence E-value threshold (reporting).Accepted value\n0 < x ≤\
+        \ 10 (default: 1)."
+      args: !SimpleFlagArg
+        name: REPORT_SEQ_EVALUE_THRESHOLD
+    - !Flag
+      optional: true
+      synonyms:
+      - -domE
+      - --report-hit-evalue-threshold
+      description: "Hit E-value threshold (reporting). Accepted value 0 <\nx ≤ 10\
+        \ (default: 1).\n"
+      args: !SimpleFlagArg
+        name: REPORT_HIT_EVALUE_THRESHOLD
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: show this help message and exit
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "usage: mg-toolkit sequence_search evalue [-h] [-incE SEQ_EVALUE_THRESHOLD]\n\
+      \                                         [-incdomE HIT_EVALUE_THRESHOLD]\n\
+      \                                         [-E REPORT_SEQ_EVALUE_THRESHOLD]\n\
+      \                                         [-domE REPORT_HIT_EVALUE_THRESHOLD]\n\
+      \noptional arguments:\n  -h, --help            show this help message and exit\n\
+      \  -incE SEQ_EVALUE_THRESHOLD, --seq-evalue-threshold SEQ_EVALUE_THRESHOLD\n\
+      \                        Sequence E-value threshold. Accepted value 0 < x ≤\
+      \ 10\n                        (default: 0.01).\n  -incdomE HIT_EVALUE_THRESHOLD,\
+      \ --hit-evalue-threshold HIT_EVALUE_THRESHOLD\n                        Hit E-value\
+      \ threshold. Accepted value 0 < x ≤ 10\n                        (default: 0.03).\n\
+      \  -E REPORT_SEQ_EVALUE_THRESHOLD, --report-seq-evalue-threshold REPORT_SEQ_EVALUE_THRESHOLD\n\
+      \                        Sequence E-value threshold (reporting).Accepted value\n\
+      \                        0 < x ≤ 10 (default: 1).\n  -domE REPORT_HIT_EVALUE_THRESHOLD,\
+      \ --report-hit-evalue-threshold REPORT_HIT_EVALUE_THRESHOLD\n              \
+      \          Hit E-value threshold (reporting). Accepted value 0 <\n         \
+      \               x ≤ 10 (default: 1).\n"
+    generated_using: &id003
+    - --help
+    docker_image: quay.io/biocontainers/mg-toolkit:0.9.1--py_0
+  - !Command
+    command:
+    - mg-toolkit
+    - sequence_search
+    - bitscore
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -incT
+      - --seq-bitscore-threshold
+      description: "Sequence bit score threshold. Accepted values x > 0\n(default:\
+        \ 25)."
+      args: !SimpleFlagArg
+        name: SEQ_BITSCORE_THRESHOLD
+    - !Flag
+      optional: true
+      synonyms:
+      - -incdomT
+      - --hit-bitscore-threshold
+      description: "Hit bit score threshold. Accepted values x > 0\n(default: 23)."
+      args: !SimpleFlagArg
+        name: HIT_BITSCORE_THRESHOLD
+    - !Flag
+      optional: true
+      synonyms:
+      - -T
+      - --report-seq-bitscore-threshold
+      description: "Sequence E-value threshold (reporting). Accepted\nvalues x > 0\
+        \ (default: 7)."
+      args: !SimpleFlagArg
+        name: REPORT_SEQ_BITSCORE_THRESHOLD
+    - !Flag
+      optional: true
+      synonyms:
+      - -domT
+      - --report-hit-bitscore-threshold
+      description: "Hit E-value threshold (reporting). Accepted values x >\n0 (default:\
+        \ 5).\n"
+      args: !SimpleFlagArg
+        name: REPORT_HIT_BITSCORE_THRESHOLD
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: show this help message and exit
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "usage: mg-toolkit sequence_search bitscore [-h] [-incT SEQ_BITSCORE_THRESHOLD]\n\
+      \                                           [-incdomT HIT_BITSCORE_THRESHOLD]\n\
+      \                                           [-T REPORT_SEQ_BITSCORE_THRESHOLD]\n\
+      \                                           [-domT REPORT_HIT_BITSCORE_THRESHOLD]\n\
+      \noptional arguments:\n  -h, --help            show this help message and exit\n\
+      \  -incT SEQ_BITSCORE_THRESHOLD, --seq-bitscore-threshold SEQ_BITSCORE_THRESHOLD\n\
+      \                        Sequence bit score threshold. Accepted values x > 0\n\
+      \                        (default: 25).\n  -incdomT HIT_BITSCORE_THRESHOLD,\
+      \ --hit-bitscore-threshold HIT_BITSCORE_THRESHOLD\n                        Hit\
+      \ bit score threshold. Accepted values x > 0\n                        (default:\
+      \ 23).\n  -T REPORT_SEQ_BITSCORE_THRESHOLD, --report-seq-bitscore-threshold\
+      \ REPORT_SEQ_BITSCORE_THRESHOLD\n                        Sequence E-value threshold\
+      \ (reporting). Accepted\n                        values x > 0 (default: 7).\n\
+      \  -domT REPORT_HIT_BITSCORE_THRESHOLD, --report-hit-bitscore-threshold REPORT_HIT_BITSCORE_THRESHOLD\n\
+      \                        Hit E-value threshold (reporting). Accepted values\
+      \ x >\n                        0 (default: 5).\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/mg-toolkit:0.9.1--py_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: mg-toolkit sequence_search [-h] -seq SEQUENCE [SEQUENCE ...]\n\
+    \                                  [-db {full,all,partial}]\n                \
+    \                  {evalue,bitscore} ...\n\npositional arguments:\n  {evalue,bitscore}\n\
+    \    evalue              Search non-redundant protein database using HMMER.\n\
+    \    bitscore            Search non-redundant protein database using HMMER.\n\n\
+    optional arguments:\n  -h, --help            show this help message and exit\n\
+    \  -seq SEQUENCE [SEQUENCE ...], --sequence SEQUENCE [SEQUENCE ...]\n        \
+    \                Provide path to fasta file.\n  -db {full,all,partial}, --database\
+    \ {full,all,partial}\n                        Choose peptide database (default:\
+    \ full).\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/mg-toolkit:0.9.1--py_0
+- !Command
+  command:
+  - mg-toolkit
+  - bulk_download
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    - --accession
+    description: Provide the study/project accession of your interest, e.g. ERP001736,
+      SRP000319. The study must be publicly available in MGnify.
+    args: !SimpleFlagArg
+      name: ACCESSION
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output_path
+    description: "Location of the output directory, where the downloadable files are\
+      \ written to.\nDEFAULT: CWD"
+    args: !SimpleFlagArg
+      name: OUTPUT_PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --pipeline
+    description: "Specify the version of the pipeline you are interested in.\nLets\
+      \ say your study of interest has been analysed with\nmultiple version, but you\
+      \ are only interested in a particular\nversion then used this option to filter\
+      \ down the results by\nthe version you interested in.\nDEFAULT: Downloads all\
+      \ versions"
+    args: !ChoiceFlagArg
+      choices: !!set
+        '4.0':
+        '1.0':
+        '2.0':
+        '5.0':
+        '3.0':
+        '4.1':
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    - --result_group
+    description: "Provide a single result group if needed.\nSupported result groups\
+      \ are:\n- statistics\n- sequence_data (all versions)\n- functional_analysis\
+      \ (all versions)\n- taxonomic_analysis (1.0-3.0)\n- taxonomic_analysis_ssu_rrna\
+      \ (>=4.0)\n- taxonomic_analysis_lsu_rrna (>=4.0)\n- non-coding_rnas (>=4.0)\n\
+      - taxonomic_analysis_itsonedb (>= 5.0)\n- taxonomic_analysis_unite (>= 5.0)\n\
+      - taxonomic_analysis_motu  (>= 5.0)\n- pathways_and_systems (>= 5.0)\nDEFAULT:\
+      \ Downloads all result groups if not provided.\n(default: None).\n"
+    args: !ChoiceFlagArg
+      choices: !!set
+        taxonomic_analysis_motu:
+        statistics:
+        non-coding_rnas:
+        pathways_and_systems:
+        taxonomic_analysis_unite:
+        taxonomic_analysis_lsu_rrna:
+        taxonomic_analysis_ssu_rrna:
+        functional_analysis:
+        taxonomic_analysis:
+        taxonomic_analysis_itsonedb:
+        sequence_data:
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: mg-toolkit bulk_download [-h] -a ACCESSION [-o OUTPUT_PATH]\n\
+    \                                [-p {1.0,2.0,3.0,4.0,4.1,5.0}]\n            \
+    \                    [-g {statistics,sequence_data,functional_analysis,taxonomic_analysis,taxonomic_analysis_ssu_rrna,taxonomic_analysis_lsu_rrna,non-coding_rnas,taxonomic_analysis_itsonedb,taxonomic_analysis_unite,taxonomic_analysis_motu,pathways_and_systems}]\n\
+    \noptional arguments:\n  -h, --help            show this help message and exit\n\
+    \  -a ACCESSION, --accession ACCESSION\n                        Provide the study/project\
+    \ accession of your interest, e.g. ERP001736, SRP000319. The study must be publicly\
+    \ available in MGnify.\n  -o OUTPUT_PATH, --output_path OUTPUT_PATH\n        \
+    \                Location of the output directory, where the downloadable files\
+    \ are written to.\n                        DEFAULT: CWD\n  -p {1.0,2.0,3.0,4.0,4.1,5.0},\
+    \ --pipeline {1.0,2.0,3.0,4.0,4.1,5.0}\n                        Specify the version\
+    \ of the pipeline you are interested in. \n                        Lets say your\
+    \ study of interest has been analysed with \n                        multiple\
+    \ version, but you are only interested in a particular \n                    \
+    \    version then used this option to filter down the results by \n          \
+    \              the version you interested in.\n                        DEFAULT:\
+    \ Downloads all versions\n  -g {statistics,sequence_data,functional_analysis,taxonomic_analysis,taxonomic_analysis_ssu_rrna,taxonomic_analysis_lsu_rrna,non-coding_rnas,taxonomic_analysis_itsonedb,taxonomic_analysis_unite,taxonomic_analysis_motu,pathways_and_systems},\
+    \ --result_group {statistics,sequence_data,functional_analysis,taxonomic_analysis,taxonomic_analysis_ssu_rrna,taxonomic_analysis_lsu_rrna,non-coding_rnas,taxonomic_analysis_itsonedb,taxonomic_analysis_unite,taxonomic_analysis_motu,pathways_and_systems}\n\
+    \                        Provide a single result group if needed.\n          \
+    \              Supported result groups are:\n                         - statistics\n\
+    \                         - sequence_data (all versions)\n                   \
+    \      - functional_analysis (all versions)\n                         - taxonomic_analysis\
+    \ (1.0-3.0)\n                         - taxonomic_analysis_ssu_rrna (>=4.0)\n\
+    \                         - taxonomic_analysis_lsu_rrna (>=4.0)\n            \
+    \             - non-coding_rnas (>=4.0)\n                         - taxonomic_analysis_itsonedb\
+    \ (>= 5.0)\n                         - taxonomic_analysis_unite (>= 5.0)\n   \
+    \                      - taxonomic_analysis_motu  (>= 5.0)\n                 \
+    \        - pathways_and_systems (>= 5.0)\n                        DEFAULT: Downloads\
+    \ all result groups if not provided.\n                        (default: None).\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/mg-toolkit:0.9.1--py_0
+- !Command
+  command:
+  - mg-toolkit
+  - original_metadata
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    - --accession
+    description: "Provide study accession, e.g. PRJEB1787 or ERP001736.\n"
+    args: !RepeatFlagArg
+      name: ACCESSION
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: mg-toolkit original_metadata [-h] -a ACCESSION [ACCESSION ...]\n\
+    \noptional arguments:\n  -h, --help            show this help message and exit\n\
+    \  -a ACCESSION [ACCESSION ...], --accession ACCESSION [ACCESSION ...]\n     \
+    \                   Provide study accession, e.g. PRJEB1787 or ERP001736.\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/mg-toolkit:0.9.1--py_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: print version information
+  args: !EmptyFlagArg {}
+help_text: "usage: mg-toolkit [-h] [-V] [-d]\n                  {original_metadata,sequence_search,bulk_download}\
+  \ ...\n\nMetagenomics toolkit\n--------------------\n\npositional arguments:\n \
+  \ {original_metadata,sequence_search,bulk_download}\n    original_metadata   Download\
+  \ original metadata.\n    sequence_search     Search non-redundant protein database\
+  \ using HMMER\n    bulk_download       Download result files in bulks for an entire\
+  \ study.\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  -V, --version         print version information\n  -d, --debug   \
+  \        print debugging information\n"
+generated_using: *id003
+docker_image: quay.io/biocontainers/mg-toolkit:0.9.1--py_0

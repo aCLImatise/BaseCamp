@@ -1,0 +1,95 @@
+!Command
+command:
+- protmapper
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: input
+  description: "Path to an input file. The input file is a text file\nin which each\
+    \ row consists of four comma separated\nvalues, with the first element being a\
+    \ protein ID, the\nsecond, the namespace in which that ID is valid\n(uniprot or\
+    \ hgnc),third, an amino acid represented as\na single capital letter, and fourth,\
+    \ a site position\non the protein."
+- !Positional
+  optional: false
+  position: 1
+  name: output
+  description: "Path to the output file to be generated. Each line of\nthe output\
+    \ file corresponds to a line in the input\nfile. Each linerepresents a mapped\
+    \ site produced by\nProtmapper."
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --peptide
+  description: "If given, the third element of each row of the input\nfile is a peptide\
+    \ (amino acid sequence) rather than a\nsingle amino acid residue. In this case,\
+    \ peptide-\noriented mappings are applied. In this mode the\nfollowing boolean\
+    \ arguments are ignored."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no_methionine_offset
+  description: "If given, will not check for off-by-one errors in site\nposition (possibly)\
+    \ attributable to site numbering\nfrom mature proteins after cleavage of the initial\n\
+    methionine."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no_orthology_mapping
+  description: "If given, will not check sequence positions for known\nmodification\
+    \ sites in mouse or rat sequences (based on\nPhosphoSitePlus data)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no_isoform_mapping
+  description: "If given, will not check sequence positions for known\nmodifications\
+    \ in other human isoforms of the protein\n(based on PhosphoSitePlus data).\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: protmapper [-h] [--peptide] [--no_methionine_offset]\n        \
+  \          [--no_orthology_mapping] [--no_isoform_mapping]\n                  input\
+  \ output\n\nRun Protmapper on a list of proteins with residues and sites provided\
+  \ in a\ntext file.\n\npositional arguments:\n  input                 Path to an\
+  \ input file. The input file is a text file\n                        in which each\
+  \ row consists of four comma separated\n                        values, with the\
+  \ first element being a protein ID, the\n                        second, the namespace\
+  \ in which that ID is valid\n                        (uniprot or hgnc),third, an\
+  \ amino acid represented as\n                        a single capital letter, and\
+  \ fourth, a site position\n                        on the protein.\n  output   \
+  \             Path to the output file to be generated. Each line of\n          \
+  \              the output file corresponds to a line in the input\n            \
+  \            file. Each linerepresents a mapped site produced by\n             \
+  \           Protmapper.\n\noptional arguments:\n  -h, --help            show this\
+  \ help message and exit\n  --peptide             If given, the third element of\
+  \ each row of the input\n                        file is a peptide (amino acid sequence)\
+  \ rather than a\n                        single amino acid residue. In this case,\
+  \ peptide-\n                        oriented mappings are applied. In this mode\
+  \ the\n                        following boolean arguments are ignored.\n  --no_methionine_offset\n\
+  \                        If given, will not check for off-by-one errors in site\n\
+  \                        position (possibly) attributable to site numbering\n  \
+  \                      from mature proteins after cleavage of the initial\n    \
+  \                    methionine.\n  --no_orthology_mapping\n                   \
+  \     If given, will not check sequence positions for known\n                  \
+  \      modification sites in mouse or rat sequences (based on\n                \
+  \        PhosphoSitePlus data).\n  --no_isoform_mapping  If given, will not check\
+  \ sequence positions for known\n                        modifications in other human\
+  \ isoforms of the protein\n                        (based on PhosphoSitePlus data).\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/protmapper:0.0.21--py_0

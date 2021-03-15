@@ -1,0 +1,101 @@
+!Command
+command:
+- extract_consensus
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: 'Fasta file containing the reference sequence (default: None)'
+  args: !SimpleFlagArg
+    name: FASTA
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: "Region of interested in BED format, e.g. HXB2:2253-3869. Loci\nare\
+    \ interpreted using 0-based indexing, and a half-open interval\nis used, i.e,\
+    \ [start:end) (default: None)"
+  args: !SimpleFlagArg
+    name: BED
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: "Minimum read depth for reporting variants per locus (default:\n50)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  description: "Minimum phred quality score a base has to reach to be counted\n(default:\
+    \ 15)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  description: 'Minimum frequency for an ambiguous nucleotide (default: 0.05)'
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: "Read count below which ambiguous base 'n' is reported (default:\n\
+    None)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -N
+  description: 'Patient/sample identifier (default: CONSENSUS)'
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: 'Output directory (default: /)'
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: 'Input BAM file (default: None)'
+  args: !SimpleFlagArg
+    name: BAM
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: extract_consensus [-h] -i BAM [-f FASTA] [-r BED] [-c INT] [-q\
+  \ INT]\n                         [-a FLOAT] [-n INT] [-N STR] [-o PATH]\n\nScript\
+  \ to construct consensus sequences\n\noptional arguments:\n  -h, --help  show this\
+  \ help message and exit\n  -f FASTA    Fasta file containing the reference sequence\
+  \ (default: None)\n  -r BED      Region of interested in BED format, e.g. HXB2:2253-3869.\
+  \ Loci\n              are interpreted using 0-based indexing, and a half-open interval\n\
+  \              is used, i.e, [start:end) (default: None)\n  -c INT      Minimum\
+  \ read depth for reporting variants per locus (default:\n              50)\n  -q\
+  \ INT      Minimum phred quality score a base has to reach to be counted\n     \
+  \         (default: 15)\n  -a FLOAT    Minimum frequency for an ambiguous nucleotide\
+  \ (default: 0.05)\n  -n INT      Read count below which ambiguous base 'n' is reported\
+  \ (default:\n              None)\n  -N STR      Patient/sample identifier (default:\
+  \ CONSENSUS)\n  -o PATH     Output directory (default: /)\n\nrequired named arguments:\n\
+  \  -i BAM      Input BAM file (default: None)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/smallgenomeutilities:0.3.2--py_0

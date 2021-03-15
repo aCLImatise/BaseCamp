@@ -1,0 +1,621 @@
+!Command
+command:
+- cutadapt
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: Print debug log. Use twice to also print DP matrices
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --cores
+  description: "Number of CPU cores to use. Use 0 to auto-detect.\nDefault: 1"
+  args: !SimpleFlagArg
+    name: CORES
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --adapter
+  description: "Sequence of an adapter ligated to the 3' end (paired\ndata: of the\
+    \ first read). The adapter and subsequent\nbases are trimmed. If a '$' character\
+    \ is appended\n('anchoring'), the adapter is only found if it is a\nsuffix of\
+    \ the read."
+  args: !SimpleFlagArg
+    name: ADAPTER
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --front
+  description: "Sequence of an adapter ligated to the 5' end (paired\ndata: of the\
+    \ first read). The adapter and any preceding\nbases are trimmed. Partial matches\
+    \ at the 5' end are\nallowed. If a '^' character is prepended ('anchoring'),\n\
+    the adapter is only found if it is a prefix of the read."
+  args: !SimpleFlagArg
+    name: ADAPTER
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --anywhere
+  description: "Sequence of an adapter that may be ligated to the 5' or\n3' end (paired\
+    \ data: of the first read). Both types of\nmatches as described under -a and -g\
+    \ are allowed. If the\nfirst base of the read is part of the match, the\nbehavior\
+    \ is as with -g, otherwise as with -a. This\noption is mostly for rescuing failed\
+    \ library\npreparations - do not use if you know which end your\nadapter was ligated\
+    \ to!"
+  args: !SimpleFlagArg
+    name: ADAPTER
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --error-rate
+  - --errors
+  description: "Maximum allowed error rate (if 0 <= E < 1), or absolute\nnumber of\
+    \ errors for full-length adapter match (if E is\nan integer >= 1). Error rate\
+    \ = no. of errors divided by\nlength of matching region. Default: 0.1 (10%)"
+  args: !SimpleFlagArg
+    name: E
+- !Flag
+  optional: true
+  synonyms:
+  - --no-indels
+  description: "Allow only mismatches in alignments. Default: allow both\nmismatches\
+    \ and indels"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --times
+  description: 'Remove up to COUNT adapters from each read. Default: 1'
+  args: !SimpleFlagArg
+    name: COUNT
+- !Flag
+  optional: true
+  synonyms:
+  - -O
+  - --overlap
+  description: "Require MINLENGTH overlap between read and adapter for\nan adapter\
+    \ to be found. Default: 3"
+  args: !SimpleFlagArg
+    name: MINLENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - --match-read-wildcards
+  description: 'Interpret IUPAC wildcards in reads. Default: False'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -N
+  - --no-match-adapter-wildcards
+  description: Do not interpret IUPAC wildcards in adapters.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --action
+  description: "What to do if a match was found. trim: trim adapter and\nup- or downstream\
+    \ sequence; retain: trim, but retain\nadapter; mask: replace with 'N' characters;\
+    \ lowercase:\nconvert to lowercase; none: leave unchanged. Default:\ntrim"
+  args: !ChoiceFlagArg
+    choices: !!set
+      trim:
+      mask:
+      lowercase:
+      none:
+      retain:
+- !Flag
+  optional: true
+  synonyms:
+  - --rc
+  - --revcomp
+  description: "Check both the read and its reverse complement for\nadapter matches.\
+    \ If match is on reverse-complemented\nversion, output that one. Default: check\
+    \ only read"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --cut
+  description: "Remove bases from each read (first read only if paired).\nIf LENGTH\
+    \ is positive, remove bases from the beginning.\nIf LENGTH is negative, remove\
+    \ bases from the end. Can be\nused twice if LENGTHs have different signs. This\
+    \ is\napplied *before* adapter trimming."
+  args: !SimpleFlagArg
+    name: LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - --nextseq-trim
+  description: "'CUTOFF\nNextSeq-specific quality trimming (each read). Trims\nalso\
+    \ dark cycles appearing as high-quality G bases."
+  args: !SimpleFlagArg
+    name: '3'
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  description: "[5'CUTOFF,]3'CUTOFF, --quality-cutoff [5'CUTOFF,]3'CUTOFF\nTrim low-quality\
+    \ bases from 5' and/or 3' ends of each\nread before adapter removal. Applied to\
+    \ both reads if\ndata is paired. If one value is given, only the 3' end\nis trimmed.\
+    \ If two comma-separated cutoffs are given,\nthe 5' end is trimmed with the first\
+    \ cutoff, the 3' end\nwith the second."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --quality-base
+  description: "Assume that quality values in FASTQ are encoded as\nascii(quality\
+    \ + N). This needs to be set to 64 for some\nold Illumina FASTQ files. Default:\
+    \ 33"
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --length
+  - -l
+  description: "Shorten reads to LENGTH. Positive values remove bases at\nthe end\
+    \ while negative ones remove bases at the\nbeginning. This and the following modifications\
+    \ are\napplied after adapter trimming."
+  args: !SimpleFlagArg
+    name: LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - --trim-n
+  description: Trim N's on ends of reads.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --length-tag
+  description: "Search for TAG followed by a decimal number in the\ndescription field\
+    \ of the read. Replace the decimal\nnumber with the correct length of the trimmed\
+    \ read. For\nexample, use --length-tag 'length=' to correct fields\nlike 'length=123'."
+  args: !SimpleFlagArg
+    name: TAG
+- !Flag
+  optional: true
+  synonyms:
+  - --strip-suffix
+  description: "Remove this suffix from read names if present. Can be\ngiven multiple\
+    \ times."
+  args: !SimpleFlagArg
+    name: STRIP_SUFFIX
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --prefix
+  description: "Add this prefix to read names. Use {name} to insert the\nname of the\
+    \ matching adapter."
+  args: !SimpleFlagArg
+    name: PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - -y
+  - --suffix
+  description: Add this suffix to read names; can also include {name}
+  args: !SimpleFlagArg
+    name: SUFFIX
+- !Flag
+  optional: true
+  synonyms:
+  - --rename
+  description: "Rename reads using TEMPLATE containing variables such as\n{id}, {adapter_name}\
+    \ etc. (see documentation)"
+  args: !SimpleFlagArg
+    name: TEMPLATE
+- !Flag
+  optional: true
+  synonyms:
+  - --zero-cap
+  - -z
+  description: Change negative quality values to zero.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: "[:LEN2], --minimum-length LEN[:LEN2]\nDiscard reads shorter than LEN.\
+    \ Default: 0"
+  args: !SimpleFlagArg
+    name: LEN
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  description: "[:LEN2], --maximum-length LEN[:LEN2]\nDiscard reads longer than LEN.\
+    \ Default: no limit"
+  args: !SimpleFlagArg
+    name: LEN
+- !Flag
+  optional: true
+  synonyms:
+  - --max-n
+  description: "Discard reads with more than COUNT 'N' bases. If COUNT\nis a number\
+    \ between 0 and 1, it is interpreted as a\nfraction of the read length."
+  args: !SimpleFlagArg
+    name: COUNT
+- !Flag
+  optional: true
+  synonyms:
+  - --max-expected-errors
+  - --max-ee
+  description: "Discard reads whose expected number of errors (computed\nfrom quality\
+    \ values) exceeds ERRORS."
+  args: !SimpleFlagArg
+    name: ERRORS
+- !Flag
+  optional: true
+  synonyms:
+  - --discard-trimmed
+  - --discard
+  description: "Discard reads that contain an adapter. Use also -O to\navoid discarding\
+    \ too many randomly matching reads."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --discard-untrimmed
+  - --trimmed-only
+  description: Discard reads that do not contain an adapter.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --discard-casava
+  description: "Discard reads that did not pass CASAVA filtering (header\nhas :Y:)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --quiet
+  description: Print only error messages.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --report
+  description: "Which type of report to print: 'full' or 'minimal'.\nDefault: full"
+  args: !ChoiceFlagArg
+    choices: !!set
+      minimal:
+      full:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: "Write trimmed reads to FILE. FASTQ or FASTA format is\nchosen depending\
+    \ on input. Summary report is sent to\nstandard output. Use '{name}' for demultiplexing\
+    \ (see\ndocs). Default: write to standard output"
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --fasta
+  description: Output FASTA to standard output even on FASTQ input.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Z
+  description: "Use compression level 1 for gzipped output files\n(faster, but uses\
+    \ more space)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --info-file
+  description: "Write information about each read and its adapter\nmatches into FILE.\
+    \ See the documentation for the file\nformat."
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --rest-file
+  description: "When the adapter matches in the middle of a read, write\nthe rest\
+    \ (after the adapter) to FILE."
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --wildcard-file
+  description: "When the adapter has N wildcard bases, write adapter\nbases matching\
+    \ wildcard positions to FILE. (Inaccurate\nwith indels.)"
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --too-short-output
+  description: "Write reads that are too short (according to length\nspecified by\
+    \ -m) to FILE. Default: discard reads"
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --too-long-output
+  description: "Write reads that are too long (according to length\nspecified by -M)\
+    \ to FILE. Default: discard reads"
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --untrimmed-output
+  description: "Write reads that do not contain any adapter to FILE.\nDefault: output\
+    \ to same file as trimmed reads"
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -A
+  description: 3' adapter to be removed from second read in a pair.
+  args: !SimpleFlagArg
+    name: ADAPTER
+- !Flag
+  optional: true
+  synonyms:
+  - -G
+  description: 5' adapter to be removed from second read in a pair.
+  args: !SimpleFlagArg
+    name: ADAPTER
+- !Flag
+  optional: true
+  synonyms:
+  - -B
+  description: 5'/3 adapter to be removed from second read in a pair.
+  args: !SimpleFlagArg
+    name: ADAPTER
+- !Flag
+  optional: true
+  synonyms:
+  - -U
+  description: Remove LENGTH bases from second read in a pair.
+  args: !SimpleFlagArg
+    name: LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --paired-output
+  description: Write second read in a pair to FILE.
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --pair-adapters
+  description: "Treat adapters given with -a/-A etc. as pairs. Either\nboth or none\
+    \ are removed from each read pair."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pair-filter
+  description: "(any|both|first)\nWhich of the reads in a paired-end read have to\
+    \ match\nthe filtering criterion in order for the pair to be\nfiltered. Default:\
+    \ any"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --interleaved
+  description: Read and/or write interleaved paired-end reads.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --untrimmed-paired-output
+  description: "Write second read in a pair to this FILE when no adapter\nwas found.\
+    \ Use with --untrimmed-output. Default: output\nto same file as trimmed reads"
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --too-short-paired-output
+  description: "Write second read in a pair to this file if pair is too\nshort."
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --too-long-paired-output
+  description: "Write second read in a pair to this file if pair is too\nlong.\n"
+  args: !SimpleFlagArg
+    name: FILE
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Show version number and exit
+  args: !EmptyFlagArg {}
+help_text: "cutadapt version 3.3\n\nCopyright (C) 2010-2021 Marcel Martin <marcel.martin@scilifelab.se>\n\
+  \ncutadapt removes adapter sequences from high-throughput sequencing reads.\n\n\
+  Usage:\n    cutadapt -a ADAPTER [options] [-o output.fastq] input.fastq\n\nFor paired-end\
+  \ reads:\n    cutadapt -a ADAPT1 -A ADAPT2 [options] -o out1.fastq -p out2.fastq\
+  \ in1.fastq in2.fastq\n\nReplace \"ADAPTER\" with the actual sequence of your 3'\
+  \ adapter. IUPAC wildcard\ncharacters are supported. All reads from input.fastq\
+  \ will be written to\noutput.fastq with the adapter sequence removed. Adapter matching\
+  \ is\nerror-tolerant. Multiple adapter sequences can be given (use further -a\n\
+  options), but only the best-matching adapter will be removed.\n\nInput may also\
+  \ be in FASTA format. Compressed input and output is supported and\nauto-detected\
+  \ from the file name (.gz, .xz, .bz2). Use the file name '-' for\nstandard input/output.\
+  \ Without the -o option, output is sent to standard output.\n\nCitation:\n\nMarcel\
+  \ Martin. Cutadapt removes adapter sequences from high-throughput\nsequencing reads.\
+  \ EMBnet.Journal, 17(1):10-12, May 2011.\nhttp://dx.doi.org/10.14806/ej.17.1.200\n\
+  \nRun \"cutadapt --help\" to see all command-line options.\nSee https://cutadapt.readthedocs.io/\
+  \ for full documentation.\n\nOptions:\n  -h, --help            Show this help message\
+  \ and exit\n  --version             Show version number and exit\n  --debug    \
+  \           Print debug log. Use twice to also print DP matrices\n  -j CORES, --cores\
+  \ CORES\n                        Number of CPU cores to use. Use 0 to auto-detect.\n\
+  \                        Default: 1\n\nFinding adapters:\n  Parameters -a, -g, -b\
+  \ specify adapters to be removed from each read (or from\n  the first read in a\
+  \ pair if data is paired). If specified multiple times,\n  only the best matching\
+  \ adapter is trimmed (but see the --times option). When\n  the special notation\
+  \ 'file:FILE' is used, adapter sequences are read from\n  the given FASTA file.\n\
+  \n  -a ADAPTER, --adapter ADAPTER\n                        Sequence of an adapter\
+  \ ligated to the 3' end (paired\n                        data: of the first read).\
+  \ The adapter and subsequent\n                        bases are trimmed. If a '$'\
+  \ character is appended\n                        ('anchoring'), the adapter is only\
+  \ found if it is a\n                        suffix of the read.\n  -g ADAPTER, --front\
+  \ ADAPTER\n                        Sequence of an adapter ligated to the 5' end\
+  \ (paired\n                        data: of the first read). The adapter and any\
+  \ preceding\n                        bases are trimmed. Partial matches at the 5'\
+  \ end are\n                        allowed. If a '^' character is prepended ('anchoring'),\n\
+  \                        the adapter is only found if it is a prefix of the read.\n\
+  \  -b ADAPTER, --anywhere ADAPTER\n                        Sequence of an adapter\
+  \ that may be ligated to the 5' or\n                        3' end (paired data:\
+  \ of the first read). Both types of\n                        matches as described\
+  \ under -a and -g are allowed. If the\n                        first base of the\
+  \ read is part of the match, the\n                        behavior is as with -g,\
+  \ otherwise as with -a. This\n                        option is mostly for rescuing\
+  \ failed library\n                        preparations - do not use if you know\
+  \ which end your\n                        adapter was ligated to!\n  -e E, --error-rate\
+  \ E, --errors E\n                        Maximum allowed error rate (if 0 <= E <\
+  \ 1), or absolute\n                        number of errors for full-length adapter\
+  \ match (if E is\n                        an integer >= 1). Error rate = no. of\
+  \ errors divided by\n                        length of matching region. Default:\
+  \ 0.1 (10%)\n  --no-indels           Allow only mismatches in alignments. Default:\
+  \ allow both\n                        mismatches and indels\n  -n COUNT, --times\
+  \ COUNT\n                        Remove up to COUNT adapters from each read. Default:\
+  \ 1\n  -O MINLENGTH, --overlap MINLENGTH\n                        Require MINLENGTH\
+  \ overlap between read and adapter for\n                        an adapter to be\
+  \ found. Default: 3\n  --match-read-wildcards\n                        Interpret\
+  \ IUPAC wildcards in reads. Default: False\n  -N, --no-match-adapter-wildcards\n\
+  \                        Do not interpret IUPAC wildcards in adapters.\n  --action\
+  \ {trim,retain,mask,lowercase,none}\n                        What to do if a match\
+  \ was found. trim: trim adapter and\n                        up- or downstream sequence;\
+  \ retain: trim, but retain\n                        adapter; mask: replace with\
+  \ 'N' characters; lowercase:\n                        convert to lowercase; none:\
+  \ leave unchanged. Default:\n                        trim\n  --rc, --revcomp   \
+  \    Check both the read and its reverse complement for\n                      \
+  \  adapter matches. If match is on reverse-complemented\n                      \
+  \  version, output that one. Default: check only read\n\nAdditional read modifications:\n\
+  \  -u LENGTH, --cut LENGTH\n                        Remove bases from each read\
+  \ (first read only if paired).\n                        If LENGTH is positive, remove\
+  \ bases from the beginning.\n                        If LENGTH is negative, remove\
+  \ bases from the end. Can be\n                        used twice if LENGTHs have\
+  \ different signs. This is\n                        applied *before* adapter trimming.\n\
+  \  --nextseq-trim 3'CUTOFF\n                        NextSeq-specific quality trimming\
+  \ (each read). Trims\n                        also dark cycles appearing as high-quality\
+  \ G bases.\n  -q [5'CUTOFF,]3'CUTOFF, --quality-cutoff [5'CUTOFF,]3'CUTOFF\n   \
+  \                     Trim low-quality bases from 5' and/or 3' ends of each\n  \
+  \                      read before adapter removal. Applied to both reads if\n \
+  \                       data is paired. If one value is given, only the 3' end\n\
+  \                        is trimmed. If two comma-separated cutoffs are given,\n\
+  \                        the 5' end is trimmed with the first cutoff, the 3' end\n\
+  \                        with the second.\n  --quality-base N      Assume that quality\
+  \ values in FASTQ are encoded as\n                        ascii(quality + N). This\
+  \ needs to be set to 64 for some\n                        old Illumina FASTQ files.\
+  \ Default: 33\n  --length LENGTH, -l LENGTH\n                        Shorten reads\
+  \ to LENGTH. Positive values remove bases at\n                        the end while\
+  \ negative ones remove bases at the\n                        beginning. This and\
+  \ the following modifications are\n                        applied after adapter\
+  \ trimming.\n  --trim-n              Trim N's on ends of reads.\n  --length-tag\
+  \ TAG      Search for TAG followed by a decimal number in the\n                \
+  \        description field of the read. Replace the decimal\n                  \
+  \      number with the correct length of the trimmed read. For\n               \
+  \         example, use --length-tag 'length=' to correct fields\n              \
+  \          like 'length=123'.\n  --strip-suffix STRIP_SUFFIX\n                 \
+  \       Remove this suffix from read names if present. Can be\n                \
+  \        given multiple times.\n  -x PREFIX, --prefix PREFIX\n                 \
+  \       Add this prefix to read names. Use {name} to insert the\n              \
+  \          name of the matching adapter.\n  -y SUFFIX, --suffix SUFFIX\n       \
+  \                 Add this suffix to read names; can also include {name}\n  --rename\
+  \ TEMPLATE     Rename reads using TEMPLATE containing variables such as\n      \
+  \                  {id}, {adapter_name} etc. (see documentation)\n  --zero-cap,\
+  \ -z        Change negative quality values to zero.\n\nFiltering of processed reads:\n\
+  \  Filters are applied after above read modifications. Paired-end reads are\n  always\
+  \ discarded pairwise (see also --pair-filter).\n\n  -m LEN[:LEN2], --minimum-length\
+  \ LEN[:LEN2]\n                        Discard reads shorter than LEN. Default: 0\n\
+  \  -M LEN[:LEN2], --maximum-length LEN[:LEN2]\n                        Discard reads\
+  \ longer than LEN. Default: no limit\n  --max-n COUNT         Discard reads with\
+  \ more than COUNT 'N' bases. If COUNT\n                        is a number between\
+  \ 0 and 1, it is interpreted as a\n                        fraction of the read\
+  \ length.\n  --max-expected-errors ERRORS, --max-ee ERRORS\n                   \
+  \     Discard reads whose expected number of errors (computed\n                \
+  \        from quality values) exceeds ERRORS.\n  --discard-trimmed, --discard\n\
+  \                        Discard reads that contain an adapter. Use also -O to\n\
+  \                        avoid discarding too many randomly matching reads.\n  --discard-untrimmed,\
+  \ --trimmed-only\n                        Discard reads that do not contain an adapter.\n\
+  \  --discard-casava      Discard reads that did not pass CASAVA filtering (header\n\
+  \                        has :Y:).\n\nOutput:\n  --quiet               Print only\
+  \ error messages.\n  --report {full,minimal}\n                        Which type\
+  \ of report to print: 'full' or 'minimal'.\n                        Default: full\n\
+  \  -o FILE, --output FILE\n                        Write trimmed reads to FILE.\
+  \ FASTQ or FASTA format is\n                        chosen depending on input. Summary\
+  \ report is sent to\n                        standard output. Use '{name}' for demultiplexing\
+  \ (see\n                        docs). Default: write to standard output\n  --fasta\
+  \               Output FASTA to standard output even on FASTQ input.\n  -Z     \
+  \               Use compression level 1 for gzipped output files\n             \
+  \           (faster, but uses more space)\n  --info-file FILE      Write information\
+  \ about each read and its adapter\n                        matches into FILE. See\
+  \ the documentation for the file\n                        format.\n  -r FILE, --rest-file\
+  \ FILE\n                        When the adapter matches in the middle of a read,\
+  \ write\n                        the rest (after the adapter) to FILE.\n  --wildcard-file\
+  \ FILE  When the adapter has N wildcard bases, write adapter\n                 \
+  \       bases matching wildcard positions to FILE. (Inaccurate\n               \
+  \         with indels.)\n  --too-short-output FILE\n                        Write\
+  \ reads that are too short (according to length\n                        specified\
+  \ by -m) to FILE. Default: discard reads\n  --too-long-output FILE\n           \
+  \             Write reads that are too long (according to length\n             \
+  \           specified by -M) to FILE. Default: discard reads\n  --untrimmed-output\
+  \ FILE\n                        Write reads that do not contain any adapter to FILE.\n\
+  \                        Default: output to same file as trimmed reads\n\nPaired-end\
+  \ options:\n  The -A/-G/-B/-U options work like their -a/-b/-g/-u counterparts,\
+  \ but are\n  applied to the second read in each pair.\n\n  -A ADAPTER          \
+  \  3' adapter to be removed from second read in a pair.\n  -G ADAPTER          \
+  \  5' adapter to be removed from second read in a pair.\n  -B ADAPTER          \
+  \  5'/3 adapter to be removed from second read in a pair.\n  -U LENGTH         \
+  \    Remove LENGTH bases from second read in a pair.\n  -p FILE, --paired-output\
+  \ FILE\n                        Write second read in a pair to FILE.\n  --pair-adapters\
+  \       Treat adapters given with -a/-A etc. as pairs. Either\n                \
+  \        both or none are removed from each read pair.\n  --pair-filter (any|both|first)\n\
+  \                        Which of the reads in a paired-end read have to match\n\
+  \                        the filtering criterion in order for the pair to be\n \
+  \                       filtered. Default: any\n  --interleaved         Read and/or\
+  \ write interleaved paired-end reads.\n  --untrimmed-paired-output FILE\n      \
+  \                  Write second read in a pair to this FILE when no adapter\n  \
+  \                      was found. Use with --untrimmed-output. Default: output\n\
+  \                        to same file as trimmed reads\n  --too-short-paired-output\
+  \ FILE\n                        Write second read in a pair to this file if pair\
+  \ is too\n                        short.\n  --too-long-paired-output FILE\n    \
+  \                    Write second read in a pair to this file if pair is too\n \
+  \                       long.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/cutadapt:3.3--py38h0213d0e_0

@@ -1,0 +1,148 @@
+!Command
+command:
+- SampleSimilarity
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -in
+  description: Input variant lists in VCF format (two or more). If only one file is
+    given, each line in this file is interpreted as an input file path.
+  args: !SimpleFlagArg
+    name: filelist
+- !Flag
+  optional: true
+  synonyms:
+  - -out
+  description: "Output file. If unset, writes to STDOUT.\nDefault value: ''"
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -mode
+  description: "Mode (input format).\nDefault value: 'vcf'\nValid: 'vcf,gsvar,bam'"
+  args: !SimpleFlagArg
+    name: enum
+- !Flag
+  optional: true
+  synonyms:
+  - -roi
+  description: "Restrict similarity calculation to variants in target region.\nDefault\
+    \ value: ''"
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -include_gonosomes
+  description: "Includes gonosomes into calculation (by default only variants on autosomes\
+    \ are considered).\nDefault value: 'false'"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -skip_multi
+  description: "Skip multi-allelic variants instead of throwing an error (VCF mode).\n\
+    Default value: 'false'"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -min_cov
+  description: "Minimum coverage to consider a SNP for the analysis (BAM mode).\n\
+    Default value: '30'"
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -max_snps
+  description: "The maximum number of high-coverage SNPs to extract from BAM/CRAM.\
+    \ 0 means unlimited (BAM mode).\nDefault value: '2000'"
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -build
+  description: "Genome build used to generate the input (BAM mode).\nDefault value:\
+    \ 'hg19'\nValid: 'hg19,hg38'"
+  args: !SimpleFlagArg
+    name: enum
+- !Flag
+  optional: true
+  synonyms:
+  - -ref
+  description: "Reference genome for CRAM support (mandatory if CRAM is used).\nDefault\
+    \ value: ''"
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -debug
+  description: "Print debug output.\nDefault value: 'false'"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --changelog
+  description: Prints changeloge and exits.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --tdx
+  description: Writes a Tool Definition Xml file. The file name is the application
+    name with the suffix '.tdx'.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Shows this help and exits.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Prints version and exits.
+  args: !EmptyFlagArg {}
+help_text: "SampleSimilarity (2021_03)\n\nCalculates pairwise sample similarity metrics\
+  \ from VCF/BAM/CRAM files.\n\nIn VCF mode, multi-allelic variants are not supported.\
+  \ Use 'skip_multi' to ignore them, or VcfBreakMulti to split multi-allelic variants\
+  \ into several lines.\nMulti-sample VCFs are not supported. Use VcfExtractSamples\
+  \ to split them to one VCF per sample.\nIn VCF mode, it is assumed that variant\
+  \ lists are left-normalized, e.g. with VcfLeftNormalize.\nBAM mode supports BAM\
+  \ as well as CRAM files.\n\nMandatory parameters:\n  -in <filelist>      Input variant\
+  \ lists in VCF format (two or more). If only one file is given, each line in this\
+  \ file is interpreted as an input file path.\n\nOptional parameters:\n  -out <file>\
+  \         Output file. If unset, writes to STDOUT.\n                      Default\
+  \ value: ''\n  -mode <enum>        Mode (input format).\n                      Default\
+  \ value: 'vcf'\n                      Valid: 'vcf,gsvar,bam'\n  -roi <file>    \
+  \     Restrict similarity calculation to variants in target region.\n          \
+  \            Default value: ''\n  -include_gonosomes  Includes gonosomes into calculation\
+  \ (by default only variants on autosomes are considered).\n                    \
+  \  Default value: 'false'\n  -skip_multi         Skip multi-allelic variants instead\
+  \ of throwing an error (VCF mode).\n                      Default value: 'false'\n\
+  \  -min_cov <int>      Minimum coverage to consider a SNP for the analysis (BAM\
+  \ mode).\n                      Default value: '30'\n  -max_snps <int>     The maximum\
+  \ number of high-coverage SNPs to extract from BAM/CRAM. 0 means unlimited (BAM\
+  \ mode).\n                      Default value: '2000'\n  -build <enum>       Genome\
+  \ build used to generate the input (BAM mode).\n                      Default value:\
+  \ 'hg19'\n                      Valid: 'hg19,hg38'\n  -ref <file>         Reference\
+  \ genome for CRAM support (mandatory if CRAM is used).\n                      Default\
+  \ value: ''\n  -debug              Print debug output.\n                      Default\
+  \ value: 'false'\n\nSpecial parameters:\n  --help              Shows this help and\
+  \ exits.\n  --version           Prints version and exits.\n  --changelog       \
+  \  Prints changeloge and exits.\n  --tdx               Writes a Tool Definition\
+  \ Xml file. The file name is the application name with the suffix '.tdx'.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/ngs-bits:2021_03--py39h5902420_0

@@ -1,0 +1,90 @@
+!Command
+command:
+- predict_num_reads
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: FASTQ
+  description: FASTQ files for forward and reverse reads
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  description: "Length of the sliding window for emulating read trimming\n(default:\
+    \ 10)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --qual
+  description: "Quality threshold for emulating read trimming (default:\n30)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: 'Threshold on the read counts (default: 25000)'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: "Read length. If not specify estimated for every read\nindependently\
+    \ (default: None)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: 'Output file name (default: output.tsv)'
+  args: !SimpleFlagArg
+    name: output.tsv
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: 'Patient/sample identifier (default: None)'
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: 'Sample date (default: None)'
+  args: !SimpleFlagArg
+    name: DATE
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: predict_num_reads [-h] -n STR -d DATE [-w INT] [-q INT] [-c INT]\n\
+  \                         [-l INT] [-o output.tsv]\n                         FASTQ\
+  \ [FASTQ ...]\n\nScript for predicting number of read pairs after trimming\n\npositional\
+  \ arguments:\n  FASTQ               FASTQ files for forward and reverse reads\n\n\
+  optional arguments:\n  -h, --help          show this help message and exit\n  -w\
+  \ INT              Length of the sliding window for emulating read trimming\n  \
+  \                    (default: 10)\n  -q INT, --qual INT  Quality threshold for\
+  \ emulating read trimming (default:\n                      30)\n  -c INT       \
+  \       Threshold on the read counts (default: 25000)\n  -l INT              Read\
+  \ length. If not specify estimated for every read\n                      independently\
+  \ (default: None)\n  -o output.tsv       Output file name (default: output.tsv)\n\
+  \nrequired named arguments:\n  -n STR              Patient/sample identifier (default:\
+  \ None)\n  -d DATE             Sample date (default: None)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/smallgenomeutilities:0.3.2--py_0

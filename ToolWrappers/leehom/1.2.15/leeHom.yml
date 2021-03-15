@@ -1,0 +1,225 @@
+!Command
+command:
+- leeHom
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: BAMfile
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -fq1
+  description: First fastq
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -fq2
+  description: Second  fastq file (for paired-end)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -fqo
+  description: Output fastq prefix
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --outfile
+  description: Output (BAM format).
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  description: Produce uncompressed bam (good for pipe)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --aligned
+  description: Allow reads to be aligned (default false)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: Turn all messages on (default false)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --log
+  description: '[log file]        Print a tally of merged reads to this log file (default
+    only to stderr)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --phred64
+  description: 'Use PHRED 64 as the offset for QC scores (default : PHRED33)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: '[threads]            Use multiple cores (default : 1)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ancientdna
+  description: "ancient DNA (default false)\nthis allows for partial overlap"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --loc
+  description: Location for lognormal dist. (default none)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --scale
+  description: Scale for lognormal dist. (default none)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --keepOrig
+  description: "Write original reads if they are trimmed or merged  (default false)\n\
+    Such reads will be marked as PCR duplicates"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --adapterFirstRead
+  description: 'Adapter that is observed after the forward read (def. Multiplex: AGATCGGAAGAGCACACGTCTGAACTCCAG)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --adapterSecondRead
+  description: 'Adapter that is observed after the reverse read (def. Multiplex: AGATCGGAAGAGCGTCGTGTAGGGAAAGAG)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --auto
+  description: 'Auto detect adapters, requires at least 1M reads, does NOT currently
+    support UMIs (def. : false)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --FirstReadChimeraFilter
+  description: "If the forward read looks like this sequence, the cluster is filtered\
+    \ out.\nProvide several sequences separated by comma (def. Multiplex: ACACTCTTTCCCTACACGTCTGAACTCCAG)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --key
+  description: Key sequence with which each sequence starts. Comma separate for forward
+    and reverse reads. (default '')
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --trimkey
+  description: Trim the key sequence even for untrimmed. (default 'false')
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --allowMissing
+  description: Allow one base in one key to be missing or wrong. (default false)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --umif
+  description: '[bp]                             Extract bp for the UMI for the forward
+    read. (default 0)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --umir
+  description: '[bp]                             Extract bp for the UMI for the reverse
+    read. (default 0)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --umtf
+  description: '[bp]                             Remove overhangs of bp after the
+    UMI for the forward read. (default 0)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --umtr
+  description: '[bp]                             Remove overhangs of bp after the
+    UMI for the reverse read. (default 0)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --trimCutoff
+  description: Lowest number of adapter bases to be observed for single Read trimming
+    (default 1)
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Usage:\n\nleeHom [options] BAMfile\n\nThis program takes an unaligned\
+  \ BAM where mates are consecutive\nor fastq files and trims and merges reads\n\n\
+  \tYou can specify a unaligned bam file or one or two fastq :\n\t\t-fq1\t\tFirst\
+  \ fastq\n\t\t-fq2\t\tSecond  fastq file (for paired-end)\n\t\t-fqo\t\tOutput fastq\
+  \ prefix\n\n\t-o , --outfile\t\tOutput (BAM format).\n\t-u            \t\tProduce\
+  \ uncompressed bam (good for pipe)\n\t--aligned\t\tAllow reads to be aligned (default\
+  \ false)\n\t-v , --verbose\t\tTurn all messages on (default false)\n\t--log [log\
+  \ file]\tPrint a tally of merged reads to this log file (default only to stderr)\n\
+  \t--phred64\t\tUse PHRED 64 as the offset for QC scores (default : PHRED33)\n\t\
+  -t [threads]\t\tUse multiple cores (default : 1)\n\n\tPaired End merging/Single\
+  \ Read trimming  options\n\t\tYou can specify either:\n\t\t\t--ancientdna\t\t\t\
+  ancient DNA (default false)\n\t\t            \t\t\t\tthis allows for partial overlap\n\
+  \n\t\tor if you know your size length distribution:\n\t\t\t--loc\t\t\t\tLocation\
+  \ for lognormal dist. (default none)\n\t\t\t--scale\t\t\t\tScale for lognormal dist.\
+  \ (default none)\n\n\t\t--keepOrig\t\t\t\tWrite original reads if they are trimmed\
+  \ or merged  (default false)\n\t\t\t\t\t\t\tSuch reads will be marked as PCR duplicates\n\
+  \n\t\t-f , --adapterFirstRead\t\t\tAdapter that is observed after the forward read\
+  \ (def. Multiplex: AGATCGGAAGAGCACACGTCTGAACTCCAG)\n\t\t-s , --adapterSecondRead\t\
+  \tAdapter that is observed after the reverse read (def. Multiplex: AGATCGGAAGAGCGTCGTGTAGGGAAAGAG)\n\
+  \t\t     --auto\t\t\t\tAuto detect adapters, requires at least 1M reads, does NOT\
+  \ currently support UMIs (def. : false)\n\t\t-c , --FirstReadChimeraFilter\t\tIf\
+  \ the forward read looks like this sequence, the cluster is filtered out.\n\t\t\t\
+  \t\t\t\tProvide several sequences separated by comma (def. Multiplex: ACACTCTTTCCCTACACGTCTGAACTCCAG)\n\
+  \t\t-k , --key\t\t\t\tKey sequence with which each sequence starts. Comma separate\
+  \ for forward and reverse reads. (default '')\n\t\t--trimkey\t\t\t\tTrim the key\
+  \ sequence even for untrimmed. (default 'false')\n\t\t-i , --allowMissing\t\t\t\
+  Allow one base in one key to be missing or wrong. (default false)\n\t\t--umif [bp]\t\
+  \t\t\tExtract bp for the UMI for the forward read. (default 0)\n\t\t--umir [bp]\t\
+  \t\t\tExtract bp for the UMI for the reverse read. (default 0)\n\t\t--umtf [bp]\t\
+  \t\t\tRemove overhangs of bp after the UMI for the forward read. (default 0)\n\t\
+  \t--umtr [bp]\t\t\t\tRemove overhangs of bp after the UMI for the reverse read.\
+  \ (default 0)\n\t\t--trimCutoff\t\t\t\tLowest number of adapter bases to be observed\
+  \ for single Read trimming (default 1)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/leehom:1.2.15--hda3bf64_0

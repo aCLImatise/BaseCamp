@@ -1,0 +1,107 @@
+!Command
+command:
+- parse_stb.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: The
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: program
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: has
+  description: ''
+- !Positional
+  optional: false
+  position: 3
+  name: two
+  description: ''
+- !Positional
+  optional: false
+  position: 4
+  name: uses
+  description: ''
+- !Positional
+  optional: false
+  position: 5
+  name: related
+  description: ''
+- !Positional
+  optional: false
+  position: 6
+  name: to
+  description: ''
+- !Positional
+  optional: false
+  position: 7
+  name: scaffold
+  description: ''
+- !Positional
+  optional: false
+  position: 9
+  name: bin
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --stb
+  description: 'scaffold to bin file (default: None)'
+  args: !SimpleFlagArg
+    name: STB
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: "[FASTA [FASTA ...]], --fasta [FASTA [FASTA ...]]\nfasta file to extract\
+    \ scaffolds from. Will treat as\ncompressed if ends in .gz (default: None)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: 'output base name (default: )'
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - --reverse
+  description: 'generate a stb from a list of genomes (default: False)'
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: \n\nThe program has two uses related to scaffold to bin (.stb)\
+  \ files.\n.stb files should be tab-separated, with no header, and two columns: scaffold\
+  \ and bin\n\nUse 1) Pass a list of genomes to generate a .stb file.\n\nExample:\n\
+  parse_stb.py --reverse -f dereplicate_genomes/* -o representitve_genomes.stb\n\n\
+  Use 2) Pass a single .fasta file and a scaffold to bin file (.stb) to generate a\
+  \ number of\nfasta files based on the .stb file.\n\nExample:\nparse_stb.py -f concat_genomes.fasta\
+  \ -s scaffold_to_bin.tsv -o genomeList_1\n\noptional arguments:\n  -h, --help  \
+  \          show this help message and exit\n  -s STB, --stb STB     scaffold to\
+  \ bin file (default: None)\n  -f [FASTA [FASTA ...]], --fasta [FASTA [FASTA ...]]\n\
+  \                        fasta file to extract scaffolds from. Will treat as\n \
+  \                       compressed if ends in .gz (default: None)\n  -o OUTPUT,\
+  \ --output OUTPUT\n                        output base name (default: )\n  --reverse\
+  \             generate a stb from a list of genomes (default: False)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/drep:3.1.1--py_0

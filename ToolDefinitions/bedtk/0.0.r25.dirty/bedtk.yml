@@ -1,0 +1,170 @@
+&id001 !Command
+command:
+- bedtk
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - bedtk
+  - cov
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: loaded.bed
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: streamed.bed
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    description: only count; no breadth of depth
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -C
+    description: containment only
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: bedtk cov [options] <loaded.bed> <streamed.bed>\nOptions:\n \
+    \ -c       only count; no breadth of depth\n  -C       containment only\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/bedtk:0.0.r25.dirty--hed695b0_0
+- !Command
+  command:
+  - bedtk
+  - flt
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: loaded.bed
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: streamed.bed
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    description: the second input is VCF (force -f and clear -m)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -C
+    description: print records contained in the union of <loaded.bed>
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    description: print non-satisfying records
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -w
+    description: window size [0]
+    args: !SimpleFlagArg
+      name: INT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: bedtk flt [options] <loaded.bed> <streamed.bed>\nOptions:\n \
+    \ -c      the second input is VCF (force -f and clear -m)\n  -C      print records\
+    \ contained in the union of <loaded.bed>\n  -v      print non-satisfying records\n\
+    \  -w INT  window size [0]\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/bedtk:0.0.r25.dirty--hed695b0_0
+- !Command
+  command:
+  - bedtk
+  - isec
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: A.bed
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: B.bed
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    description: list of contig IDs to specify the output order []
+    args: !SimpleFlagArg
+      name: FILE
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: bedtk isec [options] <A.bed> <B.bed>\nOptions:\n  -s FILE   list\
+    \ of contig IDs to specify the output order []\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/bedtk:0.0.r25.dirty--hed695b0_0
+- !Command
+  command:
+  - bedtk
+  - sub
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: minuend.bed
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: subtrahend.bed
+    description: ''
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: bedtk sub <minuend.bed> <subtrahend.bed>\nNote: <subtrahend.bed>\
+    \ is loaded into memory.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/bedtk:0.0.r25.dirty--hed695b0_0
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Usage: bedtk <command> <arguments>\nCommand:\n  isec      intersection\
+  \ (bedtools intersect)\n  flt       filter BED/VCF file (bedtools intersect/window)\n\
+  \  cov       breadth of coverage (bedtools coverage)\n  sub       subtraction (bedtools\
+  \ subtract)\n  merge     merge overlapping regions (bedtools merge)\n  sort    \
+  \  sort regions (bedtools sort)\n  sum       total region length\n  version   version\
+  \ number\n"
+generated_using: []
+docker_image: quay.io/biocontainers/bedtk:0.0.r25.dirty--hed695b0_0

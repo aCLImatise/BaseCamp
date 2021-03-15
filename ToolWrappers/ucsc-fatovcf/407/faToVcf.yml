@@ -1,0 +1,108 @@
+!Command
+command:
+- faToVcf
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: in.fa
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -ambiguousToN
+  description: Treat all IUPAC ambiguous bases (N, R, V etc) as N (no call).
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -excludeFile
+  description: Exclude sequences named in file which has one sequence name per line
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -includeRef
+  description: "Include the reference in the genotype columns\n(default: omitted as\
+    \ redundant)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -maskSites
+  description: "Exclude variants in positions recommended for masking in file\n(typically\
+    \ https://github.com/W-L/ProblematicSites_SARS-CoV2/raw/master/problematic_sites_sarsCov2.vcf)"
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -minAc
+  description: Ignore alternate alleles observed fewer than N times
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -noGenotypes
+  description: Output 8-column VCF, without the sample genotype columns
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ref
+  description: "Use seqName as the reference sequence; must be present in faFile\n\
+    (default: first sequence in faFile)"
+  args: !SimpleFlagArg
+    name: seqName
+- !Flag
+  optional: true
+  synonyms:
+  - -resolveAmbiguous
+  description: "For IUPAC ambiguous characters like R (A or G), if the character\n\
+    represents two bases and one is the reference base, convert it to the\nnon-reference\
+    \ base.  Otherwise convert it to N."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -startOffset
+  description: Add N bases to each position (for trimmed alignments)
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -vcfChrom
+  description: 'Use seqName for the CHROM column in VCF (default: ref sequence)'
+  args: !SimpleFlagArg
+    name: seqName
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "faToVcf - Convert a FASTA alignment file to Variant Call Format (VCF)\
+  \ single-nucleotide diffs\nusage:\n   faToVcf in.fa out.vcf\noptions:\n   -ambiguousToN\
+  \         Treat all IUPAC ambiguous bases (N, R, V etc) as N (no call).\n   -excludeFile=file\
+  \     Exclude sequences named in file which has one sequence name per line\n   -includeRef\
+  \           Include the reference in the genotype columns\n                    \
+  \     (default: omitted as redundant)\n   -maskSites=file       Exclude variants\
+  \ in positions recommended for masking in file\n                         (typically\
+  \ https://github.com/W-L/ProblematicSites_SARS-CoV2/raw/master/problematic_sites_sarsCov2.vcf)\n\
+  \   -minAc=N              Ignore alternate alleles observed fewer than N times\n\
+  \   -noGenotypes          Output 8-column VCF, without the sample genotype columns\n\
+  \   -ref=seqName          Use seqName as the reference sequence; must be present\
+  \ in faFile\n                         (default: first sequence in faFile)\n   -resolveAmbiguous\
+  \     For IUPAC ambiguous characters like R (A or G), if the character\n       \
+  \                  represents two bases and one is the reference base, convert it\
+  \ to the\n                         non-reference base.  Otherwise convert it to\
+  \ N.\n   -startOffset=N        Add N bases to each position (for trimmed alignments)\n\
+  \   -vcfChrom=seqName     Use seqName for the CHROM column in VCF (default: ref\
+  \ sequence)\nin.fa must contain a series of sequences with different names and the\
+  \ same length.\nBoth N and - are treated as missing information.\n\n"
+generated_using: []
+docker_image: quay.io/biocontainers/ucsc-fatovcf:407--hd50662f_0

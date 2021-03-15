@@ -1,0 +1,115 @@
+!Command
+command:
+- deepbgc
+- train
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: inputs
+  description: Training sequences (Pfam TSV) file paths
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  - -m
+  - --model
+  description: Path to JSON model config file
+  args: !SimpleFlagArg
+    name: MODEL
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --target
+  description: Target column to predict in sequence prediction
+  args: !SimpleFlagArg
+    name: TARGET
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: Output trained model file path
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --log
+  description: Progress log output path (e.g. TensorBoard)
+  args: !SimpleFlagArg
+    name: LOG
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --classes
+  description: Class TSV file path - train a sequence classifier using provided classes
+    (binary columns), indexed by sequence_id column
+  args: !SimpleFlagArg
+    name: CLASSES
+- !Flag
+  optional: true
+  synonyms:
+  - --config
+  description: "CONFIG\nVariables in model JSON file to replace (e.g. --config PFAM2VEC\
+    \ path/to/pfam2vec.csv)"
+  args: !SimpleFlagArg
+    name: CONFIG
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --validation
+  description: Validation sequence file path. Repeat to specify multiple files
+  args: !SimpleFlagArg
+    name: VALIDATION
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: 'Verbosity level: 0=none, 1=progress bar, 2=once per epoch (default:
+    2)'
+  args: !SimpleFlagArg
+    name: INT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: deepbgc train [-h] [--debug] -m MODEL [-t TARGET] -o OUTPUT [-l\
+  \ LOG]\n                     [-c CLASSES] [--config CONFIG CONFIG] [-v VALIDATION]\n\
+  \                     [--verbose INT]\n                     inputs [inputs ...]\n\
+  \nTrain a BGC detector/classifier on a set of BGC samples.\n    \nExamples:\n  \
+  \  \n  # Train a detector using pre-processed samples in Pfam CSV format. \n  deepbgc\
+  \ train --model deepbgc.json --output MyDeepBGCDetector.pkl BGCs.pfam.tsv negatives.pfam.tsv\n\
+  \    \n  # Train a BGC classifier using a TSV classes file and a set of BGC samples\
+  \ in Pfam TSV format and save the trained classifier to a file. \n  deepbgc train\
+  \ --model random_forest.json --output MyDeepBGCClassifier.pkl --classes path/to/BGCs.classes.csv\
+  \ BGCs.pfam.tsv\n  \n\npositional arguments:\n  inputs                Training sequences\
+  \ (Pfam TSV) file paths\n\noptional arguments:\n  -h, --help            show this\
+  \ help message and exit\n  --debug\n  -m MODEL, --model MODEL\n                \
+  \        Path to JSON model config file\n  -t TARGET, --target TARGET\n        \
+  \                Target column to predict in sequence prediction\n  -o OUTPUT, --output\
+  \ OUTPUT\n                        Output trained model file path\n  -l LOG, --log\
+  \ LOG     Progress log output path (e.g. TensorBoard)\n  -c CLASSES, --classes CLASSES\n\
+  \                        Class TSV file path - train a sequence classifier using\
+  \ provided classes (binary columns), indexed by sequence_id column\n  --config CONFIG\
+  \ CONFIG\n                        Variables in model JSON file to replace (e.g.\
+  \ --config PFAM2VEC path/to/pfam2vec.csv)\n  -v VALIDATION, --validation VALIDATION\n\
+  \                        Validation sequence file path. Repeat to specify multiple\
+  \ files\n  --verbose INT         Verbosity level: 0=none, 1=progress bar, 2=once\
+  \ per epoch (default: 2)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/deepbgc:0.1.26--py_0

@@ -1,0 +1,235 @@
+!Command
+command:
+- quantify
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --input-file
+  description: The input file
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: '[ --output-file ] arg   The output file name (TSV Format).'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: '[ --output-vcf ] arg    Annotated VCF file (with bed annotations).'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --output-summary
+  description: "Output a summary table with TP / FP / FN / UNK\ncounts, precision,\
+    \ recall, etc."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --output-filter-rocs
+  description: Output ROC levels for filters.
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --roc-filter
+  description: Ignore certain filters when creating a ROC.
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --roc-delta
+  description: Minium spacing of levels on ROC QQ trace.
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --qq
+  description: "Field to use for QQ (ROC quantity). Can be QUAL /\nGQ / ... / any\
+    \ INFO field name."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --qq-header
+  description: "Field header to use for QQ in output tables (ROC\nquantity). Defaults\
+    \ to QQ."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: "[ --reference ] arg     The reference fasta file (needed only for\
+    \ VCF\noutput)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: '[ --location ] arg      Start location.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  description: "[ --regions ] arg       Region bed file. You can attach a label by\n\
+    prefixing with a colon, e.g. -R\nFP2:false-positives-type2.bed"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --roc-regions
+  description: "Regions to compute ROCs in. By default, only the\n'*' region (total\
+    \ unstratified counts) will\nproduce ROC counts. For example, --roc-regions '*'\n\
+    --roc-regions FP2 also produces a ROC in the FP2\nregions."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --type
+  description: "Quantification method to use. Current choices are\nxcmp or ga4gh."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -O
+  description: "[ --only ] arg          Bed file of locations (equivalent to -R in\n\
+    bcftools)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --limit-records
+  description: Maximum umber of records to process
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --message-every
+  description: Print a message every N records.
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: '[ --apply-filters ] arg Apply filtering in VCF.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --count-homref
+  description: Count homref locations.
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --output-vtc
+  description: Output variant types counted (debugging).
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --clean-info
+  description: Set to zero to preserve INFO fields (default is 1)
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --output-rocs
+  description: "Output ROCs with full set of levels of QQ values\n(default is 1, disable\
+    \ for more concise output)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --fix-chr-regions
+  description: "Add chr prefix to regions if necessary (default is\noff)."
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: Number of threads to use.
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --blocksize
+  description: Number of variants per block.
+  args: !SimpleFlagArg
+    name: arg
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: '[ --help ]              produce help message'
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Show version
+  args: !EmptyFlagArg {}
+help_text: "Allowed options:\n  -h [ --help ]              produce help message\n\
+  \  --version                  Show version\n  --input-file arg           The input\
+  \ file\n  -o [ --output-file ] arg   The output file name (TSV Format).\n  -v [\
+  \ --output-vcf ] arg    Annotated VCF file (with bed annotations).\n  --output-summary\
+  \ arg       Output a summary table with TP / FP / FN / UNK \n                  \
+  \           counts, precision, recall, etc.\n  --output-filter-rocs arg   Output\
+  \ ROC levels for filters.\n  --roc-filter arg           Ignore certain filters when\
+  \ creating a ROC.\n  --roc-delta arg            Minium spacing of levels on ROC\
+  \ QQ trace.\n  --qq arg                   Field to use for QQ (ROC quantity). Can\
+  \ be QUAL / \n                             GQ / ... / any INFO field name.\n  --qq-header\
+  \ arg            Field header to use for QQ in output tables (ROC \n           \
+  \                  quantity). Defaults to QQ.\n  -r [ --reference ] arg     The\
+  \ reference fasta file (needed only for VCF \n                             output).\n\
+  \  -l [ --location ] arg      Start location.\n  -R [ --regions ] arg       Region\
+  \ bed file. You can attach a label by \n                             prefixing with\
+  \ a colon, e.g. -R \n                             FP2:false-positives-type2.bed\n\
+  \  --roc-regions arg          Regions to compute ROCs in. By default, only the \n\
+  \                             '*' region (total unstratified counts) will \n   \
+  \                          produce ROC counts. For example, --roc-regions '*'\n\
+  \                             --roc-regions FP2 also produces a ROC in the FP2 \n\
+  \                             regions.\n  --type arg                 Quantification\
+  \ method to use. Current choices are \n                             xcmp or ga4gh.\n\
+  \  -O [ --only ] arg          Bed file of locations (equivalent to -R in \n    \
+  \                         bcftools)\n  --limit-records arg        Maximum umber\
+  \ of records to process\n  --message-every arg        Print a message every N records.\n\
+  \  -f [ --apply-filters ] arg Apply filtering in VCF.\n  --count-homref arg    \
+  \     Count homref locations.\n  --output-vtc arg           Output variant types\
+  \ counted (debugging).\n  --clean-info arg           Set to zero to preserve INFO\
+  \ fields (default is 1)\n  --output-rocs arg          Output ROCs with full set\
+  \ of levels of QQ values \n                             (default is 1, disable for\
+  \ more concise output)\n  --fix-chr-regions arg      Add chr prefix to regions if\
+  \ necessary (default is\n                             off).\n  --threads arg   \
+  \           Number of threads to use.\n  --blocksize arg            Number of variants\
+  \ per block.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/hap.py:0.3.13--py27h5c5a3ab_0
