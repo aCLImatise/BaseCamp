@@ -1,0 +1,607 @@
+!Command
+command:
+- hap.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: stderr
+  description: --verbose             Raise logging level from warning to info.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reference
+  description: Specify a reference file.
+  args: !SimpleFlagArg
+    name: REF
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --report-prefix
+  description: Filename prefix for report output.
+  args: !SimpleFlagArg
+    name: REPORTS_PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - --scratch-prefix
+  description: Directory for scratch files.
+  args: !SimpleFlagArg
+    name: SCRATCH_PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - --keep-scratch
+  description: Filename prefix for scratch report output.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --type
+  description: Annotation format in input VCF file.
+  args: !ChoiceFlagArg
+    choices: !!set
+      xcmp:
+      ga4gh:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --false-positives
+  description: "False positive / confident call regions (.bed or\n.bed.gz). Calls\
+    \ outside these regions will be labelled\nas UNK."
+  args: !SimpleFlagArg
+    name: FP_BEDFILE
+- !Flag
+  optional: true
+  synonyms:
+  - --stratification
+  description: "Stratification file list (TSV format -- first column\nis region name,\
+    \ second column is file name)."
+  args: !SimpleFlagArg
+    name: STRAT_TSV
+- !Flag
+  optional: true
+  synonyms:
+  - --stratification-region
+  description: "Add single stratification region, e.g.\n--stratification-region TEST:test.bed"
+  args: !SimpleFlagArg
+    name: STRAT_REGIONS
+- !Flag
+  optional: true
+  synonyms:
+  - --stratification-fixchr
+  description: Add chr prefix to stratification files if necessary
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --write-vcf
+  description: Write an annotated VCF.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -X
+  - --write-counts
+  description: Write advanced counts and metrics.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-write-counts
+  description: Do not write advanced counts and metrics.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --output-vtc
+  description: "Write VTC field in the final VCF which gives the\ncounts each position\
+    \ has contributed to."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --preserve-info
+  description: "When using XCMP, preserve and merge the INFO fields in\ntruth and\
+    \ query. Useful for ROC computation."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --roc
+  description: "Select a feature to produce a ROC on (INFO feature,\nQUAL, GQX, ...)."
+  args: !SimpleFlagArg
+    name: ROC
+- !Flag
+  optional: true
+  synonyms:
+  - --no-roc
+  description: "Disable ROC computation and only output summary\nstatistics for more\
+    \ concise output."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --roc-regions
+  description: "Select a list of regions to compute ROCs in. By\ndefault, only the\
+    \ '*' region will produce ROC output\n(aggregate variant counts)."
+  args: !SimpleFlagArg
+    name: ROC_REGIONS
+- !Flag
+  optional: true
+  synonyms:
+  - --roc-filter
+  description: Select a filter to ignore when making ROCs.
+  args: !SimpleFlagArg
+    name: ROC_FILTER
+- !Flag
+  optional: true
+  synonyms:
+  - --roc-delta
+  description: Minimum spacing between ROC QQ levels.
+  args: !SimpleFlagArg
+    name: ROC_DELTA
+- !Flag
+  optional: true
+  synonyms:
+  - --ci-alpha
+  description: "Confidence level for Jeffrey's CI for recall,\nprecision and fraction\
+    \ of non-assessed calls."
+  args: !SimpleFlagArg
+    name: CI_ALPHA
+- !Flag
+  optional: true
+  synonyms:
+  - --no-json
+  description: Disable JSON file output.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --location
+  - -l
+  description: "Comma-separated list of locations [use naming after\npreprocessing],\
+    \ when not specified will use whole VCF."
+  args: !SimpleFlagArg
+    name: LOCATIONS
+- !Flag
+  optional: true
+  synonyms:
+  - --pass-only
+  description: Keep only PASS variants.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --filters-only
+  description: "Specify a comma-separated list of filters to apply (by\ndefault all\
+    \ filters are ignored / passed on."
+  args: !SimpleFlagArg
+    name: FILTERS_ONLY
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  - --restrict-regions
+  description: "Restrict analysis to given (sparse) regions (using -R\nin bcftools)."
+  args: !SimpleFlagArg
+    name: REGIONS_BEDFILE
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --target-regions
+  description: "Restrict analysis to given (dense) regions (using -T\nin bcftools)."
+  args: !SimpleFlagArg
+    name: TARGETS_BEDFILE
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  - --leftshift
+  description: Left-shift variants safely.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-leftshift
+  description: Do not left-shift variants safely.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --decompose
+  description: "Decompose variants into primitives. This results in\nmore granular\
+    \ counts."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  - --no-decompose
+  description: Do not decompose variants into primitives.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --bcftools-norm
+  description: "Enable preprocessing through bcftools norm -c x -D\n(requires external\
+    \ preprocessing to be switched on)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --fixchr
+  description: "Add chr prefix to VCF records where necessary\n(default: auto, attempt\
+    \ to match reference)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-fixchr
+  description: "Do not add chr prefix to VCF records (default: auto,\nattempt to match\
+    \ reference)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --bcf
+  description: "Use BCF internally. This is the default when the input\nfile is in\
+    \ BCF format already. Using BCF can speed up\ntemp file access, but may fail for\
+    \ VCF files that have\nbroken headers or records that don't comply with the\n\
+    header."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --somatic
+  description: "Assume the input file is a somatic call file and\nsquash all columns\
+    \ into one, putting all FORMATs into\nINFO + use half genotypes (see also --set-gt).\
+    \ This\nwill replace all sample columns and replace them with\na single one."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --set-gt
+  description: "This is used to treat Strelka somatic files Possible\nvalues for this\
+    \ parameter: half / hemi / het / hom /\nhalf to assign one of the following genotypes\
+    \ to the\nresulting sample: 1 | 0/1 | 1/1 | ./1. This will\nreplace all sample\
+    \ columns and replace them with a\nsingle one."
+  args: !ChoiceFlagArg
+    choices: !!set
+      hom:
+      half:
+      first:
+      hemi:
+      het:
+- !Flag
+  optional: true
+  synonyms:
+  - --filter-nonref
+  description: Remove any variants genotyped as <NON_REF>.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --convert-gvcf-to-vcf
+  description: "Convert the input set from genome VCF format to a VCF\nbefore processing."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gender
+  description: "Specify sex. This determines how haploid calls on chrX\nget treated:\
+    \ for male samples, all non-ref calls (in\nthe truthset only when running through\
+    \ hap.py) are\ngiven a 1/1 genotype."
+  args: !ChoiceFlagArg
+    choices: !!set
+      auto:
+      male:
+      female:
+      none:
+- !Flag
+  optional: true
+  synonyms:
+  - --preprocess-truth
+  description: "Preprocess truth file with same settings as query\n(default is to\
+    \ accept truth in original format)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --usefiltered-truth
+  description: "Use filtered variant calls in truth file (by default,\nonly PASS calls\
+    \ in the truth file are used)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --preprocessing-window-size
+  description: "Preprocessing window size (variants further apart than\nthat size\
+    \ are not expected to interfere)."
+  args: !SimpleFlagArg
+    name: PREPROCESS_WINDOW
+- !Flag
+  optional: true
+  synonyms:
+  - --adjust-conf-regions
+  description: "Adjust confident regions to include variant locations.\nNote this\
+    \ will only include variants that are included\nin the CONF regions already when\
+    \ viewing with\nbcftools; this option only makes sure insertions are\npadded correctly\
+    \ in the CONF regions (to capture\nthese, both the base before and after must\
+    \ be\ncontained in the bed file)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-adjust-conf-regions
+  description: Do not adjust confident regions for insertions.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --unhappy
+  - --no-haplotype-comparison
+  description: "Disable haplotype comparison (only count direct GT\nmatches as TP)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --window-size
+  description: "Minimum distance between variants such that they fall\ninto the same\
+    \ superlocus."
+  args: !SimpleFlagArg
+    name: WINDOW
+- !Flag
+  optional: true
+  synonyms:
+  - --xcmp-enumeration-threshold
+  description: "Enumeration threshold / maximum number of sequences to\nenumerate\
+    \ per block."
+  args: !SimpleFlagArg
+    name: MAX_ENUM
+- !Flag
+  optional: true
+  synonyms:
+  - --xcmp-expand-hapblocks
+  description: "Expand haplotype blocks by this many basepairs left\nand right."
+  args: !SimpleFlagArg
+    name: HB_EXPAND
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: Number of threads to use.
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - --engine
+  description: Comparison engine to use.
+  args: !ChoiceFlagArg
+    choices: !!set
+      vcfeval:
+      xcmp:
+      scmp-distance:
+      scmp-somatic:
+- !Flag
+  optional: true
+  synonyms:
+  - --engine-vcfeval-path
+  description: "This parameter should give the path to the \"rtg\"\nexecutable. The\
+    \ default is rtg"
+  args: !SimpleFlagArg
+    name: ENGINE_VCFEVAL
+- !Flag
+  optional: true
+  synonyms:
+  - --engine-vcfeval-template
+  description: "Vcfeval needs the reference sequence formatted in its\nown file format\
+    \ (SDF -- run rtg format -o ref.SDF\nref.fa). You can specify this here to save\
+    \ time when\nrunning hap.py with vcfeval. If no SDF folder is\nspecified, hap.py\
+    \ will create a temporary one."
+  args: !SimpleFlagArg
+    name: ENGINE_VCFEVAL_TEMPLATE
+- !Flag
+  optional: true
+  synonyms:
+  - --scmp-distance
+  description: "For distance-based matching (vcfeval and scmp), this\nis the distance\
+    \ between variants to use."
+  args: !SimpleFlagArg
+    name: ENGINE_SCMP_DISTANCE
+- !Flag
+  optional: true
+  synonyms:
+  - --lose-match-distance
+  description: "For distance-based matching (vcfeval and scmp), this\nis the distance\
+    \ between variants to use."
+  args: !SimpleFlagArg
+    name: ENGINE_SCMP_DISTANCE
+- !Flag
+  optional: true
+  synonyms:
+  - --logfile
+  description: Write logging information into file rather than to
+  args: !SimpleFlagArg
+    name: LOGFILE
+- !Flag
+  optional: true
+  synonyms:
+  - --quiet
+  description: Set logging level to output errors only.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: ''
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: Show version number and exit.
+  args: !EmptyFlagArg {}
+help_text: "usage: Haplotype Comparison [-h] [-v] [-r REF] [-o REPORTS_PREFIX]\n \
+  \                           [--scratch-prefix SCRATCH_PREFIX] [--keep-scratch]\n\
+  \                            [-t {xcmp,ga4gh}] [-f FP_BEDFILE]\n               \
+  \             [--stratification STRAT_TSV]\n                            [--stratification-region\
+  \ STRAT_REGIONS]\n                            [--stratification-fixchr] [-V] [-X]\n\
+  \                            [--no-write-counts] [--output-vtc]\n              \
+  \              [--preserve-info] [--roc ROC] [--no-roc]\n                      \
+  \      [--roc-regions ROC_REGIONS]\n                            [--roc-filter ROC_FILTER]\
+  \ [--roc-delta ROC_DELTA]\n                            [--ci-alpha CI_ALPHA] [--no-json]\n\
+  \                            [--location LOCATIONS] [--pass-only]\n            \
+  \                [--filters-only FILTERS_ONLY] [-R REGIONS_BEDFILE]\n          \
+  \                  [-T TARGETS_BEDFILE] [-L] [--no-leftshift]\n                \
+  \            [--decompose] [-D] [--bcftools-norm] [--fixchr]\n                 \
+  \           [--no-fixchr] [--bcf] [--somatic]\n                            [--set-gt\
+  \ {half,hemi,het,hom,first}]\n                            [--filter-nonref] [--convert-gvcf-to-vcf]\n\
+  \                            [--gender {male,female,auto,none}]\n              \
+  \              [--preprocess-truth] [--usefiltered-truth]\n                    \
+  \        [--preprocessing-window-size PREPROCESS_WINDOW]\n                     \
+  \       [--adjust-conf-regions] [--no-adjust-conf-regions]\n                   \
+  \         [--unhappy] [-w WINDOW]\n                            [--xcmp-enumeration-threshold\
+  \ MAX_ENUM]\n                            [--xcmp-expand-hapblocks HB_EXPAND]\n \
+  \                           [--threads THREADS]\n                            [--engine\
+  \ {xcmp,vcfeval,scmp-somatic,scmp-distance}]\n                            [--engine-vcfeval-path\
+  \ ENGINE_VCFEVAL]\n                            [--engine-vcfeval-template ENGINE_VCFEVAL_TEMPLATE]\n\
+  \                            [--scmp-distance ENGINE_SCMP_DISTANCE]\n          \
+  \                  [--lose-match-distance ENGINE_SCMP_DISTANCE]\n              \
+  \              [--logfile LOGFILE] [--verbose | --quiet]\n                     \
+  \       [_vcfs [_vcfs ...]]\n\npositional arguments:\n  _vcfs                 Two\
+  \ VCF files.\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  -v, --version         Show version number and exit.\n  -r REF, --reference\
+  \ REF\n                        Specify a reference file.\n  -o REPORTS_PREFIX, --report-prefix\
+  \ REPORTS_PREFIX\n                        Filename prefix for report output.\n \
+  \ --scratch-prefix SCRATCH_PREFIX\n                        Directory for scratch\
+  \ files.\n  --keep-scratch        Filename prefix for scratch report output.\n \
+  \ -t {xcmp,ga4gh}, --type {xcmp,ga4gh}\n                        Annotation format\
+  \ in input VCF file.\n  -f FP_BEDFILE, --false-positives FP_BEDFILE\n          \
+  \              False positive / confident call regions (.bed or\n              \
+  \          .bed.gz). Calls outside these regions will be labelled\n            \
+  \            as UNK.\n  --stratification STRAT_TSV\n                        Stratification\
+  \ file list (TSV format -- first column\n                        is region name,\
+  \ second column is file name).\n  --stratification-region STRAT_REGIONS\n      \
+  \                  Add single stratification region, e.g.\n                    \
+  \    --stratification-region TEST:test.bed\n  --stratification-fixchr\n        \
+  \                Add chr prefix to stratification files if necessary\n  -V, --write-vcf\
+  \       Write an annotated VCF.\n  -X, --write-counts    Write advanced counts and\
+  \ metrics.\n  --no-write-counts     Do not write advanced counts and metrics.\n\
+  \  --output-vtc          Write VTC field in the final VCF which gives the\n    \
+  \                    counts each position has contributed to.\n  --preserve-info\
+  \       When using XCMP, preserve and merge the INFO fields in\n               \
+  \         truth and query. Useful for ROC computation.\n  --roc ROC            \
+  \ Select a feature to produce a ROC on (INFO feature,\n                        QUAL,\
+  \ GQX, ...).\n  --no-roc              Disable ROC computation and only output summary\n\
+  \                        statistics for more concise output.\n  --roc-regions ROC_REGIONS\n\
+  \                        Select a list of regions to compute ROCs in. By\n     \
+  \                   default, only the '*' region will produce ROC output\n     \
+  \                   (aggregate variant counts).\n  --roc-filter ROC_FILTER\n   \
+  \                     Select a filter to ignore when making ROCs.\n  --roc-delta\
+  \ ROC_DELTA\n                        Minimum spacing between ROC QQ levels.\n  --ci-alpha\
+  \ CI_ALPHA   Confidence level for Jeffrey's CI for recall,\n                   \
+  \     precision and fraction of non-assessed calls.\n  --no-json             Disable\
+  \ JSON file output.\n  --location LOCATIONS, -l LOCATIONS\n                    \
+  \    Comma-separated list of locations [use naming after\n                     \
+  \   preprocessing], when not specified will use whole VCF.\n  --pass-only      \
+  \     Keep only PASS variants.\n  --filters-only FILTERS_ONLY\n                \
+  \        Specify a comma-separated list of filters to apply (by\n              \
+  \          default all filters are ignored / passed on.\n  -R REGIONS_BEDFILE, --restrict-regions\
+  \ REGIONS_BEDFILE\n                        Restrict analysis to given (sparse) regions\
+  \ (using -R\n                        in bcftools).\n  -T TARGETS_BEDFILE, --target-regions\
+  \ TARGETS_BEDFILE\n                        Restrict analysis to given (dense) regions\
+  \ (using -T\n                        in bcftools).\n  -L, --leftshift       Left-shift\
+  \ variants safely.\n  --no-leftshift        Do not left-shift variants safely.\n\
+  \  --decompose           Decompose variants into primitives. This results in\n \
+  \                       more granular counts.\n  -D, --no-decompose    Do not decompose\
+  \ variants into primitives.\n  --bcftools-norm       Enable preprocessing through\
+  \ bcftools norm -c x -D\n                        (requires external preprocessing\
+  \ to be switched on).\n  --fixchr              Add chr prefix to VCF records where\
+  \ necessary\n                        (default: auto, attempt to match reference).\n\
+  \  --no-fixchr           Do not add chr prefix to VCF records (default: auto,\n\
+  \                        attempt to match reference).\n  --bcf                 Use\
+  \ BCF internally. This is the default when the input\n                        file\
+  \ is in BCF format already. Using BCF can speed up\n                        temp\
+  \ file access, but may fail for VCF files that have\n                        broken\
+  \ headers or records that don't comply with the\n                        header.\n\
+  \  --somatic             Assume the input file is a somatic call file and\n    \
+  \                    squash all columns into one, putting all FORMATs into\n   \
+  \                     INFO + use half genotypes (see also --set-gt). This\n    \
+  \                    will replace all sample columns and replace them with\n   \
+  \                     a single one.\n  --set-gt {half,hemi,het,hom,first}\n    \
+  \                    This is used to treat Strelka somatic files Possible\n    \
+  \                    values for this parameter: half / hemi / het / hom /\n    \
+  \                    half to assign one of the following genotypes to the\n    \
+  \                    resulting sample: 1 | 0/1 | 1/1 | ./1. This will\n        \
+  \                replace all sample columns and replace them with a\n          \
+  \              single one.\n  --filter-nonref       Remove any variants genotyped\
+  \ as <NON_REF>.\n  --convert-gvcf-to-vcf\n                        Convert the input\
+  \ set from genome VCF format to a VCF\n                        before processing.\n\
+  \  --gender {male,female,auto,none}\n                        Specify sex. This determines\
+  \ how haploid calls on chrX\n                        get treated: for male samples,\
+  \ all non-ref calls (in\n                        the truthset only when running\
+  \ through hap.py) are\n                        given a 1/1 genotype.\n  --preprocess-truth\
+  \    Preprocess truth file with same settings as query\n                       \
+  \ (default is to accept truth in original format).\n  --usefiltered-truth   Use\
+  \ filtered variant calls in truth file (by default,\n                        only\
+  \ PASS calls in the truth file are used)\n  --preprocessing-window-size PREPROCESS_WINDOW\n\
+  \                        Preprocessing window size (variants further apart than\n\
+  \                        that size are not expected to interfere).\n  --adjust-conf-regions\n\
+  \                        Adjust confident regions to include variant locations.\n\
+  \                        Note this will only include variants that are included\n\
+  \                        in the CONF regions already when viewing with\n       \
+  \                 bcftools; this option only makes sure insertions are\n       \
+  \                 padded correctly in the CONF regions (to capture\n           \
+  \             these, both the base before and after must be\n                  \
+  \      contained in the bed file).\n  --no-adjust-conf-regions\n               \
+  \         Do not adjust confident regions for insertions.\n  --unhappy, --no-haplotype-comparison\n\
+  \                        Disable haplotype comparison (only count direct GT\n  \
+  \                      matches as TP).\n  -w WINDOW, --window-size WINDOW\n    \
+  \                    Minimum distance between variants such that they fall\n   \
+  \                     into the same superlocus.\n  --xcmp-enumeration-threshold\
+  \ MAX_ENUM\n                        Enumeration threshold / maximum number of sequences\
+  \ to\n                        enumerate per block.\n  --xcmp-expand-hapblocks HB_EXPAND\n\
+  \                        Expand haplotype blocks by this many basepairs left\n \
+  \                       and right.\n  --threads THREADS     Number of threads to\
+  \ use.\n  --engine {xcmp,vcfeval,scmp-somatic,scmp-distance}\n                 \
+  \       Comparison engine to use.\n  --engine-vcfeval-path ENGINE_VCFEVAL\n    \
+  \                    This parameter should give the path to the \"rtg\"\n      \
+  \                  executable. The default is rtg\n  --engine-vcfeval-template ENGINE_VCFEVAL_TEMPLATE\n\
+  \                        Vcfeval needs the reference sequence formatted in its\n\
+  \                        own file format (SDF -- run rtg format -o ref.SDF\n   \
+  \                     ref.fa). You can specify this here to save time when\n   \
+  \                     running hap.py with vcfeval. If no SDF folder is\n       \
+  \                 specified, hap.py will create a temporary one.\n  --scmp-distance\
+  \ ENGINE_SCMP_DISTANCE\n                        For distance-based matching (vcfeval\
+  \ and scmp), this\n                        is the distance between variants to use.\n\
+  \  --lose-match-distance ENGINE_SCMP_DISTANCE\n                        For distance-based\
+  \ matching (vcfeval and scmp), this\n                        is the distance between\
+  \ variants to use.\n  --logfile LOGFILE     Write logging information into file\
+  \ rather than to\n                        stderr\n  --verbose             Raise\
+  \ logging level from warning to info.\n  --quiet               Set logging level\
+  \ to output errors only.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/hap.py:0.3.13--py27h5c5a3ab_0

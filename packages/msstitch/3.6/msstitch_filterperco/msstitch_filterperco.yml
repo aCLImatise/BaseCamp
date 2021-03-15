@@ -1,0 +1,130 @@
+!Command
+command:
+- msstitch
+- filterperco
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: Input file of {} format
+  args: !SimpleFlagArg
+    name: FN
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: Directory to output in
+  args: !SimpleFlagArg
+    name: OUTDIR
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: Output file
+  args: !SimpleFlagArg
+    name: OUTFILE
+- !Flag
+  optional: true
+  synonyms:
+  - --fullprotein
+  description: "Store full protein sequences (at a minimum-match\nlength) in the SQLite\
+    \ file rather than tryptic\nsequences"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --deamidate
+  description: "Filter against both normal peptides and deamidated\npeptides where\
+    \ a D->N transition has occurred."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --fasta
+  description: FASTA sequence database
+  args: !SimpleFlagArg
+    name: FASTA
+- !Flag
+  optional: true
+  synonyms:
+  - --minlen
+  description: Minimum length of peptide to be included
+  args: !SimpleFlagArg
+    name: MINLENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - --dbfile
+  description: Database lookup file
+  args: !SimpleFlagArg
+    name: LOOKUPFN
+- !Flag
+  optional: true
+  synonyms:
+  - --enforce-tryptic
+  description: "When filtering peptides against whole proteins, filter\nout peptides\
+    \ that match a whole protein but only if\nthey are fully tryptic, i.e. the protein\
+    \ needs K,R 1\nposition upstream of the peptide, and the peptide\nC-terminal should\
+    \ also be K,R. Useful when discerning\nfrom pseudogenes"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --insourcefrag
+  description: "Apply filter against both intact peptides and those\nthat match to\
+    \ the C-terminal part of a tryptic peptide\nfrom the database, resulting from\
+    \ in-source\nfragmentation, where some amino acids will be missing\nfrom the N-terminus.\
+    \ Specify the max number of amino\nacids that may be missing. Database should\
+    \ be built\nwith this flag in order for the lookup to work, since\nsequences will\
+    \ be stored and looked up reversed\n"
+  args: !SimpleFlagArg
+    name: FALLOFF
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: msstitch filterperco [-h] [--version] -i FN [-d OUTDIR] [-o OUTFILE]\n\
+  \                            [--fullprotein] [--deamidate] [--fasta FASTA]\n   \
+  \                         [--minlen MINLENGTH] --dbfile LOOKUPFN\n             \
+  \               [--enforce-tryptic] [--insourcefrag FALLOFF]\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  --version          \
+  \   show program's version number and exit\n  -i FN                 Input file of\
+  \ {} format\n  -d OUTDIR             Directory to output in\n  -o OUTFILE      \
+  \      Output file\n  --fullprotein         Store full protein sequences (at a minimum-match\n\
+  \                        length) in the SQLite file rather than tryptic\n      \
+  \                  sequences\n  --deamidate           Filter against both normal\
+  \ peptides and deamidated\n                        peptides where a D->N transition\
+  \ has occurred.\n  --fasta FASTA         FASTA sequence database\n  --minlen MINLENGTH\
+  \    Minimum length of peptide to be included\n  --dbfile LOOKUPFN     Database\
+  \ lookup file\n  --enforce-tryptic     When filtering peptides against whole proteins,\
+  \ filter\n                        out peptides that match a whole protein but only\
+  \ if\n                        they are fully tryptic, i.e. the protein needs K,R\
+  \ 1\n                        position upstream of the peptide, and the peptide\n\
+  \                        C-terminal should also be K,R. Useful when discerning\n\
+  \                        from pseudogenes\n  --insourcefrag FALLOFF\n          \
+  \              Apply filter against both intact peptides and those\n           \
+  \             that match to the C-terminal part of a tryptic peptide\n         \
+  \               from the database, resulting from in-source\n                  \
+  \      fragmentation, where some amino acids will be missing\n                 \
+  \       from the N-terminus. Specify the max number of amino\n                 \
+  \       acids that may be missing. Database should be built\n                  \
+  \      with this flag in order for the lookup to work, since\n                 \
+  \       sequences will be stored and looked up reversed\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/msstitch:3.6--py_0

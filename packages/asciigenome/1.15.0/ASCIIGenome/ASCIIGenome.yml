@@ -1,0 +1,158 @@
+!Command
+command:
+- ASCIIGenome
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: input
+  description: "Input  files  to  be  displayed:  bam,  bed,  gtf,\nbigwig, bedgraph,\
+    \ etc"
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --batchFile
+  - -b
+  description: "Bed or gff file  of  regions  to process in batch.\nUse - to read\
+    \ from stdin.\nASCIIGenome will iterate  through  the  regions in\nthis file"
+  args: !SimpleFlagArg
+    name: BATCHFILE
+- !Flag
+  optional: true
+  synonyms:
+  - --region
+  - -r
+  description: "Go to region. Format  1-based as 'chrom:start-end'\nor 'chrom:start'\
+    \ or 'chrom'.\nE.g. chr1:1-1000"
+  args: !SimpleFlagArg
+    name: REGION
+- !Flag
+  optional: true
+  synonyms:
+  - --fasta
+  - -fa
+  description: "Optional reference fasta file.  If  given, must be\nindexed, e.g.\
+    \ with\nsamtools faidx ref.fa"
+  args: !SimpleFlagArg
+    name: FASTA
+- !Flag
+  optional: true
+  synonyms:
+  - --exec
+  - -x
+  description: "Commands to be executed  at  the  prompt. Either a\nfile with one\
+    \ command per line\na single string of  commands,  e.g.  'goto chr1 &&\nnext &&\
+    \ seqRegex ACTG'"
+  args: !SimpleFlagArg
+    name: EXEC
+- !Flag
+  optional: true
+  synonyms:
+  - --noFormat
+  - -nf
+  description: "Do  not  format  output   with   non  ascii  chars\n(colour, bold,\
+    \ etc.) (default: false)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --nonInteractive
+  - -ni
+  description: "Non interactive mode: Exit  after having processed\ncmd line args\
+    \ (default: false)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --config
+  - -c
+  description: "Source of  configuration  settings.  It  can  be a\nlocal file or\
+    \ a tag matching a\nbuilt-in     configuration:      'black_on_white',\n'white_on_black',\
+    \ 'metal'. If null,\nfirst try to  read  configuration  from  file '~/.\nasciigenome_config'.\
+    \ If this\nfile  is  missing  use  a  built-in  setting.  For\nexamples of configuration\
+    \ files\nsee                                https://github.\ncom/dariober/ASCIIGenome/tree/master/src/main/resources/config\n\
+    (default: null)"
+  args: !SimpleFlagArg
+    name: CONFIG
+- !Flag
+  optional: true
+  synonyms:
+  - --showMem
+  - -sm
+  description: "Show memory usage.  Typically  used  for debugging\nonly (default:\
+    \ false)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --showTime
+  - -st
+  description: "Show time  elapsed  to  process  tracks. Typically\nused for debugging\
+    \ only (default: false)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: "Set debugging mode.  0:  off;  1:  print exception\nstack traces;\
+    \ 2: print stack traces\nand exit. (default: 0)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      '2':
+      '0':
+      '1':
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: ASCIIGenome [-h] [--batchFile BATCHFILE] [--region REGION]\n  \
+  \                 [--fasta FASTA] [--exec EXEC] [--noFormat]\n                 \
+  \  [--nonInteractive] [--config CONFIG] [--showMem]\n                   [--showTime]\
+  \ [--debug {0,1,2}] [--version]\n                   [input [input ...]]\n\nDESCRIPTION\n\
+  Genome browser at the command line.\n\nFull docs at http://asciigenome.readthedocs.io/\n\
+  \npositional arguments:\n  input                  Input  files  to  be  displayed:\
+  \  bam,  bed,  gtf,\n                         bigwig, bedgraph, etc\n\nnamed arguments:\n\
+  \  -h, --help             show this help message and exit\n  --batchFile BATCHFILE,\
+  \ -b BATCHFILE\n                         Bed or gff file  of  regions  to process\
+  \ in batch.\n                         Use - to read from stdin.\n              \
+  \           ASCIIGenome will iterate  through  the  regions in\n               \
+  \          this file\n  --region REGION, -r REGION\n                         Go\
+  \ to region. Format  1-based as 'chrom:start-end'\n                         or 'chrom:start'\
+  \ or 'chrom'.\n                         E.g. chr1:1-1000\n  --fasta FASTA, -fa FASTA\n\
+  \                         Optional reference fasta file.  If  given, must be\n \
+  \                        indexed, e.g. with\n                         samtools faidx\
+  \ ref.fa\n  --exec EXEC, -x EXEC   Commands to be executed  at  the  prompt. Either\
+  \ a\n                         file with one command per line\n                 \
+  \        a single string of  commands,  e.g.  'goto chr1 &&\n                  \
+  \       next && seqRegex ACTG'\n  --noFormat, -nf        Do  not  format  output\
+  \   with   non  ascii  chars\n                         (colour, bold, etc.) (default:\
+  \ false)\n  --nonInteractive, -ni  Non interactive mode: Exit  after having processed\n\
+  \                         cmd line args (default: false)\n  --config CONFIG, -c\
+  \ CONFIG\n                         Source of  configuration  settings.  It  can\
+  \  be a\n                         local file or a tag matching a\n             \
+  \            built-in     configuration:      'black_on_white',\n              \
+  \           'white_on_black', 'metal'. If null,\n                         first\
+  \ try to  read  configuration  from  file '~/.\n                         asciigenome_config'.\
+  \ If this\n                         file  is  missing  use  a  built-in  setting.\
+  \  For\n                         examples of configuration files\n             \
+  \            see                                https://github.\n              \
+  \           com/dariober/ASCIIGenome/tree/master/src/main/resources/config\n   \
+  \                      (default: null)\n  --showMem, -sm         Show memory usage.\
+  \  Typically  used  for debugging\n                         only (default: false)\n\
+  \  --showTime, -st        Show time  elapsed  to  process  tracks. Typically\n \
+  \                        used for debugging only (default: false)\n  --debug {0,1,2}\
+  \        Set debugging mode.  0:  off;  1:  print exception\n                  \
+  \       stack traces; 2: print stack traces\n                         and exit.\
+  \ (default: 0)\n  --version, -v\n"
+generated_using:
+- --help
+docker_image:

@@ -1,0 +1,253 @@
+!Command
+command:
+- inStrain
+- compare
+positional:
+- !Positional
+  optional: true
+  position: 0
+  name: INPUT
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: "[INPUT [INPUT ...]], --input [INPUT [INPUT ...]]\nA list of inStrain\
+    \ objects, all mapped to the same\n.fasta file (default: None)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: 'Output prefix (default: instrainComparer)'
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --processes
+  description: 'Number of processes to use (default: 6)'
+  args: !SimpleFlagArg
+    name: PROCESSES
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --debug
+  description: 'Make extra debugging output (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: "[STB [STB ...]], --stb [STB [STB ...]]\nScaffold to bin. This can\
+    \ be a file with each line\nlisting a scaffold and a bin name, tab-seperated.\
+    \ This\ncan also be a space-seperated list of .fasta files,\nwith one genome per\
+    \ .fasta file. If nothing is\nprovided, all scaffolds will be treated as belonging\n\
+    to the same genome (default: [])"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --min_cov
+  description: 'Minimum coverage to call an variant (default: 5)'
+  args: !SimpleFlagArg
+    name: MIN_COV
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --min_freq
+  description: "Minimum SNP frequency to confirm a SNV (both this AND\nthe FDR snp\
+    \ count cutoff must be true to call a SNP).\n(default: 0.05)"
+  args: !SimpleFlagArg
+    name: MIN_FREQ
+- !Flag
+  optional: true
+  synonyms:
+  - -fdr
+  - --fdr
+  description: "SNP false discovery rate- based on simulation data\nwith a 0.1 percent\
+    \ error rate (Q30) (default: 1e-06)"
+  args: !SimpleFlagArg
+    name: FDR
+- !Flag
+  optional: true
+  synonyms:
+  - --database_mode
+  description: "Using the parameters below, automatically determine\nwhich genomes\
+    \ are present in each Profile and only\ncompare scaffolds from those genomes.\
+    \ All profiles\nmust have run Profile with the same .stb (default:\nFalse)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --breadth
+  description: "Minimum breadth_minCov required to count a genome\npresent (default:\
+    \ 0.5)"
+  args: !SimpleFlagArg
+    name: BREADTH
+- !Flag
+  optional: true
+  synonyms:
+  - -sc
+  - --scaffolds
+  description: "Location to a list of scaffolds to compare. You can\nalso make this\
+    \ a .fasta file and it will load the\nscaffold names (default: None)"
+  args: !SimpleFlagArg
+    name: SCAFFOLDS
+- !Flag
+  optional: true
+  synonyms:
+  - --genome
+  description: "Run scaffolds belonging to this single genome only.\nMust provide\
+    \ an .stb file (default: None)"
+  args: !SimpleFlagArg
+    name: GENOME
+- !Flag
+  optional: true
+  synonyms:
+  - --store_coverage_overlap
+  description: "Also store coverage overlap on an mm level (default:\nFalse)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --store_mismatch_locations
+  description: 'Store the locations of SNPs (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --include_self_comparisons
+  description: "Also compare IS profiles against themself (default:\nFalse)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --skip_plot_generation
+  description: "Dont create plots at the end of the run. (default:\nFalse)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --group_length
+  description: "How many bp to compare simultaneously (higher will use\nmore RAM and\
+    \ run more quickly) (default: 10000000)"
+  args: !SimpleFlagArg
+    name: GROUP_LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - -ani
+  - --ani_threshold
+  description: "popANI threshold to cluster genomes at. Must provide\n.stb file to\
+    \ do so (default: 0.99999)"
+  args: !SimpleFlagArg
+    name: ANI_THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - -cov
+  - --coverage_treshold
+  description: "Minimum percent_genome_compared for a genome\ncomparison to count;\
+    \ if below the popANI will be set\nto 0. (default: 0.1)"
+  args: !SimpleFlagArg
+    name: COVERAGE_TRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - --clusterAlg
+  description: "Algorithm used to cluster genomes (passed to\nscipy.cluster.hierarchy.linkage)\
+    \ (default: average)\n"
+  args: !ChoiceFlagArg
+    choices: !!set
+      ward:
+      centroid:
+      weighted:
+      complete:
+      median:
+      average:
+      single:
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: inStrain compare -i [INPUT [INPUT ...]] [-o OUTPUT] [-p PROCESSES]\
+  \ [-d]\n                        [-h] [--version] [-s [STB [STB ...]]] [-c MIN_COV]\n\
+  \                        [-f MIN_FREQ] [-fdr FDR] [--database_mode]\n          \
+  \              [--breadth BREADTH] [-sc SCAFFOLDS] [--genome GENOME]\n         \
+  \               [--store_coverage_overlap]\n                        [--store_mismatch_locations]\n\
+  \                        [--include_self_comparisons] [--skip_plot_generation]\n\
+  \                        [--group_length GROUP_LENGTH] [-ani ANI_THRESHOLD]\n  \
+  \                      [-cov COVERAGE_TRESHOLD]\n                        [--clusterAlg\
+  \ {centroid,weighted,complete,single,ward,average,median}]\n\nREQUIRED:\n  -i [INPUT\
+  \ [INPUT ...]], --input [INPUT [INPUT ...]]\n                        A list of inStrain\
+  \ objects, all mapped to the same\n                        .fasta file (default:\
+  \ None)\n  -o OUTPUT, --output OUTPUT\n                        Output prefix (default:\
+  \ instrainComparer)\n\nSYSTEM PARAMETERS:\n  -p PROCESSES, --processes PROCESSES\n\
+  \                        Number of processes to use (default: 6)\n  -d, --debug\
+  \           Make extra debugging output (default: False)\n  -h, --help         \
+  \   show this help message and exit\n  --version             show program's version\
+  \ number and exit\n\nGENOME WIDE OPTIONS:\n  -s [STB [STB ...]], --stb [STB [STB\
+  \ ...]]\n                        Scaffold to bin. This can be a file with each line\n\
+  \                        listing a scaffold and a bin name, tab-seperated. This\n\
+  \                        can also be a space-seperated list of .fasta files,\n \
+  \                       with one genome per .fasta file. If nothing is\n       \
+  \                 provided, all scaffolds will be treated as belonging\n       \
+  \                 to the same genome (default: [])\n\nVARIANT CALLING OPTIONS:\n\
+  \  -c MIN_COV, --min_cov MIN_COV\n                        Minimum coverage to call\
+  \ an variant (default: 5)\n  -f MIN_FREQ, --min_freq MIN_FREQ\n                \
+  \        Minimum SNP frequency to confirm a SNV (both this AND\n               \
+  \         the FDR snp count cutoff must be true to call a SNP).\n              \
+  \          (default: 0.05)\n  -fdr FDR, --fdr FDR   SNP false discovery rate- based\
+  \ on simulation data\n                        with a 0.1 percent error rate (Q30)\
+  \ (default: 1e-06)\n\nDATABASE MODE PARAMETERS:\n  --database_mode       Using the\
+  \ parameters below, automatically determine\n                        which genomes\
+  \ are present in each Profile and only\n                        compare scaffolds\
+  \ from those genomes. All profiles\n                        must have run Profile\
+  \ with the same .stb (default:\n                        False)\n  --breadth BREADTH\
+  \     Minimum breadth_minCov required to count a genome\n                      \
+  \  present (default: 0.5)\n\nOTHER OPTIONS:\n  -sc SCAFFOLDS, --scaffolds SCAFFOLDS\n\
+  \                        Location to a list of scaffolds to compare. You can\n \
+  \                       also make this a .fasta file and it will load the\n    \
+  \                    scaffold names (default: None)\n  --genome GENOME       Run\
+  \ scaffolds belonging to this single genome only.\n                        Must\
+  \ provide an .stb file (default: None)\n  --store_coverage_overlap\n           \
+  \             Also store coverage overlap on an mm level (default:\n           \
+  \             False)\n  --store_mismatch_locations\n                        Store\
+  \ the locations of SNPs (default: False)\n  --include_self_comparisons\n       \
+  \                 Also compare IS profiles against themself (default:\n        \
+  \                False)\n  --skip_plot_generation\n                        Dont\
+  \ create plots at the end of the run. (default:\n                        False)\n\
+  \  --group_length GROUP_LENGTH\n                        How many bp to compare simultaneously\
+  \ (higher will use\n                        more RAM and run more quickly) (default:\
+  \ 10000000)\n\nGENOME CLUSTERING OPTIONS:\n  -ani ANI_THRESHOLD, --ani_threshold\
+  \ ANI_THRESHOLD\n                        popANI threshold to cluster genomes at.\
+  \ Must provide\n                        .stb file to do so (default: 0.99999)\n\
+  \  -cov COVERAGE_TRESHOLD, --coverage_treshold COVERAGE_TRESHOLD\n             \
+  \           Minimum percent_genome_compared for a genome\n                     \
+  \   comparison to count; if below the popANI will be set\n                     \
+  \   to 0. (default: 0.1)\n  --clusterAlg {centroid,weighted,complete,single,ward,average,median}\n\
+  \                        Algorithm used to cluster genomes (passed to\n        \
+  \                scipy.cluster.hierarchy.linkage) (default: average)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/instrain:1.5.2--py_0

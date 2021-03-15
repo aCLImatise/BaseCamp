@@ -1,0 +1,109 @@
+!Command
+command:
+- mg-toolkit
+- bulk_download
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --accession
+  description: Provide the study/project accession of your interest, e.g. ERP001736,
+    SRP000319. The study must be publicly available in MGnify.
+  args: !SimpleFlagArg
+    name: ACCESSION
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output_path
+  description: "Location of the output directory, where the downloadable files are\
+    \ written to.\nDEFAULT: CWD"
+  args: !SimpleFlagArg
+    name: OUTPUT_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --pipeline
+  description: "Specify the version of the pipeline you are interested in.\nLets say\
+    \ your study of interest has been analysed with\nmultiple version, but you are\
+    \ only interested in a particular\nversion then used this option to filter down\
+    \ the results by\nthe version you interested in.\nDEFAULT: Downloads all versions"
+  args: !ChoiceFlagArg
+    choices: !!set
+      '4.0':
+      '1.0':
+      '2.0':
+      '5.0':
+      '3.0':
+      '4.1':
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --result_group
+  description: "Provide a single result group if needed.\nSupported result groups\
+    \ are:\n- statistics\n- sequence_data (all versions)\n- functional_analysis (all\
+    \ versions)\n- taxonomic_analysis (1.0-3.0)\n- taxonomic_analysis_ssu_rrna (>=4.0)\n\
+    - taxonomic_analysis_lsu_rrna (>=4.0)\n- non-coding_rnas (>=4.0)\n- taxonomic_analysis_itsonedb\
+    \ (>= 5.0)\n- taxonomic_analysis_unite (>= 5.0)\n- taxonomic_analysis_motu  (>=\
+    \ 5.0)\n- pathways_and_systems (>= 5.0)\nDEFAULT: Downloads all result groups\
+    \ if not provided.\n(default: None).\n"
+  args: !ChoiceFlagArg
+    choices: !!set
+      taxonomic_analysis_motu:
+      statistics:
+      non-coding_rnas:
+      pathways_and_systems:
+      taxonomic_analysis_unite:
+      taxonomic_analysis_lsu_rrna:
+      taxonomic_analysis_ssu_rrna:
+      functional_analysis:
+      taxonomic_analysis:
+      taxonomic_analysis_itsonedb:
+      sequence_data:
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: mg-toolkit bulk_download [-h] -a ACCESSION [-o OUTPUT_PATH]\n \
+  \                               [-p {1.0,2.0,3.0,4.0,4.1,5.0}]\n               \
+  \                 [-g {statistics,sequence_data,functional_analysis,taxonomic_analysis,taxonomic_analysis_ssu_rrna,taxonomic_analysis_lsu_rrna,non-coding_rnas,taxonomic_analysis_itsonedb,taxonomic_analysis_unite,taxonomic_analysis_motu,pathways_and_systems}]\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  -a ACCESSION, --accession ACCESSION\n                        Provide the study/project\
+  \ accession of your interest, e.g. ERP001736, SRP000319. The study must be publicly\
+  \ available in MGnify.\n  -o OUTPUT_PATH, --output_path OUTPUT_PATH\n          \
+  \              Location of the output directory, where the downloadable files are\
+  \ written to.\n                        DEFAULT: CWD\n  -p {1.0,2.0,3.0,4.0,4.1,5.0},\
+  \ --pipeline {1.0,2.0,3.0,4.0,4.1,5.0}\n                        Specify the version\
+  \ of the pipeline you are interested in. \n                        Lets say your\
+  \ study of interest has been analysed with \n                        multiple version,\
+  \ but you are only interested in a particular \n                        version\
+  \ then used this option to filter down the results by \n                       \
+  \ the version you interested in.\n                        DEFAULT: Downloads all\
+  \ versions\n  -g {statistics,sequence_data,functional_analysis,taxonomic_analysis,taxonomic_analysis_ssu_rrna,taxonomic_analysis_lsu_rrna,non-coding_rnas,taxonomic_analysis_itsonedb,taxonomic_analysis_unite,taxonomic_analysis_motu,pathways_and_systems},\
+  \ --result_group {statistics,sequence_data,functional_analysis,taxonomic_analysis,taxonomic_analysis_ssu_rrna,taxonomic_analysis_lsu_rrna,non-coding_rnas,taxonomic_analysis_itsonedb,taxonomic_analysis_unite,taxonomic_analysis_motu,pathways_and_systems}\n\
+  \                        Provide a single result group if needed.\n            \
+  \            Supported result groups are:\n                         - statistics\n\
+  \                         - sequence_data (all versions)\n                     \
+  \    - functional_analysis (all versions)\n                         - taxonomic_analysis\
+  \ (1.0-3.0)\n                         - taxonomic_analysis_ssu_rrna (>=4.0)\n  \
+  \                       - taxonomic_analysis_lsu_rrna (>=4.0)\n                \
+  \         - non-coding_rnas (>=4.0)\n                         - taxonomic_analysis_itsonedb\
+  \ (>= 5.0)\n                         - taxonomic_analysis_unite (>= 5.0)\n     \
+  \                    - taxonomic_analysis_motu  (>= 5.0)\n                     \
+  \    - pathways_and_systems (>= 5.0)\n                        DEFAULT: Downloads\
+  \ all result groups if not provided.\n                        (default: None).\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/mg-toolkit:0.9.1--py_0

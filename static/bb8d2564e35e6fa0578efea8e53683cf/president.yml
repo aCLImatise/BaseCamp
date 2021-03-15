@@ -1,0 +1,108 @@
+!Command
+command:
+- president
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reference
+  description: Reference genome.
+  args: !SimpleFlagArg
+    name: REFERENCE
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --query
+  description: Query genome(s).
+  args: !RepeatFlagArg
+    name: QUERY
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --id_threshold
+  description: "ACGT nucleotide identity threshold after alignment\n(percentage).\
+    \ A query sequence is reported as valid\nbased on this threshold (def: 0.9)"
+  args: !SimpleFlagArg
+    name: ID_THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --n_threshold
+  description: "A query sequence is reported as valid, if the\npercentage of Ns is\
+    \ smaller or equal the threshold\n(def: 0.05)"
+  args: !SimpleFlagArg
+    name: N_THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: Number of threads to use for pblat.
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --path
+  description: Path to be used to store results and FASTA files.
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --prefix
+  description: Prefix to be used t store results in the path
+  args: !SimpleFlagArg
+    name: PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --store_alignment
+  description: add query alignment columns (PSL format)
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: president [-h] -r REFERENCE -q QUERY [QUERY ...] [-x ID_THRESHOLD]\n\
+  \                 [-n N_THRESHOLD] [-t THREADS] -p PATH [-f PREFIX] [-a] [-v]\n\n\
+  Calculate pairwise nucleotide identity.\n\noptional arguments:\n  -h, --help   \
+  \         show this help message and exit\n  -r REFERENCE, --reference REFERENCE\n\
+  \                        Reference genome.\n  -q QUERY [QUERY ...], --query QUERY\
+  \ [QUERY ...]\n                        Query genome(s).\n  -x ID_THRESHOLD, --id_threshold\
+  \ ID_THRESHOLD\n                        ACGT nucleotide identity threshold after\
+  \ alignment\n                        (percentage). A query sequence is reported\
+  \ as valid\n                        based on this threshold (def: 0.9)\n  -n N_THRESHOLD,\
+  \ --n_threshold N_THRESHOLD\n                        A query sequence is reported\
+  \ as valid, if the\n                        percentage of Ns is smaller or equal\
+  \ the threshold\n                        (def: 0.05)\n  -t THREADS, --threads THREADS\n\
+  \                        Number of threads to use for pblat.\n  -p PATH, --path\
+  \ PATH  Path to be used to store results and FASTA files.\n  -f PREFIX, --prefix\
+  \ PREFIX\n                        Prefix to be used t store results in the path\n\
+  \  -a, --store_alignment\n                        add query alignment columns (PSL\
+  \ format)\n  -v, --version         show program's version number and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/president:0.6.0--py_0

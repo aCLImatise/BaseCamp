@@ -1,0 +1,190 @@
+!Command
+command:
+- metaclassifier
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: SAMPLE_FILE
+  description: "Input tab-delimited file specifying sample names, file names for forward\
+    \ paired-end\nreads, and file names for reverse paired-end (file path if not in\
+    \ working directory)\nThe second file not required for single-end frangments"
+- !Positional
+  optional: false
+  position: 1
+  name: DB_DIR
+  description: "Input marker database directory with sequence fasta and corresponding\
+    \ taxonomy lineage\nfiles for each marker"
+- !Positional
+  optional: false
+  position: 2
+  name: CONFIG_FILE
+  description: "Input tab-delimited file specifying marker name, and its corresponding\
+    \ VSEARCH's\nusearch_global function minimum query coverage (i.e. 0.8 for 80%)\
+    \ and minimun sequence\nidentity (i.e. 0.95 for 95%) for each search marker (provide\
+    \ the file path if not in\nif the VSEARCH settings configuration is not in working\
+    \ directory)"
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output_dir
+  description: "Specify output directory name, otherwise it will automatically be\
+    \ created using the\ninput sample table file name"
+  args: !SimpleFlagArg
+    name: OUTPUT_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --frag_type
+  description: "Specify the sequence fragment type in the input sample file, available\
+    \ options are:\npaired: single-end read fragments (default)\nsingle: paired-end\
+    \ read fragments"
+  args: !ChoiceFlagArg
+    choices: !!set
+      paired:
+      single:
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --merge
+  description: 'Merge overlapping paired-end reads (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --tax_class
+  description: 'Taxonomy class for quantify taxon level marker read abundance (default:
+    genus)'
+  args: !ChoiceFlagArg
+    choices: !!set
+      species:
+      order:
+      genus:
+      family:
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --min_proportion
+  description: "Minimum taxon read proportion allowed to retain a sample taxon, allowed\
+    \ proportion,\nranges from 0.00 to 0.01 (default = 0.00)"
+  args: !SimpleFlagArg
+    name: MIN_PROPORTION
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --max_markers
+  description: Maximum missing markers allowed to retain a sample taxon (default =
+    0)
+  args: !SimpleFlagArg
+    name: MAX_MARKERS
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --pear_merger
+  description: "Path to PEAR, the paired-end read merger if not in environmental variables\
+    \ (ENV)\n(default: read from ENV)"
+  args: !SimpleFlagArg
+    name: PEAR_MERGER
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --seqtk_converter
+  description: "Path to seqtk, the sequence processing tool if not in environmental\
+    \ variables (ENV)\n(default: read from ENV)"
+  args: !SimpleFlagArg
+    name: SEQTK_CONVERTER
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --vsearch_aligner
+  description: "Path to VSEARCH, the sequence analysis tool if not in environmental\
+    \ variables (ENV)\n(default: read from ENV)"
+  args: !SimpleFlagArg
+    name: VSEARCH_ALIGNER
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: 'Specify the number of threads to use (default: 2)'
+  args: !SimpleFlagArg
+    name: THREADS
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: Print the current metaclassifier.py version and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: metaclassifier [-h] [-o OUTPUT_DIR] [-f {paired,single}] [-m]\n\
+  \                      [-c {order,family,genus,species}] [-p MIN_PROPORTION]\n \
+  \                     [-i MAX_MARKERS] [-r PEAR_MERGER] [-s SEQTK_CONVERTER]\n \
+  \                     [-a VSEARCH_ALIGNER] [-t THREADS] [-v]\n                 \
+  \     SAMPLE_FILE DB_DIR CONFIG_FILE\n\nThe metaclassifier.py uses DNA metabarcoding\
+  \ sequence reads and a database of marker sequences, including\ncorresponding taxonomy\
+  \ classes to identify and quantify the floral composition of honey\n\npositional\
+  \ arguments:\n  SAMPLE_FILE           Input tab-delimited file specifying sample\
+  \ names, file names for forward paired-end\n                        reads, and file\
+  \ names for reverse paired-end (file path if not in working directory)\n       \
+  \                 The second file not required for single-end frangments\n     \
+  \                   \n  DB_DIR                Input marker database directory with\
+  \ sequence fasta and corresponding taxonomy lineage\n                        files\
+  \ for each marker\n                        \n  CONFIG_FILE           Input tab-delimited\
+  \ file specifying marker name, and its corresponding VSEARCH's\n               \
+  \         usearch_global function minimum query coverage (i.e. 0.8 for 80%) and\
+  \ minimun sequence\n                        identity (i.e. 0.95 for 95%) for each\
+  \ search marker (provide the file path if not in\n                        if the\
+  \ VSEARCH settings configuration is not in working directory)\n                \
+  \        \n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  -o OUTPUT_DIR, --output_dir OUTPUT_DIR\n                        Specify\
+  \ output directory name, otherwise it will automatically be created using the\n\
+  \                        input sample table file name\n                        \n\
+  \  -f {paired,single}, --frag_type {paired,single}\n                        Specify\
+  \ the sequence fragment type in the input sample file, available options are:\n\
+  \                        paired: single-end read fragments (default)\n         \
+  \               single: paired-end read fragments\n                        \n  -m,\
+  \ --merge           Merge overlapping paired-end reads (default: False)\n      \
+  \                  \n  -c {order,family,genus,species}, --tax_class {order,family,genus,species}\n\
+  \                        Taxonomy class for quantify taxon level marker read abundance\
+  \ (default: genus)\n                        \n  -p MIN_PROPORTION, --min_proportion\
+  \ MIN_PROPORTION\n                        Minimum taxon read proportion allowed\
+  \ to retain a sample taxon, allowed proportion,\n                        ranges\
+  \ from 0.00 to 0.01 (default = 0.00)\n                        \n  -i MAX_MARKERS,\
+  \ --max_markers MAX_MARKERS\n                        Maximum missing markers allowed\
+  \ to retain a sample taxon (default = 0)\n                        \n  -r PEAR_MERGER,\
+  \ --pear_merger PEAR_MERGER\n                        Path to PEAR, the paired-end\
+  \ read merger if not in environmental variables (ENV)\n                        (default:\
+  \ read from ENV)\n                        \n  -s SEQTK_CONVERTER, --seqtk_converter\
+  \ SEQTK_CONVERTER\n                        Path to seqtk, the sequence processing\
+  \ tool if not in environmental variables (ENV)\n                        (default:\
+  \ read from ENV)\n                        \n  -a VSEARCH_ALIGNER, --vsearch_aligner\
+  \ VSEARCH_ALIGNER\n                        Path to VSEARCH, the sequence analysis\
+  \ tool if not in environmental variables (ENV)\n                        (default:\
+  \ read from ENV)\n                        \n  -t THREADS, --threads THREADS\n  \
+  \                      Specify the number of threads to use (default: 2)\n     \
+  \                   \n  -v, --version         Print the current metaclassifier.py\
+  \ version and exit\n                        \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/metaclassifier:v1.0.1--py_0

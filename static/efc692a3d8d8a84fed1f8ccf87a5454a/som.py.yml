@@ -1,0 +1,415 @@
+!Command
+command:
+- som.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: truth
+  description: Truth VCF file
+- !Positional
+  optional: false
+  position: 1
+  name: query
+  description: Query VCF file
+- !Positional
+  optional: false
+  position: 0
+  name: extraction
+  description: --normalize-truth     Enable running of bcftools norm on the truth
+    file.
+- !Positional
+  optional: false
+  position: 1
+  name: stderr
+  description: --verbose             Raise logging level from warning to info.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: "Output file prefix for statistics and feature table\n(when selected)"
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --location
+  description: Location for bcftools view (e.g. chr1)
+  args: !SimpleFlagArg
+    name: LOCATION
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  - --restrict-regions
+  description: "Restrict analysis to given (sparse) regions (using -R\nin bcftools)."
+  args: !SimpleFlagArg
+    name: REGIONS_BEDFILE
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --target-regions
+  description: "Restrict analysis to given (dense) regions (using -T\nin bcftools)."
+  args: !SimpleFlagArg
+    name: TARGETS_BEDFILE
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --false-positives
+  description: "False-positive region bed file to distinguish UNK from\nFP"
+  args: !SimpleFlagArg
+    name: FP
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --ambiguous
+  description: "Ambiguous region bed file(s) to distinguish from FP\n(e.g. variant\
+    \ only observed in some replicates)"
+  args: !SimpleFlagArg
+    name: AMBI
+- !Flag
+  optional: true
+  synonyms:
+  - --ambi-fp
+  description: Use FP calls from ambiguous region files also.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-ambi-fp
+  description: Do not use FP calls from ambiguous region files also.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --count-unk
+  description: "Assume the truth set covers the whole genome and only\ncount FPs in\
+    \ regions specified by the truth VCF or\nambiguous/false-positive regions."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-count-unk
+  description: Do not use FP calls from ambiguous region files also.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --explain_ambiguous
+  description: "print a table giving the number of ambiguous events\nper category"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reference
+  description: Specify a reference file.
+  args: !SimpleFlagArg
+    name: REF
+- !Flag
+  optional: true
+  synonyms:
+  - --scratch-prefix
+  description: Filename prefix for scratch report output.
+  args: !SimpleFlagArg
+    name: SCRATCH_PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - --keep-scratch
+  description: Filename prefix for scratch report output.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --continue
+  description: "Continue from scratch space (i.e. use VCFs in there if\nthey already\
+    \ exist)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -P
+  - --include-nonpass
+  description: Use to include failing variants in comparison.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --feature-table
+  description: Select a feature table to output.
+  args: !ChoiceFlagArg
+    choices: !!set
+      hcc.mutect.indel:
+      hcc.pisces.indel:
+      hcc.varscan2.indel:
+      hcc.strelka.indel:
+      hcc.strelka.snv:
+      admix.strelka.indel:
+      hcc.varscan2.snv:
+      hcc.pisces.snv:
+      generic:
+      hcc.mutect.snv:
+      admix.strelka.snv:
+- !Flag
+  optional: true
+  synonyms:
+  - --happy-stats
+  description: Generate summary.csv.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --bam
+  description: pass one or more BAM files for feature table
+  args: !SimpleFlagArg
+    name: BAMS
+- !Flag
+  optional: true
+  synonyms:
+  - --normalize-query
+  description: Enable running of bcftools norm on the query file.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -N
+  - --normalize-all
+  description: "Enable running of bcftools norm on both truth and\nquery file."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --fixchr-truth
+  description: 'Add chr prefix to truth file (default: true).'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --fixchr-query
+  description: 'Add chr prefix to query file (default: true).'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --fix-chr-truth
+  description: Same as --fixchr-truth.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --fix-chr-query
+  description: Same as --fixchr-query.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-fixchr-truth
+  description: 'Disable chr replacement for truth (default: false).'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-fixchr-query
+  description: 'Add chr prefix to query file (default: false).'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-order-check
+  description: "Disable checking the order of TP features (dev\nfeature)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --roc
+  description: "Create a ROC-style table. This is caller specific -\nthis will override\
+    \ the --feature-table switch!"
+  args: !ChoiceFlagArg
+    choices: !!set
+      mutect.indel:
+      strelka.snv:
+      varscan2.snv:
+      strelka.indel:
+      strelka.snv.vqsr:
+      strelka.snv.qss:
+      mutect.snv:
+      strelka.indel.evs:
+      varscan2.indel:
+- !Flag
+  optional: true
+  synonyms:
+  - --bin-afs
+  description: "Stratify into different AF buckets. This needs to have\nfeatures available\
+    \ for getting the AF both in truth\nand query variants."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --af-binsize
+  description: "Bin size for AF binning (should be < 1). Multiple bin\nsizes can be\
+    \ specified using a comma, e.g.\n0.1,0.2,0.5,0.2 will split at 0.1, 0.3, 0.8 and\
+    \ 1.0."
+  args: !SimpleFlagArg
+    name: AF_STRAT_BINSIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --af-truth
+  description: "Feature name to use for retrieving AF for truth\nvariants (TP and\
+    \ FN)"
+  args: !SimpleFlagArg
+    name: AF_STRAT_TRUTH
+- !Flag
+  optional: true
+  synonyms:
+  - --af-query
+  description: "Feature name to use for retrieving AF for query\nvariants (FP/UNK/AMBI)"
+  args: !SimpleFlagArg
+    name: AF_STRAT_QUERY
+- !Flag
+  optional: true
+  synonyms:
+  - -FN
+  - --count-filtered-fn
+  description: "Count filtered vs. absent FN numbers. This requires\nthe -P switch\
+    \ (to use all variants) and either the\n--feature-table or --roc switch."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --fp-region-size
+  description: "How to obtain the normalisation constant for FP rate.\nBy default,\
+    \ this will use the FP region bed file size\nwhen using --count-unk and the size\
+    \ of all reference\ncontigs that overlap with the location specified in -l\notherwise.\
+    \ This can be overridden with: 1) a number of\nnucleotides, or 2) \"auto\" to\
+    \ use the lengths of all\ncontigs that have calls. The resulting value is used\n\
+    as fp.region.size."
+  args: !SimpleFlagArg
+    name: FPR_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --ci-level
+  description: "Confidence level for precision/recall confidence\nintervals (default:\
+    \ 0.95)"
+  args: !SimpleFlagArg
+    name: CI_LEVEL
+- !Flag
+  optional: true
+  synonyms:
+  - --logfile
+  description: Write logging information into file rather than to
+  args: !SimpleFlagArg
+    name: LOGFILE
+- !Flag
+  optional: true
+  synonyms:
+  - --quiet
+  description: Set logging level to output errors only.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: Somatic Comparison [-h] -o OUTPUT [-l LOCATION] [-R REGIONS_BEDFILE]\n\
+  \                          [-T TARGETS_BEDFILE] [-f FP] [-a AMBI] [--ambi-fp]\n\
+  \                          [--no-ambi-fp] [--count-unk] [--no-count-unk] [-e]\n\
+  \                          [-r REF] [--scratch-prefix SCRATCH_PREFIX]\n        \
+  \                  [--keep-scratch] [--continue] [-P]\n                        \
+  \  [--feature-table {hcc.strelka.snv,hcc.pisces.snv,hcc.mutect.snv,hcc.varscan2.indel,admix.strelka.snv,generic,hcc.pisces.indel,hcc.strelka.indel,admix.strelka.indel,hcc.varscan2.snv,hcc.mutect.indel}]\n\
+  \                          [--happy-stats] [--bam BAMS] [--normalize-truth]\n  \
+  \                        [--normalize-query] [-N] [--fixchr-truth]\n           \
+  \               [--fixchr-query] [--fix-chr-truth] [--fix-chr-query]\n         \
+  \                 [--no-fixchr-truth] [--no-fixchr-query]\n                    \
+  \      [--no-order-check]\n                          [--roc {varscan2.indel,strelka.snv.qss,mutect.snv,strelka.snv,strelka.indel.evs,varscan2.snv,mutect.indel,strelka.indel,strelka.snv.vqsr}]\n\
+  \                          [--bin-afs] [--af-binsize AF_STRAT_BINSIZE]\n       \
+  \                   [--af-truth AF_STRAT_TRUTH]\n                          [--af-query\
+  \ AF_STRAT_QUERY] [-FN]\n                          [--fp-region-size FPR_SIZE] [--ci-level\
+  \ CI_LEVEL]\n                          [--logfile LOGFILE] [--verbose | --quiet]\n\
+  \                          truth query\n\npositional arguments:\n  truth       \
+  \          Truth VCF file\n  query                 Query VCF file\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -o OUTPUT, --output\
+  \ OUTPUT\n                        Output file prefix for statistics and feature\
+  \ table\n                        (when selected)\n  -l LOCATION, --location LOCATION\n\
+  \                        Location for bcftools view (e.g. chr1)\n  -R REGIONS_BEDFILE,\
+  \ --restrict-regions REGIONS_BEDFILE\n                        Restrict analysis\
+  \ to given (sparse) regions (using -R\n                        in bcftools).\n \
+  \ -T TARGETS_BEDFILE, --target-regions TARGETS_BEDFILE\n                       \
+  \ Restrict analysis to given (dense) regions (using -T\n                       \
+  \ in bcftools).\n  -f FP, --false-positives FP\n                        False-positive\
+  \ region bed file to distinguish UNK from\n                        FP\n  -a AMBI,\
+  \ --ambiguous AMBI\n                        Ambiguous region bed file(s) to distinguish\
+  \ from FP\n                        (e.g. variant only observed in some replicates)\n\
+  \  --ambi-fp             Use FP calls from ambiguous region files also.\n  --no-ambi-fp\
+  \          Do not use FP calls from ambiguous region files also.\n  --count-unk\
+  \           Assume the truth set covers the whole genome and only\n            \
+  \            count FPs in regions specified by the truth VCF or\n              \
+  \          ambiguous/false-positive regions.\n  --no-count-unk        Do not use\
+  \ FP calls from ambiguous region files also.\n  -e, --explain_ambiguous\n      \
+  \                  print a table giving the number of ambiguous events\n       \
+  \                 per category\n  -r REF, --reference REF\n                    \
+  \    Specify a reference file.\n  --scratch-prefix SCRATCH_PREFIX\n            \
+  \            Filename prefix for scratch report output.\n  --keep-scratch      \
+  \  Filename prefix for scratch report output.\n  --continue            Continue\
+  \ from scratch space (i.e. use VCFs in there if\n                        they already\
+  \ exist).\n  -P, --include-nonpass\n                        Use to include failing\
+  \ variants in comparison.\n  --feature-table {hcc.strelka.snv,hcc.pisces.snv,hcc.mutect.snv,hcc.varscan2.indel,admix.strelka.snv,generic,hcc.pisces.indel,hcc.strelka.indel,admix.strelka.indel,hcc.varscan2.snv,hcc.mutect.indel}\n\
+  \                        Select a feature table to output.\n  --happy-stats    \
+  \     Generate summary.csv.\n  --bam BAMS            pass one or more BAM files\
+  \ for feature table\n                        extraction\n  --normalize-truth   \
+  \  Enable running of bcftools norm on the truth file.\n  --normalize-query     Enable\
+  \ running of bcftools norm on the query file.\n  -N, --normalize-all   Enable running\
+  \ of bcftools norm on both truth and\n                        query file.\n  --fixchr-truth\
+  \        Add chr prefix to truth file (default: true).\n  --fixchr-query       \
+  \ Add chr prefix to query file (default: true).\n  --fix-chr-truth       Same as\
+  \ --fixchr-truth.\n  --fix-chr-query       Same as --fixchr-query.\n  --no-fixchr-truth\
+  \     Disable chr replacement for truth (default: false).\n  --no-fixchr-query \
+  \    Add chr prefix to query file (default: false).\n  --no-order-check      Disable\
+  \ checking the order of TP features (dev\n                        feature).\n  --roc\
+  \ {varscan2.indel,strelka.snv.qss,mutect.snv,strelka.snv,strelka.indel.evs,varscan2.snv,mutect.indel,strelka.indel,strelka.snv.vqsr}\n\
+  \                        Create a ROC-style table. This is caller specific -\n \
+  \                       this will override the --feature-table switch!\n  --bin-afs\
+  \             Stratify into different AF buckets. This needs to have\n         \
+  \               features available for getting the AF both in truth\n          \
+  \              and query variants.\n  --af-binsize AF_STRAT_BINSIZE\n          \
+  \              Bin size for AF binning (should be < 1). Multiple bin\n         \
+  \               sizes can be specified using a comma, e.g.\n                   \
+  \     0.1,0.2,0.5,0.2 will split at 0.1, 0.3, 0.8 and 1.0.\n  --af-truth AF_STRAT_TRUTH\n\
+  \                        Feature name to use for retrieving AF for truth\n     \
+  \                   variants (TP and FN)\n  --af-query AF_STRAT_QUERY\n        \
+  \                Feature name to use for retrieving AF for query\n             \
+  \           variants (FP/UNK/AMBI)\n  -FN, --count-filtered-fn\n               \
+  \         Count filtered vs. absent FN numbers. This requires\n                \
+  \        the -P switch (to use all variants) and either the\n                  \
+  \      --feature-table or --roc switch.\n  --fp-region-size FPR_SIZE\n         \
+  \               How to obtain the normalisation constant for FP rate.\n        \
+  \                By default, this will use the FP region bed file size\n       \
+  \                 when using --count-unk and the size of all reference\n       \
+  \                 contigs that overlap with the location specified in -l\n     \
+  \                   otherwise. This can be overridden with: 1) a number of\n   \
+  \                     nucleotides, or 2) \"auto\" to use the lengths of all\n  \
+  \                      contigs that have calls. The resulting value is used\n  \
+  \                      as fp.region.size.\n  --ci-level CI_LEVEL   Confidence level\
+  \ for precision/recall confidence\n                        intervals (default: 0.95)\n\
+  \  --logfile LOGFILE     Write logging information into file rather than to\n  \
+  \                      stderr\n  --verbose             Raise logging level from\
+  \ warning to info.\n  --quiet               Set logging level to output errors only.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/hap.py:0.3.13--py27h5c5a3ab_0

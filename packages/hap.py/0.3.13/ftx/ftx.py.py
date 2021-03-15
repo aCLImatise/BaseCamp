@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, Int, Boolean, String
+
+Ftx_Py_V0_1_0 = CommandToolBuilder(tool="ftx.py", base_command=["ftx.py"], inputs=[ToolInput(tag="in_output", input_type=File(optional=True), prefix="--output", doc=InputDocumentation(doc="Output file name. Output will be in CSV format")), ToolInput(tag="in_location", input_type=Int(optional=True), prefix="--location", doc=InputDocumentation(doc="Location for bcftools view (e.g. chr1)")), ToolInput(tag="in_restrict_regions", input_type=File(optional=True), prefix="--restrict-regions", doc=InputDocumentation(doc="Restrict analysis to given (sparse) regions (using -R\nin bcftools).")), ToolInput(tag="in_target_regions", input_type=File(optional=True), prefix="--target-regions", doc=InputDocumentation(doc="Restrict analysis to given (dense) regions (using -T\nin bcftools).")), ToolInput(tag="in_include_non_pass", input_type=Boolean(optional=True), prefix="--include-nonpass", doc=InputDocumentation(doc="Use to include failing variants in comparison.")), ToolInput(tag="in_feature_table", input_type=Int(optional=True), prefix="--feature-table", doc=InputDocumentation(doc="Select a feature table to output. Options are:\n['hcc.strelka.snv', 'hcc.pisces.snv',\n'hcc.mutect.snv', 'hcc.varscan2.indel',\n'admix.strelka.snv', 'generic', 'hcc.pisces.indel',\n'hcc.strelka.indel', 'admix.strelka.indel',\n'hcc.varscan2.snv', 'hcc.mutect.indel']")), ToolInput(tag="in_feature_label", input_type=File(optional=True), prefix="--feature-label", doc=InputDocumentation(doc="We will output a lable column, this value will go in\nthere -- default is the input filename.")), ToolInput(tag="in_bam", input_type=String(optional=True), prefix="--bam", doc=InputDocumentation(doc="pass one or more BAM files for feature table")), ToolInput(tag="in_normalize", input_type=Boolean(optional=True), prefix="--normalize", doc=InputDocumentation(doc="Enable running of bcftools norm on the input file.")), ToolInput(tag="in_fix_chr", input_type=Boolean(optional=True), prefix="--fix-chr", doc=InputDocumentation(doc="Replace numeric chromosome names in the query by\nchr*-type names\n")), ToolInput(tag="in_extraction", input_type=String(), position=0, doc=InputDocumentation(doc="-r REF, --reference REF"))], outputs=[ToolOutput(tag="out_output", output_type=File(optional=True), selector=InputSelector(input_to_select="in_output", type_hint=File()), doc=OutputDocumentation(doc="Output file name. Output will be in CSV format"))], container="quay.io/biocontainers/hap.py:0.3.13--py27h5c5a3ab_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Ftx_Py_V0_1_0().translate("wdl")
+

@@ -1,0 +1,806 @@
+!Command
+command:
+- bamsnap
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: sub-command
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -bam
+  description: '[BAM [BAM ...]]  bam or cram file(s)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -bamlist
+  description: list file with bam (or cram) file paths
+  args: !SimpleFlagArg
+    name: BAMLIST
+- !Flag
+  optional: true
+  synonyms:
+  - -title
+  description: "[TITLE [TITLE ...]]\ntitle (name) of bam (or cram) file(s)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -no_title
+  description: do not draw label.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -title_fontsize
+  description: font size of title
+  args: !SimpleFlagArg
+    name: TITLE_FONTSIZE
+- !Flag
+  optional: true
+  synonyms:
+  - -pos
+  description: '[POS [POS ...]]  genomic position (ex. 1:816687-818057, 12:7462545)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -vcf
+  description: list file with genomic positions with VCF format
+  args: !SimpleFlagArg
+    name: VCF
+- !Flag
+  optional: true
+  synonyms:
+  - -bed
+  description: list file with genomic positions with BED format
+  args: !SimpleFlagArg
+    name: BED
+- !Flag
+  optional: true
+  synonyms:
+  - -out
+  description: output file or title of output file
+  args: !SimpleFlagArg
+    name: OUT
+- !Flag
+  optional: true
+  synonyms:
+  - -imagetype
+  description: output file type
+  args: !SimpleFlagArg
+    name: IMAGETYPE
+- !Flag
+  optional: true
+  synonyms:
+  - -conf
+  description: configuration file
+  args: !SimpleFlagArg
+    name: CONF
+- !Flag
+  optional: true
+  synonyms:
+  - -ref
+  description: Reference sequence fasta file (ex. hg19.fa)
+  args: !SimpleFlagArg
+    name: REF
+- !Flag
+  optional: true
+  synonyms:
+  - -ref_index_rebuild
+  description: "if you want to rebuild fasta index file (.fai), when\nit is older\
+    \ than the fasta file. (Default: false)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -refversion
+  description: 'Reference version (default: hg38)'
+  args: !SimpleFlagArg
+    name: REFVERSION
+- !Flag
+  optional: true
+  synonyms:
+  - -margin
+  description: genomic margin size
+  args: !SimpleFlagArg
+    name: MARGIN
+- !Flag
+  optional: true
+  synonyms:
+  - -save_image_only
+  description: save image only
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -image_dir_name
+  description: image directory name
+  args: !SimpleFlagArg
+    name: IMAGE_DIR_NAME
+- !Flag
+  optional: true
+  synonyms:
+  - -zipout
+  description: make a single zip file
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -separator_height
+  description: separator's height
+  args: !SimpleFlagArg
+    name: SEPARATOR_HEIGHT
+- !Flag
+  optional: true
+  synonyms:
+  - -process
+  description: 'number of process for multi-processing (default: 1)'
+  args: !SimpleFlagArg
+    name: PROCESS
+- !Flag
+  optional: true
+  synonyms:
+  - -draw
+  description: "[DRAW [DRAW ...]]\ntrack composition (default: -draw coordinates bamplot\n\
+    base gene)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -bamplot
+  description: "[BAMPLOT [BAMPLOT ...]]\ntrack composition of bamplot (default: -bamplot\n\
+    coverage base read)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -width
+  description: 'image width (unit:px, default: 1000)'
+  args: !SimpleFlagArg
+    name: WIDTH
+- !Flag
+  optional: true
+  synonyms:
+  - -height
+  description: image height (unit:px)
+  args: !SimpleFlagArg
+    name: HEIGHT
+- !Flag
+  optional: true
+  synonyms:
+  - -bgcolor
+  description: 'background color (default: FFFFFF)'
+  args: !SimpleFlagArg
+    name: BGCOLOR
+- !Flag
+  optional: true
+  synonyms:
+  - -plot_margin_top
+  description: 'top margin size of plot (default: 20)'
+  args: !SimpleFlagArg
+    name: PLOT_MARGIN_TOP
+- !Flag
+  optional: true
+  synonyms:
+  - -plot_margin_bottom
+  description: 'bottom margin size of plot (default: 20)'
+  args: !SimpleFlagArg
+    name: PLOT_MARGIN_BOTTOM
+- !Flag
+  optional: true
+  synonyms:
+  - -plot_margin_left
+  description: 'left margin size of plot (default: 0)'
+  args: !SimpleFlagArg
+    name: PLOT_MARGIN_LEFT
+- !Flag
+  optional: true
+  synonyms:
+  - -plot_margin_right
+  description: 'right margin size of plot (default: 0)'
+  args: !SimpleFlagArg
+    name: PLOT_MARGIN_RIGHT
+- !Flag
+  optional: true
+  synonyms:
+  - -border
+  description: 'draw border in plot (default: false)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -grid
+  description: 'draw grid in plot (default: 0 (grid size))'
+  args: !SimpleFlagArg
+    name: GRID
+- !Flag
+  optional: true
+  synonyms:
+  - -read_thickness
+  description: read thickness (unit:px)
+  args: !SimpleFlagArg
+    name: READ_THICKNESS
+- !Flag
+  optional: true
+  synonyms:
+  - -read_gap_height
+  description: read gap height (unit:px)
+  args: !SimpleFlagArg
+    name: READ_GAP_HEIGHT
+- !Flag
+  optional: true
+  synonyms:
+  - -read_gap_width
+  description: min size of read gap width (unit:px)
+  args: !SimpleFlagArg
+    name: READ_GAP_WIDTH
+- !Flag
+  optional: true
+  synonyms:
+  - -read_bgcolor
+  description: read background color
+  args: !SimpleFlagArg
+    name: READ_BGCOLOR
+- !Flag
+  optional: true
+  synonyms:
+  - -read_color
+  description: read color
+  args: !SimpleFlagArg
+    name: READ_COLOR
+- !Flag
+  optional: true
+  synonyms:
+  - -read_pos_color
+  description: positive strand read color
+  args: !SimpleFlagArg
+    name: READ_POS_COLOR
+- !Flag
+  optional: true
+  synonyms:
+  - -read_neg_color
+  description: negative strand read color
+  args: !SimpleFlagArg
+    name: READ_NEG_COLOR
+- !Flag
+  optional: true
+  synonyms:
+  - -read_color_deletion
+  description: read color of deletion
+  args: !SimpleFlagArg
+    name: READ_COLOR_DELETION
+- !Flag
+  optional: true
+  synonyms:
+  - -read_color_inversion
+  description: read color of inversion
+  args: !SimpleFlagArg
+    name: READ_COLOR_INVERSION
+- !Flag
+  optional: true
+  synonyms:
+  - -insert_size_del_threshold
+  description: 'insert size threshold for deletion (default: 1000)'
+  args: !SimpleFlagArg
+    name: INSERT_SIZE_DEL_THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - -insert_size_ins_threshold
+  description: 'insert size threshold for insertion (default: 50)'
+  args: !SimpleFlagArg
+    name: INSERT_SIZE_INS_THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - -read_group
+  description: read group
+  args: !SimpleFlagArg
+    name: READ_GROUP
+- !Flag
+  optional: true
+  synonyms:
+  - -read_color_by
+  description: read color by
+  args: !SimpleFlagArg
+    name: READ_COLOR_BY
+- !Flag
+  optional: true
+  synonyms:
+  - -read_color_interchrom_chr1
+  description: paired read color located in chromosome 1
+  args: !SimpleFlagArg
+    name: READ_COLOR_INTERCHROM_CHR1
+- !Flag
+  optional: true
+  synonyms:
+  - -read_color_interchrom_chr2
+  description: paired read color located in chromosome 2
+  args: !SimpleFlagArg
+    name: READ_COLOR_INTERCHROM_CHR2
+- !Flag
+  optional: true
+  synonyms:
+  - -read_color_interchrom_chr3
+  description: paired read color located in chromosome 3
+  args: !SimpleFlagArg
+    name: READ_COLOR_INTERCHROM_CHR3
+- !Flag
+  optional: true
+  synonyms:
+  - -read_color_interchrom_chr4
+  description: paired read color located in chromosome 4
+  args: !SimpleFlagArg
+    name: READ_COLOR_INTERCHROM_CHR4
+- !Flag
+  optional: true
+  synonyms:
+  - -read_color_interchrom_chr5
+  description: paired read color located in chromosome 5
+  args: !SimpleFlagArg
+    name: READ_COLOR_INTERCHROM_CHR5
+- !Flag
+  optional: true
+  synonyms:
+  - -read_color_interchrom_chr6
+  description: paired read color located in chromosome 6
+  args: !SimpleFlagArg
+    name: READ_COLOR_INTERCHROM_CHR6
+- !Flag
+  optional: true
+  synonyms:
+  - -read_color_interchrom_chr7
+  description: paired read color located in chromosome 7
+  args: !SimpleFlagArg
+    name: READ_COLOR_INTERCHROM_CHR7
+- !Flag
+  optional: true
+  synonyms:
+  - -read_color_interchrom_chr8
+  description: paired read color located in chromosome 8
+  args: !SimpleFlagArg
+    name: READ_COLOR_INTERCHROM_CHR8
+- !Flag
+  optional: true
+  synonyms:
+  - -read_color_interchrom_chr9
+  description: paired read color located in chromosome 9
+  args: !SimpleFlagArg
+    name: READ_COLOR_INTERCHROM_CHR9
+- !Flag
+  optional: true
+  synonyms:
+  - -read_color_interchrom_chr10
+  description: paired read color located in chromosome 10
+  args: !SimpleFlagArg
+    name: READ_COLOR_INTERCHROM_CHR10
+- !Flag
+  optional: true
+  synonyms:
+  - -read_color_interchrom_chr11
+  description: paired read color located in chromosome 11
+  args: !SimpleFlagArg
+    name: READ_COLOR_INTERCHROM_CHR11
+- !Flag
+  optional: true
+  synonyms:
+  - -read_color_interchrom_chr12
+  description: paired read color located in chromosome 12
+  args: !SimpleFlagArg
+    name: READ_COLOR_INTERCHROM_CHR12
+- !Flag
+  optional: true
+  synonyms:
+  - -read_color_interchrom_chr13
+  description: paired read color located in chromosome 13
+  args: !SimpleFlagArg
+    name: READ_COLOR_INTERCHROM_CHR13
+- !Flag
+  optional: true
+  synonyms:
+  - -read_color_interchrom_chr14
+  description: paired read color located in chromosome 14
+  args: !SimpleFlagArg
+    name: READ_COLOR_INTERCHROM_CHR14
+- !Flag
+  optional: true
+  synonyms:
+  - -read_color_interchrom_chr15
+  description: paired read color located in chromosome 15
+  args: !SimpleFlagArg
+    name: READ_COLOR_INTERCHROM_CHR15
+- !Flag
+  optional: true
+  synonyms:
+  - -read_color_interchrom_chr16
+  description: paired read color located in chromosome 16
+  args: !SimpleFlagArg
+    name: READ_COLOR_INTERCHROM_CHR16
+- !Flag
+  optional: true
+  synonyms:
+  - -read_color_interchrom_chr17
+  description: paired read color located in chromosome 17
+  args: !SimpleFlagArg
+    name: READ_COLOR_INTERCHROM_CHR17
+- !Flag
+  optional: true
+  synonyms:
+  - -read_color_interchrom_chr18
+  description: paired read color located in chromosome 18
+  args: !SimpleFlagArg
+    name: READ_COLOR_INTERCHROM_CHR18
+- !Flag
+  optional: true
+  synonyms:
+  - -read_color_interchrom_chr19
+  description: paired read color located in chromosome 19
+  args: !SimpleFlagArg
+    name: READ_COLOR_INTERCHROM_CHR19
+- !Flag
+  optional: true
+  synonyms:
+  - -read_color_interchrom_chr20
+  description: paired read color located in chromosome 20
+  args: !SimpleFlagArg
+    name: READ_COLOR_INTERCHROM_CHR20
+- !Flag
+  optional: true
+  synonyms:
+  - -read_color_interchrom_chr21
+  description: paired read color located in chromosome 21
+  args: !SimpleFlagArg
+    name: READ_COLOR_INTERCHROM_CHR21
+- !Flag
+  optional: true
+  synonyms:
+  - -read_color_interchrom_chr22
+  description: paired read color located in chromosome 22
+  args: !SimpleFlagArg
+    name: READ_COLOR_INTERCHROM_CHR22
+- !Flag
+  optional: true
+  synonyms:
+  - -read_color_interchrom_chrX
+  description: paired read color located in chromosome X
+  args: !SimpleFlagArg
+    name: READ_COLOR_INTERCHROM_CHRX
+- !Flag
+  optional: true
+  synonyms:
+  - -read_color_interchrom_chrY
+  description: paired read color located in chromosome Y
+  args: !SimpleFlagArg
+    name: READ_COLOR_INTERCHROM_CHRY
+- !Flag
+  optional: true
+  synonyms:
+  - -read_color_interchrom_other
+  description: paired read color located in other chromosome
+  args: !SimpleFlagArg
+    name: READ_COLOR_INTERCHROM_OTHER
+- !Flag
+  optional: true
+  synonyms:
+  - -show_soft_clipped
+  description: 'show soft clipped part (default: false)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -show_hard_clipped
+  description: 'show hard clipped part (default: false)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -show_clipped
+  description: 'show soft and hard clipped part (default: false)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -center_line
+  description: draw center line
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -no_target_line
+  description: do not draw target line
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -base_fontsize
+  description: font size of base track
+  args: !SimpleFlagArg
+    name: BASE_FONTSIZE
+- !Flag
+  optional: true
+  synonyms:
+  - -base_height
+  description: base track height
+  args: !SimpleFlagArg
+    name: BASE_HEIGHT
+- !Flag
+  optional: true
+  synonyms:
+  - -base_margin_top
+  description: top margin size of base track
+  args: !SimpleFlagArg
+    name: BASE_MARGIN_TOP
+- !Flag
+  optional: true
+  synonyms:
+  - -base_margin_bottom
+  description: bottom margin size of base track
+  args: !SimpleFlagArg
+    name: BASE_MARGIN_BOTTOM
+- !Flag
+  optional: true
+  synonyms:
+  - -coverage_height
+  description: coverage track height
+  args: !SimpleFlagArg
+    name: COVERAGE_HEIGHT
+- !Flag
+  optional: true
+  synonyms:
+  - -coverage_fontsize
+  description: coverage font size
+  args: !SimpleFlagArg
+    name: COVERAGE_FONTSIZE
+- !Flag
+  optional: true
+  synonyms:
+  - -coverage_vaf
+  description: "coverage variant allele fraction threshold (default:\n0.2)"
+  args: !SimpleFlagArg
+    name: COVERAGE_VAF
+- !Flag
+  optional: true
+  synonyms:
+  - -coverage_color
+  description: coverage color
+  args: !SimpleFlagArg
+    name: COVERAGE_COLOR
+- !Flag
+  optional: true
+  synonyms:
+  - -coverage_bgcolor
+  description: coverage track background color
+  args: !SimpleFlagArg
+    name: COVERAGE_BGCOLOR
+- !Flag
+  optional: true
+  synonyms:
+  - -heatmap_height
+  description: coverage heatmap height
+  args: !SimpleFlagArg
+    name: HEATMAP_HEIGHT
+- !Flag
+  optional: true
+  synonyms:
+  - -heatmap_bgcolor
+  description: coverage heatmap background color
+  args: !SimpleFlagArg
+    name: HEATMAP_BGCOLOR
+- !Flag
+  optional: true
+  synonyms:
+  - -gene_height
+  description: gene track height
+  args: !SimpleFlagArg
+    name: GENE_HEIGHT
+- !Flag
+  optional: true
+  synonyms:
+  - -gene_fontsize
+  description: font size of gene track
+  args: !SimpleFlagArg
+    name: GENE_FONTSIZE
+- !Flag
+  optional: true
+  synonyms:
+  - -gene_pos_color
+  description: positive strand color
+  args: !SimpleFlagArg
+    name: GENE_POS_COLOR
+- !Flag
+  optional: true
+  synonyms:
+  - -gene_neg_color
+  description: negative strand color
+  args: !SimpleFlagArg
+    name: GENE_NEG_COLOR
+- !Flag
+  optional: true
+  synonyms:
+  - -coordinates_height
+  description: coordinate height
+  args: !SimpleFlagArg
+    name: COORDINATES_HEIGHT
+- !Flag
+  optional: true
+  synonyms:
+  - -coordinates_fontsize
+  description: coordinate font size
+  args: !SimpleFlagArg
+    name: COORDINATES_FONTSIZE
+- !Flag
+  optional: true
+  synonyms:
+  - -coordinates_axisloc
+  description: coordinate axis location
+  args: !SimpleFlagArg
+    name: COORDINATES_AXISLOC
+- !Flag
+  optional: true
+  synonyms:
+  - -coordinates_bgcolor
+  description: coordinate background color
+  args: !SimpleFlagArg
+    name: COORDINATES_BGCOLOR
+- !Flag
+  optional: true
+  synonyms:
+  - -coordinates_labelcolor
+  description: coordinate label color
+  args: !SimpleFlagArg
+    name: COORDINATES_LABELCOLOR
+- !Flag
+  optional: true
+  synonyms:
+  - -separated_bam
+  description: draw a plot for each bam
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -debug
+  description: turn on the debugging mode
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -silence
+  description: don't print any log.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: bamsnap <sub-command> [options]\n\nbamsnap ver0.2.19 (2021-03-02):\
+  \ convert bam (or cram) to image\n\noptional arguments:\n  -h, --help          \
+  \  show this help message and exit\n  -v, --version         show program's version\
+  \ number and exit\n  -bam [BAM [BAM ...]]  bam or cram file(s)\n  -bamlist BAMLIST\
+  \      list file with bam (or cram) file paths\n  -title [TITLE [TITLE ...]]\n \
+  \                       title (name) of bam (or cram) file(s)\n  -no_title     \
+  \        do not draw label.\n  -title_fontsize TITLE_FONTSIZE\n                \
+  \        font size of title\n  -pos [POS [POS ...]]  genomic position (ex. 1:816687-818057,\
+  \ 12:7462545)\n  -vcf VCF              list file with genomic positions with VCF\
+  \ format\n  -bed BED              list file with genomic positions with BED format\n\
+  \  -out OUT              output file or title of output file\n  -imagetype IMAGETYPE\
+  \  output file type\n  -conf CONF            configuration file\n  -ref REF    \
+  \          Reference sequence fasta file (ex. hg19.fa)\n  -ref_index_rebuild   \
+  \ if you want to rebuild fasta index file (.fai), when\n                       \
+  \ it is older than the fasta file. (Default: false)\n  -refversion REFVERSION\n\
+  \                        Reference version (default: hg38)\n  -margin MARGIN   \
+  \     genomic margin size\n  -save_image_only      save image only\n  -image_dir_name\
+  \ IMAGE_DIR_NAME\n                        image directory name\n  -zipout      \
+  \         make a single zip file\n  -separator_height SEPARATOR_HEIGHT\n       \
+  \                 separator's height\n  -process PROCESS      number of process\
+  \ for multi-processing (default: 1)\n  -draw [DRAW [DRAW ...]]\n               \
+  \         track composition (default: -draw coordinates bamplot\n              \
+  \          base gene)\n  -bamplot [BAMPLOT [BAMPLOT ...]]\n                    \
+  \    track composition of bamplot (default: -bamplot\n                        coverage\
+  \ base read)\n  -width WIDTH          image width (unit:px, default: 1000)\n  -height\
+  \ HEIGHT        image height (unit:px)\n  -bgcolor BGCOLOR      background color\
+  \ (default: FFFFFF)\n  -plot_margin_top PLOT_MARGIN_TOP\n                      \
+  \  top margin size of plot (default: 20)\n  -plot_margin_bottom PLOT_MARGIN_BOTTOM\n\
+  \                        bottom margin size of plot (default: 20)\n  -plot_margin_left\
+  \ PLOT_MARGIN_LEFT\n                        left margin size of plot (default: 0)\n\
+  \  -plot_margin_right PLOT_MARGIN_RIGHT\n                        right margin size\
+  \ of plot (default: 0)\n  -border               draw border in plot (default: false)\n\
+  \  -grid GRID            draw grid in plot (default: 0 (grid size))\n  -read_thickness\
+  \ READ_THICKNESS\n                        read thickness (unit:px)\n  -read_gap_height\
+  \ READ_GAP_HEIGHT\n                        read gap height (unit:px)\n  -read_gap_width\
+  \ READ_GAP_WIDTH\n                        min size of read gap width (unit:px)\n\
+  \  -read_bgcolor READ_BGCOLOR\n                        read background color\n \
+  \ -read_color READ_COLOR\n                        read color\n  -read_pos_color\
+  \ READ_POS_COLOR\n                        positive strand read color\n  -read_neg_color\
+  \ READ_NEG_COLOR\n                        negative strand read color\n  -read_color_deletion\
+  \ READ_COLOR_DELETION\n                        read color of deletion\n  -read_color_inversion\
+  \ READ_COLOR_INVERSION\n                        read color of inversion\n  -insert_size_del_threshold\
+  \ INSERT_SIZE_DEL_THRESHOLD\n                        insert size threshold for deletion\
+  \ (default: 1000)\n  -insert_size_ins_threshold INSERT_SIZE_INS_THRESHOLD\n    \
+  \                    insert size threshold for insertion (default: 50)\n  -read_group\
+  \ READ_GROUP\n                        read group\n  -read_color_by READ_COLOR_BY\n\
+  \                        read color by\n  -read_color_interchrom_chr1 READ_COLOR_INTERCHROM_CHR1\n\
+  \                        paired read color located in chromosome 1\n  -read_color_interchrom_chr2\
+  \ READ_COLOR_INTERCHROM_CHR2\n                        paired read color located\
+  \ in chromosome 2\n  -read_color_interchrom_chr3 READ_COLOR_INTERCHROM_CHR3\n  \
+  \                      paired read color located in chromosome 3\n  -read_color_interchrom_chr4\
+  \ READ_COLOR_INTERCHROM_CHR4\n                        paired read color located\
+  \ in chromosome 4\n  -read_color_interchrom_chr5 READ_COLOR_INTERCHROM_CHR5\n  \
+  \                      paired read color located in chromosome 5\n  -read_color_interchrom_chr6\
+  \ READ_COLOR_INTERCHROM_CHR6\n                        paired read color located\
+  \ in chromosome 6\n  -read_color_interchrom_chr7 READ_COLOR_INTERCHROM_CHR7\n  \
+  \                      paired read color located in chromosome 7\n  -read_color_interchrom_chr8\
+  \ READ_COLOR_INTERCHROM_CHR8\n                        paired read color located\
+  \ in chromosome 8\n  -read_color_interchrom_chr9 READ_COLOR_INTERCHROM_CHR9\n  \
+  \                      paired read color located in chromosome 9\n  -read_color_interchrom_chr10\
+  \ READ_COLOR_INTERCHROM_CHR10\n                        paired read color located\
+  \ in chromosome 10\n  -read_color_interchrom_chr11 READ_COLOR_INTERCHROM_CHR11\n\
+  \                        paired read color located in chromosome 11\n  -read_color_interchrom_chr12\
+  \ READ_COLOR_INTERCHROM_CHR12\n                        paired read color located\
+  \ in chromosome 12\n  -read_color_interchrom_chr13 READ_COLOR_INTERCHROM_CHR13\n\
+  \                        paired read color located in chromosome 13\n  -read_color_interchrom_chr14\
+  \ READ_COLOR_INTERCHROM_CHR14\n                        paired read color located\
+  \ in chromosome 14\n  -read_color_interchrom_chr15 READ_COLOR_INTERCHROM_CHR15\n\
+  \                        paired read color located in chromosome 15\n  -read_color_interchrom_chr16\
+  \ READ_COLOR_INTERCHROM_CHR16\n                        paired read color located\
+  \ in chromosome 16\n  -read_color_interchrom_chr17 READ_COLOR_INTERCHROM_CHR17\n\
+  \                        paired read color located in chromosome 17\n  -read_color_interchrom_chr18\
+  \ READ_COLOR_INTERCHROM_CHR18\n                        paired read color located\
+  \ in chromosome 18\n  -read_color_interchrom_chr19 READ_COLOR_INTERCHROM_CHR19\n\
+  \                        paired read color located in chromosome 19\n  -read_color_interchrom_chr20\
+  \ READ_COLOR_INTERCHROM_CHR20\n                        paired read color located\
+  \ in chromosome 20\n  -read_color_interchrom_chr21 READ_COLOR_INTERCHROM_CHR21\n\
+  \                        paired read color located in chromosome 21\n  -read_color_interchrom_chr22\
+  \ READ_COLOR_INTERCHROM_CHR22\n                        paired read color located\
+  \ in chromosome 22\n  -read_color_interchrom_chrX READ_COLOR_INTERCHROM_CHRX\n \
+  \                       paired read color located in chromosome X\n  -read_color_interchrom_chrY\
+  \ READ_COLOR_INTERCHROM_CHRY\n                        paired read color located\
+  \ in chromosome Y\n  -read_color_interchrom_other READ_COLOR_INTERCHROM_OTHER\n\
+  \                        paired read color located in other chromosome\n  -show_soft_clipped\
+  \    show soft clipped part (default: false)\n  -show_hard_clipped    show hard\
+  \ clipped part (default: false)\n  -show_clipped         show soft and hard clipped\
+  \ part (default: false)\n  -center_line          draw center line\n  -no_target_line\
+  \       do not draw target line\n  -base_fontsize BASE_FONTSIZE\n              \
+  \          font size of base track\n  -base_height BASE_HEIGHT\n               \
+  \         base track height\n  -base_margin_top BASE_MARGIN_TOP\n              \
+  \          top margin size of base track\n  -base_margin_bottom BASE_MARGIN_BOTTOM\n\
+  \                        bottom margin size of base track\n  -coverage_height COVERAGE_HEIGHT\n\
+  \                        coverage track height\n  -coverage_fontsize COVERAGE_FONTSIZE\n\
+  \                        coverage font size\n  -coverage_vaf COVERAGE_VAF\n    \
+  \                    coverage variant allele fraction threshold (default:\n    \
+  \                    0.2)\n  -coverage_color COVERAGE_COLOR\n                  \
+  \      coverage color\n  -coverage_bgcolor COVERAGE_BGCOLOR\n                  \
+  \      coverage track background color\n  -heatmap_height HEATMAP_HEIGHT\n     \
+  \                   coverage heatmap height\n  -heatmap_bgcolor HEATMAP_BGCOLOR\n\
+  \                        coverage heatmap background color\n  -gene_height GENE_HEIGHT\n\
+  \                        gene track height\n  -gene_fontsize GENE_FONTSIZE\n   \
+  \                     font size of gene track\n  -gene_pos_color GENE_POS_COLOR\n\
+  \                        positive strand color\n  -gene_neg_color GENE_NEG_COLOR\n\
+  \                        negative strand color\n  -coordinates_height COORDINATES_HEIGHT\n\
+  \                        coordinate height\n  -coordinates_fontsize COORDINATES_FONTSIZE\n\
+  \                        coordinate font size\n  -coordinates_axisloc COORDINATES_AXISLOC\n\
+  \                        coordinate axis location\n  -coordinates_bgcolor COORDINATES_BGCOLOR\n\
+  \                        coordinate background color\n  -coordinates_labelcolor\
+  \ COORDINATES_LABELCOLOR\n                        coordinate label color\n  -separated_bam\
+  \        draw a plot for each bam\n  -debug                turn on the debugging\
+  \ mode\n  -silence              don't print any log.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bamsnap:0.2.19--py_0

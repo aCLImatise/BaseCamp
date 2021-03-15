@@ -1,0 +1,153 @@
+!Command
+command:
+- meryl-lookup
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: speed.
+  description: If the lookup table requires more memory than allowed, the program
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -sequence
+  description: '[<input2.fasta>] \'
+  args: !SimpleFlagArg
+    name: input1.fasta
+- !Flag
+  optional: true
+  synonyms:
+  - -output
+  description: <output1>      [<output2>]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -min
+  description: m    Ignore kmers with value below m
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -max
+  description: m    Ignore kmers with value above m
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -threads
+  description: Number of threads to use when constructing lookup table.
+  args: !SimpleFlagArg
+    name: t
+- !Flag
+  optional: true
+  synonyms:
+  - -memory
+  description: Don't use more than m GB memory
+  args: !SimpleFlagArg
+    name: m
+- !Flag
+  optional: true
+  synonyms:
+  - -existence
+  description: "Report a tab-delimited line for each sequence showing the number of\
+    \ kmers\nin the sequence, in the database, and in both.\nMultiple input -mers\
+    \ may be supplied.  If no output is supplied, output is written\nto stdout.\n\
+    output:  seqName <tab> mersInSeq <tab> mersInDB1 <tab> mersInSeq&DB1 [ <tab> mersInDB2\
+    \ <tab> mersInSeq&DB2 ... ]\nseqName      - name of the sequence\nmersInSeq  \
+    \  - number of mers in the sequence\nmersInDB     - number of mers in the meryl\
+    \ database\nmersInSeq&DB - number of mers in the sequence that are\nalso in the\
+    \ database"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -dump
+  description: "Report a tab-delimited line reporting each kmer in the input sequences,\
+    \ in\norder, annotated with the value of the kmer in the input database.  If the\
+    \ kmer\ndoes not exist in the database its value will be reported as zero.\nOnly\
+    \ one input may be supplied.  If no output is supplied, output is written\nto\
+    \ stdout.\noutput:  seqName <tab> seqId <tab> seqPos <tab> exists <tab> fwd-mer\
+    \ <tab> fwd-val <tab> rev-mer <tab> rev-val\nseqName    - name of the sequence\
+    \ this kmer is from\nseqId      - numeric version of the seqName (0-based)\nseqPos\
+    \     - start position (0-based) of the kmer in the sequence\nexists     - 'T'\
+    \ if the kmer exists in the database, 'F' if it does not\nfwd-mer    - forward\
+    \ mer sequence\nfwd-val    - value of the forward mer in the database\nrev-mer\
+    \    - reverse mer sequence\nrev-val    - value of the reverse mer in the database"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -include
+  - -exclude
+  description: "Extract sequences containing (-include) or not containing (-exclude)\
+    \ kmers in\nany input database.  Output sequences are written in the same format\
+    \ as the input\nsequences, with the number of kmers found added to the name.\n\
+    If two input files are supplied, the corresponding sequences are treated as a\
+    \ pair,\nand two output files MUST be supplied.\noutput:  sequence given format\
+    \ (fasta or fastq) with the number of overlapping kmers appended\nif pairs of\
+    \ sequences are given, R1 will be stdout and R2 be named as <output.r2>\n<output.r2>\
+    \ will be automatically compressed if ends with .gz, .bz2, or xs\nseqName    -\
+    \ name of the sequence this kmer is from\nmersInBoth - number of mers in both\
+    \ sequence and in the database"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "usage: meryl-lookup <report-type> \\\n        [-estimate] \\\n       \
+  \  -sequence <input1.fasta> [<input2.fasta>] \\\n         -output   <output1>  \
+  \    [<output2>]\n         -mers     <input1.meryl> [<input2.meryl>] [...] \\\n\
+  \         -labels   <input1name>   [<input2name>]   [...]\n  Query the kmers in\
+  \ meryl database(s) <input.meryl> with the sequences\n  in <input.fasta>.\n\n  Multiple\
+  \ databases are supported.\n\n  Up to two input sequences are supported (only for\
+  \ -include / -exclude).\n\n  Input files can be FASTA or FASTQ; uncompressed, gz,\
+  \ bz2 or xz compressed\n\n  Output from each input is sent to the associated output\
+  \ file.  Files will be\n  compressed if the appropriate extension is supplied (gz,\
+  \ bz2 or xz).\n\n  Each input database can be filtered by value.  More advanced\
+  \ filtering\n  requires a new database to be constructed using meryl.\n    -min\
+  \   m    Ignore kmers with value below m\n    -max   m    Ignore kmers with value\
+  \ above m\n    -threads t  Number of threads to use when constructing lookup table.\n\
+  \n  Memory usage can be limited, within reason, by sacrificing kmer lookup\n  speed.\
+  \  If the lookup table requires more memory than allowed, the program\n  exits with\
+  \ an error.\n    -memory m   Don't use more than m GB memory\n\n  If -estimate is\
+  \ supplied, processing will stop after a (quick) estimate\n  of memory needed to\
+  \ load the databases is written to stdout.\n\n\n  Exactly one report type must be\
+  \ specified.\n\n  -existence    Report a tab-delimited line for each sequence showing\
+  \ the number of kmers\n    in the sequence, in the database, and in both.\n\n  \
+  \  Multiple input -mers may be supplied.  If no output is supplied, output is written\n\
+  \    to stdout.\n\n    output:  seqName <tab> mersInSeq <tab> mersInDB1 <tab> mersInSeq&DB1\
+  \ [ <tab> mersInDB2 <tab> mersInSeq&DB2 ... ]\n      seqName      - name of the\
+  \ sequence\n      mersInSeq    - number of mers in the sequence\n      mersInDB\
+  \     - number of mers in the meryl database\n      mersInSeq&DB - number of mers\
+  \ in the sequence that are\n                     also in the database\n\n\n  -dump\n\
+  \    Report a tab-delimited line reporting each kmer in the input sequences, in\n\
+  \    order, annotated with the value of the kmer in the input database.  If the\
+  \ kmer\n    does not exist in the database its value will be reported as zero.\n\
+  \n    Only one input may be supplied.  If no output is supplied, output is written\n\
+  \    to stdout.\n\n    output:  seqName <tab> seqId <tab> seqPos <tab> exists <tab>\
+  \ fwd-mer <tab> fwd-val <tab> rev-mer <tab> rev-val\n      seqName    - name of\
+  \ the sequence this kmer is from\n      seqId      - numeric version of the seqName\
+  \ (0-based)\n      seqPos     - start position (0-based) of the kmer in the sequence\n\
+  \      exists     - 'T' if the kmer exists in the database, 'F' if it does not\n\
+  \      fwd-mer    - forward mer sequence\n      fwd-val    - value of the forward\
+  \ mer in the database\n      rev-mer    - reverse mer sequence\n      rev-val  \
+  \  - value of the reverse mer in the database\n\n\n  -include / -exclude\n    Extract\
+  \ sequences containing (-include) or not containing (-exclude) kmers in\n    any\
+  \ input database.  Output sequences are written in the same format as the input\n\
+  \    sequences, with the number of kmers found added to the name.\n\n    If two\
+  \ input files are supplied, the corresponding sequences are treated as a pair,\n\
+  \    and two output files MUST be supplied.\n\n    output:  sequence given format\
+  \ (fasta or fastq) with the number of overlapping kmers appended\n             if\
+  \ pairs of sequences are given, R1 will be stdout and R2 be named as <output.r2>\n\
+  \              <output.r2> will be automatically compressed if ends with .gz, .bz2,\
+  \ or xs\n      seqName    - name of the sequence this kmer is from\n      mersInBoth\
+  \ - number of mers in both sequence and in the database\n\nUnknown option '--help'.\n\
+  No input sequences (-sequence) supplied.\nNo query meryl database (-mers) supplied.\n\
+  No report-type (-existence, etc) supplied.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/meryl:1.2--he1b5a44_0

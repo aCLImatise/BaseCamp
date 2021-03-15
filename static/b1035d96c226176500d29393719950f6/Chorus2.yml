@@ -1,0 +1,165 @@
+!Command
+command:
+- Chorus2
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --jellyfish
+  description: The path where Jellyfish software installed
+  args: !SimpleFlagArg
+    name: JELLYFISH
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --bwa
+  description: The path where BWA software installed
+  args: !SimpleFlagArg
+    name: BWA
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --genome
+  description: "Fasta format genome file, should include all sequences\nfrom genome"
+  args: !SimpleFlagArg
+    name: GENOME
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  description: "Fasta format input file, can be whole genome, a\nchromosome or one\
+    \ region from genome"
+  args: !SimpleFlagArg
+    name: INPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --save
+  description: The output folder for saving results
+  args: !SimpleFlagArg
+    name: SAVED
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --primer
+  description: "A specific 5' labeled R primer for PCR reaction. For\nexample: CGTGGTCGCGTCTCA.\
+    \ (Default is none)"
+  args: !SimpleFlagArg
+    name: PRIMER
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: 'Number of threads or CPUs to use. (Default: 1)'
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --length
+  description: 'The probe length. (Default: 45)'
+  args: !SimpleFlagArg
+    name: LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - --homology
+  description: "The maximum homology(%) between target sequence and\nprobe, range\
+    \ from 50 to 100. (Default: 75)"
+  args: !SimpleFlagArg
+    name: HOMOLOGY
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --dtm
+  description: "The minimum value of dTm (hybrid Tm - hairpin Tm),\nrange from 0 to\
+    \ 37. (Default: 10)"
+  args: !SimpleFlagArg
+    name: DTM
+- !Flag
+  optional: true
+  synonyms:
+  - --skipdtm
+  description: skip calculate dtm, for oligo longer than 50.
+  args: !SimpleFlagArg
+    name: SKIPDTM
+- !Flag
+  optional: true
+  synonyms:
+  - --step
+  description: "The step length for k-mer searching in a sliding\nwindow, step length>=1.\
+    \ (Default: 5)"
+  args: !SimpleFlagArg
+    name: STEP
+- !Flag
+  optional: true
+  synonyms:
+  - --docker
+  description: Only used in Docker version of Chorus
+  args: !SimpleFlagArg
+    name: DOCKER
+- !Flag
+  optional: true
+  synonyms:
+  - --ploidy
+  description: "The ploidy of the given genome (test version).\n(Default: 2)"
+  args: !SimpleFlagArg
+    name: PLOIDY
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: Chorus2 [-h] [--version] [-j JELLYFISH] [-b BWA] -g GENOME -i INPUT\n\
+  \               [-s SAVED] [-p PRIMER] [-t THREADS] [-l LENGTH]\n              \
+  \ [--homology HOMOLOGY] [-d DTM] [--skipdtm SKIPDTM]\n               [--step STEP]\
+  \ [--docker DOCKER] [--ploidy PLOIDY]\n\nChorus2 Software for Oligo FISH probe design\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  --version             show program's version number and exit\n  -j JELLYFISH,\
+  \ --jellyfish JELLYFISH\n                        The path where Jellyfish software\
+  \ installed\n  -b BWA, --bwa BWA     The path where BWA software installed\n  -g\
+  \ GENOME, --genome GENOME\n                        Fasta format genome file, should\
+  \ include all sequences\n                        from genome\n  -i INPUT, --input\
+  \ INPUT\n                        Fasta format input file, can be whole genome, a\n\
+  \                        chromosome or one region from genome\n  -s SAVED, --save\
+  \ SAVED\n                        The output folder for saving results\n  -p PRIMER,\
+  \ --primer PRIMER\n                        A specific 5' labeled R primer for PCR\
+  \ reaction. For\n                        example: CGTGGTCGCGTCTCA. (Default is none)\n\
+  \  -t THREADS, --threads THREADS\n                        Number of threads or CPUs\
+  \ to use. (Default: 1)\n  -l LENGTH, --length LENGTH\n                        The\
+  \ probe length. (Default: 45)\n  --homology HOMOLOGY   The maximum homology(%) between\
+  \ target sequence and\n                        probe, range from 50 to 100. (Default:\
+  \ 75)\n  -d DTM, --dtm DTM     The minimum value of dTm (hybrid Tm - hairpin Tm),\n\
+  \                        range from 0 to 37. (Default: 10)\n  --skipdtm SKIPDTM\
+  \     skip calculate dtm, for oligo longer than 50.\n  --step STEP           The\
+  \ step length for k-mer searching in a sliding\n                        window,\
+  \ step length>=1. (Default: 5)\n  --docker DOCKER       Only used in Docker version\
+  \ of Chorus\n  --ploidy PLOIDY       The ploidy of the given genome (test version).\n\
+  \                        (Default: 2)\n\nExample:\n  Chorus2 -i TAIR10_chr_all.fas\
+  \ -g TAIR10_chr_all.fas -t 4 \\ \n          -j /opt/software/jellyfish/bin/jellyfish\
+  \ -b /opt/software/bwa/bwa -s sample\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/chorus2:2.01--py37hf01694f_0

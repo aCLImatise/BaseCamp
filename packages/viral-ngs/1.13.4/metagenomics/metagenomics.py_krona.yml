@@ -1,0 +1,106 @@
+!Command
+command:
+- metagenomics.py
+- krona
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: inTsv
+  description: Input tab delimited file.
+- !Positional
+  optional: false
+  position: 1
+  name: db
+  description: Krona taxonomy database directory.
+- !Positional
+  optional: false
+  position: 2
+  name: outHtml
+  description: Output html report.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --queryColumn
+  description: Column of query id. (default 2)
+  args: !SimpleFlagArg
+    name: QUERYCOLUMN
+- !Flag
+  optional: true
+  synonyms:
+  - --taxidColumn
+  description: Column of taxonomy id. (default 3)
+  args: !SimpleFlagArg
+    name: TAXIDCOLUMN
+- !Flag
+  optional: true
+  synonyms:
+  - --scoreColumn
+  description: Column of score. (default None)
+  args: !SimpleFlagArg
+    name: SCORECOLUMN
+- !Flag
+  optional: true
+  synonyms:
+  - --noHits
+  description: Include wedge for no hits.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --noRank
+  description: Include no rank assignments.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --loglevel
+  description: 'Verboseness of output. [default: DEBUG]'
+  args: !ChoiceFlagArg
+    choices: !!set
+      INFO:
+      DEBUG:
+      CRITICAL:
+      WARNING:
+      ERROR:
+      EXCEPTION:
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  - -V
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: metagenomics.py subcommand krona [-h] [--queryColumn QUERYCOLUMN]\n\
+  \                                        [--taxidColumn TAXIDCOLUMN]\n         \
+  \                               [--scoreColumn SCORECOLUMN] [--noHits]\n       \
+  \                                 [--noRank]\n                                 \
+  \       [--loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}]\n           \
+  \                             [--version]\n                                    \
+  \    inTsv db outHtml\n\nCreate an interactive HTML report from a tabular metagenomic\
+  \ report\n\npositional arguments:\n  inTsv                 Input tab delimited file.\n\
+  \  db                    Krona taxonomy database directory.\n  outHtml         \
+  \      Output html report.\n\noptional arguments:\n  -h, --help            show\
+  \ this help message and exit\n  --queryColumn QUERYCOLUMN\n                    \
+  \    Column of query id. (default 2)\n  --taxidColumn TAXIDCOLUMN\n            \
+  \            Column of taxonomy id. (default 3)\n  --scoreColumn SCORECOLUMN\n \
+  \                       Column of score. (default None)\n  --noHits            \
+  \  Include wedge for no hits.\n  --noRank              Include no rank assignments.\n\
+  \  --loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}\n                  \
+  \      Verboseness of output. [default: DEBUG]\n  --version, -V         show program's\
+  \ version number and exit\n"
+generated_using:
+- --help
+docker_image:

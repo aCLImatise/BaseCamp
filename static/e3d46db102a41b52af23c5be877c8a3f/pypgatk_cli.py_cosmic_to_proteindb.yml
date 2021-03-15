@@ -1,0 +1,88 @@
+!Command
+command:
+- pypgatk_cli.py
+- cosmic-to-proteindb
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: pipelines
+  description: -in, --input_mutation TEXT    Cosmic Mutation data file
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --config_file
+  description: Configuration file for the cosmic data
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -fa
+  - --input_genes
+  description: All Cosmic genes
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -out
+  - --output_db
+  description: Protein database including all the mutations
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --filter_column
+  description: "Column in the VCF file to be used for\nfiltering or splitting mutations"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --accepted_values
+  description: "Limit mutations to values (tissue type, sample\nname, etc) considered\
+    \ for generating\nproteinDBs, by default mutations from all\nrecords are considered"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --split_by_filter_column
+  description: "Use this flag to generate a proteinDB per\ngroup as specified in the\
+    \ filter_column,\ndefault is False"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: pypgatk_cli.py cosmic-to-proteindb [OPTIONS]\n\nOptions:\n  -c,\
+  \ --config_file TEXT        Configuration file for the cosmic data\n           \
+  \                     pipelines\n\n  -in, --input_mutation TEXT    Cosmic Mutation\
+  \ data file\n  -fa, --input_genes TEXT       All Cosmic genes\n  -out, --output_db\
+  \ TEXT        Protein database including all the mutations\n  -f, --filter_column\
+  \ TEXT      Column in the VCF file to be used for\n                            \
+  \    filtering or splitting mutations\n\n  -a, --accepted_values TEXT    Limit mutations\
+  \ to values (tissue type, sample\n                                name, etc) considered\
+  \ for generating\n                                proteinDBs, by default mutations\
+  \ from all\n                                records are considered\n\n  -s, --split_by_filter_column\
+  \  Use this flag to generate a proteinDB per\n                                group\
+  \ as specified in the filter_column,\n                                default is\
+  \ False\n\n  -h, --help                    Show this message and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/pypgatk:0.0.16--py_0

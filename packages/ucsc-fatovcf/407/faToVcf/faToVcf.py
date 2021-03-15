@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, File, String
+
+Fatovcf_V0_1_0 = CommandToolBuilder(tool="faToVcf", base_command=["faToVcf"], inputs=[ToolInput(tag="in_ambiguous_ton", input_type=Boolean(optional=True), prefix="-ambiguousToN", doc=InputDocumentation(doc="Treat all IUPAC ambiguous bases (N, R, V etc) as N (no call).")), ToolInput(tag="in_exclude_file", input_type=File(optional=True), prefix="-excludeFile", doc=InputDocumentation(doc="Exclude sequences named in file which has one sequence name per line")), ToolInput(tag="in_include_ref", input_type=Boolean(optional=True), prefix="-includeRef", doc=InputDocumentation(doc="Include the reference in the genotype columns\n(default: omitted as redundant)")), ToolInput(tag="in_mask_sites", input_type=File(optional=True), prefix="-maskSites", doc=InputDocumentation(doc="Exclude variants in positions recommended for masking in file\n(typically https://github.com/W-L/ProblematicSites_SARS-CoV2/raw/master/problematic_sites_sarsCov2.vcf)")), ToolInput(tag="in_min_ac", input_type=String(optional=True), prefix="-minAc", doc=InputDocumentation(doc="Ignore alternate alleles observed fewer than N times")), ToolInput(tag="in_no_genotypes", input_type=Boolean(optional=True), prefix="-noGenotypes", doc=InputDocumentation(doc="Output 8-column VCF, without the sample genotype columns")), ToolInput(tag="in_ref", input_type=String(optional=True), prefix="-ref", doc=InputDocumentation(doc="Use seqName as the reference sequence; must be present in faFile\n(default: first sequence in faFile)")), ToolInput(tag="in_resolve_ambiguous", input_type=Boolean(optional=True), prefix="-resolveAmbiguous", doc=InputDocumentation(doc="For IUPAC ambiguous characters like R (A or G), if the character\nrepresents two bases and one is the reference base, convert it to the\nnon-reference base.  Otherwise convert it to N.")), ToolInput(tag="in_start_offset", input_type=String(optional=True), prefix="-startOffset", doc=InputDocumentation(doc="Add N bases to each position (for trimmed alignments)")), ToolInput(tag="in_vcf_chrom", input_type=String(optional=True), prefix="-vcfChrom", doc=InputDocumentation(doc="Use seqName for the CHROM column in VCF (default: ref sequence)")), ToolInput(tag="in_in_dot_fa", input_type=String(), position=0, doc=InputDocumentation(doc=""))], outputs=[], container="quay.io/biocontainers/ucsc-fatovcf:407--hd50662f_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Fatovcf_V0_1_0().translate("wdl")
+
