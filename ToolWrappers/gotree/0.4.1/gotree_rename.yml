@@ -1,0 +1,172 @@
+!Command
+command:
+- gotree
+- rename
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --length
+  description: Length of automatically generated id. Only with --auto (default 10)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --tips
+  description: true by default. To inactivate it, you must specify --tips=false .
+  args: !SimpleFlagArg
+    name: is
+- !Flag
+  optional: true
+  synonyms:
+  - --add-quotes
+  description: Add quotes arround tip/node names
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --auto
+  description: Renames automatically tips with auto generated id of length 10.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  description: Input tree (default "stdin")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --internal
+  description: Internal nodes are taken into account
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --map
+  description: Tip name map file (default "none")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: Renamed tree output file (default "stdout")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --regexp
+  description: Regexp to get matching tip/node names (default "none")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --replace
+  description: String replacement to the given regexp (default "none")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --revert
+  description: Revert orientation of map file
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --rm-quotes
+  description: Remove quotes arround tip/node names (priority over --rm-quotes)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --format
+  description: Input tree format (newick, nexus, or phyloxml) (default "newick")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --seed
+  description: 'Random Seed: -1 = nano seconds since 1970/01/01 00:00:00 (default
+    -1)'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: Number of threads (Max=2) (default 1)
+  args: !SimpleFlagArg
+    name: int
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: help for rename
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Rename nodes/tips of the input tree.\n\n* In default mode, only tips are\
+  \ renamed (--tips=true by default), \n  and a map file must be given (-m), and must\
+  \ be tab separated with columns:\n   1) Current name of the tip\n   2) Desired new\
+  \ name of the tip\n   (if --revert then it is the other way)\n\n   If a tip name\
+  \ does not appear in the map file, it will not be renamed. \n   If a name that does\
+  \ not exist appears in the map file, it will not throw an error.\n\n   Example :\n\
+  \n   MapFile :\n   A   A2\n   B   B2\n   C   C2\n\n   gotree rename -m MapFile -i\
+  \ t.nw\n\n             ------C                   ------C2\n       x     |z\t   \
+  \  \t        x      |z\t    \n   A---------*ROOT    =>    A2---------*ROOT  \n \
+  \            |t\t     \t               |t\t    \n             ------B \t       \
+  \        ------B2\n\n\n\n* If -a is given, then tips/nodes are renamed using automatically\
+  \ generated identifiers \n  of length 10 Correspondance between old names and new\
+  \ names is written in the map file \n  given with -m. \n  In this mode, --revert\
+  \ has no effect.\n  --length  allows to customize length of generated id. It is\
+  \ min 5.\n  If several trees in input has different tip names, it does not matter,\
+  \ a new identifier is still\n  generated for each new tip name, and same names are\
+  \ reused if needed.\n\n* If -e (--regexp) and -b (--replace) is given, then  will\
+  \ replace matching strings in tip/node \n  names by string given by -b, ex:\n  gotree\
+  \ rename -i tree.nh --regexp 'Tip(\\d+)' --replace 'Leaf$1' -m map.txt\n  this will\
+  \ replace all matches of 'Tip(\\d+)' with 'Leaf$1', with $1 being the matched string\
+  \ \n  inside ().\n\n* If --add-quotes is specified, then output names will be surrounded\
+  \ by ''\n\n* If --rm-quotes is specified, starting or ending quotes are removed.\n\
+  \nWarning: If after this rename, several tips/nodes have the same name, subsequent\
+  \ commands may \nfail.\n\n\nIf --internal is specified, then internal nodes are\
+  \ renamed;\n--tips is true by default. To inactivate it, you must specify --tips=false\
+  \ .\n\nUsage:\n  gotree rename [flags]\n\nFlags:\n      --add-quotes       Add quotes\
+  \ arround tip/node names\n  -a, --auto             Renames automatically tips with\
+  \ auto generated id of length 10.\n  -h, --help             help for rename\n  -i,\
+  \ --input string     Input tree (default \"stdin\")\n      --internal         Internal\
+  \ nodes are taken into account\n  -l, --length int       Length of automatically\
+  \ generated id. Only with --auto (default 10)\n  -m, --map string       Tip name\
+  \ map file (default \"none\")\n  -o, --output string    Renamed tree output file\
+  \ (default \"stdout\")\n  -e, --regexp string    Regexp to get matching tip/node\
+  \ names (default \"none\")\n  -b, --replace string   String replacement to the given\
+  \ regexp (default \"none\")\n  -r, --revert           Revert orientation of map\
+  \ file\n      --rm-quotes        Remove quotes arround tip/node names (priority\
+  \ over --rm-quotes)\n      --tips             Tips are taken into account (--tips=false\
+  \ to cancel) (default true)\n\nGlobal Flags:\n      --format string   Input tree\
+  \ format (newick, nexus, or phyloxml) (default \"newick\")\n      --seed int   \
+  \     Random Seed: -1 = nano seconds since 1970/01/01 00:00:00 (default -1)\n  -t,\
+  \ --threads int     Number of threads (Max=2) (default 1)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/gotree:0.4.1--h375a9b1_0

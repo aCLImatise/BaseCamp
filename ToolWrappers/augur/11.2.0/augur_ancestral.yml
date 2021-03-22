@@ -1,0 +1,125 @@
+!Command
+command:
+- augur
+- ancestral
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --tree
+  - -t
+  description: 'prebuilt Newick (default: None)'
+  args: !SimpleFlagArg
+    name: TREE
+- !Flag
+  optional: true
+  synonyms:
+  - --alignment
+  - -a
+  description: 'alignment in fasta or VCF format (default: None)'
+  args: !SimpleFlagArg
+    name: ALIGNMENT
+- !Flag
+  optional: true
+  synonyms:
+  - --output-node-data
+  description: "name of JSON file to save mutations and ancestral\nsequences to (default:\
+    \ None)"
+  args: !SimpleFlagArg
+    name: OUTPUT_NODE_DATA
+- !Flag
+  optional: true
+  synonyms:
+  - --output-sequences
+  description: "name of FASTA file to save ancestral sequences to\n(FASTA alignments\
+    \ only) (default: None)"
+  args: !SimpleFlagArg
+    name: OUTPUT_SEQUENCES
+- !Flag
+  optional: true
+  synonyms:
+  - --inference
+  description: "calculate joint or marginal maximum likelihood\nancestral sequence\
+    \ states (default: joint)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      joint:
+      marginal:
+- !Flag
+  optional: true
+  synonyms:
+  - --vcf-reference
+  description: "fasta file of the sequence the VCF was mapped to\n(default: None)"
+  args: !SimpleFlagArg
+    name: VCF_REFERENCE
+- !Flag
+  optional: true
+  synonyms:
+  - --output-vcf
+  description: "name of output VCF file which will include ancestral\nseqs (default:\
+    \ None)"
+  args: !SimpleFlagArg
+    name: OUTPUT_VCF
+- !Flag
+  optional: true
+  synonyms:
+  - --keep-ambiguous
+  description: "do not infer nucleotides at ambiguous (N) sites on tip\nsequences\
+    \ (leave as N). (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --infer-ambiguous
+  description: "infer nucleotides at ambiguous (N,W,R,..) sites on tip\nsequences\
+    \ and replace with most likely state.\n(default: True)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --keep-overhangs
+  description: "do not infer nucleotides for gaps (-) on either side\nof the alignment\
+    \ (default: False)\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: augur ancestral [-h] --tree TREE [--alignment ALIGNMENT]\n    \
+  \                   [--output-node-data OUTPUT_NODE_DATA]\n                    \
+  \   [--output-sequences OUTPUT_SEQUENCES]\n                       [--inference {joint,marginal}]\n\
+  \                       [--vcf-reference VCF_REFERENCE]\n                      \
+  \ [--output-vcf OUTPUT_VCF]\n                       [--keep-ambiguous | --infer-ambiguous]\n\
+  \                       [--keep-overhangs]\n\nInfer ancestral sequences based on\
+  \ a tree.\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  --tree TREE, -t TREE  prebuilt Newick (default: None)\n  --alignment\
+  \ ALIGNMENT, -a ALIGNMENT\n                        alignment in fasta or VCF format\
+  \ (default: None)\n  --output-node-data OUTPUT_NODE_DATA\n                     \
+  \   name of JSON file to save mutations and ancestral\n                        sequences\
+  \ to (default: None)\n  --output-sequences OUTPUT_SEQUENCES\n                  \
+  \      name of FASTA file to save ancestral sequences to\n                     \
+  \   (FASTA alignments only) (default: None)\n  --inference {joint,marginal}\n  \
+  \                      calculate joint or marginal maximum likelihood\n        \
+  \                ancestral sequence states (default: joint)\n  --vcf-reference VCF_REFERENCE\n\
+  \                        fasta file of the sequence the VCF was mapped to\n    \
+  \                    (default: None)\n  --output-vcf OUTPUT_VCF\n              \
+  \          name of output VCF file which will include ancestral\n              \
+  \          seqs (default: None)\n  --keep-ambiguous      do not infer nucleotides\
+  \ at ambiguous (N) sites on tip\n                        sequences (leave as N).\
+  \ (default: False)\n  --infer-ambiguous     infer nucleotides at ambiguous (N,W,R,..)\
+  \ sites on tip\n                        sequences and replace with most likely state.\n\
+  \                        (default: True)\n  --keep-overhangs      do not infer nucleotides\
+  \ for gaps (-) on either side\n                        of the alignment (default:\
+  \ False)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/augur:11.2.0--py_0

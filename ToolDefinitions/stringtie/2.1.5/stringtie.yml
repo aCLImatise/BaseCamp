@@ -1,0 +1,294 @@
+!Command
+command:
+- stringtie
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --conservative
+  description: ': conservative transcript assembly, same as -t -c 1.5 -f 0.05'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --rf
+  description: ': assume stranded library fr-firststrand'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --fr
+  description: ': assume stranded library fr-secondstrand'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -G
+  description: annotation to use for guiding the assembly process (GTF/GFF3)
+  args: !SimpleFlagArg
+    name: reference
+- !Flag
+  optional: true
+  synonyms:
+  - --ptf
+  description: ': load point-features from a given 4 column feature file <f_tab>'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: 'path/file name for the assembled transcripts GTF (default: stdout)'
+  args: !SimpleFlagArg
+    name: output
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: 'prefix for output transcripts (default: STRG)'
+  args: !SimpleFlagArg
+    name: name
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: 'isoform fraction (default: 0.01)'
+  args: !SimpleFlagArg
+    name: minimum
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  description: reads processing; also enforces -s 1.5 -g 0 (default:false)
+  args: !SimpleFlagArg
+    name: long
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  description: "long reads are provided, just clean and collapse the reads but\ndo\
+    \ not assemble"
+  args: !SimpleFlagArg
+    name: if
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: 'assembled transcript length (default: 200)'
+  args: !SimpleFlagArg
+    name: minimum
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  description: 'anchor length for junctions (default: 10)'
+  args: !SimpleFlagArg
+    name: minimum
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  description: 'junction coverage (default: 1)'
+  args: !SimpleFlagArg
+    name: minimum
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: "trimming of predicted transcripts based on coverage\n(default: coverage\
+    \ trimming is enabled)"
+  args: !SimpleFlagArg
+    name: disable
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: "reads per bp coverage to consider for multi-exon transcript\n(default:\
+    \ 1)"
+  args: !SimpleFlagArg
+    name: minimum
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: "reads per bp coverage to consider for single-exon transcript\n(default:\
+    \ 4.75)"
+  args: !SimpleFlagArg
+    name: minimum
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: (log bundle processing details)
+  args: !SimpleFlagArg
+    name: verbose
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  description: 'gap allowed between read mappings (default: 50)'
+  args: !SimpleFlagArg
+    name: maximum
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  description: of bundle allowed to be covered by multi-hit reads (default:1)
+  args: !SimpleFlagArg
+    name: fraction
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: 'of threads (CPUs) to use (default: 1)'
+  args: !SimpleFlagArg
+    name: number
+- !Flag
+  optional: true
+  synonyms:
+  - -A
+  description: abundance estimation output file
+  args: !SimpleFlagArg
+    name: gene
+- !Flag
+  optional: true
+  synonyms:
+  - -E
+  description: "window around possibly erroneous splice sites from long reads to\n\
+    look out for correct splice sites (default: 25)"
+  args: !SimpleFlagArg
+    name: define
+- !Flag
+  optional: true
+  synonyms:
+  - -B
+  description: "output of Ballgown table files which will be created in the\nsame\
+    \ directory as the output GTF (requires -G, -o recommended)"
+  args: !SimpleFlagArg
+    name: enable
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  description: "output of Ballgown table files but these files will be\ncreated under\
+    \ the directory path given as <dir_path>"
+  args: !SimpleFlagArg
+    name: enable
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  description: estimate the abundance of given reference transcripts (requires -G)
+  args: !SimpleFlagArg
+    name: only
+- !Flag
+  optional: true
+  synonyms:
+  - --viral
+  description: ": only relevant for long reads from viral data where splice sites\n\
+    do not follow consensus (default:false)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  description: not assemble any transcripts on the given reference sequence(s)
+  args: !SimpleFlagArg
+    name: do
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  description: 'multi-mapping correction (default: correction enabled)'
+  args: !SimpleFlagArg
+    name: no
+- !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: this usage message and exit
+  args: !SimpleFlagArg
+    name: print
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  description: "minimum input transcript FPKM to include in the merge\n(default: 1.0)"
+  args: !SimpleFlagArg
+    name: min_fpkm
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  description: "minimum input transcript TPM to include in the merge\n(default: 1.0)"
+  args: !SimpleFlagArg
+    name: min_tpm
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: "keep merged transcripts with retained introns; by default\nthese are\
+    \ not kept unless there is strong evidence for them"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: ': print just the version at stdout and exit'
+  args: !EmptyFlagArg {}
+help_text: "StringTie v2.1.5 usage:\n\nstringtie <in.bam ..> [-G <guide_gff>] [-l\
+  \ <prefix>] [-o <out.gtf>] [-p <cpus>]\n [-v] [-a <min_anchor_len>] [-m <min_len>]\
+  \ [-j <min_anchor_cov>] [-f <min_iso>]\n [-c <min_bundle_cov>] [-g <bdist>] [-u]\
+  \ [-L] [-e] [--viral] [-E <err_margin>]\n [--ptf <f_tab>] [-x <seqid,..>] [-A <gene_abund.out>]\
+  \ [-h] {-B|-b <dir_path>}\nAssemble RNA-Seq alignments into potential transcripts.\n\
+  Options:\n --version : print just the version at stdout and exit\n --conservative\
+  \ : conservative transcript assembly, same as -t -c 1.5 -f 0.05\n --rf : assume\
+  \ stranded library fr-firststrand\n --fr : assume stranded library fr-secondstrand\n\
+  \ -G reference annotation to use for guiding the assembly process (GTF/GFF3)\n --ptf\
+  \ : load point-features from a given 4 column feature file <f_tab>\n -o output path/file\
+  \ name for the assembled transcripts GTF (default: stdout)\n -l name prefix for\
+  \ output transcripts (default: STRG)\n -f minimum isoform fraction (default: 0.01)\n\
+  \ -L long reads processing; also enforces -s 1.5 -g 0 (default:false)\n -R if long\
+  \ reads are provided, just clean and collapse the reads but\n    do not assemble\n\
+  \ -m minimum assembled transcript length (default: 200)\n -a minimum anchor length\
+  \ for junctions (default: 10)\n -j minimum junction coverage (default: 1)\n -t disable\
+  \ trimming of predicted transcripts based on coverage\n    (default: coverage trimming\
+  \ is enabled)\n -c minimum reads per bp coverage to consider for multi-exon transcript\n\
+  \    (default: 1)\n -s minimum reads per bp coverage to consider for single-exon\
+  \ transcript\n    (default: 4.75)\n -v verbose (log bundle processing details)\n\
+  \ -g maximum gap allowed between read mappings (default: 50)\n -M fraction of bundle\
+  \ allowed to be covered by multi-hit reads (default:1)\n -p number of threads (CPUs)\
+  \ to use (default: 1)\n -A gene abundance estimation output file\n -E define window\
+  \ around possibly erroneous splice sites from long reads to\n    look out for correct\
+  \ splice sites (default: 25)\n -B enable output of Ballgown table files which will\
+  \ be created in the\n    same directory as the output GTF (requires -G, -o recommended)\n\
+  \ -b enable output of Ballgown table files but these files will be \n    created\
+  \ under the directory path given as <dir_path>\n -e only estimate the abundance\
+  \ of given reference transcripts (requires -G)\n --viral : only relevant for long\
+  \ reads from viral data where splice sites\n    do not follow consensus (default:false)\n\
+  \ -x do not assemble any transcripts on the given reference sequence(s)\n -u no\
+  \ multi-mapping correction (default: correction enabled)\n -h print this usage message\
+  \ and exit\n\nTranscript merge usage mode: \n  stringtie --merge [Options] { gtf_list\
+  \ | strg1.gtf ...}\nWith this option StringTie will assemble transcripts from multiple\n\
+  input files generating a unified non-redundant set of isoforms. In this mode\nthe\
+  \ following options are available:\n  -G <guide_gff>   reference annotation to include\
+  \ in the merging (GTF/GFF3)\n  -o <out_gtf>     output file name for the merged\
+  \ transcripts GTF\n                    (default: stdout)\n  -m <min_len>     minimum\
+  \ input transcript length to include in the merge\n                    (default:\
+  \ 50)\n  -c <min_cov>     minimum input transcript coverage to include in the merge\n\
+  \                    (default: 0)\n  -F <min_fpkm>    minimum input transcript FPKM\
+  \ to include in the merge\n                    (default: 1.0)\n  -T <min_tpm>  \
+  \   minimum input transcript TPM to include in the merge\n                    (default:\
+  \ 1.0)\n  -f <min_iso>     minimum isoform fraction (default: 0.01)\n  -g <gap_len>\
+  \     gap between transcripts to merge together (default: 250)\n  -i           \
+  \    keep merged transcripts with retained introns; by default\n               \
+  \    these are not kept unless there is strong evidence for them\n  -l <label> \
+  \      name prefix for output transcripts (default: MSTRG)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/stringtie:2.1.5--h7e0af3c_0

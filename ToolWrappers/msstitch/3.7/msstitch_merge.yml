@@ -1,0 +1,155 @@
+!Command
+command:
+- msstitch
+- merge
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: Directory to output in
+  args: !SimpleFlagArg
+    name: OUTDIR
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: Output file
+  args: !SimpleFlagArg
+    name: OUTFILE
+- !Flag
+  optional: true
+  synonyms:
+  - --setnames
+  description: "Names of biological sets. Can be specified with\nquotation marks if\
+    \ spaces are used"
+  args: !RepeatFlagArg
+    name: SETNAMES
+- !Flag
+  optional: true
+  synonyms:
+  - --isobquantcolpattern
+  description: "Unique text pattern to identify isobaric quant columns\nin input table."
+  args: !SimpleFlagArg
+    name: QUANTCOLPATTERN
+- !Flag
+  optional: true
+  synonyms:
+  - --ms1quantcolpattern
+  description: "Unique text pattern to identify precursor quant column\nin input table."
+  args: !SimpleFlagArg
+    name: PRECURSORQUANTCOLPATTERN
+- !Flag
+  optional: true
+  synonyms:
+  - --fdrcolpattern
+  description: "Unique text pattern to identify FDR column in input\ntable."
+  args: !SimpleFlagArg
+    name: FDRCOLPATTERN
+- !Flag
+  optional: true
+  synonyms:
+  - --flrcolpattern
+  description: "Unique text pattern to identify FLR (peptide PTM false\nlocalization\
+    \ rate) column in input table."
+  args: !SimpleFlagArg
+    name: FLRCOLPATTERN
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: Multiple input files of {} format
+  args: !RepeatFlagArg
+    name: FN
+- !Flag
+  optional: true
+  synonyms:
+  - --featcol
+  description: "Column number in table in which desired accessions\nare. stored. First\
+    \ column number is 1. Use in case of\nnot using default column 1"
+  args: !SimpleFlagArg
+    name: FEATCOL
+- !Flag
+  optional: true
+  synonyms:
+  - --dbfile
+  description: Database lookup file
+  args: !SimpleFlagArg
+    name: LOOKUPFN
+- !Flag
+  optional: true
+  synonyms:
+  - --mergecutoff
+  description: "FDR cutoff when building merged protein table, to use\nwhen a cutoff\
+    \ has been used before storing the table\nto lookup. FDR values need to be stored\
+    \ in the lookup"
+  args: !SimpleFlagArg
+    name: MERGECUTOFF
+- !Flag
+  optional: true
+  synonyms:
+  - --no-group-annotation
+  description: "For peptide table merging. Do not include protein\ngroup or gene data\
+    \ in output, just use accessions."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --genecentric
+  description: "For peptide table merging. Do not include protein\ngroup data in output,\
+    \ but use gene names instead to\ncount peptides per feature, determine peptide-\n\
+    uniqueness.\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: msstitch merge [-h] [--version] [-d OUTDIR] [-o OUTFILE] --setnames\n\
+  \                      SETNAMES [SETNAMES ...]\n                      [--isobquantcolpattern\
+  \ QUANTCOLPATTERN]\n                      [--ms1quantcolpattern PRECURSORQUANTCOLPATTERN]\n\
+  \                      --fdrcolpattern FDRCOLPATTERN\n                      [--flrcolpattern\
+  \ FLRCOLPATTERN] -i FN [FN ...]\n                      [--featcol FEATCOL] --dbfile\
+  \ LOOKUPFN\n                      [--mergecutoff MERGECUTOFF] [--no-group-annotation]\n\
+  \                      [--genecentric]\n\noptional arguments:\n  -h, --help    \
+  \        show this help message and exit\n  --version             show program's\
+  \ version number and exit\n  -d OUTDIR             Directory to output in\n  -o\
+  \ OUTFILE            Output file\n  --setnames SETNAMES [SETNAMES ...]\n       \
+  \                 Names of biological sets. Can be specified with\n            \
+  \            quotation marks if spaces are used\n  --isobquantcolpattern QUANTCOLPATTERN\n\
+  \                        Unique text pattern to identify isobaric quant columns\n\
+  \                        in input table.\n  --ms1quantcolpattern PRECURSORQUANTCOLPATTERN\n\
+  \                        Unique text pattern to identify precursor quant column\n\
+  \                        in input table.\n  --fdrcolpattern FDRCOLPATTERN\n    \
+  \                    Unique text pattern to identify FDR column in input\n     \
+  \                   table.\n  --flrcolpattern FLRCOLPATTERN\n                  \
+  \      Unique text pattern to identify FLR (peptide PTM false\n                \
+  \        localization rate) column in input table.\n  -i FN [FN ...]        Multiple\
+  \ input files of {} format\n  --featcol FEATCOL     Column number in table in which\
+  \ desired accessions\n                        are. stored. First column number is\
+  \ 1. Use in case of\n                        not using default column 1\n  --dbfile\
+  \ LOOKUPFN     Database lookup file\n  --mergecutoff MERGECUTOFF\n             \
+  \           FDR cutoff when building merged protein table, to use\n            \
+  \            when a cutoff has been used before storing the table\n            \
+  \            to lookup. FDR values need to be stored in the lookup\n  --no-group-annotation\n\
+  \                        For peptide table merging. Do not include protein\n   \
+  \                     group or gene data in output, just use accessions.\n  --genecentric\
+  \         For peptide table merging. Do not include protein\n                  \
+  \      group data in output, but use gene names instead to\n                   \
+  \     count peptides per feature, determine peptide-\n                        uniqueness.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/msstitch:3.7--py_0

@@ -1,0 +1,107 @@
+&id001 !Command
+command:
+- emu
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - emu
+  - sub-commands
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: emu
+    description: ''
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    description: ''
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: emu [-h] {abundance,build-database} ...\nemu: error: argument\
+    \ subparser_name: invalid choice: 'sub-commands' (choose from 'abundance', 'build-database')\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/emu:1.0.1--0
+- !Command
+  command:
+  - emu
+  - build-database
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --names
+    description: path to names.dmp file
+    args: !SimpleFlagArg
+      name: NAMES
+  - !Flag
+    optional: true
+    synonyms:
+    - --nodes
+    description: path to nodes.dmp file
+    args: !SimpleFlagArg
+      name: NODES
+  - !Flag
+    optional: true
+    synonyms:
+    - --sequences
+    description: path to fasta of database sequences
+    args: !SimpleFlagArg
+      name: SEQUENCES
+  - !Flag
+    optional: true
+    synonyms:
+    - --seq2tax
+    description: "path to tsv mapping species tax id to fasta sequence\nheaders\n"
+    args: !SimpleFlagArg
+      name: SEQ2TAX
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: emu build-database [-h] [--names NAMES] [--nodes NODES]\n   \
+    \                       [--sequences SEQUENCES] [--seq2tax SEQ2TAX]\n        \
+    \                  db_name\n\npositional arguments:\n  db_name               custom\
+    \ database name\n\noptional arguments:\n  -h, --help            show this help\
+    \ message and exit\n  --names NAMES         path to names.dmp file\n  --nodes\
+    \ NODES         path to nodes.dmp file\n  --sequences SEQUENCES\n            \
+    \            path to fasta of database sequences\n  --seq2tax SEQ2TAX     path\
+    \ to tsv mapping species tax id to fasta sequence\n                        headers\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/emu:1.0.1--0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: emu [-h] {abundance,build-database} ...\n\npositional arguments:\n\
+  \  {abundance,build-database}\n                        sub-commands\n    abundance\
+  \           Generate relative abundance estimates\n    build-database      Build\
+  \ custom Emu database\n\noptional arguments:\n  -h, --help            show this\
+  \ help message and exit\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/emu:1.0.1--0

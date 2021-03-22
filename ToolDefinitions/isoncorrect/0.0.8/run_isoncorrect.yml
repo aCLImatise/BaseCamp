@@ -1,0 +1,224 @@
+!Command
+command:
+- run_isoncorrect
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --fastq_folder
+  description: "Path to input fastq folder with reads in clusters\n(default: False)"
+  args: !SimpleFlagArg
+    name: FASTQ_FOLDER
+- !Flag
+  optional: true
+  synonyms:
+  - --t
+  description: 'Number of cores allocated for clustering (default: 8)'
+  args: !SimpleFlagArg
+    name: NR_CORES
+- !Flag
+  optional: true
+  synonyms:
+  - --k
+  description: 'Kmer size (default: 9)'
+  args: !SimpleFlagArg
+    name: K
+- !Flag
+  optional: true
+  synonyms:
+  - --w
+  description: 'Window size (default: 20)'
+  args: !SimpleFlagArg
+    name: W
+- !Flag
+  optional: true
+  synonyms:
+  - --xmin
+  description: 'Lower interval length (default: 18)'
+  args: !SimpleFlagArg
+    name: XMIN
+- !Flag
+  optional: true
+  synonyms:
+  - --xmax
+  description: 'Upper interval length (default: 80)'
+  args: !SimpleFlagArg
+    name: XMAX
+- !Flag
+  optional: true
+  synonyms:
+  - --T
+  description: 'Minimum fraction keeping substitution (default: 0.1)'
+  args: !SimpleFlagArg
+    name: T
+- !Flag
+  optional: true
+  synonyms:
+  - --exact_instance_limit
+  description: "Do exact correction for clusters under this threshold\n(default: 50)"
+  args: !SimpleFlagArg
+    name: EXACT_INSTANCE_LIMIT
+- !Flag
+  optional: true
+  synonyms:
+  - --keep_old
+  description: "Do not recompute previous results if\ncorrected_reads.fq is found\
+    \ and has the smae number of\nreads as input file (i.e., is complete). (default:\n\
+    False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --set_w_dynamically
+  description: "Set w = k + max(2*k, floor(cluster_size/1000)).\n(default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max_seqs
+  description: "Maximum number of seqs to correct at a time (in case\nof large clusters).\
+    \ (default: 2000)"
+  args: !SimpleFlagArg
+    name: MAX_SEQS
+- !Flag
+  optional: true
+  synonyms:
+  - --use_racon
+  description: "Use racon to polish consensus after spoa (more time\nconsuming but\
+    \ higher accuracy). (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --split_mod
+  description: "Splits cluster ids in n (default=1) partitions by\ncomputing residual\
+    \ of cluster_id divided by n. this\nparameter needs to be combined with --residual\
+    \ to take\neffect. (default: 1)"
+  args: !SimpleFlagArg
+    name: SPLIT_MOD
+- !Flag
+  optional: true
+  synonyms:
+  - --residual
+  description: "Run isONcorrect on cluster ids with residual (default\n0) of cluster_id\
+    \ divided by --split_mod. (default: 0)"
+  args: !SimpleFlagArg
+    name: RESIDUAL
+- !Flag
+  optional: true
+  synonyms:
+  - --split_wrt_batches
+  description: "Process reads per batch (of max_seqs sequences)\ninstead of per cluster.\
+    \ Significantly decrease runtime\nwhen few very large clusters are less than the\
+    \ number\nof cores used. (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --outfolder
+  description: 'Outfolder with all corrected reads. (default: None)'
+  args: !SimpleFlagArg
+    name: OUTFOLDER
+- !Flag
+  optional: true
+  synonyms:
+  - --randstrobes
+  description: "EXPERIMENTAL PARAMETER: IsONcorrect uses paired\nminimizers (described\
+    \ in isONcorrect paper). This\nexperimental option uses randstrobes instead of\
+    \ paired\nminimizers to find shared regions. Randstrobes reduces\nmemory footprint\
+    \ substantially (and runtime) with only\nslight increase in post correction quality.\
+    \ (default:\nFalse)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --layers
+  description: "EXPERIMENTAL PARAMETER: Active when --randstrobes\nspecified. How\
+    \ many \"layers\" with randstrobes we want\nper sequence to sample. More layers\
+    \ gives more\naccureate results but is more memory consuming and\nslower. It is\
+    \ not reccomended to specify more than 5."
+  args: !SimpleFlagArg
+    name: LAYERS
+- !Flag
+  optional: true
+  synonyms:
+  - --set_layers_manually
+  description: "EXPERIMENTAL PARAMETER: By default isONcorrect sets\nlayers = 1 if\
+    \ nr seqs in batch to be corrected is >=\n1000, else layers = 2. This command\
+    \ will manually pick\nthe number of layers specified with the --layers\nparameter.\
+    \ (default: False)\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: run_isoncorrect [-h] [--version] [--fastq_folder FASTQ_FOLDER]\n\
+  \                       [--t NR_CORES] [--k K] [--w W] [--xmin XMIN]\n         \
+  \              [--xmax XMAX] [--T T]\n                       [--exact_instance_limit\
+  \ EXACT_INSTANCE_LIMIT]\n                       [--keep_old] [--set_w_dynamically]\n\
+  \                       [--max_seqs MAX_SEQS] [--use_racon]\n                  \
+  \     [--split_mod SPLIT_MOD] [--residual RESIDUAL]\n                       [--split_wrt_batches]\
+  \ [--outfolder OUTFOLDER]\n                       [--randstrobes] [--layers LAYERS]\n\
+  \                       [--set_layers_manually]\n\nDe novo clustering of long-read\
+  \ transcriptome reads\n\noptional arguments:\n  -h, --help            show this\
+  \ help message and exit\n  --version             show program's version number and\
+  \ exit\n  --fastq_folder FASTQ_FOLDER\n                        Path to input fastq\
+  \ folder with reads in clusters\n                        (default: False)\n  --t\
+  \ NR_CORES          Number of cores allocated for clustering (default: 8)\n  --k\
+  \ K                 Kmer size (default: 9)\n  --w W                 Window size\
+  \ (default: 20)\n  --xmin XMIN           Lower interval length (default: 18)\n \
+  \ --xmax XMAX           Upper interval length (default: 80)\n  --T T           \
+  \      Minimum fraction keeping substitution (default: 0.1)\n  --exact_instance_limit\
+  \ EXACT_INSTANCE_LIMIT\n                        Do exact correction for clusters\
+  \ under this threshold\n                        (default: 50)\n  --keep_old    \
+  \        Do not recompute previous results if\n                        corrected_reads.fq\
+  \ is found and has the smae number of\n                        reads as input file\
+  \ (i.e., is complete). (default:\n                        False)\n  --set_w_dynamically\
+  \   Set w = k + max(2*k, floor(cluster_size/1000)).\n                        (default:\
+  \ False)\n  --max_seqs MAX_SEQS   Maximum number of seqs to correct at a time (in\
+  \ case\n                        of large clusters). (default: 2000)\n  --use_racon\
+  \           Use racon to polish consensus after spoa (more time\n              \
+  \          consuming but higher accuracy). (default: False)\n  --split_mod SPLIT_MOD\n\
+  \                        Splits cluster ids in n (default=1) partitions by\n   \
+  \                     computing residual of cluster_id divided by n. this\n    \
+  \                    parameter needs to be combined with --residual to take\n  \
+  \                      effect. (default: 1)\n  --residual RESIDUAL   Run isONcorrect\
+  \ on cluster ids with residual (default\n                        0) of cluster_id\
+  \ divided by --split_mod. (default: 0)\n  --split_wrt_batches   Process reads per\
+  \ batch (of max_seqs sequences)\n                        instead of per cluster.\
+  \ Significantly decrease runtime\n                        when few very large clusters\
+  \ are less than the number\n                        of cores used. (default: False)\n\
+  \  --outfolder OUTFOLDER\n                        Outfolder with all corrected reads.\
+  \ (default: None)\n  --randstrobes         EXPERIMENTAL PARAMETER: IsONcorrect uses\
+  \ paired\n                        minimizers (described in isONcorrect paper). This\n\
+  \                        experimental option uses randstrobes instead of paired\n\
+  \                        minimizers to find shared regions. Randstrobes reduces\n\
+  \                        memory footprint substantially (and runtime) with only\n\
+  \                        slight increase in post correction quality. (default:\n\
+  \                        False)\n  --layers LAYERS       EXPERIMENTAL PARAMETER:\
+  \ Active when --randstrobes\n                        specified. How many \"layers\"\
+  \ with randstrobes we want\n                        per sequence to sample. More\
+  \ layers gives more\n                        accureate results but is more memory\
+  \ consuming and\n                        slower. It is not reccomended to specify\
+  \ more than 5.\n  --set_layers_manually\n                        EXPERIMENTAL PARAMETER:\
+  \ By default isONcorrect sets\n                        layers = 1 if nr seqs in\
+  \ batch to be corrected is >=\n                        1000, else layers = 2. This\
+  \ command will manually pick\n                        the number of layers specified\
+  \ with the --layers\n                        parameter. (default: False)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/isoncorrect:0.0.8--py_0

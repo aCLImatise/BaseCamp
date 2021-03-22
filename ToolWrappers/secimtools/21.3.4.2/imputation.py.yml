@@ -1,0 +1,157 @@
+!Command
+command:
+- imputation.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  description: Input dataset in wide format.
+  args: !SimpleFlagArg
+    name: INPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --design
+  description: Design file.
+  args: !SimpleFlagArg
+    name: DESIGN
+- !Flag
+  optional: true
+  synonyms:
+  - -id
+  - --ID
+  description: Name of the column with unique identifiers.
+  args: !SimpleFlagArg
+    name: UNIQID
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --group
+  description: Name of the column with groups.
+  args: !SimpleFlagArg
+    name: GROUP
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: Path of output file.
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --strategy
+  description: "Imputation strategy: KNN, mean, median, or most\nfrequent"
+  args: !ChoiceFlagArg
+    choices: !!set
+      knn:
+      mean:
+      bayesian:
+      median:
+- !Flag
+  optional: true
+  synonyms:
+  - -noz
+  - --no_zero
+  description: Treat 0 as missing?
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -noneg
+  - --no_negative
+  description: Treat negative as missing?
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ex
+  - --exclude
+  description: "Additional values to treat as missingdata, seperated\nby commas"
+  args: !SimpleFlagArg
+    name: EXCLUDE
+- !Flag
+  optional: true
+  synonyms:
+  - -rc
+  - --row_cutoff
+  description: "Percent cutoff for imputation of rows.If this is\nexceeded, imputation\
+    \ willbe done by mean instead of\nknn. Default: .5"
+  args: !SimpleFlagArg
+    name: ROWCUTOFF
+- !Flag
+  optional: true
+  synonyms:
+  - -dist
+  - --distribution
+  description: "use mean or median to generate mu value for bayesian\nimputation"
+  args: !ChoiceFlagArg
+    choices: !!set
+      Normal:
+      Poisson:
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --knn
+  description: 'Number of nearest neighbors to search Default: 5.'
+  args: !SimpleFlagArg
+    name: KNN
+- !Flag
+  optional: true
+  synonyms:
+  - -cc
+  - --col_cutoff
+  description: "Percent cutoff forimputation of columns. If this is\nexceeded, imputationwill\
+    \ be done by mean instead of\nknn. Default: .8\n"
+  args: !SimpleFlagArg
+    name: COLCUTOFF
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: imputation.py [-h] -i INPUT -d DESIGN -id UNIQID [-g GROUP] [-o\
+  \ OUTPUT]\n                     -s {knn,mean,median,bayesian} [-noz] [-noneg]\n\
+  \                     [-ex EXCLUDE] [-rc ROWCUTOFF] [-dist {Poisson,Normal}]\n \
+  \                    [-k KNN] [-cc COLCUTOFF]\n\n    The tool performs imputations\
+  \ using selected algorith\n    \n\noptional arguments:\n  -h, --help           \
+  \ show this help message and exit\n\nStandard input:\n  Standard input for SECIM\
+  \ tools.\n\n  -i INPUT, --input INPUT\n                        Input dataset in\
+  \ wide format.\n  -d DESIGN, --design DESIGN\n                        Design file.\n\
+  \  -id UNIQID, --ID UNIQID\n                        Name of the column with unique\
+  \ identifiers.\n  -g GROUP, --group GROUP\n                        Name of the column\
+  \ with groups.\n\nRequired output:\n  -o OUTPUT, --output OUTPUT\n             \
+  \           Path of output file.\n\nTool input:\n  Tool specific input.\n\n  -s\
+  \ {knn,mean,median,bayesian}, --strategy {knn,mean,median,bayesian}\n          \
+  \              Imputation strategy: KNN, mean, median, or most\n               \
+  \         frequent\n  -noz, --no_zero       Treat 0 as missing?\n  -noneg, --no_negative\n\
+  \                        Treat negative as missing?\n  -ex EXCLUDE, --exclude EXCLUDE\n\
+  \                        Additional values to treat as missingdata, seperated\n\
+  \                        by commas\n  -rc ROWCUTOFF, --row_cutoff ROWCUTOFF\n  \
+  \                      Percent cutoff for imputation of rows.If this is\n      \
+  \                  exceeded, imputation willbe done by mean instead of\n       \
+  \                 knn. Default: .5\n  -dist {Poisson,Normal}, --distribution {Poisson,Normal}\n\
+  \                        use mean or median to generate mu value for bayesian\n\
+  \                        imputation\n\nKNN input:\n  -k KNN, --knn KNN     Number\
+  \ of nearest neighbors to search Default: 5.\n  -cc COLCUTOFF, --col_cutoff COLCUTOFF\n\
+  \                        Percent cutoff forimputation of columns. If this is\n \
+  \                       exceeded, imputationwill be done by mean instead of\n  \
+  \                      knn. Default: .8\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/secimtools:21.3.4.2--py_0

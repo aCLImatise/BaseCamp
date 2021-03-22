@@ -1,0 +1,99 @@
+!Command
+command:
+- pypgatk_cli
+- cbioportal-to-proteindb
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: tool
+  description: -in, --input_mutation TEXT      Cbioportal mutation file
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --config_file
+  description: Configuration for cbioportal to proteindb
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -fa
+  - --input_cds
+  description: CDS genes from ENSEMBL database
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -out
+  - --output_db
+  description: Protein database including all the mutations
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --filter_column
+  description: "Column in the VCF file to be used for\nfiltering or splitting mutations"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --accepted_values
+  description: "Limit mutations to values (tissue type,\nsample name, etc) considered\
+    \ for generating\nproteinDBs, by default mutations from all\nrecords are considered"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --split_by_filter_column
+  description: "Use this flag to generate a proteinDB per\ngroup as specified in the\
+    \ filter_column,\ndefault is False"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -cl
+  - --clinical_sample_file
+  description: "File to get tissue type from for the samples\nin input_mutation file"
+  args: !SimpleFlagArg
+    name: TEXT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: pypgatk_cli cbioportal-to-proteindb [OPTIONS]\n\nOptions:\n  -c,\
+  \ --config_file TEXT          Configuration for cbioportal to proteindb\n      \
+  \                            tool\n\n  -in, --input_mutation TEXT      Cbioportal\
+  \ mutation file\n  -fa, --input_cds TEXT           CDS genes from ENSEMBL database\n\
+  \  -out, --output_db TEXT          Protein database including all the mutations\n\
+  \  -f, --filter_column TEXT        Column in the VCF file to be used for\n     \
+  \                             filtering or splitting mutations\n\n  -a, --accepted_values\
+  \ TEXT      Limit mutations to values (tissue type,\n                          \
+  \        sample name, etc) considered for generating\n                         \
+  \         proteinDBs, by default mutations from all\n                          \
+  \        records are considered\n\n  -s, --split_by_filter_column    Use this flag\
+  \ to generate a proteinDB per\n                                  group as specified\
+  \ in the filter_column,\n                                  default is False\n\n\
+  \  -cl, --clinical_sample_file TEXT\n                                  File to get\
+  \ tissue type from for the samples\n                                  in input_mutation\
+  \ file\n\n  -h, --help                      Show this message and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/pypgatk:0.0.17--py_0

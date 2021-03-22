@@ -1,0 +1,85 @@
+!Command
+command:
+- gotree
+- brlen
+- cut
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --max-length
+  description: Length cutoff. Branches with length greater than or equal to this cutoff
+    are considered removed (default 0.5)
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: Output file with groups of tips/connected components (default "stdout")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --format
+  description: Input tree format (newick, nexus, or phyloxml) (default "newick")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  description: Input tree (default "stdin")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --seed
+  description: 'Random Seed: -1 = nano seconds since 1970/01/01 00:00:00 (default
+    -1)'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: Number of threads (Max=2) (default 1)
+  args: !SimpleFlagArg
+    name: int
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: help for cut
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Cut branches whose length is greater than or equal to the given length.\n\
+  \nAs output, it prints groups of tips that are in connected components of the now\
+  \ disconnected tree.\n\nOutput format: One line per group/connected component. Each\
+  \ line contains id \\t ntips \\t t1,t2,t3, \nwith id=\"id of the input tree\", ntips=\"\
+  Number of tips in that group\" and t1,t2,t3=\"a coma separated list of tips in the\
+  \ group\".\n\nExample:\n\ngotree brlen cut -i tree.nhx -l 0.1 -o groups.txt\n\n\
+  Usage:\n  gotree brlen cut [flags]\n\nFlags:\n  -h, --help               help for\
+  \ cut\n  -l, --max-length float   Length cutoff. Branches with length greater than\
+  \ or equal to this cutoff are considered removed (default 0.5)\n  -o, --output string\
+  \      Output file with groups of tips/connected components (default \"stdout\"\
+  )\n\nGlobal Flags:\n      --format string   Input tree format (newick, nexus, or\
+  \ phyloxml) (default \"newick\")\n  -i, --input string    Input tree (default \"\
+  stdin\")\n      --seed int        Random Seed: -1 = nano seconds since 1970/01/01\
+  \ 00:00:00 (default -1)\n  -t, --threads int     Number of threads (Max=2) (default\
+  \ 1)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/gotree:0.4.1--h375a9b1_0

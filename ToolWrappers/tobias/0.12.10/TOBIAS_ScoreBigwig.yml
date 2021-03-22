@@ -1,0 +1,174 @@
+!Command
+command:
+- TOBIAS
+- ScoreBigwig
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: ScoreBigwig
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --signal
+  description: A .bw file of ATAC-seq cutsite signal
+  args: !SimpleFlagArg
+    name: bigwig
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: Full path to output bigwig
+  args: !SimpleFlagArg
+    name: bigwig
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --regions
+  description: Genomic regions to run footprinting within
+  args: !SimpleFlagArg
+    name: bed
+- !Flag
+  optional: true
+  synonyms:
+  - --score
+  description: "Type of scoring to perform on cutsites\n(footprint/sum/mean/none)\
+    \ (default: footprint)"
+  args: !SimpleFlagArg
+    name: score
+- !Flag
+  optional: true
+  synonyms:
+  - --absolute
+  description: "Convert bigwig signal to absolute values before\ncalculating score"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --extend
+  description: 'Extend input regions with bp (default: 100)'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --smooth
+  description: "Smooth output signal by mean in <bp> windows (default:\nno smoothing)"
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --min-limit
+  description: 'Limit input bigwig value range (default: no lower limit)'
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - --max-limit
+  description: 'Limit input bigwig value range (default: no upper limit)'
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - --fp-min
+  description: 'Minimum footprint width (default: 20)'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --fp-max
+  description: 'Maximum footprint width (default: 50)'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --flank-min
+  description: 'Minimum range of flanking regions (default: 10)'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --flank-max
+  description: 'Maximum range of flanking regions (default: 30)'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --window
+  description: 'The window for calculation of sum (default: 100)'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --cores
+  description: 'Number of cores to use for computation (default: 1)'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --split
+  description: 'Split of multiprocessing jobs (default: 100)'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --verbosity
+  description: "Level of output logging (0: silent, 1: errors/warnings,\n2: info,\
+    \ 3: stats, 4: debug, 5: spam) (default: 3)\n"
+  args: !SimpleFlagArg
+    name: int
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "__________________________________________________________________________________________\n\
+  \n                                   TOBIAS ~ ScoreBigwig                      \
+  \             \n__________________________________________________________________________________________\n\
+  \nScoreBigwig calculates scores (such as footprint-scores) from bigwig files (such\
+  \ as ATAC-\nseq cutsites calculated using the ATACorrect tool). NOTE: ScoreBigwig\
+  \ replaces the\nprevious FootprintScores command.\n\nUsage: ScoreBigwig --signal\
+  \ <cutsites.bw> --regions <regions.bed> --output <output.bw>\n\nOutput:\n- <output.bw>\n\
+  \n------------------------------------------------------------------------------------------\n\
+  \nRequired arguments:\n  -s <bigwig>, --signal <bigwig>  A .bw file of ATAC-seq\
+  \ cutsite signal\n  -o <bigwig>, --output <bigwig>  Full path to output bigwig\n\
+  \  -r <bed>, --regions <bed>       Genomic regions to run footprinting within\n\n\
+  Optional arguments:\n  --score <score>                 Type of scoring to perform\
+  \ on cutsites\n                                  (footprint/sum/mean/none) (default:\
+  \ footprint)\n  --absolute                      Convert bigwig signal to absolute\
+  \ values before\n                                  calculating score\n  --extend\
+  \ <int>                  Extend input regions with bp (default: 100)\n  --smooth\
+  \ <int>                  Smooth output signal by mean in <bp> windows (default:\n\
+  \                                  no smoothing)\n  --min-limit <float>        \
+  \     Limit input bigwig value range (default: no lower limit)\n  --max-limit <float>\
+  \             Limit input bigwig value range (default: no upper limit)\n\nParameters\
+  \ for score == footprint:\n  --fp-min <int>                  Minimum footprint width\
+  \ (default: 20)\n  --fp-max <int>                  Maximum footprint width (default:\
+  \ 50)\n  --flank-min <int>               Minimum range of flanking regions (default:\
+  \ 10)\n  --flank-max <int>               Maximum range of flanking regions (default:\
+  \ 30)\n\nParameters for score == sum:\n  --window <int>                  The window\
+  \ for calculation of sum (default: 100)\n\nRun arguments:\n  --cores <int>     \
+  \              Number of cores to use for computation (default: 1)\n  --split <int>\
+  \                   Split of multiprocessing jobs (default: 100)\n  --verbosity\
+  \ <int>               Level of output logging (0: silent, 1: errors/warnings,\n\
+  \                                  2: info, 3: stats, 4: debug, 5: spam) (default:\
+  \ 3)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/tobias:0.12.10--py37h97743b1_0

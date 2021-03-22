@@ -1,0 +1,384 @@
+!Command
+command:
+- funannotate
+- predict
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: arguments
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  description: Genome multi-FASTA file (softmasked repeats)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out
+  description: Output folder name
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --species
+  description: Species name, use quotes for binomial, e.g. "Aspergillus fumigatus"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --parameters
+  description: Ab intio parameters JSON file to use for gene predictors
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --isolate
+  description: Isolate name, e.g. Af293
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --strain
+  description: Strain name, e.g. FGSCA4
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --name
+  description: 'Locus tag name (assigned by NCBI?). Default: FUN_'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --numbering
+  description: 'Specify where gene numbering starts. Default: 1'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --maker_gff
+  description: MAKER2 GFF file. Parse results directly to EVM.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pasa_gff
+  description: PASA generated gene models. filename:weight
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --other_gff
+  description: Annotation pass-through to EVM. filename:weight
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --rna_bam
+  description: RNA-seq mapped to genome to train Augustus/GeneMark-ET
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --stringtie
+  description: StringTie GTF result
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --weights
+  description: 'Ab-initio predictor and EVM weight. Example: augustus:2 or pasa:10'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --augustus_species
+  description: 'Augustus species config. Default: uses species name'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min_training_models
+  description: 'Minimum number of models to train Augustus. Default: 200'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --genemark_mode
+  description: 'GeneMark mode. Default: ES [ES,ET]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --genemark_mod
+  description: GeneMark ini mod file
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --busco_seed_species
+  description: 'Augustus pre-trained species to start BUSCO. Default: anidulans'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --optimize_augustus
+  description: Run 'optimze_augustus.pl' to refine training (long runtime)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --busco_db
+  description: 'BUSCO models. Default: dikarya. `funannotate outgroups --show_buscos`'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --organism
+  description: 'Fungal-specific options. Default: fungus. [fungus,other]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ploidy
+  description: 'Ploidy of assembly. Default: 1'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --tbl2asn
+  description: 'Assembly parameters for tbl2asn. Default: "-l paired-ends"'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --database
+  description: 'Path to funannotate database. Default: $FUNANNOTATE_DB'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --protein_evidence
+  description: 'Proteins to map to genome (prot1.fa prot2.fa uniprot.fa). Default:
+    uniprot.fa'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --protein_alignments
+  description: Pre-computed protein alignments in GFF3 format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --p2g_pident
+  description: 'Exonerate percent identity. Default: 80'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --p2g_diamond_db
+  description: Premade diamond genome database for protein2genome mapping
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --p2g_prefilter
+  description: 'Pre-filter hits software selection. Default: diamond [tblastn]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --transcript_evidence
+  description: 'mRNA/ESTs to align to genome (trans1.fa ests.fa trinity.fa). Default:
+    none'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --transcript_alignments
+  description: Pre-computed transcript alignments in GFF3 format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --augustus_gff
+  description: Pre-computed AUGUSTUS GFF3 results (must use --stopCodonExcludedFromCDS=False)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --genemark_gtf
+  description: Pre-computed GeneMark GTF results
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --trnascan
+  description: Pre-computed tRNAscanSE results
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min_intronlen
+  description: 'Minimum intron length. Default: 10'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max_intronlen
+  description: 'Maximum intron length. Default: 3000'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --soft_mask
+  description: 'Softmasked length threshold for GeneMark. Default: 2000'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min_protlen
+  description: 'Minimum protein length. Default: 50'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --repeats2evm
+  description: Use repeats in EVM consensus model building
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --keep_evm
+  description: Keep existing EVM results (for rerunning pipeline)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --evm-partition-interval
+  description: 'length between genes to make a partition: Default: 1500'
+  args: !SimpleFlagArg
+    name: Min
+- !Flag
+  optional: true
+  synonyms:
+  - --no-evm-partitions
+  description: Do not split contigs into partitions
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --repeat_filter
+  description: 'Repetitive gene model filtering. Default: overlap blast [overlap,blast,none]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --keep_no_stops
+  description: Keep gene models without valid stops
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --SeqCenter
+  description: 'Sequencing facilty for NCBI tbl file. Default: CFMR'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --SeqAccession
+  description: 'Sequence accession number for NCBI tbl file. Default: 12345'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --force
+  description: Annotated unmasked genome
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --cpus
+  description: 'Number of CPUs to use. Default: 2'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-progress
+  description: Do not print progress to stdout for long sub jobs
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nUsage:       funannotate predict <arguments>\nversion:     1.8.5\n\n\
+  Description: Script takes genome multi-fasta file and a variety of inputs to do\
+  \ a comprehensive whole\n             genome gene prediction.  Uses AUGUSTUS, GeneMark,\
+  \ Snap, GlimmerHMM, BUSCO, EVidence Modeler,\n             tbl2asn, tRNAScan-SE,\
+  \ Exonerate, minimap2.\nRequired:\n  -i, --input              Genome multi-FASTA\
+  \ file (softmasked repeats)\n  -o, --out                Output folder name\n  -s,\
+  \ --species            Species name, use quotes for binomial, e.g. \"Aspergillus\
+  \ fumigatus\"\n\nOptional:\n  -p, --parameters         Ab intio parameters JSON\
+  \ file to use for gene predictors\n  --isolate                Isolate name, e.g.\
+  \ Af293\n  --strain                 Strain name, e.g. FGSCA4\n  --name         \
+  \          Locus tag name (assigned by NCBI?). Default: FUN_\n  --numbering    \
+  \          Specify where gene numbering starts. Default: 1\n  --maker_gff      \
+  \        MAKER2 GFF file. Parse results directly to EVM.\n  --pasa_gff         \
+  \      PASA generated gene models. filename:weight\n  --other_gff              Annotation\
+  \ pass-through to EVM. filename:weight\n  --rna_bam                RNA-seq mapped\
+  \ to genome to train Augustus/GeneMark-ET\n  --stringtie              StringTie\
+  \ GTF result\n  -w, --weights            Ab-initio predictor and EVM weight. Example:\
+  \ augustus:2 or pasa:10\n  --augustus_species       Augustus species config. Default:\
+  \ uses species name\n  --min_training_models    Minimum number of models to train\
+  \ Augustus. Default: 200\n  --genemark_mode          GeneMark mode. Default: ES\
+  \ [ES,ET]\n  --genemark_mod           GeneMark ini mod file\n  --busco_seed_species\
+  \     Augustus pre-trained species to start BUSCO. Default: anidulans\n  --optimize_augustus\
+  \      Run 'optimze_augustus.pl' to refine training (long runtime)\n  --busco_db\
+  \               BUSCO models. Default: dikarya. `funannotate outgroups --show_buscos`\n\
+  \  --organism               Fungal-specific options. Default: fungus. [fungus,other]\n\
+  \  --ploidy                 Ploidy of assembly. Default: 1\n  -t, --tbl2asn    \
+  \        Assembly parameters for tbl2asn. Default: \"-l paired-ends\"\n  -d, --database\
+  \           Path to funannotate database. Default: $FUNANNOTATE_DB\n\n  --protein_evidence\
+  \       Proteins to map to genome (prot1.fa prot2.fa uniprot.fa). Default: uniprot.fa\n\
+  \  --protein_alignments     Pre-computed protein alignments in GFF3 format\n  --p2g_pident\
+  \             Exonerate percent identity. Default: 80\n  --p2g_diamond_db      \
+  \   Premade diamond genome database for protein2genome mapping\n  --p2g_prefilter\
+  \          Pre-filter hits software selection. Default: diamond [tblastn]\n  --transcript_evidence\
+  \    mRNA/ESTs to align to genome (trans1.fa ests.fa trinity.fa). Default: none\n\
+  \  --transcript_alignments  Pre-computed transcript alignments in GFF3 format\n\
+  \  --augustus_gff           Pre-computed AUGUSTUS GFF3 results (must use --stopCodonExcludedFromCDS=False)\n\
+  \  --genemark_gtf           Pre-computed GeneMark GTF results\n  --trnascan    \
+  \           Pre-computed tRNAscanSE results\n\n  --min_intronlen          Minimum\
+  \ intron length. Default: 10\n  --max_intronlen          Maximum intron length.\
+  \ Default: 3000\n  --soft_mask              Softmasked length threshold for GeneMark.\
+  \ Default: 2000\n  --min_protlen            Minimum protein length. Default: 50\n\
+  \  --repeats2evm            Use repeats in EVM consensus model building\n  --keep_evm\
+  \               Keep existing EVM results (for rerunning pipeline)\n  --evm-partition-interval\
+  \ Min length between genes to make a partition: Default: 1500\n  --no-evm-partitions\
+  \      Do not split contigs into partitions\n  --repeat_filter          Repetitive\
+  \ gene model filtering. Default: overlap blast [overlap,blast,none]\n  --keep_no_stops\
+  \          Keep gene models without valid stops\n  --SeqCenter              Sequencing\
+  \ facilty for NCBI tbl file. Default: CFMR\n  --SeqAccession           Sequence\
+  \ accession number for NCBI tbl file. Default: 12345\n  --force                \
+  \  Annotated unmasked genome\n  --cpus                   Number of CPUs to use.\
+  \ Default: 2\n  --no-progress            Do not print progress to stdout for long\
+  \ sub jobs\n\nENV Vars:  If not specified at runtime, will be loaded from your $PATH\n\
+  \  --EVM_HOME\n  --AUGUSTUS_CONFIG_PATH\n  --GENEMARK_PATH\n  --BAMTOOLS_PATH\n\
+  \           \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/funannotate:1.8.5--pyh3252c3a_0

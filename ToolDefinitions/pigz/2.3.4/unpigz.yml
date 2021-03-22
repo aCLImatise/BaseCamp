@@ -1,0 +1,254 @@
+!Command
+command:
+- unpigz
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: pigz
+  description: ''
+- !Positional
+  optional: true
+  position: 1
+  name: files
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - '-0'
+  - '-9'
+  - '-11'
+  description: Compression level (level 11, zopfli, is much slower)
+  args: !SimpleFlagArg
+    name: to
+- !Flag
+  optional: true
+  synonyms:
+  - --fast
+  - --best
+  description: Compression levels 1 and 9 respectively
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --blocksize
+  description: Set compression block size to mmmK (default 128K)
+  args: !SimpleFlagArg
+    name: mmm
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --stdout
+  description: Write all processed output to stdout (won't delete)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --decompress
+  description: Decompress the compressed input
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --force
+  description: Force overwrite, compress .gz, links, and to terminal
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  - --first
+  description: Do iterations first, before block split for -11
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --independent
+  description: Compress blocks independently for damage recovery
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -I
+  - --iterations
+  description: Number of iterations for -11 optimization
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --keep
+  description: Do not delete original file after processing
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -K
+  - --zip
+  description: Compress to PKWare zip (.zip) single entry format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --list
+  description: List the contents of the compressed input
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  - --license
+  description: Display the pigz license and quit
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  - --maxsplits
+  description: Maximum number of split blocks for -11
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --no-name
+  description: Do not store or restore file name in/from header
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -N
+  - --name
+  description: Store/restore file name and mod time in/from header
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -O
+  - --oneblock
+  description: Do not split into smaller blocks for -11
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --processes
+  description: "Allow up to n compression threads (default is the\nnumber of online\
+    \ processors, or 8 if unknown)"
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  description: Print no messages, even on error
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --recursive
+  description: Process the contents of all subdirectories
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  - --rsyncable
+  description: Input-determined block locations for rsync
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --suffix
+  description: .sss    Use suffix .sss instead of .gz (for compression)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --test
+  description: Test the integrity of the compressed input
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --no-time
+  description: Do not store or restore mod time in/from header
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: Provide more verbose output
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  - --zlib
+  description: Compress to zlib (.zz) instead of gzip format
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Display a help screen and quit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Show the version of pigz
+  args: !EmptyFlagArg {}
+help_text: "Usage: pigz [options] [files ...]\n  will compress files in place, adding\
+  \ the suffix '.gz'.  If no files are\n  specified, stdin will be compressed to stdout.\
+  \  pigz does what gzip does,\n  but spreads the work over multiple processors and\
+  \ cores when compressing.\n\nOptions:\n  -0 to -9, -11        Compression level\
+  \ (level 11, zopfli, is much slower)\n  --fast, --best       Compression levels\
+  \ 1 and 9 respectively\n  -b, --blocksize mmm  Set compression block size to mmmK\
+  \ (default 128K)\n  -c, --stdout         Write all processed output to stdout (won't\
+  \ delete)\n  -d, --decompress     Decompress the compressed input\n  -f, --force\
+  \          Force overwrite, compress .gz, links, and to terminal\n  -F  --first\
+  \          Do iterations first, before block split for -11\n  -h, --help       \
+  \    Display a help screen and quit\n  -i, --independent    Compress blocks independently\
+  \ for damage recovery\n  -I, --iterations n   Number of iterations for -11 optimization\n\
+  \  -k, --keep           Do not delete original file after processing\n  -K, --zip\
+  \            Compress to PKWare zip (.zip) single entry format\n  -l, --list   \
+  \        List the contents of the compressed input\n  -L, --license        Display\
+  \ the pigz license and quit\n  -M, --maxsplits n    Maximum number of split blocks\
+  \ for -11\n  -n, --no-name        Do not store or restore file name in/from header\n\
+  \  -N, --name           Store/restore file name and mod time in/from header\n  -O\
+  \  --oneblock       Do not split into smaller blocks for -11\n  -p, --processes\
+  \ n    Allow up to n compression threads (default is the\n                     \
+  \  number of online processors, or 8 if unknown)\n  -q, --quiet          Print no\
+  \ messages, even on error\n  -r, --recursive      Process the contents of all subdirectories\n\
+  \  -R, --rsyncable      Input-determined block locations for rsync\n  -S, --suffix\
+  \ .sss    Use suffix .sss instead of .gz (for compression)\n  -t, --test       \
+  \    Test the integrity of the compressed input\n  -T, --no-time        Do not store\
+  \ or restore mod time in/from header\n  -v, --verbose        Provide more verbose\
+  \ output\n  -V  --version        Show the version of pigz\n  -z, --zlib        \
+  \   Compress to zlib (.zz) instead of gzip format\n  --                   All arguments\
+  \ after \"--\" are treated as files\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/pigz:2.3.4

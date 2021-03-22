@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Array, String, File, Int
+
+Strling_Outliers_Py_V0_1_0 = CommandToolBuilder(tool="strling_outliers.py", base_command=["strling-outliers.py"], inputs=[ToolInput(tag="in_unplaced", input_type=Array(t=String(), optional=True), prefix="--unplaced", doc=InputDocumentation(doc="[--out OUT]")), ToolInput(tag="in_genotype_dot_txt", input_type=Array(t=String(), optional=True), prefix="-genotype.txt", doc=InputDocumentation(doc="for all samples produced by")), ToolInput(tag="in_unplaced_dot_txt", input_type=String(optional=True), prefix="-unplaced.txt", doc=InputDocumentation(doc="for all samples produced by")), ToolInput(tag="in_out", input_type=String(optional=True), prefix="--out", doc=InputDocumentation(doc="Prefix for all output files (suffix will be STRs.tsv)\n(default: )")), ToolInput(tag="in_control", input_type=File(optional=True), prefix="--control", doc=InputDocumentation(doc="Input file for median and standard deviation estimates\nat each locus from a set of control samples. This file\ncan be produced by this script using the emit option.\nIf this option is not set, all samples in the current\nbatch will be used as controls by default.")), ToolInput(tag="in_emit", input_type=File(optional=True), prefix="--emit", doc=InputDocumentation(doc="Output file for median and standard deviation\nestimates at each locus (tsv).")), ToolInput(tag="in_slop", input_type=String(optional=True), prefix="--slop", doc=InputDocumentation(doc="Merge loci that are within this many bp of each other\nand have the same repeat unit.")), ToolInput(tag="in_min_clips", input_type=Int(optional=True), prefix="--min_clips", doc=InputDocumentation(doc="In the individual sample files, only report loci with\nat least many soft-cliped reads in that sample.")), ToolInput(tag="in_min_size", input_type=Int(optional=True), prefix="--min_size", doc=InputDocumentation(doc="In the individual sample files, only report loci with\nat least this allele2_est size in that sample.\n")), ToolInput(tag="in_str_ling_dot", input_type=String(), position=0, doc=InputDocumentation(doc="--unplaced UNPLACED [UNPLACED ...]"))], outputs=[ToolOutput(tag="out_emit", output_type=File(optional=True), selector=InputSelector(input_to_select="in_emit", type_hint=File()), doc=OutputDocumentation(doc="Output file for median and standard deviation\nestimates at each locus (tsv)."))], container="quay.io/biocontainers/strling:0.4.2--hbeb723e_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Strling_Outliers_Py_V0_1_0().translate("wdl")
+

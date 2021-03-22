@@ -1,0 +1,866 @@
+&id001 !Command
+command:
+- pypgatk_cli.py
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - pypgatk_cli.py
+  - ensembl-check
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --config_file
+    description: Configuration to perform Ensembl database check
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -in
+    - --input_fasta
+    description: input_fasta file to perform the translation
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -out
+    - --output
+    description: Output File
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -adds
+    - --add_stop_codons
+    description: "If a stop codons is found, add a new protein with\nsuffix (_Codon_{num})"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -aa
+    - --num_aa
+    description: "Minimun number of aminoacids for a protein to be\nincluded in the\
+      \ database"
+    args: !SimpleFlagArg
+      name: INTEGER
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: pypgatk_cli.py ensembl-check [OPTIONS]\n\nOptions:\n  -c, --config_file\
+    \ TEXT    Configuration to perform Ensembl database check\n  -in, --input_fasta\
+    \ TEXT   input_fasta file to perform the translation\n  -out, --output TEXT  \
+    \     Output File\n  -adds, --add_stop_codons  If a stop codons is found, add\
+    \ a new protein with\n                            suffix (_Codon_{num})\n\n  -aa,\
+    \ --num_aa INTEGER     Minimun number of aminoacids for a protein to be\n    \
+    \                        included in the database\n\n  -h, --help            \
+    \    Show this message and exit.\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/pypgatk:0.0.17--py_0
+- !Command
+  command:
+  - pypgatk_cli.py
+  - generate-decoy
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: databases
+    description: --memory_save                   Slower but uses less memory (does
+      not store
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --config_file
+    description: "Configuration file for the protein database\ndecoy generation"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -out
+    - --output_database
+    description: Output file for decoy database
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -in
+    - --input_database
+    description: "FASTA file of target proteins sequences for\nwhich to create decoys\
+      \ (*.fasta|*.fa)"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    - --method
+    description: "[protein-reverse|protein-shuffle|decoypyrat|pgdbdeep]\nThe method\
+      \ that would be used to generate\nthe decoys: protein-reverse: reverse protein\n\
+      sequences protein-shuffle: shuffle protein\nsequences decoypyrat: method developed\
+      \ for\nproteogenomics that shuffle redundant\npeptides in decoy databases pgdbdeep:\
+      \ method\ndeveloped for proteogenomics developed by\npypgatk"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --decoy_prefix
+    description: "Set accession prefix for decoy proteins in\noutput. Default=DECOY_"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -e
+    - --enzyme
+    description: "[Trypsin|Arg-C|Arg-C/P|Asp-N|Asp-N/B|Asp-N_ambic|Chymotrypsin|Chymotrypsin/P|CNBr|Formic_acid|Lys-C|Lys-N|Lys-C/P|PepsinA|TrypChymo|Trypsin/P|V8-DE|V8-E|leukocyte\
+      \ elastase|proline endopeptidase|glutamyl endopeptidase|alphaLP|2-iodobenzoate|iodosobenzoate|staphylococcal\
+      \ protease/D|proline-endopeptidase/HKR|Glu-C+P|PepsinA + P|cyanogen-bromide|Clostripain/P|elastase-trypsin-chymotrypsin|unspecific\
+      \ cleavage]\nEnzyme used for clevage the protein sequence\n(Default: Trypsin)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --cleavage_position
+    description: "[c|n]       Set cleavage to be c or n terminal of\nspecified cleavage\
+      \ sites. Options [c, n],\nDefault = c"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --max_missed_cleavages
+    description: "Number of allowed missed cleavages in the\nprotein sequence when\
+      \ digestion is performed"
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - --min_peptide_length
+    description: Set minimum length of peptides (Default = 5)
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - --max_peptide_length
+    description: "Set maximum length of peptides (Default =\n100)"
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - --max_iterations
+    description: "Set maximum number of times to shuffle a\npeptide to make it non-target\
+      \ before\nfailing. Default=100"
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - --do_not_shuffle
+    description: "Turn OFF shuffling of decoy peptides that\nare in the target database.\
+      \ Default=false"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --do_not_switch
+    description: "Turn OFF switching of cleavage site with\npreceding amino acid.\
+      \ Default=false"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --temp_file
+    description: "Set temporary file to write decoys prior to\nshuffling. Default=tmp.fa"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --no_isobaric
+    description: "Do not make decoy peptides isobaric.\nDefault=false"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --keep_target_hits
+    description: Keep peptides duplicate in target and decoy
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: pypgatk_cli.py generate-decoy [OPTIONS]\n\nOptions:\n  -c, --config_file\
+    \ TEXT          Configuration file for the protein database\n                \
+    \                  decoy generation\n\n  -out, --output_database TEXT    Output\
+    \ file for decoy database\n  -in, --input_database TEXT      FASTA file of target\
+    \ proteins sequences for\n                                  which to create decoys\
+    \ (*.fasta|*.fa)\n\n  -m, --method [protein-reverse|protein-shuffle|decoypyrat|pgdbdeep]\n\
+    \                                  The method that would be used to generate\n\
+    \                                  the decoys: protein-reverse: reverse protein\n\
+    \                                  sequences protein-shuffle: shuffle protein\n\
+    \                                  sequences decoypyrat: method developed for\n\
+    \                                  proteogenomics that shuffle redundant\n   \
+    \                               peptides in decoy databases pgdbdeep: method\n\
+    \                                  developed for proteogenomics developed by\n\
+    \                                  pypgatk\n\n  -d, --decoy_prefix TEXT      \
+    \   Set accession prefix for decoy proteins in\n                             \
+    \     output. Default=DECOY_\n\n  -e, --enzyme [Trypsin|Arg-C|Arg-C/P|Asp-N|Asp-N/B|Asp-N_ambic|Chymotrypsin|Chymotrypsin/P|CNBr|Formic_acid|Lys-C|Lys-N|Lys-C/P|PepsinA|TrypChymo|Trypsin/P|V8-DE|V8-E|leukocyte\
+    \ elastase|proline endopeptidase|glutamyl endopeptidase|alphaLP|2-iodobenzoate|iodosobenzoate|staphylococcal\
+    \ protease/D|proline-endopeptidase/HKR|Glu-C+P|PepsinA + P|cyanogen-bromide|Clostripain/P|elastase-trypsin-chymotrypsin|unspecific\
+    \ cleavage]\n                                  Enzyme used for clevage the protein\
+    \ sequence\n                                  (Default: Trypsin)\n\n  --cleavage_position\
+    \ [c|n]       Set cleavage to be c or n terminal of\n                        \
+    \          specified cleavage sites. Options [c, n],\n                       \
+    \           Default = c\n\n  -s, --max_missed_cleavages INTEGER\n            \
+    \                      Number of allowed missed cleavages in the\n           \
+    \                       protein sequence when digestion is performed\n\n  --min_peptide_length\
+    \ INTEGER    Set minimum length of peptides (Default = 5)\n  --max_peptide_length\
+    \ INTEGER    Set maximum length of peptides (Default =\n                     \
+    \             100)\n\n  --max_iterations INTEGER        Set maximum number of\
+    \ times to shuffle a\n                                  peptide to make it non-target\
+    \ before\n                                  failing. Default=100\n\n  --do_not_shuffle\
+    \                Turn OFF shuffling of decoy peptides that\n                 \
+    \                 are in the target database. Default=false\n\n  --do_not_switch\
+    \                 Turn OFF switching of cleavage site with\n                 \
+    \                 preceding amino acid. Default=false\n\n  --temp_file TEXT  \
+    \              Set temporary file to write decoys prior to\n                 \
+    \                 shuffling. Default=tmp.fa\n\n  --no_isobaric               \
+    \    Do not make decoy peptides isobaric.\n                                  Default=false\n\
+    \n  --keep_target_hits              Keep peptides duplicate in target and decoy\n\
+    \                                  databases\n\n  --memory_save              \
+    \     Slower but uses less memory (does not store\n                          \
+    \        decoy peptide list). Default=false\n\n  -h, --help                  \
+    \    Show this message and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/pypgatk:0.0.17--py_0
+- !Command
+  command:
+  - pypgatk_cli.py
+  - cbioportal-downloader
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --config_file
+    description: "Configuration file for the ensembl data\ndownloader pipeline"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output_directory
+    description: Output directory for the peptide databases
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    - --list_studies
+    description: "Print the list of all the studies in cBioPortal\n(https://www.cbioportal.org)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --download_study
+    description: "Download a specific Study from cBioPortal --\n(all to download all\
+      \ studies)"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -th
+    - --multithreading
+    description: "Enable multithreading to download multiple\nfiles ad the same time"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: pypgatk_cli.py cbioportal-downloader [OPTIONS]\n\nOptions:\n\
+    \  -c, --config_file TEXT       Configuration file for the ensembl data\n    \
+    \                           downloader pipeline\n\n  -o, --output_directory TEXT\
+    \  Output directory for the peptide databases\n  -l, --list_studies          \
+    \ Print the list of all the studies in cBioPortal\n                          \
+    \     (https://www.cbioportal.org)\n\n  -d, --download_study TEXT    Download\
+    \ a specific Study from cBioPortal --\n                               (all to\
+    \ download all studies)\n\n  -th, --multithreading        Enable multithreading\
+    \ to download multiple\n                               files ad the same time\n\
+    \n  -h, --help                   Show this message and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/pypgatk:0.0.17--py_0
+- !Command
+  command:
+  - pypgatk_cli.py
+  - vcf-to-proteindb
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: peps
+    description: -o, --output_proteindb TEXT     Output file name, exits if already
+      exists
+  - !Positional
+    optional: false
+    position: 1
+    name: variants
+    description: --transcript_index INTEGER      Index of transcript ID in the annotated
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --config_file
+    description: "Configuration to perform conversion between\nENSEMBL Files"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --input_fasta
+    description: Path to the transcript sequence
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --vcf
+    description: Path to the VCF file
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    - --gene_annotations_gtf
+    description: Path to the gene annotations file
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --translation_table
+    description: Translation table (Default 1)
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --var_prefix
+    description: String to add before the variant peptides
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --report_ref_seq
+    description: In addition to var peps, also report all ref
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --annotation_field_name
+    description: "Annotation field name found in the INFO\ncolumn, e.g CSQ or vep;\
+      \ if empty it will\nidentify overlapping transcripts from the\ngiven GTF file\
+      \ and no aa consequence will be\nconsidered"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --af_field
+    description: "field name in the VCF INFO column to use for\nfiltering on AF, (Default\
+      \ None)"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --af_threshold
+    description: Minium AF threshold for considering common
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --consequence_index
+    description: "Index of consequence in the annotated\ncolumns (separated by |)"
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - --exclude_consequences
+    description: "Excluded Consequences  [default:\ndownstream_gene_variant,\nupstream_gene_variant,\
+      \ intergenic_variant,\nintron_variant, synonymous_variant]"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --skip_including_all_cds
+    description: "by default any transcript that has a defined\nCDS will be used,\
+      \ this option disables this\nfeatures instead"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --include_consequences
+    description: included_consequences, default all
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --ignore_filters
+    description: "enabling this option causes or variants to\nbe parsed. By default\
+      \ only variants that\nhave not failed any filters will be\nprocessed (FILTER\
+      \ column is PASS, None, .)\nor if the filters are subset of the accepted\nfilters.\
+      \ (default is False)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --accepted_filters
+    description: Accepted filters for variant parsing
+    args: !SimpleFlagArg
+      name: TEXT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: pypgatk_cli.py vcf-to-proteindb [OPTIONS]\n\nOptions:\n  -c,\
+    \ --config_file TEXT          Configuration to perform conversion between\n  \
+    \                                ENSEMBL Files\n\n  -f, --input_fasta TEXT   \
+    \       Path to the transcript sequence\n  -v, --vcf TEXT                  Path\
+    \ to the VCF file\n  -g, --gene_annotations_gtf TEXT\n                       \
+    \           Path to the gene annotations file\n  -t, --translation_table INTEGER\n\
+    \                                  Translation table (Default 1)\n  -m, --mito_translation_table\
+    \ INTEGER\n                                  Mito_trans_table (default 2)\n  -p,\
+    \ --var_prefix TEXT           String to add before the variant peptides\n  --report_ref_seq\
+    \                In addition to var peps, also report all ref\n              \
+    \                    peps\n\n  -o, --output_proteindb TEXT     Output file name,\
+    \ exits if already exists\n  --annotation_field_name TEXT    Annotation field\
+    \ name found in the INFO\n                                  column, e.g CSQ or\
+    \ vep; if empty it will\n                                  identify overlapping\
+    \ transcripts from the\n                                  given GTF file and no\
+    \ aa consequence will be\n                                  considered\n\n  --af_field\
+    \ TEXT                 field name in the VCF INFO column to use for\n        \
+    \                          filtering on AF, (Default None)\n\n  --af_threshold\
+    \ FLOAT            Minium AF threshold for considering common\n              \
+    \                    variants\n\n  --transcript_index INTEGER      Index of transcript\
+    \ ID in the annotated\n                                  columns (separated by\
+    \ |)\n\n  --consequence_index INTEGER     Index of consequence in the annotated\n\
+    \                                  columns (separated by |)\n\n  --exclude_consequences\
+    \ TEXT     Excluded Consequences  [default:\n                                \
+    \  downstream_gene_variant,\n                                  upstream_gene_variant,\
+    \ intergenic_variant,\n                                  intron_variant, synonymous_variant]\n\
+    \n  -s, --skip_including_all_cds    by default any transcript that has a defined\n\
+    \                                  CDS will be used, this option disables this\n\
+    \                                  features instead\n\n  --include_consequences\
+    \ TEXT     included_consequences, default all\n  --ignore_filters            \
+    \    enabling this option causes or variants to\n                            \
+    \      be parsed. By default only variants that\n                            \
+    \      have not failed any filters will be\n                                 \
+    \ processed (FILTER column is PASS, None, .)\n                               \
+    \   or if the filters are subset of the accepted\n                           \
+    \       filters. (default is False)\n\n  --accepted_filters TEXT         Accepted\
+    \ filters for variant parsing\n  -h, --help                      Show this message\
+    \ and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/pypgatk:0.0.17--py_0
+- !Command
+  command:
+  - pypgatk_cli.py
+  - cosmic-to-proteindb
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: pipelines
+    description: -in, --input_mutation TEXT    Cosmic Mutation data file
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --config_file
+    description: Configuration file for the cosmic data
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -fa
+    - --input_genes
+    description: All Cosmic genes
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -out
+    - --output_db
+    description: Protein database including all the mutations
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --filter_column
+    description: "Column in the VCF file to be used for\nfiltering or splitting mutations"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    - --accepted_values
+    description: "Limit mutations to values (tissue type, sample\nname, etc) considered\
+      \ for generating\nproteinDBs, by default mutations from all\nrecords are considered"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --split_by_filter_column
+    description: "Use this flag to generate a proteinDB per\ngroup as specified in\
+      \ the filter_column,\ndefault is False"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: pypgatk_cli.py cosmic-to-proteindb [OPTIONS]\n\nOptions:\n  -c,\
+    \ --config_file TEXT        Configuration file for the cosmic data\n         \
+    \                       pipelines\n\n  -in, --input_mutation TEXT    Cosmic Mutation\
+    \ data file\n  -fa, --input_genes TEXT       All Cosmic genes\n  -out, --output_db\
+    \ TEXT        Protein database including all the mutations\n  -f, --filter_column\
+    \ TEXT      Column in the VCF file to be used for\n                          \
+    \      filtering or splitting mutations\n\n  -a, --accepted_values TEXT    Limit\
+    \ mutations to values (tissue type, sample\n                                name,\
+    \ etc) considered for generating\n                                proteinDBs,\
+    \ by default mutations from all\n                                records are considered\n\
+    \n  -s, --split_by_filter_column  Use this flag to generate a proteinDB per\n\
+    \                                group as specified in the filter_column,\n  \
+    \                              default is False\n\n  -h, --help              \
+    \      Show this message and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/pypgatk:0.0.17--py_0
+- !Command
+  command:
+  - pypgatk_cli.py
+  - cbioportal-to-proteindb
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: tool
+    description: -in, --input_mutation TEXT      Cbioportal mutation file
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --config_file
+    description: Configuration for cbioportal to proteindb
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -fa
+    - --input_cds
+    description: CDS genes from ENSEMBL database
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -out
+    - --output_db
+    description: Protein database including all the mutations
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --filter_column
+    description: "Column in the VCF file to be used for\nfiltering or splitting mutations"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    - --accepted_values
+    description: "Limit mutations to values (tissue type,\nsample name, etc) considered\
+      \ for generating\nproteinDBs, by default mutations from all\nrecords are considered"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --split_by_filter_column
+    description: "Use this flag to generate a proteinDB per\ngroup as specified in\
+      \ the filter_column,\ndefault is False"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -cl
+    - --clinical_sample_file
+    description: "File to get tissue type from for the samples\nin input_mutation\
+      \ file"
+    args: !SimpleFlagArg
+      name: TEXT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: pypgatk_cli.py cbioportal-to-proteindb [OPTIONS]\n\nOptions:\n\
+    \  -c, --config_file TEXT          Configuration for cbioportal to proteindb\n\
+    \                                  tool\n\n  -in, --input_mutation TEXT      Cbioportal\
+    \ mutation file\n  -fa, --input_cds TEXT           CDS genes from ENSEMBL database\n\
+    \  -out, --output_db TEXT          Protein database including all the mutations\n\
+    \  -f, --filter_column TEXT        Column in the VCF file to be used for\n   \
+    \                               filtering or splitting mutations\n\n  -a, --accepted_values\
+    \ TEXT      Limit mutations to values (tissue type,\n                        \
+    \          sample name, etc) considered for generating\n                     \
+    \             proteinDBs, by default mutations from all\n                    \
+    \              records are considered\n\n  -s, --split_by_filter_column    Use\
+    \ this flag to generate a proteinDB per\n                                  group\
+    \ as specified in the filter_column,\n                                  default\
+    \ is False\n\n  -cl, --clinical_sample_file TEXT\n                           \
+    \       File to get tissue type from for the samples\n                       \
+    \           in input_mutation file\n\n  -h, --help                      Show this\
+    \ message and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/pypgatk:0.0.17--py_0
+- !Command
+  command:
+  - pypgatk_cli.py
+  - proteindb
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: pypgatk_cli.py
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: COMMAND
+    description: ''
+  - !Positional
+    optional: true
+    position: 2
+    name: ARGS
+    description: ''
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: pypgatk_cli.py [OPTIONS] COMMAND [ARGS]...\nTry 'pypgatk_cli.py\
+    \ -h' for help.\n\nError: No such command 'proteindb'.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/pypgatk:0.0.17--py_0
+- !Command
+  command:
+  - pypgatk_cli.py
+  - gaps
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: pypgatk_cli.py
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: COMMAND
+    description: ''
+  - !Positional
+    optional: true
+    position: 2
+    name: ARGS
+    description: ''
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: pypgatk_cli.py [OPTIONS] COMMAND [ARGS]...\nTry 'pypgatk_cli.py\
+    \ -h' for help.\n\nError: No such command 'gaps'.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/pypgatk:0.0.17--py_0
+- !Command
+  command:
+  - pypgatk_cli.py
+  - threeframe-translation
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --config_file
+    description: "Configuration to perform conversion between\nENSEMBL Files"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -in
+    - --input_fasta
+    description: input_fasta file to perform the translation
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --translation_table
+    description: Translation table default value 1
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -out
+    - --output
+    description: Output File
+    args: !SimpleFlagArg
+      name: TEXT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: pypgatk_cli.py threeframe-translation [OPTIONS]\n\nOptions:\n\
+    \  -c, --config_file TEXT        Configuration to perform conversion between\n\
+    \                                ENSEMBL Files\n\n  -in, --input_fasta TEXT  \
+    \     input_fasta file to perform the translation\n  -t, --translation_table TEXT\
+    \  Translation table default value 1\n  -out, --output TEXT           Output File\n\
+    \  -h, --help                    Show this message and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/pypgatk:0.0.17--py_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: pypgatk_cli.py [OPTIONS] COMMAND [ARGS]...\n\n  This is the main\
+  \ tool that give access to all commands and options\n  provided by the pypgatk\n\
+  \nOptions:\n  -h, --help  Show this message and exit.\n\nCommands:\n  cbioportal-downloader\
+  \     Command to download the the cbioportal studies\n  cbioportal-to-proteindb\
+  \  Command to translate cbioportal mutation data into\n                        \
+  \   proteindb\n\n  cosmic-downloader        Command to download the cosmic mutation\
+  \ database\n  cosmic-to-proteindb      Command to translate Cosmic mutation data\
+  \ into\n                           proteindb\n\n  dnaseq-to-proteindb      Generate\
+  \ peptides based on DNA sequences\n  ensembl-check            Command to check ensembl\
+  \ database for stop codons,\n                           gaps\n\n  ensembl-downloader\
+  \       Command to download the ensembl information\n  generate-decoy          \
+  \ Create decoy protein sequences using multiple\n                           methods\
+  \ DecoyPYrat, Reverse/Shuffled Proteins.\n\n  threeframe-translation   Command to\
+  \ perform 3'frame translation\n  vcf-to-proteindb         Generate peptides based\
+  \ on DNA variants VCF files\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/pypgatk:0.0.17--py_0

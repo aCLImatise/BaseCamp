@@ -1,0 +1,181 @@
+!Command
+command:
+- kleborate
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --assemblies
+  description: FASTA file(s) for assemblies
+  args: !RepeatFlagArg
+    name: ASSEMBLIES
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --resistance
+  description: "Turn on resistance genes screening (default: no\nresistance gene screening)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --kaptive_k
+  description: "Turn on Kaptive screening of K loci (default: do not\nrun Kaptive\
+    \ for K loci)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --kaptive_o
+  description: "Turn on Kaptive screening of O loci (default: do not\nrun Kaptive\
+    \ for O loci)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --kaptive
+  description: Equivalent to --kaptive_k --kaptive_o
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --all
+  description: Equivalent to --resistance --kaptive
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --outfile
+  description: "File for detailed output (default:\nKleborate_results.txt)"
+  args: !SimpleFlagArg
+    name: OUTFILE
+- !Flag
+  optional: true
+  synonyms:
+  - --kaptive_k_outfile
+  description: "File for full Kaptive K locus output (default: do\nnot save Kaptive\
+    \ K locus results to separate file)"
+  args: !SimpleFlagArg
+    name: KAPTIVE_K_OUTFILE
+- !Flag
+  optional: true
+  synonyms:
+  - --kaptive_o_outfile
+  description: "File for full Kaptive O locus output (default: do\nnot save Kaptive\
+    \ O locus results to separate file)"
+  args: !SimpleFlagArg
+    name: KAPTIVE_O_OUTFILE
+- !Flag
+  optional: true
+  synonyms:
+  - --min_identity
+  description: "Minimum alignment percent identity for main results\n(default: 90.0)"
+  args: !SimpleFlagArg
+    name: MIN_IDENTITY
+- !Flag
+  optional: true
+  synonyms:
+  - --min_coverage
+  description: "Minimum alignment percent coverage for main results\n(default: 80.0)"
+  args: !SimpleFlagArg
+    name: MIN_COVERAGE
+- !Flag
+  optional: true
+  synonyms:
+  - --min_spurious_identity
+  description: "Minimum alignment percent identity for spurious\nresults (default:\
+    \ 80.0)"
+  args: !SimpleFlagArg
+    name: MIN_SPURIOUS_IDENTITY
+- !Flag
+  optional: true
+  synonyms:
+  - --min_spurious_coverage
+  description: "Minimum alignment percent coverage for spurious\nresults (default:\
+    \ 40.0)"
+  args: !SimpleFlagArg
+    name: MIN_SPURIOUS_COVERAGE
+- !Flag
+  optional: true
+  synonyms:
+  - --min_kaptive_confidence
+  description: "Minimum Kaptive confidence to call K/O loci -\nconfidence levels below\
+    \ this will be reported as\nunknown (default: Good)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      Good:
+      Low:
+      High:
+      Very_high:
+      None:
+      Perfect:
+- !Flag
+  optional: true
+  synonyms:
+  - --force_index
+  description: "Rebuild the BLAST index at the start of execution\n(default: only\
+    \ build BLAST indices when they are\nmissing)"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: kleborate -a ASSEMBLIES [ASSEMBLIES ...] [-r] [--kaptive_k]\n \
+  \                [--kaptive_o] [-k] [--all] [-o OUTFILE]\n                 [--kaptive_k_outfile\
+  \ KAPTIVE_K_OUTFILE]\n                 [--kaptive_o_outfile KAPTIVE_O_OUTFILE]\n\
+  \                 [--min_identity MIN_IDENTITY] [--min_coverage MIN_COVERAGE]\n\
+  \                 [--min_spurious_identity MIN_SPURIOUS_IDENTITY]\n            \
+  \     [--min_spurious_coverage MIN_SPURIOUS_COVERAGE]\n                 [--min_kaptive_confidence\
+  \ {None,Low,Good,High,Very_high,Perfect}]\n                 [--force_index] [-h]\
+  \ [--version]\n\nKleborate: a tool for characterising virulence and resistance in\
+  \ Klebsiella\n\nRequired arguments:\n  -a ASSEMBLIES [ASSEMBLIES ...], --assemblies\
+  \ ASSEMBLIES [ASSEMBLIES ...]\n                          FASTA file(s) for assemblies\n\
+  \nScreening options:\n  -r, --resistance        Turn on resistance genes screening\
+  \ (default: no\n                          resistance gene screening)\n  --kaptive_k\
+  \             Turn on Kaptive screening of K loci (default: do not\n           \
+  \               run Kaptive for K loci)\n  --kaptive_o             Turn on Kaptive\
+  \ screening of O loci (default: do not\n                          run Kaptive for\
+  \ O loci)\n  -k, --kaptive           Equivalent to --kaptive_k --kaptive_o\n  --all\
+  \                   Equivalent to --resistance --kaptive\n\nOutput options:\n  -o\
+  \ OUTFILE, --outfile OUTFILE\n                          File for detailed output\
+  \ (default:\n                          Kleborate_results.txt)\n  --kaptive_k_outfile\
+  \ KAPTIVE_K_OUTFILE\n                          File for full Kaptive K locus output\
+  \ (default: do\n                          not save Kaptive K locus results to separate\
+  \ file)\n  --kaptive_o_outfile KAPTIVE_O_OUTFILE\n                          File\
+  \ for full Kaptive O locus output (default: do\n                          not save\
+  \ Kaptive O locus results to separate file)\n\nSettings:\n  --min_identity MIN_IDENTITY\n\
+  \                          Minimum alignment percent identity for main results\n\
+  \                          (default: 90.0)\n  --min_coverage MIN_COVERAGE\n    \
+  \                      Minimum alignment percent coverage for main results\n   \
+  \                       (default: 80.0)\n  --min_spurious_identity MIN_SPURIOUS_IDENTITY\n\
+  \                          Minimum alignment percent identity for spurious\n   \
+  \                       results (default: 80.0)\n  --min_spurious_coverage MIN_SPURIOUS_COVERAGE\n\
+  \                          Minimum alignment percent coverage for spurious\n   \
+  \                       results (default: 40.0)\n  --min_kaptive_confidence {None,Low,Good,High,Very_high,Perfect}\n\
+  \                          Minimum Kaptive confidence to call K/O loci -\n     \
+  \                     confidence levels below this will be reported as\n       \
+  \                   unknown (default: Good)\n\nOther:\n  --force_index         \
+  \  Rebuild the BLAST index at the start of execution\n                         \
+  \ (default: only build BLAST indices when they are\n                          missing)\n\
+  \nHelp:\n  -h, --help              Show this help message and exit\n  --version\
+  \               Show program's version number and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/kleborate:2.0.4--py_0

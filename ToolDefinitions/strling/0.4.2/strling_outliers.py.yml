@@ -1,0 +1,121 @@
+!Command
+command:
+- strling-outliers.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: STRling.
+  description: --unplaced UNPLACED [UNPLACED ...]
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --unplaced
+  description: '[--out OUT]'
+  args: !RepeatFlagArg
+    name: UNPLACED
+- !Flag
+  optional: true
+  synonyms:
+  - --genotypes
+  - -genotype.txt
+  description: for all samples produced by
+  args: !RepeatFlagArg
+    name: GENOTYPES
+- !Flag
+  optional: true
+  synonyms:
+  - -unplaced.txt
+  description: for all samples produced by
+  args: !SimpleFlagArg
+    name: files
+- !Flag
+  optional: true
+  synonyms:
+  - --out
+  description: "Prefix for all output files (suffix will be STRs.tsv)\n(default: )"
+  args: !SimpleFlagArg
+    name: OUT
+- !Flag
+  optional: true
+  synonyms:
+  - --control
+  description: "Input file for median and standard deviation estimates\nat each locus\
+    \ from a set of control samples. This file\ncan be produced by this script using\
+    \ the emit option.\nIf this option is not set, all samples in the current\nbatch\
+    \ will be used as controls by default."
+  args: !SimpleFlagArg
+    name: CONTROL
+- !Flag
+  optional: true
+  synonyms:
+  - --emit
+  description: "Output file for median and standard deviation\nestimates at each locus\
+    \ (tsv)."
+  args: !SimpleFlagArg
+    name: EMIT
+- !Flag
+  optional: true
+  synonyms:
+  - --slop
+  description: "Merge loci that are within this many bp of each other\nand have the\
+    \ same repeat unit."
+  args: !SimpleFlagArg
+    name: SLOP
+- !Flag
+  optional: true
+  synonyms:
+  - --min_clips
+  description: "In the individual sample files, only report loci with\nat least many\
+    \ soft-cliped reads in that sample."
+  args: !SimpleFlagArg
+    name: MIN_CLIPS
+- !Flag
+  optional: true
+  synonyms:
+  - --min_size
+  description: "In the individual sample files, only report loci with\nat least this\
+    \ allele2_est size in that sample.\n"
+  args: !SimpleFlagArg
+    name: MIN_SIZE
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: strling-outliers.py [-h] --genotypes GENOTYPES [GENOTYPES ...]\n\
+  \                           --unplaced UNPLACED [UNPLACED ...] [--out OUT]\n   \
+  \                        [--control CONTROL] [--emit EMIT] [--slop SLOP]\n     \
+  \                      [--min_clips MIN_CLIPS] [--min_size MIN_SIZE]\n\nRead STRling\
+  \ output and look for individuals that are outliers at STR loci\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  --genotypes GENOTYPES\
+  \ [GENOTYPES ...]\n                        -genotype.txt files for all samples produced\
+  \ by\n                        STRling.\n  --unplaced UNPLACED [UNPLACED ...]\n \
+  \                       -unplaced.txt files for all samples produced by\n      \
+  \                  STRling. Contains the number of unassigned STR reads\n      \
+  \                  for each repeat unit.\n  --out OUT             Prefix for all\
+  \ output files (suffix will be STRs.tsv)\n                        (default: )\n\
+  \  --control CONTROL     Input file for median and standard deviation estimates\n\
+  \                        at each locus from a set of control samples. This file\n\
+  \                        can be produced by this script using the emit option.\n\
+  \                        If this option is not set, all samples in the current\n\
+  \                        batch will be used as controls by default.\n  --emit EMIT\
+  \           Output file for median and standard deviation\n                    \
+  \    estimates at each locus (tsv).\n  --slop SLOP           Merge loci that are\
+  \ within this many bp of each other\n                        and have the same repeat\
+  \ unit.\n  --min_clips MIN_CLIPS\n                        In the individual sample\
+  \ files, only report loci with\n                        at least many soft-cliped\
+  \ reads in that sample.\n  --min_size MIN_SIZE   In the individual sample files,\
+  \ only report loci with\n                        at least this allele2_est size\
+  \ in that sample.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/strling:0.4.2--hbeb723e_0

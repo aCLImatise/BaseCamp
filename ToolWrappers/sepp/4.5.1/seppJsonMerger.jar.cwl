@@ -1,0 +1,13 @@
+class: CommandLineTool
+id: seppJsonMerger.jar.cwl
+inputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+hints:
+- class: DockerRequirement
+  dockerPull: quay.io/biocontainers/sepp:4.5.1--py37_0
+cwlVersion: v1.1
+baseCommand:
+- seppJsonMerger.jar

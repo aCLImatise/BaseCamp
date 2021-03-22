@@ -1,0 +1,199 @@
+!Command
+command:
+- ultraplex
+positional:
+- !Positional
+  optional: true
+  position: 0
+  name: DIRECTORY
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --inputfastq
+  description: fastq file to be demultiplexed
+  args: !SimpleFlagArg
+    name: INPUTFASTQ
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --barcodes
+  description: barcodes for demultiplexing in csv format
+  args: !SimpleFlagArg
+    name: BARCODES
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: "[DIRECTORY], --directory [DIRECTORY]\noptional output directory"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m5
+  description: "[FIVEPRIMEMISMATCHES], --fiveprimemismatches [FIVEPRIMEMISMATCHES]\n\
+    number of mismatches allowed for 5prime barcode\n[DEFAULT 1]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m3
+  description: "[THREEPRIMEMISMATCHES], --threeprimemismatches [THREEPRIMEMISMATCHES]\n\
+    number of mismatches allowed for 3prime barcode\n[DEFAULT 0]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  description: "[PHREDQUALITY], --phredquality [PHREDQUALITY]\nphred quality score\
+    \ for 3prime end trimming"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: "[THREADS], --threads [THREADS]\nthreads [DEFAULT 4]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  description: "[ADAPTER], --adapter [ADAPTER]\nsequencing adapter to trim [DEFAULT\
+    \ Illumina\nAGATCGGAAGAGCGGTTCAG]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: "[OUTPUTPREFIX], --outputprefix [OUTPUTPREFIX]\nprefix for output sequences\
+    \ [DEFAULT demux]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -sb
+  - --sbatchcompression
+  description: whether to compress output fastq using SLURM sbatch
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --ultra
+  description: "whether to use ultra mode, which is faster but makes\nvery large temporary\
+    \ files"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ig
+  - --ignore_space_warning
+  description: "whether to ignore warnings that there is not enough\nfree space"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: "[FINAL_MIN_LENGTH], --final_min_length [FINAL_MIN_LENGTH]\nminimum\
+    \ length of the final outputted reads"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q5
+  description: "[PHREDQUALITY_5_PRIME], --phredquality_5_prime [PHREDQUALITY_5_PRIME]\n\
+    quality trimming minimum score from 5' end - use with\ncaution!"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i2
+  description: "[INPUT_2], --input_2 [INPUT_2]\nOptional second fastq.gz input for\
+    \ paired end data"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -a2
+  description: "[ADAPTER2], --adapter2 [ADAPTER2]\nsequencing adaptor to trim for\
+    \ the reverse read\n[Default AGATCGGAAGAGCGTCGTG]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -mt
+  description: "[MIN_TRIM], --min_trim [MIN_TRIM]\nWhen using single end reads for\
+    \ 3' demultiplexing,\nthis is the minimum adapter trimming amount for a\n3'barcode\
+    \ to be detected. Default = 3"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -inm
+  - --ignore_no_match
+  description: "Do not write reads for which there is no match.\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n\
+  @@@@@   @@@@   .@@   @@@@@@@          @@         @@@@@@    (@@@@@        @@@   \
+  \ @@@@@@@         @@    @@@    @\n@@@@   @@@@    @@   ,@@@@@@@@@    @@@@@    @@@\
+  \   @@@@   (   @@@@   @@@   @@    @@@@@@@   @@@@@@@@@@   #   @@@@\n@@@   &@@@  \
+  \  @@    @@@@@@@@@%   @@@@@         @@@@(   @    @@@         @@    @@@@@@@     \
+  \    @@@@@     @@@@@@\n@@    @@@    @@    @@@@@@@@@@   @@@@@    @@    @@@      \
+  \    @@   .@@@@@@@*   @@@@@@@    @@@@@@@@.   @    @@@@@\n@@@       @@@@.       \
+  \ @@@@@   @@@@@&   @@@.   &   &@@@@    @    @@@@@@@@         @          @    @@@@\
+  \    @@@@\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n\
+  \nusage: ultraplex [-h] -i INPUTFASTQ -b BARCODES [-d [DIRECTORY]]\n           \
+  \      [-m5 [FIVEPRIMEMISMATCHES]] [-m3 [THREEPRIMEMISMATCHES]]\n              \
+  \   [-q [PHREDQUALITY]] [-t [THREADS]] [-a [ADAPTER]]\n                 [-o [OUTPUTPREFIX]]\
+  \ [-sb] [-u] [-ig] [-l [FINAL_MIN_LENGTH]]\n                 [-q5 [PHREDQUALITY_5_PRIME]]\
+  \ [-i2 [INPUT_2]] [-a2 [ADAPTER2]]\n                 [-mt [MIN_TRIM]] [-inm]\n\n\
+  Ultra-fast demultiplexing of fastq files.\n\nrequired arguments:\n  -i INPUTFASTQ,\
+  \ --inputfastq INPUTFASTQ\n                        fastq file to be demultiplexed\n\
+  \  -b BARCODES, --barcodes BARCODES\n                        barcodes for demultiplexing\
+  \ in csv format\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  -d [DIRECTORY], --directory [DIRECTORY]\n                        optional\
+  \ output directory\n  -m5 [FIVEPRIMEMISMATCHES], --fiveprimemismatches [FIVEPRIMEMISMATCHES]\n\
+  \                        number of mismatches allowed for 5prime barcode\n     \
+  \                   [DEFAULT 1]\n  -m3 [THREEPRIMEMISMATCHES], --threeprimemismatches\
+  \ [THREEPRIMEMISMATCHES]\n                        number of mismatches allowed for\
+  \ 3prime barcode\n                        [DEFAULT 0]\n  -q [PHREDQUALITY], --phredquality\
+  \ [PHREDQUALITY]\n                        phred quality score for 3prime end trimming\n\
+  \  -t [THREADS], --threads [THREADS]\n                        threads [DEFAULT 4]\n\
+  \  -a [ADAPTER], --adapter [ADAPTER]\n                        sequencing adapter\
+  \ to trim [DEFAULT Illumina\n                        AGATCGGAAGAGCGGTTCAG]\n  -o\
+  \ [OUTPUTPREFIX], --outputprefix [OUTPUTPREFIX]\n                        prefix\
+  \ for output sequences [DEFAULT demux]\n  -sb, --sbatchcompression\n           \
+  \             whether to compress output fastq using SLURM sbatch\n  -u, --ultra\
+  \           whether to use ultra mode, which is faster but makes\n             \
+  \           very large temporary files\n  -ig, --ignore_space_warning\n        \
+  \                whether to ignore warnings that there is not enough\n         \
+  \               free space\n  -l [FINAL_MIN_LENGTH], --final_min_length [FINAL_MIN_LENGTH]\n\
+  \                        minimum length of the final outputted reads\n  -q5 [PHREDQUALITY_5_PRIME],\
+  \ --phredquality_5_prime [PHREDQUALITY_5_PRIME]\n                        quality\
+  \ trimming minimum score from 5' end - use with\n                        caution!\n\
+  \  -i2 [INPUT_2], --input_2 [INPUT_2]\n                        Optional second fastq.gz\
+  \ input for paired end data\n  -a2 [ADAPTER2], --adapter2 [ADAPTER2]\n         \
+  \               sequencing adaptor to trim for the reverse read\n              \
+  \          [Default AGATCGGAAGAGCGTCGTG]\n  -mt [MIN_TRIM], --min_trim [MIN_TRIM]\n\
+  \                        When using single end reads for 3' demultiplexing,\n  \
+  \                      this is the minimum adapter trimming amount for a\n     \
+  \                   3'barcode to be detected. Default = 3\n  -inm, --ignore_no_match\n\
+  \                        Do not write reads for which there is no match.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/ultraplex:1.1.4--py38h0213d0e_0

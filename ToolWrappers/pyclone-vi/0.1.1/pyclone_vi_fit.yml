@@ -1,0 +1,174 @@
+!Command
+command:
+- pyclone-vi
+- fit
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --in-file
+  description: "Path to TSV format file with copy number and\nallele count information\
+    \ for all samples.See\nthe examples directory in the GitHub\nrepository for format.\
+    \  [required]"
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out-file
+  description: "Path to where results will be written in\nHDF5 format.  [required]"
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --num-annealing-steps
+  description: "Number of simulated annealing steps to\nuse.Default is one step i.e.\
+    \ not to use\nsimulated annealing."
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --num-clusters
+  description: "Number of clusters to use in variational\napproximation distribution.Note\
+    \ that not all\nclusters may not be assigned data points, so\nthe final number\
+    \ of clusters could be\nlower.Default is 10."
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --density
+  description: "[beta-binomial|binomial]\nAllele count density in the PyClone\nmodel.Use\
+    \ beta-binomial for high coverage\nsequencing.Default binomial."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --num-grid-points
+  description: "Number of points used to approximate CCF\nvalues.Default is 100."
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --num-restarts
+  description: "Number random restarts of Variational\ninference.Default is 1."
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --annealing-power
+  description: "Exponent of entries in the annealing\nladder.Default is 1.0."
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --convergence-threshold
+  description: "Maximum relative ELBO difference between\niterations to decide on\
+    \ convergence.Default\nis 10^-6."
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --max-iters
+  description: "Maximum number of ELBO optimization\niterations.Default is 10,0000."
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --mix-weight-prior
+  description: "Parameter value of symmetric Dirichlet prior\ndistribution on mixture\
+    \ weights.Higher\nvalues will produce more clusters.Default is\n1.0 which is the\
+    \ uniform prior."
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --precision
+  description: "Precision for Beta-Binomial density.Has no\neffect when using Binomial.Default\
+    \ is 200."
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --print-freq
+  description: "How often to print information about\noptimization.Default is every\
+    \ 100 iteration."
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --seed
+  description: "Set random seed so results can be\nreproduced. By default a random\
+    \ seed is\nchosen."
+  args: !SimpleFlagArg
+    name: INTEGER
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: pyclone-vi fit [OPTIONS]\n\n  Fit PyClone-VI model to data.\n\n\
+  Options:\n  -i, --in-file PATH              Path to TSV format file with copy number\
+  \ and\n                                  allele count information for all samples.See\n\
+  \                                  the examples directory in the GitHub\n      \
+  \                            repository for format.  [required]\n\n  -o, --out-file\
+  \ PATH             Path to where results will be written in\n                  \
+  \                HDF5 format.  [required]\n\n  -a, --num-annealing-steps INTEGER\n\
+  \                                  Number of simulated annealing steps to\n    \
+  \                              use.Default is one step i.e. not to use\n       \
+  \                           simulated annealing.\n\n  -c, --num-clusters INTEGER\
+  \      Number of clusters to use in variational\n                              \
+  \    approximation distribution.Note that not all\n                            \
+  \      clusters may not be assigned data points, so\n                          \
+  \        the final number of clusters could be\n                               \
+  \   lower.Default is 10.\n\n  -d, --density [beta-binomial|binomial]\n         \
+  \                         Allele count density in the PyClone\n                \
+  \                  model.Use beta-binomial for high coverage\n                 \
+  \                 sequencing.Default binomial.\n\n  -g, --num-grid-points INTEGER\
+  \   Number of points used to approximate CCF\n                                 \
+  \ values.Default is 100.\n\n  -r, --num-restarts INTEGER      Number random restarts\
+  \ of Variational\n                                  inference.Default is 1.\n\n\
+  \  --annealing-power FLOAT         Exponent of entries in the annealing\n      \
+  \                            ladder.Default is 1.0.\n\n  --convergence-threshold\
+  \ FLOAT   Maximum relative ELBO difference between\n                           \
+  \       iterations to decide on convergence.Default\n                          \
+  \        is 10^-6.\n\n  --max-iters INTEGER             Maximum number of ELBO optimization\n\
+  \                                  iterations.Default is 10,0000.\n\n  --mix-weight-prior\
+  \ FLOAT        Parameter value of symmetric Dirichlet prior\n                  \
+  \                distribution on mixture weights.Higher\n                      \
+  \            values will produce more clusters.Default is\n                    \
+  \              1.0 which is the uniform prior.\n\n  --precision FLOAT          \
+  \     Precision for Beta-Binomial density.Has no\n                             \
+  \     effect when using Binomial.Default is 200.\n\n  --print-freq INTEGER     \
+  \       How often to print information about\n                                 \
+  \ optimization.Default is every 100 iteration.\n\n  --seed INTEGER             \
+  \     Set random seed so results can be\n                                  reproduced.\
+  \ By default a random seed is\n                                  chosen.\n\n  --help\
+  \                          Show this message and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/pyclone-vi:0.1.1--pyh7b7c402_0

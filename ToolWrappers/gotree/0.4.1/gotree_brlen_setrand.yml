@@ -1,0 +1,101 @@
+!Command
+command:
+- gotree
+- brlen
+- setrand
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --max-mean
+  description: Mean of the exponential distribution of branch lengths will be drawn
+    uniformly in the interval [min-mean,max-mean] (default 0.05)
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --mean
+  description: Mean of the exponential distribution of branch lengths (default 0.1)
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - --min-mean
+  description: Mean of the exponential distribution of branch lengths will be drawn
+    uniformly in the interval [min-mean,max-mean] (default 0.001)
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: Random length output tree file (default "stdout")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --format
+  description: Input tree format (newick, nexus, or phyloxml) (default "newick")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  description: Input tree (default "stdin")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --seed
+  description: 'Random Seed: -1 = nano seconds since 1970/01/01 00:00:00 (default
+    -1)'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: Number of threads (Max=2) (default 1)
+  args: !SimpleFlagArg
+    name: int
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: help for setrand
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Assign a random length to edges of input trees.\n\nBranch lengths are\
+  \ drawn in an exponential distribution of parameter lambda=1/mean.\nTwo possibilities\
+  \ for the mean:\n\n1) If --mean-min and --mean-max are given, and mean-min < mean-max\
+  \ and are both > 0 then \n\"mean\" is drawn uniformly in the interval [mean-min,mean-max]\n\
+  \n2) Otherwise, 'mean' is set to --mean value.\n\nUsage:\n  gotree brlen setrand\
+  \ [flags]\n\nFlags:\n  -h, --help             help for setrand\n      --max-mean\
+  \ float   Mean of the exponential distribution of branch lengths will be drawn uniformly\
+  \ in the interval [min-mean,max-mean] (default 0.05)\n  -m, --mean float       Mean\
+  \ of the exponential distribution of branch lengths (default 0.1)\n      --min-mean\
+  \ float   Mean of the exponential distribution of branch lengths will be drawn uniformly\
+  \ in the interval [min-mean,max-mean] (default 0.001)\n  -o, --output string   \
+  \ Random length output tree file (default \"stdout\")\n\nGlobal Flags:\n      --format\
+  \ string   Input tree format (newick, nexus, or phyloxml) (default \"newick\")\n\
+  \  -i, --input string    Input tree (default \"stdin\")\n      --seed int      \
+  \  Random Seed: -1 = nano seconds since 1970/01/01 00:00:00 (default -1)\n  -t,\
+  \ --threads int     Number of threads (Max=2) (default 1)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/gotree:0.4.1--h375a9b1_0

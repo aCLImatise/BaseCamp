@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, Int, String
+
+Rbt_Collapse_Reads_To_Fragments_Fastq_V0_1_0 = CommandToolBuilder(tool="rbt_collapse_reads_to_fragments_fastq", base_command=["rbt", "collapse-reads-to-fragments", "fastq"], inputs=[ToolInput(tag="in_umi_on_reverse", input_type=Boolean(optional=True), prefix="--umi-on-reverse", doc=InputDocumentation(doc="Set if UMI is on reverse read")), ToolInput(tag="in_verbose_read_names", input_type=Boolean(optional=True), prefix="--verbose-read-names", doc=InputDocumentation(doc="Add list of reads that were merged for each consensus read. Note that this can yield very long FASTQ name\nlines which cannot be handled by some tools.")), ToolInput(tag="in_insert_size", input_type=Int(optional=True), prefix="--insert-size", doc=InputDocumentation(doc="Expected insert size of sequenced fragment (Required for calculating overlapping consensus only)")), ToolInput(tag="in_max_seq_dist", input_type=Int(optional=True), prefix="--max-seq-dist", doc=InputDocumentation(doc="Maximum hamming distance between the sequences of any pair of reads in the same cluster. [default: 2]\n[possible values: 1, 2, 3, 4, 5, 6, 7, 8]")), ToolInput(tag="in_max_umi_dist", input_type=Int(optional=True), prefix="--max-umi-dist", doc=InputDocumentation(doc="Maximum hamming distance between the UMIs of any pair of reads in the same cluster. [default: 1]")), ToolInput(tag="in_std_dev", input_type=Int(optional=True), prefix="--std-dev", doc=InputDocumentation(doc="Standard deviation of expected insert size. Defines search space of the most likely overlap. (Required for\ncalculating overlapping consensus only)")), ToolInput(tag="in_umi_len", input_type=Int(optional=True), prefix="--umi-len", doc=InputDocumentation(doc="Length of UMI in read. [default: 8]")), ToolInput(tag="in_flags", input_type=String(optional=True), position=0, doc=InputDocumentation(doc="")), ToolInput(tag="in_fq_one", input_type=Int(), position=1, doc=InputDocumentation(doc="")), ToolInput(tag="in_fq_two", input_type=Int(), position=2, doc=InputDocumentation(doc="")), ToolInput(tag="in_consensus_fq_one", input_type=Int(), position=3, doc=InputDocumentation(doc="")), ToolInput(tag="in_consensus_fq_two", input_type=Int(), position=4, doc=InputDocumentation(doc=""))], outputs=[], container="quay.io/biocontainers/rust-bio-tools:0.20.0--heda7bfa_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Rbt_Collapse_Reads_To_Fragments_Fastq_V0_1_0().translate("wdl")
+

@@ -1,0 +1,775 @@
+&id001 !Command
+command:
+- dRep
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - dRep
+  - dereplicate
+  positional:
+  - !Positional
+    optional: true
+    position: 0
+    name: GENOMES
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --processors
+    description: 'threads (default: 6)'
+    args: !SimpleFlagArg
+      name: PROCESSORS
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --debug
+    description: 'make extra debugging output (default: False)'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    description: "[GENOMES [GENOMES ...]], --genomes [GENOMES [GENOMES ...]]\ngenomes\
+      \ to filter in .fasta format. Not necessary if\nBdb or Wdb already exist. Can\
+      \ also input a text file\nwith paths to genomes, which results in fewer OS\n\
+      issues than wildcard expansion (default: None)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    - --length
+    description: 'Minimum genome length (default: 50000)'
+    args: !SimpleFlagArg
+      name: LENGTH
+  - !Flag
+    optional: true
+    synonyms:
+    - -comp
+    - --completeness
+    description: 'Minumum genome completeness (default: 75)'
+    args: !SimpleFlagArg
+      name: COMPLETENESS
+  - !Flag
+    optional: true
+    synonyms:
+    - -con
+    - --contamination
+    description: 'Maximum genome contamination (default: 25)'
+    args: !SimpleFlagArg
+      name: CONTAMINATION
+  - !Flag
+    optional: true
+    synonyms:
+    - --ignoreGenomeQuality
+    description: "Don't run checkM or do any quality filtering. NOT\nRECOMMENDED!\
+      \ This is useful for use with\nbacteriophages or eukaryotes or things where\
+      \ checkM\nscoring does not work. Will only choose genomes based\non length and\
+      \ N50 (default: False)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --genomeInfo
+    description: "location of .csv file containing quality information\non the genomes.\
+      \ Must contain: [\"genome\"(basename of\n.fasta file of that genome), \"completeness\"\
+      (0-100\nvalue for completeness of the genome),\n\"contamination\"(0-100 value\
+      \ of the contamination of\nthe genome)] (default: None)"
+    args: !SimpleFlagArg
+      name: GENOMEINFO
+  - !Flag
+    optional: true
+    synonyms:
+    - --checkM_method
+    description: "Either lineage_wf (more accurate) or taxonomy_wf\n(faster) (default:\
+      \ lineage_wf)"
+    args: !ChoiceFlagArg
+      choices: !!set
+        taxonomy_wf:
+        lineage_wf:
+  - !Flag
+    optional: true
+    synonyms:
+    - --set_recursion
+    description: "Increases the python recursion limit. NOT RECOMMENDED\nunless checkM\
+      \ is crashing due to recursion issues.\nRecommended to set to 2000 if needed,\
+      \ but setting this\ncould crash python (default: 0)"
+    args: !SimpleFlagArg
+      name: SET_RECURSION
+  - !Flag
+    optional: true
+    synonyms:
+    - --checkm_group_size
+    description: "The number of genomes passed to checkM at a time.\nIncreasing this\
+      \ increases RAM but makes checkM faster\n(default: 2000)"
+    args: !SimpleFlagArg
+      name: CHECKM_GROUP_SIZE
+  - !Flag
+    optional: true
+    synonyms:
+    - --S_algorithm
+    description: "Algorithm for secondary clustering comaprisons:\nfastANI = Kmer-based\
+      \ approach; very fast\nANImf   = (DEFAULT) Align whole genomes with nucmer;\
+      \ filter alignment; compare aligned regions\nANIn    = Align whole genomes with\
+      \ nucmer; compare aligned regions\ngANI    = Identify and align ORFs; compare\
+      \ aligned ORFS\ngoANI   = Open source version of gANI; requires nsmimscan\n\
+      (default: ANImf)"
+    args: !ChoiceFlagArg
+      choices: !!set
+        gANI:
+        ANIn:
+        goANI:
+        fastANI:
+        ANImf:
+  - !Flag
+    optional: true
+    synonyms:
+    - -ms
+    - --MASH_sketch
+    description: 'MASH sketch size (default: 1000)'
+    args: !SimpleFlagArg
+      name: MASH_SKETCH
+  - !Flag
+    optional: true
+    synonyms:
+    - --SkipMash
+    description: "Skip MASH clustering, just do secondary clustering on\nall genomes\
+      \ (default: False)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --SkipSecondary
+    description: "Skip secondary clustering, just perform MASH\nclustering (default:\
+      \ False)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --n_PRESET
+    description: "Presets to pass to nucmer\ntight   = only align highly conserved\
+      \ regions\nnormal  = default ANIn parameters (default: normal)"
+    args: !ChoiceFlagArg
+      choices: !!set
+        normal:
+        tight:
+  - !Flag
+    optional: true
+    synonyms:
+    - -pa
+    - --P_ani
+    description: "ANI threshold to form primary (MASH) clusters\n(default: 0.9)"
+    args: !SimpleFlagArg
+      name: P_ANI
+  - !Flag
+    optional: true
+    synonyms:
+    - -sa
+    - --S_ani
+    description: "ANI threshold to form secondary clusters (default:\n0.99)"
+    args: !SimpleFlagArg
+      name: S_ANI
+  - !Flag
+    optional: true
+    synonyms:
+    - -nc
+    - --cov_thresh
+    description: "Minmum level of overlap between genomes when doing\nsecondary comparisons\
+      \ (default: 0.1)"
+    args: !SimpleFlagArg
+      name: COV_THRESH
+  - !Flag
+    optional: true
+    synonyms:
+    - -cm
+    - --coverage_method
+    description: "Method to calculate coverage of an alignment\n(for ANIn/ANImf only;\
+      \ gANI and fastANI can only do larger method)\ntotal   = 2*(aligned length)\
+      \ / (sum of total genome lengths)\nlarger  = max((aligned length / genome 1),\
+      \ (aligned_length / genome2))\n(default: larger)"
+    args: !ChoiceFlagArg
+      choices: !!set
+        total:
+        larger:
+  - !Flag
+    optional: true
+    synonyms:
+    - --clusterAlg
+    description: "Algorithm used to cluster genomes (passed to\nscipy.cluster.hierarchy.linkage\
+      \ (default: average)"
+    args: !ChoiceFlagArg
+      choices: !!set
+        single:
+        weighted:
+        ward:
+        complete:
+        centroid:
+        average:
+        median:
+  - !Flag
+    optional: true
+    synonyms:
+    - --multiround_primary_clustering
+    description: "Cluster each primary clunk separately and merge at the\nend with\
+      \ single linkage. Decreases RAM usage and\nincreases speed, and the cost of\
+      \ a minor loss in\nprecision and the inability to plot\nprimary_clustering_dendrograms.\
+      \ Especially helpful\nwhen clustering 5000+ genomes. Will be done with\nsingle\
+      \ linkage clustering (default: False)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --primary_chunksize
+    description: "Impacts multiround_primary_clustering. If you have\nmore than this\
+      \ many genomes, process them in chunks of\nthis size. (default: 5000)"
+    args: !SimpleFlagArg
+      name: PRIMARY_CHUNKSIZE
+  - !Flag
+    optional: true
+    synonyms:
+    - --greedy_secondary_clustering
+    description: "Use a heuristic to avoid pair-wise comparisons when\ndoing secondary\
+      \ clustering. Will be done with single\nlinkage clustering. Only works for fastANI\
+      \ S_algorithm\noption at the moment (default: False)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --run_tertiary_clustering
+    description: "Run an additional round of clustering on the final\ngenome set.\
+      \ This is especially useful when greedy\nclustering is performed and/or to handle\
+      \ cases where\nsimilar genomes end up in different primary clusters.\nOnly works\
+      \ with dereplicate, not compare. (default:\nFalse)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -comW
+    - --completeness_weight
+    description: 'completeness weight (default: 1)'
+    args: !SimpleFlagArg
+      name: COMPLETENESS_WEIGHT
+  - !Flag
+    optional: true
+    synonyms:
+    - -conW
+    - --contamination_weight
+    description: 'contamination weight (default: 5)'
+    args: !SimpleFlagArg
+      name: CONTAMINATION_WEIGHT
+  - !Flag
+    optional: true
+    synonyms:
+    - -strW
+    - --strain_heterogeneity_weight
+    description: 'strain heterogeneity weight (default: 1)'
+    args: !SimpleFlagArg
+      name: STRAIN_HETEROGENEITY_WEIGHT
+  - !Flag
+    optional: true
+    synonyms:
+    - -N50W
+    - --N50_weight
+    description: 'weight of log(genome N50) (default: 0.5)'
+    args: !SimpleFlagArg
+      name: N50_WEIGHT
+  - !Flag
+    optional: true
+    synonyms:
+    - -sizeW
+    - --size_weight
+    description: 'weight of log(genome size) (default: 0)'
+    args: !SimpleFlagArg
+      name: SIZE_WEIGHT
+  - !Flag
+    optional: true
+    synonyms:
+    - -centW
+    - --centrality_weight
+    description: 'Weight of (centrality - S_ani) (default: 1)'
+    args: !SimpleFlagArg
+      name: CENTRALITY_WEIGHT
+  - !Flag
+    optional: true
+    synonyms:
+    - -extraW
+    - --extra_weight_table
+    description: "Path to a tab-separated file with two-columns, no\nheaders, listing\
+      \ genome and extra score to apply to\nthat genome (default: None)"
+    args: !SimpleFlagArg
+      name: EXTRA_WEIGHT_TABLE
+  - !Flag
+    optional: true
+    synonyms:
+    - --warn_dist
+    description: "How far from the threshold to throw cluster warnings\n(default:\
+      \ 0.25)"
+    args: !SimpleFlagArg
+      name: WARN_DIST
+  - !Flag
+    optional: true
+    synonyms:
+    - --warn_sim
+    description: "Similarity threshold for warnings between dereplicated\ngenomes\
+      \ (default: 0.98)"
+    args: !SimpleFlagArg
+      name: WARN_SIM
+  - !Flag
+    optional: true
+    synonyms:
+    - --warn_aln
+    description: "Minimum aligned fraction for warnings between\ndereplicated genomes\
+      \ (ANIn) (default: 0.25)"
+    args: !SimpleFlagArg
+      name: WARN_ALN
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: dRep dereplicate [-p PROCESSORS] [-d] [-h] [-g [GENOMES [GENOMES\
+    \ ...]]]\n                        [-l LENGTH] [-comp COMPLETENESS] [-con CONTAMINATION]\n\
+    \                        [--ignoreGenomeQuality] [--genomeInfo GENOMEINFO]\n \
+    \                       [--checkM_method {lineage_wf,taxonomy_wf}]\n         \
+    \               [--set_recursion SET_RECURSION]\n                        [--checkm_group_size\
+    \ CHECKM_GROUP_SIZE]\n                        [--S_algorithm {ANImf,ANIn,fastANI,goANI,gANI}]\n\
+    \                        [-ms MASH_SKETCH] [--SkipMash] [--SkipSecondary]\n  \
+    \                      [--n_PRESET {normal,tight}] [-pa P_ANI] [-sa S_ANI]\n \
+    \                       [-nc COV_THRESH] [-cm {total,larger}]\n              \
+    \          [--clusterAlg {complete,single,ward,average,weighted,centroid,median}]\n\
+    \                        [--multiround_primary_clustering]\n                 \
+    \       [--primary_chunksize PRIMARY_CHUNKSIZE]\n                        [--greedy_secondary_clustering]\n\
+    \                        [--run_tertiary_clustering]\n                       \
+    \ [-comW COMPLETENESS_WEIGHT]\n                        [-conW CONTAMINATION_WEIGHT]\n\
+    \                        [-strW STRAIN_HETEROGENEITY_WEIGHT] [-N50W N50_WEIGHT]\n\
+    \                        [-sizeW SIZE_WEIGHT] [-centW CENTRALITY_WEIGHT]\n   \
+    \                     [-extraW EXTRA_WEIGHT_TABLE] [--warn_dist WARN_DIST]\n \
+    \                       [--warn_sim WARN_SIM] [--warn_aln WARN_ALN]\n        \
+    \                work_directory\n\npositional arguments:\n  work_directory   \
+    \     Directory where data and output are stored    \n                       \
+    \ *** USE THE SAME WORK DIRECTORY FOR ALL DREP OPERATIONS ***\n\nSYSTEM PARAMETERS:\n\
+    \  -p PROCESSORS, --processors PROCESSORS\n                        threads (default:\
+    \ 6)\n  -d, --debug           make extra debugging output (default: False)\n \
+    \ -h, --help            show this help message and exit\n\nGENOME INPUT:\n  -g\
+    \ [GENOMES [GENOMES ...]], --genomes [GENOMES [GENOMES ...]]\n               \
+    \         genomes to filter in .fasta format. Not necessary if\n             \
+    \           Bdb or Wdb already exist. Can also input a text file\n           \
+    \             with paths to genomes, which results in fewer OS\n             \
+    \           issues than wildcard expansion (default: None)\n\nGENOME FILTERING\
+    \ OPTIONS:\n  -l LENGTH, --length LENGTH\n                        Minimum genome\
+    \ length (default: 50000)\n  -comp COMPLETENESS, --completeness COMPLETENESS\n\
+    \                        Minumum genome completeness (default: 75)\n  -con CONTAMINATION,\
+    \ --contamination CONTAMINATION\n                        Maximum genome contamination\
+    \ (default: 25)\n\nGENOME QUALITY ASSESSMENT OPTIONS:\n  --ignoreGenomeQuality\n\
+    \                        Don't run checkM or do any quality filtering. NOT\n \
+    \                       RECOMMENDED! This is useful for use with\n           \
+    \             bacteriophages or eukaryotes or things where checkM\n          \
+    \              scoring does not work. Will only choose genomes based\n       \
+    \                 on length and N50 (default: False)\n  --genomeInfo GENOMEINFO\n\
+    \                        location of .csv file containing quality information\n\
+    \                        on the genomes. Must contain: [\"genome\"(basename of\n\
+    \                        .fasta file of that genome), \"completeness\"(0-100\n\
+    \                        value for completeness of the genome),\n            \
+    \            \"contamination\"(0-100 value of the contamination of\n         \
+    \               the genome)] (default: None)\n  --checkM_method {lineage_wf,taxonomy_wf}\n\
+    \                        Either lineage_wf (more accurate) or taxonomy_wf\n  \
+    \                      (faster) (default: lineage_wf)\n  --set_recursion SET_RECURSION\n\
+    \                        Increases the python recursion limit. NOT RECOMMENDED\n\
+    \                        unless checkM is crashing due to recursion issues.\n\
+    \                        Recommended to set to 2000 if needed, but setting this\n\
+    \                        could crash python (default: 0)\n  --checkm_group_size\
+    \ CHECKM_GROUP_SIZE\n                        The number of genomes passed to checkM\
+    \ at a time.\n                        Increasing this increases RAM but makes\
+    \ checkM faster\n                        (default: 2000)\n\nGENOME COMPARISON\
+    \ OPTIONS:\n  --S_algorithm {ANImf,ANIn,fastANI,goANI,gANI}\n                \
+    \        Algorithm for secondary clustering comaprisons:\n                   \
+    \     fastANI = Kmer-based approach; very fast\n                        ANImf\
+    \   = (DEFAULT) Align whole genomes with nucmer; filter alignment; compare aligned\
+    \ regions\n                        ANIn    = Align whole genomes with nucmer;\
+    \ compare aligned regions\n                        gANI    = Identify and align\
+    \ ORFs; compare aligned ORFS\n                        goANI   = Open source version\
+    \ of gANI; requires nsmimscan\n                         (default: ANImf)\n  -ms\
+    \ MASH_SKETCH, --MASH_sketch MASH_SKETCH\n                        MASH sketch\
+    \ size (default: 1000)\n  --SkipMash            Skip MASH clustering, just do\
+    \ secondary clustering on\n                        all genomes (default: False)\n\
+    \  --SkipSecondary       Skip secondary clustering, just perform MASH\n      \
+    \                  clustering (default: False)\n  --n_PRESET {normal,tight}\n\
+    \                        Presets to pass to nucmer\n                        tight\
+    \   = only align highly conserved regions\n                        normal  = default\
+    \ ANIn parameters (default: normal)\n\nGENOME CLUSTERING OPTIONS:\n  -pa P_ANI,\
+    \ --P_ani P_ANI\n                        ANI threshold to form primary (MASH)\
+    \ clusters\n                        (default: 0.9)\n  -sa S_ANI, --S_ani S_ANI\n\
+    \                        ANI threshold to form secondary clusters (default:\n\
+    \                        0.99)\n  -nc COV_THRESH, --cov_thresh COV_THRESH\n  \
+    \                      Minmum level of overlap between genomes when doing\n  \
+    \                      secondary comparisons (default: 0.1)\n  -cm {total,larger},\
+    \ --coverage_method {total,larger}\n                        Method to calculate\
+    \ coverage of an alignment\n                        (for ANIn/ANImf only; gANI\
+    \ and fastANI can only do larger method)\n                        total   = 2*(aligned\
+    \ length) / (sum of total genome lengths)\n                        larger  = max((aligned\
+    \ length / genome 1), (aligned_length / genome2))\n                         (default:\
+    \ larger)\n  --clusterAlg {complete,single,ward,average,weighted,centroid,median}\n\
+    \                        Algorithm used to cluster genomes (passed to\n      \
+    \                  scipy.cluster.hierarchy.linkage (default: average)\n\nGREEDY\
+    \ CLUSTERING OPTIONS\nThese decrease RAM use and runtime at the expense of a minor\
+    \ loss in accuracy.\nRecommended when clustering 5000+ genomes:\n  --multiround_primary_clustering\n\
+    \                        Cluster each primary clunk separately and merge at the\n\
+    \                        end with single linkage. Decreases RAM usage and\n  \
+    \                      increases speed, and the cost of a minor loss in\n    \
+    \                    precision and the inability to plot\n                   \
+    \     primary_clustering_dendrograms. Especially helpful\n                   \
+    \     when clustering 5000+ genomes. Will be done with\n                     \
+    \   single linkage clustering (default: False)\n  --primary_chunksize PRIMARY_CHUNKSIZE\n\
+    \                        Impacts multiround_primary_clustering. If you have\n\
+    \                        more than this many genomes, process them in chunks of\n\
+    \                        this size. (default: 5000)\n  --greedy_secondary_clustering\n\
+    \                        Use a heuristic to avoid pair-wise comparisons when\n\
+    \                        doing secondary clustering. Will be done with single\n\
+    \                        linkage clustering. Only works for fastANI S_algorithm\n\
+    \                        option at the moment (default: False)\n  --run_tertiary_clustering\n\
+    \                        Run an additional round of clustering on the final\n\
+    \                        genome set. This is especially useful when greedy\n \
+    \                       clustering is performed and/or to handle cases where\n\
+    \                        similar genomes end up in different primary clusters.\n\
+    \                        Only works with dereplicate, not compare. (default:\n\
+    \                        False)\n\nSCORING CRITERIA\nBased off of the formula:\
+    \ \nA*Completeness - B*Contamination + C*(Contamination * (strain_heterogeneity/100))\
+    \ + D*log(N50) + E*log(size) + F*(centrality - S_ani)\n\nA = completeness_weight;\
+    \ B = contamination_weight; C = strain_heterogeneity_weight; D = N50_weight; E\
+    \ = size_weight; F = cent_weight:\n  -comW COMPLETENESS_WEIGHT, --completeness_weight\
+    \ COMPLETENESS_WEIGHT\n                        completeness weight (default: 1)\n\
+    \  -conW CONTAMINATION_WEIGHT, --contamination_weight CONTAMINATION_WEIGHT\n \
+    \                       contamination weight (default: 5)\n  -strW STRAIN_HETEROGENEITY_WEIGHT,\
+    \ --strain_heterogeneity_weight STRAIN_HETEROGENEITY_WEIGHT\n                \
+    \        strain heterogeneity weight (default: 1)\n  -N50W N50_WEIGHT, --N50_weight\
+    \ N50_WEIGHT\n                        weight of log(genome N50) (default: 0.5)\n\
+    \  -sizeW SIZE_WEIGHT, --size_weight SIZE_WEIGHT\n                        weight\
+    \ of log(genome size) (default: 0)\n  -centW CENTRALITY_WEIGHT, --centrality_weight\
+    \ CENTRALITY_WEIGHT\n                        Weight of (centrality - S_ani) (default:\
+    \ 1)\n  -extraW EXTRA_WEIGHT_TABLE, --extra_weight_table EXTRA_WEIGHT_TABLE\n\
+    \                        Path to a tab-separated file with two-columns, no\n \
+    \                       headers, listing genome and extra score to apply to\n\
+    \                        that genome (default: None)\n\nWARNINGS:\n  --warn_dist\
+    \ WARN_DIST\n                        How far from the threshold to throw cluster\
+    \ warnings\n                        (default: 0.25)\n  --warn_sim WARN_SIM   Similarity\
+    \ threshold for warnings between dereplicated\n                        genomes\
+    \ (default: 0.98)\n  --warn_aln WARN_ALN   Minimum aligned fraction for warnings\
+    \ between\n                        dereplicated genomes (ANIn) (default: 0.25)\n\
+    \nExample: dRep dereplicate output_dir/ -g /path/to/genomes/*.fasta\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/drep:3.2.0--py_0
+- !Command
+  command:
+  - dRep
+  - compare
+  positional:
+  - !Positional
+    optional: true
+    position: 0
+    name: GENOMES
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --processors
+    description: 'threads (default: 6)'
+    args: !SimpleFlagArg
+      name: PROCESSORS
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --debug
+    description: 'make extra debugging output (default: False)'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    description: "[GENOMES [GENOMES ...]], --genomes [GENOMES [GENOMES ...]]\ngenomes\
+      \ to filter in .fasta format. Not necessary if\nBdb or Wdb already exist. Can\
+      \ also input a text file\nwith paths to genomes, which results in fewer OS\n\
+      issues than wildcard expansion (default: None)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --S_algorithm
+    description: "Algorithm for secondary clustering comaprisons:\nfastANI = Kmer-based\
+      \ approach; very fast\nANImf   = (DEFAULT) Align whole genomes with nucmer;\
+      \ filter alignment; compare aligned regions\nANIn    = Align whole genomes with\
+      \ nucmer; compare aligned regions\ngANI    = Identify and align ORFs; compare\
+      \ aligned ORFS\ngoANI   = Open source version of gANI; requires nsmimscan\n\
+      (default: ANImf)"
+    args: !ChoiceFlagArg
+      choices: !!set
+        gANI:
+        ANIn:
+        goANI:
+        fastANI:
+        ANImf:
+  - !Flag
+    optional: true
+    synonyms:
+    - -ms
+    - --MASH_sketch
+    description: 'MASH sketch size (default: 1000)'
+    args: !SimpleFlagArg
+      name: MASH_SKETCH
+  - !Flag
+    optional: true
+    synonyms:
+    - --SkipMash
+    description: "Skip MASH clustering, just do secondary clustering on\nall genomes\
+      \ (default: False)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --SkipSecondary
+    description: "Skip secondary clustering, just perform MASH\nclustering (default:\
+      \ False)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --n_PRESET
+    description: "Presets to pass to nucmer\ntight   = only align highly conserved\
+      \ regions\nnormal  = default ANIn parameters (default: normal)"
+    args: !ChoiceFlagArg
+      choices: !!set
+        normal:
+        tight:
+  - !Flag
+    optional: true
+    synonyms:
+    - -pa
+    - --P_ani
+    description: "ANI threshold to form primary (MASH) clusters\n(default: 0.9)"
+    args: !SimpleFlagArg
+      name: P_ANI
+  - !Flag
+    optional: true
+    synonyms:
+    - -sa
+    - --S_ani
+    description: "ANI threshold to form secondary clusters (default:\n0.99)"
+    args: !SimpleFlagArg
+      name: S_ANI
+  - !Flag
+    optional: true
+    synonyms:
+    - -nc
+    - --cov_thresh
+    description: "Minmum level of overlap between genomes when doing\nsecondary comparisons\
+      \ (default: 0.1)"
+    args: !SimpleFlagArg
+      name: COV_THRESH
+  - !Flag
+    optional: true
+    synonyms:
+    - -cm
+    - --coverage_method
+    description: "Method to calculate coverage of an alignment\n(for ANIn/ANImf only;\
+      \ gANI and fastANI can only do larger method)\ntotal   = 2*(aligned length)\
+      \ / (sum of total genome lengths)\nlarger  = max((aligned length / genome 1),\
+      \ (aligned_length / genome2))\n(default: larger)"
+    args: !ChoiceFlagArg
+      choices: !!set
+        total:
+        larger:
+  - !Flag
+    optional: true
+    synonyms:
+    - --clusterAlg
+    description: "Algorithm used to cluster genomes (passed to\nscipy.cluster.hierarchy.linkage\
+      \ (default: average)"
+    args: !ChoiceFlagArg
+      choices: !!set
+        single:
+        weighted:
+        ward:
+        complete:
+        centroid:
+        average:
+        median:
+  - !Flag
+    optional: true
+    synonyms:
+    - --multiround_primary_clustering
+    description: "Cluster each primary clunk separately and merge at the\nend with\
+      \ single linkage. Decreases RAM usage and\nincreases speed, and the cost of\
+      \ a minor loss in\nprecision and the inability to plot\nprimary_clustering_dendrograms.\
+      \ Especially helpful\nwhen clustering 5000+ genomes. Will be done with\nsingle\
+      \ linkage clustering (default: False)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --primary_chunksize
+    description: "Impacts multiround_primary_clustering. If you have\nmore than this\
+      \ many genomes, process them in chunks of\nthis size. (default: 5000)"
+    args: !SimpleFlagArg
+      name: PRIMARY_CHUNKSIZE
+  - !Flag
+    optional: true
+    synonyms:
+    - --greedy_secondary_clustering
+    description: "Use a heuristic to avoid pair-wise comparisons when\ndoing secondary\
+      \ clustering. Will be done with single\nlinkage clustering. Only works for fastANI\
+      \ S_algorithm\noption at the moment (default: False)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --run_tertiary_clustering
+    description: "Run an additional round of clustering on the final\ngenome set.\
+      \ This is especially useful when greedy\nclustering is performed and/or to handle\
+      \ cases where\nsimilar genomes end up in different primary clusters.\nOnly works\
+      \ with dereplicate, not compare. (default:\nFalse)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --warn_dist
+    description: "How far from the threshold to throw cluster warnings\n(default:\
+      \ 0.25)"
+    args: !SimpleFlagArg
+      name: WARN_DIST
+  - !Flag
+    optional: true
+    synonyms:
+    - --warn_sim
+    description: "Similarity threshold for warnings between dereplicated\ngenomes\
+      \ (default: 0.98)"
+    args: !SimpleFlagArg
+      name: WARN_SIM
+  - !Flag
+    optional: true
+    synonyms:
+    - --warn_aln
+    description: "Minimum aligned fraction for warnings between\ndereplicated genomes\
+      \ (ANIn) (default: 0.25)"
+    args: !SimpleFlagArg
+      name: WARN_ALN
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: dRep compare [-p PROCESSORS] [-d] [-h] [-g [GENOMES [GENOMES\
+    \ ...]]]\n                    [--S_algorithm {ANIn,gANI,goANI,ANImf,fastANI}]\n\
+    \                    [-ms MASH_SKETCH] [--SkipMash] [--SkipSecondary]\n      \
+    \              [--n_PRESET {normal,tight}] [-pa P_ANI] [-sa S_ANI]\n         \
+    \           [-nc COV_THRESH] [-cm {total,larger}]\n                    [--clusterAlg\
+    \ {centroid,weighted,single,median,average,ward,complete}]\n                 \
+    \   [--multiround_primary_clustering]\n                    [--primary_chunksize\
+    \ PRIMARY_CHUNKSIZE]\n                    [--greedy_secondary_clustering]\n  \
+    \                  [--run_tertiary_clustering] [--warn_dist WARN_DIST]\n     \
+    \               [--warn_sim WARN_SIM] [--warn_aln WARN_ALN]\n                \
+    \    work_directory\n\npositional arguments:\n  work_directory        Directory\
+    \ where data and output are stored    \n                        *** USE THE SAME\
+    \ WORK DIRECTORY FOR ALL DREP OPERATIONS ***\n\nSYSTEM PARAMETERS:\n  -p PROCESSORS,\
+    \ --processors PROCESSORS\n                        threads (default: 6)\n  -d,\
+    \ --debug           make extra debugging output (default: False)\n  -h, --help\
+    \            show this help message and exit\n\nGENOME INPUT:\n  -g [GENOMES [GENOMES\
+    \ ...]], --genomes [GENOMES [GENOMES ...]]\n                        genomes to\
+    \ filter in .fasta format. Not necessary if\n                        Bdb or Wdb\
+    \ already exist. Can also input a text file\n                        with paths\
+    \ to genomes, which results in fewer OS\n                        issues than wildcard\
+    \ expansion (default: None)\n\nGENOME COMPARISON OPTIONS:\n  --S_algorithm {ANIn,gANI,goANI,ANImf,fastANI}\n\
+    \                        Algorithm for secondary clustering comaprisons:\n   \
+    \                     fastANI = Kmer-based approach; very fast\n             \
+    \           ANImf   = (DEFAULT) Align whole genomes with nucmer; filter alignment;\
+    \ compare aligned regions\n                        ANIn    = Align whole genomes\
+    \ with nucmer; compare aligned regions\n                        gANI    = Identify\
+    \ and align ORFs; compare aligned ORFS\n                        goANI   = Open\
+    \ source version of gANI; requires nsmimscan\n                         (default:\
+    \ ANImf)\n  -ms MASH_SKETCH, --MASH_sketch MASH_SKETCH\n                     \
+    \   MASH sketch size (default: 1000)\n  --SkipMash            Skip MASH clustering,\
+    \ just do secondary clustering on\n                        all genomes (default:\
+    \ False)\n  --SkipSecondary       Skip secondary clustering, just perform MASH\n\
+    \                        clustering (default: False)\n  --n_PRESET {normal,tight}\n\
+    \                        Presets to pass to nucmer\n                        tight\
+    \   = only align highly conserved regions\n                        normal  = default\
+    \ ANIn parameters (default: normal)\n\nGENOME CLUSTERING OPTIONS:\n  -pa P_ANI,\
+    \ --P_ani P_ANI\n                        ANI threshold to form primary (MASH)\
+    \ clusters\n                        (default: 0.9)\n  -sa S_ANI, --S_ani S_ANI\n\
+    \                        ANI threshold to form secondary clusters (default:\n\
+    \                        0.99)\n  -nc COV_THRESH, --cov_thresh COV_THRESH\n  \
+    \                      Minmum level of overlap between genomes when doing\n  \
+    \                      secondary comparisons (default: 0.1)\n  -cm {total,larger},\
+    \ --coverage_method {total,larger}\n                        Method to calculate\
+    \ coverage of an alignment\n                        (for ANIn/ANImf only; gANI\
+    \ and fastANI can only do larger method)\n                        total   = 2*(aligned\
+    \ length) / (sum of total genome lengths)\n                        larger  = max((aligned\
+    \ length / genome 1), (aligned_length / genome2))\n                         (default:\
+    \ larger)\n  --clusterAlg {centroid,weighted,single,median,average,ward,complete}\n\
+    \                        Algorithm used to cluster genomes (passed to\n      \
+    \                  scipy.cluster.hierarchy.linkage (default: average)\n\nGREEDY\
+    \ CLUSTERING OPTIONS\nThese decrease RAM use and runtime at the expense of a minor\
+    \ loss in accuracy.\nRecommended when clustering 5000+ genomes:\n  --multiround_primary_clustering\n\
+    \                        Cluster each primary clunk separately and merge at the\n\
+    \                        end with single linkage. Decreases RAM usage and\n  \
+    \                      increases speed, and the cost of a minor loss in\n    \
+    \                    precision and the inability to plot\n                   \
+    \     primary_clustering_dendrograms. Especially helpful\n                   \
+    \     when clustering 5000+ genomes. Will be done with\n                     \
+    \   single linkage clustering (default: False)\n  --primary_chunksize PRIMARY_CHUNKSIZE\n\
+    \                        Impacts multiround_primary_clustering. If you have\n\
+    \                        more than this many genomes, process them in chunks of\n\
+    \                        this size. (default: 5000)\n  --greedy_secondary_clustering\n\
+    \                        Use a heuristic to avoid pair-wise comparisons when\n\
+    \                        doing secondary clustering. Will be done with single\n\
+    \                        linkage clustering. Only works for fastANI S_algorithm\n\
+    \                        option at the moment (default: False)\n  --run_tertiary_clustering\n\
+    \                        Run an additional round of clustering on the final\n\
+    \                        genome set. This is especially useful when greedy\n \
+    \                       clustering is performed and/or to handle cases where\n\
+    \                        similar genomes end up in different primary clusters.\n\
+    \                        Only works with dereplicate, not compare. (default:\n\
+    \                        False)\n\nWARNINGS:\n  --warn_dist WARN_DIST\n      \
+    \                  How far from the threshold to throw cluster warnings\n    \
+    \                    (default: 0.25)\n  --warn_sim WARN_SIM   Similarity threshold\
+    \ for warnings between dereplicated\n                        genomes (default:\
+    \ 0.98)\n  --warn_aln WARN_ALN   Minimum aligned fraction for warnings between\n\
+    \                        dereplicated genomes (ANIn) (default: 0.25)\n\nExample:\
+    \ dRep compare output_dir/ -g /path/to/genomes/*.fasta\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/drep:3.2.0--py_0
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\n                ...::: dRep v3.2.0 :::...\n\n  Matt Olm. MIT License.\
+  \ Banfield Lab, UC Berkeley. 2017 (last updated 2020)\n\n  See https://drep.readthedocs.io/en/latest/index.html\
+  \ for documentation\n  Choose one of the operations below for more detailed help.\
+  \ \n  \n  Example: dRep dereplicate -h\n\n  Commands:\n    compare            ->\
+  \ Compare and cluster a set of genomes\n    dereplicate        -> De-replicate a\
+  \ set of genomes\n    check_dependencies -> Check which dependencies are properly\
+  \ installed\n    \n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/drep:3.2.0--py_0

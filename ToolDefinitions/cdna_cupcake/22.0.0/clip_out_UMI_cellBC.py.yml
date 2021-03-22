@@ -1,0 +1,93 @@
+!Command
+command:
+- clip_out_UMI_cellBC.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: bam_filename
+  description: CCS BAM with cDNA primer removed (post LIMA)
+- !Positional
+  optional: false
+  position: 1
+  name: output_prefix
+  description: Output prefix
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --umi_len
+  description: Length of UMI
+  args: !SimpleFlagArg
+    name: UMI_LEN
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --bc_len
+  description: Length of cell barcode
+  args: !SimpleFlagArg
+    name: BC_LEN
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --tso_len
+  description: Length of TSO (for G5-10X only)
+  args: !SimpleFlagArg
+    name: TSO_LEN
+- !Flag
+  optional: true
+  synonyms:
+  - --umi_type
+  description: Location of the UMI
+  args: !ChoiceFlagArg
+    choices: !!set
+      G5:
+      A3:
+      G5-clip:
+      G5-10X:
+- !Flag
+  optional: true
+  synonyms:
+  - --g5_clip_seq
+  description: Sequence before UMI for G5-clip (for G5-clip only)
+  args: !SimpleFlagArg
+    name: G5_CLIP_SEQ
+- !Flag
+  optional: true
+  synonyms:
+  - --bc_rank_file
+  description: "(Optional) cell barcode rank file from short read data\n"
+  args: !SimpleFlagArg
+    name: BC_RANK_FILE
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: clip_out_UMI_cellBC.py [-h] [-u UMI_LEN] [-b BC_LEN] [-t TSO_LEN]\n\
+  \                              [--umi_type {A3,G5,G5-10X,G5-clip}]\n           \
+  \                   [--g5_clip_seq G5_CLIP_SEQ]\n                              [--bc_rank_file\
+  \ BC_RANK_FILE]\n                              bam_filename output_prefix\n\npositional\
+  \ arguments:\n  bam_filename          CCS BAM with cDNA primer removed (post LIMA)\n\
+  \  output_prefix         Output prefix\n\noptional arguments:\n  -h, --help    \
+  \        show this help message and exit\n  -u UMI_LEN, --umi_len UMI_LEN\n    \
+  \                    Length of UMI\n  -b BC_LEN, --bc_len BC_LEN\n             \
+  \           Length of cell barcode\n  -t TSO_LEN, --tso_len TSO_LEN\n          \
+  \              Length of TSO (for G5-10X only)\n  --umi_type {A3,G5,G5-10X,G5-clip}\n\
+  \                        Location of the UMI\n  --g5_clip_seq G5_CLIP_SEQ\n    \
+  \                    Sequence before UMI for G5-clip (for G5-clip only)\n  --bc_rank_file\
+  \ BC_RANK_FILE\n                        (Optional) cell barcode rank file from short\
+  \ read data\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/cdna_cupcake:22.0.0--py37h97743b1_0

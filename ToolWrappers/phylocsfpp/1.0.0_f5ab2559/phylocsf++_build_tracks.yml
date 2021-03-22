@@ -1,0 +1,133 @@
+!Command
+command:
+- phylocsf++
+- build-tracks
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: phylocsf
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --output-phylo
+  description: "Compute all 6 smoothened PhyloCSF tracks. Requires coding\nexon coordinates\
+    \ and genome length. Default: 0"
+  args: !SimpleFlagArg
+    name: BOOL
+- !Flag
+  optional: true
+  synonyms:
+  - --output-raw-phylo
+  description: 'Compute all 6 unsmoothened PhyloCSF tracks. Default: 1'
+  args: !SimpleFlagArg
+    name: BOOL
+- !Flag
+  optional: true
+  synonyms:
+  - --power-threshold
+  description: "Minimum confidence score to output PhyloCSF score.\nDefault: 0.1"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --genome-length
+  description: Total genome length (needed for --output-phylo).
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --coding-exons
+  description: "BED-like file (chrom name, strand, phase, start, end) with\ncoordinates\
+    \ of coding exons (needed for --output-phylo)."
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: "Parallelize scoring of multiple MSAs in a file using\nmultiple threads.\
+    \ Default: 2"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --output
+  description: "Directory where tracks in wig format will be written to.\nIf it does\
+    \ not exist, it will be created. Default: output\nfiles are stored next to the\
+    \ input files."
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --mapping
+  description: "If the MSAs don't use common species names (like Human,\nChimp, etc.)\
+    \ you can pass a two-column tsv file with a\nname mapping."
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --species
+  description: "Comma separated list of species to reduce <model> to a\nsubset of\
+    \ species to improve running time, e.g.,\n\"Human,Chimp,Seaturtle\""
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --model-info
+  description: "Output the organisms included in a specific model.\nIncluded models\
+    \ are: 21mosquitoes, 58mammals, 7yeast,\n29mammals, 53birds, 49birds, 100vertebrates,\
+    \ 23flies,\n12flies, 26worms, 20flies.\n"
+  args: !SimpleFlagArg
+    name: STRING
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\e[1mPhyloCSF++ v1.0.0 (build date: 2021-03-11, git commit: f5ab2559)\n\
+  \n\e[0mComputes PhyloCSF tracks for each codon and all 6 frames from alignment files\
+  \ in MAF \nformat as well as the power track containing the branch length scores\
+  \ (confidence of \nthe PhyloCSF scores). Optionally the PhyloCSF scores can be smoothened\
+  \ and posterior \nprobabilities can be computed. Outputs wig files.\n\nUsage: phylocsf++\
+  \ build-tracks [OPTIONS] <model> <alignments>...\n\nArguments:\n\n  <model>    \
+  \              Path to parameter files, or one of the following\n              \
+  \             predefined models: 21mosquitoes, 58mammals, 7yeast,\n            \
+  \               29mammals, 53birds, 49birds, 100vertebrates, 23flies,\n        \
+  \                   12flies, 26worms, 20flies.\n\n  <alignments>             One\
+  \ or more files containing multiple sequence alignments.\n                     \
+  \      Formats: MAF and multi FASTA. Multiple MSAs can be stored\n             \
+  \              in a single file separated by empty lines.\n\nOptions:\n\n  --output-phylo\
+  \ BOOL      Compute all 6 smoothened PhyloCSF tracks. Requires coding\n        \
+  \                   exon coordinates and genome length. Default: 0\n  --output-raw-phylo\
+  \ BOOL  Compute all 6 unsmoothened PhyloCSF tracks. Default: 1\n  --power-threshold\
+  \ FLOAT  Minimum confidence score to output PhyloCSF score.\n                  \
+  \         Default: 0.1\n  --genome-length INT      Total genome length (needed for\
+  \ --output-phylo).\n  --coding-exons STRING    BED-like file (chrom name, strand,\
+  \ phase, start, end) with\n                           coordinates of coding exons\
+  \ (needed for --output-phylo).\n  --threads INT            Parallelize scoring of\
+  \ multiple MSAs in a file using\n                           multiple threads. Default:\
+  \ 2\n  --output STRING          Directory where tracks in wig format will be written\
+  \ to.\n                           If it does not exist, it will be created. Default:\
+  \ output\n                           files are stored next to the input files.\n\
+  \  --mapping STRING         If the MSAs don't use common species names (like Human,\n\
+  \                           Chimp, etc.) you can pass a two-column tsv file with\
+  \ a\n                           name mapping.\n  --species STRING         Comma\
+  \ separated list of species to reduce <model> to a\n                           subset\
+  \ of species to improve running time, e.g.,\n                           \"Human,Chimp,Seaturtle\"\
+  \n\nHelp options:\n\n  --model-info STRING      Output the organisms included in\
+  \ a specific model.\n                           Included models are: 21mosquitoes,\
+  \ 58mammals, 7yeast,\n                           29mammals, 53birds, 49birds, 100vertebrates,\
+  \ 23flies,\n                           12flies, 26worms, 20flies.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/phylocsfpp:1.0.0_f5ab2559--hdd86bf5_0

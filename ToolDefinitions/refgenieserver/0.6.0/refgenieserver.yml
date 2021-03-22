@@ -1,0 +1,168 @@
+&id001 !Command
+command:
+- refgenieserver
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -V
+  description: ''
+  args: !EmptyFlagArg {}
+parent:
+subcommands:
+- !Command
+  command:
+  - refgenieserver
+  - archive
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: asset-registry-paths
+    description: "One or more registry path strings that identify\nassets, e.g. hg38/fasta:tag"
+  - !Positional
+    optional: false
+    position: 0
+    name: exists
+    description: -r, --remove          Remove selected genome, genome/asset or
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --config
+    description: "A path to the refgenie config file (YAML). If not\nprovided, the\
+      \ first available environment variable\namong: 'REFGENIE' will be used if set.\
+      \ Currently: not\nset"
+    args: !SimpleFlagArg
+      name: CONFIG
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --dbg
+    description: Set logger verbosity to debug
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --genomes-desc
+    description: "Path to a CSV file with genomes descriptions. Format:\ngenome_name,\
+      \ genome description"
+    args: !SimpleFlagArg
+      name: GENOMES_DESC
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --force
+    description: whether the server file tree should be rebuilt even if
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: refgenieserver archive [-h] [-c CONFIG] [-d]\n              \
+    \                [--genomes-desc GENOMES_DESC] [-f] [-r]\n                   \
+    \           [asset-registry-paths ...]\n\nprepare servable archives\n\npositional\
+    \ arguments:\n  asset-registry-paths  One or more registry path strings that identify\n\
+    \                        assets, e.g. hg38/fasta:tag\n\noptional arguments:\n\
+    \  -h, --help            show this help message and exit\n  -c CONFIG, --config\
+    \ CONFIG\n                        A path to the refgenie config file (YAML). If\
+    \ not\n                        provided, the first available environment variable\n\
+    \                        among: 'REFGENIE' will be used if set. Currently: not\n\
+    \                        set\n  -d, --dbg             Set logger verbosity to\
+    \ debug\n  --genomes-desc GENOMES_DESC\n                        Path to a CSV\
+    \ file with genomes descriptions. Format:\n                        genome_name,\
+    \ genome description\n  -f, --force           whether the server file tree should\
+    \ be rebuilt even if\n                        exists\n  -r, --remove         \
+    \ Remove selected genome, genome/asset or\n                        genome/asset:tag\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/refgenieserver:0.6.0--py_0
+- !Command
+  command:
+  - refgenieserver
+  - serve
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --config
+    description: "A path to the refgenie config file (YAML). If not\nprovided, the\
+      \ first available environment variable\namong: 'REFGENIE' will be used if set.\
+      \ Currently: not\nset"
+    args: !SimpleFlagArg
+      name: CONFIG
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --dbg
+    description: Set logger verbosity to debug
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --port
+    description: The port the webserver should be run on.
+    args: !SimpleFlagArg
+      name: PORT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: refgenieserver serve [-h] [-c CONFIG] [-d] [-p PORT]\n\nrun the\
+    \ server\n\noptional arguments:\n  -h, --help            show this help message\
+    \ and exit\n  -c CONFIG, --config CONFIG\n                        A path to the\
+    \ refgenie config file (YAML). If not\n                        provided, the first\
+    \ available environment variable\n                        among: 'REFGENIE' will\
+    \ be used if set. Currently: not\n                        set\n  -d, --dbg   \
+    \          Set logger verbosity to debug\n  -p PORT, --port PORT  The port the\
+    \ webserver should be run on.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/refgenieserver:0.6.0--py_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: refgenieserver [-h] [-V] {serve,archive} ...\n\nrefgenieserver\
+  \ - refgenie web server utilities\n\npositional arguments:\n  {serve,archive}\n\
+  \    serve          run the server\n    archive        prepare servable archives\n\
+  \noptional arguments:\n  -h, --help       show this help message and exit\n  -V,\
+  \ --version    show program's version number and exit\n\nFor subcommand-specific\
+  \ options, type: 'refgenieserver <subcommand> -h'\nhttps://github.com/databio/refgenieserver\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/refgenieserver:0.6.0--py_0

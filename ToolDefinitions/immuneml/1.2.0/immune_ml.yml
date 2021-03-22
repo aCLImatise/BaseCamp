@@ -1,0 +1,80 @@
+&id001 !Command
+command:
+- immune-ml
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --tool
+  description: "Name of the tool which calls immuneML. This name will be\nused to\
+    \ invoke appropriate API call, which will then do\nadditional work in tool-dependent\
+    \ way before running\nstandard immuneML.\n"
+  args: !SimpleFlagArg
+    name: TOOL
+parent:
+subcommands:
+- !Command
+  command:
+  - immune-ml
+  - result_path
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: immune-ml
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: specification_path
+    description: ''
+  - !Positional
+    optional: false
+    position: 2
+    name: result_path
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --tool
+    description: ''
+    args: !SimpleFlagArg
+      name: TOOL
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    description: ''
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: immune-ml [-h] [--tool TOOL] specification_path result_path\n\
+    immune-ml: error: the following arguments are required: result_path\n"
+  generated_using: []
+  docker_image: quay.io/biocontainers/immuneml:1.2.0--py_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: immune-ml [-h] [--tool TOOL] specification_path result_path\n\n\
+  immuneML command line tool\n\npositional arguments:\n  specification_path  Path\
+  \ to specification YAML file. Always used to define\n                      the analysis.\n\
+  \  result_path         Output directory path.\n\noptional arguments:\n  -h, --help\
+  \          show this help message and exit\n  --tool TOOL         Name of the tool\
+  \ which calls immuneML. This name will be\n                      used to invoke\
+  \ appropriate API call, which will then do\n                      additional work\
+  \ in tool-dependent way before running\n                      standard immuneML.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/immuneml:1.2.0--py_0

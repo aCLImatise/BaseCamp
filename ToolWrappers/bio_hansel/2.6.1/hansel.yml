@@ -1,0 +1,262 @@
+!Command
+command:
+- hansel
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --scheme
+  description: "Scheme to use for subtyping (built-in: \"heidelberg\",\n\"enteritidis\"\
+    , \"typhi\", \"typhimurium\", \"tb_lineage\";\nOR user-specified: /path/to/user/scheme)"
+  args: !SimpleFlagArg
+    name: SCHEME
+- !Flag
+  optional: true
+  synonyms:
+  - --scheme-name
+  description: Custom user-specified SNP substyping scheme name
+  args: !SimpleFlagArg
+    name: SCHEME_NAME
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  - --scheme-metadata
+  description: "Scheme subtype metadata table (tab-delimited file with\n\".tsv\" or\
+    \ \".tab\" extension or CSV with \".csv\"\nextension format accepted; MUST contain\
+    \ column called\n\"subtype\")"
+  args: !SimpleFlagArg
+    name: SCHEME_METADATA
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: "reverse_reads, --paired-reads forward_reads reverse_reads\nFASTQ paired-end\
+    \ reads"
+  args: !SimpleFlagArg
+    name: forward_reads
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: "genome_name, --input-fasta-genome-name fasta_path genome_name\ninput\
+    \ fasta file path AND genome name"
+  args: !SimpleFlagArg
+    name: fasta_path
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  - --input-directory
+  description: "directory of input fasta files (.fasta|.fa|.fna) or\nFASTQ files (paired\
+    \ FASTQ should have same basename\nwith \"_\\d\\.(fastq|fq)\" postfix to be automatically\n\
+    paired) (files can be Gzipped)"
+  args: !SimpleFlagArg
+    name: INPUT_DIRECTORY
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-summary
+  description: Subtyping summary output path (tab-delimited)
+  args: !SimpleFlagArg
+    name: OUTPUT_SUMMARY
+- !Flag
+  optional: true
+  synonyms:
+  - -O
+  - --output-kmer-results
+  description: Subtyping kmer matching output path (tab-delimited)
+  args: !SimpleFlagArg
+    name: OUTPUT_KMER_RESULTS
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --output-simple-summary
+  description: Subtyping simple summary output path
+  args: !SimpleFlagArg
+    name: OUTPUT_SIMPLE_SUMMARY
+- !Flag
+  optional: true
+  synonyms:
+  - --force
+  description: Force existing output files to be overwritten
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --json
+  description: Output JSON representation of output files
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min-kmer-freq
+  description: Min k-mer freq/coverage
+  args: !SimpleFlagArg
+    name: MIN_KMER_FREQ
+- !Flag
+  optional: true
+  synonyms:
+  - --min-kmer-frac
+  description: Proportion of k-mer required for detection (0.0 - 1)
+  args: !SimpleFlagArg
+    name: MIN_KMER_FRAC
+- !Flag
+  optional: true
+  synonyms:
+  - --max-kmer-freq
+  description: Max k-mer freq/coverage
+  args: !SimpleFlagArg
+    name: MAX_KMER_FREQ
+- !Flag
+  optional: true
+  synonyms:
+  - --low-cov-depth-freq
+  description: "Frequencies below this coverage are considered low\ncoverage"
+  args: !SimpleFlagArg
+    name: LOW_COV_DEPTH_FREQ
+- !Flag
+  optional: true
+  synonyms:
+  - --max-missing-kmers
+  description: "Decimal proportion of maximum allowable missing kmers\nbefore being\
+    \ considered an error. (0.0 - 1.0)"
+  args: !SimpleFlagArg
+    name: MAX_MISSING_KMERS
+- !Flag
+  optional: true
+  synonyms:
+  - --min-ambiguous-kmers
+  description: "Minimum number of missing kmers to be considered an\nambiguous result"
+  args: !SimpleFlagArg
+    name: MIN_AMBIGUOUS_KMERS
+- !Flag
+  optional: true
+  synonyms:
+  - --low-cov-warning
+  description: "Overall kmer coverage below this value will trigger a\nlow coverage\
+    \ warning"
+  args: !SimpleFlagArg
+    name: LOW_COV_WARNING
+- !Flag
+  optional: true
+  synonyms:
+  - --max-intermediate-kmers
+  description: "Decimal proportion of maximum allowable missing kmers\nto be considered\
+    \ an intermediate subtype. (0.0 - 1.0)"
+  args: !SimpleFlagArg
+    name: MAX_INTERMEDIATE_KMERS
+- !Flag
+  optional: true
+  synonyms:
+  - --max-degenerate-kmers
+  description: "Maximum number of scheme k-mers allowed before\nquitting with a usage\
+    \ warning. Default is 100000"
+  args: !SimpleFlagArg
+    name: MAX_DEGENERATE_KMERS
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: Number of parallel threads to run analysis (default=1)
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: "Logging verbosity level (-v == show warnings; -vvv ==\nshow debug\
+    \ info)"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: hansel [-h] [-s SCHEME] [--scheme-name SCHEME_NAME]\n         \
+  \     [-M SCHEME_METADATA] [-p forward_reads reverse_reads]\n              [-i fasta_path\
+  \ genome_name] [-D INPUT_DIRECTORY]\n              [-o OUTPUT_SUMMARY] [-O OUTPUT_KMER_RESULTS]\n\
+  \              [-S OUTPUT_SIMPLE_SUMMARY] [--force] [--json]\n              [--min-kmer-freq\
+  \ MIN_KMER_FREQ] [--min-kmer-frac MIN_KMER_FRAC]\n              [--max-kmer-freq\
+  \ MAX_KMER_FREQ]\n              [--low-cov-depth-freq LOW_COV_DEPTH_FREQ]\n    \
+  \          [--max-missing-kmers MAX_MISSING_KMERS]\n              [--min-ambiguous-kmers\
+  \ MIN_AMBIGUOUS_KMERS]\n              [--low-cov-warning LOW_COV_WARNING]\n    \
+  \          [--max-intermediate-kmers MAX_INTERMEDIATE_KMERS]\n              [--max-degenerate-kmers\
+  \ MAX_DEGENERATE_KMERS] [-t THREADS] [-v]\n              [-V]\n              [F\
+  \ ...]\n\nBioHansel version 2.6.1: Subtype microbial genomes using SNV targeting\
+  \ k-mer subtyping schemes. \n\nBuilt-in schemes:\n\n* heidelberg:  Salmonella enterica\
+  \ spp. enterica serovar Heidelberg\n* enteritidis: Salmonella enterica spp. enterica\
+  \ serovar Enteritidis\n* typhimurium: Salmonella enterica spp. enterica serovar\
+  \ Typhimurium\n* typhi:       Salmonella enterica spp. enterica serovar Typhi\n\
+  * tb_lineage:  Mycobacterium tuberculosis\n\nDeveloped by Geneviève Labbé, Peter\
+  \ Kruczkiewicz, Philip Mabon, James Robertson, Justin Schonfeld, Daniel Kein, Marisa\
+  \ A. Rankin, Matthew Gopez, Darian Hole, David Son, Natalie Knox, Chad R. Laing,\
+  \ Kyrylo Bessonov, Eduardo Taboada, Catherine Yoshida, Kim Ziebell, Anil Nichani,\
+  \ Roger P. Johnson, Gary Van Domselaar and John H.E. Nash.\n\npositional arguments:\n\
+  \  F                     Input genome FASTA/FASTQ files (can be Gzipped)\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  -s SCHEME,\
+  \ --scheme SCHEME\n                        Scheme to use for subtyping (built-in:\
+  \ \"heidelberg\",\n                        \"enteritidis\", \"typhi\", \"typhimurium\"\
+  , \"tb_lineage\";\n                        OR user-specified: /path/to/user/scheme)\n\
+  \  --scheme-name SCHEME_NAME\n                        Custom user-specified SNP\
+  \ substyping scheme name\n  -M SCHEME_METADATA, --scheme-metadata SCHEME_METADATA\n\
+  \                        Scheme subtype metadata table (tab-delimited file with\n\
+  \                        \".tsv\" or \".tab\" extension or CSV with \".csv\"\n \
+  \                       extension format accepted; MUST contain column called\n\
+  \                        \"subtype\")\n  -p forward_reads reverse_reads, --paired-reads\
+  \ forward_reads reverse_reads\n                        FASTQ paired-end reads\n\
+  \  -i fasta_path genome_name, --input-fasta-genome-name fasta_path genome_name\n\
+  \                        input fasta file path AND genome name\n  -D INPUT_DIRECTORY,\
+  \ --input-directory INPUT_DIRECTORY\n                        directory of input\
+  \ fasta files (.fasta|.fa|.fna) or\n                        FASTQ files (paired\
+  \ FASTQ should have same basename\n                        with \"_\\d\\.(fastq|fq)\"\
+  \ postfix to be automatically\n                        paired) (files can be Gzipped)\n\
+  \  -o OUTPUT_SUMMARY, --output-summary OUTPUT_SUMMARY\n                        Subtyping\
+  \ summary output path (tab-delimited)\n  -O OUTPUT_KMER_RESULTS, --output-kmer-results\
+  \ OUTPUT_KMER_RESULTS\n                        Subtyping kmer matching output path\
+  \ (tab-delimited)\n  -S OUTPUT_SIMPLE_SUMMARY, --output-simple-summary OUTPUT_SIMPLE_SUMMARY\n\
+  \                        Subtyping simple summary output path\n  --force       \
+  \        Force existing output files to be overwritten\n  --json               \
+  \ Output JSON representation of output files\n  --min-kmer-freq MIN_KMER_FREQ\n\
+  \                        Min k-mer freq/coverage\n  --min-kmer-frac MIN_KMER_FRAC\n\
+  \                        Proportion of k-mer required for detection (0.0 - 1)\n\
+  \  --max-kmer-freq MAX_KMER_FREQ\n                        Max k-mer freq/coverage\n\
+  \  --low-cov-depth-freq LOW_COV_DEPTH_FREQ\n                        Frequencies\
+  \ below this coverage are considered low\n                        coverage\n  --max-missing-kmers\
+  \ MAX_MISSING_KMERS\n                        Decimal proportion of maximum allowable\
+  \ missing kmers\n                        before being considered an error. (0.0\
+  \ - 1.0)\n  --min-ambiguous-kmers MIN_AMBIGUOUS_KMERS\n                        Minimum\
+  \ number of missing kmers to be considered an\n                        ambiguous\
+  \ result\n  --low-cov-warning LOW_COV_WARNING\n                        Overall kmer\
+  \ coverage below this value will trigger a\n                        low coverage\
+  \ warning\n  --max-intermediate-kmers MAX_INTERMEDIATE_KMERS\n                 \
+  \       Decimal proportion of maximum allowable missing kmers\n                \
+  \        to be considered an intermediate subtype. (0.0 - 1.0)\n  --max-degenerate-kmers\
+  \ MAX_DEGENERATE_KMERS\n                        Maximum number of scheme k-mers\
+  \ allowed before\n                        quitting with a usage warning. Default\
+  \ is 100000\n  -t THREADS, --threads THREADS\n                        Number of\
+  \ parallel threads to run analysis (default=1)\n  -v, --verbose         Logging\
+  \ verbosity level (-v == show warnings; -vvv ==\n                        show debug\
+  \ info)\n  -V, --version         show program's version number and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bio_hansel:2.6.1--py_0
