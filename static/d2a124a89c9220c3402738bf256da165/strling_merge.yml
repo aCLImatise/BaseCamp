@@ -1,0 +1,121 @@
+!Command
+command:
+- strling
+- merge
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --fasta
+  description: path to fasta file (required if using CRAM input)
+  args: !SimpleFlagArg
+    name: FASTA
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --window
+  description: 'Number of bp within which to search for reads supporting the other
+    side of a bound. Estimated from the insert size distribution by default. (default:
+    -1)'
+  args: !SimpleFlagArg
+    name: WINDOW
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --min-support
+  description: 'minimum number of supporting reads required in at least one individual
+    for a locus to be reported (default: 6)'
+  args: !SimpleFlagArg
+    name: MIN_SUPPORT
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --min-clip
+  description: 'minimum number of supporting clipped reads for each side of a locus
+    (default: 0)'
+  args: !SimpleFlagArg
+    name: MIN_CLIP
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --min-clip-total
+  description: 'minimum total number of supporting clipped reads for a locus (default:
+    0)'
+  args: !SimpleFlagArg
+    name: MIN_CLIP_TOTAL
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --min-mapq
+  description: 'minimum mapping quality (does not apply to STR reads) (default: 40)'
+  args: !SimpleFlagArg
+    name: MIN_MAPQ
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --bed
+  description: 'Annoated bed file specifying additional STR loci to genotype. Format
+    is: chr start stop repeatunit [name]'
+  args: !SimpleFlagArg
+    name: BED
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-prefix
+  description: 'prefix for output files. Suffix will be -bounds.txt (default: strling)'
+  args: !SimpleFlagArg
+    name: OUTPUT_PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --diff-refs
+  description: allow bin files generated on a mixture of reference genomes (by default
+    differing references will produce an error). Reports chromosomes in the first
+    bin or -f if provided
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  - -h
+  - --help
+  description: Show this help
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "strling merge\n\nUsage:\n  strling merge [options] [bin ...]\n\nArguments:\n\
+  \  [bin ...]        One or more bin files previously created by `strling extract`\n\
+  \nOptions:\n  -f, --fasta=FASTA          path to fasta file (required if using CRAM\
+  \ input)\n  -w, --window=WINDOW        Number of bp within which to search for reads\
+  \ supporting the other side of a bound. Estimated from the insert size distribution\
+  \ by default. (default: -1)\n  -m, --min-support=MIN_SUPPORT\n                 \
+  \            minimum number of supporting reads required in at least one individual\
+  \ for a locus to be reported (default: 6)\n  -c, --min-clip=MIN_CLIP    minimum\
+  \ number of supporting clipped reads for each side of a locus (default: 0)\n  -t,\
+  \ --min-clip-total=MIN_CLIP_TOTAL\n                             minimum total number\
+  \ of supporting clipped reads for a locus (default: 0)\n  -q, --min-mapq=MIN_MAPQ\
+  \    minimum mapping quality (does not apply to STR reads) (default: 40)\n  -l,\
+  \ --bed=BED              Annoated bed file specifying additional STR loci to genotype.\
+  \ Format is: chr start stop repeatunit [name]\n  -o, --output-prefix=OUTPUT_PREFIX\n\
+  \                             prefix for output files. Suffix will be -bounds.txt\
+  \ (default: strling)\n  -d, --diff-refs            allow bin files generated on\
+  \ a mixture of reference genomes (by default differing references will produce an\
+  \ error). Reports chromosomes in the first bin or -f if provided\n  -v, --verbose\n\
+  \  -h, --help                 Show this help\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/strling:0.4.2--hbeb723e_0

@@ -1,0 +1,133 @@
+!Command
+command:
+- collapse_isoforms_by_sam.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --input
+  description: Input FA/FQ filename
+  args: !SimpleFlagArg
+    name: INPUT
+- !Flag
+  optional: true
+  synonyms:
+  - --fq
+  description: Input is a fastq file (default is fasta)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --sam
+  description: Sorted GMAP SAM filename
+  args: !SimpleFlagArg
+    name: SAM
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --prefix
+  description: Output filename prefix
+  args: !SimpleFlagArg
+    name: PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --min-coverage
+  description: 'Minimum alignment coverage (default: 0.99)'
+  args: !SimpleFlagArg
+    name: MIN_ALN_COVERAGE
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --min-identity
+  description: 'Minimum alignment identity (default: 0.95)'
+  args: !SimpleFlagArg
+    name: MIN_ALN_IDENTITY
+- !Flag
+  optional: true
+  synonyms:
+  - --max_fuzzy_junction
+  description: 'Max fuzzy junction dist (default: 5 bp)'
+  args: !SimpleFlagArg
+    name: MAX_FUZZY_JUNCTION
+- !Flag
+  optional: true
+  synonyms:
+  - --max_5_diff
+  description: "Maximum allowed 5' difference if on same exon\n(default: 1000 bp)"
+  args: !SimpleFlagArg
+    name: MAX_5_DIFF
+- !Flag
+  optional: true
+  synonyms:
+  - --max_3_diff
+  description: "Maximum allowed 3' difference if on same exon\n(default: 100 bp)"
+  args: !SimpleFlagArg
+    name: MAX_3_DIFF
+- !Flag
+  optional: true
+  synonyms:
+  - --flnc_coverage
+  description: "Minimum # of FLNC reads, only use this for aligned\nFLNC reads, otherwise\
+    \ results undefined!"
+  args: !SimpleFlagArg
+    name: FLNC_COVERAGE
+- !Flag
+  optional: true
+  synonyms:
+  - --gen_mol_count
+  description: "Generate a .abundance.txt file based on the number of\ninput sequences\
+    \ collapsed. Use only if input is FLNC\nor UMI-dedup output (default: off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dun-merge-5-shorter
+  description: "Don't collapse shorter 5' transcripts (default: turned\noff)\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: collapse_isoforms_by_sam.py [-h] [--input INPUT] [--fq] -s SAM\
+  \ -o\n                                   PREFIX [-c MIN_ALN_COVERAGE]\n        \
+  \                           [-i MIN_ALN_IDENTITY]\n                            \
+  \       [--max_fuzzy_junction MAX_FUZZY_JUNCTION]\n                            \
+  \       [--max_5_diff MAX_5_DIFF]\n                                   [--max_3_diff\
+  \ MAX_3_DIFF]\n                                   [--flnc_coverage FLNC_COVERAGE]\n\
+  \                                   [--gen_mol_count] [--dun-merge-5-shorter]\n\n\
+  optional arguments:\n  -h, --help            show this help message and exit\n \
+  \ --input INPUT         Input FA/FQ filename\n  --fq                  Input is a\
+  \ fastq file (default is fasta)\n  -s SAM, --sam SAM     Sorted GMAP SAM filename\n\
+  \  -o PREFIX, --prefix PREFIX\n                        Output filename prefix\n\
+  \  -c MIN_ALN_COVERAGE, --min-coverage MIN_ALN_COVERAGE\n                      \
+  \  Minimum alignment coverage (default: 0.99)\n  -i MIN_ALN_IDENTITY, --min-identity\
+  \ MIN_ALN_IDENTITY\n                        Minimum alignment identity (default:\
+  \ 0.95)\n  --max_fuzzy_junction MAX_FUZZY_JUNCTION\n                        Max\
+  \ fuzzy junction dist (default: 5 bp)\n  --max_5_diff MAX_5_DIFF\n             \
+  \           Maximum allowed 5' difference if on same exon\n                    \
+  \    (default: 1000 bp)\n  --max_3_diff MAX_3_DIFF\n                        Maximum\
+  \ allowed 3' difference if on same exon\n                        (default: 100 bp)\n\
+  \  --flnc_coverage FLNC_COVERAGE\n                        Minimum # of FLNC reads,\
+  \ only use this for aligned\n                        FLNC reads, otherwise results\
+  \ undefined!\n  --gen_mol_count       Generate a .abundance.txt file based on the\
+  \ number of\n                        input sequences collapsed. Use only if input\
+  \ is FLNC\n                        or UMI-dedup output (default: off)\n  --dun-merge-5-shorter\n\
+  \                        Don't collapse shorter 5' transcripts (default: turned\n\
+  \                        off)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/cdna_cupcake:22.0.0--py37h97743b1_0

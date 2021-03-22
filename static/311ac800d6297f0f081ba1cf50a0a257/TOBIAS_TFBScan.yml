@@ -1,0 +1,132 @@
+!Command
+command:
+- TOBIAS
+- TFBScan
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --motifs
+  description: File containing motifs in either MEME, PFM or JASPAR format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --fasta
+  description: A fasta file of sequences to use for scanning motifs
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --regions
+  description: Subset scanning to regions of interest
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --outdir
+  description: "Output directory for TFBS sites in one file per motif (default:\n\
+    ./tfbscan_output/). NOTE: Select either --outdir or --outfile."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --outfile
+  description: "Output file for TFBS sites joined in one bed-file (default: not\n\
+    set). NOTE: Select either --outdir or --outfile."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --naming
+  description: "Naming convention for bed-ids and output files ('id', 'name',\n'name_id',\
+    \ 'id_name') (default: 'name_id')"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gc
+  description: "Set the gc content for background regions (default: will be\nestimated\
+    \ from fasta)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pvalue
+  description: 'Set p-value for motif matches (default: 0.0001)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --keep-overlaps
+  description: "Keep overlaps of same motifs (default: overlaps are resolved by\n\
+    keeping best-scoring site)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --add-region-columns
+  description: Add extra information columns (starting from 4th column) from
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbosity
+  description: "Level of output logging (0: silent, 1: errors/warnings, 2: info,\n\
+    3: stats, 4: debug, 5: spam) (default: 3)"
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --split
+  description: 'Split of multiprocessing jobs (default: 100)'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --cores
+  description: 'Number of cores to use (default: 1)'
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "__________________________________________________________________________________________\n\
+  \n                                     TOBIAS ~ TFBScan                        \
+  \             \n__________________________________________________________________________________________\n\
+  \nFind positions of Transcription Factor Binding Sites (TFBS) in FASTA sequences\
+  \ by scanning\nwith motifs.\n\nUsage:\nTOBIAS TFBScan --motifs <motifs.txt> --fasta\
+  \ <genome.fa>\n\nBy setting --outdir, the output files are:\n- <outdir>/<TF1>.bed\n\
+  - <outdir>/<TF2>.bed\n- (...)\n\nBy setting --outfile, all TFBS are written to one\
+  \ file (with motif specified in the 4th\ncolumn of the .bed).\n\n------------------------------------------------------------------------------------------\n\
+  \nRequired arguments:\n  -m , --motifs         File containing motifs in either\
+  \ MEME, PFM or JASPAR format\n  -f , --fasta          A fasta file of sequences\
+  \ to use for scanning motifs\n\nOptional arguments:\n  -r , --regions        Subset\
+  \ scanning to regions of interest\n  --outdir              Output directory for\
+  \ TFBS sites in one file per motif (default:\n                        ./tfbscan_output/).\
+  \ NOTE: Select either --outdir or --outfile.\n  --outfile             Output file\
+  \ for TFBS sites joined in one bed-file (default: not\n                        set).\
+  \ NOTE: Select either --outdir or --outfile.\n  --naming              Naming convention\
+  \ for bed-ids and output files ('id', 'name',\n                        'name_id',\
+  \ 'id_name') (default: 'name_id')\n  --gc                  Set the gc content for\
+  \ background regions (default: will be\n                        estimated from fasta)\n\
+  \  --pvalue              Set p-value for motif matches (default: 0.0001)\n  --keep-overlaps\
+  \       Keep overlaps of same motifs (default: overlaps are resolved by\n      \
+  \                  keeping best-scoring site)\n  --add-region-columns  Add extra\
+  \ information columns (starting from 4th column) from\n                        --regions\
+  \ to the output .bed-file(s) (default: off)\n  --verbosity <int>     Level of output\
+  \ logging (0: silent, 1: errors/warnings, 2: info,\n                        3: stats,\
+  \ 4: debug, 5: spam) (default: 3)\n\nRun arguments:\n  --split <int>         Split\
+  \ of multiprocessing jobs (default: 100)\n  --cores               Number of cores\
+  \ to use (default: 1)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/tobias:0.12.10--py37h97743b1_0

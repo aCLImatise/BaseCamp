@@ -1,0 +1,120 @@
+!Command
+command:
+- msstitch
+- makedecoy
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: Input file of {} format
+  args: !SimpleFlagArg
+    name: FN
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: Directory to output in
+  args: !SimpleFlagArg
+    name: OUTDIR
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: Output file
+  args: !SimpleFlagArg
+    name: OUTFILE
+- !Flag
+  optional: true
+  synonyms:
+  - --dbfile
+  description: Database lookup file
+  args: !SimpleFlagArg
+    name: LOOKUPFN
+- !Flag
+  optional: true
+  synonyms:
+  - --scramble
+  description: "Decoy scrambling method, use: \"tryp_rev\": tryptic\nreverse, or \"\
+    prot_rev\": full (protein) reverse."
+  args: !SimpleFlagArg
+    name: SCRAMBLE
+- !Flag
+  optional: true
+  synonyms:
+  - --ignore-target-hits
+  description: "Do not remove tryptic peptides from sequence where\nthey match target\
+    \ DB"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --notrypsin
+  description: "Do not trypsinize. User is expected to deliver\napretrypsinized FASTA\
+    \ file"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --miscleav
+  description: "Amount of missed cleavages to allow when trypsinizing,\ndefault is\
+    \ 0"
+  args: !SimpleFlagArg
+    name: MISS_CLEAVAGE
+- !Flag
+  optional: true
+  synonyms:
+  - --minlen
+  description: Minimum length of peptide to be included
+  args: !SimpleFlagArg
+    name: MINLENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - --maxshuffle
+  description: "Amount of times to attempt to shuffle a decoy reversed\npeptide to\
+    \ make it not match target peptides, before\ndiscarding it. Used when using tryptic\
+    \ peptide\nreversal (not protein reversal)\n"
+  args: !SimpleFlagArg
+    name: MAX_SHUFFLE
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: msstitch makedecoy [-h] [--version] -i FN [-d OUTDIR] [-o OUTFILE]\n\
+  \                          [--dbfile LOOKUPFN] [--scramble SCRAMBLE]\n         \
+  \                 [--ignore-target-hits] [--notrypsin]\n                       \
+  \   [--miscleav MISS_CLEAVAGE] [--minlen MINLENGTH]\n                          [--maxshuffle\
+  \ MAX_SHUFFLE]\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  --version             show program's version number and exit\n  -i\
+  \ FN                 Input file of {} format\n  -d OUTDIR             Directory\
+  \ to output in\n  -o OUTFILE            Output file\n  --dbfile LOOKUPFN     Database\
+  \ lookup file\n  --scramble SCRAMBLE   Decoy scrambling method, use: \"tryp_rev\"\
+  : tryptic\n                        reverse, or \"prot_rev\": full (protein) reverse.\n\
+  \  --ignore-target-hits  Do not remove tryptic peptides from sequence where\n  \
+  \                      they match target DB\n  --notrypsin           Do not trypsinize.\
+  \ User is expected to deliver\n                        apretrypsinized FASTA file\n\
+  \  --miscleav MISS_CLEAVAGE\n                        Amount of missed cleavages\
+  \ to allow when trypsinizing,\n                        default is 0\n  --minlen\
+  \ MINLENGTH    Minimum length of peptide to be included\n  --maxshuffle MAX_SHUFFLE\n\
+  \                        Amount of times to attempt to shuffle a decoy reversed\n\
+  \                        peptide to make it not match target peptides, before\n\
+  \                        discarding it. Used when using tryptic peptide\n      \
+  \                  reversal (not protein reversal)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/msstitch:3.7--py_0

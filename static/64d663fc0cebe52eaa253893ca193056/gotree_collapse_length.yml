@@ -1,0 +1,98 @@
+!Command
+command:
+- gotree
+- collapse
+- length
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --length
+  description: Length cutoff to collapse branches
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - --root
+  description: Applies also to branches connected to the root (may unroot the tree)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --tips
+  description: Applies also to tips (keeps a 0.0 length tip)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --format
+  description: Input tree format (newick, nexus, or phyloxml) (default "newick")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  description: Input tree (default "stdin")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: Collapsed tree output file (default "stdout")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --seed
+  description: 'Random Seed: -1 = nano seconds since 1970/01/01 00:00:00 (default
+    -1)'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: Number of threads (Max=2) (default 1)
+  args: !SimpleFlagArg
+    name: int
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: help for length
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Collapse short branches of the input tree.\n\nShort branches are defined\
+  \ by a threshold (-l). All internal branches \nwith length <= threshold are removed.\n\
+  \nIf --root is given, then it applies also to internal branches connected to the\
+  \ root in the case \nof rooted trees. This may unroot the tree. In that case, so\
+  \ far the two branches connected to the root are \nconsidered independently whereas\
+  \ it may be more useful to consider them as a single bipartition if the \ntree is\
+  \ going to be unrooted.\n\nIf --tips is given, then it applies also to external\
+  \ branches, just by setting their length to 0.0\n\nUsage:\n  gotree collapse length\
+  \ [flags]\n\nFlags:\n  -h, --help           help for length\n  -l, --length float\
+  \   Length cutoff to collapse branches\n      --root           Applies also to branches\
+  \ connected to the root (may unroot the tree)\n      --tips           Applies also\
+  \ to tips (keeps a 0.0 length tip)\n\nGlobal Flags:\n      --format string   Input\
+  \ tree format (newick, nexus, or phyloxml) (default \"newick\")\n  -i, --input string\
+  \    Input tree (default \"stdin\")\n  -o, --output string   Collapsed tree output\
+  \ file (default \"stdout\")\n      --seed int        Random Seed: -1 = nano seconds\
+  \ since 1970/01/01 00:00:00 (default -1)\n  -t, --threads int     Number of threads\
+  \ (Max=2) (default 1)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/gotree:0.4.1--h375a9b1_0

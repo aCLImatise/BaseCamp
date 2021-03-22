@@ -1,0 +1,116 @@
+!Command
+command:
+- gotree
+- acr
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --algo
+  description: 'Parsimony algorithm for resolving ambiguities: acctran, deltran, or
+    downpass (default "acctran")'
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  description: Input tree (default "stdin")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --out-states
+  description: Output mapping file between node names and states (default "none")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --out-steps
+  description: Output file with number of parsimony steps (default "stdout")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: Output file (default "stdout")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --random-resolve
+  description: 'Random resolve states when several possibilities in: acctran, deltran,
+    or downpass'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --states
+  description: 'Tip state file (One line per tip, tab separated: tipname\tstate) (default
+    "stdin")'
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --format
+  description: Input tree format (newick, nexus, or phyloxml) (default "newick")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --seed
+  description: 'Random Seed: -1 = nano seconds since 1970/01/01 00:00:00 (default
+    -1)'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: Number of threads (Max=2) (default 1)
+  args: !SimpleFlagArg
+    name: int
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: help for acr
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Reconstructs most parsimonious ancestral characters.\n\nDepending on the\
+  \ chosen algorithm, it will run:\n1) UP-PASS and\n2) Either\n   a) DOWN-PASS or\n\
+  \   b) DOWN-PASS+DELTRAN or\n   c) ACCTRAN\n   d) NONE\n\nShould work on multifurcated\
+  \ trees.\n\nIf --random-resolve is given then, during the last pass, each time \n\
+  a node with several possible states still exists, one state is chosen \nrandomly\
+  \ before going deeper in the tree.\n\nUsage:\n  gotree acr [flags]\n\nFlags:\n \
+  \     --algo string         Parsimony algorithm for resolving ambiguities: acctran,\
+  \ deltran, or downpass (default \"acctran\")\n  -h, --help                help for\
+  \ acr\n  -i, --input string        Input tree (default \"stdin\")\n      --out-states\
+  \ string   Output mapping file between node names and states (default \"none\")\n\
+  \      --out-steps string    Output file with number of parsimony steps (default\
+  \ \"stdout\")\n  -o, --output string       Output file (default \"stdout\")\n  \
+  \    --random-resolve      Random resolve states when several possibilities in:\
+  \ acctran, deltran, or downpass\n      --states string       Tip state file (One\
+  \ line per tip, tab separated: tipname\\tstate) (default \"stdin\")\n\nGlobal Flags:\n\
+  \      --format string   Input tree format (newick, nexus, or phyloxml) (default\
+  \ \"newick\")\n      --seed int        Random Seed: -1 = nano seconds since 1970/01/01\
+  \ 00:00:00 (default -1)\n  -t, --threads int     Number of threads (Max=2) (default\
+  \ 1)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/gotree:0.4.1--h375a9b1_0

@@ -1,0 +1,196 @@
+!Command
+command:
+- TOBIAS
+- ATACorrect
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --bam
+  description: A .bam-file containing reads to be corrected
+  args: !SimpleFlagArg
+    name: bam
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --genome
+  description: A .fasta-file containing whole genomic sequence
+  args: !SimpleFlagArg
+    name: fasta
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --peaks
+  description: A .bed-file containing ATAC peak regions
+  args: !SimpleFlagArg
+    name: bed
+- !Flag
+  optional: true
+  synonyms:
+  - --regions-in
+  description: "Input regions for estimating bias (default: regions not\nin peaks.bed)"
+  args: !SimpleFlagArg
+    name: bed
+- !Flag
+  optional: true
+  synonyms:
+  - --regions-out
+  description: 'Output regions (default: peaks.bed)'
+  args: !SimpleFlagArg
+    name: bed
+- !Flag
+  optional: true
+  synonyms:
+  - --blacklist
+  description: 'Blacklisted regions in .bed-format (default: None)'
+  args: !SimpleFlagArg
+    name: bed
+- !Flag
+  optional: true
+  synonyms:
+  - --extend
+  description: "Extend output regions with basepairs\nupstream/downstream (default:\
+    \ 100)"
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --split-strands
+  description: Write out tracks per strand
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --norm-off
+  description: Switches off normalization based on number of reads
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --track-off
+  description: "[<track> [<track> ...]]\nSwitch off writing of individual .bigwig-tracks\n\
+    (uncorrected/bias/expected/corrected)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --k_flank
+  description: "Flank +/- of cutsite to estimate bias from (default:\n12)"
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --read_shift
+  description: '<int>         Read shift for forward and reverse reads (default: 4'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --bg_shift
+  description: "Read shift for estimation of background frequencies\n(default: 100)"
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --window
+  description: "Window size for calculating expected signal (default:\n100)"
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --score_mat
+  description: "Type of matrix to use for bias estimation (PWM/DWM)\n(default: DWM)"
+  args: !SimpleFlagArg
+    name: mat
+- !Flag
+  optional: true
+  synonyms:
+  - --prefix
+  description: 'Prefix for output files (default: same as .bam file)'
+  args: !SimpleFlagArg
+    name: prefix
+- !Flag
+  optional: true
+  synonyms:
+  - --outdir
+  description: "Output directory for files (default: current working\ndirectory)"
+  args: !SimpleFlagArg
+    name: directory
+- !Flag
+  optional: true
+  synonyms:
+  - --cores
+  description: 'Number of cores to use for computation (default: 1)'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --split
+  description: 'Split of multiprocessing jobs (default: 100)'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --verbosity
+  description: "Level of output logging (0: silent, 1: errors/warnings,\n2: info,\
+    \ 3: stats, 4: debug, 5: spam) (default: 3)\n"
+  args: !SimpleFlagArg
+    name: int
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "__________________________________________________________________________________________\n\
+  \n                                   TOBIAS ~ ATACorrect                       \
+  \            \n__________________________________________________________________________________________\n\
+  \nATACorrect corrects the cutsite-signal from ATAC-seq with regard to the underlying\n\
+  sequence preference of Tn5 transposase.\n\nUsage:\nTOBIAS ATACorrect --bam <reads.bam>\
+  \ --genome <genome.fa> --peaks <peaks.bed>\n\nOutput files:\n- <outdir>/<prefix>_uncorrected.bw\n\
+  - <outdir>/<prefix>_bias.bw\n- <outdir>/<prefix>_expected.bw\n- <outdir>/<prefix>_corrected.bw\n\
+  - <outdir>/<prefix>_atacorrect.pdf\n\n------------------------------------------------------------------------------------------\n\
+  \nRequired arguments:\n  -b <bam>, --bam <bam>            A .bam-file containing\
+  \ reads to be corrected\n  -g <fasta>, --genome <fasta>     A .fasta-file containing\
+  \ whole genomic sequence\n  -p <bed>, --peaks <bed>          A .bed-file containing\
+  \ ATAC peak regions\n\nOptional arguments:\n  --regions-in <bed>               Input\
+  \ regions for estimating bias (default: regions not\n                          \
+  \         in peaks.bed)\n  --regions-out <bed>              Output regions (default:\
+  \ peaks.bed)\n  --blacklist <bed>                Blacklisted regions in .bed-format\
+  \ (default: None)\n  --extend <int>                   Extend output regions with\
+  \ basepairs\n                                   upstream/downstream (default: 100)\n\
+  \  --split-strands                  Write out tracks per strand\n  --norm-off  \
+  \                     Switches off normalization based on number of reads\n  --track-off\
+  \ [<track> [<track> ...]]\n                                   Switch off writing\
+  \ of individual .bigwig-tracks\n                                   (uncorrected/bias/expected/corrected)\n\
+  \nAdvanced ATACorrect arguments (no need to touch):\n  --k_flank <int>         \
+  \         Flank +/- of cutsite to estimate bias from (default:\n               \
+  \                    12)\n  --read_shift <int> <int>         Read shift for forward\
+  \ and reverse reads (default: 4\n                                   -5)\n  --bg_shift\
+  \ <int>                 Read shift for estimation of background frequencies\n  \
+  \                                 (default: 100)\n  --window <int>             \
+  \      Window size for calculating expected signal (default:\n                 \
+  \                  100)\n  --score_mat <mat>                Type of matrix to use\
+  \ for bias estimation (PWM/DWM)\n                                   (default: DWM)\n\
+  \nRun arguments:\n  --prefix <prefix>                Prefix for output files (default:\
+  \ same as .bam file)\n  --outdir <directory>             Output directory for files\
+  \ (default: current working\n                                   directory)\n  --cores\
+  \ <int>                    Number of cores to use for computation (default: 1)\n\
+  \  --split <int>                    Split of multiprocessing jobs (default: 100)\n\
+  \  --verbosity <int>                Level of output logging (0: silent, 1: errors/warnings,\n\
+  \                                   2: info, 3: stats, 4: debug, 5: spam) (default:\
+  \ 3)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/tobias:0.12.10--py37h97743b1_0

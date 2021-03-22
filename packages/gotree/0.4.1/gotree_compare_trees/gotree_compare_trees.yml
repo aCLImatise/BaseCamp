@@ -1,0 +1,101 @@
+!Command
+command:
+- gotree
+- compare
+- trees
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --binary
+  description: If true, then just print true (identical tree) or false (different
+    tree) for each compared tree
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --rf
+  description: If true, outputs Robinson-Foulds distance, as the sum of reference
+    + compared specific branches
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --tips
+  description: Include tips in the comparison
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --compared
+  description: Compared trees input file (default "none")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --format
+  description: Input tree format (newick, nexus, or phyloxml) (default "newick")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --reftree
+  description: Reference tree input file (default "stdin")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --seed
+  description: 'Random Seed: -1 = nano seconds since 1970/01/01 00:00:00 (default
+    -1)'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: Number of threads (Max=2) (default 1)
+  args: !SimpleFlagArg
+    name: int
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: help for trees
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Compare a reference tree with a set of trees.\n\nIf --binary is given:\n\
+  For each trees in the compared tree file, it will print tab separated values with:\n\
+  1) The index of the compared tree in the file\n2) \"true\" if the tree is identical,\
+  \ \n   \"false\" otherwise\n\nOtherwise:\nFor each trees in the compared tree file,\
+  \ it will print tab separated values with:\n1) The index of the compared tree in\
+  \ the file\n2) The number of branches that are specific to the reference tree\n\
+  3) The number of branches that are common to both trees\n4) The number of branches\
+  \ that are specific to the compared tree\n\nIf --rf is given, it only computes the\
+  \ Robinson-Foulds distance, as the sum of \nreference + compared specific branches.\n\
+  \nUsage:\n  gotree compare trees [flags]\n\nFlags:\n      --binary   If true, then\
+  \ just print true (identical tree) or false (different tree) for each compared tree\n\
+  \  -h, --help     help for trees\n      --rf       If true, outputs Robinson-Foulds\
+  \ distance, as the sum of reference + compared specific branches\n  -l, --tips \
+  \    Include tips in the comparison\n\nGlobal Flags:\n  -c, --compared string  \
+  \ Compared trees input file (default \"none\")\n      --format string     Input\
+  \ tree format (newick, nexus, or phyloxml) (default \"newick\")\n  -i, --reftree\
+  \ string    Reference tree input file (default \"stdin\")\n      --seed int    \
+  \      Random Seed: -1 = nano seconds since 1970/01/01 00:00:00 (default -1)\n \
+  \ -t, --threads int       Number of threads (Max=2) (default 1)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/gotree:0.4.1--h375a9b1_0

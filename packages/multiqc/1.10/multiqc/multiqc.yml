@@ -1,0 +1,290 @@
+!Command
+command:
+- multiqc
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: report
+  description: -l, --file-list                 Supply a file containing a list of
+    file
+- !Positional
+  optional: false
+  position: 0
+  name: tsv
+  description: -z, --zip-data-dir              Compress the data directory.
+- !Positional
+  optional: false
+  position: 1
+  name: development
+  description: --pdf                           Creates PDF report with 'simple' template.
+- !Positional
+  optional: false
+  position: 0
+  name: line
+  description: -v, --verbose                   Increase output verbosity.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --force
+  description: Overwrite any existing reports
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --dirs
+  description: Prepend directory to sample names
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -dd
+  - --dirs-depth
+  description: "Prepend [INT] directories to sample names.\nNegative number to take\
+    \ from start of path."
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --fullnames
+  description: "Do not clean the sample names (leave as full\nfile name)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --title
+  description: "Report title. Printed as page header, used\nfor filename if not otherwise\
+    \ specified."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --comment
+  description: "Custom comment, will be printed at the top\nof the report."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --filename
+  description: "Report filename. Use 'stdout' to print to\nstandard out."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --outdir
+  description: Create report in the specified output
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --tag
+  description: "Use only modules which tagged with this\nkeyword, eg. RNA"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --view-tags
+  - --view_tags
+  description: "View the available tags and which modules\nthey load"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --ignore
+  description: Ignore analysis files (glob expression)
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --ignore-samples
+  description: Ignore sample names (glob expression)
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --ignore-symlinks
+  description: Ignore symlinked directories and files
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sample-names
+  description: File containing alternative sample names
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --sample-filters
+  description: File containing show/hide patterns for the
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --exclude
+  description: '[module name]     Do not use this module. Can specify multiple'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --export
+  description: "Export plots as static images in addition to\nthe report"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -fp
+  - --flat
+  description: Use only flat plots (static images)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ip
+  - --interactive
+  description: "Use only interactive plots (HighCharts\nJavascript)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --lint
+  description: Use strict linting (validation) to help code
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-megaqc-upload
+  description: "Don't upload generated report to MegaQC,\neven if MegaQC options are\
+    \ found"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --config
+  description: "Specific config file to load, after those in\nMultiQC dir / home dir\
+    \ / working dir."
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --cl-config
+  - --cl_config
+  description: Specify MultiQC config YAML on the command
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  description: Only show log warnings
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --profile-runtime
+  description: "Add analysis of how long MultiQC takes to\nrun to the report"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-ansi
+  description: Disable coloured log output
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Show the version and exit.
+  args: !EmptyFlagArg {}
+help_text: "Usage: multiqc [OPTIONS] <analysis directory>\n\n  Main MultiQC run command\
+  \ for use with the click command line, complete\n  with all click function decorators.\
+  \ To make it easy to use MultiQC within\n  notebooks and other locations that don't\
+  \ need click, we simply pass the\n  parsed variables on to a vanilla python function.\n\
+  \nOptions:\n  -f, --force                     Overwrite any existing reports\n \
+  \ -d, --dirs                      Prepend directory to sample names\n  -dd, --dirs-depth\
+  \ INTEGER       Prepend [INT] directories to sample names.\n                   \
+  \               Negative number to take from start of path.\n\n  -s, --fullnames\
+  \                 Do not clean the sample names (leave as full\n               \
+  \                   file name)\n\n  -i, --title TEXT                Report title.\
+  \ Printed as page header, used\n                                  for filename if\
+  \ not otherwise specified.\n\n  -b, --comment TEXT              Custom comment,\
+  \ will be printed at the top\n                                  of the report.\n\
+  \n  -n, --filename TEXT             Report filename. Use 'stdout' to print to\n\
+  \                                  standard out.\n\n  -o, --outdir TEXT        \
+  \       Create report in the specified output\n                                \
+  \  directory.\n\n  -t, --template [default|default_dev|gathered|geo|sections|simple]\n\
+  \                                  Report template to use.\n  --tag TEXT       \
+  \               Use only modules which tagged with this\n                      \
+  \            keyword, eg. RNA\n\n  --view-tags, --view_tags        View the available\
+  \ tags and which modules\n                                  they load\n\n  -x, --ignore\
+  \ TEXT               Ignore analysis files (glob expression)\n  --ignore-samples\
+  \ TEXT           Ignore sample names (glob expression)\n  --ignore-symlinks    \
+  \           Ignore symlinked directories and files\n  --sample-names PATH      \
+  \       File containing alternative sample names\n  --sample-filters PATH      \
+  \     File containing show/hide patterns for the\n                             \
+  \     report\n\n  -l, --file-list                 Supply a file containing a list\
+  \ of file\n                                  paths to be searched, one per row\n\
+  \n  -e, --exclude [module name]     Do not use this module. Can specify multiple\n\
+  \                                  times.\n\n  -m, --module [module name]      Use\
+  \ only this module. Can specify multiple\n                                  times.\n\
+  \n  --data-dir                      Force the parsed data directory to be\n    \
+  \                              created.\n\n  --no-data-dir                   Prevent\
+  \ the parsed data directory from being\n                                  created.\n\
+  \n  -k, --data-format [tsv|json|yaml]\n                                  Output\
+  \ parsed data in a different format.\n                                  Default:\
+  \ tsv\n\n  -z, --zip-data-dir              Compress the data directory.\n  -p, --export\
+  \                    Export plots as static images in addition to\n            \
+  \                      the report\n\n  -fp, --flat                     Use only\
+  \ flat plots (static images)\n  -ip, --interactive              Use only interactive\
+  \ plots (HighCharts\n                                  Javascript)\n\n  --lint \
+  \                         Use strict linting (validation) to help code\n       \
+  \                           development\n\n  --pdf                           Creates\
+  \ PDF report with 'simple' template.\n                                  Requires\
+  \ Pandoc to be installed.\n\n  --no-megaqc-upload              Don't upload generated\
+  \ report to MegaQC,\n                                  even if MegaQC options are\
+  \ found\n\n  -c, --config PATH               Specific config file to load, after\
+  \ those in\n                                  MultiQC dir / home dir / working dir.\n\
+  \n  --cl-config, --cl_config TEXT   Specify MultiQC config YAML on the command\n\
+  \                                  line\n\n  -v, --verbose                   Increase\
+  \ output verbosity.\n  -q, --quiet                     Only show log warnings\n\
+  \  --profile-runtime               Add analysis of how long MultiQC takes to\n \
+  \                                 run to the report\n\n  --no-ansi             \
+  \          Disable coloured log output\n  --version                       Show the\
+  \ version and exit.\n  -h, --help                      Show this message and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/multiqc:1.10--py_1

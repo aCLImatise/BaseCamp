@@ -1,0 +1,120 @@
+!Command
+command:
+- prepDE.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: gene_count_matrix.csv
+  description: '-t T                  where to output the transcript count matrix
+    [default:'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  - --in
+  description: "a folder containing all sample sub-directories, or a\ntext file with\
+    \ sample ID and path to its GTF file on\neach line [default: ./]"
+  args: !SimpleFlagArg
+    name: INPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  description: 'where to output the gene count matrix [default:'
+  args: !SimpleFlagArg
+    name: G
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --length
+  description: 'the average read length [default: 75]'
+  args: !SimpleFlagArg
+    name: LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --pattern
+  description: "a regular expression that selects the sample\nsubdirectories"
+  args: !SimpleFlagArg
+    name: PATTERN
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --cluster
+  description: "whether to cluster genes that overlap with different\ngene IDs, ignoring\
+    \ ones with geneID pattern (see\nbelow)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --string
+  description: "if a different prefix is used for geneIDs assigned by\nStringTie [default:\
+    \ MSTRG]"
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --key
+  description: "if clustering, what prefix to use for geneIDs assigned\nby this script\
+    \ [default: prepG]"
+  args: !SimpleFlagArg
+    name: KEY
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: enable verbose processing
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --legend
+  description: "if clustering, where to output the legend file mapping\ntranscripts\
+    \ to assigned geneIDs [default: legend.csv]\n"
+  args: !SimpleFlagArg
+    name: LEGEND
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: prepDE.py [options]\n\nGenerates two CSV files containing the count\
+  \ matrices for genes and\ntranscripts, using the coverage values found in the output\
+  \ of `stringtie -e`\n\nOptions:\n  -h, --help            show this help message\
+  \ and exit\n  -i INPUT, --input=INPUT, --in=INPUT\n                        a folder\
+  \ containing all sample sub-directories, or a\n                        text file\
+  \ with sample ID and path to its GTF file on\n                        each line\
+  \ [default: ./]\n  -g G                  where to output the gene count matrix [default:\n\
+  \                        gene_count_matrix.csv\n  -t T                  where to\
+  \ output the transcript count matrix [default:\n                        transcript_count_matrix.csv]\n\
+  \  -l LENGTH, --length=LENGTH\n                        the average read length [default:\
+  \ 75]\n  -p PATTERN, --pattern=PATTERN\n                        a regular expression\
+  \ that selects the sample\n                        subdirectories\n  -c, --cluster\
+  \         whether to cluster genes that overlap with different\n               \
+  \         gene IDs, ignoring ones with geneID pattern (see\n                   \
+  \     below)\n  -s STRING, --string=STRING\n                        if a different\
+  \ prefix is used for geneIDs assigned by\n                        StringTie [default:\
+  \ MSTRG]\n  -k KEY, --key=KEY     if clustering, what prefix to use for geneIDs\
+  \ assigned\n                        by this script [default: prepG]\n  -v      \
+  \              enable verbose processing\n  --legend=LEGEND       if clustering,\
+  \ where to output the legend file mapping\n                        transcripts to\
+  \ assigned geneIDs [default: legend.csv]\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/stringtie:2.1.5--h7e0af3c_0

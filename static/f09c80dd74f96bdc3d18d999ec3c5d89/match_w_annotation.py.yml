@@ -1,0 +1,72 @@
+!Command
+command:
+- match_w_annotation.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: gene_annotation_file
+  description: Gene Annotation Text File
+- !Positional
+  optional: false
+  position: 1
+  name: input_fasta
+  description: Input Fasta
+- !Positional
+  optional: false
+  position: 2
+  name: input_sam
+  description: Input SAM
+- !Positional
+  optional: false
+  position: 3
+  name: output_prefix
+  description: Output Prefix
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --min_query_overlap
+  description: 'Minimum query overlap, in ratio (default: 0.0)'
+  args: !SimpleFlagArg
+    name: MIN_QUERY_OVERLAP
+- !Flag
+  optional: true
+  synonyms:
+  - --min_gene_overlap_bp
+  description: 'Minimum gene overlap, in bp (default: 0 bp)'
+  args: !SimpleFlagArg
+    name: MIN_GENE_OVERLAP_BP
+- !Flag
+  optional: true
+  synonyms:
+  - --min_gene_overlap
+  description: "Minimum gene overlap, in ratio (default: 0.5)\n"
+  args: !SimpleFlagArg
+    name: MIN_GENE_OVERLAP
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: Match alignment with annotation. Categorize and Report.\n     \
+  \  [-h] [--min_query_overlap MIN_QUERY_OVERLAP]\n       [--min_gene_overlap_bp MIN_GENE_OVERLAP_BP]\n\
+  \       [--min_gene_overlap MIN_GENE_OVERLAP]\n       gene_annotation_file input_fasta\
+  \ input_sam output_prefix\n\npositional arguments:\n  gene_annotation_file  Gene\
+  \ Annotation Text File\n  input_fasta           Input Fasta\n  input_sam       \
+  \      Input SAM\n  output_prefix         Output Prefix\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  --min_query_overlap\
+  \ MIN_QUERY_OVERLAP\n                        Minimum query overlap, in ratio (default:\
+  \ 0.0)\n  --min_gene_overlap_bp MIN_GENE_OVERLAP_BP\n                        Minimum\
+  \ gene overlap, in bp (default: 0 bp)\n  --min_gene_overlap MIN_GENE_OVERLAP\n \
+  \                       Minimum gene overlap, in ratio (default: 0.5)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/cdna_cupcake:22.0.0--py37h97743b1_0

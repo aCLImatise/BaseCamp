@@ -1,0 +1,115 @@
+!Command
+command:
+- augur
+- sequence-traits
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --ancestral-sequences
+  description: "nucleotide alignment (VCF) to search for sequence\ntraits in (can\
+    \ be generated from 'ancestral' using '--\noutput-vcf') (default: None)"
+  args: !SimpleFlagArg
+    name: ANCESTRAL_SEQUENCES
+- !Flag
+  optional: true
+  synonyms:
+  - --translations
+  description: "AA alignment to search for sequence traits in (can\ninclude ancestral\
+    \ sequences) (default: None)"
+  args: !SimpleFlagArg
+    name: TRANSLATIONS
+- !Flag
+  optional: true
+  synonyms:
+  - --vcf-reference
+  description: "fasta file of the sequence the nucleotide VCF was\nmapped to (default:\
+    \ None)"
+  args: !SimpleFlagArg
+    name: VCF_REFERENCE
+- !Flag
+  optional: true
+  synonyms:
+  - --vcf-translate-reference
+  description: "fasta file of the sequence the translated VCF was\nmapped to (default:\
+    \ None)"
+  args: !SimpleFlagArg
+    name: VCF_TRANSLATE_REFERENCE
+- !Flag
+  optional: true
+  synonyms:
+  - --features
+  description: "file that specifies sites defining the features in a\ntab-delimited\
+    \ format: \"GENE SITE ALT DISPLAY_NAME\nFEATURE\". For nucleotide sites, GENE\
+    \ can be \"nuc\" (or\ncolumn excluded entirely for all-nuc sites).\n\"DISPLAY_NAME\"\
+    \ can be blank or excluded entirely.\n(default: None)"
+  args: !SimpleFlagArg
+    name: FEATURES
+- !Flag
+  optional: true
+  synonyms:
+  - --count
+  description: "Whether to count traits (ex: # drugs resistant to) or\nmutations (default:\
+    \ traits)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      mutations:
+      traits:
+- !Flag
+  optional: true
+  synonyms:
+  - --label
+  description: "How to label the counts (ex: Drug_Resistance)\n(default: # Traits)"
+  args: !SimpleFlagArg
+    name: LABEL
+- !Flag
+  optional: true
+  synonyms:
+  - --output-node-data
+  description: "name of JSON file to save sequence features to\n(default: None)\n"
+  args: !SimpleFlagArg
+    name: OUTPUT_NODE_DATA
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: augur sequence-traits [-h] [--ancestral-sequences ANCESTRAL_SEQUENCES]\n\
+  \                             [--translations TRANSLATIONS]\n                  \
+  \           [--vcf-reference VCF_REFERENCE]\n                             [--vcf-translate-reference\
+  \ VCF_TRANSLATE_REFERENCE]\n                             [--features FEATURES]\n\
+  \                             [--count {traits,mutations}] [--label LABEL]\n   \
+  \                          [--output-node-data OUTPUT_NODE_DATA]\n\nAnnotate sequences\
+  \ based on amino-acid or nucleotide signatures.\n\noptional arguments:\n  -h, --help\
+  \            show this help message and exit\n  --ancestral-sequences ANCESTRAL_SEQUENCES\n\
+  \                        nucleotide alignment (VCF) to search for sequence\n   \
+  \                     traits in (can be generated from 'ancestral' using '--\n \
+  \                       output-vcf') (default: None)\n  --translations TRANSLATIONS\n\
+  \                        AA alignment to search for sequence traits in (can\n  \
+  \                      include ancestral sequences) (default: None)\n  --vcf-reference\
+  \ VCF_REFERENCE\n                        fasta file of the sequence the nucleotide\
+  \ VCF was\n                        mapped to (default: None)\n  --vcf-translate-reference\
+  \ VCF_TRANSLATE_REFERENCE\n                        fasta file of the sequence the\
+  \ translated VCF was\n                        mapped to (default: None)\n  --features\
+  \ FEATURES   file that specifies sites defining the features in a\n            \
+  \            tab-delimited format: \"GENE SITE ALT DISPLAY_NAME\n              \
+  \          FEATURE\". For nucleotide sites, GENE can be \"nuc\" (or\n          \
+  \              column excluded entirely for all-nuc sites).\n                  \
+  \      \"DISPLAY_NAME\" can be blank or excluded entirely.\n                   \
+  \     (default: None)\n  --count {traits,mutations}\n                        Whether\
+  \ to count traits (ex: # drugs resistant to) or\n                        mutations\
+  \ (default: traits)\n  --label LABEL         How to label the counts (ex: Drug_Resistance)\n\
+  \                        (default: # Traits)\n  --output-node-data OUTPUT_NODE_DATA\n\
+  \                        name of JSON file to save sequence features to\n      \
+  \                  (default: None)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/augur:11.2.0--py_0

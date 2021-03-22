@@ -1,0 +1,117 @@
+!Command
+command:
+- GNUVID_Predict.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output_folder
+  description: "Output folder and prefix to be created for results\n(default: timestamped\
+    \ GNUVID_results in the current\ndirectory)"
+  args: !SimpleFlagArg
+    name: OUTPUT_FOLDER
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --min_len
+  description: 'minimum sequence length [Default: 15000]'
+  args: !SimpleFlagArg
+    name: MIN_LEN
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --n_max
+  description: "maximum proportion of ambiguity (Ns) allowed [Default:\n0.5]"
+  args: !SimpleFlagArg
+    name: N_MAX
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --block_pred
+  description: "prediction block size, good for limited memory\n[Default: 1000]"
+  args: !SimpleFlagArg
+    name: BLOCK_PRED
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --exact_matching
+  description: "turn off exact matching (no allele will be identified\nfor each ORF)\
+    \ and only use machine learning prediction\n[default: False]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --individual
+  description: "Individual Output file for each genome showing the\nallele sequence\
+    \ and GNU score for each gene allele"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --force
+  description: "Force overwriting existing results folder assigned\nwith -o (default:\
+    \ off)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  description: No screen output [default OFF]
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: print version and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: GNUVID_Predict.py [-h] [-o OUTPUT_FOLDER] [-m MIN_LEN] [-n N_MAX]\n\
+  \                         [-b BLOCK_PRED] [-e] [-i] [-f] [-q] [-v]\n           \
+  \              query_fna\n\nGNUVID v2.2 uses the natural variation in public genomes\
+  \ of SARS-CoV-2 to rank\ngene sequences based on the number of observed exact matches\
+  \ (the GNU score)\nin all known genomes of SARS-CoV-2. It assigns a sequence type\
+  \ to each genome\nbased on its profile of unique gene allele sequences. It can type\
+  \ (using whole\ngenome multilocus sequence typing; wgMLST) your query genome in\
+  \ seconds.\nGNUVID_Predict is a speedy algorithm for assigning Clonal Complexes\
+  \ to new\ngenomes, which uses machine learning Random Forest Classifier, implemented\
+  \ as\nof GNUVID v2.0.\n\npositional arguments:\n  query_fna             Query Whole\
+  \ Genome Nucleotide FASTA file to analyze\n                        (.fna)\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  -o OUTPUT_FOLDER,\
+  \ --output_folder OUTPUT_FOLDER\n                        Output folder and prefix\
+  \ to be created for results\n                        (default: timestamped GNUVID_results\
+  \ in the current\n                        directory)\n  -m MIN_LEN, --min_len MIN_LEN\n\
+  \                        minimum sequence length [Default: 15000]\n  -n N_MAX, --n_max\
+  \ N_MAX\n                        maximum proportion of ambiguity (Ns) allowed [Default:\n\
+  \                        0.5]\n  -b BLOCK_PRED, --block_pred BLOCK_PRED\n      \
+  \                  prediction block size, good for limited memory\n            \
+  \            [Default: 1000]\n  -e, --exact_matching  turn off exact matching (no\
+  \ allele will be identified\n                        for each ORF) and only use\
+  \ machine learning prediction\n                        [default: False]\n  -i, --individual\
+  \      Individual Output file for each genome showing the\n                    \
+  \    allele sequence and GNU score for each gene allele\n  -f, --force         \
+  \  Force overwriting existing results folder assigned\n                        with\
+  \ -o (default: off)\n  -q, --quiet           No screen output [default OFF]\n  -v,\
+  \ --version         print version and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/gnuvid:2.2--0

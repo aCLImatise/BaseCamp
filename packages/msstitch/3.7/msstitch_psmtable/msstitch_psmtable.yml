@@ -1,0 +1,183 @@
+!Command
+command:
+- msstitch
+- psmtable
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: Input file of {} format
+  args: !SimpleFlagArg
+    name: FN
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: Directory to output in
+  args: !SimpleFlagArg
+    name: OUTDIR
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: Output file
+  args: !SimpleFlagArg
+    name: OUTFILE
+- !Flag
+  optional: true
+  synonyms:
+  - --oldpsms
+  description: "PSM table file containing previously analysed PSMs to\nappend new\
+    \ PSM table to."
+  args: !SimpleFlagArg
+    name: OLDPSMFILE
+- !Flag
+  optional: true
+  synonyms:
+  - --dbfile
+  description: Database lookup file
+  args: !SimpleFlagArg
+    name: LOOKUPFN
+- !Flag
+  optional: true
+  synonyms:
+  - --ms1quant
+  description: "Specifies to add precursor quant data from lookup DB\nto output table"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --isobaric
+  description: "Specifies to add isobaric quant data from lookup DB to\noutput table"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min-precursor-purity
+  description: "Minimum purity of precursor required to output\nisobaric quantification\
+    \ data, MS2 scans with purity\nbelow this value will be assigned NA in isobaric\n\
+    channels"
+  args: !SimpleFlagArg
+    name: MIN_PURITY
+- !Flag
+  optional: true
+  synonyms:
+  - --unroll
+  description: "PSM table from Mzid2TSV contains either one PSM per\nline with all\
+    \ the proteins of that shared peptide on\nthe same line (not unrolled, default),\
+    \ or one\nPSM/protein match per line where each protein from\nthat shared peptide\
+    \ gets its own line (unrolled)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --spectracol
+  description: "Column number in which spectra file names are, in case\nsome framework\
+    \ has changed the file names. First\ncolumn number is 1."
+  args: !SimpleFlagArg
+    name: SPECTRACOL
+- !Flag
+  optional: true
+  synonyms:
+  - --addbioset
+  description: Add biological setname from DB lookup to PSM table
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --addmiscleav
+  description: Add missed cleavages to PSM table
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --genes
+  description: Specifies to add genes to PSM table
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --proteingroup
+  description: Specifies to add protein groups to PSM table
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --fasta
+  description: FASTA sequence database
+  args: !SimpleFlagArg
+    name: FASTA
+- !Flag
+  optional: true
+  synonyms:
+  - --genefield
+  description: "Field nr (first=1) in FASTA that contains gene name\nwhen using --fastadelim\
+    \ to parse the gene names"
+  args: !SimpleFlagArg
+    name: GENEFIELD
+- !Flag
+  optional: true
+  synonyms:
+  - --fastadelim
+  description: "Delimiter in FASTA header, used to parse gene names in\ncase of non-ENSEMBL/Uniprot\n"
+  args: !ChoiceFlagArg
+    choices: !!set
+      tab:
+      semicolon:
+      pipe:
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: msstitch psmtable [-h] [--version] -i FN [-d OUTDIR] [-o OUTFILE]\n\
+  \                         [--oldpsms OLDPSMFILE] --dbfile LOOKUPFN [--ms1quant]\n\
+  \                         [--isobaric] [--min-precursor-purity MIN_PURITY]\n   \
+  \                      [--unroll] [--spectracol SPECTRACOL] [--addbioset]\n    \
+  \                     [--addmiscleav] [--genes] [--proteingroup]\n             \
+  \            [--fasta FASTA] [--genefield GENEFIELD]\n                         [--fastadelim\
+  \ {tab,pipe,semicolon}]\n\noptional arguments:\n  -h, --help            show this\
+  \ help message and exit\n  --version             show program's version number and\
+  \ exit\n  -i FN                 Input file of {} format\n  -d OUTDIR           \
+  \  Directory to output in\n  -o OUTFILE            Output file\n  --oldpsms OLDPSMFILE\
+  \  PSM table file containing previously analysed PSMs to\n                     \
+  \   append new PSM table to.\n  --dbfile LOOKUPFN     Database lookup file\n  --ms1quant\
+  \            Specifies to add precursor quant data from lookup DB\n            \
+  \            to output table\n  --isobaric            Specifies to add isobaric\
+  \ quant data from lookup DB to\n                        output table\n  --min-precursor-purity\
+  \ MIN_PURITY\n                        Minimum purity of precursor required to output\n\
+  \                        isobaric quantification data, MS2 scans with purity\n \
+  \                       below this value will be assigned NA in isobaric\n     \
+  \                   channels\n  --unroll              PSM table from Mzid2TSV contains\
+  \ either one PSM per\n                        line with all the proteins of that\
+  \ shared peptide on\n                        the same line (not unrolled, default),\
+  \ or one\n                        PSM/protein match per line where each protein\
+  \ from\n                        that shared peptide gets its own line (unrolled).\n\
+  \  --spectracol SPECTRACOL\n                        Column number in which spectra\
+  \ file names are, in case\n                        some framework has changed the\
+  \ file names. First\n                        column number is 1.\n  --addbioset\
+  \           Add biological setname from DB lookup to PSM table\n  --addmiscleav\
+  \         Add missed cleavages to PSM table\n  --genes               Specifies to\
+  \ add genes to PSM table\n  --proteingroup        Specifies to add protein groups\
+  \ to PSM table\n  --fasta FASTA         FASTA sequence database\n  --genefield GENEFIELD\n\
+  \                        Field nr (first=1) in FASTA that contains gene name\n \
+  \                       when using --fastadelim to parse the gene names\n  --fastadelim\
+  \ {tab,pipe,semicolon}\n                        Delimiter in FASTA header, used\
+  \ to parse gene names in\n                        case of non-ENSEMBL/Uniprot\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/msstitch:3.7--py_0

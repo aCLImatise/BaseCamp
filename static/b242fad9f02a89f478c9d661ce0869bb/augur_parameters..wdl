@@ -1,0 +1,20 @@
+version 1.0
+
+task AugurParameters {
+  input {
+    String augur
+  }
+  command <<<
+    augur parameters_ \
+      ~{augur}
+  >>>
+  runtime {
+    docker: "quay.io/biocontainers/augur:11.2.0--py_0"
+  }
+  parameter_meta {
+    augur: ""
+  }
+  output {
+    File out_stdout = stdout()
+  }
+}

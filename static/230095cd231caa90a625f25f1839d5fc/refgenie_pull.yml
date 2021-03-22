@@ -1,0 +1,106 @@
+!Command
+command:
+- refgenie
+- pull
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: asset-registry-paths
+  description: "One or more registry path strings that identify assets (e.g.\nhg38/fasta\
+    \ or hg38/fasta:tag)."
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --genome-config
+  description: "Path to local genome configuration file. Optional if REFGENIE\nenvironment\
+    \ variable is set."
+  args: !SimpleFlagArg
+    name: C
+- !Flag
+  optional: true
+  synonyms:
+  - --skip-read-lock
+  description: Whether the config file should not be locked for reading
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --genome
+  description: Reference assembly ID, e.g. mm10.
+  args: !SimpleFlagArg
+    name: G
+- !Flag
+  optional: true
+  synonyms:
+  - --no-overwrite
+  description: Do not overwrite if asset exists.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --force-overwrite
+  description: Overwrite if asset exists.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-large
+  description: Do not pull archives over 5GB.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pull-large
+  description: Pull any archive, regardless of its size.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --size-cutoff
+  description: "Maximum archive file size to download with no confirmation\nrequired\
+    \ (in GB, default: 10)"
+  args: !SimpleFlagArg
+    name: S
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --batch
+  description: 'Use batch mode: pull large archives, do no overwrite'
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: refgenie pull [-h] [-c C] [--skip-read-lock] [-g G]\n         \
+  \            [--no-overwrite | --force-overwrite] [--no-large | --pull-large]\n\
+  \                     [--size-cutoff S] [-b]\n                     asset-registry-paths\
+  \ [asset-registry-paths ...]\n\nDownload assets.\n\npositional arguments:\n  asset-registry-paths\
+  \     One or more registry path strings that identify assets (e.g.\n           \
+  \                hg38/fasta or hg38/fasta:tag).\n\noptional arguments:\n  -h, --help\
+  \               show this help message and exit\n  -c C, --genome-config C  Path\
+  \ to local genome configuration file. Optional if REFGENIE\n                   \
+  \        environment variable is set.\n  --skip-read-lock         Whether the config\
+  \ file should not be locked for reading\n  -g G, --genome G         Reference assembly\
+  \ ID, e.g. mm10.\n\nPrompt handling:\n  These flags configure the pull prompt responses.\n\
+  \n  --no-overwrite           Do not overwrite if asset exists.\n  --force-overwrite\
+  \        Overwrite if asset exists.\n  --no-large               Do not pull archives\
+  \ over 5GB.\n  --pull-large             Pull any archive, regardless of its size.\n\
+  \  --size-cutoff S          Maximum archive file size to download with no confirmation\n\
+  \                           required (in GB, default: 10)\n  -b, --batch       \
+  \       Use batch mode: pull large archives, do no overwrite\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/refgenie:0.10.0--py_0

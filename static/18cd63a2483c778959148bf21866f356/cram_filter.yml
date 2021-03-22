@@ -1,0 +1,75 @@
+!Command
+command:
+- cram_filter
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: in.cram
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: out.cram
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: "[-end]    Only emit containers 'start' to 'end' inclusive.\n'-n 100'\
+    \ is equivalent to '-n 100-100'."
+  args: !SimpleFlagArg
+    name: start
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: "Limit output to containers overlapping 'range'.\n'-r chr1' matches\
+    \ all of chr1.\n'-r chr1:1000' is equivalent to '-r chr1:1000-1000'."
+  args: !SimpleFlagArg
+    name: range
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  description: Drop quality strings (CRAM QS).
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: Discard comma separated list of tag types.
+  args: !SimpleFlagArg
+    name: tag-list
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  description: Keep only aux. tag types in the specified list.
+  args: !SimpleFlagArg
+    name: tag-list
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: Show this help.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "cram_filter: invalid option -- '-'\nUsage: cram_filter [options] in.cram\
+  \ out.cram\n\nValid options:\n    -n start[-end]    Only emit containers 'start'\
+  \ to 'end' inclusive.\n                      '-n 100' is equivalent to '-n 100-100'.\n\
+  \    -r range          Limit output to containers overlapping 'range'.\n       \
+  \               '-r chr1' matches all of chr1.\n                      '-r chr1:1000'\
+  \ is equivalent to '-r chr1:1000-1000'.\n    -q                Drop quality strings\
+  \ (CRAM QS).\n    -t tag-list       Discard comma separated list of tag types.\n\
+  \    -T tag-list       Keep only aux. tag types in the specified list.\n    -! \
+  \               Disable all checking of checksums.\n    -h                Show this\
+  \ help.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/staden_io_lib:1.14.13--h9dace67_0

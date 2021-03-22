@@ -1,0 +1,76 @@
+!Command
+command:
+- HiLine
+- align-sam-reads
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: READS
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --rmdups
+  - --no-rmdups
+  description: "Run samtools mark_dup pipeline on alignment.\nDefault=rmdups"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --tag
+  description: SAM tag(s) to append to reads.
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --trim
+  - --no-trim
+  description: "Run HiC read trimming, trim sections of reads that\nalign past restriction\
+    \ sites. Default=trim"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --bwa1
+  description: Use bwa mem. Default=False
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --bwa2
+  description: Use bwa-mem2. Default=True
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --minimap2
+  description: Use minimap2. Default=False
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: HiLine align-sam-reads [OPTIONS] READS\n\n  Alignment with SAM/BAM/CRAM\
+  \ reads.\n\n  READS:\n      Path to reads in SAM/BAM/CRAM format. Use \"-\" for\
+  \ stdin.\n\nOptions:\n  --rmdups / --no-rmdups  Run samtools mark_dup pipeline on\
+  \ alignment.\n                          Default=rmdups\n\n  -t, --tag TEXT     \
+  \     SAM tag(s) to append to reads.\n  --trim / --no-trim      Run HiC read trimming,\
+  \ trim sections of reads that\n                          align past restriction\
+  \ sites. Default=trim\n\n  --bwa1                  Use bwa mem. Default=False\n\
+  \  --bwa2                  Use bwa-mem2. Default=True\n  --minimap2            \
+  \  Use minimap2. Default=False\n  --help                  Show this message and\
+  \ exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/hiline:0.2.2--py38hc9558a2_1

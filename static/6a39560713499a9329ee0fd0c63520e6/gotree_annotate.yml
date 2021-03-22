@@ -1,0 +1,107 @@
+!Command
+command:
+- gotree
+- annotate
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --comment
+  description: Annotations are stored in Newick comment fields
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --compared
+  description: Compared tree file (default "stdin")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  description: Input tree(s) file (default "stdin")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --map-file
+  description: Name map input file (default "none")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: Resolved tree(s) output file (default "stdout")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --format
+  description: Input tree format (newick, nexus, or phyloxml) (default "newick")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --seed
+  description: 'Random Seed: -1 = nano seconds since 1970/01/01 00:00:00 (default
+    -1)'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: Number of threads (Max=2) (default 1)
+  args: !SimpleFlagArg
+    name: int
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: help for annotate
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Annotates internal branches of a tree with given data.\n\nAnnotations\
+  \ may be (in order of priority):\n- A tree with labels on internal nodes (-c). in\
+  \ that case, it will label each branch of \n   the input tree with label of the\
+  \ closest branch of the given compared tree (-c) in terms\n   of transfer distance.\
+  \ The labels are of the form: \"label_distance_depth\"; Only internal branches\n\
+  \   are annotated, and no internal branch is annotated with a terminal branch.\n\
+  - A file with one line per internal node to annotate (-m), and with the following\
+  \ format:\n   <name of internal branch/node n1>:<name of taxon n2>,<name of taxon\
+  \ n3>,...,<name of taxon ni>\n\t=> If 0 name is given after ':' an error is returned\n\
+  \t=> If 1 name 'n2' is given after ':' : we search for n2 in the tree (tip or internal\
+  \ node)\n       and rename it as n1\n    => If > 1 names '[n2,...,ni]' are given\
+  \ after ':' : We find the LCA of every tips whose name \n\t   is in '[n2,...,ni]'\
+  \ and rename it as n1.\n\n\nIf --comment is specified, then we do not change the\
+  \ names, but the comments of the given nodes.\nOtherwise output tree won't have\
+  \ bootstrap support at the branches anymore\n\nIf neither -c nor -m are given, gotree\
+  \ annotate will wait for a reference tree on stdin\n\nUsage:\n  gotree annotate\
+  \ [flags]\n\nFlags:\n      --comment           Annotations are stored in Newick\
+  \ comment fields\n  -c, --compared string   Compared tree file (default \"stdin\"\
+  )\n  -h, --help              help for annotate\n  -i, --input string      Input\
+  \ tree(s) file (default \"stdin\")\n  -m, --map-file string   Name map input file\
+  \ (default \"none\")\n  -o, --output string     Resolved tree(s) output file (default\
+  \ \"stdout\")\n\nGlobal Flags:\n      --format string   Input tree format (newick,\
+  \ nexus, or phyloxml) (default \"newick\")\n      --seed int        Random Seed:\
+  \ -1 = nano seconds since 1970/01/01 00:00:00 (default -1)\n  -t, --threads int\
+  \     Number of threads (Max=2) (default 1)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/gotree:0.4.1--h375a9b1_0

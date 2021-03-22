@@ -1,0 +1,180 @@
+!Command
+command:
+- bland_altman_plot.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  description: Input dataset in wide format.
+  args: !SimpleFlagArg
+    name: INPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --design
+  description: Design file.
+  args: !SimpleFlagArg
+    name: DESIGN
+- !Flag
+  optional: true
+  synonyms:
+  - -id
+  - --ID
+  description: Name of the column with unique identifiers.
+  args: !SimpleFlagArg
+    name: UNIQID
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --group
+  description: Group/treatment identifier in design file [Optional].
+  args: !SimpleFlagArg
+    name: GROUP
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --figure
+  description: Name of the output PDF for Bland-Altman plots.
+  args: !SimpleFlagArg
+    name: BANAME
+- !Flag
+  optional: true
+  synonyms:
+  - -fd
+  - --flag_dist
+  description: Name of the output TSV for distribution flags.
+  args: !SimpleFlagArg
+    name: DISTNAME
+- !Flag
+  optional: true
+  synonyms:
+  - -fs
+  - --flag_sample
+  description: Name of the output TSV for sample flags.
+  args: !SimpleFlagArg
+    name: FLAGSAMPLE
+- !Flag
+  optional: true
+  synonyms:
+  - -ff
+  - --flag_feature
+  description: Name of the output TSV for feature flags.
+  args: !SimpleFlagArg
+    name: FLAGFEATURE
+- !Flag
+  optional: true
+  synonyms:
+  - -pf
+  - --prop_feature
+  description: Name of the output TSV for proportion of features.
+  args: !SimpleFlagArg
+    name: PROPFEATURE
+- !Flag
+  optional: true
+  synonyms:
+  - -ps
+  - --prop_sample
+  description: Name of the output TSV for proportion of samples.
+  args: !SimpleFlagArg
+    name: PROPSAMPLE
+- !Flag
+  optional: true
+  synonyms:
+  - -po
+  - --process_only
+  description: "Only process the given groups (list groups separated\nby spaces) [Optional]."
+  args: !RepeatFlagArg
+    name: PROCESSONLY
+- !Flag
+  optional: true
+  synonyms:
+  - -rc
+  - --resid_cutoff
+  description: Cutoff value for flagging outliers [default=3].
+  args: !SimpleFlagArg
+    name: RESIDCUTOFF
+- !Flag
+  optional: true
+  synonyms:
+  - -sfc
+  - --sample_flag_cutoff
+  description: "Proportion cutoff value when flagging samples\n[default=0.20]."
+  args: !SimpleFlagArg
+    name: SAMPLECUTOFF
+- !Flag
+  optional: true
+  synonyms:
+  - -ffc
+  - --feature_flag_cutoff
+  description: "Proportion cutoff value when flagging features\n[default=0.05]."
+  args: !SimpleFlagArg
+    name: FEATURECUTOFF
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: Add debugging log output.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: bland_altman_plot.py [-h] -i INPUT -d DESIGN -id UNIQID [-g GROUP]\
+  \ -f\n                            BANAME -fd DISTNAME -fs FLAGSAMPLE -ff FLAGFEATURE\n\
+  \                            -pf PROPFEATURE -ps PROPSAMPLE\n                  \
+  \          [-po PROCESSONLY [PROCESSONLY ...]]\n                            [-rc\
+  \ RESIDCUTOFF] [-sfc SAMPLECUTOFF]\n                            [-ffc FEATURECUTOFF]\
+  \ [--debug]\n\n The Bland-Altman plot (BA-plot) is commonly used to look\n    at\
+  \ concordance of samples. It is useful for looking at variability between\n    replicates.\
+  \ This script generates BA-plots for all pairwise combinations of\n    samples,\
+  \ or if group information is provided it will only report pairwise\n    combinations\
+  \ within the group.\n\n    A linear regression is also performed on the BA-plots\
+  \ to identify samples\n    whose residuals are beyond a cutoff. For each feature\
+  \ (row) in the dataset,\n    a sample is flagged as an outlier if the Pearson normalized\
+  \ residuals are\n    greater than a cutoff (--filter_cutoff). Or if the leverage\
+  \ statistics\n    (DFFITS and Cook's D) flag the feature as a leverage point.\n\n\
+  \    The script outputs a separate set of the flags for samples and features.\n\n\
+  \    Two sets of plots are output: (1) Bland-Altman plots for pairwise\n    comparisons\
+  \ are saved to a pdf specified by (--ba). (2) Bar graphs of\n    summarized flags\
+  \ are saved by (--flag_summary).\n\n    \n\noptional arguments:\n  -h, --help  \
+  \          show this help message and exit\n\nStandard input:\n  Standard input\
+  \ for SECIM tools.\n\n  -i INPUT, --input INPUT\n                        Input dataset\
+  \ in wide format.\n  -d DESIGN, --design DESIGN\n                        Design\
+  \ file.\n  -id UNIQID, --ID UNIQID\n                        Name of the column with\
+  \ unique identifiers.\n  -g GROUP, --group GROUP\n                        Group/treatment\
+  \ identifier in design file [Optional].\n\nRequired input:\n  Additional required\
+  \ input for this tool.\n\n  -f BANAME, --figure BANAME\n                       \
+  \ Name of the output PDF for Bland-Altman plots.\n  -fd DISTNAME, --flag_dist DISTNAME\n\
+  \                        Name of the output TSV for distribution flags.\n  -fs FLAGSAMPLE,\
+  \ --flag_sample FLAGSAMPLE\n                        Name of the output TSV for sample\
+  \ flags.\n  -ff FLAGFEATURE, --flag_feature FLAGFEATURE\n                      \
+  \  Name of the output TSV for feature flags.\n  -pf PROPFEATURE, --prop_feature\
+  \ PROPFEATURE\n                        Name of the output TSV for proportion of\
+  \ features.\n  -ps PROPSAMPLE, --prop_sample PROPSAMPLE\n                      \
+  \  Name of the output TSV for proportion of samples.\n\nOptional Settings:\n  -po\
+  \ PROCESSONLY [PROCESSONLY ...], --process_only PROCESSONLY [PROCESSONLY ...]\n\
+  \                        Only process the given groups (list groups separated\n\
+  \                        by spaces) [Optional].\n  -rc RESIDCUTOFF, --resid_cutoff\
+  \ RESIDCUTOFF\n                        Cutoff value for flagging outliers [default=3].\n\
+  \  -sfc SAMPLECUTOFF, --sample_flag_cutoff SAMPLECUTOFF\n                      \
+  \  Proportion cutoff value when flagging samples\n                        [default=0.20].\n\
+  \  -ffc FEATURECUTOFF, --feature_flag_cutoff FEATURECUTOFF\n                   \
+  \     Proportion cutoff value when flagging features\n                        [default=0.05].\n\
+  \nDevelopment Settings:\n  --debug               Add debugging log output.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/secimtools:21.3.4.2--py_0

@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, Directory, Boolean, String
+
+Gnuvid_Py_V0_1_0 = CommandToolBuilder(tool="GNUVID.py", base_command=["GNUVID.py"], inputs=[ToolInput(tag="in_mk_database", input_type=File(optional=True), prefix="--mkdatabase", doc=InputDocumentation(doc="you have to provide path to a folder of multiple fna\nfiles for compression")), ToolInput(tag="in_database", input_type=File(optional=True), prefix="--database", doc=InputDocumentation(doc="you have to provide path to your compressed database")), ToolInput(tag="in_list_order", input_type=File(optional=True), prefix="--list_order", doc=InputDocumentation(doc="you have to provide path to txt file with isolates\nordered by collection date")), ToolInput(tag="in_country_continent", input_type=File(optional=True), prefix="--country_continent", doc=InputDocumentation(doc="you have to provide path to csv file with a country to\ncontinent assignment, csv of first three columns from\nGISAID acknowledgment table")), ToolInput(tag="in_output_folder", input_type=Directory(optional=True), prefix="--output_folder", doc=InputDocumentation(doc="Database output prefix to be created for results\n(default: timestamped GNUVID_results in the current\ndirectory)")), ToolInput(tag="in_force", input_type=Boolean(optional=True), prefix="--force", doc=InputDocumentation(doc="Force overwriting existing results folder assigned\nwith -o (default: off)")), ToolInput(tag="in_prefix", input_type=String(optional=True), prefix="--prefix", doc=InputDocumentation(doc="Prefix for output compressed database (default:\nGNUVID)")), ToolInput(tag="in_quiet", input_type=Boolean(optional=True), prefix="--quiet", doc=InputDocumentation(doc="No screen output [default OFF]")), ToolInput(tag="in_reference", input_type=String(), position=0, doc=InputDocumentation(doc="full path to the reference (MN908947.3_cds.fna)")), ToolInput(tag="in_query_fna", input_type=String(), position=0, doc=InputDocumentation(doc="Query Whole Genome or CDS (for the 10 ORFs) Nucleotide\nFASTA file/s to analyze (.fna)"))], outputs=[ToolOutput(tag="out_output_folder", output_type=Directory(optional=True), selector=InputSelector(input_to_select="in_output_folder", type_hint=File()), doc=OutputDocumentation(doc="Database output prefix to be created for results\n(default: timestamped GNUVID_results in the current\ndirectory)"))], container="quay.io/biocontainers/gnuvid:2.2--0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Gnuvid_Py_V0_1_0().translate("wdl")
+

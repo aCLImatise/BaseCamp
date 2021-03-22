@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, Directory, String, Boolean, Int
+
+Msstitch_Makedecoy_V0_1_0 = CommandToolBuilder(tool="msstitch_makedecoy", base_command=["msstitch", "makedecoy"], inputs=[ToolInput(tag="in_input_file_format", input_type=File(optional=True), prefix="-i", doc=InputDocumentation(doc="Input file of {} format")), ToolInput(tag="in_directory_to_output", input_type=Directory(optional=True), prefix="-d", doc=InputDocumentation(doc="Directory to output in")), ToolInput(tag="in_output_file", input_type=File(optional=True), prefix="-o", doc=InputDocumentation(doc="Output file")), ToolInput(tag="in_dbfile", input_type=File(optional=True), prefix="--dbfile", doc=InputDocumentation(doc="Database lookup file")), ToolInput(tag="in_scramble", input_type=String(optional=True), prefix="--scramble", doc=InputDocumentation(doc="Decoy scrambling method, use: 'tryp_rev': tryptic\nreverse, or 'prot_rev': full (protein) reverse.")), ToolInput(tag="in_ignore_target_hits", input_type=Boolean(optional=True), prefix="--ignore-target-hits", doc=InputDocumentation(doc="Do not remove tryptic peptides from sequence where\nthey match target DB")), ToolInput(tag="in_no_trypsin", input_type=Boolean(optional=True), prefix="--notrypsin", doc=InputDocumentation(doc="Do not trypsinize. User is expected to deliver\napretrypsinized FASTA file")), ToolInput(tag="in_misc_leav", input_type=Int(optional=True), prefix="--miscleav", doc=InputDocumentation(doc="Amount of missed cleavages to allow when trypsinizing,\ndefault is 0")), ToolInput(tag="in_min_len", input_type=Int(optional=True), prefix="--minlen", doc=InputDocumentation(doc="Minimum length of peptide to be included")), ToolInput(tag="in_max_shuffle", input_type=Int(optional=True), prefix="--maxshuffle", doc=InputDocumentation(doc="Amount of times to attempt to shuffle a decoy reversed\npeptide to make it not match target peptides, before\ndiscarding it. Used when using tryptic peptide\nreversal (not protein reversal)\n"))], outputs=[ToolOutput(tag="out_directory_to_output", output_type=Directory(optional=True), selector=InputSelector(input_to_select="in_directory_to_output", type_hint=File()), doc=OutputDocumentation(doc="Directory to output in")), ToolOutput(tag="out_output_file", output_type=File(optional=True), selector=InputSelector(input_to_select="in_output_file", type_hint=File()), doc=OutputDocumentation(doc="Output file"))], container="quay.io/biocontainers/msstitch:3.7--py_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Msstitch_Makedecoy_V0_1_0().translate("wdl")
+

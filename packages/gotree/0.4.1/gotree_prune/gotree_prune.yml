@@ -1,0 +1,113 @@
+!Command
+command:
+- gotree
+- prune
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --comp
+  description: Input compared tree  (default "none")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: Output tree (default "stdout")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --random
+  description: Number of tips to randomly sample
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --ref
+  description: Input reference tree (default "stdin")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --revert
+  description: 'If true, then revert the behavior: will keep only species given in
+    the command line, or keep only the species that are specific to the input tree,
+    or keep only randomly selected taxa'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --tipfile
+  description: Tip file (default "none")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --format
+  description: Input tree format (newick, nexus, or phyloxml) (default "newick")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --seed
+  description: 'Random Seed: -1 = nano seconds since 1970/01/01 00:00:00 (default
+    -1)'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: Number of threads (Max=2) (default 1)
+  args: !SimpleFlagArg
+    name: int
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: help for prune
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "This tool removes tips of the input reference tree that :\n\n1) Are not\
+  \ present in the compared tree (--comp <other tree>) if any or\n2) Are present in\
+  \ the given tip file (--tipfile <file>) if any or \n3) Are randomly sampled (--random\
+  \ <num tips>) or\n4) Are given on the command line\n\nIf several trees are present\
+  \ in the file given by -i, they are all analyzed and \nwritten in the output.\n\n\
+  If -c and -f are not given, this command will take taxa names on command line, for\
+  \ example:\ngotree prune -i reftree.nw -o outtree.nw t1 t2 t3 \n\nBy order of priority:\n\
+  1) -f --tipfile <tip file>\n2) -c --comp <other tree>\n3) --random <number of tips\
+  \ to randomly sample> \n4) tips given on commandline\n5) Nothing is done\n\nIf -r\
+  \ is given, behavior is reversed, it keep given tips instead of removing them.\n\
+  \nUsage:\n  gotree prune [flags]\n\nFlags:\n  -c, --comp string      Input compared\
+  \ tree  (default \"none\")\n  -h, --help             help for prune\n  -o, --output\
+  \ string    Output tree (default \"stdout\")\n      --random int       Number of\
+  \ tips to randomly sample\n  -i, --ref string       Input reference tree (default\
+  \ \"stdin\")\n  -r, --revert           If true, then revert the behavior: will keep\
+  \ only species given in the command line, or keep only the species that are specific\
+  \ to the input tree, or keep only randomly selected taxa\n  -f, --tipfile string\
+  \   Tip file (default \"none\")\n\nGlobal Flags:\n      --format string   Input\
+  \ tree format (newick, nexus, or phyloxml) (default \"newick\")\n      --seed int\
+  \        Random Seed: -1 = nano seconds since 1970/01/01 00:00:00 (default -1)\n\
+  \  -t, --threads int     Number of threads (Max=2) (default 1)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/gotree:0.4.1--h375a9b1_0

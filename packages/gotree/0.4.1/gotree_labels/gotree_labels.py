@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, String, Int
+
+Gotree_Labels_V0_1_0 = CommandToolBuilder(tool="gotree_labels", base_command=["gotree", "labels"], inputs=[ToolInput(tag="in_internal", input_type=Boolean(optional=True), prefix="--internal", doc=InputDocumentation(doc="Internal node labels are listed")), ToolInput(tag="in_tips", input_type=Boolean(optional=True), prefix="--tips", doc=InputDocumentation(doc="Tip labels are listed (--tips=false to cancel) (default true)")), ToolInput(tag="in_format", input_type=String(optional=True), prefix="--format", doc=InputDocumentation(doc="Input tree format (newick, nexus, or phyloxml) (default 'newick')")), ToolInput(tag="in_seed", input_type=Int(optional=True), prefix="--seed", doc=InputDocumentation(doc="Random Seed: -1 = nano seconds since 1970/01/01 00:00:00 (default -1)")), ToolInput(tag="in_threads", input_type=Int(optional=True), prefix="--threads", doc=InputDocumentation(doc="Number of threads (Max=2) (default 1)"))], outputs=[], container="quay.io/biocontainers/gotree:0.4.1--h375a9b1_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Gotree_Labels_V0_1_0().translate("wdl")
+

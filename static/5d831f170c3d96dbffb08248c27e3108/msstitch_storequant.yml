@@ -1,0 +1,130 @@
+!Command
+command:
+- msstitch
+- storequant
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --dbfile
+  description: Database lookup file
+  args: !SimpleFlagArg
+    name: LOOKUPFN
+- !Flag
+  optional: true
+  synonyms:
+  - --spectra
+  description: "Spectra files in mzML format. Multiple files can be\nspecified, if\
+    \ order is important, e.g. when matching\nthem with quant data, the order will\
+    \ be their input\norder at the command line."
+  args: !RepeatFlagArg
+    name: SPECTRAFNS
+- !Flag
+  optional: true
+  synonyms:
+  - --kronik
+  description: "MS1 persisting peptide quant output files from Kronik\nin text format.Multiple\
+    \ files can be specified, and\nmatching order with spectra files is important."
+  args: !RepeatFlagArg
+    name: KRONIKFNS
+- !Flag
+  optional: true
+  synonyms:
+  - --dinosaur
+  description: "MS1 persisting peptide output files from Dinosaur in\ntext format.Multiple\
+    \ files can be specified, and\nmatching order with spectra files is important."
+  args: !RepeatFlagArg
+    name: DINOSAURFNS
+- !Flag
+  optional: true
+  synonyms:
+  - --isobaric
+  description: "Isobaric quant output files from OpenMS in\nconsensusXML format. Multiple\
+    \ files can be specified,\nand matching order with spectra files is important."
+  args: !RepeatFlagArg
+    name: ISOBARICFNS
+- !Flag
+  optional: true
+  synonyms:
+  - --apex
+  description: "Use MS1 peak envelope apex instead of peak sum when\nstoring quant\
+    \ data."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --rttol
+  description: "Specifies tolerance in seconds for retention time when\nmapping MS1\
+    \ feature quant info to identifications in\nthe PSM table."
+  args: !SimpleFlagArg
+    name: RT_TOL
+- !Flag
+  optional: true
+  synonyms:
+  - --mztol
+  description: "Specifies tolerance in mass-to-charge when mapping MS1\nfeature quant\
+    \ info to identifications in the PSM\ntable."
+  args: !SimpleFlagArg
+    name: MZ_TOL
+- !Flag
+  optional: true
+  synonyms:
+  - --mztoltype
+  description: "Type of tolerance in mass-to-charge when mapping MS1\nfeature quant\
+    \ info to identifications in the PSM\ntable. One of ppm, Da.\n"
+  args: !ChoiceFlagArg
+    choices: !!set
+      ppm:
+      Da:
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: msstitch storequant [-h] [--version] --dbfile LOOKUPFN --spectra\n\
+  \                           SPECTRAFNS [SPECTRAFNS ...]\n                      \
+  \     [--kronik KRONIKFNS [KRONIKFNS ...]]\n                           [--dinosaur\
+  \ DINOSAURFNS [DINOSAURFNS ...]]\n                           [--isobaric ISOBARICFNS\
+  \ [ISOBARICFNS ...]] [--apex]\n                           [--rttol RT_TOL] [--mztol\
+  \ MZ_TOL]\n                           [--mztoltype {ppm,Da}]\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  --version          \
+  \   show program's version number and exit\n  --dbfile LOOKUPFN     Database lookup\
+  \ file\n  --spectra SPECTRAFNS [SPECTRAFNS ...]\n                        Spectra\
+  \ files in mzML format. Multiple files can be\n                        specified,\
+  \ if order is important, e.g. when matching\n                        them with quant\
+  \ data, the order will be their input\n                        order at the command\
+  \ line.\n  --kronik KRONIKFNS [KRONIKFNS ...]\n                        MS1 persisting\
+  \ peptide quant output files from Kronik\n                        in text format.Multiple\
+  \ files can be specified, and\n                        matching order with spectra\
+  \ files is important.\n  --dinosaur DINOSAURFNS [DINOSAURFNS ...]\n            \
+  \            MS1 persisting peptide output files from Dinosaur in\n            \
+  \            text format.Multiple files can be specified, and\n                \
+  \        matching order with spectra files is important.\n  --isobaric ISOBARICFNS\
+  \ [ISOBARICFNS ...]\n                        Isobaric quant output files from OpenMS\
+  \ in\n                        consensusXML format. Multiple files can be specified,\n\
+  \                        and matching order with spectra files is important.\n \
+  \ --apex                Use MS1 peak envelope apex instead of peak sum when\n  \
+  \                      storing quant data.\n  --rttol RT_TOL        Specifies tolerance\
+  \ in seconds for retention time when\n                        mapping MS1 feature\
+  \ quant info to identifications in\n                        the PSM table.\n  --mztol\
+  \ MZ_TOL        Specifies tolerance in mass-to-charge when mapping MS1\n       \
+  \                 feature quant info to identifications in the PSM\n           \
+  \             table.\n  --mztoltype {ppm,Da}  Type of tolerance in mass-to-charge\
+  \ when mapping MS1\n                        feature quant info to identifications\
+  \ in the PSM\n                        table. One of ppm, Da.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/msstitch:3.7--py_0

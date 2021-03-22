@@ -1,0 +1,213 @@
+!Command
+command:
+- train_network.py
+- raw
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: model
+  description: File to read python model description from
+- !Positional
+  optional: false
+  position: 1
+  name: output
+  description: Prefix for output files
+- !Positional
+  optional: false
+  position: 2
+  name: input
+  description: HDF5 file containing chunks
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --adam
+  description: "decay1 decay2\nParameters for Exponential Decay Adaptive Momementum\n\
+    (default: Values(rate=0.001, decay1=0.9,\ndecay2=0.999))"
+  args: !SimpleFlagArg
+    name: rate
+- !Flag
+  optional: true
+  synonyms:
+  - --bad
+  - --no-bad
+  description: 'Force blocks marked as bad to be stays (Default:'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --batch_size
+  description: 'Number of chunks to run in parallel (default: 100)'
+  args: !SimpleFlagArg
+    name: chunks
+- !Flag
+  optional: true
+  synonyms:
+  - --chunk_len_range
+  description: "max\nRandomly sample chunk sizes between min and max\n(fraction of\
+    \ chunk size in input file) (default: (0.5,\n1.0))"
+  args: !SimpleFlagArg
+    name: min
+- !Flag
+  optional: true
+  synonyms:
+  - --ilf
+  - --no-ilf
+  description: "Weight objective function by Inverse Label Frequency\n(Default: --no-ilf)\
+    \ (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --l2
+  description: 'L2 penalty on parameters (default: 0.0)'
+  args: !SimpleFlagArg
+    name: penalty
+- !Flag
+  optional: true
+  synonyms:
+  - --lrdecay
+  description: "Learning rate for batch i is adam.rate / (1.0 + i / n)\n(default:\
+    \ 5000)"
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --min_prob
+  description: "Minimum probability allowed for training (default:\n1e-30)"
+  args: !SimpleFlagArg
+    name: p
+- !Flag
+  optional: true
+  synonyms:
+  - --niteration
+  description: "Maximum number of batches to train for (default:\n50000)"
+  args: !SimpleFlagArg
+    name: batches
+- !Flag
+  optional: true
+  synonyms:
+  - --overwrite
+  - --no-overwrite
+  description: "Overwrite output directory (Default: --no-overwrite)\n(default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --reweight
+  description: "Select chunk according to weights in 'group' (default:\nweights)"
+  args: !SimpleFlagArg
+    name: group
+- !Flag
+  optional: true
+  synonyms:
+  - --save_every
+  description: 'Save model every x batches (default: 5000)'
+  args: !SimpleFlagArg
+    name: x
+- !Flag
+  optional: true
+  synonyms:
+  - --sd
+  description: 'Standard deviation to initialise with (default: 0.5)'
+  args: !SimpleFlagArg
+    name: value
+- !Flag
+  optional: true
+  synonyms:
+  - --seed
+  description: 'Set random number seed (default: None)'
+  args: !SimpleFlagArg
+    name: integer
+- !Flag
+  optional: true
+  synonyms:
+  - --smooth
+  description: "Smoothing factor for reporting progress (default:\n0.45)"
+  args: !SimpleFlagArg
+    name: factor
+- !Flag
+  optional: true
+  synonyms:
+  - --transducer
+  - --no-transducer
+  description: "Train a transducer based model (Default: --transducer)\n(default:\
+    \ True)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --drop
+  description: "Number of labels to drop from start and end of chunk\nbefore evaluating\
+    \ loss (default: 20)"
+  args: !SimpleFlagArg
+    name: samples
+- !Flag
+  optional: true
+  synonyms:
+  - --winlen
+  description: 'Length of window over data (default: 11)'
+  args: !SimpleFlagArg
+    name: WINLEN
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: 'Display version information. (default: None)'
+  args: !EmptyFlagArg {}
+help_text: "usage: train_network.py raw [-h] [--adam rate decay1 decay2] [--bad]\n\
+  \                            [--batch_size chunks] [--chunk_len_range min max]\n\
+  \                            [--ilf] [--l2 penalty] [--lrdecay n]\n            \
+  \                [--min_prob p] [--niteration batches]\n                       \
+  \     [--overwrite] [--quiet] [--reweight group]\n                            [--save_every\
+  \ x] [--sd value] [--seed integer]\n                            [--smooth factor]\
+  \ [--transducer] [--version]\n                            [--drop samples] [--winlen\
+  \ WINLEN]\n                            model output input\n\npositional arguments:\n\
+  \  model                 File to read python model description from\n  output  \
+  \              Prefix for output files\n  input                 HDF5 file containing\
+  \ chunks\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  --adam rate decay1 decay2\n                        Parameters for\
+  \ Exponential Decay Adaptive Momementum\n                        (default: Values(rate=0.001,\
+  \ decay1=0.9,\n                        decay2=0.999))\n  --bad, --no-bad       Force\
+  \ blocks marked as bad to be stays (Default:\n                        --bad) (default:\
+  \ True)\n  --batch_size chunks   Number of chunks to run in parallel (default: 100)\n\
+  \  --chunk_len_range min max\n                        Randomly sample chunk sizes\
+  \ between min and max\n                        (fraction of chunk size in input\
+  \ file) (default: (0.5,\n                        1.0))\n  --ilf, --no-ilf      \
+  \ Weight objective function by Inverse Label Frequency\n                       \
+  \ (Default: --no-ilf) (default: False)\n  --l2 penalty          L2 penalty on parameters\
+  \ (default: 0.0)\n  --lrdecay n           Learning rate for batch i is adam.rate\
+  \ / (1.0 + i / n)\n                        (default: 5000)\n  --min_prob p     \
+  \     Minimum probability allowed for training (default:\n                     \
+  \   1e-30)\n  --niteration batches  Maximum number of batches to train for (default:\n\
+  \                        50000)\n  --overwrite, --no-overwrite\n               \
+  \         Overwrite output directory (Default: --no-overwrite)\n               \
+  \         (default: False)\n  --quiet, --no-quiet   Don't print progress information\
+  \ to stdout (Default:\n                        --no-quiet) (default: False)\n  --reweight\
+  \ group      Select chunk according to weights in 'group' (default:\n          \
+  \              weights)\n  --save_every x        Save model every x batches (default:\
+  \ 5000)\n  --sd value            Standard deviation to initialise with (default:\
+  \ 0.5)\n  --seed integer        Set random number seed (default: None)\n  --smooth\
+  \ factor       Smoothing factor for reporting progress (default:\n             \
+  \           0.45)\n  --transducer, --no-transducer\n                        Train\
+  \ a transducer based model (Default: --transducer)\n                        (default:\
+  \ True)\n  --version             Display version information. (default: None)\n\
+  \  --drop samples        Number of labels to drop from start and end of chunk\n\
+  \                        before evaluating loss (default: 20)\n  --winlen WINLEN\
+  \       Length of window over data (default: 11)\n"
+generated_using:
+- --help
+docker_image:
