@@ -1,0 +1,384 @@
+!Command
+command:
+- dca
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: input
+  description: "Input is raw count data in TSV/CSV or H5AD (anndata)\nformat. Row/col\
+    \ names are mandatory. Note that TSV/CSV\nfiles must be in gene x cell layout\
+    \ where rows are\ngenes and cols are cells (scRNA-seq convention).Use\nthe -t/--transpose\
+    \ option if your count matrix in cell\nx gene layout. H5AD files must be in cell\
+    \ x gene\nformat (stats and scanpy convention)."
+- !Positional
+  optional: false
+  position: 1
+  name: outputdir
+  description: The path of the output directory
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --normtype
+  description: "Type of size factor estimation. Possible values:\ndeseq, zheng. (default:\
+    \ zheng)"
+  args: !SimpleFlagArg
+    name: NORMTYPE
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --transpose
+  description: 'Transpose input matrix (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --testsplit
+  description: 'Use one fold as a test set (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --type
+  description: "Type of autoencoder. Possible values: normal, poisson,\nnb, nb-shared,\
+    \ nb-conddisp (default), nb-fork, zinb,\nzinb-shared, zinb-conddisp( zinb-fork"
+  args: !SimpleFlagArg
+    name: TYPE
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: Number of threads for training (default is all cores)
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --batchsize
+  description: Batch size (default:32)
+  args: !SimpleFlagArg
+    name: BATCHSIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --sizefactors
+  description: 'Normalize means by library size (default: True)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --nosizefactors
+  description: Do not normalize means by library size
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --norminput
+  description: 'Zero-mean normalize input (default: True)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --nonorminput
+  description: Do not zero-mean normalize inputs
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --loginput
+  description: 'Log-transform input (default: True)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --nologinput
+  description: Do not log-transform inputs
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --dropoutrate
+  description: 'Dropout rate (default: 0)'
+  args: !SimpleFlagArg
+    name: DROPOUTRATE
+- !Flag
+  optional: true
+  synonyms:
+  - --batchnorm
+  description: 'Batchnorm (default: True)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --nobatchnorm
+  description: Do not use batchnorm
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --l2
+  description: 'L2 regularization coefficient (default: 0.0)'
+  args: !SimpleFlagArg
+    name: L2
+- !Flag
+  optional: true
+  synonyms:
+  - --l1
+  description: 'L1 regularization coefficient (default: 0.0)'
+  args: !SimpleFlagArg
+    name: L1
+- !Flag
+  optional: true
+  synonyms:
+  - --l2enc
+  description: "Encoder-specific L2 regularization coefficient\n(default: 0.0)"
+  args: !SimpleFlagArg
+    name: L2ENC
+- !Flag
+  optional: true
+  synonyms:
+  - --l1enc
+  description: "Encoder-specific L1 regularization coefficient\n(default: 0.0)"
+  args: !SimpleFlagArg
+    name: L1ENC
+- !Flag
+  optional: true
+  synonyms:
+  - --ridge
+  description: "L2 regularization coefficient for dropout\nprobabilities (default:\
+    \ 0.0)"
+  args: !SimpleFlagArg
+    name: RIDGE
+- !Flag
+  optional: true
+  synonyms:
+  - --gradclip
+  description: 'Clip grad values (default: 5.0)'
+  args: !SimpleFlagArg
+    name: GRADCLIP
+- !Flag
+  optional: true
+  synonyms:
+  - --activation
+  description: 'Activation function of hidden units (default: relu)'
+  args: !SimpleFlagArg
+    name: ACTIVATION
+- !Flag
+  optional: true
+  synonyms:
+  - --optimizer
+  description: 'Optimization method (default: RMSprop)'
+  args: !SimpleFlagArg
+    name: OPTIMIZER
+- !Flag
+  optional: true
+  synonyms:
+  - --init
+  description: "Initialization method for weights (default:\nglorot_uniform)"
+  args: !SimpleFlagArg
+    name: INIT
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --epochs
+  description: "Max number of epochs to continue training in case of\nno improvement\
+    \ on validation loss (default: 300)"
+  args: !SimpleFlagArg
+    name: EPOCHS
+- !Flag
+  optional: true
+  synonyms:
+  - --earlystop
+  description: "Number of epochs to stop training if no improvement in\nloss occurs\
+    \ (default: 15)"
+  args: !SimpleFlagArg
+    name: EARLYSTOP
+- !Flag
+  optional: true
+  synonyms:
+  - --reducelr
+  description: "Number of epochs to reduce learning rate if no\nimprovement in loss\
+    \ occurs (default: 10)"
+  args: !SimpleFlagArg
+    name: REDUCELR
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --hiddensize
+  description: 'Size of hidden layers (default: 64,32,64)'
+  args: !SimpleFlagArg
+    name: HIDDENSIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --inputdropout
+  description: Input layer dropout probability
+  args: !SimpleFlagArg
+    name: INPUTDROPOUT
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --learningrate
+  description: 'Learning rate (default: 0.001)'
+  args: !SimpleFlagArg
+    name: LEARNINGRATE
+- !Flag
+  optional: true
+  synonyms:
+  - --saveweights
+  description: 'Save weights (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-saveweights
+  description: Do not save weights
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --hyper
+  description: 'Optimizer hyperparameters (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --hypern
+  description: "Number of samples drawn from hyperparameter\ndistributions during\
+    \ optimization. (default: 1000)"
+  args: !SimpleFlagArg
+    name: HYPERN
+- !Flag
+  optional: true
+  synonyms:
+  - --hyperepoch
+  description: "Number of epochs used in each hyperpar optimization\niteration. (default:\
+    \ 100)"
+  args: !SimpleFlagArg
+    name: HYPEREPOCH
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: "Enable debugging. Checks whether every term in loss\nfunctions is\
+    \ finite. (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --tensorboard
+  description: "Use tensorboard for saving weight distributions and\nvisualization.\
+    \ (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --checkcounts
+  description: "Check if the expression matrix has raw (unnormalized)\ncounts (default:\
+    \ True)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --nocheckcounts
+  description: "Do not check if the expression matrix has raw\n(unnormalized) counts"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --denoisesubset
+  description: "Perform denoising only for the subset of genes in the\ngiven file.\
+    \ Gene names should be line separated.\n"
+  args: !SimpleFlagArg
+    name: DENOISESUBSET
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: dca [-h] [--normtype NORMTYPE] [-t] [--testsplit] [--type TYPE]\n\
+  \           [--threads THREADS] [-b BATCHSIZE] [--sizefactors]\n           [--nosizefactors]\
+  \ [--norminput] [--nonorminput] [--loginput]\n           [--nologinput] [-d DROPOUTRATE]\
+  \ [--batchnorm] [--nobatchnorm]\n           [--l2 L2] [--l1 L1] [--l2enc L2ENC]\
+  \ [--l1enc L1ENC] [--ridge RIDGE]\n           [--gradclip GRADCLIP] [--activation\
+  \ ACTIVATION]\n           [--optimizer OPTIMIZER] [--init INIT] [-e EPOCHS]\n  \
+  \         [--earlystop EARLYSTOP] [--reducelr REDUCELR] [-s HIDDENSIZE]\n      \
+  \     [--inputdropout INPUTDROPOUT] [-r LEARNINGRATE] [--saveweights]\n        \
+  \   [--no-saveweights] [--hyper] [--hypern HYPERN]\n           [--hyperepoch HYPEREPOCH]\
+  \ [--debug] [--tensorboard] [--checkcounts]\n           [--nocheckcounts] [--denoisesubset\
+  \ DENOISESUBSET]\n           input outputdir\n\nAutoencoder\n\npositional arguments:\n\
+  \  input                 Input is raw count data in TSV/CSV or H5AD (anndata)\n\
+  \                        format. Row/col names are mandatory. Note that TSV/CSV\n\
+  \                        files must be in gene x cell layout where rows are\n  \
+  \                      genes and cols are cells (scRNA-seq convention).Use\n   \
+  \                     the -t/--transpose option if your count matrix in cell\n \
+  \                       x gene layout. H5AD files must be in cell x gene\n     \
+  \                   format (stats and scanpy convention).\n  outputdir         \
+  \    The path of the output directory\n\noptional arguments:\n  -h, --help     \
+  \       show this help message and exit\n  --normtype NORMTYPE   Type of size factor\
+  \ estimation. Possible values:\n                        deseq, zheng. (default:\
+  \ zheng)\n  -t, --transpose       Transpose input matrix (default: False)\n  --testsplit\
+  \           Use one fold as a test set (default: False)\n  --type TYPE         \
+  \  Type of autoencoder. Possible values: normal, poisson,\n                    \
+  \    nb, nb-shared, nb-conddisp (default), nb-fork, zinb,\n                    \
+  \    zinb-shared, zinb-conddisp( zinb-fork\n  --threads THREADS     Number of threads\
+  \ for training (default is all cores)\n  -b BATCHSIZE, --batchsize BATCHSIZE\n \
+  \                       Batch size (default:32)\n  --sizefactors         Normalize\
+  \ means by library size (default: True)\n  --nosizefactors       Do not normalize\
+  \ means by library size\n  --norminput           Zero-mean normalize input (default:\
+  \ True)\n  --nonorminput         Do not zero-mean normalize inputs\n  --loginput\
+  \            Log-transform input (default: True)\n  --nologinput          Do not\
+  \ log-transform inputs\n  -d DROPOUTRATE, --dropoutrate DROPOUTRATE\n          \
+  \              Dropout rate (default: 0)\n  --batchnorm           Batchnorm (default:\
+  \ True)\n  --nobatchnorm         Do not use batchnorm\n  --l2 L2               L2\
+  \ regularization coefficient (default: 0.0)\n  --l1 L1               L1 regularization\
+  \ coefficient (default: 0.0)\n  --l2enc L2ENC         Encoder-specific L2 regularization\
+  \ coefficient\n                        (default: 0.0)\n  --l1enc L1ENC         Encoder-specific\
+  \ L1 regularization coefficient\n                        (default: 0.0)\n  --ridge\
+  \ RIDGE         L2 regularization coefficient for dropout\n                    \
+  \    probabilities (default: 0.0)\n  --gradclip GRADCLIP   Clip grad values (default:\
+  \ 5.0)\n  --activation ACTIVATION\n                        Activation function of\
+  \ hidden units (default: relu)\n  --optimizer OPTIMIZER\n                      \
+  \  Optimization method (default: RMSprop)\n  --init INIT           Initialization\
+  \ method for weights (default:\n                        glorot_uniform)\n  -e EPOCHS,\
+  \ --epochs EPOCHS\n                        Max number of epochs to continue training\
+  \ in case of\n                        no improvement on validation loss (default:\
+  \ 300)\n  --earlystop EARLYSTOP\n                        Number of epochs to stop\
+  \ training if no improvement in\n                        loss occurs (default: 15)\n\
+  \  --reducelr REDUCELR   Number of epochs to reduce learning rate if no\n      \
+  \                  improvement in loss occurs (default: 10)\n  -s HIDDENSIZE, --hiddensize\
+  \ HIDDENSIZE\n                        Size of hidden layers (default: 64,32,64)\n\
+  \  --inputdropout INPUTDROPOUT\n                        Input layer dropout probability\n\
+  \  -r LEARNINGRATE, --learningrate LEARNINGRATE\n                        Learning\
+  \ rate (default: 0.001)\n  --saveweights         Save weights (default: False)\n\
+  \  --no-saveweights      Do not save weights\n  --hyper               Optimizer\
+  \ hyperparameters (default: False)\n  --hypern HYPERN       Number of samples drawn\
+  \ from hyperparameter\n                        distributions during optimization.\
+  \ (default: 1000)\n  --hyperepoch HYPEREPOCH\n                        Number of\
+  \ epochs used in each hyperpar optimization\n                        iteration.\
+  \ (default: 100)\n  --debug               Enable debugging. Checks whether every\
+  \ term in loss\n                        functions is finite. (default: False)\n\
+  \  --tensorboard         Use tensorboard for saving weight distributions and\n \
+  \                       visualization. (default: False)\n  --checkcounts       \
+  \  Check if the expression matrix has raw (unnormalized)\n                     \
+  \   counts (default: True)\n  --nocheckcounts       Do not check if the expression\
+  \ matrix has raw\n                        (unnormalized) counts\n  --denoisesubset\
+  \ DENOISESUBSET\n                        Perform denoising only for the subset of\
+  \ genes in the\n                        given file. Gene names should be line separated.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/dca:0.3.2--py_0

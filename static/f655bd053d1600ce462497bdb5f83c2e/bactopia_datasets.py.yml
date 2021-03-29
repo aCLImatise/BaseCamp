@@ -1,0 +1,371 @@
+!Command
+command:
+- bactopia-datasets.py
+positional:
+- !Positional
+  optional: false
+  position: 1
+  name: Ariba.
+  description: 'optional arguments:'
+- !Positional
+  optional: false
+  position: 0
+  name: species
+  description: --include_genus       Include all genus members in the Prokka proteins
+    FASTA
+- !Positional
+  optional: false
+  position: 0
+  name: datasets.
+  description: --keep_files          Keep all downloaded and intermediate files.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --outdir
+  description: Directory to write output. (Default ./datasets)
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - --skip_ariba
+  description: Skip setup of Ariba datasets
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ariba
+  description: "Comma separated list of Ariba datasets to download and\nsetup. Available\
+    \ datasets include: argannot, card,\nncbi, megares, plasmidfinder, resfinder,\n\
+    srst2_argannot, vfdb_core, vfdb_full, virulencefinder\n(Default: \"vfdb_core,card\"\
+    ) Use --available_datasets\nto see the full list."
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - --species
+  description: "Download available MLST schemas and completed genomes\nfor a given\
+    \ species or a list of species in a text\nfile."
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - --skip_mlst
+  description: Skip setup of MLST schemas for each species
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --skip_prokka
+  description: Skip creation of a Prokka formatted fasta for each
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --assembly_level
+  description: "Assembly levels of genomes to download (Default:\ncomplete)."
+  args: !ChoiceFlagArg
+    choices: !!set
+      all:
+      chromosome:
+      contig:
+      scaffold:
+      complete:
+- !Flag
+  optional: true
+  synonyms:
+  - --limit
+  description: "If available completed genomes exceeds a given limit,\na random subsample\
+    \ will be taken. (Default 1000)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --accessions
+  description: A list of RefSeq accessions to download.
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - --identity
+  description: "CD-HIT (-c) sequence identity threshold. (Default:\n0.9)"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --overlap
+  description: 'CD-HIT (-s) length difference cutoff. (Default: 0.8)'
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --max_memory
+  description: 'CD-HIT (-M) memory limit (in MB). (Default: unlimited'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --fast_cluster
+  description: "Use CD-HIT's (-g 0) fast clustering algorithm, instead\nof the accurate\
+    \ but slow algorithm."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --skip_minmer
+  description: "Skip download of pre-computed minmer datasets (mash,\nsourmash)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --skip_plsdb
+  description: "Skip download of pre-computed PLSDB datbases (blast,\nmash)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --skip_amr
+  description: "Skip download of antimicrobial resistance databases\n(e.g. AMRFinder+)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --prodigal_tf
+  description: "A pre-built Prodigal training file to add to the\nspecies annotation\
+    \ folder. Requires a single species\n(--species) and will replace existing training\
+    \ files."
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - --reference
+  description: "A reference genome (FASTA/GenBank (preferred)) file or\ndirectory\
+    \ to be added to the optional folder for\nvariant calling. Requires a single species\n\
+    (--species)."
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - --mapping
+  description: "A reference sequence (FASTA) file or directory to be\nadded to the\
+    \ optional folder for mapping. Requires a\nsingle species (--species)."
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - --genes
+  description: "A gene sequence (FASTA) file or directory to be added\nto the optional\
+    \ folder for BLAST. Requires a single\nspecies (--species)."
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - --proteins
+  description: "A protein sequence (FASTA) file or directory to be\nadded to the optional\
+    \ folder for BLAST. Requires a\nsingle species (--species)."
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - --primers
+  description: "A primer sequence (FASTA) file or directory to be\nadded to the optional\
+    \ folder for BLAST. Requires a\nsingle species (--species)."
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - --force_optional
+  description: Overwrite any existing files in the optional folders
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --cpus
+  description: 'Number of cpus to use. (Default: 1)'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --clear_cache
+  description: Remove any existing cache.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --force
+  description: Forcibly overwrite existing datasets.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --force_ariba
+  description: Forcibly overwrite existing Ariba datasets.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --force_mlst
+  description: Forcibly overwrite existing MLST datasets.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --force_prokka
+  description: Forcibly overwrite existing Prokka datasets.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --force_minmer
+  description: Forcibly overwrite existing minmer datasets.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --force_plsdb
+  description: Forcibly overwrite existing PLSDB datasets.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --force_amr
+  description: Forcibly overwrite existing antimicrobial resistance
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --available_datasets
+  description: "List Ariba reference datasets and MLST schemas\navailable for setup."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --depends
+  description: Verify dependencies are installed.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: Print debug related text.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --silent
+  description: Only critical errors will be printed.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: bactopia datasets [-h] [--outdir STR] [--skip_ariba] [--ariba STR]\n\
+  \                         [--species STR] [--skip_mlst] [--skip_prokka]\n      \
+  \                   [--include_genus]\n                         [--assembly_level\
+  \ {all,complete,chromosome,scaffold,contig}]\n                         [--limit\
+  \ INT] [--accessions STR] [--identity FLOAT]\n                         [--overlap\
+  \ FLOAT] [--max_memory INT] [--fast_cluster]\n                         [--skip_minmer]\
+  \ [--skip_plsdb] [--skip_amr]\n                         [--prodigal_tf STR] [--reference\
+  \ STR] [--mapping STR]\n                         [--genes STR] [--proteins STR]\
+  \ [--primers STR]\n                         [--force_optional] [--cpus INT] [--clear_cache]\n\
+  \                         [--force] [--force_ariba] [--force_mlst]\n           \
+  \              [--force_prokka] [--force_minmer] [--force_plsdb]\n             \
+  \            [--force_amr] [--keep_files] [--available_datasets]\n             \
+  \            [--depends] [--version] [--verbose] [--silent]\n                  \
+  \       PUBMLST\n\nbactopia datasets (v1.6.2) - Setup public datasets for Bactopia\n\
+  \npositional arguments:\n  PUBMLST               Bactopia config file with PubMLST\
+  \ schema mappings for\n                        Ariba.\n\noptional arguments:\n \
+  \ -h, --help            show this help message and exit\n  --outdir STR        \
+  \  Directory to write output. (Default ./datasets)\n\nAriba Reference Datasets:\n\
+  \  --skip_ariba          Skip setup of Ariba datasets\n  --ariba STR           Comma\
+  \ separated list of Ariba datasets to download and\n                        setup.\
+  \ Available datasets include: argannot, card,\n                        ncbi, megares,\
+  \ plasmidfinder, resfinder,\n                        srst2_argannot, vfdb_core,\
+  \ vfdb_full, virulencefinder\n                        (Default: \"vfdb_core,card\"\
+  ) Use --available_datasets\n                        to see the full list.\n\nBacterial\
+  \ Species:\n  --species STR         Download available MLST schemas and completed\
+  \ genomes\n                        for a given species or a list of species in a\
+  \ text\n                        file.\n  --skip_mlst           Skip setup of MLST\
+  \ schemas for each species\n\nCustom Prokka Protein FASTA:\n  --skip_prokka    \
+  \     Skip creation of a Prokka formatted fasta for each\n                     \
+  \   species\n  --include_genus       Include all genus members in the Prokka proteins\
+  \ FASTA\n  --assembly_level {all,complete,chromosome,scaffold,contig}\n        \
+  \                Assembly levels of genomes to download (Default:\n            \
+  \            complete).\n  --limit INT           If available completed genomes\
+  \ exceeds a given limit,\n                        a random subsample will be taken.\
+  \ (Default 1000)\n  --accessions STR      A list of RefSeq accessions to download.\n\
+  \  --identity FLOAT      CD-HIT (-c) sequence identity threshold. (Default:\n  \
+  \                      0.9)\n  --overlap FLOAT       CD-HIT (-s) length difference\
+  \ cutoff. (Default: 0.8)\n  --max_memory INT      CD-HIT (-M) memory limit (in MB).\
+  \ (Default: unlimited\n  --fast_cluster        Use CD-HIT's (-g 0) fast clustering\
+  \ algorithm, instead\n                        of the accurate but slow algorithm.\n\
+  \nMinmer Datasets:\n  --skip_minmer         Skip download of pre-computed minmer\
+  \ datasets (mash,\n                        sourmash)\n\nPLSDB (Plasmid) BLAST/Sketch:\n\
+  \  --skip_plsdb          Skip download of pre-computed PLSDB datbases (blast,\n\
+  \                        mash)\n\nAntimicrobial Resistance Datasets:\n  --skip_amr\
+  \            Skip download of antimicrobial resistance databases\n             \
+  \           (e.g. AMRFinder+)\n\nOptional User Provided Datasets:\n  --prodigal_tf\
+  \ STR     A pre-built Prodigal training file to add to the\n                   \
+  \     species annotation folder. Requires a single species\n                   \
+  \     (--species) and will replace existing training files.\n  --reference STR \
+  \      A reference genome (FASTA/GenBank (preferred)) file or\n                \
+  \        directory to be added to the optional folder for\n                    \
+  \    variant calling. Requires a single species\n                        (--species).\n\
+  \  --mapping STR         A reference sequence (FASTA) file or directory to be\n\
+  \                        added to the optional folder for mapping. Requires a\n\
+  \                        single species (--species).\n  --genes STR           A\
+  \ gene sequence (FASTA) file or directory to be added\n                        to\
+  \ the optional folder for BLAST. Requires a single\n                        species\
+  \ (--species).\n  --proteins STR        A protein sequence (FASTA) file or directory\
+  \ to be\n                        added to the optional folder for BLAST. Requires\
+  \ a\n                        single species (--species).\n  --primers STR      \
+  \   A primer sequence (FASTA) file or directory to be\n                        added\
+  \ to the optional folder for BLAST. Requires a\n                        single species\
+  \ (--species).\n  --force_optional      Overwrite any existing files in the optional\
+  \ folders\n\nCustom Options:\n  --cpus INT            Number of cpus to use. (Default:\
+  \ 1)\n  --clear_cache         Remove any existing cache.\n  --force            \
+  \   Forcibly overwrite existing datasets.\n  --force_ariba         Forcibly overwrite\
+  \ existing Ariba datasets.\n  --force_mlst          Forcibly overwrite existing\
+  \ MLST datasets.\n  --force_prokka        Forcibly overwrite existing Prokka datasets.\n\
+  \  --force_minmer        Forcibly overwrite existing minmer datasets.\n  --force_plsdb\
+  \         Forcibly overwrite existing PLSDB datasets.\n  --force_amr           Forcibly\
+  \ overwrite existing antimicrobial resistance\n                        datasets.\n\
+  \  --keep_files          Keep all downloaded and intermediate files.\n  --available_datasets\
+  \  List Ariba reference datasets and MLST schemas\n                        available\
+  \ for setup.\n  --depends             Verify dependencies are installed.\n\nAdjust\
+  \ Verbosity:\n  --version             show program's version number and exit\n \
+  \ --verbose             Print debug related text.\n  --silent              Only\
+  \ critical errors will be printed.\n\nexample usage:\n  bactopia datasets \n  bactopia\
+  \ datasets --ariba 'vfdb_core'\n  bactopia datasets --species 'Staphylococcus aureus'\
+  \ --include_genus\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bactopia:1.6.2--0

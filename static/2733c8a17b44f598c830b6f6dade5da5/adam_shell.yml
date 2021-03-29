@@ -1,0 +1,317 @@
+!Command
+command:
+- adam-shell
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -I
+  description: preload <file>, enforcing line-by-line interpretation
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - --master
+  description: "spark://host:port, mesos://host:port, yarn,\nk8s://https://host:port,\
+    \ or local (Default: local[*])."
+  args: !SimpleFlagArg
+    name: MASTER_URL
+- !Flag
+  optional: true
+  synonyms:
+  - --deploy-mode
+  description: "Whether to launch the driver program locally (\"client\") or\non one\
+    \ of the worker machines inside the cluster (\"cluster\")\n(Default: client)."
+  args: !SimpleFlagArg
+    name: DEPLOY_MODE
+- !Flag
+  optional: true
+  synonyms:
+  - --class
+  description: Your application's main class (for Java / Scala apps).
+  args: !SimpleFlagArg
+    name: CLASS_NAME
+- !Flag
+  optional: true
+  synonyms:
+  - --name
+  description: A name of your application.
+  args: !SimpleFlagArg
+    name: NAME
+- !Flag
+  optional: true
+  synonyms:
+  - --jars
+  description: "Comma-separated list of jars to include on the driver\nand executor\
+    \ classpaths."
+  args: !SimpleFlagArg
+    name: JARS
+- !Flag
+  optional: true
+  synonyms:
+  - --packages
+  description: "Comma-separated list of maven coordinates of jars to include\non the\
+    \ driver and executor classpaths. Will search the local\nmaven repo, then maven\
+    \ central and any additional remote\nrepositories given by --repositories. The\
+    \ format for the\ncoordinates should be groupId:artifactId:version."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --exclude-packages
+  description: "Comma-separated list of groupId:artifactId, to exclude while\nresolving\
+    \ the dependencies provided in --packages to avoid\ndependency conflicts."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --repositories
+  description: "Comma-separated list of additional remote repositories to\nsearch\
+    \ for the maven coordinates given with --packages."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --py-files
+  description: "Comma-separated list of .zip, .egg, or .py files to place\non the\
+    \ PYTHONPATH for Python apps."
+  args: !SimpleFlagArg
+    name: PY_FILES
+- !Flag
+  optional: true
+  synonyms:
+  - --files
+  description: "Comma-separated list of files to be placed in the working\ndirectory\
+    \ of each executor. File paths of these files\nin executors can be accessed via\
+    \ SparkFiles.get(fileName)."
+  args: !SimpleFlagArg
+    name: FILES
+- !Flag
+  optional: true
+  synonyms:
+  - --archives
+  description: "Comma-separated list of archives to be extracted into the\nworking\
+    \ directory of each executor."
+  args: !SimpleFlagArg
+    name: ARCHIVES
+- !Flag
+  optional: true
+  synonyms:
+  - --conf
+  - -c
+  description: =VALUE       Arbitrary Spark configuration property.
+  args: !SimpleFlagArg
+    name: PROP
+- !Flag
+  optional: true
+  synonyms:
+  - --properties-file
+  description: "Path to a file from which to load extra properties. If not\nspecified,\
+    \ this will look for conf/spark-defaults.conf."
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --driver-memory
+  description: 'Memory for driver (e.g. 1000M, 2G) (Default: 1024M).'
+  args: !SimpleFlagArg
+    name: MEM
+- !Flag
+  optional: true
+  synonyms:
+  - --driver-java-options
+  description: Extra Java options to pass to the driver.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --driver-library-path
+  description: Extra library path entries to pass to the driver.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --driver-class-path
+  description: "Extra class path entries to pass to the driver. Note that\njars added\
+    \ with --jars are automatically included in the\nclasspath."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --executor-memory
+  description: 'Memory per executor (e.g. 1000M, 2G) (Default: 1G).'
+  args: !SimpleFlagArg
+    name: MEM
+- !Flag
+  optional: true
+  synonyms:
+  - --proxy-user
+  description: "User to impersonate when submitting the application.\nThis argument\
+    \ does not work with --principal / --keytab."
+  args: !SimpleFlagArg
+    name: NAME
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  - -v
+  description: Print additional debug output.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --driver-cores
+  description: "Number of cores used by the driver, only in cluster mode\n(Default:\
+    \ 1)."
+  args: !SimpleFlagArg
+    name: NUM
+- !Flag
+  optional: true
+  synonyms:
+  - --supervise
+  description: If given, restarts the driver on failure.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --kill
+  description: If given, kills the driver specified.
+  args: !SimpleFlagArg
+    name: SUBMISSION_ID
+- !Flag
+  optional: true
+  synonyms:
+  - --status
+  description: If given, requests the status of the driver specified.
+  args: !SimpleFlagArg
+    name: SUBMISSION_ID
+- !Flag
+  optional: true
+  synonyms:
+  - --total-executor-cores
+  description: Total cores for all executors.
+  args: !SimpleFlagArg
+    name: NUM
+- !Flag
+  optional: true
+  synonyms:
+  - --executor-cores
+  description: "Number of cores used by each executor. (Default: 1 in\nYARN and K8S\
+    \ modes, or all available cores on the worker\nin standalone mode)."
+  args: !SimpleFlagArg
+    name: NUM
+- !Flag
+  optional: true
+  synonyms:
+  - --num-executors
+  description: "Number of executors to launch (Default: 2).\nIf dynamic allocation\
+    \ is enabled, the initial number of\nexecutors will be at least NUM."
+  args: !SimpleFlagArg
+    name: NUM
+- !Flag
+  optional: true
+  synonyms:
+  - --principal
+  description: Principal to be used to login to KDC.
+  args: !SimpleFlagArg
+    name: PRINCIPAL
+- !Flag
+  optional: true
+  synonyms:
+  - --keytab
+  description: "The full path to the file that contains the keytab for the\nprincipal\
+    \ specified above."
+  args: !SimpleFlagArg
+    name: KEYTAB
+- !Flag
+  optional: true
+  synonyms:
+  - --queue
+  description: 'The YARN queue to submit to (Default: "default").'
+  args: !SimpleFlagArg
+    name: QUEUE_NAME
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: Show this help message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: ',                  Print the version of current Spark.'
+  args: !EmptyFlagArg {}
+help_text: "Using SPARK_SHELL=/usr/local/bin/spark-shell\nUsage: ./bin/spark-shell\
+  \ [options]\n\nScala REPL options:\n  -I <file>                   preload <file>,\
+  \ enforcing line-by-line interpretation\n\nOptions:\n  --master MASTER_URL     \
+  \    spark://host:port, mesos://host:port, yarn,\n                             \
+  \ k8s://https://host:port, or local (Default: local[*]).\n  --deploy-mode DEPLOY_MODE\
+  \   Whether to launch the driver program locally (\"client\") or\n             \
+  \                 on one of the worker machines inside the cluster (\"cluster\"\
+  )\n                              (Default: client).\n  --class CLASS_NAME      \
+  \    Your application's main class (for Java / Scala apps).\n  --name NAME     \
+  \            A name of your application.\n  --jars JARS                 Comma-separated\
+  \ list of jars to include on the driver\n                              and executor\
+  \ classpaths.\n  --packages                  Comma-separated list of maven coordinates\
+  \ of jars to include\n                              on the driver and executor classpaths.\
+  \ Will search the local\n                              maven repo, then maven central\
+  \ and any additional remote\n                              repositories given by\
+  \ --repositories. The format for the\n                              coordinates\
+  \ should be groupId:artifactId:version.\n  --exclude-packages          Comma-separated\
+  \ list of groupId:artifactId, to exclude while\n                              resolving\
+  \ the dependencies provided in --packages to avoid\n                           \
+  \   dependency conflicts.\n  --repositories              Comma-separated list of\
+  \ additional remote repositories to\n                              search for the\
+  \ maven coordinates given with --packages.\n  --py-files PY_FILES         Comma-separated\
+  \ list of .zip, .egg, or .py files to place\n                              on the\
+  \ PYTHONPATH for Python apps.\n  --files FILES               Comma-separated list\
+  \ of files to be placed in the working\n                              directory\
+  \ of each executor. File paths of these files\n                              in\
+  \ executors can be accessed via SparkFiles.get(fileName).\n  --archives ARCHIVES\
+  \         Comma-separated list of archives to be extracted into the\n          \
+  \                    working directory of each executor.\n\n  --conf, -c PROP=VALUE\
+  \       Arbitrary Spark configuration property.\n  --properties-file FILE      Path\
+  \ to a file from which to load extra properties. If not\n                      \
+  \        specified, this will look for conf/spark-defaults.conf.\n\n  --driver-memory\
+  \ MEM         Memory for driver (e.g. 1000M, 2G) (Default: 1024M).\n  --driver-java-options\
+  \       Extra Java options to pass to the driver.\n  --driver-library-path     \
+  \  Extra library path entries to pass to the driver.\n  --driver-class-path    \
+  \     Extra class path entries to pass to the driver. Note that\n              \
+  \                jars added with --jars are automatically included in the\n    \
+  \                          classpath.\n\n  --executor-memory MEM       Memory per\
+  \ executor (e.g. 1000M, 2G) (Default: 1G).\n\n  --proxy-user NAME           User\
+  \ to impersonate when submitting the application.\n                            \
+  \  This argument does not work with --principal / --keytab.\n\n  --help, -h    \
+  \              Show this help message and exit.\n  --verbose, -v               Print\
+  \ additional debug output.\n  --version,                  Print the version of current\
+  \ Spark.\n\n Cluster deploy mode only:\n  --driver-cores NUM          Number of\
+  \ cores used by the driver, only in cluster mode\n                             \
+  \ (Default: 1).\n\n Spark standalone or Mesos with cluster deploy mode only:\n \
+  \ --supervise                 If given, restarts the driver on failure.\n\n Spark\
+  \ standalone, Mesos or K8s with cluster deploy mode only:\n  --kill SUBMISSION_ID\
+  \        If given, kills the driver specified.\n  --status SUBMISSION_ID      If\
+  \ given, requests the status of the driver specified.\n\n Spark standalone, Mesos\
+  \ and Kubernetes only:\n  --total-executor-cores NUM  Total cores for all executors.\n\
+  \n Spark standalone, YARN and Kubernetes only:\n  --executor-cores NUM        Number\
+  \ of cores used by each executor. (Default: 1 in\n                             \
+  \ YARN and K8S modes, or all available cores on the worker\n                   \
+  \           in standalone mode).\n\n Spark on YARN and Kubernetes only:\n  --num-executors\
+  \ NUM         Number of executors to launch (Default: 2).\n                    \
+  \          If dynamic allocation is enabled, the initial number of\n           \
+  \                   executors will be at least NUM.\n  --principal PRINCIPAL   \
+  \    Principal to be used to login to KDC.\n  --keytab KEYTAB             The full\
+  \ path to the file that contains the keytab for the\n                          \
+  \    principal specified above.\n\n Spark on YARN only:\n  --queue QUEUE_NAME  \
+  \        The YARN queue to submit to (Default: \"default\").\n      \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/adam:0.34.0--0

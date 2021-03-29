@@ -1,0 +1,94 @@
+!Command
+command:
+- plot-vcfstats
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --merge
+  description: Merge vcfstats files to STDOUT, skip plotting.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --prefix
+  description: Output directory.
+  args: !SimpleFlagArg
+    name: dir
+- !Flag
+  optional: true
+  synonyms:
+  - -P
+  - --no-PDF
+  description: Skip the PDF creation step.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --rasterize
+  description: Rasterize PDF images for fast rendering, the default and opposite of
+    -v.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --sample-names
+  description: Use sample names for xticks rather than numeric IDs.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --title
+  description: Identify files by these titles in plots. Can be given multiple times.
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --main-title
+  description: Main title for the PDF.
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --vectors
+  description: Generate vector graphics for PDF images, the opposite of -r
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: ', -?, --help                      This help message.'
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "About: Plots the output of \"bcftools stats\"\nUsage: plot-vcfstats [OPTIONS]\
+  \ -p outdir file.chk ...\nOptions:\n   -m, --merge                         Merge\
+  \ vcfstats files to STDOUT, skip plotting.\n   -p, --prefix <dir>              \
+  \    Output directory.\n   -P, --no-PDF                        Skip the PDF creation\
+  \ step.\n   -r, --rasterize                     Rasterize PDF images for fast rendering,\
+  \ the default and opposite of -v.\n   -s, --sample-names                  Use sample\
+  \ names for xticks rather than numeric IDs.\n   -t, --title <string>           \
+  \     Identify files by these titles in plots. Can be given multiple times.\n  \
+  \ -T, --main-title <string>           Main title for the PDF.\n   -v, --vectors\
+  \                       Generate vector graphics for PDF images, the opposite of\
+  \ -r\n   -h, -?, --help                      This help message.\n\nExample:\n  \
+  \ # Generate the stats\n   bcftools stats -s - > file.vchk\n\n   # Plot the stats\n\
+  \   plot-vcfstats -p outdir file.vchk\n\n   # The final looks can be customized\
+  \ by editing the generated\n   # 'outdir/plot.py' script and re-running manually\n\
+  \   cd outdir && python3 plot.py && pdflatex summary.tex\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bcftools:1.12--h3f113a9_0

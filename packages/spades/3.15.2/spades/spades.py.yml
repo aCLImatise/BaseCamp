@@ -1,0 +1,485 @@
+!Command
+command:
+- spades.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: directory to store all the resulting files (required)
+  args: !SimpleFlagArg
+    name: output_dir
+- !Flag
+  optional: true
+  synonyms:
+  - --isolate
+  description: this flag is highly recommended for high-coverage isolate and multi-cell
+    data
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sc
+  description: this flag is required for MDA (single-cell) data
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --meta
+  description: this flag is required for metagenomic data
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --bio
+  description: this flag is required for biosyntheticSPAdes mode
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --corona
+  description: this flag is required for coronaSPAdes mode
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --rna
+  description: this flag is required for RNA-Seq data
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --plasmid
+  description: runs plasmidSPAdes pipeline for plasmid detection
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --metaviral
+  description: runs metaviralSPAdes pipeline for virus detection
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --metaplasmid
+  description: runs metaplasmidSPAdes pipeline for plasmid detection in metagenomic
+    datasets (equivalent for --meta --plasmid)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --rnaviral
+  description: this flag enables virus assembly module from RNA-Seq data
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --iontorrent
+  description: this flag is required for IonTorrent data
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --test
+  description: runs SPAdes on toy dataset
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --12
+  description: file with interlaced forward and reverse paired-end reads
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - '-1'
+  description: file with forward paired-end reads
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - '-2'
+  description: file with reverse paired-end reads
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: file with unpaired reads
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - --merged
+  description: file with merged forward and reverse paired-end reads
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - --pe-12
+  description: "<#> <filename>      file with interlaced reads for paired-end library\
+    \ number <#>.\nOlder deprecated syntax is -pe<#>-12 <filename>"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pe-1
+  description: "<#> <filename>       file with forward reads for paired-end library\
+    \ number <#>.\nOlder deprecated syntax is -pe<#>-1 <filename>"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pe-2
+  description: "<#> <filename>       file with reverse reads for paired-end library\
+    \ number <#>.\nOlder deprecated syntax is -pe<#>-2 <filename>"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pe-s
+  description: "<#> <filename>       file with unpaired reads for paired-end library\
+    \ number <#>.\nOlder deprecated syntax is -pe<#>-s <filename>"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pe-m
+  description: "<#> <filename>       file with merged reads for paired-end library\
+    \ number <#>.\nOlder deprecated syntax is -pe<#>-m <filename>"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pe-or
+  description: "<#> <or>            orientation of reads for paired-end library number\
+    \ <#>\n(<or> = fr, rf, ff).\nOlder deprecated syntax is -pe<#>-<or>"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --mp-12
+  description: "<#> <filename>      file with interlaced reads for mate-pair library\
+    \ number <#>.\nOlder deprecated syntax is -mp<#>-12 <filename>"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --mp-1
+  description: "<#> <filename>       file with forward reads for mate-pair library\
+    \ number <#>.\nOlder deprecated syntax is -mp<#>-1 <filename>"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --mp-2
+  description: "<#> <filename>       file with reverse reads for mate-pair library\
+    \ number <#>.\nOlder deprecated syntax is -mp<#>-2 <filename>"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --mp-s
+  description: "<#> <filename>       file with unpaired reads for mate-pair library\
+    \ number <#>.\nOlder deprecated syntax is -mp<#>-s <filename>"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --mp-or
+  description: "<#> <or>            orientation of reads for mate-pair library number\
+    \ <#>\n(<or> = fr, rf, ff).\nOlder deprecated syntax is -mp<#>-<or>"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --hqmp-12
+  description: "<#> <filename>    file with interlaced reads for high-quality mate-pair\
+    \ library number <#>.\nOlder deprecated syntax is -hqmp<#>-12 <filename>"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --hqmp-1
+  description: "<#> <filename>     file with forward reads for high-quality mate-pair\
+    \ library number <#>.\nOlder deprecated syntax is -hqmp<#>-1 <filename>"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --hqmp-2
+  description: "<#> <filename>     file with reverse reads for high-quality mate-pair\
+    \ library number <#>.\nOlder deprecated syntax is -hqmp<#>-2 <filename>"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --hqmp-s
+  description: "<#> <filename>     file with unpaired reads for high-quality mate-pair\
+    \ library number <#>.\nOlder deprecated syntax is -hqmp<#>-s <filename>"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --hqmp-or
+  description: "<#> <or>          orientation of reads for high-quality mate-pair\
+    \ library number <#>\n(<or> = fr, rf, ff).\nOlder deprecated syntax is -hqmp<#>-<or>"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sanger
+  description: file with Sanger reads
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - --pacbio
+  description: file with PacBio reads
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - --nanopore
+  description: file with Nanopore reads
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - --trusted-contigs
+  description: file with trusted contigs
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - --untrusted-contigs
+  description: file with untrusted contigs
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - --only-error-correction
+  description: runs only read error correction (without assembling)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --only-assembler
+  description: runs only assembling (without read error correction)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --careful
+  description: tries to reduce number of mismatches and short indels
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --checkpoints
+  description: save intermediate check-points ('last', 'all')
+  args: !SimpleFlagArg
+    name: last or all
+- !Flag
+  optional: true
+  synonyms:
+  - --continue
+  description: continue run from the last available check-point (only -o should be
+    specified)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --restart-from
+  description: "restart run with updated options and from the specified check-point\n\
+    ('ec', 'as', 'k<int>', 'mc', 'last')"
+  args: !SimpleFlagArg
+    name: cp
+- !Flag
+  optional: true
+  synonyms:
+  - --disable-gzip-output
+  description: forces error correction not to compress the corrected reads
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --disable-rr
+  description: disables repeat resolution stage of assembling
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dataset
+  description: file with dataset description in YAML format
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: 'number of threads. [default: 16]'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --memory
+  description: 'RAM limit for SPAdes in Gb (terminates if exceeded). [default: 250]'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --tmp-dir
+  description: 'directory for temporary files. [default: <output_dir>/tmp]'
+  args: !SimpleFlagArg
+    name: dirname
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  description: "[<int> ...]        list of k-mer sizes (must be odd and less than\
+    \ 128)\n[default: 'auto']"
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --cov-cutoff
+  description: "coverage cutoff value (a positive float number, or 'auto', or 'off')\n\
+    [default: 'off']"
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - --phred-offset
+  description: "PHRED quality offset in the input reads (33 or 64),\n[default: auto-detect]"
+  args: !SimpleFlagArg
+    name: 33 or 64
+- !Flag
+  optional: true
+  synonyms:
+  - --custom-hmms
+  description: "directory with custom hmms that replace default ones,\n[default: None]\n"
+  args: !SimpleFlagArg
+    name: dirname
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: prints this usage message
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: prints version
+  args: !EmptyFlagArg {}
+help_text: "SPAdes genome assembler v3.15.2\n\nUsage: spades.py [options] -o <output_dir>\n\
+  \nBasic options:\n  -o <output_dir>             directory to store all the resulting\
+  \ files (required)\n  --isolate                   this flag is highly recommended\
+  \ for high-coverage isolate and multi-cell data\n  --sc                        this\
+  \ flag is required for MDA (single-cell) data\n  --meta                      this\
+  \ flag is required for metagenomic data\n  --bio                       this flag\
+  \ is required for biosyntheticSPAdes mode\n  --corona                    this flag\
+  \ is required for coronaSPAdes mode\n  --rna                       this flag is\
+  \ required for RNA-Seq data\n  --plasmid                   runs plasmidSPAdes pipeline\
+  \ for plasmid detection\n  --metaviral                 runs metaviralSPAdes pipeline\
+  \ for virus detection\n  --metaplasmid               runs metaplasmidSPAdes pipeline\
+  \ for plasmid detection in metagenomic datasets (equivalent for --meta --plasmid)\n\
+  \  --rnaviral                  this flag enables virus assembly module from RNA-Seq\
+  \ data\n  --iontorrent                this flag is required for IonTorrent data\n\
+  \  --test                      runs SPAdes on toy dataset\n  -h, --help        \
+  \          prints this usage message\n  -v, --version               prints version\n\
+  \nInput data:\n  --12 <filename>             file with interlaced forward and reverse\
+  \ paired-end reads\n  -1 <filename>               file with forward paired-end reads\n\
+  \  -2 <filename>               file with reverse paired-end reads\n  -s <filename>\
+  \               file with unpaired reads\n  --merged <filename>         file with\
+  \ merged forward and reverse paired-end reads\n  --pe-12 <#> <filename>      file\
+  \ with interlaced reads for paired-end library number <#>.\n                   \
+  \           Older deprecated syntax is -pe<#>-12 <filename>\n  --pe-1 <#> <filename>\
+  \       file with forward reads for paired-end library number <#>.\n           \
+  \                   Older deprecated syntax is -pe<#>-1 <filename>\n  --pe-2 <#>\
+  \ <filename>       file with reverse reads for paired-end library number <#>.\n\
+  \                              Older deprecated syntax is -pe<#>-2 <filename>\n\
+  \  --pe-s <#> <filename>       file with unpaired reads for paired-end library number\
+  \ <#>.\n                              Older deprecated syntax is -pe<#>-s <filename>\n\
+  \  --pe-m <#> <filename>       file with merged reads for paired-end library number\
+  \ <#>.\n                              Older deprecated syntax is -pe<#>-m <filename>\n\
+  \  --pe-or <#> <or>            orientation of reads for paired-end library number\
+  \ <#> \n                              (<or> = fr, rf, ff).\n                   \
+  \           Older deprecated syntax is -pe<#>-<or>\n  --s <#> <filename>       \
+  \   file with unpaired reads for single reads library number <#>.\n            \
+  \                  Older deprecated syntax is --s<#> <filename>\n  --mp-12 <#> <filename>\
+  \      file with interlaced reads for mate-pair library number <#>.\n          \
+  \                    Older deprecated syntax is -mp<#>-12 <filename>\n  --mp-1 <#>\
+  \ <filename>       file with forward reads for mate-pair library number <#>.\n \
+  \                             Older deprecated syntax is -mp<#>-1 <filename>\n \
+  \ --mp-2 <#> <filename>       file with reverse reads for mate-pair library number\
+  \ <#>.\n                              Older deprecated syntax is -mp<#>-2 <filename>\n\
+  \  --mp-s <#> <filename>       file with unpaired reads for mate-pair library number\
+  \ <#>.\n                              Older deprecated syntax is -mp<#>-s <filename>\n\
+  \  --mp-or <#> <or>            orientation of reads for mate-pair library number\
+  \ <#> \n                              (<or> = fr, rf, ff).\n                   \
+  \           Older deprecated syntax is -mp<#>-<or>\n  --hqmp-12 <#> <filename> \
+  \   file with interlaced reads for high-quality mate-pair library number <#>.\n\
+  \                              Older deprecated syntax is -hqmp<#>-12 <filename>\n\
+  \  --hqmp-1 <#> <filename>     file with forward reads for high-quality mate-pair\
+  \ library number <#>.\n                              Older deprecated syntax is\
+  \ -hqmp<#>-1 <filename>\n  --hqmp-2 <#> <filename>     file with reverse reads for\
+  \ high-quality mate-pair library number <#>.\n                              Older\
+  \ deprecated syntax is -hqmp<#>-2 <filename>\n  --hqmp-s <#> <filename>     file\
+  \ with unpaired reads for high-quality mate-pair library number <#>.\n         \
+  \                     Older deprecated syntax is -hqmp<#>-s <filename>\n  --hqmp-or\
+  \ <#> <or>          orientation of reads for high-quality mate-pair library number\
+  \ <#> \n                              (<or> = fr, rf, ff).\n                   \
+  \           Older deprecated syntax is -hqmp<#>-<or>\n  --sanger <filename>    \
+  \     file with Sanger reads\n  --pacbio <filename>         file with PacBio reads\n\
+  \  --nanopore <filename>       file with Nanopore reads\n  --trusted-contigs <filename>\n\
+  \                              file with trusted contigs\n  --untrusted-contigs\
+  \ <filename>\n                              file with untrusted contigs\n\nPipeline\
+  \ options:\n  --only-error-correction     runs only read error correction (without\
+  \ assembling)\n  --only-assembler            runs only assembling (without read\
+  \ error correction)\n  --careful                   tries to reduce number of mismatches\
+  \ and short indels\n  --checkpoints <last or all>\n                            \
+  \  save intermediate check-points ('last', 'all')\n  --continue                \
+  \  continue run from the last available check-point (only -o should be specified)\n\
+  \  --restart-from <cp>         restart run with updated options and from the specified\
+  \ check-point\n                              ('ec', 'as', 'k<int>', 'mc', 'last')\n\
+  \  --disable-gzip-output       forces error correction not to compress the corrected\
+  \ reads\n  --disable-rr                disables repeat resolution stage of assembling\n\
+  \nAdvanced options:\n  --dataset <filename>        file with dataset description\
+  \ in YAML format\n  -t <int>, --threads <int>   number of threads. [default: 16]\n\
+  \  -m <int>, --memory <int>    RAM limit for SPAdes in Gb (terminates if exceeded).\
+  \ [default: 250]\n  --tmp-dir <dirname>         directory for temporary files. [default:\
+  \ <output_dir>/tmp]\n  -k <int> [<int> ...]        list of k-mer sizes (must be\
+  \ odd and less than 128)\n                              [default: 'auto']\n  --cov-cutoff\
+  \ <float>        coverage cutoff value (a positive float number, or 'auto', or 'off')\n\
+  \                              [default: 'off']\n  --phred-offset <33 or 64>   PHRED\
+  \ quality offset in the input reads (33 or 64),\n                              [default:\
+  \ auto-detect]\n  --custom-hmms <dirname>     directory with custom hmms that replace\
+  \ default ones,\n                              [default: None]\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/spades:3.15.2--h633aebb_0

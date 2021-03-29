@@ -1,0 +1,251 @@
+!Command
+command:
+- BacGWASim
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --config
+  description: Path to a config file
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --output-dir
+  description: Path to the output directory
+  args: !SimpleFlagArg
+    name: DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --num-species
+  description: Number of samples in the simulated population
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --genome-length
+  description: Length of the genome (bp)
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --mutation-rate
+  description: ']0-1[       Mutation rate'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --recomb-rate
+  description: ']0-1[         Recombination rate'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --maf
+  description: "]0-1[                 Minor allele frequency threshold of rare alleles\n\
+    to be discarded"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --num-var
+  description: "Number of simulated variants. If '-1', variant\nnumber will be solely\
+    \ a function of mutation\nrate"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --random-seed
+  description: Random seed for reproducibility of results
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --phen-type
+  description: "Type of simulated phenotype. 'cc':binary case-\ncontrol, 'quant':\
+    \ quantitative"
+  args: !ChoiceFlagArg
+    choices: !!set
+      quant:
+      cc:
+- !Flag
+  optional: true
+  synonyms:
+  - --num-causal-var
+  description: Number of causal markers
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --causal-maf-min
+  description: ']0-1[      Minimum Minor Allele Frequency (MAF) of causal'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --causal-maf-max
+  - --effect-size-odr
+  description: Effect sizes of causal markers (.odds ratios)
+  args: !SimpleFlagArg
+    name: thresholds
+- !Flag
+  optional: true
+  synonyms:
+  - --phen-replication
+  description: Number of phenotype replication sets
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --heritability
+  description: '[0-1]        Heritability of phenotype'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --disease-prevalence
+  description: ']0-1[  Prevalence of phenotype'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --case
+  description: "In case of case-control binary phenotype\nsimulation, number of case\
+    \ and control samples\nmust be defined by 'case' and 'control'\nparameters"
+  args: !SimpleFlagArg
+    name: CASE
+- !Flag
+  optional: true
+  synonyms:
+  - --control
+  description: "In case of case-control binary phenotype\nsimulation, number of case\
+    \ and control samples\nmust be defined by 'case' and 'control'\nparameters"
+  args: !SimpleFlagArg
+    name: CONTROL
+- !Flag
+  optional: true
+  synonyms:
+  - --plot-ld
+  description: Generate the LD plot
+  args: !SimpleFlagArg
+    name: BOOL
+- !Flag
+  optional: true
+  synonyms:
+  - --snp-limit
+  description: "Number of SNPs randomly selected for plotting\nlinkage map (Increasing\
+    \ this number will\nsignificantly increase computation time and\nrequire increasing\
+    \ the java heap size)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --heap-size
+  description: Java heap_size for ld plot visualization (.mb)
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --ld-maf
+  description: "]0-1[              Minimum Minor Allele Frequency of markers for LD\n\
+    plotting (Lower this values, it is more\ndifficult to estimate accurate r2 values\
+    \ between\npairs of markers leading to more noisy plot)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --cores
+  description: Number of cores available for computations
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --latency-wait
+  description: "Time to wait (in sec) after a job to ensure that\nall files are present\n"
+  args: !SimpleFlagArg
+    name: INT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: BacGWASim [-h] [--version] [--config FILE] [--output-dir DIR]\n\
+  \                 [--num-species INT] [--genome-length INT]\n                 [--mutation-rate]0-1\
+  \ [--recomb-rate]0-1 [--maf]0-1 [--num-var INT]\n                 [--random-seed\
+  \ INT] [--phen-type {cc,quant}]\n                 [--num-causal-var INT]\n     \
+  \            [--causal-maf-min]0-1 [--causal-maf-max]0-1 [--causal-ld-max [0-1]]\n\
+  \                 [--effect-size-odr LIST] [--phen-replication INT]\n          \
+  \       [--heritability [0-1]]\n                 [--disease-prevalence]0-1 [--case\
+  \ CASE] [--control CONTROL]\n                 [--plot-ld BOOL] [--snp-limit INT]\
+  \ [--heap-size INT]\n                 [--ld-maf]0-1 [--cores INT] [--latency-wait\
+  \ INT]\n\nDescription\n\noptional arguments:\n  -h, --help                  show\
+  \ this help message and exit\n  --version                   show program's version\
+  \ number and exit\n  --config FILE               Path to a config file\n  --output-dir\
+  \ DIR            Path to the output directory\n\nGenome simulation parameters:\n\
+  \  --num-species INT           Number of samples in the simulated population\n \
+  \ --genome-length INT         Length of the genome (bp)\n  --mutation-rate ]0-1[\
+  \       Mutation rate\n  --recomb-rate ]0-1[         Recombination rate\n  --maf\
+  \ ]0-1[                 Minor allele frequency threshold of rare alleles\n     \
+  \                         to be discarded\n  --num-var INT               Number\
+  \ of simulated variants. If '-1', variant\n                              number\
+  \ will be solely a function of mutation\n                              rate\n  --random-seed\
+  \ INT           Random seed for reproducibility of results\n\nPhenotype simulation\
+  \ parameters:\n  --phen-type {cc,quant}      Type of simulated phenotype. 'cc':binary\
+  \ case-\n                              control, 'quant': quantitative\n  --num-causal-var\
+  \ INT        Number of causal markers\n  --causal-maf-min ]0-1[      Minimum Minor\
+  \ Allele Frequency (MAF) of causal\n                              markers\n  --causal-maf-max\
+  \ ]0-1[      Maximum Minor Allele Frequency (MAF) of causal\n                  \
+  \            markers\n  --causal-ld-max [0-1]       Maximum permitted R2 score between\
+  \ pairs of\n                              causal markers in window size of 1000\
+  \ candidate\n                              causal markers meeting --causal-maf-min\
+  \ and\n                              --causal-maf-max thresholds\n  --effect-size-odr\
+  \ LIST      Effect sizes of causal markers (.odds ratios)\n                    \
+  \          (comma separated, must be a multiple of --num-\n                    \
+  \          causal-var)\n  --phen-replication INT      Number of phenotype replication\
+  \ sets\n  --heritability [0-1]        Heritability of phenotype\n  --disease-prevalence\
+  \ ]0-1[  Prevalence of phenotype\n  --case CASE                 In case of case-control\
+  \ binary phenotype\n                              simulation, number of case and\
+  \ control samples\n                              must be defined by 'case' and 'control'\n\
+  \                              parameters\n  --control CONTROL           In case\
+  \ of case-control binary phenotype\n                              simulation, number\
+  \ of case and control samples\n                              must be defined by\
+  \ 'case' and 'control'\n                              parameters\n\nLinkage Disequilibrium\
+  \ plotting:\n  --plot-ld BOOL              Generate the LD plot\n  --snp-limit INT\
+  \             Number of SNPs randomly selected for plotting\n                  \
+  \            linkage map (Increasing this number will\n                        \
+  \      significantly increase computation time and\n                           \
+  \   require increasing the java heap size)\n  --heap-size INT             Java heap_size\
+  \ for ld plot visualization (.mb)\n  --ld-maf ]0-1[              Minimum Minor Allele\
+  \ Frequency of markers for LD\n                              plotting (Lower this\
+  \ values, it is more\n                              difficult to estimate accurate\
+  \ r2 values between\n                              pairs of markers leading to more\
+  \ noisy plot)\n\nRuntime parameters:\n  --cores INT                 Number of cores\
+  \ available for computations\n  --latency-wait INT          Time to wait (in sec)\
+  \ after a job to ensure that\n                              all files are present\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bacgwasim:2.0.0--py_1

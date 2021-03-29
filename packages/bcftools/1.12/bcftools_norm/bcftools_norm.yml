@@ -1,0 +1,213 @@
+!Command
+command:
+- bcftools
+- norm
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: in.vcf.gz
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --atomize
+  description: Decompose complex variants (e.g. MNVs become consecutive SNVs)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --atom-overlaps
+  description: "'*'|.       Use the star allele (*) for overlapping alleles or set\
+    \ to missing (.) [*]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --check-ref
+  description: '|w|x|s         Check REF alleles and exit (e), warn (w), exclude (x),
+    or set (s) bad sites [e]'
+  args: !SimpleFlagArg
+    name: e
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  - --remove-duplicates
+  description: Remove duplicate lines of the same type.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --rm-dup
+  description: Remove duplicate snps|indels|both|all|exact
+  args: !SimpleFlagArg
+    name: TYPE
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --fasta-ref
+  description: Reference sequence
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --force
+  description: Try to proceed even if malformed tags are encountered. Experimental,
+    use at your own risk
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --keep-sum
+  description: ',..           Keep vector sum constant when splitting multiallelics
+    (see github issue #360)'
+  args: !SimpleFlagArg
+    name: TAG
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --multiallelics
+  description: '-|+TYPE     Split multiallelics (-) or join biallelics (+), type:
+    snps|indels|both|any [both]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-version
+  description: Do not append version and command line to the header
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -N
+  - --do-not-normalize
+  description: Do not normalize indels (with -m or -c s)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --old-rec-tag
+  description: Annotate modified records with INFO/STR indicating the original variant
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: Write output to a file [standard output]
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -O
+  - --output-type
+  description: "'b' compressed BCF; 'u' uncompressed BCF; 'z' compressed VCF; 'v'\
+    \ uncompressed VCF [v]"
+  args: !SimpleFlagArg
+    name: TYPE
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --regions
+  description: Restrict to comma-separated list of regions
+  args: !SimpleFlagArg
+    name: REGION
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  - --regions-file
+  description: Restrict to regions listed in a file
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --strict-filter
+  description: When merging (-m+), merged site is PASS only if all sites being merged
+    PASS
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --targets
+  description: Similar to -r but streams rather than index-jumps
+  args: !SimpleFlagArg
+    name: REGION
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --targets-file
+  description: Similar to -R but streams rather than index-jumps
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: Use multithreading with <int> worker threads [0]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --site-win
+  description: Buffer for sorting lines which changed position during realignment
+    [1000]
+  args: !SimpleFlagArg
+    name: INT
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nAbout:   Left-align and normalize indels; check if REF alleles match\
+  \ the reference;\n         split multiallelic sites into multiple rows; recover\
+  \ multiallelics from\n         multiple rows.\nUsage:   bcftools norm [options]\
+  \ <in.vcf.gz>\n\nOptions:\n    -a, --atomize                   Decompose complex\
+  \ variants (e.g. MNVs become consecutive SNVs)\n        --atom-overlaps '*'|.  \
+  \     Use the star allele (*) for overlapping alleles or set to missing (.) [*]\n\
+  \    -c, --check-ref e|w|x|s         Check REF alleles and exit (e), warn (w), exclude\
+  \ (x), or set (s) bad sites [e]\n    -D, --remove-duplicates         Remove duplicate\
+  \ lines of the same type.\n    -d, --rm-dup TYPE               Remove duplicate\
+  \ snps|indels|both|all|exact\n    -f, --fasta-ref FILE            Reference sequence\n\
+  \        --force                     Try to proceed even if malformed tags are encountered.\
+  \ Experimental, use at your own risk\n        --keep-sum TAG,..           Keep vector\
+  \ sum constant when splitting multiallelics (see github issue #360)\n    -m, --multiallelics\
+  \ -|+TYPE     Split multiallelics (-) or join biallelics (+), type: snps|indels|both|any\
+  \ [both]\n        --no-version                Do not append version and command\
+  \ line to the header\n    -N, --do-not-normalize          Do not normalize indels\
+  \ (with -m or -c s)\n        --old-rec-tag STR           Annotate modified records\
+  \ with INFO/STR indicating the original variant\n    -o, --output FILE         \
+  \      Write output to a file [standard output]\n    -O, --output-type TYPE    \
+  \      'b' compressed BCF; 'u' uncompressed BCF; 'z' compressed VCF; 'v' uncompressed\
+  \ VCF [v]\n    -r, --regions REGION            Restrict to comma-separated list\
+  \ of regions\n    -R, --regions-file FILE         Restrict to regions listed in\
+  \ a file\n    -s, --strict-filter             When merging (-m+), merged site is\
+  \ PASS only if all sites being merged PASS\n    -t, --targets REGION           \
+  \ Similar to -r but streams rather than index-jumps\n    -T, --targets-file FILE\
+  \         Similar to -R but streams rather than index-jumps\n        --threads INT\
+  \               Use multithreading with <int> worker threads [0]\n    -w, --site-win\
+  \ INT              Buffer for sorting lines which changed position during realignment\
+  \ [1000]\n\nExamples:\n   # normalize and left-align indels\n   bcftools norm -f\
+  \ ref.fa in.vcf\n\n   # split multi-allelic sites\n   bcftools norm -m- in.vcf\n\
+  \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bcftools:1.12--h3f113a9_0

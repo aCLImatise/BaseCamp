@@ -1,0 +1,134 @@
+!Command
+command:
+- ustacks
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --name
+  description: ': a name for the sample (default: input file name minus the suffix).'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --keep-high-cov
+  description: ': disable the algorithm that removes highly-repetitive stacks and
+    nearby errors.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --high-cov-thres
+  description: ': highly-repetitive stacks threshold, in standard deviation units
+    (default: 3.0).'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max-locus-stacks
+  description: ': maximum number of stacks at a single de novo locus (default 3).'
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - --k-len
+  description: ': specify k-mer size for matching between alleles and loci (automatically
+    calculated by default).'
+  args: !SimpleFlagArg
+    name: len
+- !Flag
+  optional: true
+  synonyms:
+  - --max-gaps
+  description: ': number of gaps allowed between stacks before merging (default: 2).'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min-aln-len
+  description: ': minimum length of aligned sequence in a gapped alignment (default:
+    0.80).'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --disable-gapped
+  description: ': do not preform gapped alignments between stacks (default: gapped
+    alignements enabled).'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --model-type
+  description: ": either 'snp' (default), 'bounded', or 'fixed'"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --alpha
+  description: ': chi square significance level required to call a heterozygote or
+    homozygote, either 0.1, 0.05 (default), 0.01, or 0.001.'
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - --bound-low
+  description: ': lower bound for epsilon, the error rate, between 0 and 1.0 (default
+    0).'
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - --bound-high
+  description: ': upper bound for epsilon, the error rate, between 0 and 1.0 (default
+    1).'
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - --bc-err-freq
+  description: ': specify the barcode error frequency, between 0 and 1.0.'
+  args: !SimpleFlagArg
+    name: num
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "ustacks 2.55\nustacks -f file_path -i id -o path [-M max_dist] [-m min_cov]\
+  \ [-p num_threads]\n  f: input file path.\n  i: a unique integer ID for this sample.\n\
+  \  o: output path to write results.\n  M: Maximum distance (in nucleotides) allowed\
+  \ between stacks (default 2).\n  m: Minimum depth of coverage required to create\
+  \ a stack (default 3).\n  N: Maximum distance allowed to align secondary reads to\
+  \ primary stacks (default: M + 2).\n  p: enable parallel execution with num_threads\
+  \ threads.\n  t: input file type. Supported types: fasta, fastq, gzfasta, or gzfastq\
+  \ (default: guess).\n  --name: a name for the sample (default: input file name minus\
+  \ the suffix).\n  R: retain unused reads.\n  H: disable calling haplotypes from\
+  \ secondary reads.\n\n  Stack assembly options:\n    d,--deleverage: enable the\
+  \ Deleveraging algorithm, used for resolving over merged tags.\n    --keep-high-cov:\
+  \ disable the algorithm that removes highly-repetitive stacks and nearby errors.\n\
+  \    --high-cov-thres: highly-repetitive stacks threshold, in standard deviation\
+  \ units (default: 3.0).\n    --max-locus-stacks <num>: maximum number of stacks\
+  \ at a single de novo locus (default 3).\n     --k-len <len>: specify k-mer size\
+  \ for matching between alleles and loci (automatically calculated by default).\n\
+  \n  Gapped assembly options:\n    --max-gaps: number of gaps allowed between stacks\
+  \ before merging (default: 2).\n    --min-aln-len: minimum length of aligned sequence\
+  \ in a gapped alignment (default: 0.80).\n\n    --disable-gapped: do not preform\
+  \ gapped alignments between stacks (default: gapped alignements enabled).\n  Model\
+  \ options:\n    --model-type: either 'snp' (default), 'bounded', or 'fixed'\n  \
+  \  For the SNP or Bounded SNP model:\n      --alpha <num>: chi square significance\
+  \ level required to call a heterozygote or homozygote, either 0.1, 0.05 (default),\
+  \ 0.01, or 0.001.\n    For the Bounded SNP model:\n      --bound-low <num>: lower\
+  \ bound for epsilon, the error rate, between 0 and 1.0 (default 0).\n      --bound-high\
+  \ <num>: upper bound for epsilon, the error rate, between 0 and 1.0 (default 1).\n\
+  \    For the Fixed model:\n      --bc-err-freq <num>: specify the barcode error\
+  \ frequency, between 0 and 1.0.\n\n  h: display this help messsage.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/stacks:2.55--he513fc3_0

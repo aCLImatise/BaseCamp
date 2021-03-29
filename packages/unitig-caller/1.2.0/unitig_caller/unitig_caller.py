@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, File, String, Int
+
+Unitig_Caller_V0_1_0 = CommandToolBuilder(tool="unitig_caller", base_command=["unitig-caller"], inputs=[ToolInput(tag="in_call", input_type=Boolean(optional=True), prefix="--call", doc=InputDocumentation(doc="Build a DBG and call colours of unitigs within")), ToolInput(tag="in_query", input_type=Boolean(optional=True), prefix="--query", doc=InputDocumentation(doc="Query unitig colours in reference genomes/DBG")), ToolInput(tag="in_simple", input_type=Boolean(optional=True), prefix="--simple", doc=InputDocumentation(doc="Use FM-index to make calls")), ToolInput(tag="in_refs", input_type=File(optional=True), prefix="--refs", doc=InputDocumentation(doc="Ref file to used to build DBG or use with --simple")), ToolInput(tag="in_reads", input_type=File(optional=True), prefix="--reads", doc=InputDocumentation(doc="Read file to used to build DBG")), ToolInput(tag="in_graph", input_type=String(optional=True), prefix="--graph", doc=InputDocumentation(doc="Existing graph in GFA format")), ToolInput(tag="in_colours", input_type=File(optional=True), prefix="--colours", doc=InputDocumentation(doc="Existing bifrost colours file in .bfg_colors format")), ToolInput(tag="in_unit_igs", input_type=File(optional=True), prefix="--unitigs", doc=InputDocumentation(doc="Text or fasta file of unitigs to query (--query or")), ToolInput(tag="in_py_seer", input_type=Boolean(optional=True), prefix="--pyseer", doc=InputDocumentation(doc="Output pyseer format")), ToolInput(tag="in_r_tab", input_type=Boolean(optional=True), prefix="--rtab", doc=InputDocumentation(doc="Output rtab format")), ToolInput(tag="in_out", input_type=String(optional=True), prefix="--out", doc=InputDocumentation(doc="Prefix for output [default = 'unitig_caller']")), ToolInput(tag="in_km_er", input_type=Int(optional=True), prefix="--kmer", doc=InputDocumentation(doc="K-mer size for graph building/querying [default = 31]")), ToolInput(tag="in_write_graph", input_type=Boolean(optional=True), prefix="--write-graph", doc=InputDocumentation(doc="Output DBG built with unitig-caller")), ToolInput(tag="in_no_save_idx", input_type=Boolean(optional=True), prefix="--no-save-idx", doc=InputDocumentation(doc="Do not save FM-indexes for reuse")), ToolInput(tag="in_threads", input_type=Int(optional=True), prefix="--threads", doc=InputDocumentation(doc="Number of threads to use [default = 1]"))], outputs=[], container="quay.io/biocontainers/unitig-caller:1.2.0--py38hfcc51a0_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Unitig_Caller_V0_1_0().translate("wdl")
+

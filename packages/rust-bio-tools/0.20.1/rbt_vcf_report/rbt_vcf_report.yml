@@ -1,0 +1,189 @@
+!Command
+command:
+- rbt
+- vcf-report
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: fasta
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --bams
+  description: "<GROUP:SAMPLE=BAM_FILE>...\nVCF files to include (multi-sample). Group\
+    \ is the name that will be used in the oncoprint. There needs to be\none corresponding\
+    \ BAM file for each sample of a VCF/BCF file. Please only use VCF/BCF files annotated\
+    \ by VEP"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --cells
+  description: "Set the maximum number of cells in the oncoprint per page. Lowering\
+    \ max-cells should improve the performance\nof the plots in the browser. Default\
+    \ value is 1000 [default: 1000]"
+  args: !SimpleFlagArg
+    name: cells
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --custom-js-files
+  description: "...\nAdd one or multiple js file (e.g. libraries) for usage in the\
+    \ custom-js-file. The ordering of the arguments\nwill be the same as they will\
+    \ be imported"
+  args: !SimpleFlagArg
+    name: JS_FILE_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --custom-js-template
+  description: "Change the default javascript file for the table-report to a custom\
+    \ one to add own plots or tables to the\nsidebar by appending these to an empty\
+    \ div in the HTML template"
+  args: !SimpleFlagArg
+    name: JS_FILE_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --formats
+  description: "...\nAdd custom values from the format field to each variant as a\
+    \ data attribute to access them via the custom\njavascript. All given format values\
+    \ will also be inserted into the main table"
+  args: !SimpleFlagArg
+    name: FORMAT_TAG
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --infos
+  description: "...\nAdd custom values from the info field to each variant as a data\
+    \ attribute to access them via the custom\njavascript. Multiple fields starting\
+    \ with the same prefix can be added by placing '*' at the end of a prefix"
+  args: !SimpleFlagArg
+    name: INFO_TAG
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --max-read-depth
+  description: "Set the maximum number of cells in the oncoprint per page. Lowering\
+    \ max-cells should improve the performance\nof the plots in the browser. Default\
+    \ value is 1000 [default: 500]"
+  args: !SimpleFlagArg
+    name: max-read-depth
+- !Flag
+  optional: true
+  synonyms:
+  - --plot-info
+  description: "...\nAdd multiple keys from the info field of your vcf to the plots\
+    \ of the first and second stage of the report"
+  args: !SimpleFlagArg
+    name: PLOT_INFO
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: 'Sets the number of threads used to build the table reports [default:
+    0]'
+  args: !SimpleFlagArg
+    name: threads
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --tsv
+  description: "Add a TSV file that contains one or multiple custom values for each\
+    \ sample for the oncoprint. First column\nhas to be the sample name, followed\
+    \ by one or more columns with custom values. Make sure you include one row\nfor\
+    \ each given sample"
+  args: !SimpleFlagArg
+    name: TSV_FILE_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --vcfs
+  description: "<GROUP=VCF_FILE>...\nVCF files to include (multi-sample). Group is\
+    \ the name that will be used in the oncoprint. There needs to be\none corresponding\
+    \ BAM file for each sample of a VCF/BCF file. Please only use VCF/BCF files annotated\
+    \ by VEP"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Prints help information
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Prints version information
+  args: !EmptyFlagArg {}
+help_text: "rbt-vcf-report 0.20.1\nJohannes Köster <johannes.koester@uni-due.de>,\
+  \ Felix Wiegand <felix.wiegand@tu-dortmund.de>\nCreates report from a given VCF\
+  \ file including a visual plot for every variant with the given BAM and FASTA file.\
+  \ The\nVCF file has to be annotated with VEP, using the options --hgvs and --hgvsg.\n\
+  \nExamples: With current directory as default ouput path: rbt vcf-report fasta.fa\
+  \ --vcfs a=a.vcf b=b.vcf --bams\na:sample1=a.bam b:sample1=b.bam With custom directory\
+  \ as default ouput path: rbt vcf-report fasta.fa --vcfs a=a.vcf\nb=b.vcf --bams\
+  \ a:sample1=a.bam b:sample1=b.bam -- my/output/path/ With custom info tags in table\
+  \ report: rbt vcf-report\nfasta.fa --vcfs a=a.vcf b=b.vcf --bams a:sample1=a.bam\
+  \ b:sample1=b.bam --info PROB_SOMATIC PROB_GERMLINE\n\nUSAGE:\n    rbt vcf-report\
+  \ [OPTIONS] <fasta> [--] [output-path]\n\nFLAGS:\n    -h, --help       \n      \
+  \      Prints help information\n\n    -V, --version    \n            Prints version\
+  \ information\n\n\nOPTIONS:\n    -b, --bams <GROUP:SAMPLE=BAM_FILE>...      \n \
+  \           VCF files to include (multi-sample). Group is the name that will be\
+  \ used in the oncoprint. There needs to be\n            one corresponding BAM file\
+  \ for each sample of a VCF/BCF file. Please only use VCF/BCF files annotated by\
+  \ VEP\n    -c, --cells <cells>                        \n            Set the maximum\
+  \ number of cells in the oncoprint per page. Lowering max-cells should improve the\
+  \ performance\n            of the plots in the browser. Default value is 1000 [default:\
+  \ 1000]\n    -l, --custom-js-files <JS_FILE_PATH>...    \n            Add one or\
+  \ multiple js file (e.g. libraries) for usage in the custom-js-file. The ordering\
+  \ of the arguments\n            will be the same as they will be imported\n    -j,\
+  \ --custom-js-template <JS_FILE_PATH>    \n            Change the default javascript\
+  \ file for the table-report to a custom one to add own plots or tables to the\n\
+  \            sidebar by appending these to an empty div in the HTML template\n \
+  \   -f, --formats <FORMAT_TAG>...              \n            Add custom values from\
+  \ the format field to each variant as a data attribute to access them via the custom\n\
+  \            javascript. All given format values will also be inserted into the\
+  \ main table\n    -i, --infos <INFO_TAG>...                  \n            Add custom\
+  \ values from the info field to each variant as a data attribute to access them\
+  \ via the custom\n            javascript. Multiple fields starting with the same\
+  \ prefix can be added by placing '*' at the end of a prefix\n    -d, --max-read-depth\
+  \ <max-read-depth>      \n            Set the maximum number of cells in the oncoprint\
+  \ per page. Lowering max-cells should improve the performance\n            of the\
+  \ plots in the browser. Default value is 1000 [default: 500]\n        --plot-info\
+  \ <PLOT_INFO>...             \n            Add multiple keys from the info field\
+  \ of your vcf to the plots of the first and second stage of the report\n\n     \
+  \   --threads <threads>                    \n            Sets the number of threads\
+  \ used to build the table reports [default: 0]\n\n    -t, --tsv <TSV_FILE_PATH>\
+  \                  \n            Add a TSV file that contains one or multiple custom\
+  \ values for each sample for the oncoprint. First column\n            has to be\
+  \ the sample name, followed by one or more columns with custom values. Make sure\
+  \ you include one row\n            for each given sample\n    -v, --vcfs <GROUP=VCF_FILE>...\
+  \             \n            VCF files to include (multi-sample). Group is the name\
+  \ that will be used in the oncoprint. There needs to be\n            one corresponding\
+  \ BAM file for each sample of a VCF/BCF file. Please only use VCF/BCF files annotated\
+  \ by VEP\n\nARGS:\n    <fasta>          \n            FASTA file containing the\
+  \ reference genome for the visual plot\n\n    <output-path>    \n            Relative\
+  \ output path for the report files. Default value is the current directory [default:\
+  \ .]\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/rust-bio-tools:0.20.1--heda7bfa_0

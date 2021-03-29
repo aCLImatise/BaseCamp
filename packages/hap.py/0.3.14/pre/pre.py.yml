@@ -1,0 +1,281 @@
+!Command
+command:
+- pre.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: input
+  description: VCF file to process.
+- !Positional
+  optional: false
+  position: 1
+  name: output
+  description: Output filename.
+- !Positional
+  optional: false
+  position: 0
+  name: stderr
+  description: --verbose             Raise logging level from warning to info.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --location
+  - -l
+  description: "Comma-separated list of locations [use naming after\npreprocessing],\
+    \ when not specified will use whole VCF."
+  args: !SimpleFlagArg
+    name: LOCATIONS
+- !Flag
+  optional: true
+  synonyms:
+  - --pass-only
+  description: Keep only PASS variants.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --filters-only
+  description: "Specify a comma-separated list of filters to apply (by\ndefault all\
+    \ filters are ignored / passed on."
+  args: !SimpleFlagArg
+    name: FILTERS_ONLY
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  - --restrict-regions
+  description: "Restrict analysis to given (sparse) regions (using -R\nin bcftools)."
+  args: !SimpleFlagArg
+    name: REGIONS_BEDFILE
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --target-regions
+  description: "Restrict analysis to given (dense) regions (using -T\nin bcftools)."
+  args: !SimpleFlagArg
+    name: TARGETS_BEDFILE
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  - --leftshift
+  description: Left-shift variants safely.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-leftshift
+  description: Do not left-shift variants safely.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --decompose
+  description: "Decompose variants into primitives. This results in\nmore granular\
+    \ counts."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  - --no-decompose
+  description: Do not decompose variants into primitives.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --bcftools-norm
+  description: "Enable preprocessing through bcftools norm -c x -D\n(requires external\
+    \ preprocessing to be switched on)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --fixchr
+  description: "Add chr prefix to VCF records where necessary\n(default: auto, attempt\
+    \ to match reference)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-fixchr
+  description: "Do not add chr prefix to VCF records (default: auto,\nattempt to match\
+    \ reference)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --bcf
+  description: "Use BCF internally. This is the default when the input\nfile is in\
+    \ BCF format already. Using BCF can speed up\ntemp file access, but may fail for\
+    \ VCF files that have\nbroken headers or records that don't comply with the\n\
+    header."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --somatic
+  description: "Assume the input file is a somatic call file and\nsquash all columns\
+    \ into one, putting all FORMATs into\nINFO + use half genotypes (see also --set-gt).\
+    \ This\nwill replace all sample columns and replace them with\na single one."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --set-gt
+  description: "This is used to treat Strelka somatic files Possible\nvalues for this\
+    \ parameter: half / hemi / het / hom /\nhalf to assign one of the following genotypes\
+    \ to the\nresulting sample: 1 | 0/1 | 1/1 | ./1. This will\nreplace all sample\
+    \ columns and replace them with a\nsingle one."
+  args: !ChoiceFlagArg
+    choices: !!set
+      hemi:
+      first:
+      het:
+      half:
+      hom:
+- !Flag
+  optional: true
+  synonyms:
+  - --filter-nonref
+  description: Remove any variants genotyped as <NON_REF>.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --convert-gvcf-to-vcf
+  description: "Convert the input set from genome VCF format to a VCF\nbefore processing."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gender
+  description: "Specify sex. This determines how haploid calls on chrX\nget treated:\
+    \ for male samples, all non-ref calls (in\nthe truthset only when running through\
+    \ hap.py) are\ngiven a 1/1 genotype."
+  args: !ChoiceFlagArg
+    choices: !!set
+      female:
+      none:
+      male:
+      auto:
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reference
+  description: Specify a reference file.
+  args: !SimpleFlagArg
+    name: REF
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --window-size
+  description: "Preprocessing window size (variants further apart than\nthat size\
+    \ are not expected to interfere)."
+  args: !SimpleFlagArg
+    name: WINDOW
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: Number of threads to use.
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - --logfile
+  description: Write logging information into file rather than to
+  args: !SimpleFlagArg
+    name: LOGFILE
+- !Flag
+  optional: true
+  synonyms:
+  - --quiet
+  description: Set logging level to output errors only.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: Show version number and exit.
+  args: !EmptyFlagArg {}
+help_text: "usage: VCF preprocessor [-h] [--location LOCATIONS] [--pass-only]\n  \
+  \                      [--filters-only FILTERS_ONLY] [-R REGIONS_BEDFILE]\n    \
+  \                    [-T TARGETS_BEDFILE] [-L] [--no-leftshift]\n              \
+  \          [--decompose] [-D] [--bcftools-norm] [--fixchr]\n                   \
+  \     [--no-fixchr] [--bcf] [--somatic]\n                        [--set-gt {half,hemi,het,hom,first}]\
+  \ [--filter-nonref]\n                        [--convert-gvcf-to-vcf]\n         \
+  \               [--gender {male,female,auto,none}] [-v] [-r REF]\n             \
+  \           [-w WINDOW] [--threads THREADS] [--logfile LOGFILE]\n              \
+  \          [--verbose | --quiet]\n                        input output\n\npositional\
+  \ arguments:\n  input                 VCF file to process.\n  output           \
+  \     Output filename.\n\noptional arguments:\n  -h, --help            show this\
+  \ help message and exit\n  --location LOCATIONS, -l LOCATIONS\n                \
+  \        Comma-separated list of locations [use naming after\n                 \
+  \       preprocessing], when not specified will use whole VCF.\n  --pass-only  \
+  \         Keep only PASS variants.\n  --filters-only FILTERS_ONLY\n            \
+  \            Specify a comma-separated list of filters to apply (by\n          \
+  \              default all filters are ignored / passed on.\n  -R REGIONS_BEDFILE,\
+  \ --restrict-regions REGIONS_BEDFILE\n                        Restrict analysis\
+  \ to given (sparse) regions (using -R\n                        in bcftools).\n \
+  \ -T TARGETS_BEDFILE, --target-regions TARGETS_BEDFILE\n                       \
+  \ Restrict analysis to given (dense) regions (using -T\n                       \
+  \ in bcftools).\n  -L, --leftshift       Left-shift variants safely.\n  --no-leftshift\
+  \        Do not left-shift variants safely.\n  --decompose           Decompose variants\
+  \ into primitives. This results in\n                        more granular counts.\n\
+  \  -D, --no-decompose    Do not decompose variants into primitives.\n  --bcftools-norm\
+  \       Enable preprocessing through bcftools norm -c x -D\n                   \
+  \     (requires external preprocessing to be switched on).\n  --fixchr         \
+  \     Add chr prefix to VCF records where necessary\n                        (default:\
+  \ auto, attempt to match reference).\n  --no-fixchr           Do not add chr prefix\
+  \ to VCF records (default: auto,\n                        attempt to match reference).\n\
+  \  --bcf                 Use BCF internally. This is the default when the input\n\
+  \                        file is in BCF format already. Using BCF can speed up\n\
+  \                        temp file access, but may fail for VCF files that have\n\
+  \                        broken headers or records that don't comply with the\n\
+  \                        header.\n  --somatic             Assume the input file\
+  \ is a somatic call file and\n                        squash all columns into one,\
+  \ putting all FORMATs into\n                        INFO + use half genotypes (see\
+  \ also --set-gt). This\n                        will replace all sample columns\
+  \ and replace them with\n                        a single one.\n  --set-gt {half,hemi,het,hom,first}\n\
+  \                        This is used to treat Strelka somatic files Possible\n\
+  \                        values for this parameter: half / hemi / het / hom /\n\
+  \                        half to assign one of the following genotypes to the\n\
+  \                        resulting sample: 1 | 0/1 | 1/1 | ./1. This will\n    \
+  \                    replace all sample columns and replace them with a\n      \
+  \                  single one.\n  --filter-nonref       Remove any variants genotyped\
+  \ as <NON_REF>.\n  --convert-gvcf-to-vcf\n                        Convert the input\
+  \ set from genome VCF format to a VCF\n                        before processing.\n\
+  \  --gender {male,female,auto,none}\n                        Specify sex. This determines\
+  \ how haploid calls on chrX\n                        get treated: for male samples,\
+  \ all non-ref calls (in\n                        the truthset only when running\
+  \ through hap.py) are\n                        given a 1/1 genotype.\n  -v, --version\
+  \         Show version number and exit.\n  -r REF, --reference REF\n           \
+  \             Specify a reference file.\n  -w WINDOW, --window-size WINDOW\n   \
+  \                     Preprocessing window size (variants further apart than\n \
+  \                       that size are not expected to interfere).\n  --threads THREADS\
+  \     Number of threads to use.\n  --logfile LOGFILE     Write logging information\
+  \ into file rather than to\n                        stderr\n  --verbose        \
+  \     Raise logging level from warning to info.\n  --quiet               Set logging\
+  \ level to output errors only.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/hap.py:0.3.14--py27h5c5a3ab_0

@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, File, String
+
+Seidr_Cluster_Enrichment_V0_1_0 = CommandToolBuilder(tool="seidr_cluster_enrichment", base_command=["seidr", "cluster-enrichment"], inputs=[ToolInput(tag="in_arg_first_clustergene_mapping", input_type=Boolean(optional=True), prefix="-1", doc=InputDocumentation(doc="[ --first ] arg                    First cluster->gene mapping")), ToolInput(tag="in_arg_clustergene_mapping_bepositional", input_type=Boolean(optional=True), prefix="-2", doc=InputDocumentation(doc="[ --second ] arg                   Another cluster->gene mapping [can be\npositional]")), ToolInput(tag="in_arg_output_delimiter", input_type=Boolean(optional=True), prefix="-d", doc=InputDocumentation(doc="[ --delim ] arg (=,)               Output delimiter")), ToolInput(tag="in_arg_seidrcompareclustdefalphaadjusted_pvalue", input_type=Boolean(optional=True), prefix="-a", doc=InputDocumentation(doc="[ --alpha ] arg (=SEIDR_COMPARE_CLUST_DEF_ALPHA)\nAdjusted p-value cutoff")), ToolInput(tag="in_arg_minimum_members", input_type=Boolean(optional=True), prefix="-m", doc=InputDocumentation(doc="[ --min-members ] arg (=20)        Minimum members of a cluster")), ToolInput(tag="in_arg_maximum_members", input_type=Boolean(optional=True), prefix="-M", doc=InputDocumentation(doc="[ --max-members ] arg (=200)       Maximum members of a cluster")), ToolInput(tag="in_force_overwrite_output", input_type=File(optional=True), prefix="-f", doc=InputDocumentation(doc="[ --force ]                        Force overwrite output file if it")), ToolInput(tag="in_o", input_type=File(optional=True), prefix="-o", doc=InputDocumentation(doc="[ --outfile ] arg (=-)             Output file name ['-' for stdout]")), ToolInput(tag="in_exists", input_type=String(), position=0, doc=InputDocumentation(doc="-h [ --help ]                         Show this help message"))], outputs=[ToolOutput(tag="out_force_overwrite_output", output_type=File(optional=True), selector=InputSelector(input_to_select="in_force_overwrite_output", type_hint=File()), doc=OutputDocumentation(doc="[ --force ]                        Force overwrite output file if it")), ToolOutput(tag="out_o", output_type=File(optional=True), selector=InputSelector(input_to_select="in_o", type_hint=File()), doc=OutputDocumentation(doc="[ --outfile ] arg (=-)             Output file name ['-' for stdout]"))], container="quay.io/biocontainers/seidr:0.14.2--mpi_mpich_h6f92565", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Seidr_Cluster_Enrichment_V0_1_0().translate("wdl")
+

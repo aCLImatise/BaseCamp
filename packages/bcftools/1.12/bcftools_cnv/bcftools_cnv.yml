@@ -1,0 +1,188 @@
+!Command
+command:
+- bcftools
+- cnv
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: file.vcf
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --control-sample
+  description: optional control sample name to highlight differences
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --AF-file
+  description: read allele frequencies from file (CHR\tPOS\tREF,ALT\tAF)
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-dir
+  - -p
+  - --plot-threshold
+  description: plot aberrant chromosomes with quality at least 'float'
+  args: !SimpleFlagArg
+    name: path
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --regions
+  description: restrict to comma-separated list of regions
+  args: !SimpleFlagArg
+    name: region
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  - --regions-file
+  description: restrict to regions listed in a file
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --query-sample
+  description: query samply name
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --targets
+  description: similar to -r but streams rather than index-jumps
+  args: !SimpleFlagArg
+    name: region
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --targets-file
+  description: similar to -R but streams rather than index-jumps
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --aberrant
+  description: <float[,float]>     fraction of aberrant cells in query and control
+    [1.0,1.0]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --BAF-weight
+  description: relative contribution from BAF [1]
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --BAF-dev
+  description: <float[,float]>      expected BAF deviation in query and control [0.04,0.04]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --err-prob
+  description: uniform error probability [1e-4]
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --LRR-dev
+  description: <float[,float]>      expected LRR deviation [0.2,0.2]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --LRR-weight
+  description: relative contribution from LRR [0.2]
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  - --LRR-smooth-win
+  description: window of LRR moving average smoothing [10]
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -O
+  - --optimize
+  description: estimate fraction of aberrant cells down to <float> [1.0]
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - -P
+  - --same-prob
+  description: prior probability of -s/-c being the same [0.5]
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --xy-prob
+  description: P(x|y) transition probability [1e-9]
+  args: !SimpleFlagArg
+    name: float
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "cnv: unrecognized option '--help'\n\nAbout:   Copy number variation caller,\
+  \ requires Illumina's B-allele frequency (BAF) and Log R\n         Ratio intensity\
+  \ (LRR). The HMM considers the following copy number states: CN 2\n         (normal),\
+  \ 1 (single-copy loss), 0 (complete loss), 3 (single-copy gain)\nUsage:   bcftools\
+  \ cnv [OPTIONS] <file.vcf>\nGeneral Options:\n    -c, --control-sample <string>\
+  \      optional control sample name to highlight differences\n    -f, --AF-file\
+  \ <file>               read allele frequencies from file (CHR\\tPOS\\tREF,ALT\\\
+  tAF)\n    -o, --output-dir <path>            \n    -p, --plot-threshold <float>\
+  \       plot aberrant chromosomes with quality at least 'float'\n    -r, --regions\
+  \ <region>             restrict to comma-separated list of regions\n    -R, --regions-file\
+  \ <file>          restrict to regions listed in a file\n    -s, --query-sample <string>\
+  \        query samply name\n    -t, --targets <region>             similar to -r\
+  \ but streams rather than index-jumps\n    -T, --targets-file <file>          similar\
+  \ to -R but streams rather than index-jumps\nHMM Options:\n    -a, --aberrant <float[,float]>\
+  \     fraction of aberrant cells in query and control [1.0,1.0]\n    -b, --BAF-weight\
+  \ <float>           relative contribution from BAF [1]\n    -d, --BAF-dev <float[,float]>\
+  \      expected BAF deviation in query and control [0.04,0.04]\n    -e, --err-prob\
+  \ <float>             uniform error probability [1e-4]\n    -k, --LRR-dev <float[,float]>\
+  \      expected LRR deviation [0.2,0.2]\n    -l, --LRR-weight <float>          \
+  \ relative contribution from LRR [0.2]\n    -L, --LRR-smooth-win <int>         window\
+  \ of LRR moving average smoothing [10]\n    -O, --optimize <float>             estimate\
+  \ fraction of aberrant cells down to <float> [1.0]\n    -P, --same-prob <float>\
+  \            prior probability of -s/-c being the same [0.5]\n    -x, --xy-prob\
+  \ <float>              P(x|y) transition probability [1e-9]\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bcftools:1.12--h3f113a9_0

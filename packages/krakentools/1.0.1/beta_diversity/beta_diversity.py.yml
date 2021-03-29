@@ -1,0 +1,83 @@
+!Command
+command:
+- beta_diversity.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  - --input-files
+  - --inputs
+  description: "Input files (one per community) for which to compare\nfor bray-curtis\
+    \ dissimiliarity metrics"
+  args: !RepeatFlagArg
+    name: IN_FILES
+- !Flag
+  optional: true
+  synonyms:
+  - --type
+  description: "Type of input file[s]: single, simple [tab-delimited,\nspecify --cols],\
+    \ bracken, kreport, kreport2, krona.\nSee docs for details"
+  args: !ChoiceFlagArg
+    choices: !!set
+      simple:
+      kreport2:
+      single:
+      krona:
+      bracken:
+      kreport:
+- !Flag
+  optional: true
+  synonyms:
+  - --cols
+  - --columns
+  description: "Specify category/counts separated by single comma:\ncat,counts (1\
+    \ = first col)"
+  args: !SimpleFlagArg
+    name: COLS
+- !Flag
+  optional: true
+  synonyms:
+  - --level
+  - -l
+  description: "For Kraken or Krona files, taxonomy level for which to\ncompare samples.\
+    \ Default: all\n"
+  args: !ChoiceFlagArg
+    choices: !!set
+      F:
+      S:
+      O:
+      all:
+      G:
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: beta_diversity.py [-h] -i IN_FILES [IN_FILES ...]\n           \
+  \              [--type {single,simple,bracken,kreport,kreport2,krona}]\n       \
+  \                  [--cols COLS] [--level {all,S,G,F,O}]\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -i IN_FILES [IN_FILES\
+  \ ...], --input IN_FILES [IN_FILES ...], --input-files IN_FILES [IN_FILES ...],\
+  \ --inputs IN_FILES [IN_FILES ...]\n                        Input files (one per\
+  \ community) for which to compare\n                        for bray-curtis dissimiliarity\
+  \ metrics\n  --type {single,simple,bracken,kreport,kreport2,krona}\n           \
+  \             Type of input file[s]: single, simple [tab-delimited,\n          \
+  \              specify --cols], bracken, kreport, kreport2, krona.\n           \
+  \             See docs for details\n  --cols COLS, --columns COLS\n            \
+  \            Specify category/counts separated by single comma:\n              \
+  \          cat,counts (1 = first col)\n  --level {all,S,G,F,O}, -l {all,S,G,F,O}\n\
+  \                        For Kraken or Krona files, taxonomy level for which to\n\
+  \                        compare samples. Default: all\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/krakentools:1.0.1--pyh3252c3a_0

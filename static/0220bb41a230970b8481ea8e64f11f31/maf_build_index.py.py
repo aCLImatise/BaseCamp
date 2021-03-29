@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import String
+
+Maf_Build_Index_Py_V0_1_0 = CommandToolBuilder(tool="maf_build_index.py", base_command=["maf_build_index.py"], inputs=[ToolInput(tag="in_species", input_type=String(optional=True), prefix="--species", doc=InputDocumentation(doc="only index the position of the block in the listed\nspecies\n")), ToolInput(tag="in_maf_file", input_type=String(), position=0, doc=InputDocumentation(doc="")), ToolInput(tag="in_index_file", input_type=String(), position=1, doc=InputDocumentation(doc=""))], outputs=[], container="quay.io/biocontainers/bx-python:0.8.11--py36h5e0341f_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Maf_Build_Index_Py_V0_1_0().translate("wdl")
+

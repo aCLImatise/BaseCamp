@@ -1,0 +1,78 @@
+!Command
+command:
+- bracken-build
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: KMER_LEN
+  description: 'kmer length used to build the kraken database (default: 35)'
+- !Positional
+  optional: false
+  position: 1
+  name: THREADS
+  description: the number of threads to use when running kraken classification and
+    the bracken scripts
+- !Positional
+  optional: false
+  position: 2
+  name: READ_LEN
+  description: 'read length to get all classifications for (default: 100)'
+- !Positional
+  optional: false
+  position: 3
+  name: MY_DB
+  description: location of Kraken database
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: ''
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  description: ''
+  args: !SimpleFlagArg
+    name: K_INSTALLATION
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: ''
+  args: !SimpleFlagArg
+    name: MY_DB
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: ''
+  args: !SimpleFlagArg
+    name: READ_LEN
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  description: ''
+  args: !SimpleFlagArg
+    name: KMER_LEN
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Usage: bracken_build -k KMER_LEN -l READ_LEN -d MY_DB -x K_INSTALLATION\
+  \ -t THREADS\n  KMER_LEN       kmer length used to build the kraken database (default:\
+  \ 35)\n  THREADS        the number of threads to use when running kraken classification\
+  \ and the bracken scripts\n  READ_LEN       read length to get all classifications\
+  \ for (default: 100)\n  MY_DB          location of Kraken database\n  K_INSTALLATION\
+  \ location of the installed kraken/kraken-build scripts (default assumes scripts\
+  \ can be run from the user path)\n\n**Note that this script will try to use kraken2\
+  \ as default. If kraken2 is not installed, kraken will be used instead\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bracken:2.6.1--py38hed8969a_0

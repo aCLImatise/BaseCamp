@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, File, String
+
+Pcor_V0_1_0 = CommandToolBuilder(tool="pcor", base_command=["pcor"], inputs=[ToolInput(tag="in_arg_expression_table", input_type=Boolean(optional=True), prefix="-i", doc=InputDocumentation(doc="[ --infile ] arg                   The expression table (without headers)")), ToolInput(tag="in__arg_file_containing_gene_names", input_type=Boolean(optional=True), prefix="-g", doc=InputDocumentation(doc="[ --genes ] arg                    File containing gene names")), ToolInput(tag="in_report_absolute_values", input_type=Boolean(optional=True), prefix="-a", doc=InputDocumentation(doc="[ --absolute ]                     Report absolute values")), ToolInput(tag="in_deprecated_transform_data", input_type=Boolean(optional=True), prefix="-s", doc=InputDocumentation(doc="[ --scale ]                        (deprecated) Transform data to z-scores")), ToolInput(tag="in_no_scale", input_type=Boolean(optional=True), prefix="--no-scale", doc=InputDocumentation(doc="Do not transform data to z-scores")), ToolInput(tag="in_arg_file_containing_gene_names_ofinterest", input_type=Boolean(optional=True), prefix="-t", doc=InputDocumentation(doc="[ --targets ] arg                  File containing gene names of genes of\ninterest. The network will only be\ncalculated using these as the sources\nof potential connections.")), ToolInput(tag="in_arg_pcorscorestsvoutput_file", input_type=File(optional=True), prefix="-o", doc=InputDocumentation(doc="[ --outfile ] arg (=pcor_scores.tsv)\nOutput file path")), ToolInput(tag="in_arg_verbosity_level", input_type=Boolean(optional=True), prefix="-v", doc=InputDocumentation(doc="[ --verbosity ] arg (=3)           Verbosity level (lower is less verbose)")), ToolInput(tag="in_force_overwrite_output", input_type=Boolean(optional=True), prefix="-f", doc=InputDocumentation(doc="[ --force ]                        Force overwrite if output already")), ToolInput(tag="in_exists", input_type=String(), position=0, doc=InputDocumentation(doc="-V [ --version ]                      Print the program version"))], outputs=[ToolOutput(tag="out_arg_pcorscorestsvoutput_file", output_type=File(optional=True), selector=InputSelector(input_to_select="in_arg_pcorscorestsvoutput_file", type_hint=File()), doc=OutputDocumentation(doc="[ --outfile ] arg (=pcor_scores.tsv)\nOutput file path"))], container="quay.io/biocontainers/seidr:0.14.2--mpi_mpich_h6f92565", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Pcor_V0_1_0().translate("wdl")
+

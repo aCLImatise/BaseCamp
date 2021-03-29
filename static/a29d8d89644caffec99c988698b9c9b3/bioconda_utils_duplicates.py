@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, String, File, Int
+
+Bioconda_Utils_Duplicates_V0_1_0 = CommandToolBuilder(tool="bioconda_utils_duplicates", base_command=["bioconda-utils", "duplicates"], inputs=[ToolInput(tag="in_strict_version", input_type=Boolean(optional=True), prefix="--strict-version", doc=InputDocumentation(doc="Require version to strictly match. (default: False)")), ToolInput(tag="in_strict_build", input_type=Boolean(optional=True), prefix="--strict-build", doc=InputDocumentation(doc="Require version and build to strictly match. (default:\nFalse)")), ToolInput(tag="in_dry_run", input_type=Boolean(optional=True), prefix="--dryrun", doc=InputDocumentation(doc="Only print removal plan. (default: False)")), ToolInput(tag="in_remove", input_type=Boolean(optional=True), prefix="--remove", doc=InputDocumentation(doc="Remove packages from anaconda. (default: False)")), ToolInput(tag="in_url", input_type=Boolean(optional=True), prefix="--url", doc=InputDocumentation(doc="Print anaconda urls. (default: False)")), ToolInput(tag="in_channel", input_type=String(optional=True), prefix="--channel", doc=InputDocumentation(doc="Channel to check for duplicates (default: 'bioconda')")), ToolInput(tag="in_loglevel", input_type=String(optional=True), prefix="--loglevel", doc=InputDocumentation(doc="Set logging level (debug, info, warning, error,\ncritical) (default: 'info')")), ToolInput(tag="in_log_file", input_type=File(optional=True), prefix="--logfile", doc=InputDocumentation(doc="Write log to file (default: -)")), ToolInput(tag="in_log_file_level", input_type=File(optional=True), prefix="--logfile-level", doc=InputDocumentation(doc="Log level for log file (default: 'debug')")), ToolInput(tag="in_log_command_max_lines", input_type=Int(optional=True), prefix="--log-command-max-lines", doc=InputDocumentation(doc="Limit lines emitted for commands executed (default: -)\n")), ToolInput(tag="in_detect_packages_bioconda", input_type=String(), position=0, doc=InputDocumentation(doc="Detect packages in bioconda that have duplicates in the other defined")), ToolInput(tag="in_channels_dot", input_type=String(), position=1, doc=InputDocumentation(doc="positional arguments:")), ToolInput(tag="in_path_yaml_file", input_type=String(), position=2, doc=InputDocumentation(doc="Path to yaml file specifying the configuration"))], outputs=[], container="quay.io/biocontainers/bioconda-utils:0.16.23--py_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Bioconda_Utils_Duplicates_V0_1_0().translate("wdl")
+

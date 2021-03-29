@@ -1,0 +1,266 @@
+!Command
+command:
+- galaxy-tool-test
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --galaxy-url
+  description: Galaxy URL
+  args: !SimpleFlagArg
+    name: GALAXY_URL
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --key
+  description: Galaxy User API Key
+  args: !SimpleFlagArg
+    name: KEY
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --admin-key
+  description: Galaxy Admin API Key
+  args: !SimpleFlagArg
+    name: ADMIN_KEY
+- !Flag
+  optional: true
+  synonyms:
+  - --force_path_paste
+  description: "This requires Galaxy-side config option\n\"allow_path_paste\" enabled.\
+    \ Allows for fetching test\ndata locally. Only for admins."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --tool-id
+  description: Tool ID
+  args: !SimpleFlagArg
+    name: TOOL_ID
+- !Flag
+  optional: true
+  synonyms:
+  - --tool-version
+  description: "Tool Version (if tool id supplied). Defaults to just\nlatest version,\
+    \ use * to test all versions"
+  args: !SimpleFlagArg
+    name: TOOL_VERSION
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --test-index
+  description: "Tool Test Index (starting at 0) - by default all tests\nwill run."
+  args: !SimpleFlagArg
+    name: TEST_INDEX
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: directory to dump outputs to
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - --append
+  description: "Extend a test record json (created with --output-json)\nwith additional\
+    \ tests."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --skip-previously-executed
+  description: "When used with --append, skip any test previously\nexecuted."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --skip-previously-successful
+  description: "When used with --append, skip any test previously\nexecuted successfully."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --output-json
+  description: output metadata json
+  args: !SimpleFlagArg
+    name: OUTPUT_JSON
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: Verbose logging.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --client-test-config
+  description: Test config YAML to help with client testing
+  args: !SimpleFlagArg
+    name: CLIENT_TEST_CONFIG
+- !Flag
+  optional: true
+  synonyms:
+  - --suite-name
+  description: Suite name for tool test output
+  args: !SimpleFlagArg
+    name: SUITE_NAME
+- !Flag
+  optional: true
+  synonyms:
+  - --with-reference-data
+  - --skip-with-reference-data
+  description: "Skip tests the Galaxy server believes use data tables\nor loc files."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --history-per-suite
+  description: "Create new history per test suite (all tests in same\nhistory)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --history-per-test-case
+  description: Create new history per test case.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-history-cleanup
+  description: Perserve histories created for testing.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --publish-history
+  description: Publish test history. Useful for CI testing.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --parallel-tests
+  description: Parallel tests.
+  args: !SimpleFlagArg
+    name: PARALLEL_TESTS
+- !Flag
+  optional: true
+  synonyms:
+  - --retries
+  description: Retry failed tests.
+  args: !SimpleFlagArg
+    name: RETRIES
+- !Flag
+  optional: true
+  synonyms:
+  - --page-size
+  description: "If positive, use pagination and just run one 'page' to\ntool tests."
+  args: !SimpleFlagArg
+    name: PAGE_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --page-number
+  description: "If page size is used, run this 'page' of tests -\nstarts with 0."
+  args: !SimpleFlagArg
+    name: PAGE_NUMBER
+- !Flag
+  optional: true
+  synonyms:
+  - --download-attempts
+  description: "Galaxy may return a transient 500 status code for\ndownload if test\
+    \ results are written but not yet\naccessible."
+  args: !SimpleFlagArg
+    name: DOWNLOAD_ATTEMPTS
+- !Flag
+  optional: true
+  synonyms:
+  - --download-sleep
+  description: "If download attempts is greater than 1, the amount to\nsleep between\
+    \ download attempts."
+  args: !SimpleFlagArg
+    name: DOWNLOAD_SLEEP
+- !Flag
+  optional: true
+  synonyms:
+  - --test-data
+  description: "Add local test data path to search for missing test\ndata\n"
+  args: !SimpleFlagArg
+    name: TEST_DATA
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: galaxy-tool-test [-h] [-u GALAXY_URL] [-k KEY] [-a ADMIN_KEY]\n\
+  \                        [--force_path_paste] [-t TOOL_ID]\n                   \
+  \     [--tool-version TOOL_VERSION] [-i TEST_INDEX]\n                        [-o\
+  \ OUTPUT] [--append]\n                        [--skip-previously-executed | --skip-previously-successful]\n\
+  \                        [-j OUTPUT_JSON] [--verbose] [-c CLIENT_TEST_CONFIG]\n\
+  \                        [--suite-name SUITE_NAME] [--with-reference-data]\n   \
+  \                     [--skip-with-reference-data]\n                        [--history-per-suite\
+  \ | --history-per-test-case]\n                        [--no-history-cleanup] [--publish-history]\n\
+  \                        [--parallel-tests PARALLEL_TESTS] [--retries RETRIES]\n\
+  \                        [--page-size PAGE_SIZE] [--page-number PAGE_NUMBER]\n \
+  \                       [--download-attempts DOWNLOAD_ATTEMPTS]\n              \
+  \          [--download-sleep DOWNLOAD_SLEEP]\n                        [--test-data\
+  \ TEST_DATA]\n\nScript to quickly run a tool test against a running Galaxy instance.\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  -u GALAXY_URL, --galaxy-url GALAXY_URL\n                        Galaxy URL\n\
+  \  -k KEY, --key KEY     Galaxy User API Key\n  -a ADMIN_KEY, --admin-key ADMIN_KEY\n\
+  \                        Galaxy Admin API Key\n  --force_path_paste    This requires\
+  \ Galaxy-side config option\n                        \"allow_path_paste\" enabled.\
+  \ Allows for fetching test\n                        data locally. Only for admins.\n\
+  \  -t TOOL_ID, --tool-id TOOL_ID\n                        Tool ID\n  --tool-version\
+  \ TOOL_VERSION\n                        Tool Version (if tool id supplied). Defaults\
+  \ to just\n                        latest version, use * to test all versions\n\
+  \  -i TEST_INDEX, --test-index TEST_INDEX\n                        Tool Test Index\
+  \ (starting at 0) - by default all tests\n                        will run.\n  -o\
+  \ OUTPUT, --output OUTPUT\n                        directory to dump outputs to\n\
+  \  --append              Extend a test record json (created with --output-json)\n\
+  \                        with additional tests.\n  --skip-previously-executed\n\
+  \                        When used with --append, skip any test previously\n   \
+  \                     executed.\n  --skip-previously-successful\n              \
+  \          When used with --append, skip any test previously\n                 \
+  \       executed successfully.\n  -j OUTPUT_JSON, --output-json OUTPUT_JSON\n  \
+  \                      output metadata json\n  --verbose             Verbose logging.\n\
+  \  -c CLIENT_TEST_CONFIG, --client-test-config CLIENT_TEST_CONFIG\n            \
+  \            Test config YAML to help with client testing\n  --suite-name SUITE_NAME\n\
+  \                        Suite name for tool test output\n  --with-reference-data\n\
+  \  --skip-with-reference-data\n                        Skip tests the Galaxy server\
+  \ believes use data tables\n                        or loc files.\n  --history-per-suite\
+  \   Create new history per test suite (all tests in same\n                     \
+  \   history).\n  --history-per-test-case\n                        Create new history\
+  \ per test case.\n  --no-history-cleanup  Perserve histories created for testing.\n\
+  \  --publish-history     Publish test history. Useful for CI testing.\n  --parallel-tests\
+  \ PARALLEL_TESTS\n                        Parallel tests.\n  --retries RETRIES \
+  \    Retry failed tests.\n  --page-size PAGE_SIZE\n                        If positive,\
+  \ use pagination and just run one 'page' to\n                        tool tests.\n\
+  \  --page-number PAGE_NUMBER\n                        If page size is used, run\
+  \ this 'page' of tests -\n                        starts with 0.\n  --download-attempts\
+  \ DOWNLOAD_ATTEMPTS\n                        Galaxy may return a transient 500 status\
+  \ code for\n                        download if test results are written but not\
+  \ yet\n                        accessible.\n  --download-sleep DOWNLOAD_SLEEP\n\
+  \                        If download attempts is greater than 1, the amount to\n\
+  \                        sleep between download attempts.\n  --test-data TEST_DATA\n\
+  \                        Add local test data path to search for missing test\n \
+  \                       data\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/galaxy-tool-util:21.1.0--py_0

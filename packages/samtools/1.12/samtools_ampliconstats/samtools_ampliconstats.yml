@@ -1,0 +1,169 @@
+!Command
+command:
+- samtools
+- ampliconstats
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: primers.bed
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --required-flag
+  description: "|INT\nOnly include reads with all of the FLAGs present [0x0]"
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  - --filter-flag
+  description: "|INT\nOnly include reads with none of the FLAGs present [0xB04]"
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --max-amplicons
+  description: Change the maximum number of amplicons permitted [1000]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --max-amplicon-length
+  description: Change the maximum length of an individual amplicon [1000]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --min-depth
+  description: "...\nMinimum base depth(s) to consider position covered [1]"
+  args: !OptionalFlagArg
+    names:
+    - INT
+    - INT
+    separator: ','
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --pos-margin
+  description: Margin of error for matching primer positions [30]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: Specify output file [stdout if unset]
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --use-sample-name
+  description: Use the sample name from the first @RG header line
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --tlen-adjust
+  description: Add/subtract from TLEN; use when clipping but no fixmate step
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --tcoord-bin
+  description: Bin template start,end positions into multiples of INT[1]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --tcoord-min-count
+  description: Minimum template start,end frequency for recording [10]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  - --depth-bin
+  description: Merge FDP values within +/- FRACTION together.
+  args: !SimpleFlagArg
+    name: FRACTION
+- !Flag
+  optional: true
+  synonyms:
+  - -I
+  - --input-fmt
+  description: "[,OPT[=VAL]]...\nSpecify input format (SAM, BAM, CRAM)"
+  args: !SimpleFlagArg
+    name: FORMAT
+- !Flag
+  optional: true
+  synonyms:
+  - --input-fmt-option
+  description: "[=VAL]\nSpecify a single input file format option in the form\nof\
+    \ OPTION or OPTION=VALUE"
+  args: !SimpleFlagArg
+    name: OPT
+- !Flag
+  optional: true
+  synonyms:
+  - --reference
+  description: Reference sequence FASTA FILE [null]
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -@
+  - --threads
+  description: "Number of additional threads to use [0]\n"
+  args: !SimpleFlagArg
+    name: INT
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nUsage: samtools ampliconstats [options] primers.bed *.bam > astats.txt\n\
+  \nOptions:\n  -f, --required-flag STR|INT\n               Only include reads with\
+  \ all of the FLAGs present [0x0]\n  -F, --filter-flag STR|INT\n               Only\
+  \ include reads with none of the FLAGs present [0xB04]\n  -a, --max-amplicons INT\n\
+  \               Change the maximum number of amplicons permitted [1000]\n  -l, --max-amplicon-length\
+  \ INT\n               Change the maximum length of an individual amplicon [1000]\n\
+  \  -d, --min-depth INT[,INT]...\n               Minimum base depth(s) to consider\
+  \ position covered [1]\n  -m, --pos-margin INT\n               Margin of error for\
+  \ matching primer positions [30]\n  -o, --output FILE\n               Specify output\
+  \ file [stdout if unset]\n  -s, --use-sample-name\n               Use the sample\
+  \ name from the first @RG header line\n  -t, --tlen-adjust INT\n               Add/subtract\
+  \ from TLEN; use when clipping but no fixmate step\n  -b, --tcoord-bin INT\n   \
+  \            Bin template start,end positions into multiples of INT[1]\n  -c, --tcoord-min-count\
+  \ INT\n               Minimum template start,end frequency for recording [10]\n\
+  \  -D, --depth-bin FRACTION\n               Merge FDP values within +/- FRACTION\
+  \ together.\n  -I, --input-fmt FORMAT[,OPT[=VAL]]...\n               Specify input\
+  \ format (SAM, BAM, CRAM)\n      --input-fmt-option OPT[=VAL]\n               Specify\
+  \ a single input file format option in the form\n               of OPTION or OPTION=VALUE\n\
+  \      --reference FILE\n               Reference sequence FASTA FILE [null]\n \
+  \ -@, --threads INT\n               Number of additional threads to use [0]\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/samtools:1.12--hd5e65b6_0

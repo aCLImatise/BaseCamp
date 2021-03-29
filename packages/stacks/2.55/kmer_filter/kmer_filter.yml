@@ -1,0 +1,106 @@
+!Command
+command:
+- kmer_filter
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --rare
+  description: ': turn on filtering based on rare k-mers.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --abundant
+  description: ': turn on filtering based on abundant k-mers.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --k-len
+  description: ': specify k-mer size (default 15).'
+  args: !SimpleFlagArg
+    name: len
+- !Flag
+  optional: true
+  synonyms:
+  - --max-k-freq
+  description: ': specify the number of times a kmer must occur to be considered abundant
+    (default 20,000).'
+  args: !SimpleFlagArg
+    name: value
+- !Flag
+  optional: true
+  synonyms:
+  - --min-lim
+  description: ': specify number of rare kmers occuring in a row required to discard
+    a read (default 80% of the k-mer length).'
+  args: !SimpleFlagArg
+    name: value
+- !Flag
+  optional: true
+  synonyms:
+  - --max-lim
+  description: ': specify number of abundant kmers required to discard a read (default
+    80% of the k-mers in a read).'
+  args: !SimpleFlagArg
+    name: value
+- !Flag
+  optional: true
+  synonyms:
+  - --normalize
+  description: ': normalize read depth according to k-mer coverage.'
+  args: !SimpleFlagArg
+    name: depth
+- !Flag
+  optional: true
+  synonyms:
+  - --write-k-freq
+  description: ': write kmers along with their frequency of occurrence and exit.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --k-dist
+  description: ': print k-mer frequency distribution and exit.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --read-k-freq
+  description: ': read a set of kmers along with their frequencies of occurrence instead
+    of reading raw input files.'
+  args: !SimpleFlagArg
+    name: path
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "kmer_filter 2.55\nkmer_filter [-f in_file_1 [-f in_file_2...] | -p in_dir]\
+  \ [-1 pair_1 -2 pair_2 [-1 pair_1...]] -o out_dir [-i type] [-y type] [-D] [-h]\n\
+  \  f: path to the input file if processing single-end seqeunces.\n  i: input file\
+  \ type, either 'bustard' for the Illumina BUSTARD output files, 'fasta', 'fastq',\
+  \ 'gzfasta', or 'gzfastq' (default 'fastq').\n  p: path to a directory of files\
+  \ (for single-end files only).\n  1: specify the first in a pair of files to be\
+  \ processed together.\n  2: specify the second in a pair of files to be processed\
+  \ together.\n  o: path to output the processed files.\n  y: output type, either\
+  \ 'fastq' or 'fasta' (default fastq).\n  D: capture discarded reads to a file.\n\
+  \  h: display this help messsage.\n\n  Filtering options:\n    --rare: turn on filtering\
+  \ based on rare k-mers.\n    --abundant: turn on filtering based on abundant k-mers.\n\
+  \    --k-len <len>: specify k-mer size (default 15).\n\n  Advanced filtering options:\n\
+  \    --max-k-freq <value>: specify the number of times a kmer must occur to be considered\
+  \ abundant (default 20,000).\n    --min-lim <value>: specify number of rare kmers\
+  \ occuring in a row required to discard a read (default 80% of the k-mer length).\n\
+  \    --max-lim <value>: specify number of abundant kmers required to discard a read\
+  \ (default 80% of the k-mers in a read).\n\n  Normalize data:\n    --normalize <depth>:\
+  \ normalize read depth according to k-mer coverage.\n\n  Characterizing K-mers:\n\
+  \    --write-k-freq: write kmers along with their frequency of occurrence and exit.\n\
+  \    --k-dist: print k-mer frequency distribution and exit.\n\n  Advanced input\
+  \ options:\n    --read-k-freq <path>: read a set of kmers along with their frequencies\
+  \ of occurrence instead of reading raw input files.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/stacks:2.55--he513fc3_0

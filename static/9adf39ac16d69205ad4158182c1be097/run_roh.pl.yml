@@ -1,0 +1,129 @@
+!Command
+command:
+- run-roh.pl
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --af-annots
+  description: Allele frequency annotations [1000GP-AFs/AFs.tab.gz]
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --indir
+  description: Input directory with VCF files
+  args: !SimpleFlagArg
+    name: dir
+- !Flag
+  optional: true
+  synonyms:
+  - --include
+  description: Select sites for which the expression is true
+  args: !SimpleFlagArg
+    name: expr
+- !Flag
+  optional: true
+  synonyms:
+  - --exclude
+  description: Exclude sites for which the epxression is true
+  args: !SimpleFlagArg
+    name: expr
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --min-length
+  description: Filter input regions shorter than this [1e6]
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --genmap
+  description: Directory with genetic map in IMPUTE2 format (optional)
+  args: !SimpleFlagArg
+    name: dir
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  - --rec-rate
+  description: constant recombination rate per bp (optional)
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --min-markers
+  description: Filter input regions with fewer marker than this [100]
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --outdir
+  description: Output directory
+  args: !SimpleFlagArg
+    name: dir
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --min-qual
+  description: Filter input regions with quality smaller than this [10]
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - --roh-args
+  description: Extra arguments to pass to bcftools roh
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --silent
+  description: Quiet output, do not print commands
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: ', -?, --help              This help message'
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "About: This is a convenience wrapper for \"bcftools roh\" which takes\
+  \ multiple VCF/BCF files\n       and locates regions private to a sample or shared\
+  \ across multiple samples. On input it\n       expects a directory with .vcf, .vcf.gz\
+  \ or .bcf files, a file with allele frequencies\n       and optionally a genetic\
+  \ map. See http://samtools.github.io/bcftools/howtos/roh-calling.html\n       for\
+  \ details\nUsage: run-roh.pl [OPTIONS]\nOptions:\n   -a, --af-annots <file>    \
+  \  Allele frequency annotations [1000GP-AFs/AFs.tab.gz]\n   -i, --indir <dir>  \
+  \         Input directory with VCF files\n       --include <expr>        Select\
+  \ sites for which the expression is true\n       --exclude <expr>        Exclude\
+  \ sites for which the epxression is true\n   -l, --min-length <num>      Filter\
+  \ input regions shorter than this [1e6]\n   -m, --genmap <dir>          Directory\
+  \ with genetic map in IMPUTE2 format (optional)\n   -M, --rec-rate <float>     \
+  \ constant recombination rate per bp (optional)\n   -n, --min-markers <num>    \
+  \ Filter input regions with fewer marker than this [100]\n   -o, --outdir <dir>\
+  \          Output directory\n   -q, --min-qual <num>        Filter input regions\
+  \ with quality smaller than this [10]\n       --roh-args <string>     Extra arguments\
+  \ to pass to bcftools roh\n   -s, --silent                Quiet output, do not print\
+  \ commands\n   -h, -?, --help              This help message\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bcftools:1.12--h3f113a9_0

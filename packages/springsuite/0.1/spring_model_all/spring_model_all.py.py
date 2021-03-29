@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Int, File, String
+
+Spring_Model_All_Py_V0_1_0 = CommandToolBuilder(tool="spring_model_all.py", base_command=["spring_model_all.py"], inputs=[ToolInput(tag="in_pairs", input_type=Int(optional=True), prefix="--pairs", doc=InputDocumentation(doc="Interaction table e.g. from min-Z evaluation\n(2-columns)")), ToolInput(tag="in_hhr_index", input_type=File(optional=True), prefix="--hhr_index", doc=InputDocumentation(doc="HHR Index database file (ffindex)")), ToolInput(tag="in_hhr_database", input_type=File(optional=True), prefix="--hhr_database", doc=InputDocumentation(doc="HHR Database file (ffdata)")), ToolInput(tag="in_index", input_type=File(optional=True), prefix="--index", doc=InputDocumentation(doc="PDB Database Index file (ffindex)")), ToolInput(tag="in_database", input_type=File(optional=True), prefix="--database", doc=InputDocumentation(doc="PDB Database file (ffdata)")), ToolInput(tag="in_cross", input_type=String(optional=True), prefix="--cross", doc=InputDocumentation(doc="PDB Cross Reference")), ToolInput(tag="in_log", input_type=File(optional=True), prefix="--log", doc=InputDocumentation(doc="Log file")), ToolInput(tag="in_output_path", input_type=File(optional=True), prefix="--outputpath", doc=InputDocumentation(doc="Path to output directory")), ToolInput(tag="in_w_energy", input_type=String(optional=True), prefix="--wenergy", doc=InputDocumentation(doc="Weight Energy term")), ToolInput(tag="in_min_score", input_type=Int(optional=True), prefix="--minscore", doc=InputDocumentation(doc="Minimum min-Z score threshold")), ToolInput(tag="in_max_tries", input_type=Int(optional=True), prefix="--maxtries", doc=InputDocumentation(doc="Maximum number of templates")), ToolInput(tag="in_max_clashes", input_type=Int(optional=True), prefix="--maxclashes", doc=InputDocumentation(doc="Maximum fraction of clashes")), ToolInput(tag="in_show_template", input_type=String(optional=True), prefix="--showtemplate", doc=InputDocumentation(doc="Add reference template to model structure\n"))], outputs=[ToolOutput(tag="out_output_path", output_type=File(optional=True), selector=InputSelector(input_to_select="in_output_path", type_hint=File()), doc=OutputDocumentation(doc="Path to output directory"))], container="quay.io/biocontainers/springsuite:0.1--pyh3252c3a_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Spring_Model_All_Py_V0_1_0().translate("wdl")
+

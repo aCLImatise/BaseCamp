@@ -1,0 +1,185 @@
+!Command
+command:
+- tabix
+positional:
+- !Positional
+  optional: true
+  position: 0
+  name: FILE
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - '-0'
+  - --zero-based
+  description: coordinates are zero-based
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --begin
+  description: column number for region start [4]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --comment
+  description: skip comment lines starting with CHAR [null]
+  args: !SimpleFlagArg
+    name: CHAR
+- !Flag
+  optional: true
+  synonyms:
+  - -C
+  - --csi
+  description: generate CSI index for VCF (default is TBI)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --end
+  description: column number for region end (if no end, set INT to -b) [5]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --force
+  description: overwrite existing index without asking
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --min-shift
+  description: set minimal interval size for CSI indices to 2^INT [14]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --preset
+  description: gff, bed, sam, vcf
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --sequence
+  description: column number for sequence names (suppressed by -p) [1]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --skip-lines
+  description: skip first INT lines [0]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -H
+  - --only-header
+  description: print only the header lines
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --list-chroms
+  description: list chromosome names
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reheader
+  description: replace the header with the content of FILE
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  - --regions
+  description: restrict to regions listed in the file
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --targets
+  description: similar to -R but streams rather than index-jumps
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  description: do not download the index file
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --cache
+  description: set cache size to INT megabytes (0 disables) [10]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --separate-regions
+  description: separate the output by corresponding regions
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbosity
+  description: set verbosity [3]
+  args: !SimpleFlagArg
+    name: INT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --print-header
+  description: print also the header lines
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "\nVersion: 1.12\nUsage:   tabix [OPTIONS] [FILE] [REGION [...]]\n\nIndexing\
+  \ Options:\n   -0, --zero-based           coordinates are zero-based\n   -b, --begin\
+  \ INT            column number for region start [4]\n   -c, --comment CHAR     \
+  \    skip comment lines starting with CHAR [null]\n   -C, --csi                \
+  \  generate CSI index for VCF (default is TBI)\n   -e, --end INT              column\
+  \ number for region end (if no end, set INT to -b) [5]\n   -f, --force         \
+  \       overwrite existing index without asking\n   -m, --min-shift INT        set\
+  \ minimal interval size for CSI indices to 2^INT [14]\n   -p, --preset STR     \
+  \      gff, bed, sam, vcf\n   -s, --sequence INT         column number for sequence\
+  \ names (suppressed by -p) [1]\n   -S, --skip-lines INT       skip first INT lines\
+  \ [0]\n\nQuerying and other options:\n   -h, --print-header         print also the\
+  \ header lines\n   -H, --only-header          print only the header lines\n   -l,\
+  \ --list-chroms          list chromosome names\n   -r, --reheader FILE        replace\
+  \ the header with the content of FILE\n   -R, --regions FILE         restrict to\
+  \ regions listed in the file\n   -T, --targets FILE         similar to -R but streams\
+  \ rather than index-jumps\n   -D                         do not download the index\
+  \ file\n       --cache INT            set cache size to INT megabytes (0 disables)\
+  \ [10]\n       --separate-regions     separate the output by corresponding regions\n\
+  \       --verbosity INT        set verbosity [3]\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/htslib:1.12--hd3b49d5_0

@@ -1,0 +1,202 @@
+!Command
+command:
+- samtools
+- markdup
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: input.bam
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: output.bam
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: Remove duplicate reads
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: Max read length (default 300 bases)
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  description: Mark supplementary alignments of duplicates as duplicates (slower).
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: Report stats.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: Write stats to named file.  Implies -s.
+  args: !SimpleFlagArg
+    name: NAME
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  description: Write temporary files to PREFIX.samtools.nnnn.nnnn.tmp.
+  args: !SimpleFlagArg
+    name: PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: Optical distance (if set, marks with dt tag)
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: Clear previous duplicate settings and tags.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --mode
+  description: "Duplicate decision method for paired reads.\nTYPE = t measure positions\
+    \ based on template start/end (default).\ns measure positions based on sequence\
+    \ start."
+  args: !SimpleFlagArg
+    name: TYPE
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: Reduce optical duplicate accuracy (faster results with many duplicates).
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  description: Output uncompressed data
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --include-fails
+  description: Include quality check failed reads.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-PG
+  description: Do not add a PG line
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-multi-dup
+  description: Reduced duplicates of duplicates checking.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: Mark primary duplicates with the name of the original in a 'do' tag.
+    Mainly for information and debugging.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --input-fmt-option
+  description: "[=VAL]\nSpecify a single input file format option in the form\nof\
+    \ OPTION or OPTION=VALUE"
+  args: !SimpleFlagArg
+    name: OPT
+- !Flag
+  optional: true
+  synonyms:
+  - -O
+  - --output-fmt
+  description: "[,OPT[=VAL]]...\nSpecify output format (SAM, BAM, CRAM)"
+  args: !SimpleFlagArg
+    name: FORMAT
+- !Flag
+  optional: true
+  synonyms:
+  - --output-fmt-option
+  description: "[=VAL]\nSpecify a single output file format option in the form\nof\
+    \ OPTION or OPTION=VALUE"
+  args: !SimpleFlagArg
+    name: OPT
+- !Flag
+  optional: true
+  synonyms:
+  - --reference
+  description: Reference sequence FASTA FILE [null]
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -@
+  - --threads
+  description: Number of additional threads to use [0]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --write-index
+  description: Automatically index the output files [off]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbosity
+  description: Set level of verbosity
+  args: !SimpleFlagArg
+    name: INT
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "markdup: unrecognized option '--help'\n\nUsage:  samtools markdup <input.bam>\
+  \ <output.bam>\n\nOption: \n  -r               Remove duplicate reads\n  -l INT\
+  \           Max read length (default 300 bases)\n  -S               Mark supplementary\
+  \ alignments of duplicates as duplicates (slower).\n  -s               Report stats.\n\
+  \  -f NAME          Write stats to named file.  Implies -s.\n  -T PREFIX       \
+  \ Write temporary files to PREFIX.samtools.nnnn.nnnn.tmp.\n  -d INT           Optical\
+  \ distance (if set, marks with dt tag)\n  -c               Clear previous duplicate\
+  \ settings and tags.\n  -m --mode TYPE   Duplicate decision method for paired reads.\n\
+  \                   TYPE = t measure positions based on template start/end (default).\n\
+  \                          s measure positions based on sequence start.\n  -n  \
+  \             Reduce optical duplicate accuracy (faster results with many duplicates).\n\
+  \  -u               Output uncompressed data\n  --include-fails  Include quality\
+  \ check failed reads.\n  --no-PG          Do not add a PG line\n  --no-multi-dup\
+  \   Reduced duplicates of duplicates checking.\n  -t               Mark primary\
+  \ duplicates with the name of the original in a 'do' tag. Mainly for information\
+  \ and debugging.\n      --input-fmt-option OPT[=VAL]\n               Specify a single\
+  \ input file format option in the form\n               of OPTION or OPTION=VALUE\n\
+  \  -O, --output-fmt FORMAT[,OPT[=VAL]]...\n               Specify output format\
+  \ (SAM, BAM, CRAM)\n      --output-fmt-option OPT[=VAL]\n               Specify\
+  \ a single output file format option in the form\n               of OPTION or OPTION=VALUE\n\
+  \      --reference FILE\n               Reference sequence FASTA FILE [null]\n \
+  \ -@, --threads INT\n               Number of additional threads to use [0]\n  \
+  \    --write-index\n               Automatically index the output files [off]\n\
+  \      --verbosity INT\n               Set level of verbosity\n\nThe input file\
+  \ must be coordinate sorted and must have gone through fixmates with the mate scoring\
+  \ option on.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/samtools:1.12--hd5e65b6_0
