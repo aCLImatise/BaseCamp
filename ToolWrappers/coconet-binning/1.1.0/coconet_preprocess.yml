@@ -1,0 +1,167 @@
+!Command
+command:
+- coconet
+- preprocess
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --fasta
+  description: "Path to your assembly file (fasta formatted) (default:\nNone)"
+  args: !SimpleFlagArg
+    name: FASTA
+- !Flag
+  optional: true
+  synonyms:
+  - --h5
+  description: "Experimental: coverage in hdf5 format (keys are\ncontigs, values are\
+    \ (sample, contig_len) ndarrays\n(default: None)"
+  args: !SimpleFlagArg
+    name: H5
+- !Flag
+  optional: true
+  synonyms:
+  - --output
+  description: 'Path to output directory (default: output)'
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: 'Number of threads (default: 5)'
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: 'Print debugging statements (default: 20)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --quiet
+  description: 'Less verbose (default: None)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --silent
+  description: 'Only error messages (default: None)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --continue
+  description: "Start from last checkpoint. The output directory needs\nto be the\
+    \ same. (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --bam
+  description: "List of paths to your coverage files (bam formatted)\n(default: None)"
+  args: !RepeatFlagArg
+    name: BAM
+- !Flag
+  optional: true
+  synonyms:
+  - --min-ctg-len
+  description: 'Minimum contig length (default: 2048)'
+  args: !SimpleFlagArg
+    name: MIN_CTG_LEN
+- !Flag
+  optional: true
+  synonyms:
+  - --min-prevalence
+  description: "Minimum contig prevalence for binning. Contig with\nless that value\
+    \ are filtered out. (default: 2)"
+  args: !SimpleFlagArg
+    name: MIN_PREVALENCE
+- !Flag
+  optional: true
+  synonyms:
+  - --min-mapping-quality
+  description: 'Minimum alignment quality (default: 30)'
+  args: !SimpleFlagArg
+    name: MIN_MAPPING_QUALITY
+- !Flag
+  optional: true
+  synonyms:
+  - --min-aln-coverage
+  description: "Discard alignments with less than 50% aligned\nnucleotides"
+  args: !SimpleFlagArg
+    name: MIN_ALN_COVERAGE
+- !Flag
+  optional: true
+  synonyms:
+  - --flag
+  description: "SAM flag for filtering (same as samtools \"-F\" option)\n(default:\
+    \ 3596)"
+  args: !SimpleFlagArg
+    name: FLAG
+- !Flag
+  optional: true
+  synonyms:
+  - --tlen-range
+  description: "TLEN_RANGE\nOnly allow for paired alignments with spacing within\n\
+    this range (default: None)"
+  args: !SimpleFlagArg
+    name: TLEN_RANGE
+- !Flag
+  optional: true
+  synonyms:
+  - --min-dtr-size
+  description: "Minimum size of DTR to flag complete contigs (default:\n10)\n"
+  args: !SimpleFlagArg
+    name: MIN_DTR_SIZE
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: coconet preprocess [-h] [--fasta FASTA] [--h5 H5] [--output OUTPUT]\n\
+  \                          [-t THREADS] [--debug] [--quiet] [--silent]\n       \
+  \                   [--continue] [--bam BAM [BAM ...]]\n                       \
+  \   [--min-ctg-len MIN_CTG_LEN]\n                          [--min-prevalence MIN_PREVALENCE]\n\
+  \                          [--min-mapping-quality MIN_MAPPING_QUALITY]\n       \
+  \                   [--min-aln-coverage MIN_ALN_COVERAGE] [--flag FLAG]\n      \
+  \                    [--tlen-range TLEN_RANGE TLEN_RANGE]\n                    \
+  \      [--min-dtr-size MIN_DTR_SIZE]\n\noptional arguments:\n  -h, --help      \
+  \      show this help message and exit\n  --fasta FASTA         Path to your assembly\
+  \ file (fasta formatted) (default:\n                        None)\n  --h5 H5   \
+  \            Experimental: coverage in hdf5 format (keys are\n                 \
+  \       contigs, values are (sample, contig_len) ndarrays\n                    \
+  \    (default: None)\n  --output OUTPUT       Path to output directory (default:\
+  \ output)\n  -t THREADS, --threads THREADS\n                        Number of threads\
+  \ (default: 5)\n  --debug               Print debugging statements (default: 20)\n\
+  \  --quiet               Less verbose (default: None)\n  --silent              Only\
+  \ error messages (default: None)\n  --continue            Start from last checkpoint.\
+  \ The output directory needs\n                        to be the same. (default:\
+  \ False)\n  --bam BAM [BAM ...]   List of paths to your coverage files (bam formatted)\n\
+  \                        (default: None)\n  --min-ctg-len MIN_CTG_LEN\n        \
+  \                Minimum contig length (default: 2048)\n  --min-prevalence MIN_PREVALENCE\n\
+  \                        Minimum contig prevalence for binning. Contig with\n  \
+  \                      less that value are filtered out. (default: 2)\n  --min-mapping-quality\
+  \ MIN_MAPPING_QUALITY\n                        Minimum alignment quality (default:\
+  \ 30)\n  --min-aln-coverage MIN_ALN_COVERAGE\n                        Discard alignments\
+  \ with less than 50% aligned\n                        nucleotides\n  --flag FLAG\
+  \           SAM flag for filtering (same as samtools \"-F\" option)\n          \
+  \              (default: 3596)\n  --tlen-range TLEN_RANGE TLEN_RANGE\n         \
+  \               Only allow for paired alignments with spacing within\n         \
+  \               this range (default: None)\n  --min-dtr-size MIN_DTR_SIZE\n    \
+  \                    Minimum size of DTR to flag complete contigs (default:\n  \
+  \                      10)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/coconet-binning:1.1.0--py_0

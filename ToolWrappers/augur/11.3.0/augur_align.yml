@@ -1,0 +1,126 @@
+!Command
+command:
+- augur
+- align
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --sequences
+  - -s
+  description: 'sequences to align (default: None)'
+  args: !RepeatFlagArg
+    name: FASTA
+- !Flag
+  optional: true
+  synonyms:
+  - --output
+  - -o
+  description: 'output file (default: alignment.fasta)'
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - --nthreads
+  description: "number of threads to use; specifying the value 'auto'\nwill cause\
+    \ the number of available CPU cores on your\nsystem, if determinable, to be used\
+    \ (default: 1)"
+  args: !SimpleFlagArg
+    name: NTHREADS
+- !Flag
+  optional: true
+  synonyms:
+  - --method
+  description: 'alignment program to use (default: mafft)'
+  args: !ChoiceFlagArg
+    choices: !!set
+      mafft:
+- !Flag
+  optional: true
+  synonyms:
+  - --reference-name
+  description: "strip insertions relative to reference sequence; use\nif the reference\
+    \ is already in the input sequences\n(default: None)"
+  args: !SimpleFlagArg
+    name: NAME
+- !Flag
+  optional: true
+  synonyms:
+  - --reference-sequence
+  description: "Add this reference sequence to the dataset & strip\ninsertions relative\
+    \ to this. Use if the reference is\nNOT already in the input sequences (default:\
+    \ None)"
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --remove-reference
+  description: "remove reference sequence from the alignment (default:\nFalse)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --fill-gaps
+  description: "If gaps represent missing data rather than true\nindels, replace by\
+    \ N after aligning. (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --existing-alignment
+  description: "An existing alignment to which the sequences will be\nadded. The ouput\
+    \ alignment will be the same length as\nthis existing alignment. (default: False)"
+  args: !SimpleFlagArg
+    name: FASTA
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: "Produce extra files (e.g. pre- and post-aligner files)\nwhich can\
+    \ help with debugging poor alignments.\n(default: False)\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: augur align [-h] --sequences FASTA [FASTA ...] [--output OUTPUT]\n\
+  \                   [--nthreads NTHREADS] [--method {mafft}]\n                 \
+  \  [--reference-name NAME] [--reference-sequence PATH]\n                   [--remove-reference]\
+  \ [--fill-gaps]\n                   [--existing-alignment FASTA] [--debug]\n\nAlign\
+  \ multiple sequences from FASTA.\n\noptional arguments:\n  -h, --help          \
+  \  show this help message and exit\n  --sequences FASTA [FASTA ...], -s FASTA [FASTA\
+  \ ...]\n                        sequences to align (default: None)\n  --output OUTPUT,\
+  \ -o OUTPUT\n                        output file (default: alignment.fasta)\n  --nthreads\
+  \ NTHREADS   number of threads to use; specifying the value 'auto'\n           \
+  \             will cause the number of available CPU cores on your\n           \
+  \             system, if determinable, to be used (default: 1)\n  --method {mafft}\
+  \      alignment program to use (default: mafft)\n  --reference-name NAME\n    \
+  \                    strip insertions relative to reference sequence; use\n    \
+  \                    if the reference is already in the input sequences\n      \
+  \                  (default: None)\n  --reference-sequence PATH\n              \
+  \          Add this reference sequence to the dataset & strip\n                \
+  \        insertions relative to this. Use if the reference is\n                \
+  \        NOT already in the input sequences (default: None)\n  --remove-reference\
+  \    remove reference sequence from the alignment (default:\n                  \
+  \      False)\n  --fill-gaps           If gaps represent missing data rather than\
+  \ true\n                        indels, replace by N after aligning. (default: False)\n\
+  \  --existing-alignment FASTA\n                        An existing alignment to\
+  \ which the sequences will be\n                        added. The ouput alignment\
+  \ will be the same length as\n                        this existing alignment. (default:\
+  \ False)\n  --debug               Produce extra files (e.g. pre- and post-aligner\
+  \ files)\n                        which can help with debugging poor alignments.\n\
+  \                        (default: False)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/augur:11.3.0--py_0

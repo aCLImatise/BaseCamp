@@ -1,0 +1,270 @@
+!Command
+command:
+- augur
+- refine
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --alignment
+  - -a
+  description: 'alignment in fasta or VCF format (default: None)'
+  args: !SimpleFlagArg
+    name: ALIGNMENT
+- !Flag
+  optional: true
+  synonyms:
+  - --tree
+  - -t
+  description: 'prebuilt Newick (default: None)'
+  args: !SimpleFlagArg
+    name: TREE
+- !Flag
+  optional: true
+  synonyms:
+  - --metadata
+  description: 'sequence metadata, as CSV or TSV (default: None)'
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --output-tree
+  description: 'file name to write tree to (default: None)'
+  args: !SimpleFlagArg
+    name: OUTPUT_TREE
+- !Flag
+  optional: true
+  synonyms:
+  - --output-node-data
+  description: "file name to write branch lengths as node data\n(default: None)"
+  args: !SimpleFlagArg
+    name: OUTPUT_NODE_DATA
+- !Flag
+  optional: true
+  synonyms:
+  - --timetree
+  description: 'produce timetree using treetime (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --coalescent
+  description: "coalescent time scale in units of inverse clock rate\n(float), optimize\
+    \ as scalar ('opt'), or skyline\n('skyline') (default: None)"
+  args: !SimpleFlagArg
+    name: COALESCENT
+- !Flag
+  optional: true
+  synonyms:
+  - --gen-per-year
+  description: "number of generations per year, relevant for skyline\noutput('skyline')\
+    \ (default: 50)"
+  args: !SimpleFlagArg
+    name: GEN_PER_YEAR
+- !Flag
+  optional: true
+  synonyms:
+  - --clock-rate
+  description: 'fixed clock rate (default: None)'
+  args: !SimpleFlagArg
+    name: CLOCK_RATE
+- !Flag
+  optional: true
+  synonyms:
+  - --clock-std-dev
+  description: "standard deviation of the fixed clock_rate estimate\n(default: None)"
+  args: !SimpleFlagArg
+    name: CLOCK_STD_DEV
+- !Flag
+  optional: true
+  synonyms:
+  - --root
+  description: "rooting mechanism ('best', least-squares', 'min_dev',\n'oldest') OR\
+    \ node to root by OR two nodes indicating a\nmonophyletic group to root by. Run\
+    \ treetime -h for\ndefinitions of rooting methods. (default: best)"
+  args: !RepeatFlagArg
+    name: ROOT
+- !Flag
+  optional: true
+  synonyms:
+  - --keep-root
+  description: "do not reroot the tree; use it as-is. Overrides\nanything specified\
+    \ by --root. (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --covariance
+  description: "Account for covariation when estimating rates and/or\nrerooting. Use\
+    \ --no-covariance to turn off. (default:\nTrue)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-covariance
+  - --keep-polytomies
+  description: 'Do not attempt to resolve polytomies (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --precision
+  description: "precision used by TreeTime to determine the number of\ngrid points\
+    \ that are used for the evaluation of the\nbranch length interpolation objects.\
+    \ Values range from\n0 (rough) to 3 (ultra fine) and default to 'auto'.\n(default:\
+    \ None)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      '0':
+      '2':
+      '1':
+      '3':
+- !Flag
+  optional: true
+  synonyms:
+  - --date-format
+  description: 'date format (default: %Y-%m-%d)'
+  args: !SimpleFlagArg
+    name: DATE_FORMAT
+- !Flag
+  optional: true
+  synonyms:
+  - --date-confidence
+  description: "calculate confidence intervals for node dates\n(default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --date-inference
+  description: "assign internal nodes to their marginally most likely\ndates, not\
+    \ jointly most likely (default: joint)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      marginal:
+      joint:
+- !Flag
+  optional: true
+  synonyms:
+  - --branch-length-inference
+  description: 'branch length mode of treetime to use (default: auto)'
+  args: !ChoiceFlagArg
+    choices: !!set
+      marginal:
+      input:
+      joint:
+      auto:
+- !Flag
+  optional: true
+  synonyms:
+  - --clock-filter-iqd
+  description: "clock-filter: remove tips that deviate more than n_iqd\ninterquartile\
+    \ ranges from the root-to-tip vs time\nregression (default: None)"
+  args: !SimpleFlagArg
+    name: CLOCK_FILTER_IQD
+- !Flag
+  optional: true
+  synonyms:
+  - --vcf-reference
+  description: "fasta file of the sequence the VCF was mapped to\n(default: None)"
+  args: !SimpleFlagArg
+    name: VCF_REFERENCE
+- !Flag
+  optional: true
+  synonyms:
+  - --year-bounds
+  description: "specify min or max & min prediction bounds for samples\nwith XX in\
+    \ year (default: None)"
+  args: !RepeatFlagArg
+    name: YEAR_BOUNDS
+- !Flag
+  optional: true
+  synonyms:
+  - --divergence-units
+  description: "Units in which sequence divergences is exported.\n(default: mutations-per-site)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      mutations-per-site:
+      mutations:
+- !Flag
+  optional: true
+  synonyms:
+  - --seed
+  description: 'seed for random number generation (default: None)'
+  args: !SimpleFlagArg
+    name: SEED
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: augur refine [-h] [--alignment ALIGNMENT] --tree TREE [--metadata\
+  \ FILE]\n                    [--output-tree OUTPUT_TREE]\n                    [--output-node-data\
+  \ OUTPUT_NODE_DATA] [--timetree]\n                    [--coalescent COALESCENT]\
+  \ [--gen-per-year GEN_PER_YEAR]\n                    [--clock-rate CLOCK_RATE] [--clock-std-dev\
+  \ CLOCK_STD_DEV]\n                    [--root ROOT [ROOT ...]] [--keep-root] [--covariance]\n\
+  \                    [--no-covariance] [--keep-polytomies]\n                   \
+  \ [--precision {0,1,2,3}] [--date-format DATE_FORMAT]\n                    [--date-confidence]\
+  \ [--date-inference {joint,marginal}]\n                    [--branch-length-inference\
+  \ {auto,joint,marginal,input}]\n                    [--clock-filter-iqd CLOCK_FILTER_IQD]\n\
+  \                    [--vcf-reference VCF_REFERENCE]\n                    [--year-bounds\
+  \ YEAR_BOUNDS [YEAR_BOUNDS ...]]\n                    [--divergence-units {mutations,mutations-per-site}]\n\
+  \                    [--seed SEED]\n\nRefine an initial tree using sequence metadata.\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  --alignment ALIGNMENT, -a ALIGNMENT\n                        alignment in fasta\
+  \ or VCF format (default: None)\n  --tree TREE, -t TREE  prebuilt Newick (default:\
+  \ None)\n  --metadata FILE       sequence metadata, as CSV or TSV (default: None)\n\
+  \  --output-tree OUTPUT_TREE\n                        file name to write tree to\
+  \ (default: None)\n  --output-node-data OUTPUT_NODE_DATA\n                     \
+  \   file name to write branch lengths as node data\n                        (default:\
+  \ None)\n  --timetree            produce timetree using treetime (default: False)\n\
+  \  --coalescent COALESCENT\n                        coalescent time scale in units\
+  \ of inverse clock rate\n                        (float), optimize as scalar ('opt'),\
+  \ or skyline\n                        ('skyline') (default: None)\n  --gen-per-year\
+  \ GEN_PER_YEAR\n                        number of generations per year, relevant\
+  \ for skyline\n                        output('skyline') (default: 50)\n  --clock-rate\
+  \ CLOCK_RATE\n                        fixed clock rate (default: None)\n  --clock-std-dev\
+  \ CLOCK_STD_DEV\n                        standard deviation of the fixed clock_rate\
+  \ estimate\n                        (default: None)\n  --root ROOT [ROOT ...]\n\
+  \                        rooting mechanism ('best', least-squares', 'min_dev',\n\
+  \                        'oldest') OR node to root by OR two nodes indicating a\n\
+  \                        monophyletic group to root by. Run treetime -h for\n  \
+  \                      definitions of rooting methods. (default: best)\n  --keep-root\
+  \           do not reroot the tree; use it as-is. Overrides\n                  \
+  \      anything specified by --root. (default: False)\n  --covariance          Account\
+  \ for covariation when estimating rates and/or\n                        rerooting.\
+  \ Use --no-covariance to turn off. (default:\n                        True)\n  --no-covariance\n\
+  \  --keep-polytomies     Do not attempt to resolve polytomies (default: False)\n\
+  \  --precision {0,1,2,3}\n                        precision used by TreeTime to\
+  \ determine the number of\n                        grid points that are used for\
+  \ the evaluation of the\n                        branch length interpolation objects.\
+  \ Values range from\n                        0 (rough) to 3 (ultra fine) and default\
+  \ to 'auto'.\n                        (default: None)\n  --date-format DATE_FORMAT\n\
+  \                        date format (default: %Y-%m-%d)\n  --date-confidence  \
+  \   calculate confidence intervals for node dates\n                        (default:\
+  \ False)\n  --date-inference {joint,marginal}\n                        assign internal\
+  \ nodes to their marginally most likely\n                        dates, not jointly\
+  \ most likely (default: joint)\n  --branch-length-inference {auto,joint,marginal,input}\n\
+  \                        branch length mode of treetime to use (default: auto)\n\
+  \  --clock-filter-iqd CLOCK_FILTER_IQD\n                        clock-filter: remove\
+  \ tips that deviate more than n_iqd\n                        interquartile ranges\
+  \ from the root-to-tip vs time\n                        regression (default: None)\n\
+  \  --vcf-reference VCF_REFERENCE\n                        fasta file of the sequence\
+  \ the VCF was mapped to\n                        (default: None)\n  --year-bounds\
+  \ YEAR_BOUNDS [YEAR_BOUNDS ...]\n                        specify min or max & min\
+  \ prediction bounds for samples\n                        with XX in year (default:\
+  \ None)\n  --divergence-units {mutations,mutations-per-site}\n                 \
+  \       Units in which sequence divergences is exported.\n                     \
+  \   (default: mutations-per-site)\n  --seed SEED           seed for random number\
+  \ generation (default: None)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/augur:11.3.0--py_0

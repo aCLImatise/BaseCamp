@@ -1,0 +1,1149 @@
+&id001 !Command
+command:
+- coconet
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - coconet
+  - preprocess
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --fasta
+    description: "Path to your assembly file (fasta formatted) (default:\nNone)"
+    args: !SimpleFlagArg
+      name: FASTA
+  - !Flag
+    optional: true
+    synonyms:
+    - --h5
+    description: "Experimental: coverage in hdf5 format (keys are\ncontigs, values\
+      \ are (sample, contig_len) ndarrays\n(default: None)"
+    args: !SimpleFlagArg
+      name: H5
+  - !Flag
+    optional: true
+    synonyms:
+    - --output
+    description: 'Path to output directory (default: output)'
+    args: !SimpleFlagArg
+      name: OUTPUT
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --threads
+    description: 'Number of threads (default: 5)'
+    args: !SimpleFlagArg
+      name: THREADS
+  - !Flag
+    optional: true
+    synonyms:
+    - --debug
+    description: 'Print debugging statements (default: 20)'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --quiet
+    description: 'Less verbose (default: None)'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --silent
+    description: 'Only error messages (default: None)'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --continue
+    description: "Start from last checkpoint. The output directory needs\nto be the\
+      \ same. (default: False)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --bam
+    description: "List of paths to your coverage files (bam formatted)\n(default:\
+      \ None)"
+    args: !RepeatFlagArg
+      name: BAM
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-ctg-len
+    description: 'Minimum contig length (default: 2048)'
+    args: !SimpleFlagArg
+      name: MIN_CTG_LEN
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-prevalence
+    description: "Minimum contig prevalence for binning. Contig with\nless that value\
+      \ are filtered out. (default: 2)"
+    args: !SimpleFlagArg
+      name: MIN_PREVALENCE
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-mapping-quality
+    description: 'Minimum alignment quality (default: 30)'
+    args: !SimpleFlagArg
+      name: MIN_MAPPING_QUALITY
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-aln-coverage
+    description: "Discard alignments with less than 50% aligned\nnucleotides"
+    args: !SimpleFlagArg
+      name: MIN_ALN_COVERAGE
+  - !Flag
+    optional: true
+    synonyms:
+    - --flag
+    description: "SAM flag for filtering (same as samtools \"-F\" option)\n(default:\
+      \ 3596)"
+    args: !SimpleFlagArg
+      name: FLAG
+  - !Flag
+    optional: true
+    synonyms:
+    - --tlen-range
+    description: "TLEN_RANGE\nOnly allow for paired alignments with spacing within\n\
+      this range (default: None)"
+    args: !SimpleFlagArg
+      name: TLEN_RANGE
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-dtr-size
+    description: "Minimum size of DTR to flag complete contigs (default:\n10)\n"
+    args: !SimpleFlagArg
+      name: MIN_DTR_SIZE
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: coconet preprocess [-h] [--fasta FASTA] [--h5 H5] [--output OUTPUT]\n\
+    \                          [-t THREADS] [--debug] [--quiet] [--silent]\n     \
+    \                     [--continue] [--bam BAM [BAM ...]]\n                   \
+    \       [--min-ctg-len MIN_CTG_LEN]\n                          [--min-prevalence\
+    \ MIN_PREVALENCE]\n                          [--min-mapping-quality MIN_MAPPING_QUALITY]\n\
+    \                          [--min-aln-coverage MIN_ALN_COVERAGE] [--flag FLAG]\n\
+    \                          [--tlen-range TLEN_RANGE TLEN_RANGE]\n            \
+    \              [--min-dtr-size MIN_DTR_SIZE]\n\noptional arguments:\n  -h, --help\
+    \            show this help message and exit\n  --fasta FASTA         Path to\
+    \ your assembly file (fasta formatted) (default:\n                        None)\n\
+    \  --h5 H5               Experimental: coverage in hdf5 format (keys are\n   \
+    \                     contigs, values are (sample, contig_len) ndarrays\n    \
+    \                    (default: None)\n  --output OUTPUT       Path to output directory\
+    \ (default: output)\n  -t THREADS, --threads THREADS\n                       \
+    \ Number of threads (default: 5)\n  --debug               Print debugging statements\
+    \ (default: 20)\n  --quiet               Less verbose (default: None)\n  --silent\
+    \              Only error messages (default: None)\n  --continue            Start\
+    \ from last checkpoint. The output directory needs\n                        to\
+    \ be the same. (default: False)\n  --bam BAM [BAM ...]   List of paths to your\
+    \ coverage files (bam formatted)\n                        (default: None)\n  --min-ctg-len\
+    \ MIN_CTG_LEN\n                        Minimum contig length (default: 2048)\n\
+    \  --min-prevalence MIN_PREVALENCE\n                        Minimum contig prevalence\
+    \ for binning. Contig with\n                        less that value are filtered\
+    \ out. (default: 2)\n  --min-mapping-quality MIN_MAPPING_QUALITY\n           \
+    \             Minimum alignment quality (default: 30)\n  --min-aln-coverage MIN_ALN_COVERAGE\n\
+    \                        Discard alignments with less than 50% aligned\n     \
+    \                   nucleotides\n  --flag FLAG           SAM flag for filtering\
+    \ (same as samtools \"-F\" option)\n                        (default: 3596)\n\
+    \  --tlen-range TLEN_RANGE TLEN_RANGE\n                        Only allow for\
+    \ paired alignments with spacing within\n                        this range (default:\
+    \ None)\n  --min-dtr-size MIN_DTR_SIZE\n                        Minimum size of\
+    \ DTR to flag complete contigs (default:\n                        10)\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/coconet-binning:1.1.0--py_0
+- !Command
+  command:
+  - coconet
+  - learn
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --fasta
+    description: "Path to your assembly file (fasta formatted) (default:\nNone)"
+    args: !SimpleFlagArg
+      name: FASTA
+  - !Flag
+    optional: true
+    synonyms:
+    - --h5
+    description: "Experimental: coverage in hdf5 format (keys are\ncontigs, values\
+      \ are (sample, contig_len) ndarrays\n(default: None)"
+    args: !SimpleFlagArg
+      name: H5
+  - !Flag
+    optional: true
+    synonyms:
+    - --output
+    description: 'Path to output directory (default: output)'
+    args: !SimpleFlagArg
+      name: OUTPUT
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --threads
+    description: 'Number of threads (default: 5)'
+    args: !SimpleFlagArg
+      name: THREADS
+  - !Flag
+    optional: true
+    synonyms:
+    - --debug
+    description: 'Print debugging statements (default: 20)'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --quiet
+    description: 'Less verbose (default: None)'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --silent
+    description: 'Only error messages (default: None)'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --continue
+    description: "Start from last checkpoint. The output directory needs\nto be the\
+      \ same. (default: False)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --fragment-length
+    description: "Length of contig fragments in bp. Default is half the\nminimum contig\
+      \ length. (default: -1)"
+    args: !SimpleFlagArg
+      name: FRAGMENT_LENGTH
+  - !Flag
+    optional: true
+    synonyms:
+    - --features
+    description: "[{coverage,composition} ...]\nFeatures for binning (composition,\
+      \ coverage, or both)\n(default: ['coverage', 'composition'])"
+    args: !ChoiceFlagArg
+      choices: !!set
+        coverage:
+        composition:
+  - !Flag
+    optional: true
+    synonyms:
+    - --fragment-step
+    description: 'Fragments spacing (default: 128)'
+    args: !SimpleFlagArg
+      name: FRAGMENT_STEP
+  - !Flag
+    optional: true
+    synonyms:
+    - --test-ratio
+    description: 'Ratio for train / test split (default: 0.1)'
+    args: !SimpleFlagArg
+      name: TEST_RATIO
+  - !Flag
+    optional: true
+    synonyms:
+    - --n-train
+    description: 'Maximum number of training examples (default: 4000000)'
+    args: !SimpleFlagArg
+      name: N_TRAIN
+  - !Flag
+    optional: true
+    synonyms:
+    - --n-test
+    description: 'Number of test examples (default: 10000)'
+    args: !SimpleFlagArg
+      name: N_TEST
+  - !Flag
+    optional: true
+    synonyms:
+    - --learning-rate
+    description: 'Learning rate for gradient descent (default: 0.001)'
+    args: !SimpleFlagArg
+      name: LEARNING_RATE
+  - !Flag
+    optional: true
+    synonyms:
+    - --batch-size
+    description: 'Batch size for training (default: 256)'
+    args: !SimpleFlagArg
+      name: BATCH_SIZE
+  - !Flag
+    optional: true
+    synonyms:
+    - --test-batch
+    description: Run test every 400 batches
+    args: !SimpleFlagArg
+      name: TEST_BATCH
+  - !Flag
+    optional: true
+    synonyms:
+    - --patience
+    description: "Early stopping if test accuracy does not improve for 5\nconsecutive\
+      \ tests"
+    args: !SimpleFlagArg
+      name: PATIENCE
+  - !Flag
+    optional: true
+    synonyms:
+    - --load-batch
+    description: "Number of coverage batch to load in memory. Consider\nlowering this\
+      \ value if your RAM is limited. (default:\n100)"
+    args: !SimpleFlagArg
+      name: LOAD_BATCH
+  - !Flag
+    optional: true
+    synonyms:
+    - --compo-neurons
+    description: "COMPO_NEURONS\nNumber of neurons for the composition dense layers\n\
+      (x2) (default: [64, 32])"
+    args: !SimpleFlagArg
+      name: COMPO_NEURONS
+  - !Flag
+    optional: true
+    synonyms:
+    - --cover-neurons
+    description: "COVER_NEURONS\nNumber of neurons for the coverage dense layers (x2)\n\
+      (default: [64, 32])"
+    args: !SimpleFlagArg
+      name: COVER_NEURONS
+  - !Flag
+    optional: true
+    synonyms:
+    - --cover-filters
+    description: "Number of filters for convolution layer of coverage\nnetwork. (default:\
+      \ 16)"
+    args: !SimpleFlagArg
+      name: COVER_FILTERS
+  - !Flag
+    optional: true
+    synonyms:
+    - --cover-kernel
+    description: "Kernel size for convolution layer of coverage network.\n(default:\
+      \ 4)"
+    args: !SimpleFlagArg
+      name: COVER_KERNEL
+  - !Flag
+    optional: true
+    synonyms:
+    - --cover-stride
+    description: "Convolution stride for convolution layer of coverage\nnetwork. (default:\
+      \ 2)"
+    args: !SimpleFlagArg
+      name: COVER_STRIDE
+  - !Flag
+    optional: true
+    synonyms:
+    - --merge-neurons
+    description: "Number of neurons for the merging layer (x1) (default:\n32)"
+    args: !SimpleFlagArg
+      name: MERGE_NEURONS
+  - !Flag
+    optional: true
+    synonyms:
+    - -k
+    - --kmer
+    description: 'k-mer size for composition vector (default: 4)'
+    args: !SimpleFlagArg
+      name: KMER
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-rc
+    description: "Do not add the reverse complement k-mer occurrences to\nthe composition\
+      \ vector. (default: False)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --wsize
+    description: "Smoothing window size for coverage vector (default:\n64)"
+    args: !SimpleFlagArg
+      name: WSIZE
+  - !Flag
+    optional: true
+    synonyms:
+    - --wstep
+    description: 'Subsampling step for coverage vector (default: 32)'
+    args: !SimpleFlagArg
+      name: WSTEP
+  - !Flag
+    optional: true
+    synonyms:
+    - --n-frags
+    description: "Number of fragments to split the contigs for the\nclustering phase\
+      \ (default: 30)\n"
+    args: !SimpleFlagArg
+      name: N_FRAGS
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: coconet learn [-h] [--fasta FASTA] [--h5 H5] [--output OUTPUT]\n\
+    \                     [-t THREADS] [--debug] [--quiet] [--silent] [--continue]\n\
+    \                     [--fragment-length FRAGMENT_LENGTH]\n                  \
+    \   [--features {coverage,composition} [{coverage,composition} ...]]\n       \
+    \              [--fragment-step FRAGMENT_STEP] [--test-ratio TEST_RATIO]\n   \
+    \                  [--n-train N_TRAIN] [--n-test N_TEST]\n                   \
+    \  [--learning-rate LEARNING_RATE] [--batch-size BATCH_SIZE]\n               \
+    \      [--test-batch TEST_BATCH] [--patience PATIENCE]\n                     [--load-batch\
+    \ LOAD_BATCH]\n                     [--compo-neurons COMPO_NEURONS COMPO_NEURONS]\n\
+    \                     [--cover-neurons COVER_NEURONS COVER_NEURONS]\n        \
+    \             [--cover-filters COVER_FILTERS]\n                     [--cover-kernel\
+    \ COVER_KERNEL]\n                     [--cover-stride COVER_STRIDE]\n        \
+    \             [--merge-neurons MERGE_NEURONS] [-k KMER] [--no-rc]\n          \
+    \           [--wsize WSIZE] [--wstep WSTEP] [--n-frags N_FRAGS]\n\noptional arguments:\n\
+    \  -h, --help            show this help message and exit\n  --fasta FASTA    \
+    \     Path to your assembly file (fasta formatted) (default:\n               \
+    \         None)\n  --h5 H5               Experimental: coverage in hdf5 format\
+    \ (keys are\n                        contigs, values are (sample, contig_len)\
+    \ ndarrays\n                        (default: None)\n  --output OUTPUT       Path\
+    \ to output directory (default: output)\n  -t THREADS, --threads THREADS\n   \
+    \                     Number of threads (default: 5)\n  --debug              \
+    \ Print debugging statements (default: 20)\n  --quiet               Less verbose\
+    \ (default: None)\n  --silent              Only error messages (default: None)\n\
+    \  --continue            Start from last checkpoint. The output directory needs\n\
+    \                        to be the same. (default: False)\n  --fragment-length\
+    \ FRAGMENT_LENGTH\n                        Length of contig fragments in bp. Default\
+    \ is half the\n                        minimum contig length. (default: -1)\n\
+    \  --features {coverage,composition} [{coverage,composition} ...]\n          \
+    \              Features for binning (composition, coverage, or both)\n       \
+    \                 (default: ['coverage', 'composition'])\n  --fragment-step FRAGMENT_STEP\n\
+    \                        Fragments spacing (default: 128)\n  --test-ratio TEST_RATIO\n\
+    \                        Ratio for train / test split (default: 0.1)\n  --n-train\
+    \ N_TRAIN     Maximum number of training examples (default: 4000000)\n  --n-test\
+    \ N_TEST       Number of test examples (default: 10000)\n  --learning-rate LEARNING_RATE\n\
+    \                        Learning rate for gradient descent (default: 0.001)\n\
+    \  --batch-size BATCH_SIZE\n                        Batch size for training (default:\
+    \ 256)\n  --test-batch TEST_BATCH\n                        Run test every 400\
+    \ batches\n  --patience PATIENCE   Early stopping if test accuracy does not improve\
+    \ for 5\n                        consecutive tests\n  --load-batch LOAD_BATCH\n\
+    \                        Number of coverage batch to load in memory. Consider\n\
+    \                        lowering this value if your RAM is limited. (default:\n\
+    \                        100)\n  --compo-neurons COMPO_NEURONS COMPO_NEURONS\n\
+    \                        Number of neurons for the composition dense layers\n\
+    \                        (x2) (default: [64, 32])\n  --cover-neurons COVER_NEURONS\
+    \ COVER_NEURONS\n                        Number of neurons for the coverage dense\
+    \ layers (x2)\n                        (default: [64, 32])\n  --cover-filters\
+    \ COVER_FILTERS\n                        Number of filters for convolution layer\
+    \ of coverage\n                        network. (default: 16)\n  --cover-kernel\
+    \ COVER_KERNEL\n                        Kernel size for convolution layer of coverage\
+    \ network.\n                        (default: 4)\n  --cover-stride COVER_STRIDE\n\
+    \                        Convolution stride for convolution layer of coverage\n\
+    \                        network. (default: 2)\n  --merge-neurons MERGE_NEURONS\n\
+    \                        Number of neurons for the merging layer (x1) (default:\n\
+    \                        32)\n  -k KMER, --kmer KMER  k-mer size for composition\
+    \ vector (default: 4)\n  --no-rc               Do not add the reverse complement\
+    \ k-mer occurrences to\n                        the composition vector. (default:\
+    \ False)\n  --wsize WSIZE         Smoothing window size for coverage vector (default:\n\
+    \                        64)\n  --wstep WSTEP         Subsampling step for coverage\
+    \ vector (default: 32)\n  --n-frags N_FRAGS     Number of fragments to split the\
+    \ contigs for the\n                        clustering phase (default: 30)\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/coconet-binning:1.1.0--py_0
+- !Command
+  command:
+  - coconet
+  - run
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --fasta
+    description: "Path to your assembly file (fasta formatted) (default:\nNone)"
+    args: !SimpleFlagArg
+      name: FASTA
+  - !Flag
+    optional: true
+    synonyms:
+    - --h5
+    description: "Experimental: coverage in hdf5 format (keys are\ncontigs, values\
+      \ are (sample, contig_len) ndarrays\n(default: None)"
+    args: !SimpleFlagArg
+      name: H5
+  - !Flag
+    optional: true
+    synonyms:
+    - --output
+    description: 'Path to output directory (default: output)'
+    args: !SimpleFlagArg
+      name: OUTPUT
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --threads
+    description: 'Number of threads (default: 5)'
+    args: !SimpleFlagArg
+      name: THREADS
+  - !Flag
+    optional: true
+    synonyms:
+    - --debug
+    description: 'Print debugging statements (default: 20)'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --quiet
+    description: 'Less verbose (default: None)'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --silent
+    description: 'Only error messages (default: None)'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --continue
+    description: "Start from last checkpoint. The output directory needs\nto be the\
+      \ same. (default: False)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --bam
+    description: "List of paths to your coverage files (bam formatted)\n(default:\
+      \ None)"
+    args: !RepeatFlagArg
+      name: BAM
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-ctg-len
+    description: 'Minimum contig length (default: 2048)'
+    args: !SimpleFlagArg
+      name: MIN_CTG_LEN
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-prevalence
+    description: "Minimum contig prevalence for binning. Contig with\nless that value\
+      \ are filtered out. (default: 2)"
+    args: !SimpleFlagArg
+      name: MIN_PREVALENCE
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-mapping-quality
+    description: 'Minimum alignment quality (default: 30)'
+    args: !SimpleFlagArg
+      name: MIN_MAPPING_QUALITY
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-aln-coverage
+    description: "Discard alignments with less than 50% aligned\nnucleotides"
+    args: !SimpleFlagArg
+      name: MIN_ALN_COVERAGE
+  - !Flag
+    optional: true
+    synonyms:
+    - --flag
+    description: "SAM flag for filtering (same as samtools \"-F\" option)\n(default:\
+      \ 3596)"
+    args: !SimpleFlagArg
+      name: FLAG
+  - !Flag
+    optional: true
+    synonyms:
+    - --tlen-range
+    description: "TLEN_RANGE\nOnly allow for paired alignments with spacing within\n\
+      this range (default: None)"
+    args: !SimpleFlagArg
+      name: TLEN_RANGE
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-dtr-size
+    description: "Minimum size of DTR to flag complete contigs (default:\n10)"
+    args: !SimpleFlagArg
+      name: MIN_DTR_SIZE
+  - !Flag
+    optional: true
+    synonyms:
+    - --fragment-step
+    description: 'Fragments spacing (default: 128)'
+    args: !SimpleFlagArg
+      name: FRAGMENT_STEP
+  - !Flag
+    optional: true
+    synonyms:
+    - --test-ratio
+    description: 'Ratio for train / test split (default: 0.1)'
+    args: !SimpleFlagArg
+      name: TEST_RATIO
+  - !Flag
+    optional: true
+    synonyms:
+    - --n-train
+    description: 'Maximum number of training examples (default: 4000000)'
+    args: !SimpleFlagArg
+      name: N_TRAIN
+  - !Flag
+    optional: true
+    synonyms:
+    - --n-test
+    description: 'Number of test examples (default: 10000)'
+    args: !SimpleFlagArg
+      name: N_TEST
+  - !Flag
+    optional: true
+    synonyms:
+    - --learning-rate
+    description: 'Learning rate for gradient descent (default: 0.001)'
+    args: !SimpleFlagArg
+      name: LEARNING_RATE
+  - !Flag
+    optional: true
+    synonyms:
+    - --batch-size
+    description: 'Batch size for training (default: 256)'
+    args: !SimpleFlagArg
+      name: BATCH_SIZE
+  - !Flag
+    optional: true
+    synonyms:
+    - --test-batch
+    description: Run test every 400 batches
+    args: !SimpleFlagArg
+      name: TEST_BATCH
+  - !Flag
+    optional: true
+    synonyms:
+    - --patience
+    description: "Early stopping if test accuracy does not improve for 5\nconsecutive\
+      \ tests"
+    args: !SimpleFlagArg
+      name: PATIENCE
+  - !Flag
+    optional: true
+    synonyms:
+    - --load-batch
+    description: "Number of coverage batch to load in memory. Consider\nlowering this\
+      \ value if your RAM is limited. (default:\n100)"
+    args: !SimpleFlagArg
+      name: LOAD_BATCH
+  - !Flag
+    optional: true
+    synonyms:
+    - --compo-neurons
+    description: "COMPO_NEURONS\nNumber of neurons for the composition dense layers\n\
+      (x2) (default: [64, 32])"
+    args: !SimpleFlagArg
+      name: COMPO_NEURONS
+  - !Flag
+    optional: true
+    synonyms:
+    - --cover-neurons
+    description: "COVER_NEURONS\nNumber of neurons for the coverage dense layers (x2)\n\
+      (default: [64, 32])"
+    args: !SimpleFlagArg
+      name: COVER_NEURONS
+  - !Flag
+    optional: true
+    synonyms:
+    - --cover-filters
+    description: "Number of filters for convolution layer of coverage\nnetwork. (default:\
+      \ 16)"
+    args: !SimpleFlagArg
+      name: COVER_FILTERS
+  - !Flag
+    optional: true
+    synonyms:
+    - --cover-kernel
+    description: "Kernel size for convolution layer of coverage network.\n(default:\
+      \ 4)"
+    args: !SimpleFlagArg
+      name: COVER_KERNEL
+  - !Flag
+    optional: true
+    synonyms:
+    - --cover-stride
+    description: "Convolution stride for convolution layer of coverage\nnetwork. (default:\
+      \ 2)"
+    args: !SimpleFlagArg
+      name: COVER_STRIDE
+  - !Flag
+    optional: true
+    synonyms:
+    - --merge-neurons
+    description: "Number of neurons for the merging layer (x1) (default:\n32)"
+    args: !SimpleFlagArg
+      name: MERGE_NEURONS
+  - !Flag
+    optional: true
+    synonyms:
+    - -k
+    - --kmer
+    description: 'k-mer size for composition vector (default: 4)'
+    args: !SimpleFlagArg
+      name: KMER
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-rc
+    description: "Do not add the reverse complement k-mer occurrences to\nthe composition\
+      \ vector. (default: False)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --wsize
+    description: "Smoothing window size for coverage vector (default:\n64)"
+    args: !SimpleFlagArg
+      name: WSIZE
+  - !Flag
+    optional: true
+    synonyms:
+    - --wstep
+    description: 'Subsampling step for coverage vector (default: 32)'
+    args: !SimpleFlagArg
+      name: WSTEP
+  - !Flag
+    optional: true
+    synonyms:
+    - --n-frags
+    description: "Number of fragments to split the contigs for the\nclustering phase\
+      \ (default: 30)"
+    args: !SimpleFlagArg
+      name: N_FRAGS
+  - !Flag
+    optional: true
+    synonyms:
+    - --max-neighbors
+    description: "Maximum number of neighbors to consider to compute the\nadjacency\
+      \ matrix. (default: 250)"
+    args: !SimpleFlagArg
+      name: MAX_NEIGHBORS
+  - !Flag
+    optional: true
+    synonyms:
+    - --vote-threshold
+    description: "When this parameter is not set, contig-contig edges\nare computed\
+      \ by summing the probability between all\npairwise fragments between them.Otherwise,\
+      \ adopt a\nvoting strategy and sets a hard-threshold on the\nprobabilityfrom\
+      \ each pairwise comparison. (default:\nNone)"
+    args: !SimpleFlagArg
+      name: VOTE_THRESHOLD
+  - !Flag
+    optional: true
+    synonyms:
+    - --algorithm
+    description: "Algorithm for clustering the contig-contig graph.\nNote: the number\
+      \ of cluster is required if \"spectral\"\nis chosen. (default: leiden)"
+    args: !ChoiceFlagArg
+      choices: !!set
+        leiden:
+        spectral:
+  - !Flag
+    optional: true
+    synonyms:
+    - --theta
+    description: "(leiden) Minimum percent of edges between two contigs\nto form an\
+      \ edge between them (default: 0.8)"
+    args: !SimpleFlagArg
+      name: THETA
+  - !Flag
+    optional: true
+    synonyms:
+    - --gamma1
+    description: "(leiden) CPM optimization value for the first run of\nthe Leiden\
+      \ clustering (default: 0.3)"
+    args: !SimpleFlagArg
+      name: GAMMA1
+  - !Flag
+    optional: true
+    synonyms:
+    - --gamma2
+    description: "(leiden) CPM optimization value for the second run of\nthe Leiden\
+      \ clustering (default: 0.4)"
+    args: !SimpleFlagArg
+      name: GAMMA2
+  - !Flag
+    optional: true
+    synonyms:
+    - --n-clusters
+    description: "(spectral clustering) Maximum number of clusters\n(default: None)"
+    args: !SimpleFlagArg
+      name: N_CLUSTERS
+  - !Flag
+    optional: true
+    synonyms:
+    - --recruit-small-contigs
+    description: 'Salvage short contigs (<2048) (default: False)'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --fragment-length
+    description: "Length of contig fragments in bp. Default is half the\nminimum contig\
+      \ length. (default: -1)"
+    args: !SimpleFlagArg
+      name: FRAGMENT_LENGTH
+  - !Flag
+    optional: true
+    synonyms:
+    - --features
+    description: "[{coverage,composition} ...]\nFeatures for binning (composition,\
+      \ coverage, or both)\n(default: ['coverage', 'composition'])\n"
+    args: !ChoiceFlagArg
+      choices: !!set
+        coverage:
+        composition:
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: coconet run [-h] [--fasta FASTA] [--h5 H5] [--output OUTPUT]\n\
+    \                   [-t THREADS] [--debug] [--quiet] [--silent] [--continue]\n\
+    \                   [--bam BAM [BAM ...]] [--min-ctg-len MIN_CTG_LEN]\n      \
+    \             [--min-prevalence MIN_PREVALENCE]\n                   [--min-mapping-quality\
+    \ MIN_MAPPING_QUALITY]\n                   [--min-aln-coverage MIN_ALN_COVERAGE]\
+    \ [--flag FLAG]\n                   [--tlen-range TLEN_RANGE TLEN_RANGE]\n   \
+    \                [--min-dtr-size MIN_DTR_SIZE]\n                   [--fragment-step\
+    \ FRAGMENT_STEP] [--test-ratio TEST_RATIO]\n                   [--n-train N_TRAIN]\
+    \ [--n-test N_TEST]\n                   [--learning-rate LEARNING_RATE] [--batch-size\
+    \ BATCH_SIZE]\n                   [--test-batch TEST_BATCH] [--patience PATIENCE]\n\
+    \                   [--load-batch LOAD_BATCH]\n                   [--compo-neurons\
+    \ COMPO_NEURONS COMPO_NEURONS]\n                   [--cover-neurons COVER_NEURONS\
+    \ COVER_NEURONS]\n                   [--cover-filters COVER_FILTERS]\n       \
+    \            [--cover-kernel COVER_KERNEL] [--cover-stride COVER_STRIDE]\n   \
+    \                [--merge-neurons MERGE_NEURONS] [-k KMER] [--no-rc]\n       \
+    \            [--wsize WSIZE] [--wstep WSTEP] [--n-frags N_FRAGS]\n           \
+    \        [--max-neighbors MAX_NEIGHBORS]\n                   [--vote-threshold\
+    \ VOTE_THRESHOLD]\n                   [--algorithm {leiden,spectral}] [--theta\
+    \ THETA]\n                   [--gamma1 GAMMA1] [--gamma2 GAMMA2]\n           \
+    \        [--n-clusters N_CLUSTERS] [--recruit-small-contigs]\n               \
+    \    [--fragment-length FRAGMENT_LENGTH]\n                   [--features {coverage,composition}\
+    \ [{coverage,composition} ...]]\n\noptional arguments:\n  -h, --help         \
+    \   show this help message and exit\n  --fasta FASTA         Path to your assembly\
+    \ file (fasta formatted) (default:\n                        None)\n  --h5 H5 \
+    \              Experimental: coverage in hdf5 format (keys are\n             \
+    \           contigs, values are (sample, contig_len) ndarrays\n              \
+    \          (default: None)\n  --output OUTPUT       Path to output directory (default:\
+    \ output)\n  -t THREADS, --threads THREADS\n                        Number of\
+    \ threads (default: 5)\n  --debug               Print debugging statements (default:\
+    \ 20)\n  --quiet               Less verbose (default: None)\n  --silent      \
+    \        Only error messages (default: None)\n  --continue            Start from\
+    \ last checkpoint. The output directory needs\n                        to be the\
+    \ same. (default: False)\n  --bam BAM [BAM ...]   List of paths to your coverage\
+    \ files (bam formatted)\n                        (default: None)\n  --min-ctg-len\
+    \ MIN_CTG_LEN\n                        Minimum contig length (default: 2048)\n\
+    \  --min-prevalence MIN_PREVALENCE\n                        Minimum contig prevalence\
+    \ for binning. Contig with\n                        less that value are filtered\
+    \ out. (default: 2)\n  --min-mapping-quality MIN_MAPPING_QUALITY\n           \
+    \             Minimum alignment quality (default: 30)\n  --min-aln-coverage MIN_ALN_COVERAGE\n\
+    \                        Discard alignments with less than 50% aligned\n     \
+    \                   nucleotides\n  --flag FLAG           SAM flag for filtering\
+    \ (same as samtools \"-F\" option)\n                        (default: 3596)\n\
+    \  --tlen-range TLEN_RANGE TLEN_RANGE\n                        Only allow for\
+    \ paired alignments with spacing within\n                        this range (default:\
+    \ None)\n  --min-dtr-size MIN_DTR_SIZE\n                        Minimum size of\
+    \ DTR to flag complete contigs (default:\n                        10)\n  --fragment-step\
+    \ FRAGMENT_STEP\n                        Fragments spacing (default: 128)\n  --test-ratio\
+    \ TEST_RATIO\n                        Ratio for train / test split (default: 0.1)\n\
+    \  --n-train N_TRAIN     Maximum number of training examples (default: 4000000)\n\
+    \  --n-test N_TEST       Number of test examples (default: 10000)\n  --learning-rate\
+    \ LEARNING_RATE\n                        Learning rate for gradient descent (default:\
+    \ 0.001)\n  --batch-size BATCH_SIZE\n                        Batch size for training\
+    \ (default: 256)\n  --test-batch TEST_BATCH\n                        Run test\
+    \ every 400 batches\n  --patience PATIENCE   Early stopping if test accuracy does\
+    \ not improve for 5\n                        consecutive tests\n  --load-batch\
+    \ LOAD_BATCH\n                        Number of coverage batch to load in memory.\
+    \ Consider\n                        lowering this value if your RAM is limited.\
+    \ (default:\n                        100)\n  --compo-neurons COMPO_NEURONS COMPO_NEURONS\n\
+    \                        Number of neurons for the composition dense layers\n\
+    \                        (x2) (default: [64, 32])\n  --cover-neurons COVER_NEURONS\
+    \ COVER_NEURONS\n                        Number of neurons for the coverage dense\
+    \ layers (x2)\n                        (default: [64, 32])\n  --cover-filters\
+    \ COVER_FILTERS\n                        Number of filters for convolution layer\
+    \ of coverage\n                        network. (default: 16)\n  --cover-kernel\
+    \ COVER_KERNEL\n                        Kernel size for convolution layer of coverage\
+    \ network.\n                        (default: 4)\n  --cover-stride COVER_STRIDE\n\
+    \                        Convolution stride for convolution layer of coverage\n\
+    \                        network. (default: 2)\n  --merge-neurons MERGE_NEURONS\n\
+    \                        Number of neurons for the merging layer (x1) (default:\n\
+    \                        32)\n  -k KMER, --kmer KMER  k-mer size for composition\
+    \ vector (default: 4)\n  --no-rc               Do not add the reverse complement\
+    \ k-mer occurrences to\n                        the composition vector. (default:\
+    \ False)\n  --wsize WSIZE         Smoothing window size for coverage vector (default:\n\
+    \                        64)\n  --wstep WSTEP         Subsampling step for coverage\
+    \ vector (default: 32)\n  --n-frags N_FRAGS     Number of fragments to split the\
+    \ contigs for the\n                        clustering phase (default: 30)\n  --max-neighbors\
+    \ MAX_NEIGHBORS\n                        Maximum number of neighbors to consider\
+    \ to compute the\n                        adjacency matrix. (default: 250)\n \
+    \ --vote-threshold VOTE_THRESHOLD\n                        When this parameter\
+    \ is not set, contig-contig edges\n                        are computed by summing\
+    \ the probability between all\n                        pairwise fragments between\
+    \ them.Otherwise, adopt a\n                        voting strategy and sets a\
+    \ hard-threshold on the\n                        probabilityfrom each pairwise\
+    \ comparison. (default:\n                        None)\n  --algorithm {leiden,spectral}\n\
+    \                        Algorithm for clustering the contig-contig graph.\n \
+    \                       Note: the number of cluster is required if \"spectral\"\
+    \n                        is chosen. (default: leiden)\n  --theta THETA      \
+    \   (leiden) Minimum percent of edges between two contigs\n                  \
+    \      to form an edge between them (default: 0.8)\n  --gamma1 GAMMA1       (leiden)\
+    \ CPM optimization value for the first run of\n                        the Leiden\
+    \ clustering (default: 0.3)\n  --gamma2 GAMMA2       (leiden) CPM optimization\
+    \ value for the second run of\n                        the Leiden clustering (default:\
+    \ 0.4)\n  --n-clusters N_CLUSTERS\n                        (spectral clustering)\
+    \ Maximum number of clusters\n                        (default: None)\n  --recruit-small-contigs\n\
+    \                        Salvage short contigs (<2048) (default: False)\n  --fragment-length\
+    \ FRAGMENT_LENGTH\n                        Length of contig fragments in bp. Default\
+    \ is half the\n                        minimum contig length. (default: -1)\n\
+    \  --features {coverage,composition} [{coverage,composition} ...]\n          \
+    \              Features for binning (composition, coverage, or both)\n       \
+    \                 (default: ['coverage', 'composition'])\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/coconet-binning:1.1.0--py_0
+- !Command
+  command:
+  - coconet
+  - cluster
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --output
+    description: 'Path to output directory (default: output)'
+    args: !SimpleFlagArg
+      name: OUTPUT
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --threads
+    description: 'Number of threads (default: 5)'
+    args: !SimpleFlagArg
+      name: THREADS
+  - !Flag
+    optional: true
+    synonyms:
+    - --debug
+    description: 'Print debugging statements (default: 20)'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --quiet
+    description: 'Less verbose (default: None)'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --silent
+    description: 'Only error messages (default: None)'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --continue
+    description: "Start from last checkpoint. The output directory needs\nto be the\
+      \ same. (default: False)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --fragment-length
+    description: "Length of contig fragments in bp. Default is half the\nminimum contig\
+      \ length. (default: -1)"
+    args: !SimpleFlagArg
+      name: FRAGMENT_LENGTH
+  - !Flag
+    optional: true
+    synonyms:
+    - --features
+    description: "[{coverage,composition} ...]\nFeatures for binning (composition,\
+      \ coverage, or both)\n(default: ['coverage', 'composition'])"
+    args: !ChoiceFlagArg
+      choices: !!set
+        coverage:
+        composition:
+  - !Flag
+    optional: true
+    synonyms:
+    - --max-neighbors
+    description: "Maximum number of neighbors to consider to compute the\nadjacency\
+      \ matrix. (default: 250)"
+    args: !SimpleFlagArg
+      name: MAX_NEIGHBORS
+  - !Flag
+    optional: true
+    synonyms:
+    - --vote-threshold
+    description: "When this parameter is not set, contig-contig edges\nare computed\
+      \ by summing the probability between all\npairwise fragments between them.Otherwise,\
+      \ adopt a\nvoting strategy and sets a hard-threshold on the\nprobabilityfrom\
+      \ each pairwise comparison. (default:\nNone)"
+    args: !SimpleFlagArg
+      name: VOTE_THRESHOLD
+  - !Flag
+    optional: true
+    synonyms:
+    - --algorithm
+    description: "Algorithm for clustering the contig-contig graph.\nNote: the number\
+      \ of cluster is required if \"spectral\"\nis chosen. (default: leiden)"
+    args: !ChoiceFlagArg
+      choices: !!set
+        leiden:
+        spectral:
+  - !Flag
+    optional: true
+    synonyms:
+    - --theta
+    description: "(leiden) Minimum percent of edges between two contigs\nto form an\
+      \ edge between them (default: 0.8)"
+    args: !SimpleFlagArg
+      name: THETA
+  - !Flag
+    optional: true
+    synonyms:
+    - --gamma1
+    description: "(leiden) CPM optimization value for the first run of\nthe Leiden\
+      \ clustering (default: 0.3)"
+    args: !SimpleFlagArg
+      name: GAMMA1
+  - !Flag
+    optional: true
+    synonyms:
+    - --gamma2
+    description: "(leiden) CPM optimization value for the second run of\nthe Leiden\
+      \ clustering (default: 0.4)"
+    args: !SimpleFlagArg
+      name: GAMMA2
+  - !Flag
+    optional: true
+    synonyms:
+    - --n-clusters
+    description: "(spectral clustering) Maximum number of clusters\n(default: None)"
+    args: !SimpleFlagArg
+      name: N_CLUSTERS
+  - !Flag
+    optional: true
+    synonyms:
+    - --recruit-small-contigs
+    description: "Salvage short contigs (<2048) (default: False)\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: coconet cluster [-h] [--output OUTPUT] [-t THREADS] [--debug]\
+    \ [--quiet]\n                       [--silent] [--continue]\n                \
+    \       [--fragment-length FRAGMENT_LENGTH]\n                       [--features\
+    \ {coverage,composition} [{coverage,composition} ...]]\n                     \
+    \  [--max-neighbors MAX_NEIGHBORS]\n                       [--vote-threshold VOTE_THRESHOLD]\n\
+    \                       [--algorithm {leiden,spectral}] [--theta THETA]\n    \
+    \                   [--gamma1 GAMMA1] [--gamma2 GAMMA2]\n                    \
+    \   [--n-clusters N_CLUSTERS] [--recruit-small-contigs]\n\noptional arguments:\n\
+    \  -h, --help            show this help message and exit\n  --output OUTPUT  \
+    \     Path to output directory (default: output)\n  -t THREADS, --threads THREADS\n\
+    \                        Number of threads (default: 5)\n  --debug           \
+    \    Print debugging statements (default: 20)\n  --quiet               Less verbose\
+    \ (default: None)\n  --silent              Only error messages (default: None)\n\
+    \  --continue            Start from last checkpoint. The output directory needs\n\
+    \                        to be the same. (default: False)\n  --fragment-length\
+    \ FRAGMENT_LENGTH\n                        Length of contig fragments in bp. Default\
+    \ is half the\n                        minimum contig length. (default: -1)\n\
+    \  --features {coverage,composition} [{coverage,composition} ...]\n          \
+    \              Features for binning (composition, coverage, or both)\n       \
+    \                 (default: ['coverage', 'composition'])\n  --max-neighbors MAX_NEIGHBORS\n\
+    \                        Maximum number of neighbors to consider to compute the\n\
+    \                        adjacency matrix. (default: 250)\n  --vote-threshold\
+    \ VOTE_THRESHOLD\n                        When this parameter is not set, contig-contig\
+    \ edges\n                        are computed by summing the probability between\
+    \ all\n                        pairwise fragments between them.Otherwise, adopt\
+    \ a\n                        voting strategy and sets a hard-threshold on the\n\
+    \                        probabilityfrom each pairwise comparison. (default:\n\
+    \                        None)\n  --algorithm {leiden,spectral}\n            \
+    \            Algorithm for clustering the contig-contig graph.\n             \
+    \           Note: the number of cluster is required if \"spectral\"\n        \
+    \                is chosen. (default: leiden)\n  --theta THETA         (leiden)\
+    \ Minimum percent of edges between two contigs\n                        to form\
+    \ an edge between them (default: 0.8)\n  --gamma1 GAMMA1       (leiden) CPM optimization\
+    \ value for the first run of\n                        the Leiden clustering (default:\
+    \ 0.3)\n  --gamma2 GAMMA2       (leiden) CPM optimization value for the second\
+    \ run of\n                        the Leiden clustering (default: 0.4)\n  --n-clusters\
+    \ N_CLUSTERS\n                        (spectral clustering) Maximum number of\
+    \ clusters\n                        (default: None)\n  --recruit-small-contigs\n\
+    \                        Salvage short contigs (<2048) (default: False)\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/coconet-binning:1.1.0--py_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: coconet [-h] [--version] {preprocess,learn,cluster,run} ...\n\n\
+  optional arguments:\n  -h, --help            show this help message and exit\n \
+  \ --version             show program's version number and exit\n\naction:\n  {preprocess,learn,cluster,run}\n\
+  \    preprocess          Preprocess data\n    learn               Train neural network\
+  \ on input data\n    cluster             Bin contigs using neural network\n    run\
+  \                 Run complete workflow (recommended)\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/coconet-binning:1.1.0--py_0

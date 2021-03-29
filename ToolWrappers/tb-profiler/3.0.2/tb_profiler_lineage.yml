@@ -1,0 +1,97 @@
+!Command
+command:
+- tb-profiler
+- lineage
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --bam
+  - -a
+  description: "BAM file. Make sure it has been generated using the\nH37Rv genome\
+    \ (GCA_000195955.2) (default: None)"
+  args: !SimpleFlagArg
+    name: BAM
+- !Flag
+  optional: true
+  synonyms:
+  - --prefix
+  - -p
+  description: 'Sample prefix (default: tbprofiler)'
+  args: !SimpleFlagArg
+    name: PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - --outfmt
+  description: 'Output format (default: json)'
+  args: !ChoiceFlagArg
+    choices: !!set
+      txt:
+      json:
+- !Flag
+  optional: true
+  synonyms:
+  - --snps
+  description: 'Sample prefix (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --caller
+  description: 'Variant caller (default: bcftools)'
+  args: !ChoiceFlagArg
+    choices: !!set
+      gatk:
+      bcftools:
+      freebayes:
+- !Flag
+  optional: true
+  synonyms:
+  - --db
+  description: 'Mutation panel name (default: tbdb)'
+  args: !SimpleFlagArg
+    name: DB
+- !Flag
+  optional: true
+  synonyms:
+  - --external_db
+  description: "Path to db files prefix (overrides \"--db\" parameter)\n(default:\
+    \ None)"
+  args: !SimpleFlagArg
+    name: EXTERNAL_DB
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: tb-profiler lineage [-h] --bam BAM [--prefix PREFIX]\n        \
+  \                   [--outfmt {json,txt}] [--snps]\n                           [--caller\
+  \ {bcftools,freebayes,gatk}] [--db DB]\n                           [--external_db\
+  \ EXTERNAL_DB] [--version]\n\noptional arguments:\n  -h, --help            show\
+  \ this help message and exit\n  --bam BAM, -a BAM     BAM file. Make sure it has\
+  \ been generated using the\n                        H37Rv genome (GCA_000195955.2)\
+  \ (default: None)\n  --prefix PREFIX, -p PREFIX\n                        Sample\
+  \ prefix (default: tbprofiler)\n  --outfmt {json,txt}   Output format (default:\
+  \ json)\n  --snps                Sample prefix (default: False)\n  --caller {bcftools,freebayes,gatk}\n\
+  \                        Variant caller (default: bcftools)\n  --db DB         \
+  \      Mutation panel name (default: tbdb)\n  --external_db EXTERNAL_DB\n      \
+  \                  Path to db files prefix (overrides \"--db\" parameter)\n    \
+  \                    (default: None)\n  --version             show program's version\
+  \ number and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/tb-profiler:3.0.2--pypyh3252c3a_0

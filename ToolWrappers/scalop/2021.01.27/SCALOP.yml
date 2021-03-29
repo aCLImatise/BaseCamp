@@ -1,0 +1,220 @@
+!Command
+command:
+- SCALOP
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: SCALOP
+  description: Sequence-based antibody Canonical LOoP structure annotation
+- !Positional
+  optional: false
+  position: 0
+  name: '2021'
+  description: Wing Ki Wong
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --numbering_scheme
+  - --scheme
+  description: Antibody chain numbering scheme
+  args: !ChoiceFlagArg
+    choices: !!set
+      imgt:
+      chothia:
+- !Flag
+  optional: true
+  synonyms:
+  - --cdr_definition
+  - --definition
+  description: CDR region definition
+  args: !ChoiceFlagArg
+    choices: !!set
+      north:
+      chothia:
+      imgt:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --assign
+  description: Input sequence(s)
+  args: !SimpleFlagArg
+    name: SEQ
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: Output directory (default = console output)
+  args: !SimpleFlagArg
+    name: OUTPUTDIR
+- !Flag
+  optional: true
+  synonyms:
+  - -of
+  - --output_ext
+  description: Output format
+  args: !SimpleFlagArg
+    name: OUTPUTFORMAT
+- !Flag
+  optional: true
+  synonyms:
+  - -dbv
+  - --db_version
+  description: "Database version in YYYY-MM (e.g. '2017-07') or YYYY\nfor data included\
+    \ by the end of the year"
+  args: !SimpleFlagArg
+    name: DBV
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --structure
+  description: Input framework structure
+  args: !SimpleFlagArg
+    name: STRUCTUREF
+- !Flag
+  optional: true
+  synonyms:
+  - --loopdb
+  description: Loop structures directory
+  args: !SimpleFlagArg
+    name: LOOPDB
+- !Flag
+  optional: true
+  synonyms:
+  - --hc
+  description: Heavy Chain ID
+  args: !SimpleFlagArg
+    name: HC
+- !Flag
+  optional: true
+  synonyms:
+  - --lc
+  description: Light Chain ID
+  args: !SimpleFlagArg
+    name: LC
+- !Flag
+  optional: true
+  synonyms:
+  - --update
+  - -u
+  description: "Perform an update to a copy of the database that you\nhave write permissions\
+    \ for"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dbdir
+  description: '[for updater] Loop database directory'
+  args: !SimpleFlagArg
+    name: DBDIR
+- !Flag
+  optional: true
+  synonyms:
+  - --struc_cutoff
+  - --cutoff
+  description: '[for updater] Resolution of structures to be clustered'
+  args: !SimpleFlagArg
+    name: STRUC_CUTOFF
+- !Flag
+  optional: true
+  synonyms:
+  - --bfactor_cutoff
+  - --bfactor
+  description: "[for updater] Maximum B factor of backbone atoms in\nthe loop"
+  args: !SimpleFlagArg
+    name: BFACTOR
+- !Flag
+  optional: true
+  synonyms:
+  - --arma_inc
+  - --armadillo_include
+  description: '[for updater] Resolution of structures to be clustered'
+  args: !SimpleFlagArg
+    name: ARMA_INC
+- !Flag
+  optional: true
+  synonyms:
+  - --sabdabscript
+  - --script
+  - --bin
+  - --sabdabdir
+  description: "[for updater] Location of SAbDab bin script (e.g.\n~/bin/)"
+  args: !SimpleFlagArg
+    name: SABDABDIR
+- !Flag
+  optional: true
+  synonyms:
+  - --pylib
+  - --sabdabpydir
+  description: "[for updater] Location of ABDB python module (e.g.\n~/bin/Python/ABDB)"
+  args: !SimpleFlagArg
+    name: SABDABPYDIR
+- !Flag
+  optional: true
+  synonyms:
+  - --sabdabu
+  description: "[for updater] Whether or not to update SAbDab\n([yes]/no)"
+  args: !SimpleFlagArg
+    name: SABDABU
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: SCALOP [-h] [--numbering_scheme {imgt,chothia}]\n             \
+  \ [--cdr_definition {north,imgt,chothia}] [-i SEQ] [-o OUTPUTDIR]\n            \
+  \  [-of OUTPUTFORMAT] [-dbv DBV] [-s STRUCTUREF] [--loopdb LOOPDB]\n           \
+  \   [--hc HC] [--lc LC] [--update] [--dbdir DBDIR]\n              [--struc_cutoff\
+  \ STRUC_CUTOFF] [--bfactor_cutoff BFACTOR]\n              [--arma_inc ARMA_INC]\
+  \ [--sabdabscript SABDABDIR]\n              [--pylib SABDABPYDIR] [--sabdabu SABDABU]\n\
+  \nDESCRIPTION\n \n    SCALOP\n    Sequence-based antibody Canonical LOoP structure\
+  \ annotation\n \n    o To setup paths etc on your machine run:\n        python setup.py\
+  \ install\n\n    o Python API\n        o The SCALOP python package can be imported\
+  \ using:\n        >>> from scalop.predict import assign\n        \n    o Command\
+  \ line \n        o To run SCALOP on a command line:\n        $ SCALOP -i <input_sequence>\
+  \ --scheme <numbering_scheme> --definition <cdr_definition>\n        \n    o Pre-requisites:\n\
+  \        o SAbDab (for update)\n        o HMMER 3.1b2 (February 2015); http://hmmer.org/\n\
+  \        o numpy v. 1.10+\n        o pandas\n\noptional arguments:\n  -h, --help\
+  \            show this help message and exit\n  --numbering_scheme {imgt,chothia},\
+  \ --scheme {imgt,chothia}\n                        Antibody chain numbering scheme\n\
+  \  --cdr_definition {north,imgt,chothia}, --definition {north,imgt,chothia}\n  \
+  \                      CDR region definition\n  -i SEQ, --assign SEQ  Input sequence(s)\n\
+  \  -o OUTPUTDIR, --output OUTPUTDIR\n                        Output directory (default\
+  \ = console output)\n  -of OUTPUTFORMAT, --output_ext OUTPUTFORMAT\n           \
+  \             Output format\n  -dbv DBV, --db_version DBV\n                    \
+  \    Database version in YYYY-MM (e.g. '2017-07') or YYYY\n                    \
+  \    for data included by the end of the year\n  -s STRUCTUREF, --structure STRUCTUREF\n\
+  \                        Input framework structure\n  --loopdb LOOPDB       Loop\
+  \ structures directory\n  --hc HC               Heavy Chain ID\n  --lc LC      \
+  \         Light Chain ID\n  --update, -u          Perform an update to a copy of\
+  \ the database that you\n                        have write permissions for\n  --dbdir\
+  \ DBDIR         [for updater] Loop database directory\n  --struc_cutoff STRUC_CUTOFF,\
+  \ --cutoff STRUC_CUTOFF\n                        [for updater] Resolution of structures\
+  \ to be clustered\n  --bfactor_cutoff BFACTOR, --bfactor BFACTOR\n             \
+  \           [for updater] Maximum B factor of backbone atoms in\n              \
+  \          the loop\n  --arma_inc ARMA_INC, --armadillo_include ARMA_INC\n     \
+  \                   [for updater] Resolution of structures to be clustered\n  --sabdabscript\
+  \ SABDABDIR, --script SABDABDIR, --bin SABDABDIR, --sabdabdir SABDABDIR\n      \
+  \                  [for updater] Location of SAbDab bin script (e.g.\n         \
+  \               ~/bin/)\n  --pylib SABDABPYDIR, --sabdabpydir SABDABPYDIR\n    \
+  \                    [for updater] Location of ABDB python module (e.g.\n      \
+  \                  ~/bin/Python/ABDB)\n  --sabdabu SABDABU     [for updater] Whether\
+  \ or not to update SAbDab\n                        ([yes]/no)\n\nAUTHORS\n \n  \
+  \  2021\n    Wing Ki Wong\n    Dr. Jinwoo Leem\n    Prof Charlotte M. Deane - Oxford\
+  \ Protein Informatics group.\n\n    Contact: opig@stats.ox.ac.uk\n\nCopyright (C)\
+  \ 2021 Oxford Protein Informatics Group (OPIG)\nFreely distributed under the GNU\
+  \ General Public License (GPLv3).\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/scalop:2021.01.27--py_0

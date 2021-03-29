@@ -1,0 +1,202 @@
+!Command
+command:
+- llr-ensemble
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: exists
+  description: '-t [ --targets ] arg                  File containing gene names of
+    genes of '
+- !Positional
+  optional: false
+  position: 0
+  name: info.
+  description: --resume-from arg                     Try to resume job from this file.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: '[ --infile ] arg                   The expression table (without headers)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  description: '[ --genes ] arg                    File containing gene names'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: '[ --scale ]                        (deprecated) Transform data to
+    z-scores'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-scale
+  description: Do not transform data to z-scores
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -C
+  description: '[ --penalty ] arg (=1)             Penalty C value'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: '[ --tol ] arg (=0.001)             Epsilon/tolerance (stopping criterion)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -E
+  description: '[ --eps ] arg (=0.1)               Epsilon (for EPSILON_SVR)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  description: "[ --solver ] arg (=L2R_L2LOSS_SVR) SVM solver to use [L2R_L2LOSS_SVR,\n\
+    L2R_L2LOSS_SVR_DUAL,\nL2R_L1LOSS_SVR_DUAL]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  description: '[ --ensemble ] arg (=1000)         The ensemble size'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: "[ --min-predictor-size ] arg (=20% of predictors)\nThe minimum absolute\
+    \ number of\npredictors (genes) to be sampled."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -P
+  description: "[ --max-predictor-size ] arg (=80% of predictors)\nThe maximum absolute\
+    \ number of\npredictors (genes) to be sampled"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  description: "[ --min-experiment-size ] arg (=20% of experiments)\nThe minimum absolute\
+    \ number of\nexperiments (samples) to be sampled"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -X
+  description: "[ --max-experiment-size ] arg (=80% of experiments)\nThe maximum absolute\
+    \ number of\nexperiments (samples) to be sampled"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -B
+  description: '[ --batch-size ] arg (=0)          Number of genes in MPI batch'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  description: '[ --tempdir ] arg                  Temporary directory path'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -O
+  description: '[ --threads ] arg (=2)             Number of OpenMP threads per MPI
+    task'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: '[ --force ]                        Force overwrite if output already'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: "[ --outfile ] arg (=llr_scores.tsv)\nOutput file path"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --save-resume
+  description: Path to a file that stores job resume
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: '[ --verbosity ] arg (=3)           Verbosity level (lower is less
+    verbose)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -V
+  description: '[ --version ]                      Print the program version'
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: '[ --help ]                         Show this help message'
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "\e[0;34m[ INFO    ]\e[0;0m[ 2021-03-29T14:09:52 ][ llr-ensemble@fda1111e0c18:\
+  \ 0|0 ]: This is seidr v.0.14.2\nNIMEFI SVM implementation for Seidr:\n\nRequired\
+  \ Options:\n  -i [ --infile ] arg                   The expression table (without\
+  \ headers)\n  -g [ --genes ] arg                    File containing gene names\n\
+  \nSVM options:\n  -s [ --scale ]                        (deprecated) Transform data\
+  \ to z-scores\n  --no-scale                            Do not transform data to\
+  \ z-scores\n  -C [ --penalty ] arg (=1)             Penalty C value\n  -l [ --tol\
+  \ ] arg (=0.001)             Epsilon/tolerance (stopping criterion)\n  -E [ --eps\
+  \ ] arg (=0.1)               Epsilon (for EPSILON_SVR)\n  -S [ --solver ] arg (=L2R_L2LOSS_SVR)\
+  \ SVM solver to use [L2R_L2LOSS_SVR, \n                                        L2R_L2LOSS_SVR_DUAL,\
+  \ \n                                        L2R_L1LOSS_SVR_DUAL]\n\nBootstrap Options:\n\
+  \  -e [ --ensemble ] arg (=1000)         The ensemble size\n  -p [ --min-predictor-size\
+  \ ] arg (=20% of predictors)\n                                        The minimum\
+  \ absolute number of \n                                        predictors (genes)\
+  \ to be sampled.\n  -P [ --max-predictor-size ] arg (=80% of predictors)\n     \
+  \                                   The maximum absolute number of \n          \
+  \                              predictors (genes) to be sampled\n  -x [ --min-experiment-size\
+  \ ] arg (=20% of experiments)\n                                        The minimum\
+  \ absolute number of \n                                        experiments (samples)\
+  \ to be sampled\n  -X [ --max-experiment-size ] arg (=80% of experiments)\n    \
+  \                                    The maximum absolute number of \n         \
+  \                               experiments (samples) to be sampled\n\nMPI Options:\n\
+  \  -B [ --batch-size ] arg (=0)          Number of genes in MPI batch\n  -T [ --tempdir\
+  \ ] arg                  Temporary directory path\n\nOpenMP Options:\n  -O [ --threads\
+  \ ] arg (=2)             Number of OpenMP threads per MPI task\n\nCommon Options:\n\
+  \  -h [ --help ]                         Show this help message\n  -f [ --force\
+  \ ]                        Force overwrite if output already \n                \
+  \                        exists\n  -t [ --targets ] arg                  File containing\
+  \ gene names of genes of \n                                        interest. The\
+  \ network will only be \n                                        calculated using\
+  \ these as the sources \n                                        of potential connections.\n\
+  \  -o [ --outfile ] arg (=llr_scores.tsv)\n                                    \
+  \    Output file path\n  --save-resume arg                     Path to a file that\
+  \ stores job resume \n                                        info.\n  --resume-from\
+  \ arg                     Try to resume job from this file.\n  -v [ --verbosity\
+  \ ] arg (=3)           Verbosity level (lower is less verbose)\n  -V [ --version\
+  \ ]                      Print the program version\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/seidr:0.14.2--mpi_mpich_h6f92565

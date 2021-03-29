@@ -1,0 +1,1125 @@
+&id001 !Command
+command:
+- nf-core
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: Print verbose output to the console.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --log-file
+  description: Save a verbose log to a file.
+  args: !SimpleFlagArg
+    name: filename
+parent:
+subcommands:
+- &id002 !Command
+  command:
+  - nf-core
+  - schema
+  positional: []
+  named: []
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - nf-core
+    - schema
+    - validate
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: pipeline name
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: JSON params file
+      description: ''
+    named: []
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: nf-core schema validate [OPTIONS] <pipeline name> <JSON params\
+      \ file>\n\n  Validate a set of parameters against a pipeline schema.\n\n  Nextflow\
+      \ can be run using the -params-file flag, which loads script\n  parameters from\
+      \ a JSON file.\n\n  This command takes such a file and validates it against\
+      \ the pipeline\n  schema, checking whether all schema rules are satisfied.\n\
+      \nOptions:\n  --help  Show this message and exit.\n"
+    generated_using: &id003
+    - --help
+    docker_image: quay.io/biocontainers/nf-core:1.13.1--pyh3252c3a_0
+  - !Command
+    command:
+    - nf-core
+    - schema
+    - build
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: pipeline directory
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --no-prompts
+      description: Do not confirm changes, just update parameters and exit
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --web-only
+      description: Skip building using Nextflow config, just launch the web tool
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --url
+      description: Customise the builder URL (for development work)
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: nf-core schema build [OPTIONS] <pipeline directory>\n\n  Interactively\
+      \ build a pipeline schema from Nextflow params.\n\n  Automatically detects parameters\
+      \ from the pipeline config and main.nf and\n  compares these to the pipeline\
+      \ schema. Prompts to add or remove parameters\n  if the two do not match one\
+      \ another.\n\n  Once all parameters are accounted for, can launch a web GUI\
+      \ tool on the\n  https://nf-co.re website where you can annotate and organise\
+      \ parameters.\n  Listens for this to be completed and saves the updated schema.\n\
+      \nOptions:\n  --no-prompts  Do not confirm changes, just update parameters and\
+      \ exit\n  --web-only    Skip building using Nextflow config, just launch the\
+      \ web tool\n  --url TEXT    Customise the builder URL (for development work)\n\
+      \  --help        Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/nf-core:1.13.1--pyh3252c3a_0
+  - !Command
+    command:
+    - nf-core
+    - schema
+    - lint
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: pipeline schema
+      description: ''
+    named: []
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: nf-core schema lint [OPTIONS] <pipeline schema>\n\n  Check\
+      \ that a given pipeline schema is valid.\n\n  Checks whether the pipeline schema\
+      \ validates as JSON Schema Draft 7 and\n  adheres to the additional nf-core\
+      \ schema requirements.\n\n  This function runs as part of the nf-core lint command,\
+      \ this is a\n  convenience command that does just the schema linting nice and\
+      \ quickly.\n\nOptions:\n  --help  Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/nf-core:1.13.1--pyh3252c3a_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: nf-core schema [OPTIONS] COMMAND [ARGS]...\n\n  Suite of tools\
+    \ for developers to manage pipeline schema.\n\n  All nf-core pipelines should\
+    \ have a nextflow_schema.json file in their\n  root directory that describes the\
+    \ different pipeline parameters.\n\nOptions:\n  --help  Show this message and\
+    \ exit.\n\nCommands:\n  validate  Validate a set of parameters against a pipeline\
+    \ schema.\n  build     Interactively build a pipeline schema from Nextflow params.\n\
+    \  lint      Check that a given pipeline schema is valid.\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/nf-core:1.13.1--pyh3252c3a_0
+- !Command
+  command:
+  - nf-core
+  - bump-version
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: pipeline directory
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: new version
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    - --nextflow
+    description: Bump required nextflow version instead of pipeline version
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: nf-core bump-version [OPTIONS] <pipeline directory> <new version>\n\
+    \n  Update nf-core pipeline version number.\n\n  The pipeline version number is\
+    \ mentioned in a lot of different places in\n  nf-core pipelines. This tool updates\
+    \ the version for you automatically, so\n  that you don't accidentally miss any.\n\
+    \n  Should be used for each pipeline release, and again for the next\n  development\
+    \ version after release.\n\n  As well as the pipeline version, you can also change\
+    \ the required version\n  of Nextflow.\n\nOptions:\n  -n, --nextflow  Bump required\
+    \ nextflow version instead of pipeline version\n  --help          Show this message\
+    \ and exit.\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/nf-core:1.13.1--pyh3252c3a_0
+- !Command
+  command:
+  - nf-core
+  - list
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: filter keywords
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --sort
+    description: "[release|pulled|name|stars]\nHow to sort listed pipelines"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --json
+    description: Print full output as JSON
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --show-archived
+    description: Print archived workflows
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: nf-core list [OPTIONS] <filter keywords>\n\n  List available\
+    \ nf-core pipelines with local info.\n\n  Checks the web for a list of nf-core\
+    \ pipelines with their latest releases.\n  Shows which nf-core pipelines you have\
+    \ pulled locally and whether they are\n  up to date.\n\nOptions:\n  -s, --sort\
+    \ [release|pulled|name|stars]\n                                  How to sort listed\
+    \ pipelines\n  --json                          Print full output as JSON\n  --show-archived\
+    \                 Print archived workflows\n  --help                         \
+    \ Show this message and exit.\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/nf-core:1.13.1--pyh3252c3a_0
+- &id004 !Command
+  command:
+  - nf-core
+  - licences
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --json
+    description: Print output in JSON
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - nf-core
+    - licences
+    - line.
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: nf-core
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: licences
+      description: ''
+    - !Positional
+      optional: false
+      position: 2
+      name: pipeline name
+      description: ''
+    named: []
+    parent: *id004
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "\n                                          ,--./,-.\n          ___\
+      \     __   __   __   ___     /,-._.--~\\\n    |\\ | |__  __ /  ` /  \\ |__)\
+      \ |__         }  {\n    | \\| |       \\__, \\__/ |  \\ |___     \\`-._,-`-,\n\
+      \                                          `._,._,'\n\n    nf-core/tools version\
+      \ 1.13.1\n    There is a new version of nf-core/tools available! (1.13.3)\n\n\
+      \n\nUsage: nf-core licences [OPTIONS] <pipeline name>\nTry 'nf-core licences\
+      \ --help' for help.\n\nError: no such option: -h\n"
+    generated_using:
+    - -h
+    docker_image: quay.io/biocontainers/nf-core:1.13.1--pyh3252c3a_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: nf-core licences [OPTIONS] <pipeline name>\n\n  List software\
+    \ licences for a given workflow.\n\n  Checks the pipeline environment.yml file\
+    \ which lists all conda software\n  packages. Each of these is queried against\
+    \ the anaconda.org API to find\n  the licence. Package name, version and licence\
+    \ is printed to the command\n  line.\n\nOptions:\n  --json  Print output in JSON\n\
+    \  --help  Show this message and exit.\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/nf-core:1.13.1--pyh3252c3a_0
+- !Command
+  command:
+  - nf-core
+  - create
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    - --name
+    description: The name of your new pipeline  [required]
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --description
+    description: A short description of your pipeline  [required]
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    - --author
+    description: Name of the main author(s)  [required]
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-git
+    description: Do not initialise pipeline as new git repository
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --force
+    description: Overwrite output directory if it already exists
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --outdir
+    description: "Output directory for new pipeline (default: pipeline\nname)"
+    args: !SimpleFlagArg
+      name: TEXT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - --version
+    description: The initial version number to use
+    args: !SimpleFlagArg
+      name: TEXT
+  help_text: "Usage: nf-core create [OPTIONS]\n\n  Create a new pipeline using the\
+    \ nf-core template.\n\n  Uses the nf-core template to make a skeleton Nextflow\
+    \ pipeline with all\n  required files, boilerplate code and bfest-practices.\n\
+    \nOptions:\n  -n, --name TEXT         The name of your new pipeline  [required]\n\
+    \  -d, --description TEXT  A short description of your pipeline  [required]\n\
+    \  -a, --author TEXT       Name of the main author(s)  [required]\n  --version\
+    \ TEXT          The initial version number to use\n  --no-git                Do\
+    \ not initialise pipeline as new git repository\n  -f, --force             Overwrite\
+    \ output directory if it already exists\n  -o, --outdir TEXT       Output directory\
+    \ for new pipeline (default: pipeline\n                          name)\n\n  --help\
+    \                  Show this message and exit.\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/nf-core:1.13.1--pyh3252c3a_0
+- !Command
+  command:
+  - nf-core
+  - download
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: pipeline name
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --release
+    description: Pipeline release
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --outdir
+    description: Output directory
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --compress
+    description: "[tar.gz|tar.bz2|zip|none]\nArchive compression type"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --force
+    description: Overwrite existing files
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --singularity
+    description: Download singularity images
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --singularity-cache
+    description: "Don't copy images to the output directory,\ndon't set 'singularity.cacheDir'\
+      \ in workflow"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --parallel-downloads
+    description: Number of parallel image downloads
+    args: !SimpleFlagArg
+      name: INTEGER
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: nf-core download [OPTIONS] <pipeline name>\n\n  Download a pipeline,\
+    \ nf-core/configs and pipeline singularity images.\n\n  Collects all files in\
+    \ a single archive and configures the downloaded\n  workflow to use relative paths\
+    \ to the configs and singularity images.\n\nOptions:\n  -r, --release TEXT   \
+    \           Pipeline release\n  -o, --outdir TEXT               Output directory\n\
+    \  -c, --compress [tar.gz|tar.bz2|zip|none]\n                                \
+    \  Archive compression type\n  -f, --force                     Overwrite existing\
+    \ files\n  -s, --singularity               Download singularity images\n  -c,\
+    \ --singularity-cache         Don't copy images to the output directory,\n   \
+    \                               don't set 'singularity.cacheDir' in workflow\n\
+    \n  -p, --parallel-downloads INTEGER\n                                  Number\
+    \ of parallel image downloads\n  --help                          Show this message\
+    \ and exit.\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/nf-core:1.13.1--pyh3252c3a_0
+- !Command
+  command:
+  - nf-core
+  - lint
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: workflows.
+    description: -f, --fix <test>       Attempt to automatically fix specified lint
+      test
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --release
+    description: Execute additional checks for release-ready
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --show-passed
+    description: Show passing tests on the command line
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --fail-ignored
+    description: Convert ignored tests to failures
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --markdown
+    description: File to write linting results to (Markdown)
+    args: !SimpleFlagArg
+      name: filename
+  - !Flag
+    optional: true
+    synonyms:
+    - --json
+    description: File to write linting results to (JSON)
+    args: !SimpleFlagArg
+      name: filename
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: nf-core lint [OPTIONS] <pipeline directory>\n\n  Check pipeline\
+    \ code against nf-core guidelines.\n\n  Runs a large number of automated tests\
+    \ to ensure that the supplied\n  pipeline meets the nf-core guidelines. Documentation\
+    \ of all lint tests can\n  be found on the nf-core website: https://nf-co.re/errors\n\
+    \nOptions:\n  --release              Execute additional checks for release-ready\n\
+    \                         workflows.\n\n  -f, --fix <test>       Attempt to automatically\
+    \ fix specified lint test\n  -p, --show-passed      Show passing tests on the\
+    \ command line\n  -i, --fail-ignored     Convert ignored tests to failures\n \
+    \ --markdown <filename>  File to write linting results to (Markdown)\n  --json\
+    \ <filename>      File to write linting results to (JSON)\n  --help          \
+    \       Show this message and exit.\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/nf-core:1.13.1--pyh3252c3a_0
+- !Command
+  command:
+  - nf-core
+  - launch
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: pipeline name
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --revision
+    description: Release/branch/SHA of the project to run (if remote)
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --id
+    description: ID for web-gui launch parameter set
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --command-only
+    description: Create Nextflow command with params (no params file)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --params-out
+    description: Path to save run parameters file
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --params-in
+    description: Set of input run params to use from a previous run
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    - --save-all
+    description: Save all parameters, even if unchanged from default
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --url
+    description: Customise the builder URL (for development work)
+    args: !SimpleFlagArg
+      name: TEXT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: nf-core launch [OPTIONS] <pipeline name>\n\n  Launch a pipeline\
+    \ using a web GUI or command line prompts.\n\n  Uses the pipeline schema file\
+    \ to collect inputs for all available pipeline\n  parameters. Parameter names,\
+    \ descriptions and help text are shown. The\n  pipeline schema is used to validate\
+    \ all inputs as they are entered.\n\n  When finished, saves a file with the selected\
+    \ parameters which can be\n  passed to Nextflow using the -params-file option.\n\
+    \n  Run using a remote pipeline name (such as GitHub `user/repo` or a URL), a\n\
+    \  local pipeline directory or an ID from the nf-core web launch tool.\n\nOptions:\n\
+    \  -r, --revision TEXT    Release/branch/SHA of the project to run (if remote)\n\
+    \  -i, --id TEXT          ID for web-gui launch parameter set\n  -c, --command-only\
+    \     Create Nextflow command with params (no params file)\n  -o, --params-out\
+    \ PATH  Path to save run parameters file\n  -p, --params-in PATH   Set of input\
+    \ run params to use from a previous run\n  -a, --save-all         Save all parameters,\
+    \ even if unchanged from default\n  -h, --show-hidden      Show hidden params\
+    \ which don't normally need changing\n  --url TEXT             Customise the builder\
+    \ URL (for development work)\n  --help                 Show this message and exit.\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/nf-core:1.13.1--pyh3252c3a_0
+- !Command
+  command:
+  - nf-core
+  - sync
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: pipeline directory
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    - --from-branch
+    description: The git branch to use to fetch workflow vars.
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --pull-request
+    description: Make a GitHub pull-request with the changes.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --repository
+    description: 'GitHub PR: target repository.'
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -u
+    - --username
+    description: 'GitHub PR: auth username.'
+    args: !SimpleFlagArg
+      name: TEXT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: nf-core sync [OPTIONS] <pipeline directory>\n\n  Sync a pipeline\
+    \ TEMPLATE branch with the nf-core template.\n\n  To keep nf-core pipelines up\
+    \ to date with improvements in the main\n  template, we use a method of synchronisation\
+    \ that uses a special git\n  branch called TEMPLATE.\n\n  This command updates\
+    \ the TEMPLATE branch with the latest version of the\n  nf-core template, so that\
+    \ these updates can be synchronised with the\n  pipeline. It is run automatically\
+    \ for all pipelines when ever a new\n  release of nf-core/tools (and the included\
+    \ template) is made.\n\nOptions:\n  -b, --from-branch TEXT  The git branch to\
+    \ use to fetch workflow vars.\n  -p, --pull-request      Make a GitHub pull-request\
+    \ with the changes.\n  -r, --repository TEXT   GitHub PR: target repository.\n\
+    \  -u, --username TEXT     GitHub PR: auth username.\n  --help               \
+    \   Show this message and exit.\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/nf-core:1.13.1--pyh3252c3a_0
+- &id005 !Command
+  command:
+  - nf-core
+  - modules
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --repository
+    description: GitHub repository hosting software wrapper modules.
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    - --branch
+    description: Modules GitHub repo git branch to use.
+    args: !SimpleFlagArg
+      name: TEXT
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - nf-core
+    - modules
+    - list
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -j
+      - --json
+      description: Print as JSON to stdout
+      args: !EmptyFlagArg {}
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: nf-core modules list [OPTIONS] (<pipeline directory>)\n\n \
+      \ List available software modules.\n\n  If a pipeline directory is given, lists\
+      \ all modules installed locally.\n\n  If no pipeline directory is given, lists\
+      \ all currently available software\n  wrappers in the nf-core/modules repository.\n\
+      \nOptions:\n  -j, --json  Print as JSON to stdout\n  --help      Show this message\
+      \ and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/nf-core:1.13.1--pyh3252c3a_0
+  - !Command
+    command:
+    - nf-core
+    - modules
+    - create
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: directory
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -t
+      - --tool
+      description: or <tool/subtool>
+      args: !SimpleFlagArg
+        name: tool
+    - !Flag
+      optional: true
+      synonyms:
+      - -a
+      - --author
+      description: Module author's GitHub username
+      args: !SimpleFlagArg
+        name: author
+    - !Flag
+      optional: true
+      synonyms:
+      - -l
+      - --label
+      description: Standard resource label for process
+      args: !SimpleFlagArg
+        name: process label
+    - !Flag
+      optional: true
+      synonyms:
+      - -m
+      - --meta
+      description: Use Groovy meta map for sample information
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - -n
+      - --no-meta
+      description: Don't use meta map for sample information
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - -f
+      - --force
+      description: Overwrite any files if they already exist
+      args: !EmptyFlagArg {}
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: nf-core modules create [OPTIONS] <directory>\n\n  Create a\
+      \ new DSL2 module from the nf-core template.\n\n  If <directory> is a pipeline,\
+      \ this function creates a file called\n  'modules/local/tool_subtool.nf'\n\n\
+      \  If <directory> is a clone of nf-core/modules, it creates or modifies files\n\
+      \  in 'modules/software', 'modules/tests' and\n  'tests/config/pytest_software.yml'\n\
+      \nOptions:\n  -t, --tool <tool> or <tool/subtool>\n  -a, --author <author> \
+      \          Module author's GitHub username\n  -l, --label <process label>  \
+      \   Standard resource label for process\n  -m, --meta                      Use\
+      \ Groovy meta map for sample information\n  -n, --no-meta                  \
+      \ Don't use meta map for sample information\n  -f, --force                 \
+      \    Overwrite any files if they already exist\n  --help                   \
+      \       Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/nf-core:1.13.1--pyh3252c3a_0
+  - !Command
+    command:
+    - nf-core
+    - modules
+    - lint
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: repository.
+      description: 'Options:'
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -t
+      - --tool
+      description: or <tool/subtool>
+      args: !SimpleFlagArg
+        name: tool
+    - !Flag
+      optional: true
+      synonyms:
+      - -a
+      - --all
+      - --local
+      description: Run additional lint tests for local modules
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --passed
+      description: Show passed tests
+      args: !EmptyFlagArg {}
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: nf-core modules lint [OPTIONS] <pipeline/modules directory>\n\
+      \n  Lint one or more modules in a directory.\n\n  Checks DSL2 module code against\
+      \ nf-core guidelines to ensure that all\n  modules follow the same standards.\n\
+      \n  Test modules within a pipeline or with your clone of the nf-core/modules\n\
+      \  repository.\n\nOptions:\n  -t, --tool <tool> or <tool/subtool>\n  -a, --all\n\
+      \  --local                         Run additional lint tests for local modules\n\
+      \  --passed                        Show passed tests\n  --help             \
+      \             Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/nf-core:1.13.1--pyh3252c3a_0
+  - !Command
+    command:
+    - nf-core
+    - modules
+    - create-test-yml
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: files.
+      description: 'Options:'
+    - !Positional
+      optional: false
+      position: 1
+      name: exists
+      description: -p, --no-prompts                Use defaults without prompting
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -t
+      - --tool
+      description: or <tool/subtool>
+      args: !SimpleFlagArg
+        name: tool
+    - !Flag
+      optional: true
+      synonyms:
+      - -r
+      - --run-tests
+      description: Run the test workflows
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - -o
+      - --output
+      description: Path for output YAML file
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - -f
+      - --force
+      description: Overwrite output YAML file if it already
+      args: !EmptyFlagArg {}
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: nf-core modules create-test-yml [OPTIONS]\n\n  Auto-generate\
+      \ a test.yml file for a new module.\n\n  Given the name of a module, runs the\
+      \ Nextflow test command and\n  automatically generate the required `test.yml`\
+      \ file based on the output\n  files.\n\nOptions:\n  -t, --tool <tool> or <tool/subtool>\n\
+      \  -r, --run-tests                 Run the test workflows\n  -o, --output TEXT\
+      \               Path for output YAML file\n  -f, --force                   \
+      \  Overwrite output YAML file if it already\n                              \
+      \    exists\n\n  -p, --no-prompts                Use defaults without prompting\n\
+      \  --help                          Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/nf-core:1.13.1--pyh3252c3a_0
+  - !Command
+    command:
+    - nf-core
+    - modules
+    - remove
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: pipeline directory
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -t
+      - --tool
+      description: or <tool/subtool>
+      args: !SimpleFlagArg
+        name: tool
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: nf-core modules remove [OPTIONS] <pipeline directory>\n\n \
+      \ Remove a software wrapper from a pipeline.\n\nOptions:\n  -t, --tool <tool>\
+      \ or <tool/subtool>\n  --help                          Show this message and\
+      \ exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/nf-core:1.13.1--pyh3252c3a_0
+  - !Command
+    command:
+    - nf-core
+    - modules
+    - install
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: pipeline directory
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -t
+      - --tool
+      description: or <tool/subtool>
+      args: !SimpleFlagArg
+        name: tool
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: nf-core modules install [OPTIONS] <pipeline directory>\n\n\
+      \  Add a DSL2 software wrapper module to a pipeline.\n\n  Finds the relevant\
+      \ files in nf-core/modules and copies to the pipeline,\n  along with associated\
+      \ metadata.\n\nOptions:\n  -t, --tool <tool> or <tool/subtool>\n  --help   \
+      \                       Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/nf-core:1.13.1--pyh3252c3a_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: nf-core modules [OPTIONS] COMMAND [ARGS]...\n\n  Work with the\
+    \ nf-core/modules software wrappers.\n\n  Tools to manage DSL 2 nf-core/modules\
+    \ software wrapper imports.\n\nOptions:\n  -r, --repository TEXT  GitHub repository\
+    \ hosting software wrapper modules.\n  -b, --branch TEXT      Modules GitHub repo\
+    \ git branch to use.\n  --help                 Show this message and exit.\n\n\
+    Commands:\n  list             List available software modules.\n  install    \
+    \      Add a DSL2 software wrapper module to a pipeline.\n  remove           Remove\
+    \ a software wrapper from a pipeline.\n  create           Create a new DSL2 module\
+    \ from the nf-core template.\n  create-test-yml  Auto-generate a test.yml file\
+    \ for a new module.\n  lint             Lint one or more modules in a directory.\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/nf-core:1.13.1--pyh3252c3a_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Show the version and exit.
+  args: !EmptyFlagArg {}
+help_text: "Usage: nf-core [OPTIONS] COMMAND [ARGS]...\n\nOptions:\n  --version  \
+  \                Show the version and exit.\n  -v, --verbose              Print\
+  \ verbose output to the console.\n  -l, --log-file <filename>  Save a verbose log\
+  \ to a file.\n  --help                     Show this message and exit.\n\nCommands:\n\
+  \  list          List available nf-core pipelines with local info.\n  launch   \
+  \     Launch a pipeline using a web GUI or command line prompts.\n  download   \
+  \   Download a pipeline, nf-core/configs and pipeline...\n  licences      List software\
+  \ licences for a given workflow.\n  create        Create a new pipeline using the\
+  \ nf-core template.\n  lint          Check pipeline code against nf-core guidelines.\n\
+  \  modules       Work with the nf-core/modules software wrappers.\n  schema    \
+  \    Suite of tools for developers to manage pipeline schema.\n  bump-version  Update\
+  \ nf-core pipeline version number.\n  sync          Sync a pipeline TEMPLATE branch\
+  \ with the nf-core template.\n"
+generated_using: *id003
+docker_image: quay.io/biocontainers/nf-core:1.13.1--pyh3252c3a_0

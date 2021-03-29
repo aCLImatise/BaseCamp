@@ -1,0 +1,125 @@
+!Command
+command:
+- bam2bw
+positional:
+- !Positional
+  optional: true
+  position: 0
+  name: b|cr
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: am
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  description: '[file]                                Path to the input [b|cr]am file.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  - --filter
+  description: '[int]                                SAM flags to filter. [default:
+    4]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --filter-include
+  description: "[int]                        SAM flags to include. [default: 0]\n\
+    N.B. if properly paired reads are filtered for inclusion bam2bw will assume paired-end\
+    \ data\nand exclude any proper-pair flagged reads not in F/R orientation.-o  --outfile\
+    \ [file]                              Path to the output .bw file produced. [default:'output.bam.bw']"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --scale-log10
+  description: '[float]                         A scale factor to multiply to output
+    [default: -152735714]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --region
+  description: '[file]                               A samtools style region (contig:start-stop)
+    or a bed file of regions over which to produce the bigwig file'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  - --include-zeroes
+  description: Include zero coverage regions as additional entries to the bw file
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reference
+  description: '[file]                            Path to reference genome.fa file
+    (required for cram if ref_path cannot be resolved)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --overlap
+  description: Use overlapping read check
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: ''
+  args: !SimpleFlagArg
+    name: output.bw
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Display this usage information.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: Prints the version number.
+  args: !EmptyFlagArg {}
+help_text: "Usage: bam2bw -i input.[b|cr]am -o output.bw\nbam2bw can be used to generate\
+  \ a bw file of coverage from a [cr|b]am file.\n\n-i  --input [file]            \
+  \                    Path to the input [b|cr]am file.\n-F  --filter [int]      \
+  \                          SAM flags to filter. [default: 4]\n-f  --filter-include\
+  \ [int]                        SAM flags to include. [default: 0]\n            \
+  \                                      N.B. if properly paired reads are filtered\
+  \ for inclusion bam2bw will assume paired-end data\n                           \
+  \                       and exclude any proper-pair flagged reads not in F/R orientation.-o\
+  \  --outfile [file]                              Path to the output .bw file produced.\
+  \ [default:'output.bam.bw']\n\nOptional: \n-S  --scale-log10 [float]           \
+  \              A scale factor to multiply to output [default: -152735714]\n-c  --region\
+  \ [file]                               A samtools style region (contig:start-stop)\
+  \ or a bed file of regions over which to produce the bigwig file\n-z  --include-zeroes\
+  \                              Include zero coverage regions as additional entries\
+  \ to the bw file\n-r  --reference [file]                            Path to reference\
+  \ genome.fa file (required for cram if ref_path cannot be resolved)\n-a  --overlap\
+  \                                     Use overlapping read check\n\nOther:\n-h \
+  \ --help                                        Display this usage information.\n\
+  -v  --version                                     Prints the version number.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/cgpbigwig:1.6.0--h93d22ca_0

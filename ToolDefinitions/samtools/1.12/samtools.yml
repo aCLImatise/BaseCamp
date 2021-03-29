@@ -1,0 +1,4450 @@
+&id001 !Command
+command:
+- samtools
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - samtools
+  - depad
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: in.bam
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    description: Output is SAM (default is BAM)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -S
+    description: Input is SAM (default is BAM)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -u
+    description: Uncompressed BAM output (can't use with -s)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - '-1'
+    description: Fast compression BAM output (can't use with -s)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -T
+    - --reference
+    description: Padded reference sequence file [null]
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: Output file name [stdout]
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-PG
+    description: do not add a PG line
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --input-fmt-option
+    description: "[=VAL]\nSpecify a single input file format option in the form\n\
+      of OPTION or OPTION=VALUE"
+    args: !SimpleFlagArg
+      name: OPT
+  - !Flag
+    optional: true
+    synonyms:
+    - --output-fmt
+    description: "[,OPT[=VAL]]...\nSpecify output format (SAM, BAM, CRAM)"
+    args: !SimpleFlagArg
+      name: FORMAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --output-fmt-option
+    description: "[=VAL]\nSpecify a single output file format option in the form\n\
+      of OPTION or OPTION=VALUE"
+    args: !SimpleFlagArg
+      name: OPT
+  - !Flag
+    optional: true
+    synonyms:
+    - --write-index
+    description: Automatically index the output files [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --verbosity
+    description: Set level of verbosity
+    args: !SimpleFlagArg
+      name: INT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "depad: unrecognized option '--help'\n\nUsage:   samtools depad <in.bam>\n\
+    \nOptions:\n  -s           Output is SAM (default is BAM)\n  -S           Input\
+    \ is SAM (default is BAM)\n  -u           Uncompressed BAM output (can't use with\
+    \ -s)\n  -1           Fast compression BAM output (can't use with -s)\n  -T, --reference\
+    \ FILE\n               Padded reference sequence file [null]\n  -o FILE      Output\
+    \ file name [stdout]\n  --no-PG      do not add a PG line\n  -?           Longer\
+    \ help\n      --input-fmt-option OPT[=VAL]\n               Specify a single input\
+    \ file format option in the form\n               of OPTION or OPTION=VALUE\n \
+    \     --output-fmt FORMAT[,OPT[=VAL]]...\n               Specify output format\
+    \ (SAM, BAM, CRAM)\n      --output-fmt-option OPT[=VAL]\n               Specify\
+    \ a single output file format option in the form\n               of OPTION or\
+    \ OPTION=VALUE\n      --write-index\n               Automatically index the output\
+    \ files [off]\n      --verbosity INT\n               Set level of verbosity\n\
+    Notes:\n\n1. Requires embedded reference sequences (before the reads for that\
+    \ reference),\n   or ideally a FASTA file of the padded reference sequences (via\
+    \ a -T option).\n\n2. Input padded alignment reads' CIGAR strings must not use\
+    \ P or I operators.\n\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/samtools:1.12--hd5e65b6_0
+- !Command
+  command:
+  - samtools
+  - stats
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: file.bam
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --coverage
+    description: ',<int>,<int>    Coverage distribution min,max,step [1,1000,1]'
+    args: !SimpleFlagArg
+      name: int
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --remove-dups
+    description: Exclude from statistics reads marked as duplicates
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -X
+    - --customized-index-file
+    description: Use a customized index file
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --required-flag
+    description: <str|int>      Required flag, 0 for unset. See also `samtools flags`
+      [0]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -F
+    - --filtering-flag
+    description: Filtering flag, 0 for unset. See also `samtools flags` [0]
+    args: !SimpleFlagArg
+      name: str|int
+  - !Flag
+    optional: true
+    synonyms:
+    - --GC-depth
+    description: the size of GC-depth bins (decreasing bin size increases memory requirement)
+      [2e4]
+    args: !SimpleFlagArg
+      name: float
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --insert-size
+    description: Maximum insert size [8000]
+    args: !SimpleFlagArg
+      name: int
+  - !Flag
+    optional: true
+    synonyms:
+    - -I
+    - --id
+    description: Include only listed read group or sample name
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    - --read-length
+    description: Include in the statistics only reads with the given read length [-1]
+    args: !SimpleFlagArg
+      name: int
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    - --most-inserts
+    description: Report only the main part of inserts [0.99]
+    args: !SimpleFlagArg
+      name: float
+  - !Flag
+    optional: true
+    synonyms:
+    - -P
+    - --split-prefix
+    description: Path or string prefix for filepaths output by -S (default is input
+      filename)
+    args: !SimpleFlagArg
+      name: str
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    - --trim-quality
+    description: The BWA trimming parameter [0]
+    args: !SimpleFlagArg
+      name: int
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --ref-seq
+    description: Reference sequence (required for GC-depth and mismatches-per-cycle
+      calculation).
+    args: !SimpleFlagArg
+      name: file
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --sam
+    description: Ignored (input format is auto-detected).
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -S
+    - --split
+    description: Also write statistics to separate files split by tagged field.
+    args: !SimpleFlagArg
+      name: tag
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --target-regions
+    description: Do stats in these regions only. Tab-delimited file chr,from,to, 1-based,
+      inclusive.
+    args: !SimpleFlagArg
+      name: file
+  - !Flag
+    optional: true
+    synonyms:
+    - -x
+    - --sparse
+    description: Suppress outputting IS rows where there are no insertions.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --remove-overlaps
+    description: Remove overlaps of paired-end reads from coverage and base count
+      computations.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    - --cov-threshold
+    description: Only bases with coverage above this value will be included in the
+      target percentage computation [0]
+    args: !SimpleFlagArg
+      name: int
+  - !Flag
+    optional: true
+    synonyms:
+    - --input-fmt-option
+    description: "[=VAL]\nSpecify a single input file format option in the form\n\
+      of OPTION or OPTION=VALUE"
+    args: !SimpleFlagArg
+      name: OPT
+  - !Flag
+    optional: true
+    synonyms:
+    - --reference
+    description: Reference sequence FASTA FILE [null]
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -@
+    - --threads
+    description: Number of additional threads to use [0]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --verbosity
+    description: "Set level of verbosity\n"
+    args: !SimpleFlagArg
+      name: INT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: This help message
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "About: The program collects statistics from BAM files. The output can\
+    \ be visualized using plot-bamstats.\nUsage: samtools stats [OPTIONS] file.bam\n\
+    \       samtools stats [OPTIONS] file.bam chr:from-to\nOptions:\n    -c, --coverage\
+    \ <int>,<int>,<int>    Coverage distribution min,max,step [1,1000,1]\n    -d,\
+    \ --remove-dups                   Exclude from statistics reads marked as duplicates\n\
+    \    -X, --customized-index-file         Use a customized index file\n    -f,\
+    \ --required-flag  <str|int>      Required flag, 0 for unset. See also `samtools\
+    \ flags` [0]\n    -F, --filtering-flag <str|int>      Filtering flag, 0 for unset.\
+    \ See also `samtools flags` [0]\n        --GC-depth <float>              the size\
+    \ of GC-depth bins (decreasing bin size increases memory requirement) [2e4]\n\
+    \    -h, --help                          This help message\n    -i, --insert-size\
+    \ <int>             Maximum insert size [8000]\n    -I, --id <string>        \
+    \           Include only listed read group or sample name\n    -l, --read-length\
+    \ <int>             Include in the statistics only reads with the given read length\
+    \ [-1]\n    -m, --most-inserts <float>          Report only the main part of inserts\
+    \ [0.99]\n    -P, --split-prefix <str>            Path or string prefix for filepaths\
+    \ output by -S (default is input filename)\n    -q, --trim-quality <int>     \
+    \       The BWA trimming parameter [0]\n    -r, --ref-seq <file>             \
+    \   Reference sequence (required for GC-depth and mismatches-per-cycle calculation).\n\
+    \    -s, --sam                           Ignored (input format is auto-detected).\n\
+    \    -S, --split <tag>                   Also write statistics to separate files\
+    \ split by tagged field.\n    -t, --target-regions <file>         Do stats in\
+    \ these regions only. Tab-delimited file chr,from,to, 1-based, inclusive.\n  \
+    \  -x, --sparse                        Suppress outputting IS rows where there\
+    \ are no insertions.\n    -p, --remove-overlaps               Remove overlaps\
+    \ of paired-end reads from coverage and base count computations.\n    -g, --cov-threshold\
+    \ <int>           Only bases with coverage above this value will be included in\
+    \ the target percentage computation [0]\n      --input-fmt-option OPT[=VAL]\n\
+    \               Specify a single input file format option in the form\n      \
+    \         of OPTION or OPTION=VALUE\n      --reference FILE\n               Reference\
+    \ sequence FASTA FILE [null]\n  -@, --threads INT\n               Number of additional\
+    \ threads to use [0]\n      --verbosity INT\n               Set level of verbosity\n\
+    \n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/samtools:1.12--hd5e65b6_0
+- !Command
+  command:
+  - samtools
+  - calmd
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: aln.bam
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: ref.fasta
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -e
+    description: change identical bases to '='
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -u
+    description: uncompressed BAM output (for piping)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    description: compressed BAM output
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -S
+    description: ignored (input format is auto-detected)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -A
+    description: modify the quality string
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -Q
+    description: use quiet mode to output less debug info to stdout
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    description: compute the BQ tag (without -A) or cap baseQ by BAQ (with -A)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -E
+    description: extended BAQ for better sensitivity but lower specificity
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-PG
+    description: do not add a PG line
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --input-fmt-option
+    description: "[=VAL]\nSpecify a single input file format option in the form\n\
+      of OPTION or OPTION=VALUE"
+    args: !SimpleFlagArg
+      name: OPT
+  - !Flag
+    optional: true
+    synonyms:
+    - --output-fmt
+    description: "[,OPT[=VAL]]...\nSpecify output format (SAM, BAM, CRAM)"
+    args: !SimpleFlagArg
+      name: FORMAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --output-fmt-option
+    description: "[=VAL]\nSpecify a single output file format option in the form\n\
+      of OPTION or OPTION=VALUE"
+    args: !SimpleFlagArg
+      name: OPT
+  - !Flag
+    optional: true
+    synonyms:
+    - --reference
+    description: Reference sequence FASTA FILE [null]
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -@
+    - --threads
+    description: Number of additional threads to use [0]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --verbosity
+    description: "Set level of verbosity\n"
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -eubrAESQ
+    description: ''
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "calmd: unrecognized option '--help'\nUsage: samtools calmd [-eubrAESQ]\
+    \ <aln.bam> <ref.fasta>\nOptions:\n  -e       change identical bases to '='\n\
+    \  -u       uncompressed BAM output (for piping)\n  -b       compressed BAM output\n\
+    \  -S       ignored (input format is auto-detected)\n  -A       modify the quality\
+    \ string\n  -Q       use quiet mode to output less debug info to stdout\n  -r\
+    \       compute the BQ tag (without -A) or cap baseQ by BAQ (with -A)\n  -E  \
+    \     extended BAQ for better sensitivity but lower specificity\n  --no-PG  do\
+    \ not add a PG line\n      --input-fmt-option OPT[=VAL]\n               Specify\
+    \ a single input file format option in the form\n               of OPTION or OPTION=VALUE\n\
+    \      --output-fmt FORMAT[,OPT[=VAL]]...\n               Specify output format\
+    \ (SAM, BAM, CRAM)\n      --output-fmt-option OPT[=VAL]\n               Specify\
+    \ a single output file format option in the form\n               of OPTION or\
+    \ OPTION=VALUE\n      --reference FILE\n               Reference sequence FASTA\
+    \ FILE [null]\n  -@, --threads INT\n               Number of additional threads\
+    \ to use [0]\n      --verbosity INT\n               Set level of verbosity\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/samtools:1.12--hd5e65b6_0
+- !Command
+  command:
+  - samtools
+  - index
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: in.bam
+    description: ''
+  - !Positional
+    optional: true
+    position: 1
+    name: out.index
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    description: Generate BAI-format index for BAM files [default]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    description: Generate CSI-format index for BAM files
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    description: Set minimum interval size for CSI indices to 2^INT [14]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -@
+    description: Sets the number of threads [none]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -bc
+    description: ''
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "index: invalid option -- '-'\nUsage: samtools index [-bc] [-m INT] <in.bam>\
+    \ [out.index]\nOptions:\n  -b       Generate BAI-format index for BAM files [default]\n\
+    \  -c       Generate CSI-format index for BAM files\n  -m INT   Set minimum interval\
+    \ size for CSI indices to 2^INT [14]\n  -@ INT   Sets the number of threads [none]\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/samtools:1.12--hd5e65b6_0
+- !Command
+  command:
+  - samtools
+  - fastq
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: i14i8
+    description: the first 14 characters are index 1, the next 8 characters are index
+      2
+  - !Positional
+    optional: false
+    position: 1
+    name: n8i14
+    description: ignore the first 8 characters, and use the next 14 characters for
+      index 1
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - '-0'
+    description: write reads designated READ_OTHER to FILE
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - '-1'
+    description: write reads designated READ1 to FILE
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - '-2'
+    description: write reads designated READ2 to FILE
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: "write reads designated READ1 or READ2 to FILE\nnote: if a singleton\
+      \ file is specified with -s, only\npaired reads will be written to the -1 and\
+      \ -2 files."
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    description: only include reads with all  of the FLAGs in INT present [0]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -F
+    description: only include reads with none of the FLAGS in INT present [0x900]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -G
+    description: only EXCLUDE reads with all  of the FLAGs in INT present [0]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    description: don't append /1 and /2 to the read name
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -N
+    description: always append /1 and /2 to the read name
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -O
+    description: output quality in the OQ tag if present
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    description: write singleton reads designated READ1 or READ2 to FILE
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    description: copy RG, BC and QT tags to the FASTQ header line
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -T
+    description: copy arbitrary tags to the FASTQ header line
+    args: !SimpleFlagArg
+      name: TAGLIST
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    description: default quality score if not given in file [1]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: add Illumina Casava 1.8 format entry to header (eg 1:N:0:ATCACG)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    description: compression level [0..9] to use when creating gz or bgzf fastq files
+      [1]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --i1
+    description: write first index reads to FILE
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --i2
+    description: write second index reads to FILE
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --barcode-tag
+    description: 'Barcode tag [default: BC]'
+    args: !SimpleFlagArg
+      name: TAG
+  - !Flag
+    optional: true
+    synonyms:
+    - --quality-tag
+    description: 'Quality tag [default: QT]'
+    args: !SimpleFlagArg
+      name: TAG
+  - !Flag
+    optional: true
+    synonyms:
+    - --index-format
+    description: How to parse barcode and quality tags
+    args: !SimpleFlagArg
+      name: STR
+  - !Flag
+    optional: true
+    synonyms:
+    - --input-fmt-option
+    description: "[=VAL]\nSpecify a single input file format option in the form\n\
+      of OPTION or OPTION=VALUE"
+    args: !SimpleFlagArg
+      name: OPT
+  - !Flag
+    optional: true
+    synonyms:
+    - --reference
+    description: Reference sequence FASTA FILE [null]
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -@
+    - --threads
+    description: Number of additional threads to use [0]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --verbosity
+    description: Set level of verbosity
+    args: !SimpleFlagArg
+      name: INT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "fastq: unrecognized option '--help'\nUsage: samtools fastq [options...]\
+    \ <in.bam>\n\nDescription:\nConverts a SAM, BAM or CRAM into either FASTQ or FASTA\
+    \ format depending on the command invoked.\n\nOptions:\n  -0 FILE            \
+    \  write reads designated READ_OTHER to FILE\n  -1 FILE              write reads\
+    \ designated READ1 to FILE\n  -2 FILE              write reads designated READ2\
+    \ to FILE\n  -o FILE              write reads designated READ1 or READ2 to FILE\n\
+    \                       note: if a singleton file is specified with -s, only\n\
+    \                       paired reads will be written to the -1 and -2 files.\n\
+    \  -f INT               only include reads with all  of the FLAGs in INT present\
+    \ [0]\n  -F INT               only include reads with none of the FLAGS in INT\
+    \ present [0x900]\n  -G INT               only EXCLUDE reads with all  of the\
+    \ FLAGs in INT present [0]\n  -n                   don't append /1 and /2 to the\
+    \ read name\n  -N                   always append /1 and /2 to the read name\n\
+    \  -O                   output quality in the OQ tag if present\n  -s FILE   \
+    \           write singleton reads designated READ1 or READ2 to FILE\n  -t    \
+    \               copy RG, BC and QT tags to the FASTQ header line\n  -T TAGLIST\
+    \           copy arbitrary tags to the FASTQ header line\n  -v INT           \
+    \    default quality score if not given in file [1]\n  -i                   add\
+    \ Illumina Casava 1.8 format entry to header (eg 1:N:0:ATCACG)\n  -c         \
+    \          compression level [0..9] to use when creating gz or bgzf fastq files\
+    \ [1]\n  --i1 FILE            write first index reads to FILE\n  --i2 FILE   \
+    \         write second index reads to FILE\n  --barcode-tag TAG    Barcode tag\
+    \ [default: BC]\n  --quality-tag TAG    Quality tag [default: QT]\n  --index-format\
+    \ STR   How to parse barcode and quality tags\n\n      --input-fmt-option OPT[=VAL]\n\
+    \               Specify a single input file format option in the form\n      \
+    \         of OPTION or OPTION=VALUE\n      --reference FILE\n               Reference\
+    \ sequence FASTA FILE [null]\n  -@, --threads INT\n               Number of additional\
+    \ threads to use [0]\n      --verbosity INT\n               Set level of verbosity\n\
+    \nThe files will be automatically compressed if the file names have a .gz or .bgzf\
+    \ extension.\nThe input to this program must be collated by name. Run 'samtools\
+    \ collate' or 'samtools sort -n'.\n\nReads are designated READ1 if FLAG READ1\
+    \ is set and READ2 is not set.\nReads are designated READ2 if FLAG READ1 is not\
+    \ set and READ2 is set.\nReads are designated READ_OTHER if FLAGs READ1 and READ2\
+    \ are either both set\nor both unset.\nRun 'samtools flags' for more information\
+    \ on flag codes and meanings.\n\nThe index-format string describes how to parse\
+    \ the barcode and quality tags, for example:\n   i14i8       the first 14 characters\
+    \ are index 1, the next 8 characters are index 2\n   n8i14       ignore the first\
+    \ 8 characters, and use the next 14 characters for index 1\nIf the tag contains\
+    \ a separator, then the numeric part can be replaced with '*' to mean\n'read until\
+    \ the separator or end of tag', for example:\n   n*i*        ignore the left part\
+    \ of the tag until the separator, then use the second part\n               of\
+    \ the tag as index 1\n\nExamples:\n To get just the paired reads in separate files,\
+    \ use:\n   samtools fastq -1 paired1.fq -2 paired2.fq -0 /dev/null -s /dev/null\
+    \ -n in.bam\n\n To get all non-supplementary/secondary reads in a single file,\
+    \ redirect the output:\n   samtools fastq in.bam > all_reads.fq\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/samtools:1.12--hd5e65b6_0
+- !Command
+  command:
+  - samtools
+  - targetcut
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: in.bam
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --input-fmt-option
+    description: "[=VAL]\nSpecify a single input file format option in the form\n\
+      of OPTION or OPTION=VALUE"
+    args: !SimpleFlagArg
+      name: OPT
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --reference
+    description: Reference sequence FASTA FILE [null]
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --verbosity
+    description: "Set level of verbosity\n"
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - '-2'
+    description: ''
+    args: !SimpleFlagArg
+      name: em2
+  - !Flag
+    optional: true
+    synonyms:
+    - '-1'
+    description: ''
+    args: !SimpleFlagArg
+      name: em1
+  - !Flag
+    optional: true
+    synonyms:
+    - '-0'
+    description: ''
+    args: !SimpleFlagArg
+      name: em0
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: ''
+    args: !SimpleFlagArg
+      name: inPen
+  - !Flag
+    optional: true
+    synonyms:
+    - -Q
+    description: ''
+    args: !SimpleFlagArg
+      name: minQ
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "targetcut: unrecognized option '--help'\nUsage: samtools targetcut [-Q\
+    \ minQ] [-i inPen] [-0 em0] [-1 em1] [-2 em2] <in.bam>\n      --input-fmt-option\
+    \ OPT[=VAL]\n               Specify a single input file format option in the form\n\
+    \               of OPTION or OPTION=VALUE\n  -f, --reference FILE\n          \
+    \     Reference sequence FASTA FILE [null]\n      --verbosity INT\n          \
+    \     Set level of verbosity\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/samtools:1.12--hd5e65b6_0
+- !Command
+  command:
+  - samtools
+  - bedcov
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: in.bed
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: in1.bam
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -Q
+    description: mapping quality threshold [0]
+    args: !SimpleFlagArg
+      name: int
+  - !Flag
+    optional: true
+    synonyms:
+    - -X
+    description: use customized index files
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    description: remove the specified flags from the set used to filter out reads
+    args: !SimpleFlagArg
+      name: flags
+  - !Flag
+    optional: true
+    synonyms:
+    - -G
+    description: "add the specified flags to the set used to filter out reads\nThe\
+      \ default set is UNMAP,SECONDARY,QCFAIL,DUP or 0x704      -j               \
+      \   do not include deletions (D) and ref skips (N) in bedcov computation"
+    args: !SimpleFlagArg
+      name: flags
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    description: depth threshold. Number of reference bases with coverage above and                          including
+      this value will be displayed in a separate column
+    args: !SimpleFlagArg
+      name: int
+  - !Flag
+    optional: true
+    synonyms:
+    - --input-fmt-option
+    description: "[=VAL]\nSpecify a single input file format option in the form\n\
+      of OPTION or OPTION=VALUE"
+    args: !SimpleFlagArg
+      name: OPT
+  - !Flag
+    optional: true
+    synonyms:
+    - --reference
+    description: Reference sequence FASTA FILE [null]
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --verbosity
+    description: "Set level of verbosity\n"
+    args: !SimpleFlagArg
+      name: INT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "bedcov: unrecognized option '--help'\nUsage: samtools bedcov [options]\
+    \ <in.bed> <in1.bam> [...]\n\nOptions:\n      -Q <int>            mapping quality\
+    \ threshold [0]\n      -X                  use customized index files\n      -g\
+    \ <flags>          remove the specified flags from the set used to filter out\
+    \ reads\n      -G <flags>          add the specified flags to the set used to\
+    \ filter out reads\n                          The default set is UNMAP,SECONDARY,QCFAIL,DUP\
+    \ or 0x704      -j                  do not include deletions (D) and ref skips\
+    \ (N) in bedcov computation\n      -d <int>            depth threshold. Number\
+    \ of reference bases with coverage above and                          including\
+    \ this value will be displayed in a separate column\n      --input-fmt-option\
+    \ OPT[=VAL]\n               Specify a single input file format option in the form\n\
+    \               of OPTION or OPTION=VALUE\n      --reference FILE\n          \
+    \     Reference sequence FASTA FILE [null]\n      --verbosity INT\n          \
+    \     Set level of verbosity\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/samtools:1.12--hd5e65b6_0
+- !Command
+  command:
+  - samtools
+  - tview
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: aln.bam
+    description: ''
+  - !Positional
+    optional: true
+    position: 1
+    name: ref.fasta
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    description: output as (H)tml or (C)urses or (T)ext
+    args: !SimpleFlagArg
+      name: display
+  - !Flag
+    optional: true
+    synonyms:
+    - -X
+    description: include customized index file
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    description: :pos      go directly to this position
+    args: !SimpleFlagArg
+      name: chr
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    description: display only reads from this sample or group
+    args: !SimpleFlagArg
+      name: STR
+  - !Flag
+    optional: true
+    synonyms:
+    - -w
+    description: display width (with -d T only)
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --input-fmt-option
+    description: "[=VAL]\nSpecify a single input file format option in the form\n\
+      of OPTION or OPTION=VALUE"
+    args: !SimpleFlagArg
+      name: OPT
+  - !Flag
+    optional: true
+    synonyms:
+    - --reference
+    description: Reference sequence FASTA FILE [null]
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --verbosity
+    description: "Set level of verbosity\n"
+    args: !SimpleFlagArg
+      name: INT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "tview: unrecognized option '--help'\nUsage: samtools tview [options]\
+    \ <aln.bam> [ref.fasta]\nOptions:\n   -d display      output as (H)tml or (C)urses\
+    \ or (T)ext \n   -X              include customized index file\n   -p chr:pos\
+    \      go directly to this position\n   -s STR          display only reads from\
+    \ this sample or group\n   -w INT          display width (with -d T only)\n  \
+    \    --input-fmt-option OPT[=VAL]\n               Specify a single input file\
+    \ format option in the form\n               of OPTION or OPTION=VALUE\n      --reference\
+    \ FILE\n               Reference sequence FASTA FILE [null]\n      --verbosity\
+    \ INT\n               Set level of verbosity\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/samtools:1.12--hd5e65b6_0
+- !Command
+  command:
+  - samtools
+  - merge
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: out.bam
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: in1.bam
+    description: ''
+  - !Positional
+    optional: true
+    position: 2
+    name: inN.bam
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    description: Input files are sorted by read name
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    description: Input files are sorted by TAG value
+    args: !SimpleFlagArg
+      name: TAG
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    description: Attach RG tag (inferred from file names)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -u
+    description: Uncompressed BAM output
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    description: Overwrite the output BAM if exist
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - '-1'
+    description: Compress level 1
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    description: Compression level, from 0 to 9 [-1]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -R
+    description: Merge file in the specified region STR [all]
+    args: !SimpleFlagArg
+      name: STR
+  - !Flag
+    optional: true
+    synonyms:
+    - -h
+    description: Copy the header in FILE to <out.bam> [in1.bam]
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    description: Combine @RG headers with colliding IDs [alter IDs to be distinct]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    description: Combine @PG headers with colliding IDs [alter IDs to be distinct]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    description: Override random seed
+    args: !SimpleFlagArg
+      name: VALUE
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    description: List of input BAM filenames, one per line [null]
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -X
+    description: Use customized index files
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -L
+    description: Specify a BED file for multiple region filtering [null]
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-PG
+    description: do not add a PG line
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --input-fmt-option
+    description: "[=VAL]\nSpecify a single input file format option in the form\n\
+      of OPTION or OPTION=VALUE"
+    args: !SimpleFlagArg
+      name: OPT
+  - !Flag
+    optional: true
+    synonyms:
+    - -O
+    - --output-fmt
+    description: "[,OPT[=VAL]]...\nSpecify output format (SAM, BAM, CRAM)"
+    args: !SimpleFlagArg
+      name: FORMAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --output-fmt-option
+    description: "[=VAL]\nSpecify a single output file format option in the form\n\
+      of OPTION or OPTION=VALUE"
+    args: !SimpleFlagArg
+      name: OPT
+  - !Flag
+    optional: true
+    synonyms:
+    - --reference
+    description: Reference sequence FASTA FILE [null]
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -@
+    - --threads
+    description: Number of additional threads to use [0]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --write-index
+    description: Automatically index the output files [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --verbosity
+    description: "Set level of verbosity\n"
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -nurlf
+    description: ''
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "merge: unrecognized option '--help'\nUsage: samtools merge [-nurlf]\
+    \ [-h inh.sam] [-b <bamlist.fofn>] <out.bam> <in1.bam> [<in2.bam> ... <inN.bam>]\n\
+    \nOptions:\n  -n         Input files are sorted by read name\n  -t TAG     Input\
+    \ files are sorted by TAG value\n  -r         Attach RG tag (inferred from file\
+    \ names)\n  -u         Uncompressed BAM output\n  -f         Overwrite the output\
+    \ BAM if exist\n  -1         Compress level 1\n  -l INT     Compression level,\
+    \ from 0 to 9 [-1]\n  -R STR     Merge file in the specified region STR [all]\n\
+    \  -h FILE    Copy the header in FILE to <out.bam> [in1.bam]\n  -c         Combine\
+    \ @RG headers with colliding IDs [alter IDs to be distinct]\n  -p         Combine\
+    \ @PG headers with colliding IDs [alter IDs to be distinct]\n  -s VALUE   Override\
+    \ random seed\n  -b FILE    List of input BAM filenames, one per line [null]\n\
+    \  -X         Use customized index files\n  -L FILE    Specify a BED file for\
+    \ multiple region filtering [null]\n  --no-PG    do not add a PG line\n      --input-fmt-option\
+    \ OPT[=VAL]\n               Specify a single input file format option in the form\n\
+    \               of OPTION or OPTION=VALUE\n  -O, --output-fmt FORMAT[,OPT[=VAL]]...\n\
+    \               Specify output format (SAM, BAM, CRAM)\n      --output-fmt-option\
+    \ OPT[=VAL]\n               Specify a single output file format option in the\
+    \ form\n               of OPTION or OPTION=VALUE\n      --reference FILE\n   \
+    \            Reference sequence FASTA FILE [null]\n  -@, --threads INT\n     \
+    \          Number of additional threads to use [0]\n      --write-index\n    \
+    \           Automatically index the output files [off]\n      --verbosity INT\n\
+    \               Set level of verbosity\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/samtools:1.12--hd5e65b6_0
+- !Command
+  command:
+  - samtools
+  - idxstats
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: in.bam
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --input-fmt-option
+    description: "[=VAL]\nSpecify a single input file format option in the form\n\
+      of OPTION or OPTION=VALUE"
+    args: !SimpleFlagArg
+      name: OPT
+  - !Flag
+    optional: true
+    synonyms:
+    - -@
+    - --threads
+    description: Number of additional threads to use [0]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --verbosity
+    description: "Set level of verbosity\n"
+    args: !SimpleFlagArg
+      name: INT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "idxstats: unrecognized option '--help'\nUsage: samtools idxstats [options]\
+    \ <in.bam>\n      --input-fmt-option OPT[=VAL]\n               Specify a single\
+    \ input file format option in the form\n               of OPTION or OPTION=VALUE\n\
+    \  -@, --threads INT\n               Number of additional threads to use [0]\n\
+    \      --verbosity INT\n               Set level of verbosity\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/samtools:1.12--hd5e65b6_0
+- !Command
+  command:
+  - samtools
+  - dict
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: file.fa|file.fa.gz
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    - --assembly
+    description: assembly
+    args: !SimpleFlagArg
+      name: STR
+  - !Flag
+    optional: true
+    synonyms:
+    - -A
+    - --alias
+    - --alternative-name
+    description: add AN tag by adding/removing 'chr'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -H
+    - --no-header
+    description: do not print @HD line
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: file to write out dict file [stdout]
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --species
+    description: species
+    args: !SimpleFlagArg
+      name: STR
+  - !Flag
+    optional: true
+    synonyms:
+    - -u
+    - --uri
+    description: URI [file:///abs/path/to/file.fa]
+    args: !SimpleFlagArg
+      name: STR
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "\nAbout:   Create a sequence dictionary file from a fasta file\nUsage:\
+    \   samtools dict [options] <file.fa|file.fa.gz>\n\nOptions: -a, --assembly STR\
+    \    assembly\n         -A, --alias, --alternative-name\n                    \
+    \           add AN tag by adding/removing 'chr'\n         -H, --no-header    \
+    \   do not print @HD line\n         -o, --output FILE     file to write out dict\
+    \ file [stdout]\n         -s, --species STR     species\n         -u, --uri STR\
+    \         URI [file:///abs/path/to/file.fa]\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/samtools:1.12--hd5e65b6_0
+- !Command
+  command:
+  - samtools
+  - fixmate
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: in.nameSrt.bam
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: out.nameSrt.bam
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    description: Remove unmapped reads and secondary alignments
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    description: Disable FR proper pair check
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    description: Add template cigar ct tag
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    description: Add mate score tag
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -u
+    description: Uncompressed output
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-PG
+    description: do not add a PG line
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --input-fmt-option
+    description: "[=VAL]\nSpecify a single input file format option in the form\n\
+      of OPTION or OPTION=VALUE"
+    args: !SimpleFlagArg
+      name: OPT
+  - !Flag
+    optional: true
+    synonyms:
+    - -O
+    - --output-fmt
+    description: "[,OPT[=VAL]]...\nSpecify output format (SAM, BAM, CRAM)"
+    args: !SimpleFlagArg
+      name: FORMAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --output-fmt-option
+    description: "[=VAL]\nSpecify a single output file format option in the form\n\
+      of OPTION or OPTION=VALUE"
+    args: !SimpleFlagArg
+      name: OPT
+  - !Flag
+    optional: true
+    synonyms:
+    - --reference
+    description: Reference sequence FASTA FILE [null]
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -@
+    - --threads
+    description: Number of additional threads to use [0]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --verbosity
+    description: Set level of verbosity
+    args: !SimpleFlagArg
+      name: INT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "fixmate: unrecognized option '--help'\nUsage: samtools fixmate <in.nameSrt.bam>\
+    \ <out.nameSrt.bam>\nOptions:\n  -r           Remove unmapped reads and secondary\
+    \ alignments\n  -p           Disable FR proper pair check\n  -c           Add\
+    \ template cigar ct tag\n  -m           Add mate score tag\n  -u           Uncompressed\
+    \ output\n  --no-PG      do not add a PG line\n      --input-fmt-option OPT[=VAL]\n\
+    \               Specify a single input file format option in the form\n      \
+    \         of OPTION or OPTION=VALUE\n  -O, --output-fmt FORMAT[,OPT[=VAL]]...\n\
+    \               Specify output format (SAM, BAM, CRAM)\n      --output-fmt-option\
+    \ OPT[=VAL]\n               Specify a single output file format option in the\
+    \ form\n               of OPTION or OPTION=VALUE\n      --reference FILE\n   \
+    \            Reference sequence FASTA FILE [null]\n  -@, --threads INT\n     \
+    \          Number of additional threads to use [0]\n      --verbosity INT\n  \
+    \             Set level of verbosity\n\nAs elsewhere in samtools, use '-' as the\
+    \ filename for stdin/stdout. The input\nfile must be grouped by read name (e.g.\
+    \ sorted by name). Coordinated sorted\ninput is not accepted.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/samtools:1.12--hd5e65b6_0
+- !Command
+  command:
+  - samtools
+  - fqidx
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: file.fq|file.fq.gz
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: Write FASTQ to file.
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    - --length
+    description: Length of FASTQ sequence line. [60]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --continue
+    description: Continue after trying to retrieve missing region.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --region-file
+    description: File of regions.  Format is chr:from-to. One per line.
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --reverse-complement
+    description: complement sequences.
+    args: !SimpleFlagArg
+      name: Reverse
+  - !Flag
+    optional: true
+    synonyms:
+    - --mark-strand
+    description: "Add strand indicator to sequence name\nTYPE = rc   for /rc on negative\
+      \ strand (default)\nno   for no strand indicator\nsign for (+) / (-)\ncustom,<pos>,<neg>\
+      \ for custom indicator"
+    args: !SimpleFlagArg
+      name: TYPE
+  - !Flag
+    optional: true
+    synonyms:
+    - --fai-idx
+    description: FILE  name of the index file (default file.fq.fai).
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --gzi-idx
+    description: FILE  name of compressed file index (default file.fq.gz.gzi).
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: This message.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: samtools fqidx <file.fq|file.fq.gz> [<reg> [...]]\nOption: \n\
+    \ -o, --output FILE        Write FASTQ to file.\n -n, --length INT         Length\
+    \ of FASTQ sequence line. [60]\n -c, --continue           Continue after trying\
+    \ to retrieve missing region.\n -r, --region-file FILE   File of regions.  Format\
+    \ is chr:from-to. One per line.\n -i, --reverse-complement Reverse complement\
+    \ sequences.\n     --mark-strand TYPE   Add strand indicator to sequence name\n\
+    \                          TYPE = rc   for /rc on negative strand (default)\n\
+    \                                 no   for no strand indicator\n             \
+    \                    sign for (+) / (-)\n                                 custom,<pos>,<neg>\
+    \ for custom indicator\n     --fai-idx      FILE  name of the index file (default\
+    \ file.fq.fai).\n     --gzi-idx      FILE  name of compressed file index (default\
+    \ file.fq.gz.gzi).\n -h, --help               This message.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/samtools:1.12--hd5e65b6_0
+- !Command
+  command:
+  - samtools
+  - reheader
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: in.header.sam
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: in.bam
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -P
+    - --no-PG
+    description: Do not generate a @PG header line.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --in-place
+    description: "Modify the CRAM file directly, if possible.\n(Defaults to outputting\
+      \ to stdout.)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --command
+    description: Pass the header in SAM format to external program CMD.
+    args: !SimpleFlagArg
+      name: CMD
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: samtools reheader [-P] in.header.sam in.bam > out.bam\n   or\
+    \  samtools reheader [-P] -i in.header.sam file.cram\n   or  samtools reheader\
+    \ -c CMD in.bam\n   or  samtools reheader -c CMD in.cram\n\nOptions:\n    -P,\
+    \ --no-PG         Do not generate a @PG header line.\n    -i, --in-place     \
+    \ Modify the CRAM file directly, if possible.\n                        (Defaults\
+    \ to outputting to stdout.)\n    -c, --command CMD   Pass the header in SAM format\
+    \ to external program CMD.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/samtools:1.12--hd5e65b6_0
+- !Command
+  command:
+  - samtools
+  - view
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: in.bam
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    description: output BAM
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -C
+    description: output CRAM (requires -T)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - '-1'
+    description: use fast BAM compression (implies -b)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -u
+    description: uncompressed BAM output (implies -b)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -H
+    description: print SAM header only (no alignments)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    description: print only the count of matching records
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: output file name [stdout]
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -U
+    description: output reads not selected by filters to FILE [null]
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    description: FILE listing reference names and lengths (see long help) [null]
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -X
+    description: include customized index file
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -L
+    description: only include reads overlapping this BED FILE [null]
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    description: only include reads in read group STR [null]
+    args: !SimpleFlagArg
+      name: STR
+  - !Flag
+    optional: true
+    synonyms:
+    - -R
+    description: only include reads with read group listed in FILE [null]
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -N
+    description: only include reads with read name listed in FILE [null]
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    description: "[:STR2]\nonly include reads with tag STR1 and associated value STR2\
+      \ [null]\nThe value can be omitted, in which case only the tag is considered"
+    args: !SimpleFlagArg
+      name: STR1
+  - !Flag
+    optional: true
+    synonyms:
+    - -D
+    description: ":FILE\nonly include reads with tag STR and associated values listed\
+      \ in\nFILE [null]"
+    args: !SimpleFlagArg
+      name: STR
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    description: only include reads with mapping quality >= INT [0]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    description: only include reads in library STR [null]
+    args: !SimpleFlagArg
+      name: STR
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    description: "only include reads with number of CIGAR operations consuming\nquery\
+      \ sequence >= INT [0]"
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    description: only include reads with all  of the FLAGs in INT present [0]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -F
+    description: only include reads with none of the FLAGS in INT present [0]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -G
+    description: only EXCLUDE reads with all  of the FLAGs in INT present [0]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -e
+    description: only include reads matching the filter expression [null]
+    args: !SimpleFlagArg
+      name: STR
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    description: "subsample reads (given INT.FRAC option value, 0.FRAC is the\nfraction\
+      \ of templates/read pairs to keep; INT part sets seed)"
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - -M
+    description: "use the multi-region iterator (increases the speed, removes\nduplicates\
+      \ and outputs the reads as they are ordered in the file)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -x
+    description: read tag to strip (repeatable) [null]
+    args: !SimpleFlagArg
+      name: STR
+  - !Flag
+    optional: true
+    synonyms:
+    - -B
+    description: collapse the backward CIGAR operation
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -S
+    description: ignored (input format is auto-detected)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-PG
+    description: do not add a PG line
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --input-fmt-option
+    description: "[=VAL]\nSpecify a single input file format option in the form\n\
+      of OPTION or OPTION=VALUE"
+    args: !SimpleFlagArg
+      name: OPT
+  - !Flag
+    optional: true
+    synonyms:
+    - -O
+    - --output-fmt
+    description: "[,OPT[=VAL]]...\nSpecify output format (SAM, BAM, CRAM)"
+    args: !SimpleFlagArg
+      name: FORMAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --output-fmt-option
+    description: "[=VAL]\nSpecify a single output file format option in the form\n\
+      of OPTION or OPTION=VALUE"
+    args: !SimpleFlagArg
+      name: OPT
+  - !Flag
+    optional: true
+    synonyms:
+    - -T
+    - --reference
+    description: Reference sequence FASTA FILE [null]
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -@
+    - --threads
+    description: Number of additional threads to use [0]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --write-index
+    description: Automatically index the output files [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --verbosity
+    description: "Set level of verbosity\n"
+    args: !SimpleFlagArg
+      name: INT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    description: include header in SAM output
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "samtools view: unrecognised option '--help'\n\nUsage: samtools view\
+    \ [options] <in.bam>|<in.sam>|<in.cram> [region ...]\n\nOptions:\n  -b       output\
+    \ BAM\n  -C       output CRAM (requires -T)\n  -1       use fast BAM compression\
+    \ (implies -b)\n  -u       uncompressed BAM output (implies -b)\n  -h       include\
+    \ header in SAM output\n  -H       print SAM header only (no alignments)\n  -c\
+    \       print only the count of matching records\n  -o FILE  output file name\
+    \ [stdout]\n  -U FILE  output reads not selected by filters to FILE [null]\n \
+    \ -t FILE  FILE listing reference names and lengths (see long help) [null]\n \
+    \ -X       include customized index file\n  -L FILE  only include reads overlapping\
+    \ this BED FILE [null]\n  -r STR   only include reads in read group STR [null]\n\
+    \  -R FILE  only include reads with read group listed in FILE [null]\n  -N FILE\
+    \  only include reads with read name listed in FILE [null]\n  -d STR1[:STR2]\n\
+    \           only include reads with tag STR1 and associated value STR2 [null]\n\
+    \           The value can be omitted, in which case only the tag is considered\n\
+    \  -D STR:FILE\n           only include reads with tag STR and associated values\
+    \ listed in\n           FILE [null]\n  -q INT   only include reads with mapping\
+    \ quality >= INT [0]\n  -l STR   only include reads in library STR [null]\n  -m\
+    \ INT   only include reads with number of CIGAR operations consuming\n       \
+    \    query sequence >= INT [0]\n  -f INT   only include reads with all  of the\
+    \ FLAGs in INT present [0]\n  -F INT   only include reads with none of the FLAGS\
+    \ in INT present [0]\n  -G INT   only EXCLUDE reads with all  of the FLAGs in\
+    \ INT present [0]\n  -e STR   only include reads matching the filter expression\
+    \ [null]\n  -s FLOAT subsample reads (given INT.FRAC option value, 0.FRAC is the\n\
+    \           fraction of templates/read pairs to keep; INT part sets seed)\n  -M\
+    \       use the multi-region iterator (increases the speed, removes\n        \
+    \   duplicates and outputs the reads as they are ordered in the file)\n  -x STR\
+    \   read tag to strip (repeatable) [null]\n  -B       collapse the backward CIGAR\
+    \ operation\n  -?       print long help, including note about region specification\n\
+    \  -S       ignored (input format is auto-detected)\n  --no-PG  do not add a PG\
+    \ line\n      --input-fmt-option OPT[=VAL]\n               Specify a single input\
+    \ file format option in the form\n               of OPTION or OPTION=VALUE\n \
+    \ -O, --output-fmt FORMAT[,OPT[=VAL]]...\n               Specify output format\
+    \ (SAM, BAM, CRAM)\n      --output-fmt-option OPT[=VAL]\n               Specify\
+    \ a single output file format option in the form\n               of OPTION or\
+    \ OPTION=VALUE\n  -T, --reference FILE\n               Reference sequence FASTA\
+    \ FILE [null]\n  -@, --threads INT\n               Number of additional threads\
+    \ to use [0]\n      --write-index\n               Automatically index the output\
+    \ files [off]\n      --verbosity INT\n               Set level of verbosity\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/samtools:1.12--hd5e65b6_0
+- !Command
+  command:
+  - samtools
+  - depth
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: in1.bam
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    description: list of positions or regions
+    args: !SimpleFlagArg
+      name: bed
+  - !Flag
+    optional: true
+    synonyms:
+    - -X
+    description: use customized index files
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    description: list of input BAM filenames, one per line [null]
+    args: !SimpleFlagArg
+      name: list
+  - !Flag
+    optional: true
+    synonyms:
+    - -H
+    description: print a file header
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    description: read length threshold (ignore reads shorter than <int>) [0]
+    args: !SimpleFlagArg
+      name: int
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - -m
+    description: "maximum coverage depth [8000]. If 0, depth is set to the maximum\n\
+      integer value, effectively removing any depth limit."
+    args: !SimpleFlagArg
+      name: int
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: where to write output to [stdout]
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    description: base quality threshold [0]
+    args: !SimpleFlagArg
+      name: int
+  - !Flag
+    optional: true
+    synonyms:
+    - -Q
+    description: mapping quality threshold [0]
+    args: !SimpleFlagArg
+      name: int
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    description: <chr:from-to>    region
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    description: remove the specified flags from the set used to filter out reads
+    args: !SimpleFlagArg
+      name: flags
+  - !Flag
+    optional: true
+    synonyms:
+    - -G
+    description: "add the specified flags to the set used to filter out reads\nThe\
+      \ default set is UNMAP,SECONDARY,QCFAIL,DUP or 0x704"
+    args: !SimpleFlagArg
+      name: flags
+  - !Flag
+    optional: true
+    synonyms:
+    - -J
+    description: include reads with deletions in depth computation
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    description: "for the overlapping section of a read pair, count only the bases\n\
+      of a single read. This option will automatically raise the base quality\nthreshold\
+      \ to at least 1."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --input-fmt-option
+    description: "[=VAL]\nSpecify a single input file format option in the form\n\
+      of OPTION or OPTION=VALUE"
+    args: !SimpleFlagArg
+      name: OPT
+  - !Flag
+    optional: true
+    synonyms:
+    - --reference
+    description: Reference sequence FASTA FILE [null]
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --verbosity
+    description: Set level of verbosity
+    args: !SimpleFlagArg
+      name: INT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "depth: unrecognized option '--help'\n\nUsage: samtools depth [options]\
+    \ in1.bam [in2.bam [...]]\nOptions:\n   -a                  output all positions\
+    \ (including zero depth)\n   -a -a (or -aa)      output absolutely all positions,\
+    \ including unused ref. sequences\n   -b <bed>            list of positions or\
+    \ regions\n   -X                  use customized index files\n   -f <list>   \
+    \        list of input BAM filenames, one per line [null]\n   -H             \
+    \     print a file header\n   -l <int>            read length threshold (ignore\
+    \ reads shorter than <int>) [0]\n   -d/-m <int>         maximum coverage depth\
+    \ [8000]. If 0, depth is set to the maximum\n                       integer value,\
+    \ effectively removing any depth limit.\n   -o FILE             where to write\
+    \ output to [stdout]\n   -q <int>            base quality threshold [0]\n   -Q\
+    \ <int>            mapping quality threshold [0]\n   -r <chr:from-to>    region\n\
+    \   -g <flags>          remove the specified flags from the set used to filter\
+    \ out reads\n   -G <flags>          add the specified flags to the set used to\
+    \ filter out reads\n                       The default set is UNMAP,SECONDARY,QCFAIL,DUP\
+    \ or 0x704\n   -J                  include reads with deletions in depth computation\n\
+    \   -s                  for the overlapping section of a read pair, count only\
+    \ the bases\n                       of a single read. This option will automatically\
+    \ raise the base quality\n                       threshold to at least 1.\n  \
+    \    --input-fmt-option OPT[=VAL]\n               Specify a single input file\
+    \ format option in the form\n               of OPTION or OPTION=VALUE\n      --reference\
+    \ FILE\n               Reference sequence FASTA FILE [null]\n      --verbosity\
+    \ INT\n               Set level of verbosity\n\nThe output is a simple tab-separated\
+    \ table with three columns: reference name,\nposition, and coverage depth.  Note\
+    \ that positions with zero coverage may be\nomitted by default; see the -a option.\n\
+    \n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/samtools:1.12--hd5e65b6_0
+- !Command
+  command:
+  - samtools
+  - ampliconstats
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: primers.bed
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --required-flag
+    description: "|INT\nOnly include reads with all of the FLAGs present [0x0]"
+    args: !SimpleFlagArg
+      name: STR
+  - !Flag
+    optional: true
+    synonyms:
+    - -F
+    - --filter-flag
+    description: "|INT\nOnly include reads with none of the FLAGs present [0xB04]"
+    args: !SimpleFlagArg
+      name: STR
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    - --max-amplicons
+    description: Change the maximum number of amplicons permitted [1000]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    - --max-amplicon-length
+    description: Change the maximum length of an individual amplicon [1000]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --min-depth
+    description: "...\nMinimum base depth(s) to consider position covered [1]"
+    args: !OptionalFlagArg
+      names:
+      - INT
+      - INT
+      separator: ','
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    - --pos-margin
+    description: Margin of error for matching primer positions [30]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: Specify output file [stdout if unset]
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --use-sample-name
+    description: Use the sample name from the first @RG header line
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --tlen-adjust
+    description: Add/subtract from TLEN; use when clipping but no fixmate step
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    - --tcoord-bin
+    description: Bin template start,end positions into multiples of INT[1]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --tcoord-min-count
+    description: Minimum template start,end frequency for recording [10]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -D
+    - --depth-bin
+    description: Merge FDP values within +/- FRACTION together.
+    args: !SimpleFlagArg
+      name: FRACTION
+  - !Flag
+    optional: true
+    synonyms:
+    - -I
+    - --input-fmt
+    description: "[,OPT[=VAL]]...\nSpecify input format (SAM, BAM, CRAM)"
+    args: !SimpleFlagArg
+      name: FORMAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --input-fmt-option
+    description: "[=VAL]\nSpecify a single input file format option in the form\n\
+      of OPTION or OPTION=VALUE"
+    args: !SimpleFlagArg
+      name: OPT
+  - !Flag
+    optional: true
+    synonyms:
+    - --reference
+    description: Reference sequence FASTA FILE [null]
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -@
+    - --threads
+    description: "Number of additional threads to use [0]\n"
+    args: !SimpleFlagArg
+      name: INT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "\nUsage: samtools ampliconstats [options] primers.bed *.bam > astats.txt\n\
+    \nOptions:\n  -f, --required-flag STR|INT\n               Only include reads with\
+    \ all of the FLAGs present [0x0]\n  -F, --filter-flag STR|INT\n              \
+    \ Only include reads with none of the FLAGs present [0xB04]\n  -a, --max-amplicons\
+    \ INT\n               Change the maximum number of amplicons permitted [1000]\n\
+    \  -l, --max-amplicon-length INT\n               Change the maximum length of\
+    \ an individual amplicon [1000]\n  -d, --min-depth INT[,INT]...\n            \
+    \   Minimum base depth(s) to consider position covered [1]\n  -m, --pos-margin\
+    \ INT\n               Margin of error for matching primer positions [30]\n  -o,\
+    \ --output FILE\n               Specify output file [stdout if unset]\n  -s, --use-sample-name\n\
+    \               Use the sample name from the first @RG header line\n  -t, --tlen-adjust\
+    \ INT\n               Add/subtract from TLEN; use when clipping but no fixmate\
+    \ step\n  -b, --tcoord-bin INT\n               Bin template start,end positions\
+    \ into multiples of INT[1]\n  -c, --tcoord-min-count INT\n               Minimum\
+    \ template start,end frequency for recording [10]\n  -D, --depth-bin FRACTION\n\
+    \               Merge FDP values within +/- FRACTION together.\n  -I, --input-fmt\
+    \ FORMAT[,OPT[=VAL]]...\n               Specify input format (SAM, BAM, CRAM)\n\
+    \      --input-fmt-option OPT[=VAL]\n               Specify a single input file\
+    \ format option in the form\n               of OPTION or OPTION=VALUE\n      --reference\
+    \ FILE\n               Reference sequence FASTA FILE [null]\n  -@, --threads INT\n\
+    \               Number of additional threads to use [0]\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/samtools:1.12--hd5e65b6_0
+- !Command
+  command:
+  - samtools
+  - sort
+  positional:
+  - !Positional
+    optional: true
+    position: 0
+    name: options...
+    description: ''
+  - !Positional
+    optional: true
+    position: 1
+    name: in.bam
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    description: Set compression level, from 0 (uncompressed) to 9 (best)
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -u
+    description: Output uncompressed data (equivalent to -l 0)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    description: Set maximum memory per thread; suffix K/M/G recognized [768M]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -M
+    description: Use minimiser for clustering unaligned/unplaced reads
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -K
+    description: Kmer size to use for minimiser [20]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    description: Sort by read name (not compatible with samtools index command)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    description: Sort by value of TAG. Uses position as secondary index (or read name
+      if -n is set)
+    args: !SimpleFlagArg
+      name: TAG
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: Write final output to FILE rather than standard output
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -T
+    description: Write temporary files to PREFIX.nnnn.bam
+    args: !SimpleFlagArg
+      name: PREFIX
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-PG
+    description: do not add a PG line
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --input-fmt-option
+    description: "[=VAL]\nSpecify a single input file format option in the form\n\
+      of OPTION or OPTION=VALUE"
+    args: !SimpleFlagArg
+      name: OPT
+  - !Flag
+    optional: true
+    synonyms:
+    - -O
+    - --output-fmt
+    description: "[,OPT[=VAL]]...\nSpecify output format (SAM, BAM, CRAM)"
+    args: !SimpleFlagArg
+      name: FORMAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --output-fmt-option
+    description: "[=VAL]\nSpecify a single output file format option in the form\n\
+      of OPTION or OPTION=VALUE"
+    args: !SimpleFlagArg
+      name: OPT
+  - !Flag
+    optional: true
+    synonyms:
+    - --reference
+    description: Reference sequence FASTA FILE [null]
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -@
+    - --threads
+    description: Number of additional threads to use [0]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --write-index
+    description: Automatically index the output files [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --verbosity
+    description: "Set level of verbosity\n"
+    args: !SimpleFlagArg
+      name: INT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "sort: unrecognized option '--help'\nUsage: samtools sort [options...]\
+    \ [in.bam]\nOptions:\n  -l INT     Set compression level, from 0 (uncompressed)\
+    \ to 9 (best)\n  -u         Output uncompressed data (equivalent to -l 0)\n  -m\
+    \ INT     Set maximum memory per thread; suffix K/M/G recognized [768M]\n  -M\
+    \         Use minimiser for clustering unaligned/unplaced reads\n  -K INT    \
+    \ Kmer size to use for minimiser [20]\n  -n         Sort by read name (not compatible\
+    \ with samtools index command)\n  -t TAG     Sort by value of TAG. Uses position\
+    \ as secondary index (or read name if -n is set)\n  -o FILE    Write final output\
+    \ to FILE rather than standard output\n  -T PREFIX  Write temporary files to PREFIX.nnnn.bam\n\
+    \  --no-PG    do not add a PG line\n      --input-fmt-option OPT[=VAL]\n     \
+    \          Specify a single input file format option in the form\n           \
+    \    of OPTION or OPTION=VALUE\n  -O, --output-fmt FORMAT[,OPT[=VAL]]...\n   \
+    \            Specify output format (SAM, BAM, CRAM)\n      --output-fmt-option\
+    \ OPT[=VAL]\n               Specify a single output file format option in the\
+    \ form\n               of OPTION or OPTION=VALUE\n      --reference FILE\n   \
+    \            Reference sequence FASTA FILE [null]\n  -@, --threads INT\n     \
+    \          Number of additional threads to use [0]\n      --write-index\n    \
+    \           Automatically index the output files [off]\n      --verbosity INT\n\
+    \               Set level of verbosity\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/samtools:1.12--hd5e65b6_0
+- !Command
+  command:
+  - samtools
+  - fasta
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: i14i8
+    description: the first 14 characters are index 1, the next 8 characters are index
+      2
+  - !Positional
+    optional: false
+    position: 1
+    name: n8i14
+    description: ignore the first 8 characters, and use the next 14 characters for
+      index 1
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - '-0'
+    description: write reads designated READ_OTHER to FILE
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - '-1'
+    description: write reads designated READ1 to FILE
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - '-2'
+    description: write reads designated READ2 to FILE
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: "write reads designated READ1 or READ2 to FILE\nnote: if a singleton\
+      \ file is specified with -s, only\npaired reads will be written to the -1 and\
+      \ -2 files."
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    description: only include reads with all  of the FLAGs in INT present [0]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -F
+    description: only include reads with none of the FLAGS in INT present [0x900]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -G
+    description: only EXCLUDE reads with all  of the FLAGs in INT present [0]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    description: don't append /1 and /2 to the read name
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -N
+    description: always append /1 and /2 to the read name
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    description: write singleton reads designated READ1 or READ2 to FILE
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    description: copy RG, BC and QT tags to the FASTA header line
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -T
+    description: copy arbitrary tags to the FASTA header line
+    args: !SimpleFlagArg
+      name: TAGLIST
+  - !Flag
+    optional: true
+    synonyms:
+    - --input-fmt-option
+    description: "[=VAL]\nSpecify a single input file format option in the form\n\
+      of OPTION or OPTION=VALUE"
+    args: !SimpleFlagArg
+      name: OPT
+  - !Flag
+    optional: true
+    synonyms:
+    - --reference
+    description: Reference sequence FASTA FILE [null]
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -@
+    - --threads
+    description: Number of additional threads to use [0]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --verbosity
+    description: Set level of verbosity
+    args: !SimpleFlagArg
+      name: INT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "fasta: unrecognized option '--help'\nUsage: samtools fasta [options...]\
+    \ <in.bam>\n\nDescription:\nConverts a SAM, BAM or CRAM into either FASTQ or FASTA\
+    \ format depending on the command invoked.\n\nOptions:\n  -0 FILE            \
+    \  write reads designated READ_OTHER to FILE\n  -1 FILE              write reads\
+    \ designated READ1 to FILE\n  -2 FILE              write reads designated READ2\
+    \ to FILE\n  -o FILE              write reads designated READ1 or READ2 to FILE\n\
+    \                       note: if a singleton file is specified with -s, only\n\
+    \                       paired reads will be written to the -1 and -2 files.\n\
+    \  -f INT               only include reads with all  of the FLAGs in INT present\
+    \ [0]\n  -F INT               only include reads with none of the FLAGS in INT\
+    \ present [0x900]\n  -G INT               only EXCLUDE reads with all  of the\
+    \ FLAGs in INT present [0]\n  -n                   don't append /1 and /2 to the\
+    \ read name\n  -N                   always append /1 and /2 to the read name\n\
+    \  -s FILE              write singleton reads designated READ1 or READ2 to FILE\n\
+    \  -t                   copy RG, BC and QT tags to the FASTA header line\n  -T\
+    \ TAGLIST           copy arbitrary tags to the FASTA header line\n      --input-fmt-option\
+    \ OPT[=VAL]\n               Specify a single input file format option in the form\n\
+    \               of OPTION or OPTION=VALUE\n      --reference FILE\n          \
+    \     Reference sequence FASTA FILE [null]\n  -@, --threads INT\n            \
+    \   Number of additional threads to use [0]\n      --verbosity INT\n         \
+    \      Set level of verbosity\n\nThe files will be automatically compressed if\
+    \ the file names have a .gz or .bgzf extension.\nThe input to this program must\
+    \ be collated by name. Run 'samtools collate' or 'samtools sort -n'.\n\nReads\
+    \ are designated READ1 if FLAG READ1 is set and READ2 is not set.\nReads are designated\
+    \ READ2 if FLAG READ1 is not set and READ2 is set.\nReads are designated READ_OTHER\
+    \ if FLAGs READ1 and READ2 are either both set\nor both unset.\nRun 'samtools\
+    \ flags' for more information on flag codes and meanings.\n\nThe index-format\
+    \ string describes how to parse the barcode and quality tags, for example:\n \
+    \  i14i8       the first 14 characters are index 1, the next 8 characters are\
+    \ index 2\n   n8i14       ignore the first 8 characters, and use the next 14 characters\
+    \ for index 1\nIf the tag contains a separator, then the numeric part can be replaced\
+    \ with '*' to mean\n'read until the separator or end of tag', for example:\n \
+    \  n*i*        ignore the left part of the tag until the separator, then use the\
+    \ second part\n               of the tag as index 1\n\nExamples:\n To get just\
+    \ the paired reads in separate files, use:\n   samtools fasta -1 paired1.fa -2\
+    \ paired2.fa -0 /dev/null -s /dev/null -n in.bam\n\n To get all non-supplementary/secondary\
+    \ reads in a single file, redirect the output:\n   samtools fasta in.bam > all_reads.fa\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/samtools:1.12--hd5e65b6_0
+- !Command
+  command:
+  - samtools
+  - split
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    description: output filename format string ["%*_%#.%."]
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - -u
+    description: put reads with no RG tag or an unrecognised RG tag in FILE1
+    args: !SimpleFlagArg
+      name: FILE1
+  - !Flag
+    optional: true
+    synonyms:
+    - -h
+    description: override the header with FILE2 (-u file only)
+    args: !RepeatFlagArg
+      name: and
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    description: verbose output
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-PG
+    description: do not add a PG line
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --input-fmt-option
+    description: "[=VAL]\nSpecify a single input file format option in the form\n\
+      of OPTION or OPTION=VALUE"
+    args: !SimpleFlagArg
+      name: OPT
+  - !Flag
+    optional: true
+    synonyms:
+    - --output-fmt
+    description: "[,OPT[=VAL]]...\nSpecify output format (SAM, BAM, CRAM)"
+    args: !SimpleFlagArg
+      name: FORMAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --output-fmt-option
+    description: "[=VAL]\nSpecify a single output file format option in the form\n\
+      of OPTION or OPTION=VALUE"
+    args: !SimpleFlagArg
+      name: OPT
+  - !Flag
+    optional: true
+    synonyms:
+    - --reference
+    description: Reference sequence FASTA FILE [null]
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -@
+    - --threads
+    description: Number of additional threads to use [0]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --write-index
+    description: Automatically index the output files [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --verbosity
+    description: Set level of verbosity
+    args: !SimpleFlagArg
+      name: INT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: samtools split [-u <unaccounted.bam>] [-h <unaccounted_header.sam>]\n\
+    \                      [-f <format_string>] [-v] <merged.bam>\nOptions:\n  -f\
+    \ STRING       output filename format string [\"%*_%#.%.\"]\n  -u FILE1      \
+    \  put reads with no RG tag or an unrecognised RG tag in FILE1\n  -h FILE2   \
+    \     ... and override the header with FILE2 (-u file only)\n  -v            \
+    \  verbose output\n  --no-PG         do not add a PG line\n      --input-fmt-option\
+    \ OPT[=VAL]\n               Specify a single input file format option in the form\n\
+    \               of OPTION or OPTION=VALUE\n      --output-fmt FORMAT[,OPT[=VAL]]...\n\
+    \               Specify output format (SAM, BAM, CRAM)\n      --output-fmt-option\
+    \ OPT[=VAL]\n               Specify a single output file format option in the\
+    \ form\n               of OPTION or OPTION=VALUE\n      --reference FILE\n   \
+    \            Reference sequence FASTA FILE [null]\n  -@, --threads INT\n     \
+    \          Number of additional threads to use [0]\n      --write-index\n    \
+    \           Automatically index the output files [off]\n      --verbosity INT\n\
+    \               Set level of verbosity\n\nFormat string expansions:\n  %%    \
+    \ %\n  %*     basename\n  %#     @RG index\n  %!     @RG ID\n  %.     filename\
+    \ extension for output format\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/samtools:1.12--hd5e65b6_0
+- !Command
+  command:
+  - samtools
+  - flagstat
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: in.bam
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --input-fmt-option
+    description: "[=VAL]\nSpecify a single input file format option in the form\n\
+      of OPTION or OPTION=VALUE"
+    args: !SimpleFlagArg
+      name: OPT
+  - !Flag
+    optional: true
+    synonyms:
+    - -@
+    - --threads
+    description: Number of additional threads to use [0]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --verbosity
+    description: Set level of verbosity
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -O
+    - --output-fmt
+    description: "[,OPT[=VAL]]...\nSpecify output format (json, tsv)\n"
+    args: !SimpleFlagArg
+      name: FORMAT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "flagstat: unrecognized option '--help'\nUsage: samtools flagstat [options]\
+    \ <in.bam>\n      --input-fmt-option OPT[=VAL]\n               Specify a single\
+    \ input file format option in the form\n               of OPTION or OPTION=VALUE\n\
+    \  -@, --threads INT\n               Number of additional threads to use [0]\n\
+    \      --verbosity INT\n               Set level of verbosity\n  -O, --output-fmt\
+    \ FORMAT[,OPT[=VAL]]...\n               Specify output format (json, tsv)\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/samtools:1.12--hd5e65b6_0
+- !Command
+  command:
+  - samtools
+  - collate
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: in.bam
+    description: ''
+  - !Positional
+    optional: true
+    position: 1
+    name: prefix
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -O
+    description: output to stdout
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: output file name (use prefix if not set)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -u
+    description: uncompressed BAM output
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    description: fast (only primary alignments)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    description: working reads stored (with -f) [10000]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    description: compression level [1]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    description: number of temporary files [64]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-PG
+    description: do not add a PG line
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --input-fmt-option
+    description: "[=VAL]\nSpecify a single input file format option in the form\n\
+      of OPTION or OPTION=VALUE"
+    args: !SimpleFlagArg
+      name: OPT
+  - !Flag
+    optional: true
+    synonyms:
+    - --output-fmt
+    description: "[,OPT[=VAL]]...\nSpecify output format (SAM, BAM, CRAM)"
+    args: !SimpleFlagArg
+      name: FORMAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --output-fmt-option
+    description: "[=VAL]\nSpecify a single output file format option in the form\n\
+      of OPTION or OPTION=VALUE"
+    args: !SimpleFlagArg
+      name: OPT
+  - !Flag
+    optional: true
+    synonyms:
+    - --reference
+    description: Reference sequence FASTA FILE [null]
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -@
+    - --threads
+    description: Number of additional threads to use [0]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --verbosity
+    description: Set level of verbosity
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -Ou
+    description: ''
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "collate: unrecognized option '--help'\nUsage: samtools collate [-Ou]\
+    \ [-o <name>] [-n nFiles] [-l cLevel] <in.bam> [<prefix>]\n\nOptions:\n      -O\
+    \       output to stdout\n      -o       output file name (use prefix if not set)\n\
+    \      -u       uncompressed BAM output\n      -f       fast (only primary alignments)\n\
+    \      -r       working reads stored (with -f) [10000]\n      -l INT   compression\
+    \ level [1]\n      -n INT   number of temporary files [64]\n      --no-PG  do\
+    \ not add a PG line\n      --input-fmt-option OPT[=VAL]\n               Specify\
+    \ a single input file format option in the form\n               of OPTION or OPTION=VALUE\n\
+    \      --output-fmt FORMAT[,OPT[=VAL]]...\n               Specify output format\
+    \ (SAM, BAM, CRAM)\n      --output-fmt-option OPT[=VAL]\n               Specify\
+    \ a single output file format option in the form\n               of OPTION or\
+    \ OPTION=VALUE\n      --reference FILE\n               Reference sequence FASTA\
+    \ FILE [null]\n  -@, --threads INT\n               Number of additional threads\
+    \ to use [0]\n      --verbosity INT\n               Set level of verbosity\n \
+    \ <prefix> is required unless the -o or -O options are used.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/samtools:1.12--hd5e65b6_0
+- !Command
+  command:
+  - samtools
+  - mpileup
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: in1.bam
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - '-6'
+    - --illumina1.3
+    description: +      quality is in the Illumina-1.3+ encoding
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -A
+    - --count-orphans
+    description: do not discard anomalous read pairs
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    - --bam-list
+    description: list of input BAM filenames, one per line
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -B
+    - --no-BAQ
+    description: disable BAQ (per-Base Alignment Quality)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -C
+    - --adjust-MQ
+    description: adjust mapping quality; recommended:50, disable:0 [0]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --max-depth
+    description: max per-file depth; avoids excessive memory usage [8000]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -E
+    - --redo-BAQ
+    description: recalculate BAQ on the fly, ignore existing BQs
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --fasta-ref
+    description: faidx indexed reference sequence file
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -G
+    - --exclude-RG
+    description: exclude read groups listed in FILE
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    - --positions
+    description: skip unlisted positions (chr pos) or regions (BED)
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    - --min-MQ
+    description: skip alignments with mapQ smaller than INT [0]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -Q
+    - --min-BQ
+    description: skip bases with baseQ/BAQ smaller than INT [13]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --region
+    description: region in which pileup is generated
+    args: !SimpleFlagArg
+      name: REG
+  - !Flag
+    optional: true
+    synonyms:
+    - -R
+    - --ignore-RG
+    description: ignore RG tags (one BAM = one sample)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --rf
+    - --incl-flags
+    description: '|INT  required flags: skip reads with mask bits unset []'
+    args: !SimpleFlagArg
+      name: STR
+  - !Flag
+    optional: true
+    synonyms:
+    - --ff
+    - --excl-flags
+    description: "|INT  filter flags: skip reads with mask bits set\n[UNMAP,SECONDARY,QCFAIL,DUP]"
+    args: !SimpleFlagArg
+      name: STR
+  - !Flag
+    optional: true
+    synonyms:
+    - -x
+    - --ignore-overlaps
+    description: disable read-pair overlap detection
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -X
+    - --customized-index
+    description: use customized index files
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: write output to FILE [standard output]
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -O
+    - --output-BP
+    description: output base positions on reads
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --output-MQ
+    description: output mapping quality
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --output-QNAME
+    description: output read names
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --output-extra
+    description: output extra read fields and read tag values
+    args: !SimpleFlagArg
+      name: STR
+  - !Flag
+    optional: true
+    synonyms:
+    - --output-sep
+    description: set the separator character for tag lists [,]
+    args: !SimpleFlagArg
+      name: CHAR
+  - !Flag
+    optional: true
+    synonyms:
+    - --output-empty
+    description: set the no value character for tag lists [*]
+    args: !SimpleFlagArg
+      name: CHAR
+  - !Flag
+    optional: true
+    synonyms:
+    - --reverse-del
+    description: use '#' character for deletions on the reverse strand
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --input-fmt-option
+    description: "[=VAL]\nSpecify a single input file format option in the form\n\
+      of OPTION or OPTION=VALUE"
+    args: !SimpleFlagArg
+      name: OPT
+  - !Flag
+    optional: true
+    synonyms:
+    - --reference
+    description: Reference sequence FASTA FILE [null]
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --verbosity
+    description: Set level of verbosity
+    args: !SimpleFlagArg
+      name: INT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "mpileup: unrecognized option '--help'\n\nUsage: samtools mpileup [options]\
+    \ in1.bam [in2.bam [...]]\n\nInput options:\n  -6, --illumina1.3+      quality\
+    \ is in the Illumina-1.3+ encoding\n  -A, --count-orphans     do not discard anomalous\
+    \ read pairs\n  -b, --bam-list FILE     list of input BAM filenames, one per line\n\
+    \  -B, --no-BAQ            disable BAQ (per-Base Alignment Quality)\n  -C, --adjust-MQ\
+    \ INT     adjust mapping quality; recommended:50, disable:0 [0]\n  -d, --max-depth\
+    \ INT     max per-file depth; avoids excessive memory usage [8000]\n  -E, --redo-BAQ\
+    \          recalculate BAQ on the fly, ignore existing BQs\n  -f, --fasta-ref\
+    \ FILE    faidx indexed reference sequence file\n  -G, --exclude-RG FILE   exclude\
+    \ read groups listed in FILE\n  -l, --positions FILE    skip unlisted positions\
+    \ (chr pos) or regions (BED)\n  -q, --min-MQ INT        skip alignments with mapQ\
+    \ smaller than INT [0]\n  -Q, --min-BQ INT        skip bases with baseQ/BAQ smaller\
+    \ than INT [13]\n  -r, --region REG        region in which pileup is generated\n\
+    \  -R, --ignore-RG         ignore RG tags (one BAM = one sample)\n  --rf, --incl-flags\
+    \ STR|INT  required flags: skip reads with mask bits unset []\n  --ff, --excl-flags\
+    \ STR|INT  filter flags: skip reads with mask bits set\n                     \
+    \                       [UNMAP,SECONDARY,QCFAIL,DUP]\n  -x, --ignore-overlaps\
+    \   disable read-pair overlap detection\n  -X, --customized-index  use customized\
+    \ index files\n\nOutput options:\n  -o, --output FILE       write output to FILE\
+    \ [standard output]\n  -O, --output-BP         output base positions on reads\n\
+    \  -s, --output-MQ         output mapping quality\n      --output-QNAME      output\
+    \ read names\n      --output-extra STR  output extra read fields and read tag\
+    \ values\n      --output-sep CHAR   set the separator character for tag lists\
+    \ [,]\n      --output-empty CHAR set the no value character for tag lists [*]\n\
+    \      --reverse-del       use '#' character for deletions on the reverse strand\n\
+    \  -a                      output all positions (including zero depth)\n  -a -a\
+    \ (or -aa)          output absolutely all positions, including unused ref. sequences\n\
+    \nGeneric options:\n      --input-fmt-option OPT[=VAL]\n               Specify\
+    \ a single input file format option in the form\n               of OPTION or OPTION=VALUE\n\
+    \      --reference FILE\n               Reference sequence FASTA FILE [null]\n\
+    \      --verbosity INT\n               Set level of verbosity\n\nNote that using\
+    \ \"samtools mpileup\" to generate BCF or VCF files is now\ndeprecated.  To output\
+    \ these formats, please use \"bcftools mpileup\" instead.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/samtools:1.12--hd5e65b6_0
+- !Command
+  command:
+  - samtools
+  - addreplacerg
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    description: Set the mode of operation from one of overwrite_all, orphan_only
+      [overwrite_all]
+    args: !SimpleFlagArg
+      name: MODE
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: Where to write output to [stdout]
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    description: '@RG line text'
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - -R
+    description: ID of @RG line in existing header to use
+    args: !SimpleFlagArg
+      name: STRING
+  - !Flag
+    optional: true
+    synonyms:
+    - -u
+    description: Output uncompressed data
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-PG
+    description: Do not add a PG line
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --input-fmt
+    description: "[,OPT[=VAL]]...\nSpecify input format (SAM, BAM, CRAM)"
+    args: !SimpleFlagArg
+      name: FORMAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --input-fmt-option
+    description: "[=VAL]\nSpecify a single input file format option in the form\n\
+      of OPTION or OPTION=VALUE"
+    args: !SimpleFlagArg
+      name: OPT
+  - !Flag
+    optional: true
+    synonyms:
+    - -O
+    - --output-fmt
+    description: "[,OPT[=VAL]]...\nSpecify output format (SAM, BAM, CRAM)"
+    args: !SimpleFlagArg
+      name: FORMAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --output-fmt-option
+    description: "[=VAL]\nSpecify a single output file format option in the form\n\
+      of OPTION or OPTION=VALUE"
+    args: !SimpleFlagArg
+      name: OPT
+  - !Flag
+    optional: true
+    synonyms:
+    - --reference
+    description: Reference sequence FASTA FILE [null]
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -@
+    - --threads
+    description: Number of additional threads to use [0]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --write-index
+    description: Automatically index the output files [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --verbosity
+    description: "Set level of verbosity\n"
+    args: !SimpleFlagArg
+      name: INT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "addreplacerg: unrecognized option '--help'\nUsage: samtools addreplacerg\
+    \ [options] [-r <@RG line> | -R <existing id>] [-m orphan_only|overwrite_all]\
+    \ [-o <output.bam>] <input.bam>\n\nOptions:\n  -m MODE   Set the mode of operation\
+    \ from one of overwrite_all, orphan_only [overwrite_all]\n  -o FILE   Where to\
+    \ write output to [stdout]\n  -r STRING @RG line text\n  -R STRING ID of @RG line\
+    \ in existing header to use\n  -u        Output uncompressed data\n  --no-PG \
+    \  Do not add a PG line\n      --input-fmt FORMAT[,OPT[=VAL]]...\n           \
+    \    Specify input format (SAM, BAM, CRAM)\n      --input-fmt-option OPT[=VAL]\n\
+    \               Specify a single input file format option in the form\n      \
+    \         of OPTION or OPTION=VALUE\n  -O, --output-fmt FORMAT[,OPT[=VAL]]...\n\
+    \               Specify output format (SAM, BAM, CRAM)\n      --output-fmt-option\
+    \ OPT[=VAL]\n               Specify a single output file format option in the\
+    \ form\n               of OPTION or OPTION=VALUE\n      --reference FILE\n   \
+    \            Reference sequence FASTA FILE [null]\n  -@, --threads INT\n     \
+    \          Number of additional threads to use [0]\n      --write-index\n    \
+    \           Automatically index the output files [off]\n      --verbosity INT\n\
+    \               Set level of verbosity\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/samtools:1.12--hd5e65b6_0
+- !Command
+  command:
+  - samtools
+  - markdup
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: input.bam
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: output.bam
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    description: Remove duplicate reads
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    description: Max read length (default 300 bases)
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -S
+    description: Mark supplementary alignments of duplicates as duplicates (slower).
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    description: Report stats.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    description: Write stats to named file.  Implies -s.
+    args: !SimpleFlagArg
+      name: NAME
+  - !Flag
+    optional: true
+    synonyms:
+    - -T
+    description: Write temporary files to PREFIX.samtools.nnnn.nnnn.tmp.
+    args: !SimpleFlagArg
+      name: PREFIX
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    description: Optical distance (if set, marks with dt tag)
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    description: Clear previous duplicate settings and tags.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    - --mode
+    description: "Duplicate decision method for paired reads.\nTYPE = t measure positions\
+      \ based on template start/end (default).\ns measure positions based on sequence\
+      \ start."
+    args: !SimpleFlagArg
+      name: TYPE
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    description: Reduce optical duplicate accuracy (faster results with many duplicates).
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -u
+    description: Output uncompressed data
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --include-fails
+    description: Include quality check failed reads.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-PG
+    description: Do not add a PG line
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-multi-dup
+    description: Reduced duplicates of duplicates checking.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    description: Mark primary duplicates with the name of the original in a 'do' tag.
+      Mainly for information and debugging.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --input-fmt-option
+    description: "[=VAL]\nSpecify a single input file format option in the form\n\
+      of OPTION or OPTION=VALUE"
+    args: !SimpleFlagArg
+      name: OPT
+  - !Flag
+    optional: true
+    synonyms:
+    - -O
+    - --output-fmt
+    description: "[,OPT[=VAL]]...\nSpecify output format (SAM, BAM, CRAM)"
+    args: !SimpleFlagArg
+      name: FORMAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --output-fmt-option
+    description: "[=VAL]\nSpecify a single output file format option in the form\n\
+      of OPTION or OPTION=VALUE"
+    args: !SimpleFlagArg
+      name: OPT
+  - !Flag
+    optional: true
+    synonyms:
+    - --reference
+    description: Reference sequence FASTA FILE [null]
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -@
+    - --threads
+    description: Number of additional threads to use [0]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --write-index
+    description: Automatically index the output files [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --verbosity
+    description: Set level of verbosity
+    args: !SimpleFlagArg
+      name: INT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "markdup: unrecognized option '--help'\n\nUsage:  samtools markdup <input.bam>\
+    \ <output.bam>\n\nOption: \n  -r               Remove duplicate reads\n  -l INT\
+    \           Max read length (default 300 bases)\n  -S               Mark supplementary\
+    \ alignments of duplicates as duplicates (slower).\n  -s               Report\
+    \ stats.\n  -f NAME          Write stats to named file.  Implies -s.\n  -T PREFIX\
+    \        Write temporary files to PREFIX.samtools.nnnn.nnnn.tmp.\n  -d INT   \
+    \        Optical distance (if set, marks with dt tag)\n  -c               Clear\
+    \ previous duplicate settings and tags.\n  -m --mode TYPE   Duplicate decision\
+    \ method for paired reads.\n                   TYPE = t measure positions based\
+    \ on template start/end (default).\n                          s measure positions\
+    \ based on sequence start.\n  -n               Reduce optical duplicate accuracy\
+    \ (faster results with many duplicates).\n  -u               Output uncompressed\
+    \ data\n  --include-fails  Include quality check failed reads.\n  --no-PG    \
+    \      Do not add a PG line\n  --no-multi-dup   Reduced duplicates of duplicates\
+    \ checking.\n  -t               Mark primary duplicates with the name of the original\
+    \ in a 'do' tag. Mainly for information and debugging.\n      --input-fmt-option\
+    \ OPT[=VAL]\n               Specify a single input file format option in the form\n\
+    \               of OPTION or OPTION=VALUE\n  -O, --output-fmt FORMAT[,OPT[=VAL]]...\n\
+    \               Specify output format (SAM, BAM, CRAM)\n      --output-fmt-option\
+    \ OPT[=VAL]\n               Specify a single output file format option in the\
+    \ form\n               of OPTION or OPTION=VALUE\n      --reference FILE\n   \
+    \            Reference sequence FASTA FILE [null]\n  -@, --threads INT\n     \
+    \          Number of additional threads to use [0]\n      --write-index\n    \
+    \           Automatically index the output files [off]\n      --verbosity INT\n\
+    \               Set level of verbosity\n\nThe input file must be coordinate sorted\
+    \ and must have gone through fixmates with the mate scoring option on.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/samtools:1.12--hd5e65b6_0
+- !Command
+  command:
+  - samtools
+  - ampliconclip
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    description: FILE            bedfile of amplicons to be removed.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: FILE            output file name (default stdout).
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    description: FILE            write stats to file name (default stderr)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -u
+    description: Output uncompressed data
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --soft-clip
+    description: soft clip amplicons from reads (default)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --hard-clip
+    description: hard clip amplicons from reads.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --both-ends
+    description: clip on both ends.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --strand
+    description: use strand data from bed file.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --clipped
+    description: only output clipped reads.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --fail
+    description: mark unclipped, mapped reads as QCFAIL.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --filter-len
+    description: do not output reads INT size or shorter.
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --fail-len
+    description: INT    mark as QCFAIL reads INT size or shorter.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-excluded
+    description: do not write excluded reads (unmapped or QCFAIL).
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --rejects-file
+    description: file to write filtered reads.
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --original
+    description: for clipped entries add an OA tag with original data.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --keep-tag
+    description: for clipped entries keep the old NM and MD tags.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-PG
+    description: do not add an @PG line.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --input-fmt-option
+    description: "[=VAL]\nSpecify a single input file format option in the form\n\
+      of OPTION or OPTION=VALUE"
+    args: !SimpleFlagArg
+      name: OPT
+  - !Flag
+    optional: true
+    synonyms:
+    - -O
+    - --output-fmt
+    description: "[,OPT[=VAL]]...\nSpecify output format (SAM, BAM, CRAM)"
+    args: !SimpleFlagArg
+      name: FORMAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --output-fmt-option
+    description: "[=VAL]\nSpecify a single output file format option in the form\n\
+      of OPTION or OPTION=VALUE"
+    args: !SimpleFlagArg
+      name: OPT
+  - !Flag
+    optional: true
+    synonyms:
+    - --reference
+    description: Reference sequence FASTA FILE [null]
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -@
+    - --threads
+    description: Number of additional threads to use [0]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --verbosity
+    description: "Set level of verbosity\n"
+    args: !SimpleFlagArg
+      name: INT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "ampliconclip: unrecognized option '--help'\nUsage samtools ampliconclip\
+    \ -b bedfile <input.bam> -o <output.bam>\n\nOption: \n -b  FILE            bedfile\
+    \ of amplicons to be removed.\n -o  FILE            output file name (default\
+    \ stdout).\n -f  FILE            write stats to file name (default stderr)\n -u\
+    \                  Output uncompressed data\n --soft-clip         soft clip amplicons\
+    \ from reads (default)\n --hard-clip         hard clip amplicons from reads.\n\
+    \ --both-ends         clip on both ends.\n --strand            use strand data\
+    \ from bed file.\n --clipped           only output clipped reads.\n --fail   \
+    \           mark unclipped, mapped reads as QCFAIL.\n --filter-len INT    do not\
+    \ output reads INT size or shorter.\n --fail-len   INT    mark as QCFAIL reads\
+    \ INT size or shorter.\n --no-excluded       do not write excluded reads (unmapped\
+    \ or QCFAIL).\n --rejects-file FILE file to write filtered reads.\n --original\
+    \          for clipped entries add an OA tag with original data.\n --keep-tag\
+    \          for clipped entries keep the old NM and MD tags.\n --no-PG        \
+    \     do not add an @PG line.\n      --input-fmt-option OPT[=VAL]\n          \
+    \     Specify a single input file format option in the form\n               of\
+    \ OPTION or OPTION=VALUE\n  -O, --output-fmt FORMAT[,OPT[=VAL]]...\n         \
+    \      Specify output format (SAM, BAM, CRAM)\n      --output-fmt-option OPT[=VAL]\n\
+    \               Specify a single output file format option in the form\n     \
+    \          of OPTION or OPTION=VALUE\n      --reference FILE\n               Reference\
+    \ sequence FASTA FILE [null]\n  -@, --threads INT\n               Number of additional\
+    \ threads to use [0]\n      --verbosity INT\n               Set level of verbosity\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/samtools:1.12--hd5e65b6_0
+- !Command
+  command:
+  - samtools
+  - coverage
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: rname
+    description: Reference name / chromosome
+  - !Positional
+    optional: false
+    position: 1
+    name: startpos
+    description: Start position
+  - !Positional
+    optional: false
+    position: 2
+    name: endpos
+    description: End position (or sequence length)
+  - !Positional
+    optional: false
+    position: 3
+    name: numreads
+    description: Number reads aligned to the region (after filtering)
+  - !Positional
+    optional: false
+    position: 4
+    name: covbases
+    description: Number of covered bases with depth >= 1
+  - !Positional
+    optional: false
+    position: 5
+    name: coverage
+    description: Proportion of covered bases [0..1]
+  - !Positional
+    optional: false
+    position: 6
+    name: meandepth
+    description: Mean depth of coverage
+  - !Positional
+    optional: false
+    position: 7
+    name: meanbaseq
+    description: Mean baseQ in covered region
+  - !Positional
+    optional: false
+    position: 8
+    name: meanmapq
+    description: Mean mapQ of selected reads
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    - --bam-list
+    description: list of input BAM filenames, one per line
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    - --min-read-len
+    description: ignore reads shorter than INT bp [0]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    - --min-MQ
+    description: mapping quality threshold [0]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -Q
+    - --min-BQ
+    description: base quality threshold [0]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --rf
+    description: 'required flags: skip reads with mask bits unset []'
+    args: !SimpleFlagArg
+      name: int|str
+  - !Flag
+    optional: true
+    synonyms:
+    - --ff
+    description: "filter flags: skip reads with mask bits set\n[UNMAP,SECONDARY,QCFAIL,DUP]"
+    args: !SimpleFlagArg
+      name: int|str
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    - --histogram
+    description: show histogram instead of tabular output
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -A
+    - --ascii
+    description: show only ASCII characters in histogram
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: write output to FILE [stdout]
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -H
+    - --no-header
+    description: don't print a header in tabular mode
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -w
+    - --n-bins
+    description: number of bins in histogram [terminal width - 40]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --region
+    description: 'show specified region. Format: chr:start-end.'
+    args: !SimpleFlagArg
+      name: REG
+  - !Flag
+    optional: true
+    synonyms:
+    - --input-fmt-option
+    description: "[=VAL]\nSpecify a single input file format option in the form\n\
+      of OPTION or OPTION=VALUE"
+    args: !SimpleFlagArg
+      name: OPT
+  - !Flag
+    optional: true
+    synonyms:
+    - --reference
+    description: Reference sequence FASTA FILE [null]
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --verbosity
+    description: Set level of verbosity
+    args: !SimpleFlagArg
+      name: INT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: help (this page)
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: samtools coverage [options] in1.bam [in2.bam [...]]\n\nInput\
+    \ options:\n  -b, --bam-list FILE     list of input BAM filenames, one per line\n\
+    \  -l, --min-read-len INT  ignore reads shorter than INT bp [0]\n  -q, --min-MQ\
+    \ INT        mapping quality threshold [0]\n  -Q, --min-BQ INT        base quality\
+    \ threshold [0]\n  --rf <int|str>          required flags: skip reads with mask\
+    \ bits unset []\n  --ff <int|str>          filter flags: skip reads with mask\
+    \ bits set \n                                      [UNMAP,SECONDARY,QCFAIL,DUP]\n\
+    Output options:\n  -m, --histogram         show histogram instead of tabular output\n\
+    \  -A, --ascii             show only ASCII characters in histogram\n  -o, --output\
+    \ FILE       write output to FILE [stdout]\n  -H, --no-header         don't print\
+    \ a header in tabular mode\n  -w, --n-bins INT        number of bins in histogram\
+    \ [terminal width - 40]\n  -r, --region REG        show specified region. Format:\
+    \ chr:start-end. \n  -h, --help              help (this page)\n\nGeneric options:\n\
+    \      --input-fmt-option OPT[=VAL]\n               Specify a single input file\
+    \ format option in the form\n               of OPTION or OPTION=VALUE\n      --reference\
+    \ FILE\n               Reference sequence FASTA FILE [null]\n      --verbosity\
+    \ INT\n               Set level of verbosity\n\nSee manpage for additional details.\n\
+    \  rname       Reference name / chromosome\n  startpos    Start position\n  endpos\
+    \      End position (or sequence length)\n  numreads    Number reads aligned to\
+    \ the region (after filtering)\n  covbases    Number of covered bases with depth\
+    \ >= 1\n  coverage    Proportion of covered bases [0..1]\n  meandepth   Mean depth\
+    \ of coverage\n  meanbaseq   Mean baseQ in covered region\n  meanmapq    Mean\
+    \ mapQ of selected reads\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/samtools:1.12--hd5e65b6_0
+- !Command
+  command:
+  - samtools
+  - flags
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: '0x1'
+    description: PAIRED        .. paired-end (or multiple-segment) sequencing technology
+  - !Positional
+    optional: false
+    position: 1
+    name: '0x2'
+    description: PROPER_PAIR   .. each segment properly aligned according to the aligner
+  - !Positional
+    optional: false
+    position: 2
+    name: '0x4'
+    description: UNMAP         .. segment unmapped
+  - !Positional
+    optional: false
+    position: 3
+    name: '0x8'
+    description: MUNMAP        .. next segment in the template unmapped
+  - !Positional
+    optional: false
+    position: 4
+    name: '0x10'
+    description: REVERSE       .. SEQ is reverse complemented
+  - !Positional
+    optional: false
+    position: 5
+    name: '0x20'
+    description: MREVERSE      .. SEQ of the next segment in the template is reversed
+  - !Positional
+    optional: false
+    position: 6
+    name: '0x40'
+    description: READ1         .. the first segment in the template
+  - !Positional
+    optional: false
+    position: 7
+    name: '0x80'
+    description: READ2         .. the last segment in the template
+  - !Positional
+    optional: false
+    position: 8
+    name: '0x100'
+    description: SECONDARY     .. secondary alignment
+  - !Positional
+    optional: false
+    position: 9
+    name: '0x200'
+    description: QCFAIL        .. not passing quality controls
+  - !Positional
+    optional: false
+    position: 10
+    name: '0x400'
+    description: DUP           .. PCR or optical duplicate
+  - !Positional
+    optional: false
+    position: 11
+    name: '0x800'
+    description: SUPPLEMENTARY .. supplementary alignment
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Error: Could not parse \"--help\"\n\nAbout: Convert between textual\
+    \ and numeric flag representation\nUsage: samtools flags INT|STR[,...]\n\nFlags:\n\
+    \t0x1\tPAIRED        .. paired-end (or multiple-segment) sequencing technology\n\
+    \t0x2\tPROPER_PAIR   .. each segment properly aligned according to the aligner\n\
+    \t0x4\tUNMAP         .. segment unmapped\n\t0x8\tMUNMAP        .. next segment\
+    \ in the template unmapped\n\t0x10\tREVERSE       .. SEQ is reverse complemented\n\
+    \t0x20\tMREVERSE      .. SEQ of the next segment in the template is reversed\n\
+    \t0x40\tREAD1         .. the first segment in the template\n\t0x80\tREAD2    \
+    \     .. the last segment in the template\n\t0x100\tSECONDARY     .. secondary\
+    \ alignment\n\t0x200\tQCFAIL        .. not passing quality controls\n\t0x400\t\
+    DUP           .. PCR or optical duplicate\n\t0x800\tSUPPLEMENTARY .. supplementary\
+    \ alignment\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/samtools:1.12--hd5e65b6_0
+- !Command
+  command:
+  - samtools
+  - faidx
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: file.fa|file.fa.gz
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: Write FASTA to file.
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    - --length
+    description: Length of FASTA sequence line. [60]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --continue
+    description: Continue after trying to retrieve missing region.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --region-file
+    description: File of regions.  Format is chr:from-to. One per line.
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --reverse-complement
+    description: complement sequences.
+    args: !SimpleFlagArg
+      name: Reverse
+  - !Flag
+    optional: true
+    synonyms:
+    - --mark-strand
+    description: "Add strand indicator to sequence name\nTYPE = rc   for /rc on negative\
+      \ strand (default)\nno   for no strand indicator\nsign for (+) / (-)\ncustom,<pos>,<neg>\
+      \ for custom indicator"
+    args: !SimpleFlagArg
+      name: TYPE
+  - !Flag
+    optional: true
+    synonyms:
+    - --fai-idx
+    description: FILE  name of the index file (default file.fa.fai).
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --gzi-idx
+    description: FILE  name of compressed file index (default file.fa.gz.gzi).
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --fastq
+    description: File and index in FASTQ format.
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: This message.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: samtools faidx <file.fa|file.fa.gz> [<reg> [...]]\nOption: \n\
+    \ -o, --output FILE        Write FASTA to file.\n -n, --length INT         Length\
+    \ of FASTA sequence line. [60]\n -c, --continue           Continue after trying\
+    \ to retrieve missing region.\n -r, --region-file FILE   File of regions.  Format\
+    \ is chr:from-to. One per line.\n -i, --reverse-complement Reverse complement\
+    \ sequences.\n     --mark-strand TYPE   Add strand indicator to sequence name\n\
+    \                          TYPE = rc   for /rc on negative strand (default)\n\
+    \                                 no   for no strand indicator\n             \
+    \                    sign for (+) / (-)\n                                 custom,<pos>,<neg>\
+    \ for custom indicator\n     --fai-idx      FILE  name of the index file (default\
+    \ file.fa.fai).\n     --gzi-idx      FILE  name of compressed file index (default\
+    \ file.fa.gz.gzi).\n -f, --fastq              File and index in FASTQ format.\n\
+    \ -h, --help               This message.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/samtools:1.12--hd5e65b6_0
+- !Command
+  command:
+  - samtools
+  - quickcheck
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: status.
+    description: One way to use quickcheck might be as a check that all BAM files
+      in
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    description: verbose output (repeat for more verbosity)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    description: suppress warning messages
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -u
+    description: unmapped input (do not require targets in header)
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "quickcheck: invalid option -- '-'\nUsage: samtools quickcheck [options]\
+    \ <input> [...]\nOptions:\n  -v              verbose output (repeat for more verbosity)\n\
+    \  -q              suppress warning messages\n  -u              unmapped input\
+    \ (do not require targets in header)\n\nNotes:\n\n1. By default quickcheck will\
+    \ emit a warning message if and only if a file\n   fails the checks, in which\
+    \ case the exit status is non-zero.  Under normal\n   behaviour with valid data\
+    \ it will be silent and has a zero exit status.\n   The warning messages are purely\
+    \ for manual inspection and should not be \n   parsed by scripts.\n\n2. In order\
+    \ to use this command programmatically, you should check its exit\n   status.\
+    \  One way to use quickcheck might be as a check that all BAM files in\n   a directory\
+    \ are okay:\n\n\tsamtools quickcheck *.bam && echo 'all ok' \\\n\t   || echo 'fail!'\n\
+    \n   The first level of verbosity lists only files that fail to stdout.\n   To\
+    \ obtain a parsable list of files that have failed, use this option:\n\n\tsamtools\
+    \ quickcheck -qv *.bam > bad_bams.fofn \\\n\t   && echo 'all ok' \\\n\t   || echo\
+    \ 'some files failed check, see bad_bams.fofn'\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/samtools:1.12--hd5e65b6_0
+- !Command
+  command:
+  - samtools
+  - cat
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: in1.bam
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    description: list of input BAM/CRAM file names, one per line
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -h
+    description: copy the header from FILE [default is 1st input file]
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: output BAM/CRAM
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-PG
+    description: do not add a PG line
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --output-fmt
+    description: "[,OPT[=VAL]]...\nSpecify output format (SAM, BAM, CRAM)"
+    args: !SimpleFlagArg
+      name: FORMAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --output-fmt-option
+    description: "[=VAL]\nSpecify a single output file format option in the form\n\
+      of OPTION or OPTION=VALUE"
+    args: !SimpleFlagArg
+      name: OPT
+  - !Flag
+    optional: true
+    synonyms:
+    - -@
+    - --threads
+    description: Number of additional threads to use [0]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - --verbosity
+    description: "Set level of verbosity\n"
+    args: !SimpleFlagArg
+      name: INT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "cat: unrecognized option '--help'\nUsage: samtools cat [options] <in1.bam>\
+    \  [... <inN.bam>]\n       samtools cat [options] <in1.cram> [... <inN.cram>]\n\
+    \nConcatenate BAM or CRAM files, first those in <bamlist.fofn>, then those\non\
+    \ the command line.\n\nOptions: -b FILE  list of input BAM/CRAM file names, one\
+    \ per line\n         -h FILE  copy the header from FILE [default is 1st input\
+    \ file]\n         -o FILE  output BAM/CRAM\n         --no-PG  do not add a PG\
+    \ line\n      --output-fmt FORMAT[,OPT[=VAL]]...\n               Specify output\
+    \ format (SAM, BAM, CRAM)\n      --output-fmt-option OPT[=VAL]\n             \
+    \  Specify a single output file format option in the form\n               of OPTION\
+    \ or OPTION=VALUE\n  -@, --threads INT\n               Number of additional threads\
+    \ to use [0]\n      --verbosity INT\n               Set level of verbosity\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/samtools:1.12--hd5e65b6_0
+- !Command
+  command:
+  - samtools
+  - phase
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: in.bam
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -k
+    description: block length [13]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    description: prefix of BAMs to output [null]
+    args: !SimpleFlagArg
+      name: STR
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    description: min het phred-LOD [37]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -Q
+    description: min base quality in het calling [13]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -D
+    description: max read depth [256]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -F
+    description: do not attempt to fix chimeras
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -A
+    description: drop reads with ambiguous phase
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-PG
+    description: do not add a PG line
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --input-fmt-option
+    description: "[=VAL]\nSpecify a single input file format option in the form\n\
+      of OPTION or OPTION=VALUE"
+    args: !SimpleFlagArg
+      name: OPT
+  - !Flag
+    optional: true
+    synonyms:
+    - --output-fmt
+    description: "[,OPT[=VAL]]...\nSpecify output format (SAM, BAM, CRAM)"
+    args: !SimpleFlagArg
+      name: FORMAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --output-fmt-option
+    description: "[=VAL]\nSpecify a single output file format option in the form\n\
+      of OPTION or OPTION=VALUE"
+    args: !SimpleFlagArg
+      name: OPT
+  - !Flag
+    optional: true
+    synonyms:
+    - --reference
+    description: Reference sequence FASTA FILE [null]
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --verbosity
+    description: "Set level of verbosity\n"
+    args: !SimpleFlagArg
+      name: INT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "phase: unrecognized option '--help'\n\nUsage:   samtools phase [options]\
+    \ <in.bam>\n\nOptions: -k INT    block length [13]\n         -b STR    prefix\
+    \ of BAMs to output [null]\n         -q INT    min het phred-LOD [37]\n      \
+    \   -Q INT    min base quality in het calling [13]\n         -D INT    max read\
+    \ depth [256]\n         -F        do not attempt to fix chimeras\n         -A\
+    \        drop reads with ambiguous phase\n         --no-PG   do not add a PG line\n\
+    \n      --input-fmt-option OPT[=VAL]\n               Specify a single input file\
+    \ format option in the form\n               of OPTION or OPTION=VALUE\n      --output-fmt\
+    \ FORMAT[,OPT[=VAL]]...\n               Specify output format (SAM, BAM, CRAM)\n\
+    \      --output-fmt-option OPT[=VAL]\n               Specify a single output file\
+    \ format option in the form\n               of OPTION or OPTION=VALUE\n      --reference\
+    \ FILE\n               Reference sequence FASTA FILE [null]\n      --verbosity\
+    \ INT\n               Set level of verbosity\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/samtools:1.12--hd5e65b6_0
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nProgram: samtools (Tools for alignments in the SAM format)\nVersion:\
+  \ 1.12 (using htslib 1.12)\n\nUsage:   samtools <command> [options]\n\nCommands:\n\
+  \  -- Indexing\n     dict           create a sequence dictionary file\n     faidx\
+  \          index/extract FASTA\n     fqidx          index/extract FASTQ\n     index\
+  \          index alignment\n\n  -- Editing\n     calmd          recalculate MD/NM\
+  \ tags and '=' bases\n     fixmate        fix mate information\n     reheader  \
+  \     replace BAM header\n     targetcut      cut fosmid regions (for fosmid pool\
+  \ only)\n     addreplacerg   adds or replaces RG tags\n     markdup        mark\
+  \ duplicates\n     ampliconclip   clip oligos from the end of reads\n\n  -- File\
+  \ operations\n     collate        shuffle and group alignments by name\n     cat\
+  \            concatenate BAMs\n     merge          merge sorted alignments\n   \
+  \  mpileup        multi-way pileup\n     sort           sort alignment file\n  \
+  \   split          splits a file by read group\n     quickcheck     quickly check\
+  \ if SAM/BAM/CRAM file appears intact\n     fastq          converts a BAM to a FASTQ\n\
+  \     fasta          converts a BAM to a FASTA\n\n  -- Statistics\n     bedcov \
+  \        read depth per BED region\n     coverage       alignment depth and percent\
+  \ coverage\n     depth          compute the depth\n     flagstat       simple stats\n\
+  \     idxstats       BAM index stats\n     phase          phase heterozygotes\n\
+  \     stats          generate stats (former bamcheck)\n     ampliconstats  generate\
+  \ amplicon specific stats\n\n  -- Viewing\n     flags          explain BAM flags\n\
+  \     tview          text alignment viewer\n     view           SAM<->BAM<->CRAM\
+  \ conversion\n     depad          convert padded BAM to unpadded BAM\n\n  -- Misc\n\
+  \     help [cmd]     display this help message or help for [cmd]\n     version \
+  \       detailed version information\n\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/samtools:1.12--hd5e65b6_0

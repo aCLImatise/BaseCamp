@@ -1,0 +1,380 @@
+!Command
+command:
+- aquamis
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: interrupted
+  description: --no_assembly         Only trimming and kraken analysis
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --sample_list
+  description: List of samples to assemble, format as defined by ...
+  args: !SimpleFlagArg
+    name: SAMPLE_LIST
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --working_directory
+  description: Working directory
+  args: !SimpleFlagArg
+    name: WORKING_DIRECTORY
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --snakefile
+  description: "Path to Snakefile of bakcharak pipeline; default: path\nto Snakefile\
+    \ in same directory"
+  args: !SimpleFlagArg
+    name: SNAKEFILE
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --run_name
+  description: "Name of the sequencing run for all samples in the\nsample list, e.g.\n\
+    \"210401_M02387_0709_000000000-HBXX6\", or a self-chosen\nanalysis title"
+  args: !SimpleFlagArg
+    name: RUN_NAME
+- !Flag
+  optional: true
+  synonyms:
+  - --docker
+  description: Mapped volume path of the host system
+  args: !SimpleFlagArg
+    name: DOCKER
+- !Flag
+  optional: true
+  synonyms:
+  - --qc_thresholds
+  description: "Definition of thresholds in JSON file; default: /usr/l\nocal/opt/aquamis/thresholds/AQUAMIS_thresholds.json"
+  args: !SimpleFlagArg
+    name: QC_THRESHOLDS
+- !Flag
+  optional: true
+  synonyms:
+  - --json_schema
+  description: "JSON schema used for validation; default: /usr/local/o\npt/aquamis/resources/AQUAMIS_schema_v20210226.json"
+  args: !SimpleFlagArg
+    name: JSON_SCHEMA
+- !Flag
+  optional: true
+  synonyms:
+  - --json_filter
+  description: "Definition of thresholds in JSON file; default: /usr/l\nocal/opt/aquamis/thresholds/AQUAMIS_schema_filter_v202\n\
+    10226.json"
+  args: !SimpleFlagArg
+    name: JSON_FILTER
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --mashdb
+  description: "Path to reference mash database; default:/usr/local/op\nt/aquamis/reference_db/mash/mashDB.msh"
+  args: !SimpleFlagArg
+    name: MASHDB
+- !Flag
+  optional: true
+  synonyms:
+  - --mash_kmersize
+  description: "kmer size for mash, must match size of database;\ndefault: 21"
+  args: !SimpleFlagArg
+    name: MASH_KMERSIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --mash_sketchsize
+  description: "sketch size for mash, must match size of database;\ndefault: 1000"
+  args: !SimpleFlagArg
+    name: MASH_SKETCHSIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --kraken2db
+  description: "Path to kraken2 database; default:\n/usr/local/opt/aquamis/reference_db/kraken2"
+  args: !SimpleFlagArg
+    name: KRAKEN2DB
+- !Flag
+  optional: true
+  synonyms:
+  - --taxlevel_qc
+  description: "Taxonomic level for kraken2 classification quality\ncontrol. Choose\
+    \ S for species or G for genus; default:\n\"G\""
+  args: !SimpleFlagArg
+    name: TAXLEVEL_QC
+- !Flag
+  optional: true
+  synonyms:
+  - --read_length
+  description: "Read length to be used in bracken abundance\nestimation; default:\
+    \ 150"
+  args: !SimpleFlagArg
+    name: READ_LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - --taxonkit_db
+  description: "Path to taxonkit_db;\ndefault:/usr/local/opt/aquamis/reference_db/taxonkit"
+  args: !SimpleFlagArg
+    name: TAXONKIT_DB
+- !Flag
+  optional: true
+  synonyms:
+  - --confindr_database
+  description: "Path to confindr databases;\ndefault:/usr/local/opt/aquamis/reference_db/confindr"
+  args: !SimpleFlagArg
+    name: CONFINDR_DATABASE
+- !Flag
+  optional: true
+  synonyms:
+  - --min_trimmed_length
+  description: 'Minimum length of a read to keep; default: 15'
+  args: !SimpleFlagArg
+    name: MIN_TRIMMED_LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - --assembler
+  description: "Assembler to use in shovill, choose from megahit\nvelvet skesa spades;\
+    \ default: \"spades\""
+  args: !SimpleFlagArg
+    name: ASSEMBLER
+- !Flag
+  optional: true
+  synonyms:
+  - --shovill_output_options
+  description: 'Extra output options for shovill; default: ""'
+  args: !SimpleFlagArg
+    name: SHOVILL_OUTPUT_OPTIONS
+- !Flag
+  optional: true
+  synonyms:
+  - --shovill_depth
+  description: "Sub-sample --R1/--R2 to this depth. Disable with\n--depth 0; default:\
+    \ 100"
+  args: !SimpleFlagArg
+    name: SHOVILL_DEPTH
+- !Flag
+  optional: true
+  synonyms:
+  - --shovill_ram
+  description: 'Limit amount of RAM provided to shovill; default: 16'
+  args: !SimpleFlagArg
+    name: SHOVILL_RAM
+- !Flag
+  optional: true
+  synonyms:
+  - --shovill_tmpdir
+  description: 'Fast temporary directory; default: "/tmp/shovill"'
+  args: !SimpleFlagArg
+    name: SHOVILL_TMPDIR
+- !Flag
+  optional: true
+  synonyms:
+  - --shovill_extraopts
+  description: 'Extra options for shovill; default: ""'
+  args: !SimpleFlagArg
+    name: SHOVILL_EXTRAOPTS
+- !Flag
+  optional: true
+  synonyms:
+  - --shovill_modules
+  description: "Module options for shovill; choose from --noreadcorr\n--trim --nostitch\
+    \ --nocorr --noreadcorr; default: \"--\nnoreadcorr\""
+  args: !SimpleFlagArg
+    name: SHOVILL_MODULES
+- !Flag
+  optional: true
+  synonyms:
+  - --mlst_scheme
+  description: 'Extra options for MLST; default: ""'
+  args: !SimpleFlagArg
+    name: MLST_SCHEME
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: "Number of Threads to use. Ideally multiple of 10;\ndefault: 10"
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - --threads_sample
+  description: 'Number of Threads to use per sample; default: 1'
+  args: !SimpleFlagArg
+    name: THREADS_SAMPLE
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --condaprefix
+  description: "Path of default conda environment, enables recycling\nbuilt environments;\
+    \ default: \"<AQUAMIS>/conda_env\""
+  args: !SimpleFlagArg
+    name: CONDAPREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --dryrun
+  description: "Snakemake dryrun. Only calculate graph without\nexecuting anything"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --forceall
+  description: Snakemake force. Force recalculation of all steps
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --force
+  description: "Snakemake force. Force recalculation of output (rule\nor file) speciefied\
+    \ here"
+  args: !SimpleFlagArg
+    name: FORCE
+- !Flag
+  optional: true
+  synonyms:
+  - --fix_fails
+  description: Re-run snakemake after failure removing failed samples
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --unlock
+  description: Unlock a snakemake execution folder if it had been
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --use_conda
+  description: "Utilize the Snakemake \"--useconda\" option, i.e. Smk\nrules require\
+    \ execution with a specific conda env"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --conda_frontend
+  description: "Do not use mamba but conda as frontend to create\nindividual conda\
+    \ environments"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --remove_temp
+  description: "Remove large temporary files. May lead to slower re-\nruns but saves\
+    \ disk space."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --logdir
+  description: "Path to directory where .snakemake output is to be\nsaved\n"
+  args: !SimpleFlagArg
+    name: LOGDIR
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: aquamis [-h] -l SAMPLE_LIST -d WORKING_DIRECTORY [-s SNAKEFILE]\n\
+  \               [-r RUN_NAME] [--docker DOCKER] [--qc_thresholds QC_THRESHOLDS]\n\
+  \               [--json_schema JSON_SCHEMA] [--json_filter JSON_FILTER]\n      \
+  \         [-m MASHDB] [--mash_kmersize MASH_KMERSIZE]\n               [--mash_sketchsize\
+  \ MASH_SKETCHSIZE] [--kraken2db KRAKEN2DB]\n               [--taxlevel_qc TAXLEVEL_QC]\
+  \ [--read_length READ_LENGTH]\n               [--taxonkit_db TAXONKIT_DB]\n    \
+  \           [--confindr_database CONFINDR_DATABASE]\n               [--min_trimmed_length\
+  \ MIN_TRIMMED_LENGTH]\n               [--assembler ASSEMBLER]\n               [--shovill_output_options\
+  \ SHOVILL_OUTPUT_OPTIONS]\n               [--shovill_depth SHOVILL_DEPTH] [--shovill_ram\
+  \ SHOVILL_RAM]\n               [--shovill_tmpdir SHOVILL_TMPDIR]\n             \
+  \  [--shovill_extraopts SHOVILL_EXTRAOPTS]\n               [--shovill_modules SHOVILL_MODULES]\
+  \ [--mlst_scheme MLST_SCHEME]\n               [-t THREADS] [--threads_sample THREADS_SAMPLE]\
+  \ [-c CONDAPREFIX]\n               [-n] [--forceall] [-f FORCE] [--fix_fails] [--unlock]\n\
+  \               [--no_assembly] [--use_conda] [--conda_frontend]\n             \
+  \  [--remove_temp] [--logdir LOGDIR]\n\noptional arguments:\n  -h, --help      \
+  \      show this help message and exit\n  -l SAMPLE_LIST, --sample_list SAMPLE_LIST\n\
+  \                        List of samples to assemble, format as defined by ...\n\
+  \  -d WORKING_DIRECTORY, --working_directory WORKING_DIRECTORY\n               \
+  \         Working directory\n  -s SNAKEFILE, --snakefile SNAKEFILE\n           \
+  \             Path to Snakefile of bakcharak pipeline; default: path\n         \
+  \               to Snakefile in same directory\n  -r RUN_NAME, --run_name RUN_NAME\n\
+  \                        Name of the sequencing run for all samples in the\n   \
+  \                     sample list, e.g.\n                        \"210401_M02387_0709_000000000-HBXX6\"\
+  , or a self-chosen\n                        analysis title\n  --docker DOCKER  \
+  \     Mapped volume path of the host system\n  --qc_thresholds QC_THRESHOLDS\n \
+  \                       Definition of thresholds in JSON file; default: /usr/l\n\
+  \                        ocal/opt/aquamis/thresholds/AQUAMIS_thresholds.json\n \
+  \ --json_schema JSON_SCHEMA\n                        JSON schema used for validation;\
+  \ default: /usr/local/o\n                        pt/aquamis/resources/AQUAMIS_schema_v20210226.json\n\
+  \  --json_filter JSON_FILTER\n                        Definition of thresholds in\
+  \ JSON file; default: /usr/l\n                        ocal/opt/aquamis/thresholds/AQUAMIS_schema_filter_v202\n\
+  \                        10226.json\n  -m MASHDB, --mashdb MASHDB\n            \
+  \            Path to reference mash database; default:/usr/local/op\n          \
+  \              t/aquamis/reference_db/mash/mashDB.msh\n  --mash_kmersize MASH_KMERSIZE\n\
+  \                        kmer size for mash, must match size of database;\n    \
+  \                    default: 21\n  --mash_sketchsize MASH_SKETCHSIZE\n        \
+  \                sketch size for mash, must match size of database;\n          \
+  \              default: 1000\n  --kraken2db KRAKEN2DB\n                        Path\
+  \ to kraken2 database; default:\n                        /usr/local/opt/aquamis/reference_db/kraken2\n\
+  \  --taxlevel_qc TAXLEVEL_QC\n                        Taxonomic level for kraken2\
+  \ classification quality\n                        control. Choose S for species\
+  \ or G for genus; default:\n                        \"G\"\n  --read_length READ_LENGTH\n\
+  \                        Read length to be used in bracken abundance\n         \
+  \               estimation; default: 150\n  --taxonkit_db TAXONKIT_DB\n        \
+  \                Path to taxonkit_db;\n                        default:/usr/local/opt/aquamis/reference_db/taxonkit\n\
+  \  --confindr_database CONFINDR_DATABASE\n                        Path to confindr\
+  \ databases;\n                        default:/usr/local/opt/aquamis/reference_db/confindr\n\
+  \  --min_trimmed_length MIN_TRIMMED_LENGTH\n                        Minimum length\
+  \ of a read to keep; default: 15\n  --assembler ASSEMBLER\n                    \
+  \    Assembler to use in shovill, choose from megahit\n                        velvet\
+  \ skesa spades; default: \"spades\"\n  --shovill_output_options SHOVILL_OUTPUT_OPTIONS\n\
+  \                        Extra output options for shovill; default: \"\"\n  --shovill_depth\
+  \ SHOVILL_DEPTH\n                        Sub-sample --R1/--R2 to this depth. Disable\
+  \ with\n                        --depth 0; default: 100\n  --shovill_ram SHOVILL_RAM\n\
+  \                        Limit amount of RAM provided to shovill; default: 16\n\
+  \  --shovill_tmpdir SHOVILL_TMPDIR\n                        Fast temporary directory;\
+  \ default: \"/tmp/shovill\"\n  --shovill_extraopts SHOVILL_EXTRAOPTS\n         \
+  \               Extra options for shovill; default: \"\"\n  --shovill_modules SHOVILL_MODULES\n\
+  \                        Module options for shovill; choose from --noreadcorr\n\
+  \                        --trim --nostitch --nocorr --noreadcorr; default: \"--\n\
+  \                        noreadcorr\"\n  --mlst_scheme MLST_SCHEME\n           \
+  \             Extra options for MLST; default: \"\"\n  -t THREADS, --threads THREADS\n\
+  \                        Number of Threads to use. Ideally multiple of 10;\n   \
+  \                     default: 10\n  --threads_sample THREADS_SAMPLE\n         \
+  \               Number of Threads to use per sample; default: 1\n  -c CONDAPREFIX,\
+  \ --condaprefix CONDAPREFIX\n                        Path of default conda environment,\
+  \ enables recycling\n                        built environments; default: \"<AQUAMIS>/conda_env\"\
+  \n  -n, --dryrun          Snakemake dryrun. Only calculate graph without\n     \
+  \                   executing anything\n  --forceall            Snakemake force.\
+  \ Force recalculation of all steps\n  -f FORCE, --force FORCE\n                \
+  \        Snakemake force. Force recalculation of output (rule\n                \
+  \        or file) speciefied here\n  --fix_fails           Re-run snakemake after\
+  \ failure removing failed samples\n  --unlock              Unlock a snakemake execution\
+  \ folder if it had been\n                        interrupted\n  --no_assembly  \
+  \       Only trimming and kraken analysis\n  --use_conda           Utilize the Snakemake\
+  \ \"--useconda\" option, i.e. Smk\n                        rules require execution\
+  \ with a specific conda env\n  --conda_frontend      Do not use mamba but conda\
+  \ as frontend to create\n                        individual conda environments\n\
+  \  --remove_temp         Remove large temporary files. May lead to slower re-\n\
+  \                        runs but saves disk space.\n  --logdir LOGDIR       Path\
+  \ to directory where .snakemake output is to be\n                        saved\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/aquamis:1.3.3--0

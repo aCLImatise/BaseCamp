@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Int, Boolean
+
+Clone_Filter_V0_1_0 = CommandToolBuilder(tool="clone_filter", base_command=["clone_filter"], inputs=[ToolInput(tag="in_oligo_len_one", input_type=Int(optional=True), prefix="--oligo-len-1", doc=InputDocumentation(doc=": length of the single-end oligo sequence in data set.")), ToolInput(tag="in_oligo_len_two", input_type=Int(optional=True), prefix="--oligo-len-2", doc=InputDocumentation(doc=": length of the paired-end oligo sequence in data set.")), ToolInput(tag="in_retain_oligo", input_type=Boolean(optional=True), prefix="--retain-oligo", doc=InputDocumentation(doc=": do not trim off the random oligo sequence (if oligo is inline).")), ToolInput(tag="in_inline_null", input_type=Boolean(optional=True), prefix="--inline-null", doc=InputDocumentation(doc=":   random oligo is inline with sequence, occurs only on single-end read (default).")), ToolInput(tag="in_null_inline", input_type=Boolean(optional=True), prefix="--null-inline", doc=InputDocumentation(doc=":   random oligo is inline with sequence, occurs only on the paired-end read.")), ToolInput(tag="in_null_index", input_type=Boolean(optional=True), prefix="--null-index", doc=InputDocumentation(doc=":    random oligo is provded in FASTQ header (Illumina i7 read if both i5 and i7 read are provided).")), ToolInput(tag="in_index_null", input_type=Boolean(optional=True), prefix="--index-null", doc=InputDocumentation(doc=":    random oligo is provded in FASTQ header (Illumina i5 or i7 read).")), ToolInput(tag="in_inline_inline", input_type=Boolean(optional=True), prefix="--inline-inline", doc=InputDocumentation(doc=": random oligo is inline with sequence, occurs on single and paired-end read.")), ToolInput(tag="in_index_index", input_type=Boolean(optional=True), prefix="--index-index", doc=InputDocumentation(doc=":   random oligo is provded in FASTQ header (Illumina i5 and i7 read).")), ToolInput(tag="in_inline_index", input_type=Boolean(optional=True), prefix="--inline-index", doc=InputDocumentation(doc=":  random oligo is inline with sequence on single-end read and second oligo occurs in FASTQ header.")), ToolInput(tag="in_index_inline", input_type=Boolean(optional=True), prefix="--index-inline", doc=InputDocumentation(doc=":  random oligo occurs in FASTQ header (Illumina i5 or i7 read) and is inline with sequence on single-end read (if single read data) or paired-end read (if paired data)."))], outputs=[], container="quay.io/biocontainers/stacks:2.55--he513fc3_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Clone_Filter_V0_1_0().translate("wdl")
+

@@ -1,0 +1,182 @@
+!Command
+command:
+- coconet
+- cluster
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --output
+  description: 'Path to output directory (default: output)'
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: 'Number of threads (default: 5)'
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: 'Print debugging statements (default: 20)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --quiet
+  description: 'Less verbose (default: None)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --silent
+  description: 'Only error messages (default: None)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --continue
+  description: "Start from last checkpoint. The output directory needs\nto be the\
+    \ same. (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --fragment-length
+  description: "Length of contig fragments in bp. Default is half the\nminimum contig\
+    \ length. (default: -1)"
+  args: !SimpleFlagArg
+    name: FRAGMENT_LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - --features
+  description: "[{coverage,composition} ...]\nFeatures for binning (composition, coverage,\
+    \ or both)\n(default: ['coverage', 'composition'])"
+  args: !ChoiceFlagArg
+    choices: !!set
+      coverage:
+      composition:
+- !Flag
+  optional: true
+  synonyms:
+  - --max-neighbors
+  description: "Maximum number of neighbors to consider to compute the\nadjacency\
+    \ matrix. (default: 250)"
+  args: !SimpleFlagArg
+    name: MAX_NEIGHBORS
+- !Flag
+  optional: true
+  synonyms:
+  - --vote-threshold
+  description: "When this parameter is not set, contig-contig edges\nare computed\
+    \ by summing the probability between all\npairwise fragments between them.Otherwise,\
+    \ adopt a\nvoting strategy and sets a hard-threshold on the\nprobabilityfrom each\
+    \ pairwise comparison. (default:\nNone)"
+  args: !SimpleFlagArg
+    name: VOTE_THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - --algorithm
+  description: "Algorithm for clustering the contig-contig graph.\nNote: the number\
+    \ of cluster is required if \"spectral\"\nis chosen. (default: leiden)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      leiden:
+      spectral:
+- !Flag
+  optional: true
+  synonyms:
+  - --theta
+  description: "(leiden) Minimum percent of edges between two contigs\nto form an\
+    \ edge between them (default: 0.8)"
+  args: !SimpleFlagArg
+    name: THETA
+- !Flag
+  optional: true
+  synonyms:
+  - --gamma1
+  description: "(leiden) CPM optimization value for the first run of\nthe Leiden clustering\
+    \ (default: 0.3)"
+  args: !SimpleFlagArg
+    name: GAMMA1
+- !Flag
+  optional: true
+  synonyms:
+  - --gamma2
+  description: "(leiden) CPM optimization value for the second run of\nthe Leiden\
+    \ clustering (default: 0.4)"
+  args: !SimpleFlagArg
+    name: GAMMA2
+- !Flag
+  optional: true
+  synonyms:
+  - --n-clusters
+  description: "(spectral clustering) Maximum number of clusters\n(default: None)"
+  args: !SimpleFlagArg
+    name: N_CLUSTERS
+- !Flag
+  optional: true
+  synonyms:
+  - --recruit-small-contigs
+  description: "Salvage short contigs (<2048) (default: False)\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: coconet cluster [-h] [--output OUTPUT] [-t THREADS] [--debug] [--quiet]\n\
+  \                       [--silent] [--continue]\n                       [--fragment-length\
+  \ FRAGMENT_LENGTH]\n                       [--features {coverage,composition} [{coverage,composition}\
+  \ ...]]\n                       [--max-neighbors MAX_NEIGHBORS]\n              \
+  \         [--vote-threshold VOTE_THRESHOLD]\n                       [--algorithm\
+  \ {leiden,spectral}] [--theta THETA]\n                       [--gamma1 GAMMA1] [--gamma2\
+  \ GAMMA2]\n                       [--n-clusters N_CLUSTERS] [--recruit-small-contigs]\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  --output OUTPUT       Path to output directory (default: output)\n  -t THREADS,\
+  \ --threads THREADS\n                        Number of threads (default: 5)\n  --debug\
+  \               Print debugging statements (default: 20)\n  --quiet            \
+  \   Less verbose (default: None)\n  --silent              Only error messages (default:\
+  \ None)\n  --continue            Start from last checkpoint. The output directory\
+  \ needs\n                        to be the same. (default: False)\n  --fragment-length\
+  \ FRAGMENT_LENGTH\n                        Length of contig fragments in bp. Default\
+  \ is half the\n                        minimum contig length. (default: -1)\n  --features\
+  \ {coverage,composition} [{coverage,composition} ...]\n                        Features\
+  \ for binning (composition, coverage, or both)\n                        (default:\
+  \ ['coverage', 'composition'])\n  --max-neighbors MAX_NEIGHBORS\n              \
+  \          Maximum number of neighbors to consider to compute the\n            \
+  \            adjacency matrix. (default: 250)\n  --vote-threshold VOTE_THRESHOLD\n\
+  \                        When this parameter is not set, contig-contig edges\n \
+  \                       are computed by summing the probability between all\n  \
+  \                      pairwise fragments between them.Otherwise, adopt a\n    \
+  \                    voting strategy and sets a hard-threshold on the\n        \
+  \                probabilityfrom each pairwise comparison. (default:\n         \
+  \               None)\n  --algorithm {leiden,spectral}\n                       \
+  \ Algorithm for clustering the contig-contig graph.\n                        Note:\
+  \ the number of cluster is required if \"spectral\"\n                        is\
+  \ chosen. (default: leiden)\n  --theta THETA         (leiden) Minimum percent of\
+  \ edges between two contigs\n                        to form an edge between them\
+  \ (default: 0.8)\n  --gamma1 GAMMA1       (leiden) CPM optimization value for the\
+  \ first run of\n                        the Leiden clustering (default: 0.3)\n \
+  \ --gamma2 GAMMA2       (leiden) CPM optimization value for the second run of\n\
+  \                        the Leiden clustering (default: 0.4)\n  --n-clusters N_CLUSTERS\n\
+  \                        (spectral clustering) Maximum number of clusters\n    \
+  \                    (default: None)\n  --recruit-small-contigs\n              \
+  \          Salvage short contigs (<2048) (default: False)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/coconet-binning:1.1.0--py_0

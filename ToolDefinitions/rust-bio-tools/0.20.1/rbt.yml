@@ -1,0 +1,1137 @@
+&id001 !Command
+command:
+- rbt
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: Verbose output.
+  args: !EmptyFlagArg {}
+parent:
+subcommands:
+- !Command
+  command:
+  - rbt
+  - csv-report
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: csv-path
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --formatter
+    description: "Configure a custom formatter function for each column by providing\
+      \ a file\ncontaining a javascript object with csv column title as the key and\
+      \ a format\nfunction as the value. More information on the formatting functions\
+      \ and how\nto use them here: https://bootstrap-table.com/docs/api/column-\n\
+      options/#formatter"
+    args: !SimpleFlagArg
+      name: formatter
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --rows-per-page
+    description: "Sets the numbers of rows of each table per page. Default is 100\
+      \ [default:\n100]"
+    args: !SimpleFlagArg
+      name: rows-per-page
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --separator
+    description: "Change the separator of the csv file to tab or anything else. Default\
+      \ is \",\"\n[default: ,]"
+    args: !SimpleFlagArg
+      name: separator
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --sort-column
+    description: Column that the data should be sorted by
+    args: !SimpleFlagArg
+      name: sort-column
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --sort-order
+    description: "Order the data ascending or descending. Default is descending [default:\n\
+      descending]  [possible values: ascending, descending]"
+    args: !SimpleFlagArg
+      name: sort-order
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Prints help information
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - -V
+    - --version
+    description: Prints version information
+    args: !EmptyFlagArg {}
+  help_text: "rbt-csv-report 0.20.1\nFelix Wiegand <felix.wiegand@tu-dortmund.de>\n\
+    Creates report from a given csv file containing a table with the given data Examples:\
+    \ With current directory as default\nouput path: rbt csv-report path/to/table.csv\
+    \ --rows-per-page 100 --sort-column \"p-value\" --sort-order ascending\n\nUSAGE:\n\
+    \    rbt csv-report [OPTIONS] <csv-path> [output-path]\n\nFLAGS:\n    -h, --help\
+    \       Prints help information\n    -V, --version    Prints version information\n\
+    \nOPTIONS:\n    -f, --formatter <formatter>            Configure a custom formatter\
+    \ function for each column by providing a file\n                             \
+    \              containing a javascript object with csv column title as the key\
+    \ and a format\n                                           function as the value.\
+    \ More information on the formatting functions and how\n                     \
+    \                      to use them here: https://bootstrap-table.com/docs/api/column-\n\
+    \                                           options/#formatter\n    -r, --rows-per-page\
+    \ <rows-per-page>    Sets the numbers of rows of each table per page. Default\
+    \ is 100 [default:\n                                           100]\n    -s, --separator\
+    \ <separator>            Change the separator of the csv file to tab or anything\
+    \ else. Default is \",\"\n                                           [default:\
+    \ ,]\n    -c, --sort-column <sort-column>        Column that the data should be\
+    \ sorted by\n    -o, --sort-order <sort-order>          Order the data ascending\
+    \ or descending. Default is descending [default:\n                           \
+    \                descending]  [possible values: ascending, descending]\n\nARGS:\n\
+    \    <csv-path>       CSV file including the data for the report\n    <output-path>\
+    \    Relative output path for the report files. Default value is the current directory\
+    \ [default: .]\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/rust-bio-tools:0.20.1--heda7bfa_0
+- !Command
+  command:
+  - rbt
+  - vcf-annotate-dgidb
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --api-path
+    description: "Url prefix for requesting interaction drugs by gene names [default:\n\
+      http://dgidb.org/api/v2/interactions.json?genes=]"
+    args: !SimpleFlagArg
+      name: api-path
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --datasources
+    description: "...\nA list of data sources included in query. If omitted all sources\
+      \ are considered. A list of all sources can\nbe found at http://dgidb.org/api/v2/interaction_sources.json"
+    args: !SimpleFlagArg
+      name: STR
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --field
+    description: 'Info field name to be used for annotation [default: dgiDB_drugs]'
+    args: !SimpleFlagArg
+      name: field
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    - --genes-per-request
+    description: "Number of genes to submit per api request. A lower value increases\
+      \ the number of api requests in return. Too\nmany requests could be rejected\
+      \ by the DGIdb server [default: 500]"
+    args: !SimpleFlagArg
+      name: genes-per-request
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Prints help information
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - -V
+    - --version
+    description: Prints version information
+    args: !EmptyFlagArg {}
+  help_text: "rbt-vcf-annotate-dgidb 0.20.1\nFelix Mölder <felix.moelder@uni-due.de>\n\
+    Looks for interacting drugs in DGIdb and annotates them for every gene in every\
+    \ record.\n\nExample: rbt vcf-annotate-dgidb input.vcf > output.vcf\n\nUSAGE:\n\
+    \    rbt vcf-annotate-dgidb [OPTIONS] <vcf>\n\nFLAGS:\n    -h, --help       \n\
+    \            Prints help information\n\n    -V, --version    \n            Prints\
+    \ version information\n\n\nOPTIONS:\n    -p, --api-path <api-path>\n         \
+    \   Url prefix for requesting interaction drugs by gene names [default:\n    \
+    \        http://dgidb.org/api/v2/interactions.json?genes=]\n    -s, --datasources\
+    \ <STR>...\n            A list of data sources included in query. If omitted all\
+    \ sources are considered. A list of all sources can\n            be found at http://dgidb.org/api/v2/interaction_sources.json\n\
+    \    -f, --field <field>                            \n            Info field name\
+    \ to be used for annotation [default: dgiDB_drugs]\n\n    -g, --genes-per-request\
+    \ <genes-per-request>\n            Number of genes to submit per api request.\
+    \ A lower value increases the number of api requests in return. Too\n        \
+    \    many requests could be rejected by the DGIdb server [default: 500]\n\nARGS:\n\
+    \    <vcf>    \n            VCF/BCF file to be extended by dgidb drug entries\n\
+    \n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/rust-bio-tools:0.20.1--heda7bfa_0
+- !Command
+  command:
+  - rbt
+  - sequence-stats
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    - --fastq
+    description: Flag to indicate the sequence in stdin is in fastq format.
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Prints help information
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - -V
+    - --version
+    description: "Prints version information\n"
+    args: !EmptyFlagArg {}
+  help_text: "rbt-sequence-stats 0.20.1\nPierre Marijon <pmarijon@mpi-inf.mpg.de>\n\
+    Tool to compute stats on sequence file (from STDIN), output is in YAML with fields:\
+    \ - min: length of shortest sequence -\nmax: length of longest sequence - average:\
+    \ average length of sequence - median: median length of sequence - nb_reads:\n\
+    number of reads - nb_bases: number of bases - n50: N50 of sequences\n\nExample:\
+    \ rbt sequence-stats < test.fasta rbt sequence-stats -q < test.fastq\n\nUSAGE:\n\
+    \    rbt sequence-stats [FLAGS]\n\nFLAGS:\n    -q, --fastq      \n           \
+    \ Flag to indicate the sequence in stdin is in fastq format.\n\n    -h, --help\
+    \       \n            Prints help information\n\n    -V, --version    \n     \
+    \       Prints version information\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/rust-bio-tools:0.20.1--heda7bfa_0
+- !Command
+  command:
+  - rbt
+  - fastq-split
+  positional:
+  - !Positional
+    optional: true
+    position: 0
+    name: chunks
+    description: ''
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Prints help information
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - -V
+    - --version
+    description: Prints version information
+    args: !EmptyFlagArg {}
+  help_text: "rbt-fastq-split 0.20.1\nJohannes Köster <johannes.koester@tu-dortmund.de>\n\
+    Split FASTQ file from STDIN into N chunks.\n\nExample: rbt fastq-split A.fastq\
+    \ B.fastq < test.fastq\n\nUSAGE:\n    rbt fastq-split [chunks]...\n\nFLAGS:\n\
+    \    -h, --help       \n            Prints help information\n\n    -V, --version\
+    \    \n            Prints version information\n\n\nARGS:\n    <chunks>...    \n\
+    \            File name(s) for the chunks to create.\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/rust-bio-tools:0.20.1--heda7bfa_0
+- !Command
+  command:
+  - rbt
+  - vcf-split
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: input
+    description: ''
+  - !Positional
+    optional: true
+    position: 1
+    name: output
+    description: ''
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Prints help information
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - -V
+    - --version
+    description: Prints version information
+    args: !EmptyFlagArg {}
+  help_text: "rbt-vcf-split 0.20.1\nJohannes Köster <johannes.koester@uni-due.de>\n\
+    Split a given VCF/BCF file into N chunks of approximately the same size. Breakends\
+    \ are kept together. Output type is\nalways BCF.\n\nExample: rbt vcf-split input.bcf\
+    \ output1.bcf output2.bcf output3.bcf ... outputN.bcf\n\nUSAGE:\n    rbt vcf-split\
+    \ <input> [output]...\n\nFLAGS:\n    -h, --help       \n            Prints help\
+    \ information\n\n    -V, --version    \n            Prints version information\n\
+    \n\nARGS:\n    <input>        \n            Input VCF/BCF that shall be splitted.\n\
+    \n    <output>...    \n            BCF files to split into. Breakends are kept\
+    \ together. Each file will contain approximately the same number\n           \
+    \ of records.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/rust-bio-tools:0.20.1--heda7bfa_0
+- !Command
+  command:
+  - rbt
+  - record
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: rbt
+    description: ''
+  - !Positional
+    optional: true
+    position: 1
+    name: FLAGS
+    description: ''
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "error: Found argument 'record' which wasn't expected, or isn't valid\
+    \ in this context\n\nUSAGE:\n    rbt [FLAGS] <SUBCOMMAND>\n\nFor more information\
+    \ try --help\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/rust-bio-tools:0.20.1--heda7bfa_0
+- !Command
+  command:
+  - rbt
+  - bam-depth
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -e
+    - --excl-flags
+    description: 'Skip reads with mask bits set [UNMAP, SECONDARY, QCFAIL, DUP] [default:
+      1796]'
+    args: !SimpleFlagArg
+      name: exclude-flags
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --incl-flags
+    description: 'Skip reads with mask bits unset [] [default: 0]'
+    args: !SimpleFlagArg
+      name: include-flags
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    - --max-read-length
+    description: "Maximum read length to consider. This affects the speed of the involved\
+      \ pileup. Reads longer than this\nlength can be missed when calculating the\
+      \ depth [default: 1000]"
+    args: !SimpleFlagArg
+      name: max-read-length
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    - --min-mapq
+    description: 'Minimum mapping quality [default: 0]'
+    args: !SimpleFlagArg
+      name: min-mapq
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Prints help information
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - -V
+    - --version
+    description: Prints version information
+    args: !EmptyFlagArg {}
+  help_text: "rbt-bam-depth 0.20.1\nJohannes Köster <johannes.koester@tu-dortmund.de>\n\
+    Print depth of BAM or CRAM file at given positions from STDIN (tab separated:\
+    \ chrom, pos).\n\nUsage: $ rbt bam-depth test.bam < pos.txt > depth.txt\n\nThe\
+    \ positions file contains the name of one reference sequence and one position\
+    \ per line (tab separated). Example:\n\n16    1 17    38 17    39\n\nDepths are\
+    \ written to stdout as tab-separated lines, similar to the positions input. Example:\n\
+    \n16    1    0 17    38    14 17    39    13\n\nUSAGE:\n    rbt bam-depth [OPTIONS]\
+    \ <bam-path>\n\nFLAGS:\n    -h, --help       \n            Prints help information\n\
+    \n    -V, --version    \n            Prints version information\n\n\nOPTIONS:\n\
+    \    -e, --excl-flags <exclude-flags>           \n            Skip reads with\
+    \ mask bits set [UNMAP, SECONDARY, QCFAIL, DUP] [default: 1796]\n\n    -i, --incl-flags\
+    \ <include-flags>           \n            Skip reads with mask bits unset [] [default:\
+    \ 0]\n\n    -m, --max-read-length <max-read-length>    \n            Maximum read\
+    \ length to consider. This affects the speed of the involved pileup. Reads longer\
+    \ than this\n            length can be missed when calculating the depth [default:\
+    \ 1000]\n    -q, --min-mapq <min-mapq>                  \n            Minimum\
+    \ mapping quality [default: 0]\n\n\nARGS:\n    <bam-path>    \n            Path\
+    \ to indexed BAM file\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/rust-bio-tools:0.20.1--heda7bfa_0
+- !Command
+  command:
+  - rbt
+  - vcf-fix-iupac-alleles
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: rbt
+    description: ''
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Prints help information
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - -V
+    - --version
+    description: "Prints version information\n"
+    args: !EmptyFlagArg {}
+  help_text: "rbt-vcf-fix-iupac-alleles 0.20.1\nJohannes Köster <johannes.koester@tu-dortmund.de>\n\
+    Convert any IUPAC codes in alleles into Ns (in order to comply with VCF 4 specs).\
+    \ Reads VCF/BCF from STDIN and writes\nBCF to STDOUT.\n\nExample: rbt vcf-fix-iupac-alleles\
+    \ < test.vcf > fixed.bcf\n\nUSAGE:\n    rbt vcf-fix-iupac-alleles\n\nFLAGS:\n\
+    \    -h, --help       \n            Prints help information\n\n    -V, --version\
+    \    \n            Prints version information\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/rust-bio-tools:0.20.1--heda7bfa_0
+- !Command
+  command:
+  - rbt
+  - vcf-match
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --max-dist
+    description: 'Maximum distance between centres of two indels considered to match
+      [default: 20]'
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    - --max-len-diff
+    description: 'Maximum difference between lengths of two indels [default: 10]'
+    args: !SimpleFlagArg
+      name: INT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Prints help information
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - -V
+    - --version
+    description: Prints version information
+    args: !EmptyFlagArg {}
+  help_text: "rbt-vcf-match 0.20.1\nJohannes Köster <johannes.koester@tu-dortmund.de>\n\
+    Annotate for each variant in a VCF/BCF at STDIN whether it is contained in a given\
+    \ second VCF/BCF. The matching is fuzzy\nfor indels and exact for SNVs. Results\
+    \ are printed as BCF to STDOUT, with an additional INFO tag MATCHING. The two\
+    \ vcfs\ndo not have to be sorted.\n\nExample: rbt vcf-match dbsnp.vcf < calls.vcf\
+    \ | bcftools view\n\nUSAGE:\n    rbt vcf-match [OPTIONS] <vcf>\n\nFLAGS:\n   \
+    \ -h, --help       \n            Prints help information\n\n    -V, --version\
+    \    \n            Prints version information\n\n\nOPTIONS:\n    -d, --max-dist\
+    \ <INT>        \n            Maximum distance between centres of two indels considered\
+    \ to match [default: 20]\n\n    -l, --max-len-diff <INT>    \n            Maximum\
+    \ difference between lengths of two indels [default: 10]\n\n\nARGS:\n    <vcf>\
+    \    \n            VCF/BCF file to match against\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/rust-bio-tools:0.20.1--heda7bfa_0
+- !Command
+  command:
+  - rbt
+  - vcf-to-txt
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    - --genotypes
+    description: Display genotypes
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --fmt
+    description: "...\nSelect FORMAT tags"
+    args: !SimpleFlagArg
+      name: NAME
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --info
+    description: "...\nSelect INFO tags\n"
+    args: !SimpleFlagArg
+      name: NAME
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Prints help information
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - -V
+    - --version
+    description: Prints version information
+    args: !EmptyFlagArg {}
+  help_text: "rbt-vcf-to-txt 0.20.1\nJohannes Köster <johannes.koester@tu-dortmund.de>\n\
+    Convert VCF/BCF file from STDIN to tab-separated TXT file at STDOUT. INFO and\
+    \ FORMAT tags have to be selected\nexplicitly.\n\nExample: rbt vcf-to-txt --genotypes\
+    \ --fmt S --info T X SOMATIC < test.vcf > variant-table.txt\n\nThe resulting table\
+    \ can be e.g. parsed with PANDAS in Python:\n\npd.read_table(\"variants.txt\"\
+    , header=[0, 1])\n\nUSAGE:\n    rbt vcf-to-txt [FLAGS] [OPTIONS]\n\nFLAGS:\n \
+    \   -g, --genotypes    \n            Display genotypes\n\n    -h, --help     \
+    \    \n            Prints help information\n\n    -V, --version      \n      \
+    \      Prints version information\n\n\nOPTIONS:\n    -f, --fmt <NAME>...     \n\
+    \            Select FORMAT tags\n\n    -i, --info <NAME>...    \n            Select\
+    \ INFO tags\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/rust-bio-tools:0.20.1--heda7bfa_0
+- !Command
+  command:
+  - rbt
+  - vcf-report
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: fasta
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    - --bams
+    description: "<GROUP:SAMPLE=BAM_FILE>...\nVCF files to include (multi-sample).\
+      \ Group is the name that will be used in the oncoprint. There needs to be\n\
+      one corresponding BAM file for each sample of a VCF/BCF file. Please only use\
+      \ VCF/BCF files annotated by VEP"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --cells
+    description: "Set the maximum number of cells in the oncoprint per page. Lowering\
+      \ max-cells should improve the performance\nof the plots in the browser. Default\
+      \ value is 1000 [default: 1000]"
+    args: !SimpleFlagArg
+      name: cells
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    - --custom-js-files
+    description: "...\nAdd one or multiple js file (e.g. libraries) for usage in the\
+      \ custom-js-file. The ordering of the arguments\nwill be the same as they will\
+      \ be imported"
+    args: !SimpleFlagArg
+      name: JS_FILE_PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - -j
+    - --custom-js-template
+    description: "Change the default javascript file for the table-report to a custom\
+      \ one to add own plots or tables to the\nsidebar by appending these to an empty\
+      \ div in the HTML template"
+    args: !SimpleFlagArg
+      name: JS_FILE_PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --formats
+    description: "...\nAdd custom values from the format field to each variant as\
+      \ a data attribute to access them via the custom\njavascript. All given format\
+      \ values will also be inserted into the main table"
+    args: !SimpleFlagArg
+      name: FORMAT_TAG
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --infos
+    description: "...\nAdd custom values from the info field to each variant as a\
+      \ data attribute to access them via the custom\njavascript. Multiple fields\
+      \ starting with the same prefix can be added by placing '*' at the end of a\
+      \ prefix"
+    args: !SimpleFlagArg
+      name: INFO_TAG
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --max-read-depth
+    description: "Set the maximum number of cells in the oncoprint per page. Lowering\
+      \ max-cells should improve the performance\nof the plots in the browser. Default\
+      \ value is 1000 [default: 500]"
+    args: !SimpleFlagArg
+      name: max-read-depth
+  - !Flag
+    optional: true
+    synonyms:
+    - --plot-info
+    description: "...\nAdd multiple keys from the info field of your vcf to the plots\
+      \ of the first and second stage of the report"
+    args: !SimpleFlagArg
+      name: PLOT_INFO
+  - !Flag
+    optional: true
+    synonyms:
+    - --threads
+    description: 'Sets the number of threads used to build the table reports [default:
+      0]'
+    args: !SimpleFlagArg
+      name: threads
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --tsv
+    description: "Add a TSV file that contains one or multiple custom values for each\
+      \ sample for the oncoprint. First column\nhas to be the sample name, followed\
+      \ by one or more columns with custom values. Make sure you include one row\n\
+      for each given sample"
+    args: !SimpleFlagArg
+      name: TSV_FILE_PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --vcfs
+    description: "<GROUP=VCF_FILE>...\nVCF files to include (multi-sample). Group\
+      \ is the name that will be used in the oncoprint. There needs to be\none corresponding\
+      \ BAM file for each sample of a VCF/BCF file. Please only use VCF/BCF files\
+      \ annotated by VEP"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Prints help information
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - -V
+    - --version
+    description: Prints version information
+    args: !EmptyFlagArg {}
+  help_text: "rbt-vcf-report 0.20.1\nJohannes Köster <johannes.koester@uni-due.de>,\
+    \ Felix Wiegand <felix.wiegand@tu-dortmund.de>\nCreates report from a given VCF\
+    \ file including a visual plot for every variant with the given BAM and FASTA\
+    \ file. The\nVCF file has to be annotated with VEP, using the options --hgvs and\
+    \ --hgvsg.\n\nExamples: With current directory as default ouput path: rbt vcf-report\
+    \ fasta.fa --vcfs a=a.vcf b=b.vcf --bams\na:sample1=a.bam b:sample1=b.bam With\
+    \ custom directory as default ouput path: rbt vcf-report fasta.fa --vcfs a=a.vcf\n\
+    b=b.vcf --bams a:sample1=a.bam b:sample1=b.bam -- my/output/path/ With custom\
+    \ info tags in table report: rbt vcf-report\nfasta.fa --vcfs a=a.vcf b=b.vcf --bams\
+    \ a:sample1=a.bam b:sample1=b.bam --info PROB_SOMATIC PROB_GERMLINE\n\nUSAGE:\n\
+    \    rbt vcf-report [OPTIONS] <fasta> [--] [output-path]\n\nFLAGS:\n    -h, --help\
+    \       \n            Prints help information\n\n    -V, --version    \n     \
+    \       Prints version information\n\n\nOPTIONS:\n    -b, --bams <GROUP:SAMPLE=BAM_FILE>...\
+    \      \n            VCF files to include (multi-sample). Group is the name that\
+    \ will be used in the oncoprint. There needs to be\n            one corresponding\
+    \ BAM file for each sample of a VCF/BCF file. Please only use VCF/BCF files annotated\
+    \ by VEP\n    -c, --cells <cells>                        \n            Set the\
+    \ maximum number of cells in the oncoprint per page. Lowering max-cells should\
+    \ improve the performance\n            of the plots in the browser. Default value\
+    \ is 1000 [default: 1000]\n    -l, --custom-js-files <JS_FILE_PATH>...    \n \
+    \           Add one or multiple js file (e.g. libraries) for usage in the custom-js-file.\
+    \ The ordering of the arguments\n            will be the same as they will be\
+    \ imported\n    -j, --custom-js-template <JS_FILE_PATH>    \n            Change\
+    \ the default javascript file for the table-report to a custom one to add own\
+    \ plots or tables to the\n            sidebar by appending these to an empty div\
+    \ in the HTML template\n    -f, --formats <FORMAT_TAG>...              \n    \
+    \        Add custom values from the format field to each variant as a data attribute\
+    \ to access them via the custom\n            javascript. All given format values\
+    \ will also be inserted into the main table\n    -i, --infos <INFO_TAG>...   \
+    \               \n            Add custom values from the info field to each variant\
+    \ as a data attribute to access them via the custom\n            javascript. Multiple\
+    \ fields starting with the same prefix can be added by placing '*' at the end\
+    \ of a prefix\n    -d, --max-read-depth <max-read-depth>      \n            Set\
+    \ the maximum number of cells in the oncoprint per page. Lowering max-cells should\
+    \ improve the performance\n            of the plots in the browser. Default value\
+    \ is 1000 [default: 500]\n        --plot-info <PLOT_INFO>...             \n  \
+    \          Add multiple keys from the info field of your vcf to the plots of the\
+    \ first and second stage of the report\n\n        --threads <threads>        \
+    \            \n            Sets the number of threads used to build the table\
+    \ reports [default: 0]\n\n    -t, --tsv <TSV_FILE_PATH>                  \n  \
+    \          Add a TSV file that contains one or multiple custom values for each\
+    \ sample for the oncoprint. First column\n            has to be the sample name,\
+    \ followed by one or more columns with custom values. Make sure you include one\
+    \ row\n            for each given sample\n    -v, --vcfs <GROUP=VCF_FILE>... \
+    \            \n            VCF files to include (multi-sample). Group is the name\
+    \ that will be used in the oncoprint. There needs to be\n            one corresponding\
+    \ BAM file for each sample of a VCF/BCF file. Please only use VCF/BCF files annotated\
+    \ by VEP\n\nARGS:\n    <fasta>          \n            FASTA file containing the\
+    \ reference genome for the visual plot\n\n    <output-path>    \n            Relative\
+    \ output path for the report files. Default value is the current directory [default:\
+    \ .]\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/rust-bio-tools:0.20.1--heda7bfa_0
+- &id003 !Command
+  command:
+  - rbt
+  - collapse-reads-to-fragments
+  positional: []
+  named: []
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - rbt
+    - collapse-reads-to-fragments
+    - help
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: For
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: more
+      description: ''
+    - !Positional
+      optional: false
+      position: 2
+      name: information
+      description: ''
+    - !Positional
+      optional: false
+      position: 3
+      name: try
+      description: ''
+    named: []
+    parent: *id003
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "error: The subcommand '--help' wasn't recognized\n\nUSAGE:\n\trbt\
+      \ collapse-reads-to-fragments help <subcommands>...\n\nFor more information\
+      \ try --help\n"
+    generated_using: *id002
+    docker_image: quay.io/biocontainers/rust-bio-tools:0.20.1--heda7bfa_0
+  - !Command
+    command:
+    - rbt
+    - collapse-reads-to-fragments
+    - bam
+    positional:
+    - !Positional
+      optional: true
+      position: 0
+      name: FLAGS
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: bam
+      description: ''
+    - !Positional
+      optional: false
+      position: 2
+      name: consensus-fq1
+      description: ''
+    - !Positional
+      optional: false
+      position: 3
+      name: consensus-fq2
+      description: ''
+    - !Positional
+      optional: false
+      position: 4
+      name: consensus-fq-se
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --verbose-read-names
+      description: "Add list of reads that were merged for each consensus read. Note\
+        \ that this can yield very long FASTQ name\nlines which cannot be handled\
+        \ by some tools."
+      args: !EmptyFlagArg {}
+    parent: *id003
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Prints help information
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag: !Flag
+      optional: true
+      synonyms:
+      - -V
+      - --version
+      description: Prints version information
+      args: !EmptyFlagArg {}
+    help_text: "rbt-collapse-reads-to-fragments-bam 0.20.1\nFelix Mölder <felix.moelder@uni-due.de>\n\
+      Tool to merge sets of PCR duplicate reads from a BAM file into one maximum likelihood\
+      \ fragment sequence each with\naccordingly improved base quality scores.\n\n\
+      Takes a BAM file and returns a BAM file in which all PCR duplicates have been\
+      \ merged into a consensus read. Duplicates\nmust be marked by Picard Tools using\
+      \ the TAG_DUPLICATE_SET_MEMBERS option.\n\nAssumptions: - Reads are of equal\
+      \ length - Reads are marked by Picard Tools\n\nUSAGE:\n    rbt collapse-reads-to-fragments\
+      \ bam [FLAGS] <bam> <consensus-fq1> <consensus-fq2> <consensus-fq-se> <skipped-bam>\n\
+      \nFLAGS:\n    -h, --help                  \n            Prints help information\n\
+      \n    -V, --version               \n            Prints version information\n\
+      \n        --verbose-read-names    \n            Add list of reads that were\
+      \ merged for each consensus read. Note that this can yield very long FASTQ name\n\
+      \            lines which cannot be handled by some tools.\n\nARGS:\n    <bam>\
+      \                \n            Input BAM file with marked duplicates\n\n   \
+      \ <consensus-fq1>      \n            Output FASTQ file with forward reads\n\n\
+      \    <consensus-fq2>      \n            Output FASTQ file with reverse reads\n\
+      \n    <consensus-fq-se>    \n            Output FASTQ file for overlapping consensus\
+      \ reads.\n\n    <skipped-bam>        \n            Output FASTQ file for overlapping\
+      \ consensus reads.\n\n"
+    generated_using: *id002
+    docker_image: quay.io/biocontainers/rust-bio-tools:0.20.1--heda7bfa_0
+  - !Command
+    command:
+    - rbt
+    - collapse-reads-to-fragments
+    - fastq
+    positional:
+    - !Positional
+      optional: true
+      position: 0
+      name: FLAGS
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: fq1
+      description: ''
+    - !Positional
+      optional: false
+      position: 2
+      name: fq2
+      description: ''
+    - !Positional
+      optional: false
+      position: 3
+      name: consensus-fq1
+      description: ''
+    - !Positional
+      optional: false
+      position: 4
+      name: consensus-fq2
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -u
+      - --umi-on-reverse
+      description: Set if UMI is on reverse read
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --verbose-read-names
+      description: "Add list of reads that were merged for each consensus read. Note\
+        \ that this can yield very long FASTQ name\nlines which cannot be handled\
+        \ by some tools."
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - -i
+      - --insert-size
+      description: Expected insert size of sequenced fragment (Required for calculating
+        overlapping consensus only)
+      args: !SimpleFlagArg
+        name: insert-size
+    - !Flag
+      optional: true
+      synonyms:
+      - -D
+      - --max-seq-dist
+      description: "Maximum hamming distance between the sequences of any pair of\
+        \ reads in the same cluster. [default: 2]\n[possible values: 1, 2, 3, 4, 5,\
+        \ 6, 7, 8]"
+      args: !SimpleFlagArg
+        name: max-seq-dist
+    - !Flag
+      optional: true
+      synonyms:
+      - -d
+      - --max-umi-dist
+      description: 'Maximum hamming distance between the UMIs of any pair of reads
+        in the same cluster. [default: 1]'
+      args: !SimpleFlagArg
+        name: max-umi-dist
+    - !Flag
+      optional: true
+      synonyms:
+      - -s
+      - --std-dev
+      description: "Standard deviation of expected insert size. Defines search space\
+        \ of the most likely overlap. (Required for\ncalculating overlapping consensus\
+        \ only)"
+      args: !SimpleFlagArg
+        name: std-dev
+    - !Flag
+      optional: true
+      synonyms:
+      - -l
+      - --umi-len
+      description: 'Length of UMI in read. [default: 8]'
+      args: !SimpleFlagArg
+        name: umi-len
+    parent: *id003
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Prints help information
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag: !Flag
+      optional: true
+      synonyms:
+      - -V
+      - --version
+      description: Prints version information
+      args: !EmptyFlagArg {}
+    help_text: "rbt-collapse-reads-to-fragments-fastq 0.20.1\nJohannes Köster <johannes.koester@uni-due.de>,\
+      \ Henning Timm <henning.timm@tu-dortmund.de>, Felix Mölder\n<felix.moelder@uni-due.de>\n\
+      Tool to merge sets of reads from paired FASTQ files that share the UMI and have\
+      \ similar read sequence. The result is a\nmaximum likelihood fragment sequence\
+      \ per set with base quality scores improved accordingly.\n\nTakes two FASTQ\
+      \ files (forward and reverse) and returns two FASTQ files in which all PCR duplicates\
+      \ have been merged\ninto a consensus read. Duplicates are identified by a Unique\
+      \ Molecular Identifier (UMI).\n\nAssumptions: - Reads are of equal length -\
+      \ UMI is the prefix of the reads\n\nExample: rbt collapse-reads-to-fragments\
+      \ fastq \\ reads_1.fq reads_2.fq \\    # input files merged_1.fq merged_2.fq\
+      \ \\  #\noutput files -l 13 \\                    # length of UMI -d 1 \\  \
+      \                   # max hamming distance of UMIs within\na cluster -D 2 \\\
+      \                     # max hamming distance of sequences within a cluster --umi-on-reverse\
+      \           #\nUMI is the prefix of the reverse read\n\nUSAGE:\n    rbt collapse-reads-to-fragments\
+      \ fastq [FLAGS] [OPTIONS] <fq1> <fq2> <consensus-fq1> <consensus-fq2> [consensus-fq3]\n\
+      \nFLAGS:\n    -h, --help                  \n            Prints help information\n\
+      \n    -u, --umi-on-reverse        \n            Set if UMI is on reverse read\n\
+      \n    -V, --version               \n            Prints version information\n\
+      \n        --verbose-read-names    \n            Add list of reads that were\
+      \ merged for each consensus read. Note that this can yield very long FASTQ name\n\
+      \            lines which cannot be handled by some tools.\n\nOPTIONS:\n    -i,\
+      \ --insert-size <insert-size>      \n            Expected insert size of sequenced\
+      \ fragment (Required for calculating overlapping consensus only)\n\n    -D,\
+      \ --max-seq-dist <max-seq-dist>    \n            Maximum hamming distance between\
+      \ the sequences of any pair of reads in the same cluster. [default: 2]\n   \
+      \         [possible values: 1, 2, 3, 4, 5, 6, 7, 8]\n    -d, --max-umi-dist\
+      \ <max-umi-dist>    \n            Maximum hamming distance between the UMIs\
+      \ of any pair of reads in the same cluster. [default: 1]\n\n    -s, --std-dev\
+      \ <std-dev>              \n            Standard deviation of expected insert\
+      \ size. Defines search space of the most likely overlap. (Required for\n   \
+      \         calculating overlapping consensus only)\n    -l, --umi-len <umi-len>\
+      \              \n            Length of UMI in read. [default: 8]\n\n\nARGS:\n\
+      \    <fq1>              \n            Input FASTQ file with forward reads.\n\
+      \n    <fq2>              \n            Input FASTQ file with reverse reads.\n\
+      \n    <consensus-fq1>    \n            Output FASTQ file with forward reads\n\
+      \n    <consensus-fq2>    \n            Output FASTQ file with reverse reads\n\
+      \n    <consensus-fq3>    \n            Output FASTQ file for overlapping consensus\
+      \ reads  (Required for calculating overlapping consensus only)\n\n"
+    generated_using: *id002
+    docker_image: quay.io/biocontainers/rust-bio-tools:0.20.1--heda7bfa_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Prints help information
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - -V
+    - --version
+    description: Prints version information
+    args: !EmptyFlagArg {}
+  help_text: "rbt-collapse-reads-to-fragments 0.20.1\nJohannes Köster <johannes.koester@uni-due.de>,\
+    \ Henning Timm <henning.timm@tu-dortmund.de>, Felix Mölder\n<felix.moelder@uni-due.de>\n\
+    Tool to predict maximum likelihood fragment sequence from FASTQ or BAM files.\n\
+    \nRequirements: - starcode\n\nUSAGE:\n    rbt collapse-reads-to-fragments <SUBCOMMAND>\n\
+    \nFLAGS:\n    -h, --help       \n            Prints help information\n\n    -V,\
+    \ --version    \n            Prints version information\n\n\nSUBCOMMANDS:\n  \
+    \  bam      Tool to merge sets of PCR duplicate reads from a BAM file into one\
+    \ maximum likelihood fragment sequence\n             each with accordingly improved\
+    \ base quality scores\n    fastq    Tool to merge sets of reads from paired FASTQ\
+    \ files that share the UMI and have similar read sequence.\n             The result\
+    \ is a maximum likelihood fragment sequence per set with base quality scores improved\n\
+    \             accordingly\n    help     Prints this message or the help of the\
+    \ given subcommand(s)\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/rust-bio-tools:0.20.1--heda7bfa_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Prints help information
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Prints version information
+  args: !EmptyFlagArg {}
+help_text: "Rust-Bio-Tools 0.20.1\nJohannes Köster <johannes.koester@tu-dortmund.de>\n\
+  A set of ultra-fast command line utilities for bioinformatics tasks based on Rust-Bio.\n\
+  \nUSAGE:\n    rbt [FLAGS] <SUBCOMMAND>\n\nFLAGS:\n    -h, --help       \n      \
+  \      Prints help information\n\n    -V, --version    \n            Prints version\
+  \ information\n\n    -v, --verbose    \n            Verbose output.\n\n\nSUBCOMMANDS:\n\
+  \    bam-depth                      Print depth of BAM or CRAM file at given positions\
+  \ from STDIN (tab separated:\n                                   chrom, pos)\n \
+  \   collapse-reads-to-fragments    Tool to predict maximum likelihood fragment sequence\
+  \ from FASTQ or BAM files\n    csv-report                     Creates report from\
+  \ a given csv file containing a table with the given data\n                    \
+  \               Examples: With current directory as default ouput path: rbt csv-report\n\
+  \                                   path/to/table.csv --rows-per-page 100 --sort-column\
+  \ \"p-value\" --sort-order\n                                   ascending\n    fastq-filter\
+  \                   Remove records from a FASTQ file (from STDIN), output to STDOUT\n\
+  \    fastq-split                    Split FASTQ file from STDIN into N chunks\n\
+  \    help                           Prints this message or the help of the given\
+  \ subcommand(s)\n    sequence-stats                 Tool to compute stats on sequence\
+  \ file (from STDIN), output is in YAML with\n                                  \
+  \ fields: - min: length of shortest sequence - max: length of longest sequence -\n\
+  \                                   average: average length of sequence - median:\
+  \ median length of sequence -\n                                   nb_reads: number\
+  \ of reads - nb_bases: number of bases - n50: N50 of sequences\n    vcf-annotate-dgidb\
+  \             Looks for interacting drugs in DGIdb and annotates them for every\
+  \ gene in every\n                                   record\n    vcf-baf        \
+  \                Annotate b-allele frequency for each single nucleotide variant\
+  \ and sample\n    vcf-fix-iupac-alleles          Convert any IUPAC codes in alleles\
+  \ into Ns (in order to comply with VCF 4 specs).\n                             \
+  \      Reads VCF/BCF from STDIN and writes BCF to STDOUT\n    vcf-match        \
+  \              Annotate for each variant in a VCF/BCF at STDIN whether it is contained\
+  \ in a\n                                   given second VCF/BCF. The matching is\
+  \ fuzzy for indels and exact for SNVs.\n                                   Results\
+  \ are printed as BCF to STDOUT, with an additional INFO tag MATCHING. The\n    \
+  \                               two vcfs do not have to be sorted\n    vcf-report\
+  \                     Creates report from a given VCF file including a visual plot\
+  \ for every variant\n                                   with the given BAM and FASTA\
+  \ file. The VCF file has to be annotated with VEP,\n                           \
+  \        using the options --hgvs and --hgvsg\n    vcf-split                   \
+  \   Split a given VCF/BCF file into N chunks of approximately the same size.\n \
+  \                                  Breakends are kept together. Output type is always\
+  \ BCF\n    vcf-to-txt                     Convert VCF/BCF file from STDIN to tab-separated\
+  \ TXT file at STDOUT. INFO and\n                                   FORMAT tags have\
+  \ to be selected explicitly\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/rust-bio-tools:0.20.1--heda7bfa_0

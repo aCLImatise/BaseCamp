@@ -1,0 +1,512 @@
+&id001 !Command
+command:
+- easypqp
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - easypqp
+  - reduce
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --in
+    description: Input PQP file.  [required]
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - --out
+    description: Output PQP file.  [required]
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - --bins
+    description: 'Number of bins to fill along gradient.  [default: 10]'
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - --peptides
+    description: 'Number of peptides to sample.  [default: 5]'
+    args: !SimpleFlagArg
+      name: INTEGER
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: easypqp reduce [OPTIONS]\n\n  Reduce PQP files for OpenSWATH\
+    \ linear and non-linear alignment\n\nOptions:\n  --in PATH           Input PQP\
+    \ file.  [required]\n  --out PATH          Output PQP file.  [required]\n  --bins\
+    \ INTEGER      Number of bins to fill along gradient.  [default: 10]\n  --peptides\
+    \ INTEGER  Number of peptides to sample.  [default: 5]\n  --help             \
+    \ Show this message and exit.\n"
+  generated_using: &id003
+  - --help
+  docker_image: quay.io/biocontainers/easypqp:0.1.11--py_0
+- &id002 !Command
+  command:
+  - easypqp
+  - library
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --out
+    description: "Output TSV peptide query parameter file.\n[required]"
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - --psmtsv
+    description: psm.tsv file from Philosopher.
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - --peptidetsv
+    description: peptide.tsv file from Philosopher.
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - --rt_reference
+    description: Optional iRT/CiRT reference file.
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - --rt_filter
+    description: "Optional tag to filter candidate RT\nreference runs."
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --im_reference
+    description: Optional IM reference file.
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - --im_filter
+    description: "Optional tag to filter candidate IM\nreference runs."
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --psm_fdr_threshold
+    description: 'PSM FDR threshold.  [default: 0.01]'
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --peptide_fdr_threshold
+    description: 'Peptide FDR threshold.  [default: 0.01]'
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --protein_fdr_threshold
+    description: 'Protein FDR threshold.  [default: 0.01]'
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --rt_lowess_fraction
+    description: "Fraction of data points to use for RT lowess\nregression. If set\
+      \ to 0, cross validation is\nused.  [default: 0.05]"
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --rt_psm_fdr_threshold
+    description: "PSM FDR threshold used for RT alignment.\n[default: 0.001]"
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --im_lowess_fraction
+    description: "Fraction of data points to use for IM lowess\nregression. If set\
+      \ to 0, cross validation is\nused.  [default: 0.05]"
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --im_psm_fdr_threshold
+    description: "PSM FDR threshold used for IM alignment.\n[default: 0.001]"
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --pi0_lambda
+    description: "...\nUse non-parametric estimation of p-values.\nEither use <START\
+      \ END STEPS>, e.g. 0.1, 1.0,\n0.1 or set to fixed value, e.g. 0.4, 0, 0.\n[default:\
+      \ 0.1, 0.5, 0.05]"
+    args: !SimpleFlagArg
+      name: FLOAT FLOAT FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --peptide_plot
+    description: "Output peptide-level PDF report.  [default:\neasypqp_peptide_report.pdf;\
+      \ required]"
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - --protein_plot
+    description: "Output protein-level PDF report.  [default:\neasypqp_protein_report.pdf;\
+      \ required]"
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - --min_peptides
+    description: Minimum peptides required for successful
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - --proteotypic
+    - --no-proteotypic
+    description: "Use only proteotypic, unique, non-shared\npeptides.  [default: True]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --consensus
+    - --no-consensus
+    description: Generate consensus instead of best replicate
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --nofdr
+    - --no-fdr-filtering
+    description: "Do not reassess or filter by FDR, as library\nwas already provided\
+      \ using customized FDR\nfiltering.  [default: False]"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - easypqp
+    - library
+    - spectra.
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: easypqp
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: library
+      description: ''
+    - !Positional
+      optional: true
+      position: 2
+      name: INFILES
+      description: ''
+    named: []
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "Usage: easypqp library [OPTIONS] [INFILES]...\nTry 'easypqp library\
+      \ --help' for help.\n\nError: Invalid value for '[INFILES]...': Path 'spectra.'\
+      \ does not exist.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/easypqp:0.1.11--py_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: easypqp library [OPTIONS] [INFILES]...\n\n  Generate EasyPQP\
+    \ library\n\nOptions:\n  --out PATH                      Output TSV peptide query\
+    \ parameter file.\n                                  [required]\n\n  --psmtsv\
+    \ PATH                   psm.tsv file from Philosopher.\n  --peptidetsv PATH \
+    \              peptide.tsv file from Philosopher.\n  --rt_reference PATH     \
+    \        Optional iRT/CiRT reference file.\n  --rt_filter TEXT               \
+    \ Optional tag to filter candidate RT\n                                  reference\
+    \ runs.\n\n  --im_reference PATH             Optional IM reference file.\n  --im_filter\
+    \ TEXT                Optional tag to filter candidate IM\n                  \
+    \                reference runs.\n\n  --psm_fdr_threshold FLOAT       PSM FDR\
+    \ threshold.  [default: 0.01]\n  --peptide_fdr_threshold FLOAT   Peptide FDR threshold.\
+    \  [default: 0.01]\n  --protein_fdr_threshold FLOAT   Protein FDR threshold. \
+    \ [default: 0.01]\n  --rt_lowess_fraction FLOAT      Fraction of data points to\
+    \ use for RT lowess\n                                  regression. If set to 0,\
+    \ cross validation is\n                                  used.  [default: 0.05]\n\
+    \n  --rt_psm_fdr_threshold FLOAT    PSM FDR threshold used for RT alignment.\n\
+    \                                  [default: 0.001]\n\n  --im_lowess_fraction\
+    \ FLOAT      Fraction of data points to use for IM lowess\n                  \
+    \                regression. If set to 0, cross validation is\n              \
+    \                    used.  [default: 0.05]\n\n  --im_psm_fdr_threshold FLOAT\
+    \    PSM FDR threshold used for IM alignment.\n                              \
+    \    [default: 0.001]\n\n  --pi0_lambda <FLOAT FLOAT FLOAT>...\n             \
+    \                     Use non-parametric estimation of p-values.\n           \
+    \                       Either use <START END STEPS>, e.g. 0.1, 1.0,\n       \
+    \                           0.1 or set to fixed value, e.g. 0.4, 0, 0.\n     \
+    \                             [default: 0.1, 0.5, 0.05]\n\n  --peptide_plot PATH\
+    \             Output peptide-level PDF report.  [default:\n                  \
+    \                easypqp_peptide_report.pdf; required]\n\n  --protein_plot PATH\
+    \             Output protein-level PDF report.  [default:\n                  \
+    \                easypqp_protein_report.pdf; required]\n\n  --min_peptides INTEGER\
+    \          Minimum peptides required for successful\n                        \
+    \          alignment.  [default: 5]\n\n  --proteotypic / --no-proteotypic\n  \
+    \                                Use only proteotypic, unique, non-shared\n  \
+    \                                peptides.  [default: True]\n\n  --consensus /\
+    \ --no-consensus    Generate consensus instead of best replicate\n           \
+    \                       spectra.  [default: True]\n\n  --nofdr / --no-fdr-filtering\
+    \    Do not reassess or filter by FDR, as library\n                          \
+    \        was already provided using customized FDR\n                         \
+    \         filtering.  [default: False]\n\n  --help                          Show\
+    \ this message and exit.\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/easypqp:0.1.11--py_0
+- !Command
+  command:
+  - easypqp
+  - convert
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --pepxml
+    description: The input MSFragger TSV file.  [required]
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - --spectra
+    description: "The input mzXML or MGF (timsTOF only) file.\n[required]"
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - --unimod
+    description: The input UniMod XML file.
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - --psms
+    description: Output PSMs file.
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - --peaks
+    description: Output peaks file.
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - --exclude-range
+    description: massdiff in this range will not be mapped to
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --max_delta_unimod
+    description: Maximum delta mass (Dalton) for UniMod
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --max_delta_ppm
+    description: "Maximum delta mass (PPM) for annotation.\n[default: 15]"
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --enable_unannotated
+    - --no-enable_unannotated
+    description: "Enable mapping uf unannotated delta masses.\n[default: False]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --enable_massdiff
+    - --no-enable_massdiff
+    description: "Enable mapping uf mass differences reported\nby legacy search engines.\
+      \  [default: False]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --fragment_types
+    description: "Allowed fragment ion types (a,b,c,x,y,z).\n[default: b, y]"
+    args: !SimpleFlagArg
+      name: LIST
+  - !Flag
+    optional: true
+    synonyms:
+    - --fragment_charges
+    description: "Allowed fragment ion charges.  [default: 1,\n2, 3, 4]"
+    args: !SimpleFlagArg
+      name: LIST
+  - !Flag
+    optional: true
+    synonyms:
+    - --enable_specific_losses
+    - --no-enable_specific_losses
+    description: "Enable specific fragment ion losses.\n[default: False]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --enable_unspecific_losses
+    - --no-enable_unspecific_losses
+    description: "Enable unspecific fragment ion losses.\n[default: False]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --subsample_fraction
+    description: "Data fraction used for subsampling.\n[default: 1.0]"
+    args: !SimpleFlagArg
+      name: FLOAT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: easypqp convert [OPTIONS]\n\n  Convert pepXML files for EasyPQP\n\
+    \nOptions:\n  --pepxml PATH                   The input MSFragger TSV file.  [required]\n\
+    \  --spectra PATH                  The input mzXML or MGF (timsTOF only) file.\n\
+    \                                  [required]\n\n  --unimod PATH             \
+    \      The input UniMod XML file.\n  --psms PATH                     Output PSMs\
+    \ file.\n  --peaks PATH                    Output peaks file.\n  --exclude-range\
+    \ TEXT            massdiff in this range will not be mapped to\n             \
+    \                     UniMod.  [default: -1.5,3.5]\n\n  --max_delta_unimod FLOAT\
+    \        Maximum delta mass (Dalton) for UniMod\n                            \
+    \      annotation.  [default: 0.02]\n\n  --max_delta_ppm FLOAT           Maximum\
+    \ delta mass (PPM) for annotation.\n                                  [default:\
+    \ 15]\n\n  --enable_unannotated / --no-enable_unannotated\n                  \
+    \                Enable mapping uf unannotated delta masses.\n               \
+    \                   [default: False]\n\n  --enable_massdiff / --no-enable_massdiff\n\
+    \                                  Enable mapping uf mass differences reported\n\
+    \                                  by legacy search engines.  [default: False]\n\
+    \n  --fragment_types LIST           Allowed fragment ion types (a,b,c,x,y,z).\n\
+    \                                  [default: b, y]\n\n  --fragment_charges LIST\
+    \         Allowed fragment ion charges.  [default: 1,\n                      \
+    \            2, 3, 4]\n\n  --enable_specific_losses / --no-enable_specific_losses\n\
+    \                                  Enable specific fragment ion losses.\n    \
+    \                              [default: False]\n\n  --enable_unspecific_losses\
+    \ / --no-enable_unspecific_losses\n                                  Enable unspecific\
+    \ fragment ion losses.\n                                  [default: False]\n\n\
+    \  --subsample_fraction FLOAT      Data fraction used for subsampling.\n     \
+    \                             [default: 1.0]\n\n  --help                     \
+    \     Show this message and exit.\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/easypqp:0.1.11--py_0
+- !Command
+  command:
+  - easypqp
+  - PyProphet
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: easypqp
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: COMMAND1
+    description: ''
+  - !Positional
+    optional: true
+    position: 2
+    name: ARGS
+    description: ''
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: easypqp [OPTIONS] COMMAND1 [ARGS]... [COMMAND2 [ARGS]...]...\n\
+    Try 'easypqp --help' for help.\n\nError: No such command 'PyProphet'.\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/easypqp:0.1.11--py_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Show the version and exit.
+  args: !EmptyFlagArg {}
+help_text: "Usage: easypqp [OPTIONS] COMMAND1 [ARGS]... [COMMAND2 [ARGS]...]...\n\n\
+  \  EasyPQP: Simple library generation for OpenSWATH using MSFragger &\n  PyProphet\n\
+  \n  Visit https://www.openswath.org for usage instructions and help.\n\nOptions:\n\
+  \  --version  Show the version and exit.\n  --help     Show this message and exit.\n\
+  \nCommands:\n  convert  Convert pepXML files for EasyPQP\n  library  Generate EasyPQP\
+  \ library\n  reduce   Reduce PQP files for OpenSWATH linear and non-linear alignment\n"
+generated_using: *id003
+docker_image: quay.io/biocontainers/easypqp:0.1.11--py_0

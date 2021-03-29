@@ -1,0 +1,128 @@
+!Command
+command:
+- spades-bwa
+- sampe
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: bwa
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: sampe
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: prefix
+  description: ''
+- !Positional
+  optional: false
+  position: 3
+  name: in1.sai
+  description: ''
+- !Positional
+  optional: false
+  position: 4
+  name: in2.sai
+  description: ''
+- !Positional
+  optional: false
+  position: 5
+  name: in1.fq
+  description: ''
+- !Positional
+  optional: false
+  position: 6
+  name: in2.fq
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  description: maximum insert size [500]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: maximum occurrences for one end [100000]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: maximum hits to output for paired reads [3]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -N
+  description: maximum hits to output for discordant pairs [10]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: prior of chimeric rate (lower bound) [1.0e-05]
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: sam file to output results to [stdout]
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: read group header line such as `@RG\tID:foo\tSM:bar' [null]
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - -P
+  description: preload index into memory (for base-space reads only)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: disable Smith-Waterman for the unmapped mate
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -A
+  description: disable insert size estimate (force -s)
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nUsage:   bwa sampe [options] <prefix> <in1.sai> <in2.sai> <in1.fq> <in2.fq>\n\
+  \nOptions: -a INT   maximum insert size [500]\n         -o INT   maximum occurrences\
+  \ for one end [100000]\n         -n INT   maximum hits to output for paired reads\
+  \ [3]\n         -N INT   maximum hits to output for discordant pairs [10]\n    \
+  \     -c FLOAT prior of chimeric rate (lower bound) [1.0e-05]\n         -f FILE\
+  \  sam file to output results to [stdout]\n         -r STR   read group header line\
+  \ such as `@RG\\tID:foo\\tSM:bar' [null]\n         -P       preload index into memory\
+  \ (for base-space reads only)\n         -s       disable Smith-Waterman for the\
+  \ unmapped mate\n         -A       disable insert size estimate (force -s)\n\nNotes:\
+  \ 1. For SOLiD reads, <in1.fq> corresponds R3 reads and <in2.fq> to F3.\n      \
+  \ 2. For reads shorter than 30bp, applying a smaller -o is recommended to\n    \
+  \      to get a sensible speed at the cost of pairing accuracy.\n\n"
+generated_using: []
+docker_image: quay.io/biocontainers/spades:3.15.2--h633aebb_0

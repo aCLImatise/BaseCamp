@@ -1,0 +1,54 @@
+!Command
+command:
+- samtools
+- reheader
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: in.header.sam
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: in.bam
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -P
+  - --no-PG
+  description: Do not generate a @PG header line.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --in-place
+  description: "Modify the CRAM file directly, if possible.\n(Defaults to outputting\
+    \ to stdout.)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --command
+  description: Pass the header in SAM format to external program CMD.
+  args: !SimpleFlagArg
+    name: CMD
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Usage: samtools reheader [-P] in.header.sam in.bam > out.bam\n   or  samtools\
+  \ reheader [-P] -i in.header.sam file.cram\n   or  samtools reheader -c CMD in.bam\n\
+  \   or  samtools reheader -c CMD in.cram\n\nOptions:\n    -P, --no-PG         Do\
+  \ not generate a @PG header line.\n    -i, --in-place      Modify the CRAM file\
+  \ directly, if possible.\n                        (Defaults to outputting to stdout.)\n\
+  \    -c, --command CMD   Pass the header in SAM format to external program CMD.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/samtools:1.12--hd5e65b6_0

@@ -1,0 +1,70 @@
+!Command
+command:
+- fix_unmapped.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  - --input_file
+  description: "Input file containing accession IDs to map. Multi-\ncolumn files accepted.\
+    \ Only accessions in the first\ncolumn will be mapped."
+  args: !SimpleFlagArg
+    name: IN_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --accession2taxid
+  description: "Accession2taxid reference mappings to search. NCBI\naccession2taxid\
+    \ format required: 4 columns with\naccessions in column 1 and taxonomy IDs in\
+    \ column 3."
+  args: !RepeatFlagArg
+    name: REF_FILES
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  - --output_file
+  description: "Output file with 2 tab-delimited columns for\naccessions and taxids"
+  args: !SimpleFlagArg
+    name: OUT_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --remaining
+  description: "Name of text file containing non-found accessions from\ninput file\n"
+  args: !SimpleFlagArg
+    name: REM_FILE
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: fix_unmapped.py [-h] -i IN_FILE --accession2taxid REF_FILES\n \
+  \                      [REF_FILES ...] -o OUT_FILE [-r REM_FILE]\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -i IN_FILE, --input\
+  \ IN_FILE, --input_file IN_FILE\n                        Input file containing accession\
+  \ IDs to map. Multi-\n                        column files accepted. Only accessions\
+  \ in the first\n                        column will be mapped.\n  --accession2taxid\
+  \ REF_FILES [REF_FILES ...]\n                        Accession2taxid reference mappings\
+  \ to search. NCBI\n                        accession2taxid format required: 4 columns\
+  \ with\n                        accessions in column 1 and taxonomy IDs in column\
+  \ 3.\n  -o OUT_FILE, --output OUT_FILE, --output_file OUT_FILE\n               \
+  \         Output file with 2 tab-delimited columns for\n                       \
+  \ accessions and taxids\n  -r REM_FILE, --remaining REM_FILE\n                 \
+  \       Name of text file containing non-found accessions from\n               \
+  \         input file\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/krakentools:1.0.1--pyh3252c3a_0

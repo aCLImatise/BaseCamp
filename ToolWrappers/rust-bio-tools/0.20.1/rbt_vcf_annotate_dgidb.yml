@@ -1,0 +1,79 @@
+!Command
+command:
+- rbt
+- vcf-annotate-dgidb
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --api-path
+  description: "Url prefix for requesting interaction drugs by gene names [default:\n\
+    http://dgidb.org/api/v2/interactions.json?genes=]"
+  args: !SimpleFlagArg
+    name: api-path
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --datasources
+  description: "...\nA list of data sources included in query. If omitted all sources\
+    \ are considered. A list of all sources can\nbe found at http://dgidb.org/api/v2/interaction_sources.json"
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --field
+  description: 'Info field name to be used for annotation [default: dgiDB_drugs]'
+  args: !SimpleFlagArg
+    name: field
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --genes-per-request
+  description: "Number of genes to submit per api request. A lower value increases\
+    \ the number of api requests in return. Too\nmany requests could be rejected by\
+    \ the DGIdb server [default: 500]"
+  args: !SimpleFlagArg
+    name: genes-per-request
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Prints help information
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Prints version information
+  args: !EmptyFlagArg {}
+help_text: "rbt-vcf-annotate-dgidb 0.20.1\nFelix Mölder <felix.moelder@uni-due.de>\n\
+  Looks for interacting drugs in DGIdb and annotates them for every gene in every\
+  \ record.\n\nExample: rbt vcf-annotate-dgidb input.vcf > output.vcf\n\nUSAGE:\n\
+  \    rbt vcf-annotate-dgidb [OPTIONS] <vcf>\n\nFLAGS:\n    -h, --help       \n \
+  \           Prints help information\n\n    -V, --version    \n            Prints\
+  \ version information\n\n\nOPTIONS:\n    -p, --api-path <api-path>\n           \
+  \ Url prefix for requesting interaction drugs by gene names [default:\n        \
+  \    http://dgidb.org/api/v2/interactions.json?genes=]\n    -s, --datasources <STR>...\n\
+  \            A list of data sources included in query. If omitted all sources are\
+  \ considered. A list of all sources can\n            be found at http://dgidb.org/api/v2/interaction_sources.json\n\
+  \    -f, --field <field>                            \n            Info field name\
+  \ to be used for annotation [default: dgiDB_drugs]\n\n    -g, --genes-per-request\
+  \ <genes-per-request>\n            Number of genes to submit per api request. A\
+  \ lower value increases the number of api requests in return. Too\n            many\
+  \ requests could be rejected by the DGIdb server [default: 500]\n\nARGS:\n    <vcf>\
+  \    \n            VCF/BCF file to be extended by dgidb drug entries\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/rust-bio-tools:0.20.1--heda7bfa_0

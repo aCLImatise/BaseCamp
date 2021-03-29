@@ -1,0 +1,156 @@
+!Command
+command:
+- bioconda-utils
+- update-pinning
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: recipe_folder
+  description: "Path to folder containing recipes (default: recipes/)\n(default: -)"
+- !Positional
+  optional: false
+  position: 1
+  name: config
+  description: "Path to Bioconda config (default: config.yml)\n(default: -)"
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --packages
+  description: "Glob for package[s] to update, as needed due to a\nchange in pinnings\
+    \ (default: '*')"
+  args: !RepeatFlagArg
+    name: PACKAGES
+- !Flag
+  optional: true
+  synonyms:
+  - --skip-additional-channels
+  description: "[SKIP_ADDITIONAL_CHANNELS [SKIP_ADDITIONAL_CHANNELS ...]]\nSkip updating/bumping\
+    \ packges that are already built\nwith compatible pinnings in one of the given\
+    \ channels\nin addition to those listed in 'config'. (default: -)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --skip-variants
+  description: "[SKIP_VARIANTS [SKIP_VARIANTS ...]]\nSkip packages that use one of\
+    \ the given variant keys.\n(default: -)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max-bumps
+  description: "Maximum number of recipes that will be updated.\n(default: -)"
+  args: !SimpleFlagArg
+    name: MAX_BUMPS
+- !Flag
+  optional: true
+  synonyms:
+  - --no-leaves
+  description: "Only update recipes with dependent packages. (default:\nFalse)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --cache
+  description: "To speed up debugging, use repodata cached locally in\nthe provided\
+    \ filename. If the file does not exist, it\nwill be created the first time. (default:\
+    \ -)"
+  args: !SimpleFlagArg
+    name: CACHE
+- !Flag
+  optional: true
+  synonyms:
+  - -P
+  - --pdb
+  description: 'Drop into debugger on exception (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: 'Limit maximum number of processes used. (default: 16)'
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - --loglevel
+  description: "Set logging level (debug, info, warning, error,\ncritical) (default:\
+    \ 'info')"
+  args: !SimpleFlagArg
+    name: LOGLEVEL
+- !Flag
+  optional: true
+  synonyms:
+  - --logfile
+  description: 'Write log to file (default: -)'
+  args: !SimpleFlagArg
+    name: LOGFILE
+- !Flag
+  optional: true
+  synonyms:
+  - --logfile-level
+  description: "Log level for log file (default: 'debug')"
+  args: !SimpleFlagArg
+    name: LOGFILE_LEVEL
+- !Flag
+  optional: true
+  synonyms:
+  - --log-command-max-lines
+  description: "Limit lines emitted for commands executed (default: -)\n"
+  args: !SimpleFlagArg
+    name: LOG_COMMAND_MAX_LINES
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: bioconda-utils update-pinning [-h] [--packages PACKAGES [PACKAGES\
+  \ ...]]\n                                     [--skip-additional-channels [SKIP_ADDITIONAL_CHANNELS\
+  \ [SKIP_ADDITIONAL_CHANNELS ...]]]\n                                     [--skip-variants\
+  \ [SKIP_VARIANTS [SKIP_VARIANTS ...]]]\n                                     [--max-bumps\
+  \ MAX_BUMPS] [--no-leaves]\n                                     [--cache CACHE]\
+  \ [-P] [-t THREADS]\n                                     [--loglevel LOGLEVEL]\
+  \ [--logfile LOGFILE]\n                                     [--logfile-level LOGFILE_LEVEL]\n\
+  \                                     [--log-command-max-lines LOG_COMMAND_MAX_LINES]\n\
+  \                                     [recipe_folder] [config]\n\nBump a package\
+  \ build number and all dependencies as required due\n    to a change in pinnings\n\
+  \    \n\npositional arguments:\n  recipe_folder         Path to folder containing\
+  \ recipes (default: recipes/)\n                        (default: -)\n  config  \
+  \              Path to Bioconda config (default: config.yml)\n                 \
+  \       (default: -)\n\noptional arguments:\n  -h, --help            show this help\
+  \ message and exit\n  --packages PACKAGES [PACKAGES ...]\n                     \
+  \   Glob for package[s] to update, as needed due to a\n                        change\
+  \ in pinnings (default: '*')\n  --skip-additional-channels [SKIP_ADDITIONAL_CHANNELS\
+  \ [SKIP_ADDITIONAL_CHANNELS ...]]\n                        Skip updating/bumping\
+  \ packges that are already built\n                        with compatible pinnings\
+  \ in one of the given channels\n                        in addition to those listed\
+  \ in 'config'. (default: -)\n  --skip-variants [SKIP_VARIANTS [SKIP_VARIANTS ...]]\n\
+  \                        Skip packages that use one of the given variant keys.\n\
+  \                        (default: -)\n  --max-bumps MAX_BUMPS\n               \
+  \         Maximum number of recipes that will be updated.\n                    \
+  \    (default: -)\n  --no-leaves           Only update recipes with dependent packages.\
+  \ (default:\n                        False)\n  --cache CACHE         To speed up\
+  \ debugging, use repodata cached locally in\n                        the provided\
+  \ filename. If the file does not exist, it\n                        will be created\
+  \ the first time. (default: -)\n  -P, --pdb             Drop into debugger on exception\
+  \ (default: False)\n  -t THREADS, --threads THREADS\n                        Limit\
+  \ maximum number of processes used. (default: 16)\n  --loglevel LOGLEVEL   Set logging\
+  \ level (debug, info, warning, error,\n                        critical) (default:\
+  \ 'info')\n  --logfile LOGFILE     Write log to file (default: -)\n  --logfile-level\
+  \ LOGFILE_LEVEL\n                        Log level for log file (default: 'debug')\n\
+  \  --log-command-max-lines LOG_COMMAND_MAX_LINES\n                        Limit\
+  \ lines emitted for commands executed (default: -)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bioconda-utils:0.16.23--py_0

@@ -1,0 +1,33 @@
+class: CommandLineTool
+id: dsh_remap_phase_set.cwl
+inputs:
+- id: in_about
+  doc: display about message [optional]
+  type: boolean?
+  inputBinding:
+    prefix: --about
+- id: in_input_vcf_file
+  doc: '[class java.io.File]  input VCF file, default stdin [optional]'
+  type: boolean?
+  inputBinding:
+    prefix: --input-vcf-file
+- id: in_output_vcf_file
+  doc: '[class java.io.File]  output VCF file, default stdout [optional]'
+  type: File?
+  inputBinding:
+    prefix: --output-vcf-file
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_vcf_file
+  doc: '[class java.io.File]  output VCF file, default stdout [optional]'
+  type: File?
+  outputBinding:
+    glob: $(inputs.in_output_vcf_file)
+hints:
+- class: DockerRequirement
+  dockerPull: quay.io/biocontainers/dsh-bio:2.0.3--0
+cwlVersion: v1.1
+baseCommand:
+- dsh-remap-phase-set

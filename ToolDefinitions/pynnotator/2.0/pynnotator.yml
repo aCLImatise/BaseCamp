@@ -1,0 +1,79 @@
+&id001 !Command
+command:
+- pynnotator
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  description: ''
+  args: !SimpleFlagArg
+    name: hg19
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: ''
+  args: !SimpleFlagArg
+    name: example.vcf
+parent:
+subcommands:
+- !Command
+  command:
+  - pynnotator
+  - or
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: options
+    description: install test
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: a VCF file to be annotated
+    args: !SimpleFlagArg
+      name: example.vcf
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    description: or hg38  The genome build you want to use
+    args: !SimpleFlagArg
+      name: hg19
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: pynnotator [-h] [-i example.vcf] [-b hg19 or hg38] [options]\n\
+    \npositional arguments:\n  options          install test\n\noptional arguments:\n\
+    \  -h, --help       show this help message and exit\n  -i example.vcf   a VCF\
+    \ file to be annotated\n  -b hg19 or hg38  The genome build you want to use\n"
+  generated_using:
+  - --help
+  docker_image: quay.io/biocontainers/pynnotator:2.0--py_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: ''
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: pynnotator [-h] [-i example.vcf] [-b hg19 or hg38] [options]\n\
+  pynnotator: error: unrecognized arguments: --usage\n"
+generated_using:
+- --usage
+docker_image: quay.io/biocontainers/pynnotator:2.0--py_0

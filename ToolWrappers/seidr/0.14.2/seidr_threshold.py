@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, Boolean, String
+
+Seidr_Threshold_V0_1_0 = CommandToolBuilder(tool="seidr_threshold", base_command=["seidr", "threshold"], inputs=[ToolInput(tag="in_in_file", input_type=File(optional=True), prefix="--in-file", doc=InputDocumentation(doc="Input SeidrFile")), ToolInput(tag="in_arg_lowest_threshold", input_type=Boolean(optional=True), prefix="-m", doc=InputDocumentation(doc="[ --min ] arg (=0)             Lowest threshold value to check")), ToolInput(tag="in_arg_highest_threshold", input_type=Boolean(optional=True), prefix="-M", doc=InputDocumentation(doc="[ --max ] arg (=0)             Highest threshold value to check")), ToolInput(tag="in_arg_last_score", input_type=Boolean(optional=True), prefix="-i", doc=InputDocumentation(doc="[ --index ] arg (=last score)  Score column to use as edge weights")), ToolInput(tag="in_arg_number_create", input_type=Boolean(optional=True), prefix="-n", doc=InputDocumentation(doc="[ --nsteps ] arg (=100)        Number of breaks to create for testing")), ToolInput(tag="in_arg_number_print", input_type=Boolean(optional=True), prefix="-p", doc=InputDocumentation(doc="[ --precision ] arg (=8)       Number of decimal points to print")), ToolInput(tag="in_arg_number_openmp", input_type=Boolean(optional=True), prefix="-O", doc=InputDocumentation(doc="[ --threads ] arg (=1)         Number of OpenMP threads for parallel")), ToolInput(tag="in_force_overwrite_output", input_type=File(optional=True), prefix="-f", doc=InputDocumentation(doc="[ --force ]                    Force overwrite output file if it exists")), ToolInput(tag="in_var_8", input_type=File(optional=True), prefix="-o", doc=InputDocumentation(doc="[ --outfile ] arg (=-)         Output file name ['-' for stdout]")), ToolInput(tag="in_sorting", input_type=String(), position=0, doc=InputDocumentation(doc="Common Options:"))], outputs=[ToolOutput(tag="out_force_overwrite_output", output_type=File(optional=True), selector=InputSelector(input_to_select="in_force_overwrite_output", type_hint=File()), doc=OutputDocumentation(doc="[ --force ]                    Force overwrite output file if it exists")), ToolOutput(tag="out_var_8", output_type=File(optional=True), selector=InputSelector(input_to_select="in_var_8", type_hint=File()), doc=OutputDocumentation(doc="[ --outfile ] arg (=-)         Output file name ['-' for stdout]"))], container="quay.io/biocontainers/seidr:0.14.2--mpi_mpich_h6f92565", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Seidr_Threshold_V0_1_0().translate("wdl")
+
