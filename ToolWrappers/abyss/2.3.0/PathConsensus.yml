@@ -1,0 +1,227 @@
+!Command
+command:
+- PathConsensus
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: FASTA
+  description: contigs in FASTA format
+- !Positional
+  optional: false
+  position: 1
+  name: ADJ
+  description: contig adjacency graph
+- !Positional
+  optional: false
+  position: 2
+  name: PATH
+  description: paths of these contigs
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --kmer
+  description: k-mer size
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --dist-error
+  description: "acceptable error of a distance estimate\ndefault: 6 bp"
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out
+  description: output contig paths to FILE
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --consensus
+  description: output consensus sequences to FILE
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --graph
+  description: output the contig adjacency graph to FILE
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --adj
+  description: output the graph in ADJ format [default]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --asqg
+  description: output the graph in ASQG format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dot
+  description: output the graph in GraphViz format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gfa
+  description: output the graph in GFA1 format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gfa1
+  description: output the graph in GFA1 format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gfa2
+  description: output the graph in GFA2 format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gv
+  description: output the graph in GraphViz format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sam
+  description: output the graph in SAM format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --branches
+  description: "maximum number of sequences to align\ndefault: 4"
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --identity
+  description: 'minimum identity, default: 0.9'
+  args: !SimpleFlagArg
+    name: REAL
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: display verbose output
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --db
+  description: specify path of database repository in FILE
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --library
+  description: specify library NAME for database
+  args: !SimpleFlagArg
+    name: NAME
+- !Flag
+  optional: true
+  synonyms:
+  - --strain
+  description: specify strain NAME for database
+  args: !SimpleFlagArg
+    name: NAME
+- !Flag
+  optional: true
+  synonyms:
+  - --species
+  description: specify species NAME for database
+  args: !SimpleFlagArg
+    name: NAME
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  - --dialign-d
+  description: 'dialign debug level, default: 0'
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  - --dialign-m
+  description: 'score matrix, default: dna_matrix.scr'
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -P
+  - --dialign-p
+  description: "diagonal length probability distribution\ndefault: dna_diag_prob_100_exp_550000"
+  args: !SimpleFlagArg
+    name: FILE
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: display this help and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: output version information and exit
+  args: !EmptyFlagArg {}
+help_text: "Usage: PathConsensus -k<kmer> -s<consensus.fa> -o<out.path> [OPTION]...\
+  \ FASTA ADJ PATH\nAlign sequences of ambiguous paths and output a consensus\nsequence.\n\
+  \n Arguments:\n\n  FASTA  contigs in FASTA format\n  ADJ    contig adjacency graph\n\
+  \  PATH   paths of these contigs\n\n Options:\n\n  -k, --kmer=N          k-mer size\n\
+  \  -d, --dist-error=N    acceptable error of a distance estimate\n             \
+  \           default: 6 bp\n  -o, --out=FILE        output contig paths to FILE\n\
+  \  -s, --consensus=FILE  output consensus sequences to FILE\n  -g, --graph=FILE\
+  \      output the contig adjacency graph to FILE\n      --adj             output\
+  \ the graph in ADJ format [default]\n      --asqg            output the graph in\
+  \ ASQG format\n      --dot             output the graph in GraphViz format\n   \
+  \   --gfa             output the graph in GFA1 format\n      --gfa1            output\
+  \ the graph in GFA1 format\n      --gfa2            output the graph in GFA2 format\n\
+  \      --gv              output the graph in GraphViz format\n      --sam      \
+  \       output the graph in SAM format\n  -a, --branches=N      maximum number of\
+  \ sequences to align\n                        default: 4\n  -p, --identity=REAL\
+  \   minimum identity, default: 0.9\n  -v, --verbose         display verbose output\n\
+  \      --help            display this help and exit\n      --version         output\
+  \ version information and exit\n      --db=FILE         specify path of database\
+  \ repository in FILE\n      --library=NAME    specify library NAME for database\n\
+  \      --strain=NAME     specify strain NAME for database\n      --species=NAME\
+  \    specify species NAME for database\n\n DIALIGN-TX options:\n  -D, --dialign-d=N\
+  \     dialign debug level, default: 0\n  -M, --dialign-m=FILE  score matrix, default:\
+  \ dna_matrix.scr\n  -P, --dialign-p=FILE  diagonal length probability distribution\n\
+  \                        default: dna_diag_prob_100_exp_550000\n\nReport bugs to\
+  \ <abyss-users@bcgsc.ca>.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/abyss:2.3.0--ha4ec83a_0

@@ -1,0 +1,219 @@
+!Command
+command:
+- nanovar
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --data_type
+  description: "type of long-read data [ont]\nont - Oxford Nanopore Technologies\n\
+    pacbio-clr - Pacific Biosciences CLR\npacbio-ccs - Pacific Biosciences CCS"
+  args: !SimpleFlagArg
+    name: str
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --filter_bed
+  description: "BED file with genomic regions to be excluded [None]\n(e.g. telomeres\
+    \ and centromeres) Either specify name of in-built\nreference genome filter (i.e.\
+    \ hg38, hg19, mm10) or provide full\npath to own BED file."
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --mincov
+  description: minimum number of reads required to call a breakend [2]
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --minlen
+  description: minimum length of SV to be detected [25]
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --splitpct
+  description: "minimum percentage of unmapped bases within a long read\nto be considered\
+    \ as a split-read. 0.05<=p<=0.50 [0.05]"
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --minalign
+  description: minimum alignment length for single alignment reads [200]
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --buffer
+  description: nucleotide length buffer for SV breakend clustering [50]
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --score
+  description: "score threshold for defining PASS/FAIL SVs in VCF [1.0]\nDefault score\
+    \ 1.0 was estimated from simulated analysis."
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - --homo
+  description: "lower limit of a breakend read ratio to classify a homozygous state\
+    \ [0.75]\n(i.e. Any breakend with homo<=ratio<=1.00 is classified as homozygous)"
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - --hetero
+  description: "lower limit of a breakend read ratio to classify a heterozygous state\
+    \ [0.35]\n(i.e. Any breakend with hetero<=ratio<homo is classified as heterozygous)"
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: run in debug mode
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --force
+  description: run full pipeline (i.e. do not skip index generation)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  description: hide verbose
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: number of available threads for use [1]
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --model
+  description: specify path to custom-built model
+  args: !SimpleFlagArg
+    name: path
+- !Flag
+  optional: true
+  synonyms:
+  - --mm
+  description: specify path to 'minimap2' executable
+  args: !SimpleFlagArg
+    name: path
+- !Flag
+  optional: true
+  synonyms:
+  - --st
+  description: specify path to 'samtools' executable
+  args: !SimpleFlagArg
+    name: path
+- !Flag
+  optional: true
+  synonyms:
+  - --mdb
+  description: specify path to 'makeblastdb' executable
+  args: !SimpleFlagArg
+    name: path
+- !Flag
+  optional: true
+  synonyms:
+  - --wmk
+  description: specify path to 'windowmasker' executable
+  args: !SimpleFlagArg
+    name: path
+- !Flag
+  optional: true
+  synonyms:
+  - --hsb
+  description: specify path to 'hs-blastn' executable
+  args: !SimpleFlagArg
+    name: path
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: show version and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: nanovar [options] [FASTQ/FASTA/BAM] [REFERENCE_GENOME] [WORK_DIRECTORY]\n\
+  \nNanoVar is a neural network enhanced structural variant (SV) caller that handles\
+  \ low-depth long-read sequencing data.\n\npositional arguments:\n  [FASTQ/FASTA/BAM]\
+  \     path to long reads or mapped BAM file.\n                        Formats: fasta/fa/fa.gzip/fa.gz/fastq/fq/fq.gzip/fq.gz\
+  \ or .bam\n  [reference_genome]    path to reference genome in FASTA. Genome indexes\
+  \ created \n                        will overwrite indexes created by other aligners\
+  \ such as bwa.\n  [work_directory]      path to work directory. Directory will be\
+  \ created \n                        if it does not exist.\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -x str, --data_type\
+  \ str\n                        type of long-read data [ont]\n                  \
+  \      ont - Oxford Nanopore Technologies\n                        pacbio-clr -\
+  \ Pacific Biosciences CLR\n                        pacbio-ccs - Pacific Biosciences\
+  \ CCS\n  -f file, --filter_bed file\n                        BED file with genomic\
+  \ regions to be excluded [None]\n                        (e.g. telomeres and centromeres)\
+  \ Either specify name of in-built \n                        reference genome filter\
+  \ (i.e. hg38, hg19, mm10) or provide full \n                        path to own\
+  \ BED file.\n  -c int, --mincov int  minimum number of reads required to call a\
+  \ breakend [2]\n  -l int, --minlen int  minimum length of SV to be detected [25]\n\
+  \  -p float, --splitpct float\n                        minimum percentage of unmapped\
+  \ bases within a long read \n                        to be considered as a split-read.\
+  \ 0.05<=p<=0.50 [0.05]\n  -a int, --minalign int\n                        minimum\
+  \ alignment length for single alignment reads [200]\n  -b int, --buffer int  nucleotide\
+  \ length buffer for SV breakend clustering [50]\n  -s float, --score float\n   \
+  \                     score threshold for defining PASS/FAIL SVs in VCF [1.0]\n\
+  \                        Default score 1.0 was estimated from simulated analysis.\
+  \ \n  --homo float          lower limit of a breakend read ratio to classify a homozygous\
+  \ state [0.75]\n                        (i.e. Any breakend with homo<=ratio<=1.00\
+  \ is classified as homozygous)\n  --hetero float        lower limit of a breakend\
+  \ read ratio to classify a heterozygous state [0.35]\n                        (i.e.\
+  \ Any breakend with hetero<=ratio<homo is classified as heterozygous)\n  --debug\
+  \               run in debug mode\n  --force               run full pipeline (i.e.\
+  \ do not skip index generation)\n  -v, --version         show version and exit\n\
+  \  -q, --quiet           hide verbose\n  -t int, --threads int\n               \
+  \         number of available threads for use [1]\n  --model path          specify\
+  \ path to custom-built model\n  --mm path             specify path to 'minimap2'\
+  \ executable\n  --st path             specify path to 'samtools' executable\n  --mdb\
+  \ path            specify path to 'makeblastdb' executable\n  --wmk path       \
+  \     specify path to 'windowmasker' executable\n  --hsb path            specify\
+  \ path to 'hs-blastn' executable\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/nanovar:1.3.9--py36h4c5857e_0

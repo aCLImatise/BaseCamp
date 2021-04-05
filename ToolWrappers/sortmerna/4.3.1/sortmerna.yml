@@ -1,0 +1,623 @@
+!Command
+command:
+- sortmerna
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --ref
+  description: "PATH        Required  Reference file (FASTA) absolute or relative\
+    \ path.\nUse mutliple times, once per a reference file"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --reads
+  description: "PATH        Required  Raw reads file (FASTA/FASTQ/FASTA.GZ/FASTQ.GZ).\n\
+    Use twice for files with paired reads.\nThe file extensions are Not important.\
+    \ The program automatically\nrecognizes the file format as flat/compressed, fasta/fastq"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --workdir
+  description: "PATH        Optional  Workspace directory                        \
+    \ USRDIR/sortmerna/run/\nDefault structure: WORKDIR/\nidx/   (References index)\n\
+    kvdb/  (Key-value storage for alignments)\nout/   (processing output)\nreadb/\
+    \ (pre-processed reads/index)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --kvdb
+  description: "PATH        Optional  Directory for Key-value database           \
+    \ WORKDIR/kvdb\nKVDB is used for storing the alignment results."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --idx-dir
+  description: PATH        Optional  Directory for storing Reference index.      WORKDIR/idx
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --readb
+  description: "PATH        Optional  Storage for pre-processed reads            \
+    \ WORKDIR/readb/\nDirectory storing the split reads, or the random access index\
+    \ of compressed reads"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --fastx
+  description: BOOL        Optional  Output aligned reads into FASTA/FASTQ file
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sam
+  description: BOOL        Optional  Output SAM alignment for aligned reads.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --SQ
+  description: BOOL        Optional  Add SQ tags to the SAM file
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --blast
+  description: "STR         Optional  output alignments in various Blast-like formats\n\
+    Sample values: '0'                    - pairwise\n'1'                    - tabular\
+    \ (Blast - m 8 format)\n'1 cigar'              - tabular + column for CIGAR\n\
+    '1 cigar qcov'         - tabular + columns for CIGAR and query coverage\n'1 cigar\
+    \ qcov qstrand' - tabular + columns for CIGAR, query coverage,\nand strand"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --aligned
+  description: "STR/BOOL    Optional  Aligned reads file prefix [dir/][pfx]      \
+    \ WORKDIR/out/aligned\nDirectory and file prefix for aligned output i.e. each\n\
+    output file goes into the specified directory with the given prefix.\nThe appropriate\
+    \ extension: (fasta|fastq|blast|sam|etc) is automatically added.\nBoth 'dir' and\
+    \ 'pfx' are optional.\nThe 'dir' can be a relative or an absolute path.\nIf 'dir'\
+    \ is not specified, the output is created in the WORKDIR/out/\nIf 'pfx' is not\
+    \ specified, the prefix 'aligned' is used\nExamples:\n'-aligned $MYDIR/dir_1/dir_2/1'\
+    \ -> $MYDIR/dir_1/dir_2/1.fasta\n'-aligned dir_1/apfx'           -> $PWD/dir_1/apfx.fasta\n\
+    '-aligned dir_1/'               -> $PWD/aligned.fasta\n'-aligned apfx'       \
+    \          -> $PWD/apfx.fasta\n'-aligned  (no argument)'       -> WORKDIR/out/aligned.fasta"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --other
+  description: "STR/BOOL    Optional  Non-aligned reads file prefix [dir/][pfx]  \
+    \ WORKDIR/out/other\nDirectory and file prefix for non-aligned output i.e. each\n\
+    output file goes into the specified directory with the given prefix.\nThe appropriate\
+    \ extension: (fasta|fastq|blast|sam|etc) is automatically added.\nMust be used\
+    \ with 'fastx'.\nBoth 'dir' and 'pfx' are optional.\nThe 'dir' can be a relative\
+    \ or an absolute path.\nIf 'dir' is not specified, the output is created in the\
+    \ WORKDIR/out/\nIf 'pfx' is not specified, the prefix 'other' is used\nExamples:\n\
+    '-other $MYDIR/dir_1/dir_2/1' -> $MYDIR/dir_1/dir_2/1.fasta\n'-other dir_1/apfx'\
+    \           -> $PWD/dir_1/apfx.fasta\n'-other dir_1/'               -> $PWD/dir_1/other.fasta\n\
+    '-other apfx'                 -> $PWD/apfx.fasta\n'-other  (no argument)'    \
+    \   -> aligned_out/other.fasta\ni.e. the same output directory\nas used for aligned\
+    \ output"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --num_alignments
+  description: "INT         Optional  Positive integer (INT >=0).\nIf used with '-no-best'\
+    \ reports first INT alignments per read reaching\nE-value threshold, which allows\
+    \ to lower the CPU time and memory use.\nOtherwise outputs INT best alignments.\n\
+    If INT = 0, all alignments are output"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-best
+  description: "BOOL        Optional  Disable best alignments search             \
+    \             1\nBy default the exchaustive alignments search is performed by\
+    \ searching '-min_lis N'\ncandidate alignments\nIf N == 0: All candidate alignments\
+    \ are searched\nIf N > 0:  N best alignments are searched.\nNaturally the larger\
+    \ is the N, the longer is the search time.\nExplanation:\nA read can potentially\
+    \ be aligned (reaching E-value threshold) to multiple reference sequences.\nThe\
+    \ 'best' alignment is the highest scoring alignment out of All alignments of a\
+    \ Read.\nTo find the Best alignment - an exhaustive search over All references\
+    \ has to be performed.\n'best 1' and 'best 0' (all the bests) are Equally intensive\
+    \ processes requiring\nthe exhaustive search, although the size of reports will\
+    \ differ."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min_lis
+  description: "INT         Optional  Search all alignments having the first INT \
+    \             2\nlongest LIS\nLIS stands for Longest Increasing Subsequence, it\
+    \ is computed using seeds'\npositions to expand hits into longer matches prior\
+    \ to Smith - Waterman alignment."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --print_all_reads
+  description: "Optional  Output null alignment strings for non-aligned reads    \
+    \ False\nto SAM and/or BLAST tabular files"
+  args: !SimpleFlagArg
+    name: BOOL
+- !Flag
+  optional: true
+  synonyms:
+  - --paired
+  description: "BOOL        Optional  Flags paired reads                         \
+    \             False\nIf a single reads file is provided, use this option to indicate\n\
+    the file contains interleaved paired reads when neither\n'paired_in' | 'paired_out'\
+    \ | 'out2' | 'sout' are specified."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --paired_in
+  description: "BOOL        Optional  Flags the paired-end reads as Aligned,     \
+    \             False\nwhen either of them is Aligned.\nWith this option both reads\
+    \ are output into Aligned FASTA/Q file\nMust be used with 'fastx'.\nMutually exclusive\
+    \ with 'paired_out'."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --paired_out
+  description: "BOOL        Optional  Flags the paired-end reads as Non-aligned, \
+    \             False\nwhen either of them is non-aligned.\nWith this option both\
+    \ reads are output into Non-Aligned FASTA/Q file\nMust be used with 'fastx'.\n\
+    Mutually exclusive with 'paired_in'."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --out2
+  description: "BOOL        Optional  Output paired reads into separate files.   \
+    \             False\nMust be used with 'fastx'.\nIf a single reads file is provided,\
+    \ this options implies interleaved paired reads\nWhen used with 'sout', four (4)\
+    \ output files for aligned reads will be generated:\n'aligned-paired-fwd, aligned-paired-rev,\
+    \ aligned-singleton-fwd, aligned-singleton-rev'.\nIf 'other' option is also used,\
+    \ eight (8) output files will be generated."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sout
+  description: "BOOL        Optional  Separate paired and singleton aligned reads.\
+    \            False\nTo be used with 'fastx'.\nIf a single reads file is provided,\
+    \ this options implies interleaved paired reads\nCannot be used with 'paired_in'\
+    \ | 'paired_out'"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --zip-out
+  description: "STR/BOOL    Optional  Controls the output compression            \
+    \             Yes/True\nBy default the report files are produced in the same format\
+    \ as the input i.e.\nif the reads files are compressed (gz), the output is also\
+    \ compressed.\nThe default behaviour can be overriden by using '-zip-out'.\nThe\
+    \ possible values: Y(es), N(o), T(rue), F(alse). No value means 'True'.\nThe values\
+    \ are Not case sensitive i.e. 'Yes, YES, yEs, Y, y' are all OK\nExamples:\n'-reads\
+    \ freads.gz -zip-out n' : generate flat output when the input is compressed\n\
+    '-reads freads.flat -zip-out' : compress the output when the input files are flat"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --match
+  description: INT         Optional  SW score (positive integer) for a match.                2
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --mismatch
+  description: INT         Optional  SW penalty (negative integer) for a mismatch.          -3
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gap_open
+  description: INT         Optional  SW penalty (positive integer) for introducing
+    a gap.    5
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gap_ext
+  description: INT         Optional  SW penalty (positive integer) for extending a
+    gap.      2
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  description: "DOUBLE      Optional  E-value threshold.                         \
+    \             1\nDefines the 'statistical significance' of a local alignment.\n\
+    Exponentially correllates with the Minimal Alignment score.\nHigher E-values (100,\
+    \ 1000, ...) cause More reads to Pass the alignment threshold"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  description: BOOL        Optional  Search only the forward strand.                         False
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -N
+  description: "BOOL        Optional  SW penalty for ambiguous letters (N's) scored\n\
+    as --mismatch"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  description: BOOL        Optional  Search only the reverse-complementary strand.           False
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --id
+  description: "INT         Optional  %%id similarity threshold (the alignment   \
+    \             0.97\nmust still pass the E-value threshold)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --coverage
+  description: "INT         Optional  %%query coverage threshold (the alignment must\
+    \          0.97\nstill pass the E-value threshold)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --de_novo_otu
+  description: "BOOL        Optional  Output FASTA file with 'de novo' reads     \
+    \             False\nRead is 'de novo' if its alignment score passes E-value threshold,\
+    \ but both the identity\n'-id', and the '-coverage' are below their corresponding\
+    \ thresholds\ni.e. ID < %%id and COV < %%cov"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --otu_map
+  description: "BOOL        Optional  Output OTU map (input to QIIME's make_otu_table.py).\
+    \    False\nCannot be used with 'no-best because\nthe grouping is done around\
+    \ the best alignment'"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --passes
+  description: "INT,INT,INT Optional  Three intervals at which to place the seed on\
+    \           L,L/2,3\nthe read (L is the seed length)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --edges
+  description: "INT         Optional  Number (or percent if INT followed by %% sign)\
+    \ of       4\nnucleotides to add to each edge of the read\nprior to SW local alignment"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --num_seeds
+  description: "BOOL        Optional  Number of seeds matched before searching   \
+    \             2\nfor candidate LIS"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --full_search
+  description: "INT         Optional  Search for all 0-error and 1-error seed    \
+    \             False\nmatches in the index rather than stopping\nafter finding\
+    \ a 0-error match (<1%% gain in\nsensitivity with up four-fold decrease in speed)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pid
+  description: BOOL        Optional  Add pid to output file names.                           False
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  description: "INT         Optional  DEPRECATED in favour of '-threads'. Number of\
+    \           numCores\nprocessing threads to use.\nAutomatically redirects to '-threads'"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: INT         Optional  Number of Processing threads to use                     2
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --index
+  description: "INT         Optional  Build reference database index             \
+    \             2\nBy default when this option is not used, the program checks the\
+    \ reference index and\nbuilds it if not already existing.\nThis can be changed\
+    \ by using '-index' as follows:\n'-index 0' - skip indexing. If the index does\
+    \ not exist, the program will terminate\nand warn to build the index prior performing\
+    \ the alignment\n'-index 1' - only perform the indexing and terminate\n'-index\
+    \ 2' - the default behaviour, the same as when not using this option at all"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  description: 'DOUBLE      Optional  Indexing: seed length.                                  18'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: "DOUBLE      Optional  Indexing: the amount of memory (in Mbytes) for\
+    \          3072\nbuilding the index."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: BOOL        Optional  Produce verbose output when building the index          True
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --interval
+  description: "INT         Optional  Indexing: Positive integer: index every Nth\
+    \ L-mer in    1\nthe reference database e.g. '-interval 2'."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max_pos
+  description: "INT         Optional  Indexing: maximum (integer) number of positions\
+    \ to      1000\nstore for each unique L-mer.\nIf 0 - all positions are stored."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dbg_put_db
+  description: BOOL        Optional
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --cmd
+  description: BOOL        Optional  Launch an interactive session (command prompt)          False
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --task
+  description: "INT         Optional  Processing Task                            \
+    \             4\nPossible values: 0 - align. Only perform alignment\n1 - post-processing\
+    \ (log writing)\n2 - generate reports\n3 - align and post-process\n4 - all"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dbg-level
+  description: "INT         Optional  Debug level                                \
+    \             0\nControls verbosity of the execution trace. Default value of 0\
+    \ corresponds to\nthe least verbose output.\nThe highest value currently is 2.\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: BOOL        Optional  Print help information
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: BOOL        Optional  Print SortMeRNA version number
+  args: !EmptyFlagArg {}
+help_text: "[process:1372] === Options processing starts ... ===\nFound value: sortmerna\n\
+  Found flag: --help\nMissing required flag: ref\nMissing required flag: reads\n[process:1456]\
+  \ Processing option: help with value: \n  Usage:   sortmerna -ref FILE [-ref FILE]\
+  \ -reads FWD_READS [-reads REV_READS] [OPTIONS]:\n  -------------------------------------------------------------------------------------------------------------\n\
+  \  | option            type-format           description                       \
+  \                   default      |\n  -------------------------------------------------------------------------------------------------------------\n\
+  \n    [REQUIRED]\n    --ref             PATH        Required  Reference file (FASTA)\
+  \ absolute or relative path.\n\n       Use mutliple times, once per a reference\
+  \ file\n\n\n    --reads           PATH        Required  Raw reads file (FASTA/FASTQ/FASTA.GZ/FASTQ.GZ).\n\
+  \n       Use twice for files with paired reads.\n       The file extensions are\
+  \ Not important. The program automatically\n       recognizes the file format as\
+  \ flat/compressed, fasta/fastq\n\n\n\n    [COMMON]\n    --workdir         PATH \
+  \       Optional  Workspace directory                         USRDIR/sortmerna/run/\n\
+  \n       Default structure: WORKDIR/\n                              idx/   (References\
+  \ index)\n                              kvdb/  (Key-value storage for alignments)\n\
+  \                              out/   (processing output)\n                    \
+  \          readb/ (pre-processed reads/index)\n\n\n    --kvdb            PATH  \
+  \      Optional  Directory for Key-value database            WORKDIR/kvdb\n\n  \
+  \     KVDB is used for storing the alignment results.\n\n\n    --idx-dir       \
+  \  PATH        Optional  Directory for storing Reference index.      WORKDIR/idx\n\
+  \n\n    --readb           PATH        Optional  Storage for pre-processed reads\
+  \             WORKDIR/readb/\n\n       Directory storing the split reads, or the\
+  \ random access index of compressed reads\n\n\n    --fastx           BOOL      \
+  \  Optional  Output aligned reads into FASTA/FASTQ file\n    --sam             BOOL\
+  \        Optional  Output SAM alignment for aligned reads.\n\n\n    --SQ       \
+  \       BOOL        Optional  Add SQ tags to the SAM file\n\n\n    --blast     \
+  \      STR         Optional  output alignments in various Blast-like formats\n\n\
+  \       Sample values: '0'                    - pairwise\n                     \
+  \ '1'                    - tabular (Blast - m 8 format)\n                      '1\
+  \ cigar'              - tabular + column for CIGAR\n                      '1 cigar\
+  \ qcov'         - tabular + columns for CIGAR and query coverage\n             \
+  \         '1 cigar qcov qstrand' - tabular + columns for CIGAR, query coverage,\n\
+  \                                               and strand\n\n\n    --aligned  \
+  \       STR/BOOL    Optional  Aligned reads file prefix [dir/][pfx]       WORKDIR/out/aligned\n\
+  \n       Directory and file prefix for aligned output i.e. each\n       output file\
+  \ goes into the specified directory with the given prefix.\n       The appropriate\
+  \ extension: (fasta|fastq|blast|sam|etc) is automatically added.\n       Both 'dir'\
+  \ and 'pfx' are optional.\n       The 'dir' can be a relative or an absolute path.\n\
+  \       If 'dir' is not specified, the output is created in the WORKDIR/out/\n \
+  \      If 'pfx' is not specified, the prefix 'aligned' is used\n       Examples:\n\
+  \       '-aligned $MYDIR/dir_1/dir_2/1' -> $MYDIR/dir_1/dir_2/1.fasta\n       '-aligned\
+  \ dir_1/apfx'           -> $PWD/dir_1/apfx.fasta\n       '-aligned dir_1/'     \
+  \          -> $PWD/aligned.fasta\n       '-aligned apfx'                 -> $PWD/apfx.fasta\n\
+  \       '-aligned  (no argument)'       -> WORKDIR/out/aligned.fasta\n\n\n    --other\
+  \           STR/BOOL    Optional  Non-aligned reads file prefix [dir/][pfx]   WORKDIR/out/other\n\
+  \n       Directory and file prefix for non-aligned output i.e. each\n       output\
+  \ file goes into the specified directory with the given prefix.\n       The appropriate\
+  \ extension: (fasta|fastq|blast|sam|etc) is automatically added.\n       Must be\
+  \ used with 'fastx'.\n       Both 'dir' and 'pfx' are optional.\n       The 'dir'\
+  \ can be a relative or an absolute path.\n       If 'dir' is not specified, the\
+  \ output is created in the WORKDIR/out/\n       If 'pfx' is not specified, the prefix\
+  \ 'other' is used\n       Examples:\n       '-other $MYDIR/dir_1/dir_2/1' -> $MYDIR/dir_1/dir_2/1.fasta\n\
+  \       '-other dir_1/apfx'           -> $PWD/dir_1/apfx.fasta\n       '-other dir_1/'\
+  \               -> $PWD/dir_1/other.fasta\n       '-other apfx'                \
+  \ -> $PWD/apfx.fasta\n       '-other  (no argument)'       -> aligned_out/other.fasta\n\
+  \                                        i.e. the same output directory\n      \
+  \                                  as used for aligned output\n\n\n    --num_alignments\
+  \  INT         Optional  Positive integer (INT >=0).\n\n       If used with '-no-best'\
+  \ reports first INT alignments per read reaching\n       E-value threshold, which\
+  \ allows to lower the CPU time and memory use.\n       Otherwise outputs INT best\
+  \ alignments.\n       If INT = 0, all alignments are output\n\n\n    --no-best \
+  \        BOOL        Optional  Disable best alignments search                  \
+  \        1\n\n       By default the exchaustive alignments search is performed by\
+  \ searching '-min_lis N'\n       candidate alignments\n       If N == 0: All candidate\
+  \ alignments are searched\n       If N > 0:  N best alignments are searched.\n \
+  \      Naturally the larger is the N, the longer is the search time.\n       Explanation:\n\
+  \       A read can potentially be aligned (reaching E-value threshold) to multiple\
+  \ reference sequences.\n       The 'best' alignment is the highest scoring alignment\
+  \ out of All alignments of a Read.\n       To find the Best alignment - an exhaustive\
+  \ search over All references has to be performed.\n       'best 1' and 'best 0'\
+  \ (all the bests) are Equally intensive processes requiring\n       the exhaustive\
+  \ search, although the size of reports will differ.\n\n\n    --min_lis         INT\
+  \         Optional  Search all alignments having the first INT              2\n\
+  \                                            longest LIS\n\n       LIS stands for\
+  \ Longest Increasing Subsequence, it is computed using seeds'\n       positions\
+  \ to expand hits into longer matches prior to Smith - Waterman alignment.\n\n  \
+  \  --print_all_reads BOOL        Optional  Output null alignment strings for non-aligned\
+  \ reads     False\n                                            to SAM and/or BLAST\
+  \ tabular files\n\n    --paired          BOOL        Optional  Flags paired reads\
+  \                                      False\n\n        If a single reads file is\
+  \ provided, use this option to indicate\n        the file contains interleaved paired\
+  \ reads when neither\n        'paired_in' | 'paired_out' | 'out2' | 'sout' are specified.\n\
+  \n\n    --paired_in       BOOL        Optional  Flags the paired-end reads as Aligned,\
+  \                  False\n                                            when either\
+  \ of them is Aligned.\n\n        With this option both reads are output into Aligned\
+  \ FASTA/Q file\n        Must be used with 'fastx'.\n        Mutually exclusive with\
+  \ 'paired_out'.\n\n\n    --paired_out      BOOL        Optional  Flags the paired-end\
+  \ reads as Non-aligned,              False\n                                   \
+  \         when either of them is non-aligned.\n\n        With this option both reads\
+  \ are output into Non-Aligned FASTA/Q file\n        Must be used with 'fastx'.\n\
+  \        Mutually exclusive with 'paired_in'.\n\n\n    --out2            BOOL  \
+  \      Optional  Output paired reads into separate files.                False\n\
+  \n       Must be used with 'fastx'.\n       If a single reads file is provided,\
+  \ this options implies interleaved paired reads\n       When used with 'sout', four\
+  \ (4) output files for aligned reads will be generated:\n       'aligned-paired-fwd,\
+  \ aligned-paired-rev, aligned-singleton-fwd, aligned-singleton-rev'.\n       If\
+  \ 'other' option is also used, eight (8) output files will be generated.\n\n\n \
+  \   --sout            BOOL        Optional  Separate paired and singleton aligned\
+  \ reads.            False\n\n       To be used with 'fastx'.\n       If a single\
+  \ reads file is provided, this options implies interleaved paired reads\n      \
+  \ Cannot be used with 'paired_in' | 'paired_out'\n\n\n    --zip-out         STR/BOOL\
+  \    Optional  Controls the output compression                         Yes/True\n\
+  \n       By default the report files are produced in the same format as the input\
+  \ i.e.\n       if the reads files are compressed (gz), the output is also compressed.\n\
+  \       The default behaviour can be overriden by using '-zip-out'.\n       The\
+  \ possible values: Y(es), N(o), T(rue), F(alse). No value means 'True'.\n      \
+  \ The values are Not case sensitive i.e. 'Yes, YES, yEs, Y, y' are all OK\n    \
+  \   Examples:\n       '-reads freads.gz -zip-out n' : generate flat output when\
+  \ the input is compressed\n       '-reads freads.flat -zip-out' : compress the output\
+  \ when the input files are flat\n\n\n    --match           INT         Optional\
+  \  SW score (positive integer) for a match.                2\n\n    --mismatch \
+  \       INT         Optional  SW penalty (negative integer) for a mismatch.    \
+  \      -3\n\n    --gap_open        INT         Optional  SW penalty (positive integer)\
+  \ for introducing a gap.    5\n\n    --gap_ext         INT         Optional  SW\
+  \ penalty (positive integer) for extending a gap.      2\n\n    -e             \
+  \   DOUBLE      Optional  E-value threshold.                                   \
+  \   1\n\n       Defines the 'statistical significance' of a local alignment.\n \
+  \      Exponentially correllates with the Minimal Alignment score.\n       Higher\
+  \ E-values (100, 1000, ...) cause More reads to Pass the alignment threshold\n\n\
+  \n    -F                BOOL        Optional  Search only the forward strand.  \
+  \                       False\n\n    -N                BOOL        Optional  SW\
+  \ penalty for ambiguous letters (N's) scored\n                                 \
+  \           as --mismatch\n\n    -R                BOOL        Optional  Search\
+  \ only the reverse-complementary strand.           False\n\n\n    [OTU_PICKING]\n\
+  \    --id              INT         Optional  %%id similarity threshold (the alignment\
+  \                0.97\n                                            must still pass\
+  \ the E-value threshold).\n\n    --coverage        INT         Optional  %%query\
+  \ coverage threshold (the alignment must          0.97\n                       \
+  \                     still pass the E-value threshold)\n\n    --de_novo_otu   \
+  \  BOOL        Optional  Output FASTA file with 'de novo' reads                \
+  \  False\n\n       Read is 'de novo' if its alignment score passes E-value threshold,\
+  \ but both the identity\n       '-id', and the '-coverage' are below their corresponding\
+  \ thresholds\n       i.e. ID < %%id and COV < %%cov\n\n\n    --otu_map         BOOL\
+  \        Optional  Output OTU map (input to QIIME's make_otu_table.py).    False\n\
+  \                                            Cannot be used with 'no-best because\n\
+  \                                            the grouping is done around the best\
+  \ alignment'\n\n\n    [ADVANCED]\n    --passes          INT,INT,INT Optional  Three\
+  \ intervals at which to place the seed on           L,L/2,3\n                  \
+  \                           the read (L is the seed length)\n\n    --edges     \
+  \      INT         Optional  Number (or percent if INT followed by %% sign) of \
+  \      4\n                                            nucleotides to add to each\
+  \ edge of the read\n                                            prior to SW local\
+  \ alignment\n\n    --num_seeds       BOOL        Optional  Number of seeds matched\
+  \ before searching                2\n                                          \
+  \  for candidate LIS\n\n    --full_search     INT         Optional  Search for all\
+  \ 0-error and 1-error seed                 False\n                             \
+  \               matches in the index rather than stopping\n                    \
+  \                        after finding a 0-error match (<1%% gain in\n         \
+  \                                   sensitivity with up four-fold decrease in speed)\n\
+  \n    --pid             BOOL        Optional  Add pid to output file names.    \
+  \                       False\n\n    -a                INT         Optional  DEPRECATED\
+  \ in favour of '-threads'. Number of           numCores\n                      \
+  \                      processing threads to use.\n                            \
+  \                Automatically redirects to '-threads'\n\n    --threads        \
+  \ INT         Optional  Number of Processing threads to use                    \
+  \ 2\n\n\n    [INDEXING]\n    --index           INT         Optional  Build reference\
+  \ database index                          2\n\n       By default when this option\
+  \ is not used, the program checks the reference index and\n       builds it if not\
+  \ already existing.\n       This can be changed by using '-index' as follows:\n\
+  \       '-index 0' - skip indexing. If the index does not exist, the program will\
+  \ terminate\n                                and warn to build the index prior performing\
+  \ the alignment\n       '-index 1' - only perform the indexing and terminate\n \
+  \      '-index 2' - the default behaviour, the same as when not using this option\
+  \ at all\n\n\n    -L                DOUBLE      Optional  Indexing: seed length.\
+  \                                  18\n\n    -m                DOUBLE      Optional\
+  \  Indexing: the amount of memory (in Mbytes) for          3072\n              \
+  \                              building the index.\n\n    -v                BOOL\
+  \        Optional  Produce verbose output when building the index          True\n\
+  \n    --interval        INT         Optional  Indexing: Positive integer: index\
+  \ every Nth L-mer in    1\n                                            the reference\
+  \ database e.g. '-interval 2'.\n\n    --max_pos         INT         Optional  Indexing:\
+  \ maximum (integer) number of positions to      1000\n                         \
+  \                   store for each unique L-mer.\n                             \
+  \               If 0 - all positions are stored.\n\n\n    [HELP]\n    -h       \
+  \         BOOL        Optional  Print help information\n\n    --version        \
+  \ BOOL        Optional  Print SortMeRNA version number\n\n\n    [DEVELOPER]\n  \
+  \  --dbg_put_db      BOOL        Optional  \n    --cmd             BOOL        Optional\
+  \  Launch an interactive session (command prompt)          False\n\n    --task \
+  \           INT         Optional  Processing Task                              \
+  \           4\n\n       Possible values: 0 - align. Only perform alignment\n   \
+  \                     1 - post-processing (log writing)\n                      \
+  \  2 - generate reports\n                        3 - align and post-process\n  \
+  \                      4 - all\n\n\n    --dbg-level       INT         Optional \
+  \ Debug level                                             0\n\n      Controls verbosity\
+  \ of the execution trace. Default value of 0 corresponds to\n      the least verbose\
+  \ output.\n      The highest value currently is 2.\n\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/sortmerna:4.3.1--0

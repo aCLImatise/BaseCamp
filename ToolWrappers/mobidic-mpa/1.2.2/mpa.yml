@@ -1,0 +1,93 @@
+!Command
+command:
+- mpa
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --mpa-directory
+  description: "The path to the MPA installation folder. [Default:\n/usr/local/bin]"
+  args: !SimpleFlagArg
+    name: MPA_DIRECTORY
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --logging-level
+  description: 'The logger level. [Default: INFO]'
+  args: !ChoiceFlagArg
+    choices: !!set
+      DEBUG:
+      WARNING:
+      INFO:
+      ERROR:
+      CRITICAL:
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --no-refseq-version
+  description: Annotation without using refseq version with annovar.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --no-progress-bar
+  description: "Disable progress bar (avoid to read vcf twice for\nlarge vcf)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  description: "The vcf file to annotate (format: VCF). This vcf must\nbe annotate\
+    \ with annovar."
+  args: !SimpleFlagArg
+    name: INPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: "The output vcf file with annotation (format : VCF)\n"
+  args: !SimpleFlagArg
+    name: OUTPUT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: mpa [-h] [-d MPA_DIRECTORY] [-l {DEBUG,INFO,WARNING,ERROR,CRITICAL}]\n\
+  \           [-v] [-r] [-p] -i INPUT -o OUTPUT\n\nAnnotate VCF with Mobidic Prioritization\
+  \ Algorithm score (MPA).\n\noptional arguments:\n  -h, --help            show this\
+  \ help message and exit\n  -d MPA_DIRECTORY, --mpa-directory MPA_DIRECTORY\n   \
+  \                     The path to the MPA installation folder. [Default:\n     \
+  \                   /usr/local/bin]\n  -l {DEBUG,INFO,WARNING,ERROR,CRITICAL}, --logging-level\
+  \ {DEBUG,INFO,WARNING,ERROR,CRITICAL}\n                        The logger level.\
+  \ [Default: INFO]\n  -v, --version         show program's version number and exit\n\
+  \nOptions:\n  -r, --no-refseq-version\n                        Annotation without\
+  \ using refseq version with annovar.\n  -p, --no-progress-bar\n                \
+  \        Disable progress bar (avoid to read vcf twice for\n                   \
+  \     large vcf).\n\nInputs:\n  -i INPUT, --input INPUT\n                      \
+  \  The vcf file to annotate (format: VCF). This vcf must\n                     \
+  \   be annotate with annovar.\n\nOutputs:\n  -o OUTPUT, --output OUTPUT\n      \
+  \                  The output vcf file with annotation (format : VCF)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/mobidic-mpa:1.2.2--pyh3252c3a_0

@@ -1,0 +1,121 @@
+!Command
+command:
+- abyss-kaligner
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: KAligner
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: kmer
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - -l
+  - --kmer
+  description: k-mer size and minimum alignment length
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --section
+  description: "/N     split the target into N sections and align\nreads to section\
+    \ S [1/1]"
+  args: !SimpleFlagArg
+    name: S
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --ignore-multimap
+  description: "duplicate k-mer in the target\n[default]"
+  args: !SimpleFlagArg
+    name: ignore
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --multimap
+  description: allow duplicate k-mer in the target
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-multimap
+  description: disallow duplicate k-mer in the target
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --threads
+  description: "use N threads [2] up to one per query file\nor if N is 0 use one thread\
+    \ per query file"
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: display verbose output
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-sam
+  description: output the results in KAligner format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sam
+  description: output the results in SAM format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --seq
+  description: print the sequence with the alignments
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: display this help and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: output version information and exit
+  args: !EmptyFlagArg {}
+help_text: "Usage: KAligner -k<kmer> [OPTION]... QUERY... TARGET\nAlign the sequences\
+  \ of the files QUERY to those of TARGET.\nAll perfect matches of at least k bases\
+  \ will be found.\n\n Options:\n\n  -k, -l, --kmer=N      k-mer size and minimum\
+  \ alignment length\n  -s, --section=S/N     split the target into N sections and\
+  \ align\n                        reads to section S [1/1]\n  -i, --ignore-multimap\
+  \ ignore duplicate k-mer in the target\n                        [default]\n  -m,\
+  \ --multimap        allow duplicate k-mer in the target\n      --no-multimap   \
+  \  disallow duplicate k-mer in the target\n  -j, --threads=N       use N threads\
+  \ [2] up to one per query file\n                        or if N is 0 use one thread\
+  \ per query file\n  -v, --verbose         display verbose output\n      --no-sam\
+  \          output the results in KAligner format\n      --sam             output\
+  \ the results in SAM format\n      --seq             print the sequence with the\
+  \ alignments\n      --help            display this help and exit\n      --version\
+  \         output version information and exit\n\nReport bugs to <abyss-users@bcgsc.ca>.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/abyss:2.3.0--ha4ec83a_0

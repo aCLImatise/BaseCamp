@@ -1,0 +1,285 @@
+!Command
+command:
+- mokapot
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: psm_files
+  description: "A collection of PSMs in the Percolator tab-delimited\nor PepXML format."
+- !Positional
+  optional: false
+  position: 0
+  name: objects.
+  description: --folds FOLDS         The number of cross-validation folds to use.
+    PSMs
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --dest_dir
+  description: "The directory in which to write the result files.\nDefaults to the\
+    \ current working directory"
+  args: !SimpleFlagArg
+    name: DEST_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --file_root
+  description: The prefix added to all file names.
+  args: !SimpleFlagArg
+    name: FILE_ROOT
+- !Flag
+  optional: true
+  synonyms:
+  - --proteins
+  description: "The FASTA file used for the database search. Using\nthis option enable\
+    \ protein-level confidence estimates\nusing the 'picked-protein' approach. Note\
+    \ that the\nFASTA file must contain both target and decoy\nsequences. Additionally,\
+    \ verify that the '--enzyme', '\n--missed_cleavages, '--min_length', '--max_length',\
+    \ '\n--semi', '--clip_nterm_methionine', and '--\ndecoy_prefix' parameters match\
+    \ your search engine\nconditions."
+  args: !SimpleFlagArg
+    name: PROTEINS
+- !Flag
+  optional: true
+  synonyms:
+  - --decoy_prefix
+  description: "The prefix used to indicate a decoy protein in the\nFASTA file. For\
+    \ mokapot to provide accurate confidence\nestimates, decoy proteins should have\
+    \ same description\nas the target proteins they were generated from, but\nthis\
+    \ string prepended."
+  args: !SimpleFlagArg
+    name: DECOY_PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - --enzyme
+  description: "A regular expression defining the enzyme specificity.\nThe cleavage\
+    \ site is interpreted as the end of the\nmatch. The default is trypsin, without\
+    \ proline\nsuppression: [KR]"
+  args: !SimpleFlagArg
+    name: ENZYME
+- !Flag
+  optional: true
+  synonyms:
+  - --missed_cleavages
+  description: The allowed number of missed cleavages
+  args: !SimpleFlagArg
+    name: MISSED_CLEAVAGES
+- !Flag
+  optional: true
+  synonyms:
+  - --clip_nterm_methionine
+  description: "Remove methionine residues that occur at the protein\nN-terminus."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min_length
+  description: The minimum peptide length to consider.
+  args: !SimpleFlagArg
+    name: MIN_LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - --max_length
+  description: The maximum peptide length to consider.
+  args: !SimpleFlagArg
+    name: MAX_LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - --semi
+  description: "Was a semi-enzymatic digest used to assign PSMs? If\nso, the protein\
+    \ database will likely contain shared\npeptides and yield unhelpful protein-level\
+    \ confidence\nestimates. We do not recommend using this option."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --train_fdr
+  description: "The maximum false discovery rate at which to consider\na target PSM\
+    \ as a positive example during model\ntraining."
+  args: !SimpleFlagArg
+    name: TRAIN_FDR
+- !Flag
+  optional: true
+  synonyms:
+  - --test_fdr
+  description: "The false-discovery rate threshold at which to\nevaluate the learned\
+    \ models."
+  args: !SimpleFlagArg
+    name: TEST_FDR
+- !Flag
+  optional: true
+  synonyms:
+  - --max_iter
+  description: The number of iterations to use for training.
+  args: !SimpleFlagArg
+    name: MAX_ITER
+- !Flag
+  optional: true
+  synonyms:
+  - --seed
+  description: An integer to use as the random seed.
+  args: !SimpleFlagArg
+    name: SEED
+- !Flag
+  optional: true
+  synonyms:
+  - --direction
+  description: "The name of the feature to use as the initial\ndirection for ranking\
+    \ PSMs. The default automatically\nselects the feature that finds the most PSMs\
+    \ below the\n`train_fdr`."
+  args: !SimpleFlagArg
+    name: DIRECTION
+- !Flag
+  optional: true
+  synonyms:
+  - --aggregate
+  description: "If used, PSMs from multiple PIN files will be\naggregated and analyzed\
+    \ together. Otherwise, a joint\nmodel will be trained, but confidence estimates\
+    \ will\nbe calculated separately for each PIN file. This flag\nonly has an effect\
+    \ when multiple PIN files are\nprovided."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --subset_max_train
+  description: "Use only a random subset of PSMs for training. This is\nuseful for\
+    \ very large datasets."
+  args: !SimpleFlagArg
+    name: SUBSET_MAX_TRAIN
+- !Flag
+  optional: true
+  synonyms:
+  - --override
+  description: "Use the learned model even if it performs worse than\nthe best feature."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --save_models
+  description: Save the models learned by mokapot as pickled Python
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --open_modification_bin_size
+  description: "This parameter only affect reading PSMs from PepXML\nfiles. If specified,\
+    \ modification masses are binned\naccording to the value. The binned mass difference\
+    \ is\nappended to the end of the peptide and will be used\nwhen grouping peptides\
+    \ for peptide-level confidence\nestimation. Using this option for open modification\n\
+    search results. We reommend 0.01 as a good starting\npoint."
+  args: !SimpleFlagArg
+    name: OPEN_MODIFICATION_BIN_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbosity
+  description: "Specify the verbosity of the current process. Each\nlevel prints the\
+    \ following messages, including all\nthose at a lower verbosity: 0-errors, 1-warnings,\n\
+    2-messages, 3-debug info.\n"
+  args: !ChoiceFlagArg
+    choices: !!set
+      '0':
+      '2':
+      '3':
+      '1':
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: mokapot [-h] [-d DEST_DIR] [-r FILE_ROOT] [--proteins PROTEINS]\n\
+  \               [--decoy_prefix DECOY_PREFIX] [--enzyme ENZYME]\n              \
+  \ [--missed_cleavages MISSED_CLEAVAGES] [--clip_nterm_methionine]\n            \
+  \   [--min_length MIN_LENGTH] [--max_length MAX_LENGTH] [--semi]\n             \
+  \  [--train_fdr TRAIN_FDR] [--test_fdr TEST_FDR]\n               [--max_iter MAX_ITER]\
+  \ [--seed SEED] [--direction DIRECTION]\n               [--aggregate] [--subset_max_train\
+  \ SUBSET_MAX_TRAIN]\n               [--override] [--save_models] [--folds FOLDS]\n\
+  \               [--open_modification_bin_size OPEN_MODIFICATION_BIN_SIZE]\n    \
+  \           [-v {0,1,2,3}]\n               psm_files [psm_files ...]\n\nmokapot\
+  \ version 0.0.0.\nWritten by William E. Fondrie (wfondrie@uw.edu) in the\nDepartment\
+  \ of Genome Sciences at the University of Washington.\n\nOfficial code website:\
+  \ https://github.com/wfondrie/mokapot\n\nMore documentation and examples: https://mokapot.readthedocs.io\n\
+  \npositional arguments:\n  psm_files             A collection of PSMs in the Percolator\
+  \ tab-delimited\n                        or PepXML format.\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -d DEST_DIR, --dest_dir\
+  \ DEST_DIR\n                        The directory in which to write the result files.\n\
+  \                        Defaults to the current working directory\n  -r FILE_ROOT,\
+  \ --file_root FILE_ROOT\n                        The prefix added to all file names.\n\
+  \  --proteins PROTEINS   The FASTA file used for the database search. Using\n  \
+  \                      this option enable protein-level confidence estimates\n \
+  \                       using the 'picked-protein' approach. Note that the\n   \
+  \                     FASTA file must contain both target and decoy\n          \
+  \              sequences. Additionally, verify that the '--enzyme', '\n        \
+  \                --missed_cleavages, '--min_length', '--max_length', '\n       \
+  \                 --semi', '--clip_nterm_methionine', and '--\n                \
+  \        decoy_prefix' parameters match your search engine\n                   \
+  \     conditions.\n  --decoy_prefix DECOY_PREFIX\n                        The prefix\
+  \ used to indicate a decoy protein in the\n                        FASTA file. For\
+  \ mokapot to provide accurate confidence\n                        estimates, decoy\
+  \ proteins should have same description\n                        as the target proteins\
+  \ they were generated from, but\n                        this string prepended.\n\
+  \  --enzyme ENZYME       A regular expression defining the enzyme specificity.\n\
+  \                        The cleavage site is interpreted as the end of the\n  \
+  \                      match. The default is trypsin, without proline\n        \
+  \                suppression: [KR]\n  --missed_cleavages MISSED_CLEAVAGES\n    \
+  \                    The allowed number of missed cleavages\n  --clip_nterm_methionine\n\
+  \                        Remove methionine residues that occur at the protein\n\
+  \                        N-terminus.\n  --min_length MIN_LENGTH\n              \
+  \          The minimum peptide length to consider.\n  --max_length MAX_LENGTH\n\
+  \                        The maximum peptide length to consider.\n  --semi     \
+  \           Was a semi-enzymatic digest used to assign PSMs? If\n              \
+  \          so, the protein database will likely contain shared\n               \
+  \         peptides and yield unhelpful protein-level confidence\n              \
+  \          estimates. We do not recommend using this option.\n  --train_fdr TRAIN_FDR\n\
+  \                        The maximum false discovery rate at which to consider\n\
+  \                        a target PSM as a positive example during model\n     \
+  \                   training.\n  --test_fdr TEST_FDR   The false-discovery rate\
+  \ threshold at which to\n                        evaluate the learned models.\n\
+  \  --max_iter MAX_ITER   The number of iterations to use for training.\n  --seed\
+  \ SEED           An integer to use as the random seed.\n  --direction DIRECTION\n\
+  \                        The name of the feature to use as the initial\n       \
+  \                 direction for ranking PSMs. The default automatically\n      \
+  \                  selects the feature that finds the most PSMs below the\n    \
+  \                    `train_fdr`.\n  --aggregate           If used, PSMs from multiple\
+  \ PIN files will be\n                        aggregated and analyzed together. Otherwise,\
+  \ a joint\n                        model will be trained, but confidence estimates\
+  \ will\n                        be calculated separately for each PIN file. This\
+  \ flag\n                        only has an effect when multiple PIN files are\n\
+  \                        provided.\n  --subset_max_train SUBSET_MAX_TRAIN\n    \
+  \                    Use only a random subset of PSMs for training. This is\n  \
+  \                      useful for very large datasets.\n  --override           \
+  \ Use the learned model even if it performs worse than\n                       \
+  \ the best feature.\n  --save_models         Save the models learned by mokapot\
+  \ as pickled Python\n                        objects.\n  --folds FOLDS         The\
+  \ number of cross-validation folds to use. PSMs\n                        originating\
+  \ from the same mass spectrum are always in\n                        the same fold.\n\
+  \  --open_modification_bin_size OPEN_MODIFICATION_BIN_SIZE\n                   \
+  \     This parameter only affect reading PSMs from PepXML\n                    \
+  \    files. If specified, modification masses are binned\n                     \
+  \   according to the value. The binned mass difference is\n                    \
+  \    appended to the end of the peptide and will be used\n                     \
+  \   when grouping peptides for peptide-level confidence\n                      \
+  \  estimation. Using this option for open modification\n                       \
+  \ search results. We reommend 0.01 as a good starting\n                        point.\n\
+  \  -v {0,1,2,3}, --verbosity {0,1,2,3}\n                        Specify the verbosity\
+  \ of the current process. Each\n                        level prints the following\
+  \ messages, including all\n                        those at a lower verbosity: 0-errors,\
+  \ 1-warnings,\n                        2-messages, 3-debug info.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/mokapot:0.7.1--py_0

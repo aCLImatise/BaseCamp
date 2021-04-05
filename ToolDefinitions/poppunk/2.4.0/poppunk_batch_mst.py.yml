@@ -1,0 +1,269 @@
+!Command
+command:
+- poppunk_batch_mst.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --r-files
+  description: Sample names and locations (as for poppunk --r-files)
+  args: !SimpleFlagArg
+    name: R_FILES
+- !Flag
+  optional: true
+  synonyms:
+  - --batch-file
+  description: "Single column list of batches to process samples in\n--r-files in"
+  args: !SimpleFlagArg
+    name: BATCH_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --n-batches
+  description: "Number of batches for process if --batch-file is not\nspecified"
+  args: !SimpleFlagArg
+    name: N_BATCHES
+- !Flag
+  optional: true
+  synonyms:
+  - --info-csv
+  description: CSV containing information about sequences
+  args: !SimpleFlagArg
+    name: INFO_CSV
+- !Flag
+  optional: true
+  synonyms:
+  - --output
+  description: Prefix for output files
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - --previous-clustering
+  description: CSV file with previous clusters in MST drawing
+  args: !SimpleFlagArg
+    name: PREVIOUS_CLUSTERING
+- !Flag
+  optional: true
+  synonyms:
+  - --iterative-mst
+  description: Re-calculate the MST for each batch
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --keep-intermediates
+  description: Retain the outputs of each batch
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --use-batch-names
+  description: Name the stored outputs of each batch
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --rank
+  description: "Comma separated ranks used to fit lineage model (list\nof ints)"
+  args: !SimpleFlagArg
+    name: RANK
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: Number of threads for parallelisation (int)
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - --gpu-dist
+  description: Use GPU for distance calculations
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gpu-graph
+  description: Use GPU for network analysis
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --deviceid
+  description: GPU device ID (int)
+  args: !SimpleFlagArg
+    name: DEVICEID
+- !Flag
+  optional: true
+  synonyms:
+  - --db-args
+  description: Other arguments to pass to poppunk. e.g. '--min-k 13
+  args: !SimpleFlagArg
+    name: DB_ARGS
+- !Flag
+  optional: true
+  synonyms:
+  - --model-args
+  description: Other arguments to pass to lineage model fit
+  args: !SimpleFlagArg
+    name: MODEL_ARGS
+- !Flag
+  optional: true
+  synonyms:
+  - --assign-args
+  description: Other arguments to pass to poppunk_assign
+  args: !SimpleFlagArg
+    name: ASSIGN_ARGS
+- !Flag
+  optional: true
+  synonyms:
+  - --qc-filter
+  description: "Behaviour following sequence QC step: \"stop\"\n[default], \"prune\"\
+    \ (analyse data passing QC), or\n\"continue\" (analyse all data)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      continue:
+      prune:
+      stop:
+- !Flag
+  optional: true
+  synonyms:
+  - --retain-failures
+  description: "Retain sketches of genomes that do not pass QC filters\nin separate\
+    \ database [default = False]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max-a-dist
+  description: Maximum accessory distance to permit [default = 0.5]
+  args: !SimpleFlagArg
+    name: MAX_A_DIST
+- !Flag
+  optional: true
+  synonyms:
+  - --length-sigma
+  description: "Number of standard deviations of length distribution\nbeyond which\
+    \ sequences will be excluded [default = 5]"
+  args: !SimpleFlagArg
+    name: LENGTH_SIGMA
+- !Flag
+  optional: true
+  synonyms:
+  - --length-range
+  description: "LENGTH_RANGE\nAllowed length range, outside of which sequences will\n\
+    be excluded [two values needed - lower and upper\nbounds]"
+  args: !SimpleFlagArg
+    name: LENGTH_RANGE
+- !Flag
+  optional: true
+  synonyms:
+  - --prop-n
+  description: "Threshold ambiguous base proportion above which\nsequences will be\
+    \ excluded [default = 0.1]"
+  args: !SimpleFlagArg
+    name: PROP_N
+- !Flag
+  optional: true
+  synonyms:
+  - --upper-n
+  description: "Threshold ambiguous base count above which sequences\nwill be excluded"
+  args: !SimpleFlagArg
+    name: UPPER_N
+- !Flag
+  optional: true
+  synonyms:
+  - --poppunk-exe
+  description: "Location of poppunk executable. Use 'python poppunk-\nrunner.py' to\
+    \ run from source tree"
+  args: !SimpleFlagArg
+    name: POPPUNK_EXE
+- !Flag
+  optional: true
+  synonyms:
+  - --assign-exe
+  description: "Location of poppunk_assign executable. Use 'python\npoppunk_assign-runner.py'\
+    \ to run from source tree"
+  args: !SimpleFlagArg
+    name: ASSIGN_EXE
+- !Flag
+  optional: true
+  synonyms:
+  - --mst-exe
+  description: "Location of poppunk executable. Use 'python\npoppunk_mst-runner.py'\
+    \ to run from source tree\n"
+  args: !SimpleFlagArg
+    name: MST_EXE
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: poppunk_batch_mst [-h] --r-files R_FILES [--batch-file BATCH_FILE]\n\
+  \                         [--n-batches N_BATCHES] [--info-csv INFO_CSV]\n      \
+  \                   --output OUTPUT\n                         [--previous-clustering\
+  \ PREVIOUS_CLUSTERING]\n                         [--iterative-mst] [--keep-intermediates]\n\
+  \                         [--use-batch-names] [--rank RANK] [--threads THREADS]\n\
+  \                         [--gpu-dist] [--gpu-graph] [--deviceid DEVICEID]\n   \
+  \                      [--db-args DB_ARGS] [--model-args MODEL_ARGS]\n         \
+  \                [--assign-args ASSIGN_ARGS]\n                         [--qc-filter\
+  \ {stop,prune,continue}]\n                         [--retain-failures] [--max-a-dist\
+  \ MAX_A_DIST]\n                         [--length-sigma LENGTH_SIGMA]\n        \
+  \                 [--length-range LENGTH_RANGE LENGTH_RANGE]\n                 \
+  \        [--prop-n PROP_N] [--upper-n UPPER_N]\n                         [--poppunk-exe\
+  \ POPPUNK_EXE] [--assign-exe ASSIGN_EXE]\n                         [--mst-exe MST_EXE]\n\
+  \nBatch MST mode (create db + lineage model fit + assign + sparse_mst)\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n\nInput and\
+  \ output file options:\n  --r-files R_FILES     Sample names and locations (as for\
+  \ poppunk --r-files)\n  --batch-file BATCH_FILE\n                        Single\
+  \ column list of batches to process samples in\n                        --r-files\
+  \ in\n  --n-batches N_BATCHES\n                        Number of batches for process\
+  \ if --batch-file is not\n                        specified\n  --info-csv INFO_CSV\
+  \   CSV containing information about sequences\n  --output OUTPUT       Prefix for\
+  \ output files\n  --previous-clustering PREVIOUS_CLUSTERING\n                  \
+  \      CSV file with previous clusters in MST drawing\n  --iterative-mst       Re-calculate\
+  \ the MST for each batch\n  --keep-intermediates  Retain the outputs of each batch\n\
+  \  --use-batch-names     Name the stored outputs of each batch\n\nAnalysis options:\n\
+  \  --rank RANK           Comma separated ranks used to fit lineage model (list\n\
+  \                        of ints)\n  --threads THREADS     Number of threads for\
+  \ parallelisation (int)\n  --gpu-dist            Use GPU for distance calculations\n\
+  \  --gpu-graph           Use GPU for network analysis\n  --deviceid DEVICEID   GPU\
+  \ device ID (int)\n  --db-args DB_ARGS     Other arguments to pass to poppunk. e.g.\
+  \ '--min-k 13\n                        --max-k 29'\n  --model-args MODEL_ARGS\n\
+  \                        Other arguments to pass to lineage model fit\n  --assign-args\
+  \ ASSIGN_ARGS\n                        Other arguments to pass to poppunk_assign\n\
+  \nQuality control options for distances:\n  --qc-filter {stop,prune,continue}\n\
+  \                        Behaviour following sequence QC step: \"stop\"\n      \
+  \                  [default], \"prune\" (analyse data passing QC), or\n        \
+  \                \"continue\" (analyse all data)\n  --retain-failures     Retain\
+  \ sketches of genomes that do not pass QC filters\n                        in separate\
+  \ database [default = False]\n  --max-a-dist MAX_A_DIST\n                      \
+  \  Maximum accessory distance to permit [default = 0.5]\n  --length-sigma LENGTH_SIGMA\n\
+  \                        Number of standard deviations of length distribution\n\
+  \                        beyond which sequences will be excluded [default = 5]\n\
+  \  --length-range LENGTH_RANGE LENGTH_RANGE\n                        Allowed length\
+  \ range, outside of which sequences will\n                        be excluded [two\
+  \ values needed - lower and upper\n                        bounds]\n  --prop-n PROP_N\
+  \       Threshold ambiguous base proportion above which\n                      \
+  \  sequences will be excluded [default = 0.1]\n  --upper-n UPPER_N     Threshold\
+  \ ambiguous base count above which sequences\n                        will be excluded\n\
+  \nExecutable locations:\n  --poppunk-exe POPPUNK_EXE\n                        Location\
+  \ of poppunk executable. Use 'python poppunk-\n                        runner.py'\
+  \ to run from source tree\n  --assign-exe ASSIGN_EXE\n                        Location\
+  \ of poppunk_assign executable. Use 'python\n                        poppunk_assign-runner.py'\
+  \ to run from source tree\n  --mst-exe MST_EXE     Location of poppunk executable.\
+  \ Use 'python\n                        poppunk_mst-runner.py' to run from source\
+  \ tree\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/poppunk:2.4.0--py39h7f0572b_0

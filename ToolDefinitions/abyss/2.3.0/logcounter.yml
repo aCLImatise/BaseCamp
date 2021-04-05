@@ -1,0 +1,123 @@
+!Command
+command:
+- logcounter
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --threads
+  description: use N parallel threads [1]
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --kmer
+  description: the size of a k-mer
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --seed
+  description: the seed value used
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --bloom-size
+  description: size of bloom filter [500M]
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --chastity
+  description: discard unchaste reads [default]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-chastity
+  description: do not discard unchaste reads
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --trim-masked
+  description: trim masked bases from the ends of reads
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-trim-masked
+  description: "do not trim masked bases from the ends\nof reads [default]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --trim-quality
+  description: "trim bases from the ends of reads whose\nquality is less than the\
+    \ threshold"
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --standard-quality
+  description: "zero quality is `!' (33)\ndefault for FASTQ and SAM files"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --illumina-quality
+  description: "zero quality is `@' (64)\ndefault for qseq and export files"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: display verbose output
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: display this help and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: output version information and exit
+  args: !EmptyFlagArg {}
+help_text: "Usage: logcounter [OPTION]... [READS]...\n  -j, --threads=N          \
+  \  use N parallel threads [1]\n  -k, --kmer=N               the size of a k-mer\n\
+  \  -s, --seed=N               the seed value used\n  -b, --bloom-size=N        \
+  \ size of bloom filter [500M]\n      --chastity             discard unchaste reads\
+  \ [default]\n      --no-chastity          do not discard unchaste reads\n      --trim-masked\
+  \          trim masked bases from the ends of reads\n      --no-trim-masked    \
+  \   do not trim masked bases from the ends\n                             of reads\
+  \ [default]\n  -q, --trim-quality=N       trim bases from the ends of reads whose\n\
+  \                             quality is less than the threshold\n      --standard-quality\
+  \     zero quality is `!' (33)\n                             default for FASTQ and\
+  \ SAM files\n      --illumina-quality     zero quality is `@' (64)\n           \
+  \                  default for qseq and export files\n  -v, --verbose          \
+  \    display verbose output\n      --help                 display this help and\
+  \ exit\n      --version              output version information and exit\n\nReport\
+  \ bugs to <abyss-users@bcgsc.ca>.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/abyss:2.3.0--ha4ec83a_0

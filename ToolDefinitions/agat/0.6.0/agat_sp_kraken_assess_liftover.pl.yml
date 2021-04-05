@@ -1,0 +1,98 @@
+!Command
+command:
+- agat_sp_kraken_assess_liftover.pl
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: agat_sp_kraken_assess_lift_coverage.pl
+  description: 'Description:'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -gtf
+  description: Input gtf file produced by Kraken.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --threshold
+  - -t
+  description: "Gene mapping percentage over which a gene must be reported. By\ndefault\
+    \ the value is 0."
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  - -v
+  description: Verbose information.
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  - --out
+  - --outfile
+  description: "Output GFF file. If no output file is specified, the output will\n\
+    be written to STDOUT."
+  args: !SimpleFlagArg
+    name: or
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Display this helpful text.
+  args: !SimpleFlagArg
+    name: or
+usage_flag:
+version_flag:
+help_text: "\n ------------------------------------------------------------------------------\n\
+  |   Another GFF Analysis Toolkit (AGAT) - Version: v0.6.0                      |\n\
+  |   https://github.com/NBISweden/AGAT                                          |\n\
+  |   National Bioinformatics Infrastructure Sweden (NBIS) - www.nbis.se         |\n\
+  \ ------------------------------------------------------------------------------\n\
+  \n\nName:\n    agat_sp_kraken_assess_lift_coverage.pl\n\nDescription:\n    The script\
+  \ takes as input gtf produced by Kraken (lift-over tool). It\n    will analyse the\
+  \ kraken_mapped attributes to calculate the mapped\n    percentage of each mRNA.\
+  \ According to a threshold (0 by default), gene\n    with a mapping percentage over\
+  \ that value will be reported. A plot\n    nammed geneMapped_plot.pdf is performed\
+  \ to visualize the result. /!\\ The\n    script handles chimeric files (i.e containg\
+  \ gene part mapped on the\n    template genome and others on the de-novo one) /!\\\
+  /!\\ If the file is\n    complete (containing kraken_mapped=\"TRUE\" and kraken_mapped=\"\
+  FALSE\"\n    attributes), the script calcul the real percentage lentgh that has\
+  \ been\n    mapped. Else the calcul is only based on feature with\n    kraken_mapped=\"\
+  TRUE\" attributes. So in this case the result most of time\n    will be 100%. /!\\\
+  /!\\/!\\ We met rare cases where Kraken mapped a feature\n    to several locations\
+  \ of the de-novo genome. As result we could end up\n    with mapping over > 100%.\
+  \ We report them as 100% mapped in the plot and\n    a warning is raised to allow\
+  \ to check thoses cases.\n\nUsage:\n        agat_sp_kraken_assess_lift_coverage\
+  \ --gtf infile.gtf [ -o outfile ]\n        agat_sp_kraken_assess_lift_coverage --help\n\
+  \nOptions:\n    -gtf    Input gtf file produced by Kraken.\n\n    --threshold or\
+  \ -t\n            Gene mapping percentage over which a gene must be reported. By\n\
+  \            default the value is 0.\n\n    --verbose or -v\n            Verbose\
+  \ information.\n\n    -o , --output , --out or --outfile\n            Output GFF\
+  \ file. If no output file is specified, the output will\n            be written\
+  \ to STDOUT.\n\n    -h or --help\n            Display this helpful text.\n\nFeedback:\n\
+  \  Did you find a bug?:\n    Do not hesitate to report bugs to help us keep track\
+  \ of the bugs and\n    their resolution. Please use the GitHub issue tracking system\
+  \ available\n    at this address:\n\n                https://github.com/NBISweden/AGAT/issues\n\
+  \n     Ensure that the bug was not already reported by searching under Issues.\n\
+  \     If you're unable to find an (open) issue addressing the problem, open a new\
+  \ one.\n     Try as much as possible to include in the issue when relevant:\n  \
+  \   - a clear description,\n     - as much relevant information as possible,\n \
+  \    - the command used,\n     - a data sample,\n     - an explanation of the expected\
+  \ behaviour that is not occurring.\n\n  Do you want to contribute?:\n    You are\
+  \ very welcome, visit this address for the Contributing\n    guidelines:\n    https://github.com/NBISweden/AGAT/blob/master/CONTRIBUTING.md\n\
+  \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/agat:0.6.0--pl526r35_0

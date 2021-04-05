@@ -1,0 +1,368 @@
+&id001 !Command
+command:
+- gfatools
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - gfatools
+  - gfa2bed
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: in.gfa
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    description: merge adjacent intervals on stable sequences
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: gfatools gfa2bed [options] <in.gfa>\nOptions:\n  -s     merge\
+    \ adjacent intervals on stable sequences\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/gfatools:0.5--hed695b0_0
+- !Command
+  command:
+  - gfatools
+  - stat
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: in.gfa
+    description: ''
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: gfatools stat <in.gfa>\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/gfatools:0.5--hed695b0_0
+- !Command
+  command:
+  - gfatools
+  - asm
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: in.gfa
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    description: transitive reduction (fuzzy length)
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    description: cut tips (tip seg count, tip length [inf])
+    args: !OptionalFlagArg
+      names:
+      - INT1
+      - INT2
+      separator: ','
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    description: pop bubbles (max radius, max deletions [inf])
+    args: !OptionalFlagArg
+      names:
+      - INT1
+      - INT2
+      separator: ','
+  - !Flag
+    optional: true
+    synonyms:
+    - -B
+    description: pop bubbles along with small tips (max radius, max del [inf])
+    args: !OptionalFlagArg
+      names:
+      - INT1
+      - INT2
+      separator: ','
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: cut short overlaps (ratio to the longest overlap, overlap length
+      [0])
+    args: !OptionalFlagArg
+      names:
+      - FLOAT
+      - INT
+      separator: ','
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    description: cut overlaps, topology aware (ratio, tip seg count [3], tip length
+      [inf])
+    args: !OptionalFlagArg
+      names:
+      - FLOAT
+      - INT1
+      - INT2
+      separator: ','
+  - !Flag
+    optional: true
+    synonyms:
+    - -u
+    description: generate unitigs
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    description: verbose level [2]
+    args: !SimpleFlagArg
+      name: INT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: gfatools asm [options] <in.gfa>\nOptions:\n  -r INT         \
+    \ transitive reduction (fuzzy length)\n  -t INT1[,INT2]  cut tips (tip seg count,\
+    \ tip length [inf])\n  -b INT1[,INT2]  pop bubbles (max radius, max deletions\
+    \ [inf])\n  -B INT1[,INT2]  pop bubbles along with small tips (max radius, max\
+    \ del [inf])\n  -o FLOAT[,INT]  cut short overlaps (ratio to the longest overlap,\
+    \ overlap length [0])\n  -c FLOAT[,INT1[,INT2]]\n                  cut overlaps,\
+    \ topology aware (ratio, tip seg count [3], tip length [inf])\n  -u          \
+    \    generate unitigs\n  -v INT          verbose level [2]\nNote: the order of\
+    \ options matters; one option may be applied >1 times.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/gfatools:0.5--hed695b0_0
+- !Command
+  command:
+  - gfatools
+  - gfa2fa
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: in.gfa
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    description: line length [60]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    description: output stable sequences (rGFA only)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -P
+    description: skip rank-0 sequences (rGFA only; force -s)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - '-0'
+    description: only output rank-0 sequences (rGFA only; force -s)
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: gfatools gfa2fa [options] <in.gfa>\nOptions:\n  -l INT   line\
+    \ length [60]\n  -s       output stable sequences (rGFA only)\n  -P       skip\
+    \ rank-0 sequences (rGFA only; force -s)\n  -0       only output rank-0 sequences\
+    \ (rGFA only; force -s)\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/gfatools:0.5--hed695b0_0
+- !Command
+  command:
+  - gfatools
+  - sql
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: in.gfa
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    description: write sequence
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: gfatools sql <in.gfa>\nOptions:\n  -s      write sequence\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/gfatools:0.5--hed695b0_0
+- !Command
+  command:
+  - gfatools
+  - bubble
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: in.gfa
+    description: ''
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: gfatools bubble <in.gfa>\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/gfatools:0.5--hed695b0_0
+- !Command
+  command:
+  - gfatools
+  - view
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: in.gfa
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    description: verbose level [2]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    description: /@FILE  segment list to subset []
+    args: !SimpleFlagArg
+      name: STR
+  - !Flag
+    optional: true
+    synonyms:
+    - -R
+    description: a region like chr1:101-200 (a 1-based closed region) []
+    args: !SimpleFlagArg
+      name: STR
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    description: subset radius (effective with -l) [0]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    description: delete the list of segments (requiring -l; ignoring -r)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -M
+    description: remove multiple edges
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -S
+    description: don't print sequences
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: gfatools view [options] <in.gfa>\nOptions:\n  -v INT        verbose\
+    \ level [2]\n  -l STR/@FILE  segment list to subset []\n  -R STR        a region\
+    \ like chr1:101-200 (a 1-based closed region) []\n  -r INT        subset radius\
+    \ (effective with -l) [0]\n  -d            delete the list of segments (requiring\
+    \ -l; ignoring -r)\n  -M            remove multiple edges\n  -S            don't\
+    \ print sequences\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/gfatools:0.5--hed695b0_0
+- !Command
+  command:
+  - gfatools
+  - blacklist
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: in.gfa
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    description: min region length [100]
+    args: !SimpleFlagArg
+      name: INT
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    description: include regions involving both strands (mostly inversions)
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: gfatools blacklist [options] <in.gfa>\nOptions:\n  -l INT   \
+    \ min region length [100]\n  -b        include regions involving both strands\
+    \ (mostly inversions)\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/gfatools:0.5--hed695b0_0
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Usage: gfatools <command> <arguments>\nCommands:\n  view        read a\
+  \ GFA file\n  stat        statistics about a GFA file\n  gfa2fa      convert GFA\
+  \ to FASTA\n  gfa2bed     convert rGFA to BED (requiring rGFA)\n  blacklist   blacklist\
+  \ regions\n  bubble      print bubble-like regions (EXPERIMENTAL)\n  asm       \
+  \  miniasm-like graph transformation\n  sql         export rGFA to SQLite (requiring\
+  \ rGFA)\n  version     print version number\n"
+generated_using: []
+docker_image: quay.io/biocontainers/gfatools:0.5--hed695b0_0

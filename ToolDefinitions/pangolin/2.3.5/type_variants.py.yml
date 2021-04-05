@@ -1,0 +1,79 @@
+!Command
+command:
+- type_variants.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --fasta-in
+  description: alignment to type, in fasta format
+  args: !SimpleFlagArg
+    name: FASTA_IN
+- !Flag
+  optional: true
+  synonyms:
+  - --variants-config
+  description: "config file containing variants to type. Format is like:\nsnp:T6954C\n\
+    del:11288:9\naa:orf1ab:T1001I\nsnp and del positions are 1-based nucleotide position\
+    \ relative to the alignment\naa position is 1-based codon position relative to\
+    \ the cds\nNo header line or comment lines are permitted"
+  args: !SimpleFlagArg
+    name: VARIANTS_IN
+- !Flag
+  optional: true
+  synonyms:
+  - --reference
+  description: Wuhan-Hu-1 in fasta format (for typing the reference allele at deletions
+    and sanity checking the config file)
+  args: !SimpleFlagArg
+    name: REFERENCE
+- !Flag
+  optional: true
+  synonyms:
+  - --variants-out
+  description: csv file to write
+  args: !SimpleFlagArg
+    name: VARIANTS_OUT
+- !Flag
+  optional: true
+  synonyms:
+  - --append-genotypes
+  description: if invoked, write the genotype for each variant in the config file
+    to the output
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: type_variants.py [-h] [--fasta-in FASTA_IN]\n                 \
+  \       [--variants-config VARIANTS_IN]\n                        [--reference REFERENCE]\
+  \ [--variants-out VARIANTS_OUT]\n                        [--append-genotypes]\n\n\
+  type an alignment in Wuhan-Hu-1 coordinates for variants defined in a config file\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  --fasta-in FASTA_IN   alignment to type, in fasta format\n  --variants-config\
+  \ VARIANTS_IN\n                        config file containing variants to type.\
+  \ Format is like:\n                                                            \
+  \                snp:T6954C\n                                                  \
+  \                          del:11288:9\n                                       \
+  \                                     aa:orf1ab:T1001I\n                       \
+  \                                                     snp and del positions are\
+  \ 1-based nucleotide position relative to the alignment\n                      \
+  \                                                      aa position is 1-based codon\
+  \ position relative to the cds\n                            No header line or comment\
+  \ lines are permitted\n  --reference REFERENCE\n                        Wuhan-Hu-1\
+  \ in fasta format (for typing the reference allele at deletions and sanity checking\
+  \ the config file)\n  --variants-out VARIANTS_OUT\n                        csv file\
+  \ to write\n  --append-genotypes    if invoked, write the genotype for each variant\
+  \ in the config file to the output\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/pangolin:2.3.5--py_0

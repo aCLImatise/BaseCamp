@@ -1,0 +1,115 @@
+!Command
+command:
+- agat_sp_filter_feature_by_attribute_presence.pl
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: agat_sp_select_feature_by_attribute_presence.pl
+  description: 'Description:'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --reffile
+  - --gff
+  - -ref
+  description: Input GFF3 file that will be read
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --type
+  - -l
+  description: "primary tag option, case insensitive, list. Allow to specied the\n\
+    feature types that will be handled. You can specified a specific\nfeature by given\
+    \ its primary tag name (column 3) as: cds, Gene,\nMrNa You can specify directly\
+    \ all the feature of a particular\nlevel: level2=mRNA,ncRNA,tRNA,etc level3=CDS,exon,UTR,etc\
+    \ By\ndefault all feature are taking into account. fill the option by\nthe value\
+    \ \"all\" will have the same behaviour."
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - --attribute
+  - --att
+  - -a
+  description: "String - Attributes tag specified will be used to filter the\nfeature\
+    \ type (feature type can also be specified by the option\n-p). List of attribute\
+    \ tags must be coma separated."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --flip
+  description: "BOLEAN - In order to flip the test and keep features that do\nhave\
+    \ the attribute and filter those without"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: "Output GFF file. If no output file is specified, the output will\n\
+    be written to STDOUT."
+  args: !SimpleFlagArg
+    name: or
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Display this helpful text.
+  args: !SimpleFlagArg
+    name: or
+usage_flag:
+version_flag:
+help_text: "\n ------------------------------------------------------------------------------\n\
+  |   Another GFF Analysis Toolkit (AGAT) - Version: v0.6.0                      |\n\
+  |   https://github.com/NBISweden/AGAT                                          |\n\
+  |   National Bioinformatics Infrastructure Sweden (NBIS) - www.nbis.se         |\n\
+  \ ------------------------------------------------------------------------------\n\
+  \n\nName:\n    agat_sp_select_feature_by_attribute_presence.pl\n\nDescription:\n\
+  \    The script aims to filter features according to attribute presence (9th\n \
+  \   column). If the attribute exists, the feature is discarded. Attribute\n    are\
+  \ stored in the 9th column and have this shape: tag=value /!\\ Removing\n    a level1\
+  \ or level2 feature will automatically remove all linked\n    subfeatures, and removing\
+  \ all children of a feature will automatically\n    remove this feature too.\n\n\
+  Usage:\n        agat_sp_select_feature_by_attribute_presence.pl --gff infile.gff\
+  \ -a <tag> [ --output outfile ]\n        agat_sp_select_feature_by_attribute_presence.pl\
+  \ --help\n\nOptions:\n    -f, --reffile, --gff or -ref\n            Input GFF3 file\
+  \ that will be read\n\n    -p, --type or -l\n            primary tag option, case\
+  \ insensitive, list. Allow to specied the\n            feature types that will be\
+  \ handled. You can specified a specific\n            feature by given its primary\
+  \ tag name (column 3) as: cds, Gene,\n            MrNa You can specify directly\
+  \ all the feature of a particular\n            level: level2=mRNA,ncRNA,tRNA,etc\
+  \ level3=CDS,exon,UTR,etc By\n            default all feature are taking into account.\
+  \ fill the option by\n            the value \"all\" will have the same behaviour.\n\
+  \n    --attribute, --att, -a\n            String - Attributes tag specified will\
+  \ be used to filter the\n            feature type (feature type can also be specified\
+  \ by the option\n            -p). List of attribute tags must be coma separated.\n\
+  \n    --flip  BOLEAN - In order to flip the test and keep features that do\n   \
+  \         have the attribute and filter those without\n\n    -o or --output\n  \
+  \          Output GFF file. If no output file is specified, the output will\n  \
+  \          be written to STDOUT.\n\n    -h or --help\n            Display this helpful\
+  \ text.\n\nFeedback:\n  Did you find a bug?:\n    Do not hesitate to report bugs\
+  \ to help us keep track of the bugs and\n    their resolution. Please use the GitHub\
+  \ issue tracking system available\n    at this address:\n\n                https://github.com/NBISweden/AGAT/issues\n\
+  \n     Ensure that the bug was not already reported by searching under Issues.\n\
+  \     If you're unable to find an (open) issue addressing the problem, open a new\
+  \ one.\n     Try as much as possible to include in the issue when relevant:\n  \
+  \   - a clear description,\n     - as much relevant information as possible,\n \
+  \    - the command used,\n     - a data sample,\n     - an explanation of the expected\
+  \ behaviour that is not occurring.\n\n  Do you want to contribute?:\n    You are\
+  \ very welcome, visit this address for the Contributing\n    guidelines:\n    https://github.com/NBISweden/AGAT/blob/master/CONTRIBUTING.md\n\
+  \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/agat:0.6.0--pl526r35_0

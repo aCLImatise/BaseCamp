@@ -1,0 +1,127 @@
+!Command
+command:
+- agat_convert_genscan2gff.pl
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: agat_convert_genscan2gff.pl
+  description: 'Description:'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --genscan
+  - -g
+  description: Input bed file that will be convert.
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - --source
+  description: "The source informs about the tool used to produce the data and\nis\
+    \ stored in 2nd field of a gff file. Example:\nStringtie,Maker,Augustus,etc. [default:\
+    \ data]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --primary_tag
+  description: "The primary_tag corresponf to the data type and is stored in 3rd\n\
+    field of a gff file. Example: gene,mRNA,CDS,etc. [default: gene]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --inflate_off
+  description: "By default we inflate the block fields (blockCount, blockSizes,\n\
+    blockStarts) to create subfeatures of the main feature\n(primary_tag). Type of\
+    \ subfeature created based on the\ninflate_type parameter. If you don't want this\
+    \ inflating\nbehaviour you can deactivate it by using the option\n--inflate_off."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --inflate_type
+  description: "Feature type (3rd column in gff) created when inflate parameter\n\
+    activated [default: exon]."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: add verbosity
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  - --out
+  - --outfile
+  - --gff
+  description: "Output GFF file. If no output file is specified, the output will\n\
+    be written to STDOUT."
+  args: !SimpleFlagArg
+    name: or
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Display this helpful text.
+  args: !SimpleFlagArg
+    name: or
+usage_flag:
+version_flag:
+help_text: "\n ------------------------------------------------------------------------------\n\
+  |   Another GFF Analysis Toolkit (AGAT) - Version: v0.6.0                      |\n\
+  |   https://github.com/NBISweden/AGAT                                          |\n\
+  |   National Bioinformatics Infrastructure Sweden (NBIS) - www.nbis.se         |\n\
+  \ ------------------------------------------------------------------------------\n\
+  \n\nName:\n    agat_convert_genscan2gff.pl\n\nDescription:\n    The script takes\
+  \ a genscan file as input, and will translate it in gff\n    format. The genscan\
+  \ format is described here:\n    http://genome.crg.es/courses/Bioinformatics2003_genefinding/results/gens\n\
+  \    can.html /!\\ vvv Known problem vvv /!\\ You must have submited only DNA\n\
+  \    sequence, wihtout any header!! Indeed the tool expects only DNA\n    sequences\
+  \ and does not crash/warn if an header is submited along the\n    sequence. e.g\
+  \ If you have an header \">seq\" s-e-q are seen as the 3 first\n    nucleotides\
+  \ of the sequence. Then all prediction location are shifted\n    accordingly. (checked\
+  \ only on the online version\n    http://argonaute.mit.edu/GENSCAN.html. I don't\
+  \ know if there is the same\n    pronlem elsewhere.) /!\\ ^^^ Known problem ^^^^\
+  \ /!\\\n\nUsage:\n        agat_convert_genscan2gff.pl --genscan infile.bed [ -o\
+  \ outfile ]\n        agat_convert_genscan2gff.pl -h\n\nOptions:\n    --genscan or\
+  \ -g\n            Input bed file that will be convert.\n\n    --source\n       \
+  \     The source informs about the tool used to produce the data and\n         \
+  \   is stored in 2nd field of a gff file. Example:\n            Stringtie,Maker,Augustus,etc.\
+  \ [default: data]\n\n    --primary_tag\n            The primary_tag corresponf to\
+  \ the data type and is stored in 3rd\n            field of a gff file. Example:\
+  \ gene,mRNA,CDS,etc. [default: gene]\n\n    --inflate_off\n            By default\
+  \ we inflate the block fields (blockCount, blockSizes,\n            blockStarts)\
+  \ to create subfeatures of the main feature\n            (primary_tag). Type of\
+  \ subfeature created based on the\n            inflate_type parameter. If you don't\
+  \ want this inflating\n            behaviour you can deactivate it by using the\
+  \ option\n            --inflate_off.\n\n    --inflate_type\n            Feature\
+  \ type (3rd column in gff) created when inflate parameter\n            activated\
+  \ [default: exon].\n\n    --verbose\n            add verbosity\n\n    -o , --output\
+  \ , --out , --outfile or --gff\n            Output GFF file. If no output file is\
+  \ specified, the output will\n            be written to STDOUT.\n\n    -h or --help\n\
+  \            Display this helpful text.\n\nFeedback:\n  Did you find a bug?:\n \
+  \   Do not hesitate to report bugs to help us keep track of the bugs and\n    their\
+  \ resolution. Please use the GitHub issue tracking system available\n    at this\
+  \ address:\n\n                https://github.com/NBISweden/AGAT/issues\n\n     Ensure\
+  \ that the bug was not already reported by searching under Issues.\n     If you're\
+  \ unable to find an (open) issue addressing the problem, open a new one.\n     Try\
+  \ as much as possible to include in the issue when relevant:\n     - a clear description,\n\
+  \     - as much relevant information as possible,\n     - the command used,\n  \
+  \   - a data sample,\n     - an explanation of the expected behaviour that is not\
+  \ occurring.\n\n  Do you want to contribute?:\n    You are very welcome, visit this\
+  \ address for the Contributing\n    guidelines:\n    https://github.com/NBISweden/AGAT/blob/master/CONTRIBUTING.md\n\
+  \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/agat:0.6.0--pl526r35_0

@@ -1,0 +1,136 @@
+!Command
+command:
+- leviosam
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: lift
+  description: ''
+- !Positional
+  optional: false
+  position: 0
+  name: serialize
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: Build a leviosam index using a VCF file.
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: The sample used to build leviosam index (-v needs to be set).
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: The prefix of the output file.
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -O
+  description: Output file format, can be sam or bam. [sam]
+  args: !SimpleFlagArg
+    name: format
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  description: /1    The haplotype used to index leviosam. [0]
+  args: !SimpleFlagArg
+    name: '0'
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: "Path to a name map file.\nThis can be used to map '1' to 'chr1', or\
+    \ vice versa."
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  description: Path to a length map file.
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  description: "Path to the SAM/BAM file to be lifted.\nLeave empty or set to \"-\"\
+    \ to read from stdin."
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: Path to a leviosam index.
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: Number of threads used. [1]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  description: "Chunk size for each thread. [256]\nEach thread queries <-T> reads,\
+    \ lifts, and writes.\nSetting a higher <-T> uses slightly more memory but might\
+    \ benefit thread scaling."
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: add MD and NM to output alignment records (requires -f option)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: Fasta reference that corresponds to input SAM/BAM (for use w/ -m option)
+  args: !SimpleFlagArg
+    name: string
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nUsage:   leviosam serialize [options]\nOptions:\n         -v string\
+  \ Build a leviosam index using a VCF file.\n         -s string The sample used to\
+  \ build leviosam index (-v needs to be set).\n         -p string The prefix of the\
+  \ output file.\n         -O format Output file format, can be sam or bam. [sam]\n\
+  \         -g 0/1    The haplotype used to index leviosam. [0] \n         -n string\
+  \ Path to a name map file.\n                   This can be used to map '1' to 'chr1',\
+  \ or vice versa.\n         -k string Path to a length map file.\n\n\nUsage:   leviosam\
+  \ lift [options]\nOptions:\n         -a string Path to the SAM/BAM file to be lifted.\
+  \ \n                   Leave empty or set to \"-\" to read from stdin.\n       \
+  \  -l string Path to a leviosam index.\n         -v string If -l is not specified,\
+  \ can build indexes using a VCF file.\n         -t INT    Number of threads used.\
+  \ [1] \n         -T INT    Chunk size for each thread. [256] \n                \
+  \   Each thread queries <-T> reads, lifts, and writes.\n                   Setting\
+  \ a higher <-T> uses slightly more memory but might benefit thread scaling.\n  \
+  \       -m        add MD and NM to output alignment records (requires -f option)\n\
+  \         -f string Fasta reference that corresponds to input SAM/BAM (for use w/\
+  \ -m option)\n         The options for serialize can also be used here, if -v is\
+  \ set.\n\n"
+generated_using:
+- -h
+docker_image: quay.io/biocontainers/leviosam:3.1.1--hc9558a2_0

@@ -1,0 +1,77 @@
+!Command
+command:
+- create_sampleSheet.sh
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --mode
+  description: ': Choose mode from illumina, ncbi, flex, assembly  (default: illumina)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --fastxDir
+  description: ': Path to existing directory containing the fastq or fasta files (default:
+    /)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --outDir
+  description: ': Path to existing outDir (default: fastxDir)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --nocheck
+  description: ': Do not check consistency of sample sheet'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --interactive
+  description: ': Ask before starting the program'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --force
+  description: ': Overwrite existing samples.tsv files in OutDir'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dryrun
+  description: ': Perform a dry-run'
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: ': Display this help message'
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "You called the script create_sampleSheet.sh (version 0.4.1). Purpose:\
+  \ Create sample sheet for all fastq files in a specified folder\n\n=============================\n\
+  Call: create_sampleSheet.sh --mode {illumina, trimmed, ncbi, flex, assembly} --fastxDir\
+  \ path/fastq/dir --outDir path/out/dir [Options]\n--mode: Choose mode from illumina,\
+  \ ncbi, flex, assembly  (default: illumina)\n--fastxDir: Path to existing directory\
+  \ containing the fastq or fasta files (default: /)\n--outDir: Path to existing outDir\
+  \ (default: fastxDir)\n\nOptions:\n--nocheck: Do not check consistency of sample\
+  \ sheet\n--interactive: Ask before starting the program\n--force: Overwrite existing\
+  \ samples.tsv files in OutDir\n--help: Display this help message\n--dryrun: Perform\
+  \ a dry-run\n\nDetails about --mode parameters\nillumina: samples are in illumina\
+  \ format: {samplename}_S*_R{1,2}_001.fastq*\nncbi: samples are in ncbi format: {samplename}_{1,2}.fastq.gz\n\
+  flex: samples are in the following format: {samplename}*_R{1,2}*.fastq*. The sample\
+  \ name is cut after the first \"_\". If your sample name contains \"_\" the sample\
+  \ name will be cropped!\nassembly: samples are in format {samplename}.fasta Note\
+  \ that currently only the extension \".fasta\" is supported\n\n=============================\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/aquamis:1.3.4--0
