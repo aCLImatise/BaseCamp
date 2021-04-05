@@ -1,0 +1,217 @@
+!Command
+command:
+- agat_convert_sp_gxf2gxf.pl
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: agat_convert_sp_gxf2gxf.pl
+  description: 'Description:'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --gff
+  - -ref
+  description: Input GTF/GFF file.
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --ct
+  description: "When the features do not have Parent/ID relationships, the\nparser\
+    \ will try to group features using a common/shared\nattribute (i.e. a locus tag.).\
+    \ By default locus_tag and gene_id.\nYou can replace the default common/shared\
+    \ attributes by\nproviding your own(s) using this option. Use comma separated\n\
+    list when providing several."
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - --efl
+  - --expose
+  description: "If you want to see, add or modified the feature relationships\nyou\
+    \ will have to use this option. It will copy past in you\nworking directory the\
+    \ json files used to define the relation\nbetween feature types and their level\
+    \ organisation. Typical\nlevel organisation: Level1 => gene; Level2 => mRNA; level3\
+    \ =>\nexon,cds,utrs If you get warning from the Omniscient parser that\na feature\
+    \ relationship is not defined, you can provide\ninformation about it within the\
+    \ exposed json files. Indeed, if\nthe json files exists in your working directory,\
+    \ they will be\nused by default."
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - --ml
+  - --merge_loci
+  description: "Merge loci parameter, default deactivated. You turn on the\nparameter\
+    \ if you want to merge loci into one locus when they\noverlap. (at CDS level for\
+    \ mRNA, at exon level for other level2\nfeatures. Strand has to be the same).\
+    \ Prokaryote can have\noverlaping loci so it should not use it for prokaryote\n\
+    annotation. In eukaryote, loci rarely overlap. Overlaps could be\ndue to error\
+    \ in the file, mRNA can be merged under the same\nparent gene if you acticate\
+    \ the option."
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: "Verbose option. To modify verbosity. Default is 1. 0 is quiet, 2\n\
+    and 3 are increasing verbosity."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --nc
+  - --no_check
+  description: "To deacticate all check that can be performed by the parser (e.g\n\
+    fixing UTR, exon, coordinates etc...)"
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: debug purpose
+  args: !SimpleFlagArg
+    name: For
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: "Output GFF file. If no output file is specified, the output will\n\
+    be written to STDOUT."
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - --gvi
+  - --gff_version_input
+  description: "If you don't want to use the autodection of the gff/gft version\n\
+    you give as input, you can force the tool to use the parser of\nthe gff version\
+    \ you decide to use: 1,2,2.5 or 3. Remind: 2.5 is\nsuposed to be gtf."
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - --gvo
+  - --gff_version_output
+  description: "If you don't want to use the autodection of the gff/gft version\n\
+    you give as input, you can force the tool to use the parser of\nthe gff version\
+    \ you decide to use: 1,2,2.5 or 3. Remind: 2.5 is\nsuposed to be gtf."
+  args: !SimpleFlagArg
+    name: or
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Display this helpful text.
+  args: !SimpleFlagArg
+    name: or
+usage_flag:
+version_flag:
+help_text: "\n ------------------------------------------------------------------------------\n\
+  |   Another GFF Analysis Toolkit (AGAT) - Version: v0.6.0                      |\n\
+  |   https://github.com/NBISweden/AGAT                                          |\n\
+  |   National Bioinformatics Infrastructure Sweden (NBIS) - www.nbis.se         |\n\
+  \ ------------------------------------------------------------------------------\n\
+  \n\nName:\n    agat_convert_sp_gxf2gxf.pl\n\nDescription:\n    This script fixes\
+  \ and/or standardizes any GTF/GFF file into full sorted\n    GFF3 file. The output\
+  \ GFF syntax is shaped by bioperl and choose among\n    the versions 1,2,2.5 (GTF\
+  \ equivalent) and 3. For a correct GTF file it\n    is recommended to use agat_convert_sp_gff2gtf.pl\n\
+  \n    Without specifying an input GTF/GFF version, the Omniscient parser will\n\
+  \    first detect automtically the most appropriate GFF parser to use from\n   \
+  \ bioperl (GFF1,GFF2,GFF3) in order to read you file properly. Then the\n    Omniscient\
+  \ parser removes duplicate features, fixes duplicated IDs, adds\n    missing ID\
+  \ and/or Parent attributes, deflates factorized attributes\n    (attributes with\
+  \ several parents are duplicated with uniq ID), add\n    missing features when possible\
+  \ (e.g add exon if only CDS described, add\n    UTR if CDS and exon described),\
+  \ fix feature locations (e.g check exon is\n    embeded in th parent features mRNA,\
+  \ gene), etc... All AGAT's scripts\n    with the _sp_ prefix use the same parser,\
+  \ before to perform suplement\n    tasks. whith the script you can tuned the Omniscient\
+  \ parser behaviour.\n    I.e you can decide to merge loci that have an overlap at\
+  \ their CDS\n    features ( Only one top feature is kept (gene), and the mRNA features\n\
+  \    become isoforms). This is not activated by default in case you are\n    working\
+  \ on a prokaryote annotation that often have overlaping loci. The\n    Omniscient\
+  \ parser defines relationship between features using 3 levels.\n    e.g Level1=gene;\
+  \ Level2=mRNA,tRNA; Level3=exon,cds,utr. The feature type\n    information is stored\
+  \ within the 3rd column of a GTF/GFF file. Which\n    level a feature is part of\
+  \ is crucial for the parser. This information\n    is stored by default in a json\
+  \ file coming with the tool. We have\n    implemented the most common feature types\
+  \ met in gff. If a feature type\n    in your file is not imprelement the parser\
+  \ will not handle it and inform\n    you. You could easily inform the parser how\
+  \ to handle it (level1,level2\n    or level3) by adding it in the corresponding\
+  \ file. How to access the\n    json files? Easy just use the --expose option and\
+  \ the json files will\n    appear in the workoing folder. If they are present, the\
+  \ Omniscient\n    parser use the json files from the working direcrtory by default.\n\
+  \n    Omniscient parser phylosophy:\n\n     Parse by Parent/child relationship\n\
+  \       ELSE Parse by a comomn tag  (an attribute value shared by feature that must\
+  \ be grouped together.\n            By default we are using locus_tag and gene_id\
+  \ as locus tag, but you can specify the one of your choice\n         ELSE Parse\
+  \ sequentially (features are grouped in a bucket, and the bucket change at each\
+  \ level2 feature met, and bucket(s) are linked to the first l1 top feature met)\n\
+  \nUsage:\n        agat_convert_sp_gxf2gxf.pl -g infile.gff [ -o outfile ]\n    \
+  \    agat_convert_sp_gxf2gxf.pl --help\n\nOptions:\n    -g, --gff or -ref\n    \
+  \        Input GTF/GFF file.\n\n    -c or --ct\n            When the features do\
+  \ not have Parent/ID relationships, the\n            parser will try to group features\
+  \ using a common/shared\n            attribute (i.e. a locus tag.). By default locus_tag\
+  \ and gene_id.\n            You can replace the default common/shared attributes\
+  \ by\n            providing your own(s) using this option. Use comma separated\n\
+  \            list when providing several.\n\n    --efl or --expose\n           \
+  \ If you want to see, add or modified the feature relationships\n            you\
+  \ will have to use this option. It will copy past in you\n            working directory\
+  \ the json files used to define the relation\n            between feature types\
+  \ and their level organisation. Typical\n            level organisation: Level1\
+  \ => gene; Level2 => mRNA; level3 =>\n            exon,cds,utrs If you get warning\
+  \ from the Omniscient parser that\n            a feature relationship is not defined,\
+  \ you can provide\n            information about it within the exposed json files.\
+  \ Indeed, if\n            the json files exists in your working directory, they\
+  \ will be\n            used by default.\n\n    --ml or --merge_loci\n          \
+  \  Merge loci parameter, default deactivated. You turn on the\n            parameter\
+  \ if you want to merge loci into one locus when they\n            overlap. (at CDS\
+  \ level for mRNA, at exon level for other level2\n            features. Strand has\
+  \ to be the same). Prokaryote can have\n            overlaping loci so it should\
+  \ not use it for prokaryote\n            annotation. In eukaryote, loci rarely overlap.\
+  \ Overlaps could be\n            due to error in the file, mRNA can be merged under\
+  \ the same\n            parent gene if you acticate the option.\n\n    -v      Verbose\
+  \ option. To modify verbosity. Default is 1. 0 is quiet, 2\n            and 3 are\
+  \ increasing verbosity.\n\n    --nc or --no_check\n            To deacticate all\
+  \ check that can be performed by the parser (e.g\n            fixing UTR, exon,\
+  \ coordinates etc...)\n\n    --debug For debug purpose\n\n    -o or --output\n \
+  \           Output GFF file. If no output file is specified, the output will\n \
+  \           be written to STDOUT.\n\n    --gvi or --gff_version_input\n        \
+  \    If you don't want to use the autodection of the gff/gft version\n         \
+  \   you give as input, you can force the tool to use the parser of\n           \
+  \ the gff version you decide to use: 1,2,2.5 or 3. Remind: 2.5 is\n            suposed\
+  \ to be gtf.\n\n    --gvo or --gff_version_output\n            If you don't want\
+  \ to use the autodection of the gff/gft version\n            you give as input,\
+  \ you can force the tool to use the parser of\n            the gff version you decide\
+  \ to use: 1,2,2.5 or 3. Remind: 2.5 is\n            suposed to be gtf.\n\n    -h\
+  \ or --help\n            Display this helpful text.\n\nFeedback:\n  Did you find\
+  \ a bug?:\n    Do not hesitate to report bugs to help us keep track of the bugs\
+  \ and\n    their resolution. Please use the GitHub issue tracking system available\n\
+  \    at this address:\n\n                https://github.com/NBISweden/AGAT/issues\n\
+  \n     Ensure that the bug was not already reported by searching under Issues.\n\
+  \     If you're unable to find an (open) issue addressing the problem, open a new\
+  \ one.\n     Try as much as possible to include in the issue when relevant:\n  \
+  \   - a clear description,\n     - as much relevant information as possible,\n \
+  \    - the command used,\n     - a data sample,\n     - an explanation of the expected\
+  \ behaviour that is not occurring.\n\n  Do you want to contribute?:\n    You are\
+  \ very welcome, visit this address for the Contributing\n    guidelines:\n    https://github.com/NBISweden/AGAT/blob/master/CONTRIBUTING.md\n\
+  \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/agat:0.6.0--pl526r35_0

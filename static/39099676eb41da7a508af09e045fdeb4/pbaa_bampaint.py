@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, String, File
+
+Pbaa_Bampaint_V0_1_0 = CommandToolBuilder(tool="pbaa_bampaint", base_command=["pbaa", "bampaint"], inputs=[ToolInput(tag="in_num_threads", input_type=Boolean(optional=True), prefix="--num-threads", doc=InputDocumentation(doc="INT   Number of threads to use, 0 means autodetection. [0]")), ToolInput(tag="in_log_level", input_type=Boolean(optional=True), prefix="--log-level", doc=InputDocumentation(doc="STR   Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL). [WARN]")), ToolInput(tag="in_log_file", input_type=Boolean(optional=True), prefix="--log-file", doc=InputDocumentation(doc="FILE  Log to a file, instead of stderr.")), ToolInput(tag="in_input", input_type=String(), position=0, doc=InputDocumentation(doc="")), ToolInput(tag="in_var_4", input_type=String(), position=0, doc=InputDocumentation(doc="")), ToolInput(tag="in_var_5", input_type=String(), position=0, doc=InputDocumentation(doc="")), ToolInput(tag="in_read_info_file", input_type=File(), position=0, doc=InputDocumentation(doc="")), ToolInput(tag="in_var_7", input_type=String(), position=1, doc=InputDocumentation(doc="")), ToolInput(tag="in_info", input_type=String(), position=1, doc=InputDocumentation(doc="")), ToolInput(tag="in_input_bam", input_type=String(), position=1, doc=InputDocumentation(doc="")), ToolInput(tag="in_var_10", input_type=File(), position=2, doc=InputDocumentation(doc="")), ToolInput(tag="in_var_11", input_type=String(), position=3, doc=InputDocumentation(doc="")), ToolInput(tag="in_var_12", input_type=File(), position=3, doc=InputDocumentation(doc="")), ToolInput(tag="in_var_13", input_type=String(), position=3, doc=InputDocumentation(doc="")), ToolInput(tag="in_var_14", input_type=String(), position=4, doc=InputDocumentation(doc="")), ToolInput(tag="in_information", input_type=String(), position=5, doc=InputDocumentation(doc="")), ToolInput(tag="in_to", input_type=String(), position=5, doc=InputDocumentation(doc="")), ToolInput(tag="in_add", input_type=String(), position=6, doc=InputDocumentation(doc="")), ToolInput(tag="in_color", input_type=String(), position=7, doc=InputDocumentation(doc="")), ToolInput(tag="in_produced", input_type=String(), position=7, doc=InputDocumentation(doc="")), ToolInput(tag="in_by", input_type=String(), position=8, doc=InputDocumentation(doc="")), ToolInput(tag="in_pba_a", input_type=String(), position=9, doc=InputDocumentation(doc=""))], outputs=[], container="quay.io/biocontainers/pbaa:0.1.4--0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Pbaa_Bampaint_V0_1_0().translate("wdl")
+

@@ -1,0 +1,13 @@
+class: CommandLineTool
+id: is_analysis.py.cwl
+inputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+hints:
+- class: DockerRequirement
+  dockerPull: quay.io/biocontainers/isescan:1.7.2.2.2--h516909a_0
+cwlVersion: v1.1
+baseCommand:
+- is_analysis.py

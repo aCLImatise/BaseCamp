@@ -1,0 +1,112 @@
+!Command
+command:
+- taxon_filter.py
+- partition_bmtagger
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: inFastq1
+  description: Input fastq file; 1st end of paired-end reads.
+- !Positional
+  optional: false
+  position: 1
+  name: inFastq2
+  description: "Input fastq file; 2nd end of paired-end reads. Must\nhave same names\
+    \ as inFastq1"
+- !Positional
+  optional: false
+  position: 2
+  name: refDbs
+  description: "Reference databases (one or more) to deplete from\ninput. For each\
+    \ db, requires prior creation of\ndb.bitmask by bmtool, and db.srprism.idx,\n\
+    db.srprism.map, etc. by srprism mkindex."
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --outMatch
+  description: "OUTMATCH\nFilenames for fastq output of matching reads."
+  args: !SimpleFlagArg
+    name: OUTMATCH
+- !Flag
+  optional: true
+  synonyms:
+  - --outNoMatch
+  description: "OUTNOMATCH\nFilenames for fastq output of unmatched reads."
+  args: !SimpleFlagArg
+    name: OUTNOMATCH
+- !Flag
+  optional: true
+  synonyms:
+  - --loglevel
+  description: 'Verboseness of output. [default: DEBUG]'
+  args: !ChoiceFlagArg
+    choices: !!set
+      INFO:
+      DEBUG:
+      CRITICAL:
+      WARNING:
+      ERROR:
+      EXCEPTION:
+- !Flag
+  optional: true
+  synonyms:
+  - --tmp_dir
+  description: 'Base directory for temp files. [default: /tmp]'
+  args: !SimpleFlagArg
+    name: TMP_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --tmp_dirKeep
+  description: "Keep the tmp_dir if an exception occurs while running.\nDefault is\
+    \ to delete all temp files at the end, even\nif there's a failure.\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  - -V
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: taxon_filter.py subcommand partition_bmtagger [-h]\n          \
+  \                                           [--outMatch OUTMATCH OUTMATCH]\n   \
+  \                                                  [--outNoMatch OUTNOMATCH OUTNOMATCH]\n\
+  \                                                     [--loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}]\n\
+  \                                                     [--version]\n            \
+  \                                         [--tmp_dir TMP_DIR]\n                \
+  \                                     [--tmp_dirKeep]\n                        \
+  \                             inFastq1 inFastq2 refDbs\n                       \
+  \                              [refDbs ...]\n\nUse bmtagger to partition input reads\
+  \ into ones that match at least one of\nseveral databases and ones that don't match\
+  \ any of the databases.\n\npositional arguments:\n  inFastq1              Input\
+  \ fastq file; 1st end of paired-end reads.\n  inFastq2              Input fastq\
+  \ file; 2nd end of paired-end reads. Must\n                        have same names\
+  \ as inFastq1\n  refDbs                Reference databases (one or more) to deplete\
+  \ from\n                        input. For each db, requires prior creation of\n\
+  \                        db.bitmask by bmtool, and db.srprism.idx,\n           \
+  \             db.srprism.map, etc. by srprism mkindex.\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  --outMatch OUTMATCH\
+  \ OUTMATCH\n                        Filenames for fastq output of matching reads.\n\
+  \  --outNoMatch OUTNOMATCH OUTNOMATCH\n                        Filenames for fastq\
+  \ output of unmatched reads.\n  --loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}\n\
+  \                        Verboseness of output. [default: DEBUG]\n  --version, -V\
+  \         show program's version number and exit\n  --tmp_dir TMP_DIR     Base directory\
+  \ for temp files. [default: /tmp]\n  --tmp_dirKeep         Keep the tmp_dir if an\
+  \ exception occurs while running.\n                        Default is to delete\
+  \ all temp files at the end, even\n                        if there's a failure.\n"
+generated_using:
+- --help
+docker_image:

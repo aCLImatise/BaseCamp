@@ -1,0 +1,101 @@
+!Command
+command:
+- rbt
+- csv-report
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: csv-path
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --formatter
+  description: "Configure a custom formatter function for each column by providing\
+    \ a file\ncontaining a javascript object with csv column title as the key and\
+    \ a format\nfunction as the value. More information on the formatting functions\
+    \ and how\nto use them here: https://bootstrap-table.com/docs/api/column-\noptions/#formatter"
+  args: !SimpleFlagArg
+    name: formatter
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --rows-per-page
+  description: "Sets the numbers of rows of each table per page. Default is 100 [default:\n\
+    100]"
+  args: !SimpleFlagArg
+    name: rows-per-page
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --separator
+  description: "Change the separator of the csv file to tab or anything else. Default\
+    \ is \",\"\n[default: ,]"
+  args: !SimpleFlagArg
+    name: separator
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --sort-column
+  description: Column that the data should be sorted by
+  args: !SimpleFlagArg
+    name: sort-column
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --sort-order
+  description: "Order the data ascending or descending. Default is descending [default:\n\
+    descending]  [possible values: ascending, descending]"
+  args: !SimpleFlagArg
+    name: sort-order
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Prints help information
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Prints version information
+  args: !EmptyFlagArg {}
+help_text: "rbt-csv-report 0.20.2\nFelix Wiegand <felix.wiegand@tu-dortmund.de>\n\
+  Creates report from a given csv file containing a table with the given data Examples:\
+  \ With current directory as default\nouput path: rbt csv-report path/to/table.csv\
+  \ --rows-per-page 100 --sort-column \"p-value\" --sort-order ascending\n\nUSAGE:\n\
+  \    rbt csv-report [OPTIONS] <csv-path> [output-path]\n\nFLAGS:\n    -h, --help\
+  \       Prints help information\n    -V, --version    Prints version information\n\
+  \nOPTIONS:\n    -f, --formatter <formatter>            Configure a custom formatter\
+  \ function for each column by providing a file\n                               \
+  \            containing a javascript object with csv column title as the key and\
+  \ a format\n                                           function as the value. More\
+  \ information on the formatting functions and how\n                            \
+  \               to use them here: https://bootstrap-table.com/docs/api/column-\n\
+  \                                           options/#formatter\n    -r, --rows-per-page\
+  \ <rows-per-page>    Sets the numbers of rows of each table per page. Default is\
+  \ 100 [default:\n                                           100]\n    -s, --separator\
+  \ <separator>            Change the separator of the csv file to tab or anything\
+  \ else. Default is \",\"\n                                           [default: ,]\n\
+  \    -c, --sort-column <sort-column>        Column that the data should be sorted\
+  \ by\n    -o, --sort-order <sort-order>          Order the data ascending or descending.\
+  \ Default is descending [default:\n                                           descending]\
+  \  [possible values: ascending, descending]\n\nARGS:\n    <csv-path>       CSV file\
+  \ including the data for the report\n    <output-path>    Relative output path for\
+  \ the report files. Default value is the current directory [default: .]\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/rust-bio-tools:0.20.2--heda7bfa_0

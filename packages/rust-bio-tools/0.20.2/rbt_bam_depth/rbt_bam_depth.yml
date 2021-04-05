@@ -1,0 +1,80 @@
+!Command
+command:
+- rbt
+- bam-depth
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --excl-flags
+  description: 'Skip reads with mask bits set [UNMAP, SECONDARY, QCFAIL, DUP] [default:
+    1796]'
+  args: !SimpleFlagArg
+    name: exclude-flags
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --incl-flags
+  description: 'Skip reads with mask bits unset [] [default: 0]'
+  args: !SimpleFlagArg
+    name: include-flags
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --max-read-length
+  description: "Maximum read length to consider. This affects the speed of the involved\
+    \ pileup. Reads longer than this\nlength can be missed when calculating the depth\
+    \ [default: 1000]"
+  args: !SimpleFlagArg
+    name: max-read-length
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --min-mapq
+  description: 'Minimum mapping quality [default: 0]'
+  args: !SimpleFlagArg
+    name: min-mapq
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Prints help information
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Prints version information
+  args: !EmptyFlagArg {}
+help_text: "rbt-bam-depth 0.20.2\nJohannes Köster <johannes.koester@tu-dortmund.de>\n\
+  Print depth of BAM or CRAM file at given positions from STDIN (tab separated: chrom,\
+  \ pos).\n\nUsage: $ rbt bam-depth test.bam < pos.txt > depth.txt\n\nThe positions\
+  \ file contains the name of one reference sequence and one position per line (tab\
+  \ separated). Example:\n\n16    1 17    38 17    39\n\nDepths are written to stdout\
+  \ as tab-separated lines, similar to the positions input. Example:\n\n16    1  \
+  \  0 17    38    14 17    39    13\n\nUSAGE:\n    rbt bam-depth [OPTIONS] <bam-path>\n\
+  \nFLAGS:\n    -h, --help       \n            Prints help information\n\n    -V,\
+  \ --version    \n            Prints version information\n\n\nOPTIONS:\n    -e, --excl-flags\
+  \ <exclude-flags>           \n            Skip reads with mask bits set [UNMAP,\
+  \ SECONDARY, QCFAIL, DUP] [default: 1796]\n\n    -i, --incl-flags <include-flags>\
+  \           \n            Skip reads with mask bits unset [] [default: 0]\n\n  \
+  \  -m, --max-read-length <max-read-length>    \n            Maximum read length\
+  \ to consider. This affects the speed of the involved pileup. Reads longer than\
+  \ this\n            length can be missed when calculating the depth [default: 1000]\n\
+  \    -q, --min-mapq <min-mapq>                  \n            Minimum mapping quality\
+  \ [default: 0]\n\n\nARGS:\n    <bam-path>    \n            Path to indexed BAM file\n\
+  \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/rust-bio-tools:0.20.2--heda7bfa_0

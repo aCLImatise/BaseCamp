@@ -1,0 +1,87 @@
+!Command
+command:
+- AnnotateInsertedSequence
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: program
+  description: ''
+- !Positional
+  optional: true
+  position: 1
+  name: options...
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --stdhelp
+  - -H
+  description: "Displays options specific to this tool AND options common to all Picard\
+    \ command line\ntools."
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: Displays options specific to this tool.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Displays program version.
+  args: !EmptyFlagArg {}
+help_text: "USAGE: AnnotateInsertedSequence [options]\n\nUsage: program [options...]\n\
+  \nVersion: 2.11.0-gridss\n\n\nOptions:\n\n--help\n-h                           \
+  \ Displays options specific to this tool.\n\n--stdhelp\n-H                     \
+  \       Displays options specific to this tool AND options common to all Picard\
+  \ command line\n                              tools.\n\n--version              \
+  \       Displays program version.\n\nWORKER_THREADS=Integer\nTHREADS=Integer   \
+  \            Number of worker threads to spawn. Defaults to number of cores available.\
+  \ Note that I/O\n                              threads are not included in this\
+  \ worker thread count so CPU usage can be higher than the\n                    \
+  \          number of worker thread.  Default value: 2. This option can be set to\
+  \ 'null' to clear the\n                              default value. \n\nINPUT=File\n\
+  I=File                        VCF file to annotate  Required. \n\nOUTPUT=File\n\
+  O=File                        Annotated VCF file  Required. \n\nMIN_SEQUENCE_LENGTH=Integer\
+  \   Minimum inserted sequence length for realignment. Generally, short read aligners\
+  \ are not\n                              able to uniquely align sequences shorter\
+  \ than 18-20 bases.  Default value: 20. This option\n                          \
+  \    can be set to 'null' to clear the default value. \n\nALIGNER_COMMAND_LINE=String\
+  \   Command line arguments to run external aligner. In-process bwa alignment is\
+  \ used if this\n                              value is null. Aligner output must\
+  \ be written to stdout and the records MUST match the\n                        \
+  \      input fastq order. The aligner must support using \"-\" as the input filename\
+  \ when reading\n                              from stdin.Java argument formatting\
+  \ is used with %1$s being the fastq file to align, %2$s\n                      \
+  \        the reference genome, and %3$d the number of threads to use.  Default value:\
+  \ null. This\n                              option may be specified 0 or more times.\
+  \ \n\nALIGNER_BATCH_SIZE=Integer    Number of records to buffer when performing\
+  \ in-process or streaming alignment. Not\n                              applicable\
+  \ when performing external alignment.  Default value: 500000. This option can be\n\
+  \                              set to 'null' to clear the default value. \n\nALIGNMENT=AlignmentStatus\
+  \     Whether to align inserted sequences to REFERENCE_GENOME. Valid values are:APPEND\
+  \ (Append\n                              alignments to REFERENCE_GENOME to the BEALN\
+  \ field), REPLACE (Replace all BEALN fields) \n                              (default),ADD_MISSING\
+  \ (Add alignments to records missing a BEALN field, andSKIP (do not\n          \
+  \                    align).  Default value: REPLACE. This option can be set to\
+  \ 'null' to clear the default\n                              value. Possible values:\
+  \ {APPEND, REPLACE, ADD_MISSING, SKIP} \n\nREPEAT_MASKER_BED=File        Annotate\
+  \ inserted sequences with RepeatMasker annotations. Use bedops rmsk2bed to generate\n\
+  \                              the bed file from the RepeatMasker .fa.out file.\
+  \  Default value: null. \n\nWORKING_DIR=File              Directory to place intermediate\
+  \ results directories. Default location is the same\n                          \
+  \    directory as the associated input or output file.  Default value: null. \n\n\
+  IGNORE_DUPLICATES=Boolean     Ignore reads marked as duplicates.  Default value:\
+  \ true. This option can be set to 'null'\n                              to clear\
+  \ the default value. Possible values: {true, false} \n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/gridss:2.11.0--hdfd78af_1

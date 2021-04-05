@@ -1,0 +1,110 @@
+!Command
+command:
+- quality_trim.sh
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - '-1'
+  description: file (mandatory)
+  args: !SimpleFlagArg
+    name: R1
+- !Flag
+  optional: true
+  synonyms:
+  - '-2'
+  description: file (mandatory)
+  args: !SimpleFlagArg
+    name: R2
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: 'where trimmomatic is installed, default: /opt/Trimmomatic/'
+  args: !SimpleFlagArg
+    name: directory
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  description: 'to remove, default: TruSeq3-PE.fa'
+  args: !SimpleFlagArg
+    name: adapters
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: directory (optional)
+  args: !SimpleFlagArg
+    name: output
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: name
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: length of trimmed reads (default 40)
+  args: !SimpleFlagArg
+    name: minimus
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: name (mandatory)
+  args: !SimpleFlagArg
+    name: sample
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  description: name (optional). If unset, samples will be gathered in NO_GROUP group
+  args: !SimpleFlagArg
+    name: group
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  description: memmory (Gb), default 8
+  args: !SimpleFlagArg
+    name: RAM
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  description: ', default 1'
+  args: !SimpleFlagArg
+    name: threads
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - -h
+  description: usage message
+  args: !SimpleFlagArg
+    name: version
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nquality_trim script execute trimmomatic to filter by quality\n\nusage\
+  \ : /usr/local/bin/quality_trim.sh <-1 R1 file> <-2 R2 file> [-o <directory>] [-d\
+  \ <trimmomatic_directory>] <-s sample_name>\n\t\t[-a adapter_file] [-g group_name]\
+  \ [-f <file_name>] [-l <int>] [-M <int>] [-T <int>][-v] [-h]\n\n\t-1 R1 file (mandatory)\n\
+  \t-2 R2 file (mandatory)\n\t-d directory where trimmomatic is installed, default:\
+  \ /opt/Trimmomatic/\n\t-a adapters to remove, default: TruSeq3-PE.fa\n\t-o output\
+  \ directory (optional)\n\t-f file name\n\t-l minimus length of trimmed reads (default\
+  \ 40)\n\t-s sample name (mandatory)\n\t-g group name (optional). If unset, samples\
+  \ will be gathered in NO_GROUP group\n\t-M RAM memmory (Gb), default 8\n\t-T threads,\
+  \ default 1\n\t-v version\n\t-h display usage message\n\nexample: ./quality_trim.sh\
+  \ -1 ecoli_R1.fastq.gz -2 ecoli_R2.fastq.gz -s ECO232 -g ENTERO -T 8\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/plasmidid:1.6.4--1

@@ -1,0 +1,176 @@
+!Command
+command:
+- amptk
+- SRA-submit
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: arguments
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  description: Input FASTQ file or folder
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out
+  description: 'Output base name. Default: sra'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --mapping_file
+  description: QIIME-like mapping file.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --barcode_fasta
+  description: file containing barcodes used.
+  args: !SimpleFlagArg
+    name: Mulit-fasta
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --biosample
+  description: BioSample worksheet from NCBI (from confirmation email)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --platform
+  description: 'Sequencing platform. Defalt: ion (ion, illumina, illumina3, 454)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --names
+  description: CSV name mapping file, e.g. BC_1,NewName
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --description
+  description: Paragraph description for SRA experimental design. Use quotes to wrap
+    paragraph.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --fwd_primer
+  description: 'Forward primer sequence. Default: fITS7'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --rev_primer
+  description: 'Reverse primer sequence. Default: ITS4'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --append
+  description: Append a name to the output of all files in run, i.e. run1 -> Sample_run1
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --reads-forward
+  description: Input R1 reads (-p illumina3)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --reads-reverse
+  description: Input R2 reads (-p illumina3)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --reads-index
+  description: Input Index reads (-p illumina3)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --barcode_rev_comp
+  description: Barocdes reverse complemented (-p illumina3)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --primer_mismatch
+  description: 'Number of mismatches allowed in primer search. Default: 2'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --barcode_mismatch
+  description: 'Number of mismatches in barcode to allow. Default: 0'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --require_primer
+  description: 'Require primer(s) to be present for output. Default: off [off,forward,both]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min_len
+  description: Minimum length read to keep after trimming barcodes. Default 50
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nUsage:       amptk SRA-submit <arguments>\nversion:     1.5.2\n\nDescription:\
+  \ Script aids in submitted your data to NCBI Sequence Read Archive (SRA) by splitting\n\
+  \             FASTQ file from Ion, 454, or Illumina by barcode sequence into separate\
+  \ files for\n             submission to SRA.  This ensures your data is minimally\
+  \ processed as only barcodes\n             are removed.  However, you can assert\
+  \ that primers must be found in order for\n             sequences to be processed.\
+  \  Additionally, you can pass the --biosample argument\n             with an NCBI\
+  \ biosample tab-delimited file and the script will auto-populate an\n          \
+  \   SRA submission file.\n\nArguments:   -i, --input         Input FASTQ file or\
+  \ folder\n             -o, --out           Output base name. Default: sra\n    \
+  \         -m, --mapping_file  QIIME-like mapping file.\n             -b, --barcode_fasta\
+  \ Mulit-fasta file containing barcodes used.\n             -s, --biosample     BioSample\
+  \ worksheet from NCBI (from confirmation email)\n             -p, --platform   \
+  \   Sequencing platform. Defalt: ion (ion, illumina, illumina3, 454)\n         \
+  \    -n, --names         CSV name mapping file, e.g. BC_1,NewName\n            \
+  \ -d, --description   Paragraph description for SRA experimental design. Use quotes\
+  \ to wrap paragraph.\n             -f, --fwd_primer    Forward primer sequence.\
+  \ Default: fITS7\n             -r, --rev_primer    Reverse primer sequence. Default:\
+  \ ITS4\n             -a, --append        Append a name to the output of all files\
+  \ in run, i.e. run1 -> Sample_run1\n             --reads-forward     Input R1 reads\
+  \ (-p illumina3)\n             --reads-reverse     Input R2 reads (-p illumina3)\n\
+  \             --reads-index       Input Index reads (-p illumina3)\n           \
+  \  --barcode_rev_comp  Barocdes reverse complemented (-p illumina3)\n          \
+  \   --primer_mismatch   Number of mismatches allowed in primer search. Default:\
+  \ 2\n             --barcode_mismatch  Number of mismatches in barcode to allow.\
+  \ Default: 0\n             --require_primer    Require primer(s) to be present for\
+  \ output. Default: off [off,forward,both]\n             --min_len           Minimum\
+  \ length read to keep after trimming barcodes. Default 50\n             ---force\
+  \            Overwrite directory with same name\n        \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/amptk:1.5.2--py_0

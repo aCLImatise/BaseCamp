@@ -1,0 +1,48 @@
+class: CommandLineTool
+id: mpa.cwl
+inputs:
+- id: in_mpa_directory
+  doc: "The path to the MPA installation folder. [Default:\n/usr/local/bin]"
+  type: Directory?
+  inputBinding:
+    prefix: --mpa-directory
+- id: in_logging_level
+  doc: 'The logger level. [Default: INFO]'
+  type: string?
+  inputBinding:
+    prefix: --logging-level
+- id: in_no_refseq_version
+  doc: Annotation without using refseq version with annovar.
+  type: boolean?
+  inputBinding:
+    prefix: --no-refseq-version
+- id: in_no_progress_bar
+  doc: "Disable progress bar (avoid to read vcf twice for\nlarge vcf)."
+  type: boolean?
+  inputBinding:
+    prefix: --no-progress-bar
+- id: in_input
+  doc: "The vcf file to annotate (format: VCF). This vcf must\nbe annotate with annovar."
+  type: File?
+  inputBinding:
+    prefix: --input
+- id: in_output
+  doc: "The output vcf file with annotation (format : VCF)\n"
+  type: File?
+  inputBinding:
+    prefix: --output
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: "The output vcf file with annotation (format : VCF)\n"
+  type: File?
+  outputBinding:
+    glob: $(inputs.in_output)
+hints:
+- class: DockerRequirement
+  dockerPull: quay.io/biocontainers/mobidic-mpa:1.2.2--pyh3252c3a_0
+cwlVersion: v1.1
+baseCommand:
+- mpa

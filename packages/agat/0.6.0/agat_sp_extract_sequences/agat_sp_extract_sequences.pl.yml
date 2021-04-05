@@ -1,0 +1,340 @@
+!Command
+command:
+- agat_sp_extract_sequences.pl
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: agat_sp_extract_sequences.pl
+  description: 'Description:'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --split
+  description: "extract 5'UTR with introns: agat_sp_extract_sequences.pl -g"
+  args: !SimpleFlagArg
+    name: To
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --gff
+  - -ref
+  description: String - Input GTF/GFF file.
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --fasta
+  description: String - Input fasta file.
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - --dnrc
+  description: "Boolean - dnrc means `do not reverse complement`, by default the\n\
+    extrated sequence of a feature on the minus strand is reverse\ncomplemented. You\
+    \ can deactivate the behavior by using this\noption."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: "String - Define the feature you want to extract the sequence\nfrom.\
+    \ Default 'cds'. Most common choice are:\ngene,mrna,exon,cds,trna,three_prime_utr,five_prime_utr.\
+    \ When you\nchoose exon (or cds,utr,etc.), all the exons of a same parent\nfeature\
+    \ are attached together before to extract the sequence. If\nyou wish to extract\
+    \ each exon of an mRNA independently, see\noption --split. /!\\ `-t mRNA` will\
+    \ extract the features labeled\nas \"mRNA\" and corresponds to the cdna* because\
+    \ it contains the\nintrons if any. It does not actually extract the mRNAs as it\
+    \ is\ndefined biologicaly. To extract the mRNA as defined biologicaly\nyou must\
+    \ use `-t exon`. *Not a real cdna because it is not\nreversed"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --protein
+  - --aa
+  description: "Boolean - Will translate the extracted sequence in Amino acid.\nBy\
+    \ default the codon table used is the 1 (Standard). See --table\nparameter for\
+    \ more options."
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - --codon
+  - --table
+  - --ct
+  description: "Integer - Allow to choose the codon table for the translation.\n[default\
+    \ 1]"
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - --alternative_start_codon
+  - --asc
+  description: "Bolean - When activated it can affect the translation of the\nstart\
+    \ codon. Indeed alternative start codons exist, and are\ntranslated by the cells'machinery\
+    \ by a Methionine (M). By\ndefault AGAT translates the first codon as other codons\
+    \ by the\ncorresponding AA. If you wish to translate the first codon by a\nM when\
+    \ it is a valid alternative start codon, activate this\nparameter. If the sequence\
+    \ you try to translate is a CDS (or\nstarting by a CDS), the phase is checked\
+    \ and the alternative\nstart codon is accepted only if the phase is 0."
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - --eo
+  description: "Boolean - Called 'extremity only', this option will extract only\n\
+    the adjacent parts of a feature. This option has to be activated\nwith -u and/or\
+    \ -p option. /!\\ using -u and -p together builds a\nchimeric sequence which will\
+    \ be the concatenation of the left\nand right extremities of a feature."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --full
+  description: "Boolean - This option allows dealing with multifeature like cds\n\
+    or exon, to extract the full sequence from start extremity to\nthe end extremity,\
+    \ i.e with introns. The use of that option with\nexon feature will give the same\
+    \ result as extracting the mrna\nsequence (-t mRNA) and corresponds to the cdna*.\
+    \ (To actually\nextract an mRNA as it is defined biologicaly you need to use the\n\
+    `-t exon` option wihtout the --full option and wihtout the\n--split option) Use\
+    \ of that option on cds will give the cdna*\nwithout the untraslated regions (UTRs).\
+    \ *Not a real cdna because\nit is not reversed"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --up
+  - '-5'
+  - --five
+  - -upstream
+  description: "Integer - It will take that number of nucleotide in more at the\n\
+    5' extremity. /!\\ You must activate the option \"--full\" if you\nwish to extract\
+    \ only the most upstream part of certain features\n(exon,cds,utr) otherwise you\
+    \ will extract each upstream parts of\nthe subfeatures (e.g many cds parts may\
+    \ be needed to shape a cds\nin its whole)."
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - --do
+  - '-3'
+  - --three
+  - -down
+  - -downstream
+  description: "Integer - It will take that number of nucleotide in more at the\n\
+    3' extremity. /!\\ You must activate the option \"--full\" if you\nwith to extract\
+    \ only the most downstream part of certain feature\n(exon,cds,utr) otherwise you\
+    \ will extract each downstream parts\nof the subfeatures (e.g many cds parts may\
+    \ be needed to shape a\ncds in its whole)."
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - --cdna
+  description: "Boolean - This extract the cdna* sequence (i.e transcribed\nsequence\
+    \ (devoid of introns, but containing untranslated\nexons)). It corresponds to\
+    \ extract the exons sequences. *Not a\nreal cdna because it is not reversed"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ofs
+  description: "String - Output Fields Separator for the description field of\nthe\
+    \ header of the created fasta sequences. By default it's a\nspace < > but can\
+    \ be modified by any String or character using\nthis option."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --clean_internal_stop
+  - --cis
+  description: "Boolean - The Clean Internal Stop option allows replacing the\ntranslation\
+    \ of the stop codons present among the sequence that\nis represented by the <*>\
+    \ character by <X>. Indeed the <*>\ncharacter can be disturbing for many programs\
+    \ (e.g interproscan)"
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - --clean_final_stop
+  - --cfs
+  description: "Boolean - The Clean Final Stop option allows removing the\ntranslation\
+    \ of the final stop codons that is represented by the\n<*> character. This character\
+    \ can be disturbing for many\nprograms (e.g interproscan)"
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - --remove_orf_offset
+  - --roo
+  description: "Boolean - CDS can start with a phase different from 0 when a\ngene\
+    \ model is fragmented. When asking for protein translation\nthis (start) offset\
+    \ is trimmed out automatically. But when you\nextract CDS dna sequences, this\
+    \ (start) offset is not removed by\ndefault. To remove it activate this option.\
+    \ If --up or --do\noption are used too, the (start) offset is trimmed first, then\n\
+    is added the piece of sequence asked for."
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: "String - Output fasta file. If no output file is specified, the\n\
+    output will be written to STDOUT."
+  args: !SimpleFlagArg
+    name: or
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Boolean - Display this helpful text.
+  args: !SimpleFlagArg
+    name: or
+usage_flag:
+version_flag:
+help_text: "\n ------------------------------------------------------------------------------\n\
+  |   Another GFF Analysis Toolkit (AGAT) - Version: v0.6.0                      |\n\
+  |   https://github.com/NBISweden/AGAT                                          |\n\
+  |   National Bioinformatics Infrastructure Sweden (NBIS) - www.nbis.se         |\n\
+  \ ------------------------------------------------------------------------------\n\
+  \n\nName:\n    agat_sp_extract_sequences.pl\n\nDescription:\n    This script extracts\
+  \ sequences in fasta format according to features\n    described in a gff file.\
+  \ You can extract the fasta of any type of\n    feature. The feature type is defined\
+  \ within the 3rd column in the gff\n    file. The result is written to the specified\
+  \ output file, or to STDOUT.\n\n    The Header are formated like that: >ID gene=gene_ID\
+  \ name=NAME\n    seq_id=Chromosome_ID type=cds 5'extra=VALUE\n\n    The ID is the\
+  \ identifier of the feature (ID attribute in the 9th column.\n    If missing it\
+  \ is created by AGAT) The gene value will be the ID of the\n    level1 feature (the\
+  \ top feature of the record) The name value is\n    optional and will be written\
+  \ only if the Name attribute exists in the\n    gff. The seq_id value is the value\
+  \ from 1st column within the gff. The\n    type value holds the information of the\
+  \ feature type extracted. 5'extra\n    or 3'extra is optional, it holds the information\
+  \ of extra nucleotides\n    removed or added when using the downstream and/or upstream\
+  \ parameter.\n\n    The OFS of all values can be modified excepted for the ID (see\
+  \ --ofs\n    parameter). In such case the tool gives a warning.\n\n    Some examples:\
+  \ To extract the coding regions (same as using -t cds):\n    agat_sp_extract_sequences.pl\
+  \ -g infile.gff -f infile.fasta To extract\n    and translate the coding regions\
+  \ (same as using -t cds) :\n    agat_sp_extract_sequences.pl -g infile.gff -f infile.fasta\
+  \ -p To extract\n    the mRNA (biological definition): agat_sp_extract_sequences.pl\
+  \ -g\n    infile.gff -f infile.fasta -t exon To extract each exon independently:\n\
+  \    agat_sp_extract_sequences.pl -g infile.gff -f infile.fasta -t exon\n    --split\
+  \ To extract 5'UTR with introns: agat_sp_extract_sequences.pl -g\n    infile.gff\
+  \ -f infile.fasta -t \"5'UTR\" --full To extract 100nt upstream\n    region of a\
+  \ gene: agat_sp_extract_sequences.pl -g infile.gff -f\n    infile.fasta -t gene\
+  \ --upstream 100\n\n        agat_sp_extract_sequences.pl -g infile.gff -f infile.fasta\
+  \  [ -o outfile ]\n        agat_sp_extract_sequences.pl --help\n\nOptions:\n   \
+  \ -g, --gff or -ref\n            String - Input GTF/GFF file.\n\n    -f or --fasta\n\
+  \            String - Input fasta file.\n\n    --dnrc  Boolean - dnrc means `do\
+  \ not reverse complement`, by default the\n            extrated sequence of a feature\
+  \ on the minus strand is reverse\n            complemented. You can deactivate the\
+  \ behavior by using this\n            option.\n\n    -t      String - Define the\
+  \ feature you want to extract the sequence\n            from. Default 'cds'. Most\
+  \ common choice are:\n            gene,mrna,exon,cds,trna,three_prime_utr,five_prime_utr.\
+  \ When you\n            choose exon (or cds,utr,etc.), all the exons of a same parent\n\
+  \            feature are attached together before to extract the sequence. If\n\
+  \            you wish to extract each exon of an mRNA independently, see\n     \
+  \       option --split. /!\\ `-t mRNA` will extract the features labeled\n     \
+  \       as \"mRNA\" and corresponds to the cdna* because it contains the\n     \
+  \       introns if any. It does not actually extract the mRNAs as it is\n      \
+  \      defined biologicaly. To extract the mRNA as defined biologicaly\n       \
+  \     you must use `-t exon`. *Not a real cdna because it is not\n            reversed\n\
+  \n    -p, --protein or --aa\n            Boolean - Will translate the extracted\
+  \ sequence in Amino acid.\n            By default the codon table used is the 1\
+  \ (Standard). See --table\n            parameter for more options.\n\n    --codon,\
+  \ --table or --ct\n            Integer - Allow to choose the codon table for the\
+  \ translation.\n            [default 1]\n\n    --alternative_start_codon or --asc\n\
+  \            Bolean - When activated it can affect the translation of the\n    \
+  \        start codon. Indeed alternative start codons exist, and are\n         \
+  \   translated by the cells'machinery by a Methionine (M). By\n            default\
+  \ AGAT translates the first codon as other codons by the\n            corresponding\
+  \ AA. If you wish to translate the first codon by a\n            M when it is a\
+  \ valid alternative start codon, activate this\n            parameter. If the sequence\
+  \ you try to translate is a CDS (or\n            starting by a CDS), the phase is\
+  \ checked and the alternative\n            start codon is accepted only if the phase\
+  \ is 0.\n\n    --eo    Boolean - Called 'extremity only', this option will extract\
+  \ only\n            the adjacent parts of a feature. This option has to be activated\n\
+  \            with -u and/or -p option. /!\\ using -u and -p together builds a\n\
+  \            chimeric sequence which will be the concatenation of the left\n   \
+  \         and right extremities of a feature.\n\n    --split Boolean - By default,\
+  \ all level3 features (exon, cds, utr)\n            collectively linked to a level2\
+  \ feature (rna, mRNA) are merge\n            together to shape an entire feature\
+  \ (e.g. several cds pieces can\n            be merged to create the CDS in its whole).\
+  \ If you wish to\n            extract all the subfeatures independently activate\
+  \ this option.\n\n    --full  Boolean - This option allows dealing with multifeature\
+  \ like cds\n            or exon, to extract the full sequence from start extremity\
+  \ to\n            the end extremity, i.e with introns. The use of that option with\n\
+  \            exon feature will give the same result as extracting the mrna\n   \
+  \         sequence (-t mRNA) and corresponds to the cdna*. (To actually\n      \
+  \      extract an mRNA as it is defined biologicaly you need to use the\n      \
+  \      `-t exon` option wihtout the --full option and wihtout the\n            --split\
+  \ option) Use of that option on cds will give the cdna*\n            without the\
+  \ untraslated regions (UTRs). *Not a real cdna because\n            it is not reversed\n\
+  \n    --up, -5, --five or -upstream\n            Integer - It will take that number\
+  \ of nucleotide in more at the\n            5' extremity. /!\\ You must activate\
+  \ the option \"--full\" if you\n            wish to extract only the most upstream\
+  \ part of certain features\n            (exon,cds,utr) otherwise you will extract\
+  \ each upstream parts of\n            the subfeatures (e.g many cds parts may be\
+  \ needed to shape a cds\n            in its whole).\n\n    --do, -3, --three, -down\
+  \ or -downstream\n            Integer - It will take that number of nucleotide in\
+  \ more at the\n            3' extremity. /!\\ You must activate the option \"--full\"\
+  \ if you\n            with to extract only the most downstream part of certain feature\n\
+  \            (exon,cds,utr) otherwise you will extract each downstream parts\n \
+  \           of the subfeatures (e.g many cds parts may be needed to shape a\n  \
+  \          cds in its whole).\n\n    --cdna  Boolean - This extract the cdna* sequence\
+  \ (i.e transcribed\n            sequence (devoid of introns, but containing untranslated\n\
+  \            exons)). It corresponds to extract the exons sequences. *Not a\n  \
+  \          real cdna because it is not reversed\n\n    --ofs   String - Output Fields\
+  \ Separator for the description field of\n            the header of the created\
+  \ fasta sequences. By default it's a\n            space < > but can be modified\
+  \ by any String or character using\n            this option.\n\n    --clean_internal_stop\
+  \ or --cis\n            Boolean - The Clean Internal Stop option allows replacing\
+  \ the\n            translation of the stop codons present among the sequence that\n\
+  \            is represented by the <*> character by <X>. Indeed the <*>\n      \
+  \      character can be disturbing for many programs (e.g interproscan)\n\n    --clean_final_stop\
+  \ or --cfs\n            Boolean - The Clean Final Stop option allows removing the\n\
+  \            translation of the final stop codons that is represented by the\n \
+  \           <*> character. This character can be disturbing for many\n         \
+  \   programs (e.g interproscan)\n\n    --remove_orf_offset or --roo\n          \
+  \  Boolean - CDS can start with a phase different from 0 when a\n            gene\
+  \ model is fragmented. When asking for protein translation\n            this (start)\
+  \ offset is trimmed out automatically. But when you\n            extract CDS dna\
+  \ sequences, this (start) offset is not removed by\n            default. To remove\
+  \ it activate this option. If --up or --do\n            option are used too, the\
+  \ (start) offset is trimmed first, then\n            is added the piece of sequence\
+  \ asked for.\n\n    -o or --output\n            String - Output fasta file. If no\
+  \ output file is specified, the\n            output will be written to STDOUT.\n\
+  \n    -h or --help\n            Boolean - Display this helpful text.\n\nFeedback:\n\
+  \  Did you find a bug?:\n    Do not hesitate to report bugs to help us keep track\
+  \ of the bugs and\n    their resolution. Please use the GitHub issue tracking system\
+  \ available\n    at this address:\n\n                https://github.com/NBISweden/AGAT/issues\n\
+  \n     Ensure that the bug was not already reported by searching under Issues.\n\
+  \     If you're unable to find an (open) issue addressing the problem, open a new\
+  \ one.\n     Try as much as possible to include in the issue when relevant:\n  \
+  \   - a clear description,\n     - as much relevant information as possible,\n \
+  \    - the command used,\n     - a data sample,\n     - an explanation of the expected\
+  \ behaviour that is not occurring.\n\n  Do you want to contribute?:\n    You are\
+  \ very welcome, visit this address for the Contributing\n    guidelines:\n    https://github.com/NBISweden/AGAT/blob/master/CONTRIBUTING.md\n\
+  \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/agat:0.6.0--pl526r35_0

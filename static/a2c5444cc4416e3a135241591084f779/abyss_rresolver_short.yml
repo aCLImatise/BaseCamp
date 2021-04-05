@@ -1,0 +1,251 @@
+!Command
+command:
+- abyss-rresolver-short
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --bloom-size
+  description: read Bloom filter size. Unit suffixes 'K' (kilobytes), 'M' (megabytes),
+    or 'G' (gigabytes) may be used. [required]
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --graph
+  description: write the contig adjacency graph to FILE. [required]
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --contigs
+  description: write the contigs to FILE. [required]
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --threads
+  description: use N parallel threads [1]
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --kmer
+  description: assembly k-mer size
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --hist
+  description: write the algorithm histograms with the given prefix. Histograms are
+    omitted if no prefix is given.
+  args: !SimpleFlagArg
+    name: PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threshold
+  description: set path support threshold to N. [4]
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --extract
+  description: extract N r-mers per read. [4]
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --min-tests
+  description: set minimum number of sliding window moves to N. Cannot be higher than
+    127. [20]
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  - --max-tests
+  description: set maximum number of sliding window moves to N. Cannot be higher than
+    127. [36]
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --branching
+  description: set maximum number of branching paths to N. [75]
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --rmer
+  description: explicitly set r value (k value used by rresolver). The number of set
+    r values should be equal to the number of read sizes.
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --approx-factor
+  description: explicitly set coverage approximation factor.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quality--threshold
+  description: minimum quality all bases in rmers should have, on average. [35] (UNUSED)
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --error-correction
+  description: enable correction of a 1bp error in kmers. [false]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --supported
+  description: write supported paths to FILE.
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -U
+  - --unsupported
+  description: "write unsupported paths to FILE.\nUsed for path sequence quality check."
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --adj
+  description: output the graph in ADJ format [default]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --asqg
+  description: output the graph in ASQG format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dot
+  description: output the graph in GraphViz format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gfa
+  description: output the graph in GFA1 format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gfa1
+  description: output the graph in GFA1 format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gfa2
+  description: output the graph in GFA2 format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gv
+  description: output the graph in GraphViz format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sam
+  description: output the graph in SAM format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: display verbose output
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: display this help and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: output version information and exit
+  args: !EmptyFlagArg {}
+help_text: "Usage: abyss-rresolver-short [OPTION]... <contigs> <graph> [<reads1> <reads2>\
+  \ ...]\nResolve unitig repeats using a sliding window and\nand short read information.\n\
+  \n Arguments:\n\n  <contigs>  contigs in FASTA format\n  <graph>    contig adjacency\
+  \ graph\n  <reads>    reads in FASTA format\n\n Options:\n\n  -b, --bloom-size=N\
+  \          read Bloom filter size. Unit suffixes 'K' (kilobytes), 'M' (megabytes),\
+  \ or 'G' (gigabytes) may be used. [required]\n  -g, --graph=FILE            write\
+  \ the contig adjacency graph to FILE. [required]\n  -c, --contigs=FILE         \
+  \ write the contigs to FILE. [required]\n  -j, --threads=N             use N parallel\
+  \ threads [1]\n  -k, --kmer=N                assembly k-mer size\n  -h, --hist=PREFIX\
+  \           write the algorithm histograms with the given prefix. Histograms are\
+  \ omitted if no prefix is given.\n  -t, --threshold=N           set path support\
+  \ threshold to N. [4]\n  -x, --extract=N             extract N r-mers per read.\
+  \ [4]\n  -m, --min-tests=N           set minimum number of sliding window moves\
+  \ to N. Cannot be higher than 127. [20]\n  -M, --max-tests=N           set maximum\
+  \ number of sliding window moves to N. Cannot be higher than 127. [36]\n  -n, --branching=N\
+  \           set maximum number of branching paths to N. [75]\n  -r, --rmer=N   \
+  \             explicitly set r value (k value used by rresolver). The number of\
+  \ set r values should be equal to the number of read sizes.\n  -a, --approx-factor\
+  \         explicitly set coverage approximation factor.\n  -q, --quality--threshold=N\
+  \  minimum quality all bases in rmers should have, on average. [35] (UNUSED)\n \
+  \ -e, --error-correction      enable correction of a 1bp error in kmers. [false]\n\
+  \  -S, --supported=FILE        write supported paths to FILE.\n  -U, --unsupported=FILE\
+  \      write unsupported paths to FILE.\n                              Used for\
+  \ path sequence quality check.\n      --adj                   output the graph in\
+  \ ADJ format [default]\n      --asqg                  output the graph in ASQG format\n\
+  \      --dot                   output the graph in GraphViz format\n      --gfa\
+  \                   output the graph in GFA1 format\n      --gfa1              \
+  \    output the graph in GFA1 format\n      --gfa2                  output the graph\
+  \ in GFA2 format\n      --gv                    output the graph in GraphViz format\n\
+  \      --sam                   output the graph in SAM format\n  -v, --verbose \
+  \              display verbose output\n      --help                  display this\
+  \ help and exit\n      --version               output version information and exit\n\
+  \nReport bugs to <abyss-users@bcgsc.ca>.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/abyss:2.3.0--ha4ec83a_0

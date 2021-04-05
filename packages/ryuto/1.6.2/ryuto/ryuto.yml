@@ -1,0 +1,411 @@
+!Command
+command:
+- ryuto
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  description: "[ --gtf-guide ] arg            Path to a gtf/gff file containing reference\n\
+    genes. (default: none)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --guide-trustlevel
+  description: "Level of trust in the given guides. 0 no\ntrust. 100 maximal trust.\
+    \ Abstract\nnon-linear variable! (default: 20)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  description: "[ --pool ] arg                 Number of consecutive inputs to merge\n\
+    internally in groups."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: "[ --threads ] arg              Number of threads to use in parallel.\n\
+    (default: 1)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: "[ --out-dir ] arg              The output directory for all data.\n\
+    (default: ./)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: "[ --library-type ] arg         fr-unstranded, fr-firststrand,\nfr-secondstrand,\
+    \ ff-unstranded,\nff-firststrand, or ff-secondstrand\naccording to TopHat and\
+    \ Cufflinks\ndefinitions. (default: fr-unstranded)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: "[ --unstranded ]               Add this option to ignore strand\n\
+    information and call everything on +\nstrand. (default: none)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: "[ --base-coverage-filter ] arg Minimum average coverage for features\
+    \ to be\nfiltered. Sets low-edge-mark, mean-filter,\nand score-filter (default:\
+    \ 4.0)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-parse-heuristic
+  description: "If several input files are used, use this to disable\nthe heuristic\
+    \ to merge fragments. Increases needed RAM.\n(default: use heuristic)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --compute-singles
+  description: "If several input files are used, use this to compute\ntranscripts\
+    \ for all individual transcripts. (default:\nonly joined output)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --nc
+  description: "Number of chromosomes processed in parallel. (# of\nthreads = nc *\
+    \ ng; default: 1)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --ng
+  description: "Number of graph per chromosome processed in parallel.\n(# of threads\
+    \ = nc * ng; default: 1)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --pos-merge
+  description: "Positions within this range of bases will be\nclustered together.\
+    \ (default: 1)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --min-intron-length
+  description: 'Minimal length of predicted introns. (default: 5)'
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --max-intron-length
+  description: "Maximal length of predicted introns. (default:\n1,000,000)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --no-denoising
+  description: "Add this option to disable denoising of flow\ngraph capacities."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --keep-introns
+  description: "Add this option to keep all introns with read\ncoverage intact."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --intron-threshold
+  description: "Percentage of coverage to existing splices\nneeded to keep introns\
+    \ intact. (default: 30%)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --broken-intron-threshold
+  description: "Percentage of coverage to existing splices\nneeded to keep fragmented\
+    \ intron pieces intact.\n(default: 15%)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --exon-join-distance
+  description: "Join exons no more distant than this amount of\nbp into one. (default:\
+    \ 5)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --no-trimming
+  description: "Disable trimming of predicted transcripts based\non coverage."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --trimming-rate
+  description: "Don't join exons if one is smaller than this\npercentage of the bigger\
+    \ (default: 20%)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --low-edge-mark
+  description: "Capacity of edges in the splitgraph considered\nunlikely. (default:\
+    \ 4.0)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --min-junction-coverage
+  description: "Minimal coverage to consider intron junctions in\nthe graph. (default:\
+    \ 1)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --min-junction-anchor
+  description: "Minimal length of bp evidence needed left and\nright of a junction\
+    \ to consider it. (default: 10)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --group-vote-low
+  description: "Multi assembly percentage required for simple\nconsensus voting (default:\
+    \ 30%)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --group-vote-high
+  description: "Multi assembly percentage required for\nsuper-majority consensus voting\
+    \ (default: 60%)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: "[ --percent-filter ] arg           Minimum capacity to report retrieved\n\
+    transcripts compared to the largest\ntranscript found. (default: 0%)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --mean-filter
+  description: "Minimum average capacity to report\nretrieved transcripts. (default:\
+    \ 4.0)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --score-filter
+  description: "Minimum score to report retrieved\ntranscripts. (default: 3.0)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --min-single-coverage
+  description: "Minimal average coverage off single\nexon transcripts to report. (default:\n\
+    20)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --min-single-length
+  description: "Minimal length off single exon\ntranscripts to report. (default: 300)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --min-transcript-length-base
+  description: "Minimal length of a transcripts to\nreport in bp. (default: 200)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --min-transcript-length-extension
+  description: "Additional length in bp required per\nexon. (default: 50)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --region-group-filter
+  description: "Regions where all transcripts are below\nthis coverage are discarded.\
+    \ (default:\n5.5)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: "[ --min-readlength ] arg      Reads below this length will not be\
+    \ used for\natom evidence. (default: 30)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  description: "[ --min-paired-distance ] arg Minimal distance between two paired\
+    \ reads in\norder to be considered. (default: 0)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -y
+  description: "[ --max-paired-distance ] arg Maximal distance between two paired\
+    \ reads in\norder to be considered. (default: 100000)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --arc-granularity
+  description: "Maximum number of arcs per original arc on\npseudo-polynomial convex\
+    \ cost flows.\n(default: 500)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --min-raw-exon-length
+  description: "Minimal number of basepairs needed to\nconstitute a raw exon. (default:\
+    \ 3)"
+  args: !SimpleFlagArg
+    name: arg
+- !Flag
+  optional: true
+  synonyms:
+  - --max-path-enumeration
+  description: "Maximal number of distinct paths enumerated\non each side of an ambiguous\
+    \ node. (default:\n10,000)"
+  args: !SimpleFlagArg
+    name: arg
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: '[ --help ]                     Show this help message.'
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Use as: ./ryuto [options]* <input1.bam> <input2.bam> ...\n\nBasic options:\n\
+  \  -g [ --gtf-guide ] arg            Path to a gtf/gff file containing reference\n\
+  \                                    genes. (default: none)\n  --guide-trustlevel\
+  \ arg            Level of trust in the given guides. 0 no \n                   \
+  \                 trust. 100 maximal trust. Abstract \n                        \
+  \            non-linear variable! (default: 20)\n  -w [ --pool ] arg           \
+  \      Number of consecutive inputs to merge \n                                \
+  \    internally in groups.\n  -t [ --threads ] arg              Number of threads\
+  \ to use in parallel. \n                                    (default: 1)\n  -o [\
+  \ --out-dir ] arg              The output directory for all data. \n           \
+  \                         (default: ./)\n  -l [ --library-type ] arg         fr-unstranded,\
+  \ fr-firststrand, \n                                    fr-secondstrand, ff-unstranded,\
+  \ \n                                    ff-firststrand, or ff-secondstrand \n  \
+  \                                  according to TopHat and Cufflinks \n        \
+  \                            definitions. (default: fr-unstranded)\n  -s [ --unstranded\
+  \ ]               Add this option to ignore strand \n                          \
+  \          information and call everything on + \n                             \
+  \       strand. (default: none)\n  -c [ --base-coverage-filter ] arg Minimum average\
+  \ coverage for features to be\n                                    filtered. Sets\
+  \ low-edge-mark, mean-filter, \n                                    and score-filter\
+  \ (default: 4.0)\n  -h [ --help ]                     Show this help message.\n\n\
+  \n ----- Advanced Options ----- \n\nGeneral options:\n  --no-parse-heuristic  If\
+  \ several input files are used, use this to disable \n                        the\
+  \ heuristic to merge fragments. Increases needed RAM.\n                        (default:\
+  \ use heuristic)\n  --compute-singles     If several input files are used, use this\
+  \ to compute \n                        transcripts for all individual transcripts.\
+  \ (default: \n                        only joined output)\n  --nc arg          \
+  \    Number of chromosomes processed in parallel. (# of \n                     \
+  \   threads = nc * ng; default: 1)\n  --ng arg              Number of graph per\
+  \ chromosome processed in parallel. \n                        (# of threads = nc\
+  \ * ng; default: 1)\n\nExon building options:\n  --pos-merge arg         Positions\
+  \ within this range of bases will be \n                          clustered together.\
+  \ (default: 1)\n  --min-intron-length arg Minimal length of predicted introns. (default:\
+  \ 5)\n  --max-intron-length arg Maximal length of predicted introns. (default: \n\
+  \                          1,000,000)\n\nGraph building and flow options:\n  --no-denoising\
+  \                Add this option to disable denoising of flow \n               \
+  \                 graph capacities.\n  --keep-introns                Add this option\
+  \ to keep all introns with read \n                                coverage intact.\n\
+  \  --intron-threshold arg        Percentage of coverage to existing splices \n \
+  \                               needed to keep introns intact. (default: 30%)\n\
+  \  --broken-intron-threshold arg Percentage of coverage to existing splices \n \
+  \                               needed to keep fragmented intron pieces intact.\n\
+  \                                (default: 15%)\n  --exon-join-distance arg    \
+  \  Join exons no more distant than this amount of \n                           \
+  \     bp into one. (default: 5)\n  --no-trimming                 Disable trimming\
+  \ of predicted transcripts based\n                                on coverage.\n\
+  \  --trimming-rate arg           Don't join exons if one is smaller than this \n\
+  \                                percentage of the bigger (default: 20%)\n\nGraph\
+  \ filter options:\n  --low-edge-mark arg         Capacity of edges in the splitgraph\
+  \ considered \n                              unlikely. (default: 4.0)\n  --min-junction-coverage\
+  \ arg Minimal coverage to consider intron junctions in \n                      \
+  \        the graph. (default: 1)\n  --min-junction-anchor arg   Minimal length of\
+  \ bp evidence needed left and \n                              right of a junction\
+  \ to consider it. (default: 10)\n  --group-vote-low arg        Multi assembly percentage\
+  \ required for simple \n                              consensus voting (default:\
+  \ 30%)\n  --group-vote-high arg       Multi assembly percentage required for \n\
+  \                              super-majority consensus voting (default: 60%)\n\n\
+  Transcript output filter options:\n  -p [ --percent-filter ] arg           Minimum\
+  \ capacity to report retrieved \n                                        transcripts\
+  \ compared to the largest \n                                        transcript found.\
+  \ (default: 0%)\n  --mean-filter arg                     Minimum average capacity\
+  \ to report \n                                        retrieved transcripts. (default:\
+  \ 4.0)\n  --score-filter arg                    Minimum score to report retrieved\
+  \ \n                                        transcripts. (default: 3.0)\n  --min-single-coverage\
+  \ arg             Minimal average coverage off single \n                       \
+  \                 exon transcripts to report. (default: \n                     \
+  \                   20)\n  --min-single-length arg               Minimal length\
+  \ off single exon \n                                        transcripts to report.\
+  \ (default: 300)\n  --min-transcript-length-base arg      Minimal length of a transcripts\
+  \ to \n                                        report in bp. (default: 200)\n  --min-transcript-length-extension\
+  \ arg Additional length in bp required per \n                                  \
+  \      exon. (default: 50)\n  --region-group-filter arg             Regions where\
+  \ all transcripts are below\n                                        this coverage\
+  \ are discarded. (default: \n                                        5.5)\n\nAdvanced\
+  \ options:\n  -r [ --min-readlength ] arg      Reads below this length will not\
+  \ be used for\n                                   atom evidence. (default: 30)\n\
+  \  -x [ --min-paired-distance ] arg Minimal distance between two paired reads in\n\
+  \                                   order to be considered. (default: 0)\n  -y [\
+  \ --max-paired-distance ] arg Maximal distance between two paired reads in\n   \
+  \                                order to be considered. (default: 100000)\n  --arc-granularity\
+  \ arg            Maximum number of arcs per original arc on \n                 \
+  \                  pseudo-polynomial convex cost flows. \n                     \
+  \              (default: 500)\n  --min-raw-exon-length arg        Minimal number\
+  \ of basepairs needed to \n                                   constitute a raw exon.\
+  \ (default: 3)\n  --max-path-enumeration arg       Maximal number of distinct paths\
+  \ enumerated \n                                   on each side of an ambiguous node.\
+  \ (default:\n                                   10,000)\n\n(Version 1.6.2)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/ryuto:1.6.2--h986a166_0

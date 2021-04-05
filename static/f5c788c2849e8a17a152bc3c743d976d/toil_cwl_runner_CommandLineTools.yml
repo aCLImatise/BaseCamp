@@ -1,0 +1,52 @@
+!Command
+command:
+- toil-cwl-runner
+- CommandLineTools
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: example-job.yaml
+  description: 'Traceback (most recent call last):'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --jobStore
+  description: :us-west-2:jobstore \
+  args: !SimpleFlagArg
+    name: aws
+- !Flag
+  optional: true
+  synonyms:
+  - --realTimeLogging
+  description: \
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --logInfo
+  description: \
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nYou may be getting this error because your arguments are incorrect or\
+  \ out of order.\n\n* All positional arguments [cwl, yml_or_json] must always be\
+  \ specified last for toil-cwl-runner.\n  Note: If you're trying to specify a jobstore,\
+  \ please use --jobStore.\n\n      Usage: toil-cwl-runner [options] example.cwl example-job.yaml\n\
+  \      Example: toil-cwl-runner \\\n               --jobStore aws:us-west-2:jobstore\
+  \ \\\n               --realTimeLogging \\\n               --logInfo \\\n       \
+  \        example.cwl \\\n               example-job.yaml\n\nTraceback (most recent\
+  \ call last):\n  File \"/usr/local/bin/toil-cwl-runner\", line 10, in <module>\n\
+  \    sys.exit(main())\n  File \"/usr/local/lib/python3.8/site-packages/toil/cwl/cwltoil.py\"\
+  , line 2214, in main\n    uri, tool_file_uri = cwltool.load_tool.resolve_tool_uri(\n\
+  \  File \"/usr/local/lib/python3.8/site-packages/cwltool/load_tool.py\", line 98,\
+  \ in resolve_tool_uri\n    raise ValidationException(\"Not found: '%s'\" % argsworkflow)\n\
+  schema_salad.exceptions.ValidationException: Not found: 'CommandLineTools'\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/toil:5.3.0--py_0

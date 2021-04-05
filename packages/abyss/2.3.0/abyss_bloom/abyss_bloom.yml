@@ -1,0 +1,293 @@
+!Command
+command:
+- abyss-bloom
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --kmer
+  description: the size of a k-mer [<=128]
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: display verbose output
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --bloom-size
+  description: size of bloom filter [500M]
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -B
+  - --buffer-size
+  description: size of I/O buffer for each thread, in bytes [100000]
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --threads
+  description: use N parallel threads [1]
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --hash-seed
+  description: "seed for hash function (only works with\n`-t konnector') [0]"
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -H
+  - --num-hashes
+  description: "number of hash functions (only works with\n`-t rolling-hash') [1]"
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --levels
+  description: "build a cascading bloom filter with N levels\nand output the last\
+    \ level"
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  - --init-level
+  description: "='N=FILE'  initialize level N of cascading bloom filter\nfrom FILE"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --chastity
+  description: discard unchaste reads [default]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-chastity
+  description: do not discard unchaste reads
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --trim-masked
+  description: trim masked bases from the ends of reads
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-trim-masked
+  description: "do not trim masked bases from the ends\nof reads [default]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --num-locks
+  description: number of write locks on bloom filter [1000]
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --trim-quality
+  description: "trim bases from the ends of reads whose\nquality is less than the\
+    \ threshold"
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --bloom-type
+  description: "'konnector', 'rolling-hash', or 'counting' [konnector]"
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - --standard-quality
+  description: "zero quality is `!' (33)\ndefault for FASTQ and SAM files"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --illumina-quality
+  description: "zero quality is `@' (64)\ndefault for qseq and export files"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --window
+  description: /N           build a bloom filter for subwindow M of N
+  args: !SimpleFlagArg
+    name: M
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --method
+  description: "=`String'      choose distance calculation method\n[`jaccard'(default),\
+    \ `forbes', `czekanowski']"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --depth
+  description: depth of neighbouring from --root [k]
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  - --root
+  description: root k-mer from graph traversal [required]
+  args: !SimpleFlagArg
+    name: KMER
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --root-fasta
+  description: get root k-mers from FASTA file
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --fasta-attr
+  description: :FILE, assign a node attribute (e.g. 'color=blue')
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - --node-attr
+  description: :FILE   to k-mers in the given FASTA
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - -A
+  - --bloom-attr
+  description: ":FILE  assign a node attribute (e.g. 'color=blue')\nto k-mers in the\
+    \ given Bloom filter"
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --inverse
+  description: get k-mers that are *NOT* in the bloom filter
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --bed
+  description: output k-mers in BED format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --fasta
+  description: output k-mers in FASTA format [default]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --raw
+  description: output k-mers in raw format (one per line)
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: display this help and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: output version information and exit
+  args: !EmptyFlagArg {}
+help_text: "Usage 1: abyss-bloom build [GLOBAL_OPTS] [COMMAND_OPTS] <OUTPUT_BLOOM_FILE>\
+  \ <READS_FILE_1> [READS_FILE_2]...\nUsage 2: abyss-bloom union [GLOBAL_OPTS] [COMMAND_OPTS]\
+  \ <OUTPUT_BLOOM_FILE> <BLOOM_FILE_1> <BLOOM_FILE_2> [BLOOM_FILE_3]...\nUsage 3:\
+  \ abyss-bloom intersect [GLOBAL_OPTS] [COMMAND_OPTS] <OUTPUT_BLOOM_FILE> <BLOOM_FILE_1>\
+  \ <BLOOM_FILE_2> [BLOOM_FILE_3]...\nUsage 4: abyss-bloom info [GLOBAL_OPTS] [COMMAND_OPTS]\
+  \ <BLOOM_FILE>\nUsage 5: abyss-bloom compare [GLOBAL_OPTS] [COMMAND_OPTS] <BLOOM_FILE_1>\
+  \ <BLOOM_FILE_2>\nUsage 6: abyss-bloom graph [GLOBAL_OPTS] [COMMAND_OPTS] <BLOOM_FILE>\n\
+  Usage 8: abyss-bloom kmers [GLOBAL_OPTS] [COMMAND_OPTS] <BLOOM_FILE> <READS_FILE>\n\
+  Usage 9: abyss-bloom trim [GLOBAL_OPTS] [COMMAND_OPTS] <BLOOM_FILE> <READS_FILE>\
+  \ [READS_FILE_2]... > trimmed.fq\n\nBuild and manipulate Bloom filter files.\n\n\
+  \ Global options:\n\n  -k, --kmer=N               the size of a k-mer [<=128]\n\
+  \  -v, --verbose              display verbose output\n      --help             \
+  \    display this help and exit\n      --version              output version information\
+  \ and exit\n\n Options for `abyss-bloom build':\n\n  -b, --bloom-size=N        \
+  \ size of bloom filter [500M]\n  -B, --buffer-size=N        size of I/O buffer for\
+  \ each thread, in bytes [100000]\n  -j, --threads=N            use N parallel threads\
+  \ [1]\n  -h, --hash-seed=N          seed for hash function (only works with\n  \
+  \                           `-t konnector') [0]\n  -H, --num-hashes=N         number\
+  \ of hash functions (only works with\n                             `-t rolling-hash')\
+  \ [1]\n  -l, --levels=N             build a cascading bloom filter with N levels\n\
+  \                             and output the last level\n  -L, --init-level='N=FILE'\
+  \  initialize level N of cascading bloom filter\n                             from\
+  \ FILE\n      --chastity             discard unchaste reads [default]\n      --no-chastity\
+  \          do not discard unchaste reads\n      --trim-masked          trim masked\
+  \ bases from the ends of reads\n      --no-trim-masked       do not trim masked\
+  \ bases from the ends\n                             of reads [default]\n  -n, --num-locks=N\
+  \          number of write locks on bloom filter [1000]\n  -q, --trim-quality=N\
+  \       trim bases from the ends of reads whose\n                             quality\
+  \ is less than the threshold\n  -t, --bloom-type=STR       'konnector', 'rolling-hash',\
+  \ or 'counting' [konnector]\n      --standard-quality     zero quality is `!' (33)\n\
+  \                             default for FASTQ and SAM files\n      --illumina-quality\
+  \     zero quality is `@' (64)\n                             default for qseq and\
+  \ export files\n  -w, --window M/N           build a bloom filter for subwindow\
+  \ M of N\n\n Options for `abyss-bloom union': (none)\n Options for `abyss-bloom\
+  \ intersect': (none)\n Options for `abyss-bloom info': (none)\n Options for `abyss-bloom\
+  \ compare':\n\n  -m, --method=`String'      choose distance calculation method \n\
+  \                             [`jaccard'(default), `forbes', `czekanowski']\n\n\
+  \ Options for `abyss-bloom graph':\n\n  -d, --depth=N              depth of neighbouring\
+  \ from --root [k]\n  -R, --root=KMER            root k-mer from graph traversal\
+  \ [required]\n  -f, --root-fasta=FILE      get root k-mers from FASTA file\n  -a,\
+  \ --fasta-attr=STR:FILE, assign a node attribute (e.g. 'color=blue')\n      --node-attr=STR:FILE\
+  \   to k-mers in the given FASTA\n  -A, --bloom-attr=STR:FILE  assign a node attribute\
+  \ (e.g. 'color=blue')\n                             to k-mers in the given Bloom\
+  \ filter\n\n Options for `abyss-bloom kmers':\n\n  -r, --inverse              get\
+  \ k-mers that are *NOT* in the bloom filter\n  --bed                      output\
+  \ k-mers in BED format\n  --fasta                    output k-mers in FASTA format\
+  \ [default]\n  --raw                      output k-mers in raw format (one per line)\n\
+  \n Options for `abyss-bloom trim': (none)\n\nReport bugs to <abyss-users@bcgsc.ca>.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/abyss:2.3.0--ha4ec83a_0

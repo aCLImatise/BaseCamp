@@ -1,0 +1,171 @@
+!Command
+command:
+- amptk
+- illumina2
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: arguments
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --fastq
+  description: Illumina R1 (PE forward) reads (Required)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --reverse
+  description: Illumina R2 (PE reverse) reads.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out
+  description: 'Output base name. Default: illumina2'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --mapping_file
+  description: QIIME-like mapping file
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --fwd_primer
+  description: 'Forward primer sequence. Default: fITS7'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --rev_primer
+  description: 'Reverse primer sequence Default: ITS4'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --name_prefix
+  description: 'Prefix for re-naming reads. Default: R_'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --trim_len
+  description: 'Length to trim/pad reads. Default: 300'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --pad
+  description: 'Pad reads with Ns if shorter than --trim_len. Default: off [on,off]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min_len
+  description: 'Minimum length read to keep. Default: 100'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --barcode_fasta
+  description: FASTA file containing barcodes.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --reverse_barcode
+  description: FASTA file containing R2 barcodes.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --barcode_mismatch
+  description: 'Number of mismatches in barcode to allow. Default: 0'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --barcode_not_anchored
+  description: are not anchored to start of read.
+  args: !SimpleFlagArg
+    name: Barcodes
+- !Flag
+  optional: true
+  synonyms:
+  - --full_length
+  description: Keep only full length sequences.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --primer_mismatch
+  description: 'Number of mismatches in primers to allow. Default: 2'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --merge_method
+  description: 'Software to use for PE merging. Default: usearch [usearch,vsearch]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --cpus
+  description: 'Number of CPUs to use. Default: all'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --usearch
+  description: 'USEARCH executable. Default: usearch9'
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nUsage:       amptk illumina2 <arguments>\nversion:     1.5.2\n\nDescription:\
+  \ Script takes Illumina data that is not de-multiplexed and has read structure\n\
+  \             similar to Ion/454 such that the reads are <barcode><fwd_primer>Read<rev_primer>\
+  \ for\n             clustering using AMPtk.  The default behavior is to: 1) find\
+  \ barcodes/primers,\n             2) relabel headers and trim barcodes/primers,\
+  \ 3) merge the PE reads,\n             4) trim/pad reads to a set length.  This\
+  \ script can handle dual barcodes\n             (3' barcodes using the --reverse_barcode\
+  \ option or mapping file).\n\nArguments:   -i, --fastq            Illumina R1 (PE\
+  \ forward) reads (Required)\n             --reverse              Illumina R2 (PE\
+  \ reverse) reads.\n             -o, --out              Output base name. Default:\
+  \ illumina2\n             -m, --mapping_file     QIIME-like mapping file\n     \
+  \        -f, --fwd_primer       Forward primer sequence. Default: fITS7\n      \
+  \       -r, --rev_primer       Reverse primer sequence Default: ITS4\n         \
+  \    -n, --name_prefix      Prefix for re-naming reads. Default: R_\n          \
+  \   -l, --trim_len         Length to trim/pad reads. Default: 300\n            \
+  \ -p, --pad              Pad reads with Ns if shorter than --trim_len. Default:\
+  \ off [on,off]\n             --min_len              Minimum length read to keep.\
+  \ Default: 100\n             --barcode_fasta        FASTA file containing barcodes.\n\
+  \             --reverse_barcode      FASTA file containing R2 barcodes.\n      \
+  \       --barcode_mismatch     Number of mismatches in barcode to allow. Default:\
+  \ 0\n             --barcode_not_anchored Barcodes are not anchored to start of read.\n\
+  \             --full_length          Keep only full length sequences.\n        \
+  \     --primer_mismatch      Number of mismatches in primers to allow. Default:\
+  \ 2\n             --merge_method         Software to use for PE merging. Default:\
+  \ usearch [usearch,vsearch]\n             --cpus                 Number of CPUs\
+  \ to use. Default: all\n             -u, --usearch          USEARCH executable.\
+  \ Default: usearch9\n        \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/amptk:1.5.2--py_0

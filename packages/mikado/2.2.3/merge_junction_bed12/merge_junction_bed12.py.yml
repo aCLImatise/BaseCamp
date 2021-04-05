@@ -1,0 +1,73 @@
+!Command
+command:
+- merge_junction_bed12.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: bed
+  description: Input BED files. Use "-" for stdin.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --delim
+  description: 'Delimiter for merged names. Default: ;'
+  args: !SimpleFlagArg
+    name: DELIM
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: "Number of threads to use for multiprocessing. Default:\n1"
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - --tophat
+  description: "Flag. If set, tophat-like junction style is assumed.\nThis means that\
+    \ junctions are defined using the\nblockSizes rather than thickStart/End. The\
+    \ script will\nconvert the lines to this latter format. By default,\nthe script\
+    \ assumes that the intron start/end are\ndefined using thickStart/End like in\
+    \ portcullis.\nMixed-type input files are not supported."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: "Output file. Default: stdout\n"
+  args: !SimpleFlagArg
+    name: OUTPUT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: Script to merge BED12 files *based on the thickStart/End features*.\n\
+  \    Necessary for merging junction files such as those produced by TopHat\n   \
+  \    [-h] [--delim DELIM] [-t THREADS] [--tophat] [-o OUTPUT] bed [bed ...]\n\n\
+  positional arguments:\n  bed                   Input BED files. Use \"-\" for stdin.\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  --delim DELIM         Delimiter for merged names. Default: ;\n  -t THREADS, --threads\
+  \ THREADS\n                        Number of threads to use for multiprocessing.\
+  \ Default:\n                        1\n  --tophat              Flag. If set, tophat-like\
+  \ junction style is assumed.\n                        This means that junctions\
+  \ are defined using the\n                        blockSizes rather than thickStart/End.\
+  \ The script will\n                        convert the lines to this latter format.\
+  \ By default,\n                        the script assumes that the intron start/end\
+  \ are\n                        defined using thickStart/End like in portcullis.\n\
+  \                        Mixed-type input files are not supported.\n  -o OUTPUT,\
+  \ --output OUTPUT\n                        Output file. Default: stdout\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/mikado:2.2.3--py38h6ed170a_0

@@ -1,0 +1,222 @@
+!Command
+command:
+- iva_qc
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: assembly.fasta
+  description: Name of assembly fasta file to be compared to
+- !Positional
+  optional: false
+  position: 1
+  name: reference
+  description: prefix of output files
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --embl_dir
+  description: "Directory of reference EMBL files. If not used, must\nuse --ref_db"
+  args: !SimpleFlagArg
+    name: Directory
+- !Flag
+  optional: true
+  synonyms:
+  - --ref_db
+  description: "Directory of database made by iva_qc_make_db. If not\nused, must use\
+    \ --embl_dir"
+  args: !SimpleFlagArg
+    name: Directory
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: "[.gz], --reads_fwd filename[.gz]\nName of forwards reads fasta or\
+    \ fastq file. Must be\nused with --reads_rev"
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: "[.gz], --reads_rev filename[.gz]\nName of reverse reads fasta or fastq\
+    \ file. Must be\nused with --reads_rev"
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - --fr
+  description: '[.gz]    Name of interleaved fasta/q file'
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - --cds_min_hit_length
+  description: "Minimum hit length when running nucmer of CDS\nsequences against contigs\
+    \ [30]"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --cds_min_hit_id
+  description: "Minimum hit percent identity when running nucmer of\nCDS sequences\
+    \ against contigs [80]"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --ctg_min_hit_length
+  description: "Minimum hit length when running nucmer of contigs\nagainst reference\
+    \ [100]"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --ctg_min_hit_id
+  description: "Minimum hit percent identity when running nucmer of\ncontigs against\
+    \ reference [80]"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --smalt_k
+  description: "kmer hash length in SMALT (the -k option in smalt\nindex) [15]"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --smalt_s
+  description: "kmer hash step size in SMALT (the -s option in smalt\nindex) [3]"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -y
+  - --smalt_id
+  description: "Minimum identity threshold for mapping to be reported\n(the -y option\
+    \ in smalt map) [0.5]"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --gage_minid
+  description: "in [0,100]\nMinimum percent identity used when GAGE runs nucmer\n\
+    [80]"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --kraken_preload
+  description: Use the --preload option when running kraken
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ratt_config
+  description: Specify your own RATT config file [None]
+  args: !SimpleFlagArg
+    name: filename
+- !Flag
+  optional: true
+  synonyms:
+  - --ctg_layout_plot_title
+  description: "Title to use in contig layout plot [IVA QC contig\nlayout and read\
+    \ depth]"
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --min_ref_cov
+  description: "Minimum read coverage of the reference, on each\nstrand, to count\
+    \ as OK coverage [5]"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --noclean
+  description: Do not clean temporary files
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: Number of threads to use [1]
+  args: !SimpleFlagArg
+    name: INT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: iva_qc [options] {(-f <reads_1.fq> -r <reads_2.fq>) | --fr reads.fq}\
+  \ {(--embl_dir | --ref_db) <directory>} <assembly.fasta> <prefix of output files>\n\
+  \npositional arguments:\n  assembly.fasta        Name of assembly fasta file to\
+  \ be compared to\n                        reference\n  prefix of output files\n\
+  \                        Prefix to use for name of all output files\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n\nReference\
+  \ options (REQUIRED: either --embl_dir or --ref_db):\n  --embl_dir Directory  Directory\
+  \ of reference EMBL files. If not used, must\n                        use --ref_db\n\
+  \  --ref_db Directory    Directory of database made by iva_qc_make_db. If not\n\
+  \                        used, must use --embl_dir\n\nReads options (REQUIRED: either\
+  \ --fr, or (-f and -r)):\n  -f filename[.gz], --reads_fwd filename[.gz]\n      \
+  \                  Name of forwards reads fasta or fastq file. Must be\n       \
+  \                 used with --reads_rev\n  -r filename[.gz], --reads_rev filename[.gz]\n\
+  \                        Name of reverse reads fasta or fastq file. Must be\n  \
+  \                      used with --reads_rev\n  --fr filename[.gz]    Name of interleaved\
+  \ fasta/q file\n\nMUMmer options:\n  --cds_min_hit_length INT\n                \
+  \        Minimum hit length when running nucmer of CDS\n                       \
+  \ sequences against contigs [30]\n  --cds_min_hit_id FLOAT\n                   \
+  \     Minimum hit percent identity when running nucmer of\n                    \
+  \    CDS sequences against contigs [80]\n  --ctg_min_hit_length INT\n          \
+  \              Minimum hit length when running nucmer of contigs\n             \
+  \           against reference [100]\n  --ctg_min_hit_id FLOAT\n                \
+  \        Minimum hit percent identity when running nucmer of\n                 \
+  \       contigs against reference [80]\n\nSMALT mapping options:\n  -k INT, --smalt_k\
+  \ INT\n                        kmer hash length in SMALT (the -k option in smalt\n\
+  \                        index) [15]\n  -s INT, --smalt_s INT\n                \
+  \        kmer hash step size in SMALT (the -s option in smalt\n                \
+  \        index) [3]\n  -y FLOAT, --smalt_id FLOAT\n                        Minimum\
+  \ identity threshold for mapping to be reported\n                        (the -y\
+  \ option in smalt map) [0.5]\n\nExternal tools:\n  --gage_minid INT in [0,100]\n\
+  \                        Minimum percent identity used when GAGE runs nucmer\n \
+  \                       [80]\n  --kraken_preload      Use the --preload option when\
+  \ running kraken\n  --ratt_config filename\n                        Specify your\
+  \ own RATT config file [None]\n\nOther options:\n  --ctg_layout_plot_title STRING\n\
+  \                        Title to use in contig layout plot [IVA QC contig\n   \
+  \                     layout and read depth]\n  --min_ref_cov INT     Minimum read\
+  \ coverage of the reference, on each\n                        strand, to count as\
+  \ OK coverage [5]\n  --noclean             Do not clean temporary files\n  --threads\
+  \ INT         Number of threads to use [1]\n  --version             show program's\
+  \ version number and exit\n\nYou must supply reads in one of two ways: 1) both --reads_fwd\
+  \ and --reads_rev;\nor 2) --fr. Also, you must either supply a reference with --embl_dir,\
+  \ or\nchoose one automatically from a database with --ref_db.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/iva:1.0.11--py_0
