@@ -1,0 +1,101 @@
+!Command
+command:
+- Binsanity-profile
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: Specify fasta file being profiled
+  args: !SimpleFlagArg
+    name: INPUTFASTA
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: "identify location of BAM files\nBAM files should be indexed and sorted"
+  args: !SimpleFlagArg
+    name: INPUTMAPLOC
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: Identify name of output file for coverage information
+  args: !SimpleFlagArg
+    name: OUTCOV
+- !Flag
+  optional: true
+  synonyms:
+  - --transform
+  description: "Indicate what type of data transformation you want in the final file\
+    \ [Default:log]:\nscale --> Scaled by multiplying by 100 and log transforming\n\
+    log --> Log transform\nNone --> Raw Coverage Values\nX5 --> Multiplication by\
+    \ 5\nX10 --> Multiplication by 10\nX100 --> Multiplication by 100\nSQR --> Square\
+    \ root\nWe recommend using a scaled log transformation for initial testing.\n\
+    Other transformations can be useful on a case by case basis"
+  args: !SimpleFlagArg
+    name: TRANSFORM
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  description: 'Specify Number of Threads For Feature Counts [Default: 1]'
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: 'Specify directory for output files to be deposited [Default: Working
+    Directory]'
+  args: !SimpleFlagArg
+    name: OUTDIRECTORY
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: Binsanity-profile -i fasta_file -s {sam,bam}_file --id contig_ids.txt\
+  \ -c output_file\n\n    ***********************************************************************\n\
+  \    ******************************BinSanity********************************\n \
+  \   **                                                                   **\n  \
+  \  **  Binsanity-profile is used to generate coverage files for         **\n   \
+  \ **  input to BinSanity. This uses Featurecounts to generate a        **\n    **\
+  \  a coverage profile and transforms data for input into Binsanity, **\n    ** \
+  \ Binsanity-refine, and Binsanity-wf                               **\n    **  \
+  \                                                                 **\n    ***********************************************************************\n\
+  \    ***********************************************************************\n\n\
+  optional arguments:\n  -h, --help            show this help message and exit\n \
+  \ -i INPUTFASTA         Specify fasta file being profiled\n  -s INPUTMAPLOC    \
+  \    \n                            identify location of BAM files\n            \
+  \                BAM files should be indexed and sorted\n  -c OUTCOV           \
+  \  \n                            Identify name of output file for coverage information\n\
+  \  --transform TRANSFORM\n                        \n                           \
+  \ Indicate what type of data transformation you want in the final file [Default:log]:\n\
+  \                            scale --> Scaled by multiplying by 100 and log transforming\n\
+  \                            log --> Log transform\n                           \
+  \ None --> Raw Coverage Values\n                            X5 --> Multiplication\
+  \ by 5\n                            X10 --> Multiplication by 10\n             \
+  \               X100 --> Multiplication by 100\n                            SQR\
+  \ --> Square root\n                            We recommend using a scaled log transformation\
+  \ for initial testing.\n                            Other transformations can be\
+  \ useful on a case by case basis\n  -T THREADS            Specify Number of Threads\
+  \ For Feature Counts [Default: 1]\n  -o OUTDIRECTORY       Specify directory for\
+  \ output files to be deposited [Default: Working Directory]\n  --version       \
+  \      show program's version number and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/binsanity:0.5.3--pyh3252c3a_0

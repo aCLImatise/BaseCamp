@@ -1,0 +1,99 @@
+!Command
+command:
+- network_build
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  - -o
+  - --output
+  - -m
+  - --method
+  description: 'correlation coefficient method (default: spearman)'
+  args: !SimpleFlagArg
+    name: input file
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --log
+  description: '<log, log2 or log10> make a log(x+1) transformation (default: not
+    transform)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --thread
+  description: 'cpu cores (default: 2)'
+  args: !SimpleFlagArg
+    name: number
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --pval
+  description: 'p value cutoff (default: 0.001)'
+  args: !SimpleFlagArg
+    name: number
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --cor
+  description: 'correlation coefficient cutoff (default: 0.1)'
+  args: !SimpleFlagArg
+    name: number
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --signed
+  description: 'singed network (default: n)'
+  args: !SimpleFlagArg
+    name: y or n
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --fdr
+  description: 'calculate FDR (default: n)'
+  args: !SimpleFlagArg
+    name: y or n
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: help information
+  args: !SimpleFlagArg
+    name: print
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: GCEN version
+  args: !SimpleFlagArg
+    name: display
+help_text: "GCEN 0.5.1 by Wen Chen (chenwen@biochen.com, https://www.biochen.com/gcen)\n\
+  network_build usage:\n  network_build -i gene_expression_file -o co_expression_network_file\n\
+  options:\n  -i --input <input file>\n  -o --output <output file>\n  -m --method\
+  \ <pearson or spearman> correlation coefficient method (default: spearman)\n  -l\
+  \ --log <log, log2 or log10> make a log(x+1) transformation (default: not transform)\n\
+  \  -t --thread <number> cpu cores (default: 2)\n  -p --pval <number> p value cutoff\
+  \ (default: 0.001)\n  -c --cor <number> correlation coefficient cutoff (default:\
+  \ 0.1)\n  -s --signed <y or n> singed network (default: n)\n  -f --fdr <y or n>\
+  \ calculate FDR (default: n)\n  -v --version display GCEN version\n  -h --help print\
+  \ help information\nexample:\n  network_build -i ../sample_data/gene_expr.tsv -o\
+  \ ../sample_data/gene_co_expr.network -m spearman -p 0.001 -f y\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/gcen:0.5.1--hc9558a2_0

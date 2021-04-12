@@ -1,0 +1,338 @@
+class: CommandLineTool
+id: install_dependencies.sh.cwl
+inputs:
+- id: in_help
+  doc: Print USAGE, DESCRIPTION and ARGUMENTS; ignore all other parameters
+  type: boolean?
+  inputBinding:
+    prefix: -help
+- id: in_version
+  doc: Print version number;  ignore other arguments
+  type: boolean?
+  inputBinding:
+    prefix: -version
+- id: in_query
+  doc: "Input file name\nDefault = `-'"
+  type: File?
+  inputBinding:
+    prefix: -query
+- id: in_query_loc
+  doc: 'Location on the query sequence in 1-based offsets (Format: start-stop)'
+  type: long?
+  inputBinding:
+    prefix: -query_loc
+- id: in_task
+  doc: "<String, Permissible values: 'blastp' 'blastp-fast' 'blastp-short' >\nTask\
+    \ to execute\nDefault = `blastp'"
+  type: boolean?
+  inputBinding:
+    prefix: -task
+- id: in_db
+  doc: "BLAST database name\n* Incompatible with:  subject, subject_loc"
+  type: string?
+  inputBinding:
+    prefix: -db
+- id: in_out
+  doc: "Output file name\nDefault = `-'"
+  type: File?
+  inputBinding:
+    prefix: -out
+- id: in_evalue
+  doc: "Expectation value (E) threshold for saving hits\nDefault = `10'"
+  type: long?
+  inputBinding:
+    prefix: -evalue
+- id: in_word_size
+  doc: "<Integer, >=2>\nWord size for wordfinder algorithm"
+  type: boolean?
+  inputBinding:
+    prefix: -word_size
+- id: in_gap_open
+  doc: Cost to open a gap
+  type: long?
+  inputBinding:
+    prefix: -gapopen
+- id: in_gap_extend
+  doc: Cost to extend a gap
+  type: long?
+  inputBinding:
+    prefix: -gapextend
+- id: in_matrix
+  doc: Scoring matrix name (normally BLOSUM62)
+  type: long?
+  inputBinding:
+    prefix: -matrix
+- id: in_threshold
+  doc: "<Real, >=0>\nMinimum word score such that the word is added to the BLAST lookup\
+    \ table"
+  type: boolean?
+  inputBinding:
+    prefix: -threshold
+- id: in_comp_based_stats
+  doc: "Use composition-based statistics:\nD or d: default (equivalent to 2 )\n0 or\
+    \ F or f: No composition-based statistics\n1: Composition-based statistics as\
+    \ in NAR 29:2994-3005, 2001\n2 or T or t : Composition-based score adjustment\
+    \ as in Bioinformatics\n21:902-911,\n2005, conditioned on sequence properties\n\
+    3: Composition-based score adjustment as in Bioinformatics 21:902-911,\n2005,\
+    \ unconditionally\nDefault = `2'"
+  type: long?
+  inputBinding:
+    prefix: -comp_based_stats
+- id: in_subject
+  doc: "Subject sequence(s) to search\n* Incompatible with:  db, gilist, seqidlist,\
+    \ negative_gilist,\ndb_soft_mask, db_hard_mask"
+  type: File?
+  inputBinding:
+    prefix: -subject
+- id: in_subject_loc
+  doc: "Location on the subject sequence in 1-based offsets (Format: start-stop)\n\
+    * Incompatible with:  db, gilist, seqidlist, negative_gilist,\ndb_soft_mask, db_hard_mask,\
+    \ remote"
+  type: long?
+  inputBinding:
+    prefix: -subject_loc
+- id: in_out_fmt
+  doc: "alignment view options:\n0 = pairwise,\n1 = query-anchored showing identities,\n\
+    2 = query-anchored no identities,\n3 = flat query-anchored, show identities,\n\
+    4 = flat query-anchored, no identities,\n5 = XML Blast output,\n6 = tabular,\n\
+    7 = tabular with comment lines,\n8 = Text ASN.1,\n9 = Binary ASN.1,\n10 = Comma-separated\
+    \ values,\n11 = BLAST archive format (ASN.1),\n12 = JSON Seqalign output,\n13\
+    \ = JSON Blast output,\n14 = XML2 Blast output\nOptions 6, 7, and 10 can be additionally\
+    \ configured to produce\na custom format specified by space delimited format specifiers.\n\
+    The supported format specifiers are:\nqseqid means Query Seq-id\nqgi means Query\
+    \ GI\nqacc means Query accesion\nqaccver means Query accesion.version\nqlen means\
+    \ Query sequence length\nsseqid means Subject Seq-id\nsallseqid means All subject\
+    \ Seq-id(s), separated by a ';'\nsgi means Subject GI\nsallgi means All subject\
+    \ GIs\nsacc means Subject accession\nsaccver means Subject accession.version\n\
+    sallacc means All subject accessions\nslen means Subject sequence length\nqstart\
+    \ means Start of alignment in query\nqend means End of alignment in query\nsstart\
+    \ means Start of alignment in subject\nsend means End of alignment in subject\n\
+    qseq means Aligned part of query sequence\nsseq means Aligned part of subject\
+    \ sequence\nevalue means Expect value\nbitscore means Bit score\nscore means Raw\
+    \ score\nlength means Alignment length\npident means Percentage of identical matches\n\
+    nident means Number of identical matches\nmismatch means Number of mismatches\n\
+    positive means Number of positive-scoring matches\ngapopen means Number of gap\
+    \ openings\ngaps means Total number of gaps\nppos means Percentage of positive-scoring\
+    \ matches\nframes means Query and subject frames separated by a '/'\nqframe means\
+    \ Query frame\nsframe means Subject frame\nbtop means Blast traceback operations\
+    \ (BTOP)\nstaxids means unique Subject Taxonomy ID(s), separated by a ';'\n(in\
+    \ numerical order)\nsscinames means unique Subject Scientific Name(s), separated\
+    \ by a ';'\nscomnames means unique Subject Common Name(s), separated by a ';'\n\
+    sblastnames means unique Subject Blast Name(s), separated by a ';'\n(in alphabetical\
+    \ order)\nsskingdoms means unique Subject Super Kingdom(s), separated by a ';'\n\
+    (in alphabetical order)\nstitle means Subject Title\nsalltitles means All Subject\
+    \ Title(s), separated by a '<>'\nsstrand means Subject Strand\nqcovs means Query\
+    \ Coverage Per Subject\nqcovhsp means Query Coverage Per HSP\nWhen not provided,\
+    \ the default value is:\n'qseqid sseqid pident length mismatch gapopen qstart\
+    \ qend sstart send\nevalue bitscore', which is equivalent to the keyword 'std'\n\
+    Default = `0'"
+  type: long?
+  inputBinding:
+    prefix: -outfmt
+- id: in_show_gis
+  doc: Show NCBI GIs in deflines?
+  type: boolean?
+  inputBinding:
+    prefix: -show_gis
+- id: in_num_descriptions
+  doc: "<Integer, >=0>\nNumber of database sequences to show one-line descriptions\
+    \ for\nNot applicable for outfmt > 4\nDefault = `500'\n* Incompatible with:  max_target_seqs"
+  type: boolean?
+  inputBinding:
+    prefix: -num_descriptions
+- id: in_num_alignments
+  doc: "<Integer, >=0>\nNumber of database sequences to show alignments for\nDefault\
+    \ = `250'\n* Incompatible with:  max_target_seqs"
+  type: boolean?
+  inputBinding:
+    prefix: -num_alignments
+- id: in_line_length
+  doc: "<Integer, >=1>\nLine length for formatting alignments\nNot applicable for\
+    \ outfmt > 4\nDefault = `60'"
+  type: boolean?
+  inputBinding:
+    prefix: -line_length
+- id: in_html
+  doc: Produce HTML output?
+  type: boolean?
+  inputBinding:
+    prefix: -html
+- id: in_seg
+  doc: "Filter query sequence with SEG (Format: 'yes', 'window locut hicut', or\n\
+    'no' to disable)\nDefault = `no'"
+  type: string?
+  inputBinding:
+    prefix: -seg
+- id: in_soft_masking
+  doc: "Apply filtering locations as soft masks\nDefault = `false'"
+  type: boolean?
+  inputBinding:
+    prefix: -soft_masking
+- id: in_l_case_masking
+  doc: Use lower case filtering in query and subject sequence(s)?
+  type: boolean?
+  inputBinding:
+    prefix: -lcase_masking
+- id: in_gi_list
+  doc: "Restrict search of database to list of GI's\n* Incompatible with:  negative_gilist,\
+    \ seqidlist, remote, subject,\nsubject_loc"
+  type: string?
+  inputBinding:
+    prefix: -gilist
+- id: in_seq_id_list
+  doc: "Restrict search of database to list of SeqId's\n* Incompatible with:  gilist,\
+    \ negative_gilist, remote, subject,\nsubject_loc"
+  type: string?
+  inputBinding:
+    prefix: -seqidlist
+- id: in_negative_gi_list
+  doc: "Restrict search of database to everything except the listed GIs\n* Incompatible\
+    \ with:  gilist, seqidlist, remote, subject, subject_loc"
+  type: string?
+  inputBinding:
+    prefix: -negative_gilist
+- id: in_entrez_query
+  doc: "Restrict search with the given Entrez query\n* Requires:  remote"
+  type: string?
+  inputBinding:
+    prefix: -entrez_query
+- id: in_db_soft_mask
+  doc: "Filtering algorithm ID to apply to the BLAST database as soft masking\n* Incompatible\
+    \ with:  db_hard_mask, subject, subject_loc"
+  type: string?
+  inputBinding:
+    prefix: -db_soft_mask
+- id: in_db_hard_mask
+  doc: "Filtering algorithm ID to apply to the BLAST database as hard masking\n* Incompatible\
+    \ with:  db_soft_mask, subject, subject_loc"
+  type: string?
+  inputBinding:
+    prefix: -db_hard_mask
+- id: in_q_cov_hsp_perc
+  doc: "<Real, 0..100>\nPercent query coverage per hsp"
+  type: boolean?
+  inputBinding:
+    prefix: -qcov_hsp_perc
+- id: in_max_hsps
+  doc: "<Integer, >=1>\nSet maximum number of HSPs per subject sequence to save for\
+    \ each query"
+  type: boolean?
+  inputBinding:
+    prefix: -max_hsps
+- id: in_culling_limit
+  doc: "<Integer, >=0>\nIf the query range of a hit is enveloped by that of at least\
+    \ this many\nhigher-scoring hits, delete the hit\n* Incompatible with:  best_hit_overhang,\
+    \ best_hit_score_edge"
+  type: boolean?
+  inputBinding:
+    prefix: -culling_limit
+- id: in_best_hit_overhang
+  doc: "<Real, (>0 and <0.5)>\nBest Hit algorithm overhang value (recommended value:\
+    \ 0.1)\n* Incompatible with:  culling_limit"
+  type: boolean?
+  inputBinding:
+    prefix: -best_hit_overhang
+- id: in_best_hit_score_edge
+  doc: "<Real, (>0 and <0.5)>\nBest Hit algorithm score edge value (recommended value:\
+    \ 0.1)\n* Incompatible with:  culling_limit"
+  type: boolean?
+  inputBinding:
+    prefix: -best_hit_score_edge
+- id: in_max_target_seqs
+  doc: "<Integer, >=1>\nMaximum number of aligned sequences to keep\nNot applicable\
+    \ for outfmt <= 4\nDefault = `500'\n* Incompatible with:  num_descriptions, num_alignments"
+  type: boolean?
+  inputBinding:
+    prefix: -max_target_seqs
+- id: in_db_size
+  doc: Effective length of the database
+  type: long?
+  inputBinding:
+    prefix: -dbsize
+- id: in_search_sp
+  doc: "<Int8, >=0>\nEffective length of the search space"
+  type: boolean?
+  inputBinding:
+    prefix: -searchsp
+- id: in_sum_stats
+  doc: Use sum statistics
+  type: boolean?
+  inputBinding:
+    prefix: -sum_stats
+- id: in_import_search_strategy
+  doc: "Search strategy to use\n* Incompatible with:  export_search_strategy"
+  type: File?
+  inputBinding:
+    prefix: -import_search_strategy
+- id: in_export_search_strategy
+  doc: "File name to record the search strategy used\n* Incompatible with:  import_search_strategy"
+  type: File?
+  inputBinding:
+    prefix: -export_search_strategy
+- id: in_x_drop_un_gap
+  doc: X-dropoff value (in bits) for ungapped extensions
+  type: string?
+  inputBinding:
+    prefix: -xdrop_ungap
+- id: in_x_drop_gap
+  doc: X-dropoff value (in bits) for preliminary gapped extensions
+  type: string?
+  inputBinding:
+    prefix: -xdrop_gap
+- id: in_x_drop_gap_final
+  doc: X-dropoff value (in bits) for final gapped alignment
+  type: string?
+  inputBinding:
+    prefix: -xdrop_gap_final
+- id: in_window_size
+  doc: "<Integer, >=0>\nMultiple hits window size, use 0 to specify 1-hit algorithm"
+  type: boolean?
+  inputBinding:
+    prefix: -window_size
+- id: in_un_gapped
+  doc: Perform ungapped alignment only?
+  type: boolean?
+  inputBinding:
+    prefix: -ungapped
+- id: in_parse_def_lines
+  doc: Should the query and subject defline(s) be parsed?
+  type: boolean?
+  inputBinding:
+    prefix: -parse_deflines
+- id: in_num_threads
+  doc: "<Integer, >=1>\nNumber of threads (CPUs) to use in the BLAST search\nDefault\
+    \ = `1'\n* Incompatible with:  remote"
+  type: boolean?
+  inputBinding:
+    prefix: -num_threads
+- id: in_remote
+  doc: "Execute search remotely?\n* Incompatible with:  gilist, seqidlist, negative_gilist,\
+    \ subject_loc,\nnum_threads"
+  type: boolean?
+  inputBinding:
+    prefix: -remote
+- id: in_use_sw_t_back
+  doc: Compute locally optimal Smith-Waterman alignments?
+  type: boolean?
+  inputBinding:
+    prefix: -use_sw_tback
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_out
+  doc: "Output file name\nDefault = `-'"
+  type: File?
+  outputBinding:
+    glob: $(inputs.in_out)
+- id: out_export_search_strategy
+  doc: "File name to record the search strategy used\n* Incompatible with:  import_search_strategy"
+  type: File?
+  outputBinding:
+    glob: $(inputs.in_export_search_strategy)
+hints:
+- class: DockerRequirement
+  dockerPull: quay.io/biocontainers/eukulele:1.0.4--pyhcb32578_0
+cwlVersion: v1.1
+baseCommand:
+- install_dependencies.sh

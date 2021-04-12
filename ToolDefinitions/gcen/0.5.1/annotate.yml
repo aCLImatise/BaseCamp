@@ -1,0 +1,83 @@
+!Command
+command:
+- annotate
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --go
+  - -k
+  - --kegg
+  description: (if the -g/--go is specified, the -k/--kegg are ignored)
+  args: !SimpleFlagArg
+    name: go-basic.obo file
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --assoc
+  - -n
+  - --network
+  - -m
+  - --module
+  description: (if -n is specified, the -m is ignored)
+  args: !SimpleFlagArg
+    name: gene/go association file
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --pval
+  description: 'p value cutoff (default: 0.05)'
+  args: !SimpleFlagArg
+    name: number
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  - -t
+  - --thread
+  description: 'cpu cores (default: 2)'
+  args: !SimpleFlagArg
+    name: output directory
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: help information
+  args: !SimpleFlagArg
+    name: print
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: GCEN version
+  args: !SimpleFlagArg
+    name: display
+help_text: "GCEN 0.5.1 by Wen Chen (chenwen@biochen.com, https://www.biochen.com/gcen)\n\
+  annotate usage:\n  annotate -g go-basic.obo -a gene_go_association_file -n input_network\
+  \ -o out_dir\noptions:\n  -g --go <go-basic.obo file>\n  -k --kegg <kegg information>\
+  \ (if the -g/--go is specified, the -k/--kegg are ignored)\n  -a --assoc <gene/go\
+  \ association file>\n  -n --network <network file>\n  -m --module <module file>\
+  \ (if -n is specified, the -m is ignored)\n  -p --pval <number> p value cutoff (default:\
+  \ 0.05)\n  -o --output <output directory>\n  -t --thread <number> cpu cores (default:\
+  \ 2)\n  -v --version display GCEN version\n  -h --help print help information\n\
+  examples:\n  ./annotate -g ../sample_data/go-basic.obo -a ../sample_data/gene_go.assoc\
+  \ -n ../sample_data/gene_co_expr.network -o ../sample_data/network_go_annotation\n\
+  \  ./annotate -g ../sample_data/go-basic.obo -a ../sample_data/gene_go.assoc -m\
+  \ ../sample_data/module.txt -o ../sample_data/module_go_annotation\n  ./annotate\
+  \ -k ../sample_data/K2ko.tsv -a ../sample_data/gene_kegg.assoc -n ../sample_data/gene_co_expr.network\
+  \ -o ../sample_data/network_kegg_annotation\n  ./annotate -k ../sample_data/K2ko.tsv\
+  \ -a ../sample_data/gene_kegg.assoc -m ./sample_data/module.txt -o ../sample_data/module_kegg_annotation\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/gcen:0.5.1--hc9558a2_0

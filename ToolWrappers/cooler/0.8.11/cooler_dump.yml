@@ -1,0 +1,198 @@
+!Command
+command:
+- cooler
+- dump
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: based.
+  description: --one-based-starts              Print start coordinates as one-based
+    rather
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --table
+  description: "[chroms|bins|pixels]\nWhich table to dump. Choosing 'chroms' or\n\
+    'bins' will cause all pixel-related options\nto be ignored. Note that for coolers\
+    \ stored\nin symmetric-upper mode, 'pixels' only holds\nthe upper triangle values\
+    \ of the matrix.\n[default: pixels]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --columns
+  description: "[,]      Restrict output to a subset of columns,\nprovided as a comma-separated\
+    \ list."
+  args: !SimpleFlagArg
+    name: SEPARATED
+- !Flag
+  optional: true
+  synonyms:
+  - -H
+  - --header
+  description: "Print the header of column names as the\nfirst row.  [default: False]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --na-rep
+  description: "Missing data representation. Default is\nempty ''."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --float-format
+  description: "Format string for floating point numbers\n(e.g. '.12g', '03.2f').\
+    \  [default: g]"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --range
+  description: "The coordinates of a genomic region shown\nalong the row dimension,\
+    \ in UCSC-style\nnotation. (Example:\nchr1:10,000,000-11,000,000). If omitted,\
+    \ the\nentire contact matrix is printed."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -r2
+  - --range2
+  description: "The coordinates of a genomic region shown\nalong the column dimension.\
+    \ If omitted, the\ncolumn range is the same as the row range."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --matrix
+  description: "For coolers stored in symmetric-upper mode,\nensure any empty areas\
+    \ of the genomic query\nwindow are populated by generating the\nlower-triangular\
+    \ pixels.  [default: False]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --balanced
+  - --no-balance
+  description: "Apply balancing weights to data. This will\nprint an extra column\
+    \ called `balanced`\n[default: False]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --join
+  description: "Print the full chromosome bin coordinates\ninstead of bin IDs. This\
+    \ will replace the\n`bin1_id` column with `chrom1`, `start1`,\nand `end1`, and\
+    \ the `bin2_id` column with\n`chrom2`, `start2` and `end2`.  [default:\nFalse]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --annotate
+  description: "[,]         Join additional columns from the bin table\nagainst the\
+    \ pixels. Provide a comma\nseparated list of column names (no spaces).\nThe merged\
+    \ columns will be suffixed by '1'\nand '2' accordingly."
+  args: !SimpleFlagArg
+    name: SEPARATED
+- !Flag
+  optional: true
+  synonyms:
+  - --one-based-ids
+  description: Print bin IDs as one-based rather than zero-
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --chunksize
+  description: "Sets the amount of pixel data loaded from\ndisk at one time. Can affect\
+    \ the performance\nof joins on high resolution datasets.\nDefault is to load as\
+    \ many rows as there are\nbins."
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out
+  description: "Output text file If .gz extension is\ndetected, file is written using\
+    \ zlib.\nDefault behavior is to stream to stdout."
+  args: !SimpleFlagArg
+    name: TEXT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: cooler dump [OPTIONS] COOL_PATH\n\n  Dump a cooler's data to a\
+  \ text stream.\n\n  COOL_PATH : Path to COOL file or cooler URI.\n\nOptions:\n \
+  \ -t, --table [chroms|bins|pixels]\n                                  Which table\
+  \ to dump. Choosing 'chroms' or\n                                  'bins' will cause\
+  \ all pixel-related options\n                                  to be ignored. Note\
+  \ that for coolers stored\n                                  in symmetric-upper\
+  \ mode, 'pixels' only holds\n                                  the upper triangle\
+  \ values of the matrix.\n                                  [default: pixels]\n\n\
+  \  -c, --columns SEPARATED[,]      Restrict output to a subset of columns,\n   \
+  \                               provided as a comma-separated list.\n\n  -H, --header\
+  \                    Print the header of column names as the\n                 \
+  \                 first row.  [default: False]\n\n  --na-rep TEXT              \
+  \     Missing data representation. Default is\n                                \
+  \  empty ''.\n\n  --float-format TEXT             Format string for floating point\
+  \ numbers\n                                  (e.g. '.12g', '03.2f').  [default:\
+  \ g]\n\n  -r, --range TEXT                The coordinates of a genomic region shown\n\
+  \                                  along the row dimension, in UCSC-style\n    \
+  \                              notation. (Example:\n                           \
+  \       chr1:10,000,000-11,000,000). If omitted, the\n                         \
+  \         entire contact matrix is printed.\n\n  -r2, --range2 TEXT            \
+  \  The coordinates of a genomic region shown\n                                 \
+  \ along the column dimension. If omitted, the\n                                \
+  \  column range is the same as the row range.\n\n  -m, --matrix                \
+  \    For coolers stored in symmetric-upper mode,\n                             \
+  \     ensure any empty areas of the genomic query\n                            \
+  \      window are populated by generating the\n                                \
+  \  lower-triangular pixels.  [default: False]\n\n  -b, --balanced / --no-balance\
+  \   Apply balancing weights to data. This will\n                               \
+  \   print an extra column called `balanced`\n                                  [default:\
+  \ False]\n\n  --join                          Print the full chromosome bin coordinates\n\
+  \                                  instead of bin IDs. This will replace the\n \
+  \                                 `bin1_id` column with `chrom1`, `start1`,\n  \
+  \                                and `end1`, and the `bin2_id` column with\n   \
+  \                               `chrom2`, `start2` and `end2`.  [default:\n    \
+  \                              False]\n\n  --annotate SEPARATED[,]         Join\
+  \ additional columns from the bin table\n                                  against\
+  \ the pixels. Provide a comma\n                                  separated list\
+  \ of column names (no spaces).\n                                  The merged columns\
+  \ will be suffixed by '1'\n                                  and '2' accordingly.\n\
+  \n  --one-based-ids                 Print bin IDs as one-based rather than zero-\n\
+  \                                  based.\n\n  --one-based-starts              Print\
+  \ start coordinates as one-based rather\n                                  than\
+  \ zero-based.\n\n  -k, --chunksize INTEGER         Sets the amount of pixel data\
+  \ loaded from\n                                  disk at one time. Can affect the\
+  \ performance\n                                  of joins on high resolution datasets.\n\
+  \                                  Default is to load as many rows as there are\n\
+  \                                  bins.\n\n  -o, --out TEXT                  Output\
+  \ text file If .gz extension is\n                                  detected, file\
+  \ is written using zlib.\n                                  Default behavior is\
+  \ to stream to stdout.\n\n  -h, --help                      Show this message and\
+  \ exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/cooler:0.8.11--pyh3252c3a_0

@@ -1,0 +1,241 @@
+!Command
+command:
+- genewalk
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --project
+  description: "A name for the project which determines the folder\nwithin the base\
+    \ folder in which the intermediate and\nfinal results are written. Must contain\
+    \ only\ncharacters that are valid in folder names."
+  args: !SimpleFlagArg
+    name: PROJECT
+- !Flag
+  optional: true
+  synonyms:
+  - --genes
+  description: "Path to a text file with a list of genes of interest,\nfor exampledifferentially\
+    \ expressed genes. The type of\ngene identifiers used in the text file are provided\
+    \ in\nthe id_type argument."
+  args: !SimpleFlagArg
+    name: GENES
+- !Flag
+  optional: true
+  synonyms:
+  - --id_type
+  description: "The type of gene IDs provided in the text file in the\ngenes argument.\
+    \ Possible values are: hgnc_symbol,\nhgnc_id, ensembl_id, mgi_id,rgd_id, entrez_human,\n\
+    entrez_mouse, and custom. If custom, a network_source\nof sif_annot or sif_full\
+    \ must be used."
+  args: !ChoiceFlagArg
+    choices: !!set
+      hgnc_id:
+      entrez_human:
+      mgi_id:
+      entrez_mouse:
+      custom:
+      hgnc_symbol:
+      ensembl_id:
+      rgd_id:
+- !Flag
+  optional: true
+  synonyms:
+  - --stage
+  description: 'The stage of processing to run. Default: all'
+  args: !ChoiceFlagArg
+    choices: !!set
+      node_vectors:
+      null_distribution:
+      all:
+      statistics:
+      visual:
+- !Flag
+  optional: true
+  synonyms:
+  - --base_folder
+  description: "The base folder used to store GeneWalk temporary and\nresult files\
+    \ for a given project. Default:\n/root/genewalk"
+  args: !SimpleFlagArg
+    name: BASE_FOLDER
+- !Flag
+  optional: true
+  synonyms:
+  - --network_source
+  description: "The source of the network to be used. Possible values\nare: pc, indra,\
+    \ edge_list, sif, sif_annot, and\nsif_full. In case of indra, edge_list, sif,\
+    \ sif_annot,\nand sif_full, the network_file argument must be\nspecified. Default:\
+    \ pc"
+  args: !ChoiceFlagArg
+    choices: !!set
+      edge_list:
+      sif:
+      pc:
+      indra:
+      sif_annot:
+      sif_full:
+- !Flag
+  optional: true
+  synonyms:
+  - --network_file
+  description: "If network_source is indra, this argument points to a\nPython pickle\
+    \ file in which a list of INDRA Statements\nconstituting the network is contained.\
+    \ In case\nnetwork_source is edge_list, sif, sif_annot or\nsif_full, the network_file\
+    \ argument points to a text\nfile representing the network. See README section\n\
+    Custom input networks for full description of file\nformat requirements."
+  args: !SimpleFlagArg
+    name: NETWORK_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --nproc
+  description: "The number of processors to use in a multiprocessing\nenvironment.\
+    \ Default: 1"
+  args: !SimpleFlagArg
+    name: NPROC
+- !Flag
+  optional: true
+  synonyms:
+  - --nreps_graph
+  description: "The number of repeats to run when calculating node\nvectors on the\
+    \ GeneWalk graph. Default: 3"
+  args: !SimpleFlagArg
+    name: NREPS_GRAPH
+- !Flag
+  optional: true
+  synonyms:
+  - --nreps_null
+  description: "The number of repeats to run when calculating node\nvectors on the\
+    \ random network graphs for constructing\nthe null distribution. Default: 3"
+  args: !SimpleFlagArg
+    name: NREPS_NULL
+- !Flag
+  optional: true
+  synonyms:
+  - --alpha_fdr
+  description: "The false discovery rate to use when outputting the\nfinal statistics\
+    \ table. If 1 (default), all\nsimilarities are output, otherwise only the ones\
+    \ whose\nfalse discovery rate are below this parameter are\nincluded. For visualization\
+    \ a default value of 0.1 for\nboth global and gene-specific plots is used. Lower\n\
+    this value to increase the stringency of the regulator\ngene selection procedure.\
+    \ Default: 1"
+  args: !SimpleFlagArg
+    name: ALPHA_FDR
+- !Flag
+  optional: true
+  synonyms:
+  - --dim_rep
+  description: "Dimension of vector representations (embeddings). This\nvalue should\
+    \ only be increased if genewalk with the\ndefault value generates no statistically\
+    \ significant\nresults, for instance with very large (>2500) input\ngene lists.\
+    \ Alternatively, it can be decreased in case\n(nearly) all GO annotations are\
+    \ significant, for\ninstance with very short gene lists. Default: 8"
+  args: !SimpleFlagArg
+    name: DIM_REP
+- !Flag
+  optional: true
+  synonyms:
+  - --save_dw
+  description: "If True, the full DeepWalk object for each repeat is\nsaved in the\
+    \ project folder. This can be useful for\ndebugging but the files are typically\
+    \ very large.\nDefault: False"
+  args: !SimpleFlagArg
+    name: SAVE_DW
+- !Flag
+  optional: true
+  synonyms:
+  - --random_seed
+  description: "If provided, the random number generator is seeded\nwith the given\
+    \ value. This should only be used if the\ngoal is to deterministically reproduce\
+    \ a prior result\nobtained with the same random seed.\n"
+  args: !SimpleFlagArg
+    name: RANDOM_SEED
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Print the version of GeneWalk and exit.
+  args: !EmptyFlagArg {}
+help_text: "usage: genewalk [-h] [--version] --project PROJECT --genes GENES --id_type\n\
+  \                {hgnc_symbol,hgnc_id,ensembl_id,mgi_id,rgd_id,entrez_human,entrez_mouse,custom}\n\
+  \                [--stage {all,node_vectors,null_distribution,statistics,visual}]\n\
+  \                [--base_folder BASE_FOLDER]\n                [--network_source\
+  \ {pc,indra,edge_list,sif,sif_annot,sif_full}]\n                [--network_file\
+  \ NETWORK_FILE] [--nproc NPROC]\n                [--nreps_graph NREPS_GRAPH] [--nreps_null\
+  \ NREPS_NULL]\n                [--alpha_fdr ALPHA_FDR] [--dim_rep DIM_REP]\n   \
+  \             [--save_dw SAVE_DW] [--random_seed RANDOM_SEED]\n\nRun GeneWalk on\
+  \ a list of genes provided in a text file.\n\noptional arguments:\n  -h, --help\
+  \            show this help message and exit\n  --version             Print the\
+  \ version of GeneWalk and exit.\n  --project PROJECT     A name for the project\
+  \ which determines the folder\n                        within the base folder in\
+  \ which the intermediate and\n                        final results are written.\
+  \ Must contain only\n                        characters that are valid in folder\
+  \ names.\n  --genes GENES         Path to a text file with a list of genes of interest,\n\
+  \                        for exampledifferentially expressed genes. The type of\n\
+  \                        gene identifiers used in the text file are provided in\n\
+  \                        the id_type argument.\n  --id_type {hgnc_symbol,hgnc_id,ensembl_id,mgi_id,rgd_id,entrez_human,entrez_mouse,custom}\n\
+  \                        The type of gene IDs provided in the text file in the\n\
+  \                        genes argument. Possible values are: hgnc_symbol,\n   \
+  \                     hgnc_id, ensembl_id, mgi_id,rgd_id, entrez_human,\n      \
+  \                  entrez_mouse, and custom. If custom, a network_source\n     \
+  \                   of sif_annot or sif_full must be used.\n  --stage {all,node_vectors,null_distribution,statistics,visual}\n\
+  \                        The stage of processing to run. Default: all\n  --base_folder\
+  \ BASE_FOLDER\n                        The base folder used to store GeneWalk temporary\
+  \ and\n                        result files for a given project. Default:\n    \
+  \                    /root/genewalk\n  --network_source {pc,indra,edge_list,sif,sif_annot,sif_full}\n\
+  \                        The source of the network to be used. Possible values\n\
+  \                        are: pc, indra, edge_list, sif, sif_annot, and\n      \
+  \                  sif_full. In case of indra, edge_list, sif, sif_annot,\n    \
+  \                    and sif_full, the network_file argument must be\n         \
+  \               specified. Default: pc\n  --network_file NETWORK_FILE\n        \
+  \                If network_source is indra, this argument points to a\n       \
+  \                 Python pickle file in which a list of INDRA Statements\n     \
+  \                   constituting the network is contained. In case\n           \
+  \             network_source is edge_list, sif, sif_annot or\n                 \
+  \       sif_full, the network_file argument points to a text\n                 \
+  \       file representing the network. See README section\n                    \
+  \    Custom input networks for full description of file\n                      \
+  \  format requirements.\n  --nproc NPROC         The number of processors to use\
+  \ in a multiprocessing\n                        environment. Default: 1\n  --nreps_graph\
+  \ NREPS_GRAPH\n                        The number of repeats to run when calculating\
+  \ node\n                        vectors on the GeneWalk graph. Default: 3\n  --nreps_null\
+  \ NREPS_NULL\n                        The number of repeats to run when calculating\
+  \ node\n                        vectors on the random network graphs for constructing\n\
+  \                        the null distribution. Default: 3\n  --alpha_fdr ALPHA_FDR\n\
+  \                        The false discovery rate to use when outputting the\n \
+  \                       final statistics table. If 1 (default), all\n          \
+  \              similarities are output, otherwise only the ones whose\n        \
+  \                false discovery rate are below this parameter are\n           \
+  \             included. For visualization a default value of 0.1 for\n         \
+  \               both global and gene-specific plots is used. Lower\n           \
+  \             this value to increase the stringency of the regulator\n         \
+  \               gene selection procedure. Default: 1\n  --dim_rep DIM_REP     Dimension\
+  \ of vector representations (embeddings). This\n                        value should\
+  \ only be increased if genewalk with the\n                        default value\
+  \ generates no statistically significant\n                        results, for instance\
+  \ with very large (>2500) input\n                        gene lists. Alternatively,\
+  \ it can be decreased in case\n                        (nearly) all GO annotations\
+  \ are significant, for\n                        instance with very short gene lists.\
+  \ Default: 8\n  --save_dw SAVE_DW     If True, the full DeepWalk object for each\
+  \ repeat is\n                        saved in the project folder. This can be useful\
+  \ for\n                        debugging but the files are typically very large.\n\
+  \                        Default: False\n  --random_seed RANDOM_SEED\n         \
+  \               If provided, the random number generator is seeded\n           \
+  \             with the given value. This should only be used if the\n          \
+  \              goal is to deterministically reproduce a prior result\n         \
+  \               obtained with the same random seed.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/genewalk:1.5.2--pyh3252c3a_0

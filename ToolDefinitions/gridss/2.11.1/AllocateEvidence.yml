@@ -1,0 +1,93 @@
+!Command
+command:
+- AllocateEvidence
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --stdhelp
+  - -H
+  description: "Displays options specific to this tool AND options common to all Picard\
+    \ command line\ntools."
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: Displays options specific to this tool.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Displays program version.
+  args: !EmptyFlagArg {}
+help_text: "USAGE: AllocateEvidence [options]\n\nEvidence reallocation is required\
+  \ to ensure that any given read/read pair/assembly  supports only a consistent set\n\
+  breakpoints. \nFor discordant read pairs, this means that only a single breakpoint\
+  \ can be supported. \nFor split reads, only a single set of partial read mappings\
+  \ can be supported, and only one breakpoint per split can be\nsupported.\nFor indels,\
+  \ only a single read mapping can be supported, and only one breakpoint per indel\
+  \ can be supported.\nNote: the EID attribute must be populated with the relevant\
+  \ GRIDSS EvidenceID's using AllocateEvidence\nVersion: 2.11.1-gridss\n\n\nOptions:\n\
+  \n--help\n-h                            Displays options specific to this tool.\n\
+  \n--stdhelp\n-H                            Displays options specific to this tool\
+  \ AND options common to all Picard command line\n                              tools.\n\
+  \n--version                     Displays program version.\n\nALLOCATION_STRATEGY=EvidenceAllocationStrategy\n\
+  \                              Evidence allocation strategy used to uniquely assign\
+  \ evidence.  Default value: GREEDY.\n                              This option can\
+  \ be set to 'null' to clear the default value. Possible values: {GREEDY} \n\nALLOCATE_ASSEMBLIES=Boolean\
+  \   Indicates whether supporting assemblies should be allocated.  Default value:\
+  \ true. This\n                              option can be set to 'null' to clear\
+  \ the default value. Possible values: {true, false} \n\nALLOCATE_READS=Boolean \
+  \       Indicates whether supporting reads should be allocated.  Default value:\
+  \ true. This option\n                              can be set to 'null' to clear\
+  \ the default value. Possible values: {true, false} \n\nINPUT_VCF=File\nVCF=File\
+  \                      Coordinate sorted VCF file  Required. \n\nOUTPUT_VCF=File\n\
+  O=File                        VCF structural variation calls.  Required. \n\nASSEMBLY=File\
+  \                 Breakend assemblies which have undergone split read identification\
+  \  Default value: null.\n                              This option may be specified\
+  \ 0 or more times. \n\nINPUT=File\nI=File                        Coordinate-sorted\
+  \ input BAM file.  Default value: null. This option may be specified 0 or\n    \
+  \                          more times. \n\nINPUT_LABEL=String            Input label.\
+  \ Variant calling evidence breakdowns are reported for each label. Default\n   \
+  \                           labels correspond to INPUT filenames. When specifying\
+  \ labels, labels must be provided for\n                              all input files.\
+  \  Default value: null. This option may be specified 0 or more times. \n\nINPUT_MAX_FRAGMENT_SIZE=Integer\n\
+  \                              Per input maximum concordant fragment size.  Default\
+  \ value: null. This option may be\n                              specified 0 or\
+  \ more times. \n\nINPUT_MIN_FRAGMENT_SIZE=Integer\n                            \
+  \  Per input minimum concordant fragment size.  Default value: null. This option\
+  \ may be\n                              specified 0 or more times. \n\nREAD_PAIR_CONCORDANT_PERCENT=Float\n\
+  \                              Percent of read pairs considered concorant (0.0-1.0).\
+  \ If this is unset, the SAM proper\n                              pair flag is used\
+  \ to determine whether a read is discordantly aligned. Explicit fragment\n     \
+  \                         size specification overrides this setting.  Default value:\
+  \ 0.995. This option can be set\n                              to 'null' to clear\
+  \ the default value. \n\nBLACKLIST=File\nBL=File                       BED blacklist\
+  \ of regions to ignore. Assembly of regions such as high-coverage centromeric\n\
+  \                              repeats is slow, and if such regions are to be filtered\
+  \ in downstream analysis anyway,\n                              blacklisting those\
+  \ region will improve runtime performance. For human WGS, the ENCODE DAC\n     \
+  \                         blacklist is recommended.  Default value: null. \n\nCONFIGURATION_FILE=File\n\
+  C=File                        gridss configuration file containing overrides  Default\
+  \ value: null. \n\nWORKER_THREADS=Integer\nTHREADS=Integer               Number\
+  \ of worker threads to spawn. Defaults to number of cores available. Note that I/O\n\
+  \                              threads are not included in this worker thread count\
+  \ so CPU usage can be higher than the\n                              number of worker\
+  \ thread.  Default value: 2. This option can be set to 'null' to clear the\n   \
+  \                           default value. \n\nWORKING_DIR=File              Directory\
+  \ to place intermediate results directories. Default location is the same\n    \
+  \                          directory as the associated input or output file.  Default\
+  \ value: null. \n\nIGNORE_DUPLICATES=Boolean     Ignore reads marked as duplicates.\
+  \  Default value: true. This option can be set to 'null'\n                     \
+  \         to clear the default value. Possible values: {true, false} \n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/gridss:2.11.1--hdfd78af_1

@@ -1,0 +1,154 @@
+!Command
+command:
+- clustering.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --nb-cpus
+  description: 'The maximum number of CPUs used. [Default: 1]'
+  args: !SimpleFlagArg
+    name: NB_CPUS
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: Keep temporary files to debug program.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --distance
+  description: "Maximum distance between sequences in each aggregation\nstep. RECOMMENDED\
+    \ : d=1 in combination with\n--fastidious option [Default: 1]"
+  args: !SimpleFlagArg
+    name: DISTANCE
+- !Flag
+  optional: true
+  synonyms:
+  - --fastidious
+  description: "use the fastidious option of swarm to refine OTU.\nRECOMMENDED in\
+    \ combination with a distance equal to 1\n(-d). it is only usable with d=1 and\
+    \ mutually\nexclusive with --denoising."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --denoising
+  description: "denoise data by clustering read with distance=1 before\nperform real\
+    \ clustering. It is mutually exclusive with\n--fastidious."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --input-fasta
+  description: 'The sequences file (format: FASTA).'
+  args: !SimpleFlagArg
+    name: INPUT_FASTA
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --input-count
+  description: "The count file for 'fasta-file' (format: TSV). It\ncontains the count\
+    \ by sample for each sequence."
+  args: !SimpleFlagArg
+    name: INPUT_COUNT
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --output-biom
+  description: "This output file will contain the abondance by sample\nfor each cluster\
+    \ (format: BIOM). [Default:\nclustering_abundance.biom]"
+  args: !SimpleFlagArg
+    name: OUTPUT_BIOM
+- !Flag
+  optional: true
+  synonyms:
+  - --output-fasta
+  description: "This output file will contain the seed sequence for\neach cluster\
+    \ (format: FASTA). [Default:\nclustering_seeds.fasta]"
+  args: !SimpleFlagArg
+    name: OUTPUT_FASTA
+- !Flag
+  optional: true
+  synonyms:
+  - --output-compo
+  description: "This output file will contain the composition of each\ncluster (format:\
+    \ TSV). One Line is a cluster ; each\ncolumn is a sequence ID. [Default:\nclustering_swarms_composition.tsv]"
+  args: !SimpleFlagArg
+    name: OUTPUT_COMPO
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --log-file
+  description: "This output file will contain several information on\nexecuted commands.\n"
+  args: !SimpleFlagArg
+    name: LOG_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: ''
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: clustering.py [-h] [-p NB_CPUS] [--debug] [-v] [-d DISTANCE]\n\
+  \                     [--fastidious] [-n] -f INPUT_FASTA -c INPUT_COUNT\n      \
+  \               [-b OUTPUT_BIOM] [--output-fasta OUTPUT_FASTA]\n               \
+  \      [--output-compo OUTPUT_COMPO] [-l LOG_FILE]\n\nSingle-linkage clustering\
+  \ on sequences.\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  -p NB_CPUS, --nb-cpus NB_CPUS\n                        The maximum\
+  \ number of CPUs used. [Default: 1]\n  --debug               Keep temporary files\
+  \ to debug program.\n  -v, --version         show program's version number and exit\n\
+  \nRecommended options:\n  -d DISTANCE, --distance DISTANCE\n                   \
+  \     Maximum distance between sequences in each aggregation\n                 \
+  \       step. RECOMMENDED : d=1 in combination with\n                        --fastidious\
+  \ option [Default: 1]\n  --fastidious          use the fastidious option of swarm\
+  \ to refine OTU.\n                        RECOMMENDED in combination with a distance\
+  \ equal to 1\n                        (-d). it is only usable with d=1 and mutually\n\
+  \                        exclusive with --denoising.\n\nother clustering option:\n\
+  \  -n, --denoising       denoise data by clustering read with distance=1 before\n\
+  \                        perform real clustering. It is mutually exclusive with\n\
+  \                        --fastidious.\n\nInputs:\n  -f INPUT_FASTA, --input-fasta\
+  \ INPUT_FASTA\n                        The sequences file (format: FASTA).\n  -c\
+  \ INPUT_COUNT, --input-count INPUT_COUNT\n                        The count file\
+  \ for 'fasta-file' (format: TSV). It\n                        contains the count\
+  \ by sample for each sequence.\n\nOutputs:\n  -b OUTPUT_BIOM, --output-biom OUTPUT_BIOM\n\
+  \                        This output file will contain the abondance by sample\n\
+  \                        for each cluster (format: BIOM). [Default:\n          \
+  \              clustering_abundance.biom]\n  --output-fasta OUTPUT_FASTA\n     \
+  \                   This output file will contain the seed sequence for\n      \
+  \                  each cluster (format: FASTA). [Default:\n                   \
+  \     clustering_seeds.fasta]\n  --output-compo OUTPUT_COMPO\n                 \
+  \       This output file will contain the composition of each\n                \
+  \        cluster (format: TSV). One Line is a cluster ; each\n                 \
+  \       column is a sequence ID. [Default:\n                        clustering_swarms_composition.tsv]\n\
+  \  -l LOG_FILE, --log-file LOG_FILE\n                        This output file will\
+  \ contain several information on\n                        executed commands.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/frogs:3.2.2--py37_0

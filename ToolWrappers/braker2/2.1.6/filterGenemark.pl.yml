@@ -1,0 +1,120 @@
+!Command
+command:
+- filterGenemark.pl
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --hints
+  description: "Corresponding hints file in gff format;\nit is vital that this file\
+    \ contains intron\nhints; start/stop hints are optional;\ndo not mix start/stop\
+    \ hints with --singleCDSfile\n(this might double the number of evidence supported\n\
+    single exon genes)"
+  args: !SimpleFlagArg
+    name: hints.gff
+- !Flag
+  optional: true
+  synonyms:
+  - --genemark
+  description: File in gtf format
+  args: !SimpleFlagArg
+    name: genemark.gtf
+- !Flag
+  optional: true
+  synonyms:
+  - --output
+  description: "Specifies output file name. Default are\n'genemark-input_file_name.c.gtf'\n\
+    and 'genemark-input_file_name.f.good.gtf'\nand 'genemark-input_file_name.f.bad.gtf'\
+    \ for\nevidence anchored genes and genes not anchored by\nevidence (but included\
+    \ in the output file), respectively"
+  args: !SimpleFlagArg
+    name: newfile.gtf
+- !Flag
+  optional: true
+  synonyms:
+  - --suppress
+  description: Suppress file output
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --filterOutShort
+  description: "Filters intron containing genes as \"bad\" that\nhave an RNA-Seq supported\
+    \ intron\nwithin 2*maximal CDS length of the gene with at\nleast 20% of average\
+    \ intron\nmultiplicity for that gene (screens also\ndownstream of stop, which\
+    \ either indicates\nwrong reading frame, or a downstream UTR)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --singleCDSfile
+  description: "file with single exon genes CDSpart hints, they\nare used to filter\
+    \ single exon training genes as\n\"good\". If number is not sufficient, unsupported\n\
+    genes are still added to \"good genes\" in order\nto generate a good training\
+    \ gene set for\nAUGUSTUS"
+  args: !SimpleFlagArg
+    name: cds.gtf
+- !Flag
+  optional: true
+  synonyms:
+  - --cdspart_cutoff
+  description: "CDSpart cutoff that was used for generating hints\ndefault 15"
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --randomSeed
+  description: "Use this random seed for adding random single-exon\ngenes."
+  args: !SimpleFlagArg
+    name: n
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Print this help message
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "\nfilterGenemark.pl     filter GeneMark-EX files and search for \"good\"\
+  \ genes\n\nSYNOPSIS\n\nfilterGenemark.pl [OPTIONS] genemark.gtf hints.gff\n\ngenemark.gtf\
+  \         file in gtf format\nhints.gff            corresponding introns file in\
+  \ gff format\n\n\n\nOPTIONS\n\n--help                          Print this help message\n\
+  --hints=hints.gff               Corresponding hints file in gff format;\n      \
+  \                          it is vital that this file contains intron\n        \
+  \                        hints; start/stop hints are optional;\n               \
+  \                 do not mix start/stop hints with --singleCDSfile\n           \
+  \                     (this might double the number of evidence supported\n    \
+  \                            single exon genes)\n--genemark=genemark.gtf       \
+  \  File in gtf format\n--output=newfile.gtf            Specifies output file name.\
+  \ Default are\n                                'genemark-input_file_name.c.gtf'\n\
+  \                                and 'genemark-input_file_name.f.good.gtf'\n   \
+  \                             and 'genemark-input_file_name.f.bad.gtf' for\n   \
+  \                             evidence anchored genes and genes not anchored by\n\
+  \                                evidence (but included in the output file), respectively\n\
+  --suppress                      Suppress file output\n--filterOutShort         \
+  \       Filters intron containing genes as \"bad\" that\n                      \
+  \          have an RNA-Seq supported intron\n                                within\
+  \ 2*maximal CDS length of the gene with at\n                                least\
+  \ 20% of average intron\n                                multiplicity for that gene\
+  \ (screens also\n                                downstream of stop, which either\
+  \ indicates\n                                wrong reading frame, or a downstream\
+  \ UTR)\n--singleCDSfile=cds.gtf         file with single exon genes CDSpart hints,\
+  \ they\n                                are used to filter single exon training\
+  \ genes as\n                                \"good\". If number is not sufficient,\
+  \ unsupported\n                                genes are still added to \"good genes\"\
+  \ in order\n                                to generate a good training gene set\
+  \ for\n                                AUGUSTUS\n--cdspart_cutoff=n            \
+  \  CDSpart cutoff that was used for generating hints\n                         \
+  \       default 15\n--randomSeed=n                  Use this random seed for adding\
+  \ random single-exon\n                                genes.\n\nFormat:\nseqname\
+  \ <TAB> source <TAB> feature <TAB> start <TAB> end <TAB> score <TAB> strand <TAB>\
+  \ frame <TAB> gene_id value <TAB> transcript_id value\n\n\nDESCRIPTION\n\nExample:\n\
+  \nfilterGenemark.pl [OPTIONS] --genemark=genemark.gtf --introns=introns.gff\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/braker2:2.1.6--hdfd78af_1

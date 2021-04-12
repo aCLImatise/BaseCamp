@@ -1,0 +1,727 @@
+&id001 !Command
+command:
+- cobs
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - cobs
+  - compact-construct-combine
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: in-dir
+    description: path to the input directory
+  - !Positional
+    optional: false
+    position: 1
+    name: out-file
+    description: path to the output file
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --page-size
+    description: 'the page size of the compact the index, default: 8192'
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: /usr/local/lib/python3.9/site-packages/cobs.bin compact-construct-combine\
+    \ [options] <in-dir> <out-file>\nParameters:\n  in-dir    path to the input directory\n\
+    \  out-file  path to the output file\nOptions:\n  -p, --page-size  the page size\
+    \ of the compact the index, default: 8192\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/cobs:0.1.2--py39h56fc30b_0
+- !Command
+  command:
+  - cobs
+  - compact-construct
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: input
+    description: path to the input directory or file
+  - !Positional
+    optional: false
+    position: 1
+    name: out_file
+    description: path to the output .cobs_compact index file
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -C
+    - --clobber
+    description: erase output directory if it exists
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --continue
+    description: continue in existing output directory
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --false-positive-rate
+    description: 'false positive rate, default: 0.300000'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --file-type
+    description: "\"list\" to read a file list, or filter documents by\nfile type\
+      \ (any, text, cortex, fasta, fastq, etc)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --keep-temporary
+    description: keep temporary files during construction
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    - --memory
+    description: 'memory in bytes to use, default: 5.433 Gi'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-canonicalize
+    description: "don't canonicalize DNA k-mers, default: false"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --page-size
+    description: "the page size of the compact the index, default:\nsqrt(#documents)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -k
+    - --term-size
+    description: 'term size (k-mer size), default: 31'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -T
+    - --threads
+    description: 'number of threads to use, default: max cores'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --tmp-path
+    description: "directory for intermediate index files, default:\nout_file + \"\
+      .tmp\")\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --num-hashes
+    description: 'number of hash functions, default: 1'
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: /usr/local/lib/python3.9/site-packages/cobs.bin compact-construct\
+    \ [options] <input> <out_file>\nParameters:\n  input     path to the input directory\
+    \ or file\n  out_file  path to the output .cobs_compact index file\nOptions:\n\
+    \  -C, --clobber              erase output directory if it exists\n      --continue\
+    \             continue in existing output directory\n  -f, --false-positive-rate\
+    \  false positive rate, default: 0.300000\n      --file-type            \"list\"\
+    \ to read a file list, or filter documents by \n                             file\
+    \ type (any, text, cortex, fasta, fastq, etc)\n      --keep-temporary       keep\
+    \ temporary files during construction\n  -m, --memory               memory in\
+    \ bytes to use, default: 5.433 Gi\n      --no-canonicalize      don't canonicalize\
+    \ DNA k-mers, default: false\n  -h, --num-hashes           number of hash functions,\
+    \ default: 1\n  -p, --page-size            the page size of the compact the index,\
+    \ default: \n                             sqrt(#documents)\n  -k, --term-size\
+    \            term size (k-mer size), default: 31\n  -T, --threads            \
+    \  number of threads to use, default: max cores\n      --tmp-path            \
+    \ directory for intermediate index files, default: \n                        \
+    \     out_file + \".tmp\")\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/cobs:0.1.2--py39h56fc30b_0
+- !Command
+  command:
+  - cobs
+  - benchmark-fpr
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: in_file
+    description: path to the input file
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --dist
+    description: calculate false positive distribution
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -k
+    - --num-kmers
+    description: 'number of kmers of each query, default: 1000'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    - --queries
+    description: 'number of random queries to run, default: 10000'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --seed
+    description: random seed
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -w
+    - --warmup
+    description: 'number of random warmup queries to run, default: 100'
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: /usr/local/lib/python3.9/site-packages/cobs.bin benchmark-fpr\
+    \ [options] <in_file>\nParameters:\n  in_file  path to the input file\nOptions:\n\
+    \  -d, --dist       calculate false positive distribution\n  -k, --num-kmers \
+    \ number of kmers of each query, default: 1000\n  -q, --queries    number of random\
+    \ queries to run, default: 10000\n      --seed       random seed\n  -w, --warmup\
+    \     number of random warmup queries to run, default: 100\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/cobs:0.1.2--py39h56fc30b_0
+- !Command
+  command:
+  - cobs
+  - generate-queries
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: path
+    description: path to base documents
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --file-type
+    description: "\"list\" to read a file list, or filter documents by file\ntype\
+      \ (any, text, cortex, fasta, fastq, etc)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    - --negative
+    description: "construct this number of random non-existing negative\nqueries,\
+      \ default: 0"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --out-file
+    description: output file path
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --positive
+    description: 'pick this number of existing positive queries, default: 0'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -S
+    - --seed
+    description: random seed
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --size
+    description: extend positive terms with random data to this size
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -k
+    - --term-size
+    description: 'term size (k-mer size), default: 31'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -T
+    - --threads
+    description: 'number of threads to use, default: max cores'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -N
+    - --true-negative
+    description: "check that negative queries actually are not in the\ndocuments (slow)\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: /usr/local/lib/python3.9/site-packages/cobs.bin generate-queries\
+    \ [options] <path>\nParameters:\n  path    path to base documents\nOptions:\n\
+    \      --file-type      \"list\" to read a file list, or filter documents by file\
+    \ \n                       type (any, text, cortex, fasta, fastq, etc)\n  -n,\
+    \ --negative       construct this number of random non-existing negative \n  \
+    \                     queries, default: 0\n  -o, --out-file       output file\
+    \ path\n  -p, --positive       pick this number of existing positive queries,\
+    \ default: 0\n  -S, --seed           random seed\n  -s, --size           extend\
+    \ positive terms with random data to this size\n  -k, --term-size      term size\
+    \ (k-mer size), default: 31\n  -T, --threads        number of threads to use,\
+    \ default: max cores\n  -N, --true-negative  check that negative queries actually\
+    \ are not in the \n                       documents (slow)\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/cobs:0.1.2--py39h56fc30b_0
+- !Command
+  command:
+  - cobs
+  - classic-construct
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: input
+    description: path to the input directory or file
+  - !Positional
+    optional: false
+    position: 1
+    name: out_file
+    description: 'path to the output .cobs_classic index file '
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -C
+    - --clobber
+    description: erase output directory if it exists
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --continue
+    description: continue in existing output directory
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --false-positive-rate
+    description: 'false positive rate, default: 0.300000'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --file-type
+    description: "\"list\" to read a file list, or filter documents by\nfile type\
+      \ (any, text, cortex, fasta, fastq, etc)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --keep-temporary
+    description: keep temporary files during construction
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    - --memory
+    description: 'memory in bytes to use, default: 5.433 Gi'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-canonicalize
+    description: "don't canonicalize DNA k-mers, default: false"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -k
+    - --term-size
+    description: 'term size (k-mer size), default: 31'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -T
+    - --threads
+    description: 'number of threads to use, default: max cores'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --tmp-path
+    description: "directory for intermediate index files, default:\nout_file + \"\
+      .tmp\")\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --num-hashes
+    description: 'number of hash functions, default: 1'
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: /usr/local/lib/python3.9/site-packages/cobs.bin classic-construct\
+    \ [options] <input> <out_file>\nParameters:\n  input     path to the input directory\
+    \ or file\n  out_file  path to the output .cobs_classic index file \nOptions:\n\
+    \  -C, --clobber              erase output directory if it exists\n      --continue\
+    \             continue in existing output directory\n  -f, --false-positive-rate\
+    \  false positive rate, default: 0.300000\n      --file-type            \"list\"\
+    \ to read a file list, or filter documents by \n                             file\
+    \ type (any, text, cortex, fasta, fastq, etc)\n      --keep-temporary       keep\
+    \ temporary files during construction\n  -m, --memory               memory in\
+    \ bytes to use, default: 5.433 Gi\n      --no-canonicalize      don't canonicalize\
+    \ DNA k-mers, default: false\n  -h, --num-hashes           number of hash functions,\
+    \ default: 1\n  -k, --term-size            term size (k-mer size), default: 31\n\
+    \  -T, --threads              number of threads to use, default: max cores\n \
+    \     --tmp-path             directory for intermediate index files, default:\
+    \ \n                             out_file + \".tmp\")\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/cobs:0.1.2--py39h56fc30b_0
+- !Command
+  command:
+  - cobs
+  - doc-list
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: path
+    description: path to documents to list
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --file-type
+    description: "\"list\" to read a file list, or filter documents by file type\n\
+      (any, text, cortex, fasta, fastq, etc)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -k
+    - --term-size
+    description: 'term size (k-mer size), default: 31'
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: /usr/local/lib/python3.9/site-packages/cobs.bin doc-list [options]\
+    \ <path>\nParameters:\n  path    path to documents to list\nOptions:\n      --file-type\
+    \  \"list\" to read a file list, or filter documents by file type \n         \
+    \          (any, text, cortex, fasta, fastq, etc)\n  -k, --term-size  term size\
+    \ (k-mer size), default: 31\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/cobs:0.1.2--py39h56fc30b_0
+- !Command
+  command:
+  - cobs
+  - doc-dump
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: path
+    description: path to documents to dump
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --file-type
+    description: "\"list\" to read a file list, or filter documents by\nfile type\
+      \ (any, text, cortex, fasta, fastq, etc)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-canonicalize
+    description: "don't canonicalize DNA k-mers, default: false"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -k
+    - --term-size
+    description: 'term size (k-mer size), default: 31'
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: /usr/local/lib/python3.9/site-packages/cobs.bin doc-dump [options]\
+    \ <path>\nParameters:\n  path    path to documents to dump\nOptions:\n      --file-type\
+    \        \"list\" to read a file list, or filter documents by \n             \
+    \            file type (any, text, cortex, fasta, fastq, etc)\n      --no-canonicalize\
+    \  don't canonicalize DNA k-mers, default: false\n  -k, --term-size        term\
+    \ size (k-mer size), default: 31\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/cobs:0.1.2--py39h56fc30b_0
+- !Command
+  command:
+  - cobs
+  - query
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: query
+    description: the text sequence to search for
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --file
+    description: query (fasta) file to process
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --index
+    description: path to index file(s)
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    - --limit
+    description: 'number of results to return, default: all'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --load-complete
+    description: load complete index into RAM for batch queries
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -T
+    - --threads
+    description: 'number of threads to use, default: max cores'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --threshold
+    description: "threshold in percentage of terms in query matching,\ndefault: 0.8\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: /usr/local/lib/python3.9/site-packages/cobs.bin query [options]\
+    \ [query]\nParameters:\n  query   the text sequence to search for\nOptions:\n\
+    \  -f, --file           query (fasta) file to process\n  -i, --index         \
+    \ path to index file(s)\n  -l, --limit          number of results to return, default:\
+    \ all\n      --load-complete  load complete index into RAM for batch queries\n\
+    \  -T, --threads        number of threads to use, default: max cores\n  -t, --threshold\
+    \      threshold in percentage of terms in query matching, \n                \
+    \       default: 0.8\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/cobs:0.1.2--py39h56fc30b_0
+- !Command
+  command:
+  - cobs
+  - print-parameters
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --false-positive-rate
+    description: 'false positive rate, default: 0.3'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    - --num-elements
+    description: number of elements to be inserted into the index
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --num-hashes
+    description: 'number of hash functions, default: 1'
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: /usr/local/lib/python3.9/site-packages/cobs.bin print-parameters\
+    \ [options]\nOptions:\n  -f, --false-positive-rate  false positive rate, default:\
+    \ 0.3\n  -n, --num-elements         number of elements to be inserted into the\
+    \ index\n  -h, --num-hashes           number of hash functions, default: 1\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/cobs:0.1.2--py39h56fc30b_0
+- !Command
+  command:
+  - cobs
+  - classic-construct-random
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: out-file
+    description: path to the output file
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    - --document-size
+    description: 'number of random 31-mers in document, default: 1000000'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    - --num-documents
+    description: 'number of random documents in index, default: 10000'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --seed
+    description: random seed
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --signature-size
+    description: "number of bits of the signatures (vertical size),\ndefault: 2 Mi\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --num-hashes
+    description: 'number of hash functions, default: 1'
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: /usr/local/lib/python3.9/site-packages/cobs.bin classic-construct-random\
+    \ [options] <out-file>\nParameters:\n  out-file  path to the output file\nOptions:\n\
+    \  -m, --document-size   number of random 31-mers in document, default: 1000000\n\
+    \  -n, --num-documents   number of random documents in index, default: 10000\n\
+    \  -h, --num-hashes      number of hash functions, default: 1\n      --seed  \
+    \          random seed\n  -s, --signature-size  number of bits of the signatures\
+    \ (vertical size), \n                        default: 2 Mi\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/cobs:0.1.2--py39h56fc30b_0
+- !Command
+  command:
+  - cobs
+  - print-kmers
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: query
+    description: the dna sequence to search for
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -k
+    - --kmer-size
+    description: 'the size of one kmer, default: 31'
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: /usr/local/lib/python3.9/site-packages/cobs.bin print-kmers [options]\
+    \ <query>\nParameters:\n  query   the dna sequence to search for\nOptions:\n \
+    \ -k, --kmer-size  the size of one kmer, default: 31\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/cobs:0.1.2--py39h56fc30b_0
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Unknown subtool '--help'\n(Co)mpact (B)it-Sliced (S)ignature Index for\
+  \ Genome Search\n\nUsage: /usr/local/lib/python3.9/site-packages/cobs.bin <subtool>\
+  \ ...\n\nAvailable subtools: \n  doc-list                   read a list of documents\
+  \ and print the list\n  doc-dump                   read a list of documents and\
+  \ dump their contents\n  classic-construct          constructs a classic index from\
+  \ the documents in <in_dir>\n  classic-construct-random   constructs a classic index\
+  \ with random content\n  compact-construct          creates the folders used for\
+  \ further construction\n  compact-construct-combine  combines the classic indices\
+  \ in <in_dir> to form a compact index\n  query                      query an index\n\
+  \  print-parameters           calculates index parameters\n  print-kmers       \
+  \         print all canonical kmers from <query>\n  benchmark-fpr              run\
+  \ benchmark and false positive measurement\n  generate-queries           select\
+  \ queries randomly from documents\n\nSee https://panthema.net/cobs for more information\
+  \ on COBS.\n\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/cobs:0.1.2--py39h56fc30b_0

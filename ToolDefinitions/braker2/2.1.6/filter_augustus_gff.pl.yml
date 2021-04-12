@@ -1,0 +1,63 @@
+!Command
+command:
+- filter_augustus_gff.pl
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --in
+  description: AUGUSTUS output file in GFF format
+  args: !SimpleFlagArg
+    name: augustus.gff
+- !Flag
+  optional: true
+  synonyms:
+  - --out
+  description: "If specified, write filtered gene predictions\nin GTF format to given\
+    \ file. If not specified,\nonly the number of supported genes is printed\nto STDOUT."
+  args: !SimpleFlagArg
+    name: filtered.gff
+- !Flag
+  optional: true
+  synonyms:
+  - --src
+  description: "=(E|P)                         Source tag of evidence to filter for,\
+    \ e.g. P\nfor protein or E for ESTs/RNA-Seq introns,\ncan in principle be any\
+    \ source, but only one\nat a time. Support threshold is one hint per\ntranscript."
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Print this help message
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Print version number of filter_augustus_gff.pl
+  args: !EmptyFlagArg {}
+help_text: "\nfilter_augustus_gff.pl     Filter native AUGUSTUS output for genes that\
+  \ have evidential support\n\nSYNOPSIS\n\nfilter_augustus_gff.pl --in=augustus.gff\
+  \ --out=filtered.gtf --src=(E|P)\n\nINPUT FILE OPTIONS\n\n--in=augustus.gff    \
+  \               AUGUSTUS output file in GFF format\n--out=filtered.gff         \
+  \         If specified, write filtered gene predictions\n                      \
+  \              in GTF format to given file. If not specified,\n                \
+  \                    only the number of supported genes is printed\n           \
+  \                         to STDOUT.\n--src=(E|P)                         Source\
+  \ tag of evidence to filter for, e.g. P \n                                    for\
+  \ protein or E for ESTs/RNA-Seq introns,\n                                    can\
+  \ in principle be any source, but only one \n                                  \
+  \  at a time. Support threshold is one hint per \n                             \
+  \       transcript.\n--version                           Print version number of\
+  \ filter_augustus_gff.pl\n--help                              Print this help message\n\
+  \nDESCRIPTION\n\nExamples:\n\nfilter_augustus_gff.pl --in=augustus.gff --out=filtered.gtf\
+  \ --src=P \n\nfilter_augustus_gff.pl --in=augustus.gff --src=P\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/braker2:2.1.6--hdfd78af_1

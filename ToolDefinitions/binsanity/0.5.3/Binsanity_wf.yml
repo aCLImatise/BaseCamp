@@ -1,0 +1,171 @@
+!Command
+command:
+- Binsanity-wf
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: "Specify a Transformed Coverage File\ne.g Log transformed"
+  args: !SimpleFlagArg
+    name: INPUTCOVFILE
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: Specify directory containing your contigs
+  args: !SimpleFlagArg
+    name: FastaLocation
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: "Specify a preference [Default: -3]\nNote: decreasing the preference\
+    \ leads to more lumping,\nincreasing will lead to more splitting. If your range\n\
+    of coverages are low you will want to decrease the\npreference, if you have 10\
+    \ or less replicates increasing\nthe preference could benefit you."
+  args: !SimpleFlagArg
+    name: PREFERENCE
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: 'Specify a max number of iterations [Default: 4000]'
+  args: !SimpleFlagArg
+    name: MAXITER
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: "Specify the convergence iteration number [Default: 400]\ne.g Number\
+    \ of iterations with no change in the number\nof estimated clusters that stops\
+    \ the convergence."
+  args: !SimpleFlagArg
+    name: ConvergenceIteration
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: 'Specify a damping factor between 0.5 and 1, [Default: 0.95]'
+  args: !SimpleFlagArg
+    name: DampeningFactor
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: Specify the fasta file containing contigs you want to cluster
+  args: !SimpleFlagArg
+    name: FastaFile
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  description: 'Specify the contig size cut-off [Default: 1000 bp]'
+  args: !SimpleFlagArg
+    name: SizeThreshold
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: "Give a name to the directory BinSanity results will be output in\n\
+    [Default: 'BINSANITY-RESULTS']"
+  args: !SimpleFlagArg
+    name: OutputDirectory
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: Indicate how many threads you want dedicated to the subprocess CheckM.
+    [Default=1]
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - --kmer
+  description: 'Indicate a number for the kmer calculation, the [Default: 4]'
+  args: !SimpleFlagArg
+    name: KMER
+- !Flag
+  optional: true
+  synonyms:
+  - --Prefix
+  description: Specify a prefix to append to the start of all files generated during
+    Binsanity
+  args: !SimpleFlagArg
+    name: PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - --refine-preference
+  description: 'Specify a preference for refinement. [Default: -25]'
+  args: !SimpleFlagArg
+    name: INPUTREFINEDPREF
+- !Flag
+  optional: true
+  synonyms:
+  - --binPrefix
+  description: Sepcify what prefix you want appended to final Bins {optional}
+  args: !SimpleFlagArg
+    name: BinPrefix
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: Binsanity-wf -f [/path/to/fasta] -l [FastaFile] -c [CoverageFile]\
+  \ -o [OutputDirectory]\n\n    ************************************************************************************************\n\
+  \    **************************************BinSanity*************************************************\n\
+  \    **  Binsanity-wf is a workflow script that runs Binsanity and Binsanity-refine\
+  \ sequentially.  **\n    **  The following is including in the workflow:       \
+  \                                        **\n    **  STEP 1. Run Binsanity     \
+  \                                                                **\n    **  STEP\
+  \ 2: Run CheckM to estimate completeness for Refinement                        \
+  \        **\n    **  STEP 3: Run Binsanity-refine                              \
+  \                                **\n    **  STEP 4: Create Final BinSanity Clusters\
+  \                                                   **\n    **                 \
+  \                                                                           **\n\
+  \    ************************************************************************************************\n\
+  \    \n\noptional arguments:\n  -h, --help            show this help message and\
+  \ exit\n  -c INPUTCOVFILE       \n                            Specify a Transformed\
+  \ Coverage File\n                            e.g Log transformed\n             \
+  \               \n  -f FastaLocation      Specify directory containing your contigs\n\
+  \  -p PREFERENCE         Specify a preference [Default: -3]\n                  \
+  \          Note: decreasing the preference leads to more lumping,\n            \
+  \                increasing will lead to more splitting. If your range\n       \
+  \                     of coverages are low you will want to decrease the\n     \
+  \                       preference, if you have 10 or less replicates increasing\n\
+  \                            the preference could benefit you.\n  -m MAXITER   \
+  \         \n                            Specify a max number of iterations [Default:\
+  \ 4000]\n  -v ConvergenceIteration\n                        Specify the convergence\
+  \ iteration number [Default: 400]\n                            e.g Number of iterations\
+  \ with no change in the number\n                            of estimated clusters\
+  \ that stops the convergence.\n  -d DampeningFactor    Specify a damping factor\
+  \ between 0.5 and 1, [Default: 0.95]\n  -l FastaFile          Specify the fasta\
+  \ file containing contigs you want to cluster\n  -x SizeThreshold      Specify the\
+  \ contig size cut-off [Default: 1000 bp]\n  -o OutputDirectory    Give a name to\
+  \ the directory BinSanity results will be output in\n                          \
+  \  [Default: 'BINSANITY-RESULTS']\n  --threads THREADS     Indicate how many threads\
+  \ you want dedicated to the subprocess CheckM. [Default=1]\n  --kmer KMER      \
+  \     Indicate a number for the kmer calculation, the [Default: 4]\n  --Prefix PREFIX\
+  \       Specify a prefix to append to the start of all files generated during Binsanity\n\
+  \  --refine-preference INPUTREFINEDPREF\n                        Specify a preference\
+  \ for refinement. [Default: -25]\n  --binPrefix BinPrefix\n                    \
+  \    Sepcify what prefix you want appended to final Bins {optional}\n  --version\
+  \             show program's version number and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/binsanity:0.5.3--pyh3252c3a_0

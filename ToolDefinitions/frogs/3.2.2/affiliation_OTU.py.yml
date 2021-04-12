@@ -1,0 +1,137 @@
+!Command
+command:
+- affiliation_OTU.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --nb-cpus
+  description: 'The maximum number of CPUs used. [Default: 1]'
+  args: !SimpleFlagArg
+    name: NB_CPUS
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --java-mem
+  description: 'Java memory allocation in Go. [Default: 2]'
+  args: !SimpleFlagArg
+    name: JAVA_MEM
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: "[TAXONOMY_RANKS [TAXONOMY_RANKS ...]], --taxonomy-ranks [TAXONOMY_RANKS\
+    \ [TAXONOMY_RANKS ...]]\nThe ordered ranks levels present in the reference\ndatabank.\
+    \ [Default: ['Domain', 'Phylum', 'Class',\n'Order', 'Family', 'Genus', 'Species']]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --rdp
+  description: Use RDP classifier to affiliate OTU
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --debug
+  description: Keep temporary files to debug program.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reference
+  description: "Preformated reference file (format: blast-indexed\nFASTA)."
+  args: !SimpleFlagArg
+    name: REFERENCE
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --input-biom
+  description: 'BIOM file (format: BIOM).'
+  args: !SimpleFlagArg
+    name: INPUT_BIOM
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --input-fasta
+  description: "FASTA file of OTU's seed (format: FASTA)."
+  args: !SimpleFlagArg
+    name: INPUT_FASTA
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-biom
+  description: "BIOM file with added affiliation annotations from\nblast/needleall\
+    \ and/or RDPtools. [Default:\naffiliation_abundance.biom]"
+  args: !SimpleFlagArg
+    name: OUTPUT_BIOM
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --summary
+  description: "The HTML file containing the graphs. [Default:\naffiliation_OTU.html]"
+  args: !SimpleFlagArg
+    name: SUMMARY
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --log-file
+  description: "The list of commands executed.\n"
+  args: !SimpleFlagArg
+    name: LOG_FILE
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: affiliation_OTU.py [-h] [-p NB_CPUS] [-m JAVA_MEM]\n          \
+  \                [-t [TAXONOMY_RANKS [TAXONOMY_RANKS ...]]] [--rdp]\n          \
+  \                [-d] [-v] -r REFERENCE -b INPUT_BIOM -f INPUT_FASTA\n         \
+  \                 [-o OUTPUT_BIOM] [-s SUMMARY] [-l LOG_FILE]\n\nTaxonomic affiliation\
+  \ of each OTU's seed by RDPtools and BLAST.\n\noptional arguments:\n  -h, --help\
+  \            show this help message and exit\n  -p NB_CPUS, --nb-cpus NB_CPUS\n\
+  \                        The maximum number of CPUs used. [Default: 1]\n  -m JAVA_MEM,\
+  \ --java-mem JAVA_MEM\n                        Java memory allocation in Go. [Default:\
+  \ 2]\n  -t [TAXONOMY_RANKS [TAXONOMY_RANKS ...]], --taxonomy-ranks [TAXONOMY_RANKS\
+  \ [TAXONOMY_RANKS ...]]\n                        The ordered ranks levels present\
+  \ in the reference\n                        databank. [Default: ['Domain', 'Phylum',\
+  \ 'Class',\n                        'Order', 'Family', 'Genus', 'Species']]\n  --rdp\
+  \                 Use RDP classifier to affiliate OTU\n  -d, --debug           Keep\
+  \ temporary files to debug program.\n  -v, --version         show program's version\
+  \ number and exit\n\nInputs:\n  -r REFERENCE, --reference REFERENCE\n          \
+  \              Preformated reference file (format: blast-indexed\n             \
+  \           FASTA).\n  -b INPUT_BIOM, --input-biom INPUT_BIOM\n                \
+  \        BIOM file (format: BIOM).\n  -f INPUT_FASTA, --input-fasta INPUT_FASTA\n\
+  \                        FASTA file of OTU's seed (format: FASTA).\n\nOutputs:\n\
+  \  -o OUTPUT_BIOM, --output-biom OUTPUT_BIOM\n                        BIOM file\
+  \ with added affiliation annotations from\n                        blast/needleall\
+  \ and/or RDPtools. [Default:\n                        affiliation_abundance.biom]\n\
+  \  -s SUMMARY, --summary SUMMARY\n                        The HTML file containing\
+  \ the graphs. [Default:\n                        affiliation_OTU.html]\n  -l LOG_FILE,\
+  \ --log-file LOG_FILE\n                        The list of commands executed.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/frogs:3.2.2--py37_0

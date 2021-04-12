@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, Int, Boolean
+
+Pyssw_Py_V0_1_0 = CommandToolBuilder(tool="pyssw.py", base_command=["pyssw.py"], inputs=[ToolInput(tag="in_subject", input_type=File(optional=True), prefix="--subject", doc=InputDocumentation(doc="Path of the fasta file containing the subject genome\nsequence. Can be gziped. [REQUIRED]")), ToolInput(tag="in_query", input_type=File(optional=True), prefix="--query", doc=InputDocumentation(doc="Path of the fastq or fasta file containing the short\nread to be aligned. Can be gziped. [REQUIRED]")), ToolInput(tag="in_q_type", input_type=File(optional=True), prefix="--qtype", doc=InputDocumentation(doc="Type of the query file = fastq or fasta. [default:\nfastq]")), ToolInput(tag="in_match", input_type=Int(optional=True), prefix="--match", doc=InputDocumentation(doc="Positive integer for weight match in genome sequence\nalignment. [default: 2]")), ToolInput(tag="in_mismatch", input_type=Int(optional=True), prefix="--mismatch", doc=InputDocumentation(doc="Positive integer. The negative value will be used as\nweight mismatch in genome sequence alignment.\n[default: 2]")), ToolInput(tag="in_gap_open", input_type=Int(optional=True), prefix="--gap_open", doc=InputDocumentation(doc="Positive integer. The negative value will be used as\nweight for the gap opening. [default: 3]")), ToolInput(tag="in_gap_extend", input_type=Int(optional=True), prefix="--gap_extend", doc=InputDocumentation(doc="Positive integer. The negative value will be used as\nweight for the gap opening. [default: 1]")), ToolInput(tag="in_min_score", input_type=Int(optional=True), prefix="--min_score", doc=InputDocumentation(doc="Integer. Consider alignments having a score <= as not\naligned. [default: 0]")), ToolInput(tag="in_min_len", input_type=Int(optional=True), prefix="--min_len", doc=InputDocumentation(doc="Integer. Consider alignments having a length <= as not\naligned. [default: 0]")), ToolInput(tag="in_reverse", input_type=Boolean(optional=True), prefix="--reverse", doc=InputDocumentation(doc="Flag. Align query in forward and reverse orientation\nand choose the best alignment. [Set by default]")), ToolInput(tag="in_unaligned", input_type=Boolean(optional=True), prefix="--unaligned", doc=InputDocumentation(doc="Flag. Write unaligned reads in sam output [Unset by\ndefault]\n"))], outputs=[], container="quay.io/biocontainers/isescan:1.7.2.3--h516909a_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Pyssw_Py_V0_1_0().translate("wdl")
+

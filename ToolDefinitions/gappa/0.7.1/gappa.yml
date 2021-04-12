@@ -1,0 +1,4541 @@
+&id001 !Command
+command:
+- gappa
+positional: []
+named: []
+parent:
+subcommands:
+- &id002 !Command
+  command:
+  - gappa
+  - tools
+  positional: []
+  named: []
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - gappa
+    - tools
+    - citation
+    positional:
+    - !Positional
+      optional: true
+      position: 0
+      name: keys...
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --format
+      description: ":{bibtex,markdown,both}=bibtex\nOutput format for citations."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --all
+      description: Print all relevant citations used by commands in gappa.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --list
+      description: List all available citation keys.
+      args: !EmptyFlagArg {}
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Print this help message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Print references to be cited when using gappa.\nUsage: gappa tools\
+      \ citation [OPTIONS] [keys...]\n\nPositionals:\n  keys TEXT:{Czech2018-phat-and-multilevel-placement,Czech2019-analyzing-and-visualizing-samples,Czech2020-genesis-and-gappa,Evans2012-kr-distance,Matsen2011-edgepca-and-squash-clustering,Washburne2017-phylofactorization}=[]\
+      \ ...\n                              Only print the citations for the given\
+      \ keys.\n\nOptions:\n  --help                      Print this help message and\
+      \ exit.\n  --format TEXT:{bibtex,markdown,both}=bibtex\n                   \
+      \           Output format for citations.\n  --all                       Print\
+      \ all relevant citations used by commands in gappa.\n  --list              \
+      \        List all available citation keys.\n\ngappa - a toolkit for analyzing\
+      \ and visualizing phylogenetic (placement) data\n"
+    generated_using: &id003
+    - --help
+    docker_image: quay.io/biocontainers/gappa:0.7.1--he513fc3_0
+  - !Command
+    command:
+    - gappa
+    - tools
+    - license
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --full
+      description: If set, show the full license instead of the short boilerplate.
+      args: !EmptyFlagArg {}
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Print this help message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Show the license of gappa.\nUsage: gappa tools license [OPTIONS]\n\
+      \nOptions:\n  --help                      Print this help message and exit.\n\
+      \  --full                      If set, show the full license instead of the\
+      \ short boilerplate.\n\ngappa - a toolkit for analyzing and visualizing phylogenetic\
+      \ (placement) data\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/gappa:0.7.1--he513fc3_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Print this help message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Auxiliary commands of gappa.\nUsage: gappa tools [OPTIONS] SUBCOMMAND\n\
+    \nOptions:\n  --help                      Print this help message and exit.\n\n\
+    Subcommands:\n  citation                    Print references to be cited when\
+    \ using gappa.\n  license                     Show the license of gappa.\n  version\
+    \                     Extended version information about gappa.\n\ngappa - a toolkit\
+    \ for analyzing and visualizing phylogenetic (placement) data\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/gappa:0.7.1--he513fc3_0
+- &id004 !Command
+  command:
+  - gappa
+  - edit
+  positional: []
+  named: []
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - gappa
+    - edit
+    - multiplicity
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --jplace-path
+      description: ":PATH(existing)=[] ... REQUIRED\nList of jplace files or directories\
+        \ to process. For directories, only files with the extension `.jplace[.gz]`\
+        \ are processed."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --multiplicity-file
+      description: ":FILE Excludes: --fasta-path --write-multiplicity-file\nFile containing\
+        \ a tab-separated list of [sample name,] query name, and multiplicity."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --fasta-path
+      description: ":PATH(existing)=[] ... Excludes: --multiplicity-file --write-multiplicity-file\n\
+        List of fasta files or directories to process. For directories, only files\
+        \ with the extension `.(fasta|fas|fsa|fna|ffn|faa|frn)[.gz]` are processed."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --keep-full-label
+      description: ": --fasta-path\nIf fasta files are used, keep their whole label\
+        \ as the name for jplace pqueries, instead of removing the abundance annotation."
+      args: !SimpleFlagArg
+        name: Needs
+    - !Flag
+      optional: true
+      synonyms:
+      - --write-multiplicity-file
+      description: ": --multiplicity-file --fasta-path\nDo not change the existing\
+        \ multiplicities, but instead produce a file that lists them."
+      args: !SimpleFlagArg
+        name: Excludes
+    - !Flag
+      optional: true
+      synonyms:
+      - --out-dir
+      description: =.            Directory to write files to
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --file-prefix
+      description: File prefix for output files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --file-suffix
+      description: File suffix for output files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --compress
+      description: If set, compress the output files using gzip. Output file extensions
+        are automatically extended by `.gz`.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --allow-file-overwriting
+      description: Allow to overwrite existing output files instead of aborting the
+        command.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --verbose
+      description: Produce more verbose output.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --threads
+      description: =1            Number of threads to use for calculations.
+      args: !SimpleFlagArg
+        name: UINT
+    - !Flag
+      optional: true
+      synonyms:
+      - --log-file
+      description: Write all output to a log file, in addition to standard output
+        to the terminal.
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id004
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Print this help message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Edit the multiplicities of queries in jplace files.\nUsage: gappa\
+      \ edit multiplicity [OPTIONS]\n\nInput:\n  --jplace-path TEXT:PATH(existing)=[]\
+      \ ... REQUIRED\n                              List of jplace files or directories\
+      \ to process. For directories, only files with the extension `.jplace[.gz]`\
+      \ are processed.\n  --multiplicity-file TEXT:FILE Excludes: --fasta-path --write-multiplicity-file\n\
+      \                              File containing a tab-separated list of [sample\
+      \ name,] query name, and multiplicity.\n  --fasta-path TEXT:PATH(existing)=[]\
+      \ ... Excludes: --multiplicity-file --write-multiplicity-file\n            \
+      \                  List of fasta files or directories to process. For directories,\
+      \ only files with the extension `.(fasta|fas|fsa|fna|ffn|faa|frn)[.gz]` are\
+      \ processed.\n  --keep-full-label Needs: --fasta-path\n                    \
+      \          If fasta files are used, keep their whole label as the name for jplace\
+      \ pqueries, instead of removing the abundance annotation.\n\n\nOutput:\n  --write-multiplicity-file\
+      \ Excludes: --multiplicity-file --fasta-path\n                             \
+      \ Do not change the existing multiplicities, but instead produce a file that\
+      \ lists them.\n  --out-dir TEXT=.            Directory to write files to\n \
+      \ --file-prefix TEXT          File prefix for output files\n  --file-suffix\
+      \ TEXT          File suffix for output files\n  --compress                 \
+      \ If set, compress the output files using gzip. Output file extensions are automatically\
+      \ extended by `.gz`.\n\n\nGlobal Options:\n  --allow-file-overwriting    Allow\
+      \ to overwrite existing output files instead of aborting the command.\n  --verbose\
+      \                   Produce more verbose output.\n  --threads UINT=1       \
+      \     Number of threads to use for calculations.\n  --log-file TEXT        \
+      \     Write all output to a log file, in addition to standard output to the\
+      \ terminal.\n  --help                      Print this help message and exit.\n\
+      \ngappa - a toolkit for analyzing and visualizing phylogenetic (placement) data\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/gappa:0.7.1--he513fc3_0
+  - !Command
+    command:
+    - gappa
+    - edit
+    - accumulate
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --jplace-path
+      description: ":PATH(existing)=[] ... REQUIRED\nList of jplace files or directories\
+        \ to process. For directories, only files with the extension `.jplace[.gz]`\
+        \ are processed."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --threshold
+      description: ":FLOAT in [0.5 - 1]=0.95\nThreshold of how much mass needs to\
+        \ be accumulated into a basal branch."
+      args: !SimpleFlagArg
+        name: FLOAT
+    - !Flag
+      optional: true
+      synonyms:
+      - --out-dir
+      description: =.            Directory to write files to
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --file-prefix
+      description: File prefix for output files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --file-suffix
+      description: File suffix for output files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --allow-file-overwriting
+      description: Allow to overwrite existing output files instead of aborting the
+        command.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --verbose
+      description: Produce more verbose output.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --threads
+      description: =1            Number of threads to use for calculations.
+      args: !SimpleFlagArg
+        name: UINT
+    - !Flag
+      optional: true
+      synonyms:
+      - --log-file
+      description: Write all output to a log file, in addition to standard output
+        to the terminal.
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id004
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Print this help message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Accumulate the masses of each query in jplace files into basal branches\
+      \ so that they exceed a given mass threshold.\nUsage: gappa edit accumulate\
+      \ [OPTIONS]\n\nInput:\n  --jplace-path TEXT:PATH(existing)=[] ... REQUIRED\n\
+      \                              List of jplace files or directories to process.\
+      \ For directories, only files with the extension `.jplace[.gz]` are processed.\n\
+      \n\nSettings:\n  --threshold FLOAT:FLOAT in [0.5 - 1]=0.95\n               \
+      \               Threshold of how much mass needs to be accumulated into a basal\
+      \ branch.\n\n\nOutput:\n  --out-dir TEXT=.            Directory to write files\
+      \ to\n  --file-prefix TEXT          File prefix for output files\n  --file-suffix\
+      \ TEXT          File suffix for output files\n\n\nGlobal Options:\n  --allow-file-overwriting\
+      \    Allow to overwrite existing output files instead of aborting the command.\n\
+      \  --verbose                   Produce more verbose output.\n  --threads UINT=1\
+      \            Number of threads to use for calculations.\n  --log-file TEXT \
+      \            Write all output to a log file, in addition to standard output\
+      \ to the terminal.\n  --help                      Print this help message and\
+      \ exit.\n\ngappa - a toolkit for analyzing and visualizing phylogenetic (placement)\
+      \ data\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/gappa:0.7.1--he513fc3_0
+  - !Command
+    command:
+    - gappa
+    - edit
+    - split
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --jplace-path
+      description: ":PATH(existing)=[] ... REQUIRED\nList of jplace files or directories\
+        \ to process. For directories, only files with the extension `.jplace[.gz]`\
+        \ are processed."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --split-file
+      description: ":FILE Excludes: --otu-table-file\nFile containing a comma-separated\
+        \ mapping of query names to sample names."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --otu-table-file
+      description: ":FILE Excludes: --split-file\nFile containing a tab-separated\
+        \ OTU table."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --out-dir
+      description: =.            Directory to write files to
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --file-prefix
+      description: File prefix for output files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --file-suffix
+      description: File suffix for output files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --compress
+      description: If set, compress the output files using gzip. Output file extensions
+        are automatically extended by `.gz`.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --allow-file-overwriting
+      description: Allow to overwrite existing output files instead of aborting the
+        command.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --verbose
+      description: Produce more verbose output.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --threads
+      description: =1            Number of threads to use for calculations.
+      args: !SimpleFlagArg
+        name: UINT
+    - !Flag
+      optional: true
+      synonyms:
+      - --log-file
+      description: Write all output to a log file, in addition to standard output
+        to the terminal.
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id004
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Print this help message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Split the queries in jplace files into multiple files, for example,\
+      \ according to an OTU table.\nUsage: gappa edit split [OPTIONS]\n\nInput:\n\
+      \  --jplace-path TEXT:PATH(existing)=[] ... REQUIRED\n                     \
+      \         List of jplace files or directories to process. For directories, only\
+      \ files with the extension `.jplace[.gz]` are processed.\n  --split-file TEXT:FILE\
+      \ Excludes: --otu-table-file\n                              File containing\
+      \ a comma-separated mapping of query names to sample names.\n  --otu-table-file\
+      \ TEXT:FILE Excludes: --split-file\n                              File containing\
+      \ a tab-separated OTU table.\n\n\nOutput:\n  --out-dir TEXT=.            Directory\
+      \ to write files to\n  --file-prefix TEXT          File prefix for output files\n\
+      \  --file-suffix TEXT          File suffix for output files\n  --compress  \
+      \                If set, compress the output files using gzip. Output file extensions\
+      \ are automatically extended by `.gz`.\n\n\nGlobal Options:\n  --allow-file-overwriting\
+      \    Allow to overwrite existing output files instead of aborting the command.\n\
+      \  --verbose                   Produce more verbose output.\n  --threads UINT=1\
+      \            Number of threads to use for calculations.\n  --log-file TEXT \
+      \            Write all output to a log file, in addition to standard output\
+      \ to the terminal.\n  --help                      Print this help message and\
+      \ exit.\n\ngappa - a toolkit for analyzing and visualizing phylogenetic (placement)\
+      \ data\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/gappa:0.7.1--he513fc3_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Print this help message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Commands for editing and manipulating files like jplace, fasta or newick.\n\
+    Usage: gappa edit [OPTIONS] SUBCOMMAND\n\nOptions:\n  --help                 \
+    \     Print this help message and exit.\n\nSubcommands:\n  accumulate        \
+    \          Accumulate the masses of each query in jplace files into basal branches\
+    \ so that they exceed a given mass threshold.\n  multiplicity                Edit\
+    \ the multiplicities of queries in jplace files.\n  split                    \
+    \   Split the queries in jplace files into multiple files, for example, according\
+    \ to an OTU table.\n\ngappa - a toolkit for analyzing and visualizing phylogenetic\
+    \ (placement) data\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/gappa:0.7.1--he513fc3_0
+- &id005 !Command
+  command:
+  - gappa
+  - examine
+  positional: []
+  named: []
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - gappa
+    - examine
+    - graft
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --jplace-path
+      description: ":PATH(existing)=[] ... REQUIRED\nList of jplace files or directories\
+        \ to process. For directories, only files with the extension `.jplace[.gz]`\
+        \ are processed."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --fully-resolve
+      description: If set, branches that contain multiple pqueries are resolved by
+        creating a new branch for each of the pqueries individually, placed according
+        to their distal/proximal lengths. If not set (default), all pqueries at one
+        branch are collected in a subtree that branches off from the branch.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --name-prefix
+      description: Specify a prefix to be added to all new leaf nodes, i.e., to the
+        query sequence names.
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --out-dir
+      description: =.            Directory to write files to
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --file-prefix
+      description: File prefix for output files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --file-suffix
+      description: File suffix for output files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --allow-file-overwriting
+      description: Allow to overwrite existing output files instead of aborting the
+        command.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --verbose
+      description: Produce more verbose output.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --threads
+      description: =1            Number of threads to use for calculations.
+      args: !SimpleFlagArg
+        name: UINT
+    - !Flag
+      optional: true
+      synonyms:
+      - --log-file
+      description: Write all output to a log file, in addition to standard output
+        to the terminal.
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Print this help message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Make a tree with each of the query sequences represented as a pendant\
+      \ edge.\nUsage: gappa examine graft [OPTIONS]\n\nInput:\n  --jplace-path TEXT:PATH(existing)=[]\
+      \ ... REQUIRED\n                              List of jplace files or directories\
+      \ to process. For directories, only files with the extension `.jplace[.gz]`\
+      \ are processed.\n\n\nSettings:\n  --fully-resolve             If set, branches\
+      \ that contain multiple pqueries are resolved by creating a new branch for each\
+      \ of the pqueries individually, placed according to their distal/proximal lengths.\
+      \ If not set (default), all pqueries at one branch are collected in a subtree\
+      \ that branches off from the branch.\n  --name-prefix TEXT          Specify\
+      \ a prefix to be added to all new leaf nodes, i.e., to the query sequence names.\n\
+      \n\nOutput:\n  --out-dir TEXT=.            Directory to write files to\n  --file-prefix\
+      \ TEXT          File prefix for output files\n  --file-suffix TEXT         \
+      \ File suffix for output files\n\n\nGlobal Options:\n  --allow-file-overwriting\
+      \    Allow to overwrite existing output files instead of aborting the command.\n\
+      \  --verbose                   Produce more verbose output.\n  --threads UINT=1\
+      \            Number of threads to use for calculations.\n  --log-file TEXT \
+      \            Write all output to a log file, in addition to standard output\
+      \ to the terminal.\n  --help                      Print this help message and\
+      \ exit.\n\ngappa - a toolkit for analyzing and visualizing phylogenetic (placement)\
+      \ data\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/gappa:0.7.1--he513fc3_0
+  - !Command
+    command:
+    - gappa
+    - examine
+    - heat-tree
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --jplace-path
+      description: ":PATH(existing)=[] ... REQUIRED\nList of jplace files or directories\
+        \ to process. For directories, only files with the extension `.jplace[.gz]`\
+        \ are processed."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --mass-norm
+      description: ":{absolute,relative}=absolute\nSet the per-sample normalization\
+        \ method. 'absolute' does not change the masses, while 'relative' normalizes\
+        \ them to a total mass of 1 per input jplace sample."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --point-mass
+      description: Treat every pquery as a point mass concentrated on the highest-weight
+        placement.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --ignore-multiplicities
+      description: Set the multiplicity of each pquery to 1.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --color-list
+      description: =BuPuBk    List of colors to use for the palette. Can either be
+        the name of a color list, a file containing one color per line, or an actual
+        list of colors.
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --reverse-color-list
+      description: If set, the `--color-list` is reversed.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --log-scaling
+      description: If set, the sequential color list is logarithmically scaled instead
+        of linearily.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --max-value
+      description: =1         Maximum value that is represented by the color scale.
+        If not set, the maximum value in the data is used.
+      args: !SimpleFlagArg
+        name: FLOAT
+    - !Flag
+      optional: true
+      synonyms:
+      - --clip-over
+      description: Clip (clamp) values greater than max to be inside `[ min, max ]`.
+        If set, `--over-color` is not used to indicate values out of range.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --over-color
+      description: =#00ffff   Color used to indicate values above max.
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --min-value
+      description: =0         Minimum value that is represented by the color scale.
+        If not set, the minimum value in the data is used.
+      args: !SimpleFlagArg
+        name: FLOAT
+    - !Flag
+      optional: true
+      synonyms:
+      - --clip-under
+      description: Clip (clamp) values less than min to be inside `[ min, max ]`.
+        If set, `--under-color` is not used to indicate values out of range.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --under-color
+      description: =#ff00ff  Color used to indicate values below min.
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --clip
+      description: Clip (clamp) values to be inside `[ min, max ]`. This option is
+        a shortcut to set `--clip-under` and `--clip-over` at once.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --mask-value
+      description: =nan      Mask value that identifies invalid values. Value in the
+        data that compare equal to the mask value are colored using --mask-color.
+        This is meant as a simple means of filtering and visualizing invalid values.
+        If not set, no masking value is applied.
+      args: !SimpleFlagArg
+        name: FLOAT
+    - !Flag
+      optional: true
+      synonyms:
+      - --mask-color
+      description: =#ffff00   Color used to indicate masked or invalid values.
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --out-dir
+      description: =.            Directory to write files to
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --file-prefix
+      description: File prefix for output files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --file-suffix
+      description: File suffix for output files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --write-newick-tree
+      description: If set, the tree is written to a Newick file.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --write-nexus-tree
+      description: If set, the tree is written to a Nexus file.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --write-phyloxml-tree
+      description: If set, the tree is written to a Phyloxml file.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --write-svg-tree
+      description: If set, the tree is written to a Svg file.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --svg-tree-shape
+      description: ":{circular,rectangular}=circular\nShape of the tree."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --svg-tree-type
+      description: ":{cladogram,phylogram}=cladogram\nType of the tree."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --svg-tree-stroke-width
+      description: "=5\nSvg stroke width for the branches of the tree."
+      args: !SimpleFlagArg
+        name: FLOAT
+    - !Flag
+      optional: true
+      synonyms:
+      - --svg-tree-ladderize
+      description: If set, the tree is ladderized.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --allow-file-overwriting
+      description: Allow to overwrite existing output files instead of aborting the
+        command.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --verbose
+      description: Produce more verbose output.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --threads
+      description: =1            Number of threads to use for calculations.
+      args: !SimpleFlagArg
+        name: UINT
+    - !Flag
+      optional: true
+      synonyms:
+      - --log-file
+      description: Write all output to a log file, in addition to standard output
+        to the terminal.
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Print this help message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Make a tree with edges colored according to the placement mass of\
+      \ the samples.\nUsage: gappa examine heat-tree [OPTIONS]\n\nInput:\n  --jplace-path\
+      \ TEXT:PATH(existing)=[] ... REQUIRED\n                              List of\
+      \ jplace files or directories to process. For directories, only files with the\
+      \ extension `.jplace[.gz]` are processed.\n\n\nSettings:\n  --mass-norm TEXT:{absolute,relative}=absolute\n\
+      \                              Set the per-sample normalization method. 'absolute'\
+      \ does not change the masses, while 'relative' normalizes them to a total mass\
+      \ of 1 per input jplace sample.\n  --point-mass                Treat every pquery\
+      \ as a point mass concentrated on the highest-weight placement.\n  --ignore-multiplicities\
+      \     Set the multiplicity of each pquery to 1.\n\n\nColor:\n  --color-list\
+      \ TEXT=BuPuBk    List of colors to use for the palette. Can either be the name\
+      \ of a color list, a file containing one color per line, or an actual list of\
+      \ colors.\n  --reverse-color-list        If set, the `--color-list` is reversed.\n\
+      \  --log-scaling               If set, the sequential color list is logarithmically\
+      \ scaled instead of linearily.\n  --max-value FLOAT=1         Maximum value\
+      \ that is represented by the color scale. If not set, the maximum value in the\
+      \ data is used.\n  --clip-over                 Clip (clamp) values greater than\
+      \ max to be inside `[ min, max ]`. If set, `--over-color` is not used to indicate\
+      \ values out of range.\n  --over-color TEXT=#00ffff   Color used to indicate\
+      \ values above max.\n  --min-value FLOAT=0         Minimum value that is represented\
+      \ by the color scale. If not set, the minimum value in the data is used.\n \
+      \ --clip-under                Clip (clamp) values less than min to be inside\
+      \ `[ min, max ]`. If set, `--under-color` is not used to indicate values out\
+      \ of range.\n  --under-color TEXT=#ff00ff  Color used to indicate values below\
+      \ min.\n  --clip                      Clip (clamp) values to be inside `[ min,\
+      \ max ]`. This option is a shortcut to set `--clip-under` and `--clip-over`\
+      \ at once.\n  --mask-value FLOAT=nan      Mask value that identifies invalid\
+      \ values. Value in the data that compare equal to the mask value are colored\
+      \ using --mask-color. This is meant as a simple means of filtering and visualizing\
+      \ invalid values. If not set, no masking value is applied.\n  --mask-color TEXT=#ffff00\
+      \   Color used to indicate masked or invalid values.\n\n\nOutput:\n  --out-dir\
+      \ TEXT=.            Directory to write files to\n  --file-prefix TEXT      \
+      \    File prefix for output files\n  --file-suffix TEXT          File suffix\
+      \ for output files\n\n\nTree Output:\n  --write-newick-tree         If set,\
+      \ the tree is written to a Newick file.\n  --write-nexus-tree          If set,\
+      \ the tree is written to a Nexus file.\n  --write-phyloxml-tree       If set,\
+      \ the tree is written to a Phyloxml file.\n  --write-svg-tree            If\
+      \ set, the tree is written to a Svg file.\n\n\nSvg Tree Output:\n  --svg-tree-shape\
+      \ TEXT:{circular,rectangular}=circular\n                              Shape\
+      \ of the tree.\n  --svg-tree-type TEXT:{cladogram,phylogram}=cladogram\n   \
+      \                           Type of the tree.\n  --svg-tree-stroke-width FLOAT=5\n\
+      \                              Svg stroke width for the branches of the tree.\n\
+      \  --svg-tree-ladderize        If set, the tree is ladderized.\n\n\nGlobal Options:\n\
+      \  --allow-file-overwriting    Allow to overwrite existing output files instead\
+      \ of aborting the command.\n  --verbose                   Produce more verbose\
+      \ output.\n  --threads UINT=1            Number of threads to use for calculations.\n\
+      \  --log-file TEXT             Write all output to a log file, in addition to\
+      \ standard output to the terminal.\n  --help                      Print this\
+      \ help message and exit.\n\ngappa - a toolkit for analyzing and visualizing\
+      \ phylogenetic (placement) data\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/gappa:0.7.1--he513fc3_0
+  - !Command
+    command:
+    - gappa
+    - examine
+    - edpl
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --jplace-path
+      description: ":PATH(existing)=[] ... REQUIRED\nList of jplace files or directories\
+        \ to process. For directories, only files with the extension `.jplace[.gz]`\
+        \ are processed."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --histogram-bins
+      description: =25    Number of histogram bins for binning the EDPL values.
+      args: !SimpleFlagArg
+        name: UINT
+    - !Flag
+      optional: true
+      synonyms:
+      - --histogram-max
+      description: =-1    Maximum value to use in the histogram for binning the EDPL
+        values. To use the maximal EDPL found in the samples, use a negative value
+        (default).
+      args: !SimpleFlagArg
+        name: FLOAT
+    - !Flag
+      optional: true
+      synonyms:
+      - --no-list-file
+      description: If set, do not write out the EDPL per pquery, but just the histogram
+        file. As the list needs to keep all pquery names in memory (to get the correct
+        order), the memory requirements might be too large. In that case, this option
+        can help.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --out-dir
+      description: =.            Directory to write files to
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --file-prefix
+      description: File prefix for output files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --file-suffix
+      description: File suffix for output files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --allow-file-overwriting
+      description: Allow to overwrite existing output files instead of aborting the
+        command.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --verbose
+      description: Produce more verbose output.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --threads
+      description: =1            Number of threads to use for calculations.
+      args: !SimpleFlagArg
+        name: UINT
+    - !Flag
+      optional: true
+      synonyms:
+      - --log-file
+      description: Write all output to a log file, in addition to standard output
+        to the terminal.
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Print this help message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Calcualte the Expected Distance between Placement Locations (EDPL)\
+      \ for all pqueries.\nUsage: gappa examine edpl [OPTIONS]\n\nInput:\n  --jplace-path\
+      \ TEXT:PATH(existing)=[] ... REQUIRED\n                              List of\
+      \ jplace files or directories to process. For directories, only files with the\
+      \ extension `.jplace[.gz]` are processed.\n\n\nSettings:\n  --histogram-bins\
+      \ UINT=25    Number of histogram bins for binning the EDPL values.\n  --histogram-max\
+      \ FLOAT=-1    Maximum value to use in the histogram for binning the EDPL values.\
+      \ To use the maximal EDPL found in the samples, use a negative value (default).\n\
+      \  --no-list-file              If set, do not write out the EDPL per pquery,\
+      \ but just the histogram file. As the list needs to keep all pquery names in\
+      \ memory (to get the correct order), the memory requirements might be too large.\
+      \ In that case, this option can help.\n\n\nOutput:\n  --out-dir TEXT=.     \
+      \       Directory to write files to\n  --file-prefix TEXT          File prefix\
+      \ for output files\n  --file-suffix TEXT          File suffix for output files\n\
+      \n\nGlobal Options:\n  --allow-file-overwriting    Allow to overwrite existing\
+      \ output files instead of aborting the command.\n  --verbose               \
+      \    Produce more verbose output.\n  --threads UINT=1            Number of threads\
+      \ to use for calculations.\n  --log-file TEXT             Write all output to\
+      \ a log file, in addition to standard output to the terminal.\n  --help    \
+      \                  Print this help message and exit.\n\ngappa - a toolkit for\
+      \ analyzing and visualizing phylogenetic (placement) data\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/gappa:0.7.1--he513fc3_0
+  - !Command
+    command:
+    - gappa
+    - examine
+    - assign
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --jplace-path
+      description: ":PATH(existing)=[] ... REQUIRED\nList of jplace files or directories\
+        \ to process. For directories, only files with the extension `.jplace[.gz]`\
+        \ are processed."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --taxon-file
+      description: ":FILE REQUIRED\nFile containing a tab-separated list of reference\
+        \ taxon to taxonomic string assignments."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --root-outgroup
+      description: :FILE   Root the tree by the outgroup taxa defined in the specified
+        file.
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --taxonomy
+      description: ':FILE        EXPERIMENTAL: File containing a tab-separated list
+        defining the taxonomy. If mapping is incomplete (for example if the output
+        taxonomy shall be NCBI, but SILVA was used as the basis in the --taxon-file)
+        a best-effort mapping is attempted.'
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --ranks-string
+      description: "=superkingdom|phylum|class|order|family|genus|species\nString\
+        \ specifying the rank names, in order, to which the taxonomy adheres. Required\
+        \ when using the CAMI output format. Assignments not adhereing to this constrained\
+        \ will be collapsed to the last valid mapping\nEXAMPLE: superkingdom|phylum|class|order|family|genus|species"
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --sub-taxopath
+      description: "Taxopath (example: Eukaryota;Animalia;Chordata) by which the high\
+        \ level summary should be filtered. Doesn't affect intermediate results, and\
+        \ an unfiltered verison will be printed as well."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --max-level
+      description: =0          Maximal level of the taxonomy to be printed. Default
+        is 0, that is, the whole taxonomy is printed. If set to a value about 0, only
+        this many levels are printed. That is, taxonomic levels below the specified
+        one are omitted.
+      args: !SimpleFlagArg
+        name: UINT
+    - !Flag
+      optional: true
+      synonyms:
+      - --distribution-ratio
+      description: ":FLOAT in [0 - 1]=-1\nRatio by which LWR is split between annotations\
+        \ if an edge has two possible annotations. Specifies the amount going to the\
+        \ proximal annotation. If not set program will determine the ratio automatically\
+        \ from the 'distal length' specified per placement."
+      args: !SimpleFlagArg
+        name: FLOAT
+    - !Flag
+      optional: true
+      synonyms:
+      - --consensus-thresh
+      description: ":FLOAT in [0 - 1]=1\nFor assignment of taxonomic labels to the\
+        \ reference tree, require this consensus threshold. Example: if set to 0.6,\
+        \ and 60% of an inner node's descendants share a taxonomic path, set that\
+        \ path at the inner node."
+      args: !SimpleFlagArg
+        name: FLOAT
+    - !Flag
+      optional: true
+      synonyms:
+      - --resolve-missing-paths
+      description: "Should the taxon file be incomplete and leave some taxa without\
+        \ taxopaths, fill in the missing node labels using the closest (in the tree)\
+        \ label.\nIf not specified, those parts of the tree remain unlabelled, and\
+        \ their placements unassigned."
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --out-dir
+      description: =.            Directory to write files to
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --file-prefix
+      description: File prefix for output files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --file-suffix
+      description: File suffix for output files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --cami
+      description: ': --taxonomy    EXPERIMENTAL: Print result in the CAMI Taxonomic
+        Profiling Output Format.'
+      args: !SimpleFlagArg
+        name: Needs
+    - !Flag
+      optional: true
+      synonyms:
+      - --sample-id
+      description: "Needs: --cami\nSample-ID string to be used in the CAMI output\
+        \ file"
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --krona
+      description: Print result in the Krona text format.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --sativa
+      description: Print result as SATIVA would.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --per-query-results
+      description: Print intermediate / per-query results (per_query.tsv).
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --best-hit
+      description: In the per-query results, only print the taxonomic path with the
+        highest LWR.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --allow-file-overwriting
+      description: Allow to overwrite existing output files instead of aborting the
+        command.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --verbose
+      description: Produce more verbose output.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --threads
+      description: =1            Number of threads to use for calculations.
+      args: !SimpleFlagArg
+        name: UINT
+    - !Flag
+      optional: true
+      synonyms:
+      - --log-file
+      description: Write all output to a log file, in addition to standard output
+        to the terminal.
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Print this help message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Taxonomically assign placed query sequences and output tabulated summarization.\n\
+      Usage: gappa examine assign [OPTIONS]\n\nInput:\n  --jplace-path TEXT:PATH(existing)=[]\
+      \ ... REQUIRED\n                              List of jplace files or directories\
+      \ to process. For directories, only files with the extension `.jplace[.gz]`\
+      \ are processed.\n  --taxon-file TEXT:FILE REQUIRED\n                      \
+      \        File containing a tab-separated list of reference taxon to taxonomic\
+      \ string assignments.\n  --root-outgroup TEXT:FILE   Root the tree by the outgroup\
+      \ taxa defined in the specified file.\n  --taxonomy TEXT:FILE        EXPERIMENTAL:\
+      \ File containing a tab-separated list defining the taxonomy. If mapping is\
+      \ incomplete (for example if the output taxonomy shall be NCBI, but SILVA was\
+      \ used as the basis in the --taxon-file) a best-effort mapping is attempted.\n\
+      \  --ranks-string TEXT=superkingdom|phylum|class|order|family|genus|species\n\
+      \                              String specifying the rank names, in order, to\
+      \ which the taxonomy adheres. Required when using the CAMI output format. Assignments\
+      \ not adhereing to this constrained will be collapsed to the last valid mapping\n\
+      \                              EXAMPLE: superkingdom|phylum|class|order|family|genus|species\n\
+      \n\nSettings:\n  --sub-taxopath TEXT         Taxopath (example: Eukaryota;Animalia;Chordata)\
+      \ by which the high level summary should be filtered. Doesn't affect intermediate\
+      \ results, and an unfiltered verison will be printed as well.\n  --max-level\
+      \ UINT=0          Maximal level of the taxonomy to be printed. Default is 0,\
+      \ that is, the whole taxonomy is printed. If set to a value about 0, only this\
+      \ many levels are printed. That is, taxonomic levels below the specified one\
+      \ are omitted.\n  --distribution-ratio FLOAT:FLOAT in [0 - 1]=-1\n         \
+      \                     Ratio by which LWR is split between annotations if an\
+      \ edge has two possible annotations. Specifies the amount going to the proximal\
+      \ annotation. If not set program will determine the ratio automatically from\
+      \ the 'distal length' specified per placement.\n  --consensus-thresh FLOAT:FLOAT\
+      \ in [0 - 1]=1\n                              For assignment of taxonomic labels\
+      \ to the reference tree, require this consensus threshold. Example: if set to\
+      \ 0.6, and 60% of an inner node's descendants share a taxonomic path, set that\
+      \ path at the inner node.\n  --resolve-missing-paths     Should the taxon file\
+      \ be incomplete and leave some taxa without taxopaths, fill in the missing node\
+      \ labels using the closest (in the tree) label.\n                          \
+      \    If not specified, those parts of the tree remain unlabelled, and their\
+      \ placements unassigned.\n\n\nOutput:\n  --out-dir TEXT=.            Directory\
+      \ to write files to\n  --file-prefix TEXT          File prefix for output files\n\
+      \  --file-suffix TEXT          File suffix for output files\n  --cami Needs:\
+      \ --taxonomy    EXPERIMENTAL: Print result in the CAMI Taxonomic Profiling Output\
+      \ Format.\n  --sample-id TEXT Needs: --cami\n                              Sample-ID\
+      \ string to be used in the CAMI output file\n  --krona                     Print\
+      \ result in the Krona text format.\n  --sativa                    Print result\
+      \ as SATIVA would.\n  --per-query-results         Print intermediate / per-query\
+      \ results (per_query.tsv).\n  --best-hit                  In the per-query results,\
+      \ only print the taxonomic path with the highest LWR.\n\n\nGlobal Options:\n\
+      \  --allow-file-overwriting    Allow to overwrite existing output files instead\
+      \ of aborting the command.\n  --verbose                   Produce more verbose\
+      \ output.\n  --threads UINT=1            Number of threads to use for calculations.\n\
+      \  --log-file TEXT             Write all output to a log file, in addition to\
+      \ standard output to the terminal.\n  --help                      Print this\
+      \ help message and exit.\n\ngappa - a toolkit for analyzing and visualizing\
+      \ phylogenetic (placement) data\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/gappa:0.7.1--he513fc3_0
+  - !Command
+    command:
+    - gappa
+    - examine
+    - lwr
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --jplace-path
+      description: ":PATH(existing)=[] ... REQUIRED\nList of jplace files or directories\
+        \ to process. For directories, only files with the extension `.jplace[.gz]`\
+        \ are processed."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --ignore-multiplicities
+      description: Set the multiplicity of each pquery to 1.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --histogram-bins
+      description: =25    Number of histogram bins for binning the LWR values.
+      args: !SimpleFlagArg
+        name: UINT
+    - !Flag
+      optional: true
+      synonyms:
+      - --num-lwrs
+      description: =5           Number of histograms to print. That is, how many of
+        the LWRs per pquery to output (most likely, second most likely, etc), or in
+        other words, how many LWRs columns the output table should have.
+      args: !SimpleFlagArg
+        name: UINT
+    - !Flag
+      optional: true
+      synonyms:
+      - --no-list-file
+      description: If set, do not write out the LWRs per pquery, but just the histogram
+        file. As the list needs to keep all pquery names in memory (to get the correct
+        order), the memory requirements might be too large. In that case, this option
+        can help.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --no-compat-check
+      description: If set, disables the check for tree compatibility. Useful if comparing
+        results across differing reference trees.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --out-dir
+      description: =.            Directory to write files to
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --file-prefix
+      description: File prefix for output files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --file-suffix
+      description: File suffix for output files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --allow-file-overwriting
+      description: Allow to overwrite existing output files instead of aborting the
+        command.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --verbose
+      description: Produce more verbose output.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --threads
+      description: =1            Number of threads to use for calculations.
+      args: !SimpleFlagArg
+        name: UINT
+    - !Flag
+      optional: true
+      synonyms:
+      - --log-file
+      description: Write all output to a log file, in addition to standard output
+        to the terminal.
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Print this help message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Print histograms of the likelihood weight ratios (LWRs) of all pqueries.\n\
+      Usage: gappa examine lwr [OPTIONS]\n\nInput:\n  --jplace-path TEXT:PATH(existing)=[]\
+      \ ... REQUIRED\n                              List of jplace files or directories\
+      \ to process. For directories, only files with the extension `.jplace[.gz]`\
+      \ are processed.\n\n\nSettings:\n  --ignore-multiplicities     Set the multiplicity\
+      \ of each pquery to 1.\n  --histogram-bins UINT=25    Number of histogram bins\
+      \ for binning the LWR values.\n  --num-lwrs UINT=5           Number of histograms\
+      \ to print. That is, how many of the LWRs per pquery to output (most likely,\
+      \ second most likely, etc), or in other words, how many LWRs columns the output\
+      \ table should have.\n  --no-list-file              If set, do not write out\
+      \ the LWRs per pquery, but just the histogram file. As the list needs to keep\
+      \ all pquery names in memory (to get the correct order), the memory requirements\
+      \ might be too large. In that case, this option can help.\n  --no-compat-check\
+      \           If set, disables the check for tree compatibility. Useful if comparing\
+      \ results across differing reference trees.\n\n\nOutput:\n  --out-dir TEXT=.\
+      \            Directory to write files to\n  --file-prefix TEXT          File\
+      \ prefix for output files\n  --file-suffix TEXT          File suffix for output\
+      \ files\n\n\nGlobal Options:\n  --allow-file-overwriting    Allow to overwrite\
+      \ existing output files instead of aborting the command.\n  --verbose      \
+      \             Produce more verbose output.\n  --threads UINT=1            Number\
+      \ of threads to use for calculations.\n  --log-file TEXT             Write all\
+      \ output to a log file, in addition to standard output to the terminal.\n  --help\
+      \                      Print this help message and exit.\n\ngappa - a toolkit\
+      \ for analyzing and visualizing phylogenetic (placement) data\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/gappa:0.7.1--he513fc3_0
+  - !Command
+    command:
+    - gappa
+    - examine
+    - info
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --jplace-path
+      description: ":PATH(existing)=[] ... REQUIRED\nList of jplace files or directories\
+        \ to process. For directories, only files with the extension `.jplace[.gz]`\
+        \ are processed."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --allow-file-overwriting
+      description: Allow to overwrite existing output files instead of aborting the
+        command.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --verbose
+      description: Produce more verbose output.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --threads
+      description: =1            Number of threads to use for calculations.
+      args: !SimpleFlagArg
+        name: UINT
+    - !Flag
+      optional: true
+      synonyms:
+      - --log-file
+      description: Write all output to a log file, in addition to standard output
+        to the terminal.
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Print this help message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Print basic information about placement files.\nUsage: gappa examine\
+      \ info [OPTIONS]\n\nInput:\n  --jplace-path TEXT:PATH(existing)=[] ... REQUIRED\n\
+      \                              List of jplace files or directories to process.\
+      \ For directories, only files with the extension `.jplace[.gz]` are processed.\n\
+      \n\nGlobal Options:\n  --allow-file-overwriting    Allow to overwrite existing\
+      \ output files instead of aborting the command.\n  --verbose               \
+      \    Produce more verbose output.\n  --threads UINT=1            Number of threads\
+      \ to use for calculations.\n  --log-file TEXT             Write all output to\
+      \ a log file, in addition to standard output to the terminal.\n  --help    \
+      \                  Print this help message and exit.\n\ngappa - a toolkit for\
+      \ analyzing and visualizing phylogenetic (placement) data\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/gappa:0.7.1--he513fc3_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Print this help message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Commands for examining, visualizing, and tabulating information in placement\
+    \ data.\nUsage: gappa examine [OPTIONS] SUBCOMMAND\n\nOptions:\n  --help     \
+    \                 Print this help message and exit.\n\nSubcommands:\n  assign\
+    \                      Taxonomically assign placed query sequences and output\
+    \ tabulated summarization.\n  edpl                        Calcualte the Expected\
+    \ Distance between Placement Locations (EDPL) for all pqueries.\n  graft     \
+    \                  Make a tree with each of the query sequences represented as\
+    \ a pendant edge.\n  heat-tree                   Make a tree with edges colored\
+    \ according to the placement mass of the samples.\n  info                    \
+    \    Print basic information about placement files.\n  lwr                   \
+    \      Print histograms of the likelihood weight ratios (LWRs) of all pqueries.\n\
+    \ngappa - a toolkit for analyzing and visualizing phylogenetic (placement) data\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/gappa:0.7.1--he513fc3_0
+- &id006 !Command
+  command:
+  - gappa
+  - prepare
+  positional: []
+  named: []
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - gappa
+    - prepare
+    - taxonomy-tree
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --taxon-list-file
+      description: :FILE File that maps taxon names to taxonomic paths.
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --taxonomy-file
+      description: :FILE   File that lists the taxa of the taxonomy as taxonomic paths.
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --keep-singleton-inner-nodes
+      description: Taxonomic paths can go down several levels without any furcation.
+        Use this option to keep such paths, instead of collapsing them into a single
+        level.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --keep-inner-node-names
+      description: Taxonomies contain names at every level, while trees usually do
+        not. Use this option to also set taxonomic names for the inner nodes of the
+        tree.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --max-level
+      description: =-1          Maximum taxonomic level to process (0-based). Taxa
+        below this level are not added to the tree.
+      args: !SimpleFlagArg
+        name: INT
+    - !Flag
+      optional: true
+      synonyms:
+      - --out-dir
+      description: =.            Directory to write files to
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --file-prefix
+      description: File prefix for output files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --file-suffix
+      description: File suffix for output files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --allow-file-overwriting
+      description: Allow to overwrite existing output files instead of aborting the
+        command.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --verbose
+      description: Produce more verbose output.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --threads
+      description: =1            Number of threads to use for calculations.
+      args: !SimpleFlagArg
+        name: UINT
+    - !Flag
+      optional: true
+      synonyms:
+      - --log-file
+      description: Write all output to a log file, in addition to standard output
+        to the terminal.
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id006
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Print this help message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Turn a taxonomy into a tree that can be used as a constraint for tree\
+      \ inference.\nUsage: gappa prepare taxonomy-tree [OPTIONS]\n\nInput:\n  --taxon-list-file\
+      \ TEXT:FILE File that maps taxon names to taxonomic paths.\n  --taxonomy-file\
+      \ TEXT:FILE   File that lists the taxa of the taxonomy as taxonomic paths.\n\
+      \n\nSettings:\n  --keep-singleton-inner-nodes\n                            \
+      \  Taxonomic paths can go down several levels without any furcation. Use this\
+      \ option to keep such paths, instead of collapsing them into a single level.\n\
+      \  --keep-inner-node-names     Taxonomies contain names at every level, while\
+      \ trees usually do not. Use this option to also set taxonomic names for the\
+      \ inner nodes of the tree.\n  --max-level INT=-1          Maximum taxonomic\
+      \ level to process (0-based). Taxa below this level are not added to the tree.\n\
+      \n\nOutput:\n  --out-dir TEXT=.            Directory to write files to\n  --file-prefix\
+      \ TEXT          File prefix for output files\n  --file-suffix TEXT         \
+      \ File suffix for output files\n\n\nGlobal Options:\n  --allow-file-overwriting\
+      \    Allow to overwrite existing output files instead of aborting the command.\n\
+      \  --verbose                   Produce more verbose output.\n  --threads UINT=1\
+      \            Number of threads to use for calculations.\n  --log-file TEXT \
+      \            Write all output to a log file, in addition to standard output\
+      \ to the terminal.\n  --help                      Print this help message and\
+      \ exit.\n\ngappa - a toolkit for analyzing and visualizing phylogenetic (placement)\
+      \ data\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/gappa:0.7.1--he513fc3_0
+  - !Command
+    command:
+    - gappa
+    - prepare
+    - unchunkify
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --abundances-path
+      description: ":PATH(existing)=[] ... REQUIRED\nList of abundances files or directories\
+        \ to process. For directories, only files with the extension `.json[.gz]`\
+        \ are processed."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --jplace-path
+      description: ":PATH(existing)=[] ... Excludes: --chunk-list-file --chunk-file-expression\n\
+        List of jplace files or directories to process. For directories, only files\
+        \ with the extension `.jplace[.gz]` are processed."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --chunk-list-file
+      description: "Excludes: --jplace-path --chunk-file-expression\nIf provided,\
+        \ needs to contain a list of chunk file paths in the numerical order that\
+        \ was produced by the chunkify command."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --chunk-file-expression
+      description: "Excludes: --jplace-path --chunk-list-file\nIf provided, the expression\
+        \ is used to load jplace files by replacing any '@' character with the chunk\
+        \ number."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --jplace-cache-size
+      description: =0  Cache size to determine how many jplace files are kept in memory.
+        Default (0) means all. Use this if the command runs out of memory. It however
+        comes at the cost of longer runtime.
+      args: !SimpleFlagArg
+        name: UINT
+    - !Flag
+      optional: true
+      synonyms:
+      - --hash-function
+      description: ":{SHA1,SHA256,MD5}=SHA1\nHash function that was used for re-naming\
+        \ and identifying sequences in the chunkify command."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --out-dir
+      description: =.            Directory to write files to
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --file-prefix
+      description: File prefix for output files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --file-suffix
+      description: File suffix for output files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --allow-file-overwriting
+      description: Allow to overwrite existing output files instead of aborting the
+        command.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --verbose
+      description: Produce more verbose output.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --threads
+      description: =1            Number of threads to use for calculations.
+      args: !SimpleFlagArg
+        name: UINT
+    - !Flag
+      optional: true
+      synonyms:
+      - --log-file
+      description: Write all output to a log file, in addition to standard output
+        to the terminal.
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id006
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Print this help message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Unchunkify a set of jplace files using abundace map files and create\
+      \ per-sample jplace files.\nUsage: gappa prepare unchunkify [OPTIONS]\n\nInput:\n\
+      \  --abundances-path TEXT:PATH(existing)=[] ... REQUIRED\n                 \
+      \             List of abundances files or directories to process. For directories,\
+      \ only files with the extension `.json[.gz]` are processed.\n  --jplace-path\
+      \ TEXT:PATH(existing)=[] ... Excludes: --chunk-list-file --chunk-file-expression\n\
+      \                              List of jplace files or directories to process.\
+      \ For directories, only files with the extension `.jplace[.gz]` are processed.\n\
+      \  --chunk-list-file TEXT Excludes: --jplace-path --chunk-file-expression\n\
+      \                              If provided, needs to contain a list of chunk\
+      \ file paths in the numerical order that was produced by the chunkify command.\n\
+      \  --chunk-file-expression TEXT Excludes: --jplace-path --chunk-list-file\n\
+      \                              If provided, the expression is used to load jplace\
+      \ files by replacing any '@' character with the chunk number.\n\n\nSettings:\n\
+      \  --jplace-cache-size UINT=0  Cache size to determine how many jplace files\
+      \ are kept in memory. Default (0) means all. Use this if the command runs out\
+      \ of memory. It however comes at the cost of longer runtime.\n  --hash-function\
+      \ TEXT:{SHA1,SHA256,MD5}=SHA1\n                              Hash function that\
+      \ was used for re-naming and identifying sequences in the chunkify command.\n\
+      \n\nOutput:\n  --out-dir TEXT=.            Directory to write files to\n  --file-prefix\
+      \ TEXT          File prefix for output files\n  --file-suffix TEXT         \
+      \ File suffix for output files\n\n\nGlobal Options:\n  --allow-file-overwriting\
+      \    Allow to overwrite existing output files instead of aborting the command.\n\
+      \  --verbose                   Produce more verbose output.\n  --threads UINT=1\
+      \            Number of threads to use for calculations.\n  --log-file TEXT \
+      \            Write all output to a log file, in addition to standard output\
+      \ to the terminal.\n  --help                      Print this help message and\
+      \ exit.\n\ngappa - a toolkit for analyzing and visualizing phylogenetic (placement)\
+      \ data\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/gappa:0.7.1--he513fc3_0
+  - !Command
+    command:
+    - gappa
+    - prepare
+    - chunkify
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --fasta-path
+      description: ":PATH(existing)=[] ... REQUIRED\nList of fasta files or directories\
+        \ to process. For directories, only files with the extension `.(fasta|fas|fsa|fna|ffn|faa|frn)[.gz]`\
+        \ are processed."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --chunk-size
+      description: =50000     Number of sequences per chunk file.
+      args: !SimpleFlagArg
+        name: UINT
+    - !Flag
+      optional: true
+      synonyms:
+      - --min-abundance
+      description: =1      Minimum abundance of a single sequence. Sequences below
+        are filtered out.
+      args: !SimpleFlagArg
+        name: UINT
+    - !Flag
+      optional: true
+      synonyms:
+      - --hash-function
+      description: ":{SHA1,SHA256,MD5}=SHA1\nHash function for re-naming and identifying\
+        \ sequences."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --chunks-out-dir
+      description: =.     Directory to write chunks files to
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --chunks-file-prefix
+      description: File prefix for chunks files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --chunks-file-suffix
+      description: File suffix for chunks files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --abundances-out-dir
+      description: =. Directory to write abundances files to
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --abundances-file-prefix
+      description: File prefix for abundances files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --abundances-file-suffix
+      description: File suffix for abundances files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --allow-file-overwriting
+      description: Allow to overwrite existing output files instead of aborting the
+        command.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --verbose
+      description: Produce more verbose output.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --threads
+      description: =1            Number of threads to use for calculations.
+      args: !SimpleFlagArg
+        name: UINT
+    - !Flag
+      optional: true
+      synonyms:
+      - --log-file
+      description: Write all output to a log file, in addition to standard output
+        to the terminal.
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id006
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Print this help message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Chunkify a set of fasta files and create abundance maps.\nUsage: gappa\
+      \ prepare chunkify [OPTIONS]\n\nInput:\n  --fasta-path TEXT:PATH(existing)=[]\
+      \ ... REQUIRED\n                              List of fasta files or directories\
+      \ to process. For directories, only files with the extension `.(fasta|fas|fsa|fna|ffn|faa|frn)[.gz]`\
+      \ are processed.\n\n\nSettings:\n  --chunk-size UINT=50000     Number of sequences\
+      \ per chunk file.\n  --min-abundance UINT=1      Minimum abundance of a single\
+      \ sequence. Sequences below are filtered out.\n  --hash-function TEXT:{SHA1,SHA256,MD5}=SHA1\n\
+      \                              Hash function for re-naming and identifying sequences.\n\
+      \n\nOutput:\n  --chunks-out-dir TEXT=.     Directory to write chunks files to\n\
+      \  --chunks-file-prefix TEXT   File prefix for chunks files\n  --chunks-file-suffix\
+      \ TEXT   File suffix for chunks files\n  --abundances-out-dir TEXT=. Directory\
+      \ to write abundances files to\n  --abundances-file-prefix TEXT\n          \
+      \                    File prefix for abundances files\n  --abundances-file-suffix\
+      \ TEXT\n                              File suffix for abundances files\n\n\n\
+      Global Options:\n  --allow-file-overwriting    Allow to overwrite existing output\
+      \ files instead of aborting the command.\n  --verbose                   Produce\
+      \ more verbose output.\n  --threads UINT=1            Number of threads to use\
+      \ for calculations.\n  --log-file TEXT             Write all output to a log\
+      \ file, in addition to standard output to the terminal.\n  --help          \
+      \            Print this help message and exit.\n\ngappa - a toolkit for analyzing\
+      \ and visualizing phylogenetic (placement) data\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/gappa:0.7.1--he513fc3_0
+  - !Command
+    command:
+    - gappa
+    - prepare
+    - extract
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --jplace-path
+      description: ":PATH(existing)=[] ... REQUIRED\nList of jplace files or directories\
+        \ to process. For directories, only files with the extension `.jplace[.gz]`\
+        \ are processed."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --clade-list-file
+      description: ":FILE REQUIRED\nFile containing a tab-separated list of taxon\
+        \ to clade mapping."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --fasta-path
+      description: ":PATH(existing)=[] ...\nList of fasta files or directories to\
+        \ process. For directories, only files with the extension `.(fasta|fas|fsa|fna|ffn|faa|frn)[.gz]`\
+        \ are processed."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --threshold
+      description: ":FLOAT in [0.5 - 1]=0.95\nThreshold of how much placement mass\
+        \ needs to be in a clade for extracting a pquery."
+      args: !SimpleFlagArg
+        name: FLOAT
+    - !Flag
+      optional: true
+      synonyms:
+      - --point-mass
+      description: Treat every pquery as a point mass concentrated on the highest-weight
+        placement.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --color-tree-file
+      description: ":PATH(non-existing)\nIf a path is provided, an svg file with a\
+        \ tree colored by clades is written."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --samples-out-dir
+      description: "=samples\nDirectory to write samples files to"
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --samples-file-prefix
+      description: File prefix for samples files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --samples-file-suffix
+      description: File suffix for samples files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --sequences-out-dir
+      description: "=sequences\nDirectory to write sequences files to"
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --sequences-file-prefix
+      description: File prefix for sequences files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --sequences-file-suffix
+      description: File suffix for sequences files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --allow-file-overwriting
+      description: Allow to overwrite existing output files instead of aborting the
+        command.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --verbose
+      description: Produce more verbose output.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --threads
+      description: =1            Number of threads to use for calculations.
+      args: !SimpleFlagArg
+        name: UINT
+    - !Flag
+      optional: true
+      synonyms:
+      - --log-file
+      description: Write all output to a log file, in addition to standard output
+        to the terminal.
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id006
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Print this help message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Extract placements from clades of the tree and write per-clade jplace\
+      \ files.\nUsage: gappa prepare extract [OPTIONS]\n\nInput:\n  --jplace-path\
+      \ TEXT:PATH(existing)=[] ... REQUIRED\n                              List of\
+      \ jplace files or directories to process. For directories, only files with the\
+      \ extension `.jplace[.gz]` are processed.\n  --clade-list-file TEXT:FILE REQUIRED\n\
+      \                              File containing a tab-separated list of taxon\
+      \ to clade mapping.\n  --fasta-path TEXT:PATH(existing)=[] ...\n           \
+      \                   List of fasta files or directories to process. For directories,\
+      \ only files with the extension `.(fasta|fas|fsa|fna|ffn|faa|frn)[.gz]` are\
+      \ processed.\n\n\nSettings:\n  --threshold FLOAT:FLOAT in [0.5 - 1]=0.95\n \
+      \                             Threshold of how much placement mass needs to\
+      \ be in a clade for extracting a pquery.\n  --point-mass                Treat\
+      \ every pquery as a point mass concentrated on the highest-weight placement.\n\
+      \n\nOutput:\n  --color-tree-file TEXT:PATH(non-existing)\n                 \
+      \             If a path is provided, an svg file with a tree colored by clades\
+      \ is written.\n  --samples-out-dir TEXT=samples\n                          \
+      \    Directory to write samples files to\n  --samples-file-prefix TEXT  File\
+      \ prefix for samples files\n  --samples-file-suffix TEXT  File suffix for samples\
+      \ files\n  --sequences-out-dir TEXT=sequences\n                            \
+      \  Directory to write sequences files to\n  --sequences-file-prefix TEXT\n \
+      \                             File prefix for sequences files\n  --sequences-file-suffix\
+      \ TEXT\n                              File suffix for sequences files\n\n\n\
+      Global Options:\n  --allow-file-overwriting    Allow to overwrite existing output\
+      \ files instead of aborting the command.\n  --verbose                   Produce\
+      \ more verbose output.\n  --threads UINT=1            Number of threads to use\
+      \ for calculations.\n  --log-file TEXT             Write all output to a log\
+      \ file, in addition to standard output to the terminal.\n  --help          \
+      \            Print this help message and exit.\n\ngappa - a toolkit for analyzing\
+      \ and visualizing phylogenetic (placement) data\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/gappa:0.7.1--he513fc3_0
+  - !Command
+    command:
+    - gappa
+    - prepare
+    - phat
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --taxonomy-file
+      description: ":FILE REQUIRED\nFile that lists the taxa of the database."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --sequence-file
+      description: ":FILE REQUIRED\nFasta file containing the sequences of the database."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --target-size
+      description: "=0 REQUIRED\nTarget size of how many taxa to select for building\
+        \ consensus sequences."
+      args: !SimpleFlagArg
+        name: UINT
+    - !Flag
+      optional: true
+      synonyms:
+      - --sub-taxonomy
+      description: If a taxopath from the taxonomy is provided, only the respective
+        sub-taxonomy is used.
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --min-subclade-size
+      description: =0  Minimal size of sub-clades. Everything below is expanded.
+      args: !SimpleFlagArg
+        name: UINT
+    - !Flag
+      optional: true
+      synonyms:
+      - --max-subclade-size
+      description: =0  Maximal size of a non-expanded sub-clades. Everything bigger
+        is first expanded.
+      args: !SimpleFlagArg
+        name: UINT
+    - !Flag
+      optional: true
+      synonyms:
+      - --min-tax-level
+      description: =0      Minimal taxonomic level. Taxa below this level are always
+        expanded.
+      args: !SimpleFlagArg
+        name: UINT
+    - !Flag
+      optional: true
+      synonyms:
+      - --allow-approximation
+      description: Allow to expand taxa that help getting closer to the --target-size,
+        even if they are not the ones with the highest entropy.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --no-taxa-selection
+      description: If set, no taxa selection using entropy is performed. Instead,
+        all taxa on all levels/ranks are used and consensus sequences for all of them
+        are calculated. This is useful for testing and to try out new ideas.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --consensus-method
+      description: ":{majorities,cavener,threshold}=majorities\nConsensus method to\
+        \ use for combining sequences."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --consensus-threshold
+      description: ":FLOAT in [0 - 1]=0.5 Needs: --consensus-method\nThreshold value\
+        \ to use with --consensus-method threshold. Has to be in [ 0.0, 1.0 ]."
+      args: !SimpleFlagArg
+        name: FLOAT
+    - !Flag
+      optional: true
+      synonyms:
+      - --out-dir
+      description: =.            Directory to write files to
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --file-prefix
+      description: File prefix for output files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --file-suffix
+      description: File suffix for output files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --write-info-files
+      description: If set, two additional info files are written, containing the new
+        pruned taxonomy, as well as the entropy of all clades of the original taxonomy.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --allow-file-overwriting
+      description: Allow to overwrite existing output files instead of aborting the
+        command.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --verbose
+      description: Produce more verbose output.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --threads
+      description: =1            Number of threads to use for calculations.
+      args: !SimpleFlagArg
+        name: UINT
+    - !Flag
+      optional: true
+      synonyms:
+      - --log-file
+      description: Write all output to a log file, in addition to standard output
+        to the terminal.
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id006
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Print this help message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Generate consensus sequences from a sequence database according to\
+      \ the PhAT method.\nUsage: gappa prepare phat [OPTIONS]\n\nInput:\n  --taxonomy-file\
+      \ TEXT:FILE REQUIRED\n                              File that lists the taxa\
+      \ of the database.\n  --sequence-file TEXT:FILE REQUIRED\n                 \
+      \             Fasta file containing the sequences of the database.\n\n\nTaxonomy\
+      \ Expansion:\n  --target-size UINT=0 REQUIRED\n                            \
+      \  Target size of how many taxa to select for building consensus sequences.\n\
+      \  --sub-taxonomy TEXT         If a taxopath from the taxonomy is provided,\
+      \ only the respective sub-taxonomy is used.\n  --min-subclade-size UINT=0  Minimal\
+      \ size of sub-clades. Everything below is expanded.\n  --max-subclade-size UINT=0\
+      \  Maximal size of a non-expanded sub-clades. Everything bigger is first expanded.\n\
+      \  --min-tax-level UINT=0      Minimal taxonomic level. Taxa below this level\
+      \ are always expanded.\n  --allow-approximation       Allow to expand taxa that\
+      \ help getting closer to the --target-size, even if they are not the ones with\
+      \ the highest entropy.\n  --no-taxa-selection         If set, no taxa selection\
+      \ using entropy is performed. Instead, all taxa on all levels/ranks are used\
+      \ and consensus sequences for all of them are calculated. This is useful for\
+      \ testing and to try out new ideas.\n\n\nConsensus Method:\n  --consensus-method\
+      \ TEXT:{majorities,cavener,threshold}=majorities\n                         \
+      \     Consensus method to use for combining sequences.\n  --consensus-threshold\
+      \ FLOAT:FLOAT in [0 - 1]=0.5 Needs: --consensus-method\n                   \
+      \           Threshold value to use with --consensus-method threshold. Has to\
+      \ be in [ 0.0, 1.0 ].\n\n\nOutput:\n  --out-dir TEXT=.            Directory\
+      \ to write files to\n  --file-prefix TEXT          File prefix for output files\n\
+      \  --file-suffix TEXT          File suffix for output files\n  --write-info-files\
+      \          If set, two additional info files are written, containing the new\
+      \ pruned taxonomy, as well as the entropy of all clades of the original taxonomy.\n\
+      \n\nGlobal Options:\n  --allow-file-overwriting    Allow to overwrite existing\
+      \ output files instead of aborting the command.\n  --verbose               \
+      \    Produce more verbose output.\n  --threads UINT=1            Number of threads\
+      \ to use for calculations.\n  --log-file TEXT             Write all output to\
+      \ a log file, in addition to standard output to the terminal.\n  --help    \
+      \                  Print this help message and exit.\n\ngappa - a toolkit for\
+      \ analyzing and visualizing phylogenetic (placement) data\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/gappa:0.7.1--he513fc3_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Print this help message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Commands for preparing and preprocessing of phylogenetic and placement\
+    \ data.\nUsage: gappa prepare [OPTIONS] SUBCOMMAND\n\nOptions:\n  --help     \
+    \                 Print this help message and exit.\n\nSubcommands:\n  chunkify\
+    \                    Chunkify a set of fasta files and create abundance maps.\n\
+    \  extract                     Extract placements from clades of the tree and\
+    \ write per-clade jplace files.\n  phat                        Generate consensus\
+    \ sequences from a sequence database according to the PhAT method.\n  taxonomy-tree\
+    \               Turn a taxonomy into a tree that can be used as a constraint for\
+    \ tree inference.\n  unchunkify                  Unchunkify a set of jplace files\
+    \ using abundace map files and create per-sample jplace files.\n\ngappa - a toolkit\
+    \ for analyzing and visualizing phylogenetic (placement) data\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/gappa:0.7.1--he513fc3_0
+- &id007 !Command
+  command:
+  - gappa
+  - random
+  positional: []
+  named: []
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - gappa
+    - random
+    - random-tree
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --leaf-count
+      description: "=0 REQUIRED\nNumber of leaf nodes (taxa) to create."
+      args: !SimpleFlagArg
+        name: UINT
+    - !Flag
+      optional: true
+      synonyms:
+      - --out-dir
+      description: =.            Directory to write files to
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --file-prefix
+      description: File prefix for output files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --file-suffix
+      description: File suffix for output files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --allow-file-overwriting
+      description: Allow to overwrite existing output files instead of aborting the
+        command.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --verbose
+      description: Produce more verbose output.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --threads
+      description: =1            Number of threads to use for calculations.
+      args: !SimpleFlagArg
+        name: UINT
+    - !Flag
+      optional: true
+      synonyms:
+      - --log-file
+      description: Write all output to a log file, in addition to standard output
+        to the terminal.
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id007
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Print this help message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Create a random tree with a given numer of leaf nodes.\nUsage: gappa\
+      \ random random-tree [OPTIONS]\n\nInput:\n  --leaf-count UINT=0 REQUIRED\n \
+      \                             Number of leaf nodes (taxa) to create.\n\n\nOutput:\n\
+      \  --out-dir TEXT=.            Directory to write files to\n  --file-prefix\
+      \ TEXT          File prefix for output files\n  --file-suffix TEXT         \
+      \ File suffix for output files\n\n\nGlobal Options:\n  --allow-file-overwriting\
+      \    Allow to overwrite existing output files instead of aborting the command.\n\
+      \  --verbose                   Produce more verbose output.\n  --threads UINT=1\
+      \            Number of threads to use for calculations.\n  --log-file TEXT \
+      \            Write all output to a log file, in addition to standard output\
+      \ to the terminal.\n  --help                      Print this help message and\
+      \ exit.\n\ngappa - a toolkit for analyzing and visualizing phylogenetic (placement)\
+      \ data\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/gappa:0.7.1--he513fc3_0
+  - !Command
+    command:
+    - gappa
+    - random
+    - random-placements
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --reference-tree
+      description: "REQUIRED\nFile containing a reference tree in newick format."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --pquery-count
+      description: "=0 REQUIRED\nNumber of pqueries to create."
+      args: !SimpleFlagArg
+        name: UINT
+    - !Flag
+      optional: true
+      synonyms:
+      - --out-dir
+      description: =.            Directory to write files to
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --file-prefix
+      description: File prefix for output files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --file-suffix
+      description: File suffix for output files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --allow-file-overwriting
+      description: Allow to overwrite existing output files instead of aborting the
+        command.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --verbose
+      description: Produce more verbose output.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --threads
+      description: =1            Number of threads to use for calculations.
+      args: !SimpleFlagArg
+        name: UINT
+    - !Flag
+      optional: true
+      synonyms:
+      - --log-file
+      description: Write all output to a log file, in addition to standard output
+        to the terminal.
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id007
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Print this help message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Create a set of random phylogenetic placements on a given reference\
+      \ tree.\nUsage: gappa random random-placements [OPTIONS]\n\nInput:\n  --reference-tree\
+      \ TEXT REQUIRED\n                              File containing a reference tree\
+      \ in newick format.\n  --pquery-count UINT=0 REQUIRED\n                    \
+      \          Number of pqueries to create.\n\n\nOutput:\n  --out-dir TEXT=.  \
+      \          Directory to write files to\n  --file-prefix TEXT          File prefix\
+      \ for output files\n  --file-suffix TEXT          File suffix for output files\n\
+      \n\nGlobal Options:\n  --allow-file-overwriting    Allow to overwrite existing\
+      \ output files instead of aborting the command.\n  --verbose               \
+      \    Produce more verbose output.\n  --threads UINT=1            Number of threads\
+      \ to use for calculations.\n  --log-file TEXT             Write all output to\
+      \ a log file, in addition to standard output to the terminal.\n  --help    \
+      \                  Print this help message and exit.\n\ngappa - a toolkit for\
+      \ analyzing and visualizing phylogenetic (placement) data\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/gappa:0.7.1--he513fc3_0
+  - !Command
+    command:
+    - gappa
+    - random
+    - random-alignment
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --sequence-count
+      description: "=0 REQUIRED\nNumber of sequences to create."
+      args: !SimpleFlagArg
+        name: UINT
+    - !Flag
+      optional: true
+      synonyms:
+      - --sequence-length
+      description: "=0 REQUIRED\nLength of the sequences to create."
+      args: !SimpleFlagArg
+        name: UINT
+    - !Flag
+      optional: true
+      synonyms:
+      - --characters
+      description: =-ACGT     Set of characters to use for the sequences.
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --out-dir
+      description: =.            Directory to write files to
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --file-prefix
+      description: File prefix for output files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --file-suffix
+      description: File suffix for output files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --write-fasta
+      description: Write sequences to a fasta file.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --write-strict-phylip
+      description: ": --write-relaxed-phylip\nWrite sequences to a strict phylip file."
+      args: !SimpleFlagArg
+        name: Excludes
+    - !Flag
+      optional: true
+      synonyms:
+      - --write-relaxed-phylip
+      description: ": --write-strict-phylip\nWrite sequences to a relaxed phylip file."
+      args: !SimpleFlagArg
+        name: Excludes
+    - !Flag
+      optional: true
+      synonyms:
+      - --allow-file-overwriting
+      description: Allow to overwrite existing output files instead of aborting the
+        command.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --verbose
+      description: Produce more verbose output.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --threads
+      description: =1            Number of threads to use for calculations.
+      args: !SimpleFlagArg
+        name: UINT
+    - !Flag
+      optional: true
+      synonyms:
+      - --log-file
+      description: Write all output to a log file, in addition to standard output
+        to the terminal.
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id007
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Print this help message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Create a random alignment with a given numer of sequences of a given\
+      \ length.\nUsage: gappa random random-alignment [OPTIONS]\n\nInput:\n  --sequence-count\
+      \ UINT=0 REQUIRED\n                              Number of sequences to create.\n\
+      \  --sequence-length UINT=0 REQUIRED\n                              Length of\
+      \ the sequences to create.\n  --characters TEXT=-ACGT     Set of characters\
+      \ to use for the sequences.\n\n\nOutput:\n  --out-dir TEXT=.            Directory\
+      \ to write files to\n  --file-prefix TEXT          File prefix for output files\n\
+      \  --file-suffix TEXT          File suffix for output files\n  --write-fasta\
+      \               Write sequences to a fasta file.\n  --write-strict-phylip Excludes:\
+      \ --write-relaxed-phylip\n                              Write sequences to a\
+      \ strict phylip file.\n  --write-relaxed-phylip Excludes: --write-strict-phylip\n\
+      \                              Write sequences to a relaxed phylip file.\n\n\
+      \nGlobal Options:\n  --allow-file-overwriting    Allow to overwrite existing\
+      \ output files instead of aborting the command.\n  --verbose               \
+      \    Produce more verbose output.\n  --threads UINT=1            Number of threads\
+      \ to use for calculations.\n  --log-file TEXT             Write all output to\
+      \ a log file, in addition to standard output to the terminal.\n  --help    \
+      \                  Print this help message and exit.\n\ngappa - a toolkit for\
+      \ analyzing and visualizing phylogenetic (placement) data\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/gappa:0.7.1--he513fc3_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Print this help message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Commands for random generation of phylogenetic and placement data.\n\
+    Usage: gappa random [OPTIONS] SUBCOMMAND\n\nOptions:\n  --help               \
+    \       Print this help message and exit.\n\nSubcommands:\n  random-alignment\
+    \            Create a random alignment with a given numer of sequences of a given\
+    \ length.\n  random-placements           Create a set of random phylogenetic placements\
+    \ on a given reference tree.\n  random-tree                 Create a random tree\
+    \ with a given numer of leaf nodes.\n\ngappa - a toolkit for analyzing and visualizing\
+    \ phylogenetic (placement) data\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/gappa:0.7.1--he513fc3_0
+- &id008 !Command
+  command:
+  - gappa
+  - analyze
+  positional: []
+  named: []
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - gappa
+    - analyze
+    - phylogenetic-kmeans
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --jplace-path
+      description: ":PATH(existing)=[] ... REQUIRED\nList of jplace files or directories\
+        \ to process. For directories, only files with the extension `.jplace[.gz]`\
+        \ are processed."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --k
+      description: REQUIRED           Number of clusters to find. Can be a comma-separated
+        list of multiple values or ranges for k, such as `"1-5,8,10,12"`
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --write-overview-file
+      description: If provided, a table file is written that summarizes the average
+        distance and variance of the clusters for each k. Useful for elbow plots.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --point-mass
+      description: Treat every pquery as a point mass concentrated on the highest-weight
+        placement.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --ignore-multiplicities
+      description: Set the multiplicity of each pquery to 1.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --bins
+      description: =0               Bin the masses per-branch in order to save time
+        and memory, with only minor differences in the cluster assignments. Default
+        is 0, that is, no binning. If set, we recommend to use 50 bins or more.
+      args: !SimpleFlagArg
+        name: UINT
+    - !Flag
+      optional: true
+      synonyms:
+      - --color-list
+      description: =BuPuBk    List of colors to use for the palette. Can either be
+        the name of a color list, a file containing one color per line, or an actual
+        list of colors.
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --reverse-color-list
+      description: If set, the `--color-list` is reversed.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --log-scaling
+      description: If set, the sequential color list is logarithmically scaled instead
+        of linearily.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --out-dir
+      description: =.            Directory to write files to
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --file-prefix
+      description: =pkmeans_ File prefix for output files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --file-suffix
+      description: File suffix for output files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --write-newick-tree
+      description: If set, the tree is written to a Newick file.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --write-nexus-tree
+      description: If set, the tree is written to a Nexus file.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --write-phyloxml-tree
+      description: If set, the tree is written to a Phyloxml file.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --write-svg-tree
+      description: If set, the tree is written to a Svg file.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --svg-tree-shape
+      description: ":{circular,rectangular}=circular\nShape of the tree."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --svg-tree-type
+      description: ":{cladogram,phylogram}=cladogram\nType of the tree."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --svg-tree-stroke-width
+      description: "=5\nSvg stroke width for the branches of the tree."
+      args: !SimpleFlagArg
+        name: FLOAT
+    - !Flag
+      optional: true
+      synonyms:
+      - --svg-tree-ladderize
+      description: If set, the tree is ladderized.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --allow-file-overwriting
+      description: Allow to overwrite existing output files instead of aborting the
+        command.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --verbose
+      description: Produce more verbose output.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --threads
+      description: =1            Number of threads to use for calculations.
+      args: !SimpleFlagArg
+        name: UINT
+    - !Flag
+      optional: true
+      synonyms:
+      - --log-file
+      description: Write all output to a log file, in addition to standard output
+        to the terminal.
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id008
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Print this help message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Run Phylogenetic k-means clustering on a set of samples.\nUsage: gappa\
+      \ analyze phylogenetic-kmeans [OPTIONS]\n\nInput:\n  --jplace-path TEXT:PATH(existing)=[]\
+      \ ... REQUIRED\n                              List of jplace files or directories\
+      \ to process. For directories, only files with the extension `.jplace[.gz]`\
+      \ are processed.\n\n\nSettings:\n  --k TEXT REQUIRED           Number of clusters\
+      \ to find. Can be a comma-separated list of multiple values or ranges for k,\
+      \ such as `\"1-5,8,10,12\"`\n  --write-overview-file       If provided, a table\
+      \ file is written that summarizes the average distance and variance of the clusters\
+      \ for each k. Useful for elbow plots.\n  --point-mass                Treat every\
+      \ pquery as a point mass concentrated on the highest-weight placement.\n  --ignore-multiplicities\
+      \     Set the multiplicity of each pquery to 1.\n  --bins UINT=0           \
+      \    Bin the masses per-branch in order to save time and memory, with only minor\
+      \ differences in the cluster assignments. Default is 0, that is, no binning.\
+      \ If set, we recommend to use 50 bins or more.\n\n\nColor:\n  --color-list TEXT=BuPuBk\
+      \    List of colors to use for the palette. Can either be the name of a color\
+      \ list, a file containing one color per line, or an actual list of colors.\n\
+      \  --reverse-color-list        If set, the `--color-list` is reversed.\n  --log-scaling\
+      \               If set, the sequential color list is logarithmically scaled\
+      \ instead of linearily.\n\n\nOutput:\n  --out-dir TEXT=.            Directory\
+      \ to write files to\n  --file-prefix TEXT=pkmeans_ File prefix for output files\n\
+      \  --file-suffix TEXT          File suffix for output files\n\n\nTree Output:\n\
+      \  --write-newick-tree         If set, the tree is written to a Newick file.\n\
+      \  --write-nexus-tree          If set, the tree is written to a Nexus file.\n\
+      \  --write-phyloxml-tree       If set, the tree is written to a Phyloxml file.\n\
+      \  --write-svg-tree            If set, the tree is written to a Svg file.\n\n\
+      \nSvg Tree Output:\n  --svg-tree-shape TEXT:{circular,rectangular}=circular\n\
+      \                              Shape of the tree.\n  --svg-tree-type TEXT:{cladogram,phylogram}=cladogram\n\
+      \                              Type of the tree.\n  --svg-tree-stroke-width\
+      \ FLOAT=5\n                              Svg stroke width for the branches of\
+      \ the tree.\n  --svg-tree-ladderize        If set, the tree is ladderized.\n\
+      \n\nGlobal Options:\n  --allow-file-overwriting    Allow to overwrite existing\
+      \ output files instead of aborting the command.\n  --verbose               \
+      \    Produce more verbose output.\n  --threads UINT=1            Number of threads\
+      \ to use for calculations.\n  --log-file TEXT             Write all output to\
+      \ a log file, in addition to standard output to the terminal.\n  --help    \
+      \                  Print this help message and exit.\n\ngappa - a toolkit for\
+      \ analyzing and visualizing phylogenetic (placement) data\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/gappa:0.7.1--he513fc3_0
+  - !Command
+    command:
+    - gappa
+    - analyze
+    - correlation
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --jplace-path
+      description: ":PATH(existing)=[] ... REQUIRED\nList of jplace files or directories\
+        \ to process. For directories, only files with the extension `.jplace[.gz]`\
+        \ are processed."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --mass-norm
+      description: ":{absolute,relative}=absolute REQUIRED\nSet the per-sample normalization\
+        \ method. 'absolute' does not change the masses, while 'relative' normalizes\
+        \ them to a total mass of 1 per input jplace sample."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --point-mass
+      description: Treat every pquery as a point mass concentrated on the highest-weight
+        placement.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --ignore-multiplicities
+      description: Set the multiplicity of each pquery to 1.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --edge-values
+      description: ":{both,imbalances,masses}=both\nValues per edge used to calculate\
+        \ the correlation."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --method
+      description: ":{all,pearson,spearman}=all\nMethod of correlation."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --metadata-table-file
+      description: ":FILE REQUIRED\nTabular char-separated input file."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --metadata-separator-char
+      description: ":{comma,tab,space,semicolon}=comma\nSeparator char for tabular\
+        \ data."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --metadata-select-columns
+      description: "Excludes: --metadata-ignore-columns\nSet the columns to select,\
+        \ by their name in the first (header) line of the table. All others columns\
+        \ are ignored. The options expects either a file with one column name per\
+        \ line, or an actual list of column names separated by --metadata-separator-char"
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --metadata-ignore-columns
+      description: "Excludes: --metadata-select-columns\nSet the columns to ignore,\
+        \ by their name in the first (header) line of the table. All others columns\
+        \ are selected. The options expects either a file with one column name per\
+        \ line, or an actual list of column names separated by --metadata-separator-char"
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --color-list
+      description: =spectral  List of colors to use for the palette. Can either be
+        the name of a color list, a file containing one color per line, or an actual
+        list of colors.
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --reverse-color-list
+      description: If set, the `--color-list` is reversed.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --mask-color
+      description: =#dfdfdf   Color used to indicate masked or invalid values.
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --out-dir
+      description: =.            Directory to write files to
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --file-prefix
+      description: File prefix for output files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --file-suffix
+      description: File suffix for output files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --write-newick-tree
+      description: If set, the tree is written to a Newick file.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --write-nexus-tree
+      description: If set, the tree is written to a Nexus file.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --write-phyloxml-tree
+      description: If set, the tree is written to a Phyloxml file.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --write-svg-tree
+      description: If set, the tree is written to a Svg file.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --svg-tree-shape
+      description: ":{circular,rectangular}=circular\nShape of the tree."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --svg-tree-type
+      description: ":{cladogram,phylogram}=cladogram\nType of the tree."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --svg-tree-stroke-width
+      description: "=5\nSvg stroke width for the branches of the tree."
+      args: !SimpleFlagArg
+        name: FLOAT
+    - !Flag
+      optional: true
+      synonyms:
+      - --svg-tree-ladderize
+      description: If set, the tree is ladderized.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --allow-file-overwriting
+      description: Allow to overwrite existing output files instead of aborting the
+        command.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --verbose
+      description: Produce more verbose output.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --threads
+      description: =1            Number of threads to use for calculations.
+      args: !SimpleFlagArg
+        name: UINT
+    - !Flag
+      optional: true
+      synonyms:
+      - --log-file
+      description: Write all output to a log file, in addition to standard output
+        to the terminal.
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id008
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Print this help message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Calculate the Edge Correlation of samples and metadata features.\n\
+      Usage: gappa analyze correlation [OPTIONS]\n\nInput:\n  --jplace-path TEXT:PATH(existing)=[]\
+      \ ... REQUIRED\n                              List of jplace files or directories\
+      \ to process. For directories, only files with the extension `.jplace[.gz]`\
+      \ are processed.\n\n\nSettings:\n  --mass-norm TEXT:{absolute,relative}=absolute\
+      \ REQUIRED\n                              Set the per-sample normalization method.\
+      \ 'absolute' does not change the masses, while 'relative' normalizes them to\
+      \ a total mass of 1 per input jplace sample.\n  --point-mass               \
+      \ Treat every pquery as a point mass concentrated on the highest-weight placement.\n\
+      \  --ignore-multiplicities     Set the multiplicity of each pquery to 1.\n \
+      \ --edge-values TEXT:{both,imbalances,masses}=both\n                       \
+      \       Values per edge used to calculate the correlation.\n  --method TEXT:{all,pearson,spearman}=all\n\
+      \                              Method of correlation.\n\n\nMetadata Table Input:\n\
+      \  --metadata-table-file TEXT:FILE REQUIRED\n                              Tabular\
+      \ char-separated input file.\n  --metadata-separator-char TEXT:{comma,tab,space,semicolon}=comma\n\
+      \                              Separator char for tabular data.\n  --metadata-select-columns\
+      \ TEXT Excludes: --metadata-ignore-columns\n                              Set\
+      \ the columns to select, by their name in the first (header) line of the table.\
+      \ All others columns are ignored. The options expects either a file with one\
+      \ column name per line, or an actual list of column names separated by --metadata-separator-char\n\
+      \  --metadata-ignore-columns TEXT Excludes: --metadata-select-columns\n    \
+      \                          Set the columns to ignore, by their name in the first\
+      \ (header) line of the table. All others columns are selected. The options expects\
+      \ either a file with one column name per line, or an actual list of column names\
+      \ separated by --metadata-separator-char\n\n\nColor:\n  --color-list TEXT=spectral\
+      \  List of colors to use for the palette. Can either be the name of a color\
+      \ list, a file containing one color per line, or an actual list of colors.\n\
+      \  --reverse-color-list        If set, the `--color-list` is reversed.\n  --mask-color\
+      \ TEXT=#dfdfdf   Color used to indicate masked or invalid values.\n\n\nOutput:\n\
+      \  --out-dir TEXT=.            Directory to write files to\n  --file-prefix\
+      \ TEXT          File prefix for output files\n  --file-suffix TEXT         \
+      \ File suffix for output files\n\n\nTree Output:\n  --write-newick-tree    \
+      \     If set, the tree is written to a Newick file.\n  --write-nexus-tree  \
+      \        If set, the tree is written to a Nexus file.\n  --write-phyloxml-tree\
+      \       If set, the tree is written to a Phyloxml file.\n  --write-svg-tree\
+      \            If set, the tree is written to a Svg file.\n\n\nSvg Tree Output:\n\
+      \  --svg-tree-shape TEXT:{circular,rectangular}=circular\n                 \
+      \             Shape of the tree.\n  --svg-tree-type TEXT:{cladogram,phylogram}=cladogram\n\
+      \                              Type of the tree.\n  --svg-tree-stroke-width\
+      \ FLOAT=5\n                              Svg stroke width for the branches of\
+      \ the tree.\n  --svg-tree-ladderize        If set, the tree is ladderized.\n\
+      \n\nGlobal Options:\n  --allow-file-overwriting    Allow to overwrite existing\
+      \ output files instead of aborting the command.\n  --verbose               \
+      \    Produce more verbose output.\n  --threads UINT=1            Number of threads\
+      \ to use for calculations.\n  --log-file TEXT             Write all output to\
+      \ a log file, in addition to standard output to the terminal.\n  --help    \
+      \                  Print this help message and exit.\n\ngappa - a toolkit for\
+      \ analyzing and visualizing phylogenetic (placement) data\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/gappa:0.7.1--he513fc3_0
+  - !Command
+    command:
+    - gappa
+    - analyze
+    - placement-factorization
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --jplace-path
+      description: ":PATH(existing)=[] ... REQUIRED\nList of jplace files or directories\
+        \ to process. For directories, only files with the extension `.jplace[.gz]`\
+        \ are processed."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --metadata-table-file
+      description: ":FILE REQUIRED\nTabular char-separated input file."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --metadata-separator-char
+      description: ":{comma,tab,space,semicolon}=comma\nSeparator char for tabular\
+        \ data."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --metadata-select-columns
+      description: "Excludes: --metadata-ignore-columns\nSet the columns to select,\
+        \ by their name in the first (header) line of the table. All others columns\
+        \ are ignored. The options expects either a file with one column name per\
+        \ line, or an actual list of column names separated by --metadata-separator-char"
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --metadata-ignore-columns
+      description: "Excludes: --metadata-select-columns\nSet the columns to ignore,\
+        \ by their name in the first (header) line of the table. All others columns\
+        \ are selected. The options expects either a file with one column name per\
+        \ line, or an actual list of column names separated by --metadata-separator-char"
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --point-mass
+      description: Treat every pquery as a point mass concentrated on the highest-weight
+        placement.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --ignore-multiplicities
+      description: Set the multiplicity of each pquery to 1.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --factors
+      description: =5            Number of phylogenetic factors to compute.
+      args: !SimpleFlagArg
+        name: UINT
+    - !Flag
+      optional: true
+      synonyms:
+      - --taxon-weight-tendency
+      description: ":{geometric-mean,arithmetic-mean,median,none}=geometric-mean\n\
+        Tendency term to use for calculating taxon weights."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --taxon-weight-norm
+      description: ":{manhattan,euclidean,maximum,aitchison,none}=euclidean\nNorm\
+        \ term to use for calculating taxon weights."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --pseudo-count-summand-all
+      description: "=0.65\nConstant that is added to all taxon masses to avoid zero\
+        \ counts."
+      args: !SimpleFlagArg
+        name: FLOAT
+    - !Flag
+      optional: true
+      synonyms:
+      - --pseudo-count-summand-zeros
+      description: "=0\nConstant that is added to taxon masses that are zero, to avoid\
+        \ zero counts."
+      args: !SimpleFlagArg
+        name: FLOAT
+    - !Flag
+      optional: true
+      synonyms:
+      - --out-dir
+      description: =.            Directory to write files to
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --file-prefix
+      description: File prefix for output files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --file-suffix
+      description: File suffix for output files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --write-newick-tree
+      description: If set, the tree is written to a Newick file.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --write-nexus-tree
+      description: If set, the tree is written to a Nexus file.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --write-phyloxml-tree
+      description: If set, the tree is written to a Phyloxml file.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --write-svg-tree
+      description: If set, the tree is written to a Svg file.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --svg-tree-shape
+      description: ":{circular,rectangular}=circular\nShape of the tree."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --svg-tree-type
+      description: ":{cladogram,phylogram}=cladogram\nType of the tree."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --svg-tree-stroke-width
+      description: "=5\nSvg stroke width for the branches of the tree."
+      args: !SimpleFlagArg
+        name: FLOAT
+    - !Flag
+      optional: true
+      synonyms:
+      - --svg-tree-ladderize
+      description: If set, the tree is ladderized.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --allow-file-overwriting
+      description: Allow to overwrite existing output files instead of aborting the
+        command.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --verbose
+      description: Produce more verbose output.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --threads
+      description: =1            Number of threads to use for calculations.
+      args: !SimpleFlagArg
+        name: UINT
+    - !Flag
+      optional: true
+      synonyms:
+      - --log-file
+      description: Write all output to a log file, in addition to standard output
+        to the terminal.
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id008
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Print this help message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Perform Placement-Factorization on a set of samples.\nUsage: gappa\
+      \ analyze placement-factorization [OPTIONS]\n\nInput:\n  --jplace-path TEXT:PATH(existing)=[]\
+      \ ... REQUIRED\n                              List of jplace files or directories\
+      \ to process. For directories, only files with the extension `.jplace[.gz]`\
+      \ are processed.\n\n\nMetadata Table Input:\n  --metadata-table-file TEXT:FILE\
+      \ REQUIRED\n                              Tabular char-separated input file.\n\
+      \  --metadata-separator-char TEXT:{comma,tab,space,semicolon}=comma\n      \
+      \                        Separator char for tabular data.\n  --metadata-select-columns\
+      \ TEXT Excludes: --metadata-ignore-columns\n                              Set\
+      \ the columns to select, by their name in the first (header) line of the table.\
+      \ All others columns are ignored. The options expects either a file with one\
+      \ column name per line, or an actual list of column names separated by --metadata-separator-char\n\
+      \  --metadata-ignore-columns TEXT Excludes: --metadata-select-columns\n    \
+      \                          Set the columns to ignore, by their name in the first\
+      \ (header) line of the table. All others columns are selected. The options expects\
+      \ either a file with one column name per line, or an actual list of column names\
+      \ separated by --metadata-separator-char\n\n\nSettings:\n  --point-mass    \
+      \            Treat every pquery as a point mass concentrated on the highest-weight\
+      \ placement.\n  --ignore-multiplicities     Set the multiplicity of each pquery\
+      \ to 1.\n  --factors UINT=5            Number of phylogenetic factors to compute.\n\
+      \  --taxon-weight-tendency TEXT:{geometric-mean,arithmetic-mean,median,none}=geometric-mean\n\
+      \                              Tendency term to use for calculating taxon weights.\n\
+      \  --taxon-weight-norm TEXT:{manhattan,euclidean,maximum,aitchison,none}=euclidean\n\
+      \                              Norm term to use for calculating taxon weights.\n\
+      \  --pseudo-count-summand-all FLOAT=0.65\n                              Constant\
+      \ that is added to all taxon masses to avoid zero counts.\n  --pseudo-count-summand-zeros\
+      \ FLOAT=0\n                              Constant that is added to taxon masses\
+      \ that are zero, to avoid zero counts.\n\n\nOutput:\n  --out-dir TEXT=.    \
+      \        Directory to write files to\n  --file-prefix TEXT          File prefix\
+      \ for output files\n  --file-suffix TEXT          File suffix for output files\n\
+      \n\nTree Output:\n  --write-newick-tree         If set, the tree is written\
+      \ to a Newick file.\n  --write-nexus-tree          If set, the tree is written\
+      \ to a Nexus file.\n  --write-phyloxml-tree       If set, the tree is written\
+      \ to a Phyloxml file.\n  --write-svg-tree            If set, the tree is written\
+      \ to a Svg file.\n\n\nSvg Tree Output:\n  --svg-tree-shape TEXT:{circular,rectangular}=circular\n\
+      \                              Shape of the tree.\n  --svg-tree-type TEXT:{cladogram,phylogram}=cladogram\n\
+      \                              Type of the tree.\n  --svg-tree-stroke-width\
+      \ FLOAT=5\n                              Svg stroke width for the branches of\
+      \ the tree.\n  --svg-tree-ladderize        If set, the tree is ladderized.\n\
+      \n\nGlobal Options:\n  --allow-file-overwriting    Allow to overwrite existing\
+      \ output files instead of aborting the command.\n  --verbose               \
+      \    Produce more verbose output.\n  --threads UINT=1            Number of threads\
+      \ to use for calculations.\n  --log-file TEXT             Write all output to\
+      \ a log file, in addition to standard output to the terminal.\n  --help    \
+      \                  Print this help message and exit.\n\ngappa - a toolkit for\
+      \ analyzing and visualizing phylogenetic (placement) data\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/gappa:0.7.1--he513fc3_0
+  - !Command
+    command:
+    - gappa
+    - analyze
+    - dispersion
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --jplace-path
+      description: ":PATH(existing)=[] ... REQUIRED\nList of jplace files or directories\
+        \ to process. For directories, only files with the extension `.jplace[.gz]`\
+        \ are processed."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --mass-norm
+      description: ":{absolute,relative}=absolute REQUIRED\nSet the per-sample normalization\
+        \ method. 'absolute' does not change the masses, while 'relative' normalizes\
+        \ them to a total mass of 1 per input jplace sample."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --point-mass
+      description: Treat every pquery as a point mass concentrated on the highest-weight
+        placement.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --ignore-multiplicities
+      description: Set the multiplicity of each pquery to 1.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --edge-values
+      description: ":{both,imbalances,masses}=both\nValues per edge used to calculate\
+        \ the dispersion."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --method
+      description: ":{all,cv,cv-log,sd,sd-log,var,var-log,vmr,vmr-log}=all\nMethod\
+        \ of dispersion. Either all (as far as they are applicable), or any of: coefficient\
+        \ of variation (cv, standard deviation divided by mean), coefficient of variation\
+        \ log-scaled (cv-log), standard deviation (sd), standard deviation log-scaled\
+        \ (sd-log)variance (var), variance log-scaled (var-log), variance to mean\
+        \ ratio (vmr, also called Index of Dispersion), variance to mean ratio log-scaled\
+        \ (vmr-log)."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --color-list
+      description: =viridis   List of colors to use for the palette. Can either be
+        the name of a color list, a file containing one color per line, or an actual
+        list of colors.
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --reverse-color-list
+      description: If set, the `--color-list` is reversed.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --mask-color
+      description: =#dfdfdf   Color used to indicate masked or invalid values.
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --out-dir
+      description: =.            Directory to write files to
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --file-prefix
+      description: File prefix for output files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --file-suffix
+      description: File suffix for output files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --write-newick-tree
+      description: If set, the tree is written to a Newick file.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --write-nexus-tree
+      description: If set, the tree is written to a Nexus file.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --write-phyloxml-tree
+      description: If set, the tree is written to a Phyloxml file.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --write-svg-tree
+      description: If set, the tree is written to a Svg file.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --svg-tree-shape
+      description: ":{circular,rectangular}=circular\nShape of the tree."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --svg-tree-type
+      description: ":{cladogram,phylogram}=cladogram\nType of the tree."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --svg-tree-stroke-width
+      description: "=5\nSvg stroke width for the branches of the tree."
+      args: !SimpleFlagArg
+        name: FLOAT
+    - !Flag
+      optional: true
+      synonyms:
+      - --svg-tree-ladderize
+      description: If set, the tree is ladderized.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --allow-file-overwriting
+      description: Allow to overwrite existing output files instead of aborting the
+        command.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --verbose
+      description: Produce more verbose output.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --threads
+      description: =1            Number of threads to use for calculations.
+      args: !SimpleFlagArg
+        name: UINT
+    - !Flag
+      optional: true
+      synonyms:
+      - --log-file
+      description: Write all output to a log file, in addition to standard output
+        to the terminal.
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id008
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Print this help message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Calculate the Edge Dispersion between samples.\nUsage: gappa analyze\
+      \ dispersion [OPTIONS]\n\nInput:\n  --jplace-path TEXT:PATH(existing)=[] ...\
+      \ REQUIRED\n                              List of jplace files or directories\
+      \ to process. For directories, only files with the extension `.jplace[.gz]`\
+      \ are processed.\n\n\nSettings:\n  --mass-norm TEXT:{absolute,relative}=absolute\
+      \ REQUIRED\n                              Set the per-sample normalization method.\
+      \ 'absolute' does not change the masses, while 'relative' normalizes them to\
+      \ a total mass of 1 per input jplace sample.\n  --point-mass               \
+      \ Treat every pquery as a point mass concentrated on the highest-weight placement.\n\
+      \  --ignore-multiplicities     Set the multiplicity of each pquery to 1.\n \
+      \ --edge-values TEXT:{both,imbalances,masses}=both\n                       \
+      \       Values per edge used to calculate the dispersion.\n  --method TEXT:{all,cv,cv-log,sd,sd-log,var,var-log,vmr,vmr-log}=all\n\
+      \                              Method of dispersion. Either all (as far as they\
+      \ are applicable), or any of: coefficient of variation (cv, standard deviation\
+      \ divided by mean), coefficient of variation log-scaled (cv-log), standard deviation\
+      \ (sd), standard deviation log-scaled (sd-log)variance (var), variance log-scaled\
+      \ (var-log), variance to mean ratio (vmr, also called Index of Dispersion),\
+      \ variance to mean ratio log-scaled (vmr-log).\n\n\nColor:\n  --color-list TEXT=viridis\
+      \   List of colors to use for the palette. Can either be the name of a color\
+      \ list, a file containing one color per line, or an actual list of colors.\n\
+      \  --reverse-color-list        If set, the `--color-list` is reversed.\n  --mask-color\
+      \ TEXT=#dfdfdf   Color used to indicate masked or invalid values.\n\n\nOutput:\n\
+      \  --out-dir TEXT=.            Directory to write files to\n  --file-prefix\
+      \ TEXT          File prefix for output files\n  --file-suffix TEXT         \
+      \ File suffix for output files\n\n\nTree Output:\n  --write-newick-tree    \
+      \     If set, the tree is written to a Newick file.\n  --write-nexus-tree  \
+      \        If set, the tree is written to a Nexus file.\n  --write-phyloxml-tree\
+      \       If set, the tree is written to a Phyloxml file.\n  --write-svg-tree\
+      \            If set, the tree is written to a Svg file.\n\n\nSvg Tree Output:\n\
+      \  --svg-tree-shape TEXT:{circular,rectangular}=circular\n                 \
+      \             Shape of the tree.\n  --svg-tree-type TEXT:{cladogram,phylogram}=cladogram\n\
+      \                              Type of the tree.\n  --svg-tree-stroke-width\
+      \ FLOAT=5\n                              Svg stroke width for the branches of\
+      \ the tree.\n  --svg-tree-ladderize        If set, the tree is ladderized.\n\
+      \n\nGlobal Options:\n  --allow-file-overwriting    Allow to overwrite existing\
+      \ output files instead of aborting the command.\n  --verbose               \
+      \    Produce more verbose output.\n  --threads UINT=1            Number of threads\
+      \ to use for calculations.\n  --log-file TEXT             Write all output to\
+      \ a log file, in addition to standard output to the terminal.\n  --help    \
+      \                  Print this help message and exit.\n\ngappa - a toolkit for\
+      \ analyzing and visualizing phylogenetic (placement) data\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/gappa:0.7.1--he513fc3_0
+  - !Command
+    command:
+    - gappa
+    - analyze
+    - krd
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --jplace-path
+      description: ":PATH(existing)=[] ... REQUIRED\nList of jplace files or directories\
+        \ to process. For directories, only files with the extension `.jplace[.gz]`\
+        \ are processed."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --exponent
+      description: =1          Exponent for KR integration.
+      args: !SimpleFlagArg
+        name: FLOAT
+    - !Flag
+      optional: true
+      synonyms:
+      - --normalize
+      description: Divide the KR distance by the tree length to get normalized values.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --point-mass
+      description: Treat every pquery as a point mass concentrated on the highest-weight
+        placement.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --ignore-multiplicities
+      description: Set the multiplicity of each pquery to 1.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --krd-out-dir
+      description: =.        Directory to write krd files to
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --krd-file-prefix
+      description: File prefix for krd files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --krd-file-suffix
+      description: File suffix for krd files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --krd-compress
+      description: If set, compress the krd files using gzip. Output file extensions
+        are automatically extended by `.gz`.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --krd-matrix-format
+      description: ":{list,matrix,triangular}=matrix\nFormat of the output matrix\
+        \ file."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --omit-krd-matrix-labels
+      description: If set, the output matrix is written without column and row labels.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --allow-file-overwriting
+      description: Allow to overwrite existing output files instead of aborting the
+        command.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --verbose
+      description: Produce more verbose output.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --threads
+      description: =1            Number of threads to use for calculations.
+      args: !SimpleFlagArg
+        name: UINT
+    - !Flag
+      optional: true
+      synonyms:
+      - --log-file
+      description: Write all output to a log file, in addition to standard output
+        to the terminal.
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id008
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Print this help message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Calcualte the pairwise Kantorovich-Rubinstein (KR) distance matrix\
+      \ between samples.\nUsage: gappa analyze krd [OPTIONS]\n\nInput:\n  --jplace-path\
+      \ TEXT:PATH(existing)=[] ... REQUIRED\n                              List of\
+      \ jplace files or directories to process. For directories, only files with the\
+      \ extension `.jplace[.gz]` are processed.\n\n\nSettings:\n  --exponent FLOAT=1\
+      \          Exponent for KR integration.\n  --normalize                 Divide\
+      \ the KR distance by the tree length to get normalized values.\n  --point-mass\
+      \                Treat every pquery as a point mass concentrated on the highest-weight\
+      \ placement.\n  --ignore-multiplicities     Set the multiplicity of each pquery\
+      \ to 1.\n\n\nMatrix Output:\n  --krd-out-dir TEXT=.        Directory to write\
+      \ krd files to\n  --krd-file-prefix TEXT      File prefix for krd files\n  --krd-file-suffix\
+      \ TEXT      File suffix for krd files\n  --krd-compress              If set,\
+      \ compress the krd files using gzip. Output file extensions are automatically\
+      \ extended by `.gz`.\n  --krd-matrix-format TEXT:{list,matrix,triangular}=matrix\n\
+      \                              Format of the output matrix file.\n  --omit-krd-matrix-labels\
+      \    If set, the output matrix is written without column and row labels.\n\n\
+      \nGlobal Options:\n  --allow-file-overwriting    Allow to overwrite existing\
+      \ output files instead of aborting the command.\n  --verbose               \
+      \    Produce more verbose output.\n  --threads UINT=1            Number of threads\
+      \ to use for calculations.\n  --log-file TEXT             Write all output to\
+      \ a log file, in addition to standard output to the terminal.\n  --help    \
+      \                  Print this help message and exit.\n\ngappa - a toolkit for\
+      \ analyzing and visualizing phylogenetic (placement) data\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/gappa:0.7.1--he513fc3_0
+  - !Command
+    command:
+    - gappa
+    - analyze
+    - edgepca
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --jplace-path
+      description: ":PATH(existing)=[] ... REQUIRED\nList of jplace files or directories\
+        \ to process. For directories, only files with the extension `.jplace[.gz]`\
+        \ are processed."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --kappa
+      description: =1             Exponent for scaling between weighted and unweighted
+        splitification.
+      args: !SimpleFlagArg
+        name: FLOAT
+    - !Flag
+      optional: true
+      synonyms:
+      - --epsilon
+      description: =1e-05       Epsilon to use to determine if a split matrix’s column
+        is constant for filtering. Set to a negative value to deavtivate constant
+        columnn filtering.
+      args: !SimpleFlagArg
+        name: FLOAT
+    - !Flag
+      optional: true
+      synonyms:
+      - --components
+      description: =5         Number of principal coordinates to calculate. Use 0
+        to calculate all possible coordinates.
+      args: !SimpleFlagArg
+        name: UINT
+    - !Flag
+      optional: true
+      synonyms:
+      - --point-mass
+      description: Treat every pquery as a point mass concentrated on the highest-weight
+        placement.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --ignore-multiplicities
+      description: Set the multiplicity of each pquery to 1.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --color-list
+      description: =spectral  List of colors to use for the palette. Can either be
+        the name of a color list, a file containing one color per line, or an actual
+        list of colors.
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --reverse-color-list
+      description: If set, the `--color-list` is reversed.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --mask-color
+      description: =#dfdfdf   Color used to indicate masked or invalid values.
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --out-dir
+      description: =.            Directory to write files to
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --file-prefix
+      description: File prefix for output files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --file-suffix
+      description: File suffix for output files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --write-newick-tree
+      description: If set, the tree is written to a Newick file.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --write-nexus-tree
+      description: If set, the tree is written to a Nexus file.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --write-phyloxml-tree
+      description: If set, the tree is written to a Phyloxml file.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --write-svg-tree
+      description: If set, the tree is written to a Svg file.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --svg-tree-shape
+      description: ":{circular,rectangular}=circular\nShape of the tree."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --svg-tree-type
+      description: ":{cladogram,phylogram}=cladogram\nType of the tree."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --svg-tree-stroke-width
+      description: "=5\nSvg stroke width for the branches of the tree."
+      args: !SimpleFlagArg
+        name: FLOAT
+    - !Flag
+      optional: true
+      synonyms:
+      - --svg-tree-ladderize
+      description: If set, the tree is ladderized.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --allow-file-overwriting
+      description: Allow to overwrite existing output files instead of aborting the
+        command.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --verbose
+      description: Produce more verbose output.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --threads
+      description: =1            Number of threads to use for calculations.
+      args: !SimpleFlagArg
+        name: UINT
+    - !Flag
+      optional: true
+      synonyms:
+      - --log-file
+      description: Write all output to a log file, in addition to standard output
+        to the terminal.
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id008
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Print this help message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Perform Edge PCA (Principal Component Analysis) for a set of samples.\n\
+      Usage: gappa analyze edgepca [OPTIONS]\n\nInput:\n  --jplace-path TEXT:PATH(existing)=[]\
+      \ ... REQUIRED\n                              List of jplace files or directories\
+      \ to process. For directories, only files with the extension `.jplace[.gz]`\
+      \ are processed.\n\n\nSettings:\n  --kappa FLOAT=1             Exponent for\
+      \ scaling between weighted and unweighted splitification.\n  --epsilon FLOAT=1e-05\
+      \       Epsilon to use to determine if a split matrix’s column is constant for\
+      \ filtering. Set to a negative value to deavtivate constant columnn filtering.\n\
+      \  --components UINT=5         Number of principal coordinates to calculate.\
+      \ Use 0 to calculate all possible coordinates.\n  --point-mass             \
+      \   Treat every pquery as a point mass concentrated on the highest-weight placement.\n\
+      \  --ignore-multiplicities     Set the multiplicity of each pquery to 1.\n\n\
+      \nColor:\n  --color-list TEXT=spectral  List of colors to use for the palette.\
+      \ Can either be the name of a color list, a file containing one color per line,\
+      \ or an actual list of colors.\n  --reverse-color-list        If set, the `--color-list`\
+      \ is reversed.\n  --mask-color TEXT=#dfdfdf   Color used to indicate masked\
+      \ or invalid values.\n\n\nOutput:\n  --out-dir TEXT=.            Directory to\
+      \ write files to\n  --file-prefix TEXT          File prefix for output files\n\
+      \  --file-suffix TEXT          File suffix for output files\n\n\nTree Output:\n\
+      \  --write-newick-tree         If set, the tree is written to a Newick file.\n\
+      \  --write-nexus-tree          If set, the tree is written to a Nexus file.\n\
+      \  --write-phyloxml-tree       If set, the tree is written to a Phyloxml file.\n\
+      \  --write-svg-tree            If set, the tree is written to a Svg file.\n\n\
+      \nSvg Tree Output:\n  --svg-tree-shape TEXT:{circular,rectangular}=circular\n\
+      \                              Shape of the tree.\n  --svg-tree-type TEXT:{cladogram,phylogram}=cladogram\n\
+      \                              Type of the tree.\n  --svg-tree-stroke-width\
+      \ FLOAT=5\n                              Svg stroke width for the branches of\
+      \ the tree.\n  --svg-tree-ladderize        If set, the tree is ladderized.\n\
+      \n\nGlobal Options:\n  --allow-file-overwriting    Allow to overwrite existing\
+      \ output files instead of aborting the command.\n  --verbose               \
+      \    Produce more verbose output.\n  --threads UINT=1            Number of threads\
+      \ to use for calculations.\n  --log-file TEXT             Write all output to\
+      \ a log file, in addition to standard output to the terminal.\n  --help    \
+      \                  Print this help message and exit.\n\ngappa - a toolkit for\
+      \ analyzing and visualizing phylogenetic (placement) data\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/gappa:0.7.1--he513fc3_0
+  - !Command
+    command:
+    - gappa
+    - analyze
+    - squash
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --jplace-path
+      description: ":PATH(existing)=[] ... REQUIRED\nList of jplace files or directories\
+        \ to process. For directories, only files with the extension `.jplace[.gz]`\
+        \ are processed."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --exponent
+      description: =1          Exponent for KR integration.
+      args: !SimpleFlagArg
+        name: FLOAT
+    - !Flag
+      optional: true
+      synonyms:
+      - --point-mass
+      description: Treat every pquery as a point mass concentrated on the highest-weight
+        placement.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --ignore-multiplicities
+      description: Set the multiplicity of each pquery to 1.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --color-list
+      description: =BuPuBk    List of colors to use for the palette. Can either be
+        the name of a color list, a file containing one color per line, or an actual
+        list of colors.
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --reverse-color-list
+      description: If set, the `--color-list` is reversed.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --log-scaling
+      description: If set, the sequential color list is logarithmically scaled instead
+        of linearily.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --out-dir
+      description: =.            Directory to write files to
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --file-prefix
+      description: File prefix for output files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --file-suffix
+      description: File suffix for output files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --write-newick-tree
+      description: If set, the tree is written to a Newick file.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --write-nexus-tree
+      description: If set, the tree is written to a Nexus file.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --write-phyloxml-tree
+      description: If set, the tree is written to a Phyloxml file.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --write-svg-tree
+      description: If set, the tree is written to a Svg file.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --svg-tree-shape
+      description: ":{circular,rectangular}=circular\nShape of the tree."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --svg-tree-type
+      description: ":{cladogram,phylogram}=cladogram\nType of the tree."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --svg-tree-stroke-width
+      description: "=5\nSvg stroke width for the branches of the tree."
+      args: !SimpleFlagArg
+        name: FLOAT
+    - !Flag
+      optional: true
+      synonyms:
+      - --svg-tree-ladderize
+      description: If set, the tree is ladderized.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --allow-file-overwriting
+      description: Allow to overwrite existing output files instead of aborting the
+        command.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --verbose
+      description: Produce more verbose output.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --threads
+      description: =1            Number of threads to use for calculations.
+      args: !SimpleFlagArg
+        name: UINT
+    - !Flag
+      optional: true
+      synonyms:
+      - --log-file
+      description: Write all output to a log file, in addition to standard output
+        to the terminal.
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id008
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Print this help message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Perform Squash Clustering for a set of samples.\nUsage: gappa analyze\
+      \ squash [OPTIONS]\n\nInput:\n  --jplace-path TEXT:PATH(existing)=[] ... REQUIRED\n\
+      \                              List of jplace files or directories to process.\
+      \ For directories, only files with the extension `.jplace[.gz]` are processed.\n\
+      \n\nSettings:\n  --exponent FLOAT=1          Exponent for KR integration.\n\
+      \  --point-mass                Treat every pquery as a point mass concentrated\
+      \ on the highest-weight placement.\n  --ignore-multiplicities     Set the multiplicity\
+      \ of each pquery to 1.\n\n\nColor:\n  --color-list TEXT=BuPuBk    List of colors\
+      \ to use for the palette. Can either be the name of a color list, a file containing\
+      \ one color per line, or an actual list of colors.\n  --reverse-color-list \
+      \       If set, the `--color-list` is reversed.\n  --log-scaling           \
+      \    If set, the sequential color list is logarithmically scaled instead of\
+      \ linearily.\n\n\nOutput:\n  --out-dir TEXT=.            Directory to write\
+      \ files to\n  --file-prefix TEXT          File prefix for output files\n  --file-suffix\
+      \ TEXT          File suffix for output files\n\n\nTree Output:\n  --write-newick-tree\
+      \         If set, the tree is written to a Newick file.\n  --write-nexus-tree\
+      \          If set, the tree is written to a Nexus file.\n  --write-phyloxml-tree\
+      \       If set, the tree is written to a Phyloxml file.\n  --write-svg-tree\
+      \            If set, the tree is written to a Svg file.\n\n\nSvg Tree Output:\n\
+      \  --svg-tree-shape TEXT:{circular,rectangular}=circular\n                 \
+      \             Shape of the tree.\n  --svg-tree-type TEXT:{cladogram,phylogram}=cladogram\n\
+      \                              Type of the tree.\n  --svg-tree-stroke-width\
+      \ FLOAT=5\n                              Svg stroke width for the branches of\
+      \ the tree.\n  --svg-tree-ladderize        If set, the tree is ladderized.\n\
+      \n\nGlobal Options:\n  --allow-file-overwriting    Allow to overwrite existing\
+      \ output files instead of aborting the command.\n  --verbose               \
+      \    Produce more verbose output.\n  --threads UINT=1            Number of threads\
+      \ to use for calculations.\n  --log-file TEXT             Write all output to\
+      \ a log file, in addition to standard output to the terminal.\n  --help    \
+      \                  Print this help message and exit.\n\ngappa - a toolkit for\
+      \ analyzing and visualizing phylogenetic (placement) data\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/gappa:0.7.1--he513fc3_0
+  - !Command
+    command:
+    - gappa
+    - analyze
+    - imbalance-kmeans
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --jplace-path
+      description: ":PATH(existing)=[] ... REQUIRED\nList of jplace files or directories\
+        \ to process. For directories, only files with the extension `.jplace[.gz]`\
+        \ are processed."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --k
+      description: REQUIRED           Number of clusters to find. Can be a comma-separated
+        list of multiple values or ranges for k, such as `"1-5,8,10,12"`
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --write-overview-file
+      description: If provided, a table file is written that summarizes the average
+        distance and variance of the clusters for each k. Useful for elbow plots.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --point-mass
+      description: Treat every pquery as a point mass concentrated on the highest-weight
+        placement.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --ignore-multiplicities
+      description: Set the multiplicity of each pquery to 1.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --color-list
+      description: =BuPuBk    List of colors to use for the palette. Can either be
+        the name of a color list, a file containing one color per line, or an actual
+        list of colors.
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --reverse-color-list
+      description: If set, the `--color-list` is reversed.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --log-scaling
+      description: If set, the sequential color list is logarithmically scaled instead
+        of linearily.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --out-dir
+      description: =.            Directory to write files to
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --file-prefix
+      description: =ikmeans_ File prefix for output files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --file-suffix
+      description: File suffix for output files
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --write-newick-tree
+      description: If set, the tree is written to a Newick file.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --write-nexus-tree
+      description: If set, the tree is written to a Nexus file.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --write-phyloxml-tree
+      description: If set, the tree is written to a Phyloxml file.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --write-svg-tree
+      description: If set, the tree is written to a Svg file.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --svg-tree-shape
+      description: ":{circular,rectangular}=circular\nShape of the tree."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --svg-tree-type
+      description: ":{cladogram,phylogram}=cladogram\nType of the tree."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --svg-tree-stroke-width
+      description: "=5\nSvg stroke width for the branches of the tree."
+      args: !SimpleFlagArg
+        name: FLOAT
+    - !Flag
+      optional: true
+      synonyms:
+      - --svg-tree-ladderize
+      description: If set, the tree is ladderized.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --allow-file-overwriting
+      description: Allow to overwrite existing output files instead of aborting the
+        command.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --verbose
+      description: Produce more verbose output.
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --threads
+      description: =1            Number of threads to use for calculations.
+      args: !SimpleFlagArg
+        name: UINT
+    - !Flag
+      optional: true
+      synonyms:
+      - --log-file
+      description: Write all output to a log file, in addition to standard output
+        to the terminal.
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id008
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --help
+      description: Print this help message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Run Imbalance k-means clustering on a set of samples.\nUsage: gappa\
+      \ analyze imbalance-kmeans [OPTIONS]\n\nInput:\n  --jplace-path TEXT:PATH(existing)=[]\
+      \ ... REQUIRED\n                              List of jplace files or directories\
+      \ to process. For directories, only files with the extension `.jplace[.gz]`\
+      \ are processed.\n\n\nSettings:\n  --k TEXT REQUIRED           Number of clusters\
+      \ to find. Can be a comma-separated list of multiple values or ranges for k,\
+      \ such as `\"1-5,8,10,12\"`\n  --write-overview-file       If provided, a table\
+      \ file is written that summarizes the average distance and variance of the clusters\
+      \ for each k. Useful for elbow plots.\n  --point-mass                Treat every\
+      \ pquery as a point mass concentrated on the highest-weight placement.\n  --ignore-multiplicities\
+      \     Set the multiplicity of each pquery to 1.\n\n\nColor:\n  --color-list\
+      \ TEXT=BuPuBk    List of colors to use for the palette. Can either be the name\
+      \ of a color list, a file containing one color per line, or an actual list of\
+      \ colors.\n  --reverse-color-list        If set, the `--color-list` is reversed.\n\
+      \  --log-scaling               If set, the sequential color list is logarithmically\
+      \ scaled instead of linearily.\n\n\nOutput:\n  --out-dir TEXT=.            Directory\
+      \ to write files to\n  --file-prefix TEXT=ikmeans_ File prefix for output files\n\
+      \  --file-suffix TEXT          File suffix for output files\n\n\nTree Output:\n\
+      \  --write-newick-tree         If set, the tree is written to a Newick file.\n\
+      \  --write-nexus-tree          If set, the tree is written to a Nexus file.\n\
+      \  --write-phyloxml-tree       If set, the tree is written to a Phyloxml file.\n\
+      \  --write-svg-tree            If set, the tree is written to a Svg file.\n\n\
+      \nSvg Tree Output:\n  --svg-tree-shape TEXT:{circular,rectangular}=circular\n\
+      \                              Shape of the tree.\n  --svg-tree-type TEXT:{cladogram,phylogram}=cladogram\n\
+      \                              Type of the tree.\n  --svg-tree-stroke-width\
+      \ FLOAT=5\n                              Svg stroke width for the branches of\
+      \ the tree.\n  --svg-tree-ladderize        If set, the tree is ladderized.\n\
+      \n\nGlobal Options:\n  --allow-file-overwriting    Allow to overwrite existing\
+      \ output files instead of aborting the command.\n  --verbose               \
+      \    Produce more verbose output.\n  --threads UINT=1            Number of threads\
+      \ to use for calculations.\n  --log-file TEXT             Write all output to\
+      \ a log file, in addition to standard output to the terminal.\n  --help    \
+      \                  Print this help message and exit.\n\ngappa - a toolkit for\
+      \ analyzing and visualizing phylogenetic (placement) data\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/gappa:0.7.1--he513fc3_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Print this help message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Commands for analyzing and comparing placement data, that is, finding\
+    \ differences and patterns.\nUsage: gappa analyze [OPTIONS] SUBCOMMAND\n\nOptions:\n\
+    \  --help                      Print this help message and exit.\n\nSubcommands:\n\
+    \  correlation                 Calculate the Edge Correlation of samples and metadata\
+    \ features.\n  dispersion                  Calculate the Edge Dispersion between\
+    \ samples.\n  edgepca                     Perform Edge PCA (Principal Component\
+    \ Analysis) for a set of samples.\n  imbalance-kmeans            Run Imbalance\
+    \ k-means clustering on a set of samples.\n  krd                         Calcualte\
+    \ the pairwise Kantorovich-Rubinstein (KR) distance matrix between samples.\n\
+    \  phylogenetic-kmeans         Run Phylogenetic k-means clustering on a set of\
+    \ samples.\n  placement-factorization     Perform Placement-Factorization on a\
+    \ set of samples.\n  squash                      Perform Squash Clustering for\
+    \ a set of samples.\n\ngappa - a toolkit for analyzing and visualizing phylogenetic\
+    \ (placement) data\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/gappa:0.7.1--he513fc3_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Print this help message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Print the gappa version and exit.
+  args: !EmptyFlagArg {}
+help_text: "                                              ....      ....  \n     \
+  \                                        '' '||.   .||'   \n                   \
+  \                               ||  ||      \n                                 \
+  \                 '|.|'       \n     ...'   ....   ... ...  ... ...   ....     \
+  \   .|'|.       \n    |  ||  '' .||   ||'  ||  ||'  || '' .||      .|'  ||     \
+  \ \n     |''   .|' ||   ||    |  ||    | .|' ||     .|'|.  ||     \n    '....  '|..'|'.\
+  \ ||...'   ||...'  '|..'|.    '||'    ||:.  \n    '....'          ||       ||  \
+  \                             \n                   ''''     ''''   v0.7.1 (c) 2017-2021\n\
+  \                                   by Lucas Czech and Pierre Barbera\n\nUsage:\
+  \ gappa [OPTIONS] SUBCOMMAND\n\nOptions:\n  --help                      Print this\
+  \ help message and exit.\n  --version                   Print the gappa version\
+  \ and exit.\n\nSubcommands:\n  analyze                     Commands for analyzing\
+  \ and comparing placement data, that is, finding differences and patterns.\n  edit\
+  \                        Commands for editing and manipulating files like jplace,\
+  \ fasta or newick.\n  examine                     Commands for examining, visualizing,\
+  \ and tabulating information in placement data.\n  prepare                     Commands\
+  \ for preparing and preprocessing of phylogenetic and placement data.\n  random\
+  \                      Commands for random generation of phylogenetic and placement\
+  \ data.\n  tools                       Auxiliary commands of gappa.\n\ngappa - a\
+  \ toolkit for analyzing and visualizing phylogenetic (placement) data\n"
+generated_using: *id003
+docker_image: quay.io/biocontainers/gappa:0.7.1--he513fc3_0

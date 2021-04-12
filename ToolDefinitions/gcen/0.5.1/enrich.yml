@@ -1,0 +1,66 @@
+!Command
+command:
+- enrich
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --enrich
+  - -b
+  - --background
+  - -g
+  - --go
+  - -k
+  - --kegg
+  description: (if the -g/--go is specified, the -k/--kegg are ignored)
+  args: !SimpleFlagArg
+    name: enrichment gene list file
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --assoc
+  - -p
+  - --pval
+  description: 'p value cutoff (default: 0.05)'
+  args: !SimpleFlagArg
+    name: gene/go association file
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: help information
+  args: !SimpleFlagArg
+    name: print
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  - -v
+  - --version
+  description: GCEN version
+  args: !SimpleFlagArg
+    name: output file
+help_text: "GCEN 0.5.1 by Wen Chen (chenwen@biochen.com, https://www.biochen.com/gcen)\n\
+  enrich usage:\n  enrich -e enrichment_gene_list_file -b background_gene_list_file\
+  \ -g go-basic.obo -a gene_go_association_file -p p_value_cutoff -o out_put_file\n\
+  options:\n  -e --enrich <enrichment gene list file>\n  -b --background <background\
+  \ gene list file>\n  -g --go <go-basic.obo file>\n  -k --kegg <kegg information>\
+  \ (if the -g/--go is specified, the -k/--kegg are ignored)\n  -a --assoc <gene/go\
+  \ association file>\n  -p --pval <number> p value cutoff (default: 0.05)\n  -o --output\
+  \ <output file>\n  -v --version display GCEN version\n  -h --help print help information\n\
+  examples:\n  enrich -e ../sample_data/enrichment_gene.list -b ../sample_data/background_gene.list\
+  \ -g ../sample_data/go-basic.obo -a ../sample_data/gene_go.assoc -p 0.05 -o ../sample_data/enrichment.go\n\
+  \  enrich -e ../sample_data/enrichment_gene.list -b ../sample_data/background_gene.list\
+  \ -k ../sample_data/K2ko.tsv -a ../sample_data/gene_kegg.assoc -p 0.05 -o ../sample_data/enrichment.kegg\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/gcen:0.5.1--hc9558a2_0

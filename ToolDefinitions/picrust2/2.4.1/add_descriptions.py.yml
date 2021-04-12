@@ -1,0 +1,84 @@
+!Command
+command:
+- add_descriptions.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  description: Input function abundance table.
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: "Output function abundance table with added description\ncolumn. If\
+    \ the extension \".gz\" is added the table will\nautomatically be gzipped."
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --map_type
+  description: "Specifies which default mapping table should be used.\nUse the --custom_map_table\
+    \ option to input a non-\ndefault mapping table."
+  args: !ChoiceFlagArg
+    choices: !!set
+      COG:
+      KO:
+      METACYC:
+      TIGRFAM:
+      PFAM:
+      EC:
+- !Flag
+  optional: true
+  synonyms:
+  - --custom_map_table
+  description: "An input map table linking function ids to\ndescriptions for each\
+    \ function."
+  args: !SimpleFlagArg
+    name: PATH
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: add_descriptions.py [-h] -i PATH -o PATH\n                    \
+  \       [-m {METACYC,COG,EC,KO,PFAM,TIGRFAM}]\n                           [--custom_map_table\
+  \ PATH] [-v]\n\nThis script adds a description column to a function abundance table\
+  \ and outputs a new file. The user needs to specify the input file and what type\
+  \ of functions are in the input table. Will throw an error if no ids overlap and\
+  \ otherwise will fill in \"not_found\" for the description of ids in the function\
+  \ table not in the mapfile.\n\noptional arguments:\n  -h, --help            show\
+  \ this help message and exit\n  -i PATH, --input PATH\n                        Input\
+  \ function abundance table.\n  -o PATH, --output PATH\n                        Output\
+  \ function abundance table with added description\n                        column.\
+  \ If the extension \".gz\" is added the table will\n                        automatically\
+  \ be gzipped.\n  -m {METACYC,COG,EC,KO,PFAM,TIGRFAM}, --map_type {METACYC,COG,EC,KO,PFAM,TIGRFAM}\n\
+  \                        Specifies which default mapping table should be used.\n\
+  \                        Use the --custom_map_table option to input a non-\n   \
+  \                     default mapping table.\n  --custom_map_table PATH\n      \
+  \                  An input map table linking function ids to\n                \
+  \        descriptions for each function.\n  -v, --version         show program's\
+  \ version number and exit\n\nUsage:\nadd_descriptions.py -i IN_TABLE -m KO -o OUT_TABLE\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/picrust2:2.4.1--py_0

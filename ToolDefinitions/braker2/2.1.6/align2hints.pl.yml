@@ -1,0 +1,128 @@
+!Command
+command:
+- align2hints.pl
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: output
+  description: --out                contains CDSpart, CDS and intron hints
+- !Positional
+  optional: false
+  position: 0
+  name: hints.
+  description: --genome_file=s          if prg is exonerate and start hints shall
+    be
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -skipalignmentout
+  description: '... -o gthfile'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --prg
+  description: '|exonerate|spaln|scipio'
+  args: !SimpleFlagArg
+    name: gth
+- !Flag
+  optional: true
+  synonyms:
+  - --in
+  description: input file from gth (gff3), spaln (gff3) or exonerate
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --CDSpart_cutoff
+  description: "This many bp are cut off of each CDSpart hint\nw.r.t. the cds (default\
+    \ 15)."
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --maxintronlen
+  description: "Alignments with longer gaps are discarded\n(default 350000)."
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --minintronlen
+  description: "Alignments with gaps shorter than this and longer\nthan maxgaplen\
+    \ are discarded (default 41)."
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --priority
+  description: Priority of hint group (default 4).
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --source
+  description: Source identifier (default 'P')
+  args: !SimpleFlagArg
+    name: s
+- !Flag
+  optional: true
+  synonyms:
+  - --CDS
+  description: Do not output CDSpart hints, but complete CDS
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Print this help message.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: print version of align2hints.pl
+  args: !EmptyFlagArg {}
+help_text: "\nalign2hints.pl    generate hints from spaln [O0 (=gff3)], exonerate,\n\
+  \                  GenomeThreader (gth), scipio\n                  or GEMOMA output.\n\
+  \                  Spaln2 run like this: spaln -O0 ... > spalnfile\n           \
+  \       Exonerate run like this:\n                      exonerate --model protein2genome\
+  \ --showtargetgff T \\\n                         ... > exfile\n                \
+  \  GenomeThreader run like this: \n                      gth -genomic genome.fa\
+  \  -protein protein.fa -gff3out \\\n                         -skipalignmentout ...\
+  \ -o gthfile\n                  scipio run like this:\n                  scipio.1.4.1.pl\
+  \ genome.fa prot.fa | yaml2gff.1.4.pl \\\n                      > scipio.gff\n\n\
+  SYNOPSIS\n\nalign2hints.pl [OPTIONS] --in=align.gff3 --out=hintsfile.gff \\\n  \
+  \                       --prg=gth|exonerate|spaln|scipio\n\n  --in             \
+  \    input file from gth (gff3), spaln (gff3) or exonerate\n                   \
+  \    output\n  --out                contains CDSpart, CDS and intron hints\n\n\n\
+  OPTIONS\n\n    --help                   Print this help message.\n    --CDSpart_cutoff=n\
+  \       This many bp are cut off of each CDSpart hint\n                        \
+  \     w.r.t. the cds (default 15).\n    --maxintronlen=n         Alignments with\
+  \ longer gaps are discarded\n                             (default 350000).\n  \
+  \  --minintronlen=n         Alignments with gaps shorter than this and longer\n\
+  \                             than maxgaplen are discarded (default 41).\n    --priority=n\
+  \             Priority of hint group (default 4).\n    --prg=s                 \
+  \ Alignment program of input file, either 'gth',\n                             'spaln',\
+  \ 'exonerate', 'scipio', or 'gemoma'.\n    --source=s               Source identifier\
+  \ (default 'P')\n    --CDS                    Do not output CDSpart hints, but complete\
+  \ CDS\n                             hints.\n    --genome_file=s          if prg\
+  \ is exonerate and start hints shall be\n                             created, the\
+  \ genome file from which the\n                             alignments were generated,\
+  \ must be specified.\n    --version                print version of align2hints.pl\n\
+  \nFormat:\n  seqname <TAB> source <TAB> feature <TAB> start <TAB> end <TAB> score\
+  \ <TAB>\n     strand <TAB> frame <TAB> src=source;grp=target_protein;pri=priority\n\
+  \n\nDESCRIPTION\n\n  Example:\n\n    align2hints.pl [OPTIONS] --in=align.gff3 --out=hintsfile.gff\
+  \ --prg=gth\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/braker2:2.1.6--hdfd78af_1
