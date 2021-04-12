@@ -1,0 +1,142 @@
+!Command
+command:
+- gappa
+- prepare
+- chunkify
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --fasta-path
+  description: ":PATH(existing)=[] ... REQUIRED\nList of fasta files or directories\
+    \ to process. For directories, only files with the extension `.(fasta|fas|fsa|fna|ffn|faa|frn)[.gz]`\
+    \ are processed."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --chunk-size
+  description: =50000     Number of sequences per chunk file.
+  args: !SimpleFlagArg
+    name: UINT
+- !Flag
+  optional: true
+  synonyms:
+  - --min-abundance
+  description: =1      Minimum abundance of a single sequence. Sequences below are
+    filtered out.
+  args: !SimpleFlagArg
+    name: UINT
+- !Flag
+  optional: true
+  synonyms:
+  - --hash-function
+  description: ":{SHA1,SHA256,MD5}=SHA1\nHash function for re-naming and identifying\
+    \ sequences."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --chunks-out-dir
+  description: =.     Directory to write chunks files to
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --chunks-file-prefix
+  description: File prefix for chunks files
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --chunks-file-suffix
+  description: File suffix for chunks files
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --abundances-out-dir
+  description: =. Directory to write abundances files to
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --abundances-file-prefix
+  description: File prefix for abundances files
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --abundances-file-suffix
+  description: File suffix for abundances files
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --allow-file-overwriting
+  description: Allow to overwrite existing output files instead of aborting the command.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: Produce more verbose output.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: =1            Number of threads to use for calculations.
+  args: !SimpleFlagArg
+    name: UINT
+- !Flag
+  optional: true
+  synonyms:
+  - --log-file
+  description: Write all output to a log file, in addition to standard output to the
+    terminal.
+  args: !SimpleFlagArg
+    name: TEXT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Print this help message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Chunkify a set of fasta files and create abundance maps.\nUsage: gappa\
+  \ prepare chunkify [OPTIONS]\n\nInput:\n  --fasta-path TEXT:PATH(existing)=[] ...\
+  \ REQUIRED\n                              List of fasta files or directories to\
+  \ process. For directories, only files with the extension `.(fasta|fas|fsa|fna|ffn|faa|frn)[.gz]`\
+  \ are processed.\n\n\nSettings:\n  --chunk-size UINT=50000     Number of sequences\
+  \ per chunk file.\n  --min-abundance UINT=1      Minimum abundance of a single sequence.\
+  \ Sequences below are filtered out.\n  --hash-function TEXT:{SHA1,SHA256,MD5}=SHA1\n\
+  \                              Hash function for re-naming and identifying sequences.\n\
+  \n\nOutput:\n  --chunks-out-dir TEXT=.     Directory to write chunks files to\n\
+  \  --chunks-file-prefix TEXT   File prefix for chunks files\n  --chunks-file-suffix\
+  \ TEXT   File suffix for chunks files\n  --abundances-out-dir TEXT=. Directory to\
+  \ write abundances files to\n  --abundances-file-prefix TEXT\n                 \
+  \             File prefix for abundances files\n  --abundances-file-suffix TEXT\n\
+  \                              File suffix for abundances files\n\n\nGlobal Options:\n\
+  \  --allow-file-overwriting    Allow to overwrite existing output files instead\
+  \ of aborting the command.\n  --verbose                   Produce more verbose output.\n\
+  \  --threads UINT=1            Number of threads to use for calculations.\n  --log-file\
+  \ TEXT             Write all output to a log file, in addition to standard output\
+  \ to the terminal.\n  --help                      Print this help message and exit.\n\
+  \ngappa - a toolkit for analyzing and visualizing phylogenetic (placement) data\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/gappa:0.7.1--he513fc3_0

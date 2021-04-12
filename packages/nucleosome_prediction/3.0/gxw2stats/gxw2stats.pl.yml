@@ -1,0 +1,477 @@
+!Command
+command:
+- gxw2stats.pl
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: ':         matrices file (gxw format)'
+  args: !SimpleFlagArg
+    name: str
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: ':         use this matrix only out of the gxw file (default: use all
+    matrices)'
+  args: !SimpleFlagArg
+    name: str
+- !Flag
+  optional: true
+  synonyms:
+  - -pws
+  description: ':             process weight matrices separately (applicable to all
+    commands)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: ':         sequences file (fasta format)'
+  args: !SimpleFlagArg
+    name: str
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: ':         use only these sequences from the file <str> (default: use
+    all sequences in fasta file)'
+  args: !SimpleFlagArg
+    name: str
+- !Flag
+  optional: true
+  synonyms:
+  - -sil
+  description: ':       use sliding window on sequence: this parameter specifies substring
+    iterator length'
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -siw
+  description: ':       use sliding window on sequence: this parameter specifies distance
+    between two substrings'
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -no_preload
+  description: ':      load the sequences one by one (default: preload the sequences)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -temp
+  description: ':      Temperature scaling (default: 1.0)'
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  description: ':         background order (default: 0)'
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -bck
+  description: ':       Background matrix file to load (optional, background will
+    be computed form the sequences otherwise)'
+  args: !SimpleFlagArg
+    name: str
+- !Flag
+  optional: true
+  synonyms:
+  - -bckr
+  description: ':      Background matrix to matrices ratio (default: -1 for equal
+    value between background and matrices)'
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -local_bck
+  description: ':       Compute the background locally for each sequence (as opposed
+    to a single global matrix)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -rsf
+  description: ":       Regulator scaling factor (default: -1 for using the background\
+    \ ratios.\nFormat: <num> or <min>,<max>,<mul> where the latter is to go from min\
+    \ to max in multiplication jumps <mul>"
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -sff
+  description: ':       Regulator scaling factor file'
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -coop
+  description: ':      Cooperativity parameters file'
+  args: !SimpleFlagArg
+    name: str
+- !Flag
+  optional: true
+  synonyms:
+  - -mcd
+  description: ':       Max cooperativity distance in basepairs (default: 100)'
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -ghmm
+  description: ":      Type of GHMM instance to be used\n(default: if coop file is\
+    \ given - Cooperative ; else - Basic)\nOptions: Basic\nBasicCooperative\nCooperative"
+  args: !SimpleFlagArg
+    name: str
+- !Flag
+  optional: true
+  synonyms:
+  - -sim
+  description: ':       Number of simulations to perform (default: 0)'
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: ':         Max p-value for which to print (default: 1)'
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -precision
+  description: ': Precision for output file (default: 3)'
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: ':         max training iterations (default: 100)'
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -best
+  description: ':            print the best score across the sequence (or individual
+    windows)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -best_windows
+  description: ':    print the best score across all windows'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -norc
+  description: ':            do *not* use reverse complement in sequence (default:
+    use reverse complement)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: ":         stats type to compute (default: WeightMatrixPositions)\n\
+    Options: WeightMatrixAverageOccupancy\nWeightMatrixClustering\nWeightMatrixCounts\n\
+    WeightMatrixFreeEnergy\nWeightMatrixMaxConfiguration\nWeightMatrixPositions\n\
+    WeightMatrixSequenceFeatures"
+  args: !SimpleFlagArg
+    name: str
+- !Flag
+  optional: true
+  synonyms:
+  - -min_avg
+  description: ':        Minimum average occupancy to print (default: 0)'
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -max_avg
+  description: ':        Maximum average occupancy to print (default: 1)'
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -start_avg
+  description: ':            Print the probability of starting matrices as opposed
+    to average occupancies'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -avg
+  description: ':                  Print the fraction occupancy of the matrix across
+    the entire region'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -matrix_flank
+  description: ':   Compute the avg occupancy of the matrix only within its central
+    bps without <num> flank on each side (default: 0)'
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -sum_matrices
+  description: ':         Print the sum of all matrices'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -print_chv
+  description: ':            Print the results in a chv format'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -moving_window
+  description: ':  Print the results as a combined (num/2 on each side) moving average
+    window of <num>'
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -no_separate_matrices
+  description: ': Do **not** print each matrix separately'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -all
+  description: ':             print the score for each position'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ds
+  description: ':              double-strand binding (average strands)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -min_score
+  description: ': Minimum score to print'
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -masi
+  description: ':      Maximum allowed sequence inserts'
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -fdsosi
+  description: ':          Force double strand when doing sequence inserts'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -sip
+  description: ':       Sequence insert penalty'
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -dontSort
+  description: ":        don't sort according to score, print by position (useful\
+    \ when you want to intersect the results according to position)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -mhos
+  description: ":      Minimum high occupancy sites (specify multiple cutoffs with\
+    \ ';', e.g., \"0.1;0.2\") (default: 0.5)"
+  args: !SimpleFlagArg
+    name: str
+- !Flag
+  optional: true
+  synonyms:
+  - -wmcnm
+  description: ':     Weight matrix clustering num matrices (default: 1)'
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -wmcdw
+  description: ':     Weight matrix clustering distance window (default: -1 for cumulative
+    clustering, not specific windows)'
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -wmcdi
+  description: ':     Weight matrix clustering distance increment (default: 10)'
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -ns
+  description: ':        Num samples'
+  args: !SimpleFlagArg
+    name: num
+- !Flag
+  optional: true
+  synonyms:
+  - -sfd
+  description: ':             Description sequence feature'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -smc
+  description: ':             Single matrices counts'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -amc
+  description: ':             All matrices counts'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -camc
+  description: ":      Configuration adjacent matrices counts (str has the form: <min;max;inc;XXX;NoFunction/Gaussian;mean;std>)\n\
+    [XXX] = CombinedAdjacentMatricesCount/SeparateAdjacentMatricesCount/SeparateProximalMatricesCount"
+  args: !SimpleFlagArg
+    name: str
+- !Flag
+  optional: true
+  synonyms:
+  - -cp
+  description: ':              Configuration probabilities'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -cmc
+  description: ':             Configuration matrices coverage'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -xml
+  description: ':             print only the xml file'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -run
+  description: ':       Print the stdout and stderr of the program into the file <str>'
+  args: !SimpleFlagArg
+    name: str
+- !Flag
+  optional: true
+  synonyms:
+  - -sxml
+  description: ':      Save the xml file into <str>'
+  args: !SimpleFlagArg
+    name: str
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nEXE_BASE_DIR/lib/gxw2stats.pl <gxw file>\n\n   Takes a gxw file and\
+  \ a sequence fasta file and finds\n   all positions of the matrices above the background\n\
+  \n   -m <str>:         matrices file (gxw format)\n   -n <str>:         use this\
+  \ matrix only out of the gxw file (default: use all matrices)\n   -pws:        \
+  \     process weight matrices separately (applicable to all commands)\n\n   -s <str>:\
+  \         sequences file (fasta format)\n   -l <str>:         use only these sequences\
+  \ from the file <str> (default: use all sequences in fasta file)\n   -sil <num>:\
+  \       use sliding window on sequence: this parameter specifies substring iterator\
+  \ length\n   -siw <num>:       use sliding window on sequence: this parameter specifies\
+  \ distance between two substrings \n   -no_preload:      load the sequences one\
+  \ by one (default: preload the sequences)\n   -temp <num>:      Temperature scaling\
+  \ (default: 1.0)\n\n   -b <num>:         background order (default: 0)\n   -bck\
+  \ <str>:       Background matrix file to load (optional, background will be computed\
+  \ form the sequences otherwise)\n   -bckr <num>:      Background matrix to matrices\
+  \ ratio (default: -1 for equal value between background and matrices)\n   -local_bck:\
+  \       Compute the background locally for each sequence (as opposed to a single\
+  \ global matrix)\n\n   -rsf <num>:       Regulator scaling factor (default: -1 for\
+  \ using the background ratios.\n                     Format: <num> or <min>,<max>,<mul>\
+  \ where the latter is to go from min to max in multiplication jumps <mul>\n   -sff\
+  \ <num>:       Regulator scaling factor file\n   -coop <str>:      Cooperativity\
+  \ parameters file\n   -mcd <num>:       Max cooperativity distance in basepairs\
+  \ (default: 100)\n\n   -ghmm <str>:      Type of GHMM instance to be used\n    \
+  \                 (default: if coop file is given - Cooperative ; else - Basic)\n\
+  \t\t     Options: Basic\n                              BasicCooperative\n      \
+  \                        Cooperative\n\n   -sim <num>:       Number of simulations\
+  \ to perform (default: 0)\n   -p <num>:         Max p-value for which to print (default:\
+  \ 1)\n   -precision <num>: Precision for output file (default: 3)\n\n   -i <num>:\
+  \         max training iterations (default: 100)\n\n   -best:            print the\
+  \ best score across the sequence (or individual windows)\n   -best_windows:    print\
+  \ the best score across all windows\n\n   -norc:            do *not* use reverse\
+  \ complement in sequence (default: use reverse complement)\n\n   -t <str>:     \
+  \    stats type to compute (default: WeightMatrixPositions)\n                  \
+  \   Options: WeightMatrixAverageOccupancy\n                              WeightMatrixClustering\n\
+  \                              WeightMatrixCounts\n                            \
+  \  WeightMatrixFreeEnergy\n                              WeightMatrixMaxConfiguration\n\
+  \                              WeightMatrixPositions\n                         \
+  \     WeightMatrixSequenceFeatures\n\n   WeightAverageOccupancy\n   ======================\n\
+  \   -min_avg <num>:        Minimum average occupancy to print (default: 0)\n   -max_avg\
+  \ <num>:        Maximum average occupancy to print (default: 1)\n   -start_avg:\
+  \            Print the probability of starting matrices as opposed to average occupancies\n\
+  \   -avg:                  Print the fraction occupancy of the matrix across the\
+  \ entire region\n   -matrix_flank <num>:   Compute the avg occupancy of the matrix\
+  \ only within its central bps without <num> flank on each side (default: 0)\n  \
+  \ -sum_matrices:         Print the sum of all matrices\n   -print_chv:         \
+  \   Print the results in a chv format\n   -moving_window <num>:  Print the results\
+  \ as a combined (num/2 on each side) moving average window of <num>\n   -no_separate_matrices:\
+  \ Do **not** print each matrix separately\n\n   WeightMatrixPositions\n   =====================\n\
+  \   -all:             print the score for each position\n   -ds:              double-strand\
+  \ binding (average strands)\n   -min_score <num>: Minimum score to print\n   -masi\
+  \ <num>:      Maximum allowed sequence inserts\n   -fdsosi:          Force double\
+  \ strand when doing sequence inserts\n   -sip <num>:       Sequence insert penalty\n\
+  \   -dontSort:        don't sort according to score, print by position (useful when\
+  \ you want to intersect the results according to position)\n\n   WeightMatrixClustering\n\
+  \   ======================\n   -mhos <str>:      Minimum high occupancy sites (specify\
+  \ multiple cutoffs with ';', e.g., \"0.1;0.2\") (default: 0.5)\n   -wmcnm <num>:\
+  \     Weight matrix clustering num matrices (default: 1)\n   -wmcdw <num>:     Weight\
+  \ matrix clustering distance window (default: -1 for cumulative clustering, not\
+  \ specific windows)\n   -wmcdi <num>:     Weight matrix clustering distance increment\
+  \ (default: 10)\n\n   WeightMatrixSequenceFeatures\n   ============================\n\
+  \   -ns <num>:        Num samples\n   -sfd:             Description sequence feature\n\
+  \   -smc:             Single matrices counts\n   -amc:             All matrices\
+  \ counts\n   -camc <str>:      Configuration adjacent matrices counts (str has the\
+  \ form: <min;max;inc;XXX;NoFunction/Gaussian;mean;std>)\n                     [XXX]\
+  \ = CombinedAdjacentMatricesCount/SeparateAdjacentMatricesCount/SeparateProximalMatricesCount\n\
+  \   -cp:              Configuration probabilities\n   -cmc:             Configuration\
+  \ matrices coverage\n\n   -xml:             print only the xml file\n   -run <str>:\
+  \       Print the stdout and stderr of the program into the file <str>\n   -sxml\
+  \ <str>:      Save the xml file into <str>\n\n"
+generated_using:
+- --help
+docker_image:

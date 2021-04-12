@@ -1,0 +1,162 @@
+!Command
+command:
+- Binsanity-refine
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: Specify a Coverage File
+  args: !SimpleFlagArg
+    name: INPUTCOVFILE
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: Specify directory containing your contigs
+  args: !SimpleFlagArg
+    name: INPUTCONTIGFILES
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: "Specify a preference (default is -25)\nNote: decreasing the preference\
+    \ leads to more lumping,\nincreasing will lead to more splitting. If your range\n\
+    of coverages are low you will want to decrease the\npreference, if you have 10\
+    \ or less replicates increasing\nthe preference could benefit you. For complex\
+    \ datasets\nwith low abundance organisms a preference\nof -25 was found to be\
+    \ optimal"
+  args: !SimpleFlagArg
+    name: PREFERENCE
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: Specify a max number of iterations (default is 4000)
+  args: !SimpleFlagArg
+    name: MAXITER
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: "Specify the convergence iteration number (default is 200)\ne.g Number\
+    \ of iterations with no change in the number\nof estimated clusters that stops\
+    \ the convergence."
+  args: !SimpleFlagArg
+    name: CONVITER
+- !Flag
+  optional: true
+  synonyms:
+  - -kmer
+  description: "Specify a number for kmer calculation. Default is 4.\nTetramer frequencies\
+    \ are recommended"
+  args: !SimpleFlagArg
+    name: INPUTKMER
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: Specify a damping factor between 0.5 and 1, default is 0.9
+  args: !SimpleFlagArg
+    name: DAMP
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: Specify the fasta file containing contigs you want to cluster
+  args: !SimpleFlagArg
+    name: FASTAFILE
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  description: Specify the contig size cut-off (Default 1000 bp)
+  args: !SimpleFlagArg
+    name: CONTIGSIZE
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: "Give a name to the directory BinSanity results will be output in\n\
+    [Default is 'BINSANITY-REFINEMENT']"
+  args: !SimpleFlagArg
+    name: OUTPUTDIR
+- !Flag
+  optional: true
+  synonyms:
+  - --log
+  description: 'Specify an output name for the log file. [Default: binsanity-refine.log]'
+  args: !SimpleFlagArg
+    name: LOGFILE
+- !Flag
+  optional: true
+  synonyms:
+  - --outPrefix
+  description: "Sepcify what prefix you want appended to final Bins {optional}\n"
+  args: !SimpleFlagArg
+    name: OUTNAME
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: Binsanity-refine -f [/path/to/fasta] -l [fastafile] -kmer [kmer\
+  \ type] -c [coverage file] -p [preference] -m [maxiter] -v [convergence iterations]\
+  \ -d [damping factor] -x [contig size] -o [output directory]\n\n    ***********************************************************************\n\
+  \    *****************************BinSanity*********************************\n \
+  \   ** Binsanity-refine uses combined coverage and composition           **\n  \
+  \  ** (in the form of tetramer frequencies and GC%) to cluster          **\n   \
+  \ ** contigs. The published workflow uses this to refine bins          **\n    **\
+  \ initially clustered soley on coverage.                            **\n    ** \
+  \                                                                  **\n    ** Binsanity-refine\
+  \ can be used as a stand alone script if you       **\n    ** don't have more than\
+  \ 2 sample replicates                          **\n    **                      \
+  \                                             **\n    ***********************************************************************\n\
+  \noptional arguments:\n  -h, --help           show this help message and exit\n\
+  \  -c INPUTCOVFILE      \n                           Specify a Coverage File\n \
+  \                          \n  -f INPUTCONTIGFILES  \n                         \
+  \  Specify directory containing your contigs\n                           \n  -p\
+  \ PREFERENCE        \n                           Specify a preference (default is\
+  \ -25)\n                           Note: decreasing the preference leads to more\
+  \ lumping,\n                           increasing will lead to more splitting. If\
+  \ your range\n                           of coverages are low you will want to decrease\
+  \ the\n                           preference, if you have 10 or less replicates\
+  \ increasing\n                           the preference could benefit you. For complex\
+  \ datasets\n                           with low abundance organisms a preference\n\
+  \                           of -25 was found to be optimal\n                   \
+  \        \n  -m MAXITER           \n                           Specify a max number\
+  \ of iterations (default is 4000)\n                           \n  -v CONVITER  \
+  \        \n                           Specify the convergence iteration number (default\
+  \ is 200)\n                           e.g Number of iterations with no change in\
+  \ the number\n                           of estimated clusters that stops the convergence.\n\
+  \                           \n  -kmer INPUTKMER      \n                        \
+  \   Specify a number for kmer calculation. Default is 4.\n                     \
+  \      Tetramer frequencies are recommended\n                           \n  -d DAMP\
+  \              \n                           Specify a damping factor between 0.5\
+  \ and 1, default is 0.9\n                           \n  -l FASTAFILE         \n\
+  \                           Specify the fasta file containing contigs you want to\
+  \ cluster\n                           \n  -x CONTIGSIZE        \n              \
+  \             Specify the contig size cut-off (Default 1000 bp)\n              \
+  \             \n  -o OUTPUTDIR         \n                           Give a name\
+  \ to the directory BinSanity results will be output in\n                       \
+  \    [Default is 'BINSANITY-REFINEMENT']\n                           \n  --log LOGFILE\
+  \        \n                           Specify an output name for the log file. [Default:\
+  \ binsanity-refine.log]\n  --version            show program's version number and\
+  \ exit\n  --outPrefix OUTNAME  \n                           Sepcify what prefix\
+  \ you want appended to final Bins {optional}\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/binsanity:0.5.3--pyh3252c3a_0

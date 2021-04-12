@@ -1,0 +1,197 @@
+!Command
+command:
+- rmats2sashimiplot
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --l1
+  description: The label for first sample.
+  args: !SimpleFlagArg
+    name: L1
+- !Flag
+  optional: true
+  synonyms:
+  - --l2
+  description: The label for second sample.
+  args: !SimpleFlagArg
+    name: L2
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: The output directory.
+  args: !SimpleFlagArg
+    name: OUT_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: "Type of event from rMATS result used in the analysis.\n'SE': skipped\
+    \ exon, 'A5SS': alternative 5' splice\nsite, 'A3SS' alternative 3' splice site,\
+    \ 'MXE':\nmutually exclusive exons, 'RI': retained intron. (Only\nif using rMATS\
+    \ event input)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      SE:
+      A3SS:
+      MXE:
+      A5SS:
+      RI:
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  description: "The rMATS output event file (Only if using rMATS event\ninput)"
+  args: !SimpleFlagArg
+    name: EVENTS_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: "The genome region coordinates and a GFF3 (not GTF)\nannotation file\
+    \ of genes and transcripts. The format\nis -c\n{chromosome}:{strand}:{start}:{end}:{/path/to/gff3}\n\
+    (Only if using Coordinate and annotation input)"
+  args: !SimpleFlagArg
+    name: COORDINATE
+- !Flag
+  optional: true
+  synonyms:
+  - --s1
+  description: 'sample_1 sam files: s1_rep1.sam[,s1_rep2.sam]'
+  args: !SimpleFlagArg
+    name: S1
+- !Flag
+  optional: true
+  synonyms:
+  - --s2
+  description: 'sample_2 sam files: s2_rep1.sam[,s2_rep2.sam]'
+  args: !SimpleFlagArg
+    name: S2
+- !Flag
+  optional: true
+  synonyms:
+  - --b1
+  description: 'sample_1 bam files: s1_rep1.bam[,s1_rep2.bam]'
+  args: !SimpleFlagArg
+    name: B1
+- !Flag
+  optional: true
+  synonyms:
+  - --b2
+  description: 'sample_2 bam files: s2_rep1.bam[,s2_rep2.bam]'
+  args: !SimpleFlagArg
+    name: B2
+- !Flag
+  optional: true
+  synonyms:
+  - --exon_s
+  description: 'How much to scale down exons. Default: 1'
+  args: !SimpleFlagArg
+    name: EXON_S
+- !Flag
+  optional: true
+  synonyms:
+  - --group-info
+  description: "The path to a *.gf file which groups the replicates.\nOne sashimi\
+    \ plot will be generated for each group\ninstead of the default behavior of one\
+    \ plot per\nreplicate"
+  args: !SimpleFlagArg
+    name: GROUP_INFO
+- !Flag
+  optional: true
+  synonyms:
+  - --min-counts
+  description: "Individual junctions with read count below --min-\ncounts will be\
+    \ omitted from the plot. Default: 0"
+  args: !SimpleFlagArg
+    name: MIN_COUNTS
+- !Flag
+  optional: true
+  synonyms:
+  - --color
+  description: "Specify a list of colors with one color per plot.\nWithout grouping\
+    \ there is one plot per replicate. With\ngrouping there is one plot per group:\
+    \ --color\n'#CC0011[,#FF8800]'"
+  args: !SimpleFlagArg
+    name: COLOR
+- !Flag
+  optional: true
+  synonyms:
+  - --font-size
+  description: 'Set the font size. Default: 8'
+  args: !SimpleFlagArg
+    name: FONT_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --hide-number
+  description: Do not display the read count on the junctions
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-text-background
+  description: Do not put a white box behind the junction read count
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: rmats2sashimiplot [-h] --l1 L1 --l2 L2 -o OUT_DIR\n           \
+  \              [-t {SE,A5SS,A3SS,MXE,RI}] [-e EVENTS_FILE]\n                   \
+  \      [-c COORDINATE] [--s1 S1] [--s2 S2] [--b1 B1]\n                         [--b2\
+  \ B2] [--exon_s EXON_S] [--intron_s INTRON_S]\n                         [--group-info\
+  \ GROUP_INFO] [--min-counts MIN_COUNTS]\n                         [--color COLOR]\
+  \ [--font-size FONT_SIZE]\n                         [--hide-number] [--no-text-background]\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \nRequired:\n  --l1 L1               The label for first sample.\n  --l2 L2    \
+  \           The label for second sample.\n  -o OUT_DIR            The output directory.\n\
+  \nrMATS event input:\n  Use either (rMATS event input) or (Coordinate and annotation\
+  \ input)\n\n  -t {SE,A5SS,A3SS,MXE,RI}\n                        Type of event from\
+  \ rMATS result used in the analysis.\n                        'SE': skipped exon,\
+  \ 'A5SS': alternative 5' splice\n                        site, 'A3SS' alternative\
+  \ 3' splice site, 'MXE':\n                        mutually exclusive exons, 'RI':\
+  \ retained intron. (Only\n                        if using rMATS event input)\n\
+  \  -e EVENTS_FILE        The rMATS output event file (Only if using rMATS event\n\
+  \                        input)\n\nCoordinate and annotation input:\n  Use either\
+  \ (Coordinate and annotation input) or (rMATS event input)\n\n  -c COORDINATE  \
+  \       The genome region coordinates and a GFF3 (not GTF)\n                   \
+  \     annotation file of genes and transcripts. The format\n                   \
+  \     is -c\n                        {chromosome}:{strand}:{start}:{end}:{/path/to/gff3}\n\
+  \                        (Only if using Coordinate and annotation input)\n\nSAM\
+  \ Files:\n  Mapping results for sample_1 & sample_2 in SAM format. Replicates must\
+  \ be\n  in a comma separated list. (Only if using SAM)\n\n  --s1 S1            \
+  \   sample_1 sam files: s1_rep1.sam[,s1_rep2.sam]\n  --s2 S2               sample_2\
+  \ sam files: s2_rep1.sam[,s2_rep2.sam]\n\nBAM Files:\n  Mapping results for sample_1\
+  \ & sample_2 in BAM format. Replicates must be\n  in a comma separated list. (Only\
+  \ if using BAM)\n\n  --b1 B1               sample_1 bam files: s1_rep1.bam[,s1_rep2.bam]\n\
+  \  --b2 B2               sample_2 bam files: s2_rep1.bam[,s2_rep2.bam]\n\nOptional:\n\
+  \  --exon_s EXON_S       How much to scale down exons. Default: 1\n  --intron_s\
+  \ INTRON_S   How much to scale down introns. For example,\n                    \
+  \    --intron_s 5 results in an intron with real length of\n                   \
+  \     100 being plotted as 100/5 = 20. Default: 1\n  --group-info GROUP_INFO\n \
+  \                       The path to a *.gf file which groups the replicates.\n \
+  \                       One sashimi plot will be generated for each group\n    \
+  \                    instead of the default behavior of one plot per\n         \
+  \               replicate\n  --min-counts MIN_COUNTS\n                        Individual\
+  \ junctions with read count below --min-\n                        counts will be\
+  \ omitted from the plot. Default: 0\n  --color COLOR         Specify a list of colors\
+  \ with one color per plot.\n                        Without grouping there is one\
+  \ plot per replicate. With\n                        grouping there is one plot per\
+  \ group: --color\n                        '#CC0011[,#FF8800]'\n  --font-size FONT_SIZE\n\
+  \                        Set the font size. Default: 8\n  --hide-number        \
+  \ Do not display the read count on the junctions\n  --no-text-background  Do not\
+  \ put a white box behind the junction read count\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/rmats2sashimiplot:2.0.4--py39h6a678da_2

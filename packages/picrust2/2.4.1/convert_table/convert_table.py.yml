@@ -1,0 +1,91 @@
+!Command
+command:
+- convert_table.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: INPUT
+  description: "Input table to convert. If there are multiple input\nfiles (e.g. if\
+    \ multiple HUMAnN2 gene tables for\ndifferent samples should be converted to a\
+    \ single\nPICRUSt2 table) then specify them all: file1 file2\nfile3..."
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: "Path to output. Corresponds to folder name if multiple\nfiles are\
+    \ output, otherwise it will be a filename."
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --conversion
+  description: "Type of conversion to perform ('contrib_to_legacy',\n'humann2_unstrat_to_picrust2',\n\
+    'humann2_strat_to_picrust2',\n'picrust2_unstrat_to_humann2_split',\n'picrust2_strat_to_humann2_split',\
+    \ or\n'picrust2_to_humann2_merged')."
+  args: !SimpleFlagArg
+    name: CONVERSION
+- !Flag
+  optional: true
+  synonyms:
+  - --raw_abun
+  description: "When converting to legacy contributional table output\nabundance (i.e.\
+    \ OTUAbundanceInSample column) as raw\nabundance rather than relative abundances\
+    \ (relative\nabundances are the default)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: ''
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: convert_table.py [-h] -o OUTPUT -c CONVERSION [--raw_abun] [-v]\n\
+  \                        INPUT [INPUT ...]\n\nConverts to and from PICRUSt2 function\
+  \ abundance table. Currently supports converting to legacy contributional format\
+  \ and to and from HUMAnN2 function tables. Both stratified and unstratified tables\
+  \ are supported. Note that the categories like \"UNMAPPED\" in the HUMAnN2 tables\
+  \ will be removed if they have values of 0. The PICRUSt2 \"strat\" format refers\
+  \ to the deprecated wide-table stratified table format only.\n\npositional arguments:\n\
+  \  INPUT                 Input table to convert. If there are multiple input\n \
+  \                       files (e.g. if multiple HUMAnN2 gene tables for\n      \
+  \                  different samples should be converted to a single\n         \
+  \               PICRUSt2 table) then specify them all: file1 file2\n           \
+  \             file3...\n\noptional arguments:\n  -h, --help            show this\
+  \ help message and exit\n  -o OUTPUT, --output OUTPUT\n                        Path\
+  \ to output. Corresponds to folder name if multiple\n                        files\
+  \ are output, otherwise it will be a filename.\n  -c CONVERSION, --conversion CONVERSION\n\
+  \                        Type of conversion to perform ('contrib_to_legacy',\n \
+  \                       'humann2_unstrat_to_picrust2',\n                       \
+  \ 'humann2_strat_to_picrust2',\n                        'picrust2_unstrat_to_humann2_split',\n\
+  \                        'picrust2_strat_to_humann2_split', or\n               \
+  \         'picrust2_to_humann2_merged').\n  --raw_abun            When converting\
+  \ to legacy contributional table output\n                        abundance (i.e.\
+  \ OTUAbundanceInSample column) as raw\n                        abundance rather\
+  \ than relative abundances (relative\n                        abundances are the\
+  \ default).\n  -v, --version         show program's version number and exit\n\n\
+  Usage example:\nconvert_table.py -o output.tsv -c humann2_strat_to_picrust2 humann2_out/*.tsv\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/picrust2:2.4.1--py_0

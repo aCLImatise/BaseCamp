@@ -1,0 +1,245 @@
+!Command
+command:
+- make-consensi.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: families.msa.tsv
+  description: "The output of align_families.py. 6 columns:\n1. (canonical) barcode\n\
+    2. order (\"ab\" or \"ba\")\n3. mate (\"1\" or \"2\")\n4. read name\n5. aligned\
+    \ sequence\n6. aligned quality scores."
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - '-1'
+  - --dcs1
+  description: 'The file to output the first mates of the duplex consensus sequences
+    into. Warning: This will be overwritten if it exists!'
+  args: !SimpleFlagArg
+    name: duplex_1.fa
+- !Flag
+  optional: true
+  synonyms:
+  - '-2'
+  - --dcs2
+  description: Same, but for mate 2.
+  args: !SimpleFlagArg
+    name: duplex_2.fa
+- !Flag
+  optional: true
+  synonyms:
+  - --sscs1
+  description: 'Save the single-strand consensus sequences (mate 1) in this file (FASTA
+    format). Warning: This will be overwritten if it exists!'
+  args: !SimpleFlagArg
+    name: sscs_1.fa
+- !Flag
+  optional: true
+  synonyms:
+  - --sscs2
+  description: 'Save the single-strand consensus sequences (mate 2) in this file (FASTA
+    format). Warning: This will be overwritten if it exists!'
+  args: !SimpleFlagArg
+    name: sscs_2.fa
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  - --qual-format
+  description: "FASTQ quality score format. Sanger scores are assumed to begin at\
+    \ '33' (!). Default: sanger."
+  args: !ChoiceFlagArg
+    choices: !!set
+      solexa:
+      sanger:
+- !Flag
+  optional: true
+  synonyms:
+  - --fastq-out
+  description: Output in FASTQ instead of FASTA. You must specify the quality score
+    to give to all bases. There is no meaningful quality score we can automatically
+    give, so you will have to specify an artificial one. A good choice is 40, the
+    maximum score normally output by sequencers.
+  args: !SimpleFlagArg
+    name: PHRED_SCORE
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --min-reads
+  description: 'The minimum number of reads (from each strand) required to form a
+    single-strand consensus. Strands with fewer reads will be skipped. Default: 3.'
+  args: !SimpleFlagArg
+    name: MIN_READS
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --qual
+  description: 'Base quality threshold. Bases below this quality will not be counted.
+    Default: 20.'
+  args: !SimpleFlagArg
+    name: PHRED_SCORE
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --cons-thres
+  description: 'The fractional threshold to use when making consensus sequences. The
+    consensus base must be present in more than this fraction of the reads, or N will
+    be used as the consensus base instead. Default: 0.5'
+  args: !SimpleFlagArg
+    name: THRES
+- !Flag
+  optional: true
+  synonyms:
+  - -C
+  - --min-cons-reads
+  description: 'The absolute threshold to use when making consensus sequences. The
+    consensus base must be present in more than this number of reads, or N will be
+    used as the consensus base instead. Default: 0'
+  args: !SimpleFlagArg
+    name: MIN_CONS_READS
+- !Flag
+  optional: true
+  synonyms:
+  - --phone-home
+  description: Report helpful usage data to the developer, to better understand the
+    use cases and performance of the tool. The only data which will be recorded is
+    the name and version of the tool, the size of the input data, the time and memory
+    taken to process it, and the IP address of the machine running it. Also, if the
+    script fails, it will report the name of the exception thrown and the line of
+    code it occurred in. No filenames are sent, and the only parameters reported are
+    the number of --processes and the --queue-size. All the reporting and recording
+    code is available at https://github.com/NickSto/ET.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --galaxy
+  description: Tell the script it's running on Galaxy. Currently this only affects
+    data reported when phoning home.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --test
+  description: If reporting usage data, mark this as a test run.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --log
+  description: 'Print log messages to this file instead of to stderr. Warning: Will
+    overwrite the file.'
+  args: !SimpleFlagArg
+    name: LOG
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --processes
+  description: 'Number of worker subprocesses to use. If 0, no subprocesses will be
+    started and everything will be done inside one process. Give "auto" to use as
+    many processes as there are CPU cores. Default: 0.'
+  args: !SimpleFlagArg
+    name: PROCESSES
+- !Flag
+  optional: true
+  synonyms:
+  - --queue-size
+  description: 'How long to go accumulating responses from worker subprocesses before
+    dealing with all of them. Default: 8 * the number of worker --processes.'
+  args: !SimpleFlagArg
+    name: QUEUE_SIZE
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Print this text on usage and arguments.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: Print the version number and exit.
+  args: !EmptyFlagArg {}
+help_text: "usage: $ make-consensi.py [options] families.msa.tsv -1 duplexes_1.fa\
+  \ -2 duplexes_2.fa\n       $ cat families.msa.tsv | make-consensi.py [options] -1\
+  \ duplexes_1.fa -2 duplexes_2.fa\n\nBuild consensus sequences from read aligned\
+  \ families. Prints duplex consensus sequences in FASTA to stdout. The sequence ids\
+  \ are BARCODE.MATE, e.g. \"CTCAGATAACATACCTTATATGCA.1\", where \"BARCODE\" is the\
+  \ input barcode, and \"MATE\" is \"1\" or \"2\" as an arbitrary designation of the\
+  \ two reads in the pair. The id is followed by the count of the number of reads\
+  \ in the two families (one from each strand) that make up the duplex, in the format\
+  \ READS1/READS2. If the duplex is actually a single-strand consensus because the\
+  \ matching strand is missing, only one number is listed.\nRules for consensus building:\
+  \ Single-strand consensus sequences are made by counting how many of each base are\
+  \ at a given position. Bases with a PHRED quality score below the --qual threshold\
+  \ are not counted. If a majority of the reads (that pass the --qual threshold at\
+  \ that position) have one base at that position, then that base is used as the consensus\
+  \ base. If no base has a majority, then an N is used. Duplex consensus sequences\
+  \ are made by aligning pairs of single-strand consensuses, and comparing bases at\
+  \ each position. If they agree, that base is used in the consensus. Otherwise, the\
+  \ IUPAC ambiguity code for both bases is used (N + anything and gap + non-gap result\
+  \ in an N).\n\nInputs and outputs:\n  families.msa.tsv      The output of align_families.py.\
+  \ 6 columns:\n                        1. (canonical) barcode\n                 \
+  \       2. order (\"ab\" or \"ba\")\n                        3. mate (\"1\" or \"\
+  2\")\n                        4. read name\n                        5. aligned sequence\n\
+  \                        6. aligned quality scores.\n  -1 duplex_1.fa, --dcs1 duplex_1.fa\n\
+  \                        The file to output the first mates of the duplex consensus\
+  \ sequences into. Warning: This will be overwritten if it exists!\n  -2 duplex_2.fa,\
+  \ --dcs2 duplex_2.fa\n                        Same, but for mate 2.\n  --sscs1 sscs_1.fa\
+  \     Save the single-strand consensus sequences (mate 1) in this file (FASTA format).\
+  \ Warning: This will be overwritten if it exists!\n  --sscs2 sscs_2.fa     Save\
+  \ the single-strand consensus sequences (mate 2) in this file (FASTA format). Warning:\
+  \ This will be overwritten if it exists!\n  -F {sanger,solexa}, --qual-format {sanger,solexa}\n\
+  \                        FASTQ quality score format. Sanger scores are assumed to\
+  \ begin at '33' (!). Default: sanger.\n  --fastq-out PHRED_SCORE\n             \
+  \           Output in FASTQ instead of FASTA. You must specify the quality score\
+  \ to give to all bases. There is no meaningful quality score we can automatically\
+  \ give, so you will have to specify an artificial one. A good choice is 40, the\
+  \ maximum score normally output by sequencers.\n\nAlgorithm parameters:\n  -r MIN_READS,\
+  \ --min-reads MIN_READS\n                        The minimum number of reads (from\
+  \ each strand) required to form a single-strand consensus. Strands with fewer reads\
+  \ will be skipped. Default: 3.\n  -q PHRED_SCORE, --qual PHRED_SCORE\n         \
+  \               Base quality threshold. Bases below this quality will not be counted.\
+  \ Default: 20.\n  -c THRES, --cons-thres THRES\n                        The fractional\
+  \ threshold to use when making consensus sequences. The consensus base must be present\
+  \ in more than this fraction of the reads, or N will be used as the consensus base\
+  \ instead. Default: 0.5\n  -C MIN_CONS_READS, --min-cons-reads MIN_CONS_READS\n\
+  \                        The absolute threshold to use when making consensus sequences.\
+  \ The consensus base must be present in more than this number of reads, or N will\
+  \ be used as the consensus base instead. Default: 0\n\nFeedback:\n  --phone-home\
+  \          Report helpful usage data to the developer, to better understand the\
+  \ use cases and performance of the tool. The only data which will be recorded is\
+  \ the name and version of the tool, the size of the input data, the time and memory\
+  \ taken to process it, and the IP address of the machine running it. Also, if the\
+  \ script fails, it will report the name of the exception thrown and the line of\
+  \ code it occurred in. No filenames are sent, and the only parameters reported are\
+  \ the number of --processes and the --queue-size. All the reporting and recording\
+  \ code is available at https://github.com/NickSto/ET.\n  --galaxy              Tell\
+  \ the script it's running on Galaxy. Currently this only affects data reported when\
+  \ phoning home.\n  --test                If reporting usage data, mark this as a\
+  \ test run.\n\nLogging:\n  -l LOG, --log LOG     Print log messages to this file\
+  \ instead of to stderr. Warning: Will overwrite the file.\n  -Q, --quiet\n  -V,\
+  \ --verbose\n  -D, --debug\n\nMiscellaneous:\n  -p PROCESSES, --processes PROCESSES\n\
+  \                        Number of worker subprocesses to use. If 0, no subprocesses\
+  \ will be started and everything will be done inside one process. Give \"auto\"\
+  \ to use as many processes as there are CPU cores. Default: 0.\n  --queue-size QUEUE_SIZE\n\
+  \                        How long to go accumulating responses from worker subprocesses\
+  \ before dealing with all of them. Default: 8 * the number of worker --processes.\n\
+  \  -v, --version         Print the version number and exit.\n  -h, --help      \
+  \      Print this text on usage and arguments.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/dunovo:2.16--py39h38f01e4_0

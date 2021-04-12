@@ -1,0 +1,150 @@
+!Command
+command:
+- preprocess.py
+- '454'
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --min-amplicon-size
+  description: The minimum size for the amplicons (with primers).
+  args: !SimpleFlagArg
+    name: MIN_AMPLICON_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --max-amplicon-size
+  description: The maximum size for the amplicons (with primers).
+  args: !SimpleFlagArg
+    name: MAX_AMPLICON_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --five-prim-primer
+  description: The 5' primer sequence (wildcards are accepted).
+  args: !SimpleFlagArg
+    name: FIVE_PRIM_PRIMER
+- !Flag
+  optional: true
+  synonyms:
+  - --three-prim-primer
+  description: The 3' primer sequence (wildcards are accepted).
+  args: !SimpleFlagArg
+    name: THREE_PRIM_PRIMER
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --nb-cpus
+  description: 'The maximum number of CPUs used. [Default: 1]'
+  args: !SimpleFlagArg
+    name: NB_CPUS
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: Keep temporary files to debug program.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --samples-names
+  description: The sample name for each R1/R2-files.
+  args: !RepeatFlagArg
+    name: SAMPLES_NAMES
+- !Flag
+  optional: true
+  synonyms:
+  - --input-archive
+  description: "The tar file containing R1 file and R2 file for each\nsample (format:\
+    \ tar)."
+  args: !SimpleFlagArg
+    name: INPUT_ARCHIVE
+- !Flag
+  optional: true
+  synonyms:
+  - --input-R1
+  description: 'The sequence file for each sample (format: fastq).'
+  args: !RepeatFlagArg
+    name: INPUT_R1
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --output-dereplicated
+  description: "FASTA file with unique sequences. Each sequence has an\nID ended with\
+    \ the number of initial sequences\nrepresented (example : \">a0101;size=10\").\
+    \ [Default:\npreprocess.fasta]"
+  args: !SimpleFlagArg
+    name: OUTPUT_DEREPLICATED
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --output-count
+  description: "TSV file with count by sample for each unique sequence\n(example with\
+    \ 3 samples : \"a0101<TAB>5<TAB>8<TAB>0\").\n[Default: preprocess_counts.tsv]"
+  args: !SimpleFlagArg
+    name: OUTPUT_COUNT
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --summary
+  description: "The HTML file containing the graphs. [Default:\npreprocess.html]"
+  args: !SimpleFlagArg
+    name: SUMMARY
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --log-file
+  description: "This output file will contain several information on\nexecuted commands.\n"
+  args: !SimpleFlagArg
+    name: LOG_FILE
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: \n  preprocess.py 454\n    --input-archive ARCHIVE_FILE | --input-R1\
+  \ R1_FILE [R1_FILE ...]\n    --min-amplicon-size MIN_AMPLICON_SIZE\n    --max-amplicon-size\
+  \ MAX_AMPLICON_SIZE\n    --five-prim-primer FIVE_PRIM_PRIMER\n    --three-prim-primer\
+  \ THREE_PRIM_PRIMER\n    [-p NB_CPUS] [--debug] [-v]\n    [-d DEREPLICATED_FILE]\
+  \ [-c COUNT_FILE]\n    [-s SUMMARY_FILE] [-l LOG_FILE]\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  --min-amplicon-size\
+  \ MIN_AMPLICON_SIZE\n                        The minimum size for the amplicons\
+  \ (with primers).\n  --max-amplicon-size MAX_AMPLICON_SIZE\n                   \
+  \     The maximum size for the amplicons (with primers).\n  --five-prim-primer FIVE_PRIM_PRIMER\n\
+  \                        The 5' primer sequence (wildcards are accepted).\n  --three-prim-primer\
+  \ THREE_PRIM_PRIMER\n                        The 3' primer sequence (wildcards are\
+  \ accepted).\n  -p NB_CPUS, --nb-cpus NB_CPUS\n                        The maximum\
+  \ number of CPUs used. [Default: 1]\n  --debug               Keep temporary files\
+  \ to debug program.\n\nInputs:\n  --samples-names SAMPLES_NAMES [SAMPLES_NAMES ...]\n\
+  \                        The sample name for each R1/R2-files.\n  --input-archive\
+  \ INPUT_ARCHIVE\n                        The tar file containing R1 file and R2\
+  \ file for each\n                        sample (format: tar).\n  --input-R1 INPUT_R1\
+  \ [INPUT_R1 ...]\n                        The sequence file for each sample (format:\
+  \ fastq).\n\nOutputs:\n  -d OUTPUT_DEREPLICATED, --output-dereplicated OUTPUT_DEREPLICATED\n\
+  \                        FASTA file with unique sequences. Each sequence has an\n\
+  \                        ID ended with the number of initial sequences\n       \
+  \                 represented (example : \">a0101;size=10\"). [Default:\n      \
+  \                  preprocess.fasta]\n  -c OUTPUT_COUNT, --output-count OUTPUT_COUNT\n\
+  \                        TSV file with count by sample for each unique sequence\n\
+  \                        (example with 3 samples : \"a0101<TAB>5<TAB>8<TAB>0\").\n\
+  \                        [Default: preprocess_counts.tsv]\n  -s SUMMARY, --summary\
+  \ SUMMARY\n                        The HTML file containing the graphs. [Default:\n\
+  \                        preprocess.html]\n  -l LOG_FILE, --log-file LOG_FILE\n\
+  \                        This output file will contain several information on\n\
+  \                        executed commands.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/frogs:3.2.2--py37_0

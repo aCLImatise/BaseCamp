@@ -1,0 +1,290 @@
+!Command
+command:
+- virsorter
+- run
+positional:
+- !Positional
+  optional: true
+  position: 0
+  name: all|classify
+  description: ''
+- !Positional
+  optional: true
+  position: 1
+  name: SNAKEMAKE_ARGS
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --high-confidence-only
+  - --hallmark-required
+  - --hallmark-required-on-short
+  - --viral-gene-required
+  - --exclude-lt2gene
+  description: ). Most snakemake arguments can be
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --working-dir
+  description: output directory
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --db-dir
+  description: "database directory, default to the --db-dir\nset during installation"
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --seqfile
+  description: "sequence file in fa or fq format (could be\ncompressed by gzip or\
+    \ bz2)  [required]"
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --label
+  description: "add label as prefix to output files; this is\nuseful when re-running\
+    \ classify with different\nfiltering options"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --include-groups
+  description: "classifiers of viral groups to included (comma\nseparated and no space\
+    \ in between); available\noptions are:\ndsDNAphage,NCLDV,RNA,ssDNA,lavidaviridae\n\
+    [default: dsDNAphage,ssDNA]"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --jobs
+  description: "max # of jobs allowed in parallel.  [default:\n2]"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --min-score
+  description: "minimal score to be identified as viral\n[default: 0.5]"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --min-length
+  description: "minimal seq length required; all seqs shorter\nthan this will be removed\
+    \  [default: 0]"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --keep-original-seq
+  description: "keep the original sequences instead of\ntrimmed; By default, the untranslated\
+    \ regions\nat both ends of identified viral seqs are\ntrimmed; circular sequences\
+    \ are modified to\nremove overlap between both ends and adjusted\nfor the gene\
+    \ splitted into two ends;\n[default: False]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --prep-for-dramv
+  description: "turn on generating viral seqfile and viral-\naffi-contigs.tab for\
+    \ DRAMv  [default: False]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --viral-gene-enrich-off
+  description: "turn off the requirement of more viral than\ncellular genes for calling\
+    \ full sequence\nviral; this is useful when only using\nVirSorter2 to produce\
+    \ DRAMv input with viral\nsequence identified from other tools, or those\ntrimmed\
+    \ by checkV  [default: False]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --seqname-suffix-off
+  description: "turn off adding suffix (||full, ||{i}_partial,\n||lt2gene) to sequence\
+    \ names; note that this\nmight cause partial seqs from the same contig\nto have\
+    \ the same name; this option is could be\nused when you are sure there is one\
+    \ partial\nsequence at max from each contig  [default:\nFalse]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --provirus-off
+  description: "turn off extracting provirus after classifying\nfull contigs; Togetehr\
+    \ with lower --max-orf-\nper-seq, can speed up a run significantly\n[default:\
+    \ False]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max-orf-per-seq
+  description: "max # of orf used for computing taxonomic\nfeature; this option can\
+    \ only be used in\n--provirus-off mode; if # of orf in a seq\nexceeds the max\
+    \ limit, it is sub-sampled to\nthis # to reduce computation  [default: -1]"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --tmpdir
+  description: directory name for intermediate files
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --rm-tmpdir
+  description: "remove intermediate file directory (--tmpdir);\nMore than 100 intermediate\
+    \ files are created\nfor each run, so this is recommended when 100s\nof samples\
+    \ are processed to avoid exceeding\nfile # quota for user  [default: False]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: 'shows detailed rules output  [default: False]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --profile
+  description: snakemake profile e.g. for cluster execution.
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --dryrun
+  description: "Check rules to run and files to produce\n[default: False]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --use-conda-off
+  description: "Stop using the conda envs (vs2.yaml) that come\nwith this package\
+    \ and use what are installed\nin current system; Only useful when you want\nto\
+    \ install dependencies on your own with your\nown prefer version; this option\
+    \ works with the\ndevelopment version  [default: False]"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: virsorter run [OPTIONS] [[all|classify]] [SNAKEMAKE_ARGS]...\n\n\
+  \  Runs the virsorter main function to classify viral sequences\n\n  This includes\
+  \ 3 steps: 1) preprocess, 2) feature extraction, and 3)\n  classify. By default\
+  \ (\"all\") all steps are executed. The \"classify\" only\n  run the 3) classify\
+  \ step without previous steps that are computationally\n  heavy, good for rerunning\
+  \ with different filtering options (--min-score,\n  --high-confidence-only, --hallmark-required,\
+  \ --hallmark-required-on-short,\n  --viral-gene-required, --exclude-lt2gene). Most\
+  \ snakemake arguments can be\n  appended to the command for more  info see 'snakemake\
+  \ --help'.\n\nOptions:\n  -w, --working-dir PATH        output directory\n  -d,\
+  \ --db-dir PATH             database directory, default to the --db-dir\n      \
+  \                          set during installation\n\n  -i, --seqfile PATH     \
+  \       sequence file in fa or fq format (could be\n                           \
+  \     compressed by gzip or bz2)  [required]\n\n  -l, --label TEXT             \
+  \ add label as prefix to output files; this is\n                               \
+  \ useful when re-running classify with different\n                             \
+  \   filtering options\n\n  --include-groups TEXT         classifiers of viral groups\
+  \ to included (comma\n                                separated and no space in\
+  \ between); available\n                                options are:\n          \
+  \                      dsDNAphage,NCLDV,RNA,ssDNA,lavidaviridae\n              \
+  \                  [default: dsDNAphage,ssDNA]\n\n  -j, --jobs INTEGER         \
+  \   max # of jobs allowed in parallel.  [default:\n                            \
+  \    2]\n\n  --min-score FLOAT             minimal score to be identified as viral\n\
+  \                                [default: 0.5]\n\n  --min-length INTEGER      \
+  \    minimal seq length required; all seqs shorter\n                           \
+  \     than this will be removed  [default: 0]\n\n  --keep-original-seq         \
+  \  keep the original sequences instead of\n                                trimmed;\
+  \ By default, the untranslated regions\n                                at both\
+  \ ends of identified viral seqs are\n                                trimmed; circular\
+  \ sequences are modified to\n                                remove overlap between\
+  \ both ends and adjusted\n                                for the gene splitted\
+  \ into two ends;\n                                [default: False]\n\n  --exclude-lt2gene\
+  \             short seqs (less than 2 genes) does not have\n                   \
+  \             any scores, but those with hallmark genes are\n                  \
+  \              included as viral by default; use this option\n                 \
+  \               to exclude them  [default: False]\n\n  --prep-for-dramv        \
+  \      turn on generating viral seqfile and viral-\n                           \
+  \     affi-contigs.tab for DRAMv  [default: False]\n\n  --high-confidence-only \
+  \       only output high confidence viral sequences;\n                         \
+  \       this is equivalent to screening final-viral-\n                         \
+  \       score.tsv with the following criteria:\n                               \
+  \ (max_score >= 0.9) OR (max_score >=0.7 AND\n                                hallmark\
+  \ >= 1)  [default: False]\n\n  --hallmark-required           require hallmark gene\
+  \ on all viral seqs\n                                [default: False]\n\n  --hallmark-required-on-short\
+  \  require hallmark gene on short viral seqs\n                                (length\
+  \ cutoff as \"short\" were set by\n                                \"MIN_SIZE_ALLOWED_WO_HALLMARK_GENE\"\
+  \ in\n                                template-config.yaml file, default 3kbp);\
+  \ this\n                                can reduce false positives at reasonable\
+  \ cost\n                                of sensitivity  [default: False]\n\n  --viral-gene-required\
+  \         require viral genes annotated, removing\n                            \
+  \    putative viral seqs with no genes annotated;\n                            \
+  \    this can reduce false positives at reasonable\n                           \
+  \     cost of sensitivity  [default: False]\n\n  --viral-gene-enrich-off       turn\
+  \ off the requirement of more viral than\n                                cellular\
+  \ genes for calling full sequence\n                                viral; this is\
+  \ useful when only using\n                                VirSorter2 to produce\
+  \ DRAMv input with viral\n                                sequence identified from\
+  \ other tools, or those\n                                trimmed by checkV  [default:\
+  \ False]\n\n  --seqname-suffix-off          turn off adding suffix (||full, ||{i}_partial,\n\
+  \                                ||lt2gene) to sequence names; note that this\n\
+  \                                might cause partial seqs from the same contig\n\
+  \                                to have the same name; this option is could be\n\
+  \                                used when you are sure there is one partial\n \
+  \                               sequence at max from each contig  [default:\n  \
+  \                              False]\n\n  --provirus-off                turn off\
+  \ extracting provirus after classifying\n                                full contigs;\
+  \ Togetehr with lower --max-orf-\n                                per-seq, can speed\
+  \ up a run significantly\n                                [default: False]\n\n \
+  \ --max-orf-per-seq INTEGER     max # of orf used for computing taxonomic\n    \
+  \                            feature; this option can only be used in\n        \
+  \                        --provirus-off mode; if # of orf in a seq\n           \
+  \                     exceeds the max limit, it is sub-sampled to\n            \
+  \                    this # to reduce computation  [default: -1]\n\n  --tmpdir TEXT\
+  \                 directory name for intermediate files\n  --rm-tmpdir         \
+  \          remove intermediate file directory (--tmpdir);\n                    \
+  \            More than 100 intermediate files are created\n                    \
+  \            for each run, so this is recommended when 100s\n                  \
+  \              of samples are processed to avoid exceeding\n                   \
+  \             file # quota for user  [default: False]\n\n  --verbose           \
+  \          shows detailed rules output  [default: False]\n  --profile TEXT     \
+  \           snakemake profile e.g. for cluster execution.\n  -n, --dryrun      \
+  \            Check rules to run and files to produce\n                         \
+  \       [default: False]\n\n  --use-conda-off               Stop using the conda\
+  \ envs (vs2.yaml) that come\n                                with this package and\
+  \ use what are installed\n                                in current system; Only\
+  \ useful when you want\n                                to install dependencies\
+  \ on your own with your\n                                own prefer version; this\
+  \ option works with the\n                                development version  [default:\
+  \ False]\n\n  -h, --help                    Show this message and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/virsorter:2.2.1--py_0

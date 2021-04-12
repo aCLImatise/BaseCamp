@@ -1,0 +1,85 @@
+!Command
+command:
+- medaka
+- compress_bam
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: bam_input
+  description: Bam file to compress.
+- !Positional
+  optional: false
+  position: 1
+  name: bam_output
+  description: Output bam file.
+- !Positional
+  optional: false
+  position: 2
+  name: ref_fname
+  description: Reference fasta file used for `bam_input`.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: 'Verbose logging of debug information. (default: 20)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --quiet
+  description: 'Minimal logging; warnings only). (default: 20)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --regions
+  description: "Genomic regions to analyse, or a bed file. (default:\nNone)"
+  args: !RepeatFlagArg
+    name: REGIONS
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: 'Number of threads for parallel execution. (default: 1)'
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - --use_fast5_info
+  description: "<index> <fast5_dir> <index>\nRoot directory containing the fast5 files\
+    \ and .tsv\nfile with columns filename and read_id. (default:\nNone)\n"
+  args: !SimpleFlagArg
+    name: fast5_dir
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: medaka compress_bam [-h] [--debug | --quiet]\n                \
+  \           [--regions REGIONS [REGIONS ...]]\n                           [--threads\
+  \ THREADS]\n                           [--use_fast5_info <fast5_dir> <index> <fast5_dir>\
+  \ <index>]\n                           bam_input bam_output ref_fname\n\npositional\
+  \ arguments:\n  bam_input             Bam file to compress.\n  bam_output      \
+  \      Output bam file.\n  ref_fname             Reference fasta file used for `bam_input`.\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  --debug               Verbose logging of debug information. (default: 20)\n \
+  \ --quiet               Minimal logging; warnings only). (default: 20)\n  --regions\
+  \ REGIONS [REGIONS ...]\n                        Genomic regions to analyse, or\
+  \ a bed file. (default:\n                        None)\n  --threads THREADS    \
+  \ Number of threads for parallel execution. (default: 1)\n  --use_fast5_info <fast5_dir>\
+  \ <index> <fast5_dir> <index>\n                        Root directory containing\
+  \ the fast5 files and .tsv\n                        file with columns filename and\
+  \ read_id. (default:\n                        None)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/medaka:1.2.6--py38h64b100c_0

@@ -1,0 +1,136 @@
+!Command
+command:
+- demultiplex.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --mismatches
+  description: 'Number of mismatches allowed in barcode. [Default: 0]'
+  args: !SimpleFlagArg
+    name: MISMATCHES
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --end
+  description: "barcode is at the begining of the forward end (bol) or\nof the reverse\
+    \ (eol) or both (both). [Default: bol]"
+  args: !SimpleFlagArg
+    name: END
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: Keep temporary files to debug program.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --input-R1
+  description: 'The R1 sequence file with all samples (format: fastq).'
+  args: !SimpleFlagArg
+    name: INPUT_R1
+- !Flag
+  optional: true
+  synonyms:
+  - --input-R2
+  description: 'The R2 sequence file with all samples (format: fastq).'
+  args: !SimpleFlagArg
+    name: INPUT_R2
+- !Flag
+  optional: true
+  synonyms:
+  - --input-barcode
+  description: "This file describes barcodes and samples (one line by\nsample). Line\
+    \ format : SAMPLE_NAME<TAB>BARCODE or\nSAMPLE_NAME<TAB>BARCODE_FW<TAB>BARCODE_RV."
+  args: !SimpleFlagArg
+    name: INPUT_BARCODE
+- !Flag
+  optional: true
+  synonyms:
+  - --output-demultiplexed
+  description: "The tar file containing R1 files and R2 files for each\nsample (format:\
+    \ tar). [Default:\ndemultiplexed_read.tar.gz]"
+  args: !SimpleFlagArg
+    name: OUTPUT_DEMULTIPLEXED
+- !Flag
+  optional: true
+  synonyms:
+  - --output-excluded
+  description: "The tar file containing R1 files and R2 files not\ndemultiplexed (format:\
+    \ tar). [Default:\nundemultiplexed_read.tar.gz]"
+  args: !SimpleFlagArg
+    name: OUTPUT_EXCLUDED
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --summary
+  description: "TSV file with summary of filters results (format:\nTSV). [Default:\
+    \ demultiplex_summary.tsv]"
+  args: !SimpleFlagArg
+    name: SUMMARY
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --log-file
+  description: "This output file will contain several informations on\nexecuted commands.\n"
+  args: !SimpleFlagArg
+    name: LOG_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: ''
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: demultiplex.py [-h] [-m MISMATCHES] [-e END] [--debug] [-v] --input-R1\n\
+  \                      INPUT_R1 [--input-R2 INPUT_R2]\n                      [--input-barcode\
+  \ INPUT_BARCODE]\n                      [--output-demultiplexed OUTPUT_DEMULTIPLEXED]\n\
+  \                      [--output-excluded OUTPUT_EXCLUDED] [-s SUMMARY]\n      \
+  \                [-l LOG_FILE]\n\nSplit by samples the reads in function of inner\
+  \ barcode.\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  -m MISMATCHES, --mismatches MISMATCHES\n                        Number\
+  \ of mismatches allowed in barcode. [Default: 0]\n  -e END, --end END     barcode\
+  \ is at the begining of the forward end (bol) or\n                        of the\
+  \ reverse (eol) or both (both). [Default: bol]\n  --debug               Keep temporary\
+  \ files to debug program.\n  -v, --version         show program's version number\
+  \ and exit\n\nInputs:\n  --input-R1 INPUT_R1   The R1 sequence file with all samples\
+  \ (format: fastq).\n  --input-R2 INPUT_R2   The R2 sequence file with all samples\
+  \ (format: fastq).\n  --input-barcode INPUT_BARCODE\n                        This\
+  \ file describes barcodes and samples (one line by\n                        sample).\
+  \ Line format : SAMPLE_NAME<TAB>BARCODE or\n                        SAMPLE_NAME<TAB>BARCODE_FW<TAB>BARCODE_RV.\n\
+  \nOutputs:\n  --output-demultiplexed OUTPUT_DEMULTIPLEXED\n                    \
+  \    The tar file containing R1 files and R2 files for each\n                  \
+  \      sample (format: tar). [Default:\n                        demultiplexed_read.tar.gz]\n\
+  \  --output-excluded OUTPUT_EXCLUDED\n                        The tar file containing\
+  \ R1 files and R2 files not\n                        demultiplexed (format: tar).\
+  \ [Default:\n                        undemultiplexed_read.tar.gz]\n  -s SUMMARY,\
+  \ --summary SUMMARY\n                        TSV file with summary of filters results\
+  \ (format:\n                        TSV). [Default: demultiplex_summary.tsv]\n \
+  \ -l LOG_FILE, --log-file LOG_FILE\n                        This output file will\
+  \ contain several informations on\n                        executed commands.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/frogs:3.2.2--py37_0

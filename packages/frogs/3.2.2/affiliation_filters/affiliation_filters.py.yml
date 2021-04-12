@@ -1,0 +1,215 @@
+!Command
+command:
+- affiliation_filters.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: Keep temporary files to debug program.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --taxonomic-ranks
+  description: "The ordered ranks levels used in the metadata\ntaxonomy. [Default:\
+    \ ['Domain', 'Phylum', 'Class',\n'Order', 'Family', 'Genus', 'Species']]"
+  args: !RepeatFlagArg
+    name: TAXONOMIC_RANKS
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --mask
+  description: "If affiliations do not respect one of the filter they\nare replaced\
+    \ by NA (mutually exclusive with --delete)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --delete
+  description: "If affiliations do not respect one of the filter the\nentire OTU is\
+    \ deleted.(mutually exclusive with --mask)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ignore-blast-taxa
+  description: "[IGNORE_BLAST_TAXA [IGNORE_BLAST_TAXA ...]]\nTaxon list to maks/delete\
+    \ in Blast affiliations"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  description: ":MIN_BOOTSTRAP, --min-rdp-bootstrap TAXONOMIC_LEVEL:MIN_BOOTSTRAP\n\
+    The minimal RDP bootstrap must be superior to this\nvalue (between 0 and 1)."
+  args: !SimpleFlagArg
+    name: TAXONOMIC_LEVEL
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --min-blast-identity
+  description: "The number corresponding to the blast percentage\nidentity (between\
+    \ 0 and 1)."
+  args: !SimpleFlagArg
+    name: MIN_BLAST_IDENTITY
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --min-blast-coverage
+  description: "The number corresponding to the blast percentage\ncoverage (between\
+    \ 0 and 1)."
+  args: !SimpleFlagArg
+    name: MIN_BLAST_COVERAGE
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --max-blast-evalue
+  description: "The number corresponding to the blast e value (between\n0 and 1)."
+  args: !SimpleFlagArg
+    name: MAX_BLAST_EVALUE
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --min-blast-length
+  description: The number corresponding to the blast length.
+  args: !SimpleFlagArg
+    name: MIN_BLAST_LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - --input-biom
+  description: The input biom file.
+  args: !SimpleFlagArg
+    name: INPUT_BIOM
+- !Flag
+  optional: true
+  synonyms:
+  - --input-fasta
+  description: The input fasta file.
+  args: !SimpleFlagArg
+    name: INPUT_FASTA
+- !Flag
+  optional: true
+  synonyms:
+  - --output-biom
+  description: "The Biom file output. [Default: affiliation-\nfiltered.biom]"
+  args: !SimpleFlagArg
+    name: OUTPUT_BIOM
+- !Flag
+  optional: true
+  synonyms:
+  - --output-fasta
+  description: "The fasta output file. [Default: affiliation-\nfiltered.fasta]"
+  args: !SimpleFlagArg
+    name: OUTPUT_FASTA
+- !Flag
+  optional: true
+  synonyms:
+  - --summary
+  description: "The HTML file containing the graphs. [Default:\nsummary.html]"
+  args: !SimpleFlagArg
+    name: SUMMARY
+- !Flag
+  optional: true
+  synonyms:
+  - --impacted
+  description: "The abundance file that summarizes all the clusters\nimpacted (deleted\
+    \ or with affiliations masked).\n[Default: impacted_clusters.tsv]"
+  args: !SimpleFlagArg
+    name: IMPACTED
+- !Flag
+  optional: true
+  synonyms:
+  - --impacted-multihit
+  description: "The multihit TSV file associated with impacted OTU.\n[Default: impacted_clusters_multihit.tsv]"
+  args: !SimpleFlagArg
+    name: IMPACTED_MULTIHIT
+- !Flag
+  optional: true
+  synonyms:
+  - --log-file
+  description: The list of commands executed.
+  args: !SimpleFlagArg
+    name: LOG_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: ''
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: affiliation_filters.py [-h] [--debug] [-v]\n                  \
+  \            [--taxonomic-ranks TAXONOMIC_RANKS [TAXONOMIC_RANKS ...]]\n       \
+  \                       [-m | -d]\n                              [--ignore-blast-taxa\
+  \ [IGNORE_BLAST_TAXA [IGNORE_BLAST_TAXA ...]]]\n                              [-b\
+  \ TAXONOMIC_LEVEL:MIN_BOOTSTRAP]\n                              [-i MIN_BLAST_IDENTITY]\
+  \ [-c MIN_BLAST_COVERAGE]\n                              [-e MAX_BLAST_EVALUE] [-l\
+  \ MIN_BLAST_LENGTH]\n                              --input-biom INPUT_BIOM --input-fasta\n\
+  \                              INPUT_FASTA [--output-biom OUTPUT_BIOM]\n       \
+  \                       [--output-fasta OUTPUT_FASTA]\n                        \
+  \      [--summary SUMMARY] [--impacted IMPACTED]\n                             \
+  \ [--impacted-multihit IMPACTED_MULTIHIT]\n                              [--log-file\
+  \ LOG_FILE]\n\nFilters an abundance biom file on affiliations metrics\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  --debug\
+  \               Keep temporary files to debug program.\n  -v, --version        \
+  \ show program's version number and exit\n  --taxonomic-ranks TAXONOMIC_RANKS [TAXONOMIC_RANKS\
+  \ ...]\n                        The ordered ranks levels used in the metadata\n\
+  \                        taxonomy. [Default: ['Domain', 'Phylum', 'Class',\n   \
+  \                     'Order', 'Family', 'Genus', 'Species']]\n\nFilters behavior:\n\
+  \  -m, --mask            If affiliations do not respect one of the filter they\n\
+  \                        are replaced by NA (mutually exclusive with --delete)\n\
+  \  -d, --delete          If affiliations do not respect one of the filter the\n\
+  \                        entire OTU is deleted.(mutually exclusive with --mask)\n\
+  \nFilters:\n  --ignore-blast-taxa [IGNORE_BLAST_TAXA [IGNORE_BLAST_TAXA ...]]\n\
+  \                        Taxon list to maks/delete in Blast affiliations\n  -b TAXONOMIC_LEVEL:MIN_BOOTSTRAP,\
+  \ --min-rdp-bootstrap TAXONOMIC_LEVEL:MIN_BOOTSTRAP\n                        The\
+  \ minimal RDP bootstrap must be superior to this\n                        value\
+  \ (between 0 and 1).\n  -i MIN_BLAST_IDENTITY, --min-blast-identity MIN_BLAST_IDENTITY\n\
+  \                        The number corresponding to the blast percentage\n    \
+  \                    identity (between 0 and 1).\n  -c MIN_BLAST_COVERAGE, --min-blast-coverage\
+  \ MIN_BLAST_COVERAGE\n                        The number corresponding to the blast\
+  \ percentage\n                        coverage (between 0 and 1).\n  -e MAX_BLAST_EVALUE,\
+  \ --max-blast-evalue MAX_BLAST_EVALUE\n                        The number corresponding\
+  \ to the blast e value (between\n                        0 and 1).\n  -l MIN_BLAST_LENGTH,\
+  \ --min-blast-length MIN_BLAST_LENGTH\n                        The number corresponding\
+  \ to the blast length.\n\nInputs:\n  --input-biom INPUT_BIOM\n                 \
+  \       The input biom file.\n  --input-fasta INPUT_FASTA\n                    \
+  \    The input fasta file.\n\nOutputs:\n  --output-biom OUTPUT_BIOM\n          \
+  \              The Biom file output. [Default: affiliation-\n                  \
+  \      filtered.biom]\n  --output-fasta OUTPUT_FASTA\n                        The\
+  \ fasta output file. [Default: affiliation-\n                        filtered.fasta]\n\
+  \  --summary SUMMARY     The HTML file containing the graphs. [Default:\n      \
+  \                  summary.html]\n  --impacted IMPACTED   The abundance file that\
+  \ summarizes all the clusters\n                        impacted (deleted or with\
+  \ affiliations masked).\n                        [Default: impacted_clusters.tsv]\n\
+  \  --impacted-multihit IMPACTED_MULTIHIT\n                        The multihit TSV\
+  \ file associated with impacted OTU.\n                        [Default: impacted_clusters_multihit.tsv]\n\
+  \  --log-file LOG_FILE   The list of commands executed.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/frogs:3.2.2--py37_0

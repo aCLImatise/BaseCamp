@@ -1,0 +1,78 @@
+!Command
+command:
+- rbt
+- collapse-reads-to-fragments
+- bam
+positional:
+- !Positional
+  optional: true
+  position: 0
+  name: FLAGS
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: bam
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: consensus-fq1
+  description: ''
+- !Positional
+  optional: false
+  position: 3
+  name: consensus-fq2
+  description: ''
+- !Positional
+  optional: false
+  position: 4
+  name: consensus-fq-se
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose-read-names
+  description: "Add list of reads that were merged for each consensus read. Note that\
+    \ this can yield very long FASTQ name\nlines which cannot be handled by some tools."
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Prints help information
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Prints version information
+  args: !EmptyFlagArg {}
+help_text: "rbt-collapse-reads-to-fragments-bam 0.20.3\nFelix Mölder <felix.moelder@uni-due.de>\n\
+  Tool to merge sets of PCR duplicate reads from a BAM file into one maximum likelihood\
+  \ fragment sequence each with\naccordingly improved base quality scores.\n\nTakes\
+  \ a BAM file and returns a BAM file in which all PCR duplicates have been merged\
+  \ into a consensus read. Duplicates\nmust be marked by Picard Tools using the TAG_DUPLICATE_SET_MEMBERS\
+  \ option.\n\nAssumptions: - Reads are of equal length - Reads are marked by Picard\
+  \ Tools\n\nUSAGE:\n    rbt collapse-reads-to-fragments bam [FLAGS] <bam> <consensus-fq1>\
+  \ <consensus-fq2> <consensus-fq-se> <skipped-bam>\n\nFLAGS:\n    -h, --help    \
+  \              \n            Prints help information\n\n    -V, --version      \
+  \         \n            Prints version information\n\n        --verbose-read-names\
+  \    \n            Add list of reads that were merged for each consensus read. Note\
+  \ that this can yield very long FASTQ name\n            lines which cannot be handled\
+  \ by some tools.\n\nARGS:\n    <bam>                \n            Input BAM file\
+  \ with marked duplicates\n\n    <consensus-fq1>      \n            Output FASTQ\
+  \ file with forward reads\n\n    <consensus-fq2>      \n            Output FASTQ\
+  \ file with reverse reads\n\n    <consensus-fq-se>    \n            Output FASTQ\
+  \ file for overlapping consensus reads.\n\n    <skipped-bam>        \n         \
+  \   Output FASTQ file for overlapping consensus reads.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/rust-bio-tools:0.20.3--h4eb7995_3

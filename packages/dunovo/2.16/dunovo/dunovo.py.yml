@@ -1,0 +1,225 @@
+!Command
+command:
+- dunovo.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: reads_1.fq
+  description: Input reads (mate 1). Can be gzipped.
+- !Positional
+  optional: false
+  position: 1
+  name: reads_2.fq
+  description: Input reads (mate 2). Can be gzipped.
+- !Positional
+  optional: false
+  position: 0
+  name: families.py.
+  description: -p PROCESSES, --processes PROCESSES
+- !Positional
+  optional: false
+  position: 0
+  name: scripts.
+  description: --version             Print the version number and exit.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --outdir
+  description: "The directory to create the output (and intermediate)\nfiles in. Must\
+    \ exist already and not already contain\nany of the output/intermediate files."
+  args: !SimpleFlagArg
+    name: OUTDIR
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --suffix
+  description: "A string to use in naming the output files. If given,\nwill be put\
+    \ just before the file extension (like\n\"families.suffix.tsv\")."
+  args: !SimpleFlagArg
+    name: SUFFIX
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --dunovo-dir
+  description: "The directory containing the version of Du Novo you\nwant to run.\
+    \ Default: The directory containing this\nscript (/usr/local/lib)."
+  args: !SimpleFlagArg
+    name: DUNOVO_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -P
+  - --pos
+  description: 'correct.py --pos. Default: the correct.py default.'
+  args: !SimpleFlagArg
+    name: POS
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --aligner
+  description: 'align-families.py --aligner. Default: kalign'
+  args: !ChoiceFlagArg
+    choices: !!set
+      kalign:
+      mafft:
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --min-reads
+  description: "make-consensi.py --min-reads. Default: the make-\nconsensi.py default."
+  args: !SimpleFlagArg
+    name: MIN_READS
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --qual
+  description: 'make-consensi.py --qual. Default: 25'
+  args: !SimpleFlagArg
+    name: QUAL
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --cons-thres
+  description: 'make-consensi.py --cons-thres. Default: 0.7.'
+  args: !SimpleFlagArg
+    name: CONS_THRES
+- !Flag
+  optional: true
+  synonyms:
+  - -C
+  - --min-cons-reads
+  description: "make-consensi.py --min-cons-reads. Default: the make-\nconsensi.py\
+    \ default."
+  args: !SimpleFlagArg
+    name: MIN_CONS_READS
+- !Flag
+  optional: true
+  synonyms:
+  - -Q
+  - --fake-phred
+  description: "The PHRED score to assign to all output consensus\nbases."
+  args: !SimpleFlagArg
+    name: FAKE_PHRED
+- !Flag
+  optional: true
+  synonyms:
+  - -I
+  - --no-check-ids
+  description: Pass --no-check-ids to correct.py and align-
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: 'baralign.sh -t. Default: the baralign.sh default.'
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --filt-bases
+  description: 'trimmer.py --filt-bases. Default: N'
+  args: !SimpleFlagArg
+    name: FILT_BASES
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  - --min-length
+  description: 'trimmer.py --min-length. Default: 75'
+  args: !SimpleFlagArg
+    name: MIN_LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --log-dir
+  description: "Write log output to files in this directory instead of\nto stderr."
+  args: !SimpleFlagArg
+    name: LOG_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --no-validate
+  description: Skip validation checks on the outputs of individual
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  description: ''
+  args: !SimpleFlagArg
+    name: TEMPDIR
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Print this help text and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: dunovo.py [-o OUTDIR] [-s SUFFIX] [-d DUNOVO_DIR] [-T TEMPDIR]\n\
+  \                 [-D DIST] [-m MAPQ] [-P POS] [-a {mafft,kalign}]\n           \
+  \      [-r MIN_READS] [-q QUAL] [-c CONS_THRES] [-C MIN_CONS_READS]\n          \
+  \       [-Q FAKE_PHRED] [-I] [-p PROCESSES] [-t THREADS]\n                 [-b FILT_BASES]\
+  \ [-e THRES] [-w WINDOW] [-M MIN_LENGTH]\n                 [-l LOG_DIR] [--quiet\
+  \ | -v | --debug] [-V] [--version] [-h]\n                 reads_1.fq reads_2.fq\n\
+  \nRun the entire Du Novo pipeline.\n\nInputs and outputs:\n  reads_1.fq        \
+  \    Input reads (mate 1). Can be gzipped.\n  reads_2.fq            Input reads\
+  \ (mate 2). Can be gzipped.\n  -o OUTDIR, --outdir OUTDIR\n                    \
+  \    The directory to create the output (and intermediate)\n                   \
+  \     files in. Must exist already and not already contain\n                   \
+  \     any of the output/intermediate files.\n  -s SUFFIX, --suffix SUFFIX\n    \
+  \                    A string to use in naming the output files. If given,\n   \
+  \                     will be put just before the file extension (like\n       \
+  \                 \"families.suffix.tsv\").\n  -d DUNOVO_DIR, --dunovo-dir DUNOVO_DIR\n\
+  \                        The directory containing the version of Du Novo you\n \
+  \                       want to run. Default: The directory containing this\n  \
+  \                      script (/usr/local/lib).\n  -T TEMPDIR, --tempdir TEMPDIR\n\
+  \nAlgorithm parameters:\n  -D DIST, --dist DIST  correct.py --dist. Default: 3\n\
+  \  -m MAPQ, --mapq MAPQ  correct.py --mapq. Default: 25\n  -P POS, --pos POS   \
+  \  correct.py --pos. Default: the correct.py default.\n  -a {mafft,kalign}, --aligner\
+  \ {mafft,kalign}\n                        align-families.py --aligner. Default:\
+  \ kalign\n  -r MIN_READS, --min-reads MIN_READS\n                        make-consensi.py\
+  \ --min-reads. Default: the make-\n                        consensi.py default.\n\
+  \  -q QUAL, --qual QUAL  make-consensi.py --qual. Default: 25\n  -c CONS_THRES,\
+  \ --cons-thres CONS_THRES\n                        make-consensi.py --cons-thres.\
+  \ Default: 0.7.\n  -C MIN_CONS_READS, --min-cons-reads MIN_CONS_READS\n        \
+  \                make-consensi.py --min-cons-reads. Default: the make-\n       \
+  \                 consensi.py default.\n  -Q FAKE_PHRED, --fake-phred FAKE_PHRED\n\
+  \                        The PHRED score to assign to all output consensus\n   \
+  \                     bases.\n  -I, --no-check-ids    Pass --no-check-ids to correct.py\
+  \ and align-\n                        families.py.\n  -p PROCESSES, --processes\
+  \ PROCESSES\n                        align-families.py --processes. Default: the\
+  \ align-\n                        families.py default.\n  -t THREADS, --threads\
+  \ THREADS\n                        baralign.sh -t. Default: the baralign.sh default.\n\
+  \  -b FILT_BASES, --filt-bases FILT_BASES\n                        trimmer.py --filt-bases.\
+  \ Default: N\n  -e THRES, --thres THRES\n                        trimmer.py --thres.\
+  \ Default: 0.3\n  -w WINDOW, --window WINDOW\n                        trimmer.py\
+  \ --window. Default: 10\n  -M MIN_LENGTH, --min-length MIN_LENGTH\n            \
+  \            trimmer.py --min-length. Default: 75\n\nLogging:\n  -l LOG_DIR, --log-dir\
+  \ LOG_DIR\n                        Write log output to files in this directory instead\
+  \ of\n                        to stderr.\n  --quiet\n  -v, --verbose\n  --debug\n\
+  \nMiscellaneous:\n  -V, --no-validate     Skip validation checks on the outputs\
+  \ of individual\n                        scripts.\n  --version             Print\
+  \ the version number and exit.\n  -h, --help            Print this help text and\
+  \ exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/dunovo:2.16--py39h38f01e4_0

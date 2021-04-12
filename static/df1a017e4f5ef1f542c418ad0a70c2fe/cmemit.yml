@@ -1,0 +1,191 @@
+!Command
+command:
+- cmemit
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: cmfile
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: ': send sequence output to file <f>, not stdout'
+  args: !SimpleFlagArg
+    name: f
+- !Flag
+  optional: true
+  synonyms:
+  - -N
+  description: ': generate <n> sequences  [10]'
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  description: ': write generated sequences as unaligned FASTA [default]  [default]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  description: ': write generated sequences as an alignment'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: ': generate a single "consensus" sequence only'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  description: ': embed emitted sequences within larger random sequences of length
+    <n>'
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: ': local; emit from a locally configured model [default: global]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --u5p
+  description: ": truncate unaligned sequences 5', choosing a random start posn"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --u3p
+  description: ": truncate unaligned sequences 3', choosing a random end   posn"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --a5p
+  description: ": truncate aln 5', start at match column <n> (use 0 for random posn)"
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --a3p
+  description: ": truncate aln 3', end   at match column <n> (use 0 for random posn)"
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --seed
+  description: ': set RNG seed to <n> [default: one-time arbitrary seed]  [0]'
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --iid
+  description: ': with -e, generate larger sequences as 25% ACGU (iid)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --rna
+  description: ': output as RNA sequence data  [default]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dna
+  description: ': output as DNA sequence data'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --idx
+  description: ': start sequence numbering at <n>  [1]'
+  args: !SimpleFlagArg
+    name: n
+- !Flag
+  optional: true
+  synonyms:
+  - --outformat
+  description: ': w/-a output alignment in format <s>  [Stockholm]'
+  args: !SimpleFlagArg
+    name: s
+- !Flag
+  optional: true
+  synonyms:
+  - --tfile
+  description: ': dump parsetrees to file <f>'
+  args: !SimpleFlagArg
+    name: f
+- !Flag
+  optional: true
+  synonyms:
+  - --exp
+  description: ': exponentiate CM probabilities by <x> before emitting'
+  args: !SimpleFlagArg
+    name: x
+- !Flag
+  optional: true
+  synonyms:
+  - --hmmonly
+  description: ': emit from filter HMM, not from CM'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --nohmmonly
+  description: ': always emit from CM, even for models with 0 basepairs'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -options
+  description: ''
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: ': show brief help on version and usage'
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "# cmemit :: sample sequences from a covariance model\n# INFERNAL 1.1.4\
+  \ (Dec 2020)\n# Copyright (C) 2020 Howard Hughes Medical Institute.\n# Freely distributed\
+  \ under the BSD open source license.\n# - - - - - - - - - - - - - - - - - - - -\
+  \ - - - - - - - - - - - - - - - -\nUsage: cmemit [-options] <cmfile>\n\nBasic options:\n\
+  \  -h     : show brief help on version and usage\n  -o <f> : send sequence output\
+  \ to file <f>, not stdout\n  -N <n> : generate <n> sequences  [10]\n  -u     : write\
+  \ generated sequences as unaligned FASTA [default]  [default]\n  -a     : write\
+  \ generated sequences as an alignment\n  -c     : generate a single \"consensus\"\
+  \ sequence only\n  -e <n> : embed emitted sequences within larger random sequences\
+  \ of length <n>\n  -l     : local; emit from a locally configured model [default:\
+  \ global]\n\nOptions for truncating sequences:\n  --u5p     : truncate unaligned\
+  \ sequences 5', choosing a random start posn\n  --u3p     : truncate unaligned sequences\
+  \ 3', choosing a random end   posn\n  --a5p <n> : truncate aln 5', start at match\
+  \ column <n> (use 0 for random posn)\n  --a3p <n> : truncate aln 3', end   at match\
+  \ column <n> (use 0 for random posn)\n\nOther options:\n  --seed <n>      : set\
+  \ RNG seed to <n> [default: one-time arbitrary seed]  [0]\n  --iid           : with\
+  \ -e, generate larger sequences as 25% ACGU (iid) \n  --rna           : output as\
+  \ RNA sequence data  [default]\n  --dna           : output as DNA sequence data\n\
+  \  --idx <n>       : start sequence numbering at <n>  [1]\n  --outformat <s> : w/-a\
+  \ output alignment in format <s>  [Stockholm]\n  --tfile <f>     : dump parsetrees\
+  \ to file <f>\n  --exp <x>       : exponentiate CM probabilities by <x> before emitting\n\
+  \  --hmmonly       : emit from filter HMM, not from CM\n  --nohmmonly     : always\
+  \ emit from CM, even for models with 0 basepairs\n\nAlignment output formats (-a)\
+  \ include: Stockholm, Pfam, AFA (aligned FASTA), A2M, Clustal, PHYLIP\n\n"
+generated_using:
+- -h
+docker_image: quay.io/biocontainers/infernal:1.1.4--h779adbc_0

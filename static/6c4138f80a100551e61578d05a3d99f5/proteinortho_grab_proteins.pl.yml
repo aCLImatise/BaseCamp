@@ -1,0 +1,121 @@
+!Command
+command:
+- proteinortho_grab_proteins.pl
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: QUERY
+  description: "proteinortho.tsv FILE or search STRING or '-' for STDIN:\na)     \
+    \ proteinortho output file (.tsv). This uses by default the -exact option.\nb)\
+    \      string of one identifier e.g. 'tr|asd3|asd' OR multiple identifier separated\
+    \ by ',' (-F=)"
+- !Positional
+  optional: false
+  position: 0
+  name: MNNGGPTEMYYQQHMQSAGQPQQPQTVTSGPMSHYPPAQPPLLQPGQPYSHGAPSPYQYG
+  description: '>BDNF15 Brain derived neurotrophic factor OS=human(...)'
+- !Positional
+  optional: false
+  position: 1
+  name: MAFPLHFSREPAHAIPSMKAPFSRHEVPFGRSPSMAIPNSETHDDVPPPLPPPRHPPCTN
+  description: "The second hit BDNF15 is reported since it also contains 'BDNF1' as\
+    \ a substring. "
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -E
+  description: enables regex matching otherwise the string is escaped (e.g. | -> \|)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -exact
+  description: search patters are extended with a \b, that indicates end of word.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -cpus
+  description: "the number of parallel open files for reading, this is strictly limited\
+    \ by the I/O bandwith (default:1).\nfor fast SSD drives, you can increase this\
+    \ to gain speed."
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -minprot
+  description: if you give a proteinortho.tsv file, this filters out groups with less
+    than X proteins (default:0).
+  args: !SimpleFlagArg
+    name: X
+- !Flag
+  optional: true
+  synonyms:
+  - -source
+  - -s
+  description: adds the filename (FASTA1,...) to the found gene-name
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  description: "char delimiter for multiple identifier if QUERY is a string input\
+    \ (default: ',')"
+  args: !SimpleFlagArg
+    name: s
+- !Flag
+  optional: true
+  synonyms:
+  - -isoform
+  description: if you use proteinortho with --isoform option, then you need to set
+    this option here too.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "proteinortho_grab_proteins.pl        greps all genes/proteins of a given\
+  \ fasta file\n \nSYNOPSIS\n \nproteinortho_grab_proteins.pl (options) QUERY FASTA1\
+  \ (FASTA2 ...)\n\n\tQUERY\tproteinortho.tsv FILE or search STRING or '-' for STDIN:\n\
+  \t\ta)\tproteinortho output file (.tsv). This uses by default the -exact option.\n\
+  \t\tb)\tstring of one identifier e.g. 'tr|asd3|asd' OR multiple identifier separated\
+  \ by ',' (-F=)\n\tFASTA*\tfasta file(s) (database)\n\n\t(options):\n\t\t-tofiles,\
+  \ -t  print everything to files instead of stdout files are called OrthoGroup.fasta\
+  \ for a proteinortho.tsv file\n\t\t-tofiles=DIR  additionally specifies a output\
+  \ directory for the OrthoGroup files\n\t\t-E            enables regex matching otherwise\
+  \ the string is escaped (e.g. | -> \\|)\n\t\t-exact        search patters are extended\
+  \ with a \\b, that indicates end of word.\n\t\t-cpus=INT     the number of parallel\
+  \ open files for reading, this is strictly limited by the I/O bandwith (default:1).\n\
+  \t\t              for fast SSD drives, you can increase this to gain speed.\n\t\t\
+  -minprot=X    if you give a proteinortho.tsv file, this filters out groups with\
+  \ less than X proteins (default:0).\n\t\t-source, -s   adds the filename (FASTA1,...)\
+  \ to the found gene-name\n\t\t-F=s          char delimiter for multiple identifier\
+  \ if QUERY is a string input (default: ',')\n\t\t-isoform      if you use proteinortho\
+  \ with --isoform option, then you need to set this option here too. \n\nDESCRIPTION\n\
+  \ \n\tThis script finds and extract all given identifier of a list of fasta files.\
+  \ \n\tThe identifier can be provided as a simple string 'BDNF1', regex string 'BDNF*'\
+  \ \n\tor in form of a proteinortho output file (myproject.proteinortho.tsv).\n \
+  \      \n\tExample:\n \n \t# 1. most simple call:\n\n\tperl proteinortho_grab_proteins.pl\
+  \ 'BDNF1' *.faa\n\n\t\tSTDOUT:\n\t\t\t>BDNF1 Brain derived neurotrophic factor OS=human(...)\n\
+  \t\t\tMNNGGPTEMYYQQHMQSAGQPQQPQTVTSGPMSHYPPAQPPLLQPGQPYSHGAPSPYQYG\n\t\t\t>BDNF15\
+  \ Brain derived neurotrophic factor OS=human(...)\n\t\t\tMAFPLHFSREPAHAIPSMKAPFSRHEVPFGRSPSMAIPNSETHDDVPPPLPPPRHPPCTN\n\
+  \n\t    The second hit BDNF15 is reported since it also contains 'BDNF1' as a substring.\
+  \ \n\t    To prevent such a behaviour use proteinortho_grab_proteins.pl -E 'BDNF1\\\
+  b'. \n\t    The \\b marks the end of a word and -E enables regex expressions.\n\n\
+  \t    Or simply add -exact: perl proteinortho_grab_proteins.pl -exact 'BDNF1' *.faa\n\
+  \n \t# 2. multiple ids:\n\n\tperl proteinortho_grab_proteins.pl 'BDNF1,BDNF2,BDNF3'\
+  \ *.faa\n\n \t# 3. more complex regex search:\n\n\tperl proteinortho_grab_proteins.pl\
+  \ -E 'B?DNF[0-3]3+' *.faa\n\n\t\tThis finds: BDNF13, BDNF23, DNF13, DNF033, ...\
+  \ \n\n \t# 4. proteinortho tsv file and write output to files:\n\n\tproteinortho_grab_proteins.pl\
+  \ -tofiles myproject.proteinortho.tsv test/*.faa\n\n\t\tThis will produce the files:\
+  \ OrthoGroup0.fasta, OrthoGroup1.fasta, OrthoGroup2.fasta, ...\n\t\tEach fasta file\
+  \ contains all genes of one orthology group (one line in myproject.proteinortho.tsv)\n\
+  \ \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/proteinortho:6.0.29--hb0e25da_1

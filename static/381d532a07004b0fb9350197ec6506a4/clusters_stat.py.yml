@@ -1,0 +1,121 @@
+!Command
+command:
+- clusters_stat.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --distance-method
+  description: "Used distance method for classify (see http://docs.sci\npy.org/doc/scipy-0.14.0/reference/generated/generated/\n\
+    scipy.spatial.distance.pdist.html#scipy.spatial.distan\nce.pdist). [Default: braycurtis]"
+  args: !ChoiceFlagArg
+    choices: !!set
+      canberra:
+      matching:
+      cityblock:
+      sokalsneath:
+      yule:
+      sokalmichener:
+      seuclidean:
+      sqeuclidean:
+      braycurtis:
+      correlation:
+      chebyshev:
+      hamming:
+      dice:
+      rogerstanimoto:
+      kulsinski:
+      mahalanobis:
+      jaccard:
+      euclidean:
+      russellrao:
+      wminkowski:
+      cosine:
+- !Flag
+  optional: true
+  synonyms:
+  - --linkage-method
+  description: "Used linkage method for classify (see http://docs.scip\ny.org/doc/scipy-0.14.0/reference/generated/scipy.clust\n\
+    er.hierarchy.linkage.html). [Default: average]"
+  args: !ChoiceFlagArg
+    choices: !!set
+      single:
+      average:
+      ward:
+      complete:
+      median:
+      weighted:
+      centroid:
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: Keep temporary files to debug program.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input-biom
+  description: The BIOM file to process.
+  args: !SimpleFlagArg
+    name: INPUT_BIOM
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-file
+  description: "The HTML file containing the graphs. [Default:\nclusters_stat.html]"
+  args: !SimpleFlagArg
+    name: OUTPUT_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --log-file
+  description: "This output file will contain several informations on\nexecuted commands.\n"
+  args: !SimpleFlagArg
+    name: LOG_FILE
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: clusters_stat.py [-h]\n                        [--distance-method\
+  \ {euclidean,cityblock,seuclidean,sqeuclidean,cosine,correlation,hamming,jaccard,chebyshev,canberra,braycurtis,mahalanobis,yule,matching,dice,kulsinski,rogerstanimoto,russellrao,sokalmichener,sokalsneath,wminkowski}]\n\
+  \                        [--linkage-method {single,complete,average,weighted,centroid,median,ward}]\n\
+  \                        [--debug] [-v] -i INPUT_BIOM [-o OUTPUT_FILE]\n       \
+  \                 [-l LOG_FILE]\n\nProcess several metrics on abundance from BIOM\
+  \ file.\n\noptional arguments:\n  -h, --help            show this help message and\
+  \ exit\n  --distance-method {euclidean,cityblock,seuclidean,sqeuclidean,cosine,correlation,hamming,jaccard,chebyshev,canberra,braycurtis,mahalanobis,yule,matching,dice,kulsinski,rogerstanimoto,russellrao,sokalmichener,sokalsneath,wminkowski}\n\
+  \                        Used distance method for classify (see http://docs.sci\n\
+  \                        py.org/doc/scipy-0.14.0/reference/generated/generated/\n\
+  \                        scipy.spatial.distance.pdist.html#scipy.spatial.distan\n\
+  \                        ce.pdist). [Default: braycurtis]\n  --linkage-method {single,complete,average,weighted,centroid,median,ward}\n\
+  \                        Used linkage method for classify (see http://docs.scip\n\
+  \                        y.org/doc/scipy-0.14.0/reference/generated/scipy.clust\n\
+  \                        er.hierarchy.linkage.html). [Default: average]\n  --debug\
+  \               Keep temporary files to debug program.\n  -v, --version        \
+  \ show program's version number and exit\n\nInputs:\n  -i INPUT_BIOM, --input-biom\
+  \ INPUT_BIOM\n                        The BIOM file to process.\n\nOutputs:\n  -o\
+  \ OUTPUT_FILE, --output-file OUTPUT_FILE\n                        The HTML file\
+  \ containing the graphs. [Default:\n                        clusters_stat.html]\n\
+  \  -l LOG_FILE, --log-file LOG_FILE\n                        This output file will\
+  \ contain several informations on\n                        executed commands.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/frogs:3.2.2--py37_0

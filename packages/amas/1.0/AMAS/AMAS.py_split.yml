@@ -1,0 +1,113 @@
+!Command
+command:
+- AMAS.py
+- split
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: check
+  description: -c CORES, --cores CORES
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --split-by
+  description: "File name for partitions to be used for alignment\nsplitting."
+  args: !SimpleFlagArg
+    name: SPLIT_BY
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --remove-empty
+  description: "Remove taxa with sequences composed of only\nundetermined characters?\
+    \ Default: Don't remove"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --out-format
+  description: 'File format for the output alignment. Default: fasta'
+  args: !ChoiceFlagArg
+    choices: !!set
+      nexus-int:
+      fasta:
+      phylip-int:
+      nexus:
+      phylip:
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --check-align
+  description: 'Check if input sequences are aligned. Default: no'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --in-files
+  description: "Alignment files to be taken as input. You can specify\nmultiple files\
+    \ using wildcards (e.g. --in-files\n*fasta)"
+  args: !RepeatFlagArg
+    name: IN_FILES
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --in-format
+  description: The format of input alignment
+  args: !ChoiceFlagArg
+    choices: !!set
+      nexus-int:
+      fasta:
+      phylip-int:
+      nexus:
+      phylip:
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --data-type
+  description: "Type of data\n"
+  args: !ChoiceFlagArg
+    choices: !!set
+      aa:
+      dna:
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: AMAS.py [-h] -l SPLIT_BY [-j]\n               [-u {fasta,phylip,nexus,phylip-int,nexus-int}]\
+  \ [-e] [-c CORES]\n               -i IN_FILES [IN_FILES ...] -f\n              \
+  \ {fasta,phylip,nexus,phylip-int,nexus-int} -d {aa,dna}\n\nSplit alignment according\
+  \ to a partitions file\n\noptional arguments:\n  -h, --help            show this\
+  \ help message and exit\n  -l SPLIT_BY, --split-by SPLIT_BY\n                  \
+  \      File name for partitions to be used for alignment\n                     \
+  \   splitting.\n  -j, --remove-empty    Remove taxa with sequences composed of only\n\
+  \                        undetermined characters? Default: Don't remove\n  -u {fasta,phylip,nexus,phylip-int,nexus-int},\
+  \ --out-format {fasta,phylip,nexus,phylip-int,nexus-int}\n                     \
+  \   File format for the output alignment. Default: fasta\n  -e, --check-align  \
+  \   Check if input sequences are aligned. Default: no\n                        check\n\
+  \  -c CORES, --cores CORES\n                        Number of cores used. Default:\
+  \ 1\n\nrequired arguments:\n  -i IN_FILES [IN_FILES ...], --in-files IN_FILES [IN_FILES\
+  \ ...]\n                        Alignment files to be taken as input. You can specify\n\
+  \                        multiple files using wildcards (e.g. --in-files\n     \
+  \                   *fasta)\n  -f {fasta,phylip,nexus,phylip-int,nexus-int}, --in-format\
+  \ {fasta,phylip,nexus,phylip-int,nexus-int}\n                        The format\
+  \ of input alignment\n  -d {aa,dna}, --data-type {aa,dna}\n                    \
+  \    Type of data\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/amas:1.0--pyh864c0ab_0

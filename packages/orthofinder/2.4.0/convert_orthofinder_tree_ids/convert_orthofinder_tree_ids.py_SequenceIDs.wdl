@@ -1,0 +1,29 @@
+version 1.0
+
+task ConvertOrthofinderTreeIdspySequenceIDs {
+  input {
+    String convert_ortho_finder_tree_ids_do_tpy
+    String tree_input
+    String sequence_ids
+    String? species_ids
+  }
+  command <<<
+    convert_orthofinder_tree_ids_py SequenceIDs \
+      ~{convert_ortho_finder_tree_ids_do_tpy} \
+      ~{tree_input} \
+      ~{sequence_ids} \
+      ~{species_ids}
+  >>>
+  runtime {
+    docker: "None"
+  }
+  parameter_meta {
+    convert_ortho_finder_tree_ids_do_tpy: ""
+    tree_input: ""
+    sequence_ids: ""
+    species_ids: ""
+  }
+  output {
+    File out_stdout = stdout()
+  }
+}

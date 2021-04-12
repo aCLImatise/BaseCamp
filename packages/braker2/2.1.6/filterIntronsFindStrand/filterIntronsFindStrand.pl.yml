@@ -1,0 +1,68 @@
+!Command
+command:
+- filterIntronsFindStrand.pl
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: genome.fa
+  description: DNA file in fasta format
+- !Positional
+  optional: false
+  position: 1
+  name: introns.gff
+  description: corresponding introns file in gff format
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --allowed
+  description: ',gcag,atac        Allowed acceptor and donor splice site types'
+  args: !SimpleFlagArg
+    name: gtag
+- !Flag
+  optional: true
+  synonyms:
+  - --score
+  description: Set score to 'mult' entry or '1', if the last column does not contain
+    a 'mult' entry
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --genome
+  description: see above
+  args: !SimpleFlagArg
+    name: genome.fa
+- !Flag
+  optional: true
+  synonyms:
+  - --introns
+  description: see above
+  args: !SimpleFlagArg
+    name: introns.gff
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Print this help message
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "\nfilterIntronsFindStrand.pl     find corresponding strand for introns\
+  \ from two input files genome.fa and introns.gff\n\nSYNOPSIS\n\nfilterIntronsFindStrand.pl\
+  \ genome.fa introns.gff [OPTIONS] > introns.s.f.gff\n\n  genome.fa           DNA\
+  \ file in fasta format\n  introns.gff         corresponding introns file in gff\
+  \ format\n\n\nOPTIONS\n\n    --help                          Print this help message\n\
+  \    --allowed=gtag,gcag,atac        Allowed acceptor and donor splice site types\n\
+  \    --score                         Set score to 'mult' entry or '1', if the last\
+  \ column does not contain a 'mult' entry\n    --genome=genome.fa              see\
+  \ above\n    --introns=introns.gff           see above\n\n\n\n\nDESCRIPTION\n\n\
+  \  Example:\n\n    filterIntronsFindStrand.pl genome.fa introns.gff [OPTIONS] >\
+  \ introns.s.f.gff\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/braker2:2.1.6--hdfd78af_1

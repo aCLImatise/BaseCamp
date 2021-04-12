@@ -1,0 +1,145 @@
+!Command
+command:
+- Binsanity
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: Specify a Coverage File
+  args: !SimpleFlagArg
+    name: INPUTCOVFILE
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: "Specify directory\ncontaining your contigs"
+  args: !SimpleFlagArg
+    name: INPUTCONTIGFILES
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: "Specify a preference (default is -3)\nNote: decreasing the preference\
+    \ leads to more lumping,\nincreasing will lead to more splitting. If your range\n\
+    of coverages are low you will want to decrease the preference,\nif you have 10\
+    \ or less replicates increasing the preference could\nbenefit you."
+  args: !SimpleFlagArg
+    name: PREFERENCE
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: Specify a max number of iterations [default is 2000]
+  args: !SimpleFlagArg
+    name: MAXITER
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: "Specify the convergence iteration number (default is 200)\ne.g Number\
+    \ of iterations with no change in the number\nof estimated clusters that stops\
+    \ the convergence."
+  args: !SimpleFlagArg
+    name: CONVITER
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: Specify a damping factor between 0.5 and 1, default is 0.9
+  args: !SimpleFlagArg
+    name: DAMP
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: Specify the fasta file containing contigs you want to cluster
+  args: !SimpleFlagArg
+    name: FASTAFILE
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  description: Specify the contig size cut-off [Default 1000 bp]
+  args: !SimpleFlagArg
+    name: CONTIGSIZE
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: "Give a name to the directory BinSanity results will be output in\n\
+    [Default is 'BINSANITY-RESULTS']"
+  args: !SimpleFlagArg
+    name: OUTPUTDIR
+- !Flag
+  optional: true
+  synonyms:
+  - --outPrefix
+  description: Sepcify what prefix you want appended to final Bins {optional}
+  args: !SimpleFlagArg
+    name: OUTNAME
+- !Flag
+  optional: true
+  synonyms:
+  - --log
+  description: specify a name for the log file [Default is 'binsanity-logfile.txt']
+  args: !SimpleFlagArg
+    name: LOGFILE
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: Binsanity -f [/path/to/fasta] -l [fastafile] -c [coverage file]\n\
+  \n    *****************************************************************************\n\
+  \    *********************************BinSanity***********************************\n\
+  \    **  Binsanity uses Affinity Propagation to split metagenomic contigs into \
+  \ **\n    **  'bins' using contig coverage values. It takes as input a coverage\
+  \ file **\n    **  and files containing the contigs to be binned, then outputs clusters\
+  \   **\n    **  of contigs in putative bins.                                   \
+  \        **\n    **                                                            \
+  \             **\n    **  NOTE: BinSanity becomes highly memory intensive at 100,000\
+  \ contigs or  **\n    **  above. If you have greater than this number of contigs\
+  \ we recommend    **\n    **  trying the beta-version for our script binsanity-lc.\
+  \                   **\n    *****************************************************************************\n\
+  \    \n\noptional arguments:\n  -h, --help           show this help message and\
+  \ exit\n  -c INPUTCOVFILE      Specify a Coverage File\n                       \
+  \    \n  -f INPUTCONTIGFILES  Specify directory\n                           containing\
+  \ your contigs\n                           \n  -p PREFERENCE        \n         \
+  \                  Specify a preference (default is -3)\n                      \
+  \ \n                           Note: decreasing the preference leads to more lumping,\n\
+  \                           increasing will lead to more splitting. If your range\n\
+  \                           of coverages are low you will want to decrease the preference,\n\
+  \                           if you have 10 or less replicates increasing the preference\
+  \ could\n                           benefit you.\n  -m MAXITER           \n    \
+  \                       Specify a max number of iterations [default is 2000]\n \
+  \ -v CONVITER          \n                           Specify the convergence iteration\
+  \ number (default is 200)\n                           e.g Number of iterations with\
+  \ no change in the number\n                           of estimated clusters that\
+  \ stops the convergence.\n  -d DAMP              \n                           Specify\
+  \ a damping factor between 0.5 and 1, default is 0.9\n  -l FASTAFILE         \n\
+  \                           Specify the fasta file containing contigs you want to\
+  \ cluster\n  -x CONTIGSIZE        \n                           Specify the contig\
+  \ size cut-off [Default 1000 bp]\n  -o OUTPUTDIR         \n                    \
+  \       Give a name to the directory BinSanity results will be output in\n     \
+  \                      [Default is 'BINSANITY-RESULTS']\n  --outPrefix OUTNAME \
+  \ \n                           Sepcify what prefix you want appended to final Bins\
+  \ {optional}\n  --log LOGFILE        \n                           specify a name\
+  \ for the log file [Default is 'binsanity-logfile.txt']\n  --version           \
+  \ show program's version number and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/binsanity:0.5.3--pyh3252c3a_0

@@ -1,0 +1,138 @@
+!Command
+command:
+- ena-upload-cli
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: ena-upoad-cli
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --action
+  description: "add: add an object to the archive\nmodify: modify an object in the\
+    \ archive\ncancel: cancel a private object and its dependent objects\nrelease:\
+    \ release a private object immediately to public"
+  args: !ChoiceFlagArg
+    choices: !!set
+      cancel:
+      modify:
+      add:
+      release:
+- !Flag
+  optional: true
+  synonyms:
+  - --study
+  description: table of STUDY object
+  args: !SimpleFlagArg
+    name: STUDY
+- !Flag
+  optional: true
+  synonyms:
+  - --sample
+  description: table of SAMPLE object
+  args: !SimpleFlagArg
+    name: SAMPLE
+- !Flag
+  optional: true
+  synonyms:
+  - --experiment
+  description: table of EXPERIMENT object
+  args: !SimpleFlagArg
+    name: EXPERIMENT
+- !Flag
+  optional: true
+  synonyms:
+  - --run
+  description: table of RUN object
+  args: !SimpleFlagArg
+    name: RUN
+- !Flag
+  optional: true
+  synonyms:
+  - --data
+  description: '[FILE ...]     Data for submission'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --center
+  description: specific to your Webin account
+  args: !SimpleFlagArg
+    name: CENTER_NAME
+- !Flag
+  optional: true
+  synonyms:
+  - --tool
+  description: "Specify the name of the tool this submission is done\nwith. Default:\
+    \ ena-upload-cli"
+  args: !SimpleFlagArg
+    name: TOOL_NAME
+- !Flag
+  optional: true
+  synonyms:
+  - --tool_version
+  description: "Specify the version of the tool this submission is\ndone with."
+  args: !SimpleFlagArg
+    name: TOOL_VERSION
+- !Flag
+  optional: true
+  synonyms:
+  - --secret
+  description: ".secret.yml file containing the password and Webin ID\nof your ENA\
+    \ account"
+  args: !SimpleFlagArg
+    name: SECRET
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --dev
+  description: Flag to use the dev/sandbox endpoint of ENA.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --vir
+  description: Flag to use the viral sample template.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: ena-upoad-cli [-h] --action {add,modify,cancel,release} [--study\
+  \ STUDY]\n                     [--sample SAMPLE] [--experiment EXPERIMENT] [--run\
+  \ RUN]\n                     [--data [FILE ...]] --center CENTER_NAME\n        \
+  \             [--tool TOOL_NAME] [--tool_version TOOL_VERSION] --secret\n      \
+  \               SECRET [-d] [--vir]\n\nThe program makes submission of data and\
+  \ respective metadata to European\nNucleotide Archive (ENA). The metadate should\
+  \ be provided in separate tables\ncorresponding the ENA objects -- STUDY, SAMPLE,\
+  \ EXPERIMENT and RUN.\n\noptional arguments:\n  -h, --help            show this\
+  \ help message and exit\n  --action {add,modify,cancel,release}\n              \
+  \           add: add an object to the archive\n                         modify:\
+  \ modify an object in the archive\n                         cancel: cancel a private\
+  \ object and its dependent objects\n                         release: release a\
+  \ private object immediately to public\n  --study STUDY         table of STUDY object\n\
+  \  --sample SAMPLE       table of SAMPLE object\n  --experiment EXPERIMENT\n   \
+  \                     table of EXPERIMENT object\n  --run RUN             table\
+  \ of RUN object\n  --data [FILE ...]     Data for submission\n  --center CENTER_NAME\
+  \  specific to your Webin account\n  --tool TOOL_NAME      Specify the name of the\
+  \ tool this submission is done\n                        with. Default: ena-upload-cli\n\
+  \  --tool_version TOOL_VERSION\n                        Specify the version of the\
+  \ tool this submission is\n                        done with.\n  --secret SECRET\
+  \       .secret.yml file containing the password and Webin ID\n                \
+  \        of your ENA account\n  -d, --dev             Flag to use the dev/sandbox\
+  \ endpoint of ENA.\n  --vir                 Flag to use the viral sample template.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/ena-upload-cli:0.2.7--pyh3252c3a_0

@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, Float, String, Boolean
+
+Doubletd_V0_1_0 = CommandToolBuilder(tool="doubletd", base_command=["doubletd"], inputs=[ToolInput(tag="in_input_total", input_type=File(optional=True), prefix="--inputTotal", doc=InputDocumentation(doc="csv file with a table of total read counts for each\nposition in each cell")), ToolInput(tag="in_input_alternate", input_type=File(optional=True), prefix="--inputAlternate", doc=InputDocumentation(doc="csv file with a table of alternate read counts for\neach position in each cell")), ToolInput(tag="in_delta", input_type=Float(optional=True), prefix="--delta", doc=InputDocumentation(doc="expected doublet rate [0.1]")), ToolInput(tag="in_beta", input_type=Float(optional=True), prefix="--beta", doc=InputDocumentation(doc="allelic dropout (ADO) rate [0.05]")), ToolInput(tag="in_mu_hetero", input_type=String(optional=True), prefix="--mu_hetero", doc=InputDocumentation(doc="heterozygous mutation rate [None]")), ToolInput(tag="in_mu_hom", input_type=String(optional=True), prefix="--mu_hom", doc=InputDocumentation(doc="homozygous mutation rate [None]")), ToolInput(tag="in_alpha_fp", input_type=String(optional=True), prefix="--alpha_fp", doc=InputDocumentation(doc="copy false positive error rate [None]")), ToolInput(tag="in_alpha_fn", input_type=String(optional=True), prefix="--alpha_fn", doc=InputDocumentation(doc="copy false negative error rate [None]")), ToolInput(tag="in_output_file", input_type=File(optional=True), prefix="--outputfile", doc=InputDocumentation(doc="output file name")), ToolInput(tag="in_no_verbose", input_type=Boolean(optional=True), prefix="--noverbose", doc=InputDocumentation(doc="do not output statements from internal solvers\n[default is false]")), ToolInput(tag="in_binomial", input_type=Boolean(optional=True), prefix="--binomial", doc=InputDocumentation(doc="use binomial distribution for read count model\n[default is false]")), ToolInput(tag="in_prec", input_type=String(optional=True), prefix="--prec", doc=InputDocumentation(doc="precision for beta-binomial distribution [None]")), ToolInput(tag="in_missing", input_type=Boolean(optional=True), prefix="--missing", doc=InputDocumentation(doc="use missing data in the model? [No]"))], outputs=[ToolOutput(tag="out_output_file", output_type=File(optional=True), selector=InputSelector(input_to_select="in_output_file", type_hint=File()), doc=OutputDocumentation(doc="output file name"))], container="quay.io/biocontainers/doubletd:0.1.0--py_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Doubletd_V0_1_0().translate("wdl")
+

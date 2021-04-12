@@ -1,0 +1,143 @@
+!Command
+command:
+- gappa
+- edit
+- multiplicity
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --jplace-path
+  description: ":PATH(existing)=[] ... REQUIRED\nList of jplace files or directories\
+    \ to process. For directories, only files with the extension `.jplace[.gz]` are\
+    \ processed."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --multiplicity-file
+  description: ":FILE Excludes: --fasta-path --write-multiplicity-file\nFile containing\
+    \ a tab-separated list of [sample name,] query name, and multiplicity."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --fasta-path
+  description: ":PATH(existing)=[] ... Excludes: --multiplicity-file --write-multiplicity-file\n\
+    List of fasta files or directories to process. For directories, only files with\
+    \ the extension `.(fasta|fas|fsa|fna|ffn|faa|frn)[.gz]` are processed."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --keep-full-label
+  description: ": --fasta-path\nIf fasta files are used, keep their whole label as\
+    \ the name for jplace pqueries, instead of removing the abundance annotation."
+  args: !SimpleFlagArg
+    name: Needs
+- !Flag
+  optional: true
+  synonyms:
+  - --write-multiplicity-file
+  description: ": --multiplicity-file --fasta-path\nDo not change the existing multiplicities,\
+    \ but instead produce a file that lists them."
+  args: !SimpleFlagArg
+    name: Excludes
+- !Flag
+  optional: true
+  synonyms:
+  - --out-dir
+  description: =.            Directory to write files to
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --file-prefix
+  description: File prefix for output files
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --file-suffix
+  description: File suffix for output files
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --compress
+  description: If set, compress the output files using gzip. Output file extensions
+    are automatically extended by `.gz`.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --allow-file-overwriting
+  description: Allow to overwrite existing output files instead of aborting the command.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: Produce more verbose output.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  description: =1            Number of threads to use for calculations.
+  args: !SimpleFlagArg
+    name: UINT
+- !Flag
+  optional: true
+  synonyms:
+  - --log-file
+  description: Write all output to a log file, in addition to standard output to the
+    terminal.
+  args: !SimpleFlagArg
+    name: TEXT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Print this help message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Edit the multiplicities of queries in jplace files.\nUsage: gappa edit\
+  \ multiplicity [OPTIONS]\n\nInput:\n  --jplace-path TEXT:PATH(existing)=[] ... REQUIRED\n\
+  \                              List of jplace files or directories to process. For\
+  \ directories, only files with the extension `.jplace[.gz]` are processed.\n  --multiplicity-file\
+  \ TEXT:FILE Excludes: --fasta-path --write-multiplicity-file\n                 \
+  \             File containing a tab-separated list of [sample name,] query name,\
+  \ and multiplicity.\n  --fasta-path TEXT:PATH(existing)=[] ... Excludes: --multiplicity-file\
+  \ --write-multiplicity-file\n                              List of fasta files or\
+  \ directories to process. For directories, only files with the extension `.(fasta|fas|fsa|fna|ffn|faa|frn)[.gz]`\
+  \ are processed.\n  --keep-full-label Needs: --fasta-path\n                    \
+  \          If fasta files are used, keep their whole label as the name for jplace\
+  \ pqueries, instead of removing the abundance annotation.\n\n\nOutput:\n  --write-multiplicity-file\
+  \ Excludes: --multiplicity-file --fasta-path\n                              Do not\
+  \ change the existing multiplicities, but instead produce a file that lists them.\n\
+  \  --out-dir TEXT=.            Directory to write files to\n  --file-prefix TEXT\
+  \          File prefix for output files\n  --file-suffix TEXT          File suffix\
+  \ for output files\n  --compress                  If set, compress the output files\
+  \ using gzip. Output file extensions are automatically extended by `.gz`.\n\n\n\
+  Global Options:\n  --allow-file-overwriting    Allow to overwrite existing output\
+  \ files instead of aborting the command.\n  --verbose                   Produce\
+  \ more verbose output.\n  --threads UINT=1            Number of threads to use for\
+  \ calculations.\n  --log-file TEXT             Write all output to a log file, in\
+  \ addition to standard output to the terminal.\n  --help                      Print\
+  \ this help message and exit.\n\ngappa - a toolkit for analyzing and visualizing\
+  \ phylogenetic (placement) data\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/gappa:0.7.1--he513fc3_0

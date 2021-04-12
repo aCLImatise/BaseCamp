@@ -1,0 +1,310 @@
+&id001 !Command
+command:
+- trimmer.py
+positional: []
+named:
+- !Flag
+  description: Input read format.
+  synonyms:
+  - -f
+  - --format
+  args: !ChoiceFlagArg
+    choices: !!set
+      ? fastq
+      ? fasta
+  optional: true
+- !Flag
+  description: "Output read format. Default: whatever the input format\nis."
+  synonyms:
+  - -F
+  - --out-format
+  args: !ChoiceFlagArg
+    choices: !!set
+      ? fastq
+      ? fasta
+  optional: true
+- !Flag
+  description: 'The bases to filter on. Case-insensitive. Default: N.'
+  synonyms:
+  - -b
+  - --filt-bases
+  args: !SimpleFlagArg
+    name: FILT_BASES
+  optional: true
+- !Flag
+  description: "The threshold. The read will be trimmed once the\nproportion of filter\
+    \ bases in the window exceed this\nfraction (not a percentage). Default: 0.5."
+  synonyms:
+  - -t
+  - --thres
+  args: !SimpleFlagArg
+    name: THRES
+  optional: true
+- !Flag
+  description: 'Window size for trimming. Default: 1.'
+  synonyms:
+  - -w
+  - --window
+  args: !SimpleFlagArg
+    name: WIN_LEN
+  optional: true
+- !Flag
+  description: "Invert the filter bases: filter on bases NOT present\nin the --filt-bases."
+  synonyms:
+  - -i
+  - --invert
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Set a minimum read length. Reads which are trimmed\nbelow this length\
+    \ will be filtered out (omitted\nentirely from the output). Read pairs will be\n\
+    preserved: both reads in a pair must exceed this\nlength to be kept. Set to 0\
+    \ to only omit empty reads."
+  synonyms:
+  - -m
+  - --min-length
+  args: !SimpleFlagArg
+    name: MIN_LENGTH
+  optional: true
+- !Flag
+  description: Fail with this error message (useful for Galaxy tool).
+  synonyms:
+  - --error
+  args: !SimpleFlagArg
+    name: ERROR
+  optional: true
+- !Flag
+  description: Filter on any non-ACGT base (shortcut for "--invert
+  synonyms:
+  - -A
+  - --acgt
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Filter on any non-IUPAC base (shortcut for "--invert
+  synonyms:
+  - -I
+  - --iupac
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Don't print trimming stats on completion.
+  synonyms:
+  - -q
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -T
+  - --tsv
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands:
+- !Command
+  command:
+  - trimmer.py
+  - reads.filt_2.fq
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: trimmer.py
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: input_1.fq
+    optional: true
+  - !Positional
+    description: ''
+    position: 2
+    name: input_2.fq
+    optional: true
+  - !Positional
+    description: ''
+    position: 3
+    name: output_1.fq
+    optional: true
+  - !Positional
+    description: ''
+    position: 4
+    name: output_2.fq
+    optional: true
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "usage: trimmer.py [options] [input_1.fq [input_2.fq output_1.fq output_2.fq]]\n\
+    trimmer.py: error: argument reads_1.fq: can't open 'reads.filt_2.fq': [Errno 2]\
+    \ No such file or directory: 'reads.filt_2.fq'\n"
+  generated_using: &id002
+  - --help
+- !Command
+  command:
+  - trimmer.py
+  - reads.filt_1.fq
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: trimmer.py
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: input_1.fq
+    optional: true
+  - !Positional
+    description: ''
+    position: 2
+    name: input_2.fq
+    optional: true
+  - !Positional
+    description: ''
+    position: 3
+    name: output_1.fq
+    optional: true
+  - !Positional
+    description: ''
+    position: 4
+    name: output_2.fq
+    optional: true
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "usage: trimmer.py [options] [input_1.fq [input_2.fq output_1.fq output_2.fq]]\n\
+    trimmer.py: error: argument reads_1.fq: can't open 'reads.filt_1.fq': [Errno 2]\
+    \ No such file or directory: 'reads.filt_1.fq'\n"
+  generated_using: *id002
+- !Command
+  command:
+  - trimmer.py
+  - reads_1.fq
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: trimmer.py
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: input_1.fq
+    optional: true
+  - !Positional
+    description: ''
+    position: 2
+    name: input_2.fq
+    optional: true
+  - !Positional
+    description: ''
+    position: 3
+    name: output_1.fq
+    optional: true
+  - !Positional
+    description: ''
+    position: 4
+    name: output_2.fq
+    optional: true
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "usage: trimmer.py [options] [input_1.fq [input_2.fq output_1.fq output_2.fq]]\n\
+    trimmer.py: error: argument reads_1.fq: can't open 'reads_1.fq': [Errno 2] No\
+    \ such file or directory: 'reads_1.fq'\n"
+  generated_using: *id002
+- !Command
+  command:
+  - trimmer.py
+  - reads_2.fq
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: trimmer.py
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: input_1.fq
+    optional: true
+  - !Positional
+    description: ''
+    position: 2
+    name: input_2.fq
+    optional: true
+  - !Positional
+    description: ''
+    position: 3
+    name: output_1.fq
+    optional: true
+  - !Positional
+    description: ''
+    position: 4
+    name: output_2.fq
+    optional: true
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "usage: trimmer.py [options] [input_1.fq [input_2.fq output_1.fq output_2.fq]]\n\
+    trimmer.py: error: argument reads_1.fq: can't open 'reads_2.fq': [Errno 2] No\
+    \ such file or directory: 'reads_2.fq'\n"
+  generated_using: *id002
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: trimmer.py [options] [input_1.fq [input_2.fq output_1.fq output_2.fq]]\n\
+  \nTrim the 5' ends of reads by sequence content, e.g. by GC content or presence\n\
+  of N's.\n\npositional arguments:\n  reads_1.fq            Input reads (mate 1).\
+  \ Omit to read from stdin.\n  reads_2.fq            Input reads (mate 2). If given,\
+  \ it will preserve pairs\n                        (if one read is filtered out entirely,\
+  \ the other will\n                        also be lost).\n  reads.filt_1.fq    \
+  \   Output file for mate 1. WARNING: Will overwrite.\n  reads.filt_2.fq       Output\
+  \ file for mate 2. WARNING: Will overwrite.\n\noptional arguments:\n  -h, --help\
+  \            show this help message and exit\n  -f {fasta,fastq}, --format {fasta,fastq}\n\
+  \                        Input read format.\n  -F {fasta,fastq}, --out-format {fasta,fastq}\n\
+  \                        Output read format. Default: whatever the input format\n\
+  \                        is.\n  -b FILT_BASES, --filt-bases FILT_BASES\n       \
+  \                 The bases to filter on. Case-insensitive. Default: N.\n  -t THRES,\
+  \ --thres THRES\n                        The threshold. The read will be trimmed\
+  \ once the\n                        proportion of filter bases in the window exceed\
+  \ this\n                        fraction (not a percentage). Default: 0.5.\n  -w\
+  \ WIN_LEN, --window WIN_LEN\n                        Window size for trimming. Default:\
+  \ 1.\n  -i, --invert          Invert the filter bases: filter on bases NOT present\n\
+  \                        in the --filt-bases.\n  -m MIN_LENGTH, --min-length MIN_LENGTH\n\
+  \                        Set a minimum read length. Reads which are trimmed\n  \
+  \                      below this length will be filtered out (omitted\n       \
+  \                 entirely from the output). Read pairs will be\n              \
+  \          preserved: both reads in a pair must exceed this\n                  \
+  \      length to be kept. Set to 0 to only omit empty reads.\n  --error ERROR  \
+  \       Fail with this error message (useful for Galaxy tool).\n  -A, --acgt   \
+  \         Filter on any non-ACGT base (shortcut for \"--invert\n               \
+  \         --filt-bases ACGT\").\n  -I, --iupac           Filter on any non-IUPAC\
+  \ base (shortcut for \"--invert\n                        --filt-bases ACGTUWSMKRYBDHVN-\"\
+  ).\n  -q, --quiet           Don't print trimming stats on completion.\n  -T, --tsv\n"
+generated_using: *id002

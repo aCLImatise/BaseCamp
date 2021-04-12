@@ -1,0 +1,196 @@
+!Command
+command:
+- psytrans.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -A
+  - --species1
+  description: Reference sequences for the first species
+  args: !SimpleFlagArg
+    name: SPECIES1
+- !Flag
+  optional: true
+  synonyms:
+  - -B
+  - --species2
+  description: Reference sequences for the second species
+  args: !SimpleFlagArg
+    name: SPECIES2
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --blastResults
+  description: Blast results obtained
+  args: !SimpleFlagArg
+    name: BLASTRESULTS
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --blastType
+  description: Type of blast search to be performed
+  args: !ChoiceFlagArg
+    choices: !!set
+      tblastx:
+      blastn:
+      blastx:
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --nbThreads
+  description: Number of threads to run the BLAST search and SVM
+  args: !SimpleFlagArg
+    name: NBTHREADS
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --maxBestEvalue
+  description: Maximum e-value
+  args: !SimpleFlagArg
+    name: MAXBESTEVALUE
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --numberOfSeq
+  description: Maximum number of sequences for training and testing
+  args: !SimpleFlagArg
+    name: NUMBEROFSEQ
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --minSeqSize
+  description: Minimum sequence size for training and testing
+  args: !SimpleFlagArg
+    name: MINSEQSIZE
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --minWordSize
+  description: Minimum value of DNA word length
+  args: !SimpleFlagArg
+    name: MINWORDSIZE
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --maxWordSize
+  description: Maxmimum value of DNA word length
+  args: !SimpleFlagArg
+    name: MAXWORDSIZE
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --bothStrands
+  description: Compute kmers for the forward and reverse strands
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: Turn Verbose mode on?
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --tempDir
+  description: Location (prefix) of the temporary directory
+  args: !SimpleFlagArg
+    name: TEMPDIR
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --outDir
+  description: Name of optional output directory
+  args: !SimpleFlagArg
+    name: OUTDIR
+- !Flag
+  optional: true
+  synonyms:
+  - -X
+  - --clearTemp
+  description: Clear all temporary data upon completion
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  - --stopAfter
+  description: Optional exit upon completion of stage.
+  args: !ChoiceFlagArg
+    choices: !!set
+      kmers:
+      runBlast:
+      db:
+      parseBlast:
+      SVM:
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  - --restart
+  description: Continue process from last exit stage
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: psytrans.py [-h] [-A SPECIES1] [-B SPECIES2] [-b BLASTRESULTS]\n\
+  \                   [-T {blastx,blastn,tblastx}] [-p NBTHREADS]\n              \
+  \     [-e MAXBESTEVALUE] [-n NUMBEROFSEQ] [-s MINSEQSIZE]\n                   [-c\
+  \ MINWORDSIZE] [-k MAXWORDSIZE] [-r] [-v] [-t TEMPDIR]\n                   [-o OUTDIR]\
+  \ [-X] [-z {db,runBlast,parseBlast,kmers,SVM}]\n                   [-R] [-V]\n \
+  \                  queries\n\nPerform SVM Classification of Host and Symbiont (or\
+  \ Parasite) Sequences\n\npositional arguments:\n  queries               The input\
+  \ queries sequences\n\noptional arguments:\n  -h, --help            show this help\
+  \ message and exit\n  -A SPECIES1, --species1 SPECIES1\n                       \
+  \ Reference sequences for the first species\n  -B SPECIES2, --species2 SPECIES2\n\
+  \                        Reference sequences for the second species\n  -b BLASTRESULTS,\
+  \ --blastResults BLASTRESULTS\n                        Blast results obtained\n\
+  \  -T {blastx,blastn,tblastx}, --blastType {blastx,blastn,tblastx}\n           \
+  \             Type of blast search to be performed\n  -p NBTHREADS, --nbThreads\
+  \ NBTHREADS\n                        Number of threads to run the BLAST search and\
+  \ SVM\n  -e MAXBESTEVALUE, --maxBestEvalue MAXBESTEVALUE\n                     \
+  \   Maximum e-value\n  -n NUMBEROFSEQ, --numberOfSeq NUMBEROFSEQ\n             \
+  \           Maximum number of sequences for training and testing\n  -s MINSEQSIZE,\
+  \ --minSeqSize MINSEQSIZE\n                        Minimum sequence size for training\
+  \ and testing\n  -c MINWORDSIZE, --minWordSize MINWORDSIZE\n                   \
+  \     Minimum value of DNA word length\n  -k MAXWORDSIZE, --maxWordSize MAXWORDSIZE\n\
+  \                        Maxmimum value of DNA word length\n  -r, --bothStrands\
+  \     Compute kmers for the forward and reverse strands\n  -v, --verbose       \
+  \  Turn Verbose mode on?\n  -t TEMPDIR, --tempDir TEMPDIR\n                    \
+  \    Location (prefix) of the temporary directory\n  -o OUTDIR, --outDir OUTDIR\n\
+  \                        Name of optional output directory\n  -X, --clearTemp  \
+  \     Clear all temporary data upon completion\n  -z {db,runBlast,parseBlast,kmers,SVM},\
+  \ --stopAfter {db,runBlast,parseBlast,kmers,SVM}\n                        Optional\
+  \ exit upon completion of stage.\n  -R, --restart         Continue process from\
+  \ last exit stage\n  -V, --version         show program's version number and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/psytrans:2.0.0--0

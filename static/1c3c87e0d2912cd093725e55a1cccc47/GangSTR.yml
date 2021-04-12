@@ -1,0 +1,342 @@
+!Command
+command:
+- GangSTR
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --bam
+  description: <file.bam,[file2.bam]>    Comma separated list of input BAM files
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ref
+  description: <genome.fa>       FASTA file for the reference genome
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --regions
+  description: <regions.bed>     BED file containing TR coordinates
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --out
+  description: <outprefix>       Prefix to name output files
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --targeted
+  description: Targeted mode
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --chrom
+  description: Only genotype regions on this chromosome
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --bam-samps
+  description: <string>          Comma separated list of sample IDs for --bam
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --samp-sex
+  description: <string>          Comma separated list of sample sex for each sample
+    ID (--bam-samps must be provided)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --str-info
+  description: <string>          Tab file with additional per-STR info (see docs)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --period
+  description: <string>          Only genotype loci with periods (motif lengths) in
+    this comma-separated list.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --skip-qscore
+  description: Skip calculation of Q-score
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --readlength
+  description: '<int>             Read length. Default: -1'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --coverage
+  description: <float>           Average coverage. must be set for exome/targeted
+    data. Comma separated list to specify for each BAM
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --model-gc-coverage
+  description: Model coverage as a function of GC content. Requires genome-wide data
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --insertmean
+  description: <float>           Fragment length mean. Comma separated list to specify
+    for each BAM separately.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --insertsdev
+  description: <float>           Fragment length standard deviation. Comma separated
+    list to specify for each BAM separately.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --nonuniform
+  description: Indicate whether data has non-uniform coverage (i.e., exome)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min-sample-reads
+  description: Minimum number of reads per sample.
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --frrweight
+  description: '<float>           Weight for FRR reads. Default: 1'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --enclweight
+  description: '<float>           Weight for enclosing reads. Default: 1'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --spanweight
+  description: '<float>           Weight for spanning reads. Default: 1'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --flankweight
+  description: 'Weight for flanking reads. Default: 1'
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - --ploidy
+  description: '<int>             Indicate whether data is haploid (1) or diploid
+    (2). Default: -1'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --skipofftarget
+  description: Skip off target regions included in the BED file.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --read-prob-mode
+  description: Use only read probability (ignore class probability)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --numbstrap
+  description: '<int>             Number of bootstrap samples. Default: 100'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --grid-threshold
+  description: 'Use optimization rather than grid search to find MLE if more than
+    this many possible alleles. Default: 10000'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --rescue-count
+  description: 'Number of regions that GangSTR attempts to rescue mates from (excluding
+    off-target regions) Default: 0'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --max-proc-read
+  description: 'Maximum number of processed reads per sample before a region is skipped.
+    Default: 3000'
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --minscore
+  description: '<int>             Minimum alignment score (out of 100). Default: 75'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --minmatch
+  description: '<int>             Minimum number of matching basepairs on each end
+    of enclosing reads. Default: 5'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --stutterup
+  description: '<float>           Stutter insertion probability. Default: 0.05'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --stutterdown
+  description: 'Stutter deletion probability. Default: 0.05'
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - --stutterprob
+  description: 'Stutter step size parameter. Default: 0.9'
+  args: !SimpleFlagArg
+    name: float
+- !Flag
+  optional: true
+  synonyms:
+  - --output-bootstraps
+  description: Output file with bootstrap samples
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --output-readinfo
+  description: Output read class info (for debugging)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --include-ggl
+  description: Output GGL (special GL field) in VCF
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --seed
+  description: Random number generator initial seed
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: Print out useful progress messages
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --very
+  description: Print out more detailed progress messages for debugging
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --quiet
+  description: Don't print anything
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: display this help screen
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Print out the version of this software.
+  args: !EmptyFlagArg {}
+help_text: "\nUsage: GangSTR [OPTIONS] --bam <file1[,file2,...]> --ref <reference.fa>\
+  \ --regions <regions.bed> --out <outprefix> \n\n Required options:\n\t--bam    \
+  \     <file.bam,[file2.bam]>\tComma separated list of input BAM files\n\t--ref \
+  \        <genome.fa>     \tFASTA file for the reference genome\n\t--regions    \
+  \ <regions.bed>   \tBED file containing TR coordinates\n\t--out         <outprefix>\
+  \     \tPrefix to name output files\n\n Additional general options:\n\t--targeted\
+  \                    \tTargeted mode\n\t--chrom                       \tOnly genotype\
+  \ regions on this chromosome\n\t--bam-samps   <string>        \tComma separated\
+  \ list of sample IDs for --bam\n\t--samp-sex    <string>        \tComma separated\
+  \ list of sample sex for each sample ID (--bam-samps must be provided)\n\t--str-info\
+  \    <string>        \tTab file with additional per-STR info (see docs)\n\t--period\
+  \      <string>        \tOnly genotype loci with periods (motif lengths) in this\
+  \ comma-separated list.\n\t--skip-qscore                 \tSkip calculation of Q-score\n\
+  \n Options for different sequencing settings\n\t--readlength  <int>           \t\
+  Read length. Default: -1\n\t--coverage    <float>         \tAverage coverage. must\
+  \ be set for exome/targeted data. Comma separated list to specify for each BAM\n\
+  \t--model-gc-coverage           \tModel coverage as a function of GC content. Requires\
+  \ genome-wide data\n\t--insertmean  <float>         \tFragment length mean. Comma\
+  \ separated list to specify for each BAM separately.\n\t--insertsdev  <float>  \
+  \       \tFragment length standard deviation. Comma separated list to specify for\
+  \ each BAM separately. \n\t--nonuniform                  \tIndicate whether data\
+  \ has non-uniform coverage (i.e., exome)\n\t--min-sample-reads <int>      \tMinimum\
+  \ number of reads per sample.\n\n Advanced paramters for likelihood model:\n\t--frrweight\
+  \   <float>         \tWeight for FRR reads. Default: 1\n\t--enclweight  <float>\
+  \         \tWeight for enclosing reads. Default: 1\n\t--spanweight  <float>    \
+  \     \tWeight for spanning reads. Default: 1\n\t--flankweight <float>         \t\
+  Weight for flanking reads. Default: 1\n\t--ploidy      <int>           \tIndicate\
+  \ whether data is haploid (1) or diploid (2). Default: -1\n\t--skipofftarget   \
+  \            \tSkip off target regions included in the BED file.\n\t--read-prob-mode\
+  \              \tUse only read probability (ignore class probability)\n\t--numbstrap\
+  \   <int>           \tNumber of bootstrap samples. Default: 100\n\t--grid-threshold\
+  \ <int>        \tUse optimization rather than grid search to find MLE if more than\
+  \ this many possible alleles. Default: 10000\n\t--rescue-count <int>          \t\
+  Number of regions that GangSTR attempts to rescue mates from (excluding off-target\
+  \ regions) Default: 0\n\t--max-proc-read <int>         \tMaximum number of processed\
+  \ reads per sample before a region is skipped. Default: 3000\n\n Parameters for\
+  \ local realignment:\n\t--minscore    <int>           \tMinimum alignment score\
+  \ (out of 100). Default: 75\n\t--minmatch    <int>           \tMinimum number of\
+  \ matching basepairs on each end of enclosing reads. Default: 5\n\n Default stutter\
+  \ model parameters:\n\t--stutterup   <float>         \tStutter insertion probability.\
+  \ Default: 0.05\n\t--stutterdown <float>         \tStutter deletion probability.\
+  \ Default: 0.05\n\t--stutterprob <float>         \tStutter step size parameter.\
+  \ Default: 0.9\n\n Parameters for more detailed info about each locus:\n\t--output-bootstraps\
+  \           \tOutput file with bootstrap samples\n\t--output-readinfo          \
+  \   \tOutput read class info (for debugging)\n\t--include-ggl                 \t\
+  Output GGL (special GL field) in VCF\n\n Additional optional paramters:\n\t-h,--help\
+  \                     \tdisplay this help screen\n\t--seed                     \
+  \   \tRandom number generator initial seed\n\t-v,--verbose                  \tPrint\
+  \ out useful progress messages\n\t--very                        \tPrint out more\
+  \ detailed progress messages for debugging\n\t--quiet                       \tDon't\
+  \ print anything\n\t--version                     \tPrint out the version of this\
+  \ software.\n\n\nThis program takes in aligned reads in BAM format\nand outputs\
+  \ estimated genotypes at each TR in VCF format.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/gangstr:2.5.0--h2ab8aec_0

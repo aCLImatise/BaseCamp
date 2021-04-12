@@ -1,0 +1,88 @@
+!Command
+command:
+- megalodon_extras
+- merge
+- modified_bases
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: process.
+  description: --database-safety DATABASE_SAFETY
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --output-megalodon-results-dir
+  description: "Output directory. Cannot exist before this command.\nDefault: megalodon_merge_mods_results"
+  args: !SimpleFlagArg
+    name: OUTPUT_MEGALODON_RESULTS_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --data-batch-size
+  description: "Batch size to insert position and statistics data.\nDefault: 100000"
+  args: !SimpleFlagArg
+    name: DATA_BATCH_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --max-processes
+  description: "Maximum number of processes to open for reading\nstatistics. Each\
+    \ process must load all output database\nin memory indices, and thus may incur\
+    \ high memory\nusage. Default: 4"
+  args: !SimpleFlagArg
+    name: MAX_PROCESSES
+- !Flag
+  optional: true
+  synonyms:
+  - --single-process
+  description: Do not use multiprocessing with one input database per
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --overwrite
+  description: Overwrite output directory if it exists.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: megalodon_extras merge modified_bases [-h]\n                  \
+  \                           [--output-megalodon-results-dir OUTPUT_MEGALODON_RESULTS_DIR]\n\
+  \                                             [--data-batch-size DATA_BATCH_SIZE]\n\
+  \                                             [--max-processes MAX_PROCESSES]\n\
+  \                                             [--single-process]\n             \
+  \                                [--database-safety DATABASE_SAFETY]\n         \
+  \                                    [--overwrite]\n                           \
+  \                  megalodon_results_dirs\n                                    \
+  \         [megalodon_results_dirs ...]\n\npositional arguments:\n  megalodon_results_dirs\n\
+  \                        Megalodon directories with per_read_mods in output.\n\n\
+  optional arguments:\n  -h, --help            show this help message and exit\n \
+  \ --output-megalodon-results-dir OUTPUT_MEGALODON_RESULTS_DIR\n                \
+  \        Output directory. Cannot exist before this command.\n                 \
+  \       Default: megalodon_merge_mods_results\n  --data-batch-size DATA_BATCH_SIZE\n\
+  \                        Batch size to insert position and statistics data.\n  \
+  \                      Default: 100000\n  --max-processes MAX_PROCESSES\n      \
+  \                  Maximum number of processes to open for reading\n           \
+  \             statistics. Each process must load all output database\n         \
+  \               in memory indices, and thus may incur high memory\n            \
+  \            usage. Default: 4\n  --single-process      Do not use multiprocessing\
+  \ with one input database per\n                        process.\n  --database-safety\
+  \ DATABASE_SAFETY\n                        Setting for database performance versus\
+  \ corruption\n                        protection. Options: 0 (DB corruption on application\n\
+  \                        crash), 1 (DB corruption on system crash), 2 (DB safe\n\
+  \                        mode). Default: 0\n  --overwrite           Overwrite output\
+  \ directory if it exists.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/megalodon:2.3.0--py38h0213d0e_0

@@ -1,0 +1,78 @@
+!Command
+command:
+- shuffle_predictions.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  description: Path to input directory.
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --outdir
+  description: Path to output directory.
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --rep
+  description: 'Number of shuffled replicates to create (default: 1).'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --seed
+  description: "Random seed: set this if you want reproducible\nshufflings (default:\
+    \ None)."
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: ''
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: shuffle_predictions.py [-h] -i OUTPUT -o OUTPUT [-r INT] [-s INT]\
+  \ [-v]\n\nShuffles sequence ids of prediction table for a specified number of replicates.\
+  \ Note that this means that the prediction table is not totally scrambled across\
+  \ all colunmns: each predicted genome is still the same, but the sequence ids (e.g.\
+  \ the ASV id) linked with each predicted genome is randomized.\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -i OUTPUT, --input OUTPUT\n\
+  \                        Path to input directory.\n  -o OUTPUT, --outdir OUTPUT\n\
+  \                        Path to output directory.\n  -r INT, --rep INT     Number\
+  \ of shuffled replicates to create (default: 1).\n  -s INT, --seed INT    Random\
+  \ seed: set this if you want reproducible\n                        shufflings (default:\
+  \ None).\n  -v, --version         show program's version number and exit\n\nUsage\
+  \ example:\n\nshuffle_predictions.py -i EC_predicted.tsv.gz -o EC_predicted_shuffled\
+  \ --rep 5\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/picrust2:2.4.1--py_0

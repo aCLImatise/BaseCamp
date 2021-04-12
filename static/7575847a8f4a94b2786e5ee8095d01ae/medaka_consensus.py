@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, Directory
+
+Medaka_Consensus_V0_1_0 = CommandToolBuilder(tool="medaka_consensus", base_command=["medaka_consensus"], inputs=[ToolInput(tag="in_fastx_input_basecalls", input_type=Boolean(optional=True), prefix="-i", doc=InputDocumentation(doc="fastx input basecalls (required).")), ToolInput(tag="in_fasta_input_assembly", input_type=Boolean(optional=True), prefix="-d", doc=InputDocumentation(doc="fasta input assembly (required).")), ToolInput(tag="in_output_folder_default", input_type=Directory(optional=True), prefix="-o", doc=InputDocumentation(doc="output folder (default: medaka).")), ToolInput(tag="in_fill_gaps_consensus", input_type=Boolean(optional=True), prefix="-g", doc=InputDocumentation(doc="don't fill gaps in consensus with draft sequence.")), ToolInput(tag="in_medaka_model_default", input_type=Boolean(optional=True), prefix="-m", doc=InputDocumentation(doc="medaka model, (default: r941_min_high_g360).\nAvailable: r103_min_high_g345, r103_min_high_g360, r103_prom_high_g360, r103_prom_snp_g3210, r103_prom_variant_g3210, r10_min_high_g303, r10_min_high_g340, r941_min_fast_g303, r941_min_high_g303, r941_min_high_g330, r941_min_high_g340_rle, r941_min_high_g344, r941_min_high_g351, r941_min_high_g360, r941_prom_fast_g303, r941_prom_high_g303, r941_prom_high_g330, r941_prom_high_g344, r941_prom_high_g360, r941_prom_high_g4011, r941_prom_snp_g303, r941_prom_snp_g322, r941_prom_snp_g360, r941_prom_variant_g303, r941_prom_variant_g322, r941_prom_variant_g360.\nAlternatively a .hdf file from 'medaka train'.")), ToolInput(tag="in_force_overwrite_outputs", input_type=Boolean(optional=True), prefix="-f", doc=InputDocumentation(doc="Force overwrite of outputs (default will reuse existing outputs).")), ToolInput(tag="in_number_threads_create", input_type=Boolean(optional=True), prefix="-t", doc=InputDocumentation(doc="number of threads with which to create features (default: 1).")), ToolInput(tag="in_batchsize_controls_default", input_type=Boolean(optional=True), prefix="-b", doc=InputDocumentation(doc="batchsize, controls memory use (default: 100)."))], outputs=[ToolOutput(tag="out_output_folder_default", output_type=Directory(optional=True), selector=InputSelector(input_to_select="in_output_folder_default", type_hint=File()), doc=OutputDocumentation(doc="output folder (default: medaka)."))], container="quay.io/biocontainers/medaka:1.2.6--py38h64b100c_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Medaka_Consensus_V0_1_0().translate("wdl")
+

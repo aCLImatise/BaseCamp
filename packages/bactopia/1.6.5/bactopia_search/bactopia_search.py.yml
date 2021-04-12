@@ -1,0 +1,132 @@
+!Command
+command:
+- bactopia-search.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: bactopia
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: search
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --exact_taxon
+  description: Exclude Taxon ID descendents.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --outdir
+  description: 'Directory to write output. (Default: .)'
+  args: !SimpleFlagArg
+    name: OUTPUT_DIRECTORY
+- !Flag
+  optional: true
+  synonyms:
+  - --prefix
+  description: 'Prefix to use for output file names. (Default: ena)'
+  args: !SimpleFlagArg
+    name: PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - --limit
+  description: "Maximum number of results (per query) to return.\n(Default: 1000000)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --accession_limit
+  description: "Maximum number of accessions to query at once.\n(Default: 5000)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --biosample_subset
+  description: "If a BioSample has multiple Experiments, pick a random\nsubset. (Default:\
+    \ Return All)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --min_read_length
+  description: "Filters samples based on minimum mean read length.\n(Default: No filter)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --min_base_count
+  description: "Filters samples based on minimum basepair count.\n(Default: No filter)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --min_coverage
+  description: Filter samples based on minimum coverage (requires
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --genome_size
+  description: Genome size to estimate coverage (requires --coverage)
+  args: !SimpleFlagArg
+    name: INT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: bactopia search [-h] [--exact_taxon] [--outdir OUTPUT_DIRECTORY]\n\
+  \                       [--prefix PREFIX] [--limit INT] [--accession_limit INT]\n\
+  \                       [--biosample_subset INT] [--min_read_length INT]\n     \
+  \                  [--min_base_count INT] [--min_coverage INT]\n               \
+  \        [--genome_size INT] [--version]\n                       STR\n\nbactopia\
+  \ search (v1.6.5) - Search ENA for associated WGS samples\n\npositional arguments:\n\
+  \  STR                   Taxon ID or Study, BioSample, or Run accession (can\n \
+  \                       also be comma separated or a file of accessions)\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  --exact_taxon\
+  \         Exclude Taxon ID descendents.\n  --outdir OUTPUT_DIRECTORY\n         \
+  \               Directory to write output. (Default: .)\n  --prefix PREFIX     \
+  \  Prefix to use for output file names. (Default: ena)\n  --limit INT          \
+  \ Maximum number of results (per query) to return.\n                        (Default:\
+  \ 1000000)\n  --accession_limit INT\n                        Maximum number of accessions\
+  \ to query at once.\n                        (Default: 5000)\n  --biosample_subset\
+  \ INT\n                        If a BioSample has multiple Experiments, pick a random\n\
+  \                        subset. (Default: Return All)\n  --min_read_length INT\n\
+  \                        Filters samples based on minimum mean read length.\n  \
+  \                      (Default: No filter)\n  --min_base_count INT  Filters samples\
+  \ based on minimum basepair count.\n                        (Default: No filter)\n\
+  \  --min_coverage INT    Filter samples based on minimum coverage (requires\n  \
+  \                      --genome_size)\n  --genome_size INT     Genome size to estimate\
+  \ coverage (requires --coverage)\n  --version             show program's version\
+  \ number and exit\n\nexample usage:\n  bactopia search PRJNA480016 --limit 20\n\
+  \  bactopia search 1280 --exact_taxon --limit 20'\n  bactopia search \"staphylococcus\
+  \ aureus\" --limit 20\n  bactopia search SAMN01737350\n  bactopia search SRR578340\n\
+  \  bactopia search SAMN01737350,SRR578340\n  bactopia search accessions.txt\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bactopia:1.6.5--hdfd78af_1

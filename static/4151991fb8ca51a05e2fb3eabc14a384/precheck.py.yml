@@ -1,0 +1,81 @@
+!Command
+command:
+- precheck.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: reads_1.fq
+  description: The first mates in the read pairs.
+- !Positional
+  optional: false
+  position: 1
+  name: reads_2.fq
+  description: The second mates in the read pairs.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --families
+  description: The output of make-families.awk.
+  args: !SimpleFlagArg
+    name: families.tsv
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --tag-length
+  - -c
+  - --constant-length
+  - -m
+  - --min-reads
+  description: "The minimum number of reads required in each single-\nstranded family.\
+    \ Default: 3"
+  args: !SimpleFlagArg
+    name: TAG_LEN
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --validate
+  description: "Check the id's of the reads to make sure the correct\nreads are mated\
+    \ into pairs (the id's of mates must be\nidentical). Default: False."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -I
+  - --no-check-ids
+  description: Don't check read ids.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: $ precheck.py [options] reads_1.fq reads_2.fq\n       $ precheck.py\
+  \ [options] -f families.tsv\n\nPrint statistics on the raw duplex sequencing reads.\n\
+  \npositional arguments:\n  reads_1.fq            The first mates in the read pairs.\n\
+  \  reads_2.fq            The second mates in the read pairs.\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -f families.tsv, --families\
+  \ families.tsv\n                        The output of make-families.awk.\n  -t TAG_LEN,\
+  \ --tag-length TAG_LEN\n  -c CONST_LEN, --constant-length CONST_LEN\n  -m MIN_READS,\
+  \ --min-reads MIN_READS\n                        The minimum number of reads required\
+  \ in each single-\n                        stranded family. Default: 3\n  -v, --validate\
+  \        Check the id's of the reads to make sure the correct\n                \
+  \        reads are mated into pairs (the id's of mates must be\n               \
+  \         identical). Default: False.\n  -I, --no-check-ids    Don't check read\
+  \ ids.\n\nWarning: This tracks all barcodes in a dict, so it can take a lot of memory.\
+  \ A\nguideline is about 200 bytes per (12bp) tag. For example, it took about 800MB\n\
+  for a 10GB, 32 million read dataset with an average of 4 pairs per barcode.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/dunovo:2.16--py39h38f01e4_0

@@ -1,0 +1,157 @@
+!Command
+command:
+- ncbi.py
+- fetch_fastas
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: emailAddress
+  description: "Your email address. To access the Genbank\nCoreNucleotide database,\
+    \ NCBI requires you to specify\nyour email address with each request. In case\
+    \ of\nexcessive usage of the E-utilities, NCBI will attempt\nto contact a user\
+    \ at the email address provided before\nblocking access. This email address should\
+    \ be\nregistered with NCBI. To register an email address,\nsimply send an email\
+    \ to eutilities@ncbi.nlm.nih.gov\nincluding your email address and the tool name\n\
+    (tool='https://github.com/broadinstitute/viral-ngs')."
+- !Positional
+  optional: false
+  position: 1
+  name: destinationDir
+  description: "Output directory with where .fasta and .tbl files will\nbe saved"
+- !Positional
+  optional: false
+  position: 2
+  name: accession_IDs
+  description: List of Genbank nuccore accession IDs
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --forceOverwrite
+  description: Overwrite existing files, if present.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --combinedFilePrefix
+  description: "The prefix of the file containing the combined\nconcatenated results\
+    \ returned by the list of accession\nIDs, in the order provided."
+  args: !SimpleFlagArg
+    name: COMBINEDFILEPREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - --fileExt
+  description: The extension to use for the downloaded files
+  args: !SimpleFlagArg
+    name: FILEEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --removeSeparateFiles
+  description: "If specified, remove the individual files and leave\nonly the combined\
+    \ file."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --chunkSize
+  description: "Causes files to be downloaded from GenBank in chunks\nof N accessions.\
+    \ Each chunk will be its own combined\nfile, separate from any combined file created\
+    \ via\n--combinedFilePrefix (default: 1). If chunkSize is\nunspecified and >500\
+    \ accessions are provided,\nchunkSize will be set to 500 to adhere to the NCBI\n\
+    guidelines on information retreival."
+  args: !SimpleFlagArg
+    name: CHUNKSIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --tmp_dir
+  description: 'Base directory for temp files. [default: /tmp]'
+  args: !SimpleFlagArg
+    name: TMP_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --tmp_dirKeep
+  description: "Keep the tmp_dir if an exception occurs while running.\nDefault is\
+    \ to delete all temp files at the end, even\nif there's a failure."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --loglevel
+  description: 'Verboseness of output. [default: DEBUG]'
+  args: !ChoiceFlagArg
+    choices: !!set
+      INFO:
+      DEBUG:
+      CRITICAL:
+      WARNING:
+      ERROR:
+      EXCEPTION:
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  - -V
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: ncbi.py subcommand fetch_fastas [-h] [--forceOverwrite]\n     \
+  \                                  [--combinedFilePrefix COMBINEDFILEPREFIX]\n \
+  \                                      [--fileExt FILEEXT]\n                   \
+  \                    [--removeSeparateFiles]\n                                 \
+  \      [--chunkSize CHUNKSIZE]\n                                       [--tmp_dir\
+  \ TMP_DIR] [--tmp_dirKeep]\n                                       [--loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}]\n\
+  \                                       [--version]\n                          \
+  \             emailAddress destinationDir\n                                    \
+  \   accession_IDs [accession_IDs ...]\n\nThis function downloads and saves the FASTA\
+  \ files from the Genbank\nCoreNucleotide database given a given list of accession\
+  \ IDs.\n\npositional arguments:\n  emailAddress          Your email address. To\
+  \ access the Genbank\n                        CoreNucleotide database, NCBI requires\
+  \ you to specify\n                        your email address with each request.\
+  \ In case of\n                        excessive usage of the E-utilities, NCBI will\
+  \ attempt\n                        to contact a user at the email address provided\
+  \ before\n                        blocking access. This email address should be\n\
+  \                        registered with NCBI. To register an email address,\n \
+  \                       simply send an email to eutilities@ncbi.nlm.nih.gov\n  \
+  \                      including your email address and the tool name\n        \
+  \                (tool='https://github.com/broadinstitute/viral-ngs').\n  destinationDir\
+  \        Output directory with where .fasta and .tbl files will\n              \
+  \          be saved\n  accession_IDs         List of Genbank nuccore accession IDs\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  --forceOverwrite      Overwrite existing files, if present.\n  --combinedFilePrefix\
+  \ COMBINEDFILEPREFIX\n                        The prefix of the file containing\
+  \ the combined\n                        concatenated results returned by the list\
+  \ of accession\n                        IDs, in the order provided.\n  --fileExt\
+  \ FILEEXT     The extension to use for the downloaded files\n  --removeSeparateFiles\n\
+  \                        If specified, remove the individual files and leave\n \
+  \                       only the combined file.\n  --chunkSize CHUNKSIZE\n     \
+  \                   Causes files to be downloaded from GenBank in chunks\n     \
+  \                   of N accessions. Each chunk will be its own combined\n     \
+  \                   file, separate from any combined file created via\n        \
+  \                --combinedFilePrefix (default: 1). If chunkSize is\n          \
+  \              unspecified and >500 accessions are provided,\n                 \
+  \       chunkSize will be set to 500 to adhere to the NCBI\n                   \
+  \     guidelines on information retreival.\n  --tmp_dir TMP_DIR     Base directory\
+  \ for temp files. [default: /tmp]\n  --tmp_dirKeep         Keep the tmp_dir if an\
+  \ exception occurs while running.\n                        Default is to delete\
+  \ all temp files at the end, even\n                        if there's a failure.\n\
+  \  --loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}\n                  \
+  \      Verboseness of output. [default: DEBUG]\n  --version, -V         show program's\
+  \ version number and exit\n"
+generated_using:
+- --help
+docker_image:
