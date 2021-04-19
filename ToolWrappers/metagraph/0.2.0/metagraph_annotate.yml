@@ -1,0 +1,197 @@
+!Command
+command:
+- metagraph
+- annotate
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: FILE1
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --min-count
+  description: '[INT]    min k-mer abundance, including [1]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max-count
+  description: '[INT]    max k-mer abundance, excluding [inf]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --reference
+  description: '[STR]    basename of reference sequence (for parsing VCF files) []'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --fwd-and-reverse
+  description: process both forward and reverse complement sequences [off]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --anno-type
+  description: '[STR]    target annotation representation: column / row [column]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --annotator
+  description: '[STR]    annotator to update []'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sparse
+  description: use the row-major sparse matrix to annotate graph [off]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --cache
+  description: number of columns in cache (for column representation only) [10]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --disk-swap
+  description: '[STR]    directory to use for temporary files [off]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --mem-cap-gb
+  description: '[FLOAT] buffer size in GB (per column in construction) [1]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --outfile-base
+  description: '[STR] basename of output file (or directory, for --separately) []'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --separately
+  description: annotate each file independently and dump to the same directory [off]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sequentially
+  description: annotate files sequentially (each may use multiple threads) [off]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --anno-filename
+  description: include filenames as annotation labels [off]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --anno-header
+  description: extract annotation labels from headers of sequences in files [off]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --header-comment-delim
+  description: '[STR] delimiter for joining fasta header with comment [off]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --header-delimiter
+  description: '[STR]     delimiter for splitting annotation header into multiple
+    labels [off]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --anno-label
+  description: '[STR]           add label to annotation for all sequences from the
+    files passed []'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --anchors
+  description: '[STR]              location of the anchor file (for row_diff) []'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --count-kmers
+  description: add k-mer counts to the annotation [off]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --parallel
+  description: '[INT]     use multiple threads for computation [1]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: switch on verbose output [off]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: ''
+  args: !SimpleFlagArg
+    name: GRAPH
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: print usage info
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "#############################\n### Welcome to MetaGraph! ###\n#############################\n\
+  \nMetagraph: comprehensive metagenome graph representation -- Version 0.1\n\nUsage:\
+  \ metagraph annotate -i <GRAPH> -o <annotation-basename> [options] FILE1 [[FILE2]\
+  \ ...]\n\tEach file is given in FASTA, FASTQ, VCF, or KMC format.\n\tNote that VCF\
+  \ files must be in plain text or bgzip format.\n\nAvailable options for annotate:\n\
+  \t   --min-count [INT] \tmin k-mer abundance, including [1]\n\t   --max-count [INT]\
+  \ \tmax k-mer abundance, excluding [inf]\n\t   --reference [STR] \tbasename of reference\
+  \ sequence (for parsing VCF files) []\n\t   --fwd-and-reverse \tprocess both forward\
+  \ and reverse complement sequences [off]\n\n\t   --anno-type [STR] \ttarget annotation\
+  \ representation: column / row [column]\n\t-a --annotator [STR] \tannotator to update\
+  \ []\n\t   --sparse \t\tuse the row-major sparse matrix to annotate graph [off]\n\
+  \t   --cache \t\tnumber of columns in cache (for column representation only) [10]\n\
+  \t   --disk-swap [STR] \tdirectory to use for temporary files [off]\n\t   --mem-cap-gb\
+  \ [FLOAT]\tbuffer size in GB (per column in construction) [1]\n\t-o --outfile-base\
+  \ [STR] basename of output file (or directory, for --separately) []\n\t   --separately\
+  \ \tannotate each file independently and dump to the same directory [off]\n\t  \
+  \ --sequentially \tannotate files sequentially (each may use multiple threads) [off]\n\
+  \n\t   --anno-filename \t\tinclude filenames as annotation labels [off]\n\t   --anno-header\
+  \ \t\textract annotation labels from headers of sequences in files [off]\n\t   --header-comment-delim\
+  \ [STR]\tdelimiter for joining fasta header with comment [off]\n\t   --header-delimiter\
+  \ [STR]\tdelimiter for splitting annotation header into multiple labels [off]\n\t\
+  \   --anno-label [STR]\t\tadd label to annotation for all sequences from the files\
+  \ passed []\n\t   --anchors [STR]\t\tlocation of the anchor file (for row_diff)\
+  \ []\n\n\t   --count-kmers \tadd k-mer counts to the annotation [off]\n\n\t-p --parallel\
+  \ [INT] \tuse multiple threads for computation [1]\n\n\tGeneral options:\n\t-v --verbose\
+  \ \t\tswitch on verbose output [off]\n\t-h --help \t\tprint usage info\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/metagraph:0.2.0--h74b8f77_0

@@ -1,0 +1,136 @@
+&id001 !Command
+command:
+- tritimap
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - tritimap
+  - run
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: done.
+    description: '[default: False]'
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --working-dir
+    description: Triti-Map running directory.
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --config-file
+    description: Triti-Map config file, generated with tritimap init.
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - -j
+    - --jobs
+    description: Use at most N CPU cores/jobs in parallel.
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    - --dryrun
+    description: Do not execute anything, and display what would be
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --profile
+    description: Name of profile to use for configuring Snakemake.
+    args: !SimpleFlagArg
+      name: TEXT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: tritimap run [OPTIONS] [[all|only_mapping|only_assembly]]\n \
+    \                   [SNAKEMAKE_ARGS]...\n\n  Triti-Map main command. The pipeline\
+    \ supports three execute modules: all,\n  only_mapping and only_assembly. First,\
+    \ you need to fill in the\n  configuration file correctly.\n\nOptions:\n  -d,\
+    \ --working-dir PATH  Triti-Map running directory.\n  -c, --config-file PATH \
+    \ Triti-Map config file, generated with tritimap init.\n  -j, --jobs INTEGER \
+    \     Use at most N CPU cores/jobs in parallel.\n  -n, --dryrun            Do\
+    \ not execute anything, and display what would be\n                          done.\
+    \  [default: False]\n\n  --profile TEXT          Name of profile to use for configuring\
+    \ Snakemake.\n  -h, --help              Show this message and exit.\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/tritimap:0.9.3--pyh5e36f6f_0
+- !Command
+  command:
+  - tritimap
+  - init
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --working-dir
+    description: Triti-Map running directory.
+    args: !SimpleFlagArg
+      name: PATH
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: tritimap init [OPTIONS]\n\n  Generate snakemake configuration\
+    \ file and other needed file. The command\n  will generate three configuration\
+    \ files(config.yaml, sample.csv and\n  region.csv) in the running directory.\n\
+    \nOptions:\n  -d, --working-dir PATH  Triti-Map running directory.\n  -h, --help\
+    \              Show this message and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/tritimap:0.9.3--pyh5e36f6f_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Show the version and exit.
+  args: !EmptyFlagArg {}
+help_text: "Usage: tritimap [OPTIONS] COMMAND [ARGS]...\n\n  Triti-Map: A Snakemake-based\
+  \ pipeline for gene mapping in Triticeae. For\n  more information, see: https://github.com/fei0810/Triti-Map\n\
+  \nOptions:\n  --version   Show the version and exit.\n  -h, --help  Show this message\
+  \ and exit.\n\nCommands:\n  init  Generate snakemake configuration file and other\
+  \ needed file.\n  run   Run Triti-Map pipeline\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/tritimap:0.9.3--pyh5e36f6f_0

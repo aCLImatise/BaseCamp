@@ -1,0 +1,126 @@
+!Command
+command:
+- dv_postprocess_variants.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: output.
+  description: '--infile: Required. Path(s) to CallVariantOutput protos in TFRecord
+    format to'
+- !Positional
+  optional: false
+  position: 0
+  name: call_variants.py.
+  description: '--multi_allelic_qual_filter: The qual value below which to filter
+    multi-'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --cnn_homref_call_min_gq
+  description: ": All CNN RefCalls whose GQ is less than this value\nwill have ./.\
+    \ genotype instead of 0/0.\n(default: '20.0')\n(a number)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gvcf_outfile
+  description: ': Optional. Destination path where we will write the Genomic VCF'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --nonvariant_site_tfrecord_path
+  description: ": Optional. Path(s) to the non-variant sites\nprotos in TFRecord format\
+    \ to convert to gVCF file. This should be the\ncomplete set of outputs from the\
+    \ --gvcf flag of make_examples.py."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --outfile
+  description: ": Required. Destination path where we will write output variant calls\n\
+    in VCF format."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --qual_filter
+  description: ': Any variant with QUAL < qual_filter will be filtered in the VCF'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ref
+  description: ": Required. Genome reference in FAI-indexed FASTA format. Used to\n\
+    determine the sort order for the emitted variants and the VCF header."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sample_name
+  description: ": Optional. If set, this will only be used if the sample name\ncannot\
+    \ be determined from the CallVariantsOutput or non-variant sites\nprotos."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --infile
+  description: Input tfrecord file from call_variants
+  args: !SimpleFlagArg
+    name: INFILE
+- !Flag
+  optional: true
+  synonyms:
+  - --outfile
+  - --gvcf_infile
+  description: "Input gVCF tfrecord file from make_examples, formatted\nas {{gvcf}}/{{sample}}.gvcf.tfrecord@{{cores}}.gz,\n\
+    with arguments as supplied to make_examples."
+  args: !SimpleFlagArg
+    name: OUTFILE
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Baseline DeepVariant arguments\nPostprocess output from call_variants\
+  \ to produce a VCF file.\nflags:\n\n/tmp/Bazel.runfiles_fbism0uq/runfiles/com_google_deepvariant/deepvariant/postprocess_variants.py:\n\
+  \  --cnn_homref_call_min_gq: All CNN RefCalls whose GQ is less than this value\n\
+  \    will have ./. genotype instead of 0/0.\n    (default: '20.0')\n    (a number)\n\
+  \  --[no]group_variants: If using vcf_candidate_importer and multi-allelic sites\n\
+  \    are split across multiple lines in VCF, set to False so that variants are\n\
+  \    not grouped when transforming CallVariantsOutput to Variants.\n    (default:\
+  \ 'true')\n  --gvcf_outfile: Optional. Destination path where we will write the\
+  \ Genomic VCF\n    output.\n  --infile: Required. Path(s) to CallVariantOutput protos\
+  \ in TFRecord format to\n    postprocess. These should be the complete set of outputs\
+  \ for\n    call_variants.py.\n  --multi_allelic_qual_filter: The qual value below\
+  \ which to filter multi-\n    allelic variants.\n    (default: '1.0')\n    (a number)\n\
+  \  --nonvariant_site_tfrecord_path: Optional. Path(s) to the non-variant sites\n\
+  \    protos in TFRecord format to convert to gVCF file. This should be the\n   \
+  \ complete set of outputs from the --gvcf flag of make_examples.py.\n  --[no]only_keep_pass:\
+  \ If True, only keep PASS calls.\n    (default: 'false')\n  --outfile: Required.\
+  \ Destination path where we will write output variant calls\n    in VCF format.\n\
+  \  --qual_filter: Any variant with QUAL < qual_filter will be filtered in the VCF\n\
+  \    file.\n    (default: '1.0')\n    (a number)\n  --ref: Required. Genome reference\
+  \ in FAI-indexed FASTA format. Used to\n    determine the sort order for the emitted\
+  \ variants and the VCF header.\n  --sample_name: Optional. If set, this will only\
+  \ be used if the sample name\n    cannot be determined from the CallVariantsOutput\
+  \ or non-variant sites\n    protos.\n  --[no]use_multiallelic_model: If True, use\
+  \ a specialized model for genotype\n    resolution of multiallelic cases with two\
+  \ alts.\n    (default: 'false')\n  --[no]vcf_stats_report: Optional. Output a visual\
+  \ report (HTML) of statistics\n    about the output VCF at the same base path given\
+  \ by --outfile.\n    (default: 'true')\n\nTry --helpfull to get a list of all flags.\n\
+  \n\nWrapper arguments\nusage: dv_postprocess_variants.py --ref REF --infile INFILE\
+  \ --outfile OUTFILE\n                                  [--gvcf_infile GVCF_INFILE]\n\
+  \                                  [--gvcf_outfile GVCF_OUTFILE] [-h]\n\nDeepVariant\
+  \ postprocess_variants wrapper\n\noptional arguments:\n  --ref REF             Reference\
+  \ genome\n  --infile INFILE       Input tfrecord file from call_variants\n  --outfile\
+  \ OUTFILE\n  --gvcf_infile GVCF_INFILE\n                        Input gVCF tfrecord\
+  \ file from make_examples, formatted\n                        as {{gvcf}}/{{sample}}.gvcf.tfrecord@{{cores}}.gz,\n\
+  \                        with arguments as supplied to make_examples.\n  --gvcf_outfile\
+  \ GVCF_OUTFILE\n                        gVCF output file\n  -h, --help\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/deepvariant:1.1.0--py36hf3e76ba_0

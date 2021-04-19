@@ -1,0 +1,238 @@
+&id001 !Command
+command:
+- predex
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: ''
+  args: !EmptyFlagArg {}
+parent:
+subcommands:
+- !Command
+  command:
+  - predex
+  - ipa
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input
+    description: Input dir with IPA downloaded table
+    args: !SimpleFlagArg
+      name: INPUT
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: "Output dir to write processed data to\n(default = current)"
+    args: !SimpleFlagArg
+      name: OUTPUT
+  - !Flag
+    optional: true
+    synonyms:
+    - -e
+    - --extension
+    description: Extension of IPA files (default = .txt)
+    args: !SimpleFlagArg
+      name: EXTENSION
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: predex ipa [-h] -i INPUT [-o OUTPUT] [-e EXTENSION]\n\noptional\
+    \ arguments:\n  -h, --help                           show this help message and\
+    \ exit\n\nrequired arguments:\n  -i INPUT, --input INPUT              Input dir\
+    \ with IPA downloaded table\n  -o OUTPUT, --output OUTPUT           Output dir\
+    \ to write processed data to\n                                       (default\
+    \ = current)\n  -e EXTENSION, --extension EXTENSION  Extension of IPA files (default\
+    \ = .txt)\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/predex:0.9.3--pyh5e36f6f_0
+- !Command
+  command:
+  - predex
+  - design
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input
+    description: Input files (count matrix, e.g., HTSeq)
+    args: !SimpleFlagArg
+      name: INPUT
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: Output directory (default = current)
+    args: !SimpleFlagArg
+      name: OUTPUT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: predex design [-h] -i INPUT [-o OUTPUT]\n\noptional arguments:\n\
+    \  -h, --help                  show this help message and exit\n\nrequired arguments:\n\
+    \  -i INPUT, --input INPUT     Input files (count matrix, e.g., HTSeq)\n  -o OUTPUT,\
+    \ --output OUTPUT  Output directory (default = current)\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/predex:0.9.3--pyh5e36f6f_0
+- !Command
+  command:
+  - predex
+  - annotation
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --threads
+    description: Number of threads (default = 1)
+    args: !SimpleFlagArg
+      name: THREADS
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --fasta
+    description: Fasta file input
+    args: !SimpleFlagArg
+      name: FASTA
+  - !Flag
+    optional: true
+    synonyms:
+    - -g
+    - --gtf
+    description: GTF file input
+    args: !SimpleFlagArg
+      name: GTF
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: Output directory (default = current)
+    args: !SimpleFlagArg
+      name: OUTPUT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: predex annotation [-h] [-t THREADS] -f FASTA -g GTF [-o OUTPUT]\n\
+    \noptional arguments:\n  -h, --help                     show this help message\
+    \ and exit\n  -t THREADS, --threads THREADS  Number of threads (default = 1)\n\
+    \nrequired arguments:\n  -f FASTA, --fasta FASTA        Fasta file input\n  -g\
+    \ GTF, --gtf GTF              GTF file input\n  -o OUTPUT, --output OUTPUT   \
+    \  Output directory (default = current)\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/predex:0.9.3--pyh5e36f6f_0
+- !Command
+  command:
+  - predex
+  - comparison
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --design
+    description: Design matrix with sample data
+    args: !SimpleFlagArg
+      name: DESIGN
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --column
+    description: Column name to make comparisons with
+    args: !SimpleFlagArg
+      name: COLUMN
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: Output directory (default = current)
+    args: !SimpleFlagArg
+      name: OUTPUT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: predex comparison [-h] -d DESIGN -c COLUMN [-o OUTPUT]\n\noptional\
+    \ arguments:\n  -h, --help                  show this help message and exit\n\n\
+    required arguments:\n  -d DESIGN, --design DESIGN  Design matrix with sample data\n\
+    \  -c COLUMN, --column COLUMN  Column name to make comparisons with\n  -o OUTPUT,\
+    \ --output OUTPUT  Output directory (default = current)\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/predex:0.9.3--pyh5e36f6f_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: predex [-h] [-v] {design,annotation,comparison,ipa} ...\n\nPrepare\
+  \ data for expression analysis with e.g. dgeAnalysis - LUMC.\n\npositional arguments:\n\
+  \  {design,annotation,comparison,ipa}\n    design              Create design matrix\
+  \ template\n    annotation          Create annotation file\n    comparison     \
+  \     Create comparisons for looped analysis\n    ipa                 Process IPA\
+  \ output in tidy tsv format\n\noptional arguments:\n  -h, --help            show\
+  \ this help message and exit\n  -v, --version         show program's version number\
+  \ and exit\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/predex:0.9.3--pyh5e36f6f_0

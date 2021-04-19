@@ -1,0 +1,164 @@
+!Command
+command:
+- scanpy-filter-genes
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: input_obj
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: output_obj
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --input-format
+  description: "[anndata|loom]\nInput object format.  [default: anndata]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  - --output-format
+  description: "[anndata|loom|zarr]\nOutput object format.  [default: anndata]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  - --zarr-chunk-size
+  description: Chunk size for writing output in zarr
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --loom-write-obsm-varm
+  description: "Write obsm and varm to the Loom file?\n[default: False]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -X
+  - --export-mtx
+  description: "When specified, using it as prefix for\nexporting mtx files. If not\
+    \ empty and not\nending with \"/\" or \"_\", a \"_\" will be\nappended."
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --show-obj
+  description: "[stdout|stderr]      Print output object summary info to\nspecified\
+    \ stream."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --gene-name
+  description: "Name of the variable that contains gene\nnames, used for flagging\
+    \ mitochondria genes\nwhen column \"mito\" is absent from `.var`.\n[default: index]"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --list-attr
+  description: "When set, list attributes that can be\nfiltered on."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --param
+  description: "...\nNumerical parameters used to filter the\ndata, in the format\
+    \ of \"-p name min max\".\nMultiple -p entries allowed."
+  args: !SimpleFlagArg
+    name: TEXT FLOAT FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --category
+  description: "<TEXT TEXT[,TEXT...]>...\nCategorical attributes used to filter the\n\
+    data, in the format of \"-c <name> <values>\",\nwhere entries with attribute <name>\
+    \ with\nvalue in <values> are kept. If <values> is\npreceded by \"!\", entries\
+    \ with value in\n<values> are removed. Multiple -c entries\nallowed."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --subset
+  description: "...\nSimilar to --category in the format of \"-s\n<name> <file>\"\
+    , but the <file> to be a one-\ncolumn table that provides the values.\nMultiple\
+    \ -s entries allowed."
+  args: !SimpleFlagArg
+    name: TEXT FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --force-recalc
+  description: "When set, re-calculate\n`pct_counts_<qc_variable>` and\n`pct_counts_in_top_<n>_genes`\
+    \ even if they\nexist."
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: scanpy-filter-genes [OPTIONS] <input_obj> <output_obj>\n\n  Filter\
+  \ data based on specified conditions.\n\n  <input_obj>:   input file in format specfied\
+  \ by --input-format\n  <output_obj>:  output file in format specfied by --output-format\n\
+  \nOptions:\n  -f, --input-format [anndata|loom]\n                              \
+  \    Input object format.  [default: anndata]\n  -F, --output-format [anndata|loom|zarr]\n\
+  \                                  Output object format.  [default: anndata]\n \
+  \ -z, --zarr-chunk-size INTEGER   Chunk size for writing output in zarr\n      \
+  \                            format.  [default: 1000]\n\n  -b, --loom-write-obsm-varm\
+  \      Write obsm and varm to the Loom file?\n                                 \
+  \ [default: False]\n\n  -X, --export-mtx PATH           When specified, using it\
+  \ as prefix for\n                                  exporting mtx files. If not empty\
+  \ and not\n                                  ending with \"/\" or \"_\", a \"_\"\
+  \ will be\n                                  appended.\n\n  --show-obj [stdout|stderr]\
+  \      Print output object summary info to\n                                  specified\
+  \ stream.\n\n  -g, --gene-name TEXT            Name of the variable that contains\
+  \ gene\n                                  names, used for flagging mitochondria\
+  \ genes\n                                  when column \"mito\" is absent from `.var`.\n\
+  \                                  [default: index]\n\n  -l, --list-attr       \
+  \          When set, list attributes that can be\n                             \
+  \     filtered on.\n\n  -p, --param <TEXT FLOAT FLOAT>...\n                    \
+  \              Numerical parameters used to filter the\n                       \
+  \           data, in the format of \"-p name min max\".\n                      \
+  \            Multiple -p entries allowed.\n\n  -c, --category <TEXT TEXT[,TEXT...]>...\n\
+  \                                  Categorical attributes used to filter the\n \
+  \                                 data, in the format of \"-c <name> <values>\"\
+  ,\n                                  where entries with attribute <name> with\n\
+  \                                  value in <values> are kept. If <values> is\n\
+  \                                  preceded by \"!\", entries with value in\n  \
+  \                                <values> are removed. Multiple -c entries\n   \
+  \                               allowed.\n\n  -s, --subset <TEXT FILENAME>...\n\
+  \                                  Similar to --category in the format of \"-s\n\
+  \                                  <name> <file>\", but the <file> to be a one-\n\
+  \                                  column table that provides the values.\n    \
+  \                              Multiple -s entries allowed.\n\n  --force-recalc\
+  \                  When set, re-calculate\n                                  `pct_counts_<qc_variable>`\
+  \ and\n                                  `pct_counts_in_top_<n>_genes` even if they\n\
+  \                                  exist.\n\n  --help                          Show\
+  \ this message and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/scanpy-scripts:0.3.3--pyhdfd78af_2

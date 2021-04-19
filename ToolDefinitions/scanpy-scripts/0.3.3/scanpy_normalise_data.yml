@@ -1,0 +1,196 @@
+!Command
+command:
+- scanpy-normalise-data
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: input_obj
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: output_obj
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --input-format
+  description: "[anndata|loom]\nInput object format.  [default: anndata]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  - --output-format
+  description: "[anndata|loom|zarr]\nOutput object format.  [default: anndata]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  - --zarr-chunk-size
+  description: Chunk size for writing output in zarr
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --loom-write-obsm-varm
+  description: "Write obsm and varm to the Loom file?\n[default: False]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -X
+  - --export-mtx
+  description: "When specified, using it as prefix for\nexporting mtx files. If not\
+    \ empty and not\nending with \"/\" or \"_\", a \"_\" will be\nappended."
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --show-obj
+  description: "[stdout|stderr]      Print output object summary info to\nspecified\
+    \ stream."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --key-added
+  description: Key under which to add the computed results
+  args: !OptionalFlagArg
+    names:
+    - TEXT
+    - TEXT...
+    separator: ','
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --save-raw
+  description: "[yes|no|counts]  Save raw data existing raw data.  [default:\nyes]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-log-transform
+  description: "When set, do not apply (natural) log\ntransform following normalisation.\n\
+    [default: True]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --normalize-to
+  description: "Normalize per cell nUMI to this number.\n[default: 10000]"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --exclude-highly-expressed
+  description: "Exclude (very) highly expressed genes for\nthe computation of the\
+    \ normalization factor\n(size factor) for each cell. A gene is\nconsidered highly\
+    \ expressed, if it has more\nthan max_fraction of the total counts in at\nleast\
+    \ one cell. The not-excluded genes will\nsum up to the number specified by\n--normalize-to.\
+    \  [default: False]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --max-fraction
+  description: "If exclude_highly_expressed=True, consider\ncells as highly expressed\
+    \ that have more\ncounts than max_fraction of the original\ntotal counts in at\
+    \ least one cell.\n[default: 0.05]"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --layers
+  description: "List of layers to normalize. Set to 'all' to\nnormalize all layers."
+  args: !OptionalFlagArg
+    names:
+    - TEXT
+    - TEXT...
+    separator: ','
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --layer-norm
+  description: "[after|X]      Specifies how to normalize layers: 1) If\nNone, after\
+    \ normalization, for each layer in\nlayers each cell has a total count equal to\n\
+    the median of the counts_per_cell before\nnormalization of the layer. 2) If 'after',\n\
+    for each layer in layers each cell has a\ntotal count equal to target_sum. 3)\
+    \ If 'X',\nfor each layer in layers each cell has a\ntotal count equal to the\
+    \ median of total\ncounts for observations (cells) of adata.X\nbefore normalization.'"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: scanpy-normalise-data [OPTIONS] <input_obj> <output_obj>\n\n  Normalise\
+  \ data per cell.\n\n  <input_obj>:   input file in format specfied by --input-format\n\
+  \  <output_obj>:  output file in format specfied by --output-format\n\nOptions:\n\
+  \  -f, --input-format [anndata|loom]\n                                  Input object\
+  \ format.  [default: anndata]\n  -F, --output-format [anndata|loom|zarr]\n     \
+  \                             Output object format.  [default: anndata]\n  -z, --zarr-chunk-size\
+  \ INTEGER   Chunk size for writing output in zarr\n                            \
+  \      format.  [default: 1000]\n\n  -b, --loom-write-obsm-varm      Write obsm\
+  \ and varm to the Loom file?\n                                  [default: False]\n\
+  \n  -X, --export-mtx PATH           When specified, using it as prefix for\n   \
+  \                               exporting mtx files. If not empty and not\n    \
+  \                              ending with \"/\" or \"_\", a \"_\" will be\n   \
+  \                               appended.\n\n  --show-obj [stdout|stderr]      Print\
+  \ output object summary info to\n                                  specified stream.\n\
+  \n  --key-added TEXT[,TEXT...]      Key under which to add the computed results\n\
+  \  -r, --save-raw [yes|no|counts]  Save raw data existing raw data.  [default:\n\
+  \                                  yes]\n\n  --no-log-transform              When\
+  \ set, do not apply (natural) log\n                                  transform following\
+  \ normalisation.\n                                  [default: True]\n\n  -t, --normalize-to\
+  \ FLOAT        Normalize per cell nUMI to this number.\n                       \
+  \           [default: 10000]\n\n  -e, --exclude-highly-expressed  Exclude (very)\
+  \ highly expressed genes for\n                                  the computation\
+  \ of the normalization factor\n                                  (size factor) for\
+  \ each cell. A gene is\n                                  considered highly expressed,\
+  \ if it has more\n                                  than max_fraction of the total\
+  \ counts in at\n                                  least one cell. The not-excluded\
+  \ genes will\n                                  sum up to the number specified by\n\
+  \                                  --normalize-to.  [default: False]\n\n  -m, --max-fraction\
+  \ FLOAT        If exclude_highly_expressed=True, consider\n                    \
+  \              cells as highly expressed that have more\n                      \
+  \            counts than max_fraction of the original\n                        \
+  \          total counts in at least one cell.\n                                \
+  \  [default: 0.05]\n\n  -l, --layers TEXT[,TEXT...]     List of layers to normalize.\
+  \ Set to 'all' to\n                                  normalize all layers.\n\n \
+  \ -n, --layer-norm [after|X]      Specifies how to normalize layers: 1) If\n   \
+  \                               None, after normalization, for each layer in\n \
+  \                                 layers each cell has a total count equal to\n\
+  \                                  the median of the counts_per_cell before\n  \
+  \                                normalization of the layer. 2) If 'after',\n  \
+  \                                for each layer in layers each cell has a\n    \
+  \                              total count equal to target_sum. 3) If 'X',\n   \
+  \                               for each layer in layers each cell has a\n     \
+  \                             total count equal to the median of total\n       \
+  \                           counts for observations (cells) of adata.X\n       \
+  \                           before normalization.'\n\n  --help                 \
+  \         Show this message and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/scanpy-scripts:0.3.3--pyhdfd78af_2

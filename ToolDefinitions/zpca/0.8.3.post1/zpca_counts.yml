@@ -1,0 +1,84 @@
+!Command
+command:
+- zpca-counts
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --counts
+  description: Counts table (tsv). The first column should contain the gene/transcript
+    id. The other columns should contain the counts for each sample.
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --lengths
+  description: "Table of feature lengths (tsv).\nThe file can have two types of formats.\n\
+    First option: The first column should contain the gene/transcript id.\nThe second\
+    \ column should contain the corresponding lengths\nSecond option: The first column\
+    \ should contain the gene/transcript id.\nThe rest of the columns should contain\
+    \ the gene/transcript lengths for each of the samples\nNote that the sample names\
+    \ should be the same the sample names of the counts."
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --pseudocount
+  description: 'Pseudocount to add in the count table. Default: 1'
+  args: !SimpleFlagArg
+    name: PSEUDOCOUNT
+- !Flag
+  optional: true
+  synonyms:
+  - --filter-not-expressed
+  description: Filter not expressed genes/transcripts (0 counts for all samples).
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --out
+  description: Output directory
+  args: !SimpleFlagArg
+    name: DIRECTORY
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: Verbose
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: zpca-counts [-h] --counts FILE --lengths FILE\n               \
+  \    [--pseudocount PSEUDOCOUNT] [--filter-not-expressed] --out\n              \
+  \     DIRECTORY [-v]\n\nPerform PCA based on an expression matrix (rows are genes/transcripts,\
+  \ columns are samples).\n\noptional arguments:\n  -h, --help            show this\
+  \ help message and exit\n  --counts FILE         Counts table (tsv). The first column\
+  \ should contain the gene/transcript id. The other columns should contain the counts\
+  \ for each sample.\n  --lengths FILE        Table of feature lengths (tsv). \n \
+  \                       The file can have two types of formats.\n              \
+  \          First option: The first column should contain the gene/transcript id.\n\
+  \                        The second column should contain the corresponding lengths\n\
+  \                        Second option: The first column should contain the gene/transcript\
+  \ id.\n                        The rest of the columns should contain the gene/transcript\
+  \ lengths for each of the samples\n                        Note that the sample\
+  \ names should be the same the sample names of the counts.\n  --pseudocount PSEUDOCOUNT\n\
+  \                        Pseudocount to add in the count table. Default: 1\n  --filter-not-expressed\n\
+  \                        Filter not expressed genes/transcripts (0 counts for all\
+  \ samples).\n  --out DIRECTORY       Output directory\n  -v, --verbose         Verbose\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/zpca:0.8.3.post1--pyh5e36f6f_0

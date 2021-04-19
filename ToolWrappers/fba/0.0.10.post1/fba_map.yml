@@ -1,0 +1,216 @@
+!Command
+command:
+- fba
+- map
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - '-1'
+  - --read1
+  description: specify fastq file for read 1
+  args: !SimpleFlagArg
+    name: READ1
+- !Flag
+  optional: true
+  synonyms:
+  - '-2'
+  - --read2
+  description: specify fastq file for read 2
+  args: !SimpleFlagArg
+    name: READ2
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --whitelist
+  description: specify a whitelist of accepted cell barcodes
+  args: !SimpleFlagArg
+    name: WHITELIST
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --feature_ref
+  description: specify a reference of feature barcodes
+  args: !SimpleFlagArg
+    name: FEATURE_REF
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: specify an output file
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -r1_coords
+  - --read1_coords
+  description: "specify coordinates 'start,end' of read 1 to search.\nFor example,\
+    \ '0,16': starts at 0, stops at 15.\nNucleotide bases outside the range will be\
+    \ masked as\nlower case in output. Default (0,16)"
+  args: !SimpleFlagArg
+    name: READ1_COORDS
+- !Flag
+  optional: true
+  synonyms:
+  - -cb_m
+  - --cb_mismatches
+  description: "specify cell barcode mismatching threshold. Default\n(1)"
+  args: !SimpleFlagArg
+    name: CELL_BARCODE_MISMATCHES
+- !Flag
+  optional: true
+  synonyms:
+  - -cb_n
+  - --cb_num_n_threshold
+  description: "specify maximum number of ambiguous nucleotides\nallowed for read\
+    \ 1. Default (3)"
+  args: !SimpleFlagArg
+    name: CB_NUM_N_THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - -al
+  - --aligner
+  description: specify aligner for read 2. Default (bwa)
+  args: !ChoiceFlagArg
+    choices: !!set
+      bowtie2:
+      bwa:
+- !Flag
+  optional: true
+  synonyms:
+  - --mapq
+  - --mapping_quality
+  description: "specify minimal mapping quality required for feature\nmapping. Default\
+    \ (10)"
+  args: !SimpleFlagArg
+    name: MAPQ
+- !Flag
+  optional: true
+  synonyms:
+  - -us
+  - --umi_start
+  description: "specify expected UMI starting postion on read 1.\nDefault (16)"
+  args: !SimpleFlagArg
+    name: UMI_POS_START
+- !Flag
+  optional: true
+  synonyms:
+  - -ul
+  - --umi_length
+  description: "specify the length of UMIs on read 1. Reads with UMI\nlength less\
+    \ than this value will be discarded. Default\n(12)"
+  args: !SimpleFlagArg
+    name: UMI_LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - -um
+  - --umi_mismatches
+  description: "specify the maximun edit distance allowed for UMIs on\nread 1 for\
+    \ deduplication. Default (1)"
+  args: !SimpleFlagArg
+    name: UMI_MISMATCHES
+- !Flag
+  optional: true
+  synonyms:
+  - -ud
+  - --umi_deduplication_method
+  description: "specify UMI deduplication method (powered by UMI-\ntools. Smith, T.,\
+    \ et al. 2017). Default (directional)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      cluster:
+      directional:
+      percentile:
+      unique:
+      adjacency:
+- !Flag
+  optional: true
+  synonyms:
+  - --output_directory
+  description: specify a temp directory. Default (./barcode_mapping)
+  args: !SimpleFlagArg
+    name: OUTPUT_DIRECTORY
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: "specify number of threads to launch. The default is to\nuse all available"
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - --num_n_ref
+  description: "specify the number of Ns to separate sequences\nbelonging to the same\
+    \ feature. Default (0)\n"
+  args: !SimpleFlagArg
+    name: NUM_N_REF
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: fba map [-h] -1 READ1 -2 READ2 -w WHITELIST -f FEATURE_REF -o OUTPUT\n\
+  \               [-r1_coords READ1_COORDS] [-cb_m CELL_BARCODE_MISMATCHES]\n    \
+  \           [-cb_n CB_NUM_N_THRESHOLD] [-al {bwa,bowtie2}] [--mapq MAPQ]\n     \
+  \          [-us UMI_POS_START] [-ul UMI_LENGTH] [-um UMI_MISMATCHES]\n         \
+  \      [-ud {unique,percentile,cluster,adjacency,directional}]\n               [--output_directory\
+  \ OUTPUT_DIRECTORY] [-t THREADS]\n               [--num_n_ref NUM_N_REF]\n\nQuantify\
+  \ enriched transcripts (through hybridization or PCR amplification)\nfrom parent\
+  \ single cell libraries. Read 1 contains cell partitioning and UMI\ninformation,\
+  \ and read 2 contains transcribed regions of enriched/targeted\ntranscripts of interest.\
+  \ BWA (Li, H. 2013) or Bowtie2 (Langmead, B., et al.\n2012) is used for read 2 alignment.\
+  \ The quantification (UMI deduplication) of\nenriched/targeted transcripts is powered\
+  \ by UMI-tools (Smith, T., et al.\n2017).\n\noptional arguments:\n  -h, --help \
+  \           show this help message and exit\n  -1 READ1, --read1 READ1\n       \
+  \                 specify fastq file for read 1\n  -2 READ2, --read2 READ2\n   \
+  \                     specify fastq file for read 2\n  -w WHITELIST, --whitelist\
+  \ WHITELIST\n                        specify a whitelist of accepted cell barcodes\n\
+  \  -f FEATURE_REF, --feature_ref FEATURE_REF\n                        specify a\
+  \ reference of feature barcodes\n  -o OUTPUT, --output OUTPUT\n                \
+  \        specify an output file\n  -r1_coords READ1_COORDS, --read1_coords READ1_COORDS\n\
+  \                        specify coordinates 'start,end' of read 1 to search.\n\
+  \                        For example, '0,16': starts at 0, stops at 15.\n      \
+  \                  Nucleotide bases outside the range will be masked as\n      \
+  \                  lower case in output. Default (0,16)\n  -cb_m CELL_BARCODE_MISMATCHES,\
+  \ --cb_mismatches CELL_BARCODE_MISMATCHES\n                        specify cell\
+  \ barcode mismatching threshold. Default\n                        (1)\n  -cb_n CB_NUM_N_THRESHOLD,\
+  \ --cb_num_n_threshold CB_NUM_N_THRESHOLD\n                        specify maximum\
+  \ number of ambiguous nucleotides\n                        allowed for read 1. Default\
+  \ (3)\n  -al {bwa,bowtie2}, --aligner {bwa,bowtie2}\n                        specify\
+  \ aligner for read 2. Default (bwa)\n  --mapq MAPQ, --mapping_quality MAPQ\n   \
+  \                     specify minimal mapping quality required for feature\n   \
+  \                     mapping. Default (10)\n  -us UMI_POS_START, --umi_start UMI_POS_START\n\
+  \                        specify expected UMI starting postion on read 1.\n    \
+  \                    Default (16)\n  -ul UMI_LENGTH, --umi_length UMI_LENGTH\n \
+  \                       specify the length of UMIs on read 1. Reads with UMI\n \
+  \                       length less than this value will be discarded. Default\n\
+  \                        (12)\n  -um UMI_MISMATCHES, --umi_mismatches UMI_MISMATCHES\n\
+  \                        specify the maximun edit distance allowed for UMIs on\n\
+  \                        read 1 for deduplication. Default (1)\n  -ud {unique,percentile,cluster,adjacency,directional},\
+  \ --umi_deduplication_method {unique,percentile,cluster,adjacency,directional}\n\
+  \                        specify UMI deduplication method (powered by UMI-\n   \
+  \                     tools. Smith, T., et al. 2017). Default (directional)\n  --output_directory\
+  \ OUTPUT_DIRECTORY\n                        specify a temp directory. Default (./barcode_mapping)\n\
+  \  -t THREADS, --threads THREADS\n                        specify number of threads\
+  \ to launch. The default is to\n                        use all available\n  --num_n_ref\
+  \ NUM_N_REF\n                        specify the number of Ns to separate sequences\n\
+  \                        belonging to the same feature. Default (0)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/fba:0.0.10.post1--pyhdfd78af_0

@@ -1,0 +1,796 @@
+&id001 !Command
+command:
+- ViewBS
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - ViewBS
+  - MethHeatmap
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: violin-boxplot.
+    description: Required arguments
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --verbose
+    description: '- Suppress extended information or not. [Default: TRUE]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --region
+    description: "[required*]\n- regions you want to investigate."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --sample
+    description: "[required]\n- Provide the sample information. [Format: methlationfile,samplename]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --merge
+    description: "[optional]\n- If --merge is provided (True), methylation level for\
+      \ different context will be genrated in one file."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --minDepth
+    description: "[optional]\n- Minimum read depth for calculating methylation level.\
+      \ [default: 5]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --maxDepth
+    description: "[optional]\n- Maximum read depth for calculating methylation level.\
+      \ [default: 10000]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --cluster_rows
+    description: "[optional]\n- boolean values determining if rows should be clustered\
+      \ or hclust object."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --cluster_cols
+    description: "[optional]\n- boolean values determining if columns should be clustered\
+      \ or hclust object."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --outdir
+    description: "[optional]\n- Output folder. [Default: ./]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --prefix
+    description: "[required]\n- Provide prefix for the output file. [Default: MethHeatmap]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --height
+    description: "[optional]\n- Height of PDF figure (Heatmap). Unit is cm. [Default:\
+      \ 10]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --width
+    description: "[optional]\n- Width of PDF figure (Heatmap). Unit is cm. [Default:\
+      \ 10]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --height2
+    description: "[optional]\n- Height of PDF figure (Violin and boxplot). Unit is\
+      \ cm. [Default: 10]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --width2
+    description: "[optional]\n- Width of PDF figure (Violin and boxplot). Unit is\
+      \ cm. [Default: 10]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --random_region
+    description: "[optional]\n- The number to select the regions randomly for the\
+      \ give list of regions.\nWhen the given regions are too many, it may cause \"\
+      cannot allocate\nvector of size\" when generating the heatmap. Then we randomly\
+      \ select\npart of the data to generate the heatmap. [Default: 2000]\nIf ViewBS\
+      \ still \"cannot allocate vector of size\", please select a smaller\nnumber.\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -help
+    - -h
+    description: '- Prints the help message and exists.'
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "\nSubcommand: MethHeatmap\n\nNAME\n    ViewBS MethHeatmap - Generate\
+    \ methylation for each region and each\n    sample to make heatmap and violin-boxplot.\n\
+    \nSYNOPSIS\n    ViewBS MethHeatmap --region <region> --sample <methlation\n  \
+    \  information,sample_name> [--sample <methlation information,sample_name>]\n\
+    \    ...\n\nDESCRIPTION\n    Generate methylation for each region and each sample\
+    \ to make heatmap and\n    violin-boxplot.\n\nRequired arguments\n    -help |\
+    \ -h\n             - Prints the help message and exists.\n\n    --verbose\n  \
+    \           - Suppress extended information or not. [Default: TRUE]\n\n    --region\
+    \ [required*]\n             - regions you want to investigate.\n\n    --sample\
+    \ [required]\n             - Provide the sample information. [Format: methlationfile,samplename]\n\
+    \n    --merge [optional]\n             - If --merge is provided (True), methylation\
+    \ level for different context will be genrated in one file.\n\n    --minDepth\
+    \ [optional]\n             - Minimum read depth for calculating methylation level.\
+    \ [default: 5]\n\n    --maxDepth [optional]\n             - Maximum read depth\
+    \ for calculating methylation level. [default: 10000]\n\n    --cluster_rows [optional]\n\
+    \             - boolean values determining if rows should be clustered or hclust\
+    \ object.\n\n    --cluster_cols [optional]\n             - boolean values determining\
+    \ if columns should be clustered or hclust object.\n\n    --outdir [optional]\n\
+    \             - Output folder. [Default: ./]\n\n    --prefix [required]\n    \
+    \         - Provide prefix for the output file. [Default: MethHeatmap]\n\n   \
+    \ --height [optional]\n             - Height of PDF figure (Heatmap). Unit is\
+    \ cm. [Default: 10]\n\n    --width [optional]\n             - Width of PDF figure\
+    \ (Heatmap). Unit is cm. [Default: 10]\n\n    --height2 [optional]\n         \
+    \    - Height of PDF figure (Violin and boxplot). Unit is cm. [Default: 10]\n\n\
+    \    --width2 [optional]\n             - Width of PDF figure (Violin and boxplot).\
+    \ Unit is cm. [Default: 10]\n\n    --random_region [optional]\n             -\
+    \ The number to select the regions randomly for the give list of regions.\n  \
+    \             When the given regions are too many, it may cause \"cannot allocate\
+    \ \n               vector of size\" when generating the heatmap. Then we randomly\
+    \ select \n               part of the data to generate the heatmap. [Default:\
+    \ 2000] \n  \n               If ViewBS still \"cannot allocate vector of size\"\
+    , please select a smaller \n               number.\n\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/viewbs:0.1.10--pl5262h779adbc_0
+- !Command
+  command:
+  - ViewBS
+  - GlobalMethLev
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: report
+    description: Required arguments
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --verbose
+    - --sample
+    description: "[required]\n- Provide the sample information. [Format: methlationfile,samplename]\n\
+      It is possible to specify more than one sample pair by using the options\n--sample\
+      \ more than once. The methylation information can also be read from\na TEXT\
+      \ file. Instead of giving an explicit sample information pairs,\nyou need to\
+      \ write \"file:\" followed by the name of the TEXT file.\nSee details at: https://github.com/readbio/ViewBS"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --minDepth
+    description: "[optional]\n- Minimum read depth for calculating methylation level.\
+      \ [default: 1]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --maxDepth
+    description: "[optional]\n- Maximum read depth for calculating methylation level.\
+      \ [default: 10000]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --outdir
+    description: "[optional]\n- Provide the output directory. [default: ./]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --prefix
+    description: "[optional]\n- Provide prefix for the output file. [default: GlobalMethLev]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --height
+    description: "[optional]\n- Height of PDF figure. Unit is cm. [default: 10]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --width
+    description: "[optional]\n- Width of PDF figure. Unit is cm. [default: 10]\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -help
+    - -h
+    description: '- Prints the help message and exists.'
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "\nSubcommand: GlobalMethLev\n\nNAME\n    ViewBS MethGlobalLevl - Generate\
+    \ global (bulk) methylation level report\n\nSYNOPSIS\n    ViewBS MethGlobalLevl\
+    \ --sample <meth,sample_name> [--sample\n    <meth,sample_name> .......] --prefix\
+    \ <prefix for output> --outdir\n    <output folder>\n\nDESCRIPTION\n    ViewBS\
+    \ MethGlobalLevl will generate global (bulk) methylation level\n    report\n\n\
+    Required arguments\n    -help | -h\n             - Prints the help message and\
+    \ exists.\n\n    --verbose\n    --sample [required]\n             - Provide the\
+    \ sample information. [Format: methlationfile,samplename]\n               It is\
+    \ possible to specify more than one sample pair by using the options\n       \
+    \        --sample more than once. The methylation information can also be read\
+    \ from\n               a TEXT file. Instead of giving an explicit sample information\
+    \ pairs,\n               you need to write \"file:\" followed by the name of the\
+    \ TEXT file.\n               See details at: https://github.com/readbio/ViewBS\n\
+    \n    --minDepth [optional]\n             - Minimum read depth for calculating\
+    \ methylation level. [default: 1]\n\n    --maxDepth [optional]\n             -\
+    \ Maximum read depth for calculating methylation level. [default: 10000]\n\n \
+    \   --outdir [optional]\n             - Provide the output directory. [default:\
+    \ ./]\n\n    --prefix [optional]\n             - Provide prefix for the output\
+    \ file. [default: GlobalMethLev]\n\n    --height [optional]\n             - Height\
+    \ of PDF figure. Unit is cm. [default: 10]\n\n    --width [optional]\n       \
+    \      - Width of PDF figure. Unit is cm. [default: 10]\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/viewbs:0.1.10--pl5262h779adbc_0
+- !Command
+  command:
+  - ViewBS
+  - MethCoverage
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --verbose
+    - --reference
+    description: "[required]\n- reference genome in fasta file."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --sample
+    description: "[required]\n- Provide the sample information. [Format: methlationfile,samplename]\n\
+      It is possible to specify more than one sample pair by using the options\n--sample\
+      \ more than once. The methylation information can also be read from\na TEXT\
+      \ file. Instead of giving an explicit sample information pairs,\nyou need to\
+      \ write \"file:\" followed by the name of the TEXT file.\nSee details at: https://github.com/readbio/ViewBS"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --outdir
+    description: "[optional]\n- Provide the output directory. [default: ./]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --prefix
+    description: "[optional]\n- Provide prefix for the output file. [default: MethCoverage]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --height
+    description: "[optional]\n- Height of PDF figure. Unit is cm. [default: 10]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --width
+    description: "[optional]\n- Width of PDF figure. Unit is cm. [default: 10]\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -help
+    - -h
+    description: '- Prints the help message and exists.'
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "\nSubcommand: MethCoverage\nNAME\n    ViewBS MethCoverage - Generate\
+    \ coverage report for BS-seq data\n\nSYNOPSIS\n    ViewBS MethCoverage --sample\
+    \ <meth,sample_name> [--sample\n    <meth,sample_name> .......] --prefix <prefix\
+    \ for output>\n\nDESCRIPTION\n    MethCoverage will generate the coverage report\
+    \ for BS-seq data.\n\nRequired arguments\n    -help | -h\n             - Prints\
+    \ the help message and exists.\n\n    --verbose\n    --reference [required]\n\
+    \             - reference genome in fasta file.\n\n    --sample [required]\n \
+    \            - Provide the sample information. [Format: methlationfile,samplename]\
+    \ \n               It is possible to specify more than one sample pair by using\
+    \ the options \n               --sample more than once. The methylation information\
+    \ can also be read from\n               a TEXT file. Instead of giving an explicit\
+    \ sample information pairs, \n               you need to write \"file:\" followed\
+    \ by the name of the TEXT file.\n               See details at: https://github.com/readbio/ViewBS\n\
+    \n    --outdir [optional]\n             - Provide the output directory. [default:\
+    \ ./]\n\n    --prefix [optional]\n             - Provide prefix for the output\
+    \ file. [default: MethCoverage]\n\n    --height [optional]\n             - Height\
+    \ of PDF figure. Unit is cm. [default: 10]\n\n    --width [optional]\n       \
+    \      - Width of PDF figure. Unit is cm. [default: 10]\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/viewbs:0.1.10--pl5262h779adbc_0
+- !Command
+  command:
+  - ViewBS
+  - MethGeno
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: maxChromNumber
+    description: "--outdir\n- Output directory. [Default: ./]"
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --genomeLength
+    description: "[required]\n- chromosome length information. Can be generated using\
+      \ 'samtools faidx\nref.fa'"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --sample
+    description: "[required]\n- Provide the sample information. [Format: methlationfile,samplename]\n\
+      It is possible to specify more than one sample pair by using the options\n--sample\
+      \ more than once. The methylation information can also be read from\na TEXT\
+      \ file. Instead of giving an explicit sample information pairs,\nyou need to\
+      \ write \"file:\" followed by the name of the TEXT file.\nSee details at: https://github.com/readbio/ViewBS"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --win
+    description: "[optional]\n- Window size. Default: 500000"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --step
+    description: "[optional]\n- Step size. Default: 500000"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --minLength
+    description: "[optional]\n- Minimum length for a chromosome to output. Default:\
+      \ 0"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --maxChromNumber
+    description: "[optional]\n- Maximum number of chromosome IDs with lenght > 'minLength'.\n\
+      Default: 60."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --prefix
+    description: '- Prefix for the output  [Default: MethGeno]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --height
+    description: "[optional]\n- Height of PDF figure. Unit is cm. [default: 10]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --width
+    description: "[optional]\n- Width of PDF figure. Unit is cm. [default: 10]\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -help
+    - -h
+    description: '- Prints the help message and exists.'
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "\nSubcommand: MethGeno\n\nNAME\n    ViewBS MethGeno - Generate methylation\
+    \ information across chromosome.\n\nSYNOPSIS\n    ViewBS MethGeno\n\nDESCRIPTION\n\
+    \    Generate methylation information across chromosome.\n\nRequired arguments\n\
+    \    -help | -h\n             - Prints the help message and exists.\n\n    --genomeLength\
+    \ [required]\n             - chromosome length information. Can be generated using\
+    \ 'samtools faidx\n               ref.fa'\n\n    --sample [required]\n       \
+    \      - Provide the sample information. [Format: methlationfile,samplename]\n\
+    \               It is possible to specify more than one sample pair by using the\
+    \ options\n               --sample more than once. The methylation information\
+    \ can also be read from\n               a TEXT file. Instead of giving an explicit\
+    \ sample information pairs,\n               you need to write \"file:\" followed\
+    \ by the name of the TEXT file.\n               See details at: https://github.com/readbio/ViewBS\n\
+    \n    --win [optional]\n             - Window size. Default: 500000\n\n    --step\
+    \ [optional]\n             - Step size. Default: 500000\n\n    --minLength [optional]\n\
+    \             - Minimum length for a chromosome to output. Default: 0\n\n    --maxChromNumber\
+    \ [optional]\n             - Maximum number of chromosome IDs with lenght > 'minLength'.\n\
+    \               Default: 60.\n\n            maxChromNumber\n\n    --outdir\n \
+    \            - Output directory. [Default: ./]\n\n    --prefix\n             -\
+    \ Prefix for the output  [Default: MethGeno]\n\n    --height [optional]\n    \
+    \         - Height of PDF figure. Unit is cm. [default: 10]\n\n    --width [optional]\n\
+    \             - Width of PDF figure. Unit is cm. [default: 10]\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/viewbs:0.1.10--pl5262h779adbc_0
+- !Command
+  command:
+  - ViewBS
+  - MethOneRegion
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: verbose
+    description: '- Suppress extended information or not. [Default: TRUE]'
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --region
+    description: "[required]\n- One target region. [chr1:100-200]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --minDepth
+    description: "[optional]\n- Minimum read depth for calculating methylation level.\
+      \ [default: 5]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --maxDepth
+    description: "[optional]\n- Maximum read depth for calculating methylation level.\
+      \ [default: 10000]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --flank
+    description: "[optional]\n- Extend the provided reigons to the flanking regions.\
+      \ [default: 400]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --outdir
+    description: "[optional]\n- Output folder. [Default: ./]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --prefix
+    description: "[optional]\n- Provide prefix for the output file. [Default: MethOneRegion]\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -help
+    - -h
+    description: '- Prints the help message and exists.'
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "\nSubcommand: MethOneRegion\n\nNAME\n    ViewBS MethOneRegion - Extract\
+    \ methylation information for one region of\n    each sample.\n\nSYNOPSIS\n  \
+    \  ViewBS MethHeatmap --region <region chr1:100-200> --sample <methlation\n  \
+    \  information,sample_name> [--sample <methlation information,sample_name>]\n\n\
+    DESCRIPTION\n    ViewBS MethOneRegion - Extract methylation information for one\
+    \ region of\n    each sample and plot the methylation information.\n\nRequired\
+    \ arguments\n    -help | -h\n             - Prints the help message and exists.\n\
+    \n    verbose\n             - Suppress extended information or not. [Default:\
+    \ TRUE]\n\n    --region [required]\n             - One target region. [chr1:100-200]\n\
+    \n    --sample [required]\n             - Provide the sample information. [Format:\
+    \ methlationFile,samplenName] \n               It is possible to specify more\
+    \ than one sample pair by using the options \n               --sample more than\
+    \ once. The methylation information can also be read from\n               a TEXT\
+    \ file. Instead of giving an explicit sample information pairs, \n           \
+    \    you need to write file: followed by the name of the TEXT file.\n\n    --sample\
+    \ [optional]\n             -  Sequence context (CG, CHG or CHH) to plot. It is\
+    \ possible to specify more than \n                one sample pair by using the\
+    \ options --sample more than once. [Default: CG].\n\n    --minDepth [optional]\n\
+    \             - Minimum read depth for calculating methylation level. [default:\
+    \ 5]\n\n    --maxDepth [optional]\n             - Maximum read depth for calculating\
+    \ methylation level. [default: 10000]\n\n    --flank [optional]\n            \
+    \ - Extend the provided reigons to the flanking regions. [default: 400]\n\n  \
+    \  --outdir [optional]\n             - Output folder. [Default: ./]\n\n    --prefix\
+    \ [optional]\n             - Provide prefix for the output file. [Default: MethOneRegion]\n\
+    \n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/viewbs:0.1.10--pl5262h779adbc_0
+- !Command
+  command:
+  - ViewBS
+  - BisNonConvRate
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --verbose
+    - --sample
+    description: "[required]\n- Provide the sample information. [Format: methlationfile,samplename]\n\
+      It is possible to specify more than one sample pair by using the options\n--sample\
+      \ more than once. The methylation information can also be read from\na TEXT\
+      \ file. Instead of giving an explicit sample information pairs,\nyou need to\
+      \ write \"file:\" followed by the name of the TEXT file.\nSee details at: https://github.com/readbio/ViewBS"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --chrom
+    description: "[required]\n- Chromosome ID that the users want to use to estimate\
+      \ non-conversion rate."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --minDepth
+    description: "[optional]\n- Minimum read depth for calculating methylation level.\
+      \ [default: 5]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --context
+    description: "[optional]\n- Sequence context for calculating non-conversion rate.\
+      \ It is possible to specify\nmore than one sample pair by using the option --context\
+      \ more than once. [default: CXX]\nCXX means non-conversion rate will be calculated\
+      \ based on all the 3 sequence context."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --maxDepth
+    description: "[optional]\n- Maximum read depth for calculating methylation level.\
+      \ [default: 10000]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --outdir
+    description: "[optional]\n- Provide the output directory. [default: ./]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --prefix
+    description: "[optional]\n- Provide prefix for the output file. [default: GlobalMethLev]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --height
+    description: "[optional]\n- Height of PDF figure. Unit is cm. [default: 10]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --width
+    description: "[optional]\n- Width of PDF figure. Unit is cm. [default: 10]\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -help
+    - -h
+    description: '- Prints the help message and exists.'
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "\nSubcommand: BisNonConvRate\nSample list: \nNAME\n    ViewBS BisNonConvRate\
+    \ - Estimate non-conversion rate of BS-seq data\n\nSYNOPSIS\n    ViewBS BisNonConvRate\
+    \ --chrom <ChrC> --sample <meth,sample_name>\n    [--sample <meth,sample_name>\
+    \ .......] --prefix <prefix for output>\n    --outdir <output folder>\n\nDESCRIPTION\n\
+    \    ViewBS BisNonConvRate will estimate non-conversion rate of BS-seq data\n\
+    \    based on the unmethlated Chromsome, like chloroplast genome in plant or\n\
+    \    PhiX genome.\n\nRequired arguments\n    -help | -h\n             - Prints\
+    \ the help message and exists.\n\n    --verbose\n    --sample [required]\n   \
+    \          - Provide the sample information. [Format: methlationfile,samplename]\
+    \ \n               It is possible to specify more than one sample pair by using\
+    \ the options \n               --sample more than once. The methylation information\
+    \ can also be read from\n               a TEXT file. Instead of giving an explicit\
+    \ sample information pairs, \n               you need to write \"file:\" followed\
+    \ by the name of the TEXT file.\n               See details at: https://github.com/readbio/ViewBS\n\
+    \n    --chrom [required]\n             - Chromosome ID that the users want to\
+    \ use to estimate non-conversion rate.\n\n    --minDepth [optional]\n        \
+    \     - Minimum read depth for calculating methylation level. [default: 5]\n\n\
+    \    --context [optional]\n             - Sequence context for calculating non-conversion\
+    \ rate. It is possible to specify \n               more than one sample pair by\
+    \ using the option --context more than once. [default: CXX]\n               CXX\
+    \ means non-conversion rate will be calculated based on all the 3 sequence context.\n\
+    \n    --maxDepth [optional]\n             - Maximum read depth for calculating\
+    \ methylation level. [default: 10000]\n\n    --outdir [optional]\n           \
+    \  - Provide the output directory. [default: ./]\n\n    --prefix [optional]\n\
+    \             - Provide prefix for the output file. [default: GlobalMethLev]\n\
+    \n    --height [optional]\n             - Height of PDF figure. Unit is cm. [default:\
+    \ 10]\n\n    --width [optional]\n             - Width of PDF figure. Unit is cm.\
+    \ [default: 10]\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/viewbs:0.1.10--pl5262h779adbc_0
+- !Command
+  command:
+  - ViewBS
+  - MethLevDist
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --verbose
+    - --sample
+    description: "[required]\n- Provide the sample information. [Format: methlationfile,samplename]\n\
+      It is possible to specify more than one sample pair by using the options\n--sample\
+      \ more than once. The methylation information can also be read from\na TEXT\
+      \ file. Instead of giving an explicit sample information pairs,\nyou need to\
+      \ write \"file:\" followed by the name of the TEXT file.\nSee details at: https://github.com/readbio/ViewBS"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --region
+    description: "[optional]\n- Restrict the calculation to the regions provided only."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --minDepth
+    description: "[optional]\n- Minimum read depth for calculating methylation level.\
+      \ [default: 5]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --maxDepth
+    description: "[optional]\n- Maximum read depth for calculating methylation level.\
+      \ [default: 10000]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --binMethLev
+    description: "[optional]\n- Bin size to calculate the distribution of methylation\
+      \ level. [default: 0.1]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --outdir
+    description: "[optional]\n- Provide the output directory. [default: ./]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --prefix
+    description: "[optional]\n- Provide prefix for the output file. [default: MethLevDist]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --height
+    description: "[optional]\n- Height of PDF figure. Unit is cm. [default: 10]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --width
+    description: "[optional]\n- Width of PDF figure. Unit is cm. [default: 10]\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -help
+    - -h
+    description: '- Prints the help message and exists.'
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "\nSubcommand: MethLevDist\n\nNAME\n    ViewBS MethLevDist - Generate\
+    \ distribution of methylation levels genome\n    wide or for a list of regions,\
+    \ like genes, promoters, etc.\n\nSYNOPSIS\n    ViewBS MethMethLevDist --sample\
+    \ <meth,sample_name> [--sample\n    <meth,sample_name> .......]\n\nDESCRIPTION\n\
+    \    Prifile the distribution of methylation level for a given list of region\n\
+    \    or for whole genome-wide.\n\nRequired arguments\n    -help | -h\n       \
+    \      - Prints the help message and exists.\n\n    --verbose\n    --sample [required]\n\
+    \             - Provide the sample information. [Format: methlationfile,samplename]\n\
+    \               It is possible to specify more than one sample pair by using the\
+    \ options\n               --sample more than once. The methylation information\
+    \ can also be read from\n               a TEXT file. Instead of giving an explicit\
+    \ sample information pairs,\n               you need to write \"file:\" followed\
+    \ by the name of the TEXT file.\n               See details at: https://github.com/readbio/ViewBS\n\
+    \n    --region [optional]\n             - Restrict the calculation to the regions\
+    \ provided only.\n\n    --minDepth [optional]\n             - Minimum read depth\
+    \ for calculating methylation level. [default: 5]\n\n    --maxDepth [optional]\n\
+    \             - Maximum read depth for calculating methylation level. [default:\
+    \ 10000]\n\n    --binMethLev [optional]\n             - Bin size to calculate\
+    \ the distribution of methylation level. [default: 0.1]\n\n    --outdir [optional]\n\
+    \             - Provide the output directory. [default: ./]\n\n    --prefix [optional]\n\
+    \             - Provide prefix for the output file. [default: MethLevDist]\n\n\
+    \    --height [optional]\n             - Height of PDF figure. Unit is cm. [default:\
+    \ 10]\n\n    --width [optional]\n             - Width of PDF figure. Unit is cm.\
+    \ [default: 10]\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/viewbs:0.1.10--pl5262h779adbc_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: Prints the help message and exits.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  - -v
+  description: Prints the version information and exits.
+  args: !EmptyFlagArg {}
+help_text: "NAME\n    ViewBS - Tools for exploring and visualizing deep sequencing\
+  \ of\n    bisulfite seuquencing (BS-seq) data.\n\nSYNOPSIS\n    ViewBS <subcmd>\
+  \ [options]\n\nDESCRIPTION\n    ViewBS is developped to mine and visualize bisulfite\
+  \ seuquencing data.\n\nOptions\n    --help | -h\n            Prints the help message\
+  \ and exits.\n\n    --version | -v\n            Prints the version information and\
+  \ exits.\n\n    Subcommands:\n    MethCoverage\n             - Generate coverage\
+  \ report for BS-seq data\n\n    BisNonConvRate\n             - Generate bisulfite\
+  \ non-conversion rate for BS-seq data using the\n               provided chromosome\
+  \ (usually chloroplast for plants).\n\n    GlobalMethLev\n             - Generate\
+  \ global (bulk) methylation level report for BS-seq data\n\n    MethLevDist\n  \
+  \           - Generate distribution of methylation level for different sequence\
+  \ context (CG, \n               CHG and CHH) for BS-seq data\n\n    MethGeno\n \
+  \            - Generate the methylation information across each chromosome and plot\
+  \ the \n               information.\n\n    MethOverRegion\n             - Generate\
+  \ the methylation information across the regions provided and generate \n      \
+  \         meta-plot. The regions can be genes, transposable elements, etc.\n\n \
+  \   MethHeatmap\n             - Generate heat map and violin-boxplot for selected\
+  \ regions.\n\n    MethOneRegion\n             - Visualize DNA methylation for a\
+  \ given regions.\n\nHELP\n            If you have bugs, feature requests, please\
+  \ report the issues\n            here: (https://github.com/readbio/ViewBS/issues)\n\
+  \n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/viewbs:0.1.10--pl5262h779adbc_0

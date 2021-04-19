@@ -1,0 +1,188 @@
+!Command
+command:
+- scanpy-find-variable-genes
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: input_obj
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: output_obj
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --input-format
+  description: "[anndata|loom]\nInput object format.  [default: anndata]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  - --output-format
+  description: "[anndata|loom|zarr]\nOutput object format.  [default: anndata]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  - --zarr-chunk-size
+  description: Chunk size for writing output in zarr
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --loom-write-obsm-varm
+  description: "Write obsm and varm to the Loom file?\n[default: False]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -X
+  - --export-mtx
+  description: "When specified, using it as prefix for\nexporting mtx files. If not\
+    \ empty and not\nending with \"/\" or \"_\", a \"_\" will be\nappended."
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --show-obj
+  description: "[stdout|stderr]      Print output object summary info to\nspecified\
+    \ stream."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --mean-limits
+  description: "...\nCutoffs for the mean of expressionin the\nformat of \"-m min\
+    \ max\".  [default: 0.0125,\n3]"
+  args: !SimpleFlagArg
+    name: FLOAT FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --disp-limits
+  description: "...\nCutoffs for the dispersion of expressionin\nthe format of \"\
+    -d min max\".  [default: 0.5,\ninf]"
+  args: !SimpleFlagArg
+    name: FLOAT FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --span
+  description: "The fraction of the data (cells) used when\nestimating the variance\
+    \ in the loess model\nfit if flavor='seurat_v3'.  [default: 0.3]"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --n-bins
+  description: Number of bins for binning the mean gene
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --n-top-genes
+  description: Number of highly-variable genes to keep.
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --flavor
+  description: "[seurat|cell_ranger|seurat_v3]\nChoose the flavor for computing normalized\n\
+    dispersion.  [default: seurat]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --subset
+  description: "When set, inplace subset to highly-variable\ngenes, otherwise only\
+    \ flag highly-variable\ngenes."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --batch-key
+  description: "If specified, highly-variable genes are\nselected within each batch\
+    \ separately and\nmerged. This simple process avoids the\nselection of batch-specific\
+    \ genes and acts\nas a lightweight batch correction method.\nFor all flavors,\
+    \ genes are first sorted by\nhow many batches they are a HVG. For\ndispersion-based\
+    \ flavors ties are broken by\nnormalized dispersion. If flavor =\n'seurat_v3',\
+    \ ties are broken by the median\n(across batches) rank based on within-batch\n\
+    normalized variance."
+  args: !SimpleFlagArg
+    name: TEXT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: scanpy-find-variable-genes [OPTIONS] <input_obj> <output_obj>\n\
+  \n  Find highly variable genes.\n\n  <input_obj>:   input file in format specfied\
+  \ by --input-format\n  <output_obj>:  output file in format specfied by --output-format\n\
+  \nOptions:\n  -f, --input-format [anndata|loom]\n                              \
+  \    Input object format.  [default: anndata]\n  -F, --output-format [anndata|loom|zarr]\n\
+  \                                  Output object format.  [default: anndata]\n \
+  \ -z, --zarr-chunk-size INTEGER   Chunk size for writing output in zarr\n      \
+  \                            format.  [default: 1000]\n\n  -b, --loom-write-obsm-varm\
+  \      Write obsm and varm to the Loom file?\n                                 \
+  \ [default: False]\n\n  -X, --export-mtx PATH           When specified, using it\
+  \ as prefix for\n                                  exporting mtx files. If not empty\
+  \ and not\n                                  ending with \"/\" or \"_\", a \"_\"\
+  \ will be\n                                  appended.\n\n  --show-obj [stdout|stderr]\
+  \      Print output object summary info to\n                                  specified\
+  \ stream.\n\n  -m, --mean-limits <FLOAT FLOAT>...\n                            \
+  \      Cutoffs for the mean of expressionin the\n                              \
+  \    format of \"-m min max\".  [default: 0.0125,\n                            \
+  \      3]\n\n  -d, --disp-limits <FLOAT FLOAT>...\n                            \
+  \      Cutoffs for the dispersion of expressionin\n                            \
+  \      the format of \"-d min max\".  [default: 0.5,\n                         \
+  \         inf]\n\n  --span FLOAT                    The fraction of the data (cells)\
+  \ used when\n                                  estimating the variance in the loess\
+  \ model\n                                  fit if flavor='seurat_v3'.  [default:\
+  \ 0.3]\n\n  -b, --n-bins INTEGER            Number of bins for binning the mean\
+  \ gene\n                                  expression.  [default: 20]\n\n  -t, --n-top-genes\
+  \ INTEGER       Number of highly-variable genes to keep.\n  -v, --flavor [seurat|cell_ranger|seurat_v3]\n\
+  \                                  Choose the flavor for computing normalized\n\
+  \                                  dispersion.  [default: seurat]\n\n  -s, --subset\
+  \                    When set, inplace subset to highly-variable\n             \
+  \                     genes, otherwise only flag highly-variable\n             \
+  \                     genes.\n\n  --batch-key TEXT                If specified,\
+  \ highly-variable genes are\n                                  selected within each\
+  \ batch separately and\n                                  merged. This simple process\
+  \ avoids the\n                                  selection of batch-specific genes\
+  \ and acts\n                                  as a lightweight batch correction\
+  \ method.\n                                  For all flavors, genes are first sorted\
+  \ by\n                                  how many batches they are a HVG. For\n \
+  \                                 dispersion-based flavors ties are broken by\n\
+  \                                  normalized dispersion. If flavor =\n        \
+  \                          'seurat_v3', ties are broken by the median\n        \
+  \                          (across batches) rank based on within-batch\n       \
+  \                           normalized variance.\n\n  --help                   \
+  \       Show this message and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/scanpy-scripts:0.3.3--pyhdfd78af_2

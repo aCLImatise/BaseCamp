@@ -1,0 +1,4951 @@
+&id001 !Command
+command:
+- parsec
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: Enables verbose mode.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --galaxy_instance
+  description: "Name of instance in /root/.parsec.yml. This\nparameter can also be\
+    \ set via the environment\nvariable PARSEC_GALAXY_INSTANCE  [default:\n__default;\
+    \ required]"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --path
+  description: config file path
+  args: !SimpleFlagArg
+    name: TEXT
+parent:
+subcommands:
+- &id002 !Command
+  command:
+  - parsec
+  - tools
+  positional: []
+  named: []
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - parsec
+    - tools
+    - get_tools
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: both.
+      description: "Output:\nList of tool descriptions.\n.. seealso:: bioblend.galaxy.toolshed.get_repositories()"
+    - !Positional
+      optional: false
+      position: 0
+      name: Trackster
+      description: -h, --help      Show this message and exit.
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --tool_id
+      description: id of the requested tool
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --name
+      description: name of the requested tool(s)
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --trackster
+      description: whether to return only tools that are compatible with
+      args: !EmptyFlagArg {}
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec tools get_tools [OPTIONS]\n\n  Get all tools or filter\
+      \ the specific one(s) via the provided ``name`` or\n  ``tool_id``. Provide only\
+      \ one argument, ``name`` or ``tool_id``, but not\n  both.\n\n  Output:\n\n \
+      \     List of tool descriptions.\n\n          .. seealso:: bioblend.galaxy.toolshed.get_repositories()\n\
+      \nOptions:\n  --tool_id TEXT  id of the requested tool\n  --name TEXT     name\
+      \ of the requested tool(s)\n  --trackster     whether to return only tools that\
+      \ are compatible with\n                  Trackster\n\n  -h, --help      Show\
+      \ this message and exit.\n"
+    generated_using: &id003
+    - --help
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - tools
+    - put_url
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: CONTENT
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: HISTORY_ID
+      description: ''
+    named: []
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec tools put_url [OPTIONS] CONTENT HISTORY_ID\n\n  Upload\
+      \ a string to a new dataset in the history specified by\n  ``history_id``.\n\
+      \n  Output:\n\n      Information about the created upload job\n\n          See\
+      \ :meth:`upload_file` for the optional parameters.\n\nOptions:\n  -h, --help\
+      \  Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - tools
+    - requirements
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: TOOL_ID
+      description: ''
+    named: []
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec tools requirements [OPTIONS] TOOL_ID\n\n  Return the\
+      \ resolver status for a specific tool. This functionality is\n  available only\
+      \ to Galaxy admins.\n\n  Output:\n\n      List containing a resolver status\
+      \ dict for each tool\n      requirement. For example::\n\n              [{'cacheable':\
+      \ False,               'dependency_resolver':\n              {'auto_init': True,\n\
+      \              'auto_install': False,\n              'can_uninstall_dependencies':\
+      \ True,\n              'ensure_channels': 'iuc,conda-forge,bioconda,defaults',\n\
+      \              'model_class': 'CondaDependencyResolver',\n              'prefix':\
+      \ '/mnt/galaxy/tool_dependencies/_conda',\n              'resolver_type': 'conda',\n\
+      \              'resolves_simple_dependencies': True,\n              'use_local':\
+      \ False,\n              'versionless': False},               'dependency_type':\n\
+      \              'conda',               'environment_path':\n              '/mnt/galaxy/tool_dependencies/_conda/envs/__blast@2.10.1',\n\
+      \              'exact': True,               'model_class':\n              'MergedCondaDependency',\
+      \               'name': 'blast',\n              'version': '2.10.1'}]\n\nOptions:\n\
+      \  -h, --help  Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - tools
+    - show_tool
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: TOOL_ID
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --io_details
+      description: whether to get also input and output details
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --link_details
+      description: whether to get also link details
+      args: !EmptyFlagArg {}
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec tools show_tool [OPTIONS] TOOL_ID\n\n  Get details of\
+      \ a given tool.\n\n  Output:\n\n      Information about the tool's interface\n\
+      \nOptions:\n  --io_details    whether to get also input and output details\n\
+      \  --link_details  whether to get also link details\n  -h, --help      Show\
+      \ this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - tools
+    - install_dependencies
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: TOOL_ID
+      description: ''
+    named: []
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec tools install_dependencies [OPTIONS] TOOL_ID\n\n  Install\
+      \ dependencies for a given tool via a resolver. This works only for\n  Conda\
+      \ currently. This functionality is available only to Galaxy admins.\n\n  Output:\n\
+      \n      Tool requirement status\n\nOptions:\n  -h, --help  Show this message\
+      \ and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - tools
+    - history...
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: parsec
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: tools
+      description: ''
+    - !Positional
+      optional: false
+      position: 2
+      name: COMMAND
+      description: ''
+    - !Positional
+      optional: true
+      position: 3
+      name: ARGS
+      description: ''
+    named: []
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec tools [OPTIONS] COMMAND [ARGS]...\nTry 'parsec tools\
+      \ -h' for help.\n\nError: No such command 'history...'.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - tools
+    - run_tool
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: HISTORY_ID
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: TOOL_ID
+      description: ''
+    - !Positional
+      optional: false
+      position: 2
+      name: TOOL_INPUTS
+      description: ''
+    named: []
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec tools run_tool [OPTIONS] HISTORY_ID TOOL_ID TOOL_INPUTS\n\
+      Try 'parsec tools run_tool -h' for help.\n\nError: Missing argument 'HISTORY_ID'.\n"
+    generated_using: &id006 []
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - tools
+    - upload_file
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: auto
+      description: --space_to_tab    whether to convert spaces to tabs. Default is
+        ``False``.
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --dbkey
+      description: (optional) genome dbkey
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --file_name
+      description: (optional) name of the new history dataset
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --file_type
+      description: (optional) Galaxy datatype for the new dataset, default is
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --to_posix_lines
+      description: "if ``True`` (the default), convert universal line endings\nto\
+        \ POSIX line endings. Set to ``False`` when uploading a\ngzip, bz2 or zip\
+        \ archive containing a binary file"
+      args: !EmptyFlagArg {}
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec tools upload_file [OPTIONS] PATH HISTORY_ID\n\n  Upload\
+      \ the file specified by ``path`` to the history specified by\n  ``history_id``.\n\
+      \n  Output:\n\n      Information about the created upload job\n\nOptions:\n\
+      \  --dbkey TEXT      (optional) genome dbkey\n  --file_name TEXT  (optional)\
+      \ name of the new history dataset\n  --file_type TEXT  (optional) Galaxy datatype\
+      \ for the new dataset, default is\n                    auto\n\n  --space_to_tab\
+      \    whether to convert spaces to tabs. Default is ``False``.\n            \
+      \        Applicable only if to_posix_lines is ``True``\n\n  --to_posix_lines\
+      \  if ``True`` (the default), convert universal line endings\n             \
+      \       to POSIX line endings. Set to ``False`` when uploading a\n         \
+      \           gzip, bz2 or zip archive containing a binary file\n\n  -h, --help\
+      \        Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - tools
+    - paste_content
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: CONTENT
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: HISTORY_ID
+      description: ''
+    named: []
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec tools paste_content [OPTIONS] CONTENT HISTORY_ID\n\n\
+      \  Upload a string to a new dataset in the history specified by\n  ``history_id``.\n\
+      \n  Output:\n\n      Information about the created upload job\n\n          See\
+      \ :meth:`upload_file` for the optional parameters.\n\nOptions:\n  -h, --help\
+      \  Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: parsec tools [OPTIONS] COMMAND [ARGS]...\n\nOptions:\n  -h, --help\
+    \  Show this message and exit.\n\nCommands:\n  get_tool_panel        Get a list\
+    \ of available tool elements in Galaxy's...\n  get_tools             Get all tools\
+    \ or filter the specific one(s) via the...\n  install_dependencies  Install dependencies\
+    \ for a given tool via a...\n  paste_content         Upload a string to a new\
+    \ dataset in the history...\n  put_url               Upload a string to a new\
+    \ dataset in the history...\n  requirements          Return the resolver status\
+    \ for a specific tool.\n  run_tool              Runs tool specified by ``tool_id``\
+    \ in history...\n  show_tool             Get details of a given tool.\n  upload_file\
+    \           Upload the file specified by ``path`` to the\n                   \
+    \     history...\n\n  upload_from_ftp       Upload the file specified by ``path``\
+    \ from the...\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+- &id004 !Command
+  command:
+  - parsec
+  - toolshed_repositories
+  positional: []
+  named: []
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - parsec
+    - toolshed_repositories
+    - create_repository
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: NAME
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: SYNOPSIS
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --description
+      description: Optional description of the repository
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --type
+      description: "type of the repository. One of \"unrestricted\",\n\"repository_suite_definition\"\
+        , or\n\"tool_dependency_definition\"  [default:\nunrestricted]"
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --remote_repository_url
+      description: Remote URL (e.g. GitHub/Bitbucket repository)
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --homepage_url
+      description: Upstream's homepage for the project
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --category_ids
+      description: List of encoded category IDs
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id004
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec toolshed_repositories create_repository [OPTIONS] NAME\
+      \ SYNOPSIS\n\n  Create a new repository in a Tool Shed.\n\n  Output:\n\n   \
+      \   a dictionary containing information about the new repository.\n      For\
+      \ example::\n\n              {\"deleted\": false,              \"deprecated\"\
+      : false,\n              \"description\": \"new_synopsis\",              \"homepage_url\"\
+      :\n              \"https://github.com/galaxyproject/\",              \"id\"\
+      :\n              \"8cf91205f2f737f4\",              \"long_description\": \"\
+      this is\n              some repository\",              \"model_class\": \"Repository\"\
+      ,\n              \"name\": \"new_repo_17\",              \"owner\": \"qqqqqq\"\
+      ,\n              \"private\": false,              \"remote_repository_url\"\
+      :\n              \"https://github.com/galaxyproject/tools-devteam\",\n     \
+      \         \"times_downloaded\": 0,              \"type\": \"unrestricted\",\n\
+      \              \"user_id\": \"adb5f5c93f827949\"}\n\nOptions:\n  --description\
+      \ TEXT            Optional description of the repository\n  --type TEXT    \
+      \               type of the repository. One of \"unrestricted\",\n         \
+      \                       \"repository_suite_definition\", or\n              \
+      \                  \"tool_dependency_definition\"  [default:\n             \
+      \                   unrestricted]\n\n  --remote_repository_url TEXT  Remote\
+      \ URL (e.g. GitHub/Bitbucket repository)\n  --homepage_url TEXT           Upstream's\
+      \ homepage for the project\n  --category_ids TEXT           List of encoded\
+      \ category IDs\n  -h, --help                    Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - toolshed_repositories
+    - repository_revisions
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --downloadable
+      description: Can the tool be downloaded
+      args: !EmptyFlagArg {}
+    parent: *id004
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --malicious
+      - --tools_functionally_correct
+      - --missing_test_components
+      - --do_not_test
+      - --includes_tools
+      - --test_install_error
+      - --skip_tool_test
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !SimpleFlagArg
+        name: TEXT
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec toolshed_repositories repository_revisions [OPTIONS]\n\
+      \n  Returns a (possibly filtered) list of dictionaries that include\n  information\
+      \ about all repository revisions. The following parameters can\n  be used to\
+      \ filter the list.\n\n  Output:\n\n      Returns a (possibly filtered) list\
+      \ of dictionaries that include\n      information about all repository revisions.\
+      \           For example::\n\n              [{'changeset_revision': '6e26c5a48e9a',\n\
+      \              'do_not_test': False,               'downloadable': True,\n \
+      \             'has_repository_dependencies': False,               'id':\n  \
+      \            '92250afff777a169',               'includes_datatypes': False,\n\
+      \              'includes_tool_dependencies': False,\n              'includes_tools':\
+      \ True,\n              'includes_tools_for_display_in_tool_panel': True,\n \
+      \             'includes_workflows': False,               'malicious': False,\n\
+      \              'missing_test_components': False,\n              'repository_id':\
+      \ '78f2604ff5e65707',\n              'test_install_error': False,          \
+      \     'time_last_tested':\n              None,               'tools_functionally_correct':\
+      \ False,\n              'url': '/api/repository_revisions/92250afff777a169'},\n\
+      \              {'changeset_revision': '15a54fa11ad7',\n              'do_not_test':\
+      \ False,               'downloadable': True,\n              'has_repository_dependencies':\
+      \ False,               'id':\n              'd3823c748ae2205d',            \
+      \   'includes_datatypes': False,\n              'includes_tool_dependencies':\
+      \ False,\n              'includes_tools': True,\n              'includes_tools_for_display_in_tool_panel':\
+      \ True,\n              'includes_workflows': False,               'malicious':\
+      \ False,\n              'missing_test_components': False,\n              'repository_id':\
+      \ 'f9662009da7bfce0',\n              'test_install_error': False,          \
+      \     'time_last_tested':\n              None,               'tools_functionally_correct':\
+      \ False,\n              'url': '/api/repository_revisions/d3823c748ae2205d'}]\n\
+      \nOptions:\n  --downloadable                  Can the tool be downloaded\n \
+      \ --malicious TEXT\n  --tools_functionally_correct TEXT\n  --missing_test_components\
+      \ TEXT\n  --do_not_test TEXT\n  --includes_tools TEXT\n  --test_install_error\
+      \ TEXT\n  --skip_tool_test TEXT\n  -h, --help                      Show this\
+      \ message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - toolshed_repositories
+    - show_repository
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: TOOLSHED_ID
+      description: ''
+    named: []
+    parent: *id004
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec toolshed_repositories show_repository [OPTIONS] TOOLSHED_ID\n\
+      \n  Display information of a repository from Tool Shed\n\n  Output:\n\n    \
+      \  Information about the tool.           For example::\n\n              {'category_ids':\
+      \ ['c1df3132f6334b0e', 'f6d7b0037d901d9b'],\n              'deleted': False,\
+      \              'deprecated': False,\n              'description': 'Order Contigs',\
+      \              'homepage_url':\n              '',              'id': '287bd69f724b99ce',\n\
+      \              'long_description': '',              'name': 'best_tool_ever',\n\
+      \              'owner': 'billybob',              'private': False,\n       \
+      \       'remote_repository_url': '',              'times_downloaded':\n    \
+      \          0,              'type': 'unrestricted',              'url':\n   \
+      \           '/api/repositories/287bd69f724b99ce',              'user_id':\n\
+      \              '5cefd48bc04af6d4'}\n\n          .. versionchanged:: 0.4.1  \
+      \         Changed method name from\n          ``show_tool`` to ``show_repository``\
+      \ to           better align\n          with the Tool Shed concepts.\n\nOptions:\n\
+      \  -h, --help  Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - toolshed_repositories
+    - update_repository
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: TAR_BALL_PATH
+      description: Update the contents of a Tool Shed repository with specified tar
+        ball.
+    - !Positional
+      optional: false
+      position: 0
+      name: 0.5.2
+      description: 'Options:'
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --commit_message
+      description: "Commit message used for the underlying Mercurial\nrepository backing\
+        \ Tool Shed repository."
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id004
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec toolshed_repositories update_repository [OPTIONS] ID\n\
+      \                                                      TAR_BALL_PATH\n\n  Update\
+      \ the contents of a Tool Shed repository with specified tar ball.\n\n  Output:\n\
+      \n      Returns a dictionary that includes repository content warnings.\n  \
+      \    Most valid uploads will result in no such warning and an exception\n  \
+      \    will be raised generally if there are problems.           For example\n\
+      \      a successful upload will look like::\n\n              {'content_alert':\
+      \ '',              'message': ''}\n\n          .. versionadded:: 0.5.2\n\nOptions:\n\
+      \  --commit_message TEXT  Commit message used for the underlying Mercurial\n\
+      \                         repository backing Tool Shed repository.\n\n  -h,\
+      \ --help             Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - toolshed_repositories
+    - search_repositories
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: search.
+      description: "For example::\n{'hits': [{'matched_terms': [],\n'repository':\
+        \ {'approved': 'no',\n'description': 'Convert export file to fastq',\n'full_last_updated':\
+        \ '2015-01-18 09:48 AM',\n'homepage_url': '',\n'id': 'bdfa208f0cf6504e',\n\
+        'last_updated': 'less than a year',\n'long_description': 'This is a simple\
+        \ too to convert Solexas\nExport files to FASTQ files.',\n'name': 'export_to_fastq',\n\
+        'remote_repository_url': '',\n'repo_owner_username': 'louise',\n'times_downloaded':\
+        \ 164},                        'score':\n4.92},                       {'matched_terms':\
+        \ [],\n'repository': {'approved': 'no',\n'description': 'Convert BAM file\
+        \ to fastq',\n'full_last_updated': '2015-04-07 11:57 AM',\n'homepage_url':\
+        \ '',\n'id': '175812cd7caaf439',\n'last_updated': 'less than a month',\n'long_description':\
+        \ 'Use Picards SamToFastq to convert a BAM\nfile to fastq. Useful for storing\
+        \ reads as BAM in Galaxy and\nconverting to fastq when needed for analysis.',\n\
+        'name': 'bam_to_fastq',\n'remote_repository_url': '',\n'repo_owner_username':\
+        \ 'brad-chapman',\n'times_downloaded': 138},                        'score':\n\
+        4.14}],              'hostname':\n'https://testtoolshed.g2.bx.psu.edu/', \
+        \             'page':\n'1',              'page_size': '2',\n'total_results':\
+        \ '64'}"
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --page
+      description: 'page requested  [default: 1]'
+      args: !SimpleFlagArg
+        name: INTEGER
+    - !Flag
+      optional: true
+      synonyms:
+      - --page_size
+      description: 'page size requested  [default: 10]'
+      args: !SimpleFlagArg
+        name: INTEGER
+    parent: *id004
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec toolshed_repositories search_repositories [OPTIONS]\
+      \ Q\n\n  Search for repositories in a Galaxy Tool Shed.\n\n  Output:\n\n   \
+      \   dictionary containing search hits as well as metadata for the\n      search.\
+      \           For example::\n\n              {'hits': [{'matched_terms': [],\n\
+      \              'repository': {'approved': 'no',\n              'description':\
+      \ 'Convert export file to fastq',\n              'full_last_updated': '2015-01-18\
+      \ 09:48 AM',\n              'homepage_url': '',\n              'id': 'bdfa208f0cf6504e',\n\
+      \              'last_updated': 'less than a year',\n              'long_description':\
+      \ 'This is a simple too to convert Solexas\n              Export files to FASTQ\
+      \ files.',\n              'name': 'export_to_fastq',\n              'remote_repository_url':\
+      \ '',\n              'repo_owner_username': 'louise',\n              'times_downloaded':\
+      \ 164},                        'score':\n              4.92},              \
+      \         {'matched_terms': [],\n              'repository': {'approved': 'no',\n\
+      \              'description': 'Convert BAM file to fastq',\n              'full_last_updated':\
+      \ '2015-04-07 11:57 AM',\n              'homepage_url': '',\n              'id':\
+      \ '175812cd7caaf439',\n              'last_updated': 'less than a month',\n\
+      \              'long_description': 'Use Picards SamToFastq to convert a BAM\n\
+      \              file to fastq. Useful for storing reads as BAM in Galaxy and\n\
+      \              converting to fastq when needed for analysis.',\n           \
+      \   'name': 'bam_to_fastq',\n              'remote_repository_url': '',\n  \
+      \            'repo_owner_username': 'brad-chapman',\n              'times_downloaded':\
+      \ 138},                        'score':\n              4.14}],             \
+      \ 'hostname':\n              'https://testtoolshed.g2.bx.psu.edu/',        \
+      \      'page':\n              '1',              'page_size': '2',\n        \
+      \      'total_results': '64'}\n\nOptions:\n  --page INTEGER       page requested\
+      \  [default: 1]\n  --page_size INTEGER  page size requested  [default: 10]\n\
+      \  -h, --help           Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: parsec toolshed_repositories [OPTIONS] COMMAND [ARGS]...\n\n\
+    Options:\n  -h, --help  Show this message and exit.\n\nCommands:\n  create_repository\
+    \               Create a new repository in a Tool...\n  get_ordered_installable_revisions\n\
+    \                                  Returns the ordered list of...\n  get_repositories\
+    \                Get a list of all the repositories...\n  get_repository_revision_install_info\n\
+    \                                  Return a list of dictionaries of...\n  repository_revisions\
+    \            Returns a (possibly filtered) list...\n  search_repositories    \
+    \         Search for repositories in a Galaxy...\n  show_repository          \
+    \       Display information of a repository...\n  show_repository_revision   \
+    \     Returns a dictionary that includes...\n  update_repository             \
+    \  Update the contents of a Tool Shed...\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+- !Command
+  command:
+  - parsec
+  - config
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: get_config
+    description: Get a list of attributes about the Galaxy instance.
+  - !Positional
+    optional: false
+    position: 1
+    name: get_version
+    description: Get the current version of the Galaxy instance.
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: parsec config [OPTIONS] COMMAND [ARGS]...\n\nOptions:\n  -h,\
+    \ --help  Show this message and exit.\n\nCommands:\n  get_config   Get a list\
+    \ of attributes about the Galaxy instance.\n  get_version  Get the current version\
+    \ of the Galaxy instance.\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+- &id005 !Command
+  command:
+  - parsec
+  - histories
+  positional: []
+  named: []
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - parsec
+    - histories
+    - show_matching_datasets
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: HISTORY_ID
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --name_filter
+      description: "Only datasets whose name matches the ``name_filter``\nregular\
+        \ expression will be returned; use plain strings\nfor exact matches and None\
+        \ to match all datasets in the\nhistory"
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec histories show_matching_datasets [OPTIONS] HISTORY_ID\n\
+      \n  Get dataset details for matching datasets within a history.\n\n  Output:\n\
+      \n      List of dictionaries\n\nOptions:\n  --name_filter TEXT  Only datasets\
+      \ whose name matches the ``name_filter``\n                      regular expression\
+      \ will be returned; use plain strings\n                      for exact matches\
+      \ and None to match all datasets in the\n                      history\n\n \
+      \ -h, --help          Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - histories
+    - create_history
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --name
+      description: Optional name for new history
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec histories create_history [OPTIONS]\n\n  Create a new\
+      \ history, optionally setting the ``name``.\n\n  Output:\n\n      Dictionary\
+      \ containing information about newly created history\n\nOptions:\n  --name TEXT\
+      \  Optional name for new history\n  -h, --help   Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - histories
+    - get_status
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: completion.
+      description: 'Options:'
+    named: []
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec histories get_status [OPTIONS] HISTORY_ID\n\n  Returns\
+      \ the state of this history\n\n  Output:\n\n      A dict documenting the current\
+      \ state of the history. Has the following\n      keys:             'state' =\
+      \ This is the current state of the history,\n      such as ok, error, new etc.\
+      \             'state_details' = Contains\n      individual statistics for various\
+      \ dataset states.\n      'percent_complete' = The overall number of datasets\
+      \ processed to\n      completion.\n\nOptions:\n  -h, --help  Show this message\
+      \ and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - histories
+    - copy_dataset
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: HISTORY_ID
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: DATASET_ID
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --source
+      description: "Source of the dataset to be copied: 'hda' (the default),\n'library'\
+        \ or 'library_folder'  [default: hda]"
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec histories copy_dataset [OPTIONS] HISTORY_ID DATASET_ID\n\
+      \n  Copy a dataset to a history.\n\n  Output:\n\n      Information about the\
+      \ copied dataset\n\nOptions:\n  --source TEXT  Source of the dataset to be copied:\
+      \ 'hda' (the default),\n                 'library' or 'library_folder'  [default:\
+      \ hda]\n\n  -h, --help     Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - histories
+    - open_history
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: HISTORY_ID
+      description: ''
+    named: []
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec histories open_history [OPTIONS] HISTORY_ID\n\n  Open\
+      \ Galaxy in a new tab of the default web browser and switch to the\n  specified\
+      \ history.\n\n  Output:\n\n      ``None``\n\n          .. warning::        \
+      \   After opening the specified history, all\n          previously opened Galaxy\
+      \ tabs           in the browser session\n          will have the current history\
+      \ changed to this           one, even\n          if the interface still shows\
+      \ another history. Refreshing\n          any such tab is recommended.\n\nOptions:\n\
+      \  -h, --help  Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - histories
+    - update_dataset_collection
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: DATASET_COLLECTION_ID
+      description: Update history dataset collection metadata. Some of the attributes
+        that
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --deleted
+      description: Mark or unmark history dataset collection as deleted
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --name
+      description: Replace history dataset collection name with the given string
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --visible
+      description: Mark or unmark history dataset collection as visible
+      args: !EmptyFlagArg {}
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec histories update_dataset_collection [OPTIONS] HISTORY_ID\n\
+      \                                                  DATASET_COLLECTION_ID\n\n\
+      \  Update history dataset collection metadata. Some of the attributes that\n\
+      \  can be modified are documented below.\n\n  Output:\n\n      the updated dataset\
+      \ collection attributes\n\n          .. versionchanged:: 0.8.0             Changed\
+      \ the return value\n          from the status code (type int) to a dict.\n\n\
+      Options:\n  --deleted    Mark or unmark history dataset collection as deleted\n\
+      \  --name TEXT  Replace history dataset collection name with the given string\n\
+      \  --visible    Mark or unmark history dataset collection as visible\n  -h,\
+      \ --help   Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - histories
+    - undelete_history
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: HISTORY_ID
+      description: ''
+    named: []
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec histories undelete_history [OPTIONS] HISTORY_ID\n\n\
+      \  Undelete a history\n\n  Output:\n\n      'OK' if it was deleted\n\nOptions:\n\
+      \  -h, --help  Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - histories
+    - create_dataset_collection
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: COLLECTION_DESCRIPTION
+      description: Create a new dataset collection
+    named: []
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec histories create_dataset_collection [OPTIONS] HISTORY_ID\n\
+      \                                                  COLLECTION_DESCRIPTION\n\n\
+      \  Create a new dataset collection\n\n  Output:\n\n      Information about the\
+      \ new HDCA\n\nOptions:\n  -h, --help  Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - histories
+    - delete_history
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: the
+      description: history was marked as deleted), ``purged`` (if
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --purge
+      description: if ``True``, also purge (permanently delete) the history
+      args: !EmptyFlagArg {}
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec histories delete_history [OPTIONS] HISTORY_ID\n\n  Delete\
+      \ a history.\n\n  Output:\n\n      An error object if an error occurred or a\
+      \ dictionary\n      containing: ``id`` (the encoded id of the history), ``deleted``\
+      \ (if\n      the                  history was marked as deleted), ``purged``\
+      \ (if\n      the history was                  purged).\n\n          .. note::\
+      \           For the purge option to work, the Galaxy\n          instance must\
+      \ have the           ``allow_user_dataset_purge``\n          option set to ``true``\
+      \ in the           ``config/galaxy.yml``\n          configuration file.\n\n\
+      Options:\n  --purge     if ``True``, also purge (permanently delete) the history\n\
+      \  -h, --help  Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - histories
+    - upload_dataset_from_library
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: LIB_DATASET_ID
+      description: Upload a dataset into the history from a library. Requires the
+        library
+    named: []
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec histories upload_dataset_from_library [OPTIONS] HISTORY_ID\n\
+      \                                                    LIB_DATASET_ID\n\n  Upload\
+      \ a dataset into the history from a library. Requires the library\n  dataset\
+      \ ID, which can be obtained from the library contents.\n\n  Output:\n\n    \
+      \  Information about the newly created HDA\n\nOptions:\n  -h, --help  Show this\
+      \ message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - histories
+    - show_dataset_provenance
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: DATASET_ID
+      description: Get details related to how dataset was created (``id``, ``job_id``,
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --follow
+      description: "If ``True``, recursively fetch dataset provenance information\n\
+        for all inputs and their inputs, etc."
+      args: !EmptyFlagArg {}
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec histories show_dataset_provenance [OPTIONS] HISTORY_ID\n\
+      \                                                DATASET_ID\n\n  Get details\
+      \ related to how dataset was created (``id``, ``job_id``,\n  ``tool_id``, ``stdout``,\
+      \ ``stderr``, ``parameters``, ``inputs``, etc...).\n\n  Output:\n\n      Dataset\
+      \ provenance information           For example::\n\n              {'id': '6fbd9b2274c62ebe',\
+      \              'job_id':\n              '5471ba76f274f929',              'parameters':\
+      \ {'chromInfo':\n              '\"/usr/local/galaxy/galaxy-dist/tool-\n    \
+      \          data/shared/ucsc/chrom/mm9.len\"',\n              'dbkey': '\"mm9\"\
+      ',\n              'experiment_name': '\"H3K4me3_TAC_MACS2\"',\n            \
+      \  'input_chipseq_file1': {'id': '6f0a311a444290f2',\n              'uuid':\
+      \ 'null'},\n              'input_control_file1': {'id': 'c21816a91f5dc24e',\n\
+      \              'uuid': '16f8ee5e-228f-41e2-921e-a07866edce06'},\n          \
+      \    'major_command': '{\"gsize\": \"2716965481.0\", \"bdg\": \"False\",\n \
+      \             \"__current_case__\": 0, \"advanced_options\":\n             \
+      \ {\"advanced_options_selector\": \"off\", \"__current_case__\": 1},\n     \
+      \         \"input_chipseq_file1\": 104715, \"xls_to_interval\": \"False\",\n\
+      \              \"major_command_selector\": \"callpeak\", \"input_control_file1\"\
+      :\n              104721, \"pq_options\": {\"pq_options_selector\": \"qvalue\"\
+      ,\n              \"qvalue\": \"0.05\", \"__current_case__\": 1}, \"bw\": \"\
+      300\",\n              \"nomodel_type\": {\"nomodel_type_selector\": \"create_model\"\
+      ,\n              \"__current_case__\": 1}}'},              'stderr': '',\n \
+      \             'stdout': '',              'tool_id':\n              'toolshed.g2.bx.psu.edu/repos/ziru-\n\
+      \              zhou/macs2/modencode_peakcalling_macs2/2.0.10.2',\n         \
+      \     'uuid': '5c0c43f5-8d93-44bd-939d-305e82f213c6'}\n\nOptions:\n  --follow\
+      \    If ``True``, recursively fetch dataset provenance information\n       \
+      \       for all inputs and their inputs, etc.\n\n  -h, --help  Show this message\
+      \ and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - histories
+    - get_histories
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: arguments.
+      description: "Output:\nList of history dicts."
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --history_id
+      description: Encoded history ID to filter on
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --name
+      description: Name of history to filter on
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --deleted
+      description: "whether to filter for the deleted histories (``True``) or\nfor\
+        \ the non-deleted ones (``False``)"
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --published
+      description: "whether to filter for the published histories (``True``)\nor for\
+        \ the non-published ones (``False``). If not set, no\nfiltering is applied.\
+        \ Note the filtering is only applied\nto the user's own histories; to access\
+        \ all histories\npublished by any user, use the\n``get_published_histories``\
+        \ method."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --slug
+      description: History slug to filter on
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec histories get_histories [OPTIONS]\n\n  Get all histories\
+      \ or filter the specific one(s) by ``name`` or other\n  arguments.\n\n  Output:\n\
+      \n      List of history dicts.\n\nOptions:\n  --history_id TEXT  Encoded history\
+      \ ID to filter on\n  --name TEXT        Name of history to filter on\n  --deleted\
+      \          whether to filter for the deleted histories (``True``) or\n     \
+      \                for the non-deleted ones (``False``)\n\n  --published TEXT\
+      \   whether to filter for the published histories (``True``)\n             \
+      \        or for the non-published ones (``False``). If not set, no\n       \
+      \              filtering is applied. Note the filtering is only applied\n  \
+      \                   to the user's own histories; to access all histories\n \
+      \                    published by any user, use the\n                     ``get_published_histories``\
+      \ method.\n\n  --slug TEXT        History slug to filter on\n  -h, --help  \
+      \       Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - histories
+    - delete_dataset
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: None
+      description: ".. note::             For the purge option to work, the Galaxy\n\
+        instance must have the             ``allow_user_dataset_purge``\noption set\
+        \ to ``true`` in the             ``config/galaxy.yml``\nconfiguration file."
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --purge
+      description: if ``True``, also purge (permanently delete) the dataset
+      args: !EmptyFlagArg {}
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec histories delete_dataset [OPTIONS] HISTORY_ID DATASET_ID\n\
+      \n  Mark corresponding dataset as deleted.\n\n  Output:\n\n      None\n\n  \
+      \        .. note::             For the purge option to work, the Galaxy\n  \
+      \        instance must have the             ``allow_user_dataset_purge``\n \
+      \         option set to ``true`` in the             ``config/galaxy.yml``\n\
+      \          configuration file.\n\nOptions:\n  --purge     if ``True``, also\
+      \ purge (permanently delete) the dataset\n  -h, --help  Show this message and\
+      \ exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - histories
+    - show_history
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: information.
+      description: "Output:\ndetails of the given history or list of dataset info"
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --contents
+      description: "When ``True``, instead of the history details, return a list\n\
+        with info for all datasets in the given history. Note that\ninside each dataset\
+        \ info dict, the id which should be used\nfor further requests about this\
+        \ history dataset is given by\nthe value of the `id` (not `dataset_id`) key."
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --deleted
+      description: "When ``contents=True``, whether to filter for the deleted\ndatasets\
+        \ (``True``) or for the non-deleted ones (``False``).\nIf not set, no filtering\
+        \ is applied."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --visible
+      description: "When ``contents=True``, whether to filter for the visible\ndatasets\
+        \ (``True``) or for the hidden ones (``False``). If\nnot set, no filtering\
+        \ is applied."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --details
+      description: "When ``contents=True``, include dataset details. Set to\n'all'\
+        \ for the most information."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --types
+      description: "When ``contents=True``, filter for history content types. If\n\
+        set to ``['dataset']``, return only datasets. If set to\n``['dataset_collection']``,\
+        \ return only dataset collections.\nIf not set, no filtering is applied."
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec histories show_history [OPTIONS] HISTORY_ID\n\n  Get\
+      \ details of a given history. By default, just get the history meta\n  information.\n\
+      \n  Output:\n\n      details of the given history or list of dataset info\n\n\
+      Options:\n  --contents      When ``True``, instead of the history details, return\
+      \ a list\n                  with info for all datasets in the given history.\
+      \ Note that\n                  inside each dataset info dict, the id which should\
+      \ be used\n                  for further requests about this history dataset\
+      \ is given by\n                  the value of the `id` (not `dataset_id`) key.\n\
+      \n  --deleted TEXT  When ``contents=True``, whether to filter for the deleted\n\
+      \                  datasets (``True``) or for the non-deleted ones (``False``).\n\
+      \                  If not set, no filtering is applied.\n\n  --visible TEXT\
+      \  When ``contents=True``, whether to filter for the visible\n             \
+      \     datasets (``True``) or for the hidden ones (``False``). If\n         \
+      \         not set, no filtering is applied.\n\n  --details TEXT  When ``contents=True``,\
+      \ include dataset details. Set to\n                  'all' for the most information.\n\
+      \n  --types TEXT    When ``contents=True``, filter for history content types.\
+      \ If\n                  set to ``['dataset']``, return only datasets. If set\
+      \ to\n                  ``['dataset_collection']``, return only dataset collections.\n\
+      \                  If not set, no filtering is applied.\n\n  -h, --help    \
+      \  Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - histories
+    - delete_dataset_collection
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: DATASET_COLLECTION_ID
+      description: Mark corresponding dataset collection as deleted.
+    - !Positional
+      optional: false
+      position: 0
+      name: None
+      description: 'Options:'
+    named: []
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec histories delete_dataset_collection [OPTIONS] HISTORY_ID\n\
+      \                                                  DATASET_COLLECTION_ID\n\n\
+      \  Mark corresponding dataset collection as deleted.\n\n  Output:\n\n      None\n\
+      \nOptions:\n  -h, --help  Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - histories
+    - show_dataset
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: HISTORY_ID
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: DATASET_ID
+      description: ''
+    named: []
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec histories show_dataset [OPTIONS] HISTORY_ID DATASET_ID\n\
+      \n  Get details about a given history dataset.\n\n  Output:\n\n      Information\
+      \ about the dataset\n\nOptions:\n  -h, --help  Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - histories
+    - update_history
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: HISTORY_ID
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --annotation
+      description: Replace history annotation with given string
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --deleted
+      description: Mark or unmark history as deleted
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --importable
+      description: Mark or unmark history as importable
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --name
+      description: Replace history name with the given string
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --published
+      description: Mark or unmark history as published
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --purged
+      description: "If ``True``, mark history as purged (permanently\ndeleted)."
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --tags
+      description: Replace history tags with the given list
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec histories update_history [OPTIONS] HISTORY_ID\n\n  Update\
+      \ history metadata information. Some of the attributes that can be\n  modified\
+      \ are documented below.\n\n  Output:\n\n      details of the updated history\n\
+      \n          .. versionchanged:: 0.8.0             Changed the return value\n\
+      \          from the status code (type int) to a dict.\n\nOptions:\n  --annotation\
+      \ TEXT  Replace history annotation with given string\n  --deleted          Mark\
+      \ or unmark history as deleted\n  --importable       Mark or unmark history\
+      \ as importable\n  --name TEXT        Replace history name with the given string\n\
+      \  --published        Mark or unmark history as published\n  --purged      \
+      \     If ``True``, mark history as purged (permanently\n                   \
+      \  deleted).\n\n  --tags TEXT        Replace history tags with the given list\n\
+      \  -h, --help         Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - histories
+    - import_history
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --file_path
+      description: "Path to exported history archive on disk. :type url: str\n:param\
+        \ url: URL for an exported history archive"
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - --url
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !SimpleFlagArg
+        name: TEXT
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec histories import_history [OPTIONS]\n\n  Import a history\
+      \ from an archive on disk or a URL.\n\n  Output:\n\n\n\nOptions:\n  --file_path\
+      \ TEXT  Path to exported history archive on disk. :type url: str\n         \
+      \           :param url: URL for an exported history archive\n\n  --url TEXT\n\
+      \  -h, --help        Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - histories
+    - download_history
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: HISTORY_ID
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: JEHA_ID
+      description: ''
+    - !Positional
+      optional: false
+      position: 2
+      name: OUTF
+      description: ''
+    named: []
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec histories download_history [OPTIONS] HISTORY_ID JEHA_ID\
+      \ OUTF\nTry 'parsec histories download_history -h' for help.\n\nError: Missing\
+      \ argument 'HISTORY_ID'.\n"
+    generated_using: *id006
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - histories
+    - update_dataset
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: HISTORY_ID
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: DATASET_ID
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --annotation
+      description: Replace history dataset annotation with given string
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --datatype
+      description: "Replace the datatype of the history dataset with the\ngiven string.\
+        \ The string must be a valid Galaxy\ndatatype, both the current and the target\
+        \ datatypes\nmust allow datatype changes, and the dataset must not\nbe in\
+        \ use as input or output of a running job\n(including uploads), otherwise\
+        \ an error will be raised."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --deleted
+      description: Mark or unmark history dataset as deleted
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --genome_build
+      description: Replace history dataset genome build (dbkey)
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --name
+      description: Replace history dataset name with the given string
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --visible
+      description: Mark or unmark history dataset as visible
+      args: !EmptyFlagArg {}
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec histories update_dataset [OPTIONS] HISTORY_ID DATASET_ID\n\
+      \n  Update history dataset metadata. Some of the attributes that can be\n  modified\
+      \ are documented below.\n\n  Output:\n\n      details of the updated dataset\n\
+      \n          .. versionchanged:: 0.8.0             Changed the return value\n\
+      \          from the status code (type int) to a dict.\n\nOptions:\n  --annotation\
+      \ TEXT    Replace history dataset annotation with given string\n  --datatype\
+      \ TEXT      Replace the datatype of the history dataset with the\n         \
+      \              given string. The string must be a valid Galaxy\n           \
+      \            datatype, both the current and the target datatypes\n         \
+      \              must allow datatype changes, and the dataset must not\n     \
+      \                  be in use as input or output of a running job\n         \
+      \              (including uploads), otherwise an error will be raised.\n\n \
+      \ --deleted            Mark or unmark history dataset as deleted\n  --genome_build\
+      \ TEXT  Replace history dataset genome build (dbkey)\n  --name TEXT        \
+      \  Replace history dataset name with the given string\n  --visible         \
+      \   Mark or unmark history dataset as visible\n  -h, --help           Show this\
+      \ message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - histories
+    - get_published_histories
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --name
+      description: Name of history to filter on
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --deleted
+      description: "whether to filter for the deleted histories (``True``) or for\n\
+        the non-deleted ones (``False``)"
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --slug
+      description: History slug to filter on
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec histories get_published_histories [OPTIONS]\n\n  Get\
+      \ all published histories (by any user) or filter the specific one(s) by\n \
+      \ ``name`` or other arguments.\n\n  Output:\n\n      List of history dicts.\n\
+      \nOptions:\n  --name TEXT  Name of history to filter on\n  --deleted    whether\
+      \ to filter for the deleted histories (``True``) or for\n               the\
+      \ non-deleted ones (``False``)\n\n  --slug TEXT  History slug to filter on\n\
+      \  -h, --help   Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - histories
+    - show_dataset_collection
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: DATASET_COLLECTION_ID
+      description: Get details about a given history dataset collection.
+    named: []
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec histories show_dataset_collection [OPTIONS] HISTORY_ID\n\
+      \                                                DATASET_COLLECTION_ID\n\n \
+      \ Get details about a given history dataset collection.\n\n  Output:\n\n   \
+      \   Information about the dataset collection\n\nOptions:\n  -h, --help  Show\
+      \ this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - histories
+    - copy_content
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: HISTORY_ID
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: CONTENT_ID
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --source
+      description: "Source of the content to be copied: 'hda' (for a history\ndataset,\
+        \ the default), 'hdca' (for a dataset collection),\n'library' (for a library\
+        \ dataset) or 'library_folder' (for\nall datasets in a library folder).  [default:\
+        \ hda]"
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec histories copy_content [OPTIONS] HISTORY_ID CONTENT_ID\n\
+      \n  Copy existing content (e.g. a dataset) to a history.\n\n  Output:\n\n  \
+      \    Information about the copied content\n\nOptions:\n  --source TEXT  Source\
+      \ of the content to be copied: 'hda' (for a history\n                 dataset,\
+      \ the default), 'hdca' (for a dataset collection),\n                 'library'\
+      \ (for a library dataset) or 'library_folder' (for\n                 all datasets\
+      \ in a library folder).  [default: hda]\n\n  -h, --help     Show this message\
+      \ and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - histories
+    - export_history
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: HISTORY_ID
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --gzip
+      description: "create .tar.gz archive if ``True``, else .tar  [default:\nTrue]"
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --include_hidden
+      description: whether to include hidden datasets in the export
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --include_deleted
+      description: whether to include deleted datasets in the export
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --wait
+      description: "if ``True``, block until the export is ready; else,\nreturn immediately"
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --maxwait
+      description: "Total time (in seconds) to wait for the export to become\nready.\
+        \ When set, implies that ``wait`` is ``True``."
+      args: !SimpleFlagArg
+        name: FLOAT
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec histories export_history [OPTIONS] HISTORY_ID\n\n  Start\
+      \ a job to create an export archive for the given history.\n\n  Output:\n\n\
+      \      ``jeha_id`` of the export, or empty if ``wait`` is ``False``\n      and\
+      \ the export is not ready.\n\nOptions:\n  --gzip             create .tar.gz\
+      \ archive if ``True``, else .tar  [default:\n                     True]\n\n\
+      \  --include_hidden   whether to include hidden datasets in the export\n  --include_deleted\
+      \  whether to include deleted datasets in the export\n  --wait             if\
+      \ ``True``, block until the export is ready; else,\n                     return\
+      \ immediately\n\n  --maxwait FLOAT    Total time (in seconds) to wait for the\
+      \ export to become\n                     ready. When set, implies that ``wait``\
+      \ is ``True``.\n\n  -h, --help         Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - histories
+    - create_history_tag
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: HISTORY_ID
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: TAG
+      description: ''
+    named: []
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec histories create_history_tag [OPTIONS] HISTORY_ID TAG\n\
+      \n  Create history tag\n\n  Output:\n\n      A dictionary with information regarding\
+      \ the tag.           For\n      example::\n\n              {'id': 'f792763bee8d277a',\
+      \              'model_class':\n              'HistoryTagAssociation',      \
+      \        'user_tname':\n              'NGS_PE_RUN',              'user_value':\
+      \ None}\n\nOptions:\n  -h, --help  Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: parsec histories [OPTIONS] COMMAND [ARGS]...\n\nOptions:\n  -h,\
+    \ --help  Show this message and exit.\n\nCommands:\n  copy_content           \
+    \         Copy existing content (e.g.\n  copy_dataset                    Copy\
+    \ a dataset to a history.\n  create_dataset_collection       Create a new dataset\
+    \ collection Output:...\n  create_history                  Create a new history,\
+    \ optionally setting...\n  create_history_tag              Create history tag\
+    \ Output: A dictionary...\n  delete_dataset                  Mark corresponding\
+    \ dataset as deleted.\n  delete_dataset_collection       Mark corresponding dataset\
+    \ collection as...\n  delete_history                  Delete a history.\n  download_history\
+    \                Download a history export archive.\n  export_history        \
+    \          Start a job to create an export archive...\n  get_histories       \
+    \            Get all histories or filter the specific...\n  get_most_recently_used_history\
+    \  Returns the current user's most recently...\n  get_published_histories    \
+    \     Get all published histories (by any user)...\n  get_status             \
+    \         Returns the state of this history Output:...\n  import_history     \
+    \             Import a history from an archive on disk...\n  open_history    \
+    \                Open Galaxy in a new tab of the default...\n  show_dataset  \
+    \                  Get details about a given history dataset.\n  show_dataset_collection\
+    \         Get details about a given history dataset...\n  show_dataset_provenance\
+    \         Get details related to how dataset was...\n  show_history          \
+    \          Get details of a given history.\n  show_matching_datasets         \
+    \ Get dataset details for matching datasets...\n  undelete_history           \
+    \     Undelete a history Output: 'OK' if it was...\n  update_dataset         \
+    \         Update history dataset metadata.\n  update_dataset_collection      \
+    \ Update history dataset collection...\n  update_history                  Update\
+    \ history metadata information.\n  upload_dataset_from_library     Upload a dataset\
+    \ into the history from a...\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+- &id007 !Command
+  command:
+  - parsec
+  - roles
+  positional: []
+  named: []
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - parsec
+    - roles
+    - create_role
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: ROLE_NAME
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: DESCRIPTION
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --user_ids
+      description: A list of encoded user IDs to add to the new role
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --group_ids
+      description: A list of encoded group IDs to add to the new role
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id007
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec roles create_role [OPTIONS] ROLE_NAME DESCRIPTION\n\n\
+      \  Create a new role.\n\n  Output:\n\n      Details of the newly created role.\
+      \           For example::\n\n              {'description': 'desc',         \
+      \     'url':\n              '/api/roles/ebfb8f50c6abde6d',              'model_class':\n\
+      \              'Role',              'type': 'admin',              'id':\n  \
+      \            'ebfb8f50c6abde6d',              'name': 'Foo'}\n\n          ..\
+      \ versionchanged:: 0.15.0             Changed the return value\n          from\
+      \ a 1-element list to a dict.\n\nOptions:\n  --user_ids TEXT   A list of encoded\
+      \ user IDs to add to the new role\n  --group_ids TEXT  A list of encoded group\
+      \ IDs to add to the new role\n  -h, --help        Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - roles
+    - show_role
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: ROLE_ID
+      description: ''
+    named: []
+    parent: *id007
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec roles show_role [OPTIONS] ROLE_ID\n\n  Display information\
+      \ on a single role\n\n  Output:\n\n      Details of the given role.        \
+      \   For example::\n\n              {\"description\": \"Private Role for Foo\"\
+      ,              \"id\":\n              \"f2db41e1fa331b3e\",              \"\
+      model_class\": \"Role\",\n              \"name\": \"Foo\",              \"type\"\
+      : \"private\",\n              \"url\": \"/api/roles/f2db41e1fa331b3e\"}\n\n\
+      Options:\n  -h, --help  Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: parsec roles [OPTIONS] COMMAND [ARGS]...\n\nOptions:\n  -h, --help\
+    \  Show this message and exit.\n\nCommands:\n  create_role  Create a new role.\n\
+    \  get_roles    Displays a collection (list) of roles.\n  show_role    Display\
+    \ information on a single role Output: Details of the...\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+- &id008 !Command
+  command:
+  - parsec
+  - utils
+  positional: []
+  named: []
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - parsec
+    - utils
+    - cmp
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: METHOD
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: CMP_WITH
+      description: ''
+    named: []
+    parent: *id008
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec utils cmp [OPTIONS] METHOD CMP_WITH\n\n  comparison\
+      \ tool. Exits if the value read from stdin does not pass the\n  comparison test\
+      \ with the specified value.\n\n  method is the comparison method. One of these\
+      \ (lt, gt, eq, ne) which will\n  trigger a numerical comparison (cast to floats),\
+      \ or one of teq, tneq which\n  will trigger a string comparison.\n\n  cmp_with\
+      \ is the value to compare against. E.g. '100' or 'test'\n\n  e.g.::\n\n    \
+      \  echo '5' | parsec utils cmp lt 10 # exit 0\n\n      echo '5' | parsec utils\
+      \ cmp lt 1 # exit 1\n\nOptions:\n  -h, --help  Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - utils
+    - library_recurse
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: LIBRARY_ID
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --path
+      description: Folder path to filter on (otherwise root of repo)
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id008
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec utils library_recurse [OPTIONS] LIBRARY_ID\n\n  Get\
+      \ all the folders or filter specific one(s) via the provided ``name`` or\n \
+      \ ``folder_id`` in data library with id ``library_id``. Provide only one\n \
+      \ argument: ``name`` or ``folder_id``, but not both.\n\n  Output:\n\n      \
+      \ list of dicts each containing basic information about a folder\n\n\n\nOptions:\n\
+      \  --path TEXT  Folder path to filter on (otherwise root of repo)\n  -h, --help\
+      \   Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - utils
+    - wait_on_invocation
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: unknown
+      description: 'Options:'
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --exit_early
+      description: "Exit immediately after checking status rather than\nsleeping indefinitely"
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --backoff_min
+      description: Minimum time to sleep between checks, in seconds.
+      args: !SimpleFlagArg
+        name: FLOAT
+    - !Flag
+      optional: true
+      synonyms:
+      - --backoff_max
+      description: Maximum time to sleep between checks, in seconds
+      args: !SimpleFlagArg
+        name: FLOAT
+    parent: *id008
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec utils wait_on_invocation [OPTIONS] WORKFLOW_ID INVOCATION_ID\n\
+      \n  Given a workflow and invocation id, wait until that invocation is complete\n\
+      \  (or one or more steps have errored)\n\n  This will exit with the following\
+      \ error codes:\n\n  - 0: done successfully - 1: running (if --exit_early) -\
+      \ 2: failure - 3:\n  unknown\n\nOptions:\n  --exit_early         Exit immediately\
+      \ after checking status rather than\n                       sleeping indefinitely\n\
+      \n  --backoff_min FLOAT  Minimum time to sleep between checks, in seconds.\n\
+      \  --backoff_max FLOAT  Maximum time to sleep between checks, in seconds\n \
+      \ -h, --help           Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: parsec utils [OPTIONS] COMMAND [ARGS]...\n\nOptions:\n  -h, --help\
+    \  Show this message and exit.\n\nCommands:\n  cmp                 comparison\
+    \ tool.\n  library_recurse     Get all the folders or filter specific one(s) via\
+    \ the...\n  wait_on_invocation  Given a workflow and invocation id, wait until\
+    \ that...\n  xunit_xargs         xargs look-alike that wraps output calls as XUnit\
+    \ XML...\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+- &id009 !Command
+  command:
+  - parsec
+  - libraries
+  positional: []
+  named: []
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - parsec
+    - libraries
+    - upload_file_from_local_path
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: FILE_LOCAL_PATH
+      description: Read local file contents from file_local_path and upload data to
+        a
+    - !Positional
+      optional: false
+      position: 1
+      name: library.
+      description: "Output:\nList with a single dictionary containing information\
+        \ about the LDDA"
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --folder_id
+      description: "id of the folder where to place the uploaded file. If not\nprovided,\
+        \ the root folder will be used"
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --file_type
+      description: 'Galaxy file format name  [default: auto]'
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --dbkey
+      description: 'Dbkey  [default: ?]'
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --tags
+      description: A list of tags to add to the datasets
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id009
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec libraries upload_file_from_local_path [OPTIONS] LIBRARY_ID\n\
+      \                                                    FILE_LOCAL_PATH\n\n  Read\
+      \ local file contents from file_local_path and upload data to a\n  library.\n\
+      \n  Output:\n\n      List with a single dictionary containing information about\
+      \ the LDDA\n\nOptions:\n  --folder_id TEXT  id of the folder where to place\
+      \ the uploaded file. If not\n                    provided, the root folder will\
+      \ be used\n\n  --file_type TEXT  Galaxy file format name  [default: auto]\n\
+      \  --dbkey TEXT      Dbkey  [default: ?]\n  --tags TEXT       A list of tags\
+      \ to add to the datasets\n  -h, --help        Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - libraries
+    - set_library_permissions
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: LIBRARY_ID
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --access_in
+      description: list of role ids
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --modify_in
+      description: list of role ids
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --add_in
+      description: list of role ids
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --manage_in
+      description: list of role ids
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id009
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec libraries set_library_permissions [OPTIONS] LIBRARY_ID\n\
+      \n  Set the permissions for a library. Note: it will override all security for\n\
+      \  this library even if you leave out a permission type.\n\n  Output:\n\n  \
+      \    General information about the library\n\nOptions:\n  --access_in TEXT \
+      \ list of role ids\n  --modify_in TEXT  list of role ids\n  --add_in TEXT  \
+      \   list of role ids\n  --manage_in TEXT  list of role ids\n  -h, --help   \
+      \     Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - libraries
+    - upload_file_contents
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: PASTED_CONTENT
+      description: Upload pasted_content to a data library as a new file.
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --folder_id
+      description: "id of the folder where to place the uploaded file. If not\nprovided,\
+        \ the root folder will be used"
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --file_type
+      description: 'Galaxy file format name  [default: auto]'
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --dbkey
+      description: 'Dbkey  [default: ?]'
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --tags
+      description: A list of tags to add to the datasets
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id009
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec libraries upload_file_contents [OPTIONS] LIBRARY_ID\n\
+      \                                             PASTED_CONTENT\n\n  Upload pasted_content\
+      \ to a data library as a new file.\n\n  Output:\n\n      List with a single\
+      \ dictionary containing information about the LDDA\n\nOptions:\n  --folder_id\
+      \ TEXT  id of the folder where to place the uploaded file. If not\n        \
+      \            provided, the root folder will be used\n\n  --file_type TEXT  Galaxy\
+      \ file format name  [default: auto]\n  --dbkey TEXT      Dbkey  [default: ?]\n\
+      \  --tags TEXT       A list of tags to add to the datasets\n  -h, --help   \
+      \     Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - libraries
+    - show_folder
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: LIBRARY_ID
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: FOLDER_ID
+      description: ''
+    named: []
+    parent: *id009
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec libraries show_folder [OPTIONS] LIBRARY_ID FOLDER_ID\n\
+      \n  Get details about a given folder. The required ``folder_id`` can be\n  obtained\
+      \ from the folder's library content details.\n\n  Output:\n\n      Information\
+      \ about the folder\n\nOptions:\n  -h, --help  Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - libraries
+    - upload_from_galaxy_filesystem
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: FILESYSTEM_PATHS
+      description: Upload a set of files already present on the filesystem of the
+        Galaxy
+    - !Positional
+      optional: false
+      position: 0
+      name: filenames.
+      description: --tags TEXT            A list of tags to add to the datasets
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --folder_id
+      description: "id of the folder where to place the uploaded files.\nIf not provided,\
+        \ the root folder will be used"
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --file_type
+      description: 'Galaxy file format name  [default: auto]'
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --dbkey
+      description: 'Dbkey  [default: ?]'
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --link_data_only
+      description: "either 'copy_files' (default) or 'link_to_files'.\nSetting to\
+        \ 'link_to_files' symlinks instead of\ncopying the files"
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --preserve_dirs
+      description: "Indicate whether to preserve the directory structure\nwhen importing\
+        \ dir"
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --tag_using_filenames
+      description: Indicate whether to generate dataset tags from
+      args: !EmptyFlagArg {}
+    parent: *id009
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec libraries upload_from_galaxy_filesystem [OPTIONS] LIBRARY_ID\n\
+      \                                                      FILESYSTEM_PATHS\n\n\
+      \  Upload a set of files already present on the filesystem of the Galaxy\n \
+      \ server to a library.\n\n  Output:\n\n      List with a single dictionary containing\
+      \ information about the LDDA\n\nOptions:\n  --folder_id TEXT       id of the\
+      \ folder where to place the uploaded files.\n                         If not\
+      \ provided, the root folder will be used\n\n  --file_type TEXT       Galaxy\
+      \ file format name  [default: auto]\n  --dbkey TEXT           Dbkey  [default:\
+      \ ?]\n  --link_data_only TEXT  either 'copy_files' (default) or 'link_to_files'.\n\
+      \                         Setting to 'link_to_files' symlinks instead of\n \
+      \                        copying the files\n\n  --roles TEXT           ???\n\
+      \  --preserve_dirs        Indicate whether to preserve the directory structure\n\
+      \                         when importing dir\n\n  --tag_using_filenames  Indicate\
+      \ whether to generate dataset tags from\n                         filenames.\n\
+      \n  --tags TEXT            A list of tags to add to the datasets\n  -h, --help\
+      \             Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - libraries
+    - upload_file_from_url
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: LIBRARY_ID
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: FILE_URL
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --folder_id
+      description: "id of the folder where to place the uploaded file. If not\nprovided,\
+        \ the root folder will be used"
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --file_type
+      description: 'Galaxy file format name  [default: auto]'
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --dbkey
+      description: 'Dbkey  [default: ?]'
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --tags
+      description: A list of tags to add to the datasets
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id009
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec libraries upload_file_from_url [OPTIONS] LIBRARY_ID\
+      \ FILE_URL\n\n  Upload a file to a library from a URL.\n\n  Output:\n\n    \
+      \  List with a single dictionary containing information about the LDDA\n\nOptions:\n\
+      \  --folder_id TEXT  id of the folder where to place the uploaded file. If not\n\
+      \                    provided, the root folder will be used\n\n  --file_type\
+      \ TEXT  Galaxy file format name  [default: auto]\n  --dbkey TEXT      Dbkey\
+      \  [default: ?]\n  --tags TEXT       A list of tags to add to the datasets\n\
+      \  -h, --help        Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - libraries
+    - get_folders
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: LIBRARY_ID
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --folder_id
+      description: filter for folder by folder id
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --name
+      description: "filter for folder by name. For ``name`` specify the full\npath\
+        \ of the folder starting from the library's root\nfolder, e.g. ``/subfolder/subsubfolder``."
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id009
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec libraries get_folders [OPTIONS] LIBRARY_ID\n\n  Get\
+      \ all the folders or filter specific one(s) via the provided ``name`` or\n \
+      \ ``folder_id`` in data library with id ``library_id``. Provide only one\n \
+      \ argument: ``name`` or ``folder_id``, but not both.\n\n  Output:\n\n      list\
+      \ of dicts each containing basic information about a folder\n\nOptions:\n  --folder_id\
+      \ TEXT  filter for folder by folder id\n  --name TEXT       filter for folder\
+      \ by name. For ``name`` specify the full\n                    path of the folder\
+      \ starting from the library's root\n                    folder, e.g. ``/subfolder/subsubfolder``.\n\
+      \n  -h, --help        Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - libraries
+    - set_dataset_permissions
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: DATASET_ID
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --access_in
+      description: list of role ids
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --modify_in
+      description: list of role ids
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --manage_in
+      description: list of role ids
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id009
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec libraries set_dataset_permissions [OPTIONS] DATASET_ID\n\
+      \n  Set the permissions for a dataset. Note: it will override all security for\n\
+      \  this dataset even if you leave out a permission type.\n\n  Output:\n\n  \
+      \    dictionary with all applicable permissions' values\n\nOptions:\n  --access_in\
+      \ TEXT  list of role ids\n  --modify_in TEXT  list of role ids\n  --manage_in\
+      \ TEXT  list of role ids\n  -h, --help        Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - libraries
+    - show_library
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: LIBRARY_ID
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --contents
+      description: "whether to get contents of the library (rather than just the\n\
+        library details)"
+      args: !EmptyFlagArg {}
+    parent: *id009
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec libraries show_library [OPTIONS] LIBRARY_ID\n\n  Get\
+      \ information about a library.\n\n  Output:\n\n      details of the given library\n\
+      \nOptions:\n  --contents  whether to get contents of the library (rather than\
+      \ just the\n              library details)\n\n  -h, --help  Show this message\
+      \ and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - libraries
+    - create_library
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: NAME
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --description
+      description: Optional data library description
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --synopsis
+      description: Optional data library synopsis
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id009
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec libraries create_library [OPTIONS] NAME\n\n  Create\
+      \ a data library with the properties defined in the arguments.\n\n  Output:\n\
+      \n      Details of the created library.           For example::\n\n        \
+      \      {'id': 'f740ab636b360a70',              'name': 'Library from\n     \
+      \         bioblend',              'url':\n              '/api/libraries/f740ab636b360a70'}\n\
+      \nOptions:\n  --description TEXT  Optional data library description\n  --synopsis\
+      \ TEXT     Optional data library synopsis\n  -h, --help          Show this message\
+      \ and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - libraries
+    - update_library_dataset
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: DATASET_ID
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --file_ext
+      description: "Replace library dataset extension (must exist in the\nGalaxy registry)"
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --genome_build
+      description: Replace library dataset genome build (dbkey)
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --misc_info
+      description: Replace library dataset misc_info with given string
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --name
+      description: Replace library dataset name with the given string
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --tags
+      description: Replace library dataset tags with the given list
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id009
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec libraries update_library_dataset [OPTIONS] DATASET_ID\n\
+      \n  Update library dataset metadata. Some of the attributes that can be\n  modified\
+      \ are documented below.\n\n  Output:\n\n      details of the updated dataset\n\
+      \nOptions:\n  --file_ext TEXT      Replace library dataset extension (must exist\
+      \ in the\n                       Galaxy registry)\n\n  --genome_build TEXT \
+      \ Replace library dataset genome build (dbkey)\n  --misc_info TEXT     Replace\
+      \ library dataset misc_info with given string\n  --name TEXT          Replace\
+      \ library dataset name with the given string\n  --tags TEXT          Replace\
+      \ library dataset tags with the given list\n  -h, --help           Show this\
+      \ message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - libraries
+    - get_libraries
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: both.
+      description: "Output:\nlist of dicts each containing basic information about\
+        \ a library"
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --library_id
+      description: filter for library by library id
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --name
+      description: "If ``name`` is set and multiple names match the given\nname, all\
+        \ the libraries matching the argument will be\nreturned"
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --deleted
+      description: "If ``False`` (the default), return only non-deleted\nlibraries.\
+        \ If ``True``, return only deleted libraries. If\n``None``, return both deleted\
+        \ and non-deleted libraries."
+      args: !EmptyFlagArg {}
+    parent: *id009
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec libraries get_libraries [OPTIONS]\n\n  Get all the libraries\
+      \ or filter for specific one(s) via the provided name\n  or ID. Provide only\
+      \ one argument: ``name`` or ``library_id``, but not\n  both.\n\n  Output:\n\n\
+      \      list of dicts each containing basic information about a library\n\nOptions:\n\
+      \  --library_id TEXT  filter for library by library id\n  --name TEXT      \
+      \  If ``name`` is set and multiple names match the given\n                 \
+      \    name, all the libraries matching the argument will be\n               \
+      \      returned\n\n  --deleted          If ``False`` (the default), return only\
+      \ non-deleted\n                     libraries. If ``True``, return only deleted\
+      \ libraries. If\n                     ``None``, return both deleted and non-deleted\
+      \ libraries.\n\n  -h, --help         Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - libraries
+    - create_folder
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: folder
+      description: 'Options:'
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --description
+      description: description of the new folder in the data library
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --base_folder_id
+      description: "id of the folder where to create the new folder. If\nnot provided,\
+        \ the root folder will be used"
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id009
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec libraries create_folder [OPTIONS] LIBRARY_ID FOLDER_NAME\n\
+      \n  Create a folder in a library.\n\n  Output:\n\n      List with a single dictionary\
+      \ containing information about the new\n      folder\n\nOptions:\n  --description\
+      \ TEXT     description of the new folder in the data library\n  --base_folder_id\
+      \ TEXT  id of the folder where to create the new folder. If\n              \
+      \           not provided, the root folder will be used\n\n  -h, --help     \
+      \        Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - libraries
+    - wait_for_dataset
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: library
+      description: 'Options:'
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --maxwait
+      description: "Total time (in seconds) to wait for the dataset state to\nbecome\
+        \ terminal. If the dataset state is not terminal\nwithin this time, a ``DatasetTimeoutException``\
+        \ will be\nthrown.  [default: 12000]"
+      args: !SimpleFlagArg
+        name: FLOAT
+    - !Flag
+      optional: true
+      synonyms:
+      - --interval
+      description: "Time (in seconds) to wait between 2 consecutive checks.\n[default:\
+        \ 3]"
+      args: !SimpleFlagArg
+        name: FLOAT
+    parent: *id009
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec libraries wait_for_dataset [OPTIONS] LIBRARY_ID DATASET_ID\n\
+      \n  Wait until the library dataset state is terminal ('ok', 'empty', 'error',\n\
+      \  'discarded' or 'failed_metadata').\n\n  Output:\n\n      A dictionary containing\
+      \ information about the dataset in the\n      library\n\nOptions:\n  --maxwait\
+      \ FLOAT   Total time (in seconds) to wait for the dataset state to\n       \
+      \             become terminal. If the dataset state is not terminal\n      \
+      \              within this time, a ``DatasetTimeoutException`` will be\n   \
+      \                 thrown.  [default: 12000]\n\n  --interval FLOAT  Time (in\
+      \ seconds) to wait between 2 consecutive checks.\n                    [default:\
+      \ 3]\n\n  -h, --help        Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - libraries
+    - delete_library
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: deleted.
+      description: 'Options:'
+    named: []
+    parent: *id009
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec libraries delete_library [OPTIONS] LIBRARY_ID\n\n  Delete\
+      \ a data library.\n\n  Output:\n\n      Information about the deleted library\n\
+      \n          .. warning::           Deleting a data library is irreversible -\n\
+      \          all of the data from the           library will be permanently\n\
+      \          deleted.\n\nOptions:\n  -h, --help  Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - libraries
+    - upload_file_from_server
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: SERVER_DIR
+      description: Upload all files in the specified subdirectory of the Galaxy library
+    - !Positional
+      optional: false
+      position: 0
+      name: filenames.
+      description: --tags TEXT            A list of tags to add to the datasets
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --folder_id
+      description: "id of the folder where to place the uploaded files.\nIf not provided,\
+        \ the root folder will be used"
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --file_type
+      description: 'Galaxy file format name  [default: auto]'
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --dbkey
+      description: 'Dbkey  [default: ?]'
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --link_data_only
+      description: "either 'copy_files' (default) or 'link_to_files'.\nSetting to\
+        \ 'link_to_files' symlinks instead of\ncopying the files"
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --preserve_dirs
+      description: "Indicate whether to preserve the directory structure\nwhen importing\
+        \ dir"
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --tag_using_filenames
+      description: Indicate whether to generate dataset tags from
+      args: !EmptyFlagArg {}
+    parent: *id009
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec libraries upload_file_from_server [OPTIONS] LIBRARY_ID\n\
+      \                                                SERVER_DIR\n\n  Upload all\
+      \ files in the specified subdirectory of the Galaxy library\n  import directory\
+      \ to a library.\n\n  Output:\n\n      List with a single dictionary containing\
+      \ information about the LDDA\n\nOptions:\n  --folder_id TEXT       id of the\
+      \ folder where to place the uploaded files.\n                         If not\
+      \ provided, the root folder will be used\n\n  --file_type TEXT       Galaxy\
+      \ file format name  [default: auto]\n  --dbkey TEXT           Dbkey  [default:\
+      \ ?]\n  --link_data_only TEXT  either 'copy_files' (default) or 'link_to_files'.\n\
+      \                         Setting to 'link_to_files' symlinks instead of\n \
+      \                        copying the files\n\n  --roles TEXT           ???\n\
+      \  --preserve_dirs        Indicate whether to preserve the directory structure\n\
+      \                         when importing dir\n\n  --tag_using_filenames  Indicate\
+      \ whether to generate dataset tags from\n                         filenames.\n\
+      \n  --tags TEXT            A list of tags to add to the datasets\n  -h, --help\
+      \             Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - libraries
+    - show_dataset
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: LIBRARY_ID
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: DATASET_ID
+      description: ''
+    named: []
+    parent: *id009
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec libraries show_dataset [OPTIONS] LIBRARY_ID DATASET_ID\n\
+      Try 'parsec libraries show_dataset -h' for help.\n\nError: Missing argument\
+      \ 'LIBRARY_ID'.\n"
+    generated_using: *id006
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - libraries
+    - delete_library_dataset
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: LIBRARY_ID
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: DATASET_ID
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --purged
+      description: Indicate that the dataset should be purged (permanently deleted)
+      args: !EmptyFlagArg {}
+    parent: *id009
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec libraries delete_library_dataset [OPTIONS] LIBRARY_ID\
+      \ DATASET_ID\n\n  Delete a library dataset in a data library.\n\n  Output:\n\
+      \n      A dictionary containing the dataset id and whether the dataset\n   \
+      \   has been deleted.           For example::\n\n              {'deleted': True,\
+      \              'id': '60e680a037f41974'}\n\nOptions:\n  --purged    Indicate\
+      \ that the dataset should be purged (permanently deleted)\n  -h, --help  Show\
+      \ this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - libraries
+    - get_library_permissions
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: LIBRARY_ID
+      description: ''
+    named: []
+    parent: *id009
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec libraries get_library_permissions [OPTIONS] LIBRARY_ID\n\
+      \n  Get the permissions for a library.\n\n  Output:\n\n      dictionary with\
+      \ all applicable permissions' values\n\nOptions:\n  -h, --help  Show this message\
+      \ and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - libraries
+    - get_dataset_permissions
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: DATASET_ID
+      description: ''
+    named: []
+    parent: *id009
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec libraries get_dataset_permissions [OPTIONS] DATASET_ID\n\
+      \n  Get the permissions for a dataset.\n\n  Output:\n\n      dictionary with\
+      \ all applicable permissions' values\n\nOptions:\n  -h, --help  Show this message\
+      \ and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - libraries
+    - copy_from_dataset
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: LIBRARY_ID
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: DATASET_ID
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --folder_id
+      description: "id of the folder where to place the uploaded files. If not\nprovided,\
+        \ the root folder will be used"
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --message
+      description: message for copying action
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id009
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec libraries copy_from_dataset [OPTIONS] LIBRARY_ID DATASET_ID\n\
+      \n  Copy a Galaxy dataset into a library.\n\n  Output:\n\n      LDDA information\n\
+      \nOptions:\n  --folder_id TEXT  id of the folder where to place the uploaded\
+      \ files. If not\n                    provided, the root folder will be used\n\
+      \n  --message TEXT    message for copying action\n  -h, --help        Show this\
+      \ message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: parsec libraries [OPTIONS] COMMAND [ARGS]...\n\nOptions:\n  -h,\
+    \ --help  Show this message and exit.\n\nCommands:\n  copy_from_dataset      \
+    \        Copy a Galaxy dataset into a library.\n  create_folder              \
+    \    Create a folder in a library.\n  create_library                 Create a\
+    \ data library with the properties...\n  delete_library                 Delete\
+    \ a data library.\n  delete_library_dataset         Delete a library dataset in\
+    \ a data library.\n  get_dataset_permissions        Get the permissions for a\
+    \ dataset.\n  get_folders                    Get all the folders or filter specific...\n\
+    \  get_libraries                  Get all the libraries or filter for...\n  get_library_permissions\
+    \        Get the permissions for a library.\n  set_dataset_permissions       \
+    \ Set the permissions for a dataset.\n  set_library_permissions        Set the\
+    \ permissions for a library.\n  show_dataset                   Get details about\
+    \ a given library dataset.\n  show_folder                    Get details about\
+    \ a given folder.\n  show_library                   Get information about a library.\n\
+    \  update_library_dataset         Update library dataset metadata.\n  upload_file_contents\
+    \           Upload pasted_content to a data library as...\n  upload_file_from_local_path\
+    \    Read local file contents from...\n  upload_file_from_server        Upload\
+    \ all files in the specified...\n  upload_file_from_url           Upload a file\
+    \ to a library from a URL.\n  upload_from_galaxy_filesystem  Upload a set of files\
+    \ already present on...\n  wait_for_dataset               Wait until the library\
+    \ dataset state is...\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+- &id010 !Command
+  command:
+  - parsec
+  - datatypes
+  positional: []
+  named: []
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - parsec
+    - datatypes
+    - get_datatypes
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --extension_only
+      description: Return only the extension rather than the datatype name
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --upload_only
+      description: Whether to return only datatypes which can be uploaded
+      args: !EmptyFlagArg {}
+    parent: *id010
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec datatypes get_datatypes [OPTIONS]\n\n  Get the list\
+      \ of all installed datatypes.\n\n  Output:\n\n      A list of datatype names.\
+      \           For example::\n\n              ['snpmatrix',              'snptest',\
+      \              'tabular',\n              'taxonomy',              'twobit',\
+      \              'txt',\n              'vcf',              'wig',            \
+      \  'xgmml',\n              'xml']\n\nOptions:\n  --extension_only  Return only\
+      \ the extension rather than the datatype name\n  --upload_only     Whether to\
+      \ return only datatypes which can be uploaded\n  -h, --help        Show this\
+      \ message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: parsec datatypes [OPTIONS] COMMAND [ARGS]...\n\nOptions:\n  -h,\
+    \ --help  Show this message and exit.\n\nCommands:\n  get_datatypes  Get the list\
+    \ of all installed datatypes.\n  get_sniffers   Get the list of all installed\
+    \ sniffers.\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+- &id011 !Command
+  command:
+  - parsec
+  - genomes
+  positional: []
+  named: []
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - parsec
+    - genomes
+    - show_genome
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: ID
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --num
+      description: num
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --chrom
+      description: chrom
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --low
+      description: low
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --high
+      description: high
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id011
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec genomes show_genome [OPTIONS] ID\n\n  Returns information\
+      \ about build <id>\n\n  Output:\n\n      Information about the genome build\n\
+      \nOptions:\n  --num TEXT    num\n  --chrom TEXT  chrom\n  --low TEXT    low\n\
+      \  --high TEXT   high\n  -h, --help    Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - genomes
+    - install_genome
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --func
+      description: "Allowed values: 'download', Download and index;\n'index', Index\
+        \ only  [default: download]"
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --source
+      description: "Data source for this build. Can be: UCSC, Ensembl,\nNCBI, URL"
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --dbkey
+      description: "DB key of the build to download, ignored unless 'UCSC'\nis specified\
+        \ as the source"
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --ncbi_name
+      description: "NCBI's genome identifier, ignored unless NCBI is\nspecified as\
+        \ the source"
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --ensembl_dbkey
+      description: "Ensembl's genome identifier, ignored unless Ensembl is\nspecified\
+        \ as the source"
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --url_dbkey
+      description: "DB key to use for this build, ignored unless URL is\nspecified\
+        \ as the source"
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --indexers
+      description: "POST array of indexers to run after downloading\n(indexers[] =\
+        \ first, indexers[] = second, ...)"
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id011
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec genomes install_genome [OPTIONS]\n\n  Download and/or\
+      \ index a genome.\n\n  Output:\n\n      dict( status: 'ok', job: <job ID> )\
+      \                  If error:\n      dict( status: 'error', error: <error message>\
+      \ )\n\nOptions:\n  --func TEXT           Allowed values: 'download', Download\
+      \ and index;\n                        'index', Index only  [default: download]\n\
+      \n  --source TEXT         Data source for this build. Can be: UCSC, Ensembl,\n\
+      \                        NCBI, URL\n\n  --dbkey TEXT          DB key of the\
+      \ build to download, ignored unless 'UCSC'\n                        is specified\
+      \ as the source\n\n  --ncbi_name TEXT      NCBI's genome identifier, ignored\
+      \ unless NCBI is\n                        specified as the source\n\n  --ensembl_dbkey\
+      \ TEXT  Ensembl's genome identifier, ignored unless Ensembl is\n           \
+      \             specified as the source\n\n  --url_dbkey TEXT      DB key to use\
+      \ for this build, ignored unless URL is\n                        specified as\
+      \ the source\n\n  --indexers TEXT       POST array of indexers to run after\
+      \ downloading\n                        (indexers[] = first, indexers[] = second,\
+      \ ...)\n\n  -h, --help            Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: parsec genomes [OPTIONS] COMMAND [ARGS]...\n\nOptions:\n  -h,\
+    \ --help  Show this message and exit.\n\nCommands:\n  get_genomes     Returns\
+    \ a list of installed genomes Output: List of...\n  install_genome  Download and/or\
+    \ index a genome.\n  show_genome     Returns information about build <id> Output:\
+    \ Information...\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+- &id012 !Command
+  command:
+  - parsec
+  - forms
+  positional: []
+  named: []
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - parsec
+    - forms
+    - create_form
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: FORM_XML_TEXT
+      description: ''
+    named: []
+    parent: *id012
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec forms create_form [OPTIONS] FORM_XML_TEXT\n\n  Create\
+      \ a new form.\n\n  Output:\n\n      Unique URL of newly created form with encoded\
+      \ id\n\nOptions:\n  -h, --help  Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - forms
+    - show_form
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: FORM_ID
+      description: ''
+    named: []
+    parent: *id012
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec forms show_form [OPTIONS] FORM_ID\n\n  Get details of\
+      \ a given form.\n\n  Output:\n\n      A description of the given form.     \
+      \      For example::\n\n              {'desc': 'here it is ',              'fields':\
+      \ [],\n              'form_definition_current_id': 'f2db41e1fa331b3e',\n   \
+      \           'id': 'f2db41e1fa331b3e',              'layout': [],\n         \
+      \     'model_class': 'FormDefinition',              'name': 'First\n       \
+      \       form',              'url': '/api/forms/f2db41e1fa331b3e'}\n\nOptions:\n\
+      \  -h, --help  Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: parsec forms [OPTIONS] COMMAND [ARGS]...\n\nOptions:\n  -h, --help\
+    \  Show this message and exit.\n\nCommands:\n  create_form  Create a new form.\n\
+    \  get_forms    Get the list of all forms.\n  show_form    Get details of a given\
+    \ form.\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+- !Command
+  command:
+  - parsec
+  - scripts.
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: parsec
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: COMMAND
+    description: ''
+  - !Positional
+    optional: true
+    position: 2
+    name: ARGS
+    description: ''
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Problem loading command scripts., exception No module named 'parsec.commands.cmd_scripts'\n\
+    Usage: parsec [OPTIONS] COMMAND [ARGS]...\nTry 'parsec -h' for help.\n\nError:\
+    \ No such command 'scripts.'.\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+- &id013 !Command
+  command:
+  - parsec
+  - workflows
+  positional: []
+  named: []
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - parsec
+    - workflows
+    - invoke_workflow
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: invocation.
+      description: "Output:\nA dict containing the workflow invocation describing\
+        \ the\nscheduling of the workflow. For example::\n{'history_id': '2f94e8ae9edff68a',\
+        \              'id':\n'df7a1f0c02a5b08e',              'inputs': {'0': {'id':\n\
+        'a7db2fac67043c7e',                               'src':\n'hda',         \
+        \                      'uuid':\n'7932ffe0-2340-4952-8857-dbaa50f1f46a'}},\n\
+        'model_class': 'WorkflowInvocation',              'state':\n'ready',     \
+        \         'steps': [{'action': None,\n'id': 'd413a19dec13d11e',          \
+        \               'job_id':\nNone,                         'model_class':\n\
+        'WorkflowInvocationStep',\n'order_index': 0,                         'state':\
+        \ None,\n'update_time': '2015-10-31T22:00:26',\n'workflow_step_id': 'cbbbf59e8f08c98c',\n\
+        'workflow_step_label': None,\n'workflow_step_uuid': 'b81250fd-3278-4e6a-b269-56a1f01ef485'},\n\
+        {'action': None,                         'id':\n'2f94e8ae9edff68a',      \
+        \                   'job_id':\n'e89067bb68bee7a0',                       \
+        \  'model_class':\n'WorkflowInvocationStep',\n'order_index': 1,          \
+        \               'state': 'new',\n'update_time': '2015-10-31T22:00:26',\n'workflow_step_id':\
+        \ '964b37715ec9bd22',\n'workflow_step_label': None,\n'workflow_step_uuid':\n\
+        'e62440b8-e911-408b-b124-e05435d3125e'}],\n'update_time': '2015-10-31T22:00:26',\
+        \              'uuid':\n'c8aa2b1c-801a-11e5-a9e5-8ca98228593c',\n'workflow_id':\
+        \ '03501d7626bd192f'}\nThe ``params`` dict should be specified as follows::\n\
+        {STEP_ID: PARAM_DICT, ...}\nwhere PARAM_DICT is::\n{PARAM_NAME: VALUE, ...}\n\
+        For backwards compatibility, the following (deprecated) format is\nalso supported\
+        \ for ``params``::\n{TOOL_ID: PARAM_DICT, ...}\nin which case PARAM_DICT affects\
+        \ all steps with the given tool id.\nIf both by-tool-id and by-step-id specifications\
+        \ are used, the\nlatter takes precedence.\nFinally (again, for backwards compatibility),\
+        \ PARAM_DICT can also\nbe specified as::\n{'param': PARAM_NAME, 'value': VALUE}\n\
+        Note that this format allows only one parameter to be set per\nstep.\nFor\
+        \ a ``repeat`` parameter, the names of the contained parameters\nneeds   \
+        \      to be specified as ``<repeat name>_<repeat\nindex>|<param name>``,\
+        \ with         the repeat index starting at\n0. For example, if the tool XML\
+        \ contains::\n<repeat name=\"cutoff\" title=\"Parameters used to filter cells\"\
+        \nmin=\"1\">               <param name=\"name\" type=\"text\"\nvalue=\"n_genes\"\
+        \ label=\"Name of param...\">\n<option value=\"n_genes\">n_genes</option>\n\
+        <option value=\"n_counts\">n_counts</option>\n</param>               <param\
+        \ name=\"min\" type=\"float\" min=\"0\"\nvalue=\"0\" label=\"Min value\"/>\
+        \           </repeat>\nthen the PARAM_DICT should be something like::\n{...\
+        \            \"cutoff_0|name\": \"n_genes\",\n\"cutoff_0|min\": \"2\",   \
+        \         \"cutoff_1|name\": \"n_counts\",\n\"cutoff_1|min\": \"4\",     \
+        \       ...}\nAt the time of this writing, it is not possible to change the\n\
+        number of         times the contained parameters are repeated.\nTherefore,\
+        \ the parameter         indexes can go from 0 to n-1,\nwhere n is the number\
+        \ of times the         repeated element was\nadded when the workflow was saved\
+        \ in the Galaxy UI.\nThe ``replacement_params`` dict should map parameter\
+        \ names in\npost-job actions (PJAs) to their runtime values. For\ninstance,\
+        \ if the final step has a PJA like the following::\n{'RenameDatasetActionout_file1':\
+        \ {'action_arguments':\n{'newname': '${output}'},\n'action_type': 'RenameDatasetAction',\n\
+        'output_name': 'out_file1'}}\nthen the following renames the output dataset\
+        \ to 'foo'::\nreplacement_params = {'output': 'foo'}\nsee also `this email\
+        \ thread\n<http://lists.bx.psu.edu/pipermail/galaxy-\ndev/2011-September/006875.html>`_.\n\
+        .. warning::           Historically, the ``run_workflow`` method\nconsumed\
+        \ a ``dataset_map``           data structure that was\nindexed by unencoded\
+        \ workflow step IDs. These           IDs would\nnot be stable across Galaxy\
+        \ instances. The new ``inputs``\nproperty is instead indexed by either the\
+        \ ``order_index`` property\n(which is stable across workflow imports) or the\
+        \ step UUID which\nis           also stable."
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --inputs
+      description: "A mapping of workflow inputs to datasets and\ndataset collections.\
+        \ The datasets source can\nbe a LibraryDatasetDatasetAssociation\n(``ldda``),\
+        \ LibraryDataset (``ld``),\nHistoryDatasetAssociation (``hda``), or\nHistoryDatasetCollectionAssociation\n\
+        (``hdca``)."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --params
+      description: "A mapping of non-datasets tool parameters\n(see below)"
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --history_id
+      description: "The encoded history ID where to store the\nworkflow output. Alternatively,\n\
+        ``history_name`` may be specified to create\na new history."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --history_name
+      description: "Create a new history with the given name to\nstore the workflow\
+        \ output. If both\n``history_id`` and ``history_name`` are\nprovided, ``history_name``\
+        \ is ignored. If\nneither is specified, a new 'Unnamed\nhistory' is created."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --import_inputs_to_history
+      description: "If ``True``, used workflow inputs will be\nimported into the history.\
+        \ If ``False``,\nonly workflow outputs will be visible in the\ngiven history."
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --replacement_params
+      description: "pattern-based replacements for post-job\nactions (see below)"
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --allow_tool_state_corrections
+      description: "If True, allow Galaxy to fill in missing\ntool state when running\
+        \ workflows. This may\nbe useful for workflows using tools that\nhave changed\
+        \ over time or for workflows\nbuilt outside of Galaxy with only a subset\n\
+        of inputs defined."
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --inputs_by
+      description: "Determines how inputs are referenced. Can be\n\"step_index|step_uuid\"\
+        \ (default),\n\"step_index\", \"step_id\", \"step_uuid\", or\n\"name\"."
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id013
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec workflows invoke_workflow [OPTIONS] WORKFLOW_ID\n\n\
+      \  Invoke the workflow identified by ``workflow_id``. This will cause a\n  workflow\
+      \ to be scheduled and return an object describing the workflow\n  invocation.\n\
+      \n  Output:\n\n      A dict containing the workflow invocation describing the\n\
+      \      scheduling of the workflow. For example::\n\n              {'history_id':\
+      \ '2f94e8ae9edff68a',              'id':\n              'df7a1f0c02a5b08e',\
+      \              'inputs': {'0': {'id':\n              'a7db2fac67043c7e',   \
+      \                            'src':\n              'hda',                  \
+      \             'uuid':\n              '7932ffe0-2340-4952-8857-dbaa50f1f46a'}},\n\
+      \              'model_class': 'WorkflowInvocation',              'state':\n\
+      \              'ready',              'steps': [{'action': None,\n          \
+      \    'id': 'd413a19dec13d11e',                         'job_id':\n         \
+      \     None,                         'model_class':\n              'WorkflowInvocationStep',\n\
+      \              'order_index': 0,                         'state': None,\n  \
+      \            'update_time': '2015-10-31T22:00:26',\n              'workflow_step_id':\
+      \ 'cbbbf59e8f08c98c',\n              'workflow_step_label': None,\n        \
+      \      'workflow_step_uuid': 'b81250fd-3278-4e6a-b269-56a1f01ef485'},\n    \
+      \          {'action': None,                         'id':\n              '2f94e8ae9edff68a',\
+      \                         'job_id':\n              'e89067bb68bee7a0',     \
+      \                    'model_class':\n              'WorkflowInvocationStep',\n\
+      \              'order_index': 1,                         'state': 'new',\n \
+      \             'update_time': '2015-10-31T22:00:26',\n              'workflow_step_id':\
+      \ '964b37715ec9bd22',\n              'workflow_step_label': None,\n        \
+      \      'workflow_step_uuid':\n              'e62440b8-e911-408b-b124-e05435d3125e'}],\n\
+      \              'update_time': '2015-10-31T22:00:26',              'uuid':\n\
+      \              'c8aa2b1c-801a-11e5-a9e5-8ca98228593c',\n              'workflow_id':\
+      \ '03501d7626bd192f'}\n\n          The ``params`` dict should be specified as\
+      \ follows::\n\n            {STEP_ID: PARAM_DICT, ...}\n\n          where PARAM_DICT\
+      \ is::\n\n            {PARAM_NAME: VALUE, ...}\n\n          For backwards compatibility,\
+      \ the following (deprecated) format is\n          also supported for ``params``::\n\
+      \n            {TOOL_ID: PARAM_DICT, ...}\n\n          in which case PARAM_DICT\
+      \ affects all steps with the given tool id.\n          If both by-tool-id and\
+      \ by-step-id specifications are used, the\n          latter takes precedence.\n\
+      \n          Finally (again, for backwards compatibility), PARAM_DICT can also\n\
+      \          be specified as::\n\n            {'param': PARAM_NAME, 'value': VALUE}\n\
+      \n          Note that this format allows only one parameter to be set per\n\
+      \          step.\n\n          For a ``repeat`` parameter, the names of the contained\
+      \ parameters\n          needs         to be specified as ``<repeat name>_<repeat\n\
+      \          index>|<param name>``, with         the repeat index starting at\n\
+      \          0. For example, if the tool XML contains::\n\n            <repeat\
+      \ name=\"cutoff\" title=\"Parameters used to filter cells\"\n            min=\"\
+      1\">               <param name=\"name\" type=\"text\"\n            value=\"\
+      n_genes\" label=\"Name of param...\">\n            <option value=\"n_genes\"\
+      >n_genes</option>\n            <option value=\"n_counts\">n_counts</option>\n\
+      \            </param>               <param name=\"min\" type=\"float\" min=\"\
+      0\"\n            value=\"0\" label=\"Min value\"/>           </repeat>\n\n \
+      \         then the PARAM_DICT should be something like::\n\n            {...\
+      \            \"cutoff_0|name\": \"n_genes\",\n            \"cutoff_0|min\":\
+      \ \"2\",            \"cutoff_1|name\": \"n_counts\",\n            \"cutoff_1|min\"\
+      : \"4\",            ...}\n\n          At the time of this writing, it is not\
+      \ possible to change the\n          number of         times the contained parameters\
+      \ are repeated.\n          Therefore, the parameter         indexes can go from\
+      \ 0 to n-1,\n          where n is the number of times the         repeated element\
+      \ was\n          added when the workflow was saved in the Galaxy UI.\n\n   \
+      \       The ``replacement_params`` dict should map parameter names in\n    \
+      \      post-job actions (PJAs) to their runtime values. For\n          instance,\
+      \ if the final step has a PJA like the following::\n\n            {'RenameDatasetActionout_file1':\
+      \ {'action_arguments':\n            {'newname': '${output}'},\n            'action_type':\
+      \ 'RenameDatasetAction',\n            'output_name': 'out_file1'}}\n\n     \
+      \     then the following renames the output dataset to 'foo'::\n\n         \
+      \   replacement_params = {'output': 'foo'}\n\n          see also `this email\
+      \ thread\n          <http://lists.bx.psu.edu/pipermail/galaxy-\n          dev/2011-September/006875.html>`_.\n\
+      \n          .. warning::           Historically, the ``run_workflow`` method\n\
+      \          consumed a ``dataset_map``           data structure that was\n  \
+      \        indexed by unencoded workflow step IDs. These           IDs would\n\
+      \          not be stable across Galaxy instances. The new ``inputs``\n     \
+      \     property is instead indexed by either the ``order_index`` property\n \
+      \         (which is stable across workflow imports) or the step UUID which\n\
+      \          is           also stable.\n\nOptions:\n  --inputs TEXT          \
+      \         A mapping of workflow inputs to datasets and\n                   \
+      \               dataset collections. The datasets source can\n             \
+      \                     be a LibraryDatasetDatasetAssociation\n              \
+      \                    (``ldda``), LibraryDataset (``ld``),\n                \
+      \                  HistoryDatasetAssociation (``hda``), or\n               \
+      \                   HistoryDatasetCollectionAssociation\n                  \
+      \                (``hdca``).\n\n  --params TEXT                   A mapping\
+      \ of non-datasets tool parameters\n                                  (see below)\n\
+      \n  --history_id TEXT               The encoded history ID where to store the\n\
+      \                                  workflow output. Alternatively,\n       \
+      \                           ``history_name`` may be specified to create\n  \
+      \                                a new history.\n\n  --history_name TEXT   \
+      \          Create a new history with the given name to\n                   \
+      \               store the workflow output. If both\n                       \
+      \           ``history_id`` and ``history_name`` are\n                      \
+      \            provided, ``history_name`` is ignored. If\n                   \
+      \               neither is specified, a new 'Unnamed\n                     \
+      \             history' is created.\n\n  --import_inputs_to_history      If ``True``,\
+      \ used workflow inputs will be\n                                  imported into\
+      \ the history. If ``False``,\n                                  only workflow\
+      \ outputs will be visible in the\n                                  given history.\n\
+      \n  --replacement_params TEXT       pattern-based replacements for post-job\n\
+      \                                  actions (see below)\n\n  --allow_tool_state_corrections\
+      \  If True, allow Galaxy to fill in missing\n                              \
+      \    tool state when running workflows. This may\n                         \
+      \         be useful for workflows using tools that\n                       \
+      \           have changed over time or for workflows\n                      \
+      \            built outside of Galaxy with only a subset\n                  \
+      \                of inputs defined.\n\n  --inputs_by TEXT                Determines\
+      \ how inputs are referenced. Can be\n                                  \"step_index|step_uuid\"\
+      \ (default),\n                                  \"step_index\", \"step_id\"\
+      , \"step_uuid\", or\n                                  \"name\".\n\n  -h, --help\
+      \                      Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - workflows
+    - run_invocation_step_action
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: ACTION
+      description: nature of this action and what is expected will vary based on the
+        the type
+    named: []
+    parent: *id013
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec workflows run_invocation_step_action [OPTIONS] WORKFLOW_ID\n\
+      \                                                   INVOCATION_ID STEP_ID\n\
+      \                                                   ACTION\n\n  nature of this\
+      \ action and what is expected will vary based on the the type\n  of workflow\
+      \ step (the only currently valid action is True/False for pause\n  steps).\n\
+      \n  Output:\n\n      Representation of the workflow invocation step\n\nOptions:\n\
+      \  -h, --help  Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - workflows
+    - update_workflow
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: WORKFLOW_ID
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --annotation
+      description: New annotation for the workflow
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --menu_entry
+      description: Whether the workflow should appear in the user's menu
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --name
+      description: New name of the workflow
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --tags
+      description: Replace workflow tags with the given list
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --workflow
+      description: dictionary representing the workflow to be updated
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id013
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec workflows update_workflow [OPTIONS] WORKFLOW_ID\n\n\
+      \  Update a given workflow.\n\n  Output:\n\n      Dictionary representing the\
+      \ updated workflow\n\nOptions:\n  --annotation TEXT  New annotation for the\
+      \ workflow\n  --menu_entry       Whether the workflow should appear in the user's\
+      \ menu\n  --name TEXT        New name of the workflow\n  --tags TEXT       \
+      \ Replace workflow tags with the given list\n  --workflow TEXT    dictionary\
+      \ representing the workflow to be updated\n  -h, --help         Show this message\
+      \ and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - workflows
+    - export_workflow_dict
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: WORKFLOW_ID
+      description: ''
+    named: []
+    parent: *id013
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag: !Flag
+      optional: true
+      synonyms:
+      - --version
+      description: Workflow version to export
+      args: !SimpleFlagArg
+        name: INTEGER
+    help_text: "Usage: parsec workflows export_workflow_dict [OPTIONS] WORKFLOW_ID\n\
+      \n  Exports a workflow.\n\n  Output:\n\n      Dictionary representing the requested\
+      \ workflow\n\nOptions:\n  --version INTEGER  Workflow version to export\n  -h,\
+      \ --help         Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - workflows
+    - delete_workflow
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: WORKFLOW_ID
+      description: ''
+    named: []
+    parent: *id013
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec workflows delete_workflow [OPTIONS] WORKFLOW_ID\n\n\
+      \  Delete a workflow identified by `workflow_id`.\n\n  Output:\n\n      A message\
+      \ about the deletion\n\n          .. warning::             Deleting a workflow\
+      \ is irreversible - all\n          workflow data             will be permanently\
+      \ deleted.\n\nOptions:\n  -h, --help  Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - workflows
+    - get_workflows
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --workflow_id
+      description: Encoded workflow ID (incompatible with ``name``)
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --name
+      description: "Filter by name of workflow (incompatible with\n``workflow_id``).\
+        \ If multiple names match the given\nname, all the workflows matching the\
+        \ argument will be\nreturned."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --published
+      description: if ``True``, return also published workflows
+      args: !EmptyFlagArg {}
+    parent: *id013
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec workflows get_workflows [OPTIONS]\n\n  Get all workflows\
+      \ or filter the specific one(s) via the provided ``name``\n  or ``workflow_id``.\
+      \ Provide only one argument, ``name`` or\n  ``workflow_id``, but not both.\n\
+      \n  Output:\n\n      A list of workflow dicts.                  For example::\n\
+      \n                     [{'id': '92c56938c2f9b315',\n                     'name':\
+      \ 'Simple',                      'url':\n                     '/api/workflows/92c56938c2f9b315'}]\n\
+      \nOptions:\n  --workflow_id TEXT  Encoded workflow ID (incompatible with ``name``)\n\
+      \  --name TEXT         Filter by name of workflow (incompatible with\n     \
+      \                 ``workflow_id``). If multiple names match the given\n    \
+      \                  name, all the workflows matching the argument will be\n \
+      \                     returned.\n\n  --published         if ``True``, return\
+      \ also published workflows\n  -h, --help          Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - workflows
+    - show_invocation_step
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: WORKFLOW_ID
+      description: ''
+    named: []
+    parent: *id013
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec workflows show_invocation_step [OPTIONS] WORKFLOW_ID\n\
+      \                                             INVOCATION_ID STEP_ID\n\n  See\
+      \ the details of a particular workflow invocation step.\n\n  Output:\n\n   \
+      \   The workflow invocation step.           For example::\n\n              {'action':\
+      \ None,              'id': '63cd3858d057a6d1',\n              'job_id': None,\
+      \              'model_class':\n              'WorkflowInvocationStep',     \
+      \         'order_index': 2,\n              'state': None,              'update_time':\n\
+      \              '2015-10-31T22:11:14',              'workflow_step_id':\n   \
+      \           '52e496b945151ee8',              'workflow_step_label': None,\n\
+      \              'workflow_step_uuid': '4060554c-1dd5-4287-9040-8b4f281cf9dc'}\n\
+      \nOptions:\n  -h, --help  Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - workflows
+    - import_workflow_from_local_path
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: FILE_LOCAL_PATH
+      description: Imports a new workflow given the path to a file containing a previously
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --publish
+      description: "if ``True`` the uploaded workflow will be published; otherwise\n\
+        it will be visible only by the user which uploads it (default)"
+      args: !EmptyFlagArg {}
+    parent: *id013
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec workflows import_workflow_from_local_path [OPTIONS]\n\
+      \                                                        FILE_LOCAL_PATH\n\n\
+      \  Imports a new workflow given the path to a file containing a previously\n\
+      \  exported workflow.\n\n  Output:\n\n      Information about the imported workflow.\
+      \           For example::\n\n              {'name': 'Training: 16S rRNA sequencing\
+      \ with mothur: main\n              tutorial',              'tags': [],     \
+      \         'deleted':\n              false,              'latest_workflow_uuid':\n\
+      \              '368c6165-ccbe-4945-8a3c-d27982206d66',              'url':\n\
+      \              '/api/workflows/94bac0a90086bdcf',\n              'number_of_steps':\
+      \ 44,              'published': false,\n              'owner': 'jane-doe', \
+      \             'model_class':\n              'StoredWorkflow',              'id':\
+      \ '94bac0a90086bdcf'}\n\nOptions:\n  --publish   if ``True`` the uploaded workflow\
+      \ will be published; otherwise\n              it will be visible only by the\
+      \ user which uploads it (default)\n\n  -h, --help  Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - workflows
+    - show_invocation
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: WORKFLOW_ID
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: INVOCATION_ID
+      description: ''
+    named: []
+    parent: *id013
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec workflows show_invocation [OPTIONS] WORKFLOW_ID INVOCATION_ID\n\
+      \n  Get a workflow invocation object representing the scheduling of a\n  workflow.\
+      \ This object may be sparse at first (missing inputs and\n  invocation steps)\
+      \ and will become more populated as the workflow is\n  actually scheduled.\n\
+      \n  Output:\n\n      The workflow invocation.           For example::\n\n  \
+      \            {'history_id': '2f94e8ae9edff68a',              'id':\n       \
+      \       'df7a1f0c02a5b08e',              'inputs': {'0': {'id':\n          \
+      \    'a7db2fac67043c7e',                               'src':\n            \
+      \  'hda',                               'uuid':\n              '7932ffe0-2340-4952-8857-dbaa50f1f46a'}},\n\
+      \              'model_class': 'WorkflowInvocation',              'state':\n\
+      \              'ready',              'steps': [{'action': None,\n          \
+      \    'id': 'd413a19dec13d11e',                         'job_id':\n         \
+      \     None,                         'model_class':\n              'WorkflowInvocationStep',\n\
+      \              'order_index': 0,                         'state': None,\n  \
+      \            'update_time': '2015-10-31T22:00:26',\n              'workflow_step_id':\
+      \ 'cbbbf59e8f08c98c',\n              'workflow_step_label': None,\n        \
+      \      'workflow_step_uuid': 'b81250fd-3278-4e6a-b269-56a1f01ef485'},\n    \
+      \          {'action': None,                         'id':\n              '2f94e8ae9edff68a',\
+      \                         'job_id':\n              'e89067bb68bee7a0',     \
+      \                    'model_class':\n              'WorkflowInvocationStep',\n\
+      \              'order_index': 1,                         'state': 'new',\n \
+      \             'update_time': '2015-10-31T22:00:26',\n              'workflow_step_id':\
+      \ '964b37715ec9bd22',\n              'workflow_step_label': None,\n        \
+      \      'workflow_step_uuid':\n              'e62440b8-e911-408b-b124-e05435d3125e'}],\n\
+      \              'update_time': '2015-10-31T22:00:26',              'uuid':\n\
+      \              'c8aa2b1c-801a-11e5-a9e5-8ca98228593c',\n              'workflow_id':\
+      \ '03501d7626bd192f'}\n\nOptions:\n  -h, --help  Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - workflows
+    - run_workflow
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: step.
+      description: The ``replacement_params`` dict should map parameter names in
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --dataset_map
+      description: "A mapping of workflow inputs to datasets. The\ndatasets source\
+        \ can be a\nLibraryDatasetDatasetAssociation (``ldda``),\nLibraryDataset (``ld``),\
+        \ or\nHistoryDatasetAssociation (``hda``). The map\nmust be in the following\
+        \ format: ``{'<input>':\n{'id': <encoded dataset ID>, 'src': '[ldda, ld,\n\
+        hda]'}}`` (e.g. ``{'23': {'id':\n'29beef4fadeed09f', 'src': 'ld'}}``)"
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --params
+      description: "A mapping of non-datasets tool parameters (see\nbelow)"
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --history_id
+      description: "The encoded history ID where to store the\nworkflow output. Alternatively,\
+        \ ``history_name``\nmay be specified to create a new history."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --history_name
+      description: "Create a new history with the given name to\nstore the workflow\
+        \ output. If both\n``history_id`` and ``history_name`` are\nprovided, ``history_name``\
+        \ is ignored. If\nneither is specified, a new 'Unnamed history' is\ncreated."
+      args: !SimpleFlagArg
+        name: TEXT
+    - !Flag
+      optional: true
+      synonyms:
+      - --import_inputs_to_history
+      description: "If ``True``, used workflow inputs will be\nimported into the history.\
+        \ If ``False``, only\nworkflow outputs will be visible in the given\nhistory."
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --replacement_params
+      description: "pattern-based replacements for post-job actions\n(see below)"
+      args: !SimpleFlagArg
+        name: TEXT
+    parent: *id013
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec workflows run_workflow [OPTIONS] WORKFLOW_ID\n\n  Run\
+      \ the workflow identified by ``workflow_id``.\n\n  Output:\n\n      A dict containing\
+      \ the history ID where the outputs are placed\n      as well as output dataset\
+      \ IDs. For example::\n\n              {'history': '64177123325c9cfd',      \
+      \        'outputs':\n              ['aa4d3084af404259']}\n\n          The ``params``\
+      \ dict should be specified as follows::\n\n            {STEP_ID: PARAM_DICT,\
+      \ ...}\n\n          where PARAM_DICT is::\n\n            {PARAM_NAME: VALUE,\
+      \ ...}\n\n          For backwards compatibility, the following (deprecated)\
+      \ format is\n          also supported for ``params``::\n\n            {TOOL_ID:\
+      \ PARAM_DICT, ...}\n\n          in which case PARAM_DICT affects all steps with\
+      \ the given tool id.\n          If both by-tool-id and by-step-id specifications\
+      \ are used, the\n          latter takes precedence.\n\n          Finally (again,\
+      \ for backwards compatibility), PARAM_DICT can also\n          be specified\
+      \ as::\n\n            {'param': PARAM_NAME, 'value': VALUE}\n\n          Note\
+      \ that this format allows only one parameter to be set per\n          step.\n\
+      \n          The ``replacement_params`` dict should map parameter names in\n\
+      \          post-job actions (PJAs) to their runtime values. For\n          instance,\
+      \ if the final step has a PJA like the following::\n\n            {'RenameDatasetActionout_file1':\
+      \ {'action_arguments':\n            {'newname': '${output}'},\n            'action_type':\
+      \ 'RenameDatasetAction',\n            'output_name': 'out_file1'}}\n\n     \
+      \     then the following renames the output dataset to 'foo'::\n\n         \
+      \   replacement_params = {'output': 'foo'}\n\n          see also `this email\
+      \ thread\n          <http://lists.bx.psu.edu/pipermail/galaxy-\n          dev/2011-September/006875.html>`_.\n\
+      \n          .. warning::             This method waits for the whole workflow\n\
+      \          to be scheduled before             returning and does not scale to\n\
+      \          large workflows as a result. This             method has therefore\n\
+      \          been deprecated in favor of             :meth:`invoke_workflow`,\n\
+      \          which also features improved default             behavior for\n \
+      \         dataset input handling.\n\nOptions:\n  --dataset_map TEXT        \
+      \  A mapping of workflow inputs to datasets. The\n                         \
+      \     datasets source can be a\n                              LibraryDatasetDatasetAssociation\
+      \ (``ldda``),\n                              LibraryDataset (``ld``), or\n \
+      \                             HistoryDatasetAssociation (``hda``). The map\n\
+      \                              must be in the following format: ``{'<input>':\n\
+      \                              {'id': <encoded dataset ID>, 'src': '[ldda, ld,\n\
+      \                              hda]'}}`` (e.g. ``{'23': {'id':\n           \
+      \                   '29beef4fadeed09f', 'src': 'ld'}}``)\n\n  --params TEXT\
+      \               A mapping of non-datasets tool parameters (see\n           \
+      \                   below)\n\n  --history_id TEXT           The encoded history\
+      \ ID where to store the\n                              workflow output. Alternatively,\
+      \ ``history_name``\n                              may be specified to create\
+      \ a new history.\n\n  --history_name TEXT         Create a new history with\
+      \ the given name to\n                              store the workflow output.\
+      \ If both\n                              ``history_id`` and ``history_name``\
+      \ are\n                              provided, ``history_name`` is ignored.\
+      \ If\n                              neither is specified, a new 'Unnamed history'\
+      \ is\n                              created.\n\n  --import_inputs_to_history\
+      \  If ``True``, used workflow inputs will be\n                             \
+      \ imported into the history. If ``False``, only\n                          \
+      \    workflow outputs will be visible in the given\n                       \
+      \       history.\n\n  --replacement_params TEXT   pattern-based replacements\
+      \ for post-job actions\n                              (see below)\n\n  -h, --help\
+      \                  Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - workflows
+    - get_invocations
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: WORKFLOW_ID
+      description: ''
+    named: []
+    parent: *id013
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec workflows get_invocations [OPTIONS] WORKFLOW_ID\n\n\
+      \  Get a list containing all the workflow invocations corresponding to the\n\
+      \  specified workflow.\n\n  Output:\n\n      A list of workflow invocations.\
+      \           For example::\n\n              [{'history_id': '2f94e8ae9edff68a',\
+      \               'id':\n              'df7a1f0c02a5b08e',               'model_class':\n\
+      \              'WorkflowInvocation',               'state': 'new',\n       \
+      \       'update_time': '2015-10-31T22:00:22',               'uuid':\n      \
+      \        'c8aa2b1c-801a-11e5-a9e5-8ca98228593c',\n              'workflow_id':\
+      \ '03501d7626bd192f'}]\n\nOptions:\n  -h, --help  Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - workflows
+    - import_workflow_dict
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: WORKFLOW_DICT
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --publish
+      description: "if ``True`` the uploaded workflow will be published; otherwise\n\
+        it will be visible only by the user which uploads it (default)"
+      args: !EmptyFlagArg {}
+    parent: *id013
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec workflows import_workflow_dict [OPTIONS] WORKFLOW_DICT\n\
+      \n  Imports a new workflow given a dictionary representing a previously\n  exported\
+      \ workflow.\n\n  Output:\n\n      Information about the imported workflow. \
+      \          For example::\n\n              {'name': 'Training: 16S rRNA sequencing\
+      \ with mothur: main\n              tutorial',              'tags': [],     \
+      \         'deleted':\n              false,              'latest_workflow_uuid':\n\
+      \              '368c6165-ccbe-4945-8a3c-d27982206d66',              'url':\n\
+      \              '/api/workflows/94bac0a90086bdcf',\n              'number_of_steps':\
+      \ 44,              'published': false,\n              'owner': 'jane-doe', \
+      \             'model_class':\n              'StoredWorkflow',              'id':\
+      \ '94bac0a90086bdcf'}\n\nOptions:\n  --publish   if ``True`` the uploaded workflow\
+      \ will be published; otherwise\n              it will be visible only by the\
+      \ user which uploads it (default)\n\n  -h, --help  Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - workflows
+    - get_workflow_inputs
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: WORKFLOW_ID
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: LABEL
+      description: ''
+    named: []
+    parent: *id013
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec workflows get_workflow_inputs [OPTIONS] WORKFLOW_ID\
+      \ LABEL\n\n  Get a list of workflow input IDs that match the given label. If\
+      \ no input\n  matches the given label, an empty list is returned.\n\n  Output:\n\
+      \n      list of workflow inputs matching the label query\n\nOptions:\n  -h,\
+      \ --help  Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - workflows
+    - show_workflow
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: WORKFLOW_ID
+      description: ''
+    named: []
+    parent: *id013
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag: !Flag
+      optional: true
+      synonyms:
+      - --version
+      description: Workflow version to show
+      args: !SimpleFlagArg
+        name: INTEGER
+    help_text: "Usage: parsec workflows show_workflow [OPTIONS] WORKFLOW_ID\n\n  Display\
+      \ information needed to run a workflow.\n\n  Output:\n\n      A description\
+      \ of the workflow and its inputs.           For example::\n\n              {'id':\
+      \ '92c56938c2f9b315',              'inputs': {'23':\n              {'label':\
+      \ 'Input Dataset', 'value': ''}},              'name':\n              'Simple',\
+      \              'url':\n              '/api/workflows/92c56938c2f9b315'}\n\n\
+      Options:\n  --version INTEGER  Workflow version to show\n  -h, --help      \
+      \   Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - workflows
+    - import_shared_workflow
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: WORKFLOW_ID
+      description: ''
+    named: []
+    parent: *id013
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec workflows import_shared_workflow [OPTIONS] WORKFLOW_ID\n\
+      \n  Imports a new workflow from the shared published workflows.\n\n  Output:\n\
+      \n      A description of the workflow.           For example::\n\n         \
+      \     {'id': 'ee0e2b4b696d9092',              'model_class':\n             \
+      \ 'StoredWorkflow',              'name': 'Super workflow that\n            \
+      \  solves everything!',              'published': False,\n              'tags':\
+      \ [],              'url':\n              '/api/workflows/ee0e2b4b696d9092'}\n\
+      \nOptions:\n  -h, --help  Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - workflows
+    - export_workflow_to_local_path
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: FILE_LOCAL_PATH
+      description: Exports a workflow in JSON format to a given local path.
+    - !Positional
+      optional: false
+      position: 0
+      name: None
+      description: 'Options:'
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --use_default_filename
+      description: "If the use_default_name parameter is True, the\nexported file\
+        \ will be saved as\nfile_local_path/Galaxy-Workflow-%s.ga, where %s is\nthe\
+        \ workflow name. If use_default_name is False,\nfile_local_path is assumed\
+        \ to contain the full file\npath including filename.  [default: True]"
+      args: !EmptyFlagArg {}
+    parent: *id013
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec workflows export_workflow_to_local_path [OPTIONS] WORKFLOW_ID\n\
+      \                                                      FILE_LOCAL_PATH\n\n \
+      \ Exports a workflow in JSON format to a given local path.\n\n  Output:\n\n\
+      \      None\n\nOptions:\n  --use_default_filename  If the use_default_name parameter\
+      \ is True, the\n                          exported file will be saved as\n \
+      \                         file_local_path/Galaxy-Workflow-%s.ga, where %s is\n\
+      \                          the workflow name. If use_default_name is False,\n\
+      \                          file_local_path is assumed to contain the full file\n\
+      \                          path including filename.  [default: True]\n\n  -h,\
+      \ --help              Show this message and exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  - !Command
+    command:
+    - parsec
+    - workflows
+    - cancel_invocation
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: WORKFLOW_ID
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: INVOCATION_ID
+      description: ''
+    named: []
+    parent: *id013
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: parsec workflows cancel_invocation [OPTIONS] WORKFLOW_ID INVOCATION_ID\n\
+      \n  Cancel the scheduling of a workflow.\n\n  Output:\n\n      The workflow\
+      \ invocation being cancelled\n\nOptions:\n  -h, --help  Show this message and\
+      \ exit.\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: parsec workflows [OPTIONS] COMMAND [ARGS]...\n\nOptions:\n  -h,\
+    \ --help  Show this message and exit.\n\nCommands:\n  cancel_invocation      \
+    \         Cancel the scheduling of a workflow.\n  delete_workflow            \
+    \     Delete a workflow identified by...\n  export_workflow_dict            Exports\
+    \ a workflow.\n  export_workflow_to_local_path   Exports a workflow in JSON format\
+    \ to a...\n  get_invocations                 Get a list containing all the workflow...\n\
+    \  get_workflow_inputs             Get a list of workflow input IDs that...\n\
+    \  get_workflows                   Get all workflows or filter the specific...\n\
+    \  import_shared_workflow          Imports a new workflow from the shared...\n\
+    \  import_workflow_dict            Imports a new workflow given a dictionary...\n\
+    \  import_workflow_from_local_path\n                                  Imports\
+    \ a new workflow given the path to...\n  invoke_workflow                 Invoke\
+    \ the workflow identified by...\n  run_invocation_step_action      nature of this\
+    \ action and what is...\n  run_workflow                    Run the workflow identified\
+    \ by...\n  show_invocation                 Get a workflow invocation object...\n\
+    \  show_invocation_step            See the details of a particular workflow...\n\
+    \  show_workflow                   Display information needed to run a...\n  update_workflow\
+    \                 Update a given workflow.\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Show the version and exit.
+  args: !EmptyFlagArg {}
+help_text: "Usage: parsec [OPTIONS] COMMAND [ARGS]...\n\n  Command line wrappers around\
+  \ BioBlend functions. While this sounds\n  unexciting, with parsec and jq you can\
+  \ easily build powerful command line\n  scripts.\n\nOptions:\n  --version      \
+  \             Show the version and exit.\n  -v, --verbose               Enables\
+  \ verbose mode.\n  -g, --galaxy_instance TEXT  Name of instance in /root/.parsec.yml.\
+  \ This\n                              parameter can also be set via the environment\n\
+  \                              variable PARSEC_GALAXY_INSTANCE  [default:\n    \
+  \                          __default; required]\n\n  -f, --path TEXT           \
+  \  config file path\n  -h, --help                  Show this message and exit.\n\
+  \nCommands:\n  config\n  datasets\n  datatypes\n  folders\n  forms\n  ftpfiles\n\
+  \  genomes\n  groups\n  histories\n  jobs\n  libraries\n  quotas\n  roles\n  tool_data\n\
+  \  tools\n  users\n  utils\n  visual\n  workflows\n  toolshed_categories\n  toolshed_repositories\n\
+  \  toolshed_tools\n"
+generated_using: *id003
+docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0

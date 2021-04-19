@@ -1,0 +1,2263 @@
+&id001 !Command
+command:
+- metagraph_DNA
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - metagraph_DNA
+  - build
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: FILE1
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-count
+    description: '[INT]    min k-mer abundance, including [1]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --max-count
+    description: '[INT]    max k-mer abundance, excluding [inf]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-count-q
+    description: '[INT]  min k-mer abundance quantile (min-count is used by default)
+      [0.0]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --max-count-q
+    description: '[INT]  max k-mer abundance quantile (max-count is used by default)
+      [1.0]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --reference
+    description: '[STR]    basename of reference sequence (for parsing VCF files)
+      []'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --graph
+    description: '[STR]        graph representation: succinct / bitmap / hash / hashstr
+      / hashfast [succinct]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --count-kmers
+    description: count k-mers and build weighted graph [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --count-width
+    description: number of bits used to represent k-mer abundance [8]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --index-ranges
+    description: '[INT] index all node ranges in BOSS for suffixes of given length
+      [10]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -k
+    - --kmer-length
+    description: '[INT]  length of the k-mer to use [3]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --mode
+    description: 'k-mer indexing mode: basic / canonical / primary [basic]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --complete
+    description: construct a complete graph (only for Bitmap graph) [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --mem-cap-gb
+    description: '[INT]   preallocated buffer size in GB [1]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --dynamic
+    description: use dynamic build method [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    - --len-suffix
+    description: '[INT]   k-mer suffix length for building graph from chunks [0]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --suffix
+    description: build graph chunk only for k-mers with the suffix given [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --outfile-base
+    description: '[STR] basename of output file []'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --mask-dummy
+    description: build mask for dummy k-mers (only for Succinct graph) [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --parallel
+    description: '[INT]     use multiple threads for computation [1]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --disk-swap
+    description: '[STR]    directory to use for temporary files [off]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --disk-cap-gb
+    description: '[INT]  max temp disk space to use before forcing a merge, in GB
+      [inf]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    description: switch on verbose output [off]
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print usage info
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "#############################\n### Welcome to MetaGraph! ###\n#############################\n\
+    \nMetagraph: comprehensive metagenome graph representation -- Version 0.1\n\n\
+    Usage: metagraph_DNA build [options] -o <outfile-base> FILE1 [[FILE2] ...]\n\t\
+    Each input file is given in FASTA, FASTQ, VCF, or KMC format.\n\tNote that VCF\
+    \ files must be in plain text or bgzip format.\n\nAvailable options for build:\n\
+    \t   --min-count [INT] \tmin k-mer abundance, including [1]\n\t   --max-count\
+    \ [INT] \tmax k-mer abundance, excluding [inf]\n\t   --min-count-q [INT] \tmin\
+    \ k-mer abundance quantile (min-count is used by default) [0.0]\n\t   --max-count-q\
+    \ [INT] \tmax k-mer abundance quantile (max-count is used by default) [1.0]\n\t\
+    \   --reference [STR] \tbasename of reference sequence (for parsing VCF files)\
+    \ []\n\n\t   --graph [STR] \tgraph representation: succinct / bitmap / hash /\
+    \ hashstr / hashfast [succinct]\n\t   --count-kmers \tcount k-mers and build weighted\
+    \ graph [off]\n\t   --count-width \tnumber of bits used to represent k-mer abundance\
+    \ [8]\n\t   --index-ranges [INT]\tindex all node ranges in BOSS for suffixes of\
+    \ given length [10]\n\t-k --kmer-length [INT] \tlength of the k-mer to use [3]\n\
+    \t   --mode \t\tk-mer indexing mode: basic / canonical / primary [basic]\n\t \
+    \  --complete \t\tconstruct a complete graph (only for Bitmap graph) [off]\n\t\
+    \   --mem-cap-gb [INT] \tpreallocated buffer size in GB [1]\n\t   --dynamic \t\
+    \tuse dynamic build method [off]\n\t-l --len-suffix [INT] \tk-mer suffix length\
+    \ for building graph from chunks [0]\n\t   --suffix \t\tbuild graph chunk only\
+    \ for k-mers with the suffix given [off]\n\t-o --outfile-base [STR]\tbasename\
+    \ of output file []\n\t   --mask-dummy \tbuild mask for dummy k-mers (only for\
+    \ Succinct graph) [off]\n\t-p --parallel [INT] \tuse multiple threads for computation\
+    \ [1]\n\t   --disk-swap [STR] \tdirectory to use for temporary files [off]\n\t\
+    \   --disk-cap-gb [INT] \tmax temp disk space to use before forcing a merge, in\
+    \ GB [inf]\n\n\tGeneral options:\n\t-v --verbose \t\tswitch on verbose output\
+    \ [off]\n\t-h --help \t\tprint usage info\n\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/metagraph:0.2.0--h74b8f77_0
+- !Command
+  command:
+  - metagraph_DNA
+  - assemble
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: GRAPH
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --prune-tips
+    description: '[INT]   prune all dead ends of this length and shorter [0]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --unitigs
+    description: extract unitigs [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --enumerate
+    description: enumerate sequences assembled and dumped to FASTA [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --primary-kmers
+    description: output each k-mer only in one if its forms (canonical/non-canonical)
+      [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --to-gfa
+    description: dump graph layout to GFA [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --compacted
+    description: dump compacted de Bruijn graph to GFA [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --header
+    description: '[STR]       header for sequences in FASTA output []'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --parallel
+    description: '[INT]     use multiple threads for computation [1]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    - --annotator
+    description: '[STR]                    annotator to load []'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --label-mask-in
+    description: '[STR]                label to include in masked graph'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --label-mask-out
+    description: '[STR]               label to exclude from masked graph'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --label-mask-in-fraction
+    description: '[FLOAT]     minimum fraction of mask-in labels among the set of
+      masked labels [1.0]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --label-mask-out-fraction
+    description: '[FLOAT]    maximum fraction of mask-out labels among the set of
+      masked labels [0.0]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --label-other-fraction
+    description: '[FLOAT]       maximum fraction of other labels allowed [1.0]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --filter-by-kmer
+    description: mask out graph k-mers individually [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    description: switch on verbose output [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: ''
+    args: !SimpleFlagArg
+      name: outfile-base
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print usage info
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "#############################\n### Welcome to MetaGraph! ###\n#############################\n\
+    \nMetagraph: comprehensive metagenome graph representation -- Version 0.1\n\n\
+    Usage: metagraph_DNA assemble -o <outfile-base> [options] GRAPH\n\tAssemble contigs\
+    \ from de Bruijn graph and dump to compressed FASTA file.\n\n\t   --prune-tips\
+    \ [INT] \tprune all dead ends of this length and shorter [0]\n\t   --unitigs \t\
+    \textract unitigs [off]\n\t   --enumerate \t\tenumerate sequences assembled and\
+    \ dumped to FASTA [off]\n\t   --primary-kmers \toutput each k-mer only in one\
+    \ if its forms (canonical/non-canonical) [off]\n\t   --to-gfa \t\tdump graph layout\
+    \ to GFA [off]\n\t   --compacted \t\tdump compacted de Bruijn graph to GFA [off]\n\
+    \t   --header [STR] \theader for sequences in FASTA output []\n\t-p --parallel\
+    \ [INT] \tuse multiple threads for computation [1]\n\n\t-a --annotator [STR] \t\
+    \t\tannotator to load []\n\t   --label-mask-in [STR] \t\tlabel to include in masked\
+    \ graph\n\t   --label-mask-out [STR] \t\tlabel to exclude from masked graph\n\t\
+    \   --label-mask-in-fraction [FLOAT] \tminimum fraction of mask-in labels among\
+    \ the set of masked labels [1.0]\n\t   --label-mask-out-fraction [FLOAT] \tmaximum\
+    \ fraction of mask-out labels among the set of masked labels [0.0]\n\t   --label-other-fraction\
+    \ [FLOAT] \tmaximum fraction of other labels allowed [1.0]\n\t   --filter-by-kmer\
+    \ \t\t\tmask out graph k-mers individually [off]\n\n\tGeneral options:\n\t-v --verbose\
+    \ \t\tswitch on verbose output [off]\n\t-h --help \t\tprint usage info\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/metagraph:0.2.0--h74b8f77_0
+- !Command
+  command:
+  - metagraph_DNA
+  - concatenate
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --graph
+    description: '[STR]        graph representation: succinct / bitmap [succinct]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --infile-base
+    description: "[STR]  load graph chunks from files '<infile-base>.<suffix>.<type>.chunk'\
+      \ []"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    - --len-suffix
+    description: '[INT]   iterate all possible suffixes of the length given [0]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --mode
+    description: 'k-mer indexing mode: basic / canonical / primary [basic]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-postprocessing
+    description: do not erase redundant dummy edges after concatenation [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --parallel
+    description: '[INT]     use multiple threads for computation [1]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    description: switch on verbose output [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: ''
+    args: !SimpleFlagArg
+      name: graph_basename
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print usage info
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "#############################\n### Welcome to MetaGraph! ###\n#############################\n\
+    \nMetagraph: comprehensive metagenome graph representation -- Version 0.1\n\n\
+    Usage: metagraph_DNA concatenate -o <graph_basename> [options] [[CHUNK] ...]\n\
+    \nAvailable options for merge:\n\t   --graph [STR] \tgraph representation: succinct\
+    \ / bitmap [succinct]\n\t-i --infile-base [STR] \tload graph chunks from files\
+    \ '<infile-base>.<suffix>.<type>.chunk' []\n\t-l --len-suffix [INT] \titerate\
+    \ all possible suffixes of the length given [0]\n\t   --mode \t\tk-mer indexing\
+    \ mode: basic / canonical / primary [basic]\n\t   --no-postprocessing \tdo not\
+    \ erase redundant dummy edges after concatenation [off]\n\t-p --parallel [INT]\
+    \ \tuse multiple threads for computation [1]\n\n\tGeneral options:\n\t-v --verbose\
+    \ \t\tswitch on verbose output [off]\n\t-h --help \t\tprint usage info\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/metagraph:0.2.0--h74b8f77_0
+- !Command
+  command:
+  - metagraph_DNA
+  - query
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: FILE1
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --fwd-and-reverse
+    description: for each input sequence, query its reverse complement as well [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --align
+    description: align sequences instead of mapping k-mers [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --sparse
+    description: use row-major sparse matrix for row annotation [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --count-labels
+    description: count labels for k-mers from querying sequences [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --print-signature
+    description: print vectors indicating present/absent k-mers [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --num-top-labels
+    description: maximum number of frequent labels to print [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --discovery-fraction
+    description: '[FLOAT] fraction of labeled k-mers required for annotation [0.7]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --labels-delimiter
+    description: '[STR]     delimiter for annotation labels [":"]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --suppress-unlabeled
+    description: do not show results for sequences missing in graph [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --parallel
+    description: '[INT]     use multiple threads for computation [1]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --fast
+    description: query in batches [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --batch-size
+    description: query batch size (number of base pairs) [100000000]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --align-both-strands
+    description: return best alignments for either input sequence or its reverse complement
+      [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --align-min-path-score
+    description: '[INT]                 the minimum score that a reported path can
+      have [0]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --align-edit-distance
+    description: use unit costs for scoring matrix [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --align-max-nodes-per-seq-char
+    description: '[FLOAT]       maximum number of nodes to consider per sequence character
+      [12.0]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --align-max-ram
+    description: '[FLOAT]              maximum amount of RAM used per alignment in
+      MB [200.0]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --batch-align
+    description: align against query graph [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --max-hull-forks
+    description: '[INT]       maximum number of forks to take when expanding query
+      graph [4]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --max-hull-depth
+    description: '[INT]       maximum number of steps to traverse when expanding query
+      graph [max_nodes_per_seq_char * max_seq_len]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --align-match-score
+    description: '[INT]                    positive match score [2]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --align-mm-transition-penalty
+    description: '[INT]          positive transition penalty (DNA only) [3]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --align-mm-transversion-penalty
+    description: '[INT]        positive transversion penalty (DNA only) [3]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --align-gap-open-penalty
+    description: '[INT]               positive gap opening penalty [5]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --align-gap-extension-penalty
+    description: '[INT]          positive gap extension penalty [2]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --align-min-cell-score
+    description: '[INT]                 the minimum value that a cell in the alignment
+      table can hold [0]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --align-xdrop
+    description: '[INT]                          the maximum difference between the
+      current and the best alignment [27]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --align-min-seed-length
+    description: '[INT]                the minimum length of a seed [graph k]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --align-max-seed-length
+    description: '[INT]                the maximum length of a seed [graph k]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --align-min-exact-match
+    description: '[FLOAT] fraction of matching nucleotides required to align sequence
+      [0.7]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --align-max-num-seeds-per-locus
+    description: '[INT]        the maximum number of allowed inexact seeds per locus
+      [inf]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    description: switch on verbose output [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    description: ''
+    args: !SimpleFlagArg
+      name: ANNOTATION
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: ''
+    args: !SimpleFlagArg
+      name: GRAPH
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print usage info
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "#############################\n### Welcome to MetaGraph! ###\n#############################\n\
+    \nMetagraph: comprehensive metagenome graph representation -- Version 0.1\n\n\
+    Usage: metagraph_DNA query -i <GRAPH> -a <ANNOTATION> [options] FILE1 [[FILE2]\
+    \ ...]\n\tEach input file is given in FASTA or FASTQ format.\n\nAvailable options\
+    \ for query:\n\t   --fwd-and-reverse \tfor each input sequence, query its reverse\
+    \ complement as well [off]\n\t   --align \t\talign sequences instead of mapping\
+    \ k-mers [off]\n\t   --sparse \t\tuse row-major sparse matrix for row annotation\
+    \ [off]\n\n\t   --count-labels \t\tcount labels for k-mers from querying sequences\
+    \ [off]\n\t   --print-signature \t\tprint vectors indicating present/absent k-mers\
+    \ [off]\n\t   --num-top-labels \t\tmaximum number of frequent labels to print\
+    \ [off]\n\t   --discovery-fraction [FLOAT] fraction of labeled k-mers required\
+    \ for annotation [0.7]\n\t   --labels-delimiter [STR]\tdelimiter for annotation\
+    \ labels [\":\"]\n\t   --suppress-unlabeled \tdo not show results for sequences\
+    \ missing in graph [off]\n\n\t-p --parallel [INT] \tuse multiple threads for computation\
+    \ [1]\n\t   --fast \t\tquery in batches [off]\n\t   --batch-size \tquery batch\
+    \ size (number of base pairs) [100000000]\n\nAvailable options for --align:\n\t\
+    \   --align-both-strands \t\t\treturn best alignments for either input sequence\
+    \ or its reverse complement [off]\n\t   --align-min-path-score [INT]\t\t\tthe\
+    \ minimum score that a reported path can have [0]\n\t   --align-edit-distance\
+    \ \t\t\tuse unit costs for scoring matrix [off]\n\t   --align-max-nodes-per-seq-char\
+    \ [FLOAT]\tmaximum number of nodes to consider per sequence character [12.0]\n\
+    \t   --align-max-ram [FLOAT]\t\tmaximum amount of RAM used per alignment in MB\
+    \ [200.0]\n\n\t   --batch-align \t\talign against query graph [off]\n\t   --max-hull-forks\
+    \ [INT]\tmaximum number of forks to take when expanding query graph [4]\n\t  \
+    \ --max-hull-depth [INT]\tmaximum number of steps to traverse when expanding query\
+    \ graph [max_nodes_per_seq_char * max_seq_len]\n\nAdvanced options for scoring:\n\
+    \t   --align-match-score [INT]\t\t\tpositive match score [2]\n\t   --align-mm-transition-penalty\
+    \ [INT]\t\tpositive transition penalty (DNA only) [3]\n\t   --align-mm-transversion-penalty\
+    \ [INT]\tpositive transversion penalty (DNA only) [3]\n\t   --align-gap-open-penalty\
+    \ [INT]\t\tpositive gap opening penalty [5]\n\t   --align-gap-extension-penalty\
+    \ [INT]\t\tpositive gap extension penalty [2]\n\t   --align-min-cell-score [INT]\t\
+    \t\tthe minimum value that a cell in the alignment table can hold [0]\n\t   --align-xdrop\
+    \ [INT]\t\t\t\tthe maximum difference between the current and the best alignment\
+    \ [27]\n\nAdvanced options for seeding:\n\t   --align-min-seed-length [INT]\t\t\
+    the minimum length of a seed [graph k]\n\t   --align-max-seed-length [INT]\t\t\
+    the maximum length of a seed [graph k]\n\t   --align-min-exact-match [FLOAT] fraction\
+    \ of matching nucleotides required to align sequence [0.7]\n\t   --align-max-num-seeds-per-locus\
+    \ [INT]\tthe maximum number of allowed inexact seeds per locus [inf]\n\n\tGeneral\
+    \ options:\n\t-v --verbose \t\tswitch on verbose output [off]\n\t-h --help \t\t\
+    print usage info\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/metagraph:0.2.0--h74b8f77_0
+- !Command
+  command:
+  - metagraph_DNA
+  - relax_brwt
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: ANNOTATOR
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --outfile-base
+    description: '[STR] basename of output file []'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --relax-arity
+    description: '[INT]  relax brwt tree to optimize arity limited to this number
+      [10]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --parallel
+    description: '[INT]     use multiple threads for computation [1]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    description: switch on verbose output [off]
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print usage info
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "#############################\n### Welcome to MetaGraph! ###\n#############################\n\
+    \nMetagraph: comprehensive metagenome graph representation -- Version 0.1\n\n\
+    Usage: metagraph_DNA relax_brwt -o <annotation-basename> [options] ANNOTATOR\n\
+    \n\t-o --outfile-base [STR] basename of output file []\n\t   --relax-arity [INT]\
+    \ \trelax brwt tree to optimize arity limited to this number [10]\n\t-p --parallel\
+    \ [INT] \tuse multiple threads for computation [1]\n\n\tGeneral options:\n\t-v\
+    \ --verbose \t\tswitch on verbose output [off]\n\t-h --help \t\tprint usage info\n\
+    \n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/metagraph:0.2.0--h74b8f77_0
+- !Command
+  command:
+  - metagraph_DNA
+  - compare
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: GRAPH1
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: GRAPH2
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    description: switch on verbose output [off]
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print usage info
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "#############################\n### Welcome to MetaGraph! ###\n#############################\n\
+    \nMetagraph: comprehensive metagenome graph representation -- Version 0.1\n\n\
+    Usage: metagraph_DNA compare [options] GRAPH1 GRAPH2\n\n\n\tGeneral options:\n\
+    \t-v --verbose \t\tswitch on verbose output [off]\n\t-h --help \t\tprint usage\
+    \ info\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/metagraph:0.2.0--h74b8f77_0
+- !Command
+  command:
+  - metagraph_DNA
+  - transform_anno
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: ANNOTATOR
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --intersect-columns
+    description: compute intersection of the annotation columns [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --intersect-ratio
+    description: '[FLOAT]    include k-mer if it appears in this ratio of columns
+      [1.0]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --rename-cols
+    description: "[STR]  file with rules for renaming annotation labels []\nexample:\
+      \ 'L_1 L_1_renamed\nL_2 L_2_renamed\nL_2 L_2_renamed\n... ...........'"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --anno-type
+    description: "[STR]    target annotation format [column]\n( column, brwt, rb_brwt,\n\
+      row_diff, row_diff_brwt, row_diff_sparse,\nrow, flat, rbfish, bin_rel_wt, bin_rel_wt_sdsl\
+      \ )"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --arity
+    description: arity in the brwt tree [2]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --greedy
+    description: use greedy column partitioning in brwt construction [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --linkage
+    description: cluster columns and construct linkage matrix [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --linkage-file
+    description: "[STR] linkage matrix specifying brwt tree structure []\nexample:\
+      \ '0 1 <dist> 4\n2 3 <dist> 5\n4 5 <dist> 6'"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --fast
+    description: transform annotation in memory without streaming / sparse subsampling
+      [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --subsample
+    description: '[INT]    number of rows subsampled for distance estimation in column
+      clustering [1000000]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --dump-text-anno
+    description: dump the columns of the annotator as separate text files [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --row-diff-stage
+    description: '[0|1|2]     stage of the row_diff construction [0]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --max-path-length
+    description: '[INT]      maximum path length in row_diff annotation [100]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --infile-base
+    description: '[STR]          graph for generating succ/pred/anchors (for row_diff
+      types) []'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --parallel-nodes
+    description: '[INT]       number of nodes processed in parallel in brwt tree [n_threads]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --disk-swap
+    description: '[STR]    directory for temporary files [OUT_BASEDIR]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --parallel
+    description: '[INT]     use multiple threads for computation [1]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    description: switch on verbose output [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: ''
+    args: !SimpleFlagArg
+      name: annotation-basename
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print usage info
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "#############################\n### Welcome to MetaGraph! ###\n#############################\n\
+    \nMetagraph: comprehensive metagenome graph representation -- Version 0.1\n\n\
+    Usage: metagraph_DNA transform_anno -o <annotation-basename> [options] ANNOTATOR\n\
+    \n\t   --intersect-columns \t\tcompute intersection of the annotation columns\
+    \ [off]\n\t   --intersect-ratio [FLOAT] \tinclude k-mer if it appears in this\
+    \ ratio of columns [1.0]\n\t   --rename-cols [STR] \tfile with rules for renaming\
+    \ annotation labels []\n\t                       \texample: 'L_1 L_1_renamed\n\
+    \t                       \t          L_2 L_2_renamed\n\t                     \
+    \  \t          L_2 L_2_renamed\n\t                       \t          ... ...........'\n\
+    \t   --anno-type [STR] \ttarget annotation format [column]\n\t\t( column, brwt,\
+    \ rb_brwt,\n\t\t  row_diff, row_diff_brwt, row_diff_sparse,\n\t\t  row, flat,\
+    \ rbfish, bin_rel_wt, bin_rel_wt_sdsl )\n\t   --arity \t\tarity in the brwt tree\
+    \ [2]\n\t   --greedy \t\tuse greedy column partitioning in brwt construction [off]\n\
+    \t   --linkage \t\tcluster columns and construct linkage matrix [off]\n\t   --linkage-file\
+    \ [STR]\tlinkage matrix specifying brwt tree structure []\n\t                \
+    \       \texample: '0 1 <dist> 4\n\t                       \t          2 3 <dist>\
+    \ 5\n\t                       \t          4 5 <dist> 6'\n\t   --fast \t\ttransform\
+    \ annotation in memory without streaming / sparse subsampling [off]\n\t   --subsample\
+    \ [INT] \tnumber of rows subsampled for distance estimation in column clustering\
+    \ [1000000]\n\t   --dump-text-anno \tdump the columns of the annotator as separate\
+    \ text files [off]\n\n\t   --row-diff-stage [0|1|2] \tstage of the row_diff construction\
+    \ [0]\n\t   --max-path-length [INT] \tmaximum path length in row_diff annotation\
+    \ [100]\n\t-i --infile-base [STR] \t\tgraph for generating succ/pred/anchors (for\
+    \ row_diff types) []\n\n\t   --parallel-nodes [INT] \tnumber of nodes processed\
+    \ in parallel in brwt tree [n_threads]\n\n\t   --disk-swap [STR] \tdirectory for\
+    \ temporary files [OUT_BASEDIR]\n\t-p --parallel [INT] \tuse multiple threads\
+    \ for computation [1]\n\n\tGeneral options:\n\t-v --verbose \t\tswitch on verbose\
+    \ output [off]\n\t-h --help \t\tprint usage info\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/metagraph:0.2.0--h74b8f77_0
+- !Command
+  command:
+  - metagraph_DNA
+  - transform
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: GRAPH
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --index-ranges
+    description: '[INT] index all node ranges in BOSS for suffixes of given length
+      [10]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --clear-dummy
+    description: erase all redundant dummy edges and build an edgemask for non-redundant
+      [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --prune-tips
+    description: '[INT]   prune all dead ends of this length and shorter [0]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --state
+    description: '[STR]        change state of succinct graph: small / dynamic / fast
+      [stat]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --to-adj-list
+    description: write adjacency list to file [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --to-fasta
+    description: extract sequences from graph and dump to compressed FASTA file [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --enumerate
+    description: enumerate sequences in FASTA [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --initialize-bloom
+    description: construct a Bloom filter for faster detection of non-existing k-mers
+      [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --unitigs
+    description: extract all unitigs from graph and dump to compressed FASTA file
+      [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --primary-kmers
+    description: output each k-mer only in one if its forms (canonical/non-canonical)
+      [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --to-gfa
+    description: dump graph layout to GFA [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --compacted
+    description: dump compacted de Bruijn graph to GFA [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --header
+    description: '[STR]       header for sequences in FASTA output []'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --parallel
+    description: '[INT]     use multiple threads for computation [1]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --bloom-fpp
+    description: '[FLOAT]                          expected false positive rate [1.0]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --bloom-bpk
+    description: '[FLOAT]                          number of bits per kmer [4.0]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --bloom-max-num-hash-functions
+    description: '[INT]         maximum number of hash functions [10]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    description: switch on verbose output [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: ''
+    args: !SimpleFlagArg
+      name: outfile-base
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print usage info
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "#############################\n### Welcome to MetaGraph! ###\n#############################\n\
+    \nMetagraph: comprehensive metagenome graph representation -- Version 0.1\n\n\
+    Usage: metagraph_DNA transform -o <outfile-base> [options] GRAPH\n\n\t   --index-ranges\
+    \ [INT]\tindex all node ranges in BOSS for suffixes of given length [10]\n\t \
+    \  --clear-dummy \terase all redundant dummy edges and build an edgemask for non-redundant\
+    \ [off]\n\t   --prune-tips [INT] \tprune all dead ends of this length and shorter\
+    \ [0]\n\t   --state [STR] \tchange state of succinct graph: small / dynamic /\
+    \ fast [stat]\n\t   --to-adj-list \twrite adjacency list to file [off]\n\t   --to-fasta\
+    \ \t\textract sequences from graph and dump to compressed FASTA file [off]\n\t\
+    \   --enumerate \t\tenumerate sequences in FASTA [off]\n\t   --initialize-bloom\
+    \ \tconstruct a Bloom filter for faster detection of non-existing k-mers [off]\n\
+    \t   --unitigs \t\textract all unitigs from graph and dump to compressed FASTA\
+    \ file [off]\n\t   --primary-kmers \toutput each k-mer only in one if its forms\
+    \ (canonical/non-canonical) [off]\n\t   --to-gfa \t\tdump graph layout to GFA\
+    \ [off]\n\t   --compacted \t\tdump compacted de Bruijn graph to GFA [off]\n\t\
+    \   --header [STR] \theader for sequences in FASTA output []\n\t-p --parallel\
+    \ [INT] \tuse multiple threads for computation [1]\n\nAdvanced options for --initialize-bloom.\
+    \ bloom-fpp, when < 1, overrides bloom-bpk.\n\t   --bloom-fpp [FLOAT] \t\t\t\t\
+    expected false positive rate [1.0]\n\t   --bloom-bpk [FLOAT] \t\t\t\tnumber of\
+    \ bits per kmer [4.0]\n\t   --bloom-max-num-hash-functions [INT] \tmaximum number\
+    \ of hash functions [10]\n\n\tGeneral options:\n\t-v --verbose \t\tswitch on verbose\
+    \ output [off]\n\t-h --help \t\tprint usage info\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/metagraph:0.2.0--h74b8f77_0
+- !Command
+  command:
+  - metagraph_DNA
+  - extend
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: FILE1
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-count
+    description: '[INT]    min k-mer abundance, including [1]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --max-count
+    description: '[INT]    max k-mer abundance, excluding [inf]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --reference
+    description: '[STR]    basename of reference sequence (for parsing VCF files)
+      []'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --fwd-and-reverse
+    description: add both forward and reverse complement sequences [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    - --annotator
+    description: '[STR]    annotator to extend []'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --outfile-base
+    description: '[STR] basename of output file []'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    description: switch on verbose output [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: ''
+    args: !SimpleFlagArg
+      name: GRAPH
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print usage info
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "#############################\n### Welcome to MetaGraph! ###\n#############################\n\
+    \nMetagraph: comprehensive metagenome graph representation -- Version 0.1\n\n\
+    Usage: metagraph_DNA extend -i <GRAPH> -o <extended_graph_basename> [options]\
+    \ FILE1 [[FILE2] ...]\n\tEach input file is given in FASTA, FASTQ, VCF, or KMC\
+    \ format.\n\tNote that VCF files must be in plain text or bgzip format.\n\nAvailable\
+    \ options for extend:\n\t   --min-count [INT] \tmin k-mer abundance, including\
+    \ [1]\n\t   --max-count [INT] \tmax k-mer abundance, excluding [inf]\n\t   --reference\
+    \ [STR] \tbasename of reference sequence (for parsing VCF files) []\n\t   --fwd-and-reverse\
+    \ \tadd both forward and reverse complement sequences [off]\n\n\t-a --annotator\
+    \ [STR] \tannotator to extend []\n\t-o --outfile-base [STR]\tbasename of output\
+    \ file []\n\n\tGeneral options:\n\t-v --verbose \t\tswitch on verbose output [off]\n\
+    \t-h --help \t\tprint usage info\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/metagraph:0.2.0--h74b8f77_0
+- !Command
+  command:
+  - metagraph_DNA
+  - align
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: FASTQ1
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --fwd-and-reverse
+    description: for each input sequence, align its reverse complement as well [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --header-comment-delim
+    description: '[STR] delimiter for joining fasta header with comment [off]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --parallel
+    description: '[INT]             use multiple threads for computation [1]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --map
+    description: "map k-mers to graph exactly instead of aligning.\nTurned on if --count-kmers\
+      \ or --query-presence are set [off]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --compacted
+    description: dump the GFA's 'P' lines in a compacted mode [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -k
+    - --kmer-length
+    description: "[INT]          length of mapped k-mers (at most graph's k) [k]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --count-kmers
+    description: for each sequence, report the number of k-mers discovered in graph
+      [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --query-presence
+    description: test sequences for presence, report as 0 or 1 [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --filter-present
+    description: report only present input sequences as FASTA [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --batch-size
+    description: query batch size (number of base pairs) [100000000]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --outfile-base
+    description: '[STR]                         basename of output file []'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --json
+    description: output alignment in JSON format [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --align-both-strands
+    description: return best alignments for either input sequence or its reverse complement
+      [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --align-alternative-alignments
+    description: the number of alternative paths to report per seed [1]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --align-min-path-score
+    description: '[INT]                 the minimum score that a reported path can
+      have [0]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --align-edit-distance
+    description: use unit costs for scoring matrix [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --align-max-nodes-per-seq-char
+    description: '[FLOAT]       maximum number of nodes to consider per sequence character
+      [12.0]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --align-max-ram
+    description: '[FLOAT]                      maximum amount of RAM used per alignment
+      in MB [200.0]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --align-match-score
+    description: '[INT]                    positive match score [2]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --align-mm-transition-penalty
+    description: '[INT]          positive transition penalty (DNA only) [3]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --align-mm-transversion-penalty
+    description: '[INT]        positive transversion penalty (DNA only) [3]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --align-gap-open-penalty
+    description: '[INT]               positive gap opening penalty [5]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --align-gap-extension-penalty
+    description: '[INT]          positive gap extension penalty [2]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --align-min-cell-score
+    description: '[INT]                 the minimum value that a cell in the alignment
+      table can hold [0]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --align-xdrop
+    description: '[INT]                          the maximum difference between the
+      current and the best alignment [27]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --align-min-seed-length
+    description: '[INT]                the minimum length of a seed [graph k]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --align-max-seed-length
+    description: '[INT]                the maximum length of a seed [graph k]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --align-min-exact-match
+    description: '[FLOAT]              fraction of matching nucleotides required to
+      align sequence [0.7]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --align-max-num-seeds-per-locus
+    description: '[INT]        the maximum number of allowed inexact seeds per locus
+      [inf]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    description: switch on verbose output [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: ''
+    args: !SimpleFlagArg
+      name: GRAPH
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print usage info
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "#############################\n### Welcome to MetaGraph! ###\n#############################\n\
+    \nMetagraph: comprehensive metagenome graph representation -- Version 0.1\n\n\
+    Usage: metagraph_DNA align -i <GRAPH> [options] FASTQ1 [[FASTQ2] ...]\n\n\t  \
+    \ --fwd-and-reverse \t\tfor each input sequence, align its reverse complement\
+    \ as well [off]\n\t   --header-comment-delim [STR]\tdelimiter for joining fasta\
+    \ header with comment [off]\n\t-p --parallel [INT] \t\tuse multiple threads for\
+    \ computation [1]\n\n\t   --map \t\t\tmap k-mers to graph exactly instead of aligning.\n\
+    \t         \t\t\t\tTurned on if --count-kmers or --query-presence are set [off]\n\
+    \t   --compacted\t\t\tdump the GFA's 'P' lines in a compacted mode [off]\n\t-k\
+    \ --kmer-length [INT]\t\tlength of mapped k-mers (at most graph's k) [k]\n\n\t\
+    \   --count-kmers \t\tfor each sequence, report the number of k-mers discovered\
+    \ in graph [off]\n\n\t   --query-presence \t\ttest sequences for presence, report\
+    \ as 0 or 1 [off]\n\t   --filter-present \t\treport only present input sequences\
+    \ as FASTA [off]\n\t   --batch-size \t\tquery batch size (number of base pairs)\
+    \ [100000000]\n\nAvailable options for alignment:\n\t-o --outfile-base [STR]\t\
+    \t\t\tbasename of output file []\n\t   --json \t\t\t\t\toutput alignment in JSON\
+    \ format [off]\n\t   --align-both-strands \t\t\treturn best alignments for either\
+    \ input sequence or its reverse complement [off]\n\t   --align-alternative-alignments\
+    \ \t\tthe number of alternative paths to report per seed [1]\n\t   --align-min-path-score\
+    \ [INT]\t\t\tthe minimum score that a reported path can have [0]\n\t   --align-edit-distance\
+    \ \t\t\tuse unit costs for scoring matrix [off]\n\t   --align-max-nodes-per-seq-char\
+    \ [FLOAT]\tmaximum number of nodes to consider per sequence character [12.0]\n\
+    \t   --align-max-ram [FLOAT]\t\t\tmaximum amount of RAM used per alignment in\
+    \ MB [200.0]\n\nAdvanced options for scoring:\n\t   --align-match-score [INT]\t\
+    \t\tpositive match score [2]\n\t   --align-mm-transition-penalty [INT]\t\tpositive\
+    \ transition penalty (DNA only) [3]\n\t   --align-mm-transversion-penalty [INT]\t\
+    positive transversion penalty (DNA only) [3]\n\t   --align-gap-open-penalty [INT]\t\
+    \tpositive gap opening penalty [5]\n\t   --align-gap-extension-penalty [INT]\t\
+    \tpositive gap extension penalty [2]\n\t   --align-min-cell-score [INT]\t\t\t\
+    the minimum value that a cell in the alignment table can hold [0]\n\t   --align-xdrop\
+    \ [INT]\t\t\t\tthe maximum difference between the current and the best alignment\
+    \ [27]\n\nAdvanced options for seeding:\n\t   --align-min-seed-length [INT]\t\t\
+    the minimum length of a seed [graph k]\n\t   --align-max-seed-length [INT]\t\t\
+    the maximum length of a seed [graph k]\n\t   --align-min-exact-match [FLOAT] \t\
+    \tfraction of matching nucleotides required to align sequence [0.7]\n\t   --align-max-num-seeds-per-locus\
+    \ [INT]\tthe maximum number of allowed inexact seeds per locus [inf]\n\n\tGeneral\
+    \ options:\n\t-v --verbose \t\tswitch on verbose output [off]\n\t-h --help \t\t\
+    print usage info\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/metagraph:0.2.0--h74b8f77_0
+- !Command
+  command:
+  - metagraph_DNA
+  - annotate
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: FILE1
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-count
+    description: '[INT]    min k-mer abundance, including [1]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --max-count
+    description: '[INT]    max k-mer abundance, excluding [inf]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --reference
+    description: '[STR]    basename of reference sequence (for parsing VCF files)
+      []'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --fwd-and-reverse
+    description: process both forward and reverse complement sequences [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --anno-type
+    description: '[STR]    target annotation representation: column / row [column]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    - --annotator
+    description: '[STR]    annotator to update []'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --sparse
+    description: use the row-major sparse matrix to annotate graph [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --cache
+    description: number of columns in cache (for column representation only) [10]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --disk-swap
+    description: '[STR]    directory to use for temporary files [off]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --mem-cap-gb
+    description: '[FLOAT] buffer size in GB (per column in construction) [1]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --outfile-base
+    description: '[STR] basename of output file (or directory, for --separately) []'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --separately
+    description: annotate each file independently and dump to the same directory [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --sequentially
+    description: annotate files sequentially (each may use multiple threads) [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --anno-filename
+    description: include filenames as annotation labels [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --anno-header
+    description: extract annotation labels from headers of sequences in files [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --header-comment-delim
+    description: '[STR] delimiter for joining fasta header with comment [off]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --header-delimiter
+    description: '[STR]     delimiter for splitting annotation header into multiple
+      labels [off]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --anno-label
+    description: '[STR]           add label to annotation for all sequences from the
+      files passed []'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --anchors
+    description: '[STR]              location of the anchor file (for row_diff) []'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --count-kmers
+    description: add k-mer counts to the annotation [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --parallel
+    description: '[INT]     use multiple threads for computation [1]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    description: switch on verbose output [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: ''
+    args: !SimpleFlagArg
+      name: GRAPH
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print usage info
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "#############################\n### Welcome to MetaGraph! ###\n#############################\n\
+    \nMetagraph: comprehensive metagenome graph representation -- Version 0.1\n\n\
+    Usage: metagraph_DNA annotate -i <GRAPH> -o <annotation-basename> [options] FILE1\
+    \ [[FILE2] ...]\n\tEach file is given in FASTA, FASTQ, VCF, or KMC format.\n\t\
+    Note that VCF files must be in plain text or bgzip format.\n\nAvailable options\
+    \ for annotate:\n\t   --min-count [INT] \tmin k-mer abundance, including [1]\n\
+    \t   --max-count [INT] \tmax k-mer abundance, excluding [inf]\n\t   --reference\
+    \ [STR] \tbasename of reference sequence (for parsing VCF files) []\n\t   --fwd-and-reverse\
+    \ \tprocess both forward and reverse complement sequences [off]\n\n\t   --anno-type\
+    \ [STR] \ttarget annotation representation: column / row [column]\n\t-a --annotator\
+    \ [STR] \tannotator to update []\n\t   --sparse \t\tuse the row-major sparse matrix\
+    \ to annotate graph [off]\n\t   --cache \t\tnumber of columns in cache (for column\
+    \ representation only) [10]\n\t   --disk-swap [STR] \tdirectory to use for temporary\
+    \ files [off]\n\t   --mem-cap-gb [FLOAT]\tbuffer size in GB (per column in construction)\
+    \ [1]\n\t-o --outfile-base [STR] basename of output file (or directory, for --separately)\
+    \ []\n\t   --separately \tannotate each file independently and dump to the same\
+    \ directory [off]\n\t   --sequentially \tannotate files sequentially (each may\
+    \ use multiple threads) [off]\n\n\t   --anno-filename \t\tinclude filenames as\
+    \ annotation labels [off]\n\t   --anno-header \t\textract annotation labels from\
+    \ headers of sequences in files [off]\n\t   --header-comment-delim [STR]\tdelimiter\
+    \ for joining fasta header with comment [off]\n\t   --header-delimiter [STR]\t\
+    delimiter for splitting annotation header into multiple labels [off]\n\t   --anno-label\
+    \ [STR]\t\tadd label to annotation for all sequences from the files passed []\n\
+    \t   --anchors [STR]\t\tlocation of the anchor file (for row_diff) []\n\n\t  \
+    \ --count-kmers \tadd k-mer counts to the annotation [off]\n\n\t-p --parallel\
+    \ [INT] \tuse multiple threads for computation [1]\n\n\tGeneral options:\n\t-v\
+    \ --verbose \t\tswitch on verbose output [off]\n\t-h --help \t\tprint usage info\n\
+    \n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/metagraph:0.2.0--h74b8f77_0
+- !Command
+  command:
+  - metagraph_DNA
+  - coordinate
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: FASTA1
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --fwd-and-reverse
+    description: process both forward and reverse complement sequences [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    - --annotator
+    description: '[STR]            annotator to update []'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --outfile-base
+    description: '[STR]         basename of output file [<GRAPH>]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --coord-binsize
+    description: '[INT]        stepsize for k-mer coordinates in input sequences from
+      the fasta files [1000]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --fast
+    description: annotate in fast regime [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --parallel
+    description: '[INT]             use multiple threads for computation [1]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    description: switch on verbose output [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: ''
+    args: !SimpleFlagArg
+      name: GRAPH
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print usage info
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "#############################\n### Welcome to MetaGraph! ###\n#############################\n\
+    \nMetagraph: comprehensive metagenome graph representation -- Version 0.1\n\n\
+    Usage: metagraph_DNA coordinate -i <GRAPH> [options] FASTA1 [[FASTA2] ...]\n\n\
+    Available options for annotate:\n\t   --fwd-and-reverse \t\tprocess both forward\
+    \ and reverse complement sequences [off]\n\t-a --annotator [STR] \t\tannotator\
+    \ to update []\n\t-o --outfile-base [STR] \tbasename of output file [<GRAPH>]\n\
+    \t   --coord-binsize [INT]\tstepsize for k-mer coordinates in input sequences\
+    \ from the fasta files [1000]\n\t   --fast \t\t\tannotate in fast regime [off]\n\
+    \t-p --parallel [INT] \t\tuse multiple threads for computation [1]\n\n\tGeneral\
+    \ options:\n\t-v --verbose \t\tswitch on verbose output [off]\n\t-h --help \t\t\
+    print usage info\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/metagraph:0.2.0--h74b8f77_0
+- !Command
+  command:
+  - metagraph_DNA
+  - merge_anno
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: ANNOT1
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --anno-type
+    description: "[STR]    target annotation representation [column]\n( column, brwt,\
+      \ rb_brwt,\nrow_diff, row_diff_brwt, row_diff_sparse,\nrow, flat, rbfish, bin_rel_wt,\
+      \ bin_rel_wt_sdsl )"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --parallel
+    description: '[INT]     use multiple threads for computation [1]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    description: switch on verbose output [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: ''
+    args: !SimpleFlagArg
+      name: annotation-basename
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print usage info
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "#############################\n### Welcome to MetaGraph! ###\n#############################\n\
+    \nMetagraph: comprehensive metagenome graph representation -- Version 0.1\n\n\
+    Usage: metagraph_DNA merge_anno -o <annotation-basename> [options] ANNOT1 [[ANNOT2]\
+    \ ...]\n\nAvailable options for annotate:\n\t   --anno-type [STR] \ttarget annotation\
+    \ representation [column]\n\t\t( column, brwt, rb_brwt,\n\t\t  row_diff, row_diff_brwt,\
+    \ row_diff_sparse,\n\t\t  row, flat, rbfish, bin_rel_wt, bin_rel_wt_sdsl )\n\t\
+    -p --parallel [INT] \tuse multiple threads for computation [1]\n\n\tGeneral options:\n\
+    \t-v --verbose \t\tswitch on verbose output [off]\n\t-h --help \t\tprint usage\
+    \ info\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/metagraph:0.2.0--h74b8f77_0
+- !Command
+  command:
+  - metagraph_DNA
+  - clean
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: GRAPH
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-count
+    description: '[INT]            min k-mer abundance, including [1]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --max-count
+    description: '[INT]            max k-mer abundance, excluding [inf]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --num-singletons
+    description: '[INT]       reset the number of count 1 k-mers in histogram (0:
+      off) [0]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --prune-tips
+    description: '[INT]           prune all dead ends shorter than this value [1]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --prune-unitigs
+    description: "[INT]        prune all unitigs with median k-mer counts smaller\n\
+      than this value (0: auto) [1]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --fallback
+    description: "[INT]             fallback threshold if the automatic one cannot\
+      \ be\ndetermined (-1: disables fallback) [1]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --count-bins-q
+    description: "[FLOAT ...]   binning quantiles for partitioning k-mers with\ndifferent\
+      \ abundance levels ['0 1']\nExample: --count-bins-q '0 0.33 0.66 1'"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --unitigs
+    description: extract unitigs instead of contigs [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --to-fasta
+    description: dump clean sequences to compressed FASTA file [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --enumerate
+    description: enumerate sequences in FASTA [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    description: switch on verbose output [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: ''
+    args: !SimpleFlagArg
+      name: outfile-base
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print usage info
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "#############################\n### Welcome to MetaGraph! ###\n#############################\n\
+    \nMetagraph: comprehensive metagenome graph representation -- Version 0.1\n\n\
+    Usage: metagraph_DNA clean -o <outfile-base> [options] GRAPH\n\nAvailable options\
+    \ for clean:\n\t   --min-count [INT] \t\tmin k-mer abundance, including [1]\n\t\
+    \   --max-count [INT] \t\tmax k-mer abundance, excluding [inf]\n\t   --num-singletons\
+    \ [INT] \treset the number of count 1 k-mers in histogram (0: off) [0]\n\n\t \
+    \  --prune-tips [INT] \t\tprune all dead ends shorter than this value [1]\n\t\
+    \   --prune-unitigs [INT] \tprune all unitigs with median k-mer counts smaller\n\
+    \t                         \t\tthan this value (0: auto) [1]\n\t   --fallback\
+    \ [INT] \t\tfallback threshold if the automatic one cannot be\n\t            \
+    \             \t\tdetermined (-1: disables fallback) [1]\n\n\t   --count-bins-q\
+    \ [FLOAT ...] \tbinning quantiles for partitioning k-mers with\n\t           \
+    \                   \t\tdifferent abundance levels ['0 1']\n\t               \
+    \               \t\tExample: --count-bins-q '0 0.33 0.66 1'\n\t   --unitigs \t\
+    \t\textract unitigs instead of contigs [off]\n\t   --to-fasta \t\t\tdump clean\
+    \ sequences to compressed FASTA file [off]\n\t   --enumerate \t\t\tenumerate sequences\
+    \ in FASTA [off]\n\n\tGeneral options:\n\t-v --verbose \t\tswitch on verbose output\
+    \ [off]\n\t-h --help \t\tprint usage info\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/metagraph:0.2.0--h74b8f77_0
+- !Command
+  command:
+  - metagraph_DNA
+  - stats
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: GRAPH1
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --print
+    description: print graph table to the screen [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --print-internal
+    description: print internal graph representation to screen [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --count-dummy
+    description: show number of dummy source and sink edges [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --print-col-names
+    description: print names of the columns in annotation to screen [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --parallel
+    description: '[INT]     use multiple threads for computation [1]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    description: switch on verbose output [off]
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print usage info
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "#############################\n### Welcome to MetaGraph! ###\n#############################\n\
+    \nMetagraph: comprehensive metagenome graph representation -- Version 0.1\n\n\
+    Usage: metagraph_DNA stats [options] GRAPH1 [[GRAPH2] ...]\n\nAvailable options\
+    \ for stats:\n\t   --print \t\tprint graph table to the screen [off]\n\t   --print-internal\
+    \ \tprint internal graph representation to screen [off]\n\t   --count-dummy \t\
+    show number of dummy source and sink edges [off]\n\t-a --annotator [STR] \tannotation\
+    \ []\n\t   --print-col-names \tprint names of the columns in annotation to screen\
+    \ [off]\n\t-p --parallel [INT] \tuse multiple threads for computation [1]\n\n\t\
+    General options:\n\t-v --verbose \t\tswitch on verbose output [off]\n\t-h --help\
+    \ \t\tprint usage info\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/metagraph:0.2.0--h74b8f77_0
+- !Command
+  command:
+  - metagraph_DNA
+  - merge
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: GRAPH1
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: GRAPH2
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    - --bins-per-thread
+    description: '[INT]      number of bins each thread computes on average [1]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --dynamic
+    description: dynamic merge by adding traversed paths [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --part-idx
+    description: '[INT]             idx to use when doing external merge []'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --parts-total
+    description: '[INT]          total number of parts in external merge[]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --parallel
+    description: '[INT]             use multiple threads for computation [1]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    description: switch on verbose output [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: ''
+    args: !SimpleFlagArg
+      name: graph_basename
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print usage info
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "#############################\n### Welcome to MetaGraph! ###\n#############################\n\
+    \nMetagraph: comprehensive metagenome graph representation -- Version 0.1\n\n\
+    Usage: metagraph_DNA merge -o <graph_basename> [options] GRAPH1 GRAPH2 [[GRAPH3]\
+    \ ...]\n\nAvailable options for merge:\n\t-b --bins-per-thread [INT] \tnumber\
+    \ of bins each thread computes on average [1]\n\t   --dynamic \t\t\tdynamic merge\
+    \ by adding traversed paths [off]\n\t   --part-idx [INT] \t\tidx to use when doing\
+    \ external merge []\n\t   --parts-total [INT] \t\ttotal number of parts in external\
+    \ merge[]\n\t-p --parallel [INT] \t\tuse multiple threads for computation [1]\n\
+    \n\tGeneral options:\n\t-v --verbose \t\tswitch on verbose output [off]\n\t-h\
+    \ --help \t\tprint usage info\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/metagraph:0.2.0--h74b8f77_0
+- !Command
+  command:
+  - metagraph_DNA
+  - server_query
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --port
+    description: '[INT]         TCP port for incoming connections [5555]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --address
+    description: 'interface for incoming connections (default: all)'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --sparse
+    description: use the row-major sparse matrix to annotate graph [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --parallel
+    description: '[INT]     maximum number of parallel connections [1]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    description: switch on verbose output [off]
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    description: ''
+    args: !SimpleFlagArg
+      name: ANNOTATION
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    description: ''
+    args: !SimpleFlagArg
+      name: GRAPH
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: print usage info
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "#############################\n### Welcome to MetaGraph! ###\n#############################\n\
+    \nMetagraph: comprehensive metagenome graph representation -- Version 0.1\n\n\
+    Usage: metagraph_DNA server_query -i <GRAPH> -a <ANNOTATION> [options]\n\nAvailable\
+    \ options for server_query:\n\t   --port [INT] \tTCP port for incoming connections\
+    \ [5555]\n\t   --address \t\tinterface for incoming connections (default: all)\n\
+    \t   --sparse \t\tuse the row-major sparse matrix to annotate graph [off]\n\t\
+    -p --parallel [INT] \tmaximum number of parallel connections [1]\n\n\tGeneral\
+    \ options:\n\t-v --verbose \t\tswitch on verbose output [off]\n\t-h --help \t\t\
+    print usage info\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/metagraph:0.2.0--h74b8f77_0
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "#############################\n### Welcome to MetaGraph! ###\n#############################\n\
+  \nMetagraph: comprehensive metagenome graph representation -- Version 0.1\n\nUsage:\
+  \ metagraph_DNA <command> [command specific options]\n\nAvailable commands:\n\t\
+  build\t\tconstruct a graph object from input sequence\n\t\t\tfiles in fast[a|q]\
+  \ formats into a given graph\n\n\tclean\t\tclean an existing graph and extract sequences\
+  \ from it\n\t\t\tin fast[a|q] formats\n\n\textend\t\textend an existing graph with\
+  \ new sequences from\n\t\t\tfiles in fast[a|q] formats\n\n\tmerge\t\tintegrate a\
+  \ given set of graph structures\n\t\t\tand output a new graph structure\n\n\tconcatenate\t\
+  combine the results of the external merge or\n\t\t\tconstruction and output the\
+  \ resulting graph structure\n\n\tcompare\t\tcheck whether two given graphs are identical\n\
+  \n\talign\t\talign sequences provided in fast[a|q] files to graph\n\n\tstats\t\t\
+  print graph statistics for given graph(s)\n\n\tannotate\tgiven a graph and a fast[a|q]\
+  \ file, annotate\n\t\t\tthe respective kmers\n\n\tcoordinate\tgiven a graph and\
+  \ a fast[a|q] file, annotate\n\t\t\tkmers with their respective coordinates in genomes\n\
+  \n\tmerge_anno\tmerge annotation columns\n\n\ttransform\tgiven a graph, transform\
+  \ it to other formats\n\n\ttransform_anno\tchange representation of the graph annotation\n\
+  \n\tassemble\tgiven a graph, extract sequences from it\n\n\trelax_brwt\toptimize\
+  \ the tree structure in brwt annotator\n\n\tquery\t\tannotate sequences from fast[a|q]\
+  \ files\n\n\tserver_query\tannotate received sequences and send annotations back\n\
+  \n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/metagraph:0.2.0--h74b8f77_0

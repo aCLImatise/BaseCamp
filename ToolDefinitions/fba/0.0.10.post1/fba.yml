@@ -1,0 +1,1074 @@
+&id001 !Command
+command:
+- fba
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - fba
+  - map
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - '-1'
+    - --read1
+    description: specify fastq file for read 1
+    args: !SimpleFlagArg
+      name: READ1
+  - !Flag
+    optional: true
+    synonyms:
+    - '-2'
+    - --read2
+    description: specify fastq file for read 2
+    args: !SimpleFlagArg
+      name: READ2
+  - !Flag
+    optional: true
+    synonyms:
+    - -w
+    - --whitelist
+    description: specify a whitelist of accepted cell barcodes
+    args: !SimpleFlagArg
+      name: WHITELIST
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --feature_ref
+    description: specify a reference of feature barcodes
+    args: !SimpleFlagArg
+      name: FEATURE_REF
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: specify an output file
+    args: !SimpleFlagArg
+      name: OUTPUT
+  - !Flag
+    optional: true
+    synonyms:
+    - -r1_coords
+    - --read1_coords
+    description: "specify coordinates 'start,end' of read 1 to search.\nFor example,\
+      \ '0,16': starts at 0, stops at 15.\nNucleotide bases outside the range will\
+      \ be masked as\nlower case in output. Default (0,16)"
+    args: !SimpleFlagArg
+      name: READ1_COORDS
+  - !Flag
+    optional: true
+    synonyms:
+    - -cb_m
+    - --cb_mismatches
+    description: "specify cell barcode mismatching threshold. Default\n(1)"
+    args: !SimpleFlagArg
+      name: CELL_BARCODE_MISMATCHES
+  - !Flag
+    optional: true
+    synonyms:
+    - -cb_n
+    - --cb_num_n_threshold
+    description: "specify maximum number of ambiguous nucleotides\nallowed for read\
+      \ 1. Default (3)"
+    args: !SimpleFlagArg
+      name: CB_NUM_N_THRESHOLD
+  - !Flag
+    optional: true
+    synonyms:
+    - -al
+    - --aligner
+    description: specify aligner for read 2. Default (bwa)
+    args: !ChoiceFlagArg
+      choices: !!set
+        bowtie2:
+        bwa:
+  - !Flag
+    optional: true
+    synonyms:
+    - --mapq
+    - --mapping_quality
+    description: "specify minimal mapping quality required for feature\nmapping. Default\
+      \ (10)"
+    args: !SimpleFlagArg
+      name: MAPQ
+  - !Flag
+    optional: true
+    synonyms:
+    - -us
+    - --umi_start
+    description: "specify expected UMI starting postion on read 1.\nDefault (16)"
+    args: !SimpleFlagArg
+      name: UMI_POS_START
+  - !Flag
+    optional: true
+    synonyms:
+    - -ul
+    - --umi_length
+    description: "specify the length of UMIs on read 1. Reads with UMI\nlength less\
+      \ than this value will be discarded. Default\n(12)"
+    args: !SimpleFlagArg
+      name: UMI_LENGTH
+  - !Flag
+    optional: true
+    synonyms:
+    - -um
+    - --umi_mismatches
+    description: "specify the maximun edit distance allowed for UMIs on\nread 1 for\
+      \ deduplication. Default (1)"
+    args: !SimpleFlagArg
+      name: UMI_MISMATCHES
+  - !Flag
+    optional: true
+    synonyms:
+    - -ud
+    - --umi_deduplication_method
+    description: "specify UMI deduplication method (powered by UMI-\ntools. Smith,\
+      \ T., et al. 2017). Default (directional)"
+    args: !ChoiceFlagArg
+      choices: !!set
+        cluster:
+        directional:
+        percentile:
+        unique:
+        adjacency:
+  - !Flag
+    optional: true
+    synonyms:
+    - --output_directory
+    description: specify a temp directory. Default (./barcode_mapping)
+    args: !SimpleFlagArg
+      name: OUTPUT_DIRECTORY
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --threads
+    description: "specify number of threads to launch. The default is to\nuse all\
+      \ available"
+    args: !SimpleFlagArg
+      name: THREADS
+  - !Flag
+    optional: true
+    synonyms:
+    - --num_n_ref
+    description: "specify the number of Ns to separate sequences\nbelonging to the\
+      \ same feature. Default (0)\n"
+    args: !SimpleFlagArg
+      name: NUM_N_REF
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: fba map [-h] -1 READ1 -2 READ2 -w WHITELIST -f FEATURE_REF -o\
+    \ OUTPUT\n               [-r1_coords READ1_COORDS] [-cb_m CELL_BARCODE_MISMATCHES]\n\
+    \               [-cb_n CB_NUM_N_THRESHOLD] [-al {bwa,bowtie2}] [--mapq MAPQ]\n\
+    \               [-us UMI_POS_START] [-ul UMI_LENGTH] [-um UMI_MISMATCHES]\n  \
+    \             [-ud {unique,percentile,cluster,adjacency,directional}]\n      \
+    \         [--output_directory OUTPUT_DIRECTORY] [-t THREADS]\n               [--num_n_ref\
+    \ NUM_N_REF]\n\nQuantify enriched transcripts (through hybridization or PCR amplification)\n\
+    from parent single cell libraries. Read 1 contains cell partitioning and UMI\n\
+    information, and read 2 contains transcribed regions of enriched/targeted\ntranscripts\
+    \ of interest. BWA (Li, H. 2013) or Bowtie2 (Langmead, B., et al.\n2012) is used\
+    \ for read 2 alignment. The quantification (UMI deduplication) of\nenriched/targeted\
+    \ transcripts is powered by UMI-tools (Smith, T., et al.\n2017).\n\noptional arguments:\n\
+    \  -h, --help            show this help message and exit\n  -1 READ1, --read1\
+    \ READ1\n                        specify fastq file for read 1\n  -2 READ2, --read2\
+    \ READ2\n                        specify fastq file for read 2\n  -w WHITELIST,\
+    \ --whitelist WHITELIST\n                        specify a whitelist of accepted\
+    \ cell barcodes\n  -f FEATURE_REF, --feature_ref FEATURE_REF\n               \
+    \         specify a reference of feature barcodes\n  -o OUTPUT, --output OUTPUT\n\
+    \                        specify an output file\n  -r1_coords READ1_COORDS, --read1_coords\
+    \ READ1_COORDS\n                        specify coordinates 'start,end' of read\
+    \ 1 to search.\n                        For example, '0,16': starts at 0, stops\
+    \ at 15.\n                        Nucleotide bases outside the range will be masked\
+    \ as\n                        lower case in output. Default (0,16)\n  -cb_m CELL_BARCODE_MISMATCHES,\
+    \ --cb_mismatches CELL_BARCODE_MISMATCHES\n                        specify cell\
+    \ barcode mismatching threshold. Default\n                        (1)\n  -cb_n\
+    \ CB_NUM_N_THRESHOLD, --cb_num_n_threshold CB_NUM_N_THRESHOLD\n              \
+    \          specify maximum number of ambiguous nucleotides\n                 \
+    \       allowed for read 1. Default (3)\n  -al {bwa,bowtie2}, --aligner {bwa,bowtie2}\n\
+    \                        specify aligner for read 2. Default (bwa)\n  --mapq MAPQ,\
+    \ --mapping_quality MAPQ\n                        specify minimal mapping quality\
+    \ required for feature\n                        mapping. Default (10)\n  -us UMI_POS_START,\
+    \ --umi_start UMI_POS_START\n                        specify expected UMI starting\
+    \ postion on read 1.\n                        Default (16)\n  -ul UMI_LENGTH,\
+    \ --umi_length UMI_LENGTH\n                        specify the length of UMIs\
+    \ on read 1. Reads with UMI\n                        length less than this value\
+    \ will be discarded. Default\n                        (12)\n  -um UMI_MISMATCHES,\
+    \ --umi_mismatches UMI_MISMATCHES\n                        specify the maximun\
+    \ edit distance allowed for UMIs on\n                        read 1 for deduplication.\
+    \ Default (1)\n  -ud {unique,percentile,cluster,adjacency,directional}, --umi_deduplication_method\
+    \ {unique,percentile,cluster,adjacency,directional}\n                        specify\
+    \ UMI deduplication method (powered by UMI-\n                        tools. Smith,\
+    \ T., et al. 2017). Default (directional)\n  --output_directory OUTPUT_DIRECTORY\n\
+    \                        specify a temp directory. Default (./barcode_mapping)\n\
+    \  -t THREADS, --threads THREADS\n                        specify number of threads\
+    \ to launch. The default is to\n                        use all available\n  --num_n_ref\
+    \ NUM_N_REF\n                        specify the number of Ns to separate sequences\n\
+    \                        belonging to the same feature. Default (0)\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/fba:0.0.10.post1--pyhdfd78af_0
+- !Command
+  command:
+  - fba
+  - qc
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - '-1'
+    - --read1
+    description: specify fastq file for read 1
+    args: !SimpleFlagArg
+      name: READ1
+  - !Flag
+    optional: true
+    synonyms:
+    - '-2'
+    - --read2
+    description: "specify fastq file for read 2. If only read 2 file is\nprovided,\
+      \ bulk mode is enabled (skipping arguments\n'-1', ' -w', '-cb_m', '-r1_coords',\
+      \ must provide\n'-r2_coords' and '-fb_m'). In bulk mode, reads 2 will\nbe searched\
+      \ against reference feature barcodes and\nread count for each feature barcode\
+      \ will be summarized"
+    args: !SimpleFlagArg
+      name: READ2
+  - !Flag
+    optional: true
+    synonyms:
+    - -w
+    - --whitelist
+    description: specify a whitelist of accepted cell barcodes
+    args: !SimpleFlagArg
+      name: WHITELIST
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --feature_ref
+    description: specify a reference of feature barcodes
+    args: !SimpleFlagArg
+      name: FEATURE_REF
+  - !Flag
+    optional: true
+    synonyms:
+    - -r1_coords
+    - --read1_coords
+    description: "specify coordinates 'start,end' of read 1 to search\n(doesn't need\
+      \ to be the exact expected barcode range).\nThe default is to use all the nucleotide\
+      \ bases.\nNucleotide bases outside the range will be masked as\nlower case in\
+      \ output"
+    args: !SimpleFlagArg
+      name: READ1_COORDS
+  - !Flag
+    optional: true
+    synonyms:
+    - -r2_coords
+    - --read2_coords
+    description: see '-r1_coords'
+    args: !SimpleFlagArg
+      name: READ2_COORDS
+  - !Flag
+    optional: true
+    synonyms:
+    - -cb_m
+    - --cb_mismatches
+    description: "specify cell barcode mismatching threshold. Default\n(3)"
+    args: !SimpleFlagArg
+      name: CELL_BARCODE_MISMATCHES
+  - !Flag
+    optional: true
+    synonyms:
+    - -fb_m
+    - --fb_mismatches
+    description: "specify feature barcode mismatching threshold. Default\n(3)"
+    args: !SimpleFlagArg
+      name: FEATURE_BARCODE_MISMATCHES
+  - !Flag
+    optional: true
+    synonyms:
+    - -cb_n
+    - --cb_num_n_threshold
+    description: "specify maximum number of ambiguous nucleotides\nallowed for read\
+      \ 1. The default is no limit"
+    args: !SimpleFlagArg
+      name: CB_NUM_N_THRESHOLD
+  - !Flag
+    optional: true
+    synonyms:
+    - -fb_n
+    - --fb_num_n_threshold
+    description: "specify maximum number of ambiguous nucleotides\nallowed for read\
+      \ 2. The default is no limit"
+    args: !SimpleFlagArg
+      name: FB_NUM_N_THRESHOLD
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --threads
+    description: "specify number of threads for barcode extraction.\nDefault is to\
+      \ use all available"
+    args: !SimpleFlagArg
+      name: THREADS
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    - --num_reads
+    description: "specify number of reads for analysis. Set to (None)\nwill analyze\
+      \ all the reads. Default (100,000)"
+    args: !SimpleFlagArg
+      name: NUM_READS
+  - !Flag
+    optional: true
+    synonyms:
+    - --chunk_size
+    description: "specify the chunk size for multiprocessing. Default\n(50,000)"
+    args: !SimpleFlagArg
+      name: CHUNK_SIZE
+  - !Flag
+    optional: true
+    synonyms:
+    - --output_directory
+    description: "specify a output directory. Default (./qc)\n"
+    args: !SimpleFlagArg
+      name: OUTPUT_DIRECTORY
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: fba qc [-h] [-1 READ1] -2 READ2 [-w WHITELIST] -f FEATURE_REF\n\
+    \              [-r1_coords READ1_COORDS] [-r2_coords READ2_COORDS]\n         \
+    \     [-cb_m CELL_BARCODE_MISMATCHES]\n              [-fb_m FEATURE_BARCODE_MISMATCHES]\
+    \ [-cb_n CB_NUM_N_THRESHOLD]\n              [-fb_n FB_NUM_N_THRESHOLD] [-t THREADS]\
+    \ [-n NUM_READS]\n              [--chunk_size CHUNK_SIZE] [--output_directory\
+    \ OUTPUT_DIRECTORY]\n\nGenerate diagnostic information. If `-1` is omitted, bulk\
+    \ mode is enabled and\nonly read 2 will be analyzed.\n\noptional arguments:\n\
+    \  -h, --help            show this help message and exit\n  -1 READ1, --read1\
+    \ READ1\n                        specify fastq file for read 1\n  -2 READ2, --read2\
+    \ READ2\n                        specify fastq file for read 2. If only read 2\
+    \ file is\n                        provided, bulk mode is enabled (skipping arguments\n\
+    \                        '-1', ' -w', '-cb_m', '-r1_coords', must provide\n  \
+    \                      '-r2_coords' and '-fb_m'). In bulk mode, reads 2 will\n\
+    \                        be searched against reference feature barcodes and\n\
+    \                        read count for each feature barcode will be summarized\n\
+    \  -w WHITELIST, --whitelist WHITELIST\n                        specify a whitelist\
+    \ of accepted cell barcodes\n  -f FEATURE_REF, --feature_ref FEATURE_REF\n   \
+    \                     specify a reference of feature barcodes\n  -r1_coords READ1_COORDS,\
+    \ --read1_coords READ1_COORDS\n                        specify coordinates 'start,end'\
+    \ of read 1 to search\n                        (doesn't need to be the exact expected\
+    \ barcode range).\n                        The default is to use all the nucleotide\
+    \ bases.\n                        Nucleotide bases outside the range will be masked\
+    \ as\n                        lower case in output\n  -r2_coords READ2_COORDS,\
+    \ --read2_coords READ2_COORDS\n                        see '-r1_coords'\n  -cb_m\
+    \ CELL_BARCODE_MISMATCHES, --cb_mismatches CELL_BARCODE_MISMATCHES\n         \
+    \               specify cell barcode mismatching threshold. Default\n        \
+    \                (3)\n  -fb_m FEATURE_BARCODE_MISMATCHES, --fb_mismatches FEATURE_BARCODE_MISMATCHES\n\
+    \                        specify feature barcode mismatching threshold. Default\n\
+    \                        (3)\n  -cb_n CB_NUM_N_THRESHOLD, --cb_num_n_threshold\
+    \ CB_NUM_N_THRESHOLD\n                        specify maximum number of ambiguous\
+    \ nucleotides\n                        allowed for read 1. The default is no limit\n\
+    \  -fb_n FB_NUM_N_THRESHOLD, --fb_num_n_threshold FB_NUM_N_THRESHOLD\n       \
+    \                 specify maximum number of ambiguous nucleotides\n          \
+    \              allowed for read 2. The default is no limit\n  -t THREADS, --threads\
+    \ THREADS\n                        specify number of threads for barcode extraction.\n\
+    \                        Default is to use all available\n  -n NUM_READS, --num_reads\
+    \ NUM_READS\n                        specify number of reads for analysis. Set\
+    \ to (None)\n                        will analyze all the reads. Default (100,000)\n\
+    \  --chunk_size CHUNK_SIZE\n                        specify the chunk size for\
+    \ multiprocessing. Default\n                        (50,000)\n  --output_directory\
+    \ OUTPUT_DIRECTORY\n                        specify a output directory. Default\
+    \ (./qc)\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/fba:0.0.10.post1--pyhdfd78af_0
+- !Command
+  command:
+  - fba
+  - extract
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - '-1'
+    - --read1
+    description: specify fastq file for read 1
+    args: !SimpleFlagArg
+      name: READ1
+  - !Flag
+    optional: true
+    synonyms:
+    - '-2'
+    - --read2
+    description: specify fastq file for read 2
+    args: !SimpleFlagArg
+      name: READ2
+  - !Flag
+    optional: true
+    synonyms:
+    - -w
+    - --whitelist
+    description: specify a whitelist of accepted cell barcodes
+    args: !SimpleFlagArg
+      name: WHITELIST
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --feature_ref
+    description: specify a reference of feature barcodes
+    args: !SimpleFlagArg
+      name: FEATURE_REF
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: specify an output file
+    args: !SimpleFlagArg
+      name: OUTPUT
+  - !Flag
+    optional: true
+    synonyms:
+    - -r1_coords
+    - --read1_coords
+    description: "specify coordinates 'start,end' of read 1 to search.\nFor example,\
+      \ '0,16': starts at 0, stops at 15.\nNucleotide bases outside the range will\
+      \ be masked as\nlower case in output. Default (0,16)"
+    args: !SimpleFlagArg
+      name: READ1_COORDS
+  - !Flag
+    optional: true
+    synonyms:
+    - -r2_coords
+    - --read2_coords
+    description: see '-r1_coords'
+    args: !SimpleFlagArg
+      name: READ2_COORDS
+  - !Flag
+    optional: true
+    synonyms:
+    - -cb_m
+    - --cb_mismatches
+    description: "specify cell barcode mismatching threshold. Default\n(1)"
+    args: !SimpleFlagArg
+      name: CELL_BARCODE_MISMATCHES
+  - !Flag
+    optional: true
+    synonyms:
+    - -fb_m
+    - --fb_mismatches
+    description: "specify feature barcode mismatching threshold. Default\n(1)"
+    args: !SimpleFlagArg
+      name: FEATURE_BARCODE_MISMATCHES
+  - !Flag
+    optional: true
+    synonyms:
+    - -cb_n
+    - --cb_num_n_threshold
+    description: "specify maximum number of ambiguous nucleotides\nallowed for read\
+      \ 1. Default (3)"
+    args: !SimpleFlagArg
+      name: CB_NUM_N_THRESHOLD
+  - !Flag
+    optional: true
+    synonyms:
+    - -fb_n
+    - --fb_num_n_threshold
+    description: "specify maximum number of ambiguous nucleotides\nallowed for read\
+      \ 2. Default (3)\n"
+    args: !SimpleFlagArg
+      name: FB_NUM_N_THRESHOLD
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: fba extract [-h] -1 READ1 -2 READ2 -w WHITELIST -f FEATURE_REF\
+    \ -o\n                   OUTPUT [-r1_coords READ1_COORDS] -r2_coords READ2_COORDS\n\
+    \                   [-cb_m CELL_BARCODE_MISMATCHES]\n                   [-fb_m\
+    \ FEATURE_BARCODE_MISMATCHES]\n                   [-cb_n CB_NUM_N_THRESHOLD] [-fb_n\
+    \ FB_NUM_N_THRESHOLD]\n\nExtract cell and feature barcodes from paired fastq files.\
+    \ For single cell\nassays, read 1 usually contains cell partitioning and UMI information,\
+    \ and\nread 2 contains feature information.\n\noptional arguments:\n  -h, --help\
+    \            show this help message and exit\n  -1 READ1, --read1 READ1\n    \
+    \                    specify fastq file for read 1\n  -2 READ2, --read2 READ2\n\
+    \                        specify fastq file for read 2\n  -w WHITELIST, --whitelist\
+    \ WHITELIST\n                        specify a whitelist of accepted cell barcodes\n\
+    \  -f FEATURE_REF, --feature_ref FEATURE_REF\n                        specify\
+    \ a reference of feature barcodes\n  -o OUTPUT, --output OUTPUT\n            \
+    \            specify an output file\n  -r1_coords READ1_COORDS, --read1_coords\
+    \ READ1_COORDS\n                        specify coordinates 'start,end' of read\
+    \ 1 to search.\n                        For example, '0,16': starts at 0, stops\
+    \ at 15.\n                        Nucleotide bases outside the range will be masked\
+    \ as\n                        lower case in output. Default (0,16)\n  -r2_coords\
+    \ READ2_COORDS, --read2_coords READ2_COORDS\n                        see '-r1_coords'\n\
+    \  -cb_m CELL_BARCODE_MISMATCHES, --cb_mismatches CELL_BARCODE_MISMATCHES\n  \
+    \                      specify cell barcode mismatching threshold. Default\n \
+    \                       (1)\n  -fb_m FEATURE_BARCODE_MISMATCHES, --fb_mismatches\
+    \ FEATURE_BARCODE_MISMATCHES\n                        specify feature barcode\
+    \ mismatching threshold. Default\n                        (1)\n  -cb_n CB_NUM_N_THRESHOLD,\
+    \ --cb_num_n_threshold CB_NUM_N_THRESHOLD\n                        specify maximum\
+    \ number of ambiguous nucleotides\n                        allowed for read 1.\
+    \ Default (3)\n  -fb_n FB_NUM_N_THRESHOLD, --fb_num_n_threshold FB_NUM_N_THRESHOLD\n\
+    \                        specify maximum number of ambiguous nucleotides\n   \
+    \                     allowed for read 2. Default (3)\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/fba:0.0.10.post1--pyhdfd78af_0
+- !Command
+  command:
+  - fba
+  - kallisto_wrapper
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - '-1'
+    - --read1
+    description: specify fastq file for read 1
+    args: !SimpleFlagArg
+      name: READ1
+  - !Flag
+    optional: true
+    synonyms:
+    - '-2'
+    - --read2
+    description: specify fastq file for read 2
+    args: !SimpleFlagArg
+      name: READ2
+  - !Flag
+    optional: true
+    synonyms:
+    - -w
+    - --whitelist
+    description: specify a whitelist of accepted cell barcodes
+    args: !SimpleFlagArg
+      name: WHITELIST
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --feature_ref
+    description: specify a reference of feature barcodes
+    args: !SimpleFlagArg
+      name: FEATURE_REF
+  - !Flag
+    optional: true
+    synonyms:
+    - --technology
+    description: "specify feature barcoding technology. The default is\n10xv3"
+    args: !SimpleFlagArg
+      name: TECHNOLOGY
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: specify an output file
+    args: !SimpleFlagArg
+      name: OUTPUT
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --threads
+    description: "specify number of kallisto/bustools threads to launch.\nDefault\
+      \ (1)"
+    args: !SimpleFlagArg
+      name: THREADS
+  - !Flag
+    optional: true
+    synonyms:
+    - --output_directory
+    description: "specify a temp directory. Default (./kallisto)\n"
+    args: !SimpleFlagArg
+      name: OUTPUT_DIRECTORY
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: fba kallisto_wrapper [-h] -1 READ1 -2 READ2 -w WHITELIST -f FEATURE_REF\n\
+    \                            [--technology TECHNOLOGY] -o OUTPUT [-t THREADS]\n\
+    \                            [--output_directory OUTPUT_DIRECTORY]\n\nDeploy kallisto/bustools\
+    \ for feature barcoding quantification (just a wrapper)\n(Bray, N.L., et al. 2016).\n\
+    \noptional arguments:\n  -h, --help            show this help message and exit\n\
+    \  -1 READ1, --read1 READ1\n                        specify fastq file for read\
+    \ 1\n  -2 READ2, --read2 READ2\n                        specify fastq file for\
+    \ read 2\n  -w WHITELIST, --whitelist WHITELIST\n                        specify\
+    \ a whitelist of accepted cell barcodes\n  -f FEATURE_REF, --feature_ref FEATURE_REF\n\
+    \                        specify a reference of feature barcodes\n  --technology\
+    \ TECHNOLOGY\n                        specify feature barcoding technology. The\
+    \ default is\n                        10xv3\n  -o OUTPUT, --output OUTPUT\n  \
+    \                      specify an output file\n  -t THREADS, --threads THREADS\n\
+    \                        specify number of kallisto/bustools threads to launch.\n\
+    \                        Default (1)\n  --output_directory OUTPUT_DIRECTORY\n\
+    \                        specify a temp directory. Default (./kallisto)\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/fba:0.0.10.post1--pyhdfd78af_0
+- !Command
+  command:
+  - fba
+  - count
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input
+    description: specify an input file
+    args: !SimpleFlagArg
+      name: INPUT
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: specify an output file
+    args: !SimpleFlagArg
+      name: OUTPUT
+  - !Flag
+    optional: true
+    synonyms:
+    - -us
+    - --umi_start
+    description: "specify expected UMI starting postion on read 1.\nDefault (16)"
+    args: !SimpleFlagArg
+      name: UMI_POS_START
+  - !Flag
+    optional: true
+    synonyms:
+    - -ul
+    - --umi_length
+    description: "specify the length of UMIs on read 1. Reads with UMI\nlength less\
+      \ than this value will be discarded. Default\n(12)"
+    args: !SimpleFlagArg
+      name: UMI_LENGTH
+  - !Flag
+    optional: true
+    synonyms:
+    - -um
+    - --umi_mismatches
+    description: "specify the maximun edit distance allowed for UMIs on\nread 1 for\
+      \ deduplication. Default (1)"
+    args: !SimpleFlagArg
+      name: UMI_MISMATCHES
+  - !Flag
+    optional: true
+    synonyms:
+    - -ud
+    - --umi_deduplication_method
+    description: "specify UMI deduplication method (powered by UMI-\ntools. Smith,\
+      \ T., et al. 2017). Default (directional)\n"
+    args: !ChoiceFlagArg
+      choices: !!set
+        cluster:
+        directional:
+        percentile:
+        unique:
+        adjacency:
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: fba count [-h] -i INPUT -o OUTPUT [-us UMI_POS_START] [-ul UMI_LENGTH]\n\
+    \                 [-um UMI_MISMATCHES]\n                 [-ud {unique,percentile,cluster,adjacency,directional}]\n\
+    \nCount UMIs per feature per cell (UMI deduplication), powered by UMI-tools\n\
+    (Smith, T., et al. 2017). Take the output of `extract` or `filter` as input.\n\
+    \noptional arguments:\n  -h, --help            show this help message and exit\n\
+    \  -i INPUT, --input INPUT\n                        specify an input file\n  -o\
+    \ OUTPUT, --output OUTPUT\n                        specify an output file\n  -us\
+    \ UMI_POS_START, --umi_start UMI_POS_START\n                        specify expected\
+    \ UMI starting postion on read 1.\n                        Default (16)\n  -ul\
+    \ UMI_LENGTH, --umi_length UMI_LENGTH\n                        specify the length\
+    \ of UMIs on read 1. Reads with UMI\n                        length less than\
+    \ this value will be discarded. Default\n                        (12)\n  -um UMI_MISMATCHES,\
+    \ --umi_mismatches UMI_MISMATCHES\n                        specify the maximun\
+    \ edit distance allowed for UMIs on\n                        read 1 for deduplication.\
+    \ Default (1)\n  -ud {unique,percentile,cluster,adjacency,directional}, --umi_deduplication_method\
+    \ {unique,percentile,cluster,adjacency,directional}\n                        specify\
+    \ UMI deduplication method (powered by UMI-\n                        tools. Smith,\
+    \ T., et al. 2017). Default (directional)\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/fba:0.0.10.post1--pyhdfd78af_0
+- !Command
+  command:
+  - fba
+  - demultiplex
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input
+    description: "specify an input file (feature count matrix). The\noutput of `count`"
+    args: !SimpleFlagArg
+      name: INPUT
+  - !Flag
+    optional: true
+    synonyms:
+    - --output_directory
+    description: specify a output directory. Default (./demultiplexed)
+    args: !SimpleFlagArg
+      name: OUTPUT_DIRECTORY
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    description: "specify demultiplexing method. '1': Stoeckius et al.\n2018. Default\
+      \ (1)"
+    args: !ChoiceFlagArg
+      choices: !!set
+        '1':
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    - --quantile
+    description: "specify quantile cutoff for the probability mass\nfunction. Default\
+      \ (0.9999)"
+    args: !SimpleFlagArg
+      name: QUANTILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -cm
+    - --clustering_method
+    description: specify inital clustering method. Default (kmedoids)
+    args: !ChoiceFlagArg
+      choices: !!set
+        kmedoids:
+        hdbscan:
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --visualization
+    description: specify to visualize demultiplexing result
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -vm
+    - --visualization_method
+    description: "specify embedding method for visualization (works if\n'-v' is given).\
+      \ Default (tsne)\n"
+    args: !ChoiceFlagArg
+      choices: !!set
+        tsne:
+        umap:
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: fba demultiplex [-h] -i INPUT [--output_directory OUTPUT_DIRECTORY]\n\
+    \                       [-m {1}] [-q QUANTILE] [-cm {kmedoids,hdbscan}] [-v]\n\
+    \                       [-vm {tsne,umap}]\n\nDemultiplex cells based on the abundance\
+    \ of features (matrix generated by\n`count` as input).\n\noptional arguments:\n\
+    \  -h, --help            show this help message and exit\n  -i INPUT, --input\
+    \ INPUT\n                        specify an input file (feature count matrix).\
+    \ The\n                        output of `count`\n  --output_directory OUTPUT_DIRECTORY\n\
+    \                        specify a output directory. Default (./demultiplexed)\n\
+    \  -m {1}                specify demultiplexing method. '1': Stoeckius et al.\n\
+    \                        2018. Default (1)\n  -q QUANTILE, --quantile QUANTILE\n\
+    \                        specify quantile cutoff for the probability mass\n  \
+    \                      function. Default (0.9999)\n  -cm {kmedoids,hdbscan}, --clustering_method\
+    \ {kmedoids,hdbscan}\n                        specify inital clustering method.\
+    \ Default (kmedoids)\n  -v, --visualization   specify to visualize demultiplexing\
+    \ result\n  -vm {tsne,umap}, --visualization_method {tsne,umap}\n            \
+    \            specify embedding method for visualization (works if\n          \
+    \              '-v' is given). Default (tsne)\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/fba:0.0.10.post1--pyhdfd78af_0
+- !Command
+  command:
+  - fba
+  - filter
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input
+    description: specify an input file. The output of `extract` or `qc`
+    args: !SimpleFlagArg
+      name: INPUT
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: specify an output file
+    args: !SimpleFlagArg
+      name: OUTPUT
+  - !Flag
+    optional: true
+    synonyms:
+    - -cb_s
+    - --cb_start
+    description: "specify expected cell barcode starting postion on read\n1. Default\
+      \ (0)"
+    args: !SimpleFlagArg
+      name: CELL_BARCODE_POS_START
+  - !Flag
+    optional: true
+    synonyms:
+    - -cb_m
+    - --cb_mismatches
+    description: "specify cell barcode mismatching threshold. Default\n(1)"
+    args: !SimpleFlagArg
+      name: CELL_BARCODE_MISMATCHES
+  - !Flag
+    optional: true
+    synonyms:
+    - -cb_ls
+    - --cb_left_shift
+    description: "specify the maximum left shift allowed for cell\nbarcode. Default\
+      \ (1)"
+    args: !SimpleFlagArg
+      name: CELL_BARCODE_LEFT_SHIFT
+  - !Flag
+    optional: true
+    synonyms:
+    - -cb_rs
+    - --cb_right_shift
+    description: "specify the maximum right shift allowed for cell\nbarcode. Default\
+      \ (1)"
+    args: !SimpleFlagArg
+      name: CELL_BARCODE_RIGHT_SHIFT
+  - !Flag
+    optional: true
+    synonyms:
+    - -cb_seq
+    - --cb_extra_seq
+    description: "specify an extra constant sequence to filter on read\n1. Default\
+      \ (None)"
+    args: !SimpleFlagArg
+      name: CELL_BARCODE_EXTRA_SEQ
+  - !Flag
+    optional: true
+    synonyms:
+    - -cb_seq_m
+    - --cb_extra_seq_mismatches
+    description: "specify the maximun edit distance allowed for the\nextra constant\
+      \ sequence on read 1 for filtering.\nDefault (None)"
+    args: !SimpleFlagArg
+      name: CELL_BARCODE_EXTRA_SEQ_MISMATCHES
+  - !Flag
+    optional: true
+    synonyms:
+    - -fb_s
+    - --fb_start
+    description: "specify expected feature barcode starting postion on\nread 2. Default\
+      \ (10)"
+    args: !SimpleFlagArg
+      name: FEATURE_BARCODE_POS_START
+  - !Flag
+    optional: true
+    synonyms:
+    - -fb_m
+    - --fb_mismatches
+    description: "specify feature barcode mismatching threshold. Default\n(1)"
+    args: !SimpleFlagArg
+      name: FEATURE_BARCODE_MISMATCHES
+  - !Flag
+    optional: true
+    synonyms:
+    - -fb_ls
+    - --fb_left_shift
+    description: "specify the maximum left shift allowed for feature\nbarcode. Default\
+      \ (1)"
+    args: !SimpleFlagArg
+      name: FEATURE_BARCODE_LEFT_SHIFT
+  - !Flag
+    optional: true
+    synonyms:
+    - -fb_rs
+    - --fb_right_shift
+    description: "specify the maximum right shift allowed for feature\nbarcode. Default\
+      \ (1)"
+    args: !SimpleFlagArg
+      name: FEATURE_BARCODE_RIGHT_SHIFT
+  - !Flag
+    optional: true
+    synonyms:
+    - -fb_seq
+    - --fb_extra_seq
+    description: "specify an extra constant sequence to filter on read\n2. Default\
+      \ (None)"
+    args: !SimpleFlagArg
+      name: FEATURE_BARCODE_EXTRA_SEQ
+  - !Flag
+    optional: true
+    synonyms:
+    - -fb_seq_m
+    - --fb_extra_seq_mismatches
+    description: "specify the maximun edit distance allowed for the\nextra constant\
+      \ sequence on read 2. Default (None)\n"
+    args: !SimpleFlagArg
+      name: FEATURE_BARCODE_EXTRA_SEQ_MISMATCHES
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: fba filter [-h] -i INPUT -o OUTPUT [-cb_s CELL_BARCODE_POS_START]\n\
+    \                  [-cb_m CELL_BARCODE_MISMATCHES]\n                  [-cb_ls\
+    \ CELL_BARCODE_LEFT_SHIFT]\n                  [-cb_rs CELL_BARCODE_RIGHT_SHIFT]\n\
+    \                  [-cb_seq CELL_BARCODE_EXTRA_SEQ]\n                  [-cb_seq_m\
+    \ CELL_BARCODE_EXTRA_SEQ_MISMATCHES]\n                  [-fb_s FEATURE_BARCODE_POS_START]\n\
+    \                  [-fb_m FEATURE_BARCODE_MISMATCHES]\n                  [-fb_ls\
+    \ FEATURE_BARCODE_LEFT_SHIFT]\n                  [-fb_rs FEATURE_BARCODE_RIGHT_SHIFT]\n\
+    \                  [-fb_seq FEATURE_BARCODE_EXTRA_SEQ]\n                  [-fb_seq_m\
+    \ FEATURE_BARCODE_EXTRA_SEQ_MISMATCHES]\n\nFilter extracted cell and feature barcodes\
+    \ (output of `extract` or `qc`).\nAdditional fragment filter/selection can be\
+    \ applied through `-cb_seq` and/or\n`-fb_seq`.\n\noptional arguments:\n  -h, --help\
+    \            show this help message and exit\n  -i INPUT, --input INPUT\n    \
+    \                    specify an input file. The output of `extract` or `qc`\n\
+    \  -o OUTPUT, --output OUTPUT\n                        specify an output file\n\
+    \  -cb_s CELL_BARCODE_POS_START, --cb_start CELL_BARCODE_POS_START\n         \
+    \               specify expected cell barcode starting postion on read\n     \
+    \                   1. Default (0)\n  -cb_m CELL_BARCODE_MISMATCHES, --cb_mismatches\
+    \ CELL_BARCODE_MISMATCHES\n                        specify cell barcode mismatching\
+    \ threshold. Default\n                        (1)\n  -cb_ls CELL_BARCODE_LEFT_SHIFT,\
+    \ --cb_left_shift CELL_BARCODE_LEFT_SHIFT\n                        specify the\
+    \ maximum left shift allowed for cell\n                        barcode. Default\
+    \ (1)\n  -cb_rs CELL_BARCODE_RIGHT_SHIFT, --cb_right_shift CELL_BARCODE_RIGHT_SHIFT\n\
+    \                        specify the maximum right shift allowed for cell\n  \
+    \                      barcode. Default (1)\n  -cb_seq CELL_BARCODE_EXTRA_SEQ,\
+    \ --cb_extra_seq CELL_BARCODE_EXTRA_SEQ\n                        specify an extra\
+    \ constant sequence to filter on read\n                        1. Default (None)\n\
+    \  -cb_seq_m CELL_BARCODE_EXTRA_SEQ_MISMATCHES, --cb_extra_seq_mismatches CELL_BARCODE_EXTRA_SEQ_MISMATCHES\n\
+    \                        specify the maximun edit distance allowed for the\n \
+    \                       extra constant sequence on read 1 for filtering.\n   \
+    \                     Default (None)\n  -fb_s FEATURE_BARCODE_POS_START, --fb_start\
+    \ FEATURE_BARCODE_POS_START\n                        specify expected feature\
+    \ barcode starting postion on\n                        read 2. Default (10)\n\
+    \  -fb_m FEATURE_BARCODE_MISMATCHES, --fb_mismatches FEATURE_BARCODE_MISMATCHES\n\
+    \                        specify feature barcode mismatching threshold. Default\n\
+    \                        (1)\n  -fb_ls FEATURE_BARCODE_LEFT_SHIFT, --fb_left_shift\
+    \ FEATURE_BARCODE_LEFT_SHIFT\n                        specify the maximum left\
+    \ shift allowed for feature\n                        barcode. Default (1)\n  -fb_rs\
+    \ FEATURE_BARCODE_RIGHT_SHIFT, --fb_right_shift FEATURE_BARCODE_RIGHT_SHIFT\n\
+    \                        specify the maximum right shift allowed for feature\n\
+    \                        barcode. Default (1)\n  -fb_seq FEATURE_BARCODE_EXTRA_SEQ,\
+    \ --fb_extra_seq FEATURE_BARCODE_EXTRA_SEQ\n                        specify an\
+    \ extra constant sequence to filter on read\n                        2. Default\
+    \ (None)\n  -fb_seq_m FEATURE_BARCODE_EXTRA_SEQ_MISMATCHES, --fb_extra_seq_mismatches\
+    \ FEATURE_BARCODE_EXTRA_SEQ_MISMATCHES\n                        specify the maximun\
+    \ edit distance allowed for the\n                        extra constant sequence\
+    \ on read 2. Default (None)\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/fba:0.0.10.post1--pyhdfd78af_0
+- !Command
+  command:
+  - fba
+  - 0.0.10.post1
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: fba
+    description: ''
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    description: ''
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: fba [-h]  ...\nfba: error: argument : invalid choice: '0.0.10.post1'\
+    \ (choose from 'extract', 'map', 'filter', 'count', 'demultiplex', 'qc', 'kallisto_wrapper')\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/fba:0.0.10.post1--pyhdfd78af_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: fba [-h]  ...\n\nTools for feature barcoding analyses\nVersion:\
+  \ 0.0.10.post1\n\noptional arguments:\n  -h, --help        show this help message\
+  \ and exit\n\nfunctions:\n  \n    extract         extract cell and feature barcodes\n\
+  \    map             map enriched transcripts\n    filter          filter extracted\
+  \ barcodes\n    count           count feature barcodes per cell\n    demultiplex\
+  \     demultiplex cells based on feature abundance\n    qc              quality\
+  \ control of feature barcoding assay\n    kallisto_wrapper\n                   \
+  \ deploy kallisto/bustools for feature barcoding\n                    quantification\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/fba:0.0.10.post1--pyhdfd78af_0

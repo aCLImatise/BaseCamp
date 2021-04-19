@@ -1,0 +1,102 @@
+!Command
+command:
+- archer
+- launch
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --awsBucketName
+  description: the AWS S3 bucket name for data upload (default "artic-archer-uploads-test")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --awsRegion
+  description: the AWS region to use (default "eu-west-2")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --dbPath
+  description: location to store the Archer database (default "/root/.archer")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --grpcAddress
+  description: address to announce on (default "localhost")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --grpcPort
+  description: TCP port to listen to by the gRPC server (default "9090")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --logFile
+  description: where to write the server log (if unset, STDERR used)
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --manifestURL
+  description: the ARTIC primer scheme manifest url (default "https://raw.githubusercontent.com/artic-network/primer-schemes/master/schemes_manifest.json")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --numProcessors
+  description: number of processors to use (-1 == all) (default -1)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --numWorkers
+  description: number of concurrent request handlers to use (default 2)
+  args: !SimpleFlagArg
+    name: int
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: help for launch
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Launch the Archer service.\n\t\n\tThis will start a gRPC server running\
+  \ that will\n\taccept incoming Process and Watch requests. It\n\twill offer the\
+  \ Archer API for filtering, compressing\n\tand uploading ARTIC reads to an S3 endpoint.\n\
+  \nUsage:\n  archer launch [flags]\n\nFlags:\n      --awsBucketName string   the\
+  \ AWS S3 bucket name for data upload (default \"artic-archer-uploads-test\")\n \
+  \     --awsRegion string       the AWS region to use (default \"eu-west-2\")\n \
+  \     --dbPath string          location to store the Archer database (default \"\
+  /root/.archer\")\n      --grpcAddress string     address to announce on (default\
+  \ \"localhost\")\n      --grpcPort string        TCP port to listen to by the gRPC\
+  \ server (default \"9090\")\n  -h, --help                   help for launch\n  -l,\
+  \ --logFile string         where to write the server log (if unset, STDERR used)\n\
+  \      --manifestURL string     the ARTIC primer scheme manifest url (default \"\
+  https://raw.githubusercontent.com/artic-network/primer-schemes/master/schemes_manifest.json\"\
+  )\n  -p, --numProcessors int      number of processors to use (-1 == all) (default\
+  \ -1)\n      --numWorkers int         number of concurrent request handlers to use\
+  \ (default 2)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/archer:0.1.1--he881be0_0

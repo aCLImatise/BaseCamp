@@ -1,0 +1,177 @@
+!Command
+command:
+- mapper.pl
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  description: input file is seq.txt format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  description: input file is qseq.txt format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: input file is fasta format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  description: input file is fastq format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: "input file is a config file (see miRDeep2 documentation).\noptions\
+    \ -a, -b, -c or -e must be given with option -d."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  description: three-letter prefix for reads (by default 'seq')
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: convert rna to dna alphabet (to map against genome)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  description: "remove all entries that have a sequence that contains letters\nother\
+    \ than a,c,g,t,u,n,A,C,G,T,U,N"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  description: clip 3' adapter sequence
+  args: !SimpleFlagArg
+    name: seq
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: discard reads shorter than int nts, default = 18
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: collapse reads
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: "map to genome (must be indexed by bowtie-build). The 'genome'\nstring\
+    \ must be the prefix of the bowtie index. For instance, if\nthe first indexed\
+    \ file is called 'h_sapiens_37_asm.1.ebwt' then\nthe prefix is 'h_sapiens_37_asm'."
+  args: !SimpleFlagArg
+    name: genome
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  description: map with one mismatch in the seed (mapping takes longer)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: "a read is allowed to map up to this number of positions in the genome\n\
+    default is 5"
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: print processed reads to this file
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: print read mappings to this file
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  description: do not remove directory with temporary files
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: outputs progress report
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: overwrite existing files
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: number of threads to use for bowtie
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  description: parse to fasta format
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "No config or reads file could be found\n/usr/local/bin/mapper.pl input_file_reads\n\
+  \nThis script takes as input a file with deep sequencing reads (these can be in\n\
+  different formats, see the options below). The script then processes the reads\n\
+  and/or maps them to the reference genome, as designated by the options given.\n\
+  Options:\n\nRead input file:\n-a              input file is seq.txt format\n-b \
+  \             input file is qseq.txt format\n-c              input file is fasta\
+  \ format\n-e              input file is fastq format\n-d              input file\
+  \ is a config file (see miRDeep2 documentation).\n                options -a, -b,\
+  \ -c or -e must be given with option -d.\n\nPreprocessing/mapping:\n-g         \
+  \     three-letter prefix for reads (by default 'seq')\n-h              parse to\
+  \ fasta format\n-i              convert rna to dna alphabet (to map against genome)\n\
+  -j              remove all entries that have a sequence that contains letters\n\
+  \                other than a,c,g,t,u,n,A,C,G,T,U,N\n-k seq          clip 3' adapter\
+  \ sequence\n-l int          discard reads shorter than int nts, default = 18\n-m\
+  \              collapse reads\n\n-p genome       map to genome (must be indexed\
+  \ by bowtie-build). The 'genome'\n                string must be the prefix of the\
+  \ bowtie index. For instance, if\n                the first indexed file is called\
+  \ 'h_sapiens_37_asm.1.ebwt' then\n                the prefix is 'h_sapiens_37_asm'.\n\
+  -q              map with one mismatch in the seed (mapping takes longer)\n\n-r int\
+  \          a read is allowed to map up to this number of positions in the genome\n\
+  \                default is 5\n\nOutput files:\n-s file         print processed\
+  \ reads to this file\n-t file         print read mappings to this file\n\nOther:\n\
+  -u              do not remove directory with temporary files\n-v              outputs\
+  \ progress report\n\n-n              overwrite existing files\n\n-o            \
+  \  number of threads to use for bowtie\n\nExample of use:\n\n/usr/local/bin/mapper.pl\
+  \ reads_seq.txt -a -h -i -j -k TCGTATGCCGTCTTCTGCTTGT  -l 18 -m -p h_sapiens_37_asm\
+  \ -s reads.fa -t reads_vs_genome.arf -v\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/mirdeep2:2.0.1.3--hdfd78af_0

@@ -1,0 +1,126 @@
+!Command
+command:
+- parsec
+- workflows
+- run_workflow
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: step.
+  description: The ``replacement_params`` dict should map parameter names in
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --dataset_map
+  description: "A mapping of workflow inputs to datasets. The\ndatasets source can\
+    \ be a\nLibraryDatasetDatasetAssociation (``ldda``),\nLibraryDataset (``ld``),\
+    \ or\nHistoryDatasetAssociation (``hda``). The map\nmust be in the following format:\
+    \ ``{'<input>':\n{'id': <encoded dataset ID>, 'src': '[ldda, ld,\nhda]'}}`` (e.g.\
+    \ ``{'23': {'id':\n'29beef4fadeed09f', 'src': 'ld'}}``)"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --params
+  description: "A mapping of non-datasets tool parameters (see\nbelow)"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --history_id
+  description: "The encoded history ID where to store the\nworkflow output. Alternatively,\
+    \ ``history_name``\nmay be specified to create a new history."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --history_name
+  description: "Create a new history with the given name to\nstore the workflow output.\
+    \ If both\n``history_id`` and ``history_name`` are\nprovided, ``history_name``\
+    \ is ignored. If\nneither is specified, a new 'Unnamed history' is\ncreated."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --import_inputs_to_history
+  description: "If ``True``, used workflow inputs will be\nimported into the history.\
+    \ If ``False``, only\nworkflow outputs will be visible in the given\nhistory."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --replacement_params
+  description: "pattern-based replacements for post-job actions\n(see below)"
+  args: !SimpleFlagArg
+    name: TEXT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: parsec workflows run_workflow [OPTIONS] WORKFLOW_ID\n\n  Run the\
+  \ workflow identified by ``workflow_id``.\n\n  Output:\n\n      A dict containing\
+  \ the history ID where the outputs are placed\n      as well as output dataset IDs.\
+  \ For example::\n\n              {'history': '64177123325c9cfd',              'outputs':\n\
+  \              ['aa4d3084af404259']}\n\n          The ``params`` dict should be\
+  \ specified as follows::\n\n            {STEP_ID: PARAM_DICT, ...}\n\n         \
+  \ where PARAM_DICT is::\n\n            {PARAM_NAME: VALUE, ...}\n\n          For\
+  \ backwards compatibility, the following (deprecated) format is\n          also\
+  \ supported for ``params``::\n\n            {TOOL_ID: PARAM_DICT, ...}\n\n     \
+  \     in which case PARAM_DICT affects all steps with the given tool id.\n     \
+  \     If both by-tool-id and by-step-id specifications are used, the\n         \
+  \ latter takes precedence.\n\n          Finally (again, for backwards compatibility),\
+  \ PARAM_DICT can also\n          be specified as::\n\n            {'param': PARAM_NAME,\
+  \ 'value': VALUE}\n\n          Note that this format allows only one parameter to\
+  \ be set per\n          step.\n\n          The ``replacement_params`` dict should\
+  \ map parameter names in\n          post-job actions (PJAs) to their runtime values.\
+  \ For\n          instance, if the final step has a PJA like the following::\n\n\
+  \            {'RenameDatasetActionout_file1': {'action_arguments':\n           \
+  \ {'newname': '${output}'},\n            'action_type': 'RenameDatasetAction',\n\
+  \            'output_name': 'out_file1'}}\n\n          then the following renames\
+  \ the output dataset to 'foo'::\n\n            replacement_params = {'output': 'foo'}\n\
+  \n          see also `this email thread\n          <http://lists.bx.psu.edu/pipermail/galaxy-\n\
+  \          dev/2011-September/006875.html>`_.\n\n          .. warning::        \
+  \     This method waits for the whole workflow\n          to be scheduled before\
+  \             returning and does not scale to\n          large workflows as a result.\
+  \ This             method has therefore\n          been deprecated in favor of \
+  \            :meth:`invoke_workflow`,\n          which also features improved default\
+  \             behavior for\n          dataset input handling.\n\nOptions:\n  --dataset_map\
+  \ TEXT          A mapping of workflow inputs to datasets. The\n                \
+  \              datasets source can be a\n                              LibraryDatasetDatasetAssociation\
+  \ (``ldda``),\n                              LibraryDataset (``ld``), or\n     \
+  \                         HistoryDatasetAssociation (``hda``). The map\n       \
+  \                       must be in the following format: ``{'<input>':\n       \
+  \                       {'id': <encoded dataset ID>, 'src': '[ldda, ld,\n      \
+  \                        hda]'}}`` (e.g. ``{'23': {'id':\n                     \
+  \         '29beef4fadeed09f', 'src': 'ld'}}``)\n\n  --params TEXT              \
+  \ A mapping of non-datasets tool parameters (see\n                             \
+  \ below)\n\n  --history_id TEXT           The encoded history ID where to store\
+  \ the\n                              workflow output. Alternatively, ``history_name``\n\
+  \                              may be specified to create a new history.\n\n  --history_name\
+  \ TEXT         Create a new history with the given name to\n                   \
+  \           store the workflow output. If both\n                              ``history_id``\
+  \ and ``history_name`` are\n                              provided, ``history_name``\
+  \ is ignored. If\n                              neither is specified, a new 'Unnamed\
+  \ history' is\n                              created.\n\n  --import_inputs_to_history\
+  \  If ``True``, used workflow inputs will be\n                              imported\
+  \ into the history. If ``False``, only\n                              workflow outputs\
+  \ will be visible in the given\n                              history.\n\n  --replacement_params\
+  \ TEXT   pattern-based replacements for post-job actions\n                     \
+  \         (see below)\n\n  -h, --help                  Show this message and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0

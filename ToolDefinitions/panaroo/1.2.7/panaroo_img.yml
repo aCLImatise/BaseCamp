@@ -1,0 +1,148 @@
+!Command
+command:
+- panaroo-img
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: size.
+  description: --model {fixed,coalescent}
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --tree
+  description: A dated phylogeny.
+  args: !SimpleFlagArg
+    name: TREE
+- !Flag
+  optional: true
+  synonyms:
+  - --pa
+  description: A presence/absence produced by Panaroo.
+  args: !SimpleFlagArg
+    name: PRESENCE_ABSENCE
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out_dir
+  description: location of an output directory
+  args: !SimpleFlagArg
+    name: OUTPUT_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  description: "Number of seperate rate classes to use for the\ndispensable genome.\
+    \ Can be either 1 or 2."
+  args: !ChoiceFlagArg
+    choices: !!set
+      '1':
+      '2':
+- !Flag
+  optional: true
+  synonyms:
+  - --no_essential
+  description: Removes essential gene class from model
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no_constraint
+  description: Removes constraint that u/v must equal the genome
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --fit
+  description: "Whether to use the gene frequency spectrum or the\ncore/pangeome size\
+    \ for fitting (default=gf)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      cp:
+      gf:
+- !Flag
+  optional: true
+  synonyms:
+  - --init_u1
+  description: Initial value for u1 (default=0.01).
+  args: !SimpleFlagArg
+    name: U1
+- !Flag
+  optional: true
+  synonyms:
+  - --init_u2
+  description: Initial value for u2 (default=0.01).
+  args: !SimpleFlagArg
+    name: U2
+- !Flag
+  optional: true
+  synonyms:
+  - --init_v1
+  description: Initial value for v1 (default=0.01).
+  args: !SimpleFlagArg
+    name: V1
+- !Flag
+  optional: true
+  synonyms:
+  - --init_v2
+  description: Initial value for v2 (default=0.01).
+  args: !SimpleFlagArg
+    name: V2
+- !Flag
+  optional: true
+  synonyms:
+  - --init_ess
+  description: "Initial value for the number of essential genes\n(default=2000)."
+  args: !SimpleFlagArg
+    name: GESS
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: print additional output
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: panaroo_img_est [-h] [--tree TREE] --pa PRESENCE_ABSENCE -o OUTPUT_DIR\n\
+  \                       -D {1,2} [--no_essential] [--no_constraint]\n          \
+  \             [--model {fixed,coalescent}] [--fit {gf,cp}]\n                   \
+  \    [--init_u1 U1] [--init_u2 U2] [--init_v1 V1]\n                       [--init_v2\
+  \ V2] [--init_ess GESS] [--verbose]\n                       [--version]\n\nEstimate\
+  \ model parameters for either the Infinitely Many Genes Model using\ngene frequencies\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  --tree TREE           A dated phylogeny.\n  --pa PRESENCE_ABSENCE\n         \
+  \               A presence/absence produced by Panaroo.\n  -o OUTPUT_DIR, --out_dir\
+  \ OUTPUT_DIR\n                        location of an output directory\n  -D {1,2}\
+  \              Number of seperate rate classes to use for the\n                \
+  \        dispensable genome. Can be either 1 or 2.\n  --no_essential        Removes\
+  \ essential gene class from model\n  --no_constraint       Removes constraint that\
+  \ u/v must equal the genome\n                        size.\n  --model {fixed,coalescent}\n\
+  \                        Model to fit. Can be one of 'coalescent' or 'fixed'.\n\
+  \  --fit {gf,cp}         Whether to use the gene frequency spectrum or the\n   \
+  \                     core/pangeome size for fitting (default=gf)\n  --init_u1 U1\
+  \          Initial value for u1 (default=0.01).\n  --init_u2 U2          Initial\
+  \ value for u2 (default=0.01).\n  --init_v1 V1          Initial value for v1 (default=0.01).\n\
+  \  --init_v2 V2          Initial value for v2 (default=0.01).\n  --init_ess GESS\
+  \       Initial value for the number of essential genes\n                      \
+  \  (default=2000).\n  --verbose             print additional output\n  --version\
+  \             show program's version number and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/panaroo:1.2.7--pyhdfd78af_0

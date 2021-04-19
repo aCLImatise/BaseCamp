@@ -1,0 +1,224 @@
+&id001 !Command
+command:
+- archer
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - archer
+  - watch
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --grpcAddress
+    description: address of the server hosting the Archer service (default "localhost")
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - --grpcPort
+    description: TCP port to listen to by the gRPC server (default "9090")
+    args: !SimpleFlagArg
+      name: string
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: help for watch
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Watch a running Archer service.\n\t\n\tThis command will start a gRPC\
+    \ message stream and \n\tprint samples that have completed processing. It \n\t\
+    will include sample name, amplicon coverage, S3\n\tlocation and processing time.\n\
+    \nUsage:\n  archer watch [flags]\n\nFlags:\n      --grpcAddress string   address\
+    \ of the server hosting the Archer service (default \"localhost\")\n      --grpcPort\
+    \ string      TCP port to listen to by the gRPC server (default \"9090\")\n  -h,\
+    \ --help                 help for watch\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/archer:0.1.1--he881be0_0
+- !Command
+  command:
+  - archer
+  - launch
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --awsBucketName
+    description: the AWS S3 bucket name for data upload (default "artic-archer-uploads-test")
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - --awsRegion
+    description: the AWS region to use (default "eu-west-2")
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - --dbPath
+    description: location to store the Archer database (default "/root/.archer")
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - --grpcAddress
+    description: address to announce on (default "localhost")
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - --grpcPort
+    description: TCP port to listen to by the gRPC server (default "9090")
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    - --logFile
+    description: where to write the server log (if unset, STDERR used)
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - --manifestURL
+    description: the ARTIC primer scheme manifest url (default "https://raw.githubusercontent.com/artic-network/primer-schemes/master/schemes_manifest.json")
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --numProcessors
+    description: number of processors to use (-1 == all) (default -1)
+    args: !SimpleFlagArg
+      name: int
+  - !Flag
+    optional: true
+    synonyms:
+    - --numWorkers
+    description: number of concurrent request handlers to use (default 2)
+    args: !SimpleFlagArg
+      name: int
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: help for launch
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Launch the Archer service.\n\t\n\tThis will start a gRPC server running\
+    \ that will\n\taccept incoming Process and Watch requests. It\n\twill offer the\
+    \ Archer API for filtering, compressing\n\tand uploading ARTIC reads to an S3\
+    \ endpoint.\n\nUsage:\n  archer launch [flags]\n\nFlags:\n      --awsBucketName\
+    \ string   the AWS S3 bucket name for data upload (default \"artic-archer-uploads-test\"\
+    )\n      --awsRegion string       the AWS region to use (default \"eu-west-2\"\
+    )\n      --dbPath string          location to store the Archer database (default\
+    \ \"/root/.archer\")\n      --grpcAddress string     address to announce on (default\
+    \ \"localhost\")\n      --grpcPort string        TCP port to listen to by the\
+    \ gRPC server (default \"9090\")\n  -h, --help                   help for launch\n\
+    \  -l, --logFile string         where to write the server log (if unset, STDERR\
+    \ used)\n      --manifestURL string     the ARTIC primer scheme manifest url (default\
+    \ \"https://raw.githubusercontent.com/artic-network/primer-schemes/master/schemes_manifest.json\"\
+    )\n  -p, --numProcessors int      number of processors to use (-1 == all) (default\
+    \ -1)\n      --numWorkers int         number of concurrent request handlers to\
+    \ use (default 2)\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/archer:0.1.1--he881be0_0
+- !Command
+  command:
+  - archer
+  - process
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --grpcAddress
+    description: address of the server hosting the Archer service (default "localhost")
+    args: !SimpleFlagArg
+      name: string
+  - !Flag
+    optional: true
+    synonyms:
+    - --grpcPort
+    description: TCP port to listen to by the gRPC server (default "9090")
+    args: !SimpleFlagArg
+      name: string
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: help for process
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Add a sample to the processing queue.\n\t\n\tThe processing request\
+    \ is collecting via STDIN and should be\n\tin JSON. The request will be validated\
+    \ prior to submitting it\n\tto the Archer service, so check the response.\n\t\n\
+    \tExample usage:\n\n\tcat sample.json | archer process\n\n\tWhere sample.json\
+    \ contains:\n\n\t{\n\t\t\"apiVersion\": \"1\",\n\t\t\"sampleID\": \"cvr1\",\n\t\
+    \t\"inputFASTQfiles\": [\"/path/to/sample.fastq\"],\n\t\t\"scheme\": \"scov2\"\
+    ,\n\t\t\"schemeVersion\": 3\n\t}\n\n\tFor scheme and schemeVersion, these must\
+    \ be available in the\n\tmanifest provided to the server (archer launch --manifestURL\
+    \ ...).\n\tBy default, the server uses the ARTIC primer scheme manifest.\n\nUsage:\n\
+    \  archer process [flags]\n\nFlags:\n      --grpcAddress string   address of the\
+    \ server hosting the Archer service (default \"localhost\")\n      --grpcPort\
+    \ string      TCP port to listen to by the gRPC server (default \"9090\")\n  -h,\
+    \ --help                 help for process\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/archer:0.1.1--he881be0_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: help for archer
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: version for archer
+  args: !EmptyFlagArg {}
+help_text: "Artic Resource for Classifying, Honing & Exporting Reads.\n\n\tArcher\
+  \ is a command line application that implements the ARCHER API.\n\tIt provides a\
+  \ service to pre-process data before running CLIMB workflows.\n\tIt will check reads\
+  \ against a primer scheme, upload on target reads to\n\tan S3 bucket and then report\
+  \ back.\n\nUsage:\n  archer [command]\n\nAvailable Commands:\n  help        Help\
+  \ about any command\n  launch      Launch the Archer service\n  process     Add\
+  \ a sample to the processing queue\n  watch       Watch a running Archer service\n\
+  \nFlags:\n  -h, --help      help for archer\n  -v, --version   version for archer\n\
+  \nUse \"archer [command] --help\" for more information about a command.\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/archer:0.1.1--he881be0_0

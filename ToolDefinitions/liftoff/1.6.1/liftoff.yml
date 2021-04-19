@@ -1,0 +1,280 @@
+!Command
+command:
+- liftoff
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: target
+  description: target fasta genome to lift genes to
+- !Positional
+  optional: false
+  position: 1
+  name: reference
+  description: reference fasta genome to lift genes from
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  description: annotation file to lift over in GFF or GTF format
+  args: !SimpleFlagArg
+    name: GFF
+- !Flag
+  optional: true
+  synonyms:
+  - -db
+  description: "name of feature database; if not specified, the -g\nargument must\
+    \ be provided and a database will be built\nautomatically"
+  args: !SimpleFlagArg
+    name: DB
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: "write output to FILE in same format as input; by\ndefault, output\
+    \ is written to terminal (stdout)"
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  description: "write unmapped features to FILE; default is\n\"unmapped_features.txt\""
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -exclude_partial
+  description: "write partial mappings below -s and -a threshold to\nunmapped_features.txt;\
+    \ if true partial/low sequence\nidentity mappings will be included in the gff\
+    \ file with\npartial_mapping=True, low_identity=True in comments"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -dir
+  description: "name of directory to save intermediate fasta and SAM\nfiles; default\
+    \ is \"intermediate_files\""
+  args: !SimpleFlagArg
+    name: DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -mm2_options
+  description: =STR   space delimited minimap2 parameters. By default ="-a
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  description: "designate a feature mapped only if it aligns with\ncoverage ≥A; by\
+    \ default A=0.5"
+  args: !SimpleFlagArg
+    name: A
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: "designate a feature mapped only if its child features\n(usually exons/CDS)\
+    \ align with sequence identity ≥S; by\ndefault S=0.5"
+  args: !SimpleFlagArg
+    name: S
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: "distance scaling factor; alignment nodes separated by\nmore than a\
+    \ factor of D in the target genome will not be\nconnected in the graph; by default\
+    \ D=2.0"
+  args: !SimpleFlagArg
+    name: D
+- !Flag
+  optional: true
+  synonyms:
+  - -flank
+  description: "amount of flanking sequence to align as a fraction\n[0.0-1.0] of gene\
+    \ length. This can improve gene\nalignment where gene structure differs between\
+    \ target\nand reference; by default F=0.0"
+  args: !SimpleFlagArg
+    name: F
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: "use p parallel processes to accelerate alignment; by\ndefault p=1"
+  args: !SimpleFlagArg
+    name: P
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: Minimap2 path
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: list of feature types to lift over
+  args: !SimpleFlagArg
+    name: TYPES
+- !Flag
+  optional: true
+  synonyms:
+  - -infer_genes
+  description: "use if annotation file only includes transcripts,\nexon/CDS features"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -infer_transcripts
+  description: "use if annotation file only includes exon/CDS features\nand does not\
+    \ include transcripts/mRNA"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -chroms
+  description: "comma seperated file with corresponding chromosomes in\nthe reference,target\
+    \ sequences"
+  args: !SimpleFlagArg
+    name: TXT
+- !Flag
+  optional: true
+  synonyms:
+  - -unplaced
+  description: "text file with name(s) of unplaced sequences to map\ngenes from after\
+    \ genes from chromosomes in chroms.txt\nare mapped; default is \"unplaced_seq_names.txt\""
+  args: !SimpleFlagArg
+    name: TXT
+- !Flag
+  optional: true
+  synonyms:
+  - -copies
+  description: look for extra gene copies in the target genome
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -sc
+  description: "with -copies, minimum sequence identity in exons/CDS for\nwhich a\
+    \ gene is considered a copy; must be greater than\n-s; default is 1.0"
+  args: !SimpleFlagArg
+    name: SC
+- !Flag
+  optional: true
+  synonyms:
+  - -overlap
+  description: "maximum fraction [0.0-1.0] of overlap allowed by 2\nfeatures; by default\
+    \ O=0.1"
+  args: !SimpleFlagArg
+    name: O
+- !Flag
+  optional: true
+  synonyms:
+  - -mismatch
+  description: "mismatch penalty in exons when finding best mapping; by\ndefault M=2"
+  args: !SimpleFlagArg
+    name: M
+- !Flag
+  optional: true
+  synonyms:
+  - -gap_open
+  description: "gap open penalty in exons when finding best mapping; by\ndefault GO=2"
+  args: !SimpleFlagArg
+    name: GO
+- !Flag
+  optional: true
+  synonyms:
+  - -gap_extend
+  description: "gap extend penalty in exons when finding best mapping;\nby default\
+    \ GE=1"
+  args: !SimpleFlagArg
+    name: GE
+- !Flag
+  optional: true
+  synonyms:
+  - -polish
+  - -cds
+  description: "annotate status of each CDS (partial, missing start,\nmissing stop,\
+    \ inframe stop codon)\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: show program version
+  args: !EmptyFlagArg {}
+help_text: "usage: liftoff [-h] (-g GFF | -db DB) [-o FILE] [-u FILE] [-exclude_partial]\n\
+  \               [-dir DIR] [-mm2_options =STR] [-a A] [-s S] [-d D] [-flank F]\n\
+  \               [-V] [-p P] [-m PATH] [-f TYPES] [-infer_genes]\n              \
+  \ [-infer_transcripts] [-chroms TXT] [-unplaced TXT] [-copies]\n               [-sc\
+  \ SC] [-overlap O] [-mismatch M] [-gap_open GO]\n               [-gap_extend GE]\
+  \ [-polish] [-cds]\n               target reference\n\nLift features from one genome\
+  \ assembly to another\n\nRequired input (sequences):\n  target              target\
+  \ fasta genome to lift genes to\n  reference           reference fasta genome to\
+  \ lift genes from\n\nRequired input (annotation):\n  -g GFF              annotation\
+  \ file to lift over in GFF or GTF format\n  -db DB              name of feature\
+  \ database; if not specified, the -g\n                      argument must be provided\
+  \ and a database will be built\n                      automatically\n\nOutput:\n\
+  \  -o FILE             write output to FILE in same format as input; by\n      \
+  \                default, output is written to terminal (stdout)\n  -u FILE    \
+  \         write unmapped features to FILE; default is\n                      \"\
+  unmapped_features.txt\"\n  -exclude_partial    write partial mappings below -s and\
+  \ -a threshold to\n                      unmapped_features.txt; if true partial/low\
+  \ sequence\n                      identity mappings will be included in the gff\
+  \ file with\n                      partial_mapping=True, low_identity=True in comments\n\
+  \  -dir DIR            name of directory to save intermediate fasta and SAM\n  \
+  \                    files; default is \"intermediate_files\"\n\nAlignments:\n \
+  \ -mm2_options =STR   space delimited minimap2 parameters. By default =\"-a\n  \
+  \                    --end-bonus 5 --eqx -N 50 -p 0.5\"\n  -a A                designate\
+  \ a feature mapped only if it aligns with\n                      coverage ≥A; by\
+  \ default A=0.5\n  -s S                designate a feature mapped only if its child\
+  \ features\n                      (usually exons/CDS) align with sequence identity\
+  \ ≥S; by\n                      default S=0.5\n  -d D                distance scaling\
+  \ factor; alignment nodes separated by\n                      more than a factor\
+  \ of D in the target genome will not be\n                      connected in the\
+  \ graph; by default D=2.0\n  -flank F            amount of flanking sequence to\
+  \ align as a fraction\n                      [0.0-1.0] of gene length. This can\
+  \ improve gene\n                      alignment where gene structure differs between\
+  \ target\n                      and reference; by default F=0.0\n\nMiscellaneous\
+  \ settings:\n  -h, --help          show this help message and exit\n  -V, --version\
+  \       show program version\n  -p P                use p parallel processes to\
+  \ accelerate alignment; by\n                      default p=1\n  -m PATH       \
+  \      Minimap2 path\n  -f TYPES            list of feature types to lift over\n\
+  \  -infer_genes        use if annotation file only includes transcripts,\n     \
+  \                 exon/CDS features\n  -infer_transcripts  use if annotation file\
+  \ only includes exon/CDS features\n                      and does not include transcripts/mRNA\n\
+  \  -chroms TXT         comma seperated file with corresponding chromosomes in\n\
+  \                      the reference,target sequences\n  -unplaced TXT       text\
+  \ file with name(s) of unplaced sequences to map\n                      genes from\
+  \ after genes from chromosomes in chroms.txt\n                      are mapped;\
+  \ default is \"unplaced_seq_names.txt\"\n  -copies             look for extra gene\
+  \ copies in the target genome\n  -sc SC              with -copies, minimum sequence\
+  \ identity in exons/CDS for\n                      which a gene is considered a\
+  \ copy; must be greater than\n                      -s; default is 1.0\n  -overlap\
+  \ O          maximum fraction [0.0-1.0] of overlap allowed by 2\n              \
+  \        features; by default O=0.1\n  -mismatch M         mismatch penalty in exons\
+  \ when finding best mapping; by\n                      default M=2\n  -gap_open\
+  \ GO        gap open penalty in exons when finding best mapping; by\n          \
+  \            default GO=2\n  -gap_extend GE      gap extend penalty in exons when\
+  \ finding best mapping;\n                      by default GE=1\n  -polish\n  -cds\
+  \                annotate status of each CDS (partial, missing start,\n        \
+  \              missing stop, inframe stop codon)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/liftoff:1.6.1--pyhdfd78af_0

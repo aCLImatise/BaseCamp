@@ -1,0 +1,414 @@
+&id001 !Command
+command:
+- scanpy-find-cluster
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - scanpy-find-cluster
+  - louvain
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: table.
+    description: --neighbors-key TEXT            If not specified, look in .uns[‘neighbors’]
+  - !Positional
+    optional: false
+    position: 0
+    name: respectively.
+    description: --obsp TEXT                     Use .obsp[obsp] as adjacency. You
+      can’t
+  - !Positional
+    optional: false
+    position: 0
+    name: graph.
+    description: '[default: True]'
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --input-format
+    description: "[anndata|loom]\nInput object format.  [default: anndata]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -F
+    - --output-format
+    description: "[anndata|loom|zarr]\nOutput object format.  [default: anndata]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -z
+    - --zarr-chunk-size
+    description: Chunk size for writing output in zarr
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    - --loom-write-obsm-varm
+    description: "Write obsm and varm to the Loom file?\n[default: False]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -X
+    - --export-mtx
+    description: "When specified, using it as prefix for\nexporting mtx files. If\
+      \ not empty and not\nending with \"/\" or \"_\", a \"_\" will be\nappended."
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - --show-obj
+    description: "[stdout|stderr]      Print output object summary info to\nspecified\
+      \ stream."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --export-cluster
+    description: Export embeddings in a tab-separated text
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --directed
+    - --undirected
+    description: Interpret the adjacency matrix as directed
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --use-weights
+    description: "Use weights from KNN graph.  [default:\nFalse]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --restrict-to
+    description: "<TEXT TEXT[,TEXT...]>...\nRestrict the clustering to the categories\n\
+      within the key for sample annotation, in the\nform of \"obs_key list_of_categories\"\
+      .\n[default: None, None]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -S
+    - --random-state
+    description: "Seed for random number generator.  [default:\n0]"
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - --key-added
+    description: Key under which to add the computed results
+    args: !OptionalFlagArg
+      names:
+      - TEXT
+      - TEXT...
+      separator: ','
+  - !Flag
+    optional: true
+    synonyms:
+    - --flavor
+    description: "[vtraag|igraph]        Choose between two packages for computing\n\
+      the clustering. \"vtraag\" is much powerful,\nand the default.  [default: vtraag]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --resolution
+    description: "For the default flavor \"vtraag\", you can\nprovide a resolution.\
+      \ Higher resolution\nmeans finding more and smaller clusters.\n[default: 1]"
+    args: !OptionalFlagArg
+      names:
+      - FLOAT
+      - FLOAT...
+      separator: ','
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: scanpy-find-cluster louvain [OPTIONS] <input_obj> <output_obj>\n\
+    \n  Find clusters by Louvain algorithm.\n\n  <input_obj>:   input file in format\
+    \ specfied by --input-format\n  <output_obj>:  output file in format specfied\
+    \ by --output-format\n\nOptions:\n  -f, --input-format [anndata|loom]\n      \
+    \                            Input object format.  [default: anndata]\n  -F, --output-format\
+    \ [anndata|loom|zarr]\n                                  Output object format.\
+    \  [default: anndata]\n  -z, --zarr-chunk-size INTEGER   Chunk size for writing\
+    \ output in zarr\n                                  format.  [default: 1000]\n\
+    \n  -b, --loom-write-obsm-varm      Write obsm and varm to the Loom file?\n  \
+    \                                [default: False]\n\n  -X, --export-mtx PATH \
+    \          When specified, using it as prefix for\n                          \
+    \        exporting mtx files. If not empty and not\n                         \
+    \         ending with \"/\" or \"_\", a \"_\" will be\n                      \
+    \            appended.\n\n  --show-obj [stdout|stderr]      Print output object\
+    \ summary info to\n                                  specified stream.\n\n  --export-cluster\
+    \ FILE           Export embeddings in a tab-separated text\n                 \
+    \                 table.\n\n  --neighbors-key TEXT            If not specified,\
+    \ look in .uns[‘neighbors’]\n                                  for neighbors settings\
+    \ and\n                                  .obsp[‘connectivities’], .obsp[‘distances’]\n\
+    \                                  for connectivities and distances\n        \
+    \                          respectively (default storage places for\n        \
+    \                          pp.neighbors). If specified, look in\n            \
+    \                      .uns[neighbors_key] for neighbors settings\n          \
+    \                        and .obsp[.uns[neighbors_key][‘connectivitie\n      \
+    \                            s_key’]],\n                                  .obsp[.uns[neighbors_key][‘distances_key’]]\n\
+    \                                  for connectivities and distances\n        \
+    \                          respectively.\n\n  --obsp TEXT                    \
+    \ Use .obsp[obsp] as adjacency. You can’t\n                                  specify\
+    \ both obsp and neighbors_key at the\n                                  same time.\n\
+    \n  --directed / --undirected       Interpret the adjacency matrix as directed\n\
+    \                                  graph.  [default: True]\n\n  --use-weights\
+    \                   Use weights from KNN graph.  [default:\n                 \
+    \                 False]\n\n  --restrict-to <TEXT TEXT[,TEXT...]>...\n       \
+    \                           Restrict the clustering to the categories\n      \
+    \                            within the key for sample annotation, in the\n  \
+    \                                form of \"obs_key list_of_categories\".\n   \
+    \                               [default: None, None]\n\n  -S, --random-state\
+    \ INTEGER      Seed for random number generator.  [default:\n                \
+    \                  0]\n\n  --key-added TEXT[,TEXT...]      Key under which to\
+    \ add the computed results\n  --flavor [vtraag|igraph]        Choose between two\
+    \ packages for computing\n                                  the clustering. \"\
+    vtraag\" is much powerful,\n                                  and the default.\
+    \  [default: vtraag]\n\n  -r, --resolution FLOAT[,FLOAT...]\n                \
+    \                  For the default flavor \"vtraag\", you can\n              \
+    \                    provide a resolution. Higher resolution\n               \
+    \                   means finding more and smaller clusters.\n               \
+    \                   [default: 1]\n\n  --help                          Show this\
+    \ message and exit.\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/scanpy-scripts:0.3.3--pyhdfd78af_2
+- !Command
+  command:
+  - scanpy-find-cluster
+  - leiden
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: table.
+    description: --neighbors-key TEXT            If not specified, look in .uns[‘neighbors’]
+  - !Positional
+    optional: false
+    position: 0
+    name: respectively.
+    description: --obsp TEXT                     Use .obsp[obsp] as adjacency. You
+      can’t
+  - !Positional
+    optional: false
+    position: 0
+    name: graph.
+    description: '[default: True]'
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --input-format
+    description: "[anndata|loom]\nInput object format.  [default: anndata]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -F
+    - --output-format
+    description: "[anndata|loom|zarr]\nOutput object format.  [default: anndata]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -z
+    - --zarr-chunk-size
+    description: Chunk size for writing output in zarr
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    - --loom-write-obsm-varm
+    description: "Write obsm and varm to the Loom file?\n[default: False]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -X
+    - --export-mtx
+    description: "When specified, using it as prefix for\nexporting mtx files. If\
+      \ not empty and not\nending with \"/\" or \"_\", a \"_\" will be\nappended."
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - --show-obj
+    description: "[stdout|stderr]      Print output object summary info to\nspecified\
+      \ stream."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --export-cluster
+    description: Export embeddings in a tab-separated text
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --directed
+    - --undirected
+    description: Interpret the adjacency matrix as directed
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --use-weights
+    description: "Use weights from KNN graph.  [default:\nFalse]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --restrict-to
+    description: "<TEXT TEXT[,TEXT...]>...\nRestrict the clustering to the categories\n\
+      within the key for sample annotation, in the\nform of \"obs_key list_of_categories\"\
+      .\n[default: None, None]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -S
+    - --random-state
+    description: "Seed for random number generator.  [default:\n0]"
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - --key-added
+    description: Key under which to add the computed results
+    args: !OptionalFlagArg
+      names:
+      - TEXT
+      - TEXT...
+      separator: ','
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --resolution
+    description: "A parameter value controlling the coarseness\nof the clustering.\
+      \ Higher values lead to\nmore clusters. Set to \"None\" if overriding\n--partition_type\
+      \ to one that doesn't accept\n`resolution_parameter`.  [default: 1]"
+    args: !OptionalFlagArg
+      names:
+      - FLOAT
+      - FLOAT...
+      separator: ','
+  - !Flag
+    optional: true
+    synonyms:
+    - --n-iterations
+    description: "How many iterations of the Leiden clustering\nalgorithm to perform.\
+      \ -1 has the algorithm\nrun until it reaches its optimal clustering.\n[default:\
+      \ -1]"
+    args: !SimpleFlagArg
+      name: INTEGER
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: scanpy-find-cluster leiden [OPTIONS] <input_obj> <output_obj>\n\
+    \n  Find clusters by Leiden algorithm.\n\n  <input_obj>:   input file in format\
+    \ specfied by --input-format\n  <output_obj>:  output file in format specfied\
+    \ by --output-format\n\nOptions:\n  -f, --input-format [anndata|loom]\n      \
+    \                            Input object format.  [default: anndata]\n  -F, --output-format\
+    \ [anndata|loom|zarr]\n                                  Output object format.\
+    \  [default: anndata]\n  -z, --zarr-chunk-size INTEGER   Chunk size for writing\
+    \ output in zarr\n                                  format.  [default: 1000]\n\
+    \n  -b, --loom-write-obsm-varm      Write obsm and varm to the Loom file?\n  \
+    \                                [default: False]\n\n  -X, --export-mtx PATH \
+    \          When specified, using it as prefix for\n                          \
+    \        exporting mtx files. If not empty and not\n                         \
+    \         ending with \"/\" or \"_\", a \"_\" will be\n                      \
+    \            appended.\n\n  --show-obj [stdout|stderr]      Print output object\
+    \ summary info to\n                                  specified stream.\n\n  --export-cluster\
+    \ FILE           Export embeddings in a tab-separated text\n                 \
+    \                 table.\n\n  --neighbors-key TEXT            If not specified,\
+    \ look in .uns[‘neighbors’]\n                                  for neighbors settings\
+    \ and\n                                  .obsp[‘connectivities’], .obsp[‘distances’]\n\
+    \                                  for connectivities and distances\n        \
+    \                          respectively (default storage places for\n        \
+    \                          pp.neighbors). If specified, look in\n            \
+    \                      .uns[neighbors_key] for neighbors settings\n          \
+    \                        and .obsp[.uns[neighbors_key][‘connectivitie\n      \
+    \                            s_key’]],\n                                  .obsp[.uns[neighbors_key][‘distances_key’]]\n\
+    \                                  for connectivities and distances\n        \
+    \                          respectively.\n\n  --obsp TEXT                    \
+    \ Use .obsp[obsp] as adjacency. You can’t\n                                  specify\
+    \ both obsp and neighbors_key at the\n                                  same time.\n\
+    \n  --directed / --undirected       Interpret the adjacency matrix as directed\n\
+    \                                  graph.  [default: True]\n\n  --use-weights\
+    \                   Use weights from KNN graph.  [default:\n                 \
+    \                 False]\n\n  --restrict-to <TEXT TEXT[,TEXT...]>...\n       \
+    \                           Restrict the clustering to the categories\n      \
+    \                            within the key for sample annotation, in the\n  \
+    \                                form of \"obs_key list_of_categories\".\n   \
+    \                               [default: None, None]\n\n  -S, --random-state\
+    \ INTEGER      Seed for random number generator.  [default:\n                \
+    \                  0]\n\n  --key-added TEXT[,TEXT...]      Key under which to\
+    \ add the computed results\n  -r, --resolution FLOAT[,FLOAT...]\n            \
+    \                      A parameter value controlling the coarseness\n        \
+    \                          of the clustering. Higher values lead to\n        \
+    \                          more clusters. Set to \"None\" if overriding\n    \
+    \                              --partition_type to one that doesn't accept\n \
+    \                                 `resolution_parameter`.  [default: 1]\n\n  --n-iterations\
+    \ INTEGER          How many iterations of the Leiden clustering\n            \
+    \                      algorithm to perform. -1 has the algorithm\n          \
+    \                        run until it reaches its optimal clustering.\n      \
+    \                            [default: -1]\n\n  --help                       \
+    \   Show this message and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/scanpy-scripts:0.3.3--pyhdfd78af_2
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: scanpy-find-cluster [OPTIONS] COMMAND [ARGS]...\n\n  Cluster cells\
+  \ into sub-populations.\n\nOptions:\n  --help  Show this message and exit.\n\nCommands:\n\
+  \  louvain  Find clusters by Louvain algorithm.\n  leiden   Find clusters by Leiden\
+  \ algorithm.\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/scanpy-scripts:0.3.3--pyhdfd78af_2

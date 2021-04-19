@@ -1,0 +1,112 @@
+!Command
+command:
+- scanpy-scale-data
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: scale.
+  description: --help                          Show this message and exit.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --input-format
+  description: "[anndata|loom]\nInput object format.  [default: anndata]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  - --output-format
+  description: "[anndata|loom|zarr]\nOutput object format.  [default: anndata]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  - --zarr-chunk-size
+  description: Chunk size for writing output in zarr
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --loom-write-obsm-varm
+  description: "Write obsm and varm to the Loom file?\n[default: False]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -X
+  - --export-mtx
+  description: "When specified, using it as prefix for\nexporting mtx files. If not\
+    \ empty and not\nending with \"/\" or \"_\", a \"_\" will be\nappended."
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --show-obj
+  description: "[stdout|stderr]      Print output object summary info to\nspecified\
+    \ stream."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-zero-center
+  description: "When set, omit zero-centering variables to\nallow efficient handling\
+    \ of sparse input."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --max-value
+  description: "When specified, clip to this value after\nscaling, otherwise do not\
+    \ clip"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --layer
+  description: If provided, which element of layers to
+  args: !OptionalFlagArg
+    names:
+    - TEXT
+    - TEXT...
+    separator: ','
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Usage: scanpy-scale-data [OPTIONS] <input_obj> <output_obj>\n\n  Scale\
+  \ data per gene.\n\n  <input_obj>:   input file in format specfied by --input-format\n\
+  \  <output_obj>:  output file in format specfied by --output-format\n\nOptions:\n\
+  \  -f, --input-format [anndata|loom]\n                                  Input object\
+  \ format.  [default: anndata]\n  -F, --output-format [anndata|loom|zarr]\n     \
+  \                             Output object format.  [default: anndata]\n  -z, --zarr-chunk-size\
+  \ INTEGER   Chunk size for writing output in zarr\n                            \
+  \      format.  [default: 1000]\n\n  -b, --loom-write-obsm-varm      Write obsm\
+  \ and varm to the Loom file?\n                                  [default: False]\n\
+  \n  -X, --export-mtx PATH           When specified, using it as prefix for\n   \
+  \                               exporting mtx files. If not empty and not\n    \
+  \                              ending with \"/\" or \"_\", a \"_\" will be\n   \
+  \                               appended.\n\n  --show-obj [stdout|stderr]      Print\
+  \ output object summary info to\n                                  specified stream.\n\
+  \n  --no-zero-center                When set, omit zero-centering variables to\n\
+  \                                  allow efficient handling of sparse input.\n\n\
+  \  -m, --max-value FLOAT           When specified, clip to this value after\n  \
+  \                                scaling, otherwise do not clip\n\n  -l, --layer\
+  \ TEXT[,TEXT...]      If provided, which element of layers to\n                \
+  \                  scale.\n\n  --help                          Show this message\
+  \ and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/scanpy-scripts:0.3.3--pyhdfd78af_2

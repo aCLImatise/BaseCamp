@@ -1,0 +1,56 @@
+!Command
+command:
+- parsec
+- utils
+- wait_on_invocation
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: unknown
+  description: 'Options:'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --exit_early
+  description: "Exit immediately after checking status rather than\nsleeping indefinitely"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --backoff_min
+  description: Minimum time to sleep between checks, in seconds.
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --backoff_max
+  description: Maximum time to sleep between checks, in seconds
+  args: !SimpleFlagArg
+    name: FLOAT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: parsec utils wait_on_invocation [OPTIONS] WORKFLOW_ID INVOCATION_ID\n\
+  \n  Given a workflow and invocation id, wait until that invocation is complete\n\
+  \  (or one or more steps have errored)\n\n  This will exit with the following error\
+  \ codes:\n\n  - 0: done successfully - 1: running (if --exit_early) - 2: failure\
+  \ - 3:\n  unknown\n\nOptions:\n  --exit_early         Exit immediately after checking\
+  \ status rather than\n                       sleeping indefinitely\n\n  --backoff_min\
+  \ FLOAT  Minimum time to sleep between checks, in seconds.\n  --backoff_max FLOAT\
+  \  Maximum time to sleep between checks, in seconds\n  -h, --help           Show\
+  \ this message and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0

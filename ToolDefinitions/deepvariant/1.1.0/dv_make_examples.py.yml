@@ -1,0 +1,482 @@
+!Command
+command:
+- dv_make_examples.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: read.
+  description: "(default: 'false')"
+- !Positional
+  optional: false
+  position: 0
+  name: alignments.
+  description: "(default: 'false')"
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --alt_aligned_pileup
+  description: ": <none|base_channels|diff_channels|rows>: Include\nalignments of\
+    \ reads against each candidate alternate allele in the pileup\nimage. \"none\"\
+    \ turns this feature off. The default is \"none\".Options: \"none\",\n\"base_channels\"\
+    ,\"diff_channels\", \"rows\"\n(default: 'none')"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --candidates
+  description: ": Candidate DeepVariantCalls in tfrecord format. For DEBUGGING.\n\
+    (default: '')"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --confident_regions
+  description: ": Regions that we are confident are hom-ref or a variant in\nBED format.\
+    \ In BED or other equivalent format, sorted or unsorted. Contig\nnames must match\
+    \ those of the reference genome.\n(default: '')"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --customized_classes_labeler_classes_list
+  description: ": A comma-separated list of strings\nthat defines customized class\
+    \ labels for variants. This is only set when\nlabeler_algorithm is customized_classes_labeler.\n\
+    (default: '')"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --customized_classes_labeler_info_field_name
+  description: ": The name from the INFO field of\nVCF where we should get the customized\
+    \ class labels from. This is only set\nwhen labeler_algorithm is customized_classes_labeler.\n\
+    (default: '')"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --downsample_fraction
+  description: ": If not 0.0 must be a value between 0.0 and 1.0. Reads\nwill be kept\
+    \ (randomly) with a probability of downsample_fraction from the\ninput BAM. This\
+    \ argument makes it easy to create examples as though the\ninput BAM had less\
+    \ coverage.\n(default: '0.0')\n(a number)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --logdir
+  - --examples
+  description: Output directory for examples
+  args: !SimpleFlagArg
+    name: LOGDIR
+- !Flag
+  optional: true
+  synonyms:
+  - --exclude_regions
+  description: ": Optional. Space-separated list of regions we want to\nexclude from\
+    \ processing. Elements can be region literals (e.g., chr20:10-20)\nor paths to\
+    \ BED/BEDPE files. Region exclusion happens after processing the\n--regions argument,\
+    \ so --region 20 --exclude_regions 20:100 does everything\non chromosome 20 excluding\
+    \ base 100\n(default: '')"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gvcf
+  description: ": Optional. Path where we should write gVCF records in TFRecord of\n\
+    Variant proto format.\n(default: '')"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gvcf_gq_binsize
+  description: ": Bin size in which to quantize gVCF genotype qualities.\nLarger bin\
+    \ size reduces the number of gVCF records at a loss of quality\ngranularity.\n\
+    (default: '5')\n(an integer)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --hts_block_size
+  description: ": Sets the htslib block size. Zero or negative uses default\nhtslib\
+    \ setting; larger values (e.g. 1M) may be beneficial for using remote\nfiles.\
+    \ Currently only applies to SAM/BAM reading.\n(default: '134217728')\n(an integer)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --hts_logging_level
+  description: ": Sets the htslib logging threshold.\n(default: 'HTS_LOG_WARNING')"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --labeler_algorithm
+  description: ": Algorithm to use to label examples in training mode. Must\nbe one\
+    \ of the LabelerAlgorithm enum values in the DeepVariantOptions proto.\n(default:\
+    \ 'haplotype_labeler')"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --logging_every_n_candidates
+  description: ": Print out the log every n candidates. The\nsmaller the number, the\
+    \ more frequent the logging information emits.\n(default: '100')\n(an integer)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max_reads_per_partition
+  description: ": The maximum number of reads per partition that we\nconsider before\
+    \ following processing such as sampling and realigner.\n(default: '1500')\n(an\
+    \ integer)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min_base_quality
+  description: ": Minimum base quality. This field indicates that we are\nenforcing\
+    \ a minimum base quality score for alternate alleles. Alternate\nalleles will\
+    \ only be considered if all bases in the allele have a quality\ngreater than min_base_quality.\n\
+    (default: '10')\n(an integer)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min_mapping_quality
+  description: ": By default, reads with any mapping quality are kept.\nSetting this\
+    \ field to a positive integer i will only keep reads that have a\nMAPQ >= i. Note\
+    \ this only applies to aligned reads.\n(default: '5')\n(an integer)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --mode
+  description: ': Mode to run. Must be one of calling or training'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --multi_allelic_mode
+  description: ': How to handle multi-allelic candidate variants. For'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --partition_size
+  description: ": The maximum number of basepairs we will allow in a region\nbefore\
+    \ splittingit into multiple smaller subregions.\n(default: '1000')\n(an integer)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pileup_image_height
+  description: ': Height for the pileup image. If 0, uses the default'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pileup_image_width
+  description: ": Width for the pileup image. If 0, uses the default width\n(default:\
+    \ '0')\n(an integer)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --population_vcfs
+  description: ": Optional. Tabix-indexed VCF file (or list of VCFs broken by\nchromosome),\
+    \ separated by comma or space, containing population allele\nfrequencies."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --proposed_variants
+  description: ": (Only used when --variant_caller=vcf_candidate_importer.)\nTabix-indexed\
+    \ VCF file containing the proposed positions and alts for\n`vcf_candidate_importer`.\
+    \ The GTs will be ignored.\n(default: '')"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --reads
+  description: ": Required. Aligned, sorted, indexed BAM file containing the reads\
+    \ we\nwant to call. Should be aligned to a reference genome compatible with --ref.\n\
+    Can provide multiple BAMs (comma-separated)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ref
+  description: ": Required. Genome reference to use. Must have an associated FAI index\
+    \ as\nwell. Supports text or gzipped references. Should match the reference used\n\
+    to align the BAM file provided to --reads."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --regions
+  description: ": Optional. Space-separated list of regions we want to process.\n\
+    Elements can be region literals (e.g., chr20:10-20) or paths to BED/BEDPE\nfiles.\n\
+    (default: '')"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --runtime_by_region
+  description: ": [optional] Output filename for a TSV file of runtimes and\nother\
+    \ stats by region. If examples are sharded, this should be sharded into\nthe same\
+    \ number of shards as the examples."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sample_name
+  description: ": Sample name to use for our sample_name in the output\nVariant/DeepVariantCall\
+    \ protos. If not specified, will be inferred from the\nheader information from\
+    \ --reads.\n(default: '')"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --select_variant_types
+  description: ": If provided, should be a whitespace-separated string\nof variant\
+    \ types to keep when generating examples. Permitted values are\n\"snps\", \"indels\"\
+    , \"multi-allelics\", and \"all\", which select bi-allelic snps,\nbi-allelic indels,\
+    \ multi-allelic variants of any type, and all variants,\nrespectively. Multiple\
+    \ selectors can be specified, so that\n--select_variant_types=\"snps indels\"\
+    \ would keep all bi-allelic SNPs and\nindels"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sequencing_type
+  description: ": A string representing input bam file sequencing_type.\nPermitted\
+    \ values are \"WGS\" and \"WES\", which represent whole genome\nsequencing and\
+    \ whole exome sequencing, respectively. This flag is\nexperimental and is not\
+    \ currently being used."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sort_by_haplotypes_sample_hp_tag
+  description: ": If set to > 0, reads with this HP tag will\nbe sorted on top. sort_by_haplotypes\
+    \ has to be set to True for this to work.\n(default: '0')\n(an integer)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --task
+  description: ": Task ID of this task\n(default: '0')\n(an integer)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --training_random_emit_ref_sites
+  description: ": If > 0, emit extra random reference examples\nwith this probability.\n\
+    (default: '0.0')\n(a number)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --truth_variants
+  description: ": Tabix-indexed VCF file containing the truth variant calls\nfor this\
+    \ labels which we use to label our examples.\n(default: '')"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --types_to_alt_align
+  description: ": <indels|all>: When --alt_aligned_pileup is not none,\nthis flag\
+    \ determines whether to align to the alt alleles only for indels or\nfor all variant\
+    \ types including SNPs. Ignored if --alt_aligned_pileup is\n\"none\". This flag\
+    \ is experimental and is not compatible with the pre-trained\nrelease models.\n\
+    (default: 'indels')"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --variant_caller
+  description: ": The caller to use to make examples. Must be one of the\nVariantCaller\
+    \ enum values in the DeepVariantOptions proto.\n(default: 'very_sensitive_caller')"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --vsc_min_count_indels
+  description: ": Indel alleles occurring at least this many times in\nour AlleleCount\
+    \ will be advanced as candidates.\n(default: '2')\n(an integer)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --vsc_min_count_snps
+  description: ": SNP alleles occurring at least this many times in our\nAlleleCount\
+    \ will be advanced as candidates.\n(default: '2')\n(an integer)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --vsc_min_fraction_indels
+  description: ": Indel alleles occurring at least this fraction of\nall counts in\
+    \ our AlleleCount will be advanced as candidates.\n(default: '0.06')\n(a number)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --vsc_min_fraction_snps
+  description: ": SNP alleles occurring at least this fraction of all\ncounts in our\
+    \ AlleleCount will be advanced as candidates.\n(default: '0.12')\n(a number)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --cores
+  - --sample
+  description: Sample name
+  args: !SimpleFlagArg
+    name: CORES
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Baseline DeepVariant arguments\nStep one of DeepVariant: creates tf.Example\
+  \ protos for training/calling.\nflags:\n\n/tmp/Bazel.runfiles_b2ojnge4/runfiles/com_google_deepvariant/deepvariant/make_examples.py:\n\
+  \  --[no]add_hp_channel: If true, add another channel to represent HP tags per\n\
+  \    read.\n    (default: 'false')\n  --[no]add_supporting_other_alt_color: If True,\
+  \ reads supporting an alt not\n    represented in the pileup image are colored differently\
+  \ for multiallelics.\n    (default: 'false')\n  --alt_aligned_pileup: <none|base_channels|diff_channels|rows>:\
+  \ Include\n    alignments of reads against each candidate alternate allele in the\
+  \ pileup\n    image. \"none\" turns this feature off. The default is \"none\".Options:\
+  \ \"none\",\n    \"base_channels\",\"diff_channels\", \"rows\"\n    (default: 'none')\n\
+  \  --candidates: Candidate DeepVariantCalls in tfrecord format. For DEBUGGING.\n\
+  \    (default: '')\n  --confident_regions: Regions that we are confident are hom-ref\
+  \ or a variant in\n    BED format. In BED or other equivalent format, sorted or\
+  \ unsorted. Contig\n    names must match those of the reference genome.\n    (default:\
+  \ '')\n  --customized_classes_labeler_classes_list: A comma-separated list of strings\n\
+  \    that defines customized class labels for variants. This is only set when\n\
+  \    labeler_algorithm is customized_classes_labeler.\n    (default: '')\n  --customized_classes_labeler_info_field_name:\
+  \ The name from the INFO field of\n    VCF where we should get the customized class\
+  \ labels from. This is only set\n    when labeler_algorithm is customized_classes_labeler.\n\
+  \    (default: '')\n  --downsample_fraction: If not 0.0 must be a value between\
+  \ 0.0 and 1.0. Reads\n    will be kept (randomly) with a probability of downsample_fraction\
+  \ from the\n    input BAM. This argument makes it easy to create examples as though\
+  \ the\n    input BAM had less coverage.\n    (default: '0.0')\n    (a number)\n\
+  \  --examples: Required. Path to write tf.Example protos in TFRecord format.\n \
+  \ --exclude_regions: Optional. Space-separated list of regions we want to\n    exclude\
+  \ from processing. Elements can be region literals (e.g., chr20:10-20)\n    or paths\
+  \ to BED/BEDPE files. Region exclusion happens after processing the\n    --regions\
+  \ argument, so --region 20 --exclude_regions 20:100 does everything\n    on chromosome\
+  \ 20 excluding base 100\n    (default: '')\n  --gvcf: Optional. Path where we should\
+  \ write gVCF records in TFRecord of\n    Variant proto format.\n    (default: '')\n\
+  \  --gvcf_gq_binsize: Bin size in which to quantize gVCF genotype qualities.\n \
+  \   Larger bin size reduces the number of gVCF records at a loss of quality\n  \
+  \  granularity.\n    (default: '5')\n    (an integer)\n  --hts_block_size: Sets\
+  \ the htslib block size. Zero or negative uses default\n    htslib setting; larger\
+  \ values (e.g. 1M) may be beneficial for using remote\n    files. Currently only\
+  \ applies to SAM/BAM reading.\n    (default: '134217728')\n    (an integer)\n  --hts_logging_level:\
+  \ Sets the htslib logging threshold.\n    (default: 'HTS_LOG_WARNING')\n  --[no]keep_duplicates:\
+  \ If True, keep duplicate reads.\n    (default: 'false')\n  --[no]keep_secondary_alignments:\
+  \ If True, keep reads marked as secondary\n    alignments.\n    (default: 'false')\n\
+  \  --[no]keep_supplementary_alignments: If True, keep reads marked as\n    supplementary\
+  \ alignments.\n    (default: 'false')\n  --labeler_algorithm: Algorithm to use to\
+  \ label examples in training mode. Must\n    be one of the LabelerAlgorithm enum\
+  \ values in the DeepVariantOptions proto.\n    (default: 'haplotype_labeler')\n\
+  \  --logging_every_n_candidates: Print out the log every n candidates. The\n   \
+  \ smaller the number, the more frequent the logging information emits.\n    (default:\
+  \ '100')\n    (an integer)\n  --max_reads_per_partition: The maximum number of reads\
+  \ per partition that we\n    consider before following processing such as sampling\
+  \ and realigner.\n    (default: '1500')\n    (an integer)\n  --min_base_quality:\
+  \ Minimum base quality. This field indicates that we are\n    enforcing a minimum\
+  \ base quality score for alternate alleles. Alternate\n    alleles will only be\
+  \ considered if all bases in the allele have a quality\n    greater than min_base_quality.\n\
+  \    (default: '10')\n    (an integer)\n  --min_mapping_quality: By default, reads\
+  \ with any mapping quality are kept.\n    Setting this field to a positive integer\
+  \ i will only keep reads that have a\n    MAPQ >= i. Note this only applies to aligned\
+  \ reads.\n    (default: '5')\n    (an integer)\n  --mode: Mode to run. Must be one\
+  \ of calling or training\n  --multi_allelic_mode: How to handle multi-allelic candidate\
+  \ variants. For\n    DEBUGGING\n    (default: '')\n  --[no]parse_sam_aux_fields:\
+  \ If True, auxiliary fields of the SAM/BAM/CRAM\n    records are parsed. By default\
+  \ this flag is None. This flag will be\n    automatically turned on if other flags\
+  \ need it (e.g., sort_by_haplotypes).\n    If it is explicitly set by the user (either\
+  \ True or False), the user-\n    specified value will be used.\n  --partition_size:\
+  \ The maximum number of basepairs we will allow in a region\n    before splittingit\
+  \ into multiple smaller subregions.\n    (default: '1000')\n    (an integer)\n \
+  \ --pileup_image_height: Height for the pileup image. If 0, uses the default\n \
+  \   height\n    (default: '0')\n    (an integer)\n  --pileup_image_width: Width\
+  \ for the pileup image. If 0, uses the default width\n    (default: '0')\n    (an\
+  \ integer)\n  --population_vcfs: Optional. Tabix-indexed VCF file (or list of VCFs\
+  \ broken by\n    chromosome), separated by comma or space, containing population\
+  \ allele\n    frequencies.\n  --proposed_variants: (Only used when --variant_caller=vcf_candidate_importer.)\n\
+  \    Tabix-indexed VCF file containing the proposed positions and alts for\n   \
+  \ `vcf_candidate_importer`. The GTs will be ignored.\n    (default: '')\n  --reads:\
+  \ Required. Aligned, sorted, indexed BAM file containing the reads we\n    want\
+  \ to call. Should be aligned to a reference genome compatible with --ref.\n    Can\
+  \ provide multiple BAMs (comma-separated).\n  --[no]realign_reads: If True, locally\
+  \ realign reads before calling variants.\n    Reads longer than 500 bp are never\
+  \ realigned.\n    (default: 'true')\n  --ref: Required. Genome reference to use.\
+  \ Must have an associated FAI index as\n    well. Supports text or gzipped references.\
+  \ Should match the reference used\n    to align the BAM file provided to --reads.\n\
+  \  --regions: Optional. Space-separated list of regions we want to process.\n  \
+  \  Elements can be region literals (e.g., chr20:10-20) or paths to BED/BEDPE\n \
+  \   files.\n    (default: '')\n  --runtime_by_region: [optional] Output filename\
+  \ for a TSV file of runtimes and\n    other stats by region. If examples are sharded,\
+  \ this should be sharded into\n    the same number of shards as the examples.\n\
+  \  --sample_name: Sample name to use for our sample_name in the output\n    Variant/DeepVariantCall\
+  \ protos. If not specified, will be inferred from the\n    header information from\
+  \ --reads.\n    (default: '')\n  --select_variant_types: If provided, should be\
+  \ a whitespace-separated string\n    of variant types to keep when generating examples.\
+  \ Permitted values are\n    \"snps\", \"indels\", \"multi-allelics\", and \"all\"\
+  , which select bi-allelic snps,\n    bi-allelic indels, multi-allelic variants of\
+  \ any type, and all variants,\n    respectively. Multiple selectors can be specified,\
+  \ so that\n    --select_variant_types=\"snps indels\" would keep all bi-allelic\
+  \ SNPs and\n    indels\n  --sequencing_type: A string representing input bam file\
+  \ sequencing_type.\n    Permitted values are \"WGS\" and \"WES\", which represent\
+  \ whole genome\n    sequencing and whole exome sequencing, respectively. This flag\
+  \ is\n    experimental and is not currently being used.\n  --[no]sort_by_haplotypes:\
+  \ If True, reads are sorted by haplotypes (using HP\n    tag), parse_sam_aux_fields\
+  \ has to be set for this to work.\n    (default: 'false')\n  --sort_by_haplotypes_sample_hp_tag:\
+  \ If set to > 0, reads with this HP tag will\n    be sorted on top. sort_by_haplotypes\
+  \ has to be set to True for this to work.\n    (default: '0')\n    (an integer)\n\
+  \  --task: Task ID of this task\n    (default: '0')\n    (an integer)\n  --training_random_emit_ref_sites:\
+  \ If > 0, emit extra random reference examples\n    with this probability.\n   \
+  \ (default: '0.0')\n    (a number)\n  --truth_variants: Tabix-indexed VCF file containing\
+  \ the truth variant calls\n    for this labels which we use to label our examples.\n\
+  \    (default: '')\n  --types_to_alt_align: <indels|all>: When --alt_aligned_pileup\
+  \ is not none,\n    this flag determines whether to align to the alt alleles only\
+  \ for indels or\n    for all variant types including SNPs. Ignored if --alt_aligned_pileup\
+  \ is\n    \"none\". This flag is experimental and is not compatible with the pre-trained\n\
+  \    release models.\n    (default: 'indels')\n  --[no]use_allele_frequency: If\
+  \ True, add another channel for pileup images to\n    represent allele frequency\
+  \ information gathered from population callsets.\n    (default: 'false')\n  --[no]use_original_quality_scores:\
+  \ If True, base quality scores are read from\n    OQ tag.\n    (default: 'false')\n\
+  \  --[no]use_ref_for_cram: If true, use the --ref argument as the reference file\n\
+  \    for the CRAM file passed to --reads.  In this case, it is required that the\n\
+  \    reference file be located on a local POSIX filesystem. To disable, specify\n\
+  \    --nouse_ref_for_cram.\n    (default: 'true')\n  --variant_caller: The caller\
+  \ to use to make examples. Must be one of the\n    VariantCaller enum values in\
+  \ the DeepVariantOptions proto.\n    (default: 'very_sensitive_caller')\n  --vsc_min_count_indels:\
+  \ Indel alleles occurring at least this many times in\n    our AlleleCount will\
+  \ be advanced as candidates.\n    (default: '2')\n    (an integer)\n  --vsc_min_count_snps:\
+  \ SNP alleles occurring at least this many times in our\n    AlleleCount will be\
+  \ advanced as candidates.\n    (default: '2')\n    (an integer)\n  --vsc_min_fraction_indels:\
+  \ Indel alleles occurring at least this fraction of\n    all counts in our AlleleCount\
+  \ will be advanced as candidates.\n    (default: '0.06')\n    (a number)\n  --vsc_min_fraction_snps:\
+  \ SNP alleles occurring at least this fraction of all\n    counts in our AlleleCount\
+  \ will be advanced as candidates.\n    (default: '0.12')\n    (a number)\n  --[no]write_run_info:\
+  \ If True, write out a MakeExamplesRunInfo proto besides\n    our examples in text_format.\n\
+  \    (default: 'false')\n\nTry --helpfull to get a list of all flags.\n\n\nWrapper\
+  \ arguments\nusage: dv_make_examples.py [--cores CORES] --sample SAMPLE --ref REF\
+  \ --reads\n                           READS [--regions REGIONS] --logdir LOGDIR\n\
+  \                           --examples EXAMPLES [--gvcf GVCF] [-h]\n\nDeepVariant\
+  \ make_examples wrapper\n\noptional arguments:\n  --cores CORES\n  --sample SAMPLE\
+  \      Sample name\n  --ref REF            Reference genome\n  --reads READS   \
+  \     Input BAM file\n  --regions REGIONS    Genomic region to process\n  --logdir\
+  \ LOGDIR\n  --examples EXAMPLES  Output directory for examples\n  --gvcf GVCF  \
+  \        Output directory for gvcf files. Generates output files\n             \
+  \          as {{gvcf}}/{{sample}}.gvcf.tfrecord@{{cores}}.gz\n  -h, --help\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/deepvariant:1.1.0--py36hf3e76ba_0

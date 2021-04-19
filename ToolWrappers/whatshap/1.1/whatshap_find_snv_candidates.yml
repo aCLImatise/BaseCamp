@@ -1,0 +1,112 @@
+!Command
+command:
+- whatshap
+- find_snv_candidates
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: REF
+  description: FASTA with reference genome
+- !Positional
+  optional: false
+  position: 1
+  name: BAM
+  description: BAM file
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --minabs
+  description: 'Minimum absolute ALT depth to call a SNP (default: 3).'
+  args: !SimpleFlagArg
+    name: MIN_ABS
+- !Flag
+  optional: true
+  synonyms:
+  - --minrel
+  description: "Minimum relative ALT depth to call a SNP (default:\n0.25)."
+  args: !SimpleFlagArg
+    name: MIN_REL
+- !Flag
+  optional: true
+  synonyms:
+  - --multi-allelics
+  description: "Also output multi-allelic sites, if not given only the\nbest ALT allele\
+    \ is reported (if unique)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sample
+  description: "Put this sample column into VCF (default: output\nsites-only VCF)."
+  args: !SimpleFlagArg
+    name: SAMPLE
+- !Flag
+  optional: true
+  synonyms:
+  - --chromosome
+  description: "Name of chromosome to process. If not given, all\nchromosomes are\
+    \ processed."
+  args: !SimpleFlagArg
+    name: CHROMOSOME
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: Output VCF file.
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - --pacbio
+  description: Input is PacBio. Sets minrel=0.25 and minabs=3.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --nanopore
+  description: Input is Nanopore. Sets minrel=0.4 and minabs=3.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --illumina
+  description: Input is Illumina. Sets minrel=0.25 and minabs=3.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: whatshap find_snv_candidates [-h] [--minabs MIN_ABS] [--minrel\
+  \ MIN_REL]\n                                    [--multi-allelics] [--sample SAMPLE]\n\
+  \                                    [--chromosome CHROMOSOME] [-o OUTPUT]\n   \
+  \                                 [--pacbio | --nanopore | --illumina]\n       \
+  \                             REF BAM\n\nGenerate candidate SNP positions.\n\npositional\
+  \ arguments:\n  REF                   FASTA with reference genome\n  BAM       \
+  \            BAM file\n\noptional arguments:\n  -h, --help            show this\
+  \ help message and exit\n  --minabs MIN_ABS      Minimum absolute ALT depth to call\
+  \ a SNP (default: 3).\n  --minrel MIN_REL      Minimum relative ALT depth to call\
+  \ a SNP (default:\n                        0.25).\n  --multi-allelics      Also\
+  \ output multi-allelic sites, if not given only the\n                        best\
+  \ ALT allele is reported (if unique).\n  --sample SAMPLE       Put this sample column\
+  \ into VCF (default: output\n                        sites-only VCF).\n  --chromosome\
+  \ CHROMOSOME\n                        Name of chromosome to process. If not given,\
+  \ all\n                        chromosomes are processed.\n  -o OUTPUT, --output\
+  \ OUTPUT\n                        Output VCF file.\n  --pacbio              Input\
+  \ is PacBio. Sets minrel=0.25 and minabs=3.\n  --nanopore            Input is Nanopore.\
+  \ Sets minrel=0.4 and minabs=3.\n  --illumina            Input is Illumina. Sets\
+  \ minrel=0.25 and minabs=3.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/whatshap:1.1--py39h7cff6ad_0

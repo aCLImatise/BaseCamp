@@ -1,0 +1,503 @@
+!Command
+command:
+- blast2rma
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: Input
+  description: -i, --in [string(s)]                 Input BLAST file[s] (.gz ok).
+    Mandatory option.
+- !Positional
+  optional: false
+  position: 1
+  name: Output
+  description: -o, --out [string(s)]                Output file(s), one for each input
+    file, or a directory. Mandatory option.
+- !Positional
+  optional: false
+  position: 2
+  name: Reads
+  description: '-p, --paired                         Reads are paired. Default value:
+    false.'
+- !Positional
+  optional: false
+  position: 3
+  name: Parameters
+  description: '-lg, --longReads                     Parse and analyse as long reads.
+    Default value: false.'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --format
+  description: '[string]                Input file format. Mandatory option. Legal
+    values: Unknown, DAA, BlastText, BlastXML, BlastTab, LastMAF, RapSearch2Aln, IlluminaReporter,
+    RDPAssignmentDetails, RDPStandalone, Mothur, SAM, References_as_FastA'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -bm
+  - --blastMode
+  description: '[string]            Blast mode. Default value: Unknown Legal values:
+    Unknown, BlastN, BlastP, BlastX, Classifier'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reads
+  description: '[string(s)]              Reads file(s) (fasta or fastq, .gz ok).'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -mdf
+  - --metaDataFile
+  description: '[string(s)]     Files containing metadata to be included in RMA6 files.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --useCompression
+  description: 'Compress reads and matches in RMA file (smaller files, longer to generate.
+    Default value: true.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ps
+  - --pairedSuffixLength
+  description: '[number]   Length of name suffix used to distinguish between name
+    of read and its mate. Default value: 0.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -pof
+  - --pairedReadsInOneFile
+  description: 'Are paired reads in one file (usually they are in two). Default value:
+    false.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --maxMatchesPerRead
+  description: '[number]     Max matches per read. Default value: 100.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -class
+  - --classify
+  description: 'Run classification algorithm. Default value: true.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ms
+  - --minScore
+  description: '[number]             Min score. Default value: 50.0.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -me
+  - --maxExpected
+  description: '[number]          Max expected. Default value: 0.01.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -mpi
+  - --minPercentIdentity
+  description: '[number]   Min percent identity. Default value: 0.0.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -top
+  - --topPercent
+  description: '[number]          Top percent. Default value: 10.0.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -supp
+  - --minSupportPercent
+  description: '[number]   Min support as percent of assigned reads (0==off). Default
+    value: 0.05.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -sup
+  - --minSupport
+  description: '[number]          Min support (0==off). Default value: 0.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -mrc
+  - --minPercentReadCover
+  description: '[number]   Min percent of read length to be covered by alignments.
+    Default value: 0.0.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -mrefc
+  - --minPercentReferenceCover
+  description: '[number]   Min percent of reference length to be covered by alignments.
+    Default value: 0.0.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -mrl
+  - --minReadLength
+  description: '[number]       Minimum read length. Default value: 0.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -alg
+  - --lcaAlgorithm
+  description: '[string]        Set the LCA algorithm to use for taxonomic assignment.
+    Default value: naive Legal values: naive, weighted, longReads'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -lcp
+  - --lcaCoveragePercent
+  description: '[number]   Set the percent for the LCA to cover. Default value: 100.0.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -ram
+  - --readAssignmentMode
+  description: '[string]   Set the read assignment mode. Default value: alignedBases
+    in long read mode, readCount else'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -cf
+  - --conFile
+  description: '[string]              File of contaminant taxa (one Id or name per
+    line).'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -mdb
+  - --mapDB
+  description: '[string]               MEGAN mapping db (file megan-map.db).'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -on
+  - --only
+  description: '[string(s)]              Use only named classifications (if not set:
+    use all).'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -tn
+  - --parseTaxonNames
+  description: 'Parse taxon names. Default value: true.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -a2t
+  - --acc2taxa
+  description: '[string]            Accessopm-to-Taxonomy mapping file.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s2t
+  - --syn2taxa
+  description: '[string]            Synonyms-to-Taxonomy mapping file.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t4t
+  - --tags4taxonomy
+  description: '[string]       Tags for taxonomy id parsing (must set to activate
+    id parsing).'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -a2ec
+  - --acc2ec
+  description: '[string]             Accession-to-EC mapping file.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s2ec
+  - --syn2ec
+  description: '[string]             Synonyms-to-EC mapping file.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t4ec
+  - --tags4ec
+  description: '[string]            Tags for EC id parsing (must set to activate id
+    parsing).'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -a2eggnog
+  - --acc2eggnog
+  description: '[string]     Accession-to-EGGNOG mapping file.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s2eggnog
+  - --syn2eggnog
+  description: '[string]     Synonyms-to-EGGNOG mapping file.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t4eggnog
+  - --tags4eggnog
+  description: '[string]    Tags for EGGNOG id parsing (must set to activate id parsing).'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -a2gtdb
+  - --acc2gtdb
+  description: '[string]         Accession-to-GTDB mapping file.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s2gtdb
+  - --syn2gtdb
+  description: '[string]         Synonyms-to-GTDB mapping file.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t4gtdb
+  - --tags4gtdb
+  description: '[string]        Tags for GTDB id parsing (must set to activate id
+    parsing).'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -a2interpro2go
+  - --acc2interpro2go
+  description: '[string]   Accession-to-INTERPRO2GO mapping file.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s2interpro2go
+  - --syn2interpro2go
+  description: '[string]   Synonyms-to-INTERPRO2GO mapping file.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t4interpro2go
+  - --tags4interpro2go
+  description: '[string]   Tags for INTERPRO2GO id parsing (must set to activate id
+    parsing).'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -a2kegg
+  - --acc2kegg
+  description: '[string]         Accession-to-KEGG mapping file.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s2kegg
+  - --syn2kegg
+  description: '[string]         Synonyms-to-KEGG mapping file.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t4kegg
+  - --tags4kegg
+  description: '[string]        Tags for KEGG id parsing (must set to activate id
+    parsing).'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -a2seed
+  - --acc2seed
+  description: '[string]         Accession-to-SEED mapping file.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s2seed
+  - --syn2seed
+  description: '[string]         Synonyms-to-SEED mapping file.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t4seed
+  - --tags4seed
+  description: '[string]        Tags for SEED id parsing (must set to activate id
+    parsing).'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -fwa
+  - --firstWordIsAccession
+  description: "First word in reference header is accession number (set to 'true'\
+    \ for NCBI-nr downloaded Sep 2016 or later). Default value: true."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -atags
+  - --accessionTags
+  description: "[string(s)]   List of accession tags. Default value(s): 'gb|' 'ref|'."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: '[number]               Number of threads. Default value: 8.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -tsm
+  - --tempStoreInMemory
+  description: 'Temporary storage in memory for SQLITE. Default value: false.'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -tsd
+  - --tempStoreDir
+  description: '[string]        Temporary storage directory for SQLITE (if not in-memory).'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: 'Echo commandline options and be verbose. Default value: false.'
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show program usage and quit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Error: JavaFX detected no fonts! Please refer to release notes for proper\
+  \ font configuration\nSYNOPSIS\n\tBlast2RMA [options]\nDESCRIPTION\n\tComputes MEGAN\
+  \ RMA files from  BLAST (or similar) files\nOPTIONS\n Input  \n\t-i, --in [string(s)]\
+  \                 Input BLAST file[s] (.gz ok). Mandatory option.\n\t-f, --format\
+  \ [string]                Input file format. Mandatory option. Legal values: Unknown,\
+  \ DAA, BlastText, BlastXML, BlastTab, LastMAF, RapSearch2Aln, IlluminaReporter,\
+  \ RDPAssignmentDetails, RDPStandalone, Mothur, SAM, References_as_FastA\n\t-bm,\
+  \ --blastMode [string]            Blast mode. Default value: Unknown Legal values:\
+  \ Unknown, BlastN, BlastP, BlastX, Classifier\n\t-r, --reads [string(s)]       \
+  \       Reads file(s) (fasta or fastq, .gz ok). \n\t-mdf, --metaDataFile [string(s)]\
+  \     Files containing metadata to be included in RMA6 files. \n Output  \n\t-o,\
+  \ --out [string(s)]                Output file(s), one for each input file, or a\
+  \ directory. Mandatory option.\n\t-c, --useCompression                 Compress\
+  \ reads and matches in RMA file (smaller files, longer to generate. Default value:\
+  \ true.\n Reads  \n\t-p, --paired                         Reads are paired. Default\
+  \ value: false.\n\t-ps, --pairedSuffixLength [number]   Length of name suffix used\
+  \ to distinguish between name of read and its mate. Default value: 0.\n\t-pof, --pairedReadsInOneFile\
+  \         Are paired reads in one file (usually they are in two). Default value:\
+  \ false.\n Parameters  \n\t-lg, --longReads                     Parse and analyse\
+  \ as long reads. Default value: false.\n\t-m, --maxMatchesPerRead [number]     Max\
+  \ matches per read. Default value: 100.\n\t-class, --classify                  \
+  \ Run classification algorithm. Default value: true.\n\t-ms, --minScore [number]\
+  \             Min score. Default value: 50.0.\n\t-me, --maxExpected [number]   \
+  \       Max expected. Default value: 0.01.\n\t-mpi, --minPercentIdentity [number]\
+  \   Min percent identity. Default value: 0.0.\n\t-top, --topPercent [number]   \
+  \       Top percent. Default value: 10.0.\n\t-supp, --minSupportPercent [number]\
+  \   Min support as percent of assigned reads (0==off). Default value: 0.05.\n\t\
+  -sup, --minSupport [number]          Min support (0==off). Default value: 0.\n\t\
+  -mrc, --minPercentReadCover [number]   Min percent of read length to be covered\
+  \ by alignments. Default value: 0.0.\n\t-mrefc, --minPercentReferenceCover [number]\
+  \   Min percent of reference length to be covered by alignments. Default value:\
+  \ 0.0.\n\t-mrl, --minReadLength [number]       Minimum read length. Default value:\
+  \ 0.\n\t-alg, --lcaAlgorithm [string]        Set the LCA algorithm to use for taxonomic\
+  \ assignment. Default value: naive Legal values: naive, weighted, longReads\n\t\
+  -lcp, --lcaCoveragePercent [number]   Set the percent for the LCA to cover. Default\
+  \ value: 100.0.\n\t-ram, --readAssignmentMode [string]   Set the read assignment\
+  \ mode. Default value: alignedBases in long read mode, readCount else\n\t-cf, --conFile\
+  \ [string]              File of contaminant taxa (one Id or name per line). \n Classification\
+  \ support:\n\t-mdb, --mapDB [string]               MEGAN mapping db (file megan-map.db).\
+  \ \n\t-on, --only [string(s)]              Use only named classifications (if not\
+  \ set: use all). \n Deprecated classification support:\n\t-tn, --parseTaxonNames\
+  \               Parse taxon names. Default value: true.\n\t-a2t, --acc2taxa [string]\
+  \            Accessopm-to-Taxonomy mapping file. \n\t-s2t, --syn2taxa [string] \
+  \           Synonyms-to-Taxonomy mapping file. \n\t-t4t, --tags4taxonomy [string]\
+  \       Tags for taxonomy id parsing (must set to activate id parsing). \n\t-a2ec,\
+  \ --acc2ec [string]             Accession-to-EC mapping file. \n\t-s2ec, --syn2ec\
+  \ [string]             Synonyms-to-EC mapping file. \n\t-t4ec, --tags4ec [string]\
+  \            Tags for EC id parsing (must set to activate id parsing). \n\t-a2eggnog,\
+  \ --acc2eggnog [string]     Accession-to-EGGNOG mapping file. \n\t-s2eggnog, --syn2eggnog\
+  \ [string]     Synonyms-to-EGGNOG mapping file. \n\t-t4eggnog, --tags4eggnog [string]\
+  \    Tags for EGGNOG id parsing (must set to activate id parsing). \n\t-a2gtdb,\
+  \ --acc2gtdb [string]         Accession-to-GTDB mapping file. \n\t-s2gtdb, --syn2gtdb\
+  \ [string]         Synonyms-to-GTDB mapping file. \n\t-t4gtdb, --tags4gtdb [string]\
+  \        Tags for GTDB id parsing (must set to activate id parsing). \n\t-a2interpro2go,\
+  \ --acc2interpro2go [string]   Accession-to-INTERPRO2GO mapping file. \n\t-s2interpro2go,\
+  \ --syn2interpro2go [string]   Synonyms-to-INTERPRO2GO mapping file. \n\t-t4interpro2go,\
+  \ --tags4interpro2go [string]   Tags for INTERPRO2GO id parsing (must set to activate\
+  \ id parsing). \n\t-a2kegg, --acc2kegg [string]         Accession-to-KEGG mapping\
+  \ file. \n\t-s2kegg, --syn2kegg [string]         Synonyms-to-KEGG mapping file.\
+  \ \n\t-t4kegg, --tags4kegg [string]        Tags for KEGG id parsing (must set to\
+  \ activate id parsing). \n\t-a2seed, --acc2seed [string]         Accession-to-SEED\
+  \ mapping file. \n\t-s2seed, --syn2seed [string]         Synonyms-to-SEED mapping\
+  \ file. \n\t-t4seed, --tags4seed [string]        Tags for SEED id parsing (must\
+  \ set to activate id parsing). \n\t-fwa, --firstWordIsAccession         First word\
+  \ in reference header is accession number (set to 'true' for NCBI-nr downloaded\
+  \ Sep 2016 or later). Default value: true.\n\t-atags, --accessionTags [string(s)]\
+  \   List of accession tags. Default value(s): 'gb|' 'ref|'.\n Other:\n\t-t, --threads\
+  \ [number]               Number of threads. Default value: 8.\n\t-tsm, --tempStoreInMemory\
+  \            Temporary storage in memory for SQLITE. Default value: false.\n\t-tsd,\
+  \ --tempStoreDir [string]        Temporary storage directory for SQLITE (if not\
+  \ in-memory). \n\t-v, --verbose                        Echo commandline options\
+  \ and be verbose. Default value: false.\n\t-h, --help                          \
+  \ Show program usage and quit.\nAUTHOR(s)\n\tDaniel H. Huson.\nVERSION\n\tMEGAN\
+  \ Community Edition (version 6.21.2, built 14 Mar 2021).\nCopyright (C) 2020 Daniel\
+  \ H. Huson. This program comes with ABSOLUTELY NO WARRANTY..\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/megan:6.21.2--h9ee0642_0
