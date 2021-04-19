@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Int, String, File
+
+Fba_Extract_V0_1_0 = CommandToolBuilder(tool="fba_extract", base_command=["fba", "extract"], inputs=[ToolInput(tag="in_read_one", input_type=Int(optional=True), prefix="--read1", doc=InputDocumentation(doc="specify fastq file for read 1")), ToolInput(tag="in_read_two", input_type=Int(optional=True), prefix="--read2", doc=InputDocumentation(doc="specify fastq file for read 2")), ToolInput(tag="in_whitelist", input_type=String(optional=True), prefix="--whitelist", doc=InputDocumentation(doc="specify a whitelist of accepted cell barcodes")), ToolInput(tag="in_feature_ref", input_type=String(optional=True), prefix="--feature_ref", doc=InputDocumentation(doc="specify a reference of feature barcodes")), ToolInput(tag="in_output", input_type=File(optional=True), prefix="--output", doc=InputDocumentation(doc="specify an output file")), ToolInput(tag="in_read_one_coords", input_type=Int(optional=True), prefix="--read1_coords", doc=InputDocumentation(doc="specify coordinates 'start,end' of read 1 to search.\nFor example, '0,16': starts at 0, stops at 15.\nNucleotide bases outside the range will be masked as\nlower case in output. Default (0,16)")), ToolInput(tag="in_read_two_coords", input_type=Int(optional=True), prefix="--read2_coords", doc=InputDocumentation(doc="see '-r1_coords'")), ToolInput(tag="in_cb_mismatches", input_type=Int(optional=True), prefix="--cb_mismatches", doc=InputDocumentation(doc="specify cell barcode mismatching threshold. Default\n(1)")), ToolInput(tag="in_fb_mismatches", input_type=Int(optional=True), prefix="--fb_mismatches", doc=InputDocumentation(doc="specify feature barcode mismatching threshold. Default\n(1)")), ToolInput(tag="in_cb_num_n_threshold", input_type=Int(optional=True), prefix="--cb_num_n_threshold", doc=InputDocumentation(doc="specify maximum number of ambiguous nucleotides\nallowed for read 1. Default (3)")), ToolInput(tag="in_fb_num_n_threshold", input_type=Int(optional=True), prefix="--fb_num_n_threshold", doc=InputDocumentation(doc="specify maximum number of ambiguous nucleotides\nallowed for read 2. Default (3)\n"))], outputs=[ToolOutput(tag="out_output", output_type=File(optional=True), selector=InputSelector(input_to_select="in_output", type_hint=File()), doc=OutputDocumentation(doc="specify an output file"))], container="quay.io/biocontainers/fba:0.0.10.post1--pyhdfd78af_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Fba_Extract_V0_1_0().translate("wdl")
+

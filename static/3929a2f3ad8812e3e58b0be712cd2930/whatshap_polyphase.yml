@@ -1,0 +1,207 @@
+!Command
+command:
+- whatshap
+- polyphase
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: VCF
+  description: "VCF file with variants to be phased (can be gzip-\ncompressed)"
+- !Positional
+  optional: false
+  position: 1
+  name: PHASEINPUT
+  description: BAM or CRAM with sequencing reads.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --ploidy
+  - -p
+  description: The ploidy of the sample(s). Argument is required.
+  args: !SimpleFlagArg
+    name: PLOIDY
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: "Output VCF file. Add .gz to the file name to get\ncompressed output.\
+    \ If omitted, use standard output."
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - --reference
+  - -r
+  description: "Reference file. Provide this to detect alleles through\nre-alignment.\
+    \ If no index (.fai) exists, it will be\ncreated"
+  args: !SimpleFlagArg
+    name: FASTA
+- !Flag
+  optional: true
+  synonyms:
+  - --tag
+  description: "Store phasing information with PS tag (standardized)\nor HP tag (used\
+    \ by GATK ReadBackedPhasing) (default:\nPS)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      PS:
+      HP:
+- !Flag
+  optional: true
+  synonyms:
+  - --output-read-list
+  description: Write reads that have been used for phasing to FILE.
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --mapping-quality
+  - --mapq
+  description: 'Minimum mapping quality (default: 20)'
+  args: !SimpleFlagArg
+    name: QUAL
+- !Flag
+  optional: true
+  synonyms:
+  - --indels
+  description: 'Also phase indels (default: do not phase indels)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ignore-read-groups
+  description: "Ignore read groups in BAM/CRAM header and assume all\nreads come from\
+    \ the same sample."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --include-haploid-sets
+  description: "Include the phase set information for every single\nhaplotype in a\
+    \ custom VCF format field 'HS'."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sample
+  description: "Name of a sample to phase. If not given, all samples\nin the input\
+    \ VCF are phased. Can be used multiple\ntimes."
+  args: !SimpleFlagArg
+    name: SAMPLE
+- !Flag
+  optional: true
+  synonyms:
+  - --chromosome
+  description: "Name of chromosome to phase. If not given, all\nchromosomes in the\
+    \ input VCF are phased. Can be used\nmultiple times."
+  args: !SimpleFlagArg
+    name: CHROMOSOME
+- !Flag
+  optional: true
+  synonyms:
+  - --verify-genotypes
+  description: "Verify input genotypes by re-typing them using the\ngiven reads."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min-overlap
+  description: "Minimum required read overlap for internal read\nclustering stage\
+    \ (default: 2)."
+  args: !SimpleFlagArg
+    name: OVERLAP
+- !Flag
+  optional: true
+  synonyms:
+  - --ce-refinements
+  description: "Maximum number of refinement steps for internal read\nclustering stage\
+    \ (default: 1)."
+  args: !SimpleFlagArg
+    name: REFINEMENTS
+- !Flag
+  optional: true
+  synonyms:
+  - --block-cut-sensitivity
+  - -B
+  description: "Strategy to determine block borders. 0 yields the\nlongest blocks\
+    \ with more switch errors, 5 has the\nshortest blocks with lowest switch error\
+    \ rate\n(default: 4)."
+  args: !SimpleFlagArg
+    name: SENSITIVITY
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  - -t
+  description: "Maximum number of CPU threads used (default: 1).\n"
+  args: !SimpleFlagArg
+    name: THREADS
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: whatshap polyphase [-h] [-o OUTPUT] [--reference FASTA] [--tag\
+  \ {PS,HP}]\n                          [--output-read-list FILE] [--mapping-quality\
+  \ QUAL]\n                          [--indels] [--ignore-read-groups]\n         \
+  \                 [--include-haploid-sets] [--sample SAMPLE]\n                 \
+  \         [--chromosome CHROMOSOME] [--verify-genotypes]\n                     \
+  \     --ploidy PLOIDY [--min-overlap OVERLAP]\n                          [--ce-refinements\
+  \ REFINEMENTS]\n                          [--block-cut-sensitivity SENSITIVITY]\n\
+  \                          [--threads THREADS]\n                          VCF [PHASEINPUT\
+  \ ...]\n\nPhase variants in a polyploid VCF using a clustering+threading algorithm.\n\
+  \nRead a VCF and one or more files with phase information (BAM/CRAM or VCF phased\n\
+  blocks) and phase the variants. The phased VCF is written to standard output.\n\
+  Requires to specify a ploidy for the phasable input. Allows to specify a block\n\
+  cut sensitivity to balance out length and accuracy of phased blocks.\n\npositional\
+  \ arguments:\n  VCF                   VCF file with variants to be phased (can be\
+  \ gzip-\n                        compressed)\n  PHASEINPUT            BAM or CRAM\
+  \ with sequencing reads.\n\noptional arguments:\n  -h, --help            show this\
+  \ help message and exit\n  -o OUTPUT, --output OUTPUT\n                        Output\
+  \ VCF file. Add .gz to the file name to get\n                        compressed\
+  \ output. If omitted, use standard output.\n  --reference FASTA, -r FASTA\n    \
+  \                    Reference file. Provide this to detect alleles through\n  \
+  \                      re-alignment. If no index (.fai) exists, it will be\n   \
+  \                     created\n  --tag {PS,HP}         Store phasing information\
+  \ with PS tag (standardized)\n                        or HP tag (used by GATK ReadBackedPhasing)\
+  \ (default:\n                        PS)\n  --output-read-list FILE\n          \
+  \              Write reads that have been used for phasing to FILE.\n\nInput pre-processing,\
+  \ selection, and filtering:\n  --mapping-quality QUAL, --mapq QUAL\n           \
+  \             Minimum mapping quality (default: 20)\n  --indels              Also\
+  \ phase indels (default: do not phase indels)\n  --ignore-read-groups  Ignore read\
+  \ groups in BAM/CRAM header and assume all\n                        reads come from\
+  \ the same sample.\n  --include-haploid-sets\n                        Include the\
+  \ phase set information for every single\n                        haplotype in a\
+  \ custom VCF format field 'HS'.\n  --sample SAMPLE       Name of a sample to phase.\
+  \ If not given, all samples\n                        in the input VCF are phased.\
+  \ Can be used multiple\n                        times.\n  --chromosome CHROMOSOME\n\
+  \                        Name of chromosome to phase. If not given, all\n      \
+  \                  chromosomes in the input VCF are phased. Can be used\n      \
+  \                  multiple times.\n  --verify-genotypes    Verify input genotypes\
+  \ by re-typing them using the\n                        given reads.\n\nParameters\
+  \ for phasing steps:\n  --ploidy PLOIDY, -p PLOIDY\n                        The\
+  \ ploidy of the sample(s). Argument is required.\n  --min-overlap OVERLAP\n    \
+  \                    Minimum required read overlap for internal read\n         \
+  \               clustering stage (default: 2).\n  --ce-refinements REFINEMENTS\n\
+  \                        Maximum number of refinement steps for internal read\n\
+  \                        clustering stage (default: 1).\n  --block-cut-sensitivity\
+  \ SENSITIVITY, -B SENSITIVITY\n                        Strategy to determine block\
+  \ borders. 0 yields the\n                        longest blocks with more switch\
+  \ errors, 5 has the\n                        shortest blocks with lowest switch\
+  \ error rate\n                        (default: 4).\n  --threads THREADS, -t THREADS\n\
+  \                        Maximum number of CPU threads used (default: 1).\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/whatshap:1.1--py39h7cff6ad_0

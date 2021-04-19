@@ -1,0 +1,121 @@
+!Command
+command:
+- dfast_qc
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input_fasta
+  description: Input FASTA file (raw or gzipped) [required]
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out_dir
+  description: 'Output directory (default: OUT)'
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --taxid
+  description: "NCBI taxid for completeness check. Use '--show_taxon'\nfor available\
+    \ taxids. (Default: Automatically inferred\nfrom taxonomy check)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --ref_dir
+  description: 'DQC reference directory (default: DQC_REFERENCE_DIR)'
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --prefix
+  description: 'Prefix for output (for debugging use, default: None)'
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --num_threads
+  description: 'Number of threads for parallel processing (default: 1)'
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --disable_tc
+  description: Disable taxonomy check using ANI
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --disable_cc
+  description: Disable completeness check using CheckM
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --force
+  description: Force overwriting result
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: Debug mode
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --show_taxon
+  description: Show available taxa for competeness check
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Show program version
+  args: !EmptyFlagArg {}
+help_text: "usage: dfast_qc [-h] [--version] [-i PATH] [-o PATH] [-t INT] [-r PATH]\n\
+  \                [-p STR] [-n INT] [--disable_tc | --disable_cc] [--force]\n   \
+  \             [--debug] [--show_taxon]\n\nDFAST_QC: Taxonomy and completeness check\
+  \ (ver. 0.2.8)\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  --version             Show program version\n  -i PATH, --input_fasta\
+  \ PATH\n                        Input FASTA file (raw or gzipped) [required]\n \
+  \ -o PATH, --out_dir PATH\n                        Output directory (default: OUT)\n\
+  \  -t INT, --taxid INT   NCBI taxid for completeness check. Use '--show_taxon'\n\
+  \                        for available taxids. (Default: Automatically inferred\n\
+  \                        from taxonomy check)\n  -r PATH, --ref_dir PATH\n     \
+  \                   DQC reference directory (default: DQC_REFERENCE_DIR)\n  -p STR,\
+  \ --prefix STR  Prefix for output (for debugging use, default: None)\n  -n INT,\
+  \ --num_threads INT\n                        Number of threads for parallel processing\
+  \ (default: 1)\n  --disable_tc          Disable taxonomy check using ANI\n  --disable_cc\
+  \          Disable completeness check using CheckM\n  --force               Force\
+  \ overwriting result\n  --debug               Debug mode\n  --show_taxon       \
+  \   Show available taxa for competeness check\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/dfast_qc:0.2.8--hdfd78af_0

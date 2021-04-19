@@ -1,0 +1,54 @@
+!Command
+command:
+- parsec
+- libraries
+- wait_for_dataset
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: library
+  description: 'Options:'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --maxwait
+  description: "Total time (in seconds) to wait for the dataset state to\nbecome terminal.\
+    \ If the dataset state is not terminal\nwithin this time, a ``DatasetTimeoutException``\
+    \ will be\nthrown.  [default: 12000]"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --interval
+  description: "Time (in seconds) to wait between 2 consecutive checks.\n[default:\
+    \ 3]"
+  args: !SimpleFlagArg
+    name: FLOAT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: parsec libraries wait_for_dataset [OPTIONS] LIBRARY_ID DATASET_ID\n\
+  \n  Wait until the library dataset state is terminal ('ok', 'empty', 'error',\n\
+  \  'discarded' or 'failed_metadata').\n\n  Output:\n\n      A dictionary containing\
+  \ information about the dataset in the\n      library\n\nOptions:\n  --maxwait FLOAT\
+  \   Total time (in seconds) to wait for the dataset state to\n                 \
+  \   become terminal. If the dataset state is not terminal\n                    within\
+  \ this time, a ``DatasetTimeoutException`` will be\n                    thrown.\
+  \  [default: 12000]\n\n  --interval FLOAT  Time (in seconds) to wait between 2 consecutive\
+  \ checks.\n                    [default: 3]\n\n  -h, --help        Show this message\
+  \ and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0

@@ -1,0 +1,90 @@
+!Command
+command:
+- run_prokka
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: number of threads to use (default=1)
+  args: !SimpleFlagArg
+    name: N_CPU
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: print additional output
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  description: input fasta files
+  args: !RepeatFlagArg
+    name: INPUT_FILES
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out_dir
+  description: location of an output directory
+  args: !SimpleFlagArg
+    name: OUTPUT_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --force
+  description: overwrite old commands
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --add_prokka_cmds
+  description: "additional commands to supply to Prokka (these are not\nchecked!)"
+  args: !SimpleFlagArg
+    name: ADD_PROKKA_CMDS
+- !Flag
+  optional: true
+  synonyms:
+  - --num_training
+  description: "number of genomes to use in training prodigal\n(default=10)\n"
+  args: !SimpleFlagArg
+    name: NUM_TRAINING
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: run_prokka [-h] -i INPUT_FILES [INPUT_FILES ...] -o OUTPUT_DIR\n\
+  \                  [--force] [--add_prokka_cmds ADD_PROKKA_CMDS]\n             \
+  \     [--num_training NUM_TRAINING] [-t N_CPU] [--verbose]\n                  [--version]\n\
+  \nRe-run gene finding and annotation\n\noptional arguments:\n  -h, --help      \
+  \      show this help message and exit\n  -t N_CPU, --threads N_CPU\n          \
+  \              number of threads to use (default=1)\n  --verbose             print\
+  \ additional output\n  --version             show program's version number and exit\n\
+  \nInput/output:\n  -i INPUT_FILES [INPUT_FILES ...], --input INPUT_FILES [INPUT_FILES\
+  \ ...]\n                        input fasta files\n  -o OUTPUT_DIR, --out_dir OUTPUT_DIR\n\
+  \                        location of an output directory\n  --force            \
+  \   overwrite old commands\n\nProkka/prodigal command:\n  --add_prokka_cmds ADD_PROKKA_CMDS\n\
+  \                        additional commands to supply to Prokka (these are not\n\
+  \                        checked!)\n  --num_training NUM_TRAINING\n            \
+  \            number of genomes to use in training prodigal\n                   \
+  \     (default=10)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/panaroo:1.2.7--pyhdfd78af_0

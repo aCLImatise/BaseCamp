@@ -1,0 +1,424 @@
+!Command
+command:
+- samplot
+- plot
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --titles
+  description: "Space-delimited list of plot titles. Use quote marks\nto include spaces\
+    \ (i.e. \"plot 1\" \"plot 2\")"
+  args: !RepeatFlagArg
+    name: TITLES
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reference
+  description: Reference file for CRAM, required if CRAM files used
+  args: !SimpleFlagArg
+    name: REFERENCE
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  - --z
+  description: Number of stdevs from the mean (default 4)
+  args: !SimpleFlagArg
+    name: Z
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --bams
+  description: Space-delimited list of BAM/CRAM file names
+  args: !RepeatFlagArg
+    name: BAMS
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output_file
+  description: "Output file name/type. Defaults to\n{type}_{chrom}_{start}_{end}.png"
+  args: !SimpleFlagArg
+    name: OUTPUT_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --output_dir
+  description: "Output directory name. Defaults to working dir.\nIgnored if --output_file\
+    \ is set"
+  args: !SimpleFlagArg
+    name: OUTPUT_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --start
+  description: "Start position of region/variant (add multiple for\ntranslocation/BND\
+    \ events)"
+  args: !SimpleFlagArg
+    name: START
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --end
+  description: "End position of region/variant (add multiple for\ntranslocation/BND\
+    \ events)"
+  args: !SimpleFlagArg
+    name: END
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --chrom
+  description: Chromosome (add multiple for translocation/BND events)
+  args: !SimpleFlagArg
+    name: CHROM
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --window
+  description: "Window size (count of bases to include in view),\ndefault(0.5 * len)"
+  args: !SimpleFlagArg
+    name: WINDOW
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --max_depth
+  description: Max number of normal pairs to plot
+  args: !SimpleFlagArg
+    name: MAX_DEPTH
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --sv_type
+  description: "SV type. If omitted, plot is created without variant\nbar"
+  args: !SimpleFlagArg
+    name: SV_TYPE
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --transcript_file
+  description: GFF3 of transcripts
+  args: !SimpleFlagArg
+    name: TRANSCRIPT_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --transcript_filename
+  description: Name for transcript track
+  args: !SimpleFlagArg
+    name: TRANSCRIPT_FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --max_coverage_points
+  description: "number of points to plot in coverage axis (downsampled\nfrom region\
+    \ size for speed)"
+  args: !SimpleFlagArg
+    name: MAX_COVERAGE_POINTS
+- !Flag
+  optional: true
+  synonyms:
+  - -A
+  - --annotation_files
+  description: "Space-delimited list of bed.gz tabixed files of\nannotations (such\
+    \ as repeats, mappability, etc.)"
+  args: !RepeatFlagArg
+    name: ANNOTATION_FILES
+- !Flag
+  optional: true
+  synonyms:
+  - --annotation_filenames
+  description: "Space-delimited list of names for the tracks in\n--annotation_files"
+  args: !RepeatFlagArg
+    name: ANNOTATION_FILENAMES
+- !Flag
+  optional: true
+  synonyms:
+  - --coverage_tracktype
+  description: type of track to use for low MAPQ coverage plot.
+  args: !ChoiceFlagArg
+    choices: !!set
+      stack:
+      none:
+      superimpose:
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --print_args
+  description: Print commandline arguments
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -H
+  - --plot_height
+  description: Plot height
+  args: !SimpleFlagArg
+    name: PLOT_HEIGHT
+- !Flag
+  optional: true
+  synonyms:
+  - -W
+  - --plot_width
+  description: Plot width
+  args: !SimpleFlagArg
+    name: PLOT_WIDTH
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --include_mqual
+  description: "Min mapping quality of reads to be included in plot\n(default 1)"
+  args: !SimpleFlagArg
+    name: INCLUDE_MQUAL
+- !Flag
+  optional: true
+  synonyms:
+  - --separate_mqual
+  description: "coverage from reads with MAPQ <= separate_mqual\nplotted in lighter\
+    \ grey. To disable, pass in negative\nvalue"
+  args: !SimpleFlagArg
+    name: SEPARATE_MQUAL
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --json_only
+  description: Create only the json file, not the image plot
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --start_ci
+  description: "confidence intervals of SV first breakpoint (distance\nfrom the breakpoint).\
+    \ Must be a comma-separated pair\nof ints (i.e. 20,40)"
+  args: !SimpleFlagArg
+    name: START_CI
+- !Flag
+  optional: true
+  synonyms:
+  - --end_ci
+  description: "confidence intervals of SV end breakpoint (distance\nfrom the breakpoint).\
+    \ Must be a comma-separated pair\nof ints (i.e. 20,40)"
+  args: !SimpleFlagArg
+    name: END_CI
+- !Flag
+  optional: true
+  synonyms:
+  - --long_read
+  description: "Min length of a read to be treated as a long-read\n(default 1000)"
+  args: !SimpleFlagArg
+    name: LONG_READ
+- !Flag
+  optional: true
+  synonyms:
+  - --ignore_hp
+  description: Choose to ignore HP tag in alignment files
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min_event_size
+  description: "Min size of an event in long-read CIGAR to include\n(default 20)"
+  args: !SimpleFlagArg
+    name: MIN_EVENT_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --xaxis_label_fontsize
+  description: Font size for X-axis labels (default 6)
+  args: !SimpleFlagArg
+    name: XAXIS_LABEL_FONTSIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --yaxis_label_fontsize
+  description: Font size for Y-axis labels (default 6)
+  args: !SimpleFlagArg
+    name: YAXIS_LABEL_FONTSIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --legend_fontsize
+  description: Font size for legend labels (default 6)
+  args: !SimpleFlagArg
+    name: LEGEND_FONTSIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --annotation_fontsize
+  description: Font size for annotation labels (default 6)
+  args: !SimpleFlagArg
+    name: ANNOTATION_FONTSIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --common_insert_size
+  description: Set common insert size for all plots
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --hide_annotation_labels
+  description: "Hide the label (fourth column text) from annotation\nfiles, useful\
+    \ for regions with many annotations"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --coverage_only
+  description: Hide all reads and show only coverage
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max_coverage
+  description: apply a maximum coverage cutoff. Unlimited by default
+  args: !SimpleFlagArg
+    name: MAX_COVERAGE
+- !Flag
+  optional: true
+  synonyms:
+  - --same_yaxis_scales
+  description: Set the scales of the Y axes to the max of all
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --marker_size
+  description: Size of marks on pairs and splits (default 3)
+  args: !SimpleFlagArg
+    name: MARKER_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --dpi
+  description: Dots per inches (pixel count, default 300)
+  args: !SimpleFlagArg
+    name: DPI
+- !Flag
+  optional: true
+  synonyms:
+  - --zoom
+  description: "Only show +- zoom amount around breakpoints, much\nfaster for large\
+    \ regions. Ignored if region smaller\nthan --zoom (default 500000)"
+  args: !SimpleFlagArg
+    name: ZOOM
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: Print debug statements
+  args: !SimpleFlagArg
+    name: DEBUG
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: samplot plot [-h] [-n TITLES [TITLES ...]] [-r REFERENCE] [-z Z]\
+  \ -b\n                    BAMS [BAMS ...] [-o OUTPUT_FILE] [--output_dir OUTPUT_DIR]\n\
+  \                    -s START -e END -c CHROM [-w WINDOW] [-d MAX_DEPTH]\n     \
+  \               [-t SV_TYPE] [-T TRANSCRIPT_FILE]\n                    [--transcript_filename\
+  \ TRANSCRIPT_FILENAME]\n                    [--max_coverage_points MAX_COVERAGE_POINTS]\n\
+  \                    [-A ANNOTATION_FILES [ANNOTATION_FILES ...]]\n            \
+  \        [--annotation_filenames ANNOTATION_FILENAMES [ANNOTATION_FILENAMES ...]]\n\
+  \                    [--coverage_tracktype {stack,superimpose,none}] [-a]\n    \
+  \                [-H PLOT_HEIGHT] [-W PLOT_WIDTH] [-q INCLUDE_MQUAL]\n         \
+  \           [--separate_mqual SEPARATE_MQUAL] [-j]\n                    [--start_ci\
+  \ START_CI] [--end_ci END_CI]\n                    [--long_read LONG_READ] [--ignore_hp]\n\
+  \                    [--min_event_size MIN_EVENT_SIZE]\n                    [--xaxis_label_fontsize\
+  \ XAXIS_LABEL_FONTSIZE]\n                    [--yaxis_label_fontsize YAXIS_LABEL_FONTSIZE]\n\
+  \                    [--legend_fontsize LEGEND_FONTSIZE]\n                    [--annotation_fontsize\
+  \ ANNOTATION_FONTSIZE]\n                    [--common_insert_size] [--hide_annotation_labels]\n\
+  \                    [--coverage_only] [--max_coverage MAX_COVERAGE]\n         \
+  \           [--same_yaxis_scales] [--marker_size MARKER_SIZE]\n                \
+  \    [--dpi DPI] [--zoom ZOOM] [--debug DEBUG]\n\noptional arguments:\n  -h, --help\
+  \            show this help message and exit\n  -n TITLES [TITLES ...], --titles\
+  \ TITLES [TITLES ...]\n                        Space-delimited list of plot titles.\
+  \ Use quote marks\n                        to include spaces (i.e. \"plot 1\" \"\
+  plot 2\")\n  -r REFERENCE, --reference REFERENCE\n                        Reference\
+  \ file for CRAM, required if CRAM files used\n  -z Z, --z Z           Number of\
+  \ stdevs from the mean (default 4)\n  -b BAMS [BAMS ...], --bams BAMS [BAMS ...]\n\
+  \                        Space-delimited list of BAM/CRAM file names\n  -o OUTPUT_FILE,\
+  \ --output_file OUTPUT_FILE\n                        Output file name/type. Defaults\
+  \ to\n                        {type}_{chrom}_{start}_{end}.png\n  --output_dir OUTPUT_DIR\n\
+  \                        Output directory name. Defaults to working dir.\n     \
+  \                   Ignored if --output_file is set\n  -s START, --start START\n\
+  \                        Start position of region/variant (add multiple for\n  \
+  \                      translocation/BND events)\n  -e END, --end END     End position\
+  \ of region/variant (add multiple for\n                        translocation/BND\
+  \ events)\n  -c CHROM, --chrom CHROM\n                        Chromosome (add multiple\
+  \ for translocation/BND events)\n  -w WINDOW, --window WINDOW\n                \
+  \        Window size (count of bases to include in view),\n                    \
+  \    default(0.5 * len)\n  -d MAX_DEPTH, --max_depth MAX_DEPTH\n               \
+  \         Max number of normal pairs to plot\n  -t SV_TYPE, --sv_type SV_TYPE\n\
+  \                        SV type. If omitted, plot is created without variant\n\
+  \                        bar\n  -T TRANSCRIPT_FILE, --transcript_file TRANSCRIPT_FILE\n\
+  \                        GFF3 of transcripts\n  --transcript_filename TRANSCRIPT_FILENAME\n\
+  \                        Name for transcript track\n  --max_coverage_points MAX_COVERAGE_POINTS\n\
+  \                        number of points to plot in coverage axis (downsampled\n\
+  \                        from region size for speed)\n  -A ANNOTATION_FILES [ANNOTATION_FILES\
+  \ ...], --annotation_files ANNOTATION_FILES [ANNOTATION_FILES ...]\n           \
+  \             Space-delimited list of bed.gz tabixed files of\n                \
+  \        annotations (such as repeats, mappability, etc.)\n  --annotation_filenames\
+  \ ANNOTATION_FILENAMES [ANNOTATION_FILENAMES ...]\n                        Space-delimited\
+  \ list of names for the tracks in\n                        --annotation_files\n\
+  \  --coverage_tracktype {stack,superimpose,none}\n                        type of\
+  \ track to use for low MAPQ coverage plot.\n  -a, --print_args      Print commandline\
+  \ arguments\n  -H PLOT_HEIGHT, --plot_height PLOT_HEIGHT\n                     \
+  \   Plot height\n  -W PLOT_WIDTH, --plot_width PLOT_WIDTH\n                    \
+  \    Plot width\n  -q INCLUDE_MQUAL, --include_mqual INCLUDE_MQUAL\n           \
+  \             Min mapping quality of reads to be included in plot\n            \
+  \            (default 1)\n  --separate_mqual SEPARATE_MQUAL\n                  \
+  \      coverage from reads with MAPQ <= separate_mqual\n                       \
+  \ plotted in lighter grey. To disable, pass in negative\n                      \
+  \  value\n  -j, --json_only       Create only the json file, not the image plot\n\
+  \  --start_ci START_CI   confidence intervals of SV first breakpoint (distance\n\
+  \                        from the breakpoint). Must be a comma-separated pair\n\
+  \                        of ints (i.e. 20,40)\n  --end_ci END_CI       confidence\
+  \ intervals of SV end breakpoint (distance\n                        from the breakpoint).\
+  \ Must be a comma-separated pair\n                        of ints (i.e. 20,40)\n\
+  \  --long_read LONG_READ\n                        Min length of a read to be treated\
+  \ as a long-read\n                        (default 1000)\n  --ignore_hp        \
+  \   Choose to ignore HP tag in alignment files\n  --min_event_size MIN_EVENT_SIZE\n\
+  \                        Min size of an event in long-read CIGAR to include\n  \
+  \                      (default 20)\n  --xaxis_label_fontsize XAXIS_LABEL_FONTSIZE\n\
+  \                        Font size for X-axis labels (default 6)\n  --yaxis_label_fontsize\
+  \ YAXIS_LABEL_FONTSIZE\n                        Font size for Y-axis labels (default\
+  \ 6)\n  --legend_fontsize LEGEND_FONTSIZE\n                        Font size for\
+  \ legend labels (default 6)\n  --annotation_fontsize ANNOTATION_FONTSIZE\n     \
+  \                   Font size for annotation labels (default 6)\n  --common_insert_size\
+  \  Set common insert size for all plots\n  --hide_annotation_labels\n          \
+  \              Hide the label (fourth column text) from annotation\n           \
+  \             files, useful for regions with many annotations\n  --coverage_only\
+  \       Hide all reads and show only coverage\n  --max_coverage MAX_COVERAGE\n \
+  \                       apply a maximum coverage cutoff. Unlimited by default\n\
+  \  --same_yaxis_scales   Set the scales of the Y axes to the max of all\n  --marker_size\
+  \ MARKER_SIZE\n                        Size of marks on pairs and splits (default\
+  \ 3)\n  --dpi DPI             Dots per inches (pixel count, default 300)\n  --zoom\
+  \ ZOOM           Only show +- zoom amount around breakpoints, much\n           \
+  \             faster for large regions. Ignored if region smaller\n            \
+  \            than --zoom (default 500000)\n  --debug DEBUG         Print debug statements\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/samplot:1.1.6--pyh5e36f6f_0

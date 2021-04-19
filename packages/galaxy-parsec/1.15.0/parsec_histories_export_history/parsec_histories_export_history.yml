@@ -1,0 +1,70 @@
+!Command
+command:
+- parsec
+- histories
+- export_history
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: HISTORY_ID
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --gzip
+  description: "create .tar.gz archive if ``True``, else .tar  [default:\nTrue]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --include_hidden
+  description: whether to include hidden datasets in the export
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --include_deleted
+  description: whether to include deleted datasets in the export
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --wait
+  description: "if ``True``, block until the export is ready; else,\nreturn immediately"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --maxwait
+  description: "Total time (in seconds) to wait for the export to become\nready. When\
+    \ set, implies that ``wait`` is ``True``."
+  args: !SimpleFlagArg
+    name: FLOAT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: parsec histories export_history [OPTIONS] HISTORY_ID\n\n  Start\
+  \ a job to create an export archive for the given history.\n\n  Output:\n\n    \
+  \  ``jeha_id`` of the export, or empty if ``wait`` is ``False``\n      and the export\
+  \ is not ready.\n\nOptions:\n  --gzip             create .tar.gz archive if ``True``,\
+  \ else .tar  [default:\n                     True]\n\n  --include_hidden   whether\
+  \ to include hidden datasets in the export\n  --include_deleted  whether to include\
+  \ deleted datasets in the export\n  --wait             if ``True``, block until\
+  \ the export is ready; else,\n                     return immediately\n\n  --maxwait\
+  \ FLOAT    Total time (in seconds) to wait for the export to become\n          \
+  \           ready. When set, implies that ``wait`` is ``True``.\n\n  -h, --help\
+  \         Show this message and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0

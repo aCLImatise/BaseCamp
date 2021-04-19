@@ -1,0 +1,346 @@
+!Command
+command:
+- whatshap
+- phase
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: VCF
+  description: "VCF or BCF file with variants to be phased (can be\ngzip-compressed)"
+- !Positional
+  optional: false
+  position: 1
+  name: PHASEINPUT
+  description: "BAM, CRAM, VCF or BCF file(s) with phase information,\neither through\
+    \ sequencing reads (BAM, CRAM) or through\nphased blocks (VCF, BCF)"
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: "Output VCF file. Add .gz to the file name to get\ncompressed output.\
+    \ If omitted, use standard output."
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - --reference
+  - -r
+  description: "Reference file. Provide this to detect alleles through\nre-alignment.\
+    \ If no index (.fai) exists, it will be\ncreated"
+  args: !SimpleFlagArg
+    name: FASTA
+- !Flag
+  optional: true
+  synonyms:
+  - --no-reference
+  description: "Detect alleles without requiring a reference, at the\nexpense of phasing\
+    \ quality (in particular for long\nreads)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --tag
+  description: "Store phasing information with PS tag (standardized)\nor HP tag (used\
+    \ by GATK ReadBackedPhasing) (default:\nPS)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      PS:
+      HP:
+- !Flag
+  optional: true
+  synonyms:
+  - --output-read-list
+  description: Write reads that have been used for phasing to FILE.
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --algorithm
+  description: 'Phasing algorithm to use (default: whatshap)'
+  args: !ChoiceFlagArg
+    choices: !!set
+      whatshap:
+      hapchat:
+- !Flag
+  optional: true
+  synonyms:
+  - --merge-reads
+  description: "Merge reads which are likely to come from the same\nhaplotype (default:\
+    \ do not merge reads)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --internal-downsampling
+  description: "Coverage reduction parameter in the internal core\nphasing algorithm.\
+    \ Higher values increase runtime\n*exponentially* while possibly improving phasing\n\
+    quality marginally. Avoid using this in the normal\ncase! (default: 15)"
+  args: !SimpleFlagArg
+    name: COVERAGE
+- !Flag
+  optional: true
+  synonyms:
+  - --mapping-quality
+  - --mapq
+  description: 'Minimum mapping quality (default: 20)'
+  args: !SimpleFlagArg
+    name: QUAL
+- !Flag
+  optional: true
+  synonyms:
+  - --indels
+  description: 'Also phase indels (default: do not phase indels)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ignore-read-groups
+  description: "Ignore read groups in BAM/CRAM header and assume all\nreads come from\
+    \ the same sample."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sample
+  description: "Name of a sample to phase. If not given, all samples\nin the input\
+    \ VCF are phased. Can be used multiple\ntimes."
+  args: !SimpleFlagArg
+    name: SAMPLE
+- !Flag
+  optional: true
+  synonyms:
+  - --chromosome
+  description: "Name of chromosome to phase. If not given, all\nchromosomes in the\
+    \ input VCF are phased. Can be used\nmultiple times."
+  args: !SimpleFlagArg
+    name: CHROMOSOME
+- !Flag
+  optional: true
+  synonyms:
+  - --error-rate
+  description: "The probability that a nucleotide is wrong in read\nmerging model\
+    \ (default: 0.15)."
+  args: !SimpleFlagArg
+    name: READ_MERGING_ERROR_RATE
+- !Flag
+  optional: true
+  synonyms:
+  - --maximum-error-rate
+  description: "The maximum error rate of any edge of the read merging\ngraph before\
+    \ discarding it (default: 0.25)."
+  args: !SimpleFlagArg
+    name: READ_MERGING_MAX_ERROR_RATE
+- !Flag
+  optional: true
+  synonyms:
+  - --threshold
+  description: "The threshold of the ratio between the probabilities\nthat a pair\
+    \ of reads come from the same haplotype and\ndifferent haplotypes in the read\
+    \ merging model\n(default: 1000000)."
+  args: !SimpleFlagArg
+    name: READ_MERGING_POSITIVE_THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - --negative-threshold
+  description: "The threshold of the ratio between the probabilities\nthat a pair\
+    \ of reads come from different haplotypes\nand the same haplotype in the read\
+    \ merging model\n(default: 1000)."
+  args: !SimpleFlagArg
+    name: READ_MERGING_NEGATIVE_THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - --distrust-genotypes
+  description: "Allow switching variants from hetero- to homozygous in\nan optimal\
+    \ solution (see documentation)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --include-homozygous
+  description: "Also work on homozygous variants, which might be\nturned to heterozygous"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --default-gq
+  description: "Default genotype quality used as cost of changing a\ngenotype when\
+    \ no genotype likelihoods are available\n(default 30)"
+  args: !SimpleFlagArg
+    name: DEFAULT_GQ
+- !Flag
+  optional: true
+  synonyms:
+  - --gl-regularizer
+  description: "Constant (float) to be used to regularize genotype\nlikelihoods read\
+    \ from input VCF (default None)."
+  args: !SimpleFlagArg
+    name: GL_REGULARIZER
+- !Flag
+  optional: true
+  synonyms:
+  - --changed-genotype-list
+  description: Write list of changed genotypes to FILE.
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --ped
+  description: "/FAM         Use pedigree information in PED file to improve\nphasing\
+    \ (switches to PedMEC algorithm). Columns 2, 3,\n4 must refer to child, mother,\
+    \ and father sample names\nas used in the VCF and BAM/CRAM. Other columns are\n\
+    ignored."
+  args: !SimpleFlagArg
+    name: PED
+- !Flag
+  optional: true
+  synonyms:
+  - --recombination-list
+  description: Write putative recombination events to FILE.
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --recombrate
+  description: "Recombination rate in cM/Mb (used with --ped). If\ngiven, a constant\
+    \ recombination rate is assumed\n(default: 1.26cM/Mb)."
+  args: !SimpleFlagArg
+    name: RECOMBRATE
+- !Flag
+  optional: true
+  synonyms:
+  - --genmap
+  description: "File with genetic map (used with --ped) to be used\ninstead of constant\
+    \ recombination rate, i.e. overrides\noption --recombrate."
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --no-genetic-haplotyping
+  description: "Do not merge blocks that are not connected by reads\n(i.e. solely\
+    \ based on genotype status). Default: when\nin --ped mode, merge all blocks that\
+    \ contain at least\none homozygous genotype in at least one individual\ninto one\
+    \ block."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --use-ped-samples
+  description: "Only work on samples mentioned in the provided PED\nfile.\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: whatshap phase [-h] [-o OUTPUT] [--reference FASTA] [--no-reference]\n\
+  \                      [--tag {PS,HP}] [--output-read-list FILE]\n             \
+  \         [--algorithm {whatshap,hapchat}] [--merge-reads]\n                   \
+  \   [--internal-downsampling COVERAGE]\n                      [--mapping-quality\
+  \ QUAL] [--indels]\n                      [--ignore-read-groups] [--sample SAMPLE]\n\
+  \                      [--chromosome CHROMOSOME]\n                      [--error-rate\
+  \ READ_MERGING_ERROR_RATE]\n                      [--maximum-error-rate READ_MERGING_MAX_ERROR_RATE]\n\
+  \                      [--threshold READ_MERGING_POSITIVE_THRESHOLD]\n         \
+  \             [--negative-threshold READ_MERGING_NEGATIVE_THRESHOLD]\n         \
+  \             [--distrust-genotypes] [--include-homozygous]\n                  \
+  \    [--default-gq DEFAULT_GQ]\n                      [--gl-regularizer GL_REGULARIZER]\n\
+  \                      [--changed-genotype-list FILE] [--ped PED/FAM]\n        \
+  \              [--recombination-list FILE] [--recombrate RECOMBRATE]\n         \
+  \             [--genmap FILE] [--no-genetic-haplotyping]\n                     \
+  \ [--use-ped-samples]\n                      VCF [PHASEINPUT ...]\n\nPhase variants\
+  \ in a VCF with the WhatsHap algorithm\n\nRead a VCF and one or more files with\
+  \ phase information (BAM/CRAM or VCF phased\nblocks) and phase the variants. The\
+  \ phased VCF is written to standard output.\n\npositional arguments:\n  VCF    \
+  \               VCF or BCF file with variants to be phased (can be\n           \
+  \             gzip-compressed)\n  PHASEINPUT            BAM, CRAM, VCF or BCF file(s)\
+  \ with phase information,\n                        either through sequencing reads\
+  \ (BAM, CRAM) or through\n                        phased blocks (VCF, BCF)\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  -o OUTPUT,\
+  \ --output OUTPUT\n                        Output VCF file. Add .gz to the file\
+  \ name to get\n                        compressed output. If omitted, use standard\
+  \ output.\n  --reference FASTA, -r FASTA\n                        Reference file.\
+  \ Provide this to detect alleles through\n                        re-alignment.\
+  \ If no index (.fai) exists, it will be\n                        created\n  --no-reference\
+  \        Detect alleles without requiring a reference, at the\n                \
+  \        expense of phasing quality (in particular for long\n                  \
+  \      reads)\n  --tag {PS,HP}         Store phasing information with PS tag (standardized)\n\
+  \                        or HP tag (used by GATK ReadBackedPhasing) (default:\n\
+  \                        PS)\n  --output-read-list FILE\n                      \
+  \  Write reads that have been used for phasing to FILE.\n  --algorithm {whatshap,hapchat}\n\
+  \                        Phasing algorithm to use (default: whatshap)\n\nInput pre-processing,\
+  \ selection and filtering:\n  --merge-reads         Merge reads which are likely\
+  \ to come from the same\n                        haplotype (default: do not merge\
+  \ reads)\n  --internal-downsampling COVERAGE\n                        Coverage reduction\
+  \ parameter in the internal core\n                        phasing algorithm. Higher\
+  \ values increase runtime\n                        *exponentially* while possibly\
+  \ improving phasing\n                        quality marginally. Avoid using this\
+  \ in the normal\n                        case! (default: 15)\n  --mapping-quality\
+  \ QUAL, --mapq QUAL\n                        Minimum mapping quality (default: 20)\n\
+  \  --indels              Also phase indels (default: do not phase indels)\n  --ignore-read-groups\
+  \  Ignore read groups in BAM/CRAM header and assume all\n                      \
+  \  reads come from the same sample.\n  --sample SAMPLE       Name of a sample to\
+  \ phase. If not given, all samples\n                        in the input VCF are\
+  \ phased. Can be used multiple\n                        times.\n  --chromosome CHROMOSOME\n\
+  \                        Name of chromosome to phase. If not given, all\n      \
+  \                  chromosomes in the input VCF are phased. Can be used\n      \
+  \                  multiple times.\n\nRead merging:\n  The options in this section\
+  \ are only active when --merge-reads is used\n\n  --error-rate READ_MERGING_ERROR_RATE\n\
+  \                        The probability that a nucleotide is wrong in read\n  \
+  \                      merging model (default: 0.15).\n  --maximum-error-rate READ_MERGING_MAX_ERROR_RATE\n\
+  \                        The maximum error rate of any edge of the read merging\n\
+  \                        graph before discarding it (default: 0.25).\n  --threshold\
+  \ READ_MERGING_POSITIVE_THRESHOLD\n                        The threshold of the\
+  \ ratio between the probabilities\n                        that a pair of reads\
+  \ come from the same haplotype and\n                        different haplotypes\
+  \ in the read merging model\n                        (default: 1000000).\n  --negative-threshold\
+  \ READ_MERGING_NEGATIVE_THRESHOLD\n                        The threshold of the\
+  \ ratio between the probabilities\n                        that a pair of reads\
+  \ come from different haplotypes\n                        and the same haplotype\
+  \ in the read merging model\n                        (default: 1000).\n\nGenotyping:\n\
+  \  These options are only used when --distrust-genotypes is used\n\n  --distrust-genotypes\
+  \  Allow switching variants from hetero- to homozygous in\n                    \
+  \    an optimal solution (see documentation).\n  --include-homozygous  Also work\
+  \ on homozygous variants, which might be\n                        turned to heterozygous\n\
+  \  --default-gq DEFAULT_GQ\n                        Default genotype quality used\
+  \ as cost of changing a\n                        genotype when no genotype likelihoods\
+  \ are available\n                        (default 30)\n  --gl-regularizer GL_REGULARIZER\n\
+  \                        Constant (float) to be used to regularize genotype\n  \
+  \                      likelihoods read from input VCF (default None).\n  --changed-genotype-list\
+  \ FILE\n                        Write list of changed genotypes to FILE.\n\nPedigree\
+  \ phasing:\n  --ped PED/FAM         Use pedigree information in PED file to improve\n\
+  \                        phasing (switches to PedMEC algorithm). Columns 2, 3,\n\
+  \                        4 must refer to child, mother, and father sample names\n\
+  \                        as used in the VCF and BAM/CRAM. Other columns are\n  \
+  \                      ignored.\n  --recombination-list FILE\n                 \
+  \       Write putative recombination events to FILE.\n  --recombrate RECOMBRATE\n\
+  \                        Recombination rate in cM/Mb (used with --ped). If\n   \
+  \                     given, a constant recombination rate is assumed\n        \
+  \                (default: 1.26cM/Mb).\n  --genmap FILE         File with genetic\
+  \ map (used with --ped) to be used\n                        instead of constant\
+  \ recombination rate, i.e. overrides\n                        option --recombrate.\n\
+  \  --no-genetic-haplotyping\n                        Do not merge blocks that are\
+  \ not connected by reads\n                        (i.e. solely based on genotype\
+  \ status). Default: when\n                        in --ped mode, merge all blocks\
+  \ that contain at least\n                        one homozygous genotype in at least\
+  \ one individual\n                        into one block.\n  --use-ped-samples \
+  \    Only work on samples mentioned in the provided PED\n                      \
+  \  file.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/whatshap:1.1--py39h7cff6ad_0

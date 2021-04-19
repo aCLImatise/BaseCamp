@@ -1,0 +1,301 @@
+!Command
+command:
+- mikado
+- serialise
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: building.
+  description: --no-shm              Force building the database on its final location,
+- !Positional
+  optional: false
+  position: 0
+  name: db
+  description: "Optional output database. Default: derived from\nconfiguration\n"
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --start-method
+  description: Multiprocessing start method.
+  args: !ChoiceFlagArg
+    choices: !!set
+      spawn:
+      fork:
+      forkserver:
+- !Flag
+  optional: true
+  synonyms:
+  - --shm
+  description: Use /dev/shm (if available) for faster database
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-force
+  description: "Flag. If set, do not drop the contents of an existing\nMikado DB before\
+    \ beginning the serialisation."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --force
+  description: "Flag. If set, an existing databse will be deleted\n(sqlite) or dropped\
+    \ (MySQL/PostGreSQL) before\nbeginning the serialisation."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -od
+  - --output-dir
+  description: 'Output directory. Default: current working directory'
+  args: !SimpleFlagArg
+    name: OUTPUT_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -lv
+  - --log-level
+  description: "Log level. Default: derived from the configuration; if\nabsent, INFO"
+  args: !ChoiceFlagArg
+    choices: !!set
+      INFO:
+      ERROR:
+      WARN:
+      DEBUG:
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  - --quiet
+  - --blast-loading-debug
+  description: "Flag. If set, Mikado will switch on the debug mode for\nthe XML/TSV\
+    \ loading."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --seed
+  description: 'Random seed number. Default: 0.'
+  args: !SimpleFlagArg
+    name: SEED
+- !Flag
+  optional: true
+  synonyms:
+  - --random-seed
+  description: "Generate a new random seed number (instead of the\ndefault of 0)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --orfs
+  description: ORF BED file(s), separated by commas
+  args: !SimpleFlagArg
+    name: ORFS
+- !Flag
+  optional: true
+  synonyms:
+  - --transcripts
+  description: "Transcript FASTA file(s) used for ORF calling and\nBLAST queries,\
+    \ separated by commas. If multiple files\nare given, they must be in the same\
+    \ order of the ORF\nfiles. E.g. valid command lines are:\n--transcript_fasta all_seqs1.fasta\
+    \ --orfs all_orfs.bed\n--transcript_fasta seq1.fasta,seq2.fasta --orfs\norfs1.bed,orf2.bed\
+    \ --transcript_fasta all_seqs.fasta\n--orfs orfs1.bed,orf2.bed These are invalid\
+    \ instead: #\nInverted order --transcript_fasta\nseq1.fasta,seq2.fasta --orfs\
+    \ orfs2.bed,orf1.bed #Two\ntranscript files, one ORF file --transcript_fasta\n\
+    seq1.fasta,seq2.fasta --orfs all_orfs.bed"
+  args: !SimpleFlagArg
+    name: TRANSCRIPTS
+- !Flag
+  optional: true
+  synonyms:
+  - -mr
+  - --max-regression
+  description: "\"Amount of sequence in the ORF (in %) to backtrack in\norder to find\
+    \ a valid START codon, if one is absent.\nDefault: None"
+  args: !SimpleFlagArg
+    name: MAX_REGRESSION
+- !Flag
+  optional: true
+  synonyms:
+  - --codon-table
+  description: "Codon table to use. Default: 0 (ie Standard, NCBI #1,\nbut only ATG\
+    \ is considered a valid start codon."
+  args: !SimpleFlagArg
+    name: CODON_TABLE
+- !Flag
+  optional: true
+  synonyms:
+  - -nsa
+  - --no-start-adjustment
+  description: "Disable the start adjustment algorithm. Useful when\nusing e.g. TransDecoder\
+    \ vs 5+."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max-target-seqs
+  description: Maximum number of target sequences.
+  args: !SimpleFlagArg
+    name: MAX_TARGET_SEQS
+- !Flag
+  optional: true
+  synonyms:
+  - -bt
+  - --blast-targets
+  - --blast_targets
+  description: Target sequences
+  args: !SimpleFlagArg
+    name: BLAST_TARGETS
+- !Flag
+  optional: true
+  synonyms:
+  - --xml
+  - --tsv
+  description: "BLAST file(s) to parse. They can be provided in three\nways: - a comma-separated\
+    \ list - as a base folder -\nusing bash-like name expansion (*,?, etc.). In this\n\
+    case, you have to enclose the filename pattern in\ndouble quotes. Multiple folders/file\
+    \ patterns can be\ngiven, separated by a comma. BLAST files must be\neither of\
+    \ two formats: - BLAST XML - BLAST tabular\nformat, with the following **custom**\
+    \ fields: qseqid\nsseqid pident length mismatch gapopen qstart qend\nsstart send\
+    \ evalue bitscore ppos btop"
+  args: !SimpleFlagArg
+    name: XML
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --procs
+  description: "Number of threads to use for analysing the BLAST\nfiles. This number\
+    \ should not be higher than the total\nnumber of XML files."
+  args: !SimpleFlagArg
+    name: PROCS
+- !Flag
+  optional: true
+  synonyms:
+  - --single-thread
+  description: "Force serialise to run with a single thread,\nirrespective of other\
+    \ configuration options."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --genome_fai
+  - --genome
+  - --junctions
+  - --external-scores
+  description: "Tabular file containing external scores for the\ntranscripts. Each\
+    \ column should have a distinct name,\nand transcripts have to be listed on the\
+    \ first column."
+  args: !SimpleFlagArg
+    name: GENOME_FAI
+- !Flag
+  optional: true
+  synonyms:
+  - -mo
+  - --max-objects
+  description: "Maximum number of objects to cache in memory before\ncommitting to\
+    \ the database. Default: 100,000 i.e.\napproximately 450MB RAM usage for Drosophila."
+  args: !SimpleFlagArg
+    name: MAX_OBJECTS
+- !Flag
+  optional: true
+  synonyms:
+  - --configuration
+  - --json-conf
+  - -l
+  description: "[LOG], --log [LOG]\nOptional log file. Default: stderr"
+  args: !SimpleFlagArg
+    name: CONFIGURATION
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: Mikado serialise [-h] [--start-method {fork,spawn,forkserver}]\n\
+  \                        [--shm | --no-shm] [--orfs ORFS]\n                    \
+  \    [--transcripts TRANSCRIPTS] [-mr MAX_REGRESSION]\n                        [--codon-table\
+  \ CODON_TABLE] [-nsa]\n                        [--max-target-seqs MAX_TARGET_SEQS]\n\
+  \                        [-bt BLAST_TARGETS] [--xml XML] [-p PROCS]\n          \
+  \              [--single-thread] [--genome_fai GENOME_FAI]\n                   \
+  \     [--genome GENOME] [--junctions JUNCTIONS]\n                        [--external-scores\
+  \ EXTERNAL_SCORES] [-mo MAX_OBJECTS]\n                        [--no-force | --force]\
+  \ [--configuration CONFIGURATION]\n                        [-l [LOG]] [-od OUTPUT_DIR]\n\
+  \                        [-lv {DEBUG,INFO,WARN,ERROR} | --verbose | --quiet | --blast-loading-debug]\n\
+  \                        [--seed SEED | --random-seed]\n                       \
+  \ [db]\n\noptional arguments:\n  -h, --help            show this help message and\
+  \ exit\n  --start-method {fork,spawn,forkserver}\n                        Multiprocessing\
+  \ start method.\n  --shm                 Use /dev/shm (if available) for faster\
+  \ database\n                        building.\n  --no-shm              Force building\
+  \ the database on its final location,\n                        even if /dev/shm\
+  \ is available.\n  --no-force            Flag. If set, do not drop the contents\
+  \ of an existing\n                        Mikado DB before beginning the serialisation.\n\
+  \  --force               Flag. If set, an existing databse will be deleted\n   \
+  \                     (sqlite) or dropped (MySQL/PostGreSQL) before\n          \
+  \              beginning the serialisation.\n  -od OUTPUT_DIR, --output-dir OUTPUT_DIR\n\
+  \                        Output directory. Default: current working directory\n\
+  \  -lv {DEBUG,INFO,WARN,ERROR}, --log-level {DEBUG,INFO,WARN,ERROR}\n          \
+  \              Log level. Default: derived from the configuration; if\n        \
+  \                absent, INFO\n  --verbose\n  --quiet\n  --blast-loading-debug\n\
+  \                        Flag. If set, Mikado will switch on the debug mode for\n\
+  \                        the XML/TSV loading.\n  --seed SEED           Random seed\
+  \ number. Default: 0.\n  --random-seed         Generate a new random seed number\
+  \ (instead of the\n                        default of 0)\n\n  --orfs ORFS      \
+  \     ORF BED file(s), separated by commas\n  --transcripts TRANSCRIPTS\n      \
+  \                  Transcript FASTA file(s) used for ORF calling and\n         \
+  \               BLAST queries, separated by commas. If multiple files\n        \
+  \                are given, they must be in the same order of the ORF\n        \
+  \                files. E.g. valid command lines are:\n                        --transcript_fasta\
+  \ all_seqs1.fasta --orfs all_orfs.bed\n                        --transcript_fasta\
+  \ seq1.fasta,seq2.fasta --orfs\n                        orfs1.bed,orf2.bed --transcript_fasta\
+  \ all_seqs.fasta\n                        --orfs orfs1.bed,orf2.bed These are invalid\
+  \ instead: #\n                        Inverted order --transcript_fasta\n      \
+  \                  seq1.fasta,seq2.fasta --orfs orfs2.bed,orf1.bed #Two\n      \
+  \                  transcript files, one ORF file --transcript_fasta\n         \
+  \               seq1.fasta,seq2.fasta --orfs all_orfs.bed\n  -mr MAX_REGRESSION,\
+  \ --max-regression MAX_REGRESSION\n                        \"Amount of sequence\
+  \ in the ORF (in %) to backtrack in\n                        order to find a valid\
+  \ START codon, if one is absent.\n                        Default: None\n  --codon-table\
+  \ CODON_TABLE\n                        Codon table to use. Default: 0 (ie Standard,\
+  \ NCBI #1,\n                        but only ATG is considered a valid start codon.\n\
+  \  -nsa, --no-start-adjustment\n                        Disable the start adjustment\
+  \ algorithm. Useful when\n                        using e.g. TransDecoder vs 5+.\n\
+  \n  --max-target-seqs MAX_TARGET_SEQS\n                        Maximum number of\
+  \ target sequences.\n  -bt BLAST_TARGETS, --blast-targets BLAST_TARGETS, --blast_targets\
+  \ BLAST_TARGETS\n                        Target sequences\n  --xml XML, --tsv XML\
+  \  BLAST file(s) to parse. They can be provided in three\n                     \
+  \   ways: - a comma-separated list - as a base folder -\n                      \
+  \  using bash-like name expansion (*,?, etc.). In this\n                       \
+  \ case, you have to enclose the filename pattern in\n                        double\
+  \ quotes. Multiple folders/file patterns can be\n                        given,\
+  \ separated by a comma. BLAST files must be\n                        either of two\
+  \ formats: - BLAST XML - BLAST tabular\n                        format, with the\
+  \ following **custom** fields: qseqid\n                        sseqid pident length\
+  \ mismatch gapopen qstart qend\n                        sstart send evalue bitscore\
+  \ ppos btop\n  -p PROCS, --procs PROCS\n                        Number of threads\
+  \ to use for analysing the BLAST\n                        files. This number should\
+  \ not be higher than the total\n                        number of XML files.\n \
+  \ --single-thread       Force serialise to run with a single thread,\n         \
+  \               irrespective of other configuration options.\n\n  --genome_fai GENOME_FAI\n\
+  \  --genome GENOME\n  --junctions JUNCTIONS\n\n  --external-scores EXTERNAL_SCORES\n\
+  \                        Tabular file containing external scores for the\n     \
+  \                   transcripts. Each column should have a distinct name,\n    \
+  \                    and transcripts have to be listed on the first column.\n\n\
+  \  -mo MAX_OBJECTS, --max-objects MAX_OBJECTS\n                        Maximum number\
+  \ of objects to cache in memory before\n                        committing to the\
+  \ database. Default: 100,000 i.e.\n                        approximately 450MB RAM\
+  \ usage for Drosophila.\n  --configuration CONFIGURATION, --json-conf CONFIGURATION\n\
+  \  -l [LOG], --log [LOG]\n                        Optional log file. Default: stderr\n\
+  \  db                    Optional output database. Default: derived from\n     \
+  \                   configuration\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/mikado:2.2.4--py38h803c66d_0

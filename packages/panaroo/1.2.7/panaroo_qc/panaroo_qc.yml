@@ -1,0 +1,81 @@
+!Command
+command:
+- panaroo-qc
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: quantification.
+  description: --version             show program's version number and exit
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: number of threads to use (default=1)
+  args: !SimpleFlagArg
+    name: N_CPU
+- !Flag
+  optional: true
+  synonyms:
+  - --graph_type
+  description: the type of graph to generate (default='all')
+  args: !ChoiceFlagArg
+    choices: !!set
+      ngenes:
+      ncontigs:
+      contam:
+      mds:
+      all:
+- !Flag
+  optional: true
+  synonyms:
+  - --ref_db
+  description: reference mash database for contamination
+  args: !SimpleFlagArg
+    name: REF_DB
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  description: input GFF3 files (usually output from running Prokka)
+  args: !RepeatFlagArg
+    name: INPUT_FILES
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out_dir
+  description: "location of an output directory\n"
+  args: !SimpleFlagArg
+    name: OUTPUT_DIR
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: plot_panaroo_qc [-h] -i INPUT_FILES [INPUT_FILES ...] -o OUTPUT_DIR\n\
+  \                       [-t N_CPU]\n                       [--graph_type {mds,ncontigs,contam,all,ngenes}]\n\
+  \                       [--ref_db REF_DB] [--version]\n\nGenerate quality control\
+  \ plots prior to a Panaroo run\n\noptional arguments:\n  -h, --help            show\
+  \ this help message and exit\n  -t N_CPU, --threads N_CPU\n                    \
+  \    number of threads to use (default=1)\n  --graph_type {mds,ncontigs,contam,all,ngenes}\n\
+  \                        the type of graph to generate (default='all')\n  --ref_db\
+  \ REF_DB       reference mash database for contamination\n                     \
+  \   quantification.\n  --version             show program's version number and exit\n\
+  \nInput/output:\n  -i INPUT_FILES [INPUT_FILES ...], --input INPUT_FILES [INPUT_FILES\
+  \ ...]\n                        input GFF3 files (usually output from running Prokka)\n\
+  \  -o OUTPUT_DIR, --out_dir OUTPUT_DIR\n                        location of an output\
+  \ directory\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/panaroo:1.2.7--pyhdfd78af_0

@@ -1,0 +1,198 @@
+!Command
+command:
+- miRNAture
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -man
+  description: Prints an extended help page and exits.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -blstq
+  - -blastQueriesFolder
+  description: "Path of blast query sequences in FASTA format to be searched\non the\
+    \ subject sequence."
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -dataF
+  - -datadir
+  description: "Path to pre-calculated data directory containing RFAM and\nmiRBase\
+    \ covariance, hidden markov models, and necessary\nfiles to run MIRfix."
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -mfx
+  - -mirfix_path
+  description: Alternative path of the MIRfix.py program.
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - -mode
+  description: "<Blast, HMM, Other_CM, Infernal, Final>\nHomology search modes: Blast,\
+    \ HMM, Other_CM, Infernal and/or\nFinal. It is possible to perform individual\
+    \ analysis, but it\nis always recommended to include the Final option."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -pe
+  - -parallel_slurm
+  description: "Activate SLURM resource manager to submit parallel jobs (1)\nor not\
+    \ (0)."
+  args: !SimpleFlagArg
+    name: 0|1
+- !Flag
+  optional: true
+  synonyms:
+  - -rep
+  - -repetition_cutoff
+  description: "<relax,Number_Loci,Candidates_to_evaluate>\nSetup number of maximum\
+    \ loci number that will be evaluated\nby the mature's annotation stage. By default,\
+    \ miRNAture will\ndetect miRNA families that report high number of loci (> 200\n\
+    loci). Then, it will select the top 100 candidates in terms\nof alignment scores,\
+    \ as candidates for the validation stage\n(default,200,100). The designed values\
+    \ could be modified by\nthe following flag:\n'relax,Number_Loci,Candidates_to_evaluate'.\
+    \ This option\nallows to the user to select the threshold values to detect\nrepetitive\
+    \ families. The first parameter is <relax>, which\ntells miRNAture to change the\
+    \ default configuration. The\nnext one, <Number_Loci> is the threshold of loci\
+    \ number to\nclassify a family as repetitive. The last one,\n<Candidates_to_evaluate>,\
+    \ is the number of candidates prone\nto be evaluated in the next evaluation section.\
+    \ The rest\ncandidates are included as homology 'potential' candidates."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -str
+  - -strategy
+  description: "<1,2,3,4,5,6,7,8,9,10>\nThis flag is blast mode specific. It corresponds\
+    \ to blast\nstrategies that would be used to search miRNAs. It must be\nindicated\
+    \ along with -m Blast flag."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -speG
+  - -specie_genome
+  description: Path of target sequences to be analyzed in FASTA format.
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -speN
+  - -specie_name
+  description: "Specie or sequence source's scientific name. The format must\nbe:\
+    \ Genera_specie, separated by '_'."
+  args: !SimpleFlagArg
+    name: Genera_specie
+- !Flag
+  optional: true
+  synonyms:
+  - -speT
+  - -specie_tag
+  description: "Experiment tag. Will help to identify the generated files\nalong miRNA\
+    \ output files."
+  args: !SimpleFlagArg
+    name: TAG_NAME
+- !Flag
+  optional: true
+  synonyms:
+  - -sublist
+  - -subset_models
+  description: "Target list of CMs to be searched on subject\ngenome/sequences. If\
+    \ not indicated, miRNAture will run all\nRFAM v14.4 metazoan miRNA models."
+  args: !SimpleFlagArg
+    name: FILE_WITH_CM_NAMES
+- !Flag
+  optional: true
+  synonyms:
+  - -usrM
+  - -user_models
+  description: "Directory with additional hidden Markov (HMMs) or covariance\nmodels\
+    \ (CMs) provided by the user. This must be contain a\ncorresponding HMMs/ and\
+    \ CMs/ folders, which the user models\nwill be identified."
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - -workdir
+  description: "Working directory path to write all miRNAture results.\n"
+  args: !SimpleFlagArg
+    name: OUT_PATH
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - -help
+  description: Print this documentation.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage:\n    ./miRNAture [-options]\n\nOptions:\n    -h/-help    Print\
+  \ this documentation.\n\n    -man        Prints an extended help page and exits.\n\
+  \n    -blstq/-blastQueriesFolder <PATH>\n                Path of blast query sequences\
+  \ in FASTA format to be searched\n                on the subject sequence.\n\n \
+  \   -dataF/-datadir <PATH>\n                Path to pre-calculated data directory\
+  \ containing RFAM and\n                miRBase covariance, hidden markov models,\
+  \ and necessary\n                files to run MIRfix.\n\n    -mfx/-mirfix_path <PATH>\n\
+  \                Alternative path of the MIRfix.py program.\n\n    -m/-mode <Blast,\
+  \ HMM, Other_CM, Infernal, Final>\n                Homology search modes: Blast,\
+  \ HMM, Other_CM, Infernal and/or\n                Final. It is possible to perform\
+  \ individual analysis, but it\n                is always recommended to include\
+  \ the Final option.\n\n    -pe/-parallel_slurm <0|1>\n                Activate SLURM\
+  \ resource manager to submit parallel jobs (1)\n                or not (0).\n\n\
+  \    -rep/-repetition_cutoff <relax,Number_Loci,Candidates_to_evaluate>\n      \
+  \          Setup number of maximum loci number that will be evaluated\n        \
+  \        by the mature's annotation stage. By default, miRNAture will\n        \
+  \        detect miRNA families that report high number of loci (> 200\n        \
+  \        loci). Then, it will select the top 100 candidates in terms\n         \
+  \       of alignment scores, as candidates for the validation stage\n          \
+  \      (default,200,100). The designed values could be modified by\n           \
+  \     the following flag:\n                'relax,Number_Loci,Candidates_to_evaluate'.\
+  \ This option\n                allows to the user to select the threshold values\
+  \ to detect\n                repetitive families. The first parameter is <relax>,\
+  \ which\n                tells miRNAture to change the default configuration. The\n\
+  \                next one, <Number_Loci> is the threshold of loci number to\n  \
+  \              classify a family as repetitive. The last one,\n                <Candidates_to_evaluate>,\
+  \ is the number of candidates prone\n                to be evaluated in the next\
+  \ evaluation section. The rest\n                candidates are included as homology\
+  \ 'potential' candidates.\n\n    -str/-strategy <1,2,3,4,5,6,7,8,9,10>\n       \
+  \         This flag is blast mode specific. It corresponds to blast\n          \
+  \      strategies that would be used to search miRNAs. It must be\n            \
+  \    indicated along with -m Blast flag.\n\n    -stg/-stage\n    <'homology','validation','evaluation','summarise','complete'>\n\
+  \                Selects the stage to be run on miRNAture. The options are:\n  \
+  \              'homology', 'validation', 'evaluation', 'summarise' or\n        \
+  \        'complete'.\n\n    -speG/-specie_genome <PATH>\n                Path of\
+  \ target sequences to be analyzed in FASTA format.\n\n    -speN/-specie_name <Genera_specie>\n\
+  \                Specie or sequence source's scientific name. The format must\n\
+  \                be: Genera_specie, separated by '_'.\n\n    -speT/-specie_tag <TAG_NAME>\n\
+  \                Experiment tag. Will help to identify the generated files\n   \
+  \             along miRNA output files.\n\n    -sublist/-subset_models <FILE_WITH_CM_NAMES>\n\
+  \                Target list of CMs to be searched on subject\n                genome/sequences.\
+  \ If not indicated, miRNAture will run all\n                RFAM v14.4 metazoan\
+  \ miRNA models.\n\n    -usrM/-user_models <PATH>\n                Directory with\
+  \ additional hidden Markov (HMMs) or covariance\n                models (CMs) provided\
+  \ by the user. This must be contain a\n                corresponding HMMs/ and CMs/\
+  \ folders, which the user models\n                will be identified.\n\n    -w/-workdir\
+  \ <OUT_PATH>\n                Working directory path to write all miRNAture results.\n\
+  \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/mirnature:1.0--pl5262r35hdfd78af_2

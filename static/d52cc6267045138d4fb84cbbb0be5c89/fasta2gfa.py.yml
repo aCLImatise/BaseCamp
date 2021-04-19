@@ -1,0 +1,69 @@
+!Command
+command:
+- fasta2gfa.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -in
+  description: "FASTA file containing the sequences of the scaffolds obtained from\
+    \ the assembly (format: 'xxx.fasta')"
+  args: !SimpleFlagArg
+    name: INPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -min
+  description: Minimum size of the 'Ns' region to treat/process as a gap
+  args: !SimpleFlagArg
+    name: MIN
+- !Flag
+  optional: true
+  synonyms:
+  - -max
+  description: Maximum size of the 'Ns' region to treat/process as a gap
+  args: !SimpleFlagArg
+    name: MAX
+- !Flag
+  optional: true
+  synonyms:
+  - -contigs
+  description: Minimum size of the flanking contigs of the 'Ns' region to treat/process
+    as a gap
+  args: !SimpleFlagArg
+    name: CONTIGS_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - -out
+  description: Output directory for saving the GFA file
+  args: !SimpleFlagArg
+    name: OUTDIR
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: fasta2gfa.py -in <fasta_file> -out <output_directory> [options]\n\
+  \nTransform a FASTA file with sequences containing 'Ns' regions to a GFA file ('Ns'\
+  \ regions are treated as gaps). We can filter the 'Ns' regions by their size (e.g.\
+  \ gap sizes) and by the contigs' sizes on both sides (long enough for ex to get\
+  \ enough barcodes)\n\noptional arguments:\n  -h, --help            show this help\
+  \ message and exit\n  -in INPUT             FASTA file containing the sequences\
+  \ of the scaffolds obtained from the assembly (format: 'xxx.fasta')\n  -min MIN\
+  \              Minimum size of the 'Ns' region to treat/process as a gap\n  -max\
+  \ MAX              Maximum size of the 'Ns' region to treat/process as a gap\n \
+  \ -contigs CONTIGS_SIZE\n                        Minimum size of the flanking contigs\
+  \ of the 'Ns' region to treat/process as a gap\n  -out OUTDIR           Output directory\
+  \ for saving the GFA file\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/mtglink:1.1.0--hdfd78af_0

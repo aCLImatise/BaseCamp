@@ -1,0 +1,141 @@
+!Command
+command:
+- whatshap
+- haplotag
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: VCF
+  description: "VCF file with phased variants (must be gzip-compressed\nand indexed)"
+- !Positional
+  optional: false
+  position: 1
+  name: ALIGNMENTS
+  description: File (BAM/CRAM) with read alignments to be tagged by
+- !Positional
+  optional: false
+  position: 2
+  name: haplotype
+  description: 'optional arguments:'
+- !Positional
+  optional: false
+  position: 3
+  name: reads.
+  description: --linked-read-distance-cutoff LINKEDREADDISTANCE, -d LINKEDREADDISTANCE
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: Output file. If omitted, use standard output.
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - --reference
+  - -r
+  description: "Reference file. Provide this to detect alleles through\nre-alignment.\
+    \ If no index (.fai) exists, it will be\ncreated"
+  args: !SimpleFlagArg
+    name: FASTA
+- !Flag
+  optional: true
+  synonyms:
+  - --regions
+  description: "Specify region(s) of interest to limit the tagging to\nreads/variants\
+    \ overlapping those regions. You can\nspecify a space-separated list of regions\
+    \ in the form\nof chrom:start-end, chrom (consider entire\nchromosome), or chrom:start\
+    \ (consider region from this\nstart to end of chromosome)."
+  args: !SimpleFlagArg
+    name: REGION
+- !Flag
+  optional: true
+  synonyms:
+  - --ignore-linked-read
+  description: Ignore linkage information stored in BX tags of the
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ignore-read-groups
+  description: "Ignore read groups in BAM/CRAM header and assume all\nreads come from\
+    \ the same sample."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sample
+  description: "Name of a sample to phase. If not given, all samples\nin the input\
+    \ VCF are phased. Can be used multiple\ntimes."
+  args: !SimpleFlagArg
+    name: SAMPLE
+- !Flag
+  optional: true
+  synonyms:
+  - --output-haplotag-list
+  description: "Write assignments of read names to haplotypes (tab\nseparated) to\
+    \ given output file. If filename ends in\n.gz, then output is gzipped."
+  args: !SimpleFlagArg
+    name: HAPLOTAG_LIST
+- !Flag
+  optional: true
+  synonyms:
+  - --tag-supplementary
+  description: "Also tag supplementary alignments. Supplementary\nalignments are assigned\
+    \ to the same haplotype the\nprimary alignment has been assigned to (default:\
+    \ only\ntag primary alignments).\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: whatshap haplotag [-h] [-o OUTPUT] [--reference FASTA]\n      \
+  \                   [--regions REGION] [--ignore-linked-read]\n                \
+  \         [--linked-read-distance-cutoff LINKEDREADDISTANCE]\n                 \
+  \        [--ignore-read-groups] [--sample SAMPLE]\n                         [--output-haplotag-list\
+  \ HAPLOTAG_LIST]\n                         [--tag-supplementary]\n             \
+  \            VCF ALIGNMENTS\n\nTag reads by haplotype\n\nSequencing reads are read\
+  \ from file ALIGNMENTS (in BAM format) and tagged reads\nare written to stdout.\n\
+  \npositional arguments:\n  VCF                   VCF file with phased variants (must\
+  \ be gzip-compressed\n                        and indexed)\n  ALIGNMENTS       \
+  \     File (BAM/CRAM) with read alignments to be tagged by\n                   \
+  \     haplotype\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  -o OUTPUT, --output OUTPUT\n                        Output file. If\
+  \ omitted, use standard output.\n  --reference FASTA, -r FASTA\n               \
+  \         Reference file. Provide this to detect alleles through\n             \
+  \           re-alignment. If no index (.fai) exists, it will be\n              \
+  \          created\n  --regions REGION      Specify region(s) of interest to limit\
+  \ the tagging to\n                        reads/variants overlapping those regions.\
+  \ You can\n                        specify a space-separated list of regions in\
+  \ the form\n                        of chrom:start-end, chrom (consider entire\n\
+  \                        chromosome), or chrom:start (consider region from this\n\
+  \                        start to end of chromosome).\n  --ignore-linked-read  Ignore\
+  \ linkage information stored in BX tags of the\n                        reads.\n\
+  \  --linked-read-distance-cutoff LINKEDREADDISTANCE, -d LINKEDREADDISTANCE\n   \
+  \                     Assume reads with identical BX tags belong to\n          \
+  \              different read clouds if their distance is larger than\n        \
+  \                LINKEDREADDISTANCE (default: 50000).\n  --ignore-read-groups  Ignore\
+  \ read groups in BAM/CRAM header and assume all\n                        reads come\
+  \ from the same sample.\n  --sample SAMPLE       Name of a sample to phase. If not\
+  \ given, all samples\n                        in the input VCF are phased. Can be\
+  \ used multiple\n                        times.\n  --output-haplotag-list HAPLOTAG_LIST\n\
+  \                        Write assignments of read names to haplotypes (tab\n  \
+  \                      separated) to given output file. If filename ends in\n  \
+  \                      .gz, then output is gzipped.\n  --tag-supplementary   Also\
+  \ tag supplementary alignments. Supplementary\n                        alignments\
+  \ are assigned to the same haplotype the\n                        primary alignment\
+  \ has been assigned to (default: only\n                        tag primary alignments).\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/whatshap:1.1--py39h7cff6ad_0

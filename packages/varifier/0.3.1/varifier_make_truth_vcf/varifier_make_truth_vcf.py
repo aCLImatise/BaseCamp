@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Int, File, Boolean, String
+
+Varifier_Make_Truth_Vcf_V0_1_0 = CommandToolBuilder(tool="varifier_make_truth_vcf", base_command=["varifier", "make_truth_vcf"], inputs=[ToolInput(tag="in_max_recall_ref_len", input_type=Int(optional=True), prefix="--max_recall_ref_len", doc=InputDocumentation(doc="Do not include variants where REF length is more than\nthis number. Default is no limit")), ToolInput(tag="in_flank_length", input_type=Int(optional=True), prefix="--flank_length", doc=InputDocumentation(doc="Length of sequence to add either side of variant when\nmaking probe sequences [100]")), ToolInput(tag="in_truth_mask", input_type=File(optional=True), prefix="--truth_mask", doc=InputDocumentation(doc="BED file of truth genome regions to mask. Any variants\nin the VCF matching to the mask are flagged and will\nnot count towards precision or recall if the output\nVCF is used with vcf_eval")), ToolInput(tag="in_split_ref", input_type=Boolean(optional=True), prefix="--split_ref", doc=InputDocumentation(doc="When using MUMmer, split the ref genome into one file\nper sequence, and run MUMmer on each split.\nExperimental - should improve run time for big genomes")), ToolInput(tag="in_no_max_match", input_type=Boolean(optional=True), prefix="--no_maxmatch", doc=InputDocumentation(doc="When using nucmer to get expected calls for recall, do\nnot use the --maxmatch option. May reduce sensitivity\nto finding all variants")), ToolInput(tag="in_cpus", input_type=Int(optional=True), prefix="--cpus", doc=InputDocumentation(doc="Number of CPUs to use when running nucmer and minimap2\n[1]\n")), ToolInput(tag="in_truth_fast_a", input_type=String(), position=0, doc=InputDocumentation(doc="FASTA file of truth genome")), ToolInput(tag="in_ref_fast_a", input_type=String(), position=1, doc=InputDocumentation(doc="FASTA file of reference genome")), ToolInput(tag="in_outdir", input_type=String(), position=2, doc=InputDocumentation(doc="Name of output directory"))], outputs=[ToolOutput(tag="out_truth_mask", output_type=File(optional=True), selector=InputSelector(input_to_select="in_truth_mask", type_hint=File()), doc=OutputDocumentation(doc="BED file of truth genome regions to mask. Any variants\nin the VCF matching to the mask are flagged and will\nnot count towards precision or recall if the output\nVCF is used with vcf_eval"))], container="quay.io/biocontainers/varifier:0.3.1--pyhdfd78af_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Varifier_Make_Truth_Vcf_V0_1_0().translate("wdl")
+

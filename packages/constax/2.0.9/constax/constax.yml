@@ -1,0 +1,318 @@
+!Command
+command:
+- constax
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --conf
+  description: 'Classification confidence threshold (default: 0.8)'
+  args: !SimpleFlagArg
+    name: CONF
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --num_threads
+  description: 'directory to for output files (default: 1)'
+  args: !SimpleFlagArg
+    name: NUM_THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --mhits
+  description: "Maximum number of BLAST hits to use, for use with -b\noption (default:\
+    \ 10)"
+  args: !SimpleFlagArg
+    name: MHITS
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --evalue
+  description: "Maximum expect value of BLAST hits to use, for use\nwith -b option\
+    \ (default: 1.0)"
+  args: !SimpleFlagArg
+    name: EVALUE
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --p_iden
+  description: "Minimum proportion identity of BLAST hits to use, for\nuse with -b\
+    \ option (default: 0.0)"
+  args: !SimpleFlagArg
+    name: P_IDEN
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --db
+  description: "Database to train classifiers, in FASTA format\n(default: )"
+  args: !SimpleFlagArg
+    name: DB
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --trainfile
+  description: "Path to which training files will be written (default:\n./training_files)"
+  args: !SimpleFlagArg
+    name: TRAINFILE
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  description: "Input file in FASTA format containing sequence records\nto classify\
+    \ (default: otus.fasta)"
+  args: !SimpleFlagArg
+    name: INPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: "Output directory for classifications (default:\n./outputs)"
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --tax
+  description: "Directory for taxonomy assignments (default:\n./taxonomy_assignments)"
+  args: !SimpleFlagArg
+    name: TAX
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --train
+  description: 'Complete training if specified (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --blast
+  description: "Use BLAST instead of UTAX if specified (default:\nFalse)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --select_by_keyword
+  description: "Takes a keyword argument and --input FASTA file to\nproduce a filtered\
+    \ database with headers containing\nthe keyword with name --output (default: False)"
+  args: !SimpleFlagArg
+    name: SELECT_BY_KEYWORD
+- !Flag
+  optional: true
+  synonyms:
+  - --msu_hpcc
+  description: "If specified, use executable paths on Michigan State\nUniversity HPCC.\
+    \ Overrides other path arguments\n(default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --conservative
+  description: "If specified, use conservative consensus rule (2 False\n= False winner)\
+    \ (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --make_plot
+  description: "If specified, run R script to make plot of classified\ntaxa (default:\
+    \ False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --check
+  description: "If specified, runs checks but stops before training or\nclassifying\
+    \ (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --mem
+  description: "Memory available to use for RDP, in MB. 32000MB\nrecommended for UNITE,\
+    \ 128000MB for SILVA (default:\n32000)"
+  args: !SimpleFlagArg
+    name: MEM
+- !Flag
+  optional: true
+  synonyms:
+  - --sintax_path
+  description: "Path to USEARCH/VSEARCH executable for SINTAX\nclassification (default:\
+    \ False)"
+  args: !SimpleFlagArg
+    name: SINTAX_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --utax_path
+  description: "Path to USEARCH executable for UTAX classification\n(default: False)"
+  args: !SimpleFlagArg
+    name: UTAX_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --rdp_path
+  description: 'Path to RDP classifier.jar file (default: False)'
+  args: !SimpleFlagArg
+    name: RDP_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --constax_path
+  description: 'Path to CONSTAX scripts (default: False)'
+  args: !SimpleFlagArg
+    name: CONSTAX_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --pathfile
+  description: "File with paths to SINTAX, UTAX, RDP, and CONSTAX\nexecutables (default:\
+    \ pathfile.txt)"
+  args: !SimpleFlagArg
+    name: PATHFILE
+- !Flag
+  optional: true
+  synonyms:
+  - --isolates
+  description: "FASTA formatted file of isolates to use BLAST against\n(default: False)"
+  args: !SimpleFlagArg
+    name: ISOLATES
+- !Flag
+  optional: true
+  synonyms:
+  - --isolates_query_coverage
+  description: "Threshold of sequence query coverage to report isolate\nmatches (default:\
+    \ 75)"
+  args: !SimpleFlagArg
+    name: ISOLATES_QUERY_COVERAGE
+- !Flag
+  optional: true
+  synonyms:
+  - --isolates_percent_identity
+  description: "Threshold of aligned sequence percent identity to\nreport isolate\
+    \ matches (default: 1)"
+  args: !SimpleFlagArg
+    name: ISOLATES_PERCENT_IDENTITY
+- !Flag
+  optional: true
+  synonyms:
+  - --high_level_db
+  description: "FASTA database file of representative sequences for\nassignment of\
+    \ high level taxonomy (default: False)"
+  args: !SimpleFlagArg
+    name: HIGH_LEVEL_DB
+- !Flag
+  optional: true
+  synonyms:
+  - --high_level_query_coverage
+  description: "Threshold of sequence query coverage to report high-\nlevel taxonomy\
+    \ matches (default: 75)"
+  args: !SimpleFlagArg
+    name: HIGH_LEVEL_QUERY_COVERAGE
+- !Flag
+  optional: true
+  synonyms:
+  - --high_level_percent_identity
+  description: "Threshold of aligned sequence percent identity to\nreport high-level\
+    \ taxonomy matches (default: 1)"
+  args: !SimpleFlagArg
+    name: HIGH_LEVEL_PERCENT_IDENTITY
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: 'Display version and exit (default: False)'
+  args: !EmptyFlagArg {}
+help_text: "usage: constax [-h] [-c CONF] [-n NUM_THREADS] [-m MHITS] [-e EVALUE]\n\
+  \               [-p P_IDEN] [-d DB] [-f TRAINFILE] [-i INPUT] [-o OUTPUT]\n    \
+  \           [-x TAX] [-t] [-b] [--select_by_keyword SELECT_BY_KEYWORD]\n       \
+  \        [--msu_hpcc] [-s] [--make_plot] [--check] [--mem MEM]\n               [--sintax_path\
+  \ SINTAX_PATH] [--utax_path UTAX_PATH]\n               [--rdp_path RDP_PATH] [--constax_path\
+  \ CONSTAX_PATH]\n               [--pathfile PATHFILE] [--isolates ISOLATES]\n  \
+  \             [--isolates_query_coverage ISOLATES_QUERY_COVERAGE]\n            \
+  \   [--isolates_percent_identity ISOLATES_PERCENT_IDENTITY]\n               [--high_level_db\
+  \ HIGH_LEVEL_DB]\n               [--high_level_query_coverage HIGH_LEVEL_QUERY_COVERAGE]\n\
+  \               [--high_level_percent_identity HIGH_LEVEL_PERCENT_IDENTITY]\n  \
+  \             [-v]\n\noptional arguments:\n  -h, --help            show this help\
+  \ message and exit\n  -c CONF, --conf CONF  Classification confidence threshold\
+  \ (default: 0.8)\n  -n NUM_THREADS, --num_threads NUM_THREADS\n                \
+  \        directory to for output files (default: 1)\n  -m MHITS, --mhits MHITS\n\
+  \                        Maximum number of BLAST hits to use, for use with -b\n\
+  \                        option (default: 10)\n  -e EVALUE, --evalue EVALUE\n  \
+  \                      Maximum expect value of BLAST hits to use, for use\n    \
+  \                    with -b option (default: 1.0)\n  -p P_IDEN, --p_iden P_IDEN\n\
+  \                        Minimum proportion identity of BLAST hits to use, for\n\
+  \                        use with -b option (default: 0.0)\n  -d DB, --db DB   \
+  \     Database to train classifiers, in FASTA format\n                        (default:\
+  \ )\n  -f TRAINFILE, --trainfile TRAINFILE\n                        Path to which\
+  \ training files will be written (default:\n                        ./training_files)\n\
+  \  -i INPUT, --input INPUT\n                        Input file in FASTA format containing\
+  \ sequence records\n                        to classify (default: otus.fasta)\n\
+  \  -o OUTPUT, --output OUTPUT\n                        Output directory for classifications\
+  \ (default:\n                        ./outputs)\n  -x TAX, --tax TAX     Directory\
+  \ for taxonomy assignments (default:\n                        ./taxonomy_assignments)\n\
+  \  -t, --train           Complete training if specified (default: False)\n  -b,\
+  \ --blast           Use BLAST instead of UTAX if specified (default:\n         \
+  \               False)\n  --select_by_keyword SELECT_BY_KEYWORD\n              \
+  \          Takes a keyword argument and --input FASTA file to\n                \
+  \        produce a filtered database with headers containing\n                 \
+  \       the keyword with name --output (default: False)\n  --msu_hpcc          \
+  \  If specified, use executable paths on Michigan State\n                      \
+  \  University HPCC. Overrides other path arguments\n                        (default:\
+  \ False)\n  -s, --conservative    If specified, use conservative consensus rule\
+  \ (2 False\n                        = False winner) (default: False)\n  --make_plot\
+  \           If specified, run R script to make plot of classified\n            \
+  \            taxa (default: False)\n  --check               If specified, runs checks\
+  \ but stops before training or\n                        classifying (default: False)\n\
+  \  --mem MEM             Memory available to use for RDP, in MB. 32000MB\n     \
+  \                   recommended for UNITE, 128000MB for SILVA (default:\n      \
+  \                  32000)\n  --sintax_path SINTAX_PATH\n                       \
+  \ Path to USEARCH/VSEARCH executable for SINTAX\n                        classification\
+  \ (default: False)\n  --utax_path UTAX_PATH\n                        Path to USEARCH\
+  \ executable for UTAX classification\n                        (default: False)\n\
+  \  --rdp_path RDP_PATH   Path to RDP classifier.jar file (default: False)\n  --constax_path\
+  \ CONSTAX_PATH\n                        Path to CONSTAX scripts (default: False)\n\
+  \  --pathfile PATHFILE   File with paths to SINTAX, UTAX, RDP, and CONSTAX\n   \
+  \                     executables (default: pathfile.txt)\n  --isolates ISOLATES\
+  \   FASTA formatted file of isolates to use BLAST against\n                    \
+  \    (default: False)\n  --isolates_query_coverage ISOLATES_QUERY_COVERAGE\n   \
+  \                     Threshold of sequence query coverage to report isolate\n \
+  \                       matches (default: 75)\n  --isolates_percent_identity ISOLATES_PERCENT_IDENTITY\n\
+  \                        Threshold of aligned sequence percent identity to\n   \
+  \                     report isolate matches (default: 1)\n  --high_level_db HIGH_LEVEL_DB\n\
+  \                        FASTA database file of representative sequences for\n \
+  \                       assignment of high level taxonomy (default: False)\n  --high_level_query_coverage\
+  \ HIGH_LEVEL_QUERY_COVERAGE\n                        Threshold of sequence query\
+  \ coverage to report high-\n                        level taxonomy matches (default:\
+  \ 75)\n  --high_level_percent_identity HIGH_LEVEL_PERCENT_IDENTITY\n           \
+  \             Threshold of aligned sequence percent identity to\n              \
+  \          report high-level taxonomy matches (default: 1)\n  -v, --version    \
+  \     Display version and exit (default: False)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/constax:2.0.9--hdfd78af_0

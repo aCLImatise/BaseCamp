@@ -1,0 +1,178 @@
+!Command
+command:
+- metagraph_Protein
+- transform_anno
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: ANNOTATOR
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --intersect-columns
+  description: compute intersection of the annotation columns [off]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --intersect-ratio
+  description: '[FLOAT]    include k-mer if it appears in this ratio of columns [1.0]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --rename-cols
+  description: "[STR]  file with rules for renaming annotation labels []\nexample:\
+    \ 'L_1 L_1_renamed\nL_2 L_2_renamed\nL_2 L_2_renamed\n... ...........'"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --anno-type
+  description: "[STR]    target annotation format [column]\n( column, brwt, rb_brwt,\n\
+    row_diff, row_diff_brwt, row_diff_sparse,\nrow, flat, rbfish, bin_rel_wt, bin_rel_wt_sdsl\
+    \ )"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --arity
+  description: arity in the brwt tree [2]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --greedy
+  description: use greedy column partitioning in brwt construction [off]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --linkage
+  description: cluster columns and construct linkage matrix [off]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --linkage-file
+  description: "[STR] linkage matrix specifying brwt tree structure []\nexample: '0\
+    \ 1 <dist> 4\n2 3 <dist> 5\n4 5 <dist> 6'"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --fast
+  description: transform annotation in memory without streaming / sparse subsampling
+    [off]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --subsample
+  description: '[INT]    number of rows subsampled for distance estimation in column
+    clustering [1000000]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dump-text-anno
+  description: dump the columns of the annotator as separate text files [off]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --row-diff-stage
+  description: '[0|1|2]     stage of the row_diff construction [0]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max-path-length
+  description: '[INT]      maximum path length in row_diff annotation [100]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --infile-base
+  description: '[STR]          graph for generating succ/pred/anchors (for row_diff
+    types) []'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --parallel-nodes
+  description: '[INT]       number of nodes processed in parallel in brwt tree [n_threads]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --disk-swap
+  description: '[STR]    directory for temporary files [OUT_BASEDIR]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --parallel
+  description: '[INT]     use multiple threads for computation [1]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: switch on verbose output [off]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: ''
+  args: !SimpleFlagArg
+    name: annotation-basename
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: print usage info
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "#############################\n### Welcome to MetaGraph! ###\n#############################\n\
+  \nMetagraph: comprehensive metagenome graph representation -- Version 0.1\n\nUsage:\
+  \ metagraph_Protein transform_anno -o <annotation-basename> [options] ANNOTATOR\n\
+  \n\t   --intersect-columns \t\tcompute intersection of the annotation columns [off]\n\
+  \t   --intersect-ratio [FLOAT] \tinclude k-mer if it appears in this ratio of columns\
+  \ [1.0]\n\t   --rename-cols [STR] \tfile with rules for renaming annotation labels\
+  \ []\n\t                       \texample: 'L_1 L_1_renamed\n\t                 \
+  \      \t          L_2 L_2_renamed\n\t                       \t          L_2 L_2_renamed\n\
+  \t                       \t          ... ...........'\n\t   --anno-type [STR] \t\
+  target annotation format [column]\n\t\t( column, brwt, rb_brwt,\n\t\t  row_diff,\
+  \ row_diff_brwt, row_diff_sparse,\n\t\t  row, flat, rbfish, bin_rel_wt, bin_rel_wt_sdsl\
+  \ )\n\t   --arity \t\tarity in the brwt tree [2]\n\t   --greedy \t\tuse greedy column\
+  \ partitioning in brwt construction [off]\n\t   --linkage \t\tcluster columns and\
+  \ construct linkage matrix [off]\n\t   --linkage-file [STR]\tlinkage matrix specifying\
+  \ brwt tree structure []\n\t                       \texample: '0 1 <dist> 4\n\t\
+  \                       \t          2 3 <dist> 5\n\t                       \t  \
+  \        4 5 <dist> 6'\n\t   --fast \t\ttransform annotation in memory without streaming\
+  \ / sparse subsampling [off]\n\t   --subsample [INT] \tnumber of rows subsampled\
+  \ for distance estimation in column clustering [1000000]\n\t   --dump-text-anno\
+  \ \tdump the columns of the annotator as separate text files [off]\n\n\t   --row-diff-stage\
+  \ [0|1|2] \tstage of the row_diff construction [0]\n\t   --max-path-length [INT]\
+  \ \tmaximum path length in row_diff annotation [100]\n\t-i --infile-base [STR] \t\
+  \tgraph for generating succ/pred/anchors (for row_diff types) []\n\n\t   --parallel-nodes\
+  \ [INT] \tnumber of nodes processed in parallel in brwt tree [n_threads]\n\n\t \
+  \  --disk-swap [STR] \tdirectory for temporary files [OUT_BASEDIR]\n\t-p --parallel\
+  \ [INT] \tuse multiple threads for computation [1]\n\n\tGeneral options:\n\t-v --verbose\
+  \ \t\tswitch on verbose output [off]\n\t-h --help \t\tprint usage info\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/metagraph:0.2.0--h74b8f77_0

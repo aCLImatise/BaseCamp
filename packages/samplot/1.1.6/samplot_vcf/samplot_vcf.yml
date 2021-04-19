@@ -1,0 +1,231 @@
+!Command
+command:
+- samplot
+- vcf
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --vcf
+  - -v
+  description: "VCF file containing structural variants (default:\nNone)"
+  args: !SimpleFlagArg
+    name: VCF
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --out-dir
+  description: 'path to write output PNGs (default: samplot-out)'
+  args: !SimpleFlagArg
+    name: OUT_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --ped
+  description: 'path ped (or .fam) file (default: None)'
+  args: !SimpleFlagArg
+    name: PED
+- !Flag
+  optional: true
+  synonyms:
+  - --dn_only
+  description: "plots only putative de novo variants (PED file\nrequired) (default:\
+    \ False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min_call_rate
+  description: "only plot variants with at least this call-rate\n(default: 0.95)"
+  args: !SimpleFlagArg
+    name: MIN_CALL_RATE
+- !Flag
+  optional: true
+  synonyms:
+  - --filter
+  description: "simple filter that samples must meet. Join multiple\nfilters with\
+    \ '&' and specify --filter multiple times\nfor 'or' e.g. DHFFC < 0.7 & SVTYPE\
+    \ = 'DEL' (default:\n[])"
+  args: !SimpleFlagArg
+    name: FILTER
+- !Flag
+  optional: true
+  synonyms:
+  - -O
+  - --output_type
+  description: 'type of output figure (default: png)'
+  args: !ChoiceFlagArg
+    choices: !!set
+      eps:
+      jpg:
+      pdf:
+      png:
+- !Flag
+  optional: true
+  synonyms:
+  - --max_hets
+  description: "only plot variants with at most this many\nheterozygotes (default:\
+    \ None)"
+  args: !SimpleFlagArg
+    name: MAX_HETS
+- !Flag
+  optional: true
+  synonyms:
+  - --min_entries
+  description: "try to include homref samples as controls to get this\nmany samples\
+    \ in plot (default: 6)"
+  args: !SimpleFlagArg
+    name: MIN_ENTRIES
+- !Flag
+  optional: true
+  synonyms:
+  - --max_entries
+  description: "only plot at most this many heterozygotes (default:\n10)"
+  args: !SimpleFlagArg
+    name: MAX_ENTRIES
+- !Flag
+  optional: true
+  synonyms:
+  - --max_mb
+  description: "skip variants longer than this many megabases\n(default: None)"
+  args: !SimpleFlagArg
+    name: MAX_MB
+- !Flag
+  optional: true
+  synonyms:
+  - --min_bp
+  description: "skip variants shorter than this many bases (default:\n20)"
+  args: !SimpleFlagArg
+    name: MIN_BP
+- !Flag
+  optional: true
+  synonyms:
+  - --important_regions
+  description: "only report variants that overlap regions in this bed\nfile (default:\
+    \ None)"
+  args: !SimpleFlagArg
+    name: IMPORTANT_REGIONS
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --bams
+  description: "Space-delimited list of BAM/CRAM file names (default:\nNone)"
+  args: !RepeatFlagArg
+    name: BAMS
+- !Flag
+  optional: true
+  synonyms:
+  - --sample_ids
+  description: "Space-delimited list of sample IDs, must have same\norder as BAM/CRAM\
+    \ file names. BAM RG tag required if\nthis is omitted. (default: None)"
+  args: !RepeatFlagArg
+    name: SAMPLE_IDS
+- !Flag
+  optional: true
+  synonyms:
+  - --command_file
+  description: "store commands in this file. (default:\nsamplot_vcf_cmds.tmp)"
+  args: !SimpleFlagArg
+    name: COMMAND_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --format
+  description: "comma separated list of FORMAT fields to include in\nsample plot title\
+    \ (default: AS,AP,DHFFC)"
+  args: !SimpleFlagArg
+    name: FORMAT
+- !Flag
+  optional: true
+  synonyms:
+  - --gff3
+  description: "genomic regions (.gff with .tbi in same directory)\nused when building\
+    \ HTML table and table filters\n(default: None)"
+  args: !SimpleFlagArg
+    name: GFF3
+- !Flag
+  optional: true
+  synonyms:
+  - --downsample
+  description: 'Number of normal reads/pairs to plot (default: 1)'
+  args: !SimpleFlagArg
+    name: DOWNSAMPLE
+- !Flag
+  optional: true
+  synonyms:
+  - --manual_run
+  description: "don't auto-run the samplot plot commands (command_file\nwill be deleted)\
+    \ (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: "prints out the reason each skipped variant entry is\nskipped (default:\
+    \ False)\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: samplot vcf [-h] [--vcf VCF] [-d OUT_DIR] [--ped PED] [--dn_only]\n\
+  \                   [--min_call_rate MIN_CALL_RATE] [--filter FILTER]\n        \
+  \           [-O {png,pdf,eps,jpg}] [--max_hets MAX_HETS]\n                   [--min_entries\
+  \ MIN_ENTRIES] [--max_entries MAX_ENTRIES]\n                   [--max_mb MAX_MB]\
+  \ [--min_bp MIN_BP]\n                   [--important_regions IMPORTANT_REGIONS]\
+  \ -b BAMS [BAMS ...]\n                   [--sample_ids SAMPLE_IDS [SAMPLE_IDS ...]]\n\
+  \                   [--command_file COMMAND_FILE] [--format FORMAT]\n          \
+  \         [--gff3 GFF3] [--downsample DOWNSAMPLE] [--manual_run]\n             \
+  \      [--debug]\n\noptional arguments:\n  -h, --help            show this help\
+  \ message and exit\n  --vcf VCF, -v VCF     VCF file containing structural variants\
+  \ (default:\n                        None)\n  -d OUT_DIR, --out-dir OUT_DIR\n  \
+  \                      path to write output PNGs (default: samplot-out)\n  --ped\
+  \ PED             path ped (or .fam) file (default: None)\n  --dn_only         \
+  \    plots only putative de novo variants (PED file\n                        required)\
+  \ (default: False)\n  --min_call_rate MIN_CALL_RATE\n                        only\
+  \ plot variants with at least this call-rate\n                        (default:\
+  \ 0.95)\n  --filter FILTER       simple filter that samples must meet. Join multiple\n\
+  \                        filters with '&' and specify --filter multiple times\n\
+  \                        for 'or' e.g. DHFFC < 0.7 & SVTYPE = 'DEL' (default:\n\
+  \                        [])\n  -O {png,pdf,eps,jpg}, --output_type {png,pdf,eps,jpg}\n\
+  \                        type of output figure (default: png)\n  --max_hets MAX_HETS\
+  \   only plot variants with at most this many\n                        heterozygotes\
+  \ (default: None)\n  --min_entries MIN_ENTRIES\n                        try to include\
+  \ homref samples as controls to get this\n                        many samples in\
+  \ plot (default: 6)\n  --max_entries MAX_ENTRIES\n                        only plot\
+  \ at most this many heterozygotes (default:\n                        10)\n  --max_mb\
+  \ MAX_MB       skip variants longer than this many megabases\n                 \
+  \       (default: None)\n  --min_bp MIN_BP       skip variants shorter than this\
+  \ many bases (default:\n                        20)\n  --important_regions IMPORTANT_REGIONS\n\
+  \                        only report variants that overlap regions in this bed\n\
+  \                        file (default: None)\n  -b BAMS [BAMS ...], --bams BAMS\
+  \ [BAMS ...]\n                        Space-delimited list of BAM/CRAM file names\
+  \ (default:\n                        None)\n  --sample_ids SAMPLE_IDS [SAMPLE_IDS\
+  \ ...]\n                        Space-delimited list of sample IDs, must have same\n\
+  \                        order as BAM/CRAM file names. BAM RG tag required if\n\
+  \                        this is omitted. (default: None)\n  --command_file COMMAND_FILE\n\
+  \                        store commands in this file. (default:\n              \
+  \          samplot_vcf_cmds.tmp)\n  --format FORMAT       comma separated list of\
+  \ FORMAT fields to include in\n                        sample plot title (default:\
+  \ AS,AP,DHFFC)\n  --gff3 GFF3           genomic regions (.gff with .tbi in same\
+  \ directory)\n                        used when building HTML table and table filters\n\
+  \                        (default: None)\n  --downsample DOWNSAMPLE\n          \
+  \              Number of normal reads/pairs to plot (default: 1)\n  --manual_run\
+  \          don't auto-run the samplot plot commands (command_file\n            \
+  \            will be deleted) (default: False)\n  --debug               prints out\
+  \ the reason each skipped variant entry is\n                        skipped (default:\
+  \ False)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/samplot:1.1.6--pyh5e36f6f_0

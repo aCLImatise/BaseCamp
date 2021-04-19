@@ -1,0 +1,102 @@
+!Command
+command:
+- varifier
+- make_truth_vcf
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: truth_fasta
+  description: FASTA file of truth genome
+- !Positional
+  optional: false
+  position: 1
+  name: ref_fasta
+  description: FASTA file of reference genome
+- !Positional
+  optional: false
+  position: 2
+  name: outdir
+  description: Name of output directory
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --max_recall_ref_len
+  description: "Do not include variants where REF length is more than\nthis number.\
+    \ Default is no limit"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --flank_length
+  description: "Length of sequence to add either side of variant when\nmaking probe\
+    \ sequences [100]"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - --truth_mask
+  description: "BED file of truth genome regions to mask. Any variants\nin the VCF\
+    \ matching to the mask are flagged and will\nnot count towards precision or recall\
+    \ if the output\nVCF is used with vcf_eval"
+  args: !SimpleFlagArg
+    name: FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --split_ref
+  description: "When using MUMmer, split the ref genome into one file\nper sequence,\
+    \ and run MUMmer on each split.\nExperimental - should improve run time for big\
+    \ genomes"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no_maxmatch
+  description: "When using nucmer to get expected calls for recall, do\nnot use the\
+    \ --maxmatch option. May reduce sensitivity\nto finding all variants"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --cpus
+  description: "Number of CPUs to use when running nucmer and minimap2\n[1]\n"
+  args: !SimpleFlagArg
+    name: INT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: varifier make_truth_vcf [options] <truth_fasta> <ref_fasta> <outdir>\n\
+  \nMake truth VCF file\n\npositional arguments:\n  truth_fasta           FASTA file\
+  \ of truth genome\n  ref_fasta             FASTA file of reference genome\n  outdir\
+  \                Name of output directory\n\noptional arguments:\n  -h, --help \
+  \           show this help message and exit\n  --max_recall_ref_len INT\n      \
+  \                  Do not include variants where REF length is more than\n     \
+  \                   this number. Default is no limit\n  --flank_length INT    Length\
+  \ of sequence to add either side of variant when\n                        making\
+  \ probe sequences [100]\n  --truth_mask FILENAME\n                        BED file\
+  \ of truth genome regions to mask. Any variants\n                        in the\
+  \ VCF matching to the mask are flagged and will\n                        not count\
+  \ towards precision or recall if the output\n                        VCF is used\
+  \ with vcf_eval\n  --split_ref           When using MUMmer, split the ref genome\
+  \ into one file\n                        per sequence, and run MUMmer on each split.\n\
+  \                        Experimental - should improve run time for big genomes\n\
+  \  --no_maxmatch         When using nucmer to get expected calls for recall, do\n\
+  \                        not use the --maxmatch option. May reduce sensitivity\n\
+  \                        to finding all variants\n  --cpus INT            Number\
+  \ of CPUs to use when running nucmer and minimap2\n                        [1]\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/varifier:0.3.1--pyhdfd78af_0

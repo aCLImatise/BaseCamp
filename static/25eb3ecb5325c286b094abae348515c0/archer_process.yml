@@ -1,0 +1,47 @@
+!Command
+command:
+- archer
+- process
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --grpcAddress
+  description: address of the server hosting the Archer service (default "localhost")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --grpcPort
+  description: TCP port to listen to by the gRPC server (default "9090")
+  args: !SimpleFlagArg
+    name: string
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: help for process
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Add a sample to the processing queue.\n\t\n\tThe processing request is\
+  \ collecting via STDIN and should be\n\tin JSON. The request will be validated prior\
+  \ to submitting it\n\tto the Archer service, so check the response.\n\t\n\tExample\
+  \ usage:\n\n\tcat sample.json | archer process\n\n\tWhere sample.json contains:\n\
+  \n\t{\n\t\t\"apiVersion\": \"1\",\n\t\t\"sampleID\": \"cvr1\",\n\t\t\"inputFASTQfiles\"\
+  : [\"/path/to/sample.fastq\"],\n\t\t\"scheme\": \"scov2\",\n\t\t\"schemeVersion\"\
+  : 3\n\t}\n\n\tFor scheme and schemeVersion, these must be available in the\n\tmanifest\
+  \ provided to the server (archer launch --manifestURL ...).\n\tBy default, the server\
+  \ uses the ARTIC primer scheme manifest.\n\nUsage:\n  archer process [flags]\n\n\
+  Flags:\n      --grpcAddress string   address of the server hosting the Archer service\
+  \ (default \"localhost\")\n      --grpcPort string      TCP port to listen to by\
+  \ the gRPC server (default \"9090\")\n  -h, --help                 help for process\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/archer:0.1.1--he881be0_0

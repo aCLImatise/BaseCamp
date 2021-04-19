@@ -1,0 +1,397 @@
+!Command
+command:
+- NanoPlot
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: Set the allowed number of threads to be used by the script
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: Write log messages also to terminal.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --store
+  description: Store the extracted data in a pickle file for future plotting.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --raw
+  description: Store the extracted data in tab separated file.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --huge
+  description: Input data is one very large file.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --outdir
+  description: Specify directory in which output has to be created.
+  args: !SimpleFlagArg
+    name: OUTDIR
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --prefix
+  description: Specify an optional prefix to be used for the output files.
+  args: !SimpleFlagArg
+    name: PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - --tsv_stats
+  description: Output the stats file as a properly formatted TSV.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --info_in_report
+  description: Add NanoPlot run info in the report.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --legacy
+  description: "Create four types of bivariate plots of x vs y, containing marginal\
+    \ summaries,\nusing the matplotlib and seaborn package"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --maxlength
+  description: Hide reads longer than length specified.
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --minlength
+  description: Hide reads shorter than length specified.
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --drop_outliers
+  description: Drop outlier reads with extreme long length.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --downsample
+  description: Reduce dataset to N reads by random sampling.
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --loglength
+  description: Additionally show logarithmic scaling of lengths in plots.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --percentqual
+  description: Use qualities as theoretical percent identities.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --alength
+  description: Use aligned read lengths rather than sequenced length (bam mode)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --minqual
+  description: Drop reads with an average quality lower than specified.
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --runtime_until
+  description: Only take the N first hours of a run
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --readtype
+  description: "Which read type to extract information about from summary. Options\
+    \ are 1D, 2D,\n1D2"
+  args: !ChoiceFlagArg
+    choices: !!set
+      2D:
+      1D:
+      1D2:
+- !Flag
+  optional: true
+  synonyms:
+  - --barcoded
+  description: Use if you want to split the summary file by barcode
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no_supplementary
+  description: Use if you want to remove supplementary alignments
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --color
+  description: Specify a valid matplotlib color for the plots
+  args: !SimpleFlagArg
+    name: COLOR
+- !Flag
+  optional: true
+  synonyms:
+  - -cm
+  - --colormap
+  description: Specify a valid matplotlib colormap for the heatmap
+  args: !SimpleFlagArg
+    name: COLORMAP
+- !Flag
+  optional: true
+  synonyms:
+  - --plots
+  description: "[{kde,hex,dot,pauvre} ...]\nSpecify which bivariate plots have to\
+    \ be made."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --listcolors
+  description: List the colors which are available for plotting and exit.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --listcolormaps
+  description: List the colors which are available for plotting and exit.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-N50
+  description: Hide the N50 mark in the read length histogram
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --N50
+  description: Show the N50 mark in the read length histogram
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --title
+  description: Add a title to all plots, requires quoting if using spaces
+  args: !SimpleFlagArg
+    name: TITLE
+- !Flag
+  optional: true
+  synonyms:
+  - --font_scale
+  description: Scale the font of the plots by a factor
+  args: !SimpleFlagArg
+    name: FONT_SCALE
+- !Flag
+  optional: true
+  synonyms:
+  - --dpi
+  description: Set the dpi for saving images
+  args: !SimpleFlagArg
+    name: DPI
+- !Flag
+  optional: true
+  synonyms:
+  - --hide_stats
+  description: Not adding Pearson R stats in some bivariate plots
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --fastq
+  description: Data is in one or more default fastq file(s).
+  args: !RepeatFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - --fasta
+  description: Data is in one or more fasta file(s).
+  args: !RepeatFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - --fastq_rich
+  description: "Data is in one or more fastq file(s) generated by albacore, MinKNOW\
+    \ or guppy\nwith additional information concerning channel and time."
+  args: !RepeatFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - --fastq_minimal
+  description: "Data is in one or more fastq file(s) generated by albacore, MinKNOW\
+    \ or guppy\nwith additional information concerning channel and time. Is extracted\
+    \ swiftly\nwithout elaborate checks."
+  args: !RepeatFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - --summary
+  description: Data is in one or more summary file(s) generated by albacore or guppy.
+  args: !RepeatFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - --bam
+  description: Data is in one or more sorted bam file(s).
+  args: !RepeatFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - --ubam
+  description: Data is in one or more unmapped bam file(s).
+  args: !RepeatFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - --cram
+  description: Data is in one or more sorted cram file(s).
+  args: !RepeatFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - --pickle
+  description: Data is a pickle file stored earlier.
+  args: !SimpleFlagArg
+    name: pickle
+- !Flag
+  optional: true
+  synonyms:
+  - --feather
+  description: Data is in one or more feather file(s).
+  args: !RepeatFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: ''
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show the help and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: Print version and exit.
+  args: !EmptyFlagArg {}
+help_text: "usage: NanoPlot [-h] [-v] [-t THREADS] [--verbose] [--store] [--raw] [--huge]\n\
+  \                [-o OUTDIR] [-p PREFIX] [--tsv_stats] [--info_in_report]\n    \
+  \            [--legacy] [--maxlength N] [--minlength N] [--drop_outliers]\n    \
+  \            [--downsample N] [--loglength] [--percentqual] [--alength]\n      \
+  \          [--minqual N] [--runtime_until N] [--readtype {1D,2D,1D2}]\n        \
+  \        [--barcoded] [--no_supplementary] [-c COLOR] [-cm COLORMAP]\n         \
+  \       [--plots [{kde,hex,dot,pauvre} ...]] [--listcolors]\n                [--listcolormaps]\
+  \ [--no-N50] [--N50] [--title TITLE]\n                [--font_scale FONT_SCALE]\
+  \ [--dpi DPI] [--hide_stats]\n                (--fastq file [file ...] | --fasta\
+  \ file [file ...] | --fastq_rich file [file ...] | --fastq_minimal file [file ...]\
+  \ | --summary file [file ...] | --bam file [file ...] | --ubam file [file ...] |\
+  \ --cram file [file ...] | --pickle pickle | --feather file [file ...])\n\nCREATES\
+  \ VARIOUS PLOTS FOR LONG READ SEQUENCING DATA.\n\nGeneral options:\n  -h, --help\
+  \            show the help and exit\n  -v, --version         Print version and exit.\n\
+  \  -t, --threads THREADS\n                        Set the allowed number of threads\
+  \ to be used by the script\n  --verbose             Write log messages also to terminal.\n\
+  \  --store               Store the extracted data in a pickle file for future plotting.\n\
+  \  --raw                 Store the extracted data in tab separated file.\n  --huge\
+  \                Input data is one very large file.\n  -o, --outdir OUTDIR   Specify\
+  \ directory in which output has to be created.\n  -p, --prefix PREFIX   Specify\
+  \ an optional prefix to be used for the output files.\n  --tsv_stats           Output\
+  \ the stats file as a properly formatted TSV.\n  --info_in_report      Add NanoPlot\
+  \ run info in the report.\n  --legacy              Create four types of bivariate\
+  \ plots of x vs y, containing marginal summaries,\n                        using\
+  \ the matplotlib and seaborn package\n\nOptions for filtering or transforming input\
+  \ prior to plotting:\n  --maxlength N         Hide reads longer than length specified.\n\
+  \  --minlength N         Hide reads shorter than length specified.\n  --drop_outliers\
+  \       Drop outlier reads with extreme long length.\n  --downsample N        Reduce\
+  \ dataset to N reads by random sampling.\n  --loglength           Additionally show\
+  \ logarithmic scaling of lengths in plots.\n  --percentqual         Use qualities\
+  \ as theoretical percent identities.\n  --alength             Use aligned read lengths\
+  \ rather than sequenced length (bam mode)\n  --minqual N           Drop reads with\
+  \ an average quality lower than specified.\n  --runtime_until N     Only take the\
+  \ N first hours of a run\n  --readtype {1D,2D,1D2}\n                        Which\
+  \ read type to extract information about from summary. Options are 1D, 2D,\n   \
+  \                     1D2\n  --barcoded            Use if you want to split the\
+  \ summary file by barcode\n  --no_supplementary    Use if you want to remove supplementary\
+  \ alignments\n\nOptions for customizing the plots created:\n  -c, --color COLOR\
+  \     Specify a valid matplotlib color for the plots\n  -cm, --colormap COLORMAP\n\
+  \                        Specify a valid matplotlib colormap for the heatmap\n \
+  \ --plots [{kde,hex,dot,pauvre} ...]\n                        Specify which bivariate\
+  \ plots have to be made.\n  --listcolors          List the colors which are available\
+  \ for plotting and exit.\n  --listcolormaps       List the colors which are available\
+  \ for plotting and exit.\n  --no-N50              Hide the N50 mark in the read\
+  \ length histogram\n  --N50                 Show the N50 mark in the read length\
+  \ histogram\n  --title TITLE         Add a title to all plots, requires quoting\
+  \ if using spaces\n  --font_scale FONT_SCALE\n                        Scale the\
+  \ font of the plots by a factor\n  --dpi DPI             Set the dpi for saving\
+  \ images\n  --hide_stats          Not adding Pearson R stats in some bivariate plots\n\
+  \nInput data sources, one of these is required.:\n  --fastq file [file ...]\n  \
+  \                      Data is in one or more default fastq file(s).\n  --fasta\
+  \ file [file ...]\n                        Data is in one or more fasta file(s).\n\
+  \  --fastq_rich file [file ...]\n                        Data is in one or more\
+  \ fastq file(s) generated by albacore, MinKNOW or guppy\n                      \
+  \  with additional information concerning channel and time.\n  --fastq_minimal file\
+  \ [file ...]\n                        Data is in one or more fastq file(s) generated\
+  \ by albacore, MinKNOW or guppy\n                        with additional information\
+  \ concerning channel and time. Is extracted swiftly\n                        without\
+  \ elaborate checks.\n  --summary file [file ...]\n                        Data is\
+  \ in one or more summary file(s) generated by albacore or guppy.\n  --bam file [file\
+  \ ...]\n                        Data is in one or more sorted bam file(s).\n  --ubam\
+  \ file [file ...]\n                        Data is in one or more unmapped bam file(s).\n\
+  \  --cram file [file ...]\n                        Data is in one or more sorted\
+  \ cram file(s).\n  --pickle pickle       Data is a pickle file stored earlier.\n\
+  \  --feather file [file ...]\n                        Data is in one or more feather\
+  \ file(s).\n\nEXAMPLES:\n    NanoPlot --summary sequencing_summary.txt --loglength\
+  \ -o summary-plots-log-transformed\n    NanoPlot -t 2 --fastq reads1.fastq.gz reads2.fastq.gz\
+  \ --maxlength 40000 --plots hex dot\n    NanoPlot --color yellow --bam alignment1.bam\
+  \ alignment2.bam alignment3.bam --downsample 10000\n    \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/nanoplot:1.35.5--pyhdfd78af_0

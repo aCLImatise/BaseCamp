@@ -1,0 +1,309 @@
+!Command
+command:
+- winnowmap
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: target.fa
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -H
+  description: use homopolymer-compressed k-mer
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  description: k-mer size (no larger than 28) [15]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  description: minimizer window size [50]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -W
+  description: input file containing list of high freq. k-mers []
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -I
+  description: split index for every ~NUM input bases [4G]
+  args: !SimpleFlagArg
+    name: NUM
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: dump index to FILE []
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: filter out top FLOAT (<1) fraction of repetitive minimizers [0.0]
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  description: stop chain enlongation if there are no minimizers in INT-bp [5000]
+  args: !SimpleFlagArg
+    name: NUM
+- !Flag
+  optional: true
+  synonyms:
+  - -G
+  description: max intron length (effective with -xsplice; changing -r) [200k]
+  args: !SimpleFlagArg
+    name: NUM
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  description: max fragment length (effective with -xsr or in the fragment mode) [800]
+  args: !SimpleFlagArg
+    name: NUM
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: bandwidth used in chaining and DP-based alignment [500]
+  args: !SimpleFlagArg
+    name: NUM
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: minimal number of minimizers on a chain [3]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: minimal chaining score (matching bases minus log gap penalty) [40]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -X
+  description: skip self and dual mappings (for the all-vs-all mode)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: min secondary-to-primary score ratio [0.8]
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --sv-off
+  description: turn off SV-aware mode
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -A
+  description: matching score [2]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -B
+  description: mismatch penalty [4]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -O
+  description: gap open penalty [4,24]
+  args: !OptionalFlagArg
+    names:
+    - INT
+    - INT
+    separator: ','
+- !Flag
+  optional: true
+  synonyms:
+  - -E
+  description: gap extension penalty; a k-long gap costs min{O1+k*E1,O2+k*E2} [2,1]
+  args: !OptionalFlagArg
+    names:
+    - INT
+    - INT
+    separator: ','
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  description: Z-drop score and inversion Z-drop score [400,200]
+  args: !OptionalFlagArg
+    names:
+    - INT
+    - INT
+    separator: ','
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: minimal peak DP alignment score [80]
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  description: how to find GT-AG. f:transcript strand, b:both strands, n:don't match
+    GT-AG [n]
+  args: !SimpleFlagArg
+    name: CHAR
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  description: output in the SAM format (PAF by default)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: output alignments to FILE [stdout]
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  description: write CIGAR with >65535 ops at the CG tag
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  description: SAM read group line in a format like '@RG\tID:foo\tSM:bar' []
+  args: !SimpleFlagArg
+    name: STR
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: output CIGAR in PAF
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --cs
+  description: "[=STR]   output the cs tag; STR is 'short' (if absent) or 'long' [none]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --MD
+  description: output the MD tag
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --eqx
+  description: write =/X CIGAR operators
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -Y
+  description: use soft clipping for supplementary alignments
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: manually set pthread count rather than automatically
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -K
+  description: minibatch size for mapping [1000M]
+  args: !SimpleFlagArg
+    name: NUM
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  description: "preset (always applied before other options) []\n- map-ont (ont-to-ref,\
+    \ uses default param)\n- map-pb (hifi-to-ref, all defaults but does finer read\
+    \ fragmentation in SV-aware mapping)\n- map-pb-clr (clr-to-ref, sets --sv-off)\n\
+    - splice/splice:hq - long-read/Pacbio-CCS spliced alignment, sets --sv-off\n-\
+    \ asm5/asm10/asm20 - asm-to-ref mapping\n"
+  args: !SimpleFlagArg
+    name: STR
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show version number
+  args: !EmptyFlagArg {}
+help_text: "winnowmap is built on top of minimap2, while modifying its minimizer sampling\
+  \ and indexing procedures\nUsage: winnowmap [options] <target.fa>|<target.idx> [query.fa]\
+  \ [...]\nOptions:\n  Indexing:\n    -H           use homopolymer-compressed k-mer\n\
+  \    -k INT       k-mer size (no larger than 28) [15]\n    -w INT       minimizer\
+  \ window size [50]\n    -W FILE      input file containing list of high freq. k-mers\
+  \ []\n    -I NUM       split index for every ~NUM input bases [4G]\n    -d FILE\
+  \      dump index to FILE []\n  Mapping:\n    -f FLOAT     filter out top FLOAT\
+  \ (<1) fraction of repetitive minimizers [0.0]\n    -g NUM       stop chain enlongation\
+  \ if there are no minimizers in INT-bp [5000]\n    -G NUM       max intron length\
+  \ (effective with -xsplice; changing -r) [200k]\n    -F NUM       max fragment length\
+  \ (effective with -xsr or in the fragment mode) [800]\n    -r NUM       bandwidth\
+  \ used in chaining and DP-based alignment [500]\n    -n INT       minimal number\
+  \ of minimizers on a chain [3]\n    -m INT       minimal chaining score (matching\
+  \ bases minus log gap penalty) [40]\n    -X           skip self and dual mappings\
+  \ (for the all-vs-all mode)\n    -p FLOAT     min secondary-to-primary score ratio\
+  \ [0.8]\n    --sv-off     turn off SV-aware mode\n  Alignment:\n    -A INT     \
+  \  matching score [2]\n    -B INT       mismatch penalty [4]\n    -O INT[,INT] gap\
+  \ open penalty [4,24]\n    -E INT[,INT] gap extension penalty; a k-long gap costs\
+  \ min{O1+k*E1,O2+k*E2} [2,1]\n    -z INT[,INT] Z-drop score and inversion Z-drop\
+  \ score [400,200]\n    -s INT       minimal peak DP alignment score [80]\n    -u\
+  \ CHAR      how to find GT-AG. f:transcript strand, b:both strands, n:don't match\
+  \ GT-AG [n]\n  Input/Output:\n    -a           output in the SAM format (PAF by\
+  \ default)\n    -o FILE      output alignments to FILE [stdout]\n    -L        \
+  \   write CIGAR with >65535 ops at the CG tag\n    -R STR       SAM read group line\
+  \ in a format like '@RG\\tID:foo\\tSM:bar' []\n    -c           output CIGAR in\
+  \ PAF\n    --cs[=STR]   output the cs tag; STR is 'short' (if absent) or 'long'\
+  \ [none]\n    --MD         output the MD tag\n    --eqx        write =/X CIGAR operators\n\
+  \    -Y           use soft clipping for supplementary alignments\n    -t INT   \
+  \    manually set pthread count rather than automatically\n    -K NUM       minibatch\
+  \ size for mapping [1000M]\n    --version    show version number\n  Preset:\n  \
+  \  -x STR       preset (always applied before other options) []\n              \
+  \   - map-ont (ont-to-ref, uses default param)\n                 - map-pb (hifi-to-ref,\
+  \ all defaults but does finer read fragmentation in SV-aware mapping)\n        \
+  \         - map-pb-clr (clr-to-ref, sets --sv-off)\n                 - splice/splice:hq\
+  \ - long-read/Pacbio-CCS spliced alignment, sets --sv-off\n                 - asm5/asm10/asm20\
+  \ - asm-to-ref mapping\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/winnowmap:2.01--h2e03b76_0

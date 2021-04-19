@@ -1,0 +1,252 @@
+!Command
+command:
+- quantifier.pl
+positional:
+- !Positional
+  optional: true
+  position: 0
+  name: timestamp
+  description: ''
+- !Positional
+  optional: true
+  position: 1
+  name: pdfs
+  description: ''
+- !Positional
+  optional: true
+  position: 2
+  name: sort
+  description: ''
+- !Positional
+  optional: true
+  position: 3
+  name: stringent
+  description: ''
+- !Positional
+  optional: true
+  position: 4
+  name: number
+  description: ''
+- !Positional
+  optional: true
+  position: 5
+  name: of
+  description: ''
+- !Positional
+  optional: true
+  position: 6
+  name: mismatches
+  description: ''
+- !Positional
+  optional: true
+  position: 7
+  name: in
+  description: ''
+- !Positional
+  optional: true
+  position: 8
+  name: reads
+  description: ''
+- !Positional
+  optional: true
+  position: 9
+  name: vs
+  description: ''
+- !Positional
+  optional: true
+  position: 10
+  name: precursor
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  description: list all values allowed for the species parameter that have an entry
+    at UCSC
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: miRNA precursor sequences from miRBase
+  args: !SimpleFlagArg
+    name: precursor.fa
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: miRNA sequences from miRBase
+  args: !SimpleFlagArg
+    name: mature.fa
+- !Flag
+  optional: true
+  synonyms:
+  - -P
+  description: specify this option of your mature miRNA file contains 5p and 3p ids
+    only
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: your read sequences
+  args: !SimpleFlagArg
+    name: reads.fa
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: '[file]    config.txt file with different sample ids... or just the
+    one sample id  -- deprecated'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: '[star.fa] optional star sequences from miRBase'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: "[species] e.g. Mouse or mmu\nif not searching in a specific species\
+    \ all species in your files will be analyzed\nelse only the species in your dataset\
+    \ is considered"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -y
+  description: '[time]    optional otherwise its generating a new one'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: if parameter given pdfs will not be generated, otherwise pdfs will
+    be generated
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: if parameter is given reads were not sorted by sample in pdf file,
+    default is sorting
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  description: "also considers precursor-mature mappings that have different ids,\
+    \ eg let7c\nwould be allowed to map to pre-let7a"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: do not do file conversion again
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  description: do not do mapping against precursor again
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  description: '[int]     number of allowed mismatches when mapping reads to precursors,
+    default 1'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  description: '[int]     number of nucleotides upstream of the mature sequence to
+    consider, default 2'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: '[int]     number of nucleotides downstream of the mature sequence
+    to consider, default 5'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  description: do not create an output.mrd file and pdfs if specified
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -W
+  description: read counts are weighed by their number of mappings. e.g. A read maps
+    twice so each position gets 0.5 added to its read profile
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -U
+  description: 'use only unique read mappings; Caveat: Some miRNAs have multiple precursors.
+    These will be underestimated in their expression since the multimappers are excluded'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -MORE_OPTIONS
+  description: ''
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -OPTIONS
+  description: ''
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "/usr/local/bin/quantifier.pl version [unknown] calling Getopt::Std::getopts\
+  \ (version 1.12 [paranoid]),\nrunning under Perl version 5.26.2.\n\nUsage: quantifier.pl\
+  \ [-OPTIONS [-MORE_OPTIONS]] [--] [PROGRAM_ARG1 ...]\n\nThe following single-character\
+  \ options are accepted:\n\tWith arguments: -p -m -r -s -t -y -c -g -e -f -T\n\t\
+  Boolean (without arguments): -d -o -k -u -n -x -v -j -P -W -U\n\nOptions may be\
+  \ merged together.  -- stops processing of options.\nSpace is not required between\
+  \ options and their arguments.\n  [Now continuing due to backward compatibility\
+  \ and excessive paranoia.\n   See 'perldoc Getopt::Std' about $Getopt::Std::STANDARD_HELP_VERSION.]\n\
+  usage:\n\tperl quantifier.pl [options] -p precursor.fa -m mature.fa -r reads.fa\
+  \ -s star.fa -t species -y [timestamp] -d [pdfs] -o [sort] -k [stringent] -g [number\
+  \ of mismatches in reads vs precursor mappings]\n\n[options]\n\n[mandatory parameters]\n\
+  \t-u\tlist all values allowed for the species parameter that have an entry at UCSC\n\
+  \n\t-p precursor.fa  miRNA precursor sequences from miRBase\n\t-m mature.fa    \
+  \ miRNA sequences from miRBase\n\t-P               specify this option of your mature\
+  \ miRNA file contains 5p and 3p ids only\n\t-r reads.fa      your read sequences\n\
+  \n[optional parameters]\n\t-c [file]    config.txt file with different sample ids...\
+  \ or just the one sample id  -- deprecated\n\t-s [star.fa] optional star sequences\
+  \ from miRBase\n\t-t [species] e.g. Mouse or mmu\n\t             if not searching\
+  \ in a specific species all species in your files will be analyzed\n\t         \
+  \    else only the species in your dataset is considered\n\t-y [time]    optional\
+  \ otherwise its generating a new one\n\t-d           if parameter given pdfs will\
+  \ not be generated, otherwise pdfs will be generated\n\t-o           if parameter\
+  \ is given reads were not sorted by sample in pdf file, default is sorting\n\t-k\
+  \           also considers precursor-mature mappings that have different ids, eg\
+  \ let7c\n\t             would be allowed to map to pre-let7a\n\t-n           do\
+  \ not do file conversion again\n\t-x           do not do mapping against precursor\
+  \ again\n\t-g [int]     number of allowed mismatches when mapping reads to precursors,\
+  \ default 1\n\t-e [int]     number of nucleotides upstream of the mature sequence\
+  \ to consider, default 2\n\t-f [int]     number of nucleotides downstream of the\
+  \ mature sequence to consider, default 5\n\t-j           do not create an output.mrd\
+  \ file and pdfs if specified\n\n\t-W           read counts are weighed by their\
+  \ number of mappings. e.g. A read maps twice so each position gets 0.5 added to\
+  \ its read profile\n\t-U           use only unique read mappings; Caveat: Some miRNAs\
+  \ have multiple precursors. These will be underestimated in their expression since\
+  \ the multimappers are excluded\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/mirdeep2:2.0.1.3--hdfd78af_0

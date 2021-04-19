@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, String
+
+Metagraph_Protein_Clean_V0_1_0 = CommandToolBuilder(tool="metagraph_Protein_clean", base_command=["metagraph_Protein", "clean"], inputs=[ToolInput(tag="in_min_count", input_type=Boolean(optional=True), prefix="--min-count", doc=InputDocumentation(doc="[INT]            min k-mer abundance, including [1]")), ToolInput(tag="in_max_count", input_type=Boolean(optional=True), prefix="--max-count", doc=InputDocumentation(doc="[INT]            max k-mer abundance, excluding [inf]")), ToolInput(tag="in_num_singletons", input_type=Boolean(optional=True), prefix="--num-singletons", doc=InputDocumentation(doc="[INT]       reset the number of count 1 k-mers in histogram (0: off) [0]")), ToolInput(tag="in_prune_tips", input_type=Boolean(optional=True), prefix="--prune-tips", doc=InputDocumentation(doc="[INT]           prune all dead ends shorter than this value [1]")), ToolInput(tag="in_prune_unit_igs", input_type=Boolean(optional=True), prefix="--prune-unitigs", doc=InputDocumentation(doc="[INT]        prune all unitigs with median k-mer counts smaller\nthan this value (0: auto) [1]")), ToolInput(tag="in_fall_back", input_type=Boolean(optional=True), prefix="--fallback", doc=InputDocumentation(doc="[INT]             fallback threshold if the automatic one cannot be\ndetermined (-1: disables fallback) [1]")), ToolInput(tag="in_count_bins_q", input_type=Boolean(optional=True), prefix="--count-bins-q", doc=InputDocumentation(doc="[FLOAT ...]   binning quantiles for partitioning k-mers with\ndifferent abundance levels ['0 1']\nExample: --count-bins-q '0 0.33 0.66 1'")), ToolInput(tag="in_unit_igs", input_type=Boolean(optional=True), prefix="--unitigs", doc=InputDocumentation(doc="extract unitigs instead of contigs [off]")), ToolInput(tag="in_to_fast_a", input_type=Boolean(optional=True), prefix="--to-fasta", doc=InputDocumentation(doc="dump clean sequences to compressed FASTA file [off]")), ToolInput(tag="in_enumerate", input_type=Boolean(optional=True), prefix="--enumerate", doc=InputDocumentation(doc="enumerate sequences in FASTA [off]")), ToolInput(tag="in_verbose", input_type=Boolean(optional=True), prefix="--verbose", doc=InputDocumentation(doc="switch on verbose output [off]")), ToolInput(tag="in_o", input_type=String(optional=True), prefix="-o", doc=InputDocumentation(doc="")), ToolInput(tag="in_graph", input_type=String(), position=0, doc=InputDocumentation(doc=""))], outputs=[], container="quay.io/biocontainers/metagraph:0.2.0--h74b8f77_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Metagraph_Protein_Clean_V0_1_0().translate("wdl")
+

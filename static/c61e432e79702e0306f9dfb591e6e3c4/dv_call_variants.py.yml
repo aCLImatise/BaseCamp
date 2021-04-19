@@ -1,0 +1,206 @@
+!Command
+command:
+- dv_call_variants.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --batch_size
+  description: ": Number of candidate variant tensors to batch together during\ninference.\
+    \ Larger batches use more memory but are more computational\nefficient.\n(default:\
+    \ '512')\n(an integer)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --checkpoint
+  description: ": Required. Path to the TensorFlow model checkpoint to use to\nevaluate\
+    \ candidate variant calls."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --config_string
+  description: ": String representation of a tf.ConfigProto message, with\ncomma-separated\
+    \ key: value pairs, such as \"allow_soft_placement: True\". The\nvalue can itself\
+    \ be another message, such as \"gpu_options:\n{per_process_gpu_memory_fraction:\
+    \ 0.5}\"."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --include_debug_info
+  description: set to true.
+  args: !SimpleFlagArg
+    name: is
+- !Flag
+  optional: true
+  synonyms:
+  - --cores
+  - --outfile
+  - --examples
+  description: Example directory from make_examples
+  args: !SimpleFlagArg
+    name: CORES
+- !Flag
+  optional: true
+  synonyms:
+  - --execution_hardware
+  description: ": When in cpu mode, call_variants will not place any ops\non the GPU,\
+    \ even if one is available. In accelerator mode call_variants\nvalidates that\
+    \ at least some hardware accelerator (GPU/TPU) was available\nfor us. This option\
+    \ is primarily for QA purposes to allow users to validate\ntheir accelerator environment\
+    \ is correctly configured. In auto mode, the\ndefault, op placement is entirely\
+    \ left up to TensorFlow.  In tpu mode, use\nand require TPU.\n(default: 'auto')"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gcp_project
+  description: ": Project name for the Cloud TPU-enabled project. If not\nspecified,\
+    \ we will attempt to automatically detect the GCE project from\nmetadata."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --kmp_blocktime
+  description: ": Value to set the KMP_BLOCKTIME environment variable to for\nefficient\
+    \ MKL inference. See\nhttps://www.tensorflow.org/performance/performance_guide\
+    \ for more\ninformation. The default value is 0, which provides the best performance\
+    \ in\nour tests. Set this flag to \"\" to not set the variable.\n(default: '0')"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --master
+  description: ": GRPC URL of the master (e.g. grpc://ip.address.of.tpu:8470). You\n\
+    must specify either this flag or --tpu_name."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max_batches
+  description: ": Max. batches to evaluate. Defaults to all.\n(an integer)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --model_name
+  description: ": The name of the model architecture of --checkpoint.\n(default: 'inception_v3')"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --num_mappers
+  description: ": Number of parallel mappers to create for examples.\n(default: '48')\n\
+    (an integer)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --num_readers
+  description: ": Number of parallel readers to create for examples.\n(default: '8')\n\
+    (an integer)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --outfile
+  description: ": Required. Destination path where we will write output candidate\n\
+    variants with additional likelihood information in TFRecord format of\nCallVariantsOutput\
+    \ protos."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --tpu_name
+  description: ": Name of the Cloud TPU for Cluster Resolvers. You must specify\n\
+    either this flag or --master. An empty value corresponds to no Cloud TPU.\nSee\
+    \ https://www.tensorflow.org/api_docs/python/tf/distribute/cluster_resolve\nr/TPUClusterResolver"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --tpu_zone
+  description: ": GCE zone where the Cloud TPU is located in. If not specified, we\n\
+    will attempt to automatically detect the GCE project from metadata."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sample
+  description: Sample name
+  args: !SimpleFlagArg
+    name: SAMPLE
+- !Flag
+  optional: true
+  synonyms:
+  - --model
+  description: DeepVariant trained model to use, defaults to wgs
+  args: !ChoiceFlagArg
+    choices: !!set
+      pacbio:
+      wgs:
+      hybrid:
+      wes:
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Baseline DeepVariant arguments\nCode for calling variants with a trained\
+  \ DeepVariant model.\nflags:\n\n/tmp/Bazel.runfiles_f8ngvbum/runfiles/com_google_deepvariant/deepvariant/call_variants.py:\n\
+  \  --batch_size: Number of candidate variant tensors to batch together during\n\
+  \    inference. Larger batches use more memory but are more computational\n    efficient.\n\
+  \    (default: '512')\n    (an integer)\n  --checkpoint: Required. Path to the TensorFlow\
+  \ model checkpoint to use to\n    evaluate candidate variant calls.\n  --config_string:\
+  \ String representation of a tf.ConfigProto message, with\n    comma-separated key:\
+  \ value pairs, such as \"allow_soft_placement: True\". The\n    value can itself\
+  \ be another message, such as \"gpu_options:\n    {per_process_gpu_memory_fraction:\
+  \ 0.5}\".\n  --[no]debugging_true_label_mode: If true, read the true labels from\
+  \ examples\n    and add to output. Note that the program will crash if the input\
+  \ examples do\n    not have the label field. When true, this will also fill everything\
+  \ when\n    --include_debug_info is set to true.\n    (default: 'false')\n  --examples:\
+  \ Required. tf.Example protos containing DeepVariant candidate\n    variants in\
+  \ TFRecord format, as emitted by make_examples. Can be a comma-\n    separated list\
+  \ of files, and the file names can contain wildcard characters.\n  --execution_hardware:\
+  \ When in cpu mode, call_variants will not place any ops\n    on the GPU, even if\
+  \ one is available. In accelerator mode call_variants\n    validates that at least\
+  \ some hardware accelerator (GPU/TPU) was available\n    for us. This option is\
+  \ primarily for QA purposes to allow users to validate\n    their accelerator environment\
+  \ is correctly configured. In auto mode, the\n    default, op placement is entirely\
+  \ left up to TensorFlow.  In tpu mode, use\n    and require TPU.\n    (default:\
+  \ 'auto')\n  --gcp_project: Project name for the Cloud TPU-enabled project. If not\n\
+  \    specified, we will attempt to automatically detect the GCE project from\n \
+  \   metadata.\n  --[no]include_debug_info: If true, include extra debug info in\
+  \ the output.\n    (default: 'false')\n  --kmp_blocktime: Value to set the KMP_BLOCKTIME\
+  \ environment variable to for\n    efficient MKL inference. See\n    https://www.tensorflow.org/performance/performance_guide\
+  \ for more\n    information. The default value is 0, which provides the best performance\
+  \ in\n    our tests. Set this flag to \"\" to not set the variable.\n    (default:\
+  \ '0')\n  --master: GRPC URL of the master (e.g. grpc://ip.address.of.tpu:8470).\
+  \ You\n    must specify either this flag or --tpu_name.\n  --max_batches: Max. batches\
+  \ to evaluate. Defaults to all.\n    (an integer)\n  --model_name: The name of the\
+  \ model architecture of --checkpoint.\n    (default: 'inception_v3')\n  --num_mappers:\
+  \ Number of parallel mappers to create for examples.\n    (default: '48')\n    (an\
+  \ integer)\n  --num_readers: Number of parallel readers to create for examples.\n\
+  \    (default: '8')\n    (an integer)\n  --outfile: Required. Destination path where\
+  \ we will write output candidate\n    variants with additional likelihood information\
+  \ in TFRecord format of\n    CallVariantsOutput protos.\n  --tpu_name: Name of the\
+  \ Cloud TPU for Cluster Resolvers. You must specify\n    either this flag or --master.\
+  \ An empty value corresponds to no Cloud TPU.\n    See https://www.tensorflow.org/api_docs/python/tf/distribute/cluster_resolve\n\
+  \    r/TPUClusterResolver\n  --tpu_zone: GCE zone where the Cloud TPU is located\
+  \ in. If not specified, we\n    will attempt to automatically detect the GCE project\
+  \ from metadata.\n  --[no]use_openvino: Use Intel OpenVINO as backend.\n    (default:\
+  \ 'false')\n  --[no]use_tpu: Use tpu if available.\n    (default: 'false')\n\nTry\
+  \ --helpfull to get a list of all flags.\n\n\nWrapper arguments\nusage: dv_call_variants.py\
+  \ [--cores CORES] --outfile OUTFILE --examples\n                           EXAMPLES\
+  \ --sample SAMPLE\n                           [--model {hybrid,pacbio,wes,wgs}]\
+  \ [-h]\n\nDeepVariant call_variants wrapper\n\noptional arguments:\n  --cores CORES\n\
+  \  --outfile OUTFILE\n  --examples EXAMPLES   Example directory from make_examples\n\
+  \  --sample SAMPLE       Sample name\n  --model {hybrid,pacbio,wes,wgs}\n      \
+  \                  DeepVariant trained model to use, defaults to wgs\n  -h, --help\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/deepvariant:1.1.0--py36hf3e76ba_0

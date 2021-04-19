@@ -1,0 +1,90 @@
+!Command
+command:
+- parsec
+- histories
+- show_history
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: information.
+  description: "Output:\ndetails of the given history or list of dataset info"
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --contents
+  description: "When ``True``, instead of the history details, return a list\nwith\
+    \ info for all datasets in the given history. Note that\ninside each dataset info\
+    \ dict, the id which should be used\nfor further requests about this history dataset\
+    \ is given by\nthe value of the `id` (not `dataset_id`) key."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --deleted
+  description: "When ``contents=True``, whether to filter for the deleted\ndatasets\
+    \ (``True``) or for the non-deleted ones (``False``).\nIf not set, no filtering\
+    \ is applied."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --visible
+  description: "When ``contents=True``, whether to filter for the visible\ndatasets\
+    \ (``True``) or for the hidden ones (``False``). If\nnot set, no filtering is\
+    \ applied."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --details
+  description: "When ``contents=True``, include dataset details. Set to\n'all' for\
+    \ the most information."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --types
+  description: "When ``contents=True``, filter for history content types. If\nset\
+    \ to ``['dataset']``, return only datasets. If set to\n``['dataset_collection']``,\
+    \ return only dataset collections.\nIf not set, no filtering is applied."
+  args: !SimpleFlagArg
+    name: TEXT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: parsec histories show_history [OPTIONS] HISTORY_ID\n\n  Get details\
+  \ of a given history. By default, just get the history meta\n  information.\n\n\
+  \  Output:\n\n      details of the given history or list of dataset info\n\nOptions:\n\
+  \  --contents      When ``True``, instead of the history details, return a list\n\
+  \                  with info for all datasets in the given history. Note that\n\
+  \                  inside each dataset info dict, the id which should be used\n\
+  \                  for further requests about this history dataset is given by\n\
+  \                  the value of the `id` (not `dataset_id`) key.\n\n  --deleted\
+  \ TEXT  When ``contents=True``, whether to filter for the deleted\n            \
+  \      datasets (``True``) or for the non-deleted ones (``False``).\n          \
+  \        If not set, no filtering is applied.\n\n  --visible TEXT  When ``contents=True``,\
+  \ whether to filter for the visible\n                  datasets (``True``) or for\
+  \ the hidden ones (``False``). If\n                  not set, no filtering is applied.\n\
+  \n  --details TEXT  When ``contents=True``, include dataset details. Set to\n  \
+  \                'all' for the most information.\n\n  --types TEXT    When ``contents=True``,\
+  \ filter for history content types. If\n                  set to ``['dataset']``,\
+  \ return only datasets. If set to\n                  ``['dataset_collection']``,\
+  \ return only dataset collections.\n                  If not set, no filtering is\
+  \ applied.\n\n  -h, --help      Show this message and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/galaxy-parsec:1.15.0--pyh5e36f6f_0

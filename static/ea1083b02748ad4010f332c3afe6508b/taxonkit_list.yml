@@ -1,0 +1,116 @@
+!Command
+command:
+- taxonkit
+- list
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: '741158'
+  description: 'Usage:'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --ids
+  description: TaxId(s), multiple values should be separated by comma
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -I
+  - --indent
+  description: indent (default "  ")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -J
+  - --json
+  description: output in JSON format. you can save the result in file with suffix
+    ".json" and open with modern text editor
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --show-name
+  description: output scientific name
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --show-rank
+  description: output rank
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --data-dir
+  description: directory containing nodes.dmp and names.dmp (default "/root/.taxonkit")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --line-buffered
+  description: use line buffering on output, i.e., immediately writing to stdin/file
+    for every line of output
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out-file
+  description: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --threads
+  description: number of CPUs. 4 is enough (default 2)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: print verbose information
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: help for list
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "List taxonomic subtrees of given TaxIds\n\nExamples:\n\n    $ taxonkit\
+  \ list --ids 9606 -n -r --indent \"    \"\n    9606 [species] Homo sapiens\n   \
+  \     63221 [subspecies] Homo sapiens neanderthalensis\n        741158 [subspecies]\
+  \ Homo sapiens subsp. 'Denisova'\n\n    $ taxonkit list --ids 9606 --indent \"\"\
+  \n    9606\n    63221\n    741158\n\nUsage:\n  taxonkit list [flags]\n\nFlags:\n\
+  \  -h, --help            help for list\n  -i, --ids string      TaxId(s), multiple\
+  \ values should be separated by comma\n  -I, --indent string   indent (default \"\
+  \  \")\n  -J, --json            output in JSON format. you can save the result in\
+  \ file with suffix \".json\" and open with modern text editor\n  -n, --show-name\
+  \       output scientific name\n  -r, --show-rank       output rank\n\nGlobal Flags:\n\
+  \      --data-dir string   directory containing nodes.dmp and names.dmp (default\
+  \ \"/root/.taxonkit\")\n      --line-buffered     use line buffering on output,\
+  \ i.e., immediately writing to stdin/file for every line of output\n  -o, --out-file\
+  \ string   out file (\"-\" for stdout, suffix .gz for gzipped out) (default \"-\"\
+  )\n  -j, --threads int       number of CPUs. 4 is enough (default 2)\n      --verbose\
+  \           print verbose information\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/taxonkit:0.8.0--h9ee0642_0

@@ -1,0 +1,95 @@
+!Command
+command:
+- fba
+- count
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  description: specify an input file
+  args: !SimpleFlagArg
+    name: INPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: specify an output file
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -us
+  - --umi_start
+  description: "specify expected UMI starting postion on read 1.\nDefault (16)"
+  args: !SimpleFlagArg
+    name: UMI_POS_START
+- !Flag
+  optional: true
+  synonyms:
+  - -ul
+  - --umi_length
+  description: "specify the length of UMIs on read 1. Reads with UMI\nlength less\
+    \ than this value will be discarded. Default\n(12)"
+  args: !SimpleFlagArg
+    name: UMI_LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - -um
+  - --umi_mismatches
+  description: "specify the maximun edit distance allowed for UMIs on\nread 1 for\
+    \ deduplication. Default (1)"
+  args: !SimpleFlagArg
+    name: UMI_MISMATCHES
+- !Flag
+  optional: true
+  synonyms:
+  - -ud
+  - --umi_deduplication_method
+  description: "specify UMI deduplication method (powered by UMI-\ntools. Smith, T.,\
+    \ et al. 2017). Default (directional)\n"
+  args: !ChoiceFlagArg
+    choices: !!set
+      cluster:
+      directional:
+      percentile:
+      unique:
+      adjacency:
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: fba count [-h] -i INPUT -o OUTPUT [-us UMI_POS_START] [-ul UMI_LENGTH]\n\
+  \                 [-um UMI_MISMATCHES]\n                 [-ud {unique,percentile,cluster,adjacency,directional}]\n\
+  \nCount UMIs per feature per cell (UMI deduplication), powered by UMI-tools\n(Smith,\
+  \ T., et al. 2017). Take the output of `extract` or `filter` as input.\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  -i INPUT,\
+  \ --input INPUT\n                        specify an input file\n  -o OUTPUT, --output\
+  \ OUTPUT\n                        specify an output file\n  -us UMI_POS_START, --umi_start\
+  \ UMI_POS_START\n                        specify expected UMI starting postion on\
+  \ read 1.\n                        Default (16)\n  -ul UMI_LENGTH, --umi_length\
+  \ UMI_LENGTH\n                        specify the length of UMIs on read 1. Reads\
+  \ with UMI\n                        length less than this value will be discarded.\
+  \ Default\n                        (12)\n  -um UMI_MISMATCHES, --umi_mismatches\
+  \ UMI_MISMATCHES\n                        specify the maximun edit distance allowed\
+  \ for UMIs on\n                        read 1 for deduplication. Default (1)\n \
+  \ -ud {unique,percentile,cluster,adjacency,directional}, --umi_deduplication_method\
+  \ {unique,percentile,cluster,adjacency,directional}\n                        specify\
+  \ UMI deduplication method (powered by UMI-\n                        tools. Smith,\
+  \ T., et al. 2017). Default (directional)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/fba:0.0.10.post1--pyhdfd78af_0

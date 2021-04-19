@@ -1,0 +1,998 @@
+!Command
+command:
+- protgraph
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: files
+  description: "Files containing the Swissprot/EMBL-Entries (either in\n.dat or .txt)"
+- !Positional
+  optional: false
+  position: 0
+  name: FeatureTable
+  description: --skip_init_met, -sm  Set this flag to exclude the skipping of the
+    initiator
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --num_of_entries
+  - -n
+  description: "Number of entries across all files (summed). if given,\nit will an\
+    \ estimation of the runtime"
+  args: !SimpleFlagArg
+    name: NUM_OF_ENTRIES
+- !Flag
+  optional: true
+  synonyms:
+  - --exclude_accessions
+  - -exclude
+  description: "A csv file only containing accessions in the first row\nwhich should\
+    \ be excluded for processsing. Setting this\nvalue may reduce the reading performance\
+    \ and therefore\nthe throughput performance overall."
+  args: !SimpleFlagArg
+    name: EXCLUDE_ACCESSIONS
+- !Flag
+  optional: true
+  synonyms:
+  - --num_of_processes
+  - -np
+  description: "The number of processes used to process entries. Each\nprocess can\
+    \ process an entry individually. The default\nvalue is 'cores - 1', since one\
+    \ process is reserved\nfor reading entries"
+  args: !SimpleFlagArg
+    name: NUM_OF_PROCESSES
+- !Flag
+  optional: true
+  synonyms:
+  - --verify_graph
+  - --verify
+  description: "Set this flag to perform a check whether the graph was\ngenerated\
+    \ correctly. Here we explicitly check for\nparallel edges, for DAG and other properties."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --skip_isoforms
+  - -si
+  description: "Set this flag to exclude isoforms 'VAR_SEQ' (and\npossible modification\
+    \ on them like variations, etc...)\nfrom the FeatureTable"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --skip_variants
+  - -sv
+  description: Set this flag to exclude 'VARIANT' from the
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --skip_signal
+  - -ss
+  description: "Set this flag to exclude skipping the signal peptide\n('SIGNAL' in\
+    \ FeatureTable) of specific proteins"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --digestion
+  - -d
+  description: "Set the digestion method. The full digestion cleaves\nat every edge,\
+    \ which can be useful for retrieving all\npossible peptides with arbitrary cutting\
+    \ points. The\ndigestion method skip skips the digestion completely.\nDefault:\
+    \ Trypsin"
+  args: !ChoiceFlagArg
+    choices: !!set
+      trypsin:
+      full:
+      skip:
+- !Flag
+  optional: true
+  synonyms:
+  - --no_merge
+  - -nm
+  description: "Set this flag to skip the merging process for chains\nof nodes and\
+    \ edges into a single node. Setting this\noption could drastically increase the\
+    \ size of the\ngraph, especially its depth."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --annotate_mono_weights
+  - -amw
+  description: "Set this to annotate nodes and edges with the\nmonoisotopic weights.\
+    \ (Values are taken from the mass\ndictionary)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --annotate_avrg_weights
+  - -aaw
+  description: "Set this to annotate nodes and edges with the average\nweights. (Values\
+    \ are taken from the mass dictionary)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --annotate_mono_weight_to_end
+  - -amwe
+  description: "Set this to annotate nodes and edges with the\nmonoisotopic end weights.\
+    \ This weight informs about\nhow much weight is at least left to get to the end\n\
+    Node. NOTE: Applying this, also sets the monoisotopic\nweights"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --annotate_avrg_weight_to_end
+  - -aawe
+  description: "Set this to annotate nodes and edges with the average\nend weights.\
+    \ This weight informs about how much weight\nis at least left to get to the end\
+    \ Node. NOTE:\nApplying this, also sets the average weights"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --mass_dict_type
+  - -mdt
+  description: "Set the type of the mass dictionary for amino acid.\nDefault is set\
+    \ to int"
+  args: !ChoiceFlagArg
+    choices: !!set
+      int:
+      float:
+- !Flag
+  optional: true
+  synonyms:
+  - --mass_dict_factor
+  - -mdf
+  description: "Set the factor for the masses inside the\nmass_dictionary. The default\
+    \ is set to 1 000 000 000,\nso that each mass can be converted into integers."
+  args: !SimpleFlagArg
+    name: MASS_DICT_FACTOR
+- !Flag
+  optional: true
+  synonyms:
+  - --calc_num_possibilities
+  - -cnp
+  description: "If this is set, the number of all possible (non\nrepeating) paths\
+    \ from the start to the end node will\nbe calculated. This uses a dynamic programming\n\
+    approach to calculate this in an efficient manner."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --calc_num_possibilities_miscleavages
+  - -cnpm
+  description: "If this is set, the number of all possible (non\nrepeating) paths\
+    \ from the start to the end node will\nbe calculated. This returns a list, sorted\
+    \ by the\nnumber of miscleavages (beginning at 0). Example:\nReturns: [1, 3, 5,\
+    \ 2] -> 1 path with 0 miscleavages, 3\npaths with 1 miscleavage, 5 paths with\
+    \ 2 miscleavages,\netc ... This uses a dynamic programming approach to\ncalculate\
+    \ this in an efficient manner. NOTE: This may\nget memory heavy, depending on\
+    \ the proteins\n(especially on Titin)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --calc_num_possibilities_hops
+  - -cnph
+  description: "If this is set, the number of all possible (non\nrepeating) paths\
+    \ from the start to the end node will\nbe calculated. This returns a list, sorted\
+    \ by the\nnumber of hops (beginning at 0). Example: Returns: [0,\n3, 5, 2] ->\
+    \ 0 paths with 0 hops, 3 paths with 1 hop, 5\npaths with 2 hops, etc ... This\
+    \ uses a dynamic\nprogramming approach to calculate this in an efficient\nmanner.\
+    \ NOTE: This mis even more memory heavy then\nbinning on miscleavages. Of course\
+    \ it depends on the\nproteins (especially on Titin) NOTE: The dedicated\nstart\
+    \ and end node is not counted here. If you\ntraverse a graph, expect +2 more nodes\
+    \ in a path!"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --output_csv
+  - -o
+  description: "Set the output file, which will contain information\nabout the ProteinGaph\
+    \ (in csv) NOTE: It will write to\n'protein_graph_statistics.csv' and overwrite\
+    \ if such a\nfile exists. Default is set to the current working\ndirectory"
+  args: !SimpleFlagArg
+    name: OUTPUT_CSV
+- !Flag
+  optional: true
+  synonyms:
+  - --export_output_folder
+  - -eo
+  description: "Set the output folder to specify the dirctory of\nexported graphs\
+    \ (dot, graphml, gml) NOTE: It will\noverwrite exisiting files. Default is set\
+    \ the current\nworking directory"
+  args: !SimpleFlagArg
+    name: EXPORT_OUTPUT_FOLDER
+- !Flag
+  optional: true
+  synonyms:
+  - --export_in_directories
+  - -edirs
+  description: "Set this flag to export files in directories (coded by\naccession)\
+    \ instead of directly by the accession name.\nThis could be useful if millions\
+    \ of proteins are added\ninto this tool, since a folder with millions of\nentries\
+    \ can be problematic in some cases."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --export_dot
+  - -edot
+  description: Set this flag to export a dot file for each protein
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --export_graphml
+  - -egraphml
+  description: "Set this flag to export a GraphML file for each\nprotein. This is\
+    \ the recommended export method."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --export_gml
+  - -egml
+  description: Set this flag to export a GML file for each protein
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --export_pickle
+  - -epickle
+  description: Set this flag to export a Pickle file for each protein
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --export_redisgraph
+  - -eredisg
+  description: "Set this flag to export to a redis-server having the\nmodule RedisGraph\
+    \ loaded."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --redisgraph_host
+  description: "Set the host name for the redis-server having the\nmodule RedisGraph.\
+    \ Default: localhost"
+  args: !SimpleFlagArg
+    name: REDISGRAPH_HOST
+- !Flag
+  optional: true
+  synonyms:
+  - --redisgraph_port
+  description: "Set the port for the redis-server having the module\nRedisGraph. Default:\
+    \ 6379"
+  args: !SimpleFlagArg
+    name: REDISGRAPH_PORT
+- !Flag
+  optional: true
+  synonyms:
+  - --redisgraph_graph
+  description: "Set the graph name on the redis-server having the\nmodule RedisGraph.\
+    \ Default 'proteins'"
+  args: !SimpleFlagArg
+    name: REDISGRAPH_GRAPH
+- !Flag
+  optional: true
+  synonyms:
+  - --export_postgres
+  - -epg
+  description: "Set this flag to export to a postgresql server.NOTE:\nThis will try\
+    \ to create the tables 'nodes' and 'edges'\non a specified database. Make sure\
+    \ the database in\nwhich the data should be saved also exists."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --postgres_host
+  description: "Set the host name for the postgresql server. Default:\n127.0.0.1"
+  args: !SimpleFlagArg
+    name: POSTGRES_HOST
+- !Flag
+  optional: true
+  synonyms:
+  - --postgres_port
+  description: 'Set the port for the postgresql server. Default: 5433'
+  args: !SimpleFlagArg
+    name: POSTGRES_PORT
+- !Flag
+  optional: true
+  synonyms:
+  - --postgres_user
+  description: "Set the username for the postgresql server. Default:\npostgres"
+  args: !SimpleFlagArg
+    name: POSTGRES_USER
+- !Flag
+  optional: true
+  synonyms:
+  - --postgres_password
+  description: "Set the password for the postgresql server. Default:\ndeveloper"
+  args: !SimpleFlagArg
+    name: POSTGRES_PASSWORD
+- !Flag
+  optional: true
+  synonyms:
+  - --postgres_database
+  description: "Set the database which will be used for the postgresql\nserver. Default:\
+    \ proteins"
+  args: !SimpleFlagArg
+    name: POSTGRES_DATABASE
+- !Flag
+  optional: true
+  synonyms:
+  - --export_mysql
+  - -emysql
+  description: "Set this flag to export to a MySQL server.NOTE: This\nwill try to\
+    \ create the tables 'nodes' and 'edges' on a\nspecified database. Make sure the\
+    \ database in which\nthe data should be saved also exists."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --mysql_host
+  description: "Set the host name for the MySQL server. Default:\n127.0.0.1"
+  args: !SimpleFlagArg
+    name: MYSQL_HOST
+- !Flag
+  optional: true
+  synonyms:
+  - --mysql_port
+  description: 'Set the port for the MySQL server. Default: 3306'
+  args: !SimpleFlagArg
+    name: MYSQL_PORT
+- !Flag
+  optional: true
+  synonyms:
+  - --mysql_user
+  description: 'Set the username for the MySQL server. Default: root'
+  args: !SimpleFlagArg
+    name: MYSQL_USER
+- !Flag
+  optional: true
+  synonyms:
+  - --mysql_password
+  description: "Set the password for the MySQL server. Default:\n<empty>"
+  args: !SimpleFlagArg
+    name: MYSQL_PASSWORD
+- !Flag
+  optional: true
+  synonyms:
+  - --mysql_database
+  description: "Set the database which will be used for the MySQL\nserver. Default:\
+    \ proteins"
+  args: !SimpleFlagArg
+    name: MYSQL_DATABASE
+- !Flag
+  optional: true
+  synonyms:
+  - --export_peptide_postgres
+  - -epeppg
+  description: "Set this flag to export peptides (specifically paths)\nto a postgresql\
+    \ server.NOTE: This will try to create\nthe tables 'accessions' and 'peptides'\
+    \ on a specified\ndatabase. Make sure the database in which the data\nshould be\
+    \ saved also exists. If problems occur, try to\ndelete the generated tables and\
+    \ retry again."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pep_postgres_host
+  description: "Set the host name for the postgresql server. Default:\n127.0.0.1"
+  args: !SimpleFlagArg
+    name: PEP_POSTGRES_HOST
+- !Flag
+  optional: true
+  synonyms:
+  - --pep_postgres_port
+  description: 'Set the port for the postgresql server. Default: 5433'
+  args: !SimpleFlagArg
+    name: PEP_POSTGRES_PORT
+- !Flag
+  optional: true
+  synonyms:
+  - --pep_postgres_user
+  description: "Set the username for the postgresql server. Default:\npostgres"
+  args: !SimpleFlagArg
+    name: PEP_POSTGRES_USER
+- !Flag
+  optional: true
+  synonyms:
+  - --pep_postgres_password
+  description: "Set the password for the postgresql server. Default:\ndeveloper"
+  args: !SimpleFlagArg
+    name: PEP_POSTGRES_PASSWORD
+- !Flag
+  optional: true
+  synonyms:
+  - --pep_postgres_database
+  description: "Set the database which will be used for the postgresql\nserver. Default:\
+    \ proteins"
+  args: !SimpleFlagArg
+    name: PEP_POSTGRES_DATABASE
+- !Flag
+  optional: true
+  synonyms:
+  - --pep_postgres_hops
+  description: "Set the number of hops (max length of path) which\nshould be used\
+    \ to get paths from a graph. NOTE: the\nlarger the number the more memory may\
+    \ be needed. This\ndepends on the protein which currently is processed.\nDefault\
+    \ is set to 'None', so all lengths are\nconsidered."
+  args: !SimpleFlagArg
+    name: PEP_POSTGRES_HOPS
+- !Flag
+  optional: true
+  synonyms:
+  - --pep_postgres_miscleavages
+  description: "Set this number to filter the generated paths by their\nmiscleavages.The\
+    \ protein graphs do contain infomration\nabout 'infinite' miscleavages and therefor\
+    \ also return\nthose paths/peptides. If setting (default) to '-1',\nall results\
+    \ are considered. However you can limit the\nnumber of miscleavages, if needed."
+  args: !SimpleFlagArg
+    name: PEP_POSTGRES_MISCLEAVAGES
+- !Flag
+  optional: true
+  synonyms:
+  - --pep_postgres_skip_x
+  description: "Set this flag to skip to skip all entries, which\ncontain an X"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pep_postgres_no_duplicates
+  description: "Set this flag to not insert duplicates into the\ndatabase. NOTE: Setting\
+    \ this value decreases the\nperformance drastically"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pep_postgres_use_igraph
+  description: "Set this flag to use igraph instead of netx. NOTE: If\nsetting this\
+    \ flag, the peptide generation will be\nconsiderably faster but also consumes\
+    \ much more\nmemory. Also, the igraph implementation DOES NOT go\nover each single\
+    \ edge, so some (repeating results) may\nnever be discovered when using this flag."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pep_postgres_min_pep_length
+  description: "Set the minimum peptide length to filter out smaller\nexisting path/peptides.\
+    \ Here, the actual number of\naminoacid for a peptide is referenced. Default:\
+    \ 0"
+  args: !SimpleFlagArg
+    name: PEP_POSTGRES_MIN_PEP_LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - --pep_postgres_batch_size
+  description: "Set the batch size. This defines how many peptides are\ninserted at\
+    \ once. Default: 25000"
+  args: !SimpleFlagArg
+    name: PEP_POSTGRES_BATCH_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --export_peptide_mysql
+  - -epepmysql
+  description: "Set this flag to export peptides (specifically paths)\nto a MySQL\
+    \ server.NOTE: This will try to create the\ntables 'accessions' and 'peptides'\
+    \ on a specified\ndatabase. Make sure the database in which the data\nshould be\
+    \ saved also exists. If problems occur, try to\ndelete the generated tables and\
+    \ retry again."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pep_mysql_host
+  description: "Set the host name for the mysql server. Default:\n127.0.0.1"
+  args: !SimpleFlagArg
+    name: PEP_MYSQL_HOST
+- !Flag
+  optional: true
+  synonyms:
+  - --pep_mysql_port
+  description: 'Set the port for the mysql server. Default: 3306'
+  args: !SimpleFlagArg
+    name: PEP_MYSQL_PORT
+- !Flag
+  optional: true
+  synonyms:
+  - --pep_mysql_user
+  description: 'Set the username for the mysql server. Default: root'
+  args: !SimpleFlagArg
+    name: PEP_MYSQL_USER
+- !Flag
+  optional: true
+  synonyms:
+  - --pep_mysql_password
+  description: "Set the password for the mysql server. Default: ''"
+  args: !SimpleFlagArg
+    name: PEP_MYSQL_PASSWORD
+- !Flag
+  optional: true
+  synonyms:
+  - --pep_mysql_database
+  description: "Set the database which will be used for the mysql\nserver. Default:\
+    \ proteins"
+  args: !SimpleFlagArg
+    name: PEP_MYSQL_DATABASE
+- !Flag
+  optional: true
+  synonyms:
+  - --pep_mysql_hops
+  description: "Set the number of hops (max length of path) which\nshould be used\
+    \ to get paths from a graph. NOTE: the\nlarger the number the more memory may\
+    \ be needed. This\ndepends on the protein which currently is processed.\nDefault\
+    \ is set to 'None', so all lengths are\nconsidered."
+  args: !SimpleFlagArg
+    name: PEP_MYSQL_HOPS
+- !Flag
+  optional: true
+  synonyms:
+  - --pep_mysql_miscleavages
+  description: "Set this number to filter the generated paths by their\nmiscleavages.The\
+    \ protein graphs do contain infomration\nabout 'infinite' miscleavages and therefor\
+    \ also return\nthose paths/peptides. If setting (default) to '-1',\nall results\
+    \ are considered. However you can limit the\nnumber of miscleavages, if needed."
+  args: !SimpleFlagArg
+    name: PEP_MYSQL_MISCLEAVAGES
+- !Flag
+  optional: true
+  synonyms:
+  - --pep_mysql_skip_x
+  description: "Set this flag to skip to skip all entries, which\ncontain an X"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pep_mysql_no_duplicates
+  description: "Set this flag to not insert duplicates into the\ndatabase. NOTE: Setting\
+    \ this value decreases the\nperformance drastically"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pep_mysql_use_igraph
+  description: "Set this flag to use igraph instead of netx. NOTE: If\nsetting this\
+    \ flag, the peptide generation will be\nconsiderably faster but also consumes\
+    \ much more\nmemory. Also, the igraph implementation DOES NOT go\nover each single\
+    \ edge, so some (repeating results) may\nnever be discovered when using this flag."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pep_mysql_min_pep_length
+  description: "Set the minimum peptide length to filter out smaller\nexisting path/peptides.\
+    \ Here, the actual number of\naminoacid for a peptide is referenced. Default:\
+    \ 0"
+  args: !SimpleFlagArg
+    name: PEP_MYSQL_MIN_PEP_LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - --pep_mysql_batch_size
+  description: "Set the batch size. This defines how many peptides are\ninserted at\
+    \ once. Default: 25000"
+  args: !SimpleFlagArg
+    name: PEP_MYSQL_BATCH_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --export_peptide_fasta
+  - -epepfasta
+  description: "Set this flag to export peptides into a single fasta\nfile."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pep_fasta_out
+  description: "Set the output file for the peptide fasta export.\nDefault: '${pwd}/peptides.fasta'.\
+    \ NOTE: This will\noverwrite existing files."
+  args: !SimpleFlagArg
+    name: PEP_FASTA_OUT
+- !Flag
+  optional: true
+  synonyms:
+  - --pep_fasta_hops
+  description: "Set the number of hops (max length of path) which\nshould be used\
+    \ to get paths from a graph. NOTE: the\nlarger the number the more memory may\
+    \ be needed. This\ndepends on the protein which currently is processed.\nDefault\
+    \ is set to 'None', so all lengths are\nconsidered."
+  args: !SimpleFlagArg
+    name: PEP_FASTA_HOPS
+- !Flag
+  optional: true
+  synonyms:
+  - --pep_fasta_miscleavages
+  description: "Set this number to filter the generated paths by their\nmiscleavages.The\
+    \ protein graphs do contain infomration\nabout 'infinite' miscleavages and therefor\
+    \ also return\nthose paths/peptides. If setting (default) to '-1',\nall results\
+    \ are considered. However you can limit the\nnumber of miscleavages, if needed."
+  args: !SimpleFlagArg
+    name: PEP_FASTA_MISCLEAVAGES
+- !Flag
+  optional: true
+  synonyms:
+  - --pep_fasta_skip_x
+  description: "Set this flag to skip to skip all entries, which\ncontain an X"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pep_fasta_use_igraph
+  description: "Set this flag to use igraph instead of netx. NOTE: If\nsetting this\
+    \ flag, the peptide generation will be\nconsiderably faster but also consumes\
+    \ much more\nmemory. Also, the igraph implementation DOES NOT go\nover each single\
+    \ edge, so some (repeating results) may\nnever be discovered when using this flag."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pep_fasta_min_pep_length
+  description: "Set the minimum peptide length to filter out smaller\nexisting path/peptides.\
+    \ Here, the actual number of\naminoacid for a peptide is referenced. Default:\
+    \ 0"
+  args: !SimpleFlagArg
+    name: PEP_FASTA_MIN_PEP_LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - --pep_fasta_batch_size
+  description: "Set the batch size. This defines how many peptides are\nprocessed\
+    \ and written at once. Default: 25000"
+  args: !SimpleFlagArg
+    name: PEP_FASTA_BATCH_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --export_gremlin
+  - -egremlin
+  description: "Set this flag to export the graphs via gremlin to a\ngremlin server.NOTE:\
+    \ The export is very slow, since it\nexecutes each node as a single query (tested\
+    \ on\nJanusGraph and Apache Gremlin Server). This exporter\nis not well implemented\
+    \ and may not work. This is due\nto difficulties implementing such an exporter\
+    \ in a\nglobal manner. To reduce the number of errors: Try to\nhave a stable connection\
+    \ to the gremlin-server and\nalso allocate enough resource for it, so that it\
+    \ can\nprocess the queries quick enough."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gremlin_url
+  description: "Set the url to the gremlin URL (no authentication).\nDefault: 'ws://localhost:8182/gremlin'"
+  args: !SimpleFlagArg
+    name: GREMLIN_URL
+- !Flag
+  optional: true
+  synonyms:
+  - --gremlin_traversal_source
+  description: "Set the traversal source for remote. Default 'g'\n"
+  args: !SimpleFlagArg
+    name: GREMLIN_TRAVERSAL_SOURCE
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: protgraph [-h] [--num_of_entries NUM_OF_ENTRIES]\n            \
+  \     [--exclude_accessions EXCLUDE_ACCESSIONS]\n                 [--num_of_processes\
+  \ NUM_OF_PROCESSES] [--verify_graph]\n                 [--skip_isoforms] [--skip_variants]\
+  \ [--skip_init_met]\n                 [--skip_signal] [--digestion {trypsin,skip,full}]\n\
+  \                 [--no_merge] [--annotate_mono_weights]\n                 [--annotate_avrg_weights]\
+  \ [--annotate_mono_weight_to_end]\n                 [--annotate_avrg_weight_to_end]\n\
+  \                 [--mass_dict_type {int,float}]\n                 [--mass_dict_factor\
+  \ MASS_DICT_FACTOR]\n                 [--calc_num_possibilities]\n             \
+  \    [--calc_num_possibilities_miscleavages]\n                 [--calc_num_possibilities_hops]\
+  \ [--output_csv OUTPUT_CSV]\n                 [--export_output_folder EXPORT_OUTPUT_FOLDER]\n\
+  \                 [--export_in_directories] [--export_dot] [--export_graphml]\n\
+  \                 [--export_gml] [--export_pickle] [--export_redisgraph]\n     \
+  \            [--redisgraph_host REDISGRAPH_HOST]\n                 [--redisgraph_port\
+  \ REDISGRAPH_PORT]\n                 [--redisgraph_graph REDISGRAPH_GRAPH] [--export_postgres]\n\
+  \                 [--postgres_host POSTGRES_HOST]\n                 [--postgres_port\
+  \ POSTGRES_PORT]\n                 [--postgres_user POSTGRES_USER]\n           \
+  \      [--postgres_password POSTGRES_PASSWORD]\n                 [--postgres_database\
+  \ POSTGRES_DATABASE] [--export_mysql]\n                 [--mysql_host MYSQL_HOST]\
+  \ [--mysql_port MYSQL_PORT]\n                 [--mysql_user MYSQL_USER] [--mysql_password\
+  \ MYSQL_PASSWORD]\n                 [--mysql_database MYSQL_DATABASE] [--export_peptide_postgres]\n\
+  \                 [--pep_postgres_host PEP_POSTGRES_HOST]\n                 [--pep_postgres_port\
+  \ PEP_POSTGRES_PORT]\n                 [--pep_postgres_user PEP_POSTGRES_USER]\n\
+  \                 [--pep_postgres_password PEP_POSTGRES_PASSWORD]\n            \
+  \     [--pep_postgres_database PEP_POSTGRES_DATABASE]\n                 [--pep_postgres_hops\
+  \ PEP_POSTGRES_HOPS]\n                 [--pep_postgres_miscleavages PEP_POSTGRES_MISCLEAVAGES]\n\
+  \                 [--pep_postgres_skip_x] [--pep_postgres_no_duplicates]\n     \
+  \            [--pep_postgres_use_igraph]\n                 [--pep_postgres_min_pep_length\
+  \ PEP_POSTGRES_MIN_PEP_LENGTH]\n                 [--pep_postgres_batch_size PEP_POSTGRES_BATCH_SIZE]\n\
+  \                 [--export_peptide_mysql] [--pep_mysql_host PEP_MYSQL_HOST]\n \
+  \                [--pep_mysql_port PEP_MYSQL_PORT]\n                 [--pep_mysql_user\
+  \ PEP_MYSQL_USER]\n                 [--pep_mysql_password PEP_MYSQL_PASSWORD]\n\
+  \                 [--pep_mysql_database PEP_MYSQL_DATABASE]\n                 [--pep_mysql_hops\
+  \ PEP_MYSQL_HOPS]\n                 [--pep_mysql_miscleavages PEP_MYSQL_MISCLEAVAGES]\n\
+  \                 [--pep_mysql_skip_x] [--pep_mysql_no_duplicates]\n           \
+  \      [--pep_mysql_use_igraph]\n                 [--pep_mysql_min_pep_length PEP_MYSQL_MIN_PEP_LENGTH]\n\
+  \                 [--pep_mysql_batch_size PEP_MYSQL_BATCH_SIZE]\n              \
+  \   [--export_peptide_fasta] [--pep_fasta_out PEP_FASTA_OUT]\n                 [--pep_fasta_hops\
+  \ PEP_FASTA_HOPS]\n                 [--pep_fasta_miscleavages PEP_FASTA_MISCLEAVAGES]\n\
+  \                 [--pep_fasta_skip_x] [--pep_fasta_use_igraph]\n              \
+  \   [--pep_fasta_min_pep_length PEP_FASTA_MIN_PEP_LENGTH]\n                 [--pep_fasta_batch_size\
+  \ PEP_FASTA_BATCH_SIZE]\n                 [--export_gremlin] [--gremlin_url GREMLIN_URL]\n\
+  \                 [--gremlin_traversal_source GREMLIN_TRAVERSAL_SOURCE]\n      \
+  \           files [files ...]\n\nGraph-Generator for Proteins/Peptides and Exporter\
+  \ to various formats\n\npositional arguments:\n  files                 Files containing\
+  \ the Swissprot/EMBL-Entries (either in\n                        .dat or .txt)\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  --num_of_entries NUM_OF_ENTRIES, -n NUM_OF_ENTRIES\n                        Number\
+  \ of entries across all files (summed). if given,\n                        it will\
+  \ an estimation of the runtime\n  --exclude_accessions EXCLUDE_ACCESSIONS, -exclude\
+  \ EXCLUDE_ACCESSIONS\n                        A csv file only containing accessions\
+  \ in the first row\n                        which should be excluded for processsing.\
+  \ Setting this\n                        value may reduce the reading performance\
+  \ and therefore\n                        the throughput performance overall.\n \
+  \ --num_of_processes NUM_OF_PROCESSES, -np NUM_OF_PROCESSES\n                  \
+  \      The number of processes used to process entries. Each\n                 \
+  \       process can process an entry individually. The default\n               \
+  \         value is 'cores - 1', since one process is reserved\n                \
+  \        for reading entries\n  --verify_graph, --verify\n                     \
+  \   Set this flag to perform a check whether the graph was\n                   \
+  \     generated correctly. Here we explicitly check for\n                      \
+  \  parallel edges, for DAG and other properties.\n  --skip_isoforms, -si  Set this\
+  \ flag to exclude isoforms 'VAR_SEQ' (and\n                        possible modification\
+  \ on them like variations, etc...)\n                        from the FeatureTable\n\
+  \  --skip_variants, -sv  Set this flag to exclude 'VARIANT' from the\n         \
+  \               FeatureTable\n  --skip_init_met, -sm  Set this flag to exclude the\
+  \ skipping of the initiator\n                        methionine ('INIT_M' in FeatureTable)\
+  \ for proteins\n  --skip_signal, -ss    Set this flag to exclude skipping the signal\
+  \ peptide\n                        ('SIGNAL' in FeatureTable) of specific proteins\n\
+  \  --digestion {trypsin,skip,full}, -d {trypsin,skip,full}\n                   \
+  \     Set the digestion method. The full digestion cleaves\n                   \
+  \     at every edge, which can be useful for retrieving all\n                  \
+  \      possible peptides with arbitrary cutting points. The\n                  \
+  \      digestion method skip skips the digestion completely.\n                 \
+  \       Default: Trypsin\n  --no_merge, -nm       Set this flag to skip the merging\
+  \ process for chains\n                        of nodes and edges into a single node.\
+  \ Setting this\n                        option could drastically increase the size\
+  \ of the\n                        graph, especially its depth.\n  --annotate_mono_weights,\
+  \ -amw\n                        Set this to annotate nodes and edges with the\n\
+  \                        monoisotopic weights. (Values are taken from the mass\n\
+  \                        dictionary)\n  --annotate_avrg_weights, -aaw\n        \
+  \                Set this to annotate nodes and edges with the average\n       \
+  \                 weights. (Values are taken from the mass dictionary)\n  --annotate_mono_weight_to_end,\
+  \ -amwe\n                        Set this to annotate nodes and edges with the\n\
+  \                        monoisotopic end weights. This weight informs about\n \
+  \                       how much weight is at least left to get to the end\n   \
+  \                     Node. NOTE: Applying this, also sets the monoisotopic\n  \
+  \                      weights\n  --annotate_avrg_weight_to_end, -aawe\n       \
+  \                 Set this to annotate nodes and edges with the average\n      \
+  \                  end weights. This weight informs about how much weight\n    \
+  \                    is at least left to get to the end Node. NOTE:\n          \
+  \              Applying this, also sets the average weights\n  --mass_dict_type\
+  \ {int,float}, -mdt {int,float}\n                        Set the type of the mass\
+  \ dictionary for amino acid.\n                        Default is set to int\n  --mass_dict_factor\
+  \ MASS_DICT_FACTOR, -mdf MASS_DICT_FACTOR\n                        Set the factor\
+  \ for the masses inside the\n                        mass_dictionary. The default\
+  \ is set to 1 000 000 000,\n                        so that each mass can be converted\
+  \ into integers.\n  --calc_num_possibilities, -cnp\n                        If this\
+  \ is set, the number of all possible (non\n                        repeating) paths\
+  \ from the start to the end node will\n                        be calculated. This\
+  \ uses a dynamic programming\n                        approach to calculate this\
+  \ in an efficient manner.\n  --calc_num_possibilities_miscleavages, -cnpm\n    \
+  \                    If this is set, the number of all possible (non\n         \
+  \               repeating) paths from the start to the end node will\n         \
+  \               be calculated. This returns a list, sorted by the\n            \
+  \            number of miscleavages (beginning at 0). Example:\n               \
+  \         Returns: [1, 3, 5, 2] -> 1 path with 0 miscleavages, 3\n             \
+  \           paths with 1 miscleavage, 5 paths with 2 miscleavages,\n           \
+  \             etc ... This uses a dynamic programming approach to\n            \
+  \            calculate this in an efficient manner. NOTE: This may\n           \
+  \             get memory heavy, depending on the proteins\n                    \
+  \    (especially on Titin)\n  --calc_num_possibilities_hops, -cnph\n           \
+  \             If this is set, the number of all possible (non\n                \
+  \        repeating) paths from the start to the end node will\n                \
+  \        be calculated. This returns a list, sorted by the\n                   \
+  \     number of hops (beginning at 0). Example: Returns: [0,\n                 \
+  \       3, 5, 2] -> 0 paths with 0 hops, 3 paths with 1 hop, 5\n               \
+  \         paths with 2 hops, etc ... This uses a dynamic\n                     \
+  \   programming approach to calculate this in an efficient\n                   \
+  \     manner. NOTE: This mis even more memory heavy then\n                     \
+  \   binning on miscleavages. Of course it depends on the\n                     \
+  \   proteins (especially on Titin) NOTE: The dedicated\n                       \
+  \ start and end node is not counted here. If you\n                        traverse\
+  \ a graph, expect +2 more nodes in a path!\n  --output_csv OUTPUT_CSV, -o OUTPUT_CSV\n\
+  \                        Set the output file, which will contain information\n \
+  \                       about the ProteinGaph (in csv) NOTE: It will write to\n\
+  \                        'protein_graph_statistics.csv' and overwrite if such a\n\
+  \                        file exists. Default is set to the current working\n  \
+  \                      directory\n  --export_output_folder EXPORT_OUTPUT_FOLDER,\
+  \ -eo EXPORT_OUTPUT_FOLDER\n                        Set the output folder to specify\
+  \ the dirctory of\n                        exported graphs (dot, graphml, gml) NOTE:\
+  \ It will\n                        overwrite exisiting files. Default is set the\
+  \ current\n                        working directory\n  --export_in_directories,\
+  \ -edirs\n                        Set this flag to export files in directories (coded\
+  \ by\n                        accession) instead of directly by the accession name.\n\
+  \                        This could be useful if millions of proteins are added\n\
+  \                        into this tool, since a folder with millions of\n     \
+  \                   entries can be problematic in some cases.\n  --export_dot, -edot\
+  \   Set this flag to export a dot file for each protein\n  --export_graphml, -egraphml\n\
+  \                        Set this flag to export a GraphML file for each\n     \
+  \                   protein. This is the recommended export method.\n  --export_gml,\
+  \ -egml   Set this flag to export a GML file for each protein\n  --export_pickle,\
+  \ -epickle\n                        Set this flag to export a Pickle file for each\
+  \ protein\n  --export_redisgraph, -eredisg\n                        Set this flag\
+  \ to export to a redis-server having the\n                        module RedisGraph\
+  \ loaded.\n  --redisgraph_host REDISGRAPH_HOST\n                        Set the\
+  \ host name for the redis-server having the\n                        module RedisGraph.\
+  \ Default: localhost\n  --redisgraph_port REDISGRAPH_PORT\n                    \
+  \    Set the port for the redis-server having the module\n                     \
+  \   RedisGraph. Default: 6379\n  --redisgraph_graph REDISGRAPH_GRAPH\n         \
+  \               Set the graph name on the redis-server having the\n            \
+  \            module RedisGraph. Default 'proteins'\n  --export_postgres, -epg\n\
+  \                        Set this flag to export to a postgresql server.NOTE:\n\
+  \                        This will try to create the tables 'nodes' and 'edges'\n\
+  \                        on a specified database. Make sure the database in\n  \
+  \                      which the data should be saved also exists.\n  --postgres_host\
+  \ POSTGRES_HOST\n                        Set the host name for the postgresql server.\
+  \ Default:\n                        127.0.0.1\n  --postgres_port POSTGRES_PORT\n\
+  \                        Set the port for the postgresql server. Default: 5433\n\
+  \  --postgres_user POSTGRES_USER\n                        Set the username for the\
+  \ postgresql server. Default:\n                        postgres\n  --postgres_password\
+  \ POSTGRES_PASSWORD\n                        Set the password for the postgresql\
+  \ server. Default:\n                        developer\n  --postgres_database POSTGRES_DATABASE\n\
+  \                        Set the database which will be used for the postgresql\n\
+  \                        server. Default: proteins\n  --export_mysql, -emysql\n\
+  \                        Set this flag to export to a MySQL server.NOTE: This\n\
+  \                        will try to create the tables 'nodes' and 'edges' on a\n\
+  \                        specified database. Make sure the database in which\n \
+  \                       the data should be saved also exists.\n  --mysql_host MYSQL_HOST\n\
+  \                        Set the host name for the MySQL server. Default:\n    \
+  \                    127.0.0.1\n  --mysql_port MYSQL_PORT\n                    \
+  \    Set the port for the MySQL server. Default: 3306\n  --mysql_user MYSQL_USER\n\
+  \                        Set the username for the MySQL server. Default: root\n\
+  \  --mysql_password MYSQL_PASSWORD\n                        Set the password for\
+  \ the MySQL server. Default:\n                        <empty>\n  --mysql_database\
+  \ MYSQL_DATABASE\n                        Set the database which will be used for\
+  \ the MySQL\n                        server. Default: proteins\n  --export_peptide_postgres,\
+  \ -epeppg\n                        Set this flag to export peptides (specifically\
+  \ paths)\n                        to a postgresql server.NOTE: This will try to\
+  \ create\n                        the tables 'accessions' and 'peptides' on a specified\n\
+  \                        database. Make sure the database in which the data\n  \
+  \                      should be saved also exists. If problems occur, try to\n\
+  \                        delete the generated tables and retry again.\n  --pep_postgres_host\
+  \ PEP_POSTGRES_HOST\n                        Set the host name for the postgresql\
+  \ server. Default:\n                        127.0.0.1\n  --pep_postgres_port PEP_POSTGRES_PORT\n\
+  \                        Set the port for the postgresql server. Default: 5433\n\
+  \  --pep_postgres_user PEP_POSTGRES_USER\n                        Set the username\
+  \ for the postgresql server. Default:\n                        postgres\n  --pep_postgres_password\
+  \ PEP_POSTGRES_PASSWORD\n                        Set the password for the postgresql\
+  \ server. Default:\n                        developer\n  --pep_postgres_database\
+  \ PEP_POSTGRES_DATABASE\n                        Set the database which will be\
+  \ used for the postgresql\n                        server. Default: proteins\n \
+  \ --pep_postgres_hops PEP_POSTGRES_HOPS\n                        Set the number\
+  \ of hops (max length of path) which\n                        should be used to\
+  \ get paths from a graph. NOTE: the\n                        larger the number the\
+  \ more memory may be needed. This\n                        depends on the protein\
+  \ which currently is processed.\n                        Default is set to 'None',\
+  \ so all lengths are\n                        considered.\n  --pep_postgres_miscleavages\
+  \ PEP_POSTGRES_MISCLEAVAGES\n                        Set this number to filter the\
+  \ generated paths by their\n                        miscleavages.The protein graphs\
+  \ do contain infomration\n                        about 'infinite' miscleavages\
+  \ and therefor also return\n                        those paths/peptides. If setting\
+  \ (default) to '-1',\n                        all results are considered. However\
+  \ you can limit the\n                        number of miscleavages, if needed.\n\
+  \  --pep_postgres_skip_x\n                        Set this flag to skip to skip\
+  \ all entries, which\n                        contain an X\n  --pep_postgres_no_duplicates\n\
+  \                        Set this flag to not insert duplicates into the\n     \
+  \                   database. NOTE: Setting this value decreases the\n         \
+  \               performance drastically\n  --pep_postgres_use_igraph\n         \
+  \               Set this flag to use igraph instead of netx. NOTE: If\n        \
+  \                setting this flag, the peptide generation will be\n           \
+  \             considerably faster but also consumes much more\n                \
+  \        memory. Also, the igraph implementation DOES NOT go\n                 \
+  \       over each single edge, so some (repeating results) may\n               \
+  \         never be discovered when using this flag.\n  --pep_postgres_min_pep_length\
+  \ PEP_POSTGRES_MIN_PEP_LENGTH\n                        Set the minimum peptide length\
+  \ to filter out smaller\n                        existing path/peptides. Here, the\
+  \ actual number of\n                        aminoacid for a peptide is referenced.\
+  \ Default: 0\n  --pep_postgres_batch_size PEP_POSTGRES_BATCH_SIZE\n            \
+  \            Set the batch size. This defines how many peptides are\n          \
+  \              inserted at once. Default: 25000\n  --export_peptide_mysql, -epepmysql\n\
+  \                        Set this flag to export peptides (specifically paths)\n\
+  \                        to a MySQL server.NOTE: This will try to create the\n \
+  \                       tables 'accessions' and 'peptides' on a specified\n    \
+  \                    database. Make sure the database in which the data\n      \
+  \                  should be saved also exists. If problems occur, try to\n    \
+  \                    delete the generated tables and retry again.\n  --pep_mysql_host\
+  \ PEP_MYSQL_HOST\n                        Set the host name for the mysql server.\
+  \ Default:\n                        127.0.0.1\n  --pep_mysql_port PEP_MYSQL_PORT\n\
+  \                        Set the port for the mysql server. Default: 3306\n  --pep_mysql_user\
+  \ PEP_MYSQL_USER\n                        Set the username for the mysql server.\
+  \ Default: root\n  --pep_mysql_password PEP_MYSQL_PASSWORD\n                   \
+  \     Set the password for the mysql server. Default: ''\n  --pep_mysql_database\
+  \ PEP_MYSQL_DATABASE\n                        Set the database which will be used\
+  \ for the mysql\n                        server. Default: proteins\n  --pep_mysql_hops\
+  \ PEP_MYSQL_HOPS\n                        Set the number of hops (max length of\
+  \ path) which\n                        should be used to get paths from a graph.\
+  \ NOTE: the\n                        larger the number the more memory may be needed.\
+  \ This\n                        depends on the protein which currently is processed.\n\
+  \                        Default is set to 'None', so all lengths are\n        \
+  \                considered.\n  --pep_mysql_miscleavages PEP_MYSQL_MISCLEAVAGES\n\
+  \                        Set this number to filter the generated paths by their\n\
+  \                        miscleavages.The protein graphs do contain infomration\n\
+  \                        about 'infinite' miscleavages and therefor also return\n\
+  \                        those paths/peptides. If setting (default) to '-1',\n \
+  \                       all results are considered. However you can limit the\n\
+  \                        number of miscleavages, if needed.\n  --pep_mysql_skip_x\
+  \    Set this flag to skip to skip all entries, which\n                        contain\
+  \ an X\n  --pep_mysql_no_duplicates\n                        Set this flag to not\
+  \ insert duplicates into the\n                        database. NOTE: Setting this\
+  \ value decreases the\n                        performance drastically\n  --pep_mysql_use_igraph\n\
+  \                        Set this flag to use igraph instead of netx. NOTE: If\n\
+  \                        setting this flag, the peptide generation will be\n   \
+  \                     considerably faster but also consumes much more\n        \
+  \                memory. Also, the igraph implementation DOES NOT go\n         \
+  \               over each single edge, so some (repeating results) may\n       \
+  \                 never be discovered when using this flag.\n  --pep_mysql_min_pep_length\
+  \ PEP_MYSQL_MIN_PEP_LENGTH\n                        Set the minimum peptide length\
+  \ to filter out smaller\n                        existing path/peptides. Here, the\
+  \ actual number of\n                        aminoacid for a peptide is referenced.\
+  \ Default: 0\n  --pep_mysql_batch_size PEP_MYSQL_BATCH_SIZE\n                  \
+  \      Set the batch size. This defines how many peptides are\n                \
+  \        inserted at once. Default: 25000\n  --export_peptide_fasta, -epepfasta\n\
+  \                        Set this flag to export peptides into a single fasta\n\
+  \                        file.\n  --pep_fasta_out PEP_FASTA_OUT\n              \
+  \          Set the output file for the peptide fasta export.\n                 \
+  \       Default: '${pwd}/peptides.fasta'. NOTE: This will\n                    \
+  \    overwrite existing files.\n  --pep_fasta_hops PEP_FASTA_HOPS\n            \
+  \            Set the number of hops (max length of path) which\n               \
+  \         should be used to get paths from a graph. NOTE: the\n                \
+  \        larger the number the more memory may be needed. This\n               \
+  \         depends on the protein which currently is processed.\n               \
+  \         Default is set to 'None', so all lengths are\n                       \
+  \ considered.\n  --pep_fasta_miscleavages PEP_FASTA_MISCLEAVAGES\n             \
+  \           Set this number to filter the generated paths by their\n           \
+  \             miscleavages.The protein graphs do contain infomration\n         \
+  \               about 'infinite' miscleavages and therefor also return\n       \
+  \                 those paths/peptides. If setting (default) to '-1',\n        \
+  \                all results are considered. However you can limit the\n       \
+  \                 number of miscleavages, if needed.\n  --pep_fasta_skip_x    Set\
+  \ this flag to skip to skip all entries, which\n                        contain\
+  \ an X\n  --pep_fasta_use_igraph\n                        Set this flag to use igraph\
+  \ instead of netx. NOTE: If\n                        setting this flag, the peptide\
+  \ generation will be\n                        considerably faster but also consumes\
+  \ much more\n                        memory. Also, the igraph implementation DOES\
+  \ NOT go\n                        over each single edge, so some (repeating results)\
+  \ may\n                        never be discovered when using this flag.\n  --pep_fasta_min_pep_length\
+  \ PEP_FASTA_MIN_PEP_LENGTH\n                        Set the minimum peptide length\
+  \ to filter out smaller\n                        existing path/peptides. Here, the\
+  \ actual number of\n                        aminoacid for a peptide is referenced.\
+  \ Default: 0\n  --pep_fasta_batch_size PEP_FASTA_BATCH_SIZE\n                  \
+  \      Set the batch size. This defines how many peptides are\n                \
+  \        processed and written at once. Default: 25000\n  --export_gremlin, -egremlin\n\
+  \                        Set this flag to export the graphs via gremlin to a\n \
+  \                       gremlin server.NOTE: The export is very slow, since it\n\
+  \                        executes each node as a single query (tested on\n     \
+  \                   JanusGraph and Apache Gremlin Server). This exporter\n     \
+  \                   is not well implemented and may not work. This is due\n    \
+  \                    to difficulties implementing such an exporter in a\n      \
+  \                  global manner. To reduce the number of errors: Try to\n     \
+  \                   have a stable connection to the gremlin-server and\n       \
+  \                 also allocate enough resource for it, so that it can\n       \
+  \                 process the queries quick enough.\n  --gremlin_url GREMLIN_URL\n\
+  \                        Set the url to the gremlin URL (no authentication).\n \
+  \                       Default: 'ws://localhost:8182/gremlin'\n  --gremlin_traversal_source\
+  \ GREMLIN_TRAVERSAL_SOURCE\n                        Set the traversal source for\
+  \ remote. Default 'g'\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/protgraph:0.0.2b3--pyhdfd78af_0

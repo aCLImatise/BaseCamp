@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean
+
+Aadder_Build_V0_1_0 = CommandToolBuilder(tool="aadder_build", base_command=["aadder-build"], inputs=[ToolInput(tag="in_input_gff", input_type=Boolean(optional=True), prefix="--inputGFF", doc=InputDocumentation(doc="[string(s)]        Input GFF3 files or directory (.gz ok). Mandatory option.")), ToolInput(tag="in_index", input_type=Boolean(optional=True), prefix="--index", doc=InputDocumentation(doc="[string]                 Index directory. Mandatory option.")), ToolInput(tag="in_map_db", input_type=Boolean(optional=True), prefix="--mapDB", doc=InputDocumentation(doc="[string]               MEGAN mapping db (file megan-map.db).")), ToolInput(tag="in_acc_two_tax_a", input_type=Boolean(optional=True), prefix="--acc2taxa", doc=InputDocumentation(doc="[string]            Accession-to-Taxonomy mapping file.")), ToolInput(tag="in_acc_two_ec", input_type=Boolean(optional=True), prefix="--acc2ec", doc=InputDocumentation(doc="[string]             Accession-to-EC mapping file.")), ToolInput(tag="in_acc_two_eggnog", input_type=Boolean(optional=True), prefix="--acc2eggnog", doc=InputDocumentation(doc="[string]     Accession-to-EGGNOG mapping file.")), ToolInput(tag="in_acc_two_gt_db", input_type=Boolean(optional=True), prefix="--acc2gtdb", doc=InputDocumentation(doc="[string]         Accession-to-GTDB mapping file.")), ToolInput(tag="in_acc_two_interpro_two_go", input_type=Boolean(optional=True), prefix="--acc2interpro2go", doc=InputDocumentation(doc="[string]   Accession-to-INTERPRO2GO mapping file.")), ToolInput(tag="in_acc_two_kegg", input_type=Boolean(optional=True), prefix="--acc2kegg", doc=InputDocumentation(doc="[string]         Accession-to-KEGG mapping file.")), ToolInput(tag="in_acc_two_seed", input_type=Boolean(optional=True), prefix="--acc2seed", doc=InputDocumentation(doc="[string]         Accession-to-SEED mapping file.")), ToolInput(tag="in_extra_strict", input_type=Boolean(optional=True), prefix="--extraStrict", doc=InputDocumentation(doc="When given an input directory, look inside every input file to check that it is indeed in GFF3 format. Default value: false.")), ToolInput(tag="in_verbose", input_type=Boolean(optional=True), prefix="--verbose", doc=InputDocumentation(doc="Echo commandline options and be verbose. Default value: false."))], outputs=[], container="quay.io/biocontainers/megan:6.21.2--h9ee0642_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Aadder_Build_V0_1_0().translate("wdl")
+

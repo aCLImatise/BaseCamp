@@ -1,0 +1,168 @@
+!Command
+command:
+- metagraph_DNA
+- transform
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: GRAPH
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --index-ranges
+  description: '[INT] index all node ranges in BOSS for suffixes of given length [10]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --clear-dummy
+  description: erase all redundant dummy edges and build an edgemask for non-redundant
+    [off]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --prune-tips
+  description: '[INT]   prune all dead ends of this length and shorter [0]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --state
+  description: '[STR]        change state of succinct graph: small / dynamic / fast
+    [stat]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --to-adj-list
+  description: write adjacency list to file [off]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --to-fasta
+  description: extract sequences from graph and dump to compressed FASTA file [off]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --enumerate
+  description: enumerate sequences in FASTA [off]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --initialize-bloom
+  description: construct a Bloom filter for faster detection of non-existing k-mers
+    [off]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --unitigs
+  description: extract all unitigs from graph and dump to compressed FASTA file [off]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --primary-kmers
+  description: output each k-mer only in one if its forms (canonical/non-canonical)
+    [off]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --to-gfa
+  description: dump graph layout to GFA [off]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --compacted
+  description: dump compacted de Bruijn graph to GFA [off]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --header
+  description: '[STR]       header for sequences in FASTA output []'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --parallel
+  description: '[INT]     use multiple threads for computation [1]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --bloom-fpp
+  description: '[FLOAT]                          expected false positive rate [1.0]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --bloom-bpk
+  description: '[FLOAT]                          number of bits per kmer [4.0]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --bloom-max-num-hash-functions
+  description: '[INT]         maximum number of hash functions [10]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: switch on verbose output [off]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: ''
+  args: !SimpleFlagArg
+    name: outfile-base
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: print usage info
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "#############################\n### Welcome to MetaGraph! ###\n#############################\n\
+  \nMetagraph: comprehensive metagenome graph representation -- Version 0.1\n\nUsage:\
+  \ metagraph_DNA transform -o <outfile-base> [options] GRAPH\n\n\t   --index-ranges\
+  \ [INT]\tindex all node ranges in BOSS for suffixes of given length [10]\n\t   --clear-dummy\
+  \ \terase all redundant dummy edges and build an edgemask for non-redundant [off]\n\
+  \t   --prune-tips [INT] \tprune all dead ends of this length and shorter [0]\n\t\
+  \   --state [STR] \tchange state of succinct graph: small / dynamic / fast [stat]\n\
+  \t   --to-adj-list \twrite adjacency list to file [off]\n\t   --to-fasta \t\textract\
+  \ sequences from graph and dump to compressed FASTA file [off]\n\t   --enumerate\
+  \ \t\tenumerate sequences in FASTA [off]\n\t   --initialize-bloom \tconstruct a\
+  \ Bloom filter for faster detection of non-existing k-mers [off]\n\t   --unitigs\
+  \ \t\textract all unitigs from graph and dump to compressed FASTA file [off]\n\t\
+  \   --primary-kmers \toutput each k-mer only in one if its forms (canonical/non-canonical)\
+  \ [off]\n\t   --to-gfa \t\tdump graph layout to GFA [off]\n\t   --compacted \t\t\
+  dump compacted de Bruijn graph to GFA [off]\n\t   --header [STR] \theader for sequences\
+  \ in FASTA output []\n\t-p --parallel [INT] \tuse multiple threads for computation\
+  \ [1]\n\nAdvanced options for --initialize-bloom. bloom-fpp, when < 1, overrides\
+  \ bloom-bpk.\n\t   --bloom-fpp [FLOAT] \t\t\t\texpected false positive rate [1.0]\n\
+  \t   --bloom-bpk [FLOAT] \t\t\t\tnumber of bits per kmer [4.0]\n\t   --bloom-max-num-hash-functions\
+  \ [INT] \tmaximum number of hash functions [10]\n\n\tGeneral options:\n\t-v --verbose\
+  \ \t\tswitch on verbose output [off]\n\t-h --help \t\tprint usage info\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/metagraph:0.2.0--h74b8f77_0

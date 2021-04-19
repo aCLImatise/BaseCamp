@@ -1,0 +1,128 @@
+!Command
+command:
+- deeplc
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --file_pred
+  description: "Path to peptide file for which to make predictions\n(required)"
+  args: !SimpleFlagArg
+    name: FILE_PRED
+- !Flag
+  optional: true
+  synonyms:
+  - --file_cal
+  description: "Path to peptide file with retention times to use for\ncalibration\
+    \ (optional)"
+  args: !SimpleFlagArg
+    name: FILE_CAL
+- !Flag
+  optional: true
+  synonyms:
+  - --file_pred_out
+  description: Path to output file with predictions (optional)
+  args: !SimpleFlagArg
+    name: FILE_PRED_OUT
+- !Flag
+  optional: true
+  synonyms:
+  - --file_model
+  description: "Path to prediction model(s). Seperate with spaces.\nLeave empty to\
+    \ select the best of the default models\n(optional)"
+  args: !RepeatFlagArg
+    name: FILE_MODEL
+- !Flag
+  optional: true
+  synonyms:
+  - --split_cal
+  - --dict_divider
+  - --batch_num
+  description: "Batch size (in peptides) for predicting the retention\ntime. Set lower\
+    \ to decrease memory footprint\n(optional, default=250000)"
+  args: !SimpleFlagArg
+    name: SPLIT_CAL
+- !Flag
+  optional: true
+  synonyms:
+  - --plot_predictions
+  description: "Save scatter plot of predictions vs observations\n(default=False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --n_threads
+  description: "Number of threads to use (optional, default=maximum\navailable)"
+  args: !SimpleFlagArg
+    name: N_THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - --log_level
+  description: "Logging level (debug, info, warning, error, or\ncritical; default=info)"
+  args: !SimpleFlagArg
+    name: LOG_LEVEL
+- !Flag
+  optional: true
+  synonyms:
+  - --use_library
+  description: "Use a library with previously predicted retention\ntimes, argument\
+    \ takes a string with the location to\nthe library"
+  args: !SimpleFlagArg
+    name: USE_LIBRARY
+- !Flag
+  optional: true
+  synonyms:
+  - --write_library
+  description: "Append to a library with predicted retention times,\nwill write to\
+    \ the file specified by --use_library"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: deeplc [-h] [--file_pred FILE_PRED] [--file_cal FILE_CAL]\n   \
+  \           [--file_pred_out FILE_PRED_OUT]\n              [--file_model FILE_MODEL\
+  \ [FILE_MODEL ...]]\n              [--split_cal SPLIT_CAL] [--dict_divider DICT_DIVIDER]\n\
+  \              [--batch_num BATCH_NUM] [--plot_predictions]\n              [--n_threads\
+  \ N_THREADS] [--log_level LOG_LEVEL]\n              [--use_library USE_LIBRARY]\
+  \ [--write_library] [--version]\n\noptional arguments:\n  -h, --help           \
+  \ show this help message and exit\n  --file_pred FILE_PRED\n                   \
+  \     Path to peptide file for which to make predictions\n                     \
+  \   (required)\n  --file_cal FILE_CAL   Path to peptide file with retention times\
+  \ to use for\n                        calibration (optional)\n  --file_pred_out\
+  \ FILE_PRED_OUT\n                        Path to output file with predictions (optional)\n\
+  \  --file_model FILE_MODEL [FILE_MODEL ...]\n                        Path to prediction\
+  \ model(s). Seperate with spaces.\n                        Leave empty to select\
+  \ the best of the default models\n                        (optional)\n  --split_cal\
+  \ SPLIT_CAL\n  --dict_divider DICT_DIVIDER\n  --batch_num BATCH_NUM\n          \
+  \              Batch size (in peptides) for predicting the retention\n         \
+  \               time. Set lower to decrease memory footprint\n                 \
+  \       (optional, default=250000)\n  --plot_predictions    Save scatter plot of\
+  \ predictions vs observations\n                        (default=False)\n  --n_threads\
+  \ N_THREADS\n                        Number of threads to use (optional, default=maximum\n\
+  \                        available)\n  --log_level LOG_LEVEL\n                 \
+  \       Logging level (debug, info, warning, error, or\n                       \
+  \ critical; default=info)\n  --use_library USE_LIBRARY\n                       \
+  \ Use a library with previously predicted retention\n                        times,\
+  \ argument takes a string with the location to\n                        the library\n\
+  \  --write_library       Append to a library with predicted retention times,\n \
+  \                       will write to the file specified by --use_library\n  --version\
+  \             show program's version number and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/deeplc:0.1.29--pyhdfd78af_0
