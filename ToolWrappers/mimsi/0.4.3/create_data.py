@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import String, Directory, Int, File
+
+Create_Data_V0_1_0 = CommandToolBuilder(tool="create_data", base_command=["create_data"], inputs=[ToolInput(tag="in_microsatellites_list", input_type=String(optional=True), prefix="--microsatellites-list", doc=InputDocumentation(doc="The list of microsatellites to check in the\ntumor/normal pair (default:\ntests/microsatellites_impact_only.list)")), ToolInput(tag="in_save_location", input_type=Directory(optional=True), prefix="--save-location", doc=InputDocumentation(doc="The location on the filesystem to save the converted\nvectors (default:\nCurrent_working_directory/generated_samples/).\nWARNING: Existing files in this directory in the\nformats *_locations.npy and *_data.npy will be\ndeleted!")), ToolInput(tag="in_coverage", input_type=String(optional=True), prefix="--coverage", doc=InputDocumentation(doc="Required coverage for both the tumor and the normal.\nAny coverage in excess of this limit will be randomly\ndownsampled")), ToolInput(tag="in_cores", input_type=Int(optional=True), prefix="--cores", doc=InputDocumentation(doc="Number of cores to utilize in parallel")), ToolInput(tag="in_tumor_bam", input_type=File(optional=True), prefix="--tumor-bam", doc=InputDocumentation(doc="Tumor bam file for conversion")), ToolInput(tag="in_normal_bam", input_type=File(optional=True), prefix="--normal-bam", doc=InputDocumentation(doc="Matched normal bam file for conversion")), ToolInput(tag="in_case_id", input_type=File(optional=True), prefix="--case-id", doc=InputDocumentation(doc="Unique identifier for the single sample/case\nsubmitted. This will be the filename for any saved\nresults (default: TestCase)")), ToolInput(tag="in_norm_case_id", input_type=String(optional=True), prefix="--norm-case-id", doc=InputDocumentation(doc="Normal case name (default: None)")), ToolInput(tag="in_case_list", input_type=File(optional=True), prefix="--case-list", doc=InputDocumentation(doc="Case List for generating sample vectors in bulk, if\nspecified all other input file args will be ignored")), ToolInput(tag="in_name", input_type=File(optional=True), prefix="--name", doc=InputDocumentation(doc="name of the run submitted using --case-list, this will\nbe the filename for any saved results in the tsv\nformat (default: BATCH)\n"))], outputs=[], container="quay.io/biocontainers/mimsi:0.4.3--pyhdfd78af_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Create_Data_V0_1_0().translate("wdl")
+

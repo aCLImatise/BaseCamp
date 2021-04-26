@@ -1,0 +1,207 @@
+!Command
+command:
+- csvtk
+- summary
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --decimal-width
+  description: limit floats to N decimal points (default 2)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --fields
+  description: 'operations on these fields. e.g -f 1:count,1:sum or -f colA:mean.
+    available operations: collapse, count, countn, countunique, entropy, first, last,
+    max, mean, median, min, prod, q1, q2, q3, rand, stdev, sum, uniq, variance'
+  args: !SimpleFlagArg
+    name: strings
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --groups
+  description: group via fields. e.g -f 1,2 or -f columnA,columnB
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --ignore-non-numbers
+  description: ignore non-numeric values like "NA" or "N/A"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --rand-seed
+  description: rand seed for operation "rand" (default 11)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --separater
+  description: separater for collapsed data (default "; ")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --chunk-size
+  description: chunk size of CSV reader (default 50)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -C
+  - --comment-char
+  description: lines starting with commment-character will be ignored. if your header
+    row starts with '#', please assign "-C" another rare symbol, e.g. '$' (default
+    "#")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --delimiter
+  description: delimiting character of the input CSV file (default ",")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -E
+  - --ignore-empty-row
+  description: ignore empty rows
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -I
+  - --ignore-illegal-row
+  description: ignore illegal rows
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --infile-list
+  description: file of input files list (one file per line), if given, they are appended
+    to files from cli arguments
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --lazy-quotes
+  description: if given, a quote may appear in an unquoted field and a non-doubled
+    quote may appear in a quoted field
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -H
+  - --no-header-row
+  description: specifies that the input CSV file does not have header row
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --num-cpus
+  description: number of CPUs to use (default value depends on your computer) (default
+    2)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  - --out-delimiter
+  description: delimiting character of the output CSV file, e.g., -D $'\t' for tab
+    (default ",")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out-file
+  description: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --out-tabs
+  description: specifies that the output is delimited with tabs. Overrides "-D"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --tabs
+  description: specifies that the input CSV file is delimited with tabs. Overrides
+    "-d"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: help for summary
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "summary statistics of selected numeric or text fields (groupby group fields)\n\
+  \nAttention:\n\n  1. Do not mix use field (column) numbers and names.\n\nAvailable\
+  \ operations:\n \n  # numeric/statistical operations\n  # provided by github.com/gonum/stat\
+  \ and github.com/gonum/floats\n  countn (count numeric values), min, max, sum,\n\
+  \  mean, stdev, variance, median, q1, q2, q3,\n  entropy (Shannon entropy), \n \
+  \ prod (product of the elements)\n\n  # textual/numeric operations\n  count, first,\
+  \ last, rand, unique, collapse, countunique\n\nUsage:\n  csvtk summary [flags]\n\
+  \nFlags:\n  -n, --decimal-width int    limit floats to N decimal points (default\
+  \ 2)\n  -f, --fields strings       operations on these fields. e.g -f 1:count,1:sum\
+  \ or -f colA:mean. available operations: collapse, count, countn, countunique, entropy,\
+  \ first, last, max, mean, median, min, prod, q1, q2, q3, rand, stdev, sum, uniq,\
+  \ variance\n  -g, --groups string        group via fields. e.g -f 1,2 or -f columnA,columnB\n\
+  \  -h, --help                 help for summary\n  -i, --ignore-non-numbers   ignore\
+  \ non-numeric values like \"NA\" or \"N/A\"\n  -S, --rand-seed int        rand seed\
+  \ for operation \"rand\" (default 11)\n  -s, --separater string     separater for\
+  \ collapsed data (default \"; \")\n\nGlobal Flags:\n  -c, --chunk-size int     \
+  \    chunk size of CSV reader (default 50)\n  -C, --comment-char string    lines\
+  \ starting with commment-character will be ignored. if your header row starts with\
+  \ '#', please assign \"-C\" another rare symbol, e.g. '$' (default \"#\")\n  -d,\
+  \ --delimiter string       delimiting character of the input CSV file (default \"\
+  ,\")\n  -E, --ignore-empty-row       ignore empty rows\n  -I, --ignore-illegal-row\
+  \     ignore illegal rows\n      --infile-list string     file of input files list\
+  \ (one file per line), if given, they are appended to files from cli arguments\n\
+  \  -l, --lazy-quotes            if given, a quote may appear in an unquoted field\
+  \ and a non-doubled quote may appear in a quoted field\n  -H, --no-header-row  \
+  \        specifies that the input CSV file does not have header row\n  -j, --num-cpus\
+  \ int           number of CPUs to use (default value depends on your computer) (default\
+  \ 2)\n  -D, --out-delimiter string   delimiting character of the output CSV file,\
+  \ e.g., -D $'\\t' for tab (default \",\")\n  -o, --out-file string        out file\
+  \ (\"-\" for stdout, suffix .gz for gzipped out) (default \"-\")\n  -T, --out-tabs\
+  \               specifies that the output is delimited with tabs. Overrides \"-D\"\
+  \n  -t, --tabs                   specifies that the input CSV file is delimited\
+  \ with tabs. Overrides \"-d\"\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/csvtk:0.23.0--h9ee0642_0

@@ -1,0 +1,115 @@
+!Command
+command:
+- basenji_sad.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: format
+  description: --ti=TRACK_INDEXES   Comma-separated list of target indexes to output
+    BigWig
+- !Positional
+  optional: false
+  position: 1
+  name: tracks
+  description: '--threads            Run CPU math and output in a separate thread
+    [Default:'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: "Genome FASTA for sequences [Default:\n/usr/local/share/basenji//data/hg19.fa]"
+  args: !SimpleFlagArg
+    name: GENOME_FASTA
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: Normalize SAD scores
+  args: !SimpleFlagArg
+    name: NORM_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: 'Output directory for tables and plots [Default: sad]'
+  args: !SimpleFlagArg
+    name: OUT_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: Number of processes, passed by multi script
+  args: !SimpleFlagArg
+    name: PROCESSES
+- !Flag
+  optional: true
+  synonyms:
+  - --pseudo
+  description: 'Log2 pseudocount [Default: 1]'
+  args: !SimpleFlagArg
+    name: LOG_PSEUDO
+- !Flag
+  optional: true
+  synonyms:
+  - --rc
+  description: "Average forward and reverse complement predictions\n[Default: False]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --shifts
+  description: 'Ensemble prediction shifts [Default: 0]'
+  args: !SimpleFlagArg
+    name: SHIFTS
+- !Flag
+  optional: true
+  synonyms:
+  - --stats
+  description: 'Comma-separated list of stats to save. [Default: SAD]'
+  args: !SimpleFlagArg
+    name: SAD_STATS
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: File specifying target indexes and labels in table
+  args: !SimpleFlagArg
+    name: TARGETS_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  description: 'Compute SED in the penultimate layer [Default: False]'
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: basenji_sad.py [options] <params_file> <model_file> <vcf_file>\n\
+  \nOptions:\n  -h, --help           show this help message and exit\n  -f GENOME_FASTA\
+  \      Genome FASTA for sequences [Default:\n                       /usr/local/share/basenji//data/hg19.fa]\n\
+  \  -n NORM_FILE         Normalize SAD scores\n  -o OUT_DIR           Output directory\
+  \ for tables and plots [Default: sad]\n  -p PROCESSES         Number of processes,\
+  \ passed by multi script\n  --pseudo=LOG_PSEUDO  Log2 pseudocount [Default: 1]\n\
+  \  --rc                 Average forward and reverse complement predictions\n   \
+  \                    [Default: False]\n  --shifts=SHIFTS      Ensemble prediction\
+  \ shifts [Default: 0]\n  --stats=SAD_STATS    Comma-separated list of stats to save.\
+  \ [Default: SAD]\n  -t TARGETS_FILE      File specifying target indexes and labels\
+  \ in table\n                       format\n  --ti=TRACK_INDEXES   Comma-separated\
+  \ list of target indexes to output BigWig\n                       tracks\n  --threads\
+  \            Run CPU math and output in a separate thread [Default:\n          \
+  \             False]\n  -u                   Compute SED in the penultimate layer\
+  \ [Default: False]\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/basenji:0.5.1--pyhdfd78af_0

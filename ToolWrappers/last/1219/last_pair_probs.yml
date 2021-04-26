@@ -1,0 +1,101 @@
+!Command
+command:
+- last-pair-probs
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: alignments1
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --rna
+  description: assume the reads are from potentially-spliced RNA
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --estdist
+  description: just estimate the distribution of distances
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --mismap
+  description: "don't write alignments with mismap probability > M\n(default: 0.01)"
+  args: !SimpleFlagArg
+    name: M
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --fraglen
+  description: mean distance in bp
+  args: !SimpleFlagArg
+    name: BP
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --sdev
+  description: standard deviation of distance
+  args: !SimpleFlagArg
+    name: BP
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --disjoint
+  description: "prior probability of disjoint mapping (default: 0.02\nif -r, else\
+    \ 0.01)"
+  args: !SimpleFlagArg
+    name: PROB
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --circular
+  description: "specifies that chromosome CHROM is circular (default:\nchrM)"
+  args: !SimpleFlagArg
+    name: CHROM
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "Usage:\n  last-pair-probs --help\n  last-pair-probs [options] interleaved-alignments\n\
+  \  last-pair-probs [options] alignments1 alignments2\n\nRead alignments of paired\
+  \ DNA reads to a genome, and: (1) estimate the\ndistribution of distances between\
+  \ paired reads, (2) estimate the probability\nthat each alignment represents the\
+  \ genomic source of the read.\n\nOptions:\n  -h, --help            show this help\
+  \ message and exit\n  -r, --rna             assume the reads are from potentially-spliced\
+  \ RNA\n  -e, --estdist         just estimate the distribution of distances\n  -m\
+  \ M, --mismap=M      don't write alignments with mismap probability > M\n      \
+  \                  (default: 0.01)\n  -f BP, --fraglen=BP   mean distance in bp\n\
+  \  -s BP, --sdev=BP      standard deviation of distance\n  -d PROB, --disjoint=PROB\n\
+  \                        prior probability of disjoint mapping (default: 0.02\n\
+  \                        if -r, else 0.01)\n  -c CHROM, --circular=CHROM\n     \
+  \                   specifies that chromosome CHROM is circular (default:\n    \
+  \                    chrM)\n  -V, --version         show program's version number\
+  \ and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/last:1219--h2e03b76_0

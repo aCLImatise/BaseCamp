@@ -1,0 +1,686 @@
+&id001 !Command
+command:
+- DRAM.py
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - DRAM.py
+  - annotate
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input_fasta
+    description: "fasta file, optionally with wildcards to point to\nmultiple fastas\
+      \ (default: None)"
+    args: !SimpleFlagArg
+      name: INPUT_FASTA
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output_dir
+    description: 'output directory (default: None)'
+    args: !SimpleFlagArg
+      name: OUTPUT_DIR
+  - !Flag
+    optional: true
+    synonyms:
+    - --min_contig_size
+    description: "minimum contig size to be used for gene prediction\n(default: 2500)"
+    args: !SimpleFlagArg
+      name: MIN_CONTIG_SIZE
+  - !Flag
+    optional: true
+    synonyms:
+    - --prodigal_mode
+    description: "Mode of prodigal to use for gene calling. NOTE: normal\nor single\
+      \ mode require genomes which are high quality\nwith low contamination and long\
+      \ contigs (average\nlength >3 Kbp). (default: meta)"
+    args: !ChoiceFlagArg
+      choices: !!set
+        meta:
+        single:
+        train:
+  - !Flag
+    optional: true
+    synonyms:
+    - --trans_table
+    description: "Translation table for prodigal to use for gene\ncalling. (default:\
+      \ 11)"
+    args: !ChoiceFlagArg
+      choices: !!set
+        '11':
+        '3':
+        '25':
+        '13':
+        '4':
+        '1':
+        '18':
+        '20':
+        '22':
+        '5':
+        '23':
+        '19':
+        '7':
+        '12':
+        '21':
+        '6':
+        '14':
+        '24':
+        '9':
+        '10':
+        '16':
+        '15':
+        '2':
+        '8':
+        '17':
+  - !Flag
+    optional: true
+    synonyms:
+    - --bit_score_threshold
+    description: "minimum bitScore of search to retain hits (default:\n60)"
+    args: !SimpleFlagArg
+      name: BIT_SCORE_THRESHOLD
+  - !Flag
+    optional: true
+    synonyms:
+    - --rbh_bit_score_threshold
+    description: "minimum bitScore of reverse best hits to retain hits\n(default:\
+      \ 350)"
+    args: !SimpleFlagArg
+      name: RBH_BIT_SCORE_THRESHOLD
+  - !Flag
+    optional: true
+    synonyms:
+    - --custom_db_name
+    description: "Names of custom databases, can be usedmultiple times.\n(default:\
+      \ None)"
+    args: !SimpleFlagArg
+      name: CUSTOM_DB_NAME
+  - !Flag
+    optional: true
+    synonyms:
+    - --custom_fasta_loc
+    description: "Location of fastas to annotated against, can be used\nmultiple times\
+      \ butmust match nubmer of\ncustom_db_name's (default: None)"
+    args: !SimpleFlagArg
+      name: CUSTOM_FASTA_LOC
+  - !Flag
+    optional: true
+    synonyms:
+    - --gtdb_taxonomy
+    description: "Summary file from gtdbtk taxonomy assignment from\nbins, can be\
+      \ used multipletimes (default: [])"
+    args: !SimpleFlagArg
+      name: GTDB_TAXONOMY
+  - !Flag
+    optional: true
+    synonyms:
+    - --checkm_quality
+    description: "Summary of of checkM quality assessment from bins, can\nbe used\
+      \ multiple times (default: [])"
+    args: !SimpleFlagArg
+      name: CHECKM_QUALITY
+  - !Flag
+    optional: true
+    synonyms:
+    - --use_uniref
+    description: "Annotate these fastas against UniRef, drastically\ndecreases run\
+      \ time and memory requirements (default:\nFalse)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --low_mem_mode
+    description: "Skip annotating with uniref and use kofam instead of\nKEGG genes\
+      \ even if provided. Drastically decreases\nmemory usage (default: False)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --skip_trnascan
+    - --keep_tmp_dir
+    - --threads
+    description: 'number of processors to use (default: 10)'
+    args: !SimpleFlagArg
+      name: THREADS
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: DRAM.py annotate [-h] -i INPUT_FASTA [-o OUTPUT_DIR]\n      \
+    \                  [--min_contig_size MIN_CONTIG_SIZE]\n                     \
+    \   [--prodigal_mode {train,meta,single}]\n                        [--trans_table\
+    \ {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25}]\n     \
+    \                   [--bit_score_threshold BIT_SCORE_THRESHOLD]\n            \
+    \            [--rbh_bit_score_threshold RBH_BIT_SCORE_THRESHOLD]\n           \
+    \             [--custom_db_name CUSTOM_DB_NAME]\n                        [--custom_fasta_loc\
+    \ CUSTOM_FASTA_LOC]\n                        [--gtdb_taxonomy GTDB_TAXONOMY]\n\
+    \                        [--checkm_quality CHECKM_QUALITY] [--use_uniref]\n  \
+    \                      [--low_mem_mode] [--skip_trnascan] [--keep_tmp_dir]\n \
+    \                       [--threads THREADS] [--verbose]\n\noptional arguments:\n\
+    \  -h, --help            show this help message and exit\n  -i INPUT_FASTA, --input_fasta\
+    \ INPUT_FASTA\n                        fasta file, optionally with wildcards to\
+    \ point to\n                        multiple fastas (default: None)\n  -o OUTPUT_DIR,\
+    \ --output_dir OUTPUT_DIR\n                        output directory (default:\
+    \ None)\n  --min_contig_size MIN_CONTIG_SIZE\n                        minimum\
+    \ contig size to be used for gene prediction\n                        (default:\
+    \ 2500)\n  --prodigal_mode {train,meta,single}\n                        Mode of\
+    \ prodigal to use for gene calling. NOTE: normal\n                        or single\
+    \ mode require genomes which are high quality\n                        with low\
+    \ contamination and long contigs (average\n                        length >3 Kbp).\
+    \ (default: meta)\n  --trans_table {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25}\n\
+    \                        Translation table for prodigal to use for gene\n    \
+    \                    calling. (default: 11)\n  --bit_score_threshold BIT_SCORE_THRESHOLD\n\
+    \                        minimum bitScore of search to retain hits (default:\n\
+    \                        60)\n  --rbh_bit_score_threshold RBH_BIT_SCORE_THRESHOLD\n\
+    \                        minimum bitScore of reverse best hits to retain hits\n\
+    \                        (default: 350)\n  --custom_db_name CUSTOM_DB_NAME\n \
+    \                       Names of custom databases, can be usedmultiple times.\n\
+    \                        (default: None)\n  --custom_fasta_loc CUSTOM_FASTA_LOC\n\
+    \                        Location of fastas to annotated against, can be used\n\
+    \                        multiple times butmust match nubmer of\n            \
+    \            custom_db_name's (default: None)\n  --gtdb_taxonomy GTDB_TAXONOMY\n\
+    \                        Summary file from gtdbtk taxonomy assignment from\n \
+    \                       bins, can be used multipletimes (default: [])\n  --checkm_quality\
+    \ CHECKM_QUALITY\n                        Summary of of checkM quality assessment\
+    \ from bins, can\n                        be used multiple times (default: [])\n\
+    \  --use_uniref          Annotate these fastas against UniRef, drastically\n \
+    \                       decreases run time and memory requirements (default:\n\
+    \                        False)\n  --low_mem_mode        Skip annotating with\
+    \ uniref and use kofam instead of\n                        KEGG genes even if\
+    \ provided. Drastically decreases\n                        memory usage (default:\
+    \ False)\n  --skip_trnascan\n  --keep_tmp_dir\n  --threads THREADS     number\
+    \ of processors to use (default: 10)\n  --verbose\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/dram:1.2.2--pyhdfd78af_0
+- !Command
+  command:
+  - DRAM.py
+  - neighborhoods
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input_file
+    description: 'Annotations path (default: None)'
+    args: !SimpleFlagArg
+      name: INPUT_FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output_dir
+    description: 'Directory to write gene neighborhoods (default: None)'
+    args: !SimpleFlagArg
+      name: OUTPUT_DIR
+  - !Flag
+    optional: true
+    synonyms:
+    - --genes
+    description: "[GENES ...]   Gene names from DRAM to find neighborhoods around\n\
+      (default: None)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --identifiers
+    description: "[IDENTIFIERS ...]\nDatabase identifiers assigned by DRAM to find\n\
+      neighborhoods around (default: None)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --categories
+    description: "Distillate categories to build gene neighborhoods\naround. (default:\
+      \ None)"
+    args: !SimpleFlagArg
+      name: CATEGORIES
+  - !Flag
+    optional: true
+    synonyms:
+    - --genes_loc
+    description: "Location of genes.fna/genes.faa file to filter to\nneighborhoods\
+      \ (default: None)"
+    args: !SimpleFlagArg
+      name: GENES_LOC
+  - !Flag
+    optional: true
+    synonyms:
+    - --scaffolds_loc
+    description: "Location of scaffolds.fna file to filter to\nneighborhoods (default:\
+      \ None)"
+    args: !SimpleFlagArg
+      name: SCAFFOLDS_LOC
+  - !Flag
+    optional: true
+    synonyms:
+    - --distance_genes
+    description: "Number of genes away from center to include in\nneighborhoods (default:\
+      \ None)"
+    args: !SimpleFlagArg
+      name: DISTANCE_GENES
+  - !Flag
+    optional: true
+    synonyms:
+    - --distance_bp
+    description: "Number of genes away from center to include in\nneighborhoods (default:\
+      \ None)\n"
+    args: !SimpleFlagArg
+      name: DISTANCE_BP
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: DRAM.py neighborhoods [-h] [-i INPUT_FILE] [-o OUTPUT_DIR]\n\
+    \                             [--genes [GENES ...]]\n                        \
+    \     [--identifiers [IDENTIFIERS ...]]\n                             [--categories\
+    \ CATEGORIES] [--genes_loc GENES_LOC]\n                             [--scaffolds_loc\
+    \ SCAFFOLDS_LOC]\n                             [--distance_genes DISTANCE_GENES]\n\
+    \                             [--distance_bp DISTANCE_BP]\n\noptional arguments:\n\
+    \  -h, --help            show this help message and exit\n  -i INPUT_FILE, --input_file\
+    \ INPUT_FILE\n                        Annotations path (default: None)\n  -o OUTPUT_DIR,\
+    \ --output_dir OUTPUT_DIR\n                        Directory to write gene neighborhoods\
+    \ (default: None)\n  --genes [GENES ...]   Gene names from DRAM to find neighborhoods\
+    \ around\n                        (default: None)\n  --identifiers [IDENTIFIERS\
+    \ ...]\n                        Database identifiers assigned by DRAM to find\n\
+    \                        neighborhoods around (default: None)\n  --categories\
+    \ CATEGORIES\n                        Distillate categories to build gene neighborhoods\n\
+    \                        around. (default: None)\n  --genes_loc GENES_LOC\n  \
+    \                      Location of genes.fna/genes.faa file to filter to\n   \
+    \                     neighborhoods (default: None)\n  --scaffolds_loc SCAFFOLDS_LOC\n\
+    \                        Location of scaffolds.fna file to filter to\n       \
+    \                 neighborhoods (default: None)\n  --distance_genes DISTANCE_GENES\n\
+    \                        Number of genes away from center to include in\n    \
+    \                    neighborhoods (default: None)\n  --distance_bp DISTANCE_BP\n\
+    \                        Number of genes away from center to include in\n    \
+    \                    neighborhoods (default: None)\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/dram:1.2.2--pyhdfd78af_0
+- !Command
+  command:
+  - DRAM.py
+  - strainer
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input_annotations
+    description: 'annotations file to pull genes from (default: None)'
+    args: !SimpleFlagArg
+      name: INPUT_ANNOTATIONS
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --input_fasta
+    description: 'fasta file to filter (default: None)'
+    args: !SimpleFlagArg
+      name: INPUT_FASTA
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output_fasta
+    description: "location to write filtered fasta (default:\npull_genes.fasta)"
+    args: !SimpleFlagArg
+      name: OUTPUT_FASTA
+  - !Flag
+    optional: true
+    synonyms:
+    - --fastas
+    description: "[FASTAS ...]\nspace separated list of fastas to keep (default: None)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --scaffolds
+    description: "[SCAFFOLDS ...]\nspace separated list of scaffolds to keep (default:\n\
+      None)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --genes
+    description: '[GENES ...]   space separated list of genes to keep (default: None)'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --identifiers
+    description: "[IDENTIFIERS ...]\ndatabase identifiers to keep (default: None)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --categories
+    description: "[CATEGORIES ...]\ndistillate categories to keep genes from (default:\n\
+      None)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --taxonomy
+    description: "[TAXONOMY ...]\nLevel of GTDBTk taxonomy to keep (e.g. c__Clostridia),\n\
+      space separated list (default: None)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --completeness
+    description: "Minimum completeness of genome to keep genes (default:\nNone)"
+    args: !SimpleFlagArg
+      name: COMPLETENESS
+  - !Flag
+    optional: true
+    synonyms:
+    - --contamination
+    description: "Maximum contamination of genome to keep genes\n(default: None)\n"
+    args: !SimpleFlagArg
+      name: CONTAMINATION
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: DRAM.py strainer [-h] -i INPUT_ANNOTATIONS -f INPUT_FASTA\n \
+    \                       [-o OUTPUT_FASTA] [--fastas [FASTAS ...]]\n          \
+    \              [--scaffolds [SCAFFOLDS ...]] [--genes [GENES ...]]\n         \
+    \               [--identifiers [IDENTIFIERS ...]]\n                        [--categories\
+    \ [CATEGORIES ...]]\n                        [--taxonomy [TAXONOMY ...]]\n   \
+    \                     [--completeness COMPLETENESS]\n                        [--contamination\
+    \ CONTAMINATION]\n\noptional arguments:\n  -h, --help            show this help\
+    \ message and exit\n\nInput and output files:\n  -i INPUT_ANNOTATIONS, --input_annotations\
+    \ INPUT_ANNOTATIONS\n                        annotations file to pull genes from\
+    \ (default: None)\n  -f INPUT_FASTA, --input_fasta INPUT_FASTA\n             \
+    \           fasta file to filter (default: None)\n  -o OUTPUT_FASTA, --output_fasta\
+    \ OUTPUT_FASTA\n                        location to write filtered fasta (default:\n\
+    \                        pull_genes.fasta)\n\nSpecific names to keep:\n  --fastas\
+    \ [FASTAS ...]\n                        space separated list of fastas to keep\
+    \ (default: None)\n  --scaffolds [SCAFFOLDS ...]\n                        space\
+    \ separated list of scaffolds to keep (default:\n                        None)\n\
+    \  --genes [GENES ...]   space separated list of genes to keep (default: None)\n\
+    \nAnnotation filters:\n  --identifiers [IDENTIFIERS ...]\n                   \
+    \     database identifiers to keep (default: None)\n  --categories [CATEGORIES\
+    \ ...]\n                        distillate categories to keep genes from (default:\n\
+    \                        None)\n\nDRAM based filters:\n  --taxonomy [TAXONOMY\
+    \ ...]\n                        Level of GTDBTk taxonomy to keep (e.g. c__Clostridia),\n\
+    \                        space separated list (default: None)\n  --completeness\
+    \ COMPLETENESS\n                        Minimum completeness of genome to keep\
+    \ genes (default:\n                        None)\n  --contamination CONTAMINATION\n\
+    \                        Maximum contamination of genome to keep genes\n     \
+    \                   (default: None)\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/dram:1.2.2--pyhdfd78af_0
+- !Command
+  command:
+  - DRAM.py
+  - annotate_genes
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input_faa
+    description: "fasta file, optionally with wildcards to point\ntoindividual MAGs\
+      \ (default: None)"
+    args: !SimpleFlagArg
+      name: INPUT_FAA
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output_dir
+    description: 'output directory (default: None)'
+    args: !SimpleFlagArg
+      name: OUTPUT_DIR
+  - !Flag
+    optional: true
+    synonyms:
+    - --bit_score_threshold
+    description: "minimum bitScore of search to retain hits (default:\n60)"
+    args: !SimpleFlagArg
+      name: BIT_SCORE_THRESHOLD
+  - !Flag
+    optional: true
+    synonyms:
+    - --rbh_bit_score_threshold
+    description: "minimum bitScore of reverse best hits to retain hits\n(default:\
+      \ 350)"
+    args: !SimpleFlagArg
+      name: RBH_BIT_SCORE_THRESHOLD
+  - !Flag
+    optional: true
+    synonyms:
+    - --custom_db_name
+    description: "Names of custom databases, can be used multiple times.\n(default:\
+      \ None)"
+    args: !SimpleFlagArg
+      name: CUSTOM_DB_NAME
+  - !Flag
+    optional: true
+    synonyms:
+    - --custom_fasta_loc
+    description: "Location of fastas to annotated against, can be used\nmultiple times\
+      \ butmust match nubmer of\ncustom_db_name's (default: None)"
+    args: !SimpleFlagArg
+      name: CUSTOM_FASTA_LOC
+  - !Flag
+    optional: true
+    synonyms:
+    - --use_uniref
+    description: "Annotate these fastas against UniRef, drastically\ndecreases run\
+      \ time and memory requirements (default:\nFalse)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --low_mem_mode
+    description: "Skip annotating with uniref and use kofam instead of\nKEGG genes\
+      \ even if provided. Drastically decreases\nmemory usage (default: False)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --keep_tmp_dir
+    - --threads
+    description: 'number of processors to use (default: 10)'
+    args: !SimpleFlagArg
+      name: THREADS
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: DRAM.py annotate_genes [-h] -i INPUT_FAA [-o OUTPUT_DIR]\n  \
+    \                            [--bit_score_threshold BIT_SCORE_THRESHOLD]\n   \
+    \                           [--rbh_bit_score_threshold RBH_BIT_SCORE_THRESHOLD]\n\
+    \                              [--custom_db_name CUSTOM_DB_NAME]\n           \
+    \                   [--custom_fasta_loc CUSTOM_FASTA_LOC]\n                  \
+    \            [--use_uniref] [--low_mem_mode] [--keep_tmp_dir]\n              \
+    \                [--threads THREADS] [--verbose]\n\noptional arguments:\n  -h,\
+    \ --help            show this help message and exit\n  -i INPUT_FAA, --input_faa\
+    \ INPUT_FAA\n                        fasta file, optionally with wildcards to\
+    \ point\n                        toindividual MAGs (default: None)\n  -o OUTPUT_DIR,\
+    \ --output_dir OUTPUT_DIR\n                        output directory (default:\
+    \ None)\n  --bit_score_threshold BIT_SCORE_THRESHOLD\n                       \
+    \ minimum bitScore of search to retain hits (default:\n                      \
+    \  60)\n  --rbh_bit_score_threshold RBH_BIT_SCORE_THRESHOLD\n                \
+    \        minimum bitScore of reverse best hits to retain hits\n              \
+    \          (default: 350)\n  --custom_db_name CUSTOM_DB_NAME\n               \
+    \         Names of custom databases, can be used multiple times.\n           \
+    \             (default: None)\n  --custom_fasta_loc CUSTOM_FASTA_LOC\n       \
+    \                 Location of fastas to annotated against, can be used\n     \
+    \                   multiple times butmust match nubmer of\n                 \
+    \       custom_db_name's (default: None)\n  --use_uniref          Annotate these\
+    \ fastas against UniRef, drastically\n                        decreases run time\
+    \ and memory requirements (default:\n                        False)\n  --low_mem_mode\
+    \        Skip annotating with uniref and use kofam instead of\n              \
+    \          KEGG genes even if provided. Drastically decreases\n              \
+    \          memory usage (default: False)\n  --keep_tmp_dir\n  --threads THREADS\
+    \     number of processors to use (default: 10)\n  --verbose\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/dram:1.2.2--pyhdfd78af_0
+- !Command
+  command:
+  - DRAM.py
+  - distill
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input_file
+    description: 'Annotations path (default: None)'
+    args: !SimpleFlagArg
+      name: INPUT_FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output_dir
+    description: 'Directory to write summarized genomes (default: None)'
+    args: !SimpleFlagArg
+      name: OUTPUT_DIR
+  - !Flag
+    optional: true
+    synonyms:
+    - --rrna_path
+    description: 'rRNA output from annotation (default: None)'
+    args: !SimpleFlagArg
+      name: RRNA_PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - --trna_path
+    description: 'tRNA output from annotation (default: None)'
+    args: !SimpleFlagArg
+      name: TRNA_PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - --groupby_column
+    description: "Column from annotations to group as organism units\n(default: fasta)"
+    args: !SimpleFlagArg
+      name: GROUPBY_COLUMN
+  - !Flag
+    optional: true
+    synonyms:
+    - --custom_distillate
+    description: "Custom distillate form to add your own modules\n(default: None)"
+    args: !SimpleFlagArg
+      name: CUSTOM_DISTILLATE
+  - !Flag
+    optional: true
+    synonyms:
+    - --distillate_gene_names
+    description: "Give names of genes instead of counts in genome\nmetabolism summary\
+      \ (default: False)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --genomes_per_product
+    description: "Number of genomes per product.html output. Decrease\nvalue if getting\
+      \ JavaScript Error: Maximum call stack\nsize exceeded when viewing product.html\
+      \ in browser.\n(default: 1000)\n"
+    args: !SimpleFlagArg
+      name: GENOMES_PER_PRODUCT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: DRAM.py distill [-h] [-i INPUT_FILE] [-o OUTPUT_DIR]\n      \
+    \                 [--rrna_path RRNA_PATH] [--trna_path TRNA_PATH]\n          \
+    \             [--groupby_column GROUPBY_COLUMN]\n                       [--custom_distillate\
+    \ CUSTOM_DISTILLATE]\n                       [--distillate_gene_names]\n     \
+    \                  [--genomes_per_product GENOMES_PER_PRODUCT]\n\noptional arguments:\n\
+    \  -h, --help            show this help message and exit\n  -i INPUT_FILE, --input_file\
+    \ INPUT_FILE\n                        Annotations path (default: None)\n  -o OUTPUT_DIR,\
+    \ --output_dir OUTPUT_DIR\n                        Directory to write summarized\
+    \ genomes (default: None)\n  --rrna_path RRNA_PATH\n                        rRNA\
+    \ output from annotation (default: None)\n  --trna_path TRNA_PATH\n          \
+    \              tRNA output from annotation (default: None)\n  --groupby_column\
+    \ GROUPBY_COLUMN\n                        Column from annotations to group as\
+    \ organism units\n                        (default: fasta)\n  --custom_distillate\
+    \ CUSTOM_DISTILLATE\n                        Custom distillate form to add your\
+    \ own modules\n                        (default: None)\n  --distillate_gene_names\n\
+    \                        Give names of genes instead of counts in genome\n   \
+    \                     metabolism summary (default: False)\n  --genomes_per_product\
+    \ GENOMES_PER_PRODUCT\n                        Number of genomes per product.html\
+    \ output. Decrease\n                        value if getting JavaScript Error:\
+    \ Maximum call stack\n                        size exceeded when viewing product.html\
+    \ in browser.\n                        (default: 1000)\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/dram:1.2.2--pyhdfd78af_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: DRAM.py [-h]\n               {annotate,annotate_genes,distill,strainer,neighborhoods}\
+  \ ...\n\npositional arguments:\n  {annotate,annotate_genes,distill,strainer,neighborhoods}\n\
+  \    annotate            Annotate genomes/contigs/bins/MAGs\n    annotate_genes\
+  \      Annotate already called genes, limited functionality\n                  \
+  \      compared to annotate\n    distill             Summarize metabolic content\
+  \ of annotated genomes\n    strainer            Strain annotations down to genes\
+  \ of interest\n    neighborhoods       Find neighborhoods around genes of interest\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/dram:1.2.2--pyhdfd78af_0

@@ -1,0 +1,169 @@
+!Command
+command:
+- ipyrad
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: exit
+  description: -f, --force           force overwrite of existing data
+- !Positional
+  optional: false
+  position: 1
+  name: directory
+  description: '-p PARAMS             path to params file for Assembly:'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --results
+  description: show results summary for Assembly in params.txt and
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  description: do not print to stderror or stdout.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --debug
+  description: print lots more info to ipyrad_log.txt.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: create new file 'params-{new}.txt' in current
+  args: !SimpleFlagArg
+    name: NEW
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: Set of assembly steps to run, e.g., -s 123
+  args: !SimpleFlagArg
+    name: STEPS
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  description: "[BRANCH ...]       create new branch of Assembly as params-{branch}.txt,\n\
+    and can be used to drop samples from Assembly."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: "[MERGE ...]        merge multiple Assemblies into one joint Assembly,\
+    \ and\ncan be used to merge Samples into one Sample."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: number of CPU cores to use (Default=0=All)
+  args: !SimpleFlagArg
+    name: cores
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: tune threading of multi-threaded binaries (Default=2)
+  args: !SimpleFlagArg
+    name: threading
+- !Flag
+  optional: true
+  synonyms:
+  - --MPI
+  description: connect to parallel CPUs across multiple nodes
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --ipcluster
+  description: "[IPCLUSTER]\nconnect to running ipcluster, enter profile name or\n\
+    profile='default'"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --download
+  description: "[DOWNLOAD ...]\ndownload fastq files by accession (e.g., SRP or SRR)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: ''
+  args: !SimpleFlagArg
+    name: PARAMS
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: ''
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: ''
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: ipyrad [-h] [-v] [-r] [-f] [-q] [-d] [-n NEW] [-p PARAMS] [-s STEPS]\n\
+  \              [-b [BRANCH ...]] [-m [MERGE ...]] [-c cores] [-t threading]\n  \
+  \            [--MPI] [--ipcluster [IPCLUSTER]] [--download [DOWNLOAD ...]]\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  -v, --version\
+  \         show program's version number and exit\n  -r, --results         show results\
+  \ summary for Assembly in params.txt and\n                        exit\n  -f, --force\
+  \           force overwrite of existing data\n  -q, --quiet           do not print\
+  \ to stderror or stdout.\n  -d, --debug           print lots more info to ipyrad_log.txt.\n\
+  \  -n NEW                create new file 'params-{new}.txt' in current\n       \
+  \                 directory\n  -p PARAMS             path to params file for Assembly:\n\
+  \                        params-{assembly_name}.txt\n  -s STEPS              Set\
+  \ of assembly steps to run, e.g., -s 123\n  -b [BRANCH ...]       create new branch\
+  \ of Assembly as params-{branch}.txt,\n                        and can be used to\
+  \ drop samples from Assembly.\n  -m [MERGE ...]        merge multiple Assemblies\
+  \ into one joint Assembly, and\n                        can be used to merge Samples\
+  \ into one Sample.\n  -c cores              number of CPU cores to use (Default=0=All)\n\
+  \  -t threading          tune threading of multi-threaded binaries (Default=2)\n\
+  \  --MPI                 connect to parallel CPUs across multiple nodes\n  --ipcluster\
+  \ [IPCLUSTER]\n                        connect to running ipcluster, enter profile\
+  \ name or\n                        profile='default'\n  --download [DOWNLOAD ...]\n\
+  \                        download fastq files by accession (e.g., SRP or SRR)\n\n\
+  \  * Example command-line usage: \n    ipyrad -n data                       ## create\
+  \ new file called params-data.txt \n    ipyrad -p params-data.txt -s 123     ##\
+  \ run only steps 1-3 of assembly.\n    ipyrad -p params-data.txt -s 3 -f    ## run\
+  \ step 3, overwrite existing data.\n\n  * HPC parallelization across 32 cores\n\
+  \    ipyrad -p params-data.txt -s 3 -c 32 --MPI\n\n  * Print results summary \n\
+  \    ipyrad -p params-data.txt -r \n\n  * Branch/Merging Assemblies\n    ipyrad\
+  \ -p params-data.txt -b newdata  \n    ipyrad -m newdata params-1.txt params-2.txt\
+  \ [params-3.txt, ...]\n\n  * Subsample taxa during branching\n    ipyrad -p params-data.txt\
+  \ -b newdata taxaKeepList.txt\n\n  * Download sequence data from SRA into directory\
+  \ 'sra-fastqs/' \n    ipyrad --download SRP021469 sra-fastqs/ \n\n  * Documentation:\
+  \ http://ipyrad.readthedocs.io\n    \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/ipyrad:0.9.71--pyh5e36f6f_0

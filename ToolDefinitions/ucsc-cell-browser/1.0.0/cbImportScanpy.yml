@@ -1,0 +1,126 @@
+!Command
+command:
+- cbImportScanpy
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: htmlDir
+  description: --markerField=MARKERFIELD
+- !Positional
+  optional: false
+  position: 0
+  name: rank_genes_groups
+  description: --clusterField=CLUSTERFIELD
+- !Positional
+  optional: false
+  position: 0
+  name: others
+  description: -m, --skipMatrix      do not convert the matrix, saves time if the
+    same one
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --debug
+  description: show debug messages
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --inFile
+  description: input .h5ad file. Required parameter
+  args: !SimpleFlagArg
+    name: INFILE
+- !Flag
+  optional: true
+  synonyms:
+  - --proc
+  description: "when exporting, do not use the raw input data, instead\nuse the normalized\
+    \ and corrected matrix scanpy. This\nhas no effect if the anndata.raw attribute\
+    \ is not used\nin the anndata object"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --outDir
+  description: Output directory. Required parameter
+  args: !SimpleFlagArg
+    name: OUTDIR
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --name
+  description: "Dataset name for generated cellbrowser.conf. If not\nspecified, the\
+    \ last component of -o will be used."
+  args: !SimpleFlagArg
+    name: DATASETNAME
+- !Flag
+  optional: true
+  synonyms:
+  - --htmlDir
+  description: "do not only convert to tab-sep files but also run\ncbBuild toconvert\
+    \ the data and add the dataset under\nhtmlDir"
+  args: !SimpleFlagArg
+    name: HTMLDIR
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --port
+  description: 'only with --htmlDir: start webserver on port to serve'
+  args: !SimpleFlagArg
+    name: PORT
+- !Flag
+  optional: true
+  synonyms:
+  - --skipMarkers
+  description: "do not try to calculate cluster-specific marker genes.\nOnly useful\
+    \ for the rare datasets where a bug in\nscanpy crashes the marker gene calculation.\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: cbImportScanpy [options] inFilename outDir datasetName - convert\
+  \ Scanpy AnnData object to cellbrowser. inFilename can be an .h5ad or .loom file.\n\
+  \n    Example:\n    - cbImportScanpy -i pbmc3k.h5ad -o pbmc3kScanpy - convert pbmc3k\
+  \ to directory with tab-separated files\n    \n\nOptions:\n  -h, --help        \
+  \    show this help message and exit\n  -d, --debug           show debug messages\n\
+  \  -i INFILE, --inFile=INFILE\n                        input .h5ad file. Required\
+  \ parameter\n  --proc                when exporting, do not use the raw input data,\
+  \ instead\n                        use the normalized and corrected matrix scanpy.\
+  \ This\n                        has no effect if the anndata.raw attribute is not\
+  \ used\n                        in the anndata object\n  -o OUTDIR, --outDir=OUTDIR\n\
+  \                        Output directory. Required parameter\n  -n DATASETNAME,\
+  \ --name=DATASETNAME\n                        Dataset name for generated cellbrowser.conf.\
+  \ If not\n                        specified, the last component of -o will be used.\n\
+  \  --htmlDir=HTMLDIR     do not only convert to tab-sep files but also run\n   \
+  \                     cbBuild toconvert the data and add the dataset under\n   \
+  \                     htmlDir\n  -p PORT, --port=PORT  only with --htmlDir: start\
+  \ webserver on port to serve\n                        htmlDir\n  --markerField=MARKERFIELD\n\
+  \                        name of the marker genes field, default:\n            \
+  \            rank_genes_groups\n  --clusterField=CLUSTERFIELD\n                \
+  \        if no marker genes are present, use this field to\n                   \
+  \     calculate them. Default is to try a list of common\n                     \
+  \   field names, like 'Cluster' or 'louvain' and a few\n                       \
+  \ others\n  -m, --skipMatrix      do not convert the matrix, saves time if the same\
+  \ one\n                        has been exported before to the same directory\n\
+  \  --skipMarkers         do not try to calculate cluster-specific marker genes.\n\
+  \                        Only useful for the rare datasets where a bug in\n    \
+  \                    scanpy crashes the marker gene calculation.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/ucsc-cell-browser:1.0.0--pyhdfd78af_0

@@ -1,0 +1,89 @@
+!Command
+command:
+- cooltools
+- random-sample
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: IN_PATH
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: OUT_PATH
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --count
+  description: "The target number of contacts in the sample. The\nresulting sample\
+    \ size will not match it precisely.\nMutually exclusive with --frac"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --frac
+  description: "The target sample size as a fraction of contacts in the\noriginal\
+    \ dataset. Mutually exclusive with --count"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --exact
+  description: "If specified, use exact sampling that guarantees the\nsize of the\
+    \ output sample. Otherwise, binomial sampling\nwill be used and the sample size\
+    \ will be distributed\naround the target value."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --nproc
+  description: "Number of processes to split the work between.[default:\n1, i.e. no\
+    \ process pool]"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --chunksize
+  description: The number of pixels loaded and processed per step of
+  args: !SimpleFlagArg
+    name: INTEGER
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: cooltools random-sample [OPTIONS] IN_PATH OUT_PATH\n\n  Pick a\
+  \ random sample of contacts from a Hi-C map, w/o replacement.\n\n  IN_PATH : Input\
+  \ cooler path or URI.\n\n  OUT_PATH : Output cooler path or URI.\n\n  Specify the\
+  \ target sample size with either --count or --frac.\n\nOptions:\n  -c, --count INTEGER\
+  \  The target number of contacts in the sample. The\n                       resulting\
+  \ sample size will not match it precisely.\n                       Mutually exclusive\
+  \ with --frac\n\n  -f, --frac FLOAT     The target sample size as a fraction of\
+  \ contacts in the\n                       original dataset. Mutually exclusive with\
+  \ --count\n\n  --exact              If specified, use exact sampling that guarantees\
+  \ the\n                       size of the output sample. Otherwise, binomial sampling\n\
+  \                       will be used and the sample size will be distributed\n \
+  \                      around the target value.\n\n  -p, --nproc INTEGER  Number\
+  \ of processes to split the work between.[default:\n                       1, i.e.\
+  \ no process pool]\n\n  --chunksize INTEGER  The number of pixels loaded and processed\
+  \ per step of\n                       computation.  [default: 10000000]\n\n  -h,\
+  \ --help           Show this message and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/cooltools:0.4.0--py39hcbe4a3b_0

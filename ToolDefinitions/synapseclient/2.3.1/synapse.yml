@@ -1,0 +1,1897 @@
+&id001 !Command
+command:
+- synapse
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --username
+  description: Username used to connect to Synapse
+  args: !SimpleFlagArg
+    name: SYNAPSEUSER
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --password
+  description: Password, api key, or token used to connect to Synapse
+  args: !SimpleFlagArg
+    name: SYNAPSEPASSWORD
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --configPath
+  description: "Path to configuration file used to connect to Synapse\n[default: /root/.synapseConfig]"
+  args: !SimpleFlagArg
+    name: CONFIGPATH
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  - -s
+  - --skip-checks
+  description: "suppress checking for version upgrade messages and\nendpoint redirection"
+  args: !EmptyFlagArg {}
+parent:
+subcommands:
+- !Command
+  command:
+  - synapse
+  - query
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: synapse
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    description: ''
+    args: !SimpleFlagArg
+      name: SYNAPSEPASSWORD
+  - !Flag
+    optional: true
+    synonyms:
+    - -u
+    description: ''
+    args: !SimpleFlagArg
+      name: SYNAPSEUSER
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    description: ''
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - --version
+    description: ''
+    args: !EmptyFlagArg {}
+  help_text: "usage: synapse [-h] [--version] [-u SYNAPSEUSER] [-p SYNAPSEPASSWORD]\n\
+    \               [-c CONFIGPATH] [--debug] [-s]\n               {get,sync,store,add,mv,cp,associate,delete,query,submit,show,cat,list,set-provenance,get-provenance,set-annotations,get-annotations,create,store-table,onweb,login,test-encoding,get-sts-token,migrate}\n\
+    \               ...\nsynapse: error: unrecognized arguments: --usage\n"
+  generated_using: &id005
+  - --usage
+  docker_image: quay.io/biocontainers/synapseclient:2.3.1--pyh5e36f6f_0
+- &id002 !Command
+  command:
+  - synapse
+  - set-annotations
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --id
+    description: Synapse ID of entity whose annotations we are
+    args: !SimpleFlagArg
+      name: syn123
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --replace
+    description: "Replace all existing annotations with the given\nannotations\n"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --annotations
+    description: ''
+    args: !SimpleFlagArg
+      name: ANNOTATIONS
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - synapse
+    - set-annotations
+    - accessing.
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: synapse
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: set-annotations
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -r
+      description: ''
+      args: !EmptyFlagArg {}
+    - !Flag
+      optional: true
+      synonyms:
+      - --annotations
+      description: ''
+      args: !SimpleFlagArg
+        name: ANNOTATIONS
+    - !Flag
+      optional: true
+      synonyms:
+      - --id
+      description: ''
+      args: !SimpleFlagArg
+        name: syn123
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      description: ''
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "usage: synapse set-annotations [-h] --id syn123 --annotations ANNOTATIONS\
+      \ [-r]\nsynapse set-annotations: error: the following arguments are required:\
+      \ --id, --annotations\n"
+    generated_using: []
+    docker_image: quay.io/biocontainers/synapseclient:2.3.1--pyh5e36f6f_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: synapse set-annotations [-h] --id syn123 --annotations ANNOTATIONS\
+    \ [-r]\n\noptional arguments:\n  -h, --help            show this help message\
+    \ and exit\n  --id syn123           Synapse ID of entity whose annotations we\
+    \ are\n                        accessing.\n  --annotations ANNOTATIONS\n     \
+    \                   Annotations to add as a JSON formatted string, should\n  \
+    \                      evaluate to a dictionary (key/value pairs). Example:\n\
+    \                        '{\"foo\": 1, \"bar\":\"quux\"}'\n  -r, --replace   \
+    \      Replace all existing annotations with the given\n                     \
+    \   annotations\n"
+  generated_using: &id003
+  - --help
+  docker_image: quay.io/biocontainers/synapseclient:2.3.1--pyh5e36f6f_0
+- !Command
+  command:
+  - synapse
+  - store-table
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --name
+    description: Name of Table
+    args: !SimpleFlagArg
+      name: NAME
+  - !Flag
+    optional: true
+    synonyms:
+    - --parentid
+    - --parentId
+    description: Synapse ID of project
+    args: !SimpleFlagArg
+      name: syn123
+  - !Flag
+    optional: true
+    synonyms:
+    - --csv
+    description: Path to csv
+    args: !SimpleFlagArg
+      name: foo.csv
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: synapse store-table [-h] --name NAME [--parentid syn123]\n  \
+    \                         [--csv foo.csv]\n\noptional arguments:\n  -h, --help\
+    \            show this help message and exit\n  --name NAME           Name of\
+    \ Table\n  --parentid syn123, --parentId syn123\n                        Synapse\
+    \ ID of project\n  --csv foo.csv         Path to csv\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/synapseclient:2.3.1--pyh5e36f6f_0
+- !Command
+  command:
+  - synapse
+  - get-sts-token
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: id
+    description: Synapse id
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: ''
+    args: !ChoiceFlagArg
+      choices: !!set
+        powershell:
+        json:
+        cmd:
+        bash:
+        boto:
+        shell:
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: synapse get-sts-token [-h] [-o {json,boto,shell,bash,cmd,powershell}]\n\
+    \                             id {read_write,read_only}\n\npositional arguments:\n\
+    \  id                    Synapse id\n  {read_write,read_only}\n\noptional arguments:\n\
+    \  -h, --help            show this help message and exit\n  -o {json,boto,shell,bash,cmd,powershell},\
+    \ --output {json,boto,shell,bash,cmd,powershell}\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/synapseclient:2.3.1--pyh5e36f6f_0
+- !Command
+  command:
+  - synapse
+  - add
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: FILE
+    description: file to be added to synapse.
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --parentid
+    - --parentId
+    - -parentid
+    - -parentId
+    description: "Synapse ID of project or folder where to upload data\n(must be specified\
+      \ if --id is not used."
+    args: !SimpleFlagArg
+      name: syn123
+  - !Flag
+    optional: true
+    synonyms:
+    - --id
+    description: Optional Id of entity in Synapse to be updated.
+    args: !SimpleFlagArg
+      name: syn123
+  - !Flag
+    optional: true
+    synonyms:
+    - --type
+    description: "Type of object, such as \"File\", \"Folder\", or\n\"Project\", to\
+      \ create in Synapse. Defaults to \"File\""
+    args: !SimpleFlagArg
+      name: TYPE
+  - !Flag
+    optional: true
+    synonyms:
+    - --name
+    - -name
+    description: Name of data object in Synapse
+    args: !SimpleFlagArg
+      name: NAME
+  - !Flag
+    optional: true
+    synonyms:
+    - --description
+    - -description
+    description: Description of data object in Synapse.
+    args: !SimpleFlagArg
+      name: DESCRIPTION
+  - !Flag
+    optional: true
+    synonyms:
+    - --descriptionFile
+    - -descriptionFile
+    description: "Path to a markdown file containing description of\nproject/folder"
+    args: !SimpleFlagArg
+      name: DESCRIPTION_FILE_PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - --used
+    description: "[target ...], -used [target ...]\nSynapse ID, a url, or a local\
+      \ file path (of a file\npreviouslyuploaded to Synapse) from which the\nspecified\
+      \ entity is derived"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --executed
+    description: "[target ...], -executed [target ...]\nSynapse ID, a url, or a local\
+      \ file path (of a file\npreviouslyuploaded to Synapse) that was executed to\n\
+      generate the specified entity"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --limitSearch
+    description: "Synapse ID of a container such as project or folder to\nlimit search\
+      \ for provenance files."
+    args: !SimpleFlagArg
+      name: projId
+  - !Flag
+    optional: true
+    synonyms:
+    - --noForceVersion
+    description: "Do not force a new version to be created if the\ncontents of the\
+      \ file have not changed. The default is\na new version is created."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --annotations
+    description: "Annotations to add as a JSON formatted string, should\nevaluate\
+      \ to a dictionary (key/value pairs). Example:\n'{\"foo\": 1, \"bar\":\"quux\"\
+      }'"
+    args: !SimpleFlagArg
+      name: ANNOTATIONS
+  - !Flag
+    optional: true
+    synonyms:
+    - --replace
+    description: "Replace all existing annotations with the given\nannotations\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: synapse add [-h] (--parentid syn123 | --id syn123 | --type TYPE)\n\
+    \                   [--name NAME]\n                   [--description DESCRIPTION\
+    \ | --descriptionFile DESCRIPTION_FILE_PATH]\n                   [--used [target\
+    \ ...]] [--executed [target ...]]\n                   [--limitSearch projId] [--noForceVersion]\n\
+    \                   [--annotations ANNOTATIONS] [--replace]\n                \
+    \   [FILE]\n\npositional arguments:\n  FILE                  file to be added\
+    \ to synapse.\n\noptional arguments:\n  -h, --help            show this help message\
+    \ and exit\n  --parentid syn123, --parentId syn123, -parentid syn123, -parentId\
+    \ syn123\n                        Synapse ID of project or folder where to upload\
+    \ data\n                        (must be specified if --id is not used.\n  --id\
+    \ syn123           Optional Id of entity in Synapse to be updated.\n  --type TYPE\
+    \           Type of object, such as \"File\", \"Folder\", or\n               \
+    \         \"Project\", to create in Synapse. Defaults to \"File\"\n  --name NAME,\
+    \ -name NAME\n                        Name of data object in Synapse\n  --description\
+    \ DESCRIPTION, -description DESCRIPTION\n                        Description of\
+    \ data object in Synapse.\n  --descriptionFile DESCRIPTION_FILE_PATH, -descriptionFile\
+    \ DESCRIPTION_FILE_PATH\n                        Path to a markdown file containing\
+    \ description of\n                        project/folder\n  --used [target ...],\
+    \ -used [target ...]\n                        Synapse ID, a url, or a local file\
+    \ path (of a file\n                        previouslyuploaded to Synapse) from\
+    \ which the\n                        specified entity is derived\n  --executed\
+    \ [target ...], -executed [target ...]\n                        Synapse ID, a\
+    \ url, or a local file path (of a file\n                        previouslyuploaded\
+    \ to Synapse) that was executed to\n                        generate the specified\
+    \ entity\n  --limitSearch projId  Synapse ID of a container such as project or\
+    \ folder to\n                        limit search for provenance files.\n  --noForceVersion\
+    \      Do not force a new version to be created if the\n                     \
+    \   contents of the file have not changed. The default is\n                  \
+    \      a new version is created.\n  --annotations ANNOTATIONS\n              \
+    \          Annotations to add as a JSON formatted string, should\n           \
+    \             evaluate to a dictionary (key/value pairs). Example:\n         \
+    \               '{\"foo\": 1, \"bar\":\"quux\"}'\n  --replace             Replace\
+    \ all existing annotations with the given\n                        annotations\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/synapseclient:2.3.1--pyh5e36f6f_0
+- !Command
+  command:
+  - synapse
+  - cp
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --destinationId
+    description: "Synapse ID of project or folder where file will be\ncopied to."
+    args: !SimpleFlagArg
+      name: syn123
+  - !Flag
+    optional: true
+    synonyms:
+    - --setProvenance
+    description: "Has three values to set the provenance of the copied\nentity-traceback:\
+      \ Sets to the source entityexisting:\nSets to source entity's original provenance\
+      \ (if it\nexists)None/none: No provenance is set"
+    args: !SimpleFlagArg
+      name: traceback
+  - !Flag
+    optional: true
+    synonyms:
+    - --updateExisting
+    description: "Will update the file if there is already a file that\nis named the\
+      \ same in the destination"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --skipCopyAnnotations
+    description: Do not copy the annotations
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --excludeTypes
+    description: "[file table ...]\nAccepts a list of entity types (file, table, link)\n\
+      which determines which entity types to not copy."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --skipCopyWiki
+    description: Do not copy the wiki pages
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - --version
+    - -v
+    description: "Synapse version number of File or Link to retrieve.\nThis parameter\
+      \ cannot be used when copying Projects or\nFolders. Defaults to most recent\
+      \ version."
+    args: !SimpleFlagArg
+      name: '1'
+  help_text: "usage: synapse cp [-h] --destinationId syn123 [--version 1]\n      \
+    \            [--setProvenance traceback] [--updateExisting]\n                \
+    \  [--skipCopyAnnotations] [--excludeTypes [file table ...]]\n               \
+    \   [--skipCopyWiki]\n                  syn123\n\npositional arguments:\n  syn123\
+    \                Id of entity in Synapse to be copied.\n\noptional arguments:\n\
+    \  -h, --help            show this help message and exit\n  --destinationId syn123\n\
+    \                        Synapse ID of project or folder where file will be\n\
+    \                        copied to.\n  --version 1, -v 1     Synapse version number\
+    \ of File or Link to retrieve.\n                        This parameter cannot\
+    \ be used when copying Projects or\n                        Folders. Defaults\
+    \ to most recent version.\n  --setProvenance traceback\n                     \
+    \   Has three values to set the provenance of the copied\n                   \
+    \     entity-traceback: Sets to the source entityexisting:\n                 \
+    \       Sets to source entity's original provenance (if it\n                 \
+    \       exists)None/none: No provenance is set\n  --updateExisting      Will update\
+    \ the file if there is already a file that\n                        is named the\
+    \ same in the destination\n  --skipCopyAnnotations\n                        Do\
+    \ not copy the annotations\n  --excludeTypes [file table ...]\n              \
+    \          Accepts a list of entity types (file, table, link)\n              \
+    \          which determines which entity types to not copy.\n  --skipCopyWiki\
+    \        Do not copy the wiki pages\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/synapseclient:2.3.1--pyh5e36f6f_0
+- &id004 !Command
+  command:
+  - synapse
+  - show
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --limitSearch
+    description: "Synapse ID of a container such as project or folder to\nlimit search\
+      \ for provenance files.\n"
+    args: !SimpleFlagArg
+      name: projId
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - synapse
+    - show
+    - syn123
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: synapse
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -p
+      description: ''
+      args: !SimpleFlagArg
+        name: SYNAPSEPASSWORD
+    - !Flag
+      optional: true
+      synonyms:
+      - -u
+      description: ''
+      args: !SimpleFlagArg
+        name: SYNAPSEUSER
+    parent: *id004
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      description: ''
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag: !Flag
+      optional: true
+      synonyms:
+      - --version
+      description: ''
+      args: !EmptyFlagArg {}
+    help_text: "usage: synapse [-h] [--version] [-u SYNAPSEUSER] [-p SYNAPSEPASSWORD]\n\
+      \               [-c CONFIGPATH] [--debug] [-s]\n               {get,sync,store,add,mv,cp,associate,delete,query,submit,show,cat,list,set-provenance,get-provenance,set-annotations,get-annotations,create,store-table,onweb,login,test-encoding,get-sts-token,migrate}\n\
+      \               ...\nsynapse: error: unrecognized arguments: --usage\n"
+    generated_using: *id005
+    docker_image: quay.io/biocontainers/synapseclient:2.3.1--pyh5e36f6f_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: synapse show [-h] [--limitSearch projId] syn123\n\npositional\
+    \ arguments:\n  syn123                Synapse ID of form syn123 of desired synapse\
+    \ object\n\noptional arguments:\n  -h, --help            show this help message\
+    \ and exit\n  --limitSearch projId  Synapse ID of a container such as project\
+    \ or folder to\n                        limit search for provenance files.\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/synapseclient:2.3.1--pyh5e36f6f_0
+- !Command
+  command:
+  - synapse
+  - associate
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: path
+    description: local file path
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --limitSearch
+    description: "Synapse ID of a container such as project or folder to\nlimit search\
+      \ to."
+    args: !SimpleFlagArg
+      name: projId
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    description: "Perform recursive association with all local files in\na folder\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: synapse associate [-h] [--limitSearch projId] [-r] path\n\npositional\
+    \ arguments:\n  path                  local file path\n\noptional arguments:\n\
+    \  -h, --help            show this help message and exit\n  --limitSearch projId\
+    \  Synapse ID of a container such as project or folder to\n                  \
+    \      limit search to.\n  -r                    Perform recursive association\
+    \ with all local files in\n                        a folder\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/synapseclient:2.3.1--pyh5e36f6f_0
+- &id006 !Command
+  command:
+  - synapse
+  - onweb
+  positional: []
+  named: []
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - synapse
+    - onweb
+    - id
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: synapse
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -p
+      description: ''
+      args: !SimpleFlagArg
+        name: SYNAPSEPASSWORD
+    - !Flag
+      optional: true
+      synonyms:
+      - -u
+      description: ''
+      args: !SimpleFlagArg
+        name: SYNAPSEUSER
+    parent: *id006
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      description: ''
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag: !Flag
+      optional: true
+      synonyms:
+      - --version
+      description: ''
+      args: !EmptyFlagArg {}
+    help_text: "usage: synapse [-h] [--version] [-u SYNAPSEUSER] [-p SYNAPSEPASSWORD]\n\
+      \               [-c CONFIGPATH] [--debug] [-s]\n               {get,sync,store,add,mv,cp,associate,delete,query,submit,show,cat,list,set-provenance,get-provenance,set-annotations,get-annotations,create,store-table,onweb,login,test-encoding,get-sts-token,migrate}\n\
+      \               ...\nsynapse: error: unrecognized arguments: --usage\n"
+    generated_using: *id005
+    docker_image: quay.io/biocontainers/synapseclient:2.3.1--pyh5e36f6f_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: synapse onweb [-h] id\n\npositional arguments:\n  id        \
+    \  Synapse id\n\noptional arguments:\n  -h, --help  show this help message and\
+    \ exit\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/synapseclient:2.3.1--pyh5e36f6f_0
+- !Command
+  command:
+  - synapse
+  - get
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: syn123
+    description: Synapse ID of form syn123 of desired data object.
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    - --query
+    description: "Optional query parameter, will fetch all of the\nentities returned\
+      \ by a query (see query for help)."
+    args: !SimpleFlagArg
+      name: queryString
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --recursive
+    description: "Fetches content in Synapse recursively contained in\nthe parentId\
+      \ specified by id."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --followLink
+    description: Determines whether the link returns the target Entity.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --limitSearch
+    description: "Synapse ID of a container such as project or folder to\nlimit search\
+      \ for files if using a path."
+    args: !SimpleFlagArg
+      name: projId
+  - !Flag
+    optional: true
+    synonyms:
+    - --downloadLocation
+    description: 'Directory to download file to [default: ./].'
+    args: !SimpleFlagArg
+      name: path
+  - !Flag
+    optional: true
+    synonyms:
+    - --multiThreaded
+    description: "Download file using a multiple threaded\nimplementation. This flag\
+      \ will be removed in the\nfuture when multi-threaded download is deemed fully\n\
+      stable and becomes the default implementation.\n"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    description: ''
+    args: !SimpleFlagArg
+      name: VERSION
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --version
+    description: "Synapse version number of entity to retrieve. Defaults\nto most\
+      \ recent version."
+    args: !SimpleFlagArg
+      name: VERSION
+  help_text: "usage: synapse get [-h] [-q queryString] [-v VERSION] [-r] [--followLink]\n\
+    \                   [--limitSearch projId] [--downloadLocation path]\n       \
+    \            [--multiThreaded]\n                   [syn123]\n\npositional arguments:\n\
+    \  syn123                Synapse ID of form syn123 of desired data object.\n\n\
+    optional arguments:\n  -h, --help            show this help message and exit\n\
+    \  -q queryString, --query queryString\n                        Optional query\
+    \ parameter, will fetch all of the\n                        entities returned\
+    \ by a query (see query for help).\n  -v VERSION, --version VERSION\n        \
+    \                Synapse version number of entity to retrieve. Defaults\n    \
+    \                    to most recent version.\n  -r, --recursive       Fetches\
+    \ content in Synapse recursively contained in\n                        the parentId\
+    \ specified by id.\n  --followLink          Determines whether the link returns\
+    \ the target Entity.\n  --limitSearch projId  Synapse ID of a container such as\
+    \ project or folder to\n                        limit search for files if using\
+    \ a path.\n  --downloadLocation path\n                        Directory to download\
+    \ file to [default: ./].\n  --multiThreaded       Download file using a multiple\
+    \ threaded\n                        implementation. This flag will be removed\
+    \ in the\n                        future when multi-threaded download is deemed\
+    \ fully\n                        stable and becomes the default implementation.\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/synapseclient:2.3.1--pyh5e36f6f_0
+- &id007 !Command
+  command:
+  - synapse
+  - cat
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    description: ''
+    args: !SimpleFlagArg
+      name: VERSION
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - synapse
+    - cat
+    - syn123
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: synapse
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -p
+      description: ''
+      args: !SimpleFlagArg
+        name: SYNAPSEPASSWORD
+    - !Flag
+      optional: true
+      synonyms:
+      - -u
+      description: ''
+      args: !SimpleFlagArg
+        name: SYNAPSEUSER
+    parent: *id007
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      description: ''
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag: !Flag
+      optional: true
+      synonyms:
+      - --version
+      description: ''
+      args: !EmptyFlagArg {}
+    help_text: "usage: synapse [-h] [--version] [-u SYNAPSEUSER] [-p SYNAPSEPASSWORD]\n\
+      \               [-c CONFIGPATH] [--debug] [-s]\n               {get,sync,store,add,mv,cp,associate,delete,query,submit,show,cat,list,set-provenance,get-provenance,set-annotations,get-annotations,create,store-table,onweb,login,test-encoding,get-sts-token,migrate}\n\
+      \               ...\nsynapse: error: unrecognized arguments: --usage\n"
+    generated_using: *id005
+    docker_image: quay.io/biocontainers/synapseclient:2.3.1--pyh5e36f6f_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --version
+    description: "Synapse version number of entity to display. Defaults\nto most recent\
+      \ version.\n"
+    args: !SimpleFlagArg
+      name: VERSION
+  help_text: "usage: synapse cat [-h] [-v VERSION] syn123\n\npositional arguments:\n\
+    \  syn123                Synapse ID of form syn123 of desired data object\n\n\
+    optional arguments:\n  -h, --help            show this help message and exit\n\
+    \  -v VERSION, --version VERSION\n                        Synapse version number\
+    \ of entity to display. Defaults\n                        to most recent version.\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/synapseclient:2.3.1--pyh5e36f6f_0
+- !Command
+  command:
+  - synapse
+  - migrate
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: id
+    description: Synapse id
+  - !Positional
+    optional: false
+    position: 1
+    name: dest_storage_location_id
+    description: Destination Synapse storage location id
+  - !Positional
+    optional: false
+    position: 2
+    name: db_path
+    description: Local system path where a record keeping file can be
+  - !Positional
+    optional: false
+    position: 3
+    name: stored
+    description: 'optional arguments:'
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --source_storage_location_ids
+    description: "[SOURCE_STORAGE_LOCATION_IDS ...]\nSource Synapse storage location\
+      \ ids. If specified only\nfiles in these storage locations will be migrated."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --file_version_strategy
+    description: "one of 'new', 'latest', 'all', 'skip' new creates a\nnew version\
+      \ of each entity, latest migrates the most\nrecent version, all migrates all\
+      \ versions, skip avoids\nmigrating file entities (use when exclusively\ntargeting\
+      \ table attached files"
+    args: !SimpleFlagArg
+      name: FILE_VERSION_STRATEGY
+  - !Flag
+    optional: true
+    synonyms:
+    - --include_table_files
+    description: Include table attached files when migrating
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --continue_on_error
+    description: "Whether to continue processing other entities if\nmigration of one\
+      \ fails"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --csv_log_path
+    description: "Path where to log a csv documenting the changes from\nthe migration"
+    args: !SimpleFlagArg
+      name: CSV_LOG_PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - --dryRun
+    description: Dry run, files will be indexed by not migrated
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --force
+    description: Bypass interactive prompt confirming migration
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: synapse migrate [-h]\n                       [--source_storage_location_ids\
+    \ [SOURCE_STORAGE_LOCATION_IDS ...]]\n                       [--file_version_strategy\
+    \ FILE_VERSION_STRATEGY]\n                       [--include_table_files] [--continue_on_error]\n\
+    \                       [--csv_log_path CSV_LOG_PATH] [--dryRun] [--force]\n \
+    \                      id dest_storage_location_id db_path\n\npositional arguments:\n\
+    \  id                    Synapse id\n  dest_storage_location_id\n            \
+    \            Destination Synapse storage location id\n  db_path              \
+    \ Local system path where a record keeping file can be\n                     \
+    \   stored\n\noptional arguments:\n  -h, --help            show this help message\
+    \ and exit\n  --source_storage_location_ids [SOURCE_STORAGE_LOCATION_IDS ...]\n\
+    \                        Source Synapse storage location ids. If specified only\n\
+    \                        files in these storage locations will be migrated.\n\
+    \  --file_version_strategy FILE_VERSION_STRATEGY\n                        one\
+    \ of 'new', 'latest', 'all', 'skip' new creates a\n                        new\
+    \ version of each entity, latest migrates the most\n                        recent\
+    \ version, all migrates all versions, skip avoids\n                        migrating\
+    \ file entities (use when exclusively\n                        targeting table\
+    \ attached files\n  --include_table_files\n                        Include table\
+    \ attached files when migrating\n  --continue_on_error   Whether to continue processing\
+    \ other entities if\n                        migration of one fails\n  --csv_log_path\
+    \ CSV_LOG_PATH\n                        Path where to log a csv documenting the\
+    \ changes from\n                        the migration\n  --dryRun            \
+    \  Dry run, files will be indexed by not migrated\n  --force               Bypass\
+    \ interactive prompt confirming migration\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/synapseclient:2.3.1--pyh5e36f6f_0
+- !Command
+  command:
+  - synapse
+  - set-provenance
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -id
+    - --id
+    description: "Synapse ID of entity whose provenance we are\naccessing."
+    args: !SimpleFlagArg
+      name: syn123
+  - !Flag
+    optional: true
+    synonyms:
+    - -name
+    - --name
+    description: Name of the activity that generated the entity
+    args: !SimpleFlagArg
+      name: NAME
+  - !Flag
+    optional: true
+    synonyms:
+    - -description
+    - --description
+    description: Description of the activity that generated the entity
+    args: !SimpleFlagArg
+      name: DESCRIPTION
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: "[OUTPUT_FILE], -output [OUTPUT_FILE], --output [OUTPUT_FILE]\nOutput\
+      \ the provenance record in JSON format"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -used
+    description: "[target ...], --used [target ...]\nSynapse ID, a url, or a local\
+      \ file path (of a file\npreviouslyuploaded to Synapse) from which the\nspecified\
+      \ entity is derived"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -executed
+    description: "[target ...], --executed [target ...]\nSynapse ID, a url, or a local\
+      \ file path (of a file\npreviouslyuploaded to Synapse) that was executed to\n\
+      generate the specified entity"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -limitSearch
+    - --limitSearch
+    description: "Synapse ID of a container such as project or folder to\nlimit search\
+      \ for provenance files.\n"
+    args: !SimpleFlagArg
+      name: projId
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: synapse set-provenance [-h] -id syn123 [-name NAME]\n       \
+    \                       [-description DESCRIPTION] [-o [OUTPUT_FILE]]\n      \
+    \                        [-used [target ...]] [-executed [target ...]]\n     \
+    \                         [-limitSearch projId]\n\noptional arguments:\n  -h,\
+    \ --help            show this help message and exit\n  -id syn123, --id syn123\n\
+    \                        Synapse ID of entity whose provenance we are\n      \
+    \                  accessing.\n  -name NAME, --name NAME\n                   \
+    \     Name of the activity that generated the entity\n  -description DESCRIPTION,\
+    \ --description DESCRIPTION\n                        Description of the activity\
+    \ that generated the entity\n  -o [OUTPUT_FILE], -output [OUTPUT_FILE], --output\
+    \ [OUTPUT_FILE]\n                        Output the provenance record in JSON\
+    \ format\n  -used [target ...], --used [target ...]\n                        Synapse\
+    \ ID, a url, or a local file path (of a file\n                        previouslyuploaded\
+    \ to Synapse) from which the\n                        specified entity is derived\n\
+    \  -executed [target ...], --executed [target ...]\n                        Synapse\
+    \ ID, a url, or a local file path (of a file\n                        previouslyuploaded\
+    \ to Synapse) that was executed to\n                        generate the specified\
+    \ entity\n  -limitSearch projId, --limitSearch projId\n                      \
+    \  Synapse ID of a container such as project or folder to\n                  \
+    \      limit search for provenance files.\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/synapseclient:2.3.1--pyh5e36f6f_0
+- !Command
+  command:
+  - synapse
+  - mv
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --id
+    description: Id of entity in Synapse to be moved.
+    args: !SimpleFlagArg
+      name: syn123
+  - !Flag
+    optional: true
+    synonyms:
+    - --parentid
+    - --parentId
+    - -parentid
+    - -parentId
+    description: "Synapse ID of project or folder where file/folder will\nbe moved\n"
+    args: !SimpleFlagArg
+      name: syn123
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: synapse mv [-h] --id syn123 --parentid syn123\n\noptional arguments:\n\
+    \  -h, --help            show this help message and exit\n  --id syn123      \
+    \     Id of entity in Synapse to be moved.\n  --parentid syn123, --parentId syn123,\
+    \ -parentid syn123, -parentId syn123\n                        Synapse ID of project\
+    \ or folder where file/folder will\n                        be moved\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/synapseclient:2.3.1--pyh5e36f6f_0
+- !Command
+  command:
+  - synapse
+  - sync
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: FILE
+    description: A tsv file with file locations and metadata to be pushed to
+  - !Positional
+    optional: false
+    position: 1
+    name: Synapse.
+    description: 'optional arguments:'
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --dryRun
+    description: Perform validation without uploading.
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --sendMessages
+    description: "Send notifications via Synapse messaging (email) at specific\nintervals,\
+      \ on errors and on completion."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --retries
+    description: ''
+    args: !SimpleFlagArg
+      name: INT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: synapse sync [-h] [--dryRun] [--sendMessages] [--retries INT]\
+    \ FILE\n\npositional arguments:\n  FILE            A tsv file with file locations\
+    \ and metadata to be pushed to\n                  Synapse.\n\noptional arguments:\n\
+    \  -h, --help      show this help message and exit\n  --dryRun        Perform\
+    \ validation without uploading.\n  --sendMessages  Send notifications via Synapse\
+    \ messaging (email) at specific\n                  intervals, on errors and on\
+    \ completion.\n  --retries INT\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/synapseclient:2.3.1--pyh5e36f6f_0
+- &id008 !Command
+  command:
+  - synapse
+  - delete
+  positional: []
+  named: []
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - synapse
+    - delete
+    - syn123
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: synapse
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - -p
+      description: ''
+      args: !SimpleFlagArg
+        name: SYNAPSEPASSWORD
+    - !Flag
+      optional: true
+      synonyms:
+      - -u
+      description: ''
+      args: !SimpleFlagArg
+        name: SYNAPSEUSER
+    parent: *id008
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      description: ''
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag: !Flag
+      optional: true
+      synonyms:
+      - --version
+      description: ''
+      args: !EmptyFlagArg {}
+    help_text: "usage: synapse [-h] [--version] [-u SYNAPSEUSER] [-p SYNAPSEPASSWORD]\n\
+      \               [-c CONFIGPATH] [--debug] [-s]\n               {get,sync,store,add,mv,cp,associate,delete,query,submit,show,cat,list,set-provenance,get-provenance,set-annotations,get-annotations,create,store-table,onweb,login,test-encoding,get-sts-token,migrate}\n\
+      \               ...\nsynapse: error: unrecognized arguments: --usage\n"
+    generated_using: *id005
+    docker_image: quay.io/biocontainers/synapseclient:2.3.1--pyh5e36f6f_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - --version
+    description: Version number to delete of given entity.
+    args: !SimpleFlagArg
+      name: VERSION
+  help_text: "usage: synapse delete [-h] [--version VERSION] syn123\n\npositional\
+    \ arguments:\n  syn123             Synapse ID of form syn123 of desired data object\n\
+    \noptional arguments:\n  -h, --help         show this help message and exit\n\
+    \  --version VERSION  Version number to delete of given entity.\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/synapseclient:2.3.1--pyh5e36f6f_0
+- !Command
+  command:
+  - synapse
+  - list
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: syn123
+    description: Synapse ID of a project or folder
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --recursive
+    description: "recursively list contents of the subtree descending from\nthe given\
+      \ Synapse ID"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    - --long
+    description: List synapse entities in long format
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    - --modified
+    description: List modified by and modified date
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: synapse list [-h] [-r] [-l] [-m] syn123\n\npositional arguments:\n\
+    \  syn123           Synapse ID of a project or folder\n\noptional arguments:\n\
+    \  -h, --help       show this help message and exit\n  -r, --recursive  recursively\
+    \ list contents of the subtree descending from\n                   the given Synapse\
+    \ ID\n  -l, --long       List synapse entities in long format\n  -m, --modified\
+    \   List modified by and modified date\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/synapseclient:2.3.1--pyh5e36f6f_0
+- !Command
+  command:
+  - synapse
+  - get-annotations
+  positional:
+  - !Positional
+    optional: true
+    position: 0
+    name: OUTPUT_FILE
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --id
+    description: Synapse ID of entity whose annotations we are
+    args: !SimpleFlagArg
+      name: syn123
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    description: ''
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: synapse get-annotations [-h] --id syn123 [-o [OUTPUT_FILE]]\n\
+    \noptional arguments:\n  -h, --help            show this help message and exit\n\
+    \  --id syn123           Synapse ID of entity whose annotations we are\n     \
+    \                   accessing.\n  -o [OUTPUT_FILE], --output [OUTPUT_FILE]\n \
+    \                       Output the annotations record in JSON format\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/synapseclient:2.3.1--pyh5e36f6f_0
+- !Command
+  command:
+  - synapse
+  - test-encoding
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: synapse
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    description: ''
+    args: !SimpleFlagArg
+      name: SYNAPSEPASSWORD
+  - !Flag
+    optional: true
+    synonyms:
+    - -u
+    description: ''
+    args: !SimpleFlagArg
+      name: SYNAPSEUSER
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    description: ''
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - --version
+    description: ''
+    args: !EmptyFlagArg {}
+  help_text: "usage: synapse [-h] [--version] [-u SYNAPSEUSER] [-p SYNAPSEPASSWORD]\n\
+    \               [-c CONFIGPATH] [--debug] [-s]\n               {get,sync,store,add,mv,cp,associate,delete,query,submit,show,cat,list,set-provenance,get-provenance,set-annotations,get-annotations,create,store-table,onweb,login,test-encoding,get-sts-token,migrate}\n\
+    \               ...\nsynapse: error: unrecognized arguments: --usage\n"
+  generated_using: *id005
+  docker_image: quay.io/biocontainers/synapseclient:2.3.1--pyh5e36f6f_0
+- !Command
+  command:
+  - synapse
+  - store
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: FILE
+    description: file to be added to synapse.
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --parentid
+    - --parentId
+    - -parentid
+    - -parentId
+    description: "Synapse ID of project or folder where to upload data\n(must be specified\
+      \ if --id is not used."
+    args: !SimpleFlagArg
+      name: syn123
+  - !Flag
+    optional: true
+    synonyms:
+    - --id
+    description: Optional Id of entity in Synapse to be updated.
+    args: !SimpleFlagArg
+      name: syn123
+  - !Flag
+    optional: true
+    synonyms:
+    - --type
+    description: "Type of object, such as \"File\", \"Folder\", or\n\"Project\", to\
+      \ create in Synapse. Defaults to \"File\""
+    args: !SimpleFlagArg
+      name: TYPE
+  - !Flag
+    optional: true
+    synonyms:
+    - --name
+    - -name
+    description: Name of data object in Synapse
+    args: !SimpleFlagArg
+      name: NAME
+  - !Flag
+    optional: true
+    synonyms:
+    - --description
+    - -description
+    description: Description of data object in Synapse.
+    args: !SimpleFlagArg
+      name: DESCRIPTION
+  - !Flag
+    optional: true
+    synonyms:
+    - --descriptionFile
+    - -descriptionFile
+    description: "Path to a markdown file containing description of\nproject/folder"
+    args: !SimpleFlagArg
+      name: DESCRIPTION_FILE_PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - --used
+    description: "[target ...], -used [target ...]\nSynapse ID, a url, or a local\
+      \ file path (of a file\npreviouslyuploaded to Synapse) from which the\nspecified\
+      \ entity is derived"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --executed
+    description: "[target ...], -executed [target ...]\nSynapse ID, a url, or a local\
+      \ file path (of a file\npreviouslyuploaded to Synapse) that was executed to\n\
+      generate the specified entity"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --limitSearch
+    description: "Synapse ID of a container such as project or folder to\nlimit search\
+      \ for provenance files."
+    args: !SimpleFlagArg
+      name: projId
+  - !Flag
+    optional: true
+    synonyms:
+    - --noForceVersion
+    description: "Do not force a new version to be created if the\ncontents of the\
+      \ file have not changed. The default is\na new version is created."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --annotations
+    description: "Annotations to add as a JSON formatted string, should\nevaluate\
+      \ to a dictionary (key/value pairs). Example:\n'{\"foo\": 1, \"bar\":\"quux\"\
+      }'"
+    args: !SimpleFlagArg
+      name: ANNOTATIONS
+  - !Flag
+    optional: true
+    synonyms:
+    - --replace
+    description: "Replace all existing annotations with the given\nannotations\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: synapse store [-h] (--parentid syn123 | --id syn123 | --type\
+    \ TYPE)\n                     [--name NAME]\n                     [--description\
+    \ DESCRIPTION | --descriptionFile DESCRIPTION_FILE_PATH]\n                   \
+    \  [--used [target ...]] [--executed [target ...]]\n                     [--limitSearch\
+    \ projId] [--noForceVersion]\n                     [--annotations ANNOTATIONS]\
+    \ [--replace]\n                     [FILE]\n\npositional arguments:\n  FILE  \
+    \                file to be added to synapse.\n\noptional arguments:\n  -h, --help\
+    \            show this help message and exit\n  --parentid syn123, --parentId\
+    \ syn123, -parentid syn123, -parentId syn123\n                        Synapse\
+    \ ID of project or folder where to upload data\n                        (must\
+    \ be specified if --id is not used.\n  --id syn123           Optional Id of entity\
+    \ in Synapse to be updated.\n  --type TYPE           Type of object, such as \"\
+    File\", \"Folder\", or\n                        \"Project\", to create in Synapse.\
+    \ Defaults to \"File\"\n  --name NAME, -name NAME\n                        Name\
+    \ of data object in Synapse\n  --description DESCRIPTION, -description DESCRIPTION\n\
+    \                        Description of data object in Synapse.\n  --descriptionFile\
+    \ DESCRIPTION_FILE_PATH, -descriptionFile DESCRIPTION_FILE_PATH\n            \
+    \            Path to a markdown file containing description of\n             \
+    \           project/folder\n  --used [target ...], -used [target ...]\n      \
+    \                  Synapse ID, a url, or a local file path (of a file\n      \
+    \                  previouslyuploaded to Synapse) from which the\n           \
+    \             specified entity is derived\n  --executed [target ...], -executed\
+    \ [target ...]\n                        Synapse ID, a url, or a local file path\
+    \ (of a file\n                        previouslyuploaded to Synapse) that was\
+    \ executed to\n                        generate the specified entity\n  --limitSearch\
+    \ projId  Synapse ID of a container such as project or folder to\n           \
+    \             limit search for provenance files.\n  --noForceVersion      Do not\
+    \ force a new version to be created if the\n                        contents of\
+    \ the file have not changed. The default is\n                        a new version\
+    \ is created.\n  --annotations ANNOTATIONS\n                        Annotations\
+    \ to add as a JSON formatted string, should\n                        evaluate\
+    \ to a dictionary (key/value pairs). Example:\n                        '{\"foo\"\
+    : 1, \"bar\":\"quux\"}'\n  --replace             Replace all existing annotations\
+    \ with the given\n                        annotations\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/synapseclient:2.3.1--pyh5e36f6f_0
+- !Command
+  command:
+  - synapse
+  - create
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -parentid
+    - -parentId
+    - --parentid
+    - --parentId
+    description: "Synapse ID of project or folder where to place folder\n[not used\
+      \ with project]"
+    args: !SimpleFlagArg
+      name: syn123
+  - !Flag
+    optional: true
+    synonyms:
+    - -name
+    - --name
+    description: Name of folder/project.
+    args: !SimpleFlagArg
+      name: NAME
+  - !Flag
+    optional: true
+    synonyms:
+    - -description
+    - --description
+    description: Description of project/folder
+    args: !SimpleFlagArg
+      name: DESCRIPTION
+  - !Flag
+    optional: true
+    synonyms:
+    - -descriptionFile
+    - --descriptionFile
+    description: "Path to a markdown file containing description of\nproject/folder\n"
+    args: !SimpleFlagArg
+      name: DESCRIPTION_FILE_PATH
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: synapse create [-h] [-parentid syn123] -name NAME\n         \
+    \             [-description DESCRIPTION | -descriptionFile DESCRIPTION_FILE_PATH]\n\
+    \                      type\n\npositional arguments:\n  type                 \
+    \ Type of object to create in synapse one of {Project,\n                     \
+    \   Folder}\n\noptional arguments:\n  -h, --help            show this help message\
+    \ and exit\n  -parentid syn123, -parentId syn123, --parentid syn123, --parentId\
+    \ syn123\n                        Synapse ID of project or folder where to place\
+    \ folder\n                        [not used with project]\n  -name NAME, --name\
+    \ NAME\n                        Name of folder/project.\n  -description DESCRIPTION,\
+    \ --description DESCRIPTION\n                        Description of project/folder\n\
+    \  -descriptionFile DESCRIPTION_FILE_PATH, --descriptionFile DESCRIPTION_FILE_PATH\n\
+    \                        Path to a markdown file containing description of\n \
+    \                       project/folder\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/synapseclient:2.3.1--pyh5e36f6f_0
+- !Command
+  command:
+  - synapse
+  - submit
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --evaluationID
+    - --evaluationId
+    - --evalID
+    description: Evaluation ID where the entity/file will be submitted
+    args: !SimpleFlagArg
+      name: EVALUATIONID
+  - !Flag
+    optional: true
+    synonyms:
+    - --evaluationName
+    - --evalN
+    description: "Evaluation Name where the entity/file will be\nsubmitted"
+    args: !SimpleFlagArg
+      name: EVALUATIONNAME
+  - !Flag
+    optional: true
+    synonyms:
+    - --entity
+    - --eid
+    - --entityId
+    - --id
+    description: Synapse ID of the entity to be submitted
+    args: !SimpleFlagArg
+      name: ENTITY
+  - !Flag
+    optional: true
+    synonyms:
+    - --file
+    - -f
+    description: File to be submitted to the challenge
+    args: !SimpleFlagArg
+      name: FILE
+  - !Flag
+    optional: true
+    synonyms:
+    - --parentId
+    - --parentid
+    - --parent
+    description: Synapse ID of project or folder where to upload data
+    args: !SimpleFlagArg
+      name: PARENTID
+  - !Flag
+    optional: true
+    synonyms:
+    - --name
+    description: Name of the submission
+    args: !SimpleFlagArg
+      name: NAME
+  - !Flag
+    optional: true
+    synonyms:
+    - --teamName
+    - --team
+    description: Submit of behalf of a registered team
+    args: !SimpleFlagArg
+      name: TEAMNAME
+  - !Flag
+    optional: true
+    synonyms:
+    - --submitterAlias
+    - --alias
+    description: A nickname, possibly for display in leaderboards
+    args: !SimpleFlagArg
+      name: ALIAS
+  - !Flag
+    optional: true
+    synonyms:
+    - --used
+    description: "[target ...]   Synapse ID, a url, or a local file path (of a file\n\
+      previouslyuploaded to Synapse) from which the\nspecified entity is derived"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --executed
+    description: "[target ...]\nSynapse ID, a url, or a local file path (of a file\n\
+      previouslyuploaded to Synapse) that was executed to\ngenerate the specified\
+      \ entity"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --limitSearch
+    description: "Synapse ID of a container such as project or folder to\nlimit search\
+      \ for provenance files.\n"
+    args: !SimpleFlagArg
+      name: projId
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: synapse submit [-h] [--evaluationID EVALUATIONID]\n         \
+    \             [--evaluationName EVALUATIONNAME] [--entity ENTITY]\n          \
+    \            [--file FILE] [--parentId PARENTID] [--name NAME]\n             \
+    \         [--teamName TEAMNAME] [--submitterAlias ALIAS]\n                   \
+    \   [--used [target ...]] [--executed [target ...]]\n                      [--limitSearch\
+    \ projId]\n\noptional arguments:\n  -h, --help            show this help message\
+    \ and exit\n  --evaluationID EVALUATIONID, --evaluationId EVALUATIONID, --evalID\
+    \ EVALUATIONID\n                        Evaluation ID where the entity/file will\
+    \ be submitted\n  --evaluationName EVALUATIONNAME, --evalN EVALUATIONNAME\n  \
+    \                      Evaluation Name where the entity/file will be\n       \
+    \                 submitted\n  --entity ENTITY, --eid ENTITY, --entityId ENTITY,\
+    \ --id ENTITY\n                        Synapse ID of the entity to be submitted\n\
+    \  --file FILE, -f FILE  File to be submitted to the challenge\n  --parentId PARENTID,\
+    \ --parentid PARENTID, --parent PARENTID\n                        Synapse ID of\
+    \ project or folder where to upload data\n  --name NAME           Name of the\
+    \ submission\n  --teamName TEAMNAME, --team TEAMNAME\n                       \
+    \ Submit of behalf of a registered team\n  --submitterAlias ALIAS, --alias ALIAS\n\
+    \                        A nickname, possibly for display in leaderboards\n  --used\
+    \ [target ...]   Synapse ID, a url, or a local file path (of a file\n        \
+    \                previouslyuploaded to Synapse) from which the\n             \
+    \           specified entity is derived\n  --executed [target ...]\n         \
+    \               Synapse ID, a url, or a local file path (of a file\n         \
+    \               previouslyuploaded to Synapse) that was executed to\n        \
+    \                generate the specified entity\n  --limitSearch projId  Synapse\
+    \ ID of a container such as project or folder to\n                        limit\
+    \ search for provenance files.\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/synapseclient:2.3.1--pyh5e36f6f_0
+- !Command
+  command:
+  - synapse
+  - get-provenance
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -id
+    - --id
+    description: "Synapse ID of entity whose provenance we are\naccessing."
+    args: !SimpleFlagArg
+      name: syn123
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - --version
+    description: version of Synapse entity whose provenance we are
+    args: !SimpleFlagArg
+      name: version
+  help_text: "usage: synapse get-provenance [-h] -id syn123 [--version version]\n\
+    \                              [-o [OUTPUT_FILE]]\n\noptional arguments:\n  -h,\
+    \ --help            show this help message and exit\n  -id syn123, --id syn123\n\
+    \                        Synapse ID of entity whose provenance we are\n      \
+    \                  accessing.\n  --version version     version of Synapse entity\
+    \ whose provenance we are\n                        accessing.\n  -o [OUTPUT_FILE],\
+    \ -output [OUTPUT_FILE], --output [OUTPUT_FILE]\n                        Output\
+    \ the provenance record in JSON format\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/synapseclient:2.3.1--pyh5e36f6f_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: synapse [-h] [--version] [-u SYNAPSEUSER] [-p SYNAPSEPASSWORD]\n\
+  \               [-c CONFIGPATH] [--debug] [-s]\n               {get,sync,store,add,mv,cp,associate,delete,query,submit,show,cat,list,set-provenance,get-provenance,set-annotations,get-annotations,create,store-table,onweb,login,test-encoding,get-sts-token,migrate}\n\
+  \               ...\n\nInterfaces with the Synapse repository.\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  --version          \
+  \   show program's version number and exit\n  -u SYNAPSEUSER, --username SYNAPSEUSER\n\
+  \                        Username used to connect to Synapse\n  -p SYNAPSEPASSWORD,\
+  \ --password SYNAPSEPASSWORD\n                        Password, api key, or token\
+  \ used to connect to Synapse\n  -c CONFIGPATH, --configPath CONFIGPATH\n       \
+  \                 Path to configuration file used to connect to Synapse\n      \
+  \                  [default: /root/.synapseConfig]\n  --debug\n  -s, --skip-checks\
+  \     suppress checking for version upgrade messages and\n                     \
+  \   endpoint redirection\n\ncommands:\n  The following commands are available:\n\
+  \n  {get,sync,store,add,mv,cp,associate,delete,query,submit,show,cat,list,set-provenance,get-provenance,set-annotations,get-annotations,create,store-table,onweb,login,test-encoding,get-sts-token,migrate}\n\
+  \                        For additional help: \"synapse <COMMAND> -h\"\n    get\
+  \                 downloads a file from Synapse\n    sync                Synchronize\
+  \ files described in a manifest to Synapse\n    store               uploads and\
+  \ adds a file to Synapse\n    add                 uploads and adds a file to Synapse\n\
+  \    mv                  Moves a file/folder in Synapse\n    cp                \
+  \  Copies specific versions of synapse content such as\n                       \
+  \ files, folders and projects by recursively copying all\n                     \
+  \   sub-content\n    associate           Associate local files with the files stored\
+  \ in Synapse\n                        so that calls to \"synapse get\" and \"synapse\
+  \ show\"\n                        don't re-download the files but use the already\n\
+  \                        existing file.\n    delete              removes a dataset\
+  \ from Synapse\n    query               Performs SQL like queries on Synapse\n \
+  \   submit              submit an entity or a file for evaluation\n    show    \
+  \            show metadata for an entity\n    cat                 prints a dataset\
+  \ from Synapse\n    list                List Synapse entities contained by the given\
+  \ Project\n                        or Folder. Note: May not be supported in future\n\
+  \                        versions of the client.\n    set-provenance      create\
+  \ provenance records\n    get-provenance      show provenance records\n    set-annotations\
+  \     create annotations records\n    get-annotations     show annotations records\n\
+  \    create              Creates folders or projects on Synapse\n    store-table\
+  \         Creates a Synapse Table given a csv\n    onweb               opens Synapse\
+  \ website for Entity\n    login               login to Synapse and (optionally)\
+  \ cache credentials\n    test-encoding       test character encoding to help diagnose\
+  \ problems\n    get-sts-token       Get an STS token for access to AWS S3 storage\n\
+  \                        underlying Synapse\n    migrate             Migrate Synapse\
+  \ entities to a different storage\n                        location\n"
+generated_using: *id003
+docker_image: quay.io/biocontainers/synapseclient:2.3.1--pyh5e36f6f_0

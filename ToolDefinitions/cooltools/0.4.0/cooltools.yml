@@ -1,0 +1,1314 @@
+&id001 !Command
+command:
+- cooltools
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: Verbose logging
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --debug
+  description: Post mortem debugging
+  args: !EmptyFlagArg {}
+parent:
+subcommands:
+- !Command
+  command:
+  - cooltools
+  - call-compartments
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: track-name.
+    description: 'Options:'
+  - !Positional
+    optional: false
+    position: 1
+    name: eigenvectors
+    description: --contact-type [cis|trans]    Type of the contacts perform eigen-value
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --reference-track
+    description: Reference track for orienting and ranking
+    args: !SimpleFlagArg
+      name: TRACK_PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - --n-eigs
+    description: "Number of eigenvectors to compute.  [default:\n3]"
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    description: Enable verbose output
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --out-prefix
+    description: "Save compartment track as a BED-like file.\n[required]"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --bigwig
+    description: Also save compartment track as a bigWig file.
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: cooltools call-compartments [OPTIONS] COOL_PATH\n\n  Perform\
+    \ eigen value decomposition on a cooler matrix to calculate\n  compartment signal\
+    \ by finding the eigenvector that correlates best with\n  the phasing track.\n\
+    \n  COOL_PATH : the paths to a .cool file with a balanced Hi-C map.\n\n  TRACK_PATH\
+    \ : the path to a BedGraph-like file that stores phasing track as\n  track-name\
+    \ named column.\n\n  BedGraph-like format assumes tab-separated columns chrom,\
+    \ start, stop and\n  track-name.\n\nOptions:\n  --reference-track TRACK_PATH \
+    \ Reference track for orienting and ranking\n                                eigenvectors\n\
+    \n  --contact-type [cis|trans]    Type of the contacts perform eigen-value\n \
+    \                               decomposition on.  [default: cis]\n\n  --n-eigs\
+    \ INTEGER              Number of eigenvectors to compute.  [default:\n       \
+    \                         3]\n\n  -v, --verbose                 Enable verbose\
+    \ output\n  -o, --out-prefix TEXT         Save compartment track as a BED-like\
+    \ file.\n                                [required]\n\n  --bigwig            \
+    \          Also save compartment track as a bigWig file.\n  -h, --help       \
+    \             Show this message and exit.\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/cooltools:0.4.0--py39hcbe4a3b_0
+- !Command
+  command:
+  - cooltools
+  - compute-saddle
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: COOL_PATH
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: TRACK_PATH
+    description: ''
+  - !Positional
+    optional: false
+    position: 2
+    name: EXPECTED_PATH
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --contact-type
+    description: "[cis|trans]  Type of the contacts to aggregate  [default:\ncis]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-dist
+    description: "Minimal distance between bins to consider,\nbp. If negative, removesthe\
+      \ first two\ndiagonals of the data. Ignored with\n--contact-type trans.  [default:\
+      \ -1]"
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - --max-dist
+    description: "Maximal distance between bins to consider,\nbp. Ignored, if negative.\
+      \ Ignored with\n--contact-type trans.  [default: -1]"
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    - --n-bins
+    description: "Number of bins for digitizing track values.\n[default: 50]"
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - --quantiles
+    description: "Bin the signal track into quantiles rather\nthan by value."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --range
+    description: "Low and high values used for binning genome-\nwide track values,\
+      \ e.g. if `range`=(-0.05,\n0.05), `n-bins` equidistant bins would be\ngenerated.\
+      \ Use to prevent the extreme track\nvalues from exploding the bin range and\
+      \ to\nensure consistent bins across several runs\nof `compute_saddle` command\
+      \ using different\ntrack files."
+    args: !SimpleFlagArg
+      name: FLOAT...
+  - !Flag
+    optional: true
+    synonyms:
+    - --qrange
+    description: "...       The fraction of the genome-wide range of the\ntrack values\
+      \ used to generate bins. E.g., if\n`qrange`=(0.02, 0.98) the lower bin would\n\
+      start at the 2nd percentile and the upper\nbin would end at the 98th percentile\
+      \ of the\ngenome-wide signal. Use to prevent the\nextreme track values from\
+      \ exploding the bin\nrange.  [default: 0.0, 1.0]"
+    args: !SimpleFlagArg
+      name: FLOAT FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --weight-name
+    description: "Use balancing weight with this name.\n[default: weight]"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --strength
+    - --no-strength
+    description: "Compute and save compartment 'saddle\nstrength' profile"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --regions
+    description: "Path to a BED file containing genomic\nregions for which saddleplot\
+      \ will be\ncalculated. Region names can be provided in\na 4th column and should\
+      \ match regions and\ntheir names in expected."
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --out-prefix
+    description: "Dump 'saddledata', 'binedges' and 'hist'\narrays in a numpy-specific\
+      \ .npz container.\nUse numpy.load to load these arrays into a\ndict-like object.\
+      \ The digitized signal\nvalues are saved to a bedGraph-style TSV.\n[required]"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --fig
+    description: "[png|jpg|svg|pdf|ps|eps]  Generate a figure and save to a file of\
+      \ the\nspecified format. If not specified - no\nimage is generated. Repeat for\
+      \ multiple\noutput formats."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --scale
+    description: '[linear|log]            Value scale for the heatmap  [default: log]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --cmap
+    description: "Name of matplotlib colormap  [default:\ncoolwarm]"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --vmin
+    description: "Low value of the saddleplot colorbar. Note:\nvalue in original units\
+      \ irrespective of used\nscale, and therefore should be positive for\nboth vmin\
+      \ and vmax."
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --vmax
+    description: High value of the saddleplot colorbar
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --hist-color
+    description: Face color of histogram bar chart
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    description: Enable verbose output
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: cooltools compute-saddle [OPTIONS] COOL_PATH TRACK_PATH EXPECTED_PATH\n\
+    \n  Calculate saddle statistics and generate saddle plots for an arbitrary\n \
+    \ signal track on the genomic bins of a contact matrix.\n\n  COOL_PATH : The paths\
+    \ to a .cool file with a balanced Hi-C map. Use the\n  '::' syntax to specify\
+    \ a group path in a multicooler file.\n\n  TRACK_PATH : The path to bedGraph-like\
+    \ file with a binned compartment\n  track (eigenvector), including a header. Use\
+    \ the '::' syntax to specify a\n  column name.\n\n  EXPECTED_PATH : The paths\
+    \ to a tsv-like file with expected signal,\n  including a header. Use the '::'\
+    \ syntax to specify a column name.\n\n  Analysis will be performed for chromosomes\
+    \ referred to in TRACK_PATH, and\n  therefore these chromosomes must be a subset\
+    \ of chromosomes referred to in\n  COOL_PATH and EXPECTED_PATH.\n\n  COOL_PATH,\
+    \ TRACK_PATH and EXPECTED_PATH must be binned at the same\n  resolution (expect\
+    \ for  EXPECTED_PATH in case of trans contact type).\n\n  EXPECTED_PATH must contain\
+    \ at least the following columns for cis\n  contacts: 'chrom', 'diag', 'n_valid',\
+    \ value_name and the following columns\n  for trans contacts: 'chrom1', 'chrom2',\
+    \ 'n_valid', value_name value_name\n  is controlled using options. Header must\
+    \ be present in a file.\n\nOptions:\n  -t, --contact-type [cis|trans]  Type of\
+    \ the contacts to aggregate  [default:\n                                  cis]\n\
+    \n  --min-dist INTEGER              Minimal distance between bins to consider,\n\
+    \                                  bp. If negative, removesthe first two\n   \
+    \                               diagonals of the data. Ignored with\n        \
+    \                          --contact-type trans.  [default: -1]\n\n  --max-dist\
+    \ INTEGER              Maximal distance between bins to consider,\n          \
+    \                        bp. Ignored, if negative. Ignored with\n            \
+    \                      --contact-type trans.  [default: -1]\n\n  -n, --n-bins\
+    \ INTEGER            Number of bins for digitizing track values.\n           \
+    \                       [default: 50]\n\n  --quantiles                     Bin\
+    \ the signal track into quantiles rather\n                                  than\
+    \ by value.\n\n  --range FLOAT...                Low and high values used for\
+    \ binning genome-\n                                  wide track values, e.g. if\
+    \ `range`=(-0.05,\n                                  0.05), `n-bins` equidistant\
+    \ bins would be\n                                  generated. Use to prevent the\
+    \ extreme track\n                                  values from exploding the bin\
+    \ range and to\n                                  ensure consistent bins across\
+    \ several runs\n                                  of `compute_saddle` command\
+    \ using different\n                                  track files.\n\n  --qrange\
+    \ <FLOAT FLOAT>...       The fraction of the genome-wide range of the\n      \
+    \                            track values used to generate bins. E.g., if\n  \
+    \                                `qrange`=(0.02, 0.98) the lower bin would\n \
+    \                                 start at the 2nd percentile and the upper\n\
+    \                                  bin would end at the 98th percentile of the\n\
+    \                                  genome-wide signal. Use to prevent the\n  \
+    \                                extreme track values from exploding the bin\n\
+    \                                  range.  [default: 0.0, 1.0]\n\n  --weight-name\
+    \ TEXT              Use balancing weight with this name.\n                   \
+    \               [default: weight]\n\n  --strength / --no-strength      Compute\
+    \ and save compartment 'saddle\n                                  strength' profile\n\
+    \n  --regions PATH                  Path to a BED file containing genomic\n  \
+    \                                regions for which saddleplot will be\n      \
+    \                            calculated. Region names can be provided in\n   \
+    \                               a 4th column and should match regions and\n  \
+    \                                their names in expected.\n\n  -o, --out-prefix\
+    \ TEXT           Dump 'saddledata', 'binedges' and 'hist'\n                  \
+    \                arrays in a numpy-specific .npz container.\n                \
+    \                  Use numpy.load to load these arrays into a\n              \
+    \                    dict-like object. The digitized signal\n                \
+    \                  values are saved to a bedGraph-style TSV.\n               \
+    \                   [required]\n\n  --fig [png|jpg|svg|pdf|ps|eps]  Generate a\
+    \ figure and save to a file of the\n                                  specified\
+    \ format. If not specified - no\n                                  image is generated.\
+    \ Repeat for multiple\n                                  output formats.\n\n \
+    \ --scale [linear|log]            Value scale for the heatmap  [default: log]\n\
+    \  --cmap TEXT                     Name of matplotlib colormap  [default:\n  \
+    \                                coolwarm]\n\n  --vmin FLOAT                 \
+    \   Low value of the saddleplot colorbar. Note:\n                            \
+    \      value in original units irrespective of used\n                        \
+    \          scale, and therefore should be positive for\n                     \
+    \             both vmin and vmax.\n\n  --vmax FLOAT                    High value\
+    \ of the saddleplot colorbar\n  --hist-color TEXT               Face color of\
+    \ histogram bar chart\n  -v, --verbose                   Enable verbose output\n\
+    \  -h, --help                      Show this message and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/cooltools:0.4.0--py39hcbe4a3b_0
+- !Command
+  command:
+  - cooltools
+  - compute-expected
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: COOL_PATH
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --nproc
+    description: "Number of processes to split the work\nbetween.[default: 1, i.e.\
+      \ no process pool]"
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --chunksize
+    description: "Control the number of pixels handled by each\nworker process at\
+      \ a time.  [default:\n10000000]"
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: "Specify output file name to store the\nexpected in a tsv format."
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --hdf
+    description: "Use hdf5 format instead of tsv. Output file\nname must be specified\
+      \ [Not Implemented]."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --contact-type
+    description: "[cis|trans]  compute expected for cis or trans region of\na Hi-C\
+      \ map.trans-expected is calculated for\npairwise combinations of specified regions.\n\
+      [default: cis]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --regions
+    description: "Path to a BED file containing genomic\nregions for which expected\
+      \ will be\ncalculated. Region names canbe provided in a\n4th column, otherwise\
+      \ UCSC notaion is\nused.When not specified, expected is\ncalculated for all\
+      \ chromosomes"
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - --balance
+    - --no-balance
+    description: "Apply balancing weights to data before\ncalculating expected.Bins\
+      \ masked in the\nbalancing weights are ignored from\ncalcualtions.  [default:\
+      \ True]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --weight-name
+    description: "Use balancing weight with this name.\n[default: weight]"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --blacklist
+    description: "Path to a 3-column BED file containing\ngenomic regions to mask\
+      \ out during\ncalculation of expected. Overwrites\ninference of 'bad' regions\
+      \ from balancing\nweights. [Not Implemented]"
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - --ignore-diags
+    description: "Number of diagonals to neglect for cis\ncontact type  [default:\
+      \ 2]"
+    args: !SimpleFlagArg
+      name: INTEGER
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: cooltools compute-expected [OPTIONS] COOL_PATH\n\n  Calculate\
+    \ expected Hi-C signal either for cis or for trans regions of\n  chromosomal interaction\
+    \ map.\n\n  When balancing weights are not applied to the data, there is no masking\
+    \ of\n  bad bins performed.\n\n  COOL_PATH : The paths to a .cool file with a\
+    \ balanced Hi-C map.\n\nOptions:\n  -p, --nproc INTEGER             Number of\
+    \ processes to split the work\n                                  between.[default:\
+    \ 1, i.e. no process pool]\n\n  -c, --chunksize INTEGER         Control the number\
+    \ of pixels handled by each\n                                  worker process\
+    \ at a time.  [default:\n                                  10000000]\n\n  -o,\
+    \ --output TEXT               Specify output file name to store the\n        \
+    \                          expected in a tsv format.\n\n  --hdf              \
+    \             Use hdf5 format instead of tsv. Output file\n                  \
+    \                name must be specified [Not Implemented].\n\n  -t, --contact-type\
+    \ [cis|trans]  compute expected for cis or trans region of\n                 \
+    \                 a Hi-C map.trans-expected is calculated for\n              \
+    \                    pairwise combinations of specified regions.\n           \
+    \                       [default: cis]\n\n  --regions PATH                  Path\
+    \ to a BED file containing genomic\n                                  regions\
+    \ for which expected will be\n                                  calculated. Region\
+    \ names canbe provided in a\n                                  4th column, otherwise\
+    \ UCSC notaion is\n                                  used.When not specified,\
+    \ expected is\n                                  calculated for all chromosomes\n\
+    \n  --balance / --no-balance        Apply balancing weights to data before\n \
+    \                                 calculating expected.Bins masked in the\n  \
+    \                                balancing weights are ignored from\n        \
+    \                          calcualtions.  [default: True]\n\n  --weight-name TEXT\
+    \              Use balancing weight with this name.\n                        \
+    \          [default: weight]\n\n  --blacklist PATH                Path to a 3-column\
+    \ BED file containing\n                                  genomic regions to mask\
+    \ out during\n                                  calculation of expected. Overwrites\n\
+    \                                  inference of 'bad' regions from balancing\n\
+    \                                  weights. [Not Implemented]\n\n  --ignore-diags\
+    \ INTEGER          Number of diagonals to neglect for cis\n                  \
+    \                contact type  [default: 2]\n\n  -h, --help                  \
+    \    Show this message and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/cooltools:0.4.0--py39hcbe4a3b_0
+- !Command
+  command:
+  - cooltools
+  - dump-cworld
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: format.
+    description: 'COOL_PATHS : Paths to one or multiple .cool files OUT_PATH : Output
+      CWorld'
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --cworld-type
+    description: "[matrix|tar]      The format of the CWorld output. 'matrix'\nconverts\
+      \ a single .cool file into the\n.matrix.txt.gz tab-separated format. 'tar'\n\
+      dumps all specified cooler files into a\nsingle .tar archive containing multiple\n\
+      .matrix.txt.gz files (use to make multi-\nresolution archives).  [default: matrix]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --region
+    description: "The coordinates of a genomic region to dump,\nin the UCSC format.\
+      \ If empty (by default),\ndump a genome-wide matrix. This option can\nbe used\
+      \ only when dumping a single cooler\nfile.  [default: ]"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --balancing-type
+    description: "[IC_unity|IC|raw]\nThe type of the matrix balancing. 'IC_unity'\n\
+      - iteratively corrected for the total number\nof contacts per locus=1.0; 'IC'\
+      \ - same, but\npreserving the average total number of\ncontacts; 'raw' - no\
+      \ balancing  [default:\nIC_unity]"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: cooltools dump-cworld [OPTIONS] COOL_PATHS OUT_PATH\n\n  Convert\
+    \ a cooler or a group of coolers into the Dekker' lab CWorld text\n  format.\n\
+    \n  COOL_PATHS : Paths to one or multiple .cool files OUT_PATH : Output CWorld\n\
+    \  file path\n\nOptions:\n  --cworld-type [matrix|tar]      The format of the\
+    \ CWorld output. 'matrix'\n                                  converts a single\
+    \ .cool file into the\n                                  .matrix.txt.gz tab-separated\
+    \ format. 'tar'\n                                  dumps all specified cooler\
+    \ files into a\n                                  single .tar archive containing\
+    \ multiple\n                                  .matrix.txt.gz files (use to make\
+    \ multi-\n                                  resolution archives).  [default: matrix]\n\
+    \n  --region TEXT                   The coordinates of a genomic region to dump,\n\
+    \                                  in the UCSC format. If empty (by default),\n\
+    \                                  dump a genome-wide matrix. This option can\n\
+    \                                  be used only when dumping a single cooler\n\
+    \                                  file.  [default: ]\n\n  --balancing-type [IC_unity|IC|raw]\n\
+    \                                  The type of the matrix balancing. 'IC_unity'\n\
+    \                                  - iteratively corrected for the total number\n\
+    \                                  of contacts per locus=1.0; 'IC' - same, but\n\
+    \                                  preserving the average total number of\n  \
+    \                                contacts; 'raw' - no balancing  [default:\n \
+    \                                 IC_unity]\n\n  -h, --help                  \
+    \    Show this message and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/cooltools:0.4.0--py39hcbe4a3b_0
+- !Command
+  command:
+  - cooltools
+  - logbin-expected
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: name.
+    description: 'OUTPUT_PREFIX: Output file name prefix to store the logbinned expected'
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --bins-per-order-magnitude
+    description: "How many bins per order of magnitude.\nDefault of 10 has a ratio\
+      \ of neighboring\nbins of about 1.25  [default: 10]"
+    args: !SimpleFlagArg
+      name: bins_per_order_magnitude
+  - !Flag
+    optional: true
+    synonyms:
+    - --bin-layout
+    description: "'fixed' means that bins are exactly the same\nfor different datasets,\
+      \ and only depend on\nbins_per_order_magnitude 'longest_regio'\nmeans that the\
+      \ last bin will end at size of\nthe longest region.  GOOD: the last bin will\n\
+      have as much data as possible.  BAD: bin\nedges will end up different for different\n\
+      datasets, you can't divide them by each\nother  [default: fixed]"
+    args: !SimpleFlagArg
+      name: bin_layout
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-nvalid
+    description: "For each region, throw out bins (log-spaced)\nthat have less than\
+      \ min_nvalid valid pixels.\nThis will ensure that each entree in Pc by\nregion\
+      \ has at least n_valid valid pixels.\nDon't set it to zero, or it will introduce\n\
+      bugs. Setting it to 1 is OK, but not\nrecommended.  [default: 200]"
+    args: !SimpleFlagArg
+      name: min_nvalid
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-count
+    description: "If counts are found in the data, then for\neach region, throw out\
+      \ bins (log-spaced)\nthat have more than min_counts of counts.sum\n(raw Hi-C\
+      \ counts). This will ensure that\neach entree in P(s) by region has at least\n\
+      min_count raw Hi-C reads  [default: 50]"
+    args: !SimpleFlagArg
+      name: min_count
+  - !Flag
+    optional: true
+    synonyms:
+    - --spread-funcs
+    description: "A way to estimate the spread of the P(s)\ncurves between regions.\
+      \ * 'minmax' - the\nminimum/maximum of by-region P(s) * 'std' -\nweighted standard\
+      \ deviation of P(s) curves\n(may produce negative results)  * 'logstd'\n(recommended)\
+      \ weighted standard deviation in\nlogspace  [default: logstd]"
+    args: !SimpleFlagArg
+      name: spread_funcs
+  - !Flag
+    optional: true
+    synonyms:
+    - --spread-funcs-slope
+    description: "Same as spread-funcs, but for slope\n(derivative) ratehr than P(s)\
+      \  [default:\nstd]"
+    args: !SimpleFlagArg
+      name: spread_funcs_slope
+  - !Flag
+    optional: true
+    synonyms:
+    - --resolution
+    description: "Data resolution in bp. If provided,\nadditonal column of separation\
+      \ in bp (s_bp)\nwill be added to the outputs"
+    args: !SimpleFlagArg
+      name: resolution
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: cooltools logbin-expected [OPTIONS] EXPECTED_PATH OUTPUT_PREFIX\n\
+    \n  Logarithmically bin expected values generated using compute_expected for\n\
+    \  cis data.\n\n  This smoothes the data, resulting in clearer plots and more\
+    \ robust\n  analysis results. Also calculates derivative after gaussian smoothing.\
+    \ For\n  a very detailed escription, see https://github.com/open2c/cooltools/blob/5\n\
+    \  1b95c3bed8d00a5f1f91370fc5192d9a7face7c/cooltools/expected.py#L988\n\n  EXPECTED_PATH\
+    \ : The paths to a .tsv file with output of compute_expected.\n  Must include\
+    \ a header. Use the '::' syntax to specify a summary column\n  name.\n\n  OUTPUT_PREFIX:\
+    \ Output file name prefix to store the logbinned expected\n  (prefix.log.tsv)\
+    \ and derivative (prefix.der.tsv) in the tsv format.\"\n\nOptions:\n  --bins-per-order-magnitude\
+    \ bins_per_order_magnitude\n                                  How many bins per\
+    \ order of magnitude.\n                                  Default of 10 has a ratio\
+    \ of neighboring\n                                  bins of about 1.25  [default:\
+    \ 10]\n\n  --bin-layout bin_layout         'fixed' means that bins are exactly\
+    \ the same\n                                  for different datasets, and only\
+    \ depend on\n                                  bins_per_order_magnitude 'longest_regio'\n\
+    \                                  means that the last bin will end at size of\n\
+    \                                  the longest region.  GOOD: the last bin will\n\
+    \                                  have as much data as possible.  BAD: bin\n\
+    \                                  edges will end up different for different\n\
+    \                                  datasets, you can't divide them by each\n \
+    \                                 other  [default: fixed]\n\n  --min-nvalid min_nvalid\
+    \         For each region, throw out bins (log-spaced)\n                     \
+    \             that have less than min_nvalid valid pixels.\n                 \
+    \                 This will ensure that each entree in Pc by\n               \
+    \                   region has at least n_valid valid pixels.\n              \
+    \                    Don't set it to zero, or it will introduce\n            \
+    \                      bugs. Setting it to 1 is OK, but not\n                \
+    \                  recommended.  [default: 200]\n\n  --min-count min_count   \
+    \        If counts are found in the data, then for\n                         \
+    \         each region, throw out bins (log-spaced)\n                         \
+    \         that have more than min_counts of counts.sum\n                     \
+    \             (raw Hi-C counts). This will ensure that\n                     \
+    \             each entree in P(s) by region has at least\n                   \
+    \               min_count raw Hi-C reads  [default: 50]\n\n  --spread-funcs spread_funcs\
+    \     A way to estimate the spread of the P(s)\n                             \
+    \     curves between regions. * 'minmax' - the\n                             \
+    \     minimum/maximum of by-region P(s) * 'std' -\n                          \
+    \        weighted standard deviation of P(s) curves\n                        \
+    \          (may produce negative results)  * 'logstd'\n                      \
+    \            (recommended) weighted standard deviation in\n                  \
+    \                logspace  [default: logstd]\n\n  --spread-funcs-slope spread_funcs_slope\n\
+    \                                  Same as spread-funcs, but for slope\n     \
+    \                             (derivative) ratehr than P(s)  [default:\n     \
+    \                             std]\n\n  --resolution resolution         Data resolution\
+    \ in bp. If provided,\n                                  additonal column of separation\
+    \ in bp (s_bp)\n                                  will be added to the outputs\n\
+    \n  -h, --help                      Show this message and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/cooltools:0.4.0--py39hcbe4a3b_0
+- !Command
+  command:
+  - cooltools
+  - random-sample
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: IN_PATH
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: OUT_PATH
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --count
+    description: "The target number of contacts in the sample. The\nresulting sample\
+      \ size will not match it precisely.\nMutually exclusive with --frac"
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --frac
+    description: "The target sample size as a fraction of contacts in the\noriginal\
+      \ dataset. Mutually exclusive with --count"
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --exact
+    description: "If specified, use exact sampling that guarantees the\nsize of the\
+      \ output sample. Otherwise, binomial sampling\nwill be used and the sample size\
+      \ will be distributed\naround the target value."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --nproc
+    description: "Number of processes to split the work between.[default:\n1, i.e.\
+      \ no process pool]"
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - --chunksize
+    description: The number of pixels loaded and processed per step of
+    args: !SimpleFlagArg
+      name: INTEGER
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: cooltools random-sample [OPTIONS] IN_PATH OUT_PATH\n\n  Pick\
+    \ a random sample of contacts from a Hi-C map, w/o replacement.\n\n  IN_PATH :\
+    \ Input cooler path or URI.\n\n  OUT_PATH : Output cooler path or URI.\n\n  Specify\
+    \ the target sample size with either --count or --frac.\n\nOptions:\n  -c, --count\
+    \ INTEGER  The target number of contacts in the sample. The\n                \
+    \       resulting sample size will not match it precisely.\n                 \
+    \      Mutually exclusive with --frac\n\n  -f, --frac FLOAT     The target sample\
+    \ size as a fraction of contacts in the\n                       original dataset.\
+    \ Mutually exclusive with --count\n\n  --exact              If specified, use\
+    \ exact sampling that guarantees the\n                       size of the output\
+    \ sample. Otherwise, binomial sampling\n                       will be used and\
+    \ the sample size will be distributed\n                       around the target\
+    \ value.\n\n  -p, --nproc INTEGER  Number of processes to split the work between.[default:\n\
+    \                       1, i.e. no process pool]\n\n  --chunksize INTEGER  The\
+    \ number of pixels loaded and processed per step of\n                       computation.\
+    \  [default: 10000000]\n\n  -h, --help           Show this message and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/cooltools:0.4.0--py39hcbe4a3b_0
+- !Command
+  command:
+  - cooltools
+  - diamond-insulation
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: IN_PATH
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: WINDOW
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --window-pixels
+    description: set, the window sizes must          be provided in
+    args: !SimpleFlagArg
+      name: is
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: "Specify output file name to store the\ninsulation in a tsv format."
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --ignore-diags
+    description: "The number of diagonals to ignore. By\ndefault, equals the number\
+      \ of diagonals\nignored during IC balancing."
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-frac-valid-pixels
+    description: "The minimal fraction of valid pixels in a\nsliding diamond. Used\
+      \ to mask bins during\nboundary detection.  [default: 0.66]"
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-dist-bad-bin
+    description: "The minimal allowed distance to a bad bin.\nUsed to mask bins during\
+      \ boundary detection.\n[default: 0]"
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - --append-raw-scores
+    description: "Append columns with raw scores (sum_counts,\nsum_balanced, n_pixels)\
+      \ to the output table."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --verbose
+    description: Report real-time progress.
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: cooltools diamond-insulation [OPTIONS] IN_PATH WINDOW\n\n  Calculate\
+    \ the diamond insulation scores and call insulating boundaries.\n\n  IN_PATH :\
+    \ The paths to a .cool file with a balanced Hi-C map.\n\n  WINDOW : The window\
+    \ size for the insulation score calculations.\n  Multiple space-separated values\
+    \ can be provided.          By default, the\n  window size must be provided in\
+    \ units of bp.          When the flag\n  --window-pixels is set, the window sizes\
+    \ must          be provided in\n  units of pixels instead.\n\nOptions:\n  -o,\
+    \ --output TEXT              Specify output file name to store the\n         \
+    \                        insulation in a tsv format.\n\n  --ignore-diags INTEGER\
+    \         The number of diagonals to ignore. By\n                            \
+    \     default, equals the number of diagonals\n                              \
+    \   ignored during IC balancing.\n\n  --min-frac-valid-pixels FLOAT  The minimal\
+    \ fraction of valid pixels in a\n                                 sliding diamond.\
+    \ Used to mask bins during\n                                 boundary detection.\
+    \  [default: 0.66]\n\n  --min-dist-bad-bin INTEGER     The minimal allowed distance\
+    \ to a bad bin.\n                                 Used to mask bins during boundary\
+    \ detection.\n                                 [default: 0]\n\n  --window-pixels\
+    \                If set then the window sizes are provided in\n              \
+    \                   units of pixels.\n\n  --append-raw-scores            Append\
+    \ columns with raw scores (sum_counts,\n                                 sum_balanced,\
+    \ n_pixels) to the output table.\n\n  --chunksize INTEGER            [default:\
+    \ 20000000]\n  --verbose                      Report real-time progress.\n  -h,\
+    \ --help                     Show this message and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/cooltools:0.4.0--py39hcbe4a3b_0
+- &id003 !Command
+  command:
+  - cooltools
+  - genome
+  positional: []
+  named: []
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - cooltools
+    - genome
+    - binnify
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: CHROMSIZES_PATH
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: BINSIZE
+      description: ''
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --all-names
+      description: "Parse all chromosome names from file, not only default\nr\"^chr[0-9]+$\"\
+        , r\"^chr[XY]$\", r\"^chrM$\"."
+      args: !EmptyFlagArg {}
+    parent: *id003
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: cooltools genome binnify [OPTIONS] CHROMSIZES_PATH BINSIZE\n\
+      \nOptions:\n  --all-names  Parse all chromosome names from file, not only default\n\
+      \               r\"^chr[0-9]+$\", r\"^chr[XY]$\", r\"^chrM$\".\n\n  -h, --help\
+      \   Show this message and exit.\n"
+    generated_using: *id002
+    docker_image: quay.io/biocontainers/cooltools:0.4.0--py39hcbe4a3b_0
+  - !Command
+    command:
+    - cooltools
+    - genome
+    - fetch-chromsizes
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: DB
+      description: ''
+    named: []
+    parent: *id003
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: cooltools genome fetch-chromsizes [OPTIONS] DB\n\nOptions:\n\
+      \  -h, --help  Show this message and exit.\n"
+    generated_using: *id002
+    docker_image: quay.io/biocontainers/cooltools:0.4.0--py39hcbe4a3b_0
+  - !Command
+    command:
+    - cooltools
+    - genome
+    - genecov
+    positional:
+    - !Positional
+      optional: false
+      position: 0
+      name: BINS_PATH
+      description: ''
+    - !Positional
+      optional: false
+      position: 1
+      name: DB
+      description: ''
+    named: []
+    parent: *id003
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      optional: true
+      synonyms:
+      - -h
+      - --help
+      description: Show this message and exit.
+      args: !EmptyFlagArg {}
+    usage_flag:
+    version_flag:
+    help_text: "Usage: cooltools genome genecov [OPTIONS] BINS_PATH DB\n\n  BINS_PATH\
+      \ is the path to bintable.\n\n  DB is the name of the genome assembly. The gene\
+      \ locations will be\n  automatically downloaded from teh UCSC goldenPath.\n\n\
+      Options:\n  -h, --help  Show this message and exit.\n"
+    generated_using: *id002
+    docker_image: quay.io/biocontainers/cooltools:0.4.0--py39hcbe4a3b_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: cooltools genome [OPTIONS] COMMAND [ARGS]...\n\n  Utilities for\
+    \ binned genome assemblies.\n\nOptions:\n  -h, --help  Show this message and exit.\n\
+    \nCommands:\n  binnify\n  digest\n  fetch-chromsizes\n  gc\n  genecov        \
+    \   BINS_PATH is the path to bintable.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/cooltools:0.4.0--py39hcbe4a3b_0
+- !Command
+  command:
+  - cooltools
+  - call-dots
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: COOL_PATH
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: EXPECTED_PATH
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --expected-name
+    description: "Name of value column in EXPECTED_PATH\n[default: balanced.avg]"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --weight-name
+    description: "Use balancing weight with this name.\n[default: weight]"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -p
+    - --nproc
+    description: "Number of processes to split the work\nbetween. [default: 1, i.e.\
+      \ no process pool]"
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - --max-loci-separation
+    description: "Limit loci separation for dot-calling, i.e.,\ndo not call dots for\
+      \ loci that are further\nthan max_loci_separation basepair apart.\n2-20MB is\
+      \ reasonable and would capture most\nof CTCF-dots.  [default: 2000000]"
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - --max-nans-tolerated
+    description: "Maximum number of NaNs tolerated in a\nfootprint of every used filter.\
+      \ Must be\ncontrolled with caution, as large max-nans-\ntolerated, might lead\
+      \ to pixels scored in\nthe padding area of the tiles to \"penetrate\"\nto the\
+      \ list of scored pixels for the\nstatistical testing. [max-nans-tolerated <=\n\
+      2*w ]  [default: 1]"
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - --tile-size
+    description: "Tile size for the Hi-C heatmap tiling.\nTypically on order of several\
+      \ mega-bases,\nand <= max_loci_separation.  [default:\n6000000]"
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - --kernel-width
+    description: "Outer half-width of the convolution kernel\nin pixels e.g. outer\
+      \ size (w) of the 'donut'\nkernel, with the 2*w+1 overall footprint of\nthe\
+      \ 'donut'."
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - --kernel-peak
+    description: "Inner half-width of the convolution kernel\nin pixels e.g. inner\
+      \ size (p) of the 'donut'\nkernel, with the 2*p+1 overall footprint of\nthe\
+      \ punch-hole."
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - --num-lambda-chunks
+    description: "Number of log-spaced bins to divide your\nadjusted expected between.\
+      \ Same as\nHiCCUPS_W1_MAX_INDX in the original HiCCUPS.\n[default: 45]"
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - --fdr
+    description: "False discovery rate (FDR) to control in the\nmultiple hypothesis\
+      \ testing BH-FDR\nprocedure.  [default: 0.02]"
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --dots-clustering-radius
+    description: "Radius for clustering dots that have been\ncalled too close to each\
+      \ other.Typically on\norder of 40 kilo-bases, and >= binsize.\n[default: 39000]"
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - -v
+    - --verbose
+    description: Enable verbose output
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --output-scores
+    description: "At the moment it is a redundant option that\ndoes nothing. Reserve\
+      \ it for a better dump\nof convolved scores."
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --output-hists
+    description: "Specify output file name to store lambda-\nchunked histograms. [Not\
+      \ implemented yet]"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output-calls
+    description: "Specify output file name where to store the\nresults of dot-calling,\
+      \ in a BEDPE format.\nPre-processed dots are stored in that file.\nPost-processed\
+      \ dots are stored in the\n.postproc one."
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --score-dump-mode
+    description: "Specify file format for the dump of\nconvolved scores. This dump\
+      \ is used for the\ndownstream processing and is read twice. Now\n'parquet' is\
+      \ the only supported format.\n'cooler' and 'hdf' in the future.  [default:\n\
+      parquet]"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --temp-dir
+    description: Create temporary files in specified
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --no-delete-temp
+    description: Do not delete temporary files when finished.
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: cooltools call-dots [OPTIONS] COOL_PATH EXPECTED_PATH\n\n  Call\
+    \ dots on a Hi-C heatmap that are not larger than max_loci_separation.\n\n  COOL_PATH\
+    \ : The paths to a .cool file with a balanced Hi-C map.\n\n  EXPECTED_PATH : The\
+    \ paths to a tsv-like file with expected signal.\n\n  Analysis will be performed\
+    \ for chromosomes referred to in EXPECTED_PATH,\n  and therefore these chromosomes\
+    \ must be a subset of chromosomes referred\n  to in COOL_PATH. Also chromosomes\
+    \ refered to in EXPECTED_PATH must be non-\n  trivial, i.e., contain not-NaN signal.\
+    \ Thus, make sure to prune your\n  EXPECTED_PATH before applying this script.\n\
+    \n  COOL_PATH and EXPECTED_PATH must be binned at the same resolution.\n\n  EXPECTED_PATH\
+    \ must contain at least the following columns for cis\n  contacts: 'chrom', 'diag',\
+    \ 'n_valid', value_name. value_name is controlled\n  using options. Header must\
+    \ be present in a file.\n\nOptions:\n  --expected-name TEXT            Name of\
+    \ value column in EXPECTED_PATH\n                                  [default: balanced.avg]\n\
+    \n  --weight-name TEXT              Use balancing weight with this name.\n   \
+    \                               [default: weight]\n\n  -p, --nproc INTEGER   \
+    \          Number of processes to split the work\n                           \
+    \       between. [default: 1, i.e. no process pool]\n\n  --max-loci-separation\
+    \ INTEGER   Limit loci separation for dot-calling, i.e.,\n                   \
+    \               do not call dots for loci that are further\n                 \
+    \                 than max_loci_separation basepair apart.\n                 \
+    \                 2-20MB is reasonable and would capture most\n              \
+    \                    of CTCF-dots.  [default: 2000000]\n\n  --max-nans-tolerated\
+    \ INTEGER    Maximum number of NaNs tolerated in a\n                         \
+    \         footprint of every used filter. Must be\n                          \
+    \        controlled with caution, as large max-nans-\n                       \
+    \           tolerated, might lead to pixels scored in\n                      \
+    \            the padding area of the tiles to \"penetrate\"\n                \
+    \                  to the list of scored pixels for the\n                    \
+    \              statistical testing. [max-nans-tolerated <=\n                 \
+    \                 2*w ]  [default: 1]\n\n  --tile-size INTEGER             Tile\
+    \ size for the Hi-C heatmap tiling.\n                                  Typically\
+    \ on order of several mega-bases,\n                                  and <= max_loci_separation.\
+    \  [default:\n                                  6000000]\n\n  --kernel-width INTEGER\
+    \          Outer half-width of the convolution kernel\n                      \
+    \            in pixels e.g. outer size (w) of the 'donut'\n                  \
+    \                kernel, with the 2*w+1 overall footprint of\n               \
+    \                   the 'donut'.\n\n  --kernel-peak INTEGER           Inner half-width\
+    \ of the convolution kernel\n                                  in pixels e.g.\
+    \ inner size (p) of the 'donut'\n                                  kernel, with\
+    \ the 2*p+1 overall footprint of\n                                  the punch-hole.\n\
+    \n  --num-lambda-chunks INTEGER     Number of log-spaced bins to divide your\n\
+    \                                  adjusted expected between. Same as\n      \
+    \                            HiCCUPS_W1_MAX_INDX in the original HiCCUPS.\n  \
+    \                                [default: 45]\n\n  --fdr FLOAT              \
+    \       False discovery rate (FDR) to control in the\n                       \
+    \           multiple hypothesis testing BH-FDR\n                             \
+    \     procedure.  [default: 0.02]\n\n  --dots-clustering-radius INTEGER\n    \
+    \                              Radius for clustering dots that have been\n   \
+    \                               called too close to each other.Typically on\n\
+    \                                  order of 40 kilo-bases, and >= binsize.\n \
+    \                                 [default: 39000]\n\n  -v, --verbose        \
+    \           Enable verbose output\n  -s, --output-scores TEXT        At the moment\
+    \ it is a redundant option that\n                                  does nothing.\
+    \ Reserve it for a better dump\n                                  of convolved\
+    \ scores.\n\n  --output-hists TEXT             Specify output file name to store\
+    \ lambda-\n                                  chunked histograms. [Not implemented\
+    \ yet]\n\n  -o, --output-calls TEXT         Specify output file name where to\
+    \ store the\n                                  results of dot-calling, in a BEDPE\
+    \ format.\n                                  Pre-processed dots are stored in\
+    \ that file.\n                                  Post-processed dots are stored\
+    \ in the\n                                  .postproc one.\n\n  --score-dump-mode\
+    \ TEXT          Specify file format for the dump of\n                        \
+    \          convolved scores. This dump is used for the\n                     \
+    \             downstream processing and is read twice. Now\n                 \
+    \                 'parquet' is the only supported format.\n                  \
+    \                'cooler' and 'hdf' in the future.  [default:\n              \
+    \                    parquet]\n\n  --temp-dir TEXT                 Create temporary\
+    \ files in specified\n                                  directory.  [default:\
+    \ .]\n\n  --no-delete-temp                Do not delete temporary files when finished.\n\
+    \  -h, --help                      Show this message and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/cooltools:0.4.0--py39hcbe4a3b_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Show the version and exit.
+  args: !EmptyFlagArg {}
+help_text: "Usage: cooltools [OPTIONS] COMMAND [ARGS]...\n\n  Type -h or --help after\
+  \ any subcommand for more information.\n\nOptions:\n  -v, --verbose  Verbose logging\n\
+  \  -d, --debug    Post mortem debugging\n  -V, --version  Show the version and exit.\n\
+  \  -h, --help     Show this message and exit.\n\nCommands:\n  call-compartments\
+  \   Perform eigen value decomposition on a cooler matrix...\n  call-dots       \
+  \    Call dots on a Hi-C heatmap that are not larger than...\n  compute-expected\
+  \    Calculate expected Hi-C signal either for cis or for...\n  compute-saddle \
+  \     Calculate saddle statistics and generate saddle plots...\n  diamond-insulation\
+  \  Calculate the diamond insulation scores and call...\n  dump-cworld         Convert\
+  \ a cooler or a group of coolers into the...\n  genome              Utilities for\
+  \ binned genome assemblies.\n  logbin-expected     Logarithmically bin expected\
+  \ values generated using...\n  random-sample       Pick a random sample of contacts\
+  \ from a Hi-C map, w/o...\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/cooltools:0.4.0--py39hcbe4a3b_0

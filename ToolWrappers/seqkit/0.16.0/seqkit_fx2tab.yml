@@ -1,0 +1,217 @@
+!Command
+command:
+- seqkit
+- fx2tab
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --alphabet
+  description: print alphabet letters
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --avg-qual
+  description: print average quality of a read
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -B
+  - --base-content
+  description: print base content. (case ignored, multiple values supported) e.g.
+    -B AT -B N
+  args: !SimpleFlagArg
+    name: strings
+- !Flag
+  optional: true
+  synonyms:
+  - -C
+  - --base-count
+  description: print base count. (case ignored, multiple values supported) e.g. -C
+    AT -C N
+  args: !SimpleFlagArg
+    name: strings
+- !Flag
+  optional: true
+  synonyms:
+  - -I
+  - --case-sensitive
+  description: calculate case sensitive base content
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --gc
+  description: print GC content
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -G
+  - --gc-skew
+  description: print GC-Skew
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -H
+  - --header-line
+  description: print header line
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --length
+  description: print sequence length
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --name
+  description: only print names (no sequences and qualities)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --only-id
+  description: print ID instead of full head
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --qual-ascii-base
+  description: ASCII BASE, 33 for Phred+33 (default 33)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --seq-hash
+  description: print hash of sequence (case sensitive)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --alphabet-guess-seq-length
+  description: length of sequence prefix of the first FASTA record based on which
+    seqkit guesses the sequence type (0 for whole seq) (default 10000)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --id-ncbi
+  description: FASTA head is NCBI-style, e.g. >gi|110645304|ref|NC_002516.2| Pseud...
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --id-regexp
+  description: regular expression for parsing ID (default "^(\\S+)\\s?")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --infile-list
+  description: file of input files list (one file per line), if given, they are appended
+    to files from cli arguments
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --line-width
+  description: line width when outputing FASTA format (0 for no wrap) (default 60)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out-file
+  description: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --quiet
+  description: be quiet and do not show extra information
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --seq-type
+  description: sequence type (dna|rna|protein|unlimit|auto) (for auto, it automatically
+    detect by the first sequence) (default "auto")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --threads
+  description: 'number of CPUs. (default value: 1 for single-CPU PC, 2 for others.
+    can also set with environment variable SEQKIT_THREADS) (default 2)'
+  args: !SimpleFlagArg
+    name: int
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: help for fx2tab
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "convert FASTA/Q to tabular format, and provide various information,\n\
+  like sequence length, GC content/GC skew.\n\nAttention:\n  1. Fixed three columns\
+  \ (ID, sequence, quality) are outputted for either FASTA\n     or FASTQ, except\
+  \ when flag -n/--name is on. This is for format compatibility.\n\nUsage:\n  seqkit\
+  \ fx2tab [flags]\n\nFlags:\n  -a, --alphabet               print alphabet letters\n\
+  \  -q, --avg-qual               print average quality of a read\n  -B, --base-content\
+  \ strings   print base content. (case ignored, multiple values supported) e.g. -B\
+  \ AT -B N\n  -C, --base-count strings     print base count. (case ignored, multiple\
+  \ values supported) e.g. -C AT -C N\n  -I, --case-sensitive         calculate case\
+  \ sensitive base content\n  -g, --gc                     print GC content\n  -G,\
+  \ --gc-skew                print GC-Skew\n  -H, --header-line            print header\
+  \ line\n  -h, --help                   help for fx2tab\n  -l, --length         \
+  \        print sequence length\n  -n, --name                   only print names\
+  \ (no sequences and qualities)\n  -i, --only-id                print ID instead\
+  \ of full head\n  -b, --qual-ascii-base int    ASCII BASE, 33 for Phred+33 (default\
+  \ 33)\n  -s, --seq-hash               print hash of sequence (case sensitive)\n\n\
+  Global Flags:\n      --alphabet-guess-seq-length int   length of sequence prefix\
+  \ of the first FASTA record based on which seqkit guesses the sequence type (0 for\
+  \ whole seq) (default 10000)\n      --id-ncbi                         FASTA head\
+  \ is NCBI-style, e.g. >gi|110645304|ref|NC_002516.2| Pseud...\n      --id-regexp\
+  \ string                regular expression for parsing ID (default \"^(\\\\S+)\\\
+  \\s?\")\n      --infile-list string              file of input files list (one file\
+  \ per line), if given, they are appended to files from cli arguments\n  -w, --line-width\
+  \ int                  line width when outputing FASTA format (0 for no wrap) (default\
+  \ 60)\n  -o, --out-file string                 out file (\"-\" for stdout, suffix\
+  \ .gz for gzipped out) (default \"-\")\n      --quiet                          \
+  \ be quiet and do not show extra information\n  -t, --seq-type string          \
+  \       sequence type (dna|rna|protein|unlimit|auto) (for auto, it automatically\
+  \ detect by the first sequence) (default \"auto\")\n  -j, --threads int        \
+  \             number of CPUs. (default value: 1 for single-CPU PC, 2 for others.\
+  \ can also set with environment variable SEQKIT_THREADS) (default 2)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/seqkit:0.16.0--h9ee0642_0

@@ -1,0 +1,112 @@
+!Command
+command:
+- agat_sp_fix_small_exon_from_extremities.pl
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: agat_fix_small_exon_from_extremities.pl
+  description: 'Description:'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -gff
+  description: Input GTF/GFF file.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -fa
+  - --fasta
+  description: "Genome fasta file The name of the fasta file containing the\ngenome\
+    \ to work with."
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - --ct
+  - --table
+  - --codon
+  description: "This option allows specifying the codon table to use - It\nexpects\
+    \ an integer (1 by default = standard)"
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - --size
+  - -s
+  description: "Minimum exon size accepted in nucleotide. All exon below this\nsize\
+    \ will be extended to this size. Default value = 15."
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  - --out
+  - --outfile
+  description: "Output GFF file. If no output file is specified, the output will\n\
+    be written to STDOUT."
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: "Verbose option, make it easier to follow what is going on for\ndebugging\
+    \ purpose."
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Display this helpful text.
+  args: !SimpleFlagArg
+    name: or
+usage_flag:
+version_flag:
+help_text: "\n ------------------------------------------------------------------------------\n\
+  |   Another GFF Analysis Toolkit (AGAT) - Version: v0.6.0                      |\n\
+  |   https://github.com/NBISweden/AGAT                                          |\n\
+  |   National Bioinformatics Infrastructure Sweden (NBIS) - www.nbis.se         |\n\
+  \ ------------------------------------------------------------------------------\n\
+  \n\nName:\n    agat_fix_small_exon_from_extremities.pl\n\nDescription:\n    The\
+  \ script aims to extend the small exons to make them longer. When\n    submitting\
+  \ annotation to ENA they expect exon size of 15 nt minimum.\n    Currently we extend\
+  \ only the exon from extremities, otherwise we risk to\n    break the predicted\
+  \ ORF. /!\\ When we extend an exon and the CDS has to\n    be extended too (because\
+  \ is was a partial CDS), we exit;\n\nUsage:\n        agat_fix_small_exon_from_extremities.pl\
+  \ -gff infile.gff --fasta genome.fa [ -o outfile ]\n        agat_fix_small_exon_from_extremities.pl\
+  \ --help\n\nOptions:\n    -gff    Input GTF/GFF file.\n\n    -fa or --fasta\n  \
+  \          Genome fasta file The name of the fasta file containing the\n       \
+  \     genome to work with.\n\n    --ct or --table or --codon\n            This option\
+  \ allows specifying the codon table to use - It\n            expects an integer\
+  \ (1 by default = standard)\n\n    --size or -s\n            Minimum exon size accepted\
+  \ in nucleotide. All exon below this\n            size will be extended to this\
+  \ size. Default value = 15.\n\n    -o , --output , --out or --outfile\n        \
+  \    Output GFF file. If no output file is specified, the output will\n        \
+  \    be written to STDOUT.\n\n    -v      Verbose option, make it easier to follow\
+  \ what is going on for\n            debugging purpose.\n\n    -h or --help\n   \
+  \         Display this helpful text.\n\nFeedback:\n  Did you find a bug?:\n    Do\
+  \ not hesitate to report bugs to help us keep track of the bugs and\n    their resolution.\
+  \ Please use the GitHub issue tracking system available\n    at this address:\n\n\
+  \                https://github.com/NBISweden/AGAT/issues\n\n     Ensure that the\
+  \ bug was not already reported by searching under Issues.\n     If you're unable\
+  \ to find an (open) issue addressing the problem, open a new one.\n     Try as much\
+  \ as possible to include in the issue when relevant:\n     - a clear description,\n\
+  \     - as much relevant information as possible,\n     - the command used,\n  \
+  \   - a data sample,\n     - an explanation of the expected behaviour that is not\
+  \ occurring.\n\n  Do you want to contribute?:\n    You are very welcome, visit this\
+  \ address for the Contributing\n    guidelines:\n    https://github.com/NBISweden/AGAT/blob/master/CONTRIBUTING.md\n\
+  \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/agat:0.6.1--pl5262r35hdfd78af_0

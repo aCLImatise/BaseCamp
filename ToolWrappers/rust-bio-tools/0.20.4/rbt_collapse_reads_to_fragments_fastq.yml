@@ -1,0 +1,148 @@
+!Command
+command:
+- rbt
+- collapse-reads-to-fragments
+- fastq
+positional:
+- !Positional
+  optional: true
+  position: 0
+  name: FLAGS
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: fq1
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: fq2
+  description: ''
+- !Positional
+  optional: false
+  position: 3
+  name: consensus-fq1
+  description: ''
+- !Positional
+  optional: false
+  position: 4
+  name: consensus-fq2
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --umi-on-reverse
+  description: Set if UMI is on reverse read
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose-read-names
+  description: "Add list of reads that were merged for each consensus read. Note that\
+    \ this can yield very long FASTQ name\nlines which cannot be handled by some tools."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --insert-size
+  description: Expected insert size of sequenced fragment (Required for calculating
+    overlapping consensus only)
+  args: !SimpleFlagArg
+    name: insert-size
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  - --max-seq-dist
+  description: "Maximum hamming distance between the sequences of any pair of reads\
+    \ in the same cluster. [default: 2]\n[possible values: 1, 2, 3, 4, 5, 6, 7, 8]"
+  args: !SimpleFlagArg
+    name: max-seq-dist
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --max-umi-dist
+  description: 'Maximum hamming distance between the UMIs of any pair of reads in
+    the same cluster. [default: 1]'
+  args: !SimpleFlagArg
+    name: max-umi-dist
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --std-dev
+  description: "Standard deviation of expected insert size. Defines search space of\
+    \ the most likely overlap. (Required for\ncalculating overlapping consensus only)"
+  args: !SimpleFlagArg
+    name: std-dev
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --umi-len
+  description: 'Length of UMI in read. [default: 8]'
+  args: !SimpleFlagArg
+    name: umi-len
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Prints help information
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Prints version information
+  args: !EmptyFlagArg {}
+help_text: "rbt-collapse-reads-to-fragments-fastq 0.20.4\nJohannes Köster <johannes.koester@uni-due.de>,\
+  \ Henning Timm <henning.timm@tu-dortmund.de>, Felix Mölder\n<felix.moelder@uni-due.de>\n\
+  Tool to merge sets of reads from paired FASTQ files that share the UMI and have\
+  \ similar read sequence. The result is a\nmaximum likelihood fragment sequence per\
+  \ set with base quality scores improved accordingly.\n\nTakes two FASTQ files (forward\
+  \ and reverse) and returns two FASTQ files in which all PCR duplicates have been\
+  \ merged\ninto a consensus read. Duplicates are identified by a Unique Molecular\
+  \ Identifier (UMI).\n\nAssumptions: - Reads are of equal length - UMI is the prefix\
+  \ of the reads\n\nExample: rbt collapse-reads-to-fragments fastq \\ reads_1.fq reads_2.fq\
+  \ \\    # input files merged_1.fq merged_2.fq \\  #\noutput files -l 13 \\     \
+  \               # length of UMI -d 1 \\                     # max hamming distance\
+  \ of UMIs within\na cluster -D 2 \\                     # max hamming distance of\
+  \ sequences within a cluster --umi-on-reverse           #\nUMI is the prefix of\
+  \ the reverse read\n\nUSAGE:\n    rbt collapse-reads-to-fragments fastq [FLAGS]\
+  \ [OPTIONS] <fq1> <fq2> <consensus-fq1> <consensus-fq2> [consensus-fq3]\n\nFLAGS:\n\
+  \    -h, --help                  \n            Prints help information\n\n    -u,\
+  \ --umi-on-reverse        \n            Set if UMI is on reverse read\n\n    -V,\
+  \ --version               \n            Prints version information\n\n        --verbose-read-names\
+  \    \n            Add list of reads that were merged for each consensus read. Note\
+  \ that this can yield very long FASTQ name\n            lines which cannot be handled\
+  \ by some tools.\n\nOPTIONS:\n    -i, --insert-size <insert-size>      \n      \
+  \      Expected insert size of sequenced fragment (Required for calculating overlapping\
+  \ consensus only)\n\n    -D, --max-seq-dist <max-seq-dist>    \n            Maximum\
+  \ hamming distance between the sequences of any pair of reads in the same cluster.\
+  \ [default: 2]\n            [possible values: 1, 2, 3, 4, 5, 6, 7, 8]\n    -d, --max-umi-dist\
+  \ <max-umi-dist>    \n            Maximum hamming distance between the UMIs of any\
+  \ pair of reads in the same cluster. [default: 1]\n\n    -s, --std-dev <std-dev>\
+  \              \n            Standard deviation of expected insert size. Defines\
+  \ search space of the most likely overlap. (Required for\n            calculating\
+  \ overlapping consensus only)\n    -l, --umi-len <umi-len>              \n     \
+  \       Length of UMI in read. [default: 8]\n\n\nARGS:\n    <fq1>              \n\
+  \            Input FASTQ file with forward reads.\n\n    <fq2>              \n \
+  \           Input FASTQ file with reverse reads.\n\n    <consensus-fq1>    \n  \
+  \          Output FASTQ file with forward reads\n\n    <consensus-fq2>    \n   \
+  \         Output FASTQ file with reverse reads\n\n    <consensus-fq3>    \n    \
+  \        Output FASTQ file for overlapping consensus reads  (Required for calculating\
+  \ overlapping consensus only)\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/rust-bio-tools:0.20.4--h4af157f_0

@@ -1,0 +1,76 @@
+!Command
+command:
+- cooltools
+- dump-cworld
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: format.
+  description: 'COOL_PATHS : Paths to one or multiple .cool files OUT_PATH : Output
+    CWorld'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --cworld-type
+  description: "[matrix|tar]      The format of the CWorld output. 'matrix'\nconverts\
+    \ a single .cool file into the\n.matrix.txt.gz tab-separated format. 'tar'\ndumps\
+    \ all specified cooler files into a\nsingle .tar archive containing multiple\n\
+    .matrix.txt.gz files (use to make multi-\nresolution archives).  [default: matrix]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --region
+  description: "The coordinates of a genomic region to dump,\nin the UCSC format.\
+    \ If empty (by default),\ndump a genome-wide matrix. This option can\nbe used\
+    \ only when dumping a single cooler\nfile.  [default: ]"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --balancing-type
+  description: "[IC_unity|IC|raw]\nThe type of the matrix balancing. 'IC_unity'\n\
+    - iteratively corrected for the total number\nof contacts per locus=1.0; 'IC'\
+    \ - same, but\npreserving the average total number of\ncontacts; 'raw' - no balancing\
+    \  [default:\nIC_unity]"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: cooltools dump-cworld [OPTIONS] COOL_PATHS OUT_PATH\n\n  Convert\
+  \ a cooler or a group of coolers into the Dekker' lab CWorld text\n  format.\n\n\
+  \  COOL_PATHS : Paths to one or multiple .cool files OUT_PATH : Output CWorld\n\
+  \  file path\n\nOptions:\n  --cworld-type [matrix|tar]      The format of the CWorld\
+  \ output. 'matrix'\n                                  converts a single .cool file\
+  \ into the\n                                  .matrix.txt.gz tab-separated format.\
+  \ 'tar'\n                                  dumps all specified cooler files into\
+  \ a\n                                  single .tar archive containing multiple\n\
+  \                                  .matrix.txt.gz files (use to make multi-\n  \
+  \                                resolution archives).  [default: matrix]\n\n  --region\
+  \ TEXT                   The coordinates of a genomic region to dump,\n        \
+  \                          in the UCSC format. If empty (by default),\n        \
+  \                          dump a genome-wide matrix. This option can\n        \
+  \                          be used only when dumping a single cooler\n         \
+  \                         file.  [default: ]\n\n  --balancing-type [IC_unity|IC|raw]\n\
+  \                                  The type of the matrix balancing. 'IC_unity'\n\
+  \                                  - iteratively corrected for the total number\n\
+  \                                  of contacts per locus=1.0; 'IC' - same, but\n\
+  \                                  preserving the average total number of\n    \
+  \                              contacts; 'raw' - no balancing  [default:\n     \
+  \                             IC_unity]\n\n  -h, --help                      Show\
+  \ this message and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/cooltools:0.4.0--py39hcbe4a3b_0

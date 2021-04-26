@@ -1,0 +1,224 @@
+!Command
+command:
+- basenji_data2.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: NA
+  description: --umap_t=UMAP_T       Remove sequences with more than this unmappable
+    bin %
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  description: Alignment .net file
+  args: !SimpleFlagArg
+    name: ALIGN_NET
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  description: Set blacklist nucleotides to a baseline value.
+  args: !SimpleFlagArg
+    name: BLACKLIST_BEDS
+- !Flag
+  optional: true
+  synonyms:
+  - --break
+  description: 'Break in half contigs above length [Default: none]'
+  args: !SimpleFlagArg
+    name: BREAK_T
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --crop
+  description: 'Crop bp off each end [Default: 0]'
+  args: !SimpleFlagArg
+    name: CROP_BP
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: Down-sample the segments
+  args: !SimpleFlagArg
+    name: SAMPLE_PCT
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  description: "Comma-separated list of assembly gaps BED files\n[Default: none]"
+  args: !SimpleFlagArg
+    name: GAP_FILES
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: 'Interpolate NaNs [Default: False]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: 'Sequence length [Default: 131072]'
+  args: !SimpleFlagArg
+    name: SEQ_LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - --local
+  description: "Run jobs locally as opposed to on SLURM [Default:\nFalse]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: 'Alignment net fill size minimum [Default: 100000]'
+  args: !SimpleFlagArg
+    name: NET_FILL_MIN
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: 'Output directory [Default: data_out]'
+  args: !SimpleFlagArg
+    name: OUT_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: 'Number parallel processes [Default: none]'
+  args: !SimpleFlagArg
+    name: PROCESSES
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: 'Sequences per TFRecord file [Default: 256]'
+  args: !SimpleFlagArg
+    name: SEQS_PER_TFR
+- !Flag
+  optional: true
+  synonyms:
+  - --restart
+  description: "Skip already read HDF5 coverage values. [Default:\nFalse]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --seed
+  description: 'Random seed [Default: 44]'
+  args: !SimpleFlagArg
+    name: SEED
+- !Flag
+  optional: true
+  synonyms:
+  - --snap
+  description: "Snap sequences to multiple of the given value\n[Default: none]"
+  args: !SimpleFlagArg
+    name: SNAP
+- !Flag
+  optional: true
+  synonyms:
+  - --stride
+  - --stride_train
+  description: "Stride to advance train sequences [Default:\nseq_length]"
+  args: !SimpleFlagArg
+    name: STRIDE_TRAIN
+- !Flag
+  optional: true
+  synonyms:
+  - --stride_test
+  description: "Stride to advance valid and test sequences [Default:\n1.0]"
+  args: !SimpleFlagArg
+    name: STRIDE_TEST
+- !Flag
+  optional: true
+  synonyms:
+  - --soft
+  description: "Soft clip values, applying sqrt to the execess above\nthe threshold\
+    \ [Default: False]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: 'Proportion of the data for testing [Default: 0.1]'
+  args: !SimpleFlagArg
+    name: TEST_PCT
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  description: Comma-separated genome unmappable segments to set to
+  args: !SimpleFlagArg
+    name: UMAP_BEDS
+- !Flag
+  optional: true
+  synonyms:
+  - --umap_clip
+  description: "Clip unmappable regions to this percentile in the\nsequences' distribution\
+    \ of values"
+  args: !SimpleFlagArg
+    name: UMAP_CLIP
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  description: 'Sum pool width [Default: 128]'
+  args: !SimpleFlagArg
+    name: POOL_WIDTH
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: 'Proportion of the data for validation [Default: 0.1]'
+  args: !SimpleFlagArg
+    name: VALID_PCT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: basenji_data2.py [options] <fasta0_file,fasta1_file> <targets_file>\n\
+  \nOptions:\n  -h, --help            show this help message and exit\n  -a ALIGN_NET\
+  \          Alignment .net file\n  -b BLACKLIST_BEDS     Set blacklist nucleotides\
+  \ to a baseline value.\n  --break=BREAK_T       Break in half contigs above length\
+  \ [Default: none]\n  -c CROP_BP, --crop=CROP_BP\n                        Crop bp\
+  \ off each end [Default: 0]\n  -d SAMPLE_PCT         Down-sample the segments\n\
+  \  -g GAP_FILES          Comma-separated list of assembly gaps BED files\n     \
+  \                   [Default: none]\n  -i                    Interpolate NaNs [Default:\
+  \ False]\n  -l SEQ_LENGTH         Sequence length [Default: 131072]\n  --local \
+  \              Run jobs locally as opposed to on SLURM [Default:\n             \
+  \           False]\n  -n NET_FILL_MIN       Alignment net fill size minimum [Default:\
+  \ 100000]\n  -o OUT_DIR            Output directory [Default: data_out]\n  -p PROCESSES\
+  \          Number parallel processes [Default: none]\n  -r SEQS_PER_TFR       Sequences\
+  \ per TFRecord file [Default: 256]\n  --restart             Skip already read HDF5\
+  \ coverage values. [Default:\n                        False]\n  --seed=SEED    \
+  \       Random seed [Default: 44]\n  --snap=SNAP           Snap sequences to multiple\
+  \ of the given value\n                        [Default: none]\n  --stride=STRIDE_TRAIN,\
+  \ --stride_train=STRIDE_TRAIN\n                        Stride to advance train sequences\
+  \ [Default:\n                        seq_length]\n  --stride_test=STRIDE_TEST\n\
+  \                        Stride to advance valid and test sequences [Default:\n\
+  \                        1.0]\n  --soft                Soft clip values, applying\
+  \ sqrt to the execess above\n                        the threshold [Default: False]\n\
+  \  -t TEST_PCT           Proportion of the data for testing [Default: 0.1]\n  -u\
+  \ UMAP_BEDS          Comma-separated genome unmappable segments to set to\n    \
+  \                    NA\n  --umap_t=UMAP_T       Remove sequences with more than\
+  \ this unmappable bin %\n                        [Default: 0.5]\n  --umap_clip=UMAP_CLIP\n\
+  \                        Clip unmappable regions to this percentile in the\n   \
+  \                     sequences' distribution of values\n  -w POOL_WIDTH       \
+  \  Sum pool width [Default: 128]\n  -v VALID_PCT          Proportion of the data\
+  \ for validation [Default: 0.1]\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/basenji:0.5.1--pyhdfd78af_0

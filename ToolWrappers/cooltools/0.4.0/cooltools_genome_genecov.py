@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import String
+
+Cooltools_Genome_Genecov_V0_1_0 = CommandToolBuilder(tool="cooltools_genome_genecov", base_command=["cooltools", "genome", "genecov"], inputs=[ToolInput(tag="in_bins_path", input_type=String(), position=0, doc=InputDocumentation(doc="")), ToolInput(tag="in_db", input_type=String(), position=1, doc=InputDocumentation(doc=""))], outputs=[], container="quay.io/biocontainers/cooltools:0.4.0--py39hcbe4a3b_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Cooltools_Genome_Genecov_V0_1_0().translate("wdl")
+

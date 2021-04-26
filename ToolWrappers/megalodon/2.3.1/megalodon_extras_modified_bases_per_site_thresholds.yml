@@ -1,0 +1,152 @@
+!Command
+command:
+- megalodon_extras
+- modified_bases
+- per_site_thresholds
+positional:
+- !Positional
+  optional: false
+  position: 1
+  name: output.
+  description: ground_truth_bed      BEDmethyl file containing ground truth fraction
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --ground-truth-cov-min
+  description: "Minimum coverage (both strands) to include a site from\nground truth\
+    \ data. Default: 15"
+  args: !SimpleFlagArg
+    name: GROUND_TRUTH_COV_MIN
+- !Flag
+  optional: true
+  synonyms:
+  - --nanopore-cov-min
+  description: "Minimum coverage (single strand) to include a site\nfrom nanopore\
+    \ data. Default: 30"
+  args: !SimpleFlagArg
+    name: NANOPORE_COV_MIN
+- !Flag
+  optional: true
+  synonyms:
+  - --mod-bases
+  description: "Single letter codes for the modified base. For\nmulitple alternative\
+    \ bases supply all single letter\ncodes with no spaces. Default: m"
+  args: !SimpleFlagArg
+    name: MOD_BASES
+- !Flag
+  optional: true
+  synonyms:
+  - --strand-offset
+  description: "Offset to combine stranded results. Positive value\nindicates reverse\
+    \ strand sites have higher position\nvalues. Default treat strands independently."
+  args: !SimpleFlagArg
+    name: STRAND_OFFSET
+- !Flag
+  optional: true
+  synonyms:
+  - --valid-sites
+  description: "BED files containing sites over which to restrict\nmodified base results.\
+    \ Useful when processing full\nresults using a subset of the ground truth (e.g.\
+    \ CG\nand CH processing). Must be sorted in same order as\n[ground_truth_bed]\
+    \ (`sort -k1V -k2n`)"
+  args: !RepeatFlagArg
+    name: VALID_SITES
+- !Flag
+  optional: true
+  synonyms:
+  - --out-low-coverage-sites
+  description: "Output filename for sites with low ground truth or\nnanopore coverage.\
+    \ Default: low_coverage_sites.bed"
+  args: !SimpleFlagArg
+    name: OUT_LOW_COVERAGE_SITES
+- !Flag
+  optional: true
+  synonyms:
+  - --out-per-site-mod-thresholds
+  description: "Output filename for per-site megalodon mod scoring\nthresholds. Default:\
+    \ site_mod_thresholds.bed"
+  args: !SimpleFlagArg
+    name: OUT_PER_SITE_MOD_THRESHOLDS
+- !Flag
+  optional: true
+  synonyms:
+  - --log-filename
+  description: "Output filename for logging. Default:\nper_site_thresholds.log"
+  args: !SimpleFlagArg
+    name: LOG_FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --batch-size
+  description: "Number of sites to include in each batch for\nprocessing. Default:\
+    \ 100000"
+  args: !SimpleFlagArg
+    name: BATCH_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --processes
+  description: "Number of processes. Default: 1\n"
+  args: !SimpleFlagArg
+    name: PROCESSES
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: megalodon_extras modified_bases per_site_thresholds [-h]\n    \
+  \                                                       [--ground-truth-cov-min\
+  \ GROUND_TRUTH_COV_MIN]\n                                                      \
+  \     [--nanopore-cov-min NANOPORE_COV_MIN]\n                                  \
+  \                         [--mod-bases MOD_BASES]\n                            \
+  \                               [--strand-offset STRAND_OFFSET]\n              \
+  \                                             [--valid-sites VALID_SITES [VALID_SITES\
+  \ ...]]\n                                                           [--out-low-coverage-sites\
+  \ OUT_LOW_COVERAGE_SITES]\n                                                    \
+  \       [--out-per-site-mod-thresholds OUT_PER_SITE_MOD_THRESHOLDS]\n          \
+  \                                                 [--log-filename LOG_FILENAME]\n\
+  \                                                           [--batch-size BATCH_SIZE]\n\
+  \                                                           [--processes PROCESSES]\n\
+  \                                                           megalodon_results_dir\n\
+  \                                                           ground_truth_bed\n\n\
+  positional arguments:\n  megalodon_results_dir\n                        Output directory\
+  \ from megalodon with per_read_mods in\n                        output.\n  ground_truth_bed\
+  \      BEDmethyl file containing ground truth fraction\n                       \
+  \ modified. File must be sorted (`sort -k1V -k2n`).\n\noptional arguments:\n  -h,\
+  \ --help            show this help message and exit\n  --ground-truth-cov-min GROUND_TRUTH_COV_MIN\n\
+  \                        Minimum coverage (both strands) to include a site from\n\
+  \                        ground truth data. Default: 15\n  --nanopore-cov-min NANOPORE_COV_MIN\n\
+  \                        Minimum coverage (single strand) to include a site\n  \
+  \                      from nanopore data. Default: 30\n  --mod-bases MOD_BASES\n\
+  \                        Single letter codes for the modified base. For\n      \
+  \                  mulitple alternative bases supply all single letter\n       \
+  \                 codes with no spaces. Default: m\n  --strand-offset STRAND_OFFSET\n\
+  \                        Offset to combine stranded results. Positive value\n  \
+  \                      indicates reverse strand sites have higher position\n   \
+  \                     values. Default treat strands independently.\n  --valid-sites\
+  \ VALID_SITES [VALID_SITES ...]\n                        BED files containing sites\
+  \ over which to restrict\n                        modified base results. Useful\
+  \ when processing full\n                        results using a subset of the ground\
+  \ truth (e.g. CG\n                        and CH processing). Must be sorted in\
+  \ same order as\n                        [ground_truth_bed] (`sort -k1V -k2n`)\n\
+  \  --out-low-coverage-sites OUT_LOW_COVERAGE_SITES\n                        Output\
+  \ filename for sites with low ground truth or\n                        nanopore\
+  \ coverage. Default: low_coverage_sites.bed\n  --out-per-site-mod-thresholds OUT_PER_SITE_MOD_THRESHOLDS\n\
+  \                        Output filename for per-site megalodon mod scoring\n  \
+  \                      thresholds. Default: site_mod_thresholds.bed\n  --log-filename\
+  \ LOG_FILENAME\n                        Output filename for logging. Default:\n\
+  \                        per_site_thresholds.log\n  --batch-size BATCH_SIZE\n  \
+  \                      Number of sites to include in each batch for\n          \
+  \              processing. Default: 100000\n  --processes PROCESSES\n          \
+  \              Number of processes. Default: 1\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/megalodon:2.3.1--py38h4a8c8d9_0

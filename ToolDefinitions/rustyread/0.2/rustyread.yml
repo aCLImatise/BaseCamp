@@ -1,0 +1,292 @@
+&id001 !Command
+command:
+- rustyread
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbosity
+  description: "verbosity level also control by environment variable RUSTYREAD_LOG\
+    \ if flag is\nset RUSTYREAD_LOG value is ignored"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: "Number of thread use by rustyread, 0 use all avaible core, default\n\
+    value 0"
+  args: !SimpleFlagArg
+    name: threads
+parent:
+subcommands:
+- &id002 !Command
+  command:
+  - rustyread
+  - simulate
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --small_plasmid_bias
+    description: "If set, then small circular plasmids are lost when the fragment\n\
+      length is too high (default: small plasmids are included regardless\nof fragment\
+      \ length)"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --chimera
+    description: 'Percentage at which separate fragments join together [default: 1]'
+    args: !SimpleFlagArg
+      name: chimera
+  - !Flag
+    optional: true
+    synonyms:
+    - --end_adapter
+    description: 'Adapter parameters for read ends (rate and amount) [default: 50,20]'
+    args: !SimpleFlagArg
+      name: end-adapter
+  - !Flag
+    optional: true
+    synonyms:
+    - --end_adapter_seq
+    description: 'Adapter parameters for read ends [default: GCAATACGTAACTGAACGAAGT]'
+    args: !SimpleFlagArg
+      name: end-adapter-seq
+  - !Flag
+    optional: true
+    synonyms:
+    - --error_model
+    description: 'Path to an error model file [default: nanopore2020]'
+    args: !SimpleFlagArg
+      name: error-model
+  - !Flag
+    optional: true
+    synonyms:
+    - --glitches
+    description: 'Read glitch parameters (rate, size and skip) [default: 10000,25,25]'
+    args: !SimpleFlagArg
+      name: glitches
+  - !Flag
+    optional: true
+    synonyms:
+    - --identity
+    description: 'Sequencing identity distribution (mean, max and stdev) [default:
+      85,95,5]'
+    args: !SimpleFlagArg
+      name: identity
+  - !Flag
+    optional: true
+    synonyms:
+    - --junk_reads
+    description: 'This percentage of reads wil be low complexity junk [default: 1]'
+    args: !SimpleFlagArg
+      name: junk
+  - !Flag
+    optional: true
+    synonyms:
+    - --length
+    description: 'Fragment length distribution (mean and stdev) [default: 15000,13000]'
+    args: !SimpleFlagArg
+      name: length
+  - !Flag
+    optional: true
+    synonyms:
+    - --output
+    description: Where read is write
+    args: !SimpleFlagArg
+      name: output-path
+  - !Flag
+    optional: true
+    synonyms:
+    - --qscore_model
+    description: 'Path to an quality score model file [default: nanopore2020]'
+    args: !SimpleFlagArg
+      name: qscore-model
+  - !Flag
+    optional: true
+    synonyms:
+    - --quantity
+    description: Either an absolute value (e.g. 250M) or a relative depth (e.g. 25x)
+    args: !SimpleFlagArg
+      name: quantity
+  - !Flag
+    optional: true
+    synonyms:
+    - --random_reads
+    description: 'This percentage of reads wil be random sequence [default: 1]'
+    args: !SimpleFlagArg
+      name: random
+  - !Flag
+    optional: true
+    synonyms:
+    - --reference
+    description: Reference fasta (can be gzipped, bzip2ped, xzped)
+    args: !SimpleFlagArg
+      name: reference-path
+  - !Flag
+    optional: true
+    synonyms:
+    - --seed
+    description: "Random number generator seed for deterministic output (default:\
+      \ different output each\ntime)"
+    args: !SimpleFlagArg
+      name: seed
+  - !Flag
+    optional: true
+    synonyms:
+    - --start_adapter
+    description: 'Adapter parameters for read starts (rate and amount) [default: 90,60]'
+    args: !SimpleFlagArg
+      name: start-adapter
+  - !Flag
+    optional: true
+    synonyms:
+    - --start_adapter_seq
+    description: "Adapter parameters for read starts [default: AATGTACTTCGTTCAGTTACGTATTGCT]\n"
+    args: !SimpleFlagArg
+      name: start-adapter-seq
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - rustyread
+    - simulate
+    - FLAGS
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --reference
+      description: ''
+      args: !SimpleFlagArg
+        name: reference-path
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "error: Found argument 'FLAGS' which wasn't expected, or isn't valid\
+      \ in this context\n\nIf you tried to supply `FLAGS` as a PATTERN use `-- FLAGS`\n\
+      \nUSAGE:\n    rustyread simulate [FLAGS] [OPTIONS] --reference <reference-path>\
+      \ --quantity <quantity>\n\nFor more information try --help\n"
+    generated_using: &id003
+    - --help
+    docker_image: quay.io/biocontainers/rustyread:0.2--h82fb495_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Prints help information
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - -V
+    - --version
+    description: Prints version information
+    args: !EmptyFlagArg {}
+  help_text: "rustyread-simulate \nGenerate fake long read\n\nUSAGE:\n    rustyread\
+    \ simulate [FLAGS] [OPTIONS] --reference <reference-path> --quantity <quantity>\n\
+    \nFLAGS:\n    -h, --help                  Prints help information\n        --small_plasmid_bias\
+    \    If set, then small circular plasmids are lost when the fragment\n       \
+    \                         length is too high (default: small plasmids are included\
+    \ regardless\n                                of fragment length)\n    -V, --version\
+    \               Prints version information\n\nOPTIONS:\n        --chimera <chimera>\n\
+    \            Percentage at which separate fragments join together [default: 1]\n\
+    \n        --end_adapter <end-adapter>\n            Adapter parameters for read\
+    \ ends (rate and amount) [default: 50,20]\n\n        --end_adapter_seq <end-adapter-seq>\n\
+    \            Adapter parameters for read ends [default: GCAATACGTAACTGAACGAAGT]\n\
+    \n        --error_model <error-model>\n            Path to an error model file\
+    \ [default: nanopore2020]\n\n        --glitches <glitches>\n            Read glitch\
+    \ parameters (rate, size and skip) [default: 10000,25,25]\n\n        --identity\
+    \ <identity>\n            Sequencing identity distribution (mean, max and stdev)\
+    \ [default: 85,95,5]\n\n        --junk_reads <junk>\n            This percentage\
+    \ of reads wil be low complexity junk [default: 1]\n\n        --length <length>\n\
+    \            Fragment length distribution (mean and stdev) [default: 15000,13000]\n\
+    \n        --output <output-path>                     Where read is write\n   \
+    \     --qscore_model <qscore-model>\n            Path to an quality score model\
+    \ file [default: nanopore2020]\n\n        --quantity <quantity>\n            Either\
+    \ an absolute value (e.g. 250M) or a relative depth (e.g. 25x)\n\n        --random_reads\
+    \ <random>\n            This percentage of reads wil be random sequence [default:\
+    \ 1]\n\n        --reference <reference-path>               Reference fasta (can\
+    \ be gzipped, bzip2ped, xzped)\n        --seed <seed>\n            Random number\
+    \ generator seed for deterministic output (default: different output each\n  \
+    \          time)\n\n        --start_adapter <start-adapter>\n            Adapter\
+    \ parameters for read starts (rate and amount) [default: 90,60]\n\n        --start_adapter_seq\
+    \ <start-adapter-seq>\n            Adapter parameters for read starts [default:\
+    \ AATGTACTTCGTTCAGTTACGTATTGCT]\n\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/rustyread:0.2--h82fb495_0
+- !Command
+  command:
+  - rustyread
+  - help
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: For
+    description: ''
+  - !Positional
+    optional: false
+    position: 1
+    name: more
+    description: ''
+  - !Positional
+    optional: false
+    position: 2
+    name: information
+    description: ''
+  - !Positional
+    optional: false
+    position: 3
+    name: try
+    description: ''
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "error:  The subcommand '--help' wasn't recognized\n\nUSAGE:\n\trustyread\
+    \ help <subcommands>...\n\nFor more information try --help\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/rustyread:0.2--h82fb495_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Prints help information
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Prints version information
+  args: !EmptyFlagArg {}
+help_text: "rustyread 0.2 Electabuzz\nPierre Marijon <pierre.marijon@hhu.de>\nA long\
+  \ read simulator based on badread idea\n\nUSAGE:\n    rustyread [FLAGS] [OPTIONS]\
+  \ <SUBCOMMAND>\n\nFLAGS:\n    -h, --help         Prints help information\n    -v,\
+  \ --verbosity    verbosity level also control by environment variable RUSTYREAD_LOG\
+  \ if flag is\n                       set RUSTYREAD_LOG value is ignored\n    -V,\
+  \ --version      Prints version information\n\nOPTIONS:\n    -t, --threads <threads>\
+  \    Number of thread use by rustyread, 0 use all avaible core, default\n      \
+  \                         value 0\n\nSUBCOMMANDS:\n    help        Prints this message\
+  \ or the help of the given subcommand(s)\n    simulate    Generate fake long read\n"
+generated_using: *id003
+docker_image: quay.io/biocontainers/rustyread:0.2--h82fb495_0

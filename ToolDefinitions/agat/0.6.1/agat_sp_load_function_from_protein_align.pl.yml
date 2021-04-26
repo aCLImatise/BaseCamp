@@ -1,0 +1,202 @@
+!Command
+command:
+- agat_sp_load_function_from_protein_align.pl
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: agat_sp_load_function_from_protein_align.pl
+  description: 'Description:'
+- !Positional
+  optional: false
+  position: 0
+  name: option.
+  description: "Usage:\nagat_sp_load_function_from_protein_align.pl -a annotation.gff\
+    \ --pgff protein.gff --pfasta protein.fasta [ -o outfile ]\nagat_sp_load_function_from_protein_align.pl\
+    \ --help"
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --annotation
+  description: Input gtf/gff file of an annotation.
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - -pgff
+  description: Input gff file of aligned proteins.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -pfasta
+  description: "protein fasta file where the extra information will be\nretrieved\
+    \ for each aligned protein."
+  args: !SimpleFlagArg
+    name: Input
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --method
+  description: "Rule to apply to lift function when a protein map properly. 1)\nreplace\
+    \ => replace or add the product and Name attribute's\nvalues. 2) complete => add\
+    \ the product and Name attribute's\nvalues only if doesn't exist. 3) add => add\
+    \ the lfp_product and\nlfp_name attributes with the corresponding values"
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - --value
+  - --threshold
+  - -t
+  description: "Gene mapping percentage over which a gene must be reported. By\ndefault\
+    \ the value is 50."
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  description: "Compute the overlap score based on the whole annotation\nsequence.\
+    \ By default we use only the coding sequence part."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pe
+  description: "Protein existence value. We will take the best overlap score\nprotein\
+    \ according to the PE expected 1. Experimental evidence at\nprotein level 2. Experimental\
+    \ evidence at transcript level 3.\nProtein inferred from homology 4. Protein predicted\
+    \ 5. Protein\nuncertain"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --test
+  description: "Test to apply (> < = >= <=). If you us one of these two\ncharacter\
+    \ >, <, please don't forget to quote you parameter liket\nthat \"<=\". Else your\
+    \ terminal will complain."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sp
+  description: "Species, between the set of the best protein aligned we try\nfirst\
+    \ to take the one that follow the species prioritization\ndefined. There is a\
+    \ default one, but you can define you own\n(quoted and coma separated value)like\
+    \ that: \"mus Musculus, Homo\nSapiens\" from the most important to the less important.\
+    \ In that\ncase Mus will be taken first even if a better overlaping one\nexist\
+    \ for human. If none of them is found we take anyway the\nbest overlapping one."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --priority
+  description: "By default the priority is PE test before species test when both\n\
+    are applied. You can flip these two test by activating this\noption like this:\
+    \ -p species"
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: Be verbose.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  - --out
+  description: "Output GFF file. If no output file is specified, the output will\n\
+    be written to STDOUT."
+  args: !SimpleFlagArg
+    name: or
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Display this helpful text.
+  args: !SimpleFlagArg
+    name: or
+usage_flag:
+version_flag:
+help_text: "\n ------------------------------------------------------------------------------\n\
+  |   Another GFF Analysis Toolkit (AGAT) - Version: v0.6.0                      |\n\
+  |   https://github.com/NBISweden/AGAT                                          |\n\
+  |   National Bioinformatics Infrastructure Sweden (NBIS) - www.nbis.se         |\n\
+  \ ------------------------------------------------------------------------------\n\
+  \n\nName:\n    agat_sp_load_function_from_protein_align.pl\n\nDescription:\n   \
+  \ The script takes an annotation in gff format, a protein alignment in gff\n   \
+  \ format and a protein fasta file as input. It checks if protein\n    alignement\
+  \ overlap gene models, and will load the gene name and/or the\n    function to the\
+  \ gene model according to the user requirements. The\n    script applies the following\
+  \ steps: For each gene model structure it\n    take the proteins aligned against,\
+  \ and sort them by an overlaping score.\n    The best coming first. Then it filters\
+  \ them by applying the overlaping\n    score threshold. 1) If you activated the\
+  \ PE and the species filtering,\n    we will try to find the best protein that follows\
+  \ the defined\n    requirement. 2.1) If you activated the PE filtering or the precedent\n\
+  \    filtering (1) didn't succeed, we take the best protein according to the\n \
+  \   PE requirement. 2.2) If you activated the species filtering or the\n    precedent\
+  \ filtering (1) didn't succeed, we take the best protein\n    according to the list\
+  \ of prioritized species defined. 3) If no option or\n    the precedent filtering\
+  \ (1,2.1,2.2)didn't succeed, the best protein will\n    be selected. You can flip\
+  \ the 2.1 and 2.2 test using the priority\n    option.\n\nUsage:\n        agat_sp_load_function_from_protein_align.pl\
+  \ -a annotation.gff --pgff protein.gff --pfasta protein.fasta [ -o outfile ]\n \
+  \       agat_sp_load_function_from_protein_align.pl --help\n\nOptions:\n    -a or\
+  \ --annotation\n            Input gtf/gff file of an annotation.\n\n    -pgff  \
+  \ Input gff file of aligned proteins.\n\n    -pfasta Input protein fasta file where\
+  \ the extra information will be\n            retrieved for each aligned protein.\n\
+  \n    -m or --method\n            Rule to apply to lift function when a protein\
+  \ map properly. 1)\n            replace => replace or add the product and Name attribute's\n\
+  \            values. 2) complete => add the product and Name attribute's\n     \
+  \       values only if doesn't exist. 3) add => add the lfp_product and\n      \
+  \      lfp_name attributes with the corresponding values\n\n    --value, --threshold\
+  \ or -t\n            Gene mapping percentage over which a gene must be reported.\
+  \ By\n            default the value is 50.\n\n    -w      Compute the overlap score\
+  \ based on the whole annotation\n            sequence. By default we use only the\
+  \ coding sequence part.\n\n    --pe    Protein existence value. We will take the\
+  \ best overlap score\n            protein according to the PE expected 1. Experimental\
+  \ evidence at\n            protein level 2. Experimental evidence at transcript\
+  \ level 3.\n            Protein inferred from homology 4. Protein predicted 5. Protein\n\
+  \            uncertain\n\n    --test  Test to apply (> < = >= <=). If you us one\
+  \ of these two\n            character >, <, please don't forget to quote you parameter\
+  \ liket\n            that \"<=\". Else your terminal will complain.\n\n    --sp\
+  \    Species, between the set of the best protein aligned we try\n            first\
+  \ to take the one that follow the species prioritization\n            defined. There\
+  \ is a default one, but you can define you own\n            (quoted and coma separated\
+  \ value)like that: \"mus Musculus, Homo\n            Sapiens\" from the most important\
+  \ to the less important. In that\n            case Mus will be taken first even\
+  \ if a better overlaping one\n            exist for human. If none of them is found\
+  \ we take anyway the\n            best overlapping one.\n\n    -p or --priority\n\
+  \            By default the priority is PE test before species test when both\n\
+  \            are applied. You can flip these two test by activating this\n     \
+  \       option like this: -p species\n\n    -v      Be verbose.\n\n    -o , --output\
+  \ or --out\n            Output GFF file. If no output file is specified, the output\
+  \ will\n            be written to STDOUT.\n\n    -h or --help\n            Display\
+  \ this helpful text.\n\nFeedback:\n  Did you find a bug?:\n    Do not hesitate to\
+  \ report bugs to help us keep track of the bugs and\n    their resolution. Please\
+  \ use the GitHub issue tracking system available\n    at this address:\n\n     \
+  \           https://github.com/NBISweden/AGAT/issues\n\n     Ensure that the bug\
+  \ was not already reported by searching under Issues.\n     If you're unable to\
+  \ find an (open) issue addressing the problem, open a new one.\n     Try as much\
+  \ as possible to include in the issue when relevant:\n     - a clear description,\n\
+  \     - as much relevant information as possible,\n     - the command used,\n  \
+  \   - a data sample,\n     - an explanation of the expected behaviour that is not\
+  \ occurring.\n\n  Do you want to contribute?:\n    You are very welcome, visit this\
+  \ address for the Contributing\n    guidelines:\n    https://github.com/NBISweden/AGAT/blob/master/CONTRIBUTING.md\n\
+  \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/agat:0.6.1--pl5262r35hdfd78af_0

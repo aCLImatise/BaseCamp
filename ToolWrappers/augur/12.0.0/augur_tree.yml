@@ -1,0 +1,112 @@
+!Command
+command:
+- augur
+- tree
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --alignment
+  - -a
+  description: 'alignment in fasta or VCF format (default: None)'
+  args: !SimpleFlagArg
+    name: ALIGNMENT
+- !Flag
+  optional: true
+  synonyms:
+  - --method
+  description: 'tree builder to use (default: iqtree)'
+  args: !ChoiceFlagArg
+    choices: !!set
+      iqtree:
+      raxml:
+      fasttree:
+- !Flag
+  optional: true
+  synonyms:
+  - --output
+  - -o
+  description: 'file name to write tree to (default: None)'
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - --substitution-model
+  description: "{HKY,GTR,HKY+G,GTR+G,GTR+R10}\nsubstitution model to use. Specify\
+    \ 'none' to run\nModelTest. Currently, only available for IQTREE.\n(default: GTR)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --nthreads
+  description: "number of threads to use; specifying the value 'auto'\nwill cause\
+    \ the number of available CPU cores on your\nsystem, if determinable, to be used\
+    \ (default: 1)"
+  args: !SimpleFlagArg
+    name: NTHREADS
+- !Flag
+  optional: true
+  synonyms:
+  - --vcf-reference
+  description: "fasta file of the sequence the VCF was mapped to\n(default: None)"
+  args: !SimpleFlagArg
+    name: VCF_REFERENCE
+- !Flag
+  optional: true
+  synonyms:
+  - --exclude-sites
+  description: "file name of one-based sites to exclude for raw tree\nbuilding (BED\
+    \ format in .bed files, DRM format in tab-\ndelimited files, or one position per\
+    \ line) (default:\nNone)"
+  args: !SimpleFlagArg
+    name: EXCLUDE_SITES
+- !Flag
+  optional: true
+  synonyms:
+  - --tree-builder-args
+  description: "extra arguments to be passed directly to the\nexecutable of the requested\
+    \ tree method (e.g., --tree-\nbuilder-args=\"-czb\") (default: )\n"
+  args: !SimpleFlagArg
+    name: TREE_BUILDER_ARGS
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: augur tree [-h] --alignment ALIGNMENT\n                  [--method\
+  \ {fasttree,raxml,iqtree}] [--output OUTPUT]\n                  [--substitution-model\
+  \ {HKY,GTR,HKY+G,GTR+G,GTR+R10}]\n                  [--nthreads NTHREADS] [--vcf-reference\
+  \ VCF_REFERENCE]\n                  [--exclude-sites EXCLUDE_SITES]\n          \
+  \        [--tree-builder-args TREE_BUILDER_ARGS]\n\nBuild a tree using a variety\
+  \ of methods.\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  --alignment ALIGNMENT, -a ALIGNMENT\n                        alignment\
+  \ in fasta or VCF format (default: None)\n  --method {fasttree,raxml,iqtree}\n \
+  \                       tree builder to use (default: iqtree)\n  --output OUTPUT,\
+  \ -o OUTPUT\n                        file name to write tree to (default: None)\n\
+  \  --substitution-model {HKY,GTR,HKY+G,GTR+G,GTR+R10}\n                        substitution\
+  \ model to use. Specify 'none' to run\n                        ModelTest. Currently,\
+  \ only available for IQTREE.\n                        (default: GTR)\n  --nthreads\
+  \ NTHREADS   number of threads to use; specifying the value 'auto'\n           \
+  \             will cause the number of available CPU cores on your\n           \
+  \             system, if determinable, to be used (default: 1)\n  --vcf-reference\
+  \ VCF_REFERENCE\n                        fasta file of the sequence the VCF was\
+  \ mapped to\n                        (default: None)\n  --exclude-sites EXCLUDE_SITES\n\
+  \                        file name of one-based sites to exclude for raw tree\n\
+  \                        building (BED format in .bed files, DRM format in tab-\n\
+  \                        delimited files, or one position per line) (default:\n\
+  \                        None)\n  --tree-builder-args TREE_BUILDER_ARGS\n      \
+  \                  extra arguments to be passed directly to the\n              \
+  \          executable of the requested tree method (e.g., --tree-\n            \
+  \            builder-args=\"-czb\") (default: )\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/augur:12.0.0--pyhdfd78af_0

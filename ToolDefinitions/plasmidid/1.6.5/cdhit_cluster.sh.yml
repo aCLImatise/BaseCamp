@@ -1,0 +1,123 @@
+!Command
+command:
+- cdhit_cluster.sh
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: file in FASTA format
+  args: !SimpleFlagArg
+    name: input
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: threshold to cluster, default 80
+  args: !SimpleFlagArg
+    name: percentage
+- !Flag
+  optional: true
+  synonyms:
+  - -H
+  description: command, default cd-hit-est
+  args: !SimpleFlagArg
+    name: cd-hit
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  description: available memory (Mbyte), default 400
+  args: !SimpleFlagArg
+    name: max
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: name
+  args: !SimpleFlagArg
+    name: file
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: difference cutoff, default 0.8
+  args: !SimpleFlagArg
+    name: length
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  description: name (optional). If unset, samples will be gathered in NO_GROUP group
+  args: !SimpleFlagArg
+    name: group
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: psi-cd-hit instead of cd-hit
+  args: !SimpleFlagArg
+    name: runs
+- !Flag
+  optional: true
+  synonyms:
+  - -C
+  description: 'only: circular sequences, default 1. If set to 0 sequence is assumed
+    lineal'
+  args: !SimpleFlagArg
+    name: psi-cd-hit
+- !Flag
+  optional: true
+  synonyms:
+  - -G
+  description: 'only: gobal identity, -G 0 only takes the first local alignment for
+    clustering'
+  args: !SimpleFlagArg
+    name: psi-cd-hit
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  description: 'only: choose blast program, default blastn'
+  args: !SimpleFlagArg
+    name: psi-cd-hit
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  description: of threads
+  args: !SimpleFlagArg
+    name: number
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - -h
+  description: usage message
+  args: !SimpleFlagArg
+    name: version
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nCdhit_cluster script uses cd-hit/psi-cd-hit to clusterize a FASTA file\n\
+  \nusage : /usr/local/bin/cdhit_cluster.sh <-i inputfile(FASTA)> [-o <directory>]\
+  \ [-n <filename>] [-c <percentage>] [-H <cd-hit_command>]\n\t\t[-T <threads>] [-g\
+  \ group_name] [-s <int>] [-M <int>][-C <(0|1)>] [-G <(0|1)>] [-b <blast_prog>] [p]\
+  \ [-v] [-h]\n\n\t-i input file in FASTA format\n\t-c percentage threshold to cluster,\
+  \ default 80\n\t-H cd-hit command, default cd-hit-est\n\t-M max available memory\
+  \ (Mbyte), default 400\n\t-n file name\n\t-s length difference cutoff, default 0.8\n\
+  \t-g group name (optional). If unset, samples will be gathered in NO_GROUP group\n\
+  \t-p runs psi-cd-hit instead of cd-hit\n\t-C psi-cd-hit only: circular sequences,\
+  \ default 1. If set to 0 sequence is assumed lineal\n\t-G psi-cd-hit only: gobal\
+  \ identity, -G 0 only takes the first local alignment for clustering\n\t-b psi-cd-hit\
+  \ only: choose blast program, default blastn\n\t-T number of threads\n\t-v version\n\
+  \t-h display usage message\n\n\nOutput directory is the same as input directory\n\
+  \nexample: cdhit_cluster -i ecoli.fasta -c 90 -M 50000 -T 0\n\t\tcdhit_cluster -H\
+  \ cd-hit -i ecoli.fasta -c 90 -M 50000 -T 0\n\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/plasmidid:1.6.5--hdfd78af_0

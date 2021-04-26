@@ -1,0 +1,91 @@
+&id001 !Command
+command:
+- mtsv-build
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: Include this flag to trigger debug-level logging.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --fasta
+  description: Path to FASTA database file.
+  args: !SimpleFlagArg
+    name: FASTA
+- !Flag
+  optional: true
+  synonyms:
+  - --sample-interval
+  description: "Sampling interval for index generation. Smaller = more memory usage,\
+    \ slightly  faster queries. Larger = less\nmemory usage slightly slower queries.\
+    \ [default: 32]"
+  args: !SimpleFlagArg
+    name: FM_SAMPLE_INTERVAL
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --index
+  description: Absolute path to mtsv index file.
+  args: !SimpleFlagArg
+    name: INDEX
+parent:
+subcommands:
+- !Command
+  command:
+  - mtsv-build
+  - FLAGS
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --fasta
+    description: ''
+    args: !SimpleFlagArg
+      name: FASTA
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "error: Found argument 'FLAGS' which wasn't expected, or isn't valid\
+    \ in this context\n\nUSAGE:\n    mtsv-build [FLAGS] [OPTIONS] --fasta <FASTA>\
+    \ --index <INDEX>\n\nFor more information try --help\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/mtsv-tools:1.0.2--h779adbc_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Prints help information
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Prints version information
+  args: !EmptyFlagArg {}
+help_text: "mtsv-build 0.4.0\nAdam Perry <adam.n.perry@gmail.com>:Tsosie Schneider\
+  \ <tes87@nau.edu>\nIndex construction for mtsv metagenomics binning tool.\n\nUSAGE:\n\
+  \    mtsv-build [FLAGS] [OPTIONS] --fasta <FASTA> --index <INDEX>\n\nFLAGS:\n  \
+  \  -v               Include this flag to trigger debug-level logging.\n    -h, --help\
+  \       Prints help information\n    -V, --version    Prints version information\n\
+  \nOPTIONS:\n    -f, --fasta <FASTA>                           Path to FASTA database\
+  \ file.\n        --sample-interval <FM_SAMPLE_INTERVAL>\n            Sampling interval\
+  \ for index generation. Smaller = more memory usage, slightly  faster queries. Larger\
+  \ = less\n            memory usage slightly slower queries. [default: 32]\n    -i,\
+  \ --index <INDEX>                           Absolute path to mtsv index file.\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/mtsv-tools:1.0.2--h779adbc_0

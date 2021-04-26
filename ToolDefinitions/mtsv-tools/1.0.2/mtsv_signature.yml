@@ -1,0 +1,141 @@
+&id001 !Command
+command:
+- mtsv-signature
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --family
+  description: "Enable to search for a common FAMILY among hits for a read (takes\
+    \ priority over LCA search when a\nfamily exists for a taxonomic ID)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --genus
+  description: "Enable to search for a common GENUS among hits for a read (takes priority\
+    \ over LCA search when a\nfamily exists for a taxonomic ID)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: Include this flag to trigger debug-level logging.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --index
+  description: Path to index built by mtsv-tree-build utility.
+  args: !SimpleFlagArg
+    name: INDEX
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  description: Path to mtsv results file.
+  args: !SimpleFlagArg
+    name: INPUT
+- !Flag
+  optional: true
+  synonyms:
+  - --lca
+  description: "Height at which the search will attempt to find a common ancestor\
+    \ among the hits for\na read. [values: 0, 1, 2, 3]"
+  args: !SimpleFlagArg
+    name: LCA
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: 'Number of worker threads to spawn. [default: 4]'
+  args: !SimpleFlagArg
+    name: NUM_THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: Output path to write "informativeness" results.
+  args: !SimpleFlagArg
+    name: OUTPUT
+parent:
+subcommands:
+- !Command
+  command:
+  - mtsv-signature
+  - FLAGS
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --lca
+    description: ''
+    args: !SimpleFlagArg
+      name: LCA
+  - !Flag
+    optional: true
+    synonyms:
+    - --input
+    description: ''
+    args: !SimpleFlagArg
+      name: INPUT
+  - !Flag
+    optional: true
+    synonyms:
+    - --index
+    description: ''
+    args: !SimpleFlagArg
+      name: INDEX
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "error: Found argument 'FLAGS' which wasn't expected, or isn't valid\
+    \ in this context\n\nUSAGE:\n    mtsv-signature [FLAGS] [OPTIONS] --index <INDEX>\
+    \ --input <INPUT> --lca <LCA> --output <OUTPUT>\n\nFor more information try --help\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/mtsv-tools:1.0.2--h779adbc_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Prints help information
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Prints version information
+  args: !EmptyFlagArg {}
+help_text: "mtsv-inform 0.4.0\nAdam Perry <adam.n.perry@gmail.com>:Tsosie Schneider\
+  \ <tes87@nau.edu>\nPostprocessor for mtsv results to determine which reads are \"\
+  informative.\"\n\nUSAGE:\n    mtsv-signature [FLAGS] [OPTIONS] --index <INDEX> --input\
+  \ <INPUT> --lca <LCA> --output <OUTPUT>\n\nFLAGS:\n        --family     Enable to\
+  \ search for a common FAMILY among hits for a read (takes priority over LCA search\
+  \ when a\n                     family exists for a taxonomic ID).\n        --genus\
+  \      Enable to search for a common GENUS among hits for a read (takes priority\
+  \ over LCA search when a\n                     family exists for a taxonomic ID).\n\
+  \    -v               Include this flag to trigger debug-level logging.\n    -h,\
+  \ --help       Prints help information\n    -V, --version    Prints version information\n\
+  \nOPTIONS:\n    -x, --index <INDEX>            Path to index built by mtsv-tree-build\
+  \ utility.\n    -i, --input <INPUT>            Path to mtsv results file.\n    \
+  \    --lca <LCA>                Height at which the search will attempt to find\
+  \ a common ancestor among the hits for\n                                   a read.\
+  \ [values: 0, 1, 2, 3]\n    -t, --threads <NUM_THREADS>    Number of worker threads\
+  \ to spawn. [default: 4]\n    -o, --output <OUTPUT>          Output path to write\
+  \ \"informativeness\" results.\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/mtsv-tools:1.0.2--h779adbc_0

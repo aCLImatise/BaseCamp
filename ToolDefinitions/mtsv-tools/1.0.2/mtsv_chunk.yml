@@ -1,0 +1,95 @@
+&id001 !Command
+command:
+- mtsv-chunk
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: Include this flag to trigger debug-level logging.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  description: Path(s) to vedro results files to collapse
+  args: !SimpleFlagArg
+    name: INPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: Folder path to write split outupt files to.
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --gb
+  description: 'Chunk size (in gigabytes). [default: 1.0]'
+  args: !SimpleFlagArg
+    name: SIZE_GB
+parent:
+subcommands:
+- !Command
+  command:
+  - mtsv-chunk
+  - FLAGS
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --output
+    description: ''
+    args: !SimpleFlagArg
+      name: OUTPUT
+  - !Flag
+    optional: true
+    synonyms:
+    - --input
+    description: ''
+    args: !SimpleFlagArg
+      name: INPUT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "error: Found argument 'FLAGS' which wasn't expected, or isn't valid\
+    \ in this context\n\nUSAGE:\n    mtsv-chunk [FLAGS] --input <INPUT> --output <OUTPUT>\
+    \ --gb <SIZE_GB>\n\nFor more information try --help\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/mtsv-tools:1.0.2--h779adbc_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Prints help information
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Prints version information
+  args: !EmptyFlagArg {}
+help_text: "vedro-chunk 0.4.0\nAdam Perry <adam.n.perry@gmail.com>:Tsosie Schneider\
+  \ <tes87@nau.edu>\nSplit a FASTA reference database into chunks for index generation.\n\
+  \nUSAGE:\n    mtsv-chunk [FLAGS] --input <INPUT> --output <OUTPUT> --gb <SIZE_GB>\n\
+  \nFLAGS:\n    -v               Include this flag to trigger debug-level logging.\n\
+  \    -h, --help       Prints help information\n    -V, --version    Prints version\
+  \ information\n\nOPTIONS:\n    -i, --input <INPUT>      Path(s) to vedro results\
+  \ files to collapse\n    -o, --output <OUTPUT>    Folder path to write split outupt\
+  \ files to.\n    -g, --gb <SIZE_GB>       Chunk size (in gigabytes). [default: 1.0]\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/mtsv-tools:1.0.2--h779adbc_0

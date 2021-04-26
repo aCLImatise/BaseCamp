@@ -1,0 +1,114 @@
+!Command
+command:
+- akita_sat_vcf.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: params_file
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: model_file
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: vcf_file
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: "Genome FASTA for sequences [Default:\n/usr/local/share/basenji//data/hg19.fa]"
+  args: !SimpleFlagArg
+    name: GENOME_FASTA
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  description: "Draw a sequence logo for the gain score, too [Default:\nFalse]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: 'Length of centered sequence to mutate [Default: 200]'
+  args: !SimpleFlagArg
+    name: SATMUT_LEN
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: 'Minimum heatmap limit [Default: 0.1]'
+  args: !SimpleFlagArg
+    name: MIN_LIMIT
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: 'Load the predictions from .npy files [Default: False]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: 'Output directory [Default: sat_vcf]'
+  args: !SimpleFlagArg
+    name: OUT_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --rc
+  description: "Ensemble forward and reverse complement predictions\n[Default: False]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --shifts
+  description: 'Ensemble prediction shifts [Default: 0]'
+  args: !SimpleFlagArg
+    name: SHIFTS
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: File specifying target indexes and labels in table format
+  args: !SimpleFlagArg
+    name: TARGETS_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  description: 'Figure width [Default: 20]'
+  args: !SimpleFlagArg
+    name: FIGURE_WIDTH
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: akita_sat_vcf.py [options] <params_file> <model_file> <vcf_file>\n\
+  \nOptions:\n  -h, --help       show this help message and exit\n  -f GENOME_FASTA\
+  \  Genome FASTA for sequences [Default:\n                   /usr/local/share/basenji//data/hg19.fa]\n\
+  \  -g               Draw a sequence logo for the gain score, too [Default:\n   \
+  \                False]\n  -l SATMUT_LEN    Length of centered sequence to mutate\
+  \ [Default: 200]\n  -m MIN_LIMIT     Minimum heatmap limit [Default: 0.1]\n  -n\
+  \               Load the predictions from .npy files [Default: False]\n  -o OUT_DIR\
+  \       Output directory [Default: sat_vcf]\n  --rc             Ensemble forward\
+  \ and reverse complement predictions\n                   [Default: False]\n  --shifts=SHIFTS\
+  \  Ensemble prediction shifts [Default: 0]\n  -t TARGETS_FILE  File specifying target\
+  \ indexes and labels in table format\n  -w FIGURE_WIDTH  Figure width [Default:\
+  \ 20]\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/basenji:0.5.1--pyhdfd78af_0

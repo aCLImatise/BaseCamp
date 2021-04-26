@@ -1,0 +1,247 @@
+!Command
+command:
+- basenji_data.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: fasta_file
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: targets_file
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  description: Set blacklist nucleotides to a baseline value.
+  args: !SimpleFlagArg
+    name: BLACKLIST_BED
+- !Flag
+  optional: true
+  synonyms:
+  - --break
+  description: 'Break in half contigs above length [Default: 786432]'
+  args: !SimpleFlagArg
+    name: BREAK_T
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --crop
+  description: 'Crop bp off each end [Default: 0]'
+  args: !SimpleFlagArg
+    name: CROP_BP
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: Down-sample the segments
+  args: !SimpleFlagArg
+    name: SAMPLE_PCT
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: 'Generate cross fold split [Default: none]'
+  args: !SimpleFlagArg
+    name: FOLDS
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  description: 'Genome assembly gaps BED [Default: none]'
+  args: !SimpleFlagArg
+    name: GAPS_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: 'Interpolate NaNs [Default: False]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: 'Sequence length [Default: 131072]'
+  args: !SimpleFlagArg
+    name: SEQ_LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - --limit
+  description: Limit to segments that overlap regions in a BED file
+  args: !SimpleFlagArg
+    name: LIMIT_BED
+- !Flag
+  optional: true
+  synonyms:
+  - --local
+  description: "Run jobs locally as opposed to on SLURM [Default:\nFalse]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: 'Output directory [Default: data_out]'
+  args: !SimpleFlagArg
+    name: OUT_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  description: 'Number parallel processes [Default: none]'
+  args: !SimpleFlagArg
+    name: PROCESSES
+- !Flag
+  optional: true
+  synonyms:
+  - --peaks
+  description: 'Create contigs only from peaks [Default: False]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  description: 'Sequences per TFRecord file [Default: 256]'
+  args: !SimpleFlagArg
+    name: SEQS_PER_TFR
+- !Flag
+  optional: true
+  synonyms:
+  - --restart
+  description: 'Continue progress from midpoint. [Default: False]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --seed
+  description: 'Random seed [Default: 44]'
+  args: !SimpleFlagArg
+    name: SEED
+- !Flag
+  optional: true
+  synonyms:
+  - --snap
+  description: "Snap sequences to multiple of the given value\n[Default: 1]"
+  args: !SimpleFlagArg
+    name: SNAP
+- !Flag
+  optional: true
+  synonyms:
+  - --st
+  - --split_test
+  description: 'Exit after split. [Default: False]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --stride
+  - --stride_train
+  description: "Stride to advance train sequences [Default:\nseq_length]"
+  args: !SimpleFlagArg
+    name: STRIDE_TRAIN
+- !Flag
+  optional: true
+  synonyms:
+  - --stride_test
+  description: "Stride to advance valid and test sequences [Default:\nseq_length]"
+  args: !SimpleFlagArg
+    name: STRIDE_TEST
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: 'Proportion of the data for testing [Default: 0.05]'
+  args: !SimpleFlagArg
+    name: TEST_PCT_OR_CHR
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  description: Unmappable regions in BED format
+  args: !SimpleFlagArg
+    name: UMAP_BED
+- !Flag
+  optional: true
+  synonyms:
+  - --umap_t
+  description: "Remove sequences with more than this unmappable bin %\n[Default: 0.5]"
+  args: !SimpleFlagArg
+    name: UMAP_T
+- !Flag
+  optional: true
+  synonyms:
+  - --umap_clip
+  description: "Clip values at unmappable positions to distribution\nquantiles, eg\
+    \ 0.25. [Default: 1]"
+  args: !SimpleFlagArg
+    name: UMAP_CLIP
+- !Flag
+  optional: true
+  synonyms:
+  - --umap_tfr
+  description: 'Save umap array into TFRecords [Default: False]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  description: 'Sum pool width [Default: 128]'
+  args: !SimpleFlagArg
+    name: POOL_WIDTH
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: 'Proportion of the data for validation [Default: 0.05]'
+  args: !SimpleFlagArg
+    name: VALID_PCT_OR_CHR
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: basenji_data.py [options] <fasta_file> <targets_file>\n\nOptions:\n\
+  \  -h, --help            show this help message and exit\n  -b BLACKLIST_BED   \
+  \   Set blacklist nucleotides to a baseline value.\n  --break=BREAK_T       Break\
+  \ in half contigs above length [Default: 786432]\n  -c CROP_BP, --crop=CROP_BP\n\
+  \                        Crop bp off each end [Default: 0]\n  -d SAMPLE_PCT    \
+  \     Down-sample the segments\n  -f FOLDS              Generate cross fold split\
+  \ [Default: none]\n  -g GAPS_FILE          Genome assembly gaps BED [Default: none]\n\
+  \  -i                    Interpolate NaNs [Default: False]\n  -l SEQ_LENGTH    \
+  \     Sequence length [Default: 131072]\n  --limit=LIMIT_BED     Limit to segments\
+  \ that overlap regions in a BED file\n  --local               Run jobs locally as\
+  \ opposed to on SLURM [Default:\n                        False]\n  -o OUT_DIR  \
+  \          Output directory [Default: data_out]\n  -p PROCESSES          Number\
+  \ parallel processes [Default: none]\n  --peaks               Create contigs only\
+  \ from peaks [Default: False]\n  -r SEQS_PER_TFR       Sequences per TFRecord file\
+  \ [Default: 256]\n  --restart             Continue progress from midpoint. [Default:\
+  \ False]\n  --seed=SEED           Random seed [Default: 44]\n  --snap=SNAP     \
+  \      Snap sequences to multiple of the given value\n                        [Default:\
+  \ 1]\n  --st, --split_test    Exit after split. [Default: False]\n  --stride=STRIDE_TRAIN,\
+  \ --stride_train=STRIDE_TRAIN\n                        Stride to advance train sequences\
+  \ [Default:\n                        seq_length]\n  --stride_test=STRIDE_TEST\n\
+  \                        Stride to advance valid and test sequences [Default:\n\
+  \                        seq_length]\n  -t TEST_PCT_OR_CHR    Proportion of the\
+  \ data for testing [Default: 0.05]\n  -u UMAP_BED           Unmappable regions in\
+  \ BED format\n  --umap_t=UMAP_T       Remove sequences with more than this unmappable\
+  \ bin %\n                        [Default: 0.5]\n  --umap_clip=UMAP_CLIP\n     \
+  \                   Clip values at unmappable positions to distribution\n      \
+  \                  quantiles, eg 0.25. [Default: 1]\n  --umap_tfr            Save\
+  \ umap array into TFRecords [Default: False]\n  -w POOL_WIDTH         Sum pool width\
+  \ [Default: 128]\n  -v VALID_PCT_OR_CHR   Proportion of the data for validation\
+  \ [Default: 0.05]\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/basenji:0.5.1--pyhdfd78af_0

@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Int, File, Directory, Boolean, String
+
+Basenji_Sad_Py_V0_1_0 = CommandToolBuilder(tool="basenji_sad.py", base_command=["basenji_sad.py"], inputs=[ToolInput(tag="in_genome_fasta_sequences", input_type=Int(optional=True), prefix="-f", doc=InputDocumentation(doc="Genome FASTA for sequences [Default:\n/usr/local/share/basenji//data/hg19.fa]")), ToolInput(tag="in_normalize_sad_scores", input_type=File(optional=True), prefix="-n", doc=InputDocumentation(doc="Normalize SAD scores")), ToolInput(tag="in_output_directory_plots", input_type=Directory(optional=True), prefix="-o", doc=InputDocumentation(doc="Output directory for tables and plots [Default: sad]")), ToolInput(tag="in_number_processes_passed", input_type=Int(optional=True), prefix="-p", doc=InputDocumentation(doc="Number of processes, passed by multi script")), ToolInput(tag="in_pseudo", input_type=Int(optional=True), prefix="--pseudo", doc=InputDocumentation(doc="Log2 pseudocount [Default: 1]")), ToolInput(tag="in_rc", input_type=Boolean(optional=True), prefix="--rc", doc=InputDocumentation(doc="Average forward and reverse complement predictions\n[Default: False]")), ToolInput(tag="in_shifts", input_type=Int(optional=True), prefix="--shifts", doc=InputDocumentation(doc="Ensemble prediction shifts [Default: 0]")), ToolInput(tag="in_stats", input_type=String(optional=True), prefix="--stats", doc=InputDocumentation(doc="Comma-separated list of stats to save. [Default: SAD]")), ToolInput(tag="in_file_specifying_indexes", input_type=File(optional=True), prefix="-t", doc=InputDocumentation(doc="File specifying target indexes and labels in table")), ToolInput(tag="in_compute_sed_penultimate", input_type=Boolean(optional=True), prefix="-u", doc=InputDocumentation(doc="Compute SED in the penultimate layer [Default: False]")), ToolInput(tag="in_format", input_type=String(), position=0, doc=InputDocumentation(doc="--ti=TRACK_INDEXES   Comma-separated list of target indexes to output BigWig")), ToolInput(tag="in_tracks", input_type=String(), position=1, doc=InputDocumentation(doc="--threads            Run CPU math and output in a separate thread [Default:"))], outputs=[ToolOutput(tag="out_output_directory_plots", output_type=Directory(optional=True), selector=InputSelector(input_to_select="in_output_directory_plots", type_hint=File()), doc=OutputDocumentation(doc="Output directory for tables and plots [Default: sad]"))], container="quay.io/biocontainers/basenji:0.5.1--pyhdfd78af_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Basenji_Sad_Py_V0_1_0().translate("wdl")
+

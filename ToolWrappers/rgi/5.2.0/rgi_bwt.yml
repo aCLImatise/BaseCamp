@@ -1,0 +1,129 @@
+!Command
+command:
+- rgi
+- bwt
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: aligner
+  description: -n THREADS, --threads THREADS
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - '-1'
+  - --read_one
+  description: raw read one (qc and trimmied)
+  args: !SimpleFlagArg
+    name: READ_ONE
+- !Flag
+  optional: true
+  synonyms:
+  - '-2'
+  - --read_two
+  description: raw read two (qc and trimmied)
+  args: !SimpleFlagArg
+    name: READ_TWO
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output_file
+  description: name of output filename(s)
+  args: !SimpleFlagArg
+    name: OUTPUT_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: debug mode
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --clean
+  description: removes temporary files
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --local
+  description: "use local database (default: uses database in\nexecutable directory)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --include_wildcard
+  description: include wildcard
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --include_baits
+  description: include baits
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --mapq
+  description: filter reads based on MAPQ score
+  args: !SimpleFlagArg
+    name: MAPQ
+- !Flag
+  optional: true
+  synonyms:
+  - --mapped
+  description: filter reads based on mapped reads
+  args: !SimpleFlagArg
+    name: MAPPED
+- !Flag
+  optional: true
+  synonyms:
+  - --coverage
+  description: filter reads based on coverage of reference sequence
+  args: !SimpleFlagArg
+    name: COVERAGE
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  description: ''
+  args: !ChoiceFlagArg
+    choices: !!set
+      bowtie2:
+      bwa:
+      kma:
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: rgi bwt [-h] -1 READ_ONE [-2 READ_TWO] [-a {bowtie2,bwa,kma}]\n\
+  \               [-n THREADS] -o OUTPUT_FILE [--debug] [--clean] [--local]\n    \
+  \           [--include_wildcard] [--include_baits] [--mapq MAPQ]\n             \
+  \  [--mapped MAPPED] [--coverage COVERAGE]\n\nAligns metagenomic reads to CARD and\
+  \ wildCARD reference using bowtie or bwa\nand provide reports.\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -1 READ_ONE, --read_one\
+  \ READ_ONE\n                        raw read one (qc and trimmied)\n  -2 READ_TWO,\
+  \ --read_two READ_TWO\n                        raw read two (qc and trimmied)\n\
+  \  -a {bowtie2,bwa,kma}, --aligner {bowtie2,bwa,kma}\n                        aligner\n\
+  \  -n THREADS, --threads THREADS\n                        number of threads (CPUs)\
+  \ to use (default=2)\n  -o OUTPUT_FILE, --output_file OUTPUT_FILE\n            \
+  \            name of output filename(s)\n  --debug               debug mode\n  --clean\
+  \               removes temporary files\n  --local               use local database\
+  \ (default: uses database in\n                        executable directory)\n  --include_wildcard\
+  \    include wildcard\n  --include_baits       include baits\n  --mapq MAPQ    \
+  \       filter reads based on MAPQ score\n  --mapped MAPPED       filter reads based\
+  \ on mapped reads\n  --coverage COVERAGE   filter reads based on coverage of reference\
+  \ sequence\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/rgi:5.2.0--pyhdfd78af_0
