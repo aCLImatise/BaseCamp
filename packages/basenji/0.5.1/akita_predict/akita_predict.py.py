@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, Int, Directory, Boolean, String
+
+Akita_Predict_Py_V0_1_0 = CommandToolBuilder(tool="akita_predict.py", base_command=["akita_predict.py"], inputs=[ToolInput(tag="in_bed_file_describing", input_type=File(optional=True), prefix="-b", doc=InputDocumentation(doc="BED file describing regions so we can output BigWig")), ToolInput(tag="in_mc", input_type=Int(optional=True), prefix="--mc", doc=InputDocumentation(doc="Monte carlo test iterations [Default: 0]")), ToolInput(tag="in_output_directory_defaulttestout", input_type=Directory(optional=True), prefix="-o", doc=InputDocumentation(doc="Output directory for test statistics [Default:\ntest_out]")), ToolInput(tag="in_rc", input_type=Boolean(optional=True), prefix="--rc", doc=InputDocumentation(doc="Average the fwd and rc predictions [Default: False]")), ToolInput(tag="in_shifts", input_type=Int(optional=True), prefix="--shifts", doc=InputDocumentation(doc="Ensemble prediction shifts [Default: 0]")), ToolInput(tag="in_file_specifying_indexes", input_type=File(optional=True), prefix="-t", doc=InputDocumentation(doc="File specifying target indexes and labels in table")), ToolInput(tag="in_tfr", input_type=String(optional=True), prefix="--tfr", doc=InputDocumentation(doc="TFR pattern string appended to data_dir/tfrecords for\nsubsetting [Default: none]\n")), ToolInput(tag="in_genomefile_chromosome_length", input_type=String(), position=0, doc=InputDocumentation(doc="-g GENOME_FILE       Chromosome length information [Default: /usr/local/shar")), ToolInput(tag="in_format", input_type=String(), position=0, doc=InputDocumentation(doc="--ti=TRACK_INDEXES   Comma-separated list of target indexes to output BigWig")), ToolInput(tag="in__splitsplitlabel_dataset", input_type=String(), position=1, doc=InputDocumentation(doc="--split=SPLIT_LABEL  Dataset split label for eg TFR pattern [Default: test]"))], outputs=[ToolOutput(tag="out_bed_file_describing", output_type=File(optional=True), selector=InputSelector(input_to_select="in_bed_file_describing", type_hint=File()), doc=OutputDocumentation(doc="BED file describing regions so we can output BigWig")), ToolOutput(tag="out_output_directory_defaulttestout", output_type=Directory(optional=True), selector=InputSelector(input_to_select="in_output_directory_defaulttestout", type_hint=File()), doc=OutputDocumentation(doc="Output directory for test statistics [Default:\ntest_out]"))], container="quay.io/biocontainers/basenji:0.5.1--pyhdfd78af_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Akita_Predict_Py_V0_1_0().translate("wdl")
+

@@ -1,0 +1,127 @@
+!Command
+command:
+- agat_sp_fix_fusion.pl
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: agat_sp_fix_fusion.pl
+  description: 'Description:'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -gff
+  description: Input GTF/GFF file.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -fa
+  - --fasta
+  description: Input fasta file.
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - --ct
+  - --codon
+  - --table
+  description: Codon table to use. [default 1]
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threshold
+  description: "This is the minimum length of new protein predicted that will be\n\
+    taken in account. By default this value is 100 AA."
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --stranded
+  description: "By default we predict protein in UTR3 and UTR5 and in both\ndirection.\
+    \ The fusion assumed can be between gene in same\ndirection and in opposite direction.\
+    \ If RNAseq data used during\nthe annotation was stranded, only fusion of close\
+    \ genes oriented\nin same direction are expected. In that case this option should\n\
+    be activated. When activated, we will try to predict protein in\nUTR3 and UTR5\
+    \ only in the same orientation than the gene\ninvestigated."
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: Output verbose information.
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  - --out
+  - --outfile
+  description: "Output GFF file. If no output file is specified, the output will\n\
+    be written to STDOUT."
+  args: !SimpleFlagArg
+    name: or
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Display this helpful text.
+  args: !SimpleFlagArg
+    name: or
+usage_flag:
+version_flag:
+help_text: "\n ------------------------------------------------------------------------------\n\
+  |   Another GFF Analysis Toolkit (AGAT) - Version: v0.6.0                      |\n\
+  |   https://github.com/NBISweden/AGAT                                          |\n\
+  |   National Bioinformatics Infrastructure Sweden (NBIS) - www.nbis.se         |\n\
+  \ ------------------------------------------------------------------------------\n\
+  \n\nName:\n    agat_sp_fix_fusion.pl\n\nDescription:\n    The script looks for other\
+  \ ORF in UTRs (UTR3 and UTR5) of each gene\n    model described in the gff file.\
+  \ Several ouput files will be written if\n    you specify an output. One will contain\
+  \ the gene not modified (intact),\n    one the gene models fixed.\n\nUsage:\n  \
+  \      agat_sp_fix_fusion.pl --gff infile.gff --fasta genome.fa [ -o outfile ]\n\
+  \        agat_sp_fix_fusion.pl --help\n\nOptions:\n    -gff    Input GTF/GFF file.\n\
+  \n    -fa or --fasta\n            Input fasta file.\n\n    --ct, --codon or --table\n\
+  \            Codon table to use. [default 1]\n\n    -t or --threshold\n        \
+  \    This is the minimum length of new protein predicted that will be\n        \
+  \    taken in account. By default this value is 100 AA.\n\n    -s or --stranded\n\
+  \            By default we predict protein in UTR3 and UTR5 and in both\n      \
+  \      direction. The fusion assumed can be between gene in same\n            direction\
+  \ and in opposite direction. If RNAseq data used during\n            the annotation\
+  \ was stranded, only fusion of close genes oriented\n            in same direction\
+  \ are expected. In that case this option should\n            be activated. When\
+  \ activated, we will try to predict protein in\n            UTR3 and UTR5 only in\
+  \ the same orientation than the gene\n            investigated.\n\n    -v or --verbose\n\
+  \            Output verbose information.\n\n    -o , --output , --out or --outfile\n\
+  \            Output GFF file. If no output file is specified, the output will\n\
+  \            be written to STDOUT.\n\n    -h or --help\n            Display this\
+  \ helpful text.\n\nFeedback:\n  Did you find a bug?:\n    Do not hesitate to report\
+  \ bugs to help us keep track of the bugs and\n    their resolution. Please use the\
+  \ GitHub issue tracking system available\n    at this address:\n\n             \
+  \   https://github.com/NBISweden/AGAT/issues\n\n     Ensure that the bug was not\
+  \ already reported by searching under Issues.\n     If you're unable to find an\
+  \ (open) issue addressing the problem, open a new one.\n     Try as much as possible\
+  \ to include in the issue when relevant:\n     - a clear description,\n     - as\
+  \ much relevant information as possible,\n     - the command used,\n     - a data\
+  \ sample,\n     - an explanation of the expected behaviour that is not occurring.\n\
+  \n  Do you want to contribute?:\n    You are very welcome, visit this address for\
+  \ the Contributing\n    guidelines:\n    https://github.com/NBISweden/AGAT/blob/master/CONTRIBUTING.md\n\
+  \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/agat:0.6.1--pl5262r35hdfd78af_0

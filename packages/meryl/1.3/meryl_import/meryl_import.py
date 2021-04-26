@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, Int, String, Boolean
+
+Meryl_Import_V0_1_0 = CommandToolBuilder(tool="meryl_import", base_command=["meryl-import"], inputs=[ToolInput(tag="in_km_ers", input_type=File(optional=True), prefix="-kmers", doc=InputDocumentation(doc="A file consisting of kmers and values, one per line, separated\nby white space ('AGTTGCC 4').  Order of kmers is not important.\nDuplicate kmers will be handled according to the -multiset\noption.\nA persistent value can be specified as '#<value>' (e.g., '#3')\nAll kmers with no value after this line will use this value.")), ToolInput(tag="in_size_setting_larger", input_type=Int(optional=True), prefix="-k", doc=InputDocumentation(doc="The size of a kmer, in bases.  Setting this larger than the\nkmers in the input will probably lead to a crash.  Setting it\nsmaller will result in only the left-most bases being used.")), ToolInput(tag="in_output", input_type=String(optional=True), prefix="-output", doc=InputDocumentation(doc="Create (or overwrite) meryl database 'database.meryl'.")), ToolInput(tag="in_multiset", input_type=Boolean(optional=True), prefix="-multiset", doc=InputDocumentation(doc="Write duplicate kmers in the input to the database as individual")), ToolInput(tag="in_maxvalue", input_type=String(optional=True), prefix="-maxvalue", doc=InputDocumentation(doc="An optional memory and time optimization, useful if your values\nare randomly distributed and below some known maximum value.\nFor data whose values are the counts from actual data, it is\nprobably best to not set this option.")), ToolInput(tag="in_forward", input_type=Boolean(optional=True), prefix="-forward", doc=InputDocumentation(doc="By default, the canonical kmer is loaded into the database.  These")), ToolInput(tag="in_reverse", input_type=Boolean(optional=True), prefix="-reverse", doc=InputDocumentation(doc="options force either the forward or reverse-complement kmer to be\nloaded instead.  These options are mutually exclusive.")), ToolInput(tag="in_threads", input_type=String(optional=True), prefix="-threads", doc=InputDocumentation(doc="Use <t> compute threads when sorting and writing data.")), ToolInput(tag="in_memory", input_type=String(optional=True), prefix="-memory", doc=InputDocumentation(doc="(accepted, but not implemented, sorry)")), ToolInput(tag="in_entries_dot", input_type=String(), position=0, doc=InputDocumentation(doc="A kmer AGTTGCC in the input twice with values 4 and 7"))], outputs=[], container="quay.io/biocontainers/meryl:1.3--h1b792b2_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Meryl_Import_V0_1_0().translate("wdl")
+

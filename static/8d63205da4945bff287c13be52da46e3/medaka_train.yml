@@ -1,0 +1,179 @@
+!Command
+command:
+- medaka
+- train
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: features
+  description: Paths to training data.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: 'Verbose logging of debug information. (default: 20)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --quiet
+  description: 'Minimal logging; warnings only). (default: 20)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --train_name
+  description: 'Name for training run. (default: keras_train)'
+  args: !SimpleFlagArg
+    name: TRAIN_NAME
+- !Flag
+  optional: true
+  synonyms:
+  - --model
+  description: "Model definition and initial weights .hdf, or .yml\nwith kwargs to\
+    \ build model. {r103_min_high_g345,\nr103_min_high_g360, r103_prom_high_g360,\n\
+    r103_prom_snp_g3210, r103_prom_variant_g3210,\nr10_min_high_g303, r10_min_high_g340,\n\
+    r941_min_fast_g303, r941_min_high_g303,\nr941_min_high_g330, r941_min_high_g340_rle,\n\
+    r941_min_high_g344, r941_min_high_g351,\nr941_min_high_g360, r941_prom_fast_g303,\n\
+    r941_prom_high_g303, r941_prom_high_g330,\nr941_prom_high_g344, r941_prom_high_g360,\n\
+    r941_prom_high_g4011, r941_prom_snp_g303,\nr941_prom_snp_g322, r941_prom_snp_g360,\n\
+    r941_prom_variant_g303, r941_prom_variant_g322,\nr941_prom_variant_g360} (default:\
+    \ None)"
+  args: !SimpleFlagArg
+    name: MODEL
+- !Flag
+  optional: true
+  synonyms:
+  - --epochs
+  description: 'Maximum number of trainig epochs. (default: 5000)'
+  args: !SimpleFlagArg
+    name: EPOCHS
+- !Flag
+  optional: true
+  synonyms:
+  - --batch_size
+  description: 'Training batch size. (default: 100)'
+  args: !SimpleFlagArg
+    name: BATCH_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - --max_samples
+  description: 'Only train on max_samples. (default: inf)'
+  args: !SimpleFlagArg
+    name: MAX_SAMPLES
+- !Flag
+  optional: true
+  synonyms:
+  - --mini_epochs
+  description: "Reduce fraction of data per epoch by this factor\n(default: 1)"
+  args: !SimpleFlagArg
+    name: MINI_EPOCHS
+- !Flag
+  optional: true
+  synonyms:
+  - --seed
+  description: 'Seed for random batch shuffling. (default: None)'
+  args: !SimpleFlagArg
+    name: SEED
+- !Flag
+  optional: true
+  synonyms:
+  - --threads_io
+  description: 'Number of threads for parallel IO. (default: 1)'
+  args: !SimpleFlagArg
+    name: THREADS_IO
+- !Flag
+  optional: true
+  synonyms:
+  - --device
+  description: 'GPU device to use. (default: 0)'
+  args: !SimpleFlagArg
+    name: DEVICE
+- !Flag
+  optional: true
+  synonyms:
+  - --optimizer
+  description: 'Optimizer to use. (default: rmsprop)'
+  args: !ChoiceFlagArg
+    choices: !!set
+      rmsprop:
+      nadam:
+- !Flag
+  optional: true
+  synonyms:
+  - --optim_args
+  description: "=VAL1,KEY2=VAL2... [KEY1=VAL1,KEY2=VAL2... ...]\nOptimizer key-word\
+    \ arguments. (default: None)"
+  args: !SimpleFlagArg
+    name: KEY1
+- !Flag
+  optional: true
+  synonyms:
+  - --validation_split
+  description: 'Fraction of data to validate on. (default: 0.2)'
+  args: !SimpleFlagArg
+    name: VALIDATION_SPLIT
+- !Flag
+  optional: true
+  synonyms:
+  - --validation_features
+  description: "Paths to validation data (default: None)\n"
+  args: !RepeatFlagArg
+    name: VALIDATION_FEATURES
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: medaka train [-h] [--debug | --quiet] [--train_name TRAIN_NAME]\n\
+  \                    [--model MODEL] [--epochs EPOCHS]\n                    [--batch_size\
+  \ BATCH_SIZE] [--max_samples MAX_SAMPLES]\n                    [--mini_epochs MINI_EPOCHS]\
+  \ [--seed SEED]\n                    [--threads_io THREADS_IO] [--device DEVICE]\n\
+  \                    [--optimizer {nadam,rmsprop}]\n                    [--optim_args\
+  \ KEY1=VAL1,KEY2=VAL2... [KEY1=VAL1,KEY2=VAL2... ...]]\n                    [--validation_split\
+  \ VALIDATION_SPLIT | --validation_features VALIDATION_FEATURES [VALIDATION_FEATURES\
+  \ ...]]\n                    features [features ...]\n\npositional arguments:\n\
+  \  features              Paths to training data.\n\noptional arguments:\n  -h, --help\
+  \            show this help message and exit\n  --debug               Verbose logging\
+  \ of debug information. (default: 20)\n  --quiet               Minimal logging;\
+  \ warnings only). (default: 20)\n  --train_name TRAIN_NAME\n                   \
+  \     Name for training run. (default: keras_train)\n  --model MODEL         Model\
+  \ definition and initial weights .hdf, or .yml\n                        with kwargs\
+  \ to build model. {r103_min_high_g345,\n                        r103_min_high_g360,\
+  \ r103_prom_high_g360,\n                        r103_prom_snp_g3210, r103_prom_variant_g3210,\n\
+  \                        r10_min_high_g303, r10_min_high_g340,\n               \
+  \         r941_min_fast_g303, r941_min_high_g303,\n                        r941_min_high_g330,\
+  \ r941_min_high_g340_rle,\n                        r941_min_high_g344, r941_min_high_g351,\n\
+  \                        r941_min_high_g360, r941_prom_fast_g303,\n            \
+  \            r941_prom_high_g303, r941_prom_high_g330,\n                       \
+  \ r941_prom_high_g344, r941_prom_high_g360,\n                        r941_prom_high_g4011,\
+  \ r941_prom_snp_g303,\n                        r941_prom_snp_g322, r941_prom_snp_g360,\n\
+  \                        r941_prom_variant_g303, r941_prom_variant_g322,\n     \
+  \                   r941_prom_variant_g360} (default: None)\n  --epochs EPOCHS \
+  \      Maximum number of trainig epochs. (default: 5000)\n  --batch_size BATCH_SIZE\n\
+  \                        Training batch size. (default: 100)\n  --max_samples MAX_SAMPLES\n\
+  \                        Only train on max_samples. (default: inf)\n  --mini_epochs\
+  \ MINI_EPOCHS\n                        Reduce fraction of data per epoch by this\
+  \ factor\n                        (default: 1)\n  --seed SEED           Seed for\
+  \ random batch shuffling. (default: None)\n  --threads_io THREADS_IO\n         \
+  \               Number of threads for parallel IO. (default: 1)\n  --device DEVICE\
+  \       GPU device to use. (default: 0)\n  --optimizer {nadam,rmsprop}\n       \
+  \                 Optimizer to use. (default: rmsprop)\n  --optim_args KEY1=VAL1,KEY2=VAL2...\
+  \ [KEY1=VAL1,KEY2=VAL2... ...]\n                        Optimizer key-word arguments.\
+  \ (default: None)\n  --validation_split VALIDATION_SPLIT\n                     \
+  \   Fraction of data to validate on. (default: 0.2)\n  --validation_features VALIDATION_FEATURES\
+  \ [VALIDATION_FEATURES ...]\n                        Paths to validation data (default:\
+  \ None)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/medaka:1.3.2--py38h130def0_0

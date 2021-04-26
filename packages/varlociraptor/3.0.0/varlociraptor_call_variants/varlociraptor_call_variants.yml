@@ -1,0 +1,122 @@
+!Command
+command:
+- varlociraptor
+- call
+- variants
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: artifact.
+  description: --omit-read-position-bias       Do not consider read position bias
+    when calculating the probability of an
+- !Positional
+  optional: false
+  position: 0
+  name: generic
+  description: "Call variants for a given scenario specified with the varlociraptor\
+    \ calling grammar and a\nVCF/BCF with candidate variants."
+- !Positional
+  optional: false
+  position: 1
+  name: help
+  description: Prints this message or the help of the given subcommand(s)
+- !Positional
+  optional: false
+  position: 2
+  name: tumor-normal
+  description: "Call somatic and germline variants from a tumor-normal sample pair\
+    \ and a VCF/BCF with candidate\nvariants.\n"
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --omit-read-orientation-bias
+  description: Do not consider read orientation bias when calculating the probability
+    of an
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --omit-strand-bias
+  description: "Do not consider strand bias when calculating the probability of an\
+    \ artifact.Use\nthis flag when processing (panel) sequencing data, where the wet-lab\
+    \ methodology\nleads to strand bias in the coverage of genuine variants."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: "Output variant calls to given path (in BCF format). If omitted, prints\n\
+    calls to STDOUT."
+  args: !SimpleFlagArg
+    name: output
+- !Flag
+  optional: true
+  synonyms:
+  - --testcase-locus
+  description: "Create a test case for the given locus. Locus must be given in the\
+    \ form\nCHROM:POS[:IDX]. IDX is thereby an optional value to select a particular\n\
+    variant at the locus, counting from 1. If IDX is not specified, the first\nvariant\
+    \ will be chosen. Alternatively, for single variant VCFs, you can\nspecify 'all'."
+  args: !SimpleFlagArg
+    name: testcase-locus
+- !Flag
+  optional: true
+  synonyms:
+  - --testcase-prefix
+  description: Create test case files in the given directory.
+  args: !SimpleFlagArg
+    name: testcase-prefix
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Prints help information
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Prints version information
+  args: !EmptyFlagArg {}
+help_text: "varlociraptor-call-variants 3.0.0\nCall variants.\n\nUSAGE:\n    varlociraptor\
+  \ call variants [FLAGS] [OPTIONS] <SUBCOMMAND>\n\nFLAGS:\n    -h, --help       \
+  \                   Prints help information\n        --omit-read-orientation-bias\
+  \    Do not consider read orientation bias when calculating the probability of an\n\
+  \                                        artifact.\n        --omit-read-position-bias\
+  \       Do not consider read position bias when calculating the probability of an\n\
+  \                                        artifact. Use this flag when processing\
+  \ (panel) sequencing data, where the wet-\n                                    \
+  \    lab methodology leads to stacks of reads starting at the same position.\n \
+  \       --omit-strand-bias              Do not consider strand bias when calculating\
+  \ the probability of an artifact.Use\n                                        this\
+  \ flag when processing (panel) sequencing data, where the wet-lab methodology\n\
+  \                                        leads to strand bias in the coverage of\
+  \ genuine variants.\n    -V, --version                       Prints version information\n\
+  \nOPTIONS:\n    -o, --output <output>                      Output variant calls\
+  \ to given path (in BCF format). If omitted, prints\n                          \
+  \                     calls to STDOUT.\n        --testcase-locus <testcase-locus>\
+  \      Create a test case for the given locus. Locus must be given in the form\n\
+  \                                               CHROM:POS[:IDX]. IDX is thereby\
+  \ an optional value to select a particular\n                                   \
+  \            variant at the locus, counting from 1. If IDX is not specified, the\
+  \ first\n                                               variant will be chosen.\
+  \ Alternatively, for single variant VCFs, you can\n                            \
+  \                   specify 'all'.\n        --testcase-prefix <testcase-prefix>\
+  \    Create test case files in the given directory.\n\nSUBCOMMANDS:\n    generic\
+  \         Call variants for a given scenario specified with the varlociraptor calling\
+  \ grammar and a\n                    VCF/BCF with candidate variants.\n    help\
+  \            Prints this message or the help of the given subcommand(s)\n    tumor-normal\
+  \    Call somatic and germline variants from a tumor-normal sample pair and a VCF/BCF\
+  \ with candidate\n                    variants.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/varlociraptor:3.0.0--hd302352_0

@@ -1,0 +1,84 @@
+!Command
+command:
+- rgi
+- kmer_build
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: sequences.
+  description: -n THREADS, --threads THREADS
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input_directory
+  description: input directory of prevalence data
+  args: !SimpleFlagArg
+    name: INPUT_DIRECTORY
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --card
+  description: "fasta file of CARD reference sequences. If missing,\nrun 'rgi card_annotation'\
+    \ to generate."
+  args: !SimpleFlagArg
+    name: CARD_FASTA
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  description: k-mer size (e.g., 61)
+  args: !SimpleFlagArg
+    name: K
+- !Flag
+  optional: true
+  synonyms:
+  - --skip
+  description: skips the concatenation and splitting of the CARD*R*V
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --batch_size
+  description: "number of kmers to query at a time using pyahocorasick\n--the greater\
+    \ the number the more memory usage\n(default=100,000)\n"
+  args: !SimpleFlagArg
+    name: BATCH_SIZE
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  description: ''
+  args: !SimpleFlagArg
+    name: THREADS
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: rgi [-h] [-i INPUT_DIRECTORY] -c CARD_FASTA -k K [--skip] [-n THREADS]\n\
+  \           [--batch_size BATCH_SIZE]\n\nBuilds the kmer sets for CARD*kmers\n\n\
+  optional arguments:\n  -h, --help            show this help message and exit\n \
+  \ -i INPUT_DIRECTORY, --input_directory INPUT_DIRECTORY\n                      \
+  \  input directory of prevalence data\n  -c CARD_FASTA, --card CARD_FASTA\n    \
+  \                    fasta file of CARD reference sequences. If missing,\n     \
+  \                   run 'rgi card_annotation' to generate.\n  -k K             \
+  \     k-mer size (e.g., 61)\n  --skip                skips the concatenation and\
+  \ splitting of the CARD*R*V\n                        sequences.\n  -n THREADS, --threads\
+  \ THREADS\n                        number of threads (CPUs) to use (default=1)\n\
+  \  --batch_size BATCH_SIZE\n                        number of kmers to query at\
+  \ a time using pyahocorasick\n                        --the greater the number the\
+  \ more memory usage\n                        (default=100,000)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/rgi:5.2.0--pyhdfd78af_0

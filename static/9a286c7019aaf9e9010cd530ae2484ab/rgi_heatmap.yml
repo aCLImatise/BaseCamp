@@ -1,0 +1,103 @@
+!Command
+command:
+- rgi
+- heatmap
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  description: Directory containing the RGI .json files (REQUIRED)
+  args: !SimpleFlagArg
+    name: INPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -cat
+  - --category
+  description: "The option to organize resistance genes based on a\ncategory."
+  args: !ChoiceFlagArg
+    choices: !!set
+      resistance_mechanism:
+      drug_class:
+      gene_family:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --frequency
+  description: Represent samples based on resistance profile.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: "Name for the output EPS and PNG files. The number of\nfiles run will\
+    \ automatically be appended to the end of\nthe file name. (default=RGI_heatmap)"
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - -clus
+  - --cluster
+  description: "Option to use SciPy's hiearchical clustering algorithm\nto cluster\
+    \ rows (AMR genes) or columns (samples)."
+  args: !ChoiceFlagArg
+    choices: !!set
+      genes:
+      samples:
+      both:
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --display
+  description: "Specify display options for categories\n(deafult=plain)."
+  args: !ChoiceFlagArg
+    choices: !!set
+      plain:
+      fill:
+      text:
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: debug mode
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: rgi heatmap [-h] -i INPUT\n                   [-cat {drug_class,resistance_mechanism,gene_family}]\
+  \ [-f]\n                   [-o OUTPUT] [-clus {samples,genes,both}]\n          \
+  \         [-d {plain,fill,text}] [--debug]\n\nCreates a heatmap when given multiple\
+  \ RGI results.\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  -i INPUT, --input INPUT\n                        Directory containing\
+  \ the RGI .json files (REQUIRED)\n  -cat {drug_class,resistance_mechanism,gene_family},\
+  \ --category {drug_class,resistance_mechanism,gene_family}\n                   \
+  \     The option to organize resistance genes based on a\n                     \
+  \   category.\n  -f, --frequency       Represent samples based on resistance profile.\n\
+  \  -o OUTPUT, --output OUTPUT\n                        Name for the output EPS and\
+  \ PNG files. The number of\n                        files run will automatically\
+  \ be appended to the end of\n                        the file name. (default=RGI_heatmap)\n\
+  \  -clus {samples,genes,both}, --cluster {samples,genes,both}\n                \
+  \        Option to use SciPy's hiearchical clustering algorithm\n              \
+  \          to cluster rows (AMR genes) or columns (samples).\n  -d {plain,fill,text},\
+  \ --display {plain,fill,text}\n                        Specify display options for\
+  \ categories\n                        (deafult=plain).\n  --debug              \
+  \ debug mode\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/rgi:5.2.0--pyhdfd78af_0

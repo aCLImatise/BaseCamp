@@ -1,0 +1,75 @@
+!Command
+command:
+- varlociraptor
+- estimate
+- tmb
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: 'calls.bcf | vg2svg '
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --coding-genome-size
+  description: 'Size (in bases) of the covered coding genome. [default: 3e7]'
+  args: !SimpleFlagArg
+    name: coding-genome-size
+- !Flag
+  optional: true
+  synonyms:
+  - --plot-mode
+  description: 'How to plot (as stratified curve or as histogram). [possible values:
+    hist, curve]'
+  args: !SimpleFlagArg
+    name: mode
+- !Flag
+  optional: true
+  synonyms:
+  - --somatic-tumor-events
+  description: "...\nEvents to consider (e.g. SOMATIC_TUMOR). [default: SOMATIC_TUMOR]"
+  args: !SimpleFlagArg
+    name: somatic-tumor-events
+- !Flag
+  optional: true
+  synonyms:
+  - --tumor-sample
+  description: "Name of the tumor sample in the given VCF/BCF. [default: tumor]\n"
+  args: !SimpleFlagArg
+    name: tumor-sample
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Prints help information
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Prints version information
+  args: !EmptyFlagArg {}
+help_text: "varlociraptor-estimate-tmb 3.0.0\nEstimate tumor mutational burden. Takes\
+  \ Varlociraptor calls (must be annotated with e.g. snpEFF) from STDIN, prints TMB\n\
+  estimate in Vega-lite JSON format to STDOUT. It can be converted to an image via\
+  \ vega-lite-cli (see conda package).\n\nUSAGE:\n    varlociraptor estimate tmb --coding-genome-size\
+  \ 3e7 --somatic-tumor-events SOMATIC_TUMOR --tumor-sample tumor < calls.bcf | vg2svg\
+  \ > tmb.svg\n\nFLAGS:\n    -h, --help       Prints help information\n    -V, --version\
+  \    Prints version information\n\nOPTIONS:\n        --coding-genome-size <coding-genome-size>\
+  \           Size (in bases) of the covered coding genome. [default: 3e7]\n     \
+  \   --plot-mode <mode>\n            How to plot (as stratified curve or as histogram).\
+  \ [possible values: hist, curve]\n\n        --somatic-tumor-events <somatic-tumor-events>...\n\
+  \            Events to consider (e.g. SOMATIC_TUMOR). [default: SOMATIC_TUMOR]\n\
+  \n        --tumor-sample <tumor-sample>\n            Name of the tumor sample in\
+  \ the given VCF/BCF. [default: tumor]\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/varlociraptor:3.0.0--hd302352_0

@@ -1,0 +1,209 @@
+!Command
+command:
+- seqkit
+- translate
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --allow-unknown-codon
+  description: translate unknown code to 'X'. And you may not use flag --trim which
+    removes 'X'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -F
+  - --append-frame
+  description: append frame information to sequence ID
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --clean
+  description: change all STOP codon positions from the '*' character to 'X' (an unknown
+    residue)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --frame
+  description: 'frame(s) to translate, available value: 1, 2, 3, -1, -2, -3, and 6
+    for all six frames (default [1])'
+  args: !SimpleFlagArg
+    name: strings
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  - --init-codon-as-M
+  description: translate initial codon at beginning to 'M'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --list-transl-table
+  description: show details of translate table N, 0 for all (default -1)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  - --list-transl-table-with-amb-codons
+  description: show details of translate table N (including ambigugous codons), 0
+    for all.  (default -1)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -T
+  - --transl-table
+  description: translate table/genetic code, type 'seqkit translate --help' for more
+    details (default 1)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --trim
+  description: remove all 'X' and '*' characters from the right end of the translation
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --alphabet-guess-seq-length
+  description: length of sequence prefix of the first FASTA record based on which
+    seqkit guesses the sequence type (0 for whole seq) (default 10000)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --id-ncbi
+  description: FASTA head is NCBI-style, e.g. >gi|110645304|ref|NC_002516.2| Pseud...
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --id-regexp
+  description: regular expression for parsing ID (default "^(\\S+)\\s?")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --infile-list
+  description: file of input files list (one file per line), if given, they are appended
+    to files from cli arguments
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --line-width
+  description: line width when outputing FASTA format (0 for no wrap) (default 60)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out-file
+  description: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --quiet
+  description: be quiet and do not show extra information
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --seq-type
+  description: sequence type (dna|rna|protein|unlimit|auto) (for auto, it automatically
+    detect by the first sequence) (default "auto")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --threads
+  description: 'number of CPUs. (default value: 1 for single-CPU PC, 2 for others.
+    can also set with environment variable SEQKIT_THREADS) (default 2)'
+  args: !SimpleFlagArg
+    name: int
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: help for translate
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "translate DNA/RNA to protein sequence (supporting ambiguous bases)\n\n\
+  Note:\n\n  1. This command supports codons containing any ambiguous base.\n    \
+  \ Please switch on flag -L INT for details. e.g., for standard table:\n\n      \
+  \  ACN -> T\n        CCN -> P\n        CGN -> R\n        CTN -> L\n        GCN ->\
+  \ A\n        GGN -> G\n        GTN -> V\n        TCN -> S\n        \n        MGR\
+  \ -> R\n        YTR -> L\n\nTranslate Tables/Genetic Codes:\n\n    # https://www.ncbi.nlm.nih.gov/Taxonomy/taxonomyhome.html/index.cgi?chapter=tgencodes\n\
+  \n     1: The Standard Code\n     2: The Vertebrate Mitochondrial Code\n     3:\
+  \ The Yeast Mitochondrial Code\n     4: The Mold, Protozoan, and Coelenterate Mitochondrial\
+  \ Code and the Mycoplasma/Spiroplasma Code\n     5: The Invertebrate Mitochondrial\
+  \ Code\n     6: The Ciliate, Dasycladacean and Hexamita Nuclear Code\n     9: The\
+  \ Echinoderm and Flatworm Mitochondrial Code\n    10: The Euplotid Nuclear Code\n\
+  \    11: The Bacterial, Archaeal and Plant Plastid Code\n    12: The Alternative\
+  \ Yeast Nuclear Code\n    13: The Ascidian Mitochondrial Code\n    14: The Alternative\
+  \ Flatworm Mitochondrial Code\n    16: Chlorophycean Mitochondrial Code\n    21:\
+  \ Trematode Mitochondrial Code\n    22: Scenedesmus obliquus Mitochondrial Code\n\
+  \    23: Thraustochytrium Mitochondrial Code\n    24: Pterobranchia Mitochondrial\
+  \ Code\n    25: Candidate Division SR1 and Gracilibacteria Code\n    26: Pachysolen\
+  \ tannophilus Nuclear Code\n    27: Karyorelict Nuclear\n    28: Condylostoma Nuclear\n\
+  \    29: Mesodinium Nuclear\n    30: Peritrich Nuclear\n    31: Blastocrithidia\
+  \ Nuclear\n\nUsage:\n  seqkit translate [flags]\n\nFlags:\n  -x, --allow-unknown-codon\
+  \                     translate unknown code to 'X'. And you may not use flag --trim\
+  \ which removes 'X'\n  -F, --append-frame                            append frame\
+  \ information to sequence ID\n      --clean                                   change\
+  \ all STOP codon positions from the '*' character to 'X' (an unknown residue)\n\
+  \  -f, --frame strings                           frame(s) to translate, available\
+  \ value: 1, 2, 3, -1, -2, -3, and 6 for all six frames (default [1])\n  -h, --help\
+  \                                    help for translate\n  -M, --init-codon-as-M\
+  \                         translate initial codon at beginning to 'M'\n  -l, --list-transl-table\
+  \ int                   show details of translate table N, 0 for all (default -1)\n\
+  \  -L, --list-transl-table-with-amb-codons int   show details of translate table\
+  \ N (including ambigugous codons), 0 for all.  (default -1)\n  -T, --transl-table\
+  \ int                        translate table/genetic code, type 'seqkit translate\
+  \ --help' for more details (default 1)\n      --trim                           \
+  \         remove all 'X' and '*' characters from the right end of the translation\n\
+  \nGlobal Flags:\n      --alphabet-guess-seq-length int   length of sequence prefix\
+  \ of the first FASTA record based on which seqkit guesses the sequence type (0 for\
+  \ whole seq) (default 10000)\n      --id-ncbi                         FASTA head\
+  \ is NCBI-style, e.g. >gi|110645304|ref|NC_002516.2| Pseud...\n      --id-regexp\
+  \ string                regular expression for parsing ID (default \"^(\\\\S+)\\\
+  \\s?\")\n      --infile-list string              file of input files list (one file\
+  \ per line), if given, they are appended to files from cli arguments\n  -w, --line-width\
+  \ int                  line width when outputing FASTA format (0 for no wrap) (default\
+  \ 60)\n  -o, --out-file string                 out file (\"-\" for stdout, suffix\
+  \ .gz for gzipped out) (default \"-\")\n      --quiet                          \
+  \ be quiet and do not show extra information\n  -t, --seq-type string          \
+  \       sequence type (dna|rna|protein|unlimit|auto) (for auto, it automatically\
+  \ detect by the first sequence) (default \"auto\")\n  -j, --threads int        \
+  \             number of CPUs. (default value: 1 for single-CPU PC, 2 for others.\
+  \ can also set with environment variable SEQKIT_THREADS) (default 2)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/seqkit:0.16.0--h9ee0642_0

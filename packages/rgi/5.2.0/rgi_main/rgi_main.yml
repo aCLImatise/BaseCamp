@@ -1,0 +1,151 @@
+!Command
+command:
+- rgi
+- main
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: hits
+  description: --exclude_nudge       exclude hits nudged from loose to strict hits
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input_sequence
+  description: "input file must be in either FASTA (contig and\nprotein) or gzip format!\
+    \ e.g myFile.fasta,\nmyFasta.fasta.gz"
+  args: !SimpleFlagArg
+    name: INPUT_SEQUENCE
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output_file
+  description: output folder and base filename
+  args: !SimpleFlagArg
+    name: OUTPUT_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --input_type
+  description: specify data input type (default = contig)
+  args: !ChoiceFlagArg
+    choices: !!set
+      protein:
+      contig:
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --alignment_tool
+  description: specify alignment tool (default = BLAST)
+  args: !ChoiceFlagArg
+    choices: !!set
+      BLAST:
+      DIAMOND:
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --num_threads
+  description: "number of threads (CPUs) to use in the BLAST search\n(default=2)"
+  args: !SimpleFlagArg
+    name: THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - --include_loose
+  description: include loose hits in addition to strict and perfect
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --local
+  description: "use local database (default: uses database in\nexecutable directory)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --clean
+  description: removes temporary files
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: debug mode
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --low_quality
+  description: use for short contigs to predict partial genes
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --data
+  description: specify a data-type (default = NA)
+  args: !ChoiceFlagArg
+    choices: !!set
+      plasmid:
+      NA:
+      chromosome:
+      wgs:
+- !Flag
+  optional: true
+  synonyms:
+  - --split_prodigal_jobs
+  description: "run multiple prodigal jobs simultaneously for contigs\nin a fasta\
+    \ file\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: prints software version number
+  args: !EmptyFlagArg {}
+help_text: "usage: rgi main [-h] -i INPUT_SEQUENCE -o OUTPUT_FILE [-t {contig,protein}]\n\
+  \                [-a {DIAMOND,BLAST}] [-n THREADS] [--include_loose]\n         \
+  \       [--exclude_nudge] [--local] [--clean] [--debug]\n                [--low_quality]\
+  \ [-d {wgs,plasmid,chromosome,NA}] [-v]\n                [--split_prodigal_jobs]\n\
+  \nResistance Gene Identifier - 5.2.0 - Main\n\noptional arguments:\n  -h, --help\
+  \            show this help message and exit\n  -i INPUT_SEQUENCE, --input_sequence\
+  \ INPUT_SEQUENCE\n                        input file must be in either FASTA (contig\
+  \ and\n                        protein) or gzip format! e.g myFile.fasta,\n    \
+  \                    myFasta.fasta.gz\n  -o OUTPUT_FILE, --output_file OUTPUT_FILE\n\
+  \                        output folder and base filename\n  -t {contig,protein},\
+  \ --input_type {contig,protein}\n                        specify data input type\
+  \ (default = contig)\n  -a {DIAMOND,BLAST}, --alignment_tool {DIAMOND,BLAST}\n \
+  \                       specify alignment tool (default = BLAST)\n  -n THREADS,\
+  \ --num_threads THREADS\n                        number of threads (CPUs) to use\
+  \ in the BLAST search\n                        (default=2)\n  --include_loose  \
+  \     include loose hits in addition to strict and perfect\n                   \
+  \     hits\n  --exclude_nudge       exclude hits nudged from loose to strict hits\n\
+  \  --local               use local database (default: uses database in\n       \
+  \                 executable directory)\n  --clean               removes temporary\
+  \ files\n  --debug               debug mode\n  --low_quality         use for short\
+  \ contigs to predict partial genes\n  -d {wgs,plasmid,chromosome,NA}, --data {wgs,plasmid,chromosome,NA}\n\
+  \                        specify a data-type (default = NA)\n  -v, --version   \
+  \      prints software version number\n  --split_prodigal_jobs\n               \
+  \         run multiple prodigal jobs simultaneously for contigs\n              \
+  \          in a fasta file\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/rgi:5.2.0--pyhdfd78af_0

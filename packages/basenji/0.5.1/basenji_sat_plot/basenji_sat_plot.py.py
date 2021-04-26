@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Int, Boolean, Directory, String, File
+
+Basenji_Sat_Plot_Py_V0_1_0 = CommandToolBuilder(tool="basenji_sat_plot.py", base_command=["basenji_sat_plot.py"], inputs=[ToolInput(tag="in_enrich_most_default", input_type=Int(optional=True), prefix="-a", doc=InputDocumentation(doc="Enrich for the most active top % of sequences [Default:\n1]")), ToolInput(tag="in_figure_width", input_type=Int(optional=True), prefix="-f", doc=InputDocumentation(doc="Figure width [Default: 20]")), ToolInput(tag="in_draw_sequence_logo", input_type=Boolean(optional=True), prefix="-g", doc=InputDocumentation(doc="Draw a sequence logo for the gain score, too [Default:\nFalse]")), ToolInput(tag="in_length_centered_sequence", input_type=Int(optional=True), prefix="-l", doc=InputDocumentation(doc="Length of centered sequence to mutate [Default: 300]")), ToolInput(tag="in_minimum_heatmap_limit", input_type=Int(optional=True), prefix="-m", doc=InputDocumentation(doc="Minimum heatmap limit [Default: 0.05]")), ToolInput(tag="in_output_directory", input_type=Directory(optional=True), prefix="-o", doc=InputDocumentation(doc="Output directory [Default: sat_plot]")), ToolInput(tag="in_png", input_type=Boolean(optional=True), prefix="--png", doc=InputDocumentation(doc="Write PNG as opposed to PDF [Default: False]")), ToolInput(tag="in_random_number_generator", input_type=Int(optional=True), prefix="-r", doc=InputDocumentation(doc="Random number generator seed [Default: 1]")), ToolInput(tag="in_sample_n_sequences", input_type=String(optional=True), prefix="-s", doc=InputDocumentation(doc="Sample N sequences from the set [Default:none]")), ToolInput(tag="in_stat", input_type=String(optional=True), prefix="--stat", doc=InputDocumentation(doc="SAD stat to display [Default: sum]")), ToolInput(tag="in_file_specifying_indexes", input_type=File(optional=True), prefix="-t", doc=InputDocumentation(doc="File specifying target indexes and labels in table\nformat\n")), ToolInput(tag="in_scores_file", input_type=String(), position=0, doc=InputDocumentation(doc=""))], outputs=[ToolOutput(tag="out_output_directory", output_type=Directory(optional=True), selector=InputSelector(input_to_select="in_output_directory", type_hint=File()), doc=OutputDocumentation(doc="Output directory [Default: sat_plot]"))], container="quay.io/biocontainers/basenji:0.5.1--pyhdfd78af_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Basenji_Sat_Plot_Py_V0_1_0().translate("wdl")
+

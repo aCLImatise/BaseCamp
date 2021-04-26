@@ -1,0 +1,139 @@
+!Command
+command:
+- last-split5
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: LAST-alignments.maf
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --format
+  description: 'output format: MAF, MAF+ (default: depends on input)'
+  args: !SimpleFlagArg
+    name: FMT
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --genome
+  description: lastdb genome name
+  args: !SimpleFlagArg
+    name: NAME
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --direction
+  description: 'RNA direction: 0=reverse, 1=forward, 2=mixed (default=1)'
+  args: !SimpleFlagArg
+    name: D
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --cis
+  description: cis-splice probability per base (default=0.004)
+  args: !SimpleFlagArg
+    name: PROB
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --trans
+  description: trans-splice probability per base (default=1e-05)
+  args: !SimpleFlagArg
+    name: PROB
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  - --mean
+  description: mean of ln[intron length] (default=7)
+  args: !SimpleFlagArg
+    name: MEAN
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --sdev
+  description: standard deviation of ln[intron length] (default=1.7)
+  args: !SimpleFlagArg
+    name: SDEV
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --mismap
+  description: maximum mismap probability (default=1)
+  args: !SimpleFlagArg
+    name: PROB
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --score
+  description: minimum alignment score (default=e OR e+t*ln[100])
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --no-split
+  description: write original, not split, alignments
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --bytes
+  description: maximum memory (default=8T for split, 8G for spliced)
+  args: !SimpleFlagArg
+    name: B
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: be verbose
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: show version information and exit
+  args: !EmptyFlagArg {}
+help_text: "Usage: last-split5 [options] LAST-alignments.maf\n\nRead alignments of\
+  \ query sequences to a genome, and estimate the genomic\nsource of each part of\
+  \ each query, allowing different parts of one query to\ncome from different parts\
+  \ of the genome.\n\nOptions:\n -h, --help         show this help message and exit\n\
+  \ -f, --format=FMT   output format: MAF, MAF+ (default: depends on input)\n -g,\
+  \ --genome=NAME  lastdb genome name\n -d, --direction=D  RNA direction: 0=reverse,\
+  \ 1=forward, 2=mixed (default=1)\n -c, --cis=PROB     cis-splice probability per\
+  \ base (default=0.004)\n -t, --trans=PROB   trans-splice probability per base (default=1e-05)\n\
+  \ -M, --mean=MEAN    mean of ln[intron length] (default=7)\n -S, --sdev=SDEV   \
+  \ standard deviation of ln[intron length] (default=1.7)\n -m, --mismap=PROB  maximum\
+  \ mismap probability (default=1)\n -s, --score=INT    minimum alignment score (default=e\
+  \ OR e+t*ln[100])\n -n, --no-split     write original, not split, alignments\n -b,\
+  \ --bytes=B      maximum memory (default=8T for split, 8G for spliced)\n -v, --verbose\
+  \      be verbose\n -V, --version      show version information and exit\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/last:1219--h2e03b76_0

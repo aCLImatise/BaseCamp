@@ -1,0 +1,249 @@
+!Command
+command:
+- cooltools
+- compute-saddle
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: COOL_PATH
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: TRACK_PATH
+  description: ''
+- !Positional
+  optional: false
+  position: 2
+  name: EXPECTED_PATH
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --contact-type
+  description: "[cis|trans]  Type of the contacts to aggregate  [default:\ncis]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min-dist
+  description: "Minimal distance between bins to consider,\nbp. If negative, removesthe\
+    \ first two\ndiagonals of the data. Ignored with\n--contact-type trans.  [default:\
+    \ -1]"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --max-dist
+  description: "Maximal distance between bins to consider,\nbp. Ignored, if negative.\
+    \ Ignored with\n--contact-type trans.  [default: -1]"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --n-bins
+  description: "Number of bins for digitizing track values.\n[default: 50]"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --quantiles
+  description: "Bin the signal track into quantiles rather\nthan by value."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --range
+  description: "Low and high values used for binning genome-\nwide track values, e.g.\
+    \ if `range`=(-0.05,\n0.05), `n-bins` equidistant bins would be\ngenerated. Use\
+    \ to prevent the extreme track\nvalues from exploding the bin range and to\nensure\
+    \ consistent bins across several runs\nof `compute_saddle` command using different\n\
+    track files."
+  args: !SimpleFlagArg
+    name: FLOAT...
+- !Flag
+  optional: true
+  synonyms:
+  - --qrange
+  description: "...       The fraction of the genome-wide range of the\ntrack values\
+    \ used to generate bins. E.g., if\n`qrange`=(0.02, 0.98) the lower bin would\n\
+    start at the 2nd percentile and the upper\nbin would end at the 98th percentile\
+    \ of the\ngenome-wide signal. Use to prevent the\nextreme track values from exploding\
+    \ the bin\nrange.  [default: 0.0, 1.0]"
+  args: !SimpleFlagArg
+    name: FLOAT FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --weight-name
+  description: "Use balancing weight with this name.\n[default: weight]"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --strength
+  - --no-strength
+  description: "Compute and save compartment 'saddle\nstrength' profile"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --regions
+  description: "Path to a BED file containing genomic\nregions for which saddleplot\
+    \ will be\ncalculated. Region names can be provided in\na 4th column and should\
+    \ match regions and\ntheir names in expected."
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out-prefix
+  description: "Dump 'saddledata', 'binedges' and 'hist'\narrays in a numpy-specific\
+    \ .npz container.\nUse numpy.load to load these arrays into a\ndict-like object.\
+    \ The digitized signal\nvalues are saved to a bedGraph-style TSV.\n[required]"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --fig
+  description: "[png|jpg|svg|pdf|ps|eps]  Generate a figure and save to a file of\
+    \ the\nspecified format. If not specified - no\nimage is generated. Repeat for\
+    \ multiple\noutput formats."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --scale
+  description: '[linear|log]            Value scale for the heatmap  [default: log]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --cmap
+  description: "Name of matplotlib colormap  [default:\ncoolwarm]"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --vmin
+  description: "Low value of the saddleplot colorbar. Note:\nvalue in original units\
+    \ irrespective of used\nscale, and therefore should be positive for\nboth vmin\
+    \ and vmax."
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --vmax
+  description: High value of the saddleplot colorbar
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --hist-color
+  description: Face color of histogram bar chart
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: Enable verbose output
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: cooltools compute-saddle [OPTIONS] COOL_PATH TRACK_PATH EXPECTED_PATH\n\
+  \n  Calculate saddle statistics and generate saddle plots for an arbitrary\n  signal\
+  \ track on the genomic bins of a contact matrix.\n\n  COOL_PATH : The paths to a\
+  \ .cool file with a balanced Hi-C map. Use the\n  '::' syntax to specify a group\
+  \ path in a multicooler file.\n\n  TRACK_PATH : The path to bedGraph-like file with\
+  \ a binned compartment\n  track (eigenvector), including a header. Use the '::'\
+  \ syntax to specify a\n  column name.\n\n  EXPECTED_PATH : The paths to a tsv-like\
+  \ file with expected signal,\n  including a header. Use the '::' syntax to specify\
+  \ a column name.\n\n  Analysis will be performed for chromosomes referred to in\
+  \ TRACK_PATH, and\n  therefore these chromosomes must be a subset of chromosomes\
+  \ referred to in\n  COOL_PATH and EXPECTED_PATH.\n\n  COOL_PATH, TRACK_PATH and\
+  \ EXPECTED_PATH must be binned at the same\n  resolution (expect for  EXPECTED_PATH\
+  \ in case of trans contact type).\n\n  EXPECTED_PATH must contain at least the following\
+  \ columns for cis\n  contacts: 'chrom', 'diag', 'n_valid', value_name and the following\
+  \ columns\n  for trans contacts: 'chrom1', 'chrom2', 'n_valid', value_name value_name\n\
+  \  is controlled using options. Header must be present in a file.\n\nOptions:\n\
+  \  -t, --contact-type [cis|trans]  Type of the contacts to aggregate  [default:\n\
+  \                                  cis]\n\n  --min-dist INTEGER              Minimal\
+  \ distance between bins to consider,\n                                  bp. If negative,\
+  \ removesthe first two\n                                  diagonals of the data.\
+  \ Ignored with\n                                  --contact-type trans.  [default:\
+  \ -1]\n\n  --max-dist INTEGER              Maximal distance between bins to consider,\n\
+  \                                  bp. Ignored, if negative. Ignored with\n    \
+  \                              --contact-type trans.  [default: -1]\n\n  -n, --n-bins\
+  \ INTEGER            Number of bins for digitizing track values.\n             \
+  \                     [default: 50]\n\n  --quantiles                     Bin the\
+  \ signal track into quantiles rather\n                                  than by\
+  \ value.\n\n  --range FLOAT...                Low and high values used for binning\
+  \ genome-\n                                  wide track values, e.g. if `range`=(-0.05,\n\
+  \                                  0.05), `n-bins` equidistant bins would be\n \
+  \                                 generated. Use to prevent the extreme track\n\
+  \                                  values from exploding the bin range and to\n\
+  \                                  ensure consistent bins across several runs\n\
+  \                                  of `compute_saddle` command using different\n\
+  \                                  track files.\n\n  --qrange <FLOAT FLOAT>... \
+  \      The fraction of the genome-wide range of the\n                          \
+  \        track values used to generate bins. E.g., if\n                        \
+  \          `qrange`=(0.02, 0.98) the lower bin would\n                         \
+  \         start at the 2nd percentile and the upper\n                          \
+  \        bin would end at the 98th percentile of the\n                         \
+  \         genome-wide signal. Use to prevent the\n                             \
+  \     extreme track values from exploding the bin\n                            \
+  \      range.  [default: 0.0, 1.0]\n\n  --weight-name TEXT              Use balancing\
+  \ weight with this name.\n                                  [default: weight]\n\n\
+  \  --strength / --no-strength      Compute and save compartment 'saddle\n      \
+  \                            strength' profile\n\n  --regions PATH             \
+  \     Path to a BED file containing genomic\n                                  regions\
+  \ for which saddleplot will be\n                                  calculated. Region\
+  \ names can be provided in\n                                  a 4th column and should\
+  \ match regions and\n                                  their names in expected.\n\
+  \n  -o, --out-prefix TEXT           Dump 'saddledata', 'binedges' and 'hist'\n \
+  \                                 arrays in a numpy-specific .npz container.\n \
+  \                                 Use numpy.load to load these arrays into a\n \
+  \                                 dict-like object. The digitized signal\n     \
+  \                             values are saved to a bedGraph-style TSV.\n      \
+  \                            [required]\n\n  --fig [png|jpg|svg|pdf|ps|eps]  Generate\
+  \ a figure and save to a file of the\n                                  specified\
+  \ format. If not specified - no\n                                  image is generated.\
+  \ Repeat for multiple\n                                  output formats.\n\n  --scale\
+  \ [linear|log]            Value scale for the heatmap  [default: log]\n  --cmap\
+  \ TEXT                     Name of matplotlib colormap  [default:\n            \
+  \                      coolwarm]\n\n  --vmin FLOAT                    Low value\
+  \ of the saddleplot colorbar. Note:\n                                  value in\
+  \ original units irrespective of used\n                                  scale,\
+  \ and therefore should be positive for\n                                  both vmin\
+  \ and vmax.\n\n  --vmax FLOAT                    High value of the saddleplot colorbar\n\
+  \  --hist-color TEXT               Face color of histogram bar chart\n  -v, --verbose\
+  \                   Enable verbose output\n  -h, --help                      Show\
+  \ this message and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/cooltools:0.4.0--py39hcbe4a3b_0

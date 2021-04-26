@@ -1,0 +1,113 @@
+!Command
+command:
+- agat_sp_filter_gene_by_length.pl
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: agat_sp_filter_gene_by_length.pl
+  description: 'Description:'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: 'Select genes longer than 200bp:'
+  args: !SimpleFlagArg
+    name: result.gff
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --reffile
+  - --gff
+  - -ref
+  description: Input GFF3 file that will be read
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --size
+  description: Integer - Gene size in pb [Default 100]
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --test
+  description: "Test to apply (>, <, =, >= or <=). If you use one of these two\ncharacters\
+    \ >, <, please do not forget to quote your parameter\nlike that \"<=\". Else your\
+    \ terminal will complain. [Default \"=\"]"
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: "Output GFF file. If no output file is specified, the output will\n\
+    be written to STDOUT."
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: Verbose option for debugging purpose.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Display this helpful text.
+  args: !SimpleFlagArg
+    name: or
+usage_flag:
+version_flag:
+help_text: "\n ------------------------------------------------------------------------------\n\
+  |   Another GFF Analysis Toolkit (AGAT) - Version: v0.6.0                      |\n\
+  |   https://github.com/NBISweden/AGAT                                          |\n\
+  |   National Bioinformatics Infrastructure Sweden (NBIS) - www.nbis.se         |\n\
+  \ ------------------------------------------------------------------------------\n\
+  \n\nName:\n    agat_sp_filter_gene_by_length.pl\n\nDescription:\n    The script\
+  \ aims to filter level1 feature (e.g. gene, match, etc) by\n    length. It will\
+  \ create two files. one with the feature passing the\n    length filter, the other\
+  \ one with the remaining features. If the level1\n    feature has exon features,\
+  \ the size is computed by concatenating the\n    exon together. If the level1 feature\
+  \ has several level2 features (e.g.\n    mRNA) we apply the test on the longest\
+  \ one (the longest concatenated\n    exon set).\n\n    Some examples: Select L1\
+  \ feature shorter than 1000bp:\n    agat_sp_filter_gene_by_length.pl --gff infile.gff\
+  \ --size 1000 --test \"<\"\n    -o result.gff Select genes longer than 200bp:\n\
+  \    agat_sp_filter_gene_by_length.pl --gff infile.gff --size 200 --test \">\"\n\
+  \    -o result.gff\n\nUsage:\n        agat_sp_filter_gene_by_length.pl --gff infile.gff\
+  \ --test \">=\" --nb 10 [ --output outfile ]\n        agat_sp_filter_gene_by_length.pl\
+  \ --help\n\nOptions:\n    -f, --reffile, --gff or -ref\n            Input GFF3 file\
+  \ that will be read\n\n    -s or --size\n            Integer - Gene size in pb [Default\
+  \ 100]\n\n    -t or --test\n            Test to apply (>, <, =, >= or <=). If you\
+  \ use one of these two\n            characters >, <, please do not forget to quote\
+  \ your parameter\n            like that \"<=\". Else your terminal will complain.\
+  \ [Default \"=\"]\n\n    -o or --output\n            Output GFF file. If no output\
+  \ file is specified, the output will\n            be written to STDOUT.\n\n    -v\
+  \      Verbose option for debugging purpose.\n\n    -h or --help\n            Display\
+  \ this helpful text.\n\nFeedback:\n  Did you find a bug?:\n    Do not hesitate to\
+  \ report bugs to help us keep track of the bugs and\n    their resolution. Please\
+  \ use the GitHub issue tracking system available\n    at this address:\n\n     \
+  \           https://github.com/NBISweden/AGAT/issues\n\n     Ensure that the bug\
+  \ was not already reported by searching under Issues.\n     If you're unable to\
+  \ find an (open) issue addressing the problem, open a new one.\n     Try as much\
+  \ as possible to include in the issue when relevant:\n     - a clear description,\n\
+  \     - as much relevant information as possible,\n     - the command used,\n  \
+  \   - a data sample,\n     - an explanation of the expected behaviour that is not\
+  \ occurring.\n\n  Do you want to contribute?:\n    You are very welcome, visit this\
+  \ address for the Contributing\n    guidelines:\n    https://github.com/NBISweden/AGAT/blob/master/CONTRIBUTING.md\n\
+  \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/agat:0.6.1--pl5262r35hdfd78af_0

@@ -1,0 +1,77 @@
+!Command
+command:
+- cbTool
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: mtx2tsv
+  description: '- convert matrix market to .tsv.gz'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --debug
+  description: show debug messages
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --fixDots
+  description: "for reorder and metaCat: try to fix R's mangling of various\nspecial\
+    \ chars to '.' in the cell IDs"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --order
+  description: "only for reorder and metaCat: new order of fields, comma-\nsep, e.g.\
+    \ 'disease,age'. Do not include cellId, it's always\nthe first field by definition.\
+    \ Fields that are in the file\nbut not specified here will be appended as the\
+    \ last\ncolumns."
+  args: !SimpleFlagArg
+    name: ORDER
+- !Flag
+  optional: true
+  synonyms:
+  - --del
+  description: 'only for reorder and metaCat: names of fields to remove'
+  args: !SimpleFlagArg
+    name: DELFIELDS
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: cbTool [options] command filenames - convert various single-cell\
+  \ related files\n\nCommand is one of:\n    mtx2tsv   - convert matrix market to\
+  \ .tsv.gz\n    matCat - merge expression matrices with one line per gene into a\
+  \ big matrix.\n        Matrices must have identical genes in the same order and\
+  \ the same number of\n        lines. Handles .csv files, otherwise defaults to tab-sep\
+  \ input. gzip OK.\n    metaCat - concat/join meta tables on the first (cell ID)\
+  \ field or reorder their fields\n    reorder - reorder the meta fields\n\nExamples:\n\
+  \    - cbTool mtx2tsv matrix.mtx genes.tsv barcodes.tsv exprMatrix.tsv.gz - convert\
+  \ .mtx to .tsv.gz file\n    - cbTool matCat mat1.tsv.gz mat2.tsv.gz exprMatrix.tsv.gz\
+  \ - concatenate expression matrices\n    - cbTool metaCat meta.tsv seurat/meta.tsv\
+  \ scanpy/meta.tsv newMeta.tsv - merge meta matrices\n    - cbTool reorder meta.tsv\
+  \ meta.newOrder.tsv --delete samId --order=cluster,cellType,age - reorder meta fields\n\
+  \    \n\nOptions:\n  -h, --help       show this help message and exit\n  -d, --debug\
+  \      show debug messages\n  --fixDots        for reorder and metaCat: try to fix\
+  \ R's mangling of various\n                   special chars to '.' in the cell IDs\n\
+  \  --order=ORDER    only for reorder and metaCat: new order of fields, comma-\n\
+  \                   sep, e.g. 'disease,age'. Do not include cellId, it's always\n\
+  \                   the first field by definition. Fields that are in the file\n\
+  \                   but not specified here will be appended as the last\n      \
+  \             columns.\n  --del=DELFIELDS  only for reorder and metaCat: names of\
+  \ fields to remove\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/ucsc-cell-browser:1.0.0--pyhdfd78af_0

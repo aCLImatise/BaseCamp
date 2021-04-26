@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import String, Boolean
+
+Parallel_Fastq_V0_1_0 = CommandToolBuilder(tool="parallel_fastq", base_command=["parallel-fastq"], inputs=[ToolInput(tag="in_run_jobs_parallel", input_type=String(optional=True), prefix="-j", doc=InputDocumentation(doc="Run n jobs in parallel")), ToolInput(tag="in_keep_same_order", input_type=Boolean(optional=True), prefix="-k", doc=InputDocumentation(doc="Keep same order")), ToolInput(tag="in_multiple_arguments_context", input_type=Boolean(optional=True), prefix="-X", doc=InputDocumentation(doc="Multiple arguments with context replace")), ToolInput(tag="in_col_sep", input_type=String(optional=True), prefix="--colsep", doc=InputDocumentation(doc="Split input on regexp for positional replacements")), ToolInput(tag="in_example_fooserverexamplecom", input_type=String(optional=True), prefix="-S", doc=InputDocumentation(doc="Example: foo@server.example.com")), ToolInput(tag="in_slf", input_type=Boolean(optional=True), prefix="--slf", doc=InputDocumentation(doc="..        Use ~/.parallel/sshloginfile as the list of sshlogins")), ToolInput(tag="in_trc", input_type=String(optional=True), prefix="--trc", doc=InputDocumentation(doc=".bar    Shorthand for --transfer --return {}.bar --cleanup")), ToolInput(tag="in_on_all", input_type=Boolean(optional=True), prefix="--onall", doc=InputDocumentation(doc="Run the given command with argument on all sshlogins")), ToolInput(tag="in_non_all", input_type=Boolean(optional=True), prefix="--nonall", doc=InputDocumentation(doc="Run the given command with no arguments on all sshlogins")), ToolInput(tag="in_pipe", input_type=Boolean(optional=True), prefix="--pipe", doc=InputDocumentation(doc="Split stdin (standard input) to multiple jobs.")), ToolInput(tag="in_rec_end", input_type=String(optional=True), prefix="--recend", doc=InputDocumentation(doc="Record end separator for --pipe.")), ToolInput(tag="in_rec_start", input_type=String(optional=True), prefix="--recstart", doc=InputDocumentation(doc="Record start separator for --pipe.")), ToolInput(tag="in_parallel", input_type=String(), position=0, doc=InputDocumentation(doc="")), ToolInput(tag="in_command", input_type=String(optional=True), position=1, doc=InputDocumentation(doc="")), ToolInput(tag="in_arguments", input_type=String(optional=True), position=2, doc=InputDocumentation(doc=""))], outputs=[], container="quay.io/biocontainers/last:1219--h2e03b76_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Parallel_Fastq_V0_1_0().translate("wdl")
+

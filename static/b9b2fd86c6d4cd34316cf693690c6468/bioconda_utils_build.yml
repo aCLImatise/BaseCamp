@@ -1,0 +1,299 @@
+!Command
+command:
+- bioconda-utils
+- build
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: recipe_folder
+  description: "Path to folder containing recipes (default: recipes/)\n(default: -)"
+- !Positional
+  optional: false
+  position: 1
+  name: config
+  description: "Path to Bioconda config (default: config.yml)\n(default: -)"
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --packages
+  description: "Glob for package[s] to build. Default is to build all\npackages. Can\
+    \ be specified more than once (default:\n'*')"
+  args: !RepeatFlagArg
+    name: PACKAGES
+- !Flag
+  optional: true
+  synonyms:
+  - --git-range
+  description: "Git range (e.g. commits or something like \"master\nHEAD\" to check\
+    \ commits in HEAD vs master, or just\n\"HEAD\" to include uncommitted changes).\
+    \ All recipes\nmodified within this range will be built if not\npresent in the\
+    \ channel. (default: -)"
+  args: !RepeatFlagArg
+    name: GIT_RANGE
+- !Flag
+  optional: true
+  synonyms:
+  - --testonly
+  description: 'Test packages instead of building (default: False)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --force
+  description: "Force building the recipe even if it already exists in\nthe bioconda\
+    \ channel. If --force is specified, --git-\nrange is ignored and only those packages\
+    \ matching\n--packages globs will be built. (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --docker
+  description: 'Build packages in docker container. (default: -)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --mulled-test
+  description: "Run a mulled-build test on the built package (default:\nFalse)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --build_script_template
+  description: "Filename to optionally replace build script template\nused by the\
+    \ Docker container. By default use\ndocker_utils.BUILD_SCRIPT_TEMPLATE. Only used\
+    \ if\n--docker is True. (default: -)"
+  args: !SimpleFlagArg
+    name: BUILD_SCRIPT_TEMPLATE
+- !Flag
+  optional: true
+  synonyms:
+  - --pkg_dir
+  description: "Specifies the directory to which container-built\npackages should\
+    \ be stored on the host. Default is to\nuse the host's conda-bld dir. If --docker\
+    \ is not\nspecified, then this argument is ignored. (default: -)"
+  args: !SimpleFlagArg
+    name: PKG_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --anaconda-upload
+  description: "After building recipes, upload them to Anaconda. This\nrequires $ANACONDA_TOKEN\
+    \ to be set. (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --mulled-upload-target
+  description: "Provide a quay.io target to push mulled docker images\nto. (default:\
+    \ -)"
+  args: !SimpleFlagArg
+    name: MULLED_UPLOAD_TARGET
+- !Flag
+  optional: true
+  synonyms:
+  - --build-image
+  description: "Build temporary docker build image with conda/conda-\nbuild version\
+    \ matching local versions (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --keep-image
+  description: "After building recipes, the created Docker image is\nremoved by default\
+    \ to save disk space. Use this\nargument to disable this behavior. (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --lint
+  - --prelint
+  description: "Just before each recipe, apply the linting functions\nto it. This\
+    \ can be used as an alternative to linting\nall recipes before any building takes\
+    \ place with the\n`bioconda-utils lint` command. (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --lint-exclude
+  description: "Exclude this linting function. Can be used multiple\ntimes. (default:\
+    \ -)"
+  args: !RepeatFlagArg
+    name: LINT_EXCLUDE
+- !Flag
+  optional: true
+  synonyms:
+  - --check-channels
+  description: "Channels to check recipes against before building. Any\nrecipe already\
+    \ present in one of these channels will\nbe skipped. The default is the first\
+    \ two channels\nspecified in the config file. Note that this is\nignored if you\
+    \ specify --git-range. (default: -)"
+  args: !RepeatFlagArg
+    name: CHECK_CHANNELS
+- !Flag
+  optional: true
+  synonyms:
+  - --n-workers
+  description: "The number of parallel workers that are in use. This\nis intended\
+    \ for use in cases such as the \"bulk\"\nbranch, where there are multiple parallel\
+    \ workers\nbuilding and uploading recipes. In essence, this\ncauses bioconda-utils\
+    \ to process every Nth sub-DAG,\nwhere N is the value you give to this option.\
+    \ The\ndefault is 1, which is intended for cases where there\nare NOT parallel\
+    \ workers (i.e., the majority of\ncases). This should generally NOT be used in\n\
+    conjunctions with the --packages or --git-range\noptions! (default: 1)"
+  args: !SimpleFlagArg
+    name: N_WORKERS
+- !Flag
+  optional: true
+  synonyms:
+  - --worker-offset
+  description: "This is only used if --nWorkers is >1. In that case,\nthen each instance\
+    \ of bioconda-utils will process\nevery Nth sub-DAG. This option gives the 0-based\n\
+    offset for that. For example, if \"--n-workers 5\n--worker-offset 0\" is used,\
+    \ then this instance of\nbioconda-utils will process the 1st, 6th, 11th, etc.\n\
+    sub-DAGs. Equivalently, using \"--n-workers 5 --worker-\noffset 1\" will result\
+    \ in sub-DAGs 2, 7, 12, etc. being\nprocessed. If you use more than one worker,\
+    \ then make\nsure to give each a different offset! (default: 0)"
+  args: !SimpleFlagArg
+    name: WORKER_OFFSET
+- !Flag
+  optional: true
+  synonyms:
+  - --keep-old-work
+  description: "Do not remove anything from environment, even after\nsuccessful build\
+    \ and test. (default: False)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --loglevel
+  description: "Set logging level (debug, info, warning, error,\ncritical) (default:\
+    \ 'info')"
+  args: !SimpleFlagArg
+    name: LOGLEVEL
+- !Flag
+  optional: true
+  synonyms:
+  - --logfile
+  description: 'Write log to file (default: -)'
+  args: !SimpleFlagArg
+    name: LOGFILE
+- !Flag
+  optional: true
+  synonyms:
+  - --logfile-level
+  description: "Log level for log file (default: 'debug')"
+  args: !SimpleFlagArg
+    name: LOGFILE_LEVEL
+- !Flag
+  optional: true
+  synonyms:
+  - --log-command-max-lines
+  description: "Limit lines emitted for commands executed (default: -)\n"
+  args: !SimpleFlagArg
+    name: LOG_COMMAND_MAX_LINES
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: bioconda-utils build [-h] [--packages PACKAGES [PACKAGES ...]]\n\
+  \                            [--git-range GIT_RANGE [GIT_RANGE ...]]\n         \
+  \                   [--testonly] [--force] [--docker] [--mulled-test]\n        \
+  \                    [--build_script_template BUILD_SCRIPT_TEMPLATE]\n         \
+  \                   [--pkg_dir PKG_DIR] [--anaconda-upload]\n                  \
+  \          [--mulled-upload-target MULLED_UPLOAD_TARGET]\n                     \
+  \       [--build-image] [--keep-image] [--lint]\n                            [--lint-exclude\
+  \ LINT_EXCLUDE [LINT_EXCLUDE ...]]\n                            [--check-channels\
+  \ CHECK_CHANNELS [CHECK_CHANNELS ...]]\n                            [--n-workers\
+  \ N_WORKERS]\n                            [--worker-offset WORKER_OFFSET] [--keep-old-work]\n\
+  \                            [--loglevel LOGLEVEL] [--logfile LOGFILE]\n       \
+  \                     [--logfile-level LOGFILE_LEVEL]\n                        \
+  \    [--log-command-max-lines LOG_COMMAND_MAX_LINES]\n                         \
+  \   [recipe_folder] [config]\n\npositional arguments:\n  recipe_folder         Path\
+  \ to folder containing recipes (default: recipes/)\n                        (default:\
+  \ -)\n  config                Path to Bioconda config (default: config.yml)\n  \
+  \                      (default: -)\n\noptional arguments:\n  -h, --help       \
+  \     show this help message and exit\n  --packages PACKAGES [PACKAGES ...]\n  \
+  \                      Glob for package[s] to build. Default is to build all\n \
+  \                       packages. Can be specified more than once (default:\n  \
+  \                      '*')\n  --git-range GIT_RANGE [GIT_RANGE ...]\n         \
+  \               Git range (e.g. commits or something like \"master\n           \
+  \             HEAD\" to check commits in HEAD vs master, or just\n             \
+  \           \"HEAD\" to include uncommitted changes). All recipes\n            \
+  \            modified within this range will be built if not\n                 \
+  \       present in the channel. (default: -)\n  --testonly            Test packages\
+  \ instead of building (default: False)\n  --force               Force building the\
+  \ recipe even if it already exists in\n                        the bioconda channel.\
+  \ If --force is specified, --git-\n                        range is ignored and\
+  \ only those packages matching\n                        --packages globs will be\
+  \ built. (default: False)\n  --docker              Build packages in docker container.\
+  \ (default: -)\n  --mulled-test         Run a mulled-build test on the built package\
+  \ (default:\n                        False)\n  --build_script_template BUILD_SCRIPT_TEMPLATE\n\
+  \                        Filename to optionally replace build script template\n\
+  \                        used by the Docker container. By default use\n        \
+  \                docker_utils.BUILD_SCRIPT_TEMPLATE. Only used if\n            \
+  \            --docker is True. (default: -)\n  --pkg_dir PKG_DIR     Specifies the\
+  \ directory to which container-built\n                        packages should be\
+  \ stored on the host. Default is to\n                        use the host's conda-bld\
+  \ dir. If --docker is not\n                        specified, then this argument\
+  \ is ignored. (default: -)\n  --anaconda-upload     After building recipes, upload\
+  \ them to Anaconda. This\n                        requires $ANACONDA_TOKEN to be\
+  \ set. (default: False)\n  --mulled-upload-target MULLED_UPLOAD_TARGET\n       \
+  \                 Provide a quay.io target to push mulled docker images\n      \
+  \                  to. (default: -)\n  --build-image         Build temporary docker\
+  \ build image with conda/conda-\n                        build version matching\
+  \ local versions (default: False)\n  --keep-image          After building recipes,\
+  \ the created Docker image is\n                        removed by default to save\
+  \ disk space. Use this\n                        argument to disable this behavior.\
+  \ (default: False)\n  --lint, --prelint     Just before each recipe, apply the linting\
+  \ functions\n                        to it. This can be used as an alternative to\
+  \ linting\n                        all recipes before any building takes place with\
+  \ the\n                        `bioconda-utils lint` command. (default: False)\n\
+  \  --lint-exclude LINT_EXCLUDE [LINT_EXCLUDE ...]\n                        Exclude\
+  \ this linting function. Can be used multiple\n                        times. (default:\
+  \ -)\n  --check-channels CHECK_CHANNELS [CHECK_CHANNELS ...]\n                 \
+  \       Channels to check recipes against before building. Any\n               \
+  \         recipe already present in one of these channels will\n               \
+  \         be skipped. The default is the first two channels\n                  \
+  \      specified in the config file. Note that this is\n                       \
+  \ ignored if you specify --git-range. (default: -)\n  --n-workers N_WORKERS\n  \
+  \                      The number of parallel workers that are in use. This\n  \
+  \                      is intended for use in cases such as the \"bulk\"\n     \
+  \                   branch, where there are multiple parallel workers\n        \
+  \                building and uploading recipes. In essence, this\n            \
+  \            causes bioconda-utils to process every Nth sub-DAG,\n             \
+  \           where N is the value you give to this option. The\n                \
+  \        default is 1, which is intended for cases where there\n               \
+  \         are NOT parallel workers (i.e., the majority of\n                    \
+  \    cases). This should generally NOT be used in\n                        conjunctions\
+  \ with the --packages or --git-range\n                        options! (default:\
+  \ 1)\n  --worker-offset WORKER_OFFSET\n                        This is only used\
+  \ if --nWorkers is >1. In that case,\n                        then each instance\
+  \ of bioconda-utils will process\n                        every Nth sub-DAG. This\
+  \ option gives the 0-based\n                        offset for that. For example,\
+  \ if \"--n-workers 5\n                        --worker-offset 0\" is used, then\
+  \ this instance of\n                        bioconda-utils will process the 1st,\
+  \ 6th, 11th, etc.\n                        sub-DAGs. Equivalently, using \"--n-workers\
+  \ 5 --worker-\n                        offset 1\" will result in sub-DAGs 2, 7,\
+  \ 12, etc. being\n                        processed. If you use more than one worker,\
+  \ then make\n                        sure to give each a different offset! (default:\
+  \ 0)\n  --keep-old-work       Do not remove anything from environment, even after\n\
+  \                        successful build and test. (default: False)\n  --loglevel\
+  \ LOGLEVEL   Set logging level (debug, info, warning, error,\n                 \
+  \       critical) (default: 'info')\n  --logfile LOGFILE     Write log to file (default:\
+  \ -)\n  --logfile-level LOGFILE_LEVEL\n                        Log level for log\
+  \ file (default: 'debug')\n  --log-command-max-lines LOG_COMMAND_MAX_LINES\n   \
+  \                     Limit lines emitted for commands executed (default: -)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bioconda-utils:0.17.4--pyhdfd78af_0

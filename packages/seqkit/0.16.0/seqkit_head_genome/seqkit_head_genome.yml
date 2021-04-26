@@ -1,0 +1,127 @@
+!Command
+command:
+- seqkit
+- head-genome
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --mini-common-words
+  description: minimal shared prefix words (default 1)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --alphabet-guess-seq-length
+  description: length of sequence prefix of the first FASTA record based on which
+    seqkit guesses the sequence type (0 for whole seq) (default 10000)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --id-ncbi
+  description: FASTA head is NCBI-style, e.g. >gi|110645304|ref|NC_002516.2| Pseud...
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --id-regexp
+  description: regular expression for parsing ID (default "^(\\S+)\\s?")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --infile-list
+  description: file of input files list (one file per line), if given, they are appended
+    to files from cli arguments
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --line-width
+  description: line width when outputing FASTA format (0 for no wrap) (default 60)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out-file
+  description: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --quiet
+  description: be quiet and do not show extra information
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --seq-type
+  description: sequence type (dna|rna|protein|unlimit|auto) (for auto, it automatically
+    detect by the first sequence) (default "auto")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --threads
+  description: 'number of CPUs. (default value: 1 for single-CPU PC, 2 for others.
+    can also set with environment variable SEQKIT_THREADS) (default 2)'
+  args: !SimpleFlagArg
+    name: int
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: help for head-genome
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "print sequences of the first genome with common prefixes in name\n\nFor\
+  \ a FASTA file containing multiple contigs of strains (see example below),\nthese's\
+  \ no list of IDs available for retrieving sequences of a certain strain,\nwhile\
+  \ descriptions of each strain share the same prefix.\n\nThis command is used to\
+  \ restrieve sequences of the first strain,\ni.e., \"Vibrio cholerae strain M29\"\
+  .\n\n>NZ_JFGR01000001.1 Vibrio cholerae strain M29 Contig_1, whole genome shotgun\
+  \ sequence\n>NZ_JFGR01000002.1 Vibrio cholerae strain M29 Contig_2, whole genome\
+  \ shotgun sequence\n>NZ_JFGR01000003.1 Vibrio cholerae strain M29 Contig_3, whole\
+  \ genome shotgun sequence\n>NZ_JSTP01000001.1 Vibrio cholerae strain 2012HC-12 NODE_79,\
+  \ whole genome shotgun sequence\n>NZ_JSTP01000002.1 Vibrio cholerae strain 2012HC-12\
+  \ NODE_78, whole genome shotgun sequence\n\nAttention:\n\n  1. Sequences in file\
+  \ should be well organized.\n\nUsage:\n  seqkit head-genome [flags]\n\nFlags:\n\
+  \  -h, --help                    help for head-genome\n  -m, --mini-common-words\
+  \ int   minimal shared prefix words (default 1)\n\nGlobal Flags:\n      --alphabet-guess-seq-length\
+  \ int   length of sequence prefix of the first FASTA record based on which seqkit\
+  \ guesses the sequence type (0 for whole seq) (default 10000)\n      --id-ncbi \
+  \                        FASTA head is NCBI-style, e.g. >gi|110645304|ref|NC_002516.2|\
+  \ Pseud...\n      --id-regexp string                regular expression for parsing\
+  \ ID (default \"^(\\\\S+)\\\\s?\")\n      --infile-list string              file\
+  \ of input files list (one file per line), if given, they are appended to files\
+  \ from cli arguments\n  -w, --line-width int                  line width when outputing\
+  \ FASTA format (0 for no wrap) (default 60)\n  -o, --out-file string           \
+  \      out file (\"-\" for stdout, suffix .gz for gzipped out) (default \"-\")\n\
+  \      --quiet                           be quiet and do not show extra information\n\
+  \  -t, --seq-type string                 sequence type (dna|rna|protein|unlimit|auto)\
+  \ (for auto, it automatically detect by the first sequence) (default \"auto\")\n\
+  \  -j, --threads int                     number of CPUs. (default value: 1 for single-CPU\
+  \ PC, 2 for others. can also set with environment variable SEQKIT_THREADS) (default\
+  \ 2)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/seqkit:0.16.0--h9ee0642_0

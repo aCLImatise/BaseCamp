@@ -1,0 +1,211 @@
+!Command
+command:
+- seqkit
+- subseq
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: seq
+  description: A C G T N a c g t n
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - '-1'
+  description: ":-1                      n\n2:-2      C G T N a c g t\n1:-1    A C\
+    \ G T N a c g t n\n1:12    A C G T N a c g t n"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - '-12'
+  description: :-1    A C G T N a c g t n
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --bed
+  description: by tab-delimited BED file
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --chr
+  description: select limited sequence with sequence IDs when using --gtf or --bed
+    (multiple value supported, case ignored)
+  args: !SimpleFlagArg
+    name: strings
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --down-stream
+  description: down stream length
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --feature
+  description: select limited feature types (multiple value supported, case ignored,
+    only works with GTF)
+  args: !SimpleFlagArg
+    name: strings
+- !Flag
+  optional: true
+  synonyms:
+  - --gtf
+  description: by GTF (version 2.2) file
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --gtf-tag
+  description: output this tag as sequence comment (default "gene_id")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --only-flank
+  description: only return up/down stream sequence
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --region
+  description: by region. e.g 1:12 for first 12 bases, -12:-1 for last 12 bases, 13:-1
+    for cutting first 12 bases. type "seqkit subseq -h" for more examples
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --up-stream
+  description: up stream length
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --alphabet-guess-seq-length
+  description: length of sequence prefix of the first FASTA record based on which
+    seqkit guesses the sequence type (0 for whole seq) (default 10000)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --id-ncbi
+  description: FASTA head is NCBI-style, e.g. >gi|110645304|ref|NC_002516.2| Pseud...
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --id-regexp
+  description: regular expression for parsing ID (default "^(\\S+)\\s?")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --infile-list
+  description: file of input files list (one file per line), if given, they are appended
+    to files from cli arguments
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --line-width
+  description: line width when outputing FASTA format (0 for no wrap) (default 60)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out-file
+  description: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --quiet
+  description: be quiet and do not show extra information
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --seq-type
+  description: sequence type (dna|rna|protein|unlimit|auto) (for auto, it automatically
+    detect by the first sequence) (default "auto")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --threads
+  description: 'number of CPUs. (default value: 1 for single-CPU PC, 2 for others.
+    can also set with environment variable SEQKIT_THREADS) (default 2)'
+  args: !SimpleFlagArg
+    name: int
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: help for subseq
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "get subsequences by region/gtf/bed, including flanking sequences.\n\n\
+  Recommendation: use plain FASTA file, so seqkit could utilize FASTA index.\n\nThe\
+  \ definition of region is 1-based and with some custom design.\n\nExamples:\n\n\
+  \ 1-based index    1 2 3 4 5 6 7 8 9 10\nnegative index    0-9-8-7-6-5-4-3-2-1\n\
+  \           seq    A C G T N a c g t n\n           1:1    A\n           2:4    \
+  \  C G T\n         -4:-2                c g t\n         -4:-1                c g\
+  \ t n\n         -1:-1                      n\n          2:-2      C G T N a c g\
+  \ t\n          1:-1    A C G T N a c g t n\n          1:12    A C G T N a c g t\
+  \ n\n        -12:-1    A C G T N a c g t n\n\nUsage:\n  seqkit subseq [flags]\n\n\
+  Flags:\n      --bed string        by tab-delimited BED file\n      --chr strings\
+  \       select limited sequence with sequence IDs when using --gtf or --bed (multiple\
+  \ value supported, case ignored)\n  -d, --down-stream int   down stream length\n\
+  \      --feature strings   select limited feature types (multiple value supported,\
+  \ case ignored, only works with GTF)\n      --gtf string        by GTF (version\
+  \ 2.2) file\n      --gtf-tag string    output this tag as sequence comment (default\
+  \ \"gene_id\")\n  -h, --help              help for subseq\n  -f, --only-flank  \
+  \      only return up/down stream sequence\n  -r, --region string     by region.\
+  \ e.g 1:12 for first 12 bases, -12:-1 for last 12 bases, 13:-1 for cutting first\
+  \ 12 bases. type \"seqkit subseq -h\" for more examples\n  -u, --up-stream int \
+  \    up stream length\n\nGlobal Flags:\n      --alphabet-guess-seq-length int  \
+  \ length of sequence prefix of the first FASTA record based on which seqkit guesses\
+  \ the sequence type (0 for whole seq) (default 10000)\n      --id-ncbi         \
+  \                FASTA head is NCBI-style, e.g. >gi|110645304|ref|NC_002516.2| Pseud...\n\
+  \      --id-regexp string                regular expression for parsing ID (default\
+  \ \"^(\\\\S+)\\\\s?\")\n      --infile-list string              file of input files\
+  \ list (one file per line), if given, they are appended to files from cli arguments\n\
+  \  -w, --line-width int                  line width when outputing FASTA format\
+  \ (0 for no wrap) (default 60)\n  -o, --out-file string                 out file\
+  \ (\"-\" for stdout, suffix .gz for gzipped out) (default \"-\")\n      --quiet\
+  \                           be quiet and do not show extra information\n  -t, --seq-type\
+  \ string                 sequence type (dna|rna|protein|unlimit|auto) (for auto,\
+  \ it automatically detect by the first sequence) (default \"auto\")\n  -j, --threads\
+  \ int                     number of CPUs. (default value: 1 for single-CPU PC, 2\
+  \ for others. can also set with environment variable SEQKIT_THREADS) (default 2)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/seqkit:0.16.0--h9ee0642_0

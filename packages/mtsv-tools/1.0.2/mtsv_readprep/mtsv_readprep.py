@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Boolean, File, Int, String
+
+Mtsv_Readprep_V0_1_0 = CommandToolBuilder(tool="mtsv_readprep", base_command=["mtsv-readprep"], inputs=[ToolInput(tag="in_lcd", input_type=Boolean(optional=True), prefix="--lcd", doc=InputDocumentation(doc="Enable LCD trim mode (takes first N bases of each read, where N = shortest read length in FASTQ\nfiles).")), ToolInput(tag="in_lcd_qual", input_type=Boolean(optional=True), prefix="--lcdqual", doc=InputDocumentation(doc="Enable LCDQ trim mode (takes highest quality N bases of each read, where N = shortest read length\nin FASTQ files).")), ToolInput(tag="in_include_flag_trigger", input_type=Boolean(optional=True), prefix="-v", doc=InputDocumentation(doc="Include this flag to trigger debug-level logging.")), ToolInput(tag="in_adapters", input_type=File(optional=True), prefix="--adapters", doc=InputDocumentation(doc="Path to file containing adapters, one per line.")), ToolInput(tag="in_adapter_tolerance", input_type=Int(optional=True), prefix="--adapter-tolerance", doc=InputDocumentation(doc="Number of adapter characters to tolerate at start of reads.")), ToolInput(tag="in_out", input_type=File(optional=True), prefix="--out", doc=InputDocumentation(doc="Path to desired output FASTA file.")), ToolInput(tag="in_threads", input_type=Int(optional=True), prefix="--threads", doc=InputDocumentation(doc="Number of worker threads to spawn. [default: 4]")), ToolInput(tag="in_quality_min", input_type=Int(optional=True), prefix="--quality_min", doc=InputDocumentation(doc="Minimum FASTQ quality to tolerate per base.")), ToolInput(tag="in_quality_threshold", input_type=Int(optional=True), prefix="--quality_threshold", doc=InputDocumentation(doc="Maximum number of bases below minimum quality to tolerate per read.")), ToolInput(tag="in_segment", input_type=Int(optional=True), prefix="--segment", doc=InputDocumentation(doc="Enable SEG trim mode (takes subsequent N length subsequences of each read).")), ToolInput(tag="in_flags", input_type=String(optional=True), position=0, doc=InputDocumentation(doc="")), ToolInput(tag="in_fast_q", input_type=String(), position=1, doc=InputDocumentation(doc=""))], outputs=[ToolOutput(tag="out_out", output_type=File(optional=True), selector=InputSelector(input_to_select="in_out", type_hint=File()), doc=OutputDocumentation(doc="Path to desired output FASTA file."))], container="quay.io/biocontainers/mtsv-tools:1.0.2--h779adbc_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Mtsv_Readprep_V0_1_0().translate("wdl")
+

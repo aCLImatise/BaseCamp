@@ -1,0 +1,272 @@
+!Command
+command:
+- seqkit
+- grep
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: seq
+  description: A C G T N a c g t n
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - '-1'
+  description: ":-1                      n\n2:-2      C G T N a c g t\n1:-1    A C\
+    \ G T N a c g t n\n1:12    A C G T N a c g t n"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - '-12'
+  description: :-1    A C G T N a c g t n
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --by-name
+  description: match by full name instead of just ID
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --by-seq
+  description: search subseq on seq, both positive and negative strand are searched,
+    and mismatch allowed using flag -m/--max-mismatch
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --circular
+  description: circular genome
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --degenerate
+  description: pattern/motif contains degenerate base
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --delete-matched
+  description: delete a pattern right after being matched, this keeps the firstly
+    matched data and speedups when using regular expressions
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --ignore-case
+  description: ignore case
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -I
+  - --immediate-output
+  description: print output immediately, do not use write buffer
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --invert-match
+  description: invert the sense of matching, to select non-matching records
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --max-mismatch
+  description: max mismatch when matching by seq. For large genomes like human genome,
+    using mapping/alignment tools would be faster
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -P
+  - --only-positive-strand
+  description: only search on positive strand
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --pattern
+  description: "search pattern (multiple values supported. Attention: use double quotation\
+    \ marks for patterns containing comma, e.g., -p '\"A{2,}\"'))"
+  args: !SimpleFlagArg
+    name: strings
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --pattern-file
+  description: pattern file (one record per line)
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -R
+  - --region
+  description: specify sequence region for searching. e.g 1:12 for first 12 bases,
+    -12:-1 for last 12 bases
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --use-regexp
+  description: patterns are regular expression
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --alphabet-guess-seq-length
+  description: length of sequence prefix of the first FASTA record based on which
+    seqkit guesses the sequence type (0 for whole seq) (default 10000)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - --id-ncbi
+  description: FASTA head is NCBI-style, e.g. >gi|110645304|ref|NC_002516.2| Pseud...
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --id-regexp
+  description: regular expression for parsing ID (default "^(\\S+)\\s?")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --infile-list
+  description: file of input files list (one file per line), if given, they are appended
+    to files from cli arguments
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --line-width
+  description: line width when outputing FASTA format (0 for no wrap) (default 60)
+  args: !SimpleFlagArg
+    name: int
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out-file
+  description: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - --quiet
+  description: be quiet and do not show extra information
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --seq-type
+  description: sequence type (dna|rna|protein|unlimit|auto) (for auto, it automatically
+    detect by the first sequence) (default "auto")
+  args: !SimpleFlagArg
+    name: string
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --threads
+  description: 'number of CPUs. (default value: 1 for single-CPU PC, 2 for others.
+    can also set with environment variable SEQKIT_THREADS) (default 2)'
+  args: !SimpleFlagArg
+    name: int
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: help for grep
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "search sequences by ID/name/sequence/sequence motifs, mismatch allowed\n\
+  \nAttentions:\n\n  0. By default, we match sequence ID with patterns, use \"-n/--by-name\"\
+  \n     for matching full name instead of just ID.\n  1. Unlike POSIX/GNU grep, we\
+  \ compare the pattern to the whole target\n     (ID/full header) by default. Please\
+  \ switch \"-r/--use-regexp\" on\n     for partly matching.\n  2. When searching\
+  \ by sequences, it's partly matching, and both positive\n     and negative strands\
+  \ are searched.\n     Mismatch is allowed using flag \"-m/--max-mismatch\", you\
+  \ can increase\n     the value of \"-j/--threads\" to accelerate processing.\n \
+  \ 3. Degenerate bases/residues like \"RYMM..\" are also supported by flag -d.\n\
+  \     But do not use degenerate bases/residues in regular expression, you need\n\
+  \     convert them to regular expression, e.g., change \"N\" or \"X\"  to \".\"\
+  .\n  4. When providing search patterns (motifs) via flag '-p',\n     please use\
+  \ double quotation marks for patterns containing comma, \n     e.g., -p '\"A{2,}\"\
+  ' or -p \"\\\"A{2,}\\\"\". Because the command line argument\n     parser accepts\
+  \ comma-separated-values (CSV) for multiple values (motifs).\n     Patterns in file\
+  \ do not follow this rule.\n  5. The order of sequences in result is consistent\
+  \ with that in original\n     file, not the order of the query patterns. \n    \
+  \ But for FASTA file, you can use:\n        seqkit faidx seqs.fasta --infile-list\
+  \ IDs.txt\n\nYou can specify the sequence region for searching with flag -R (--region).\n\
+  The definition of region is 1-based and with some custom design.\n\nExamples:\n\n\
+  \ 1-based index    1 2 3 4 5 6 7 8 9 10\nnegative index    0-9-8-7-6-5-4-3-2-1\n\
+  \           seq    A C G T N a c g t n\n           1:1    A\n           2:4    \
+  \  C G T\n         -4:-2                c g t\n         -4:-1                c g\
+  \ t n\n         -1:-1                      n\n          2:-2      C G T N a c g\
+  \ t\n          1:-1    A C G T N a c g t n\n          1:12    A C G T N a c g t\
+  \ n\n        -12:-1    A C G T N a c g t n\n\nUsage:\n  seqkit grep [flags]\n\n\
+  Flags:\n  -n, --by-name                match by full name instead of just ID\n \
+  \ -s, --by-seq                 search subseq on seq, both positive and negative\
+  \ strand are searched, and mismatch allowed using flag -m/--max-mismatch\n  -c,\
+  \ --circular               circular genome\n  -d, --degenerate             pattern/motif\
+  \ contains degenerate base\n      --delete-matched         delete a pattern right\
+  \ after being matched, this keeps the firstly matched data and speedups when using\
+  \ regular expressions\n  -h, --help                   help for grep\n  -i, --ignore-case\
+  \            ignore case\n  -I, --immediate-output       print output immediately,\
+  \ do not use write buffer\n  -v, --invert-match           invert the sense of matching,\
+  \ to select non-matching records\n  -m, --max-mismatch int       max mismatch when\
+  \ matching by seq. For large genomes like human genome, using mapping/alignment\
+  \ tools would be faster\n  -P, --only-positive-strand   only search on positive\
+  \ strand\n  -p, --pattern strings        search pattern (multiple values supported.\
+  \ Attention: use double quotation marks for patterns containing comma, e.g., -p\
+  \ '\"A{2,}\"'))\n  -f, --pattern-file string    pattern file (one record per line)\n\
+  \  -R, --region string          specify sequence region for searching. e.g 1:12\
+  \ for first 12 bases, -12:-1 for last 12 bases\n  -r, --use-regexp             patterns\
+  \ are regular expression\n\nGlobal Flags:\n      --alphabet-guess-seq-length int\
+  \   length of sequence prefix of the first FASTA record based on which seqkit guesses\
+  \ the sequence type (0 for whole seq) (default 10000)\n      --id-ncbi         \
+  \                FASTA head is NCBI-style, e.g. >gi|110645304|ref|NC_002516.2| Pseud...\n\
+  \      --id-regexp string                regular expression for parsing ID (default\
+  \ \"^(\\\\S+)\\\\s?\")\n      --infile-list string              file of input files\
+  \ list (one file per line), if given, they are appended to files from cli arguments\n\
+  \  -w, --line-width int                  line width when outputing FASTA format\
+  \ (0 for no wrap) (default 60)\n  -o, --out-file string                 out file\
+  \ (\"-\" for stdout, suffix .gz for gzipped out) (default \"-\")\n      --quiet\
+  \                           be quiet and do not show extra information\n  -t, --seq-type\
+  \ string                 sequence type (dna|rna|protein|unlimit|auto) (for auto,\
+  \ it automatically detect by the first sequence) (default \"auto\")\n  -j, --threads\
+  \ int                     number of CPUs. (default value: 1 for single-CPU PC, 2\
+  \ for others. can also set with environment variable SEQKIT_THREADS) (default 2)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/seqkit:0.16.0--h9ee0642_0

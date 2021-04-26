@@ -1,0 +1,173 @@
+!Command
+command:
+- cbScanpy
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --exprMatrix
+  description: "gene-cell expression matrix file, possible formats:\n.csv, .h5, .mtx,\
+    \ .txt, .tab, .loom, .h5ad. Existing\nmeta data from .loom and .h5ad will be kept\
+    \ and\nexported."
+  args: !SimpleFlagArg
+    name: EXPRMATRIX
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --meta
+  description: "name of cell meta data table. A table like tsv or csv\nformat, first\
+    \ row has cellId and the cellId must match\na sample name in the expression matrix.\
+    \ Optional but\nrequired if you use --inCluster. 'inMeta' in\nscanpy.conf"
+  args: !SimpleFlagArg
+    name: META
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --outDir
+  description: output directory
+  args: !SimpleFlagArg
+    name: OUTDIR
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --name
+  description: "internal name of dataset in cell browser. No spaces or\nspecial characters.\
+    \ default: name of output directory\n(-o)"
+  args: !SimpleFlagArg
+    name: NAME
+- !Flag
+  optional: true
+  synonyms:
+  - --init
+  description: copy sample scanpy.conf to current directory
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --samplesOnRows
+  description: "when reading the expression matrix from a text file,\nassume that\
+    \ samples are on lines (default behavior is\none-gene-per-line, one-sample-per-column).\
+    \ Also in\nscanpy.conf."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --confFname
+  description: "config file from which settings are read, default is\nscanpy.conf"
+  args: !SimpleFlagArg
+    name: CONFFNAME
+- !Flag
+  optional: true
+  synonyms:
+  - --inCluster
+  description: "Do not run louvain-clustering, but use this meta field\nfrom ad.obs\
+    \ when calculating marker genes. The default\nis to use the louvain clustering\
+    \ results. Can be\nspecified also in scanpy.conf."
+  args: !SimpleFlagArg
+    name: INCLUSTER
+- !Flag
+  optional: true
+  synonyms:
+  - --skipMatrix
+  description: "do not write the scanpy matrix to the destination\ndirectory as a\
+    \ file exprMatrix.tsv.gz"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --skipMarkers
+  description: "do not try to calculate cluster-specific marker genes.\nOnly useful\
+    \ for the rare datasets where a bug in\nscanpy crashes the marker gene calculation."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --copyMatrix
+  description: "Instead of reading the input matrix into scanpy and\nthen writing\
+    \ it back out, just copy the input matrix.\nOnly works if the input matrix is\
+    \ gzipped and in the\nright format and a tsv or csv file, not mtx or\nh5-based\
+    \ files."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --genome
+  description: "when reading 10X HDF5 files, the genome to read.\nDefault is GRCh38.\
+    \ Use h5ls <h5file> to show possible\ngenomes"
+  args: !SimpleFlagArg
+    name: GENOME
+- !Flag
+  optional: true
+  synonyms:
+  - --test
+  description: run doctests
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --debug
+  description: "open an iPython shell when an exception occurs. also\noutput debug\
+    \ messages\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: cbScanpy [options] -e matrixFile -o outDir -n datasetName - run\
+  \ scanpy and output .tsv files\n    \n\nOptions:\n  -h, --help            show this\
+  \ help message and exit\n  -e EXPRMATRIX, --exprMatrix=EXPRMATRIX\n            \
+  \            gene-cell expression matrix file, possible formats:\n             \
+  \           .csv, .h5, .mtx, .txt, .tab, .loom, .h5ad. Existing\n              \
+  \          meta data from .loom and .h5ad will be kept and\n                   \
+  \     exported.\n  -m META, --meta=META  name of cell meta data table. A table like\
+  \ tsv or csv\n                        format, first row has cellId and the cellId\
+  \ must match\n                        a sample name in the expression matrix. Optional\
+  \ but\n                        required if you use --inCluster. 'inMeta' in\n  \
+  \                      scanpy.conf\n  -o OUTDIR, --outDir=OUTDIR\n             \
+  \           output directory\n  -n NAME, --name=NAME  internal name of dataset in\
+  \ cell browser. No spaces or\n                        special characters. default:\
+  \ name of output directory\n                        (-o)\n  --init             \
+  \   copy sample scanpy.conf to current directory\n  -s, --samplesOnRows   when reading\
+  \ the expression matrix from a text file,\n                        assume that samples\
+  \ are on lines (default behavior is\n                        one-gene-per-line,\
+  \ one-sample-per-column). Also in\n                        scanpy.conf.\n  -c CONFFNAME,\
+  \ --confFname=CONFFNAME\n                        config file from which settings\
+  \ are read, default is\n                        scanpy.conf\n  --inCluster=INCLUSTER\n\
+  \                        Do not run louvain-clustering, but use this meta field\n\
+  \                        from ad.obs when calculating marker genes. The default\n\
+  \                        is to use the louvain clustering results. Can be\n    \
+  \                    specified also in scanpy.conf.\n  --skipMatrix          do\
+  \ not write the scanpy matrix to the destination\n                        directory\
+  \ as a file exprMatrix.tsv.gz\n  --skipMarkers         do not try to calculate cluster-specific\
+  \ marker genes.\n                        Only useful for the rare datasets where\
+  \ a bug in\n                        scanpy crashes the marker gene calculation.\n\
+  \  --copyMatrix          Instead of reading the input matrix into scanpy and\n \
+  \                       then writing it back out, just copy the input matrix.\n\
+  \                        Only works if the input matrix is gzipped and in the\n\
+  \                        right format and a tsv or csv file, not mtx or\n      \
+  \                  h5-based files.\n  -g GENOME, --genome=GENOME\n             \
+  \           when reading 10X HDF5 files, the genome to read.\n                 \
+  \       Default is GRCh38. Use h5ls <h5file> to show possible\n                \
+  \        genomes\n  --test                run doctests\n  -d, --debug          \
+  \ open an iPython shell when an exception occurs. also\n                       \
+  \ output debug messages\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/ucsc-cell-browser:1.0.0--pyhdfd78af_0

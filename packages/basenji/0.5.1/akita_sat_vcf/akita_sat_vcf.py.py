@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Int, Boolean, Directory, File, String
+
+Akita_Sat_Vcf_Py_V0_1_0 = CommandToolBuilder(tool="akita_sat_vcf.py", base_command=["akita_sat_vcf.py"], inputs=[ToolInput(tag="in_genome_fasta_sequences", input_type=Int(optional=True), prefix="-f", doc=InputDocumentation(doc="Genome FASTA for sequences [Default:\n/usr/local/share/basenji//data/hg19.fa]")), ToolInput(tag="in_draw_sequence_logo", input_type=Boolean(optional=True), prefix="-g", doc=InputDocumentation(doc="Draw a sequence logo for the gain score, too [Default:\nFalse]")), ToolInput(tag="in_length_centered_sequence", input_type=Int(optional=True), prefix="-l", doc=InputDocumentation(doc="Length of centered sequence to mutate [Default: 200]")), ToolInput(tag="in_minimum_heatmap_limit", input_type=Int(optional=True), prefix="-m", doc=InputDocumentation(doc="Minimum heatmap limit [Default: 0.1]")), ToolInput(tag="in_load_predictions_files", input_type=Boolean(optional=True), prefix="-n", doc=InputDocumentation(doc="Load the predictions from .npy files [Default: False]")), ToolInput(tag="in_output_directory", input_type=Directory(optional=True), prefix="-o", doc=InputDocumentation(doc="Output directory [Default: sat_vcf]")), ToolInput(tag="in_rc", input_type=Boolean(optional=True), prefix="--rc", doc=InputDocumentation(doc="Ensemble forward and reverse complement predictions\n[Default: False]")), ToolInput(tag="in_shifts", input_type=Int(optional=True), prefix="--shifts", doc=InputDocumentation(doc="Ensemble prediction shifts [Default: 0]")), ToolInput(tag="in_file_specifying_indexes", input_type=File(optional=True), prefix="-t", doc=InputDocumentation(doc="File specifying target indexes and labels in table format")), ToolInput(tag="in_figure_width", input_type=Int(optional=True), prefix="-w", doc=InputDocumentation(doc="Figure width [Default: 20]")), ToolInput(tag="in_params_file", input_type=String(), position=0, doc=InputDocumentation(doc="")), ToolInput(tag="in_model_file", input_type=String(), position=1, doc=InputDocumentation(doc="")), ToolInput(tag="in_vcf_file", input_type=String(), position=2, doc=InputDocumentation(doc=""))], outputs=[ToolOutput(tag="out_output_directory", output_type=Directory(optional=True), selector=InputSelector(input_to_select="in_output_directory", type_hint=File()), doc=OutputDocumentation(doc="Output directory [Default: sat_vcf]"))], container="quay.io/biocontainers/basenji:0.5.1--pyhdfd78af_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Akita_Sat_Vcf_Py_V0_1_0().translate("wdl")
+

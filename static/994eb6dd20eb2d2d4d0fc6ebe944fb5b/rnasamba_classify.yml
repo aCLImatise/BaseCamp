@@ -1,0 +1,77 @@
+!Command
+command:
+- rnasamba
+- classify
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: output_file
+  description: output TSV file containing the results of the
+- !Positional
+  optional: false
+  position: 1
+  name: classification.
+  description: fasta_file            input FASTA file containing transcript sequences.
+- !Positional
+  optional: false
+  position: 2
+  name: weights
+  description: "input HDF5 file(s) containing weights of a trained\nRNAsamba network\
+    \ (if more than a file is provided, an\nensembling of the models will be performed)."
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --protein_fasta
+  description: "output FASTA file containing translated sequences for\nthe predicted\
+    \ coding ORFs. (default: None)"
+  args: !SimpleFlagArg
+    name: PROTEIN_FASTA
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: "print the progress of the classification. 0 = silent,\n1 = current\
+    \ step. (default: 0)\n"
+  args: !ChoiceFlagArg
+    choices: !!set
+      '1':
+      '0':
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: rnasamba classify [-h] [--version] [-p PROTEIN_FASTA] [-v {0,1}]\n\
+  \                         output_file fasta_file weights [weights ...]\n\nClassify\
+  \ sequences from a input FASTA file.\n\npositional arguments:\n  output_file   \
+  \        output TSV file containing the results of the\n                       \
+  \ classification.\n  fasta_file            input FASTA file containing transcript\
+  \ sequences.\n  weights               input HDF5 file(s) containing weights of a\
+  \ trained\n                        RNAsamba network (if more than a file is provided,\
+  \ an\n                        ensembling of the models will be performed).\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  --version\
+  \             show program's version number and exit\n  -p PROTEIN_FASTA, --protein_fasta\
+  \ PROTEIN_FASTA\n                        output FASTA file containing translated\
+  \ sequences for\n                        the predicted coding ORFs. (default: None)\n\
+  \  -v {0,1}, --verbose {0,1}\n                        print the progress of the\
+  \ classification. 0 = silent,\n                        1 = current step. (default:\
+  \ 0)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/rnasamba:0.2.5--py36hc5360cc_0

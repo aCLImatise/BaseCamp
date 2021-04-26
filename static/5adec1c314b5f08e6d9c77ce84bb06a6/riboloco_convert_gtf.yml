@@ -1,0 +1,130 @@
+!Command
+command:
+- riboloco_convert_gtf
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -gtf
+  - --input_gtf
+  description: "A gtf file with your genome annotation. Can be .gz\ncompressed."
+  args: !SimpleFlagArg
+    name: INPUT_GTF
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output_filename
+  description: The outfile filename
+  args: !SimpleFlagArg
+    name: OUTPUT_FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - -ffl
+  - --filter_for_longest
+  description: "Only use the longest protein coding transcript\nassociated with each\
+    \ gene."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -nf
+  - --no_fasta
+  description: Don't generate a fasta of transcripts
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --stop_correction
+  description: "Add 3 nt for stop codon. Can be changed to 0 depending\non whether\
+    \ the annotation includes the stop codon\nwithin the annotated CDSs."
+  args: !SimpleFlagArg
+    name: STOP_CORRECTION
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --genome_fasta
+  - -fo
+  - --output_fasta
+  - --transcript_word
+  - --feature_type_word
+  - --filter_for
+  description: "Which transcript types to filter for. Set to 'all' to\ndisable. Default=protein_coding"
+  args: !SimpleFlagArg
+    name: GENOME_FASTA
+- !Flag
+  optional: true
+  synonyms:
+  - --gene_name_word
+  - --cds_word
+  - --gene_id_word
+  - --transcript_id_word
+  - --exon_word
+  description: The key word that signifies exons. Default=exon
+  args: !SimpleFlagArg
+    name: GENE_NAME_WORD
+- !Flag
+  optional: true
+  synonyms:
+  - --early_stop
+  description: Stop after n reads parsed. -1 to disable (default)
+  args: !SimpleFlagArg
+    name: EARLY_STOP
+- !Flag
+  optional: true
+  synonyms:
+  - -pf
+  - --print_features
+  - --bypass_tx_type_filter
+  - --assume_cds_same
+  description: "Sets CDS to same as transcript. Useful for writing out\neg snoRNAs\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: riboloco_convert_gtf [-h] -gtf INPUT_GTF -o OUTPUT_FILENAME [-ffl]\n\
+  \                            [-nf] [--stop_correction STOP_CORRECTION]\n       \
+  \                     [-f GENOME_FASTA] [-fo OUTPUT_FASTA]\n                   \
+  \         [--transcript_word TRANSCRIPT_WORD]\n                            [--feature_type_word\
+  \ FEATURE_TYPE_WORD]\n                            [--filter_for FILTER_FOR]\n  \
+  \                          [--gene_name_word GENE_NAME_WORD]\n                 \
+  \           [--cds_word CDS_WORD]\n                            [--gene_id_word GENE_ID_WORD]\n\
+  \                            [--transcript_id_word TRANSCRIPT_ID_WORD]\n       \
+  \                     [--exon_word EXON_WORD] [--early_stop EARLY_STOP]\n      \
+  \                      [-pf] [--bypass_tx_type_filter]\n                       \
+  \     [--assume_cds_same]\n\noptional arguments:\n  -h, --help            show this\
+  \ help message and exit\n  -gtf INPUT_GTF, --input_gtf INPUT_GTF\n             \
+  \           A gtf file with your genome annotation. Can be .gz\n               \
+  \         compressed.\n  -o OUTPUT_FILENAME, --output_filename OUTPUT_FILENAME\n\
+  \                        The outfile filename\n  -ffl, --filter_for_longest\n  \
+  \                      Only use the longest protein coding transcript\n        \
+  \                associated with each gene.\n  -nf, --no_fasta       Don't generate\
+  \ a fasta of transcripts\n  --stop_correction STOP_CORRECTION\n                \
+  \        Add 3 nt for stop codon. Can be changed to 0 depending\n              \
+  \          on whether the annotation includes the stop codon\n                 \
+  \       within the annotated CDSs.\n  -f GENOME_FASTA, --genome_fasta GENOME_FASTA\n\
+  \  -fo OUTPUT_FASTA, --output_fasta OUTPUT_FASTA\n  --transcript_word TRANSCRIPT_WORD\n\
+  \  --feature_type_word FEATURE_TYPE_WORD\n  --filter_for FILTER_FOR\n          \
+  \              Which transcript types to filter for. Set to 'all' to\n         \
+  \               disable. Default=protein_coding\n  --gene_name_word GENE_NAME_WORD\n\
+  \  --cds_word CDS_WORD\n  --gene_id_word GENE_ID_WORD\n  --transcript_id_word TRANSCRIPT_ID_WORD\n\
+  \  --exon_word EXON_WORD\n                        The key word that signifies exons.\
+  \ Default=exon\n  --early_stop EARLY_STOP\n                        Stop after n\
+  \ reads parsed. -1 to disable (default)\n  -pf, --print_features\n  --bypass_tx_type_filter\n\
+  \  --assume_cds_same     Sets CDS to same as transcript. Useful for writing out\n\
+  \                        eg snoRNAs\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/riboloco:0.3.9--pyh5e36f6f_0

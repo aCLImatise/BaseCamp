@@ -1,0 +1,100 @@
+!Command
+command:
+- akita_predict.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: tracks
+  description: '-g GENOME_FILE       Chromosome length information [Default: /usr/local/shar'
+- !Positional
+  optional: false
+  position: 0
+  name: format
+  description: --ti=TRACK_INDEXES   Comma-separated list of target indexes to output
+    BigWig
+- !Positional
+  optional: false
+  position: 1
+  name: tracks
+  description: '--split=SPLIT_LABEL  Dataset split label for eg TFR pattern [Default:
+    test]'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  description: BED file describing regions so we can output BigWig
+  args: !SimpleFlagArg
+    name: TRACK_BED
+- !Flag
+  optional: true
+  synonyms:
+  - --mc
+  description: 'Monte carlo test iterations [Default: 0]'
+  args: !SimpleFlagArg
+    name: MC_N
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: "Output directory for test statistics [Default:\ntest_out]"
+  args: !SimpleFlagArg
+    name: OUT_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --rc
+  description: 'Average the fwd and rc predictions [Default: False]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --shifts
+  description: 'Ensemble prediction shifts [Default: 0]'
+  args: !SimpleFlagArg
+    name: SHIFTS
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: File specifying target indexes and labels in table
+  args: !SimpleFlagArg
+    name: TARGETS_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --tfr
+  description: "TFR pattern string appended to data_dir/tfrecords for\nsubsetting\
+    \ [Default: none]\n"
+  args: !SimpleFlagArg
+    name: TFR_PATTERN
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: akita_predict.py [options] <params_file> <model_file> <data_dir>\n\
+  \nOptions:\n  -h, --help           show this help message and exit\n  -b TRACK_BED\
+  \         BED file describing regions so we can output BigWig\n                \
+  \       tracks\n  -g GENOME_FILE       Chromosome length information [Default: /usr/local/shar\n\
+  \                       e/basenji//tutorials/data/human.hg19.genome]\n  --mc=MC_N\
+  \            Monte carlo test iterations [Default: 0]\n  -o OUT_DIR           Output\
+  \ directory for test statistics [Default:\n                       test_out]\n  --rc\
+  \                 Average the fwd and rc predictions [Default: False]\n  --shifts=SHIFTS\
+  \      Ensemble prediction shifts [Default: 0]\n  -t TARGETS_FILE      File specifying\
+  \ target indexes and labels in table\n                       format\n  --ti=TRACK_INDEXES\
+  \   Comma-separated list of target indexes to output BigWig\n                  \
+  \     tracks\n  --split=SPLIT_LABEL  Dataset split label for eg TFR pattern [Default:\
+  \ test]\n  --tfr=TFR_PATTERN    TFR pattern string appended to data_dir/tfrecords\
+  \ for\n                       subsetting [Default: none]\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/basenji:0.5.1--pyhdfd78af_0

@@ -1,0 +1,138 @@
+!Command
+command:
+- evaluate_sample
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --no-cuda
+  description: "Disables CUDA for use off GPU, if this is not\nspecified the utility\
+    \ will check availability of\ntorch.cuda"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --model
+  description: name of the saved model weights to load
+  args: !SimpleFlagArg
+    name: MODEL
+- !Flag
+  optional: true
+  synonyms:
+  - --vector-location
+  description: directory containing the generated vectors to evaluate
+  args: !SimpleFlagArg
+    name: VECTOR_LOCATION
+- !Flag
+  optional: true
+  synonyms:
+  - --save
+  description: "save the results of the evaluation to a numpy array or\na tsv text\
+    \ file"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --save-format
+  description: "save the results of the evaluation to a numpy array or\nas summary\
+    \ in a tsv text file or both"
+  args: !ChoiceFlagArg
+    choices: !!set
+      tsv:
+      both:
+      npy:
+- !Flag
+  optional: true
+  synonyms:
+  - --save-location
+  description: "The location on the filesystem to save the final\nresults (default:\n\
+    Current_working_directory/mimsi_results/)."
+  args: !SimpleFlagArg
+    name: SAVE_LOCATION
+- !Flag
+  optional: true
+  synonyms:
+  - --name
+  description: "name of the run, this will be the filename for any\nsaved results\
+    \ in tsv format with more than one\nsamples."
+  args: !SimpleFlagArg
+    name: NAME
+- !Flag
+  optional: true
+  synonyms:
+  - --seed
+  description: 'Random Seed (default: 2)'
+  args: !SimpleFlagArg
+    name: S
+- !Flag
+  optional: true
+  synonyms:
+  - --coverage
+  description: "Required coverage for both the tumor and the normal.\nAny coverage\
+    \ in excess of this limit will be randomly\ndownsampled"
+  args: !SimpleFlagArg
+    name: COVERAGE
+- !Flag
+  optional: true
+  synonyms:
+  - --confidence-interval
+  description: "Confidence interval for the estimated MSI Score\nreported in the tsv\
+    \ output file (default: 0.95)"
+  args: !SimpleFlagArg
+    name: CONFIDENCE_INTERVAL
+- !Flag
+  optional: true
+  synonyms:
+  - --use-attention
+  description: "Use attention pooling rather than average pooling to\naggregate sample\
+    \ embeddings (default: False)\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Display current version of MiMSI
+  args: !EmptyFlagArg {}
+help_text: "usage: evaluate_sample [-h] [--version] [--no-cuda] [--model MODEL]\n\
+  \                       [--vector-location VECTOR_LOCATION] [--save]\n         \
+  \              [--save-format {tsv,npy,both}]\n                       [--save-location\
+  \ SAVE_LOCATION] [--name NAME]\n                       [--seed S] [--coverage COVERAGE]\n\
+  \                       [--confidence-interval CONFIDENCE_INTERVAL]\n          \
+  \             [--use-attention]\n\nMiMSI Sample(s) Evalution Utility\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  --version\
+  \             Display current version of MiMSI\n  --no-cuda             Disables\
+  \ CUDA for use off GPU, if this is not\n                        specified the utility\
+  \ will check availability of\n                        torch.cuda\n  --model MODEL\
+  \         name of the saved model weights to load\n  --vector-location VECTOR_LOCATION\n\
+  \                        directory containing the generated vectors to evaluate\n\
+  \  --save                save the results of the evaluation to a numpy array or\n\
+  \                        a tsv text file\n  --save-format {tsv,npy,both}\n     \
+  \                   save the results of the evaluation to a numpy array or\n   \
+  \                     as summary in a tsv text file or both\n  --save-location SAVE_LOCATION\n\
+  \                        The location on the filesystem to save the final\n    \
+  \                    results (default:\n                        Current_working_directory/mimsi_results/).\n\
+  \  --name NAME           name of the run, this will be the filename for any\n  \
+  \                      saved results in tsv format with more than one\n        \
+  \                samples.\n  --seed S              Random Seed (default: 2)\n  --coverage\
+  \ COVERAGE   Required coverage for both the tumor and the normal.\n            \
+  \            Any coverage in excess of this limit will be randomly\n           \
+  \             downsampled\n  --confidence-interval CONFIDENCE_INTERVAL\n       \
+  \                 Confidence interval for the estimated MSI Score\n            \
+  \            reported in the tsv output file (default: 0.95)\n  --use-attention\
+  \       Use attention pooling rather than average pooling to\n                 \
+  \       aggregate sample embeddings (default: False)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/mimsi:0.4.3--pyhdfd78af_0

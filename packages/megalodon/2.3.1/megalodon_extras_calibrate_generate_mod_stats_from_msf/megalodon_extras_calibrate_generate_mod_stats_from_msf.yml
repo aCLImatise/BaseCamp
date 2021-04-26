@@ -1,0 +1,193 @@
+!Command
+command:
+- megalodon_extras
+- calibrate
+- generate_mod_stats_from_msf
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --motif
+  description: "['MOTIF', 'REL_POS'] ['MOTIF', 'REL_POS']\nMotif description. Motifs\
+    \ include two values\nspecifying the sequence motif (may include ambiguity\ncodes)\
+    \ and the relative modified position. Multiple\n`--motif` values may be provided."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --edge-buffer
+  description: "Minimum distance from edge of read to output score.\nDefault: 30"
+  args: !SimpleFlagArg
+    name: EDGE_BUFFER
+- !Flag
+  optional: true
+  synonyms:
+  - --mod-context-bases
+  description: 'Context bases for modified base calling. Default: 15'
+  args: !SimpleFlagArg
+    name: MOD_CONTEXT_BASES
+- !Flag
+  optional: true
+  synonyms:
+  - --guppy-config
+  description: "Guppy config. Default:\ndna_r9.4.1_450bps_modbases_5mc_hac.cfg"
+  args: !SimpleFlagArg
+    name: GUPPY_CONFIG
+- !Flag
+  optional: true
+  synonyms:
+  - --guppy-server-path
+  description: "Path to guppy server executable. Default: ./ont-\nguppy/bin/guppy_basecall_server"
+  args: !SimpleFlagArg
+    name: GUPPY_SERVER_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --guppy-server-port
+  description: 'Guppy server port. Default: Guppy auto'
+  args: !SimpleFlagArg
+    name: GUPPY_SERVER_PORT
+- !Flag
+  optional: true
+  synonyms:
+  - --guppy-params
+  description: "Extra guppy server parameters. Main purpose for\noptimal performance\
+    \ based on compute environment.\nQuote parameters to avoid them being parsed by\n\
+    megalodon."
+  args: !SimpleFlagArg
+    name: GUPPY_PARAMS
+- !Flag
+  optional: true
+  synonyms:
+  - --guppy-concurrent-reads
+  description: "Number of reads to process concurrently within each\nworker processes.\
+    \ Default: 10"
+  args: !SimpleFlagArg
+    name: GUPPY_CONCURRENT_READS
+- !Flag
+  optional: true
+  synonyms:
+  - --guppy-timeout
+  description: "Timeout to wait for guppy server to call a single read\nin seconds.\
+    \ Default: 120.000000"
+  args: !SimpleFlagArg
+    name: GUPPY_TIMEOUT
+- !Flag
+  optional: true
+  synonyms:
+  - --guppy-logs-output-directory
+  description: 'Directory to output guppy logs. Default: guppy_logs'
+  args: !SimpleFlagArg
+    name: GUPPY_LOGS_OUTPUT_DIRECTORY
+- !Flag
+  optional: true
+  synonyms:
+  - --out-filename
+  description: "Output filename for modified base statistics. Should\nend in \"npz\"\
+    . Default: mod_calibration_statistics.npz"
+  args: !SimpleFlagArg
+    name: OUT_FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --log-filename
+  description: "Output filename for text summary. Default:\nmod_calibration_statistics.log"
+  args: !SimpleFlagArg
+    name: LOG_FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --modified-bases-set
+  description: "Only process these modified bases (single letter\ncodes). Present\
+    \ multiple codes as a single string"
+  args: !SimpleFlagArg
+    name: MODIFIED_BASES_SET
+- !Flag
+  optional: true
+  synonyms:
+  - --num-reads
+  description: Total number of reads to process.
+  args: !SimpleFlagArg
+    name: NUM_READS
+- !Flag
+  optional: true
+  synonyms:
+  - --devices
+  description: GPU devices for guppy basecalling backend.
+  args: !RepeatFlagArg
+    name: DEVICES
+- !Flag
+  optional: true
+  synonyms:
+  - --processes
+  description: 'Number of parallel CPU processes. Default: 1'
+  args: !SimpleFlagArg
+    name: PROCESSES
+- !Flag
+  optional: true
+  synonyms:
+  - --quiet
+  description: Suppress progress information.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: megalodon_extras calibrate generate_mod_stats_from_msf\n      \
+  \ [-h] [--edge-buffer EDGE_BUFFER]\n       [--mod-context-bases MOD_CONTEXT_BASES]\
+  \ [--guppy-config GUPPY_CONFIG]\n       [--guppy-server-path GUPPY_SERVER_PATH]\n\
+  \       [--guppy-server-port GUPPY_SERVER_PORT] [--guppy-params GUPPY_PARAMS]\n\
+  \       [--guppy-concurrent-reads GUPPY_CONCURRENT_READS]\n       [--guppy-timeout\
+  \ GUPPY_TIMEOUT]\n       [--guppy-logs-output-directory GUPPY_LOGS_OUTPUT_DIRECTORY]\n\
+  \       [--motif ['MOTIF', 'REL_POS'] ['MOTIF', 'REL_POS']]\n       [--out-filename\
+  \ OUT_FILENAME] [--log-filename LOG_FILENAME]\n       [--modified-bases-set MODIFIED_BASES_SET]\
+  \ [--num-reads NUM_READS]\n       [--devices DEVICES [DEVICES ...]] [--processes\
+  \ PROCESSES] [--quiet]\n       mapped_signal_file\n\npositional arguments:\n  mapped_signal_file\
+  \    Mapped signal file containing diff CTC alternative\n                      \
+  \  modified base reference.\n\noptional arguments:\n  -h, --help            show\
+  \ this help message and exit\n  --motif ['MOTIF', 'REL_POS'] ['MOTIF', 'REL_POS']\n\
+  \                        Motif description. Motifs include two values\n        \
+  \                specifying the sequence motif (may include ambiguity\n        \
+  \                codes) and the relative modified position. Multiple\n         \
+  \               `--motif` values may be provided.\n\nMod Scoring Arguments:\n  --edge-buffer\
+  \ EDGE_BUFFER\n                        Minimum distance from edge of read to output\
+  \ score.\n                        Default: 30\n  --mod-context-bases MOD_CONTEXT_BASES\n\
+  \                        Context bases for modified base calling. Default: 15\n\n\
+  Guppy Backend Arguments:\n  --guppy-config GUPPY_CONFIG\n                      \
+  \  Guppy config. Default:\n                        dna_r9.4.1_450bps_modbases_5mc_hac.cfg\n\
+  \  --guppy-server-path GUPPY_SERVER_PATH\n                        Path to guppy\
+  \ server executable. Default: ./ont-\n                        guppy/bin/guppy_basecall_server\n\
+  \  --guppy-server-port GUPPY_SERVER_PORT\n                        Guppy server port.\
+  \ Default: Guppy auto\n  --guppy-params GUPPY_PARAMS\n                        Extra\
+  \ guppy server parameters. Main purpose for\n                        optimal performance\
+  \ based on compute environment.\n                        Quote parameters to avoid\
+  \ them being parsed by\n                        megalodon.\n  --guppy-concurrent-reads\
+  \ GUPPY_CONCURRENT_READS\n                        Number of reads to process concurrently\
+  \ within each\n                        worker processes. Default: 10\n  --guppy-timeout\
+  \ GUPPY_TIMEOUT\n                        Timeout to wait for guppy server to call\
+  \ a single read\n                        in seconds. Default: 120.000000\n  --guppy-logs-output-directory\
+  \ GUPPY_LOGS_OUTPUT_DIRECTORY\n                        Directory to output guppy\
+  \ logs. Default: guppy_logs\n\nOutput Arguments:\n  --out-filename OUT_FILENAME\n\
+  \                        Output filename for modified base statistics. Should\n\
+  \                        end in \"npz\". Default: mod_calibration_statistics.npz\n\
+  \  --log-filename LOG_FILENAME\n                        Output filename for text\
+  \ summary. Default:\n                        mod_calibration_statistics.log\n  --modified-bases-set\
+  \ MODIFIED_BASES_SET\n                        Only process these modified bases\
+  \ (single letter\n                        codes). Present multiple codes as a single\
+  \ string\n  --num-reads NUM_READS\n                        Total number of reads\
+  \ to process.\n\nMiscellaneous Arguments:\n  --devices DEVICES [DEVICES ...]\n \
+  \                       GPU devices for guppy basecalling backend.\n  --processes\
+  \ PROCESSES\n                        Number of parallel CPU processes. Default:\
+  \ 1\n  --quiet               Suppress progress information.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/megalodon:2.3.1--py38h4a8c8d9_0

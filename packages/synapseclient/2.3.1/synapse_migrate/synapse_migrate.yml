@@ -1,0 +1,113 @@
+!Command
+command:
+- synapse
+- migrate
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: id
+  description: Synapse id
+- !Positional
+  optional: false
+  position: 1
+  name: dest_storage_location_id
+  description: Destination Synapse storage location id
+- !Positional
+  optional: false
+  position: 2
+  name: db_path
+  description: Local system path where a record keeping file can be
+- !Positional
+  optional: false
+  position: 3
+  name: stored
+  description: 'optional arguments:'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --source_storage_location_ids
+  description: "[SOURCE_STORAGE_LOCATION_IDS ...]\nSource Synapse storage location\
+    \ ids. If specified only\nfiles in these storage locations will be migrated."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --file_version_strategy
+  description: "one of 'new', 'latest', 'all', 'skip' new creates a\nnew version of\
+    \ each entity, latest migrates the most\nrecent version, all migrates all versions,\
+    \ skip avoids\nmigrating file entities (use when exclusively\ntargeting table\
+    \ attached files"
+  args: !SimpleFlagArg
+    name: FILE_VERSION_STRATEGY
+- !Flag
+  optional: true
+  synonyms:
+  - --include_table_files
+  description: Include table attached files when migrating
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --continue_on_error
+  description: "Whether to continue processing other entities if\nmigration of one\
+    \ fails"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --csv_log_path
+  description: "Path where to log a csv documenting the changes from\nthe migration"
+  args: !SimpleFlagArg
+    name: CSV_LOG_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --dryRun
+  description: Dry run, files will be indexed by not migrated
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --force
+  description: Bypass interactive prompt confirming migration
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: synapse migrate [-h]\n                       [--source_storage_location_ids\
+  \ [SOURCE_STORAGE_LOCATION_IDS ...]]\n                       [--file_version_strategy\
+  \ FILE_VERSION_STRATEGY]\n                       [--include_table_files] [--continue_on_error]\n\
+  \                       [--csv_log_path CSV_LOG_PATH] [--dryRun] [--force]\n   \
+  \                    id dest_storage_location_id db_path\n\npositional arguments:\n\
+  \  id                    Synapse id\n  dest_storage_location_id\n              \
+  \          Destination Synapse storage location id\n  db_path               Local\
+  \ system path where a record keeping file can be\n                        stored\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  --source_storage_location_ids [SOURCE_STORAGE_LOCATION_IDS ...]\n           \
+  \             Source Synapse storage location ids. If specified only\n         \
+  \               files in these storage locations will be migrated.\n  --file_version_strategy\
+  \ FILE_VERSION_STRATEGY\n                        one of 'new', 'latest', 'all',\
+  \ 'skip' new creates a\n                        new version of each entity, latest\
+  \ migrates the most\n                        recent version, all migrates all versions,\
+  \ skip avoids\n                        migrating file entities (use when exclusively\n\
+  \                        targeting table attached files\n  --include_table_files\n\
+  \                        Include table attached files when migrating\n  --continue_on_error\
+  \   Whether to continue processing other entities if\n                        migration\
+  \ of one fails\n  --csv_log_path CSV_LOG_PATH\n                        Path where\
+  \ to log a csv documenting the changes from\n                        the migration\n\
+  \  --dryRun              Dry run, files will be indexed by not migrated\n  --force\
+  \               Bypass interactive prompt confirming migration\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/synapseclient:2.3.1--pyh5e36f6f_0

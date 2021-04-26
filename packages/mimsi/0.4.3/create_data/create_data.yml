@@ -1,0 +1,131 @@
+!Command
+command:
+- create_data
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --microsatellites-list
+  description: "The list of microsatellites to check in the\ntumor/normal pair (default:\n\
+    tests/microsatellites_impact_only.list)"
+  args: !SimpleFlagArg
+    name: MICROSATELLITES_LIST
+- !Flag
+  optional: true
+  synonyms:
+  - --save-location
+  description: "The location on the filesystem to save the converted\nvectors (default:\n\
+    Current_working_directory/generated_samples/).\nWARNING: Existing files in this\
+    \ directory in the\nformats *_locations.npy and *_data.npy will be\ndeleted!"
+  args: !SimpleFlagArg
+    name: SAVE_LOCATION
+- !Flag
+  optional: true
+  synonyms:
+  - --coverage
+  description: "Required coverage for both the tumor and the normal.\nAny coverage\
+    \ in excess of this limit will be randomly\ndownsampled"
+  args: !SimpleFlagArg
+    name: COVERAGE
+- !Flag
+  optional: true
+  synonyms:
+  - --cores
+  description: Number of cores to utilize in parallel
+  args: !SimpleFlagArg
+    name: CORES
+- !Flag
+  optional: true
+  synonyms:
+  - --tumor-bam
+  description: Tumor bam file for conversion
+  args: !SimpleFlagArg
+    name: TUMOR_BAM
+- !Flag
+  optional: true
+  synonyms:
+  - --normal-bam
+  description: Matched normal bam file for conversion
+  args: !SimpleFlagArg
+    name: NORMAL_BAM
+- !Flag
+  optional: true
+  synonyms:
+  - --case-id
+  description: "Unique identifier for the single sample/case\nsubmitted. This will\
+    \ be the filename for any saved\nresults (default: TestCase)"
+  args: !SimpleFlagArg
+    name: CASE_ID
+- !Flag
+  optional: true
+  synonyms:
+  - --norm-case-id
+  description: 'Normal case name (default: None)'
+  args: !SimpleFlagArg
+    name: NORM_CASE_ID
+- !Flag
+  optional: true
+  synonyms:
+  - --case-list
+  description: "Case List for generating sample vectors in bulk, if\nspecified all\
+    \ other input file args will be ignored"
+  args: !SimpleFlagArg
+    name: CASE_LIST
+- !Flag
+  optional: true
+  synonyms:
+  - --name
+  description: "name of the run submitted using --case-list, this will\nbe the filename\
+    \ for any saved results in the tsv\nformat (default: BATCH)\n"
+  args: !SimpleFlagArg
+    name: NAME
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Display current version of MiMSI
+  args: !EmptyFlagArg {}
+help_text: "usage: create_data [-h] [--version] [--tumor-bam TUMOR_BAM]\n        \
+  \           [--normal-bam NORMAL_BAM] [--case-id CASE_ID]\n                   [--norm-case-id\
+  \ NORM_CASE_ID] [--case-list CASE_LIST]\n                   [--name NAME] [--microsatellites-list\
+  \ MICROSATELLITES_LIST]\n                   [--save-location SAVE_LOCATION] [--coverage\
+  \ COVERAGE]\n                   [--cores CORES]\n\nMiMSI Vector Generation Utility\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  --version             Display current version of MiMSI\n  --microsatellites-list\
+  \ MICROSATELLITES_LIST\n                        The list of microsatellites to check\
+  \ in the\n                        tumor/normal pair (default:\n                \
+  \        tests/microsatellites_impact_only.list)\n  --save-location SAVE_LOCATION\n\
+  \                        The location on the filesystem to save the converted\n\
+  \                        vectors (default:\n                        Current_working_directory/generated_samples/).\n\
+  \                        WARNING: Existing files in this directory in the\n    \
+  \                    formats *_locations.npy and *_data.npy will be\n          \
+  \              deleted!\n  --coverage COVERAGE   Required coverage for both the\
+  \ tumor and the normal.\n                        Any coverage in excess of this\
+  \ limit will be randomly\n                        downsampled\n  --cores CORES \
+  \        Number of cores to utilize in parallel\n\nSingle Sample Mode:\n  --tumor-bam\
+  \ TUMOR_BAM\n                        Tumor bam file for conversion\n  --normal-bam\
+  \ NORMAL_BAM\n                        Matched normal bam file for conversion\n \
+  \ --case-id CASE_ID     Unique identifier for the single sample/case\n         \
+  \               submitted. This will be the filename for any saved\n           \
+  \             results (default: TestCase)\n  --norm-case-id NORM_CASE_ID\n     \
+  \                   Normal case name (default: None)\n\nBatch Mode:\n  --case-list\
+  \ CASE_LIST\n                        Case List for generating sample vectors in\
+  \ bulk, if\n                        specified all other input file args will be\
+  \ ignored\n  --name NAME           name of the run submitted using --case-list,\
+  \ this will\n                        be the filename for any saved results in the\
+  \ tsv\n                        format (default: BATCH)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/mimsi:0.4.3--pyhdfd78af_0

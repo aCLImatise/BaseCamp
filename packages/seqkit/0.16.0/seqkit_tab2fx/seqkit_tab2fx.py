@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import String, Int, Boolean, File
+
+Seqkit_Tab2Fx_V0_1_0 = CommandToolBuilder(tool="seqkit_tab2fx", base_command=["seqkit", "tab2fx"], inputs=[ToolInput(tag="in_comment_line_prefix", input_type=String(optional=True), prefix="--comment-line-prefix", doc=InputDocumentation(doc="comment line prefix (default [#,//])")), ToolInput(tag="in_alphabet_guess_seq_length", input_type=Int(optional=True), prefix="--alphabet-guess-seq-length", doc=InputDocumentation(doc="length of sequence prefix of the first FASTA record based on which seqkit guesses the sequence type (0 for whole seq) (default 10000)")), ToolInput(tag="in_id_ncbi", input_type=Boolean(optional=True), prefix="--id-ncbi", doc=InputDocumentation(doc="FASTA head is NCBI-style, e.g. >gi|110645304|ref|NC_002516.2| Pseud...")), ToolInput(tag="in_id_regexp", input_type=String(optional=True), prefix="--id-regexp", doc=InputDocumentation(doc="regular expression for parsing ID (default '^(\\S+)\\s?')")), ToolInput(tag="in_in_file_list", input_type=File(optional=True), prefix="--infile-list", doc=InputDocumentation(doc="file of input files list (one file per line), if given, they are appended to files from cli arguments")), ToolInput(tag="in_line_width", input_type=Int(optional=True), prefix="--line-width", doc=InputDocumentation(doc="line width when outputing FASTA format (0 for no wrap) (default 60)")), ToolInput(tag="in_out_file", input_type=File(optional=True), prefix="--out-file", doc=InputDocumentation(doc="out file ('-' for stdout, suffix .gz for gzipped out) (default '-')")), ToolInput(tag="in_quiet", input_type=Boolean(optional=True), prefix="--quiet", doc=InputDocumentation(doc="be quiet and do not show extra information")), ToolInput(tag="in_seq_type", input_type=String(optional=True), prefix="--seq-type", doc=InputDocumentation(doc="sequence type (dna|rna|protein|unlimit|auto) (for auto, it automatically detect by the first sequence) (default 'auto')")), ToolInput(tag="in_threads", input_type=Int(optional=True), prefix="--threads", doc=InputDocumentation(doc="number of CPUs. (default value: 1 for single-CPU PC, 2 for others. can also set with environment variable SEQKIT_THREADS) (default 2)"))], outputs=[ToolOutput(tag="out_out_file", output_type=File(optional=True), selector=InputSelector(input_to_select="in_out_file", type_hint=File()), doc=OutputDocumentation(doc="out file ('-' for stdout, suffix .gz for gzipped out) (default '-')"))], container="quay.io/biocontainers/seqkit:0.16.0--h9ee0642_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Seqkit_Tab2Fx_V0_1_0().translate("wdl")
+

@@ -1,0 +1,180 @@
+!Command
+command:
+- bcbio_nextgen.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: global_config
+  description: "Global YAML configuration file specifying details\nabout the system\
+    \ (optional, defaults to installed\nbcbio_system.yaml)"
+- !Positional
+  optional: false
+  position: 1
+  name: fc_dir
+  description: "A directory of Illumina output or fastq files to\nprocess (optional)"
+- !Positional
+  optional: false
+  position: 2
+  name: run_config
+  description: "YAML file with details about samples to process\n(required, unless\
+    \ using Galaxy LIMS as input)"
+- !Positional
+  optional: false
+  position: 0
+  name: directory
+  description: -v, --version         Print current version
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --numcores
+  description: Total cores to use for processing
+  args: !SimpleFlagArg
+    name: NUMCORES
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --paralleltype
+  description: Approach to parallelization
+  args: !ChoiceFlagArg
+    choices: !!set
+      ipython:
+      local:
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --scheduler
+  description: Scheduler to use for ipython parallel
+  args: !ChoiceFlagArg
+    choices: !!set
+      slurm:
+      pbspro:
+      torque:
+      lsf:
+      sge:
+- !Flag
+  optional: true
+  synonyms:
+  - --local_controller
+  description: run controller locally
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --queue
+  description: Scheduler queue to run jobs on, for ipython parallel
+  args: !SimpleFlagArg
+    name: QUEUE
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --resources
+  description: "Cluster specific resources specifications. Can be\nspecified multiple\
+    \ times. Supports SGE, Torque, LSF\nand SLURM parameters."
+  args: !SimpleFlagArg
+    name: RESOURCES
+- !Flag
+  optional: true
+  synonyms:
+  - --timeout
+  description: "Number of minutes before cluster startup times out.\nDefaults to 15"
+  args: !SimpleFlagArg
+    name: TIMEOUT
+- !Flag
+  optional: true
+  synonyms:
+  - --retries
+  description: "Number of retries of failed tasks during distributed\nprocessing.\
+    \ Default 0 (no retries)"
+  args: !SimpleFlagArg
+    name: RETRIES
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --tag
+  description: Tag name to label jobs on the cluster
+  args: !SimpleFlagArg
+    name: TAG
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --workflow
+  description: Run a workflow with the given commandline arguments
+  args: !SimpleFlagArg
+    name: WORKFLOW
+- !Flag
+  optional: true
+  synonyms:
+  - --workdir
+  description: Directory to process in. Defaults to current working
+  args: !SimpleFlagArg
+    name: WORKDIR
+- !Flag
+  optional: true
+  synonyms:
+  - --force-single
+  description: Treat all files as single reads
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --separators
+  description: "comma separated list of separators that indicates\npaired files.\n"
+  args: !SimpleFlagArg
+    name: SEPARATORS
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: bcbio_nextgen.py [-h] [-n NUMCORES] [-t {local,ipython}]\n    \
+  \                    [-s {lsf,sge,torque,slurm,pbspro}]\n                      \
+  \  [--local_controller] [-q QUEUE] [-r RESOURCES]\n                        [--timeout\
+  \ TIMEOUT] [--retries RETRIES] [-p TAG]\n                        [-w WORKFLOW] [--workdir\
+  \ WORKDIR] [-v]\n                        [--force-single] [--separators SEPARATORS]\n\
+  \                        [global_config] [fc_dir] [run_config [run_config ...]]\n\
+  \nCommunity developed high throughput sequencing analysis.\n\npositional arguments:\n\
+  \  global_config         Global YAML configuration file specifying details\n   \
+  \                     about the system (optional, defaults to installed\n      \
+  \                  bcbio_system.yaml)\n  fc_dir                A directory of Illumina\
+  \ output or fastq files to\n                        process (optional)\n  run_config\
+  \            YAML file with details about samples to process\n                 \
+  \       (required, unless using Galaxy LIMS as input)\n\noptional arguments:\n \
+  \ -h, --help            show this help message and exit\n  -n NUMCORES, --numcores\
+  \ NUMCORES\n                        Total cores to use for processing\n  -t {local,ipython},\
+  \ --paralleltype {local,ipython}\n                        Approach to parallelization\n\
+  \  -s {lsf,sge,torque,slurm,pbspro}, --scheduler {lsf,sge,torque,slurm,pbspro}\n\
+  \                        Scheduler to use for ipython parallel\n  --local_controller\
+  \    run controller locally\n  -q QUEUE, --queue QUEUE\n                       \
+  \ Scheduler queue to run jobs on, for ipython parallel\n  -r RESOURCES, --resources\
+  \ RESOURCES\n                        Cluster specific resources specifications.\
+  \ Can be\n                        specified multiple times. Supports SGE, Torque,\
+  \ LSF\n                        and SLURM parameters.\n  --timeout TIMEOUT     Number\
+  \ of minutes before cluster startup times out.\n                        Defaults\
+  \ to 15\n  --retries RETRIES     Number of retries of failed tasks during distributed\n\
+  \                        processing. Default 0 (no retries)\n  -p TAG, --tag TAG\
+  \     Tag name to label jobs on the cluster\n  -w WORKFLOW, --workflow WORKFLOW\n\
+  \                        Run a workflow with the given commandline arguments\n \
+  \ --workdir WORKDIR     Directory to process in. Defaults to current working\n \
+  \                       directory\n  -v, --version         Print current version\n\
+  \  --force-single        Treat all files as single reads\n  --separators SEPARATORS\n\
+  \                        comma separated list of separators that indicates\n   \
+  \                     paired files.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/bcbio-nextgen:1.2.8--pyh5e36f6f_0

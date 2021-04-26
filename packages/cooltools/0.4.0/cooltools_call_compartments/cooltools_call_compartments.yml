@@ -1,0 +1,82 @@
+!Command
+command:
+- cooltools
+- call-compartments
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: track-name.
+  description: 'Options:'
+- !Positional
+  optional: false
+  position: 1
+  name: eigenvectors
+  description: --contact-type [cis|trans]    Type of the contacts perform eigen-value
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --reference-track
+  description: Reference track for orienting and ranking
+  args: !SimpleFlagArg
+    name: TRACK_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --n-eigs
+  description: "Number of eigenvectors to compute.  [default:\n3]"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: Enable verbose output
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out-prefix
+  description: "Save compartment track as a BED-like file.\n[required]"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --bigwig
+  description: Also save compartment track as a bigWig file.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: cooltools call-compartments [OPTIONS] COOL_PATH\n\n  Perform eigen\
+  \ value decomposition on a cooler matrix to calculate\n  compartment signal by finding\
+  \ the eigenvector that correlates best with\n  the phasing track.\n\n  COOL_PATH\
+  \ : the paths to a .cool file with a balanced Hi-C map.\n\n  TRACK_PATH : the path\
+  \ to a BedGraph-like file that stores phasing track as\n  track-name named column.\n\
+  \n  BedGraph-like format assumes tab-separated columns chrom, start, stop and\n\
+  \  track-name.\n\nOptions:\n  --reference-track TRACK_PATH  Reference track for\
+  \ orienting and ranking\n                                eigenvectors\n\n  --contact-type\
+  \ [cis|trans]    Type of the contacts perform eigen-value\n                    \
+  \            decomposition on.  [default: cis]\n\n  --n-eigs INTEGER           \
+  \   Number of eigenvectors to compute.  [default:\n                            \
+  \    3]\n\n  -v, --verbose                 Enable verbose output\n  -o, --out-prefix\
+  \ TEXT         Save compartment track as a BED-like file.\n                    \
+  \            [required]\n\n  --bigwig                      Also save compartment\
+  \ track as a bigWig file.\n  -h, --help                    Show this message and\
+  \ exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/cooltools:0.4.0--py39hcbe4a3b_0

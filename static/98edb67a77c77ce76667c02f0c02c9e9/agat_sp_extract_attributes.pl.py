@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import File, Int, Boolean, String
+
+Agat_Sp_Extract_Attributes_Pl_V0_1_0 = CommandToolBuilder(tool="agat_sp_extract_attributes.pl", base_command=["agat_sp_extract_attributes.pl"], inputs=[ToolInput(tag="in_gff", input_type=File(optional=True), prefix="--gff", doc=InputDocumentation(doc="Input GTF/GFF file.")), ToolInput(tag="in_primary_tag_option", input_type=Int(optional=True), prefix="-p", doc=InputDocumentation(doc="primary tag option, case insensitive, list. Allow to specied the\nfeature types that will be handled. You can specified a specific\nfeature by given its primary tag name (column 3) as: cds, Gene,\nMrNa You can specify directly all the feature of a particular\nlevel: level2=mRNA,ncRNA,tRNA,etc level3=CDS,exon,UTR,etc By\ndefault all feature are taking in account. fill the option by\nthe value 'all' will have the same behaviour.")), ToolInput(tag="in_attribute", input_type=Boolean(optional=True), prefix="--attribute", doc=InputDocumentation(doc="attribute tag. The value of the attribute tag specified will be\nextracted from the feature type specified by the option -p. List\nof attributes must be coma separated.")), ToolInput(tag="in_merge", input_type=File(optional=True), prefix="--merge", doc=InputDocumentation(doc="By default the values of each attribute tag is writen in its\ndedicated file. To write the values of all tags in only one file\nuse this option.")), ToolInput(tag="in_default_when_attribute", input_type=Boolean(optional=True), prefix="-d", doc=InputDocumentation(doc="By default when an attribute is not found for a feature, a dot\n(.) is reported. If you don't want anything to be printed in\nsuch case use this option.")), ToolInput(tag="in_outfile", input_type=File(optional=True), prefix="--outfile", doc=InputDocumentation(doc="Output GFF file. If no output file is specified, the output will\nbe written to STDOUT.")), ToolInput(tag="in_agat_sp_extract_attributes_do_tpl", input_type=String(), position=0, doc=InputDocumentation(doc="Description:"))], outputs=[ToolOutput(tag="out_outfile", output_type=File(optional=True), selector=InputSelector(input_to_select="in_outfile", type_hint=File()), doc=OutputDocumentation(doc="Output GFF file. If no output file is specified, the output will\nbe written to STDOUT."))], container="quay.io/biocontainers/agat:0.6.1--pl5262r35hdfd78af_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Agat_Sp_Extract_Attributes_Pl_V0_1_0().translate("wdl")
+

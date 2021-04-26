@@ -1,0 +1,138 @@
+!Command
+command:
+- cooltools
+- logbin-expected
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: name.
+  description: 'OUTPUT_PREFIX: Output file name prefix to store the logbinned expected'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --bins-per-order-magnitude
+  description: "How many bins per order of magnitude.\nDefault of 10 has a ratio of\
+    \ neighboring\nbins of about 1.25  [default: 10]"
+  args: !SimpleFlagArg
+    name: bins_per_order_magnitude
+- !Flag
+  optional: true
+  synonyms:
+  - --bin-layout
+  description: "'fixed' means that bins are exactly the same\nfor different datasets,\
+    \ and only depend on\nbins_per_order_magnitude 'longest_regio'\nmeans that the\
+    \ last bin will end at size of\nthe longest region.  GOOD: the last bin will\n\
+    have as much data as possible.  BAD: bin\nedges will end up different for different\n\
+    datasets, you can't divide them by each\nother  [default: fixed]"
+  args: !SimpleFlagArg
+    name: bin_layout
+- !Flag
+  optional: true
+  synonyms:
+  - --min-nvalid
+  description: "For each region, throw out bins (log-spaced)\nthat have less than\
+    \ min_nvalid valid pixels.\nThis will ensure that each entree in Pc by\nregion\
+    \ has at least n_valid valid pixels.\nDon't set it to zero, or it will introduce\n\
+    bugs. Setting it to 1 is OK, but not\nrecommended.  [default: 200]"
+  args: !SimpleFlagArg
+    name: min_nvalid
+- !Flag
+  optional: true
+  synonyms:
+  - --min-count
+  description: "If counts are found in the data, then for\neach region, throw out\
+    \ bins (log-spaced)\nthat have more than min_counts of counts.sum\n(raw Hi-C counts).\
+    \ This will ensure that\neach entree in P(s) by region has at least\nmin_count\
+    \ raw Hi-C reads  [default: 50]"
+  args: !SimpleFlagArg
+    name: min_count
+- !Flag
+  optional: true
+  synonyms:
+  - --spread-funcs
+  description: "A way to estimate the spread of the P(s)\ncurves between regions.\
+    \ * 'minmax' - the\nminimum/maximum of by-region P(s) * 'std' -\nweighted standard\
+    \ deviation of P(s) curves\n(may produce negative results)  * 'logstd'\n(recommended)\
+    \ weighted standard deviation in\nlogspace  [default: logstd]"
+  args: !SimpleFlagArg
+    name: spread_funcs
+- !Flag
+  optional: true
+  synonyms:
+  - --spread-funcs-slope
+  description: "Same as spread-funcs, but for slope\n(derivative) ratehr than P(s)\
+    \  [default:\nstd]"
+  args: !SimpleFlagArg
+    name: spread_funcs_slope
+- !Flag
+  optional: true
+  synonyms:
+  - --resolution
+  description: "Data resolution in bp. If provided,\nadditonal column of separation\
+    \ in bp (s_bp)\nwill be added to the outputs"
+  args: !SimpleFlagArg
+    name: resolution
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: cooltools logbin-expected [OPTIONS] EXPECTED_PATH OUTPUT_PREFIX\n\
+  \n  Logarithmically bin expected values generated using compute_expected for\n \
+  \ cis data.\n\n  This smoothes the data, resulting in clearer plots and more robust\n\
+  \  analysis results. Also calculates derivative after gaussian smoothing. For\n\
+  \  a very detailed escription, see https://github.com/open2c/cooltools/blob/5\n\
+  \  1b95c3bed8d00a5f1f91370fc5192d9a7face7c/cooltools/expected.py#L988\n\n  EXPECTED_PATH\
+  \ : The paths to a .tsv file with output of compute_expected.\n  Must include a\
+  \ header. Use the '::' syntax to specify a summary column\n  name.\n\n  OUTPUT_PREFIX:\
+  \ Output file name prefix to store the logbinned expected\n  (prefix.log.tsv) and\
+  \ derivative (prefix.der.tsv) in the tsv format.\"\n\nOptions:\n  --bins-per-order-magnitude\
+  \ bins_per_order_magnitude\n                                  How many bins per\
+  \ order of magnitude.\n                                  Default of 10 has a ratio\
+  \ of neighboring\n                                  bins of about 1.25  [default:\
+  \ 10]\n\n  --bin-layout bin_layout         'fixed' means that bins are exactly the\
+  \ same\n                                  for different datasets, and only depend\
+  \ on\n                                  bins_per_order_magnitude 'longest_regio'\n\
+  \                                  means that the last bin will end at size of\n\
+  \                                  the longest region.  GOOD: the last bin will\n\
+  \                                  have as much data as possible.  BAD: bin\n  \
+  \                                edges will end up different for different\n   \
+  \                               datasets, you can't divide them by each\n      \
+  \                            other  [default: fixed]\n\n  --min-nvalid min_nvalid\
+  \         For each region, throw out bins (log-spaced)\n                       \
+  \           that have less than min_nvalid valid pixels.\n                     \
+  \             This will ensure that each entree in Pc by\n                     \
+  \             region has at least n_valid valid pixels.\n                      \
+  \            Don't set it to zero, or it will introduce\n                      \
+  \            bugs. Setting it to 1 is OK, but not\n                            \
+  \      recommended.  [default: 200]\n\n  --min-count min_count           If counts\
+  \ are found in the data, then for\n                                  each region,\
+  \ throw out bins (log-spaced)\n                                  that have more\
+  \ than min_counts of counts.sum\n                                  (raw Hi-C counts).\
+  \ This will ensure that\n                                  each entree in P(s) by\
+  \ region has at least\n                                  min_count raw Hi-C reads\
+  \  [default: 50]\n\n  --spread-funcs spread_funcs     A way to estimate the spread\
+  \ of the P(s)\n                                  curves between regions. * 'minmax'\
+  \ - the\n                                  minimum/maximum of by-region P(s) * 'std'\
+  \ -\n                                  weighted standard deviation of P(s) curves\n\
+  \                                  (may produce negative results)  * 'logstd'\n\
+  \                                  (recommended) weighted standard deviation in\n\
+  \                                  logspace  [default: logstd]\n\n  --spread-funcs-slope\
+  \ spread_funcs_slope\n                                  Same as spread-funcs, but\
+  \ for slope\n                                  (derivative) ratehr than P(s)  [default:\n\
+  \                                  std]\n\n  --resolution resolution         Data\
+  \ resolution in bp. If provided,\n                                  additonal column\
+  \ of separation in bp (s_bp)\n                                  will be added to\
+  \ the outputs\n\n  -h, --help                      Show this message and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/cooltools:0.4.0--py39hcbe4a3b_0

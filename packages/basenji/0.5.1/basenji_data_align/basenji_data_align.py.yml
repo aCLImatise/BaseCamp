@@ -1,0 +1,176 @@
+!Command
+command:
+- basenji_data_align.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: NA
+  description: --umap_t=UMAP_T       Remove sequences with more than this unmappable
+    bin %
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  description: Genome labels in output
+  args: !SimpleFlagArg
+    name: GENOME_LABELS
+- !Flag
+  optional: true
+  synonyms:
+  - --break
+  description: 'Break in half contigs above length [Default: none]'
+  args: !SimpleFlagArg
+    name: BREAK_T
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --crop
+  description: 'Crop bp off each end [Default: 0]'
+  args: !SimpleFlagArg
+    name: CROP_BP
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  description: Down-sample the segments
+  args: !SimpleFlagArg
+    name: SAMPLE_PCT
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: 'Generate cross fold split [Default: none]'
+  args: !SimpleFlagArg
+    name: FOLDS
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  description: "Comma-separated list of assembly gaps BED files\n[Default: none]"
+  args: !SimpleFlagArg
+    name: GAP_FILES
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  description: 'Sequence length [Default: 131072]'
+  args: !SimpleFlagArg
+    name: SEQ_LENGTH
+- !Flag
+  optional: true
+  synonyms:
+  - --nf
+  description: 'Alignment net fill size minimum [Default: 100000]'
+  args: !SimpleFlagArg
+    name: NET_FILL_MIN
+- !Flag
+  optional: true
+  synonyms:
+  - --no
+  description: "Alignment net and contig overlap minimum [Default:\n1024]"
+  args: !SimpleFlagArg
+    name: NET_OLAP_MIN
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: 'Output directory [Default: align_out]'
+  args: !SimpleFlagArg
+    name: OUT_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - --seed
+  description: 'Random seed [Default: 44]'
+  args: !SimpleFlagArg
+    name: SEED
+- !Flag
+  optional: true
+  synonyms:
+  - --snap
+  description: "Snap sequences to multiple of the given value\n[Default: 1]"
+  args: !SimpleFlagArg
+    name: SNAP
+- !Flag
+  optional: true
+  synonyms:
+  - --stride
+  - --stride_train
+  description: "Stride to advance train sequences [Default:\nseq_length]"
+  args: !SimpleFlagArg
+    name: STRIDE_TRAIN
+- !Flag
+  optional: true
+  synonyms:
+  - --stride_test
+  description: "Stride to advance valid and test sequences [Default:\n1.0]"
+  args: !SimpleFlagArg
+    name: STRIDE_TEST
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  description: 'Proportion of the data for testing [Default: 0.1]'
+  args: !SimpleFlagArg
+    name: TEST_PCT
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  description: Comma-separated genome unmappable segments to set to
+  args: !SimpleFlagArg
+    name: UMAP_BEDS
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  description: 'Sum pool width [Default: 128]'
+  args: !SimpleFlagArg
+    name: POOL_WIDTH
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: 'Proportion of the data for validation [Default: 0.1]'
+  args: !SimpleFlagArg
+    name: VALID_PCT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: basenji_data_align.py [options] <align_net> <fasta0_file,fasta1_file>\n\
+  \nOptions:\n  -h, --help            show this help message and exit\n  -a GENOME_LABELS\
+  \      Genome labels in output\n  --break=BREAK_T       Break in half contigs above\
+  \ length [Default: none]\n  -c CROP_BP, --crop=CROP_BP\n                       \
+  \ Crop bp off each end [Default: 0]\n  -d SAMPLE_PCT         Down-sample the segments\n\
+  \  -f FOLDS              Generate cross fold split [Default: none]\n  -g GAP_FILES\
+  \          Comma-separated list of assembly gaps BED files\n                   \
+  \     [Default: none]\n  -l SEQ_LENGTH         Sequence length [Default: 131072]\n\
+  \  --nf=NET_FILL_MIN     Alignment net fill size minimum [Default: 100000]\n  --no=NET_OLAP_MIN\
+  \     Alignment net and contig overlap minimum [Default:\n                     \
+  \   1024]\n  -o OUT_DIR            Output directory [Default: align_out]\n  --seed=SEED\
+  \           Random seed [Default: 44]\n  --snap=SNAP           Snap sequences to\
+  \ multiple of the given value\n                        [Default: 1]\n  --stride=STRIDE_TRAIN,\
+  \ --stride_train=STRIDE_TRAIN\n                        Stride to advance train sequences\
+  \ [Default:\n                        seq_length]\n  --stride_test=STRIDE_TEST\n\
+  \                        Stride to advance valid and test sequences [Default:\n\
+  \                        1.0]\n  -t TEST_PCT           Proportion of the data for\
+  \ testing [Default: 0.1]\n  -u UMAP_BEDS          Comma-separated genome unmappable\
+  \ segments to set to\n                        NA\n  --umap_t=UMAP_T       Remove\
+  \ sequences with more than this unmappable bin %\n                        [Default:\
+  \ 0.5]\n  -w POOL_WIDTH         Sum pool width [Default: 128]\n  -v VALID_PCT  \
+  \        Proportion of the data for validation [Default: 0.1]\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/basenji:0.5.1--pyhdfd78af_0

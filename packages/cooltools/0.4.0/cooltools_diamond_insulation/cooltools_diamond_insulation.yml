@@ -1,0 +1,106 @@
+!Command
+command:
+- cooltools
+- diamond-insulation
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: IN_PATH
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: WINDOW
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --window-pixels
+  description: set, the window sizes must          be provided in
+  args: !SimpleFlagArg
+    name: is
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: "Specify output file name to store the\ninsulation in a tsv format."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --ignore-diags
+  description: "The number of diagonals to ignore. By\ndefault, equals the number\
+    \ of diagonals\nignored during IC balancing."
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --min-frac-valid-pixels
+  description: "The minimal fraction of valid pixels in a\nsliding diamond. Used to\
+    \ mask bins during\nboundary detection.  [default: 0.66]"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --min-dist-bad-bin
+  description: "The minimal allowed distance to a bad bin.\nUsed to mask bins during\
+    \ boundary detection.\n[default: 0]"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --append-raw-scores
+  description: "Append columns with raw scores (sum_counts,\nsum_balanced, n_pixels)\
+    \ to the output table."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  description: Report real-time progress.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: cooltools diamond-insulation [OPTIONS] IN_PATH WINDOW\n\n  Calculate\
+  \ the diamond insulation scores and call insulating boundaries.\n\n  IN_PATH : The\
+  \ paths to a .cool file with a balanced Hi-C map.\n\n  WINDOW : The window size\
+  \ for the insulation score calculations.\n  Multiple space-separated values can\
+  \ be provided.          By default, the\n  window size must be provided in units\
+  \ of bp.          When the flag\n  --window-pixels is set, the window sizes must\
+  \          be provided in\n  units of pixels instead.\n\nOptions:\n  -o, --output\
+  \ TEXT              Specify output file name to store the\n                    \
+  \             insulation in a tsv format.\n\n  --ignore-diags INTEGER         The\
+  \ number of diagonals to ignore. By\n                                 default, equals\
+  \ the number of diagonals\n                                 ignored during IC balancing.\n\
+  \n  --min-frac-valid-pixels FLOAT  The minimal fraction of valid pixels in a\n \
+  \                                sliding diamond. Used to mask bins during\n   \
+  \                              boundary detection.  [default: 0.66]\n\n  --min-dist-bad-bin\
+  \ INTEGER     The minimal allowed distance to a bad bin.\n                     \
+  \            Used to mask bins during boundary detection.\n                    \
+  \             [default: 0]\n\n  --window-pixels                If set then the window\
+  \ sizes are provided in\n                                 units of pixels.\n\n \
+  \ --append-raw-scores            Append columns with raw scores (sum_counts,\n \
+  \                                sum_balanced, n_pixels) to the output table.\n\n\
+  \  --chunksize INTEGER            [default: 20000000]\n  --verbose             \
+  \         Report real-time progress.\n  -h, --help                     Show this\
+  \ message and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/cooltools:0.4.0--py39hcbe4a3b_0

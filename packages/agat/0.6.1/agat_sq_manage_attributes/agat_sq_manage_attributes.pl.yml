@@ -1,0 +1,166 @@
+!Command
+command:
+- agat_sq_manage_attributes.pl
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: agat_sp_manage_attributes.pl
+  description: 'Description:'
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --gff
+  - -f
+  description: Input GTF/GFF file.
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --type
+  - -l
+  description: "primary tag option, case insensitive, list. Allow to specied the\n\
+    feature types that will be handled. You can specified a specific\nfeature by given\
+    \ its primary tag name (column 3) as: cds, Gene,\nMrNa You can specify directly\
+    \ all the feature of a particular\nlevel: level2=mRNA,ncRNA,tRNA,etc level3=CDS,exon,UTR,etc\
+    \ By\ndefault all feature are taking in account."
+  args: !SimpleFlagArg
+    name: or
+- !Flag
+  optional: true
+  synonyms:
+  - --tag
+  - --att
+  description: "Attributes with the tag specified will be removed from the\nfeature\
+    \ type specified by the option p (primary tag). List of\ntag must be coma separated.\
+    \ /!\\\\ You must use \"\" if name\ncontains spaces. Instead to remove an attribute,\
+    \ you can replace\nits Tag by a new Tag using this formulation tagName/newTagName.\n\
+    To remove all attributes non mandatory (only ID and Parent are\nmandatory) you\
+    \ can use the option with <all_attributes>\nparameter."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --add
+  description: "Attribute with the tag specified will be added if doesn't exist.\n\
+    The value will be 'empty'."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --cp
+  description: "When tags specied are with this form: tagName/newTagName. By\nusing\
+    \ this <cp> parameter, the attribute with the tag tagName\nwill be duplicated\
+    \ with the new tag newTagName if no attribute\nwith the tag newTagName already\
+    \ exits."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --overwrite
+  description: "When using --add parameter, if an attribute with the specificed\n\
+    tag already exists, it will not be modified. When using --cp\nparameter, if an\
+    \ attribute with the specificed newTagName\nalready exists, it will not be modified.\
+    \ So using the\n--overwrite parameter allows to overwrite the value of the\nexisting\
+    \ attribute."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --value
+  description: "When a value is provided the attribute is taken into\naccount only\
+    \ if the attribute contains (or match) a specific\nvalue"
+  args: !SimpleFlagArg
+    name: String.
+- !Flag
+  optional: true
+  synonyms:
+  - --strategy
+  description: "String. [Default equal]. Strategy to use when --value parameter\n\
+    is in use. Can be equal or match. Equal => the attribute value\nmust be identical.\
+    \ Match => the attribute value must match"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  - --out
+  - --outfile
+  description: "Output GFF file. If no output file is specified, the output will\n\
+    be written to STDOUT."
+  args: !SimpleFlagArg
+    name: or
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Display this helpful text.
+  args: !SimpleFlagArg
+    name: or
+usage_flag:
+version_flag:
+help_text: "\n ------------------------------------------------------------------------------\n\
+  |   Another GFF Analysis Toolkit (AGAT) - Version: v0.6.0                      |\n\
+  |   https://github.com/NBISweden/AGAT                                          |\n\
+  |   National Bioinformatics Infrastructure Sweden (NBIS) - www.nbis.se         |\n\
+  \ ------------------------------------------------------------------------------\n\
+  \n\nName:\n    agat_sp_manage_attributes.pl\n\nDescription:\n    The script removes\
+  \ choosen attributes of selected features. It can also\n    create new attribute\
+  \ with 'empty' value, or copy paste an existing\n    attribute using a new specified\
+  \ tag. Attribute in a gff file have this\n    shape (2 attributes here): tag=value;tag=value\
+  \ and are stored within the\n    9th column.\n\nUsage:\n        agat_sq_manage_attributes.pl\
+  \ --gff file.gff  --att locus_tag,product,name/NewName -p level2,cds,exon [ -o outfile\
+  \ ]\n        agat_sq_manage_attributes.pl --help\n\nOptions:\n    --gff or -f\n\
+  \            Input GTF/GFF file.\n\n    -p, --type or -l\n            primary tag\
+  \ option, case insensitive, list. Allow to specied the\n            feature types\
+  \ that will be handled. You can specified a specific\n            feature by given\
+  \ its primary tag name (column 3) as: cds, Gene,\n            MrNa You can specify\
+  \ directly all the feature of a particular\n            level: level2=mRNA,ncRNA,tRNA,etc\
+  \ level3=CDS,exon,UTR,etc By\n            default all feature are taking in account.\n\
+  \n    --tag, --att\n            Attributes with the tag specified will be removed\
+  \ from the\n            feature type specified by the option p (primary tag). List\
+  \ of\n            tag must be coma separated. /!\\\\ You must use \"\" if name\n\
+  \            contains spaces. Instead to remove an attribute, you can replace\n\
+  \            its Tag by a new Tag using this formulation tagName/newTagName.\n \
+  \           To remove all attributes non mandatory (only ID and Parent are\n   \
+  \         mandatory) you can use the option with <all_attributes>\n            parameter.\n\
+  \n    --add   Attribute with the tag specified will be added if doesn't exist.\n\
+  \            The value will be 'empty'.\n\n    --cp    When tags specied are with\
+  \ this form: tagName/newTagName. By\n            using this <cp> parameter, the\
+  \ attribute with the tag tagName\n            will be duplicated with the new tag\
+  \ newTagName if no attribute\n            with the tag newTagName already exits.\n\
+  \n    --overwrite\n            When using --add parameter, if an attribute with\
+  \ the specificed\n            tag already exists, it will not be modified. When\
+  \ using --cp\n            parameter, if an attribute with the specificed newTagName\n\
+  \            already exists, it will not be modified. So using the\n           \
+  \ --overwrite parameter allows to overwrite the value of the\n            existing\
+  \ attribute.\n\n    --value String. When a value is provided the attribute is taken\
+  \ into\n            account only if the attribute contains (or match) a specific\n\
+  \            value\n\n    --strategy\n            String. [Default equal]. Strategy\
+  \ to use when --value parameter\n            is in use. Can be equal or match. Equal\
+  \ => the attribute value\n            must be identical. Match => the attribute\
+  \ value must match\n\n    -o , --output , --out or --outfile\n            Output\
+  \ GFF file. If no output file is specified, the output will\n            be written\
+  \ to STDOUT.\n\n    -h or --help\n            Display this helpful text.\n\nFeedback:\n\
+  \  Did you find a bug?:\n    Do not hesitate to report bugs to help us keep track\
+  \ of the bugs and\n    their resolution. Please use the GitHub issue tracking system\
+  \ available\n    at this address:\n\n                https://github.com/NBISweden/AGAT/issues\n\
+  \n     Ensure that the bug was not already reported by searching under Issues.\n\
+  \     If you're unable to find an (open) issue addressing the problem, open a new\
+  \ one.\n     Try as much as possible to include in the issue when relevant:\n  \
+  \   - a clear description,\n     - as much relevant information as possible,\n \
+  \    - the command used,\n     - a data sample,\n     - an explanation of the expected\
+  \ behaviour that is not occurring.\n\n  Do you want to contribute?:\n    You are\
+  \ very welcome, visit this address for the Contributing\n    guidelines:\n    https://github.com/NBISweden/AGAT/blob/master/CONTRIBUTING.md\n\
+  \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/agat:0.6.1--pl5262r35hdfd78af_0

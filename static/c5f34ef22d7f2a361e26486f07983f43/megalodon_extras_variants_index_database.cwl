@@ -1,0 +1,32 @@
+class: CommandLineTool
+id: megalodon_extras_variants_index_database.cwl
+inputs:
+- id: in_megalodon_directory
+  doc: "Megalodon output directory containing per-read variant\ndatabase to be indexed.\
+    \ Default: megalodon_results"
+  type: Directory?
+  inputBinding:
+    prefix: --megalodon-directory
+- id: in_output_suffix
+  doc: "Log file suffix. Default: var_index_database\n"
+  type: File?
+  inputBinding:
+    prefix: --output-suffix
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_megalodon_directory
+  doc: "Megalodon output directory containing per-read variant\ndatabase to be indexed.\
+    \ Default: megalodon_results"
+  type: Directory?
+  outputBinding:
+    glob: $(inputs.in_megalodon_directory)
+hints:
+- class: DockerRequirement
+  dockerPull: quay.io/biocontainers/megalodon:2.3.1--py38h4a8c8d9_0
+cwlVersion: v1.1
+baseCommand:
+- megalodon_extras
+- variants
+- index_database

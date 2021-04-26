@@ -1,0 +1,149 @@
+!Command
+command:
+- bam_cov.py
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: bam_file
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: output_file
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  description: "Normalize coverage for a cutting bias model for k-mers\n[Default:\
+    \ none]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  description: "Shift the event to the fragment center, learning the\ndistribution\
+    \ for single end reads [Default: False]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --clip_max
+  description: "Clip coverage using adaptively-determined thresholds\nto this maximum\
+    \ [Default: none]"
+  args: !SimpleFlagArg
+    name: CLIP_MAX
+- !Flag
+  optional: true
+  synonyms:
+  - --clip_multi
+  description: "Maximum coverage at a single position from multi-\nmapping reads [Default:\
+    \ none]"
+  args: !SimpleFlagArg
+    name: CLIP_MAX_MULTI
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  description: "FASTA to obtain sequence to control for GC% [Default:\nnone]"
+  args: !SimpleFlagArg
+    name: FASTA_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  description: 'Control for local GC% [Default: False]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  description: "Iterations of EM to distribute multi-mapping reads\n[Default: 0]"
+  args: !SimpleFlagArg
+    name: MULTI_EM
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  description: 'Output directory [Default: bam_cov]'
+  args: !SimpleFlagArg
+    name: OUT_DIR
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  description: 'Filter alignments for MAPQ >= threshold [Default: 2]'
+  args: !SimpleFlagArg
+    name: MAPQ_T
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  description: "Gaussian standard deviation to smooth coverage\nestimates with [Default:\
+    \ 32]"
+  args: !SimpleFlagArg
+    name: SMOOTH_SD
+- !Flag
+  optional: true
+  synonyms:
+  - --strand
+  description: "Stranded sequencing, output forward and reverse\ncoverage tracks [Default:\
+    \ False]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  description: 'Alignments are unsorted [Default: False]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: 'Fragment shift for forward end read [Default: 0]'
+  args: !SimpleFlagArg
+    name: SHIFT_FORWARD_END
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  description: 'Fragment shift for reverse end read [Default: 0]'
+  args: !SimpleFlagArg
+    name: SHIFT_REVERSE_END
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: bam_cov.py [options] <bam_file> <output_file>\n\nOptions:\n  -h,\
+  \ --help            show this help message and exit\n  -b                    Normalize\
+  \ coverage for a cutting bias model for k-mers\n                        [Default:\
+  \ none]\n  -c                    Shift the event to the fragment center, learning\
+  \ the\n                        distribution for single end reads [Default: False]\n\
+  \  --clip_max=CLIP_MAX   Clip coverage using adaptively-determined thresholds\n\
+  \                        to this maximum [Default: none]\n  --clip_multi=CLIP_MAX_MULTI\n\
+  \                        Maximum coverage at a single position from multi-\n   \
+  \                     mapping reads [Default: none]\n  -f FASTA_FILE         FASTA\
+  \ to obtain sequence to control for GC% [Default:\n                        none]\n\
+  \  -g                    Control for local GC% [Default: False]\n  -m MULTI_EM \
+  \          Iterations of EM to distribute multi-mapping reads\n                \
+  \        [Default: 0]\n  -o OUT_DIR            Output directory [Default: bam_cov]\n\
+  \  -q MAPQ_T             Filter alignments for MAPQ >= threshold [Default: 2]\n\
+  \  -s SMOOTH_SD          Gaussian standard deviation to smooth coverage\n      \
+  \                  estimates with [Default: 32]\n  --strand              Stranded\
+  \ sequencing, output forward and reverse\n                        coverage tracks\
+  \ [Default: False]\n  -u                    Alignments are unsorted [Default: False]\n\
+  \  -v SHIFT_FORWARD_END  Fragment shift for forward end read [Default: 0]\n  -w\
+  \ SHIFT_REVERSE_END  Fragment shift for reverse end read [Default: 0]\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/basenji:0.5.1--pyhdfd78af_0

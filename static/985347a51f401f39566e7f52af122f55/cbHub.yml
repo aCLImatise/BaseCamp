@@ -1,0 +1,135 @@
+!Command
+command:
+- cbHub
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --init
+  description: write a sample hub.conf to the current directory
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --inConf
+  description: "a hub.conf input file to read all options from.\n(settings can also\
+    \ be specified via cellbrowser.conf\nin the current directory.) default hub.conf"
+  args: !SimpleFlagArg
+    name: INCONF
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --metaFname
+  description: a csv or tsv matrix, one row per cell
+  args: !SimpleFlagArg
+    name: META
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --exprMatrix
+  description: "exprMatrix is a tsv or csv expression matrix, one line\nper cell"
+  args: !SimpleFlagArg
+    name: EXPRMATRIX
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --clusterField
+  description: field in expr matrix that contains the cluster name
+  args: !SimpleFlagArg
+    name: CLUSTERFIELD
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --outDir
+  description: the output directory for the hub, default is none
+  args: !SimpleFlagArg
+    name: OUTDIR
+- !Flag
+  optional: true
+  synonyms:
+  - --stat
+  description: "how to summarize data values of a cluster, one of:\nmedian, mean,\
+    \ percentile, nonzero. default is median"
+  args: !SimpleFlagArg
+    name: STAT
+- !Flag
+  optional: true
+  synonyms:
+  - --perc
+  description: "if stat is 'percentile', which percentile to use. a\nnumber 0-100.\
+    \ default is 90"
+  args: !SimpleFlagArg
+    name: PERCENTILE
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --debug
+  description: show debug messages
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --skipBarchart
+  description: do not create the bar chart graph
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: cbHub [options] - create a UCSC track hub for a single cell dataset\n\
+  \n    Run the program with \"--init\" to write a sample hub.conf into the current\
+  \ directory.\n    Adapt this file to your needs.\n\n    Call the program like this\
+  \ if there is hub.conf in the current dir:\n    cbHub -o hub\n    It will read hub.conf,\
+  \ create hub/hub.txt and write the job scripts.\n    You can then run the job scripts\
+  \ as described below.\n\n    Run the UCSC tool hubCheck on the resulting hub.txt\
+  \ to make sure that all jobs\n    have successfully completed.\n\n    You can override\
+  \ some settings from cellbrowser.conf with command line options:\n    cbHub -m meta.tsv\
+  \ -c Cluster -m exprMatrix.tsv.gz -o hub\n\n    ONLY if 'bamDir' has been specified\
+  \ in cellbrowser.conf:\n      | cbHub will create one shell script per cell cluster,\
+  \ with names like 'job-xxx.sh',\n      | in the current directory. To run these\
+  \ scripts in parallel on a big server,\n      | e.g. with 10 processes use the Unix\
+  \ command \"parallel\":\n      |   ls *.sh | parallel -j 10 bash\n      | Each job\
+  \ will write a log of stdout/stderr to files named e.g. job-1.log\n      | Requirements\
+  \ that have to be installed on this machine with binaries in PATH:\n      | - samtools\
+  \ https://github.com/samtools/samtools\n      | - wiggletools https://github.com/Ensembl/WiggleTools\n\
+  \      | - intronProspector https://github.com/diekhans/intronProspector\n     \
+  \ | - UCSC tools wigToBigWig, bedToBigBed, chromToUcsc from http://hgdownload.soe.ucsc.edu/admin/exe/\n\
+  \      |\n      | To link meta.tsv with bamDir files:\n      | The cellId from meta.tsv\
+  \ will be used to try to find the BAM file in bamDir,\n      | by stripping off\
+  \ .bam and/or using just the file name before the first dot.\n    Otherwise:\n \
+  \     - cbHub requires bedToBigBed in the current PATH, see http://hgdownload.soe.ucsc.edu/admin/exe/\n\
+  \    \n\nOptions:\n  -h, --help            show this help message and exit\n  --init\
+  \                write a sample hub.conf to the current directory\n  -i INCONF,\
+  \ --inConf=INCONF\n                        a hub.conf input file to read all options\
+  \ from.\n                        (settings can also be specified via cellbrowser.conf\n\
+  \                        in the current directory.) default hub.conf\n  -m META,\
+  \ --metaFname=META\n                        a csv or tsv matrix, one row per cell\n\
+  \  -e EXPRMATRIX, --exprMatrix=EXPRMATRIX\n                        exprMatrix is\
+  \ a tsv or csv expression matrix, one line\n                        per cell\n \
+  \ -c CLUSTERFIELD, --clusterField=CLUSTERFIELD\n                        field in\
+  \ expr matrix that contains the cluster name\n  -o OUTDIR, --outDir=OUTDIR\n   \
+  \                     the output directory for the hub, default is none\n  --stat=STAT\
+  \           how to summarize data values of a cluster, one of:\n               \
+  \         median, mean, percentile, nonzero. default is median\n  --perc=PERCENTILE\
+  \     if stat is 'percentile', which percentile to use. a\n                    \
+  \    number 0-100. default is 90\n  -d, --debug           show debug messages\n\
+  \  -s, --skipBarchart    do not create the bar chart graph\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/ucsc-cell-browser:1.0.0--pyhdfd78af_0

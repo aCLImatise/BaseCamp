@@ -1,0 +1,110 @@
+!Command
+command:
+- protgraph
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: files
+  description: "Files containing the Swissprot/EMBL-Entries (either in\n.dat or .txt)"
+- !Positional
+  optional: false
+  position: 0
+  name: arguments
+  description: --help_graph_generation
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --num_of_entries
+  - -n
+  description: "Number of entries across all files (summed). if given,\nit will an\
+    \ estimation of the runtime"
+  args: !SimpleFlagArg
+    name: NUM_OF_ENTRIES
+- !Flag
+  optional: true
+  synonyms:
+  - --exclude_accessions
+  - -exclude
+  description: "A csv file only containing accessions in the first row\nwhich should\
+    \ be excluded for processsing. Setting this\nvalue may reduce the reading performance\
+    \ and therefore\nthe throughput performance overall."
+  args: !SimpleFlagArg
+    name: EXCLUDE_ACCESSIONS
+- !Flag
+  optional: true
+  synonyms:
+  - --num_of_processes
+  - -np
+  description: "The number of processes used to process entries. Each\nprocess can\
+    \ process an entry individually. The default\nvalue is 'cores - 1', since one\
+    \ process is reserved\nfor reading entries"
+  args: !SimpleFlagArg
+    name: NUM_OF_PROCESSES
+- !Flag
+  optional: true
+  synonyms:
+  - --output_csv
+  - -o
+  description: "Set the output file, which will contain information\nabout the protein\
+    \ graphs (in csv) NOTE: It will write\nto 'protein_graph_statistics.csv' and overwrite\
+    \ if\nsuch a file exists. Default is set to the current\nworking directory"
+  args: !SimpleFlagArg
+    name: OUTPUT_CSV
+- !Flag
+  optional: true
+  synonyms:
+  - --help_all
+  description: Show the complete help message for all possible
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: Show the shortened help message
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: protgraph [--help] [--num_of_entries NUM_OF_ENTRIES]\n        \
+  \         [--exclude_accessions EXCLUDE_ACCESSIONS]\n                 [--num_of_processes\
+  \ NUM_OF_PROCESSES]\n                 [--output_csv OUTPUT_CSV] [--help_all]\n \
+  \                [--help_graph_generation] [--help_statistics]\n               \
+  \  [--help_graph_exports] [--help_redis_graph_export]\n                 [--help_postgres_graph_export]\
+  \ [--help_mysql_graph_export]\n                 [--help_postgres_peptide_export]\n\
+  \                 [--help_mysql_peptide_export] [--help_citus_peptide_export]\n\
+  \                 [--help_fasta_peptide_export] [--help_gremlin_graph_export]\n\
+  \                 files [files ...]\n\nProtGraph: a graph generator for proteins\
+  \ and/or peptides and exporter to\nvarious formats\n\npositional arguments:\n  files\
+  \                 Files containing the Swissprot/EMBL-Entries (either in\n     \
+  \                   .dat or .txt)\n\noptional arguments:\n  --help, -h         \
+  \   Show the shortened help message\n  --num_of_entries NUM_OF_ENTRIES, -n NUM_OF_ENTRIES\n\
+  \                        Number of entries across all files (summed). if given,\n\
+  \                        it will an estimation of the runtime\n  --exclude_accessions\
+  \ EXCLUDE_ACCESSIONS, -exclude EXCLUDE_ACCESSIONS\n                        A csv\
+  \ file only containing accessions in the first row\n                        which\
+  \ should be excluded for processsing. Setting this\n                        value\
+  \ may reduce the reading performance and therefore\n                        the\
+  \ throughput performance overall.\n  --num_of_processes NUM_OF_PROCESSES, -np NUM_OF_PROCESSES\n\
+  \                        The number of processes used to process entries. Each\n\
+  \                        process can process an entry individually. The default\n\
+  \                        value is 'cores - 1', since one process is reserved\n \
+  \                       for reading entries\n  --output_csv OUTPUT_CSV, -o OUTPUT_CSV\n\
+  \                        Set the output file, which will contain information\n \
+  \                       about the protein graphs (in csv) NOTE: It will write\n\
+  \                        to 'protein_graph_statistics.csv' and overwrite if\n  \
+  \                      such a file exists. Default is set to the current\n     \
+  \                   working directory\n\nEnter one of these flags for detailed information:\n\
+  \  --help_all            Show the complete help message for all possible\n     \
+  \                   arguments\n  --help_graph_generation\n  --help_statistics\n\
+  \  --help_graph_exports\n  --help_redis_graph_export\n  --help_postgres_graph_export\n\
+  \  --help_mysql_graph_export\n  --help_postgres_peptide_export\n  --help_mysql_peptide_export\n\
+  \  --help_citus_peptide_export\n  --help_fasta_peptide_export\n  --help_gremlin_graph_export\n\
+  \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/protgraph:0.1.0--pyhdfd78af_0

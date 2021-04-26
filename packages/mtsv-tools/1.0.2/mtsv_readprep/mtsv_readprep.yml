@@ -1,0 +1,128 @@
+!Command
+command:
+- mtsv-readprep
+positional:
+- !Positional
+  optional: true
+  position: 0
+  name: FLAGS
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: FASTQ
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --lcd
+  description: "Enable LCD trim mode (takes first N bases of each read, where N =\
+    \ shortest read length in FASTQ\nfiles)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --lcdqual
+  description: "Enable LCDQ trim mode (takes highest quality N bases of each read,\
+    \ where N = shortest read length\nin FASTQ files)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: Include this flag to trigger debug-level logging.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --adapters
+  description: Path to file containing adapters, one per line.
+  args: !SimpleFlagArg
+    name: ADAPTER_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --adapter-tolerance
+  description: Number of adapter characters to tolerate at start of reads.
+  args: !SimpleFlagArg
+    name: ADAPTER_TOLERANCE
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out
+  description: Path to desired output FASTA file.
+  args: !SimpleFlagArg
+    name: FASTA
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: 'Number of worker threads to spawn. [default: 4]'
+  args: !SimpleFlagArg
+    name: NUM_THREADS
+- !Flag
+  optional: true
+  synonyms:
+  - --quality_min
+  description: Minimum FASTQ quality to tolerate per base.
+  args: !SimpleFlagArg
+    name: QUALITY_MIN
+- !Flag
+  optional: true
+  synonyms:
+  - --quality_threshold
+  description: Maximum number of bases below minimum quality to tolerate per read.
+  args: !SimpleFlagArg
+    name: QUALITY_THRESHOLD
+- !Flag
+  optional: true
+  synonyms:
+  - --segment
+  description: Enable SEG trim mode (takes subsequent N length subsequences of each
+    read).
+  args: !SimpleFlagArg
+    name: SEGMENT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Prints help information
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Prints version information
+  args: !EmptyFlagArg {}
+help_text: "readprep 0.4.0\nAdam Perry <adam.n.perry@gmail.com>:Tsosie Schneider <tes87@nau.edu>\n\
+  Read fragment quality control and homogenization tool (FASTQ -> FASTA).\n\nUSAGE:\n\
+  \    mtsv-readprep [FLAGS] [OPTIONS] <FASTQ>... --out <FASTA> <--lcd|--lcdqual|--segment\
+  \ <SEGMENT>>\n\nFLAGS:\n        --lcd        Enable LCD trim mode (takes first N\
+  \ bases of each read, where N = shortest read length in FASTQ\n                \
+  \     files).\n        --lcdqual    Enable LCDQ trim mode (takes highest quality\
+  \ N bases of each read, where N = shortest read length\n                     in\
+  \ FASTQ files).\n    -v               Include this flag to trigger debug-level logging.\n\
+  \    -h, --help       Prints help information\n    -V, --version    Prints version\
+  \ information\n\nOPTIONS:\n        --adapters <ADAPTER_FILE>                  Path\
+  \ to file containing adapters, one per line.\n        --adapter-tolerance <ADAPTER_TOLERANCE>\
+  \    Number of adapter characters to tolerate at start of reads.\n    -o, --out\
+  \ <FASTA>                              Path to desired output FASTA file.\n    -t,\
+  \ --threads <NUM_THREADS>                    Number of worker threads to spawn.\
+  \ [default: 4]\n        --quality_min <QUALITY_MIN>                Minimum FASTQ\
+  \ quality to tolerate per base.\n        --quality_threshold <QUALITY_THRESHOLD>\
+  \    Maximum number of bases below minimum quality to tolerate per read.\n     \
+  \   --segment <SEGMENT>\n            Enable SEG trim mode (takes subsequent N length\
+  \ subsequences of each read).\n\n\nARGS:\n    <FASTQ>...    Path(s) to FASTQ files\
+  \ to QC and collapse.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/mtsv-tools:1.0.2--h779adbc_0

@@ -1,0 +1,238 @@
+!Command
+command:
+- funannotate
+- train
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: arguments
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input
+  description: Genome multi-fasta file
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out
+  description: Output folder name
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --left
+  description: Left/Forward FASTQ Illumina reads (R1)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --right
+  description: Right/Reverse FASTQ Illumina reads (R2)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --single
+  description: Single ended FASTQ reads
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --stranded
+  description: If RNA-seq library stranded. [RF,FR,F,R,no]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --left_norm
+  description: Normalized left FASTQ reads (R1)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --right_norm
+  description: Normalized right FASTQ reads (R2)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --single_norm
+  description: Normalized single-ended FASTQ reads
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pacbio_isoseq
+  description: PacBio long-reads
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --nanopore_cdna
+  description: Nanopore cDNA long-reads
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --nanopore_mrna
+  description: Nanopore mRNA direct long-reads
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --trinity
+  description: Pre-computed Trinity transcripts (FASTA)
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --jaccard_clip
+  description: Turn on jaccard clip for dense genomes [Recommended for fungi]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no_normalize_reads
+  description: Skip read Normalization
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no_trimmomatic
+  description: Skip Quality Trimming of reads
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --memory
+  description: 'RAM to use for Jellyfish. Default: 50G'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --coverage
+  description: 'Depth to normalize reads. Default: 50'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --min_coverage
+  description: 'Min depth for normalizing reads. Default: 5'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pasa_db
+  description: 'Database to use. Default: sqlite [mysql,sqlite]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --aligners
+  description: 'Aligners to use with PASA: Default: minimap2 blat [gmap]'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pasa_min_pct_aligned
+  description: 'PASA --MIN_PERCENT_ALIGNED. Default: 90'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pasa_min_avg_per_id
+  description: 'PASA --MIN_AVG_PER_ID. Default: 95'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pasa_num_bp_splice
+  description: 'PASA --NUM_BP_PERFECT_SPLICE_BOUNDARY. Default: 3'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max_intronlen
+  description: 'Maximum intron length. Default: 3000'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --species
+  description: Species name, use quotes for binomial, e.g. "Aspergillus fumigatus"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --strain
+  description: Strain name
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --isolate
+  description: Isolate name
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --cpus
+  description: 'Number of CPUs to use. Default: 2'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-progress
+  description: Do not print progress to stdout for long sub jobs
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nUsage:       funannotate train <arguments>\nversion:     1.8.7\n\nDescription:\
+  \ Script is a wrapper for de novo genome-guided transcriptome assembly using\n \
+  \            Trinity followed by PASA. Illumina and Long-read (nanopore/pacbio)\
+  \ RNA-seq\n             is also supported. Dependencies are hisat2, Trinity, samtools,\
+  \ fasta,\n             minimap2, PASA.\n\nRequired:\n  -i, --input             \
+  \ Genome multi-fasta file\n  -o, --out                Output folder name\n  -l,\
+  \ --left               Left/Forward FASTQ Illumina reads (R1)\n  -r, --right   \
+  \           Right/Reverse FASTQ Illumina reads (R2)\n  -s, --single            \
+  \ Single ended FASTQ reads\n\nOptional:\n  --stranded               If RNA-seq library\
+  \ stranded. [RF,FR,F,R,no]\n  --left_norm              Normalized left FASTQ reads\
+  \ (R1)\n  --right_norm             Normalized right FASTQ reads (R2)\n  --single_norm\
+  \            Normalized single-ended FASTQ reads\n  --pacbio_isoseq          PacBio\
+  \ long-reads\n  --nanopore_cdna          Nanopore cDNA long-reads\n  --nanopore_mrna\
+  \          Nanopore mRNA direct long-reads\n  --trinity                Pre-computed\
+  \ Trinity transcripts (FASTA)\n  --jaccard_clip           Turn on jaccard clip for\
+  \ dense genomes [Recommended for fungi]\n  --no_normalize_reads     Skip read Normalization\n\
+  \  --no_trimmomatic         Skip Quality Trimming of reads\n  --memory         \
+  \        RAM to use for Jellyfish. Default: 50G\n  -c, --coverage           Depth\
+  \ to normalize reads. Default: 50\n  -m, --min_coverage       Min depth for normalizing\
+  \ reads. Default: 5\n  --pasa_db                Database to use. Default: sqlite\
+  \ [mysql,sqlite]\n  --pasa_alignment_overlap PASA --stringent_alignment_overlap.\
+  \ Default: 30.0\n  --aligners               Aligners to use with PASA: Default:\
+  \ minimap2 blat [gmap]\n  --pasa_min_pct_aligned   PASA --MIN_PERCENT_ALIGNED. Default:\
+  \ 90\n  --pasa_min_avg_per_id    PASA --MIN_AVG_PER_ID. Default: 95\n  --pasa_num_bp_splice\
+  \     PASA --NUM_BP_PERFECT_SPLICE_BOUNDARY. Default: 3\n  --max_intronlen     \
+  \     Maximum intron length. Default: 3000\n  --species                Species name,\
+  \ use quotes for binomial, e.g. \"Aspergillus fumigatus\"\n  --strain          \
+  \       Strain name\n  --isolate                Isolate name\n  --cpus         \
+  \          Number of CPUs to use. Default: 2\n  --no-progress            Do not\
+  \ print progress to stdout for long sub jobs\n\nENV Vars:  If not passed, will try\
+  \ to load from your $PATH.\n  --PASAHOME\n  --TRINITYHOME\n           \n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/funannotate:1.8.7--pyh5e36f6f_0

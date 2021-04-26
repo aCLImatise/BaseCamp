@@ -1,0 +1,214 @@
+!Command
+command:
+- megalodon
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: data
+  description: -v, --version         show megalodon version and exit.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --guppy-config
+  description: "Guppy config. Default:\ndna_r9.4.1_450bps_modbases_5mc_hac.cfg"
+  args: !SimpleFlagArg
+    name: GUPPY_CONFIG
+- !Flag
+  optional: true
+  synonyms:
+  - --guppy-server-path
+  description: "Path to guppy server executable. Default: ./ont-\nguppy/bin/guppy_basecall_server"
+  args: !SimpleFlagArg
+    name: GUPPY_SERVER_PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --live-processing
+  description: "Process reads from a live sequencing run. The\n[fast5s_dir] must be\
+    \ the base MinKNOW output\ndirectory. Megalodon will continue searching for FAST5\n\
+    files until the file starting with \"final_summary\" is\nfound."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --outputs
+  description: "[{basecalls,mod_basecalls,mappings,per_read_variants,variants,variant_mappings,per_read_mods,mods,mod_mappings,signal_mappings,per_read_refs}\
+    \ ...]\nDesired output(s).\nOptions:\nbasecalls: Called bases (FASTA/Q)\nmod_basecalls:\
+    \ Basecall-anchored modified base scores (HDF5)\nmappings: Mapped reads (BAM/CRAM/SAM)\n\
+    per_read_variants: Per-read, per-site sequence variant scores database\nvariants:\
+    \ Sample-level aggregated sequence variant calls (VCF)\nvariant_mappings: Per-read\
+    \ mappings annotated with variant calls\nper_read_mods: Per-read, per-site modified\
+    \ base scores database\nmods: Sample-level aggregated modified base calls (modVCF)\n\
+    mod_mappings: Per-read mappings annotated with modified base calls\nsignal_mappings:\
+    \ Signal mappings for taiyaki model training (HDF5)\nper_read_refs: Per-read reference\
+    \ sequence for model training (FASTA)\nDefault: ['basecalls']"
+  args: !ChoiceFlagArg
+    choices: !!set
+      mappings:
+      per_read_mods:
+      per_read_variants:
+      basecalls:
+      signal_mappings:
+      per_read_refs:
+      variants:
+      mods:
+      mod_mappings:
+      variant_mappings:
+      mod_basecalls:
+- !Flag
+  optional: true
+  synonyms:
+  - --output-directory
+  description: "Directory to store output results. Default:\nmegalodon_results"
+  args: !SimpleFlagArg
+    name: OUTPUT_DIRECTORY
+- !Flag
+  optional: true
+  synonyms:
+  - --overwrite
+  description: Overwrite output directory if it exists.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --mappings-format
+  description: 'Mappings output format. Default: bam'
+  args: !ChoiceFlagArg
+    choices: !!set
+      sam:
+      bam:
+      cram:
+- !Flag
+  optional: true
+  synonyms:
+  - --reference
+  description: "Reference FASTA or minimap2 index file used for\nmapping called reads."
+  args: !SimpleFlagArg
+    name: REFERENCE
+- !Flag
+  optional: true
+  synonyms:
+  - --haploid
+  description: "Compute variant aggregation for haploid genotypes.\nDefault: diploid"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --variant-filename
+  description: "Sequence variants to call for each read in VCF/BCF\nformat (required\
+    \ for variant output)."
+  args: !SimpleFlagArg
+    name: VARIANT_FILENAME
+- !Flag
+  optional: true
+  synonyms:
+  - --mod-motif
+  description: "MOTIF REL_POSITION\nRestrict modified base calls to specified motif(s).\n\
+    Argument takes 3 values representing 1) the single\nletter modified base(s), 2)\
+    \ sequence motif and 3)\nrelative modified base position. Multiple --mod-motif\n\
+    arguments may be provided to a single command. For\nexample to restrict to CpG\
+    \ sites use \"--mod-motif m CG\n0\"."
+  args: !SimpleFlagArg
+    name: BASE
+- !Flag
+  optional: true
+  synonyms:
+  - --processes
+  description: 'Number of parallel processes. Default: 1'
+  args: !SimpleFlagArg
+    name: PROCESSES
+- !Flag
+  optional: true
+  synonyms:
+  - --devices
+  description: GPU devices for guppy or taiyaki basecalling backends.
+  args: !RepeatFlagArg
+    name: DEVICES
+- !Flag
+  optional: true
+  synonyms:
+  - --help-long
+  description: Show all options.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --rna
+  description: 'RNA input data. Requires RNA model. Default: DNA input'
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: megalodon [-h] [--guppy-config GUPPY_CONFIG]\n                \
+  \ [--guppy-server-path GUPPY_SERVER_PATH] [--live-processing]\n                \
+  \ [--outputs {basecalls,mod_basecalls,mappings,per_read_variants,variants,variant_mappings,per_read_mods,mods,mod_mappings,signal_mappings,per_read_refs}\
+  \ [{basecalls,mod_basecalls,mappings,per_read_variants,variants,variant_mappings,per_read_mods,mods,mod_mappings,signal_mappings,per_read_refs}\
+  \ ...]]\n                 [--output-directory OUTPUT_DIRECTORY] [--overwrite]\n\
+  \                 [--mappings-format {bam,cram,sam}] [--reference REFERENCE]\n \
+  \                [--haploid] [--variant-filename VARIANT_FILENAME]\n           \
+  \      [--mod-motif BASE MOTIF REL_POSITION] [--processes PROCESSES]\n         \
+  \        [--devices DEVICES [DEVICES ...]] [--help-long] [--rna] [-v]\n        \
+  \         fast5s_dir\n\npositional arguments:\n  fast5s_dir            Directory\
+  \ containing raw fast5 (will be searched\n                        recursively).\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \nGuppy Backend Arguments:\n  --guppy-config GUPPY_CONFIG\n                    \
+  \    Guppy config. Default:\n                        dna_r9.4.1_450bps_modbases_5mc_hac.cfg\n\
+  \  --guppy-server-path GUPPY_SERVER_PATH\n                        Path to guppy\
+  \ server executable. Default: ./ont-\n                        guppy/bin/guppy_basecall_server\n\
+  \nOutput Arguments:\n  --live-processing     Process reads from a live sequencing\
+  \ run. The\n                        [fast5s_dir] must be the base MinKNOW output\n\
+  \                        directory. Megalodon will continue searching for FAST5\n\
+  \                        files until the file starting with \"final_summary\" is\n\
+  \                        found.\n  --outputs {basecalls,mod_basecalls,mappings,per_read_variants,variants,variant_mappings,per_read_mods,mods,mod_mappings,signal_mappings,per_read_refs}\
+  \ [{basecalls,mod_basecalls,mappings,per_read_variants,variants,variant_mappings,per_read_mods,mods,mod_mappings,signal_mappings,per_read_refs}\
+  \ ...]\n                        Desired output(s).\n                        Options:\n\
+  \                        \tbasecalls: Called bases (FASTA/Q)\n                 \
+  \       \tmod_basecalls: Basecall-anchored modified base scores (HDF5)\n       \
+  \                 \tmappings: Mapped reads (BAM/CRAM/SAM)\n                    \
+  \    \tper_read_variants: Per-read, per-site sequence variant scores database\n\
+  \                        \tvariants: Sample-level aggregated sequence variant calls\
+  \ (VCF)\n                        \tvariant_mappings: Per-read mappings annotated\
+  \ with variant calls\n                        \tper_read_mods: Per-read, per-site\
+  \ modified base scores database\n                        \tmods: Sample-level aggregated\
+  \ modified base calls (modVCF)\n                        \tmod_mappings: Per-read\
+  \ mappings annotated with modified base calls\n                        \tsignal_mappings:\
+  \ Signal mappings for taiyaki model training (HDF5)\n                        \t\
+  per_read_refs: Per-read reference sequence for model training (FASTA)\n        \
+  \                Default: ['basecalls']\n  --output-directory OUTPUT_DIRECTORY\n\
+  \                        Directory to store output results. Default:\n         \
+  \               megalodon_results\n  --overwrite           Overwrite output directory\
+  \ if it exists.\n\nMapping Arguments:\n  --mappings-format {bam,cram,sam}\n    \
+  \                    Mappings output format. Default: bam\n  --reference REFERENCE\n\
+  \                        Reference FASTA or minimap2 index file used for\n     \
+  \                   mapping called reads.\n\nSequence Variant Arguments:\n  --haploid\
+  \             Compute variant aggregation for haploid genotypes.\n             \
+  \           Default: diploid\n  --variant-filename VARIANT_FILENAME\n          \
+  \              Sequence variants to call for each read in VCF/BCF\n            \
+  \            format (required for variant output).\n\nModified Base Arguments:\n\
+  \  --mod-motif BASE MOTIF REL_POSITION\n                        Restrict modified\
+  \ base calls to specified motif(s).\n                        Argument takes 3 values\
+  \ representing 1) the single\n                        letter modified base(s), 2)\
+  \ sequence motif and 3)\n                        relative modified base position.\
+  \ Multiple --mod-motif\n                        arguments may be provided to a single\
+  \ command. For\n                        example to restrict to CpG sites use \"\
+  --mod-motif m CG\n                        0\".\n\nCompute Resource Arguments:\n\
+  \  --processes PROCESSES\n                        Number of parallel processes.\
+  \ Default: 1\n  --devices DEVICES [DEVICES ...]\n                        GPU devices\
+  \ for guppy or taiyaki basecalling backends.\n\nMiscellaneous Arguments:\n  --help-long\
+  \           Show all options.\n  --rna                 RNA input data. Requires\
+  \ RNA model. Default: DNA input\n                        data\n  -v, --version \
+  \        show megalodon version and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/megalodon:2.3.1--py38h4a8c8d9_0

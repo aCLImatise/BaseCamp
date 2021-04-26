@@ -1,0 +1,247 @@
+!Command
+command:
+- cooltools
+- call-dots
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: COOL_PATH
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: EXPECTED_PATH
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --expected-name
+  description: "Name of value column in EXPECTED_PATH\n[default: balanced.avg]"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --weight-name
+  description: "Use balancing weight with this name.\n[default: weight]"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --nproc
+  description: "Number of processes to split the work\nbetween. [default: 1, i.e.\
+    \ no process pool]"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --max-loci-separation
+  description: "Limit loci separation for dot-calling, i.e.,\ndo not call dots for\
+    \ loci that are further\nthan max_loci_separation basepair apart.\n2-20MB is reasonable\
+    \ and would capture most\nof CTCF-dots.  [default: 2000000]"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --max-nans-tolerated
+  description: "Maximum number of NaNs tolerated in a\nfootprint of every used filter.\
+    \ Must be\ncontrolled with caution, as large max-nans-\ntolerated, might lead\
+    \ to pixels scored in\nthe padding area of the tiles to \"penetrate\"\nto the\
+    \ list of scored pixels for the\nstatistical testing. [max-nans-tolerated <=\n\
+    2*w ]  [default: 1]"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --tile-size
+  description: "Tile size for the Hi-C heatmap tiling.\nTypically on order of several\
+    \ mega-bases,\nand <= max_loci_separation.  [default:\n6000000]"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --kernel-width
+  description: "Outer half-width of the convolution kernel\nin pixels e.g. outer size\
+    \ (w) of the 'donut'\nkernel, with the 2*w+1 overall footprint of\nthe 'donut'."
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --kernel-peak
+  description: "Inner half-width of the convolution kernel\nin pixels e.g. inner size\
+    \ (p) of the 'donut'\nkernel, with the 2*p+1 overall footprint of\nthe punch-hole."
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --num-lambda-chunks
+  description: "Number of log-spaced bins to divide your\nadjusted expected between.\
+    \ Same as\nHiCCUPS_W1_MAX_INDX in the original HiCCUPS.\n[default: 45]"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --fdr
+  description: "False discovery rate (FDR) to control in the\nmultiple hypothesis\
+    \ testing BH-FDR\nprocedure.  [default: 0.02]"
+  args: !SimpleFlagArg
+    name: FLOAT
+- !Flag
+  optional: true
+  synonyms:
+  - --dots-clustering-radius
+  description: "Radius for clustering dots that have been\ncalled too close to each\
+    \ other.Typically on\norder of 40 kilo-bases, and >= binsize.\n[default: 39000]"
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: Enable verbose output
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --output-scores
+  description: "At the moment it is a redundant option that\ndoes nothing. Reserve\
+    \ it for a better dump\nof convolved scores."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --output-hists
+  description: "Specify output file name to store lambda-\nchunked histograms. [Not\
+    \ implemented yet]"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-calls
+  description: "Specify output file name where to store the\nresults of dot-calling,\
+    \ in a BEDPE format.\nPre-processed dots are stored in that file.\nPost-processed\
+    \ dots are stored in the\n.postproc one."
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --score-dump-mode
+  description: "Specify file format for the dump of\nconvolved scores. This dump is\
+    \ used for the\ndownstream processing and is read twice. Now\n'parquet' is the\
+    \ only supported format.\n'cooler' and 'hdf' in the future.  [default:\nparquet]"
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --temp-dir
+  description: Create temporary files in specified
+  args: !SimpleFlagArg
+    name: TEXT
+- !Flag
+  optional: true
+  synonyms:
+  - --no-delete-temp
+  description: Do not delete temporary files when finished.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: cooltools call-dots [OPTIONS] COOL_PATH EXPECTED_PATH\n\n  Call\
+  \ dots on a Hi-C heatmap that are not larger than max_loci_separation.\n\n  COOL_PATH\
+  \ : The paths to a .cool file with a balanced Hi-C map.\n\n  EXPECTED_PATH : The\
+  \ paths to a tsv-like file with expected signal.\n\n  Analysis will be performed\
+  \ for chromosomes referred to in EXPECTED_PATH,\n  and therefore these chromosomes\
+  \ must be a subset of chromosomes referred\n  to in COOL_PATH. Also chromosomes\
+  \ refered to in EXPECTED_PATH must be non-\n  trivial, i.e., contain not-NaN signal.\
+  \ Thus, make sure to prune your\n  EXPECTED_PATH before applying this script.\n\n\
+  \  COOL_PATH and EXPECTED_PATH must be binned at the same resolution.\n\n  EXPECTED_PATH\
+  \ must contain at least the following columns for cis\n  contacts: 'chrom', 'diag',\
+  \ 'n_valid', value_name. value_name is controlled\n  using options. Header must\
+  \ be present in a file.\n\nOptions:\n  --expected-name TEXT            Name of value\
+  \ column in EXPECTED_PATH\n                                  [default: balanced.avg]\n\
+  \n  --weight-name TEXT              Use balancing weight with this name.\n     \
+  \                             [default: weight]\n\n  -p, --nproc INTEGER       \
+  \      Number of processes to split the work\n                                 \
+  \ between. [default: 1, i.e. no process pool]\n\n  --max-loci-separation INTEGER\
+  \   Limit loci separation for dot-calling, i.e.,\n                             \
+  \     do not call dots for loci that are further\n                             \
+  \     than max_loci_separation basepair apart.\n                               \
+  \   2-20MB is reasonable and would capture most\n                              \
+  \    of CTCF-dots.  [default: 2000000]\n\n  --max-nans-tolerated INTEGER    Maximum\
+  \ number of NaNs tolerated in a\n                                  footprint of\
+  \ every used filter. Must be\n                                  controlled with\
+  \ caution, as large max-nans-\n                                  tolerated, might\
+  \ lead to pixels scored in\n                                  the padding area of\
+  \ the tiles to \"penetrate\"\n                                  to the list of scored\
+  \ pixels for the\n                                  statistical testing. [max-nans-tolerated\
+  \ <=\n                                  2*w ]  [default: 1]\n\n  --tile-size INTEGER\
+  \             Tile size for the Hi-C heatmap tiling.\n                         \
+  \         Typically on order of several mega-bases,\n                          \
+  \        and <= max_loci_separation.  [default:\n                              \
+  \    6000000]\n\n  --kernel-width INTEGER          Outer half-width of the convolution\
+  \ kernel\n                                  in pixels e.g. outer size (w) of the\
+  \ 'donut'\n                                  kernel, with the 2*w+1 overall footprint\
+  \ of\n                                  the 'donut'.\n\n  --kernel-peak INTEGER\
+  \           Inner half-width of the convolution kernel\n                       \
+  \           in pixels e.g. inner size (p) of the 'donut'\n                     \
+  \             kernel, with the 2*p+1 overall footprint of\n                    \
+  \              the punch-hole.\n\n  --num-lambda-chunks INTEGER     Number of log-spaced\
+  \ bins to divide your\n                                  adjusted expected between.\
+  \ Same as\n                                  HiCCUPS_W1_MAX_INDX in the original\
+  \ HiCCUPS.\n                                  [default: 45]\n\n  --fdr FLOAT   \
+  \                  False discovery rate (FDR) to control in the\n              \
+  \                    multiple hypothesis testing BH-FDR\n                      \
+  \            procedure.  [default: 0.02]\n\n  --dots-clustering-radius INTEGER\n\
+  \                                  Radius for clustering dots that have been\n \
+  \                                 called too close to each other.Typically on\n\
+  \                                  order of 40 kilo-bases, and >= binsize.\n   \
+  \                               [default: 39000]\n\n  -v, --verbose            \
+  \       Enable verbose output\n  -s, --output-scores TEXT        At the moment it\
+  \ is a redundant option that\n                                  does nothing. Reserve\
+  \ it for a better dump\n                                  of convolved scores.\n\
+  \n  --output-hists TEXT             Specify output file name to store lambda-\n\
+  \                                  chunked histograms. [Not implemented yet]\n\n\
+  \  -o, --output-calls TEXT         Specify output file name where to store the\n\
+  \                                  results of dot-calling, in a BEDPE format.\n\
+  \                                  Pre-processed dots are stored in that file.\n\
+  \                                  Post-processed dots are stored in the\n     \
+  \                             .postproc one.\n\n  --score-dump-mode TEXT       \
+  \   Specify file format for the dump of\n                                  convolved\
+  \ scores. This dump is used for the\n                                  downstream\
+  \ processing and is read twice. Now\n                                  'parquet'\
+  \ is the only supported format.\n                                  'cooler' and\
+  \ 'hdf' in the future.  [default:\n                                  parquet]\n\n\
+  \  --temp-dir TEXT                 Create temporary files in specified\n       \
+  \                           directory.  [default: .]\n\n  --no-delete-temp     \
+  \           Do not delete temporary files when finished.\n  -h, --help         \
+  \             Show this message and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/cooltools:0.4.0--py39hcbe4a3b_0
