@@ -1,0 +1,32 @@
+!Command
+command:
+- 10xSpoof
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: fastq format
+  description: ''
+named: []
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "10xSpoof 0.0.3\nUsage: <fastq format> | 10xSpoof <clear barcode log> <prefix>?\
+  \ | <fastq format>\n\nReads/writes fastq formatted reads from <stdin>/<stdout>.\n\
+  Any read with a BX SAM tag in its comment field will be prepended by 23 bases; a\
+  \ 16-base valid 10x barcode and 7 joining bases.\n\nBX tags must be valid haplotag\
+  \ barcodes of the form /^A\\d\\dC\\d\\dB\\d\\dD\\d\\d$/.\ne.g. '... BX:Z:A01C02B03D04\
+  \ ...'\n\nThe one required argument <clear barcode log> is a 3-column, tab-delimited\
+  \ text file with one header line; with the columns being: haplotag barcode, clear-count\
+  \ and correct-count.\nSuch a log file will be created by running 'SamHaplotag'.\n\
+  \nOne log file: '10xSpoof_HaploTag_to_10x' will created with an optional '<prefix>_'\
+  \ at the start of the file-name if supplied as a second argument.\nThe log file\
+  \ is a map between haplotag and 10x barcodes.\n\nUsage example:\nsamtools fastq\
+  \ -@ 16 -nT BX -0 /dev/null -s /dev/null tagged_reads_123.cram | 10xSpoof 123_SamHaplotag_Clear_BC\
+  \ 123 | bgzip -@ 16 >10x_spoofed_reads_123.fq.gz\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/samhaplotag:0.0.3--h7d875b9_0

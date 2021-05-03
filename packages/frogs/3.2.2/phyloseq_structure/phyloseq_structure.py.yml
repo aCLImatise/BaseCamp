@@ -1,0 +1,103 @@
+!Command
+command:
+- phyloseq_structure.py
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --debug
+  description: Keep temporary files to debug program.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --varExp
+  description: The experiment variable you want to analyse.
+  args: !SimpleFlagArg
+    name: VAREXP
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --ordination-method
+  description: 'The ordination methods. [Default: MDS]'
+  args: !ChoiceFlagArg
+    choices: !!set
+      MDS:
+      DPCoA:
+      NMDS:
+      PCoA:
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --rdata
+  description: "The path of RData file containing a phyloseq object-\nthe result of\
+    \ FROGS Phyloseq Import Data"
+  args: !SimpleFlagArg
+    name: RDATA
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --distance-matrix
+  description: "Path of data file containing beta diversity distance\nmatrix. These\
+    \ file is the result of FROGS Phyloseq\nBeta Diversity."
+  args: !SimpleFlagArg
+    name: DISTANCE_MATRIX
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --html
+  description: "The HTML file containing the graphs. [Default:\nphyloseq_structure.nb.html]"
+  args: !SimpleFlagArg
+    name: HTML
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --log-file
+  description: "This output file will contain several informations on\nexecuted commands.\n"
+  args: !SimpleFlagArg
+    name: LOG_FILE
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: phyloseq_structure.py [-h] [--debug] [--version] -v VAREXP\n  \
+  \                           [-m {MDS,NMDS,DPCoA,PCoA}] -r RDATA -d\n           \
+  \                  DISTANCE_MATRIX [-o HTML] [-l LOG_FILE]\n\nVisulization of data\
+  \ structure with heatmap plot and ordination plot of\nPhyloseq.\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  --debug            \
+  \   Keep temporary files to debug program.\n  --version             show program's\
+  \ version number and exit\n  -v VAREXP, --varExp VAREXP\n                      \
+  \  The experiment variable you want to analyse.\n  -m {MDS,NMDS,DPCoA,PCoA}, --ordination-method\
+  \ {MDS,NMDS,DPCoA,PCoA}\n                        The ordination methods. [Default:\
+  \ MDS]\n\nInputs:\n  -r RDATA, --rdata RDATA\n                        The path of\
+  \ RData file containing a phyloseq object-\n                        the result of\
+  \ FROGS Phyloseq Import Data\n  -d DISTANCE_MATRIX, --distance-matrix DISTANCE_MATRIX\n\
+  \                        Path of data file containing beta diversity distance\n\
+  \                        matrix. These file is the result of FROGS Phyloseq\n  \
+  \                      Beta Diversity.\n\nOutputs:\n  -o HTML, --html HTML  The\
+  \ HTML file containing the graphs. [Default:\n                        phyloseq_structure.nb.html]\n\
+  \  -l LOG_FILE, --log-file LOG_FILE\n                        This output file will\
+  \ contain several informations on\n                        executed commands.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/frogs:3.2.2--py37_0

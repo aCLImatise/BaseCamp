@@ -1,0 +1,167 @@
+!Command
+command:
+- LEVIATHAN
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --regionSize
+  description: ':          Size of the regions on the reference genome to consider
+    (default: 1000)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --minVariantSize
+  description: ':     Minimum size of the SVs to detect (default: same as regionSize)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --maxLinks
+  description: ':           Remove from candidates list all candidates which have
+    a region involved in that much candidates (default: 1000)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  - --mediumSize
+  description: ':         Minimum size of medium variants (default: 2000)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  - --largeSize
+  description: ':          Minimum size of large variants (default: 10000)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --smallRate
+  description: ':          Percentile to chose as a threshold in the distribution
+    of the number of shared barcodes for small variants (default: 99)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --mediumRate
+  description: ':         Percentile to chose as a threshold in the distribution of
+    the number of shared barcodes for medium variants (default: 99)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --largeRate
+  description: ':          Percentile to chose as a threshold in the distribution
+    of the number of shared barcodes for large variants (default: 99)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --duplicates
+  description: ':         Consider SV as duplicates if they have the same type and
+    if their breakpoints are within this distance (default: 10)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --threads
+  description: ':            Number of threads (default: 8)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --poolSize
+  description: ':           Size of the thread pool (default: 100000)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -B
+  - --nbBins
+  description: ':             Number of iterations to perform through the barcode
+    index (default: 10)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --minBarcodes
+  description: ':        Always remove candidates that share less than this number
+    of barcodes (default: 1)'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -C
+  - --candidates
+  description: ':         File where to store valid SV candidates (default: "candidates.bedpe")'
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  description: ''
+  args: !SimpleFlagArg
+    name: genome.fasta
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  description: ''
+  args: !SimpleFlagArg
+    name: barcodeIndex.bci
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  description: ''
+  args: !SimpleFlagArg
+    name: bamFile.bam
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "LEVIATHAN v.1.0\nPierre Morisse <pierre.morisse@inria.fr>\nLEVIATHAN:\
+  \ Linked-reads based structural variant caller with barcode indexing\n\nUSAGE:\n\
+  \tLEVIATHAN -b bamFile.bam -i barcodeIndex.bci -g genome.fasta -o output.vcf [OPTIONS]\n\
+  \nINPUT:\n\tbamFile.bam:              BAM file to analyze. Warning: the associated\
+  \ .bai file must exist\n\tbarcodeIndex.bci:         LRez barcode occurrence positions\
+  \ index of the BAM file\n\tgenome.fasta:             The reference genome in FASTA\
+  \ format\n\toutput.vcf:               VCF file where to ouput the SVs\n\nOPTIONS:\n\
+  \t-r --regionSize:          Size of the regions on the reference genome to consider\
+  \ (default: 1000)\n\t-v, --minVariantSize:     Minimum size of the SVs to detect\
+  \ (default: same as regionSize)\n\t-n, --maxLinks:           Remove from candidates\
+  \ list all candidates which have a region involved in that much candidates (default:\
+  \ 1000) \n\t-M, --mediumSize:         Minimum size of medium variants (default:\
+  \ 2000)\n\t-L, --largeSize:          Minimum size of large variants (default: 10000)\n\
+  \t-s, --smallRate:          Percentile to chose as a threshold in the distribution\
+  \ of the number of shared barcodes for small variants (default: 99)\n\t-m, --mediumRate:\
+  \         Percentile to chose as a threshold in the distribution of the number of\
+  \ shared barcodes for medium variants (default: 99)\n\t-l, --largeRate:        \
+  \  Percentile to chose as a threshold in the distribution of the number of shared\
+  \ barcodes for large variants (default: 99)\n\t-d, --duplicates:         Consider\
+  \ SV as duplicates if they have the same type and if their breakpoints are within\
+  \ this distance (default: 10)\n\t-t, --threads:            Number of threads (default:\
+  \ 8)\n\t-p, --poolSize:           Size of the thread pool (default: 100000)\n\t\
+  -B, --nbBins:             Number of iterations to perform through the barcode index\
+  \ (default: 10)\n\t-c, --minBarcodes:        Always remove candidates that share\
+  \ less than this number of barcodes (default: 1)\n\t-C, --candidates:         File\
+  \ where to store valid SV candidates (default: \"candidates.bedpe\")\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/leviathan:1.0--h7d875b9_0

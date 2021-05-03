@@ -1,0 +1,59 @@
+!Command
+command:
+- dx-app-wizard
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: name
+  description: Name of your app
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --json-file
+  description: Use the metadata and IO spec found in the given file
+  args: !SimpleFlagArg
+    name: JSON_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --language
+  description: Programming language of your app
+  args: !SimpleFlagArg
+    name: LANGUAGE
+- !Flag
+  optional: true
+  synonyms:
+  - --template
+  description: "Execution pattern of your app\n"
+  args: !ChoiceFlagArg
+    choices: !!set
+      scatter-process-gather:
+      basic:
+      parallelized:
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: dx-app-wizard [-h] [--json-file JSON_FILE] [--language LANGUAGE]\n\
+  \                     [--template {basic,parallelized,scatter-process-gather}]\n\
+  \                     [name]\n\nCreate a source code directory for a DNAnexus app.\
+  \ You will be prompted for\nvarious metadata for the app as well as for its input\
+  \ and output\nspecifications.\n\npositional arguments:\n  name                 \
+  \ Name of your app\n\noptional arguments:\n  -h, --help            show this help\
+  \ message and exit\n  --json-file JSON_FILE\n                        Use the metadata\
+  \ and IO spec found in the given file\n  --language LANGUAGE   Programming language\
+  \ of your app\n  --template {basic,parallelized,scatter-process-gather}\n      \
+  \                  Execution pattern of your app\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/dxpy:0.307.0--pyh5e36f6f_0

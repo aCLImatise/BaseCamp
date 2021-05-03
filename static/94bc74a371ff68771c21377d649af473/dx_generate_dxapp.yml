@@ -1,0 +1,156 @@
+!Command
+command:
+- dx-generate-dxapp
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --target-module
+  description: "The fully-qualified module that contains the target\nmethod."
+  args: !SimpleFlagArg
+    name: TARGET_MODULE
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --target-function
+  description: "The main function that is called by the target\nexecutable. This should\
+    \ bewhere the ArgumentParser is\nconfigured."
+  args: !SimpleFlagArg
+    name: TARGET_FUNCTION
+- !Flag
+  optional: true
+  synonyms:
+  - -x
+  - --target-executable
+  description: "The name of the executable. This is used in the\ndxapp.json runSpec."
+  args: !SimpleFlagArg
+    name: TARGET_EXECUTABLE
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --subcommand
+  description: Subcommand to pass to the target method, if required.
+  args: !SimpleFlagArg
+    name: SUBCOMMAND
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output-file
+  description: "The output dxapp.json file. If not specified, output\nwill go to stdout."
+  args: !SimpleFlagArg
+    name: OUTPUT_FILE
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --output-params
+  description: "Names of output parameters (in case they can't be\nautodetected)."
+  args: !RepeatFlagArg
+    name: OUTPUT_PARAMS
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --output-param-regexp
+  description: "Regular expression that identifies output parameter\nnames."
+  args: !SimpleFlagArg
+    name: OUTPUT_PARAM_REGEXP
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --interpreter
+  description: Type of script that will wrap the executable.
+  args: !ChoiceFlagArg
+    choices: !!set
+      python3:
+      bash:
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --instance-type
+  description: AWS instance type to use.
+  args: !SimpleFlagArg
+    name: INSTANCE_TYPE
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --timeout
+  description: Max runtime of this app (in hours).
+  args: !SimpleFlagArg
+    name: TIMEOUT
+- !Flag
+  optional: true
+  synonyms:
+  - --distribution
+  description: Distribution to use for the machine image.
+  args: !SimpleFlagArg
+    name: DISTRIBUTION
+- !Flag
+  optional: true
+  synonyms:
+  - --release
+  description: Distribution release to use for the machine image.
+  args: !SimpleFlagArg
+    name: RELEASE
+- !Flag
+  optional: true
+  synonyms:
+  - --runspec-version
+  description: "Version of the application execution environment\ninside the runSpec\
+    \ block.\n"
+  args: !SimpleFlagArg
+    name: RUNSPEC_VERSION
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: dx-generate-dxapp [-h] [-m TARGET_MODULE] [-f TARGET_FUNCTION]\n\
+  \                         [-x TARGET_EXECUTABLE] [-s SUBCOMMAND]\n             \
+  \            [-o OUTPUT_FILE]\n                         [-p OUTPUT_PARAMS [OUTPUT_PARAMS\
+  \ ...]]\n                         [-r OUTPUT_PARAM_REGEXP] [-n {bash,python3}]\n\
+  \                         [-i INSTANCE_TYPE] [-t TIMEOUT]\n                    \
+  \     [--distribution DISTRIBUTION] [--release RELEASE]\n                      \
+  \   [--runspec-version RUNSPEC_VERSION]\n\noptional arguments:\n  -h, --help   \
+  \         show this help message and exit\n  -m TARGET_MODULE, --target-module TARGET_MODULE\n\
+  \                        The fully-qualified module that contains the target\n \
+  \                       method.\n  -f TARGET_FUNCTION, --target-function TARGET_FUNCTION\n\
+  \                        The main function that is called by the target\n      \
+  \                  executable. This should bewhere the ArgumentParser is\n     \
+  \                   configured.\n  -x TARGET_EXECUTABLE, --target-executable TARGET_EXECUTABLE\n\
+  \                        The name of the executable. This is used in the\n     \
+  \                   dxapp.json runSpec.\n  -s SUBCOMMAND, --subcommand SUBCOMMAND\n\
+  \                        Subcommand to pass to the target method, if required.\n\
+  \  -o OUTPUT_FILE, --output-file OUTPUT_FILE\n                        The output\
+  \ dxapp.json file. If not specified, output\n                        will go to\
+  \ stdout.\n  -p OUTPUT_PARAMS [OUTPUT_PARAMS ...], --output-params OUTPUT_PARAMS\
+  \ [OUTPUT_PARAMS ...]\n                        Names of output parameters (in case\
+  \ they can't be\n                        autodetected).\n  -r OUTPUT_PARAM_REGEXP,\
+  \ --output-param-regexp OUTPUT_PARAM_REGEXP\n                        Regular expression\
+  \ that identifies output parameter\n                        names.\n  -n {bash,python3},\
+  \ --interpreter {bash,python3}\n                        Type of script that will\
+  \ wrap the executable.\n  -i INSTANCE_TYPE, --instance-type INSTANCE_TYPE\n    \
+  \                    AWS instance type to use.\n  -t TIMEOUT, --timeout TIMEOUT\n\
+  \                        Max runtime of this app (in hours).\n  --distribution DISTRIBUTION\n\
+  \                        Distribution to use for the machine image.\n  --release\
+  \ RELEASE     Distribution release to use for the machine image.\n  --runspec-version\
+  \ RUNSPEC_VERSION\n                        Version of the application execution\
+  \ environment\n                        inside the runSpec block.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/dxpy:0.307.0--pyh5e36f6f_0

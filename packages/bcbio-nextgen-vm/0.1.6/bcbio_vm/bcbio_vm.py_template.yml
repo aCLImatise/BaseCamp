@@ -1,0 +1,98 @@
+!Command
+command:
+- bcbio_vm.py
+- template
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: template
+  description: "Template name or path to template YAML file. Built in\nchoices: freebayes-variant,\
+    \ gatk-variant, tumor-\npaired, noalign-variant, illumina-rnaseq, illumina-\n\
+    chipseq"
+- !Positional
+  optional: false
+  position: 1
+  name: metadata
+  description: "CSV file with project metadata. Name of file used as\nproject name."
+- !Positional
+  optional: false
+  position: 2
+  name: input_files
+  description: Input read files, in BAM or fastq format
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --only-metadata
+  description: Ignore samples not present in metadata CSV file
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --force-single
+  description: Treat all files as single reads
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --separators
+  description: "semicolon separated list of separators that indicates\npaired files."
+  args: !SimpleFlagArg
+    name: SEPARATORS
+- !Flag
+  optional: true
+  synonyms:
+  - --systemconfig
+  description: "Global YAML configuration file specifying system\ndetails. Defaults\
+    \ to installed bcbio_system.yaml."
+  args: !SimpleFlagArg
+    name: SYSTEMCONFIG
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --numcores
+  description: Total cores to use for processing
+  args: !SimpleFlagArg
+    name: NUMCORES
+- !Flag
+  optional: true
+  synonyms:
+  - --relpaths
+  description: "Convert inputs into relative paths to the work\ndirectory\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: bcbio_vm.py template [-h] [--only-metadata] [--force-single]\n\
+  \                            [--separators SEPARATORS]\n                       \
+  \     [--systemconfig SYSTEMCONFIG] [-n NUMCORES]\n                            [--relpaths]\n\
+  \                            template metadata [input_files [input_files ...]]\n\
+  \npositional arguments:\n  template              Template name or path to template\
+  \ YAML file. Built in\n                        choices: freebayes-variant, gatk-variant,\
+  \ tumor-\n                        paired, noalign-variant, illumina-rnaseq, illumina-\n\
+  \                        chipseq\n  metadata              CSV file with project\
+  \ metadata. Name of file used as\n                        project name.\n  input_files\
+  \           Input read files, in BAM or fastq format\n\noptional arguments:\n  -h,\
+  \ --help            show this help message and exit\n  --only-metadata       Ignore\
+  \ samples not present in metadata CSV file\n  --force-single        Treat all files\
+  \ as single reads\n  --separators SEPARATORS\n                        semicolon\
+  \ separated list of separators that indicates\n                        paired files.\n\
+  \  --systemconfig SYSTEMCONFIG\n                        Global YAML configuration\
+  \ file specifying system\n                        details. Defaults to installed\
+  \ bcbio_system.yaml.\n  -n NUMCORES, --numcores NUMCORES\n                     \
+  \   Total cores to use for processing\n  --relpaths            Convert inputs into\
+  \ relative paths to the work\n                        directory\n"
+generated_using:
+- --help
+docker_image:

@@ -1,0 +1,274 @@
+!Command
+command:
+- get-genome
+positional:
+- !Positional
+  optional: true
+  position: 0
+  name: OPTIONS...
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  - --dir
+  description: Genome directory
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --db
+  description: "Genome database.  If argument is '?' (with\nthe quotes), this command\
+    \ lists available databases."
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --transcriptdb
+  description: "Retrieve the gene structure of the given contig argument\n(Assumes\
+    \ transcriptome was built with gmap_build -c)"
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --genes
+  description: Argument is a genes file
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -C
+  - --coords
+  description: Show coordinates only
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -U
+  - --uppercase
+  description: Convert sequence to uppercase
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --wraplength
+  description: Wrap length for sequence (default=60)
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --header
+  description: Desired header line
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --snpsdir
+  description: Directory for SNPs index files (created using snpindex)
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --usesnps
+  description: Use snp version (built by snpindex)
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --snpformat
+  description: "Print snp information from database built previously\nusing snpindex\
+    \ (0=none, 1=alternate version only\n2=both versions merged (using N), 3=both\
+    \ versions separate (default)"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -M
+  - --mapdir
+  description: Map directory
+  args: !SimpleFlagArg
+    name: directory
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --map
+  description: "Map file.  If argument is '?' (with the quotes),\nthis lists available\
+    \ map files."
+  args: !SimpleFlagArg
+    name: iitfile
+- !Flag
+  optional: true
+  synonyms:
+  - -S
+  - --sequence
+  description: For a gene map file, prints the coding sequence
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gsequence
+  description: For a gene map file, prints the gene sequence (exons plus introns),
+    one per line
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -E
+  - --exons
+  description: For a gene map file, prints the sequence, one exon per line
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --nunique
+  description: For a gene map file, also prints the number of unique positions
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --ranks
+  description: Prints levels for non-overlapping printing of map hits
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --raw
+  description: Prints sequence as ASCII numeric codes
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -u
+  - --flanking
+  description: Show flanking hits (default 0)
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -t
+  - --maptype
+  description: Show only intervals with given type
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --signed
+  description: "Show only intervals with same direction as query.  If flanking hits\n\
+    are also requested, show only flanking hits downstream in direction of\nquery."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --aslabel
+  description: Consider all queries to be labels, even if numeric
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --coding
+  description: Print entry only if position overlaps a coding exon
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -A
+  - --dump
+  description: Dump entire genome in FASTA format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --stream
+  description: Dump entire genome as a single stream of ACGTX bytes
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -L
+  - --chromosomes
+  description: List all chromosomes with universal coordinates
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --forsam
+  description: List all chromosomes for use in a SAM file
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -I
+  - --contigs
+  description: List all contigs with universal coordinates
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Usage: get-genome [OPTIONS...] -d genome [genome:]range, or\n       get-genome\
+  \ [OPTIONS...] -d genome chromosome:range, or\n       get-genome [OPTIONS...] -d\
+  \ genome contig[:range]\nwhere\n   range is startposition..endposition (endpos <\
+  \ startpos means - strand)\n         or startposition+length (+ strand)\n      \
+  \   or startposition+-length (- strand)\n\nInput options\n  -D, --dir=STRING   \
+  \     Genome directory\n  -d, --db=STRING         Genome database.  If argument\
+  \ is '?' (with\n                            the quotes), this command lists available\
+  \ databases.\n  -c, --transcriptdb=STRING\n                          Retrieve the\
+  \ gene structure of the given contig argument\n                            (Assumes\
+  \ transcriptome was built with gmap_build -c)\n  --genes                 Argument\
+  \ is a genes file\n\nOutput options\n  -C, --coords            Show coordinates\
+  \ only\n  -U, --uppercase         Convert sequence to uppercase\n  -l, --wraplength=INT\
+  \    Wrap length for sequence (default=60)\n  -h, --header=STRING     Desired header\
+  \ line\n  -V, --snpsdir=STRING    Directory for SNPs index files (created using\
+  \ snpindex)\n  -v, --usesnps=STRING    Use snp version (built by snpindex)\n  -f,\
+  \ --snpformat=INT     Print snp information from database built previously\n   \
+  \                         using snpindex (0=none, 1=alternate version only\n   \
+  \                         2=both versions merged (using N), 3=both versions separate\
+  \ (default)\n\nExternal map file options\n  -M, --mapdir=directory  Map directory\n\
+  \  -m, --map=iitfile       Map file.  If argument is '?' (with the quotes),\n  \
+  \                          this lists available map files.\n  -S, --sequence   \
+  \       For a gene map file, prints the coding sequence\n  --gsequence         \
+  \    For a gene map file, prints the gene sequence (exons plus introns), one per\
+  \ line\n  -E, --exons             For a gene map file, prints the sequence, one\
+  \ exon per line\n  --nunique               For a gene map file, also prints the\
+  \ number of unique positions\n  -k, --ranks             Prints levels for non-overlapping\
+  \ printing of map hits\n  -r, --raw               Prints sequence as ASCII numeric\
+  \ codes\n  -u, --flanking=INT      Show flanking hits (default 0)\n  -t, --maptype=STRING\
+  \    Show only intervals with given type\n  -s, --signed            Show only intervals\
+  \ with same direction as query.  If flanking hits\n                            are\
+  \ also requested, show only flanking hits downstream in direction of\n         \
+  \                   query.\n  --aslabel               Consider all queries to be\
+  \ labels, even if numeric\n  --coding                Print entry only if position\
+  \ overlaps a coding exon\n\nDump options\n  -A, --dump              Dump entire\
+  \ genome in FASTA format\n  --stream                Dump entire genome as a single\
+  \ stream of ACGTX bytes\n  -L, --chromosomes       List all chromosomes with universal\
+  \ coordinates\n  --forsam                List all chromosomes for use in a SAM file\n\
+  \  -I, --contigs           List all contigs with universal coordinates\n\nHelp options\n\
+  \  -^, --version           Show version\n  -?, --help              Show this help\
+  \ message\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/gmap:2021.03.08--pl5262h36cd882_0

@@ -1,0 +1,147 @@
+!Command
+command:
+- sam_sort
+positional:
+- !Positional
+  optional: true
+  position: 0
+  name: OPTIONS...
+  description: ''
+- !Positional
+  optional: false
+  position: 1
+  name: sam file
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  - --dir
+  description: Genome directory
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --db
+  description: "Genome database.  If argument is '?' (with\nthe quotes), this command\
+    \ lists available databases."
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --split-output
+  description: "Basename for multiple-file output, separately for nomapping,\nhalfmapping_uniq,\
+    \ halfmapping_mult, unpaired_uniq, unpaired_mult,\npaired_uniq, paired_mult, concordant_uniq,\
+    \ and concordant_mult results"
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --append-output
+  description: "When --split-output is given, this flag will append output\nto the\
+    \ existing files.  Otherwise, the default is to create new files."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sort2
+  description: "For positions with the same genomic position, sort secondarily by\n\
+    none: no guarantee about the secondary sort (default)\norig: original order in\
+    \ the SAM output file (what samtools sort does)\naccession: alphabetically by\
+    \ accession name\nmate-fwd: by genomic position of the mate, in ascending order\n\
+    mate-rev: by genomic position of the mate, in descending order\nFor sorting by\
+    \ mate genomic position, a nomapping mate is treated as genomic position 0"
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - --mark-dups
+  description: Mark duplicate reads by altering the flag accordingly
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --mark-first
+  description: Also mark the first occurrence of a read that has a subsequent duplicate
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dups-only
+  description: Print only duplicate reads
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --uniq-only
+  description: Print only unique reads
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --restore-orig-order
+  description: "Restore original order of SAM file.  Useful when --mark-dups, --dups-only,\
+    \ or --uniq-only\nis specified, and sorting is not desired"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --multiple-primaries
+  description: Specify if GSNAP or GMAP was run with the --multiple-primaries flag
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-sam-headers
+  description: Do not print SAM header lines
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --output-buffer
+  description: Size of output buffer kept in RAM for printing (default 10000000, or
+    10 million SAM lines)
+  args: !SimpleFlagArg
+    name: INT
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Usage: sam_sort [OPTIONS...] -d genome <sam file>\n\nInput options\n \
+  \ -D, --dir=STRING        Genome directory\n  -d, --db=STRING         Genome database.\
+  \  If argument is '?' (with\n                            the quotes), this command\
+  \ lists available databases.\nOutput file options\n  --split-output=STRING   Basename\
+  \ for multiple-file output, separately for nomapping,\n                        \
+  \    halfmapping_uniq, halfmapping_mult, unpaired_uniq, unpaired_mult,\n       \
+  \                     paired_uniq, paired_mult, concordant_uniq, and concordant_mult\
+  \ results\n  --append-output         When --split-output is given, this flag will\
+  \ append output\n                            to the existing files.  Otherwise,\
+  \ the default is to create new files.\n\nOther options\n  --sort2=STRING       \
+  \   For positions with the same genomic position, sort secondarily by\n        \
+  \                     none: no guarantee about the secondary sort (default)\n  \
+  \                           orig: original order in the SAM output file (what samtools\
+  \ sort does)\n                             accession: alphabetically by accession\
+  \ name\n                             mate-fwd: by genomic position of the mate,\
+  \ in ascending order\n                             mate-rev: by genomic position\
+  \ of the mate, in descending order\n                          For sorting by mate\
+  \ genomic position, a nomapping mate is treated as genomic position 0\n  --mark-dups\
+  \             Mark duplicate reads by altering the flag accordingly\n  --mark-first\
+  \            Also mark the first occurrence of a read that has a subsequent duplicate\n\
+  \n  --dups-only             Print only duplicate reads\n  --uniq-only          \
+  \   Print only unique reads\n  --restore-orig-order    Restore original order of\
+  \ SAM file.  Useful when --mark-dups, --dups-only, or --uniq-only\n            \
+  \                is specified, and sorting is not desired\n  --multiple-primaries\
+  \    Specify if GSNAP or GMAP was run with the --multiple-primaries flag\n  --no-sam-headers\
+  \        Do not print SAM header lines\n  --output-buffer=INT     Size of output\
+  \ buffer kept in RAM for printing (default 10000000, or 10 million SAM lines)\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/gmap:2021.03.08--pl5262h36cd882_0

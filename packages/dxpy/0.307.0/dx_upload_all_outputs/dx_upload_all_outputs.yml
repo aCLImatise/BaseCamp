@@ -1,0 +1,81 @@
+!Command
+command:
+- dx-upload-all-outputs
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --except
+  description: "Do not upload the input with this name. (May be used\nmultiple times.)"
+  args: !SimpleFlagArg
+    name: EXCLUDE
+- !Flag
+  optional: true
+  synonyms:
+  - --parallel
+  description: Upload the files in parallel
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sequential
+  description: Upload the files sequentially
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --clearJSON
+  description: Clears the output JSON file prior to starting upload.
+  args: !SimpleFlagArg
+    name: CLEARJSON
+- !Flag
+  optional: true
+  synonyms:
+  - --wait-on-close
+  description: Wait for files to close, default is not to wait
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --xattr-properties
+  description: Get filesystem attributes and set them as properties on each file uploaded
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: dx-upload-all-outputs [-h] [--except EXCLUDE] [--parallel]\n  \
+  \                           [--sequential] [--clearJSON CLEARJSON]\n           \
+  \                  [--wait-on-close] [--xattr-properties]\n\nNote: this is a utility\
+  \ for use by bash apps running in the DNAnexus Platform.\n\nUploads all files and\
+  \ subdirectories in the directory $HOME/out, as described\nbelow. It also adds relevant\
+  \ entries into the job_output.json file.\n\nBy convention, only directories with\
+  \ names equal to output parameter names are\nexpected to be found in the output\
+  \ directory, and any file(s) found in those\nsubdirectories will be uploaded as\
+  \ the corresponding outputs.  For example, a\nfile with the path\n\n    $HOME/out/FOO/OUTPUT.TXT\n\
+  \nwill be uploaded, and the key \"FOO\" will be added to the job_output.json file\n\
+  with value\n\n    {\"$dnanexus_link\": \"file-xxxx\"}\n\nwhere \"file-xxxx\" is\
+  \ the ID of the newly uploaded file. If multiple files are\nfound, they will be\
+  \ added as an array output (in unspecified order). If\nsubdirectories are found\
+  \ under $HOME/out/FOO, then they are uploaded in their\nentirety to the workspace,\
+  \ and values are added to FOO in the job_output.json\nfile. For example, the path:\n\
+  \n    $HOME/out/FOO/BAR/XXX.TXT\n\nwill be uploaded to /BAR/XXX.TXT.\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  --except\
+  \ EXCLUDE      Do not upload the input with this name. (May be used\n          \
+  \              multiple times.)\n  --parallel            Upload the files in parallel\n\
+  \  --sequential          Upload the files sequentially\n  --clearJSON CLEARJSON\n\
+  \                        Clears the output JSON file prior to starting upload.\n\
+  \  --wait-on-close       Wait for files to close, default is not to wait\n  --xattr-properties\
+  \    Get filesystem attributes and set them as properties on each file uploaded\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/dxpy:0.307.0--pyh5e36f6f_0

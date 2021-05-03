@@ -1,0 +1,107 @@
+!Command
+command:
+- platon
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --db
+  - -d
+  description: database path (default = <platon_path>/db)
+  args: !SimpleFlagArg
+    name: DB
+- !Flag
+  optional: true
+  synonyms:
+  - --prefix
+  - -p
+  description: Prefix for output files
+  args: !SimpleFlagArg
+    name: PREFIX
+- !Flag
+  optional: true
+  synonyms:
+  - --output
+  - -o
+  description: Output directory (default = current working directory)
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - --mode
+  - -m
+  description: "applied filter mode: sensitivity: RDS only (>= 95%\nsensitivity);\
+    \ specificity: RDS only (>=99.9%\nspecificity); accuracy: RDS & characterization\n\
+    heuristics (highest accuracy) (default = accuracy)"
+  args: !ChoiceFlagArg
+    choices: !!set
+      specificity:
+      accuracy:
+      sensitivity:
+- !Flag
+  optional: true
+  synonyms:
+  - --characterize
+  - -c
+  description: deactivate filters; characterize all contigs
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --verbose
+  - -v
+  description: Print verbose information
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --threads
+  - -t
+  description: "Number of threads to use (default = number of\navailable CPUs)"
+  args: !SimpleFlagArg
+    name: THREADS
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  - -h
+  description: Show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: platon [--db DB] [--prefix PREFIX] [--output OUTPUT]\n        \
+  \      [--mode {sensitivity,accuracy,specificity}] [--characterize]\n          \
+  \    [--help] [--verbose] [--threads THREADS] [--version]\n              <genome>\n\
+  \nIdentification and characterization of bacterial plasmid contigs from short-read\
+  \ draft assemblies.\n\nInput / Output:\n  <genome>              draft genome in\
+  \ fasta format\n  --db DB, -d DB        database path (default = <platon_path>/db)\n\
+  \  --prefix PREFIX, -p PREFIX\n                        Prefix for output files\n\
+  \  --output OUTPUT, -o OUTPUT\n                        Output directory (default\
+  \ = current working directory)\n\nWorkflow:\n  --mode {sensitivity,accuracy,specificity},\
+  \ -m {sensitivity,accuracy,specificity}\n                        applied filter\
+  \ mode: sensitivity: RDS only (>= 95%\n                        sensitivity); specificity:\
+  \ RDS only (>=99.9%\n                        specificity); accuracy: RDS & characterization\n\
+  \                        heuristics (highest accuracy) (default = accuracy)\n  --characterize,\
+  \ -c    deactivate filters; characterize all contigs\n\nGeneral:\n  --help, -h \
+  \           Show this help message and exit\n  --verbose, -v         Print verbose\
+  \ information\n  --threads THREADS, -t THREADS\n                        Number of\
+  \ threads to use (default = number of\n                        available CPUs)\n\
+  \  --version             show program's version number and exit\n\nCitation:\nSchwengers\
+  \ O., Barth P., Falgenhauer L., Hain T., Chakraborty T., & Goesmann A. (2020).\n\
+  Platon: identification and characterization of bacterial plasmid contigs in short-read\
+  \ draft assemblies exploiting protein sequence-based replicon distribution scores.\n\
+  Microbial Genomics, 95, 295. https://doi.org/10.1099/mgen.0.000398\n\nGitHub:\n\
+  https://github.com/oschwengers/platon\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/platon:1.6--pyhdfd78af_0

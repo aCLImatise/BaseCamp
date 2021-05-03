@@ -1,0 +1,83 @@
+!Command
+command:
+- biowdl-input-converter
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: samplesheet.
+  description: --old                 Output old style JSON as used in BioWDL germline-DNA
+- !Positional
+  optional: false
+  position: 0
+  name: present.
+  description: --skip-duplicate-check
+- !Positional
+  optional: false
+  position: 0
+  name: samplesheet.
+  description: --check-file-md5sums  Do a md5sum check for reads which have md5sums
+    added
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --format
+  description: The input samplesheet format - tsv, csv, json, or yaml
+  args: !SimpleFlagArg
+    name: FORMAT
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --output
+  description: "The output file to which the json is written. Default:\nstdout"
+  args: !SimpleFlagArg
+    name: OUTPUT
+- !Flag
+  optional: true
+  synonyms:
+  - --validate
+  description: Do not generate output but only validate the
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --skip-file-check
+  description: Skip the checking if files in the samplesheet are
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: biowdl-input-converter [-h] [-f FORMAT] [-o OUTPUT] [--validate]\n\
+  \                              [--old] [--skip-file-check]\n                   \
+  \           [--skip-duplicate-check] [--check-file-md5sums]\n                  \
+  \            samplesheet\n\nParse samplesheets for BioWDL pipelines.\n\npositional\
+  \ arguments:\n  samplesheet           The input samplesheet. Format will be automatically\n\
+  \                        detected from file suffix if --format argument not\n  \
+  \                      provided\n\noptional arguments:\n  -h, --help           \
+  \ show this help message and exit\n  -f FORMAT, --format FORMAT\n              \
+  \          The input samplesheet format - tsv, csv, json, or yaml\n  -o OUTPUT,\
+  \ --output OUTPUT\n                        The output file to which the json is\
+  \ written. Default:\n                        stdout\n  --validate            Do\
+  \ not generate output but only validate the\n                        samplesheet.\n\
+  \  --old                 Output old style JSON as used in BioWDL germline-DNA\n\
+  \                        and RNA-seq version 1 pipelines\n  --skip-file-check  \
+  \   Skip the checking if files in the samplesheet are\n                        present.\n\
+  \  --skip-duplicate-check\n                        Skip the checks for duplicate\
+  \ files in the\n                        samplesheet.\n  --check-file-md5sums  Do\
+  \ a md5sum check for reads which have md5sums added\n                        in\
+  \ the samplesheet.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/biowdl-input-converter:0.3.0--pyhdfd78af_0

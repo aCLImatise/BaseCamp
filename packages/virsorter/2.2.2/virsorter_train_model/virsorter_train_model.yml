@@ -1,0 +1,85 @@
+!Command
+command:
+- virsorter
+- train-model
+positional:
+- !Positional
+  optional: true
+  position: 0
+  name: SNAKEMAKE_ARGS
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --working-dir
+  description: output directory  [required]
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --viral-ftrfile
+  description: viral genome feature file for training  [required]
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - --nonviral-ftrfile
+  description: "nonviral genome feature file for training\n[required]"
+  args: !SimpleFlagArg
+    name: PATH
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --jobs
+  description: 'number of threads for classier  [default: 2]'
+  args: !SimpleFlagArg
+    name: INTEGER
+- !Flag
+  optional: true
+  synonyms:
+  - --balanced
+  description: "random undersample the larger to the size of the\nsmaller feature\
+    \ file  [default: False]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --use-conda-off
+  description: "Stop using the conda envs (vs2.yaml) that come with\nthis package\
+    \ and use what are installed in current\nsystem; Only useful when you want to\
+    \ install\ndependencies on your own with your own prefer\nversions  [default:\
+    \ False]"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "Usage: virsorter train-model [OPTIONS] [SNAKEMAKE_ARGS]...\n\n  Training\
+  \ customized classifier model.\n\nOptions:\n  -w, --working-dir PATH   output directory\
+  \  [required]\n  --viral-ftrfile PATH     viral genome feature file for training\
+  \  [required]\n  --nonviral-ftrfile PATH  nonviral genome feature file for training\n\
+  \                           [required]\n\n  -j, --jobs INTEGER       number of threads\
+  \ for classier  [default: 2]\n  --balanced               random undersample the\
+  \ larger to the size of the\n                           smaller feature file  [default:\
+  \ False]\n\n  --use-conda-off          Stop using the conda envs (vs2.yaml) that\
+  \ come with\n                           this package and use what are installed\
+  \ in current\n                           system; Only useful when you want to install\n\
+  \                           dependencies on your own with your own prefer\n    \
+  \                       versions  [default: False]\n\n  -h, --help             \
+  \  Show this message and exit.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/virsorter:2.2.2--pyhdfd78af_0

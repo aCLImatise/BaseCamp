@@ -1,0 +1,185 @@
+!Command
+command:
+- pbaa
+- cluster
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: files.
+  description: prefix                     STR    Output prefix for run.
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --filter
+  description: "INT    Variants with coverage lower than filter\nwill be ignored.\
+    \ [3]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --trim-ends
+  description: "INT    Number of bases to trim from both sides of\nreads during graph\
+    \ construction and variant\ndetection. [5]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --pile-size
+  description: "INT    The number of best alignments to keep for\neach read during\
+    \ error correction. [30]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min-var-frequency
+  description: "FLOAT  Minimum coverage frequency within a pile.\n[0.3]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max-alignments-per-read
+  description: "INT    The number of random alignments, for each\nread, within a guide\
+    \ grouping [1000]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max-reads-per-guide
+  description: "INT    The number randomly selected reads to use\nwithin a guide grouping.\
+    \ [500]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --iterations
+  description: INT    Number of iterations to run k-means. [9]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --seed
+  description: INT    Randomization seed. [1984]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max-consensus-reads
+  description: "INT    Maximum number of reads to use per cluster\nconsensus. [100]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max-amplicon-size
+  description: "INT    Upper read length cutoff, longer reads will\nbe skipped. [15000]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min-read-qv
+  description: FLOAT  Low read QV cutoff. [20]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --off-target-groups
+  description: "STR    Group names to exclude, i.e. these loci are\noff-target (not\
+    \ amplified)."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min-cluster-frequency
+  description: FLOAT  Low frequency cluster cutoff. [0.1]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --min-cluster-read-count
+  description: INT    Low read count cluster cutoff. [5]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --max-uchime-score
+  description: FLOAT  High UCHIME score cutoff. [1]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --num-threads
+  description: "INT    Number of threads to use, 0 means\nautodetection. [0]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --log-level
+  description: "STR    Set log level. Valid choices: (TRACE,\nDEBUG, INFO, WARN, FATAL).\
+    \ [WARN]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --log-file
+  description: FILE   Log to a file, instead of stderr.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this help and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Show application version and exit.
+  args: !EmptyFlagArg {}
+help_text: "pbaa cluster - Run clustering tool.\n\nUsage:\n  pbaa cluster [options]\
+  \ <guide input> <read input> <prefix>\n\n  guide input                FILE   Guide\
+  \ sequence(s) in fasta format indexed\n                                    with\
+  \ samtools faidx version 1.9 or greater.\n                                    A\
+  \ FOFN can be provide for multiple files.\n  read input                 FILE   De-multiplexed\
+  \ HiFi reads in fastq format\n                                    indexed with samtools\
+  \ fqidx version 1.9 or\n                                    greater. A FOFN can\
+  \ be provide for multiple\n                                    files.\n  prefix\
+  \                     STR    Output prefix for run.\n\nPlacement and Variant Options:\n\
+  \  --filter                   INT    Variants with coverage lower than filter\n\
+  \                                    will be ignored. [3]\n  --trim-ends       \
+  \         INT    Number of bases to trim from both sides of\n                  \
+  \                  reads during graph construction and variant\n               \
+  \                     detection. [5]\n  --pile-size                INT    The number\
+  \ of best alignments to keep for\n                                    each read\
+  \ during error correction. [30]\n  --min-var-frequency        FLOAT  Minimum coverage\
+  \ frequency within a pile.\n                                    [0.3]\n  --max-alignments-per-read\
+  \  INT    The number of random alignments, for each\n                          \
+  \          read, within a guide grouping [1000]\n\nClustering Options:\n  --max-reads-per-guide\
+  \      INT    The number randomly selected reads to use\n                      \
+  \              within a guide grouping. [500]\n  --iterations               INT\
+  \    Number of iterations to run k-means. [9]\n  --seed                     INT\
+  \    Randomization seed. [1984]\n\nConsensus Options:\n  --max-consensus-reads \
+  \     INT    Maximum number of reads to use per cluster\n                      \
+  \              consensus. [100]\n\nFiltering Options:\n  --max-amplicon-size   \
+  \     INT    Upper read length cutoff, longer reads will\n                     \
+  \               be skipped. [15000]\n  --min-read-qv              FLOAT  Low read\
+  \ QV cutoff. [20]\n  --off-target-groups        STR    Group names to exclude, i.e.\
+  \ these loci are\n                                    off-target (not amplified).\n\
+  \  --min-cluster-frequency    FLOAT  Low frequency cluster cutoff. [0.1]\n  --min-cluster-read-count\
+  \   INT    Low read count cluster cutoff. [5]\n  --max-uchime-score         FLOAT\
+  \  High UCHIME score cutoff. [1]\n\nGeneral Options:\n\n  -h,--help            \
+  \             Show this help and exit.\n  --version                         Show\
+  \ application version and exit.\n  -j,--num-threads           INT    Number of threads\
+  \ to use, 0 means\n                                    autodetection. [0]\n  --log-level\
+  \                STR    Set log level. Valid choices: (TRACE,\n                \
+  \                    DEBUG, INFO, WARN, FATAL). [WARN]\n  --log-file           \
+  \      FILE   Log to a file, instead of stderr.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/pbaa:1.0.0--hdfd78af_0

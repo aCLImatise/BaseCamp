@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import Directory, Int, File, String
+
+Figaro_Py_V0_1_0 = CommandToolBuilder(tool="figaro.py", base_command=["figaro.py"], inputs=[ToolInput(tag="in_output_directory", input_type=Directory(optional=True), prefix="--outputDirectory", doc=InputDocumentation(doc="Directory for outputs")), ToolInput(tag="in_amplicon_length", input_type=Int(optional=True), prefix="--ampliconLength", doc=InputDocumentation(doc="Length of amplicon (not including primers)")), ToolInput(tag="in_forward_primer_length", input_type=Int(optional=True), prefix="--forwardPrimerLength", doc=InputDocumentation(doc="Length of forward primer")), ToolInput(tag="in_reverse_primer_length", input_type=Int(optional=True), prefix="--reversePrimerLength", doc=InputDocumentation(doc="Length of reverse primer")), ToolInput(tag="in_input_directory", input_type=Directory(optional=True), prefix="--inputDirectory", doc=InputDocumentation(doc="Directory with Fastq files to analyze")), ToolInput(tag="in_output_file_name", input_type=File(optional=True), prefix="--outputFileName", doc=InputDocumentation(doc="Output file for trim site JSON")), ToolInput(tag="in_minimum_overlap", input_type=String(optional=True), prefix="--minimumOverlap", doc=InputDocumentation(doc="Minimum overlap between the paired-end reads")), ToolInput(tag="in_subsample", input_type=Int(optional=True), prefix="--subsample", doc=InputDocumentation(doc="Subsampling level (will analyze approximately 1/x\nreads")), ToolInput(tag="in_percentile", input_type=String(optional=True), prefix="--percentile", doc=InputDocumentation(doc="Percentile to use for expected error model")), ToolInput(tag="in_file_naming_standard", input_type=File(optional=True), prefix="--fileNamingStandard", doc=InputDocumentation(doc="File naming standard to use")), ToolInput(tag="in_log_file", input_type=File(optional=True), prefix="--logFile", doc=InputDocumentation(doc="Log file path\n"))], outputs=[ToolOutput(tag="out_output_directory", output_type=Directory(optional=True), selector=InputSelector(input_to_select="in_output_directory", type_hint=File()), doc=OutputDocumentation(doc="Directory for outputs")), ToolOutput(tag="out_output_file_name", output_type=File(optional=True), selector=InputSelector(input_to_select="in_output_file_name", type_hint=File()), doc=OutputDocumentation(doc="Output file for trim site JSON"))], container="quay.io/biocontainers/figaro:1.1.2--hdfd78af_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Figaro_Py_V0_1_0().translate("wdl")
+

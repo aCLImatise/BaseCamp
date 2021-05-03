@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import String, Boolean, File
+
+Abyss_Todot_V0_1_0 = CommandToolBuilder(tool="abyss_todot", base_command=["abyss-todot"], inputs=[ToolInput(tag="in_km_er", input_type=String(optional=True), prefix="--kmer", doc=InputDocumentation(doc="report the mean k-mer coverage, otherwise\nthe sum k-mer coverage is reported")), ToolInput(tag="in_adj", input_type=Boolean(optional=True), prefix="--adj", doc=InputDocumentation(doc="output the graph in adj format")), ToolInput(tag="in_as_qg", input_type=Boolean(optional=True), prefix="--asqg", doc=InputDocumentation(doc="output the graph in asqg format")), ToolInput(tag="in_dist", input_type=Boolean(optional=True), prefix="--dist", doc=InputDocumentation(doc="output the graph in dist format")), ToolInput(tag="in_dot", input_type=Boolean(optional=True), prefix="--dot", doc=InputDocumentation(doc="output the graph in GraphViz format [default]")), ToolInput(tag="in_gv", input_type=Boolean(optional=True), prefix="--gv", doc=InputDocumentation(doc="output the graph in GraphViz format")), ToolInput(tag="in_dot_mean_cov", input_type=Boolean(optional=True), prefix="--dot-meancov", doc=InputDocumentation(doc="same as above but give the mean coverage")), ToolInput(tag="in_gfa", input_type=Boolean(optional=True), prefix="--gfa", doc=InputDocumentation(doc="output the graph in GFA1 format")), ToolInput(tag="in_gfa_one", input_type=Boolean(optional=True), prefix="--gfa1", doc=InputDocumentation(doc="output the graph in GFA1 format")), ToolInput(tag="in_gfa_two", input_type=Boolean(optional=True), prefix="--gfa2", doc=InputDocumentation(doc="output the graph in GFA2 format")), ToolInput(tag="in_sam", input_type=Boolean(optional=True), prefix="--sam", doc=InputDocumentation(doc="output the graph in SAM format")), ToolInput(tag="in_estimate", input_type=String(optional=True), prefix="--estimate", doc=InputDocumentation(doc="distance estimates")), ToolInput(tag="in_add_complements", input_type=String(optional=True), prefix="--add-complements", doc=InputDocumentation(doc="missing complementary edges")), ToolInput(tag="in_verbose", input_type=Boolean(optional=True), prefix="--verbose", doc=InputDocumentation(doc="display verbose output")), ToolInput(tag="in_file", input_type=File(optional=True), position=0, doc=InputDocumentation(doc=""))], outputs=[], container="quay.io/biocontainers/abyss:2.3.1--hd403d74_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Abyss_Todot_V0_1_0().translate("wdl")
+

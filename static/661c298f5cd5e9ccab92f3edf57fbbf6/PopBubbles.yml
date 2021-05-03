@@ -1,0 +1,198 @@
+!Command
+command:
+- PopBubbles
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: FASTA
+  description: contigs in FASTA format
+- !Positional
+  optional: false
+  position: 1
+  name: ADJ
+  description: contig adjacency graph
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --kmer
+  description: k-mer size
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --branches
+  description: 'maximum number of branches, default: 2'
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --bubble-length
+  description: "pop bubbles shorter than N bp\ndefault is 10000"
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -p
+  - --identity
+  description: 'minimum identity, default: 0.9'
+  args: !SimpleFlagArg
+    name: REAL
+- !Flag
+  optional: true
+  synonyms:
+  - -c
+  - --coverage
+  description: "remove contigs with mean k-mer coverage\nless than this threshold\
+    \ [0]"
+  args: !SimpleFlagArg
+    name: REAL
+- !Flag
+  optional: true
+  synonyms:
+  - --scaffold
+  description: "scaffold over bubbles that have\ninsufficient identity"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-scaffold
+  description: disable scaffolding [default]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --SS
+  description: expect contigs to be oriented correctly
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --no-SS
+  description: no assumption about contig orientation [default]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --graph
+  description: write the contig adjacency graph to FILE
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --adj
+  description: output the graph in ADJ format [default]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --asqg
+  description: output the graph in ASQG format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dot
+  description: output the graph in GraphViz format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gfa
+  description: output the graph in GFA1 format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gfa1
+  description: output the graph in GFA1 format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gfa2
+  description: output the graph in GFA2 format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gv
+  description: output the graph in GraphViz format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --sam
+  description: output the graph in SAM format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --bubble-graph
+  description: output a graph of the bubbles
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --threads
+  description: use N parallel threads [1]
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: display verbose output
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: display this help and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: output version information and exit
+  args: !EmptyFlagArg {}
+help_text: "Usage: PopBubbles -k<kmer> [OPTION]... FASTA ADJ\nIdentify and pop simple\
+  \ bubbles.\n\n Arguments:\n\n  FASTA  contigs in FASTA format\n  ADJ    contig adjacency\
+  \ graph\n\n Options:\n\n  -k, --kmer=N          k-mer size\n  -a, --branches=N \
+  \     maximum number of branches, default: 2\n  -b, --bubble-length=N pop bubbles\
+  \ shorter than N bp\n                        default is 10000\n  -p, --identity=REAL\
+  \   minimum identity, default: 0.9\n  -c, --coverage=REAL   remove contigs with\
+  \ mean k-mer coverage\n                        less than this threshold [0]\n  \
+  \    --scaffold        scaffold over bubbles that have\n                       \
+  \ insufficient identity\n      --no-scaffold     disable scaffolding [default]\n\
+  \      --SS              expect contigs to be oriented correctly\n      --no-SS\
+  \           no assumption about contig orientation [default]\n  -g, --graph=FILE\
+  \      write the contig adjacency graph to FILE\n      --adj             output\
+  \ the graph in ADJ format [default]\n      --asqg            output the graph in\
+  \ ASQG format\n      --dot             output the graph in GraphViz format\n   \
+  \   --gfa             output the graph in GFA1 format\n      --gfa1            output\
+  \ the graph in GFA1 format\n      --gfa2            output the graph in GFA2 format\n\
+  \      --gv              output the graph in GraphViz format\n      --sam      \
+  \       output the graph in SAM format\n      --bubble-graph    output a graph of\
+  \ the bubbles\n  -j, --threads=N       use N parallel threads [1]\n  -v, --verbose\
+  \         display verbose output\n      --help            display this help and\
+  \ exit\n      --version         output version information and exit\n\nReport bugs\
+  \ to <abyss-users@bcgsc.ca>.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/abyss:2.3.1--hd403d74_0
