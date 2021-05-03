@@ -1,0 +1,120 @@
+!Command
+command:
+- snpindex
+positional:
+- !Positional
+  optional: true
+  position: 0
+  name: OPTIONS...
+  description: ''
+- !Positional
+  optional: true
+  position: 1
+  name: iitfile
+  description: ''
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  - --sourcedir
+  description: "Directory where to read genome index files (default is\nGMAP genome\
+    \ directory specified at compile time)"
+  args: !SimpleFlagArg
+    name: directory
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --db
+  description: Genome database
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --kmer
+  description: "kmer size to use in genome database (allowed values: 16 or less).\n\
+    If not specified, the program will find the highest available\nkmer size in the\
+    \ genome database"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --sampling
+  description: "Sampling to use in genome database.  If not specified, the program\n\
+    will find the smallest available sampling value in the genome database\nwithin\
+    \ selected k-mer size"
+  args: !SimpleFlagArg
+    name: INT
+- !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --destdir
+  description: "Directory where to write SNP index files (default is\nGMAP genome\
+    \ directory specified at compile time)"
+  args: !SimpleFlagArg
+    name: directory
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --snpsdb
+  description: Name of SNP database
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --max-warnings
+  description: "Maximum number of warnings to print to stderr about\ninconsistencies\
+    \ relative to the reference genome.\nA value of 0 turns off all warnings.  A negative\
+    \ value\nprints all warnings.  (default -1, meaning no limit)"
+  args: !SimpleFlagArg
+    name: INT
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: Show this help message
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Show version
+  args: !EmptyFlagArg {}
+help_text: "Usage: snpindex [OPTIONS...] -d <genome> -v <snpsdb> [<iitfile>]\n\nIf\
+  \ iitfile is provided as a non-flag argument, then use that iitfile and create SNP\
+  \ database\nas named by -v flag.  Otherwise, try to find iit file named <snpsdb>.iit\
+  \ in GMAP index files\nfor <genome>.\n\nOptions (must include -d)\n  -D, --sourcedir=directory\
+  \      Directory where to read genome index files (default is\n                \
+  \                   GMAP genome directory specified at compile time)\n  -d, --db=STRING\
+  \                Genome database\n  -k, --kmer=INT                 kmer size to\
+  \ use in genome database (allowed values: 16 or less).\n                       \
+  \            If not specified, the program will find the highest available\n   \
+  \                                kmer size in the genome database\n  -q, --sampling=INT\
+  \             Sampling to use in genome database.  If not specified, the program\n\
+  \                                   will find the smallest available sampling value\
+  \ in the genome database\n                                   within selected k-mer\
+  \ size\n  -V, --destdir=directory        Directory where to write SNP index files\
+  \ (default is\n                                   GMAP genome directory specified\
+  \ at compile time)\n  -v, --snpsdb=STRING            Name of SNP database\n  -w,\
+  \ --max-warnings=INT         Maximum number of warnings to print to stderr about\n\
+  \                                   inconsistencies relative to the reference genome.\n\
+  \                                   A value of 0 turns off all warnings.  A negative\
+  \ value\n                                   prints all warnings.  (default -1, meaning\
+  \ no limit)\n\n  --version                      Show version\n  --help         \
+  \                Show this help message\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/gmap:2021.03.08--pl5262h36cd882_0

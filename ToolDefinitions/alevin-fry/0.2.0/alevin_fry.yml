@@ -1,0 +1,681 @@
+&id001 !Command
+command:
+- alevin-fry
+positional: []
+named: []
+parent:
+subcommands:
+- &id002 !Command
+  command:
+  - alevin-fry
+  - infer
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --use-mtx
+    description: flag for writing output matrix in matrix market instead of EDS
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -c
+    - --count-mat
+    description: matrix of cells by equivalence class counts
+    args: !SimpleFlagArg
+      name: eqc-mat
+  - !Flag
+    optional: true
+    synonyms:
+    - -e
+    - --eq-labels
+    description: file containing the gene labels of the equivalence classes
+    args: !SimpleFlagArg
+      name: eq-labels
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output-dir
+    description: output directory where quantification results will be written
+    args: !SimpleFlagArg
+      name: output-dir
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --threads
+    description: 'number of threads to use for processing [default: 2]'
+    args: !SimpleFlagArg
+      name: threads
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - alevin-fry
+    - infer
+    - FLAGS
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --eq-labels
+      description: ''
+      args: !SimpleFlagArg
+        name: eq-labels
+    - !Flag
+      optional: true
+      synonyms:
+      - --count-mat
+      description: ''
+      args: !SimpleFlagArg
+        name: eqc-mat
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "error: Found argument 'FLAGS' which wasn't expected, or isn't valid\
+      \ in this context\n\nIf you tried to supply `FLAGS` as a PATTERN use `-- FLAGS`\n\
+      \nUSAGE:\n    alevin-fry infer [FLAGS] [OPTIONS] --count-mat <eqc-mat> --eq-labels\
+      \ <eq-labels> --output-dir <output-dir>\n\nFor more information try --help\n"
+    generated_using: &id003
+    - --help
+    docker_image: quay.io/biocontainers/alevin-fry:0.2.0--h7d875b9_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Prints help information
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - -V
+    - --version
+    description: Prints version information
+    args: !EmptyFlagArg {}
+  help_text: "alevin-fry-infer 0.2.0\nAvi Srivastava <avi.srivastava@nyu.edu>\nHirak\
+    \ Sarkar <hirak_sarkar@hms.harvard.edu>\nDongze He <dhe17@umd.edu>\nMohsen Zakeri\
+    \ <mzakeri@cs.umd.edu>\nRob Patro <rob@cs.umd.edu>\nPerform inference on equivalence\
+    \ class count data\n\nUSAGE:\n    alevin-fry infer [FLAGS] [OPTIONS] --count-mat\
+    \ <eqc-mat> --eq-labels <eq-labels> --output-dir <output-dir>\n\nFLAGS:\n    -h,\
+    \ --help       Prints help information\n        --use-mtx    flag for writing\
+    \ output matrix in matrix market instead of EDS\n    -V, --version    Prints version\
+    \ information\n\nOPTIONS:\n    -c, --count-mat <eqc-mat>        matrix of cells\
+    \ by equivalence class counts\n    -e, --eq-labels <eq-labels>      file containing\
+    \ the gene labels of the equivalence classes\n    -o, --output-dir <output-dir>\
+    \    output directory where quantification results will be written\n    -t, --threads\
+    \ <threads>          number of threads to use for processing [default: 2]\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/alevin-fry:0.2.0--h7d875b9_0
+- &id004 !Command
+  command:
+  - alevin-fry
+  - quant
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --dump-eqclasses
+    description: flag for dumping equivalence classes
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --init-uniform
+    description: flag for uniform sampling
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --summary-stat
+    description: flag for storing only summary statistics
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --use-mtx
+    description: flag for writing output matrix in matrix market instead of EDS
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input-dir
+    description: input directory containing collated RAD file
+    args: !SimpleFlagArg
+      name: input-dir
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    - --num-bootstraps
+    description: 'number of bootstraps to use [default: 0]'
+    args: !SimpleFlagArg
+      name: num-bootstraps
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output-dir
+    description: output directory where quantification results will be written
+    args: !SimpleFlagArg
+      name: output-dir
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --resolution
+    description: "the resolution strategy by which molecules will be counted [possible\
+      \ values: full,\ntrivial, cr-like, cr-like-em, parsimony]"
+    args: !SimpleFlagArg
+      name: resolution
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    - --tg-map
+    description: transcript to gene map
+    args: !SimpleFlagArg
+      name: tg-map
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --threads
+    description: 'number of threads to use for processing [default: 2]'
+    args: !SimpleFlagArg
+      name: threads
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - alevin-fry
+    - quant
+    - FLAGS
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --tg-map
+      description: ''
+      args: !SimpleFlagArg
+        name: tg-map
+    - !Flag
+      optional: true
+      synonyms:
+      - --input-dir
+      description: ''
+      args: !SimpleFlagArg
+        name: input-dir
+    parent: *id004
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "error: Found argument 'FLAGS' which wasn't expected, or isn't valid\
+      \ in this context\n\nIf you tried to supply `FLAGS` as a PATTERN use `-- FLAGS`\n\
+      \nUSAGE:\n    alevin-fry quant [FLAGS] [OPTIONS] --input-dir <input-dir> --tg-map\
+      \ <tg-map> --output-dir <output-dir>\n\nFor more information try --help\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/alevin-fry:0.2.0--h7d875b9_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Prints help information
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - -V
+    - --version
+    description: Prints version information
+    args: !EmptyFlagArg {}
+  help_text: "alevin-fry-quant 0.2.0\nAvi Srivastava <avi.srivastava@nyu.edu>\nHirak\
+    \ Sarkar <hirak_sarkar@hms.harvard.edu>\nDongze He <dhe17@umd.edu>\nMohsen Zakeri\
+    \ <mzakeri@cs.umd.edu>\nRob Patro <rob@cs.umd.edu>\nQuantify expression from a\
+    \ collated RAD file\n\nUSAGE:\n    alevin-fry quant [FLAGS] [OPTIONS] --input-dir\
+    \ <input-dir> --tg-map <tg-map> --output-dir <output-dir>\n\nFLAGS:\n    -d, --dump-eqclasses\
+    \    flag for dumping equivalence classes\n    -h, --help              Prints\
+    \ help information\n        --init-uniform      flag for uniform sampling\n  \
+    \      --summary-stat      flag for storing only summary statistics\n        --use-mtx\
+    \           flag for writing output matrix in matrix market instead of EDS\n \
+    \   -V, --version           Prints version information\n\nOPTIONS:\n    -i, --input-dir\
+    \ <input-dir>              input directory containing collated RAD file\n    -b,\
+    \ --num-bootstraps <num-bootstraps>    number of bootstraps to use [default: 0]\n\
+    \    -o, --output-dir <output-dir>\n            output directory where quantification\
+    \ results will be written\n\n    -r, --resolution <resolution>\n            the\
+    \ resolution strategy by which molecules will be counted [possible values: full,\n\
+    \            trivial, cr-like, cr-like-em, parsimony]\n\n    -m, --tg-map <tg-map>\
+    \                    transcript to gene map\n    -t, --threads <threads>     \
+    \             number of threads to use for processing [default: 2]\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/alevin-fry:0.2.0--h7d875b9_0
+- &id005 !Command
+  command:
+  - alevin-fry
+  - generate-permit-list
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -k
+    - --knee-distance
+    description: "attempt to determine the number of barcodes to keep using the knee\n\
+      distance method"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -e
+    - --expect-cells
+    description: "defines the expected number of cells to use in determining the (read,\
+      \ not UMI) based\ncutoff"
+    args: !SimpleFlagArg
+      name: expect-cells
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --expected-ori
+    description: the expected orientation of alignments
+    args: !SimpleFlagArg
+      name: expected-ori
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --force-cells
+    description: select the top-k most-frequent barcodes, based on read count, as
+      valid (true)
+    args: !SimpleFlagArg
+      name: force-cells
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input
+    description: input directory containing the map.rad RAD file
+    args: !SimpleFlagArg
+      name: input
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    - --min-reads
+    description: 'minimum read count threshold; only used with --unfiltered-pl [default:
+      10]'
+    args: !SimpleFlagArg
+      name: min-reads
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output-dir
+    description: output directory
+    args: !SimpleFlagArg
+      name: output-dir
+  - !Flag
+    optional: true
+    synonyms:
+    - -u
+    - --unfiltered-pl
+    description: uses an unfiltered external permit list
+    args: !SimpleFlagArg
+      name: unfiltered-pl
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    - --valid-bc
+    description: uses true barcode collected from a provided file
+    args: !SimpleFlagArg
+      name: valid-bc
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - alevin-fry
+    - generate-permit-list
+    - FLAGS
+    positional: []
+    named:
+    - !Flag
+      optional: true
+      synonyms:
+      - --unfiltered-pl
+      description: ''
+      args: !SimpleFlagArg
+        name: unfiltered-pl
+    - !Flag
+      optional: true
+      synonyms:
+      - --valid-bc
+      description: ''
+      args: !SimpleFlagArg
+        name: valid-bc
+    - !Flag
+      optional: true
+      synonyms:
+      - --force-cells
+      description: ''
+      args: !SimpleFlagArg
+        name: force-cells
+    - !Flag
+      optional: true
+      synonyms:
+      - --expect-cells
+      description: ''
+      args: !SimpleFlagArg
+        name: expect-cells
+    - !Flag
+      optional: true
+      synonyms:
+      - --output-dir
+      description: ''
+      args: !SimpleFlagArg
+        name: output-dir
+    - !Flag
+      optional: true
+      synonyms:
+      - --expected-ori
+      description: ''
+      args: !SimpleFlagArg
+        name: expected-ori
+    - !Flag
+      optional: true
+      synonyms:
+      - --input
+      description: ''
+      args: !SimpleFlagArg
+        name: input
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "error: Found argument 'FLAGS' which wasn't expected, or isn't valid\
+      \ in this context\n\nIf you tried to supply `FLAGS` as a PATTERN use `-- FLAGS`\n\
+      \nUSAGE:\n    alevin-fry generate-permit-list [FLAGS] --input <input> --expected-ori\
+      \ <expected-ori> --output-dir <output-dir> --expect-cells <expect-cells> --force-cells\
+      \ <force-cells> --valid-bc <valid-bc> --unfiltered-pl <unfiltered-pl> --min-reads\
+      \ <min-reads>\n\nFor more information try --help\n"
+    generated_using: *id003
+    docker_image: quay.io/biocontainers/alevin-fry:0.2.0--h7d875b9_0
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Prints help information
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - -V
+    - --version
+    description: Prints version information
+    args: !EmptyFlagArg {}
+  help_text: "alevin-fry-generate-permit-list 0.2.0\nAvi Srivastava <avi.srivastava@nyu.edu>\n\
+    Hirak Sarkar <hirak_sarkar@hms.harvard.edu>\nDongze He <dhe17@umd.edu>\nMohsen\
+    \ Zakeri <mzakeri@cs.umd.edu>\nRob Patro <rob@cs.umd.edu>\nGenerate a permit list\
+    \ of barcodes from a RAD file\n\nUSAGE:\n    alevin-fry generate-permit-list [FLAGS]\
+    \ --input <input> --expected-ori <expected-ori> --output-dir <output-dir> --expect-cells\
+    \ <expect-cells> --force-cells <force-cells> --valid-bc <valid-bc> --unfiltered-pl\
+    \ <unfiltered-pl> --min-reads <min-reads>\n\nFLAGS:\n    -h, --help          \
+    \   Prints help information\n    -k, --knee-distance    attempt to determine the\
+    \ number of barcodes to keep using the knee\n                           distance\
+    \ method\n    -V, --version          Prints version information\n\nOPTIONS:\n\
+    \    -e, --expect-cells <expect-cells>\n            defines the expected number\
+    \ of cells to use in determining the (read, not UMI) based\n            cutoff\n\
+    \n    -d, --expected-ori <expected-ori>      the expected orientation of alignments\n\
+    \    -f, --force-cells <force-cells>\n            select the top-k most-frequent\
+    \ barcodes, based on read count, as valid (true)\n\n    -i, --input <input>  \
+    \                  input directory containing the map.rad RAD file\n    -m, --min-reads\
+    \ <min-reads>\n            minimum read count threshold; only used with --unfiltered-pl\
+    \ [default: 10]\n\n    -o, --output-dir <output-dir>          output directory\n\
+    \    -u, --unfiltered-pl <unfiltered-pl>    uses an unfiltered external permit\
+    \ list\n    -b, --valid-bc <valid-bc>              uses true barcode collected\
+    \ from a provided file\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/alevin-fry:0.2.0--h7d875b9_0
+- !Command
+  command:
+  - alevin-fry
+  - collate
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --input-dir
+    description: input directory made by generate-permit-list
+    args: !SimpleFlagArg
+      name: input-dir
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    - --max-records
+    description: "the maximum number of read records to keep in memory at once\n[default:\
+      \ 30000000]"
+    args: !SimpleFlagArg
+      name: max-records
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --rad-dir
+    description: the directory containing the RAD file to be collated
+    args: !SimpleFlagArg
+      name: rad-file
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --threads
+    description: 'number of threads to use for processing [default: 2]'
+    args: !SimpleFlagArg
+      name: threads
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Prints help information
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - -V
+    - --version
+    description: Prints version information
+    args: !EmptyFlagArg {}
+  help_text: "alevin-fry-collate 0.2.0\nAvi Srivastava <avi.srivastava@nyu.edu>\n\
+    Hirak Sarkar <hirak_sarkar@hms.harvard.edu>\nDongze He <dhe17@umd.edu>\nMohsen\
+    \ Zakeri <mzakeri@cs.umd.edu>\nRob Patro <rob@cs.umd.edu>\nCollate a RAD file\
+    \ by corrected cell barcode\n\nUSAGE:\n    alevin-fry collate [OPTIONS] --input-dir\
+    \ <input-dir> --rad-dir <rad-file>\n\nFLAGS:\n    -h, --help       Prints help\
+    \ information\n    -V, --version    Prints version information\n\nOPTIONS:\n \
+    \   -i, --input-dir <input-dir>        input directory made by generate-permit-list\n\
+    \    -m, --max-records <max-records>    the maximum number of read records to\
+    \ keep in memory at once\n                                       [default: 30000000]\n\
+    \    -r, --rad-dir <rad-file>           the directory containing the RAD file\
+    \ to be collated\n    -t, --threads <threads>            number of threads to\
+    \ use for processing [default: 2]\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/alevin-fry:0.2.0--h7d875b9_0
+- !Command
+  command:
+  - alevin-fry
+  - convert
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    - --bam
+    description: input SAM/BAM file
+    args: !SimpleFlagArg
+      name: bam-file
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: output RAD file
+    args: !SimpleFlagArg
+      name: rad-file
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --threads
+    description: 'number of threads to use for processing [default: 2]'
+    args: !SimpleFlagArg
+      name: threads
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Prints help information
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - -V
+    - --version
+    description: Prints version information
+    args: !EmptyFlagArg {}
+  help_text: "alevin-fry-convert 0.2.0\nAvi Srivastava <avi.srivastava@nyu.edu>\n\
+    Hirak Sarkar <hirak_sarkar@hms.harvard.edu>\nDongze He <dhe17@umd.edu>\nMohsen\
+    \ Zakeri <mzakeri@cs.umd.edu>\nRob Patro <rob@cs.umd.edu>\nConvert a BAM file\
+    \ to a RAD file\n\nUSAGE:\n    alevin-fry convert [OPTIONS] --bam <bam-file> --output\
+    \ <rad-file>\n\nFLAGS:\n    -h, --help       Prints help information\n    -V,\
+    \ --version    Prints version information\n\nOPTIONS:\n    -b, --bam <bam-file>\
+    \       input SAM/BAM file\n    -o, --output <rad-file>    output RAD file\n \
+    \   -t, --threads <threads>    number of threads to use for processing [default:\
+    \ 2]\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/alevin-fry:0.2.0--h7d875b9_0
+- !Command
+  command:
+  - alevin-fry
+  - view
+  positional:
+  - !Positional
+    optional: true
+    position: 0
+    name: FLAGS
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --help
+    description: Prints help information
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --output
+    description: output plain-text-file file
+    args: !SimpleFlagArg
+      name: rad-file
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --rad
+    description: input RAD file
+    args: !SimpleFlagArg
+      name: rad-file
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --header
+    description: flag for printing header
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - -V
+    - --version
+    description: Prints version information
+    args: !EmptyFlagArg {}
+  help_text: "alevin-fry-view 0.2.0\nAvi Srivastava <avi.srivastava@nyu.edu>\nHirak\
+    \ Sarkar <hirak_sarkar@hms.harvard.edu>\nDongze He <dhe17@umd.edu>\nMohsen Zakeri\
+    \ <mzakeri@cs.umd.edu>\nRob Patro <rob@cs.umd.edu>\nView a RAD file\n\nUSAGE:\n\
+    \    alevin-fry view [FLAGS] [OPTIONS] --rad <rad-file>\n\nFLAGS:\n    -h, --header\
+    \     flag for printing header\n        --help       Prints help information\n\
+    \    -V, --version    Prints version information\n\nOPTIONS:\n    -o, --output\
+    \ <rad-file>    output plain-text-file file\n    -r, --rad <rad-file>       input\
+    \ RAD file\n"
+  generated_using: *id003
+  docker_image: quay.io/biocontainers/alevin-fry:0.2.0--h7d875b9_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Prints help information
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Prints version information
+  args: !EmptyFlagArg {}
+help_text: "alevin-fry 0.2.0\nAvi Srivastava <avi.srivastava@nyu.edu>\nHirak Sarkar\
+  \ <hirak_sarkar@hms.harvard.edu>\nDongze He <dhe17@umd.edu>\nMohsen Zakeri <mzakeri@cs.umd.edu>\n\
+  Rob Patro <rob@cs.umd.edu>\nProcess RAD files from the command line\n\nUSAGE:\n\
+  \    alevin-fry <SUBCOMMAND>\n\nFLAGS:\n    -h, --help       Prints help information\n\
+  \    -V, --version    Prints version information\n\nSUBCOMMANDS:\n    collate  \
+  \               Collate a RAD file by corrected cell barcode\n    convert      \
+  \           Convert a BAM file to a RAD file\n    generate-permit-list    Generate\
+  \ a permit list of barcodes from a RAD file\n    help                    Prints\
+  \ this message or the help of the given subcommand(s)\n    infer               \
+  \    Perform inference on equivalence class count data\n    quant              \
+  \     Quantify expression from a collated RAD file\n    view                   \
+  \ View a RAD file\n"
+generated_using: *id003
+docker_image: quay.io/biocontainers/alevin-fry:0.2.0--h7d875b9_0

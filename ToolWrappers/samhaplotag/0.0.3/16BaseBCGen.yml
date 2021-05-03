@@ -1,0 +1,31 @@
+!Command
+command:
+- 16BaseBCGen
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: fastq format
+  description: ''
+named: []
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "16BaseBCGen 0.0.3\nUsage: <fastq format> | 16BaseBCGen <prefix>? | <fastq\
+  \ format>\n\nReads/writes fastq formatted reads from <stdin>/<stdout>.\nAny read\
+  \ with a BX SAM tag in its comment field will be prepended by 23 bases; a 16-base\
+  \ barcode and 7 joining bases.\n\nBX tags must be valid haplotag barcodes of the\
+  \ form /^A\\d\\dC\\d\\dB\\d\\dD\\d\\d$/.\ne.g. '... BX:Z:A01C02B03D04 ...'\n\nOne\
+  \ log file: 'HaploTag_to_16BaseBCs' will created with an optional '<prefix>_' at\
+  \ the start of the file-name if supplied as an argument.\nThe log file is a map\
+  \ between haplotag and 16-base barcodes.\nRun 'cut -f 2 HaploTag_to_16BaseBCs |\
+  \ tail -n +2 >16BaseBCs' to extract a list of barcodes suitable for passing as a\
+  \ substitute for a barcode whitelist to other programs.\n\nUsage example:\nsamtools\
+  \ fastq -@ 16 -nT BX -0 /dev/null -s /dev/null tagged_reads_123.cram | 16BaseBCGen\
+  \ 123 | bgzip -@ 16 >16BaseBC_reads_123.fq.gz\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/samhaplotag:0.0.3--h7d875b9_0

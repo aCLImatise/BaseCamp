@@ -1,0 +1,107 @@
+!Command
+command:
+- covid-spike-classification
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: disk
+  description: '-d, --debug           Debug mode: Keep bam file around when the parsing'
+- !Positional
+  optional: false
+  position: 1
+  name: crashes
+  description: --show-unexpected     Show unexpected mutations instead of reporting
+    'no
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --reference
+  description: "Reference FASTA file to use (default:\n/ref/NC_045512.fasta)."
+  args: !SimpleFlagArg
+    name: REFERENCE
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --input-format
+  description: "Select which input format to expect. Choices: ab1,\nfasta, fastq.\
+    \ default: ab1"
+  args: !ChoiceFlagArg
+    choices: !!set
+      fasta:
+      ab1:
+      fastq:
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --outdir
+  description: "File to write result CSV and fastq files to (default:\n2021-05-03)."
+  args: !SimpleFlagArg
+    name: OUTDIR
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  description: Suppress noisy output from the tools run
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --stdout
+  description: Print results to stdout in addition to writing them to
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --silence-warnings
+  description: Silence D614G warnings.
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -z
+  - --zip-results
+  description: "Create a zipfile from the output directory instead of\nthe output\
+    \ directory.\n"
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: covid-spike-classification [-h] [-r REFERENCE] [-i {ab1,fasta,fastq}]\n\
+  \                                  [-o OUTDIR] [-q] [-s] [-d]\n                \
+  \                  [--show-unexpected] [--silence-warnings]\n                  \
+  \                [-z]\n                                  reads\n\npositional arguments:\n\
+  \  reads                 A zip file or directory containing the ab1 files to\n \
+  \                       call variants on.\n\noptional arguments:\n  -h, --help \
+  \           show this help message and exit\n  -r REFERENCE, --reference REFERENCE\n\
+  \                        Reference FASTA file to use (default:\n               \
+  \         /ref/NC_045512.fasta).\n  -i {ab1,fasta,fastq}, --input-format {ab1,fasta,fastq}\n\
+  \                        Select which input format to expect. Choices: ab1,\n  \
+  \                      fasta, fastq. default: ab1\n  -o OUTDIR, --outdir OUTDIR\n\
+  \                        File to write result CSV and fastq files to (default:\n\
+  \                        2021-05-03).\n  -q, --quiet           Suppress noisy output\
+  \ from the tools run\n  -s, --stdout          Print results to stdout in addition\
+  \ to writing them to\n                        disk\n  -d, --debug           Debug\
+  \ mode: Keep bam file around when the parsing\n                        crashes\n\
+  \  --show-unexpected     Show unexpected mutations instead of reporting 'no\n  \
+  \                      known mutation'\n  --silence-warnings    Silence D614G warnings.\n\
+  \  -z, --zip-results     Create a zipfile from the output directory instead of\n\
+  \                        the output directory.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/covid-spike-classification:0.5.0--pyhdfd78af_0

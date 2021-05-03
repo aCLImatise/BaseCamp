@@ -1,0 +1,523 @@
+&id001 !Command
+command:
+- pbsv
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - pbsv
+  - call
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: variants.
+    description: ref.in.svsig.gz|fofn                        STR   SV signatures from
+      one or
+  - !Positional
+    optional: false
+    position: 0
+    name: ref.out.vcf
+    description: STR   Variant call format (VCF)
+  - !Positional
+    optional: false
+    position: 1
+    name: output.
+    description: 'Basic Options:'
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -z
+    - --chunk-length
+    description: "STR   Process in chunks of N\nreference bp. [1M]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --region
+    description: "STR   Limit discovery to this\nreference region:\nCHR|CHR:START-END."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -t
+    - --types
+    description: "STR   Call these SV types: \"DEL\",\n\"INS\", \"INV\", \"DUP\",\
+      \ \"BND\",\n\"CNV\".\n[DEL,INS,INV,DUP,BND,CNV]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    - --min-sv-length
+    description: "STR   Ignore variants with length\n< N bp. [20]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-cnv-length
+    description: "STR   Ignore CNVs with length < N\nbp. [1K]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --max-ins-length
+    description: "STR   Ignore insertions with\nlength > N bp. [15K]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --max-dup-length
+    description: "STR   Ignore duplications with\nlength > N bp. [1M]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --cluster-max-length-perc-diff
+    description: "INT   Do not cluster signatures\nwith difference in length >\nP%.\
+      \ [25]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --cluster-max-ref-pos-diff
+    description: "STR   Do not cluster signatures >\nN bp apart in reference.\n[200]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --cluster-min-basepair-perc-id
+    description: "INT   Do not cluster signatures\nwith basepair identity <\nP%. [10]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -x
+    - --max-consensus-coverage
+    description: "INT   Limit to N reads for\nvariant consensus. [20]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --poa-scores
+    description: "STR   Score POA alignment with\ntriplet match,mismatch,gap.\n[1,-2,-2]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-realign-length
+    description: "STR   Consider segments with > N\nlength for re-alignment.\n[100]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -A
+    - --call-min-reads-all-samples
+    description: "INT   Ignore calls supported by <\nN reads total across\nsamples.\
+      \ [2]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -O
+    - --call-min-reads-one-sample
+    description: "INT   Ignore calls supported by <\nN reads in every sample.\n[2]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -S
+    - --call-min-reads-per-strand-all-samples
+    description: "INT   Ignore calls supported by <\nN reads per strand total\nacross\
+      \ samples [1]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -B
+    - --call-min-bnd-reads-all-samples
+    description: "INT   Ignore BND calls supported\nby < N reads total across\nsamples\
+      \ [2]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -P
+    - --call-min-read-perc-one-sample
+    description: "INT   Ignore calls supported by <\nP% of reads in every\nsample.\
+      \ [20]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --ccs
+    description: 'CCS optimized parameters:'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -A
+    - -O
+    - -S
+    - -P
+    - --preserve-non-acgt
+    description: Preserve non-ACGT in REF
+    args: !SimpleFlagArg
+      name: '1'
+  - !Flag
+    optional: true
+    synonyms:
+    - --gt-min-reads
+    description: "INT   Minimum supporting reads to\nassign a sample a\nnon-reference\
+      \ genotype. [1]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --annotations
+    description: "FILE  Annotate variants by\ncomparing with sequences in\nfasta.Default\
+      \ annotations\nare ALU, L1, SVA."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --annotation-min-perc-sim
+    description: "INT   Annotate variant if\nsequence similarity > P%.\n[60]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-N-in-gap
+    description: "STR   Consider >= N consecutive\n\"N\" bp as a reference gap.\n\
+      [50]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --filter-near-reference-gap
+    description: "STR   Flag variants < N bp from a\ngap as \"NearReferenceGap\".\n\
+      [1K]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --filter-near-contig-end
+    description: "STR   Flag variants < N bp from a\ncontig end as\n\"NearContigEnd\"\
+      . [1K]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -j
+    - --num-threads
+    description: "INT   Number of threads to use, 0\nmeans autodetection. [0]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --log-level
+    description: "STR   Set log level. Valid\nchoices: (TRACE, DEBUG,\nINFO, WARN,\
+      \ FATAL). [WARN]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --log-file
+    description: "FILE  Log to a file, instead of\nstderr.\n"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this help and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - --version
+    description: "Show application version\nand exit."
+    args: !EmptyFlagArg {}
+  help_text: "pbsv call - Call structural variants from SV signatures and assign genotypes\n\
+    \            (SVSIG to VCF).\n\nUsage:\n  pbsv call [options] <ref.fa|xml> <ref.in.svsig.gz|fofn>\
+    \ <ref.out.vcf>\n\n  ref.fa|xml                                  STR   Reference\
+    \ genome assembly\n                                                    against\
+    \ which to call\n                                                    variants.\n\
+    \  ref.in.svsig.gz|fofn                        STR   SV signatures from one or\n\
+    \                                                    more samples.\n  ref.out.vcf\
+    \                                 STR   Variant call format (VCF)\n          \
+    \                                          output.\n\nBasic Options:\n  -z,--chunk-length\
+    \                           STR   Process in chunks of N\n                   \
+    \                                 reference bp. [1M]\n  -r,--region          \
+    \                       STR   Limit discovery to this\n                      \
+    \                              reference region:\n                           \
+    \                         CHR|CHR:START-END.\n\nVariant Options:\n  -t,--types\
+    \                                  STR   Call these SV types: \"DEL\",\n     \
+    \                                               \"INS\", \"INV\", \"DUP\", \"\
+    BND\",\n                                                    \"CNV\".\n       \
+    \                                             [DEL,INS,INV,DUP,BND,CNV]\n  -m,--min-sv-length\
+    \                          STR   Ignore variants with length\n               \
+    \                                     < N bp. [20]\n  --min-cnv-length       \
+    \                     STR   Ignore CNVs with length < N\n                    \
+    \                                bp. [1K]\n  --max-ins-length                \
+    \            STR   Ignore insertions with\n                                  \
+    \                  length > N bp. [15K]\n  --max-dup-length                  \
+    \          STR   Ignore duplications with\n                                  \
+    \                  length > N bp. [1M]\n\nSV Signature Cluster Options:\n  --cluster-max-length-perc-diff\
+    \              INT   Do not cluster signatures\n                             \
+    \                       with difference in length >\n                        \
+    \                            P%. [25]\n  --cluster-max-ref-pos-diff          \
+    \        STR   Do not cluster signatures >\n                                 \
+    \                   N bp apart in reference.\n                               \
+    \                     [200]\n  --cluster-min-basepair-perc-id              INT\
+    \   Do not cluster signatures\n                                              \
+    \      with basepair identity <\n                                            \
+    \        P%. [10]\n\nConsensus Options:\n  -x,--max-consensus-coverage       \
+    \          INT   Limit to N reads for\n                                      \
+    \              variant consensus. [20]\n  -s,--poa-scores                    \
+    \         STR   Score POA alignment with\n                                   \
+    \                 triplet match,mismatch,gap.\n                              \
+    \                      [1,-2,-2]\n  --min-realign-length                     \
+    \   STR   Consider segments with > N\n                                       \
+    \             length for re-alignment.\n                                     \
+    \               [100]\n\nCall Options:\n  -A,--call-min-reads-all-samples    \
+    \         INT   Ignore calls supported by <\n                                \
+    \                    N reads total across\n                                  \
+    \                  samples. [2]\n  -O,--call-min-reads-one-sample            \
+    \  INT   Ignore calls supported by <\n                                       \
+    \             N reads in every sample.\n                                     \
+    \               [2]\n  -S,--call-min-reads-per-strand-all-samples  INT   Ignore\
+    \ calls supported by <\n                                                    N\
+    \ reads per strand total\n                                                   \
+    \ across samples [1]\n  -B,--call-min-bnd-reads-all-samples         INT   Ignore\
+    \ BND calls supported\n                                                    by\
+    \ < N reads total across\n                                                   \
+    \ samples [2]\n  -P,--call-min-read-perc-one-sample          INT   Ignore calls\
+    \ supported by <\n                                                    P% of reads\
+    \ in every\n                                                    sample. [20]\n\
+    \  --ccs                                             CCS optimized parameters:\n\
+    \                                                    -A 1 -O 1 -S 0 -P 10.\n \
+    \ --preserve-non-acgt                               Preserve non-ACGT in REF\n\
+    \                                                    allele instead of replacing\n\
+    \                                                    with N.\n\nGenotyping:\n\
+    \  --gt-min-reads                              INT   Minimum supporting reads\
+    \ to\n                                                    assign a sample a\n\
+    \                                                    non-reference genotype. [1]\n\
+    \nAnnotations:\n  --annotations                               FILE  Annotate variants\
+    \ by\n                                                    comparing with sequences\
+    \ in\n                                                    fasta.Default annotations\n\
+    \                                                    are ALU, L1, SVA.\n  --annotation-min-perc-sim\
+    \                   INT   Annotate variant if\n                              \
+    \                      sequence similarity > P%.\n                           \
+    \                         [60]\n\nVariant Filtering Options:\n  --min-N-in-gap\
+    \                              STR   Consider >= N consecutive\n             \
+    \                                       \"N\" bp as a reference gap.\n       \
+    \                                             [50]\n  --filter-near-reference-gap\
+    \                 STR   Flag variants < N bp from a\n                        \
+    \                            gap as \"NearReferenceGap\".\n                  \
+    \                                  [1K]\n  --filter-near-contig-end          \
+    \          STR   Flag variants < N bp from a\n                               \
+    \                     contig end as\n                                        \
+    \            \"NearContigEnd\". [1K]\n\n  -h,--help                          \
+    \               Show this help and exit.\n  --version                        \
+    \                 Show application version\n                                 \
+    \                   and exit.\n  -j,--num-threads                            INT\
+    \   Number of threads to use, 0\n                                            \
+    \        means autodetection. [0]\n  --log-level                             \
+    \    STR   Set log level. Valid\n                                            \
+    \        choices: (TRACE, DEBUG,\n                                           \
+    \         INFO, WARN, FATAL). [WARN]\n  --log-file                           \
+    \       FILE  Log to a file, instead of\n                                    \
+    \                stderr.\n\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/pbsv:2.6.0--h9ee0642_0
+- !Command
+  command:
+  - pbsv
+  - discover
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: ref.out.svsig.gz
+    description: STR    Structural variant signatures output.
+  - !Positional
+    optional: false
+    position: 0
+    name: group.
+    description: 'Alignment Filter Options:'
+  - !Positional
+    optional: false
+    position: 0
+    name: clustering.
+    description: -k,--max-skip-split             STR    Ignore alignment pairs separated
+      by >
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --sample
+    description: STR    Override sample name tag from BAM read
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -q
+    - --min-mapq
+    description: "INT    Ignore alignments with mapping quality\n< N. [20]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    - --min-ref-span
+    description: "STR    Ignore alignments with reference\nlength < N bp. [100]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -y
+    - --min-gap-comp-id-perc
+    description: "FLOAT  Ignore alignments with gap-compressed\nsequence identity\
+      \ < N%. [70]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -w
+    - --downsample-window-length
+    description: "STR    Window in which to limit coverage, in\nbasepairs. [10K]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -a
+    - --downsample-max-alignments
+    description: "INT    Consider up to N alignments in a\nwindow; 0 means disabled.\
+      \ [100]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -r
+    - --region
+    description: "STR    Limit discovery to this reference\nregion: CHR|CHR:START-END."
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    - --min-svsig-length
+    description: "STR    Ignore SV signatures with length < N\nbp. [7]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -b
+    - --tandem-repeats
+    description: STR    Tandem repeat intervals for indel
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --log-level
+    description: "STR    Set log level. Valid choices: (TRACE,\nDEBUG, INFO, WARN,\
+      \ FATAL). [WARN]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --log-file
+    description: FILE   Log to a file, instead of stderr.
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this help and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag: !Flag
+    optional: true
+    synonyms:
+    - --version
+    description: Show application version and exit.
+    args: !EmptyFlagArg {}
+  help_text: "pbsv discover - Find structural variant (SV) signatures in read alignments\
+    \ (BAM\n                to SVSIG).\n\nUsage:\n  pbsv discover [options] <ref.in.bam|xml>\
+    \ <ref.out.svsig.gz>\n\n  ref.in.bam|xml                  STR    Coordinate-sorted\
+    \ aligned reads in\n                                         which to identify\
+    \ SV signatures.\n  ref.out.svsig.gz                STR    Structural variant\
+    \ signatures output.\n\nSample Options:\n  -s,--sample                     STR\
+    \    Override sample name tag from BAM read\n                                \
+    \         group.\n\nAlignment Filter Options:\n  -q,--min-mapq               \
+    \    INT    Ignore alignments with mapping quality\n                         \
+    \                < N. [20]\n  -m,--min-ref-span               STR    Ignore alignments\
+    \ with reference\n                                         length < N bp. [100]\n\
+    \  -y,--min-gap-comp-id-perc       FLOAT  Ignore alignments with gap-compressed\n\
+    \                                         sequence identity < N%. [70]\n\nDownsample\
+    \ Options:\n  -w,--downsample-window-length   STR    Window in which to limit\
+    \ coverage, in\n                                         basepairs. [10K]\n  -a,--downsample-max-alignments\
+    \  INT    Consider up to N alignments in a\n                                 \
+    \        window; 0 means disabled. [100]\n\nDiscovery Options:\n  -r,--region\
+    \                     STR    Limit discovery to this reference\n             \
+    \                            region: CHR|CHR:START-END.\n  -l,--min-svsig-length\
+    \           STR    Ignore SV signatures with length < N\n                    \
+    \                     bp. [7]\n  -b,--tandem-repeats             STR    Tandem\
+    \ repeat intervals for indel\n                                         clustering.\n\
+    \  -k,--max-skip-split             STR    Ignore alignment pairs separated by\
+    \ >\n                                         N bp of a read or reference. [100]\n\
+    \n  -h,--help                              Show this help and exit.\n  --version\
+    \                              Show application version and exit.\n  --log-level\
+    \                     STR    Set log level. Valid choices: (TRACE,\n         \
+    \                                DEBUG, INFO, WARN, FATAL). [WARN]\n  --log-file\
+    \                      FILE   Log to a file, instead of stderr.\n\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/pbsv:2.6.0--h9ee0642_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this help and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Show application version and exit.
+  args: !EmptyFlagArg {}
+help_text: "pbsv - PacBio structural variant (SV) calling and analysis tools\n\nUsage:\n\
+  \  pbsv <tool>\n\n  -h,--help    Show this help and exit.\n  --version    Show application\
+  \ version and exit.\n\nTools:\n  discover   Find structural variant (SV) signatures\
+  \ in read alignments (BAM to SVSIG).\n  call       Call structural variants from\
+  \ SV signatures and assign genotypes (SVSIG to VCF).\n\nTypical workflow:\n  1.\
+  \ Align PacBio reads to a reference genome, per movie.\n     Subreads BAM input:\n\
+  \     $ pbmm2 align ref.fa movie1.subreads.bam ref.movie1.bam --sort --median-filter\
+  \ --sample sample1\n\n     CCS BAM input:\n     $ pbmm2 align ref.fa movie1.ccs.bam\
+  \ ref.movie1.bam --sort --preset CCS --sample sample1\n\n     CCS FASTQ input:\n\
+  \     $ pbmm2 align ref.fa movie1.Q20.fastq ref.movie1.bam --sort --preset CCS --sample\
+  \ sample1 --rg '@RG\\tID:movie1'\n\n  2. Discover signatures of structural variation\
+  \ (per movie or per sample):\n     $ pbsv discover ref.movie1.bam ref.sample1.svsig.gz\n\
+  \     $ pbsv discover ref.movie2.bam ref.sample2.svsig.gz\n\n  3. Call structural\
+  \ variants and assign genotypes (all samples), for CCS input append \"--ccs\":\n\
+  \     $ pbsv call ref.fa ref.sample1.svsig.gz ref.sample2.svsig.gz ref.var.vcf\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/pbsv:2.6.0--h9ee0642_0

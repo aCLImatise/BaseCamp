@@ -1,0 +1,200 @@
+&id001 !Command
+command:
+- psap
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  description: ''
+  args: !EmptyFlagArg {}
+parent:
+subcommands:
+- !Command
+  command:
+  - psap
+  - annotate
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --fasta
+    description: Path to peptide fasta file
+    args: !SimpleFlagArg
+      name: FASTA
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    - --labels
+    description: ".txt file with llps uniprot ids (positive training\nlabels)"
+    args: !SimpleFlagArg
+      name: LABELS
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --out
+    description: "Output directory to store annotated data frame in .csv\nformat\n"
+    args: !SimpleFlagArg
+      name: OUT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: psap annotate [-h] -f FASTA [-l LABELS] [-o OUT]\n\noptional\
+    \ arguments:\n  -h, --help            show this help message and exit\n  -f FASTA,\
+    \ --fasta FASTA\n                        Path to peptide fasta file\n  -l LABELS,\
+    \ --labels LABELS\n                        .txt file with llps uniprot ids (positive\
+    \ training\n                        labels)\n  -o OUT, --out OUT     Output directory\
+    \ to store annotated data frame in .csv\n                        format\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/psap:1.0.6--pyhdfd78af_0
+- !Command
+  command:
+  - psap
+  - train
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --fasta
+    description: Path to peptide fasta file
+    args: !SimpleFlagArg
+      name: FASTA
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --out
+    description: "Output directory to store trained RandomForest\nclassifier in json\
+      \ format"
+    args: !SimpleFlagArg
+      name: OUT
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    - --labels
+    description: ".txt file with llps uniprot ids (positive training\nlabels)\n"
+    args: !SimpleFlagArg
+      name: LABELS
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: psap train [-h] -f FASTA [-o OUT] [-l LABELS]\n\noptional arguments:\n\
+    \  -h, --help            show this help message and exit\n  -f FASTA, --fasta\
+    \ FASTA\n                        Path to peptide fasta file\n  -o OUT, --out OUT\
+    \     Output directory to store trained RandomForest\n                       \
+    \ classifier in json format\n  -l LABELS, --labels LABELS\n                  \
+    \      .txt file with llps uniprot ids (positive training\n                  \
+    \      labels)\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/psap:1.0.6--pyhdfd78af_0
+- !Command
+  command:
+  - psap
+  - predict
+  positional: []
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -f
+    - --fasta
+    description: Path to peptide fasta file
+    args: !SimpleFlagArg
+      name: FASTA
+  - !Flag
+    optional: true
+    synonyms:
+    - -m
+    - --model
+    description: Path to RandomForest model in json format
+    args: !SimpleFlagArg
+      name: MODEL
+  - !Flag
+    optional: true
+    synonyms:
+    - -o
+    - --out
+    description: Output directory for psap prediction results
+    args: !SimpleFlagArg
+      name: OUT
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    - --labels
+    description: ".txt file with llps uniprot ids (positive training\nlabels)\n"
+    args: !SimpleFlagArg
+      name: LABELS
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: show this help message and exit
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "usage: psap predict [-h] -f FASTA [-m MODEL] [-o OUT] [-l LABELS]\n\n\
+    optional arguments:\n  -h, --help            show this help message and exit\n\
+    \  -f FASTA, --fasta FASTA\n                        Path to peptide fasta file\n\
+    \  -m MODEL, --model MODEL\n                        Path to RandomForest model\
+    \ in json format\n  -o OUT, --out OUT     Output directory for psap prediction\
+    \ results\n  -l LABELS, --labels LABELS\n                        .txt file with\
+    \ llps uniprot ids (positive training\n                        labels)\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/psap:1.0.6--pyhdfd78af_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --version
+  description: show program's version number and exit
+  args: !EmptyFlagArg {}
+help_text: "usage: psap [-h] [-v] {annotate,train,predict} ...\n\npositional arguments:\n\
+  \  {annotate,train,predict}\n    annotate            adds biochemical features to\
+  \ a set of protein\n                        sequences in fasta format and writes\
+  \ it to a csv file\n    train               train psap model\n    predict      \
+  \       predict PSAP score\n\noptional arguments:\n  -h, --help            show\
+  \ this help message and exit\n  -v, --version         show program's version number\
+  \ and exit\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/psap:1.0.6--pyhdfd78af_0

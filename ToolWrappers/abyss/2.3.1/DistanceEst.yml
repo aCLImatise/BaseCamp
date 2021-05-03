@@ -1,0 +1,224 @@
+!Command
+command:
+- DistanceEst
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: HIST
+  description: distribution of fragments size
+- !Positional
+  optional: false
+  position: 1
+  name: PAIR
+  description: alignments between contigs
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - --mind
+  description: minimum distance between contigs [-(k-1)]
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --maxd
+  description: maximum distance between contigs
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - --fr
+  description: force the orientation to forward-reverse
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --rf
+  description: force the orientation to reverse-forward
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -k
+  - --kmer
+  description: set --mind to -(k-1) bp
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --min-align
+  description: the minimal alignment size [1]
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --npairs
+  description: minimum number of pairs
+  args: !SimpleFlagArg
+    name: NPAIRS
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --seed-length
+  description: minimum length of the seed contigs
+  args: !SimpleFlagArg
+    name: L
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --min-mapq
+  description: "ignore alignments with mapping quality\nless than this threshold [10]"
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -o
+  - --out
+  description: write result to FILE
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --mle
+  description: "use the MLE [default]\n(maximum likelihood estimator)"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --median
+  description: "use the difference of the population median\nand the sample median"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --mean
+  description: "use the difference of the population mean\nand the sample mean"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dist
+  description: output the graph in dist format [default]
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --dot
+  description: output the graph in GraphViz format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gv
+  description: output the graph in GraphViz format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gfa
+  description: output the graph in GFA2 format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --gfa2
+  description: output the graph in GFA2 format
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -j
+  - --threads
+  description: use N parallel threads [1]
+  args: !SimpleFlagArg
+    name: N
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --verbose
+  description: display verbose output
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --db
+  description: specify path of database repository in FILE
+  args: !SimpleFlagArg
+    name: FILE
+- !Flag
+  optional: true
+  synonyms:
+  - --library
+  description: specify library NAME for sqlite
+  args: !SimpleFlagArg
+    name: NAME
+- !Flag
+  optional: true
+  synonyms:
+  - --strain
+  description: specify strain NAME for sqlite
+  args: !SimpleFlagArg
+    name: NAME
+- !Flag
+  optional: true
+  synonyms:
+  - --species
+  description: specify species NAME for sqlite
+  args: !SimpleFlagArg
+    name: NAME
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - --help
+  description: display this help and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: output version information and exit
+  args: !EmptyFlagArg {}
+help_text: "Usage: DistanceEst -k<kmer> -s<seed-length> -n<npairs> [OPTION]... HIST\
+  \ [PAIR]\nEstimate distances between contigs using paired-end alignments.\n\n Arguments:\n\
+  \n  HIST  distribution of fragments size\n  PAIR  alignments between contigs\n\n\
+  \ Options:\n\n      --mind=N          minimum distance between contigs [-(k-1)]\n\
+  \      --maxd=N          maximum distance between contigs\n      --fr          \
+  \    force the orientation to forward-reverse\n      --rf              force the\
+  \ orientation to reverse-forward\n  -k, --kmer=N          set --mind to -(k-1) bp\n\
+  \  -l, --min-align=N     the minimal alignment size [1]\n  -n, --npairs=NPAIRS \
+  \  minimum number of pairs\n  -s, --seed-length=L   minimum length of the seed contigs\n\
+  \  -q, --min-mapq=N      ignore alignments with mapping quality\n              \
+  \          less than this threshold [10]\n  -o, --out=FILE        write result to\
+  \ FILE\n      --mle             use the MLE [default]\n                        (maximum\
+  \ likelihood estimator)\n      --median          use the difference of the population\
+  \ median\n                        and the sample median\n      --mean          \
+  \  use the difference of the population mean\n                        and the sample\
+  \ mean\n      --dist            output the graph in dist format [default]\n    \
+  \  --dot             output the graph in GraphViz format\n      --gv           \
+  \   output the graph in GraphViz format\n      --gfa             output the graph\
+  \ in GFA2 format\n      --gfa2            output the graph in GFA2 format\n  -j,\
+  \ --threads=N       use N parallel threads [1]\n  -v, --verbose         display\
+  \ verbose output\n      --help            display this help and exit\n      --version\
+  \         output version information and exit\n      --db=FILE         specify path\
+  \ of database repository in FILE\n      --library=NAME    specify library NAME for\
+  \ sqlite\n      --strain=NAME     specify strain NAME for sqlite\n      --species=NAME\
+  \    specify species NAME for sqlite\n\nReport bugs to <abyss-users@bcgsc.ca>.\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/abyss:2.3.1--hd403d74_0

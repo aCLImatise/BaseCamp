@@ -1,0 +1,60 @@
+!Command
+command:
+- rbt
+- vcf-to-txt
+positional: []
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -g
+  - --genotypes
+  description: Display genotypes
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -f
+  - --fmt
+  description: "...\nSelect FORMAT tags"
+  args: !SimpleFlagArg
+    name: NAME
+- !Flag
+  optional: true
+  synonyms:
+  - -i
+  - --info
+  description: "...\nSelect INFO tags\n"
+  args: !SimpleFlagArg
+    name: NAME
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Prints help information
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - -V
+  - --version
+  description: Prints version information
+  args: !EmptyFlagArg {}
+help_text: "rbt-vcf-to-txt 0.20.5\nJohannes Köster <johannes.koester@tu-dortmund.de>\n\
+  Convert VCF/BCF file from STDIN to tab-separated TXT file at STDOUT. INFO and FORMAT\
+  \ tags have to be selected\nexplicitly.\n\nExample: rbt vcf-to-txt --genotypes --fmt\
+  \ S --info T X SOMATIC < test.vcf > variant-table.txt\n\nThe resulting table can\
+  \ be e.g. parsed with PANDAS in Python:\n\npd.read_table(\"variants.txt\", header=[0,\
+  \ 1])\n\nUSAGE:\n    rbt vcf-to-txt [FLAGS] [OPTIONS]\n\nFLAGS:\n    -g, --genotypes\
+  \    \n            Display genotypes\n\n    -h, --help         \n            Prints\
+  \ help information\n\n    -V, --version      \n            Prints version information\n\
+  \n\nOPTIONS:\n    -f, --fmt <NAME>...     \n            Select FORMAT tags\n\n \
+  \   -i, --info <NAME>...    \n            Select INFO tags\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/rust-bio-tools:0.20.5--h4af157f_0

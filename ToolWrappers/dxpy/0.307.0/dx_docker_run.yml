@@ -1,0 +1,109 @@
+!Command
+command:
+- dx-docker
+- run
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: image
+  description: image name
+- !Positional
+  optional: false
+  position: 1
+  name: command
+  description: command to run within container
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -v
+  - --volume
+  description: "Directory to mount inside the container. Can be\nsupplied multiple\
+    \ times (e.g. -v /mnt/data:/mnt/data\n-v /host:/guest"
+  args: !SimpleFlagArg
+    name: VOLUME
+- !Flag
+  optional: true
+  synonyms:
+  - -e
+  - --env
+  description: "Environment variables to set within container. Can be\nsupplied multiple\
+    \ times (e.g. -e foo=bar -e pizza=pie"
+  args: !SimpleFlagArg
+    name: ENV
+- !Flag
+  optional: true
+  synonyms:
+  - --entrypoint
+  description: Overwrite default entry point for image
+  args: !SimpleFlagArg
+    name: ENTRYPOINT
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --workdir
+  description: Working directory
+  args: !SimpleFlagArg
+    name: WORKDIR
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --quiet
+  description: Suppress printing of image metadata
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --rootfs
+  description: "Use directory pointed to here for rootfs instead of\nextracting the\
+    \ image (for expert use/development\npurposes)"
+  args: !SimpleFlagArg
+    name: ROOTFS
+- !Flag
+  optional: true
+  synonyms:
+  - --rm
+  description: Automatically remove the container when it exits
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --user
+  description: 'User to execute command as: *currently ignored*'
+  args: !SimpleFlagArg
+    name: USER
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: show this help message and exit
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag:
+help_text: "usage: dx-docker run [-h] [-v VOLUME] [-e ENV] [--entrypoint ENTRYPOINT]\n\
+  \                     [-w WORKDIR] [-q] [--rootfs ROOTFS] [--rm] [--user USER]\n\
+  \                     image ...\n\npositional arguments:\n  image              \
+  \   image name\n  command               command to run within container\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  -v VOLUME,\
+  \ --volume VOLUME\n                        Directory to mount inside the container.\
+  \ Can be\n                        supplied multiple times (e.g. -v /mnt/data:/mnt/data\n\
+  \                        -v /host:/guest\n  -e ENV, --env ENV     Environment variables\
+  \ to set within container. Can be\n                        supplied multiple times\
+  \ (e.g. -e foo=bar -e pizza=pie\n  --entrypoint ENTRYPOINT\n                   \
+  \     Overwrite default entry point for image\n  -w WORKDIR, --workdir WORKDIR\n\
+  \                        Working directory\n  -q, --quiet           Suppress printing\
+  \ of image metadata\n  --rootfs ROOTFS       Use directory pointed to here for rootfs\
+  \ instead of\n                        extracting the image (for expert use/development\n\
+  \                        purposes)\n  --rm                  Automatically remove\
+  \ the container when it exits\n  --user USER           User to execute command as:\
+  \ *currently ignored*\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/dxpy:0.307.0--pyh5e36f6f_0

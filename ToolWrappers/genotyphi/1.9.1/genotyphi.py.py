@@ -1,0 +1,13 @@
+from datetime import datetime
+from typing import List, Optional, Dict, Any
+
+from janis_core import *
+from janis_core.types.common_data_types import String, Array, File, Int
+
+Genotyphi_Py_V0_1_0 = CommandToolBuilder(tool="genotyphi.py", base_command=["genotyphi.py"], inputs=[ToolInput(tag="in_mode", input_type=String(optional=True), prefix="--mode", doc=InputDocumentation(doc="Mode to run in based on input files (vcf, bam, or\nvcf_parsnp)")), ToolInput(tag="in_vcf", input_type=Array(t=String(), optional=True), prefix="--vcf", doc=InputDocumentation(doc="VCF file(s) to genotype (Mapping MUST have been done\nusing CT18 as a reference sequence)")), ToolInput(tag="in_bam", input_type=Array(t=String(), optional=True), prefix="--bam", doc=InputDocumentation(doc="BAM file(s) to genotype (Mapping MUST have been done\nusing CT18 as a reference sequence)")), ToolInput(tag="in_ref_id", input_type=File(optional=True), prefix="--ref_id", doc=InputDocumentation(doc="Name of the reference in the VCF file (#CHROM column)\nor fasta file. Note that CT18 has genotype 3.2.1. If\nall your strains return this genotype, it is likely\nyou have specified the name of the refrence sequence\nincorrectly; please check your VCFs.")), ToolInput(tag="in_phred", input_type=Int(optional=True), prefix="--phred", doc=InputDocumentation(doc="Minimum phred quality to count a variant call vs CT18\nas a true SNP (default 20)")), ToolInput(tag="in_min_prop", input_type=Int(optional=True), prefix="--min_prop", doc=InputDocumentation(doc="Minimum proportion of reads required to call a SNP\n(default 0.1)")), ToolInput(tag="in_ref", input_type=String(optional=True), prefix="--ref", doc=InputDocumentation(doc="Reference sequence in fasta format. Required if bam\nfiles provided.")), ToolInput(tag="in_output", input_type=File(optional=True), prefix="--output", doc=InputDocumentation(doc="Location and name for output file.")), ToolInput(tag="in_sam_tools_location", input_type=File(optional=True), prefix="--samtools_location", doc=InputDocumentation(doc="Location of folder containing samtools installation if\nnot standard/in path.")), ToolInput(tag="in_bcf_tools_location", input_type=File(optional=True), prefix="--bcftools_location", doc=InputDocumentation(doc="Location of folder containing bcftools installation if\nnot standard/in path.\n"))], outputs=[ToolOutput(tag="out_output", output_type=File(optional=True), selector=InputSelector(input_to_select="in_output", type_hint=File()), doc=OutputDocumentation(doc="Location and name for output file."))], container="quay.io/biocontainers/genotyphi:1.9.1--hdfd78af_0", version="v0.1.0")
+
+
+if __name__ == "__main__":
+    # or "cwl"
+    Genotyphi_Py_V0_1_0().translate("wdl")
+

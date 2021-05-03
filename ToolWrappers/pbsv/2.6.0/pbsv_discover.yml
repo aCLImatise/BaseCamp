@@ -1,0 +1,149 @@
+!Command
+command:
+- pbsv
+- discover
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: ref.out.svsig.gz
+  description: STR    Structural variant signatures output.
+- !Positional
+  optional: false
+  position: 0
+  name: group.
+  description: 'Alignment Filter Options:'
+- !Positional
+  optional: false
+  position: 0
+  name: clustering.
+  description: -k,--max-skip-split             STR    Ignore alignment pairs separated
+    by >
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -s
+  - --sample
+  description: STR    Override sample name tag from BAM read
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -q
+  - --min-mapq
+  description: "INT    Ignore alignments with mapping quality\n< N. [20]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -m
+  - --min-ref-span
+  description: "STR    Ignore alignments with reference\nlength < N bp. [100]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -y
+  - --min-gap-comp-id-perc
+  description: "FLOAT  Ignore alignments with gap-compressed\nsequence identity <\
+    \ N%. [70]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -w
+  - --downsample-window-length
+  description: "STR    Window in which to limit coverage, in\nbasepairs. [10K]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -a
+  - --downsample-max-alignments
+  description: "INT    Consider up to N alignments in a\nwindow; 0 means disabled.\
+    \ [100]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -r
+  - --region
+  description: "STR    Limit discovery to this reference\nregion: CHR|CHR:START-END."
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -l
+  - --min-svsig-length
+  description: "STR    Ignore SV signatures with length < N\nbp. [7]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - -b
+  - --tandem-repeats
+  description: STR    Tandem repeat intervals for indel
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --log-level
+  description: "STR    Set log level. Valid choices: (TRACE,\nDEBUG, INFO, WARN, FATAL).\
+    \ [WARN]"
+  args: !EmptyFlagArg {}
+- !Flag
+  optional: true
+  synonyms:
+  - --log-file
+  description: FILE   Log to a file, instead of stderr.
+  args: !EmptyFlagArg {}
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this help and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Show application version and exit.
+  args: !EmptyFlagArg {}
+help_text: "pbsv discover - Find structural variant (SV) signatures in read alignments\
+  \ (BAM\n                to SVSIG).\n\nUsage:\n  pbsv discover [options] <ref.in.bam|xml>\
+  \ <ref.out.svsig.gz>\n\n  ref.in.bam|xml                  STR    Coordinate-sorted\
+  \ aligned reads in\n                                         which to identify SV\
+  \ signatures.\n  ref.out.svsig.gz                STR    Structural variant signatures\
+  \ output.\n\nSample Options:\n  -s,--sample                     STR    Override\
+  \ sample name tag from BAM read\n                                         group.\n\
+  \nAlignment Filter Options:\n  -q,--min-mapq                   INT    Ignore alignments\
+  \ with mapping quality\n                                         < N. [20]\n  -m,--min-ref-span\
+  \               STR    Ignore alignments with reference\n                      \
+  \                   length < N bp. [100]\n  -y,--min-gap-comp-id-perc       FLOAT\
+  \  Ignore alignments with gap-compressed\n                                     \
+  \    sequence identity < N%. [70]\n\nDownsample Options:\n  -w,--downsample-window-length\
+  \   STR    Window in which to limit coverage, in\n                             \
+  \            basepairs. [10K]\n  -a,--downsample-max-alignments  INT    Consider\
+  \ up to N alignments in a\n                                         window; 0 means\
+  \ disabled. [100]\n\nDiscovery Options:\n  -r,--region                     STR \
+  \   Limit discovery to this reference\n                                        \
+  \ region: CHR|CHR:START-END.\n  -l,--min-svsig-length           STR    Ignore SV\
+  \ signatures with length < N\n                                         bp. [7]\n\
+  \  -b,--tandem-repeats             STR    Tandem repeat intervals for indel\n  \
+  \                                       clustering.\n  -k,--max-skip-split     \
+  \        STR    Ignore alignment pairs separated by >\n                        \
+  \                 N bp of a read or reference. [100]\n\n  -h,--help            \
+  \                  Show this help and exit.\n  --version                       \
+  \       Show application version and exit.\n  --log-level                     STR\
+  \    Set log level. Valid choices: (TRACE,\n                                   \
+  \      DEBUG, INFO, WARN, FATAL). [WARN]\n  --log-file                      FILE\
+  \   Log to a file, instead of stderr.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/pbsv:2.6.0--h9ee0642_0

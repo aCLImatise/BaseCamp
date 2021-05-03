@@ -1,0 +1,687 @@
+&id001 !Command
+command:
+- virsorter
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - virsorter
+  - setup
+  positional:
+  - !Positional
+    optional: true
+    position: 0
+    name: SNAKEMAKE_ARGS
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --db-dir
+    description: diretory path for databases  [required]
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - -j
+    - --jobs
+    description: 'number of simultaneous downloads  [default: 2]'
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - -s
+    - --skip-deps-install
+    description: "skip dependency installation (if you want to\ninstall on your own\
+      \ as in development version)\n[default: False]"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: virsorter setup [OPTIONS] [SNAKEMAKE_ARGS]...\n\n  Setup databases\
+    \ and install dependencies.\n\n  Executes a snakemake workflow to download reference\
+    \ database files and\n  validate based on their MD5 checksum, and install dependencies\n\
+    \nOptions:\n  -d, --db-dir PATH        diretory path for databases  [required]\n\
+    \  -j, --jobs INTEGER       number of simultaneous downloads  [default: 2]\n \
+    \ -s, --skip-deps-install  skip dependency installation (if you want to\n    \
+    \                       install on your own as in development version)\n     \
+    \                      [default: False]\n\n  -h, --help               Show this\
+    \ message and exit.\n"
+  generated_using: &id002
+  - --help
+  docker_image: quay.io/biocontainers/virsorter:2.2.2--pyhdfd78af_0
+- !Command
+  command:
+  - virsorter
+  - train-feature
+  positional:
+  - !Positional
+    optional: true
+    position: 0
+    name: SNAKEMAKE_ARGS
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -w
+    - --working-dir
+    description: output directory  [required]
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - --seqfile
+    description: "genome sequence file for training; for file\npattern globbing, put\
+      \ quotes around the pattern,\neg. \"fasta-dir/*.fa\"  [required]"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --hmm
+    description: "customized viral HMMs for training; default to\nthe one used in\
+      \ VirSorter2"
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - --hallmark
+    description: "hallmark gene hmm list from -hmm for training (a\ntab separated\
+      \ file with three columns: 1. hmm\nname, 2. gene name of hmm, 3. hmm bit score\n\
+      cutoff); default to the one used for dsDNAphage\nin VirSorter2"
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - --prodigal-train
+    description: "customized training db from prodigal; default to\nthe one used in\
+      \ prodigal --meta mode"
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - --frags-per-genome
+    description: "number of random DNA fragments collected from\neach genome  [default:\
+      \ 5]"
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - -j
+    - --jobs
+    description: 'max # of jobs in parallel  [default: 2]'
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-length
+    description: "minimum size of random DNA fragment for training\n[default: 1000]"
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - --max-orf-per-seq
+    description: "Max # of orf used for computing taxonomic\nfeatures; if # of orf\
+      \ in a seq exceeds the max\nlimit, it is sub-sampled to this # to reduce\ncomputation;\
+      \ to turn off this, set it to -1\n[default: 20]"
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - --genome-as-bin
+    description: "if applied, each file (genome bin) is a genome\nin --seqfile, else\
+      \ each sequence is a genome\n[default: False]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --use-conda-off
+    description: "Stop using the conda envs (vs2.yaml) that come\nwith this package\
+      \ and use what are installed in\ncurrent system; Only useful when you want to\n\
+      install dependencies on your own with your own\npreferred versions  [default:\
+      \ False]"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: virsorter train-feature [OPTIONS] [SNAKEMAKE_ARGS]...\n\n  Training\
+    \ features for customized classifier.\n\n  Executes a snakemake workflow to do\
+    \ the following: 1) prepare random DNA\n  fragments from viral and nonviral genome\
+    \ data  2) extract feature from\n  random DNA fragments to make ftrfile\n\nOptions:\n\
+    \  -w, --working-dir PATH      output directory  [required]\n  --seqfile TEXT\
+    \              genome sequence file for training; for file\n                 \
+    \             pattern globbing, put quotes around the pattern,\n             \
+    \                 eg. \"fasta-dir/*.fa\"  [required]\n\n  --hmm PATH         \
+    \         customized viral HMMs for training; default to\n                   \
+    \           the one used in VirSorter2\n\n  --hallmark PATH             hallmark\
+    \ gene hmm list from -hmm for training (a\n                              tab separated\
+    \ file with three columns: 1. hmm\n                              name, 2. gene\
+    \ name of hmm, 3. hmm bit score\n                              cutoff); default\
+    \ to the one used for dsDNAphage\n                              in VirSorter2\n\
+    \n  --prodigal-train PATH       customized training db from prodigal; default\
+    \ to\n                              the one used in prodigal --meta mode\n\n \
+    \ --frags-per-genome INTEGER  number of random DNA fragments collected from\n\
+    \                              each genome  [default: 5]\n\n  -j, --jobs INTEGER\
+    \          max # of jobs in parallel  [default: 2]\n  --min-length INTEGER   \
+    \     minimum size of random DNA fragment for training\n                     \
+    \         [default: 1000]\n\n  --max-orf-per-seq INTEGER   Max # of orf used for\
+    \ computing taxonomic\n                              features; if # of orf in\
+    \ a seq exceeds the max\n                              limit, it is sub-sampled\
+    \ to this # to reduce\n                              computation; to turn off\
+    \ this, set it to -1\n                              [default: 20]\n\n  --genome-as-bin\
+    \             if applied, each file (genome bin) is a genome\n               \
+    \               in --seqfile, else each sequence is a genome\n               \
+    \               [default: False]\n\n  --use-conda-off             Stop using the\
+    \ conda envs (vs2.yaml) that come\n                              with this package\
+    \ and use what are installed in\n                              current system;\
+    \ Only useful when you want to\n                              install dependencies\
+    \ on your own with your own\n                              preferred versions\
+    \  [default: False]\n\n  -h, --help                  Show this message and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/virsorter:2.2.2--pyhdfd78af_0
+- !Command
+  command:
+  - virsorter
+  - run
+  positional:
+  - !Positional
+    optional: true
+    position: 0
+    name: all|classify
+    description: ''
+  - !Positional
+    optional: true
+    position: 1
+    name: SNAKEMAKE_ARGS
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --high-confidence-only
+    - --hallmark-required
+    - --hallmark-required-on-short
+    - --viral-gene-required
+    - --exclude-lt2gene
+    description: ). Most snakemake arguments can be
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - -w
+    - --working-dir
+    description: output directory
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - -d
+    - --db-dir
+    description: "database directory, default to the --db-dir\nset during installation"
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - -i
+    - --seqfile
+    description: "sequence file in fa or fq format (could be\ncompressed by gzip or\
+      \ bz2)  [required]"
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - -l
+    - --label
+    description: "add label as prefix to output files; this is\nuseful when re-running\
+      \ classify with different\nfiltering options"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --include-groups
+    description: "classifiers of viral groups to included (comma\nseparated and no\
+      \ space in between); available\noptions are:\ndsDNAphage,NCLDV,RNA,ssDNA,lavidaviridae\n\
+      [default: dsDNAphage,ssDNA]"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -j
+    - --jobs
+    description: "max # of jobs allowed in parallel.  [default:\n2]"
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-score
+    description: "minimal score to be identified as viral\n[default: 0.5]"
+    args: !SimpleFlagArg
+      name: FLOAT
+  - !Flag
+    optional: true
+    synonyms:
+    - --min-length
+    description: "minimal seq length required; all seqs shorter\nthan this will be\
+      \ removed  [default: 0]"
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - --keep-original-seq
+    description: "keep the original sequences instead of\ntrimmed; By default, the\
+      \ untranslated regions\nat both ends of identified viral seqs are\ntrimmed;\
+      \ circular sequences are modified to\nremove overlap between both ends and adjusted\n\
+      for the gene splitted into two ends;\n[default: False]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --prep-for-dramv
+    description: "turn on generating viral seqfile and viral-\naffi-contigs.tab for\
+      \ DRAMv  [default: False]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --viral-gene-enrich-off
+    description: "turn off the requirement of more viral than\ncellular genes for\
+      \ calling full sequence\nviral; this is useful when only using\nVirSorter2 to\
+      \ produce DRAMv input with viral\nsequence identified from other tools, or those\n\
+      trimmed by checkV  [default: False]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --seqname-suffix-off
+    description: "turn off adding suffix (||full, ||{i}_partial,\n||lt2gene) to sequence\
+      \ names; note that this\nmight cause partial seqs from the same contig\nto have\
+      \ the same name; this option is could be\nused when you are sure there is one\
+      \ partial\nsequence at max from each contig  [default:\nFalse]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --provirus-off
+    description: "turn off extracting provirus after classifying\nfull contigs; Togetehr\
+      \ with lower --max-orf-\nper-seq, can speed up a run significantly\n[default:\
+      \ False]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --max-orf-per-seq
+    description: "max # of orf used for computing taxonomic\nfeature; this option\
+      \ can only be used in\n--provirus-off mode; if # of orf in a seq\nexceeds the\
+      \ max limit, it is sub-sampled to\nthis # to reduce computation  [default: -1]"
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - --tmpdir
+    description: directory name for intermediate files
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --rm-tmpdir
+    description: "remove intermediate file directory (--tmpdir);\nMore than 100 intermediate\
+      \ files are created\nfor each run, so this is recommended when 100s\nof samples\
+      \ are processed to avoid exceeding\nfile # quota for user  [default: False]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --verbose
+    description: 'shows detailed rules output  [default: False]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --profile
+    description: snakemake profile e.g. for cluster execution.
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - -n
+    - --dryrun
+    description: "Check rules to run and files to produce\n[default: False]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --use-conda-off
+    description: "Stop using the conda envs (vs2.yaml) that come\nwith this package\
+      \ and use what are installed\nin current system; Only useful when you want\n\
+      to install dependencies on your own with your\nown prefer version; this option\
+      \ works with the\ndevelopment version  [default: False]"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: virsorter run [OPTIONS] [[all|classify]] [SNAKEMAKE_ARGS]...\n\
+    \n  Runs the virsorter main function to classify viral sequences\n\n  This includes\
+    \ 3 steps: 1) preprocess, 2) feature extraction, and 3)\n  classify. By default\
+    \ (\"all\") all steps are executed. The \"classify\" only\n  run the 3) classify\
+    \ step without previous steps that are computationally\n  heavy, good for rerunning\
+    \ with different filtering options (--min-score,\n  --high-confidence-only, --hallmark-required,\
+    \ --hallmark-required-on-short,\n  --viral-gene-required, --exclude-lt2gene).\
+    \ Most snakemake arguments can be\n  appended to the command for more  info see\
+    \ 'snakemake --help'.\n\nOptions:\n  -w, --working-dir PATH        output directory\n\
+    \  -d, --db-dir PATH             database directory, default to the --db-dir\n\
+    \                                set during installation\n\n  -i, --seqfile PATH\
+    \            sequence file in fa or fq format (could be\n                    \
+    \            compressed by gzip or bz2)  [required]\n\n  -l, --label TEXT    \
+    \          add label as prefix to output files; this is\n                    \
+    \            useful when re-running classify with different\n                \
+    \                filtering options\n\n  --include-groups TEXT         classifiers\
+    \ of viral groups to included (comma\n                                separated\
+    \ and no space in between); available\n                                options\
+    \ are:\n                                dsDNAphage,NCLDV,RNA,ssDNA,lavidaviridae\n\
+    \                                [default: dsDNAphage,ssDNA]\n\n  -j, --jobs INTEGER\
+    \            max # of jobs allowed in parallel.  [default:\n                 \
+    \               2]\n\n  --min-score FLOAT             minimal score to be identified\
+    \ as viral\n                                [default: 0.5]\n\n  --min-length INTEGER\
+    \          minimal seq length required; all seqs shorter\n                   \
+    \             than this will be removed  [default: 0]\n\n  --keep-original-seq\
+    \           keep the original sequences instead of\n                         \
+    \       trimmed; By default, the untranslated regions\n                      \
+    \          at both ends of identified viral seqs are\n                       \
+    \         trimmed; circular sequences are modified to\n                      \
+    \          remove overlap between both ends and adjusted\n                   \
+    \             for the gene splitted into two ends;\n                         \
+    \       [default: False]\n\n  --exclude-lt2gene             short seqs (less than\
+    \ 2 genes) does not have\n                                any scores, but those\
+    \ with hallmark genes are\n                                included as viral by\
+    \ default; use this option\n                                to exclude them  [default:\
+    \ False]\n\n  --prep-for-dramv              turn on generating viral seqfile and\
+    \ viral-\n                                affi-contigs.tab for DRAMv  [default:\
+    \ False]\n\n  --high-confidence-only        only output high confidence viral\
+    \ sequences;\n                                this is equivalent to screening\
+    \ final-viral-\n                                score.tsv with the following criteria:\n\
+    \                                (max_score >= 0.9) OR (max_score >=0.7 AND\n\
+    \                                hallmark >= 1)  [default: False]\n\n  --hallmark-required\
+    \           require hallmark gene on all viral seqs\n                        \
+    \        [default: False]\n\n  --hallmark-required-on-short  require hallmark\
+    \ gene on short viral seqs\n                                (length cutoff as\
+    \ \"short\" were set by\n                                \"MIN_SIZE_ALLOWED_WO_HALLMARK_GENE\"\
+    \ in\n                                template-config.yaml file, default 3kbp);\
+    \ this\n                                can reduce false positives at reasonable\
+    \ cost\n                                of sensitivity  [default: False]\n\n \
+    \ --viral-gene-required         require viral genes annotated, removing\n    \
+    \                            putative viral seqs with no genes annotated;\n  \
+    \                              this can reduce false positives at reasonable\n\
+    \                                cost of sensitivity  [default: False]\n\n  --viral-gene-enrich-off\
+    \       turn off the requirement of more viral than\n                        \
+    \        cellular genes for calling full sequence\n                          \
+    \      viral; this is useful when only using\n                               \
+    \ VirSorter2 to produce DRAMv input with viral\n                             \
+    \   sequence identified from other tools, or those\n                         \
+    \       trimmed by checkV  [default: False]\n\n  --seqname-suffix-off        \
+    \  turn off adding suffix (||full, ||{i}_partial,\n                          \
+    \      ||lt2gene) to sequence names; note that this\n                        \
+    \        might cause partial seqs from the same contig\n                     \
+    \           to have the same name; this option is could be\n                 \
+    \               used when you are sure there is one partial\n                \
+    \                sequence at max from each contig  [default:\n               \
+    \                 False]\n\n  --provirus-off                turn off extracting\
+    \ provirus after classifying\n                                full contigs; Togetehr\
+    \ with lower --max-orf-\n                                per-seq, can speed up\
+    \ a run significantly\n                                [default: False]\n\n  --max-orf-per-seq\
+    \ INTEGER     max # of orf used for computing taxonomic\n                    \
+    \            feature; this option can only be used in\n                      \
+    \          --provirus-off mode; if # of orf in a seq\n                       \
+    \         exceeds the max limit, it is sub-sampled to\n                      \
+    \          this # to reduce computation  [default: -1]\n\n  --tmpdir TEXT    \
+    \             directory name for intermediate files\n  --rm-tmpdir           \
+    \        remove intermediate file directory (--tmpdir);\n                    \
+    \            More than 100 intermediate files are created\n                  \
+    \              for each run, so this is recommended when 100s\n              \
+    \                  of samples are processed to avoid exceeding\n             \
+    \                   file # quota for user  [default: False]\n\n  --verbose   \
+    \                  shows detailed rules output  [default: False]\n  --profile\
+    \ TEXT                snakemake profile e.g. for cluster execution.\n  -n, --dryrun\
+    \                  Check rules to run and files to produce\n                 \
+    \               [default: False]\n\n  --use-conda-off               Stop using\
+    \ the conda envs (vs2.yaml) that come\n                                with this\
+    \ package and use what are installed\n                                in current\
+    \ system; Only useful when you want\n                                to install\
+    \ dependencies on your own with your\n                                own prefer\
+    \ version; this option works with the\n                                development\
+    \ version  [default: False]\n\n  -h, --help                    Show this message\
+    \ and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/virsorter:2.2.2--pyhdfd78af_0
+- !Command
+  command:
+  - virsorter
+  - train-model
+  positional:
+  - !Positional
+    optional: true
+    position: 0
+    name: SNAKEMAKE_ARGS
+    description: ''
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - -w
+    - --working-dir
+    description: output directory  [required]
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - --viral-ftrfile
+    description: viral genome feature file for training  [required]
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - --nonviral-ftrfile
+    description: "nonviral genome feature file for training\n[required]"
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - -j
+    - --jobs
+    description: 'number of threads for classier  [default: 2]'
+    args: !SimpleFlagArg
+      name: INTEGER
+  - !Flag
+    optional: true
+    synonyms:
+    - --balanced
+    description: "random undersample the larger to the size of the\nsmaller feature\
+      \ file  [default: False]"
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --use-conda-off
+    description: "Stop using the conda envs (vs2.yaml) that come with\nthis package\
+      \ and use what are installed in current\nsystem; Only useful when you want to\
+      \ install\ndependencies on your own with your own prefer\nversions  [default:\
+      \ False]"
+    args: !EmptyFlagArg {}
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    optional: true
+    synonyms:
+    - -h
+    - --help
+    description: Show this message and exit.
+    args: !EmptyFlagArg {}
+  usage_flag:
+  version_flag:
+  help_text: "Usage: virsorter train-model [OPTIONS] [SNAKEMAKE_ARGS]...\n\n  Training\
+    \ customized classifier model.\n\nOptions:\n  -w, --working-dir PATH   output\
+    \ directory  [required]\n  --viral-ftrfile PATH     viral genome feature file\
+    \ for training  [required]\n  --nonviral-ftrfile PATH  nonviral genome feature\
+    \ file for training\n                           [required]\n\n  -j, --jobs INTEGER\
+    \       number of threads for classier  [default: 2]\n  --balanced           \
+    \    random undersample the larger to the size of the\n                      \
+    \     smaller feature file  [default: False]\n\n  --use-conda-off          Stop\
+    \ using the conda envs (vs2.yaml) that come with\n                           this\
+    \ package and use what are installed in current\n                           system;\
+    \ Only useful when you want to install\n                           dependencies\
+    \ on your own with your own prefer\n                           versions  [default:\
+    \ False]\n\n  -h, --help               Show this message and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/virsorter:2.2.2--pyhdfd78af_0
+- !Command
+  command:
+  - virsorter
+  - config
+  positional:
+  - !Positional
+    optional: false
+    position: 0
+    name: GROUP_INFO.RNA.MIN_GENOME_SIZE
+    description: -h, --help     Show this message and exit.
+  named:
+  - !Flag
+    optional: true
+    synonyms:
+    - --show
+    description: 'show all configuration values  [default: False]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --show-source
+    description: 'show path of the configuration file  [default: False]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --init-source
+    description: 'initialize configuration file  [default: False]'
+    args: !EmptyFlagArg {}
+  - !Flag
+    optional: true
+    synonyms:
+    - --db-dir
+    description: directory for databases; required for --init-source
+    args: !SimpleFlagArg
+      name: PATH
+  - !Flag
+    optional: true
+    synonyms:
+    - --set
+    description: "set KEY to VAL with the format: KEY=VAL; for nested dict in\nYAML\
+      \ use KEY1.KEY2=VAL (e.g. virsorter config --set\nGROUP_INFO.RNA.MIN_GENOME_SIZE=2000)"
+    args: !SimpleFlagArg
+      name: TEXT
+  - !Flag
+    optional: true
+    synonyms:
+    - --get
+    description: the value of a KEY (e.g. virsorter config --get
+    args: !SimpleFlagArg
+      name: TEXT
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: virsorter config [OPTIONS]\n\n  CLI for managing configurations.\n\
+    \n  There are many configurations kept in \"template-config.yaml\" in source\n\
+    \  code directory or \"~/.virsorter\" (when source code directory is not\n  writable\
+    \ for user). This file can located with  `virsorter config --show-\n  source`.\
+    \ You can set the configurations with  `virsorter config --set\n  KEY=VAL`. Alternative,\
+    \ you can edit in the  configuration file (\"template-\n  config.yaml\") directly.\n\
+    \nOptions:\n  --show         show all configuration values  [default: False]\n\
+    \  --show-source  show path of the configuration file  [default: False]\n  --init-source\
+    \  initialize configuration file  [default: False]\n  --db-dir PATH  directory\
+    \ for databases; required for --init-source\n  --set TEXT     set KEY to VAL with\
+    \ the format: KEY=VAL; for nested dict in\n                 YAML use KEY1.KEY2=VAL\
+    \ (e.g. virsorter config --set\n                 GROUP_INFO.RNA.MIN_GENOME_SIZE=2000)\n\
+    \n  --get TEXT     the value of a KEY (e.g. virsorter config --get\n         \
+    \        GROUP_INFO.RNA.MIN_GENOME_SIZE\n\n  -h, --help     Show this message\
+    \ and exit.\n"
+  generated_using: *id002
+  docker_image: quay.io/biocontainers/virsorter:2.2.2--pyhdfd78af_0
+usage: []
+help_flag: !Flag
+  optional: true
+  synonyms:
+  - -h
+  - --help
+  description: Show this message and exit.
+  args: !EmptyFlagArg {}
+usage_flag:
+version_flag: !Flag
+  optional: true
+  synonyms:
+  - --version
+  description: Show the version and exit.
+  args: !EmptyFlagArg {}
+help_text: "Usage: virsorter [OPTIONS] COMMAND [ARGS]...\n\n  virsorter - workflow\
+  \ for identifying viral sequences\n\nOptions:\n  --version   Show the version and\
+  \ exit.\n  -h, --help  Show this message and exit.\n\nCommands:\n  config      \
+  \   subcommand for configuration management\n  run            run virsorter main\
+  \ workflow\n  setup          download reference files (~10GB) and install dependencies\n\
+  \  train-feature  subcommand for training feature of customized classifier\n  train-model\
+  \    subcommand for training customized classifier model\n"
+generated_using: *id002
+docker_image: quay.io/biocontainers/virsorter:2.2.2--pyhdfd78af_0

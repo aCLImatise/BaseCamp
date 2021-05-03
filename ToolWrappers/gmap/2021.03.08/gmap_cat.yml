@@ -1,0 +1,73 @@
+!Command
+command:
+- gmap_cat
+positional:
+- !Positional
+  optional: false
+  position: 0
+  name: '1.'
+  description: "A file with one column per line, with each line corresponding to a\
+    \ FASTA file, in the order\nof the input genomes.  The chromosome name for each\
+    \ FASTA file will be replaced with the\ndesired chromosome name in the file. \
+    \ Every chromosome must have a corresponding line in the file."
+- !Positional
+  optional: false
+  position: 1
+  name: '2.'
+  description: "A file with two columns per line, separated by white space.  In each\
+    \ line, the original\nFASTA chromosome name should be in column 1 and the desired\
+    \ chromosome name will be\nin column 2.  Not every chromosome needs to be listed,\
+    \ which provides an easy way to change\na few chromosome names.\n"
+named:
+- !Flag
+  optional: true
+  synonyms:
+  - -D
+  - --dir
+  description: Destination directory for output genome index
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - -d
+  - --db
+  description: Output genome name
+  args: !SimpleFlagArg
+    name: STRING
+- !Flag
+  optional: true
+  synonyms:
+  - -n
+  - --names
+  description: 'Substitute names for renaming contigs, provided in a file.  The file
+    have two formats:'
+  args: !SimpleFlagArg
+    name: STRING
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\ngmap_add: Concatenates gmap databases to be used by GMAP or GSNAP.\n\
+  Part of GMAP package, version 2021-03-08.\n\nUsage: gmap_cat [options...] -d <output_genome_name>\
+  \ <path/to/genome_dir...>\n\nNote: Input genomes should contain a full or local\
+  \ path for the directory containing the genome index\n\nOptions:\n    -D, --dir=STRING\
+  \          Destination directory for output genome index\n    -d, --db=STRING  \
+  \         Output genome name\n\n    -n, --names=STRING        Substitute names for\
+  \ renaming contigs, provided in a file.  The file have two formats:\n\n        \
+  \                        1.  A file with one column per line, with each line corresponding\
+  \ to a FASTA file, in the order\n                                    of the input\
+  \ genomes.  The chromosome name for each FASTA file will be replaced with the\n\
+  \                                    desired chromosome name in the file.  Every\
+  \ chromosome must have a corresponding line in the file.\n\n                   \
+  \             2.  A file with two columns per line, separated by white space.  In\
+  \ each line, the original\n                                    FASTA chromosome\
+  \ name should be in column 1 and the desired chromosome name will be\n         \
+  \                           in column 2.  Not every chromosome needs to be listed,\
+  \ which provides an easy way to change\n                                    a few\
+  \ chromosome names.\n\n"
+generated_using:
+- --help
+docker_image: quay.io/biocontainers/gmap:2021.03.08--pl5262h36cd882_0
